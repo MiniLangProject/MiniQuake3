@@ -1,0 +1,3 @@
+[submodule "Quake-III-Arena-original-source"]
+	path = Quake-III-Arena-original-source
+	url = https://github.com/id-Software/Quake-III-Arena.git
