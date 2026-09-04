@@ -93,7 +93,7 @@ Fehlerhafte Archive und Suchpfadkonflikte sind getestet. Voraussetzungen: 1–2.
 ## 4. QVM und Modulverträge kompatibel machen
 
 **Quellen:** `code/qcommon/vm*.c`, `vm_local.h`, `code/game/g_public.h`,
-`code/cgame/cg_public.h`, `code/q3_ui/ui_public.h` sowie die jeweiligen Syscall-Dateien.
+`code/cgame/cg_public.h`, `code/ui/ui_public.h` sowie die jeweiligen Syscall-Dateien.
 
 **Arbeit:** Zuerst den QVM-Interpreter in MiniLang portieren: Header, Code/Data/BSS,
 Instruktionsdecodierung, Stack, Sprünge, Speicherzugriffe und Float-Instruktionen.
@@ -238,7 +238,7 @@ Voraussetzungen: 1–9.
 dokumentierte Brücken. `tests/` enthält assetfreie Tests und Runner für lokale
 Originaldaten. `scripts/` enthält Build-/Vergleichsautomation, `docs/reference/`
 die Referenzprofile. Diese Verzeichnisse werden bei der jeweiligen Implementierung
-angelegt; aktuell existieren nur Projekt, Originalquelle und Plan.
+angelegt. Der geprüfte Implementierungsstand steht in [PARITY_AUDIT.md](PARITY_AUDIT.md).
 
 Die zehn Schritte sind Abnahmephasen in dieser Reihenfolge. QVM und Modulverträge
 erlauben während der Entwicklung einen schrittweisen Austausch; temporäre

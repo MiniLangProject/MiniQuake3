@@ -1,0 +1,102 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// PK3 index, bounded range reads and raw DEFLATE in MiniLang.
+package mq3.format.pk3
+import mq3.platform.file as file
+import mq3.compat.numeric as n
+import mq3.format.deflate as deflate
+import std.fs as fs
+import std.checksum.crc32 as crc
+
+struct Entry
+  name
+  flags
+  method
+  checksum
+  compressedSize
+  size
+  localOffset
+end struct
+
+struct Archive
+  path
+  entries
+  directoryOffset
+end struct
+
+function fail(message)
+  return error(3501, "PK3: " + message)
+end function
+
+function u16(data, offset)
+  if offset < 0 or offset + 2 > len(data) then return fail("truncated word") end if
+  return data[offset] | (data[offset + 1] << 8)
+end function
+
+function open(path)
+  size = fs.fileSize(path)
+  tailSize = size
+  if tailSize > 65557 then tailSize = 65557 end if
+  if size < 22 then return fail("truncated archive") end if
+  tail = file.readRange(path, size - tailSize, tailSize)
+  endOffset = -1
+  pos = tailSize - 22
+  while pos >= 0
+    if n.readU32(tail, pos) == 0x06054b50 and pos + 22 + u16(tail, pos + 20) == tailSize then
+      endOffset = pos
+      break
+    end if
+    pos = pos - 1
+  end while
+  if endOffset < 0 then return fail("end directory missing") end if
+  if u16(tail, endOffset + 4) != 0 or u16(tail, endOffset + 6) != 0 then return fail("multi-disk archive") end if
+  count = u16(tail, endOffset + 10)
+  if count != u16(tail, endOffset + 8) then return fail("inconsistent directory count") end if
+  directorySize = n.readU32(tail, endOffset + 12)
+  directoryOffset = n.readU32(tail, endOffset + 16)
+  if directoryOffset + directorySize > size - tailSize + endOffset then return fail("directory outside archive") end if
+  directory = file.readRange(path, directoryOffset, directorySize)
+  entries = array(count, void)
+  pos = 0
+  index = 0
+  while index < count
+    if pos + 46 > directorySize or n.readU32(directory, pos) != 0x02014b50 then return fail("invalid directory entry") end if
+    nameLength = u16(directory, pos + 28)
+    extraLength = u16(directory, pos + 30)
+    commentLength = u16(directory, pos + 32)
+    nextPos = pos + 46 + nameLength + extraLength + commentLength
+    if nextPos > directorySize then return fail("truncated filename") end if
+    if u16(directory, pos + 34) != 0 then return fail("entry on another disk") end if
+    entries[index] = Entry(decode(slice(directory, pos + 46, nameLength)), u16(directory, pos + 8), u16(directory, pos + 10), n.readU32(directory, pos + 16), n.readU32(directory, pos + 20), n.readU32(directory, pos + 24), n.readU32(directory, pos + 42))
+    pos = nextPos
+    index = index + 1
+  end while
+  if pos != directorySize then return fail("directory length mismatch") end if
+  return Archive(path, entries, directoryOffset)
+end function
+
+function readEntry(archive, entry)
+  if (entry.flags & 1) != 0 then return fail("encrypted entry") end if
+  if entry.method != 0 and entry.method != 8 then return fail("unsupported compression method") end if
+  if entry.localOffset + 30 > archive.directoryOffset then return fail("local header outside archive") end if
+  header = file.readRange(archive.path, entry.localOffset, 30)
+  if n.readU32(header, 0) != 0x04034b50 then return fail("invalid local header") end if
+  if u16(header, 6) != entry.flags or u16(header, 8) != entry.method then return fail("local header disagreement") end if
+  nameLength = u16(header, 26)
+  extraLength = u16(header, 28)
+  dataOffset = entry.localOffset + 30 + nameLength + extraLength
+  if dataOffset + entry.compressedSize > archive.directoryOffset then return fail("compressed data outside archive") end if
+  localName = decode(file.readRange(archive.path, entry.localOffset + 30, nameLength))
+  if localName != entry.name then return fail("local filename disagreement") end if
+  data = file.readRange(archive.path, dataOffset, entry.compressedSize)
+  if entry.method == 8 then data = deflate.inflate(data, entry.size) end if
+  if len(data) != entry.size then return fail("entry size mismatch") end if
+  if n.u32(crc.compute(data)) != entry.checksum then return fail("CRC mismatch") end if
+  return data
+end function
+
+function read(archive, name)
+  for each entry in archive.entries
+    if stringEqualsIgnoreCaseAscii(entry.name, name) then return readEntry(archive, entry) end if
+  end for
+  return fail("file not found " + name)
+end function

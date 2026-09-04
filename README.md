@@ -1,8 +1,27 @@
 # MiniQuake3
 
 Projekt für einen möglichst originalgetreuen Port von Quake III Arena nach MiniLang.
-Status: Projekt und Quellcode-Referenz angelegt; die Implementierung beginnt mit dem
-[Portplan in zehn Schritten](docs/PORTPLAN.md). Noch kein spielbarer Port oder Build vorhanden.
+Status: Implementierung läuft. Ein nativer MiniLang-Build mit Zahlenkompatibilität,
+Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter und Brush-Kollisionskern ist
+vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
+[Portplan in zehn Schritten](docs/PORTPLAN.md) und der
+[geprüfte Stand mit offenen Abnahmen](docs/PARITY_AUDIT.md).
+
+## Bauen und prüfen
+
+Python 3 und die Visual-Studio-C++-Toolchain müssen installiert sein. Beim ersten
+Aufbau den benachbarten MiniLang-Compiler einfrieren, anschließend bauen:
+
+```powershell
+python scripts/inventory.py
+.\build.ps1
+.\build\MiniQuake3.exe --inspect-map D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp
+python scripts/verify.py --data-root D:/Quake3
+```
+
+Ein vorhandener eingefrorener Compiler liegt unter `artifacts/toolchain/`.
+`inventory.py` nur ausführen, wenn dieser Stand bewusst neu festgelegt werden soll.
+Die C-Referenz- und Replay-Builds sind im [Prüfbericht](docs/PARITY_AUDIT.md) beschrieben.
 
 ## Quellcode und Projektstruktur
 
@@ -11,6 +30,12 @@ MiniQuake3/
   Quake-III-Arena-original-source/  Lokaler Git-Fork des vollständigen id-Software-Repositories
   docs/PORTPLAN.md                 Zehn Schritte mit Abnahmekriterien
   docs/UPSTREAM.md                 Herkunft, Revision und Reproduktion
+  docs/PARITY_AUDIT.md             Geprüfte Eigenschaften und offene Arbeit
+  src/                            MiniLang-Implementierungen
+  native/abi.c                    Drei Float-/Bit-Konvertierungen für die ABI
+  tests/                          MiniLang-Tests und separate C-Referenztreiber
+  scripts/                        Build- und Vergleichsautomation
+  PORT_LEDGER.json                 Inventar und Zuordnung der Originaldateien
   README.md
 ```
 
@@ -40,8 +65,8 @@ bleiben als Originalquellen erhalten und sind kein Teil der ersten Laufzeit-Port
 Die Original-Lizenz und Hinweise bleiben unter
 [COPYING.txt](Quake-III-Arena-original-source/COPYING.txt) und
 [README.txt](Quake-III-Arena-original-source/README.txt) erhalten, einschließlich
-der dort genannten Drittanbieter-Komponenten. Abgeleitete Portdateien müssen
-ihre Herkunft und zutreffenden Lizenzhinweise erhalten.
+der dort genannten Drittanbieter-Komponenten. Abgeleitete Portdateien tragen
+Herkunft und GPL-2.0-or-later-Hinweise; siehe [NOTICE.md](NOTICE.md).
 
 Kommerzielle Spieldaten sind nicht enthalten. Für Originalkarten, Modelle,
 Texturen, Audio und Referenztests wird eine eigene Quake-III-Installation benötigt.

@@ -3,3 +3,5 @@
 /artifacts/
 /data/
 *.log
+__pycache__/
+*.pyc

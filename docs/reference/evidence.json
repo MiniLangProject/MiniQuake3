@@ -1,0 +1,556 @@
+{
+  "scope": "implemented foundations; full port incomplete",
+  "sources": {
+    "src/main.ml": "d9b63f68fb3f77391a94efd6afcebe626bba368be22db401b2c5c67fc0f6b985",
+    "src/mq3/collision/brush.ml": "aed92c77687624b647daf5443b4b23b89c9ab1c79505e5689fb24c3aca0a7af6",
+    "src/mq3/compat/numeric.ml": "ec88da855ee45fac438a000b675793aa29dff129140a51de9a377289da061c98",
+    "src/mq3/format/bsp.ml": "891cf26acced8661643df02abf0bd1774aedf8117bf12010d83bebff548c2ac1",
+    "src/mq3/format/deflate.ml": "8e6deb910211a8eec266729a6aee0f50dac0503773ddddf2daa93c29d673af61",
+    "src/mq3/format/pk3.ml": "f928c29a09282ea0eca113e4aa0d3905a863cbdd09607985330e831397b4149f",
+    "src/mq3/platform/file.ml": "5cf18ed251a4ec61213602d9c0013644d008b99df511b176ca573f2b7660c560",
+    "src/mq3/qcommon/cvar.ml": "2ccf0ca51d8336c096e96d79e5999bf2520a2292ed45efe9d66254e0bfb8a6c4",
+    "src/mq3/shared/math.ml": "269559e83b26d52aa7b178b8586b0f80132fdf84710b45dc9c74b66781053cf7",
+    "src/mq3/shared/parser.ml": "90aa075c819b2e3f9bc510521634666b6ea794716fecfe5a04b868d6c6bd3d2c",
+    "src/mq3/vm/interpreter.ml": "ec8a553adabb04e43a19358fa33eb9918f2e774e9074e02abba75e9f7115ce59",
+    "native/abi.c": "460958e4d1d04aff1b5c72c94c683c8011229bd2bce558a12e481c756f5fdb0a",
+    "scripts/assets.py": "e1b3551a0ac0945c0436edb448dbb76abe2563cc4b29c43e0929623170d4c20e",
+    "scripts/build.py": "27f977af905d64e8c4a068e7fa3299f65a32dc3eea04e0aec96229db9a7f81da",
+    "scripts/build_qvms.py": "8e29b29e66b8cec6e9fdc1157793fca9ad69d2858f9982753be9726c7655bd30",
+    "scripts/build_reference.py": "5726f55cc49b5fa3d5085373e2784d71862573236f3ad24660d6558331bdd09a",
+    "scripts/inventory.py": "8c710a55dd666a46874353035b82faa3fc17d0a9f9884c2b46b0480340455e8c",
+    "scripts/reference_replay.py": "075a5f4c35cad4d2cf5506106cfed1dcb56e8a61dd60e1de626f8df2c92de1e8",
+    "scripts/reference_smoke.py": "ac1b75ffe774b460e6af3d51a4accd85642d4b5aab01f6ee0a503c95cf53d096",
+    "scripts/test_archives.py": "61808f04bc53445facb09066ea90568a0f8e5cf65f03c12a421b38336061d1b4",
+    "scripts/test_brush.py": "f04dc9eae5ab89e4ed50e97e60fcc6e01d7c2ba86cd9156a27856fdb472985df",
+    "scripts/test_core.py": "326e11a4c94ae7e70e67ab6e7db271211a23b75f8d5a0724dfaef61973877ae7",
+    "scripts/test_maps.py": "3f44120af9fef99f99f7f9134f7a4792b39ef58a13bc35837cb3fbd6eb0930f0",
+    "scripts/test_math.py": "f58dc4d37171d4b113d006c5d53cfe527ce46e2c7597f5f557430e243c0b5a76",
+    "scripts/test_numeric.py": "fcddc1f65c71b05a564e4407b2492f0a0fc0d31a1e71c4a381656f616734849c",
+    "scripts/test_rejections.py": "3918a640d7690b95ce67dddcb1c31b00780e81a6999cae2da409e4dd6f6e366a",
+    "scripts/test_retail_vm.py": "a2670c29e806894ff0b764d580fa8b5fac96493e17ca2d22f09cd9f713717001",
+    "scripts/test_vm.py": "f9a589ab6cb07a82275a67b5a3ae8c100ce55f8fed75903b62de6234ed24012b",
+    "scripts/toolchain.py": "eab72f9e2edb9680c382fccf55533e766b2177d257276a29de363e73e545716a",
+    "scripts/update_progress.py": "1ef00b17e4dae9c8fbc82687b5dfaca66d55c932a918946c1ac7341cc09428fa",
+    "scripts/verify.py": "4d8d49433cdcd671de285a89d4eeda84650e7fa363e19fd756bfe5b448269da6",
+    "tests/archive_tests.ml": "a7266b1d1a15881f117d18344eafc1a03d47e4be053ce42c0616248164510e0c",
+    "tests/brush_tests.ml": "a30eee67deb4580b649d643024c9f08acd9c5df7b28cbb2be6289cad151fce04",
+    "tests/core_tests.ml": "74b4b7ce5dd8816859b9097053dbbe01d5b49057b76de8cbe22dfa818523765d",
+    "tests/math_tests.ml": "76be7f3d960cb1dc4d5221621d3bfd716e1944091f83a4be300eccab973f1f1a",
+    "tests/numeric_probe.ml": "37743c72159031b7e6d0f692f6a27ac062f36f086174f98ac5e5d69747a0d4cc",
+    "tests/numeric_tests.ml": "55c1fe4777ce160ae3cbf314459d7be51a280346b6fa06cd76cd760741b34a54",
+    "tests/reference/brush_oracle.c": "87e510bf27e6340cf4f8c4bff61b6cfc3673a51de10d1fc84a1507e63ac0ad7a",
+    "tests/reference/core_oracle.c": "029c52de4cad3a53065af785abdf1b15d0e5f252e7297746871fe4bcde264703",
+    "tests/reference/frame_observer.c": "309a76ab1ff5253aa4059d6bf81e25a058d6f234bf976a763f46fdb8c0844fc7",
+    "tests/reference/math_oracle.c": "b22ec691ee4d78f5e2d25ab0ad67b30e05e876b482269f8aa8973e3ccd3754a4",
+    "tests/reference/numeric_oracle.c": "c2f5ec168ba9e1edea440e8668c4d9acbd7788acfc649ba0c33c09b7bbc0bcf5",
+    "tests/reference/vm_oracle.c": "cdc54ce1830b460715d4e3fee9fdbefd3e7bc09f2981a194a524847a15b030ba",
+    "tests/rejection_tests.ml": "f9b7f951fdd539cc29b2bab254419b2c8ed11a2ca0726cf4c697f837436cc404",
+    "tests/retail_vm_tests.ml": "22e3aea584615d26ef2cdb468bb16f9cc246ec6fc9a7742c033daabe32d943b9",
+    "tests/vm_tests.ml": "e82c903d3c8430197abbf66021ab58cdb0422e83aa6b01eb384f84593015b23a"
+  },
+  "evidence": [
+    {
+      "path": "build/reference/archives/result.json",
+      "sha256": "e02d20fb8065ebb443fdd37cd4c0a87315bf8b629d2c63d3fc3dfe777fb7becc",
+      "result": {
+        "passed": true,
+        "cases": 84,
+        "oracle": "Python zipfile / zlib 1.3.1",
+        "includes_user_assets": true
+      }
+    },
+    {
+      "path": "build/reference/brush/result.json",
+      "sha256": "10341de7ea87643cc06604e765c4abcbdd142a46595b989b0931909f2f492d58",
+      "result": {
+        "passed": true,
+        "traces": 4096,
+        "fields": 36864,
+        "expected_sha256": "2453d71f4dcea2d4f1e4f421cc46cbf2fd545cd9e4f202dd0d972ae24efef020",
+        "unmodified_kernel_sha256": "553847954c16031711d005dfc398f45a51b756bab8f3bff68d2656e318722e14"
+      }
+    },
+    {
+      "path": "build/reference/core/result.json",
+      "sha256": "de1b7952dda7a5a5965c6fa2b7e97960faac955c67aa0fd0b2ffa8a5a8f57a90",
+      "result": {
+        "passed": true,
+        "cvar_operations": 513,
+        "parser_calls": 448,
+        "cases": [
+          {
+            "mode": "cvar",
+            "input": "cvars.tsv",
+            "expected_sha256": "2096c076a0a982c169449b4d0a0b1e4a2e52cc94c5fbb2cdf561ca54e9553a86"
+          },
+          {
+            "mode": "parser",
+            "input": "parser0.txt",
+            "expected_sha256": "5416230a5fb5eb247d6532be6356d5d5ce372a737f9b0e12f3c52c5246544ec9"
+          },
+          {
+            "mode": "parser",
+            "input": "parser1.txt",
+            "expected_sha256": "126e2f549764f7424ee1c8695c4bd0e180a1c0208fc9381ab27a1d6d295e2b77"
+          },
+          {
+            "mode": "parser",
+            "input": "parser2.txt",
+            "expected_sha256": "e6e87e57038c9205c2d5c90dc0a93667864e50c7d17d5ec9f276d3727af590d9"
+          },
+          {
+            "mode": "parser",
+            "input": "parser3.txt",
+            "expected_sha256": "d14cd549f28fd7c3a87afd1fc38596db307061c7199f21ea30cafe503dabf691"
+          },
+          {
+            "mode": "parser",
+            "input": "parser4.txt",
+            "expected_sha256": "efa5063a17372a168b9fd8df5afbb7d8dbd1a481ee8fd5a2effe9d5b9c41fa1f"
+          },
+          {
+            "mode": "parser",
+            "input": "parser5.txt",
+            "expected_sha256": "f223be07649d09659c1b7db3eb373d759775f835ed2da22bac11467bcab8b635"
+          },
+          {
+            "mode": "parser",
+            "input": "parser6.txt",
+            "expected_sha256": "0f6dd980ec3127fea68d9f95834b3bc7e32a2460c08287ac2aabdeb510e88884"
+          }
+        ]
+      }
+    },
+    {
+      "path": "build/reference/maps/result.json",
+      "sha256": "90da8c74241acaf5f9f75f11a21a8824785122011897ee166c1f3411bc0522b1",
+      "result": {
+        "passed": true,
+        "maps": [
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3ctf1.bsp",
+            "counts": [
+              7,
+              1681,
+              4206,
+              24467
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3ctf2.bsp",
+            "counts": [
+              51,
+              6179,
+              10850,
+              54040
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3ctf3.bsp",
+            "counts": [
+              5,
+              4604,
+              8069,
+              48257
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3ctf4.bsp",
+            "counts": [
+              29,
+              795,
+              2131,
+              10664
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm0.bsp",
+            "counts": [
+              14,
+              1944,
+              5023,
+              24587
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm1.bsp",
+            "counts": [
+              1,
+              987,
+              2097,
+              13978
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm10.bsp",
+            "counts": [
+              3,
+              2265,
+              4184,
+              24057
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm11.bsp",
+            "counts": [
+              33,
+              5478,
+              11226,
+              56659
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm12.bsp",
+            "counts": [
+              64,
+              4865,
+              10148,
+              50087
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm13.bsp",
+            "counts": [
+              4,
+              1604,
+              3666,
+              20277
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm14.bsp",
+            "counts": [
+              17,
+              2522,
+              6061,
+              34656
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm15.bsp",
+            "counts": [
+              21,
+              2832,
+              6962,
+              38525
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm16.bsp",
+            "counts": [
+              12,
+              1376,
+              1969,
+              11967
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm17.bsp",
+            "counts": [
+              20,
+              456,
+              1439,
+              8486
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm18.bsp",
+            "counts": [
+              19,
+              1534,
+              3850,
+              19551
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm19.bsp",
+            "counts": [
+              18,
+              417,
+              1325,
+              5488
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm2.bsp",
+            "counts": [
+              3,
+              1371,
+              2998,
+              18975
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm3.bsp",
+            "counts": [
+              1,
+              851,
+              1650,
+              9610
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm4.bsp",
+            "counts": [
+              10,
+              1235,
+              2486,
+              16236
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm5.bsp",
+            "counts": [
+              4,
+              1566,
+              3433,
+              18682
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm6.bsp",
+            "counts": [
+              4,
+              2081,
+              4318,
+              27006
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm7.bsp",
+            "counts": [
+              8,
+              2599,
+              6098,
+              34437
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm8.bsp",
+            "counts": [
+              29,
+              2896,
+              4879,
+              25512
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3dm9.bsp",
+            "counts": [
+              27,
+              2537,
+              5917,
+              36461
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3tourney1.bsp",
+            "counts": [
+              4,
+              1561,
+              2379,
+              16504
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3tourney2.bsp",
+            "counts": [
+              11,
+              1821,
+              3358,
+              18656
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3tourney3.bsp",
+            "counts": [
+              15,
+              861,
+              1936,
+              11415
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3tourney4.bsp",
+            "counts": [
+              17,
+              1376,
+              2837,
+              14535
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3tourney5.bsp",
+            "counts": [
+              2,
+              514,
+              1299,
+              7174
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/q3tourney6.bsp",
+            "counts": [
+              22,
+              556,
+              2247,
+              11137
+            ]
+          },
+          {
+            "archive": "pak0.pk3",
+            "map": "maps/test_bigbox.bsp",
+            "counts": [
+              1,
+              6,
+              6,
+              24
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "path": "build/reference/math/result.json",
+      "sha256": "dc4e1ce8385985b167bb583995b71dd6129cfea1d947b9288b13f436b4c4066e",
+      "result": {
+        "passed": true,
+        "cases": 4096,
+        "reference_sha256": "b51757786681a0f65e3d2def2b1b03089e5052f89b308f4fd90d96e8cd789936",
+        "oracle_sha256": "5532f583768e471965343045eb7701e8d40ff27ab1c567690ccc79693154bddf",
+        "test_sha256": "69053a1747f40d66a704b14dc006b1f0f21b4d4b65055a4379dafaf3376391c2",
+        "fp": "x86 MSVC /Od /fp:strict /arch:SSE2"
+      }
+    },
+    {
+      "path": "build/reference/numeric/result.json",
+      "sha256": "c208352636e070a65528fa35125a3371ede5b33f205210b77e3f7e7a2aea04cd",
+      "result": {
+        "passed": true,
+        "results": 80900,
+        "expected_sha256": "e7af696064c79713535e3710e5aee0645fd9438bb8c12c61d77d96e0dbd18543"
+      }
+    },
+    {
+      "path": "build/reference/rejections/result.json",
+      "sha256": "dc95e3bc13ddda390c5e1129c94e08c0e5056d0a0cb4c28e3a7406869a0d2eff",
+      "result": {
+        "passed": true,
+        "cases": 83
+      }
+    },
+    {
+      "path": "build/reference/vm/cd/result.json",
+      "sha256": "7c17728536972f40e4ac1ddd8fa97fc4f53c51148d33fd43617467b24c601fc5",
+      "result": {
+        "probes": [
+          {
+            "module": "qagame",
+            "command": 1000,
+            "passed": true,
+            "qvm_sha256": "73d07e341bd21bff3e7ec2c961ea9cafe7ff9150e0ddcc5d8055757edece0f72"
+          },
+          {
+            "module": "cgame",
+            "command": 1,
+            "passed": true,
+            "qvm_sha256": "ee31bdb9865c3e11afdff3b5f65dbe9599de9527f2493a25a347a8b0ce5eb098"
+          },
+          {
+            "module": "ui",
+            "command": 0,
+            "passed": true,
+            "qvm_sha256": "826a342a108ac8a7fa45f4e752dfa5be50fa5ddf4fdb87d7c404d833c4989627"
+          }
+        ],
+        "scope": "load and narrow ABI entry points only"
+      }
+    },
+    {
+      "path": "build/reference/vm/rebuilt/result.json",
+      "sha256": "28ca4390feb536e464826eb8e9595e41a8506923461919ae84ce9ecaab44de79",
+      "result": {
+        "probes": [
+          {
+            "module": "qagame",
+            "command": 1000,
+            "passed": true,
+            "qvm_sha256": "ecdc011ea76c51b0631d64bc5e06fae15274bd68751ba425b8c1b0a63cfebf5f"
+          },
+          {
+            "module": "cgame",
+            "command": 1,
+            "passed": true,
+            "qvm_sha256": "2df34638c131d1bf2796231df8874112e049f5c5b3a42eb4205294fd323b0cef"
+          },
+          {
+            "module": "ui",
+            "command": 0,
+            "passed": true,
+            "qvm_sha256": "3a51af40cd51ceda356c948097ba5e8c614d699a6e69f6270d1382931c49b496"
+          }
+        ],
+        "scope": "load and narrow ABI entry points only"
+      }
+    },
+    {
+      "path": "build/reference/vm/result.json",
+      "sha256": "77446e19322f897f6a16b8852d8d07d5104b35aa9f9a5caeed8d3a5855d6008b",
+      "result": {
+        "passed": true,
+        "cases": 392,
+        "reference_sha256": "ce072bfba45205b165685db2c5170e94f062a0bd6f87ef8f22c037ceccb11145",
+        "oracle_sha256": "8e05c712cdd7ce00244df9aef8509ec24cb0eed08f225cf75a474175e7593618",
+        "test_sha256": "881ce44a789e967486dd218ce5a15c9b101519acb79b41aef4a2bd83a4119316"
+      }
+    },
+    {
+      "path": "artifacts/reference/replay/result.json",
+      "sha256": "104a03e621aa18f0ca449360094dab6cebd3caebf1cbfbed6f524c181fd11cd2",
+      "result": {
+        "passed": true,
+        "frames": 120,
+        "map": "q3dm1",
+        "bots": [
+          "sarge:3",
+          "major:3"
+        ],
+        "record_sha256": "b1eea09f48a082a0e6add84cca7bbb0f2c72ff284822bf8f399cf53a5f5f7205",
+        "replay_sha256": "b1eea09f48a082a0e6add84cca7bbb0f2c72ff284822bf8f399cf53a5f5f7205",
+        "second_replay_sha256": "b1eea09f48a082a0e6add84cca7bbb0f2c72ff284822bf8f399cf53a5f5f7205",
+        "journal_sha256": "fc8bc0d0e61e00df9dde70e0413c1348367f82fc7a593c3dba4c67e8566b3410",
+        "binary_sha256": "61c6305f2e8f8bac53779c9df67c34838fc5d0bc57715df357e6ad6ca80152ac"
+      }
+    }
+  ]
+}
