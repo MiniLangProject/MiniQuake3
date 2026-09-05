@@ -65,7 +65,7 @@ python scripts/test_transitions.py D:/Quake3
 python scripts/test_transitions.py D:/Quake3 --no-curves
 python scripts/test_spawn_values.py
 python scripts/test_targets.py
-python scripts/test_combat.py
+python scripts/test_combat.py --data-root D:/Quake3
 python scripts/test_spawn.py D:/Quake3
 ```
 
@@ -73,7 +73,7 @@ Die Schnittstellen und ihre Grenzen sind unter
 [Server-Kollision](docs/SERVER_COLLISION.md) und
 [Trigger-/Teleport-Übergänge](docs/GAME_TRANSITIONS.md) beschrieben.
 Das [Spawn-Parsing](docs/SPAWNING.md) übernimmt inzwischen Worldspawn, Feld- und
-Spielmodusregeln sowie 30 Objektklassen. Sprungpads und Teleporter werden aus dem
+Spielmodusregeln sowie 31 Objektklassen. Sprungpads und Teleporter werden aus dem
 Kartentext angelegt und nach verzögerter Zielsuche mit echten Kontakten geprüft.
 Hinzu kommen [Target-Ketten und Ereignisverarbeitung](docs/TARGETS_AND_EVENTS.md):
 verzögerte Targets, Relays, Mehrfach-/Always-Trigger, Shader-Remaps und die
@@ -81,7 +81,8 @@ Entity-Schleife mit Ablauf und Freigabe temporärer Ereignisse.
 Sound-Targets, gerichtete Push-Targets, schaltbare Timer und Ortsmarkierungen
 führen inzwischen ebenfalls ihre ursprünglichen Serverregeln aus.
 Die [Schadensberechnung](docs/COMBAT.md) ergänzt Rüstung, Rückstoß, Teamschutz,
-Battlesuit, CTF-Trägerdaten, `trigger_hurt` und `target_kill`; Telefrags sind
+Battlesuit, CTF-Trägerdaten, Sichtlinien und Radius-Schaden sowie `trigger_hurt`,
+`target_kill` und `target_laser`; Telefrags sind
 damit verbunden. Weitere Klassen, Item-Spawns, Spieler-Todesregeln und
 vollständige Serverframes bleiben offen.
 

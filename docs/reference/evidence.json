@@ -14,13 +14,13 @@
     "src/mq3/format/bsp.ml": "891cf26acced8661643df02abf0bd1774aedf8117bf12010d83bebff548c2ac1",
     "src/mq3/format/deflate.ml": "8e6deb910211a8eec266729a6aee0f50dac0503773ddddf2daa93c29d673af61",
     "src/mq3/format/pk3.ml": "f928c29a09282ea0eca113e4aa0d3905a863cbdd09607985330e831397b4149f",
-    "src/mq3/game/combat.ml": "9638fa0c4081d9a0a316704e77987ae3bc60d95c4b20aa1243d37768470de8ee",
+    "src/mq3/game/combat.ml": "c4bec13c9fd6185d9531f204b76e84803c07e93e2cf451ce831850454f10d05e",
     "src/mq3/game/constants.ml": "04c908d6176115d418ae8f14f7791f5f2ef6d86dc054437e7bb00116ddd12adc",
-    "src/mq3/game/entities.ml": "66ccb769cedd295368069a58863be502de72763036f31fc034bb23be08e0c924",
+    "src/mq3/game/entities.ml": "2658cb2c1657bd06c7a7ea3e15de826eff5e8f03ef1712b5f19855744a528d42",
     "src/mq3/game/entitystate.ml": "491a0b8983832ca50914d6a49512062737243e6285567485f644d0aeebf8b2c3",
     "src/mq3/game/events.ml": "d2ae1a966141639cbae9ed9a61dde746afeb694cac34173f0e4f3ac828893c61",
     "src/mq3/game/frame.ml": "d59fc6500e215ed1c108fe44130206b09cad9cbae8b30e741e6211583f37332f",
-    "src/mq3/game/hazards.ml": "6c7831ab2850878a42d20c613c1dad4dd00746cba627103b166f19b59804507a",
+    "src/mq3/game/hazards.ml": "5abfb39e8b6c66ab1d1c3d1cac6ffeda133272a66dca4d53cf1b15b428dc64f7",
     "src/mq3/game/jumppad.ml": "b99ced1c4617234979be0929a4a0f25779be1bc248d3e3729799d5025e23cbe9",
     "src/mq3/game/movement.ml": "8be87eaf74f2c29fd5a98d69c1ac63478fa2731d5c318f9d62901a15d8f0d71f",
     "src/mq3/game/playerstate.ml": "399c00041ec14936c70d79c931764e20fe3ab27397317e5873dcde0b77091524",
@@ -28,7 +28,7 @@
     "src/mq3/game/replay.ml": "0e529db77b5e3a12a89da5284dfc7dd853312cff16089d38cc04448747e08b2a",
     "src/mq3/game/snapshot.ml": "e0b5ffc2318b83d625ffd15effa0d754fe06895035e398a63bec0123eca32aaa",
     "src/mq3/game/spawn.ml": "d5b8b279c956a0de9c97fc1add1889cc549df8f78908486f79eabd7bb1fe9584",
-    "src/mq3/game/spawn_functions.ml": "4acae35b04f816912025fcc57c87804e03e4d64a947dc720e636f2ae02113123",
+    "src/mq3/game/spawn_functions.ml": "fabffad9d3fc8aa9a5302711583997d36e75945209fcedc15b121bf7203f9a5f",
     "src/mq3/game/spawn_tables.ml": "98cd9df24da1958662fca590ade22646683bfa32c31ed0cbbb97ed5091fa41b2",
     "src/mq3/game/spawn_values.ml": "06f4be12c57b1b2b4e1815df44c70e668aec8cb4d4bdaa1187ef44a86550e0f2",
     "src/mq3/game/targets.ml": "bd9f90dcab75cd0c681ee083b82ea216abb5e4be547fb7bad698e138e1d39fad",
@@ -55,11 +55,11 @@
     "scripts/reference_replay.py": "075a5f4c35cad4d2cf5506106cfed1dcb56e8a61dd60e1de626f8df2c92de1e8",
     "scripts/reference_smoke.py": "ac1b75ffe774b460e6af3d51a4accd85642d4b5aab01f6ee0a503c95cf53d096",
     "scripts/spawn_fixtures.py": "f2228d4cb26b9039696ba523bc8ffa530244aa6e3b4937dd3fee2d9716c3e778",
-    "scripts/spawn_oracle.py": "f2cc8d17994d16ec6af79c41a17f8fd58bf89544e327cf68217ac3bad70cb0ab",
+    "scripts/spawn_oracle.py": "a84782e839317c59f037255602f79d340d88cf1616db94eb7efed1de300f4bfc",
     "scripts/test_archives.py": "61808f04bc53445facb09066ea90568a0f8e5cf65f03c12a421b38336061d1b4",
     "scripts/test_brush.py": "f04dc9eae5ab89e4ed50e97e60fcc6e01d7c2ba86cd9156a27856fdb472985df",
     "scripts/test_collision.py": "36369bb61e23ae36be1fe8978327ea8486c233564b6d8f7323d6ca22b3f094fe",
-    "scripts/test_combat.py": "bd5eb6ffa2283eaf00712870fe4aedf9110ec8eadeec2ae5436acaa4ca4570ee",
+    "scripts/test_combat.py": "82c69e8b1b0eda3d15787522b699086f5c4aea2cca1ecb92c0797f2c9e80eea2",
     "scripts/test_core.py": "326e11a4c94ae7e70e67ab6e7db271211a23b75f8d5a0724dfaef61973877ae7",
     "scripts/test_entitystate.py": "65af30f2665c85a0a7e809ff5f64e49e3a1c64c1685cfa0a491b4449aa020ca5",
     "scripts/test_maps.py": "3f44120af9fef99f99f7f9134f7a4792b39ef58a13bc35837cb3fbd6eb0930f0",
@@ -76,7 +76,7 @@
     "scripts/test_server_world.py": "f4f3218e20a1b16223c6a933fc4c7bd3a4210b9bff9946fb25a1fafc11a901d0",
     "scripts/test_shared_game.py": "05882b9c9f594c8b46f962cb96576d9e683dac44d9429f701dff5710659eff53",
     "scripts/test_spatial.py": "1607bb88b15dec145b10f86554f437122dae85ff876d63ace02428ea4d145b72",
-    "scripts/test_spawn.py": "eabf1116accd5ad6ccd7c6a20e9977534728635549f55346c1a358d621e08df6",
+    "scripts/test_spawn.py": "79bdf5cd03c8c0e95b52b30a1d5a14107616785bfa71ec5337d8480f25229119",
     "scripts/test_spawn_values.py": "4aa0513fa2279542ad4fc479fa116212a00c0c5ab6a3fa33a7f651d579d6b093",
     "scripts/test_targets.py": "e2264722cedfd8fef9bc72a2ce839971ed19a58bbea611db6559d5a844587b46",
     "scripts/test_transitions.py": "06ef2df3360da4569d088859f1e5888c2c94d07d7bd0396f0cd5982b60df7d31",
@@ -84,8 +84,8 @@
     "scripts/test_vm.py": "f9a589ab6cb07a82275a67b5a3ae8c100ce55f8fed75903b62de6234ed24012b",
     "scripts/toolchain.py": "eab72f9e2edb9680c382fccf55533e766b2177d257276a29de363e73e545716a",
     "scripts/transition_oracle.py": "b094c961cde9941d9230cd2af4d4e11a40428705dab40b8f878c1d7e72481d4a",
-    "scripts/update_progress.py": "4fd612806286f9809f4fad96d522053346800c6c95c74ea12de4fc140b038417",
-    "scripts/verify.py": "e019c90942b046393a6e62f386c256a72eb08bd6d0331328ec7dd0553869f09f",
+    "scripts/update_progress.py": "2ad06a36882d5965dc8017b261bef71c3f524c3f8a7e86c7ae898864a646c7bb",
+    "scripts/verify.py": "3c4f3fe511f12786af1a540085b6c89357a6f7bb8935b0c70f100b5aea5c6c35",
     "tests/archive_tests.ml": "a7266b1d1a15881f117d18344eafc1a03d47e4be053ce42c0616248164510e0c",
     "tests/brush_tests.ml": "a30eee67deb4580b649d643024c9f08acd9c5df7b28cbb2be6289cad151fce04",
     "tests/collision_tests.ml": "c28f47cc00e374f52eb33f88810478fcbeea35819b9a54a91d589113c35a9a57",
@@ -99,7 +99,7 @@
     "tests/pmove_tests.ml": "85d2c4281787abdb5b8eb1bc95357d9a7bb109518cb606cbef371a86eb4fa998",
     "tests/reference/brush_oracle.c": "87e510bf27e6340cf4f8c4bff61b6cfc3673a51de10d1fc84a1507e63ac0ad7a",
     "tests/reference/collision_oracle.c": "29ce058bc66079c7b17ccacf09d7c09f4a8ea397bf951c67ea2406784d6cb1bb",
-    "tests/reference/combat_actions.inc": "bce9392194a60b1f0eb2f543e734f47dd4f5bc1a9de95e4036ab2e6171e10111",
+    "tests/reference/combat_actions.inc": "c644919a10d2be59d5f303f224868e36a2707aa0ef0deabca998d56855fdfaf7",
     "tests/reference/core_oracle.c": "029c52de4cad3a53065af785abdf1b15d0e5f252e7297746871fe4bcde264703",
     "tests/reference/frame_observer.c": "309a76ab1ff5253aa4059d6bf81e25a058d6f234bf976a763f46fdb8c0844fc7",
     "tests/reference/math_oracle.c": "b22ec691ee4d78f5e2d25ab0ad67b30e05e876b482269f8aa8973e3ccd3754a4",
@@ -110,7 +110,7 @@
     "tests/reference/server_world_oracle.c": "93511d75377005303e3ac34d915ee32793245641b65b44e9f2b8c1f2ec934fc3",
     "tests/reference/shared_game_oracle.c": "189875a93caa876ef1d53c75f0d25f1a1fc24e0c9fcca6541392490f6661d04f",
     "tests/reference/spatial_oracle.c": "00a2b131fff36f2a377f09274f3845625ca6c35d47ea7558eb01915ce5d0737c",
-    "tests/reference/spawn_oracle.c": "50bf159fcbf1a31852bd7b04ea49203907b3d0ec7974d3ca32d4832ebb361241",
+    "tests/reference/spawn_oracle.c": "36ac0a3445383eb625926a388ff921f3114b9b6928b24a1c9b441300dd5c3678",
     "tests/reference/spawn_server.c": "779e8ecc04153f3c13508732e80e07b673326c4e00e9e71516ad5025a259d3c8",
     "tests/reference/target_actions.inc": "d34b9d02285f539db35a63dabefd2d5a0e022bda992479f4249be952ea41880d",
     "tests/reference/transition_oracle.c": "52483281f090e375f082dafc64f6ea64bf23077ef74ce30b4b6f94da028e4a8d",
@@ -122,7 +122,7 @@
     "tests/server_world_tests.ml": "0b14306b0fdd817f0c7d9802d0a8188f6f6dcce4d92f2a0b3da88d00488e2025",
     "tests/shared_game_tests.ml": "377922fb745760cae1d377fd2a982c33667fb4d2c3dd9b9def2fb25d88fde1ec",
     "tests/spatial_tests.ml": "1f120494eaa7ca10d91d26a59c9393743b45466376a8d97bfc95c929bf7bb27f",
-    "tests/spawn_tests.ml": "6981eeb7bc338ee6cf5925a0cff183320a08a79e5a11ca58328b350c39d94189",
+    "tests/spawn_tests.ml": "be3fc5ea43eeb9d75c28bb5e08fc52b59213d987ebf31484aef067404b762ec9",
     "tests/transition_tests.ml": "5e25faf4e29303558d04e0e6621810a88dbd803cad9448c0998c4d8169a7f4ee",
     "tests/visibility_tests.ml": "1b7da66dcfb3b6d9f66e20d08a6ead1b00efe634cf85659a98822bab6f8d4609",
     "tests/vm_tests.ml": "e82c903d3c8430197abbf66021ab58cdb0422e83aa6b01eb384f84593015b23a"
@@ -629,7 +629,7 @@
     },
     {
       "path": "build/reference/combat/result.json",
-      "sha256": "c6fdfc1314cc70aa147178a9babca94baf604a4ae5c10a731ce1b964ee09dfaf",
+      "sha256": "ae7276ac3aed2a4bede20a5a7da6fc1e93e6730cfa9ce35a3d249c5c2c13576d",
       "result": {
         "passed": true,
         "scenarios": [
@@ -643,6 +643,19 @@
             "mover_callbacks": 0,
             "spatial_links": 0,
             "spatial_unlinks": 2,
+            "traces": 0,
+            "trace_entities": {},
+            "visibility_probe_counts": {},
+            "query_results": {},
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 100,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
             "inputs_sha256": "3459f68c26da43716740242de187ccb5df33f19f61caf4475053bd4072418a4d",
             "expected_sha256": "f9dfdf41cc4ce8ac7671299042cb3de80c3f70de07fc8abe8232ba0ddb943105"
           },
@@ -656,6 +669,19 @@
             "mover_callbacks": 0,
             "spatial_links": 0,
             "spatial_unlinks": 348,
+            "traces": 0,
+            "trace_entities": {},
+            "visibility_probe_counts": {},
+            "query_results": {},
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 100,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
             "inputs_sha256": "cc2f4621d55b70d2028fe8fde71fbe4e09630c556056318624595028c1df5817",
             "expected_sha256": "f77f49f251768e3fc9604c70c24b9364eee088eb1b1801813e57ff0e55f2a527"
           },
@@ -669,6 +695,19 @@
             "mover_callbacks": 2,
             "spatial_links": 0,
             "spatial_unlinks": 35,
+            "traces": 0,
+            "trace_entities": {},
+            "visibility_probe_counts": {},
+            "query_results": {},
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "1022": 0,
+              "0": -999,
+              "1": 100,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
             "inputs_sha256": "dd6995571dc425faaa2f4bd4debb4b285e4680b0856c9f8c70aa61783308d197",
             "expected_sha256": "d783bedb405e67a7d240555996a35187c0e42541fb436fcaaf8885fbc178003b"
           },
@@ -682,6 +721,19 @@
             "mover_callbacks": 0,
             "spatial_links": 0,
             "spatial_unlinks": 273,
+            "traces": 0,
+            "trace_entities": {},
+            "visibility_probe_counts": {},
+            "query_results": {},
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 100,
+              "2": 100
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
             "inputs_sha256": "9bdd0a3a6621a9e332a44f66ff54cfafa55e3dd14f1b4d5381e8ff3a93f0bc1f",
             "expected_sha256": "08dd27f6fcf048b8a25ed9d3bc465441936a05502877ea66665c792e18ba7e06"
           },
@@ -695,6 +747,19 @@
             "mover_callbacks": 0,
             "spatial_links": 0,
             "spatial_unlinks": 2050,
+            "traces": 0,
+            "trace_entities": {},
+            "visibility_probe_counts": {},
+            "query_results": {},
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "1022": 0,
+              "0": 96,
+              "1": 100,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
             "inputs_sha256": "1880edaba62e814fcada974b37f4ce619b65905c7991243dbabadba7e0b035dc",
             "expected_sha256": "4e2b7a5a860052267517fada104c89b4541af66070eb31bc412248865ae7ba8e"
           },
@@ -708,6 +773,91 @@
             "mover_callbacks": 0,
             "spatial_links": 74,
             "spatial_unlinks": 81,
+            "traces": 0,
+            "trace_entities": {},
+            "visibility_probe_counts": {},
+            "query_results": {},
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "72": 0,
+              "73": 0,
+              "74": 0,
+              "75": 0,
+              "76": 0,
+              "77": 0,
+              "78": 0,
+              "79": 0,
+              "80": 0,
+              "81": 0,
+              "82": 0,
+              "83": 0,
+              "84": 0,
+              "85": 0,
+              "86": 0,
+              "87": 0,
+              "88": 0,
+              "89": 0,
+              "90": 0,
+              "91": 0,
+              "92": 0,
+              "93": 0,
+              "94": 0,
+              "95": 0,
+              "96": 0,
+              "97": 0,
+              "98": 0,
+              "99": 0,
+              "100": 0,
+              "101": 0,
+              "102": 0,
+              "103": 0,
+              "104": 0,
+              "105": 0,
+              "106": 0,
+              "107": 0,
+              "108": 0,
+              "109": 0,
+              "110": 0,
+              "111": 0,
+              "112": 0,
+              "113": 0,
+              "114": 0,
+              "115": 0,
+              "116": 0,
+              "117": 0,
+              "118": 0,
+              "119": 0,
+              "120": 0,
+              "121": 0,
+              "122": 0,
+              "123": 0,
+              "124": 0,
+              "125": 0,
+              "126": 0,
+              "127": 0,
+              "128": 0,
+              "129": 0,
+              "130": 0,
+              "131": 0,
+              "132": 0,
+              "133": 0,
+              "134": 0,
+              "135": 0,
+              "136": 0,
+              "137": 0,
+              "1022": 0,
+              "0": 90,
+              "1": 100,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
             "inputs_sha256": "b5883afae2d5b1bf29594048dfd5de56f0e7f2a624fa3cea2b692b2ec67e550b",
             "expected_sha256": "310e266d95014fc9ea56628225dc737620e03d7cd606c89fb7117e16f84b142d"
           },
@@ -721,6 +871,51 @@
             "mover_callbacks": 0,
             "spatial_links": 20,
             "spatial_unlinks": 34,
+            "traces": 0,
+            "trace_entities": {},
+            "visibility_probe_counts": {},
+            "query_results": {},
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "72": 0,
+              "73": 0,
+              "74": 0,
+              "75": 0,
+              "76": 0,
+              "77": 0,
+              "78": 0,
+              "79": 0,
+              "80": 0,
+              "81": 0,
+              "82": 0,
+              "83": 0,
+              "84": 0,
+              "85": 0,
+              "86": 0,
+              "87": 0,
+              "88": 0,
+              "89": 0,
+              "90": 0,
+              "91": 0,
+              "92": 0,
+              "93": 0,
+              "94": 0,
+              "95": 0,
+              "96": 0,
+              "97": 0,
+              "1022": 0,
+              "0": 990,
+              "1": 0,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
             "inputs_sha256": "73974a60494e637438e4ceb6c4aa6c33ad7f3a41c9de6ec749cd84c77d37934a",
             "expected_sha256": "1e828123f263a53978814ae8ca6dd394c332e18e169aadc52eaf62fa88caee08"
           },
@@ -734,6 +929,19 @@
             "mover_callbacks": 0,
             "spatial_links": 0,
             "spatial_unlinks": 9,
+            "traces": 0,
+            "trace_entities": {},
+            "visibility_probe_counts": {},
+            "query_results": {},
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "1022": 0,
+              "0": -999,
+              "1": 0,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
             "inputs_sha256": "bf46d8aa17f8b438bb684d097bb2a615139c93c6d0e10b6265184413c50e062b",
             "expected_sha256": "223c203dc26a11db4a269915d1445ef30724f54927b03e61b62b10865fbb07c6"
           },
@@ -747,16 +955,1991 @@
             "mover_callbacks": 0,
             "spatial_links": 7,
             "spatial_unlinks": 7,
+            "traces": 0,
+            "trace_entities": {},
+            "visibility_probe_counts": {},
+            "query_results": {},
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 100,
+              "2": -999
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
             "inputs_sha256": "562fd65c4ae0dd2b5ec21a563850ecc0dd6cbf6770f9a9236bd9fdcf7bd94e75",
             "expected_sha256": "cab8d0837ed44cb7364c54450a66727ae2c5c4e093f116ba4802a6454556bc4b"
+          },
+          {
+            "name": "accuracy_filters",
+            "actions": 291,
+            "exact_words": 581686,
+            "string_bytes": 35313,
+            "pain_callbacks": 0,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 0,
+            "spatial_unlinks": 73,
+            "traces": 0,
+            "trace_entities": {},
+            "visibility_probe_counts": {},
+            "query_results": {
+              "30_0": 100,
+              "30_1": 10
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 100,
+              "2": 100
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "3c8da1be6dd54b5477880b9595c27ed600a7b5aa6fd4f6efff4ef1d79285096b",
+            "expected_sha256": "9df384751e7af93078431b5db647282f93537ff8497f49b7ffe8beeb7e137e34"
+          },
+          {
+            "name": "visibility_corners",
+            "actions": 45,
+            "exact_words": 87330,
+            "string_bytes": 4686,
+            "pain_callbacks": 0,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 11,
+            "traces": 26,
+            "trace_entities": {
+              "1023": 5,
+              "64": 6,
+              "65": 4,
+              "66": 3,
+              "67": 2,
+              "68": 1,
+              "1": 5
+            },
+            "visibility_probe_counts": {
+              "1": 2,
+              "2": 1,
+              "3": 1,
+              "4": 1,
+              "5": 3
+            },
+            "query_results": {
+              "28_1": 6,
+              "28_0": 2
+            },
+            "final_health": {
+              "64": 100,
+              "65": 100,
+              "66": 100,
+              "67": 100,
+              "68": 100,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 0,
+              "1": 100,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "5d384771e952b40a06e673d6f325491add1083dbe5c96afb39eedd3be875c2fc",
+            "expected_sha256": "47972a4ffdd5b83d85756bcf15cdf7fbefc885b279566760475fc31fb73f6493"
+          },
+          {
+            "name": "visibility_world_and_brush",
+            "actions": 15,
+            "exact_words": 30134,
+            "string_bytes": 1836,
+            "pain_callbacks": 0,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 2,
+            "spatial_unlinks": 2,
+            "traces": 14,
+            "trace_entities": {
+              "1022": 10,
+              "65": 4
+            },
+            "visibility_probe_counts": {
+              "5": 2,
+              "1": 4
+            },
+            "query_results": {
+              "28_0": 2,
+              "28_1": 4
+            },
+            "final_health": {
+              "64": 0,
+              "65": 100,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 0,
+              "1": 100,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "402830d8f8cd746d327890de70b9b79f77ea476381e640fc5cc50d6dccf49156",
+            "expected_sha256": "53a08b7f0453419fce0eae9e75562b7b048e1a65e872219bbb17b5e64883f68a"
+          },
+          {
+            "name": "radius_edges",
+            "actions": 450,
+            "exact_words": 921280,
+            "string_bytes": 55599,
+            "pain_callbacks": 36,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 90,
+            "spatial_unlinks": 180,
+            "traces": 45,
+            "trace_entities": {
+              "1023": 45
+            },
+            "visibility_probe_counts": {},
+            "query_results": {
+              "29_1": 45,
+              "29_0": 45
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 9963,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "bac49b35cf792d60125abd91c3763f7a3552b33e5b84e183656db11c20a200a6",
+            "expected_sha256": "7c40c0cb27bbb2c5cc84f8842146b704a895325fd7d423e183d2aeea2bc07441"
+          },
+          {
+            "name": "radius_precision",
+            "actions": 2560,
+            "exact_words": 5238599,
+            "string_bytes": 315551,
+            "pain_callbacks": 61,
+            "death_callbacks": 4,
+            "mover_callbacks": 0,
+            "spatial_links": 512,
+            "spatial_unlinks": 1024,
+            "traces": 466,
+            "trace_entities": {
+              "1023": 317,
+              "1022": 149
+            },
+            "visibility_probe_counts": {},
+            "query_results": {
+              "29_0": 195,
+              "29_1": 317
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 100000,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "133821aeeb5a85418a09a9536ec296d8eef5ebfdbffaba4afde3e9394840c386",
+            "expected_sha256": "fb885746f2238ff6acc062217273731e3dc0c53883c831534e77c4ef059dcfaf"
+          },
+          {
+            "name": "radius_protection_and_accuracy",
+            "actions": 84,
+            "exact_words": 170975,
+            "string_bytes": 10386,
+            "pain_callbacks": 4,
+            "death_callbacks": 1,
+            "mover_callbacks": 0,
+            "spatial_links": 11,
+            "spatial_unlinks": 22,
+            "traces": 10,
+            "trace_entities": {
+              "1023": 10
+            },
+            "visibility_probe_counts": {},
+            "query_results": {
+              "29_1": 6,
+              "29_0": 5
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 91,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "0f27987023383352c5ee42d273e9d724094925a3c8628398e05bc3f7f13d3688",
+            "expected_sha256": "b5badcd2e038a480be8a71eaf3f4bba2ece997cdca937c14ff1e16d344918187"
+          },
+          {
+            "name": "radius_mutation_1",
+            "actions": 10,
+            "exact_words": 21565,
+            "string_bytes": 1328,
+            "pain_callbacks": 2,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 2,
+            "spatial_unlinks": 4,
+            "traces": 2,
+            "trace_entities": {
+              "1023": 2
+            },
+            "visibility_probe_counts": {},
+            "query_results": {
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 942,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 0,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "fa6ee702869c4652a759f3053d7bbba2ee84233770f1a94d8cae4bbbdbc117d7",
+            "expected_sha256": "929e51eb0bf3cf9712a6b17debd5aeec065c6b76bf592724633c1f53775c3aa5"
+          },
+          {
+            "name": "radius_mutation_2",
+            "actions": 10,
+            "exact_words": 21656,
+            "string_bytes": 1328,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 2,
+            "spatial_unlinks": 4,
+            "traces": 1,
+            "trace_entities": {
+              "1023": 1
+            },
+            "visibility_probe_counts": {},
+            "query_results": {
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 952,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "a6b48b8b7f2499880119750b1ff3bb397b7d985432a2d37e33cf610ad36ea71c",
+            "expected_sha256": "c4ef65029897f586d3f47059cd482b86d60063db31dbf0570cbdbae51b0dfab7"
+          },
+          {
+            "name": "radius_mutation_3",
+            "actions": 10,
+            "exact_words": 21522,
+            "string_bytes": 1323,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 2,
+            "spatial_unlinks": 3,
+            "traces": 1,
+            "trace_entities": {
+              "1023": 1
+            },
+            "visibility_probe_counts": {},
+            "query_results": {
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 1000,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 952,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "568c28c48d3ddb6f691b106bc4f8414806edafd81e40872cb2092588c3b98bc8",
+            "expected_sha256": "0b10a274171e143707c18d15bef9314ba542a402aaed1d12c40ca32fd72fd994"
+          },
+          {
+            "name": "radius_mutation_4",
+            "actions": 10,
+            "exact_words": 21656,
+            "string_bytes": 1330,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 3,
+            "spatial_unlinks": 3,
+            "traces": 1,
+            "trace_entities": {
+              "1023": 1
+            },
+            "visibility_probe_counts": {},
+            "query_results": {
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 1000,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 952,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "43bb22aed8d7aece831707782e439d4e1707f252da8c549bdefe1c1224020740",
+            "expected_sha256": "57ae4922c150989d2202cb3bff7a79b49c583bf5efbff500d831613853738e1f"
+          },
+          {
+            "name": "radius_mutation_5",
+            "actions": 10,
+            "exact_words": 21821,
+            "string_bytes": 1337,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 3,
+            "spatial_unlinks": 4,
+            "traces": 2,
+            "trace_entities": {
+              "1023": 2
+            },
+            "visibility_probe_counts": {},
+            "query_results": {
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 292,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 952,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "338f947fe11851ecd968e850b4b1cfa3b58b8f9f599b2887feb89f2f77d06484",
+            "expected_sha256": "a646fed39161ac27ec03efdfe32904efc5b0f23bb77ebe7d8201e9b18b1ea227"
+          },
+          {
+            "name": "radius_mutation_6",
+            "actions": 10,
+            "exact_words": 21839,
+            "string_bytes": 1337,
+            "pain_callbacks": 2,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 3,
+            "spatial_unlinks": 3,
+            "traces": 2,
+            "trace_entities": {
+              "1023": 2
+            },
+            "visibility_probe_counts": {},
+            "query_results": {
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 942,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "72": 333,
+              "1022": 0,
+              "0": 100,
+              "1": 952,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "94a520a3bdc1aa2e7b06b48f388a7ace6b12a356ef828b2b2e597c9f1ae0713d",
+            "expected_sha256": "785d865f536d6f06052ae88c58370ef84292e7c16a8f14796a78ce9cfc400bf0"
+          },
+          {
+            "name": "radius_occlusion",
+            "actions": 13,
+            "exact_words": 28086,
+            "string_bytes": 1716,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 2,
+            "spatial_unlinks": 4,
+            "traces": 6,
+            "trace_entities": {
+              "64": 5,
+              "1023": 1
+            },
+            "visibility_probe_counts": {},
+            "query_results": {
+              "29_0": 1,
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 100,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 56,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "c8ff36dff93c3f67c1945fa2423fc0f114904075a6032950a1937e3d0a7541ef",
+            "expected_sha256": "5d30b37d09e09e00aae74520a2b83b00bd1290bf8e6dc6e73102735f35485655"
+          },
+          {
+            "name": "laser_spawn_toggle",
+            "actions": 42,
+            "exact_words": 75927,
+            "string_bytes": 5731,
+            "pain_callbacks": 0,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 10,
+            "spatial_unlinks": 10,
+            "traces": 10,
+            "trace_entities": {
+              "1023": 9,
+              "1022": 1
+            },
+            "visibility_probe_counts": {},
+            "query_results": {},
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 0,
+              "1": 0,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "70283f8b2a1ff3643f5bc303c873ce2d0f8518dcc081e2a0b00b145d32001228",
+            "expected_sha256": "13bd61dbd71860744a3b116529c443842eacc1bc23bb44083ff2dabe1c766fda"
+          },
+          {
+            "name": "laser_hits_and_slot_zero",
+            "actions": 34,
+            "exact_words": 70519,
+            "string_bytes": 5091,
+            "pain_callbacks": 4,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 10,
+            "spatial_unlinks": 5,
+            "traces": 8,
+            "trace_entities": {
+              "0": 1,
+              "1": 5,
+              "1023": 2
+            },
+            "visibility_probe_counts": {},
+            "query_results": {},
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 990,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "32a04f5e2f002f1bd302d1f00aef036f896f23fa0d9fde14618e80094cd17a53",
+            "expected_sha256": "9c048a67b944ee4863d306a55ee9e8c67bde3ed4a8e39109544ad07c97b8af23"
+          },
+          {
+            "name": "laser_target_tracking",
+            "actions": 12,
+            "exact_words": 22850,
+            "string_bytes": 1747,
+            "pain_callbacks": 0,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 3,
+            "spatial_unlinks": 2,
+            "traces": 3,
+            "trace_entities": {
+              "1023": 2,
+              "1022": 1
+            },
+            "visibility_probe_counts": {},
+            "query_results": {},
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 0,
+              "1": 0,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "5de6cb5dd960522ca1ed2ce642e3d71a23e65fe0e8b44b5eb42bde66b894898c",
+            "expected_sha256": "fb33af9b8a3711f5cb71123853382b9b32be1d72e3e952f4f1289cc2eea62cef"
+          },
+          {
+            "name": "laser_precision",
+            "actions": 1284,
+            "exact_words": 2220666,
+            "string_bytes": 164828,
+            "pain_callbacks": 0,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 257,
+            "spatial_unlinks": 1,
+            "traces": 257,
+            "trace_entities": {
+              "1023": 102,
+              "1022": 155
+            },
+            "visibility_probe_counts": {},
+            "query_results": {},
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 0,
+              "1": 0,
+              "2": 0
+            },
+            "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+            "inputs_sha256": "014a8b8363eab5c970af028c105146cc2afa8b434550196acacc66a4f1d1c9ea",
+            "expected_sha256": "d12df874086c793dab08f798bf7f3f42f6a80fb74a4472fe817539b7ca7c21da"
+          },
+          {
+            "name": "cd_q3ctf1",
+            "actions": 41,
+            "exact_words": 86569,
+            "string_bytes": 5157,
+            "pain_callbacks": 0,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 75,
+            "trace_entities": {
+              "1022": 75
+            },
+            "visibility_probe_counts": {
+              "5": 8
+            },
+            "query_results": {
+              "28_0": 8,
+              "29_0": 8
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "37c9c4f0e6a4d4b582d69353aa2997422ae7abe8fa8b16e9d5796375cc613b1c",
+            "inputs_sha256": "ba229a4797f43728fa6e8e281179efbf1da36692be1507566320f1dfe6a88d28",
+            "expected_sha256": "11ea65b7ca59774c4ade4dbc355df1f112a01d904117f0380396a34a1ba616ac"
+          },
+          {
+            "name": "cd_q3ctf2",
+            "actions": 41,
+            "exact_words": 86486,
+            "string_bytes": 5157,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 72,
+            "trace_entities": {
+              "1022": 70,
+              "1023": 2
+            },
+            "visibility_probe_counts": {
+              "5": 7,
+              "1": 1
+            },
+            "query_results": {
+              "28_0": 7,
+              "29_0": 7,
+              "28_1": 1,
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "4497c5876d8ffb4d0040d67589a37cc1cee9f6334b52a9db0951a6d0c97beac3",
+            "inputs_sha256": "30f5b4643e22a026530eeb2f0c33204e574088a61fc0299f3a4bc4c534393066",
+            "expected_sha256": "4b3ba7ab7b020e4dfb1d6dfb8583924811cee663f488bb93a5f1538d0b8624d8"
+          },
+          {
+            "name": "cd_q3ctf3",
+            "actions": 41,
+            "exact_words": 86217,
+            "string_bytes": 5157,
+            "pain_callbacks": 2,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 63,
+            "trace_entities": {
+              "1022": 59,
+              "1023": 4
+            },
+            "visibility_probe_counts": {
+              "5": 6,
+              "1": 1,
+              "3": 1
+            },
+            "query_results": {
+              "28_0": 6,
+              "29_0": 6,
+              "28_1": 2,
+              "29_1": 2
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "ca0b993c4ff4fe3f22123539c480866e666084990f8c533f15b90f6333ed809a",
+            "inputs_sha256": "2ff49b38c0115f55524fa631b2fca97e30a3537b6e2060a4dadcaf4c45fe0cb7",
+            "expected_sha256": "86429cb6b505ab3eaaa04f9900cc3d13cd5830d8fbe66905fb96b0fdc34bd163"
+          },
+          {
+            "name": "cd_q3ctf4",
+            "actions": 41,
+            "exact_words": 84738,
+            "string_bytes": 5157,
+            "pain_callbacks": 6,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 14,
+            "trace_entities": {
+              "1023": 14
+            },
+            "visibility_probe_counts": {
+              "1": 8
+            },
+            "query_results": {
+              "28_1": 8,
+              "29_1": 6,
+              "29_0": 2
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "8bd598501e019baf95e125447aedfe134f0ac52491a9ff88557db6a6945501f0",
+            "inputs_sha256": "01c007990a95f10b5b9e8d487552b92c0a5f1b68f053f723d18abb82490e7832",
+            "expected_sha256": "2ef5daeb540f8853204db364a122587e8a357d7d071d1b9d02508f73a4997afb"
+          },
+          {
+            "name": "cd_q3dm0",
+            "actions": 41,
+            "exact_words": 86724,
+            "string_bytes": 5157,
+            "pain_callbacks": 0,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 80,
+            "trace_entities": {
+              "1022": 80
+            },
+            "visibility_probe_counts": {
+              "5": 8
+            },
+            "query_results": {
+              "28_0": 8,
+              "29_0": 8
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "05e9540c598c9b1704c9853d61f2cd60c571735abcbf166609fcb4931fcde39b",
+            "inputs_sha256": "215d6037db7f7134e3de8be43358b6b3e08580ef09949bc66b173d6b9b935c72",
+            "expected_sha256": "d2deb4d274f7f21f6cbba0ff14878a6bd17ed8af5941430ace2a39b31cef48e3"
+          },
+          {
+            "name": "cd_q3dm1",
+            "actions": 41,
+            "exact_words": 86517,
+            "string_bytes": 5157,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 73,
+            "trace_entities": {
+              "1022": 71,
+              "1023": 2
+            },
+            "visibility_probe_counts": {
+              "5": 7,
+              "4": 1
+            },
+            "query_results": {
+              "28_0": 7,
+              "29_0": 7,
+              "28_1": 1,
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "3d2dad8e6ba05914fc90619a6517ecdee7e5eb50f86013a14a84bb3c61cd702e",
+            "inputs_sha256": "84656180f6797a1aa233ea50c0e10b099961a6c31ab7401808108812409bd13c",
+            "expected_sha256": "b87aafaba57051222c40fe35fed07109d4d167bca641f7b2e71021d3e0d27205"
+          },
+          {
+            "name": "cd_q3dm10",
+            "actions": 41,
+            "exact_words": 86093,
+            "string_bytes": 5157,
+            "pain_callbacks": 2,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 59,
+            "trace_entities": {
+              "1022": 55,
+              "1023": 4
+            },
+            "visibility_probe_counts": {
+              "5": 6,
+              "1": 2
+            },
+            "query_results": {
+              "28_0": 6,
+              "29_0": 6,
+              "28_1": 2,
+              "29_1": 2
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "8d1bc9b4a527f5be6aed01630865a4eee63cec1f3ab6f73b477bd8b6290a4049",
+            "inputs_sha256": "e7af735b8876cbf9d8dacc3bd1714201613c3df9167557bd550d30c643b77536",
+            "expected_sha256": "871f4c0cfba8d99b70227140d9edc6f580fc001557720c6edbf0b2a69d54d68d"
+          },
+          {
+            "name": "cd_q3dm11",
+            "actions": 41,
+            "exact_words": 86724,
+            "string_bytes": 5157,
+            "pain_callbacks": 0,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 80,
+            "trace_entities": {
+              "1022": 80
+            },
+            "visibility_probe_counts": {
+              "5": 8
+            },
+            "query_results": {
+              "28_0": 8,
+              "29_0": 8
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "c0cea74839b39fa776d80c6c6b30d86781234edda7b832b8059c618b699ac0e6",
+            "inputs_sha256": "85dfeabb7a075affc0b16cad00ef4436921ae2783d12c95785a1d704094c578c",
+            "expected_sha256": "284eafd33257b713b9edecdb20abcac2228b95fb7ad11601dcdbc598ad04b320"
+          },
+          {
+            "name": "cd_q3dm12",
+            "actions": 41,
+            "exact_words": 86207,
+            "string_bytes": 5157,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 63,
+            "trace_entities": {
+              "1022": 60,
+              "1023": 3
+            },
+            "visibility_probe_counts": {
+              "5": 6,
+              "1": 2
+            },
+            "query_results": {
+              "28_0": 6,
+              "29_0": 7,
+              "28_1": 2,
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "4d8800b7bab10fea0b7c2214b57ec3b721d17ca12bc6cdd30ccacd99d7bde3b8",
+            "inputs_sha256": "f14d372f4c388a05c6ae3c4d1f02e930a3ce07dda5a1aa1d97b088922b401fbf",
+            "expected_sha256": "9eb6f814d0b1991b9855e260f31ee40b65c347afdcb7c4c31d597a47d8388b57"
+          },
+          {
+            "name": "cd_q3dm13",
+            "actions": 41,
+            "exact_words": 86331,
+            "string_bytes": 5157,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 67,
+            "trace_entities": {
+              "1022": 65,
+              "1023": 2
+            },
+            "visibility_probe_counts": {
+              "5": 7,
+              "1": 1
+            },
+            "query_results": {
+              "28_0": 7,
+              "29_0": 7,
+              "28_1": 1,
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "3bfd001a0c94eb000f759aa2fa126245a484df5ae7c9eea50ccfc1d0d9fd3b73",
+            "inputs_sha256": "fe64a5953cabe157d2742cb838ae17901b554e5385cc426067926c42d637ac3e",
+            "expected_sha256": "bfc0d7c3692c2e4b4503411215b810eabae6f2e414a9071e379cde9b20cf0105"
+          },
+          {
+            "name": "cd_q3dm14",
+            "actions": 41,
+            "exact_words": 86569,
+            "string_bytes": 5157,
+            "pain_callbacks": 0,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 75,
+            "trace_entities": {
+              "1022": 75
+            },
+            "visibility_probe_counts": {
+              "5": 8
+            },
+            "query_results": {
+              "28_0": 8,
+              "29_0": 8
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "c90a5ce275a36a275d07c75d729b1def7d9fcbed9a92eb0e6a1beaef66ba3c1b",
+            "inputs_sha256": "5784342a9617577820d3988bb6a667a1c430890a2d96f59ceb1d041d7fd48c86",
+            "expected_sha256": "e4179205fac990e59a57aee214476808c49955fbe1d0892387ac87462f86a0d6"
+          },
+          {
+            "name": "cd_q3dm15",
+            "actions": 41,
+            "exact_words": 86486,
+            "string_bytes": 5157,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 72,
+            "trace_entities": {
+              "1023": 2,
+              "1022": 70
+            },
+            "visibility_probe_counts": {
+              "1": 1,
+              "5": 7
+            },
+            "query_results": {
+              "28_1": 1,
+              "29_1": 1,
+              "28_0": 7,
+              "29_0": 7
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "0b87d7d3d6d1945e7c4b1291cc04db7470f1e03ede7be303be432a4678e1cb37",
+            "inputs_sha256": "e425301dcf585506aba1a9f3c9249190fcdd459ce3aad8f823bdc5bba62d7351",
+            "expected_sha256": "75e1342ddefce09ab8884b66d8030f9dc3c9655b4ac3cc57ccee9c96369a4c94"
+          },
+          {
+            "name": "cd_q3dm16",
+            "actions": 41,
+            "exact_words": 85834,
+            "string_bytes": 5157,
+            "pain_callbacks": 4,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 50,
+            "trace_entities": {
+              "1022": 42,
+              "1023": 8
+            },
+            "visibility_probe_counts": {
+              "5": 4,
+              "1": 3,
+              "2": 1
+            },
+            "query_results": {
+              "28_0": 4,
+              "29_0": 4,
+              "28_1": 4,
+              "29_1": 4
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 965,
+              "2": 0
+            },
+            "map_sha256": "bf0f6b813f7a9152e8b185f88e137fbf27627a132961771f5008656e23b05929",
+            "inputs_sha256": "d5e3f0c81fcd3e4f0b9b9505eb10ad4024edfb5a9ca8540fba304e664aa6e146",
+            "expected_sha256": "5f7ef0141d0d2037082f625f0acd85e8810c70a3b694264b6f942235adc4a7d9"
+          },
+          {
+            "name": "cd_q3dm17",
+            "actions": 41,
+            "exact_words": 85596,
+            "string_bytes": 5157,
+            "pain_callbacks": 5,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 42,
+            "trace_entities": {
+              "1022": 32,
+              "1023": 10
+            },
+            "visibility_probe_counts": {
+              "5": 3,
+              "1": 4,
+              "2": 1
+            },
+            "query_results": {
+              "28_0": 3,
+              "29_0": 3,
+              "28_1": 5,
+              "29_1": 5
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "ee1394417b06d92f705088150d7609d6b9f55f5796a9a7626bfe7982e8fc94e8",
+            "inputs_sha256": "1dba277fe8ee3a33c7534a16de2bb87ba7e1c44331056c000ed04f8539221c3d",
+            "expected_sha256": "70511a2dae54a479b979ce52a37e9a7e389a5b3edef4d9a11920e20f4473851f"
+          },
+          {
+            "name": "cd_q3dm18",
+            "actions": 41,
+            "exact_words": 85534,
+            "string_bytes": 5157,
+            "pain_callbacks": 5,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 40,
+            "trace_entities": {
+              "1023": 10,
+              "1022": 30
+            },
+            "visibility_probe_counts": {
+              "1": 5,
+              "5": 3
+            },
+            "query_results": {
+              "28_1": 5,
+              "29_1": 5,
+              "28_0": 3,
+              "29_0": 3
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 993,
+              "2": 0
+            },
+            "map_sha256": "e7ed6c8d845216ce29a193d2922c9ddba67b83bbef66a3e22f640f89a487e082",
+            "inputs_sha256": "4e66b8790a3a841b2907fe3ccb0c2a17ff4a6c2d34c353cd13b6eeb08192d567",
+            "expected_sha256": "86245ffe826da5f6ccfa4297b1aaf1040b10848b66b3c530c5d90d753e71bce1"
+          },
+          {
+            "name": "cd_q3dm19",
+            "actions": 41,
+            "exact_words": 85296,
+            "string_bytes": 5157,
+            "pain_callbacks": 6,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 32,
+            "trace_entities": {
+              "1023": 12,
+              "1022": 20
+            },
+            "visibility_probe_counts": {
+              "1": 6,
+              "5": 2
+            },
+            "query_results": {
+              "28_1": 6,
+              "29_1": 6,
+              "28_0": 2,
+              "29_0": 2
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 975,
+              "2": 0
+            },
+            "map_sha256": "243b3ed54a8d44151e6ad5f3fa081867578f09a01add7f4aea62682827675600",
+            "inputs_sha256": "702ce21f782ace98a4c2dd52b084f5db5f5cb0cd4e887959d39258574d6def2a",
+            "expected_sha256": "9b397283c6b2414c5c684bdf31a6748054db67a86aab95ed0a966a36975c4ea2"
+          },
+          {
+            "name": "cd_q3dm2",
+            "actions": 41,
+            "exact_words": 86010,
+            "string_bytes": 5157,
+            "pain_callbacks": 3,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 56,
+            "trace_entities": {
+              "1022": 50,
+              "1023": 6
+            },
+            "visibility_probe_counts": {
+              "5": 5,
+              "1": 3
+            },
+            "query_results": {
+              "28_0": 5,
+              "29_0": 5,
+              "28_1": 3,
+              "29_1": 3
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "da97e7c3e2beeb19e49dbb42bc6758021d6430b55c3abc2788f45bfd8eabac87",
+            "inputs_sha256": "69de8ad42f8cd28f011c3162bf9521fd87b4d43cf938232c43f2c7fd30ac56bd",
+            "expected_sha256": "b0350fb13d3e1793d521e9671e6596461687fd95c9887ec19ea7d84be9d17892"
+          },
+          {
+            "name": "cd_q3dm3",
+            "actions": 41,
+            "exact_words": 86248,
+            "string_bytes": 5157,
+            "pain_callbacks": 2,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 64,
+            "trace_entities": {
+              "1023": 4,
+              "1022": 60
+            },
+            "visibility_probe_counts": {
+              "1": 2,
+              "5": 6
+            },
+            "query_results": {
+              "28_1": 2,
+              "29_1": 2,
+              "28_0": 6,
+              "29_0": 6
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 850,
+              "2": 0
+            },
+            "map_sha256": "80177ff9208644ed530eda6e29189c811f332cac0a6202f05e0f4ea25ee048f9",
+            "inputs_sha256": "e082423adb79785359b1724bf401e1ba6d51132aff6c750cb33e334c77215231",
+            "expected_sha256": "d369faf595193a1036d8209162981140ddc2da8b063c64967f20b74393f4108e"
+          },
+          {
+            "name": "cd_q3dm4",
+            "actions": 41,
+            "exact_words": 86248,
+            "string_bytes": 5157,
+            "pain_callbacks": 2,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 64,
+            "trace_entities": {
+              "1023": 4,
+              "1022": 60
+            },
+            "visibility_probe_counts": {
+              "1": 2,
+              "5": 6
+            },
+            "query_results": {
+              "28_1": 2,
+              "29_1": 2,
+              "28_0": 6,
+              "29_0": 6
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 983,
+              "2": 0
+            },
+            "map_sha256": "8153c6c2c8e32180d45faa3195325116cafffd411391ee87944a9307f5a78cc5",
+            "inputs_sha256": "0fcf5a349f93a3eb8800b2046e3b0079314f066a30ea0dffe8a8029736d4abb5",
+            "expected_sha256": "f32857e28be605c312232a903c89e6d802c3f5ff8f2f5eb1ed23923844a81c5c"
+          },
+          {
+            "name": "cd_q3dm5",
+            "actions": 41,
+            "exact_words": 86486,
+            "string_bytes": 5157,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 72,
+            "trace_entities": {
+              "1022": 70,
+              "1023": 2
+            },
+            "visibility_probe_counts": {
+              "5": 7,
+              "1": 1
+            },
+            "query_results": {
+              "28_0": 7,
+              "29_0": 7,
+              "28_1": 1,
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "e7e884dad9342b00b77ccb8bdd8a8e167c6c479c7a952b9f1d1c0bd3e42b371d",
+            "inputs_sha256": "d7f41435f8b49d385986fb62e11f303e351bf7663d85b34dbb69f1deb68e1fe4",
+            "expected_sha256": "0b75c82d878e1099c6ae38e87eb7f40162feac86659103b9d3918931549c62d7"
+          },
+          {
+            "name": "cd_q3dm6",
+            "actions": 41,
+            "exact_words": 86331,
+            "string_bytes": 5157,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 67,
+            "trace_entities": {
+              "1022": 65,
+              "1023": 2
+            },
+            "visibility_probe_counts": {
+              "5": 7,
+              "1": 1
+            },
+            "query_results": {
+              "28_0": 7,
+              "29_0": 7,
+              "28_1": 1,
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "5402e640b854d3502cb961df46a41260ecd1bf4017d0c4935b657e4d3551bf7c",
+            "inputs_sha256": "f3b43e7510503cc6cf437f8bf49d4b38e079cc8c0f381e9bc40cbffe76696e8b",
+            "expected_sha256": "65a9a838c56a5c9ea5fb0875b7c560e37cd217c6885fa181623dad9f19c40a1a"
+          },
+          {
+            "name": "cd_q3dm7",
+            "actions": 41,
+            "exact_words": 86486,
+            "string_bytes": 5157,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 72,
+            "trace_entities": {
+              "1022": 70,
+              "1023": 2
+            },
+            "visibility_probe_counts": {
+              "5": 7,
+              "1": 1
+            },
+            "query_results": {
+              "28_0": 7,
+              "29_0": 7,
+              "28_1": 1,
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "ba5d14e590f6fb38085f3b6f8d5be81050f240a21a5de5ca0d8253501baba52d",
+            "inputs_sha256": "4bd66e09739e7bdf1f8981410c438bb8dfb478d296ea264343cf332011bbbd35",
+            "expected_sha256": "e4a4ffc42f80dee12dd5711ea7cfb7b7bc96f79e75add805919d932200fc323c"
+          },
+          {
+            "name": "cd_q3dm8",
+            "actions": 41,
+            "exact_words": 86248,
+            "string_bytes": 5157,
+            "pain_callbacks": 2,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 64,
+            "trace_entities": {
+              "1022": 60,
+              "1023": 4
+            },
+            "visibility_probe_counts": {
+              "5": 6,
+              "1": 2
+            },
+            "query_results": {
+              "28_0": 6,
+              "29_0": 6,
+              "28_1": 2,
+              "29_1": 2
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "8cc96df2e4bf9e7c8a36bdbb42452cb5d6f188d5473d2bac44550a1f1d6df630",
+            "inputs_sha256": "fd9ed4d6bad490628444e8459869150e07715edde5843430e29bad023b88a72e",
+            "expected_sha256": "8855828470153f97b3868b61cd19a5ca9a86115044fbff1717e31dc2a188446f"
+          },
+          {
+            "name": "cd_q3dm9",
+            "actions": 41,
+            "exact_words": 85938,
+            "string_bytes": 5157,
+            "pain_callbacks": 2,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 54,
+            "trace_entities": {
+              "1022": 50,
+              "1023": 4
+            },
+            "visibility_probe_counts": {
+              "5": 6,
+              "1": 2
+            },
+            "query_results": {
+              "28_0": 6,
+              "29_0": 6,
+              "28_1": 2,
+              "29_1": 2
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "22a2ea22f14fad38e227578edc10ceeb2b210f86c41a30fd30131e19567336d3",
+            "inputs_sha256": "f75121679ef6eece0286914c3f2eb413a528a5aca4cf02a272b471b40fb16c2d",
+            "expected_sha256": "f150237995d8f8cd0d09d65c21ac64a4ca8106c1e931483b389e2aafe990b9a1"
+          },
+          {
+            "name": "cd_q3tourney1",
+            "actions": 41,
+            "exact_words": 86010,
+            "string_bytes": 5157,
+            "pain_callbacks": 3,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 56,
+            "trace_entities": {
+              "1023": 6,
+              "1022": 50
+            },
+            "visibility_probe_counts": {
+              "1": 3,
+              "5": 5
+            },
+            "query_results": {
+              "28_1": 3,
+              "29_1": 3,
+              "28_0": 5,
+              "29_0": 5
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 864,
+              "2": 0
+            },
+            "map_sha256": "7f54eb1bcf35fb74ec81dbe52982a81f3014f14bc69bcd9b7e13bd6cf1819fb6",
+            "inputs_sha256": "9ea6200360b2a0f8656db3220801c3c6ba6b227c404da40fe8a3b794f3dace2c",
+            "expected_sha256": "cd94c74eefeabcb6a5c4580741a5b7fab3ea3ad482068496e39bb6346f227511"
+          },
+          {
+            "name": "cd_q3tourney2",
+            "actions": 41,
+            "exact_words": 85772,
+            "string_bytes": 5157,
+            "pain_callbacks": 4,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 48,
+            "trace_entities": {
+              "1023": 8,
+              "1022": 40
+            },
+            "visibility_probe_counts": {
+              "1": 4,
+              "5": 4
+            },
+            "query_results": {
+              "28_1": 4,
+              "29_1": 4,
+              "28_0": 4,
+              "29_0": 4
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 981,
+              "2": 0
+            },
+            "map_sha256": "fe07a539bf0b76823160d8ffe96a62c182003877d9678aa27c5b2bea8ca0f4c8",
+            "inputs_sha256": "b858d9a320f8445e03fd1d0f49322103390d2f2a12bc6a24f8930397134db593",
+            "expected_sha256": "0dbfc961d3c6ea37e58b89ddd2f1385d1889c1b445d87634a243d198fb0a0475"
+          },
+          {
+            "name": "cd_q3tourney3",
+            "actions": 41,
+            "exact_words": 85866,
+            "string_bytes": 5157,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 52,
+            "trace_entities": {
+              "1022": 50,
+              "1023": 2
+            },
+            "visibility_probe_counts": {
+              "5": 7,
+              "1": 1
+            },
+            "query_results": {
+              "28_0": 7,
+              "29_0": 7,
+              "28_1": 1,
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "f2811ecc9510d78d7642927ed325cdf5cd84342ba174c983e8fba94b959b33e6",
+            "inputs_sha256": "e37f96710ab3bd150fd42d4b802d2251ba4d1f8d8b244a899587aadd6bbab6f0",
+            "expected_sha256": "d670b92d3b67a91170c46f6eaedba0ab5025de1a87655d8978a08968f2eb9556"
+          },
+          {
+            "name": "cd_q3tourney4",
+            "actions": 41,
+            "exact_words": 86486,
+            "string_bytes": 5157,
+            "pain_callbacks": 1,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 72,
+            "trace_entities": {
+              "1022": 70,
+              "1023": 2
+            },
+            "visibility_probe_counts": {
+              "5": 7,
+              "1": 1
+            },
+            "query_results": {
+              "28_0": 7,
+              "29_0": 7,
+              "28_1": 1,
+              "29_1": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 949,
+              "2": 0
+            },
+            "map_sha256": "cbc3552662ba336d8a19421b5b0b58452978157638ce28e3832276c7fe6b15bf",
+            "inputs_sha256": "3b941cc8c4161ac3a2bac5f0428181f361cc26aff150070b3ccdd98714c6ffa3",
+            "expected_sha256": "c52773f4729843ac94435c14e2f97c95422644742efc229e53e29cbe28dd6fef"
+          },
+          {
+            "name": "cd_q3tourney5",
+            "actions": 41,
+            "exact_words": 86093,
+            "string_bytes": 5157,
+            "pain_callbacks": 2,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 59,
+            "trace_entities": {
+              "1022": 55,
+              "1023": 4
+            },
+            "visibility_probe_counts": {
+              "5": 6,
+              "1": 2
+            },
+            "query_results": {
+              "28_0": 6,
+              "29_0": 6,
+              "28_1": 2,
+              "29_1": 2
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "ec9f56be3bf1b7e91c18aadb499ea46d5ff6e067bd6d37ca186dfeb5b4e8555c",
+            "inputs_sha256": "89a41e19d4f8b6be4aa434571dadf6acf483a26137101cdcde4eb376d80fce45",
+            "expected_sha256": "676e190414ff6a2db9845071715ddcedcfc4c7be57deeb753a0c89aa60703902"
+          },
+          {
+            "name": "cd_q3tourney6",
+            "actions": 41,
+            "exact_words": 85244,
+            "string_bytes": 5157,
+            "pain_callbacks": 7,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 8,
+            "spatial_unlinks": 9,
+            "traces": 30,
+            "trace_entities": {
+              "1023": 14,
+              "1022": 16
+            },
+            "visibility_probe_counts": {
+              "1": 6,
+              "5": 1,
+              "4": 1
+            },
+            "query_results": {
+              "28_1": 7,
+              "29_1": 7,
+              "28_0": 1,
+              "29_0": 1
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 995,
+              "2": 0
+            },
+            "map_sha256": "f38c52088ce0dfa7566e732c07937ed47d6e56ef1a571c371832e459f66397a9",
+            "inputs_sha256": "9843e0cc9116041b749a14ac29c448495e17ca68eb34703074f1009718f2c399",
+            "expected_sha256": "82d143533d43aeb8017e02743382acf62d27f5c923dec980cbd94f472d089c8f"
+          },
+          {
+            "name": "cd_test_bigbox",
+            "actions": 21,
+            "exact_words": 45216,
+            "string_bytes": 2721,
+            "pain_callbacks": 0,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 4,
+            "spatial_unlinks": 5,
+            "traces": 40,
+            "trace_entities": {
+              "1022": 40
+            },
+            "visibility_probe_counts": {
+              "5": 4
+            },
+            "query_results": {
+              "28_0": 4,
+              "29_0": 4
+            },
+            "final_health": {
+              "64": 0,
+              "65": 0,
+              "66": 0,
+              "67": 0,
+              "68": 0,
+              "69": 0,
+              "70": 0,
+              "71": 0,
+              "1022": 0,
+              "0": 100,
+              "1": 1000,
+              "2": 0
+            },
+            "map_sha256": "c645abec8be60a4adc42ecdbc1f47a58a043afebfb8b77690b758bfc8c9f2b7e",
+            "inputs_sha256": "985653eeca1b6e3f37983740411b87a05df9311c85c535a66fec54e97b3eb7da",
+            "expected_sha256": "18630e87d2b0ed927c2c855491bc3603fdf9ffa6708c1c40696b55d04fcd2ece"
           }
         ],
-        "actions": 13402,
-        "exact_words": 19400906,
-        "string_bytes": 1022154,
-        "test_sha256": "d2af7a49581da132668663194d19305e1be48e4725157e6d4608e4c79624c199",
-        "runtime_contracts": 6,
-        "scope": "Baseq3 G_Damage/CheckArmor/OnSameTeam/Team_CheckHurtCarrier and hurt/kill spawns; actual server CM and teleport integration. Pain/die/mover callbacks observe dispatch only; no player_die, scoring, damage feedback or complete game server.",
+        "actions": 19543,
+        "exact_words": 31607620,
+        "string_bytes": 1790052,
+        "traces": 2681,
+        "cd_maps": 31,
+        "test_sha256": "1fdb0156689570a252f718feb53f7861bf23007a340c348409b7c6359e356ea2",
+        "runtime_contracts": 8,
+        "controlled_freed_laser_link_rejections": 1,
+        "controlled_rejections": [
+          {
+            "name": "laser_callback_free",
+            "original_exit_code": 0,
+            "minilang_exit_code": 1,
+            "reason": "Freed entity number differs from its slot",
+            "inputs_sha256": "a4394d4de8e737093bbd73370f5e78260e5d10dc1ebbb742ed206e4808ca03e4",
+            "expected_sha256": "fe395425679aa03cfd831a07bb41626649d31ebad601b0e82e0fea117fd8b92f"
+          }
+        ],
+        "scope": "Baseq3 damage, armor, teams, radius/visibility/accuracy, hurt/kill/laser spawns; actual server CM and teleport integration. Pain/die/mover callbacks observe dispatch only; no player_die, scoring, damage feedback, projectile physics or complete game server. Freed laser linking rejects its invalid entity number instead of reproducing original metadata aliasing.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -778,6 +2961,7 @@
           "Quake-III-Arena-original-source/code/game/g_main.c": "b98c2b5cb2ed272bcce36acd1e5eda1c57d499b9ecd3549ba9a08f69dd1363d4",
           "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
           "Quake-III-Arena-original-source/code/game/g_combat.c": "a19a66ecaf1d1bf557e350e08ea57da8356d1a66ee4f61d8cc2fae455c312a48",
+          "Quake-III-Arena-original-source/code/game/g_weapon.c": "cc12c2c9986503206c465ee480e4cf97f9b143380604548ef45c0c54ae704e8a",
           "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
           "Quake-III-Arena-original-source/code/game/g_spawn.c": "611d4c13b7794785e1c475f93d2dfcbfad3173132b76e031e80db7b8653bd268",
           "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
@@ -842,7 +3026,7 @@
     },
     {
       "path": "build/reference/entitystate/result.json",
-      "sha256": "87e6de961b49683489c6435d78a9c8ba7e9fc5aa1b8761226d6ac61943d1ae41",
+      "sha256": "0d9158a44b7e870c82095b13875607ec98425b7ef603c4315b4a8991955a45d6",
       "result": {
         "passed": true,
         "cases": 16384,
@@ -854,7 +3038,7 @@
         "scope": "BG_PlayerStateToEntityState/ExtraPolate, full entity storage and SetClientViewAngle; native original x86 profile",
         "input_sha256": "bf4bd23fd1026d39f0ea7bf1e494d05c8f8d5e37822c09d047852bc224fb488c",
         "expected_sha256": "7576c564306a4dab7c27d1321229d4391ef58d6d381dc965a5e3c843602d3087",
-        "test_sha256": "1793e709f5b38b1a2bbffd23b1a5ed71e17596a35045d7fd4094a996237c9fd7",
+        "test_sha256": "5fdb409ac1d8a27ba089bfb283f8d16b409248149568e33cc391b1069199eff2",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -7530,13 +9714,13 @@
     },
     {
       "path": "build/reference/spawn/curves/result.json",
-      "sha256": "4cf40b8b63f7d71e40a261cfd8175c1f0de20214eb0d52f738bdd6dce4b5b87b",
+      "sha256": "02f476511357b46263d414d62582c04f33cd7aa094f4fd000ba4e1532b60906f",
       "result": {
         "passed": true,
-        "profile": "complete original g_spawn.c, 30 actual spawn classes, original G_RunThink/SV/CM and trigger callbacks; cm_noCurves=0",
-        "scope_boundary": "18 unported normal spawn classes and all 35 G_SpawnItem calls only record dispatch; no complete map/game-server acceptance",
+        "profile": "complete original g_spawn.c, 31 actual spawn classes, original G_RunThink/SV/CM and trigger callbacks; cm_noCurves=0",
+        "scope_boundary": "17 unported normal spawn classes and all 35 G_SpawnItem calls only record dispatch; no complete map/game-server acceptance",
         "map_mode_replays": 168,
-        "exact_words": 17390211,
+        "exact_words": 17390185,
         "string_bytes": 2136910,
         "trigger_probes": 849,
         "push_reactions": 754,
@@ -18972,14 +21156,14 @@
           {
             "map": "spawn_fixture.bsp",
             "gametype": -1,
-            "exact_words": 72284,
+            "exact_words": 72282,
             "string_bytes": 11090,
             "events": {
               "1": 10,
               "2": 4,
               "7": 113,
-              "6": 22,
-              "4": 53,
+              "6": 23,
+              "4": 52,
               "5": 25,
               "8": 4,
               "9": 4
@@ -18996,7 +21180,6 @@
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
-              "target_laser": 1,
               "target_score": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
@@ -19046,7 +21229,7 @@
                 "active": 107,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1099,
@@ -19054,7 +21237,7 @@
                 "active": 107,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1100,
@@ -19078,19 +21261,19 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "ddcb7e02cd8174e1cb73318819e70e069051c82690927d8f89727d7b2bfbec33",
-            "expected_sha256": "ca4442673260dc045746e85355c4ca5605d9995fd49d4be8179b5382258ee6e5"
+            "expected_sha256": "b4e99606e958531104cb096498840764a3e54b5be2d015df78bd35c9112c58aa"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 0,
-            "exact_words": 69480,
+            "exact_words": 69478,
             "string_bytes": 10889,
             "events": {
               "1": 10,
               "2": 3,
               "7": 106,
-              "6": 29,
-              "4": 53,
+              "6": 30,
+              "4": 52,
               "5": 25,
               "8": 4,
               "9": 4
@@ -19107,7 +21290,6 @@
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
-              "target_laser": 1,
               "target_score": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
@@ -19157,7 +21339,7 @@
                 "active": 100,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1099,
@@ -19165,7 +21347,7 @@
                 "active": 100,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1100,
@@ -19189,19 +21371,19 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "9514ce883d05373e44c6bd621d2cca50a0b1f4d768c115ba335618fa3b8e13d7",
-            "expected_sha256": "a319708472d60f217d52ef24b0f883e0a903f65bdadecd7fec17a0e1c06a5027"
+            "expected_sha256": "3bc5754415a70be974df8bd359dd9d19d74e6323e6db835bb600cc34401d517f"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 1,
-            "exact_words": 69084,
+            "exact_words": 69082,
             "string_bytes": 10874,
             "events": {
               "1": 10,
               "2": 4,
               "7": 105,
-              "6": 30,
-              "4": 53,
+              "6": 31,
+              "4": 52,
               "5": 25,
               "8": 4,
               "9": 4
@@ -19218,7 +21400,6 @@
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
-              "target_laser": 1,
               "target_score": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
@@ -19268,7 +21449,7 @@
                 "active": 99,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1099,
@@ -19276,7 +21457,7 @@
                 "active": 99,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1100,
@@ -19300,20 +21481,20 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "f6dcf19307acf33062dddcedb957a0573dcc691023ace059bc211eb52ab60e00",
-            "expected_sha256": "e491f9366a5258ca4f5cb78674a876409372ad34c71599f13f60b4414425eeb8"
+            "expected_sha256": "1d6c104fdb0e8566e81f92e456f4eb21fdce4812f30af69c2b95864060aa724f"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 2,
-            "exact_words": 68288,
+            "exact_words": 68286,
             "string_bytes": 10667,
             "events": {
               "1": 11,
               "2": 3,
               "3": 1,
               "7": 103,
-              "6": 32,
-              "4": 53,
+              "6": 33,
+              "4": 52,
               "5": 25,
               "8": 4,
               "9": 4
@@ -19330,7 +21511,6 @@
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
-              "target_laser": 1,
               "target_score": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
@@ -19380,7 +21560,7 @@
                 "active": 97,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1099,
@@ -19388,7 +21568,7 @@
                 "active": 97,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1100,
@@ -19412,19 +21592,19 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "92ff886ea3c581bddb035b2c26752e9ca21dcb333496f7c3d166b627ebc1cd7f",
-            "expected_sha256": "fcfb6f6ab856b6a79bdb843d4724adb5e44bd1e670ee1be7daecd22f3fc0ad26"
+            "expected_sha256": "00ccf391d279f28c4b9eb9b5e784e12c5c27ca984c1929e7aa12c3c99efba98f"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 3,
-            "exact_words": 69084,
+            "exact_words": 69082,
             "string_bytes": 10874,
             "events": {
               "1": 10,
               "2": 4,
               "7": 105,
-              "6": 30,
-              "4": 53,
+              "6": 31,
+              "4": 52,
               "5": 25,
               "8": 4,
               "9": 4
@@ -19441,7 +21621,6 @@
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
-              "target_laser": 1,
               "target_score": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
@@ -19491,7 +21670,7 @@
                 "active": 99,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1099,
@@ -19499,7 +21678,7 @@
                 "active": 99,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1100,
@@ -19523,19 +21702,19 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "ff5b982c940299179117acc0f7ebec0bf9af80c5003fbdfab3d3a0d274b4769d",
-            "expected_sha256": "4fad11bca4e57b65ae12d154ffb93315d803bc84314d8281247b566183761bdb"
+            "expected_sha256": "f72b03f98b8a28d712e0b461c256715cc1297f4d4b46f0a9b6e1223b6936f48a"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 4,
-            "exact_words": 69080,
+            "exact_words": 69078,
             "string_bytes": 10862,
             "events": {
               "1": 10,
               "2": 3,
               "7": 105,
-              "6": 30,
-              "4": 53,
+              "6": 31,
+              "4": 52,
               "5": 25,
               "8": 4,
               "9": 4
@@ -19552,7 +21731,6 @@
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
-              "target_laser": 1,
               "target_score": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
@@ -19602,7 +21780,7 @@
                 "active": 99,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1099,
@@ -19610,7 +21788,7 @@
                 "active": 99,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1100,
@@ -19634,19 +21812,19 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "1b6921f7a219bc3800a64cf8e840d19cfdf0c727afa20e93d9094c61cba30065",
-            "expected_sha256": "3123724101c825efbf24d40adf676ede6fdf569ec9fee2881c9503ad8b41b3ab"
+            "expected_sha256": "9989b1f2c32ed17988d748d41440db054c90ba66d7b00affd3ad571f11a22dd5"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 5,
-            "exact_words": 69084,
+            "exact_words": 69082,
             "string_bytes": 10874,
             "events": {
               "1": 10,
               "2": 4,
               "7": 105,
-              "6": 30,
-              "4": 53,
+              "6": 31,
+              "4": 52,
               "5": 25,
               "8": 4,
               "9": 4
@@ -19663,7 +21841,6 @@
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
-              "target_laser": 1,
               "target_score": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
@@ -19713,7 +21890,7 @@
                 "active": 99,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1099,
@@ -19721,7 +21898,7 @@
                 "active": 99,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1100,
@@ -19745,20 +21922,20 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "e027883be42ab133ed653fa91fa8036bece6bae37f7ba75371ee4a21a281f151",
-            "expected_sha256": "c1bc41dc051a8de48c6b9a838de9fa82affdd606acd3f22513e9505c82ad2dbf"
+            "expected_sha256": "c55a75d0776a1ccb412bf8b4861a1712bb95e11616962162cd60ff6d025cacd5"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 6,
-            "exact_words": 69088,
+            "exact_words": 69086,
             "string_bytes": 10872,
             "events": {
               "1": 11,
               "2": 3,
               "3": 1,
               "7": 105,
-              "6": 30,
-              "4": 53,
+              "6": 31,
+              "4": 52,
               "5": 25,
               "8": 4,
               "9": 4
@@ -19775,7 +21952,6 @@
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
-              "target_laser": 1,
               "target_score": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
@@ -19825,7 +22001,7 @@
                 "active": 99,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1099,
@@ -19833,7 +22009,7 @@
                 "active": 99,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1100,
@@ -19857,19 +22033,19 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "2d314753dae9529f7bf1db14410a1508f8e7d009c93d5aa11e3e0b79fc866f83",
-            "expected_sha256": "8b43a360213ee0329000dafe6d92fda0d740051e17723a53655721aae063afbe"
+            "expected_sha256": "07921d03328105f9e033e9dd87ef566dca5256a30a30ea00ee7490cc8abcd819"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 7,
-            "exact_words": 69084,
+            "exact_words": 69082,
             "string_bytes": 10874,
             "events": {
               "1": 10,
               "2": 4,
               "7": 105,
-              "6": 30,
-              "4": 53,
+              "6": 31,
+              "4": 52,
               "5": 25,
               "8": 4,
               "9": 4
@@ -19886,7 +22062,6 @@
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
-              "target_laser": 1,
               "target_score": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
@@ -19936,7 +22111,7 @@
                 "active": 99,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1099,
@@ -19944,7 +22119,7 @@
                 "active": 99,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1100,
@@ -19968,19 +22143,19 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "88df79995ee9783e99ddbb7df6e1d973d07157da708f040f4903b6de4a5a2177",
-            "expected_sha256": "c1bc41dc051a8de48c6b9a838de9fa82affdd606acd3f22513e9505c82ad2dbf"
+            "expected_sha256": "c55a75d0776a1ccb412bf8b4861a1712bb95e11616962162cd60ff6d025cacd5"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 8,
-            "exact_words": 72280,
+            "exact_words": 72278,
             "string_bytes": 11078,
             "events": {
               "1": 10,
               "2": 3,
               "7": 113,
-              "6": 22,
-              "4": 53,
+              "6": 23,
+              "4": 52,
               "5": 25,
               "8": 4,
               "9": 4
@@ -19997,7 +22172,6 @@
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
-              "target_laser": 1,
               "target_score": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
@@ -20047,7 +22221,7 @@
                 "active": 107,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1099,
@@ -20055,7 +22229,7 @@
                 "active": 107,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1100,
@@ -20079,19 +22253,19 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "d53590da16c7f99ea9e096a4f64a458b4482aa151940692c985dd60e2a2c7de6",
-            "expected_sha256": "32855578fb3601926d3d45b28f00f50bfc75fe5f2b5462ee7d541ec7d2b5fa48"
+            "expected_sha256": "024702c624e143e0cbceb47037b6f12ea6aefc9af69a445e498d2af1e9316d16"
           },
           {
             "map": "spawn_gravity_0.bsp",
             "gametype": 0,
-            "exact_words": 70407,
+            "exact_words": 70405,
             "string_bytes": 10949,
             "events": {
               "1": 10,
               "2": 3,
               "7": 109,
-              "6": 30,
-              "4": 53,
+              "6": 31,
+              "4": 52,
               "5": 29,
               "8": 4,
               "9": 5
@@ -20108,7 +22282,6 @@
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
-              "target_laser": 1,
               "target_score": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
@@ -20158,7 +22331,7 @@
                 "active": 100,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1099,
@@ -20166,7 +22339,7 @@
                 "active": 100,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1100,
@@ -20190,19 +22363,19 @@
             "teleport_reactions": 5,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "27e8bc1a334a07d78ffba00b6811b4c53e40f1d952cfdbc9b35b6b549e1b07b6",
-            "expected_sha256": "1a121676a77ab410596f8e3f972a4f0471ab4fb511878e2dca5c514cc6b3353a"
+            "expected_sha256": "bd8c489a29945c96f7aa782b904935b0e08714cd634dec0b11bec196910bc1cd"
           },
           {
             "map": "spawn_gravity_1.bsp",
             "gametype": 0,
-            "exact_words": 70407,
+            "exact_words": 70405,
             "string_bytes": 10950,
             "events": {
               "1": 10,
               "2": 3,
               "7": 109,
-              "6": 30,
-              "4": 53,
+              "6": 31,
+              "4": 52,
               "5": 29,
               "8": 4,
               "9": 5
@@ -20219,7 +22392,6 @@
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
-              "target_laser": 1,
               "target_score": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
@@ -20269,7 +22441,7 @@
                 "active": 100,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1099,
@@ -20277,7 +22449,7 @@
                 "active": 100,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1100,
@@ -20301,19 +22473,19 @@
             "teleport_reactions": 5,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "d4775f68b5764e306d677e5f7ca5818b65019b015e89e90fc6758046d5875852",
-            "expected_sha256": "a958f67a39eec151ed71dc21139521edcfb566b42247b86a4af1fb941fc6ab42"
+            "expected_sha256": "0ca73b1de2576334f846207acc53bb25205ab8e6b884075fdb2e0b9e2acddf90"
           },
           {
             "map": "spawn_gravity_2.bsp",
             "gametype": 0,
-            "exact_words": 69480,
+            "exact_words": 69478,
             "string_bytes": 10889,
             "events": {
               "1": 10,
               "2": 3,
               "7": 106,
-              "6": 29,
-              "4": 53,
+              "6": 30,
+              "4": 52,
               "5": 25,
               "8": 4,
               "9": 4
@@ -20330,7 +22502,6 @@
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
-              "target_laser": 1,
               "target_score": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
@@ -20380,7 +22551,7 @@
                 "active": 100,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1099,
@@ -20388,7 +22559,7 @@
                 "active": 100,
                 "pushes": 4,
                 "teleporters": 2,
-                "pending_thinks": 7
+                "pending_thinks": 8
               },
               {
                 "time": 1100,
@@ -20412,11 +22583,11 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "53065c6ea380c9c74ffccd427e18ce7a7248a1fc9e3ca18457495b1ea49a2314",
-            "expected_sha256": "3bddf1c927f655e32c6b2b3c5092355de2ac38f281be441f5000bc35c0bf1add"
+            "expected_sha256": "e9cd7058032d390969362428add5b3449b9e8bae6f3ad6e91f5a2698918d18e9"
           }
         ],
-        "test_sha256": "d2af7a49581da132668663194d19305e1be48e4725157e6d4608e4c79624c199",
-        "extracted_functions_sha256": "9341ed849a12b16770773f2fa559d2f35217ed745495c9b63d8db13e162780fc",
+        "test_sha256": "1fdb0156689570a252f718feb53f7861bf23007a340c348409b7c6359e356ea2",
+        "extracted_functions_sha256": "0d2dbe377299b7440d4db12a9d985f5c3adf7ecb9de1d810327f913b290b4eb2",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -20438,6 +22609,7 @@
           "Quake-III-Arena-original-source/code/game/g_main.c": "b98c2b5cb2ed272bcce36acd1e5eda1c57d499b9ecd3549ba9a08f69dd1363d4",
           "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
           "Quake-III-Arena-original-source/code/game/g_combat.c": "a19a66ecaf1d1bf557e350e08ea57da8356d1a66ee4f61d8cc2fae455c312a48",
+          "Quake-III-Arena-original-source/code/game/g_weapon.c": "cc12c2c9986503206c465ee480e4cf97f9b143380604548ef45c0c54ae704e8a",
           "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
           "Quake-III-Arena-original-source/code/game/g_spawn.c": "611d4c13b7794785e1c475f93d2dfcbfad3173132b76e031e80db7b8653bd268",
           "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
@@ -20451,7 +22623,7 @@
     },
     {
       "path": "build/reference/spawn_values/result.json",
-      "sha256": "eb0ef8cff92ec092cfb802c259bf73630b572cc55c374f0e51975c607b5ea4e1",
+      "sha256": "f2a8ee9f0e30a62c45cd6ae368c7368ec5be3e7699abae35fc8e62f222f2f2b8",
       "result": {
         "passed": true,
         "cases": 4096,
@@ -20465,7 +22637,7 @@
         "think_inputs_sha256": "ea8d9e60174bdb7acbd9a5bfc0e7fdf03aae24b654e97628f464c3fb8e64dec2",
         "think_expected_sha256": "d122208c99f71f87db5effca57f268502399813f1d14c1af8b915e73040bbd45",
         "scope": "all original spawn field types, first-key lookup, last-field assignment, CRT numbers, parser bounds; no spawn class execution",
-        "test_sha256": "d2af7a49581da132668663194d19305e1be48e4725157e6d4608e4c79624c199",
+        "test_sha256": "1fdb0156689570a252f718feb53f7861bf23007a340c348409b7c6359e356ea2",
         "inputs_sha256": "1ce188309d9e2f68b546141a0f21d437db35de077e20ea9eaff63614ad100c43",
         "expected_sha256": "0b79eb4964a52b6530d98f3a926728b3d9dc6277b215edf08f9fdda415cfcc64",
         "original_sources": {
@@ -20489,6 +22661,7 @@
           "Quake-III-Arena-original-source/code/game/g_main.c": "b98c2b5cb2ed272bcce36acd1e5eda1c57d499b9ecd3549ba9a08f69dd1363d4",
           "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
           "Quake-III-Arena-original-source/code/game/g_combat.c": "a19a66ecaf1d1bf557e350e08ea57da8356d1a66ee4f61d8cc2fae455c312a48",
+          "Quake-III-Arena-original-source/code/game/g_weapon.c": "cc12c2c9986503206c465ee480e4cf97f9b143380604548ef45c0c54ae704e8a",
           "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
           "Quake-III-Arena-original-source/code/game/g_spawn.c": "611d4c13b7794785e1c475f93d2dfcbfad3173132b76e031e80db7b8653bd268",
           "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
@@ -20502,7 +22675,7 @@
     },
     {
       "path": "build/reference/targets/result.json",
-      "sha256": "78a24d5ba10abc61b07562e074142e90dd7c59795438a3d25416f1d5d268fe20",
+      "sha256": "79f2588d15e3247b07c9eea2dd8ae802b3d72e7ed4adda3ca073f540079e372c",
       "result": {
         "passed": true,
         "scenarios": [
@@ -20734,7 +22907,7 @@
         "actions": 9691,
         "exact_words": 40453187,
         "string_bytes": 4721815,
-        "test_sha256": "d2af7a49581da132668663194d19305e1be48e4725157e6d4608e4c79624c199",
+        "test_sha256": "1fdb0156689570a252f718feb53f7861bf23007a340c348409b7c6359e356ea2",
         "original_missing_noise_rejection": true,
         "original_freed_timer_rejections": 2,
         "scope": "Original target, event, spawn and allocated-entity frame loop; missile/item/mover/client handlers record dispatch only; no complete G_RunFrame/server acceptance",
@@ -20760,6 +22933,7 @@
           "Quake-III-Arena-original-source/code/game/g_main.c": "b98c2b5cb2ed272bcce36acd1e5eda1c57d499b9ecd3549ba9a08f69dd1363d4",
           "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
           "Quake-III-Arena-original-source/code/game/g_combat.c": "a19a66ecaf1d1bf557e350e08ea57da8356d1a66ee4f61d8cc2fae455c312a48",
+          "Quake-III-Arena-original-source/code/game/g_weapon.c": "cc12c2c9986503206c465ee480e4cf97f9b143380604548ef45c0c54ae704e8a",
           "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
           "Quake-III-Arena-original-source/code/game/g_spawn.c": "611d4c13b7794785e1c475f93d2dfcbfad3173132b76e031e80db7b8653bd268",
           "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
@@ -20773,7 +22947,7 @@
     },
     {
       "path": "build/reference/transitions/curves/result.json",
-      "sha256": "5124be511de197b2ef7ff64fb49523d22bb1ca95e62a341d30db841f71729d77",
+      "sha256": "dc8cd64f87f2541c545a4bd1e9579a8fbec842733672a8bca4766838cf2b172d",
       "result": {
         "passed": true,
         "profile": "original native G_TouchTriggers/TeleportPlayer/lifecycle + original SV/CM/Pmove; cm_noCurves=0",
@@ -21744,7 +23918,7 @@
         ],
         "original_spawn_rejections": 2,
         "allocator_client_contracts": 5,
-        "test_sha256": "4119efabedffef72f03f8e56ea84ba0918986806427334d9721efc1243d13685",
+        "test_sha256": "303c3d4c23c233326f183a2bed5667bf22066afc790637d0ea1c771304c8b8aa",
         "extracted_functions_sha256": "5b316a15af1a8333e5d7b4a71f7eecb63f76c429c3a4938a6b8112663523486b",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -21776,7 +23950,7 @@
     },
     {
       "path": "build/reference/transitions/no_curves/result.json",
-      "sha256": "8ac0cd6cbf722f02960d72d6991143a157b08ffa27dc4fc2f66e1bdd685a4659",
+      "sha256": "f96984b1080f825152b0fdd8fc2fd7b0e86a4fa4a12b75232fcab3d9072bd57d",
       "result": {
         "passed": true,
         "profile": "original native G_TouchTriggers/TeleportPlayer/lifecycle + original SV/CM/Pmove; cm_noCurves=1",
@@ -22747,7 +24921,7 @@
         ],
         "original_spawn_rejections": 2,
         "allocator_client_contracts": 5,
-        "test_sha256": "4119efabedffef72f03f8e56ea84ba0918986806427334d9721efc1243d13685",
+        "test_sha256": "303c3d4c23c233326f183a2bed5667bf22066afc790637d0ea1c771304c8b8aa",
         "extracted_functions_sha256": "5b316a15af1a8333e5d7b4a71f7eecb63f76c429c3a4938a6b8112663523486b",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -23215,7 +25389,7 @@
     },
     {
       "path": "build/verification.json",
-      "sha256": "e9f2398cf1551ce859d3e8b75b13c5a1fc531cf8c33b45aab7be75a44492c947",
+      "sha256": "4fc055784d163f67903b02bd5946213d65a821b54f916ed6a0a5c304bc8e2b48",
       "result": {
         "passed": true,
         "scope": "implemented foundations only; full game port remains incomplete",
@@ -23276,7 +25450,9 @@
           {
             "script": "test_combat.py",
             "arguments": [
-              "--reuse-build"
+              "--reuse-build",
+              "--data-root",
+              "D:\\Quake3"
             ]
           },
           {

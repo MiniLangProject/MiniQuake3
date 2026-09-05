@@ -153,24 +153,28 @@ Abweichungen blockieren die nächste Spielabnahme. Voraussetzungen: 2–4.
 EntityState-Speicherfelder, PlayerState-Umwandlung, Entity-Platzverwaltung,
 Target-Auswahl und Trigger-/Teleport-Übergänge sind umgesetzt. Das Spawn-Parsing
 umfasst jetzt alle Feldregeln, Spielmodusfilter, Worldspawn und die originale
-Klassen-/Item-Auswahl. 30 Spawn-Klassen einschließlich Sprungpads, Teleportern,
+Klassen-/Item-Auswahl. 31 Spawn-Klassen einschließlich Sprungpads, Teleportern,
 verzögerter Targets, Relays, Mehrfach-/Always-Trigger, Sound-/Push-Targets,
-schaltbarer Timer, Ortsmarkierungen sowie Hurt-/Kill-Objekte sind übertragen.
+schaltbarer Timer, Ortsmarkierungen sowie Hurt-/Kill-/Laser-Objekte sind übertragen.
 `G_Damage`, Rüstung, Rückstoß, Teamschutz, Battlesuit und CTF-Trägerdaten sind
-gegen C geprüft und mit Telefrags verbunden; siehe [Schaden](COMBAT.md).
+gegen C geprüft und mit Telefrags verbunden. `CanDamage`, `G_RadiusDamage`,
+`LogAccuracyHit` und die Lasersteuerung verwenden die tatsächliche Server-Kollision;
+siehe [Schaden](COMBAT.md).
 Target-Ketten, Shader-Remaps und die Entity-Schleife mit Ereignisfreigabe sind
 gegen den Originalcode geprüft; siehe [Targets und Ereignisse](TARGETS_AND_EVENTS.md).
-`G_RunThink` und die spätere Sprungpad-Ausrichtung sind enthalten. Die 18 weiteren
+`G_RunThink` und die spätere Sprungpad-Ausrichtung sind enthalten. Die 17 weiteren
 Klassen und Item-Spawns bleiben ausdrücklich offene Aufrufgrenzen; siehe
 [SPAWNING.md](SPAWNING.md). Als Nächstes folgen diese Spielobjekte, die Einbindung
-in vollständige Serverframes, Spieler-Todesregeln, Scores/Respawn, Waffen-/Radius-
-Trefferberechnung und Mover-Pushing. Der vollständige Server bleibt bis zu dieser
+in vollständige Serverframes, Spieler-Todesregeln, Scores/Respawn, weitere
+Waffentreffer, Projektilphysik und Mover-Pushing. Der vollständige Server bleibt bis zu dieser
 Integration offen.
 
-Der nächste Abschnitt verbindet `CanDamage`, `G_RadiusDamage` und
-`LogAccuracyHit` mit der vorhandenen Server-Kollision und Schadensberechnung.
-Darauf kann `target_laser` mit den ursprünglichen Trace-/Trefferregeln aufsetzen.
-Spieler-Tod, Scores und Respawn bleiben als anschließende Abhängigkeiten sichtbar.
+Als nächster Abschnitt folgen Projektil-Erzeugung, Flug-/Aufprallregeln und
+Shooter-Objekte. Sie bauen auf der jetzt geprüften direkten und radialen
+Schadensberechnung auf. Spieler-Tod, Scores und Respawn bleiben anschließend
+sichtbare offene Abhängigkeiten. Eine im Callback freigegebene Laser-Entity
+wird beim ungültigen erneuten Link kontrolliert abgewiesen; diese Abweichung
+ist im Prüfbericht festgehalten.
 
 **Quellen:** `code/game/g_*.c` und `code/server/`.
 

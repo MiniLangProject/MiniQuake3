@@ -8,6 +8,8 @@ gentity_t g_entities[MAX_GENTITIES];gclient_t g_clients[MAX_CLIENTS];level_local
 vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage;
 void hostServerReset(void*,int,int);void hostLink(void*);void hostUnlink(void*);void hostBrush(void*,const char*);void hostMetadata(int,int*);
 int hostContact(const vec3_t,const vec3_t,void*,int);int hostArea(const vec3_t,const vec3_t,int*,int);
+void hostTrace(trace_t*,const vec3_t,const vec3_t,const vec3_t,const vec3_t,int,int);
+static int combatTraceOutput;
 static char configs[MAX_CONFIGSTRINGS][8192],gravityText[1024];static const char *entityPoint;static FILE *output;
 void AimAtTarget(gentity_t*);void trigger_push_touch(gentity_t*,gentity_t*,trace_t*);void trigger_teleporter_touch(gentity_t*,gentity_t*,trace_t*);
 static void word(int x) {fwrite(&x,4,1,output);}
@@ -35,6 +37,16 @@ qboolean trap_GetEntityToken(char *buffer,int size) {const char *s=COM_Parse(&en
 int trap_EntitiesInBox(const vec3_t mins,const vec3_t maxs,int *list,int count) {return hostArea(mins,maxs,list,count);}
 qboolean trap_EntityContact(const vec3_t mins,const vec3_t maxs,const gentity_t *e) {return hostContact(mins,maxs,(void*)e,0);}
 void trap_SnapVector(float *v) {Sys_SnapVector(v);}
+void trap_Trace(trace_t *tr,const vec3_t start,const vec3_t mins,const vec3_t maxs,const vec3_t end,int pass,int mask) {
+    hostTrace(tr,start,mins,maxs,end,pass,mask);
+    if(combatTraceOutput) {
+        word(27);word(pass);word(mask);word(mins?1:0);word(maxs?1:0);
+        words(start,3);words(end,3);words(mins?mins:vec3_origin,3);words(maxs?maxs:vec3_origin,3);
+        words(&tr->fraction,1);words(tr->plane.normal,3);words(&tr->plane.dist,1);
+        word(tr->surfaceFlags);word(tr->contents);word(tr->startsolid);word(tr->allsolid);
+        words(tr->endpos,3);word(tr->plane.type|(tr->plane.signbits<<8));word(tr->entityNum);
+    }
+}
 void QDECL G_Printf(const char *fmt,...) { }
 void QDECL G_LogPrintf(const char *fmt,...) {word(3);word(0);string("");string(fmt);}
 void QDECL G_Error(const char *fmt,...) {va_list args;va_start(args,fmt);vfprintf(stderr,fmt,args);va_end(args);exit(72);}

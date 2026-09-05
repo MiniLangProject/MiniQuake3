@@ -340,10 +340,18 @@ function requireSpawnContract(condition,label)
   return void
 end function
 function combatCallback(level,kind,ent,inflictor,attacker,amount,mod)
+  mode = ent.count; slot = ent.damage
   health = 0
   if ent.client != void then health = ent.client.ps.stats[0] end if
   checkWords(level.context,[kind,ent.slot,actionSlot(inflictor),actionSlot(attacker),amount,mod,ent.health,health,ent.flags,actionSlot(ent.enemy)])
-  if ent.count == 1 then game.free(level,ent) end if
+  if mode == 1 then game.free(level,ent) end if
+  if mode == 2 then game.free(level,level.entities[slot]) end if
+  if mode == 3 then level.entities[slot].takedamage = false end if
+  if mode == 4 then game.setOrigin(level.entities[slot],[2000.0,0.0,64.0]); game.link(level,level.entities[slot]) end if
+  if mode == 5 or mode == 6 then
+    if mode == 5 then game.free(level,level.entities[slot]) end if
+    changed = game.spawn(level); changed.takedamage = true; changed.health = 333; game.setOrigin(changed,[100.0,0.0,64.0]); game.link(level,changed)
+  end if
   return void
 end function
 function combatPain(level,ent,attacker,amount)
@@ -401,6 +409,26 @@ function combatField(level,ent,key,value)
     case 13
       ent.use = void
       if value != 0 then ent.use = combatUse end if
+    end case
+    case 14
+      ent.r.contents = value
+    end case
+    case 15
+      ent.r.ownerNum = value
+    end case
+    case 16
+      names = [void,"leaf","changed","dest","missing",""]; ent.targetname = names[value]
+    end case
+    case 17
+      ent.s.number = value
+    end case
+    case 18
+      ent.enemy = void
+      if value >= 0 then ent.enemy = level.entities[value] end if
+    end case
+    case 19
+      ent.activator = void
+      if value >= 0 then ent.activator = level.entities[value] end if
     end case
     case 20
       ent.client.team = value
@@ -467,6 +495,12 @@ function combatField(level,ent,key,value)
     case 44
       level.time = value
     end case
+    case 45
+      ent.client.ps.stats[0] = value
+    end case
+    case 46
+      ent.inuse = value != 0
+    end case
   end switch
   return void
 end function
@@ -492,10 +526,21 @@ function checkCombatState(level,index)
   checkCombatExtra(check,level.entities[1022])
   return void
 end function
+function recordCombatTrace(level,start,finish,mins,maxs,passEntity,mask,hit)
+  check = level.context; tr = hit.trace
+  checkWords(check,[27,passEntity,mask,boolean(mins != void),boolean(maxs != void)])
+  checkVector(check,start); checkVector(check,finish)
+  if mins == void then checkVector(check,[0.0,0.0,0.0]) else checkVector(check,mins) end if
+  if maxs == void then checkVector(check,[0.0,0.0,0.0]) else checkVector(check,maxs) end if
+  checkReal(check,tr.fraction); checkVector(check,tr.normal); checkReal(check,tr.distance)
+  checkWords(check,[tr.surfaceFlags,tr.contents,boolean(tr.startsolid),boolean(tr.allsolid)])
+  checkVector(check,hit.endpos); checkWords(check,[tr.planeMetadata,hit.entityNum])
+  return void
+end function
 function runCombatActions(level,input,check)
   size = n.readI32(input,0); s = spawn.create(level,decode(slice(input,4,size))); s.motd = "MiniQuake3 spawn parity"
   s.context = check; s.effectFn = recordSpawnEffect; s.unportedFn = recordSpawnBoundary
-  level.context = check; level.observeFn = recordSpawnSpatial
+  level.context = check; level.observeFn = recordSpawnSpatial; level.traceObserveFn = recordCombatTrace
   spawn.load(s); checkCombatState(level,-1); off = 4+size; index = 0
   while off < len(input)
     command = []
@@ -562,6 +607,53 @@ function runCombatActions(level,input,check)
       case 14
         teleport.player(level,ent,[n.bitsFloat(command[2]),n.bitsFloat(command[3]),n.bitsFloat(command[4])],[0.0,90.0,0.0])
       end case
+      case 15
+        result = combat.canDamage(level,ent,[n.bitsFloat(command[2]),n.bitsFloat(command[3]),n.bitsFloat(command[4])]); checkWords(check,[28,boolean(result)])
+      end case
+      case 16
+        result = combat.radiusDamage(level,[n.bitsFloat(command[5]),n.bitsFloat(command[6]),n.bitsFloat(command[7])],ent,n.bitsFloat(command[3]),n.bitsFloat(command[4]),other,command[8]); checkWords(check,[29,boolean(result)])
+      end case
+      case 17
+        checkWords(check,[30,boolean(combat.logAccuracyHit(level,ent,other))])
+      end case
+      case 18
+        funcs.runThink(level,ent)
+      end case
+      case 19
+        point = [n.bitsFloat(command[3]),n.bitsFloat(command[4]),n.bitsFloat(command[5])]
+        switch command[2]
+          case 0
+            ent.s.origin = point
+          end case
+          case 1
+            ent.s.angles = point
+          end case
+          case 2
+            ent.movedir = point
+          end case
+          case 3
+            ent.r.mins = point
+          end case
+          case 4
+            ent.r.maxs = point
+          end case
+          case 5
+            ent.r.currentOrigin = point
+          end case
+          case 6
+            ent.r.currentAngles = point
+          end case
+          case 7
+            ent.r.absmin = point
+          end case
+          case 8
+            ent.r.absmax = point
+          end case
+        end switch
+      end case
+      case 20
+        funcs.setBrushModel(level,ent,"*"+str(command[2]))
+      end case
     end switch
     checkCombatState(level,index); index = index+1
   end while
@@ -586,7 +678,14 @@ function runCombatContracts(level)
   requireSpawnContract(caught is error and attacker.client.ps.persistant[1] == 1 and ent.health == 100,"invalid nonclient hit-counter state is rejected")
   ent.timestamp = 987; ent.moverState = 3; ent.pain = combatPain; ent.die = combatDie; game.free(level,ent)
   requireSpawnContract(not ent.takedamage and ent.moverState == 0 and ent.timestamp == 0 and ent.pain == void and ent.die == void and ent.enemy == void,"free clears combat fields")
-  print "PASS: 6 combat runtime contracts"
+  attacker.takedamage = true; attacker.health = 100; attacker.client.ps.stats[0] = 100
+  game.setOrigin(attacker,[2.0,0.0,128.0]); game.link(level,attacker)
+  combat.radiusDamage(level,[0.0,0.0,128.0],level.entities[1022],100.0,1.00000001,void,7)
+  requireSpawnContract(attacker.health == 100,"radius argument rounds to C float before distance comparison")
+  attacker.health = 20000000; attacker.client.ps.stats[0] = 20000000
+  combat.radiusDamage(level,[0.0,0.0,128.0],level.entities[1022],16777217.0,4.0,void,7)
+  requireSpawnContract(attacker.health == 7417088,"damage argument rounds to C float before falloff")
+  print "PASS: 8 combat runtime contracts"
   return void
 end function
 function runSpawnContracts(level)

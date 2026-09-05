@@ -3,9 +3,9 @@
 `game/targets.ml` überträgt `G_UseTargets`, Shader-Remaps, `target_delay`,
 `target_relay`, `target_teleporter`, `trigger_multiple`, `trigger_always`,
 `target_speaker`, `target_push`, `func_timer` und `target_location`.
-Zusammen mit den bisherigen Klassen und den [Hurt-/Kill-Objekten](COMBAT.md) sind
-damit 30 der 48 baseq3-Spawn-Klassen
-umgesetzt. Die übrigen 18 Klassen und alle Item-Spawns bleiben offen.
+Zusammen mit den bisherigen Klassen und den [Hurt-/Kill-/Laser-Objekten](COMBAT.md) sind
+damit 31 der 48 baseq3-Spawn-Klassen
+umgesetzt. Die übrigen 17 Klassen und alle Item-Spawns bleiben offen.
 
 | Aufruf | Verhalten |
 | --- | --- |
@@ -137,7 +137,7 @@ Ein eigener C-/MiniLang-Fehlerlauf bestätigt den fehlenden Speaker-Noise-Schlü
 
 ```powershell
 python scripts/test_targets.py
-python scripts/test_combat.py
+python scripts/test_combat.py --data-root D:/Quake3
 python scripts/test_spawn_values.py
 python scripts/test_spawn.py D:/Quake3
 ```

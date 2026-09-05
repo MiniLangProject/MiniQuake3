@@ -6081,7 +6081,21 @@
             "src/mq3/game/combat.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die, scoring, radius damage, damage feedback, Missionpack or full server frame. G_Printf diagnostics excluded."
+          "scope": "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die, scoring, damage feedback, projectile physics, Missionpack or full server frame. G_Printf diagnostics excluded."
+        },
+        {
+          "original": "CanDamage",
+          "target_files": [
+            "src/mq3/game/combat.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_RadiusDamage",
+          "target_files": [
+            "src/mq3/game/combat.ml"
+          ],
+          "status": "tested_subset"
         }
       ],
       "target": [
@@ -7104,6 +7118,60 @@
             "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "target_laser_think",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "target_laser_on",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "target_laser_off",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "target_laser_use",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "target_laser_start",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_target_laser",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
+          ],
+          "status": "tested_subset"
         }
       ],
       "target": [
@@ -7807,10 +7875,22 @@
         "weapon_railgun_fire",
         "weapon_supershotgun_fire"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "LogAccuracyHit",
+          "target_files": [
+            "src/mq3/game/combat.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/combat.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_combat.py"
+      ]
     },
     {
       "source": "code/game/game.bat",
@@ -13499,7 +13579,8 @@
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_server_world.py"
+        "scripts/test_server_world.py",
+        "scripts/test_combat.py"
       ]
     },
     {

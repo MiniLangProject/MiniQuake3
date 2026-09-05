@@ -5,6 +5,7 @@ package mq3.game.combat
 import mq3.game.constants as c
 import mq3.game.events as events
 import mq3.game.movement as movement
+import mq3.server.world as sv
 import mq3.shared.math as q
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
@@ -18,6 +19,60 @@ const FL_NO_KNOCKBACK = 0x800
 function gametype(level)
   if level.spawner == void then return 0 end if
   return level.spawner.gametype
+end function
+function shotTrace(level,start,finish,mins,maxs,passEntity,mask)
+  hit = sv.trace(level.scene,start,finish,mins,maxs,passEntity,mask,false)
+  if level.traceObserveFn != void then level.traceObserveFn(level,start,finish,mins,maxs,passEntity,mask,hit) end if
+  return hit
+end function
+function canDamage(level,targ,origin)
+  midpoint = [0.0,0.0,0.0]
+  for axis = 0 to 2
+    midpoint[axis] = n.fmul(n.fadd(targ.r.absmin[axis],targ.r.absmax[axis]),0.5)
+  end for
+  zero = [0.0,0.0,0.0]; hit = shotTrace(level,origin,midpoint,zero,zero,1023,1)
+  if hit.trace.fraction == 1.0 or hit.entityNum == targ.s.number then return true end if
+  for each offset in [[15.0,15.0],[15.0,-15.0],[-15.0,15.0],[-15.0,-15.0]]
+    finish = [n.fadd(midpoint[0],offset[0]),n.fadd(midpoint[1],offset[1]),midpoint[2]]
+    hit = shotTrace(level,origin,finish,zero,zero,1023,1)
+    // The four corner probes accept only a clear trace, unlike the midpoint.
+    if hit.trace.fraction == 1.0 then return true end if
+  end for
+  return false
+end function
+function logAccuracyHit(level,target,attacker)
+  if not target.takedamage or target == attacker or target.client == void then return false end if
+  if attacker == void then return error(491,"LogAccuracyHit requires an attacker") end if
+  if attacker.client == void or target.client.ps.stats[c.STAT_HEALTH] <= 0 or onSameTeam(level,target,attacker) then return false end if
+  return true
+end function
+function radiusDamage(level,origin,attacker,amount,radius,ignore,mod)
+  amount = n.f32(amount); radius = n.f32(radius)
+  if radius < 1 then radius = 1.0 end if
+  mins = [0.0,0.0,0.0]; maxs = [0.0,0.0,0.0]; hitClient = false
+  for axis = 0 to 2
+    mins[axis] = n.fsub(origin[axis],radius); maxs[axis] = n.fadd(origin[axis],radius)
+  end for
+  // Freeze candidates, then read each entity's live state after earlier callbacks.
+  for each number in sv.areaEntities(level.scene,mins,maxs,1024)
+    ent = level.entities[number]
+    if ent == ignore or not ent.takedamage then continue end if
+    delta = [0.0,0.0,0.0]
+    for axis = 0 to 2
+      if origin[axis] < ent.r.absmin[axis] then delta[axis] = n.fsub(ent.r.absmin[axis],origin[axis])
+      else if origin[axis] > ent.r.absmax[axis] then delta[axis] = n.fsub(origin[axis],ent.r.absmax[axis]) end if
+    end for
+    distance = q.VectorLength(delta)
+    if distance >= radius then continue end if
+    // The ratio is float; 1.0, subtraction and multiplication are double.
+    points = n.f32(amount*(1.0-n.fdiv(distance,radius)))
+    if canDamage(level,ent,origin) then
+      if logAccuracyHit(level,ent,attacker) then hitClient = true end if
+      dir = [n.fsub(ent.r.currentOrigin[0],origin[0]),n.fsub(ent.r.currentOrigin[1],origin[1]),n.fadd(n.fsub(ent.r.currentOrigin[2],origin[2]),24)]
+      damage(level,ent,void,attacker,dir,origin,n.trunc32(points),DAMAGE_RADIUS,mod)
+    end if
+  end for
+  return hitClient
 end function
 function onSameTeam(level,first,second)
   if first.client == void or second.client == void then return false end if

@@ -71,6 +71,23 @@ function playerDeathmatch(level,ent)
   if values.getInt(level.spawner,"nohumans","0")[1] != 0 then ent.flags = ent.flags | 0x4000 end if
   return void
 end function
+function laserStart(level,self)
+  self.s.eType = c.ET_BEAM
+  if self.target != void then
+    self.enemy = void; i = 0
+    // G_Find(NULL, targetname, target) selects the first live matching entity.
+    while i < level.num_entities
+      ent = level.entities[i]; i = i+1
+      if ent.inuse and ent.targetname != void and strings.equalsIgnoreCaseAscii(ent.targetname,self.target) then self.enemy = ent; break end if
+    end while
+  else
+    setMovedir(self)
+  end if
+  self.use = hazards.laserUse; self.think = hazards.laserThink
+  if self.damage == 0 then self.damage = 1 end if
+  if (self.spawnflags & 1) != 0 then hazards.laserOn(level,self) else hazards.laserOff(level,self) end if
+  return void
+end function
 function dispatch(level,ent)
   switch ent.classname
     case "info_player_start"
@@ -167,6 +184,9 @@ function dispatch(level,ent)
     end case
     case "target_kill"
       ent.use = hazards.killUse
+    end case
+    case "target_laser"
+      ent.think = laserStart; ent.nextthink = n.add32(level.time,100)
     end case
     case default
       return false

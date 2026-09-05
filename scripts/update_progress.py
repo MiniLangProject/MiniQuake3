@@ -42,7 +42,7 @@ def main():
             ["scripts/test_movement.py","scripts/test_pmove.py","scripts/test_shared_game.py","scripts/test_server_world.py","scripts/test_entitystate.py"]),
         "code/server/sv_world.c":(["src/mq3/server/world.ml"],
             ["SV_ClipHandleForEntity","SV_CreateworldSector","SV_ClearWorld","SV_UnlinkEntity","SV_LinkEntity","SV_AreaEntities_r","SV_AreaEntities","SV_ClipToEntity","SV_ClipMoveToEntities","SV_Trace","SV_PointContents"],
-            ["scripts/test_server_world.py"]),
+            ["scripts/test_server_world.py","scripts/test_combat.py"]),
         "code/server/server.h":(["src/mq3/server/world.ml"],["svEntity_t"],["scripts/test_server_world.py"]),
         "code/game/g_public.h":(["src/mq3/server/world.ml"],["entityShared_t","sharedEntity_t"],["scripts/test_server_world.py"]),
         "code/server/sv_game.c":(["src/mq3/server/world.ml","src/mq3/game/spawn_functions.ml"],["SV_EntityContact","SV_SetBrushModel"],["scripts/test_transitions.py","scripts/test_spawn.py"]),
@@ -59,10 +59,11 @@ def main():
         "code/game/g_spawn.c":(["src/mq3/game/spawn.ml","src/mq3/game/spawn_tables.ml","src/mq3/game/spawn_values.ml","src/mq3/compat/textnumbers.ml"],
             ["G_SpawnString","G_SpawnFloat","G_SpawnInt","G_SpawnVector","fields","spawns","G_CallSpawn","G_NewString","G_ParseField","G_SpawnGEntityFromSpawnVars","G_AddSpawnVarToken","G_ParseSpawnVars","SP_worldspawn","G_SpawnEntitiesFromString","SP_item_botroam"],["scripts/test_spawn_values.py","scripts/test_spawn.py"]),
         "code/game/g_main.c":(["src/mq3/game/spawn_functions.ml","src/mq3/game/frame.ml"],["G_RunThink","G_RunFrame"],["scripts/test_spawn_values.py","scripts/test_spawn.py","scripts/test_targets.py"]),
-        "code/game/g_target.c":(["src/mq3/game/spawn_functions.ml","src/mq3/game/targets.ml","src/mq3/game/hazards.ml"],["SP_target_position","Think_Target_Delay","Use_Target_Delay","SP_target_delay","target_relay_use","SP_target_relay","target_teleporter_use","SP_target_teleporter","Use_Target_Speaker","SP_target_speaker","target_location_linkup","SP_target_location","target_kill_use","SP_target_kill"],["scripts/test_spawn.py","scripts/test_targets.py","scripts/test_combat.py"]),
+        "code/game/g_target.c":(["src/mq3/game/spawn_functions.ml","src/mq3/game/targets.ml","src/mq3/game/hazards.ml"],["SP_target_position","Think_Target_Delay","Use_Target_Delay","SP_target_delay","target_relay_use","SP_target_relay","target_teleporter_use","SP_target_teleporter","Use_Target_Speaker","SP_target_speaker","target_location_linkup","SP_target_location","target_kill_use","SP_target_kill","target_laser_think","target_laser_on","target_laser_off","target_laser_use","target_laser_start","SP_target_laser"],["scripts/test_spawn.py","scripts/test_targets.py","scripts/test_combat.py"]),
         "code/game/g_mover.c":(["src/mq3/game/spawn_functions.ml"],["SP_path_corner"],["scripts/test_spawn.py"]),
         "code/game/g_team.c":(["src/mq3/game/spawn_functions.ml","src/mq3/game/combat.ml"],["SP_team_CTF_redplayer","SP_team_CTF_blueplayer","SP_team_CTF_redspawn","SP_team_CTF_bluespawn","OnSameTeam","Team_CheckHurtCarrier"],["scripts/test_spawn.py","scripts/test_combat.py"]),
-        "code/game/g_combat.c":(["src/mq3/game/combat.ml"],["CheckArmor","G_Damage"],["scripts/test_combat.py"]),
+        "code/game/g_combat.c":(["src/mq3/game/combat.ml"],["CheckArmor","G_Damage","CanDamage","G_RadiusDamage"],["scripts/test_combat.py"]),
+        "code/game/g_weapon.c":(["src/mq3/game/combat.ml"],["LogAccuracyHit"],["scripts/test_combat.py"]),
         "code/game/g_local.h":(["src/mq3/game/entities.ml","src/mq3/game/spawn.ml","src/mq3/game/combat.ml"],["gentity_s","level_locals_t","gclient_s","playerTeamState_t"],["scripts/test_transitions.py","scripts/test_spawn_values.py","scripts/test_spawn.py","scripts/test_targets.py","scripts/test_combat.py"]),
     }
     path=ROOT / "PORT_LEDGER.json"
@@ -77,7 +78,7 @@ def main():
             if entry["source"] == "code/server/sv_init.c":
                 entry["symbol_mapping"][0]["scope"] = "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
             if entry["source"] == "code/game/g_combat.c":
-                entry["symbol_mapping"][1]["scope"] = "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die, scoring, radius damage, damage feedback, Missionpack or full server frame. G_Printf diagnostics excluded."
+                entry["symbol_mapping"][1]["scope"] = "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die, scoring, damage feedback, projectile physics, Missionpack or full server frame. G_Printf diagnostics excluded."
     path.write_text(json.dumps(ledger,indent=2)+"\n")
     evidence=[]
     for path in sorted((ROOT / "build/reference").rglob("result.json")):
