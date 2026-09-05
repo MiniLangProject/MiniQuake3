@@ -20,7 +20,7 @@ FUNCTIONS={
     'g_weapon.c':['LogAccuracyHit','SnapVectorTowards','Weapon_HookFree','Weapon_HookThink'],
     'g_missile.c':['G_BounceMissile','G_ExplodeMissile','G_MissileImpact','G_RunMissile','fire_plasma','fire_grenade','fire_bfg','fire_rocket','fire_grapple'],
     'g_items.c':['Pickup_Powerup','Pickup_Holdable','Add_Ammo','Pickup_Ammo','Pickup_Weapon','Pickup_Health','Pickup_Armor','RespawnItem','Touch_Item','RegisterItem','LaunchItem','Drop_Item','Use_Item','FinishSpawningItem','G_ItemDisabled','G_SpawnItem','G_BounceItem','G_RunItem'],
-    'g_active.c':['G_TouchTriggers','P_DamageFeedback','P_WorldEffects','G_SetClientSound','SendPendingPredictableEvents','SpectatorClientEndFrame','ClientEndFrame'],
+    'g_active.c':['P_DamageFeedback','P_WorldEffects','G_SetClientSound','ClientImpacts','G_TouchTriggers','SpectatorThink','ClientInactivityTimer','ClientTimerActions','ClientIntermissionThink','ClientEvents','SendPendingPredictableEvents','ClientThink_real','ClientThink','G_RunClient','SpectatorClientEndFrame','ClientEndFrame'],
     'g_cmds.c':['DeathmatchScoreboardMessage','Cmd_Score_f'],
 }
 def build(output):
@@ -51,6 +51,8 @@ def build(output):
                 match=re.search(r'^\w+[ \t]+\*?'+symbol+r'\s*\([^;]*?\)\s*\{.*?^\}',source_text,re.M|re.S)
                 if not match:raise RuntimeError('Missing original game function '+symbol)
                 if symbol=='ClientEndFrame':functions.append('#define ClientEndFrame Original_ClientEndFrame\n'+match[0]+'\n#undef ClientEndFrame')
+                elif symbol=='ClientThink':functions.append('#define ClientThink Original_ClientThink\n'+match[0]+'\n#undef ClientThink')
+                elif symbol=='G_RunClient':functions.append('#define G_RunClient Original_G_RunClient\n'+match[0]+'\n#undef G_RunClient')
                 else:functions.append(match[0])
             body.append('\n'.join(functions))
         elif name=='g_team.c':

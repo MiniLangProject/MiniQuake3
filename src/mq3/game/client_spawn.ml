@@ -10,6 +10,8 @@ import mq3.game.player_spawns as spawns
 import mq3.game.teleport as teleport
 import mq3.game.snapshot as snapshot
 import mq3.game.client_frame as clientFrame
+import mq3.game.client_active as clientActive
+import mq3.game.bodies as bodies
 import mq3.game.targets as targets
 import mq3.game.movement as movement
 import mq3.compat.numeric as n
@@ -58,6 +60,17 @@ function clearTransient(client,savedPing,persistant,eventSequence)
   return void
 end function
 
+function respawn(level,ent)
+  bodies.copyToQueue(level,ent)
+  if level.clientSpawnFn != void then level.clientSpawnFn(level,ent)
+  else
+    if level.playerDieFn == void then return error(496,"Respawn requires the player death handler") end if
+    spawn(level,ent,level.playerDieFn)
+  end if
+  effect = game.tempEntity(level,ent.client.ps.origin,c.EV_PLAYER_TELEPORT_IN); effect.s.clientNum = ent.s.clientNum
+  return void
+end function
+
 function selectPoint(level,ent,client,origin,angles)
   if client.team == c.TEAM_SPECTATOR then
     spawns.spectator(level,origin,angles); return void
@@ -80,7 +93,9 @@ function spawn(level,ent,dieFn)
   index = ent.slot
   if index < 0 or index >= len(level.clients) or ent.client == void or ent.client != level.clients[index] then return error(496,"ClientSpawn requires its persistent client slot") end if
   if level.spawner == void then return error(496,"ClientSpawn requires game spawn state") end if
-  client = ent.client; spawnOrigin = [0.0,0.0,0.0]; spawnAngles = [0.0,0.0,0.0]
+  client = ent.client; level.playerDieFn = dieFn
+  if level.respawnFn == void then level.respawnFn = respawn end if
+  spawnOrigin = [0.0,0.0,0.0]; spawnAngles = [0.0,0.0,0.0]
   spawnPoint = selectPoint(level,ent,client,spawnOrigin,spawnAngles)
   client.teamStateState = 1
   ent.s.eFlags = ent.s.eFlags & ~EF_KAMIKAZE
@@ -136,8 +151,7 @@ function spawn(level,ent,dieFn)
   end if
 
   client.ps.commandTime = n.add32(level.time,-100); client.cmdServerTime = level.time
-  if level.clientThinkFn == void then return error(496,"ClientSpawn requires ClientThink") end if
-  level.clientThinkFn(level,ent.slot)
+  if level.clientThinkFn != void then level.clientThinkFn(level,ent.slot) else clientActive.think(level,ent.slot) end if
   if client.team != c.TEAM_SPECTATOR then
     snapshot.fromPlayer(client.ps,ent.s,true); ent.r.currentOrigin = movement.copy(client.ps.origin); game.link(level,ent)
   end if

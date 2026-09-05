@@ -5,8 +5,8 @@ Leichenverwaltung von `baseq3`. Die [Scoreboard-/Punkteregeln](SCORES.md) und
 die anschließende [`player_die`-Integration](DEATHS.md) sind inzwischen umgesetzt.
 Der Respawn-Wrapper ruft die Leichenkopie, den portierten
 [`ClientSpawn`](CLIENT_SPAWN.md) und den Teleport-Effekt in der richtigen
-Reihenfolge auf. `ClientEndFrame` ist inzwischen separat portiert und geprüft;
-`ClientThink` bleibt die offene Frame-Grenze.
+Reihenfolge auf. `ClientThink` und `ClientEndFrame` sind inzwischen separat
+portiert, geprüft und als Standardpfade von `ClientSpawn` verbunden.
 
 ## Übertragene Regeln
 

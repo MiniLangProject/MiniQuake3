@@ -112,8 +112,9 @@ Beliebige NaN-Payloads
 und Signaling-NaNs sind weiterhin kein vollständig geprüfter Eingabeumfang.
 
 `player_die` räumt den portierten Grappling-Hook inzwischen über diesen Pfad auf;
-siehe [DEATHS.md](DEATHS.md). Offen bleiben vollständiges Spieler-Waffenfeuer,
-Hitscan-Waffen, `ClientThink`, Mover-Pushing,
+siehe [DEATHS.md](DEATHS.md). `ClientThink` löst Waffen- und Gauntlet-Aufrufe
+inzwischen in der Originalreihenfolge aus. Offen bleiben deren vollständige
+Spieler-Waffenimplementierungen, Hitscan-Waffen, Mover-Pushing,
 Missionpack-Projektile und die vollständige Server-/Clientintegration. Summen und Binary-Hashes stehen im
 [Prüfbericht](PARITY_AUDIT.md).
 

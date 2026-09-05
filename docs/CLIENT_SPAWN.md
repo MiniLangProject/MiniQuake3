@@ -39,9 +39,10 @@ Callbacks:
 
 Der Vergleichshost gibt ihnen deterministische Rückgabewirkungen und protokolliert
 ihre Reihenfolge. Dadurch ist der Code vor, zwischen und nach den Grenzen exakt
-gegen die Originalfunktion prüfbar. ClientEndFrame ist inzwischen portiert und
-wird im normalen Pfad verwendet; ein gesetzter Callback erhält die unabhängige
-ClientSpawn-Prüfung. Die übrigen vier Grenzen bleiben offen.
+gegen die Originalfunktion prüfbar. ClientThink und ClientEndFrame sind inzwischen
+portiert und werden im normalen Pfad verwendet; gesetzte Callbacks erhalten die
+unabhängige ClientSpawn-Prüfung. Userinfo, Usercmd und Intermission-Platzierung
+bleiben Engine-Schnittstellen.
 
 ## Nachweis
 
@@ -59,8 +60,8 @@ beide Snapshot-Konvertierungen ab.
 Acht zusätzliche Laufzeitverträge prüfen Initialwerte, Userinfo-Auswertung,
 fehlende Pflichtgrenzen und die Standardverbindung aus `deaths.respawn`.
 
-Test-Binary: `44ce3f36f5b9cc7cb50ae7008c9ce36278a4d05b84634f8d3e27024ab3d67f5c`.
-Native x86-Oracle: `a9837e10a4fa910875971cada90d08f6b31ac97876fe0ac6f4c40b7cb5cacb3e`.
+Test-Binary: `27b036a198466a738cd235ddc09676b9dfa9664cc5ceeef45198ca0c716c8f14`.
+Native x86-Oracle: `4b9d84a1f28f6602956af36b64d64196b3d2d37355f5d1c7eb6c2fbb2fee0b49`.
 
 Der C-Oracle enthält den unveränderten Funktionskörper aus `g_client.c`. Nur die
 fünf oben aufgeführten Abhängigkeiten werden am Host-Rand beobachtet. Spawnwahl,

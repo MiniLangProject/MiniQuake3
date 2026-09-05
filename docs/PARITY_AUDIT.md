@@ -4,11 +4,11 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die vollständige erweiterte Regression besteht aktuell aus 39 bestandenen
+Die vollständige erweiterte Regression besteht aktuell aus 40 bestandenen
 Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`), einschließlich
 der Spawnpunkt-/Leichenprüfung, der Punkte-/Ranglisten-/Matchende-Regeln und
 der integrierten Spieler-Todesfolge, der Item-/Flaggen-Entity-Prüfung sowie den
-vollständigen `ClientSpawn`- und `ClientEndFrame`-Abläufen.
+vollständigen `ClientSpawn`-, `ClientThink`- und `ClientEndFrame`-Abläufen.
 Der finale MiniQuake3-Build hat SHA-256
 `3a8c6f394b337404511f826e34404d0fd5f9c3011af6b7a4b2a96cc5321d99fb`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
@@ -19,8 +19,8 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 2. Zahlen/Plattform | In Arbeit | 101.445 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff vorhanden; Fenster, Eingabe, UDP und Audio noch offen |
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
-| 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständige Server-/Client-Frames und komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, `ClientSpawn`, `ClientEndFrame`, Leichenverwaltung, Gibs, Item-/Leichenphysik, sämtliche Baseq3-Pickups, Punktevergabe, Ranglisten, Scoreboard-Texte, Matchende-Entscheidungen, `player_die`, Team-Fragboni und CTF-Take/Return/Capture vorhanden; weitere Klassen, ClientThink, ClientBegin, Mover-Pushing und vollständige Serverframes fehlen |
+| 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständiger Serverframe/ClientBegin und komplette Match-Telefrag-Replays fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, `ClientSpawn`, `ClientThink`, `ClientEndFrame`, Leichenverwaltung, Gibs, Item-/Leichenphysik, sämtliche Baseq3-Pickups, Punktevergabe, Ranglisten, Scoreboard-Texte, Matchende-Entscheidungen, `player_die`, Team-Fragboni und CTF-Take/Return/Capture vorhanden; weitere Klassen, ClientBegin, Mover-Pushing und vollständige Serverframes fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -426,7 +426,7 @@ oder ungültigen Handlerzuständen.
 Pain-, Death- und Mover-Callbacks beobachten in dieser isolierten Suite ihre
 Argumente und Eintrittszustände; einzelne Test-Callbacks geben die Entity frei.
 Die anschließende Todes-Suite verwendet stattdessen den echten `player_die`-Port.
-Offen sind `ClientThink`, weitere Waffentreffer und die vollständige Waffensteuerung,
+Offen sind weitere Waffentreffer und die vollständige Waffensteuerung,
 weitere Teamregeln und Serverintegration. Schadensfeedback am Frame-Ende ist
 inzwischen durch die gesonderte ClientEndFrame-Prüfung abgedeckt.
 `G_Printf`-Diagnosen und Missionpack gehören nicht zu dieser Abnahme.
@@ -585,8 +585,23 @@ Referenz führt den unveränderten `ClientSpawn`-Funktionskörper aus.
 `trap_GetUserinfo`, `trap_GetUsercmd`, `ClientThink`, `ClientEndFrame` und
 `MoveClientToIntermission` bleiben in dieser isolierten ClientSpawn-Suite
 explizit beobachtete Host-Grenzen; der normale MiniLang-Pfad ruft inzwischen
-den portierten Frame-Abschluss auf. Details:
+die portierten Think- und Frame-Abschlüsse auf. Details:
 [CLIENT_SPAWN.md](CLIENT_SPAWN.md).
+
+## ClientThink (Schritt 6)
+
+`scripts/test_client_think.py` besteht mit **26 Szenarien**, **7.058 exakt
+gleichen 32-Bit-Wörtern**, **29.702 Ausgabe-Bytes** und **77 geordneten
+Nebenwirkungen**. Drei Laufzeitverträge prüfen die Usercmd-/Waffenfeuer-
+Schnittstellen und Kontakt-Deduplizierung.
+
+Enthalten sind Befehlszeit-Klemmung und feste Zeitschritte, vollständiges Pmove
+mit dynamischer Kollision, normale/Noclip-/tote Spieler, freie und folgende
+Zuschauer, Inaktivität, Regeneration, Haste, Gesten, Gauntlet, Hook-Freigabe,
+Snapshots, Trigger/Kontakte, Button-Latches, Fallschaden, Waffenereignis, Medkit
+und Teleporter mit Flag-Drop. `ClientThink` und `G_RunClient` sind als äußere
+Zeitplaner geprüft. Die Referenz führt alle neun unveränderten Funktionskörper
+aus `g_active.c` aus. Details: [CLIENT_THINK.md](CLIENT_THINK.md).
 
 ## ClientEndFrame (Schritt 6)
 

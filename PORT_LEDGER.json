@@ -5909,7 +5909,7 @@
             "src/mq3/game/client_frame.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets; ClientThink and weapon firing remain open."
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets."
         },
         {
           "original": "P_WorldEffects",
@@ -5917,7 +5917,7 @@
             "src/mq3/game/client_frame.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets; ClientThink and weapon firing remain open."
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets."
         },
         {
           "original": "G_SetClientSound",
@@ -5925,7 +5925,55 @@
             "src/mq3/game/client_frame.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets; ClientThink and weapon firing remain open."
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets."
+        },
+        {
+          "original": "ClientImpacts",
+          "target_files": [
+            "src/mq3/game/client_active.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+        },
+        {
+          "original": "SpectatorThink",
+          "target_files": [
+            "src/mq3/game/client_active.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+        },
+        {
+          "original": "ClientInactivityTimer",
+          "target_files": [
+            "src/mq3/game/client_active.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+        },
+        {
+          "original": "ClientTimerActions",
+          "target_files": [
+            "src/mq3/game/client_active.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+        },
+        {
+          "original": "ClientIntermissionThink",
+          "target_files": [
+            "src/mq3/game/client_active.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+        },
+        {
+          "original": "ClientEvents",
+          "target_files": [
+            "src/mq3/game/client_active.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
         },
         {
           "original": "SendPendingPredictableEvents",
@@ -5933,7 +5981,31 @@
             "src/mq3/game/client_frame.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets; ClientThink and weapon firing remain open."
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets."
+        },
+        {
+          "original": "ClientThink_real",
+          "target_files": [
+            "src/mq3/game/client_active.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+        },
+        {
+          "original": "ClientThink",
+          "target_files": [
+            "src/mq3/game/client_active.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+        },
+        {
+          "original": "G_RunClient",
+          "target_files": [
+            "src/mq3/game/client_active.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
         },
         {
           "original": "SpectatorClientEndFrame",
@@ -5941,7 +6013,7 @@
             "src/mq3/game/client_frame.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets; ClientThink and weapon firing remain open."
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets."
         },
         {
           "original": "ClientEndFrame",
@@ -5949,17 +6021,19 @@
             "src/mq3/game/client_frame.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets; ClientThink and weapon firing remain open."
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets."
         }
       ],
       "target": [
         "src/mq3/game/triggers.ml",
-        "src/mq3/game/client_frame.ml"
+        "src/mq3/game/client_frame.ml",
+        "src/mq3/game/client_active.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_transitions.py",
-        "scripts/test_client_frame.py"
+        "scripts/test_client_frame.py",
+        "scripts/test_client_think.py"
       ]
     },
     {
@@ -6071,7 +6145,7 @@
             "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 player placement, persistent/session preservation, transient reset, handicap, inventory, spawn filters, target/weapon/link order and snapshots are compared. ClientThink, ClientEndFrame, userinfo/usercmd delivery and intermission placement remain explicit host boundaries."
+          "scope": "Baseq3 player placement, persistent/session preservation, transient reset, handicap, inventory, spawn filters, target/weapon/link order and snapshots are compared. Ported ClientThink and ClientEndFrame are the defaults; userinfo/usercmd delivery and intermission placement remain explicit host boundaries."
         },
         {
           "original": "SP_info_player_deathmatch",
@@ -6743,6 +6817,7 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/client_spawn.ml",
             "src/mq3/game/client_frame.ml",
+            "src/mq3/game/client_active.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6760,6 +6835,7 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/client_spawn.ml",
             "src/mq3/game/client_frame.ml",
+            "src/mq3/game/client_active.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6777,6 +6853,7 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/client_spawn.ml",
             "src/mq3/game/client_frame.ml",
+            "src/mq3/game/client_active.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6794,6 +6871,7 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/client_spawn.ml",
             "src/mq3/game/client_frame.ml",
+            "src/mq3/game/client_active.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6810,6 +6888,7 @@
         "src/mq3/game/combat.ml",
         "src/mq3/game/client_spawn.ml",
         "src/mq3/game/client_frame.ml",
+        "src/mq3/game/client_active.ml",
         "src/mq3/game/bodies.ml",
         "src/mq3/game/player_spawns.ml",
         "src/mq3/game/scores.ml",
@@ -6826,6 +6905,7 @@
         "scripts/test_combat.py",
         "scripts/test_client_spawn.py",
         "scripts/test_client_frame.py",
+        "scripts/test_client_think.py",
         "scripts/test_bodies.py",
         "scripts/test_scores.py",
         "scripts/test_deaths.py",

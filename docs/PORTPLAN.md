@@ -119,7 +119,7 @@ und der vollständige baseq3-Pmove-
 Befehlszyklus sind in MiniLang implementiert und gegen C geprüft. `--pmove-map`
 spielt Textbefehle auf Originalkarten ab; `--trace-model` und `--inspect-visibility`
 prüfen die neuen räumlichen Abfragen. Für die gesamte Schritt-Abnahme fehlen
-die Einbindung in vollständige Server-/Client-Frames und die vollständigen
+die Einbindung in den vollständigen Serverframe/ClientBegin und die vollständigen
 Todes-/Score-Folgen von Telefrags aus Schritt 6. Dynamische Entities, Trigger-Erkennung und
 Sprungpad-/Teleport-Replays sind bereits mit Pmove verbunden; Ereignis-Entities,
 Blickwinkel-Deltas und die Auswahl/Aufrufreihenfolge der Telefrag-Kandidaten werden
@@ -170,9 +170,10 @@ Die Item-Aufnahme einschließlich CTF-Capture ist inzwischen verbunden.
 Spawn-Targets, Verlinkung und Snapshots in der Originalreihenfolge um.
 `ClientEndFrame` verarbeitet inzwischen Powerup-Ablauf, Umwelt- und
 Schadensfeedback, Zuschauer-Follow, Snapshots und vorhersagbare Ereignis-Entities.
-`ClientThink` bleibt die nächste Client-Frame-Grenze. Als Nächstes folgen die
-übrigen Spielobjekte, die Einbindung in vollständige
-Serverframes, weitere Waffentreffer, Waffenfeuer und
+`ClientThink`, `ClientThink_real` und `G_RunClient` verbinden inzwischen Usercmd,
+Zeitklemmung, Pmove, dynamische Kollision, Trigger, Spielerereignisse, Timer,
+Zuschauer, Button-Latches, Respawn und Snapshots. Als Nächstes folgen die
+übrigen Spielobjekte, die Einbindung in vollständige Serverframes, weitere Waffentreffer und
 Mover-Pushing. Der vollständige Server bleibt bis zu dieser Integration offen.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
@@ -188,8 +189,9 @@ Pickups, Respawn, Physik und vollständige CTF-Flaggenabläufe](ITEMS.md) laufen
 echte Entities. Log- und `PrintMsg`-Nutzlasten sind bis zu einer Host-Schnittstelle
 geprüft; [`ClientSpawn`](CLIENT_SPAWN.md) und
 [`ClientEndFrame`](CLIENT_FRAMES.md) sind ebenfalls gegen die unveränderten
-C-Funktionskörper geprüft. `ClientThink`, vollständiges `ClientBegin` und die
-Netzwerkzustellung sind die nächsten Grenzen. Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
+C-Funktionskörper geprüft. [`ClientThink`](CLIENT_THINK.md) ist ebenfalls vollständig
+in den MiniLang-Spielpfad eingebunden. Vollständiges `ClientBegin`, der Serverframe
+und die Netzwerkzustellung sind die nächsten Grenzen. Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.
 

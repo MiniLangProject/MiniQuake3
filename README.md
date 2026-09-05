@@ -6,7 +6,7 @@ Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter, BSP-/Kurvenkollision,
 transformierten Modellen, temporären Boxen, PVS-/Areaportal-Verwaltung,
 dynamischer Entity-Kollision, Bewegungsbahnen, Sprungpad-Reaktionen und
 dem vollständigen baseq3-Pmove-Befehlszyklus, serverseitigen Item-Pickups,
-CTF-Flaggenabläufen, `ClientSpawn` und `ClientEndFrame` ist
+CTF-Flaggenabläufen, `ClientSpawn`, `ClientThink` und `ClientEndFrame` ist
 vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
 [geprüfte Stand mit offenen Abnahmen](docs/PARITY_AUDIT.md).
@@ -55,7 +55,7 @@ Maschinengewehr. Dieser Entwicklungsaufruf verarbeitet statische Weltkollision.
 Die dynamische Kollisionsschicht, geometrische Trigger-Abfrage, Sprungpads und
 Teleport-Zustandswechsel haben eigene Replays gegen den Originalcode. Hinzu kommen
 der vollständige `entityState_t`-Speicherdatensatz, Ereignis-Entities und deren Platzverwaltung.
-Vollständige Spielserver-/Client-Frames und Grafik bleiben offen:
+Der vollständige Spielserverframe, ClientBegin und Grafik bleiben offen:
 
 ```powershell
 python scripts/test_shared_game.py
@@ -74,6 +74,7 @@ python scripts/test_deaths.py
 python scripts/test_items.py
 python scripts/test_client_spawn.py
 python scripts/test_client_frame.py
+python scripts/test_client_think.py
 python scripts/test_spawn.py D:/Quake3
 ```
 
@@ -102,8 +103,9 @@ Flaggenentscheidungen, Todesanimationen und den Respawn-Wrapper. Der vollständi
 [`ClientSpawn`-Ablauf](docs/CLIENT_SPAWN.md) initialisiert Spieler, Startinventar,
 Spawnfilter, Targets und Snapshots. [`ClientEndFrame`](docs/CLIENT_FRAMES.md)
 verarbeitet Powerups, Umwelt- und Schadensfeedback, Zuschauer-Follow und
-vorhersagbare Ereignis-Entities; `ClientThink` bleibt die nächste große
-Host-Grenze. [Items und
+vorhersagbare Ereignis-Entities. [`ClientThink`](docs/CLIENT_THINK.md) verbindet
+Usercmd, Pmove, dynamische Kollision, Trigger, Ereignisse, Timer, Respawn und
+Snapshots in der Originalreihenfolge. [Items und
 Flaggen](docs/ITEMS.md) ergänzen Karten- und Drop-Entities, sämtliche Baseq3-
 Pickups, Respawn, Physik sowie Flaggenaufnahme, Rückgabe und Capture.
 [Punkte, Ranglisten und Scoreboards](docs/SCORES.md) sowie Sudden Death,

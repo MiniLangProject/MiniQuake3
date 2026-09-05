@@ -194,8 +194,6 @@ function playerDie(level,self,inflictor,attacker,damage,meansOfDeath)
   return game.link(level,self)
 end function
 function respawn(level,ent)
-  bodies.copyToQueue(level,ent)
-  if level.clientSpawnFn != void then level.clientSpawnFn(level,ent) else clientSpawn.spawn(level,ent,playerDie) end if
-  effect = game.tempEntity(level,ent.client.ps.origin,c.EV_PLAYER_TELEPORT_IN); effect.s.clientNum = ent.s.clientNum
-  return void
+  if level.playerDieFn == void then level.playerDieFn = playerDie end if
+  return clientSpawn.respawn(level,ent)
 end function

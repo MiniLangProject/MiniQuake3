@@ -5,7 +5,7 @@
 void CM_LoadMap(const char*,qboolean,int*);cvar_t *Cvar_Get(const char*,const char*,int);
 #include "snapvector.inc"
 gentity_t g_entities[MAX_GENTITIES];gclient_t g_clients[MAX_CLIENTS];level_locals_t level;
-vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit,g_weaponRespawn,g_weaponTeamRespawn,g_inactivity,g_smoothClients;
+vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit,g_weaponRespawn,g_weaponTeamRespawn,g_inactivity,g_smoothClients,g_dmflags,g_speed,g_forcerespawn,g_debugMove,g_synchronousClients,pmove_fixed,pmove_msec;
 void hostServerReset(void*,int,int);void hostLink(void*);void hostUnlink(void*);void hostBrush(void*,const char*);void hostMetadata(int,int*);
 int hostContact(const vec3_t,const vec3_t,void*,int);int hostArea(const vec3_t,const vec3_t,int*,int);
 void hostTrace(trace_t*,const vec3_t,const vec3_t,const vec3_t,const vec3_t,int,int);
@@ -17,6 +17,8 @@ static int deathOutput;
 static int itemOutput;
 static int clientSpawnOutput;
 static int clientFrameOutput;
+static int clientThinkOutput;
+static int clientThinkGauntletHit;
 static char clientSpawnUserinfo[MAX_INFO_STRING];
 static usercmd_t clientSpawnCmd;
 static void reset(int type,int flags);
@@ -42,13 +44,13 @@ static void snapshot(gentity_t *e) {
     string(e->classname);string(e->model);string(e->model2);string(e->target);string(e->targetname);string(e->message);string(e->team);string(e->targetShaderName);string(e->targetShaderNewName);
 }
 static void boundary(gentity_t *e,int kind,int index) {word(4);word(kind);word(index);snapshot(e);}
-void trap_LinkEntity(gentity_t *e) {hostLink(e);if(clientSpawnOutput){word(60);word(3);word((int)(e-g_entities));}else if(clientFrameOutput){word(80);word(1);word((int)(e-g_entities));}else{word(5);snapshot(e);}}
-void trap_UnlinkEntity(gentity_t *e) {hostUnlink(e);word(6);snapshot(e);}
+void trap_LinkEntity(gentity_t *e) {hostLink(e);if(clientSpawnOutput){word(60);word(3);word((int)(e-g_entities));}else if(clientFrameOutput){word(80);word(1);word((int)(e-g_entities));}else if(clientThinkOutput){word(90);word(1);word((int)(e-g_entities));}else{word(5);snapshot(e);}}
+void trap_UnlinkEntity(gentity_t *e) {hostUnlink(e);if(clientThinkOutput){word(90);word(2);word((int)(e-g_entities));}else{word(6);snapshot(e);}}
 void trap_SetBrushModel(gentity_t *e,const char *name) {hostBrush(e,name);}
-void trap_LocateGameData(gentity_t *e,int count,int size,playerState_t *ps,int clientSize) {if(clientFrameOutput){word(80);word(0);word(count);}else{word(7);word(count);}}
+void trap_LocateGameData(gentity_t *e,int count,int size,playerState_t *ps,int clientSize) {if(clientFrameOutput){word(80);word(0);word(count);}else if(clientThinkOutput){word(90);word(0);word(count);}else{word(7);word(count);}}
 void trap_GetConfigstring(int index,char *buffer,int size) {Q_strncpyz(buffer,configs[index],size);}
 void trap_SetConfigstring(int index,const char *value) {if(index<0 || index>=MAX_CONFIGSTRINGS)G_Error("configstring index out of range");Q_strncpyz(configs[index],value?value:"",sizeof(configs[index]));word(1);word(index);string("");string(value);}
-void trap_Cvar_Set(const char *key,const char *value) {word(2);word(0);string(key);string(value);if(!strcmp(key,"g_gravity"))Q_strncpyz(gravityText,value,sizeof(gravityText));}
+void trap_Cvar_Set(const char *key,const char *value) {if(clientThinkOutput){word(90);word(10);string(key);string(value);}else{word(2);word(0);string(key);string(value);}if(!strcmp(key,"g_gravity"))Q_strncpyz(gravityText,value,sizeof(gravityText));}
 qboolean trap_GetEntityToken(char *buffer,int size) {const char *s=COM_Parse(&entityPoint);Q_strncpyz(buffer,s,size);return entityPoint || *s;}
 int trap_EntitiesInBox(const vec3_t mins,const vec3_t maxs,int *list,int count) {return hostArea(mins,maxs,list,count);}
 qboolean trap_EntityContact(const vec3_t mins,const vec3_t maxs,const gentity_t *e) {return hostContact(mins,maxs,(void*)e,0);}
@@ -68,14 +70,19 @@ void QDECL G_LogPrintf(const char *fmt,...) {
     if(scoreOutput || itemOutput){char buffer[2048];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);word(41);string(buffer);}
     else{word(3);word(0);string("");string(fmt);}
 }
-void trap_SendServerCommand(int client,const char *message){if(!scoreOutput)G_Error("unported server command sink");word(42);word(client);string(message);}
+void trap_SendServerCommand(int client,const char *message){if(clientThinkOutput){word(90);word(4);word(client);string(message);return;}if(!scoreOutput)G_Error("unported server command sink");word(42);word(client);string(message);}
+void trap_DropClient(int client,const char *reason){if(!clientThinkOutput)G_Error("unported client drop sink");word(90);word(5);word(client);string(reason);}
 qboolean trap_InPVS(const vec3_t p1,const vec3_t p2){return SV_inPVS(p1,p2);}
 void QDECL G_Error(const char *fmt,...) {va_list args;va_start(args,fmt);vfprintf(stderr,fmt,args);va_end(args);exit(72);}
 void Touch_DoorTrigger(gentity_t *a,gentity_t *b,trace_t *c) {G_Error("unexpected door boundary");}
 void *G_Alloc(int n) {void *p=calloc(1,n);if(!p)exit(73);return p;}
 int trap_Cvar_VariableIntegerValue(const char *name){return 0;}
 void trap_GetUserinfo(int client,char *buffer,int size){if(!clientSpawnOutput)G_Error("unexpected userinfo read");word(60);word(1);word(client);Q_strncpyz(buffer,clientSpawnUserinfo,size);}
-void trap_GetUsercmd(int client,usercmd_t *cmd){if(!clientSpawnOutput)G_Error("unexpected usercmd read");word(60);word(2);word(client);*cmd=clientSpawnCmd;}
+void trap_GetUsercmd(int client,usercmd_t *cmd){if(clientThinkOutput){word(90);word(3);word(client);*cmd=clientSpawnCmd;return;}if(!clientSpawnOutput)G_Error("unexpected usercmd read");word(60);word(2);word(client);*cmd=clientSpawnCmd;}
+qboolean CheckGauntletAttack(gentity_t *ent){if(!clientThinkOutput)G_Error("unexpected gauntlet attack");word(90);word(6);word((int)(ent-g_entities));return clientThinkGauntletHit;}
+void FireWeapon(gentity_t *ent){if(!clientThinkOutput)G_Error("unexpected weapon fire");word(90);word(7);word((int)(ent-g_entities));}
+void Cmd_FollowCycle_f(gentity_t *ent,int dir){if(!clientThinkOutput)G_Error("unexpected follow cycle");word(90);word(8);word((int)(ent-g_entities));word(dir);}
+void BotTestAAS(vec3_t origin){if(clientThinkOutput){word(90);word(9);words(origin,3);}}
 void ClientThink(int client){if(!clientSpawnOutput)G_Error("unexpected ClientThink");word(60);word(6);word(client);g_clients[client].ps.origin[0]+=1.25f;g_clients[client].ps.commandTime+=7;}
 void ClientEndFrame(gentity_t *ent){if(!clientSpawnOutput)G_Error("unexpected ClientEndFrame");word(60);word(7);word((int)(ent-g_entities));ent->client->ps.loopSound=321;}
 void ClientBegin(int client){if(!clientFrameOutput)G_Error("unexpected ClientBegin");word(80);word(2);word(client);g_clients[client].ps.generic1=0x12345678;}
@@ -100,6 +107,7 @@ void ClientSpawn(gentity_t *ent) {
 #include "combat_actions.inc"
 #include "client_spawn_actions.inc"
 #include "client_frame_actions.inc"
+#include "client_think_actions.inc"
 static char *readString(FILE *in) {int n;char *s;if(fread(&n,4,1,in)!=1)return NULL;if(n<0 || n>10000000)exit(74);s=calloc(1,n+1);if(n && fread(s,1,n,in)!=n)exit(74);return s;}
 static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);word(level.locationLinked);word(slotOf(level.locationHead));for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
 static void reset(int type,int flags) {
@@ -134,6 +142,8 @@ int main(int argc,char **argv) {
         reset(0,0);clientSpawnOutput=1;runClientSpawn(in);
     } else if(argc==6 && !strcmp(argv[5],"--client-frame")) {
         reset(0,0);clientFrameOutput=1;runClientFrame(in);
+    } else if(argc==6 && !strcmp(argv[5],"--client-think")) {
+        reset(0,0);clientThinkOutput=1;runClientThink(in);
     } else if(argc==6 && !strcmp(argv[5],"--values")) {
         reset(0,0);
         while((text=readString(in))!=NULL) {
