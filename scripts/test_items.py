@@ -1,4 +1,4 @@
-"""Original baseq3 dropped-item physics and flag returns versus MiniLang."""
+"""Original baseq3 item pickups, physics and CTF flag rules versus MiniLang."""
 import argparse, json, re, subprocess, sys
 from pathlib import Path
 from inventory import sha
@@ -17,6 +17,16 @@ def launch(item,origin=(0.,0.,128.),velocity=(0.,0.,0.)):
 def drop(slot,item,angle):return (94,slot,item,bits(angle))
 def field(slot,key,value):return (102,slot,key,value)
 def vector(slot,key,value):return (103,slot,key,*map(bits,value))
+def player(slot,team=0,health=100,max_health=100,predict=1,connected=2,name=1):
+    return (107,slot,team,health,max_health,predict,connected,name)
+def pfield(slot,key,value,index=0):return (108,slot,key,value,index)
+def touch(item_slot,player_slot):return (109,item_slot,player_slot)
+def can_grab(item_slot,player_slot):return (110,item_slot,player_slot)
+def pickup(item_slot,player_slot,kind):return (111,item_slot,player_slot,kind)
+def ifield(slot,key,value):return (112,slot,key,value)
+def lfield(key,value,index=0):return (113,0,key,value,index)
+def target(slot):return (114,slot)
+def position(slot,origin,velocity=(0.,0.,0.)):return (12,slot,*map(bits,origin),*map(bits,velocity))
 
 def scenarios():
     yield 'launch_and_drop',fixture([]),[
@@ -73,6 +83,63 @@ def scenarios():
     for time in (1050,1100,1200):actions += [state(0,time,time-50),(104,)]
     yield 'allocated_frame_item_path',fixture([]),actions,map_bytes()
 
+    yield 'can_grab_catalog_limits',fixture([]),[
+        state(),player(0),entity(64,1),pfield(0,2,200,3),can_grab(64,0),pfield(0,2,199,3),can_grab(64,0),
+        entity(65,4),pfield(0,2,200,0),can_grab(65,0),pfield(0,2,199,0),can_grab(65,0),
+        entity(66,5),pfield(0,2,100,0),can_grab(66,0),pfield(0,2,99,0),can_grab(66,0),
+        entity(67,18),pfield(0,0,200,3),can_grab(67,0),pfield(0,0,199,3),can_grab(67,0),
+        entity(68,26),pfield(0,2,27,1),can_grab(68,0),pfield(0,2,0,1),can_grab(68,0),
+        entity(69,9),can_grab(69,0),entity(70,28),can_grab(70,0),entity(71,34),can_grab(71,0),
+        state(4),pfield(0,6,1),can_grab(71,0),ifield(71,6,1),can_grab(71,0),ifield(71,6,0),
+        entity(72,35),can_grab(72,0),pfield(0,1,2147483647,8),can_grab(71,0)
+    ],map_bytes()
+
+    yield 'direct_regular_pickups',fixture([]),[
+        state(0,12345),player(0),entity(64,9),pfield(0,0,7,3),pickup(64,0,3),
+        entity(65,9,0x1000),pickup(65,0,3),entity(66,9),ifield(66,0,-1),pickup(66,0,3),
+        entity(67,17),pickup(67,0,3),entity(68,18),pfield(0,0,198,3),pickup(68,0,2),
+        ifield(68,0,-5),pickup(68,0,2),entity(69,4),pfield(0,2,195,0),pfield(0,15,195),pickup(69,0,4),
+        entity(70,5),pfield(0,2,90,0),pfield(0,15,90),pickup(70,0,4),
+        entity(71,2),pfield(0,2,180,3),pickup(71,0,5),entity(72,27),pickup(72,0,1),
+        entity(73,28),pickup(73,0,0),ifield(73,0,7),pickup(73,0,0),
+        state(3,20000),entity(74,12),lfield(2,37),pickup(74,0,3)
+    ],map_bytes()
+
+    yield 'powerup_denial_and_team_filter',fixture([]),[
+        state(0,54321),player(0,0,100,100,1,2,1),player(1,0,100,100,1,2,2),
+        position(0,(300.,300.,128.)),position(1,(-100.,0.,128.)),entity(64,28,0,(0.,0.,128.)),pickup(64,0,0),
+        state(3,60000),player(2,1,100,100,1,2,3),pfield(0,6,1),pfield(1,6,2),
+        position(0,(300.,300.,128.)),position(1,(-100.,0.,128.)),position(2,(-100.,0.,128.)),entity(65,29,0,(0.,0.,128.)),pickup(65,0,0)
+    ],map_bytes()
+
+    yield 'touch_events_targets_and_respawn',fixture([]),[
+        state(0,5000),player(0,0,50,100,1),entity(64,18),touch(64,0),
+        pfield(0,4,0),entity(65,5),touch(65,0),target(66),entity(67,9),ifield(67,4,1),ifield(67,1,bits(-1.0)),touch(67,0),
+        entity(68,1),ifield(68,1,bits(7.9)),ifield(68,2,bits(2.5)),touch(68,0),
+        entity(69,28,0x1000),ifield(69,3,bits(1.0)),touch(69,0),
+        entity(70,26),ifield(70,1,bits(-1.0)),touch(70,0)
+    ],map_bytes()
+
+    yield 'touch_rejection_paths',fixture([]),[
+        state(),entity(64,5),(109,64,70),player(0,0,0),touch(64,0),pfield(0,15,100),pfield(0,2,100,0),touch(64,0),
+        pfield(0,2,50,0),touch(64,0)
+    ],map_bytes()
+
+    yield 'ctf_take_and_return',fixture([]),[
+        state(4,100000),player(0,1),entity(64,34),entity(65,35),touch(65,0),
+        state(4,105000,100000,4,0,0),entity(66,34,0x1000,(32.,0.,128.)),touch(66,0)
+    ],map_bytes()
+
+    yield 'ctf_red_capture_assist',fixture([]),[
+        state(4,120000),player(0,1,100,100,1,2,1),player(1,1,100,100,1,2,2),player(2,2,100,100,1,2,3),
+        pfield(0,1,2147483647,8),pfield(1,8,bits(115000.0)),entity(64,34,0,(64.,0.,128.)),entity(65,35,0,(-64.,0.,128.)),touch(64,0)
+    ],map_bytes()
+
+    yield 'ctf_blue_capture_assist',fixture([]),[
+        state(4,220000),player(0,2,100,100,1,2,1),player(1,2,100,100,1,2,2),player(2,1,100,100,1,2,3),
+        pfield(0,1,2147483647,7),pfield(1,12,bits(215000.0)),entity(64,34,0,(64.,0.,128.)),entity(65,35,0,(-64.,0.,128.)),touch(65,0)
+    ],map_bytes()
+
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--case');parser.add_argument('--reuse-build',action='store_true');args=parser.parse_args()
     output=ROOT/'build/reference/items';sources=build(output)
@@ -88,6 +155,6 @@ def main():
         print(f'{name}: PASS {len(actions)} actions / {match[1]} exact words',flush=True)
     assert records
     print(run([ROOT/'build/spawn_tests.exe',mapfile,inputs,expected,'0','--item-contracts'],ROOT/'build',log=output/'contracts.log').strip())
-    (output/'result.json').write_text(json.dumps(dict(passed=True,scenarios=records,actions=sum(r['actions'] for r in records),exact_words=sum(r['exact_words'] for r in records),string_bytes=sum(r['string_bytes'] for r in records),runtime_contracts=8,test_sha256=sha(ROOT/'build/spawn_tests.exe'),scope='Baseq3 item registration/spawn/finish, LaunchItem, Drop_Item, RespawnItem, G_RunItem physics and flag reset/return entities. Touch_Item/pickups, disabled-item Cvar parity and PrintMsg transport remain explicit boundaries.',original_sources={s.relative_to(ROOT).as_posix():sha(s) for s in sources}),indent=2)+'\n',encoding='utf-8')
+    (output/'result.json').write_text(json.dumps(dict(passed=True,scenarios=records,actions=sum(r['actions'] for r in records),exact_words=sum(r['exact_words'] for r in records),string_bytes=sum(r['string_bytes'] for r in records),runtime_contracts=12,test_sha256=sha(ROOT/'build/spawn_tests.exe'),scope='Baseq3 item registration/spawn/finish, pickup eligibility and item-specific pickup functions, Touch_Item events/targets/respawn, powerup denial, dropped-item physics, and complete CTF flag take/return/capture scoring. Disabled-item Cvar registration remains an explicit boundary.',original_sources={s.relative_to(ROOT).as_posix():sha(s) for s in sources}),indent=2)+'\n',encoding='utf-8')
 
 if __name__=='__main__':main()

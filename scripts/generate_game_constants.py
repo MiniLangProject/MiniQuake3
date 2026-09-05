@@ -22,8 +22,10 @@ def main():
             if not re.fullmatch(r'\w+',key): raise ValueError(key)
             values[key]=value;value+=1
     items=baseq3((folder / 'bg_misc.c').read_text()).split('bg_itemlist[]')[1].split('int\t\tbg_numItems')[0]
-    tags=[0];types=[values['IT_BAD']]
-    for item_type,tag in re.findall(r'\b(IT_\w+)\s*,\s*(\w+)\s*,',items):
+    tags=[0];types=[values['IT_BAD']];quantities=[0]
+    descriptors=re.findall(r'(-?\d+)\s*,\s*(IT_\w+)\s*,\s*(\w+)\s*,',items)
+    for quantity,item_type,tag in descriptors:
+        quantities.append(int(quantity,0))
         types.append(values[item_type])
         tags.append(values[tag] if tag in values else int(tag,0))
     lines=['// Copyright (C) 1999-2005 Id Software, Inc.','// SPDX-License-Identifier: GPL-2.0-or-later',
@@ -32,6 +34,9 @@ def main():
     lines += ['', 'function itemType(index)', '  types = ['+','.join(map(str,types))+']',
               '  if index < 0 or index >= len(types) then return error(471,"Invalid baseq3 item index") end if',
               '  return types[index]','end function',
+              '', 'function itemQuantity(index)', '  quantities = ['+','.join(map(str,quantities))+']',
+              '  if index < 0 or index >= len(quantities) then return error(471,"Invalid baseq3 item index") end if',
+              '  return quantities[index]','end function',
               '', 'function itemTag(index)', '  tags = ['+','.join(map(str,tags))+']',
               '  if index < 0 or index >= len(tags) then return error(471,"Invalid baseq3 item index") end if',
               '  return tags[index]','end function','']

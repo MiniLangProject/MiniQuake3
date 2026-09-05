@@ -1174,6 +1174,14 @@ function checkItemState(level)
   check = level.context
   if not check.items then return void end if
   checkWords(check,[52,level.redFlagStatus,level.blueFlagStatus,level.neutralFlagStatus]); checkString(check,level.spawner.configstrings[23])
+  checkWords(check,[level.maxclients,level.weaponRespawn,level.weaponTeamRespawn]); checkWords(check,level.teamScores)
+  checkWords(check,[level.redTakenTime,level.blueTakenTime]); checkReal(check,level.lastFlagCapture); checkWord(check,level.lastCaptureTeam)
+  for i = 0 to 2
+    cl = level.entities[i].client; checkWord(check,boolean(cl != void))
+    if cl != void then
+      checkWords(check,[boolean(cl.predictItemPickup),cl.captures,cl.flagrecovery,cl.assists,cl.rewardTime]); checkReal(check,cl.lastreturnedflag); checkReal(check,cl.flagsince); checkReal(check,cl.lastfraggedcarrier)
+    end if
+  end for
   checkWord(check,level.num_entities-64)
   i = 64
   while i < level.num_entities
@@ -1184,8 +1192,16 @@ function checkItemState(level)
   end while
   return void
 end function
+function itemPlayerName(index)
+  names = ["","Alpha","Bravo","Charlie"]
+  if index >= 0 and index < len(names) then return names[index] end if
+  return "Player"
+end function
+function itemTargetUse(level,ent,other,activator)
+  checkWords(level.context,[55,ent.slot,actionSlot(other),actionSlot(activator)]); ent.count = ent.count+1; return void
+end function
 function runItemAction(level,a,check)
-  ent = void
+  ent = void; value = 0
   if a[1] >= 0 and a[1] < 1024 then ent = level.entities[a[1]] end if
   switch a[0]
     case 91
@@ -1299,6 +1315,123 @@ function runItemAction(level,a,check)
     end case
     case 106
       items.finishSpawning(level,ent)
+    end case
+    case 107
+      game.initEntity(ent); client = game.createClient(ps.create(),a[2],[0,0,0]); game.bindClient(level,ent,client)
+      ent.s.eType = 1; ent.s.clientNum = a[1]; client.ps.clientNum = a[1]; client.team = a[2]; client.ps.persistant[c.PERS_TEAM] = a[2]
+      ent.health = a[3]; client.ps.stats[c.STAT_HEALTH] = a[3]; client.ps.stats[c.STAT_MAX_HEALTH] = a[4]; client.predictItemPickup = a[5] != 0; client.connected = a[6]; client.netname = itemPlayerName(a[7])
+      if level.maxclients < a[1]+1 then level.maxclients = a[1]+1 end if
+    end case
+    case 108
+      client = ent.client
+      switch a[2]
+        case 0
+          client.ps.ammo[a[4]] = a[3]
+        end case
+        case 1
+          client.ps.powerups[a[4]] = a[3]
+        end case
+        case 2
+          client.ps.stats[a[4]] = a[3]
+        end case
+        case 3
+          client.ps.persistant[a[4]] = a[3]
+        end case
+        case 4
+          client.predictItemPickup = a[3] != 0
+        end case
+        case 5
+          client.connected = a[3]
+        end case
+        case 6
+          client.team = a[3]; client.ps.persistant[c.PERS_TEAM] = a[3]
+        end case
+        case 7
+          client.flagrecovery = a[3]
+        end case
+        case 8
+          client.lastreturnedflag = n.bitsFloat(a[3])
+        end case
+        case 9
+          client.captures = a[3]
+        end case
+        case 10
+          client.assists = a[3]
+        end case
+        case 11
+          client.flagsince = n.bitsFloat(a[3])
+        end case
+        case 12
+          client.lastfraggedcarrier = n.bitsFloat(a[3])
+        end case
+        case 13
+          client.rewardTime = a[3]
+        end case
+        case 14
+          client.ps.viewangles[a[4]] = n.bitsFloat(a[3])
+        end case
+        case 15
+          ent.health = a[3]
+        end case
+        case 16
+          client.ps.eFlags = a[3]
+        end case
+        case 17
+          ent.s.number = a[3]
+        end case
+        case 18
+          ent.inuse = a[3] != 0
+        end case
+      end switch
+    end case
+    case 109
+      items.touch(level,ent,level.entities[a[2]],void)
+    end case
+    case 110
+      value = items.canGrab(level.spawner.gametype,ent,level.entities[a[2]].client.ps); checkWords(check,[57,boolean(value)])
+    end case
+    case 111
+      if a[3] == 0 then value = items.pickupPowerup(level,ent,level.entities[a[2]])
+      else if a[3] == 1 then value = items.pickupHoldable(level,ent,level.entities[a[2]])
+      else if a[3] == 2 then value = items.pickupAmmo(level,ent,level.entities[a[2]])
+      else if a[3] == 3 then value = items.pickupWeapon(level,ent,level.entities[a[2]])
+      else if a[3] == 4 then value = items.pickupHealth(level,ent,level.entities[a[2]])
+      else if a[3] == 5 then value = items.pickupArmor(level,ent,level.entities[a[2]])
+      else if a[3] == 6 then value = items.pickupTeam(level,ent,level.entities[a[2]])
+      else return error(490,"Unknown pickup function") end if
+      checkWords(check,[58,a[3],value])
+    end case
+    case 112
+      if a[2] == 0 then ent.count = a[3]
+      else if a[2] == 1 then ent.wait = n.bitsFloat(a[3])
+      else if a[2] == 2 then ent.random = n.bitsFloat(a[3])
+      else if a[2] == 3 then ent.speed = n.bitsFloat(a[3])
+      else if a[2] == 4 then if a[3] == 0 then ent.target = void else ent.target = "pickup_target" end if
+      else if a[2] == 5 then ent.spawnflags = a[3]
+      else if a[2] == 6 then ent.s.modelindex2 = a[3]
+      else if a[2] == 7 then ent.flags = a[3]
+      else if a[2] == 8 then ent.r.contents = a[3]
+      else return error(490,"Unknown pickup item field") end if
+    end case
+    case 113
+      if a[2] == 0 then level.time = a[3]
+      else if a[2] == 1 then level.weaponRespawn = a[3]
+      else if a[2] == 2 then level.weaponTeamRespawn = a[3]
+      else if a[2] == 3 then level.teamScores[a[4]] = a[3]
+      else if a[2] == 4 then level.redTakenTime = a[3]
+      else if a[2] == 5 then level.blueTakenTime = a[3]
+      else if a[2] == 6 then level.lastFlagCapture = n.bitsFloat(a[3])
+      else if a[2] == 7 then level.lastCaptureTeam = a[3]
+      else if a[2] == 8 then level.maxclients = a[3]
+      else if a[2] == 9 then level.spawner.warmupTime = a[3]
+      else return error(490,"Unknown pickup level field") end if
+    end case
+    case 114
+      if a[1] >= level.num_entities then
+        created = game.spawn(level)
+        if created != ent then return error(490,"Non-sequential target test slot") end if
+      else game.initEntity(ent) end if
+      ent.targetname = "pickup_target"; ent.use = itemTargetUse
     end case
     case default
       return error(490,"Unknown item command")
@@ -1698,13 +1831,19 @@ function runItemContracts(level)
   s = spawn.create(level,""); ent = game.initEntity(level.entities[64])
   requireSpawnContract(ent.item == void and ent.teammaster == void and ent.teamchain == void,"item entity references initialize explicitly")
   requireSpawnContract(level.redFlagStatus == 0 and level.blueFlagStatus == 0 and level.neutralFlagStatus == 0,"flag statuses initialize at base")
+  requireSpawnContract(level.weaponRespawn == 5 and level.weaponTeamRespawn == 30 and not level.clients[0].predictItemPickup and level.clients[0].captures == 0 and level.clients[0].assists == 0,"pickup runtime defaults initialize")
+  requireSpawnContract(items.itemQuantity(1) == 5 and items.itemQuantity(12) == 10 and items.itemQuantity(33) == 60,"baseq3 item quantities are pinned")
   caught = try(items.itemName(0)); requireSpawnContract(caught is error,"item zero is not a spawnable baseq3 item")
   caught = try(items.launch(level,36,[0.0,0.0,0.0],[0.0,0.0,0.0])); requireSpawnContract(caught is error,"out-of-range item rejects")
   caught = try(items.respawn(level,ent)); requireSpawnContract(caught is error,"respawn requires an item descriptor")
   ent.item = 12; ent.team = "group"; caught = try(items.respawn(level,ent)); requireSpawnContract(caught is error,"teamed item requires a master")
   caught = try(items.setFlagStatus(level,1,5)); requireSpawnContract(caught is error,"invalid flag status rejects")
+  ent.s.modelindex = 0; caught = try(items.canGrab(0,ent,ps.create())); requireSpawnContract(caught is error,"pickup eligibility rejects an invalid item index")
+  player = game.initEntity(level.entities[0]); cl = game.createClient(ps.create(),0,[0,0,0]); game.bindClient(level,player,cl)
+  player.health = 100; cl.ps.stats[c.STAT_HEALTH] = 100; cl.ps.stats[c.STAT_MAX_HEALTH] = 100; ent.item = 12; ent.classname = items.itemName(12); ent.s.modelindex = 12; ent.team = void
+  caught = try(items.touch(level,ent,player,void)); requireSpawnContract(caught is error,"successful item touch requires an explicit game log sink")
   ent.item = 12; game.free(level,ent); requireSpawnContract(ent.item == void and ent.teammaster == void and ent.teamchain == void,"free clears item references")
-  print "PASS: 8 item/flag runtime contracts"
+  print "PASS: 12 item/flag runtime contracts"
   return void
 end function
 function main(args)
@@ -1741,7 +1880,7 @@ function main(args)
     check.missiles = args[4] == "--missiles"; check.bodies = args[4] == "--bodies"; check.deaths = args[4] == "--deaths"; check.items = args[4] == "--items"; check.scores = args[4] == "--scores" or check.deaths
     if check.scores then level.serverCommandFn = recordScoreMessage; level.gameLogFn = recordScoreLog; level.matchTransitionFn = recordScoreTransition; level.runEntityFn = actionRun end if
     if check.deaths then level.teamMessageFn = recordTeamMessage; level.clientSpawnFn = recordClientSpawn end if
-    if check.items then level.teamMessageFn = recordTeamMessage end if
+    if check.items then level.teamMessageFn = recordTeamMessage; level.gameLogFn = recordScoreLog end if
     runCombatActions(level,input,check)
   else if len(args) > 4 and args[4] == "--values" then
     off = 0; count = 0

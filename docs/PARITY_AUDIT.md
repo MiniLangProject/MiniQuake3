@@ -9,7 +9,7 @@ Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`), einschließlich
 der Spawnpunkt-/Leichenprüfung, der Punkte-/Ranglisten-/Matchende-Regeln und
 der integrierten Spieler-Todesfolge sowie der Item-/Flaggen-Entity-Prüfung.
 Der finale MiniQuake3-Build hat SHA-256
-`d52ded2580a8cd25a9227bae7b1284ee874314e8bb00e7a8ec4b24078c1ea6b9`.
+`b6370c7072dc76c58a58fc4c6bb562a6223f1b2ab80c3907cab92225662bda39`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
 
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
@@ -19,7 +19,7 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständige Server-/Client-Frames und komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, Leichenverwaltung, Gibs, Item-/Leichenphysik, Punktevergabe, Ranglisten, Scoreboard-Texte, Matchende-Entscheidungen, `player_die`, Team-Fragboni, Drop-Entities, Item-Respawn und Flaggenrückgabe vorhanden; weitere Klassen, Item-Aufnahme, `ClientSpawn`, Mover-Pushing und vollständige Serverframes fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, Leichenverwaltung, Gibs, Item-/Leichenphysik, sämtliche Baseq3-Pickups, Punktevergabe, Ranglisten, Scoreboard-Texte, Matchende-Entscheidungen, `player_die`, Team-Fragboni und CTF-Take/Return/Capture vorhanden; weitere Klassen, `ClientSpawn`, Mover-Pushing und vollständige Serverframes fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -335,7 +335,7 @@ an tatsächlich geladenen Triggern tragen 754 PlayerStates einen Sprungpad-Merke
 und 139 das Teleport-Bit. Eine Probe kann durch überlappende Trigger beide Merker
 tragen; diese Zahlen zählen Ergebniszustände, nicht die Zahl einzelner Callbacks.
 Feld-, Think- und Kartenprüfung verwenden dasselbe MiniLang-Testbinary
-(`a3dff0e45f46e2b7cbd950e01c662c65527b002c56880974ddcd9981c0c6ff75`).
+(`eb2b7b0a14844c61c0833ec957124a4bd48a515daf5841705cd3d1c12c3eacf5`).
 
 34 der 48 Spawn-Klassen führen bereits die übertragenen Originalfunktionen aus.
 Worldspawn-Effekte, alle Spielmodusfilter, die frühe Brush-Modell-Verlinkung,
@@ -350,7 +350,8 @@ laufen dagegen durch `G_SpawnItem`; Platzierung und späteres Verhalten prüft d
 gesonderte Item-Suite. Ohne gesetzten `unportedFn` bricht MiniLang an einer noch
 nicht portierten bekannten Klasse kontrolliert ab. Der Testhost stellt Speicher
 und Configstring-/Cvar-Schnittstellen bereit; Netzwerkverteilung, vollständige
-Frames, Item-Aufnahme und Mover-Pushing bleiben offen. Ereignisfreigabe wird in
+Frames und Mover-Pushing bleiben offen. Die Item-Suite prüft inzwischen
+Aufnahme, Pickup-Targets und Respawn. Ereignisfreigabe wird in
 der nachfolgend beschriebenen Entity-Schleife geprüft.
 
 Unvollständige Feldvektoren und ein abschließender `G_NewString`-Backslash haben
@@ -489,12 +490,12 @@ von `G_RunItem` mit echtem Server-Trace, Think-/Link-Reihenfolge und Abprall aus
 Die Tests vergleichen auch alle EntityState-Felder, alte Leichengesundheit,
 Ringumlauf, No-Blood/No-Drop, Zufallsendpunkt und signierte Zeitgrenzen.
 
-Test-Binary: `a3dff0e45f46e2b7cbd950e01c662c65527b002c56880974ddcd9981c0c6ff75`. Regeln, Grenzen und Quellzuordnung stehen in
+Test-Binary: `eb2b7b0a14844c61c0833ec957124a4bd48a515daf5841705cd3d1c12c3eacf5`. Regeln, Grenzen und Quellzuordnung stehen in
 [PLAYER_LIFECYCLE.md](PLAYER_LIFECYCLE.md). Die Überschreitung des ursprünglichen
 128er-Deathmatch-Arrays wird kontrolliert zurückgewiesen; dieser undefinierte
 C-Pfad wird nicht als identisches Verhalten ausgewiesen. `player_die` und der
 Respawn-Wrapper sind inzwischen in [DEATHS.md](DEATHS.md) integriert; Item-Entities
-und ihre Physik stehen in [ITEMS.md](ITEMS.md). `ClientSpawn`, Item-Aufnahme und
+und ihre Physik sowie Pickup-Regeln stehen in [ITEMS.md](ITEMS.md). `ClientSpawn` und
 Client-Frames bleiben offen.
 
 ## Punkte, Ranglisten und Matchende (Schritt 6)
@@ -528,14 +529,15 @@ Feldzuweisungen ab. Ein eigener Vergleichsfall und Layout-Prüfungen im
 Referenzadapter sichern dieses ausdrücklich auf den nativen Build begrenzte
 Verhalten ab; es ist keine Zusage definierten oder portablen C-Verhaltens.
 
-Test-Binary: `a3dff0e45f46e2b7cbd950e01c662c65527b002c56880974ddcd9981c0c6ff75`. Regeln und Grenzen stehen in
+Test-Binary: `eb2b7b0a14844c61c0833ec957124a4bd48a515daf5841705cd3d1c12c3eacf5`. Regeln und Grenzen stehen in
 [SCORES.md](SCORES.md). `BeginIntermission` und `ExitLevel` bleiben explizite
 Callbacks; geprüft werden die Entscheidungen und Zustandsänderungen vor und
 nach ihrem Aufruf. Logtexte und Serverbefehle werden an der Aufrufgrenze
 beobachtet. Tatsächliche Kartenwechsel, Logdatei-Zeitstempel/-Ausgabe,
 Netzwerkzustellung und Scoreboard-Grafik sind noch offen. Spieler-Tod,
 Team-Fragboni, Drop-Entscheidungen und der Respawn-Wrapper binden diese
-Bausteine inzwischen ein. Item-Aufnahme sowie vollständige Client-/Server-Pfade
+Bausteine inzwischen ein. Item-Aufnahme und CTF-Capture verwenden sie ebenfalls;
+vollständige Client-/Server-Pfade
 bleiben offen.
 
 ## Spieler-Tod, Team-Fragboni und Respawn-Wrapper (Schritt 6)
@@ -560,27 +562,29 @@ Entity-Pfade. Der C-Host protokolliert weiterhin `PrintMsg` und `ClientSpawn`;
 Score-, Body-, Hook-, BSP-/PVS- und Entity-Code laufen tatsächlich. Der
 Respawn-Test verändert im `ClientSpawn`-Callback absichtlich Position und
 Clientnummer und weist dadurch nach, dass der nachfolgende Teleport-Effekt die
-Rückgabewerte verwendet. Item-Aufnahme, vollständiges `ClientSpawn`, Client-Frames,
+Rückgabewerte verwendet. Item-Aufnahme und CTF-Capture sind separat verbunden;
+vollständiges `ClientSpawn`, Client-Frames,
 Netzwerkzustellung und Missionpack bleiben offen. Details: [DEATHS.md](DEATHS.md).
 
-## Items, Drop-Physik und Flaggenrückgabe (Schritt 6)
+## Items, Pickups und CTF-Flaggen (Schritt 6)
 
-`scripts/test_items.py` besteht mit **12 Szenarien**, **152 Aktionen**,
-**237.066 exakt gleichen 32-Bit-Wörtern** und **17.943 String-Bytes**. Acht
+`scripts/test_items.py` besteht mit **20 Szenarien**, **307 Aktionen**,
+**451.312 exakt gleichen 32-Bit-Wörtern** und **30.625 String-Bytes**. Zwölf
 Laufzeitverträge ergänzen die gültigen Vergleichsfälle. Nach jeder Aktion werden
-vollständige Entity-/Level-Zustände, Configstrings, Registrierungsbits und der
-Zufallszustand verglichen.
+vollständige Entity-/Client-/Level-Zustände, Configstrings, Registrierungsbits,
+Nachrichten und der Zufallszustand verglichen.
 
 Übertragen sind `RegisterItem`, `G_SpawnItem`, `FinishSpawningItem`, `RespawnItem`,
-`Use_Item`, `LaunchItem`, `Drop_Item`, der ET_ITEM-Zweig von `G_RunItem`,
-`G_BounceItem` sowie Flaggenstatus, Basis-Reset, Rückgabesound, No-Drop-Rückgabe
-und Timeout fallengelassener Flaggen. Die Fälle umfassen alle 35 Baseq3-Items,
-Kartenplatzierung, Powerup-Verzögerung, Teamketten, Abprall und echte
+`Use_Item`, `Touch_Item`, sämtliche Baseq3-`Pickup_*`-Funktionen, `LaunchItem`,
+`Drop_Item`, der ET_ITEM-Zweig von `G_RunItem`, `G_BounceItem` sowie Flaggenstatus,
+Basis-Reset, Take-/Return-/Capture-Sounds und die vollständigen CTF-Punkte- und
+Assist-Effekte. Die Fälle umfassen alle 35 Baseq3-Items, Aufnahmegrenzen,
+Powerup-Denial, Ereignisse, Targets, Respawn, Teamketten, Abprall und echte
 Serverkollision. Die Todes-Suite verwendet dieselben Drop-/Flaggenpfade.
 
-`Touch_Item` samt Pickup-Familie, `ClearRegisteredItems`, `SaveRegisteredItems`,
-die native Paritätsprüfung deaktivierter Item-Cvars, `PrintMsg`-Transport und
-Missionpack bleiben offen. Details: [ITEMS.md](ITEMS.md).
+`ClearRegisteredItems`, `SaveRegisteredItems`, die native Paritätsprüfung
+nichtnulliger Item-Deaktivierungs-Cvars, tatsächliche `PrintMsg`-Netzwerkzustellung
+und Missionpack bleiben offen. Details: [ITEMS.md](ITEMS.md).
 
 ## Reproduzieren
 

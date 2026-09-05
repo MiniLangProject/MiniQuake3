@@ -5,7 +5,8 @@ Status: Implementierung läuft. Ein nativer MiniLang-Build mit Zahlenkompatibili
 Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter, BSP-/Kurvenkollision,
 transformierten Modellen, temporären Boxen, PVS-/Areaportal-Verwaltung,
 dynamischer Entity-Kollision, Bewegungsbahnen, Sprungpad-Reaktionen und
-dem vollständigen baseq3-Pmove-Befehlszyklus ist
+dem vollständigen baseq3-Pmove-Befehlszyklus sowie serverseitigen Item-Pickups
+und CTF-Flaggenabläufen ist
 vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
 [geprüfte Stand mit offenen Abnahmen](docs/PARITY_AUDIT.md).
@@ -54,7 +55,7 @@ Maschinengewehr. Dieser Entwicklungsaufruf verarbeitet statische Weltkollision.
 Die dynamische Kollisionsschicht, geometrische Trigger-Abfrage, Sprungpads und
 Teleport-Zustandswechsel haben eigene Replays gegen den Originalcode. Hinzu kommen
 der vollständige `entityState_t`-Speicherdatensatz, Ereignis-Entities und deren Platzverwaltung.
-Vollständige Spielserver-Frames, Item-Aufnahme, `ClientSpawn` und Grafik bleiben offen:
+Vollständige Spielserver-Frames, `ClientSpawn` und Grafik bleiben offen:
 
 ```powershell
 python scripts/test_shared_game.py
@@ -88,7 +89,7 @@ führen inzwischen ebenfalls ihre ursprünglichen Serverregeln aus.
 Die [Schadensberechnung](docs/COMBAT.md) ergänzt Rüstung, Rückstoß, Teamschutz,
 Battlesuit, CTF-Trägerdaten, Sichtlinien und Radius-Schaden sowie `trigger_hurt`,
 `target_kill` und `target_laser`; Telefrags sind
-damit verbunden. Weitere Klassen, Item-Aufnahme und vollständige Serverframes
+damit verbunden. Weitere Klassen und vollständige Serverframes
 bleiben offen.
 [Projektile und Shooter](docs/MISSILES.md) ergänzen Raketen, Granaten, Plasma,
 BFG, Grappling-Hook und drei schießende Kartenobjekte mit echter Server-Kollision.
@@ -96,8 +97,9 @@ BFG, Grappling-Hook und drei schießende Kartenobjekte mit echter Server-Kollisi
 Zuschauer-Auswahl, Leichen-Warteschlange, Gibs und Leichenphysik.
 [Spieler-Tod und Team-Boni](docs/DEATHS.md) verbinden Schaden, Scores, Hooks,
 Flaggenentscheidungen, Todesanimationen und den Respawn-Wrapper. [Items und
-Flaggen](docs/ITEMS.md) ergänzen Karten- und Drop-Entities, Respawn, Physik sowie
-Flaggenrückgabe; `Touch_Item` und `ClientSpawn` bleiben sichtbare Grenzen.
+Flaggen](docs/ITEMS.md) ergänzen Karten- und Drop-Entities, sämtliche Baseq3-
+Pickups, Respawn, Physik sowie Flaggenaufnahme, Rückgabe und Capture;
+`ClientSpawn` bleibt eine sichtbare Grenze.
 [Punkte, Ranglisten und Scoreboards](docs/SCORES.md) sowie Sudden Death,
 Matchlimits und Bereitschaftsregeln sind gegen C geprüft und in `player_die`
 eingebunden. Netzwerkübertragung und tatsächliche Kartenwechsel bleiben offen.

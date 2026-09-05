@@ -165,8 +165,9 @@ gegen den Originalcode geprüft; siehe [Targets und Ereignisse](TARGETS_AND_EVEN
 `G_RunThink` und die spätere Sprungpad-Ausrichtung sind enthalten. Alle 35
 Karten-Items werden inzwischen als echte Entities angelegt; die 14 weiteren
 Klassen bleiben ausdrücklich offene Aufrufgrenzen; siehe [SPAWNING.md](SPAWNING.md).
-Als Nächstes folgen Item-Aufnahme, diese Spielobjekte, die Einbindung in
-vollständige Serverframes, `ClientSpawn`, weitere Waffentreffer, Waffenfeuer und
+Die Item-Aufnahme einschließlich CTF-Capture ist inzwischen verbunden. Als
+Nächstes folgen die übrigen Spielobjekte, die Einbindung in vollständige
+Serverframes, `ClientSpawn`, weitere Waffentreffer, Waffenfeuer und
 Mover-Pushing. Der vollständige Server bleibt bis zu dieser Integration offen.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
@@ -178,9 +179,10 @@ Deathmatch-/CTF-/Zuschauerpositionen, acht Leichenplätze, Gibs und Leichenphysi
 inzwischen ebenfalls gegen C geprüft. [`player_die`, Team-Fragboni,
 Drop-Entscheidungen und der Respawn-Wrapper](DEATHS.md) verbinden diese Bausteine
 nun mit realer Kollision, PVS, Hook- und Leichenverwaltung. [Karten-/Drop-Items,
-Respawn, Physik und Flaggenrückgabe](ITEMS.md) laufen als echte Entities.
-`Touch_Item`, `PrintMsg` und `ClientSpawn` sind die nächsten Grenzen; anschließend
-folgen weitere Waffenpfade. Im Callback freigegebene
+Pickups, Respawn, Physik und vollständige CTF-Flaggenabläufe](ITEMS.md) laufen als
+echte Entities. Log- und `PrintMsg`-Nutzlasten sind bis zu einer Host-Schnittstelle
+geprüft; `ClientSpawn` und die Netzwerkzustellung sind die nächsten Grenzen.
+Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.
 

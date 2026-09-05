@@ -5,7 +5,7 @@
 void CM_LoadMap(const char*,qboolean,int*);cvar_t *Cvar_Get(const char*,const char*,int);
 #include "snapvector.inc"
 gentity_t g_entities[MAX_GENTITIES];gclient_t g_clients[MAX_CLIENTS];level_locals_t level;
-vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit;
+vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit,g_weaponRespawn,g_weaponTeamRespawn;
 void hostServerReset(void*,int,int);void hostLink(void*);void hostUnlink(void*);void hostBrush(void*,const char*);void hostMetadata(int,int*);
 int hostContact(const vec3_t,const vec3_t,void*,int);int hostArea(const vec3_t,const vec3_t,int*,int);
 void hostTrace(trace_t*,const vec3_t,const vec3_t,const vec3_t,const vec3_t,int,int);
@@ -60,7 +60,7 @@ void trap_Trace(trace_t *tr,const vec3_t start,const vec3_t mins,const vec3_t ma
 }
 void QDECL G_Printf(const char *fmt,...) { }
 void QDECL G_LogPrintf(const char *fmt,...) {
-    if(scoreOutput){char buffer[2048];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);word(41);string(buffer);}
+    if(scoreOutput || itemOutput){char buffer[2048];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);word(41);string(buffer);}
     else{word(3);word(0);string("");string(fmt);}
 }
 void trap_SendServerCommand(int client,const char *message){if(!scoreOutput)G_Error("unported server command sink");word(42);word(client);string(message);}
@@ -69,7 +69,6 @@ void QDECL G_Error(const char *fmt,...) {va_list args;va_start(args,fmt);vfprint
 void Touch_DoorTrigger(gentity_t *a,gentity_t *b,trace_t *c) {G_Error("unexpected door boundary");}
 void *G_Alloc(int n) {void *p=calloc(1,n);if(!p)exit(73);return p;}
 int trap_Cvar_VariableIntegerValue(const char *name){return 0;}
-void Touch_Item(gentity_t *ent,gentity_t *other,trace_t *trace){G_Error("unported item pickup boundary");}
 void QDECL PrintMsg(gentity_t *ent,const char *fmt,...) {
     char buffer[1024];va_list args;if(!deathOutput && !itemOutput)G_Error("unported PrintMsg");
     va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);
@@ -93,7 +92,7 @@ static void state(void) {int i;word(8);word(level.time);word(level.num_entities)
 static void reset(int type,int flags) {
     memset(&level,0,sizeof(level));memset(g_entities,0,sizeof(g_entities));memset(g_clients,0,sizeof(g_clients));memset(configs,0,sizeof(configs));memset(itemRegistered,0,sizeof(itemRegistered));memset(&teamgame,0,sizeof(teamgame));
     level.gentities=g_entities;level.clients=g_clients;level.num_entities=64;level.time=level.startTime=1000;srand(1);
-    g_gametype.integer=type;g_restarted.integer=flags&1;g_doWarmup.integer=flags&2;g_gravity.value=800;g_knockback.value=1000;g_friendlyFire.integer=0;g_blood.integer=1;strcpy(g_motd.string,"MiniQuake3 spawn parity");strcpy(gravityText,"800");
+    g_gametype.integer=type;g_restarted.integer=flags&1;g_doWarmup.integer=flags&2;g_gravity.value=800;g_knockback.value=1000;g_friendlyFire.integer=0;g_blood.integer=1;g_weaponRespawn.integer=5;g_weaponTeamRespawn.integer=30;strcpy(g_motd.string,"MiniQuake3 spawn parity");strcpy(gravityText,"800");
     hostServerReset(g_entities,sizeof(gentity_t),64);
 }
 static void countThink(gentity_t *e) {e->count++;}

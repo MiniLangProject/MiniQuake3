@@ -105,7 +105,7 @@ ausgegeben.
 Auf CD-Karten werden vorhandene Spieler-, Team- und Intermission-Punkte sowie
 passende Positions-Targets übernommen und Leichen mit der tatsächlichen
 Kartengeometrie simuliert. Das sind gezielte Kartenproben, keine vollständigen
-Matches. Bot-/Human-Spawnfilter aus `ClientSpawn`, Item-Aufnahme,
+Matches. Bot-/Human-Spawnfilter aus `ClientSpawn`,
 Respawn-Eingaben, Client-Frames und die grafische Darstellung bleiben Gegenstand
 der weiteren Integration. Todesmeldungen, Drop-Entscheidungen
 und Score-Einbindung sind in [DEATHS.md](DEATHS.md) nachgewiesen.

@@ -12,8 +12,9 @@ Implementierung. Ohne ausdrücklich gesetzten `state.unportedFn` liefert der Por
 an diesen Klassengrenzen einen Fehler. Die Vergleichstests setzen dort einen
 aufzeichnenden Callback ein; er führt keine vereinfachten Mover- oder Spielregeln
 aus. `G_SpawnItem` und `FinishSpawningItem` erzeugen und platzieren dagegen echte
-Item-Entities. `Touch_Item` und damit das Aufnehmen bleiben noch offen, daher sind
-die Testkarten noch keine vollständigen, spielbaren Game-Server.
+Item-Entities. `Touch_Item` und sämtliche Baseq3-Pickups sind inzwischen separat
+gegen C geprüft. Die Testkarten sind wegen der übrigen Client-/Serverpfade noch
+keine vollständigen, spielbaren Game-Server.
 
 | Aufruf | Verhalten |
 | --- | --- |
@@ -88,9 +89,9 @@ Die neuen privaten Schadensfelder werden zusätzlich in `test_combat.py` geprüf
 Spieler in die geladenen Trigger gesetzt und komplette PlayerStates verglichen.
 `G_Printf`-Diagnosen und der Zeitpräfix des Server-Loggers sind noch nicht Teil
 dieser Abnahme; die Warmup-Logmeldung wird als roher Aufruf aufgezeichnet.
-Dies prüft noch keine regulären ClientThink-/Serverframes, Item-Aufnahme oder
+Dies prüft noch keine regulären ClientThink-/Serverframes oder
 Mover-Pushes. Die zusätzliche Item-Prüfung deckt Initialisierung, Respawn,
-Drop-Entities und Physik ab; die Target-/Ereignisprüfung deckt die Entity-Schleife
+Drop-Entities, Pickups, CTF-Abläufe und Physik ab; die Target-/Ereignisprüfung deckt die Entity-Schleife
 mit automatischer Ereignisfreigabe ab.
 
 ```powershell

@@ -146,7 +146,8 @@ C-Fehlerpfad.
 
 `player_die`, Team-Fragboni und der Respawn-Wrapper sind inzwischen in
 [DEATHS.md](DEATHS.md) gegen C geprüft und mit diesem Schadenspfad verbunden.
-Offen bleiben Item-Aufnahme, `ClientSpawn`, weitere
+Item-Aufnahme und CTF-Capture sind inzwischen über die gemeinsame Score- und
+Kollisionsschicht verbunden. Offen bleiben `ClientSpawn`, weitere
 Waffentreffer und die vollständige Waffensteuerung, Schadensfeedback am Frame-Ende,
 weitere Teamregeln, Mover-Steuerung,
 Missionpack und die vollständige Serverintegration.

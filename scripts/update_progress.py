@@ -103,11 +103,12 @@ def main():
     old_targets,old_symbols,tests=mappings["code/game/g_cmds.c"]
     mappings["code/game/g_cmds.c"]=(old_targets,old_symbols,tests+["scripts/test_deaths.py"])
     item_mappings={
-        "code/game/g_items.c":(["src/mq3/game/items.ml"],["RespawnItem","LaunchItem","Drop_Item","Use_Item","FinishSpawningItem","G_ItemDisabled","G_SpawnItem","G_BounceItem","G_RunItem"]),
-        "code/game/g_team.c":(["src/mq3/game/items.ml"],["Team_SetFlagStatus","Team_CheckDroppedItem","Team_ResetFlag","Team_ReturnFlagSound","Team_ReturnFlag","Team_FreeEntity","Team_DroppedFlagThink"]),
+        "code/game/g_items.c":(["src/mq3/game/items.ml"],["Pickup_Powerup","Pickup_Holdable","Add_Ammo","Pickup_Ammo","Pickup_Weapon","Pickup_Health","Pickup_Armor","RespawnItem","Touch_Item","RegisterItem","LaunchItem","Drop_Item","Use_Item","FinishSpawningItem","G_ItemDisabled","G_SpawnItem","G_BounceItem","G_RunItem"]),
+        "code/game/g_team.c":(["src/mq3/game/items.ml"],["AddTeamScore","Team_SetFlagStatus","Team_ForceGesture","Team_CheckDroppedItem","Team_ResetFlag","Team_ResetFlags","Team_ReturnFlagSound","Team_TakeFlagSound","Team_CaptureFlagSound","Team_ReturnFlag","Team_FreeEntity","Team_DroppedFlagThink","Team_TouchOurFlag","Team_TouchEnemyFlag","Pickup_Team"]),
         "code/game/g_spawn.c":(["src/mq3/game/items.ml"],[]),
         "code/game/g_main.c":(["src/mq3/game/items.ml"],[]),
-        "code/game/bg_misc.c":(["src/mq3/game/items.ml"],[]),
+        "code/game/bg_misc.c":(["src/mq3/game/items.ml"],["BG_CanItemBeGrabbed"]),
+        "code/game/g_utils.c":(["src/mq3/game/items.ml"],["G_AddPredictableEvent"]),
         "code/game/g_local.h":(["src/mq3/game/items.ml"],[]),
     }
     for source,(targets,symbols) in item_mappings.items():
@@ -134,9 +135,11 @@ def main():
                     if symbol["original"] == "RegisterItem":
                         symbol["scope"] = "Baseq3 item registration bitset, used by shooters and actual map-item spawning. ClearRegisteredItems, SaveRegisteredItems and client precaching remain open."
                     elif symbol["original"] in ("G_BounceItem","G_RunItem"):
-                        symbol["scope"] = "Actual dropped-item physics, collision, no-drop and frame dispatch are compared. The body suite separately covers the non-item corpse branch. Touch_Item remains open."
+                        symbol["scope"] = "Actual dropped-item physics, collision, no-drop and frame dispatch are compared. The body suite separately covers the non-item corpse branch."
+                    elif symbol["original"] == "G_ItemDisabled":
+                        symbol["scope"] = "Local baseq3 disabled-item Cvar lookup is implemented. The native item oracle fixes these Cvars to zero, so nonzero Cvar parity remains open."
                     else:
-                        symbol["scope"] = "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
+                        symbol["scope"] = "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
             if entry["source"] == "code/game/g_main.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] in ("SortRanks","CalculateRanks"):

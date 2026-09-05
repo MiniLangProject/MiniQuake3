@@ -81,7 +81,7 @@ def main():
     if not records:raise RuntimeError('No matching map')
     assert sum(r['push_reactions'] for r in records)>0 and sum(r['teleport_reactions'] for r in records)>0
     result={'passed':True,'profile':'complete original g_spawn.c, 34 actual spawn classes, all 35 baseq3 item dispatches, original G_RunThink/SV/CM and trigger callbacks; cm_noCurves='+flag,
-        'scope_boundary':'14 unported normal spawn classes; item pickup/touch rules and complete map/game-server acceptance remain open',
+        'scope_boundary':'14 unported normal spawn classes and complete map/game-server acceptance remain open; item pickup/touch rules are covered by test_items.py',
         'map_mode_replays':len(records),'exact_words':sum(r['exact_words'] for r in records),'string_bytes':sum(r['string_bytes'] for r in records),
         'trigger_probes':sum(r['trigger_probes'] for r in records),'push_reactions':sum(r['push_reactions'] for r in records),'teleport_reactions':sum(r['teleport_reactions'] for r in records),
         'maps':records,'test_sha256':sha(ROOT/'build/spawn_tests.exe'),'extracted_functions_sha256':sha(output/'spawn_functions.inc'),

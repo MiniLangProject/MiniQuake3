@@ -270,6 +270,12 @@ function itemType(index)
   return types[index]
 end function
 
+function itemQuantity(index)
+  quantities = [0,5,50,100,5,25,50,100,0,10,40,10,10,100,10,50,20,0,10,50,5,30,60,5,10,15,60,60,30,30,30,30,30,60,0,0]
+  if index < 0 or index >= len(quantities) then return error(471,"Invalid baseq3 item index") end if
+  return quantities[index]
+end function
+
 function itemTag(index)
   tags = [0,0,0,0,0,0,0,0,1,3,2,4,5,6,7,8,9,10,3,2,4,8,6,5,7,9,1,2,1,2,3,4,5,6,7,8]
   if index < 0 or index >= len(tags) then return error(471,"Invalid baseq3 item index") end if

@@ -122,9 +122,10 @@ weiterhin `level.runEntityFn(level, kind, ent)`: `2` sonstige Item-/Physics-Enti
 Der Target-Test beobachtet alle vier Kategorien; die gesonderte Projektilprüfung
 führt den echten Missile-Zweig aus. `G_RunFrame` als Ganzes,
 `ClientEndFrame`, die Frame-Einbindung der [Matchende-Regeln](SCORES.md),
-Vote-Prüfungen, Item-Aufnahme, `ClientSpawn` und Mover-Pushing bleiben offen.
+Vote-Prüfungen, `ClientSpawn` und Mover-Pushing bleiben offen.
 Der ET_ITEM-Zweig läuft in der gesonderten [Item-Prüfung](ITEMS.md) mit echter
-Physik. `target_teleporter` ist über KillBox inzwischen mit der
+Physik und vollständiger Pickup-Target-Auslösung. `target_teleporter` ist über
+KillBox inzwischen mit der
 [portierten Schadensberechnung](COMBAT.md) verbunden.
 
 Die Referenz extrahiert vollständige Originalfunktionen. Für den Frame kopiert

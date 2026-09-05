@@ -1,6 +1,6 @@
 // Copyright (C) 1999-2005 Id Software, Inc.
 // SPDX-License-Identifier: GPL-2.0-or-later
-// Baseq3 dropped-item entities, item physics and flag reset/return rules.
+// Baseq3 item entities, pickups, physics and CTF flag rules.
 package mq3.game.items
 import mq3.game.constants as c
 import mq3.game.entities as game
@@ -12,6 +12,8 @@ import mq3.game.spawn_tables as tables
 import mq3.game.spawn_values as values
 import mq3.game.snapshot as snapshot
 import mq3.game.team_bonuses as bonuses
+import mq3.game.scores as scores
+import mq3.game.targets as targets
 import mq3.server.world as sv
 import mq3.shared.math as q
 import mq3.compat.numeric as n
@@ -20,8 +22,11 @@ import mq3.qcommon.cvar as cv
 import std.string as strings
 
 const FL_DROPPED_ITEM = 0x1000
+const FL_FORCE_GESTURE = 0x8000
 const FLAG_ATBASE = 0
+const FLAG_TAKEN = 1
 const FLAG_DROPPED = 4
+const AWARD_MASK = 0x38848
 
 function validItem(index)
   return typeof(index) == "int" and index > 0 and index < len(tables.items())
@@ -39,6 +44,9 @@ end function
 function itemTag(index)
   requireItem(index); return c.itemTag(index)
 end function
+function itemQuantity(index)
+  requireItem(index); return c.itemQuantity(index)
+end function
 function centeredRandom(level)
   // random() divides as float; crandom() then promotes its operands to double.
   return 2.0*(n.fdiv(game.random(level),32767)-0.5)
@@ -46,8 +54,223 @@ end function
 function register(level,item)
   item = requireItem(item); level.itemRegistered[item] = 1; return void
 end function
+function predictableEvent(level,ent,event,parm)
+  state = ent.client.ps; slot = state.eventSequence & 1
+  state.events[slot] = event; state.eventParms[slot] = parm; state.eventSequence = n.add32(state.eventSequence,1)
+  return void
+end function
+function canGrab(gametype,ent,state)
+  item = requireItem(ent.s.modelindex); type = itemType(item); tag = itemTag(item)
+  if type == c.IT_WEAPON then return true end if
+  if type == c.IT_AMMO then return state.ammo[tag] < 200 end if
+  if type == c.IT_ARMOR then return state.stats[c.STAT_ARMOR] < n.mul32(state.stats[c.STAT_MAX_HEALTH],2) end if
+  if type == c.IT_HEALTH then
+    if itemQuantity(item) == 5 or itemQuantity(item) == 100 then return state.stats[c.STAT_HEALTH] < n.mul32(state.stats[c.STAT_MAX_HEALTH],2) end if
+    return state.stats[c.STAT_HEALTH] < state.stats[c.STAT_MAX_HEALTH]
+  end if
+  if type == c.IT_POWERUP then return true end if
+  if type == c.IT_TEAM then
+    if gametype != 4 then return false end if
+    if state.persistant[c.PERS_TEAM] == c.TEAM_RED then
+      return tag == c.PW_BLUEFLAG or (tag == c.PW_REDFLAG and ent.s.modelindex2 != 0) or (tag == c.PW_REDFLAG and state.powerups[c.PW_BLUEFLAG] != 0)
+    end if
+    if state.persistant[c.PERS_TEAM] == c.TEAM_BLUE then
+      return tag == c.PW_REDFLAG or (tag == c.PW_BLUEFLAG and ent.s.modelindex2 != 0) or (tag == c.PW_BLUEFLAG and state.powerups[c.PW_REDFLAG] != 0)
+    end if
+    return false
+  end if
+  if type == c.IT_HOLDABLE then return state.stats[c.STAT_HOLDABLE_ITEM] == 0 end if
+  if type == c.IT_BAD then return error(497,"BG_CanItemBeGrabbed: IT_BAD") end if
+  return false
+end function
+function pickupPowerup(level,ent,other)
+  state = other.client.ps; tag = itemTag(ent.item)
+  if state.powerups[tag] == 0 then state.powerups[tag] = n.add32(level.time,0-(level.time % 1000)) end if
+  quantity = itemQuantity(ent.item); if ent.count != 0 then quantity = ent.count end if
+  state.powerups[tag] = n.add32(state.powerups[tag],n.mul32(quantity,1000))
+  for i = 0 to level.maxclients-1
+    client = level.clients[i]
+    if client == other.client or client.connected == 0 or client.ps.stats[c.STAT_HEALTH] <= 0 then continue end if
+    if level.spawner.gametype >= 3 and other.client.team == client.team then continue end if
+    delta = [n.fsub(ent.s.pos.trBase[0],client.ps.origin[0]),n.fsub(ent.s.pos.trBase[1],client.ps.origin[1]),n.fsub(ent.s.pos.trBase[2],client.ps.origin[2])]
+    length = q.VectorNormalize(delta)
+    if length > 192 then continue end if
+    if q.DotProduct(delta,q.AngleVectors(client.ps.viewangles)[0]) < 0.4 then continue end if
+    hit = combat.shotTrace(level,client.ps.origin,ent.s.pos.trBase,void,void,1023,1)
+    if hit.trace.fraction != 1.0 then continue end if
+    client.ps.persistant[c.PERS_PLAYEREVENTS] = client.ps.persistant[c.PERS_PLAYEREVENTS] ^ 1
+  end for
+  return 120
+end function
+function pickupHoldable(level,ent,other)
+  other.client.ps.stats[c.STAT_HOLDABLE_ITEM] = ent.item; return 60
+end function
+function addAmmo(ent,weapon,count)
+  ent.client.ps.ammo[weapon] = n.add32(ent.client.ps.ammo[weapon],count)
+  if ent.client.ps.ammo[weapon] > 200 then ent.client.ps.ammo[weapon] = 200 end if
+  return void
+end function
+function pickupAmmo(level,ent,other)
+  quantity = itemQuantity(ent.item); if ent.count != 0 then quantity = ent.count end if
+  addAmmo(other,itemTag(ent.item),quantity); return 40
+end function
+function pickupWeapon(level,ent,other)
+  tag = itemTag(ent.item); quantity = 0
+  if ent.count >= 0 then
+    quantity = itemQuantity(ent.item); if ent.count != 0 then quantity = ent.count end if
+    if (ent.flags & FL_DROPPED_ITEM) == 0 and level.spawner.gametype != 3 then
+      if other.client.ps.ammo[tag] < quantity then quantity = quantity-other.client.ps.ammo[tag] else quantity = 1 end if
+    end if
+  end if
+  other.client.ps.stats[c.STAT_WEAPONS] = other.client.ps.stats[c.STAT_WEAPONS] | (1 << tag)
+  addAmmo(other,tag,quantity)
+  if tag == c.WP_GRAPPLING_HOOK then other.client.ps.ammo[tag] = -1 end if
+  if level.spawner.gametype == 3 then return level.weaponTeamRespawn end if
+  return level.weaponRespawn
+end function
+function pickupHealth(level,ent,other)
+  quantity = itemQuantity(ent.item); max = other.client.ps.stats[c.STAT_MAX_HEALTH]
+  if quantity == 5 or quantity == 100 then max = n.mul32(max,2) end if
+  if ent.count != 0 then quantity = ent.count end if
+  other.health = n.add32(other.health,quantity); if other.health > max then other.health = max end if
+  other.client.ps.stats[c.STAT_HEALTH] = other.health
+  if itemQuantity(ent.item) == 100 then return 35 end if
+  return 35
+end function
+function pickupArmor(level,ent,other)
+  value = n.add32(other.client.ps.stats[c.STAT_ARMOR],itemQuantity(ent.item)); max = n.mul32(other.client.ps.stats[c.STAT_MAX_HEALTH],2)
+  if value > max then value = max end if
+  other.client.ps.stats[c.STAT_ARMOR] = value; return 25
+end function
+function teamMessage(level,recipient,text)
+  if level.teamMessageFn == void then return error(497,"Team item requires a PrintMsg sink") end if
+  level.teamMessageFn(level,recipient,text); return void
+end function
+function addTeamScore(level,origin,team,score)
+  if team != c.TEAM_RED and team != c.TEAM_BLUE then return error(497,"Invalid CTF score team") end if
+  temp = game.tempEntity(level,origin,c.EV_GLOBAL_TEAM_SOUND); temp.r.svFlags = temp.r.svFlags | 32
+  if team == c.TEAM_RED then
+    if n.add32(level.teamScores[c.TEAM_RED],score) == level.teamScores[c.TEAM_BLUE] then temp.s.eventParm = c.GTS_TEAMS_ARE_TIED
+    else if level.teamScores[c.TEAM_RED] <= level.teamScores[c.TEAM_BLUE] and n.add32(level.teamScores[c.TEAM_RED],score) > level.teamScores[c.TEAM_BLUE] then temp.s.eventParm = c.GTS_REDTEAM_TOOK_LEAD
+    else temp.s.eventParm = c.GTS_REDTEAM_SCORED end if
+  else
+    if n.add32(level.teamScores[c.TEAM_BLUE],score) == level.teamScores[c.TEAM_RED] then temp.s.eventParm = c.GTS_TEAMS_ARE_TIED
+    else if level.teamScores[c.TEAM_BLUE] <= level.teamScores[c.TEAM_RED] and n.add32(level.teamScores[c.TEAM_BLUE],score) > level.teamScores[c.TEAM_RED] then temp.s.eventParm = c.GTS_BLUETEAM_TOOK_LEAD
+    else temp.s.eventParm = c.GTS_BLUETEAM_SCORED end if
+  end if
+  level.teamScores[team] = n.add32(level.teamScores[team],score); return void
+end function
+function forceGesture(level,team)
+  for i = 0 to 63
+    ent = level.entities[i]
+    if ent.inuse and ent.client != void and ent.client.team == team then ent.flags = ent.flags | FL_FORCE_GESTURE end if
+  end for
+  return void
+end function
+function takeFlagSound(level,ent,team)
+  if ent == void then return void end if
+  if team == c.TEAM_RED then
+    if level.blueFlagStatus != FLAG_ATBASE and level.blueTakenTime > n.add32(level.time,-10000) then return void end if
+    level.blueTakenTime = level.time
+  else if team == c.TEAM_BLUE then
+    if level.redFlagStatus != FLAG_ATBASE and level.redTakenTime > n.add32(level.time,-10000) then return void end if
+    level.redTakenTime = level.time
+  end if
+  temp = game.tempEntity(level,ent.s.pos.trBase,c.EV_GLOBAL_TEAM_SOUND)
+  if team == c.TEAM_BLUE then temp.s.eventParm = c.GTS_RED_TAKEN else temp.s.eventParm = c.GTS_BLUE_TAKEN end if
+  temp.r.svFlags = temp.r.svFlags | 32; return void
+end function
+function captureFlagSound(level,ent,team)
+  if ent == void then return void end if
+  temp = game.tempEntity(level,ent.s.pos.trBase,c.EV_GLOBAL_TEAM_SOUND)
+  if team == c.TEAM_BLUE then temp.s.eventParm = c.GTS_BLUE_CAPTURE else temp.s.eventParm = c.GTS_RED_CAPTURE end if
+  temp.r.svFlags = temp.r.svFlags | 32; return void
+end function
+function resetFlags(level)
+  if level.spawner.gametype == 4 then resetFlag(level,c.TEAM_RED); resetFlag(level,c.TEAM_BLUE) end if
+  return void
+end function
+function touchOurFlag(level,ent,other,team)
+  client = other.client; enemyFlag = c.PW_REDFLAG
+  if client.team == c.TEAM_RED then enemyFlag = c.PW_BLUEFLAG end if
+  if (ent.flags & FL_DROPPED_ITEM) != 0 then
+    teamMessage(level,-1,client.netname+"^7 returned the "+bonuses.teamName(team)+" flag!\n")
+    scores.addScore(level,other,ent.r.currentOrigin,1); client.flagrecovery = n.add32(client.flagrecovery,1); client.lastreturnedflag = n.f32(level.time)
+    returnFlagSound(level,resetFlag(level,team),team); return 0
+  end if
+  if client.ps.powerups[enemyFlag] == 0 then return 0 end if
+  teamMessage(level,-1,client.netname+"^7 captured the "+bonuses.teamName(bonuses.otherTeam(team))+" flag!\n")
+  client.ps.powerups[enemyFlag] = 0; level.lastFlagCapture = n.f32(level.time); level.lastCaptureTeam = team
+  addTeamScore(level,ent.s.pos.trBase,client.team,1); forceGesture(level,client.team)
+  client.captures = n.add32(client.captures,1); client.ps.eFlags = (client.ps.eFlags & ~AWARD_MASK) | 0x800
+  client.rewardTime = n.add32(level.time,2000); client.ps.persistant[c.PERS_CAPTURES] = n.add32(client.ps.persistant[c.PERS_CAPTURES],1)
+  scores.addScore(level,other,ent.r.currentOrigin,5); captureFlagSound(level,ent,team)
+  for i = 0 to level.maxclients-1
+    player = level.entities[i]
+    if not player.inuse then continue end if
+    if player.client == void then return error(497,"Active CTF client slot has no client") end if
+    if player.client.team != client.team then player.client.lasthurtcarrier = -5.0
+    else
+      if player != other then scores.addScore(level,player,ent.r.currentOrigin,0) end if
+      assistScore = 0
+      if n.fadd(player.client.lastreturnedflag,10000.0) > n.f32(level.time) then assistScore = 1
+      else if n.fadd(player.client.lastfraggedcarrier,10000.0) > n.f32(level.time) then assistScore = 2 end if
+      if assistScore != 0 then
+        scores.addScore(level,player,ent.r.currentOrigin,assistScore); client.assists = n.add32(client.assists,1)
+        player.client.ps.persistant[c.PERS_ASSIST_COUNT] = n.add32(player.client.ps.persistant[c.PERS_ASSIST_COUNT],1)
+        player.client.ps.eFlags = (player.client.ps.eFlags & ~AWARD_MASK) | 0x20000; player.client.rewardTime = n.add32(level.time,2000)
+      end if
+    end if
+  end for
+  resetFlags(level); scores.calculateRanks(level); return 0
+end function
+function touchEnemyFlag(level,ent,other,team)
+  client = other.client
+  teamMessage(level,-1,client.netname+"^7 got the "+bonuses.teamName(team)+" flag!\n")
+  if team == c.TEAM_RED then client.ps.powerups[c.PW_REDFLAG] = 2147483647 else client.ps.powerups[c.PW_BLUEFLAG] = 2147483647 end if
+  setFlagStatus(level,team,FLAG_TAKEN); scores.addScore(level,other,ent.r.currentOrigin,0); client.flagsince = n.f32(level.time); takeFlagSound(level,ent,team)
+  return -1
+end function
+function pickupTeam(level,ent,other)
+  team = 0
+  if ent.classname == "team_CTF_redflag" then team = c.TEAM_RED
+  else if ent.classname == "team_CTF_blueflag" then team = c.TEAM_BLUE
+  else teamMessage(level,other.slot,"Don't know what team the flag is on.\n"); return 0 end if
+  if team == other.client.team then return touchOurFlag(level,ent,other,team) end if
+  return touchEnemyFlag(level,ent,other,team)
+end function
 function touch(level,ent,other,trace)
-  return error(497,"Touch_Item is not ported yet")
+  if other.client == void or other.health < 1 then return void end if
+  if not canGrab(level.spawner.gametype,ent,other.client.ps) then return void end if
+  if level.gameLogFn == void then return error(497,"Touch_Item requires a game log sink") end if
+  level.gameLogFn(level,"Item: "+str(other.s.number)+" "+itemName(ent.item)+"\n")
+  predict = other.client.predictItemPickup; type = itemType(ent.item); respawnTime = 0
+  if type == c.IT_WEAPON then respawnTime = pickupWeapon(level,ent,other)
+  else if type == c.IT_AMMO then respawnTime = pickupAmmo(level,ent,other)
+  else if type == c.IT_ARMOR then respawnTime = pickupArmor(level,ent,other)
+  else if type == c.IT_HEALTH then respawnTime = pickupHealth(level,ent,other)
+  else if type == c.IT_POWERUP then respawnTime = pickupPowerup(level,ent,other); predict = false
+  else if type == c.IT_TEAM then respawnTime = pickupTeam(level,ent,other)
+  else if type == c.IT_HOLDABLE then respawnTime = pickupHoldable(level,ent,other)
+  else return void end if
+  if respawnTime == 0 then return void end if
+  if predict then predictableEvent(level,other,c.EV_ITEM_PICKUP,ent.s.modelindex) else events.add(level,other,c.EV_ITEM_PICKUP,ent.s.modelindex) end if
+  if type == c.IT_POWERUP or type == c.IT_TEAM then
+    temp = game.tempEntity(level,ent.s.pos.trBase,c.EV_GLOBAL_ITEM_PICKUP); temp.s.eventParm = ent.s.modelindex
+    if ent.speed == 0 then temp.r.svFlags = temp.r.svFlags | 32 else temp.r.svFlags = temp.r.svFlags | 256; temp.r.singleClient = other.s.number end if
+  end if
+  targets.useTargets(level,ent,other)
+  if ent.wait == -1 then
+    ent.r.svFlags = ent.r.svFlags | 1; ent.s.eFlags = ent.s.eFlags | 0x80; ent.r.contents = 0; ent.unlinkAfterEvent = true; return void
+  end if
+  if ent.wait != 0 then respawnTime = n.trunc32(ent.wait) end if
+  if ent.random != 0 then
+    respawnTime = textnum.truncDouble32(respawnTime+centeredRandom(level)*ent.random); if respawnTime < 1 then respawnTime = 1 end if
+  end if
+  if (ent.flags & FL_DROPPED_ITEM) != 0 then ent.freeAfterEvent = true end if
+  ent.r.svFlags = ent.r.svFlags | 1; ent.s.eFlags = ent.s.eFlags | 0x80; ent.r.contents = 0
+  if respawnTime <= 0 then ent.nextthink = 0; ent.think = void else ent.nextthink = n.add32(level.time,n.mul32(respawnTime,1000)); ent.think = respawn end if
+  return game.link(level,ent)
 end function
 function setFlagStatus(level,team,status)
   if status < 0 or status > 4 then return error(497,"Invalid flag status") end if

@@ -5280,6 +5280,20 @@
             "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "BG_CanItemBeGrabbed",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/trajectory.ml",
+            "src/mq3/game/jumppad.ml",
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset"
         }
       ],
       "target": [
@@ -6460,7 +6474,7 @@
             "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Actual dropped-item physics, collision, no-drop and frame dispatch are compared. The body suite separately covers the non-item corpse branch. Touch_Item remains open."
+          "scope": "Actual dropped-item physics, collision, no-drop and frame dispatch are compared. The body suite separately covers the non-item corpse branch."
         },
         {
           "original": "G_RunItem",
@@ -6470,7 +6484,77 @@
             "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Actual dropped-item physics, collision, no-drop and frame dispatch are compared. The body suite separately covers the non-item corpse branch. Touch_Item remains open."
+          "scope": "Actual dropped-item physics, collision, no-drop and frame dispatch are compared. The body suite separately covers the non-item corpse branch."
+        },
+        {
+          "original": "Pickup_Powerup",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
+        },
+        {
+          "original": "Pickup_Holdable",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
+        },
+        {
+          "original": "Add_Ammo",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
+        },
+        {
+          "original": "Pickup_Ammo",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
+        },
+        {
+          "original": "Pickup_Weapon",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
+        },
+        {
+          "original": "Pickup_Health",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
+        },
+        {
+          "original": "Pickup_Armor",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
         },
         {
           "original": "RespawnItem",
@@ -6480,7 +6564,17 @@
             "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
+          "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
+        },
+        {
+          "original": "Touch_Item",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
         },
         {
           "original": "LaunchItem",
@@ -6490,7 +6584,7 @@
             "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
+          "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
         },
         {
           "original": "Drop_Item",
@@ -6500,7 +6594,7 @@
             "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
+          "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
         },
         {
           "original": "Use_Item",
@@ -6510,7 +6604,7 @@
             "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
+          "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
         },
         {
           "original": "FinishSpawningItem",
@@ -6520,7 +6614,7 @@
             "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
+          "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
         },
         {
           "original": "G_ItemDisabled",
@@ -6530,7 +6624,7 @@
             "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
+          "scope": "Local baseq3 disabled-item Cvar lookup is implemented. The native item oracle fixes these Cvars to zero, so nonzero Cvar parity remains open."
         },
         {
           "original": "G_SpawnItem",
@@ -6540,7 +6634,7 @@
             "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
+          "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
         }
       ],
       "target": [
@@ -8110,6 +8204,17 @@
           "scope": "Baseq3 team frag bonuses, including native carrier-defense vector reuse, actual scores and SV_inPVS; PrintMsg delivery is an observed callback."
         },
         {
+          "original": "AddTeamScore",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
           "original": "Team_SetFlagStatus",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
@@ -8120,6 +8225,17 @@
           ],
           "status": "tested_subset",
           "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
+        },
+        {
+          "original": "Team_ForceGesture",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset"
         },
         {
           "original": "Team_CheckDroppedItem",
@@ -8146,6 +8262,17 @@
           "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
         },
         {
+          "original": "Team_ResetFlags",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
           "original": "Team_ReturnFlagSound",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
@@ -8156,6 +8283,28 @@
           ],
           "status": "tested_subset",
           "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
+        },
+        {
+          "original": "Team_TakeFlagSound",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "Team_CaptureFlagSound",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset"
         },
         {
           "original": "Team_ReturnFlag",
@@ -8192,6 +8341,39 @@
           ],
           "status": "tested_subset",
           "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
+        },
+        {
+          "original": "Team_TouchOurFlag",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "Team_TouchEnemyFlag",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "Pickup_Team",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset"
         }
       ],
       "target": [
@@ -8513,7 +8695,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8527,7 +8710,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8541,7 +8725,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8555,7 +8740,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8569,7 +8755,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8583,7 +8770,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8597,7 +8785,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8611,7 +8800,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8625,7 +8815,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8639,7 +8830,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8653,7 +8845,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8667,7 +8860,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8681,7 +8875,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8695,7 +8890,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8709,7 +8905,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8723,7 +8920,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8737,7 +8935,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8751,7 +8950,8 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -8765,7 +8965,23 @@
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_AddPredictableEvent",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/events.ml",
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         }
@@ -8778,7 +8994,8 @@
         "src/mq3/game/targets.ml",
         "src/mq3/game/events.ml",
         "src/mq3/compat/textnumbers.ml",
-        "src/mq3/game/bodies.ml"
+        "src/mq3/game/bodies.ml",
+        "src/mq3/game/items.ml"
       ],
       "status": "partial",
       "tests": [
@@ -8786,7 +9003,8 @@
         "scripts/test_spawn_values.py",
         "scripts/test_spawn.py",
         "scripts/test_targets.py",
-        "scripts/test_bodies.py"
+        "scripts/test_bodies.py",
+        "scripts/test_items.py"
       ]
     },
     {

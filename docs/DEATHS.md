@@ -51,7 +51,8 @@ werden als echte portierte Entities angelegt oder zurückgesetzt. Die optionalen
 Felder erlauben weiterhin isolierte Vertragstests. Der Vergleichshost beobachtet
 `PrintMsg` und verändert im `ClientSpawn`-Callback gezielt Position und
 Clientnummer, damit der nachfolgende Teleport-Effekt die Rückgabewerte wirklich
-verwendet. Item-Aufnahme, vollständige Spielerinitialisierung, Client-Frames und
+verwendet. Item-Aufnahme und CTF-Capture sind inzwischen in der Item-Suite
+verbunden. Vollständige Spielerinitialisierung, Client-Frames und
 Netzwerkzustellung folgen in weiteren Abschnitten von Schritt 6 und 7. Details zu
 den Entity-Pfaden stehen unter [Items und Flaggen](ITEMS.md).
 
