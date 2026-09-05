@@ -63,11 +63,17 @@ python scripts/test_server_world.py D:/Quake3 --no-curves
 python scripts/test_entitystate.py
 python scripts/test_transitions.py D:/Quake3
 python scripts/test_transitions.py D:/Quake3 --no-curves
+python scripts/test_spawn_values.py
+python scripts/test_spawn.py D:/Quake3
 ```
 
 Die Schnittstellen und ihre Grenzen sind unter
 [Server-Kollision](docs/SERVER_COLLISION.md) und
 [Trigger-/Teleport-Übergänge](docs/GAME_TRANSITIONS.md) beschrieben.
+Das [Spawn-Parsing](docs/SPAWNING.md) übernimmt inzwischen Worldspawn, Feld- und
+Spielmodusregeln sowie 19 Objektklassen. Sprungpads und Teleporter werden aus dem
+Kartentext angelegt und nach verzögerter Zielsuche mit echten Kontakten geprüft.
+Weitere Klassen, Item-Spawns und vollständige Serverframes bleiben offen.
 
 Auch die Sichtbarkeitsdaten eines Kartenpunkts und Traces gegen versetzte/gedrehte
 Modelle sind direkt abfragbar:

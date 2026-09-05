@@ -151,10 +151,14 @@ Abweichungen blockieren die nächste Spielabnahme. Voraussetzungen: 2–4.
 
 **Vorliegende Grundlage:** Die räumliche Server-Verlinkung, vollständigen
 EntityState-Speicherfelder, PlayerState-Umwandlung, Entity-Platzverwaltung,
-Target-Auswahl und Trigger-/Teleport-Übergänge sind umgesetzt. Als Nächstes folgen
-Spawn-Parsing mit den ursprünglichen Spawn-Funktionen, Ereignis-/Think-Verarbeitung
-im Serverframe, Schadens-/Todesregeln und Mover-Pushing. Der vollständige Server
-bleibt bis zu dieser Integration offen.
+Target-Auswahl und Trigger-/Teleport-Übergänge sind umgesetzt. Das Spawn-Parsing
+umfasst jetzt alle Feldregeln, Spielmodusfilter, Worldspawn und die originale
+Klassen-/Item-Auswahl. 19 Spawn-Klassen einschließlich Sprungpads und Teleportern,
+deren spätere Zielausrichtung sowie `G_RunThink` sind übertragen. Die 29 weiteren
+Klassen und Item-Spawns bleiben ausdrücklich offene Aufrufgrenzen; siehe
+[SPAWNING.md](SPAWNING.md). Als Nächstes folgen diese Spielobjekte, die Einbindung
+in vollständige Serverframes mit Ereignisfreigabe, Schadens-/Todesregeln und
+Mover-Pushing. Der vollständige Server bleibt bis zu dieser Integration offen.
 
 **Quellen:** `code/game/g_*.c` und `code/server/`.
 

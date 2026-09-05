@@ -4,7 +4,7 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die vollständige erweiterte Regression besteht aktuell aus 28 bestandenen
+Die vollständige erweiterte Regression besteht aktuell aus 30 bestandenen
 Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`). Der dabei gebaute
 MiniQuake3-Build hat SHA-256
 `cc6300243441369aa8aacdf2b52dde370f032d843296cdf09b34932b3e33e5d1`.
@@ -17,7 +17,7 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 392 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständige Server-/Client-Frames und Telefrag-Schadensfolgen fehlen |
-| 6. Spiel/Server | In Arbeit | Räumliche Server-Funktionen, vollständiger EntityState-Speicherdatensatz, Platzverwaltung, Target-Auswahl und Trigger-/Teleport-Übergänge vorhanden; Spawn-Parsing, Schadens-/Todesregeln, Mover-Pushing und Serverframes fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Feldregeln, Modusfilter, Worldspawn, 19 Spawn-Klassen, verzögerte Sprungpad-Ausrichtung und G_RunThink vorhanden; weitere Klassen, Item-Spawns, Schadens-/Todesregeln, Mover-Pushing und vollständige Serverframes fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -287,7 +287,7 @@ identische 32-Bit-Wörter. Darin enthalten sind 16.384 Pmove-/Link-/Touch-Befehl
 und 3.072 aufgezeichnete Telefrag-Schadensaufrufe. Die Bewegungsfolgen haben
 4.608 Frames mit aktivem und 11.776 Frames mit zurückgesetztem Sprungpad-Merker.
 Beide Profile verwenden dasselbe MiniLang-Testbinary
-(`c29ff4c36c41760ca3e21e4928d62ca0c8a6156a0f9102e7dd3aa4af6b7b0ab3`).
+(`4d662c17553396bf27f5435a962ac678ea52ab4120601bc61aeb799830916d52`).
 
 Die Tests initialisieren Game-Entities gezielt auf allen 31 CD-Karten und einer
 assetfreien Karte. Das Pmove/Link/Touch-Protokoll stammt aus dem Vergleichshost;
@@ -306,6 +306,47 @@ freigegebenen Platz ab; seine nominelle zweite Suchrunde erreicht diese Grenze
 nicht. Zwei separate C-Läufe prüfen diesen Fehler, fünf MiniLang-Vertragsproben
 prüfen Erschöpfung, Wiederverwendung genau nach 1.000 ms und Teleport ohne Client.
 Details der Schnittstellen stehen in [GAME_TRANSITIONS.md](GAME_TRANSITIONS.md).
+
+## Spawn-Parsing, Worldspawn und verzögerte Zielausrichtung
+
+Die neue Referenz kompiliert das vollständige ursprüngliche `g_spawn.c`.
+`test_spawn_values.py` vergleicht 4.096 Fälle, 771.688 Ergebniswörter und
+1.767.499 String-Bytes für alle 20 Feldregeln und die Spawn-Getter. Doppelte
+Schlüssel, Groß-/Kleinschreibung, Backslash-Regeln, Vorgabewerte, partielle Getter-
+Vektoren und CRT-Zahlengrenzen sind enthalten. Sechs separate C-Läufe bestätigen
+Parserfehler; 21 Laufzeitverträge prüfen weitere Grenzen der MiniLang-Schnittstelle.
+1.024 direkte `G_RunThink`-Vergleiche stimmen in 2.048 Wörtern überein, darunter
+Zeitwerte an der binary32-Grenze um 16.777.216 und an den signed-int-Grenzen.
+Ein separater C-Lauf bestätigt den Fehler eines fälligen, fehlenden Think-Callbacks.
+
+`test_spawn.py` prüft 168 Karten-/Spielmodus-Replays: alle 31 CD-Karten in den
+fünf Modi FFA, Tournament, Single Player, Team Deathmatch und CTF; zusätzlich
+eine konstruierte Karte mit zehn Moduswerten und drei Schwerkraftvarianten.
+16.903.929 Wörter und 2.199.299 String-Bytes stimmen exakt. Nach 849 Kontaktproben
+an tatsächlich geladenen Triggern tragen 754 PlayerStates einen Sprungpad-Merker
+und 139 das Teleport-Bit. Eine Probe kann durch überlappende Trigger beide Merker
+tragen; diese Zahlen zählen Ergebniszustände, nicht die Zahl einzelner Callbacks.
+Feld-, Think- und Kartenprüfung verwenden dasselbe MiniLang-Testbinary
+(`a475f1cf62cd25ecfd3bd3f29bcddfa3aa862b777cb9c6231749f9cd50550f5e`).
+
+19 der 48 Spawn-Klassen führen bereits die übertragenen Originalfunktionen aus.
+Worldspawn-Effekte, alle Spielmodusfilter, die frühe Brush-Modell-Verlinkung,
+die 100-ms-Zielausrichtung der Sprungpads und komplette PlayerStates nach
+Trigger-Kontakten sind enthalten. Einige originale Positions-/CTF-Spawn-Funktionen
+sind leer; manche andere geben ihre Entity unmittelbar frei. Die Abnahme bewahrt
+diese Funktionen, ohne damit bereits Spieler-Respawn oder CTF-Regeln zu behaupten.
+
+**Aufrufgrenzen:** 14.536 Item-/Klassenaufrufe werden in diesen Replays nur
+aufgezeichnet. Die 29 noch nicht portierten Klassen und `G_SpawnItem` erzeugen
+keine vereinfachten Ersatzregeln. Ohne gesetzten `unportedFn` bricht MiniLang an
+einer solchen bekannten Klasse kontrolliert ab. Der Testhost stellt Speicher und
+Configstring-/Cvar-Schnittstellen bereit; Netzwerkverteilung, vollständige Frames,
+Item-Initialisierung, Mover-Pushing und Ereignisfreigabe bleiben offen.
+
+Unvollständige Feldvektoren und ein abschließender `G_NewString`-Backslash haben
+im Original kein verlässlich initialisiertes Ergebnis und werden im Port
+abgewiesen. Getrennte Referenzprofile wären für andere CRTs, Locales oder QVM-
+Zahlentext-Konvertierungen nötig. Schnittstellen und Details: [SPAWNING.md](SPAWNING.md).
 
 ## Reproduzieren
 
@@ -349,6 +390,8 @@ python scripts/test_server_world.py D:/Quake3
 python scripts/test_entitystate.py
 python scripts/test_transitions.py D:/Quake3 --no-curves
 python scripts/test_transitions.py D:/Quake3
+python scripts/test_spawn_values.py
+python scripts/test_spawn.py D:/Quake3
 ```
 
 `inventory.py` aktualisiert bewusst den eingefrorenen Compilerstand. Für die

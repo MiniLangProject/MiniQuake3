@@ -31,6 +31,22 @@ struct Entity
   target
   targetname
   spawnflags
+  model
+  model2
+  speed
+  message
+  team
+  wait
+  random
+  count
+  health
+  damage
+  targetShaderName
+  targetShaderNewName
+  flags
+  movedir
+  nextthink
+  think
 end struct
 struct Level
   scene
@@ -43,12 +59,13 @@ struct Level
   doorTouch
   observeFn
   context
+  spawner
 end struct
 function blank(slot,r)
-  return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0)
+  return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0,void,void,0.0,void,void,0.0,0.0,0,0,0,void,void,0,[0.0,0.0,0.0],0,void)
 end function
 function create(world)
-  scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void)
+  scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void)
   for i = 0 to 1023
     level.entities = level.entities+[blank(i,scene.entities[i])]
   end for
@@ -107,6 +124,9 @@ function free(level,ent)
   ent.r = r; level.scene.entities[ent.slot] = r
   ent.s = es.create(); ent.client = void; ent.inuse = false; ent.classname = "freed"; ent.freetime = level.time
   ent.neverFree = false; ent.eventTime = 0; ent.freeAfterEvent = false; ent.touch = void; ent.target = void; ent.targetname = void; ent.spawnflags = 0
+  ent.model = void; ent.model2 = void; ent.speed = 0.0; ent.message = void; ent.team = void; ent.wait = 0.0; ent.random = 0.0
+  ent.count = 0; ent.health = 0; ent.damage = 0; ent.targetShaderName = void; ent.targetShaderNewName = void; ent.flags = 0
+  ent.movedir = [0.0,0.0,0.0]; ent.nextthink = 0; ent.think = void
   return void
 end function
 function setOrigin(ent,origin)

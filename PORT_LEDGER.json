@@ -5953,18 +5953,45 @@
         {
           "original": "SetClientViewAngle",
           "target_files": [
-            "src/mq3/game/teleport.ml"
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_info_player_deathmatch",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_info_player_start",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_info_player_intermission",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
-        "src/mq3/game/teleport.ml"
+        "src/mq3/game/teleport.ml",
+        "src/mq3/game/spawn_functions.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_entitystate.py",
-        "scripts/test_transitions.py"
+        "scripts/test_transitions.py",
+        "scripts/test_spawn.py"
       ]
     },
     {
@@ -6083,10 +6110,34 @@
       "sha256": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "gentity_s",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/spawn.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "level_locals_t",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/spawn.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/entities.ml",
+        "src/mq3/game/spawn.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_transitions.py",
+        "scripts/test_spawn_values.py",
+        "scripts/test_spawn.py"
+      ]
     },
     {
       "source": "code/game/g_main.c",
@@ -6130,10 +6181,23 @@
         "SortRanks",
         "vmMain"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "G_RunThink",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/spawn_functions.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_spawn_values.py",
+        "scripts/test_spawn.py"
+      ]
     },
     {
       "source": "code/game/g_mem.c",
@@ -6179,17 +6243,68 @@
         {
           "original": "TeleportPlayer",
           "target_files": [
-            "src/mq3/game/teleport.ml"
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_info_null",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_info_notnull",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_info_camp",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_light",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_misc_model",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_misc_teleporter_dest",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
-        "src/mq3/game/teleport.ml"
+        "src/mq3/game/teleport.ml",
+        "src/mq3/game/spawn_functions.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_transitions.py"
+        "scripts/test_transitions.py",
+        "scripts/test_spawn.py"
       ]
     },
     {
@@ -6263,10 +6378,22 @@
         "binary",
         "triggered"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "SP_path_corner",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/spawn_functions.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_spawn.py"
+      ]
     },
     {
       "source": "code/game/g_public.h",
@@ -6370,10 +6497,169 @@
         "SP_item_botroam",
         "SP_worldspawn"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "G_SpawnString",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_SpawnFloat",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_SpawnInt",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_SpawnVector",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "fields",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "spawns",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_CallSpawn",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_NewString",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_ParseField",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_SpawnGEntityFromSpawnVars",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_AddSpawnVarToken",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_ParseSpawnVars",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_worldspawn",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_SpawnEntitiesFromString",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_item_botroam",
+          "target_files": [
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/spawn.ml",
+        "src/mq3/game/spawn_tables.ml",
+        "src/mq3/game/spawn_values.ml",
+        "src/mq3/compat/textnumbers.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_spawn_values.py",
+        "scripts/test_spawn.py"
+      ]
     },
     {
       "source": "code/game/g_svcmds.c",
@@ -6637,10 +6923,22 @@
         "target_relay_use",
         "target_teleporter_use"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "SP_target_position",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/spawn_functions.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_spawn.py"
+      ]
     },
     {
       "source": "code/game/g_team.c",
@@ -6693,10 +6991,43 @@
         "Team_TouchOurFlag",
         "TeamplayInfoMessage"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "SP_team_CTF_redplayer",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_team_CTF_blueplayer",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_team_CTF_redspawn",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_team_CTF_bluespawn",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/spawn_functions.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_spawn.py"
+      ]
     },
     {
       "source": "code/game/g_team.h",
@@ -6738,24 +7069,60 @@
         {
           "original": "trigger_push_touch",
           "target_files": [
-            "src/mq3/game/triggers.ml"
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "trigger_teleporter_touch",
           "target_files": [
-            "src/mq3/game/triggers.ml"
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "InitTrigger",
+          "target_files": [
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "AimAtTarget",
+          "target_files": [
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_trigger_push",
+          "target_files": [
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_trigger_teleport",
+          "target_files": [
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
-        "src/mq3/game/triggers.ml"
+        "src/mq3/game/triggers.ml",
+        "src/mq3/game/spawn_functions.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_transitions.py"
+        "scripts/test_transitions.py",
+        "scripts/test_spawn.py"
       ]
     },
     {
@@ -6793,7 +7160,9 @@
           "original": "G_InitGentity",
           "target_files": [
             "src/mq3/game/entities.ml",
-            "src/mq3/game/teleport.ml"
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
         },
@@ -6801,7 +7170,9 @@
           "original": "G_Spawn",
           "target_files": [
             "src/mq3/game/entities.ml",
-            "src/mq3/game/teleport.ml"
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
         },
@@ -6809,7 +7180,9 @@
           "original": "G_EntitiesFree",
           "target_files": [
             "src/mq3/game/entities.ml",
-            "src/mq3/game/teleport.ml"
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
         },
@@ -6817,7 +7190,9 @@
           "original": "G_FreeEntity",
           "target_files": [
             "src/mq3/game/entities.ml",
-            "src/mq3/game/teleport.ml"
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
         },
@@ -6825,7 +7200,9 @@
           "original": "G_TempEntity",
           "target_files": [
             "src/mq3/game/entities.ml",
-            "src/mq3/game/teleport.ml"
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
         },
@@ -6833,7 +7210,9 @@
           "original": "G_SetOrigin",
           "target_files": [
             "src/mq3/game/entities.ml",
-            "src/mq3/game/teleport.ml"
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
         },
@@ -6841,7 +7220,9 @@
           "original": "G_Find",
           "target_files": [
             "src/mq3/game/entities.ml",
-            "src/mq3/game/teleport.ml"
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
         },
@@ -6849,7 +7230,9 @@
           "original": "G_PickTarget",
           "target_files": [
             "src/mq3/game/entities.ml",
-            "src/mq3/game/teleport.ml"
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
         },
@@ -6857,18 +7240,64 @@
           "original": "G_KillBox",
           "target_files": [
             "src/mq3/game/entities.ml",
-            "src/mq3/game/teleport.ml"
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_FindConfigstringIndex",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_ModelIndex",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_SoundIndex",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_SetMovedir",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
         "src/mq3/game/entities.ml",
-        "src/mq3/game/teleport.ml"
+        "src/mq3/game/teleport.ml",
+        "src/mq3/game/spawn_values.ml",
+        "src/mq3/game/spawn_functions.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_transitions.py"
+        "scripts/test_transitions.py",
+        "scripts/test_spawn_values.py",
+        "scripts/test_spawn.py"
       ]
     },
     {
@@ -12327,17 +12756,28 @@
         {
           "original": "SV_EntityContact",
           "target_files": [
-            "src/mq3/server/world.ml"
+            "src/mq3/server/world.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SV_SetBrushModel",
+          "target_files": [
+            "src/mq3/server/world.ml",
+            "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
-        "src/mq3/server/world.ml"
+        "src/mq3/server/world.ml",
+        "src/mq3/game/spawn_functions.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_transitions.py"
+        "scripts/test_transitions.py",
+        "scripts/test_spawn.py"
       ]
     },
     {

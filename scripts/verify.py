@@ -18,7 +18,7 @@ def main():
     if args.extended and not args.data_root: parser.error("--extended requires --data-root")
     scripts=[("build.py",[]),("test_numeric.py",[]),("test_math.py",[]),("test_core.py",[]),
              ("test_vm.py",[]),("test_archives.py",["--data-root",str(args.data_root)] if args.data_root else []),
-             ("test_rejections.py",[]),("test_brush.py",[]),("test_shared_game.py",[]),("test_entitystate.py",[])]
+             ("test_rejections.py",[]),("test_brush.py",[]),("test_shared_game.py",[]),("test_entitystate.py",[]),("test_spawn_values.py",[])]
     if args.data_root:
         scripts.append(("test_maps.py",[str(args.data_root)]))
         scripts.append(("test_runtime_trace.py",[str(args.data_root)]))
@@ -38,7 +38,8 @@ def main():
                         ("test_server_world.py",[str(args.data_root),"--no-curves"]),
                         ("test_server_world.py",[str(args.data_root)]),
                         ("test_transitions.py",[str(args.data_root),"--no-curves"]),
-                        ("test_transitions.py",[str(args.data_root)])])
+                        ("test_transitions.py",[str(args.data_root)]),
+                        ("test_spawn.py",[str(args.data_root)])])
     for name,arguments in scripts:
         print("[verify] "+name,flush=True)
         subprocess.run([sys.executable,ROOT / "scripts" / name,*arguments],check=True,cwd=ROOT)

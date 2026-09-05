@@ -55,8 +55,10 @@ mischt aufgezeichnete Touch-Aufrufe mit echten Pmove-Aufrufen. Zusätzlich prüf
 `test_transitions.py` jetzt `G_TouchTriggers`: Kandidatensuche, genaue Kontakte,
 Item-Sonderfall, Zuschauer-/Bot-Verhalten und das Zurücksetzen der Merker beim
 Verlassen. Teleport-Zustände und Telefrag-Aufrufe sind ebenfalls enthalten.
-Spawn-Parsing der Karte, Schadens-/Todesregeln, Mover-Pushing und vollständige
-Serverframes bleiben offen; siehe [GAME_TRANSITIONS.md](GAME_TRANSITIONS.md).
+Das [Spawn-Parsing](SPAWNING.md) legt inzwischen auch echte Karten-Trigger an und
+richtet Sprungpads verzögert auf ihre Targets aus. Weitere Spawn-Klassen,
+Schadens-/Todesregeln, Mover-Pushing und vollständige Serverframes bleiben offen;
+siehe [GAME_TRANSITIONS.md](GAME_TRANSITIONS.md).
 
 Die C-Prüfung bindet `sv_world.c` unverändert ein und kompiliert ursprüngliche
 Kollisions- und Bewegungsdateien. Drei vollständige Adressierungsfunktionen aus

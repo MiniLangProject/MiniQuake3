@@ -71,3 +71,9 @@ Pmove/Link/Touch-Aufrufprotokoll kommen aus dem Testhost. Das prüft noch keinen
 vollständigen `ClientThink`-/Serverframe und ersetzt nicht das Spawn-Parsing
 der ursprünglichen Karten-Entities. Das native Win32-`rand`-Profil ist getrennt
 von einem späteren QVM-Rand-Profil zu betrachten.
+
+Die zusätzliche [Spawn-Abnahme](SPAWNING.md) liest inzwischen die ursprünglichen
+Entity-Texte, verarbeitet Worldspawn und Spielmodusfilter und führt 19 originale
+Spawn-Klassen aus. Sie ergänzt die oben beschriebenen direkten Übergangstests um
+geladene Trigger, verzögerte Sprungpad-Ausrichtung und anschließende Kontakte.
+Weitere Klassen, Item-Spawns und der vollständige Serverframe bleiben offen.
