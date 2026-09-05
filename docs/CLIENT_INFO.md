@@ -91,13 +91,14 @@ das Teamoverlay durch Userinfo und prüfen anschließend `CheckTeamStatus`.
 Fehlerfälle** bestätigen die Ablehnung eines 8.192-Byte-Info-Strings und eines
 zu kleinen Fallback-Namenspuffers; MiniLang meldet hierfür kontrollierte Fehler.
 
-Test-Binary: `d12fc0bab2e3d6b784a3c2bd804e9dba104a72f5aeaf7120c9046c5b8f4ffcc6`.
-Native x86-Oracle: `61df38a5752d72b3a67a663c3da274f9766c3df09904706d955c6ba645d55aa8`.
+Test-Binary: `3e73baffa57a30c23583f322db2288cca3b5d6c31a45657b61c2be0addc02afc`.
+Native x86-Oracle: `3f3b09e05c46bb4d05f67cbe5f4ea6dba86a48fa2a5fe0d5e9ad388bbe31d243`.
 Einzelbericht: `build/reference/client_info/result.json`.
 
 Die Engine liefert Userinfo weiterhin über einen Callback. Serverbefehle und
 Log-Nutzlasten enden an geordneten Host-Grenzen; die tatsächliche
 Configstring-Speicherung ist vorhanden, ihre Netzwerkübertragung bleibt offen.
 `ClientConnect` und die Sitzungs-Cvars sind separat portiert und geprüft.
-IP-Filter, Bot-Einrichtung, `ClientDisconnect`, vollständige Teamwechsel,
-Modulstart, Client-Befehlsverteilung und Missionpack sind weitere Portschritte.
+[Teamwechsel und `ClientDisconnect`](TEAM_CHANGES.md) verwenden diese Abläufe
+inzwischen ebenfalls. IP-Filter, Bot-Einrichtung, Follow-Befehle, Modulstart,
+Client-Befehlsverteilung und Missionpack sind weitere Portschritte.

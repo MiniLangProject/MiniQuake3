@@ -196,7 +196,11 @@ Info-Schlüsselsuche und die ursprüngliche Userinfo-Puffergrenze.
 jetzt Passwortprüfung, Client-Reset, Sitzung, Userinfo und Rangberechnung.
 Speichern, Level-Neuaufbau und Wiederverbindung sind gegen C geprüft;
 IP-Filter und Bot-Einrichtung sind noch beobachtete Schnittstellen.
-Als Nächstes folgen vollständige Teamwechsel und `ClientDisconnect`; weitere
+[Teamwechsel, `team`, `StopFollowing` und `ClientDisconnect`](TEAM_CHANGES.md)
+führen inzwischen die tatsächlichen Todes-, Item-/Flaggen-, Leichen-, Leiter-,
+Userinfo-, Spawn- und Rangabläufe zusammen. 227 Szenarien vergleichen jeden
+Host-Aufruf und alle abschließenden Zustände mit C. Als Nächstes folgen die
+Follow-Befehle und das automatische Nachrücken in Tournament-Partien; weitere
 Spielobjekte, Client-Befehlsverteilung, Waffentreffer und Mover-Pushing bleiben offen.
 Der vollständige Server bleibt bis zu dieser Integration offen.
 
@@ -226,9 +230,11 @@ die tatsächliche `nextmap`-Cvar. `ClientUserinfoChanged`, `ClientCleanName`,
 und die Userinfo-Steuerung des Teamoverlays sind zusammenhängend geprüft.
 `ClientConnect`, Sitzungs-Persistenz in Engine-Cvars und Teamnachrichten sind
 ebenfalls portiert; vor einer erneuten Anmeldung werden alle modellierten
-Clientfelder zurückgesetzt. `ClientDisconnect`, vollständige Teamwechsel,
-Modulinitialisierung, Client-Befehlsverteilung und Netzwerkzustellung sind
-die nächsten Grenzen.
+Clientfelder zurückgesetzt. `SetTeam`, `Cmd_Team_f`, `StopFollowing` und
+`ClientDisconnect` sind ebenfalls portiert. Die Verbindung zu Bot-Warteschlange
+und Bot-Shutdown bleibt eine Pflichtschnittstelle. Follow-Befehle, Tournament-
+Nachrücken, Modulinitialisierung, Client-Befehlsverteilung und Netzwerkzustellung
+sind die nächsten Grenzen.
 Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.

@@ -169,10 +169,13 @@ function playerDie(level,self,inflictor,attacker,damage,meansOfDeath)
   if (contents & 0x80000000) == 0 then tossClientItems(level,self) else returnCarriedFlag(level,self,false) end if
   scores.commandScore(level,self)
   if level.maxclients < 0 or level.maxclients > 64 then return error(496,"Invalid death client limit") end if
-  for i = 0 to level.maxclients-1
+  // A zero client limit skips the C loop; MiniLang for would count backwards.
+  i = 0
+  while i < level.maxclients
     client = level.clients[i]
     if client.connected == 2 and client.team == c.TEAM_SPECTATOR and client.spectatorClient == self.s.number then scores.commandScore(level,level.entities[i]) end if
-  end for
+    i = i+1
+  end while
   self.takedamage = true; self.s.weapon = c.WP_NONE; self.s.powerups = 0; self.r.contents = 0x4000000
   self.s.angles[0] = 0.0; self.s.angles[2] = 0.0; bodies.lookAtKiller(level,self,inflictor,attacker)
   self.client.ps.viewangles = movement.copy(self.s.angles); self.s.loopSound = 0; self.r.maxs[2] = -8.0

@@ -99,8 +99,8 @@ lesen. MiniLang verlangt deshalb alle sieben Konvertierungen und meldet einen
 Fehler, bevor es Sitzungsfelder ändert. Solche Eingaben zählen nicht als gültige
 Differenzfälle. Eingebettete NUL-Bytes werden ebenfalls kontrolliert abgewiesen.
 
-Test-Binary: `d74af37cd894fac246e8354d61ebd65e6182093ade141b7808fe81a445c2b8d4`.
-Native x86-Oracle: `61df38a5752d72b3a67a663c3da274f9766c3df09904706d955c6ba645d55aa8`.
+Test-Binary: `ad872f995524f3f09789444e13faee9df6074dd6dd6a87035b0729f632f5f17b`.
+Native x86-Oracle: `3f3b09e05c46bb4d05f67cbe5f4ea6dba86a48fa2a5fe0d5e9ad388bbe31d243`.
 Einzelbericht: `build/reference/client_connect/result.json`.
 
 Der native Host modelliert die Session-Cvar-Speicherung; MiniLang verwendet seine
@@ -108,4 +108,6 @@ tatsächliche Registry, deren Engine-Regeln separat geprüft sind. IP-Filter,
 Bot-Einrichtung, Userinfo-Zustellung, Log und Serverbefehle enden an ausdrücklich
 beobachteten Schnittstellen. Configstrings werden lokal gespeichert;
 Netzwerkübertragung, kompletter Modulstart/-shutdown, Dateipersistenz,
-`ClientDisconnect`, vollständige Teamwechsel und Missionpack bleiben offen.
+Follow-Befehle, Tournament-Nachrücken und Missionpack bleiben offen.
+[Teamwechsel und `ClientDisconnect`](TEAM_CHANGES.md) sind inzwischen separat
+mit tatsächlicher Userinfo-, Spawn- und Rangverarbeitung geprüft.

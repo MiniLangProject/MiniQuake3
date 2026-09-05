@@ -21,8 +21,8 @@ Warmup, Cvar-Änderung, abgelaufenen Countdown, FFA-Bereitschaft, fehlendes
 CTF-Team, Singleplayer und einen 32-Bit-Zeitüberlauf. Drei Laufzeitverträge prüfen
 Spawn-Zustand, Promotion-Schnittstelle und Clientlimit.
 
-Test-Binary: `37b307966099ecdfcccd25712f2f2b4f51fa497ff248a7a9cf1df7c01afc87d5`.
-Native x86-Oracle: `61df38a5752d72b3a67a663c3da274f9766c3df09904706d955c6ba645d55aa8`.
+Test-Binary: `8c83ed1e9c85df9cea975cf6b0786b0e907cfa9d3e7666aa3426b1898ea8397f`.
+Native x86-Oracle: `3f3b09e05c46bb4d05f67cbe5f4ea6dba86a48fa2a5fe0d5e9ad388bbe31d243`.
 
 Ausführen:
 

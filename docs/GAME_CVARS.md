@@ -106,8 +106,8 @@ MiniLang-Fehler bleibt die letzte gültige VM-Kopie erhalten; der originale
 Engine-Abbruch mit teilweise geschriebenem Fehlerzustand wird nicht nachgebildet.
 Eingebettete NUL-Zeichen werden kontrolliert abgewiesen.
 
-Test-Binary: `a92dac832607c14a7334e51ea0303a4f892c9bd2023c7a5ff987aec1eb00a029`.
-Native x86-Oracle: `7686df254f37a2e42d3e47a60e92f253d20e58faf863e56b4a015c615920619e`.
+Test-Binary: `822be12b363ab57653237f8bb7d678bf2e2d5e92f248deeff0bf745c174f6a1b`.
+Native x86-Oracle: `b372543f4b8852ad45456bbc438df804735280aaaa5b72ac6648020c86afb632`.
 
 ```powershell
 python scripts/generate_game_cvars.py

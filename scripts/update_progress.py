@@ -170,6 +170,17 @@ def main():
     for source,(targets,symbols) in connect_mappings.items():
         old_targets,old_symbols,tests=mappings.get(source,([],[],[]))
         mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_client_connect.py"])))
+    team_change_mappings={
+        "code/game/g_cmds.c":(["src/mq3/game/team_changes.ml"],["SetTeam","StopFollowing","Cmd_Team_f"]),
+        "code/game/g_client.c":(["src/mq3/game/client_disconnect.ml"],["ClientDisconnect"]),
+        "code/game/g_combat.c":(["src/mq3/game/team_changes.ml","src/mq3/game/client_disconnect.ml"],[]),
+        "code/game/g_team.c":([],[]),
+        "code/game/g_main.c":(["src/mq3/game/cvars.ml"],[]),
+        "code/game/g_local.h":(["src/mq3/game/team_changes.ml","src/mq3/game/client_disconnect.ml","src/mq3/game/entities.ml"],[]),
+    }
+    for source,(targets,symbols) in team_change_mappings.items():
+        old_targets,old_symbols,tests=mappings[source]
+        mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_team_changes.py"])))
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text(encoding="utf-8"))
     for entry in ledger["files"]:
@@ -192,6 +203,11 @@ def main():
                     elif symbol["original"] in ("CheckVote","CheckTeamVote","PrintTeam","SetLeader","CheckTeamLeader"):
                         symbol["target_files"] = ["src/mq3/game/votes.ml"]
                         symbol["scope"] = "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged uses its ported default, with real team-vote integration in the userinfo suite; legacy vote suites retain an override. Engine delivery, complete command routing and network transport are open."
+            if entry["source"] == "code/game/g_cmds.c":
+                for symbol in entry["symbol_mapping"]:
+                    if symbol["original"] in ("SetTeam","StopFollowing","Cmd_Team_f"):
+                        symbol["target_files"] = ["src/mq3/game/team_changes.ml"]
+                        symbol["scope"] = "Unchanged Baseq3 team/spectator selection, force balance, capacity override, same-team guard, actual body/death/CTF/leader/userinfo/ClientBegin/Spawn/rank integration and exact command argc/cooldown/loss order. StopFollowing preserves unrelated session fields and clears PMF_FOLLOW/SVF_BOT. Every host effect and action compares all modeled clients, entityStates and selected private/spatial entity fields. Movement/end-frame are observed callbacks in this integration suite; defaults remain ported. Full ClientCommand/follow routing and tournament promotion remain open."
             if entry["source"] == "code/server/sv_init.c":
                 entry["symbol_mapping"][0]["scope"] = "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
             if entry["source"] == "code/qcommon/cvar.c":
@@ -242,7 +258,7 @@ def main():
             if entry["source"] == "code/game/g_combat.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] in ("TossClientItems","CheckAlmostCapture","CheckAlmostScored","player_die"):
-                        symbol["scope"] = "Baseq3 death lifecycle with actual score, body, hook, collision, PVS, Drop_Item and Team_ReturnFlag integration. PrintMsg and ClientSpawn remain explicit observed callbacks; no Missionpack or complete client/server frame."
+                        symbol["scope"] = "Baseq3 death lifecycle with actual score, body, hook, collision, PVS, Drop_Item and Team_ReturnFlag integration. PrintMsg delivery remains an observed callback. The legacy death suite observes ClientSpawn; the team-change suite executes real body/death/item/ClientBegin/Spawn/rank chains and verifies zero-limit spectator iteration. No Missionpack or complete client/server frame."
             if entry["source"] == "code/game/g_team.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] in ("Team_GetLocation","SortClients","TeamplayInfoMessage","CheckTeamStatus"):
@@ -260,7 +276,10 @@ def main():
                         symbol["scope"] = "Baseq3 entry lifecycle with actual ported ClientSpawn and CalculateRanks: unlink/reinit, playerState reset, entry event/message/log, tournament and spectator branches. Engine delivery remains at explicit callbacks."
                     elif symbol["original"] == "ClientConnect":
                         symbol["target_files"] = ["src/mq3/game/client_connect.ml","src/mq3/game/entities.ml"]
-                        symbol["scope"] = "Unchanged Baseq3 connection order: userinfo copy, IP decision, password rules based on the existing entity bot flag, persistent client rebinding/reset, actual session init/read, bot setup return, real UserinfoChanged, announcements and CalculateRanks. All 66 modeled client fields (including 117 playerState words), session storage and rank/configstring state are compared at every callback. IP filtering, bot setup, userinfo/command/log delivery are observed boundaries. Missing interfaces fail explicitly; no full engine connection transport, ClientDisconnect or bot AI."
+                        symbol["scope"] = "Unchanged Baseq3 connection order: userinfo copy, IP decision, password rules based on the existing entity bot flag, persistent client rebinding/reset, actual session init/read, bot setup return, real UserinfoChanged, announcements and CalculateRanks. All 66 modeled client fields (including 117 playerState words), session storage and rank/configstring state are compared at every callback. IP filtering, bot setup, userinfo/command/log delivery are observed boundaries. Missing interfaces fail explicitly; no full engine connection transport or bot AI. ClientDisconnect is separately ported and compared."
+                    elif symbol["original"] == "ClientDisconnect":
+                        symbol["target_files"] = ["src/mq3/game/client_disconnect.ml"]
+                        symbol["scope"] = "Unchanged Baseq3 engine callback: queued bot removal before NULL-client guard, actual StopFollowing, teleport-out and item/flag drops, tournament winner update, unlink/config clearing and CalculateRanks, then bot shutdown. Every effect and action compares all 66 modeled client fields (including 117 playerState words) in all slots and all allocated entityStates with selected private/spatial fields. Bot begin queue/shutdown and engine delivery remain explicit required interfaces; this is not the engine trap_DropClient implementation."
                     elif symbol["original"] == "TeamCount":
                         symbol["scope"] = "Baseq3 connected-client team counting, used by and compared through CheckTournament readiness decisions and PickTeam userinfo selection."
                     elif symbol["original"] in ("ClientCleanName","ClientUserinfoChanged","TeamLeader","PickTeam"):

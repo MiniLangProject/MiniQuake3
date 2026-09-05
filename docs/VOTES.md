@@ -54,8 +54,8 @@ Die Frame-Fälle führen inzwischen auch den portierten Teamstatus und
 `g_needpass`-Ausgabe wird verglichen. Dadurch ändern sich Wort-/Effektzahlen
 bei unverändertem Vote-Szenarienumfang.
 
-Test-Binary: `93c25743f4109bda3f91efb4b6d33069b180de706acece74dbf22fe28211a8a0`.
-Native x86-Oracle: `61df38a5752d72b3a67a663c3da274f9766c3df09904706d955c6ba645d55aa8`.
+Test-Binary: `f5c3e4d96b45513f2e191498e3eb31bab57b901623f8dc22444ad63ecdb1e3ba`.
+Native x86-Oracle: `3f3b09e05c46bb4d05f67cbe5f4ea6dba86a48fa2a5fe0d5e9ad388bbe31d243`.
 
 ```powershell
 python scripts/test_votes.py
@@ -71,9 +71,9 @@ Die Engine führt die im Test beobachteten Befehle nicht aus.
 Die Aufruf-/Stimmhandler `Cmd_CallVote_f`, `Cmd_Vote_f` und ihre Team-Pendants
 sind inzwischen separat geprüft, wie nachfolgend beschrieben.
 [`ClientConnect` und Sitzungs-Persistenz](CLIENT_CONNECT.md) sind inzwischen
-separat portiert; vollständige Teamwechsel und `ClientDisconnect` bleiben offen.
-`CheckTeamLeader` ist für diese späteren Teamwechsel bereits geprüft; im
-Frame erfolgt wie im Original ausschließlich die Vote-Auflösung.
+separat portiert. [Teamwechsel und `ClientDisconnect`](TEAM_CHANGES.md) sind
+ebenfalls geprüft, einschließlich der tatsächlichen Leiter-/Userinfo-Abläufe.
+Im Frame erfolgt wie im Original ausschließlich die Vote-Auflösung.
 
 ## Aufrufe und Stimmabgabe
 
@@ -141,8 +141,8 @@ und Modul-Rebind. Ist der originale Teamargument-Puffer voll und ein weiteres
 Argument würde `strcat` überlaufen lassen, gibt MiniLang einen kontrollierten
 Fehler zurück. Dieses undefinierte C-Speicherschreiben wird nicht ausgeführt.
 
-Test-Binary: `d8803b8dfe4aa040f282b1364f198fa49b661a0f685cdadb8e5160b2d7d08e67`.
-Native x86-Oracle: `61df38a5752d72b3a67a663c3da274f9766c3df09904706d955c6ba645d55aa8`.
+Test-Binary: `dbee97a3ea23663c13807e47239f28071343da2e0b67b4629db6596d5cdd3228`.
+Native x86-Oracle: `3f3b09e05c46bb4d05f67cbe5f4ea6dba86a48fa2a5fe0d5e9ad388bbe31d243`.
 
 ```powershell
 python scripts/test_vote_commands.py

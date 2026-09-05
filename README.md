@@ -8,7 +8,7 @@ dynamischer Entity-Kollision, Bewegungsbahnen, Sprungpad-Reaktionen und
 dem vollständigen baseq3-Pmove-Befehlszyklus, serverseitigen Item-Pickups,
 CTF-Flaggenabläufen, Tournament-/Warmup-Steuerung, Vote-Aufrufen/Stimmabgabe/Auflösung, Teamoverlay,
 Passwortstatus, Engine-/Spielmodul-Cvar-Aktualisierung, Namen/Userinfo/Teamwahl,
-`ClientConnect` und Sitzungsdaten, `ClientBegin`, `ClientSpawn`,
+`ClientConnect` und Sitzungsdaten, Team-/Zuschauerwechsel, `ClientDisconnect`, `ClientBegin`, `ClientSpawn`,
 `ClientThink` und `ClientEndFrame` ist
 vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
@@ -132,6 +132,10 @@ Teamleiterwechsel verwenden diese Verarbeitung standardmäßig.
 [`ClientConnect` und Sitzungsdaten](docs/CLIENT_CONNECT.md) ergänzen die
 Anmelderegeln, Client-Reset, Wiederverbindung und Speicherung über Levelwechsel.
 IP-Filter und Bot-Einrichtung bleiben beobachtete Schnittstellen.
+[Team-/Zuschauerwechsel und `ClientDisconnect`](docs/TEAM_CHANGES.md) verbinden
+den `team`-Befehl mit Tod, Leichenverwaltung, Item-/Flaggenabgabe, Teamleitern,
+Userinfo, erneutem Spawn und Ranglisten. Die Zuschauerfreigabe beim Disconnect
+und die Tournament-Siegregel sind gegen C geprüft.
 [`Tournament und Warmup`](docs/TOURNAMENT.md) steuert Spielerbereitschaft,
 Countdown und Maprestart. [`G_RunFrame`](docs/FULL_FRAME.md) führt Entity- und
 Clientframes, Tournament, Matchende und [globale/Team-Abstimmungen](docs/VOTES.md)

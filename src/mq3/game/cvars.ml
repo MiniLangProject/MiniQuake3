@@ -106,6 +106,9 @@ function syncValue(level,row)
     case "g_maxGameClients"
       level.maxGameClients = v.integer
     end case
+    case "g_teamForceBalance"
+      level.teamForceBalance = v.integer
+    end case
     case "g_speed"
       level.playerSpeed = v.value
     end case

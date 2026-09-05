@@ -24,8 +24,8 @@ durch den vollständigen Eintrittspfad. Fünf
 Laufzeitverträge prüfen Slotgrenzen, fehlende Pflichtschnittstellen und die
 Standardregistrierung des Callbacks.
 
-Test-Binary: `9a703824f0bdc49affc1bea1969f1687f4000711b4b78b898c66074af367e388`.
-Native x86-Oracle: `61df38a5752d72b3a67a663c3da274f9766c3df09904706d955c6ba645d55aa8`.
+Test-Binary: `46b97fb76cfdbbf760c87a43a4788bf5656a62556788890b24973a139ac9c221`.
+Native x86-Oracle: `3f3b09e05c46bb4d05f67cbe5f4ea6dba86a48fa2a5fe0d5e9ad388bbe31d243`.
 
 Userinfo, Usercmd, ServerCommand und Game-Log werden an geordneten Host-Grenzen
 zugestellt. Spawnwahl, Kollision, Targets, PlayerState-Konvertierung,
@@ -33,8 +33,10 @@ Entity-Verlinkung, Ereignis-Erzeugung und Rangberechnung laufen auf beiden Seite
 als echte Implementierungen. [`G_RunFrame`](FULL_FRAME.md) ist inzwischen
 separat geprüft. [`ClientConnect` und Sitzungs-Persistenz](CLIENT_CONNECT.md)
 sind ebenfalls portiert und vergleichen Userinfo, Teamwahl und Rangberechnung
-im Anmeldepfad. Die Engine-Zustellung von Connect zu Begin, `ClientDisconnect`,
-Netzwerk und Missionpack bleiben eigene Portschritte.
+im Anmeldepfad. [Teamwechsel und `ClientDisconnect`](TEAM_CHANGES.md) sind
+ebenfalls separat geprüft; `SetTeam` verwendet den tatsächlichen Begin-/Spawn-
+Ablauf. Die Engine-Zustellung von Connect zu Begin, Netzwerk und Missionpack
+bleiben eigene Portschritte.
 
 Ausführen:
 
