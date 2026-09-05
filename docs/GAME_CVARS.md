@@ -106,7 +106,7 @@ MiniLang-Fehler bleibt die letzte gültige VM-Kopie erhalten; der originale
 Engine-Abbruch mit teilweise geschriebenem Fehlerzustand wird nicht nachgebildet.
 Eingebettete NUL-Zeichen werden kontrolliert abgewiesen.
 
-Test-Binary: `4e7738fa8e7f9d2b40ea915eaff767eddea661ca0f179c5ad3b6d8b837e102cd`.
+Test-Binary: `a92dac832607c14a7334e51ea0303a4f892c9bd2023c7a5ff987aec1eb00a029`.
 Native x86-Oracle: `7686df254f37a2e42d3e47a60e92f253d20e58faf863e56b4a015c615920619e`.
 
 ```powershell
@@ -117,3 +117,8 @@ python scripts/test_game_cvars.py --case frame_password_and_empty_entities
 
 Dieser Nachweis schließt den Cvar-Refresh innerhalb des Spiel-Frames; eine
 vollständige Engine-/Modullaufzeit und ein spielbarer Gesamtport fehlen weiterhin.
+
+Die [Connect-/Sitzungssuite](CLIENT_CONNECT.md) prüft inzwischen zusätzlich die
+Übernahme von `g_teamAutoJoin` und `g_maxGameClients` in die Anmelderegeln.
+Registrierung und Refresh versorgen die Level-Felder; Sitzungsdaten werden über
+die tatsächliche Registry und deren Cvar-Set-Pfad gespeichert und gelesen.

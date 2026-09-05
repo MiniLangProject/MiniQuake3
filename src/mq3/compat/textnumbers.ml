@@ -56,3 +56,20 @@ function vector(text,initial)
   count = __stdio_common_vsscanf(0,text,len(bytes(text)),"%f %f %f",0,arguments)
   return [count,[n.bitsFloat(n.readU32(output,0)),n.bitsFloat(n.readU32(output,4)),n.bitsFloat(n.readU32(output,8))]]
 end function
+function sessionIntegers(text)
+  // Match the native game's seven %i conversions, including octal/hex input.
+  output = bytes(28,0); arguments = bytes(56,0)
+  for index = 0 to 6
+    pointer = nativeBytesPtr(output)+index*4
+    for b = 0 to 7
+      arguments[index*8+b] = (pointer >> (b*8)) & 255
+    end for
+  end for
+  count = __stdio_common_vsscanf(0,text,len(bytes(text)),"%i %i %i %i %i %i %i",0,arguments)
+  if count != 7 then return error(486,"Incomplete session data would read uninitialized C locals") end if
+  result = []
+  for index = 0 to 6
+    result = result+[n.readI32(output,index*4)]
+  end for
+  return result
+end function

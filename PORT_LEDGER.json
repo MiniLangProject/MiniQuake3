@@ -6133,7 +6133,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6148,7 +6151,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 player placement, persistent/session preservation, transient reset, handicap, inventory, spawn filters, target/weapon/link order and snapshots are compared. Userinfo uses shared case-insensitive first-key lookup after the original 1023-byte trap copy, including truncated handicap digits. Ported ClientThink and ClientEndFrame are the defaults; userinfo/usercmd delivery and intermission placement remain explicit host boundaries."
@@ -6164,7 +6170,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 entry lifecycle with actual ported ClientSpawn and CalculateRanks: unlink/reinit, playerState reset, entry event/message/log, tournament and spectator branches. Engine delivery remains at explicit callbacks."
@@ -6180,7 +6189,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 connected-client team counting, used by and compared through CheckTournament readiness decisions and PickTeam userinfo selection."
@@ -6196,7 +6208,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6211,7 +6226,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6226,7 +6244,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6241,7 +6262,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6256,7 +6280,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6271,7 +6298,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6286,7 +6316,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6301,7 +6334,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6316,7 +6352,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6331,7 +6370,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6346,7 +6388,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6361,7 +6406,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6376,7 +6424,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6391,7 +6442,10 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/shared/info.ml"
+            "src/mq3/shared/info.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset",
           "scope": "CopyToBodyQue and teleport event ordering are implemented; the default path executes ported ClientSpawn while the death suite retains an explicit test override."
@@ -6402,7 +6456,7 @@
             "src/mq3/game/client_info.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 name cleaning, userinfo update and team selection: byte/color/space limits, sticky local-client flag, prediction, rename order, handicap, team models, bot display team, overlay, exact player configstrings and log payloads. Full playerStates and relevant fields of all 64 clients are compared at delivery boundaries. Actual SetLeader/team-vote and overlay callers are integrated. Engine userinfo delivery, command/configstring network transport and log-file writes remain host boundaries; ClientConnect/session persistence and Missionpack are open."
+          "scope": "Unchanged Baseq3 name cleaning, userinfo update and team selection: byte/color/space limits, sticky local-client flag, prediction, rename order, handicap, team models, bot display team, overlay, exact player configstrings and log payloads. Full playerStates and relevant fields of all 64 clients are compared at delivery boundaries. Actual SetLeader/team-vote and overlay callers are integrated. ClientConnect and session persistence are separately compared, including noncanonical stored leader integers. Engine userinfo delivery, command/configstring network transport and log-file writes remain host boundaries; Missionpack is open."
         },
         {
           "original": "ClientUserinfoChanged",
@@ -6410,7 +6464,7 @@
             "src/mq3/game/client_info.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 name cleaning, userinfo update and team selection: byte/color/space limits, sticky local-client flag, prediction, rename order, handicap, team models, bot display team, overlay, exact player configstrings and log payloads. Full playerStates and relevant fields of all 64 clients are compared at delivery boundaries. Actual SetLeader/team-vote and overlay callers are integrated. Engine userinfo delivery, command/configstring network transport and log-file writes remain host boundaries; ClientConnect/session persistence and Missionpack are open."
+          "scope": "Unchanged Baseq3 name cleaning, userinfo update and team selection: byte/color/space limits, sticky local-client flag, prediction, rename order, handicap, team models, bot display team, overlay, exact player configstrings and log payloads. Full playerStates and relevant fields of all 64 clients are compared at delivery boundaries. Actual SetLeader/team-vote and overlay callers are integrated. ClientConnect and session persistence are separately compared, including noncanonical stored leader integers. Engine userinfo delivery, command/configstring network transport and log-file writes remain host boundaries; Missionpack is open."
         },
         {
           "original": "TeamLeader",
@@ -6418,7 +6472,7 @@
             "src/mq3/game/client_info.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 name cleaning, userinfo update and team selection: byte/color/space limits, sticky local-client flag, prediction, rename order, handicap, team models, bot display team, overlay, exact player configstrings and log payloads. Full playerStates and relevant fields of all 64 clients are compared at delivery boundaries. Actual SetLeader/team-vote and overlay callers are integrated. Engine userinfo delivery, command/configstring network transport and log-file writes remain host boundaries; ClientConnect/session persistence and Missionpack are open."
+          "scope": "Unchanged Baseq3 name cleaning, userinfo update and team selection: byte/color/space limits, sticky local-client flag, prediction, rename order, handicap, team models, bot display team, overlay, exact player configstrings and log payloads. Full playerStates and relevant fields of all 64 clients are compared at delivery boundaries. Actual SetLeader/team-vote and overlay callers are integrated. ClientConnect and session persistence are separately compared, including noncanonical stored leader integers. Engine userinfo delivery, command/configstring network transport and log-file writes remain host boundaries; Missionpack is open."
         },
         {
           "original": "PickTeam",
@@ -6426,7 +6480,16 @@
             "src/mq3/game/client_info.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 name cleaning, userinfo update and team selection: byte/color/space limits, sticky local-client flag, prediction, rename order, handicap, team models, bot display team, overlay, exact player configstrings and log payloads. Full playerStates and relevant fields of all 64 clients are compared at delivery boundaries. Actual SetLeader/team-vote and overlay callers are integrated. Engine userinfo delivery, command/configstring network transport and log-file writes remain host boundaries; ClientConnect/session persistence and Missionpack are open."
+          "scope": "Unchanged Baseq3 name cleaning, userinfo update and team selection: byte/color/space limits, sticky local-client flag, prediction, rename order, handicap, team models, bot display team, overlay, exact player configstrings and log payloads. Full playerStates and relevant fields of all 64 clients are compared at delivery boundaries. Actual SetLeader/team-vote and overlay callers are integrated. ClientConnect and session persistence are separately compared, including noncanonical stored leader integers. Engine userinfo delivery, command/configstring network transport and log-file writes remain host boundaries; Missionpack is open."
+        },
+        {
+          "original": "ClientConnect",
+          "target_files": [
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/entities.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 connection order: userinfo copy, IP decision, password rules based on the existing entity bot flag, persistent client rebinding/reset, actual session init/read, bot setup return, real UserinfoChanged, announcements and CalculateRanks. All 66 modeled client fields (including 117 playerState words), session storage and rank/configstring state are compared at every callback. IP filtering, bot setup, userinfo/command/log delivery are observed boundaries. Missing interfaces fail explicitly; no full engine connection transport, ClientDisconnect or bot AI."
         }
       ],
       "target": [
@@ -6438,7 +6501,10 @@
         "src/mq3/game/bodies.ml",
         "src/mq3/game/deaths.ml",
         "src/mq3/game/client_info.ml",
-        "src/mq3/shared/info.ml"
+        "src/mq3/shared/info.ml",
+        "src/mq3/game/client_connect.ml",
+        "src/mq3/game/session.ml",
+        "src/mq3/game/entities.ml"
       ],
       "status": "partial",
       "tests": [
@@ -6450,7 +6516,8 @@
         "scripts/test_tournament.py",
         "scripts/test_bodies.py",
         "scripts/test_deaths.py",
-        "scripts/test_client_info.py"
+        "scripts/test_client_info.py",
+        "scripts/test_client_connect.py"
       ]
     },
     {
@@ -6552,18 +6619,28 @@
           ],
           "status": "tested_subset",
           "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Command tokenization/full ClientCommand dispatch and engine/network command delivery remain boundaries."
+        },
+        {
+          "original": "BroadcastTeamChange",
+          "target_files": [
+            "src/mq3/game/session.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All unchanged Baseq3 team announcement branches and exact cp payloads/recipient, including spectator suppression and the two autojoin announcements inside ClientConnect. Server command transport remains a boundary."
         }
       ],
       "target": [
         "src/mq3/game/scores.ml",
-        "src/mq3/game/vote_commands.ml"
+        "src/mq3/game/vote_commands.ml",
+        "src/mq3/game/session.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_scores.py",
         "scripts/test_deaths.py",
         "scripts/test_vote_commands.py",
-        "scripts/test_client_info.py"
+        "scripts/test_client_info.py",
+        "scripts/test_client_connect.py"
       ]
     },
     {
@@ -6992,7 +7069,9 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/vote_commands.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset"
         },
@@ -7018,7 +7097,9 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/vote_commands.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset"
         },
@@ -7044,7 +7125,9 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/vote_commands.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset"
         },
@@ -7070,7 +7153,9 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/vote_commands.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/session.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset"
         }
@@ -7095,7 +7180,9 @@
         "src/mq3/game/cvar_maintenance.ml",
         "src/mq3/game/cvars.ml",
         "src/mq3/game/vote_commands.ml",
-        "src/mq3/game/client_info.ml"
+        "src/mq3/game/client_info.ml",
+        "src/mq3/game/session.ml",
+        "src/mq3/game/client_connect.ml"
       ],
       "status": "partial",
       "tests": [
@@ -7118,7 +7205,8 @@
         "scripts/test_team_status.py",
         "scripts/test_game_cvars.py",
         "scripts/test_vote_commands.py",
-        "scripts/test_client_info.py"
+        "scripts/test_client_info.py",
+        "scripts/test_client_connect.py"
       ]
     },
     {
@@ -7180,7 +7268,8 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset"
         },
@@ -7200,7 +7289,8 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament, exit rules, team status, global/team vote resolution and CheckCvars. Default Cvar refresh uses ported G_UpdateCvars and the engine registry; empty-entity frame probes compare that path, while legacy frame/gameplay suites retain an explicit refresh override. Mover/other physics dispatch and entity-list diagnostics remain callbacks."
@@ -7221,7 +7311,8 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 tournament promotion, player/team readiness, warmup Cvar changes, countdown and map restart are compared against the unchanged native body. AddTournamentPlayer and engine command delivery remain explicit observed callbacks."
@@ -7242,7 +7333,8 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset"
         },
@@ -7262,7 +7354,8 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
@@ -7283,7 +7376,8 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
@@ -7304,7 +7398,8 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset"
         },
@@ -7324,7 +7419,8 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset"
         },
@@ -7344,7 +7440,8 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
@@ -7365,7 +7462,8 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
@@ -7386,7 +7484,8 @@
             "src/mq3/game/cvar_maintenance.ml",
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
-            "src/mq3/game/client_info.ml"
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/client_connect.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
@@ -7490,7 +7589,8 @@
         "src/mq3/game/cvar_maintenance.ml",
         "src/mq3/game/cvars.ml",
         "src/mq3/game/cvar_tables.ml",
-        "src/mq3/game/client_info.ml"
+        "src/mq3/game/client_info.ml",
+        "src/mq3/game/client_connect.ml"
       ],
       "status": "partial",
       "tests": [
@@ -7507,7 +7607,8 @@
         "scripts/test_team_status.py",
         "scripts/test_game_cvars.py",
         "scripts/test_vote_commands.py",
-        "scripts/test_client_info.py"
+        "scripts/test_client_info.py",
+        "scripts/test_client_connect.py"
       ]
     },
     {
@@ -7925,10 +8026,61 @@
         "G_WriteClientSessionData",
         "G_WriteSessionData"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "G_WriteClientSessionData",
+          "target_files": [
+            "src/mq3/game/session.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All five unchanged Baseq3 session functions: seven-field serialization and native CRT %i scan, noncanonical leader integers, initial team/capacity rules, sticky newSession and connected-only shutdown writes. Actual team selection, broadcasts and ClientConnect callers are compared. MiniLang reads its real engine registry and uses registered Cvar set delivery; the native host models session Cvar storage. Level-reconstruction fixtures retain registry data. Incomplete scans are rejected before mutation because original C reads uninitialized locals; full engine/module restart and disk persistence are open."
+        },
+        {
+          "original": "G_ReadSessionData",
+          "target_files": [
+            "src/mq3/game/session.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All five unchanged Baseq3 session functions: seven-field serialization and native CRT %i scan, noncanonical leader integers, initial team/capacity rules, sticky newSession and connected-only shutdown writes. Actual team selection, broadcasts and ClientConnect callers are compared. MiniLang reads its real engine registry and uses registered Cvar set delivery; the native host models session Cvar storage. Level-reconstruction fixtures retain registry data. Incomplete scans are rejected before mutation because original C reads uninitialized locals; full engine/module restart and disk persistence are open."
+        },
+        {
+          "original": "G_InitSessionData",
+          "target_files": [
+            "src/mq3/game/session.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All five unchanged Baseq3 session functions: seven-field serialization and native CRT %i scan, noncanonical leader integers, initial team/capacity rules, sticky newSession and connected-only shutdown writes. Actual team selection, broadcasts and ClientConnect callers are compared. MiniLang reads its real engine registry and uses registered Cvar set delivery; the native host models session Cvar storage. Level-reconstruction fixtures retain registry data. Incomplete scans are rejected before mutation because original C reads uninitialized locals; full engine/module restart and disk persistence are open."
+        },
+        {
+          "original": "G_InitWorldSession",
+          "target_files": [
+            "src/mq3/game/session.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All five unchanged Baseq3 session functions: seven-field serialization and native CRT %i scan, noncanonical leader integers, initial team/capacity rules, sticky newSession and connected-only shutdown writes. Actual team selection, broadcasts and ClientConnect callers are compared. MiniLang reads its real engine registry and uses registered Cvar set delivery; the native host models session Cvar storage. Level-reconstruction fixtures retain registry data. Incomplete scans are rejected before mutation because original C reads uninitialized locals; full engine/module restart and disk persistence are open."
+        },
+        {
+          "original": "G_WriteSessionData",
+          "target_files": [
+            "src/mq3/game/session.ml",
+            "src/mq3/compat/textnumbers.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All five unchanged Baseq3 session functions: seven-field serialization and native CRT %i scan, noncanonical leader integers, initial team/capacity rules, sticky newSession and connected-only shutdown writes. Actual team selection, broadcasts and ClientConnect callers are compared. MiniLang reads its real engine registry and uses registered Cvar set delivery; the native host models session Cvar storage. Level-reconstruction fixtures retain registry data. Incomplete scans are rejected before mutation because original C reads uninitialized locals; full engine/module restart and disk persistence are open."
+        }
+      ],
+      "target": [
+        "src/mq3/game/session.ml",
+        "src/mq3/compat/textnumbers.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_client_connect.py"
+      ]
     },
     {
       "source": "code/game/g_spawn.c",

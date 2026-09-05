@@ -4,9 +4,10 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die aktuelle reguläre Regression besteht aus **33 bestandenen Prüfbereichen**
+Die aktuelle reguläre Regression besteht aus **34 bestandenen Prüfbereichen**
 (`verify.py --data-root D:/Quake3`), einschließlich Engine-/Spielmodul-Cvars, Teamstandorten/-overlay,
-Passwortstatus, Userinfo/Namen/Teamwahl, Vote-Aufrufen/Stimmabgabe und Vote-/Teamleiterregeln,
+Passwortstatus, Userinfo/Namen/Teamwahl, ClientConnect/Sitzungsdaten,
+Vote-Aufrufen/Stimmabgabe und Vote-/Teamleiterregeln,
 Spawnpunkten, Leichen, Punkten, Spieler-Tod, Items/Flaggen, vollständigen
 Client-Abläufen ab `ClientBegin`, `CheckTournament`, `G_RunFrame` und CLI-Laufzeitvergleichen.
 Alle 31 CD-Karten werden geladen; Schadens-, Projektil- und Leichenfälle laufen
@@ -15,8 +16,8 @@ ebenfalls auf den CD-Karten.
 Die letzte erweiterte Vollprüfung mit beiden Kollisions-/Bewegungsprofilen
 bestand **43 Prüfbereiche am Stand `f8cdf9a`**, vor den Vote-, Teamstatus- und Spiel-Cvar-Ports. Deren Bericht
 ist in der Git-Version dieses Stands archiviert. Die erweiterte Suite enthält
-nun 48 Gates; für den aktuellen Userinfo-Stand wurde die reguläre Suite ausgeführt.
-Der Lauf ist in `build/verify-client-info.log` protokolliert.
+nun 49 Gates; für den aktuellen Connect-/Sitzungsstand wurde die reguläre Suite ausgeführt.
+Der Lauf ist in `build/verify-client-connect.log` protokolliert.
 Der finale MiniQuake3-Build hat SHA-256
 `3a8c6f394b337404511f826e34404d0fd5f9c3011af6b7a4b2a96cc5321d99fb`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
@@ -28,7 +29,7 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, Engine-/VM-Cvar-Registrierung/-Aktualisierung und Spielmodul-Tabelle, 448 Parseraufrufe, Info-Schlüsselsuche/-Validierung und 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, Cvar-Neustart/Config-Persistenz, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung, Sprungpad-/Teleport-Replays, ClientBegin und G_RunFrame-Einbindung geprüft; komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Client-Abläufe ab ClientBegin, Userinfo/Namen/Teamwahl, Leichen, Items, Punkte, Ränge, Matchende, Tournament/Warmup, Vote-Aufrufe/Stimmabgabe/Auflösung, Teamleiterwahl, Teamstandorte/-overlay, Passwortstatus, Engine-Cvar-Refresh und CTF vorhanden; ClientConnect, Sitzungs-Persistenz, weitere Klassen, Mover-Pushing, vollständige Modulinitialisierung und Client-Befehlsverteilung fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, ClientConnect/Sitzungs-Cvars, Client-Abläufe ab ClientBegin, Userinfo/Namen/Teamwahl, Leichen, Items, Punkte, Ränge, Matchende, Tournament/Warmup, Vote-Aufrufe/Stimmabgabe/Auflösung, Teamleiterwahl, Teamstandorte/-overlay, Passwortstatus, Engine-Cvar-Refresh und CTF vorhanden; vollständige Teamwechsel, ClientDisconnect, IP-Filter, Bot-Einrichtung, weitere Klassen, Mover-Pushing, vollständige Modulinitialisierung und Client-Befehlsverteilung fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -634,7 +635,38 @@ Die tatsächliche Standardverbindung aus `SetLeader` läuft in vollständigen
 roten und blauen Team-Vote-Folgen; Userinfo-Änderungen steuern anschließend auch
 die echten Overlay-Nachrichten. Engine-Userinfo-Zustellung, Serverbefehle,
 Configstring-Netzwerktransport und Logdatei bleiben Host-Grenzen. `ClientConnect`
-und Sitzungs-Persistenz sind noch offen. Details: [CLIENT_INFO.md](CLIENT_INFO.md).
+und Sitzungs-Persistenz sind inzwischen separat portiert; deren Suite prüft
+zusätzlich nicht normalisierte Leiterwerte. Details: [CLIENT_INFO.md](CLIENT_INFO.md).
+
+## ClientConnect und Sitzungsdaten (Schritt 6)
+
+`scripts/test_client_connect.py` besteht mit **268 Szenarien**, **377 Aktionen**,
+**26.734.597 exakt gleichen 32-Bit-Wörtern**, **111.455.661 Ausgabe-Bytes** und
+**1.771 geordneten Nebenwirkungen**. 25 Laufzeitverträge ergänzen den Vergleich.
+
+`ClientConnect`, alle fünf Funktionen aus `g_session.c` und `BroadcastTeamChange`
+sind gegen ihre unveränderten Originalkörper geprüft. Enthalten sind IP-/
+Passwortreihenfolge, die Passwortausnahme anhand des bestehenden Bot-Flags,
+vollständiger Reset aller modellierten Clientfelder, Sitzungsinitialisierung
+und -lesen, Bot-Rückgabe, echte Userinfo-Verarbeitung, Teamnachrichten und echte
+Rangberechnung. Alle 66 modellierten Clientfelder in sämtlichen 64 Slots,
+einschließlich aller 117 PlayerState-Wörter, sowie Sitzungs-Cvars, Ränge und
+Configstrings werden an jeder Host-Grenze und nach jeder Aktion verglichen.
+
+Sitzungsfälle prüfen sieben native CRT-`%i`-Konvertierungen, Hex-/Oktalwerte,
+Integergrenzen und unveränderte Leiter-Integer, automatische Teamwahl,
+Spielerkapazität, das erhaltene `newSession`-Flag und das Speichern ausschließlich
+verbundener Clients. Schreiben → Level-Neuaufbau → Wiederverbindung erhält die
+tatsächliche MiniLang-Registry. Die Verbindung mit registrierten und aktualisierten
+`g_teamAutoJoin`-/`g_maxGameClients`-Kopien ist zusätzlich geprüft.
+
+Der native Host modelliert Session-Cvar-Speicherung. IP-Filter, Bot-Einrichtung,
+Userinfo-/Server-/Log-Zustellung bleiben beobachtete Schnittstellen. Unvollständige
+Scans werden vor einer MiniLang-Zustandsänderung kontrolliert abgewiesen;
+der Originalcode würde dabei nicht initialisierte lokale Variablen lesen.
+Vollständiger Engine-/Modullebenszyklus, `ClientDisconnect`, vollständige
+Teamwechsel, Dateipersistenz und Netzwerk bleiben offen.
+Details: [CLIENT_CONNECT.md](CLIENT_CONNECT.md).
 
 ## Vollständiger Spielserverframe (Schritt 6)
 

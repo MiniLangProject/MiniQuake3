@@ -100,6 +100,12 @@ function syncValue(level,row)
     case "g_allowVote"
       level.allowVote = v.integer
     end case
+    case "g_teamAutoJoin"
+      level.teamAutoJoin = v.integer
+    end case
+    case "g_maxGameClients"
+      level.maxGameClients = v.integer
+    end case
     case "g_speed"
       level.playerSpeed = v.value
     end case

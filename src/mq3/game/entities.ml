@@ -250,17 +250,51 @@ struct Level
   updateCvarsFn
   voteDisplayString
   allowVote
+  newSession
+  teamAutoJoin
+  maxGameClients
+  filterPacketFn
+  botConnectFn
+  gamePrintFn
+  cvarStringFn
 end struct
 function createClient(state,team,cmdAngles)
   return Client(state,team,cmdAngles,false,0,0,0,[0.0,0.0,0.0],false,0,0,0.0,0,void,0,0,0,0,0,0,"",false,0,0,0,0,0,0.0,0,0,0,false,0,0,0,0.0,0.0,
     false,false,false,0,0,0,0,0,false,0,0,false,0,0,0,0,0,0,0,0,0,[0.0,0.0,0.0],0,0,false,0,false,0,0)
+end function
+function resetClient(client)
+  // Keep the persistent client object identity while zeroing every modeled field.
+  fresh = createClient(ps.create(),0,[0,0,0])
+  client.ps = fresh.ps; client.team = fresh.team; client.cmdAngles = fresh.cmdAngles
+  client.noclip = fresh.noclip; client.damage_armor = fresh.damage_armor; client.damage_blood = fresh.damage_blood
+  client.damage_knockback = fresh.damage_knockback; client.damage_from = fresh.damage_from; client.damage_fromWorld = fresh.damage_fromWorld
+  client.lasthurt_client = fresh.lasthurt_client; client.lasthurt_mod = fresh.lasthurt_mod; client.lasthurtcarrier = fresh.lasthurtcarrier
+  client.accuracy_hits = fresh.accuracy_hits; client.hook = fresh.hook; client.connected = fresh.connected
+  client.spectatorState = fresh.spectatorState; client.spectatorClient = fresh.spectatorClient; client.spectatorTime = fresh.spectatorTime
+  client.enterTime = fresh.enterTime; client.accuracy_shots = fresh.accuracy_shots; client.netname = fresh.netname
+  client.readyToExit = fresh.readyToExit; client.lastkilled_client = fresh.lastkilled_client; client.respawnTime = fresh.respawnTime
+  client.rewardTime = fresh.rewardTime; client.lastKillTime = fresh.lastKillTime; client.cmdWeapon = fresh.cmdWeapon
+  client.lastfraggedcarrier = fresh.lastfraggedcarrier; client.fragcarrier = fresh.fragcarrier; client.carrierdefense = fresh.carrierdefense
+  client.basedefense = fresh.basedefense; client.predictItemPickup = fresh.predictItemPickup; client.captures = fresh.captures
+  client.flagrecovery = fresh.flagrecovery; client.assists = fresh.assists; client.lastreturnedflag = fresh.lastreturnedflag
+  client.flagsince = fresh.flagsince; client.localClient = fresh.localClient; client.initialSpawn = fresh.initialSpawn
+  client.pmoveFixed = fresh.pmoveFixed; client.maxHealth = fresh.maxHealth; client.teamStateState = fresh.teamStateState
+  client.teamStateLocation = fresh.teamStateLocation; client.voteCount = fresh.voteCount; client.teamVoteCount = fresh.teamVoteCount
+  client.teamInfo = fresh.teamInfo; client.wins = fresh.wins; client.losses = fresh.losses
+  client.teamLeader = fresh.teamLeader; client.cmdServerTime = fresh.cmdServerTime; client.cmdButtons = fresh.cmdButtons
+  client.cmdForwardmove = fresh.cmdForwardmove; client.cmdRightmove = fresh.cmdRightmove; client.cmdUpmove = fresh.cmdUpmove
+  client.lastCmdTime = fresh.lastCmdTime; client.buttons = fresh.buttons; client.oldbuttons = fresh.oldbuttons
+  client.latched_buttons = fresh.latched_buttons; client.oldOrigin = fresh.oldOrigin; client.accurateCount = fresh.accurateCount
+  client.inactivityTime = fresh.inactivityTime; client.inactivityWarning = fresh.inactivityWarning; client.airOutTime = fresh.airOutTime
+  client.fireHeld = fresh.fireHeld; client.switchTeamTime = fresh.switchTeamTime; client.timeResidual = fresh.timeResidual
+  return void
 end function
 function blank(slot,r)
   return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0,void,void,0.0,void,void,0.0,0.0,0,0,0,void,void,0,[0.0,0.0,0.0],0,void,void,void,false,false,0,0,void,false,0,void,void,void,0,void,void,0,0,0,0,0,0.0,void,void,void,0,0,0)
 end function
 function create(world)
   scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void,false,void,0,1000.0,0,void,0,array(256,0),1,0,[],[0.0,0.0,0.0],[0.0,0.0,0.0],[],0,0,array(64,0),array(4,0),0,0,0,0,0,0,array(2,0),0,0,0,0,false,0,void,void,void,0,void,void,void,void,0,0,0,0,0,0.0,0,5,30,0,void,void,void,void,void,0,false,void,800,320,0,false,8,false,0,void,void,void,void,void,void,void,void,0,false,void,0,20,0,0,void,void,
-    "",0,0,0,0,array(2,""),array(2,0),array(2,0),array(2,0),void,0,cvarMaintenance.create(),void,void,"",0)
+    "",0,0,0,0,array(2,""),array(2,0),array(2,0),array(2,0),void,0,cvarMaintenance.create(),void,void,"",0,false,0,0,void,void,void,void)
   for i = 0 to 1023
     level.entities = level.entities+[blank(i,scene.entities[i])]
   end for

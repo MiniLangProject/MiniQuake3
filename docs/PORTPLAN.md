@@ -191,9 +191,13 @@ Ergebnisfolgen und die Einbindung der Auflösung in echte Frames sind geprüft.
 an den ursprünglichen Frame-Positionen. [Namen, Userinfo und Teamwahl](CLIENT_INFO.md)
 aktualisieren jetzt Spielerangaben und Configstrings, auch innerhalb echter
 Team-Vote-/Leiterwechsel-Folgen. `ClientSpawn` verwendet dieselbe geprüfte
-Info-Schlüsselsuche und die ursprüngliche Userinfo-Puffergrenze. Als Nächstes
-folgen `ClientConnect` und Sitzungs-Persistenz; weitere Spielobjekte, vollständige
-Client-Befehlsverteilung, Waffentreffer und Mover-Pushing bleiben offen.
+Info-Schlüsselsuche und die ursprüngliche Userinfo-Puffergrenze.
+[`ClientConnect` und alle fünf Sitzungsfunktionen](CLIENT_CONNECT.md) verbinden
+jetzt Passwortprüfung, Client-Reset, Sitzung, Userinfo und Rangberechnung.
+Speichern, Level-Neuaufbau und Wiederverbindung sind gegen C geprüft;
+IP-Filter und Bot-Einrichtung sind noch beobachtete Schnittstellen.
+Als Nächstes folgen vollständige Teamwechsel und `ClientDisconnect`; weitere
+Spielobjekte, Client-Befehlsverteilung, Waffentreffer und Mover-Pushing bleiben offen.
 Der vollständige Server bleibt bis zu dieser Integration offen.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
@@ -220,8 +224,11 @@ Die vier Vote-Befehlshandler nutzen die registrierte `g_allowVote`-Kopie und
 die tatsächliche `nextmap`-Cvar. `ClientUserinfoChanged`, `ClientCleanName`,
 `TeamLeader` und `PickTeam` sind portiert; die Standardverbindung aus `SetLeader`
 und die Userinfo-Steuerung des Teamoverlays sind zusammenhängend geprüft.
-`ClientConnect`, Sitzungs-Persistenz, Modulinitialisierung, vollständige
-Client-Befehlsverteilung und Netzwerkzustellung sind die nächsten Grenzen.
+`ClientConnect`, Sitzungs-Persistenz in Engine-Cvars und Teamnachrichten sind
+ebenfalls portiert; vor einer erneuten Anmeldung werden alle modellierten
+Clientfelder zurückgesetzt. `ClientDisconnect`, vollständige Teamwechsel,
+Modulinitialisierung, Client-Befehlsverteilung und Netzwerkzustellung sind
+die nächsten Grenzen.
 Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.

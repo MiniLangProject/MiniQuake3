@@ -62,8 +62,8 @@ ungültigen Zustände werden kontrolliert abgewiesen und zählen nicht als
 Vergleich gültiger C-Eingaben. Clientbindungen müssen wie nach dem originalen
 `G_InitGame` für alle Slots unterhalb des Cvar-Clientlimits vorhanden sein.
 
-Test-Binary: `2d141fb4cf3a35dc3e857f3bf741e6761b1cbf4142710597bab132c484056c49`.
-Native x86-Oracle: `a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f`.
+Test-Binary: `723e4ea8b4a902a4990d6a6710418d2fefd67f493308fff9a19981b4f609894a`.
+Native x86-Oracle: `61df38a5752d72b3a67a663c3da274f9766c3df09904706d955c6ba645d55aa8`.
 
 ```powershell
 python scripts/test_team_status.py
@@ -78,6 +78,8 @@ Netzwerkzustellung und die Anzeige im Client bleiben offen. Die
 [Userinfo-Verarbeitung](CLIENT_INFO.md) ist inzwischen portiert; ihre separate
 Suite schaltet das Overlay über echte Spielerangaben ein und aus und prüft die
 anschließenden Teamstatus-Nachrichten. `Team_GetLocationMsg` für formatierte
-Ortsnamen, `ClientConnect` und Sitzungs-Persistenz sind weitere offene
-Spielpfade. [Vote-Aufrufe und Stimmabgabe](VOTES.md) sind inzwischen portiert
+Ortsnamen ist ein weiterer offener Spielpfad. [`ClientConnect` und
+Sitzungs-Persistenz](CLIENT_CONNECT.md) sind inzwischen separat portiert;
+vollständige Teamwechsel und `ClientDisconnect` bleiben offen.
+[Vote-Aufrufe und Stimmabgabe](VOTES.md) sind inzwischen portiert
 und separat geprüft. Dieser Nachweis macht den Port noch nicht spielbar.

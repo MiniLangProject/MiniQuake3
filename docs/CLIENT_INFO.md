@@ -4,8 +4,8 @@ Stand: 2026-09-05. `src/mq3/game/client_info.ml` portiert die Baseq3-Funktionen
 `ClientCleanName`, `ClientUserinfoChanged`, `TeamLeader` und `PickTeam` aus
 `g_client.c`. `src/mq3/shared/info.ml` ergänzt `Info_ValueForKey` und
 `Info_Validate` aus `q_shared.c`. Der normale Teamleiterwechsel verwendet jetzt
-diese Userinfo-Verarbeitung. Sie ist eine Voraussetzung für den noch offenen
-`ClientConnect`- und Sitzungsablauf.
+diese Userinfo-Verarbeitung. Der inzwischen portierte
+[`ClientConnect`- und Sitzungsablauf](CLIENT_CONNECT.md) verwendet sie ebenfalls.
 
 ## Übertragene Regeln
 
@@ -56,6 +56,8 @@ Bewahrt werden die beobachtbaren Originalregeln:
   Leiterflag in der Originalreihenfolge. Menschen ergänzen die Teamnamen,
   Bots den Skill. Der formatierte String darf mehr als 1.023 Bytes umfassen.
   Erst nach der Configstring-Aktualisierung folgt der Game-Log-Eintrag.
+  Nicht auf 0/1 normalisierte Leiterwerte aus gespeicherten Sitzungen bleiben
+  im Configstring erhalten; die Connect-Suite prüft diese Fälle separat.
 
 `teamLeader` findet das erste nicht getrennte Mitglied mit Leiterflag.
 `pickTeam` verwendet die portierte `TeamCount`-Funktion. Ein ausdrücklicher
@@ -89,12 +91,13 @@ das Teamoverlay durch Userinfo und prüfen anschließend `CheckTeamStatus`.
 Fehlerfälle** bestätigen die Ablehnung eines 8.192-Byte-Info-Strings und eines
 zu kleinen Fallback-Namenspuffers; MiniLang meldet hierfür kontrollierte Fehler.
 
-Test-Binary: `fd6a833ab5225b533a91726813c42a6fa836a2f2578649f8d70c459bc2d8236e`.
-Native x86-Oracle: `a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f`.
+Test-Binary: `d12fc0bab2e3d6b784a3c2bd804e9dba104a72f5aeaf7120c9046c5b8f4ffcc6`.
+Native x86-Oracle: `61df38a5752d72b3a67a663c3da274f9766c3df09904706d955c6ba645d55aa8`.
 Einzelbericht: `build/reference/client_info/result.json`.
 
 Die Engine liefert Userinfo weiterhin über einen Callback. Serverbefehle und
 Log-Nutzlasten enden an geordneten Host-Grenzen; die tatsächliche
 Configstring-Speicherung ist vorhanden, ihre Netzwerkübertragung bleibt offen.
-Vollständige Anmeldung über `ClientConnect`, Sitzungs-Persistenz, Modulstart,
-Client-Befehlsverteilung und Missionpack sind weitere Portschritte.
+`ClientConnect` und die Sitzungs-Cvars sind separat portiert und geprüft.
+IP-Filter, Bot-Einrichtung, `ClientDisconnect`, vollständige Teamwechsel,
+Modulstart, Client-Befehlsverteilung und Missionpack sind weitere Portschritte.

@@ -9,6 +9,12 @@ import mq3.game.tournament as tournament
 import mq3.compat.textnumbers as textnum
 import std.string as strings
 const SVF_BOT = 0x00000008
+function leaderValue(client)
+  // Session sscanf can preserve a noncanonical qboolean integer verbatim.
+  if typeof(client.teamLeader) == "int" then return client.teamLeader end if
+  if client.teamLeader then return 1 end if
+  return 0
+end function
 
 function cleanName(text,capacity)
   if capacity < 2 then return error(494,"Client name has no native fallback storage") end if
@@ -93,8 +99,7 @@ function changed(level,slot)
     else team = pickTeam(level,slot) end if
   end if
   overlay = infoStrings.value(info,"teamoverlay"); client.teamInfo = overlay == "" or textnum.atoi(overlay) != 0
-  task = textnum.atoi(infoStrings.value(info,"teamtask")); leader = 0
-  if client.teamLeader then leader = 1 end if
+  task = textnum.atoi(infoStrings.value(info,"teamtask")); leader = leaderValue(client)
   color1 = infoStrings.value(info,"color1"); color2 = infoStrings.value(info,"color2")
   redTeam = infoStrings.value(info,"g_redteam"); blueTeam = infoStrings.value(info,"g_blueteam")
   // Configstrings are formatted by va, not a MAX_INFO_STRING-sized sprintf.

@@ -160,6 +160,16 @@ def main():
     for source,(targets,symbols) in client_info_mappings.items():
         old_targets,old_symbols,tests=mappings[source]
         mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_client_info.py"])))
+    connect_mappings={
+        "code/game/g_session.c":(["src/mq3/game/session.ml","src/mq3/compat/textnumbers.ml"],["G_WriteClientSessionData","G_ReadSessionData","G_InitSessionData","G_InitWorldSession","G_WriteSessionData"]),
+        "code/game/g_client.c":(["src/mq3/game/client_connect.ml","src/mq3/game/session.ml","src/mq3/game/entities.ml"],["ClientConnect"]),
+        "code/game/g_cmds.c":(["src/mq3/game/session.ml"],["BroadcastTeamChange"]),
+        "code/game/g_main.c":(["src/mq3/game/client_connect.ml","src/mq3/game/cvars.ml"],[]),
+        "code/game/g_local.h":(["src/mq3/game/session.ml","src/mq3/game/client_connect.ml"],[]),
+    }
+    for source,(targets,symbols) in connect_mappings.items():
+        old_targets,old_symbols,tests=mappings.get(source,([],[],[]))
+        mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_client_connect.py"])))
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text(encoding="utf-8"))
     for entry in ledger["files"]:
@@ -194,6 +204,9 @@ def main():
                     if symbol["original"] in ("Info_ValueForKey","Info_Validate"):
                         symbol["target_files"] = ["src/mq3/shared/info.ml"]
                         symbol["scope"] = "Original info-string lookup: ASCII case-insensitive first key, optional leading separator, empty/malformed pairs, NULL lookup and 8191-byte bound. Validation excludes only quotes and semicolons. Embedded NUL and invalid copy capacity fail safely. Owned MiniLang strings replace C's alternating static result buffers; no pointer aliasing is claimed. ClientSpawn shares lookup and the original 1023-byte userinfo copy."
+            if entry["source"] == "code/game/g_session.c":
+                for symbol in entry["symbol_mapping"]:
+                    symbol["scope"] = "All five unchanged Baseq3 session functions: seven-field serialization and native CRT %i scan, noncanonical leader integers, initial team/capacity rules, sticky newSession and connected-only shutdown writes. Actual team selection, broadcasts and ClientConnect callers are compared. MiniLang reads its real engine registry and uses registered Cvar set delivery; the native host models session Cvar storage. Level-reconstruction fixtures retain registry data. Incomplete scans are rejected before mutation because original C reads uninitialized locals; full engine/module restart and disk persistence are open."
             if entry["source"] == "code/game/g_combat.c":
                 entry["symbol_mapping"][1]["scope"] = "Baseq3 damage state and pain/die/mover dispatch. player_die is connected and separately compared end to end; damage feedback, Missionpack and the full server frame remain open. G_Printf diagnostics are excluded."
             if entry["source"] == "code/game/g_missile.c":
@@ -220,6 +233,9 @@ def main():
                     if symbol["original"] in ("gameNames","Cmd_CallVote_f","Cmd_Vote_f","Cmd_CallTeamVote_f","Cmd_TeamVote_f"):
                         symbol["target_files"] = ["src/mq3/game/vote_commands.ml"]
                         symbol["scope"] = "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Command tokenization/full ClientCommand dispatch and engine/network command delivery remain boundaries."
+                    elif symbol["original"] == "BroadcastTeamChange":
+                        symbol["target_files"] = ["src/mq3/game/session.ml"]
+                        symbol["scope"] = "All unchanged Baseq3 team announcement branches and exact cp payloads/recipient, including spectator suppression and the two autojoin announcements inside ClientConnect. Server command transport remains a boundary."
                     else:
                         symbol["target_files"] = ["src/mq3/game/scores.ml"]
                         symbol["scope"] = "Exact scoreboard command payload and recipient; transport callback observed. No network transmission or client display."
@@ -242,11 +258,14 @@ def main():
                         symbol["scope"] = "Baseq3 player placement, persistent/session preservation, transient reset, handicap, inventory, spawn filters, target/weapon/link order and snapshots are compared. Userinfo uses shared case-insensitive first-key lookup after the original 1023-byte trap copy, including truncated handicap digits. Ported ClientThink and ClientEndFrame are the defaults; userinfo/usercmd delivery and intermission placement remain explicit host boundaries."
                     elif symbol["original"] == "ClientBegin":
                         symbol["scope"] = "Baseq3 entry lifecycle with actual ported ClientSpawn and CalculateRanks: unlink/reinit, playerState reset, entry event/message/log, tournament and spectator branches. Engine delivery remains at explicit callbacks."
+                    elif symbol["original"] == "ClientConnect":
+                        symbol["target_files"] = ["src/mq3/game/client_connect.ml","src/mq3/game/entities.ml"]
+                        symbol["scope"] = "Unchanged Baseq3 connection order: userinfo copy, IP decision, password rules based on the existing entity bot flag, persistent client rebinding/reset, actual session init/read, bot setup return, real UserinfoChanged, announcements and CalculateRanks. All 66 modeled client fields (including 117 playerState words), session storage and rank/configstring state are compared at every callback. IP filtering, bot setup, userinfo/command/log delivery are observed boundaries. Missing interfaces fail explicitly; no full engine connection transport, ClientDisconnect or bot AI."
                     elif symbol["original"] == "TeamCount":
                         symbol["scope"] = "Baseq3 connected-client team counting, used by and compared through CheckTournament readiness decisions and PickTeam userinfo selection."
                     elif symbol["original"] in ("ClientCleanName","ClientUserinfoChanged","TeamLeader","PickTeam"):
                         symbol["target_files"] = ["src/mq3/game/client_info.ml"]
-                        symbol["scope"] = "Unchanged Baseq3 name cleaning, userinfo update and team selection: byte/color/space limits, sticky local-client flag, prediction, rename order, handicap, team models, bot display team, overlay, exact player configstrings and log payloads. Full playerStates and relevant fields of all 64 clients are compared at delivery boundaries. Actual SetLeader/team-vote and overlay callers are integrated. Engine userinfo delivery, command/configstring network transport and log-file writes remain host boundaries; ClientConnect/session persistence and Missionpack are open."
+                        symbol["scope"] = "Unchanged Baseq3 name cleaning, userinfo update and team selection: byte/color/space limits, sticky local-client flag, prediction, rename order, handicap, team models, bot display team, overlay, exact player configstrings and log payloads. Full playerStates and relevant fields of all 64 clients are compared at delivery boundaries. Actual SetLeader/team-vote and overlay callers are integrated. ClientConnect and session persistence are separately compared, including noncanonical stored leader integers. Engine userinfo delivery, command/configstring network transport and log-file writes remain host boundaries; Missionpack is open."
                     if symbol["original"] == "respawn":
                         symbol["scope"] = "CopyToBodyQue and teleport event ordering are implemented; the default path executes ported ClientSpawn while the death suite retains an explicit test override."
             if entry["source"] == "code/game/g_active.c":
