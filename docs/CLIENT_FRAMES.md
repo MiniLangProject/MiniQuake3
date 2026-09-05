@@ -18,8 +18,8 @@ Zuschauer können einem direkten Client sowie follow1 und follow2 folgen. Dabei
 wird der vollständige PlayerState wie im C-Code als unabhängige Kopie übernommen;
 die eigenen Vote-Flags bleiben erhalten. Scoreboard-, freie und dedizierte
 Kamera-Zustände folgen den originalen Flagregeln. Verliert ein Zuschauer ein
-explizites gültiges Ziel, endet dieser Teil an der noch offenen
-ClientBegin-Schnittstelle.
+explizites gültiges Ziel, ruft der Ablauf den inzwischen portierten und beim
+Spawn registrierten `ClientBegin`-Pfad auf.
 
 scripts/test_client_frame.py extrahiert die sechs Originalfunktionen unverändert
 aus code/game/g_active.c und baut sie als MSVC-x86-Referenz mit
@@ -31,11 +31,12 @@ zwei zusätzliche Laufzeitverträge. Davon bilden 256 Fälle eine Matrix für
 Schadensrichtung, Kappung, Godmode und Pain-Debounce.
 
 Test-Binary: `9a4c8867955400cfaa854e19f5755e121c59a60f8d0ee4c01cff2c1cc15abbfe`.
-Native x86-Oracle: `4b9d84a1f28f6602956af36b64d64196b3d2d37355f5d1c7eb6c2fbb2fee0b49`.
+Native x86-Oracle: `5338d207d78a383c6fe14cd22e0d2e4baf549ac655cade8bea5d6e8e8509eb61`.
 
 Die Usercmd-/Pmove-Orchestrierung, ClientEvents und ClientTimerActions sind
-inzwischen gesondert unter [ClientThink](CLIENT_THINK.md) geprüft. Offen bleiben
-die vollständige ClientBegin-Verbindung, weitere Waffenpfade sowie die tatsächliche
+inzwischen gesondert unter [ClientThink](CLIENT_THINK.md) geprüft. Die vollständige
+Eintrittsverbindung ist unter [ClientBegin](CLIENT_BEGIN.md) geprüft. Offen bleiben
+weitere Waffenpfade sowie die tatsächliche
 Snapshot- und Netzwerkzustellung. Missionpack-Code gehört nicht zu dieser Baseq3-Abnahme.
 
 Ausführen:

@@ -13,6 +13,7 @@ import mq3.game.client_frame as clientFrame
 import mq3.game.client_active as clientActive
 import mq3.game.bodies as bodies
 import mq3.game.targets as targets
+import mq3.game.scores as scores
 import mq3.game.movement as movement
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
@@ -95,6 +96,7 @@ function spawn(level,ent,dieFn)
   if level.spawner == void then return error(496,"ClientSpawn requires game spawn state") end if
   client = ent.client; level.playerDieFn = dieFn
   if level.respawnFn == void then level.respawnFn = respawn end if
+  if level.clientBeginFn == void then level.clientBeginFn = clientBegin end if
   spawnOrigin = [0.0,0.0,0.0]; spawnAngles = [0.0,0.0,0.0]
   spawnPoint = selectPoint(level,ent,client,spawnOrigin,spawnAngles)
   client.teamStateState = 1
@@ -158,4 +160,28 @@ function spawn(level,ent,dieFn)
   if level.clientEndFrameFn != void then level.clientEndFrameFn(level,ent) else clientFrame.endFrame(level,ent) end if
   snapshot.fromPlayer(client.ps,ent.s,true)
   return void
+end function
+
+function clientBegin(level,clientNum)
+  if clientNum < 0 or clientNum >= len(level.clients) then return error(496,"Invalid ClientBegin slot") end if
+  if level.spawner == void then return error(496,"ClientBegin requires game spawn state") end if
+  if level.playerDieFn == void then return error(496,"ClientBegin requires the player death handler") end if
+  ent = level.entities[clientNum]; client = level.clients[clientNum]
+  if ent.r.linked then game.unlink(level,ent) end if
+  game.initEntity(ent); ent.touch = void; ent.pain = void; game.bindClient(level,ent,client)
+
+  client.connected = 2; client.enterTime = level.time; client.teamStateState = 0
+  flags = client.ps.eFlags; client.ps = playerstate.create(); client.ps.eFlags = flags
+  spawn(level,ent,level.playerDieFn)
+
+  if client.team != c.TEAM_SPECTATOR then
+    effect = game.tempEntity(level,client.ps.origin,c.EV_PLAYER_TELEPORT_IN); effect.s.clientNum = ent.s.clientNum
+    if level.spawner.gametype != 1 then
+      if level.serverCommandFn == void then return error(496,"ClientBegin requires server-command delivery") end if
+      level.serverCommandFn(level,-1,"print \""+client.netname+"^7 entered the game\n\"")
+    end if
+  end if
+  if level.gameLogFn == void then return error(496,"ClientBegin requires a game-log sink") end if
+  level.gameLogFn(level,"ClientBegin: "+str(clientNum)+"\n")
+  return scores.calculateRanks(level)
 end function

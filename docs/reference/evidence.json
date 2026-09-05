@@ -17,7 +17,7 @@
     "src/mq3/game/bodies.ml": "0d46d792e48f948f20664939db913eb23c53401db1f6d24579abd51561c3ef85",
     "src/mq3/game/client_active.ml": "a37216c5b4667a7aee9bf45a40a2c0867c5265578b508b6929ee9b87e7fea6d7",
     "src/mq3/game/client_frame.ml": "5c9a1f9423490a732cd0c3d72c5ac12ebaa85a568c53db1df20714092753df2a",
-    "src/mq3/game/client_spawn.ml": "d79651b7ac0a418c7a94a3d4d2b368bf29714654f9df332aa50a33d64106c267",
+    "src/mq3/game/client_spawn.ml": "d9523b9d4998ce4fb4d8b0db50a244c3a70ddf3c568ef18f0e235381536e44e0",
     "src/mq3/game/combat.ml": "c4bec13c9fd6185d9531f204b76e84803c07e93e2cf451ce831850454f10d05e",
     "src/mq3/game/constants.ml": "17c50c277b785e016d402b893aea941840cb6cb1971c53d6513c346332413065",
     "src/mq3/game/deaths.ml": "941ce334ecb591440767bdaf7aaeaebb5ca10a6ab7ba9d2742acb23e3b6ddb1e",
@@ -70,11 +70,12 @@
     "scripts/reference_replay.py": "075a5f4c35cad4d2cf5506106cfed1dcb56e8a61dd60e1de626f8df2c92de1e8",
     "scripts/reference_smoke.py": "ac1b75ffe774b460e6af3d51a4accd85642d4b5aab01f6ee0a503c95cf53d096",
     "scripts/spawn_fixtures.py": "f2228d4cb26b9039696ba523bc8ffa530244aa6e3b4937dd3fee2d9716c3e778",
-    "scripts/spawn_oracle.py": "0d765ee1bf6115450cb94494ea82c58d865ce61b481f3cf9bf07e6556bddaf80",
+    "scripts/spawn_oracle.py": "f5e132a0a994403a2aed8502dddb63c82e938fdbe06c6ac56cb1dd80289c318b",
     "scripts/test_archives.py": "61808f04bc53445facb09066ea90568a0f8e5cf65f03c12a421b38336061d1b4",
     "scripts/test_bodies.py": "0609b25afbf156c0087e85f736428467f0149a003c5a2c84eb80de0c332834a9",
     "scripts/test_brush.py": "f04dc9eae5ab89e4ed50e97e60fcc6e01d7c2ba86cd9156a27856fdb472985df",
-    "scripts/test_client_frame.py": "f67f8c17d62acb30f61307c3ce07a7d3b5cfd3642d5df52aaacb50bbde7f2a29",
+    "scripts/test_client_begin.py": "a5284eb0d4ec8faf3d60b68862f7d9935b3d61160a27d377aa2999b468611b9d",
+    "scripts/test_client_frame.py": "a6292c8d586383b95282ed6d809030e6a084b859567ff84b2c1e49ab61942678",
     "scripts/test_client_spawn.py": "8dc32eeaabd9cb55d28b00942d790295eef6ecfef4c2d8ee402138f4775640bb",
     "scripts/test_client_think.py": "c6a6bbd7dbd80da1a5ed8a72fb1c66b72a8b9c3505ce24c5b313b04fa0b16344",
     "scripts/test_collision.py": "36369bb61e23ae36be1fe8978327ea8486c233564b6d8f7323d6ca22b3f094fe",
@@ -107,10 +108,11 @@
     "scripts/test_vm.py": "3b37f6706b71b2ac42eec878e048db36e61ad08a78474fcd3ba8a04d09f8c51e",
     "scripts/toolchain.py": "eab72f9e2edb9680c382fccf55533e766b2177d257276a29de363e73e545716a",
     "scripts/transition_oracle.py": "b094c961cde9941d9230cd2af4d4e11a40428705dab40b8f878c1d7e72481d4a",
-    "scripts/update_progress.py": "db85298df3d3f9fa34480cabbc388c993c5de205041b6233b404970c1dca37db",
-    "scripts/verify.py": "cf6af5a1b59fb945ad142871d7c10051d2db84aea5e3b8139c066a5abfd167ee",
+    "scripts/update_progress.py": "fd27ccfbfd77edf6c77ab4adc38efd594a2f982c1f121ae659795daa0a012475",
+    "scripts/verify.py": "12f8497ca2d283091ccc0b15863d064572306303dadce9a07efd7cd8747ed61a",
     "tests/archive_tests.ml": "a7266b1d1a15881f117d18344eafc1a03d47e4be053ce42c0616248164510e0c",
     "tests/brush_tests.ml": "a30eee67deb4580b649d643024c9f08acd9c5df7b28cbb2be6289cad151fce04",
+    "tests/client_begin_tests.ml": "13bc656a05096362903674ae13ce238fef25b2bfaaf43adba2c47932404e6168",
     "tests/client_frame_tests.ml": "d9148deeb3bfeb1ff5758e5c6c1eebb6171a9a6a41c84064db916f8781a252a9",
     "tests/client_spawn_tests.ml": "50e2ce59958cd790c34a22d49780b403979b23e8f3a1541e09f96bc1f2148400",
     "tests/client_think_tests.ml": "48cc202274396f1f26e8c473b07b3e9c4477192a0bb5541da57dfb20e22fb1a3",
@@ -126,7 +128,7 @@
     "tests/reference/body_actions.inc": "e9c6da40d6c9e1da89f6037ed90bd43a896416dd6ca4e6f0859529ee4ea43a26",
     "tests/reference/brush_oracle.c": "87e510bf27e6340cf4f8c4bff61b6cfc3673a51de10d1fc84a1507e63ac0ad7a",
     "tests/reference/client_frame_actions.inc": "227eae10508d6768a0433653b5c425629345673bc7cd49ce5f2107ae4f36fa9f",
-    "tests/reference/client_spawn_actions.inc": "53d02ad642947cd2d360b719cbc4e7810593df825a5e45bb4d49d5cfdb6832e2",
+    "tests/reference/client_spawn_actions.inc": "28c6f7789356632e51a5fa0db2410f8065f60dd6b10daac08c5ea38293a157cc",
     "tests/reference/client_think_actions.inc": "9fc435a9f727f2aaac477a032462ae634cb7381545f142a5e4bdd494b89dfc36",
     "tests/reference/collision_oracle.c": "29ce058bc66079c7b17ccacf09d7c09f4a8ea397bf951c67ea2406784d6cb1bb",
     "tests/reference/combat_actions.inc": "ed0dd9a29522f0db357fa416e3c8571e61055b2dab9e98bd6ef715d24152c169",
@@ -144,7 +146,7 @@
     "tests/reference/server_world_oracle.c": "93511d75377005303e3ac34d915ee32793245641b65b44e9f2b8c1f2ec934fc3",
     "tests/reference/shared_game_oracle.c": "189875a93caa876ef1d53c75f0d25f1a1fc24e0c9fcca6541392490f6661d04f",
     "tests/reference/spatial_oracle.c": "00a2b131fff36f2a377f09274f3845625ca6c35d47ea7558eb01915ce5d0737c",
-    "tests/reference/spawn_oracle.c": "1a05a819d6f334cf63abfcd4023bdd3becf419c50d8006f7bd4c2a949cd6ba5a",
+    "tests/reference/spawn_oracle.c": "46090997d8437769ec181bfd0832e3399e64c6f8d8c02500184d58f8a57e71b2",
     "tests/reference/spawn_server.c": "779e8ecc04153f3c13508732e80e07b673326c4e00e9e71516ad5025a259d3c8",
     "tests/reference/target_actions.inc": "eeb694b26ba9a5c3cf54324443abf75612a4dd600eb46c300bca28e3a708726e",
     "tests/reference/transition_oracle.c": "52483281f090e375f082dafc64f6ea64bf23077ef74ce30b4b6f94da028e4a8d",
@@ -174,7 +176,7 @@
     },
     {
       "path": "build/reference/bodies/result.json",
-      "sha256": "cc9b722c08039b193cc43457d79431ad1007973a71adfac6f28244db2235d937",
+      "sha256": "b70c0fa3bbd967b22e6bd9bd8deb4e610773bad0d437b287a7fa1c6aa1d2c6ae",
       "result": {
         "passed": true,
         "scenarios": [
@@ -55321,7 +55323,7 @@
           72,
           1
         ],
-        "test_sha256": "ac0d221f605f5b2ea412fe6a76f15b8e1d4d2a2b51a3da0550ebf7e84fe30133",
+        "test_sha256": "5e1ef658b24153b7a66ba17f05b5897bdbc2789647550b77e0051b4078cb1cf2",
         "scope": "Baseq3 spawn selection, body queue, gib/dead-yaw helpers and non-item corpse physics. player_die and the respawn wrapper are covered by test_deaths; item entities are covered separately by test_items; ClientSpawn orchestration is covered by test_client_spawn. Undefined C deathmatch spawn-array overflow is rejected in MiniLang.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -55371,8 +55373,500 @@
       }
     },
     {
+      "path": "build/reference/client_begin/result.json",
+      "sha256": "c7c6495f3584b02dbb9af1dad445aecd2368d001ebe00d5bb755c863b9feffa1",
+      "result": {
+        "passed": true,
+        "scenarios": [
+          {
+            "name": "ffa_regular",
+            "exact_words": 365,
+            "bytes": 1526,
+            "events": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                4,
+                65
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                3,
+                72
+              ],
+              [
+                9,
+                -1
+              ],
+              [
+                10,
+                null
+              ],
+              [
+                "config",
+                6
+              ],
+              [
+                "config",
+                7
+              ]
+            ],
+            "inputs_sha256": "0546f1f1a7195d8b2c744832f3eb93da2844febf4420466a4ec429580dce797e",
+            "expected_sha256": "a203af84b246c0286640954537ba96311f7ebe29b4c02bb701c7e02ded201c10"
+          },
+          {
+            "name": "linked_team_change",
+            "exact_words": 368,
+            "bytes": 1538,
+            "events": [
+              [
+                8,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                4,
+                65
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                3,
+                72
+              ],
+              [
+                9,
+                -1
+              ],
+              [
+                10,
+                null
+              ],
+              [
+                "config",
+                6
+              ],
+              [
+                "config",
+                7
+              ]
+            ],
+            "inputs_sha256": "5e0d50eda7b8844a9c9897524ae54a08310b74772c06c5d6ab13e4b5c7c0d83e",
+            "expected_sha256": "246b9b93d63bacdf32fd56f6eae75b6d6c1730008ca5fbdfc7960aee7ac8441e"
+          },
+          {
+            "name": "tournament_suppresses_announcement",
+            "exact_words": 361,
+            "bytes": 1471,
+            "events": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                4,
+                65
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                3,
+                72
+              ],
+              [
+                10,
+                null
+              ],
+              [
+                "config",
+                6
+              ],
+              [
+                "config",
+                7
+              ]
+            ],
+            "inputs_sha256": "3e3c155c2af3c4547463e7d6b92c8c7c458332c091c5e76e56ad10b3096c943d",
+            "expected_sha256": "22e0b2423b6aece220371770781cc761a351a282d4690f17191e0f79dc92ef6f"
+          },
+          {
+            "name": "spectator",
+            "exact_words": 349,
+            "bytes": 1423,
+            "events": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                10,
+                null
+              ],
+              [
+                "config",
+                6
+              ],
+              [
+                "config",
+                7
+              ]
+            ],
+            "inputs_sha256": "43f0f29360cdfad0c8e99f60e82578c02467637932e2dda4055ac381704188e5",
+            "expected_sha256": "20fa93f69c03213846d2bcbfa855f54a5da96b4fb318deb11443f712e6dfe849"
+          },
+          {
+            "name": "active_intermission",
+            "exact_words": 369,
+            "bytes": 1583,
+            "events": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                5,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                3,
+                72
+              ],
+              [
+                9,
+                -1
+              ],
+              [
+                10,
+                null
+              ],
+              [
+                "config",
+                6
+              ],
+              [
+                "config",
+                7
+              ],
+              [
+                9,
+                0
+              ]
+            ],
+            "inputs_sha256": "db41b105646be1cd9abdbe439a794bff6687df87448628388b4c6b0d600de79b",
+            "expected_sha256": "11b720709393c7a081a7b9eba26661e3c4a9dcce53940ac068f1ef14bdb1fe29"
+          },
+          {
+            "name": "ctf_blue_begin",
+            "exact_words": 365,
+            "bytes": 1522,
+            "events": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                4,
+                69
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                3,
+                72
+              ],
+              [
+                9,
+                -1
+              ],
+              [
+                10,
+                null
+              ],
+              [
+                "config",
+                6
+              ],
+              [
+                "config",
+                7
+              ]
+            ],
+            "inputs_sha256": "6ba581b8789db70d6f62801a86015565d1d60c95927ce3137858ebc85e96497f",
+            "expected_sha256": "73075c68e3da42894249d885435b3e8ffd0d0d1f230f1aae4b7c989734c26be2"
+          },
+          {
+            "name": "rank_with_other_client",
+            "exact_words": 365,
+            "bytes": 1522,
+            "events": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                4,
+                65
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                3,
+                72
+              ],
+              [
+                9,
+                -1
+              ],
+              [
+                10,
+                null
+              ],
+              [
+                "config",
+                6
+              ],
+              [
+                "config",
+                7
+              ]
+            ],
+            "inputs_sha256": "fa415106b26b5229a8626b87ef8d2c39982ee7b3389f43e5706bb92200977649",
+            "expected_sha256": "380ca6f2da1427dd4ee297d9e9630481d766566e6d3088a4dd420284898ccda5"
+          },
+          {
+            "name": "wrapped_time_and_flags",
+            "exact_words": 365,
+            "bytes": 1526,
+            "events": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                4,
+                65
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                3,
+                72
+              ],
+              [
+                9,
+                -1
+              ],
+              [
+                10,
+                null
+              ],
+              [
+                "config",
+                6
+              ],
+              [
+                "config",
+                7
+              ]
+            ],
+            "inputs_sha256": "0c0ec1bd64928e3f454612b6cdb0ab7e185ceca23b418e339182fd02610a1731",
+            "expected_sha256": "c37e8414626247c6660b6823e3dd94287fc8f2ec21704bd6c6fe88ece47fb1cb"
+          }
+        ],
+        "scenario_count": 8,
+        "exact_words": 2907,
+        "output_bytes": 12111,
+        "ordered_boundary_events": 92,
+        "runtime_contracts": 5,
+        "test_sha256": "3ff25819fe33941ce5fabff102995ce61fa3789bc8fbaa234fe01014de01b1e2",
+        "oracle_sha256": "5338d207d78a383c6fe14cd22e0d2e4baf549ac655cade8bea5d6e8e8509eb61",
+        "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+        "scope": "Verbatim Baseq3 ClientBegin with actual ported ClientSpawn and CalculateRanks: unlink/reinit, persistent client rebinding, playerState reset with eFlags preservation, spawn, entry event and announcement, game log, rankings and tournament/spectator suppression. Engine userinfo, usercmd, command and log delivery remain deterministic observed host boundaries.",
+        "original_sources": {
+          "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
+          "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
+          "Quake-III-Arena-original-source/code/qcommon/cm_test.c": "2e5d1139c88a5ffc6dea01349865f91d210158491931090d4c7f07d3f11cf4e8",
+          "Quake-III-Arena-original-source/code/qcommon/cm_patch.c": "9fd50664bb46f77a6bf3f7d06a69500867bff1cae4b94c9be168c4ad9e03ca1f",
+          "Quake-III-Arena-original-source/code/qcommon/cm_polylib.c": "b1c1cf3a19ada8682b4ca58556b316144940f5bee5ca59ae4dd6ebe1a947a6ec",
+          "Quake-III-Arena-original-source/code/qcommon/md4.c": "fc5be3df4b9c463711e428b98bdc357351e5aeaa13e785073ec7a5921ccc5b4c",
+          "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29",
+          "Quake-III-Arena-original-source/code/game/q_shared.c": "724dae5f0a9de8bc6ced68893f9f59c5625deca4a1e194b11f5be348fdf2481b",
+          "Quake-III-Arena-original-source/code/game/bg_misc.c": "c71034761ec3f75fd8952f2d75a7f057d664b5cf97b5edf26ae020da65a486e0",
+          "Quake-III-Arena-original-source/code/game/bg_pmove.c": "3ced04aed8686d3da051887dc8c4ace88a24b45a6d0bb4e4d5238cd53cb7a7fc",
+          "Quake-III-Arena-original-source/code/game/bg_slidemove.c": "327fa83a0c523da8a7e8b4fbbbba40cf8870a28613459289ef0e8a865e6bd903",
+          "Quake-III-Arena-original-source/code/game/g_utils.c": "8fdebd93b8976f979a5ac4887523884f8f2b4246a8bd9e8f8d67829ab577163b",
+          "Quake-III-Arena-original-source/code/game/g_client.c": "52a3c908aeff487cc924f54991bc7b4f523f6483a0ff060edc3aa32367f213bf",
+          "Quake-III-Arena-original-source/code/game/g_misc.c": "bf29bf68e000b068497d45cd4be9bbcfb9730797e21e07044ee4b158d74f5441",
+          "Quake-III-Arena-original-source/code/game/g_target.c": "34249fdb42c433e88baa10ce1c10d5214373da0b78b7e6b21ee7afa542d7ef93",
+          "Quake-III-Arena-original-source/code/game/g_team.c": "58005485a30605e33d826da14952abf5158832d9d8bf098178e3b8cc97587a02",
+          "Quake-III-Arena-original-source/code/game/g_mover.c": "4c9934ebd38ee2634affc102cfc423df15fedbd81186b42726da5ef6c72c7500",
+          "Quake-III-Arena-original-source/code/game/g_main.c": "b98c2b5cb2ed272bcce36acd1e5eda1c57d499b9ecd3549ba9a08f69dd1363d4",
+          "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
+          "Quake-III-Arena-original-source/code/game/g_combat.c": "a19a66ecaf1d1bf557e350e08ea57da8356d1a66ee4f61d8cc2fae455c312a48",
+          "Quake-III-Arena-original-source/code/game/g_weapon.c": "cc12c2c9986503206c465ee480e4cf97f9b143380604548ef45c0c54ae704e8a",
+          "Quake-III-Arena-original-source/code/game/g_missile.c": "9915e67656332a2b1765372eca42981823f9bc569866770046f58962505285a2",
+          "Quake-III-Arena-original-source/code/game/g_items.c": "168044c842d19b64000ba3e1b3715e8038c871b268c90a61535cb6c9aaa6535c",
+          "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
+          "Quake-III-Arena-original-source/code/game/g_cmds.c": "52fa4d7f279f374f4e2de31fbb20e35c3d78676b4ce67168599fb5bab99cce59",
+          "Quake-III-Arena-original-source/code/game/g_spawn.c": "611d4c13b7794785e1c475f93d2dfcbfad3173132b76e031e80db7b8653bd268",
+          "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
+          "Quake-III-Arena-original-source/code/game/q_shared.h": "7c356992d3f8b722eeb0160c44a0515bd5a83538ffb86190ca138e352e874115",
+          "Quake-III-Arena-original-source/code/game/bg_public.h": "29679e04ba6f0f730c5ca200410330e057609da59e563e36d101f329fafd09e7",
+          "Quake-III-Arena-original-source/code/server/sv_game.c": "dda52c608aec154610aa554c7a15d2f597196193e813127114c43636fcc1f57b",
+          "Quake-III-Arena-original-source/code/server/sv_world.c": "d67f952c374902c71b6e65523ae983f0d6081e16c379b566779a1fd1b05aba4d",
+          "Quake-III-Arena-original-source/code/server/sv_init.c": "cc7446cc30bf71275e8392988e32ad324fc2ed274bdc927194c8fd9e9ddabff6"
+        }
+      }
+    },
+    {
       "path": "build/reference/client_frame/result.json",
-      "sha256": "678410d84973da4cdf584b04c9adde19f6a0f15453b54c7d18c544eac5410a11",
+      "sha256": "55ec0f0498803fc4e9935f4c717553f0865e5979170c8f57cf71e727faa61325",
       "result": {
         "passed": true,
         "scenarios": [
@@ -55548,9 +56042,9 @@
         "ordered_effects": 6,
         "runtime_contracts": 2,
         "test_sha256": "9a4c8867955400cfaa854e19f5755e121c59a60f8d0ee4c01cff2c1cc15abbfe",
-        "oracle_sha256": "4b9d84a1f28f6602956af36b64d64196b3d2d37355f5d1c7eb6c2fbb2fee0b49",
+        "oracle_sha256": "5338d207d78a383c6fe14cd22e0d2e4baf549ac655cade8bea5d6e8e8509eb61",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
-        "scope": "Verbatim Baseq3 ClientEndFrame, SpectatorClientEndFrame, P_WorldEffects, P_DamageFeedback, G_SetClientSound and SendPendingPredictableEvents. Covers powerup expiry, damage direction/clamp/debounce, drowning, lava/slime, Battlesuit, noclip, interpolation/extrapolation, intermission, predictable event entities and spectator follow/scoreboard/loss. ClientBegin remains an observed boundary when an invalid explicit follow target is released.",
+        "scope": "Verbatim Baseq3 ClientEndFrame, SpectatorClientEndFrame, P_WorldEffects, P_DamageFeedback, G_SetClientSound and SendPendingPredictableEvents. Covers powerup expiry, damage direction/clamp/debounce, drowning, lava/slime, Battlesuit, noclip, interpolation/extrapolation, intermission, predictable event entities and spectator follow/scoreboard/loss. The isolated suite observes ClientBegin when an invalid explicit follow target is released; the normal port binds the separately verified ClientBegin implementation.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -55589,7 +56083,7 @@
     },
     {
       "path": "build/reference/client_spawn/result.json",
-      "sha256": "7407e88f811f5d0ee6726e6a1f57a39dac9e43ea4fe9faa94947c533a5d65b1f",
+      "sha256": "1371f08aaa1ee4e403db7120eeb8b04d0cfd5d4711acf0486378c94df2a1041b",
       "result": {
         "passed": true,
         "scenarios": [
@@ -56216,8 +56710,8 @@
         "output_bytes": 18766,
         "ordered_boundary_events": 116,
         "runtime_contracts": 8,
-        "test_sha256": "27b036a198466a738cd235ddc09676b9dfa9664cc5ceeef45198ca0c716c8f14",
-        "oracle_sha256": "4b9d84a1f28f6602956af36b64d64196b3d2d37355f5d1c7eb6c2fbb2fee0b49",
+        "test_sha256": "0ef754aa41dcf9ec9b54f1da41e3820a5782ebcfaa3988ed89051039f8a073d2",
+        "oracle_sha256": "5338d207d78a383c6fe14cd22e0d2e4baf549ac655cade8bea5d6e8e8509eb61",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 ClientSpawn selection and orchestration: persistent/session preservation, transient reset, handicap, spawn filters, CTF/spectator/intermission placement, initial inventory, KillBox/link order, target activation, weapon selection and playerState-to-entityState snapshots. ClientThink, ClientEndFrame, userinfo/usercmd delivery and intermission movement are deterministic observed host boundaries.",
         "original_sources": {
@@ -56258,7 +56752,7 @@
     },
     {
       "path": "build/reference/client_think/result.json",
-      "sha256": "92d65a403679a3dfde11e0458860f202cd05bf9cc83c15dc579ccb40d9f018cb",
+      "sha256": "c21ddb47ebbd6081750710545c419f3f0efc130a144a0943fc72bebf86a5e272",
       "result": {
         "passed": true,
         "scenarios": [
@@ -56814,7 +57308,7 @@
         "ordered_effects": 77,
         "runtime_contracts": 3,
         "test_sha256": "f25e1fc98bf7157d16219d39c3bbd18ba12125e71a1e69b41acf2597a986463d",
-        "oracle_sha256": "4b9d84a1f28f6602956af36b64d64196b3d2d37355f5d1c7eb6c2fbb2fee0b49",
+        "oracle_sha256": "5338d207d78a383c6fe14cd22e0d2e4baf549ac655cade8bea5d6e8e8509eb61",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 ClientThink_real, ClientThink, G_RunClient, ClientImpacts, SpectatorThink, ClientInactivityTimer, ClientTimerActions, ClientIntermissionThink and ClientEvents. Actual Pmove, dynamic server collision, snapshots, triggers, hook release and medkit state are integrated; engine usercmd, cvar, drop, follow, weapon and AAS calls are ordered observed boundaries.",
         "original_sources": {
@@ -57333,7 +57827,7 @@
     },
     {
       "path": "build/reference/combat/result.json",
-      "sha256": "ae5afedd0bd7a8f83b1c89c8784570a19b7479666c57c692ac17d05a07d16e6a",
+      "sha256": "e2a97f5e6ac58905ccc270703a133f12e2c5ee6bf6c3049a5f57708e54d03c64",
       "result": {
         "passed": true,
         "scenarios": [
@@ -59630,7 +60124,7 @@
         "string_bytes": 1790052,
         "traces": 2681,
         "cd_maps": 31,
-        "test_sha256": "ac0d221f605f5b2ea412fe6a76f15b8e1d4d2a2b51a3da0550ebf7e84fe30133",
+        "test_sha256": "5e1ef658b24153b7a66ba17f05b5897bdbc2789647550b77e0051b4078cb1cf2",
         "runtime_contracts": 8,
         "controlled_freed_laser_link_rejections": 1,
         "controlled_rejections": [
@@ -59733,7 +60227,7 @@
     },
     {
       "path": "build/reference/deaths/result.json",
-      "sha256": "3c4e4240faeb78ed4cc1a3c4030d4d01f998b060f2ae8fbe72a402caa0e091c5",
+      "sha256": "5663405533f08b282d8f22fc5a825dacf87a665a96a0ba469c79e84cd0b21298",
       "result": {
         "passed": true,
         "scenarios": [
@@ -59949,7 +60443,7 @@
         "exact_words": 3887033,
         "string_bytes": 40921,
         "runtime_contracts": 8,
-        "test_sha256": "ac0d221f605f5b2ea412fe6a76f15b8e1d4d2a2b51a3da0550ebf7e84fe30133",
+        "test_sha256": "5e1ef658b24153b7a66ba17f05b5897bdbc2789647550b77e0051b4078cb1cf2",
         "scope": "Baseq3 player_die, Team_FragBonuses, TossClientItems, almost-capture/scored checks and respawn wrapper. Drop_Item and Team_ReturnFlag execute actual ported item/flag entities; PrintMsg and the isolated ClientSpawn test override remain observed callbacks. The normal respawn path uses the separately verified ported ClientSpawn. Collision, PVS, scores, body queue and hook cleanup execute in the port.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -60032,7 +60526,7 @@
     },
     {
       "path": "build/reference/items/result.json",
-      "sha256": "42c600153796bbdebda58a2b185d16cb10c52fd14970e2ec3946b482993be934",
+      "sha256": "279f845ec594d4ba5ac94cffd5ba5f1ed33f62eb7e68f199e78accf19ae34b46",
       "result": {
         "passed": true,
         "scenarios": [
@@ -60221,7 +60715,7 @@
         "exact_words": 451312,
         "string_bytes": 30625,
         "runtime_contracts": 12,
-        "test_sha256": "ac0d221f605f5b2ea412fe6a76f15b8e1d4d2a2b51a3da0550ebf7e84fe30133",
+        "test_sha256": "5e1ef658b24153b7a66ba17f05b5897bdbc2789647550b77e0051b4078cb1cf2",
         "scope": "Baseq3 item registration/spawn/finish, pickup eligibility and item-specific pickup functions, Touch_Item events/targets/respawn, powerup denial, dropped-item physics, and complete CTF flag take/return/capture scoring. Disabled-item Cvar registration remains an explicit boundary.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -60592,7 +61086,7 @@
     },
     {
       "path": "build/reference/missiles/result.json",
-      "sha256": "34befd339a9f7a7cc9571764173dfad6b568287e91b4cd23f25da7935a896370",
+      "sha256": "4fd76ef5e46bfecec2c5ea00ddc1baac9c9687bdff812c268d4dcd5debc23688",
       "result": {
         "passed": true,
         "scenarios": [
@@ -84250,7 +84744,7 @@
         "string_bytes": 2612912,
         "traces": 1260,
         "cd_maps": 31,
-        "test_sha256": "ac0d221f605f5b2ea412fe6a76f15b8e1d4d2a2b51a3da0550ebf7e84fe30133",
+        "test_sha256": "5e1ef658b24153b7a66ba17f05b5897bdbc2789647550b77e0051b4078cb1cf2",
         "runtime_contracts": 8,
         "controlled_rejections": [
           {
@@ -85067,7 +85561,7 @@
     },
     {
       "path": "build/reference/scores/result.json",
-      "sha256": "822b1da0a3260ceefc344cd17ac768057506c2531da9fdddbd16a266bbef334c",
+      "sha256": "fc746b8867d40ff9d34e211b8022960f1b21f4037b5199b6585c46f1812587f2",
       "result": {
         "passed": true,
         "scenarios": [
@@ -90675,7 +91169,7 @@
         "messages": 412,
         "log_lines": 70,
         "runtime_contracts": 12,
-        "test_sha256": "ac0d221f605f5b2ea412fe6a76f15b8e1d4d2a2b51a3da0550ebf7e84fe30133",
+        "test_sha256": "5e1ef658b24153b7a66ba17f05b5897bdbc2789647550b77e0051b4078cb1cf2",
         "sort_profile": {
           "name": "native Windows UCRT qsort",
           "sdk": "10.0.26100.0\\",
@@ -96271,7 +96765,7 @@
     },
     {
       "path": "build/reference/spawn/curves/result.json",
-      "sha256": "7e83c6d01855b5e5a024be1242b85a428d8e9e0a4a50506ee3a9620f5f85cd3a",
+      "sha256": "450d1bca1ef88241be629cacc141ae21e31eb7e262bd8d59e068fc6bc78dfdc0",
       "result": {
         "passed": true,
         "profile": "complete original g_spawn.c, 34 actual spawn classes, all 35 baseq3 item dispatches, original G_RunThink/SV/CM and trigger callbacks; cm_noCurves=0",
@@ -106356,8 +106850,8 @@
             "expected_sha256": "a47171e9cd33102e6adc7a30f45d78268da93ff12ec8e315457cee072b11e25b"
           }
         ],
-        "test_sha256": "ac0d221f605f5b2ea412fe6a76f15b8e1d4d2a2b51a3da0550ebf7e84fe30133",
-        "extracted_functions_sha256": "51424fccfd630e49b4afcfa4c89a88f46828cb531df11d1d07cf3f2f7cea52c8",
+        "test_sha256": "5e1ef658b24153b7a66ba17f05b5897bdbc2789647550b77e0051b4078cb1cf2",
+        "extracted_functions_sha256": "a80a4954c518c603b0818d419776f36a3b71c1ddae85adda7993e4c2fe852585",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -106396,7 +106890,7 @@
     },
     {
       "path": "build/reference/spawn_values/result.json",
-      "sha256": "cf63c6efc0c2906744a9d7b85207b5b9b00fc5965c8488d221e6580b142fb71e",
+      "sha256": "fee5f029c5e61f8496ee7fc177c357a11ffc914dd9a9454ba843bb15bd47aaa5",
       "result": {
         "passed": true,
         "cases": 4096,
@@ -106410,7 +106904,7 @@
         "think_inputs_sha256": "ea8d9e60174bdb7acbd9a5bfc0e7fdf03aae24b654e97628f464c3fb8e64dec2",
         "think_expected_sha256": "d122208c99f71f87db5effca57f268502399813f1d14c1af8b915e73040bbd45",
         "scope": "all original spawn field types, first-key lookup, last-field assignment, CRT numbers, parser bounds; no spawn class execution",
-        "test_sha256": "ac0d221f605f5b2ea412fe6a76f15b8e1d4d2a2b51a3da0550ebf7e84fe30133",
+        "test_sha256": "5e1ef658b24153b7a66ba17f05b5897bdbc2789647550b77e0051b4078cb1cf2",
         "inputs_sha256": "1ce188309d9e2f68b546141a0f21d437db35de077e20ea9eaff63614ad100c43",
         "expected_sha256": "0b79eb4964a52b6530d98f3a926728b3d9dc6277b215edf08f9fdda415cfcc64",
         "original_sources": {
@@ -106451,7 +106945,7 @@
     },
     {
       "path": "build/reference/targets/result.json",
-      "sha256": "d737735476d6c60e36be284bdd5666307d625fc5f26fd3f9e9d2d3f0575c43e1",
+      "sha256": "daec9bde4c9e48f929177c910b384fd89e6d93b17a8dd550f3f84a07b765dcd6",
       "result": {
         "passed": true,
         "scenarios": [
@@ -106683,7 +107177,7 @@
         "actions": 9691,
         "exact_words": 40453187,
         "string_bytes": 4721815,
-        "test_sha256": "ac0d221f605f5b2ea412fe6a76f15b8e1d4d2a2b51a3da0550ebf7e84fe30133",
+        "test_sha256": "5e1ef658b24153b7a66ba17f05b5897bdbc2789647550b77e0051b4078cb1cf2",
         "original_missing_noise_rejection": true,
         "original_freed_timer_rejections": 2,
         "scope": "Original target, event, spawn and allocated-entity frame loop; missile/item/mover/client handlers record dispatch only; no complete G_RunFrame/server acceptance",
@@ -109168,7 +109662,7 @@
     },
     {
       "path": "build/verification.json",
-      "sha256": "968e0e6d901752a7c2338e36781ed117845c6268c84412da2436d415c1bd2b8c",
+      "sha256": "b7f92ecf0f59575be591a71bf01dfb9617ad6d5837ee088f54187926d7876b56",
       "result": {
         "passed": true,
         "scope": "implemented foundations only; full game port remains incomplete",
@@ -109270,6 +109764,10 @@
           },
           {
             "script": "test_client_spawn.py",
+            "arguments": []
+          },
+          {
+            "script": "test_client_begin.py",
             "arguments": []
           },
           {

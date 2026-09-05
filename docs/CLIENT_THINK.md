@@ -22,18 +22,19 @@ Tests können alle äußeren Aufrufe weiterhin mit Callbacks beobachten.
 `scripts/test_client_think.py` extrahiert die neun Originalfunktionen unverändert
 und baut sie zusammen mit originalem `Pmove`, BSP-/Serverkollision und
 PlayerState-Konvertierung als MSVC-x86-Referenz (`/Od /fp:strict /arch:SSE2`).
-26 Szenarien vergleichen 7.058 exakt gleiche 32-Bit-Wörter und 29.702
+27 Szenarien vergleichen 7.357 exakt gleiche 32-Bit-Wörter und 29.702
 Ausgabe-Bytes sowie 77 geordnete Engine-/Link-Nebenwirkungen. Drei zusätzliche
 Laufzeitverträge prüfen fehlende Usercmd-/Waffenfeuer-Schnittstellen und die
 Kontakt-Deduplizierung.
 
 Test-Binary: `f25e1fc98bf7157d16219d39c3bbd18ba12125e71a1e69b41acf2597a986463d`.
-Native x86-Oracle: `4b9d84a1f28f6602956af36b64d64196b3d2d37355f5d1c7eb6c2fbb2fee0b49`.
+Native x86-Oracle: `5338d207d78a383c6fe14cd22e0d2e4baf549ac655cade8bea5d6e8e8509eb61`.
 
 Engine-seitige Usercmd-Zustellung, Cvar-Schreiben, Client-Drop, Zuschauer-Follow,
 Gauntlet-/Waffenaufrufe und AAS-Prüfung enden an geordnet getesteten Callbacks.
-Die Waffenfunktionen selbst, Bot-AI, Netzwerk-Snapshots, vollständiges
-`ClientBegin`, `G_RunFrame` und Missionpack bleiben eigene Portschritte.
+Die Waffenfunktionen selbst, Bot-AI, Netzwerk-Snapshots, `G_RunFrame` und
+Missionpack bleiben eigene Portschritte. Der vollständige Eintrittspfad ist
+inzwischen unter [ClientBegin](CLIENT_BEGIN.md) geprüft.
 
 Ausführen:
 

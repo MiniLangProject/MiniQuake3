@@ -53,7 +53,7 @@ def main():
         "code/game/g_misc.c":(["src/mq3/game/teleport.ml","src/mq3/game/spawn_functions.ml","src/mq3/game/shooters.ml"],
             ["TeleportPlayer","SP_info_null","SP_info_notnull","SP_info_camp","SP_light","SP_misc_model","SP_misc_teleporter_dest","Use_Shooter","InitShooter_Finish","InitShooter","SP_shooter_rocket","SP_shooter_grenade","SP_shooter_plasma"],["scripts/test_transitions.py","scripts/test_spawn.py","scripts/test_missiles.py"]),
         "code/game/g_client.c":(["src/mq3/game/teleport.ml","src/mq3/game/spawn_functions.ml","src/mq3/game/client_spawn.ml"],
-            ["SetClientViewAngle","ClientSpawn","SP_info_player_deathmatch","SP_info_player_start","SP_info_player_intermission"],["scripts/test_entitystate.py","scripts/test_transitions.py","scripts/test_spawn.py","scripts/test_client_spawn.py"]),
+            ["SetClientViewAngle","ClientSpawn","ClientBegin","SP_info_player_deathmatch","SP_info_player_start","SP_info_player_intermission"],["scripts/test_entitystate.py","scripts/test_transitions.py","scripts/test_spawn.py","scripts/test_client_spawn.py","scripts/test_client_begin.py"]),
         "code/game/g_utils.c":(["src/mq3/game/entities.ml","src/mq3/game/teleport.ml","src/mq3/game/spawn_values.ml","src/mq3/game/spawn_functions.ml","src/mq3/game/targets.ml","src/mq3/game/events.ml","src/mq3/compat/textnumbers.ml"],
             ["G_InitGentity","G_Spawn","G_EntitiesFree","G_FreeEntity","G_TempEntity","G_SetOrigin","G_Find","G_PickTarget","G_KillBox","G_FindConfigstringIndex","G_ModelIndex","G_SoundIndex","G_SetMovedir","AddRemap","BuildShaderStateConfig","G_UseTargets","G_AddEvent","G_Sound"],["scripts/test_transitions.py","scripts/test_spawn_values.py","scripts/test_spawn.py","scripts/test_targets.py"]),
         "code/game/g_trigger.c":(["src/mq3/game/triggers.ml","src/mq3/game/spawn_functions.ml","src/mq3/game/targets.ml","src/mq3/game/hazards.ml"],
@@ -68,7 +68,7 @@ def main():
         "code/game/g_missile.c":(["src/mq3/game/missiles.ml"],["G_BounceMissile","G_ExplodeMissile","G_MissileImpact","G_RunMissile","fire_plasma","fire_grenade","fire_bfg","fire_rocket","fire_grapple"],["scripts/test_missiles.py"]),
         "code/game/g_items.c":(["src/mq3/game/shooters.ml"],["RegisterItem"],["scripts/test_missiles.py"]),
         "code/game/g_weapon.c":(["src/mq3/game/combat.ml","src/mq3/game/missiles.ml"],["LogAccuracyHit","SnapVectorTowards","Weapon_HookFree","Weapon_HookThink"],["scripts/test_combat.py","scripts/test_missiles.py"]),
-        "code/game/g_local.h":(["src/mq3/game/entities.ml","src/mq3/game/spawn.ml","src/mq3/game/combat.ml","src/mq3/game/client_spawn.ml","src/mq3/game/client_frame.ml","src/mq3/game/client_active.ml"],["gentity_s","level_locals_t","gclient_s","playerTeamState_t"],["scripts/test_transitions.py","scripts/test_spawn_values.py","scripts/test_spawn.py","scripts/test_targets.py","scripts/test_combat.py","scripts/test_client_spawn.py","scripts/test_client_frame.py","scripts/test_client_think.py"]),
+        "code/game/g_local.h":(["src/mq3/game/entities.ml","src/mq3/game/spawn.ml","src/mq3/game/combat.ml","src/mq3/game/client_spawn.ml","src/mq3/game/client_frame.ml","src/mq3/game/client_active.ml"],["gentity_s","level_locals_t","gclient_s","playerTeamState_t"],["scripts/test_transitions.py","scripts/test_spawn_values.py","scripts/test_spawn.py","scripts/test_targets.py","scripts/test_combat.py","scripts/test_client_spawn.py","scripts/test_client_begin.py","scripts/test_client_frame.py","scripts/test_client_think.py"]),
     }
     body_mappings={
         "code/game/g_client.c":(["src/mq3/game/player_spawns.ml","src/mq3/game/bodies.ml"],["SpotWouldTelefrag","SelectNearestDeathmatchSpawnPoint","SelectRandomDeathmatchSpawnPoint","SelectRandomFurthestSpawnPoint","SelectSpawnPoint","SelectInitialSpawnPoint","SelectSpectatorSpawnPoint","InitBodyQue","BodySink","CopyToBodyQue"]),
@@ -165,6 +165,8 @@ def main():
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] == "ClientSpawn":
                         symbol["scope"] = "Baseq3 player placement, persistent/session preservation, transient reset, handicap, inventory, spawn filters, target/weapon/link order and snapshots are compared. Ported ClientThink and ClientEndFrame are the defaults; userinfo/usercmd delivery and intermission placement remain explicit host boundaries."
+                    elif symbol["original"] == "ClientBegin":
+                        symbol["scope"] = "Baseq3 entry lifecycle with actual ported ClientSpawn and CalculateRanks: unlink/reinit, playerState reset, entry event/message/log, tournament and spectator branches. Engine delivery remains at explicit callbacks."
                     if symbol["original"] == "respawn":
                         symbol["scope"] = "CopyToBodyQue and teleport event ordering are implemented; the default path executes ported ClientSpawn while the death suite retains an explicit test override."
             if entry["source"] == "code/game/g_active.c":
@@ -176,7 +178,7 @@ def main():
                         symbol["scope"] = "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
                     else:
                         symbol["target_files"] = ["src/mq3/game/client_frame.ml"]
-                        symbol["scope"] = "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets."
+                        symbol["scope"] = "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. The isolated suite observes ClientBegin for invalid explicit spectator targets; the normal path binds the separately verified port."
             if entry["source"] == "code/server/sv_game.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] == "SV_inPVS":

@@ -45,7 +45,7 @@ static void snapshot(gentity_t *e) {
 }
 static void boundary(gentity_t *e,int kind,int index) {word(4);word(kind);word(index);snapshot(e);}
 void trap_LinkEntity(gentity_t *e) {hostLink(e);if(clientSpawnOutput){word(60);word(3);word((int)(e-g_entities));}else if(clientFrameOutput){word(80);word(1);word((int)(e-g_entities));}else if(clientThinkOutput){word(90);word(1);word((int)(e-g_entities));}else{word(5);snapshot(e);}}
-void trap_UnlinkEntity(gentity_t *e) {hostUnlink(e);if(clientThinkOutput){word(90);word(2);word((int)(e-g_entities));}else{word(6);snapshot(e);}}
+void trap_UnlinkEntity(gentity_t *e) {hostUnlink(e);if(clientSpawnOutput){word(60);word(8);word((int)(e-g_entities));}else if(clientThinkOutput){word(90);word(2);word((int)(e-g_entities));}else{word(6);snapshot(e);}}
 void trap_SetBrushModel(gentity_t *e,const char *name) {hostBrush(e,name);}
 void trap_LocateGameData(gentity_t *e,int count,int size,playerState_t *ps,int clientSize) {if(clientFrameOutput){word(80);word(0);word(count);}else if(clientThinkOutput){word(90);word(0);word(count);}else{word(7);word(count);}}
 void trap_GetConfigstring(int index,char *buffer,int size) {Q_strncpyz(buffer,configs[index],size);}
@@ -67,10 +67,11 @@ void trap_Trace(trace_t *tr,const vec3_t start,const vec3_t mins,const vec3_t ma
 }
 void QDECL G_Printf(const char *fmt,...) { }
 void QDECL G_LogPrintf(const char *fmt,...) {
-    if(scoreOutput || itemOutput){char buffer[2048];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);word(41);string(buffer);}
+    if(clientSpawnOutput){char buffer[2048];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);word(60);word(10);string(buffer);}
+    else if(scoreOutput || itemOutput){char buffer[2048];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);word(41);string(buffer);}
     else{word(3);word(0);string("");string(fmt);}
 }
-void trap_SendServerCommand(int client,const char *message){if(clientThinkOutput){word(90);word(4);word(client);string(message);return;}if(!scoreOutput)G_Error("unported server command sink");word(42);word(client);string(message);}
+void trap_SendServerCommand(int client,const char *message){if(clientSpawnOutput){word(60);word(9);word(client);string(message);return;}if(clientThinkOutput){word(90);word(4);word(client);string(message);return;}if(!scoreOutput)G_Error("unported server command sink");word(42);word(client);string(message);}
 void trap_DropClient(int client,const char *reason){if(!clientThinkOutput)G_Error("unported client drop sink");word(90);word(5);word(client);string(reason);}
 qboolean trap_InPVS(const vec3_t p1,const vec3_t p2){return SV_inPVS(p1,p2);}
 void QDECL G_Error(const char *fmt,...) {va_list args;va_start(args,fmt);vfprintf(stderr,fmt,args);va_end(args);exit(72);}
@@ -140,6 +141,8 @@ int main(int argc,char **argv) {
         reset(0,0);itemOutput=1;runCombat(in);
     } else if(argc==6 && !strcmp(argv[5],"--client-spawn")) {
         reset(0,0);clientSpawnOutput=1;runClientSpawn(in);
+    } else if(argc==6 && !strcmp(argv[5],"--client-begin")) {
+        reset(0,0);clientSpawnOutput=1;runClientBegin(in);
     } else if(argc==6 && !strcmp(argv[5],"--client-frame")) {
         reset(0,0);clientFrameOutput=1;runClientFrame(in);
     } else if(argc==6 && !strcmp(argv[5],"--client-think")) {

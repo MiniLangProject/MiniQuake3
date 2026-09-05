@@ -5909,7 +5909,7 @@
             "src/mq3/game/client_frame.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets."
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. The isolated suite observes ClientBegin for invalid explicit spectator targets; the normal path binds the separately verified port."
         },
         {
           "original": "P_WorldEffects",
@@ -5917,7 +5917,7 @@
             "src/mq3/game/client_frame.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets."
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. The isolated suite observes ClientBegin for invalid explicit spectator targets; the normal path binds the separately verified port."
         },
         {
           "original": "G_SetClientSound",
@@ -5925,7 +5925,7 @@
             "src/mq3/game/client_frame.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets."
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. The isolated suite observes ClientBegin for invalid explicit spectator targets; the normal path binds the separately verified port."
         },
         {
           "original": "ClientImpacts",
@@ -5981,7 +5981,7 @@
             "src/mq3/game/client_frame.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets."
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. The isolated suite observes ClientBegin for invalid explicit spectator targets; the normal path binds the separately verified port."
         },
         {
           "original": "ClientThink_real",
@@ -6013,7 +6013,7 @@
             "src/mq3/game/client_frame.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets."
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. The isolated suite observes ClientBegin for invalid explicit spectator targets; the normal path binds the separately verified port."
         },
         {
           "original": "ClientEndFrame",
@@ -6021,7 +6021,7 @@
             "src/mq3/game/client_frame.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets."
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. The isolated suite observes ClientBegin for invalid explicit spectator targets; the normal path binds the separately verified port."
         }
       ],
       "target": [
@@ -6146,6 +6146,19 @@
           ],
           "status": "tested_subset",
           "scope": "Baseq3 player placement, persistent/session preservation, transient reset, handicap, inventory, spawn filters, target/weapon/link order and snapshots are compared. Ported ClientThink and ClientEndFrame are the defaults; userinfo/usercmd delivery and intermission placement remain explicit host boundaries."
+        },
+        {
+          "original": "ClientBegin",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 entry lifecycle with actual ported ClientSpawn and CalculateRanks: unlink/reinit, playerState reset, entry event/message/log, tournament and spectator branches. Engine delivery remains at explicit callbacks."
         },
         {
           "original": "SP_info_player_deathmatch",
@@ -6331,6 +6344,7 @@
         "scripts/test_transitions.py",
         "scripts/test_spawn.py",
         "scripts/test_client_spawn.py",
+        "scripts/test_client_begin.py",
         "scripts/test_bodies.py",
         "scripts/test_deaths.py"
       ]
@@ -6904,6 +6918,7 @@
         "scripts/test_targets.py",
         "scripts/test_combat.py",
         "scripts/test_client_spawn.py",
+        "scripts/test_client_begin.py",
         "scripts/test_client_frame.py",
         "scripts/test_client_think.py",
         "scripts/test_bodies.py",

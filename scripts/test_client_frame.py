@@ -62,7 +62,7 @@ def main():
     result=dict(passed=True,scenarios=records,scenario_count=len(records),exact_words=sum(r["exact_words"] for r in records),
         output_bytes=sum(r["bytes"] for r in records),ordered_effects=sum(len(r["events"]) for r in records),runtime_contracts=2,
         test_sha256=sha(ROOT/"build/client_frame_tests.exe"),oracle_sha256=sha(output/"spawn_oracle.exe"),map_sha256=sha(mapfile),
-        scope="Verbatim Baseq3 ClientEndFrame, SpectatorClientEndFrame, P_WorldEffects, P_DamageFeedback, G_SetClientSound and SendPendingPredictableEvents. Covers powerup expiry, damage direction/clamp/debounce, drowning, lava/slime, Battlesuit, noclip, interpolation/extrapolation, intermission, predictable event entities and spectator follow/scoreboard/loss. ClientBegin remains an observed boundary when an invalid explicit follow target is released.",
+        scope="Verbatim Baseq3 ClientEndFrame, SpectatorClientEndFrame, P_WorldEffects, P_DamageFeedback, G_SetClientSound and SendPendingPredictableEvents. Covers powerup expiry, damage direction/clamp/debounce, drowning, lava/slime, Battlesuit, noclip, interpolation/extrapolation, intermission, predictable event entities and spectator follow/scoreboard/loss. The isolated suite observes ClientBegin when an invalid explicit follow target is released; the normal port binds the separately verified ClientBegin implementation.",
         original_sources={s.relative_to(ROOT).as_posix():sha(s) for s in sources})
     (output/"result.json").write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
 

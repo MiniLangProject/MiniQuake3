@@ -60,10 +60,13 @@ beide Snapshot-Konvertierungen ab.
 Acht zusätzliche Laufzeitverträge prüfen Initialwerte, Userinfo-Auswertung,
 fehlende Pflichtgrenzen und die Standardverbindung aus `deaths.respawn`.
 
-Test-Binary: `27b036a198466a738cd235ddc09676b9dfa9664cc5ceeef45198ca0c716c8f14`.
-Native x86-Oracle: `4b9d84a1f28f6602956af36b64d64196b3d2d37355f5d1c7eb6c2fbb2fee0b49`.
+Test-Binary: `0ef754aa41dcf9ec9b54f1da41e3820a5782ebcfaa3988ed89051039f8a073d2`.
+Native x86-Oracle: `5338d207d78a383c6fe14cd22e0d2e4baf549ac655cade8bea5d6e8e8509eb61`.
 
 Der C-Oracle enthält den unveränderten Funktionskörper aus `g_client.c`. Nur die
 fünf oben aufgeführten Abhängigkeiten werden am Host-Rand beobachtet. Spawnwahl,
 Telefrag-Abfrage, Target-Kette, Entity-Verlinkung und PlayerState-Konvertierung
 laufen auf beiden Seiten als echte Implementierungen.
+
+Der übergeordnete Eintritt mit Ereignis, Meldung, Log und Rangberechnung ist
+unter [ClientBegin](CLIENT_BEGIN.md) zusammenhängend geprüft.

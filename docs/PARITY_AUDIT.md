@@ -19,8 +19,8 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 2. Zahlen/Plattform | In Arbeit | 101.445 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff vorhanden; Fenster, Eingabe, UDP und Audio noch offen |
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
-| 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständiger Serverframe/ClientBegin und komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, `ClientSpawn`, `ClientThink`, `ClientEndFrame`, Leichenverwaltung, Gibs, Item-/Leichenphysik, sämtliche Baseq3-Pickups, Punktevergabe, Ranglisten, Scoreboard-Texte, Matchende-Entscheidungen, `player_die`, Team-Fragboni und CTF-Take/Return/Capture vorhanden; weitere Klassen, ClientBegin, Mover-Pushing und vollständige Serverframes fehlen |
+| 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung, Sprungpad-/Teleport-Replays und die ClientBegin-Einbindung geprüft; vollständiger Serverframe und komplette Match-Telefrag-Replays fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, `ClientBegin`, `ClientSpawn`, `ClientThink`, `ClientEndFrame`, Leichenverwaltung, Gibs, Item-/Leichenphysik, sämtliche Baseq3-Pickups, Punktevergabe, Ranglisten, Scoreboard-Texte, Matchende-Entscheidungen, `player_die`, Team-Fragboni und CTF-Take/Return/Capture vorhanden; weitere Klassen, Mover-Pushing und vollständige Serverframes fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -588,9 +588,23 @@ explizit beobachtete Host-Grenzen; der normale MiniLang-Pfad ruft inzwischen
 die portierten Think- und Frame-Abschlüsse auf. Details:
 [CLIENT_SPAWN.md](CLIENT_SPAWN.md).
 
+## ClientBegin (Schritt 6)
+
+`scripts/test_client_begin.py` besteht mit **acht Szenarien**, **2.907 exakt
+gleichen 32-Bit-Wörtern**, **12.111 Ausgabe-Bytes** und **92 geordneten
+Host-/Configstring-/Link-Ereignissen**. Fünf Laufzeitverträge prüfen Slotgrenzen,
+Pflichtschnittstellen und die Registrierung als Standard-Callback.
+
+Der Vergleich führt `ClientBegin`, `ClientSpawn` und `CalculateRanks` auf beiden
+Seiten als echte Implementierungen aus. Geprüft sind Unlink/Reinitialisierung,
+persistent gebundener Client, vollständiger PlayerState-Reset mit erhaltenen
+`eFlags`, Spawn, Teleport-In-Ereignis, Eintrittsmeldung, Log und Ränge. Tournament,
+Zuschauer, Intermission, CTF, ein weiterer Ranglisten-Client und 32-Bit-Zeitgrenzen
+sind enthalten. Details: [CLIENT_BEGIN.md](CLIENT_BEGIN.md).
+
 ## ClientThink (Schritt 6)
 
-`scripts/test_client_think.py` besteht mit **26 Szenarien**, **7.058 exakt
+`scripts/test_client_think.py` besteht mit **27 Szenarien**, **7.357 exakt
 gleichen 32-Bit-Wörtern**, **29.702 Ausgabe-Bytes** und **77 geordneten
 Nebenwirkungen**. Drei Laufzeitverträge prüfen die Usercmd-/Waffenfeuer-
 Schnittstellen und Kontakt-Deduplizierung.
@@ -608,8 +622,8 @@ aus `g_active.c` aus. Details: [CLIENT_THINK.md](CLIENT_THINK.md).
 `scripts/test_client_frame.py` besteht mit **17 Szenariogruppen und 272
 Frame-Ausführungen**, **51.275 exakt gleichen 32-Bit-Wörtern**, **205.122
 Ausgabe-Bytes** und **sechs geordneten Nebenwirkungen**. Zwei Laufzeitverträge
-prüfen die unabhängige vollständige PlayerState-Kopie und die noch erforderliche
-`ClientBegin`-Grenze.
+prüfen die unabhängige vollständige PlayerState-Kopie und den isolierten
+`ClientBegin`-Aufruf. Dieser ist inzwischen mit dem portierten Eintrittspfad verbunden.
 
 Enthalten sind Powerup-Ablauf, Schadensrichtung, 255er-Kappung, Pain-Debounce,
 Godmode/Tod, Noclip, Ertrinken, Lava/Slime, Battlesuit, Loop-Sound,

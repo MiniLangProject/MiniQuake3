@@ -2,6 +2,7 @@
  * Deterministic host boundaries around the verbatim Baseq3 ClientSpawn.
  */
 void Original_ClientSpawn(gentity_t *ent);
+void Original_ClientBegin(int clientNum);
 static void clientSpawnUse(gentity_t *self,gentity_t *other,gentity_t *activator) {
     word(60);word(4);word(other?(int)(other-g_entities):-1);
     activator->client->ps.stats[STAT_WEAPONS]|=1<<WP_RAILGUN;
@@ -37,7 +38,7 @@ static void clientSpawnState(gentity_t *e) {
     word(cl->accurateCount);word(cl->inactivityWarning);word(cl->rewardTime);word(cl->lastKillTime);word(cl->fireHeld);
     word(cl->hook?1:0);word(cl->switchTeamTime);word(cl->timeResidual);
 }
-static void runClientSpawn(FILE *in) {
+static gentity_t *configureClientSpawn(FILE *in) {
     int q[32],i,scenario;gentity_t *e,*target;gclient_t *cl;
     if(fread(q,4,32,in)!=32)exit(74);scenario=q[0];
     g_gametype.integer=q[1];level.time=q[8];level.intermissiontime=q[7];g_inactivity.integer=q[9];
@@ -73,5 +74,27 @@ static void runClientSpawn(FILE *in) {
     memset(&clientSpawnCmd,0,sizeof(clientSpawnCmd));clientSpawnCmd.angles[0]=q[16];clientSpawnCmd.angles[1]=q[17];clientSpawnCmd.angles[2]=q[18];clientSpawnCmd.weapon=q[19];clientSpawnCmd.buttons=0x1234;
     clientSpawnCmd.forwardmove=-17;clientSpawnCmd.rightmove=33;clientSpawnCmd.upmove=-4;
     Com_sprintf(clientSpawnUserinfo,sizeof(clientSpawnUserinfo),"\\handicap\\%d",q[10]);
-    Original_ClientSpawn(e);clientSpawnState(e);
+    level.maxclients=4;g_maxclients.integer=4;
+    if(q[26])hostLink(e);
+    if(q[27]) {
+        gentity_t *other=&g_entities[1];gclient_t *otherClient=&g_clients[1];
+        if(!other->inuse)G_InitGentity(other);other->client=otherClient;
+        otherClient->pers.connected=CON_CONNECTED;otherClient->sess.sessionTeam=TEAM_FREE;
+        otherClient->ps.persistant[PERS_SCORE]=9;Q_strncpyz(otherClient->pers.netname,"Other",sizeof(otherClient->pers.netname));
+    }
+    return e;
+}
+static void clientBeginState(gentity_t *e) {
+    int i;clientSpawnState(e);word(71);word(level.follow1);word(level.follow2);word(level.numConnectedClients);
+    word(level.numNonSpectatorClients);word(level.numPlayingClients);word(level.numVotingClients);
+    words(level.numteamVotingClients,2);for(i=0;i<4;i++)word(level.sortedClients[i]);
+    word(level.spawning);word(level.numSpawnVars);word(level.num_entities);
+    words(&g_entities[81].s,52);word(g_entities[81].inuse);word(g_entities[81].freeAfterEvent);
+    word(g_entities[81].eventTime);string(g_entities[81].classname);
+}
+static void runClientSpawn(FILE *in) {
+    gentity_t *e=configureClientSpawn(in);Original_ClientSpawn(e);clientSpawnState(e);
+}
+static void runClientBegin(FILE *in) {
+    gentity_t *e=configureClientSpawn(in);Original_ClientBegin((int)(e-g_entities));clientBeginState(e);
 }
