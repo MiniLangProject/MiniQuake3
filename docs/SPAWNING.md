@@ -6,8 +6,8 @@ Worldspawn und die Auswahl von Item-/Klassen-Spawn-Funktionen. Die generierten
 Tabellen enthalten 20 Feldregeln, 48 baseq3-Klassen und 35 Items. Sie werden aus
 den gepinnten Originalquellen erzeugt und gegen die ursprüngliche C-Tabelle geprüft.
 
-**Stand der Klassen:** 31 Klassen führen bereits die übertragenen Originalregeln
-aus. Die 17 übrigen Klassen und `G_SpawnItem` brauchen noch ihre Implementierung.
+**Stand der Klassen:** 34 Klassen führen bereits die übertragenen Originalregeln
+aus. Die 14 übrigen Klassen und `G_SpawnItem` brauchen noch ihre Implementierung.
 Ohne ausdrücklich gesetzten `state.unportedFn` liefert der Port an diesen Grenzen
 einen Fehler. Die Vergleichstests setzen dort einen aufzeichnenden Callback ein;
 er führt keine vereinfachten Item-, Mover- oder Spielregeln aus. Die Testkarten
@@ -35,6 +35,8 @@ und `item_botroam`. Hinzugekommen sind `target_delay`, `target_relay`,
 `target_push`, `func_timer` und `target_location`; ihre Use-/Think-
 Abläufe sind unter [Targets und Ereignisse](TARGETS_AND_EVENTS.md) beschrieben.
 `trigger_hurt`, `target_kill` und `target_laser` verwenden die [portierte Schadensberechnung](COMBAT.md).
+Die drei [Shooter-Klassen](MISSILES.md) erzeugen Raketen, Granaten und Plasma
+mit ursprünglicher Zielsuche und Streuung.
 Manche dieser Originalfunktionen sind leer oder geben die
 Entity sofort frei; auch dieses Verhalten bleibt erhalten.
 
@@ -92,5 +94,6 @@ die Entity-Schleife mit automatischer Ereignisfreigabe ab.
 python scripts/test_spawn_values.py
 python scripts/test_targets.py
 python scripts/test_combat.py --data-root D:/Quake3
+python scripts/test_missiles.py --data-root D:/Quake3
 python scripts/test_spawn.py D:/Quake3
 ```

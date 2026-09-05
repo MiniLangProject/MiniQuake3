@@ -7,6 +7,7 @@ import mq3.game.spawn_values as values
 import mq3.game.triggers as triggers
 import mq3.game.targets as targets
 import mq3.game.hazards as hazards
+import mq3.game.shooters as shooters
 import mq3.game.constants as c
 import mq3.shared.math as q
 import mq3.compat.numeric as n
@@ -59,12 +60,7 @@ function aimAtTarget(level,ent)
   return void
 end function
 function runThink(level,ent)
-  thinktime = n.f32(ent.nextthink)
-  if thinktime <= 0 or thinktime > n.f32(level.time) then return void end if
-  ent.nextthink = 0
-  if ent.think == void then return error(485,"NULL ent->think") end if
-  ent.think(level,ent)
-  return void
+  return game.runThink(level,ent)
 end function
 function playerDeathmatch(level,ent)
   if values.getInt(level.spawner,"nobots","0")[1] != 0 then ent.flags = ent.flags | 0x2000 end if
@@ -87,6 +83,14 @@ function laserStart(level,self)
   if self.damage == 0 then self.damage = 1 end if
   if (self.spawnflags & 1) != 0 then hazards.laserOn(level,self) else hazards.laserOff(level,self) end if
   return void
+end function
+function initShooter(level,ent,weapon)
+  ent.use = shooters.use; ent.s.weapon = weapon
+  shooters.registerItem(level,shooters.weaponItem(weapon)); setMovedir(ent)
+  if ent.random == 0 then ent.random = 1.0 end if
+  ent.random = n.f32(crt.sin(n.fdiv(n.fmul(n.f32(3.14159265358979323846),ent.random),180)))
+  if ent.target != void then ent.think = shooters.finish; ent.nextthink = n.add32(level.time,500) end if
+  return game.link(level,ent)
 end function
 function dispatch(level,ent)
   switch ent.classname
@@ -187,6 +191,15 @@ function dispatch(level,ent)
     end case
     case "target_laser"
       ent.think = laserStart; ent.nextthink = n.add32(level.time,100)
+    end case
+    case "shooter_rocket"
+      initShooter(level,ent,5)
+    end case
+    case "shooter_grenade"
+      initShooter(level,ent,4)
+    end case
+    case "shooter_plasma"
+      initShooter(level,ent,8)
     end case
     case default
       return false

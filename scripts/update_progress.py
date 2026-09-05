@@ -5,8 +5,8 @@ from inventory import sha
 
 def main():
     mappings={
-        "code/game/q_math.c":(["src/mq3/shared/math.ml"],
-            ["Q_rand","Q_random","Q_crandom","Q_rsqrt","Q_fabs","LerpAngle","VectorLength","VectorNormalize","VectorNormalize2","AngleVectors","vectoangles","AngleNormalize360","AngleNormalize180"],["scripts/test_math.py","scripts/test_patches.py","scripts/test_movement.py","scripts/test_pmove.py","scripts/test_shared_game.py"]),
+        "code/game/q_math.c":(["src/mq3/shared/math.ml","src/mq3/shared/directions.ml","src/mq3/shared/bytedirs.ml"],
+            ["Q_rand","Q_random","Q_crandom","Q_rsqrt","Q_fabs","LerpAngle","VectorLength","VectorNormalize","VectorNormalize2","AngleVectors","vectoangles","AngleNormalize360","AngleNormalize180","DirToByte","ProjectPointOnPlane","PerpendicularVector","bytedirs"],["scripts/test_math.py","scripts/test_patches.py","scripts/test_movement.py","scripts/test_pmove.py","scripts/test_shared_game.py","scripts/test_missiles.py"]),
         "code/game/q_shared.h":(["src/mq3/shared/math.ml","src/mq3/game/playerstate.ml","src/mq3/game/pmove.ml","src/mq3/game/entitystate.ml","src/mq3/game/snapshot.ml"],["DotProduct","CrossProduct","VectorMA","playerState_t","usercmd_t","entityState_t","trajectory_t","ANGLE2SHORT"],["scripts/test_math.py","scripts/test_pmove.py","scripts/test_entitystate.py"]),
         "code/win32/win_shared.c":(["src/mq3/shared/math.ml"],["Sys_SnapVector"],["scripts/test_pmove.py"]),
         "code/game/bg_public.h":(["src/mq3/game/constants.ml","src/mq3/game/pmove.ml"],["pmove_t","pmtype_t","weaponstate_t","statIndex_t","persEnum_t","powerup_t","holdable_t","weapon_t","entity_event_t","animNumber_t","team_t","entityType_t","meansOfDeath_t"],["scripts/test_pmove.py","scripts/test_entitystate.py","scripts/test_transitions.py"]),
@@ -37,19 +37,19 @@ def main():
              "PM_BeginWeaponChange","PM_FinishWeaponChange","PM_TorsoAnimation","PM_Weapon","PM_Animate","PM_DropTimers","PM_UpdateViewAngles","PmoveSingle","Pmove"],
             ["scripts/test_movement.py","scripts/test_pmove.py","scripts/test_runtime_pmove.py"]),
         "code/game/bg_slidemove.c":(["src/mq3/game/movement.ml"],["PM_SlideMove","PM_StepSlideMove"],["scripts/test_movement.py"]),
-        "code/game/bg_misc.c":(["src/mq3/game/movement.ml","src/mq3/game/constants.ml","src/mq3/game/pmove.ml","src/mq3/game/trajectory.ml","src/mq3/game/jumppad.ml","src/mq3/game/snapshot.ml"],
-            ["BG_AddPredictableEventToPlayerstate","bg_itemlist","BG_EvaluateTrajectory","BG_EvaluateTrajectoryDelta","BG_PlayerTouchesItem","BG_TouchJumpPad","BG_PlayerStateToEntityState","BG_PlayerStateToEntityStateExtraPolate"],
-            ["scripts/test_movement.py","scripts/test_pmove.py","scripts/test_shared_game.py","scripts/test_server_world.py","scripts/test_entitystate.py"]),
+        "code/game/bg_misc.c":(["src/mq3/game/movement.ml","src/mq3/game/constants.ml","src/mq3/game/pmove.ml","src/mq3/game/trajectory.ml","src/mq3/game/jumppad.ml","src/mq3/game/snapshot.ml","src/mq3/game/shooters.ml"],
+            ["BG_AddPredictableEventToPlayerstate","bg_itemlist","BG_EvaluateTrajectory","BG_EvaluateTrajectoryDelta","BG_PlayerTouchesItem","BG_TouchJumpPad","BG_PlayerStateToEntityState","BG_PlayerStateToEntityStateExtraPolate","BG_FindItemForWeapon"],
+            ["scripts/test_movement.py","scripts/test_pmove.py","scripts/test_shared_game.py","scripts/test_server_world.py","scripts/test_entitystate.py","scripts/test_missiles.py"]),
         "code/server/sv_world.c":(["src/mq3/server/world.ml"],
             ["SV_ClipHandleForEntity","SV_CreateworldSector","SV_ClearWorld","SV_UnlinkEntity","SV_LinkEntity","SV_AreaEntities_r","SV_AreaEntities","SV_ClipToEntity","SV_ClipMoveToEntities","SV_Trace","SV_PointContents"],
-            ["scripts/test_server_world.py","scripts/test_combat.py"]),
+            ["scripts/test_server_world.py","scripts/test_combat.py","scripts/test_missiles.py"]),
         "code/server/server.h":(["src/mq3/server/world.ml"],["svEntity_t"],["scripts/test_server_world.py"]),
         "code/game/g_public.h":(["src/mq3/server/world.ml"],["entityShared_t","sharedEntity_t"],["scripts/test_server_world.py"]),
         "code/server/sv_game.c":(["src/mq3/server/world.ml","src/mq3/game/spawn_functions.ml"],["SV_EntityContact","SV_SetBrushModel"],["scripts/test_transitions.py","scripts/test_spawn.py"]),
         "code/server/sv_init.c":(["src/mq3/game/spawn_values.ml"],["SV_SetConfigstring"],["scripts/test_targets.py","scripts/test_spawn_values.py"]),
         "code/game/g_active.c":(["src/mq3/game/triggers.ml"],["G_TouchTriggers"],["scripts/test_transitions.py"]),
-        "code/game/g_misc.c":(["src/mq3/game/teleport.ml","src/mq3/game/spawn_functions.ml"],
-            ["TeleportPlayer","SP_info_null","SP_info_notnull","SP_info_camp","SP_light","SP_misc_model","SP_misc_teleporter_dest"],["scripts/test_transitions.py","scripts/test_spawn.py"]),
+        "code/game/g_misc.c":(["src/mq3/game/teleport.ml","src/mq3/game/spawn_functions.ml","src/mq3/game/shooters.ml"],
+            ["TeleportPlayer","SP_info_null","SP_info_notnull","SP_info_camp","SP_light","SP_misc_model","SP_misc_teleporter_dest","Use_Shooter","InitShooter_Finish","InitShooter","SP_shooter_rocket","SP_shooter_grenade","SP_shooter_plasma"],["scripts/test_transitions.py","scripts/test_spawn.py","scripts/test_missiles.py"]),
         "code/game/g_client.c":(["src/mq3/game/teleport.ml","src/mq3/game/spawn_functions.ml"],
             ["SetClientViewAngle","SP_info_player_deathmatch","SP_info_player_start","SP_info_player_intermission"],["scripts/test_entitystate.py","scripts/test_transitions.py","scripts/test_spawn.py"]),
         "code/game/g_utils.c":(["src/mq3/game/entities.ml","src/mq3/game/teleport.ml","src/mq3/game/spawn_values.ml","src/mq3/game/spawn_functions.ml","src/mq3/game/targets.ml","src/mq3/game/events.ml","src/mq3/compat/textnumbers.ml"],
@@ -58,12 +58,14 @@ def main():
             ["trigger_push_touch","trigger_teleporter_touch","InitTrigger","AimAtTarget","SP_trigger_push","SP_trigger_teleport","multi_wait","multi_trigger","Use_Multi","Touch_Multi","SP_trigger_multiple","trigger_always_think","SP_trigger_always","Use_target_push","SP_target_push","func_timer_think","func_timer_use","SP_func_timer","hurt_touch","hurt_use","SP_trigger_hurt"],["scripts/test_transitions.py","scripts/test_spawn.py","scripts/test_targets.py","scripts/test_combat.py"]),
         "code/game/g_spawn.c":(["src/mq3/game/spawn.ml","src/mq3/game/spawn_tables.ml","src/mq3/game/spawn_values.ml","src/mq3/compat/textnumbers.ml"],
             ["G_SpawnString","G_SpawnFloat","G_SpawnInt","G_SpawnVector","fields","spawns","G_CallSpawn","G_NewString","G_ParseField","G_SpawnGEntityFromSpawnVars","G_AddSpawnVarToken","G_ParseSpawnVars","SP_worldspawn","G_SpawnEntitiesFromString","SP_item_botroam"],["scripts/test_spawn_values.py","scripts/test_spawn.py"]),
-        "code/game/g_main.c":(["src/mq3/game/spawn_functions.ml","src/mq3/game/frame.ml"],["G_RunThink","G_RunFrame"],["scripts/test_spawn_values.py","scripts/test_spawn.py","scripts/test_targets.py"]),
+        "code/game/g_main.c":(["src/mq3/game/spawn_functions.ml","src/mq3/game/frame.ml","src/mq3/game/entities.ml"],["G_RunThink","G_RunFrame"],["scripts/test_spawn_values.py","scripts/test_spawn.py","scripts/test_targets.py","scripts/test_missiles.py"]),
         "code/game/g_target.c":(["src/mq3/game/spawn_functions.ml","src/mq3/game/targets.ml","src/mq3/game/hazards.ml"],["SP_target_position","Think_Target_Delay","Use_Target_Delay","SP_target_delay","target_relay_use","SP_target_relay","target_teleporter_use","SP_target_teleporter","Use_Target_Speaker","SP_target_speaker","target_location_linkup","SP_target_location","target_kill_use","SP_target_kill","target_laser_think","target_laser_on","target_laser_off","target_laser_use","target_laser_start","SP_target_laser"],["scripts/test_spawn.py","scripts/test_targets.py","scripts/test_combat.py"]),
         "code/game/g_mover.c":(["src/mq3/game/spawn_functions.ml"],["SP_path_corner"],["scripts/test_spawn.py"]),
         "code/game/g_team.c":(["src/mq3/game/spawn_functions.ml","src/mq3/game/combat.ml"],["SP_team_CTF_redplayer","SP_team_CTF_blueplayer","SP_team_CTF_redspawn","SP_team_CTF_bluespawn","OnSameTeam","Team_CheckHurtCarrier"],["scripts/test_spawn.py","scripts/test_combat.py"]),
         "code/game/g_combat.c":(["src/mq3/game/combat.ml"],["CheckArmor","G_Damage","CanDamage","G_RadiusDamage"],["scripts/test_combat.py"]),
-        "code/game/g_weapon.c":(["src/mq3/game/combat.ml"],["LogAccuracyHit"],["scripts/test_combat.py"]),
+        "code/game/g_missile.c":(["src/mq3/game/missiles.ml"],["G_BounceMissile","G_ExplodeMissile","G_MissileImpact","G_RunMissile","fire_plasma","fire_grenade","fire_bfg","fire_rocket","fire_grapple"],["scripts/test_missiles.py"]),
+        "code/game/g_items.c":(["src/mq3/game/shooters.ml"],["RegisterItem"],["scripts/test_missiles.py"]),
+        "code/game/g_weapon.c":(["src/mq3/game/combat.ml","src/mq3/game/missiles.ml"],["LogAccuracyHit","SnapVectorTowards","Weapon_HookFree","Weapon_HookThink"],["scripts/test_combat.py","scripts/test_missiles.py"]),
         "code/game/g_local.h":(["src/mq3/game/entities.ml","src/mq3/game/spawn.ml","src/mq3/game/combat.ml"],["gentity_s","level_locals_t","gclient_s","playerTeamState_t"],["scripts/test_transitions.py","scripts/test_spawn_values.py","scripts/test_spawn.py","scripts/test_targets.py","scripts/test_combat.py"]),
     }
     path=ROOT / "PORT_LEDGER.json"
@@ -74,17 +76,27 @@ def main():
             entry.update(target=targets,status="partial",tests=tests,
                          symbol_mapping=[{"original":name,"target_files":targets,"status":"tested_subset"} for name in symbols])
             if entry["source"] == "code/game/g_main.c":
-                entry["symbol_mapping"][1]["scope"] = "Allocated-entity loop only; missile/item/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
+                entry["symbol_mapping"][1]["scope"] = "Allocated-entity loop with implemented missile dispatch; item/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
             if entry["source"] == "code/server/sv_init.c":
                 entry["symbol_mapping"][0]["scope"] = "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
             if entry["source"] == "code/game/g_combat.c":
-                entry["symbol_mapping"][1]["scope"] = "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die, scoring, damage feedback, projectile physics, Missionpack or full server frame. G_Printf diagnostics excluded."
+                entry["symbol_mapping"][1]["scope"] = "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die, scoring, damage feedback, Missionpack or full server frame. G_Printf diagnostics excluded."
+            if entry["source"] == "code/game/g_missile.c":
+                for symbol in entry["symbol_mapping"]:
+                    symbol["scope"] = "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+            if entry["source"] == "code/game/g_items.c":
+                entry["symbol_mapping"][0]["scope"] = "Item registration bitset only. Item spawning, pickup, ClearRegisteredItems, SaveRegisteredItems and client precaching remain open."
     path.write_text(json.dumps(ledger,indent=2)+"\n")
     evidence=[]
     for path in sorted((ROOT / "build/reference").rglob("result.json")):
         if path.relative_to(ROOT).as_posix() in ("build/reference/collision/result.json","build/reference/movement/result.json"):
             continue # superseded by explicitly named curves/no_curves profiles
-        evidence.append({"path":path.relative_to(ROOT).as_posix(),"sha256":sha(path),"result":json.loads(path.read_text())})
+        result=json.loads(path.read_text())
+        # A supplemental runtime report belongs only to its recorded full run.
+        if "base_verification_sha256" in result:
+            verification=ROOT / "build/verification.json"
+            if not verification.exists() or result["base_verification_sha256"]!=sha(verification):continue
+        evidence.append({"path":path.relative_to(ROOT).as_posix(),"sha256":sha(path),"result":result})
     replay=ROOT / "artifacts/reference/replay/result.json"
     if replay.exists():evidence.append({"path":replay.relative_to(ROOT).as_posix(),"sha256":sha(replay),"result":json.loads(replay.read_text())})
     verification=ROOT / "build/verification.json"

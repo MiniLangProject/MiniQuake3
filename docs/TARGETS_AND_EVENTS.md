@@ -3,9 +3,10 @@
 `game/targets.ml` überträgt `G_UseTargets`, Shader-Remaps, `target_delay`,
 `target_relay`, `target_teleporter`, `trigger_multiple`, `trigger_always`,
 `target_speaker`, `target_push`, `func_timer` und `target_location`.
-Zusammen mit den bisherigen Klassen und den [Hurt-/Kill-/Laser-Objekten](COMBAT.md) sind
-damit 31 der 48 baseq3-Spawn-Klassen
-umgesetzt. Die übrigen 17 Klassen und alle Item-Spawns bleiben offen.
+Zusammen mit den bisherigen Klassen, den [Hurt-/Kill-/Laser-Objekten](COMBAT.md)
+und den drei [Shooter-Klassen](MISSILES.md) sind
+damit 34 der 48 baseq3-Spawn-Klassen
+umgesetzt. Die übrigen 14 Klassen und alle Item-Spawns bleiben offen.
 
 | Aufruf | Verhalten |
 | --- | --- |
@@ -110,11 +111,13 @@ ausverlinkte `neverFree`-Entities werden übersprungen. Während der Schleife
 angelegte Entities können noch im selben Durchlauf denken.
 
 **Grenze des Frames:** `frame.runEntities` ist ausschließlich die Schleife über
-belegte Entities. Der Aufrufer setzt `level.time` und aktualisiert Cvars zuvor.
-Für die noch nicht portierten Handler verlangt der Port
-`level.runEntityFn(level, kind, ent)`: `1` Missile, `2` Item/Physics, `3` Mover,
-`4` Client. Ohne Handler entsteht ein Fehler. Die C-/MiniLang-Tests zeichnen diese
-Aufrufe auf; sie simulieren keine Ersatzphysik. `G_RunFrame` als Ganzes,
+belegte Entities. Der Aufrufer setzt `level.previousTime` und `level.time` und
+aktualisiert Cvars zuvor. Ohne externen Handler laufen Missile-Entities über die
+[portierte Projektilverarbeitung](MISSILES.md). Die übrigen Kategorien benötigen
+weiterhin `level.runEntityFn(level, kind, ent)`: `2` Item/Physics, `3` Mover,
+`4` Client. Ein gesetzter Handler übernimmt außerdem Kategorie `1` Missile.
+Der Target-Test beobachtet alle vier Kategorien; die gesonderte Projektilprüfung
+führt den echten Missile-Zweig aus. `G_RunFrame` als Ganzes,
 `ClientEndFrame`, Match-/Vote-Prüfungen, Spieler-Todesregeln, Items und Mover-Pushing
 bleiben offen. `target_teleporter` ist über KillBox inzwischen mit der
 [portierten Schadensberechnung](COMBAT.md) verbunden.

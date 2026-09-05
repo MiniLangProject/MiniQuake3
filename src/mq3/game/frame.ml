@@ -5,6 +5,7 @@ package mq3.game.frame
 import mq3.game.entities as game
 import mq3.game.spawn_functions as funcs
 import mq3.game.constants as c
+import mq3.game.missiles as missiles
 import mq3.compat.numeric as n
 function runEntities(level)
   i = 0
@@ -27,8 +28,11 @@ function runEntities(level)
     else if ent.s.eType == c.ET_MOVER then kind = 3
     else if slot < 64 then kind = 4 end if
     if kind != 0 then
-      if level.runEntityFn == void then return error(488,"Entity frame requires unported missile/item/mover/client handler") end if
-      level.runEntityFn(level,kind,ent)
+      if kind == 1 and level.runEntityFn == void then missiles.run(level,ent)
+      else
+        if level.runEntityFn == void then return error(488,"Entity frame requires unported item/mover/client handler") end if
+        level.runEntityFn(level,kind,ent)
+      end if
     else
       funcs.runThink(level,ent)
     end if

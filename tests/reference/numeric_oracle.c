@@ -20,9 +20,9 @@ static void pair(FILE *out,uint32_t a,uint32_t b){
 int main(int argc,char**argv){
     FILE *out;int i,j;
     uint32_t edge[]={0,0x80000000,1,0x80000001,0x007fffff,0x00800000,0x3f800000,0xbf800000,
-        0x3f800001,0x33800000,0x3effffff,0x7f7fffff,0xff7fffff,0x7f800000,0xff800000};
+        0x3f800001,0x33800000,0x3effffff,0x7f7fffff,0xff7fffff,0x7f800000,0xff800000,0x7fc00000,0xffc00000};
     if(argc!=2||!(out=fopen(argv[1],"wb")))return 2;
-    for(i=0;i<15;i++)for(j=0;j<15;j++)pair(out,edge[i],edge[j]);
+    for(i=0;i<17;i++)for(j=0;j<17;j++)pair(out,edge[i],edge[j]);
     for(i=0;i<20000;i++){
         uint32_t a=next(),b=next();
         if((a&0x7fffffff)>0x7f800000)a&=0xfeffffff;

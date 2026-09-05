@@ -350,7 +350,7 @@ function call(vm, args)
               value = n.i32(n.addBits(n.u32(b), n.u32(a)))
             end case
             case 55
-              value = n.i32(n.addBits(n.u32(b), n.u32(a) ^ 0x80000000))
+              value = n.i32(n.subBits(n.u32(b), n.u32(a)))
             end case
             case 56
               value = n.i32(n.divBits(n.u32(b), n.u32(a)))

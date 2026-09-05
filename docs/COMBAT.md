@@ -104,6 +104,9 @@ zur Slot-Nummer passende Entity-Nummer und weist diesen Link kontrolliert zurüc
 Ein gesonderter Lauf bestätigt die übereinstimmenden Beobachtungen bis zu dieser
 Grenze; er zählt ausdrücklich nicht als vollständige C-Parität dieses Ablaufs.
 
+Die [Projektil-Verarbeitung](MISSILES.md) verbindet direkte und radiale Treffer
+inzwischen mit Raketen, Granaten, Plasma, BFG und Shooter-Objekten.
+
 ## Vergleich und offene Abnahmen
 
 `test_combat.py` vergleicht nach jeder Aktion vollständige Entity-/PlayerStates,
@@ -141,7 +144,7 @@ Nicht-Client-Zustand, der in C im Trefferzähler auf NULL zugreift, wird kontrol
 abgewiesen; diese Vertragsproben sind keine Übereinstimmung mit einem definierten
 C-Fehlerpfad.
 
-Offen bleiben `player_die`, Scores/Respawn, weitere Waffentreffer und Projektilphysik,
+Offen bleiben `player_die`, Scores/Respawn, weitere Waffentreffer und die vollständige Waffensteuerung,
 Schadensfeedback am Frame-Ende, vollständige Teamregeln, Mover-Steuerung,
 Missionpack und die vollständige Serverintegration.
 

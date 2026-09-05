@@ -17,7 +17,7 @@ static void actionUse(gentity_t *e,gentity_t *other,gentity_t *activator) {
     }
 }
 static void actionRun(int kind,gentity_t *e) {word(12);word(kind);word(slotOf(e));}
-void G_RunMissile(gentity_t *e) {actionRun(1,e);}
+void G_RunMissile(gentity_t *e) {if(missileOutput)Original_RunMissile(e);else actionRun(1,e);}
 void G_RunItem(gentity_t *e) {actionRun(2,e);}
 void G_RunMover(gentity_t *e) {actionRun(3,e);}
 void G_RunClient(gentity_t *e) {actionRun(4,e);}

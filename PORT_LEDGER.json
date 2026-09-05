@@ -5163,7 +5163,8 @@
             "src/mq3/game/pmove.ml",
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         },
@@ -5175,7 +5176,8 @@
             "src/mq3/game/pmove.ml",
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         },
@@ -5187,7 +5189,8 @@
             "src/mq3/game/pmove.ml",
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         },
@@ -5199,7 +5202,8 @@
             "src/mq3/game/pmove.ml",
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         },
@@ -5211,7 +5215,8 @@
             "src/mq3/game/pmove.ml",
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         },
@@ -5223,7 +5228,8 @@
             "src/mq3/game/pmove.ml",
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         },
@@ -5235,7 +5241,8 @@
             "src/mq3/game/pmove.ml",
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         },
@@ -5247,7 +5254,21 @@
             "src/mq3/game/pmove.ml",
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/game/shooters.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "BG_FindItemForWeapon",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/trajectory.ml",
+            "src/mq3/game/jumppad.ml",
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         }
@@ -5258,7 +5279,8 @@
         "src/mq3/game/pmove.ml",
         "src/mq3/game/trajectory.ml",
         "src/mq3/game/jumppad.ml",
-        "src/mq3/game/snapshot.ml"
+        "src/mq3/game/snapshot.ml",
+        "src/mq3/game/shooters.ml"
       ],
       "status": "partial",
       "tests": [
@@ -5266,7 +5288,8 @@
         "scripts/test_pmove.py",
         "scripts/test_shared_game.py",
         "scripts/test_server_world.py",
-        "scripts/test_entitystate.py"
+        "scripts/test_entitystate.py",
+        "scripts/test_missiles.py"
       ]
     },
     {
@@ -6081,7 +6104,7 @@
             "src/mq3/game/combat.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die, scoring, damage feedback, projectile physics, Missionpack or full server frame. G_Printf diagnostics excluded."
+          "scope": "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die, scoring, damage feedback, Missionpack or full server frame. G_Printf diagnostics excluded."
         },
         {
           "original": "CanDamage",
@@ -6134,10 +6157,23 @@
         "Touch_Item",
         "Use_Item"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "RegisterItem",
+          "target_files": [
+            "src/mq3/game/shooters.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Item registration bitset only. Item spawning, pickup, ClearRegisteredItems, SaveRegisteredItems and client precaching remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/game/shooters.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_missiles.py"
+      ]
     },
     {
       "source": "code/game/g_local.h",
@@ -6243,7 +6279,8 @@
           "original": "G_RunThink",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/frame.ml"
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset"
         },
@@ -6251,21 +6288,24 @@
           "original": "G_RunFrame",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/frame.ml"
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset",
-          "scope": "Allocated-entity loop only; missile/item/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
+          "scope": "Allocated-entity loop with implemented missile dispatch; item/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
         }
       ],
       "target": [
         "src/mq3/game/spawn_functions.ml",
-        "src/mq3/game/frame.ml"
+        "src/mq3/game/frame.ml",
+        "src/mq3/game/entities.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_spawn_values.py",
         "scripts/test_spawn.py",
-        "scripts/test_targets.py"
+        "scripts/test_targets.py",
+        "scripts/test_missiles.py"
       ]
     },
     {
@@ -6313,7 +6353,8 @@
           "original": "TeleportPlayer",
           "target_files": [
             "src/mq3/game/teleport.ml",
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         },
@@ -6321,7 +6362,8 @@
           "original": "SP_info_null",
           "target_files": [
             "src/mq3/game/teleport.ml",
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         },
@@ -6329,7 +6371,8 @@
           "original": "SP_info_notnull",
           "target_files": [
             "src/mq3/game/teleport.ml",
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         },
@@ -6337,7 +6380,8 @@
           "original": "SP_info_camp",
           "target_files": [
             "src/mq3/game/teleport.ml",
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         },
@@ -6345,7 +6389,8 @@
           "original": "SP_light",
           "target_files": [
             "src/mq3/game/teleport.ml",
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         },
@@ -6353,7 +6398,8 @@
           "original": "SP_misc_model",
           "target_files": [
             "src/mq3/game/teleport.ml",
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         },
@@ -6361,19 +6407,76 @@
           "original": "SP_misc_teleporter_dest",
           "target_files": [
             "src/mq3/game/teleport.ml",
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/shooters.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "Use_Shooter",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/shooters.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "InitShooter_Finish",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/shooters.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "InitShooter",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/shooters.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_shooter_rocket",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/shooters.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_shooter_grenade",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/shooters.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_shooter_plasma",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/shooters.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
         "src/mq3/game/teleport.ml",
-        "src/mq3/game/spawn_functions.ml"
+        "src/mq3/game/spawn_functions.ml",
+        "src/mq3/game/shooters.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_transitions.py",
-        "scripts/test_spawn.py"
+        "scripts/test_spawn.py",
+        "scripts/test_missiles.py"
       ]
     },
     {
@@ -6399,10 +6502,87 @@
         "fire_prox",
         "fire_rocket"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "G_BounceMissile",
+          "target_files": [
+            "src/mq3/game/missiles.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+        },
+        {
+          "original": "G_ExplodeMissile",
+          "target_files": [
+            "src/mq3/game/missiles.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+        },
+        {
+          "original": "G_MissileImpact",
+          "target_files": [
+            "src/mq3/game/missiles.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+        },
+        {
+          "original": "G_RunMissile",
+          "target_files": [
+            "src/mq3/game/missiles.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+        },
+        {
+          "original": "fire_plasma",
+          "target_files": [
+            "src/mq3/game/missiles.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+        },
+        {
+          "original": "fire_grenade",
+          "target_files": [
+            "src/mq3/game/missiles.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+        },
+        {
+          "original": "fire_bfg",
+          "target_files": [
+            "src/mq3/game/missiles.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+        },
+        {
+          "original": "fire_rocket",
+          "target_files": [
+            "src/mq3/game/missiles.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+        },
+        {
+          "original": "fire_grapple",
+          "target_files": [
+            "src/mq3/game/missiles.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+        }
+      ],
+      "target": [
+        "src/mq3/game/missiles.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_missiles.py"
+      ]
     },
     {
       "source": "code/game/g_mover.c",
@@ -7879,17 +8059,44 @@
         {
           "original": "LogAccuracyHit",
           "target_files": [
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/missiles.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SnapVectorTowards",
+          "target_files": [
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/missiles.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "Weapon_HookFree",
+          "target_files": [
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/missiles.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "Weapon_HookThink",
+          "target_files": [
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/missiles.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
-        "src/mq3/game/combat.ml"
+        "src/mq3/game/combat.ml",
+        "src/mq3/game/missiles.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_combat.py"
+        "scripts/test_combat.py",
+        "scripts/test_missiles.py"
       ]
     },
     {
@@ -8059,97 +8266,161 @@
         {
           "original": "Q_rand",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "Q_random",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "Q_crandom",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "Q_rsqrt",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "Q_fabs",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "LerpAngle",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "VectorLength",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "VectorNormalize",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "VectorNormalize2",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "AngleVectors",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "vectoangles",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "AngleNormalize360",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "AngleNormalize180",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "DirToByte",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "ProjectPointOnPlane",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PerpendicularVector",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "bytedirs",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/directions.ml",
+            "src/mq3/shared/bytedirs.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
-        "src/mq3/shared/math.ml"
+        "src/mq3/shared/math.ml",
+        "src/mq3/shared/directions.ml",
+        "src/mq3/shared/bytedirs.ml"
       ],
       "status": "partial",
       "tests": [
@@ -8157,7 +8428,8 @@
         "scripts/test_patches.py",
         "scripts/test_movement.py",
         "scripts/test_pmove.py",
-        "scripts/test_shared_game.py"
+        "scripts/test_shared_game.py",
+        "scripts/test_missiles.py"
       ]
     },
     {
@@ -13580,7 +13852,8 @@
       "status": "partial",
       "tests": [
         "scripts/test_server_world.py",
-        "scripts/test_combat.py"
+        "scripts/test_combat.py",
+        "scripts/test_missiles.py"
       ]
     },
     {

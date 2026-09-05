@@ -43,6 +43,10 @@ def main():
             if op in OPS[54:58]:
                 a, b = [struct.unpack("<I",struct.pack("<f",rng.uniform(-10000,10000)))[0] for _ in range(2)]
             add(op, [("ENTER",64),("CONST",a),("CONST",b),(op,),("LEAVE",64)])
+    for a in (0,0x3f800000,0x7fc00000,0xffc00000):
+        for b in (0,0x3f800000,0x7fc00000,0xffc00000):
+            if a in (0x7fc00000,0xffc00000) or b in (0x7fc00000,0xffc00000):
+                add('SUBF_NAN',[("ENTER",64),("CONST",a),("CONST",b),("SUBF",),("LEAVE",64)])
     for op in ("SEX8","SEX16","NEGI","NEGF","CVIF","CVFI","BCOM"):
         for value in (0,1,-1,127,128,255,32767,32768,0x80000000,0x7fffffff,0x3fe00000):
             add(op,[("ENTER",64),("CONST",value),(op,),("LEAVE",64)])

@@ -3,6 +3,7 @@ static void combatCallback(int kind,gentity_t *e,gentity_t *inflictor,gentity_t 
     gentity_t *changed;vec3_t origin={100,0,64};int mode=e->count,slot=e->damage;
     word(kind);word(slotOf(e));word(slotOf(inflictor));word(slotOf(attacker));word(amount);word(mod);
     word(e->health);word(e->client?e->client->ps.stats[STAT_HEALTH]:0);word(e->flags);word(slotOf(e->enemy));
+    if(missileOutput)missileState();
     if(mode==1)G_FreeEntity(e);
     if(mode==2)G_FreeEntity(&g_entities[slot]);
     if(mode==3)g_entities[slot].takedamage=qfalse;
@@ -44,6 +45,7 @@ static void combatState(int index) {
     int i;word(26);word(index);word(g_gametype.integer);word(g_friendlyFire.integer);words(&g_knockback.value,1);word(level.intermissionQueued);
     state();for(i=0;i<3;i++){snapshot(&g_entities[i]);combatExtra(&g_entities[i]);}
     for(i=64;i<level.num_entities;i++)combatExtra(&g_entities[i]);combatExtra(&g_entities[1022]);
+    if(missileOutput)missileState();
 }
 static void runCombat(FILE *in) {
     int q[16],index=0,j;gentity_t *e,*other,*attacker;vec3_t dir,point;char *text=readString(in);
@@ -79,9 +81,10 @@ static void runCombat(FILE *in) {
             case 3:VectorCopy(point,e->r.mins);break;case 4:VectorCopy(point,e->r.maxs);break;case 5:VectorCopy(point,e->r.currentOrigin);break;
             case 6:VectorCopy(point,e->r.currentAngles);break;case 7:VectorCopy(point,e->r.absmin);break;case 8:VectorCopy(point,e->r.absmax);break;}break;
         case 20:trap_SetBrushModel(e,va("*%d",q[2]));break;
-        default:exit(76);
+        default:if(!missileOutput || !missileAction(q))exit(76);
         }
         combatState(index++);
     }
+    if(missileOutput){word(37);word(rand());}
     free(text);
 }

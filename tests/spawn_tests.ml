@@ -11,6 +11,11 @@ import mq3.game.events as events
 import mq3.game.frame as frame
 import mq3.game.combat as combat
 import mq3.game.hazards as hazards
+import mq3.game.missiles as missiles
+import mq3.game.shooters as shooters
+import mq3.game.movement as movement
+import mq3.shared.directions as directions
+import mq3.collision.brush as brush
 import mq3.game.teleport as teleport
 import mq3.server.world as sv
 import mq3.collision.world as cm
@@ -24,6 +29,7 @@ struct Check
   stringBytes
   boundaries
   links
+  missiles
 end struct
 function checkWord(check,value)
   if check.offset+4 > len(check.expected) then return error(490,"Unexpected spawn output") end if
@@ -344,6 +350,7 @@ function combatCallback(level,kind,ent,inflictor,attacker,amount,mod)
   health = 0
   if ent.client != void then health = ent.client.ps.stats[0] end if
   checkWords(level.context,[kind,ent.slot,actionSlot(inflictor),actionSlot(attacker),amount,mod,ent.health,health,ent.flags,actionSlot(ent.enemy)])
+  checkMissileState(level)
   if mode == 1 then game.free(level,ent) end if
   if mode == 2 then game.free(level,level.entities[slot]) end if
   if mode == 3 then level.entities[slot].takedamage = false end if
@@ -524,6 +531,7 @@ function checkCombatState(level,index)
     checkCombatExtra(check,level.entities[i]); i = i+1
   end while
   checkCombatExtra(check,level.entities[1022])
+  checkMissileState(level)
   return void
 end function
 function recordCombatTrace(level,start,finish,mins,maxs,passEntity,mask,hit)
@@ -654,10 +662,182 @@ function runCombatActions(level,input,check)
       case 20
         funcs.setBrushModel(level,ent,"*"+str(command[2]))
       end case
+      case default
+        runMissileAction(level,command)
+      end case
     end switch
     checkCombatState(level,index); index = index+1
   end while
+  if check.missiles then checkWords(check,[37,game.random(level)]) end if
   print "PASS: "+str(index)+" combat/hazard actions"
+  return void
+end function
+function checkMissileExtra(check,ent)
+  think = 5
+  if ent.think == void then think = 0
+  else if ent.think == missiles.explode then think = 1
+  else if ent.think == missiles.hookFree then think = 2
+  else if ent.think == missiles.hookThink then think = 3
+  else if ent.think == shooters.finish then think = 4 end if
+  checkWords(check,[ent.slot,actionSlot(ent.parent),actionSlot(ent.target_ent),ent.splashDamage,ent.splashRadius,ent.methodOfDeath,ent.splashMethodOfDeath,ent.clipmask,think,boolean(ent.client != void)])
+  if ent.client == void then checkWords(check,[0,-1]) else checkWords(check,[ent.client.accuracy_hits,actionSlot(ent.client.hook)]) end if
+  return void
+end function
+function checkMissileState(level)
+  check = level.context
+  if not check.missiles then return void end if
+  checkWords(check,[31,level.previousTime]); checkWords(check,level.itemRegistered); checkWord(check,level.num_entities-64+4)
+  for i = 0 to 2
+    checkMissileExtra(check,level.entities[i])
+  end for
+  i = 64
+  while i < level.num_entities
+    checkMissileExtra(check,level.entities[i]); i = i+1
+  end while
+  checkMissileExtra(check,level.entities[1022])
+  return void
+end function
+function runMissileAction(level,command)
+  check = level.context
+  if not check.missiles then return error(490,"Unknown combat command") end if
+  ent = void
+  if command[1] >= 0 then ent = level.entities[command[1]] end if
+  switch command[0]
+    case 21
+      start = [n.bitsFloat(command[3]),n.bitsFloat(command[4]),n.bitsFloat(command[5])]
+      dir = [n.bitsFloat(command[6]),n.bitsFloat(command[7]),n.bitsFloat(command[8])]
+      created = missiles.fire(level,ent,start,dir,command[2]); checkWords(check,[32,created.slot]); checkVector(check,start); checkVector(check,dir)
+    end case
+    case 22
+      missiles.run(level,ent)
+    end case
+    case 23
+      missiles.explode(level,ent)
+    end case
+    case 24,25
+      tr = brush.emptyTrace(); tr.fraction = n.bitsFloat(command[2]); tr.surfaceFlags = command[4]
+      tr.normal = [n.bitsFloat(command[5]),n.bitsFloat(command[6]),n.bitsFloat(command[7])]
+      hit = movement.Collision(tr,[n.bitsFloat(command[8]),n.bitsFloat(command[9]),n.bitsFloat(command[10])],command[3])
+      if command[0] == 24 then missiles.bounce(level,ent,hit) else missiles.impact(level,ent,hit) end if
+      checkWord(check,33); checkVector(check,hit.endpos)
+    end case
+    case 26
+      missiles.hookThink(level,ent)
+    end case
+    case 27
+      missiles.hookFree(level,ent)
+    end case
+    case 28
+      frame.runEntities(level)
+    end case
+    case 29
+      dir = [n.bitsFloat(command[2]),n.bitsFloat(command[3]),n.bitsFloat(command[4])]
+      start = [n.bitsFloat(command[5]),n.bitsFloat(command[6]),n.bitsFloat(command[7])]; source = dir
+      if command[8] != 0 then source = void end if
+      result = directions.dirToByte(source); missiles.snapTowards(dir,start); checkWords(check,[34,result]); checkVector(check,dir)
+    end case
+    case 30
+      funcs.initShooter(level,ent,command[2])
+    end case
+    case 31
+      value = command[3]
+      switch command[2]
+        case 0
+          level.previousTime = value
+        end case
+        case 1
+          ent.s.eFlags = value
+        end case
+        case 2
+          ent.s.pos.trType = value
+        end case
+        case 3
+          ent.s.pos.trTime = value
+        end case
+        case 4
+          ent.s.pos.trDuration = value
+        end case
+        case 5
+          ent.splashDamage = value
+        end case
+        case 6
+          ent.splashRadius = value
+        end case
+        case 7
+          ent.parent = void
+          if value >= 0 then ent.parent = level.entities[value] end if
+        end case
+        case 8
+          ent.target_ent = void
+          if value >= 0 then ent.target_ent = level.entities[value] end if
+        end case
+        case 9
+          ent.clipmask = value
+        end case
+        case 10
+          ent.client.accuracy_hits = value
+        end case
+        case 11
+          ent.nextthink = value
+        end case
+        case 12
+          names = [void,"leaf","changed","dest","missing",""]; ent.target = names[value]
+        end case
+        case 13
+          ent.random = n.bitsFloat(value)
+        end case
+        case 14
+          level.randSeed = value
+        end case
+        case 15
+          ent.s.weapon = value
+        end case
+        case 16
+          ent.think = void
+          if value != 0 then ent.think = missiles.explode end if
+        end case
+        case 17
+          ent.client.hook = void
+          if value >= 0 then ent.client.hook = level.entities[value] end if
+        end case
+      end switch
+    end case
+    case 32
+      vector = [n.bitsFloat(command[3]),n.bitsFloat(command[4]),n.bitsFloat(command[5])]
+      if command[2] != 0 then ent.s.pos.trDelta = vector else ent.s.pos.trBase = vector end if
+    end case
+    case 33
+      vector = directions.perpendicular([n.bitsFloat(command[2]),n.bitsFloat(command[3]),n.bitsFloat(command[4])]); checkWord(check,35); checkVector(check,vector)
+    end case
+    case 34
+      checkWords(check,[36,shooters.weaponItem(command[1])])
+    end case
+    case 35
+      i = 72
+      while i < level.num_entities
+        if level.entities[i].inuse then game.free(level,level.entities[i]) end if
+        i = i+1
+      end while
+    end case
+    case default
+      return error(490,"Unknown missile command")
+    end case
+  end switch
+  return void
+end function
+function runMissileContracts(level)
+  client = game.createClient(ps.create(),0,[0,0,0])
+  requireSpawnContract(client.hook == void and client.accuracy_hits == 0,"client missile fields initialize")
+  ent = game.spawn(level); ent.parent = level.entities[0]; ent.target_ent = level.entities[1]
+  ent.splashDamage = 100; ent.splashRadius = 120; ent.methodOfDeath = 6; ent.splashMethodOfDeath = 7; ent.clipmask = 0x6000001; game.free(level,ent)
+  requireSpawnContract(ent.parent == void and ent.target_ent == void and ent.splashDamage == 0 and ent.splashRadius == 0 and ent.methodOfDeath == 0 and ent.splashMethodOfDeath == 0 and ent.clipmask == 0,"free clears missile fields")
+  caught = try(missiles.fire(level,ent,[0.0,0.0,128.0],[1.0,0.0,0.0],99)); requireSpawnContract(caught is error,"unknown projectile weapon")
+  caught = try(missiles.hookFree(level,ent)); requireSpawnContract(caught is error,"hook free requires parent client")
+  caught = try(missiles.hookThink(level,ent)); requireSpawnContract(caught is error,"hook think requires parent client")
+  ent.r.ownerNum = 0; caught = try(missiles.accuracy(level,ent)); requireSpawnContract(caught is error,"accuracy requires owner client")
+  caught = try(shooters.weaponItem(0)); requireSpawnContract(caught is error,"missing weapon item")
+  caught = try(shooters.registerItem(level,-1)); requireSpawnContract(caught is error,"NULL item registration")
+  print "PASS: 8 missile runtime contracts"
   return void
 end function
 function runCombatContracts(level)
@@ -713,10 +893,12 @@ function runSpawnContracts(level)
   caught = try(funcs.setBrushModel(level,ent,"model")); requireSpawnContract(caught is error,"non-brush name")
   caught = try(funcs.setBrushModel(level,ent,"*999999")); requireSpawnContract(caught is error,"invalid inline model")
   fresh = game.create(level.scene.world); fresh.num_entities = 65; fresh.time = 1000; node = game.initEntity(fresh.entities[64])
-  for each type in [2,3,4]
+  for each type in [2,4]
     node.s.eType = type; caught = try(frame.runEntities(fresh)); requireSpawnContract(caught is error,"missing entity frame handler")
   end for
   node.s.eType = 0; node.physicsObject = true; caught = try(frame.runEntities(fresh)); requireSpawnContract(caught is error,"missing physics handler")
+  node.physicsObject = false; node.s.eType = 3; node.r.ownerNum = 1023; game.setOrigin(node,[0.0,0.0,128.0]); frame.runEntities(fresh)
+  requireSpawnContract(node.r.linked,"missile frame uses actual handler")
   node.inuse = false; game.initEntity(fresh.entities[0]); caught = try(frame.runEntities(fresh)); requireSpawnContract(caught is error,"missing client handler")
   longName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
   caught = try(targets.addRemap(fresh,longName,"new",0.0)); requireSpawnContract(caught is error,"overlong shader source")
@@ -728,9 +910,10 @@ function runSpawnContracts(level)
 end function
 function main(args)
   world = cm.loadWorld(fs.readAllBytes(args[0]),args[3] == "0")
-  input = fs.readAllBytes(args[1]); check = Check(fs.readAllBytes(args[2]),0,0,0,0,0); level = game.create(world)
+  input = fs.readAllBytes(args[1]); check = Check(fs.readAllBytes(args[2]),0,0,0,0,0,false); level = game.create(world)
   level.time = 1000; level.startTime = 1000
   if len(args) > 4 and args[4] == "--combat-contracts" then runCombatContracts(level); return 0 end if
+  if len(args) > 4 and args[4] == "--missile-contracts" then runMissileContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--contracts" then runSpawnContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--reject-spawn" then
     caught = try(spawn.load(spawn.create(level,decode(slice(input,4,n.readI32(input,0))))))
@@ -751,7 +934,8 @@ function main(args)
     end while
   else if len(args) > 4 and args[4] == "--actions" then
     runTargetActions(level,input,check)
-  else if len(args) > 4 and args[4] == "--combat" then
+  else if len(args) > 4 and (args[4] == "--combat" or args[4] == "--missiles") then
+    check.missiles = args[4] == "--missiles"
     runCombatActions(level,input,check)
   else if len(args) > 4 and args[4] == "--values" then
     off = 0; count = 0

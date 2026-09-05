@@ -72,7 +72,13 @@ function fadd(a, b)
 end function
 
 function fsub(a, b)
-  return bitsFloat(addBits(floatBits(a), floatBits(b) ^ 0x80000000))
+  return bitsFloat(subBits(floatBits(a), floatBits(b)))
+end function
+function subBits(a,b)
+  // SSE subtraction propagates a NaN operand without negating its sign.
+  if isNaNBits(a) then return a | 0x400000 end if
+  if isNaNBits(b) then return b | 0x400000 end if
+  return addBits(a,b ^ 0x80000000)
 end function
 
 function fmul(a, b)

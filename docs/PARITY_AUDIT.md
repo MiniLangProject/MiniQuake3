@@ -4,20 +4,22 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die vollständige erweiterte Regression besteht aktuell aus 32 bestandenen
-Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`). Der dabei gebaute
-MiniQuake3-Build hat SHA-256
-`cc6300243441369aa8aacdf2b52dde370f032d843296cdf09b34932b3e33e5d1`.
+Die vollständige erweiterte Regression besteht aktuell aus 33 bestandenen
+Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`). Die abschließende
+QVM-`SUBF`-Korrektur wurde zusätzlich über Interpreter-, Modul-, Fehler- und
+CLI-Prüfungen abgenommen. `final_runtime/result.json` verknüpft diese neun
+Nachprüfungen mit dem unveränderten Gesamtbericht. Der finale MiniQuake3-Build hat SHA-256
+`cf2a3bb81cada592596e46cfd2bd1f9f7fabb76da0ab8bcd0f006641a53f6229`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
 
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
 | --- | --- | --- |
 | 1. Referenz | Grundabnahme bestanden | Originale x86-Engine, drei native Module, drei neu gebaute QVMs; MiniLang-Build; 1.409 Dateien inventarisiert; 120 Frames mit zwei Bots aufgezeichnet und zweimal bytegleich wiedergegeben |
-| 2. Zahlen/Plattform | In Arbeit | 101.125 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff vorhanden; Fenster, Eingabe, UDP und Audio noch offen |
+| 2. Zahlen/Plattform | In Arbeit | 101.445 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff vorhanden; Fenster, Eingabe, UDP und Audio noch offen |
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
-| 4. QVM | In Arbeit | 392 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
+| 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständige Server-/Client-Frames und Telefrag-Todes-/Score-Folgen fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 31 Spawn-Klassen, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer und Telefrag-Integration vorhanden; weitere Klassen, Item-Spawns, Spieler-Todesregeln, Mover-Pushing und vollständige Serverframes fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter und Telefrag-Integration vorhanden; weitere Klassen, Item-Spawns, Spieler-Todesregeln, Mover-Pushing und vollständige Serverframes fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -223,7 +225,7 @@ Beide Profile zusammen ergeben 357.696 Operationen und 9.585.476 identische
 32-Bit-Wörter. Darin enthalten sind 32.768 vollständige Pmove-Befehle sowie 1.536
 aufgezeichnete Sprungpad-Aufrufe. Die Folgen erzeugen 2.914 dynamische
 Entity-Kontakte in Pmove. Beide Profile verwenden dasselbe MiniLang-Testbinary
-(`2f425c5bdbadd29de0c305f9a5a087b96ad678755aed5ca4fc6b2b690c3ffdb6`).
+(`df572e2025bcf6222ea5c825125a53744f1966ab64d76254248c2284fbcf0a04`).
 
 Der Testhost bewegt Entities mit aufgezeichneten Änderungen und ruft Sprungpads
 an festgelegten Befehlsgrenzen auf. Die tatsächlichen Traces, Pmove-Schritte und
@@ -287,7 +289,7 @@ identische 32-Bit-Wörter. Darin enthalten sind 16.384 Pmove-/Link-/Touch-Befehl
 und 3.072 aufgezeichnete Telefrag-Schadensaufrufe. Die Bewegungsfolgen haben
 4.608 Frames mit aktivem und 11.776 Frames mit zurückgesetztem Sprungpad-Merker.
 Beide Profile verwenden dasselbe MiniLang-Testbinary
-(`303c3d4c23c233326f183a2bed5667bf22066afc790637d0ea1c771304c8b8aa`).
+(`8bec7242d2db9a95792c09b12d9d596330e16d0d56b090fe5ea9f9e1a5d040a3`).
 
 Die Tests initialisieren Game-Entities gezielt auf allen 31 CD-Karten und einer
 assetfreien Karte. Das Pmove/Link/Touch-Protokoll stammt aus dem Vergleichshost;
@@ -326,22 +328,22 @@ Ein separater C-Lauf bestätigt den Fehler eines fälligen, fehlenden Think-Call
 `test_spawn.py` prüft 168 Karten-/Spielmodus-Replays: alle 31 CD-Karten in den
 fünf Modi FFA, Tournament, Single Player, Team Deathmatch und CTF; zusätzlich
 eine konstruierte Karte mit zehn Moduswerten und drei Schwerkraftvarianten.
-17.390.185 Wörter und 2.136.910 String-Bytes stimmen exakt. Nach 849 Kontaktproben
+17.390.053 Wörter und 2.136.910 String-Bytes stimmen exakt. Nach 849 Kontaktproben
 an tatsächlich geladenen Triggern tragen 754 PlayerStates einen Sprungpad-Merker
 und 139 das Teleport-Bit. Eine Probe kann durch überlappende Trigger beide Merker
 tragen; diese Zahlen zählen Ergebniszustände, nicht die Zahl einzelner Callbacks.
 Feld-, Think- und Kartenprüfung verwenden dasselbe MiniLang-Testbinary
-(`1fdb0156689570a252f718feb53f7861bf23007a340c348409b7c6359e356ea2`).
+(`3e698e3ee63201ec8accfb83e8bf1d8360cca879fc357bf4b278f64cc040067a`).
 
-31 der 48 Spawn-Klassen führen bereits die übertragenen Originalfunktionen aus.
+34 der 48 Spawn-Klassen führen bereits die übertragenen Originalfunktionen aus.
 Worldspawn-Effekte, alle Spielmodusfilter, die frühe Brush-Modell-Verlinkung,
 die 100-ms-Zielausrichtung der Sprungpads und komplette PlayerStates nach
 Trigger-Kontakten sind enthalten. Einige originale Positions-/CTF-Spawn-Funktionen
 sind leer; manche andere geben ihre Entity unmittelbar frei. Die Abnahme bewahrt
 diese Funktionen, ohne damit bereits Spieler-Respawn oder CTF-Regeln zu behaupten.
 
-**Aufrufgrenzen:** 7.870 Item-/Klassenaufrufe werden in diesen Replays nur
-aufgezeichnet. Die 17 noch nicht portierten Klassen und `G_SpawnItem` erzeugen
+**Aufrufgrenzen:** 7.804 Item-/Klassenaufrufe werden in diesen Replays nur
+aufgezeichnet. Die 14 noch nicht portierten Klassen und `G_SpawnItem` erzeugen
 keine vereinfachten Ersatzregeln. Ohne gesetzten `unportedFn` bricht MiniLang an
 einer solchen bekannten Klasse kontrolliert ab. Der Testhost stellt Speicher und
 Configstring-/Cvar-Schnittstellen bereit; Netzwerkverteilung, vollständige Frames,
@@ -388,8 +390,9 @@ Implementierung und Netzwerkverteilung werden noch nicht verglichen.
 Für `frame.runEntities` wird der Entity-Schleifenblock unverändert aus
 `G_RunFrame` extrahiert. Geprüft sind der strikte Ablauf nach mehr als 300 ms,
 Freigabe-/Unlink-Priorität, `neverFree`, ausbleibende Think-Aufrufe für temporäre
-Entities und die Auswahl der weiteren Handler. Deren Missile-, Item-, Mover-
-und Client-Implementierungen bleiben aufgezeichnete Aufrufgrenzen. Dies ist
+Entities und die Auswahl der weiteren Handler. In diesem Target-Test bleiben die Missile-, Item-, Mover- und Client-Handler
+aufgezeichnete Aufrufgrenzen. Die gesonderte Projektilprüfung führt den
+Missile-Zweig mit der echten portierten Verarbeitung aus. Dies ist
 **keine vollständige G_RunFrame-Abnahme**: Cvar-/Zeitverwaltung, ClientEndFrame,
 Match-/Vote-Prüfungen, Spieler-Todesregeln und vollständige Serverintegration fehlen.
 Schnittstellen und genaue Grenzen: [TARGETS_AND_EVENTS.md](TARGETS_AND_EVENTS.md).
@@ -416,7 +419,7 @@ oder ungültigen Handlerzuständen.
 
 Pain-, Death- und Mover-Callbacks beobachten ihre Argumente und Eintrittszustände;
 einzelne Test-Callbacks geben die Entity frei. Dies ersetzt keine Spieler-Todesregeln.
-Offen sind `player_die`, Scores/Respawn, weitere Waffentreffer und Projektilphysik,
+Offen sind `player_die`, Scores/Respawn, weitere Waffentreffer und die vollständige Waffensteuerung,
 Schadensfeedback am Frame-Ende, vollständige Teamregeln und Serverintegration.
 `G_Printf`-Diagnosen und Missionpack gehören nicht zu dieser Abnahme.
 Der Rüstungsport verwendet die CRT-Mathematikfunktion `ceil`; die Spielregeln
@@ -439,6 +442,31 @@ Der Ablauf stimmt bis zu dieser Grenze überein; sein restlicher C-Pfad wird
 nicht als portiert gezählt. Der gesonderte Fehlerlauf und seine Eingaben sind
 im Nachweis festgehalten.
 
+
+## Projektile, Grappling-Hook und Shooter
+
+`test_missiles.py` vergleicht 71 Szenarien mit 20.623 Aktionen,
+51.274.574 identischen 32-Bit-Wörtern und 2.612.912 String-Bytes.
+1.260 vollständige Traces verbinden Projektilflug, reale SV-/CM-Kollision und
+die Schadensfunktion. Alle 31 CD-Karten werden mit Kurven geprüft.
+
+Enthalten sind alle fünf baseq3-Projektil-Erzeugungen, `G_RunMissile`,
+`G_BounceMissile`, `G_MissileImpact`, `G_ExplodeMissile`, die Hook-Think-/Free-
+Funktionen, drei Shooter-Klassen sowie deren Item-Suche und Registrierung.
+670 Erzeugungen, 512 numerische Abprallproben, 256 Shooter-Präzisionsfolgen,
+Direkt-/Radius-Treffer, Schutzregeln, Callback-Änderungen, Owner-Filter,
+Start-in-Solid, Metall/Himmel, Timeouts und Ereignisfreigabe werden verglichen.
+Acht zusätzliche Laufzeitverträge prüfen Felder und kontrollierte Fehlergrenzen.
+
+Eine absichtlich im Pain-Callback freigegebene Projektil-Entity reproduziert
+die bekannte Link-Grenze: C verwendet danach fremde Server-Metadaten, MiniLang
+weist die falsche Entity-/Slot-Nummer zurück. Dieser separate Ablauf zählt
+ausschließlich bis zur kontrollierten Abweichung als verglichen.
+
+Die neuen Richtungsproben haben außerdem die NaN-Vorzeichenerhaltung der
+Float-Subtraktion korrigiert. Zusätzlich zu den 101.445 binären Ergebnissen
+prüft der Zahlentest nun 20.289 tatsächliche `fsub`-Aufrufe.
+Details, Schnittstellen und verbleibende Abnahmen: [MISSILES.md](MISSILES.md).
 
 ## Reproduzieren
 
@@ -485,6 +513,7 @@ python scripts/test_transitions.py D:/Quake3
 python scripts/test_spawn_values.py
 python scripts/test_targets.py
 python scripts/test_combat.py --data-root D:/Quake3
+python scripts/test_missiles.py --data-root D:/Quake3
 python scripts/test_spawn.py D:/Quake3
 ```
 

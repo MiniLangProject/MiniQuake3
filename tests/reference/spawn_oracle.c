@@ -10,6 +10,7 @@ void hostServerReset(void*,int,int);void hostLink(void*);void hostUnlink(void*);
 int hostContact(const vec3_t,const vec3_t,void*,int);int hostArea(const vec3_t,const vec3_t,int*,int);
 void hostTrace(trace_t*,const vec3_t,const vec3_t,const vec3_t,const vec3_t,int,int);
 static int combatTraceOutput;
+static int missileOutput;
 static char configs[MAX_CONFIGSTRINGS][8192],gravityText[1024];static const char *entityPoint;static FILE *output;
 void AimAtTarget(gentity_t*);void trigger_push_touch(gentity_t*,gentity_t*,trace_t*);void trigger_teleporter_touch(gentity_t*,gentity_t*,trace_t*);
 static void word(int x) {fwrite(&x,4,1,output);}
@@ -56,11 +57,12 @@ void G_SpawnItem(gentity_t *e,gitem_t *item) {boundary(e,1,(int)(item-bg_itemlis
 #include "spawn_boundaries.inc"
 #include "spawn_functions.inc"
 #include "target_actions.inc"
+#include "missile_actions.inc"
 #include "combat_actions.inc"
 static char *readString(FILE *in) {int n;char *s;if(fread(&n,4,1,in)!=1)return NULL;if(n<0 || n>10000000)exit(74);s=calloc(1,n+1);if(n && fread(s,1,n,in)!=n)exit(74);return s;}
 static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);word(level.locationLinked);word(slotOf(level.locationHead));for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
 static void reset(int type,int flags) {
-    memset(&level,0,sizeof(level));memset(g_entities,0,sizeof(g_entities));memset(g_clients,0,sizeof(g_clients));memset(configs,0,sizeof(configs));
+    memset(&level,0,sizeof(level));memset(g_entities,0,sizeof(g_entities));memset(g_clients,0,sizeof(g_clients));memset(configs,0,sizeof(configs));memset(itemRegistered,0,sizeof(itemRegistered));
     level.gentities=g_entities;level.clients=g_clients;level.num_entities=64;level.time=level.startTime=1000;srand(1);
     g_gametype.integer=type;g_restarted.integer=flags&1;g_doWarmup.integer=flags&2;g_gravity.value=800;g_knockback.value=1000;g_friendlyFire.integer=0;strcpy(g_motd.string,"MiniQuake3 spawn parity");strcpy(gravityText,"800");
     hostServerReset(g_entities,sizeof(gentity_t),64);
@@ -77,6 +79,8 @@ int main(int argc,char **argv) {
         reset(0,0);runActions(in);
     } else if(argc==6 && !strcmp(argv[5],"--combat")) {
         reset(0,0);runCombat(in);
+    } else if(argc==6 && !strcmp(argv[5],"--missiles")) {
+        reset(0,0);missileOutput=1;runCombat(in);
     } else if(argc==6 && !strcmp(argv[5],"--values")) {
         reset(0,0);
         while((text=readString(in))!=NULL) {
