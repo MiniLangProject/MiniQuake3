@@ -122,3 +122,44 @@ function words(state)
   result = result+[n.u32(state.generic1)]
   return result
 end function
+
+function copy(source)
+  state = create()
+  state.number = source.number
+  state.eType = source.eType
+  state.eFlags = source.eFlags
+  state.pos.trType = source.pos.trType
+  state.pos.trTime = source.pos.trTime
+  state.pos.trDuration = source.pos.trDuration
+  state.pos.trBase = [source.pos.trBase[0],source.pos.trBase[1],source.pos.trBase[2]]
+  state.pos.trDelta = [source.pos.trDelta[0],source.pos.trDelta[1],source.pos.trDelta[2]]
+  state.apos.trType = source.apos.trType
+  state.apos.trTime = source.apos.trTime
+  state.apos.trDuration = source.apos.trDuration
+  state.apos.trBase = [source.apos.trBase[0],source.apos.trBase[1],source.apos.trBase[2]]
+  state.apos.trDelta = [source.apos.trDelta[0],source.apos.trDelta[1],source.apos.trDelta[2]]
+  state.time = source.time
+  state.time2 = source.time2
+  state.origin = [source.origin[0],source.origin[1],source.origin[2]]
+  state.origin2 = [source.origin2[0],source.origin2[1],source.origin2[2]]
+  state.angles = [source.angles[0],source.angles[1],source.angles[2]]
+  state.angles2 = [source.angles2[0],source.angles2[1],source.angles2[2]]
+  state.otherEntityNum = source.otherEntityNum
+  state.otherEntityNum2 = source.otherEntityNum2
+  state.groundEntityNum = source.groundEntityNum
+  state.constantLight = source.constantLight
+  state.loopSound = source.loopSound
+  state.modelindex = source.modelindex
+  state.modelindex2 = source.modelindex2
+  state.clientNum = source.clientNum
+  state.frame = source.frame
+  state.solid = source.solid
+  state.event = source.event
+  state.eventParm = source.eventParm
+  state.powerups = source.powerups
+  state.weapon = source.weapon
+  state.legsAnim = source.legsAnim
+  state.torsoAnim = source.torsoAnim
+  state.generic1 = source.generic1
+  return state
+end function

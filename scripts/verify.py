@@ -20,7 +20,8 @@ def main():
              ("test_vm.py",[]),("test_archives.py",["--data-root",str(args.data_root)] if args.data_root else []),
              ("test_rejections.py",[]),("test_brush.py",[]),("test_shared_game.py",[]),("test_entitystate.py",[]),("test_spawn_values.py",[]),("test_targets.py",["--reuse-build"]),
              ("test_combat.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else [])),
-             ("test_missiles.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else []))]
+             ("test_missiles.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else [])),
+             ("test_bodies.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else []))]
     if args.data_root:
         scripts.append(("test_maps.py",[str(args.data_root)]))
         scripts.append(("test_runtime_trace.py",[str(args.data_root)]))

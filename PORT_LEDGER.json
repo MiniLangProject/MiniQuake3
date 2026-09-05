@@ -5977,7 +5977,9 @@
           "original": "SetClientViewAngle",
           "target_files": [
             "src/mq3/game/teleport.ml",
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -5985,7 +5987,9 @@
           "original": "SP_info_player_deathmatch",
           "target_files": [
             "src/mq3/game/teleport.ml",
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -5993,7 +5997,9 @@
           "original": "SP_info_player_start",
           "target_files": [
             "src/mq3/game/teleport.ml",
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -6001,20 +6007,125 @@
           "original": "SP_info_player_intermission",
           "target_files": [
             "src/mq3/game/teleport.ml",
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SpotWouldTelefrag",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SelectNearestDeathmatchSpawnPoint",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SelectRandomDeathmatchSpawnPoint",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SelectRandomFurthestSpawnPoint",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SelectSpawnPoint",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SelectInitialSpawnPoint",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SelectSpectatorSpawnPoint",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "InitBodyQue",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "BodySink",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CopyToBodyQue",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
         "src/mq3/game/teleport.ml",
-        "src/mq3/game/spawn_functions.ml"
+        "src/mq3/game/spawn_functions.ml",
+        "src/mq3/game/player_spawns.ml",
+        "src/mq3/game/bodies.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_entitystate.py",
         "scripts/test_transitions.py",
-        "scripts/test_spawn.py"
+        "scripts/test_spawn.py",
+        "scripts/test_bodies.py"
       ]
     },
     {
@@ -6094,14 +6205,16 @@
         {
           "original": "CheckArmor",
           "target_files": [
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "G_Damage",
           "target_files": [
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die, scoring, damage feedback, Missionpack or full server frame. G_Printf diagnostics excluded."
@@ -6109,24 +6222,52 @@
         {
           "original": "CanDamage",
           "target_files": [
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "G_RadiusDamage",
           "target_files": [
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "LookAtKiller",
+          "target_files": [
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "GibEntity",
+          "target_files": [
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "body_die",
+          "target_files": [
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
-        "src/mq3/game/combat.ml"
+        "src/mq3/game/combat.ml",
+        "src/mq3/game/bodies.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_combat.py"
+        "scripts/test_combat.py",
+        "scripts/test_bodies.py"
       ]
     },
     {
@@ -6161,18 +6302,39 @@
         {
           "original": "RegisterItem",
           "target_files": [
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset",
           "scope": "Item registration bitset only. Item spawning, pickup, ClearRegisteredItems, SaveRegisteredItems and client precaching remain open."
+        },
+        {
+          "original": "G_BounceItem",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Full G_BounceItem arithmetic and stop rules; exercised by corpse physics."
+        },
+        {
+          "original": "G_RunItem",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Non-item body queue path only, with actual SV/CM, think/link ordering and no-drop removal. Item and team-item lifecycle remain open; native dispatcher accepts bodyque entities only."
         }
       ],
       "target": [
-        "src/mq3/game/shooters.ml"
+        "src/mq3/game/shooters.ml",
+        "src/mq3/game/bodies.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_missiles.py"
+        "scripts/test_missiles.py",
+        "scripts/test_bodies.py"
       ]
     },
     {
@@ -6186,7 +6348,9 @@
           "target_files": [
             "src/mq3/game/entities.ml",
             "src/mq3/game/spawn.ml",
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/player_spawns.ml"
           ],
           "status": "tested_subset"
         },
@@ -6195,7 +6359,9 @@
           "target_files": [
             "src/mq3/game/entities.ml",
             "src/mq3/game/spawn.ml",
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/player_spawns.ml"
           ],
           "status": "tested_subset"
         },
@@ -6204,7 +6370,9 @@
           "target_files": [
             "src/mq3/game/entities.ml",
             "src/mq3/game/spawn.ml",
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/player_spawns.ml"
           ],
           "status": "tested_subset"
         },
@@ -6213,7 +6381,9 @@
           "target_files": [
             "src/mq3/game/entities.ml",
             "src/mq3/game/spawn.ml",
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/player_spawns.ml"
           ],
           "status": "tested_subset"
         }
@@ -6221,7 +6391,9 @@
       "target": [
         "src/mq3/game/entities.ml",
         "src/mq3/game/spawn.ml",
-        "src/mq3/game/combat.ml"
+        "src/mq3/game/combat.ml",
+        "src/mq3/game/bodies.ml",
+        "src/mq3/game/player_spawns.ml"
       ],
       "status": "partial",
       "tests": [
@@ -6229,7 +6401,8 @@
         "scripts/test_spawn_values.py",
         "scripts/test_spawn.py",
         "scripts/test_targets.py",
-        "scripts/test_combat.py"
+        "scripts/test_combat.py",
+        "scripts/test_bodies.py"
       ]
     },
     {
@@ -6280,7 +6453,9 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/frame.ml",
-            "src/mq3/game/entities.ml"
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -6289,23 +6464,39 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/frame.ml",
-            "src/mq3/game/entities.ml"
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset",
-          "scope": "Allocated-entity loop with implemented missile dispatch; item/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
+          "scope": "Allocated-entity loop with implemented missile and body-queue corpse physics dispatch; other item/physics/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
+        },
+        {
+          "original": "FindIntermissionPoint",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
         }
       ],
       "target": [
         "src/mq3/game/spawn_functions.ml",
         "src/mq3/game/frame.ml",
-        "src/mq3/game/entities.ml"
+        "src/mq3/game/entities.ml",
+        "src/mq3/game/player_spawns.ml",
+        "src/mq3/game/bodies.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_spawn_values.py",
         "scripts/test_spawn.py",
         "scripts/test_targets.py",
-        "scripts/test_missiles.py"
+        "scripts/test_missiles.py",
+        "scripts/test_bodies.py"
       ]
     },
     {
@@ -7422,7 +7613,8 @@
           "original": "SP_team_CTF_redplayer",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml"
           ],
           "status": "tested_subset"
         },
@@ -7430,7 +7622,8 @@
           "original": "SP_team_CTF_blueplayer",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml"
           ],
           "status": "tested_subset"
         },
@@ -7438,7 +7631,8 @@
           "original": "SP_team_CTF_redspawn",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml"
           ],
           "status": "tested_subset"
         },
@@ -7446,7 +7640,8 @@
           "original": "SP_team_CTF_bluespawn",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml"
           ],
           "status": "tested_subset"
         },
@@ -7454,7 +7649,8 @@
           "original": "OnSameTeam",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml"
           ],
           "status": "tested_subset"
         },
@@ -7462,19 +7658,40 @@
           "original": "Team_CheckHurtCarrier",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/combat.ml"
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SelectRandomTeamSpawnPoint",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SelectCTFSpawnPoint",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
         "src/mq3/game/spawn_functions.ml",
-        "src/mq3/game/combat.ml"
+        "src/mq3/game/combat.ml",
+        "src/mq3/game/player_spawns.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_spawn.py",
-        "scripts/test_combat.py"
+        "scripts/test_combat.py",
+        "scripts/test_bodies.py"
       ]
     },
     {
@@ -7779,7 +7996,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7792,7 +8010,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7805,7 +8024,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7818,7 +8038,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7831,7 +8052,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7844,7 +8066,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7857,7 +8080,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7870,7 +8094,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7883,7 +8108,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7896,7 +8122,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7909,7 +8136,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7922,7 +8150,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7935,7 +8164,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7948,7 +8178,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7961,7 +8192,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7974,7 +8206,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -7987,7 +8220,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         },
@@ -8000,7 +8234,22 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
             "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "vectoyaw",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_values.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/events.ml",
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/bodies.ml"
           ],
           "status": "tested_subset"
         }
@@ -8012,14 +8261,16 @@
         "src/mq3/game/spawn_functions.ml",
         "src/mq3/game/targets.ml",
         "src/mq3/game/events.ml",
-        "src/mq3/compat/textnumbers.ml"
+        "src/mq3/compat/textnumbers.ml",
+        "src/mq3/game/bodies.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_transitions.py",
         "scripts/test_spawn_values.py",
         "scripts/test_spawn.py",
-        "scripts/test_targets.py"
+        "scripts/test_targets.py",
+        "scripts/test_bodies.py"
       ]
     },
     {

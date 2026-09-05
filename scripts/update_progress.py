@@ -68,6 +68,18 @@ def main():
         "code/game/g_weapon.c":(["src/mq3/game/combat.ml","src/mq3/game/missiles.ml"],["LogAccuracyHit","SnapVectorTowards","Weapon_HookFree","Weapon_HookThink"],["scripts/test_combat.py","scripts/test_missiles.py"]),
         "code/game/g_local.h":(["src/mq3/game/entities.ml","src/mq3/game/spawn.ml","src/mq3/game/combat.ml"],["gentity_s","level_locals_t","gclient_s","playerTeamState_t"],["scripts/test_transitions.py","scripts/test_spawn_values.py","scripts/test_spawn.py","scripts/test_targets.py","scripts/test_combat.py"]),
     }
+    body_mappings={
+        "code/game/g_client.c":(["src/mq3/game/player_spawns.ml","src/mq3/game/bodies.ml"],["SpotWouldTelefrag","SelectNearestDeathmatchSpawnPoint","SelectRandomDeathmatchSpawnPoint","SelectRandomFurthestSpawnPoint","SelectSpawnPoint","SelectInitialSpawnPoint","SelectSpectatorSpawnPoint","InitBodyQue","BodySink","CopyToBodyQue"]),
+        "code/game/g_utils.c":(["src/mq3/game/bodies.ml"],["vectoyaw"]),
+        "code/game/g_team.c":(["src/mq3/game/player_spawns.ml"],["SelectRandomTeamSpawnPoint","SelectCTFSpawnPoint"]),
+        "code/game/g_main.c":(["src/mq3/game/player_spawns.ml","src/mq3/game/bodies.ml"],["FindIntermissionPoint"]),
+        "code/game/g_combat.c":(["src/mq3/game/bodies.ml"],["LookAtKiller","GibEntity","body_die"]),
+        "code/game/g_items.c":(["src/mq3/game/bodies.ml"],["G_BounceItem","G_RunItem"]),
+        "code/game/g_local.h":(["src/mq3/game/bodies.ml","src/mq3/game/player_spawns.ml"],[]),
+    }
+    for source,(targets,symbols) in body_mappings.items():
+        old_targets,old_symbols,tests=mappings[source]
+        mappings[source]=(old_targets+targets,old_symbols+symbols,tests+["scripts/test_bodies.py"])
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text())
     for entry in ledger["files"]:
@@ -76,7 +88,7 @@ def main():
             entry.update(target=targets,status="partial",tests=tests,
                          symbol_mapping=[{"original":name,"target_files":targets,"status":"tested_subset"} for name in symbols])
             if entry["source"] == "code/game/g_main.c":
-                entry["symbol_mapping"][1]["scope"] = "Allocated-entity loop with implemented missile dispatch; item/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
+                entry["symbol_mapping"][1]["scope"] = "Allocated-entity loop with implemented missile and body-queue corpse physics dispatch; other item/physics/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
             if entry["source"] == "code/server/sv_init.c":
                 entry["symbol_mapping"][0]["scope"] = "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
             if entry["source"] == "code/game/g_combat.c":
@@ -86,6 +98,9 @@ def main():
                     symbol["scope"] = "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
             if entry["source"] == "code/game/g_items.c":
                 entry["symbol_mapping"][0]["scope"] = "Item registration bitset only. Item spawning, pickup, ClearRegisteredItems, SaveRegisteredItems and client precaching remain open."
+            if entry["source"] == "code/game/g_items.c":
+                entry["symbol_mapping"][1]["scope"] = "Full G_BounceItem arithmetic and stop rules; exercised by corpse physics."
+                entry["symbol_mapping"][2]["scope"] = "Non-item body queue path only, with actual SV/CM, think/link ordering and no-drop removal. Item and team-item lifecycle remain open; native dispatcher accepts bodyque entities only."
     path.write_text(json.dumps(ledger,indent=2)+"\n")
     evidence=[]
     for path in sorted((ROOT / "build/reference").rglob("result.json")):

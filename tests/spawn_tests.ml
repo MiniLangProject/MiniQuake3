@@ -13,6 +13,8 @@ import mq3.game.combat as combat
 import mq3.game.hazards as hazards
 import mq3.game.missiles as missiles
 import mq3.game.shooters as shooters
+import mq3.game.bodies as bodies
+import mq3.game.player_spawns as playerSpawns
 import mq3.game.movement as movement
 import mq3.shared.directions as directions
 import mq3.collision.brush as brush
@@ -30,6 +32,7 @@ struct Check
   boundaries
   links
   missiles
+  bodies
 end struct
 function checkWord(check,value)
   if check.offset+4 > len(check.expected) then return error(490,"Unexpected spawn output") end if
@@ -532,6 +535,7 @@ function checkCombatState(level,index)
   end while
   checkCombatExtra(check,level.entities[1022])
   checkMissileState(level)
+  checkBodyState(level)
   return void
 end function
 function recordCombatTrace(level,start,finish,mins,maxs,passEntity,mask,hit)
@@ -663,12 +667,12 @@ function runCombatActions(level,input,check)
         funcs.setBrushModel(level,ent,"*"+str(command[2]))
       end case
       case default
-        runMissileAction(level,command)
+        if check.bodies then runBodyAction(level,command) else runMissileAction(level,command) end if
       end case
     end switch
     checkCombatState(level,index); index = index+1
   end while
-  if check.missiles then checkWords(check,[37,game.random(level)]) end if
+  if check.missiles or check.bodies then checkWords(check,[37,game.random(level)]) end if
   print "PASS: "+str(index)+" combat/hazard actions"
   return void
 end function
@@ -908,10 +912,223 @@ function runSpawnContracts(level)
   print "PASS: 30 spawn/target/frame runtime contracts"
   return void
 end function
+function checkBodyExtra(check,ent)
+  think = 2; die = 2
+  if ent.think == void then think = 0 else if ent.think == bodies.sink then think = 1 end if
+  if ent.die == void then die = 0 else if ent.die == bodies.die then die = 1 end if
+  checkWords(check,[ent.slot,ent.clipmask,n.floatBits(ent.physicsBounce),think,die])
+  return void
+end function
+function checkBodyState(level)
+  check = level.context
+  if not check.bodies then return void end if
+  checkWords(check,[38,level.previousTime,level.blood,level.bodyQueIndex])
+  for i = 0 to 7
+    slot = -1
+    if i < len(level.bodyQue) then slot = level.bodyQue[i].slot end if
+    checkWord(check,slot)
+  end for
+  checkVector(check,level.intermission_origin); checkVector(check,level.intermission_angle); checkWord(check,level.num_entities-64+4)
+  for i = 0 to 2
+    checkBodyExtra(check,level.entities[i])
+  end for
+  i = 64
+  while i < level.num_entities
+    checkBodyExtra(check,level.entities[i]); i = i+1
+  end while
+  checkBodyExtra(check,level.entities[1022])
+  return void
+end function
+function runBodyAction(level,a)
+  check = level.context; ent = void
+  if a[1] >= 0 then ent = level.entities[a[1]] end if
+  switch a[0]
+    case 40
+      origin = [123.5,-45.25,67.75]; angles = [-12.5,23.25,34.75]; avoid = [n.bitsFloat(a[5]),n.bitsFloat(a[6]),n.bitsFloat(a[7])]
+      chosen = void; result = -1
+      switch a[2]
+        case 0
+          result = boolean(playerSpawns.wouldTelefrag(level,ent))
+        end case
+        case 1
+          chosen = playerSpawns.nearest(level,avoid)
+        end case
+        case 2
+          chosen = playerSpawns.randomDeathmatch(level)
+        end case
+        case 3
+          chosen = playerSpawns.furthest(level,avoid,origin,angles)
+        end case
+        case 4
+          chosen = playerSpawns.selectSpawn(level,avoid,origin,angles)
+        end case
+        case 5
+          chosen = playerSpawns.initial(level,origin,angles)
+        end case
+        case 6
+          chosen = playerSpawns.randomTeam(level,a[4],a[3])
+        end case
+        case 7
+          chosen = playerSpawns.ctf(level,a[3],a[4],origin,angles)
+        end case
+        case 8
+          chosen = playerSpawns.spectator(level,origin,angles)
+        end case
+        case 9
+          playerSpawns.findIntermission(level)
+        end case
+      end switch
+      if a[2] != 0 then result = actionSlot(chosen) end if
+      checkWords(check,[39,a[2],result]); checkVector(check,origin); checkVector(check,angles)
+    end case
+    case 41
+      bodies.initQueue(level)
+    end case
+    case 42
+      bodies.copyToQueue(level,ent)
+    end case
+    case 43
+      bodies.sink(level,ent)
+    end case
+    case 44
+      bodies.gib(level,ent,a[2])
+    end case
+    case 45
+      bodies.die(level,ent,void,void,100,6)
+    end case
+    case 46
+      other = void; attacker = void
+      if a[2] >= 0 then other = level.entities[a[2]] end if
+      if a[3] >= 0 then attacker = level.entities[a[3]] end if
+      bodies.lookAtKiller(level,ent,other,attacker)
+    end case
+    case 47
+      bodies.run(level,ent)
+    end case
+    case 48
+      tr = brush.emptyTrace(); tr.fraction = n.bitsFloat(a[2]); tr.normal = [n.bitsFloat(a[5]),n.bitsFloat(a[6]),n.bitsFloat(a[7])]
+      hit = movement.Collision(tr,[n.bitsFloat(a[8]),n.bitsFloat(a[9]),n.bitsFloat(a[10])],a[3]); bodies.bounce(level,ent,hit)
+      checkWord(check,33); checkVector(check,hit.endpos)
+    end case
+    case 49
+      key = a[2]; value = a[3]
+      if key >= 100 and key < 152 then
+        words = es.words(ent.s); words[key-100] = value; data = array(208,0)
+        for i = 0 to 51
+          n.writeU32(data,i*4,words[i])
+        end for
+        ent.s = es.load(data,0)
+      else
+        switch key
+          case 0
+            level.blood = value
+          end case
+          case 1
+            ent.s.groundEntityNum = value
+          end case
+          case 2
+            ent.s.legsAnim = value
+          end case
+          case 3
+            ent.s.torsoAnim = value
+          end case
+          case 4
+            ent.s.eFlags = value
+          end case
+          case 5
+            ent.s.powerups = value
+          end case
+          case 6
+            ent.s.loopSound = value
+          end case
+          case 7
+            ent.s.event = value
+          end case
+          case 8
+            ent.s.pos.trType = value
+          end case
+          case 9
+            ent.s.pos.trTime = value
+          end case
+          case 10
+            ent.s.pos.trDuration = value
+          end case
+          case 11
+            ent.physicsBounce = n.bitsFloat(value)
+          end case
+          case 12
+            level.previousTime = value
+          end case
+          case 13
+            ent.die = void
+            if value != 0 then ent.die = bodies.die end if
+          end case
+          case 14
+            ent.classname = ["bodyque","kamikaze timer","Kamikaze timer","info_notnull"][value]
+          end case
+          case 15
+            ent.r.svFlags = value
+          end case
+          case 16
+            level.randSeed = value
+          end case
+          case 17
+            names = [void,"leaf","changed","dest","missing",""]; ent.target = names[value]
+          end case
+          case 18
+            ent.clipmask = value
+          end case
+          case 19
+            ent.physicsObject = value != 0
+          end case
+          case 20
+            ent.think = void
+            if value != 0 then ent.think = bodies.sink end if
+          end case
+        end switch
+      end if
+    end case
+    case 50
+      vector = [n.bitsFloat(a[3]),n.bitsFloat(a[4]),n.bitsFloat(a[5])]
+      if a[2] != 0 then ent.s.pos.trDelta = vector else ent.s.pos.trBase = vector end if
+    end case
+    case 51
+      frame.runEntities(level)
+    end case
+    case 52
+      checkWords(check,[40,n.floatBits(bodies.vectorYaw([n.bitsFloat(a[2]),n.bitsFloat(a[3]),n.bitsFloat(a[4])]))])
+    end case
+    case default
+      return error(490,"Unknown body command")
+    end case
+  end switch
+  return void
+end function
+function runBodyContracts(level)
+  ent = game.initEntity(level.entities[0]); ent.client = game.createClient(ps.create(),0,[0,0,0]); ent.s.origin = [0.0,0.0,128.0]
+  requireSpawnContract(level.blood == 1 and level.bodyQueIndex == 0 and len(level.bodyQue) == 0,"body level defaults")
+  game.link(level,ent); caught = try(bodies.copyToQueue(level,ent)); requireSpawnContract(caught is error and not ent.r.linked,"uninitialized queue rejects after unlink")
+  ent.client = void; caught = try(bodies.lookAtKiller(level,ent,void,void)); requireSpawnContract(caught is error,"dead yaw requires client")
+  caught = try(bodies.run(level,ent)); requireSpawnContract(caught is error,"unported physics boundary")
+  ent.classname = "bodyque"; ent.s.eType = 2; caught = try(bodies.run(level,ent)); requireSpawnContract(caught is error,"item physics boundary")
+  caught = try(playerSpawns.selectSpawn(level,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0])); requireSpawnContract(caught is error,"missing required spawn point")
+  for i = 0 to 128
+    spot = game.spawn(level); spot.classname = "info_player_deathmatch"; spot.s.origin = [0.0,0.0,128.0]
+  end for
+  caught = try(playerSpawns.randomDeathmatch(level)); requireSpawnContract(caught is error,"original 128 spot array overflow rejects")
+  state = es.create(); state.pos.trBase = [1.0,2.0,3.0]; state.apos.trDelta = [4.0,5.0,6.0]; state.origin = [7.0,8.0,9.0]
+  copied = es.copy(state); copied.pos.trBase[0] = 99.0; copied.apos.trDelta[1] = 99.0; copied.origin[2] = 99.0
+  requireSpawnContract(state.pos.trBase[0] == 1.0 and state.apos.trDelta[1] == 5.0 and state.origin[2] == 9.0,"body entity state copies by value")
+  ent.physicsBounce = 0.75; game.free(level,ent); requireSpawnContract(ent.physicsBounce == 0.0,"free clears physics bounce")
+  bodies.initQueue(level); requireSpawnContract(len(level.bodyQue) == 8 and level.bodyQue[0].neverFree and level.bodyQue[7].classname == "bodyque","eight persistent body slots")
+  print "PASS: 10 body/spawn runtime contracts"
+  return void
+end function
 function main(args)
   world = cm.loadWorld(fs.readAllBytes(args[0]),args[3] == "0")
-  input = fs.readAllBytes(args[1]); check = Check(fs.readAllBytes(args[2]),0,0,0,0,0,false); level = game.create(world)
+  input = fs.readAllBytes(args[1]); check = Check(fs.readAllBytes(args[2]),0,0,0,0,0,false,false); level = game.create(world)
   level.time = 1000; level.startTime = 1000
+  if len(args) > 4 and args[4] == "--body-contracts" then runBodyContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--combat-contracts" then runCombatContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--missile-contracts" then runMissileContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--contracts" then runSpawnContracts(level); return 0 end if
@@ -934,8 +1151,8 @@ function main(args)
     end while
   else if len(args) > 4 and args[4] == "--actions" then
     runTargetActions(level,input,check)
-  else if len(args) > 4 and (args[4] == "--combat" or args[4] == "--missiles") then
-    check.missiles = args[4] == "--missiles"
+  else if len(args) > 4 and (args[4] == "--combat" or args[4] == "--missiles" or args[4] == "--bodies") then
+    check.missiles = args[4] == "--missiles"; check.bodies = args[4] == "--bodies"
     runCombatActions(level,input,check)
   else if len(args) > 4 and args[4] == "--values" then
     off = 0; count = 0

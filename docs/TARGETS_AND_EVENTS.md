@@ -113,8 +113,10 @@ angelegte Entities können noch im selben Durchlauf denken.
 **Grenze des Frames:** `frame.runEntities` ist ausschließlich die Schleife über
 belegte Entities. Der Aufrufer setzt `level.previousTime` und `level.time` und
 aktualisiert Cvars zuvor. Ohne externen Handler laufen Missile-Entities über die
-[portierte Projektilverarbeitung](MISSILES.md). Die übrigen Kategorien benötigen
-weiterhin `level.runEntityFn(level, kind, ent)`: `2` Item/Physics, `3` Mover,
+[portierte Projektilverarbeitung](MISSILES.md); nicht als Item markierte
+`bodyque`-Entities mit `physicsObject` führen die [Leichenphysik](PLAYER_LIFECYCLE.md)
+aus. Die übrigen Kategorien benötigen
+weiterhin `level.runEntityFn(level, kind, ent)`: `2` sonstige Item-/Physics-Entities, `3` Mover,
 `4` Client. Ein gesetzter Handler übernimmt außerdem Kategorie `1` Missile.
 Der Target-Test beobachtet alle vier Kategorien; die gesonderte Projektilprüfung
 führt den echten Missile-Zweig aus. `G_RunFrame` als Ganzes,

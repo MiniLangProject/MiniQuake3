@@ -67,6 +67,7 @@ python scripts/test_spawn_values.py
 python scripts/test_targets.py
 python scripts/test_combat.py --data-root D:/Quake3
 python scripts/test_missiles.py --data-root D:/Quake3
+python scripts/test_bodies.py --data-root D:/Quake3
 python scripts/test_spawn.py D:/Quake3
 ```
 
@@ -88,6 +89,9 @@ damit verbunden. Weitere Klassen, Item-Spawns, Spieler-Todesregeln und
 vollständige Serverframes bleiben offen.
 [Projektile und Shooter](docs/MISSILES.md) ergänzen Raketen, Granaten, Plasma,
 BFG, Grappling-Hook und drei schießende Kartenobjekte mit echter Server-Kollision.
+[Spawnpunkte und Leichen](docs/PLAYER_LIFECYCLE.md) ergänzen Deathmatch-/CTF-/
+Zuschauer-Auswahl, Leichen-Warteschlange, Gibs und Leichenphysik. Der vollständige
+Spieler-Tod mit Scores, Item-Drops und Respawn folgt noch.
 
 Auch die Sichtbarkeitsdaten eines Kartenpunkts und Traces gegen versetzte/gedrehte
 Modelle sind direkt abfragbar:

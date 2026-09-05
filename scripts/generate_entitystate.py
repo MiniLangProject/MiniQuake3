@@ -37,6 +37,12 @@ def main():
         values=[('n.floatBits(' if f['type']=='float' else 'n.u32(')+v+')' for v in values]
         lines+=['  result = result+['+','.join(values)+']']
     lines+=['  return result','end function','']
+    lines+=['function copy(source)','  state = create()']
+    for f in flat:
+        value='source.'+f['name']
+        if f['count']>1:value='['+','.join(value+f'[{i}]' for i in range(f['count']))+']'
+        lines+=['  state.'+f['name']+' = '+value]
+    lines+=['  return state','end function','']
     (ROOT/'src/mq3/game/entitystate.ml').write_text('\n'.join(lines))
     (ROOT/'docs/reference/entitystate.json').write_text(json.dumps({'source_sha256':sha(source),'size':offset,'fields':fields,'flat_fields':flat},indent=2)+'\n')
     print(f'Generated {len(fields)} entity fields / {offset} bytes')

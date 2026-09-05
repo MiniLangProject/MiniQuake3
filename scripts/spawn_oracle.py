@@ -8,18 +8,18 @@ from generate_spawn import tables
 import re
 
 FUNCTIONS={
-    'g_utils.c':['G_InitGentity','G_Spawn','G_EntitiesFree','G_FreeEntity','G_SetOrigin','G_Find','G_PickTarget','G_FindConfigstringIndex','G_ModelIndex','G_SoundIndex','G_SetMovedir','G_TempEntity','G_KillBox','vtos','AddRemap','BuildShaderStateConfig','G_UseTargets','G_AddEvent','G_Sound'],
-    'g_client.c':['SetClientViewAngle','SP_info_player_deathmatch','SP_info_player_start','SP_info_player_intermission'],
+    'g_utils.c':['vectoyaw','G_InitGentity','G_Spawn','G_EntitiesFree','G_FreeEntity','G_SetOrigin','G_Find','G_PickTarget','G_FindConfigstringIndex','G_ModelIndex','G_SoundIndex','G_SetMovedir','G_TempEntity','G_KillBox','vtos','AddRemap','BuildShaderStateConfig','G_UseTargets','G_AddEvent','G_Sound'],
+    'g_client.c':['SpotWouldTelefrag','SelectNearestDeathmatchSpawnPoint','SelectRandomDeathmatchSpawnPoint','SelectRandomFurthestSpawnPoint','SelectSpawnPoint','SelectInitialSpawnPoint','SelectSpectatorSpawnPoint','InitBodyQue','BodySink','CopyToBodyQue','SetClientViewAngle','SP_info_player_deathmatch','SP_info_player_start','SP_info_player_intermission'],
     'g_misc.c':['TeleportPlayer','SP_info_null','SP_info_notnull','SP_info_camp','SP_light','SP_misc_model','SP_misc_teleporter_dest','Use_Shooter','InitShooter_Finish','InitShooter','SP_shooter_rocket','SP_shooter_grenade','SP_shooter_plasma'],
     'g_target.c':['SP_target_position','Think_Target_Delay','Use_Target_Delay','SP_target_delay','target_relay_use','SP_target_relay','target_teleporter_use','SP_target_teleporter','Use_Target_Speaker','SP_target_speaker','target_location_linkup','SP_target_location','target_kill_use','SP_target_kill','target_laser_think','target_laser_on','target_laser_off','target_laser_use','target_laser_start','SP_target_laser'],
-    'g_team.c':['SP_team_CTF_redplayer','SP_team_CTF_blueplayer','SP_team_CTF_redspawn','SP_team_CTF_bluespawn','OnSameTeam','Team_CheckHurtCarrier'],
+    'g_team.c':['SelectRandomTeamSpawnPoint','SelectCTFSpawnPoint','SP_team_CTF_redplayer','SP_team_CTF_blueplayer','SP_team_CTF_redspawn','SP_team_CTF_bluespawn','OnSameTeam','Team_CheckHurtCarrier'],
     'g_mover.c':['SP_path_corner'],
-    'g_main.c':['G_RunThink'],
+    'g_main.c':['G_RunThink','FindIntermissionPoint'],
     'g_trigger.c':['InitTrigger','AimAtTarget','SP_trigger_push','SP_trigger_teleport','trigger_push_touch','trigger_teleporter_touch','multi_wait','multi_trigger','Use_Multi','Touch_Multi','SP_trigger_multiple','trigger_always_think','SP_trigger_always','Use_target_push','SP_target_push','func_timer_think','func_timer_use','SP_func_timer','hurt_use','hurt_touch','SP_trigger_hurt'],
-    'g_combat.c':['CheckArmor','G_Damage','CanDamage','G_RadiusDamage'],
+    'g_combat.c':['LookAtKiller','GibEntity','body_die','CheckArmor','G_Damage','CanDamage','G_RadiusDamage'],
     'g_weapon.c':['LogAccuracyHit','SnapVectorTowards','Weapon_HookFree','Weapon_HookThink'],
     'g_missile.c':['G_BounceMissile','G_ExplodeMissile','G_MissileImpact','G_RunMissile','fire_plasma','fire_grenade','fire_bfg','fire_rocket','fire_grapple'],
-    'g_items.c':['RegisterItem'],
+    'g_items.c':['RegisterItem','G_BounceItem','G_RunItem'],
     'g_active.c':['G_TouchTriggers'],
 }
 def build(output):
@@ -27,18 +27,19 @@ def build(output):
     body=['#define MAXCHOICES 32', '#define MAX_SHADER_REMAPS 128',
           'typedef struct {char oldShader[MAX_QPATH],newShader[MAX_QPATH];float timeOffset;} shaderRemap_t;',
           'int remapCount=0; shaderRemap_t remappedShaders[MAX_SHADER_REMAPS];',
-          '#define MISSILE_PRESTEP_TIME 50', 'qboolean itemRegistered[MAX_ITEMS];'];selected=[]
+          '#define MISSILE_PRESTEP_TIME 50', 'qboolean itemRegistered[MAX_ITEMS];', '#define MAX_SPAWN_POINTS 128', '#define MAX_TEAM_SPAWN_POINTS 32', 'static vec3_t playerMins={-15,-15,-24},playerMaxs={15,15,32};'];selected=[]
     for name,names in FUNCTIONS.items():
         path=source/'game'/name;selected.append(path)
-        if name=='g_combat.c':
-            # G_Damage has alternative #ifdef/#else opening braces. Keep its
-            # full original text; the C compiler selects the baseq3 branches.
+        if name in ('g_combat.c','g_client.c'):
+            # G_Damage has alternate preprocessor braces; SpotWouldTelefrag
+            # has a commented opening brace. Keep complete top-level bodies.
             source_text=path.read_text()
             for symbol in names:
-                match=re.search(r'^\w+[ \t]+'+symbol+r'\s*\([^;]*?\)\s*\{.*?^\}',source_text,re.M|re.S)
-                if not match:raise RuntimeError('Missing original combat function '+symbol)
+                match=re.search(r'^\w+[ \t]+\*?'+symbol+r'\s*\([^;]*?\)\s*\{.*?^\}',source_text,re.M|re.S)
+                if not match:raise RuntimeError('Missing original game function '+symbol)
                 body.append(match[0])
         elif name=='g_missile.c':body.append('#define G_RunMissile Original_RunMissile\n'+extract(path,names)+'\n#undef G_RunMissile')
+        elif name=='g_items.c':body.append('#define G_RunItem Original_RunItem\n'+extract(path,names)+'\n#undef G_RunItem')
         else:body.append(extract(path,names))
     (output/'spawn_functions.inc').write_text('\n'.join(body))
     # This is the verbatim allocated-entity loop, not a rewritten test model.

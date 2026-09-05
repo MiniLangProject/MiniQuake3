@@ -172,8 +172,11 @@ Integration offen.
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
 Shooter-Objekte sind jetzt gegen C geprüft; siehe [Projektile](MISSILES.md). Die
 Entity-Schleife führt Missile-Entities über die portierte Verarbeitung aus.
-Als nächster Abschnitt folgen Spieler-Tod, Score-/Nachrichtenfolgen und Respawn,
-anschließend Item-Spawns und die weiteren Waffenpfade. Im Callback freigegebene
+Die [Spawnpunkt-Auswahl und Leichenverwaltung](PLAYER_LIFECYCLE.md) ergänzen
+Deathmatch-/CTF-/Zuschauerpositionen, acht Leichenplätze, Gibs und Leichenphysik.
+Als nächster Abschnitt folgt die Integration von `player_die` mit Score-/
+Nachrichtenfolgen, Item-Drops und vollständigem Respawn (`ClientSpawn`/Client-Frames),
+anschließend die weiteren Item- und Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.
 

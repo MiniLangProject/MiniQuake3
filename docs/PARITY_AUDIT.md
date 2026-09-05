@@ -4,11 +4,10 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die vollständige erweiterte Regression besteht aktuell aus 33 bestandenen
-Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`). Die abschließende
-QVM-`SUBF`-Korrektur wurde zusätzlich über Interpreter-, Modul-, Fehler- und
-CLI-Prüfungen abgenommen. `final_runtime/result.json` verknüpft diese neun
-Nachprüfungen mit dem unveränderten Gesamtbericht. Der finale MiniQuake3-Build hat SHA-256
+Die vollständige erweiterte Regression besteht aktuell aus 34 bestandenen
+Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`), einschließlich
+der abschließenden QVM-Korrektur und der Spawnpunkt-/Leichenprüfung.
+Der finale MiniQuake3-Build hat SHA-256
 `cf2a3bb81cada592596e46cfd2bd1f9f7fabb76da0ab8bcd0f006641a53f6229`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
 
@@ -19,7 +18,7 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständige Server-/Client-Frames und Telefrag-Todes-/Score-Folgen fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter und Telefrag-Integration vorhanden; weitere Klassen, Item-Spawns, Spieler-Todesregeln, Mover-Pushing und vollständige Serverframes fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, Leichenverwaltung, Gibs und Leichenphysik vorhanden; weitere Klassen, Item-Spawns, Spieler-Todesregeln, Mover-Pushing und vollständige Serverframes fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -289,7 +288,7 @@ identische 32-Bit-Wörter. Darin enthalten sind 16.384 Pmove-/Link-/Touch-Befehl
 und 3.072 aufgezeichnete Telefrag-Schadensaufrufe. Die Bewegungsfolgen haben
 4.608 Frames mit aktivem und 11.776 Frames mit zurückgesetztem Sprungpad-Merker.
 Beide Profile verwenden dasselbe MiniLang-Testbinary
-(`8bec7242d2db9a95792c09b12d9d596330e16d0d56b090fe5ea9f9e1a5d040a3`).
+(`ed07d4932315fb15b36f09bed1d95e2b82e7d20b1b0e3ed39c5d59234ee8b5b5`).
 
 Die Tests initialisieren Game-Entities gezielt auf allen 31 CD-Karten und einer
 assetfreien Karte. Das Pmove/Link/Touch-Protokoll stammt aus dem Vergleichshost;
@@ -333,7 +332,7 @@ an tatsächlich geladenen Triggern tragen 754 PlayerStates einen Sprungpad-Merke
 und 139 das Teleport-Bit. Eine Probe kann durch überlappende Trigger beide Merker
 tragen; diese Zahlen zählen Ergebniszustände, nicht die Zahl einzelner Callbacks.
 Feld-, Think- und Kartenprüfung verwenden dasselbe MiniLang-Testbinary
-(`3e698e3ee63201ec8accfb83e8bf1d8360cca879fc357bf4b278f64cc040067a`).
+(`37c7c74b7b490d5bf154d564ccf3151780b9d75f2899e1523ae7deb30e94bd94`).
 
 34 der 48 Spawn-Klassen führen bereits die übertragenen Originalfunktionen aus.
 Worldspawn-Effekte, alle Spielmodusfilter, die frühe Brush-Modell-Verlinkung,
@@ -468,6 +467,28 @@ Float-Subtraktion korrigiert. Zusätzlich zu den 101.445 binären Ergebnissen
 prüft der Zahlentest nun 20.289 tatsächliche `fsub`-Aufrufe.
 Details, Schnittstellen und verbleibende Abnahmen: [MISSILES.md](MISSILES.md).
 
+## Spawnpunkte und Leichenverwaltung (Schritt 6)
+
+`scripts/test_bodies.py --data-root D:/Quake3` besteht mit **65 Szenarien**,
+**10.333 Aktionen**, **51.664.671 exakt gleichen 32-Bit-Wörtern**,
+**5.772.168 String-Bytes** und **305 Traces**. Darin enthalten
+sind gezielte Spawnpunkt-/Leichenproben mit echter BSP-Geometrie aus allen 31
+CD-Karten. Zehn Laufzeitverträge und die beidseitige Zurückweisung einer fehlenden
+Spawnposition ergänzen die gültigen Vergleichsfälle.
+
+Übertragen sind Deathmatch-, Initial-, Team- und Zuschauer-Auswahl,
+`FindIntermissionPoint`, die acht Leichenplätze, `BodySink`, `LookAtKiller`,
+`GibEntity` und `body_die`. Die Entity-Schleife führt den Nicht-Item-Leichenpfad
+von `G_RunItem` mit echtem Server-Trace, Think-/Link-Reihenfolge und Abprall aus.
+Die Tests vergleichen auch alle EntityState-Felder, alte Leichengesundheit,
+Ringumlauf, No-Blood/No-Drop, Zufallsendpunkt und signierte Zeitgrenzen.
+
+Test-Binary: `37c7c74b7b490d5bf154d564ccf3151780b9d75f2899e1523ae7deb30e94bd94`. Regeln, Grenzen und Quellzuordnung stehen in
+[PLAYER_LIFECYCLE.md](PLAYER_LIFECYCLE.md). Die Überschreitung des ursprünglichen
+128er-Deathmatch-Arrays wird kontrolliert zurückgewiesen; dieser undefinierte
+C-Pfad wird nicht als identisches Verhalten ausgewiesen. `player_die`, Scores,
+Item-Drops, `ClientSpawn`, vollständiger Respawn und Client-Frames bleiben offen.
+
 ## Reproduzieren
 
 Aus dem MiniQuake3-Verzeichnis, mit Python 3 und Visual Studio C++-Toolchain:
@@ -514,6 +535,7 @@ python scripts/test_spawn_values.py
 python scripts/test_targets.py
 python scripts/test_combat.py --data-root D:/Quake3
 python scripts/test_missiles.py --data-root D:/Quake3
+python scripts/test_bodies.py --data-root D:/Quake3
 python scripts/test_spawn.py D:/Quake3
 ```
 

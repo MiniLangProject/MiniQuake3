@@ -153,3 +153,8 @@ python scripts/test_combat.py
 python scripts/test_combat.py --data-root D:/Quake3
 python scripts/verify.py --data-root D:/Quake3 --extended
 ```
+
+Die [Leichenverwaltung](PLAYER_LIFECYCLE.md) bindet `body_die` jetzt an den
+portierten Schadenspfad an und prüft Gibs mit echtem `G_Damage`. `LookAtKiller`
+steht ebenfalls bereit. Die vollständige Spieler-Todeslogik `player_die`
+mit Scores, Drops und Respawn ist weiterhin offen.
