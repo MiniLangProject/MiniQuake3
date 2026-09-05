@@ -34,6 +34,8 @@ static void actionField(gentity_t *e,int field,int v) {
     case 17:e->think=v?actionThink:NULL;break;case 18:e->use=v?actionUse:NULL;break;case 19:e->client->sess.sessionTeam=v;break;
     case 20:e->client->ps.externalEvent=v;break;case 21:e->client->ps.events[0]=v;break;
     case 22:e->client->ps.externalEventTime=v;break;case 23:e->client->ps.externalEventParm=v;break;
+    case 24:e->client->ps.pm_type=v;break;case 25:e->client->ps.powerups[PW_FLIGHT]=v;break;
+    case 26:e->fly_sound_debounce_time=v;break;case 27:e->noise_index=v;break;case 28:e->inuse=v;break;
     default:exit(75);
     }
 }
@@ -62,6 +64,7 @@ static void runActions(FILE *in) {
         case 15:remapCount=0;break;
         case 16:word(13);string(BuildShaderStateConfig());break;
         case 17:{char old[64],newname[64];sprintf(old,"shader/%056d",q[1]);sprintf(newname,"shader/%056d",q[2]);AddRemap(old,newname,actionFloat(q[3]));break;}
+        case 18:word(15);string(configs[q[1]]);break;
         default:exit(75);
         }
         word(14);word(index++);state();

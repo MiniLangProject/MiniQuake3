@@ -13,13 +13,15 @@ import mq3.compat.textnumbers as textnum
 import mq3.compat.transcendental as crt
 import mq3.collision.world as cm
 import mq3.server.world as sv
+import mq3.game.movement as movement
+import std.string as strings
+function movedirVector(angles)
+  if angles[0] == 0 and angles[2] == 0 and angles[1] == -1 then return [0.0,0.0,1.0] end if
+  if angles[0] == 0 and angles[2] == 0 and angles[1] == -2 then return [0.0,0.0,-1.0] end if
+  axes = q.AngleVectors(angles); return axes[0]
+end function
 function setMovedir(ent)
-  angles = ent.s.angles
-  if angles[0] == 0 and angles[2] == 0 and angles[1] == -1 then ent.movedir = [0.0,0.0,1.0]
-  else if angles[0] == 0 and angles[2] == 0 and angles[1] == -2 then ent.movedir = [0.0,0.0,-1.0]
-  else
-    axes = q.AngleVectors(angles); ent.movedir = axes[0]
-  end if
+  ent.movedir = movedirVector(ent.s.angles)
   ent.s.angles = [0.0,0.0,0.0]
   return void
 end function
@@ -118,6 +120,42 @@ function dispatch(level,ent)
     end case
     case "trigger_always"
       ent.nextthink = n.add32(level.time,300); ent.think = targets.alwaysThink
+    end case
+    case "target_speaker"
+      ent.wait = values.getFloat(level.spawner,"wait","0")[1]; ent.random = values.getFloat(level.spawner,"random","0")[1]
+      noise = values.getString(level.spawner,"noise","NOSOUND")
+      if not noise[0] then return error(489,"target_speaker without a noise key") end if
+      name = noise[1]
+      if len(name) > 0 and name[0] == "*" then ent.spawnflags = ent.spawnflags | 8 end if
+      if strings.indexOf(name,".wav",0) < 0 then name = name+".wav" end if
+      data = bytes(name)
+      if len(data) > 63 then name = decode(slice(data,0,63)) end if
+      ent.noise_index = values.soundIndex(level.spawner,name); ent.s.eType = c.ET_SPEAKER; ent.s.eventParm = ent.noise_index
+      ent.s.frame = n.trunc32(n.fmul(ent.wait,10)); ent.s.clientNum = n.trunc32(n.fmul(ent.random,10))
+      if (ent.spawnflags & 1) != 0 then ent.s.loopSound = ent.noise_index end if
+      ent.use = targets.speakerUse
+      if (ent.spawnflags & 4) != 0 then ent.r.svFlags = ent.r.svFlags | 32 end if
+      ent.s.pos.trBase = movement.copy(ent.s.origin); game.link(level,ent)
+    end case
+    case "target_push"
+      if ent.speed == 0 then ent.speed = 1000.0 end if
+      ent.s.origin2 = movedirVector(ent.s.angles); ent.s.angles = [0.0,0.0,0.0]; ent.s.origin2 = q.VectorScale(ent.s.origin2,ent.speed)
+      if (ent.spawnflags & 1) != 0 then ent.noise_index = values.soundIndex(level.spawner,"sound/world/jumppad.wav")
+      else ent.noise_index = values.soundIndex(level.spawner,"sound/misc/windfly.wav") end if
+      if ent.target != void then
+        ent.r.absmin = movement.copy(ent.s.origin); ent.r.absmax = movement.copy(ent.s.origin); ent.think = aimAtTarget; ent.nextthink = n.add32(level.time,100)
+      end if
+      ent.use = targets.pushUse
+    end case
+    case "func_timer"
+      ent.random = values.getFloat(level.spawner,"random","1")[1]; ent.wait = values.getFloat(level.spawner,"wait","1")[1]
+      ent.use = targets.timerUse; ent.think = targets.timerThink
+      if ent.random >= ent.wait then ent.random = n.fsub(ent.wait,100) end if
+      if (ent.spawnflags & 1) != 0 then ent.nextthink = n.add32(level.time,100); ent.activator = ent end if
+      ent.r.svFlags = 1
+    end case
+    case "target_location"
+      ent.think = targets.locationLinkup; ent.nextthink = n.add32(level.time,200); game.setOrigin(ent,ent.s.origin)
     end case
     case default
       return false

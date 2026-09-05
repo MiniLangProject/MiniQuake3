@@ -17,7 +17,7 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 392 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständige Server-/Client-Frames und Telefrag-Schadensfolgen fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 24 Spawn-Klassen, Target-Ketten, Shader-Remaps und Entity-Schleife mit Ereignisfreigabe vorhanden; weitere Klassen, Item-Spawns, Schadens-/Todesregeln, Mover-Pushing und vollständige Serverframes fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 28 Spawn-Klassen, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps und Entity-Schleife mit Ereignisfreigabe vorhanden; weitere Klassen, Item-Spawns, Schadens-/Todesregeln, Mover-Pushing und vollständige Serverframes fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -287,7 +287,7 @@ identische 32-Bit-Wörter. Darin enthalten sind 16.384 Pmove-/Link-/Touch-Befehl
 und 3.072 aufgezeichnete Telefrag-Schadensaufrufe. Die Bewegungsfolgen haben
 4.608 Frames mit aktivem und 11.776 Frames mit zurückgesetztem Sprungpad-Merker.
 Beide Profile verwenden dasselbe MiniLang-Testbinary
-(`dec7a90d0965bc575a8bff9adbc424fc4f113676217f7639bd61f3b62c7abd12`).
+(`c0e072fe54eba821f350b8101dd92742e7dbbf6714304725b7b1e75ecf199bd7`).
 
 Die Tests initialisieren Game-Entities gezielt auf allen 31 CD-Karten und einer
 assetfreien Karte. Das Pmove/Link/Touch-Protokoll stammt aus dem Vergleichshost;
@@ -311,12 +311,13 @@ Details der Schnittstellen stehen in [GAME_TRANSITIONS.md](GAME_TRANSITIONS.md).
 ## Spawn-Parsing, Worldspawn und verzögerte Zielausrichtung
 
 Die neue Referenz kompiliert das vollständige ursprüngliche `g_spawn.c`.
-`test_spawn_values.py` vergleicht 4.096 Fälle, 788.072 Ergebniswörter und
+`test_spawn_values.py` vergleicht 4.096 Fälle, 800.360 Ergebniswörter und
 1.767.499 String-Bytes für alle 20 Feldregeln und die Spawn-Getter. Doppelte
 Schlüssel, Groß-/Kleinschreibung, Backslash-Regeln, Vorgabewerte, partielle Getter-
 Vektoren und CRT-Zahlengrenzen sind enthalten. Sechs separate C-Läufe bestätigen
-Parserfehler; 28 Laufzeitverträge prüfen weitere Grenzen der MiniLang-Schnittstelle,
-einschließlich fehlender Frame-Handler und überlanger Shader-Remap-Namen.
+Parserfehler; 30 Laufzeitverträge prüfen weitere Grenzen der MiniLang-Schnittstelle,
+einschließlich fehlender Frame-Handler, überlanger Shader-Remap-Namen, fehlendem
+Speaker-Noise-Schlüssel und NULL-Configstring-Speicherung.
 1.024 direkte `G_RunThink`-Vergleiche stimmen in 2.048 Wörtern überein, darunter
 Zeitwerte an der binary32-Grenze um 16.777.216 und an den signed-int-Grenzen.
 Ein separater C-Lauf bestätigt den Fehler eines fälligen, fehlenden Think-Callbacks.
@@ -324,22 +325,22 @@ Ein separater C-Lauf bestätigt den Fehler eines fälligen, fehlenden Think-Call
 `test_spawn.py` prüft 168 Karten-/Spielmodus-Replays: alle 31 CD-Karten in den
 fünf Modi FFA, Tournament, Single Player, Team Deathmatch und CTF; zusätzlich
 eine konstruierte Karte mit zehn Moduswerten und drei Schwerkraftvarianten.
-17.395.679 Wörter und 2.193.695 String-Bytes stimmen exakt. Nach 849 Kontaktproben
+17.392.073 Wörter und 2.134.981 String-Bytes stimmen exakt. Nach 849 Kontaktproben
 an tatsächlich geladenen Triggern tragen 754 PlayerStates einen Sprungpad-Merker
 und 139 das Teleport-Bit. Eine Probe kann durch überlappende Trigger beide Merker
 tragen; diese Zahlen zählen Ergebniszustände, nicht die Zahl einzelner Callbacks.
 Feld-, Think- und Kartenprüfung verwenden dasselbe MiniLang-Testbinary
-(`6a309d5bc33896a7b03ddb05bf3fb763b04d85aa9b05019252093013945c93d9`).
+(`9d0fb181e642e226fe798989f9a9b9d433ffb2facce3cebba43f001ce2eae374`).
 
-24 der 48 Spawn-Klassen führen bereits die übertragenen Originalfunktionen aus.
+28 der 48 Spawn-Klassen führen bereits die übertragenen Originalfunktionen aus.
 Worldspawn-Effekte, alle Spielmodusfilter, die frühe Brush-Modell-Verlinkung,
 die 100-ms-Zielausrichtung der Sprungpads und komplette PlayerStates nach
 Trigger-Kontakten sind enthalten. Einige originale Positions-/CTF-Spawn-Funktionen
 sind leer; manche andere geben ihre Entity unmittelbar frei. Die Abnahme bewahrt
 diese Funktionen, ohne damit bereits Spieler-Respawn oder CTF-Regeln zu behaupten.
 
-**Aufrufgrenzen:** 13.964 Item-/Klassenaufrufe werden in diesen Replays nur
-aufgezeichnet. Die 24 noch nicht portierten Klassen und `G_SpawnItem` erzeugen
+**Aufrufgrenzen:** 8.139 Item-/Klassenaufrufe werden in diesen Replays nur
+aufgezeichnet. Die 20 noch nicht portierten Klassen und `G_SpawnItem` erzeugen
 keine vereinfachten Ersatzregeln. Ohne gesetzten `unportedFn` bricht MiniLang an
 einer solchen bekannten Klasse kontrolliert ab. Der Testhost stellt Speicher und
 Configstring-/Cvar-Schnittstellen bereit; Netzwerkverteilung, vollständige Frames,
@@ -353,10 +354,11 @@ Zahlentext-Konvertierungen nötig. Schnittstellen und Details: [SPAWNING.md](SPA
 
 ## Target-Ketten, Ereignisse und Entity-Schleife
 
-`test_targets.py` vergleicht 16 Szenarien mit 6.077 Aktionen, 22.706.592 identischen
-32-Bit-Wörtern und 2.741.471 identischen String-Bytes. Ausgeführt werden originale
+`test_targets.py` vergleicht 28 Szenarien mit 9.691 Aktionen, 40.453.187 identischen
+32-Bit-Wörtern und 4.721.815 identischen String-Bytes. Ausgeführt werden originale
 Use-/Think-/Spawn-Funktionen für `target_delay`, `target_relay`,
-`target_teleporter`, `trigger_multiple` und `trigger_always`, außerdem
+`target_teleporter`, `trigger_multiple`, `trigger_always`, `target_speaker`,
+`target_push`, `func_timer` und `target_location`, außerdem
 `G_UseTargets`, Shader-Remaps, `G_AddEvent` und `G_Sound`.
 
 Die Fälle prüfen die laufende Suche nach Targets, veränderte Namen, entfernte
@@ -368,6 +370,19 @@ enthalten. Shader-Tests prüfen Halbwerte, signed zero, kleine/große Floats,
 128 Remaps und die ursprünglichen Ausgabegrenzen. Die Windows-C-Laufzeit wird
 mit der zur MSVC-Referenz passenden Standardrundung aufgerufen; eine native
 Implementierung von Spielregeln wurde dafür nicht ergänzt.
+
+Die Erweiterung prüft alle 16 Speaker-Flag-Kombinationen, Loop-/Ereignispriorität,
+Dateinamensgrenzen, Wait-/Random-Konvertierung und fehlende Noise-Schlüssel.
+Push-Targets werden mit Richtungen, Speed, Scheitelpunkten, allen sieben
+Bewegungstypen, Flight sowie gemeinsam benutzter Soundsperre verglichen.
+512 zusätzliche Timer-Präzisionsproben ergänzen Start-On, sofortiges Auslösen,
+Ausschalten und Änderungen während der Target-Kette. Zwei gesonderte Fehlerläufe
+bestätigen den späteren fehlenden Think-Callback eines durch sein Target
+freigegebenen Timers. 71 Ortsmarkierungen prüfen verzögerten Listenaufbau,
+fehlende Nachrichten, die fehlende Inuse-/64er-Begrenzung und spätere Freigaben.
+Die lokale NULL-zu-Leerstring-Behandlung des Configstring-Hosts bildet den
+entsprechenden Vertrag aus `SV_SetConfigstring` ab; dessen vollständige Original-
+Implementierung und Netzwerkverteilung werden noch nicht verglichen.
 
 Für `frame.runEntities` wird der Entity-Schleifenblock unverändert aus
 `G_RunFrame` extrahiert. Geprüft sind der strikte Ablauf nach mehr als 300 ms,

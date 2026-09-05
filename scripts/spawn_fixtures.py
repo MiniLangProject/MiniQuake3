@@ -22,7 +22,8 @@ def map_text(gravity='1100'):
     text=entity([('classname','worldspawn'),('message',r'MiniQuake3\nspawn fixture'),('gravity',gravity),('music','music/sonic5'),('enableDust','1'),('enableBreath','1')])
     text+=entity([('classname','target_position'),('targetname','apex'),('origin','100 200 350')])
     for i,(name,_) in enumerate(classes):
-        text+=entity([('classname',name),('origin',f'{i%3*150} 0 0'),('model','*1'),('target','apex'),('targetname',f'class_{i}'),('angle',str([0,-1,-2,90][i%4])),('nobots',str(i%2)),('nohumans',str(i%3==0).lower())])
+        extra=[('noise','sound/test/fixture')] if name=='target_speaker' else []
+        text+=entity([('classname',name),('origin',f'{i%3*150} 0 0'),('model','*1'),('target','apex'),('targetname',f'class_{i}'),('angle',str([0,-1,-2,90][i%4])),('nobots',str(i%2)),('nohumans',str(i%3==0).lower()),*extra])
     for item in items:text+=entity([('classname',item),('origin','1 2 3')])
     for key in ['notsingle','notteam','notfree','notq3a','notta']:
         for value in ['0','1','-1']:text+=entity([('classname','info_player_start'),(key,value),('targetname',key+value)])

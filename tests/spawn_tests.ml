@@ -77,6 +77,7 @@ function checkSnapshot(check,ent)
   activator = -1
   if ent.activator != void then activator = ent.activator.slot end if
   checkWords(check,[boolean(ent.use != void),activator,boolean(ent.unlinkAfterEvent),boolean(ent.physicsObject)])
+  checkWords(check,[ent.noise_index,ent.fly_sound_debounce_time,actionSlot(ent.nextTrain)])
   for each value in [ent.classname,ent.model,ent.model2,ent.target,ent.targetname,ent.message,ent.team,ent.targetShaderName,ent.targetShaderNewName]
     checkString(check,value)
   end for
@@ -97,6 +98,7 @@ function recordSpawnSpatial(level,kind,ent)
 end function
 function checkLevel(check,level)
   s = level.spawner; checkWords(check,[8,level.time,level.num_entities,boolean(s.spawning),len(s.vars),s.chars,s.warmupTime])
+  checkWords(check,[boolean(level.locationLinked),actionSlot(level.locationHead)])
   i = 64
   while i < level.num_entities
     checkSnapshot(check,level.entities[i]); i = i+1
@@ -224,6 +226,21 @@ function actionField(ent,field,value)
     case 23
       ent.client.ps.externalEventParm = value
     end case
+    case 24
+      ent.client.ps.pm_type = value
+    end case
+    case 25
+      ent.client.ps.powerups[6] = value
+    end case
+    case 26
+      ent.fly_sound_debounce_time = value
+    end case
+    case 27
+      ent.noise_index = value
+    end case
+    case 28
+      ent.inuse = value != 0
+    end case
   end switch
   return void
 end function
@@ -301,6 +318,9 @@ function runTargetActions(level,input,check)
         end while
         targets.addRemap(level,"shader/"+oldName,"shader/"+newName,n.bitsFloat(d))
       end case
+      case 18
+        checkWord(check,15); checkString(check,s.configstrings[a])
+      end case
     end switch
     checkWords(check,[14,index]); index = index+1; checkLevel(check,level)
     for i = 0 to 2
@@ -349,7 +369,9 @@ function runSpawnContracts(level)
   longName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
   caught = try(targets.addRemap(fresh,longName,"new",0.0)); requireSpawnContract(caught is error,"overlong shader source")
   caught = try(targets.addRemap(fresh,"old",longName,0.0)); requireSpawnContract(caught is error,"overlong shader destination")
-  print "PASS: 28 spawn/target/frame runtime contracts"
+  ent.classname = "target_speaker"; caught = try(funcs.dispatch(level,ent)); requireSpawnContract(caught is error,"speaker requires noise key")
+  values.setConfig(s,608,void); requireSpawnContract(s.configstrings[608] == "","NULL configstring storage")
+  print "PASS: 30 spawn/target/frame runtime contracts"
   return void
 end function
 function main(args)
@@ -357,6 +379,11 @@ function main(args)
   input = fs.readAllBytes(args[1]); check = Check(fs.readAllBytes(args[2]),0,0,0,0,0); level = game.create(world)
   level.time = 1000; level.startTime = 1000
   if len(args) > 4 and args[4] == "--contracts" then runSpawnContracts(level); return 0 end if
+  if len(args) > 4 and args[4] == "--reject-spawn" then
+    caught = try(spawn.load(spawn.create(level,decode(slice(input,4,n.readI32(input,0))))))
+    if caught is not error then return 1 end if
+    print "PASS rejected invalid spawn class input"; return 0
+  end if
   if len(args) > 4 and args[4] == "--reject" then
     caught = try(spawn.parseVars(spawn.create(level,decode(slice(input,4,n.readI32(input,0))))))
     if caught is not error then return 1 end if

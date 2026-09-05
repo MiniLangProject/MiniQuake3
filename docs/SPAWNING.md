@@ -6,8 +6,8 @@ Worldspawn und die Auswahl von Item-/Klassen-Spawn-Funktionen. Die generierten
 Tabellen enthalten 20 Feldregeln, 48 baseq3-Klassen und 35 Items. Sie werden aus
 den gepinnten Originalquellen erzeugt und gegen die ursprüngliche C-Tabelle geprüft.
 
-**Stand der Klassen:** 24 Klassen führen bereits die übertragenen Originalregeln
-aus. Die 24 übrigen Klassen und `G_SpawnItem` brauchen noch ihre Implementierung.
+**Stand der Klassen:** 28 Klassen führen bereits die übertragenen Originalregeln
+aus. Die 20 übrigen Klassen und `G_SpawnItem` brauchen noch ihre Implementierung.
 Ohne ausdrücklich gesetzten `state.unportedFn` liefert der Port an diesen Grenzen
 einen Fehler. Die Vergleichstests setzen dort einen aufzeichnenden Callback ein;
 er führt keine vereinfachten Item-, Mover- oder Spielregeln aus. Die Testkarten
@@ -31,7 +31,8 @@ Bereits umgesetzte Klassen: `info_player_start`, `info_player_deathmatch`,
 `trigger_push`, `trigger_teleport`, `target_position`, `light`, `path_corner`,
 `misc_teleporter_dest`, `misc_model`, die vier `team_CTF_*player/*spawn`-Klassen
 und `item_botroam`. Hinzugekommen sind `target_delay`, `target_relay`,
-`target_teleporter`, `trigger_multiple` und `trigger_always`; ihre Use-/Think-
+`target_teleporter`, `trigger_multiple`, `trigger_always`, `target_speaker`,
+`target_push`, `func_timer` und `target_location`; ihre Use-/Think-
 Abläufe sind unter [Targets und Ereignisse](TARGETS_AND_EVENTS.md) beschrieben.
 Manche dieser Originalfunktionen sind leer oder geben die
 Entity sofort frei; auch dieses Verhalten bleibt erhalten.

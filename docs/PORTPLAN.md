@@ -153,11 +153,12 @@ Abweichungen blockieren die nächste Spielabnahme. Voraussetzungen: 2–4.
 EntityState-Speicherfelder, PlayerState-Umwandlung, Entity-Platzverwaltung,
 Target-Auswahl und Trigger-/Teleport-Übergänge sind umgesetzt. Das Spawn-Parsing
 umfasst jetzt alle Feldregeln, Spielmodusfilter, Worldspawn und die originale
-Klassen-/Item-Auswahl. 24 Spawn-Klassen einschließlich Sprungpads, Teleportern,
-verzögerter Targets, Relays sowie Mehrfach-/Always-Trigger sind übertragen.
+Klassen-/Item-Auswahl. 28 Spawn-Klassen einschließlich Sprungpads, Teleportern,
+verzögerter Targets, Relays, Mehrfach-/Always-Trigger, Sound-/Push-Targets,
+schaltbarer Timer und Ortsmarkierungen sind übertragen.
 Target-Ketten, Shader-Remaps und die Entity-Schleife mit Ereignisfreigabe sind
 gegen den Originalcode geprüft; siehe [Targets und Ereignisse](TARGETS_AND_EVENTS.md).
-`G_RunThink` und die spätere Sprungpad-Ausrichtung sind enthalten. Die 24 weiteren
+`G_RunThink` und die spätere Sprungpad-Ausrichtung sind enthalten. Die 20 weiteren
 Klassen und Item-Spawns bleiben ausdrücklich offene Aufrufgrenzen; siehe
 [SPAWNING.md](SPAWNING.md). Als Nächstes folgen diese Spielobjekte, die Einbindung
 in vollständige Serverframes, Schadens-/Todesregeln und

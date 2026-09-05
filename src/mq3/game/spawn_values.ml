@@ -18,7 +18,7 @@ function getFloat(state,key,fallback)
 end function
 function setConfig(state,index,value)
   if index < 0 or index >= 1024 then return error(485,"Invalid configstring index") end if
-  state.configstrings[index] = value
+  if value == void then state.configstrings[index] = "" else state.configstrings[index] = value end if
   if state.effectFn != void then state.effectFn(state,1,index,"",value) end if
   return void
 end function

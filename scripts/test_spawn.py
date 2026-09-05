@@ -26,7 +26,7 @@ def inspect(data):
         if n<0 or off+n>len(data):raise RuntimeError('Invalid reference string')
         s=data[off:off+n].decode('ascii');off+=n;return s
     def entity():
-        fields=ints(121);strings=[string() for _ in range(9)];return fields,strings
+        fields=ints(124);strings=[string() for _ in range(9)];return fields,strings
     while off<len(data):
         kind=ints(1)[0];events[kind]+=1
         if kind in (1,2,3):ints(1);string();string()
@@ -35,7 +35,7 @@ def inspect(data):
         elif kind in (5,6):entity()
         elif kind==7:ints(1)
         elif kind==8:
-            time,num,spawning,vars,chars,warmup=ints(6);rows=[entity() for _ in range(num-64+1)]
+            time,num,spawning,vars,chars,warmup,location_linked,location_head=ints(8);rows=[entity() for _ in range(num-64+1)]
             states.append({'time':time,'num_entities':num,'active':sum(row[0][53]!=0 for row in rows),'pushes':sum(row[0][53]!=0 and row[0][2]==8 for row in rows),
                            'teleporters':sum(row[0][53]!=0 and row[0][2]==9 for row in rows),'pending_thinks':sum(row[0][114]!=0 for row in rows)})
         elif kind==9:
@@ -69,8 +69,8 @@ def main():
         print(f'{name}: PASS {len(modes)} game-mode spawn/think/trigger replays',flush=True)
     if not records:raise RuntimeError('No matching map')
     assert sum(r['push_reactions'] for r in records)>0 and sum(r['teleport_reactions'] for r in records)>0
-    result={'passed':True,'profile':'complete original g_spawn.c, 24 actual spawn classes, original G_RunThink/SV/CM and trigger callbacks; cm_noCurves='+flag,
-        'scope_boundary':'24 unported normal spawn classes and all 35 G_SpawnItem calls only record dispatch; no complete map/game-server acceptance',
+    result={'passed':True,'profile':'complete original g_spawn.c, 28 actual spawn classes, original G_RunThink/SV/CM and trigger callbacks; cm_noCurves='+flag,
+        'scope_boundary':'20 unported normal spawn classes and all 35 G_SpawnItem calls only record dispatch; no complete map/game-server acceptance',
         'map_mode_replays':len(records),'exact_words':sum(r['exact_words'] for r in records),'string_bytes':sum(r['string_bytes'] for r in records),
         'trigger_probes':sum(r['trigger_probes'] for r in records),'push_reactions':sum(r['push_reactions'] for r in records),'teleport_reactions':sum(r['teleport_reactions'] for r in records),
         'maps':records,'test_sha256':sha(ROOT/'build/spawn_tests.exe'),'extracted_functions_sha256':sha(output/'spawn_functions.inc'),

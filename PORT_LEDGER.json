@@ -6136,7 +6136,8 @@
       "tests": [
         "scripts/test_transitions.py",
         "scripts/test_spawn_values.py",
-        "scripts/test_spawn.py"
+        "scripts/test_spawn.py",
+        "scripts/test_targets.py"
       ]
     },
     {
@@ -6999,6 +7000,38 @@
             "src/mq3/game/targets.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "Use_Target_Speaker",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_target_speaker",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "target_location_linkup",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_target_location",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml"
+          ],
+          "status": "tested_subset"
         }
       ],
       "target": [
@@ -7247,6 +7280,51 @@
         },
         {
           "original": "SP_trigger_always",
+          "target_files": [
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "Use_target_push",
+          "target_files": [
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_target_push",
+          "target_files": [
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "func_timer_think",
+          "target_files": [
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "func_timer_use",
+          "target_files": [
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_func_timer",
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
@@ -13050,10 +13128,24 @@
         "SV_Startup",
         "SV_TouchCGame"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "SV_SetConfigstring",
+          "target_files": [
+            "src/mq3/game/spawn_values.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
+        }
+      ],
+      "target": [
+        "src/mq3/game/spawn_values.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_targets.py",
+        "scripts/test_spawn_values.py"
+      ]
     },
     {
       "source": "code/server/sv_main.c",

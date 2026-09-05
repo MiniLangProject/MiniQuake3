@@ -20,6 +20,7 @@ static void snapshot(gentity_t *e) {
     words(&e->speed,1);words(&e->wait,1);words(&e->random,1);word(e->count);word(e->health);word(e->damage);word(e->flags);words(e->movedir,3);word(e->nextthink);
     word(e->think==AimAtTarget?1:e->think?2:0);word(e->touch==trigger_push_touch?1:e->touch==trigger_teleporter_touch?2:e->touch?3:0);
     word(e->use?1:0);word(e->activator?(int)(e->activator-g_entities):-1);word(e->unlinkAfterEvent);word(e->physicsObject);
+    word(e->noise_index);word(e->fly_sound_debounce_time);word(e->nextTrain?(int)(e->nextTrain-g_entities):-1);
     string(e->classname);string(e->model);string(e->model2);string(e->target);string(e->targetname);string(e->message);string(e->team);string(e->targetShaderName);string(e->targetShaderNewName);
 }
 static void boundary(gentity_t *e,int kind,int index) {word(4);word(kind);word(index);snapshot(e);}
@@ -28,7 +29,7 @@ void trap_UnlinkEntity(gentity_t *e) {hostUnlink(e);word(6);snapshot(e);}
 void trap_SetBrushModel(gentity_t *e,const char *name) {hostBrush(e,name);}
 void trap_LocateGameData(gentity_t *e,int count,int size,playerState_t *ps,int clientSize) {word(7);word(count);}
 void trap_GetConfigstring(int index,char *buffer,int size) {Q_strncpyz(buffer,configs[index],size);}
-void trap_SetConfigstring(int index,const char *value) {Q_strncpyz(configs[index],value,sizeof(configs[index]));word(1);word(index);string("");string(value);}
+void trap_SetConfigstring(int index,const char *value) {if(index<0 || index>=MAX_CONFIGSTRINGS)G_Error("configstring index out of range");Q_strncpyz(configs[index],value?value:"",sizeof(configs[index]));word(1);word(index);string("");string(value);}
 void trap_Cvar_Set(const char *key,const char *value) {word(2);word(0);string(key);string(value);if(!strcmp(key,"g_gravity"))Q_strncpyz(gravityText,value,sizeof(gravityText));}
 qboolean trap_GetEntityToken(char *buffer,int size) {const char *s=COM_Parse(&entityPoint);Q_strncpyz(buffer,s,size);return entityPoint || *s;}
 int trap_EntitiesInBox(const vec3_t mins,const vec3_t maxs,int *list,int count) {return hostArea(mins,maxs,list,count);}
@@ -45,7 +46,7 @@ void G_SpawnItem(gentity_t *e,gitem_t *item) {boundary(e,1,(int)(item-bg_itemlis
 #include "spawn_functions.inc"
 #include "target_actions.inc"
 static char *readString(FILE *in) {int n;char *s;if(fread(&n,4,1,in)!=1)return NULL;if(n<0 || n>10000000)exit(74);s=calloc(1,n+1);if(n && fread(s,1,n,in)!=n)exit(74);return s;}
-static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
+static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);word(level.locationLinked);word(slotOf(level.locationHead));for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
 static void reset(int type,int flags) {
     memset(&level,0,sizeof(level));memset(g_entities,0,sizeof(g_entities));memset(g_clients,0,sizeof(g_clients));memset(configs,0,sizeof(configs));
     level.gentities=g_entities;level.clients=g_clients;level.num_entities=64;level.time=level.startTime=1000;srand(1);

@@ -4,6 +4,9 @@ package mq3.game.targets
 import mq3.game.entities as game
 import mq3.game.teleport as teleport
 import mq3.game.spawn_values as values
+import mq3.game.events as events
+import mq3.game.constants as c
+import mq3.game.movement as movement
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
 import std.string as strings
@@ -112,5 +115,51 @@ function multiTouch(level,ent,other,trace)
 end function
 function alwaysThink(level,ent)
   useTargets(level,ent,ent); game.free(level,ent)
+  return void
+end function
+function speakerUse(level,ent,other,activator)
+  if (ent.spawnflags & 3) != 0 then
+    if ent.s.loopSound != 0 then ent.s.loopSound = 0 else ent.s.loopSound = ent.noise_index end if
+  else if (ent.spawnflags & 8) != 0 then
+    events.add(level,activator,c.EV_GENERAL_SOUND,ent.noise_index)
+  else if (ent.spawnflags & 4) != 0 then
+    events.add(level,ent,c.EV_GLOBAL_SOUND,ent.noise_index)
+  else
+    events.add(level,ent,c.EV_GENERAL_SOUND,ent.noise_index)
+  end if
+  return void
+end function
+function pushUse(level,ent,other,activator)
+  if activator.client == void then return void end if
+  if activator.client.ps.pm_type != c.PM_NORMAL or activator.client.ps.powerups[c.PW_FLIGHT] != 0 then return void end if
+  activator.client.ps.velocity = movement.copy(ent.s.origin2)
+  if activator.fly_sound_debounce_time < level.time then
+    activator.fly_sound_debounce_time = n.add32(level.time,1500); events.sound(level,activator,0,ent.noise_index)
+  end if
+  return void
+end function
+function timerThink(level,ent)
+  useTargets(level,ent,ent.activator)
+  randomValue = n.fdiv(game.random(level),32767)
+  ent.nextthink = textnum.truncDouble32(level.time+1000*(ent.wait+(2.0*(randomValue-0.5))*ent.random))
+  return void
+end function
+function timerUse(level,ent,other,activator)
+  ent.activator = activator
+  if ent.nextthink != 0 then ent.nextthink = 0; return void end if
+  return timerThink(level,ent)
+end function
+function locationLinkup(level,ent)
+  if level.locationLinked then return void end if
+  level.locationLinked = true; level.locationHead = void; values.setConfig(level.spawner,608,"unknown")
+  i = 0; number = 1
+  while i < level.num_entities
+    location = level.entities[i]; i = i+1
+    // The original loop deliberately has no inuse filter and no MAX_LOCATIONS cap.
+    if location.classname != void and strings.equalsIgnoreCaseAscii(location.classname,"target_location") then
+      location.health = number; values.setConfig(level.spawner,608+number,location.message); number = number+1
+      location.nextTrain = level.locationHead; level.locationHead = location
+    end if
+  end while
   return void
 end function

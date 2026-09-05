@@ -51,6 +51,9 @@ struct Entity
   activator
   unlinkAfterEvent
   physicsObject
+  noise_index
+  fly_sound_debounce_time
+  nextTrain
 end struct
 struct Level
   scene
@@ -66,12 +69,14 @@ struct Level
   spawner
   shaderRemaps
   runEntityFn
+  locationLinked
+  locationHead
 end struct
 function blank(slot,r)
-  return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0,void,void,0.0,void,void,0.0,0.0,0,0,0,void,void,0,[0.0,0.0,0.0],0,void,void,void,false,false)
+  return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0,void,void,0.0,void,void,0.0,0.0,0,0,0,void,void,0,[0.0,0.0,0.0],0,void,void,void,false,false,0,0,void)
 end function
 function create(world)
-  scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void)
+  scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void,false,void)
   for i = 0 to 1023
     level.entities = level.entities+[blank(i,scene.entities[i])]
   end for
@@ -134,6 +139,7 @@ function free(level,ent)
   ent.count = 0; ent.health = 0; ent.damage = 0; ent.targetShaderName = void; ent.targetShaderNewName = void; ent.flags = 0
   ent.movedir = [0.0,0.0,0.0]; ent.nextthink = 0; ent.think = void
   ent.use = void; ent.activator = void; ent.unlinkAfterEvent = false; ent.physicsObject = false
+  ent.noise_index = 0; ent.fly_sound_debounce_time = 0; ent.nextTrain = void
   return void
 end function
 function setOrigin(ent,origin)
