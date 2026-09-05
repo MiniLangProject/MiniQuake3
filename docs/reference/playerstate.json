@@ -1,0 +1,276 @@
+{
+  "source_sha256": "7c356992d3f8b722eeb0160c44a0515bd5a83538ffb86190ca138e352e874115",
+  "size": 468,
+  "fields": [
+    {
+      "name": "commandTime",
+      "type": "int",
+      "count": 1,
+      "offset": 0
+    },
+    {
+      "name": "pm_type",
+      "type": "int",
+      "count": 1,
+      "offset": 4
+    },
+    {
+      "name": "bobCycle",
+      "type": "int",
+      "count": 1,
+      "offset": 8
+    },
+    {
+      "name": "pm_flags",
+      "type": "int",
+      "count": 1,
+      "offset": 12
+    },
+    {
+      "name": "pm_time",
+      "type": "int",
+      "count": 1,
+      "offset": 16
+    },
+    {
+      "name": "origin",
+      "type": "float",
+      "count": 3,
+      "offset": 20
+    },
+    {
+      "name": "velocity",
+      "type": "float",
+      "count": 3,
+      "offset": 32
+    },
+    {
+      "name": "weaponTime",
+      "type": "int",
+      "count": 1,
+      "offset": 44
+    },
+    {
+      "name": "gravity",
+      "type": "int",
+      "count": 1,
+      "offset": 48
+    },
+    {
+      "name": "speed",
+      "type": "int",
+      "count": 1,
+      "offset": 52
+    },
+    {
+      "name": "delta_angles",
+      "type": "int",
+      "count": 3,
+      "offset": 56
+    },
+    {
+      "name": "groundEntityNum",
+      "type": "int",
+      "count": 1,
+      "offset": 68
+    },
+    {
+      "name": "legsTimer",
+      "type": "int",
+      "count": 1,
+      "offset": 72
+    },
+    {
+      "name": "legsAnim",
+      "type": "int",
+      "count": 1,
+      "offset": 76
+    },
+    {
+      "name": "torsoTimer",
+      "type": "int",
+      "count": 1,
+      "offset": 80
+    },
+    {
+      "name": "torsoAnim",
+      "type": "int",
+      "count": 1,
+      "offset": 84
+    },
+    {
+      "name": "movementDir",
+      "type": "int",
+      "count": 1,
+      "offset": 88
+    },
+    {
+      "name": "grapplePoint",
+      "type": "float",
+      "count": 3,
+      "offset": 92
+    },
+    {
+      "name": "eFlags",
+      "type": "int",
+      "count": 1,
+      "offset": 104
+    },
+    {
+      "name": "eventSequence",
+      "type": "int",
+      "count": 1,
+      "offset": 108
+    },
+    {
+      "name": "events",
+      "type": "int",
+      "count": 2,
+      "offset": 112
+    },
+    {
+      "name": "eventParms",
+      "type": "int",
+      "count": 2,
+      "offset": 120
+    },
+    {
+      "name": "externalEvent",
+      "type": "int",
+      "count": 1,
+      "offset": 128
+    },
+    {
+      "name": "externalEventParm",
+      "type": "int",
+      "count": 1,
+      "offset": 132
+    },
+    {
+      "name": "externalEventTime",
+      "type": "int",
+      "count": 1,
+      "offset": 136
+    },
+    {
+      "name": "clientNum",
+      "type": "int",
+      "count": 1,
+      "offset": 140
+    },
+    {
+      "name": "weapon",
+      "type": "int",
+      "count": 1,
+      "offset": 144
+    },
+    {
+      "name": "weaponstate",
+      "type": "int",
+      "count": 1,
+      "offset": 148
+    },
+    {
+      "name": "viewangles",
+      "type": "float",
+      "count": 3,
+      "offset": 152
+    },
+    {
+      "name": "viewheight",
+      "type": "int",
+      "count": 1,
+      "offset": 164
+    },
+    {
+      "name": "damageEvent",
+      "type": "int",
+      "count": 1,
+      "offset": 168
+    },
+    {
+      "name": "damageYaw",
+      "type": "int",
+      "count": 1,
+      "offset": 172
+    },
+    {
+      "name": "damagePitch",
+      "type": "int",
+      "count": 1,
+      "offset": 176
+    },
+    {
+      "name": "damageCount",
+      "type": "int",
+      "count": 1,
+      "offset": 180
+    },
+    {
+      "name": "stats",
+      "type": "int",
+      "count": 16,
+      "offset": 184
+    },
+    {
+      "name": "persistant",
+      "type": "int",
+      "count": 16,
+      "offset": 248
+    },
+    {
+      "name": "powerups",
+      "type": "int",
+      "count": 16,
+      "offset": 312
+    },
+    {
+      "name": "ammo",
+      "type": "int",
+      "count": 16,
+      "offset": 376
+    },
+    {
+      "name": "generic1",
+      "type": "int",
+      "count": 1,
+      "offset": 440
+    },
+    {
+      "name": "loopSound",
+      "type": "int",
+      "count": 1,
+      "offset": 444
+    },
+    {
+      "name": "jumppad_ent",
+      "type": "int",
+      "count": 1,
+      "offset": 448
+    },
+    {
+      "name": "ping",
+      "type": "int",
+      "count": 1,
+      "offset": 452
+    },
+    {
+      "name": "pmove_framecount",
+      "type": "int",
+      "count": 1,
+      "offset": 456
+    },
+    {
+      "name": "jumppad_frame",
+      "type": "int",
+      "count": 1,
+      "offset": 460
+    },
+    {
+      "name": "entityEventSequence",
+      "type": "int",
+      "count": 1,
+      "offset": 464
+    }
+  ]
+}

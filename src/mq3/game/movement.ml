@@ -1,7 +1,7 @@
 // Copyright (C) 1999-2005 Id Software, Inc.
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Shared movement kernels from bg_pmove.c and bg_slidemove.c.
-// This context is not yet the complete playerState/Pmove command loop.
+// The full playerState/Pmove cycle in pmove.ml reuses this kernel context.
 package mq3.game.movement
 import mq3.compat.numeric as n
 import mq3.shared.math as q

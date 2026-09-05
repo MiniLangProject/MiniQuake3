@@ -5158,17 +5158,31 @@
         {
           "original": "BG_AddPredictableEventToPlayerstate",
           "target_files": [
-            "src/mq3/game/movement.ml"
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "bg_itemlist",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
-        "src/mq3/game/movement.ml"
+        "src/mq3/game/movement.ml",
+        "src/mq3/game/constants.ml",
+        "src/mq3/game/pmove.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_movement.py"
+        "scripts/test_movement.py",
+        "scripts/test_pmove.py"
       ]
     },
     {
@@ -5223,52 +5237,333 @@
         {
           "original": "PM_ClipVelocity",
           "target_files": [
-            "src/mq3/game/movement.ml"
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "PM_Friction",
           "target_files": [
-            "src/mq3/game/movement.ml"
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "PM_Accelerate",
           "target_files": [
-            "src/mq3/game/movement.ml"
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "PM_CmdScale",
           "target_files": [
-            "src/mq3/game/movement.ml"
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "PM_AddTouchEnt",
           "target_files": [
-            "src/mq3/game/movement.ml"
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "PM_AddEvent",
           "target_files": [
-            "src/mq3/game/movement.ml"
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_StartTorsoAnim",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_StartLegsAnim",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_ContinueLegsAnim",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_ContinueTorsoAnim",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_ForceLegsAnim",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_SetMovementDir",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_CheckJump",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_CheckWaterJump",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_WaterJumpMove",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_WaterMove",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_FlyMove",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_AirMove",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_GrappleMove",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_WalkMove",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_DeadMove",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_NoclipMove",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_FootstepForSurface",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_CrashLand",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_CorrectAllSolid",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_GroundTraceMissed",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_GroundTrace",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_SetWaterLevel",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_CheckDuck",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_Footsteps",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_WaterEvents",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_BeginWeaponChange",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_FinishWeaponChange",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_TorsoAnimation",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_Weapon",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_Animate",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_DropTimers",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_UpdateViewAngles",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PmoveSingle",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "Pmove",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/pmove.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
-        "src/mq3/game/movement.ml"
+        "src/mq3/game/movement.ml",
+        "src/mq3/game/pmove.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_movement.py"
+        "scripts/test_movement.py",
+        "scripts/test_pmove.py",
+        "scripts/test_runtime_pmove.py"
       ]
     },
     {
@@ -5276,10 +5571,104 @@
       "sha256": "29679e04ba6f0f730c5ca200410330e057609da59e563e36d101f329fafd09e7",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "pmove_t",
+          "target_files": [
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "pmtype_t",
+          "target_files": [
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "weaponstate_t",
+          "target_files": [
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "statIndex_t",
+          "target_files": [
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "persEnum_t",
+          "target_files": [
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "powerup_t",
+          "target_files": [
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "holdable_t",
+          "target_files": [
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "weapon_t",
+          "target_files": [
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "entity_event_t",
+          "target_files": [
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "animNumber_t",
+          "target_files": [
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "team_t",
+          "target_files": [
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/constants.ml",
+        "src/mq3/game/pmove.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_pmove.py"
+      ]
     },
     {
       "source": "code/game/bg_slidemove.c",
@@ -6491,6 +6880,13 @@
             "src/mq3/shared/math.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "AngleVectors",
+          "target_files": [
+            "src/mq3/shared/math.ml"
+          ],
+          "status": "tested_subset"
         }
       ],
       "target": [
@@ -6500,7 +6896,8 @@
       "tests": [
         "scripts/test_math.py",
         "scripts/test_patches.py",
-        "scripts/test_movement.py"
+        "scripts/test_movement.py",
+        "scripts/test_pmove.py"
       ]
     },
     {
@@ -6628,31 +7025,58 @@
         {
           "original": "DotProduct",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/pmove.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "CrossProduct",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/pmove.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "VectorMA",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/shared/math.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "playerState_t",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "usercmd_t",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/pmove.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
-        "src/mq3/shared/math.ml"
+        "src/mq3/shared/math.ml",
+        "src/mq3/game/playerstate.ml",
+        "src/mq3/game/pmove.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_math.py"
+        "scripts/test_math.py",
+        "scripts/test_pmove.py"
       ]
     },
     {
@@ -14222,10 +14646,22 @@
         "Sys_SnapVector",
         "fastftol"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Sys_SnapVector",
+          "target_files": [
+            "src/mq3/shared/math.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/shared/math.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_pmove.py"
+      ]
     },
     {
       "source": "code/win32/win_snd.c",

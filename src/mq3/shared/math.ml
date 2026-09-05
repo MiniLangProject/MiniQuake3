@@ -3,6 +3,40 @@
 // MiniLang adaptation of code/game/q_math.c, see original COPYING.txt.
 package mq3.shared.math
 import mq3.compat.numeric as n
+import mq3.compat.transcendental as crt
+
+function AngleVectors(angles)
+  // q_shared.h defines M_PI with an f suffix, so the factor is binary32.
+  factor = n.fdiv(n.fmul(n.f32(3.14159265358979323846),2.0),360.0)
+  angle = n.fmul(angles[1],factor)
+  sy = n.f32(crt.sin(angle)); cy = n.f32(crt.cos(angle))
+  angle = n.fmul(angles[0],factor)
+  sp = n.f32(crt.sin(angle)); cp = n.f32(crt.cos(angle))
+  angle = n.fmul(angles[2],factor)
+  sr = n.f32(crt.sin(angle)); cr = n.f32(crt.cos(angle))
+  forward = [n.fmul(cp,cy),n.fmul(cp,sy),n.fneg(sp)]
+  right = [n.fadd(n.fmul(n.fmul(n.fmul(-1,sr),sp),cy),n.fmul(n.fmul(-1,cr),n.fneg(sy))),n.fadd(n.fmul(n.fmul(n.fmul(-1,sr),sp),sy),n.fmul(n.fmul(-1,cr),cy)),n.fmul(n.fmul(-1,sr),cp)]
+  up = [n.fadd(n.fmul(n.fmul(cr,sp),cy),n.fmul(n.fneg(sr),n.fneg(sy))),n.fadd(n.fmul(n.fmul(cr,sp),sy),n.fmul(n.fneg(sr),cy)),n.fmul(cr,cp)]
+  return [forward,right,up]
+end function
+
+function SnapVector(v)
+  // Win32 Sys_SnapVector uses x87 FISTP with round-to-nearest, ties-to-even.
+  for axis = 0 to 2
+    value = v[axis]
+    if n.isNaNBits(n.floatBits(value)) or value >= 2147483648.0 or value < -2147483648.0 then
+      v[axis] = n.f32(-2147483648)
+      continue
+    end if
+    integer = n.trunc32(value)
+    remainder = value-integer
+    if remainder > 0.5 or (remainder == 0.5 and (integer & 1) != 0) then integer = integer+1 end if
+    if remainder < -0.5 or (remainder == -0.5 and (integer & 1) != 0) then integer = integer-1 end if
+    if integer < -2147483648 or integer > 2147483647 then integer = -2147483648 end if
+    v[axis] = n.f32(integer)
+  end for
+  return void
+end function
 
 struct RandomState
   seed

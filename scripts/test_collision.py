@@ -11,15 +11,32 @@ from pathlib import Path
 from toolchain import ROOT,msvc_env,run
 from inventory import sha
 
-def build_oracle(output,movement=False,patches=False):
+def build_oracle(output,movement=False,patches=False,pmove=False):
     source=ROOT / "Quake-III-Arena-original-source/code"
     sources=[source / "qcommon" / name for name in
              ("cm_load.c","cm_trace.c","cm_test.c","cm_patch.c","cm_polylib.c","md4.c")]
     sources += [source / "game" / name for name in ("q_math.c","q_shared.c")]
     extra=[]
-    if movement:
+    if movement or pmove:
         sources += [source / "game" / name for name in ("bg_slidemove.c","bg_misc.c")]
-        extra=["/DMQ3_ORACLE_LIBRARY",ROOT / "tests/reference/movement_oracle.c"]
+        extra=["/DMQ3_ORACLE_LIBRARY",ROOT / ("tests/reference/pmove_oracle.c" if pmove else "tests/reference/movement_oracle.c")]
+    if pmove:
+        schema=json.loads((ROOT/'docs/reference/playerstate.json').read_text())
+        checks=['#include <stddef.h>',f'typedef char check_ps_size[(sizeof(playerState_t)=={schema["size"]})?1:-1];']
+        for field in schema['fields']:
+            name=field['name'];offset=field['offset'];size=field['count']*4
+            checks += [f'typedef char check_ps_{name}[(offsetof(playerState_t,{name})=={offset} && sizeof(((playerState_t*)0)->{name})=={size})?1:-1];']
+        (output/'playerstate_offsets.inc').write_text('\n'.join(checks)+'\n')
+        # Compile the actual original Win32 assembly function, without its OS host.
+        snap=(source / 'win32/win_shared.c').read_text().split('void Sys_SnapVector( float *v )')[1].split('/*\n================')[0]
+        start=snap.index('{');depth=0;end=start
+        for end in range(start,len(snap)):
+            if snap[end]=='{':depth+=1
+            elif snap[end]=='}':
+                depth-=1
+                if depth==0:break
+        (output / 'snapvector.inc').write_text('void Sys_SnapVector( float *v )'+snap[start:end+1]+'\n')
+        extra += [f'/I{output}']
     if patches:
         extra=["/DMQ3_ORACLE_LIBRARY",ROOT / "tests/reference/patch_oracle.c"]
     run(["cl","/nologo","/Od","/Gy","/fp:strict","/arch:SSE2","/MT","/DWIN32","/DNDEBUG",
@@ -27,7 +44,8 @@ def build_oracle(output,movement=False,patches=False):
          ROOT / "tests/reference/collision_oracle.c",*sources,*extra,
          f"/Fe:{output / 'collision_oracle.exe'}","/link","/OPT:REF","/Brepro","/stack:8388608"],
         output,msvc_env("x86"),output / "build.log")
-    return sources+([source / "game/bg_pmove.c"] if movement else [])
+    headers=[source/'game'/name for name in ('q_shared.h','bg_public.h','bg_local.h','surfaceflags.h')]
+    return sources+([source / "game/bg_pmove.c"] if movement or pmove else [])+([source / 'win32/win_shared.c',*headers] if pmove else [])
 
 def cases(data,count,seed):
     rng=random.Random(seed)

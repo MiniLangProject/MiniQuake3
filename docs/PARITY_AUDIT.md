@@ -7,10 +7,10 @@ kein Nachweis einer schon portierten MiniLang-Engine.
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
 | --- | --- | --- |
 | 1. Referenz | Grundabnahme bestanden | Originale x86-Engine, drei native Module, drei neu gebaute QVMs; MiniLang-Build; 1.409 Dateien inventarisiert; 120 Frames mit zwei Bots aufgezeichnet und zweimal bytegleich wiedergegeben |
-| 2. Zahlen/Plattform | In Arbeit | 101.125 binäre Float-Ergebnisse einschließlich Quadratwurzel und 53.248 direkte Ergebnisse aus originalem q_math.c stimmen; Windows-Dateizugriff vorhanden; Fenster, Eingabe, UDP und Audio noch offen |
+| 2. Zahlen/Plattform | In Arbeit | 101.125 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff vorhanden; Fenster, Eingabe, UDP und Audio noch offen |
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 392 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
-| 5. Kollision/Pmove | In Arbeit | BSP-Traversierung, Brushes, 6.091 Kurvennetze, jeweils 56.108 Traces mit/ohne Kurven und insgesamt 32.768 Bewegungsoperationen exakt geprüft; vollständiger Pmove-Zyklus und bewegte/temporäre Modelle fehlen |
+| 5. Kollision/Pmove | In Arbeit | BSP-Traversierung, Brushes, 6.091 Kurvennetze, jeweils 56.108 Traces mit/ohne Kurven, 32.768 Bewegungskern-Operationen sowie 42.496 vollständige Pmove-Befehle exakt geprüft; bewegte/temporäre Modelle, Sichtbarkeit und Areaportale fehlen |
 | 6. Spiel/Server | Offen | Noch keine MiniLang-Implementierung |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
@@ -107,9 +107,46 @@ Ereignisse. Je 16.384 Operationen mit/ohne Kurven ergeben insgesamt 1.540.096
 identische Felder. Mit aktiven Kurven entstehen dabei 162 echte Stufenereignisse
 aus der Bewegung, zusätzlich zu den separaten Tests des Ereignisrings.
 Die Testreferenz kollidiert mit C, der Port mit seiner MiniLang-Kollision.
-Die Tests sind keine Abnahme des vollständigen `Pmove`-Usercmd-Zyklus: Ground-Checks,
-Sprünge, Ducken, Wasserbewegung, Waffenzeit und Animationen müssen noch integriert
-und mit vollständigen Playerstates geprüft werden.
+Diese bisherigen Kerntests werden durch die vollständigen Befehlsvergleiche ergänzt.
+
+`test_pmove.py` ruft nun den unveränderten `Pmove`-/`PmoveSingle`-Code auf und
+vergleicht ihn mit `src/mq3/game/pmove.ml`. Enthalten sind Ground-Checks,
+Start-in-Solid-Korrektur, Sprünge, Ducken, Luft-/Wasser-/Flug-/Noclip-Bewegung,
+Grapple-Pull, Landungen, Timer, Waffenwechsel, Munition, Holdables, Gesten und
+Animations-/Ereigniszähler. Verglichen werden alle 468 Bytes des PlayerState
+sowie die veränderten Usercmd- und relevanten Pmove-Ausgaben: 166 Wörter pro Befehl.
+Die C-Referenz prüft außerdem Größe und Offset aller 45 PlayerState-Felder unabhängig
+mit `sizeof` und `offsetof`. Der generierte MiniLang-Codec ist kein Netzwerkprotokoll.
+
+Vier CD-Karten liefern je 4.096 unabhängige oder verkettete Befehle; eine assetfreie
+BSP-Testkarte ergänzt 4.864 gezielte Befehle. Ihre Fälle decken Wassersprung,
+alle vier Wasserstände, Schleim/Lava, Stufen, niedrige Decke, blockiertes Aufstehen,
+Start-in-Solid, Materialflags, Landungen sowie alle zehn Waffen mit Haste,
+unendlicher Munition und Munitionsende ab. Die Profile mit und ohne Kurven ergeben
+zusammen 42.496 Befehle und 7.054.336 identische Wörter. Die Prüfung erfolgt nach
+jedem äußeren Befehl; zusätzliche direkte `PmoveSingle`-Fälle prüfen Einzelaufrufe.
+Sie ist noch kein Replay eines vollständigen MiniLang-Servers oder Clients.
+
+`AngleVectors` und `SnapVector` liefern in 65.536 Fällen 786.432 identische Werte.
+26 zusätzliche Snap-Proben enthalten Halbwerte, signed zero, Integergrenzen,
+Unendlichkeiten und NaNs. Die Referenz kompiliert den unveränderten
+`Sys_SnapVector`-Funktionskörper aus `win32/win_shared.c`: x87 `FISTP`, nächste
+Ganzzahl, bei Gleichstand gerade. MiniLang führt diese Rundung selbst aus.
+`sin`, `cos` und die doppelt genaue Wurzel in der Landungsformel werden dagegen
+direkt aus `ucrtbase.dll` aufgerufen. Diese ausdrücklich abgegrenzten C-Laufzeit-
+Mathematikfunktionen ersetzen keine Bewegungslogik. Die native Projekt-DLL bleibt
+auf die bisherigen drei Float-/Bit-Konvertierungen beschränkt.
+
+Alle 36 ursprünglichen baseq3-Item-Tags werden aus der Quelltabelle übertragen
+und gegen C geprüft. `MISSIONPACK` ist nicht Bestandteil dieses Pmove-Profils;
+die auch in baseq3 kompilierten Invulnerability-Zweige sind enthalten. Zwölf
+Vertragstests weisen fehlerhafte Befehle, Feldgrößen und Indizes zurück; zwei weitere
+prüfen alte bzw. unveränderte Command-Zeitstempel. Feste Intervalle außerhalb
+1–200 ms werden im Port abgewiesen, insbesondere statt einer Endlosschleife bei 0.
+
+`--pmove-map` verarbeitet TSV-Befehle direkt mit PK3-Lader, MiniLang-Kollision und
+Pmove. Der zugehörige Ende-zu-Ende-Test vergleicht 268 Befehle in 4.020 ausgegebenen
+Feldern mit C. Dieser Aufruf enthält weder dynamische Entities noch Server-Spielregeln.
 
 ## Reproduzieren
 
@@ -139,7 +176,10 @@ python scripts/test_collision.py D:/Quake3 --no-curves
 python scripts/test_collision.py D:/Quake3
 python scripts/test_movement.py D:/Quake3 --count 4096 --no-curves
 python scripts/test_movement.py D:/Quake3 --count 4096
+python scripts/test_pmove.py D:/Quake3 --count 4096 --no-curves
+python scripts/test_pmove.py D:/Quake3 --count 4096
 python scripts/test_runtime_trace.py D:/Quake3
+python scripts/test_runtime_pmove.py D:/Quake3
 ```
 
 `inventory.py` aktualisiert bewusst den eingefrorenen Compilerstand. Für die

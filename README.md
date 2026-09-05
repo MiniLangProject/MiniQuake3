@@ -3,7 +3,7 @@
 Projekt für einen möglichst originalgetreuen Port von Quake III Arena nach MiniLang.
 Status: Implementierung läuft. Ein nativer MiniLang-Build mit Zahlenkompatibilität,
 Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter, BSP-/Kurvenkollision und
-gemeinsamen Bewegungskernen ist
+dem vollständigen baseq3-Pmove-Befehlszyklus ist
 vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
 [geprüfte Stand mit offenen Abnahmen](docs/PARITY_AUDIT.md).
@@ -35,6 +35,21 @@ lassen sich direkt mit dem MiniLang-Build ausführen:
 Die sechs Zahlen sind Start- und Zielposition. Verwendet werden die originale
 Spielerbox `(-15,-15,-24)` bis `(15,15,32)` und `MASK_PLAYERSOLID`, mit aktiver
 Kurvenkollision gegen das Weltmodell.
+
+Bewegungsbefehle lassen sich ohne Grafik auf einer Karte abspielen:
+
+```powershell
+.\build\MiniQuake3.exe --pmove-map D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp 216 1328 24 examples/movement.tsv
+```
+
+Die TSV-Datei enthält pro Zeile neun ganze Zahlen: Zeit in Millisekunden,
+Pitch, Yaw, Roll, Vorwärts, Rechts, Hoch, Buttons und Waffe. Winkel verwenden
+Quakes Command-Einheiten (65.536 pro Vollkreis), Bewegungsachsen den Bereich
+−128 bis 127. `#` beginnt eine Kommentarzeile. Die Ausgabe zeigt je Befehl Position,
+Geschwindigkeit, Bodenkontakt, Wasserstand, Waffenzeit und Ereignisse.
+Der Spieler startet mit 100 Gesundheit, Geschwindigkeit 320, Schwerkraft 800 und
+Maschinengewehr. Dieser Entwicklungsaufruf verarbeitet statische Weltkollision;
+Spielserver, bewegte Entities, Schaden und Grafik folgen in weiteren Planabschnitten.
 
 ## Quellcode und Projektstruktur
 

@@ -91,6 +91,17 @@ function fneg(value)
   return bitsFloat(floatBits(value)^0x80000000)
 end function
 
+function trunc32(value)
+  bits = floatBits(value)
+  if isNaNBits(bits) or value >= 2147483648.0 or value < -2147483648.0 then return -2147483648 end if
+  magnitude = mantissa(bits); power = exponent(bits)
+  if power < 0 then
+    if power < -31 then magnitude = 0 else magnitude = magnitude >> (0-power) end if
+  else magnitude = magnitude << power end if
+  if (bits & 0x80000000) != 0 then magnitude = 0-magnitude end if
+  return magnitude
+end function
+
 function sqrtBits(value)
   if isNaNBits(value) then return value | 0x400000 end if
   if (value & 0x7fffffff) == 0 then return value end if

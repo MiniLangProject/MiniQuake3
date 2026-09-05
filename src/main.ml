@@ -5,6 +5,7 @@ import mq3.format.pk3 as pk3
 import mq3.format.bsp as bsp
 import mq3.collision.world as cm
 import mq3.vm.interpreter as vm
+import mq3.game.replay as replay
 import std.fs as fs
 
 function formatVector(vector)
@@ -12,6 +13,11 @@ function formatVector(vector)
 end function
 
 function main(args)
+  if len(args) == 7 and args[0] == "--pmove-map" then
+    archive = pk3.open(args[1]); world = cm.load(pk3.read(archive,args[2]))
+    origin = [n.f32(toNumber(args[3])),n.f32(toNumber(args[4])),n.f32(toNumber(args[5]))]
+    return replay.run(world,origin,fs.readAllText(args[6]))
+  end if
   if len(args) == 2 and args[0] == "--inspect-pk3" then
     archive = pk3.open(args[1])
     print "PK3: " + archive.path
@@ -57,5 +63,6 @@ function main(args)
   print "--inspect-map <archive.pk3> <maps/name.bsp>"
   print "--vm-probe <module.qvm> <command> (without engine syscalls)"
   print "--trace-map <archive.pk3> <maps/name.bsp> <sx> <sy> <sz> <ex> <ey> <ez>"
+  print "--pmove-map <archive.pk3> <maps/name.bsp> <x> <y> <z> <commands.tsv>"
   return 0
 end function
