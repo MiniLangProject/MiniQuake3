@@ -1,6 +1,8 @@
 # Abstimmungen und Teamleiter
 
-Stand: 2026-09-05. `src/mq3/game/votes.ml` portiert die unveränderten Baseq3-Regeln
+Stand: 2026-09-05. `src/mq3/game/vote_commands.ml` portiert die vier Baseq3-
+Befehlshandler `Cmd_CallVote_f`, `Cmd_Vote_f`, `Cmd_CallTeamVote_f` und
+`Cmd_TeamVote_f`. `src/mq3/game/votes.ml` portiert die unveränderten Baseq3-Regeln
 von `CheckVote`, `CheckTeamVote`, `PrintTeam`, `SetLeader` und `CheckTeamLeader`
 aus `g_main.c`. Globale und rote/blaue Team-Abstimmungen laufen in `G_RunFrame`
 an ihren ursprünglichen Positionen nach dem Teamstatus und vor `CheckCvars`.
@@ -52,8 +54,8 @@ Die Frame-Fälle führen inzwischen auch den portierten Teamstatus und
 `g_needpass`-Ausgabe wird verglichen. Dadurch ändern sich Wort-/Effektzahlen
 bei unverändertem Vote-Szenarienumfang.
 
-Test-Binary: `e843177bc0b988930e7014c71f6872507b78d63321d34eaf667d80cde9b6ea4e`.
-Native x86-Oracle: `81051414985a5ee1c7acb8e74363e3d3f5e3c19cdd922e95cc9b649fd2fd5a32`.
+Test-Binary: `ba6d9b598a900c645b81bd36059aa19a6aba42646cc1ace08c787fbabe31253d`.
+Native x86-Oracle: `5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae`.
 
 ```powershell
 python scripts/test_votes.py
@@ -62,7 +64,90 @@ python scripts/test_votes.py --case frame_votes_and_delayed_command
 
 `ClientUserinfoChanged`, Server- und Konsolenbefehle enden an expliziten
 Host-Schnittstellen. Die Engine führt die im Test beobachteten Befehle nicht aus.
-Das Starten und Befüllen von Votes über `Cmd_CallVote_f`, `Cmd_Vote_f` sowie die
-Team-Pendants und die vollständige Userinfo-/Sitzungslogik sind noch offen.
+Die Aufruf-/Stimmhandler `Cmd_CallVote_f`, `Cmd_Vote_f` und ihre Team-Pendants
+sind inzwischen separat geprüft, wie nachfolgend beschrieben.
+Die vollständige Userinfo-/Sitzungslogik bleibt offen.
 `CheckTeamLeader` ist für diese späteren Teamwechsel bereits geprüft; im
 Frame erfolgt wie im Original ausschließlich die Vote-Auflösung.
+
+## Aufrufe und Stimmabgabe
+
+Die MiniLang-Einstiegspunkte heißen `callVote`, `castVote`, `callTeamVote` und
+`castTeamVote`. Sie erhalten Level, Caller-Entity und die bereits tokenisierte
+Argumentliste einschließlich Befehlsname an Position null. Beispiele:
+
+```minilang
+voteCommands.callVote(level,level.entities[0],["callvote","map","q3dm1"])
+voteCommands.castVote(level,level.entities[1],["vote","yes"])
+voteCommands.callTeamVote(level,level.entities[0],["callteamvote","leader","Team","Mate"])
+```
+
+`cvars.register`/`cvars.update` versorgen `level.allowVote` aus `g_allowVote`.
+Für `map` und `nextmap` wird der aktuelle Text direkt aus
+`level.spawner.cvars` gelesen. Map-Votes erhalten die bisherige Rotation über
+`set nextmap`; Ausführungstext und sichtbarer Vote-Text werden getrennt gehalten.
+Alle zwölf Vote-Configstrings haben die ursprünglichen Indizes und Schreibfolgen.
+
+Auch hier bleiben die beobachtbaren Originalregeln erhalten:
+
+- `g_allowVote`, laufender Vote, Aufruflimit und Zuschauerstatus werden in dieser
+  Reihenfolge geprüft. Team-Aufrufe verlassen zuvor den Handler lautlos, wenn
+  der Caller keinem roten/blauen Team angehört. Eine deaktivierte `g_allowVote`
+  blockiert die Stimmabgabe in einem bereits laufenden Vote nicht.
+- Beide Aufrufhandler prüfen ein Limit von drei Aufrufen, erhöhen die
+  gespeicherten Aufrufzähler aber selbst nicht. Eine erfolgreiche Initiierung
+  setzt die Stimmen auf Ja=1/Nein=0 und markiert den Caller automatisch.
+- Die ursprüngliche Ja-Prüfung liest kleines `y` an Byteposition 0, großes
+  `Y` und `1` dagegen an Position 1. Daher zählen `y`, `yes`, `xY` und `x1`
+  als Ja; `Y`, `Yes` und `1` zählen als Nein. Kurze Argumente werden wie
+  `Q_strncpyz` mit Nullbytes ergänzt.
+- Ein zur Ausführung vorgemerkter Alt-Vote wird nach der erlaubten
+  Befehlsnamenprüfung sofort ausgegeben, bevor ungültiger Spielmodus oder
+  fehlende `nextmap` einen neuen Aufruf noch ablehnen können.
+- Globale Calls lesen nur Argumente 1 und 2. Team-Calls verbinden sämtliche
+  Argumente ab Position 2 mit Leerzeichen. Die Semikolonprüfung erfolgt nach
+  den originalen Bytekopien; Anführungszeichen und Zeilenumbrüche werden nicht
+  zusätzlich normalisiert. Ausgabe-Texte werden wie `Com_sprintf` auf 1.023
+  Bytes begrenzt; dessen reine Überlaufdiagnose ist kein Vergleichsereignis.
+- Teamleiter werden über Slots oder bereinigte Namen gesucht. Schon drei
+  führende Ziffern wählen den numerischen Pfad, auch mit nachfolgendem Text.
+  Dieser prüft Slot und `inuse`; der Namenspfad prüft Verbindung und Team,
+  entfernt Farbcodes/nicht druckbare Bytes und ignoriert ASCII-Großschreibung.
+  Ohne Kandidat wird `ps.clientNum` verwendet.
+- Der Aufruftext wird vor dem Zurücksetzen von Stimmen/Flags gesendet.
+  Globale Calls löschen nur `EF_VOTED` unterhalb `level.maxclients`, Team-Calls
+  nur `EF_TEAMVOTED` in diesem Team. Andere Bits bleiben erhalten.
+
+`scripts/test_vote_commands.py` besteht mit **337 Szenarien**, **428 Aktionen**,
+**967.073 exakt gleichen 32-Bit-Wörtern**, **1.149 geordneten Nebenwirkungen**
+und **4.319.535 Ausgabe-Bytes**. Der Host extrahiert die vier Spiel-Funktionskörper,
+die Spielmodusnamen und `Cmd_Argc`/`Cmd_Argv`/`Cmd_ArgvBuffer` unverändert.
+Jede Server-/Konsolen-/Userinfo-Grenze und jeder Configstring-Schreibvorgang
+vergleicht den vollständigen Vote-Zustand, die relevanten Daten aller 64
+Clients sowie alle zwölf Configstrings; dieselbe Prüfung folgt nach jeder Aktion.
+
+Die Folgen enthalten Aufruf → Stimmabgabe → Auflösung → fällige Ausführung,
+erneute Calls, gleichzeitige globale/rote/blaue Votes, Kandidatenwechsel und
+Trennung, Berechtigungsprioritäten, native Integergrenzen, Byte-Trunkierung
+einschließlich Mehrbyte-Texten sowie Clientlimit null und Slot 63.
+**19 ergänzende Laufzeitverträge** prüfen fehlende Schnittstellen, ungültige
+Bindings/Limits, NUL-Zeichen und die tatsächliche Cvar-Integration samt Refresh
+und Modul-Rebind. Ist der originale Teamargument-Puffer voll und ein weiteres
+Argument würde `strcat` überlaufen lassen, gibt MiniLang einen kontrollierten
+Fehler zurück. Dieses undefinierte C-Speicherschreiben wird nicht ausgeführt.
+
+Test-Binary: `ae07c4437f8c19e8e9797e21cdbd81d96c82889dc153df7727a958e0c9c8dcac`.
+Native x86-Oracle: `5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae`.
+
+```powershell
+python scripts/test_vote_commands.py
+python scripts/test_vote_commands.py --case global_call_cast_resolve_execute
+```
+
+Die vollständige `ClientCommand`-Verteilung einschließlich Chat während der
+Intermission, Engine-Kommando-Tokenisierung, Netzwerkzustellung und tatsächliche
+Ausführung des Konsolenbefehls bleiben offen. Diese vier direkt aufrufbaren
+Handler bilden deren geprüften Vote-Teil. Im nativen Testhost ist die
+`nextmap`-Abfrage eine gespeicherte Engine-Antwort; MiniLang nutzt bereits die
+tatsächliche portierte Registry. `ClientUserinfoChanged` bleibt auch hier eine
+beobachtete Host-Schnittstelle.

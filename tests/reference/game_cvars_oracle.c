@@ -73,7 +73,7 @@ static void snapshot(void){
         emit(g_warmup.integer);emit(g_warmup.modificationCount);emit(g_doWarmup.integer);emit(g_password.modificationCount);
         fwrite(&g_speed.value,4,1,result);fwrite(&g_gravity.value,4,1,result);fwrite(&g_gravity.value,4,1,result);fwrite(&g_knockback.value,4,1,result);
         emit(g_weaponRespawn.integer);emit(g_weaponTeamRespawn.integer);emit(g_forcerespawn.integer);emit(g_inactivity.integer);emit(g_blood.integer);
-        emit(g_listEntity.integer);emit(g_smoothClients.integer!=0);emit(pmove_fixed.integer!=0);emit(pmove_msec.integer);
+        emit(g_listEntity.integer);emit(g_smoothClients.integer!=0);emit(pmove_fixed.integer!=0);emit(pmove_msec.integer);emit(g_allowVote.integer);
         emitText(g_motd.string);emitText(g_password.string);
     }
 }

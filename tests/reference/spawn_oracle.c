@@ -5,7 +5,7 @@
 void CM_LoadMap(const char*,qboolean,int*);cvar_t *Cvar_Get(const char*,const char*,int);
 #include "snapvector.inc"
 gentity_t g_entities[MAX_GENTITIES];gclient_t g_clients[MAX_CLIENTS];level_locals_t level;
-vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_warmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit,g_weaponRespawn,g_weaponTeamRespawn,g_inactivity,g_smoothClients,g_dmflags,g_speed,g_forcerespawn,g_debugMove,g_synchronousClients,g_listEntity,g_password,pmove_fixed,pmove_msec;
+vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_warmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit,g_weaponRespawn,g_weaponTeamRespawn,g_inactivity,g_smoothClients,g_dmflags,g_speed,g_forcerespawn,g_debugMove,g_synchronousClients,g_listEntity,g_password,g_allowVote,pmove_fixed,pmove_msec;
 void hostServerReset(void*,int,int);void hostLink(void*);void hostUnlink(void*);void hostBrush(void*,const char*);void hostMetadata(int,int*);
 int hostContact(const vec3_t,const vec3_t,void*,int);int hostArea(const vec3_t,const vec3_t,int*,int);
 void hostTrace(trace_t*,const vec3_t,const vec3_t,const vec3_t,const vec3_t,int,int);
@@ -22,6 +22,15 @@ static int frameRunOutput;
 static int tournamentOutput;
 static int tournamentPromote;
 static int voteOutput;
+static int voteCommandsOutput;
+static void voteCommandState(void);
+static int cmd_argc;
+static char *cmd_argv[MAX_STRING_TOKENS];
+static char voteArgvStorage[64][8192],voteNextmap[8192];
+#include "vote_argv.inc"
+int trap_Argc(void){return Cmd_Argc();}
+void trap_Argv(int arg,char *buffer,int size){Cmd_ArgvBuffer(arg,buffer,size);}
+void trap_Cvar_VariableStringBuffer(const char *name,char *buffer,int size){if(!voteCommandsOutput || strcmp(name,"nextmap"))G_Error("unexpected vote Cvar query");Q_strncpyz(buffer,voteNextmap,size);}
 static int teamStatusOutput;
 static int clientThinkGauntletHit;
 static char clientSpawnUserinfo[MAX_INFO_STRING];
@@ -39,7 +48,7 @@ void AimAtTarget(gentity_t*);void trigger_push_touch(gentity_t*,gentity_t*,trace
 static void word(int x) {fwrite(&x,4,1,output);}
 static void words(const void *p,int n) {fwrite(p,4,n,output);}
 static void string(const char *s) {int n=s?(int)strlen(s):-1;word(n);if(n>0)fwrite(s,1,n,output);}
-static void voteBoundary(int kind,int arg){word(150);word(kind);word(arg);word(level.voteTime);word(level.voteExecuteTime);word(level.teamVoteTime[0]);word(level.teamVoteTime[1]);}
+static void voteBoundary(int kind,int arg){if(voteCommandsOutput)voteCommandState();word(150);word(kind);word(arg);word(level.voteTime);word(level.voteExecuteTime);word(level.teamVoteTime[0]);word(level.teamVoteTime[1]);}
 static void snapshot(gentity_t *e) {
     int m[21];word((int)(e-g_entities));words(&e->s,52);word(e->inuse);word(e->freetime);word(e->neverFree);word(e->eventTime);word(e->freeAfterEvent);word(e->spawnflags);
     words(e->r.mins,3);words(e->r.maxs,3);words(e->r.currentOrigin,3);words(e->r.currentAngles,3);words(e->r.absmin,3);words(e->r.absmax,3);
@@ -56,7 +65,7 @@ void trap_UnlinkEntity(gentity_t *e) {hostUnlink(e);if(clientSpawnOutput){word(6
 void trap_SetBrushModel(gentity_t *e,const char *name) {hostBrush(e,name);}
 void trap_LocateGameData(gentity_t *e,int count,int size,playerState_t *ps,int clientSize) {if(clientFrameOutput){word(80);word(0);word(count);}else if(clientThinkOutput){word(90);word(0);word(count);}else{word(7);word(count);}}
 void trap_GetConfigstring(int index,char *buffer,int size) {Q_strncpyz(buffer,configs[index],size);}
-void trap_SetConfigstring(int index,const char *value) {if(index<0 || index>=MAX_CONFIGSTRINGS)G_Error("configstring index out of range");Q_strncpyz(configs[index],value?value:"",sizeof(configs[index]));word(1);word(index);string("");string(value);}
+void trap_SetConfigstring(int index,const char *value) {if(index<0 || index>=MAX_CONFIGSTRINGS)G_Error("configstring index out of range");Q_strncpyz(configs[index],value?value:"",sizeof(configs[index]));if(voteCommandsOutput)voteCommandState();word(1);word(index);string("");string(value);}
 void trap_Cvar_Set(const char *key,const char *value) {if(teamStatusOutput){word(172);word(level.lastTeamLocationTime);word(g_password.modificationCount);string(key);string(value);}else if(tournamentOutput){word(130);word(3);string(key);string(value);}else if(frameRunOutput){word(110);word(7);string(key);string(value);}else if(clientThinkOutput){word(90);word(10);string(key);string(value);}else{word(2);word(0);string(key);string(value);}if(!strcmp(key,"g_gravity"))Q_strncpyz(gravityText,value,sizeof(gravityText));}
 qboolean trap_GetEntityToken(char *buffer,int size) {const char *s=COM_Parse(&entityPoint);Q_strncpyz(buffer,s,size);return entityPoint || *s;}
 int trap_EntitiesInBox(const vec3_t mins,const vec3_t maxs,int *list,int count) {return hostArea(mins,maxs,list,count);}
@@ -128,6 +137,7 @@ void G_UpdateCvars(void){frameWord(0,0);}
 #include "frame_actions.inc"
 #include "tournament_actions.inc"
 #include "vote_actions.inc"
+#include "vote_command_actions.inc"
 #include "team_status_actions.inc"
 static char *readString(FILE *in) {int n;char *s;if(fread(&n,4,1,in)!=1)return NULL;if(n<0 || n>10000000)exit(74);s=calloc(1,n+1);if(n && fread(s,1,n,in)!=n)exit(74);return s;}
 static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);word(level.locationLinked);word(slotOf(level.locationHead));for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
@@ -173,6 +183,8 @@ int main(int argc,char **argv) {
         reset(0,0);tournamentOutput=1;runTournament(in);
     } else if(argc==6 && !strcmp(argv[5],"--votes")) {
         reset(0,0);voteOutput=1;runVotes(in);
+    } else if(argc==6 && !strcmp(argv[5],"--vote-commands")) {
+        reset(0,0);voteOutput=voteCommandsOutput=1;runVoteCommands(in);
     } else if(argc==6 && !strcmp(argv[5],"--team-status")) {
         reset(0,0);teamStatusOutput=1;runTeamStatus(in);
     } else if(argc==6 && !strcmp(argv[5],"--values")) {

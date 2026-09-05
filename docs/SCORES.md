@@ -157,5 +157,7 @@ werden Division durch null, `INT_MIN / -1` und ungültige Client-Indizes nicht
 als definierte C-Parität ausgegeben.
 
 Spieler-Tod, Team-Fragboni, Drop-Entscheidungen und der Respawn-Wrapper rufen diese
-Bausteine inzwischen auf. `BeginIntermission`, `ExitLevel`, Netzwerkzustellung, Scoreboard-Grafik,
-Votes und die vollständige Server-Frame-Steuerung sind weiterhin offen.
+Bausteine inzwischen auf. [Vote-Aufrufe, Stimmabgabe und Auflösung](VOTES.md)
+sowie die [G_RunFrame-Steuerung](FULL_FRAME.md) sind separat geprüft.
+`BeginIntermission`, `ExitLevel`, Netzwerkzustellung, Scoreboard-Grafik und die
+vollständige Serverintegration sind weiterhin offen.

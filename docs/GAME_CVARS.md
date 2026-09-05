@@ -61,6 +61,12 @@ zuständig. Servermeldungen benötigen weiterhin `level.serverCommandFn`;
 Transport und Clientanzeige sind noch nicht portiert. Der optionale
 `state.effectFn` beobachtet Registry-Aufrufe und Diagnosemeldungen.
 
+Auch `g_allowVote` wird inzwischen in das Gameplay-Feld `level.allowVote`
+übernommen und in jedem registrierten Cvar-Snapshot gegen C verglichen. Die
+[Vote-Befehle](VOTES.md) nutzen diesen VM-Stand; ein direktes Setzen der
+Engine-Cvar wird erst beim Refresh sichtbar. `nextmap` lesen sie dagegen beim
+Aufruf direkt aus derselben Engine-Registry mit der ursprünglichen Bytegrenze.
+
 Bei einem Level-Reset innerhalb desselben Moduls übernimmt
 `cvars.rebind(newLevel, state)` die Registry, VM-Kopien, Tabellenzähler und den
 Passwort-Cache. Ein neues Modul erhält einen neuen Zustand. Vollständige
@@ -70,8 +76,8 @@ weiterhin offene Portschritte.
 ## Nachweis
 
 `scripts/test_game_cvars.py` besteht mit **89 Szenarien**, **1.054 Aktionen**,
-**928.580 exakt gleichen 32-Bit-Wörtern**, **19.562 geordneten Nebenwirkungen**
-und **4.055.397 Ausgabe-Bytes**. Der Referenzhost verwendet das vollständige
+**929.595 exakt gleichen 32-Bit-Wörtern**, **19.562 geordneten Nebenwirkungen**
+und **4.059.457 Ausgabe-Bytes**. Der Referenzhost verwendet das vollständige
 originale `qcommon/cvar.c`, die unveränderte Baseq3-Tabelle und die unveränderten
 Spiel-Funktionskörper. Die Build-Datumseingabe wird vor dem Lauf aus dem
 nativen Compiler-Build gelesen und als Fixture-Metadatum gespeichert; aktuelles
@@ -100,8 +106,8 @@ MiniLang-Fehler bleibt die letzte gültige VM-Kopie erhalten; der originale
 Engine-Abbruch mit teilweise geschriebenem Fehlerzustand wird nicht nachgebildet.
 Eingebettete NUL-Zeichen werden kontrolliert abgewiesen.
 
-Test-Binary: `42d5dabedaf97614898d9dd61a6870420a3079ec3bba8f0d5203764edf9d9eff`.
-Native x86-Oracle: `4bd430746b1d1ac73a7923136da374cdaa8039f6a2f99b0dbe58c7f4a70a2f32`.
+Test-Binary: `d1945e8634fa3deec93c4d34062bd6e1a4cabaab29cbd9a1ac445dee46e2d3a7`.
+Native x86-Oracle: `7686df254f37a2e42d3e47a60e92f253d20e58faf863e56b4a015c615920619e`.
 
 ```powershell
 python scripts/generate_game_cvars.py

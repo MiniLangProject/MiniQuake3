@@ -4,9 +4,9 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die aktuelle reguläre Regression besteht aus **31 bestandenen Prüfbereichen**
+Die aktuelle reguläre Regression besteht aus **32 bestandenen Prüfbereichen**
 (`verify.py --data-root D:/Quake3`), einschließlich Engine-/Spielmodul-Cvars, Teamstandorten/-overlay,
-Passwortstatus, Vote-/Teamleiterregeln,
+Passwortstatus, Vote-Aufrufen/Stimmabgabe und Vote-/Teamleiterregeln,
 Spawnpunkten, Leichen, Punkten, Spieler-Tod, Items/Flaggen, vollständigen
 Client-Lebenszyklen, `CheckTournament`, `G_RunFrame` und CLI-Laufzeitvergleichen.
 Alle 31 CD-Karten werden geladen; Schadens-, Projektil- und Leichenfälle laufen
@@ -15,7 +15,8 @@ ebenfalls auf den CD-Karten.
 Die letzte erweiterte Vollprüfung mit beiden Kollisions-/Bewegungsprofilen
 bestand **43 Prüfbereiche am Stand `f8cdf9a`**, vor den Vote-, Teamstatus- und Spiel-Cvar-Ports. Deren Bericht
 ist in der Git-Version dieses Stands archiviert. Die erweiterte Suite enthält
-nun 46 Gates; für den aktuellen Spiel-Cvar-Stand wurde die reguläre Suite ausgeführt.
+nun 47 Gates; für den aktuellen Vote-Befehlsstand wurde die reguläre Suite ausgeführt.
+Der Lauf ist in `build/verify-vote-commands.log` protokolliert.
 Der finale MiniQuake3-Build hat SHA-256
 `3a8c6f394b337404511f826e34404d0fd5f9c3011af6b7a4b2a96cc5321d99fb`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
@@ -27,7 +28,7 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, Engine-/VM-Cvar-Registrierung/-Aktualisierung und Spielmodul-Tabelle, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, Cvar-Neustart/Config-Persistenz, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung, Sprungpad-/Teleport-Replays, ClientBegin und G_RunFrame-Einbindung geprüft; komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, vollständiger Client-Lebenszyklus, Leichen, Items, Punkte, Ränge, Matchende, Tournament/Warmup, Vote-Auflösung, Teamleiterwahl, Teamstandorte/-overlay, Passwortstatus, Engine-Cvar-Refresh und CTF vorhanden; weitere Klassen, Mover-Pushing, vollständige Modulinitialisierung und Vote-Startbefehle fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, vollständiger Client-Lebenszyklus, Leichen, Items, Punkte, Ränge, Matchende, Tournament/Warmup, Vote-Aufrufe/Stimmabgabe/Auflösung, Teamleiterwahl, Teamstandorte/-overlay, Passwortstatus, Engine-Cvar-Refresh und CTF vorhanden; weitere Klassen, Mover-Pushing, vollständige Modulinitialisierung und Client-Befehlsverteilung fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -406,8 +407,9 @@ Entities und die Auswahl der weiteren Handler. In diesem Target-Test bleiben die
 Missile-, Item-, Mover- und Client-Handler aufgezeichnete Aufrufgrenzen. Die
 gesonderten Projektil- und Item-Prüfungen führen ihre jeweiligen Zweige mit der
 echten portierten Verarbeitung aus. Dies ist
-**keine vollständige G_RunFrame-Abnahme**: Cvar-/Zeitverwaltung, die Einbindung von ClientEndFrame,
-die Frame-Einbindung der Matchende-Regeln, Votes und vollständige Serverintegration fehlen.
+**keine vollständige G_RunFrame-Abnahme**: Cvar-/Zeitverwaltung, ClientEndFrame,
+Matchende und Votes werden inzwischen durch die getrennten Frame-/Gameplay-Suiten
+geprüft. Die vollständige Serverintegration bleibt offen.
 Schnittstellen und genaue Grenzen: [TARGETS_AND_EVENTS.md](TARGETS_AND_EVENTS.md).
 
 ## Schadensberechnung und Karten-Gefahren
@@ -654,8 +656,23 @@ originalen Suchschleifen der automatischen Leiterwahl. Die Tests vergleichen
 Vote-Zeiten an Host-Aufrufen und sämtliche Vote-/Team-/Leiterdaten nach jeder
 Aktion. Echte Framefolgen prüfen die Einbindung in `G_RunFrame`.
 
-Die Befehle zum Starten/Befüllen einer Abstimmung, `ClientUserinfoChanged` und
-die Netzwerk-/Engine-Zustellung bleiben offen. Details: [VOTES.md](VOTES.md).
+`scripts/test_vote_commands.py` ergänzt **337 Szenarien**, **428 Aktionen**,
+**967.073 exakt gleiche 32-Bit-Wörter** und **1.149 geordnete Nebenwirkungen**.
+Weitere **19 Laufzeitverträge** prüfen Pflichtschnittstellen, Speichergrenzen und
+die Integration mit registrierten Engine-/VM-Cvars.
+
+Die vier ursprünglichen globalen/Team-Befehlshandler werden einschließlich
+Argumentkopien, Berechtigungsreihenfolge, Maprotation, Namenssuche, Anzeigen,
+Zählern und Flags verglichen. Jeder Host-Aufruf und jede Aktion prüft den
+Vote-Zustand, alle 64 Clients und sämtliche zwölf Vote-Configstrings.
+Aufruf, Stimmabgabe, Auflösung und fällige Befehlsausführung laufen gemeinsam.
+Die originalen Besonderheiten bei `msg[1]`, nicht erhöhten Aufrufzählern und
+vorzeitig ausgeführten Alt-Votes bleiben erhalten. Das mögliche Überlaufen
+von `strcat` bei Teamargumenten wird kontrolliert abgewiesen.
+
+Vollständiger `ClientCommand`-Dispatcher samt Intermission-Verhalten,
+Kommando-Tokenisierung, `ClientUserinfoChanged` und Netzwerk-/Engine-Zustellung
+bleiben offen. Details: [VOTES.md](VOTES.md).
 
 ## Teamstandorte, Overlay und Passwortstatus (Schritt 6)
 
@@ -678,7 +695,7 @@ Details und Zustandslebensdauer: [TEAM_STATUS.md](TEAM_STATUS.md).
 ## Engine- und Spiel-Cvars (Schritte 3 und 6)
 
 `scripts/test_game_cvars.py` besteht mit **89 Szenarien**, **1.054 Aktionen**,
-**928.580 exakt gleichen 32-Bit-Wörtern**, **4.055.397 Ausgabe-Bytes** und
+**929.595 exakt gleichen 32-Bit-Wörtern**, **4.059.457 Ausgabe-Bytes** und
 **19.562 geordneten Nebenwirkungen**. 13 Laufzeitverträge und vier native
 Fehlerfälle prüfen zusätzlich ungültige Handles, Speichergrenzen und
 Modulinitialisierung.
@@ -800,6 +817,9 @@ python scripts/test_scores.py
 python scripts/test_deaths.py
 python scripts/test_items.py
 python scripts/test_votes.py
+python scripts/test_vote_commands.py
+python scripts/test_team_status.py
+python scripts/test_game_cvars.py
 python scripts/test_full_frame.py
 python scripts/test_spawn.py D:/Quake3
 ```

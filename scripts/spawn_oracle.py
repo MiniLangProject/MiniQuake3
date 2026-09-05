@@ -21,7 +21,7 @@ FUNCTIONS={
     'g_missile.c':['G_BounceMissile','G_ExplodeMissile','G_MissileImpact','G_RunMissile','fire_plasma','fire_grenade','fire_bfg','fire_rocket','fire_grapple'],
     'g_items.c':['Pickup_Powerup','Pickup_Holdable','Add_Ammo','Pickup_Ammo','Pickup_Weapon','Pickup_Health','Pickup_Armor','RespawnItem','Touch_Item','RegisterItem','LaunchItem','Drop_Item','Use_Item','FinishSpawningItem','G_ItemDisabled','G_SpawnItem','G_BounceItem','G_RunItem'],
     'g_active.c':['P_DamageFeedback','P_WorldEffects','G_SetClientSound','ClientImpacts','G_TouchTriggers','SpectatorThink','ClientInactivityTimer','ClientTimerActions','ClientIntermissionThink','ClientEvents','SendPendingPredictableEvents','ClientThink_real','ClientThink','G_RunClient','SpectatorClientEndFrame','ClientEndFrame'],
-    'g_cmds.c':['DeathmatchScoreboardMessage','Cmd_Score_f'],
+    'g_cmds.c':['DeathmatchScoreboardMessage','Cmd_Score_f','Cmd_CallVote_f','Cmd_Vote_f','Cmd_CallTeamVote_f','Cmd_TeamVote_f'],
 }
 def build(output):
     output.mkdir(parents=True,exist_ok=True);source=ROOT/'Quake-III-Arena-original-source/code'
@@ -69,9 +69,15 @@ def build(output):
                 if not match:raise RuntimeError('Missing original game function '+symbol)
                 functions.append(match[0])
             body.append('#define G_RunItem Original_RunItem\n'+'\n'.join(functions)+'\n#undef G_RunItem')
+        elif name=='g_cmds.c':
+            match=re.search(r'static const char \*gameNames\[\] = \{.*?\};',path.read_text(),re.S)
+            if not match:raise RuntimeError('Missing original vote gameNames')
+            body.append(match[0]+'\n'+extract(path,names))
         elif name=='g_missile.c':body.append('#define G_RunMissile Original_RunMissile\n'+extract(path,names)+'\n#undef G_RunMissile')
         else:body.append(extract(path,names))
     (output/'spawn_functions.inc').write_text('\n'.join(body))
+    (output/'vote_argv.inc').write_text(extract(source/'qcommon/cmd.c',['Cmd_Argc','Cmd_Argv','Cmd_ArgvBuffer']))
+    selected.append(source/'qcommon/cmd.c')
     # This is the verbatim allocated-entity loop, not a rewritten test model.
     frame=extract(source/'game/g_main.c',['G_RunFrame'])
     loop=frame[frame.index('\tent = &g_entities[0];'):frame.index('end = trap_Milliseconds();')]

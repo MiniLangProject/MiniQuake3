@@ -6,7 +6,7 @@ Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter, BSP-/Kurvenkollision,
 transformierten Modellen, temporären Boxen, PVS-/Areaportal-Verwaltung,
 dynamischer Entity-Kollision, Bewegungsbahnen, Sprungpad-Reaktionen und
 dem vollständigen baseq3-Pmove-Befehlszyklus, serverseitigen Item-Pickups,
-CTF-Flaggenabläufen, Tournament-/Warmup-Steuerung, Vote-Auflösung, Teamoverlay,
+CTF-Flaggenabläufen, Tournament-/Warmup-Steuerung, Vote-Aufrufen/Stimmabgabe/Auflösung, Teamoverlay,
 Passwortstatus, Engine-/Spielmodul-Cvar-Aktualisierung, `ClientBegin`, `ClientSpawn`,
 `ClientThink` und `ClientEndFrame` ist
 vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
@@ -81,6 +81,9 @@ python scripts/test_client_frame.py
 python scripts/test_client_think.py
 python scripts/test_tournament.py
 python scripts/test_votes.py
+python scripts/test_vote_commands.py
+python scripts/test_team_status.py
+python scripts/test_game_cvars.py
 python scripts/test_full_frame.py
 python scripts/test_spawn.py D:/Quake3
 ```

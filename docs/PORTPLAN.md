@@ -182,11 +182,12 @@ Unlink/Reinitialisierung, den echten Spawn, Eintrittsereignis, Log und
 Rangberechnung; Tournament-, Zuschauer- und Intermissionzweige sind gegen den
 unveränderten C-Ablauf geprüft. [`CheckTournament` und `TeamCount`](TOURNAMENT.md)
 steuern inzwischen Promotion, Bereitschaft, Warmup-Countdown und Maprestart an
-der ursprünglichen Stelle im Frame. [Vote-Auflösung und Teamleiterwahl](VOTES.md)
-sind ebenfalls portiert und mit echten Frame-Folgen geprüft.
+der ursprünglichen Stelle im Frame. [Vote-Aufrufe, Stimmabgabe, Auflösung und
+Teamleiterwahl](VOTES.md) sind ebenfalls portiert. Vollständige Aufruf-/Stimm-/
+Ergebnisfolgen und die Einbindung der Auflösung in echte Frames sind geprüft.
 [Teamstandorte, Overlay und Passwortstatus](TEAM_STATUS.md) laufen inzwischen
 an den ursprünglichen Frame-Positionen. Als Nächstes folgen die übrigen
-Spielobjekte, Vote-Startbefehle, weitere Waffentreffer und
+Spielobjekte, vollständige Client-Befehlsverteilung, weitere Waffentreffer und
 Mover-Pushing. Der vollständige Server bleibt bis zu dieser Integration offen.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
@@ -209,7 +210,9 @@ ihn mit Entity-Schleife, Matchende und den geordneten Wartungsstufen zusammen.
 Tournament/Warmup, globale/Team-Vote-Auflösung, Teamstatus und `CheckCvars`
 sind portiert. [Cvar-Registrierung und Engine-/VM-Kopien](GAME_CVARS.md)
 versorgen den Frame inzwischen über die vollständige Baseq3-Cvar-Tabelle.
-Modulinitialisierung, Vote-Startbefehle und Netzwerkzustellung sind die nächsten Grenzen.
+Die vier Vote-Befehlshandler nutzen die registrierte `g_allowVote`-Kopie und
+die tatsächliche `nextmap`-Cvar. Modulinitialisierung, vollständige Client-Befehlsverteilung
+und Netzwerkzustellung sind die nächsten Grenzen.
 Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.

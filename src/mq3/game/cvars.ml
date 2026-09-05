@@ -97,6 +97,9 @@ function syncValue(level,row)
     case "g_password"
       level.cvarMaintenance.password = v.string; level.cvarMaintenance.passwordModificationCount = v.modificationCount
     end case
+    case "g_allowVote"
+      level.allowVote = v.integer
+    end case
     case "g_speed"
       level.playerSpeed = v.value
     end case

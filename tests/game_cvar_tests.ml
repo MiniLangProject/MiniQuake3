@@ -102,7 +102,7 @@ function cvarSnapshot(level,probe,probeName)
     words(check,[level.spawner.gametype,level.spawner.restarted,level.maxclientsCvar,level.dmflags,level.fraglimit,level.timelimit,level.capturelimit])
     boolWord(check,level.synchronousClients); words(check,[level.friendlyFire,level.warmup,level.warmupCvarModificationCount,level.spawner.doWarmup,level.cvarMaintenance.passwordModificationCount])
     words(check,[n.floatBits(level.playerSpeed),n.floatBits(level.gravity),n.floatBits(level.spawner.gravity),n.floatBits(level.knockback),level.weaponRespawn,level.weaponTeamRespawn,level.forceRespawn,level.inactivity,level.blood,level.listEntity])
-    boolWord(check,level.smoothClients); boolWord(check,level.pmoveFixed); word(check,level.pmoveMsec)
+    boolWord(check,level.smoothClients); boolWord(check,level.pmoveFixed); word(check,level.pmoveMsec); word(check,level.allowVote)
     textWord(check,level.spawner.motd); textWord(check,level.cvarMaintenance.password)
   end if
   return void

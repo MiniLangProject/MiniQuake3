@@ -22,6 +22,8 @@ prüfen Pflichtgrenzen, Clientlimit und den Restart-Frühabbruch.
 Der separate [Vote-Vergleich](VOTES.md) ergänzt aktive globale und Team-Votes
 innerhalb echter Frames, einschließlich Teamleiterwechsel, verzögerter
 Befehlsausführung und mehrerer gleichzeitig auslaufender Abstimmungen.
+`test_vote_commands.py` ergänzt außerhalb der Frame-Schleife die vollständigen
+Aufruf-/Stimm-/Ergebnisfolgen über die vier portierten Client-Befehlshandler.
 Der [Teamstatus-Vergleich](TEAM_STATUS.md) ergänzt aktive Standort-/Overlay-
 und Passwortfolgen in echten Frames. Die früheren Teamstatus-/CheckCvars-
 Testmarker sind durch die tatsächlichen Funktionen und ihre Ausgaben ersetzt.
@@ -31,8 +33,8 @@ Der [Engine-/Spiel-Cvar-Vergleich](GAME_CVARS.md) prüft zusätzlich den
 standardmäßigen Registry-Pfad innerhalb des unveränderten Frames mit
 ausschließlich inaktiven Entities, einschließlich Passwort und Entity-Listen-Reset.
 
-Test-Binary: `5a25faae934b1d6eb1ffc768d513f412385326e96584abf5a1d9da2fb94aa2e0`.
-Native x86-Oracle: `81051414985a5ee1c7acb8e74363e3d3f5e3c19cdd922e95cc9b649fd2fd5a32`.
+Test-Binary: `f8760f73e30e821c80b1565395a5484641662a89538594b47080fe9fb9ee650b`.
+Native x86-Oracle: `5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae`.
 
 Ausführen:
 

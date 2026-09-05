@@ -6441,15 +6441,57 @@
           ],
           "status": "tested_subset",
           "scope": "Exact scoreboard command payload and recipient; transport callback observed. No network transmission or client display."
+        },
+        {
+          "original": "gameNames",
+          "target_files": [
+            "src/mq3/game/vote_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Command tokenization/full ClientCommand dispatch, UserinfoChanged and engine/network command delivery remain boundaries."
+        },
+        {
+          "original": "Cmd_CallVote_f",
+          "target_files": [
+            "src/mq3/game/vote_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Command tokenization/full ClientCommand dispatch, UserinfoChanged and engine/network command delivery remain boundaries."
+        },
+        {
+          "original": "Cmd_Vote_f",
+          "target_files": [
+            "src/mq3/game/vote_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Command tokenization/full ClientCommand dispatch, UserinfoChanged and engine/network command delivery remain boundaries."
+        },
+        {
+          "original": "Cmd_CallTeamVote_f",
+          "target_files": [
+            "src/mq3/game/vote_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Command tokenization/full ClientCommand dispatch, UserinfoChanged and engine/network command delivery remain boundaries."
+        },
+        {
+          "original": "Cmd_TeamVote_f",
+          "target_files": [
+            "src/mq3/game/vote_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Command tokenization/full ClientCommand dispatch, UserinfoChanged and engine/network command delivery remain boundaries."
         }
       ],
       "target": [
-        "src/mq3/game/scores.ml"
+        "src/mq3/game/scores.ml",
+        "src/mq3/game/vote_commands.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_scores.py",
-        "scripts/test_deaths.py"
+        "scripts/test_deaths.py",
+        "scripts/test_vote_commands.py"
       ]
     },
     {
@@ -6876,7 +6918,8 @@
             "src/mq3/game/votes.ml",
             "src/mq3/game/team_status.ml",
             "src/mq3/game/cvar_maintenance.ml",
-            "src/mq3/game/cvars.ml"
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/vote_commands.ml"
           ],
           "status": "tested_subset"
         },
@@ -6900,7 +6943,8 @@
             "src/mq3/game/votes.ml",
             "src/mq3/game/team_status.ml",
             "src/mq3/game/cvar_maintenance.ml",
-            "src/mq3/game/cvars.ml"
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/vote_commands.ml"
           ],
           "status": "tested_subset"
         },
@@ -6924,7 +6968,8 @@
             "src/mq3/game/votes.ml",
             "src/mq3/game/team_status.ml",
             "src/mq3/game/cvar_maintenance.ml",
-            "src/mq3/game/cvars.ml"
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/vote_commands.ml"
           ],
           "status": "tested_subset"
         },
@@ -6948,7 +6993,8 @@
             "src/mq3/game/votes.ml",
             "src/mq3/game/team_status.ml",
             "src/mq3/game/cvar_maintenance.ml",
-            "src/mq3/game/cvars.ml"
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/vote_commands.ml"
           ],
           "status": "tested_subset"
         }
@@ -6971,7 +7017,8 @@
         "src/mq3/game/votes.ml",
         "src/mq3/game/team_status.ml",
         "src/mq3/game/cvar_maintenance.ml",
-        "src/mq3/game/cvars.ml"
+        "src/mq3/game/cvars.ml",
+        "src/mq3/game/vote_commands.ml"
       ],
       "status": "partial",
       "tests": [
@@ -6992,7 +7039,8 @@
         "scripts/test_items.py",
         "scripts/test_votes.py",
         "scripts/test_team_status.py",
-        "scripts/test_game_cvars.py"
+        "scripts/test_game_cvars.py",
+        "scripts/test_vote_commands.py"
       ]
     },
     {
@@ -7260,7 +7308,7 @@
             "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; vote initiation and network transport are open."
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; complete command routing and network transport are open."
         },
         {
           "original": "CheckTeamVote",
@@ -7268,7 +7316,7 @@
             "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; vote initiation and network transport are open."
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; complete command routing and network transport are open."
         },
         {
           "original": "PrintTeam",
@@ -7276,7 +7324,7 @@
             "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; vote initiation and network transport are open."
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; complete command routing and network transport are open."
         },
         {
           "original": "SetLeader",
@@ -7284,7 +7332,7 @@
             "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; vote initiation and network transport are open."
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; complete command routing and network transport are open."
         },
         {
           "original": "CheckTeamLeader",
@@ -7292,7 +7340,7 @@
             "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; vote initiation and network transport are open."
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; complete command routing and network transport are open."
         },
         {
           "original": "CheckCvars",
@@ -7367,7 +7415,8 @@
         "scripts/test_items.py",
         "scripts/test_votes.py",
         "scripts/test_team_status.py",
-        "scripts/test_game_cvars.py"
+        "scripts/test_game_cvars.py",
+        "scripts/test_vote_commands.py"
       ]
     },
     {
