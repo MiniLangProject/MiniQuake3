@@ -21,6 +21,7 @@ static int clientThinkOutput;
 static int frameRunOutput;
 static int tournamentOutput;
 static int tournamentPromote;
+static int voteOutput;
 static int clientThinkGauntletHit;
 static char clientSpawnUserinfo[MAX_INFO_STRING];
 static usercmd_t clientSpawnCmd;
@@ -37,6 +38,7 @@ void AimAtTarget(gentity_t*);void trigger_push_touch(gentity_t*,gentity_t*,trace
 static void word(int x) {fwrite(&x,4,1,output);}
 static void words(const void *p,int n) {fwrite(p,4,n,output);}
 static void string(const char *s) {int n=s?(int)strlen(s):-1;word(n);if(n>0)fwrite(s,1,n,output);}
+static void voteBoundary(int kind,int arg){word(150);word(kind);word(arg);word(level.voteTime);word(level.voteExecuteTime);word(level.teamVoteTime[0]);word(level.teamVoteTime[1]);}
 static void snapshot(gentity_t *e) {
     int m[21];word((int)(e-g_entities));words(&e->s,52);word(e->inuse);word(e->freetime);word(e->neverFree);word(e->eventTime);word(e->freeAfterEvent);word(e->spawnflags);
     words(e->r.mins,3);words(e->r.maxs,3);words(e->r.currentOrigin,3);words(e->r.currentAngles,3);words(e->r.absmin,3);words(e->r.absmax,3);
@@ -76,7 +78,7 @@ void QDECL G_LogPrintf(const char *fmt,...) {
     else if(scoreOutput || itemOutput){char buffer[2048];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);word(41);string(buffer);}
     else{word(3);word(0);string("");string(fmt);}
 }
-void trap_SendServerCommand(int client,const char *message){if(clientSpawnOutput){word(60);word(9);word(client);string(message);return;}if(clientThinkOutput){word(90);word(4);word(client);string(message);return;}if(!scoreOutput)G_Error("unported server command sink");word(42);word(client);string(message);}
+void trap_SendServerCommand(int client,const char *message){if(voteOutput || frameRunOutput){voteBoundary(1,client);string(message);return;}if(clientSpawnOutput){word(60);word(9);word(client);string(message);return;}if(clientThinkOutput){word(90);word(4);word(client);string(message);return;}if(!scoreOutput)G_Error("unported server command sink");word(42);word(client);string(message);}
 void trap_DropClient(int client,const char *reason){if(!clientThinkOutput)G_Error("unported client drop sink");word(90);word(5);word(client);string(reason);}
 qboolean trap_InPVS(const vec3_t p1,const vec3_t p2){return SV_inPVS(p1,p2);}
 void QDECL G_Error(const char *fmt,...) {va_list args;va_start(args,fmt);vfprintf(stderr,fmt,args);va_end(args);exit(72);}
@@ -102,14 +104,13 @@ void ClientSpawn(gentity_t *ent) {
     int slot=(int)(ent-g_entities);if(!deathOutput)G_Error("unported ClientSpawn");word(50);word(slot);
     VectorSet(ent->client->ps.origin,111,222,333);ent->s.clientNum=slot+10;
 }
-void trap_SendConsoleCommand(int exec_when,const char *text){if(!tournamentOutput)G_Error("unexpected console command");word(130);word(4);word(exec_when);string(text);}
+void trap_SendConsoleCommand(int exec_when,const char *text){if(voteOutput || frameRunOutput){voteBoundary(2,exec_when);string(text);return;}if(!tournamentOutput)G_Error("unexpected console command");word(130);word(4);word(exec_when);string(text);}
+void ClientUserinfoChanged(int client){if(!voteOutput && !frameRunOutput)G_Error("unexpected ClientUserinfoChanged");voteBoundary(3,client);word(g_clients[client].sess.teamLeader);}
 void AddTournamentPlayer(void){if(!tournamentOutput)G_Error("unexpected tournament promotion");word(130);word(1);word(level.numPlayingClients);if(tournamentPromote)level.numPlayingClients=2;}
 static void frameWord(int kind,int arg){if(!frameRunOutput)G_Error("unexpected frame boundary");word(110);word(kind);word(arg);}
 int trap_Milliseconds(void){return 0;}
 void G_UpdateCvars(void){frameWord(0,0);}
 void CheckTeamStatus(void){frameWord(2,0);}
-void CheckVote(void){frameWord(3,0);}
-void CheckTeamVote(int team){frameWord(4,team);}
 void CheckCvars(void){frameWord(5,0);}
 #include "spawn_boundaries.inc"
 #include "spawn_functions.inc"
@@ -127,6 +128,7 @@ void CheckCvars(void){frameWord(5,0);}
 #include "client_think_actions.inc"
 #include "frame_actions.inc"
 #include "tournament_actions.inc"
+#include "vote_actions.inc"
 static char *readString(FILE *in) {int n;char *s;if(fread(&n,4,1,in)!=1)return NULL;if(n<0 || n>10000000)exit(74);s=calloc(1,n+1);if(n && fread(s,1,n,in)!=n)exit(74);return s;}
 static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);word(level.locationLinked);word(slotOf(level.locationHead));for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
 static void reset(int type,int flags) {
@@ -169,6 +171,8 @@ int main(int argc,char **argv) {
         reset(0,0);frameRunOutput=1;runFullFrame(in);
     } else if(argc==6 && !strcmp(argv[5],"--tournament")) {
         reset(0,0);tournamentOutput=1;runTournament(in);
+    } else if(argc==6 && !strcmp(argv[5],"--votes")) {
+        reset(0,0);voteOutput=1;runVotes(in);
     } else if(argc==6 && !strcmp(argv[5],"--values")) {
         reset(0,0);
         while((text=readString(in))!=NULL) {

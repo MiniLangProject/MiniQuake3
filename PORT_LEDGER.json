@@ -6872,7 +6872,8 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset"
         },
@@ -6892,7 +6893,8 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset"
         },
@@ -6912,7 +6914,8 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset"
         },
@@ -6932,7 +6935,8 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/deaths.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset"
         }
@@ -6951,7 +6955,8 @@
         "src/mq3/game/scores.ml",
         "src/mq3/game/deaths.ml",
         "src/mq3/game/team_bonuses.ml",
-        "src/mq3/game/items.ml"
+        "src/mq3/game/items.ml",
+        "src/mq3/game/votes.ml"
       ],
       "status": "partial",
       "tests": [
@@ -6969,7 +6974,8 @@
         "scripts/test_bodies.py",
         "scripts/test_scores.py",
         "scripts/test_deaths.py",
-        "scripts/test_items.py"
+        "scripts/test_items.py",
+        "scripts/test_votes.py"
       ]
     },
     {
@@ -7026,7 +7032,8 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset"
         },
@@ -7041,10 +7048,11 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament and exit rules, then maintenance stages. Mover/other physics dispatch and team/vote/Cvar maintenance remain ordered callbacks."
+          "scope": "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament, exit rules and global/team vote resolution. Active vote frame sequences are compared in the vote suite. Mover/other physics dispatch and team-status/Cvar maintenance remain ordered callbacks."
         },
         {
           "original": "CheckTournament",
@@ -7057,7 +7065,8 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 tournament promotion, player/team readiness, warmup Cvar changes, countdown and map restart are compared against the unchanged native body. AddTournamentPlayer and engine command delivery remain explicit observed callbacks."
@@ -7073,7 +7082,8 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset"
         },
@@ -7088,7 +7098,8 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
@@ -7104,7 +7115,8 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
@@ -7120,7 +7132,8 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset"
         },
@@ -7135,7 +7148,8 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset"
         },
@@ -7150,7 +7164,8 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
@@ -7166,7 +7181,8 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
@@ -7182,10 +7198,51 @@
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
+        },
+        {
+          "original": "CheckVote",
+          "target_files": [
+            "src/mq3/game/votes.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; vote initiation and network transport are open."
+        },
+        {
+          "original": "CheckTeamVote",
+          "target_files": [
+            "src/mq3/game/votes.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; vote initiation and network transport are open."
+        },
+        {
+          "original": "PrintTeam",
+          "target_files": [
+            "src/mq3/game/votes.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; vote initiation and network transport are open."
+        },
+        {
+          "original": "SetLeader",
+          "target_files": [
+            "src/mq3/game/votes.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; vote initiation and network transport are open."
+        },
+        {
+          "original": "CheckTeamLeader",
+          "target_files": [
+            "src/mq3/game/votes.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; vote initiation and network transport are open."
         }
       ],
       "target": [
@@ -7197,7 +7254,8 @@
         "src/mq3/game/bodies.ml",
         "src/mq3/game/scores.ml",
         "src/mq3/game/rank_sort.ml",
-        "src/mq3/game/items.ml"
+        "src/mq3/game/items.ml",
+        "src/mq3/game/votes.ml"
       ],
       "status": "partial",
       "tests": [
@@ -7209,7 +7267,8 @@
         "scripts/test_full_frame.py",
         "scripts/test_bodies.py",
         "scripts/test_scores.py",
-        "scripts/test_items.py"
+        "scripts/test_items.py",
+        "scripts/test_votes.py"
       ]
     },
     {

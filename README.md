@@ -6,7 +6,7 @@ Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter, BSP-/Kurvenkollision,
 transformierten Modellen, temporären Boxen, PVS-/Areaportal-Verwaltung,
 dynamischer Entity-Kollision, Bewegungsbahnen, Sprungpad-Reaktionen und
 dem vollständigen baseq3-Pmove-Befehlszyklus, serverseitigen Item-Pickups,
-CTF-Flaggenabläufen, Tournament-/Warmup-Steuerung, `ClientBegin`, `ClientSpawn`,
+CTF-Flaggenabläufen, Tournament-/Warmup-Steuerung, Vote-Auflösung, `ClientBegin`, `ClientSpawn`,
 `ClientThink` und `ClientEndFrame` ist
 vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
@@ -79,6 +79,7 @@ python scripts/test_client_begin.py
 python scripts/test_client_frame.py
 python scripts/test_client_think.py
 python scripts/test_tournament.py
+python scripts/test_votes.py
 python scripts/test_full_frame.py
 python scripts/test_spawn.py D:/Quake3
 ```
@@ -120,8 +121,9 @@ eingebunden. Netzwerkübertragung und tatsächliche Kartenwechsel bleiben offen.
 durchgängigen Eintritts-, Spawn-, Think-, Frame- und Ranglistenablauf.
 [`Tournament und Warmup`](docs/TOURNAMENT.md) steuert Spielerbereitschaft,
 Countdown und Maprestart. [`G_RunFrame`](docs/FULL_FRAME.md) führt Entity- und
-Clientframes, Tournament, Matchende und die noch externen Team-/Vote-/Cvar-Stufen
-in Originalreihenfolge aus.
+Clientframes, Tournament, Matchende und [globale/Team-Abstimmungen](docs/VOTES.md)
+in Originalreihenfolge aus. Auch Teamleiterwechsel sind portiert; Teamstatus und
+Cvar-Wartung bleiben explizite Schnittstellen.
 
 Auch die Sichtbarkeitsdaten eines Kartenpunkts und Traces gegen versetzte/gedrehte
 Modelle sind direkt abfragbar:

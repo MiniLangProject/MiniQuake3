@@ -21,8 +21,8 @@ exakt und prüfen 92 geordnete Host-, Configstring- und Link-Ereignisse. Fünf
 Laufzeitverträge prüfen Slotgrenzen, fehlende Pflichtschnittstellen und die
 Standardregistrierung des Callbacks.
 
-Test-Binary: `bfe9baf503bfa60b08f8141beecd26a6dc3c2396bf88ad500641cac389524eff`.
-Native x86-Oracle: `07f35976b9312ffd0763d051da0288a92321eeb5bddc82e0c6c3aeba3e9512ba`.
+Test-Binary: `0cc5ea087d8ff228152de2b730cd45a4ca3c46d833caa27b1dce52ec32fdef48`.
+Native x86-Oracle: `cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416`.
 
 Userinfo, Usercmd, ServerCommand und Game-Log werden an geordneten Host-Grenzen
 zugestellt. Spawnwahl, Kollision, Targets, PlayerState-Konvertierung,

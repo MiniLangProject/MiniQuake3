@@ -4,12 +4,17 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die zuletzt vollständig ausgeführte erweiterte Regression besteht aus 43 bestandenen
-Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`), einschließlich
-der Spawnpunkt-/Leichenprüfung, der Punkte-/Ranglisten-/Matchende-Regeln und
-der integrierten Spieler-Todesfolge, der Item-/Flaggen-Entity-Prüfung sowie den
-vollständigen `ClientSpawn`-, `ClientThink`- und `ClientEndFrame`-Abläufen sowie
-den integrierten `G_RunFrame`- und `CheckTournament`-Vergleichen.
+Die aktuelle reguläre Regression besteht aus **29 bestandenen Prüfbereichen**
+(`verify.py --data-root D:/Quake3`), einschließlich Vote-/Teamleiterregeln,
+Spawnpunkten, Leichen, Punkten, Spieler-Tod, Items/Flaggen, vollständigen
+Client-Lebenszyklen, `CheckTournament`, `G_RunFrame` und CLI-Laufzeitvergleichen.
+Alle 31 CD-Karten werden geladen; Schadens-, Projektil- und Leichenfälle laufen
+ebenfalls auf den CD-Karten.
+
+Die letzte erweiterte Vollprüfung mit beiden Kollisions-/Bewegungsprofilen
+bestand **43 Prüfbereiche am Stand `f8cdf9a`**, vor dem Vote-Port. Deren Bericht
+ist in der Git-Version dieses Stands archiviert. Die erweiterte Suite enthält
+nun 44 Gates; für den aktuellen Vote-Stand wurde die reguläre Suite ausgeführt.
 Der finale MiniQuake3-Build hat SHA-256
 `3a8c6f394b337404511f826e34404d0fd5f9c3011af6b7a4b2a96cc5321d99fb`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
@@ -21,7 +26,7 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung, Sprungpad-/Teleport-Replays, ClientBegin und G_RunFrame-Einbindung geprüft; komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, vollständiger Client-Lebenszyklus, Leichen, Items, Punkte, Ränge, Matchende, Tournament/Warmup und CTF vorhanden; weitere Klassen, Mover-Pushing und Team-/Vote-/Cvar-Wartungsimplementierungen fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, vollständiger Client-Lebenszyklus, Leichen, Items, Punkte, Ränge, Matchende, Tournament/Warmup, Vote-Auflösung, Teamleiterwahl und CTF vorhanden; weitere Klassen, Mover-Pushing, Teamstatus, Cvar-Wartung und Vote-Startbefehle fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -605,16 +610,18 @@ sind enthalten. Details: [CLIENT_BEGIN.md](CLIENT_BEGIN.md).
 
 ## Vollständiger Spielserverframe (Schritt 6)
 
-`scripts/test_full_frame.py` besteht mit **sechs Szenarien**, **3.286 exakt
-gleichen 32-Bit-Wörtern** und **13.157 Ausgabe-Bytes**. Drei Laufzeitverträge
+`scripts/test_full_frame.py` besteht mit **sechs Szenarien**, **3.241 exakt
+gleichen 32-Bit-Wörtern** und **12.977 Ausgabe-Bytes**. Drei Laufzeitverträge
 prüfen Pflichtgrenzen, Clientlimit und Restart-Frühabbruch.
 
 Geprüft sind Framezähler und Zeit, Cvar-Aktualisierung, die vorhandene
 Entity-Schleife, Client-Endframes, die echten Tournament- und Matchende-Prüfungen
 und anschließend Teamstatus, globale und Team-Votes sowie Cvar-Nachverfolgung. Auch
 die 1.024 Einträge von `g_listEntity` und dessen Cvar-Reset laufen in der
-Originalreihenfolge. Die noch nicht portierten Team-/Vote-/Cvar-Wartungsfunktionen sowie
-Mover-/sonstige Physics-Ausführung bleiben geordnete Callbacks. Details:
+Originalreihenfolge. Globale und Team-Votes führen inzwischen ihre portierten
+Regeln aus; aktive Vote-Framefolgen sind zusätzlich in `test_votes.py` geprüft.
+Teamstatus, Cvar-Wartung und Mover-/sonstige Physics-Ausführung bleiben
+geordnete Callbacks. Details:
 [FULL_FRAME.md](FULL_FRAME.md).
 
 ## Tournament und Warmup (Schritt 6)
@@ -628,6 +635,22 @@ FFA-/Team-Bereitschaft, CTF-Teamvoraussetzungen, `g_warmup`-Änderungen,
 Countdown, Configstring/Log und `map_restart` überein. Auch der ursprüngliche
 32-Bit-Zeitüberlauf ist abgedeckt. `AddTournamentPlayer` und Engine-Zustellung
 bleiben Host-Grenzen. Details: [TOURNAMENT.md](TOURNAMENT.md).
+
+## Abstimmungen und Teamleiter (Schritt 6)
+
+`scripts/test_votes.py` besteht mit **211 Szenarien**, **241 Aktionen**,
+**85.671 exakt gleichen 32-Bit-Wörtern**, **363.195 Ausgabe-Bytes** und **462
+geordneten Nebenwirkungen**. Elf Laufzeitverträge ergänzen die Differenzprüfung.
+
+Geprüft sind `CheckVote`, `CheckTeamVote`, `PrintTeam`, `SetLeader` und
+`CheckTeamLeader`: Mehrheiten, Timeout, verzögerte globale und sofortige
+Team-Befehle, Configstring-Löschung, alle Empfänger, Leiterwechsel und die beiden
+originalen Suchschleifen der automatischen Leiterwahl. Die Tests vergleichen
+Vote-Zeiten an Host-Aufrufen und sämtliche Vote-/Team-/Leiterdaten nach jeder
+Aktion. Echte Framefolgen prüfen die Einbindung in `G_RunFrame`.
+
+Die Befehle zum Starten/Befüllen einer Abstimmung, `ClientUserinfoChanged` und
+die Netzwerk-/Engine-Zustellung bleiben offen. Details: [VOTES.md](VOTES.md).
 
 ## ClientThink (Schritt 6)
 
@@ -733,6 +756,8 @@ python scripts/test_bodies.py --data-root D:/Quake3
 python scripts/test_scores.py
 python scripts/test_deaths.py
 python scripts/test_items.py
+python scripts/test_votes.py
+python scripts/test_full_frame.py
 python scripts/test_spawn.py D:/Quake3
 ```
 

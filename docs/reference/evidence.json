@@ -21,10 +21,10 @@
     "src/mq3/game/combat.ml": "c4bec13c9fd6185d9531f204b76e84803c07e93e2cf451ce831850454f10d05e",
     "src/mq3/game/constants.ml": "17c50c277b785e016d402b893aea941840cb6cb1971c53d6513c346332413065",
     "src/mq3/game/deaths.ml": "941ce334ecb591440767bdaf7aaeaebb5ca10a6ab7ba9d2742acb23e3b6ddb1e",
-    "src/mq3/game/entities.ml": "c7232593c85967337d150ff953be7b411e038e7a6a5cd5cf4885263b6e62d7f0",
+    "src/mq3/game/entities.ml": "f51ba704297834c049859fd5a8246ce7ab365997141a9175e737361a97608d2e",
     "src/mq3/game/entitystate.ml": "e553e2f286d13f42aa9058def669dd53c7ee64b3345a92def2687c2c9280bdb1",
     "src/mq3/game/events.ml": "d2ae1a966141639cbae9ed9a61dde746afeb694cac34173f0e4f3ac828893c61",
-    "src/mq3/game/frame.ml": "cf6b256974feb9e36a8917217c7fd790baf7afd9e0d6ec8c324ae96c7921cdb3",
+    "src/mq3/game/frame.ml": "6aaa78e66e467b3eeec39a807f55d4d2b35accbc4e22655c1ab33e06453c7ae3",
     "src/mq3/game/hazards.ml": "5abfb39e8b6c66ab1d1c3d1cac6ffeda133272a66dca4d53cf1b15b428dc64f7",
     "src/mq3/game/items.ml": "4f5806908ee21412cb2e410c28e7467338db1ffbd2f41cb817d6c53097d80f4e",
     "src/mq3/game/jumppad.ml": "b99ced1c4617234979be0929a4a0f25779be1bc248d3e3729799d5025e23cbe9",
@@ -48,6 +48,7 @@
     "src/mq3/game/tournament.ml": "9a85faeab8fb76e2a5f1bbd7505edd96c3b6ed81941aff2474f11af052780c9c",
     "src/mq3/game/trajectory.ml": "5783e4be0369c475ba5477d9fe77d1df803cc045ea5bfdd59823fdb6cee88054",
     "src/mq3/game/triggers.ml": "192d63954b8ce823f686023dc9b64b5f5c2b42eb9f3a0389f60f683f5c3368a3",
+    "src/mq3/game/votes.ml": "3657e92fd9f0d08ce04086179a73aff38f19bff451d1906029c5cf3114e5b32b",
     "src/mq3/platform/file.ml": "5cf18ed251a4ec61213602d9c0013644d008b99df511b176ca573f2b7660c560",
     "src/mq3/qcommon/cvar.ml": "2ccf0ca51d8336c096e96d79e5999bf2520a2292ed45efe9d66254e0bfb8a6c4",
     "src/mq3/server/world.ml": "5bb88459a3b879de0469e855da27f9b70f15da01805fe1dbc752a1b58dc9b6e5",
@@ -71,7 +72,7 @@
     "scripts/reference_replay.py": "075a5f4c35cad4d2cf5506106cfed1dcb56e8a61dd60e1de626f8df2c92de1e8",
     "scripts/reference_smoke.py": "ac1b75ffe774b460e6af3d51a4accd85642d4b5aab01f6ee0a503c95cf53d096",
     "scripts/spawn_fixtures.py": "f2228d4cb26b9039696ba523bc8ffa530244aa6e3b4937dd3fee2d9716c3e778",
-    "scripts/spawn_oracle.py": "3facacff07c258a2b98cdd73df4d7b2fdad280d8e8fdaab2080d5b46d15607d1",
+    "scripts/spawn_oracle.py": "5c6fd4c3bfedaf8c1a3251063bd9c3bf260ae94487a1ad3c635f80f12966442f",
     "scripts/test_archives.py": "61808f04bc53445facb09066ea90568a0f8e5cf65f03c12a421b38336061d1b4",
     "scripts/test_bodies.py": "0609b25afbf156c0087e85f736428467f0149a003c5a2c84eb80de0c332834a9",
     "scripts/test_brush.py": "f04dc9eae5ab89e4ed50e97e60fcc6e01d7c2ba86cd9156a27856fdb472985df",
@@ -84,7 +85,7 @@
     "scripts/test_core.py": "326e11a4c94ae7e70e67ab6e7db271211a23b75f8d5a0724dfaef61973877ae7",
     "scripts/test_deaths.py": "4e83f979f94d7b5944782007144e7d93db0c5d7239c994f706275a4ed7018945",
     "scripts/test_entitystate.py": "65af30f2665c85a0a7e809ff5f64e49e3a1c64c1685cfa0a491b4449aa020ca5",
-    "scripts/test_full_frame.py": "f84d5998d9e903d2b1f9e8fe90c02787f1fe01ed26caa17986a5239dc72f4728",
+    "scripts/test_full_frame.py": "1bdcacb0e717e658e28444a7b16080f1e1210e5c90d6b787e23a65d4812b77e8",
     "scripts/test_items.py": "eb44115d3d79e2316c05cfba1c6579f5443c27542893dc439cd23aa52c3d0678",
     "scripts/test_maps.py": "3f44120af9fef99f99f7f9134f7a4792b39ef58a13bc35837cb3fbd6eb0930f0",
     "scripts/test_math.py": "f58dc4d37171d4b113d006c5d53cfe527ce46e2c7597f5f557430e243c0b5a76",
@@ -109,10 +110,11 @@
     "scripts/test_transitions.py": "06ef2df3360da4569d088859f1e5888c2c94d07d7bd0396f0cd5982b60df7d31",
     "scripts/test_visibility.py": "54c5f86cb2fb70e257cda28e8eb0d906eee2faf558ccd9f798af717eaa51aded",
     "scripts/test_vm.py": "3b37f6706b71b2ac42eec878e048db36e61ad08a78474fcd3ba8a04d09f8c51e",
+    "scripts/test_votes.py": "7c8dae764b6a71efff261b914dfb6b3fdb816d9506acb2041b870c492b6eab03",
     "scripts/toolchain.py": "eab72f9e2edb9680c382fccf55533e766b2177d257276a29de363e73e545716a",
     "scripts/transition_oracle.py": "b094c961cde9941d9230cd2af4d4e11a40428705dab40b8f878c1d7e72481d4a",
-    "scripts/update_progress.py": "8911945a9d7b1c2982c19fd3192f5d89dba302345b441cb80b48d3a5285ef81f",
-    "scripts/verify.py": "615956825b3d1f006db57954a2dd9efadfc4a38c19283a272e6c2f529fd25255",
+    "scripts/update_progress.py": "dcf61c598a64c2c97cd1842e15fefdb89deddd7141c83b0b8b4703e07bba37b3",
+    "scripts/verify.py": "737fa652bbc9954d211ae35327edb940480acc21edcb2e4a02c8d7c6e534dc72",
     "tests/archive_tests.ml": "a7266b1d1a15881f117d18344eafc1a03d47e4be053ce42c0616248164510e0c",
     "tests/brush_tests.ml": "a30eee67deb4580b649d643024c9f08acd9c5df7b28cbb2be6289cad151fce04",
     "tests/client_begin_tests.ml": "13bc656a05096362903674ae13ce238fef25b2bfaaf43adba2c47932404e6168",
@@ -151,7 +153,7 @@
     "tests/reference/server_world_oracle.c": "93511d75377005303e3ac34d915ee32793245641b65b44e9f2b8c1f2ec934fc3",
     "tests/reference/shared_game_oracle.c": "189875a93caa876ef1d53c75f0d25f1a1fc24e0c9fcca6541392490f6661d04f",
     "tests/reference/spatial_oracle.c": "00a2b131fff36f2a377f09274f3845625ca6c35d47ea7558eb01915ce5d0737c",
-    "tests/reference/spawn_oracle.c": "75a9ef7c999a4453b13a06ddc41ad97742df30c44b5a70ebaeea7776d0db50e0",
+    "tests/reference/spawn_oracle.c": "643deaac6c2b7ebf1943d823a37304c306dac504ed6d3a10efaece61c3de571f",
     "tests/reference/spawn_server.c": "779e8ecc04153f3c13508732e80e07b673326c4e00e9e71516ad5025a259d3c8",
     "tests/reference/target_actions.inc": "26d3529ae613e58c5999f61c832b31f8ac9ca84b4abb6b7b3eea7cfecde8723c",
     "tests/reference/tournament_actions.inc": "32ee6fef6e437fe139ebd6b4e265ee6d1edf7f36ead6da4f48bb03f4df05d278",
@@ -159,6 +161,7 @@
     "tests/reference/transition_server.c": "63afb26f0e3470aba054733107aaaee9774a234d71f1a6f29b921d9e556dc6ff",
     "tests/reference/visibility_oracle.c": "b0581fa378864ae1ece5b7d7ba5640f75df9820689fe8bf14ffc461d87552c1b",
     "tests/reference/vm_oracle.c": "cdc54ce1830b460715d4e3fee9fdbefd3e7bc09f2981a194a524847a15b030ba",
+    "tests/reference/vote_actions.inc": "6b24561df586b5602aaa17d16a6efc3c33f43a9ac08171386d253281e4c21299",
     "tests/rejection_tests.ml": "415c81171228ac96a402b4b1c37a09a14ff4782e66be5a5e57fd0854e1d8bc1c",
     "tests/retail_vm_tests.ml": "22e3aea584615d26ef2cdb468bb16f9cc246ec6fc9a7742c033daabe32d943b9",
     "tests/server_world_tests.ml": "0b14306b0fdd817f0c7d9802d0a8188f6f6dcce4d92f2a0b3da88d00488e2025",
@@ -168,7 +171,8 @@
     "tests/tournament_tests.ml": "311d97c2601ba8b89a9e319ed12ff10c51e7b78a5588ed1ac2f537728f2d8e09",
     "tests/transition_tests.ml": "5e25faf4e29303558d04e0e6621810a88dbd803cad9448c0998c4d8169a7f4ee",
     "tests/visibility_tests.ml": "1b7da66dcfb3b6d9f66e20d08a6ead1b00efe634cf85659a98822bab6f8d4609",
-    "tests/vm_tests.ml": "e82c903d3c8430197abbf66021ab58cdb0422e83aa6b01eb384f84593015b23a"
+    "tests/vm_tests.ml": "e82c903d3c8430197abbf66021ab58cdb0422e83aa6b01eb384f84593015b23a",
+    "tests/vote_tests.ml": "405ee2f402bdae67909e2db20a30db8082ba7ae283b62e566f56897332355a79"
   },
   "evidence": [
     {
@@ -183,7 +187,7 @@
     },
     {
       "path": "build/reference/bodies/result.json",
-      "sha256": "3658a5ee754a6258c3b51d92429bf2397eba4312d7a19877b56cd00e18b3c1a3",
+      "sha256": "8bc9df0b2b68d906909bbad67ccee2e5b7e7353a647dd53bf20b3334b882f295",
       "result": {
         "passed": true,
         "scenarios": [
@@ -55330,7 +55334,7 @@
           72,
           1
         ],
-        "test_sha256": "1a3b1dc67bc85ca96b046445ee7ed2221556cee04f5ba3a643d33b3146d411f9",
+        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
         "scope": "Baseq3 spawn selection, body queue, gib/dead-yaw helpers and non-item corpse physics. player_die and the respawn wrapper are covered by test_deaths; item entities are covered separately by test_items; ClientSpawn orchestration is covered by test_client_spawn. Undefined C deathmatch spawn-array overflow is rejected in MiniLang.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -55381,7 +55385,7 @@
     },
     {
       "path": "build/reference/client_begin/result.json",
-      "sha256": "8d85112bf4cbd66463b4318a3030ff0b77096e51bf0a843e489bab88abc83f0e",
+      "sha256": "114cb70c8afd57cede5ef9e219d3c3e5a91282b30f794423e9a0907d953c29e9",
       "result": {
         "passed": true,
         "scenarios": [
@@ -55831,8 +55835,8 @@
         "output_bytes": 12111,
         "ordered_boundary_events": 92,
         "runtime_contracts": 5,
-        "test_sha256": "8bd7ae40743b408aed5900df2a93318fa4293fa4f0b5cfdf6d22ae9d51b32c7d",
-        "oracle_sha256": "07f35976b9312ffd0763d051da0288a92321eeb5bddc82e0c6c3aeba3e9512ba",
+        "test_sha256": "0cc5ea087d8ff228152de2b730cd45a4ca3c46d833caa27b1dce52ec32fdef48",
+        "oracle_sha256": "cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 ClientBegin with actual ported ClientSpawn and CalculateRanks: unlink/reinit, persistent client rebinding, playerState reset with eFlags preservation, spawn, entry event and announcement, game log, rankings and tournament/spectator suppression. Engine userinfo, usercmd, command and log delivery remain deterministic observed host boundaries.",
         "original_sources": {
@@ -55873,7 +55877,7 @@
     },
     {
       "path": "build/reference/client_frame/result.json",
-      "sha256": "9435dda0f27d516746561dc0e7b15d1e0cb0d71139dd6784767978c418f341a8",
+      "sha256": "9d3870c67438874f52cd934f4871146983b5b77b051a956bd836717b804136e8",
       "result": {
         "passed": true,
         "scenarios": [
@@ -56048,8 +56052,8 @@
         "output_bytes": 205122,
         "ordered_effects": 6,
         "runtime_contracts": 2,
-        "test_sha256": "a34093a4f8acbdabd4e5683798ec53894e294955f4a719c1cc7110a6a170fee2",
-        "oracle_sha256": "07f35976b9312ffd0763d051da0288a92321eeb5bddc82e0c6c3aeba3e9512ba",
+        "test_sha256": "fdd6f4f6c60b9fee99ee9dcc52c29f1443dd4f4f353624270dc5654685c656b1",
+        "oracle_sha256": "cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 ClientEndFrame, SpectatorClientEndFrame, P_WorldEffects, P_DamageFeedback, G_SetClientSound and SendPendingPredictableEvents. Covers powerup expiry, damage direction/clamp/debounce, drowning, lava/slime, Battlesuit, noclip, interpolation/extrapolation, intermission, predictable event entities and spectator follow/scoreboard/loss. The isolated suite observes ClientBegin when an invalid explicit follow target is released; the normal port binds the separately verified ClientBegin implementation.",
         "original_sources": {
@@ -56090,7 +56094,7 @@
     },
     {
       "path": "build/reference/client_spawn/result.json",
-      "sha256": "2152580f518509b5cd4c98ffddb10855ebe74b36c12c0577dcce80d958b5e09a",
+      "sha256": "e8d69394b681410efae2d1c0a8a8ec90d756dcca91d149b0d7bd4136eb857f48",
       "result": {
         "passed": true,
         "scenarios": [
@@ -56717,8 +56721,8 @@
         "output_bytes": 18766,
         "ordered_boundary_events": 116,
         "runtime_contracts": 8,
-        "test_sha256": "fe739fd92d622ac0b8984050f8092da7acdb02202bd052578c672691fd1caec7",
-        "oracle_sha256": "07f35976b9312ffd0763d051da0288a92321eeb5bddc82e0c6c3aeba3e9512ba",
+        "test_sha256": "d312fe050ff486405c4a9045f19c956d4a544b2b56331341a154cbf20ceea008",
+        "oracle_sha256": "cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 ClientSpawn selection and orchestration: persistent/session preservation, transient reset, handicap, spawn filters, CTF/spectator/intermission placement, initial inventory, KillBox/link order, target activation, weapon selection and playerState-to-entityState snapshots. ClientThink, ClientEndFrame, userinfo/usercmd delivery and intermission movement are deterministic observed host boundaries.",
         "original_sources": {
@@ -56759,7 +56763,7 @@
     },
     {
       "path": "build/reference/client_think/result.json",
-      "sha256": "e7e59f62ce71bd79d8db1b623b87b3053d992b187c80b1caab158bd668c04b86",
+      "sha256": "d372155321db17d4c713b935b3cb5740c1e2adda7e8faab5b7f9063fbd6cd1fd",
       "result": {
         "passed": true,
         "scenarios": [
@@ -57314,8 +57318,8 @@
         "output_bytes": 29702,
         "ordered_effects": 77,
         "runtime_contracts": 3,
-        "test_sha256": "7014b3f55126a496947a9eef7ac71c12bd47af1e53691dc6c2ff790746bdb5ad",
-        "oracle_sha256": "07f35976b9312ffd0763d051da0288a92321eeb5bddc82e0c6c3aeba3e9512ba",
+        "test_sha256": "7d2b4b75c42701a4203f453ce9964b012381f47fd72167cf5ecdc4718323c257",
+        "oracle_sha256": "cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 ClientThink_real, ClientThink, G_RunClient, ClientImpacts, SpectatorThink, ClientInactivityTimer, ClientTimerActions, ClientIntermissionThink and ClientEvents. Actual Pmove, dynamic server collision, snapshots, triggers, hook release and medkit state are integrated; engine usercmd, cvar, drop, follow, weapon and AAS calls are ordered observed boundaries.",
         "original_sources": {
@@ -57834,7 +57838,7 @@
     },
     {
       "path": "build/reference/combat/result.json",
-      "sha256": "0e345e99c99b938a955d3543403057899f6622756fae44fe2b16013e2fc5db34",
+      "sha256": "02011ad7a3f087ace4d217c1ea6ead191a4cf52ab911d2ebcc067138c051060d",
       "result": {
         "passed": true,
         "scenarios": [
@@ -60131,7 +60135,7 @@
         "string_bytes": 1790052,
         "traces": 2681,
         "cd_maps": 31,
-        "test_sha256": "1a3b1dc67bc85ca96b046445ee7ed2221556cee04f5ba3a643d33b3146d411f9",
+        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
         "runtime_contracts": 8,
         "controlled_freed_laser_link_rejections": 1,
         "controlled_rejections": [
@@ -60234,7 +60238,7 @@
     },
     {
       "path": "build/reference/deaths/result.json",
-      "sha256": "d4100ad1fee00b37d3c20bd33b4a6b0cd9f85d785685a2a4c7fec0c7338cc2ad",
+      "sha256": "a60dacce6a24b4f07ae4617b32a948a26d63deeb592fb784a73c3408253bba8e",
       "result": {
         "passed": true,
         "scenarios": [
@@ -60450,7 +60454,7 @@
         "exact_words": 3887033,
         "string_bytes": 40921,
         "runtime_contracts": 8,
-        "test_sha256": "1a3b1dc67bc85ca96b046445ee7ed2221556cee04f5ba3a643d33b3146d411f9",
+        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
         "scope": "Baseq3 player_die, Team_FragBonuses, TossClientItems, almost-capture/scored checks and respawn wrapper. Drop_Item and Team_ReturnFlag execute actual ported item/flag entities; PrintMsg and the isolated ClientSpawn test override remain observed callbacks. The normal respawn path uses the separately verified ported ClientSpawn. Collision, PVS, scores, body queue and hook cleanup execute in the port.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -60490,7 +60494,7 @@
     },
     {
       "path": "build/reference/entitystate/result.json",
-      "sha256": "26c4f9a1b9adf8758e651451a22fb4e8c235ccddc25eeed73b385a590859c59b",
+      "sha256": "fcb35a8b1171d828ca991dd08b0eb7b7ced4fd12412c0d84bf18e8842c3a3cc1",
       "result": {
         "passed": true,
         "cases": 16384,
@@ -60502,7 +60506,7 @@
         "scope": "BG_PlayerStateToEntityState/ExtraPolate, full entity storage and SetClientViewAngle; native original x86 profile",
         "input_sha256": "bf4bd23fd1026d39f0ea7bf1e494d05c8f8d5e37822c09d047852bc224fb488c",
         "expected_sha256": "7576c564306a4dab7c27d1321229d4391ef58d6d381dc965a5e3c843602d3087",
-        "test_sha256": "0ed41694efbbe7c7cba676bcc5097e61d22d8aef3a8ec7bf6426ba6494e4072f",
+        "test_sha256": "d433a0873f3992cebb7d6f1c80331033c9b95387928862664f895fab94214fd6",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -60533,16 +60537,16 @@
     },
     {
       "path": "build/reference/full_frame/result.json",
-      "sha256": "024582bb8cecb294b19991348305c009d69fa3c3ac92327ec2515c923c411c07",
+      "sha256": "184e3a246aec45ade82e51fdfd29a33906c44cfbf2da1c051a22ffbb42641edd",
       "result": {
         "passed": true,
         "scenarios": [
           {
             "name": "normal",
-            "exact_words": 45,
-            "bytes": 180,
+            "exact_words": 36,
+            "bytes": 144,
             "inputs_sha256": "b852ee99fe082be549248f6d40362c1a8787ed5bdfdf2ef302f02a0c28485a74",
-            "expected_sha256": "6389426c1c3da87c00774354a318ffd0ec4258f35c4ffa8282bb928c93d1dd63"
+            "expected_sha256": "3aad6a4b47ba4190063100a7a70d25ca73ff8eea54bb015cf2ffc73caa9abfea"
           },
           {
             "name": "restart_early_return",
@@ -60553,41 +60557,41 @@
           },
           {
             "name": "empty_frame",
-            "exact_words": 27,
-            "bytes": 108,
+            "exact_words": 18,
+            "bytes": 72,
             "inputs_sha256": "b236094d835b418435b48c3a8fb501efb1a68e4a14f623f64a5a425e9f8e03d6",
-            "expected_sha256": "3affac0c14f405744021934ddb8d2cad20ddbe3361aa6d3d09aa7dfeb16fbef0"
+            "expected_sha256": "ea11346305838db63082a01a08e1a842ae7c2e5d06019ca70ef2190813df8ed6"
           },
           {
             "name": "future_think",
-            "exact_words": 42,
-            "bytes": 168,
+            "exact_words": 33,
+            "bytes": 132,
             "inputs_sha256": "e4d9db26e11383530986237797a9d737e1c912dca14c48b543794765339d4e4f",
-            "expected_sha256": "c64a90c5cbc1fa97dd9555732fd7d4ef8e3b9b872b3eee9e62889e2c1da9ba09"
+            "expected_sha256": "99006d9b195029ddf576ae8f97b610738d7c17a42d889e86a76e03c70867bcb3"
           },
           {
             "name": "time_wrap",
-            "exact_words": 42,
-            "bytes": 168,
+            "exact_words": 33,
+            "bytes": 132,
             "inputs_sha256": "dde9d3a2e13a502f26bb7019163b70a2ff1e1055bef5064832636c76b449e847",
-            "expected_sha256": "c9e22cf5897749f9c1411f4142c1d6d02511c56a3e23cc6fff62e71cca3ba390"
+            "expected_sha256": "9cc59d140038808a2fc70e9540ba0507f5ab8f7c0a1804949ad704d5b6f0a49c"
           },
           {
             "name": "entity_listing",
-            "exact_words": 3121,
-            "bytes": 12497,
+            "exact_words": 3112,
+            "bytes": 12461,
             "inputs_sha256": "d675f04e1fbb5c5859c72403b259047ba050f643d4abbf5e6208b2e6a9d1cd27",
-            "expected_sha256": "11ad29009788d97e1441f12fadef3946892764800f3a10e905b640cd7eb8728a"
+            "expected_sha256": "289353553d229e233435a69537606ff9680267556fb571e3c4f739f1a8cb1c72"
           }
         ],
         "scenario_count": 6,
-        "exact_words": 3286,
-        "output_bytes": 13157,
+        "exact_words": 3241,
+        "output_bytes": 12977,
         "runtime_contracts": 3,
-        "test_sha256": "b15c1e576e2f054fb86123464bc7530c993268201a648c4544075282b05103b9",
-        "oracle_sha256": "07f35976b9312ffd0763d051da0288a92321eeb5bddc82e0c6c3aeba3e9512ba",
+        "test_sha256": "d9bae49c7bf734c5c345fcf72c5dc9456879a4257e847f19612ec8096a0cb82b",
+        "oracle_sha256": "cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
-        "scope": "Verbatim Baseq3 G_RunFrame ordering: restart guard, frame/time update, Cvar refresh, allocated entities, client end frames, actual CheckTournament and CheckExitRules, team status, votes, CheckCvars and entity-list reset. Unported team/vote/Cvar maintenance and entity class dispatch are ordered observed boundaries.",
+        "scope": "Verbatim Baseq3 G_RunFrame ordering: restart guard, frame/time update, Cvar refresh, allocated entities, client end frames, actual CheckTournament, CheckExitRules, CheckVote and CheckTeamVote, team status, CheckCvars and entity-list reset. Team-status/Cvar maintenance and entity class dispatch are ordered observed boundaries. Active vote frame sequences are additionally compared in test_votes.py.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -60626,7 +60630,7 @@
     },
     {
       "path": "build/reference/items/result.json",
-      "sha256": "b5ef2cf692e7dcad89c537a521046393851118ce2cd5b3d528050ff0ffe378bf",
+      "sha256": "5d83358eaea908da565a5a4e7c45554e730b0f502bc09817e10a45dd92b01bd8",
       "result": {
         "passed": true,
         "scenarios": [
@@ -60815,7 +60819,7 @@
         "exact_words": 451312,
         "string_bytes": 30625,
         "runtime_contracts": 12,
-        "test_sha256": "1a3b1dc67bc85ca96b046445ee7ed2221556cee04f5ba3a643d33b3146d411f9",
+        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
         "scope": "Baseq3 item registration/spawn/finish, pickup eligibility and item-specific pickup functions, Touch_Item events/targets/respawn, powerup denial, dropped-item physics, and complete CTF flag take/return/capture scoring. Disabled-item Cvar registration remains an explicit boundary.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -61186,7 +61190,7 @@
     },
     {
       "path": "build/reference/missiles/result.json",
-      "sha256": "fb5f6d48383c7ea25bce1047fefe494b0820dd4acce97d2d043ee09821638833",
+      "sha256": "d9f9e087a8c7f2250b36e3d8e42bfcb3764381cb210a560938b24c39c7cadbb1",
       "result": {
         "passed": true,
         "scenarios": [
@@ -84844,7 +84848,7 @@
         "string_bytes": 2612912,
         "traces": 1260,
         "cd_maps": 31,
-        "test_sha256": "1a3b1dc67bc85ca96b046445ee7ed2221556cee04f5ba3a643d33b3146d411f9",
+        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
         "runtime_contracts": 8,
         "controlled_rejections": [
           {
@@ -85661,7 +85665,7 @@
     },
     {
       "path": "build/reference/scores/result.json",
-      "sha256": "4af22f93b454955463da792f232ffa70f31075a746ca5b672da133bd9d6a482a",
+      "sha256": "3e00bbbe72e19fd7bfe69700e1c232cc81ab7806fa9381a1455d2e52f51c6d81",
       "result": {
         "passed": true,
         "scenarios": [
@@ -91269,7 +91273,7 @@
         "messages": 412,
         "log_lines": 70,
         "runtime_contracts": 12,
-        "test_sha256": "1a3b1dc67bc85ca96b046445ee7ed2221556cee04f5ba3a643d33b3146d411f9",
+        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
         "sort_profile": {
           "name": "native Windows UCRT qsort",
           "sdk": "10.0.26100.0\\",
@@ -106990,7 +106994,7 @@
     },
     {
       "path": "build/reference/spawn_values/result.json",
-      "sha256": "95e944eb169081bb225efcf014b68134802b3bf92a5236eafbe055de5ecb9e03",
+      "sha256": "f91d0c1d18ef0b9e4718ffc13c5889b407a57844373e2b7ff3e94a2777dba554",
       "result": {
         "passed": true,
         "cases": 4096,
@@ -107004,7 +107008,7 @@
         "think_inputs_sha256": "ea8d9e60174bdb7acbd9a5bfc0e7fdf03aae24b654e97628f464c3fb8e64dec2",
         "think_expected_sha256": "d122208c99f71f87db5effca57f268502399813f1d14c1af8b915e73040bbd45",
         "scope": "all original spawn field types, first-key lookup, last-field assignment, CRT numbers, parser bounds; no spawn class execution",
-        "test_sha256": "1a3b1dc67bc85ca96b046445ee7ed2221556cee04f5ba3a643d33b3146d411f9",
+        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
         "inputs_sha256": "1ce188309d9e2f68b546141a0f21d437db35de077e20ea9eaff63614ad100c43",
         "expected_sha256": "0b79eb4964a52b6530d98f3a926728b3d9dc6277b215edf08f9fdda415cfcc64",
         "original_sources": {
@@ -107045,7 +107049,7 @@
     },
     {
       "path": "build/reference/targets/result.json",
-      "sha256": "888c5331d6250ddb15ac3cc220092edf5b26de88332934a1d0a8bbc63d901dc1",
+      "sha256": "f052908325e13edfe2f7d6a6d6d91b0393f55acffd12dbdce265bdeedca63fbd",
       "result": {
         "passed": true,
         "scenarios": [
@@ -107277,7 +107281,7 @@
         "actions": 9691,
         "exact_words": 40453187,
         "string_bytes": 4721815,
-        "test_sha256": "1a3b1dc67bc85ca96b046445ee7ed2221556cee04f5ba3a643d33b3146d411f9",
+        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
         "original_missing_noise_rejection": true,
         "original_freed_timer_rejections": 2,
         "scope": "Original target, event, spawn and allocated-entity frame loop; missile/item/mover/client handlers record dispatch only; no complete G_RunFrame/server acceptance",
@@ -107320,7 +107324,7 @@
     },
     {
       "path": "build/reference/tournament/result.json",
-      "sha256": "027b0810b88b0ca79d115f33d166bb0780789c4ab129d31e307842cf0179f802",
+      "sha256": "e4f5dc20e53e85aab960d2a76020c2a6a1bc1569b4a37d24302b45fd2daad684",
       "result": {
         "passed": true,
         "scenarios": [
@@ -107413,8 +107417,8 @@
         "exact_words": 115,
         "output_bytes": 547,
         "runtime_contracts": 3,
-        "test_sha256": "b7db6694728305b783002389d9569c9bc4680ea31ea670142e728f9949bf37f6",
-        "oracle_sha256": "07f35976b9312ffd0763d051da0288a92321eeb5bddc82e0c6c3aeba3e9512ba",
+        "test_sha256": "7ce17d1b0472cb33741755e7fa00f769688ec6c7c672c4535168a97e35773815",
+        "oracle_sha256": "cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416",
         "scope": "Verbatim Baseq3 CheckTournament and TeamCount: tournament promotion/wait/countdown/restart, FFA/team readiness, warmup Cvar changes, configstrings, logs and 32-bit time boundaries. Promotion and console delivery are observed engine boundaries.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -109877,6 +109881,1958 @@
       }
     },
     {
+      "path": "build/reference/votes/result.json",
+      "sha256": "42ca8e799086c578624d86b707258541d37299329afe7063af2bf192f102e839",
+      "result": {
+        "passed": true,
+        "scenarios": [
+          {
+            "name": "inactive",
+            "actions": 4,
+            "exact_words": 1372,
+            "ordered_effects": 0,
+            "bytes": 5712,
+            "inputs_sha256": "e1d68548dcc03d1b6fa22070734210bb642f2c40c81f50ce701a33b2b4b2282c",
+            "expected_sha256": "223c6eb509d3cca9dfc8cb6b821ffb983298d818d6291ba11ccaf17d8a009d5c"
+          },
+          {
+            "name": "global_pass_execute_once",
+            "actions": 5,
+            "exact_words": 1735,
+            "ordered_effects": 3,
+            "bytes": 7196,
+            "inputs_sha256": "62793892a1dacd45fa57d6d804b1d998915c2cf2538ff776e545f7bb9075cf5c",
+            "expected_sha256": "12fcd7ef080e9703256198bc2ff1eb423d4dfa17e3ed13635287fc7dd39de8ed"
+          },
+          {
+            "name": "global_timeout_priority",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "c21b20a0ff30174b13effd8404c1a1734b12827172ba6ca3c955e038314ecb0d",
+            "expected_sha256": "4d2cf335f510c97fc5a7da072fee2e167220a9e8443aa4ffd767f010b136f071"
+          },
+          {
+            "name": "global_timeout_edge",
+            "actions": 3,
+            "exact_words": 1041,
+            "ordered_effects": 2,
+            "bytes": 4331,
+            "inputs_sha256": "1eefa81ef21790bd977d9923ba04bd51b35e86d56a0e7f14b631c54fce63beda",
+            "expected_sha256": "b9987971927126487a21e06ffd2eb58ba3d75f22a6dff24072fc6df20c692a80"
+          },
+          {
+            "name": "old_execution_before_new_resolution",
+            "actions": 2,
+            "exact_words": 714,
+            "ordered_effects": 4,
+            "bytes": 2987,
+            "inputs_sha256": "84690eb049c982bdfc6e3cb182800e737eb021fefc1851eb642cdc81c0e33aa4",
+            "expected_sha256": "088cab80d3d011c484276d129093edeeb41c42a1397f6afab0dd0fd4439a39d6"
+          },
+          {
+            "name": "execution_equal_then_due",
+            "actions": 2,
+            "exact_words": 694,
+            "ordered_effects": 1,
+            "bytes": 2898,
+            "inputs_sha256": "f19981a1592317e25d78f5fcb2358fd902a164ec11ff25a693d5204f685658af",
+            "expected_sha256": "7af38fff74bd1974ce7b326ba7addb225f669bdccee48243cb1a8a80e4a5b444"
+          },
+          {
+            "name": "execution_before_timeout",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1528,
+            "inputs_sha256": "61a847d8b34269a9499f1a8cec867bf49ff52565b671b85418e1b58715298200",
+            "expected_sha256": "abe76ef7ded68fb7aa200fb74a2036356e6a7100be48b258d8270b7abe66b719"
+          },
+          {
+            "name": "wrapped_vote_timeout",
+            "actions": 2,
+            "exact_words": 698,
+            "ordered_effects": 2,
+            "bytes": 2914,
+            "inputs_sha256": "79349292f602f16742f9e1e7663a0d27d378f946f153f5b8f02ca47d7d58fc86",
+            "expected_sha256": "e2d4960ec07bb673ab13c7e492b28bccf7c86a88b655809d099820f4c28334dc"
+          },
+          {
+            "name": "wrapped_execution_schedule",
+            "actions": 3,
+            "exact_words": 1049,
+            "ordered_effects": 3,
+            "bytes": 4362,
+            "inputs_sha256": "2486346d033bc64ba2506eef3703d5160a847b51a910bc57bdda04fb6eb7784c",
+            "expected_sha256": "7ec75e0aae3d347be0792242c70e087dbe9d23dc17b890b440e9c4c19041c5f0"
+          },
+          {
+            "name": "execution_zero_sentinel",
+            "actions": 2,
+            "exact_words": 698,
+            "ordered_effects": 2,
+            "bytes": 2903,
+            "inputs_sha256": "89fca651fc220c1c88ebb2ec6b7ae56d0b76f44e00e7bf21e725ef6994c5b31f",
+            "expected_sha256": "574f55deaaca7ce6e07fb4b2445c5899e39924103e3652ab85c360d885eae7cb"
+          },
+          {
+            "name": "negative_elapsed_wait",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "c13886b8f44200296ee518382509d49b7cbfff41e49bf05a526308f2d4caf48f",
+            "expected_sha256": "705c5c10476b80f492af5b5d55ba93a82678b00bdb73fd0ff625f8fa4a82ca66"
+          },
+          {
+            "name": "global_command_capacity",
+            "actions": 1,
+            "exact_words": 351,
+            "ordered_effects": 1,
+            "bytes": 3498,
+            "inputs_sha256": "816382339fa2759ce9d94ca514bd60c48c130e650f9ca66ec49e51e2735609fb",
+            "expected_sha256": "7678ee0bd1a8147f1dac3f46ea2d1d6f8c643e6e8e59a6c57544fe06194e6089"
+          },
+          {
+            "name": "global_command_newlines",
+            "actions": 1,
+            "exact_words": 351,
+            "ordered_effects": 1,
+            "bytes": 1498,
+            "inputs_sha256": "c2704bc37ac377b242c064ed37ad0502355aa98bcb6c2d4a07530842187b1c29",
+            "expected_sha256": "079e6fee4c51fc7cebe152556a25bf225bc9c815c79cf67c7f08f8c83879f5f6"
+          },
+          {
+            "name": "red_pass_once",
+            "actions": 2,
+            "exact_words": 706,
+            "ordered_effects": 3,
+            "bytes": 2956,
+            "inputs_sha256": "ecc6f99a3eb7cc11728c93b85281cb1c0b1f1175870745000b98ce11a9333d87",
+            "expected_sha256": "431bf49990cfedcea47467857d4dc5a0cee6e8146a2d3290087c3caa82569abd"
+          },
+          {
+            "name": "red_timeout_priority",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1494,
+            "inputs_sha256": "88668d2198b000505a6dfd019f042d013ca75988e1c363ae51cff8a17ea0f76b",
+            "expected_sha256": "ad0f9455656a9bfeb577825c8f2ff6d9561a15f9456c0e6d391072cb1d7fa837"
+          },
+          {
+            "name": "red_timeout_edge",
+            "actions": 2,
+            "exact_words": 698,
+            "ordered_effects": 2,
+            "bytes": 2924,
+            "inputs_sha256": "0f2b721387e9a8b1a0e6a7e9cc96a1b066f4424e18b5919f02e2a2674252b63f",
+            "expected_sha256": "cfdf87dbdfd45a73bcf45f0fb58b96dd374a2c510102d956d145609042693c7b"
+          },
+          {
+            "name": "red_wrapped_timeout",
+            "actions": 2,
+            "exact_words": 698,
+            "ordered_effects": 2,
+            "bytes": 2924,
+            "inputs_sha256": "329b2581127bcef1a98ad143769ff8d651decc318b0e3d160340583dde16b7fa",
+            "expected_sha256": "2f2005707f026915e76aed53b4300e6a244c444fc3db5b6183b3cca7ba18b450"
+          },
+          {
+            "name": "blue_pass_once",
+            "actions": 2,
+            "exact_words": 706,
+            "ordered_effects": 3,
+            "bytes": 2952,
+            "inputs_sha256": "4cf402d547f960e00d5fb4d60f0e0a4c4c4e4a2b8d7871d3535e0dc8781c8187",
+            "expected_sha256": "7a4d4e44e285e101cee16e7b22b6ba82526dcc7410c5db6abc942ff160bf83fc"
+          },
+          {
+            "name": "blue_timeout_priority",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1492,
+            "inputs_sha256": "33313712edecee45b3b6013db7ac75abffec0c79f69546538d365cc4eda15fa3",
+            "expected_sha256": "fb4072bf26f7e99c91ef67003f3ad6bf9e9af63d1e5b357b54e6c66c7dfb6cff"
+          },
+          {
+            "name": "blue_timeout_edge",
+            "actions": 2,
+            "exact_words": 698,
+            "ordered_effects": 2,
+            "bytes": 2921,
+            "inputs_sha256": "4e9edb56ee42eb46affe423c64d35e7bba13e40a9c140d20497a7d557c58e4d5",
+            "expected_sha256": "915df7549b9d4d8912a6af3263b6f99d7b7ee731a7c9e3940d9ef56e8a91e231"
+          },
+          {
+            "name": "blue_wrapped_timeout",
+            "actions": 2,
+            "exact_words": 698,
+            "ordered_effects": 2,
+            "bytes": 2921,
+            "inputs_sha256": "525879fbc301ff6881ed1693b17e06a2f014b7a30e382fd1164eda27d7b98ae1",
+            "expected_sha256": "734fff6cebd919c2e401529d022bead5e24689e03f6b91cf7221fb6b389eced4"
+          },
+          {
+            "name": "invalid_team_keeps_pending_votes",
+            "actions": 4,
+            "exact_words": 1372,
+            "ordered_effects": 0,
+            "bytes": 5724,
+            "inputs_sha256": "2607b522997bfe41192176aa53c26b7921a74c3062a49b643b784827445f7fd9",
+            "expected_sha256": "f24911083663ad08ccf4d6ba261df79cea2b3adc89f1c837b57494925aae3004"
+          },
+          {
+            "name": "leader_vote_reset_then_set",
+            "actions": 1,
+            "exact_words": 395,
+            "ordered_effects": 7,
+            "bytes": 1789,
+            "inputs_sha256": "ed4f7a125bad78c86886e7caef57488b6a95a74e863da48afb9538769e7cd655",
+            "expected_sha256": "c8b6c68bcea75fcb9faf6ce817fb3183a45326254815681e0789ba14ea0aafc6"
+          },
+          {
+            "name": "leader_disconnected_still_passes_vote",
+            "actions": 1,
+            "exact_words": 379,
+            "ordered_effects": 5,
+            "bytes": 1713,
+            "inputs_sha256": "838492b2477068bdc68b8c11019b70d295ef8937ed43ebc350d0c8eaa995d610",
+            "expected_sha256": "134198b615a5081370e7708614227a6408847a0cb814adff5f93028cf2288518"
+          },
+          {
+            "name": "leader_changed_team_still_passes_vote",
+            "actions": 1,
+            "exact_words": 379,
+            "ordered_effects": 5,
+            "bytes": 1746,
+            "inputs_sha256": "556b7416371e4363e01f5a5794de9c231622d9ff07fe38485c2ebd3bd2366584",
+            "expected_sha256": "dda535b58878d9a8736e1ddce556b37b1559eb785d66e523d5b1885bcc12261f"
+          },
+          {
+            "name": "leader_original_prefix_atoi_0",
+            "actions": 1,
+            "exact_words": 395,
+            "ordered_effects": 7,
+            "bytes": 1789,
+            "inputs_sha256": "0f47f51dba5255409cf39522d43173bb66ff75c1623ae36f787ab8e0e049d768",
+            "expected_sha256": "1728a28fa3f72eace95bd6ec37470043314ac9ab292ab3b378aec145ad5dbc7a"
+          },
+          {
+            "name": "leader_original_prefix_atoi_1",
+            "actions": 1,
+            "exact_words": 395,
+            "ordered_effects": 7,
+            "bytes": 1794,
+            "inputs_sha256": "e1e0da225f367d713ab79f1bc66520c42cfcc6af1a5e0442c4a0ca1cd07d9f39",
+            "expected_sha256": "b774e9047254ee332d728951ca224766ae2e262ecda9c505197d41268669993c"
+          },
+          {
+            "name": "leader_original_prefix_atoi_2",
+            "actions": 1,
+            "exact_words": 395,
+            "ordered_effects": 7,
+            "bytes": 1789,
+            "inputs_sha256": "a62f7322bf2640749b39d9af21521d3baeb25661664a5f4b1b46074db26ae14a",
+            "expected_sha256": "f2b692e298e00466c61af96891bde4f581afb4c711a63d427f90afc38a54cc9d"
+          },
+          {
+            "name": "leader_original_prefix_atoi_3",
+            "actions": 1,
+            "exact_words": 395,
+            "ordered_effects": 7,
+            "bytes": 1788,
+            "inputs_sha256": "e11a65ba0f1b4b3a024008230cf031a630aff49e5e759706eeee853fd12a71e4",
+            "expected_sha256": "8340e33eb0d6aa8443c9958c0a1abb1c4cbaa5d68b0644b3172f870431935f72"
+          },
+          {
+            "name": "leader_original_prefix_atoi_4",
+            "actions": 1,
+            "exact_words": 395,
+            "ordered_effects": 7,
+            "bytes": 1792,
+            "inputs_sha256": "1862016d7134a4633441b65c017a824393e66c604e1fb7d67f9da301cd88145f",
+            "expected_sha256": "2cb7b9303fcb1a3257ed1dd24bc709ea216690d0e996ff2bc660c34993af71af"
+          },
+          {
+            "name": "leader_case_sensitive_console",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1559,
+            "inputs_sha256": "4797312a6a69fd504806228a5b0484f56a5ee4e9ef8f660c1261a5522ae9489c",
+            "expected_sha256": "1c51f6d5ffbb82ca17864f5c3b02bd7c55717e5079c141dc11d4f33a7b468156"
+          },
+          {
+            "name": "set_leader_reselect",
+            "actions": 1,
+            "exact_words": 383,
+            "ordered_effects": 5,
+            "bytes": 1724,
+            "inputs_sha256": "f832d69b1de67a992b1d17e333837eb9bee48290a44f48ac42ef58530ba165a1",
+            "expected_sha256": "c1ae3e3ddc6161529cd9ef154a702f5a5e3fe254a4cb593edd9fd836a00b9cac"
+          },
+          {
+            "name": "set_leader_clear_multiple",
+            "actions": 1,
+            "exact_words": 391,
+            "ordered_effects": 6,
+            "bytes": 1780,
+            "inputs_sha256": "4be8d9312f8970dff832d8a9c973b962874f7ebfcf17d17c6f14e4bdfeeadcd5",
+            "expected_sha256": "c9081d06602089c6a5c868511a5f80c45e83db33353ae67d892520505d246f2b"
+          },
+          {
+            "name": "set_leader_last_slot",
+            "actions": 1,
+            "exact_words": 375,
+            "ordered_effects": 4,
+            "bytes": 1640,
+            "inputs_sha256": "7bf45bc8405ed79568eaf601aa76c281c7f6a83d5893e4adc396b863fe0f76e1",
+            "expected_sha256": "bcd50ad606f31057c354c390ef9141240bb1d40e6cf591095c379bc4c0c1bd20"
+          },
+          {
+            "name": "set_leader_outside_scan",
+            "actions": 1,
+            "exact_words": 359,
+            "ordered_effects": 2,
+            "bytes": 1566,
+            "inputs_sha256": "9b905a7a164ce048008804324b84ebaba07339967f97f7dd69118dc4692ce684",
+            "expected_sha256": "a8bbf1d755343c579ed82e09eb410f1025a25a23e2cfda2580d2bcd866cf4aea"
+          },
+          {
+            "name": "print_team_disconnected_and_empty",
+            "actions": 4,
+            "exact_words": 1404,
+            "ordered_effects": 4,
+            "bytes": 6024,
+            "inputs_sha256": "f390d3b6f0bc29cc4e24c92f3a0d2f251760d8cf634b6be27cf4b2c2efe28cf2",
+            "expected_sha256": "375b4257fe12bbcbe6a0fb8d4cf1dc098fd1f16287ac8bf061090383766e4018"
+          },
+          {
+            "name": "check_leader_two_original_loops",
+            "actions": 2,
+            "exact_words": 686,
+            "ordered_effects": 0,
+            "bytes": 2888,
+            "inputs_sha256": "131c51d9686c8e501ed673d7dbedf2a40c06b003ed1292aee4214d5a337c9720",
+            "expected_sha256": "7f1526304610382204c1aaa36e48347373689890e36758e758fef5bc9ec62584"
+          },
+          {
+            "name": "check_leader_existing_disconnected",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1444,
+            "inputs_sha256": "8ff3e3afad819ea6b55105a05289372765e90144728a88be326dbbc3656f9277",
+            "expected_sha256": "86b507fe2f8ac92a3b0df30beb5e6bd5524d90ae41431c5e7672aff5cc64433f"
+          },
+          {
+            "name": "check_leader_bots_only",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1444,
+            "inputs_sha256": "bc5966d06c19664db53698739c51a93fd8bf5cf2ab14b7253a6f4d29dfa86e5a",
+            "expected_sha256": "8b4e12ccc8eddc400c805fd64020387c9ee2870000878bee8ebbe9d1ac43a80b"
+          },
+          {
+            "name": "check_leader_disconnected_human",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1444,
+            "inputs_sha256": "4cac25a08f3fb30c077797f7c32b9cc5ec32ac15d0dd92862065440a3b340742",
+            "expected_sha256": "4506af611e49c600c6b17f92009c07d072d689c42513408e0cf2a9d189bc91a4"
+          },
+          {
+            "name": "check_leader_empty_team",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "96ad097e486597a3f2490c66b948b854107cc48f6c721638e1f515ddb1df8acd",
+            "expected_sha256": "020cbf53acbb5d6a6a20b65840669d033ec93982ed713c4cee6f533accefa834"
+          },
+          {
+            "name": "frame_votes_and_delayed_command",
+            "actions": 3,
+            "exact_words": 1148,
+            "ordered_effects": 22,
+            "bytes": 4949,
+            "inputs_sha256": "2e32c0a9630b23412aa5c9249347cb990fe0fb49ebef5f261dd5f39d1b80da38",
+            "expected_sha256": "1b29110cff8be654297d405d2899dfd718c1b9bbc6aa926acfda601cb0ff43a6"
+          },
+          {
+            "name": "frame_existing_command_then_failures",
+            "actions": 1,
+            "exact_words": 396,
+            "ordered_effects": 10,
+            "bytes": 1694,
+            "inputs_sha256": "b0bfce37fb4abf8c12d8db5d61b48f8e872db1b10347b2424eb4dc8b94da7632",
+            "expected_sha256": "d8fe5e41967fd8a90332617baf240c96806e213c468b13d75912e713c32077da"
+          },
+          {
+            "name": "majority_0_0_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "f3320f4a00fd99879066a20ce755a26bdeadf84ee4772beb113d4435ddaeb603",
+            "expected_sha256": "77a7ae9d7ab9fc956de5726968335a7fd370fd92b23d162b597f68b26e098e50"
+          },
+          {
+            "name": "majority_0_0_1",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "1bab9bbd975aac24da7f6449662c3ac961ac3ce9f8b775f5477f0ba95ffca2a1",
+            "expected_sha256": "13147a587749aada69b98f3880d0b45cb59f5585fb488ce0bb7a422b6622ef79"
+          },
+          {
+            "name": "majority_0_0_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "cd259d3b937863b3777f91a688f07c47d09d5cc554159ca7494238f076cc0b75",
+            "expected_sha256": "d064c64723233fe2234340977d9d70d2bf9e3bc313fea35f39d0934ddda0fecc"
+          },
+          {
+            "name": "majority_0_0_3",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "1bab9bbd975aac24da7f6449662c3ac961ac3ce9f8b775f5477f0ba95ffca2a1",
+            "expected_sha256": "13147a587749aada69b98f3880d0b45cb59f5585fb488ce0bb7a422b6622ef79"
+          },
+          {
+            "name": "majority_0_1_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1430,
+            "inputs_sha256": "2922b3cef61cfba387de47299eb3c423cf7c3b31ec01488ecccb39c1430e75e5",
+            "expected_sha256": "1b356a082904422e44dca1fda60e9a472de1a5621865e99448453c2a6be5a882"
+          },
+          {
+            "name": "majority_0_1_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "51202bf29cdff8429eb58c671381930f042a00808c7f6288f11cab84eea1fcae",
+            "expected_sha256": "dd9561d9b1ef2d06959f78385753bcdb957277dc927b4e6bf819c7765d580d5f"
+          },
+          {
+            "name": "majority_0_1_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1494,
+            "inputs_sha256": "eb1a64a5c4803c731574021a6f72b9db199c2df3d0ed85de06bdcfcae31afc39",
+            "expected_sha256": "64e2d08274d8948901a6535f6a3eecfdc1423642e06b2803c4513d3ab520233f"
+          },
+          {
+            "name": "majority_0_1_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "51202bf29cdff8429eb58c671381930f042a00808c7f6288f11cab84eea1fcae",
+            "expected_sha256": "dd9561d9b1ef2d06959f78385753bcdb957277dc927b4e6bf819c7765d580d5f"
+          },
+          {
+            "name": "majority_0_2_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1429,
+            "inputs_sha256": "1f55e30c49dd3de1bf70f440f091da54a7a402d588e1611dea139333089ad0ae",
+            "expected_sha256": "a5fb46ab1a488e5df9a63cee9bc52352402c3d36531027779ed6d19aa90f3f0d"
+          },
+          {
+            "name": "majority_0_2_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "7bf6d54e72d0052689a4e7d75f9066f3825fa88d523342f58ca4c6d119ad05e2",
+            "expected_sha256": "f3c6f2a4b77750ff627bbb3e3055ad6008187554eb68dcac7b620859bff5c521"
+          },
+          {
+            "name": "majority_0_2_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1492,
+            "inputs_sha256": "ee95f2ddab1c0a44d336d72246ec131ca4b8f3acb82f026dc8bd9fa048224272",
+            "expected_sha256": "2fcef5278de42aac7cf28ac07574f1309288e9ab76015e29bf7c6fe6926a2b4b"
+          },
+          {
+            "name": "majority_0_2_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "7bf6d54e72d0052689a4e7d75f9066f3825fa88d523342f58ca4c6d119ad05e2",
+            "expected_sha256": "f3c6f2a4b77750ff627bbb3e3055ad6008187554eb68dcac7b620859bff5c521"
+          },
+          {
+            "name": "majority_1_0_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "ad241338c3fbdce7c5c6a43efac30ed559c908a5c8a3a4528c68fb596b6e0810",
+            "expected_sha256": "8ad31808295b04e08420be7e33733525c28de8de295d14d99e3617ebb74a8fff"
+          },
+          {
+            "name": "majority_1_0_1",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "9c66d2a313631feb41928f09cfe5be021dd7d14fc0de942bbccf1cf7e32679c1",
+            "expected_sha256": "926fe9e87b69c18ef82154355cd4814d42956704e8b8de3ed397281530bfea9c"
+          },
+          {
+            "name": "majority_1_0_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "ed77a9603d077b3fa7dce9f09500a42b14efc8818af122dbeda6be507802e640",
+            "expected_sha256": "226ad127896c0b61a99b372eb8d1aed841b5ef1aecfa0e93579f0299e6f7b119"
+          },
+          {
+            "name": "majority_1_0_3",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "9c66d2a313631feb41928f09cfe5be021dd7d14fc0de942bbccf1cf7e32679c1",
+            "expected_sha256": "926fe9e87b69c18ef82154355cd4814d42956704e8b8de3ed397281530bfea9c"
+          },
+          {
+            "name": "majority_1_1_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1430,
+            "inputs_sha256": "a9a79a0f5d526c3a3dab85509949ee1262ee51d1814a4a02e4dc6d1ad379d6a9",
+            "expected_sha256": "9e487472436e9ecae0f59952495c955b7829fd37677ae2ee75e485fb116a7a26"
+          },
+          {
+            "name": "majority_1_1_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "d7805861633aacd80d8476f0fe9e86c39de070cd7198a3431cf1210030c03828",
+            "expected_sha256": "919209d3e9980f369e70dac09507a8fb5f3c48d21a06018b2e231b0893e1b891"
+          },
+          {
+            "name": "majority_1_1_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1494,
+            "inputs_sha256": "47e8d46e9782ded0e7718b96427f03ee9dc29589f4b3de6e03e0d94d82d0ccec",
+            "expected_sha256": "ac1586c60967ee84d1f55104f8017382007adb56b5dbaa98863ac6834fb4ba88"
+          },
+          {
+            "name": "majority_1_1_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "d7805861633aacd80d8476f0fe9e86c39de070cd7198a3431cf1210030c03828",
+            "expected_sha256": "919209d3e9980f369e70dac09507a8fb5f3c48d21a06018b2e231b0893e1b891"
+          },
+          {
+            "name": "majority_1_2_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1429,
+            "inputs_sha256": "9456fefb1a03b9ee0c4d13a093bbdd7a8a1817da47ecd465197257ceb06b4ace",
+            "expected_sha256": "01a8d5d27ddd3a91137072914b3c57ec9357506ca2458af0818ff0138f6c185e"
+          },
+          {
+            "name": "majority_1_2_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "250f7b01e94d2f71027ff3cf24b6bc499b289fc0452a54edf58dbee528d8315b",
+            "expected_sha256": "bdb6352fbb67d1326570eab702722ff45941c4882fe727f0191f6a41a5b3ac32"
+          },
+          {
+            "name": "majority_1_2_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1492,
+            "inputs_sha256": "658507dbd4b5b23ba3df7a80f3086a6f944346fc415e6db2353fa1c13594626d",
+            "expected_sha256": "1da783f2a795b45e8adf0ff91f154d888c10e33f124d599ed44ce1ecf20ce6c7"
+          },
+          {
+            "name": "majority_1_2_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "250f7b01e94d2f71027ff3cf24b6bc499b289fc0452a54edf58dbee528d8315b",
+            "expected_sha256": "bdb6352fbb67d1326570eab702722ff45941c4882fe727f0191f6a41a5b3ac32"
+          },
+          {
+            "name": "majority_2_0_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "77703eb3f2acf490266649fd82993b8ec298cab0ba4ad6d088879ce3f4369344",
+            "expected_sha256": "89782e65abf345e63e04ff29e8fb973983a001f3597fa27ae8f122924f3a4e66"
+          },
+          {
+            "name": "majority_2_0_1",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "417bb966b6792ab0d5febf597bce1a3d99622796cc32f6d44504c9b952de0776",
+            "expected_sha256": "3a5c3a914c6853b5dc18154e1de7c25ba7f759facd526189c0827f5f1c8341b4"
+          },
+          {
+            "name": "majority_2_0_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "b3c96391dab2a876df2362abc1631daa4c32d17389f3737befea81516c6a345c",
+            "expected_sha256": "8b2059430fc653dc8c524fd77213f6cec062b2898a0d69104a21796e66f3c7e5"
+          },
+          {
+            "name": "majority_2_0_3",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "f3e1d7f3c06eb9408ac2ebdca3dc63d87c0df989a17800a24c1656a994b785b4",
+            "expected_sha256": "4f31833d48810faf59c7bcb6abeb8cca3b4df05e490732b3f4b6708a688aab13"
+          },
+          {
+            "name": "majority_2_1_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1430,
+            "inputs_sha256": "9fdb329de5fc36aff0dcb5588a431a5278e22e375f91cda8529edf8ed140e0aa",
+            "expected_sha256": "c575f25f7b77a5e24170de043ab03ff710a206ddb71dd84e15e7e0dfc0204505"
+          },
+          {
+            "name": "majority_2_1_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "442065fc5f613a3cc5dcafc060f4e3eaab8d425726ba6477eab041dfe9ae263b",
+            "expected_sha256": "7b3ef8fb9ac37d4c1d2f23bc3457a2569d1b0035eb002c4c0f7d47e82f0f17e5"
+          },
+          {
+            "name": "majority_2_1_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1494,
+            "inputs_sha256": "79997acbcbe38c2ab1c4cc110136aea74c9483f0bc303f7dd9ca0b61e64adef8",
+            "expected_sha256": "6d1c786472ccdbfb8713f802105307dbad4e11305ffec47cbee38f8fe1fc18fc"
+          },
+          {
+            "name": "majority_2_1_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "69c188d89af88f4c868b16625966c68de582bf561332cbf92715961a21bc9a20",
+            "expected_sha256": "0377dea8a0b6e6b70f42554935b1cafe7414a107fd5834b458b2a5a02e4dd232"
+          },
+          {
+            "name": "majority_2_2_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1429,
+            "inputs_sha256": "d7f08cac4af0b5ee65479cc25067bd6a63cabc317b6b1f2075489dfddb740dba",
+            "expected_sha256": "c541d9e0b9a3c0540dfe0946ad2cf744f3978e18c199f23582a5cccf7cbb7e87"
+          },
+          {
+            "name": "majority_2_2_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "65717c60a54b138347c2faa0bc91aa3297e4bb26642a4b1608df226183a6036b",
+            "expected_sha256": "228f16ffbe2ddbbb64c1a993d9fc087c58a7790b1eb591cb155a60d29ab737ee"
+          },
+          {
+            "name": "majority_2_2_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1492,
+            "inputs_sha256": "dffecb38452d6cefa6fdfc7d51570aa4c252af4cea6916a7df4bbcb86c8773cf",
+            "expected_sha256": "a5b4fcf98d1794d92b569d8c5856572287d6e87d84956840f505335523a9a647"
+          },
+          {
+            "name": "majority_2_2_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "575214779d1acaae9989cddab595cd9fc29f64729c16ae00a962ab059a957919",
+            "expected_sha256": "c8b6a1ab0e36a08e14ec6bd4b04558961f2b05e9276c5dee8a7b69c2747f8cc7"
+          },
+          {
+            "name": "majority_3_0_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "3b5995e06e4d489bad075aab96223e05ed707476bb9d2b05d33817b70d4b92a1",
+            "expected_sha256": "5af448d8e88a1a9ccef5b958a6525ed580a21712487a0fc546b2ac7e55cbf92a"
+          },
+          {
+            "name": "majority_3_0_1",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "a79e36aca6b4d146b064d19ab7a56129a07b35b4d2deca39848153509815b9fa",
+            "expected_sha256": "e1491d308d3825b6a412399377bc7dad7393c05066c8a3f3aa1f3c6eac9046ee"
+          },
+          {
+            "name": "majority_3_0_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "e03a8b11f7e0782a0e162a9a0b0eea6e753885875c4aac469db1d8e2d6c646ae",
+            "expected_sha256": "4762d509ff475ef774c847184e60483a2baf576f4dac369f451b6131d976a1c2"
+          },
+          {
+            "name": "majority_3_0_3",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "a98929cfebd7592bec293b5b945b98c992c1656b627fa30ddcf6f5fc06ace672",
+            "expected_sha256": "cefce17dc29dd8877ad8e80def5c2cba7a603cea66cdab8d0bb006802551c36c"
+          },
+          {
+            "name": "majority_3_1_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1430,
+            "inputs_sha256": "971e86a7ea0e4ea8fa845ff160ba32e2abd7cfd4c7f422f3ae8deac308f0a42e",
+            "expected_sha256": "37f6bdf3d8eb27de29785ce5dfbd74a912779a5fad9de83da16bf0d8e7fbcb6d"
+          },
+          {
+            "name": "majority_3_1_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "7d4a13a4a00b37825436c2b9397b2b5bd680ada32a1ea55375dc09c811f352b4",
+            "expected_sha256": "8c35c243f1967428ed9182819029e07c8b1b58c19bf0b08e0a112157e956a321"
+          },
+          {
+            "name": "majority_3_1_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1494,
+            "inputs_sha256": "d8c63e085534f043190173286a45967e899dfb18041b9b52a26c01f9f86bb0c5",
+            "expected_sha256": "9365a12cbd285f2c34f476a6c7083b5a18833d3fbdac1900bcd3ec2c7c6cc03e"
+          },
+          {
+            "name": "majority_3_1_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "587b8cd858a3b82a384d2a2d27de959ea39b6f8a19f401c8690267002471a95f",
+            "expected_sha256": "c6a6d2eb1e442a396fe96a46b57e5e3cc37e0c6682018beda5e6e939851cc012"
+          },
+          {
+            "name": "majority_3_2_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1429,
+            "inputs_sha256": "8fed3b166dabe842be960f862c9b0a3bd3fcf598218eee9ab8702e01dc07bd3b",
+            "expected_sha256": "90dd3a1f8e14d4f472a6e8f7bb295fcbe8900ca86d28ccc42b06cf4c7f530a2a"
+          },
+          {
+            "name": "majority_3_2_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "0cb5dbf546082a7dfaca3e5bc49af7f6b0aaad7223a7c42f5bb789bb804ed33b",
+            "expected_sha256": "ce1f600d22fa99554e2b0e89624193a7e77510ba92433d9d29b445b7b33422ce"
+          },
+          {
+            "name": "majority_3_2_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1492,
+            "inputs_sha256": "d56b68aebc80974366c55d56fdfa98aca014e5997d2352870289737a78edc143",
+            "expected_sha256": "06522ed0deeb854d89df280964977ab923ce7a670f0ac0d45c7204916521414f"
+          },
+          {
+            "name": "majority_3_2_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "9c72c19e2e433a001153bdbc645797844180f739fefd2c55037f17e8f390d45a",
+            "expected_sha256": "aeca580edc22f7b95fcf33974ee65bff5d20dc8f9f713283ef93dba7fdc0bff5"
+          },
+          {
+            "name": "majority_4_0_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "68a10e80f0f19345e3cc15c26b4fe36e7fee71d3864c29ee8f713fe2b88b1885",
+            "expected_sha256": "a9ccae24eb108b0fd70f0fa2c882aaa9d0a0e1fb3ccfb2c809e7efa11579f0aa"
+          },
+          {
+            "name": "majority_4_0_1",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "be91ea75b77a4f17aa3f13a49396b096eaa022c8bc2e9248e8c8e74ca53cd6dc",
+            "expected_sha256": "c11c30c9902e4e1dfc21bd9920c25b56e395dec9980daf83e79ce717204ec2db"
+          },
+          {
+            "name": "majority_4_0_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "7289054b24d9ddfd865236d5a4443804ae73a500540e721cb3269dd6d8e93820",
+            "expected_sha256": "1d15037fd5af0129a46c678007a9d331a0c01b9b68e011942480f5802af84063"
+          },
+          {
+            "name": "majority_4_0_3",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "23ea04a6b15eddd8a1c6f70061427355934b1090bdb14331aeb852c1cbfce128",
+            "expected_sha256": "f2f05f7d7d63a8522cf6b579f11dbb7601b03314737f176b0fe7f4729c81eec6"
+          },
+          {
+            "name": "majority_4_1_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1430,
+            "inputs_sha256": "30d6526ca20cab31ebe5ce185667440e9d7fd1a89b17a11060e0d684ee32af82",
+            "expected_sha256": "ded2bd951699edef7fc3276c1ee7e1477f07945102b9e19bcb5837f6a5378fe9"
+          },
+          {
+            "name": "majority_4_1_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "fc5d63452eec145c8b3fbf2475d4bf7d2a2a8749f8bd030a56fdbdf8f5232a51",
+            "expected_sha256": "77f8a6d42f178a3973a1e3593bcdeedecc0c2ff3ab2d320d79fcbef06a4cac91"
+          },
+          {
+            "name": "majority_4_1_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1494,
+            "inputs_sha256": "c987973e035b61db2f199a61722d25fc47e205315431a4a5507dc95ca832d52f",
+            "expected_sha256": "b269c9dab0cf5c2083281cbe0395153e2ba8ef0e426a5eb6aa11fe22c3306ab9"
+          },
+          {
+            "name": "majority_4_1_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "be2ffb93a6d4a57afaa3ba2c422401624ea6bbae529cf76eaa10caa12be65723",
+            "expected_sha256": "79a0ce1a0a60bbf9c1c1be2cd8d4cef649158c4bb6d2490ffd8ed8cdd36c05a9"
+          },
+          {
+            "name": "majority_4_2_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1429,
+            "inputs_sha256": "35c2d0fcf4b2476612c83c6a83f7d963f3adb7f91bd7157493d81dfafb72c1db",
+            "expected_sha256": "96ea6e8a6f1dc8a60eeeb2390e16163241c4e76eec9807e246a1aecbc33dbaf1"
+          },
+          {
+            "name": "majority_4_2_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "742b455842feca3ae3cc89aa0cb2150991b66c4d5f3b99cd6d9a3063df4ce74d",
+            "expected_sha256": "af34c6f06c36421d921ea0cc032726b5481f56ba011f2f9dce2cfef61de9a377"
+          },
+          {
+            "name": "majority_4_2_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1492,
+            "inputs_sha256": "a414f0c093f255e4e8d20fd1dbe6ef1569e50e9db80b62edb134e6134399e312",
+            "expected_sha256": "e9a0aa2772b3827f529b6c0c52e17af06dcbc685aa426e2ac5d9703f6d06839b"
+          },
+          {
+            "name": "majority_4_2_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "85dd16cb6c32887cf8128aa8e28080efd81a1a543437b0d527c13bae0b50ddad",
+            "expected_sha256": "9535207ea84162c248854a50d505cc2563ca7f9cea4b3b102f28eea72b058918"
+          },
+          {
+            "name": "majority_5_0_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "d965812b93ef65a9f2c47b1b1b6ec28f8b700dc864f7832e6fb86da551c3fbc7",
+            "expected_sha256": "833cd9255c61ab97cdeec78994118cea82ed47e8c626bf58e91a0ff36806249b"
+          },
+          {
+            "name": "majority_5_0_1",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "09e34a59e7e817b06d024c2e022400d975afb3608e9372c4a469a211dc942a7e",
+            "expected_sha256": "e85d1ca2ee42a9cdc321b73896f248c80d5a9bb4958a412e343f4deae2d440dc"
+          },
+          {
+            "name": "majority_5_0_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "c30355b40c51e200645d6e74c7adeceecef060bfdeb752c7a5e8ed6597107ff2",
+            "expected_sha256": "6e9b9e515cd4a5537914fa82fd0fc317cab85d751d96d302816ea85aef95f158"
+          },
+          {
+            "name": "majority_5_0_3",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "af2bf7e134bbe239c123030ff9702ab3f75864ddff60e805592fdc85d4b995b1",
+            "expected_sha256": "fa51b870b68009e57e768b200e4c563af951f329c1ec46a2da12d6fa63876d23"
+          },
+          {
+            "name": "majority_5_1_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1430,
+            "inputs_sha256": "150700831f5c9565d4b5d79f7d12e856146cf16b514ef7d65588ed55354e2d6d",
+            "expected_sha256": "534cb18f997afc8713d1985623c6660366682edae4ee92657637165e686ee3ba"
+          },
+          {
+            "name": "majority_5_1_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "33851a58140b3dd7c3370c0433b908f06b8603cde614addd2f70a17e7acc2aea",
+            "expected_sha256": "467cd56609d93fccb116f4707170b4068632171c0a8760fd9980465f338f6f2c"
+          },
+          {
+            "name": "majority_5_1_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1494,
+            "inputs_sha256": "9ee2ad1d1eaf2d55fd35b59d6a0259f65e44f0321bea3870c183d22095e08c96",
+            "expected_sha256": "9764ce585639a3e212d73ec98214fe050ee6a6e76fef3edc926b2329b08979e2"
+          },
+          {
+            "name": "majority_5_1_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "ee07812c6885dbcf3315bc5025accaba6c0269d97521073ab3017b4630acac92",
+            "expected_sha256": "5b05957a60def5363ac92e4a777860980a78fdea4507ae1b8618f49c524ad38c"
+          },
+          {
+            "name": "majority_5_2_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1429,
+            "inputs_sha256": "722c3a8ec15a41dfaca73745e42b10b2600e122c800393f9fdf84d6319399041",
+            "expected_sha256": "022698094cb7f1556ecfb17eebc10cda1ec6cb48a1d2b381601aee95c8e5b143"
+          },
+          {
+            "name": "majority_5_2_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "272f3f1d2ac8c14db3397035daf029cbc3467fa29482bdf6f98f9559b1dd72af",
+            "expected_sha256": "e2d2a487a6bb00b4842f4e78bf92ecd71b5d4bec21f9e66dbfb4983ef5f585d4"
+          },
+          {
+            "name": "majority_5_2_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1492,
+            "inputs_sha256": "6fa198a3b64e701840770355f64b72d9b4f72b7f6e715d77000b02b3cbccbb69",
+            "expected_sha256": "d97949fd8d87d14117cf41eb4d705a647a678ecaa7f45a3649f5ea70c4bbc4c8"
+          },
+          {
+            "name": "majority_5_2_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "cd71cbef93c59668ae0f5fda4bfd4f7c7803426b77de7e2db006b9591de581d5",
+            "expected_sha256": "570e8a352eb041e445ea05ee4c03419ad08855f4c57d1e88f3b534efa921e04a"
+          },
+          {
+            "name": "majority_31_0_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "d8f108833598ef543693a5713a6a20f38767b4c049e060b699dde0539d8be135",
+            "expected_sha256": "ce0879d60e563d5370d993071a0523e91487d4a774e034ab10b9a03a67ca7691"
+          },
+          {
+            "name": "majority_31_0_1",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "0de40100228930573521e1607bcd468c929240b99a84e4132fe1a51889407f00",
+            "expected_sha256": "55fdd0a510b7d6e053d511798aaeb5374cfbf5ff9b527e2c34db4776fbcc1f7b"
+          },
+          {
+            "name": "majority_31_0_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "3fecf671e3a02d44bfbad6d9b845ce8aa3ac4d60bdbb9f354ee3685b13648298",
+            "expected_sha256": "bdf3875d29395f9fb7567f85a8aaef9daf219ea93bcdd88be4f5edcd0903f5bf"
+          },
+          {
+            "name": "majority_31_0_3",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "35e4de1196982fc4336ae489200068d7dc6cc8060142e36842ba01006f23e7c0",
+            "expected_sha256": "d231444408f1485885e22a73b3eb6bfac9a6a77d33f4a94b266d8e50eb3ad257"
+          },
+          {
+            "name": "majority_31_1_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1430,
+            "inputs_sha256": "390b737a2b1077d076f1772e2f27b3b2e22481b6b064e5eee33bdb8dcd5b9d41",
+            "expected_sha256": "9c92352041fc63d36a528798985b1b7361c2606c8f5f02bd349802fadd8b7cbd"
+          },
+          {
+            "name": "majority_31_1_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "6bae5e1c137c6dcd2ff296241ded565e68dabe27d383e21d19613c958abe1aee",
+            "expected_sha256": "986e1a8687a4caba7b161d101411843901fb9b8b9ba7e13e1eeeb3f65c3714a5"
+          },
+          {
+            "name": "majority_31_1_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1494,
+            "inputs_sha256": "250e8a3b54d1b376234390520b7b58d6822ce3afca9aabc41705acb6ffc7ded2",
+            "expected_sha256": "ab99bc6089c666256a8fe48f99873cf10d46c6ec2fde773f0b9b01a43b23865f"
+          },
+          {
+            "name": "majority_31_1_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "ca5c3e0d53cca38d8c088328b20ed41a9c5eebad93e7f41f9a275df64d0661b8",
+            "expected_sha256": "3dc3296bd8ecade6310e649aa085c0f7cecfa36e08761c4b9d404678c810a6ce"
+          },
+          {
+            "name": "majority_31_2_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1429,
+            "inputs_sha256": "f30154815a7bbb13892a8284e9810af7f0bab7f8825df031d5a0dfb81ef53fe7",
+            "expected_sha256": "e04c63d09a4e5bf002e22a6b46998a73b4a1bbf1bb3c08f3301d2f61c3db3e75"
+          },
+          {
+            "name": "majority_31_2_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "603dbcfaeeb0f1f4af8b4cf45793f0b72f8d7c014c640c1c9bb05845962c5aaa",
+            "expected_sha256": "3f7595f626e6a7dda418cf11c7a1f31f1eef42d061088d493e287ce9724a501b"
+          },
+          {
+            "name": "majority_31_2_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1492,
+            "inputs_sha256": "7462dcfe7a5b5ebb04c4409d4683be37b8747e00cdd1ac938aaba92615dd0f3c",
+            "expected_sha256": "3daca77a9f90fd9f820ae78fea5ca5611385fd49f9717debc2d37c7e4c0ebec9"
+          },
+          {
+            "name": "majority_31_2_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "61deed1c0726641d9002bcf0411f423fc182505677d4010e43b14288984dc11b",
+            "expected_sha256": "d9a07f85e6bace7438c432028a206e3a2648794d719b08b4f30f375fcf2d2da7"
+          },
+          {
+            "name": "majority_32_0_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "90d45c88b0b3b0d0081f8281f7622db3bffd40424b20f3e774e85ca5994ab90e",
+            "expected_sha256": "f607d27f6365c6fefe63c8f6762641997ada89c852873b548c57f4e97559af9e"
+          },
+          {
+            "name": "majority_32_0_1",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "3224817e12ccd06728d79921bcf77f1d7446a6b34c7177464e06da08e96e50da",
+            "expected_sha256": "1cb8ef9a1b449290f6b40669b3cfb5c515a93daf39979ae00ae9ea8f23ffd117"
+          },
+          {
+            "name": "majority_32_0_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "d19f138c0859c87225e2f8f16eb87113b30e077b028aa4f00f8ce3db314d38d1",
+            "expected_sha256": "a7407b1c1eafeb438f0e4a17bec3254a003534caf8314cbf7175f651439dc3d9"
+          },
+          {
+            "name": "majority_32_0_3",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "5fe0f2624979560b7f87f7e0e9fecdff74b5d15898bc7d41112afbc3c7996e9d",
+            "expected_sha256": "6c40c9f4b6b1cf5c8f785ac1fbad06425ff8dac7b5d4c6eca37a28af04d7fcde"
+          },
+          {
+            "name": "majority_32_1_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1430,
+            "inputs_sha256": "8f28bdac6eb07682e7395ebf432c02332da28ca4a9f13a2bc5de014beae83535",
+            "expected_sha256": "046ff3dbbd08a0ffc6ede799ebabd541721b087300beeeb46fa64daf3c112855"
+          },
+          {
+            "name": "majority_32_1_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "e63f8eaa6b11fec01f3a6c385447b92c7344ea2a7e12378ef285c5de7222f6fb",
+            "expected_sha256": "b0425559ba6c46e4e2ea79224f19735e3a9f86603c278483c196a5d8aeee2154"
+          },
+          {
+            "name": "majority_32_1_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1494,
+            "inputs_sha256": "55a1d92942a03cd8497fa2470cce1ba35928d8e990ea85321089e9092544a6cb",
+            "expected_sha256": "0659dcd77af5d87b79644aa9aa8ab662d14bc51ebec6f179d928e32cfea008ad"
+          },
+          {
+            "name": "majority_32_1_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "e66cb31ebdc0bf7250b50f06e78785902c50b7879222591ef1eceac1b2485a10",
+            "expected_sha256": "7426cc871837cbff14d52828983fbdb51e3555fee64c0d8cf71647a44ca2c446"
+          },
+          {
+            "name": "majority_32_2_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1429,
+            "inputs_sha256": "5ba31a480b2f77b5b3a56cfcefc1d5a42d782f9d3931f5946f6b4deb256727a9",
+            "expected_sha256": "960a285cefa168d9b435447638ce58573d2700e6d8cec5d0da0d3fd914c1cb08"
+          },
+          {
+            "name": "majority_32_2_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "29c5ddee4c3a08f399eaca850689cf9806108eb3e2d9fe4669c41445df6976f1",
+            "expected_sha256": "d2da02ddee990d1107ef74f593f332a80ebf631140fdf0d6af8b8a52520605f3"
+          },
+          {
+            "name": "majority_32_2_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1492,
+            "inputs_sha256": "a39d23c90350f3569adf9259a49f4ea2d21e5e8fc2f62b5ae7088f498a86cce6",
+            "expected_sha256": "cc603d817999a5c6df062256d699a2dfe8cce58958f7b88f74a311f03a9af796"
+          },
+          {
+            "name": "majority_32_2_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "b087848c3516739ac42ff7b53d6444df273936d960f0500b56e4a8d87822fe12",
+            "expected_sha256": "6208a1d7e8de829c14cf6f95f8ecaf00f57d0e3b49343806d7f0a4d5b60d3906"
+          },
+          {
+            "name": "majority_63_0_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "bf86e7b82ac28ddb9975150e410a8f7bbe1cd258c4168f4d4dca763e02327aa8",
+            "expected_sha256": "3665ca8c4d88c5ef07ec8d848d36792147a1fcc3a24bc0125a6bd03d93163804"
+          },
+          {
+            "name": "majority_63_0_1",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "f5217482f91c11f78f31981af3b3401ac485d26d44c1242e99ef74863735a222",
+            "expected_sha256": "80abe80ecfb71a2ff4ea4e9adf41b530ce4288846a2d157b65502679c0bd4c42"
+          },
+          {
+            "name": "majority_63_0_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "89fb11825dcdec1683b7fe72eadbb277e564685f46d8e4274d225aaeb4b29920",
+            "expected_sha256": "d4c0f44381a4250c139cd22b9df40c2f667795d8b887a678d50f6e48406e8281"
+          },
+          {
+            "name": "majority_63_0_3",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "156ee7ef78d19a53e4c47fba287caa986e85afd188090d6935f928726e594a68",
+            "expected_sha256": "1ca5cb009924a1f1161fb4106ad6ff8eefa3ec4a8d0ea9159683768b8d34f1bd"
+          },
+          {
+            "name": "majority_63_1_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1430,
+            "inputs_sha256": "13e9e6fea4f8693a9f41654e88cc7f10b17232035c23b4775f24adf331a8fdcb",
+            "expected_sha256": "591637eae74e48eb4070c3aae3f4bc09ecd6f3a3f210a76eef2192d5e8bd5b7f"
+          },
+          {
+            "name": "majority_63_1_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "3effd27def127ecf3b71a3633c0a982c6b92b5bcc606bac28ac023810b818acc",
+            "expected_sha256": "0140220fa9dbbe00ac565fadfdb0bd07787d3965b29d0013b014a39f69a04297"
+          },
+          {
+            "name": "majority_63_1_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1494,
+            "inputs_sha256": "98d4e14c03f43bc1edfebed4ec2ca33ba664c32efefabaeb7ac6ebda508bd91c",
+            "expected_sha256": "3251716e745de17bb4c1c8eacf8658beb61442195ac027deb99784e7245b9bb2"
+          },
+          {
+            "name": "majority_63_1_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "e257577046a4b5895b11050e70293182c77ae9351480b5494c4015f202232a54",
+            "expected_sha256": "5d2e6f1851eb864aa3085361ae4111210a45d47f7ca655892aee2fb793acd82c"
+          },
+          {
+            "name": "majority_63_2_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1429,
+            "inputs_sha256": "604ccb2e879378f5189b94e96d286e9f5751f8118b212a373dd97812707282a3",
+            "expected_sha256": "6e8893d9b6ef47bd75d16ce2c1afe2651f2f9bdfdccaf27411e691ed21001761"
+          },
+          {
+            "name": "majority_63_2_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "1fd85b3d3f8c66eb7aa86fe23ae1e57aae7ba2697310f23c4bde2496c7b5a824",
+            "expected_sha256": "4ee5a3289acc68d02f27b515705a70b811b03c7eba5385fead3294c59c4c81eb"
+          },
+          {
+            "name": "majority_63_2_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1492,
+            "inputs_sha256": "9a5fdc682209952a7cc7e2bd46e5235ff04cac94c164c2b5930c9efb4e2220f1",
+            "expected_sha256": "0a4cae7d02ca934e64278395e0d4b45743004082b0f989a8b7887abf830885b8"
+          },
+          {
+            "name": "majority_63_2_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "8a48cd8cdafe03f68a6f6ad39b4fa0f56e3ebe2e61a2da342fbd9e3244850cba",
+            "expected_sha256": "ed3a865542fe94d4d6173a165beab704d205fddfd670f0204d1f1ae460986e4c"
+          },
+          {
+            "name": "majority_64_0_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "bcf84cdd8a79879cd79f6d9b5fe67c6f5d13a3127f1332d2a3e37916e7e3922b",
+            "expected_sha256": "a1075c79fcabaa6c76b6fe2d6b60556a339f52394dc88dbd8a9f74f5cb3d5cda"
+          },
+          {
+            "name": "majority_64_0_1",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "f4eb2a2ac2f1a2c7a25ba16542fc892149e2eae0518749de990056e59eabdca6",
+            "expected_sha256": "55781176896f76603f9932dc96898d60acf4f04bd38c1f1df1d55feca061c665"
+          },
+          {
+            "name": "majority_64_0_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "fa30492e45e8c8f36b1a023418dd69253d3219567bd1456ddc01ad9c52d70728",
+            "expected_sha256": "223ba05432e154137b4d4c4e154d7e2c7161184d7207cb18e764f22dc70b7b0c"
+          },
+          {
+            "name": "majority_64_0_3",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "cc920ac6472a09bb357e32e9c7573f6860d830145c36f24e033d6731a82fe3a6",
+            "expected_sha256": "c1816448b31489ffaa2013fb6236c85ed9fc2c4a65e684b5a89cc9e509e220f6"
+          },
+          {
+            "name": "majority_64_1_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1430,
+            "inputs_sha256": "942ab9c3e63c4d32ec6fd4bc7e4ec90209a590dd831ba976303f0f4eacfffc8b",
+            "expected_sha256": "239601f176c9feb337cd74c542eac7982aa9a2af6779631e548f47a77a48adb0"
+          },
+          {
+            "name": "majority_64_1_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "dd8f538c626f9790d6f35814cad87fc3554b821dc7a301ec0adb8d4655cc6f35",
+            "expected_sha256": "410a6589946bc0a1b98ece7eaabf27967772aa0596e5742034a4f7134e8f84d1"
+          },
+          {
+            "name": "majority_64_1_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1494,
+            "inputs_sha256": "610e44b4687c8172548d2211d0ab4fd4322b25678a1d7431cff505edb56311cf",
+            "expected_sha256": "17262645f5ab5da58f1e1163cb56444e9bc3472e59440285c00b4049c08008ad"
+          },
+          {
+            "name": "majority_64_1_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "48e5fdfa753f79635d6ebe11616311fd41fc0407f2c198041926e6a2f1189105",
+            "expected_sha256": "3342dcc2d5fcf1990eeadb8e9102ffd2b188cf225f34ca737aa594e092ca772f"
+          },
+          {
+            "name": "majority_64_2_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1429,
+            "inputs_sha256": "bb149ba133aae3345d387150d346e0ec52a0639a0c8ec568090f42b96a2e8800",
+            "expected_sha256": "87a09b0da4be1a3fc6f58f9311b1138fcce23fa2057a11f4f42d6ba176bcdedb"
+          },
+          {
+            "name": "majority_64_2_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "194731a0ef5fe6f66282035e018e6dc02192728fc897c93af7fd397adac08879",
+            "expected_sha256": "d07f3bc962f73e12d9eb1e82fada18aea968180ae1a2d4daf0cad4688cf74719"
+          },
+          {
+            "name": "majority_64_2_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1492,
+            "inputs_sha256": "9cabf235927b5eb0b1c64174c148e0952879d585ddeeb33d365c83a0463dc08e",
+            "expected_sha256": "a12b89f32afbc3035a01fa3f0b677b0f0f771c3fa7bd5c1fee918714a1b5643d"
+          },
+          {
+            "name": "majority_64_2_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "e1aed39eef01a1697c960bc2e66ed019109b4d6ed798adeee01a4fb8c4573da1",
+            "expected_sha256": "00cb576c71aae2a5fd8885034312f2b4606fa0a0e6a4597d0efc88469e404e17"
+          },
+          {
+            "name": "majority_-1_0_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "472d83c0f56de4c9b4b547c165357e8af6881df647921e1698cd6f0550e1a213",
+            "expected_sha256": "200acba503fd3187b1ee77ed531e6a0edc0ca788c0a7ea5953c49ed166f47ffe"
+          },
+          {
+            "name": "majority_-1_0_1",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "5361d35a644ce1335a90b6b72a3d6cfacde51fb3340c4273201bfa574dbffa2d",
+            "expected_sha256": "62700e551015c47d6096623a69368244cbd950fdf3f6e68589ed8845445d0a65"
+          },
+          {
+            "name": "majority_-1_0_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "5e93470e13bda363210b8f7341982f87c5ae02afc33c401a5f46264203495b0d",
+            "expected_sha256": "c79b8b370b996532c7e4e79c1e7da39fbbc6640b7f270b57877daa2a0aea0ff8"
+          },
+          {
+            "name": "majority_-1_0_3",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "5361d35a644ce1335a90b6b72a3d6cfacde51fb3340c4273201bfa574dbffa2d",
+            "expected_sha256": "62700e551015c47d6096623a69368244cbd950fdf3f6e68589ed8845445d0a65"
+          },
+          {
+            "name": "majority_-1_1_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1430,
+            "inputs_sha256": "eaf88430c7bd1b30dff8d933510654e79ce1f2e4aac888de1f02ff824ceaf022",
+            "expected_sha256": "9d44a9ce2a27d06b15924c782af0c4fbb8ff9d85c7350210ae2a08ae0e5d3952"
+          },
+          {
+            "name": "majority_-1_1_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "3a48a4f30fa1d4d43232c84a4ff8e2b575419adc7504c986a1414e0bb5a3a2fb",
+            "expected_sha256": "266eea34b7a919c56b5bd29a4d3952e4f6a286a7798676ec176d6a59fe9ca6cf"
+          },
+          {
+            "name": "majority_-1_1_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1494,
+            "inputs_sha256": "09d56bb4f85ccb09a35af70686d365d41678ed54b2063182b047423203921810",
+            "expected_sha256": "74db152e0f939a84a4b1dbce538b4157a6ea9e2b0b0936dd15f6aad55426327c"
+          },
+          {
+            "name": "majority_-1_1_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "3a48a4f30fa1d4d43232c84a4ff8e2b575419adc7504c986a1414e0bb5a3a2fb",
+            "expected_sha256": "266eea34b7a919c56b5bd29a4d3952e4f6a286a7798676ec176d6a59fe9ca6cf"
+          },
+          {
+            "name": "majority_-1_2_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1429,
+            "inputs_sha256": "3a92b5894c7796343e39389cc02041a359cd7d00917fa20f577366b999790b23",
+            "expected_sha256": "9b08c4471aaf45984f5878e93e378ce07c53dd24b9a703e959475f1cad8ba0f8"
+          },
+          {
+            "name": "majority_-1_2_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "410f0c0824003325a7b21b64bfdcb95779b563a0c517c41db6f31877e77d069c",
+            "expected_sha256": "49311df586e712eff65f4afabb4a2252aafe2d0936c6bed49c9c350cd48f7b4f"
+          },
+          {
+            "name": "majority_-1_2_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1492,
+            "inputs_sha256": "d6547aadab29255de54d4be204297a4781a7eb5be189939aea2df30b9eb9530e",
+            "expected_sha256": "511061d4ed82d98cda100b9bc72f3830f4f2ca42487b69ef3117d269221d5ba1"
+          },
+          {
+            "name": "majority_-1_2_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "410f0c0824003325a7b21b64bfdcb95779b563a0c517c41db6f31877e77d069c",
+            "expected_sha256": "49311df586e712eff65f4afabb4a2252aafe2d0936c6bed49c9c350cd48f7b4f"
+          },
+          {
+            "name": "majority_-3_0_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "0b2b102e8e3cbb285ecf5f5fc01ce520abdf918b9250c51b51e2e58fec0b7d02",
+            "expected_sha256": "c1b61badca090a8992839dd7d5679b72ac46a897b1a13e6324f0ed59d41f12a1"
+          },
+          {
+            "name": "majority_-3_0_1",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "6e92ea7d99b7a25f0ba9bf896e39550a0a631fe9632932dfe9055b9362aa285c",
+            "expected_sha256": "714ed6e7396ace422c5e8d09d24ae0a289c6abcc25273a304f0be804abb97148"
+          },
+          {
+            "name": "majority_-3_0_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "2a8b3df5c669e8235393756566e0d380b7318ff81b4d5a2c5f318d3559d8c8fd",
+            "expected_sha256": "748a04aceeb935ff4b452505e3432bd2c5e5ae5447e964062a85651b6a3f7944"
+          },
+          {
+            "name": "majority_-3_0_3",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "2a8b3df5c669e8235393756566e0d380b7318ff81b4d5a2c5f318d3559d8c8fd",
+            "expected_sha256": "748a04aceeb935ff4b452505e3432bd2c5e5ae5447e964062a85651b6a3f7944"
+          },
+          {
+            "name": "majority_-3_1_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1430,
+            "inputs_sha256": "ae3dca43ea7291b775c7a210c6ce2afc4b1dc0429f8f31bba08306edfef4f2db",
+            "expected_sha256": "96f1493a6024dd22f588329f308d49d5f1b32e325232898423c647a2a5e8528b"
+          },
+          {
+            "name": "majority_-3_1_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "cebbc65c736f9388b399f44bb591257901e7d2448c2a8e22a6b2ecc7c85c1c2f",
+            "expected_sha256": "8d8c6127fa9ff602822b09d45d75e229cd76e288f118a2fe99e2a6b20f166b1e"
+          },
+          {
+            "name": "majority_-3_1_2",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "fb0df35da25c5b7bb1d36e1658957d3d29dd0dc08c4fcb1b962993fe8156a2b1",
+            "expected_sha256": "71a0efed74896a351651968ac322bb9eb4a61262933fb94cb3833d50871d95f8"
+          },
+          {
+            "name": "majority_-3_1_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "fb0df35da25c5b7bb1d36e1658957d3d29dd0dc08c4fcb1b962993fe8156a2b1",
+            "expected_sha256": "71a0efed74896a351651968ac322bb9eb4a61262933fb94cb3833d50871d95f8"
+          },
+          {
+            "name": "majority_-3_2_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1429,
+            "inputs_sha256": "a89cddc766a52af2c34510a2599f1d24009add0856730056b2a3a67a451e3535",
+            "expected_sha256": "5bb525aef670a3ecdbe8d364fceac33a72279cdc04c0ae76e75c60620e3f89e0"
+          },
+          {
+            "name": "majority_-3_2_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "4a68dff4055f10a1a4775971a8dc047c19be845d512daa80de3fb3ccce4752d9",
+            "expected_sha256": "d4c4528bfe75987a5c8d0936ae00b1a7c2ce3d40cf08228553532157cb693c5f"
+          },
+          {
+            "name": "majority_-3_2_2",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "3fcd3246278eda9352757b2e0ee4d6a3f83ee42e24ccd97aa86613a671ff6084",
+            "expected_sha256": "2f221c9af84e94e569364087500513b533439c0b1f0cf740c259607009f4bcd6"
+          },
+          {
+            "name": "majority_-3_2_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "3fcd3246278eda9352757b2e0ee4d6a3f83ee42e24ccd97aa86613a671ff6084",
+            "expected_sha256": "2f221c9af84e94e569364087500513b533439c0b1f0cf740c259607009f4bcd6"
+          },
+          {
+            "name": "majority_-2147483648_0_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "1b84aeb3e63c0cb5bba0c96b41324c7fc9751232bafb3d84a2925af10fcd0b03",
+            "expected_sha256": "aa0fef27958be4ea132f58913f1428d348be5ae4f5c2eb3f1689e5ed55b5c250"
+          },
+          {
+            "name": "majority_-2147483648_0_1",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "8ed602b690e27488cf986001caced111ae7ee2880b4afb9884c5c160d8722d49",
+            "expected_sha256": "30dbaa85fd82a352d537c293328bf00aa7aa0e59cf317535de6d4a1fde77f1c0"
+          },
+          {
+            "name": "majority_-2147483648_0_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "8d88924caa85705ed8a6c93c3ae60e74cf7338ef8551fbaae8a0300bd5909145",
+            "expected_sha256": "a6c7ab3f1a04baf06e875d6560c2481ba95b9713d71bf1783362a6efac4f7762"
+          },
+          {
+            "name": "majority_-2147483648_0_3",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "56c0c29ef31da35bcd91677724b67d6e56ccafa103f6d966adfd04fa037569c1",
+            "expected_sha256": "c2a04e6236da1d08a4764cc7d01f1f1ab268f642a312264e4eb0c70232fac7d4"
+          },
+          {
+            "name": "majority_-2147483648_1_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1430,
+            "inputs_sha256": "55b95c048df959557a4118b8014de8c7e952b005c45457ca98be21e81997194e",
+            "expected_sha256": "fd3342b9d5711ed764d68455fb2bbdc516d3799b97cf2b174422e3ac04109f5a"
+          },
+          {
+            "name": "majority_-2147483648_1_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "61eb5fc86c86a3df8003c9ab98cbb45fce806f99f28e4b1217102fe691aeee34",
+            "expected_sha256": "e4fdc44425fc366049c7fcb83ffa72bf944df897da0f4d45053ec8336b96f176"
+          },
+          {
+            "name": "majority_-2147483648_1_2",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "40626539620facb807e67a62552b45154356303fb3d282494cec65c6f24d8206",
+            "expected_sha256": "f1ea55cb0caf22cd5a780a4b13d080a90511e8089d1646c2acc9186b4ce40070"
+          },
+          {
+            "name": "majority_-2147483648_1_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "bb9362d05d449f9153c229627f4d8bc6d11fc8de30d62eb796636c617dc7e268",
+            "expected_sha256": "60cb63230f586fc00443634491865b305307e55f631d5d7859ead52927cca242"
+          },
+          {
+            "name": "majority_-2147483648_2_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1429,
+            "inputs_sha256": "1de18990172d7a8c6e2f78bd87eede6ebff76927fdfc4ac50b46c1ed1c02af98",
+            "expected_sha256": "6bdece80b5863c8345849d36675345241ce92113f6c0987c0e9012d8fce74422"
+          },
+          {
+            "name": "majority_-2147483648_2_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "23b6520193ab65b72b1d77909bbfc836311772b29a29c355fa403dad9477f4f7",
+            "expected_sha256": "5e1399d024343d415e25c9ab0051798447c259e8a405dbd58756c1be15269a62"
+          },
+          {
+            "name": "majority_-2147483648_2_2",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "b092f3dc3d5e77fe69e49431d80f3bc5f8515d3e1fcd7b6ff7307aabc5eb4a0e",
+            "expected_sha256": "5b08751377c359c3e288269fb60b6b55a868010229d9b83a05f83119941fe6cd"
+          },
+          {
+            "name": "majority_-2147483648_2_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "7ec48419d2df1c9b8325ede5b5f06518a2194fd1505f914b2d5331dd18ae3bea",
+            "expected_sha256": "100b7d857d93b885965e63059c288acdd9c198a7c132dc84dc6b360eff4ce3ff"
+          },
+          {
+            "name": "majority_2147483647_0_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1428,
+            "inputs_sha256": "a333e5a6273a3a3ab43cb692048da77299d020809cd7b8142061c82ca6c44dc8",
+            "expected_sha256": "1154fee6bef713ceff12204a213afbdad89c343336946aa180af6614c9184a30"
+          },
+          {
+            "name": "majority_2147483647_0_1",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "4b8e81689a3ef136162b9a2ff1214f73aca0cf2077336c4ed198d82338ea2a34",
+            "expected_sha256": "ad7d09465a3478a0369630fbfee3227bcf60fe56c4583fe73d3399a40bc8dcc9"
+          },
+          {
+            "name": "majority_2147483647_0_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "076b1e101023376ae27e43412ee429ac02f59427a9ce698891700bac5d9db9d7",
+            "expected_sha256": "de976af2a529d76104c19cbbd9a67c24b154328d39e86ecfe93e3dd1dbabf730"
+          },
+          {
+            "name": "majority_2147483647_0_3",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1486,
+            "inputs_sha256": "95e5da1300ae1e8ec3901f9988a8d4ad3b66b4001e3c7d91ceb90393eed69e07",
+            "expected_sha256": "75a19d02591c89557bcddd08d2abf4166eb9394cc16563d67b9e749e10af396b"
+          },
+          {
+            "name": "majority_2147483647_1_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1430,
+            "inputs_sha256": "9fcdd553d89fd3872e4737372692caa531fbb1582faa3d60506d81d8e052dd54",
+            "expected_sha256": "501357417545c82278269d5dec892cc1a8baa56b1cb143ac2760c90b490c2e63"
+          },
+          {
+            "name": "majority_2147483647_1_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "7060c0a6da531407266f80da93e1285cd3325f796e42593aa182e7e7db5c96d4",
+            "expected_sha256": "f5ff98eb7178c5d29ce4c597eb4b4014884e1c1d651c91d708b3fcb0e16adb9c"
+          },
+          {
+            "name": "majority_2147483647_1_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1494,
+            "inputs_sha256": "03bc2fa628cd47ef3164813b4e3574e33b4a42e7e98a47ef7bad632ca49166e2",
+            "expected_sha256": "14a53ede0d8d5b1bbeed27d99fc5c1564756e2b7caf8bcba6084e9c9f5db74c3"
+          },
+          {
+            "name": "majority_2147483647_1_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1536,
+            "inputs_sha256": "f4667725d5675043be633b4d2ead30b74a18b0b8ceefd167a991d705147fd47b",
+            "expected_sha256": "cc12d1c7c01adbb6df6217a53ddc89bd555a31d6c0052dc2074fce9716925534"
+          },
+          {
+            "name": "majority_2147483647_2_0",
+            "actions": 1,
+            "exact_words": 343,
+            "ordered_effects": 0,
+            "bytes": 1429,
+            "inputs_sha256": "3c19ce1007cec720e2ffcc0dea85ef023477d3320c7523e87f16ffd0a254bf9f",
+            "expected_sha256": "592ad3ad8c20c9c4ce2f32b33b5172733d6ded995f8df72c60e26cb36f890a80"
+          },
+          {
+            "name": "majority_2147483647_2_1",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "e4a798b5f6c124b59c27bedeb5d13927f28e8cfa40419dd4bf75b08c16d23fbe",
+            "expected_sha256": "bcbaa447ee06c98d8f9439fad08ff48a5c1bb399c76114b4dee68d43618a1a9b"
+          },
+          {
+            "name": "majority_2147483647_2_2",
+            "actions": 1,
+            "exact_words": 355,
+            "ordered_effects": 2,
+            "bytes": 1492,
+            "inputs_sha256": "7f039d5cf7cafaa25519c58318b731c814c8267437cb1cd06ea6bce1c5dd695c",
+            "expected_sha256": "d60b36551f8a95b6e1e8b966f800bcd2b4f215be17ace5c42397db624a8391b1"
+          },
+          {
+            "name": "majority_2147483647_2_3",
+            "actions": 1,
+            "exact_words": 363,
+            "ordered_effects": 3,
+            "bytes": 1534,
+            "inputs_sha256": "f183ac2e6454a259ed2799039be58f5bd4b740c96ddba5b247a7842eeb5dcfc9",
+            "expected_sha256": "30cd359bcd43df0b06ec1a1329c160b1abe253f7ea30b72330172af536d3d07c"
+          }
+        ],
+        "scenario_count": 211,
+        "actions": 241,
+        "exact_words": 85671,
+        "ordered_effects": 462,
+        "output_bytes": 363195,
+        "runtime_contracts": 11,
+        "test_sha256": "97a957446eca2be51a917341b185ff4179bf8bd03cbea44efd44bde069fd134b",
+        "oracle_sha256": "cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416",
+        "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+        "scope": "Unchanged Baseq3 CheckVote, CheckTeamVote, PrintTeam, SetLeader and CheckTeamLeader: state, messages, console commands, configstrings, leadership and actual G_RunFrame integration. ClientUserinfoChanged and engine delivery remain observed callbacks; vote initiation and network transport remain open.",
+        "original_sources": {
+          "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
+          "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
+          "Quake-III-Arena-original-source/code/qcommon/cm_test.c": "2e5d1139c88a5ffc6dea01349865f91d210158491931090d4c7f07d3f11cf4e8",
+          "Quake-III-Arena-original-source/code/qcommon/cm_patch.c": "9fd50664bb46f77a6bf3f7d06a69500867bff1cae4b94c9be168c4ad9e03ca1f",
+          "Quake-III-Arena-original-source/code/qcommon/cm_polylib.c": "b1c1cf3a19ada8682b4ca58556b316144940f5bee5ca59ae4dd6ebe1a947a6ec",
+          "Quake-III-Arena-original-source/code/qcommon/md4.c": "fc5be3df4b9c463711e428b98bdc357351e5aeaa13e785073ec7a5921ccc5b4c",
+          "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29",
+          "Quake-III-Arena-original-source/code/game/q_shared.c": "724dae5f0a9de8bc6ced68893f9f59c5625deca4a1e194b11f5be348fdf2481b",
+          "Quake-III-Arena-original-source/code/game/bg_misc.c": "c71034761ec3f75fd8952f2d75a7f057d664b5cf97b5edf26ae020da65a486e0",
+          "Quake-III-Arena-original-source/code/game/bg_pmove.c": "3ced04aed8686d3da051887dc8c4ace88a24b45a6d0bb4e4d5238cd53cb7a7fc",
+          "Quake-III-Arena-original-source/code/game/bg_slidemove.c": "327fa83a0c523da8a7e8b4fbbbba40cf8870a28613459289ef0e8a865e6bd903",
+          "Quake-III-Arena-original-source/code/game/g_utils.c": "8fdebd93b8976f979a5ac4887523884f8f2b4246a8bd9e8f8d67829ab577163b",
+          "Quake-III-Arena-original-source/code/game/g_client.c": "52a3c908aeff487cc924f54991bc7b4f523f6483a0ff060edc3aa32367f213bf",
+          "Quake-III-Arena-original-source/code/game/g_misc.c": "bf29bf68e000b068497d45cd4be9bbcfb9730797e21e07044ee4b158d74f5441",
+          "Quake-III-Arena-original-source/code/game/g_target.c": "34249fdb42c433e88baa10ce1c10d5214373da0b78b7e6b21ee7afa542d7ef93",
+          "Quake-III-Arena-original-source/code/game/g_team.c": "58005485a30605e33d826da14952abf5158832d9d8bf098178e3b8cc97587a02",
+          "Quake-III-Arena-original-source/code/game/g_mover.c": "4c9934ebd38ee2634affc102cfc423df15fedbd81186b42726da5ef6c72c7500",
+          "Quake-III-Arena-original-source/code/game/g_main.c": "b98c2b5cb2ed272bcce36acd1e5eda1c57d499b9ecd3549ba9a08f69dd1363d4",
+          "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
+          "Quake-III-Arena-original-source/code/game/g_combat.c": "a19a66ecaf1d1bf557e350e08ea57da8356d1a66ee4f61d8cc2fae455c312a48",
+          "Quake-III-Arena-original-source/code/game/g_weapon.c": "cc12c2c9986503206c465ee480e4cf97f9b143380604548ef45c0c54ae704e8a",
+          "Quake-III-Arena-original-source/code/game/g_missile.c": "9915e67656332a2b1765372eca42981823f9bc569866770046f58962505285a2",
+          "Quake-III-Arena-original-source/code/game/g_items.c": "168044c842d19b64000ba3e1b3715e8038c871b268c90a61535cb6c9aaa6535c",
+          "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
+          "Quake-III-Arena-original-source/code/game/g_cmds.c": "52fa4d7f279f374f4e2de31fbb20e35c3d78676b4ce67168599fb5bab99cce59",
+          "Quake-III-Arena-original-source/code/game/g_spawn.c": "611d4c13b7794785e1c475f93d2dfcbfad3173132b76e031e80db7b8653bd268",
+          "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
+          "Quake-III-Arena-original-source/code/game/q_shared.h": "7c356992d3f8b722eeb0160c44a0515bd5a83538ffb86190ca138e352e874115",
+          "Quake-III-Arena-original-source/code/game/bg_public.h": "29679e04ba6f0f730c5ca200410330e057609da59e563e36d101f329fafd09e7",
+          "Quake-III-Arena-original-source/code/server/sv_game.c": "dda52c608aec154610aa554c7a15d2f597196193e813127114c43636fcc1f57b",
+          "Quake-III-Arena-original-source/code/server/sv_world.c": "d67f952c374902c71b6e65523ae983f0d6081e16c379b566779a1fd1b05aba4d",
+          "Quake-III-Arena-original-source/code/server/sv_init.c": "cc7446cc30bf71275e8392988e32ad324fc2ed274bdc927194c8fd9e9ddabff6"
+        }
+      }
+    },
+    {
       "path": "artifacts/reference/replay/result.json",
       "sha256": "104a03e621aa18f0ca449360094dab6cebd3caebf1cbfbed6f524c181fd11cd2",
       "result": {
@@ -109896,7 +111852,7 @@
     },
     {
       "path": "build/verification.json",
-      "sha256": "1128dcc3d59cc54848165101d8d7eb78313f377705a189aebfa399027530769f",
+      "sha256": "e45a79136a916fbf4fa258b9d35c6091e802d97c6e82ec6a1b0e2d696df0fd68",
       "result": {
         "passed": true,
         "scope": "implemented foundations only; full game port remains incomplete",
@@ -110017,6 +111973,10 @@
             "arguments": []
           },
           {
+            "script": "test_votes.py",
+            "arguments": []
+          },
+          {
             "script": "test_full_frame.py",
             "arguments": []
           },
@@ -110040,110 +112000,6 @@
           },
           {
             "script": "test_runtime_spatial.py",
-            "arguments": [
-              "D:\\Quake3"
-            ]
-          },
-          {
-            "script": "test_patches.py",
-            "arguments": [
-              "D:\\Quake3"
-            ]
-          },
-          {
-            "script": "test_collision.py",
-            "arguments": [
-              "D:\\Quake3",
-              "--no-curves"
-            ]
-          },
-          {
-            "script": "test_collision.py",
-            "arguments": [
-              "D:\\Quake3"
-            ]
-          },
-          {
-            "script": "test_movement.py",
-            "arguments": [
-              "D:\\Quake3",
-              "--count",
-              "4096",
-              "--no-curves"
-            ]
-          },
-          {
-            "script": "test_movement.py",
-            "arguments": [
-              "D:\\Quake3",
-              "--count",
-              "4096"
-            ]
-          },
-          {
-            "script": "test_pmove.py",
-            "arguments": [
-              "D:\\Quake3",
-              "--count",
-              "4096",
-              "--no-curves"
-            ]
-          },
-          {
-            "script": "test_pmove.py",
-            "arguments": [
-              "D:\\Quake3",
-              "--count",
-              "4096"
-            ]
-          },
-          {
-            "script": "test_spatial.py",
-            "arguments": [
-              "D:\\Quake3",
-              "--no-curves"
-            ]
-          },
-          {
-            "script": "test_spatial.py",
-            "arguments": [
-              "D:\\Quake3"
-            ]
-          },
-          {
-            "script": "test_visibility.py",
-            "arguments": [
-              "D:\\Quake3"
-            ]
-          },
-          {
-            "script": "test_server_world.py",
-            "arguments": [
-              "D:\\Quake3",
-              "--no-curves"
-            ]
-          },
-          {
-            "script": "test_server_world.py",
-            "arguments": [
-              "D:\\Quake3"
-            ]
-          },
-          {
-            "script": "test_transitions.py",
-            "arguments": [
-              "D:\\Quake3",
-              "--no-curves"
-            ]
-          },
-          {
-            "script": "test_transitions.py",
-            "arguments": [
-              "D:\\Quake3"
-            ]
-          },
-          {
-            "script": "test_spawn.py",
             "arguments": [
               "D:\\Quake3"
             ]

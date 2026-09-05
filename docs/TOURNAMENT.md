@@ -21,8 +21,8 @@ Warmup, Cvar-Änderung, abgelaufenen Countdown, FFA-Bereitschaft, fehlendes
 CTF-Team, Singleplayer und einen 32-Bit-Zeitüberlauf. Drei Laufzeitverträge prüfen
 Spawn-Zustand, Promotion-Schnittstelle und Clientlimit.
 
-Test-Binary: `47de1392470ee97c210795369d7b27937e48f71fd763c0a633691b38f71ee930`.
-Native x86-Oracle: `07f35976b9312ffd0763d051da0288a92321eeb5bddc82e0c6c3aeba3e9512ba`.
+Test-Binary: `7ce17d1b0472cb33741755e7fa00f769688ec6c7c672c4535168a97e35773815`.
+Native x86-Oracle: `cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416`.
 
 Ausführen:
 
@@ -30,6 +30,6 @@ Ausführen:
 python scripts/test_tournament.py
 ```
 
-Teamstatus, Votes und allgemeine Cvar-Wartung im restlichen Frame sind weiterhin
-eigene Portschritte. Netzwerkzustellung und der tatsächliche Engine-Maprestart
+Die [Vote-Auflösung](VOTES.md) ist inzwischen ebenfalls portiert. Teamstatus und
+allgemeine Cvar-Wartung bleiben eigene Portschritte. Netzwerkzustellung und der tatsächliche Engine-Maprestart
 folgen mit der Server- und Protokollintegration.

@@ -116,6 +116,13 @@ def main():
     for source,(targets,symbols) in item_mappings.items():
         old_targets,old_symbols,tests=mappings[source]
         mappings[source]=(list(dict.fromkeys(old_targets+targets)),list(dict.fromkeys(old_symbols+symbols)),list(dict.fromkeys(tests+["scripts/test_items.py"])))
+    vote_mappings={
+        "code/game/g_main.c":(["src/mq3/game/votes.ml"],["CheckVote","CheckTeamVote","PrintTeam","SetLeader","CheckTeamLeader"]),
+        "code/game/g_local.h":(["src/mq3/game/votes.ml"],[]),
+    }
+    for source,(targets,symbols) in vote_mappings.items():
+        old_targets,old_symbols,tests=mappings[source]
+        mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_votes.py"])))
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text(encoding="utf-8"))
     for entry in ledger["files"]:
@@ -126,9 +133,12 @@ def main():
             if entry["source"] == "code/game/g_main.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] == "G_RunFrame":
-                        symbol["scope"] = "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament and exit rules, then maintenance stages. Mover/other physics dispatch and team/vote/Cvar maintenance remain ordered callbacks."
+                        symbol["scope"] = "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament, exit rules and global/team vote resolution. Active vote frame sequences are compared in the vote suite. Mover/other physics dispatch and team-status/Cvar maintenance remain ordered callbacks."
                     elif symbol["original"] == "CheckTournament":
                         symbol["scope"] = "Baseq3 tournament promotion, player/team readiness, warmup Cvar changes, countdown and map restart are compared against the unchanged native body. AddTournamentPlayer and engine command delivery remain explicit observed callbacks."
+                    elif symbol["original"] in ("CheckVote","CheckTeamVote","PrintTeam","SetLeader","CheckTeamLeader"):
+                        symbol["target_files"] = ["src/mq3/game/votes.ml"]
+                        symbol["scope"] = "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; vote initiation and network transport are open."
             if entry["source"] == "code/server/sv_init.c":
                 entry["symbol_mapping"][0]["scope"] = "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
             if entry["source"] == "code/game/g_combat.c":
