@@ -4,6 +4,7 @@
 package mq3.game.votes
 import mq3.game.constants as c
 import mq3.game.spawn_values as values
+import mq3.game.client_info as clientInfo
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
 import std.string as strings
@@ -68,8 +69,9 @@ function printTeam(level,team,message)
   return void
 end function
 function userinfoChanged(level,slot)
-  if level.clientUserinfoChangedFn == void then return error(489,"Team leader requires ClientUserinfoChanged") end if
-  level.clientUserinfoChangedFn(level,slot); return void
+  if level.clientUserinfoChangedFn != void then level.clientUserinfoChangedFn(level,slot)
+  else clientInfo.changed(level,slot) end if
+  return void
 end function
 function setLeader(level,team,slot)
   if slot < 0 or slot >= 64 then return error(489,"Invalid team-leader client slot") end if

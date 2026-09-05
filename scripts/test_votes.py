@@ -170,7 +170,7 @@ def main():
                   ordered_effects=sum(r['ordered_effects'] for r in records), output_bytes=sum(r['bytes'] for r in records),
                   runtime_contracts=11, test_sha256=sha(ROOT / 'build/vote_tests.exe'),
                   oracle_sha256=sha(out / 'spawn_oracle.exe'), map_sha256=sha(bsp),
-                  scope='Unchanged Baseq3 CheckVote, CheckTeamVote, PrintTeam, SetLeader and CheckTeamLeader: state, messages, console commands, configstrings, leadership and actual G_RunFrame integration. ClientUserinfoChanged and engine delivery remain observed callbacks. Vote initiation and casting are compared separately by test_vote_commands.py; network transport remains open.',
+                  scope='Unchanged Baseq3 CheckVote, CheckTeamVote, PrintTeam, SetLeader and CheckTeamLeader: state, messages, console commands, configstrings, leadership and actual G_RunFrame integration. This isolated suite overrides ClientUserinfoChanged; its default ported implementation and real team-vote callers are compared by test_client_info.py. Vote initiation and casting are compared separately by test_vote_commands.py; engine/network delivery remains open.',
                   original_sources={s.relative_to(ROOT).as_posix(): sha(s) for s in sources})
     report = out / ('result.json' if not args.case else args.case + '.result.json')
     report.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')

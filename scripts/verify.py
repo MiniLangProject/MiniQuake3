@@ -23,7 +23,7 @@ def main():
              ("test_missiles.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else [])),
              ("test_bodies.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else [])),
              ("test_scores.py",["--reuse-build"]),("test_deaths.py",["--reuse-build"]),("test_items.py",["--reuse-build"]),
-             ("test_client_spawn.py",[]),("test_client_begin.py",[]),("test_client_frame.py",[]),("test_client_think.py",[]),
+             ("test_client_spawn.py",[]),("test_client_begin.py",[]),("test_client_info.py",[]),("test_client_frame.py",[]),("test_client_think.py",[]),
              ("test_tournament.py",[]),("test_votes.py",[]),("test_vote_commands.py",[]),("test_team_status.py",[]),("test_game_cvars.py",[]),("test_full_frame.py",[])]
     if args.data_root:
         scripts.append(("test_maps.py",[str(args.data_root)]))

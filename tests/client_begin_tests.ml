@@ -17,6 +17,7 @@ struct Check
   scenario
   cmdAngles
   cmdWeapon
+  userinfoText
 end struct
 function checkWord(check,value)
   if check.offset+4 > len(check.expected) then return error(497,"Unexpected ClientBegin output") end if
@@ -71,7 +72,7 @@ function gameLog(level,message)
   checkWords(level.context,[60,10]); checkString(level.context,message); return void
 end function
 function userinfo(level,slot)
-  event(level,1,slot); return "\\handicap\\"+str(level.context.scenario)
+  event(level,1,slot); return level.context.userinfoText
 end function
 function usercmd(level,slot,client)
   event(level,2,slot); client.cmdAngles = [level.context.cmdAngles[0],level.context.cmdAngles[1],level.context.cmdAngles[2]]
@@ -114,6 +115,8 @@ function configure(level,input,check)
   s.context = check; s.effectFn = effect; level.maxclients = 4; level.maxclientsCvar = 4
   level.time = n.readI32(input,32); level.intermissiontime = n.readI32(input,28); level.inactivity = n.readI32(input,36)
   check.scenario = n.readI32(input,40); check.cmdAngles = [n.readI32(input,64),n.readI32(input,68),n.readI32(input,72)]; check.cmdWeapon = n.readI32(input,76)
+  check.userinfoText = "\\handicap\\"+str(check.scenario)
+  if n.readI32(input,112) > 0 then check.userinfoText = decode(slice(input,128,n.readI32(input,112)-1)) end if
   spot(level,64,"info_player_deathmatch",[0.0,0.0,64.0],[10.0,20.0,30.0],0); level.entities[64].spawnflags = 1
   spot(level,65,"info_player_deathmatch",[1000.0,0.0,64.0],[-15.0,180.0,1.0],0)
   spot(level,66,"info_player_deathmatch",[-500.0,300.0,96.0],[45.0,-90.0,5.0],0)
@@ -201,7 +204,7 @@ end function
 function main(args)
   world = cm.loadWorld(fs.readAllBytes(args[0]),true)
   if len(args) > 3 and args[3] == "--contracts" then return contracts(world) end if
-  input = fs.readAllBytes(args[1]); expected = fs.readAllBytes(args[2]); check = Check(expected,0,0,0,[0,0,0],0)
+  input = fs.readAllBytes(args[1]); expected = fs.readAllBytes(args[2]); check = Check(expected,0,0,0,[0,0,0],0,"")
   level = game.create(world); ent = configure(level,input,check)
   clientSpawn.clientBegin(level,ent.slot); beginState(check,level,ent)
   if check.offset != len(expected) then return error(497,"Missing ClientBegin output at "+str(check.offset)) end if

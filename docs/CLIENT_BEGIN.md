@@ -16,19 +16,23 @@ als Standard-Callback für den Zuschauer-Fallback in `ClientEndFrame`.
 
 `scripts/test_client_begin.py` extrahiert `ClientBegin` unverändert und verbindet
 ihn im nativen x86-Orakel mit dem ebenfalls unveränderten `ClientSpawn` und
-`CalculateRanks`. Acht Szenarien vergleichen 2.907 32-Bit-Wörter in 12.111 Bytes
-exakt und prüfen 92 geordnete Host-, Configstring- und Link-Ereignisse. Fünf
+`CalculateRanks`. Zehn Szenarien vergleichen 3.637 32-Bit-Wörter in 15.163 Bytes
+exakt und prüfen 116 geordnete Host-, Configstring- und Link-Ereignisse. Die
+Userinfo-Fälle führen die gemeinsame, ASCII-groß-/kleinschreibungsunabhängige
+Handicap-Suche und einen am ursprünglichen Pufferende abgeschnittenen Wert
+durch den vollständigen Eintrittspfad. Fünf
 Laufzeitverträge prüfen Slotgrenzen, fehlende Pflichtschnittstellen und die
 Standardregistrierung des Callbacks.
 
-Test-Binary: `7f8e1824396b906ea2d77f0f7b1a4ade2fbb37d8b376eeea15bc25cea1ede094`.
-Native x86-Oracle: `5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae`.
+Test-Binary: `967409215e9b999d3907b51af06718acb46338e28e390bf9fc71e94b674fa849`.
+Native x86-Oracle: `a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f`.
 
 Userinfo, Usercmd, ServerCommand und Game-Log werden an geordneten Host-Grenzen
 zugestellt. Spawnwahl, Kollision, Targets, PlayerState-Konvertierung,
 Entity-Verlinkung, Ereignis-Erzeugung und Rangberechnung laufen auf beiden Seiten
-als echte Implementierungen. `G_RunFrame`, Netzwerkzustellung und Missionpack
-bleiben eigene Portschritte.
+als echte Implementierungen. [`G_RunFrame`](FULL_FRAME.md) ist inzwischen
+separat geprüft. Vollständige Anmeldung über `ClientConnect`, Sitzungs-Persistenz,
+Netzwerkzustellung und Missionpack bleiben eigene Portschritte.
 
 Ausführen:
 

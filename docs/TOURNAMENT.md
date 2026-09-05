@@ -22,7 +22,7 @@ CTF-Team, Singleplayer und einen 32-Bit-Zeitüberlauf. Drei Laufzeitverträge pr
 Spawn-Zustand, Promotion-Schnittstelle und Clientlimit.
 
 Test-Binary: `145eb912f798c37d7a2635a480f62014c571c33f13ec50c32a70410c5e610497`.
-Native x86-Oracle: `5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae`.
+Native x86-Oracle: `a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f`.
 
 Ausführen:
 

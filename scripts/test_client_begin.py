@@ -18,13 +18,17 @@ def i32(value):
 
 def case(scenario=0,gametype=0,team=0,bot=0,local=0,initial=1,teamstate=0,intermission=0,
          time=2345,inactivity=17,handicap=75,psflags=0x84004,entflags=0x123456,ping=44,eventseq=5,
-         persistent=1000,angles=(100,200,300),weapon=9,hits=12,shots=34,origin=(10.,20.,30.),linked=0,other=0):
+         persistent=1000,angles=(100,200,300),weapon=9,hits=12,shots=34,origin=(10.,20.,30.),linked=0,other=0,userinfo=None):
     row=[scenario,gametype,team,bot,local,initial,teamstate,intermission,time,inactivity,handicap,
          psflags,entflags,ping,eventseq,persistent,*angles,weapon,hits,shots,*map(bits,origin),0,linked,other]
-    return struct.pack('<32i',*map(i32,row+[0]*(32-len(row))))
+    row += [0]*(32-len(row));extra=b''
+    if userinfo is not None:extra=userinfo.encode('utf-8');row[28]=len(extra)+1
+    return struct.pack('<32i',*map(i32,row))+extra
 
 def scenarios():
     yield 'ffa_regular',case()
+    yield 'userinfo_case_insensitive_handicap',case(userinfo='\\HANDICAP\\35')
+    yield 'userinfo_truncated_handicap',case(userinfo='\\pad\\'+'x'*1007+'\\handicap\\75')
     yield 'linked_team_change',case(linked=1,psflags=0x84004|0x10000000)
     yield 'tournament_suppresses_announcement',case(gametype=1)
     yield 'spectator',case(team=3)

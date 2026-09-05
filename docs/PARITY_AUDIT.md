@@ -4,19 +4,19 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die aktuelle reguläre Regression besteht aus **32 bestandenen Prüfbereichen**
+Die aktuelle reguläre Regression besteht aus **33 bestandenen Prüfbereichen**
 (`verify.py --data-root D:/Quake3`), einschließlich Engine-/Spielmodul-Cvars, Teamstandorten/-overlay,
-Passwortstatus, Vote-Aufrufen/Stimmabgabe und Vote-/Teamleiterregeln,
+Passwortstatus, Userinfo/Namen/Teamwahl, Vote-Aufrufen/Stimmabgabe und Vote-/Teamleiterregeln,
 Spawnpunkten, Leichen, Punkten, Spieler-Tod, Items/Flaggen, vollständigen
-Client-Lebenszyklen, `CheckTournament`, `G_RunFrame` und CLI-Laufzeitvergleichen.
+Client-Abläufen ab `ClientBegin`, `CheckTournament`, `G_RunFrame` und CLI-Laufzeitvergleichen.
 Alle 31 CD-Karten werden geladen; Schadens-, Projektil- und Leichenfälle laufen
 ebenfalls auf den CD-Karten.
 
 Die letzte erweiterte Vollprüfung mit beiden Kollisions-/Bewegungsprofilen
 bestand **43 Prüfbereiche am Stand `f8cdf9a`**, vor den Vote-, Teamstatus- und Spiel-Cvar-Ports. Deren Bericht
 ist in der Git-Version dieses Stands archiviert. Die erweiterte Suite enthält
-nun 47 Gates; für den aktuellen Vote-Befehlsstand wurde die reguläre Suite ausgeführt.
-Der Lauf ist in `build/verify-vote-commands.log` protokolliert.
+nun 48 Gates; für den aktuellen Userinfo-Stand wurde die reguläre Suite ausgeführt.
+Der Lauf ist in `build/verify-client-info.log` protokolliert.
 Der finale MiniQuake3-Build hat SHA-256
 `3a8c6f394b337404511f826e34404d0fd5f9c3011af6b7a4b2a96cc5321d99fb`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
@@ -25,10 +25,10 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | --- | --- | --- |
 | 1. Referenz | Grundabnahme bestanden | Originale x86-Engine, drei native Module, drei neu gebaute QVMs; MiniLang-Build; 1.409 Dateien inventarisiert; 120 Frames mit zwei Bots aufgezeichnet und zweimal bytegleich wiedergegeben |
 | 2. Zahlen/Plattform | In Arbeit | 101.445 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff vorhanden; Fenster, Eingabe, UDP und Audio noch offen |
-| 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, Engine-/VM-Cvar-Registrierung/-Aktualisierung und Spielmodul-Tabelle, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, Cvar-Neustart/Config-Persistenz, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
+| 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, Engine-/VM-Cvar-Registrierung/-Aktualisierung und Spielmodul-Tabelle, 448 Parseraufrufe, Info-Schlüsselsuche/-Validierung und 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, Cvar-Neustart/Config-Persistenz, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung, Sprungpad-/Teleport-Replays, ClientBegin und G_RunFrame-Einbindung geprüft; komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, vollständiger Client-Lebenszyklus, Leichen, Items, Punkte, Ränge, Matchende, Tournament/Warmup, Vote-Aufrufe/Stimmabgabe/Auflösung, Teamleiterwahl, Teamstandorte/-overlay, Passwortstatus, Engine-Cvar-Refresh und CTF vorhanden; weitere Klassen, Mover-Pushing, vollständige Modulinitialisierung und Client-Befehlsverteilung fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Client-Abläufe ab ClientBegin, Userinfo/Namen/Teamwahl, Leichen, Items, Punkte, Ränge, Matchende, Tournament/Warmup, Vote-Aufrufe/Stimmabgabe/Auflösung, Teamleiterwahl, Teamstandorte/-overlay, Passwortstatus, Engine-Cvar-Refresh und CTF vorhanden; ClientConnect, Sitzungs-Persistenz, weitere Klassen, Mover-Pushing, vollständige Modulinitialisierung und Client-Befehlsverteilung fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -581,15 +581,17 @@ Client-Frames, Netzwerkzustellung und Missionpack bleiben offen. Details:
 
 ## ClientSpawn (Schritt 6)
 
-`scripts/test_client_spawn.py` besteht mit **17 Szenarien**, **4.666 exakt
-gleichen 32-Bit-Wörtern**, **18.766 Ausgabe-Bytes** und **116 geordneten
+`scripts/test_client_spawn.py` besteht mit **21 Szenarien**, **5.766 exakt
+gleichen 32-Bit-Wörtern**, **23.190 Ausgabe-Bytes** und **144 geordneten
 Host-/Link-Ereignissen**. Acht Laufzeitverträge prüfen die Initialisierung,
 Info-Strings, fehlende Pflichtgrenzen und die Standardverbindung aus `respawn`.
 
 Der Port deckt FFA-, Initial-, CTF-, Team- und Zuschauerpositionen,
 Bot-/Human-Filter, Persistenz und Transient-Reset, Handicap, Spawnzähler,
 Startwaffen, Gesundheit, Teleport-/Vote-Flags, KillBox, Verlinkung, Spawn-Targets,
-Waffenwahl und beide PlayerState-zu-EntityState-Konvertierungen ab. Die native
+Waffenwahl und beide PlayerState-zu-EntityState-Konvertierungen ab. Die gemeinsame
+Info-Schlüsselsuche und die 1.023-Byte-Userinfo-Kopie sind auch mit wechselnder
+Schreibweise, Duplikaten und abgeschnittenen Handicap-Werten geprüft. Die native
 Referenz führt den unveränderten `ClientSpawn`-Funktionskörper aus.
 `trap_GetUserinfo`, `trap_GetUsercmd`, `ClientThink`, `ClientEndFrame` und
 `MoveClientToIntermission` bleiben in dieser isolierten ClientSpawn-Suite
@@ -599,8 +601,8 @@ die portierten Think- und Frame-Abschlüsse auf. Details:
 
 ## ClientBegin (Schritt 6)
 
-`scripts/test_client_begin.py` besteht mit **acht Szenarien**, **2.907 exakt
-gleichen 32-Bit-Wörtern**, **12.111 Ausgabe-Bytes** und **92 geordneten
+`scripts/test_client_begin.py` besteht mit **zehn Szenarien**, **3.637 exakt
+gleichen 32-Bit-Wörtern**, **15.163 Ausgabe-Bytes** und **116 geordneten
 Host-/Configstring-/Link-Ereignissen**. Fünf Laufzeitverträge prüfen Slotgrenzen,
 Pflichtschnittstellen und die Registrierung als Standard-Callback.
 
@@ -609,7 +611,30 @@ Seiten als echte Implementierungen aus. Geprüft sind Unlink/Reinitialisierung,
 persistent gebundener Client, vollständiger PlayerState-Reset mit erhaltenen
 `eFlags`, Spawn, Teleport-In-Ereignis, Eintrittsmeldung, Log und Ränge. Tournament,
 Zuschauer, Intermission, CTF, ein weiterer Ranglisten-Client und 32-Bit-Zeitgrenzen
-sind enthalten. Details: [CLIENT_BEGIN.md](CLIENT_BEGIN.md).
+sind enthalten, ebenso die gemeinsame Userinfo-Suche und die ursprüngliche
+Puffergrenze im Eintrittspfad. Details: [CLIENT_BEGIN.md](CLIENT_BEGIN.md).
+
+## Userinfo, Spielernamen und Teamwahl (Schritte 3 und 6)
+
+`scripts/test_client_info.py` besteht mit **195 Szenarien**, **1.947 Aktionen**,
+**7.925.495 exakt gleichen 32-Bit-Wörtern**, **32.887.041 Ausgabe-Bytes** und
+**722 geordneten Nebenwirkungen**. 18 Laufzeitverträge und zwei native
+Fehlerfälle ergänzen den Vergleich.
+
+Geprüft sind `ClientCleanName`, `ClientUserinfoChanged`, `TeamLeader`, `PickTeam`,
+`Info_ValueForKey` und `Info_Validate`: bytegenaue Namen/Farben/Leerzeichen,
+ASCII-Schlüsselsuche, originale Puffergrenzen, lokaler Clientstatus, Vorhersage,
+Umbenennungsreihenfolge, Handicap, Modelle, Bot-Anzeigeteam, Overlay und exakte
+Spieler-Configstrings samt Log. Jeder Host-Aufruf und jede zustandsändernde
+Aktion vergleicht sämtliche 117 PlayerState-Wörter aller 64 Clients, relevante
+Client-/Sitzungs-/Entity-Felder, Spieler-Configstrings und Team-Vote-Zustand.
+Reine Hilfsfunktionen haben eigene Ergebnisvergleiche.
+
+Die tatsächliche Standardverbindung aus `SetLeader` läuft in vollständigen
+roten und blauen Team-Vote-Folgen; Userinfo-Änderungen steuern anschließend auch
+die echten Overlay-Nachrichten. Engine-Userinfo-Zustellung, Serverbefehle,
+Configstring-Netzwerktransport und Logdatei bleiben Host-Grenzen. `ClientConnect`
+und Sitzungs-Persistenz sind noch offen. Details: [CLIENT_INFO.md](CLIENT_INFO.md).
 
 ## Vollständiger Spielserverframe (Schritt 6)
 
@@ -670,8 +695,10 @@ Die originalen Besonderheiten bei `msg[1]`, nicht erhöhten Aufrufzählern und
 vorzeitig ausgeführten Alt-Votes bleiben erhalten. Das mögliche Überlaufen
 von `strcat` bei Teamargumenten wird kontrolliert abgewiesen.
 
-Vollständiger `ClientCommand`-Dispatcher samt Intermission-Verhalten,
-Kommando-Tokenisierung, `ClientUserinfoChanged` und Netzwerk-/Engine-Zustellung
+Die isolierten Vote-Suiten verwenden einen `ClientUserinfoChanged`-Override;
+die reale Standardverbindung mit Spieler-Configstrings wird jetzt separat in
+`test_client_info.py` geprüft. Vollständiger `ClientCommand`-Dispatcher samt
+Intermission-Verhalten, Kommando-Tokenisierung und Netzwerk-/Engine-Zustellung
 bleiben offen. Details: [VOTES.md](VOTES.md).
 
 ## Teamstandorte, Overlay und Passwortstatus (Schritt 6)

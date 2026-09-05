@@ -19,6 +19,11 @@ erhält Gauntlet, Machinegun sowie deren ursprüngliche Munitionswerte. Die
 Entitybox, Kollisionsinhalte, Gesundheit, Respawn-/Inaktivitätszeiten und
 Standardanimationen entsprechen Baseq3.
 
+Die [gemeinsame Info-Schlüsselsuche](CLIENT_INFO.md) behandelt ASCII-Großschreibung
+wie C und verwendet bei doppelten Schlüsseln den ersten Wert. Zuvor wird der
+gelieferte Userinfo-Text wie durch `trap_GetUserinfo` auf 1.023 Bytes kopiert;
+auch ein dadurch abgeschnittener Handicap-Zahlenwert bleibt originalgetreu.
+
 Für aktive Spieler folgen `G_KillBox`, Server-Link, Spawn-Targets und die Auswahl
 der höchsten verfügbaren Waffe. Der Ablauf konvertiert den PlayerState vor und
 nach dem letzten Frame-Hook in den EntityState und verlinkt den Spieler nach dem
@@ -50,18 +55,20 @@ bleiben Engine-Schnittstellen.
 python scripts/test_client_spawn.py
 ```
 
-17 Szenarien vergleichen 4.666 32-Bit-Wörter in 18.766 Ausgabe-Bytes exakt und
-prüfen 116 geordnete Host-/Link-Ereignisse. Sie decken FFA, den lokalen
+21 Szenarien vergleichen 5.766 32-Bit-Wörter in 23.190 Ausgabe-Bytes exakt und
+prüfen 144 geordnete Host-/Link-Ereignisse. Sie decken FFA, den lokalen
 Initialspawn, Bot-/Human-Filter mit Wiederholung, Team-Deathmatch-Munition,
 CTF-Start- und Aktivpositionen für beide Teams, Zuschauer, Intermission,
 Handicapgrenzen, Vote-/Teleportflags, 32-Bit-Zeitgrenzen, persistente Daten,
 Transient-Reset, belegte Spawnpunkte mit KillBox, Spawn-Targets, Waffenwahl und
-beide Snapshot-Konvertierungen ab.
+beide Snapshot-Konvertierungen ab. Vier Userinfo-Fälle ergänzen unterschiedliche
+Schlüsselschreibweisen, Duplikate, den fehlenden ersten Trenner und die
+ursprüngliche Puffergrenze vor beziehungsweise innerhalb des Handicap-Werts.
 Acht zusätzliche Laufzeitverträge prüfen Initialwerte, Userinfo-Auswertung,
 fehlende Pflichtgrenzen und die Standardverbindung aus `deaths.respawn`.
 
-Test-Binary: `41d3b9cafab514dd6f89ceaaf9e81d6fb43858221dc1446c3a3e133f13c6c111`.
-Native x86-Oracle: `5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae`.
+Test-Binary: `234193e4d4852e8955ca187a3182fd82c4e1b6bb3b823e960b53e927b5cd18d6`.
+Native x86-Oracle: `a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f`.
 
 Der C-Oracle enthält den unveränderten Funktionskörper aus `g_client.c`. Nur die
 fünf oben aufgeführten Abhängigkeiten werden am Host-Rand beobachtet. Spawnwahl,

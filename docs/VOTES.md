@@ -54,19 +54,23 @@ Die Frame-Fälle führen inzwischen auch den portierten Teamstatus und
 `g_needpass`-Ausgabe wird verglichen. Dadurch ändern sich Wort-/Effektzahlen
 bei unverändertem Vote-Szenarienumfang.
 
-Test-Binary: `ba6d9b598a900c645b81bd36059aa19a6aba42646cc1ace08c787fbabe31253d`.
-Native x86-Oracle: `5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae`.
+Test-Binary: `79ebeb4e395fbe606dd91a25a042e7808624ada94d4a5e611f97aaff3fa4c986`.
+Native x86-Oracle: `a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f`.
 
 ```powershell
 python scripts/test_votes.py
 python scripts/test_votes.py --case frame_votes_and_delayed_command
 ```
 
-`ClientUserinfoChanged`, Server- und Konsolenbefehle enden an expliziten
-Host-Schnittstellen. Die Engine führt die im Test beobachteten Befehle nicht aus.
+Die isolierte Suite beobachtet `ClientUserinfoChanged` über einen ausdrücklichen
+Override. Der normale Leiterwechsel führt jetzt die portierte
+[Userinfo-Verarbeitung](CLIENT_INFO.md) aus; deren separate Suite prüft die
+vollständige Team-Vote-Folge einschließlich Spieler-Configstrings.
+Server- und Konsolenbefehle enden an expliziten Host-Schnittstellen.
+Die Engine führt die im Test beobachteten Befehle nicht aus.
 Die Aufruf-/Stimmhandler `Cmd_CallVote_f`, `Cmd_Vote_f` und ihre Team-Pendants
 sind inzwischen separat geprüft, wie nachfolgend beschrieben.
-Die vollständige Userinfo-/Sitzungslogik bleibt offen.
+`ClientConnect` und die Sitzungs-Persistenz bleiben offen.
 `CheckTeamLeader` ist für diese späteren Teamwechsel bereits geprüft; im
 Frame erfolgt wie im Original ausschließlich die Vote-Auflösung.
 
@@ -136,8 +140,8 @@ und Modul-Rebind. Ist der originale Teamargument-Puffer voll und ein weiteres
 Argument würde `strcat` überlaufen lassen, gibt MiniLang einen kontrollierten
 Fehler zurück. Dieses undefinierte C-Speicherschreiben wird nicht ausgeführt.
 
-Test-Binary: `ae07c4437f8c19e8e9797e21cdbd81d96c82889dc153df7727a958e0c9c8dcac`.
-Native x86-Oracle: `5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae`.
+Test-Binary: `75d6e1f087855dfd5b96f45522441dc59379c399511ffb5ff2720208ab24c39c`.
+Native x86-Oracle: `a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f`.
 
 ```powershell
 python scripts/test_vote_commands.py
@@ -149,5 +153,6 @@ Intermission, Engine-Kommando-Tokenisierung, Netzwerkzustellung und tatsächlich
 Ausführung des Konsolenbefehls bleiben offen. Diese vier direkt aufrufbaren
 Handler bilden deren geprüften Vote-Teil. Im nativen Testhost ist die
 `nextmap`-Abfrage eine gespeicherte Engine-Antwort; MiniLang nutzt bereits die
-tatsächliche portierte Registry. `ClientUserinfoChanged` bleibt auch hier eine
-beobachtete Host-Schnittstelle.
+tatsächliche portierte Registry. Die isolierte Befehlssuite verwendet ebenfalls
+den beobachteten `ClientUserinfoChanged`-Override. Den realen Standardpfad und
+seine Einbindung in beide Team-Votes prüft `test_client_info.py`.

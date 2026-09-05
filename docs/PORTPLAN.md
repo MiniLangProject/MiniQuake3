@@ -85,6 +85,8 @@ Native ZIP-Helfer nur mit festgelegter Grenze; Such- und Pure-Logik bleibt MiniL
 
 **Geprüfter Teilstand:** Die [Engine-/VM-Cvar-Registrierung und -Aktualisierung](GAME_CVARS.md)
 ist einschließlich stabiler Handles, Latching und Spielmodul-Tabelle portiert.
+Die gemeinsame [Info-Schlüsselsuche und -Validierung](CLIENT_INFO.md) ist gegen
+die Originalfunktionen geprüft und mit Userinfo sowie `ClientSpawn` verbunden.
 `cvar_restart`, Config-Persistenz, Command-Buffer und vollständige Engine-Schleife
 bleiben offene Teile dieser Abnahme.
 
@@ -186,9 +188,13 @@ der ursprünglichen Stelle im Frame. [Vote-Aufrufe, Stimmabgabe, Auflösung und
 Teamleiterwahl](VOTES.md) sind ebenfalls portiert. Vollständige Aufruf-/Stimm-/
 Ergebnisfolgen und die Einbindung der Auflösung in echte Frames sind geprüft.
 [Teamstandorte, Overlay und Passwortstatus](TEAM_STATUS.md) laufen inzwischen
-an den ursprünglichen Frame-Positionen. Als Nächstes folgen die übrigen
-Spielobjekte, vollständige Client-Befehlsverteilung, weitere Waffentreffer und
-Mover-Pushing. Der vollständige Server bleibt bis zu dieser Integration offen.
+an den ursprünglichen Frame-Positionen. [Namen, Userinfo und Teamwahl](CLIENT_INFO.md)
+aktualisieren jetzt Spielerangaben und Configstrings, auch innerhalb echter
+Team-Vote-/Leiterwechsel-Folgen. `ClientSpawn` verwendet dieselbe geprüfte
+Info-Schlüsselsuche und die ursprüngliche Userinfo-Puffergrenze. Als Nächstes
+folgen `ClientConnect` und Sitzungs-Persistenz; weitere Spielobjekte, vollständige
+Client-Befehlsverteilung, Waffentreffer und Mover-Pushing bleiben offen.
+Der vollständige Server bleibt bis zu dieser Integration offen.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
 Shooter-Objekte sind jetzt gegen C geprüft; siehe [Projektile](MISSILES.md). Die
@@ -205,14 +211,17 @@ geprüft; [`ClientSpawn`](CLIENT_SPAWN.md) und
 [`ClientEndFrame`](CLIENT_FRAMES.md) sind ebenfalls gegen die unveränderten
 C-Funktionskörper geprüft. [`ClientThink`](CLIENT_THINK.md) ist ebenfalls vollständig
 in den MiniLang-Spielpfad eingebunden. [`ClientBegin`](CLIENT_BEGIN.md) verbindet
-diesen Lebenszyklus inzwischen vollständig. [`G_RunFrame`](FULL_FRAME.md) führt
+den Eintritt ab einem bereits angelegten Client. [`G_RunFrame`](FULL_FRAME.md) führt
 ihn mit Entity-Schleife, Matchende und den geordneten Wartungsstufen zusammen.
 Tournament/Warmup, globale/Team-Vote-Auflösung, Teamstatus und `CheckCvars`
 sind portiert. [Cvar-Registrierung und Engine-/VM-Kopien](GAME_CVARS.md)
 versorgen den Frame inzwischen über die vollständige Baseq3-Cvar-Tabelle.
 Die vier Vote-Befehlshandler nutzen die registrierte `g_allowVote`-Kopie und
-die tatsächliche `nextmap`-Cvar. Modulinitialisierung, vollständige Client-Befehlsverteilung
-und Netzwerkzustellung sind die nächsten Grenzen.
+die tatsächliche `nextmap`-Cvar. `ClientUserinfoChanged`, `ClientCleanName`,
+`TeamLeader` und `PickTeam` sind portiert; die Standardverbindung aus `SetLeader`
+und die Userinfo-Steuerung des Teamoverlays sind zusammenhängend geprüft.
+`ClientConnect`, Sitzungs-Persistenz, Modulinitialisierung, vollständige
+Client-Befehlsverteilung und Netzwerkzustellung sind die nächsten Grenzen.
 Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.

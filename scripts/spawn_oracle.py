@@ -9,7 +9,7 @@ import re
 
 FUNCTIONS={
     'g_utils.c':['vectoyaw','G_InitGentity','G_Spawn','G_EntitiesFree','G_FreeEntity','G_SetOrigin','G_Find','G_PickTarget','G_FindConfigstringIndex','G_ModelIndex','G_SoundIndex','G_SetMovedir','G_TempEntity','G_KillBox','vtos','AddRemap','BuildShaderStateConfig','G_UseTargets','G_AddPredictableEvent','G_AddEvent','G_Sound'],
-    'g_client.c':['SpotWouldTelefrag','SelectNearestDeathmatchSpawnPoint','SelectRandomDeathmatchSpawnPoint','SelectRandomFurthestSpawnPoint','SelectSpawnPoint','SelectInitialSpawnPoint','SelectSpectatorSpawnPoint','InitBodyQue','BodySink','CopyToBodyQue','SetClientViewAngle','respawn','ClientSpawn','ClientBegin','TeamCount','SP_info_player_deathmatch','SP_info_player_start','SP_info_player_intermission'],
+    'g_client.c':['SpotWouldTelefrag','SelectNearestDeathmatchSpawnPoint','SelectRandomDeathmatchSpawnPoint','SelectRandomFurthestSpawnPoint','SelectSpawnPoint','SelectInitialSpawnPoint','SelectSpectatorSpawnPoint','InitBodyQue','BodySink','CopyToBodyQue','SetClientViewAngle','respawn','ClientSpawn','ClientBegin','TeamCount','TeamLeader','PickTeam','ClientCleanName','ClientUserinfoChanged','SP_info_player_deathmatch','SP_info_player_start','SP_info_player_intermission'],
     'g_misc.c':['TeleportPlayer','SP_info_null','SP_info_notnull','SP_info_camp','SP_light','SP_misc_model','SP_misc_teleporter_dest','Use_Shooter','InitShooter_Finish','InitShooter','SP_shooter_rocket','SP_shooter_grenade','SP_shooter_plasma'],
     'g_target.c':['SP_target_position','Think_Target_Delay','Use_Target_Delay','SP_target_delay','target_relay_use','SP_target_relay','target_teleporter_use','SP_target_teleporter','Use_Target_Speaker','SP_target_speaker','target_location_linkup','SP_target_location','target_kill_use','SP_target_kill','target_laser_think','target_laser_on','target_laser_off','target_laser_use','target_laser_start','SP_target_laser'],
     'g_team.c':['OtherTeam','TeamName','AddTeamScore','Team_SetFlagStatus','Team_ForceGesture','Team_CheckDroppedItem','Team_ResetFlag','Team_ResetFlags','Team_ReturnFlagSound','Team_TakeFlagSound','Team_CaptureFlagSound','Team_ReturnFlag','Team_FreeEntity','Team_DroppedFlagThink','Team_TouchOurFlag','Team_TouchEnemyFlag','Pickup_Team','SelectRandomTeamSpawnPoint','SelectCTFSpawnPoint','SP_team_CTF_redplayer','SP_team_CTF_blueplayer','SP_team_CTF_redspawn','SP_team_CTF_bluespawn','OnSameTeam','Team_FragBonuses','Team_CheckHurtCarrier','Team_GetLocation','SortClients','TeamplayInfoMessage','CheckTeamStatus'],
@@ -41,10 +41,11 @@ def build(output):
                 if not match:raise RuntimeError('Missing original modNames table')
                 body.append(match[0])
             for symbol in names:
-                match=re.search(r'^\w+[ \t]+\*?'+symbol+r'\s*\([^;]*?\)\s*\{.*?^\}',source_text,re.M|re.S)
+                match=re.search(r'^(?:static\s+)?\w+[ \t]+\*?'+symbol+r'\s*\([^;]*?\)\s*\{.*?^\}',source_text,re.M|re.S)
                 if not match:raise RuntimeError('Missing original game function '+symbol)
                 if symbol=='ClientSpawn':body.append('#define ClientSpawn Original_ClientSpawn\n'+match[0]+'\n#undef ClientSpawn')
                 elif symbol=='ClientBegin':body.append('#define ClientBegin Original_ClientBegin\n#define ClientSpawn Original_ClientSpawn\n'+match[0]+'\n#undef ClientSpawn\n#undef ClientBegin')
+                elif symbol=='ClientUserinfoChanged':body.append('#define ClientUserinfoChanged Original_ClientUserinfoChanged\n'+match[0]+'\n#undef ClientUserinfoChanged')
                 else:body.append(match[0])
         elif name=='g_active.c':
             source_text=path.read_text();functions=[]

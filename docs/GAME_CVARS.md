@@ -106,7 +106,7 @@ MiniLang-Fehler bleibt die letzte gültige VM-Kopie erhalten; der originale
 Engine-Abbruch mit teilweise geschriebenem Fehlerzustand wird nicht nachgebildet.
 Eingebettete NUL-Zeichen werden kontrolliert abgewiesen.
 
-Test-Binary: `d1945e8634fa3deec93c4d34062bd6e1a4cabaab29cbd9a1ac445dee46e2d3a7`.
+Test-Binary: `4e7738fa8e7f9d2b40ea915eaff767eddea661ca0f179c5ad3b6d8b837e102cd`.
 Native x86-Oracle: `7686df254f37a2e42d3e47a60e92f253d20e58faf863e56b4a015c615920619e`.
 
 ```powershell

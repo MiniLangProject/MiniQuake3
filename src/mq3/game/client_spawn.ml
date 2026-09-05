@@ -18,6 +18,7 @@ import mq3.game.movement as movement
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
 import std.string as strings
+import mq3.shared.info as infoStrings
 
 const EF_TELEPORT_BIT = 0x00000004
 const EF_KAMIKAZE = 0x00000200
@@ -32,15 +33,7 @@ const CONTENTS_BODY = 0x02000000
 const MASK_PLAYERSOLID = 0x02010001
 
 function infoValue(info,key)
-  if info == void then return "" end if
-  fields = strings.split(info,"\\")
-  index = 0
-  if len(fields) > 0 and fields[0] == "" then index = 1 end if
-  while index+1 < len(fields)
-    if fields[index] == key then return fields[index+1] end if
-    index = index+2
-  end while
-  return ""
+  return infoStrings.value(info,key)
 end function
 
 function clearTransient(client,savedPing,persistant,eventSequence)
@@ -116,7 +109,7 @@ function spawn(level,ent,dieFn)
   client.airOutTime = n.add32(level.time,12000)
 
   if level.userinfoFn == void then return error(496,"ClientSpawn requires userinfo delivery") end if
-  client.maxHealth = textnum.atoi(infoValue(level.userinfoFn(level,ent.slot),"handicap"))
+  client.maxHealth = textnum.atoi(infoValue(infoStrings.copy(level.userinfoFn(level,ent.slot),1024),"handicap"))
   if client.maxHealth < 1 or client.maxHealth > 100 then client.maxHealth = 100 end if
   client.ps.stats[c.STAT_MAX_HEALTH] = client.maxHealth; client.ps.eFlags = flags
 

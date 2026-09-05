@@ -24,6 +24,10 @@ innerhalb echter Frames, einschließlich Teamleiterwechsel, verzögerter
 Befehlsausführung und mehrerer gleichzeitig auslaufender Abstimmungen.
 `test_vote_commands.py` ergänzt außerhalb der Frame-Schleife die vollständigen
 Aufruf-/Stimm-/Ergebnisfolgen über die vier portierten Client-Befehlshandler.
+Diese isolierten Vote-Suiten behalten einen Userinfo-Override. Der normale
+Leiterwechsel verwendet die portierte [Userinfo-Verarbeitung](CLIENT_INFO.md);
+`test_client_info.py` prüft außerhalb der Frame-Schleife beide Team-Vote-Folgen
+mit echten Spieler-Configstrings und die Userinfo-Steuerung des Teamoverlays.
 Der [Teamstatus-Vergleich](TEAM_STATUS.md) ergänzt aktive Standort-/Overlay-
 und Passwortfolgen in echten Frames. Die früheren Teamstatus-/CheckCvars-
 Testmarker sind durch die tatsächlichen Funktionen und ihre Ausgaben ersetzt.
@@ -33,8 +37,8 @@ Der [Engine-/Spiel-Cvar-Vergleich](GAME_CVARS.md) prüft zusätzlich den
 standardmäßigen Registry-Pfad innerhalb des unveränderten Frames mit
 ausschließlich inaktiven Entities, einschließlich Passwort und Entity-Listen-Reset.
 
-Test-Binary: `f8760f73e30e821c80b1565395a5484641662a89538594b47080fe9fb9ee650b`.
-Native x86-Oracle: `5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae`.
+Test-Binary: `df976c1b1134f7dbcb505088b8eb1d77a6160b5342d4bd3c20a1c15719bb0637`.
+Native x86-Oracle: `a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f`.
 
 Ausführen:
 

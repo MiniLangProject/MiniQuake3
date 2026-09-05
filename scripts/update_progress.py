@@ -149,6 +149,17 @@ def main():
     for source,(targets,symbols) in vote_command_mappings.items():
         old_targets,old_symbols,tests=mappings[source]
         mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_vote_commands.py"])))
+    client_info_mappings={
+        "code/game/g_client.c":(["src/mq3/game/client_info.ml","src/mq3/shared/info.ml"],["ClientCleanName","ClientUserinfoChanged","TeamLeader","PickTeam"]),
+        "code/game/q_shared.c":(["src/mq3/shared/info.ml"],["Info_ValueForKey","Info_Validate"]),
+        "code/game/g_cmds.c":([],[]),
+        "code/game/g_team.c":([],[]),
+        "code/game/g_main.c":(["src/mq3/game/client_info.ml"],[]),
+        "code/game/g_local.h":(["src/mq3/game/client_info.ml"],[]),
+    }
+    for source,(targets,symbols) in client_info_mappings.items():
+        old_targets,old_symbols,tests=mappings[source]
+        mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_client_info.py"])))
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text(encoding="utf-8"))
     for entry in ledger["files"]:
@@ -170,7 +181,7 @@ def main():
                         symbol["scope"] = "All 46 pinned Baseq3 table rows and 43 VM snapshots are compared with the actual original engine registry: flags/defaults/order, registration, change counters, latched values, exact broadcasts and gameplay field synchronization. G_RemapTeamShaders has an empty Baseq3 body; Missionpack is excluded. Build date is explicit host metadata matching the native compiler's __DATE__. Empty-entity frame probes use guarded inactive match/vote boundaries."
                     elif symbol["original"] in ("CheckVote","CheckTeamVote","PrintTeam","SetLeader","CheckTeamLeader"):
                         symbol["target_files"] = ["src/mq3/game/votes.ml"]
-                        symbol["scope"] = "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; complete command routing and network transport are open."
+                        symbol["scope"] = "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged uses its ported default, with real team-vote integration in the userinfo suite; legacy vote suites retain an override. Engine delivery, complete command routing and network transport are open."
             if entry["source"] == "code/server/sv_init.c":
                 entry["symbol_mapping"][0]["scope"] = "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
             if entry["source"] == "code/qcommon/cvar.c":
@@ -178,6 +189,11 @@ def main():
                     if symbol["original"] in ("Cvar_Register","Cvar_Update"):
                         symbol["target_files"] = ["src/mq3/qcommon/cvar.ml"]
                         symbol["scope"] = "Actual engine VM-Cvar registration/update: zero-based stable handles, -1 registration sentinel, unchanged/cleared early returns, 255-byte strings and float/int snapshots. Invalid handles, embedded NUL and overlength fail safely; caught MiniLang errors retain the last valid VM snapshot instead of reproducing C's process-drop side effects. Registry cvar_restart and full QVM trap dispatch remain open."
+            if entry["source"] == "code/game/q_shared.c":
+                for symbol in entry["symbol_mapping"]:
+                    if symbol["original"] in ("Info_ValueForKey","Info_Validate"):
+                        symbol["target_files"] = ["src/mq3/shared/info.ml"]
+                        symbol["scope"] = "Original info-string lookup: ASCII case-insensitive first key, optional leading separator, empty/malformed pairs, NULL lookup and 8191-byte bound. Validation excludes only quotes and semicolons. Embedded NUL and invalid copy capacity fail safely. Owned MiniLang strings replace C's alternating static result buffers; no pointer aliasing is claimed. ClientSpawn shares lookup and the original 1023-byte userinfo copy."
             if entry["source"] == "code/game/g_combat.c":
                 entry["symbol_mapping"][1]["scope"] = "Baseq3 damage state and pain/die/mover dispatch. player_die is connected and separately compared end to end; damage feedback, Missionpack and the full server frame remain open. G_Printf diagnostics are excluded."
             if entry["source"] == "code/game/g_missile.c":
@@ -203,7 +219,7 @@ def main():
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] in ("gameNames","Cmd_CallVote_f","Cmd_Vote_f","Cmd_CallTeamVote_f","Cmd_TeamVote_f"):
                         symbol["target_files"] = ["src/mq3/game/vote_commands.ml"]
-                        symbol["scope"] = "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Command tokenization/full ClientCommand dispatch, UserinfoChanged and engine/network command delivery remain boundaries."
+                        symbol["scope"] = "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Command tokenization/full ClientCommand dispatch and engine/network command delivery remain boundaries."
                     else:
                         symbol["target_files"] = ["src/mq3/game/scores.ml"]
                         symbol["scope"] = "Exact scoreboard command payload and recipient; transport callback observed. No network transmission or client display."
@@ -223,11 +239,14 @@ def main():
             if entry["source"] == "code/game/g_client.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] == "ClientSpawn":
-                        symbol["scope"] = "Baseq3 player placement, persistent/session preservation, transient reset, handicap, inventory, spawn filters, target/weapon/link order and snapshots are compared. Ported ClientThink and ClientEndFrame are the defaults; userinfo/usercmd delivery and intermission placement remain explicit host boundaries."
+                        symbol["scope"] = "Baseq3 player placement, persistent/session preservation, transient reset, handicap, inventory, spawn filters, target/weapon/link order and snapshots are compared. Userinfo uses shared case-insensitive first-key lookup after the original 1023-byte trap copy, including truncated handicap digits. Ported ClientThink and ClientEndFrame are the defaults; userinfo/usercmd delivery and intermission placement remain explicit host boundaries."
                     elif symbol["original"] == "ClientBegin":
                         symbol["scope"] = "Baseq3 entry lifecycle with actual ported ClientSpawn and CalculateRanks: unlink/reinit, playerState reset, entry event/message/log, tournament and spectator branches. Engine delivery remains at explicit callbacks."
                     elif symbol["original"] == "TeamCount":
-                        symbol["scope"] = "Baseq3 connected-client team counting, used by and compared through CheckTournament readiness decisions."
+                        symbol["scope"] = "Baseq3 connected-client team counting, used by and compared through CheckTournament readiness decisions and PickTeam userinfo selection."
+                    elif symbol["original"] in ("ClientCleanName","ClientUserinfoChanged","TeamLeader","PickTeam"):
+                        symbol["target_files"] = ["src/mq3/game/client_info.ml"]
+                        symbol["scope"] = "Unchanged Baseq3 name cleaning, userinfo update and team selection: byte/color/space limits, sticky local-client flag, prediction, rename order, handicap, team models, bot display team, overlay, exact player configstrings and log payloads. Full playerStates and relevant fields of all 64 clients are compared at delivery boundaries. Actual SetLeader/team-vote and overlay callers are integrated. Engine userinfo delivery, command/configstring network transport and log-file writes remain host boundaries; ClientConnect/session persistence and Missionpack are open."
                     if symbol["original"] == "respawn":
                         symbol["scope"] = "CopyToBodyQue and teleport event ordering are implemented; the default path executes ported ClientSpawn while the death suite retains an explicit test override."
             if entry["source"] == "code/game/g_active.c":

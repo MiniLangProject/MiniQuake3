@@ -74,6 +74,7 @@ static gentity_t *configureClientSpawn(FILE *in) {
     memset(&clientSpawnCmd,0,sizeof(clientSpawnCmd));clientSpawnCmd.angles[0]=q[16];clientSpawnCmd.angles[1]=q[17];clientSpawnCmd.angles[2]=q[18];clientSpawnCmd.weapon=q[19];clientSpawnCmd.buttons=0x1234;
     clientSpawnCmd.forwardmove=-17;clientSpawnCmd.rightmove=33;clientSpawnCmd.upmove=-4;
     Com_sprintf(clientSpawnUserinfo,sizeof(clientSpawnUserinfo),"\\handicap\\%d",q[10]);
+    if(q[28]>0){int size=q[28]-1;if(size>=sizeof(clientSpawnUserinfo) || fread(clientSpawnUserinfo,1,size,in)!=size)exit(74);clientSpawnUserinfo[size]=0;}
     level.maxclients=4;g_maxclients.integer=4;
     if(q[26])hostLink(e);
     if(q[27]) {

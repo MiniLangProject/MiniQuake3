@@ -62,8 +62,8 @@ ungültigen Zustände werden kontrolliert abgewiesen und zählen nicht als
 Vergleich gültiger C-Eingaben. Clientbindungen müssen wie nach dem originalen
 `G_InitGame` für alle Slots unterhalb des Cvar-Clientlimits vorhanden sein.
 
-Test-Binary: `64064c183085f2f2a430efca9ad0e88368a6b146f6651a9e48c7e65b4e366fca`.
-Native x86-Oracle: `5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae`.
+Test-Binary: `2d141fb4cf3a35dc3e857f3bf741e6761b1cbf4142710597bab132c484056c49`.
+Native x86-Oracle: `a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f`.
 
 ```powershell
 python scripts/test_team_status.py
@@ -74,7 +74,10 @@ python scripts/test_team_status.py --case portal_open_close_reference_counts
 portiert und versorgen standardmäßig auch Passwort und Modifikationszähler.
 Die isolierte Teamstatus-Suite behält einen Cvar-Refresh-Override;
 Serverbefehle und Cvar-Setzen enden dort an beobachteten Host-Schnittstellen.
-Netzwerkzustellung und die Anzeige im Client bleiben offen. `Team_GetLocationMsg` für formatierte
-Ortsnamen und die vollständige Userinfo-/Sitzungslogik sind weitere offene
+Netzwerkzustellung und die Anzeige im Client bleiben offen. Die
+[Userinfo-Verarbeitung](CLIENT_INFO.md) ist inzwischen portiert; ihre separate
+Suite schaltet das Overlay über echte Spielerangaben ein und aus und prüft die
+anschließenden Teamstatus-Nachrichten. `Team_GetLocationMsg` für formatierte
+Ortsnamen, `ClientConnect` und Sitzungs-Persistenz sind weitere offene
 Spielpfade. [Vote-Aufrufe und Stimmabgabe](VOTES.md) sind inzwischen portiert
 und separat geprüft. Dieser Nachweis macht den Port noch nicht spielbar.

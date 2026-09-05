@@ -7,7 +7,7 @@ transformierten Modellen, temporären Boxen, PVS-/Areaportal-Verwaltung,
 dynamischer Entity-Kollision, Bewegungsbahnen, Sprungpad-Reaktionen und
 dem vollständigen baseq3-Pmove-Befehlszyklus, serverseitigen Item-Pickups,
 CTF-Flaggenabläufen, Tournament-/Warmup-Steuerung, Vote-Aufrufen/Stimmabgabe/Auflösung, Teamoverlay,
-Passwortstatus, Engine-/Spielmodul-Cvar-Aktualisierung, `ClientBegin`, `ClientSpawn`,
+Passwortstatus, Engine-/Spielmodul-Cvar-Aktualisierung, Namen/Userinfo/Teamwahl, `ClientBegin`, `ClientSpawn`,
 `ClientThink` und `ClientEndFrame` ist
 vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
@@ -77,6 +77,7 @@ python scripts/test_deaths.py
 python scripts/test_items.py
 python scripts/test_client_spawn.py
 python scripts/test_client_begin.py
+python scripts/test_client_info.py
 python scripts/test_client_frame.py
 python scripts/test_client_think.py
 python scripts/test_tournament.py
@@ -123,6 +124,10 @@ Matchlimits und Bereitschaftsregeln sind gegen C geprüft und in `player_die`
 eingebunden. Netzwerkübertragung und tatsächliche Kartenwechsel bleiben offen.
 [`ClientBegin`](docs/CLIENT_BEGIN.md) verbindet diese Bausteine zu einem
 durchgängigen Eintritts-, Spawn-, Think-, Frame- und Ranglistenablauf.
+[Namen, Userinfo und Teamwahl](docs/CLIENT_INFO.md) verarbeiten inzwischen
+Spielerangaben, Handicap, Modelle und Player-Configstrings originalgetreu.
+Teamleiterwechsel verwenden diese Verarbeitung standardmäßig; vollständige
+Anmeldung über `ClientConnect` und die Sitzungs-Persistenz bleiben offen.
 [`Tournament und Warmup`](docs/TOURNAMENT.md) steuert Spielerbereitschaft,
 Countdown und Maprestart. [`G_RunFrame`](docs/FULL_FRAME.md) führt Entity- und
 Clientframes, Tournament, Matchende und [globale/Team-Abstimmungen](docs/VOTES.md)

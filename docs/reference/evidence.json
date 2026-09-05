@@ -17,7 +17,8 @@
     "src/mq3/game/bodies.ml": "0d46d792e48f948f20664939db913eb23c53401db1f6d24579abd51561c3ef85",
     "src/mq3/game/client_active.ml": "a37216c5b4667a7aee9bf45a40a2c0867c5265578b508b6929ee9b87e7fea6d7",
     "src/mq3/game/client_frame.ml": "5c9a1f9423490a732cd0c3d72c5ac12ebaa85a568c53db1df20714092753df2a",
-    "src/mq3/game/client_spawn.ml": "d9523b9d4998ce4fb4d8b0db50a244c3a70ddf3c568ef18f0e235381536e44e0",
+    "src/mq3/game/client_info.ml": "b96d20f583ae163b83cb9823794489e14bde61abd5fb177fbba0e25c2d2c5814",
+    "src/mq3/game/client_spawn.ml": "c98dc069acb03ca401b3278c6f376d18fed9abf7b620c12dcf6bf047bc38bb60",
     "src/mq3/game/combat.ml": "c4bec13c9fd6185d9531f204b76e84803c07e93e2cf451ce831850454f10d05e",
     "src/mq3/game/constants.ml": "17c50c277b785e016d402b893aea941840cb6cb1971c53d6513c346332413065",
     "src/mq3/game/cvar_maintenance.ml": "8c5d7cd4eee7bfd700d6be7f64de1099dd5c70f1ce0db7bc85f99651f33bfa6a",
@@ -53,12 +54,13 @@
     "src/mq3/game/trajectory.ml": "5783e4be0369c475ba5477d9fe77d1df803cc045ea5bfdd59823fdb6cee88054",
     "src/mq3/game/triggers.ml": "192d63954b8ce823f686023dc9b64b5f5c2b42eb9f3a0389f60f683f5c3368a3",
     "src/mq3/game/vote_commands.ml": "284f3d754c3772adb08d186e01a06c6ba73f7112a20b8685720cd68f4aea0912",
-    "src/mq3/game/votes.ml": "3657e92fd9f0d08ce04086179a73aff38f19bff451d1906029c5cf3114e5b32b",
+    "src/mq3/game/votes.ml": "b024931582310c93dc0c72be2cb9be62220da40b73de29473e644dcf3ff8fbc5",
     "src/mq3/platform/file.ml": "5cf18ed251a4ec61213602d9c0013644d008b99df511b176ca573f2b7660c560",
     "src/mq3/qcommon/cvar.ml": "6f5863cb1c9e72f3a13915646498c30f7c07c71cbd360d42f745cd9e605064a5",
     "src/mq3/server/world.ml": "5bb88459a3b879de0469e855da27f9b70f15da01805fe1dbc752a1b58dc9b6e5",
     "src/mq3/shared/bytedirs.ml": "9af60686e77f39179025e1142c7d20d0e495584a283604acd59ddf187aeaddc0",
     "src/mq3/shared/directions.ml": "5f5305764794719d61e609795b569e43cc2fa9dd6076cca4bf114a4ff5234746",
+    "src/mq3/shared/info.ml": "b7dc14f3edd6d100a077aff22411d251bce47e69ea6d7f9d239d32823adf2344",
     "src/mq3/shared/math.ml": "f4637ea6dc58d7796c3afebef146f59274e3af10e1e8ddb3b8ddb75a32ac6bb4",
     "src/mq3/shared/parser.ml": "90aa075c819b2e3f9bc510521634666b6ea794716fecfe5a04b868d6c6bd3d2c",
     "src/mq3/vm/interpreter.ml": "a7534bcc3d374cb2dae0cb0a5417993f56cec951af4fb630ebb10c08d2bd503f",
@@ -78,13 +80,14 @@
     "scripts/reference_replay.py": "075a5f4c35cad4d2cf5506106cfed1dcb56e8a61dd60e1de626f8df2c92de1e8",
     "scripts/reference_smoke.py": "ac1b75ffe774b460e6af3d51a4accd85642d4b5aab01f6ee0a503c95cf53d096",
     "scripts/spawn_fixtures.py": "f2228d4cb26b9039696ba523bc8ffa530244aa6e3b4937dd3fee2d9716c3e778",
-    "scripts/spawn_oracle.py": "76bf459ce67cd0d8c4159f6352434f2bb05c54b49c4d5f537648a65c1a08bccd",
+    "scripts/spawn_oracle.py": "f0db4cd9e7ff1c81480a71b5bf792556cc19babe8b91966e4c2d1c03c2552796",
     "scripts/test_archives.py": "61808f04bc53445facb09066ea90568a0f8e5cf65f03c12a421b38336061d1b4",
     "scripts/test_bodies.py": "0609b25afbf156c0087e85f736428467f0149a003c5a2c84eb80de0c332834a9",
     "scripts/test_brush.py": "f04dc9eae5ab89e4ed50e97e60fcc6e01d7c2ba86cd9156a27856fdb472985df",
-    "scripts/test_client_begin.py": "a5284eb0d4ec8faf3d60b68862f7d9935b3d61160a27d377aa2999b468611b9d",
+    "scripts/test_client_begin.py": "ef12873394553192da1209ad942060a12c3d129e39c880a71a30667f8a28a5c9",
     "scripts/test_client_frame.py": "a6292c8d586383b95282ed6d809030e6a084b859567ff84b2c1e49ab61942678",
-    "scripts/test_client_spawn.py": "8dc32eeaabd9cb55d28b00942d790295eef6ecfef4c2d8ee402138f4775640bb",
+    "scripts/test_client_info.py": "cfb4d96cd9a07a39ee5e57614c19afe4fd2c79a3629ac9deb39623c83fff71a5",
+    "scripts/test_client_spawn.py": "edb4f6690fbbde7df8e8a90bcf6302757e4f1afdcd22022e7fd82aa03edcc96f",
     "scripts/test_client_think.py": "c6a6bbd7dbd80da1a5ed8a72fb1c66b72a8b9c3505ce24c5b313b04fa0b16344",
     "scripts/test_collision.py": "36369bb61e23ae36be1fe8978327ea8486c233564b6d8f7323d6ca22b3f094fe",
     "scripts/test_combat.py": "3d0661d5ef760e124c7ea1d3dd0287227574369ad0ae87c61f3e64637ffd708f",
@@ -118,17 +121,18 @@
     "scripts/test_transitions.py": "06ef2df3360da4569d088859f1e5888c2c94d07d7bd0396f0cd5982b60df7d31",
     "scripts/test_visibility.py": "54c5f86cb2fb70e257cda28e8eb0d906eee2faf558ccd9f798af717eaa51aded",
     "scripts/test_vm.py": "3b37f6706b71b2ac42eec878e048db36e61ad08a78474fcd3ba8a04d09f8c51e",
-    "scripts/test_vote_commands.py": "68d8908005c9e762b94adda0eea7961d2543956166618f2f2cb50dab2dd97e17",
-    "scripts/test_votes.py": "d5a72762de1eacec25ced0de64069ed76acc301408829fa6e4bb677ba63e2be5",
+    "scripts/test_vote_commands.py": "3b2e160496a6fbb6877edf7ee9658ba4bf6d030262758e808af64875149ca316",
+    "scripts/test_votes.py": "1f1cce20396b036715c8e1d6bce76cb55bf9452d5e01ca703c32d3161af7a3f9",
     "scripts/toolchain.py": "eab72f9e2edb9680c382fccf55533e766b2177d257276a29de363e73e545716a",
     "scripts/transition_oracle.py": "b094c961cde9941d9230cd2af4d4e11a40428705dab40b8f878c1d7e72481d4a",
-    "scripts/update_progress.py": "b031a151e3a90a7d63cc24c11e439721a00d029317fc25358b42be8cb4b49b97",
-    "scripts/verify.py": "167b6c5cbfdf3fdfcd8ac197c94dfc2bd7d6014bca3de4746645e50f83810d12",
+    "scripts/update_progress.py": "96969c6461662aea53b3cf742f2089cfbaafe3ac896783e06fc6e3237a566363",
+    "scripts/verify.py": "69563fa07be9b578f9c82c930962db3d83daec056455385a8b8f9fdc9a291844",
     "tests/archive_tests.ml": "a7266b1d1a15881f117d18344eafc1a03d47e4be053ce42c0616248164510e0c",
     "tests/brush_tests.ml": "a30eee67deb4580b649d643024c9f08acd9c5df7b28cbb2be6289cad151fce04",
-    "tests/client_begin_tests.ml": "13bc656a05096362903674ae13ce238fef25b2bfaaf43adba2c47932404e6168",
+    "tests/client_begin_tests.ml": "765a98948eb865e85046e043e3d6aabdbccba357f7c5bcf2a5f4e55fc93df4da",
     "tests/client_frame_tests.ml": "d9148deeb3bfeb1ff5758e5c6c1eebb6171a9a6a41c84064db916f8781a252a9",
-    "tests/client_spawn_tests.ml": "50e2ce59958cd790c34a22d49780b403979b23e8f3a1541e09f96bc1f2148400",
+    "tests/client_info_tests.ml": "bc30a8853e74a5cf322f471d3964dd1ac48db2503520586ce10043f64727de56",
+    "tests/client_spawn_tests.ml": "4fd7d74301987d12354845e5811dab6606f83ca1607fbad4c4c8f6564768f009",
     "tests/client_think_tests.ml": "48cc202274396f1f26e8c473b07b3e9c4477192a0bb5541da57dfb20e22fb1a3",
     "tests/collision_tests.ml": "c28f47cc00e374f52eb33f88810478fcbeea35819b9a54a91d589113c35a9a57",
     "tests/core_tests.ml": "74b4b7ce5dd8816859b9097053dbbe01d5b49057b76de8cbe22dfa818523765d",
@@ -144,7 +148,8 @@
     "tests/reference/body_actions.inc": "e9c6da40d6c9e1da89f6037ed90bd43a896416dd6ca4e6f0859529ee4ea43a26",
     "tests/reference/brush_oracle.c": "87e510bf27e6340cf4f8c4bff61b6cfc3673a51de10d1fc84a1507e63ac0ad7a",
     "tests/reference/client_frame_actions.inc": "227eae10508d6768a0433653b5c425629345673bc7cd49ce5f2107ae4f36fa9f",
-    "tests/reference/client_spawn_actions.inc": "28c6f7789356632e51a5fa0db2410f8065f60dd6b10daac08c5ea38293a157cc",
+    "tests/reference/client_info_actions.inc": "525158149545c573488d90ea9fe50ced7db9fd4c40d71b9310cb3a9b3ddf9b75",
+    "tests/reference/client_spawn_actions.inc": "08c5626127752ea25b37765fa33d8e5cf45394357c326d548a53f6b851acbe8c",
     "tests/reference/client_think_actions.inc": "9fc435a9f727f2aaac477a032462ae634cb7381545f142a5e4bdd494b89dfc36",
     "tests/reference/collision_oracle.c": "29ce058bc66079c7b17ccacf09d7c09f4a8ea397bf951c67ea2406784d6cb1bb",
     "tests/reference/combat_actions.inc": "ed0dd9a29522f0db357fa416e3c8571e61055b2dab9e98bd6ef715d24152c169",
@@ -164,7 +169,7 @@
     "tests/reference/server_world_oracle.c": "93511d75377005303e3ac34d915ee32793245641b65b44e9f2b8c1f2ec934fc3",
     "tests/reference/shared_game_oracle.c": "189875a93caa876ef1d53c75f0d25f1a1fc24e0c9fcca6541392490f6661d04f",
     "tests/reference/spatial_oracle.c": "00a2b131fff36f2a377f09274f3845625ca6c35d47ea7558eb01915ce5d0737c",
-    "tests/reference/spawn_oracle.c": "570c414fb7f4f967974970a580b674bab7e13296b7f5aea36b1b349ba5700535",
+    "tests/reference/spawn_oracle.c": "25ce60cad2427c060ebf8eaf5f1d75b0262c05415728025ab520dbfaf1fa7b0c",
     "tests/reference/spawn_server.c": "779e8ecc04153f3c13508732e80e07b673326c4e00e9e71516ad5025a259d3c8",
     "tests/reference/target_actions.inc": "26d3529ae613e58c5999f61c832b31f8ac9ca84b4abb6b7b3eea7cfecde8723c",
     "tests/reference/team_status_actions.inc": "fdc6e927b1e936729f0be8d1065a061f04afe931d5788b4882f8eeae5fd5c20b",
@@ -202,7 +207,7 @@
     },
     {
       "path": "build/reference/bodies/result.json",
-      "sha256": "4ec8642b61657341bc7e3bc44e7fe029a3e7d370390e40474605dc1911fcdea0",
+      "sha256": "69b4dfe7544b3c19669b8175f0f920a5970efb16e30182c38eb59e10081f8407",
       "result": {
         "passed": true,
         "scenarios": [
@@ -55349,7 +55354,7 @@
           72,
           1
         ],
-        "test_sha256": "e3173b980944c727ef71488ab7b09eba2a748629eb79aca54c16ef834485e391",
+        "test_sha256": "26834a84a6778529a66e1e939d290f7adcbbf32be3ca800d21a44e5207f6d2f0",
         "scope": "Baseq3 spawn selection, body queue, gib/dead-yaw helpers and non-item corpse physics. player_die and the respawn wrapper are covered by test_deaths; item entities are covered separately by test_items; ClientSpawn orchestration is covered by test_client_spawn. Undefined C deathmatch spawn-array overflow is rejected in MiniLang.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -55401,7 +55406,7 @@
     },
     {
       "path": "build/reference/client_begin/result.json",
-      "sha256": "c4b286070f10ac8aa60b8225e849d1e5925bc4fe69ab3fb163765ff7aff6a489",
+      "sha256": "e4f38d0ab4a3493172b59313f1cc28dd12a7d424da8c7d5880a8e854d383726c",
       "result": {
         "passed": true,
         "scenarios": [
@@ -55461,6 +55466,120 @@
             ],
             "inputs_sha256": "0546f1f1a7195d8b2c744832f3eb93da2844febf4420466a4ec429580dce797e",
             "expected_sha256": "a203af84b246c0286640954537ba96311f7ebe29b4c02bb701c7e02ded201c10"
+          },
+          {
+            "name": "userinfo_case_insensitive_handicap",
+            "exact_words": 365,
+            "bytes": 1526,
+            "events": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                4,
+                65
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                3,
+                72
+              ],
+              [
+                9,
+                -1
+              ],
+              [
+                10,
+                null
+              ],
+              [
+                "config",
+                6
+              ],
+              [
+                "config",
+                7
+              ]
+            ],
+            "inputs_sha256": "cce9690155724e52bfe5183e6079cf8a1d7a851784faedf38a0b486a243eafa4",
+            "expected_sha256": "b1574bf7a630a96e405bbaa8af04b2f8e7db905290f8af0736bce13aa018f2fd"
+          },
+          {
+            "name": "userinfo_truncated_handicap",
+            "exact_words": 365,
+            "bytes": 1526,
+            "events": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                4,
+                65
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                3,
+                72
+              ],
+              [
+                9,
+                -1
+              ],
+              [
+                10,
+                null
+              ],
+              [
+                "config",
+                6
+              ],
+              [
+                "config",
+                7
+              ]
+            ],
+            "inputs_sha256": "ae706f83b93b0a46bb232a37424c94e4a373de60442d682d7405be3624f923a8",
+            "expected_sha256": "f40fb0ef2c2ab593224c223424d89bde821aa28c95fb2ff50d657036d38cf0eb"
           },
           {
             "name": "linked_team_change",
@@ -55846,13 +55965,13 @@
             "expected_sha256": "c37e8414626247c6660b6823e3dd94287fc8f2ec21704bd6c6fe88ece47fb1cb"
           }
         ],
-        "scenario_count": 8,
-        "exact_words": 2907,
-        "output_bytes": 12111,
-        "ordered_boundary_events": 92,
+        "scenario_count": 10,
+        "exact_words": 3637,
+        "output_bytes": 15163,
+        "ordered_boundary_events": 116,
         "runtime_contracts": 5,
-        "test_sha256": "7f8e1824396b906ea2d77f0f7b1a4ade2fbb37d8b376eeea15bc25cea1ede094",
-        "oracle_sha256": "5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae",
+        "test_sha256": "967409215e9b999d3907b51af06718acb46338e28e390bf9fc71e94b674fa849",
+        "oracle_sha256": "a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 ClientBegin with actual ported ClientSpawn and CalculateRanks: unlink/reinit, persistent client rebinding, playerState reset with eFlags preservation, spawn, entry event and announcement, game log, rankings and tournament/spectator suppression. Engine userinfo, usercmd, command and log delivery remain deterministic observed host boundaries.",
         "original_sources": {
@@ -55894,7 +56013,7 @@
     },
     {
       "path": "build/reference/client_frame/result.json",
-      "sha256": "2f039641541c6a4a5d5d0ad9c994fa56b21691731ebd2e817d1b0fa326717ad1",
+      "sha256": "c991be26fd473e6a58758ad9a5104e87740a99d40580c644aaec323d8980328f",
       "result": {
         "passed": true,
         "scenarios": [
@@ -56070,7 +56189,7 @@
         "ordered_effects": 6,
         "runtime_contracts": 2,
         "test_sha256": "675794ed7f7a5b21d780582863b2edcc0600026fe1fbc929ddc84736c6701062",
-        "oracle_sha256": "5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae",
+        "oracle_sha256": "a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 ClientEndFrame, SpectatorClientEndFrame, P_WorldEffects, P_DamageFeedback, G_SetClientSound and SendPendingPredictableEvents. Covers powerup expiry, damage direction/clamp/debounce, drowning, lava/slime, Battlesuit, noclip, interpolation/extrapolation, intermission, predictable event entities and spectator follow/scoreboard/loss. The isolated suite observes ClientBegin when an invalid explicit follow target is released; the normal port binds the separately verified ClientBegin implementation.",
         "original_sources": {
@@ -56111,8 +56230,1831 @@
       }
     },
     {
+      "path": "build/reference/client_info/result.json",
+      "sha256": "cb983fa69e6379a22b5836a202c3e9947222189df5f896b3821da45fa6289a19",
+      "result": {
+        "passed": true,
+        "scenarios": [
+          {
+            "name": "human_full_profile_and_repeat",
+            "actions": 2,
+            "exact_words": 79201,
+            "ordered_effects": 7,
+            "bytes": 328456,
+            "inputs_sha256": "3366a069ab37166581a7a383dd27ec12ff8e867e45a078b6e46cd376f71e0b1f",
+            "expected_sha256": "f9ad978c6b382ffc9fa6407d3d7bfe60cc81894196f73ce9de4d5b7bc354bd89"
+          },
+          {
+            "name": "local_flag_stays_set",
+            "actions": 2,
+            "exact_words": 79201,
+            "ordered_effects": 7,
+            "bytes": 328456,
+            "inputs_sha256": "594a078439dcd1e08c81b6a9f07c0952ddfdb8a0d58a2a374646bbc5ff820168",
+            "expected_sha256": "f9ad978c6b382ffc9fa6407d3d7bfe60cc81894196f73ce9de4d5b7bc354bd89"
+          },
+          {
+            "name": "rename_case_and_colors",
+            "actions": 4,
+            "exact_words": 176004,
+            "ordered_effects": 16,
+            "bytes": 730136,
+            "inputs_sha256": "43481c631b4ef82f7fdc44f9e47f814a250057606a62d715493f18497a794600",
+            "expected_sha256": "2864b91481d942f1fdba72535993843e7b16e6f854e9ddecba525d6e4d47016f"
+          },
+          {
+            "name": "connection_0",
+            "actions": 1,
+            "exact_words": 35200,
+            "ordered_effects": 3,
+            "bytes": 145982,
+            "inputs_sha256": "a683cd5466c6c10be65a7d6e66bc9fffe813623e9c26114abc9d8b487ef432e5",
+            "expected_sha256": "cf69d15128389ab0984886c32ce229a1af07a356979167c7b29dd3d90b35fc31"
+          },
+          {
+            "name": "connection_1",
+            "actions": 1,
+            "exact_words": 35200,
+            "ordered_effects": 3,
+            "bytes": 145982,
+            "inputs_sha256": "29a4b35889536379c22d1da0e84e6c82a60ddb345a04f478840b5ecda9746a64",
+            "expected_sha256": "babc91f7dcc313949dab9dd7cdffd28b004e8f7456815f2b7bc235246155ffd0"
+          },
+          {
+            "name": "connection_2",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "34e10ce21c021fb84b67dd7af9fa561c94491b53fc86b08e0e6b64a672e73769",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "model_and_bot_-1_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "09b6111b61101e0dacf2b3adb49e91eb45bd28d549001b9eadea07d3f990101b",
+            "expected_sha256": "dc530cd58a3374bafc92a07925e794acf495f49b4734229c20493eca8cf52d9d"
+          },
+          {
+            "name": "model_and_bot_-1_8",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182228,
+            "inputs_sha256": "9772e4cf7b316c4aee20428e5a2038d440ea9b6256002e4e8b5ba6643c8b7996",
+            "expected_sha256": "2ccf12097a7e6e640e19f5b44ea904012df2700a785fada9c4332ff718738e98"
+          },
+          {
+            "name": "model_and_bot_-1_520",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182228,
+            "inputs_sha256": "5c56465f1760b9bacb464b1cb73af9adae523cc1e2cc55f8e6f76fac2a40932a",
+            "expected_sha256": "e10efffed8dbeeabfb1c45dadd7ab49d426ebff21b50e3a4cc47b80bb2062c85"
+          },
+          {
+            "name": "model_and_bot_0_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "caef9797df09f6f7b594a7475dd6b19b622e3247fe11e3ad50f61dcb6eca8c7e",
+            "expected_sha256": "5203328e77a881b70eaa88e04b6811b165f488e9384eeb142227ae6920e4ab36"
+          },
+          {
+            "name": "model_and_bot_0_8",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182228,
+            "inputs_sha256": "3c25ff0dd35b39a65ea96e00b3798ae2b44c89b8b3d9d9f6295700471daebc42",
+            "expected_sha256": "e20d3fc37a20ea08fdf8b4c53707ad8daa57dd172e352d56addff3b361ef7342"
+          },
+          {
+            "name": "model_and_bot_0_520",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182228,
+            "inputs_sha256": "131cb1e60717d97b918a03838d2cdb81559de59e8fd760e15a208a3fbc2117b8",
+            "expected_sha256": "7ee27642726b203d78e0687f73e06649902fece30f4ab1ed64a7a16b79a0fa75"
+          },
+          {
+            "name": "model_and_bot_1_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "2e98e5e9f73b65b009d3a95277377f3f87a0c385d115e6bd567e685078ca437f",
+            "expected_sha256": "67508198386daf17f63a278a4e10b4068fbb7e34ca19382a6dd97a8025d678b2"
+          },
+          {
+            "name": "model_and_bot_1_8",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182228,
+            "inputs_sha256": "526bd072f6b62fcefec60c7ab2c08ccd993e6152b47524cd120ddf51912d68e2",
+            "expected_sha256": "980187750cf51ea8cf3aa7943411850d59cc3db0553b440acb5d27c507791799"
+          },
+          {
+            "name": "model_and_bot_1_520",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182228,
+            "inputs_sha256": "9e8d0d07fbde2b877c9f14ed03db012dae197a2c08897d851f66d7d997252885",
+            "expected_sha256": "5b591d9ff6573a3146da57c9a5e9163a00b3574d9d7a49b1ef947c2ca295d559"
+          },
+          {
+            "name": "model_and_bot_2_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "103de43309f19ba675eaad3a2da0966c993225afeb5fb692dd1a461656cb1adb",
+            "expected_sha256": "014e72596f20b35e6d087c7828bb470be81c9badf9a7bdb338957180715b4fe2"
+          },
+          {
+            "name": "model_and_bot_2_8",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182228,
+            "inputs_sha256": "4c95bd49067277ab0e4dfe73892d5f2921f9f14bde8ea7fc6fedf365894845d2",
+            "expected_sha256": "5cac2c3933643816b18d8ddaf1218aa19747d7a15ffe4136a53534f978271aed"
+          },
+          {
+            "name": "model_and_bot_2_520",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182228,
+            "inputs_sha256": "4631809f565ecc8c8e05f3b352c686032be7b295ae8fbefd63752dee4650afa4",
+            "expected_sha256": "9bf310abbf58df52ecce675255d8e2d27f44ba24d552f824f101f44b3ba2a1aa"
+          },
+          {
+            "name": "model_and_bot_3_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182333,
+            "inputs_sha256": "97992abc03a124c8e6d2e64bbc96006cfc5576e49d30d77eeb0a6aa7cf480e5f",
+            "expected_sha256": "a9d0b157f0e6242d0f9609aab8236e36667d074957f7c6e6dbf25df3ea94cad0"
+          },
+          {
+            "name": "model_and_bot_3_8",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "dc1eebeefac42c1fdcad83c4db030948835caa7f1219197d3020b76ef050715d",
+            "expected_sha256": "2036b1850ec57df38df21f1f41ba284d94b0967f1a85f05ffc1fae71d6968c03"
+          },
+          {
+            "name": "model_and_bot_3_520",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "fb4676e7a97581f1150146eb3bd3ce67ac80fa4601497d77b49c7f9a0b09a26b",
+            "expected_sha256": "8ca9e432fcc25a80141d7bf306b445770800950b769c1d30504aa460e4a65c94"
+          },
+          {
+            "name": "model_and_bot_4_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182333,
+            "inputs_sha256": "f0c6acd010032e18bf517d2be46dda2ada74dc34d7bb96947c84f58f0f8cbcb3",
+            "expected_sha256": "0016c7fc8b8afba7a4880bcd0084508d3dcd113d7fd39d1b3488d4ac9d385a0d"
+          },
+          {
+            "name": "model_and_bot_4_8",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "177c997fa926ca32678d9123da69ebcdbe1143b814ff1f8bffd92572285b3f8d",
+            "expected_sha256": "2c852da8b7ad96c98501e4628d23234cb2633d8929755a834a124f2d255a2b5c"
+          },
+          {
+            "name": "model_and_bot_4_520",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "9d33bebf673b81af3b5406489758c5e4e4074e50e321120a5e82ef6a477f2d5e",
+            "expected_sha256": "0e4e798155b85d3181d73684cbf04008d7cd95db5e36977017cfde1ca1479bcf"
+          },
+          {
+            "name": "model_and_bot_5_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182333,
+            "inputs_sha256": "cd01548bccc2b80578c851a209efc19cf8b550cf1d8d8bf834cefba9cb77e110",
+            "expected_sha256": "d5f9d696b0847d15e4ff111fd825c2df5347d78012be25fc875922ca16409e51"
+          },
+          {
+            "name": "model_and_bot_5_8",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "ddd1e00d4ec31aeb0878d9176bfdf3b1b2a71653122028119f32c59c46b45016",
+            "expected_sha256": "554d2a90be4b3e2e12ba23b9a397a3a58f896ec88d670a8e9bead07a29a9df25"
+          },
+          {
+            "name": "model_and_bot_5_520",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "969135188b08598aa09d489ba9eba0557ed2c6cd01ff1f9daa72c56b4002fd11",
+            "expected_sha256": "f40c44877a213b580114e6ceed075a0dd9434fbd8d0a01ef0c939b42673ed620"
+          },
+          {
+            "name": "model_and_bot_7_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182333,
+            "inputs_sha256": "013a1d1a25c6dbf8839039c1d252fa2837ad2e997852af56dbdb54dffab46dc3",
+            "expected_sha256": "ca1e32fb8f6f6f244b76b1c21193b2b4f61eecc7e10f602012630e6e32a6390f"
+          },
+          {
+            "name": "model_and_bot_7_8",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "64dabf9f7be52f04212c09d11d5d68af3a72baeb923c7984b898d8c35907cd45",
+            "expected_sha256": "e49a0acb9115e6f2e6512bb37900db7b10895ea39cc415845d1aba89b453653c"
+          },
+          {
+            "name": "model_and_bot_7_520",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "2cb7b58d92c566db9795b6c5aeb4a4cb88be72a4bf7efe872ee641cc2d39aa69",
+            "expected_sha256": "de4c3d675abf362a4f1fe36fcc24cd811ca800f5103197aa49e9262ce98a7170"
+          },
+          {
+            "name": "model_and_bot_8_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182333,
+            "inputs_sha256": "4568a3ed02dd6ee51b38b112b2cf6cffb825fee85ceb238b0e0e6b2f9207e662",
+            "expected_sha256": "b63341794e05bb7efbd67eac32e5f2049c8ae9ca8c521aad64621940310d959e"
+          },
+          {
+            "name": "model_and_bot_8_8",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "80ade94f703ef0f10baad4c63bfee253664a2efbdc582d3c7610f8fd5f366d21",
+            "expected_sha256": "171ea0d51cb839d21b1d2102b6603bdff8c8d6bf816561e91e68d577086b4c9e"
+          },
+          {
+            "name": "model_and_bot_8_520",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "90aea9f0dc941f66809fa8f7110f159093087dd15033412e21ff43e17796f482",
+            "expected_sha256": "f22cb205f65f41373ffcf5602d3c55d32586125949c8b89938f76fdad88bb756"
+          },
+          {
+            "name": "spectator_name_0_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "10760a5635e876b69b8893147f90f3e3484b0d996fc1d0b89d594bf56556b86b",
+            "expected_sha256": "8e052e8ef414409b986616d9837c2567731ea85a516e95ca6a44752e651a369b"
+          },
+          {
+            "name": "spectator_name_0_1",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "c896adafdf1c2ebe4c968c2fe0f568948421a0175216254d98d1f289b0c27151",
+            "expected_sha256": "ca67883f793f41820aa1a49c3b905e8d6222a23a88d7938cca77b5e8a3767cab"
+          },
+          {
+            "name": "spectator_name_0_2",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "69d0b508936cfa6f9bbda7c034eb5a92d7aa202b588c45e38c7db347c76235de",
+            "expected_sha256": "91fe1ad883401634d340c466f18cecacc847579e3eaa581c001e0296c9bc7829"
+          },
+          {
+            "name": "spectator_name_0_3",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "78cf0c42a4f28b6776ce84f5902f59b133ac6717d5b1a36cf2db052044383556",
+            "expected_sha256": "e9e531cf75c8bd9377df92b6192deb759ced4ac64717b3b4ec3495e37aecf51d"
+          },
+          {
+            "name": "spectator_name_1_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "34e10ce21c021fb84b67dd7af9fa561c94491b53fc86b08e0e6b64a672e73769",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "spectator_name_1_1",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "78b6bf1df25497f2df4ae148e43b26b4776a2faf6353d6e78a631e3682a8f66b",
+            "expected_sha256": "23ade597b04e9f560a777e85b2792ae2aee81cb36b58b3e434569daddd7b1c9b"
+          },
+          {
+            "name": "spectator_name_1_2",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "fc8553c10a291969a382667b09c4ee99467bc1c33547b9bc7d78400ad07065e7",
+            "expected_sha256": "aa6397558735003bc728cd368270d82d2c6f8b9f453dabd2e983fb15b80e43e4"
+          },
+          {
+            "name": "spectator_name_1_3",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "71333f419aab56ea289a30926ab03bfc4c4105c7cecfef37814b9a28bee5a7b2",
+            "expected_sha256": "93c7274e57a56414263ee60de4b049ae808b1c91fb824682dbccc6f950544f93"
+          },
+          {
+            "name": "spectator_name_2_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "0493f09c71a9543ca743c937ade3fc87be609882d2bde7f6b8d3d42ac6751db8",
+            "expected_sha256": "c978335c31bc8bcdb1742b07606d55cf3632799be2bc64741573a959922dc28e"
+          },
+          {
+            "name": "spectator_name_2_1",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "957cc63825b5e853ba979149b1625408ead9fad3a2e421fcdb7376cd7e90e0b4",
+            "expected_sha256": "510dec850c0f0eb379356149c832d0a08194237f05b760120bdc02e7b81fce74"
+          },
+          {
+            "name": "spectator_name_2_2",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "a70d24a054e5c0e8697fa391c5333f8a4601c85e3835581c4be77d4d327c6bbc",
+            "expected_sha256": "7214b45e0240ffece0ba15fd0f778366aded4545eef85136d7b4a22c16816faa"
+          },
+          {
+            "name": "spectator_name_2_3",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "aed8532ec2c153c5f9cf17bb58f5026c796cb36b4d6f9e76766f1a98648971d7",
+            "expected_sha256": "2d62db0a4d06b844f1c071347fd9d1005c0d606debc29ffb777f8a3f61e841d8"
+          },
+          {
+            "name": "spectator_name_3_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "caef9797df09f6f7b594a7475dd6b19b622e3247fe11e3ad50f61dcb6eca8c7e",
+            "expected_sha256": "5203328e77a881b70eaa88e04b6811b165f488e9384eeb142227ae6920e4ab36"
+          },
+          {
+            "name": "spectator_name_3_1",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "15ff84f55d649481847b2c165ab6dbe6f9994353a693cd3f54f64bed9930a84f",
+            "expected_sha256": "027cb34cd19294ef650fefb9b6ae13634c8c790e4148f5c80f0a80f77701d4dc"
+          },
+          {
+            "name": "spectator_name_3_2",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "b56d117d5d2b93df670e5c2e5635b8e253b2c70ea76e41c6e51d7edaa79aafca",
+            "expected_sha256": "2cd12a79c1a0a38b269598ea8209d97012f0c0188bfbf7af1b13f664f5441514"
+          },
+          {
+            "name": "spectator_name_3_3",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182408,
+            "inputs_sha256": "80844e2d1b6c5c2f6204c74ecc5b82467ff2dce44e503b2aa40bbd19a895d938",
+            "expected_sha256": "3990afc86326486823d03eeda1ed86614cc68e6a9c26124fdba2943e036fbfe0"
+          },
+          {
+            "name": "local_ip_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "42e40124fdb809011e07379b9ee062f3bb8cf635db1b22454f39352d9f218da4",
+            "expected_sha256": "d1bcfc564e1791c73efc163aa7785d4d2afdfb0795fd52948e6cc0994573cc9a"
+          },
+          {
+            "name": "local_ip_1",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "34e10ce21c021fb84b67dd7af9fa561c94491b53fc86b08e0e6b64a672e73769",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "local_ip_2",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "0e6fcde7048c7c58e1f33f381e6bdb79be2ce2932dfea393964d442baa6fb78d",
+            "expected_sha256": "d1bcfc564e1791c73efc163aa7785d4d2afdfb0795fd52948e6cc0994573cc9a"
+          },
+          {
+            "name": "local_ip_3",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "0c2613a5e3438bbb8cb95135c1e9a2e102329a76e8ffd4501869be2c56d6175d",
+            "expected_sha256": "d1bcfc564e1791c73efc163aa7785d4d2afdfb0795fd52948e6cc0994573cc9a"
+          },
+          {
+            "name": "local_ip_4",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "5f40de25f2cd0ce3c05d4d41670f56b58a7da28c1146a7f895003d003d604d32",
+            "expected_sha256": "d1bcfc564e1791c73efc163aa7785d4d2afdfb0795fd52948e6cc0994573cc9a"
+          },
+          {
+            "name": "local_ip_5",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "2d2250e62f25e094a5808801145797bc905363dd2f96048da9d3488010988d7c",
+            "expected_sha256": "d1bcfc564e1791c73efc163aa7785d4d2afdfb0795fd52948e6cc0994573cc9a"
+          },
+          {
+            "name": "integer_cg_predictItems_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "3d870111109c4a2c566321e0dc91b6aade31a4b3b6597f76878b30de1a704b24",
+            "expected_sha256": "2889a139fcebbcdab253c57616b37697b92f0333cd2ea45955a6026b15b5c540"
+          },
+          {
+            "name": "integer_cg_predictItems_1",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "8bebb9b191c2bfc41e871c599ed0a8d258cf0a7f6fc055b24618142233f55637",
+            "expected_sha256": "2889a139fcebbcdab253c57616b37697b92f0333cd2ea45955a6026b15b5c540"
+          },
+          {
+            "name": "integer_cg_predictItems_2",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "34e10ce21c021fb84b67dd7af9fa561c94491b53fc86b08e0e6b64a672e73769",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_cg_predictItems_3",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "172962d85e76c68fb7da83f42ba890b0f873173ab78497b914a6b14e85bbdf75",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_cg_predictItems_4",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "fb1857deec3d6f8d8e110dd213128981c8679c72e0c8ad662cb361bd18a2ea83",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_cg_predictItems_5",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "07cd7a1d110ebfa90078dc666c58f40af3401c57f57026d0e8df17fe55d99f04",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_cg_predictItems_6",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "28886032d822a7b282e9c05c695225090738689c86edfa838adbea36ead5b221",
+            "expected_sha256": "2889a139fcebbcdab253c57616b37697b92f0333cd2ea45955a6026b15b5c540"
+          },
+          {
+            "name": "integer_cg_predictItems_7",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "f03daf80c31ab9fbaeaae9f278050a98831a1424d354b766ca52ed9363bd6925",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_cg_predictItems_8",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "501c0b8b244aa8292f8f6421b6aa4d87a1ecb7931e62fdb63c856044e847676e",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_cg_predictItems_9",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "e89a69e2c2f0d624597316b13a5a0b0a2fd1286a9ed741c7e0b99b9c34165075",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_teamoverlay_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "fdf08166c9c6b121d10d32743f8db1d58f30322c14a27f98d024abec447a3578",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_teamoverlay_1",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "212798c084b604c82fc242d77de798033096bbc74b3c911aa59c1dc89d46c42d",
+            "expected_sha256": "08ee86b9094a333d725d3790a371680cc9c133aca0496da55151b890de4d11d4"
+          },
+          {
+            "name": "integer_teamoverlay_2",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "34e10ce21c021fb84b67dd7af9fa561c94491b53fc86b08e0e6b64a672e73769",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_teamoverlay_3",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "651a554b8ca6c8dba7d2c4540e589522e6a4f8e0508cd040168a4f2294812ba1",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_teamoverlay_4",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "a664357e04611568cddf336b7e0ef3811f87307ee11fbae98edd3abc98277ba5",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_teamoverlay_5",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "4ab7fdff15ee2d34af4c4b9bb45a80200d7764e91c4dab588cf5dd384b66e93f",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_teamoverlay_6",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "e427fcbaccd2a54ff7e21ba1f6dadabc5bc78eadec6ce22f910186c5efee5f4e",
+            "expected_sha256": "08ee86b9094a333d725d3790a371680cc9c133aca0496da55151b890de4d11d4"
+          },
+          {
+            "name": "integer_teamoverlay_7",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "60b76076f679901f5ace88d69c18d0f30cb29a3232d65c0303bde127e3520293",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_teamoverlay_8",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "c5899b9baf9efbb0350ad775e9edb57401ff969075e1459e9c1b365cda3c92a4",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_teamoverlay_9",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "22a8811131d45c221beaa205e899d59fb25612fde633e9583d112d01dd059753",
+            "expected_sha256": "4b7d7e2952e88fbd8b58712ee1b87617a84e955e0596b484e6ebe409d06358dd"
+          },
+          {
+            "name": "integer_handicap_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182373,
+            "inputs_sha256": "164f53f2f32eeae75420c6a91e7392090d61861ae9cdb61c5b58abe0923e4218",
+            "expected_sha256": "652a00c7c9383937747f62b22a9541ee964ec545ffa6037d574c25b42df2129e"
+          },
+          {
+            "name": "integer_handicap_1",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182373,
+            "inputs_sha256": "be7c950a4157d596408b20908c10682f969436c600dd0f462f49755e8462ff4e",
+            "expected_sha256": "652a00c7c9383937747f62b22a9541ee964ec545ffa6037d574c25b42df2129e"
+          },
+          {
+            "name": "integer_handicap_2",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182363,
+            "inputs_sha256": "7d98dd9ce0ebf644b6d1b0f484fa0444bf7062dde214aa1f9204fb956977d863",
+            "expected_sha256": "aee3c2a0b46edc4a6d7da777b9d118576154f14d67ff05f1eeb1c554644432b5"
+          },
+          {
+            "name": "integer_handicap_3",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182373,
+            "inputs_sha256": "01061552d3ea615ef3203cbe7e3aa10c54fc01692b2e1564a51367c3feacfd71",
+            "expected_sha256": "652a00c7c9383937747f62b22a9541ee964ec545ffa6037d574c25b42df2129e"
+          },
+          {
+            "name": "integer_handicap_4",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182373,
+            "inputs_sha256": "12eb55fa9a9967f007ce7675671324a88cd9de2b6063bcaf8fe711daa23d0906",
+            "expected_sha256": "652a00c7c9383937747f62b22a9541ee964ec545ffa6037d574c25b42df2129e"
+          },
+          {
+            "name": "integer_handicap_5",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182373,
+            "inputs_sha256": "cf10cb76e1773dddcd335e02958f2f4126b510d5e5cc9d0416b026262d1d61dc",
+            "expected_sha256": "652a00c7c9383937747f62b22a9541ee964ec545ffa6037d574c25b42df2129e"
+          },
+          {
+            "name": "integer_handicap_6",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182373,
+            "inputs_sha256": "c21843818f982c3a25f0448c4050cea0ebd858ef81ff0bce9763cd056be16ebe",
+            "expected_sha256": "652a00c7c9383937747f62b22a9541ee964ec545ffa6037d574c25b42df2129e"
+          },
+          {
+            "name": "integer_handicap_7",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "500051b9e6cb6507984ac52acadee3743c899da81b8d4abd410fb9bc727e6970",
+            "expected_sha256": "b8f4704cc8f44b6cfff34fb1b794c68ec219f58f9f88f2c4d30920a5a960b247"
+          },
+          {
+            "name": "integer_handicap_8",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182373,
+            "inputs_sha256": "04460e6e0b1924856dbc9f352f61f776a217091cb54a1210142dcf5142576134",
+            "expected_sha256": "652a00c7c9383937747f62b22a9541ee964ec545ffa6037d574c25b42df2129e"
+          },
+          {
+            "name": "integer_handicap_9",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182373,
+            "inputs_sha256": "7ca2719b9c8c56e52384eee676ca50950f38b648a26c07bbc333924511f763ff",
+            "expected_sha256": "652a00c7c9383937747f62b22a9541ee964ec545ffa6037d574c25b42df2129e"
+          },
+          {
+            "name": "integer_teamtask_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "9a554f6aabdd77de3048bc0f82b39999f1d294ef2d5062489bdd4c33148e8cf7",
+            "expected_sha256": "28d41918d6ada29e3f5b8b4939e41be9585d4961abeb755f53432437a08fd3fb"
+          },
+          {
+            "name": "integer_teamtask_1",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "eb6cd8e20b1b7818bfb3a8db60bb21e5f063d43ed24847c0a73ac1b1867d2938",
+            "expected_sha256": "28d41918d6ada29e3f5b8b4939e41be9585d4961abeb755f53432437a08fd3fb"
+          },
+          {
+            "name": "integer_teamtask_2",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "0b37835f219de0be413a0f5292c885d79f5fedbf97b23971318df0b82e844704",
+            "expected_sha256": "2b4ef005837e9385310cd0702f55e437c389556714eae4be43a7a9b77994efe7"
+          },
+          {
+            "name": "integer_teamtask_3",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182373,
+            "inputs_sha256": "bfdfb72442d948b4332b901735d4e5df416af828fe5c9f9a53dbdfaecd97d2b1",
+            "expected_sha256": "55ccd932640d9ba4af3b0ebec63801c728e2f09b9257e17f33f848dca2c92729"
+          },
+          {
+            "name": "integer_teamtask_4",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182378,
+            "inputs_sha256": "1f31802c1652825e81237905faae04949f27465d80e57ac7e35ee2113511cca0",
+            "expected_sha256": "002cc1efb0eaf946797573f42d90e17027481d1073d79563e2f2276576407f4c"
+          },
+          {
+            "name": "integer_teamtask_5",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182378,
+            "inputs_sha256": "95cd161d0b9d4cd85951c657b8139d28668c10bd5322862527ca71c87c8d9a90",
+            "expected_sha256": "92eff2d6f35e9f82007b2f7f0c5ed4c7fec832a25fddd9af337130d286b54ffd"
+          },
+          {
+            "name": "integer_teamtask_6",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "308a81afa3fe083b308e845c3dd61d12868b5806609a1f9004b9261b1559f679",
+            "expected_sha256": "28d41918d6ada29e3f5b8b4939e41be9585d4961abeb755f53432437a08fd3fb"
+          },
+          {
+            "name": "integer_teamtask_7",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182373,
+            "inputs_sha256": "f2a5748fface6aa86e0b591004ac88ac0a2de093a7791890d94e44a600e80603",
+            "expected_sha256": "6605052e9b4fd5917f8378f93316045c02f19e4ca45d46aaae09a5731c22b9b4"
+          },
+          {
+            "name": "integer_teamtask_8",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182413,
+            "inputs_sha256": "c6ba86c989f0606be68dfbc6ce15c6b8036aece05f7517c5e28f14fcee30fa56",
+            "expected_sha256": "c78ed25c7ccee9f5322666ac43502224687458cb93a9cb81162ad20f5a35b632"
+          },
+          {
+            "name": "integer_teamtask_9",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182418,
+            "inputs_sha256": "bbece02beea1385b0f38492a56a3adb55d3a60b5aeeee085ffc1134646c2ac53",
+            "expected_sha256": "bf38b3729aa5e713b936ad88097224d2cfabdb23d43496e6d27a33968601d17d"
+          },
+          {
+            "name": "userinfo_text_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "a8e6f07ae17db799a967d5beba17002274b1a59481476a20d6aa542c6a1f5a4f",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_text_1",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "9ba3ab8c949074dce19d72e8a656a7cf01dc9b4b94f470233fac5f5e80a09421",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_text_2",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "896904e59b4a509959653766c646da8b35a87d7c89d02d0faecc3fcc5770213b",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_text_3",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "b269f45f760d3c65747ffd41da7f462e8bc162092fc6774e0e4ba4876b937166",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_text_4",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182198,
+            "inputs_sha256": "ac80f4cf2be7db05af698ed8095c23f8570aeb58d497c357704ab9534531683e",
+            "expected_sha256": "c8c8173d357a9133eb994baffd9703eace0f95fbbf0146ef689a637c3ead9e25"
+          },
+          {
+            "name": "userinfo_text_5",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182153,
+            "inputs_sha256": "b534162c62d50a8b91c5e67a562cc20c937ba9750071dc7356c01f323366fe65",
+            "expected_sha256": "f6e95364eef6d9103d76b7813e5c72f474326cd00c160e29f8df641a26f1f93a"
+          },
+          {
+            "name": "userinfo_text_6",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182153,
+            "inputs_sha256": "325e75b6c2490a50e04093959c0de458aac2f290b3b8286775473ac304c3740f",
+            "expected_sha256": "96384493096c66dfacd84354657149dd2aaa4562872dc9b02230649b0e9c15c9"
+          },
+          {
+            "name": "userinfo_text_7",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182178,
+            "inputs_sha256": "943ba379c07e8f23457f9c1d9c133c615f5c260c3957f28a3edcbf637da2d1c7",
+            "expected_sha256": "1b5b24f8d9527d672a7a8d8a7a81a5ea01912e2810b49581d271ea693873591c"
+          },
+          {
+            "name": "userinfo_text_8",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182178,
+            "inputs_sha256": "b2a13105b8c9a0299007defb06ae29a3e1cbcaca17564514a8105e2a5fdbf48a",
+            "expected_sha256": "1b5b24f8d9527d672a7a8d8a7a81a5ea01912e2810b49581d271ea693873591c"
+          },
+          {
+            "name": "userinfo_text_9",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182178,
+            "inputs_sha256": "465fba2259b032df36562fc8b091de2728772512e8330cdc6f4acf290275095e",
+            "expected_sha256": "1b5b24f8d9527d672a7a8d8a7a81a5ea01912e2810b49581d271ea693873591c"
+          },
+          {
+            "name": "userinfo_text_10",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182208,
+            "inputs_sha256": "876267134c6232ad7e121801b1ffe5b26fb0a2965c7a96dbd0e5b0ffa5d9b56f",
+            "expected_sha256": "cc2ea82125f26bd6e890ae7e16d315c6b0e30a9ea7a6e9a2b33b7fb0c30e8923"
+          },
+          {
+            "name": "userinfo_text_11",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182198,
+            "inputs_sha256": "5b9061de1b7636cbd661a998f459e183db67f79b8986d02cb685942eab320038",
+            "expected_sha256": "8118e650ada4b3f02cd64ad31738c2df03e05799c9e1405e831186debf4ac7dc"
+          },
+          {
+            "name": "userinfo_text_12",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182228,
+            "inputs_sha256": "a93ab402214a340ff5c017bb4087723012c98c91a903ccb87bca2e1847f71af1",
+            "expected_sha256": "991946b688295e2e8906ce8dc0237e1b0a30895bde9ff11b0d7b4c9fb663c395"
+          },
+          {
+            "name": "userinfo_text_13",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182278,
+            "inputs_sha256": "75bc3650091c52b0902034094ee337782260fdf83788732c91b995e2684335ff",
+            "expected_sha256": "d2ee741eb166edec29bd4592b88b8a26f59ced98e2f63aa2f52c9aa0cc7e1552"
+          },
+          {
+            "name": "userinfo_text_14",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182228,
+            "inputs_sha256": "147929479ee41e6cd0bd95099545875e82ebf11c3b4db9964a99ccef2f4a1078",
+            "expected_sha256": "f88ea1638cf2c0a93b72f4240accc7038c108ec08fcf5d52121c1f2e6ccc1f8f"
+          },
+          {
+            "name": "userinfo_text_15",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "6ddc9e448a67740ae232ca9dd43b11841c578767b56128ca4ac0fa111a544873",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_text_16",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182138,
+            "inputs_sha256": "4351536df3fe972d0af1f29b81a7f45684b030eecccc6f8dda958c3bb86b3698",
+            "expected_sha256": "d4c0a3c60660aa4d192db7829b89c6174e5dc3ee5246b362d52d4918801fa514"
+          },
+          {
+            "name": "userinfo_text_17",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "2f295901b8827cf98bea6ebe85de9bf0b549ed3b30a4ef69788698d3ffaa1578",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_text_18",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182138,
+            "inputs_sha256": "8f3ef173cf0b020f7f95b3e0b716df4a754ecf20c76a035fb25987bdb5908758",
+            "expected_sha256": "2cdf555e47273705e3c7e811cbc115202f80059f201ae044abee1da1db768494"
+          },
+          {
+            "name": "slot_and_clientlimit_0_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "1d35843f56734484e97e45cd6b204adda4fcddac3254d778ee101afee616cc7b",
+            "expected_sha256": "a46cbaad28a82fd84683cf4d74f8b83c03057bf1686a11429597a23e396a8262"
+          },
+          {
+            "name": "slot_and_clientlimit_0_1",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "6272e25bc5d65696ed178eabd72af8e61d2b3d06a25d467d75f936759617772c",
+            "expected_sha256": "202c2e64836b3a6a4029daab89ad3cf7d4280ac1109a928653f7e18928150309"
+          },
+          {
+            "name": "slot_and_clientlimit_0_64",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182368,
+            "inputs_sha256": "b3794104243819d0d17283ba5587803908f48fca8e32242f45c95206b8d969da",
+            "expected_sha256": "31322e509676e2815abda7800ee0b38f0de506cb638a7294007cb8f1b61bf5e1"
+          },
+          {
+            "name": "slot_and_clientlimit_63_0",
+            "actions": 1,
+            "exact_words": 35200,
+            "ordered_effects": 3,
+            "bytes": 146010,
+            "inputs_sha256": "ea6993dca84432349f56015cceee5b6c9465fc1b5569c7d3fa113a0fa41d6069",
+            "expected_sha256": "c22eb7b80b9dbe24859c90e1c822026b31e9f3bf5e62b6a6671646417c8f2b33"
+          },
+          {
+            "name": "slot_and_clientlimit_63_1",
+            "actions": 1,
+            "exact_words": 35200,
+            "ordered_effects": 3,
+            "bytes": 146010,
+            "inputs_sha256": "fb33a86b7b3e69f977d556294cf1109a9e4e3f8416be0cae20de8b3e3e5946ff",
+            "expected_sha256": "cd47fcf21b35318688613f13418170069c1b34693fb14f7c9020259fb6f47fa9"
+          },
+          {
+            "name": "slot_and_clientlimit_63_64",
+            "actions": 1,
+            "exact_words": 35200,
+            "ordered_effects": 3,
+            "bytes": 146010,
+            "inputs_sha256": "2259c07a44eadb5178f22de96a607e9e63393083355ec606517a79f1cc01af3a",
+            "expected_sha256": "806f709570baec86e32e88ac567fd9a9b676543c8f595398cb466b37e15bdc4e"
+          },
+          {
+            "name": "model_byte_capacity_0",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182863,
+            "inputs_sha256": "1620fcf4dfb54d7a085df85387cc613692e2d7da002ca5f84203f2ac4eb94bdb",
+            "expected_sha256": "3e8753e08fc3ba93e8db41d5aa49d008eca646af452dd9f43d2e2fb4ceb46151"
+          },
+          {
+            "name": "model_byte_capacity_1",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182868,
+            "inputs_sha256": "5bdca8516a608ae41065a4ad6ab3b392929c0d6ebf659a4ec2880df7b7f7a46d",
+            "expected_sha256": "5d69566cf4b0e3041eaf524e098672c4700f406d614f8d0dc28d38c90e75b18d"
+          },
+          {
+            "name": "model_byte_capacity_2",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182868,
+            "inputs_sha256": "a1bc68c2ae81175ef47d213c8c10616df7d51bf04fd9522627ea187ace2cc37b",
+            "expected_sha256": "5d69566cf4b0e3041eaf524e098672c4700f406d614f8d0dc28d38c90e75b18d"
+          },
+          {
+            "name": "model_byte_capacity_3",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182868,
+            "inputs_sha256": "26c3b640f3b94ec4a2bf00976952e3a7cecdfdf14951b55490c2e7101f5c0f9f",
+            "expected_sha256": "5d69566cf4b0e3041eaf524e098672c4700f406d614f8d0dc28d38c90e75b18d"
+          },
+          {
+            "name": "model_byte_capacity_4",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182868,
+            "inputs_sha256": "c7b932ca6deb647ea570da00b0173cd35b9ac5bbcd02a6a625329590a8878c2d",
+            "expected_sha256": "5d69566cf4b0e3041eaf524e098672c4700f406d614f8d0dc28d38c90e75b18d"
+          },
+          {
+            "name": "userinfo_copy_0_1022",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182178,
+            "inputs_sha256": "76c09384251ab5799d3492dca4d6b79e647647c2ecdb2cd80c1b9d39579804df",
+            "expected_sha256": "1b5b24f8d9527d672a7a8d8a7a81a5ea01912e2810b49581d271ea693873591c"
+          },
+          {
+            "name": "userinfo_copy_0_1023",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "99e1c5188d7ac9a72dd24be585a3c48c23c39467ee3c95360c7c1ec7636b3db0",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_copy_0_1024",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "050fff8fbe2dce5da23f59259d22fc890f4410373b2a7c8ee3325f21dde06328",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_copy_1_1022",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182178,
+            "inputs_sha256": "7dad1430110728ab08b6698881a9ff5cbc45169c848564db6182dd6b9d36471e",
+            "expected_sha256": "1b5b24f8d9527d672a7a8d8a7a81a5ea01912e2810b49581d271ea693873591c"
+          },
+          {
+            "name": "userinfo_copy_1_1023",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "5e200e39749f498920247028b12a5b980b30552357857e365baefa4efa7c07d1",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_copy_1_1024",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "c99ba1236ff4fbfde5481cdfed86579c486b1888f7c0e00b39cfc948eb62120c",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_copy_2_1022",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "8ac7a30418f3b0317eee60bec52c30ffb860d3ffe2cdf027df9def24018031d0",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_copy_2_1023",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "2a1d784a58534f20de9f5bb1fbfa5034788466757378c2e63caee73ffdc841d2",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_copy_2_1024",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "06e875b1328efbbcc5a02d007a04a69190fad284c584fc2eac1b4150c42ed251",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_copy_3_1022",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "ca7ef262fe89812e15a2a9e9ca8133eb2b15d76692d048d1da3ac018326f6b48",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_copy_3_1023",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "05f409c4c5be345f7ed3913e99588d1b5649dc30149029b31dd0a8346a44ed1c",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "userinfo_copy_3_1024",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182238,
+            "inputs_sha256": "87dc561cd1f3bbda16e904975cd0136b94e945de731c5c991e454cdb091136ed",
+            "expected_sha256": "a9c25eaa621070ed0b3990ae194c0ad68a332b45a09e602039ce18f054a0a782"
+          },
+          {
+            "name": "long_human_configstring_is_not_truncated",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 187153,
+            "inputs_sha256": "fb100dd9d1223923939bc17ed65d610d7818f2723bed7bcc2b15d83cf32fc5c0",
+            "expected_sha256": "57573df3afd53e8c4bfd623cb8e5b081f91ba9e7efd92e44bbde87bff3acd134"
+          },
+          {
+            "name": "long_bot_configstring_is_not_truncated",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 187078,
+            "inputs_sha256": "d4d72bce2627bb98da5a23fd82270d295fdf9e0cdedb75d585f3dbc02d560965",
+            "expected_sha256": "f0360958b9ae0a5dfca4035f62412cfb60d05fc761283b558d67bdd1e5a9ca31"
+          },
+          {
+            "name": "native_win_loss_limits",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182453,
+            "inputs_sha256": "f7a47046e4b16151fdeaf4584bbab5add9a6bb50e092d8a8e63dcb96fbd31681",
+            "expected_sha256": "623d96aefe1e32d76e7851e1598caaf441239975ef1b51f5a22f32a257243056"
+          },
+          {
+            "name": "bot_team_red",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "b3519079dd695c484ac6141856856250b770e56a3e193bdd1db45f8c82c13e66",
+            "expected_sha256": "bfc7dfc3bcd2b6cd53748b06d5c3d8fe53d56c9d16286dc5ff9ba26f9edcac60"
+          },
+          {
+            "name": "bot_team_r",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "7dc63cbdc751ad7f562df1764a806620b68e2d542c741c3114f589758ffe0751",
+            "expected_sha256": "bfc7dfc3bcd2b6cd53748b06d5c3d8fe53d56c9d16286dc5ff9ba26f9edcac60"
+          },
+          {
+            "name": "bot_team_RED",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "9af578481fec2fe0182988e24449f8988f1cbf27225bd8323e272ab02b4300bc",
+            "expected_sha256": "bfc7dfc3bcd2b6cd53748b06d5c3d8fe53d56c9d16286dc5ff9ba26f9edcac60"
+          },
+          {
+            "name": "bot_team_blue",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "138c4a721d21194c0bf9f9f58f59a18af8b8d710ff06f9feb97ef293b6a58098",
+            "expected_sha256": "2c852da8b7ad96c98501e4628d23234cb2633d8929755a834a124f2d255a2b5c"
+          },
+          {
+            "name": "bot_team_B",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "0cd98e98714c30800648ed090b274f268b89b62d43eabe9c8595d69a389ae0bb",
+            "expected_sha256": "2c852da8b7ad96c98501e4628d23234cb2633d8929755a834a124f2d255a2b5c"
+          },
+          {
+            "name": "bot_team_spectator",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "7520f5f1a9345fc954dd359adb368dc06daf19627d0da0a1e8ebb6e5242abe27",
+            "expected_sha256": "2c852da8b7ad96c98501e4628d23234cb2633d8929755a834a124f2d255a2b5c"
+          },
+          {
+            "name": "bot_team_empty",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "3fdde2a1c276f66dc7293c39275de6cf8500648021e67008aa83434ec72dc4d3",
+            "expected_sha256": "2c852da8b7ad96c98501e4628d23234cb2633d8929755a834a124f2d255a2b5c"
+          },
+          {
+            "name": "bot_team_ Red",
+            "actions": 1,
+            "exact_words": 44001,
+            "ordered_effects": 4,
+            "bytes": 182193,
+            "inputs_sha256": "0beda52db197740f0376246d703b64d8f03c394d02c551a9160f997f6afb492c",
+            "expected_sha256": "2c852da8b7ad96c98501e4628d23234cb2633d8929755a834a124f2d255a2b5c"
+          },
+          {
+            "name": "pick_equal_counts_scores_0_0",
+            "actions": 2,
+            "exact_words": 44004,
+            "ordered_effects": 4,
+            "bytes": 182205,
+            "inputs_sha256": "24e1d1431a03e28cfe589fae9e04a0d9b1d67d5a8c96061d4c400a0a27879e45",
+            "expected_sha256": "9fc93e1ee23d4c819aaa83f9c5afb890189ac49ad4f02d2be0445bf97133bead"
+          },
+          {
+            "name": "pick_equal_counts_scores_1_0",
+            "actions": 2,
+            "exact_words": 44004,
+            "ordered_effects": 4,
+            "bytes": 182205,
+            "inputs_sha256": "1b2e0ed47b480ee172b704943cbd3826db662281539b98f13f649d6be0a562cd",
+            "expected_sha256": "67c5c8b491b86bc3021116da90d75b1c78befd1603b478af784bd94def3ef315"
+          },
+          {
+            "name": "pick_equal_counts_scores_0_1",
+            "actions": 2,
+            "exact_words": 44004,
+            "ordered_effects": 4,
+            "bytes": 182205,
+            "inputs_sha256": "f6c5abfee7f06901d9f9645c1721414960765b42b4fd643ab1de25bbc777c540",
+            "expected_sha256": "3176e8e31cce93ff4e43462778eede577b36aa8c0bb6e5b9f30e882d68cc6d33"
+          },
+          {
+            "name": "pick_equal_counts_scores_-2147483648_2147483647",
+            "actions": 2,
+            "exact_words": 44004,
+            "ordered_effects": 4,
+            "bytes": 182205,
+            "inputs_sha256": "30bb7fcd69ddddf48ce40b4eeadccbc5c5ee6485ebedce13394acbf4db5acea4",
+            "expected_sha256": "c7899c717acbfd5445887bd7e43f5a0d37fe416bbbc5cc2abe9e09aa32cd2403"
+          },
+          {
+            "name": "pick_equal_counts_scores_2147483647_-2147483648",
+            "actions": 2,
+            "exact_words": 44004,
+            "ordered_effects": 4,
+            "bytes": 182205,
+            "inputs_sha256": "e58d3f7da222717231e50bf570062d6c3c78e68f272f6517307f2c6a7e16647a",
+            "expected_sha256": "7ff98b8a37057c561dabceda3333789992cb217fc726c73fe00e266fd5fc818e"
+          },
+          {
+            "name": "pick_counts_0_1",
+            "actions": 3,
+            "exact_words": 9,
+            "ordered_effects": 0,
+            "bytes": 36,
+            "inputs_sha256": "f1c89da514c70525ed1f9e6ffa8e569405450f49618cd55a62f29b347b672ed5",
+            "expected_sha256": "27a2f64c4a61aa01c2528a4a9f5bc6b4021658305af4f83304ecfcff6a05dc8a"
+          },
+          {
+            "name": "pick_counts_0_2",
+            "actions": 3,
+            "exact_words": 9,
+            "ordered_effects": 0,
+            "bytes": 36,
+            "inputs_sha256": "f4f0ed45bf5b65add3043c531eed07bda4833456044c97ac320e2fa73a2b85c2",
+            "expected_sha256": "27a2f64c4a61aa01c2528a4a9f5bc6b4021658305af4f83304ecfcff6a05dc8a"
+          },
+          {
+            "name": "pick_counts_1_1",
+            "actions": 3,
+            "exact_words": 9,
+            "ordered_effects": 0,
+            "bytes": 36,
+            "inputs_sha256": "96d413fae2724e2be7479a94f20732a2e3d54a7c67cb7b1dfab00d170328bdfe",
+            "expected_sha256": "012100ff3d095ab0a785a5b1786446eeae1c40a9a891ed4ac883225658d8075a"
+          },
+          {
+            "name": "pick_counts_1_2",
+            "actions": 3,
+            "exact_words": 9,
+            "ordered_effects": 0,
+            "bytes": 36,
+            "inputs_sha256": "6c56eacda85be7155268f39b004947939efb4dcc3ca31494653350ac99fc8e14",
+            "expected_sha256": "27a2f64c4a61aa01c2528a4a9f5bc6b4021658305af4f83304ecfcff6a05dc8a"
+          },
+          {
+            "name": "pick_counts_2_1",
+            "actions": 3,
+            "exact_words": 9,
+            "ordered_effects": 0,
+            "bytes": 36,
+            "inputs_sha256": "9d4aaf584367c36fc54772cff626e2e41bee0228e2fb59ec14804e1fdf7078e6",
+            "expected_sha256": "012100ff3d095ab0a785a5b1786446eeae1c40a9a891ed4ac883225658d8075a"
+          },
+          {
+            "name": "pick_counts_2_2",
+            "actions": 3,
+            "exact_words": 9,
+            "ordered_effects": 0,
+            "bytes": 36,
+            "inputs_sha256": "ac1295142ead447d5f8050a60e2f9a806694a58322c6e943480877a4a253aef7",
+            "expected_sha256": "27a2f64c4a61aa01c2528a4a9f5bc6b4021658305af4f83304ecfcff6a05dc8a"
+          },
+          {
+            "name": "pick_no_clients",
+            "actions": 1,
+            "exact_words": 3,
+            "ordered_effects": 0,
+            "bytes": 12,
+            "inputs_sha256": "1b90393e98c83a71017de370cbdd552cbf01b3afdffb955d0fa7aa337c3261e0",
+            "expected_sha256": "fd1cd5be08f2bfcbfd57d6beca04543dff8f47cbe3496230285fc90103fd4c8b"
+          },
+          {
+            "name": "leader_first_connected_including_connecting",
+            "actions": 3,
+            "exact_words": 9,
+            "ordered_effects": 0,
+            "bytes": 36,
+            "inputs_sha256": "d88d90ae428dc752f16a3af2238ba8198eadc4cfd143a73620f8d1bd688ccd07",
+            "expected_sha256": "1668be337c264b5582406f44e0020a807e4f183453e31638c05d86908041b17e"
+          },
+          {
+            "name": "leader_no_clients",
+            "actions": 1,
+            "exact_words": 3,
+            "ordered_effects": 0,
+            "bytes": 12,
+            "inputs_sha256": "c6bce5b12b9803283ff85df61354c50b71546c62a6f9caefc49cf674b5251f64",
+            "expected_sha256": "ee8765efc197fb2eee11cebd99893dabc327f6431c77795f5532c7eff539d20c"
+          },
+          {
+            "name": "leader_slot63",
+            "actions": 1,
+            "exact_words": 3,
+            "ordered_effects": 0,
+            "bytes": 12,
+            "inputs_sha256": "a42ae6b89a47eecdc99c4c0e45c99556775d2d71b8ac080e3e49ac6000bbb7f4",
+            "expected_sha256": "44a90f7aced5ada2179ac37addb3495cda6c9f230f5820372b414fb33429392c"
+          },
+          {
+            "name": "set_leader_actual_userinfo_and_reselect",
+            "actions": 2,
+            "exact_words": 176012,
+            "ordered_effects": 18,
+            "bytes": 732226,
+            "inputs_sha256": "29f50d364d9ec56cfb13b4737fd13fa70321b3b7d4d708edd2aad134261f140b",
+            "expected_sha256": "939c81c9c96e23fc7abf8212d21b4c7269085addbad476c02cbd39679da3479f"
+          },
+          {
+            "name": "set_leader_clears_multiple_and_connecting",
+            "actions": 1,
+            "exact_words": 123210,
+            "ordered_effects": 13,
+            "bytes": 513165,
+            "inputs_sha256": "5c05f279d313e8607031e61132c2edb3e4b2917dee53bd8326ab57a336e598c8",
+            "expected_sha256": "8e2ff043852b3e1849e0f2bc5294de63f96a5d739bfde25c30ce7ca18eeb2c3a"
+          },
+          {
+            "name": "set_leader_rejected_0_1",
+            "actions": 1,
+            "exact_words": 26399,
+            "ordered_effects": 2,
+            "bytes": 109127,
+            "inputs_sha256": "29fefb604d285ec1e6ef10439a1b601411841ba11fac850b3b1321c56424428d",
+            "expected_sha256": "7ca31ad7e1de755a6aa4a48264b7bd6ba460cd6656bafba0d4889405548d807f"
+          },
+          {
+            "name": "set_leader_rejected_2_2",
+            "actions": 1,
+            "exact_words": 17598,
+            "ordered_effects": 1,
+            "bytes": 72744,
+            "inputs_sha256": "c3c43ad4f53a7f196bbcf8eda05a788f41e702dc3384a6b0e7ac9eef3d1aa4c7",
+            "expected_sha256": "bbd8a920053f0ac3395edad51a952c727a94d0e69677ffb6f2caaedb289c6695"
+          },
+          {
+            "name": "team_vote_to_actual_userinfo",
+            "actions": 3,
+            "exact_words": 202411,
+            "ordered_effects": 20,
+            "bytes": 838429,
+            "inputs_sha256": "bac041c82fdb656991a23084d321f346f89668039163d841229276853f15abf1",
+            "expected_sha256": "81d3077eabb5897d5ec8980c27d6f6cb7b45c43082583fa151f2ab8ac8d80017"
+          },
+          {
+            "name": "blue_team_vote_to_actual_userinfo",
+            "actions": 3,
+            "exact_words": 202411,
+            "ordered_effects": 20,
+            "bytes": 838506,
+            "inputs_sha256": "39667f31971e4f7ea9b88020d5c7ebb968cbd90b408646775e14b4d0b3bf5c1c",
+            "expected_sha256": "4bd5d94fff0c654c1f69f18d0c97992aa9a3ccd9f6aa1bd096d9def6a74d5f5f"
+          },
+          {
+            "name": "uppercase_leader_keeps_console_boundary",
+            "actions": 3,
+            "exact_words": 123202,
+            "ordered_effects": 11,
+            "bytes": 508899,
+            "inputs_sha256": "84f6c59084293d9149183075ca69ac9351377c866d77996c8fe33cfe8dd51931",
+            "expected_sha256": "7a355570fbe1c1cc754221e07611f3f3c30928f5ab4dff25d530427600b9af0e"
+          },
+          {
+            "name": "userinfo_overlay_enable_disable",
+            "actions": 6,
+            "exact_words": 158394,
+            "ordered_effects": 12,
+            "bytes": 656707,
+            "inputs_sha256": "16a556430aba1d99b285f9f09ac55c711418f4dc4a48685817ba4f5497e79f0d",
+            "expected_sha256": "cc1fdb04da481a250da8e3c2addf9f3bbd64a23d97531e9087f4c1e29b46ffaf"
+          },
+          {
+            "name": "clean_name_capacity_2",
+            "actions": 100,
+            "exact_words": 300,
+            "ordered_effects": 0,
+            "bytes": 1288,
+            "inputs_sha256": "36e40d0b8451f3340e3ae3d3657ace9ead6bfaa5220b569a24413cdf12cf9916",
+            "expected_sha256": "fc33f9cf9124535fef03a27a91ca3fe0bb781716e25306268855e155d5a29fff"
+          },
+          {
+            "name": "clean_name_capacity_3",
+            "actions": 100,
+            "exact_words": 300,
+            "ordered_effects": 0,
+            "bytes": 1385,
+            "inputs_sha256": "e2bd84710e8a69a944a5268a11a6a1747392a30ba26917da994e87a15d92d33b",
+            "expected_sha256": "4bea3953c9a13866e7fd69fefbc74a134ddf76c778b7f8c303e88c7d8f8f551f"
+          },
+          {
+            "name": "clean_name_capacity_4",
+            "actions": 100,
+            "exact_words": 300,
+            "ordered_effects": 0,
+            "bytes": 1487,
+            "inputs_sha256": "a8ba907288686f438c81a4da0d2baed3cf79e21fdee269667d1cc2fa3b6d49eb",
+            "expected_sha256": "051ec97a3eb94340a799f7472703f28b12cc6168080b8652062ac6d02a929fbe"
+          },
+          {
+            "name": "clean_name_capacity_5",
+            "actions": 100,
+            "exact_words": 300,
+            "ordered_effects": 0,
+            "bytes": 1585,
+            "inputs_sha256": "6573187d9139e96065ad4bd3f3e497bd7f8d8840c893048016b5a3663ebff3d5",
+            "expected_sha256": "c21b0ca07fc3b91fe9e1866df94b71b0203cd58858eeffbec845161482045563"
+          },
+          {
+            "name": "clean_name_capacity_8",
+            "actions": 100,
+            "exact_words": 300,
+            "ordered_effects": 0,
+            "bytes": 1858,
+            "inputs_sha256": "837a1ef2d8fbc89b71cdfadfd64594e55d0867b7507a42438dd181fbce379265",
+            "expected_sha256": "e0511c672b6d633a19daa39ba7a3035a62e91de8853f0f0ad1320c03dc8d6e8a"
+          },
+          {
+            "name": "clean_name_capacity_13",
+            "actions": 100,
+            "exact_words": 300,
+            "ordered_effects": 0,
+            "bytes": 2287,
+            "inputs_sha256": "60443248a413e92925b55aac5516c6e3ebcfcc28b136ee04c416ab867f7ea32f",
+            "expected_sha256": "f654f1ed1af98e5231cdf28de4b79ed99ab5f352c29eb5eb06a608f1e9a7dc21"
+          },
+          {
+            "name": "clean_name_capacity_14",
+            "actions": 100,
+            "exact_words": 300,
+            "ordered_effects": 0,
+            "bytes": 2373,
+            "inputs_sha256": "b97d4a1c41e45702ce9d5c9c2ae596bad795202c65c678d30324bd36d74b9929",
+            "expected_sha256": "33717e0021e313b6876b9ad5237f85a8ad9ee447bb62ae04907796ea53d8e1ad"
+          },
+          {
+            "name": "clean_name_capacity_15",
+            "actions": 100,
+            "exact_words": 300,
+            "ordered_effects": 0,
+            "bytes": 2455,
+            "inputs_sha256": "5940704fba31649288ed647b01e5fdb904d035eca5f05a248e830343168dd68a",
+            "expected_sha256": "d55a157df01946938d72e0cb3a7a73b8b7b0853b2b27b0c7c341e8915dcd8162"
+          },
+          {
+            "name": "clean_name_capacity_35",
+            "actions": 100,
+            "exact_words": 300,
+            "ordered_effects": 0,
+            "bytes": 3809,
+            "inputs_sha256": "04086afbdbd90964b58aab742798ebc13167cfe6add37dea4fddde0ac009f53c",
+            "expected_sha256": "bc992c24bfb2d943113c67d3caafc390310e8d7b1524230fce4f0b2e616f03d3"
+          },
+          {
+            "name": "clean_name_capacity_36",
+            "actions": 100,
+            "exact_words": 300,
+            "ordered_effects": 0,
+            "bytes": 3873,
+            "inputs_sha256": "d98a6299cc60a8349c22e5824deb6e13b032f0b092319520810299286d95623f",
+            "expected_sha256": "5f1e4f5ba1bd0afddf03e9dd7723efe8fc2286b1accfb702b6c71817a1a2f3d5"
+          },
+          {
+            "name": "clean_name_capacity_37",
+            "actions": 100,
+            "exact_words": 300,
+            "ordered_effects": 0,
+            "bytes": 3936,
+            "inputs_sha256": "8d54550240ef24ecdfb2f74beab4454176ca5f16c137cdd71348855f3e92d80c",
+            "expected_sha256": "3b1f1ec4dd648aea24ec1b74c3e995c71e5f133cf9eb040cef2b8756b624a81e"
+          },
+          {
+            "name": "clean_name_capacity_64",
+            "actions": 100,
+            "exact_words": 300,
+            "ordered_effects": 0,
+            "bytes": 5375,
+            "inputs_sha256": "7bf4613b2940bec16ef2a4d0be99c0b4524e09190d8cd9419aa80ac13228b9d7",
+            "expected_sha256": "32cdecb4d7e5257dac1d90f3c04ba2ebc161146780631f1c98c99a6534664030"
+          },
+          {
+            "name": "clean_name_capacity_128",
+            "actions": 100,
+            "exact_words": 300,
+            "ordered_effects": 0,
+            "bytes": 7389,
+            "inputs_sha256": "8a0dc7e605e400bd73327b2d3e8c854518f2675235be16e78e54cccc71900d1f",
+            "expected_sha256": "8daf96dae6d4631df77d1485ebdcf546379a9cf6cbe7851e0edba0a5abdc5ee3"
+          },
+          {
+            "name": "clean_color_group_32",
+            "actions": 32,
+            "exact_words": 96,
+            "ordered_effects": 0,
+            "bytes": 568,
+            "inputs_sha256": "9b6d96816185b4acff46b829140abb7dca0413aed19ae54463560dcb37a44157",
+            "expected_sha256": "436226693758d5e835c0ae8282d72ff970ef4ddc7bd58fac7b57a5cc935258be"
+          },
+          {
+            "name": "clean_color_group_64",
+            "actions": 32,
+            "exact_words": 96,
+            "ordered_effects": 0,
+            "bytes": 568,
+            "inputs_sha256": "2c1955db3ebba21f337b187b13a33ab6a27a2de678aed04d0e1229ffeab9db41",
+            "expected_sha256": "cb630eb7393f8a72e75e1c25be05406a490c8f9e81d2429c3f931ad0ab5512d3"
+          },
+          {
+            "name": "clean_color_group_96",
+            "actions": 32,
+            "exact_words": 96,
+            "ordered_effects": 0,
+            "bytes": 568,
+            "inputs_sha256": "0e0eea02e9e08eaa522efded3f2ee63fbef65c6b3779c41d097a5583443d0d80",
+            "expected_sha256": "70e9d28d38a825429b57ce3576efd742f951aa79b32117ebcab70af560032345"
+          },
+          {
+            "name": "clean_color_group_128",
+            "actions": 32,
+            "exact_words": 96,
+            "ordered_effects": 0,
+            "bytes": 571,
+            "inputs_sha256": "ec5f553825ac509da431bdf55978f29e9717ddc091572bb96ed18ad26b28bb53",
+            "expected_sha256": "749eee2b4bdb03d25754dc82c194807749a55e055464a91bd1d5e1437fbbef49"
+          },
+          {
+            "name": "clean_color_group_160",
+            "actions": 32,
+            "exact_words": 96,
+            "ordered_effects": 0,
+            "bytes": 608,
+            "inputs_sha256": "66032774745f9c78503da08def9bef586114c925dcbddf4badfee1783200f08f",
+            "expected_sha256": "c7bbce254346e00628456dd2fcdb5489e573dac85ce662ea784e32a2d1cc5ee2"
+          },
+          {
+            "name": "clean_color_group_192",
+            "actions": 32,
+            "exact_words": 96,
+            "ordered_effects": 0,
+            "bytes": 608,
+            "inputs_sha256": "dec26ed91924ad8696633fb912a5df7bb6fe5fd540d10f38cd82bb299a89820c",
+            "expected_sha256": "a808a1bb6a9bfca855e09451e1d7fa4ede8cc356daa920227839615b5a658cdd"
+          },
+          {
+            "name": "clean_color_group_224",
+            "actions": 32,
+            "exact_words": 96,
+            "ordered_effects": 0,
+            "bytes": 608,
+            "inputs_sha256": "71c9bc9ea23f5ae674a08222a9fd31ea96a24130166fb2e03350bacaa972d47c",
+            "expected_sha256": "23645c242d2830dc6b4474869fe6cbc2f01c84bbb4a2068488e0b748ef212759"
+          },
+          {
+            "name": "clean_color_group_255",
+            "actions": 31,
+            "exact_words": 93,
+            "ordered_effects": 0,
+            "bytes": 589,
+            "inputs_sha256": "aeb0892fcd4ceebed49763d60a16a607d5f474456bccbe507113c0a3ddbecfb4",
+            "expected_sha256": "5f42651f62cf71c73c89b70c8b02d6252152c242667398ee224e182f3edb2928"
+          },
+          {
+            "name": "info_lookup_native_parsing",
+            "actions": 173,
+            "exact_words": 519,
+            "ordered_effects": 0,
+            "bytes": 10391,
+            "inputs_sha256": "b0086830097a3278ad9e30dede8e23b9c90c61b40a993f2e59da2d729c368ef4",
+            "expected_sha256": "b5d782abd68dfe72d5cdf90dd7d47beb7aa2cd89f0c81619df74e0b75a05fd61"
+          },
+          {
+            "name": "info_lookup_null_inputs",
+            "actions": 3,
+            "exact_words": 9,
+            "ordered_effects": 0,
+            "bytes": 36,
+            "inputs_sha256": "ea3b2f8c5f4bcf69798ec8b6e1123d5437aed62159f8c4f884ba8b7883abac7e",
+            "expected_sha256": "f44aa49c208ccad03cfef3f83d5b0b413d75dfde58b02d035a4f608c04733b49"
+          },
+          {
+            "name": "info_validate_only_two_forbidden_bytes",
+            "actions": 9,
+            "exact_words": 27,
+            "ordered_effects": 0,
+            "bytes": 108,
+            "inputs_sha256": "842e2f7a07b158ed521f78ba374e8219a3c2a8af10e189d773a7892ad21c287f",
+            "expected_sha256": "e303c701e39be223a35a5d88c376eb8130e1c124a885ca806dabefebd59b9142"
+          }
+        ],
+        "scenario_count": 195,
+        "actions": 1947,
+        "exact_words": 7925495,
+        "ordered_effects": 722,
+        "output_bytes": 32887041,
+        "runtime_contracts": 18,
+        "native_rejections": [
+          {
+            "name": "oversize_info",
+            "status": 41,
+            "message": "Info_ValueForKey: oversize infostring",
+            "inputs_sha256": "de638e8787213d12e6ce4bf206bc558665d3c7af6ecad680529b7b42e6cf5618"
+          },
+          {
+            "name": "name_fallback_capacity",
+            "status": 40,
+            "message": "Q_strncpyz: destsize < 1",
+            "inputs_sha256": "65c9f57e9b0efb0e91cca14daf8bd7c0e57c8a1c5020a20e0f2ea52baf791fb1"
+          }
+        ],
+        "test_sha256": "fd6a833ab5225b533a91726813c42a6fa836a2f2578649f8d70c459bc2d8236e",
+        "oracle_sha256": "a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f",
+        "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
+        "scope": "Unchanged Baseq3 ClientUserinfoChanged/ClientCleanName/TeamLeader/PickTeam and original Info_ValueForKey/Info_Validate. Full 117-word playerStates plus relevant client/session/entity fields, 64 player configstrings and team-vote state are compared before every engine delivery and after stateful actions. Team leader changes and complete team vote/overlay sequences use actual ported userinfo. Pure helpers have separate exact result batches. Userinfo transport, server commands, configstring broadcasting and log-file writes remain observed host boundaries; ClientConnect, session persistence, Missionpack and networking remain open.",
+        "original_sources": {
+          "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
+          "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
+          "Quake-III-Arena-original-source/code/qcommon/cm_test.c": "2e5d1139c88a5ffc6dea01349865f91d210158491931090d4c7f07d3f11cf4e8",
+          "Quake-III-Arena-original-source/code/qcommon/cm_patch.c": "9fd50664bb46f77a6bf3f7d06a69500867bff1cae4b94c9be168c4ad9e03ca1f",
+          "Quake-III-Arena-original-source/code/qcommon/cm_polylib.c": "b1c1cf3a19ada8682b4ca58556b316144940f5bee5ca59ae4dd6ebe1a947a6ec",
+          "Quake-III-Arena-original-source/code/qcommon/md4.c": "fc5be3df4b9c463711e428b98bdc357351e5aeaa13e785073ec7a5921ccc5b4c",
+          "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29",
+          "Quake-III-Arena-original-source/code/game/q_shared.c": "724dae5f0a9de8bc6ced68893f9f59c5625deca4a1e194b11f5be348fdf2481b",
+          "Quake-III-Arena-original-source/code/game/bg_misc.c": "c71034761ec3f75fd8952f2d75a7f057d664b5cf97b5edf26ae020da65a486e0",
+          "Quake-III-Arena-original-source/code/game/bg_pmove.c": "3ced04aed8686d3da051887dc8c4ace88a24b45a6d0bb4e4d5238cd53cb7a7fc",
+          "Quake-III-Arena-original-source/code/game/bg_slidemove.c": "327fa83a0c523da8a7e8b4fbbbba40cf8870a28613459289ef0e8a865e6bd903",
+          "Quake-III-Arena-original-source/code/game/g_utils.c": "8fdebd93b8976f979a5ac4887523884f8f2b4246a8bd9e8f8d67829ab577163b",
+          "Quake-III-Arena-original-source/code/game/g_client.c": "52a3c908aeff487cc924f54991bc7b4f523f6483a0ff060edc3aa32367f213bf",
+          "Quake-III-Arena-original-source/code/game/g_misc.c": "bf29bf68e000b068497d45cd4be9bbcfb9730797e21e07044ee4b158d74f5441",
+          "Quake-III-Arena-original-source/code/game/g_target.c": "34249fdb42c433e88baa10ce1c10d5214373da0b78b7e6b21ee7afa542d7ef93",
+          "Quake-III-Arena-original-source/code/game/g_team.c": "58005485a30605e33d826da14952abf5158832d9d8bf098178e3b8cc97587a02",
+          "Quake-III-Arena-original-source/code/game/g_mover.c": "4c9934ebd38ee2634affc102cfc423df15fedbd81186b42726da5ef6c72c7500",
+          "Quake-III-Arena-original-source/code/game/g_main.c": "b98c2b5cb2ed272bcce36acd1e5eda1c57d499b9ecd3549ba9a08f69dd1363d4",
+          "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
+          "Quake-III-Arena-original-source/code/game/g_combat.c": "a19a66ecaf1d1bf557e350e08ea57da8356d1a66ee4f61d8cc2fae455c312a48",
+          "Quake-III-Arena-original-source/code/game/g_weapon.c": "cc12c2c9986503206c465ee480e4cf97f9b143380604548ef45c0c54ae704e8a",
+          "Quake-III-Arena-original-source/code/game/g_missile.c": "9915e67656332a2b1765372eca42981823f9bc569866770046f58962505285a2",
+          "Quake-III-Arena-original-source/code/game/g_items.c": "168044c842d19b64000ba3e1b3715e8038c871b268c90a61535cb6c9aaa6535c",
+          "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
+          "Quake-III-Arena-original-source/code/game/g_cmds.c": "52fa4d7f279f374f4e2de31fbb20e35c3d78676b4ce67168599fb5bab99cce59",
+          "Quake-III-Arena-original-source/code/qcommon/cmd.c": "43e3b1ba3e17673b0b5c8bd840963bdce272add9e549231cee2908f420a42074",
+          "Quake-III-Arena-original-source/code/game/g_spawn.c": "611d4c13b7794785e1c475f93d2dfcbfad3173132b76e031e80db7b8653bd268",
+          "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
+          "Quake-III-Arena-original-source/code/game/q_shared.h": "7c356992d3f8b722eeb0160c44a0515bd5a83538ffb86190ca138e352e874115",
+          "Quake-III-Arena-original-source/code/game/bg_public.h": "29679e04ba6f0f730c5ca200410330e057609da59e563e36d101f329fafd09e7",
+          "Quake-III-Arena-original-source/code/server/sv_game.c": "dda52c608aec154610aa554c7a15d2f597196193e813127114c43636fcc1f57b",
+          "Quake-III-Arena-original-source/code/server/sv_world.c": "d67f952c374902c71b6e65523ae983f0d6081e16c379b566779a1fd1b05aba4d",
+          "Quake-III-Arena-original-source/code/server/sv_init.c": "cc7446cc30bf71275e8392988e32ad324fc2ed274bdc927194c8fd9e9ddabff6"
+        }
+      }
+    },
+    {
       "path": "build/reference/client_spawn/result.json",
-      "sha256": "071e04ffe842044a405f47a3425301f9fcfc33a6d90e3f83a3888672dc52a5d7",
+      "sha256": "8beb06c54ee1a2fdc5e938f22e77d514517f437a3ddb96fb29d969c46131b0bb",
       "result": {
         "passed": true,
         "scenarios": [
@@ -56152,6 +58094,154 @@
             ],
             "inputs_sha256": "0546f1f1a7195d8b2c744832f3eb93da2844febf4420466a4ec429580dce797e",
             "expected_sha256": "7dc4fd59d7b970335612d09dca17fe05b45bbae1a1de014d0c15e47e5266f9c6"
+          },
+          {
+            "name": "userinfo_mixed_case_first_duplicate",
+            "exact_words": 275,
+            "bytes": 1106,
+            "events": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                4,
+                65
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                7,
+                0
+              ]
+            ],
+            "inputs_sha256": "30018d2ae1e0a1ca37123de952a47533f968fcc6952b80eec1bdf73e9dcb5525",
+            "expected_sha256": "c92478d550442ef5f5cfe19e1ce1be725ad3062a87c637ab102c50059122da61"
+          },
+          {
+            "name": "userinfo_no_leading_delimiter",
+            "exact_words": 275,
+            "bytes": 1106,
+            "events": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                4,
+                65
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                7,
+                0
+              ]
+            ],
+            "inputs_sha256": "8920982c4f3aaf4fb34509d9975bbfd686288a4d8ea8125a6d9cbdc838574e03",
+            "expected_sha256": "0f87cbecc29717e169be7485f75cba1e9e26924b3a026078685c479bdf4e4981"
+          },
+          {
+            "name": "userinfo_truncates_before_handicap",
+            "exact_words": 275,
+            "bytes": 1106,
+            "events": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                4,
+                65
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                7,
+                0
+              ]
+            ],
+            "inputs_sha256": "c7f542c59a8616f448c4e4cc0365e2008e6852432fba0439e7ba041c5dd88812",
+            "expected_sha256": "38c14e90f53f7080197fafa2fd8ebe4cad24570a42cad6a28044704d9a7bd55a"
+          },
+          {
+            "name": "userinfo_truncated_handicap_digits",
+            "exact_words": 275,
+            "bytes": 1106,
+            "events": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                4,
+                65
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                7,
+                0
+              ]
+            ],
+            "inputs_sha256": "ae706f83b93b0a46bb232a37424c94e4a373de60442d682d7405be3624f923a8",
+            "expected_sha256": "fb80c61abc430815a4f070a05410cad2e67781343b4ae67afddbe2f3e5e5bda2"
           },
           {
             "name": "local_initial",
@@ -56734,13 +58824,13 @@
             "expected_sha256": "0c89acf44a15591dbde4b674e0d29abc154b4594bf3ec86506e0a9f007435fcd"
           }
         ],
-        "scenario_count": 17,
-        "exact_words": 4666,
-        "output_bytes": 18766,
-        "ordered_boundary_events": 116,
+        "scenario_count": 21,
+        "exact_words": 5766,
+        "output_bytes": 23190,
+        "ordered_boundary_events": 144,
         "runtime_contracts": 8,
-        "test_sha256": "41d3b9cafab514dd6f89ceaaf9e81d6fb43858221dc1446c3a3e133f13c6c111",
-        "oracle_sha256": "5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae",
+        "test_sha256": "234193e4d4852e8955ca187a3182fd82c4e1b6bb3b823e960b53e927b5cd18d6",
+        "oracle_sha256": "a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 ClientSpawn selection and orchestration: persistent/session preservation, transient reset, handicap, spawn filters, CTF/spectator/intermission placement, initial inventory, KillBox/link order, target activation, weapon selection and playerState-to-entityState snapshots. ClientThink, ClientEndFrame, userinfo/usercmd delivery and intermission movement are deterministic observed host boundaries.",
         "original_sources": {
@@ -56782,7 +58872,7 @@
     },
     {
       "path": "build/reference/client_think/result.json",
-      "sha256": "270c29cee9452a753a367f353ff09547ca4bbf23bdd843f0a519d700eca7a0b9",
+      "sha256": "73deec344a1cef222895365ca63919e57cfeb69d74ff98eb00a54dc10fd817da",
       "result": {
         "passed": true,
         "scenarios": [
@@ -57338,7 +59428,7 @@
         "ordered_effects": 77,
         "runtime_contracts": 3,
         "test_sha256": "9840742493f6f2073c50bb3fc87caaa88a1e4261689db533d885ef7d6cac6a47",
-        "oracle_sha256": "5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae",
+        "oracle_sha256": "a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 ClientThink_real, ClientThink, G_RunClient, ClientImpacts, SpectatorThink, ClientInactivityTimer, ClientTimerActions, ClientIntermissionThink and ClientEvents. Actual Pmove, dynamic server collision, snapshots, triggers, hook release and medkit state are integrated; engine usercmd, cvar, drop, follow, weapon and AAS calls are ordered observed boundaries.",
         "original_sources": {
@@ -57858,7 +59948,7 @@
     },
     {
       "path": "build/reference/combat/result.json",
-      "sha256": "fbbc036425a710c7e6dccc06818f6a463bf3d54aaa0f8b8d2113bcd2522888ab",
+      "sha256": "d40b6e0d0fbb14321659d785785cee93b30a39cc1473e324c083d9737b1422e6",
       "result": {
         "passed": true,
         "scenarios": [
@@ -60155,7 +62245,7 @@
         "string_bytes": 1790052,
         "traces": 2681,
         "cd_maps": 31,
-        "test_sha256": "e3173b980944c727ef71488ab7b09eba2a748629eb79aca54c16ef834485e391",
+        "test_sha256": "26834a84a6778529a66e1e939d290f7adcbbf32be3ca800d21a44e5207f6d2f0",
         "runtime_contracts": 8,
         "controlled_freed_laser_link_rejections": 1,
         "controlled_rejections": [
@@ -60259,7 +62349,7 @@
     },
     {
       "path": "build/reference/deaths/result.json",
-      "sha256": "05a52152d2b5e523d8f95b630c484eb29772e5fe1a5bf86221fdb761462b84fb",
+      "sha256": "b4c6dc40670328373e1c7f8621f72ea54ec218ceedac1a51a98ce0af8bf4653e",
       "result": {
         "passed": true,
         "scenarios": [
@@ -60475,7 +62565,7 @@
         "exact_words": 3887033,
         "string_bytes": 40921,
         "runtime_contracts": 8,
-        "test_sha256": "e3173b980944c727ef71488ab7b09eba2a748629eb79aca54c16ef834485e391",
+        "test_sha256": "26834a84a6778529a66e1e939d290f7adcbbf32be3ca800d21a44e5207f6d2f0",
         "scope": "Baseq3 player_die, Team_FragBonuses, TossClientItems, almost-capture/scored checks and respawn wrapper. Drop_Item and Team_ReturnFlag execute actual ported item/flag entities; PrintMsg and the isolated ClientSpawn test override remain observed callbacks. The normal respawn path uses the separately verified ported ClientSpawn. Collision, PVS, scores, body queue and hook cleanup execute in the port.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -60559,7 +62649,7 @@
     },
     {
       "path": "build/reference/full_frame/result.json",
-      "sha256": "4681b40772f0f008dcc26f9b8ad2a67adc83644faf9cfa924fb8332d3f1cbea1",
+      "sha256": "a8d112202821e683f48454dc00cf4320812d0505209eaaba4629e1dbea07f59f",
       "result": {
         "passed": true,
         "scenarios": [
@@ -60610,8 +62700,8 @@
         "exact_words": 3231,
         "output_bytes": 12992,
         "runtime_contracts": 3,
-        "test_sha256": "f8760f73e30e821c80b1565395a5484641662a89538594b47080fe9fb9ee650b",
-        "oracle_sha256": "5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae",
+        "test_sha256": "df976c1b1134f7dbcb505088b8eb1d77a6160b5342d4bd3c20a1c15719bb0637",
+        "oracle_sha256": "a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 G_RunFrame ordering: restart guard, frame/time update, Cvar refresh, allocated entities, client end frames, actual CheckTournament, CheckExitRules, CheckTeamStatus, CheckVote, CheckTeamVote, CheckCvars and entity-list reset. This suite observes Cvar refresh via an explicit override; the default ported engine registry path is compared in test_game_cvars.py with empty-entity frames. Active vote, team-overlay and password sequences are compared separately.",
         "original_sources": {
@@ -60653,7 +62743,7 @@
     },
     {
       "path": "build/reference/game_cvars/result.json",
-      "sha256": "0e0615a2bd37c6ef5589a1cafa35dbf6f070742140e92343216ccd1b1f64fd51",
+      "sha256": "22d4ff5500b42eef165fcab55c09bfc4316bc50ddbc1bcc3b663b5a0d869fcd3",
       "result": {
         "passed": true,
         "scenario_count": 89,
@@ -61469,7 +63559,7 @@
         "build_date": "Sep  5 2026",
         "runtime_contracts": 13,
         "native_rejections": 4,
-        "test_sha256": "d1945e8634fa3deec93c4d34062bd6e1a4cabaab29cbd9a1ac445dee46e2d3a7",
+        "test_sha256": "4e7738fa8e7f9d2b40ea915eaff767eddea661ca0f179c5ad3b6d8b837e102cd",
         "oracle_sha256": "7686df254f37a2e42d3e47a60e92f253d20e58faf863e56b4a015c615920619e",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Original engine Cvar_Register/Update and Baseq3 G_RegisterCvars/G_UpdateCvars/CheckCvars with all 46 table rows and 43 VM snapshots. Empty-entity G_RunFrame probes use guarded inactive match/vote boundaries; gameplay remains covered by its separate suites. Missionpack team shaders are excluded.",
@@ -61486,7 +63576,7 @@
     },
     {
       "path": "build/reference/items/result.json",
-      "sha256": "9140d43b2bb7a921aac6163a8a890c44a69dfca84994b6244e77cfdfb7ff8ada",
+      "sha256": "5459d0dfb32d706dd07910ffdc7c156948f1f0133480e9829c2d849402837769",
       "result": {
         "passed": true,
         "scenarios": [
@@ -61675,7 +63765,7 @@
         "exact_words": 451312,
         "string_bytes": 30625,
         "runtime_contracts": 12,
-        "test_sha256": "e3173b980944c727ef71488ab7b09eba2a748629eb79aca54c16ef834485e391",
+        "test_sha256": "26834a84a6778529a66e1e939d290f7adcbbf32be3ca800d21a44e5207f6d2f0",
         "scope": "Baseq3 item registration/spawn/finish, pickup eligibility and item-specific pickup functions, Touch_Item events/targets/respawn, powerup denial, dropped-item physics, and complete CTF flag take/return/capture scoring. Disabled-item Cvar registration remains an explicit boundary.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -62047,7 +64137,7 @@
     },
     {
       "path": "build/reference/missiles/result.json",
-      "sha256": "7dcc984a17bf982c3867eb1350aacdcedc9598dcfd8836fa7d82922d7c02380b",
+      "sha256": "d5d458fdc51ce21b30fdb1772d948b4ebaaa3b32ca4b27f462ca2d235f68f4ee",
       "result": {
         "passed": true,
         "scenarios": [
@@ -85705,7 +87795,7 @@
         "string_bytes": 2612912,
         "traces": 1260,
         "cd_maps": 31,
-        "test_sha256": "e3173b980944c727ef71488ab7b09eba2a748629eb79aca54c16ef834485e391",
+        "test_sha256": "26834a84a6778529a66e1e939d290f7adcbbf32be3ca800d21a44e5207f6d2f0",
         "runtime_contracts": 8,
         "controlled_rejections": [
           {
@@ -86523,7 +88613,7 @@
     },
     {
       "path": "build/reference/scores/result.json",
-      "sha256": "b285d63eac18e627c0f352c9d97a70fb59fde98c0fcc68938c8a7a956ec70c8f",
+      "sha256": "8ce8ebcad5a2653f4cc43480eb466ba471fdb82783e7a508632bbc6455d02737",
       "result": {
         "passed": true,
         "scenarios": [
@@ -92131,7 +94221,7 @@
         "messages": 412,
         "log_lines": 70,
         "runtime_contracts": 12,
-        "test_sha256": "e3173b980944c727ef71488ab7b09eba2a748629eb79aca54c16ef834485e391",
+        "test_sha256": "26834a84a6778529a66e1e939d290f7adcbbf32be3ca800d21a44e5207f6d2f0",
         "sort_profile": {
           "name": "native Windows UCRT qsort",
           "sdk": "10.0.26100.0\\",
@@ -107853,7 +109943,7 @@
     },
     {
       "path": "build/reference/spawn_values/result.json",
-      "sha256": "d1f2d7e8bd22466379660965461f0e300edb795163825ed7c3131b3132c38149",
+      "sha256": "e122cd83957e84e335402b361eb569a269c337fabec1bb33aa4db79e691e5370",
       "result": {
         "passed": true,
         "cases": 4096,
@@ -107867,7 +109957,7 @@
         "think_inputs_sha256": "ea8d9e60174bdb7acbd9a5bfc0e7fdf03aae24b654e97628f464c3fb8e64dec2",
         "think_expected_sha256": "d122208c99f71f87db5effca57f268502399813f1d14c1af8b915e73040bbd45",
         "scope": "all original spawn field types, first-key lookup, last-field assignment, CRT numbers, parser bounds; no spawn class execution",
-        "test_sha256": "e3173b980944c727ef71488ab7b09eba2a748629eb79aca54c16ef834485e391",
+        "test_sha256": "26834a84a6778529a66e1e939d290f7adcbbf32be3ca800d21a44e5207f6d2f0",
         "inputs_sha256": "1ce188309d9e2f68b546141a0f21d437db35de077e20ea9eaff63614ad100c43",
         "expected_sha256": "0b79eb4964a52b6530d98f3a926728b3d9dc6277b215edf08f9fdda415cfcc64",
         "original_sources": {
@@ -107909,7 +109999,7 @@
     },
     {
       "path": "build/reference/targets/result.json",
-      "sha256": "dd02053d1ddf335f0ae970c0a7ddee4b369f1ecd9dc20ea6a497138cbe74128c",
+      "sha256": "638b5cee31d892d8c836f87279d483e3d5e1c8ace73787f675af45f969b62502",
       "result": {
         "passed": true,
         "scenarios": [
@@ -108141,7 +110231,7 @@
         "actions": 9691,
         "exact_words": 40453187,
         "string_bytes": 4721815,
-        "test_sha256": "e3173b980944c727ef71488ab7b09eba2a748629eb79aca54c16ef834485e391",
+        "test_sha256": "26834a84a6778529a66e1e939d290f7adcbbf32be3ca800d21a44e5207f6d2f0",
         "original_missing_noise_rejection": true,
         "original_freed_timer_rejections": 2,
         "scope": "Original target, event, spawn and allocated-entity frame loop; missile/item/mover/client handlers record dispatch only; no complete G_RunFrame/server acceptance",
@@ -108185,7 +110275,7 @@
     },
     {
       "path": "build/reference/team_status/result.json",
-      "sha256": "e172ca08ed05d7db0dc93f2a8f30be95c977e75b2c997eb26b8c3c110c8986e4",
+      "sha256": "1128c2a5a7d3f81f9d58abac66add598e67b20c4a9fc69d95d098eae9545469f",
       "result": {
         "passed": true,
         "scenarios": [
@@ -108996,8 +111086,8 @@
         "ordered_effects": 288,
         "output_bytes": 275011,
         "runtime_contracts": 12,
-        "test_sha256": "64064c183085f2f2a430efca9ad0e88368a6b146f6651a9e48c7e65b4e366fca",
-        "oracle_sha256": "5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae",
+        "test_sha256": "2d141fb4cf3a35dc3e857f3bf741e6761b1cbf4142710597bab132c484056c49",
+        "oracle_sha256": "a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f",
         "scope": "Unchanged Baseq3 Team_GetLocation, SortClients, TeamplayInfoMessage, CheckTeamStatus and CheckCvars, including actual CM PVS/area portals and G_RunFrame integration. Engine Cvar refresh and command delivery remain observed host boundaries. Password cache has game-module lifetime.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -109038,7 +111128,7 @@
     },
     {
       "path": "build/reference/tournament/result.json",
-      "sha256": "ff9de7d3d11d18fba368bb6d781eec4fa5cc2420309c8dce5e61c8d4d6f0e21f",
+      "sha256": "47d1e7b1eb0acd58ba9c80bcade34686ada08b9caa6422410d0f567d1c9a351b",
       "result": {
         "passed": true,
         "scenarios": [
@@ -109132,7 +111222,7 @@
         "output_bytes": 547,
         "runtime_contracts": 3,
         "test_sha256": "145eb912f798c37d7a2635a480f62014c571c33f13ec50c32a70410c5e610497",
-        "oracle_sha256": "5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae",
+        "oracle_sha256": "a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f",
         "scope": "Verbatim Baseq3 CheckTournament and TeamCount: tournament promotion/wait/countdown/restart, FFA/team readiness, warmup Cvar changes, configstrings, logs and 32-bit time boundaries. Promotion and console delivery are observed engine boundaries.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -111597,7 +113687,7 @@
     },
     {
       "path": "build/reference/vote_commands/result.json",
-      "sha256": "3a997bffb19629f75567fe4005ac71ad5dc281c9b9012ee1b29a682924488719",
+      "sha256": "b0362778e0d812e8b19d435969c0d1523aa4347812e5ec35be9fd4e3c2192a83",
       "result": {
         "passed": true,
         "scenarios": [
@@ -114641,10 +116731,10 @@
         "ordered_effects": 1149,
         "output_bytes": 4319535,
         "runtime_contracts": 19,
-        "test_sha256": "ae07c4437f8c19e8e9797e21cdbd81d96c82889dc153df7727a958e0c9c8dcac",
-        "oracle_sha256": "5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae",
+        "test_sha256": "75d6e1f087855dfd5b96f45522441dc59379c399511ffb5ff2720208ab24c39c",
+        "oracle_sha256": "a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
-        "scope": "Unchanged Baseq3 Cmd_CallVote_f, Cmd_Vote_f, Cmd_CallTeamVote_f and Cmd_TeamVote_f, original Cmd_Argc/Argv/ArgvBuffer copies, plus complete call/cast/resolution chains. Every callback and action compares vote state, all 64 clients and 12 configstrings. Engine nextmap query is hosted; MiniLang reads its real Cvar registry. Full ClientCommand routing, command tokenization, UserinfoChanged and engine/network delivery remain open. Unsafe original team argument strcat overflow is rejected by a MiniLang contract.",
+        "scope": "Unchanged Baseq3 Cmd_CallVote_f, Cmd_Vote_f, Cmd_CallTeamVote_f and Cmd_TeamVote_f, original Cmd_Argc/Argv/ArgvBuffer copies, plus complete call/cast/resolution chains. Every callback and action compares vote state, all 64 clients and 12 configstrings. Engine nextmap query is hosted; MiniLang reads its real Cvar registry. This suite overrides ClientUserinfoChanged; the actual default and real team-vote integration are compared by test_client_info.py. Full ClientCommand routing, command tokenization and engine/network delivery remain open. Unsafe original team argument strcat overflow is rejected by a MiniLang contract.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -114684,7 +116774,7 @@
     },
     {
       "path": "build/reference/votes/result.json",
-      "sha256": "f7bf56bb0abb672a46a44149038b95a54a0b844ac548a42f817b043bede1aed6",
+      "sha256": "1a333e894fec1b1eb34140442141958d9fa7c1a2c7b721d14fd73efe1bf989da",
       "result": {
         "passed": true,
         "scenarios": [
@@ -116594,10 +118684,10 @@
         "ordered_effects": 456,
         "output_bytes": 363153,
         "runtime_contracts": 11,
-        "test_sha256": "ba6d9b598a900c645b81bd36059aa19a6aba42646cc1ace08c787fbabe31253d",
-        "oracle_sha256": "5fc02d42a91704bd7e1856c809282582cc6979c83ad078e3489fc2460f2495ae",
+        "test_sha256": "79ebeb4e395fbe606dd91a25a042e7808624ada94d4a5e611f97aaff3fa4c986",
+        "oracle_sha256": "a325d5af9190117fd4bbb59b3e81e84e83e7cb13b018e1aa4be4b92c1f0b778f",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
-        "scope": "Unchanged Baseq3 CheckVote, CheckTeamVote, PrintTeam, SetLeader and CheckTeamLeader: state, messages, console commands, configstrings, leadership and actual G_RunFrame integration. ClientUserinfoChanged and engine delivery remain observed callbacks. Vote initiation and casting are compared separately by test_vote_commands.py; network transport remains open.",
+        "scope": "Unchanged Baseq3 CheckVote, CheckTeamVote, PrintTeam, SetLeader and CheckTeamLeader: state, messages, console commands, configstrings, leadership and actual G_RunFrame integration. This isolated suite overrides ClientUserinfoChanged; its default ported implementation and real team-vote callers are compared by test_client_info.py. Vote initiation and casting are compared separately by test_vote_commands.py; engine/network delivery remains open.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -116655,7 +118745,7 @@
     },
     {
       "path": "build/verification.json",
-      "sha256": "6e84a1c25931df95c73afbd490be33fa1ca7d2cda9e98e2b38c78b66f5757485",
+      "sha256": "f1896fd56eec7bcb442a84ef5323646c1dfa3f3260a2d6a63dfcc534e647c0bf",
       "result": {
         "passed": true,
         "scope": "implemented foundations only; full game port remains incomplete",
@@ -116761,6 +118851,10 @@
           },
           {
             "script": "test_client_begin.py",
+            "arguments": []
+          },
+          {
+            "script": "test_client_info.py",
             "arguments": []
           },
           {
