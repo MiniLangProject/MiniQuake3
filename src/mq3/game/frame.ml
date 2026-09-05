@@ -1,7 +1,6 @@
 // Copyright (C) 1999-2005 Id Software, Inc.
 // SPDX-License-Identifier: GPL-2.0-or-later
-// Baseq3 G_RunFrame orchestration. Engine Cvar refresh and entity listing
-// remain explicit ordered boundaries.
+// Baseq3 G_RunFrame orchestration. Entity-list diagnostics remain a boundary.
 package mq3.game.frame
 import mq3.game.entities as game
 import mq3.game.spawn_functions as funcs
@@ -16,6 +15,7 @@ import mq3.game.tournament as tournament
 import mq3.game.votes as votes
 import mq3.game.team_status as teamStatus
 import mq3.game.cvar_maintenance as cvarMaintenance
+import mq3.game.cvars as cvars
 import mq3.compat.numeric as n
 function runEntities(level)
   i = 0
@@ -63,7 +63,7 @@ function run(level,levelTime)
   if level.restarted then return void end if
   level.framenum = n.add32(level.framenum,1)
   level.previousTime = level.time; level.time = n.i32(levelTime)
-  stage(level,0,0)
+  if level.updateCvarsFn != void then level.updateCvarsFn(level) else cvars.update(level) end if
   runEntities(level)
 
   if level.maxclients < 0 or level.maxclients > 64 then return error(488,"Invalid frame client limit") end if

@@ -31,7 +31,7 @@ def main():
     contracts=run([ROOT/'build/full_frame_tests.exe',mapfile,output/'normal.bin',output/'normal.expected','--contracts'],ROOT/'build',log=output/'contracts.log').strip();print(contracts)
     result=dict(passed=True,scenarios=records,scenario_count=len(records),exact_words=sum(r['exact_words'] for r in records),output_bytes=sum(r['bytes'] for r in records),runtime_contracts=3,
         test_sha256=sha(ROOT/'build/full_frame_tests.exe'),oracle_sha256=sha(output/'spawn_oracle.exe'),map_sha256=sha(mapfile),
-        scope='Verbatim Baseq3 G_RunFrame ordering: restart guard, frame/time update, Cvar refresh, allocated entities, client end frames, actual CheckTournament, CheckExitRules, CheckTeamStatus, CheckVote, CheckTeamVote, CheckCvars and entity-list reset. G_UpdateCvars and entity class dispatch are ordered observed boundaries. Active vote, team-overlay and password frame sequences are additionally compared in test_votes.py and test_team_status.py.',
+        scope='Verbatim Baseq3 G_RunFrame ordering: restart guard, frame/time update, Cvar refresh, allocated entities, client end frames, actual CheckTournament, CheckExitRules, CheckTeamStatus, CheckVote, CheckTeamVote, CheckCvars and entity-list reset. This suite observes Cvar refresh via an explicit override; the default ported engine registry path is compared in test_game_cvars.py with empty-entity frames. Active vote, team-overlay and password sequences are compared separately.',
         original_sources={s.relative_to(ROOT).as_posix():sha(s) for s in sources})
     (output/'result.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 

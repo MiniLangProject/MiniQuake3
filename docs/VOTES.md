@@ -52,7 +52,7 @@ Die Frame-Fälle führen inzwischen auch den portierten Teamstatus und
 `g_needpass`-Ausgabe wird verglichen. Dadurch ändern sich Wort-/Effektzahlen
 bei unverändertem Vote-Szenarienumfang.
 
-Test-Binary: `9a21807b5ef0d5ea7204f3d41b9e5d5a8aee793b3f2842723bcbc256fb495b9b`.
+Test-Binary: `e843177bc0b988930e7014c71f6872507b78d63321d34eaf667d80cde9b6ea4e`.
 Native x86-Oracle: `81051414985a5ee1c7acb8e74363e3d3f5e3c19cdd922e95cc9b649fd2fd5a32`.
 
 ```powershell

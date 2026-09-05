@@ -6875,7 +6875,8 @@
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
             "src/mq3/game/team_status.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml"
           ],
           "status": "tested_subset"
         },
@@ -6898,7 +6899,8 @@
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
             "src/mq3/game/team_status.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml"
           ],
           "status": "tested_subset"
         },
@@ -6921,7 +6923,8 @@
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
             "src/mq3/game/team_status.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml"
           ],
           "status": "tested_subset"
         },
@@ -6944,7 +6947,8 @@
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
             "src/mq3/game/team_status.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml"
           ],
           "status": "tested_subset"
         }
@@ -6966,7 +6970,8 @@
         "src/mq3/game/items.ml",
         "src/mq3/game/votes.ml",
         "src/mq3/game/team_status.ml",
-        "src/mq3/game/cvar_maintenance.ml"
+        "src/mq3/game/cvar_maintenance.ml",
+        "src/mq3/game/cvars.ml"
       ],
       "status": "partial",
       "tests": [
@@ -6986,7 +6991,8 @@
         "scripts/test_deaths.py",
         "scripts/test_items.py",
         "scripts/test_votes.py",
-        "scripts/test_team_status.py"
+        "scripts/test_team_status.py",
+        "scripts/test_game_cvars.py"
       ]
     },
     {
@@ -7045,7 +7051,9 @@
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
           ],
           "status": "tested_subset"
         },
@@ -7062,10 +7070,12 @@
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament, exit rules, team status, global/team vote resolution and CheckCvars. Active vote, team-overlay and password frame sequences have separate comparisons. Mover/other physics dispatch, G_UpdateCvars and entity-list diagnostics remain ordered callbacks."
+          "scope": "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament, exit rules, team status, global/team vote resolution and CheckCvars. Default Cvar refresh uses ported G_UpdateCvars and the engine registry; empty-entity frame probes compare that path, while legacy frame/gameplay suites retain an explicit refresh override. Mover/other physics dispatch and entity-list diagnostics remain callbacks."
         },
         {
           "original": "CheckTournament",
@@ -7080,7 +7090,9 @@
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 tournament promotion, player/team readiness, warmup Cvar changes, countdown and map restart are compared against the unchanged native body. AddTournamentPlayer and engine command delivery remain explicit observed callbacks."
@@ -7098,7 +7110,9 @@
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
           ],
           "status": "tested_subset"
         },
@@ -7115,7 +7129,9 @@
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
@@ -7133,7 +7149,9 @@
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
@@ -7151,7 +7169,9 @@
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
           ],
           "status": "tested_subset"
         },
@@ -7168,7 +7188,9 @@
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
           ],
           "status": "tested_subset"
         },
@@ -7185,7 +7207,9 @@
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
@@ -7203,7 +7227,9 @@
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
@@ -7221,7 +7247,9 @@
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
             "src/mq3/game/votes.ml",
-            "src/mq3/game/cvar_maintenance.ml"
+            "src/mq3/game/cvar_maintenance.ml",
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
@@ -7272,7 +7300,43 @@
             "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 password-to-g_needpass maintenance, including initial -1 cache, counter changes/wrap, ASCII none matching, byte capacity and game-module cache persistence across level resets. G_UpdateCvars and Cvar delivery remain host boundaries."
+          "scope": "Unchanged Baseq3 password-to-g_needpass maintenance, including initial -1 cache, counter changes/wrap, ASCII none matching, byte capacity and game-module cache persistence across level resets. The Cvar suite integrates actual engine registration/update/set and empty-entity frames; other isolated suites observe the delivery callback."
+        },
+        {
+          "original": "gameCvarTable",
+          "target_files": [
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All 46 pinned Baseq3 table rows and 43 VM snapshots are compared with the actual original engine registry: flags/defaults/order, registration, change counters, latched values, exact broadcasts and gameplay field synchronization. G_RemapTeamShaders has an empty Baseq3 body; Missionpack is excluded. Build date is explicit host metadata matching the native compiler's __DATE__. Empty-entity frame probes use guarded inactive match/vote boundaries."
+        },
+        {
+          "original": "G_RegisterCvars",
+          "target_files": [
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All 46 pinned Baseq3 table rows and 43 VM snapshots are compared with the actual original engine registry: flags/defaults/order, registration, change counters, latched values, exact broadcasts and gameplay field synchronization. G_RemapTeamShaders has an empty Baseq3 body; Missionpack is excluded. Build date is explicit host metadata matching the native compiler's __DATE__. Empty-entity frame probes use guarded inactive match/vote boundaries."
+        },
+        {
+          "original": "G_UpdateCvars",
+          "target_files": [
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All 46 pinned Baseq3 table rows and 43 VM snapshots are compared with the actual original engine registry: flags/defaults/order, registration, change counters, latched values, exact broadcasts and gameplay field synchronization. G_RemapTeamShaders has an empty Baseq3 body; Missionpack is excluded. Build date is explicit host metadata matching the native compiler's __DATE__. Empty-entity frame probes use guarded inactive match/vote boundaries."
+        },
+        {
+          "original": "G_RemapTeamShaders",
+          "target_files": [
+            "src/mq3/game/cvars.ml",
+            "src/mq3/game/cvar_tables.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All 46 pinned Baseq3 table rows and 43 VM snapshots are compared with the actual original engine registry: flags/defaults/order, registration, change counters, latched values, exact broadcasts and gameplay field synchronization. G_RemapTeamShaders has an empty Baseq3 body; Missionpack is excluded. Build date is explicit host metadata matching the native compiler's __DATE__. Empty-entity frame probes use guarded inactive match/vote boundaries."
         }
       ],
       "target": [
@@ -7286,7 +7350,9 @@
         "src/mq3/game/rank_sort.ml",
         "src/mq3/game/items.ml",
         "src/mq3/game/votes.ml",
-        "src/mq3/game/cvar_maintenance.ml"
+        "src/mq3/game/cvar_maintenance.ml",
+        "src/mq3/game/cvars.ml",
+        "src/mq3/game/cvar_tables.ml"
       ],
       "status": "partial",
       "tests": [
@@ -7300,7 +7366,8 @@
         "scripts/test_scores.py",
         "scripts/test_items.py",
         "scripts/test_votes.py",
-        "scripts/test_team_status.py"
+        "scripts/test_team_status.py",
+        "scripts/test_game_cvars.py"
       ]
     },
     {
@@ -9958,7 +10025,8 @@
             "src/mq3/game/playerstate.ml",
             "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/qcommon/cvar.ml"
           ],
           "status": "tested_subset"
         },
@@ -9969,7 +10037,8 @@
             "src/mq3/game/playerstate.ml",
             "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/qcommon/cvar.ml"
           ],
           "status": "tested_subset"
         },
@@ -9980,7 +10049,8 @@
             "src/mq3/game/playerstate.ml",
             "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/qcommon/cvar.ml"
           ],
           "status": "tested_subset"
         },
@@ -9991,7 +10061,8 @@
             "src/mq3/game/playerstate.ml",
             "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/qcommon/cvar.ml"
           ],
           "status": "tested_subset"
         },
@@ -10002,7 +10073,8 @@
             "src/mq3/game/playerstate.ml",
             "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/qcommon/cvar.ml"
           ],
           "status": "tested_subset"
         },
@@ -10013,7 +10085,8 @@
             "src/mq3/game/playerstate.ml",
             "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/qcommon/cvar.ml"
           ],
           "status": "tested_subset"
         },
@@ -10024,7 +10097,8 @@
             "src/mq3/game/playerstate.ml",
             "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/qcommon/cvar.ml"
           ],
           "status": "tested_subset"
         },
@@ -10035,7 +10109,20 @@
             "src/mq3/game/playerstate.ml",
             "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml"
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/qcommon/cvar.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "vmCvar_t",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/game/snapshot.ml",
+            "src/mq3/qcommon/cvar.ml"
           ],
           "status": "tested_subset"
         }
@@ -10045,13 +10132,15 @@
         "src/mq3/game/playerstate.ml",
         "src/mq3/game/pmove.ml",
         "src/mq3/game/entitystate.ml",
-        "src/mq3/game/snapshot.ml"
+        "src/mq3/game/snapshot.ml",
+        "src/mq3/qcommon/cvar.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_math.py",
         "scripts/test_pmove.py",
-        "scripts/test_entitystate.py"
+        "scripts/test_entitystate.py",
+        "scripts/test_game_cvars.py"
       ]
     },
     {
@@ -13563,6 +13652,22 @@
             "src/mq3/qcommon/cvar.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "Cvar_Register",
+          "target_files": [
+            "src/mq3/qcommon/cvar.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Actual engine VM-Cvar registration/update: zero-based stable handles, -1 registration sentinel, unchanged/cleared early returns, 255-byte strings and float/int snapshots. Invalid handles, embedded NUL and overlength fail safely; caught MiniLang errors retain the last valid VM snapshot instead of reproducing C's process-drop side effects. Registry cvar_restart and full QVM trap dispatch remain open."
+        },
+        {
+          "original": "Cvar_Update",
+          "target_files": [
+            "src/mq3/qcommon/cvar.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Actual engine VM-Cvar registration/update: zero-based stable handles, -1 registration sentinel, unchanged/cleared early returns, 255-byte strings and float/int snapshots. Invalid handles, embedded NUL and overlength fail safely; caught MiniLang errors retain the last valid VM snapshot instead of reproducing C's process-drop side effects. Registry cvar_restart and full QVM trap dispatch remain open."
         }
       ],
       "target": [
@@ -13570,7 +13675,8 @@
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_core.py"
+        "scripts/test_core.py",
+        "scripts/test_game_cvars.py"
       ]
     },
     {

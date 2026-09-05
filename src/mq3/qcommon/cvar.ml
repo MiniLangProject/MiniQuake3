@@ -37,7 +37,38 @@ struct Registry
   variables
   modifiedFlags
   numIndexes
+  indexes
 end struct
+
+struct VmCvar
+  handle
+  modificationCount
+  value
+  integer
+  string
+end struct
+function createVm()
+  return VmCvar(0,0,0.0,0,"")
+end function
+function updateVm(registry,snapshot)
+  if snapshot == void then return error(3302,"Cvar_Update NULL snapshot") end if
+  if snapshot.handle < 0 or snapshot.handle >= registry.numIndexes then return error(3302,"Cvar_Update handle out of range") end if
+  variable = registry.indexes[snapshot.handle]
+  if variable.modificationCount == snapshot.modificationCount or variable.string == void then return void end if
+  data = bytes(variable.string)
+  if len(data) > 255 then return error(3302,"Cvar_Update exceeds native string storage") end if
+  for each part in data
+    if part == 0 then return error(3302,"Cvar_Update embedded NUL") end if
+  end for
+  snapshot.modificationCount = variable.modificationCount; snapshot.string = variable.string
+  snapshot.value = variable.value; snapshot.integer = variable.integer; return void
+end function
+function registerVm(registry,snapshot,name,defaultValue,flags)
+  variable = get(registry,name,defaultValue,flags)
+  if snapshot == void then return void end if
+  snapshot.handle = variable.index; snapshot.modificationCount = -1
+  return updateVm(registry,snapshot)
+end function
 
 function validName(name)
   return strings.indexOf(name, "\\", 0) < 0 and strings.indexOf(name, "\"", 0) < 0 and strings.indexOf(name, ";", 0) < 0
@@ -72,6 +103,7 @@ function get(registry, name, value, flags)
   if registry.numIndexes >= 1024 then return error(3302, "MAX_CVARS") end if
   variable = Cvar(name, value, value, void, flags, true, 1, n.f32(atof(value)), atoi(value), registry.numIndexes)
   registry.numIndexes = registry.numIndexes + 1
+  registry.indexes = registry.indexes+[variable]
   registry.variables = [variable] + registry.variables
   return variable
 end function
@@ -96,7 +128,7 @@ function set2(registry, name, value, force)
       end if
       variable.latchedString = value
       variable.modified = true
-      variable.modificationCount = variable.modificationCount + 1
+      variable.modificationCount = n.add32(variable.modificationCount,1)
       return variable
     end if
     cheats = find(registry, "sv_cheats")
@@ -105,7 +137,7 @@ function set2(registry, name, value, force)
     variable.latchedString = void
   end if
   variable.modified = true
-  variable.modificationCount = variable.modificationCount + 1
+  variable.modificationCount = n.add32(variable.modificationCount,1)
   variable.string = value
   variable.value = n.f32(atof(value))
   variable.integer = atoi(value)
@@ -113,7 +145,7 @@ function set2(registry, name, value, force)
 end function
 
 function create()
-  registry = Registry([], 0, 0)
+  registry = Registry([], 0, 0, [])
   get(registry, "sv_cheats", "1", ROM | SYSTEMINFO)
   return registry
 end function

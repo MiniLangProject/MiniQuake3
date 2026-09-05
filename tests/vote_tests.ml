@@ -74,7 +74,7 @@ end function
 function configure(world,reader,check)
   level = game.create(world); state = spawn.create(level,""); level.context = check
   state.effectFn = effect; level.serverCommandFn = recordServer; level.consoleCommandFn = recordConsole
-  level.clientUserinfoChangedFn = recordUserinfoChanged; level.frameStageFn = recordStage; level.cvarSetFn = recordVoteCvar
+  level.clientUserinfoChangedFn = recordUserinfoChanged; level.updateCvarsFn = recordCvarRefresh; level.frameStageFn = recordStage; level.cvarSetFn = recordVoteCvar
   level.maxclients = readInt(reader); level.maxclientsCvar = level.maxclients; level.time = readInt(reader)
   level.voteTime = readInt(reader); level.voteExecuteTime = readInt(reader); level.voteYes = readInt(reader)
   level.voteNo = readInt(reader); level.numVotingClients = readInt(reader)
@@ -135,6 +135,9 @@ function contracts(world)
   other = game.create(world); level.teamVoteTime[1] = 9
   require(other.teamVoteTime[1] == 0 and other.teamVoteString[0] == "","independent vote arrays")
   print "PASS: 11 vote/leader runtime contracts"; return 0
+end function
+function recordCvarRefresh(level)
+  return recordStage(level,0,0)
 end function
 function main(args)
   world = cm.loadWorld(fs.readAllBytes(args[0]),true)

@@ -52,11 +52,14 @@ end function
 function cvarSet(level,key,value)
   checkWords(level.context,[110,7]); checkString(level.context,key); checkString(level.context,value); return void
 end function
+function noopCvarRefresh(level)
+  return void
+end function
 function noopStage(level,kind,arg)
   return void
 end function
 function configure(level,input,check)
-  spawn.create(level,""); level.context = check; level.frameStageFn = stage; level.runEntityFn = runEntity
+  spawn.create(level,""); level.context = check; level.updateCvarsFn = recordCvarRefresh; level.frameStageFn = stage; level.runEntityFn = runEntity
   level.clientEndFrameFn = endFrame; level.cvarSetFn = cvarSet
   level.time = n.readI32(input,0); level.previousTime = n.readI32(input,4); level.framenum = n.readI32(input,8)
   level.restarted = n.readI32(input,12) != 0; level.maxclients = n.readI32(input,16); mode = n.readI32(input,20)
@@ -81,11 +84,14 @@ end function
 function contracts(world)
   level = game.create(world); spawn.create(level,"")
   requireContract(try(frame.run(level,100)) is error,"maintenance boundary")
-  level.frameStageFn = noopStage; level.maxclients = 65
+  level.updateCvarsFn = noopCvarRefresh; level.frameStageFn = noopStage; level.maxclients = 65
   requireContract(try(frame.run(level,100)) is error,"client limit")
   level2 = game.create(world); spawn.create(level2,""); level2.restarted = true; frame.run(level2,999)
   requireContract(level2.framenum == 0 and level2.time == 0,"restart early return")
   print "PASS: 3 G_RunFrame runtime contracts"; return 0
+end function
+function recordCvarRefresh(level)
+  return stage(level,0,0)
 end function
 function main(args)
   world = cm.loadWorld(fs.readAllBytes(args[0]),true)

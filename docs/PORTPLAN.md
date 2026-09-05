@@ -83,6 +83,11 @@ Latching und Config-Persistenz übernehmen. PK3/ZIP-Suche, Verzeichnisreihenfolg
 Mod-Suchpfade, Dateinamenvergleich, Checksummen und Pure-Server-Dateilisten abbilden.
 Native ZIP-Helfer nur mit festgelegter Grenze; Such- und Pure-Logik bleibt MiniLang.
 
+**Geprüfter Teilstand:** Die [Engine-/VM-Cvar-Registrierung und -Aktualisierung](GAME_CVARS.md)
+ist einschließlich stabiler Handles, Latching und Spielmodul-Tabelle portiert.
+`cvar_restart`, Config-Persistenz, Command-Buffer und vollständige Engine-Schleife
+bleiben offene Teile dieser Abnahme.
+
 **Ergebnis:** Headless-Engine mit Konsole, Configs und PK3-Lesezugriff;
 synthetische Archive und Parser-Testfälle ohne kommerzielle Daten.
 
@@ -181,7 +186,7 @@ der ursprünglichen Stelle im Frame. [Vote-Auflösung und Teamleiterwahl](VOTES.
 sind ebenfalls portiert und mit echten Frame-Folgen geprüft.
 [Teamstandorte, Overlay und Passwortstatus](TEAM_STATUS.md) laufen inzwischen
 an den ursprünglichen Frame-Positionen. Als Nächstes folgen die übrigen
-Spielobjekte, Engine-Cvar-Refresh, Vote-Startbefehle, weitere Waffentreffer und
+Spielobjekte, Vote-Startbefehle, weitere Waffentreffer und
 Mover-Pushing. Der vollständige Server bleibt bis zu dieser Integration offen.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
@@ -202,8 +207,9 @@ in den MiniLang-Spielpfad eingebunden. [`ClientBegin`](CLIENT_BEGIN.md) verbinde
 diesen Lebenszyklus inzwischen vollständig. [`G_RunFrame`](FULL_FRAME.md) führt
 ihn mit Entity-Schleife, Matchende und den geordneten Wartungsstufen zusammen.
 Tournament/Warmup, globale/Team-Vote-Auflösung, Teamstatus und `CheckCvars`
-sind portiert. Engine-Cvar-Refresh, Vote-Startbefehle und Netzwerkzustellung
-sind die nächsten Grenzen.
+sind portiert. [Cvar-Registrierung und Engine-/VM-Kopien](GAME_CVARS.md)
+versorgen den Frame inzwischen über die vollständige Baseq3-Cvar-Tabelle.
+Modulinitialisierung, Vote-Startbefehle und Netzwerkzustellung sind die nächsten Grenzen.
 Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.

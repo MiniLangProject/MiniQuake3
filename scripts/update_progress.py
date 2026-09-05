@@ -132,6 +132,15 @@ def main():
     for source,(targets,symbols) in team_status_mappings.items():
         old_targets,old_symbols,tests=mappings[source]
         mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_team_status.py"])))
+    game_cvar_mappings={
+        "code/qcommon/cvar.c":(["src/mq3/qcommon/cvar.ml"],["Cvar_Register","Cvar_Update"]),
+        "code/game/q_shared.h":(["src/mq3/qcommon/cvar.ml"],["vmCvar_t"]),
+        "code/game/g_main.c":(["src/mq3/game/cvars.ml","src/mq3/game/cvar_tables.ml"],["gameCvarTable","G_RegisterCvars","G_UpdateCvars","G_RemapTeamShaders"]),
+        "code/game/g_local.h":(["src/mq3/game/cvars.ml"],[]),
+    }
+    for source,(targets,symbols) in game_cvar_mappings.items():
+        old_targets,old_symbols,tests=mappings[source]
+        mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_game_cvars.py"])))
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text(encoding="utf-8"))
     for entry in ledger["files"]:
@@ -142,17 +151,25 @@ def main():
             if entry["source"] == "code/game/g_main.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] == "G_RunFrame":
-                        symbol["scope"] = "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament, exit rules, team status, global/team vote resolution and CheckCvars. Active vote, team-overlay and password frame sequences have separate comparisons. Mover/other physics dispatch, G_UpdateCvars and entity-list diagnostics remain ordered callbacks."
+                        symbol["scope"] = "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament, exit rules, team status, global/team vote resolution and CheckCvars. Default Cvar refresh uses ported G_UpdateCvars and the engine registry; empty-entity frame probes compare that path, while legacy frame/gameplay suites retain an explicit refresh override. Mover/other physics dispatch and entity-list diagnostics remain callbacks."
                     elif symbol["original"] == "CheckTournament":
                         symbol["scope"] = "Baseq3 tournament promotion, player/team readiness, warmup Cvar changes, countdown and map restart are compared against the unchanged native body. AddTournamentPlayer and engine command delivery remain explicit observed callbacks."
                     elif symbol["original"] == "CheckCvars":
                         symbol["target_files"] = ["src/mq3/game/cvar_maintenance.ml"]
-                        symbol["scope"] = "Unchanged Baseq3 password-to-g_needpass maintenance, including initial -1 cache, counter changes/wrap, ASCII none matching, byte capacity and game-module cache persistence across level resets. G_UpdateCvars and Cvar delivery remain host boundaries."
+                        symbol["scope"] = "Unchanged Baseq3 password-to-g_needpass maintenance, including initial -1 cache, counter changes/wrap, ASCII none matching, byte capacity and game-module cache persistence across level resets. The Cvar suite integrates actual engine registration/update/set and empty-entity frames; other isolated suites observe the delivery callback."
+                    elif symbol["original"] in ("gameCvarTable","G_RegisterCvars","G_UpdateCvars","G_RemapTeamShaders"):
+                        symbol["target_files"] = ["src/mq3/game/cvars.ml","src/mq3/game/cvar_tables.ml"]
+                        symbol["scope"] = "All 46 pinned Baseq3 table rows and 43 VM snapshots are compared with the actual original engine registry: flags/defaults/order, registration, change counters, latched values, exact broadcasts and gameplay field synchronization. G_RemapTeamShaders has an empty Baseq3 body; Missionpack is excluded. Build date is explicit host metadata matching the native compiler's __DATE__. Empty-entity frame probes use guarded inactive match/vote boundaries."
                     elif symbol["original"] in ("CheckVote","CheckTeamVote","PrintTeam","SetLeader","CheckTeamLeader"):
                         symbol["target_files"] = ["src/mq3/game/votes.ml"]
                         symbol["scope"] = "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; vote initiation and network transport are open."
             if entry["source"] == "code/server/sv_init.c":
                 entry["symbol_mapping"][0]["scope"] = "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
+            if entry["source"] == "code/qcommon/cvar.c":
+                for symbol in entry["symbol_mapping"]:
+                    if symbol["original"] in ("Cvar_Register","Cvar_Update"):
+                        symbol["target_files"] = ["src/mq3/qcommon/cvar.ml"]
+                        symbol["scope"] = "Actual engine VM-Cvar registration/update: zero-based stable handles, -1 registration sentinel, unchanged/cleared early returns, 255-byte strings and float/int snapshots. Invalid handles, embedded NUL and overlength fail safely; caught MiniLang errors retain the last valid VM snapshot instead of reproducing C's process-drop side effects. Registry cvar_restart and full QVM trap dispatch remain open."
             if entry["source"] == "code/game/g_combat.c":
                 entry["symbol_mapping"][1]["scope"] = "Baseq3 damage state and pain/die/mover dispatch. player_die is connected and separately compared end to end; damage feedback, Missionpack and the full server frame remain open. G_Printf diagnostics are excluded."
             if entry["source"] == "code/game/g_missile.c":

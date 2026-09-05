@@ -76,7 +76,7 @@ function recordTeamEndFrame(level,ent)
 end function
 function teamLevel(world,check)
   level = game.create(world); spawn.create(level,""); level.context = check
-  level.serverCommandFn = recordOverlay; level.cvarSetFn = recordMaintenance; level.frameStageFn = recordTeamStage
+  level.serverCommandFn = recordOverlay; level.cvarSetFn = recordMaintenance; level.updateCvarsFn = recordCvarRefresh; level.frameStageFn = recordTeamStage
   level.runEntityFn = recordTeamEntity; level.clientEndFrameFn = recordTeamEndFrame
   for slot = 0 to 63
     game.bindClient(level,level.entities[slot],level.clients[slot])
@@ -135,6 +135,9 @@ function contracts(world)
   requireTeam(other.cvarMaintenance.lastPasswordModificationCount == -1,"independent game modules")
   level.cvarMaintenance = void; requireTeam(try(maintenance.check(level)) is error,"missing module state")
   print "PASS: 12 team-status/Cvar runtime contracts"; return 0
+end function
+function recordCvarRefresh(level)
+  return recordTeamStage(level,0,0)
 end function
 function main(args)
   world = cm.loadWorld(fs.readAllBytes(args[0]),true)

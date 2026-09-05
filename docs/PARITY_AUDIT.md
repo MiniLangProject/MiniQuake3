@@ -4,8 +4,8 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die aktuelle reguläre Regression besteht aus **30 bestandenen Prüfbereichen**
-(`verify.py --data-root D:/Quake3`), einschließlich Teamstandorten/-overlay,
+Die aktuelle reguläre Regression besteht aus **31 bestandenen Prüfbereichen**
+(`verify.py --data-root D:/Quake3`), einschließlich Engine-/Spielmodul-Cvars, Teamstandorten/-overlay,
 Passwortstatus, Vote-/Teamleiterregeln,
 Spawnpunkten, Leichen, Punkten, Spieler-Tod, Items/Flaggen, vollständigen
 Client-Lebenszyklen, `CheckTournament`, `G_RunFrame` und CLI-Laufzeitvergleichen.
@@ -13,9 +13,9 @@ Alle 31 CD-Karten werden geladen; Schadens-, Projektil- und Leichenfälle laufen
 ebenfalls auf den CD-Karten.
 
 Die letzte erweiterte Vollprüfung mit beiden Kollisions-/Bewegungsprofilen
-bestand **43 Prüfbereiche am Stand `f8cdf9a`**, vor dem Vote- und Teamstatus-Port. Deren Bericht
+bestand **43 Prüfbereiche am Stand `f8cdf9a`**, vor den Vote-, Teamstatus- und Spiel-Cvar-Ports. Deren Bericht
 ist in der Git-Version dieses Stands archiviert. Die erweiterte Suite enthält
-nun 45 Gates; für den aktuellen Teamstatus-Stand wurde die reguläre Suite ausgeführt.
+nun 46 Gates; für den aktuellen Spiel-Cvar-Stand wurde die reguläre Suite ausgeführt.
 Der finale MiniQuake3-Build hat SHA-256
 `3a8c6f394b337404511f826e34404d0fd5f9c3011af6b7a4b2a96cc5321d99fb`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
@@ -24,10 +24,10 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | --- | --- | --- |
 | 1. Referenz | Grundabnahme bestanden | Originale x86-Engine, drei native Module, drei neu gebaute QVMs; MiniLang-Build; 1.409 Dateien inventarisiert; 120 Frames mit zwei Bots aufgezeichnet und zweimal bytegleich wiedergegeben |
 | 2. Zahlen/Plattform | In Arbeit | 101.445 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff vorhanden; Fenster, Eingabe, UDP und Audio noch offen |
-| 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
+| 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, Engine-/VM-Cvar-Registrierung/-Aktualisierung und Spielmodul-Tabelle, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, Cvar-Neustart/Config-Persistenz, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung, Sprungpad-/Teleport-Replays, ClientBegin und G_RunFrame-Einbindung geprüft; komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, vollständiger Client-Lebenszyklus, Leichen, Items, Punkte, Ränge, Matchende, Tournament/Warmup, Vote-Auflösung, Teamleiterwahl, Teamstandorte/-overlay, Passwortstatus und CTF vorhanden; weitere Klassen, Mover-Pushing, Engine-Cvar-Refresh und Vote-Startbefehle fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, vollständiger Client-Lebenszyklus, Leichen, Items, Punkte, Ränge, Matchende, Tournament/Warmup, Vote-Auflösung, Teamleiterwahl, Teamstandorte/-overlay, Passwortstatus, Engine-Cvar-Refresh und CTF vorhanden; weitere Klassen, Mover-Pushing, vollständige Modulinitialisierung und Vote-Startbefehle fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -623,8 +623,10 @@ Originalreihenfolge. Globale und Team-Votes führen inzwischen ihre portierten
 Regeln aus; aktive Vote-Framefolgen sind zusätzlich in `test_votes.py` geprüft.
 Teamstatus und `CheckCvars` führen inzwischen ebenfalls ihre portierten Regeln
 aus; aktive Overlay-/Passwortfolgen sind in `test_team_status.py` geprüft.
-`G_UpdateCvars` und Mover-/sonstige Physics-Ausführung bleiben geordnete
-Callbacks. Details:
+`G_UpdateCvars` nutzt standardmäßig die portierte Engine-Registry und wird
+zusätzlich in `test_game_cvars.py` in Frames ohne aktive Entities verglichen.
+Die älteren Gameplay-Suiten behalten einen expliziten Refresh-Override;
+Mover-/sonstige Physics-Ausführung bleibt eine Callback-Grenze. Details:
 [FULL_FRAME.md](FULL_FRAME.md).
 
 ## Tournament und Warmup (Schritt 6)
@@ -669,9 +671,29 @@ Cvar-/Level-Clientlimits, 32er-Overlay und Slot-Reihenfolge, Empfängerfilter,
 alle Standorte vor dem ersten Paket, Passwortzähler und Modulzustand über
 Level-Resets. Aktive Framefolgen prüfen die Einbindung.
 
-Engine-Cvar-Refresh, Netzwerkzustellung und Clientanzeige bleiben offen;
+Der Engine-Cvar-Refresh ist inzwischen separat portiert; Netzwerkzustellung und Clientanzeige bleiben offen;
 formatierte Ortsnamen über `Team_GetLocationMsg` sind noch nicht portiert.
 Details und Zustandslebensdauer: [TEAM_STATUS.md](TEAM_STATUS.md).
+
+## Engine- und Spiel-Cvars (Schritte 3 und 6)
+
+`scripts/test_game_cvars.py` besteht mit **89 Szenarien**, **1.054 Aktionen**,
+**928.580 exakt gleichen 32-Bit-Wörtern**, **4.055.397 Ausgabe-Bytes** und
+**19.562 geordneten Nebenwirkungen**. 13 Laufzeitverträge und vier native
+Fehlerfälle prüfen zusätzlich ungültige Handles, Speichergrenzen und
+Modulinitialisierung.
+
+Geprüft sind die originale Engine-Registry mit `Cvar_Register`/`Cvar_Update`,
+sämtliche 46 Baseq3-Cvar-Zeilen und 43 VM-Kopien sowie `G_RegisterCvars` und
+`G_UpdateCvars`. Enthalten sind Latching, Neu-Registrierung, exakte Meldungen,
+Warnung und Rücksetzen bei ungültigem Spielmodus, Zählerüberlauf, erhaltene
+Snapshots und die Zuordnung zu den portierten Gameplay-Feldern. Der
+standardmäßige Registry-Pfad läuft außerdem in `G_RunFrame`-Vergleichen ohne
+aktive Entities; der Native-Host begrenzt Match-/Vote-Pfade auf den inaktiven Zustand.
+
+Der Baseq3-Körper von `G_RemapTeamShaders` ist leer. Missionpack, vollständiger
+Modulstart/-shutdown, `cvar_restart`, QVM-Trap-Zustellung und Netzwerk sind
+weiterhin offen. Details und Build-Datumsprofil: [GAME_CVARS.md](GAME_CVARS.md).
 
 ## ClientThink (Schritt 6)
 
