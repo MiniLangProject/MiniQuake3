@@ -55,7 +55,8 @@ Maschinengewehr. Dieser Entwicklungsaufruf verarbeitet statische Weltkollision.
 Die dynamische Kollisionsschicht, geometrische Trigger-Abfrage, Sprungpads und
 Teleport-Zustandswechsel haben eigene Replays gegen den Originalcode. Hinzu kommen
 der vollständige `entityState_t`-Speicherdatensatz, Ereignis-Entities und deren Platzverwaltung.
-Der vollständige Spielserverframe und Grafik bleiben offen:
+Die vollständige Spielserverframe-Reihenfolge ist geprüft; eigenständiger Server,
+Netzwerk und Grafik bleiben offen:
 
 ```powershell
 python scripts/test_shared_game.py
@@ -76,6 +77,7 @@ python scripts/test_client_spawn.py
 python scripts/test_client_begin.py
 python scripts/test_client_frame.py
 python scripts/test_client_think.py
+python scripts/test_full_frame.py
 python scripts/test_spawn.py D:/Quake3
 ```
 
@@ -114,6 +116,8 @@ Matchlimits und Bereitschaftsregeln sind gegen C geprüft und in `player_die`
 eingebunden. Netzwerkübertragung und tatsächliche Kartenwechsel bleiben offen.
 [`ClientBegin`](docs/CLIENT_BEGIN.md) verbindet diese Bausteine zu einem
 durchgängigen Eintritts-, Spawn-, Think-, Frame- und Ranglistenablauf.
+[`G_RunFrame`](docs/FULL_FRAME.md) führt Entity- und Clientframes, Matchende und
+die noch externen Tournament-/Team-/Vote-Wartungsstufen in Originalreihenfolge aus.
 
 Auch die Sichtbarkeitsdaten eines Kartenpunkts und Traces gegen versetzte/gedrehte
 Modelle sind direkt abfragbar:

@@ -17,10 +17,10 @@ static void actionUse(gentity_t *e,gentity_t *other,gentity_t *activator) {
     }
 }
 static void actionRun(int kind,gentity_t *e) {word(12);word(kind);word(slotOf(e));}
-void G_RunMissile(gentity_t *e) {if(missileOutput)Original_RunMissile(e);else actionRun(1,e);}
-void G_RunItem(gentity_t *e) {if(bodyOutput || itemOutput)Original_RunItem(e);else actionRun(2,e);}
-void G_RunMover(gentity_t *e) {actionRun(3,e);}
-void G_RunClient(gentity_t *e) {actionRun(4,e);}
+void G_RunMissile(gentity_t *e) {if(frameRunOutput)frameWord(10,slotOf(e));else if(missileOutput)Original_RunMissile(e);else actionRun(1,e);}
+void G_RunItem(gentity_t *e) {if(frameRunOutput)frameWord(11,slotOf(e));else if(bodyOutput || itemOutput)Original_RunItem(e);else actionRun(2,e);}
+void G_RunMover(gentity_t *e) {if(frameRunOutput)frameWord(12,slotOf(e));else actionRun(3,e);}
+void G_RunClient(gentity_t *e) {if(frameRunOutput)frameWord(13,slotOf(e));else actionRun(4,e);}
 #include "entity_frame.inc"
 static const char *actionName(int n) {static const char *names[]={NULL,"leaf","changed","dest","missing","","team_CTF_redflag","team_CTF_blueflag","team_redobelisk","team_blueobelisk"};return names[n];}
 static float actionFloat(int bits) {float f;memcpy(&f,&bits,4);return f;}

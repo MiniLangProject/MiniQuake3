@@ -6832,6 +6832,7 @@
             "src/mq3/game/client_spawn.ml",
             "src/mq3/game/client_frame.ml",
             "src/mq3/game/client_active.ml",
+            "src/mq3/game/frame.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6850,6 +6851,7 @@
             "src/mq3/game/client_spawn.ml",
             "src/mq3/game/client_frame.ml",
             "src/mq3/game/client_active.ml",
+            "src/mq3/game/frame.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6868,6 +6870,7 @@
             "src/mq3/game/client_spawn.ml",
             "src/mq3/game/client_frame.ml",
             "src/mq3/game/client_active.ml",
+            "src/mq3/game/frame.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6886,6 +6889,7 @@
             "src/mq3/game/client_spawn.ml",
             "src/mq3/game/client_frame.ml",
             "src/mq3/game/client_active.ml",
+            "src/mq3/game/frame.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6903,6 +6907,7 @@
         "src/mq3/game/client_spawn.ml",
         "src/mq3/game/client_frame.ml",
         "src/mq3/game/client_active.ml",
+        "src/mq3/game/frame.ml",
         "src/mq3/game/bodies.ml",
         "src/mq3/game/player_spawns.ml",
         "src/mq3/game/scores.ml",
@@ -6921,6 +6926,7 @@
         "scripts/test_client_begin.py",
         "scripts/test_client_frame.py",
         "scripts/test_client_think.py",
+        "scripts/test_full_frame.py",
         "scripts/test_bodies.py",
         "scripts/test_scores.py",
         "scripts/test_deaths.py",
@@ -6997,7 +7003,7 @@
             "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Allocated-entity loop with implemented missile, item and body-queue corpse physics dispatch; other physics/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
+          "scope": "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual exit rules and maintenance stages. Mover/other physics dispatch and tournament/team/vote/Cvar maintenance remain ordered callbacks."
         },
         {
           "original": "FindIntermissionPoint",
@@ -7133,6 +7139,7 @@
         "scripts/test_spawn.py",
         "scripts/test_targets.py",
         "scripts/test_missiles.py",
+        "scripts/test_full_frame.py",
         "scripts/test_bodies.py",
         "scripts/test_scores.py",
         "scripts/test_items.py"

@@ -119,8 +119,8 @@ und der vollständige baseq3-Pmove-
 Befehlszyklus sind in MiniLang implementiert und gegen C geprüft. `--pmove-map`
 spielt Textbefehle auf Originalkarten ab; `--trace-model` und `--inspect-visibility`
 prüfen die neuen räumlichen Abfragen. Für die gesamte Schritt-Abnahme fehlen
-die Einbindung in den vollständigen Serverframe und die vollständigen
-Todes-/Score-Folgen von Telefrags aus Schritt 6. Dynamische Entities, Trigger-Erkennung und
+die vollständigen Todes-/Score-Folgen von Telefrags aus Schritt 6. Die äußere
+`G_RunFrame`-Reihenfolge ist inzwischen eingebunden. Dynamische Entities, Trigger-Erkennung und
 Sprungpad-/Teleport-Replays sind bereits mit Pmove verbunden; Ereignis-Entities,
 Blickwinkel-Deltas und die Auswahl/Aufrufreihenfolge der Telefrag-Kandidaten werden
 gegen C geprüft. Die inzwischen ergänzte Schadensberechnung ist mit KillBox
@@ -176,7 +176,7 @@ Zuschauer, Button-Latches, Respawn und Snapshots. `ClientBegin` verbindet
 Unlink/Reinitialisierung, den echten Spawn, Eintrittsereignis, Log und
 Rangberechnung; Tournament-, Zuschauer- und Intermissionzweige sind gegen den
 unveränderten C-Ablauf geprüft. Als Nächstes folgen die
-übrigen Spielobjekte, die Einbindung in vollständige Serverframes, weitere Waffentreffer und
+übrigen Spielobjekte, die Implementierung der noch externen Frame-Wartungsstufen, weitere Waffentreffer und
 Mover-Pushing. Der vollständige Server bleibt bis zu dieser Integration offen.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
@@ -194,8 +194,10 @@ geprüft; [`ClientSpawn`](CLIENT_SPAWN.md) und
 [`ClientEndFrame`](CLIENT_FRAMES.md) sind ebenfalls gegen die unveränderten
 C-Funktionskörper geprüft. [`ClientThink`](CLIENT_THINK.md) ist ebenfalls vollständig
 in den MiniLang-Spielpfad eingebunden. [`ClientBegin`](CLIENT_BEGIN.md) verbindet
-diesen Lebenszyklus inzwischen vollständig. Der Serverframe und die
-Netzwerkzustellung sind die nächsten Grenzen. Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
+diesen Lebenszyklus inzwischen vollständig. [`G_RunFrame`](FULL_FRAME.md) führt
+ihn mit Entity-Schleife, Matchende und den geordneten Wartungsstufen zusammen.
+Die Wartungsimplementierungen und Netzwerkzustellung sind die nächsten Grenzen.
+Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.
 

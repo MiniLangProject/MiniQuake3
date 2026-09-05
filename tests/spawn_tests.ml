@@ -919,7 +919,7 @@ function runSpawnContracts(level)
   node.s.eType = 0; node.physicsObject = true; caught = try(frame.runEntities(fresh)); requireSpawnContract(caught is error,"missing physics handler")
   node.physicsObject = false; node.s.eType = 3; node.r.ownerNum = 1023; game.setOrigin(node,[0.0,0.0,128.0]); frame.runEntities(fresh)
   requireSpawnContract(node.r.linked,"missile frame uses actual handler")
-  node.inuse = false; game.initEntity(fresh.entities[0]); caught = try(frame.runEntities(fresh)); requireSpawnContract(caught is error,"missing client handler")
+  node.inuse = false; game.initEntity(fresh.entities[0]); caught = try(frame.runEntities(fresh)); requireSpawnContract(not (caught is error),"default client frame handler")
   longName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
   caught = try(targets.addRemap(fresh,longName,"new",0.0)); requireSpawnContract(caught is error,"overlong shader source")
   caught = try(targets.addRemap(fresh,"old",longName,0.0)); requireSpawnContract(caught is error,"overlong shader destination")

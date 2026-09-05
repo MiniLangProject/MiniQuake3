@@ -1,6 +1,7 @@
 // Copyright (C) 1999-2005 Id Software, Inc.
 // SPDX-License-Identifier: GPL-2.0-or-later
-// The allocated-entity loop of G_RunFrame. Full frame orchestration is pending.
+// Baseq3 G_RunFrame orchestration. Tournament/team/vote/Cvar maintenance that
+// lives outside the ported gameplay core remains an explicit ordered boundary.
 package mq3.game.frame
 import mq3.game.entities as game
 import mq3.game.spawn_functions as funcs
@@ -8,6 +9,9 @@ import mq3.game.constants as c
 import mq3.game.missiles as missiles
 import mq3.game.bodies as bodies
 import mq3.game.items as items
+import mq3.game.client_active as clientActive
+import mq3.game.client_frame as clientFrame
+import mq3.game.scores as scores
 import mq3.compat.numeric as n
 function runEntities(level)
   i = 0
@@ -33,6 +37,7 @@ function runEntities(level)
       if kind == 1 and level.runEntityFn == void then missiles.run(level,ent)
       else if kind == 2 and ent.s.eType == c.ET_ITEM and level.runEntityFn == void then items.run(level,ent)
       else if kind == 2 and ent.s.eType != c.ET_ITEM and ent.classname == "bodyque" and level.runEntityFn == void then bodies.run(level,ent)
+      else if kind == 4 and level.runEntityFn == void then clientActive.runClient(level,ent)
       else
         if level.runEntityFn == void then return error(488,"Entity frame requires unported item/mover/client handler") end if
         level.runEntityFn(level,kind,ent)
@@ -41,5 +46,41 @@ function runEntities(level)
       funcs.runThink(level,ent)
     end if
   end while
+  return void
+end function
+
+function stage(level,kind,arg)
+  if level.frameStageFn == void then return error(488,"G_RunFrame requires frame maintenance boundaries") end if
+  level.frameStageFn(level,kind,arg)
+  return void
+end function
+
+function run(level,levelTime)
+  if level.restarted then return void end if
+  level.framenum = n.add32(level.framenum,1)
+  level.previousTime = level.time; level.time = n.i32(levelTime)
+  stage(level,0,0)
+  runEntities(level)
+
+  if level.maxclients < 0 or level.maxclients > 64 then return error(488,"Invalid frame client limit") end if
+  index = 0
+  while index < level.maxclients
+    ent = level.entities[index]; index = index+1
+    if ent.inuse then
+      if level.clientEndFrameFn != void then level.clientEndFrameFn(level,ent) else clientFrame.endFrame(level,ent) end if
+    end if
+  end while
+
+  stage(level,1,0)
+  scores.checkExitRules(level)
+  stage(level,2,0); stage(level,3,0); stage(level,4,c.TEAM_RED); stage(level,4,c.TEAM_BLUE); stage(level,5,0)
+  if level.listEntity != 0 then
+    index = 0
+    while index < 1024
+      stage(level,6,index); index = index+1
+    end while
+    if level.cvarSetFn == void then return error(488,"Entity listing requires Cvar delivery") end if
+    level.cvarSetFn(level,"g_listEntity","0")
+  end if
   return void
 end function

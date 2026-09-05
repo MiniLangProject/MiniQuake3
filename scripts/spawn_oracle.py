@@ -76,6 +76,7 @@ def build(output):
     frame=extract(source/'game/g_main.c',['G_RunFrame'])
     loop=frame[frame.index('\tent = &g_entities[0];'):frame.index('end = trap_Milliseconds();')]
     (output/'entity_frame.inc').write_text('static void runEntities(void) {int i;gentity_t *ent;\n'+loop+'}\n')
+    (output/'full_frame.inc').write_text('#define G_RunFrame Original_G_RunFrame\n'+frame+'\n#undef G_RunFrame\n')
     _,fields,classes,items=tables();implemented={n for names in FUNCTIONS.values() for n in names}|{'SP_item_botroam'}
     stubs=[]
     for index,(name,function) in enumerate(classes):
