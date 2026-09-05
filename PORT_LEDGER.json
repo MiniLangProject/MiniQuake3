@@ -5160,7 +5160,9 @@
           "target_files": [
             "src/mq3/game/movement.ml",
             "src/mq3/game/constants.ml",
-            "src/mq3/game/pmove.ml"
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/trajectory.ml",
+            "src/mq3/game/jumppad.ml"
           ],
           "status": "tested_subset"
         },
@@ -5169,7 +5171,53 @@
           "target_files": [
             "src/mq3/game/movement.ml",
             "src/mq3/game/constants.ml",
-            "src/mq3/game/pmove.ml"
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/trajectory.ml",
+            "src/mq3/game/jumppad.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "BG_EvaluateTrajectory",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/trajectory.ml",
+            "src/mq3/game/jumppad.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "BG_EvaluateTrajectoryDelta",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/trajectory.ml",
+            "src/mq3/game/jumppad.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "BG_PlayerTouchesItem",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/trajectory.ml",
+            "src/mq3/game/jumppad.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "BG_TouchJumpPad",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/trajectory.ml",
+            "src/mq3/game/jumppad.ml"
           ],
           "status": "tested_subset"
         }
@@ -5177,12 +5225,16 @@
       "target": [
         "src/mq3/game/movement.ml",
         "src/mq3/game/constants.ml",
-        "src/mq3/game/pmove.ml"
+        "src/mq3/game/pmove.ml",
+        "src/mq3/game/trajectory.ml",
+        "src/mq3/game/jumppad.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_movement.py",
-        "scripts/test_pmove.py"
+        "scripts/test_pmove.py",
+        "scripts/test_shared_game.py",
+        "scripts/test_server_world.py"
       ]
     },
     {
@@ -6134,10 +6186,29 @@
       "sha256": "11d155ea41a0d9a83f4fd0c28fe71b308e04739336d8088135be35e43fd4aef5",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "entityShared_t",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "sharedEntity_t",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/server/world.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_server_world.py"
+      ]
     },
     {
       "source": "code/game/g_rankings.c",
@@ -6887,6 +6958,27 @@
             "src/mq3/shared/math.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "vectoangles",
+          "target_files": [
+            "src/mq3/shared/math.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "AngleNormalize360",
+          "target_files": [
+            "src/mq3/shared/math.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "AngleNormalize180",
+          "target_files": [
+            "src/mq3/shared/math.ml"
+          ],
+          "status": "tested_subset"
         }
       ],
       "target": [
@@ -6897,7 +6989,8 @@
         "scripts/test_math.py",
         "scripts/test_patches.py",
         "scripts/test_movement.py",
-        "scripts/test_pmove.py"
+        "scripts/test_pmove.py",
+        "scripts/test_shared_game.py"
       ]
     },
     {
@@ -11854,10 +11947,22 @@
       "sha256": "b8190c64aecf15800ff3870aaa00b0d0fdf8efe25bd4622bd856f2f7f62e1f81",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "svEntity_t",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/server/world.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_server_world.py"
+      ]
     },
     {
       "source": "code/server/sv_bot.c",
@@ -12140,10 +12245,92 @@
         "SV_Trace",
         "SV_UnlinkEntity"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "SV_ClipHandleForEntity",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SV_CreateworldSector",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SV_ClearWorld",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SV_UnlinkEntity",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SV_LinkEntity",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SV_AreaEntities_r",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SV_AreaEntities",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SV_ClipToEntity",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SV_ClipMoveToEntities",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SV_Trace",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SV_PointContents",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/server/world.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_server_world.py"
+      ]
     },
     {
       "source": "code/splines/Splines.vcproj",

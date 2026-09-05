@@ -11,7 +11,7 @@ from pathlib import Path
 from toolchain import ROOT,msvc_env,run
 from inventory import sha
 
-def build_oracle(output,movement=False,patches=False,pmove=False,spatial=False,visibility=False):
+def build_oracle(output,movement=False,patches=False,pmove=False,spatial=False,visibility=False,server_world=False,shared_game=False):
     source=ROOT / "Quake-III-Arena-original-source/code"
     sources=[source / "qcommon" / name for name in
              ("cm_load.c","cm_trace.c","cm_test.c","cm_patch.c","cm_polylib.c","md4.c")]
@@ -20,7 +20,7 @@ def build_oracle(output,movement=False,patches=False,pmove=False,spatial=False,v
     if movement or pmove:
         sources += [source / "game" / name for name in ("bg_slidemove.c","bg_misc.c")]
         extra=["/DMQ3_ORACLE_LIBRARY",ROOT / ("tests/reference/pmove_oracle.c" if pmove else "tests/reference/movement_oracle.c")]
-    if pmove:
+    if pmove or server_world:
         schema=json.loads((ROOT/'docs/reference/playerstate.json').read_text())
         checks=['#include <stddef.h>',f'typedef char check_ps_size[(sizeof(playerState_t)=={schema["size"]})?1:-1];']
         for field in schema['fields']:
@@ -41,13 +41,39 @@ def build_oracle(output,movement=False,patches=False,pmove=False,spatial=False,v
         extra=["/DMQ3_ORACLE_LIBRARY",ROOT / "tests/reference/patch_oracle.c"]
     if spatial or visibility:
         extra=["/DMQ3_ORACLE_LIBRARY",ROOT / ('tests/reference/visibility_oracle.c' if visibility else 'tests/reference/spatial_oracle.c')]
+    if shared_game:
+        sources += [source/'game/bg_misc.c']
+        extra=["/DMQ3_ORACLE_LIBRARY",ROOT/'tests/reference/shared_game_oracle.c']
+    if server_world:
+        sources += [source/'game'/name for name in ('bg_pmove.c','bg_slidemove.c','bg_misc.c')]
+        # Extract the three complete, unchanged address helpers. Linking all of
+        # sv_game.c would pull in unrelated VM/syscall/server dependencies.
+        import re
+        game=(source/'server/sv_game.c').read_text()
+        helpers=[]
+        for name in ('SV_GentityNum','SV_SvEntityForGentity','SV_GEntityForSvEntity'):
+            match=re.search(r'^\w+\s*\*\s*'+name+r'\([^\n]+\{',game,re.M)
+            if not match:raise RuntimeError('Cannot find original helper '+name)
+            start=match.start();depth=1;end=match.end()
+            while depth:
+                if game[end]=='{':depth+=1
+                elif game[end]=='}':depth-=1
+                end+=1
+            helpers.append(game[start:end])
+        (output/'server_helpers.inc').write_text('\n\n'.join(helpers)+'\n')
+        extra=["/DMQ3_ORACLE_LIBRARY",f'/I{output}',ROOT/'tests/reference/server_world_oracle.c']
     run(["cl","/nologo","/Od","/Gy","/fp:strict","/arch:SSE2","/MT","/DWIN32","/DNDEBUG",
          "/D_CRT_SECURE_NO_WARNINGS",f"/I{source / 'qcommon'}",f"/I{source / 'game'}",
          ROOT / "tests/reference/collision_oracle.c",*sources,*extra,
          f"/Fe:{output / 'collision_oracle.exe'}","/link","/OPT:REF","/Brepro","/stack:8388608"],
         output,msvc_env("x86"),output / "build.log")
     headers=[source/'game'/name for name in ('q_shared.h','bg_public.h','bg_local.h','surfaceflags.h')]
-    return sources+([source / "game/bg_pmove.c"] if movement or pmove else [])+([source / 'win32/win_shared.c',*headers] if pmove else [])
+    reported=sources[:]
+    if movement or pmove:reported.append(source/'game/bg_pmove.c')
+    if pmove or server_world:reported.append(source/'win32/win_shared.c')
+    if pmove or server_world or shared_game:reported+=headers
+    if server_world:reported += [source/'server/sv_world.c',source/'server/sv_game.c',source/'server/server.h',source/'game/g_public.h']
+    return reported
 
 def cases(data,count,seed):
     rng=random.Random(seed)

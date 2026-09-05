@@ -20,6 +20,57 @@ function AngleVectors(angles)
   return [forward,right,up]
 end function
 
+function atanDegrees(y,x)
+  angle = crt.atan2(y,x)
+  // Frozen MiniLang arithmetic canonicalizes -0 when multiplying by an int.
+  if angle == 0 then return angle end if
+  return n.f32(angle*180/n.f32(3.14159265358979323846))
+end function
+function vectoangles(vector)
+  yaw = 0.0; pitch = 0.0
+  if vector[1] == 0 and vector[0] == 0 then
+    if vector[2] > 0 then pitch = 90.0 else pitch = 270.0 end if
+  else
+    if vector[0] != 0 then yaw = atanDegrees(vector[1],vector[0])
+    else if vector[1] > 0 then yaw = 90.0 else yaw = 270.0 end if
+    if yaw < 0 then yaw = n.fadd(yaw,360.0) end if
+    forward = n.fsqrt(n.fadd(n.fmul(vector[0],vector[0]),n.fmul(vector[1],vector[1])))
+    pitch = atanDegrees(vector[2],forward)
+    if pitch < 0 then pitch = n.fadd(pitch,360.0) end if
+  end if
+  return [n.fneg(pitch),yaw,0.0]
+end function
+
+function AngleNormalize360(angle)
+  // The cast sees a double product, not a binary32 intermediate. Recover
+  // truncation from the nearby binary32 integer without another float store.
+  scaled = n.f32(angle)*(65536/360.0)
+  integer = n.trunc32(scaled)
+  if scaled >= -2147483648.0 and scaled < 2147483648.0 then
+    if scaled >= 0 then
+      while integer > scaled
+        integer = integer-1
+      end while
+      while integer+1 <= scaled
+        integer = integer+1
+      end while
+    else
+      while integer < scaled
+        integer = integer+1
+      end while
+      while integer-1 >= scaled
+        integer = integer-1
+      end while
+    end if
+  end if
+  return n.f32((360.0/65536)*(integer & 65535))
+end function
+function AngleNormalize180(angle)
+  angle = AngleNormalize360(angle)
+  if angle > 180.0 then angle = n.f32(angle-360.0) end if
+  return angle
+end function
+
 function SnapVector(v)
   // Win32 Sys_SnapVector uses x87 FISTP with round-to-nearest, ties-to-even.
   for axis = 0 to 2

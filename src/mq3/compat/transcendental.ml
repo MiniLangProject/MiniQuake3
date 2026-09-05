@@ -5,3 +5,4 @@ package mq3.compat.transcendental
 extern function sin(value as double) from "ucrtbase.dll" returns double
 extern function cos(value as double) from "ucrtbase.dll" returns double
 extern function sqrt(value as double) from "ucrtbase.dll" returns double
+extern function atan2(y as double,x as double) from "ucrtbase.dll" returns double

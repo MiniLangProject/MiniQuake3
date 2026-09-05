@@ -3,7 +3,8 @@
 Projekt für einen möglichst originalgetreuen Port von Quake III Arena nach MiniLang.
 Status: Implementierung läuft. Ein nativer MiniLang-Build mit Zahlenkompatibilität,
 Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter, BSP-/Kurvenkollision,
-transformierten Modellen, temporären Boxen, PVS-/Areaportal-Verwaltung und
+transformierten Modellen, temporären Boxen, PVS-/Areaportal-Verwaltung,
+dynamischer Entity-Kollision, Bewegungsbahnen, Sprungpad-Reaktionen und
 dem vollständigen baseq3-Pmove-Befehlszyklus ist
 vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
@@ -50,7 +51,17 @@ Quakes Command-Einheiten (65.536 pro Vollkreis), Bewegungsachsen den Bereich
 Geschwindigkeit, Bodenkontakt, Wasserstand, Waffenzeit und Ereignisse.
 Der Spieler startet mit 100 Gesundheit, Geschwindigkeit 320, Schwerkraft 800 und
 Maschinengewehr. Dieser Entwicklungsaufruf verarbeitet statische Weltkollision;
-Spielserver, bewegte Entities, Schaden und Grafik folgen in weiteren Planabschnitten.
+Die dynamische Kollisionsschicht und Sprungpad-Aufrufe haben eigene Replays gegen
+den Originalcode; Spielserver, Trigger-Erkennung, Schaden und Grafik bleiben offen:
+
+```powershell
+python scripts/test_shared_game.py
+python scripts/test_server_world.py D:/Quake3
+python scripts/test_server_world.py D:/Quake3 --no-curves
+```
+
+Die Schnittstellen und ihre Grenzen sind unter
+[Server-Kollision](docs/SERVER_COLLISION.md) beschrieben.
 
 Auch die Sichtbarkeitsdaten eines Kartenpunkts und Traces gegen versetzte/gedrehte
 Modelle sind direkt abfragbar:

@@ -4,14 +4,20 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
+Die vollständige erweiterte Regression besteht aktuell aus 25 bestandenen
+Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`). Der dabei gebaute
+MiniQuake3-Build hat SHA-256
+`bde0016a430cd68f15a190a5262dd9241260eb372de8dac8f469492f38879859`.
+Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
+
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
 | --- | --- | --- |
 | 1. Referenz | Grundabnahme bestanden | Originale x86-Engine, drei native Module, drei neu gebaute QVMs; MiniLang-Build; 1.409 Dateien inventarisiert; 120 Frames mit zwei Bots aufgezeichnet und zweimal bytegleich wiedergegeben |
 | 2. Zahlen/Plattform | In Arbeit | 101.125 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff vorhanden; Fenster, Eingabe, UDP und Audio noch offen |
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 392 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
-| 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, transformierte Modelle, temporäre Boxen, PVS-/Areaportal-Verwaltung und Pmove exakt geprüft; dynamische Entity-Einbindung, integrierte Sprungpad-/Teleport-Replays und eine gesonderte Behandlung des ursprünglichen Kapsel-Handle-Fehlers bleiben offen |
-| 6. Spiel/Server | Offen | Noch keine MiniLang-Implementierung |
+| 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, transformierte Modelle, temporäre Boxen, PVS/Areas, dynamische Entity-Kollision, Bewegungsbahnen und Sprungpad-/Pmove-Replays geprüft; vollständige Trigger-Erkennung, Teleport-Replays und Server-/Client-Anschluss fehlen |
+| 6. Spiel/Server | In Arbeit | Räumliche Server-Funktionen mit Entity-Listen vorhanden; Lebenszyklus, Mover-Pushing, Spielregeln und Serverframes fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -70,7 +76,8 @@ gezielte Testsammlung, keine vollständige Fuzzing- oder Sicherheitsabnahme.
   MD4-Checksummen sind noch nicht implementiert. CRC32 allein ersetzt diese nicht.
 - BSP-Lesen, Welt-/Inline-Modellkollision, Kurvenflächen, Transformationen,
   temporäre Boxen, Sichtbarkeitsdaten und Areaportale haben eigene Vergleichstests.
-  Das Verknüpfen bewegter Entities, Türsteuerung und Rendering sind noch offen.
+  Bewegte Entities sind mit Pmove verbunden; Türsteuerung, Mover-Pushing und
+  Rendering sind noch offen.
 - Die x86-Referenz verwendet in `BoxOnPlaneSide` die originale x87-Assemblerfassung.
   Der Port vergleicht die Summen hier ohne Zwischenrundung auf binary32. Die
   getesteten CD-Koordinaten stimmen; das ist keine pauschale Zusage für beliebige
@@ -197,6 +204,59 @@ Die neuen CLI-Aufrufe `--trace-model` und `--inspect-visibility` sind über
 PK3-Lader und MiniLang-Laufzeit zusätzlich in 141 Feldern gegen C geprüft.
 Sie sind räumliche Entwicklungsabfragen, keine vollständige Server-/Render-Abnahme.
 
+## Dynamische Entities und gemeinsame Spielreaktionen
+
+`server/world.ml` überträgt die Sektoraufteilung und Entity-Verlinkung aus
+`sv_world.c`, einschließlich Solid-Größenkodierung, gedrehter Modellgrenzen,
+PVS-/Area-Zuordnung und der Grenzen von 128 Blättern bzw. 16 Clustern. Die
+Sektorlisten behalten Einfügereihenfolge und Besuchsreihenfolge. Trace-Gleichstände,
+Besitzerfilter, `startsolid`-Vereinigung und frühe Welt-Treffer bleiben unverändert.
+
+`test_server_world.py` bindet den ursprünglichen Server-Kollisionscode direkt ein.
+Es vergleicht Ein-/Um-/Ausverlinkungen, Area-Abfragen, Entity-/Welt-Traces,
+Point-Contents und komplette Pmove-Zustände. Geprüft werden alle 31 CD-Karten
+und eine assetfreie Testkarte, jeweils mit und ohne Kurven. Drei vollständige
+Adressierungshelfer aus `sv_game.c` werden unverändert extrahiert; die übrigen
+VM-/Server-Funktionen dieser Datei werden nicht als abgenommen gezählt.
+
+Beide Profile zusammen ergeben 357.696 Operationen und 9.585.476 identische
+32-Bit-Wörter. Darin enthalten sind 32.768 vollständige Pmove-Befehle sowie 1.536
+aufgezeichnete Sprungpad-Aufrufe. Die Folgen erzeugen 2.914 dynamische
+Entity-Kontakte in Pmove. Beide Profile verwenden dasselbe MiniLang-Testbinary
+(`93855a6703254d99d6f29dd72adb87ca6e546cccdd1d2785cc63c5b982a36cc8`).
+
+Der Testhost bewegt Entities mit aufgezeichneten Änderungen und ruft Sprungpads
+an festgelegten Befehlsgrenzen auf. Die tatsächlichen Traces, Pmove-Schritte und
+Sprungpad-Zustandswechsel führt jeweils C bzw. MiniLang aus. Das ist noch keine
+Trigger-Erkennung oder Mover-Push-Simulation eines vollständigen Game-Servers.
+Insbesondere das Zurücksetzen der Sprungpad-Merker beim Verlassen eines Triggers
+bleibt Teil der ausstehenden Game-Integration.
+
+`test_shared_game.py` prüft zusätzlich 16.384 Fälle und 2.113.536 Wörter für
+`BG_EvaluateTrajectory`, `BG_EvaluateTrajectoryDelta`, `BG_PlayerTouchesItem`,
+`BG_TouchJumpPad`, `vectoangles` und beide Winkel-Normalisierungen. Alle sechs
+Bewegungsbahnen, Stop-Zeitgrenzen, die asymmetrische Item-Box, beide Sprungpad-
+Effekte, wiederholte Kontakte, Zuschauer und Flight sind enthalten. Die originale
+Sinus-Geschwindigkeitsformel mit Faktor 0,5 wird bewahrt. Sechs Fehlerproben weisen
+unbekannte Trajektorientypen und Sinusdauer 0 zurück; weitere sechs prüfen die
+Entity-Schnittstelle. Dies erweitert die getrennte Sammlung von 115 Fehlerproben.
+
+`atan2` kommt wie `sin` und `cos` aus der C-Laufzeit. Winkelrechnung und
+Zustandswechsel bleiben MiniLang. Die direkte Multiplikation eines negativen
+Nullwerts mit einem Integer verliert im eingefrorenen Compiler das Vorzeichen;
+der Port bewahrt es im Winkelpfad ausdrücklich und prüft es gegen C.
+
+Die räumlichen Entity-Felder bilden noch keinen vollständigen Netzwerkcodec.
+`SV_PointContents` bewahrt die Originalverwendung von `s.origin`/`s.angles`,
+während Link/Trace aktuelle räumliche Koordinaten benutzen. Schnittstellen und
+weitere Grenzen stehen in [SERVER_COLLISION.md](SERVER_COLLISION.md).
+
+Das Originalprofil ist für temporäre Kapsel-Zielmodelle festgelegt: kontrollierter
+Fehler bei Handle 254. Eine Korrektur des Originalfehlers würde ein zusätzliches
+Erweiterungsprofil erhalten und ist keine Voraussetzung für Gleichheit mit dem
+festgehaltenen C-Stand. Teleports mit Ereignissen, View-Angle-Delta, Telefrags und
+erneuter Entity-Verlinkung sind weiterhin offen.
+
 ## Reproduzieren
 
 Aus dem MiniQuake3-Verzeichnis, mit Python 3 und Visual Studio C++-Toolchain:
@@ -233,6 +293,9 @@ python scripts/test_spatial.py D:/Quake3 --no-curves
 python scripts/test_spatial.py D:/Quake3
 python scripts/test_visibility.py D:/Quake3
 python scripts/test_runtime_spatial.py D:/Quake3
+python scripts/test_shared_game.py
+python scripts/test_server_world.py D:/Quake3 --no-curves
+python scripts/test_server_world.py D:/Quake3
 ```
 
 `inventory.py` aktualisiert bewusst den eingefrorenen Compilerstand. Für die

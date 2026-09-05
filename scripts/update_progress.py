@@ -6,7 +6,7 @@ from inventory import sha
 def main():
     mappings={
         "code/game/q_math.c":(["src/mq3/shared/math.ml"],
-            ["Q_rand","Q_random","Q_crandom","Q_rsqrt","Q_fabs","LerpAngle","VectorLength","VectorNormalize","VectorNormalize2","AngleVectors"],["scripts/test_math.py","scripts/test_patches.py","scripts/test_movement.py","scripts/test_pmove.py"]),
+            ["Q_rand","Q_random","Q_crandom","Q_rsqrt","Q_fabs","LerpAngle","VectorLength","VectorNormalize","VectorNormalize2","AngleVectors","vectoangles","AngleNormalize360","AngleNormalize180"],["scripts/test_math.py","scripts/test_patches.py","scripts/test_movement.py","scripts/test_pmove.py","scripts/test_shared_game.py"]),
         "code/game/q_shared.h":(["src/mq3/shared/math.ml","src/mq3/game/playerstate.ml","src/mq3/game/pmove.ml"],["DotProduct","CrossProduct","VectorMA","playerState_t","usercmd_t"],["scripts/test_math.py","scripts/test_pmove.py"]),
         "code/win32/win_shared.c":(["src/mq3/shared/math.ml"],["Sys_SnapVector"],["scripts/test_pmove.py"]),
         "code/game/bg_public.h":(["src/mq3/game/constants.ml","src/mq3/game/pmove.ml"],["pmove_t","pmtype_t","weaponstate_t","statIndex_t","persEnum_t","powerup_t","holdable_t","weapon_t","entity_event_t","animNumber_t","team_t"],["scripts/test_pmove.py"]),
@@ -37,7 +37,14 @@ def main():
              "PM_BeginWeaponChange","PM_FinishWeaponChange","PM_TorsoAnimation","PM_Weapon","PM_Animate","PM_DropTimers","PM_UpdateViewAngles","PmoveSingle","Pmove"],
             ["scripts/test_movement.py","scripts/test_pmove.py","scripts/test_runtime_pmove.py"]),
         "code/game/bg_slidemove.c":(["src/mq3/game/movement.ml"],["PM_SlideMove","PM_StepSlideMove"],["scripts/test_movement.py"]),
-        "code/game/bg_misc.c":(["src/mq3/game/movement.ml","src/mq3/game/constants.ml","src/mq3/game/pmove.ml"],["BG_AddPredictableEventToPlayerstate","bg_itemlist"],["scripts/test_movement.py","scripts/test_pmove.py"]),
+        "code/game/bg_misc.c":(["src/mq3/game/movement.ml","src/mq3/game/constants.ml","src/mq3/game/pmove.ml","src/mq3/game/trajectory.ml","src/mq3/game/jumppad.ml"],
+            ["BG_AddPredictableEventToPlayerstate","bg_itemlist","BG_EvaluateTrajectory","BG_EvaluateTrajectoryDelta","BG_PlayerTouchesItem","BG_TouchJumpPad"],
+            ["scripts/test_movement.py","scripts/test_pmove.py","scripts/test_shared_game.py","scripts/test_server_world.py"]),
+        "code/server/sv_world.c":(["src/mq3/server/world.ml"],
+            ["SV_ClipHandleForEntity","SV_CreateworldSector","SV_ClearWorld","SV_UnlinkEntity","SV_LinkEntity","SV_AreaEntities_r","SV_AreaEntities","SV_ClipToEntity","SV_ClipMoveToEntities","SV_Trace","SV_PointContents"],
+            ["scripts/test_server_world.py"]),
+        "code/server/server.h":(["src/mq3/server/world.ml"],["svEntity_t"],["scripts/test_server_world.py"]),
+        "code/game/g_public.h":(["src/mq3/server/world.ml"],["entityShared_t","sharedEntity_t"],["scripts/test_server_world.py"]),
     }
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text())
@@ -54,6 +61,8 @@ def main():
         evidence.append({"path":path.relative_to(ROOT).as_posix(),"sha256":sha(path),"result":json.loads(path.read_text())})
     replay=ROOT / "artifacts/reference/replay/result.json"
     if replay.exists():evidence.append({"path":replay.relative_to(ROOT).as_posix(),"sha256":sha(replay),"result":json.loads(replay.read_text())})
+    verification=ROOT / "build/verification.json"
+    if verification.exists():evidence.append({"path":verification.relative_to(ROOT).as_posix(),"sha256":sha(verification),"result":json.loads(verification.read_text())})
     sources={p.relative_to(ROOT).as_posix():sha(p) for base in ("src","native","scripts","tests") for p in sorted((ROOT / base).rglob("*"))
              if p.is_file() and "__pycache__" not in p.parts}
     report={"scope":"implemented foundations; full port incomplete","sources":sources,"evidence":evidence}
