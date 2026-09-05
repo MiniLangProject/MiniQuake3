@@ -11,7 +11,7 @@ from pathlib import Path
 from toolchain import ROOT,msvc_env,run
 from inventory import sha
 
-def build_oracle(output,movement=False,patches=False,pmove=False):
+def build_oracle(output,movement=False,patches=False,pmove=False,spatial=False,visibility=False):
     source=ROOT / "Quake-III-Arena-original-source/code"
     sources=[source / "qcommon" / name for name in
              ("cm_load.c","cm_trace.c","cm_test.c","cm_patch.c","cm_polylib.c","md4.c")]
@@ -39,6 +39,8 @@ def build_oracle(output,movement=False,patches=False,pmove=False):
         extra += [f'/I{output}']
     if patches:
         extra=["/DMQ3_ORACLE_LIBRARY",ROOT / "tests/reference/patch_oracle.c"]
+    if spatial or visibility:
+        extra=["/DMQ3_ORACLE_LIBRARY",ROOT / ('tests/reference/visibility_oracle.c' if visibility else 'tests/reference/spatial_oracle.c')]
     run(["cl","/nologo","/Od","/Gy","/fp:strict","/arch:SSE2","/MT","/DWIN32","/DNDEBUG",
          "/D_CRT_SECURE_NO_WARNINGS",f"/I{source / 'qcommon'}",f"/I{source / 'game'}",
          ROOT / "tests/reference/collision_oracle.c",*sources,*extra,

@@ -2,7 +2,8 @@
 
 Projekt für einen möglichst originalgetreuen Port von Quake III Arena nach MiniLang.
 Status: Implementierung läuft. Ein nativer MiniLang-Build mit Zahlenkompatibilität,
-Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter, BSP-/Kurvenkollision und
+Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter, BSP-/Kurvenkollision,
+transformierten Modellen, temporären Boxen, PVS-/Areaportal-Verwaltung und
 dem vollständigen baseq3-Pmove-Befehlszyklus ist
 vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
@@ -50,6 +51,20 @@ Geschwindigkeit, Bodenkontakt, Wasserstand, Waffenzeit und Ereignisse.
 Der Spieler startet mit 100 Gesundheit, Geschwindigkeit 320, Schwerkraft 800 und
 Maschinengewehr. Dieser Entwicklungsaufruf verarbeitet statische Weltkollision;
 Spielserver, bewegte Entities, Schaden und Grafik folgen in weiteren Planabschnitten.
+
+Auch die Sichtbarkeitsdaten eines Kartenpunkts und Traces gegen versetzte/gedrehte
+Modelle sind direkt abfragbar:
+
+```powershell
+.\build\MiniQuake3.exe --inspect-visibility D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp 216 1328 24
+.\build\MiniQuake3.exe --trace-model D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp 0 216 1328 128 216 1328 -1024 0 0 0 0 0 0
+```
+
+Nach dem Modellindex folgen Start, Ziel, Modellursprung und drei Winkel in Grad
+(Pitch, Yaw, Roll). Modell 0 bezeichnet die Welt, höhere Indizes Inline-Modelle.
+Die Sichtbarkeitsabfrage zeigt Blatt, Cluster und Bereich sowie die Zahl sichtbarer
+Cluster und verbundener Bereiche. Areaportale sind nach dem Kartenladen geschlossen;
+die Steuerung durch Türen folgt mit dem Spielserver.
 
 ## Quellcode und Projektstruktur
 

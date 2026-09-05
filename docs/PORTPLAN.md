@@ -112,11 +112,14 @@ Voraussetzungen: 2–3.
 
 ## 5. BSP-Kollision und gemeinsame Spielphysik exakt übertragen
 
-**Geprüfter Zwischenstand 2026-09-05:** Statische BSP-/Kurvenkollision und der
-vollständige baseq3-Pmove-Befehlszyklus sind in MiniLang implementiert und gegen C
-geprüft. `--pmove-map` spielt Textbefehle auf Originalkarten ab. Für die gesamte
-Schritt-Abnahme bleiben transformierte/temporäre Kollisionsmodelle, Sichtbarkeit,
-Areaportale und die Einbindung dynamischer Entities offen. Zahlen und Testumfang:
+**Geprüfter Zwischenstand 2026-09-05:** BSP-/Kurvenkollision, transformierte Modelle,
+temporäre Boxen, PVS-/Areaportal-Funktionen und der vollständige baseq3-Pmove-
+Befehlszyklus sind in MiniLang implementiert und gegen C geprüft. `--pmove-map`
+spielt Textbefehle auf Originalkarten ab; `--trace-model` und `--inspect-visibility`
+prüfen die neuen räumlichen Abfragen. Für die gesamte Schritt-Abnahme fehlen
+die Einbindung dynamischer Entities, integrierte Sprungpad-/Teleport-Replays und
+ein ausdrücklich festgelegtes Verhalten für den im Original nicht auflösbaren
+temporären Kapsel-Handle. Zahlen, Grenzen und Testumfang:
 [Prüfbericht](PARITY_AUDIT.md).
 
 **Quellen:** `code/qcommon/cm_*.c`, `code/game/bg_pmove.c`, `bg_slidemove.c`,

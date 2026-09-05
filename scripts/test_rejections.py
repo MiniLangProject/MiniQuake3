@@ -81,6 +81,23 @@ def main():
     # A valid collision map is used to test invalid query parameters separately.
     for mode in ("trace_nan","trace_bounds","trace_model","trace_vector","trace_missing_curves"):
         add(mode,mode+".bsp",simple)
+    for label,field,value in (("leaf_cluster",0,0xfffffffe),("leaf_area",4,256)):
+        data=bytearray(simple);off=struct.unpack_from('<i',data,8+4*8)[0]
+        struct.pack_into('<I',data,off+field,value);add('collision',label+'.bsp',data)
+    for mode in ("temp_bounds","rotation_nan","transform_model","transform_bounds","leaf_capacity","brush_capacity",
+                 "list_bounds","leaf_index","area_index","area_buffer","portal_index","portal_underflow"):
+        add('spatial_'+mode,'spatial_'+mode+'.bsp',simple)
+    # Structurally valid visibility storage with too few bits for its cluster count.
+    data=bytearray(simple);off=struct.unpack_from('<i',data,8+4*8)[0]
+    struct.pack_into('<i',data,off,8)
+    struct.pack_into('<ii',data,8+16*8,len(data),17);data+=struct.pack('<ii',9,1)+bytes(9)
+    add('collision','short_visibility_row.bsp',data)
+    data=bytearray(simple);struct.pack_into('<ii',data,8+16*8,len(data),9);data+=struct.pack('<ii',1,1)+bytes(1)
+    add('collision','visibility_cluster_mismatch.bsp',data)
+    for count in (255,257):
+        data=bytearray(simple);off=struct.unpack_from('<i',data,8+7*8)[0];model=data[off:off+40]
+        struct.pack_into('<ii',data,8+7*8,len(data),count*40);data+=model*count
+        add('collision',f'reserved_models_{count}.bsp',data)
     manifest=output / "cases.tsv"
     manifest.write_text("".join("\t".join(map(str,row))+"\n" for row in cases))
     subprocess.run([sys.executable,ROOT / "scripts/build.py","--source","tests/rejection_tests.ml","--output","rejection_tests.exe"],check=True)

@@ -9676,68 +9676,159 @@
         {
           "original": "CMod_LoadPlanes",
           "target_files": [
-            "src/mq3/collision/world.ml"
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "CMod_LoadBrushSides",
           "target_files": [
-            "src/mq3/collision/world.ml"
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "CMod_LoadBrushes",
           "target_files": [
-            "src/mq3/collision/world.ml"
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "CM_BoundBrush",
           "target_files": [
-            "src/mq3/collision/world.ml"
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "CMod_LoadNodes",
           "target_files": [
-            "src/mq3/collision/world.ml"
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "CMod_LoadLeafs",
           "target_files": [
-            "src/mq3/collision/world.ml"
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "CMod_LoadSubmodels",
           "target_files": [
-            "src/mq3/collision/world.ml"
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "CMod_LoadPatches",
           "target_files": [
-            "src/mq3/collision/world.ml"
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CMod_LoadVisibility",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_ClipHandleToModel",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_InitBoxHull",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_TempBoxModel",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_ModelBounds",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_InlineModel",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_NumInlineModels",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_NumClusters",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_LeafCluster",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_LeafArea",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
-        "src/mq3/collision/world.ml"
+        "src/mq3/collision/world.ml",
+        "src/mq3/collision/visibility.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_collision.py",
         "scripts/test_patches.py",
-        "scripts/test_rejections.py"
+        "scripts/test_rejections.py",
+        "scripts/test_spatial.py",
+        "scripts/test_visibility.py"
       ]
     },
     {
@@ -10017,38 +10108,134 @@
         {
           "original": "CM_PointLeafnum_r",
           "target_files": [
-            "src/mq3/collision/world.ml"
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "CM_PointLeafnum",
           "target_files": [
-            "src/mq3/collision/world.ml"
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "CM_PointContents",
           "target_files": [
-            "src/mq3/collision/world.ml"
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_TransformedPointContents",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "CM_BoxLeafnums_r",
           "target_files": [
-            "src/mq3/collision/world.ml"
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_BoxLeafnums",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_BoxBrushes",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_StoreLeafs",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_StoreBrushes",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_ClusterPVS",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_FloodArea_r",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_FloodAreaConnections",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_AdjustAreaPortalState",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_AreasConnected",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_WriteAreaBits",
+          "target_files": [
+            "src/mq3/collision/world.ml",
+            "src/mq3/collision/visibility.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
-        "src/mq3/collision/world.ml"
+        "src/mq3/collision/world.ml",
+        "src/mq3/collision/visibility.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_collision.py"
+        "scripts/test_collision.py",
+        "scripts/test_spatial.py",
+        "scripts/test_visibility.py",
+        "scripts/test_runtime_spatial.py"
       ]
     },
     {
@@ -10152,6 +10339,38 @@
             "src/mq3/collision/world.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "CM_TransformedBoxTrace",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CreateRotationMatrix",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "RotatePoint",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "TransposeMatrix",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
         }
       ],
       "target": [
@@ -10162,7 +10381,9 @@
       "tests": [
         "scripts/test_brush.py",
         "scripts/test_collision.py",
-        "scripts/test_movement.py"
+        "scripts/test_movement.py",
+        "scripts/test_spatial.py",
+        "scripts/test_runtime_spatial.py"
       ]
     },
     {

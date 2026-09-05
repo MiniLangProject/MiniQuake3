@@ -1,7 +1,7 @@
 // Copyright (C) 1999-2005 Id Software, Inc.
 // SPDX-License-Identifier: GPL-2.0-or-later
 // BSP brush collision from cm_load.c, cm_test.c and cm_trace.c.
-// World and inline BSP models; temporary/rotated models are separate work.
+// World, transformed inline BSP models and the original shared temporary box.
 package mq3.collision.world
 import mq3.compat.numeric as n
 import mq3.shared.math as q
@@ -9,6 +9,7 @@ import mq3.format.bsp as bsp
 import mq3.collision.brush as brush
 import mq3.collision.patchmesh as mesh
 import mq3.collision.patchtrace as patches
+import mq3.collision.visibility as vis
 import std.array as arrays
 
 struct Brush
@@ -39,6 +40,13 @@ struct World
   surfaces
   patchesReady
   playerCurveClip
+  bounds
+  temporary
+  visibility
+end struct
+struct Temporary
+  bounds
+  brush
 end struct
 struct Work
   world
@@ -61,6 +69,11 @@ end struct
 struct Result
   trace
   endpos
+end struct
+struct LeafList
+  entries
+  lastLeaf
+  overflowed
 end struct
 
 function fail(message)
@@ -135,6 +148,10 @@ end function
 function loadWorld(data,curves)
   map = bsp.load(data)
   if map.counts[3] == 0 then return fail("world has no nodes") end if
+  // The original permits 256 models, overlapping its special handles 254/255.
+  // Reject that ambiguous range until its capsule-model path has a separate profile.
+  if map.counts[7] > 254 then return fail("models overlap reserved collision handles") end if
+  visibility = vis.load(map)
   planes = array(map.counts[2], void)
   index = 0
   while index < len(planes)
@@ -200,9 +217,17 @@ function loadWorld(data,curves)
     index = index + 1
   end while
   models = array(map.counts[7],void)
+  modelBounds = array(map.counts[7],void)
   index = 0
   while index < len(models)
     off = map.offsets[7]+index*40
+    lower = array(3,0.0); upper = array(3,0.0)
+    for axis = 0 to 2
+      lower[axis] = n.fsub(real(data,off+axis*4),1.0)
+      upper[axis] = n.fadd(real(data,off+12+axis*4),1.0)
+      if lower[axis] > upper[axis] then return fail("inverted model bounds") end if
+    end for
+    modelBounds[index] = [lower,upper]
     first = n.readI32(data,off+32)
     count = n.readI32(data,off+36)
     entries = array(count,0)
@@ -240,7 +265,49 @@ function loadWorld(data,curves)
       index = index+1
     end while
   end if
-  return World(brushes,nodes,leaves,models,surfaces,curves,true)
+  zero = [0.0,0.0,0.0]
+  return World(brushes,nodes,leaves,models,surfaces,curves,true,modelBounds,Temporary([zero,zero],makeBox(zero,zero)),visibility)
+end function
+
+function makeBox(mins,maxs)
+  planes = []
+  // CM_InitBoxHull uses +X,-X,+Y,-Y,+Z,-Z, unlike map brush bounds.
+  for axis = 0 to 2
+    positive = [0.0,0.0,0.0]; negative = [0.0,0.0,0.0]
+    positive[axis] = 1.0; negative[axis] = -1.0
+    planes = planes+[brush.Plane(positive,maxs[axis],0),brush.Plane(negative,n.fneg(mins[axis]),0)]
+  end for
+  return Brush(planes,0x2000000,mins,maxs)
+end function
+
+function tempBoxModel(world,mins,maxs,capsule)
+  mins = vector32(mins); maxs = vector32(maxs)
+  for axis = 0 to 2
+    if mins[axis] > maxs[axis] then return fail("inverted temporary bounds") end if
+  end for
+  world.temporary.bounds = [mins,maxs]
+  // Preserve the original handle and shared slot. Its capsule handle cannot be
+  // resolved by the pinned CM_ClipHandleToModel unless it names an inline model.
+  if capsule then return 254 end if
+  world.temporary.brush = makeBox(mins,maxs)
+  return 255
+end function
+
+function checkModel(world,model)
+  if model >= 0 and (model < len(world.models) or model == 255) then return true end if
+  return fail("invalid model handle")
+end function
+
+function modelBounds(world,model)
+  checkModel(world,model)
+  bounds = world.temporary.bounds
+  if model < len(world.models) then bounds = world.bounds[model] end if
+  return [arrays.slice(bounds[0],0,3),arrays.slice(bounds[1],0,3)]
+end function
+
+function inlineModel(world,index)
+  if index < 0 or index >= len(world.models) then return fail("invalid inline model") end if
+  return index
 end function
 
 function loadBrushWorld(data)
@@ -275,9 +342,17 @@ end function
 
 function pointContents(world, point, model)
   point = vector32(point)
+  checkModel(world,model)
   contents = 0
-  for each index in modelBrushes(world,point,model)
-    b = world.brushes[index]
+  selected = []
+  if model == 255 and model >= len(world.models) then
+    selected = [world.temporary.brush]
+  else
+    for each index in modelBrushes(world,point,model)
+      selected = selected+[world.brushes[index]]
+    end for
+  end if
+  for each b in selected
     inside = true
     for each plane in b.planes
       if q.DotProduct(point,plane.normal) > plane.distance then inside = false; break end if
@@ -463,9 +538,11 @@ function throughTree(work)
   return void
 end function
 
-function trace(world, start, finish, mins, maxs, model, mask, capsule,curves)
-  if model < 0 or model >= len(world.models) then return fail("invalid inline model") end if
+function traceWithSphere(world, start, finish, mins, maxs, model, mask, capsule,curves,sphere)
+  checkModel(world,model)
   if curves and not world.patchesReady then return fail("patch geometry has not been loaded") end if
+  if mins == void then mins = [0.0,0.0,0.0] end if
+  if maxs == void then maxs = [0.0,0.0,0.0] end if
   start = vector32(start);finish = vector32(finish);mins = vector32(mins);maxs = vector32(maxs)
   for axis = 0 to 2
     if mins[axis] > maxs[axis] then return fail("inverted trace bounds") end if
@@ -481,6 +558,7 @@ function trace(world, start, finish, mins, maxs, model, mask, capsule,curves)
   end for
   radius = min(hi[0],hi[2])
   capsuleOffset = [0.0,0.0,n.fsub(hi[2],radius)]
+  if sphere != void then radius = sphere[0]; capsuleOffset = sphere[1] end if
   boundsMin = array(3,0.0); boundsMax = array(3,0.0)
   for axis = 0 to 2
     if capsule then
@@ -496,7 +574,17 @@ function trace(world, start, finish, mins, maxs, model, mask, capsule,curves)
   stationary = start[0] == finish[0] and start[1] == finish[1] and start[2] == finish[2]
   // Original CM_Trace assigns isPoint only in its non-stationary branch.
   if stationary then work.isPoint = false end if
-  if model != 0 then
+  if model == 255 and model >= len(world.models) then
+    temp = world.temporary.brush
+    if (temp.contents & mask) != 0 then
+      if stationary then testInBrush(work,temp)
+      else brush.traceThroughBrush(work.trace,temp.planes,temp.contents,a,b,lo,hi,capsule,radius,capsuleOffset) end if
+    end if
+    // Temporary negative axial planes keep types 3,4,5; map planes use 3.
+    for axis = 0 to 2
+      if work.trace.normal[axis] == -1 then work.trace.planeMetadata = (3+axis) | (1 << (axis+8)) end if
+    end for
+  else if model != 0 then
     throughLeaf(work,world.models[model],stationary)
   else if stationary then
     positionTest(work)
@@ -506,6 +594,118 @@ function trace(world, start, finish, mins, maxs, model, mask, capsule,curves)
   endpos = finish
   if work.trace.fraction != 1 then endpos = interpolate(start,finish,work.trace.fraction) end if
   return Result(work.trace,endpos)
+end function
+
+function enumerateLeaves(world,mins,maxs)
+  mins = vector32(mins); maxs = vector32(maxs)
+  for axis = 0 to 2
+    if mins[axis] > maxs[axis] then return fail("inverted query bounds") end if
+  end for
+  stack = [0]; leaves = []
+  while len(stack) > 0
+    num = stack[len(stack)-1]; stack = arrays.slice(stack,0,len(stack)-1)
+    if num < 0 then leaves = leaves+[-1-num]
+    else
+      node = world.nodes[num]; side = boxSide(mins,maxs,node.plane)
+      if side == 1 then stack = stack+[node.children[0]]
+      else if side == 2 then stack = stack+[node.children[1]]
+      else stack = stack+[node.children[1],node.children[0]] end if
+    end if
+  end while
+  return leaves
+end function
+
+function boxLeafnums(world,mins,maxs,capacity)
+  if capacity < 0 or capacity > 131072 then return fail("invalid leaf-list capacity") end if
+  result = LeafList([],0,false)
+  for each leaf in enumerateLeaves(world,mins,maxs)
+    if vis.leafCluster(world.visibility,leaf) != -1 then result.lastLeaf = leaf end if
+    if len(result.entries) >= capacity then result.overflowed = true
+    else result.entries = result.entries+[leaf] end if
+  end for
+  return result
+end function
+
+function boxBrushes(world,mins,maxs,capacity)
+  if capacity < 0 or capacity > 131072 then return fail("invalid brush-list capacity") end if
+  mins = vector32(mins); maxs = vector32(maxs)
+  result = LeafList([],0,false); seen = array(len(world.brushes),false)
+  for each leaf in enumerateLeaves(world,mins,maxs)
+    for each index in world.leaves[leaf].brushes
+      if seen[index] then continue end if
+      seen[index] = true; b = world.brushes[index]; overlaps = true
+      for axis = 0 to 2
+        if b.mins[axis] >= maxs[axis] or b.maxs[axis] <= mins[axis] then overlaps = false; break end if
+      end for
+      if not overlaps then continue end if
+      if len(result.entries) >= capacity then result.overflowed = true; break end if
+      result.entries = result.entries+[index]
+    end for
+  end for
+  return result
+end function
+
+function trace(world,start,finish,mins,maxs,model,mask,capsule,curves)
+  return traceWithSphere(world,start,finish,mins,maxs,model,mask,capsule,curves,void)
+end function
+
+function rotationMatrix(angles)
+  matrix = q.AngleVectors(angles)
+  for axis = 0 to 2
+    matrix[1][axis] = n.fneg(matrix[1][axis])
+  end for
+  return matrix
+end function
+
+function rotatePoint(point,matrix)
+  return [q.DotProduct(matrix[0],point),q.DotProduct(matrix[1],point),q.DotProduct(matrix[2],point)]
+end function
+
+function transpose(matrix)
+  return [[matrix[0][0],matrix[1][0],matrix[2][0]],[matrix[0][1],matrix[1][1],matrix[2][1]],[matrix[0][2],matrix[1][2],matrix[2][2]]]
+end function
+
+function transformedPointContents(world,point,model,origin,angles)
+  point = vector32(point); origin = vector32(origin); angles = vector32(angles)
+  localPoint = array(3,0.0)
+  for axis = 0 to 2
+    localPoint[axis] = n.fsub(point[axis],origin[axis])
+  end for
+  if model != 255 and (angles[0] != 0 or angles[1] != 0 or angles[2] != 0) then
+    // The original negates the dot product, not each right-vector component.
+    axes = q.AngleVectors(angles)
+    localPoint = [q.DotProduct(localPoint,axes[0]),n.fneg(q.DotProduct(localPoint,axes[1])),q.DotProduct(localPoint,axes[2])]
+  end if
+  return pointContents(world,localPoint,model)
+end function
+
+function transformedTrace(world,start,finish,mins,maxs,model,mask,origin,angles,capsule,curves)
+  start = vector32(start); finish = vector32(finish); origin = vector32(origin); angles = vector32(angles)
+  if mins == void then mins = [0.0,0.0,0.0] end if
+  if maxs == void then maxs = [0.0,0.0,0.0] end if
+  mins = vector32(mins); maxs = vector32(maxs)
+  a = array(3,0.0); b = array(3,0.0); lo = array(3,0.0); hi = array(3,0.0)
+  for axis = 0 to 2
+    if mins[axis] > maxs[axis] then return fail("inverted trace bounds") end if
+    offset = n.fmul(n.fadd(mins[axis],maxs[axis]),0.5)
+    lo[axis] = n.fsub(mins[axis],offset); hi[axis] = n.fsub(maxs[axis],offset)
+    a[axis] = n.fsub(n.fadd(start[axis],offset),origin[axis])
+    b[axis] = n.fsub(n.fadd(finish[axis],offset),origin[axis])
+  end for
+  rotated = model != 255 and (angles[0] != 0 or angles[1] != 0 or angles[2] != 0)
+  radius = min(hi[0],hi[2]); t = n.fsub(hi[2],radius)
+  sphereOffset = [0.0,0.0,t]; matrix = void
+  if rotated then
+    matrix = rotationMatrix(angles); a = rotatePoint(a,matrix); b = rotatePoint(b,matrix)
+    // Preserve the original sign on the second capsule-offset component.
+    sphereOffset = [n.fmul(matrix[0][2],t),n.fmul(n.fneg(matrix[1][2]),t),n.fmul(matrix[2][2],t)]
+  end if
+  result = traceWithSphere(world,a,b,lo,hi,model,mask,capsule,curves,[radius,sphereOffset])
+  if rotated and result.trace.fraction != 1 then result.trace.normal = rotatePoint(result.trace.normal,transpose(matrix)) end if
+  // Plane distance/type/signbits intentionally remain in the model's frame.
+  // Unlike CM_BoxTrace, this interpolation is executed even on a miss.
+  result.endpos = interpolate(start,finish,result.trace.fraction)
+  return result
 end function
 
 function vector32(value)

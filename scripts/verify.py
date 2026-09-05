@@ -23,6 +23,7 @@ def main():
         scripts.append(("test_maps.py",[str(args.data_root)]))
         scripts.append(("test_runtime_trace.py",[str(args.data_root)]))
         scripts.append(("test_runtime_pmove.py",[str(args.data_root)]))
+        scripts.append(("test_runtime_spatial.py",[str(args.data_root)]))
     if args.extended:
         scripts.extend([("test_patches.py",[str(args.data_root)]),
                         ("test_collision.py",[str(args.data_root),"--no-curves"]),
@@ -30,7 +31,10 @@ def main():
                         ("test_movement.py",[str(args.data_root),"--count","4096","--no-curves"]),
                         ("test_movement.py",[str(args.data_root),"--count","4096"]),
                         ("test_pmove.py",[str(args.data_root),"--count","4096","--no-curves"]),
-                        ("test_pmove.py",[str(args.data_root),"--count","4096"])])
+                        ("test_pmove.py",[str(args.data_root),"--count","4096"]),
+                        ("test_spatial.py",[str(args.data_root),"--no-curves"]),
+                        ("test_spatial.py",[str(args.data_root)]),
+                        ("test_visibility.py",[str(args.data_root)])])
     for name,arguments in scripts:
         print("[verify] "+name,flush=True)
         subprocess.run([sys.executable,ROOT / "scripts" / name,*arguments],check=True,cwd=ROOT)
