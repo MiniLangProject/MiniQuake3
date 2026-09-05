@@ -4,14 +4,12 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die zuletzt vollständig ausgeführte erweiterte Regression besteht aus 41 bestandenen
+Die zuletzt vollständig ausgeführte erweiterte Regression besteht aus 43 bestandenen
 Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`), einschließlich
 der Spawnpunkt-/Leichenprüfung, der Punkte-/Ranglisten-/Matchende-Regeln und
 der integrierten Spieler-Todesfolge, der Item-/Flaggen-Entity-Prüfung sowie den
-vollständigen `ClientSpawn`-, `ClientThink`- und `ClientEndFrame`-Abläufen.
-Der anschließend ergänzte `G_RunFrame`-Vergleich und seine angrenzenden
-Spawn-/Client-Regressionen bestehen zusätzlich; der nächste erweiterte Gesamtlauf
-wird ihn als 42. Prüfbereich aufnehmen.
+vollständigen `ClientSpawn`-, `ClientThink`- und `ClientEndFrame`-Abläufen sowie
+den integrierten `G_RunFrame`- und `CheckTournament`-Vergleichen.
 Der finale MiniQuake3-Build hat SHA-256
 `3a8c6f394b337404511f826e34404d0fd5f9c3011af6b7a4b2a96cc5321d99fb`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
@@ -23,7 +21,7 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung, Sprungpad-/Teleport-Replays, ClientBegin und G_RunFrame-Einbindung geprüft; komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, vollständiger Client-Lebenszyklus, Leichen, Items, Punkte, Ränge, Matchende und CTF vorhanden; weitere Klassen, Mover-Pushing und Tournament-/Team-/Vote-/Cvar-Wartungsimplementierungen fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, vollständiger Client-Lebenszyklus, Leichen, Items, Punkte, Ränge, Matchende, Tournament/Warmup und CTF vorhanden; weitere Klassen, Mover-Pushing und Team-/Vote-/Cvar-Wartungsimplementierungen fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -607,17 +605,29 @@ sind enthalten. Details: [CLIENT_BEGIN.md](CLIENT_BEGIN.md).
 
 ## Vollständiger Spielserverframe (Schritt 6)
 
-`scripts/test_full_frame.py` besteht mit **sechs Szenarien**, **3.301 exakt
-gleichen 32-Bit-Wörtern** und **13.217 Ausgabe-Bytes**. Drei Laufzeitverträge
+`scripts/test_full_frame.py` besteht mit **sechs Szenarien**, **3.286 exakt
+gleichen 32-Bit-Wörtern** und **13.157 Ausgabe-Bytes**. Drei Laufzeitverträge
 prüfen Pflichtgrenzen, Clientlimit und Restart-Frühabbruch.
 
 Geprüft sind Framezähler und Zeit, Cvar-Aktualisierung, die vorhandene
-Entity-Schleife, Client-Endframes, die echte Matchende-Prüfung und anschließend
-Tournament, Teamstatus, globale und Team-Votes sowie Cvar-Nachverfolgung. Auch
+Entity-Schleife, Client-Endframes, die echten Tournament- und Matchende-Prüfungen
+und anschließend Teamstatus, globale und Team-Votes sowie Cvar-Nachverfolgung. Auch
 die 1.024 Einträge von `g_listEntity` und dessen Cvar-Reset laufen in der
-Originalreihenfolge. Die noch nicht portierten Wartungsfunktionen sowie
+Originalreihenfolge. Die noch nicht portierten Team-/Vote-/Cvar-Wartungsfunktionen sowie
 Mover-/sonstige Physics-Ausführung bleiben geordnete Callbacks. Details:
 [FULL_FRAME.md](FULL_FRAME.md).
+
+## Tournament und Warmup (Schritt 6)
+
+`scripts/test_tournament.py` besteht mit **zwölf Szenarien**, **115 exakt
+gleichen 32-Bit-Wörtern** und **547 Ausgabe-Bytes**. Drei Laufzeitverträge prüfen
+Spawn-Zustand, Tournament-Promotion und Clientlimit.
+
+Der unveränderte C-Code und MiniLang stimmen für Zwei-Spieler-Tournament,
+FFA-/Team-Bereitschaft, CTF-Teamvoraussetzungen, `g_warmup`-Änderungen,
+Countdown, Configstring/Log und `map_restart` überein. Auch der ursprüngliche
+32-Bit-Zeitüberlauf ist abgedeckt. `AddTournamentPlayer` und Engine-Zustellung
+bleiben Host-Grenzen. Details: [TOURNAMENT.md](TOURNAMENT.md).
 
 ## ClientThink (Schritt 6)
 

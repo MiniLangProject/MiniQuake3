@@ -6128,6 +6128,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6140,6 +6141,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6153,6 +6155,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6161,11 +6164,26 @@
           "scope": "Baseq3 entry lifecycle with actual ported ClientSpawn and CalculateRanks: unlink/reinit, playerState reset, entry event/message/log, tournament and spectator branches. Engine delivery remains at explicit callbacks."
         },
         {
+          "original": "TeamCount",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 connected-client team counting, used by and compared through CheckTournament readiness decisions."
+        },
+        {
           "original": "SP_info_player_deathmatch",
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6178,6 +6196,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6190,6 +6209,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6202,6 +6222,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6214,6 +6235,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6226,6 +6248,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6238,6 +6261,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6250,6 +6274,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6262,6 +6287,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6274,6 +6300,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6286,6 +6313,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6298,6 +6326,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6310,6 +6339,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6322,6 +6352,7 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6334,6 +6365,7 @@
         "src/mq3/game/teleport.ml",
         "src/mq3/game/spawn_functions.ml",
         "src/mq3/game/client_spawn.ml",
+        "src/mq3/game/tournament.ml",
         "src/mq3/game/player_spawns.ml",
         "src/mq3/game/bodies.ml",
         "src/mq3/game/deaths.ml"
@@ -6345,6 +6377,7 @@
         "scripts/test_spawn.py",
         "scripts/test_client_spawn.py",
         "scripts/test_client_begin.py",
+        "scripts/test_tournament.py",
         "scripts/test_bodies.py",
         "scripts/test_deaths.py"
       ]
@@ -6833,6 +6866,7 @@
             "src/mq3/game/client_frame.ml",
             "src/mq3/game/client_active.ml",
             "src/mq3/game/frame.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6852,6 +6886,7 @@
             "src/mq3/game/client_frame.ml",
             "src/mq3/game/client_active.ml",
             "src/mq3/game/frame.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6871,6 +6906,7 @@
             "src/mq3/game/client_frame.ml",
             "src/mq3/game/client_active.ml",
             "src/mq3/game/frame.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6890,6 +6926,7 @@
             "src/mq3/game/client_frame.ml",
             "src/mq3/game/client_active.ml",
             "src/mq3/game/frame.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6908,6 +6945,7 @@
         "src/mq3/game/client_frame.ml",
         "src/mq3/game/client_active.ml",
         "src/mq3/game/frame.ml",
+        "src/mq3/game/tournament.ml",
         "src/mq3/game/bodies.ml",
         "src/mq3/game/player_spawns.ml",
         "src/mq3/game/scores.ml",
@@ -6926,6 +6964,7 @@
         "scripts/test_client_begin.py",
         "scripts/test_client_frame.py",
         "scripts/test_client_think.py",
+        "scripts/test_tournament.py",
         "scripts/test_full_frame.py",
         "scripts/test_bodies.py",
         "scripts/test_scores.py",
@@ -6982,6 +7021,7 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/frame.ml",
             "src/mq3/game/entities.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
@@ -6996,6 +7036,7 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/frame.ml",
             "src/mq3/game/entities.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
@@ -7003,7 +7044,23 @@
             "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual exit rules and maintenance stages. Mover/other physics dispatch and tournament/team/vote/Cvar maintenance remain ordered callbacks."
+          "scope": "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament and exit rules, then maintenance stages. Mover/other physics dispatch and team/vote/Cvar maintenance remain ordered callbacks."
+        },
+        {
+          "original": "CheckTournament",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/tournament.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/rank_sort.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 tournament promotion, player/team readiness, warmup Cvar changes, countdown and map restart are compared against the unchanged native body. AddTournamentPlayer and engine command delivery remain explicit observed callbacks."
         },
         {
           "original": "FindIntermissionPoint",
@@ -7011,6 +7068,7 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/frame.ml",
             "src/mq3/game/entities.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
@@ -7025,6 +7083,7 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/frame.ml",
             "src/mq3/game/entities.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
@@ -7040,6 +7099,7 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/frame.ml",
             "src/mq3/game/entities.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
@@ -7055,6 +7115,7 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/frame.ml",
             "src/mq3/game/entities.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
@@ -7069,6 +7130,7 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/frame.ml",
             "src/mq3/game/entities.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
@@ -7083,6 +7145,7 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/frame.ml",
             "src/mq3/game/entities.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
@@ -7098,6 +7161,7 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/frame.ml",
             "src/mq3/game/entities.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
@@ -7113,6 +7177,7 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/frame.ml",
             "src/mq3/game/entities.ml",
+            "src/mq3/game/tournament.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
@@ -7127,6 +7192,7 @@
         "src/mq3/game/spawn_functions.ml",
         "src/mq3/game/frame.ml",
         "src/mq3/game/entities.ml",
+        "src/mq3/game/tournament.ml",
         "src/mq3/game/player_spawns.ml",
         "src/mq3/game/bodies.ml",
         "src/mq3/game/scores.ml",
@@ -7139,6 +7205,7 @@
         "scripts/test_spawn.py",
         "scripts/test_targets.py",
         "scripts/test_missiles.py",
+        "scripts/test_tournament.py",
         "scripts/test_full_frame.py",
         "scripts/test_bodies.py",
         "scripts/test_scores.py",

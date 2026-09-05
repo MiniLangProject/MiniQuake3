@@ -12,6 +12,7 @@ import mq3.game.items as items
 import mq3.game.client_active as clientActive
 import mq3.game.client_frame as clientFrame
 import mq3.game.scores as scores
+import mq3.game.tournament as tournament
 import mq3.compat.numeric as n
 function runEntities(level)
   i = 0
@@ -71,7 +72,7 @@ function run(level,levelTime)
     end if
   end while
 
-  stage(level,1,0)
+  tournament.check(level)
   scores.checkExitRules(level)
   stage(level,2,0); stage(level,3,0); stage(level,4,c.TEAM_RED); stage(level,4,c.TEAM_BLUE); stage(level,5,0)
   if level.listEntity != 0 then

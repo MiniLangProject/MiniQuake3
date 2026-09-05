@@ -175,8 +175,10 @@ Zeitklemmung, Pmove, dynamische Kollision, Trigger, Spielerereignisse, Timer,
 Zuschauer, Button-Latches, Respawn und Snapshots. `ClientBegin` verbindet
 Unlink/Reinitialisierung, den echten Spawn, Eintrittsereignis, Log und
 Rangberechnung; Tournament-, Zuschauer- und Intermissionzweige sind gegen den
-unveränderten C-Ablauf geprüft. Als Nächstes folgen die
-übrigen Spielobjekte, die Implementierung der noch externen Frame-Wartungsstufen, weitere Waffentreffer und
+unveränderten C-Ablauf geprüft. [`CheckTournament` und `TeamCount`](TOURNAMENT.md)
+steuern inzwischen Promotion, Bereitschaft, Warmup-Countdown und Maprestart an
+der ursprünglichen Stelle im Frame. Als Nächstes folgen die übrigen Spielobjekte,
+die Team-/Vote-/Cvar-Wartungsstufen, weitere Waffentreffer und
 Mover-Pushing. Der vollständige Server bleibt bis zu dieser Integration offen.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
@@ -196,7 +198,8 @@ C-Funktionskörper geprüft. [`ClientThink`](CLIENT_THINK.md) ist ebenfalls voll
 in den MiniLang-Spielpfad eingebunden. [`ClientBegin`](CLIENT_BEGIN.md) verbindet
 diesen Lebenszyklus inzwischen vollständig. [`G_RunFrame`](FULL_FRAME.md) führt
 ihn mit Entity-Schleife, Matchende und den geordneten Wartungsstufen zusammen.
-Die Wartungsimplementierungen und Netzwerkzustellung sind die nächsten Grenzen.
+Die Tournament-/Warmup-Stufe ist portiert; Team-, Vote- und Cvar-Wartung sowie
+Netzwerkzustellung sind die nächsten Grenzen.
 Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.
