@@ -6171,10 +6171,31 @@
         "SetTeam",
         "StopFollowing"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "DeathmatchScoreboardMessage",
+          "target_files": [
+            "src/mq3/game/scores.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Exact scoreboard command payload and recipient; transport callback observed. No network transmission or client display."
+        },
+        {
+          "original": "Cmd_Score_f",
+          "target_files": [
+            "src/mq3/game/scores.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Exact scoreboard command payload and recipient; transport callback observed. No network transmission or client display."
+        }
+      ],
+      "target": [
+        "src/mq3/game/scores.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_scores.py"
+      ]
     },
     {
       "source": "code/game/g_combat.c",
@@ -6206,7 +6227,8 @@
           "original": "CheckArmor",
           "target_files": [
             "src/mq3/game/combat.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml"
           ],
           "status": "tested_subset"
         },
@@ -6214,16 +6236,18 @@
           "original": "G_Damage",
           "target_files": [
             "src/mq3/game/combat.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die, scoring, damage feedback, Missionpack or full server frame. G_Printf diagnostics excluded."
+          "scope": "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die-driven scoring, damage feedback, Missionpack or full server frame. G_Printf diagnostics excluded."
         },
         {
           "original": "CanDamage",
           "target_files": [
             "src/mq3/game/combat.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml"
           ],
           "status": "tested_subset"
         },
@@ -6231,7 +6255,8 @@
           "original": "G_RadiusDamage",
           "target_files": [
             "src/mq3/game/combat.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml"
           ],
           "status": "tested_subset"
         },
@@ -6239,7 +6264,8 @@
           "original": "LookAtKiller",
           "target_files": [
             "src/mq3/game/combat.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml"
           ],
           "status": "tested_subset"
         },
@@ -6247,7 +6273,8 @@
           "original": "GibEntity",
           "target_files": [
             "src/mq3/game/combat.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml"
           ],
           "status": "tested_subset"
         },
@@ -6255,19 +6282,40 @@
           "original": "body_die",
           "target_files": [
             "src/mq3/game/combat.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "ScorePlum",
+          "target_files": [
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "AddScore",
+          "target_files": [
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
         "src/mq3/game/combat.ml",
-        "src/mq3/game/bodies.ml"
+        "src/mq3/game/bodies.ml",
+        "src/mq3/game/scores.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_combat.py",
-        "scripts/test_bodies.py"
+        "scripts/test_bodies.py",
+        "scripts/test_scores.py"
       ]
     },
     {
@@ -6350,7 +6398,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/player_spawns.ml"
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/scores.ml"
           ],
           "status": "tested_subset"
         },
@@ -6361,7 +6410,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/player_spawns.ml"
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/scores.ml"
           ],
           "status": "tested_subset"
         },
@@ -6372,7 +6422,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/player_spawns.ml"
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/scores.ml"
           ],
           "status": "tested_subset"
         },
@@ -6383,7 +6434,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/player_spawns.ml"
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/scores.ml"
           ],
           "status": "tested_subset"
         }
@@ -6393,7 +6445,8 @@
         "src/mq3/game/spawn.ml",
         "src/mq3/game/combat.ml",
         "src/mq3/game/bodies.ml",
-        "src/mq3/game/player_spawns.ml"
+        "src/mq3/game/player_spawns.ml",
+        "src/mq3/game/scores.ml"
       ],
       "status": "partial",
       "tests": [
@@ -6402,7 +6455,8 @@
         "scripts/test_spawn.py",
         "scripts/test_targets.py",
         "scripts/test_combat.py",
-        "scripts/test_bodies.py"
+        "scripts/test_bodies.py",
+        "scripts/test_scores.py"
       ]
     },
     {
@@ -6455,7 +6509,9 @@
             "src/mq3/game/frame.ml",
             "src/mq3/game/entities.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/rank_sort.ml"
           ],
           "status": "tested_subset"
         },
@@ -6466,7 +6522,9 @@
             "src/mq3/game/frame.ml",
             "src/mq3/game/entities.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/rank_sort.ml"
           ],
           "status": "tested_subset",
           "scope": "Allocated-entity loop with implemented missile and body-queue corpse physics dispatch; other item/physics/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
@@ -6478,9 +6536,107 @@
             "src/mq3/game/frame.ml",
             "src/mq3/game/entities.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/rank_sort.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "SortRanks",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/rank_sort.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
+        },
+        {
+          "original": "CalculateRanks",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/rank_sort.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
+        },
+        {
+          "original": "SendScoreboardMessageToAllClients",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/rank_sort.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "ScoreIsTied",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/rank_sort.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CheckExitRules",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/rank_sort.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
+        },
+        {
+          "original": "LogExit",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/rank_sort.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
+        },
+        {
+          "original": "CheckIntermissionExit",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/rank_sort.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
         }
       ],
       "target": [
@@ -6488,7 +6644,9 @@
         "src/mq3/game/frame.ml",
         "src/mq3/game/entities.ml",
         "src/mq3/game/player_spawns.ml",
-        "src/mq3/game/bodies.ml"
+        "src/mq3/game/bodies.ml",
+        "src/mq3/game/scores.ml",
+        "src/mq3/game/rank_sort.ml"
       ],
       "status": "partial",
       "tests": [
@@ -6496,7 +6654,8 @@
         "scripts/test_spawn.py",
         "scripts/test_targets.py",
         "scripts/test_missiles.py",
-        "scripts/test_bodies.py"
+        "scripts/test_bodies.py",
+        "scripts/test_scores.py"
       ]
     },
     {
@@ -6861,7 +7020,8 @@
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_server_world.py"
+        "scripts/test_server_world.py",
+        "scripts/test_scores.py"
       ]
     },
     {

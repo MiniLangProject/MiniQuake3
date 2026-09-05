@@ -26,6 +26,14 @@ struct Client
   lasthurtcarrier
   accuracy_hits
   hook
+  connected
+  spectatorState
+  spectatorClient
+  spectatorTime
+  enterTime
+  accuracy_shots
+  netname
+  readyToExit
 end struct
 struct Entity
   slot
@@ -107,19 +115,48 @@ struct Level
   bodyQue
   intermission_origin
   intermission_angle
+  clients
+  maxclients
+  maxclientsCvar
+  sortedClients
+  teamScores
+  follow1
+  follow2
+  numConnectedClients
+  numNonSpectatorClients
+  numPlayingClients
+  numVotingClients
+  numteamVotingClients
+  intermissiontime
+  timelimit
+  fraglimit
+  capturelimit
+  readyToExit
+  exitTime
+  serverCommandFn
+  gameLogFn
+  matchTransitionFn
 end struct
 function createClient(state,team,cmdAngles)
-  return Client(state,team,cmdAngles,false,0,0,0,[0.0,0.0,0.0],false,0,0,0.0,0,void)
+  return Client(state,team,cmdAngles,false,0,0,0,[0.0,0.0,0.0],false,0,0,0.0,0,void,0,0,0,0,0,0,"",false)
 end function
 function blank(slot,r)
   return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0,void,void,0.0,void,void,0.0,0.0,0,0,0,void,void,0,[0.0,0.0,0.0],0,void,void,void,false,false,0,0,void,false,0,void,void,void,0,void,void,0,0,0,0,0,0.0)
 end function
 function create(world)
-  scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void,false,void,0,1000.0,0,void,0,array(256,0),1,0,[],[0.0,0.0,0.0],[0.0,0.0,0.0])
+  scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void,false,void,0,1000.0,0,void,0,array(256,0),1,0,[],[0.0,0.0,0.0],[0.0,0.0,0.0],[],0,0,array(64,0),array(4,0),0,0,0,0,0,0,array(2,0),0,0,0,0,false,0,void,void,void)
   for i = 0 to 1023
     level.entities = level.entities+[blank(i,scene.entities[i])]
   end for
+  for i = 0 to 63
+    level.clients = level.clients+[createClient(ps.create(),0,[0,0,0])]
+  end for
   return level
+end function
+function bindClient(level,ent,client)
+  if ent.slot < 0 or ent.slot >= 64 then return error(495,"Invalid client binding slot") end if
+  ent.client = client; level.clients[ent.slot] = client
+  return client
 end function
 function observe(level,kind,ent)
   if level.observeFn != void then level.observeFn(level,kind,ent) end if

@@ -68,6 +68,7 @@ python scripts/test_targets.py
 python scripts/test_combat.py --data-root D:/Quake3
 python scripts/test_missiles.py --data-root D:/Quake3
 python scripts/test_bodies.py --data-root D:/Quake3
+python scripts/test_scores.py
 python scripts/test_spawn.py D:/Quake3
 ```
 
@@ -91,7 +92,10 @@ vollständige Serverframes bleiben offen.
 BFG, Grappling-Hook und drei schießende Kartenobjekte mit echter Server-Kollision.
 [Spawnpunkte und Leichen](docs/PLAYER_LIFECYCLE.md) ergänzen Deathmatch-/CTF-/
 Zuschauer-Auswahl, Leichen-Warteschlange, Gibs und Leichenphysik. Der vollständige
-Spieler-Tod mit Scores, Item-Drops und Respawn folgt noch.
+Spieler-Tod mit Item-Drops und Respawn folgt noch.
+[Punkte, Ranglisten und Scoreboards](docs/SCORES.md) sowie Sudden Death,
+Matchlimits und Bereitschaftsregeln sind gegen C geprüft. Die Einbindung in
+Spieler-Tod, Netzwerkübertragung und tatsächliche Kartenwechsel bleibt offen.
 
 Auch die Sichtbarkeitsdaten eines Kartenpunkts und Traces gegen versetzte/gedrehte
 Modelle sind direkt abfragbar:

@@ -120,7 +120,8 @@ weiterhin `level.runEntityFn(level, kind, ent)`: `2` sonstige Item-/Physics-Enti
 `4` Client. Ein gesetzter Handler übernimmt außerdem Kategorie `1` Missile.
 Der Target-Test beobachtet alle vier Kategorien; die gesonderte Projektilprüfung
 führt den echten Missile-Zweig aus. `G_RunFrame` als Ganzes,
-`ClientEndFrame`, Match-/Vote-Prüfungen, Spieler-Todesregeln, Items und Mover-Pushing
+`ClientEndFrame`, die Frame-Einbindung der [Matchende-Regeln](SCORES.md),
+Vote-Prüfungen, Spieler-Todesregeln, Items und Mover-Pushing
 bleiben offen. `target_teleporter` ist über KillBox inzwischen mit der
 [portierten Schadensberechnung](COMBAT.md) verbunden.
 

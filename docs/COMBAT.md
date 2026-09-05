@@ -144,7 +144,7 @@ Nicht-Client-Zustand, der in C im Trefferzähler auf NULL zugreift, wird kontrol
 abgewiesen; diese Vertragsproben sind keine Übereinstimmung mit einem definierten
 C-Fehlerpfad.
 
-Offen bleiben `player_die`, Scores/Respawn, weitere Waffentreffer und die vollständige Waffensteuerung,
+Offen bleiben `player_die`, die Einbindung der Scores, Respawn, weitere Waffentreffer und die vollständige Waffensteuerung,
 Schadensfeedback am Frame-Ende, vollständige Teamregeln, Mover-Steuerung,
 Missionpack und die vollständige Serverintegration.
 
@@ -158,3 +158,6 @@ Die [Leichenverwaltung](PLAYER_LIFECYCLE.md) bindet `body_die` jetzt an den
 portierten Schadenspfad an und prüft Gibs mit echtem `G_Damage`. `LookAtKiller`
 steht ebenfalls bereit. Die vollständige Spieler-Todeslogik `player_die`
 mit Scores, Drops und Respawn ist weiterhin offen.
+
+Die [Punkte- und Scoreboard-Bausteine](SCORES.md) sind separat gegen C geprüft;
+ihre Verbindung mit `player_die` und Team-Fragboni folgt noch.

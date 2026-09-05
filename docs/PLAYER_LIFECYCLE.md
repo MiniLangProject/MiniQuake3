@@ -1,7 +1,8 @@
 # Spawnpunkte und Leichenverwaltung
 
 Dieser Abschnitt von Schritt 6 überträgt die Spawnpunkt-Auswahl und die
-Leichenverwaltung von `baseq3`. `player_die`, Scoreboards, Item-Drops und der
+Leichenverwaltung von `baseq3`. Die [Scoreboard-/Punkteregeln](SCORES.md) sind
+inzwischen separat umgesetzt. `player_die`, Item-Drops und der
 vollständige Respawn über `ClientSpawn`, `ClientThink` und `ClientEndFrame`
 sind weiterhin offen. Die neuen Funktionen ersetzen diese Aufrufkette nicht.
 
@@ -104,5 +105,5 @@ Auf CD-Karten werden vorhandene Spieler-, Team- und Intermission-Punkte sowie
 passende Positions-Targets übernommen und Leichen mit der tatsächlichen
 Kartengeometrie simuliert. Das sind gezielte Kartenproben, keine vollständigen
 Matches. Bot-/Human-Spawnfilter aus `ClientSpawn`, Spieler-Todesmeldungen,
-Scores, Item-Drops, Respawn-Eingaben, Client-Frames und die grafische Darstellung
+die Einbindung der Scores, Item-Drops, Respawn-Eingaben, Client-Frames und die grafische Darstellung
 bleiben Gegenstand der weiteren Integration.

@@ -35,6 +35,7 @@ struct Entity
   lastCluster
   areanum
   areanum2
+  singleClient
 end struct
 struct Sector
   axis
@@ -49,7 +50,7 @@ struct Scene
 end struct
 
 function entity(number)
-  return Entity(number,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],false,0,0,false,[0.0,0.0,0.0],[0.0,0.0,0.0],0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,-1,-1,[],0,0,0)
+  return Entity(number,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],false,0,0,false,[0.0,0.0,0.0],[0.0,0.0,0.0],0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,-1,-1,[],0,0,0,0)
 end function
 function getEntity(scene,number)
   if typeof(number) != "int" or number < 0 or number >= 1024 then return error(480,"Invalid server entity number") end if

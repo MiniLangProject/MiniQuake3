@@ -80,8 +80,18 @@ def main():
     for source,(targets,symbols) in body_mappings.items():
         old_targets,old_symbols,tests=mappings[source]
         mappings[source]=(old_targets+targets,old_symbols+symbols,tests+["scripts/test_bodies.py"])
+    score_mappings={
+        "code/game/g_combat.c":(["src/mq3/game/scores.ml"],["ScorePlum","AddScore"]),
+        "code/game/g_main.c":(["src/mq3/game/scores.ml","src/mq3/game/rank_sort.ml"],["SortRanks","CalculateRanks","SendScoreboardMessageToAllClients","ScoreIsTied","CheckExitRules","LogExit","CheckIntermissionExit"]),
+        "code/game/g_local.h":(["src/mq3/game/scores.ml"],[]),
+        "code/game/g_public.h":([],[]),
+    }
+    for source,(targets,symbols) in score_mappings.items():
+        old_targets,old_symbols,tests=mappings[source]
+        mappings[source]=(old_targets+targets,old_symbols+symbols,tests+["scripts/test_scores.py"])
+    mappings["code/game/g_cmds.c"]=( ["src/mq3/game/scores.ml"], ["DeathmatchScoreboardMessage","Cmd_Score_f"], ["scripts/test_scores.py"] )
     path=ROOT / "PORT_LEDGER.json"
-    ledger=json.loads(path.read_text())
+    ledger=json.loads(path.read_text(encoding="utf-8"))
     for entry in ledger["files"]:
         if entry["source"] in mappings:
             targets,symbols,tests=mappings[entry["source"]]
@@ -92,7 +102,7 @@ def main():
             if entry["source"] == "code/server/sv_init.c":
                 entry["symbol_mapping"][0]["scope"] = "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
             if entry["source"] == "code/game/g_combat.c":
-                entry["symbol_mapping"][1]["scope"] = "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die, scoring, damage feedback, Missionpack or full server frame. G_Printf diagnostics excluded."
+                entry["symbol_mapping"][1]["scope"] = "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die-driven scoring, damage feedback, Missionpack or full server frame. G_Printf diagnostics excluded."
             if entry["source"] == "code/game/g_missile.c":
                 for symbol in entry["symbol_mapping"]:
                     symbol["scope"] = "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
@@ -101,25 +111,34 @@ def main():
             if entry["source"] == "code/game/g_items.c":
                 entry["symbol_mapping"][1]["scope"] = "Full G_BounceItem arithmetic and stop rules; exercised by corpse physics."
                 entry["symbol_mapping"][2]["scope"] = "Non-item body queue path only, with actual SV/CM, think/link ordering and no-drop removal. Item and team-item lifecycle remain open; native dispatcher accepts bodyque entities only."
-    path.write_text(json.dumps(ledger,indent=2)+"\n")
+            if entry["source"] == "code/game/g_main.c":
+                for symbol in entry["symbol_mapping"]:
+                    if symbol["original"] in ("SortRanks","CalculateRanks"):
+                        symbol["scope"] = "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
+                    if symbol["original"] in ("CheckExitRules","LogExit","CheckIntermissionExit"):
+                        symbol["scope"] = "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
+            if entry["source"] == "code/game/g_cmds.c":
+                for symbol in entry["symbol_mapping"]:
+                    symbol["scope"] = "Exact scoreboard command payload and recipient; transport callback observed. No network transmission or client display."
+    path.write_text(json.dumps(ledger,indent=2)+"\n",encoding="utf-8",newline="\n")
     evidence=[]
     for path in sorted((ROOT / "build/reference").rglob("result.json")):
         if path.relative_to(ROOT).as_posix() in ("build/reference/collision/result.json","build/reference/movement/result.json"):
             continue # superseded by explicitly named curves/no_curves profiles
-        result=json.loads(path.read_text())
+        result=json.loads(path.read_text(encoding="utf-8"))
         # A supplemental runtime report belongs only to its recorded full run.
         if "base_verification_sha256" in result:
             verification=ROOT / "build/verification.json"
             if not verification.exists() or result["base_verification_sha256"]!=sha(verification):continue
         evidence.append({"path":path.relative_to(ROOT).as_posix(),"sha256":sha(path),"result":result})
     replay=ROOT / "artifacts/reference/replay/result.json"
-    if replay.exists():evidence.append({"path":replay.relative_to(ROOT).as_posix(),"sha256":sha(replay),"result":json.loads(replay.read_text())})
+    if replay.exists():evidence.append({"path":replay.relative_to(ROOT).as_posix(),"sha256":sha(replay),"result":json.loads(replay.read_text(encoding="utf-8"))})
     verification=ROOT / "build/verification.json"
-    if verification.exists():evidence.append({"path":verification.relative_to(ROOT).as_posix(),"sha256":sha(verification),"result":json.loads(verification.read_text())})
+    if verification.exists():evidence.append({"path":verification.relative_to(ROOT).as_posix(),"sha256":sha(verification),"result":json.loads(verification.read_text(encoding="utf-8"))})
     sources={p.relative_to(ROOT).as_posix():sha(p) for base in ("src","native","scripts","tests") for p in sorted((ROOT / base).rglob("*"))
              if p.is_file() and "__pycache__" not in p.parts}
     report={"scope":"implemented foundations; full port incomplete","sources":sources,"evidence":evidence}
-    (ROOT / "docs/reference/evidence.json").write_text(json.dumps(report,indent=2)+"\n")
+    (ROOT / "docs/reference/evidence.json").write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8",newline="\n")
     print("Updated partial source mappings and recorded test evidence.")
 
 if __name__=="__main__":main()

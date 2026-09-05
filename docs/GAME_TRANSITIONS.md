@@ -56,7 +56,7 @@ Die bisherigen Übergangstests zeichnen diese Aufrufgrenze weiterhin auf.
 `test_combat.py` vergleicht darüber hinaus Gesundheit, Rüstung, Teamschutz und
 Callback-Reihenfolge bei KillBox und vollständigem Teleport. Ein ohne Spawner
 angelegter Kontext muss seinen Schadenscallback ausdrücklich setzen.
-Spieler-Todesregeln, Scores und Respawn bleiben offen.
+Spieler-Todesregeln, die Einbindung der [Score-Folgen](SCORES.md) und Respawn bleiben offen.
 
 Temporäre Entities tragen `eventTime` und `freeAfterEvent`. Ihre automatische
 Entfernung ist in der portierten Entity-Schleife enthalten; der vollständige

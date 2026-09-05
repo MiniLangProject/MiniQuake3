@@ -5,13 +5,18 @@
 void CM_LoadMap(const char*,qboolean,int*);cvar_t *Cvar_Get(const char*,const char*,int);
 #include "snapvector.inc"
 gentity_t g_entities[MAX_GENTITIES];gclient_t g_clients[MAX_CLIENTS];level_locals_t level;
-vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood;
+vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit;
 void hostServerReset(void*,int,int);void hostLink(void*);void hostUnlink(void*);void hostBrush(void*,const char*);void hostMetadata(int,int*);
 int hostContact(const vec3_t,const vec3_t,void*,int);int hostArea(const vec3_t,const vec3_t,int*,int);
 void hostTrace(trace_t*,const vec3_t,const vec3_t,const vec3_t,const vec3_t,int,int);
 static int combatTraceOutput;
 static int missileOutput;
 static int bodyOutput;
+static int scoreOutput;
+static void scoreTransition(int);
+void CheckExitRules(void);void CheckIntermissionExit(void);void LogExit(const char *);
+void BeginIntermission(void){scoreTransition(1);}
+void ExitLevel(void){scoreTransition(2);}
 int hostContents(const vec3_t,int);
 int trap_PointContents(const vec3_t point,int pass){return hostContents(point,pass);}
 void Team_FreeEntity(gentity_t *e){G_Error("unported team item physics boundary");}
@@ -53,7 +58,11 @@ void trap_Trace(trace_t *tr,const vec3_t start,const vec3_t mins,const vec3_t ma
     }
 }
 void QDECL G_Printf(const char *fmt,...) { }
-void QDECL G_LogPrintf(const char *fmt,...) {word(3);word(0);string("");string(fmt);}
+void QDECL G_LogPrintf(const char *fmt,...) {
+    if(scoreOutput){char buffer[2048];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);word(41);string(buffer);}
+    else{word(3);word(0);string("");string(fmt);}
+}
+void trap_SendServerCommand(int client,const char *message){if(!scoreOutput)G_Error("unported server command sink");word(42);word(client);string(message);}
 void QDECL G_Error(const char *fmt,...) {va_list args;va_start(args,fmt);vfprintf(stderr,fmt,args);va_end(args);exit(72);}
 void Touch_DoorTrigger(gentity_t *a,gentity_t *b,trace_t *c) {G_Error("unexpected door boundary");}
 void *G_Alloc(int n) {void *p=calloc(1,n);if(!p)exit(73);return p;}
@@ -63,6 +72,7 @@ void G_SpawnItem(gentity_t *e,gitem_t *item) {boundary(e,1,(int)(item-bg_itemlis
 #include "target_actions.inc"
 #include "missile_actions.inc"
 #include "body_actions.inc"
+#include "score_actions.inc"
 #include "combat_actions.inc"
 static char *readString(FILE *in) {int n;char *s;if(fread(&n,4,1,in)!=1)return NULL;if(n<0 || n>10000000)exit(74);s=calloc(1,n+1);if(n && fread(s,1,n,in)!=n)exit(74);return s;}
 static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);word(level.locationLinked);word(slotOf(level.locationHead));for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
@@ -88,6 +98,8 @@ int main(int argc,char **argv) {
         reset(0,0);missileOutput=1;runCombat(in);
     } else if(argc==6 && !strcmp(argv[5],"--bodies")) {
         reset(0,0);bodyOutput=1;runCombat(in);
+    } else if(argc==6 && !strcmp(argv[5],"--scores")) {
+        reset(0,0);scoreOutput=1;runCombat(in);
     } else if(argc==6 && !strcmp(argv[5],"--values")) {
         reset(0,0);
         while((text=readString(in))!=NULL) {

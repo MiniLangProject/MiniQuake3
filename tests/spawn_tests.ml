@@ -14,6 +14,8 @@ import mq3.game.hazards as hazards
 import mq3.game.missiles as missiles
 import mq3.game.shooters as shooters
 import mq3.game.bodies as bodies
+import mq3.game.scores as scores
+import mq3.game.rank_sort as rankSort
 import mq3.game.player_spawns as playerSpawns
 import mq3.game.movement as movement
 import mq3.shared.directions as directions
@@ -33,6 +35,7 @@ struct Check
   links
   missiles
   bodies
+  scores
 end struct
 function checkWord(check,value)
   if check.offset+4 > len(check.expected) then return error(490,"Unexpected spawn output") end if
@@ -536,6 +539,7 @@ function checkCombatState(level,index)
   checkCombatExtra(check,level.entities[1022])
   checkMissileState(level)
   checkBodyState(level)
+  checkScoreState(level)
   return void
 end function
 function recordCombatTrace(level,start,finish,mins,maxs,passEntity,mask,hit)
@@ -568,7 +572,7 @@ function runCombatActions(level,input,check)
         game.free(level,ent); game.initEntity(ent); ent.takedamage = true; ent.health = command[4]; ent.pain = combatPain; ent.die = combatDie
         ent.r.currentOrigin = [10.25,-20.75,32.5]; ent.r.mins = [-15.0,-15.0,-24.0]; ent.r.maxs = [15.0,15.0,32.0]; ent.r.contents = 0x2000000
         if command[2] != 0 then
-          ent.client = game.createClient(ps.create(),command[3],[0,0,0]); ent.s.eType = 1
+          game.bindClient(level,ent,game.createClient(ps.create(),command[3],[0,0,0])); ent.s.eType = 1
           ent.client.ps.stats[0] = command[4]; ent.client.ps.stats[3] = command[5]; ent.client.ps.stats[6] = command[6]
         end if
       end case
@@ -667,7 +671,7 @@ function runCombatActions(level,input,check)
         funcs.setBrushModel(level,ent,"*"+str(command[2]))
       end case
       case default
-        if check.bodies then runBodyAction(level,command) else runMissileAction(level,command) end if
+        if check.scores then runScoreAction(level,command) else if check.bodies then runBodyAction(level,command) else runMissileAction(level,command) end if
       end case
     end switch
     checkCombatState(level,index); index = index+1
@@ -1104,6 +1108,248 @@ function runBodyAction(level,a)
   end switch
   return void
 end function
+function recordScoreMessage(level,slot,message)
+  checkWords(level.context,[42,slot]); checkString(level.context,message)
+  return void
+end function
+function recordScoreLog(level,message)
+  checkWord(level.context,41); checkString(level.context,message)
+  return void
+end function
+function recordScoreTransition(level,kind)
+  checkWords(level.context,[43,kind,level.time,level.intermissionQueued,level.intermissiontime,level.exitTime,boolean(level.readyToExit),level.numConnectedClients,level.numPlayingClients])
+  if level.entities[1022].count == 1 and kind == 1 then level.intermissiontime = level.time end if
+  if level.entities[1022].count == 2 and kind == 2 then level.intermissiontime = 0 end if
+  return void
+end function
+function checkScoreState(level)
+  check = level.context
+  if not check.scores then return void end if
+  checkWords(check,[44,level.maxclients,level.maxclientsCvar,level.follow1,level.follow2,level.numConnectedClients,level.numNonSpectatorClients,level.numPlayingClients,level.numVotingClients,level.intermissiontime,level.timelimit,level.fraglimit,level.capturelimit,boolean(level.readyToExit),level.exitTime,level.startTime])
+  checkWords(check,level.teamScores); checkWords(check,level.numteamVotingClients); checkWords(check,level.sortedClients)
+  for i = 0 to 63
+    cl = level.clients[i]; ent = level.entities[i]; checkWords(check,ps.words(cl.ps))
+    checkWords(check,[cl.connected,cl.team,cl.spectatorState,cl.spectatorClient,cl.spectatorTime,cl.enterTime,cl.accuracy_hits,cl.accuracy_shots,boolean(cl.readyToExit)]); checkString(check,cl.netname)
+    checkWords(check,[boolean(ent.client == cl),ent.s.number,ent.r.svFlags,ent.s.powerups,ent.r.singleClient])
+  end for
+  checkWord(check,level.num_entities-64+1); i = 64
+  while i < level.num_entities
+    checkWords(check,[i,level.entities[i].r.singleClient]); i = i+1
+  end while
+  checkWords(check,[1022,level.entities[1022].r.singleClient])
+  return void
+end function
+function scoreTestName(index)
+  return ["","Player","^1Red","^4Blue","Name with spaces","Quote\"Player","01234567890123456789012345678901234"][index]
+end function
+function runScoreAction(level,a)
+  ent = void; cl = void
+  if a[1] >= 0 and a[1] < 1024 then ent = level.entities[a[1]] end if
+  if a[1] >= 0 and a[1] < 64 then cl = level.clients[a[1]] end if
+  switch a[0]
+    case 60
+      game.initEntity(ent); cl = game.bindClient(level,ent,game.createClient(ps.create(),a[3],[0,0,0])); ent.s.eType = 1; cl.ps.clientNum = a[1]
+      cl.connected = a[2]; cl.ps.persistant[0] = a[4]; cl.ps.ping = a[5]; cl.spectatorState = a[6]; cl.spectatorClient = a[7]; cl.spectatorTime = a[8]
+      cl.enterTime = a[9]; cl.accuracy_hits = a[10]; cl.accuracy_shots = a[11]; cl.readyToExit = a[12] != 0; ent.r.svFlags = a[13]; cl.netname = scoreTestName(a[14])
+    end case
+    case 61
+      key = a[2]; value = a[3]
+      if key >= 100 and key < 116 then cl.ps.persistant[key-100] = value
+      else
+        switch key
+          case 0
+          cl.connected = value
+          end case
+          case 1
+          cl.team = value
+          end case
+          case 2
+          cl.ps.ping = value
+          end case
+          case 3
+          cl.spectatorState = value
+          end case
+          case 4
+          cl.spectatorClient = value
+          end case
+          case 5
+          cl.spectatorTime = value
+          end case
+          case 6
+          cl.enterTime = value
+          end case
+          case 7
+          cl.accuracy_hits = value
+          end case
+          case 8
+          cl.accuracy_shots = value
+          end case
+          case 9
+          cl.readyToExit = value != 0
+          end case
+          case 10
+          ent.r.svFlags = value
+          end case
+          case 11
+          ent.s.powerups = value
+          end case
+          case 12
+          cl.ps.clientNum = value
+          end case
+          case 13
+          cl.netname = scoreTestName(value)
+          end case
+          case 14
+          ent.client = void
+          if value != 0 then ent.client = cl end if
+          end case
+          case 15
+          ent.s.number = value
+          end case
+          case 16
+          ent.r.singleClient = value
+          end case
+        end switch
+      end if
+    end case
+    case 62
+      key = a[2]; value = a[3]
+      if key >= 100 and key < 104 then level.teamScores[key-100] = value
+      else if key >= 200 and key < 264 then level.sortedClients[key-200] = value
+      else
+        switch key
+          case 0
+            level.maxclients = value
+          end case
+          case 1
+            level.maxclientsCvar = value
+          end case
+          case 2
+            level.intermissiontime = value
+          end case
+          case 3
+            level.spawner.warmupTime = value
+          end case
+          case 4
+            level.intermissionQueued = value
+          end case
+          case 5
+            level.time = value
+          end case
+          case 6
+            level.startTime = value
+          end case
+          case 7
+            level.timelimit = value
+          end case
+          case 8
+            level.fraglimit = value
+          end case
+          case 9
+            level.capturelimit = value
+          end case
+          case 10
+            level.readyToExit = value != 0
+          end case
+          case 11
+            level.exitTime = value
+          end case
+          case 12
+            level.spawner.gametype = value
+          end case
+          case 13
+            level.numConnectedClients = value
+          end case
+          case 14
+            level.numPlayingClients = value
+          end case
+          case 15
+            level.entities[1022].count = value
+          end case
+          case 16
+            level.spawner.spawning = value != 0
+          end case
+          case 17
+            level.spawner.vars = []; i = 0
+            while i < value
+              level.spawner.vars = level.spawner.vars+[["scoretest","1"]]; i = i+1
+            end while
+          end case
+          case 18
+            level.spawner.chars = value
+          end case
+        end switch
+      end if
+    end case
+    case 63
+      scores.calculateRanks(level)
+    end case
+    case 64
+      scores.commandScore(level,ent)
+    end case
+    case 65
+      scores.sendAll(level)
+    end case
+    case 66
+      scores.addScore(level,ent,[n.bitsFloat(a[3]),n.bitsFloat(a[4]),n.bitsFloat(a[5])],a[2])
+    end case
+    case 67
+      scores.scorePlum(level,ent,[n.bitsFloat(a[3]),n.bitsFloat(a[4]),n.bitsFloat(a[5])],a[2])
+    end case
+    case 68
+      checkWords(level.context,[45,scores.compareRanks(level,a[1],a[2])])
+    end case
+    case 69
+      rankSort.sortIndices(level,level.sortedClients,a[1],scores.compareRanks)
+    end case
+    case 70
+      checkWords(level.context,[46,boolean(scores.scoreIsTied(level))])
+    end case
+    case 71
+      scores.checkExitRules(level)
+    end case
+    case 72
+      reasons = ["Fraglimit hit.","Timelimit hit.","Capturelimit hit.","Test exit."]; scores.logExit(level,reasons[a[1]])
+    end case
+    case 73
+      scores.checkIntermissionExit(level)
+    end case
+    case 74
+      frame.runEntities(level)
+    end case
+    case 75
+      i = 72
+      while i < level.num_entities
+        if level.entities[i].inuse then game.free(level,level.entities[i]) end if
+        i = i+1
+      end while
+    end case
+    case default
+      return error(490,"Unknown score command")
+    end case
+  end switch
+  return void
+end function
+function runScoreContracts(level)
+  spawn.create(level,""); cl = level.clients[0]; ent = game.initEntity(level.entities[0])
+  requireSpawnContract(len(level.clients) == 64 and cl != level.clients[1] and cl.connected == 0 and cl.netname == "" and len(level.numteamVotingClients) == 2,"persistent client slots and two team vote counters initialize independently")
+  game.bindClient(level,ent,cl); cl.ps.persistant[0] = 123; game.free(level,ent)
+  requireSpawnContract(ent.client == void and level.clients[0] == cl and cl.ps.persistant[0] == 123,"entity free retains persistent client storage")
+  caught = try(game.bindClient(level,level.entities[64],cl)); requireSpawnContract(caught is error,"client binding range")
+  caught = try(scores.clientLimit(65)); requireSpawnContract(caught is error,"score client limit")
+  caught = try(scores.integerDivide(-2147483648,-1)); requireSpawnContract(caught is error,"native divide overflow rejects")
+  caught = try(scores.integerDivide(1,0)); requireSpawnContract(caught is error,"divide by zero rejects")
+  caught = try(rankSort.sortIndices(level,level.sortedClients,65,scores.compareRanks)); requireSpawnContract(caught is error,"sort range")
+  caught = try(scores.commandScore(level,ent)); requireSpawnContract(caught is error,"scoreboard requires transport sink")
+  caught = try(scores.logExit(level,"Test")); requireSpawnContract(caught is error and level.intermissionQueued == 0,"exit logging requires sink before queue mutation")
+  level.intermissionQueued = 1000; level.time = 2000
+  caught = try(scores.checkExitRules(level)); requireSpawnContract(caught is error and level.intermissionQueued == 0,"pending intermission clears before transition boundary")
+  level.intermissiontime = 1000; level.time = 6000; level.maxclientsCvar = 1; cl.connected = 2; cl.readyToExit = true
+  caught = try(scores.checkIntermissionExit(level)); requireSpawnContract(caught is error and cl.ps.stats[5] == 1,"readiness updates before exit boundary")
+  ent.r.singleClient = 63; game.free(level,ent); requireSpawnContract(ent.r.singleClient == 0,"free clears single-client recipient")
+  print "PASS: 12 score/rank runtime contracts"
+  return void
+end function
 function runBodyContracts(level)
   ent = game.initEntity(level.entities[0]); ent.client = game.createClient(ps.create(),0,[0,0,0]); ent.s.origin = [0.0,0.0,128.0]
   requireSpawnContract(level.blood == 1 and level.bodyQueIndex == 0 and len(level.bodyQue) == 0,"body level defaults")
@@ -1126,8 +1372,9 @@ function runBodyContracts(level)
 end function
 function main(args)
   world = cm.loadWorld(fs.readAllBytes(args[0]),args[3] == "0")
-  input = fs.readAllBytes(args[1]); check = Check(fs.readAllBytes(args[2]),0,0,0,0,0,false,false); level = game.create(world)
+  input = fs.readAllBytes(args[1]); check = Check(fs.readAllBytes(args[2]),0,0,0,0,0,false,false,false); level = game.create(world)
   level.time = 1000; level.startTime = 1000
+  if len(args) > 4 and args[4] == "--score-contracts" then runScoreContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--body-contracts" then runBodyContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--combat-contracts" then runCombatContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--missile-contracts" then runMissileContracts(level); return 0 end if
@@ -1151,8 +1398,9 @@ function main(args)
     end while
   else if len(args) > 4 and args[4] == "--actions" then
     runTargetActions(level,input,check)
-  else if len(args) > 4 and (args[4] == "--combat" or args[4] == "--missiles" or args[4] == "--bodies") then
-    check.missiles = args[4] == "--missiles"; check.bodies = args[4] == "--bodies"
+  else if len(args) > 4 and (args[4] == "--combat" or args[4] == "--missiles" or args[4] == "--bodies" or args[4] == "--scores") then
+    check.missiles = args[4] == "--missiles"; check.bodies = args[4] == "--bodies"; check.scores = args[4] == "--scores"
+    if check.scores then level.serverCommandFn = recordScoreMessage; level.gameLogFn = recordScoreLog; level.matchTransitionFn = recordScoreTransition; level.runEntityFn = actionRun end if
     runCombatActions(level,input,check)
   else if len(args) > 4 and args[4] == "--values" then
     off = 0; count = 0

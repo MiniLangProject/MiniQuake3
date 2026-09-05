@@ -112,7 +112,7 @@ Beliebige NaN-Payloads
 und Signaling-NaNs sind weiterhin kein vollständig geprüfter Eingabeumfang.
 
 Offen bleiben vollständiges Spieler-Waffenfeuer, Hitscan-Waffen, `player_die`,
-Scores/Respawn, Item-Spawns, Mover-Pushing, Missionpack-Projektile und die
+die Einbindung der Scores, Respawn, Item-Spawns, Mover-Pushing, Missionpack-Projektile und die
 vollständige Server-/Clientintegration. Summen und Binary-Hashes stehen im
 [Prüfbericht](PARITY_AUDIT.md).
 

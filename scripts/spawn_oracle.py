@@ -14,13 +14,14 @@ FUNCTIONS={
     'g_target.c':['SP_target_position','Think_Target_Delay','Use_Target_Delay','SP_target_delay','target_relay_use','SP_target_relay','target_teleporter_use','SP_target_teleporter','Use_Target_Speaker','SP_target_speaker','target_location_linkup','SP_target_location','target_kill_use','SP_target_kill','target_laser_think','target_laser_on','target_laser_off','target_laser_use','target_laser_start','SP_target_laser'],
     'g_team.c':['SelectRandomTeamSpawnPoint','SelectCTFSpawnPoint','SP_team_CTF_redplayer','SP_team_CTF_blueplayer','SP_team_CTF_redspawn','SP_team_CTF_bluespawn','OnSameTeam','Team_CheckHurtCarrier'],
     'g_mover.c':['SP_path_corner'],
-    'g_main.c':['G_RunThink','FindIntermissionPoint'],
+    'g_main.c':['G_RunThink','FindIntermissionPoint','SortRanks','CalculateRanks','SendScoreboardMessageToAllClients','ScoreIsTied','CheckExitRules','LogExit','CheckIntermissionExit'],
     'g_trigger.c':['InitTrigger','AimAtTarget','SP_trigger_push','SP_trigger_teleport','trigger_push_touch','trigger_teleporter_touch','multi_wait','multi_trigger','Use_Multi','Touch_Multi','SP_trigger_multiple','trigger_always_think','SP_trigger_always','Use_target_push','SP_target_push','func_timer_think','func_timer_use','SP_func_timer','hurt_use','hurt_touch','SP_trigger_hurt'],
-    'g_combat.c':['LookAtKiller','GibEntity','body_die','CheckArmor','G_Damage','CanDamage','G_RadiusDamage'],
+    'g_combat.c':['ScorePlum','AddScore','LookAtKiller','GibEntity','body_die','CheckArmor','G_Damage','CanDamage','G_RadiusDamage'],
     'g_weapon.c':['LogAccuracyHit','SnapVectorTowards','Weapon_HookFree','Weapon_HookThink'],
     'g_missile.c':['G_BounceMissile','G_ExplodeMissile','G_MissileImpact','G_RunMissile','fire_plasma','fire_grenade','fire_bfg','fire_rocket','fire_grapple'],
     'g_items.c':['RegisterItem','G_BounceItem','G_RunItem'],
     'g_active.c':['G_TouchTriggers'],
+    'g_cmds.c':['DeathmatchScoreboardMessage','Cmd_Score_f'],
 }
 def build(output):
     output.mkdir(parents=True,exist_ok=True);source=ROOT/'Quake-III-Arena-original-source/code'

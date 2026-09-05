@@ -165,7 +165,7 @@ gegen den Originalcode geprüft; siehe [Targets und Ereignisse](TARGETS_AND_EVEN
 `G_RunThink` und die spätere Sprungpad-Ausrichtung sind enthalten. Die 14 weiteren
 Klassen und Item-Spawns bleiben ausdrücklich offene Aufrufgrenzen; siehe
 [SPAWNING.md](SPAWNING.md). Als Nächstes folgen diese Spielobjekte, die Einbindung
-in vollständige Serverframes, Spieler-Todesregeln, Scores/Respawn, weitere
+in vollständige Serverframes, Spieler-Todesregeln, die Einbindung der Scores, Respawn, weitere
 Waffentreffer, Waffenfeuer und Mover-Pushing. Der vollständige Server bleibt bis zu dieser
 Integration offen.
 
@@ -174,8 +174,10 @@ Shooter-Objekte sind jetzt gegen C geprüft; siehe [Projektile](MISSILES.md). Di
 Entity-Schleife führt Missile-Entities über die portierte Verarbeitung aus.
 Die [Spawnpunkt-Auswahl und Leichenverwaltung](PLAYER_LIFECYCLE.md) ergänzen
 Deathmatch-/CTF-/Zuschauerpositionen, acht Leichenplätze, Gibs und Leichenphysik.
-Als nächster Abschnitt folgt die Integration von `player_die` mit Score-/
-Nachrichtenfolgen, Item-Drops und vollständigem Respawn (`ClientSpawn`/Client-Frames),
+[Punktevergabe, Ranglisten, Scoreboards und Matchende-Regeln](SCORES.md) sind
+inzwischen ebenfalls gegen C geprüft. Als nächster Abschnitt folgt die Integration
+von `player_die` mit diesen Score-/Nachrichtenregeln, Item-Drops und vollständigem
+Respawn (`ClientSpawn`/Client-Frames),
 anschließend die weiteren Item- und Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.
