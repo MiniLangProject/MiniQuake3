@@ -114,13 +114,17 @@ Voraussetzungen: 2–3.
 
 **Geprüfter Zwischenstand 2026-09-05:** BSP-/Kurvenkollision, transformierte Modelle,
 temporäre Boxen, PVS-/Areaportal-Funktionen, dynamische Server-Kollision,
-Bewegungsbahnen, Sprungpad-Reaktionen und der vollständige baseq3-Pmove-
+Bewegungsbahnen, geometrische Trigger-Abfragen, Sprungpad-/Teleport-Zustandswechsel
+und der vollständige baseq3-Pmove-
 Befehlszyklus sind in MiniLang implementiert und gegen C geprüft. `--pmove-map`
 spielt Textbefehle auf Originalkarten ab; `--trace-model` und `--inspect-visibility`
 prüfen die neuen räumlichen Abfragen. Für die gesamte Schritt-Abnahme fehlen
-die vollständige Trigger-Erkennung, Teleport-Replays mit Ereignissen/Telefrags und
-die Einbindung in Server und Client. Dynamische Entities und ausdrücklich
-aufgezeichnete Sprungpad-Aufrufe sind bereits mit Pmove verbunden. Der temporäre
+die Einbindung in vollständige Server-/Client-Frames und die Schadens-/Todesfolgen
+von Telefrags aus Schritt 6. Dynamische Entities, Trigger-Erkennung und
+Sprungpad-/Teleport-Replays sind bereits mit Pmove verbunden; Ereignis-Entities,
+Blickwinkel-Deltas und die Auswahl/Aufrufreihenfolge der Telefrag-Kandidaten werden
+gegen C geprüft. Die aktuelle Grenze der Schadensfunktion ist ausdrücklich
+[dokumentiert](GAME_TRANSITIONS.md). Der temporäre
 Kapsel-Handle folgt dem festgelegten Originalprofil: kontrollierter Fehler wie
 im unveränderten C-Stand; eine Korrektur wäre ein separates Erweiterungsprofil.
 Zahlen, Grenzen und Testumfang:
@@ -144,6 +148,13 @@ Flags und Ereignisse. Lange Bewegungsfolgen zeigen keine kumulative Drift;
 Abweichungen blockieren die nächste Spielabnahme. Voraussetzungen: 2–4.
 
 ## 6. Spielregeln und Server vollständig portieren
+
+**Vorliegende Grundlage:** Die räumliche Server-Verlinkung, vollständigen
+EntityState-Speicherfelder, PlayerState-Umwandlung, Entity-Platzverwaltung,
+Target-Auswahl und Trigger-/Teleport-Übergänge sind umgesetzt. Als Nächstes folgen
+Spawn-Parsing mit den ursprünglichen Spawn-Funktionen, Ereignis-/Think-Verarbeitung
+im Serverframe, Schadens-/Todesregeln und Mover-Pushing. Der vollständige Server
+bleibt bis zu dieser Integration offen.
 
 **Quellen:** `code/game/g_*.c` und `code/server/`.
 

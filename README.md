@@ -50,18 +50,24 @@ Quakes Command-Einheiten (65.536 pro Vollkreis), Bewegungsachsen den Bereich
 −128 bis 127. `#` beginnt eine Kommentarzeile. Die Ausgabe zeigt je Befehl Position,
 Geschwindigkeit, Bodenkontakt, Wasserstand, Waffenzeit und Ereignisse.
 Der Spieler startet mit 100 Gesundheit, Geschwindigkeit 320, Schwerkraft 800 und
-Maschinengewehr. Dieser Entwicklungsaufruf verarbeitet statische Weltkollision;
-Die dynamische Kollisionsschicht und Sprungpad-Aufrufe haben eigene Replays gegen
-den Originalcode; Spielserver, Trigger-Erkennung, Schaden und Grafik bleiben offen:
+Maschinengewehr. Dieser Entwicklungsaufruf verarbeitet statische Weltkollision.
+Die dynamische Kollisionsschicht, geometrische Trigger-Abfrage, Sprungpads und
+Teleport-Zustandswechsel haben eigene Replays gegen den Originalcode. Hinzu kommen
+der vollständige `entityState_t`-Speicherdatensatz, Ereignis-Entities und deren Platzverwaltung.
+Vollständige Spielserver-Frames, Schadens-/Todesregeln und Grafik bleiben offen:
 
 ```powershell
 python scripts/test_shared_game.py
 python scripts/test_server_world.py D:/Quake3
 python scripts/test_server_world.py D:/Quake3 --no-curves
+python scripts/test_entitystate.py
+python scripts/test_transitions.py D:/Quake3
+python scripts/test_transitions.py D:/Quake3 --no-curves
 ```
 
 Die Schnittstellen und ihre Grenzen sind unter
-[Server-Kollision](docs/SERVER_COLLISION.md) beschrieben.
+[Server-Kollision](docs/SERVER_COLLISION.md) und
+[Trigger-/Teleport-Übergänge](docs/GAME_TRANSITIONS.md) beschrieben.
 
 Auch die Sichtbarkeitsdaten eines Kartenpunkts und Traces gegen versetzte/gedrehte
 Modelle sind direkt abfragbar:

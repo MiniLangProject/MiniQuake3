@@ -4,6 +4,9 @@
 Die Klasse `Entity` enthält die von diesen Funktionen verwendeten Felder. Sie ist
 noch kein vollständiger `entityState_t`-Netzwerkcodec und keine Game-Entity mit
 Lebenspunkten, Touch-/Think-Callbacks oder Spawn-Logik.
+`game/entitystate.ml` enthält inzwischen die vollständigen 208 Speicherbytes;
+`game/entities.ml` verbindet diese über `s` mit den räumlichen Feldern `r`.
+Die Delta-Kodierung auf dem Netzwerk bleibt ein eigener Planabschnitt.
 
 | MiniLang-Aufruf | Bedeutung |
 | --- | --- |
@@ -48,9 +51,12 @@ Sinusbahnen mit Dauer 0 werden kontrolliert abgewiesen.
 
 `game/jumppad.ml` verändert Geschwindigkeit, Sprungpad-Merker und Ereignisring wie
 `BG_TouchJumpPad`; Zuschauer und fliegende Spieler bleiben unverändert. Der Test
-mischt aufgezeichnete Touch-Aufrufe mit echten Pmove-Aufrufen. Eine Entdeckung von
-Triggern in der Karte, das Zurücksetzen der Merker beim Verlassen sowie Teleports,
-Telefrags, Mover-Pushing und der vollständige Serverframe sind noch zu integrieren.
+mischt aufgezeichnete Touch-Aufrufe mit echten Pmove-Aufrufen. Zusätzlich prüft
+`test_transitions.py` jetzt `G_TouchTriggers`: Kandidatensuche, genaue Kontakte,
+Item-Sonderfall, Zuschauer-/Bot-Verhalten und das Zurücksetzen der Merker beim
+Verlassen. Teleport-Zustände und Telefrag-Aufrufe sind ebenfalls enthalten.
+Spawn-Parsing der Karte, Schadens-/Todesregeln, Mover-Pushing und vollständige
+Serverframes bleiben offen; siehe [GAME_TRANSITIONS.md](GAME_TRANSITIONS.md).
 
 Die C-Prüfung bindet `sv_world.c` unverändert ein und kompiliert ursprüngliche
 Kollisions- und Bewegungsdateien. Drei vollständige Adressierungsfunktionen aus

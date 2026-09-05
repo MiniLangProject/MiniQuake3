@@ -243,3 +243,8 @@ end function
 function pmoveContents(p,point)
   return pointContents(p.context,point,p.ps.clientNum)
 end function
+function entityContact(scene,mins,maxs,number,capsule)
+  ent = getEntity(scene,number); model = clipHandleForEntity(scene,ent)
+  hit = cm.transformedTrace(scene.world,[0.0,0.0,0.0],[0.0,0.0,0.0],mins,maxs,model,-1,ent.currentOrigin,ent.currentAngles,capsule,scene.world.patchesReady)
+  return hit.trace.startsolid
+end function

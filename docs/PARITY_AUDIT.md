@@ -4,10 +4,10 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die vollständige erweiterte Regression besteht aktuell aus 25 bestandenen
+Die vollständige erweiterte Regression besteht aktuell aus 28 bestandenen
 Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`). Der dabei gebaute
 MiniQuake3-Build hat SHA-256
-`bde0016a430cd68f15a190a5262dd9241260eb372de8dac8f469492f38879859`.
+`cc6300243441369aa8aacdf2b52dde370f032d843296cdf09b34932b3e33e5d1`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
 
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
@@ -16,8 +16,8 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 2. Zahlen/Plattform | In Arbeit | 101.125 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff vorhanden; Fenster, Eingabe, UDP und Audio noch offen |
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 392 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
-| 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, transformierte Modelle, temporäre Boxen, PVS/Areas, dynamische Entity-Kollision, Bewegungsbahnen und Sprungpad-/Pmove-Replays geprüft; vollständige Trigger-Erkennung, Teleport-Replays und Server-/Client-Anschluss fehlen |
-| 6. Spiel/Server | In Arbeit | Räumliche Server-Funktionen mit Entity-Listen vorhanden; Lebenszyklus, Mover-Pushing, Spielregeln und Serverframes fehlen |
+| 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständige Server-/Client-Frames und Telefrag-Schadensfolgen fehlen |
+| 6. Spiel/Server | In Arbeit | Räumliche Server-Funktionen, vollständiger EntityState-Speicherdatensatz, Platzverwaltung, Target-Auswahl und Trigger-/Teleport-Übergänge vorhanden; Spawn-Parsing, Schadens-/Todesregeln, Mover-Pushing und Serverframes fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -223,14 +223,15 @@ Beide Profile zusammen ergeben 357.696 Operationen und 9.585.476 identische
 32-Bit-Wörter. Darin enthalten sind 32.768 vollständige Pmove-Befehle sowie 1.536
 aufgezeichnete Sprungpad-Aufrufe. Die Folgen erzeugen 2.914 dynamische
 Entity-Kontakte in Pmove. Beide Profile verwenden dasselbe MiniLang-Testbinary
-(`93855a6703254d99d6f29dd72adb87ca6e546cccdd1d2785cc63c5b982a36cc8`).
+(`2f425c5bdbadd29de0c305f9a5a087b96ad678755aed5ca4fc6b2b690c3ffdb6`).
 
 Der Testhost bewegt Entities mit aufgezeichneten Änderungen und ruft Sprungpads
 an festgelegten Befehlsgrenzen auf. Die tatsächlichen Traces, Pmove-Schritte und
 Sprungpad-Zustandswechsel führt jeweils C bzw. MiniLang aus. Das ist noch keine
 Trigger-Erkennung oder Mover-Push-Simulation eines vollständigen Game-Servers.
-Insbesondere das Zurücksetzen der Sprungpad-Merker beim Verlassen eines Triggers
-bleibt Teil der ausstehenden Game-Integration.
+Diese älteren Aufruf-Replays bleiben separat erhalten. Die nachfolgend beschriebenen
+Game-Übergangstests prüfen inzwischen auch geometrische Trigger-Erkennung und das
+Zurücksetzen der Sprungpad-Merker beim Verlassen.
 
 `test_shared_game.py` prüft zusätzlich 16.384 Fälle und 2.113.536 Wörter für
 `BG_EvaluateTrajectory`, `BG_EvaluateTrajectoryDelta`, `BG_PlayerTouchesItem`,
@@ -254,8 +255,57 @@ weitere Grenzen stehen in [SERVER_COLLISION.md](SERVER_COLLISION.md).
 Das Originalprofil ist für temporäre Kapsel-Zielmodelle festgelegt: kontrollierter
 Fehler bei Handle 254. Eine Korrektur des Originalfehlers würde ein zusätzliches
 Erweiterungsprofil erhalten und ist keine Voraussetzung für Gleichheit mit dem
-festgehaltenen C-Stand. Teleports mit Ereignissen, View-Angle-Delta, Telefrags und
-erneuter Entity-Verlinkung sind weiterhin offen.
+festgehaltenen C-Stand. Die inzwischen geprüften Teleport-Übergänge und ihre Grenze
+an der Schadensfunktion sind im folgenden Abschnitt beschrieben.
+
+## EntityState, Trigger-Erkennung und Teleport-Übergänge
+
+`test_entitystate.py` prüft 16.384 Fälle mit 2.916.352 identischen Ergebniswörtern
+und weiteren 851.968 unveränderten Codec-Wörtern. Der vollständige `entityState_t`
+hat 28 Felder und 208 Bytes. Die C-Referenz bestätigt 36 aufgelöste Feldpositionen
+einschließlich der beiden Trajektorien. Beide `BG_PlayerStateToEntityState`-
+Varianten, externe/gepufferte Ereignisse, Sequenzbits, lebende/tote Spieler,
+Powerups, unberührte Felder und `SetClientViewAngle` werden verglichen. Zwei
+zusätzliche Proben weisen abgeschnittene Puffer und negative Offsets zurück.
+
+`test_transitions.py` verbindet die vollständigen Originalfunktionen
+`G_TouchTriggers`, `TeleportPlayer`, `G_KillBox`, `G_TempEntity`,
+`SetClientViewAngle`, die Platzverwaltung sowie die beiden Push-/Teleporter-
+Touch-Funktionen mit dem originalen SV-/CM-/Pmove-Code. Enthalten sind:
+
+- Geometrische Box-/BSP-Kontakte, gedrehte Modelle, der Item-Sonderfall,
+  Zuschauer-/Bot-Filter und Touch-Callback-Reihenfolge.
+- Wiederholte Sprungpad-Kontakte, Verlassen, erneuter Eintritt sowie Teleports
+  während einer bereits laufenden Kandidatenschleife.
+- Temporäre Ereignis-Entities, genaue und abgeschnittene Positionen, Blickwinkel-
+  Deltas, Teleport-Bit, Knockback-Zeit und Unlink-/Link-Reihenfolge.
+- Aktive Target-Namen, Groß-/Kleinschreibung, die ersten 32 Kandidaten und das
+  native Win32-Rand-Profil; außerdem Freigabe, Wachstum, Sperrfrist und `neverFree`.
+
+Beide Kurvenprofile zusammen vergleichen 147.136 Operationen und 24.340.128
+identische 32-Bit-Wörter. Darin enthalten sind 16.384 Pmove-/Link-/Touch-Befehle
+und 3.072 aufgezeichnete Telefrag-Schadensaufrufe. Die Bewegungsfolgen haben
+4.608 Frames mit aktivem und 11.776 Frames mit zurückgesetztem Sprungpad-Merker.
+Beide Profile verwenden dasselbe MiniLang-Testbinary
+(`c29ff4c36c41760ca3e21e4928d62ca0c8a6156a0f9102e7dd3aa4af6b7b0ab3`).
+
+Die Tests initialisieren Game-Entities gezielt auf allen 31 CD-Karten und einer
+assetfreien Karte. Das Pmove/Link/Touch-Protokoll stammt aus dem Vergleichshost;
+es ersetzt noch keinen vollständigen `ClientThink`-/Serverframe und kein
+ursprüngliches Spawn-Parsing. Ereignis-Entities erhalten die Originalmerker für
+spätere Freigabe; ihre automatische Entfernung ist Teil des offenen Serverframes.
+
+**Telefrag-Grenze:** Kandidaten, Aufrufreihenfolge, Schaden 100.000, Flags und
+`MOD_TELEFRAG` stimmen mit `G_KillBox` überein. Die Funktion `G_Damage` ist hier
+eine aufgezeichnete Callback-Grenze. Trefferfolgen, Rüstung, Tod, Teamregeln und
+Scores werden noch nicht als portiert behauptet. Ein fehlender Schadenscallback
+wird in MiniLang bei einem betroffenen Client als Fehler behandelt.
+
+Der Original-Allocator bricht im vollen Normalbereich auch bei einem zu kürzlich
+freigegebenen Platz ab; seine nominelle zweite Suchrunde erreicht diese Grenze
+nicht. Zwei separate C-Läufe prüfen diesen Fehler, fünf MiniLang-Vertragsproben
+prüfen Erschöpfung, Wiederverwendung genau nach 1.000 ms und Teleport ohne Client.
+Details der Schnittstellen stehen in [GAME_TRANSITIONS.md](GAME_TRANSITIONS.md).
 
 ## Reproduzieren
 
@@ -296,6 +346,9 @@ python scripts/test_runtime_spatial.py D:/Quake3
 python scripts/test_shared_game.py
 python scripts/test_server_world.py D:/Quake3 --no-curves
 python scripts/test_server_world.py D:/Quake3
+python scripts/test_entitystate.py
+python scripts/test_transitions.py D:/Quake3 --no-curves
+python scripts/test_transitions.py D:/Quake3
 ```
 
 `inventory.py` aktualisiert bewusst den eingefrorenen Compilerstand. Für die

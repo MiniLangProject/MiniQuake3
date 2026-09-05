@@ -8,8 +8,8 @@ def baseq3(text):
 
 def main():
     folder=ROOT / 'Quake-III-Arena-original-source/code/game'
-    text=baseq3((folder / 'bg_public.h').read_text())
-    enums=('pmtype_t','weaponstate_t','statIndex_t','persEnum_t','powerup_t','holdable_t','weapon_t','entity_event_t','animNumber_t','team_t')
+    text=baseq3((folder / 'bg_public.h').read_text())+'\n'+baseq3((folder/'q_shared.h').read_text())
+    enums=('pmtype_t','weaponstate_t','statIndex_t','persEnum_t','powerup_t','holdable_t','weapon_t','entity_event_t','animNumber_t','team_t','entityType_t','trType_t','meansOfDeath_t')
     values={}
     for body,name in re.findall(r'typedef\s+enum\s*\{([^{}]*)\}\s*(\w+)\s*;',text):
         if name not in enums: continue

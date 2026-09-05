@@ -13,16 +13,21 @@
     "src/mq3/format/bsp.ml": "891cf26acced8661643df02abf0bd1774aedf8117bf12010d83bebff548c2ac1",
     "src/mq3/format/deflate.ml": "8e6deb910211a8eec266729a6aee0f50dac0503773ddddf2daa93c29d673af61",
     "src/mq3/format/pk3.ml": "f928c29a09282ea0eca113e4aa0d3905a863cbdd09607985330e831397b4149f",
-    "src/mq3/game/constants.ml": "7fcdd24d496c42fe48528ba37d0b761bcdfc28ce88a15b6cf620fdb64ff4e131",
+    "src/mq3/game/constants.ml": "04c908d6176115d418ae8f14f7791f5f2ef6d86dc054437e7bb00116ddd12adc",
+    "src/mq3/game/entities.ml": "76d26af06347ca04bc8cd5851e62bcfe11171d13adbe6375b27c6706b1bdb79d",
+    "src/mq3/game/entitystate.ml": "491a0b8983832ca50914d6a49512062737243e6285567485f644d0aeebf8b2c3",
     "src/mq3/game/jumppad.ml": "b99ced1c4617234979be0929a4a0f25779be1bc248d3e3729799d5025e23cbe9",
     "src/mq3/game/movement.ml": "8be87eaf74f2c29fd5a98d69c1ac63478fa2731d5c318f9d62901a15d8f0d71f",
     "src/mq3/game/playerstate.ml": "399c00041ec14936c70d79c931764e20fe3ab27397317e5873dcde0b77091524",
     "src/mq3/game/pmove.ml": "996dd106822bc09a03ae46e4a830676dbf9b3a5ea606815dc67d908ae1204fba",
     "src/mq3/game/replay.ml": "0e529db77b5e3a12a89da5284dfc7dd853312cff16089d38cc04448747e08b2a",
+    "src/mq3/game/snapshot.ml": "e0b5ffc2318b83d625ffd15effa0d754fe06895035e398a63bec0123eca32aaa",
+    "src/mq3/game/teleport.ml": "82d3b72cd4ed73514cd91c019c87f6222e38ad86f19137916bf167670b1eb193",
     "src/mq3/game/trajectory.ml": "5783e4be0369c475ba5477d9fe77d1df803cc045ea5bfdd59823fdb6cee88054",
+    "src/mq3/game/triggers.ml": "192d63954b8ce823f686023dc9b64b5f5c2b42eb9f3a0389f60f683f5c3368a3",
     "src/mq3/platform/file.ml": "5cf18ed251a4ec61213602d9c0013644d008b99df511b176ca573f2b7660c560",
     "src/mq3/qcommon/cvar.ml": "2ccf0ca51d8336c096e96d79e5999bf2520a2292ed45efe9d66254e0bfb8a6c4",
-    "src/mq3/server/world.ml": "92f2b5b7ad0fff1dbf5add9dd22f90ad708fe0d422421c3babf8573aeb4913c0",
+    "src/mq3/server/world.ml": "ff33f877b85c798133cd3e5a7b6e89f503e7439e9008714bb7faaeb3164aba60",
     "src/mq3/shared/math.ml": "f4637ea6dc58d7796c3afebef146f59274e3af10e1e8ddb3b8ddb75a32ac6bb4",
     "src/mq3/shared/parser.ml": "90aa075c819b2e3f9bc510521634666b6ea794716fecfe5a04b868d6c6bd3d2c",
     "src/mq3/vm/interpreter.ml": "ec8a553adabb04e43a19358fa33eb9918f2e774e9074e02abba75e9f7115ce59",
@@ -31,7 +36,8 @@
     "scripts/build.py": "27f977af905d64e8c4a068e7fa3299f65a32dc3eea04e0aec96229db9a7f81da",
     "scripts/build_qvms.py": "8e29b29e66b8cec6e9fdc1157793fca9ad69d2858f9982753be9726c7655bd30",
     "scripts/build_reference.py": "5726f55cc49b5fa3d5085373e2784d71862573236f3ad24660d6558331bdd09a",
-    "scripts/generate_game_constants.py": "c74bf88b5e7e5dd67b91f1ae6541f431b35fa9adf464f9ebdcc8923a52d34b83",
+    "scripts/generate_entitystate.py": "d25755c408d6df0409940950e3808231cc9b613b1172584b25f5cb17cee39daf",
+    "scripts/generate_game_constants.py": "a0bf5ab1c58eb98bff4c6061af81ede176e121bceebf549bd139c8f961b37bec",
     "scripts/generate_playerstate.py": "2684dcb5a7e7c166011125ee027ce5bdc72bc0489fd26fec079b4baf7b6bb066",
     "scripts/inventory.py": "8c710a55dd666a46874353035b82faa3fc17d0a9f9884c2b46b0480340455e8c",
     "scripts/pmove_fixtures.py": "700eb84f75639d794c455ba270c5336724179f5d15ae22077fed0d68fc225775",
@@ -41,6 +47,7 @@
     "scripts/test_brush.py": "f04dc9eae5ab89e4ed50e97e60fcc6e01d7c2ba86cd9156a27856fdb472985df",
     "scripts/test_collision.py": "36369bb61e23ae36be1fe8978327ea8486c233564b6d8f7323d6ca22b3f094fe",
     "scripts/test_core.py": "326e11a4c94ae7e70e67ab6e7db271211a23b75f8d5a0724dfaef61973877ae7",
+    "scripts/test_entitystate.py": "65af30f2665c85a0a7e809ff5f64e49e3a1c64c1685cfa0a491b4449aa020ca5",
     "scripts/test_maps.py": "3f44120af9fef99f99f7f9134f7a4792b39ef58a13bc35837cb3fbd6eb0930f0",
     "scripts/test_math.py": "f58dc4d37171d4b113d006c5d53cfe527ce46e2c7597f5f557430e243c0b5a76",
     "scripts/test_movement.py": "406e68968c31fca8b69e8a09d6aec56c0f41c4482c8333bbec9289cf818b9f4a",
@@ -55,15 +62,18 @@
     "scripts/test_server_world.py": "f4f3218e20a1b16223c6a933fc4c7bd3a4210b9bff9946fb25a1fafc11a901d0",
     "scripts/test_shared_game.py": "05882b9c9f594c8b46f962cb96576d9e683dac44d9429f701dff5710659eff53",
     "scripts/test_spatial.py": "1607bb88b15dec145b10f86554f437122dae85ff876d63ace02428ea4d145b72",
+    "scripts/test_transitions.py": "06ef2df3360da4569d088859f1e5888c2c94d07d7bd0396f0cd5982b60df7d31",
     "scripts/test_visibility.py": "54c5f86cb2fb70e257cda28e8eb0d906eee2faf558ccd9f798af717eaa51aded",
     "scripts/test_vm.py": "f9a589ab6cb07a82275a67b5a3ae8c100ce55f8fed75903b62de6234ed24012b",
     "scripts/toolchain.py": "eab72f9e2edb9680c382fccf55533e766b2177d257276a29de363e73e545716a",
-    "scripts/update_progress.py": "46e62aee420ff03cdbe27aa47bc7065b67c13b7bfc23c47062fb00bf7fc1a3eb",
-    "scripts/verify.py": "e4f9f2b98e4c09236e15beed80ab3eb2e3761ee4ef220a3e9a7bb0c8170400ac",
+    "scripts/transition_oracle.py": "b094c961cde9941d9230cd2af4d4e11a40428705dab40b8f878c1d7e72481d4a",
+    "scripts/update_progress.py": "1bb48dc24a0ebc99d0196ddee1f816f38098b1697fe3b74a21cf0e4503b2d50e",
+    "scripts/verify.py": "25b546203abaed31edd912dd3b655b60804e6993bb74b90f922f3c93b0afab37",
     "tests/archive_tests.ml": "a7266b1d1a15881f117d18344eafc1a03d47e4be053ce42c0616248164510e0c",
     "tests/brush_tests.ml": "a30eee67deb4580b649d643024c9f08acd9c5df7b28cbb2be6289cad151fce04",
     "tests/collision_tests.ml": "c28f47cc00e374f52eb33f88810478fcbeea35819b9a54a91d589113c35a9a57",
     "tests/core_tests.ml": "74b4b7ce5dd8816859b9097053dbbe01d5b49057b76de8cbe22dfa818523765d",
+    "tests/entitystate_tests.ml": "133de7fb260afa458584b19230a4b5c93ee52ccaa3e7b6c4c1e03fe595dee172",
     "tests/math_tests.ml": "76be7f3d960cb1dc4d5221621d3bfd716e1944091f83a4be300eccab973f1f1a",
     "tests/movement_tests.ml": "a4bad5a0f6ed1e8395deabbc32314a49a55f7f085528b61fbc30cada97a05765",
     "tests/numeric_probe.ml": "37743c72159031b7e6d0f692f6a27ac062f36f086174f98ac5e5d69747a0d4cc",
@@ -82,6 +92,8 @@
     "tests/reference/server_world_oracle.c": "93511d75377005303e3ac34d915ee32793245641b65b44e9f2b8c1f2ec934fc3",
     "tests/reference/shared_game_oracle.c": "189875a93caa876ef1d53c75f0d25f1a1fc24e0c9fcca6541392490f6661d04f",
     "tests/reference/spatial_oracle.c": "00a2b131fff36f2a377f09274f3845625ca6c35d47ea7558eb01915ce5d0737c",
+    "tests/reference/transition_oracle.c": "52483281f090e375f082dafc64f6ea64bf23077ef74ce30b4b6f94da028e4a8d",
+    "tests/reference/transition_server.c": "63afb26f0e3470aba054733107aaaee9774a234d71f1a6f29b921d9e556dc6ff",
     "tests/reference/visibility_oracle.c": "b0581fa378864ae1ece5b7d7ba5640f75df9820689fe8bf14ffc461d87552c1b",
     "tests/reference/vm_oracle.c": "cdc54ce1830b460715d4e3fee9fdbefd3e7bc09f2981a194a524847a15b030ba",
     "tests/rejection_tests.ml": "415c81171228ac96a402b4b1c37a09a14ff4782e66be5a5e57fd0854e1d8bc1c",
@@ -89,6 +101,7 @@
     "tests/server_world_tests.ml": "0b14306b0fdd817f0c7d9802d0a8188f6f6dcce4d92f2a0b3da88d00488e2025",
     "tests/shared_game_tests.ml": "377922fb745760cae1d377fd2a982c33667fb4d2c3dd9b9def2fb25d88fde1ec",
     "tests/spatial_tests.ml": "1f120494eaa7ca10d91d26a59c9393743b45466376a8d97bfc95c929bf7bb27f",
+    "tests/transition_tests.ml": "17335c51c78bda599f283779abfbe4fd367cdf4bb22887c89201ce6903e5af17",
     "tests/visibility_tests.ml": "1b7da66dcfb3b6d9f66e20d08a6ead1b00efe634cf85659a98822bab6f8d4609",
     "tests/vm_tests.ml": "e82c903d3c8430197abbf66021ab58cdb0422e83aa6b01eb384f84593015b23a"
   },
@@ -641,6 +654,49 @@
             "expected_sha256": "0f6dd980ec3127fea68d9f95834b3bc7e32a2460c08287ac2aabdeb510e88884"
           }
         ]
+      }
+    },
+    {
+      "path": "build/reference/entitystate/result.json",
+      "sha256": "53df4ba0e646ce646ef45708c0e3c03b3f42ff38b2643b186bc595b8d8679108",
+      "result": {
+        "passed": true,
+        "cases": 16384,
+        "exact_words": 2916352,
+        "codec_roundtrip_words": 851968,
+        "entitystate_bytes": 208,
+        "validated_c_fields": 36,
+        "rejection_contracts": 2,
+        "scope": "BG_PlayerStateToEntityState/ExtraPolate, full entity storage and SetClientViewAngle; native original x86 profile",
+        "input_sha256": "bf4bd23fd1026d39f0ea7bf1e494d05c8f8d5e37822c09d047852bc224fb488c",
+        "expected_sha256": "7576c564306a4dab7c27d1321229d4391ef58d6d381dc965a5e3c843602d3087",
+        "test_sha256": "819aba252c610f92e032a4b5c051901e04c1f4394a0f631179d0196af46078d9",
+        "original_sources": {
+          "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
+          "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
+          "Quake-III-Arena-original-source/code/qcommon/cm_test.c": "2e5d1139c88a5ffc6dea01349865f91d210158491931090d4c7f07d3f11cf4e8",
+          "Quake-III-Arena-original-source/code/qcommon/cm_patch.c": "9fd50664bb46f77a6bf3f7d06a69500867bff1cae4b94c9be168c4ad9e03ca1f",
+          "Quake-III-Arena-original-source/code/qcommon/cm_polylib.c": "b1c1cf3a19ada8682b4ca58556b316144940f5bee5ca59ae4dd6ebe1a947a6ec",
+          "Quake-III-Arena-original-source/code/qcommon/md4.c": "fc5be3df4b9c463711e428b98bdc357351e5aeaa13e785073ec7a5921ccc5b4c",
+          "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29",
+          "Quake-III-Arena-original-source/code/game/q_shared.c": "724dae5f0a9de8bc6ced68893f9f59c5625deca4a1e194b11f5be348fdf2481b",
+          "Quake-III-Arena-original-source/code/game/bg_misc.c": "c71034761ec3f75fd8952f2d75a7f057d664b5cf97b5edf26ae020da65a486e0",
+          "Quake-III-Arena-original-source/code/game/bg_pmove.c": "3ced04aed8686d3da051887dc8c4ace88a24b45a6d0bb4e4d5238cd53cb7a7fc",
+          "Quake-III-Arena-original-source/code/game/bg_slidemove.c": "327fa83a0c523da8a7e8b4fbbbba40cf8870a28613459289ef0e8a865e6bd903",
+          "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
+          "Quake-III-Arena-original-source/code/game/g_misc.c": "bf29bf68e000b068497d45cd4be9bbcfb9730797e21e07044ee4b158d74f5441",
+          "Quake-III-Arena-original-source/code/game/g_client.c": "52a3c908aeff487cc924f54991bc7b4f523f6483a0ff060edc3aa32367f213bf",
+          "Quake-III-Arena-original-source/code/game/g_utils.c": "8fdebd93b8976f979a5ac4887523884f8f2b4246a8bd9e8f8d67829ab577163b",
+          "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
+          "Quake-III-Arena-original-source/code/server/sv_game.c": "dda52c608aec154610aa554c7a15d2f597196193e813127114c43636fcc1f57b",
+          "Quake-III-Arena-original-source/code/server/sv_world.c": "d67f952c374902c71b6e65523ae983f0d6081e16c379b566779a1fd1b05aba4d",
+          "Quake-III-Arena-original-source/code/server/server.h": "b8190c64aecf15800ff3870aaa00b0d0fdf8efe25bd4622bd856f2f7f62e1f81",
+          "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
+          "Quake-III-Arena-original-source/code/game/q_shared.h": "7c356992d3f8b722eeb0160c44a0515bd5a83538ffb86190ca138e352e874115",
+          "Quake-III-Arena-original-source/code/game/bg_public.h": "29679e04ba6f0f730c5ca200410330e057609da59e563e36d101f329fafd09e7",
+          "Quake-III-Arena-original-source/code/game/g_public.h": "11d155ea41a0d9a83f4fd0c28fe71b308e04739336d8088135be35e43fd4aef5",
+          "Quake-III-Arena-original-source/code/win32/win_shared.c": "a999fcb8c238a66e9f878bd8f443d16e3c7f9e8068be58cfea1a974f276df626"
+        }
       }
     },
     {
@@ -1337,7 +1393,7 @@
     },
     {
       "path": "build/reference/pmove/curves/result.json",
-      "sha256": "0a8d191c8e4aec31a068d96d8668ec1c085c2009ccbd5b71f4323db96ee1788a",
+      "sha256": "03ae1a82be9af8040fcf5df354d000fa66ce347c389cb9e17eaaae7a4ac8fa45",
       "result": {
         "passed": true,
         "profile": "complete baseq3 Pmove / PmoveSingle; original Win32 SnapVector; static world; cm_noCurves=0",
@@ -1491,7 +1547,7 @@
           }
         ],
         "math_sha256": "ac1b8272889bdcf710d85867500be148ab39b62c7664f7572a5e342c3303e1fe",
-        "test_sha256": "0264fafd52c2c94e7d94560e22757a5989013650db1c77874f7b9739e91f5813",
+        "test_sha256": "13555761a3e971f65c79f714a3601061f1f132cb44d4860fd9ccc747465dbbdb",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -1514,7 +1570,7 @@
     },
     {
       "path": "build/reference/pmove/no_curves/result.json",
-      "sha256": "614e3805c201d693144ee8731801ad091713e404458598309648d2abc429200a",
+      "sha256": "b024e698183f7bcb02a36c40e4c8ed8f26ec17eb971e089c296d40791234bb40",
       "result": {
         "passed": true,
         "profile": "complete baseq3 Pmove / PmoveSingle; original Win32 SnapVector; static world; cm_noCurves=1",
@@ -1668,7 +1724,7 @@
           }
         ],
         "math_sha256": "ac1b8272889bdcf710d85867500be148ab39b62c7664f7572a5e342c3303e1fe",
-        "test_sha256": "0264fafd52c2c94e7d94560e22757a5989013650db1c77874f7b9739e91f5813",
+        "test_sha256": "13555761a3e971f65c79f714a3601061f1f132cb44d4860fd9ccc747465dbbdb",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -1700,13 +1756,13 @@
     },
     {
       "path": "build/reference/runtime_pmove/result.json",
-      "sha256": "cc97a444cc4105bde893304232670fe68572ac00f5c16f382b3d518af93b7bc5",
+      "sha256": "76a977ed69c9783302c6ec08b7f74d6ee3a4b1fc742ef5d19099cf3820d18f72",
       "result": {
         "passed": true,
         "scope": "PK3-to-Pmove CLI; static world; native baseq3 command cycle",
         "commands": 268,
         "exact_fields": 4020,
-        "binary_sha256": "bde0016a430cd68f15a190a5262dd9241260eb372de8dac8f469492f38879859",
+        "binary_sha256": "cc6300243441369aa8aacdf2b52dde370f032d843296cdf09b34932b3e33e5d1",
         "input_sha256": "81aa2a04002eb7726cc5b91982a22f9f18c43aa6de0f252722a9cc36a71a15ee",
         "map_sha256": "3d2dad8e6ba05914fc90619a6517ecdee7e5eb50f86013a14a84bb3c61cd702e",
         "expected_sha256": "9bdacd79cd4c139eafa6f56b907c72a05ec177e9a02a6322c8a1e0095010bdc2"
@@ -1714,13 +1770,13 @@
     },
     {
       "path": "build/reference/runtime_spatial/result.json",
-      "sha256": "e8ce5a95fcaa8e6c895225fd3abadd96ffcd3759c98ff5f95aec8047f9d10c37",
+      "sha256": "2d7071a2af1fef5412a2992b8ac520262a050efa47086928c9299783900a1868",
       "result": {
         "passed": true,
         "transformed_traces": 8,
         "visibility_points": 5,
         "exact_fields": 141,
-        "binary_sha256": "bde0016a430cd68f15a190a5262dd9241260eb372de8dac8f469492f38879859",
+        "binary_sha256": "cc6300243441369aa8aacdf2b52dde370f032d843296cdf09b34932b3e33e5d1",
         "map_sha256": "5402e640b854d3502cb961df46a41260ecd1bf4017d0c4935b657e4d3551bf7c",
         "trace_inputs_sha256": "b6826038370d25d85fbf0a515b4786204de15ac6364463026a83206ec0965fda",
         "trace_expected_sha256": "f40c5d921a97d176ccd331a29b7156b25f6a77b9c9e26374cf9b94c9fbdd2d50"
@@ -1728,10 +1784,10 @@
     },
     {
       "path": "build/reference/runtime_trace/result.json",
-      "sha256": "b4e25a29e0bd4204ac485d81a6d2c2f80ddfae7e8ad390101a7b85796a93289a",
+      "sha256": "df514dbacbfb03b46be16efb3fb4bda8c42b9ae3ac829fbf8e286ecad67b762f",
       "result": {
         "passed": true,
-        "binary_sha256": "bde0016a430cd68f15a190a5262dd9241260eb372de8dac8f469492f38879859",
+        "binary_sha256": "cc6300243441369aa8aacdf2b52dde370f032d843296cdf09b34932b3e33e5d1",
         "map_sha256": "3d2dad8e6ba05914fc90619a6517ecdee7e5eb50f86013a14a84bb3c61cd702e",
         "expected_sha256": "d7e30f2abccfb5ecc5bec01067ebba91e8d11d586c9cacb650119c9d16a2039a",
         "exact_fields": 12,
@@ -1741,7 +1797,7 @@
     },
     {
       "path": "build/reference/server_world/curves/result.json",
-      "sha256": "9ff91c3bd3eea5d7d0f851685c2643dd5c819f698e67240b59a7f27d323a6a48",
+      "sha256": "99987da65e6e3bad89984fbfa46cea6211dc8c6fe8469d1900bd033348f35e4c",
       "result": {
         "passed": true,
         "profile": "unmodified original sv_world.c + original Pmove/CM/BG_TouchJumpPad; explicit entity updates/trigger calls; cm_noCurves=0",
@@ -4137,7 +4193,7 @@
             "expected_sha256": "71adb99707aadbd4aed2cb2c3cc98aff2daa125323d60906900b837589638a6b"
           }
         ],
-        "test_sha256": "93855a6703254d99d6f29dd72adb87ca6e546cccdd1d2785cc63c5b982a36cc8",
+        "test_sha256": "2f425c5bdbadd29de0c305f9a5a087b96ad678755aed5ca4fc6b2b690c3ffdb6",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -4165,7 +4221,7 @@
     },
     {
       "path": "build/reference/server_world/no_curves/result.json",
-      "sha256": "29f2c10650bd999c66c41d91933b41af2caa5b8700a27d05fc6dfcd38d66d6c6",
+      "sha256": "1a41474d36d5e4d27c1aafe905f76d42fc256ba259e1e53f0c6fd80654125fce",
       "result": {
         "passed": true,
         "profile": "unmodified original sv_world.c + original Pmove/CM/BG_TouchJumpPad; explicit entity updates/trigger calls; cm_noCurves=1",
@@ -6561,7 +6617,7 @@
             "expected_sha256": "71adb99707aadbd4aed2cb2c3cc98aff2daa125323d60906900b837589638a6b"
           }
         ],
-        "test_sha256": "93855a6703254d99d6f29dd72adb87ca6e546cccdd1d2785cc63c5b982a36cc8",
+        "test_sha256": "2f425c5bdbadd29de0c305f9a5a087b96ad678755aed5ca4fc6b2b690c3ffdb6",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -6589,7 +6645,7 @@
     },
     {
       "path": "build/reference/shared_game/result.json",
-      "sha256": "659c983492f715b80823405f99f6215bc2e2fc8eb58f547c749f9059ff8795f9",
+      "sha256": "113bf69b13cb59e422669d4fd44bac9ae798862ff843498925eec47401c20993",
       "result": {
         "passed": true,
         "cases": 16384,
@@ -6604,7 +6660,7 @@
         "scope": "six BG trajectories, BG_PlayerTouchesItem, BG_TouchJumpPad, vectoangles and angle normalization; finite test inputs",
         "input_sha256": "7009855163a1d48619ecce8582ef157d9f7eee4ddec0cb910a21f9877b57fea4",
         "expected_sha256": "5273b984f9fb65835e201d67acbf83f4bc21a610433291ee03b52bd8b1519d25",
-        "test_sha256": "876de2a9feb722520767f7a065dc8e187035fcc565ea2202221423a2731d4e4f",
+        "test_sha256": "21f7ef4115c25fc4f54aae69a76fa840fa169c496238f6c4d15681ca708cc44a",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -6614,7 +6670,11 @@
           "Quake-III-Arena-original-source/code/qcommon/md4.c": "fc5be3df4b9c463711e428b98bdc357351e5aeaa13e785073ec7a5921ccc5b4c",
           "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29",
           "Quake-III-Arena-original-source/code/game/q_shared.c": "724dae5f0a9de8bc6ced68893f9f59c5625deca4a1e194b11f5be348fdf2481b",
-          "Quake-III-Arena-original-source/code/game/bg_misc.c": "c71034761ec3f75fd8952f2d75a7f057d664b5cf97b5edf26ae020da65a486e0"
+          "Quake-III-Arena-original-source/code/game/bg_misc.c": "c71034761ec3f75fd8952f2d75a7f057d664b5cf97b5edf26ae020da65a486e0",
+          "Quake-III-Arena-original-source/code/game/q_shared.h": "7c356992d3f8b722eeb0160c44a0515bd5a83538ffb86190ca138e352e874115",
+          "Quake-III-Arena-original-source/code/game/bg_public.h": "29679e04ba6f0f730c5ca200410330e057609da59e563e36d101f329fafd09e7",
+          "Quake-III-Arena-original-source/code/game/bg_local.h": "1f8953894410d670367a0bc68a687c4f27958f825e4987b6fcd2f77ca0d40fb1",
+          "Quake-III-Arena-original-source/code/game/surfaceflags.h": "57efff9aba10ca24e89283884836fb614f74a3fcf828f9b2beb1b22ee8b6f841"
         }
       }
     },
@@ -7285,6 +7345,2012 @@
       }
     },
     {
+      "path": "build/reference/transitions/curves/result.json",
+      "sha256": "be62cb4b45e858a4bab8ea9eab3e493ae5b3c986f37b78cf92ad4ca59902a61a",
+      "result": {
+        "passed": true,
+        "profile": "original native G_TouchTriggers/TeleportPlayer/lifecycle + original SV/CM/Pmove; cm_noCurves=0",
+        "scope_boundary": "G_Damage recorded only; no damage/death/scoring rules or full ClientThink/serverframe acceptance",
+        "operations": 73568,
+        "exact_words": 12170064,
+        "maps": [
+          {
+            "map": "maps/q3ctf1.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "37c9c4f0e6a4d4b582d69353aa2997422ae7abe8fa8b16e9d5796375cc613b1c",
+            "inputs_sha256": "dfa0a68b600cdad4256c2df1eac98853759ea5e9cadf97b5ef2e493d8bf6fcf6",
+            "expected_sha256": "3e8ddb5736857aab57ecd4bb5751c817aa32a39faa7e20b0c468fd3341b37b04"
+          },
+          {
+            "map": "maps/q3ctf2.bsp",
+            "operations": 2299,
+            "exact_words": 416992,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 126,
+              "2": 81,
+              "1": 787,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "4497c5876d8ffb4d0040d67589a37cc1cee9f6334b52a9db0951a6d0c97beac3",
+            "inputs_sha256": "e5ca17da8bcbcfe5048d86bbf96ec5e86acf996a57a419f27f5b3fb83b3cfed5",
+            "expected_sha256": "ea5a7825c6a6b4ba0a87de7298e25c96e1f51cbfc2904095ef174e713ae58fb3"
+          },
+          {
+            "map": "maps/q3ctf3.bsp",
+            "operations": 2299,
+            "exact_words": 416992,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 126,
+              "2": 81,
+              "1": 787,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 40,
+            "pmove_pad_clear_frames": 216,
+            "map_sha256": "ca0b993c4ff4fe3f22123539c480866e666084990f8c533f15b90f6333ed809a",
+            "inputs_sha256": "7f238f63c74299a554ba2e86f9fe9fc5a2af46612793357e52e20ed84c8c1adb",
+            "expected_sha256": "596a1ad72ae612c4c656b7e4dbcebe216c224857a7c223309cd722923470e4ae"
+          },
+          {
+            "map": "maps/q3ctf4.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "8bd598501e019baf95e125447aedfe134f0ac52491a9ff88557db6a6945501f0",
+            "inputs_sha256": "c72a8bba4c97583f2c417c9175cdf40d3f2d9d5cfaf7c81dda582d514a2b46e7",
+            "expected_sha256": "1cc7e0523231c2cdb78e3651a514da5a8d8ccad66a21b5d2af499dfa0837274c"
+          },
+          {
+            "map": "maps/q3dm0.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 256,
+            "pmove_pad_clear_frames": 0,
+            "map_sha256": "05e9540c598c9b1704c9853d61f2cd60c571735abcbf166609fcb4931fcde39b",
+            "inputs_sha256": "fe92bdb6934be436b483862a51a04532513116ef22a617cdd9332b4c6cf2f227",
+            "expected_sha256": "2be6658cdc36774f13b1f40bf4bd521a3a67b563b6a2b5a7b70f7f7e96d3da97"
+          },
+          {
+            "map": "maps/q3dm1.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "3d2dad8e6ba05914fc90619a6517ecdee7e5eb50f86013a14a84bb3c61cd702e",
+            "inputs_sha256": "c3df1298c83ccfdecf6561fff28dafa152ea2e37b2c3c76d284f3d55ae441520",
+            "expected_sha256": "e3cbead421d26645e350c7c6e26018c540c859c15bb8046b57c04af7ce5bf316"
+          },
+          {
+            "map": "maps/q3dm10.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "8d1bc9b4a527f5be6aed01630865a4eee63cec1f3ab6f73b477bd8b6290a4049",
+            "inputs_sha256": "ac0066e955f50b590780af1a2fbe676493c965ca9830c9138b34d3bf90c5ac2a",
+            "expected_sha256": "310def8bc306502077d62707d514eac491fe64e2f3a57a9aa6643a7666a1d50e"
+          },
+          {
+            "map": "maps/q3dm11.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 256,
+            "pmove_pad_clear_frames": 0,
+            "map_sha256": "c0cea74839b39fa776d80c6c6b30d86781234edda7b832b8059c618b699ac0e6",
+            "inputs_sha256": "795bebebf9be53f57e01ccceb66edb7fb27d7627d9d5f4803dc80469ef822613",
+            "expected_sha256": "d121f1c539dac7efb8413c004dbdbb4370485f9b6b0f9ca58ee32ebf1ada64c3"
+          },
+          {
+            "map": "maps/q3dm12.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "4d8800b7bab10fea0b7c2214b57ec3b721d17ca12bc6cdd30ccacd99d7bde3b8",
+            "inputs_sha256": "a898315e7130e19309579f24b459263331f0fac9d8ba4a402da4a30803463f6b",
+            "expected_sha256": "e3a229f373c9095f7dc884152271eeff69998e9b9a3dfe770c73a551ca32f6e2"
+          },
+          {
+            "map": "maps/q3dm13.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "3bfd001a0c94eb000f759aa2fa126245a484df5ae7c9eea50ccfc1d0d9fd3b73",
+            "inputs_sha256": "b6102437949faecf4f0384980231f940470232ff7233f08de5485e7739af3a14",
+            "expected_sha256": "c386d94a4a28ebdae5395a600410f84fb7889a1ca48113d52135175d9bab571e"
+          },
+          {
+            "map": "maps/q3dm14.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "c90a5ce275a36a275d07c75d729b1def7d9fcbed9a92eb0e6a1beaef66ba3c1b",
+            "inputs_sha256": "f74531e7f1cff4d0b69a56463225b494b2b4751b0a22ba9cd93270cf11e211a5",
+            "expected_sha256": "25c9faaa4aa9214b1e8612d1468f065094371d5356d29f6ed1a913a9758e8100"
+          },
+          {
+            "map": "maps/q3dm15.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "0b87d7d3d6d1945e7c4b1291cc04db7470f1e03ede7be303be432a4678e1cb37",
+            "inputs_sha256": "d38e7552cce1256139403eeb32263ddbfbb160f9018bdc3c4ccf282cd54d7d4a",
+            "expected_sha256": "767cfafbc5c5bab4a3e65c4a65bb135423d5c27f1c090cc4bec108f2c5370341"
+          },
+          {
+            "map": "maps/q3dm16.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 256,
+            "pmove_pad_clear_frames": 0,
+            "map_sha256": "bf0f6b813f7a9152e8b185f88e137fbf27627a132961771f5008656e23b05929",
+            "inputs_sha256": "d042f00777f81ff887b93b7c191a572e67a18c5504b93bfc1eb0b7c6719ef153",
+            "expected_sha256": "656906afdb0945e07feccf3a489f68909c532263105d33b2e655a1c9c6aab544"
+          },
+          {
+            "map": "maps/q3dm17.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "ee1394417b06d92f705088150d7609d6b9f55f5796a9a7626bfe7982e8fc94e8",
+            "inputs_sha256": "fc3744a1cf3ca4face36bea695c0bc90a3d307538af68fac02d51b19feeca2d2",
+            "expected_sha256": "7d1f3014f37bb4f6f886668d84bddaf4899ed59017908ed9b0142ae2e6d23685"
+          },
+          {
+            "map": "maps/q3dm18.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "e7ed6c8d845216ce29a193d2922c9ddba67b83bbef66a3e22f640f89a487e082",
+            "inputs_sha256": "d6bd56b5a25c93c12856e0e0e641b7eae65ba8ca93c38101862e080ceb7ec60f",
+            "expected_sha256": "c9f321ea2187b76776134aa1dfba9dd3b372f9233f4784479bc4fef678df3525"
+          },
+          {
+            "map": "maps/q3dm19.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "243b3ed54a8d44151e6ad5f3fa081867578f09a01add7f4aea62682827675600",
+            "inputs_sha256": "6dfb682f86762a97e7cf117e9f9520d7f4d9849f85f707ff6645e84eee2d6327",
+            "expected_sha256": "39fac691d7560b0f81280ed307bfe5a172d743dd81cfc90291fb905555b85d30"
+          },
+          {
+            "map": "maps/q3dm2.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 84,
+            "pmove_pad_clear_frames": 172,
+            "map_sha256": "da97e7c3e2beeb19e49dbb42bc6758021d6430b55c3abc2788f45bfd8eabac87",
+            "inputs_sha256": "204c1ba11218ba16fb4205386b3a4413b5074ac0f166a98dceb42ee510e34e5b",
+            "expected_sha256": "52b811157e207a0942b9ec323697fa591d89ee5512d4aa458d515189635aa75b"
+          },
+          {
+            "map": "maps/q3dm3.bsp",
+            "operations": 2299,
+            "exact_words": 416992,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 126,
+              "2": 81,
+              "1": 787,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "80177ff9208644ed530eda6e29189c811f332cac0a6202f05e0f4ea25ee048f9",
+            "inputs_sha256": "a4257eee3568f5708a4bfe59134c58b5a9f7c70fb6c09064852a73ee27dd7b29",
+            "expected_sha256": "bd002e0fae4792a5ab4e001f1301c9dbbfe6d9b1d366a2cbfb8d9f5dd4bf12f3"
+          },
+          {
+            "map": "maps/q3dm4.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "8153c6c2c8e32180d45faa3195325116cafffd411391ee87944a9307f5a78cc5",
+            "inputs_sha256": "b678bdc23a5142d0a41001befc6465f18777dd8b6746290b4408f1be8295d6c5",
+            "expected_sha256": "1c0c72af98e01ad8c72c9e170c21e23b04e3a8704789f21a8f764dc7e1f1d21a"
+          },
+          {
+            "map": "maps/q3dm5.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "e7e884dad9342b00b77ccb8bdd8a8e167c6c479c7a952b9f1d1c0bd3e42b371d",
+            "inputs_sha256": "6bc9a7a1b41b1a36176c40adca3d34604615a9d10a0805917902a76596dda5ad",
+            "expected_sha256": "0edd0cd77a434edf9ab1bec2963fdfaf2c6b966968746820a73a9e2f98d1f7bd"
+          },
+          {
+            "map": "maps/q3dm6.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "5402e640b854d3502cb961df46a41260ecd1bf4017d0c4935b657e4d3551bf7c",
+            "inputs_sha256": "b9062786a88bcfb48f7153d70525206dc240e5527077d58d3110145cccde960a",
+            "expected_sha256": "acfc5d8bf1fa7a5be1d32e13fb1b75c57990e25dc6cef7e5b697e1f65a30bfdf"
+          },
+          {
+            "map": "maps/q3dm7.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 256,
+            "pmove_pad_clear_frames": 0,
+            "map_sha256": "ba5d14e590f6fb38085f3b6f8d5be81050f240a21a5de5ca0d8253501baba52d",
+            "inputs_sha256": "4e51d6955d98df3dfca569ef1a7a48c4d7c3450cb33ff352dd5dbbd85c3a29e2",
+            "expected_sha256": "1d10aa6c0cbf8573a73e211202759ae0e0de255c74f3ced3449207f26dbe8c1e"
+          },
+          {
+            "map": "maps/q3dm8.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 256,
+            "pmove_pad_clear_frames": 0,
+            "map_sha256": "8cc96df2e4bf9e7c8a36bdbb42452cb5d6f188d5473d2bac44550a1f1d6df630",
+            "inputs_sha256": "547e8c3aaf8d1dfb5b7bd4ade6301af4dff0081b510db1b1215811f8da095aba",
+            "expected_sha256": "c52776b19c3647d416eadecda87031e81d8351650b1c2af62ab1f2929805e7b1"
+          },
+          {
+            "map": "maps/q3dm9.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "22a2ea22f14fad38e227578edc10ceeb2b210f86c41a30fd30131e19567336d3",
+            "inputs_sha256": "4e5e8fcdafa021f2a4161361bb5db0cdac0e21050b31e0662ec0ec29e1aa2888",
+            "expected_sha256": "e3f6425a648adb20cf54f2b724599def2c07a0425977b395b53825980d56ae37"
+          },
+          {
+            "map": "maps/q3tourney1.bsp",
+            "operations": 2299,
+            "exact_words": 416992,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 126,
+              "2": 81,
+              "1": 787,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "7f54eb1bcf35fb74ec81dbe52982a81f3014f14bc69bcd9b7e13bd6cf1819fb6",
+            "inputs_sha256": "848b2be3b40c50497b7e82b88933913420b647c31d41734e05a6fdd342b1b755",
+            "expected_sha256": "b1936b14945ecaf4c9abefc185495e908f4c11fad5c86c4a9d03eaa93fc4c65f"
+          },
+          {
+            "map": "maps/q3tourney2.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "fe07a539bf0b76823160d8ffe96a62c182003877d9678aa27c5b2bea8ca0f4c8",
+            "inputs_sha256": "1fb12b3796ae09db4b7dea1039ce7d4c5d7bf5ff07eb75160e7614d1079769b8",
+            "expected_sha256": "d9dbb76808f344b4edb75c2f5604bdf6bfaab99003bba3fa99cac1215e13c2e1"
+          },
+          {
+            "map": "maps/q3tourney3.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "f2811ecc9510d78d7642927ed325cdf5cd84342ba174c983e8fba94b959b33e6",
+            "inputs_sha256": "ff16c4c2393f92299fdee615c7c0c31d5d854be949e097c21254a69607e0728b",
+            "expected_sha256": "19313dd3da6375df0f0a6517d9f6a1657227725c6917eae2acacbe7d40d4d840"
+          },
+          {
+            "map": "maps/q3tourney4.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 256,
+            "pmove_pad_clear_frames": 0,
+            "map_sha256": "cbc3552662ba336d8a19421b5b0b58452978157638ce28e3832276c7fe6b15bf",
+            "inputs_sha256": "3f9ddd7a4ef055f82c3a469a7dc9ec5b0f39aca53e8bf6ebe0c17cbe173fafd9",
+            "expected_sha256": "65025676992a743dbb54fdee192f2c81d3386ca36e37302894a8424b20d3409e"
+          },
+          {
+            "map": "maps/q3tourney5.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 36,
+            "pmove_pad_clear_frames": 220,
+            "map_sha256": "ec9f56be3bf1b7e91c18aadb499ea46d5ff6e067bd6d37ca186dfeb5b4e8555c",
+            "inputs_sha256": "b57c18f357ce6d28fc77a19f2115855f324cb7742fd77819be2ab3cbf24dbea8",
+            "expected_sha256": "b34355b99e44577f9a431936a2dca604f0f299c18a70ebac9d6d43960b484ee1"
+          },
+          {
+            "map": "maps/q3tourney6.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "f38c52088ce0dfa7566e732c07937ed47d6e56ef1a571c371832e459f66397a9",
+            "inputs_sha256": "68c032a9153f4f3d1127615512b7405e546a6ff7cd6c32002703ff23713bd7f5",
+            "expected_sha256": "eb65c9115ab241b574373deb0ff51ee54c5de661bcae75e1400b8f5b2aae702e"
+          },
+          {
+            "map": "maps/test_bigbox.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "c645abec8be60a4adc42ecdbc1f47a58a043afebfb8b77690b758bfc8c9f2b7e",
+            "inputs_sha256": "de85ae5364fc23020b7cee424d4fbf3410d9f02d43f7342b6c143e53730a72f8",
+            "expected_sha256": "3f6b89bfe49781a23c20218c29fd9dea9d157c45bd02ea8f9b90f41e90f178ee"
+          },
+          {
+            "map": "fixture.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "9aeae08e5ec634615ffb77d0daa182f66b4f484678081903ea9208cb8dba5935",
+            "inputs_sha256": "0ade0a234d2d066e0202e4f82ad40c3c27b1cc6bd013c85304e5f444f100ba88",
+            "expected_sha256": "57d794dc04c9d4b791180c4f90e5760fce6d9c6bf5646e19ec34bddc698f0a38"
+          }
+        ],
+        "original_spawn_rejections": 2,
+        "allocator_client_contracts": 5,
+        "test_sha256": "c29ff4c36c41760ca3e21e4928d62ca0c8a6156a0f9102e7dd3aa4af6b7b0ab3",
+        "extracted_functions_sha256": "5b316a15af1a8333e5d7b4a71f7eecb63f76c429c3a4938a6b8112663523486b",
+        "original_sources": {
+          "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
+          "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
+          "Quake-III-Arena-original-source/code/qcommon/cm_test.c": "2e5d1139c88a5ffc6dea01349865f91d210158491931090d4c7f07d3f11cf4e8",
+          "Quake-III-Arena-original-source/code/qcommon/cm_patch.c": "9fd50664bb46f77a6bf3f7d06a69500867bff1cae4b94c9be168c4ad9e03ca1f",
+          "Quake-III-Arena-original-source/code/qcommon/cm_polylib.c": "b1c1cf3a19ada8682b4ca58556b316144940f5bee5ca59ae4dd6ebe1a947a6ec",
+          "Quake-III-Arena-original-source/code/qcommon/md4.c": "fc5be3df4b9c463711e428b98bdc357351e5aeaa13e785073ec7a5921ccc5b4c",
+          "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29",
+          "Quake-III-Arena-original-source/code/game/q_shared.c": "724dae5f0a9de8bc6ced68893f9f59c5625deca4a1e194b11f5be348fdf2481b",
+          "Quake-III-Arena-original-source/code/game/bg_misc.c": "c71034761ec3f75fd8952f2d75a7f057d664b5cf97b5edf26ae020da65a486e0",
+          "Quake-III-Arena-original-source/code/game/bg_pmove.c": "3ced04aed8686d3da051887dc8c4ace88a24b45a6d0bb4e4d5238cd53cb7a7fc",
+          "Quake-III-Arena-original-source/code/game/bg_slidemove.c": "327fa83a0c523da8a7e8b4fbbbba40cf8870a28613459289ef0e8a865e6bd903",
+          "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
+          "Quake-III-Arena-original-source/code/game/g_misc.c": "bf29bf68e000b068497d45cd4be9bbcfb9730797e21e07044ee4b158d74f5441",
+          "Quake-III-Arena-original-source/code/game/g_client.c": "52a3c908aeff487cc924f54991bc7b4f523f6483a0ff060edc3aa32367f213bf",
+          "Quake-III-Arena-original-source/code/game/g_utils.c": "8fdebd93b8976f979a5ac4887523884f8f2b4246a8bd9e8f8d67829ab577163b",
+          "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
+          "Quake-III-Arena-original-source/code/server/sv_game.c": "dda52c608aec154610aa554c7a15d2f597196193e813127114c43636fcc1f57b",
+          "Quake-III-Arena-original-source/code/server/sv_world.c": "d67f952c374902c71b6e65523ae983f0d6081e16c379b566779a1fd1b05aba4d",
+          "Quake-III-Arena-original-source/code/server/server.h": "b8190c64aecf15800ff3870aaa00b0d0fdf8efe25bd4622bd856f2f7f62e1f81",
+          "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
+          "Quake-III-Arena-original-source/code/game/q_shared.h": "7c356992d3f8b722eeb0160c44a0515bd5a83538ffb86190ca138e352e874115",
+          "Quake-III-Arena-original-source/code/game/bg_public.h": "29679e04ba6f0f730c5ca200410330e057609da59e563e36d101f329fafd09e7",
+          "Quake-III-Arena-original-source/code/game/g_public.h": "11d155ea41a0d9a83f4fd0c28fe71b308e04739336d8088135be35e43fd4aef5",
+          "Quake-III-Arena-original-source/code/win32/win_shared.c": "a999fcb8c238a66e9f878bd8f443d16e3c7f9e8068be58cfea1a974f276df626"
+        }
+      }
+    },
+    {
+      "path": "build/reference/transitions/no_curves/result.json",
+      "sha256": "6b07f400c403dfc4811bbbdbdc45cd8a562a5c6f22e7d2d7060dadc07a4b90d3",
+      "result": {
+        "passed": true,
+        "profile": "original native G_TouchTriggers/TeleportPlayer/lifecycle + original SV/CM/Pmove; cm_noCurves=1",
+        "scope_boundary": "G_Damage recorded only; no damage/death/scoring rules or full ClientThink/serverframe acceptance",
+        "operations": 73568,
+        "exact_words": 12170064,
+        "maps": [
+          {
+            "map": "maps/q3ctf1.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "37c9c4f0e6a4d4b582d69353aa2997422ae7abe8fa8b16e9d5796375cc613b1c",
+            "inputs_sha256": "dfa0a68b600cdad4256c2df1eac98853759ea5e9cadf97b5ef2e493d8bf6fcf6",
+            "expected_sha256": "3e8ddb5736857aab57ecd4bb5751c817aa32a39faa7e20b0c468fd3341b37b04"
+          },
+          {
+            "map": "maps/q3ctf2.bsp",
+            "operations": 2299,
+            "exact_words": 416992,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 126,
+              "2": 81,
+              "1": 787,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "4497c5876d8ffb4d0040d67589a37cc1cee9f6334b52a9db0951a6d0c97beac3",
+            "inputs_sha256": "e5ca17da8bcbcfe5048d86bbf96ec5e86acf996a57a419f27f5b3fb83b3cfed5",
+            "expected_sha256": "ea5a7825c6a6b4ba0a87de7298e25c96e1f51cbfc2904095ef174e713ae58fb3"
+          },
+          {
+            "map": "maps/q3ctf3.bsp",
+            "operations": 2299,
+            "exact_words": 416992,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 126,
+              "2": 81,
+              "1": 787,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 40,
+            "pmove_pad_clear_frames": 216,
+            "map_sha256": "ca0b993c4ff4fe3f22123539c480866e666084990f8c533f15b90f6333ed809a",
+            "inputs_sha256": "7f238f63c74299a554ba2e86f9fe9fc5a2af46612793357e52e20ed84c8c1adb",
+            "expected_sha256": "596a1ad72ae612c4c656b7e4dbcebe216c224857a7c223309cd722923470e4ae"
+          },
+          {
+            "map": "maps/q3ctf4.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "8bd598501e019baf95e125447aedfe134f0ac52491a9ff88557db6a6945501f0",
+            "inputs_sha256": "c72a8bba4c97583f2c417c9175cdf40d3f2d9d5cfaf7c81dda582d514a2b46e7",
+            "expected_sha256": "1cc7e0523231c2cdb78e3651a514da5a8d8ccad66a21b5d2af499dfa0837274c"
+          },
+          {
+            "map": "maps/q3dm0.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 256,
+            "pmove_pad_clear_frames": 0,
+            "map_sha256": "05e9540c598c9b1704c9853d61f2cd60c571735abcbf166609fcb4931fcde39b",
+            "inputs_sha256": "fe92bdb6934be436b483862a51a04532513116ef22a617cdd9332b4c6cf2f227",
+            "expected_sha256": "2be6658cdc36774f13b1f40bf4bd521a3a67b563b6a2b5a7b70f7f7e96d3da97"
+          },
+          {
+            "map": "maps/q3dm1.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "3d2dad8e6ba05914fc90619a6517ecdee7e5eb50f86013a14a84bb3c61cd702e",
+            "inputs_sha256": "c3df1298c83ccfdecf6561fff28dafa152ea2e37b2c3c76d284f3d55ae441520",
+            "expected_sha256": "e3cbead421d26645e350c7c6e26018c540c859c15bb8046b57c04af7ce5bf316"
+          },
+          {
+            "map": "maps/q3dm10.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "8d1bc9b4a527f5be6aed01630865a4eee63cec1f3ab6f73b477bd8b6290a4049",
+            "inputs_sha256": "ac0066e955f50b590780af1a2fbe676493c965ca9830c9138b34d3bf90c5ac2a",
+            "expected_sha256": "310def8bc306502077d62707d514eac491fe64e2f3a57a9aa6643a7666a1d50e"
+          },
+          {
+            "map": "maps/q3dm11.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 256,
+            "pmove_pad_clear_frames": 0,
+            "map_sha256": "c0cea74839b39fa776d80c6c6b30d86781234edda7b832b8059c618b699ac0e6",
+            "inputs_sha256": "795bebebf9be53f57e01ccceb66edb7fb27d7627d9d5f4803dc80469ef822613",
+            "expected_sha256": "d121f1c539dac7efb8413c004dbdbb4370485f9b6b0f9ca58ee32ebf1ada64c3"
+          },
+          {
+            "map": "maps/q3dm12.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "4d8800b7bab10fea0b7c2214b57ec3b721d17ca12bc6cdd30ccacd99d7bde3b8",
+            "inputs_sha256": "a898315e7130e19309579f24b459263331f0fac9d8ba4a402da4a30803463f6b",
+            "expected_sha256": "e3a229f373c9095f7dc884152271eeff69998e9b9a3dfe770c73a551ca32f6e2"
+          },
+          {
+            "map": "maps/q3dm13.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "3bfd001a0c94eb000f759aa2fa126245a484df5ae7c9eea50ccfc1d0d9fd3b73",
+            "inputs_sha256": "b6102437949faecf4f0384980231f940470232ff7233f08de5485e7739af3a14",
+            "expected_sha256": "c386d94a4a28ebdae5395a600410f84fb7889a1ca48113d52135175d9bab571e"
+          },
+          {
+            "map": "maps/q3dm14.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "c90a5ce275a36a275d07c75d729b1def7d9fcbed9a92eb0e6a1beaef66ba3c1b",
+            "inputs_sha256": "f74531e7f1cff4d0b69a56463225b494b2b4751b0a22ba9cd93270cf11e211a5",
+            "expected_sha256": "25c9faaa4aa9214b1e8612d1468f065094371d5356d29f6ed1a913a9758e8100"
+          },
+          {
+            "map": "maps/q3dm15.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "0b87d7d3d6d1945e7c4b1291cc04db7470f1e03ede7be303be432a4678e1cb37",
+            "inputs_sha256": "d38e7552cce1256139403eeb32263ddbfbb160f9018bdc3c4ccf282cd54d7d4a",
+            "expected_sha256": "767cfafbc5c5bab4a3e65c4a65bb135423d5c27f1c090cc4bec108f2c5370341"
+          },
+          {
+            "map": "maps/q3dm16.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 256,
+            "pmove_pad_clear_frames": 0,
+            "map_sha256": "bf0f6b813f7a9152e8b185f88e137fbf27627a132961771f5008656e23b05929",
+            "inputs_sha256": "d042f00777f81ff887b93b7c191a572e67a18c5504b93bfc1eb0b7c6719ef153",
+            "expected_sha256": "656906afdb0945e07feccf3a489f68909c532263105d33b2e655a1c9c6aab544"
+          },
+          {
+            "map": "maps/q3dm17.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "ee1394417b06d92f705088150d7609d6b9f55f5796a9a7626bfe7982e8fc94e8",
+            "inputs_sha256": "fc3744a1cf3ca4face36bea695c0bc90a3d307538af68fac02d51b19feeca2d2",
+            "expected_sha256": "7d1f3014f37bb4f6f886668d84bddaf4899ed59017908ed9b0142ae2e6d23685"
+          },
+          {
+            "map": "maps/q3dm18.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "e7ed6c8d845216ce29a193d2922c9ddba67b83bbef66a3e22f640f89a487e082",
+            "inputs_sha256": "d6bd56b5a25c93c12856e0e0e641b7eae65ba8ca93c38101862e080ceb7ec60f",
+            "expected_sha256": "c9f321ea2187b76776134aa1dfba9dd3b372f9233f4784479bc4fef678df3525"
+          },
+          {
+            "map": "maps/q3dm19.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "243b3ed54a8d44151e6ad5f3fa081867578f09a01add7f4aea62682827675600",
+            "inputs_sha256": "6dfb682f86762a97e7cf117e9f9520d7f4d9849f85f707ff6645e84eee2d6327",
+            "expected_sha256": "39fac691d7560b0f81280ed307bfe5a172d743dd81cfc90291fb905555b85d30"
+          },
+          {
+            "map": "maps/q3dm2.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 44,
+            "pmove_pad_clear_frames": 212,
+            "map_sha256": "da97e7c3e2beeb19e49dbb42bc6758021d6430b55c3abc2788f45bfd8eabac87",
+            "inputs_sha256": "204c1ba11218ba16fb4205386b3a4413b5074ac0f166a98dceb42ee510e34e5b",
+            "expected_sha256": "6ab9a364c7f638ef5ed9fc644bffc49fab21677cfadcb53c980cd33883a3616a"
+          },
+          {
+            "map": "maps/q3dm3.bsp",
+            "operations": 2299,
+            "exact_words": 416992,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 126,
+              "2": 81,
+              "1": 787,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "80177ff9208644ed530eda6e29189c811f332cac0a6202f05e0f4ea25ee048f9",
+            "inputs_sha256": "a4257eee3568f5708a4bfe59134c58b5a9f7c70fb6c09064852a73ee27dd7b29",
+            "expected_sha256": "bd002e0fae4792a5ab4e001f1301c9dbbfe6d9b1d366a2cbfb8d9f5dd4bf12f3"
+          },
+          {
+            "map": "maps/q3dm4.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "8153c6c2c8e32180d45faa3195325116cafffd411391ee87944a9307f5a78cc5",
+            "inputs_sha256": "b678bdc23a5142d0a41001befc6465f18777dd8b6746290b4408f1be8295d6c5",
+            "expected_sha256": "1c0c72af98e01ad8c72c9e170c21e23b04e3a8704789f21a8f764dc7e1f1d21a"
+          },
+          {
+            "map": "maps/q3dm5.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "e7e884dad9342b00b77ccb8bdd8a8e167c6c479c7a952b9f1d1c0bd3e42b371d",
+            "inputs_sha256": "6bc9a7a1b41b1a36176c40adca3d34604615a9d10a0805917902a76596dda5ad",
+            "expected_sha256": "0edd0cd77a434edf9ab1bec2963fdfaf2c6b966968746820a73a9e2f98d1f7bd"
+          },
+          {
+            "map": "maps/q3dm6.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "5402e640b854d3502cb961df46a41260ecd1bf4017d0c4935b657e4d3551bf7c",
+            "inputs_sha256": "b9062786a88bcfb48f7153d70525206dc240e5527077d58d3110145cccde960a",
+            "expected_sha256": "acfc5d8bf1fa7a5be1d32e13fb1b75c57990e25dc6cef7e5b697e1f65a30bfdf"
+          },
+          {
+            "map": "maps/q3dm7.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 40,
+            "pmove_pad_clear_frames": 216,
+            "map_sha256": "ba5d14e590f6fb38085f3b6f8d5be81050f240a21a5de5ca0d8253501baba52d",
+            "inputs_sha256": "4e51d6955d98df3dfca569ef1a7a48c4d7c3450cb33ff352dd5dbbd85c3a29e2",
+            "expected_sha256": "be871b790834b5357f3d4866cd8bb8e3d24f8633499050ad85167c64c5f1f4a0"
+          },
+          {
+            "map": "maps/q3dm8.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 256,
+            "pmove_pad_clear_frames": 0,
+            "map_sha256": "8cc96df2e4bf9e7c8a36bdbb42452cb5d6f188d5473d2bac44550a1f1d6df630",
+            "inputs_sha256": "547e8c3aaf8d1dfb5b7bd4ade6301af4dff0081b510db1b1215811f8da095aba",
+            "expected_sha256": "985670e4e54e2a8d79f18bc93872fafb02eaba82b5b4730964fbf4239320c8fa"
+          },
+          {
+            "map": "maps/q3dm9.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "22a2ea22f14fad38e227578edc10ceeb2b210f86c41a30fd30131e19567336d3",
+            "inputs_sha256": "4e5e8fcdafa021f2a4161361bb5db0cdac0e21050b31e0662ec0ec29e1aa2888",
+            "expected_sha256": "8b7cb9ff96d5994947157137b49bc7af2cba1ea0d0bfe2a954882f2ffaad5d2d"
+          },
+          {
+            "map": "maps/q3tourney1.bsp",
+            "operations": 2299,
+            "exact_words": 416992,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 126,
+              "2": 81,
+              "1": 787,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "7f54eb1bcf35fb74ec81dbe52982a81f3014f14bc69bcd9b7e13bd6cf1819fb6",
+            "inputs_sha256": "848b2be3b40c50497b7e82b88933913420b647c31d41734e05a6fdd342b1b755",
+            "expected_sha256": "b1936b14945ecaf4c9abefc185495e908f4c11fad5c86c4a9d03eaa93fc4c65f"
+          },
+          {
+            "map": "maps/q3tourney2.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "fe07a539bf0b76823160d8ffe96a62c182003877d9678aa27c5b2bea8ca0f4c8",
+            "inputs_sha256": "1fb12b3796ae09db4b7dea1039ce7d4c5d7bf5ff07eb75160e7614d1079769b8",
+            "expected_sha256": "d9dbb76808f344b4edb75c2f5604bdf6bfaab99003bba3fa99cac1215e13c2e1"
+          },
+          {
+            "map": "maps/q3tourney3.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "f2811ecc9510d78d7642927ed325cdf5cd84342ba174c983e8fba94b959b33e6",
+            "inputs_sha256": "ff16c4c2393f92299fdee615c7c0c31d5d854be949e097c21254a69607e0728b",
+            "expected_sha256": "19313dd3da6375df0f0a6517d9f6a1657227725c6917eae2acacbe7d40d4d840"
+          },
+          {
+            "map": "maps/q3tourney4.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 256,
+            "pmove_pad_clear_frames": 0,
+            "map_sha256": "cbc3552662ba336d8a19421b5b0b58452978157638ce28e3832276c7fe6b15bf",
+            "inputs_sha256": "3f9ddd7a4ef055f82c3a469a7dc9ec5b0f39aca53e8bf6ebe0c17cbe173fafd9",
+            "expected_sha256": "65025676992a743dbb54fdee192f2c81d3386ca36e37302894a8424b20d3409e"
+          },
+          {
+            "map": "maps/q3tourney5.bsp",
+            "operations": 2299,
+            "exact_words": 235904,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 118,
+              "2": 77,
+              "1": 775,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 36,
+            "pmove_pad_clear_frames": 220,
+            "map_sha256": "ec9f56be3bf1b7e91c18aadb499ea46d5ff6e067bd6d37ca186dfeb5b4e8555c",
+            "inputs_sha256": "b57c18f357ce6d28fc77a19f2115855f324cb7742fd77819be2ab3cbf24dbea8",
+            "expected_sha256": "b34355b99e44577f9a431936a2dca604f0f299c18a70ebac9d6d43960b484ee1"
+          },
+          {
+            "map": "maps/q3tourney6.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "f38c52088ce0dfa7566e732c07937ed47d6e56ef1a571c371832e459f66397a9",
+            "inputs_sha256": "68c032a9153f4f3d1127615512b7405e546a6ff7cd6c32002703ff23713bd7f5",
+            "expected_sha256": "eb65c9115ab241b574373deb0ff51ee54c5de661bcae75e1400b8f5b2aae702e"
+          },
+          {
+            "map": "maps/test_bigbox.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "c645abec8be60a4adc42ecdbc1f47a58a043afebfb8b77690b758bfc8c9f2b7e",
+            "inputs_sha256": "de85ae5364fc23020b7cee424d4fbf3410d9f02d43f7342b6c143e53730a72f8",
+            "expected_sha256": "3f6b89bfe49781a23c20218c29fd9dea9d157c45bd02ea8f9b90f41e90f178ee"
+          },
+          {
+            "map": "fixture.bsp",
+            "operations": 2299,
+            "exact_words": 452392,
+            "operation_histogram": {
+              "0": 55,
+              "11": 1024,
+              "1": 403,
+              "10": 64,
+              "8": 5,
+              "7": 258,
+              "6": 2,
+              "2": 68,
+              "3": 36,
+              "12": 128,
+              "4": 256
+            },
+            "callback_histogram": {
+              "3": 130,
+              "2": 83,
+              "1": 793,
+              "4": 48,
+              "5": 46
+            },
+            "pmove_pad_active_frames": 32,
+            "pmove_pad_clear_frames": 224,
+            "map_sha256": "9aeae08e5ec634615ffb77d0daa182f66b4f484678081903ea9208cb8dba5935",
+            "inputs_sha256": "0ade0a234d2d066e0202e4f82ad40c3c27b1cc6bd013c85304e5f444f100ba88",
+            "expected_sha256": "57d794dc04c9d4b791180c4f90e5760fce6d9c6bf5646e19ec34bddc698f0a38"
+          }
+        ],
+        "original_spawn_rejections": 2,
+        "allocator_client_contracts": 5,
+        "test_sha256": "c29ff4c36c41760ca3e21e4928d62ca0c8a6156a0f9102e7dd3aa4af6b7b0ab3",
+        "extracted_functions_sha256": "5b316a15af1a8333e5d7b4a71f7eecb63f76c429c3a4938a6b8112663523486b",
+        "original_sources": {
+          "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
+          "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
+          "Quake-III-Arena-original-source/code/qcommon/cm_test.c": "2e5d1139c88a5ffc6dea01349865f91d210158491931090d4c7f07d3f11cf4e8",
+          "Quake-III-Arena-original-source/code/qcommon/cm_patch.c": "9fd50664bb46f77a6bf3f7d06a69500867bff1cae4b94c9be168c4ad9e03ca1f",
+          "Quake-III-Arena-original-source/code/qcommon/cm_polylib.c": "b1c1cf3a19ada8682b4ca58556b316144940f5bee5ca59ae4dd6ebe1a947a6ec",
+          "Quake-III-Arena-original-source/code/qcommon/md4.c": "fc5be3df4b9c463711e428b98bdc357351e5aeaa13e785073ec7a5921ccc5b4c",
+          "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29",
+          "Quake-III-Arena-original-source/code/game/q_shared.c": "724dae5f0a9de8bc6ced68893f9f59c5625deca4a1e194b11f5be348fdf2481b",
+          "Quake-III-Arena-original-source/code/game/bg_misc.c": "c71034761ec3f75fd8952f2d75a7f057d664b5cf97b5edf26ae020da65a486e0",
+          "Quake-III-Arena-original-source/code/game/bg_pmove.c": "3ced04aed8686d3da051887dc8c4ace88a24b45a6d0bb4e4d5238cd53cb7a7fc",
+          "Quake-III-Arena-original-source/code/game/bg_slidemove.c": "327fa83a0c523da8a7e8b4fbbbba40cf8870a28613459289ef0e8a865e6bd903",
+          "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
+          "Quake-III-Arena-original-source/code/game/g_misc.c": "bf29bf68e000b068497d45cd4be9bbcfb9730797e21e07044ee4b158d74f5441",
+          "Quake-III-Arena-original-source/code/game/g_client.c": "52a3c908aeff487cc924f54991bc7b4f523f6483a0ff060edc3aa32367f213bf",
+          "Quake-III-Arena-original-source/code/game/g_utils.c": "8fdebd93b8976f979a5ac4887523884f8f2b4246a8bd9e8f8d67829ab577163b",
+          "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
+          "Quake-III-Arena-original-source/code/server/sv_game.c": "dda52c608aec154610aa554c7a15d2f597196193e813127114c43636fcc1f57b",
+          "Quake-III-Arena-original-source/code/server/sv_world.c": "d67f952c374902c71b6e65523ae983f0d6081e16c379b566779a1fd1b05aba4d",
+          "Quake-III-Arena-original-source/code/server/server.h": "b8190c64aecf15800ff3870aaa00b0d0fdf8efe25bd4622bd856f2f7f62e1f81",
+          "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
+          "Quake-III-Arena-original-source/code/game/q_shared.h": "7c356992d3f8b722eeb0160c44a0515bd5a83538ffb86190ca138e352e874115",
+          "Quake-III-Arena-original-source/code/game/bg_public.h": "29679e04ba6f0f730c5ca200410330e057609da59e563e36d101f329fafd09e7",
+          "Quake-III-Arena-original-source/code/game/g_public.h": "11d155ea41a0d9a83f4fd0c28fe71b308e04739336d8088135be35e43fd4aef5",
+          "Quake-III-Arena-original-source/code/win32/win_shared.c": "a999fcb8c238a66e9f878bd8f443d16e3c7f9e8068be58cfea1a974f276df626"
+        }
+      }
+    },
+    {
       "path": "build/reference/visibility/result.json",
       "sha256": "fdd9e48f664d2d2e76bf43a298a44bf392c6903db594e5f7fca236dd03253a28",
       "result": {
@@ -7722,7 +9788,7 @@
     },
     {
       "path": "build/verification.json",
-      "sha256": "d2737bbc133669eef8e2e0e61aa77c1fa8d7a79b73d7dca72b7d6519531c207d",
+      "sha256": "028c8f6f3865b25f1f1efed7beae2320d98e4857d31d43e36976e626230147ad",
       "result": {
         "passed": true,
         "scope": "implemented foundations only; full game port remains incomplete",
@@ -7764,6 +9830,10 @@
           },
           {
             "script": "test_shared_game.py",
+            "arguments": []
+          },
+          {
+            "script": "test_entitystate.py",
             "arguments": []
           },
           {
@@ -7874,9 +9944,22 @@
             "arguments": [
               "D:\\Quake3"
             ]
+          },
+          {
+            "script": "test_transitions.py",
+            "arguments": [
+              "D:\\Quake3",
+              "--no-curves"
+            ]
+          },
+          {
+            "script": "test_transitions.py",
+            "arguments": [
+              "D:\\Quake3"
+            ]
           }
         ],
-        "binary_sha256": "bde0016a430cd68f15a190a5262dd9241260eb372de8dac8f469492f38879859"
+        "binary_sha256": "cc6300243441369aa8aacdf2b52dde370f032d843296cdf09b34932b3e33e5d1"
       }
     }
   ]

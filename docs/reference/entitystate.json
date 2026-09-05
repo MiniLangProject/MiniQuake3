@@ -1,0 +1,392 @@
+{
+  "source_sha256": "7c356992d3f8b722eeb0160c44a0515bd5a83538ffb86190ca138e352e874115",
+  "size": 208,
+  "fields": [
+    {
+      "name": "number",
+      "type": "int",
+      "count": 1,
+      "offset": 0
+    },
+    {
+      "name": "eType",
+      "type": "int",
+      "count": 1,
+      "offset": 4
+    },
+    {
+      "name": "eFlags",
+      "type": "int",
+      "count": 1,
+      "offset": 8
+    },
+    {
+      "name": "pos",
+      "type": "trajectory_t",
+      "count": 9,
+      "offset": 12
+    },
+    {
+      "name": "apos",
+      "type": "trajectory_t",
+      "count": 9,
+      "offset": 48
+    },
+    {
+      "name": "time",
+      "type": "int",
+      "count": 1,
+      "offset": 84
+    },
+    {
+      "name": "time2",
+      "type": "int",
+      "count": 1,
+      "offset": 88
+    },
+    {
+      "name": "origin",
+      "type": "vec3_t",
+      "count": 3,
+      "offset": 92
+    },
+    {
+      "name": "origin2",
+      "type": "vec3_t",
+      "count": 3,
+      "offset": 104
+    },
+    {
+      "name": "angles",
+      "type": "vec3_t",
+      "count": 3,
+      "offset": 116
+    },
+    {
+      "name": "angles2",
+      "type": "vec3_t",
+      "count": 3,
+      "offset": 128
+    },
+    {
+      "name": "otherEntityNum",
+      "type": "int",
+      "count": 1,
+      "offset": 140
+    },
+    {
+      "name": "otherEntityNum2",
+      "type": "int",
+      "count": 1,
+      "offset": 144
+    },
+    {
+      "name": "groundEntityNum",
+      "type": "int",
+      "count": 1,
+      "offset": 148
+    },
+    {
+      "name": "constantLight",
+      "type": "int",
+      "count": 1,
+      "offset": 152
+    },
+    {
+      "name": "loopSound",
+      "type": "int",
+      "count": 1,
+      "offset": 156
+    },
+    {
+      "name": "modelindex",
+      "type": "int",
+      "count": 1,
+      "offset": 160
+    },
+    {
+      "name": "modelindex2",
+      "type": "int",
+      "count": 1,
+      "offset": 164
+    },
+    {
+      "name": "clientNum",
+      "type": "int",
+      "count": 1,
+      "offset": 168
+    },
+    {
+      "name": "frame",
+      "type": "int",
+      "count": 1,
+      "offset": 172
+    },
+    {
+      "name": "solid",
+      "type": "int",
+      "count": 1,
+      "offset": 176
+    },
+    {
+      "name": "event",
+      "type": "int",
+      "count": 1,
+      "offset": 180
+    },
+    {
+      "name": "eventParm",
+      "type": "int",
+      "count": 1,
+      "offset": 184
+    },
+    {
+      "name": "powerups",
+      "type": "int",
+      "count": 1,
+      "offset": 188
+    },
+    {
+      "name": "weapon",
+      "type": "int",
+      "count": 1,
+      "offset": 192
+    },
+    {
+      "name": "legsAnim",
+      "type": "int",
+      "count": 1,
+      "offset": 196
+    },
+    {
+      "name": "torsoAnim",
+      "type": "int",
+      "count": 1,
+      "offset": 200
+    },
+    {
+      "name": "generic1",
+      "type": "int",
+      "count": 1,
+      "offset": 204
+    }
+  ],
+  "flat_fields": [
+    {
+      "name": "number",
+      "type": "int",
+      "count": 1,
+      "offset": 0
+    },
+    {
+      "name": "eType",
+      "type": "int",
+      "count": 1,
+      "offset": 4
+    },
+    {
+      "name": "eFlags",
+      "type": "int",
+      "count": 1,
+      "offset": 8
+    },
+    {
+      "name": "pos.trType",
+      "type": "int",
+      "count": 1,
+      "offset": 12
+    },
+    {
+      "name": "pos.trTime",
+      "type": "int",
+      "count": 1,
+      "offset": 16
+    },
+    {
+      "name": "pos.trDuration",
+      "type": "int",
+      "count": 1,
+      "offset": 20
+    },
+    {
+      "name": "pos.trBase",
+      "type": "float",
+      "count": 3,
+      "offset": 24
+    },
+    {
+      "name": "pos.trDelta",
+      "type": "float",
+      "count": 3,
+      "offset": 36
+    },
+    {
+      "name": "apos.trType",
+      "type": "int",
+      "count": 1,
+      "offset": 48
+    },
+    {
+      "name": "apos.trTime",
+      "type": "int",
+      "count": 1,
+      "offset": 52
+    },
+    {
+      "name": "apos.trDuration",
+      "type": "int",
+      "count": 1,
+      "offset": 56
+    },
+    {
+      "name": "apos.trBase",
+      "type": "float",
+      "count": 3,
+      "offset": 60
+    },
+    {
+      "name": "apos.trDelta",
+      "type": "float",
+      "count": 3,
+      "offset": 72
+    },
+    {
+      "name": "time",
+      "type": "int",
+      "count": 1,
+      "offset": 84
+    },
+    {
+      "name": "time2",
+      "type": "int",
+      "count": 1,
+      "offset": 88
+    },
+    {
+      "name": "origin",
+      "type": "float",
+      "count": 3,
+      "offset": 92
+    },
+    {
+      "name": "origin2",
+      "type": "float",
+      "count": 3,
+      "offset": 104
+    },
+    {
+      "name": "angles",
+      "type": "float",
+      "count": 3,
+      "offset": 116
+    },
+    {
+      "name": "angles2",
+      "type": "float",
+      "count": 3,
+      "offset": 128
+    },
+    {
+      "name": "otherEntityNum",
+      "type": "int",
+      "count": 1,
+      "offset": 140
+    },
+    {
+      "name": "otherEntityNum2",
+      "type": "int",
+      "count": 1,
+      "offset": 144
+    },
+    {
+      "name": "groundEntityNum",
+      "type": "int",
+      "count": 1,
+      "offset": 148
+    },
+    {
+      "name": "constantLight",
+      "type": "int",
+      "count": 1,
+      "offset": 152
+    },
+    {
+      "name": "loopSound",
+      "type": "int",
+      "count": 1,
+      "offset": 156
+    },
+    {
+      "name": "modelindex",
+      "type": "int",
+      "count": 1,
+      "offset": 160
+    },
+    {
+      "name": "modelindex2",
+      "type": "int",
+      "count": 1,
+      "offset": 164
+    },
+    {
+      "name": "clientNum",
+      "type": "int",
+      "count": 1,
+      "offset": 168
+    },
+    {
+      "name": "frame",
+      "type": "int",
+      "count": 1,
+      "offset": 172
+    },
+    {
+      "name": "solid",
+      "type": "int",
+      "count": 1,
+      "offset": 176
+    },
+    {
+      "name": "event",
+      "type": "int",
+      "count": 1,
+      "offset": 180
+    },
+    {
+      "name": "eventParm",
+      "type": "int",
+      "count": 1,
+      "offset": 184
+    },
+    {
+      "name": "powerups",
+      "type": "int",
+      "count": 1,
+      "offset": 188
+    },
+    {
+      "name": "weapon",
+      "type": "int",
+      "count": 1,
+      "offset": 192
+    },
+    {
+      "name": "legsAnim",
+      "type": "int",
+      "count": 1,
+      "offset": 196
+    },
+    {
+      "name": "torsoAnim",
+      "type": "int",
+      "count": 1,
+      "offset": 200
+    },
+    {
+      "name": "generic1",
+      "type": "int",
+      "count": 1,
+      "offset": 204
+    }
+  ]
+}

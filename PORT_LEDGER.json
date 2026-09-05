@@ -5162,7 +5162,8 @@
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml",
             "src/mq3/game/trajectory.ml",
-            "src/mq3/game/jumppad.ml"
+            "src/mq3/game/jumppad.ml",
+            "src/mq3/game/snapshot.ml"
           ],
           "status": "tested_subset"
         },
@@ -5173,7 +5174,8 @@
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml",
             "src/mq3/game/trajectory.ml",
-            "src/mq3/game/jumppad.ml"
+            "src/mq3/game/jumppad.ml",
+            "src/mq3/game/snapshot.ml"
           ],
           "status": "tested_subset"
         },
@@ -5184,7 +5186,8 @@
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml",
             "src/mq3/game/trajectory.ml",
-            "src/mq3/game/jumppad.ml"
+            "src/mq3/game/jumppad.ml",
+            "src/mq3/game/snapshot.ml"
           ],
           "status": "tested_subset"
         },
@@ -5195,7 +5198,8 @@
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml",
             "src/mq3/game/trajectory.ml",
-            "src/mq3/game/jumppad.ml"
+            "src/mq3/game/jumppad.ml",
+            "src/mq3/game/snapshot.ml"
           ],
           "status": "tested_subset"
         },
@@ -5206,7 +5210,8 @@
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml",
             "src/mq3/game/trajectory.ml",
-            "src/mq3/game/jumppad.ml"
+            "src/mq3/game/jumppad.ml",
+            "src/mq3/game/snapshot.ml"
           ],
           "status": "tested_subset"
         },
@@ -5217,7 +5222,32 @@
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml",
             "src/mq3/game/trajectory.ml",
-            "src/mq3/game/jumppad.ml"
+            "src/mq3/game/jumppad.ml",
+            "src/mq3/game/snapshot.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "BG_PlayerStateToEntityState",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/trajectory.ml",
+            "src/mq3/game/jumppad.ml",
+            "src/mq3/game/snapshot.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "BG_PlayerStateToEntityStateExtraPolate",
+          "target_files": [
+            "src/mq3/game/movement.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/trajectory.ml",
+            "src/mq3/game/jumppad.ml",
+            "src/mq3/game/snapshot.ml"
           ],
           "status": "tested_subset"
         }
@@ -5227,14 +5257,16 @@
         "src/mq3/game/constants.ml",
         "src/mq3/game/pmove.ml",
         "src/mq3/game/trajectory.ml",
-        "src/mq3/game/jumppad.ml"
+        "src/mq3/game/jumppad.ml",
+        "src/mq3/game/snapshot.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_movement.py",
         "scripts/test_pmove.py",
         "scripts/test_shared_game.py",
-        "scripts/test_server_world.py"
+        "scripts/test_server_world.py",
+        "scripts/test_entitystate.py"
       ]
     },
     {
@@ -5711,6 +5743,22 @@
             "src/mq3/game/pmove.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "entityType_t",
+          "target_files": [
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "meansOfDeath_t",
+          "target_files": [
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested_subset"
         }
       ],
       "target": [
@@ -5719,7 +5767,9 @@
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_pmove.py"
+        "scripts/test_pmove.py",
+        "scripts/test_entitystate.py",
+        "scripts/test_transitions.py"
       ]
     },
     {
@@ -5797,10 +5847,22 @@
         "SpectatorThink",
         "StuckInOtherClient"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "G_TouchTriggers",
+          "target_files": [
+            "src/mq3/game/triggers.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/triggers.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_transitions.py"
+      ]
     },
     {
       "source": "code/game/g_arenas.c",
@@ -5887,10 +5949,23 @@
         "skin",
         "trap_DropClient"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "SetClientViewAngle",
+          "target_files": [
+            "src/mq3/game/teleport.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/teleport.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_entitystate.py",
+        "scripts/test_transitions.py"
+      ]
     },
     {
       "source": "code/game/g_cmds.c",
@@ -6100,10 +6175,22 @@
         "locateCamera",
         "utilities"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "TeleportPlayer",
+          "target_files": [
+            "src/mq3/game/teleport.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/teleport.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_transitions.py"
+      ]
     },
     {
       "source": "code/game/g_missile.c",
@@ -6647,10 +6734,29 @@
         "trigger_push_touch",
         "trigger_teleporter_touch"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "trigger_push_touch",
+          "target_files": [
+            "src/mq3/game/triggers.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "trigger_teleporter_touch",
+          "target_files": [
+            "src/mq3/game/triggers.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/triggers.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_transitions.py"
+      ]
     },
     {
       "source": "code/game/g_utils.c",
@@ -6682,10 +6788,88 @@
         "vectoyaw",
         "vtos"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "G_InitGentity",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_Spawn",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_EntitiesFree",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_FreeEntity",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_TempEntity",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_SetOrigin",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_Find",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_PickTarget",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_KillBox",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/teleport.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/entities.ml",
+        "src/mq3/game/teleport.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_transitions.py"
+      ]
     },
     {
       "source": "code/game/g_weapon.c",
@@ -7120,7 +7304,9 @@
           "target_files": [
             "src/mq3/shared/math.ml",
             "src/mq3/game/playerstate.ml",
-            "src/mq3/game/pmove.ml"
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/game/snapshot.ml"
           ],
           "status": "tested_subset"
         },
@@ -7129,7 +7315,9 @@
           "target_files": [
             "src/mq3/shared/math.ml",
             "src/mq3/game/playerstate.ml",
-            "src/mq3/game/pmove.ml"
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/game/snapshot.ml"
           ],
           "status": "tested_subset"
         },
@@ -7138,7 +7326,9 @@
           "target_files": [
             "src/mq3/shared/math.ml",
             "src/mq3/game/playerstate.ml",
-            "src/mq3/game/pmove.ml"
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/game/snapshot.ml"
           ],
           "status": "tested_subset"
         },
@@ -7147,7 +7337,9 @@
           "target_files": [
             "src/mq3/shared/math.ml",
             "src/mq3/game/playerstate.ml",
-            "src/mq3/game/pmove.ml"
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/game/snapshot.ml"
           ],
           "status": "tested_subset"
         },
@@ -7156,7 +7348,42 @@
           "target_files": [
             "src/mq3/shared/math.ml",
             "src/mq3/game/playerstate.ml",
-            "src/mq3/game/pmove.ml"
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/game/snapshot.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "entityState_t",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/game/snapshot.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "trajectory_t",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/game/snapshot.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "ANGLE2SHORT",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/game/snapshot.ml"
           ],
           "status": "tested_subset"
         }
@@ -7164,12 +7391,15 @@
       "target": [
         "src/mq3/shared/math.ml",
         "src/mq3/game/playerstate.ml",
-        "src/mq3/game/pmove.ml"
+        "src/mq3/game/pmove.ml",
+        "src/mq3/game/entitystate.ml",
+        "src/mq3/game/snapshot.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_math.py",
-        "scripts/test_pmove.py"
+        "scripts/test_pmove.py",
+        "scripts/test_entitystate.py"
       ]
     },
     {
@@ -12093,10 +12323,22 @@
         "SV_inPVS",
         "SV_inPVSIgnorePortals"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "SV_EntityContact",
+          "target_files": [
+            "src/mq3/server/world.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/server/world.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_transitions.py"
+      ]
     },
     {
       "source": "code/server/sv_init.c",
