@@ -4,7 +4,7 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die vollständige erweiterte Regression besteht aktuell aus 31 bestandenen
+Die vollständige erweiterte Regression besteht aktuell aus 32 bestandenen
 Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`). Der dabei gebaute
 MiniQuake3-Build hat SHA-256
 `cc6300243441369aa8aacdf2b52dde370f032d843296cdf09b34932b3e33e5d1`.
@@ -16,8 +16,8 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 2. Zahlen/Plattform | In Arbeit | 101.125 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff vorhanden; Fenster, Eingabe, UDP und Audio noch offen |
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 392 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
-| 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständige Server-/Client-Frames und Telefrag-Schadensfolgen fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 28 Spawn-Klassen, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps und Entity-Schleife mit Ereignisfreigabe vorhanden; weitere Klassen, Item-Spawns, Schadens-/Todesregeln, Mover-Pushing und vollständige Serverframes fehlen |
+| 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständige Server-/Client-Frames und Telefrag-Todes-/Score-Folgen fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 30 Spawn-Klassen, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-Objekte und Telefrag-Integration vorhanden; weitere Klassen, Item-Spawns, Spieler-Todesregeln, Mover-Pushing und vollständige Serverframes fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -287,7 +287,7 @@ identische 32-Bit-Wörter. Darin enthalten sind 16.384 Pmove-/Link-/Touch-Befehl
 und 3.072 aufgezeichnete Telefrag-Schadensaufrufe. Die Bewegungsfolgen haben
 4.608 Frames mit aktivem und 11.776 Frames mit zurückgesetztem Sprungpad-Merker.
 Beide Profile verwenden dasselbe MiniLang-Testbinary
-(`c0e072fe54eba821f350b8101dd92742e7dbbf6714304725b7b1e75ecf199bd7`).
+(`4119efabedffef72f03f8e56ea84ba0918986806427334d9721efc1243d13685`).
 
 Die Tests initialisieren Game-Entities gezielt auf allen 31 CD-Karten und einer
 assetfreien Karte. Das Pmove/Link/Touch-Protokoll stammt aus dem Vergleichshost;
@@ -298,8 +298,9 @@ Target-/Entity-Schleifenprüfung abgedeckt. Der vollständige Serverframe bleibt
 
 **Telefrag-Grenze:** Kandidaten, Aufrufreihenfolge, Schaden 100.000, Flags und
 `MOD_TELEFRAG` stimmen mit `G_KillBox` überein. Die Funktion `G_Damage` ist hier
-eine aufgezeichnete Callback-Grenze. Trefferfolgen, Rüstung, Tod, Teamregeln und
-Scores werden noch nicht als portiert behauptet. Ein fehlender Schadenscallback
+eine aufgezeichnete Callback-Grenze. Dieser ältere Test deckt keine Schadensfolgen ab; die zusätzliche Kampfprüfung
+unten vergleicht inzwischen Schaden, Rüstung, Teamschutz und Telefrag-Integration.
+Spieler-Todesregeln und Scores bleiben offen. Ein fehlender Schadenscallback
 wird in MiniLang bei einem betroffenen Client als Fehler behandelt.
 
 Der Original-Allocator bricht im vollen Normalbereich auch bei einem zu kürzlich
@@ -325,22 +326,22 @@ Ein separater C-Lauf bestätigt den Fehler eines fälligen, fehlenden Think-Call
 `test_spawn.py` prüft 168 Karten-/Spielmodus-Replays: alle 31 CD-Karten in den
 fünf Modi FFA, Tournament, Single Player, Team Deathmatch und CTF; zusätzlich
 eine konstruierte Karte mit zehn Moduswerten und drei Schwerkraftvarianten.
-17.392.073 Wörter und 2.134.981 String-Bytes stimmen exakt. Nach 849 Kontaktproben
+17.390.211 Wörter und 2.136.910 String-Bytes stimmen exakt. Nach 849 Kontaktproben
 an tatsächlich geladenen Triggern tragen 754 PlayerStates einen Sprungpad-Merker
 und 139 das Teleport-Bit. Eine Probe kann durch überlappende Trigger beide Merker
 tragen; diese Zahlen zählen Ergebniszustände, nicht die Zahl einzelner Callbacks.
 Feld-, Think- und Kartenprüfung verwenden dasselbe MiniLang-Testbinary
-(`9d0fb181e642e226fe798989f9a9b9d433ffb2facce3cebba43f001ce2eae374`).
+(`d2af7a49581da132668663194d19305e1be48e4725157e6d4608e4c79624c199`).
 
-28 der 48 Spawn-Klassen führen bereits die übertragenen Originalfunktionen aus.
+30 der 48 Spawn-Klassen führen bereits die übertragenen Originalfunktionen aus.
 Worldspawn-Effekte, alle Spielmodusfilter, die frühe Brush-Modell-Verlinkung,
 die 100-ms-Zielausrichtung der Sprungpads und komplette PlayerStates nach
 Trigger-Kontakten sind enthalten. Einige originale Positions-/CTF-Spawn-Funktionen
 sind leer; manche andere geben ihre Entity unmittelbar frei. Die Abnahme bewahrt
 diese Funktionen, ohne damit bereits Spieler-Respawn oder CTF-Regeln zu behaupten.
 
-**Aufrufgrenzen:** 8.139 Item-/Klassenaufrufe werden in diesen Replays nur
-aufgezeichnet. Die 20 noch nicht portierten Klassen und `G_SpawnItem` erzeugen
+**Aufrufgrenzen:** 7.883 Item-/Klassenaufrufe werden in diesen Replays nur
+aufgezeichnet. Die 18 noch nicht portierten Klassen und `G_SpawnItem` erzeugen
 keine vereinfachten Ersatzregeln. Ohne gesetzten `unportedFn` bricht MiniLang an
 einer solchen bekannten Klasse kontrolliert ab. Der Testhost stellt Speicher und
 Configstring-/Cvar-Schnittstellen bereit; Netzwerkverteilung, vollständige Frames,
@@ -390,8 +391,34 @@ Freigabe-/Unlink-Priorität, `neverFree`, ausbleibende Think-Aufrufe für tempor
 Entities und die Auswahl der weiteren Handler. Deren Missile-, Item-, Mover-
 und Client-Implementierungen bleiben aufgezeichnete Aufrufgrenzen. Dies ist
 **keine vollständige G_RunFrame-Abnahme**: Cvar-/Zeitverwaltung, ClientEndFrame,
-Match-/Vote-Prüfungen, Schadensregeln und vollständige Serverintegration fehlen.
+Match-/Vote-Prüfungen, Spieler-Todesregeln und vollständige Serverintegration fehlen.
 Schnittstellen und genaue Grenzen: [TARGETS_AND_EVENTS.md](TARGETS_AND_EVENTS.md).
+
+## Schadensberechnung und Karten-Gefahren
+
+`test_combat.py` vergleicht neun Szenarien mit 13.402 Aktionen, 19.400.906
+identischen 32-Bit-Wörtern und 1.022.154 String-Bytes. Enthalten sind die
+vollständigen baseq3-Spielregeln von `G_Damage`, `CheckArmor`, `OnSameTeam`,
+`Team_CheckHurtCarrier`, `trigger_hurt` und `target_kill`. Der Vergleich erfasst
+Gesundheit, Rüstung, Rückstoß, Trefferzähler, Schadensakkumulatoren,
+Battlesuit-Ereignisse, CTF-Trägerdaten sowie Pain-/Death-/Mover-Aufrufe in
+Originalreihenfolge. Der Träger-Zeitmerker wird als Float-Bits verglichen.
+
+Die Fälle prüfen unter anderem Schutzkombinationen, Selbstschaden, Handicap,
+negative Werte, 1024 numerische Schadensproben, große Spielzeiten, alle 32
+Hurt-Flags und gemeinsame Trigger-Sperrzeiten. Räumliche Trigger-Kontakte und
+KillBox-/Teleport-Folgen sind mit der tatsächlichen SV-/CM-Kollision und der
+echten Schadensfunktion verbunden. Sechs zusätzliche Laufzeitverträge prüfen
+die Bindung und kontrollierte Fehler bei fehlenden oder ungültigen Handlerzuständen.
+
+Pain-, Death- und Mover-Callbacks beobachten ihre Argumente und Eintrittszustände;
+einzelne Test-Callbacks geben die Entity frei. Dies ersetzt keine Spieler-Todesregeln.
+Offen sind `player_die`, Scores/Respawn, Waffen-/Radius-Trefferberechnung,
+Schadensfeedback am Frame-Ende, vollständige Teamregeln und Serverintegration.
+`G_Printf`-Diagnosen und Missionpack gehören nicht zu dieser Abnahme.
+Der Rüstungsport verwendet die CRT-Mathematikfunktion `ceil`; die Spielregeln
+bleiben MiniLang und die Projekt-DLL bleibt unverändert.
+Schnittstellen, numerisches Profil und offene Grenzen: [COMBAT.md](COMBAT.md).
 
 ## Reproduzieren
 
@@ -437,6 +464,7 @@ python scripts/test_transitions.py D:/Quake3 --no-curves
 python scripts/test_transitions.py D:/Quake3
 python scripts/test_spawn_values.py
 python scripts/test_targets.py
+python scripts/test_combat.py
 python scripts/test_spawn.py D:/Quake3
 ```
 

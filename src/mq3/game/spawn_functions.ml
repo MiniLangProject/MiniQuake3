@@ -6,6 +6,7 @@ import mq3.game.entities as game
 import mq3.game.spawn_values as values
 import mq3.game.triggers as triggers
 import mq3.game.targets as targets
+import mq3.game.hazards as hazards
 import mq3.game.constants as c
 import mq3.shared.math as q
 import mq3.compat.numeric as n
@@ -156,6 +157,16 @@ function dispatch(level,ent)
     end case
     case "target_location"
       ent.think = targets.locationLinkup; ent.nextthink = n.add32(level.time,200); game.setOrigin(ent,ent.s.origin)
+    end case
+    case "trigger_hurt"
+      initTrigger(level,ent); ent.noise_index = values.soundIndex(level.spawner,"sound/world/electro.wav"); ent.touch = hazards.hurtTouch
+      if ent.damage == 0 then ent.damage = 5 end if
+      ent.r.contents = 0x40000000
+      if (ent.spawnflags & 2) != 0 then ent.use = hazards.hurtUse end if
+      if (ent.spawnflags & 1) == 0 then game.link(level,ent) end if
+    end case
+    case "target_kill"
+      ent.use = hazards.killUse
     end case
     case default
       return false

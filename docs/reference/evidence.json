@@ -14,19 +14,21 @@
     "src/mq3/format/bsp.ml": "891cf26acced8661643df02abf0bd1774aedf8117bf12010d83bebff548c2ac1",
     "src/mq3/format/deflate.ml": "8e6deb910211a8eec266729a6aee0f50dac0503773ddddf2daa93c29d673af61",
     "src/mq3/format/pk3.ml": "f928c29a09282ea0eca113e4aa0d3905a863cbdd09607985330e831397b4149f",
+    "src/mq3/game/combat.ml": "9638fa0c4081d9a0a316704e77987ae3bc60d95c4b20aa1243d37768470de8ee",
     "src/mq3/game/constants.ml": "04c908d6176115d418ae8f14f7791f5f2ef6d86dc054437e7bb00116ddd12adc",
-    "src/mq3/game/entities.ml": "8e5a4730131f254d8cf32e81c5be160d3e2df3ebc8171d00ce11e92918040ca5",
+    "src/mq3/game/entities.ml": "66ccb769cedd295368069a58863be502de72763036f31fc034bb23be08e0c924",
     "src/mq3/game/entitystate.ml": "491a0b8983832ca50914d6a49512062737243e6285567485f644d0aeebf8b2c3",
     "src/mq3/game/events.ml": "d2ae1a966141639cbae9ed9a61dde746afeb694cac34173f0e4f3ac828893c61",
     "src/mq3/game/frame.ml": "d59fc6500e215ed1c108fe44130206b09cad9cbae8b30e741e6211583f37332f",
+    "src/mq3/game/hazards.ml": "6c7831ab2850878a42d20c613c1dad4dd00746cba627103b166f19b59804507a",
     "src/mq3/game/jumppad.ml": "b99ced1c4617234979be0929a4a0f25779be1bc248d3e3729799d5025e23cbe9",
     "src/mq3/game/movement.ml": "8be87eaf74f2c29fd5a98d69c1ac63478fa2731d5c318f9d62901a15d8f0d71f",
     "src/mq3/game/playerstate.ml": "399c00041ec14936c70d79c931764e20fe3ab27397317e5873dcde0b77091524",
     "src/mq3/game/pmove.ml": "996dd106822bc09a03ae46e4a830676dbf9b3a5ea606815dc67d908ae1204fba",
     "src/mq3/game/replay.ml": "0e529db77b5e3a12a89da5284dfc7dd853312cff16089d38cc04448747e08b2a",
     "src/mq3/game/snapshot.ml": "e0b5ffc2318b83d625ffd15effa0d754fe06895035e398a63bec0123eca32aaa",
-    "src/mq3/game/spawn.ml": "738adbe8cd77edbeddc9e85d1d69555ace395e1527c877396fbb70507238ac84",
-    "src/mq3/game/spawn_functions.ml": "d2d1d3ef15098ab6cf1416e80872ab795dc7ece2befed0cafa119a66e2b3e23f",
+    "src/mq3/game/spawn.ml": "d5b8b279c956a0de9c97fc1add1889cc549df8f78908486f79eabd7bb1fe9584",
+    "src/mq3/game/spawn_functions.ml": "4acae35b04f816912025fcc57c87804e03e4d64a947dc720e636f2ae02113123",
     "src/mq3/game/spawn_tables.ml": "98cd9df24da1958662fca590ade22646683bfa32c31ed0cbbb97ed5091fa41b2",
     "src/mq3/game/spawn_values.ml": "06f4be12c57b1b2b4e1815df44c70e668aec8cb4d4bdaa1187ef44a86550e0f2",
     "src/mq3/game/targets.ml": "bd9f90dcab75cd0c681ee083b82ea216abb5e4be547fb7bad698e138e1d39fad",
@@ -53,10 +55,11 @@
     "scripts/reference_replay.py": "075a5f4c35cad4d2cf5506106cfed1dcb56e8a61dd60e1de626f8df2c92de1e8",
     "scripts/reference_smoke.py": "ac1b75ffe774b460e6af3d51a4accd85642d4b5aab01f6ee0a503c95cf53d096",
     "scripts/spawn_fixtures.py": "f2228d4cb26b9039696ba523bc8ffa530244aa6e3b4937dd3fee2d9716c3e778",
-    "scripts/spawn_oracle.py": "2912815ab56cbd8de2d4dfd8fc3e5bbb1477469139535a4b5f6c405ca6eabc05",
+    "scripts/spawn_oracle.py": "f2cc8d17994d16ec6af79c41a17f8fd58bf89544e327cf68217ac3bad70cb0ab",
     "scripts/test_archives.py": "61808f04bc53445facb09066ea90568a0f8e5cf65f03c12a421b38336061d1b4",
     "scripts/test_brush.py": "f04dc9eae5ab89e4ed50e97e60fcc6e01d7c2ba86cd9156a27856fdb472985df",
     "scripts/test_collision.py": "36369bb61e23ae36be1fe8978327ea8486c233564b6d8f7323d6ca22b3f094fe",
+    "scripts/test_combat.py": "bd5eb6ffa2283eaf00712870fe4aedf9110ec8eadeec2ae5436acaa4ca4570ee",
     "scripts/test_core.py": "326e11a4c94ae7e70e67ab6e7db271211a23b75f8d5a0724dfaef61973877ae7",
     "scripts/test_entitystate.py": "65af30f2665c85a0a7e809ff5f64e49e3a1c64c1685cfa0a491b4449aa020ca5",
     "scripts/test_maps.py": "3f44120af9fef99f99f7f9134f7a4792b39ef58a13bc35837cb3fbd6eb0930f0",
@@ -73,7 +76,7 @@
     "scripts/test_server_world.py": "f4f3218e20a1b16223c6a933fc4c7bd3a4210b9bff9946fb25a1fafc11a901d0",
     "scripts/test_shared_game.py": "05882b9c9f594c8b46f962cb96576d9e683dac44d9429f701dff5710659eff53",
     "scripts/test_spatial.py": "1607bb88b15dec145b10f86554f437122dae85ff876d63ace02428ea4d145b72",
-    "scripts/test_spawn.py": "a22f6707de59e3198ceee002269fd94c42baa6fbcd137a2dc889752436fefd1c",
+    "scripts/test_spawn.py": "eabf1116accd5ad6ccd7c6a20e9977534728635549f55346c1a358d621e08df6",
     "scripts/test_spawn_values.py": "4aa0513fa2279542ad4fc479fa116212a00c0c5ab6a3fa33a7f651d579d6b093",
     "scripts/test_targets.py": "e2264722cedfd8fef9bc72a2ce839971ed19a58bbea611db6559d5a844587b46",
     "scripts/test_transitions.py": "06ef2df3360da4569d088859f1e5888c2c94d07d7bd0396f0cd5982b60df7d31",
@@ -81,13 +84,13 @@
     "scripts/test_vm.py": "f9a589ab6cb07a82275a67b5a3ae8c100ce55f8fed75903b62de6234ed24012b",
     "scripts/toolchain.py": "eab72f9e2edb9680c382fccf55533e766b2177d257276a29de363e73e545716a",
     "scripts/transition_oracle.py": "b094c961cde9941d9230cd2af4d4e11a40428705dab40b8f878c1d7e72481d4a",
-    "scripts/update_progress.py": "90ca6ed7e8e1bceddc325c5e552813a6321918010dfd733ad8701ef97b02e95a",
-    "scripts/verify.py": "a870b014b9ea522e3e7bb773b1bcd7bd517ec6a7fc7dfbb8cf49a6a862cafab6",
+    "scripts/update_progress.py": "4fd612806286f9809f4fad96d522053346800c6c95c74ea12de4fc140b038417",
+    "scripts/verify.py": "e019c90942b046393a6e62f386c256a72eb08bd6d0331328ec7dd0553869f09f",
     "tests/archive_tests.ml": "a7266b1d1a15881f117d18344eafc1a03d47e4be053ce42c0616248164510e0c",
     "tests/brush_tests.ml": "a30eee67deb4580b649d643024c9f08acd9c5df7b28cbb2be6289cad151fce04",
     "tests/collision_tests.ml": "c28f47cc00e374f52eb33f88810478fcbeea35819b9a54a91d589113c35a9a57",
     "tests/core_tests.ml": "74b4b7ce5dd8816859b9097053dbbe01d5b49057b76de8cbe22dfa818523765d",
-    "tests/entitystate_tests.ml": "133de7fb260afa458584b19230a4b5c93ee52ccaa3e7b6c4c1e03fe595dee172",
+    "tests/entitystate_tests.ml": "6fc3cb68b451e6ac614901bb205d3892a4a66040a6b63d1d4ad039276f0aedd7",
     "tests/math_tests.ml": "76be7f3d960cb1dc4d5221621d3bfd716e1944091f83a4be300eccab973f1f1a",
     "tests/movement_tests.ml": "a4bad5a0f6ed1e8395deabbc32314a49a55f7f085528b61fbc30cada97a05765",
     "tests/numeric_probe.ml": "37743c72159031b7e6d0f692f6a27ac062f36f086174f98ac5e5d69747a0d4cc",
@@ -96,6 +99,7 @@
     "tests/pmove_tests.ml": "85d2c4281787abdb5b8eb1bc95357d9a7bb109518cb606cbef371a86eb4fa998",
     "tests/reference/brush_oracle.c": "87e510bf27e6340cf4f8c4bff61b6cfc3673a51de10d1fc84a1507e63ac0ad7a",
     "tests/reference/collision_oracle.c": "29ce058bc66079c7b17ccacf09d7c09f4a8ea397bf951c67ea2406784d6cb1bb",
+    "tests/reference/combat_actions.inc": "bce9392194a60b1f0eb2f543e734f47dd4f5bc1a9de95e4036ab2e6171e10111",
     "tests/reference/core_oracle.c": "029c52de4cad3a53065af785abdf1b15d0e5f252e7297746871fe4bcde264703",
     "tests/reference/frame_observer.c": "309a76ab1ff5253aa4059d6bf81e25a058d6f234bf976a763f46fdb8c0844fc7",
     "tests/reference/math_oracle.c": "b22ec691ee4d78f5e2d25ab0ad67b30e05e876b482269f8aa8973e3ccd3754a4",
@@ -106,7 +110,7 @@
     "tests/reference/server_world_oracle.c": "93511d75377005303e3ac34d915ee32793245641b65b44e9f2b8c1f2ec934fc3",
     "tests/reference/shared_game_oracle.c": "189875a93caa876ef1d53c75f0d25f1a1fc24e0c9fcca6541392490f6661d04f",
     "tests/reference/spatial_oracle.c": "00a2b131fff36f2a377f09274f3845625ca6c35d47ea7558eb01915ce5d0737c",
-    "tests/reference/spawn_oracle.c": "a8bebc092ff63707a90436997ed72b09f10fef6b96c6d57aff9c66d35aac48b7",
+    "tests/reference/spawn_oracle.c": "50bf159fcbf1a31852bd7b04ea49203907b3d0ec7974d3ca32d4832ebb361241",
     "tests/reference/spawn_server.c": "779e8ecc04153f3c13508732e80e07b673326c4e00e9e71516ad5025a259d3c8",
     "tests/reference/target_actions.inc": "d34b9d02285f539db35a63dabefd2d5a0e022bda992479f4249be952ea41880d",
     "tests/reference/transition_oracle.c": "52483281f090e375f082dafc64f6ea64bf23077ef74ce30b4b6f94da028e4a8d",
@@ -118,8 +122,8 @@
     "tests/server_world_tests.ml": "0b14306b0fdd817f0c7d9802d0a8188f6f6dcce4d92f2a0b3da88d00488e2025",
     "tests/shared_game_tests.ml": "377922fb745760cae1d377fd2a982c33667fb4d2c3dd9b9def2fb25d88fde1ec",
     "tests/spatial_tests.ml": "1f120494eaa7ca10d91d26a59c9393743b45466376a8d97bfc95c929bf7bb27f",
-    "tests/spawn_tests.ml": "a32ce78faece804e3a06dcfb55744a9a1be09212614fb1f8d39162fc6fe257ab",
-    "tests/transition_tests.ml": "17335c51c78bda599f283779abfbe4fd367cdf4bb22887c89201ce6903e5af17",
+    "tests/spawn_tests.ml": "6981eeb7bc338ee6cf5925a0cff183320a08a79e5a11ca58328b350c39d94189",
+    "tests/transition_tests.ml": "5e25faf4e29303558d04e0e6621810a88dbd803cad9448c0998c4d8169a7f4ee",
     "tests/visibility_tests.ml": "1b7da66dcfb3b6d9f66e20d08a6ead1b00efe634cf85659a98822bab6f8d4609",
     "tests/vm_tests.ml": "e82c903d3c8430197abbf66021ab58cdb0422e83aa6b01eb384f84593015b23a"
   },
@@ -624,6 +628,168 @@
       }
     },
     {
+      "path": "build/reference/combat/result.json",
+      "sha256": "c6fdfc1314cc70aa147178a9babca94baf604a4ae5c10a731ce1b964ee09dfaf",
+      "result": {
+        "passed": true,
+        "scenarios": [
+          {
+            "name": "armor_rounding",
+            "actions": 1462,
+            "exact_words": 1445637,
+            "string_bytes": 68815,
+            "pain_callbacks": 0,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 0,
+            "spatial_unlinks": 2,
+            "inputs_sha256": "3459f68c26da43716740242de187ccb5df33f19f61caf4475053bd4072418a4d",
+            "expected_sha256": "f9dfdf41cc4ce8ac7671299042cb3de80c3f70de07fc8abe8232ba0ddb943105"
+          },
+          {
+            "name": "protection_and_self",
+            "actions": 1248,
+            "exact_words": 1446745,
+            "string_bytes": 61179,
+            "pain_callbacks": 77,
+            "death_callbacks": 22,
+            "mover_callbacks": 0,
+            "spatial_links": 0,
+            "spatial_unlinks": 348,
+            "inputs_sha256": "cc2f4621d55b70d2028fe8fde71fbe4e09630c556056318624595028c1df5817",
+            "expected_sha256": "f77f49f251768e3fc9604c70c24b9364eee088eb1b1801813e57ff0e55f2a527"
+          },
+          {
+            "name": "early_returns_and_callbacks",
+            "actions": 142,
+            "exact_words": 158693,
+            "string_bytes": 6990,
+            "pain_callbacks": 6,
+            "death_callbacks": 11,
+            "mover_callbacks": 2,
+            "spatial_links": 0,
+            "spatial_unlinks": 35,
+            "inputs_sha256": "dd6995571dc425faaa2f4bd4debb4b285e4680b0856c9f8c70aa61783308d197",
+            "expected_sha256": "d783bedb405e67a7d240555996a35187c0e42541fb436fcaaf8885fbc178003b"
+          },
+          {
+            "name": "teams_and_carrier",
+            "actions": 1733,
+            "exact_words": 1977784,
+            "string_bytes": 83925,
+            "pain_callbacks": 0,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 0,
+            "spatial_unlinks": 273,
+            "inputs_sha256": "9bdd0a3a6621a9e332a44f66ff54cfafa55e3dd14f1b4d5381e8ff3a93f0bc1f",
+            "expected_sha256": "08dd27f6fcf048b8a25ed9d3bc465441936a05502877ea66665c792e18ba7e06"
+          },
+          {
+            "name": "numeric_damage",
+            "actions": 8201,
+            "exact_words": 9467567,
+            "string_bytes": 399884,
+            "pain_callbacks": 420,
+            "death_callbacks": 381,
+            "mover_callbacks": 0,
+            "spatial_links": 0,
+            "spatial_unlinks": 2050,
+            "inputs_sha256": "1880edaba62e814fcada974b37f4ce619b65905c7991243dbabadba7e0b035dc",
+            "expected_sha256": "4e2b7a5a860052267517fada104c89b4541af66070eb31bc412248865ae7ba8e"
+          },
+          {
+            "name": "hurt_flags_and_timing",
+            "actions": 522,
+            "exact_words": 4615079,
+            "string_bytes": 377896,
+            "pain_callbacks": 66,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 74,
+            "spatial_unlinks": 81,
+            "inputs_sha256": "b5883afae2d5b1bf29594048dfd5de56f0e7f2a624fa3cea2b692b2ec67e550b",
+            "expected_sha256": "310e266d95014fc9ea56628225dc737620e03d7cd606c89fb7117e16f84b142d"
+          },
+          {
+            "name": "hurt_spatial_contact",
+            "actions": 42,
+            "exact_words": 227309,
+            "string_bytes": 20679,
+            "pain_callbacks": 2,
+            "death_callbacks": 0,
+            "mover_callbacks": 0,
+            "spatial_links": 20,
+            "spatial_unlinks": 34,
+            "inputs_sha256": "73974a60494e637438e4ceb6c4aa6c33ad7f3a41c9de6ec749cd84c77d37934a",
+            "expected_sha256": "1e828123f263a53978814ae8ca6dd394c332e18e169aadc52eaf62fa88caee08"
+          },
+          {
+            "name": "target_kill",
+            "actions": 34,
+            "exact_words": 35485,
+            "string_bytes": 1524,
+            "pain_callbacks": 0,
+            "death_callbacks": 9,
+            "mover_callbacks": 0,
+            "spatial_links": 0,
+            "spatial_unlinks": 9,
+            "inputs_sha256": "bf46d8aa17f8b438bb684d097bb2a615139c93c6d0e10b6265184413c50e062b",
+            "expected_sha256": "223c203dc26a11db4a269915d1445ef30724f54927b03e61b62b10865fbb07c6"
+          },
+          {
+            "name": "killbox_and_teleport",
+            "actions": 18,
+            "exact_words": 26607,
+            "string_bytes": 1262,
+            "pain_callbacks": 0,
+            "death_callbacks": 3,
+            "mover_callbacks": 0,
+            "spatial_links": 7,
+            "spatial_unlinks": 7,
+            "inputs_sha256": "562fd65c4ae0dd2b5ec21a563850ecc0dd6cbf6770f9a9236bd9fdcf7bd94e75",
+            "expected_sha256": "cab8d0837ed44cb7364c54450a66727ae2c5c4e093f116ba4802a6454556bc4b"
+          }
+        ],
+        "actions": 13402,
+        "exact_words": 19400906,
+        "string_bytes": 1022154,
+        "test_sha256": "d2af7a49581da132668663194d19305e1be48e4725157e6d4608e4c79624c199",
+        "runtime_contracts": 6,
+        "scope": "Baseq3 G_Damage/CheckArmor/OnSameTeam/Team_CheckHurtCarrier and hurt/kill spawns; actual server CM and teleport integration. Pain/die/mover callbacks observe dispatch only; no player_die, scoring, damage feedback or complete game server.",
+        "original_sources": {
+          "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
+          "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
+          "Quake-III-Arena-original-source/code/qcommon/cm_test.c": "2e5d1139c88a5ffc6dea01349865f91d210158491931090d4c7f07d3f11cf4e8",
+          "Quake-III-Arena-original-source/code/qcommon/cm_patch.c": "9fd50664bb46f77a6bf3f7d06a69500867bff1cae4b94c9be168c4ad9e03ca1f",
+          "Quake-III-Arena-original-source/code/qcommon/cm_polylib.c": "b1c1cf3a19ada8682b4ca58556b316144940f5bee5ca59ae4dd6ebe1a947a6ec",
+          "Quake-III-Arena-original-source/code/qcommon/md4.c": "fc5be3df4b9c463711e428b98bdc357351e5aeaa13e785073ec7a5921ccc5b4c",
+          "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29",
+          "Quake-III-Arena-original-source/code/game/q_shared.c": "724dae5f0a9de8bc6ced68893f9f59c5625deca4a1e194b11f5be348fdf2481b",
+          "Quake-III-Arena-original-source/code/game/bg_misc.c": "c71034761ec3f75fd8952f2d75a7f057d664b5cf97b5edf26ae020da65a486e0",
+          "Quake-III-Arena-original-source/code/game/bg_pmove.c": "3ced04aed8686d3da051887dc8c4ace88a24b45a6d0bb4e4d5238cd53cb7a7fc",
+          "Quake-III-Arena-original-source/code/game/bg_slidemove.c": "327fa83a0c523da8a7e8b4fbbbba40cf8870a28613459289ef0e8a865e6bd903",
+          "Quake-III-Arena-original-source/code/game/g_utils.c": "8fdebd93b8976f979a5ac4887523884f8f2b4246a8bd9e8f8d67829ab577163b",
+          "Quake-III-Arena-original-source/code/game/g_client.c": "52a3c908aeff487cc924f54991bc7b4f523f6483a0ff060edc3aa32367f213bf",
+          "Quake-III-Arena-original-source/code/game/g_misc.c": "bf29bf68e000b068497d45cd4be9bbcfb9730797e21e07044ee4b158d74f5441",
+          "Quake-III-Arena-original-source/code/game/g_target.c": "34249fdb42c433e88baa10ce1c10d5214373da0b78b7e6b21ee7afa542d7ef93",
+          "Quake-III-Arena-original-source/code/game/g_team.c": "58005485a30605e33d826da14952abf5158832d9d8bf098178e3b8cc97587a02",
+          "Quake-III-Arena-original-source/code/game/g_mover.c": "4c9934ebd38ee2634affc102cfc423df15fedbd81186b42726da5ef6c72c7500",
+          "Quake-III-Arena-original-source/code/game/g_main.c": "b98c2b5cb2ed272bcce36acd1e5eda1c57d499b9ecd3549ba9a08f69dd1363d4",
+          "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
+          "Quake-III-Arena-original-source/code/game/g_combat.c": "a19a66ecaf1d1bf557e350e08ea57da8356d1a66ee4f61d8cc2fae455c312a48",
+          "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
+          "Quake-III-Arena-original-source/code/game/g_spawn.c": "611d4c13b7794785e1c475f93d2dfcbfad3173132b76e031e80db7b8653bd268",
+          "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
+          "Quake-III-Arena-original-source/code/game/q_shared.h": "7c356992d3f8b722eeb0160c44a0515bd5a83538ffb86190ca138e352e874115",
+          "Quake-III-Arena-original-source/code/game/bg_public.h": "29679e04ba6f0f730c5ca200410330e057609da59e563e36d101f329fafd09e7",
+          "Quake-III-Arena-original-source/code/server/sv_game.c": "dda52c608aec154610aa554c7a15d2f597196193e813127114c43636fcc1f57b",
+          "Quake-III-Arena-original-source/code/server/sv_world.c": "d67f952c374902c71b6e65523ae983f0d6081e16c379b566779a1fd1b05aba4d",
+          "Quake-III-Arena-original-source/code/server/sv_init.c": "cc7446cc30bf71275e8392988e32ad324fc2ed274bdc927194c8fd9e9ddabff6"
+        }
+      }
+    },
+    {
       "path": "build/reference/core/result.json",
       "sha256": "de1b7952dda7a5a5965c6fa2b7e97960faac955c67aa0fd0b2ffa8a5a8f57a90",
       "result": {
@@ -676,7 +842,7 @@
     },
     {
       "path": "build/reference/entitystate/result.json",
-      "sha256": "329c023e041e711fe795e97b0ee8050ba3ddd267def88d578207d93a43e18675",
+      "sha256": "87e6de961b49683489c6435d78a9c8ba7e9fc5aa1b8761226d6ac61943d1ae41",
       "result": {
         "passed": true,
         "cases": 16384,
@@ -688,7 +854,7 @@
         "scope": "BG_PlayerStateToEntityState/ExtraPolate, full entity storage and SetClientViewAngle; native original x86 profile",
         "input_sha256": "bf4bd23fd1026d39f0ea7bf1e494d05c8f8d5e37822c09d047852bc224fb488c",
         "expected_sha256": "7576c564306a4dab7c27d1321229d4391ef58d6d381dc965a5e3c843602d3087",
-        "test_sha256": "a2e8ec34062ebbf382b78e5cae16e4b0c7b820e6d1c0dcdb592148f797e16fe1",
+        "test_sha256": "1793e709f5b38b1a2bbffd23b1a5ed71e17596a35045d7fd4094a996237c9fd7",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -7364,14 +7530,14 @@
     },
     {
       "path": "build/reference/spawn/curves/result.json",
-      "sha256": "48313500dd705f6bf2030a8fe53b9bbaef6656c2421a9cb8212d0c933479672f",
+      "sha256": "4cf40b8b63f7d71e40a261cfd8175c1f0de20214eb0d52f738bdd6dce4b5b87b",
       "result": {
         "passed": true,
-        "profile": "complete original g_spawn.c, 28 actual spawn classes, original G_RunThink/SV/CM and trigger callbacks; cm_noCurves=0",
-        "scope_boundary": "20 unported normal spawn classes and all 35 G_SpawnItem calls only record dispatch; no complete map/game-server acceptance",
+        "profile": "complete original g_spawn.c, 30 actual spawn classes, original G_RunThink/SV/CM and trigger callbacks; cm_noCurves=0",
+        "scope_boundary": "18 unported normal spawn classes and all 35 G_SpawnItem calls only record dispatch; no complete map/game-server acceptance",
         "map_mode_replays": 168,
-        "exact_words": 17392073,
-        "string_bytes": 2134981,
+        "exact_words": 17390211,
+        "string_bytes": 2136910,
         "trigger_probes": 849,
         "push_reactions": 754,
         "teleport_reactions": 139,
@@ -8152,13 +8318,13 @@
             "map": "maps/q3ctf3.bsp",
             "gametype": 0,
             "exact_words": 206426,
-            "string_bytes": 25984,
+            "string_bytes": 26007,
             "events": {
-              "1": 7,
+              "1": 8,
               "2": 3,
               "7": 267,
-              "4": 130,
-              "5": 82,
+              "4": 128,
+              "5": 84,
               "6": 258,
               "8": 4
             },
@@ -8170,7 +8336,6 @@
               "ammo_rockets": 8,
               "ammo_bullets": 4,
               "item_health": 15,
-              "trigger_hurt": 2,
               "item_health_small": 12,
               "weapon_plasmagun": 4,
               "weapon_railgun": 2,
@@ -8224,19 +8389,19 @@
             "teleport_reactions": 0,
             "map_sha256": "ca0b993c4ff4fe3f22123539c480866e666084990f8c533f15b90f6333ed809a",
             "inputs_sha256": "81d5d6868fc66e0f91f52624e9511dec0d2707eb09716da2748abb1f42becffd",
-            "expected_sha256": "ee5664d75a03c8c9c2b8a9842d4cc4e4f0f6fc75de4bd3c37de11d25ef51750c"
+            "expected_sha256": "47ed9ef8d0921541b11e330993dc4d3fddb9df22904be75d5e2dfa5433179600"
           },
           {
             "map": "maps/q3ctf3.bsp",
             "gametype": 1,
             "exact_words": 206430,
-            "string_bytes": 25996,
+            "string_bytes": 26019,
             "events": {
-              "1": 7,
+              "1": 8,
               "2": 4,
               "7": 267,
-              "4": 130,
-              "5": 82,
+              "4": 128,
+              "5": 84,
               "6": 258,
               "8": 4
             },
@@ -8248,7 +8413,6 @@
               "ammo_rockets": 8,
               "ammo_bullets": 4,
               "item_health": 15,
-              "trigger_hurt": 2,
               "item_health_small": 12,
               "weapon_plasmagun": 4,
               "weapon_railgun": 2,
@@ -8302,20 +8466,20 @@
             "teleport_reactions": 0,
             "map_sha256": "ca0b993c4ff4fe3f22123539c480866e666084990f8c533f15b90f6333ed809a",
             "inputs_sha256": "7af764d2e1301a3e1e05c491ff806fb4113ce326201843d4f313c7933dad630b",
-            "expected_sha256": "9890f1f97b4b0227677fd6af4cf52c2e1de48d895ae15efeefdd55e52fa05292"
+            "expected_sha256": "888fa0aaf7da305cd7900571fa798203ddf2796a172c23f4c918c56deeccacb5"
           },
           {
             "map": "maps/q3ctf3.bsp",
             "gametype": 2,
             "exact_words": 206434,
-            "string_bytes": 25994,
+            "string_bytes": 26017,
             "events": {
-              "1": 8,
+              "1": 9,
               "2": 3,
               "3": 1,
               "7": 267,
-              "4": 130,
-              "5": 82,
+              "4": 128,
+              "5": 84,
               "6": 258,
               "8": 4
             },
@@ -8327,7 +8491,6 @@
               "ammo_rockets": 8,
               "ammo_bullets": 4,
               "item_health": 15,
-              "trigger_hurt": 2,
               "item_health_small": 12,
               "weapon_plasmagun": 4,
               "weapon_railgun": 2,
@@ -8381,19 +8544,19 @@
             "teleport_reactions": 0,
             "map_sha256": "ca0b993c4ff4fe3f22123539c480866e666084990f8c533f15b90f6333ed809a",
             "inputs_sha256": "ef4b35514f9b055eef3d92f8e42c8abdc4029969798ec745cffc0aa8d642d832",
-            "expected_sha256": "be54647cb65d3e5e66d25f0f3c476a975ed685b83b94580fbf07849e89f164eb"
+            "expected_sha256": "02cb392943e88f4e81bb0f917c8717d7bbc0d12b40ebbdf482dd3216644cc9b0"
           },
           {
             "map": "maps/q3ctf3.bsp",
             "gametype": 3,
             "exact_words": 206430,
-            "string_bytes": 25996,
+            "string_bytes": 26019,
             "events": {
-              "1": 7,
+              "1": 8,
               "2": 4,
               "7": 267,
-              "4": 130,
-              "5": 82,
+              "4": 128,
+              "5": 84,
               "6": 258,
               "8": 4
             },
@@ -8405,7 +8568,6 @@
               "ammo_rockets": 8,
               "ammo_bullets": 4,
               "item_health": 15,
-              "trigger_hurt": 2,
               "item_health_small": 12,
               "weapon_plasmagun": 4,
               "weapon_railgun": 2,
@@ -8459,19 +8621,19 @@
             "teleport_reactions": 0,
             "map_sha256": "ca0b993c4ff4fe3f22123539c480866e666084990f8c533f15b90f6333ed809a",
             "inputs_sha256": "52a2fc0ad13cb634b8172db97c8f0554df200519081a93f08c76c6cdcd6911a1",
-            "expected_sha256": "9890f1f97b4b0227677fd6af4cf52c2e1de48d895ae15efeefdd55e52fa05292"
+            "expected_sha256": "888fa0aaf7da305cd7900571fa798203ddf2796a172c23f4c918c56deeccacb5"
           },
           {
             "map": "maps/q3ctf3.bsp",
             "gametype": 4,
             "exact_words": 206426,
-            "string_bytes": 25984,
+            "string_bytes": 26007,
             "events": {
-              "1": 7,
+              "1": 8,
               "2": 3,
               "7": 267,
-              "4": 130,
-              "5": 82,
+              "4": 128,
+              "5": 84,
               "6": 258,
               "8": 4
             },
@@ -8483,7 +8645,6 @@
               "ammo_rockets": 8,
               "ammo_bullets": 4,
               "item_health": 15,
-              "trigger_hurt": 2,
               "item_health_small": 12,
               "weapon_plasmagun": 4,
               "weapon_railgun": 2,
@@ -8537,19 +8698,19 @@
             "teleport_reactions": 0,
             "map_sha256": "ca0b993c4ff4fe3f22123539c480866e666084990f8c533f15b90f6333ed809a",
             "inputs_sha256": "7d42d8d4483bea1f75f3f6150f70ff856ad5715dfc4b579d4c17e72722ec33b4",
-            "expected_sha256": "ee5664d75a03c8c9c2b8a9842d4cc4e4f0f6fc75de4bd3c37de11d25ef51750c"
+            "expected_sha256": "47ed9ef8d0921541b11e330993dc4d3fddb9df22904be75d5e2dfa5433179600"
           },
           {
             "map": "maps/q3ctf4.bsp",
             "gametype": 0,
-            "exact_words": 90226,
-            "string_bytes": 11159,
+            "exact_words": 90228,
+            "string_bytes": 11182,
             "events": {
-              "1": 8,
+              "1": 9,
               "2": 3,
               "7": 116,
-              "5": 49,
-              "4": 27,
+              "5": 50,
+              "4": 26,
               "6": 116,
               "8": 4,
               "9": 16
@@ -8568,7 +8729,6 @@
               "team_CTF_blueflag": 1,
               "weapon_railgun": 2,
               "target_remove_powerups": 1,
-              "trigger_hurt": 1,
               "weapon_bfg": 1
             },
             "states": [
@@ -8610,19 +8770,19 @@
             "teleport_reactions": 2,
             "map_sha256": "8bd598501e019baf95e125447aedfe134f0ac52491a9ff88557db6a6945501f0",
             "inputs_sha256": "e5fabf6d0bb5dac3f79d208ebefa44e4cc4053a4594086541d34ddcdd4105399",
-            "expected_sha256": "e8affab02448e6bc1ed69d6d5cb84d739bf0abae9746cf68a73478a5f87a4b27"
+            "expected_sha256": "e1328477e3708c8935f110e7d442c46d3485f2329e9fc9e8f69298701602b517"
           },
           {
             "map": "maps/q3ctf4.bsp",
             "gametype": 1,
-            "exact_words": 90230,
-            "string_bytes": 11171,
+            "exact_words": 90232,
+            "string_bytes": 11194,
             "events": {
-              "1": 8,
+              "1": 9,
               "2": 4,
               "7": 116,
-              "5": 49,
-              "4": 27,
+              "5": 50,
+              "4": 26,
               "6": 116,
               "8": 4,
               "9": 16
@@ -8641,7 +8801,6 @@
               "team_CTF_blueflag": 1,
               "weapon_railgun": 2,
               "target_remove_powerups": 1,
-              "trigger_hurt": 1,
               "weapon_bfg": 1
             },
             "states": [
@@ -8683,20 +8842,20 @@
             "teleport_reactions": 2,
             "map_sha256": "8bd598501e019baf95e125447aedfe134f0ac52491a9ff88557db6a6945501f0",
             "inputs_sha256": "ccb4506f3866cec0616c1af28be7a95c5929b3f383b5c709fa9ad18bbe7e7437",
-            "expected_sha256": "32cee6ab956bd075ba61de1646e26c8394bd43b7302fc45b52406678f8e78cb5"
+            "expected_sha256": "3256dbb125e37afe0cb27ceb05d406f069c7d3652e8356fdcf0faa3aed06426b"
           },
           {
             "map": "maps/q3ctf4.bsp",
             "gametype": 2,
-            "exact_words": 90234,
-            "string_bytes": 11169,
+            "exact_words": 90236,
+            "string_bytes": 11192,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 3,
               "3": 1,
               "7": 116,
-              "5": 49,
-              "4": 27,
+              "5": 50,
+              "4": 26,
               "6": 116,
               "8": 4,
               "9": 16
@@ -8715,7 +8874,6 @@
               "team_CTF_blueflag": 1,
               "weapon_railgun": 2,
               "target_remove_powerups": 1,
-              "trigger_hurt": 1,
               "weapon_bfg": 1
             },
             "states": [
@@ -8757,19 +8915,19 @@
             "teleport_reactions": 2,
             "map_sha256": "8bd598501e019baf95e125447aedfe134f0ac52491a9ff88557db6a6945501f0",
             "inputs_sha256": "47225373e5b155743546f6528ce6b08f93509b8cad47d7d7503507a0781abfb4",
-            "expected_sha256": "476027f189d59cdd4c5b869823f4514fd740758f2b5786cd0fdd9433306f06bf"
+            "expected_sha256": "402f8eb9878ad0e37aa3d74893aeb515aff36e67d366f496598a7a956ac67d8a"
           },
           {
             "map": "maps/q3ctf4.bsp",
             "gametype": 3,
-            "exact_words": 90230,
-            "string_bytes": 11171,
+            "exact_words": 90232,
+            "string_bytes": 11194,
             "events": {
-              "1": 8,
+              "1": 9,
               "2": 4,
               "7": 116,
-              "5": 49,
-              "4": 27,
+              "5": 50,
+              "4": 26,
               "6": 116,
               "8": 4,
               "9": 16
@@ -8788,7 +8946,6 @@
               "team_CTF_blueflag": 1,
               "weapon_railgun": 2,
               "target_remove_powerups": 1,
-              "trigger_hurt": 1,
               "weapon_bfg": 1
             },
             "states": [
@@ -8830,19 +8987,19 @@
             "teleport_reactions": 2,
             "map_sha256": "8bd598501e019baf95e125447aedfe134f0ac52491a9ff88557db6a6945501f0",
             "inputs_sha256": "f91f7b7668fcb1e20090e4d2c30a3e4235ff025c7ea4c846dfe71ad495737dd3",
-            "expected_sha256": "32cee6ab956bd075ba61de1646e26c8394bd43b7302fc45b52406678f8e78cb5"
+            "expected_sha256": "3256dbb125e37afe0cb27ceb05d406f069c7d3652e8356fdcf0faa3aed06426b"
           },
           {
             "map": "maps/q3ctf4.bsp",
             "gametype": 4,
-            "exact_words": 90226,
-            "string_bytes": 11159,
+            "exact_words": 90228,
+            "string_bytes": 11182,
             "events": {
-              "1": 8,
+              "1": 9,
               "2": 3,
               "7": 116,
-              "5": 49,
-              "4": 27,
+              "5": 50,
+              "4": 26,
               "6": 116,
               "8": 4,
               "9": 16
@@ -8861,7 +9018,6 @@
               "team_CTF_blueflag": 1,
               "weapon_railgun": 2,
               "target_remove_powerups": 1,
-              "trigger_hurt": 1,
               "weapon_bfg": 1
             },
             "states": [
@@ -8903,7 +9059,7 @@
             "teleport_reactions": 2,
             "map_sha256": "8bd598501e019baf95e125447aedfe134f0ac52491a9ff88557db6a6945501f0",
             "inputs_sha256": "19964d21d814081e876e165eaf0512e093a2b80573c867e35409ca2f8596bc83",
-            "expected_sha256": "e8affab02448e6bc1ed69d6d5cb84d739bf0abae9746cf68a73478a5f87a4b27"
+            "expected_sha256": "e1328477e3708c8935f110e7d442c46d3485f2329e9fc9e8f69298701602b517"
           },
           {
             "map": "maps/q3dm0.bsp",
@@ -9971,15 +10127,15 @@
           {
             "map": "maps/q3dm11.bsp",
             "gametype": 0,
-            "exact_words": 202542,
-            "string_bytes": 28634,
+            "exact_words": 202538,
+            "string_bytes": 28657,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 3,
               "7": 267,
-              "4": 97,
+              "4": 93,
               "6": 299,
-              "5": 46,
+              "5": 50,
               "8": 4,
               "9": 6
             },
@@ -9993,7 +10149,6 @@
               "ammo_lightning": 4,
               "shooter_grenade": 9,
               "target_print": 1,
-              "trigger_hurt": 4,
               "item_health_mega": 1,
               "item_health": 18,
               "ammo_grenades": 2,
@@ -10054,20 +10209,20 @@
             "teleport_reactions": 2,
             "map_sha256": "c0cea74839b39fa776d80c6c6b30d86781234edda7b832b8059c618b699ac0e6",
             "inputs_sha256": "eba6aeee591f3cc4c962acb171287539e17486dcb4e0c49d1f12198ffb32108c",
-            "expected_sha256": "71d44234c38f1c55e73df38d1cea4861485a4af8e0b97562c6a583c3b1c46e76"
+            "expected_sha256": "41b88713c4ba8e2983c390ce35ad1496a30ac6e90a1007244b0c913905ca65c9"
           },
           {
             "map": "maps/q3dm11.bsp",
             "gametype": 1,
-            "exact_words": 202546,
-            "string_bytes": 28646,
+            "exact_words": 202542,
+            "string_bytes": 28669,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 4,
               "7": 267,
-              "4": 97,
+              "4": 93,
               "6": 299,
-              "5": 46,
+              "5": 50,
               "8": 4,
               "9": 6
             },
@@ -10081,7 +10236,6 @@
               "ammo_lightning": 4,
               "shooter_grenade": 9,
               "target_print": 1,
-              "trigger_hurt": 4,
               "item_health_mega": 1,
               "item_health": 18,
               "ammo_grenades": 2,
@@ -10142,21 +10296,21 @@
             "teleport_reactions": 2,
             "map_sha256": "c0cea74839b39fa776d80c6c6b30d86781234edda7b832b8059c618b699ac0e6",
             "inputs_sha256": "df0611a4a1960eebdf458d77c106e64f89910bb6a3f7cd9587ad3a36866578ef",
-            "expected_sha256": "044f640bb2cb77830d7cd3f3731b64e1d6391f0d5aea929d8e08f2f5913f8783"
+            "expected_sha256": "ced8d6434b3e08208ccc4e2ea960b8b758a5281e2846ea82495e6d9a39302388"
           },
           {
             "map": "maps/q3dm11.bsp",
             "gametype": 2,
-            "exact_words": 202550,
-            "string_bytes": 28644,
+            "exact_words": 202546,
+            "string_bytes": 28667,
             "events": {
-              "1": 14,
+              "1": 15,
               "2": 3,
               "3": 1,
               "7": 267,
-              "4": 97,
+              "4": 93,
               "6": 299,
-              "5": 46,
+              "5": 50,
               "8": 4,
               "9": 6
             },
@@ -10170,7 +10324,6 @@
               "ammo_lightning": 4,
               "shooter_grenade": 9,
               "target_print": 1,
-              "trigger_hurt": 4,
               "item_health_mega": 1,
               "item_health": 18,
               "ammo_grenades": 2,
@@ -10231,20 +10384,20 @@
             "teleport_reactions": 2,
             "map_sha256": "c0cea74839b39fa776d80c6c6b30d86781234edda7b832b8059c618b699ac0e6",
             "inputs_sha256": "81b9560b22ec05372dea62da9199c8155f436f7354202311146fd59039532aef",
-            "expected_sha256": "c464a916a566530b3b865b51b3888206680d49acc482c2cb05430507bda7d4e8"
+            "expected_sha256": "3ae8c6bf0e03d2bdde34070800f8eeb7fef7b22bc3ada0f8a3adb174df13a20f"
           },
           {
             "map": "maps/q3dm11.bsp",
             "gametype": 3,
-            "exact_words": 183298,
-            "string_bytes": 25454,
+            "exact_words": 183294,
+            "string_bytes": 25477,
             "events": {
-              "1": 12,
+              "1": 13,
               "2": 4,
               "7": 228,
-              "4": 82,
+              "4": 78,
               "6": 338,
-              "5": 38,
+              "5": 42,
               "8": 4,
               "9": 6
             },
@@ -10256,7 +10409,6 @@
               "ammo_lightning": 4,
               "item_enviro": 1,
               "func_door": 5,
-              "trigger_hurt": 4,
               "item_health_mega": 1,
               "item_health": 18,
               "ammo_grenades": 2,
@@ -10315,20 +10467,20 @@
             "teleport_reactions": 2,
             "map_sha256": "c0cea74839b39fa776d80c6c6b30d86781234edda7b832b8059c618b699ac0e6",
             "inputs_sha256": "832b8d12b9067e518c10fe209f4f399d6515de572037618a353a1c172e0bb81b",
-            "expected_sha256": "4c9f6b648aa2ab2730cc5fbe312f6038078c951260232119a44666c18c1b2a01"
+            "expected_sha256": "42a0d1d23314aa543e9c1bac1b27a71af3d7e42ea65b18aa746586096cf63a54"
           },
           {
             "map": "maps/q3dm11.bsp",
             "gametype": 4,
-            "exact_words": 183294,
-            "string_bytes": 25442,
+            "exact_words": 183290,
+            "string_bytes": 25465,
             "events": {
-              "1": 12,
+              "1": 13,
               "2": 3,
               "7": 228,
-              "4": 82,
+              "4": 78,
               "6": 338,
-              "5": 38,
+              "5": 42,
               "8": 4,
               "9": 6
             },
@@ -10340,7 +10492,6 @@
               "ammo_lightning": 4,
               "item_enviro": 1,
               "func_door": 5,
-              "trigger_hurt": 4,
               "item_health_mega": 1,
               "item_health": 18,
               "ammo_grenades": 2,
@@ -10399,20 +10550,20 @@
             "teleport_reactions": 2,
             "map_sha256": "c0cea74839b39fa776d80c6c6b30d86781234edda7b832b8059c618b699ac0e6",
             "inputs_sha256": "5b508fdf6ff28569f49a68c00ff09951f63017db0c574b08ccab1456ed2e3276",
-            "expected_sha256": "74c86f6357291bc07394f41aa1f4f75812559df0c10fde712609a9241d0525c1"
+            "expected_sha256": "d2190f397f0d5062c422122532b22c331c72cad568237295074227ca181afb0d"
           },
           {
             "map": "maps/q3dm12.bsp",
             "gametype": 0,
-            "exact_words": 205711,
-            "string_bytes": 27412,
+            "exact_words": 205705,
+            "string_bytes": 27435,
             "events": {
-              "1": 12,
+              "1": 13,
               "2": 3,
               "7": 261,
               "6": 310,
-              "4": 112,
-              "5": 58,
+              "4": 107,
+              "5": 63,
               "8": 4,
               "9": 11
             },
@@ -10442,7 +10593,6 @@
               "item_regen": 1,
               "item_health_mega": 1,
               "target_remove_powerups": 5,
-              "trigger_hurt": 5,
               "weapon_lightning": 1
             },
             "states": [
@@ -10484,20 +10634,20 @@
             "teleport_reactions": 2,
             "map_sha256": "4d8800b7bab10fea0b7c2214b57ec3b721d17ca12bc6cdd30ccacd99d7bde3b8",
             "inputs_sha256": "aa8f4948886aea0c515bbff13af29be3bede0863a57ceac3e1ff9fac7d5a8260",
-            "expected_sha256": "36877d9182488d76b2095284076e4de43d69cb9b4c24b3fbbccf4b2eda431bc3"
+            "expected_sha256": "7b79bf3a779d5148ad1b3c49406d68d4f98114b9208f424225c348131ed99b7a"
           },
           {
             "map": "maps/q3dm12.bsp",
             "gametype": 1,
-            "exact_words": 205715,
-            "string_bytes": 27424,
+            "exact_words": 205709,
+            "string_bytes": 27447,
             "events": {
-              "1": 12,
+              "1": 13,
               "2": 4,
               "7": 261,
               "6": 310,
-              "4": 112,
-              "5": 58,
+              "4": 107,
+              "5": 63,
               "8": 4,
               "9": 11
             },
@@ -10527,7 +10677,6 @@
               "item_regen": 1,
               "item_health_mega": 1,
               "target_remove_powerups": 5,
-              "trigger_hurt": 5,
               "weapon_lightning": 1
             },
             "states": [
@@ -10569,21 +10718,21 @@
             "teleport_reactions": 2,
             "map_sha256": "4d8800b7bab10fea0b7c2214b57ec3b721d17ca12bc6cdd30ccacd99d7bde3b8",
             "inputs_sha256": "650c67af76d48f718454679f1a2cdd5eebffb5142c44c8ca3cce19b717ee5765",
-            "expected_sha256": "06e19a424d743cedbbc90dfcd80f826b83c5e2bbd00b22c5f6f9f40b56a7e8e4"
+            "expected_sha256": "1e4ee0629e1d5d40cb6f80c273b036060832835051a574c2a95e80a3ce4ab2b6"
           },
           {
             "map": "maps/q3dm12.bsp",
             "gametype": 2,
-            "exact_words": 205719,
-            "string_bytes": 27422,
+            "exact_words": 205713,
+            "string_bytes": 27445,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 3,
               "3": 1,
               "7": 261,
               "6": 310,
-              "4": 112,
-              "5": 58,
+              "4": 107,
+              "5": 63,
               "8": 4,
               "9": 11
             },
@@ -10613,7 +10762,6 @@
               "item_regen": 1,
               "item_health_mega": 1,
               "target_remove_powerups": 5,
-              "trigger_hurt": 5,
               "weapon_lightning": 1
             },
             "states": [
@@ -10655,20 +10803,20 @@
             "teleport_reactions": 2,
             "map_sha256": "4d8800b7bab10fea0b7c2214b57ec3b721d17ca12bc6cdd30ccacd99d7bde3b8",
             "inputs_sha256": "02cd1d4dac93493c853ab930b7e4411b1c9d719baf394148ac1cb4e1e8861bba",
-            "expected_sha256": "9fcedad5da9582e72942a0ba7917cad84bbbd4da651fd8db6aa517a2ccddba52"
+            "expected_sha256": "487552aa21a39dc7a7e6ab132c8d11ed677187ab736e8c1a8a9294ffab18a49e"
           },
           {
             "map": "maps/q3dm12.bsp",
             "gametype": 3,
-            "exact_words": 205715,
-            "string_bytes": 27424,
+            "exact_words": 205709,
+            "string_bytes": 27447,
             "events": {
-              "1": 12,
+              "1": 13,
               "2": 4,
               "7": 261,
               "6": 310,
-              "4": 112,
-              "5": 58,
+              "4": 107,
+              "5": 63,
               "8": 4,
               "9": 11
             },
@@ -10698,7 +10846,6 @@
               "item_regen": 1,
               "item_health_mega": 1,
               "target_remove_powerups": 5,
-              "trigger_hurt": 5,
               "weapon_lightning": 1
             },
             "states": [
@@ -10740,20 +10887,20 @@
             "teleport_reactions": 2,
             "map_sha256": "4d8800b7bab10fea0b7c2214b57ec3b721d17ca12bc6cdd30ccacd99d7bde3b8",
             "inputs_sha256": "ea1f893633b72544eb9c5bcb9c5f22018b8b4b3f7ea7a5065c49831f38dd0d8e",
-            "expected_sha256": "06e19a424d743cedbbc90dfcd80f826b83c5e2bbd00b22c5f6f9f40b56a7e8e4"
+            "expected_sha256": "1e4ee0629e1d5d40cb6f80c273b036060832835051a574c2a95e80a3ce4ab2b6"
           },
           {
             "map": "maps/q3dm12.bsp",
             "gametype": 4,
-            "exact_words": 205711,
-            "string_bytes": 27412,
+            "exact_words": 205705,
+            "string_bytes": 27435,
             "events": {
-              "1": 12,
+              "1": 13,
               "2": 3,
               "7": 261,
               "6": 310,
-              "4": 112,
-              "5": 58,
+              "4": 107,
+              "5": 63,
               "8": 4,
               "9": 11
             },
@@ -10783,7 +10930,6 @@
               "item_regen": 1,
               "item_health_mega": 1,
               "target_remove_powerups": 5,
-              "trigger_hurt": 5,
               "weapon_lightning": 1
             },
             "states": [
@@ -10825,7 +10971,7 @@
             "teleport_reactions": 2,
             "map_sha256": "4d8800b7bab10fea0b7c2214b57ec3b721d17ca12bc6cdd30ccacd99d7bde3b8",
             "inputs_sha256": "f62489ef9808bb549a74ee04d45fffdc81f0c3a07a634b772049290dc3b66a16",
-            "expected_sha256": "36877d9182488d76b2095284076e4de43d69cb9b4c24b3fbbccf4b2eda431bc3"
+            "expected_sha256": "7b79bf3a779d5148ad1b3c49406d68d4f98114b9208f424225c348131ed99b7a"
           },
           {
             "map": "maps/q3dm13.bsp",
@@ -11212,13 +11358,13 @@
             "map": "maps/q3dm14.bsp",
             "gametype": 0,
             "exact_words": 173678,
-            "string_bytes": 22685,
+            "string_bytes": 22708,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 3,
               "7": 204,
-              "5": 29,
-              "4": 67,
+              "5": 31,
+              "4": 65,
               "6": 374,
               "8": 4,
               "9": 4
@@ -11245,7 +11391,6 @@
               "weapon_lightning": 1,
               "item_armor_shard": 5,
               "item_health_mega": 1,
-              "trigger_hurt": 2,
               "weapon_bfg": 1,
               "func_door": 8
             },
@@ -11288,19 +11433,19 @@
             "teleport_reactions": 0,
             "map_sha256": "c90a5ce275a36a275d07c75d729b1def7d9fcbed9a92eb0e6a1beaef66ba3c1b",
             "inputs_sha256": "fd4ca7d8f5eee470110e33bf562cbfdc774661dc30f0ac533da5bde5c6cb24fe",
-            "expected_sha256": "043a0ef9a1c97cb96d31175fb8d39befc77273ae4d92efc17778376c1f5970d8"
+            "expected_sha256": "2b0997177d403476c50156632f6f1b73ed7a43007446231db15a346478a1a6c8"
           },
           {
             "map": "maps/q3dm14.bsp",
             "gametype": 1,
             "exact_words": 173682,
-            "string_bytes": 22697,
+            "string_bytes": 22720,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 4,
               "7": 204,
-              "5": 29,
-              "4": 67,
+              "5": 31,
+              "4": 65,
               "6": 374,
               "8": 4,
               "9": 4
@@ -11327,7 +11472,6 @@
               "weapon_lightning": 1,
               "item_armor_shard": 5,
               "item_health_mega": 1,
-              "trigger_hurt": 2,
               "weapon_bfg": 1,
               "func_door": 8
             },
@@ -11370,20 +11514,20 @@
             "teleport_reactions": 0,
             "map_sha256": "c90a5ce275a36a275d07c75d729b1def7d9fcbed9a92eb0e6a1beaef66ba3c1b",
             "inputs_sha256": "1c84bbe137e3ec101a9f85fc05e619a70ddc1b8540396e5dc62768910f43818e",
-            "expected_sha256": "c0146baf8a637bd8ababb37ee64820029d8a534251ea9d8b0f72982323b27561"
+            "expected_sha256": "c4e6f55063c64342f73d16c510d60980c7aedf47a2cb311bb94ad5c271e0b2b5"
           },
           {
             "map": "maps/q3dm14.bsp",
             "gametype": 2,
             "exact_words": 173686,
-            "string_bytes": 22695,
+            "string_bytes": 22718,
             "events": {
-              "1": 12,
+              "1": 13,
               "2": 3,
               "3": 1,
               "7": 204,
-              "5": 29,
-              "4": 67,
+              "5": 31,
+              "4": 65,
               "6": 374,
               "8": 4,
               "9": 4
@@ -11410,7 +11554,6 @@
               "weapon_lightning": 1,
               "item_armor_shard": 5,
               "item_health_mega": 1,
-              "trigger_hurt": 2,
               "weapon_bfg": 1,
               "func_door": 8
             },
@@ -11453,19 +11596,19 @@
             "teleport_reactions": 0,
             "map_sha256": "c90a5ce275a36a275d07c75d729b1def7d9fcbed9a92eb0e6a1beaef66ba3c1b",
             "inputs_sha256": "f85de9af211f51778c134f845ecdb80068d32a873fba0012db6133db3cb97621",
-            "expected_sha256": "efa3c38da9051981bf46cf148ca6a5285246aea5c78da5ca452b69f500e027f4"
+            "expected_sha256": "25c23040c6098b15781afb6a177242fbafd3adeff7aa80917bff1a6322b7fc00"
           },
           {
             "map": "maps/q3dm14.bsp",
             "gametype": 3,
             "exact_words": 172610,
-            "string_bytes": 22589,
+            "string_bytes": 22612,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 4,
               "7": 202,
-              "5": 29,
-              "4": 65,
+              "5": 31,
+              "4": 63,
               "6": 376,
               "8": 4,
               "9": 4
@@ -11490,7 +11633,6 @@
               "item_armor_body": 1,
               "weapon_lightning": 1,
               "item_armor_shard": 5,
-              "trigger_hurt": 2,
               "weapon_bfg": 1,
               "func_door": 8
             },
@@ -11533,19 +11675,19 @@
             "teleport_reactions": 0,
             "map_sha256": "c90a5ce275a36a275d07c75d729b1def7d9fcbed9a92eb0e6a1beaef66ba3c1b",
             "inputs_sha256": "8018155e2e47295bb4a25716c7dbc6092c70238a1f5bbad3208118ab7f71618a",
-            "expected_sha256": "b57ed5623e4dcf574307d75e28c50b003f1eb4807d74e7dfe43ae4522abc8102"
+            "expected_sha256": "fd813c7dba9e325ea0ec0d5bab6e25cfb532fdbd9575f7f2a75c2f30f262ab1b"
           },
           {
             "map": "maps/q3dm14.bsp",
             "gametype": 4,
             "exact_words": 172606,
-            "string_bytes": 22577,
+            "string_bytes": 22600,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 3,
               "7": 202,
-              "5": 29,
-              "4": 65,
+              "5": 31,
+              "4": 63,
               "6": 376,
               "8": 4,
               "9": 4
@@ -11570,7 +11712,6 @@
               "item_armor_body": 1,
               "weapon_lightning": 1,
               "item_armor_shard": 5,
-              "trigger_hurt": 2,
               "weapon_bfg": 1,
               "func_door": 8
             },
@@ -11613,20 +11754,20 @@
             "teleport_reactions": 0,
             "map_sha256": "c90a5ce275a36a275d07c75d729b1def7d9fcbed9a92eb0e6a1beaef66ba3c1b",
             "inputs_sha256": "0c1108316ea17b6483c259bf00756ac7bbbb01b1abf90dde4810d4ef87afbf73",
-            "expected_sha256": "6fac9353ba353ffb81d9910648e19f31818117fff1c265c940055958358c6d90"
+            "expected_sha256": "d3e31075089bd9075d9e46456b7e8375257e0eec1baf437f6fbecb4bec510bf7"
           },
           {
             "map": "maps/q3dm15.bsp",
             "gametype": 0,
-            "exact_words": 169390,
-            "string_bytes": 21832,
+            "exact_words": 169388,
+            "string_bytes": 21855,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 3,
               "7": 204,
-              "5": 39,
+              "5": 42,
               "6": 332,
-              "4": 60,
+              "4": 57,
               "8": 4,
               "9": 12
             },
@@ -11650,7 +11791,6 @@
               "weapon_railgun": 1,
               "weapon_bfg": 1,
               "weapon_rocketlauncher": 1,
-              "trigger_hurt": 3,
               "func_pendulum": 3,
               "target_remove_powerups": 1,
               "ammo_bullets": 2
@@ -11694,20 +11834,20 @@
             "teleport_reactions": 1,
             "map_sha256": "0b87d7d3d6d1945e7c4b1291cc04db7470f1e03ede7be303be432a4678e1cb37",
             "inputs_sha256": "0cc13fdc1d7b8e9090abbab98c69333022bff0275e18a98ccd26633391ace49c",
-            "expected_sha256": "18d6d7a5f93ea2cc283a4bd4cfb656a9c3775a2b0ce982603d8a4454a21c2ad4"
+            "expected_sha256": "d982eacd335f5601440c7ec0054ae2dd67ff41c8fa97d0546838d050a3dafe98"
           },
           {
             "map": "maps/q3dm15.bsp",
             "gametype": 1,
-            "exact_words": 169394,
-            "string_bytes": 21844,
+            "exact_words": 169392,
+            "string_bytes": 21867,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 4,
               "7": 204,
-              "5": 39,
+              "5": 42,
               "6": 332,
-              "4": 60,
+              "4": 57,
               "8": 4,
               "9": 12
             },
@@ -11731,7 +11871,6 @@
               "weapon_railgun": 1,
               "weapon_bfg": 1,
               "weapon_rocketlauncher": 1,
-              "trigger_hurt": 3,
               "func_pendulum": 3,
               "target_remove_powerups": 1,
               "ammo_bullets": 2
@@ -11775,21 +11914,21 @@
             "teleport_reactions": 1,
             "map_sha256": "0b87d7d3d6d1945e7c4b1291cc04db7470f1e03ede7be303be432a4678e1cb37",
             "inputs_sha256": "6e3d52000d7e738d73d1fad05c1f0fda4697c581705ff1613fa8320348c90fbe",
-            "expected_sha256": "996f154681fd875197d9d16ce1d5c15c04c6dc42d8562e29689bcdc97926a2ec"
+            "expected_sha256": "3ee7f0bb9c942c029f94f223639522f3a64a56fe091be32c51605ae2ddb328ae"
           },
           {
             "map": "maps/q3dm15.bsp",
             "gametype": 2,
-            "exact_words": 169398,
-            "string_bytes": 21842,
+            "exact_words": 169396,
+            "string_bytes": 21865,
             "events": {
-              "1": 14,
+              "1": 15,
               "2": 3,
               "3": 1,
               "7": 204,
-              "5": 39,
+              "5": 42,
               "6": 332,
-              "4": 60,
+              "4": 57,
               "8": 4,
               "9": 12
             },
@@ -11813,7 +11952,6 @@
               "weapon_railgun": 1,
               "weapon_bfg": 1,
               "weapon_rocketlauncher": 1,
-              "trigger_hurt": 3,
               "func_pendulum": 3,
               "target_remove_powerups": 1,
               "ammo_bullets": 2
@@ -11857,20 +11995,20 @@
             "teleport_reactions": 1,
             "map_sha256": "0b87d7d3d6d1945e7c4b1291cc04db7470f1e03ede7be303be432a4678e1cb37",
             "inputs_sha256": "abbb26b31e57e2d5b880e863f052703b1f686fdb5e0c96e298ea2ad1a97a4ce3",
-            "expected_sha256": "41921e6ccdcae5d50d46017b96b44a6d4cfa895c5c0558090ba7d16ace282976"
+            "expected_sha256": "e2737a74831aa8e90af8d918d4ab3215f5ad8e2757f7aed75d94416039d21358"
           },
           {
             "map": "maps/q3dm15.bsp",
             "gametype": 3,
-            "exact_words": 169930,
-            "string_bytes": 21880,
+            "exact_words": 169928,
+            "string_bytes": 21903,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 4,
               "7": 205,
-              "5": 39,
+              "5": 42,
               "6": 331,
-              "4": 61,
+              "4": 58,
               "8": 4,
               "9": 12
             },
@@ -11893,7 +12031,6 @@
               "weapon_railgun": 1,
               "weapon_bfg": 1,
               "weapon_rocketlauncher": 1,
-              "trigger_hurt": 3,
               "func_pendulum": 3,
               "target_remove_powerups": 1,
               "ammo_bullets": 2
@@ -11937,20 +12074,20 @@
             "teleport_reactions": 1,
             "map_sha256": "0b87d7d3d6d1945e7c4b1291cc04db7470f1e03ede7be303be432a4678e1cb37",
             "inputs_sha256": "757fe017ebd75bc78bfd157cc8e11fd82655860e8429166fb453e9acd1444163",
-            "expected_sha256": "30993bcbb39c0331618a7e24dfde009de1ca8864f6316ff848fcd1f88f1c7290"
+            "expected_sha256": "d702e2ad3b753c08ea090c31f4d826719a2c561a78d0a94d448b457eb6c98415"
           },
           {
             "map": "maps/q3dm15.bsp",
             "gametype": 4,
-            "exact_words": 169926,
-            "string_bytes": 21868,
+            "exact_words": 169924,
+            "string_bytes": 21891,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 3,
               "7": 205,
-              "5": 39,
+              "5": 42,
               "6": 331,
-              "4": 61,
+              "4": 58,
               "8": 4,
               "9": 12
             },
@@ -11973,7 +12110,6 @@
               "weapon_railgun": 1,
               "weapon_bfg": 1,
               "weapon_rocketlauncher": 1,
-              "trigger_hurt": 3,
               "func_pendulum": 3,
               "target_remove_powerups": 1,
               "ammo_bullets": 2
@@ -12017,25 +12153,24 @@
             "teleport_reactions": 1,
             "map_sha256": "0b87d7d3d6d1945e7c4b1291cc04db7470f1e03ede7be303be432a4678e1cb37",
             "inputs_sha256": "5cb29cc3dd290ace33ca89a38bb2d830904bda309158d77deb961e4a7095cb23",
-            "expected_sha256": "3b53406fbebd705b7b494b4c67817f2c2094d40316fa63c05f5240a733d3a066"
+            "expected_sha256": "1d357a2c4e42bff98a4e372594ea86f4ca1bd4fe18c5b9ed5664396304b3a75c"
           },
           {
             "map": "maps/q3dm16.bsp",
             "gametype": 0,
-            "exact_words": 79149,
-            "string_bytes": 8729,
+            "exact_words": 79151,
+            "string_bytes": 8752,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 3,
               "7": 105,
-              "5": 38,
+              "5": 39,
               "6": 60,
-              "4": 52,
+              "4": 51,
               "8": 4,
               "9": 9
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 1,
               "weapon_shotgun": 1,
               "ammo_slugs": 1,
               "item_health": 16,
@@ -12090,25 +12225,24 @@
             "teleport_reactions": 0,
             "map_sha256": "bf0f6b813f7a9152e8b185f88e137fbf27627a132961771f5008656e23b05929",
             "inputs_sha256": "60de935fd136e92af8f178d43933c507759303845b0e444e06513d1cf0e54f8a",
-            "expected_sha256": "93fdd17ada104836abf1bf645a323c02f02151661f59ad198cc3cc05649a86aa"
+            "expected_sha256": "9d0ae2475e02509c446af1284af2e72fa9e09bc6ac6a06e5868bae5b0912ca32"
           },
           {
             "map": "maps/q3dm16.bsp",
             "gametype": 1,
-            "exact_words": 79153,
-            "string_bytes": 8741,
+            "exact_words": 79155,
+            "string_bytes": 8764,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 4,
               "7": 105,
-              "5": 38,
+              "5": 39,
               "6": 60,
-              "4": 52,
+              "4": 51,
               "8": 4,
               "9": 9
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 1,
               "weapon_shotgun": 1,
               "ammo_slugs": 1,
               "item_health": 16,
@@ -12163,26 +12297,25 @@
             "teleport_reactions": 0,
             "map_sha256": "bf0f6b813f7a9152e8b185f88e137fbf27627a132961771f5008656e23b05929",
             "inputs_sha256": "220cec499b1ab27608a01fb8c008702a10d9505322f030afea9395dcdd648503",
-            "expected_sha256": "4b9049cbbe81b40d0cf32d1ba630274e262b29d3503b1f28dabb9426a1cb9d78"
+            "expected_sha256": "9bb1eb95e0fe71e4eb0d1612afdb55dab287cf347577cc26c0fd8cebf30735d9"
           },
           {
             "map": "maps/q3dm16.bsp",
             "gametype": 2,
-            "exact_words": 79157,
-            "string_bytes": 8739,
+            "exact_words": 79159,
+            "string_bytes": 8762,
             "events": {
-              "1": 10,
+              "1": 11,
               "2": 3,
               "3": 1,
               "7": 105,
-              "5": 38,
+              "5": 39,
               "6": 60,
-              "4": 52,
+              "4": 51,
               "8": 4,
               "9": 9
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 1,
               "weapon_shotgun": 1,
               "ammo_slugs": 1,
               "item_health": 16,
@@ -12237,25 +12370,24 @@
             "teleport_reactions": 0,
             "map_sha256": "bf0f6b813f7a9152e8b185f88e137fbf27627a132961771f5008656e23b05929",
             "inputs_sha256": "be01c3dc2a5d19fbe2877b9bb5545e57d87f7c548ad7835905da0b222569d9a1",
-            "expected_sha256": "f24cd27652e234dc7991579777edc8c9e72de18960f9f26104247b9a502d8963"
+            "expected_sha256": "590fd7ca7c412b3f3e9998aaf6841634ee2f6438ed4495cd6cbed24479e3b125"
           },
           {
             "map": "maps/q3dm16.bsp",
             "gametype": 3,
-            "exact_words": 79153,
-            "string_bytes": 8741,
+            "exact_words": 79155,
+            "string_bytes": 8764,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 4,
               "7": 105,
-              "5": 38,
+              "5": 39,
               "6": 60,
-              "4": 52,
+              "4": 51,
               "8": 4,
               "9": 9
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 1,
               "weapon_shotgun": 1,
               "ammo_slugs": 1,
               "item_health": 16,
@@ -12310,25 +12442,24 @@
             "teleport_reactions": 0,
             "map_sha256": "bf0f6b813f7a9152e8b185f88e137fbf27627a132961771f5008656e23b05929",
             "inputs_sha256": "179a7e3efe484349c027cc4f90e10635cb810ef398ed8eb67bd7991d91eed676",
-            "expected_sha256": "4b9049cbbe81b40d0cf32d1ba630274e262b29d3503b1f28dabb9426a1cb9d78"
+            "expected_sha256": "9bb1eb95e0fe71e4eb0d1612afdb55dab287cf347577cc26c0fd8cebf30735d9"
           },
           {
             "map": "maps/q3dm16.bsp",
             "gametype": 4,
-            "exact_words": 79149,
-            "string_bytes": 8729,
+            "exact_words": 79151,
+            "string_bytes": 8752,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 3,
               "7": 105,
-              "5": 38,
+              "5": 39,
               "6": 60,
-              "4": 52,
+              "4": 51,
               "8": 4,
               "9": 9
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 1,
               "weapon_shotgun": 1,
               "ammo_slugs": 1,
               "item_health": 16,
@@ -12383,19 +12514,19 @@
             "teleport_reactions": 0,
             "map_sha256": "bf0f6b813f7a9152e8b185f88e137fbf27627a132961771f5008656e23b05929",
             "inputs_sha256": "2e26246feedd22f18185c2d60bd639fe7daaf3c850486045e86e55a79c3e7a1f",
-            "expected_sha256": "93fdd17ada104836abf1bf645a323c02f02151661f59ad198cc3cc05649a86aa"
+            "expected_sha256": "9d0ae2475e02509c446af1284af2e72fa9e09bc6ac6a06e5868bae5b0912ca32"
           },
           {
             "map": "maps/q3dm17.bsp",
             "gametype": 0,
-            "exact_words": 78094,
-            "string_bytes": 9045,
+            "exact_words": 78096,
+            "string_bytes": 9068,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 3,
               "7": 101,
-              "4": 31,
-              "5": 58,
+              "4": 30,
+              "5": 59,
               "6": 76,
               "8": 4,
               "9": 16
@@ -12411,7 +12542,6 @@
               "weapon_rocketlauncher": 2,
               "item_health_mega": 1,
               "weapon_railgun": 1,
-              "trigger_hurt": 1,
               "item_quad": 1,
               "item_armor_shard": 6,
               "weapon_shotgun": 2,
@@ -12457,19 +12587,19 @@
             "teleport_reactions": 3,
             "map_sha256": "ee1394417b06d92f705088150d7609d6b9f55f5796a9a7626bfe7982e8fc94e8",
             "inputs_sha256": "25cb1999c55ad4f6ffde71aa88ee6865a81c348950e85a6944dcfbfaa1248b48",
-            "expected_sha256": "a6b4c4e65426399918faf042c87b2d14cd9722af94a568450252243aad1b6646"
+            "expected_sha256": "b279cfa54e78ee91b567a98a99bca7cd02324b07b1cb2d2bbe80f2ddbdbe703b"
           },
           {
             "map": "maps/q3dm17.bsp",
             "gametype": 1,
-            "exact_words": 78098,
-            "string_bytes": 9057,
+            "exact_words": 78100,
+            "string_bytes": 9080,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 4,
               "7": 101,
-              "4": 31,
-              "5": 58,
+              "4": 30,
+              "5": 59,
               "6": 76,
               "8": 4,
               "9": 16
@@ -12485,7 +12615,6 @@
               "weapon_rocketlauncher": 2,
               "item_health_mega": 1,
               "weapon_railgun": 1,
-              "trigger_hurt": 1,
               "item_quad": 1,
               "item_armor_shard": 6,
               "weapon_shotgun": 2,
@@ -12531,20 +12660,20 @@
             "teleport_reactions": 3,
             "map_sha256": "ee1394417b06d92f705088150d7609d6b9f55f5796a9a7626bfe7982e8fc94e8",
             "inputs_sha256": "b75a5002a509ddb1774aa6ebb67ee70dc107710e2efe63700e6fe23b31733d2b",
-            "expected_sha256": "48a759fcc1523e3479b77a4ea0a78664cc6b9f0da43fe30e8e6512ab130fbc96"
+            "expected_sha256": "56f68feaebe19a85a2593eaa38249a348554e16ad278f9ce94cfc63b15b4c3ac"
           },
           {
             "map": "maps/q3dm17.bsp",
             "gametype": 2,
-            "exact_words": 78102,
-            "string_bytes": 9055,
+            "exact_words": 78104,
+            "string_bytes": 9078,
             "events": {
-              "1": 14,
+              "1": 15,
               "2": 3,
               "3": 1,
               "7": 101,
-              "4": 31,
-              "5": 58,
+              "4": 30,
+              "5": 59,
               "6": 76,
               "8": 4,
               "9": 16
@@ -12560,7 +12689,6 @@
               "weapon_rocketlauncher": 2,
               "item_health_mega": 1,
               "weapon_railgun": 1,
-              "trigger_hurt": 1,
               "item_quad": 1,
               "item_armor_shard": 6,
               "weapon_shotgun": 2,
@@ -12606,19 +12734,19 @@
             "teleport_reactions": 3,
             "map_sha256": "ee1394417b06d92f705088150d7609d6b9f55f5796a9a7626bfe7982e8fc94e8",
             "inputs_sha256": "760589be911965cb7b9647f65c4092fe172b7868697bb3af51eeefcb1313c11b",
-            "expected_sha256": "46972ef234c035a12e41ee6650b9244f2940b86772a3a3946ea57d631b9864bc"
+            "expected_sha256": "cd001c21dff90fa2b155d23108a9ffc425dea316fa3cc88a77d41dfe4122d355"
           },
           {
             "map": "maps/q3dm17.bsp",
             "gametype": 3,
-            "exact_words": 78098,
-            "string_bytes": 9057,
+            "exact_words": 78100,
+            "string_bytes": 9080,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 4,
               "7": 101,
-              "4": 31,
-              "5": 58,
+              "4": 30,
+              "5": 59,
               "6": 76,
               "8": 4,
               "9": 16
@@ -12634,7 +12762,6 @@
               "weapon_rocketlauncher": 2,
               "item_health_mega": 1,
               "weapon_railgun": 1,
-              "trigger_hurt": 1,
               "item_quad": 1,
               "item_armor_shard": 6,
               "weapon_shotgun": 2,
@@ -12680,19 +12807,19 @@
             "teleport_reactions": 3,
             "map_sha256": "ee1394417b06d92f705088150d7609d6b9f55f5796a9a7626bfe7982e8fc94e8",
             "inputs_sha256": "44d3779f5c775200c530794482bf48313b3954ab9abdea3978450ac3f9632806",
-            "expected_sha256": "48a759fcc1523e3479b77a4ea0a78664cc6b9f0da43fe30e8e6512ab130fbc96"
+            "expected_sha256": "56f68feaebe19a85a2593eaa38249a348554e16ad278f9ce94cfc63b15b4c3ac"
           },
           {
             "map": "maps/q3dm17.bsp",
             "gametype": 4,
-            "exact_words": 78094,
-            "string_bytes": 9045,
+            "exact_words": 78096,
+            "string_bytes": 9068,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 3,
               "7": 101,
-              "4": 31,
-              "5": 58,
+              "4": 30,
+              "5": 59,
               "6": 76,
               "8": 4,
               "9": 16
@@ -12708,7 +12835,6 @@
               "weapon_rocketlauncher": 2,
               "item_health_mega": 1,
               "weapon_railgun": 1,
-              "trigger_hurt": 1,
               "item_quad": 1,
               "item_armor_shard": 6,
               "weapon_shotgun": 2,
@@ -12754,20 +12880,20 @@
             "teleport_reactions": 3,
             "map_sha256": "ee1394417b06d92f705088150d7609d6b9f55f5796a9a7626bfe7982e8fc94e8",
             "inputs_sha256": "bacbfcd0c152ec3f459c2aa7d790c8227eefcd190a6d15cb67ef42b271db4a8c",
-            "expected_sha256": "a6b4c4e65426399918faf042c87b2d14cd9722af94a568450252243aad1b6646"
+            "expected_sha256": "b279cfa54e78ee91b567a98a99bca7cd02324b07b1cb2d2bbe80f2ddbdbe703b"
           },
           {
             "map": "maps/q3dm18.bsp",
             "gametype": 0,
             "exact_words": 72883,
-            "string_bytes": 8347,
+            "string_bytes": 8370,
             "events": {
-              "1": 12,
+              "1": 13,
               "2": 3,
               "7": 94,
-              "5": 46,
+              "5": 48,
               "6": 55,
-              "4": 35,
+              "4": 33,
               "8": 4,
               "9": 15
             },
@@ -12780,7 +12906,6 @@
               "item_health": 2,
               "weapon_shotgun": 2,
               "item_health_large": 4,
-              "trigger_hurt": 2,
               "item_health_small": 11,
               "item_armor_body": 2,
               "item_quad": 1,
@@ -12826,20 +12951,20 @@
             "teleport_reactions": 0,
             "map_sha256": "e7ed6c8d845216ce29a193d2922c9ddba67b83bbef66a3e22f640f89a487e082",
             "inputs_sha256": "08001d81e1a15518c96729cb09221d453b58e0357d8d77bed5d16f6b0b2bba94",
-            "expected_sha256": "6bc3c4ad57bfaef0dd0530960198fdeea67f71218a4b5abc010094dddc63418e"
+            "expected_sha256": "8f54b73ba2536db9914e624b3b7f0085e8d020b7fac436718fe83ebf4c7e0032"
           },
           {
             "map": "maps/q3dm18.bsp",
             "gametype": 1,
             "exact_words": 72887,
-            "string_bytes": 8359,
+            "string_bytes": 8382,
             "events": {
-              "1": 12,
+              "1": 13,
               "2": 4,
               "7": 94,
-              "5": 46,
+              "5": 48,
               "6": 55,
-              "4": 35,
+              "4": 33,
               "8": 4,
               "9": 15
             },
@@ -12852,7 +12977,6 @@
               "item_health": 2,
               "weapon_shotgun": 2,
               "item_health_large": 4,
-              "trigger_hurt": 2,
               "item_health_small": 11,
               "item_armor_body": 2,
               "item_quad": 1,
@@ -12898,21 +13022,21 @@
             "teleport_reactions": 0,
             "map_sha256": "e7ed6c8d845216ce29a193d2922c9ddba67b83bbef66a3e22f640f89a487e082",
             "inputs_sha256": "3b4b97d25a78459c94ea13c83ee7754de7410135db0eca6280b9e5db24771529",
-            "expected_sha256": "9774ee69ccddfdedcff3a7d8cf2bea19d018378b41191d5f5e6ec2c9cfd60fc4"
+            "expected_sha256": "8570992fe151525e4eef3526da2fab9c8ab0f0d553d8e4d5e7bf2b5a304fabf6"
           },
           {
             "map": "maps/q3dm18.bsp",
             "gametype": 2,
             "exact_words": 72891,
-            "string_bytes": 8357,
+            "string_bytes": 8380,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 3,
               "3": 1,
               "7": 94,
-              "5": 46,
+              "5": 48,
               "6": 55,
-              "4": 35,
+              "4": 33,
               "8": 4,
               "9": 15
             },
@@ -12925,7 +13049,6 @@
               "item_health": 2,
               "weapon_shotgun": 2,
               "item_health_large": 4,
-              "trigger_hurt": 2,
               "item_health_small": 11,
               "item_armor_body": 2,
               "item_quad": 1,
@@ -12971,20 +13094,20 @@
             "teleport_reactions": 0,
             "map_sha256": "e7ed6c8d845216ce29a193d2922c9ddba67b83bbef66a3e22f640f89a487e082",
             "inputs_sha256": "6fb955aeec9bebf9114b773e85ee6a5926a4aabbe1b1de853a303af59a35bf86",
-            "expected_sha256": "f551b87ebb2c8329735b2bf640f66e8293b1a30140300d6ee348de2d14fb16a2"
+            "expected_sha256": "7caa58644626be06565e944919495e8e58fe2cbf3265e9adf9b9e715f46f49fb"
           },
           {
             "map": "maps/q3dm18.bsp",
             "gametype": 3,
             "exact_words": 72887,
-            "string_bytes": 8359,
+            "string_bytes": 8382,
             "events": {
-              "1": 12,
+              "1": 13,
               "2": 4,
               "7": 94,
-              "5": 46,
+              "5": 48,
               "6": 55,
-              "4": 35,
+              "4": 33,
               "8": 4,
               "9": 15
             },
@@ -12997,7 +13120,6 @@
               "item_health": 2,
               "weapon_shotgun": 2,
               "item_health_large": 4,
-              "trigger_hurt": 2,
               "item_health_small": 11,
               "item_armor_body": 2,
               "item_quad": 1,
@@ -13043,20 +13165,20 @@
             "teleport_reactions": 0,
             "map_sha256": "e7ed6c8d845216ce29a193d2922c9ddba67b83bbef66a3e22f640f89a487e082",
             "inputs_sha256": "c845fb44922f7e6e9f049bea5a320c43e3ed6242bdd35778a819cbad560085e6",
-            "expected_sha256": "9774ee69ccddfdedcff3a7d8cf2bea19d018378b41191d5f5e6ec2c9cfd60fc4"
+            "expected_sha256": "8570992fe151525e4eef3526da2fab9c8ab0f0d553d8e4d5e7bf2b5a304fabf6"
           },
           {
             "map": "maps/q3dm18.bsp",
             "gametype": 4,
             "exact_words": 72883,
-            "string_bytes": 8347,
+            "string_bytes": 8370,
             "events": {
-              "1": 12,
+              "1": 13,
               "2": 3,
               "7": 94,
-              "5": 46,
+              "5": 48,
               "6": 55,
-              "4": 35,
+              "4": 33,
               "8": 4,
               "9": 15
             },
@@ -13069,7 +13191,6 @@
               "item_health": 2,
               "weapon_shotgun": 2,
               "item_health_large": 4,
-              "trigger_hurt": 2,
               "item_health_small": 11,
               "item_armor_body": 2,
               "item_quad": 1,
@@ -13115,20 +13236,20 @@
             "teleport_reactions": 0,
             "map_sha256": "e7ed6c8d845216ce29a193d2922c9ddba67b83bbef66a3e22f640f89a487e082",
             "inputs_sha256": "a13bc580f81b7f4a787d205a568864902195d9aa572f50670e9bf6396e12f8c3",
-            "expected_sha256": "6bc3c4ad57bfaef0dd0530960198fdeea67f71218a4b5abc010094dddc63418e"
+            "expected_sha256": "8f54b73ba2536db9914e624b3b7f0085e8d020b7fac436718fe83ebf4c7e0032"
           },
           {
             "map": "maps/q3dm19.bsp",
             "gametype": 0,
-            "exact_words": 45809,
-            "string_bytes": 6290,
+            "exact_words": 45811,
+            "string_bytes": 6313,
             "events": {
-              "1": 8,
+              "1": 9,
               "2": 3,
               "7": 64,
-              "4": 42,
+              "4": 41,
               "6": 26,
-              "5": 8,
+              "5": 9,
               "8": 4,
               "9": 3
             },
@@ -13143,7 +13264,6 @@
               "item_flight": 1,
               "item_armor_combat": 2,
               "item_armor_body": 1,
-              "trigger_hurt": 1,
               "weapon_railgun": 1,
               "weapon_plasmagun": 1,
               "weapon_rocketlauncher": 2,
@@ -13191,20 +13311,20 @@
             "teleport_reactions": 0,
             "map_sha256": "243b3ed54a8d44151e6ad5f3fa081867578f09a01add7f4aea62682827675600",
             "inputs_sha256": "1865a49aa8c58fbb4d33e8a3ef499f5dc3070c85322356b73a8589baccf4e298",
-            "expected_sha256": "7ab9f1b53110b07da1927203e8c520daf60a2c3606f1c6321c7ec380fdac4828"
+            "expected_sha256": "3ddd8c4c3e8a97cbd53f62daf23209e068a275ab8e3976bf03248a4c9ff66061"
           },
           {
             "map": "maps/q3dm19.bsp",
             "gametype": 1,
-            "exact_words": 45813,
-            "string_bytes": 6302,
+            "exact_words": 45815,
+            "string_bytes": 6325,
             "events": {
-              "1": 8,
+              "1": 9,
               "2": 4,
               "7": 64,
-              "4": 42,
+              "4": 41,
               "6": 26,
-              "5": 8,
+              "5": 9,
               "8": 4,
               "9": 3
             },
@@ -13219,7 +13339,6 @@
               "item_flight": 1,
               "item_armor_combat": 2,
               "item_armor_body": 1,
-              "trigger_hurt": 1,
               "weapon_railgun": 1,
               "weapon_plasmagun": 1,
               "weapon_rocketlauncher": 2,
@@ -13267,21 +13386,21 @@
             "teleport_reactions": 0,
             "map_sha256": "243b3ed54a8d44151e6ad5f3fa081867578f09a01add7f4aea62682827675600",
             "inputs_sha256": "3b3b5789d7028cbf1a12ad3b2f1a134afc4aba6aab6238ee24ccd318ba2ac9fb",
-            "expected_sha256": "52b1019663b64dce058d83abd674f4893dac33b419adcbd4a117575d2587df0f"
+            "expected_sha256": "c68b851158565de580911d6e8d37459119cce2100a965cb4cfbeb83f9479934f"
           },
           {
             "map": "maps/q3dm19.bsp",
             "gametype": 2,
-            "exact_words": 45281,
-            "string_bytes": 6208,
+            "exact_words": 45283,
+            "string_bytes": 6231,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 3,
               "3": 1,
               "7": 63,
-              "4": 41,
+              "4": 40,
               "6": 27,
-              "5": 8,
+              "5": 9,
               "8": 4,
               "9": 3
             },
@@ -13295,7 +13414,6 @@
               "target_remove_powerups": 1,
               "item_armor_combat": 2,
               "item_armor_body": 1,
-              "trigger_hurt": 1,
               "weapon_railgun": 1,
               "weapon_plasmagun": 1,
               "weapon_rocketlauncher": 2,
@@ -13343,20 +13461,20 @@
             "teleport_reactions": 0,
             "map_sha256": "243b3ed54a8d44151e6ad5f3fa081867578f09a01add7f4aea62682827675600",
             "inputs_sha256": "91a2534aefef89a026410c83c22a1730a157bf6f671c95a83df48b5d72fc4957",
-            "expected_sha256": "704d47131c03c42784f86238298c8d47259a1e480c36fc9119005aa6a1eb64a7"
+            "expected_sha256": "4f29b73c3ee76dd06b57b90bfb0d61e25dfa0a0daa919c85ada4543dce66be63"
           },
           {
             "map": "maps/q3dm19.bsp",
             "gametype": 3,
-            "exact_words": 45813,
-            "string_bytes": 6302,
+            "exact_words": 45815,
+            "string_bytes": 6325,
             "events": {
-              "1": 8,
+              "1": 9,
               "2": 4,
               "7": 64,
-              "4": 42,
+              "4": 41,
               "6": 26,
-              "5": 8,
+              "5": 9,
               "8": 4,
               "9": 3
             },
@@ -13371,7 +13489,6 @@
               "item_flight": 1,
               "item_armor_combat": 2,
               "item_armor_body": 1,
-              "trigger_hurt": 1,
               "weapon_railgun": 1,
               "weapon_plasmagun": 1,
               "weapon_rocketlauncher": 2,
@@ -13419,20 +13536,20 @@
             "teleport_reactions": 0,
             "map_sha256": "243b3ed54a8d44151e6ad5f3fa081867578f09a01add7f4aea62682827675600",
             "inputs_sha256": "014efd2428882413fb0280c6859d8dfd771a356e813ea0355c60eab8710538f3",
-            "expected_sha256": "52b1019663b64dce058d83abd674f4893dac33b419adcbd4a117575d2587df0f"
+            "expected_sha256": "c68b851158565de580911d6e8d37459119cce2100a965cb4cfbeb83f9479934f"
           },
           {
             "map": "maps/q3dm19.bsp",
             "gametype": 4,
-            "exact_words": 45809,
-            "string_bytes": 6290,
+            "exact_words": 45811,
+            "string_bytes": 6313,
             "events": {
-              "1": 8,
+              "1": 9,
               "2": 3,
               "7": 64,
-              "4": 42,
+              "4": 41,
               "6": 26,
-              "5": 8,
+              "5": 9,
               "8": 4,
               "9": 3
             },
@@ -13447,7 +13564,6 @@
               "item_flight": 1,
               "item_armor_combat": 2,
               "item_armor_body": 1,
-              "trigger_hurt": 1,
               "weapon_railgun": 1,
               "weapon_plasmagun": 1,
               "weapon_rocketlauncher": 2,
@@ -13495,7 +13611,7 @@
             "teleport_reactions": 0,
             "map_sha256": "243b3ed54a8d44151e6ad5f3fa081867578f09a01add7f4aea62682827675600",
             "inputs_sha256": "2a1fa08dfbf08d748143d9f060fc767a5f5b7ef42fd21d1c611fda7cd30f0523",
-            "expected_sha256": "7ab9f1b53110b07da1927203e8c520daf60a2c3606f1c6321c7ec380fdac4828"
+            "expected_sha256": "3ddd8c4c3e8a97cbd53f62daf23209e068a275ab8e3976bf03248a4c9ff66061"
           },
           {
             "map": "maps/q3dm2.bsp",
@@ -14202,20 +14318,19 @@
           {
             "map": "maps/q3dm4.bsp",
             "gametype": 0,
-            "exact_words": 83007,
-            "string_bytes": 9896,
+            "exact_words": 82997,
+            "string_bytes": 9919,
             "events": {
-              "1": 14,
+              "1": 15,
               "2": 3,
               "7": 111,
               "6": 98,
-              "5": 51,
-              "4": 29,
+              "5": 58,
+              "4": 22,
               "8": 4,
               "9": 1
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 7,
               "ammo_cells": 2,
               "weapon_plasmagun": 1,
               "item_health_large": 1,
@@ -14268,25 +14383,24 @@
             "teleport_reactions": 1,
             "map_sha256": "8153c6c2c8e32180d45faa3195325116cafffd411391ee87944a9307f5a78cc5",
             "inputs_sha256": "d002e7aa697fd1730d2dfc9aef25a7d9134cabd39714e28fddfd8b3e8bf006dc",
-            "expected_sha256": "b51de86f9cdd597045d7f4bb61476792c31347bc6a1b303e402257445729e98e"
+            "expected_sha256": "76c95b0fa969dc3b543413b56abffedf7092d5269e65ac863bde5c53ea9cbb94"
           },
           {
             "map": "maps/q3dm4.bsp",
             "gametype": 1,
-            "exact_words": 83011,
-            "string_bytes": 9908,
+            "exact_words": 83001,
+            "string_bytes": 9931,
             "events": {
-              "1": 14,
+              "1": 15,
               "2": 4,
               "7": 111,
               "6": 98,
-              "5": 51,
-              "4": 29,
+              "5": 58,
+              "4": 22,
               "8": 4,
               "9": 1
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 7,
               "ammo_cells": 2,
               "weapon_plasmagun": 1,
               "item_health_large": 1,
@@ -14339,26 +14453,25 @@
             "teleport_reactions": 1,
             "map_sha256": "8153c6c2c8e32180d45faa3195325116cafffd411391ee87944a9307f5a78cc5",
             "inputs_sha256": "2e8a65a35f5ce25e8d7f28441c67b03eae6034b8a72d55df2adbe9eee37e5cd2",
-            "expected_sha256": "997b3b8d226fcef67c974f427dc87c62201bf2cafc42e0b74197589bea7d7a65"
+            "expected_sha256": "8949a444d4295e2980455015207e45a878d760afe9bad3c83c73670c45cc8bf2"
           },
           {
             "map": "maps/q3dm4.bsp",
             "gametype": 2,
-            "exact_words": 83015,
-            "string_bytes": 9906,
+            "exact_words": 83005,
+            "string_bytes": 9929,
             "events": {
-              "1": 15,
+              "1": 16,
               "2": 3,
               "3": 1,
               "7": 111,
               "6": 98,
-              "5": 51,
-              "4": 29,
+              "5": 58,
+              "4": 22,
               "8": 4,
               "9": 1
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 7,
               "ammo_cells": 2,
               "weapon_plasmagun": 1,
               "item_health_large": 1,
@@ -14411,25 +14524,24 @@
             "teleport_reactions": 1,
             "map_sha256": "8153c6c2c8e32180d45faa3195325116cafffd411391ee87944a9307f5a78cc5",
             "inputs_sha256": "b3220b3c8e311cb8a048d243a13658cccf0a98ca0b848685118b066a9ad5257b",
-            "expected_sha256": "0424ce3be4d3a94ee2b115016eb9a1da2b2bbc6bf78216a1147ae74426351dc0"
+            "expected_sha256": "a141ee4d7a7aba164812e0c15398c8ebb5e9cfcf55788c3d10c451598d84b621"
           },
           {
             "map": "maps/q3dm4.bsp",
             "gametype": 3,
-            "exact_words": 83011,
-            "string_bytes": 9908,
+            "exact_words": 83001,
+            "string_bytes": 9931,
             "events": {
-              "1": 14,
+              "1": 15,
               "2": 4,
               "7": 111,
               "6": 98,
-              "5": 51,
-              "4": 29,
+              "5": 58,
+              "4": 22,
               "8": 4,
               "9": 1
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 7,
               "ammo_cells": 2,
               "weapon_plasmagun": 1,
               "item_health_large": 1,
@@ -14482,25 +14594,24 @@
             "teleport_reactions": 1,
             "map_sha256": "8153c6c2c8e32180d45faa3195325116cafffd411391ee87944a9307f5a78cc5",
             "inputs_sha256": "781e0255cafc43af8904138f75c179f814a1679d948da41eb4f9bb42ab8a78c8",
-            "expected_sha256": "997b3b8d226fcef67c974f427dc87c62201bf2cafc42e0b74197589bea7d7a65"
+            "expected_sha256": "8949a444d4295e2980455015207e45a878d760afe9bad3c83c73670c45cc8bf2"
           },
           {
             "map": "maps/q3dm4.bsp",
             "gametype": 4,
-            "exact_words": 83007,
-            "string_bytes": 9896,
+            "exact_words": 82997,
+            "string_bytes": 9919,
             "events": {
-              "1": 14,
+              "1": 15,
               "2": 3,
               "7": 111,
               "6": 98,
-              "5": 51,
-              "4": 29,
+              "5": 58,
+              "4": 22,
               "8": 4,
               "9": 1
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 7,
               "ammo_cells": 2,
               "weapon_plasmagun": 1,
               "item_health_large": 1,
@@ -14553,26 +14664,25 @@
             "teleport_reactions": 1,
             "map_sha256": "8153c6c2c8e32180d45faa3195325116cafffd411391ee87944a9307f5a78cc5",
             "inputs_sha256": "65dec1f4f4ff85d9f5cd0e16c6f59102280fed6c5d2dcc9b3779ca2b710df0ba",
-            "expected_sha256": "b51de86f9cdd597045d7f4bb61476792c31347bc6a1b303e402257445729e98e"
+            "expected_sha256": "76c95b0fa969dc3b543413b56abffedf7092d5269e65ac863bde5c53ea9cbb94"
           },
           {
             "map": "maps/q3dm5.bsp",
             "gametype": 0,
             "exact_words": 62043,
-            "string_bytes": 6653,
+            "string_bytes": 6676,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 3,
               "7": 62,
-              "5": 7,
+              "5": 9,
               "6": 175,
-              "4": 27,
+              "4": 25,
               "8": 4,
               "9": 1
             },
             "dispatch_boundaries": {
               "item_health_large": 2,
-              "trigger_hurt": 2,
               "ammo_cells": 2,
               "weapon_plasmagun": 1,
               "ammo_shells": 2,
@@ -14625,26 +14735,25 @@
             "teleport_reactions": 0,
             "map_sha256": "e7e884dad9342b00b77ccb8bdd8a8e167c6c479c7a952b9f1d1c0bd3e42b371d",
             "inputs_sha256": "980f282c68a75d48d1f0000bcc45794a9fd8af7f40c709f5576b3e19a348a41e",
-            "expected_sha256": "d977de89d8c6c0aa2d473b5f800909862783c07fc6957ed8313c0d0f7cda5590"
+            "expected_sha256": "385f39fa9d52be313f02847b404297a9077dbac09fb74d682bea4a018d3e948b"
           },
           {
             "map": "maps/q3dm5.bsp",
             "gametype": 1,
             "exact_words": 62047,
-            "string_bytes": 6665,
+            "string_bytes": 6688,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 4,
               "7": 62,
-              "5": 7,
+              "5": 9,
               "6": 175,
-              "4": 27,
+              "4": 25,
               "8": 4,
               "9": 1
             },
             "dispatch_boundaries": {
               "item_health_large": 2,
-              "trigger_hurt": 2,
               "ammo_cells": 2,
               "weapon_plasmagun": 1,
               "ammo_shells": 2,
@@ -14697,27 +14806,26 @@
             "teleport_reactions": 0,
             "map_sha256": "e7e884dad9342b00b77ccb8bdd8a8e167c6c479c7a952b9f1d1c0bd3e42b371d",
             "inputs_sha256": "e247989721630b662ae234df24ee8b0e1b29bdba2de96c8d16d9a8ccba095c8f",
-            "expected_sha256": "8b49ed0faac7494e489c8e18e9c1a5e875a84d575f05b3d9e764fd1daf481760"
+            "expected_sha256": "573e30407575bf6b695327c30d6c03da563a3ff9787059d4990bfce9dd98dea8"
           },
           {
             "map": "maps/q3dm5.bsp",
             "gametype": 2,
             "exact_words": 62051,
-            "string_bytes": 6663,
+            "string_bytes": 6686,
             "events": {
-              "1": 12,
+              "1": 13,
               "2": 3,
               "3": 1,
               "7": 62,
-              "5": 7,
+              "5": 9,
               "6": 175,
-              "4": 27,
+              "4": 25,
               "8": 4,
               "9": 1
             },
             "dispatch_boundaries": {
               "item_health_large": 2,
-              "trigger_hurt": 2,
               "ammo_cells": 2,
               "weapon_plasmagun": 1,
               "ammo_shells": 2,
@@ -14770,26 +14878,25 @@
             "teleport_reactions": 0,
             "map_sha256": "e7e884dad9342b00b77ccb8bdd8a8e167c6c479c7a952b9f1d1c0bd3e42b371d",
             "inputs_sha256": "f032c3d014596971e8dfc946729b90d9b13c3da1544c0deedfa0bd02a912dfe7",
-            "expected_sha256": "932e6f02e281838ecfccfea4e73461d9f518111526a0cfab6990834dcb29e22b"
+            "expected_sha256": "c03f941799c7225c8c8ad30d1a8e65bb79d4079e6e7b5bb47f39911a7075afb6"
           },
           {
             "map": "maps/q3dm5.bsp",
             "gametype": 3,
             "exact_words": 62047,
-            "string_bytes": 6665,
+            "string_bytes": 6688,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 4,
               "7": 62,
-              "5": 7,
+              "5": 9,
               "6": 175,
-              "4": 27,
+              "4": 25,
               "8": 4,
               "9": 1
             },
             "dispatch_boundaries": {
               "item_health_large": 2,
-              "trigger_hurt": 2,
               "ammo_cells": 2,
               "weapon_plasmagun": 1,
               "ammo_shells": 2,
@@ -14842,26 +14949,25 @@
             "teleport_reactions": 0,
             "map_sha256": "e7e884dad9342b00b77ccb8bdd8a8e167c6c479c7a952b9f1d1c0bd3e42b371d",
             "inputs_sha256": "4b52f29c0051ff9030ffe3f9649459d578b596b4d05fff9af9d4224d4e138596",
-            "expected_sha256": "8b49ed0faac7494e489c8e18e9c1a5e875a84d575f05b3d9e764fd1daf481760"
+            "expected_sha256": "573e30407575bf6b695327c30d6c03da563a3ff9787059d4990bfce9dd98dea8"
           },
           {
             "map": "maps/q3dm5.bsp",
             "gametype": 4,
             "exact_words": 62043,
-            "string_bytes": 6653,
+            "string_bytes": 6676,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 3,
               "7": 62,
-              "5": 7,
+              "5": 9,
               "6": 175,
-              "4": 27,
+              "4": 25,
               "8": 4,
               "9": 1
             },
             "dispatch_boundaries": {
               "item_health_large": 2,
-              "trigger_hurt": 2,
               "ammo_cells": 2,
               "weapon_plasmagun": 1,
               "ammo_shells": 2,
@@ -14914,7 +15020,7 @@
             "teleport_reactions": 0,
             "map_sha256": "e7e884dad9342b00b77ccb8bdd8a8e167c6c479c7a952b9f1d1c0bd3e42b371d",
             "inputs_sha256": "f415949e079a587d7757739e7af90dafaa34ea908d14875900e0ba0add033709",
-            "expected_sha256": "d977de89d8c6c0aa2d473b5f800909862783c07fc6957ed8313c0d0f7cda5590"
+            "expected_sha256": "385f39fa9d52be313f02847b404297a9077dbac09fb74d682bea4a018d3e948b"
           },
           {
             "map": "maps/q3dm6.bsp",
@@ -16088,15 +16194,15 @@
           {
             "map": "maps/q3dm9.bsp",
             "gametype": 0,
-            "exact_words": 129462,
-            "string_bytes": 15233,
+            "exact_words": 129450,
+            "string_bytes": 15256,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 3,
               "7": 150,
-              "5": 43,
+              "5": 51,
               "6": 235,
-              "4": 66,
+              "4": 58,
               "8": 4,
               "9": 10
             },
@@ -16112,7 +16218,6 @@
               "ammo_cells": 4,
               "item_armor_shard": 14,
               "ammo_rockets": 3,
-              "trigger_hurt": 8,
               "target_remove_powerups": 4,
               "weapon_railgun": 1,
               "item_armor_combat": 2,
@@ -16159,20 +16264,20 @@
             "teleport_reactions": 0,
             "map_sha256": "22a2ea22f14fad38e227578edc10ceeb2b210f86c41a30fd30131e19567336d3",
             "inputs_sha256": "f7e19348868f4d44b2820f95cc1f1ec1c23e61a359e9493234f2c94165e7b912",
-            "expected_sha256": "683d917c807d2b452dd6df533cff97eff68a61aaeced78a2ca2b0dbc937c3033"
+            "expected_sha256": "ecc980b667d80cce7aa4e839790847ec68edb5f88eec403ca5dc86579354b15d"
           },
           {
             "map": "maps/q3dm9.bsp",
             "gametype": 1,
-            "exact_words": 129466,
-            "string_bytes": 15245,
+            "exact_words": 129454,
+            "string_bytes": 15268,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 4,
               "7": 150,
-              "5": 43,
+              "5": 51,
               "6": 235,
-              "4": 66,
+              "4": 58,
               "8": 4,
               "9": 10
             },
@@ -16188,7 +16293,6 @@
               "ammo_cells": 4,
               "item_armor_shard": 14,
               "ammo_rockets": 3,
-              "trigger_hurt": 8,
               "target_remove_powerups": 4,
               "weapon_railgun": 1,
               "item_armor_combat": 2,
@@ -16235,21 +16339,21 @@
             "teleport_reactions": 0,
             "map_sha256": "22a2ea22f14fad38e227578edc10ceeb2b210f86c41a30fd30131e19567336d3",
             "inputs_sha256": "496abc35da0324873db0900e4aae5b0e942b9845b3cbe000095a05c0703a2338",
-            "expected_sha256": "7ec142de526cf869231250401d8295926361dddc97f7c30a6c6c670c68f69b8c"
+            "expected_sha256": "10e124eafa6c66e5168db661df259df6eade6fc521a712034fc786c19d59762e"
           },
           {
             "map": "maps/q3dm9.bsp",
             "gametype": 2,
-            "exact_words": 129470,
-            "string_bytes": 15243,
+            "exact_words": 129458,
+            "string_bytes": 15266,
             "events": {
-              "1": 12,
+              "1": 13,
               "2": 3,
               "3": 1,
               "7": 150,
-              "5": 43,
+              "5": 51,
               "6": 235,
-              "4": 66,
+              "4": 58,
               "8": 4,
               "9": 10
             },
@@ -16265,7 +16369,6 @@
               "ammo_cells": 4,
               "item_armor_shard": 14,
               "ammo_rockets": 3,
-              "trigger_hurt": 8,
               "target_remove_powerups": 4,
               "weapon_railgun": 1,
               "item_armor_combat": 2,
@@ -16312,20 +16415,20 @@
             "teleport_reactions": 0,
             "map_sha256": "22a2ea22f14fad38e227578edc10ceeb2b210f86c41a30fd30131e19567336d3",
             "inputs_sha256": "0f409b8e32fc55f393dedab98f6ef8dc98e019c39a9bdddf30470af7e2060bba",
-            "expected_sha256": "835339cc20cf3b937b0bc216813058a77e69c4bef793c5295cd8593cf8c53cc2"
+            "expected_sha256": "2ddeaa1808989b5d5f9e5e81c28ea08d250ed8238f974926e681ffc2205cced7"
           },
           {
             "map": "maps/q3dm9.bsp",
             "gametype": 3,
-            "exact_words": 132682,
-            "string_bytes": 15549,
+            "exact_words": 132670,
+            "string_bytes": 15572,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 4,
               "7": 156,
-              "5": 43,
+              "5": 51,
               "6": 229,
-              "4": 72,
+              "4": 64,
               "8": 4,
               "9": 10
             },
@@ -16343,7 +16446,6 @@
               "item_health": 8,
               "ammo_cells": 4,
               "item_armor_shard": 14,
-              "trigger_hurt": 8,
               "target_remove_powerups": 4,
               "weapon_railgun": 1,
               "item_armor_combat": 2,
@@ -16388,20 +16490,20 @@
             "teleport_reactions": 0,
             "map_sha256": "22a2ea22f14fad38e227578edc10ceeb2b210f86c41a30fd30131e19567336d3",
             "inputs_sha256": "3b14e13edb100796de0b3fca9b696c6c9d15b3b209eee9e237b6b45c086202c1",
-            "expected_sha256": "8cb206ff8c76ef1d580eed1472e1a2e3ca86bb5322ada1251330b5994453bd85"
+            "expected_sha256": "1ecc3a53fbe6c1fe4d87be9ddcbcd75f91ae93808ee59af18187c6a223f099e1"
           },
           {
             "map": "maps/q3dm9.bsp",
             "gametype": 4,
-            "exact_words": 132678,
-            "string_bytes": 15537,
+            "exact_words": 132666,
+            "string_bytes": 15560,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 3,
               "7": 156,
-              "5": 43,
+              "5": 51,
               "6": 229,
-              "4": 72,
+              "4": 64,
               "8": 4,
               "9": 10
             },
@@ -16419,7 +16521,6 @@
               "item_health": 8,
               "ammo_cells": 4,
               "item_armor_shard": 14,
-              "trigger_hurt": 8,
               "target_remove_powerups": 4,
               "weapon_railgun": 1,
               "item_armor_combat": 2,
@@ -16464,24 +16565,23 @@
             "teleport_reactions": 0,
             "map_sha256": "22a2ea22f14fad38e227578edc10ceeb2b210f86c41a30fd30131e19567336d3",
             "inputs_sha256": "f5e0c443430b207a977e95dde3347d08d53a2f7b6b27c505a37771fe5d926c05",
-            "expected_sha256": "74a9352a0a28a542e9391330c0fb7083fa6776ee0bebfe78357fb4d87ae84851"
+            "expected_sha256": "23c6b0c7db5a30ecb6ed1d014b1c8346ffb1727a11179692fff6177869bf8d62"
           },
           {
             "map": "maps/q3tourney1.bsp",
             "gametype": 0,
-            "exact_words": 65082,
-            "string_bytes": 8568,
+            "exact_words": 65080,
+            "string_bytes": 8591,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 3,
               "7": 90,
-              "4": 21,
-              "5": 60,
+              "5": 63,
               "6": 41,
+              "4": 18,
               "8": 4
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 3,
               "item_health": 4,
               "ammo_rockets": 3,
               "ammo_bullets": 2,
@@ -16532,24 +16632,23 @@
             "teleport_reactions": 0,
             "map_sha256": "7f54eb1bcf35fb74ec81dbe52982a81f3014f14bc69bcd9b7e13bd6cf1819fb6",
             "inputs_sha256": "a1612996aa5fc5c3c5219b52a93cbce7be9711cf1c27d7f3733aedeb7a54c979",
-            "expected_sha256": "d0acc1e5ae04d7cfe078211d2d1968e0a057b1a0af2c5d2c02ea0b5fe603e358"
+            "expected_sha256": "5bee0f861ced472556011c5c71d885a48c05efd8cf6b4840a25b2d975bcf87a3"
           },
           {
             "map": "maps/q3tourney1.bsp",
             "gametype": 1,
-            "exact_words": 65086,
-            "string_bytes": 8580,
+            "exact_words": 65084,
+            "string_bytes": 8603,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 4,
               "7": 90,
-              "4": 21,
-              "5": 60,
+              "5": 63,
               "6": 41,
+              "4": 18,
               "8": 4
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 3,
               "item_health": 4,
               "ammo_rockets": 3,
               "ammo_bullets": 2,
@@ -16600,25 +16699,24 @@
             "teleport_reactions": 0,
             "map_sha256": "7f54eb1bcf35fb74ec81dbe52982a81f3014f14bc69bcd9b7e13bd6cf1819fb6",
             "inputs_sha256": "eac3333b5786b1bb435588119fb680eda4b0dfb643171a0307056fa33e5d1fb2",
-            "expected_sha256": "0d37f3563c2fed4696deb54e292e8f78d41175d3d09ba817cf44773530f5f551"
+            "expected_sha256": "79cba95c9fbce8f3c367e041b58ed379f5b8a79c92655dbb528f48f3b4465c57"
           },
           {
             "map": "maps/q3tourney1.bsp",
             "gametype": 2,
-            "exact_words": 65090,
-            "string_bytes": 8578,
+            "exact_words": 65088,
+            "string_bytes": 8601,
             "events": {
-              "1": 14,
+              "1": 15,
               "2": 3,
               "3": 1,
               "7": 90,
-              "4": 21,
-              "5": 60,
+              "5": 63,
               "6": 41,
+              "4": 18,
               "8": 4
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 3,
               "item_health": 4,
               "ammo_rockets": 3,
               "ammo_bullets": 2,
@@ -16669,24 +16767,23 @@
             "teleport_reactions": 0,
             "map_sha256": "7f54eb1bcf35fb74ec81dbe52982a81f3014f14bc69bcd9b7e13bd6cf1819fb6",
             "inputs_sha256": "ec773f1dec8be7f61994661b4cdd2f26f04afd0f722253da9428120056683241",
-            "expected_sha256": "e5ab33d073db137a07a4d9bfe823db32b0d70870a039f595078d8af2c27d5b08"
+            "expected_sha256": "d6a0b2efcdbb90fcef3d93c3b8f2a8a7e673f8fc4f29f86036a201c816345ae0"
           },
           {
             "map": "maps/q3tourney1.bsp",
             "gametype": 3,
-            "exact_words": 65086,
-            "string_bytes": 8580,
+            "exact_words": 65084,
+            "string_bytes": 8603,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 4,
               "7": 90,
-              "4": 21,
-              "5": 60,
+              "5": 63,
               "6": 41,
+              "4": 18,
               "8": 4
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 3,
               "item_health": 4,
               "ammo_rockets": 3,
               "ammo_bullets": 2,
@@ -16737,24 +16834,23 @@
             "teleport_reactions": 0,
             "map_sha256": "7f54eb1bcf35fb74ec81dbe52982a81f3014f14bc69bcd9b7e13bd6cf1819fb6",
             "inputs_sha256": "ab958a38b445764e8989e89bf80a3635a56f0b1fe03c91d5d33faf7557012c72",
-            "expected_sha256": "0d37f3563c2fed4696deb54e292e8f78d41175d3d09ba817cf44773530f5f551"
+            "expected_sha256": "79cba95c9fbce8f3c367e041b58ed379f5b8a79c92655dbb528f48f3b4465c57"
           },
           {
             "map": "maps/q3tourney1.bsp",
             "gametype": 4,
-            "exact_words": 65082,
-            "string_bytes": 8568,
+            "exact_words": 65080,
+            "string_bytes": 8591,
             "events": {
-              "1": 13,
+              "1": 14,
               "2": 3,
               "7": 90,
-              "4": 21,
-              "5": 60,
+              "5": 63,
               "6": 41,
+              "4": 18,
               "8": 4
             },
             "dispatch_boundaries": {
-              "trigger_hurt": 3,
               "item_health": 4,
               "ammo_rockets": 3,
               "ammo_bullets": 2,
@@ -16805,20 +16901,20 @@
             "teleport_reactions": 0,
             "map_sha256": "7f54eb1bcf35fb74ec81dbe52982a81f3014f14bc69bcd9b7e13bd6cf1819fb6",
             "inputs_sha256": "b1e5be55ad170e82510b66cdb2c0ebe7eeba753ba03482cd61060d3dc2088351",
-            "expected_sha256": "d0acc1e5ae04d7cfe078211d2d1968e0a057b1a0af2c5d2c02ea0b5fe603e358"
+            "expected_sha256": "5bee0f861ced472556011c5c71d885a48c05efd8cf6b4840a25b2d975bcf87a3"
           },
           {
             "map": "maps/q3tourney2.bsp",
             "gametype": 0,
-            "exact_words": 75475,
-            "string_bytes": 9273,
+            "exact_words": 75477,
+            "string_bytes": 9296,
             "events": {
-              "1": 18,
+              "1": 19,
               "2": 3,
               "7": 104,
-              "5": 46,
+              "5": 47,
               "6": 68,
-              "4": 32,
+              "4": 31,
               "8": 4,
               "9": 5
             },
@@ -16831,7 +16927,6 @@
               "item_health_large": 1,
               "ammo_shells": 4,
               "ammo_rockets": 2,
-              "trigger_hurt": 1,
               "weapon_shotgun": 1,
               "weapon_rocketlauncher": 1
             },
@@ -16874,20 +16969,20 @@
             "teleport_reactions": 2,
             "map_sha256": "fe07a539bf0b76823160d8ffe96a62c182003877d9678aa27c5b2bea8ca0f4c8",
             "inputs_sha256": "6be4dc5a84bae6e3ee02c984089f4c2efe874e2b6a95ffe5cdb141f30347cd75",
-            "expected_sha256": "e5c35e4d5d18f22cfe16e486d4315a72c4367fff2c53a276c456c5ba93133649"
+            "expected_sha256": "bc7899106a33e1426fdedebb2c50dc59b20690f002bba0cf0a70099182a3dab1"
           },
           {
             "map": "maps/q3tourney2.bsp",
             "gametype": 1,
-            "exact_words": 75479,
-            "string_bytes": 9285,
+            "exact_words": 75481,
+            "string_bytes": 9308,
             "events": {
-              "1": 18,
+              "1": 19,
               "2": 4,
               "7": 104,
-              "5": 46,
+              "5": 47,
               "6": 68,
-              "4": 32,
+              "4": 31,
               "8": 4,
               "9": 5
             },
@@ -16900,7 +16995,6 @@
               "item_health_large": 1,
               "ammo_shells": 4,
               "ammo_rockets": 2,
-              "trigger_hurt": 1,
               "weapon_shotgun": 1,
               "weapon_rocketlauncher": 1
             },
@@ -16943,21 +17037,21 @@
             "teleport_reactions": 2,
             "map_sha256": "fe07a539bf0b76823160d8ffe96a62c182003877d9678aa27c5b2bea8ca0f4c8",
             "inputs_sha256": "4ffe80d23bc7b1f313f898bd54256175f2dcb5be12b549764316ec073e8eda5a",
-            "expected_sha256": "919d86c617529596ea19617ec615bf5f217007d2ff82b6857571d8ac0979b06c"
+            "expected_sha256": "b319663f3d423d23f95cfe654f2859fce8b781f264226bce9b33df11b14a0aac"
           },
           {
             "map": "maps/q3tourney2.bsp",
             "gametype": 2,
-            "exact_words": 75483,
-            "string_bytes": 9283,
+            "exact_words": 75485,
+            "string_bytes": 9306,
             "events": {
-              "1": 19,
+              "1": 20,
               "2": 3,
               "3": 1,
               "7": 104,
-              "5": 46,
+              "5": 47,
               "6": 68,
-              "4": 32,
+              "4": 31,
               "8": 4,
               "9": 5
             },
@@ -16970,7 +17064,6 @@
               "item_health_large": 1,
               "ammo_shells": 4,
               "ammo_rockets": 2,
-              "trigger_hurt": 1,
               "weapon_shotgun": 1,
               "weapon_rocketlauncher": 1
             },
@@ -17013,20 +17106,20 @@
             "teleport_reactions": 2,
             "map_sha256": "fe07a539bf0b76823160d8ffe96a62c182003877d9678aa27c5b2bea8ca0f4c8",
             "inputs_sha256": "68877a528aee21ceae7798a4bed1e20d2e90f31e53e44d7548f1fd37fa8c68b5",
-            "expected_sha256": "ed42cfaa00468d774e2f34e6d3228d5f817e1c731da0ee7b6d920e7b7a3766eb"
+            "expected_sha256": "165c23d1cf4839642d993359802177313cc94411bb75d3f317069a8aadc5862b"
           },
           {
             "map": "maps/q3tourney2.bsp",
             "gametype": 3,
-            "exact_words": 75479,
-            "string_bytes": 9285,
+            "exact_words": 75481,
+            "string_bytes": 9308,
             "events": {
-              "1": 18,
+              "1": 19,
               "2": 4,
               "7": 104,
-              "5": 46,
+              "5": 47,
               "6": 68,
-              "4": 32,
+              "4": 31,
               "8": 4,
               "9": 5
             },
@@ -17039,7 +17132,6 @@
               "item_health_large": 1,
               "ammo_shells": 4,
               "ammo_rockets": 2,
-              "trigger_hurt": 1,
               "weapon_shotgun": 1,
               "weapon_rocketlauncher": 1
             },
@@ -17082,20 +17174,20 @@
             "teleport_reactions": 2,
             "map_sha256": "fe07a539bf0b76823160d8ffe96a62c182003877d9678aa27c5b2bea8ca0f4c8",
             "inputs_sha256": "8a825838f5b09b45bf8c434642f17c1670b05913179509570a3f31123811c15a",
-            "expected_sha256": "919d86c617529596ea19617ec615bf5f217007d2ff82b6857571d8ac0979b06c"
+            "expected_sha256": "b319663f3d423d23f95cfe654f2859fce8b781f264226bce9b33df11b14a0aac"
           },
           {
             "map": "maps/q3tourney2.bsp",
             "gametype": 4,
-            "exact_words": 75475,
-            "string_bytes": 9273,
+            "exact_words": 75477,
+            "string_bytes": 9296,
             "events": {
-              "1": 18,
+              "1": 19,
               "2": 3,
               "7": 104,
-              "5": 46,
+              "5": 47,
               "6": 68,
-              "4": 32,
+              "4": 31,
               "8": 4,
               "9": 5
             },
@@ -17108,7 +17200,6 @@
               "item_health_large": 1,
               "ammo_shells": 4,
               "ammo_rockets": 2,
-              "trigger_hurt": 1,
               "weapon_shotgun": 1,
               "weapon_rocketlauncher": 1
             },
@@ -17151,20 +17242,20 @@
             "teleport_reactions": 2,
             "map_sha256": "fe07a539bf0b76823160d8ffe96a62c182003877d9678aa27c5b2bea8ca0f4c8",
             "inputs_sha256": "8667f4b34d7a5f21f1baeb096a03581b3d6f136f71198f4ceec28da8b6deebc1",
-            "expected_sha256": "e5c35e4d5d18f22cfe16e486d4315a72c4367fff2c53a276c456c5ba93133649"
+            "expected_sha256": "bc7899106a33e1426fdedebb2c50dc59b20690f002bba0cf0a70099182a3dab1"
           },
           {
             "map": "maps/q3tourney3.bsp",
             "gametype": 0,
             "exact_words": 49228,
-            "string_bytes": 6143,
+            "string_bytes": 6166,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 3,
               "7": 63,
-              "5": 21,
+              "5": 23,
               "6": 51,
-              "4": 28,
+              "4": 26,
               "8": 4,
               "9": 6
             },
@@ -17183,8 +17274,7 @@
               "item_armor_combat": 1,
               "item_armor_body": 1,
               "weapon_rocketlauncher": 1,
-              "target_remove_powerups": 1,
-              "trigger_hurt": 2
+              "target_remove_powerups": 1
             },
             "states": [
               {
@@ -17225,20 +17315,20 @@
             "teleport_reactions": 0,
             "map_sha256": "f2811ecc9510d78d7642927ed325cdf5cd84342ba174c983e8fba94b959b33e6",
             "inputs_sha256": "4ebf7d129eba28264db5b1bb0e6dff653c61e1a21a643255fc8aa8137c14d343",
-            "expected_sha256": "f8a022b1c1c97163b8019d7f9abdecb756de8a5d049c5344da52ee53fb40379c"
+            "expected_sha256": "003a87cd61d0fbf490b14da8bf22565f9e287b99f8a8da7f75794c467ef5b631"
           },
           {
             "map": "maps/q3tourney3.bsp",
             "gametype": 1,
             "exact_words": 49232,
-            "string_bytes": 6155,
+            "string_bytes": 6178,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 4,
               "7": 63,
-              "5": 21,
+              "5": 23,
               "6": 51,
-              "4": 28,
+              "4": 26,
               "8": 4,
               "9": 6
             },
@@ -17257,8 +17347,7 @@
               "item_armor_combat": 1,
               "item_armor_body": 1,
               "weapon_rocketlauncher": 1,
-              "target_remove_powerups": 1,
-              "trigger_hurt": 2
+              "target_remove_powerups": 1
             },
             "states": [
               {
@@ -17299,21 +17388,21 @@
             "teleport_reactions": 0,
             "map_sha256": "f2811ecc9510d78d7642927ed325cdf5cd84342ba174c983e8fba94b959b33e6",
             "inputs_sha256": "27a3d09bb31dace937845842faa4a6a9e153739ac0820e9611ffcf2fd6589366",
-            "expected_sha256": "4d6fbd9f2506be6cf863490745340e790de3ef884769064e11692abf7ef835a0"
+            "expected_sha256": "cb986550924ac516f2b42bf01674e4848081b70a73f53d5e2da119027284b2b5"
           },
           {
             "map": "maps/q3tourney3.bsp",
             "gametype": 2,
             "exact_words": 49236,
-            "string_bytes": 6153,
+            "string_bytes": 6176,
             "events": {
-              "1": 12,
+              "1": 13,
               "2": 3,
               "3": 1,
               "7": 63,
-              "5": 21,
+              "5": 23,
               "6": 51,
-              "4": 28,
+              "4": 26,
               "8": 4,
               "9": 6
             },
@@ -17332,8 +17421,7 @@
               "item_armor_combat": 1,
               "item_armor_body": 1,
               "weapon_rocketlauncher": 1,
-              "target_remove_powerups": 1,
-              "trigger_hurt": 2
+              "target_remove_powerups": 1
             },
             "states": [
               {
@@ -17374,20 +17462,20 @@
             "teleport_reactions": 0,
             "map_sha256": "f2811ecc9510d78d7642927ed325cdf5cd84342ba174c983e8fba94b959b33e6",
             "inputs_sha256": "f947cd73054a8b0220f8d12263220af3fe883e834e3c0c3f695e9602cb8c8cec",
-            "expected_sha256": "8c19db308f59e487ae6fa1fa89483bdd705f9ce0f290e90015854750b81c5e8f"
+            "expected_sha256": "75445038e5a063bf626c0f2b3dc2c5c1caa0c49cc564ce3810c834098d73de47"
           },
           {
             "map": "maps/q3tourney3.bsp",
             "gametype": 3,
             "exact_words": 45632,
-            "string_bytes": 5453,
+            "string_bytes": 5476,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 4,
               "7": 54,
-              "5": 21,
+              "5": 23,
               "6": 60,
-              "4": 28,
+              "4": 26,
               "8": 4,
               "9": 6
             },
@@ -17406,8 +17494,7 @@
               "item_armor_combat": 1,
               "item_armor_body": 1,
               "weapon_rocketlauncher": 1,
-              "target_remove_powerups": 1,
-              "trigger_hurt": 2
+              "target_remove_powerups": 1
             },
             "states": [
               {
@@ -17448,20 +17535,20 @@
             "teleport_reactions": 0,
             "map_sha256": "f2811ecc9510d78d7642927ed325cdf5cd84342ba174c983e8fba94b959b33e6",
             "inputs_sha256": "a8f99db20b6f8901a046ca83db39ab7dc02c3da6cf449077015d9cf5b21a352d",
-            "expected_sha256": "797309b4e9f67afce9b9c3848f800cab747abd329a4ea39e4040ef4410ff6891"
+            "expected_sha256": "6d5f3404ad0b55dee3bb41af4911acf90630fc71996455f54445059a493b4675"
           },
           {
             "map": "maps/q3tourney3.bsp",
             "gametype": 4,
             "exact_words": 45628,
-            "string_bytes": 5441,
+            "string_bytes": 5464,
             "events": {
-              "1": 11,
+              "1": 12,
               "2": 3,
               "7": 54,
-              "5": 21,
+              "5": 23,
               "6": 60,
-              "4": 28,
+              "4": 26,
               "8": 4,
               "9": 6
             },
@@ -17480,8 +17567,7 @@
               "item_armor_combat": 1,
               "item_armor_body": 1,
               "weapon_rocketlauncher": 1,
-              "target_remove_powerups": 1,
-              "trigger_hurt": 2
+              "target_remove_powerups": 1
             },
             "states": [
               {
@@ -17522,7 +17608,7 @@
             "teleport_reactions": 0,
             "map_sha256": "f2811ecc9510d78d7642927ed325cdf5cd84342ba174c983e8fba94b959b33e6",
             "inputs_sha256": "8d25bbc65a1e75d481ed7e820c6d65a58d893a3a01c875b311c20195e58351ff",
-            "expected_sha256": "49f194ff75c5ef2c8106482db5dcc621b24a9cc4522ba94e8aa23ba5f6ef8b18"
+            "expected_sha256": "daa44be038471ebc5c5e85d112240ef8530e3a7126ad2d807bf5859eb2efb512"
           },
           {
             "map": "maps/q3tourney4.bsp",
@@ -18239,14 +18325,14 @@
           {
             "map": "maps/q3tourney6.bsp",
             "gametype": 0,
-            "exact_words": 69797,
-            "string_bytes": 8707,
+            "exact_words": 69799,
+            "string_bytes": 8730,
             "events": {
-              "1": 15,
+              "1": 16,
               "2": 3,
               "7": 86,
-              "5": 34,
-              "4": 33,
+              "5": 35,
+              "4": 32,
               "6": 93,
               "8": 4,
               "9": 9
@@ -18259,7 +18345,6 @@
               "item_health_mega": 1,
               "item_armor_body": 1,
               "target_remove_powerups": 1,
-              "trigger_hurt": 1,
               "ammo_rockets": 2,
               "ammo_bullets": 2,
               "ammo_bfg": 2,
@@ -18310,19 +18395,19 @@
             "teleport_reactions": 1,
             "map_sha256": "f38c52088ce0dfa7566e732c07937ed47d6e56ef1a571c371832e459f66397a9",
             "inputs_sha256": "314c0656c8233526afaf744392ecef39c90330c159e8596ad66b58adec43cba4",
-            "expected_sha256": "65876aec2da4cc0f714f009fd69e82d35826d6d7fc24e77b6addbb05540002e6"
+            "expected_sha256": "c9a8e138492994f9154a19c50125f8bab76d0ab13adf398fd3e7f92078164ae9"
           },
           {
             "map": "maps/q3tourney6.bsp",
             "gametype": 1,
-            "exact_words": 69801,
-            "string_bytes": 8719,
+            "exact_words": 69803,
+            "string_bytes": 8742,
             "events": {
-              "1": 15,
+              "1": 16,
               "2": 4,
               "7": 86,
-              "5": 34,
-              "4": 33,
+              "5": 35,
+              "4": 32,
               "6": 93,
               "8": 4,
               "9": 9
@@ -18335,7 +18420,6 @@
               "item_health_mega": 1,
               "item_armor_body": 1,
               "target_remove_powerups": 1,
-              "trigger_hurt": 1,
               "ammo_rockets": 2,
               "ammo_bullets": 2,
               "ammo_bfg": 2,
@@ -18386,20 +18470,20 @@
             "teleport_reactions": 1,
             "map_sha256": "f38c52088ce0dfa7566e732c07937ed47d6e56ef1a571c371832e459f66397a9",
             "inputs_sha256": "7a1b02a0c1cf5947e50bd7c118f66cc3f4c3c7e87792c3c985e63ff8638a6152",
-            "expected_sha256": "532630815a8e125c30cd623a751fa769f4670c2e7a011370da1d5f08f6d3becc"
+            "expected_sha256": "d19fab2d2161ab45a007910485914160d12db3418303d93cae76e7353aa23d55"
           },
           {
             "map": "maps/q3tourney6.bsp",
             "gametype": 2,
-            "exact_words": 69805,
-            "string_bytes": 8717,
+            "exact_words": 69807,
+            "string_bytes": 8740,
             "events": {
-              "1": 16,
+              "1": 17,
               "2": 3,
               "3": 1,
               "7": 86,
-              "5": 34,
-              "4": 33,
+              "5": 35,
+              "4": 32,
               "6": 93,
               "8": 4,
               "9": 9
@@ -18412,7 +18496,6 @@
               "item_health_mega": 1,
               "item_armor_body": 1,
               "target_remove_powerups": 1,
-              "trigger_hurt": 1,
               "ammo_rockets": 2,
               "ammo_bullets": 2,
               "ammo_bfg": 2,
@@ -18463,19 +18546,19 @@
             "teleport_reactions": 1,
             "map_sha256": "f38c52088ce0dfa7566e732c07937ed47d6e56ef1a571c371832e459f66397a9",
             "inputs_sha256": "2754942523a51a53ea5df244d178d3a764ffac4fc601039396a3f7dc5f42bdf7",
-            "expected_sha256": "4ed3abb4c915a4bc16f139395119c645ca670f5f7ad78dcdea9cdbea474e88a7"
+            "expected_sha256": "dbb1e951f3f1ddbb97473118e2788353d167957af0faefcd5b2c237db5807289"
           },
           {
             "map": "maps/q3tourney6.bsp",
             "gametype": 3,
-            "exact_words": 69801,
-            "string_bytes": 8719,
+            "exact_words": 69803,
+            "string_bytes": 8742,
             "events": {
-              "1": 15,
+              "1": 16,
               "2": 4,
               "7": 86,
-              "5": 34,
-              "4": 33,
+              "5": 35,
+              "4": 32,
               "6": 93,
               "8": 4,
               "9": 9
@@ -18488,7 +18571,6 @@
               "item_health_mega": 1,
               "item_armor_body": 1,
               "target_remove_powerups": 1,
-              "trigger_hurt": 1,
               "ammo_rockets": 2,
               "ammo_bullets": 2,
               "ammo_bfg": 2,
@@ -18539,19 +18621,19 @@
             "teleport_reactions": 1,
             "map_sha256": "f38c52088ce0dfa7566e732c07937ed47d6e56ef1a571c371832e459f66397a9",
             "inputs_sha256": "eac4f256a44d211631acdd1701e2c28fb1158e2706de46d4881bff1a87f39028",
-            "expected_sha256": "532630815a8e125c30cd623a751fa769f4670c2e7a011370da1d5f08f6d3becc"
+            "expected_sha256": "d19fab2d2161ab45a007910485914160d12db3418303d93cae76e7353aa23d55"
           },
           {
             "map": "maps/q3tourney6.bsp",
             "gametype": 4,
-            "exact_words": 69797,
-            "string_bytes": 8707,
+            "exact_words": 69799,
+            "string_bytes": 8730,
             "events": {
-              "1": 15,
+              "1": 16,
               "2": 3,
               "7": 86,
-              "5": 34,
-              "4": 33,
+              "5": 35,
+              "4": 32,
               "6": 93,
               "8": 4,
               "9": 9
@@ -18564,7 +18646,6 @@
               "item_health_mega": 1,
               "item_armor_body": 1,
               "target_remove_powerups": 1,
-              "trigger_hurt": 1,
               "ammo_rockets": 2,
               "ammo_bullets": 2,
               "ammo_bfg": 2,
@@ -18615,7 +18696,7 @@
             "teleport_reactions": 1,
             "map_sha256": "f38c52088ce0dfa7566e732c07937ed47d6e56ef1a571c371832e459f66397a9",
             "inputs_sha256": "9c1da747894e60124069cb6ae9caa04e6b369ac547c7b03fccc7578623fa7d46",
-            "expected_sha256": "65876aec2da4cc0f714f009fd69e82d35826d6d7fc24e77b6addbb05540002e6"
+            "expected_sha256": "c9a8e138492994f9154a19c50125f8bab76d0ab13adf398fd3e7f92078164ae9"
           },
           {
             "map": "maps/test_bigbox.bsp",
@@ -18891,15 +18972,15 @@
           {
             "map": "spawn_fixture.bsp",
             "gametype": -1,
-            "exact_words": 72418,
-            "string_bytes": 11092,
+            "exact_words": 72284,
+            "string_bytes": 11090,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 4,
               "7": 113,
               "6": 22,
-              "4": 55,
-              "5": 24,
+              "4": 53,
+              "5": 25,
               "8": 4,
               "9": 4
             },
@@ -18912,13 +18993,11 @@
               "func_bobbing": 1,
               "func_pendulum": 1,
               "func_train": 1,
-              "trigger_hurt": 1,
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
               "target_laser": 1,
               "target_score": 1,
-              "target_kill": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
               "shooter_rocket": 1,
@@ -18999,20 +19078,20 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "ddcb7e02cd8174e1cb73318819e70e069051c82690927d8f89727d7b2bfbec33",
-            "expected_sha256": "29a314570275bc07f445c2cf35ac1cfc4a3336d4b7a3a3de0bb167f800c1a982"
+            "expected_sha256": "ca4442673260dc045746e85355c4ca5605d9995fd49d4be8179b5382258ee6e5"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 0,
-            "exact_words": 69614,
-            "string_bytes": 10891,
+            "exact_words": 69480,
+            "string_bytes": 10889,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 3,
               "7": 106,
               "6": 29,
-              "4": 55,
-              "5": 24,
+              "4": 53,
+              "5": 25,
               "8": 4,
               "9": 4
             },
@@ -19025,13 +19104,11 @@
               "func_bobbing": 1,
               "func_pendulum": 1,
               "func_train": 1,
-              "trigger_hurt": 1,
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
               "target_laser": 1,
               "target_score": 1,
-              "target_kill": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
               "shooter_rocket": 1,
@@ -19112,20 +19189,20 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "9514ce883d05373e44c6bd621d2cca50a0b1f4d768c115ba335618fa3b8e13d7",
-            "expected_sha256": "93f2a8c25ea12a746cc4e20b855fade9ed0cf5620958ad100ceed62730e266e3"
+            "expected_sha256": "a319708472d60f217d52ef24b0f883e0a903f65bdadecd7fec17a0e1c06a5027"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 1,
-            "exact_words": 69218,
-            "string_bytes": 10876,
+            "exact_words": 69084,
+            "string_bytes": 10874,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 4,
               "7": 105,
               "6": 30,
-              "4": 55,
-              "5": 24,
+              "4": 53,
+              "5": 25,
               "8": 4,
               "9": 4
             },
@@ -19138,13 +19215,11 @@
               "func_bobbing": 1,
               "func_pendulum": 1,
               "func_train": 1,
-              "trigger_hurt": 1,
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
               "target_laser": 1,
               "target_score": 1,
-              "target_kill": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
               "shooter_rocket": 1,
@@ -19225,21 +19300,21 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "f6dcf19307acf33062dddcedb957a0573dcc691023ace059bc211eb52ab60e00",
-            "expected_sha256": "88b7cd80376bce0ba36bd7cc2d742ff6ead4c002546c64f398053f276b8b2c3c"
+            "expected_sha256": "e491f9366a5258ca4f5cb78674a876409372ad34c71599f13f60b4414425eeb8"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 2,
-            "exact_words": 68422,
-            "string_bytes": 10669,
+            "exact_words": 68288,
+            "string_bytes": 10667,
             "events": {
-              "1": 10,
+              "1": 11,
               "2": 3,
               "3": 1,
               "7": 103,
               "6": 32,
-              "4": 55,
-              "5": 24,
+              "4": 53,
+              "5": 25,
               "8": 4,
               "9": 4
             },
@@ -19252,13 +19327,11 @@
               "func_bobbing": 1,
               "func_pendulum": 1,
               "func_train": 1,
-              "trigger_hurt": 1,
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
               "target_laser": 1,
               "target_score": 1,
-              "target_kill": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
               "shooter_rocket": 1,
@@ -19339,20 +19412,20 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "92ff886ea3c581bddb035b2c26752e9ca21dcb333496f7c3d166b627ebc1cd7f",
-            "expected_sha256": "a3716e785241b739632c5de5fbd85d35c3db2590eeb0971337fb3aa5e2b87e9a"
+            "expected_sha256": "fcfb6f6ab856b6a79bdb843d4724adb5e44bd1e670ee1be7daecd22f3fc0ad26"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 3,
-            "exact_words": 69218,
-            "string_bytes": 10876,
+            "exact_words": 69084,
+            "string_bytes": 10874,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 4,
               "7": 105,
               "6": 30,
-              "4": 55,
-              "5": 24,
+              "4": 53,
+              "5": 25,
               "8": 4,
               "9": 4
             },
@@ -19365,13 +19438,11 @@
               "func_bobbing": 1,
               "func_pendulum": 1,
               "func_train": 1,
-              "trigger_hurt": 1,
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
               "target_laser": 1,
               "target_score": 1,
-              "target_kill": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
               "shooter_rocket": 1,
@@ -19452,20 +19523,20 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "ff5b982c940299179117acc0f7ebec0bf9af80c5003fbdfab3d3a0d274b4769d",
-            "expected_sha256": "9310bf20514971ce76f0b8ff0072fc3e45700ac3061ba7bf58da8902f58e2ed8"
+            "expected_sha256": "4fad11bca4e57b65ae12d154ffb93315d803bc84314d8281247b566183761bdb"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 4,
-            "exact_words": 69214,
-            "string_bytes": 10864,
+            "exact_words": 69080,
+            "string_bytes": 10862,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 3,
               "7": 105,
               "6": 30,
-              "4": 55,
-              "5": 24,
+              "4": 53,
+              "5": 25,
               "8": 4,
               "9": 4
             },
@@ -19478,13 +19549,11 @@
               "func_bobbing": 1,
               "func_pendulum": 1,
               "func_train": 1,
-              "trigger_hurt": 1,
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
               "target_laser": 1,
               "target_score": 1,
-              "target_kill": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
               "shooter_rocket": 1,
@@ -19565,20 +19634,20 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "1b6921f7a219bc3800a64cf8e840d19cfdf0c727afa20e93d9094c61cba30065",
-            "expected_sha256": "0cf57064d8d2f9a7a0e7d36b94290d7a2a2b96ce318e61671936eb29a234fcdd"
+            "expected_sha256": "3123724101c825efbf24d40adf676ede6fdf569ec9fee2881c9503ad8b41b3ab"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 5,
-            "exact_words": 69218,
-            "string_bytes": 10876,
+            "exact_words": 69084,
+            "string_bytes": 10874,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 4,
               "7": 105,
               "6": 30,
-              "4": 55,
-              "5": 24,
+              "4": 53,
+              "5": 25,
               "8": 4,
               "9": 4
             },
@@ -19591,13 +19660,11 @@
               "func_bobbing": 1,
               "func_pendulum": 1,
               "func_train": 1,
-              "trigger_hurt": 1,
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
               "target_laser": 1,
               "target_score": 1,
-              "target_kill": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
               "shooter_rocket": 1,
@@ -19678,21 +19745,21 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "e027883be42ab133ed653fa91fa8036bece6bae37f7ba75371ee4a21a281f151",
-            "expected_sha256": "11aa1c686ef055b1379bd433b8232a27b5cf8116f0b2cf1b38fc1b2be61afe5b"
+            "expected_sha256": "c1bc41dc051a8de48c6b9a838de9fa82affdd606acd3f22513e9505c82ad2dbf"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 6,
-            "exact_words": 69222,
-            "string_bytes": 10874,
+            "exact_words": 69088,
+            "string_bytes": 10872,
             "events": {
-              "1": 10,
+              "1": 11,
               "2": 3,
               "3": 1,
               "7": 105,
               "6": 30,
-              "4": 55,
-              "5": 24,
+              "4": 53,
+              "5": 25,
               "8": 4,
               "9": 4
             },
@@ -19705,13 +19772,11 @@
               "func_bobbing": 1,
               "func_pendulum": 1,
               "func_train": 1,
-              "trigger_hurt": 1,
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
               "target_laser": 1,
               "target_score": 1,
-              "target_kill": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
               "shooter_rocket": 1,
@@ -19792,20 +19857,20 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "2d314753dae9529f7bf1db14410a1508f8e7d009c93d5aa11e3e0b79fc866f83",
-            "expected_sha256": "0d9dd1dd43be12190aa661cd78618c83a964fa499bec587285a1968bb6defdc9"
+            "expected_sha256": "8b43a360213ee0329000dafe6d92fda0d740051e17723a53655721aae063afbe"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 7,
-            "exact_words": 69218,
-            "string_bytes": 10876,
+            "exact_words": 69084,
+            "string_bytes": 10874,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 4,
               "7": 105,
               "6": 30,
-              "4": 55,
-              "5": 24,
+              "4": 53,
+              "5": 25,
               "8": 4,
               "9": 4
             },
@@ -19818,13 +19883,11 @@
               "func_bobbing": 1,
               "func_pendulum": 1,
               "func_train": 1,
-              "trigger_hurt": 1,
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
               "target_laser": 1,
               "target_score": 1,
-              "target_kill": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
               "shooter_rocket": 1,
@@ -19905,20 +19968,20 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "88df79995ee9783e99ddbb7df6e1d973d07157da708f040f4903b6de4a5a2177",
-            "expected_sha256": "11aa1c686ef055b1379bd433b8232a27b5cf8116f0b2cf1b38fc1b2be61afe5b"
+            "expected_sha256": "c1bc41dc051a8de48c6b9a838de9fa82affdd606acd3f22513e9505c82ad2dbf"
           },
           {
             "map": "spawn_fixture.bsp",
             "gametype": 8,
-            "exact_words": 72414,
-            "string_bytes": 11080,
+            "exact_words": 72280,
+            "string_bytes": 11078,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 3,
               "7": 113,
               "6": 22,
-              "4": 55,
-              "5": 24,
+              "4": 53,
+              "5": 25,
               "8": 4,
               "9": 4
             },
@@ -19931,13 +19994,11 @@
               "func_bobbing": 1,
               "func_pendulum": 1,
               "func_train": 1,
-              "trigger_hurt": 1,
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
               "target_laser": 1,
               "target_score": 1,
-              "target_kill": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
               "shooter_rocket": 1,
@@ -20018,20 +20079,20 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "d53590da16c7f99ea9e096a4f64a458b4482aa151940692c985dd60e2a2c7de6",
-            "expected_sha256": "07a26fe662d7106c9ad16e20effbe8986a48785a80f7a2fc8eff8351199163d8"
+            "expected_sha256": "32855578fb3601926d3d45b28f00f50bfc75fe5f2b5462ee7d541ec7d2b5fa48"
           },
           {
             "map": "spawn_gravity_0.bsp",
             "gametype": 0,
-            "exact_words": 70541,
-            "string_bytes": 10951,
+            "exact_words": 70407,
+            "string_bytes": 10949,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 3,
               "7": 109,
               "6": 30,
-              "4": 55,
-              "5": 28,
+              "4": 53,
+              "5": 29,
               "8": 4,
               "9": 5
             },
@@ -20044,13 +20105,11 @@
               "func_bobbing": 1,
               "func_pendulum": 1,
               "func_train": 1,
-              "trigger_hurt": 1,
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
               "target_laser": 1,
               "target_score": 1,
-              "target_kill": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
               "shooter_rocket": 1,
@@ -20131,20 +20190,20 @@
             "teleport_reactions": 5,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "27e8bc1a334a07d78ffba00b6811b4c53e40f1d952cfdbc9b35b6b549e1b07b6",
-            "expected_sha256": "054e610654db293c3b5bb412f694c8b5d9541ddf038224d8aea58fa78fcb9fc2"
+            "expected_sha256": "1a121676a77ab410596f8e3f972a4f0471ab4fb511878e2dca5c514cc6b3353a"
           },
           {
             "map": "spawn_gravity_1.bsp",
             "gametype": 0,
-            "exact_words": 70541,
-            "string_bytes": 10952,
+            "exact_words": 70407,
+            "string_bytes": 10950,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 3,
               "7": 109,
               "6": 30,
-              "4": 55,
-              "5": 28,
+              "4": 53,
+              "5": 29,
               "8": 4,
               "9": 5
             },
@@ -20157,13 +20216,11 @@
               "func_bobbing": 1,
               "func_pendulum": 1,
               "func_train": 1,
-              "trigger_hurt": 1,
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
               "target_laser": 1,
               "target_score": 1,
-              "target_kill": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
               "shooter_rocket": 1,
@@ -20244,20 +20301,20 @@
             "teleport_reactions": 5,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "d4775f68b5764e306d677e5f7ca5818b65019b015e89e90fc6758046d5875852",
-            "expected_sha256": "7f48df71a09ac8cf8227cca7f8833f597c7f813f91c9a78be5a2131e05358dc7"
+            "expected_sha256": "a958f67a39eec151ed71dc21139521edcfb566b42247b86a4af1fb941fc6ab42"
           },
           {
             "map": "spawn_gravity_2.bsp",
             "gametype": 0,
-            "exact_words": 69614,
-            "string_bytes": 10891,
+            "exact_words": 69480,
+            "string_bytes": 10889,
             "events": {
-              "1": 9,
+              "1": 10,
               "2": 3,
               "7": 106,
               "6": 29,
-              "4": 55,
-              "5": 24,
+              "4": 53,
+              "5": 25,
               "8": 4,
               "9": 4
             },
@@ -20270,13 +20327,11 @@
               "func_bobbing": 1,
               "func_pendulum": 1,
               "func_train": 1,
-              "trigger_hurt": 1,
               "target_give": 1,
               "target_remove_powerups": 1,
               "target_print": 1,
               "target_laser": 1,
               "target_score": 1,
-              "target_kill": 1,
               "misc_portal_surface": 1,
               "misc_portal_camera": 1,
               "shooter_rocket": 1,
@@ -20357,11 +20412,11 @@
             "teleport_reactions": 4,
             "map_sha256": "e08c70d8decdb6b18d383ca8d1838128b20b4232937a1d55ae101034114a14c5",
             "inputs_sha256": "53065c6ea380c9c74ffccd427e18ce7a7248a1fc9e3ca18457495b1ea49a2314",
-            "expected_sha256": "33802776be999ba7b74f88f84e1866992ee700b7a454443cd764cab9c04e1c36"
+            "expected_sha256": "3bddf1c927f655e32c6b2b3c5092355de2ac38f281be441f5000bc35c0bf1add"
           }
         ],
-        "test_sha256": "9d0fb181e642e226fe798989f9a9b9d433ffb2facce3cebba43f001ce2eae374",
-        "extracted_functions_sha256": "18515ead99836d265b91d45691eca669cfe6d4489ad5e1f95026fd6503fe20ff",
+        "test_sha256": "d2af7a49581da132668663194d19305e1be48e4725157e6d4608e4c79624c199",
+        "extracted_functions_sha256": "9341ed849a12b16770773f2fa559d2f35217ed745495c9b63d8db13e162780fc",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -20382,6 +20437,7 @@
           "Quake-III-Arena-original-source/code/game/g_mover.c": "4c9934ebd38ee2634affc102cfc423df15fedbd81186b42726da5ef6c72c7500",
           "Quake-III-Arena-original-source/code/game/g_main.c": "b98c2b5cb2ed272bcce36acd1e5eda1c57d499b9ecd3549ba9a08f69dd1363d4",
           "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
+          "Quake-III-Arena-original-source/code/game/g_combat.c": "a19a66ecaf1d1bf557e350e08ea57da8356d1a66ee4f61d8cc2fae455c312a48",
           "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
           "Quake-III-Arena-original-source/code/game/g_spawn.c": "611d4c13b7794785e1c475f93d2dfcbfad3173132b76e031e80db7b8653bd268",
           "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
@@ -20395,7 +20451,7 @@
     },
     {
       "path": "build/reference/spawn_values/result.json",
-      "sha256": "24a879b0041cafd3586c28e24536181c22196f53df1a1c77c6d8f659f2e9bb4d",
+      "sha256": "eb0ef8cff92ec092cfb802c259bf73630b572cc55c374f0e51975c607b5ea4e1",
       "result": {
         "passed": true,
         "cases": 4096,
@@ -20409,7 +20465,7 @@
         "think_inputs_sha256": "ea8d9e60174bdb7acbd9a5bfc0e7fdf03aae24b654e97628f464c3fb8e64dec2",
         "think_expected_sha256": "d122208c99f71f87db5effca57f268502399813f1d14c1af8b915e73040bbd45",
         "scope": "all original spawn field types, first-key lookup, last-field assignment, CRT numbers, parser bounds; no spawn class execution",
-        "test_sha256": "9d0fb181e642e226fe798989f9a9b9d433ffb2facce3cebba43f001ce2eae374",
+        "test_sha256": "d2af7a49581da132668663194d19305e1be48e4725157e6d4608e4c79624c199",
         "inputs_sha256": "1ce188309d9e2f68b546141a0f21d437db35de077e20ea9eaff63614ad100c43",
         "expected_sha256": "0b79eb4964a52b6530d98f3a926728b3d9dc6277b215edf08f9fdda415cfcc64",
         "original_sources": {
@@ -20432,6 +20488,7 @@
           "Quake-III-Arena-original-source/code/game/g_mover.c": "4c9934ebd38ee2634affc102cfc423df15fedbd81186b42726da5ef6c72c7500",
           "Quake-III-Arena-original-source/code/game/g_main.c": "b98c2b5cb2ed272bcce36acd1e5eda1c57d499b9ecd3549ba9a08f69dd1363d4",
           "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
+          "Quake-III-Arena-original-source/code/game/g_combat.c": "a19a66ecaf1d1bf557e350e08ea57da8356d1a66ee4f61d8cc2fae455c312a48",
           "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
           "Quake-III-Arena-original-source/code/game/g_spawn.c": "611d4c13b7794785e1c475f93d2dfcbfad3173132b76e031e80db7b8653bd268",
           "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
@@ -20445,7 +20502,7 @@
     },
     {
       "path": "build/reference/targets/result.json",
-      "sha256": "e8aeefd90638931bd8a6562db6639dc62b01b3af2468a4da26c60d27dc81b1f6",
+      "sha256": "78a24d5ba10abc61b07562e074142e90dd7c59795438a3d25416f1d5d268fe20",
       "result": {
         "passed": true,
         "scenarios": [
@@ -20677,7 +20734,7 @@
         "actions": 9691,
         "exact_words": 40453187,
         "string_bytes": 4721815,
-        "test_sha256": "9d0fb181e642e226fe798989f9a9b9d433ffb2facce3cebba43f001ce2eae374",
+        "test_sha256": "d2af7a49581da132668663194d19305e1be48e4725157e6d4608e4c79624c199",
         "original_missing_noise_rejection": true,
         "original_freed_timer_rejections": 2,
         "scope": "Original target, event, spawn and allocated-entity frame loop; missile/item/mover/client handlers record dispatch only; no complete G_RunFrame/server acceptance",
@@ -20702,6 +20759,7 @@
           "Quake-III-Arena-original-source/code/game/g_mover.c": "4c9934ebd38ee2634affc102cfc423df15fedbd81186b42726da5ef6c72c7500",
           "Quake-III-Arena-original-source/code/game/g_main.c": "b98c2b5cb2ed272bcce36acd1e5eda1c57d499b9ecd3549ba9a08f69dd1363d4",
           "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
+          "Quake-III-Arena-original-source/code/game/g_combat.c": "a19a66ecaf1d1bf557e350e08ea57da8356d1a66ee4f61d8cc2fae455c312a48",
           "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
           "Quake-III-Arena-original-source/code/game/g_spawn.c": "611d4c13b7794785e1c475f93d2dfcbfad3173132b76e031e80db7b8653bd268",
           "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
@@ -20715,7 +20773,7 @@
     },
     {
       "path": "build/reference/transitions/curves/result.json",
-      "sha256": "1338ec57fb384edff3f0b91b56b8c61e6b841af38daa244bac00d7262a12539c",
+      "sha256": "5124be511de197b2ef7ff64fb49523d22bb1ca95e62a341d30db841f71729d77",
       "result": {
         "passed": true,
         "profile": "original native G_TouchTriggers/TeleportPlayer/lifecycle + original SV/CM/Pmove; cm_noCurves=0",
@@ -21686,7 +21744,7 @@
         ],
         "original_spawn_rejections": 2,
         "allocator_client_contracts": 5,
-        "test_sha256": "c0e072fe54eba821f350b8101dd92742e7dbbf6714304725b7b1e75ecf199bd7",
+        "test_sha256": "4119efabedffef72f03f8e56ea84ba0918986806427334d9721efc1243d13685",
         "extracted_functions_sha256": "5b316a15af1a8333e5d7b4a71f7eecb63f76c429c3a4938a6b8112663523486b",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -21718,7 +21776,7 @@
     },
     {
       "path": "build/reference/transitions/no_curves/result.json",
-      "sha256": "c50334db09ea35f36339f80b209a364fa2d5619bb6e8a52bfb2d30f19fb556aa",
+      "sha256": "8ac0cd6cbf722f02960d72d6991143a157b08ffa27dc4fc2f66e1bdd685a4659",
       "result": {
         "passed": true,
         "profile": "original native G_TouchTriggers/TeleportPlayer/lifecycle + original SV/CM/Pmove; cm_noCurves=1",
@@ -22689,7 +22747,7 @@
         ],
         "original_spawn_rejections": 2,
         "allocator_client_contracts": 5,
-        "test_sha256": "c0e072fe54eba821f350b8101dd92742e7dbbf6714304725b7b1e75ecf199bd7",
+        "test_sha256": "4119efabedffef72f03f8e56ea84ba0918986806427334d9721efc1243d13685",
         "extracted_functions_sha256": "5b316a15af1a8333e5d7b4a71f7eecb63f76c429c3a4938a6b8112663523486b",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -23157,7 +23215,7 @@
     },
     {
       "path": "build/verification.json",
-      "sha256": "16cfcdf7dbb77abcdf246bc4967ff483966edba7ec9d4457c9c0ee92f6a73482",
+      "sha256": "e9f2398cf1551ce859d3e8b75b13c5a1fc531cf8c33b45aab7be75a44492c947",
       "result": {
         "passed": true,
         "scope": "implemented foundations only; full game port remains incomplete",
@@ -23211,6 +23269,12 @@
           },
           {
             "script": "test_targets.py",
+            "arguments": [
+              "--reuse-build"
+            ]
+          },
+          {
+            "script": "test_combat.py",
             "arguments": [
               "--reuse-build"
             ]

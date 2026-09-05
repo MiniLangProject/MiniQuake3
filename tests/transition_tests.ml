@@ -107,7 +107,7 @@ function main(args)
       case 1
         number = n.readI32(inputs,off); ent = level.entities[number]; game.initEntity(ent); ent.s = es.load(inputs,off+44)
         ent.client = void
-        if n.readI32(inputs,off+4) != 0 then ent.client = game.Client(ps.load(inputs,off+252),n.readI32(inputs,off+8),[n.readI32(inputs,off+768),n.readI32(inputs,off+772),n.readI32(inputs,off+776)]) end if
+        if n.readI32(inputs,off+4) != 0 then ent.client = game.createClient(ps.load(inputs,off+252),n.readI32(inputs,off+8),[n.readI32(inputs,off+768),n.readI32(inputs,off+772),n.readI32(inputs,off+776)]) end if
         setTouch(ent,n.readI32(inputs,off+12)); ent.r.bmodel = n.readI32(inputs,off+16) != 0
         ent.r.contents = n.readI32(inputs,off+20); ent.r.svFlags = n.readI32(inputs,off+24); ent.r.ownerNum = n.readI32(inputs,off+28)
         ent.neverFree = n.readI32(inputs,off+36) != 0; ent.spawnflags = n.readI32(inputs,off+40)

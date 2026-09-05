@@ -3,6 +3,7 @@
 // g_spawn.c, baseq3. Unported class/item callbacks are explicit boundaries.
 package mq3.game.spawn
 import mq3.game.entities as game
+import mq3.game.combat as combat
 import mq3.game.spawn_tables as tables
 import mq3.game.spawn_functions as functions
 import mq3.game.spawn_values as values
@@ -33,6 +34,7 @@ end struct
 function create(level,text)
   state = State(level,parser.create(text),[],0,false,0,"",0,0,0,800.0,array(1024,""),cv.create(),void,void,void)
   level.spawner = state
+  level.damageFn = combat.damage
   return state
 end function
 function getString(state,key,fallback)

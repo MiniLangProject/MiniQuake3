@@ -5,7 +5,7 @@
 void CM_LoadMap(const char*,qboolean,int*);cvar_t *Cvar_Get(const char*,const char*,int);
 #include "snapvector.inc"
 gentity_t g_entities[MAX_GENTITIES];gclient_t g_clients[MAX_CLIENTS];level_locals_t level;
-vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_gravity;
+vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage;
 void hostServerReset(void*,int,int);void hostLink(void*);void hostUnlink(void*);void hostBrush(void*,const char*);void hostMetadata(int,int*);
 int hostContact(const vec3_t,const vec3_t,void*,int);int hostArea(const vec3_t,const vec3_t,int*,int);
 static char configs[MAX_CONFIGSTRINGS][8192],gravityText[1024];static const char *entityPoint;static FILE *output;
@@ -38,19 +38,19 @@ void trap_SnapVector(float *v) {Sys_SnapVector(v);}
 void QDECL G_Printf(const char *fmt,...) { }
 void QDECL G_LogPrintf(const char *fmt,...) {word(3);word(0);string("");string(fmt);}
 void QDECL G_Error(const char *fmt,...) {va_list args;va_start(args,fmt);vfprintf(stderr,fmt,args);va_end(args);exit(72);}
-void G_Damage(gentity_t *a,gentity_t *b,gentity_t *c,vec3_t d,vec3_t e,int f,int g,int h) {G_Error("unexpected damage boundary");}
 void Touch_DoorTrigger(gentity_t *a,gentity_t *b,trace_t *c) {G_Error("unexpected door boundary");}
 void *G_Alloc(int n) {void *p=calloc(1,n);if(!p)exit(73);return p;}
 void G_SpawnItem(gentity_t *e,gitem_t *item) {boundary(e,1,(int)(item-bg_itemlist));}
 #include "spawn_boundaries.inc"
 #include "spawn_functions.inc"
 #include "target_actions.inc"
+#include "combat_actions.inc"
 static char *readString(FILE *in) {int n;char *s;if(fread(&n,4,1,in)!=1)return NULL;if(n<0 || n>10000000)exit(74);s=calloc(1,n+1);if(n && fread(s,1,n,in)!=n)exit(74);return s;}
 static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);word(level.locationLinked);word(slotOf(level.locationHead));for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
 static void reset(int type,int flags) {
     memset(&level,0,sizeof(level));memset(g_entities,0,sizeof(g_entities));memset(g_clients,0,sizeof(g_clients));memset(configs,0,sizeof(configs));
     level.gentities=g_entities;level.clients=g_clients;level.num_entities=64;level.time=level.startTime=1000;srand(1);
-    g_gametype.integer=type;g_restarted.integer=flags&1;g_doWarmup.integer=flags&2;g_gravity.value=800;strcpy(g_motd.string,"MiniQuake3 spawn parity");strcpy(gravityText,"800");
+    g_gametype.integer=type;g_restarted.integer=flags&1;g_doWarmup.integer=flags&2;g_gravity.value=800;g_knockback.value=1000;g_friendlyFire.integer=0;strcpy(g_motd.string,"MiniQuake3 spawn parity");strcpy(gravityText,"800");
     hostServerReset(g_entities,sizeof(gentity_t),64);
 }
 static void countThink(gentity_t *e) {e->count++;}
@@ -63,6 +63,8 @@ int main(int argc,char **argv) {
         while(fread(q,4,3,in)==3) {e->nextthink=q[0];level.time=q[1];e->count=0;e->think=q[2]?countThink:NULL;G_RunThink(e);word(e->nextthink);word(e->count);}
     } else if(argc==6 && !strcmp(argv[5],"--actions")) {
         reset(0,0);runActions(in);
+    } else if(argc==6 && !strcmp(argv[5],"--combat")) {
+        reset(0,0);runCombat(in);
     } else if(argc==6 && !strcmp(argv[5],"--values")) {
         reset(0,0);
         while((text=readString(in))!=NULL) {

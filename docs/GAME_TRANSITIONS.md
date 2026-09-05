@@ -27,9 +27,10 @@ zur geraden Ganzzahl.
 
 Game-Entities besitzen `s` (vollständiger EntityState), `r` (Server-Kollision),
 einen optionalen `client` sowie die bisher benötigten Game-Felder. Der Client
-enthält hier PlayerState, Team und die letzten Command-Winkel, noch nicht den
-gesamten privaten `gclient_t`. `entities.link` synchronisiert die gemeinsam
-sichtbaren Felder und schreibt die vom Server berechnete Solid-Größe zurück.
+enthält PlayerState, Team, die letzten Command-Winkel und inzwischen auch
+die portierten privaten Schadensfelder, noch nicht den gesamten `gclient_t`.
+`entities.link` synchronisiert die gemeinsam sichtbaren Felder und schreibt die
+vom Server berechnete Solid-Größe zurück.
 
 Die Trigger-Abfrage benutzt zunächst den Bereich `(40,40,52)` um die aktuelle
 Spielerposition. Danach prüft sie die präzise Spielerbox gegen Kollisionsmodelle;
@@ -48,16 +49,18 @@ Winkeldifferenz zum letzten Usercmd aktualisiert. Erst danach folgen KillBox,
 EntityState-Umwandlung und erneute Verlinkung mit der genauen Position. Zuschauer
 bekommen diese temporären Ereignisse und die KillBox nicht und bleiben ausgelinkt.
 
-**Schadensgrenze:** `G_KillBox` wählt die ursprünglichen überlappenden Client-
-Entities aus und übergibt sie mit Schaden 100.000, `DAMAGE_NO_PROTECTION` und
-`MOD_TELEFRAG` an `level.damageFn`. Die C-Prüfung zeichnet diesen Aufruf und die
-Reihenfolge auf; sie ersetzt `G_Damage` nicht durch vereinfachte Lebenspunktregeln.
-Die MiniLang-Implementierung verlangt diesen Callback bei einem betroffenen Client
-und liefert bei fehlendem Callback einen Fehler. Vollständige Schäden, Tod,
-Rüstung, Teamregeln und Scores sind noch Teil von Schritt 6.
+**Schadensintegration:** `G_KillBox` übergibt die überlappenden Clients mit
+Schaden 100.000, `DAMAGE_NO_PROTECTION` und `MOD_TELEFRAG` an `level.damageFn`.
+Die bisherigen Übergangstests zeichnen diese Aufrufgrenze weiterhin auf.
+`spawn.create` bindet inzwischen die [portierte Schadensfunktion](COMBAT.md);
+`test_combat.py` vergleicht darüber hinaus Gesundheit, Rüstung, Teamschutz und
+Callback-Reihenfolge bei KillBox und vollständigem Teleport. Ein ohne Spawner
+angelegter Kontext muss seinen Schadenscallback ausdrücklich setzen.
+Spieler-Todesregeln, Scores und Respawn bleiben offen.
 
 Temporäre Entities tragen `eventTime` und `freeAfterEvent`. Ihre automatische
-Entfernung erfolgt im noch zu portierenden Serverframe. Die Platzverwaltung ist
+Entfernung ist in der portierten Entity-Schleife enthalten; der vollständige
+Serverframe bleibt offen. Die Platzverwaltung ist
 bereits vorhanden; das Testprotokoll prüft Freigabe, Wiederverwendung, Wachstum
 und `neverFree` separat. Ein voller Normalbereich endet im Original bei 1.022
 Entities mit Fehler, auch wenn nur ein zu kürzlich freigegebener Platz vorhanden
@@ -73,7 +76,7 @@ der ursprünglichen Karten-Entities. Das native Win32-`rand`-Profil ist getrennt
 von einem späteren QVM-Rand-Profil zu betrachten.
 
 Die zusätzliche [Spawn-Abnahme](SPAWNING.md) liest inzwischen die ursprünglichen
-Entity-Texte, verarbeitet Worldspawn und Spielmodusfilter und führt 28 originale
+Entity-Texte, verarbeitet Worldspawn und Spielmodusfilter und führt 30 originale
 Spawn-Klassen aus. Sie ergänzt die oben beschriebenen direkten Übergangstests um
 geladene Trigger, verzögerte Sprungpad-Ausrichtung und anschließende Kontakte.
 Die [Target-/Ereignisprüfung](TARGETS_AND_EVENTS.md) ergänzt verzögerte Aufrufketten,

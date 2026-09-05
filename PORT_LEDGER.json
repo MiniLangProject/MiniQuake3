@@ -6067,10 +6067,30 @@
         "body_die",
         "player_die"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CheckArmor",
+          "target_files": [
+            "src/mq3/game/combat.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "G_Damage",
+          "target_files": [
+            "src/mq3/game/combat.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die, scoring, radius damage, damage feedback, Missionpack or full server frame. G_Printf diagnostics excluded."
+        }
+      ],
+      "target": [
+        "src/mq3/game/combat.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_combat.py"
+      ]
     },
     {
       "source": "code/game/g_items.c",
@@ -6115,7 +6135,8 @@
           "original": "gentity_s",
           "target_files": [
             "src/mq3/game/entities.ml",
-            "src/mq3/game/spawn.ml"
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/combat.ml"
           ],
           "status": "tested_subset"
         },
@@ -6123,21 +6144,42 @@
           "original": "level_locals_t",
           "target_files": [
             "src/mq3/game/entities.ml",
-            "src/mq3/game/spawn.ml"
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/combat.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "gclient_s",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/combat.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "playerTeamState_t",
+          "target_files": [
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/combat.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
         "src/mq3/game/entities.ml",
-        "src/mq3/game/spawn.ml"
+        "src/mq3/game/spawn.ml",
+        "src/mq3/game/combat.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_transitions.py",
         "scripts/test_spawn_values.py",
         "scripts/test_spawn.py",
-        "scripts/test_targets.py"
+        "scripts/test_targets.py",
+        "scripts/test_combat.py"
       ]
     },
     {
@@ -6941,7 +6983,8 @@
           "original": "SP_target_position",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -6949,7 +6992,8 @@
           "original": "Think_Target_Delay",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -6957,7 +7001,8 @@
           "original": "Use_Target_Delay",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -6965,7 +7010,8 @@
           "original": "SP_target_delay",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -6973,7 +7019,8 @@
           "original": "target_relay_use",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -6981,7 +7028,8 @@
           "original": "SP_target_relay",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -6989,7 +7037,8 @@
           "original": "target_teleporter_use",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -6997,7 +7046,8 @@
           "original": "SP_target_teleporter",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7005,7 +7055,8 @@
           "original": "Use_Target_Speaker",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7013,7 +7064,8 @@
           "original": "SP_target_speaker",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7021,7 +7073,8 @@
           "original": "target_location_linkup",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7029,19 +7082,40 @@
           "original": "SP_target_location",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "target_kill_use",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_target_kill",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
         "src/mq3/game/spawn_functions.ml",
-        "src/mq3/game/targets.ml"
+        "src/mq3/game/targets.ml",
+        "src/mq3/game/hazards.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_spawn.py",
-        "scripts/test_targets.py"
+        "scripts/test_targets.py",
+        "scripts/test_combat.py"
       ]
     },
     {
@@ -7099,38 +7173,60 @@
         {
           "original": "SP_team_CTF_redplayer",
           "target_files": [
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "SP_team_CTF_blueplayer",
           "target_files": [
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "SP_team_CTF_redspawn",
           "target_files": [
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "SP_team_CTF_bluespawn",
           "target_files": [
-            "src/mq3/game/spawn_functions.ml"
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "OnSameTeam",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "Team_CheckHurtCarrier",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
-        "src/mq3/game/spawn_functions.ml"
+        "src/mq3/game/spawn_functions.ml",
+        "src/mq3/game/combat.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_spawn.py"
+        "scripts/test_spawn.py",
+        "scripts/test_combat.py"
       ]
     },
     {
@@ -7175,7 +7271,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7184,7 +7281,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7193,7 +7291,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7202,7 +7301,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7211,7 +7311,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7220,7 +7321,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7229,7 +7331,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7238,7 +7341,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7247,7 +7351,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7256,7 +7361,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7265,7 +7371,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7274,7 +7381,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7283,7 +7391,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7292,7 +7401,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7301,7 +7411,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7310,7 +7421,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7319,7 +7431,8 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         },
@@ -7328,7 +7441,38 @@
           "target_files": [
             "src/mq3/game/triggers.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml"
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "hurt_touch",
+          "target_files": [
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "hurt_use",
+          "target_files": [
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "SP_trigger_hurt",
+          "target_files": [
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
         }
@@ -7336,13 +7480,15 @@
       "target": [
         "src/mq3/game/triggers.ml",
         "src/mq3/game/spawn_functions.ml",
-        "src/mq3/game/targets.ml"
+        "src/mq3/game/targets.ml",
+        "src/mq3/game/hazards.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_transitions.py",
         "scripts/test_spawn.py",
-        "scripts/test_targets.py"
+        "scripts/test_targets.py",
+        "scripts/test_combat.py"
       ]
     },
     {

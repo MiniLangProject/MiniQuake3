@@ -15,6 +15,15 @@ struct Client
   ps
   team
   cmdAngles
+  noclip
+  damage_armor
+  damage_blood
+  damage_knockback
+  damage_from
+  damage_fromWorld
+  lasthurt_client
+  lasthurt_mod
+  lasthurtcarrier
 end struct
 struct Entity
   slot
@@ -54,6 +63,12 @@ struct Entity
   noise_index
   fly_sound_debounce_time
   nextTrain
+  takedamage
+  moverState
+  enemy
+  pain
+  die
+  timestamp
 end struct
 struct Level
   scene
@@ -71,12 +86,18 @@ struct Level
   runEntityFn
   locationLinked
   locationHead
+  intermissionQueued
+  knockback
+  friendlyFire
 end struct
+function createClient(state,team,cmdAngles)
+  return Client(state,team,cmdAngles,false,0,0,0,[0.0,0.0,0.0],false,0,0,0.0)
+end function
 function blank(slot,r)
-  return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0,void,void,0.0,void,void,0.0,0.0,0,0,0,void,void,0,[0.0,0.0,0.0],0,void,void,void,false,false,0,0,void)
+  return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0,void,void,0.0,void,void,0.0,0.0,0,0,0,void,void,0,[0.0,0.0,0.0],0,void,void,void,false,false,0,0,void,false,0,void,void,void,0)
 end function
 function create(world)
-  scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void,false,void)
+  scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void,false,void,0,1000.0,0)
   for i = 0 to 1023
     level.entities = level.entities+[blank(i,scene.entities[i])]
   end for
@@ -140,6 +161,7 @@ function free(level,ent)
   ent.movedir = [0.0,0.0,0.0]; ent.nextthink = 0; ent.think = void
   ent.use = void; ent.activator = void; ent.unlinkAfterEvent = false; ent.physicsObject = false
   ent.noise_index = 0; ent.fly_sound_debounce_time = 0; ent.nextTrain = void
+  ent.takedamage = false; ent.moverState = 0; ent.enemy = void; ent.pain = void; ent.die = void; ent.timestamp = 0
   return void
 end function
 function setOrigin(ent,origin)

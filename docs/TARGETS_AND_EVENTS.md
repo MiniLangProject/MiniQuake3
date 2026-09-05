@@ -3,8 +3,9 @@
 `game/targets.ml` überträgt `G_UseTargets`, Shader-Remaps, `target_delay`,
 `target_relay`, `target_teleporter`, `trigger_multiple`, `trigger_always`,
 `target_speaker`, `target_push`, `func_timer` und `target_location`.
-Zusammen mit den bisherigen Klassen sind damit 28 der 48 baseq3-Spawn-Klassen
-umgesetzt. Die übrigen 20 Klassen und alle Item-Spawns bleiben offen.
+Zusammen mit den bisherigen Klassen und den [Hurt-/Kill-Objekten](COMBAT.md) sind
+damit 30 der 48 baseq3-Spawn-Klassen
+umgesetzt. Die übrigen 18 Klassen und alle Item-Spawns bleiben offen.
 
 | Aufruf | Verhalten |
 | --- | --- |
@@ -114,9 +115,9 @@ Für die noch nicht portierten Handler verlangt der Port
 `level.runEntityFn(level, kind, ent)`: `1` Missile, `2` Item/Physics, `3` Mover,
 `4` Client. Ohne Handler entsteht ein Fehler. Die C-/MiniLang-Tests zeichnen diese
 Aufrufe auf; sie simulieren keine Ersatzphysik. `G_RunFrame` als Ganzes,
-`ClientEndFrame`, Match-/Vote-Prüfungen, Schäden, Items und Mover-Pushing bleiben
-offen. Auch `target_teleporter` benutzt weiterhin die dokumentierte
-[Telefrag-Schadensgrenze](GAME_TRANSITIONS.md).
+`ClientEndFrame`, Match-/Vote-Prüfungen, Spieler-Todesregeln, Items und Mover-Pushing
+bleiben offen. `target_teleporter` ist über KillBox inzwischen mit der
+[portierten Schadensberechnung](COMBAT.md) verbunden.
 
 Die Referenz extrahiert vollständige Originalfunktionen. Für den Frame kopiert
 sie den unveränderten Entity-Schleifenblock aus `G_RunFrame` in einen Testaufruf;
@@ -136,6 +137,7 @@ Ein eigener C-/MiniLang-Fehlerlauf bestätigt den fehlenden Speaker-Noise-Schlü
 
 ```powershell
 python scripts/test_targets.py
+python scripts/test_combat.py
 python scripts/test_spawn_values.py
 python scripts/test_spawn.py D:/Quake3
 ```

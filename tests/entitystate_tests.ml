@@ -21,7 +21,7 @@ function main(args)
     end for
     snap = n.readI32(inputs,off+676) != 0; extra = n.readI32(inputs,off+680) != 0; time = n.readI32(inputs,off+684)
     snapshot.convert(p,s,snap,extra,time); actual = ps.words(p)+es.words(s)
-    e = entities.blank(0,sv.entity(0)); e.client = entities.Client(p,0,[n.readI32(inputs,off+700),n.readI32(inputs,off+704),n.readI32(inputs,off+708)])
+    e = entities.blank(0,sv.entity(0)); e.client = entities.createClient(p,0,[n.readI32(inputs,off+700),n.readI32(inputs,off+704),n.readI32(inputs,off+708)])
     teleport.setClientViewAngle(e,vector(inputs,off+688)); actual = actual+p.delta_angles
     for each value in p.viewangles+e.s.angles
       actual = actual+[n.floatBits(value)]

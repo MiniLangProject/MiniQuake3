@@ -6,8 +6,8 @@ Worldspawn und die Auswahl von Item-/Klassen-Spawn-Funktionen. Die generierten
 Tabellen enthalten 20 Feldregeln, 48 baseq3-Klassen und 35 Items. Sie werden aus
 den gepinnten Originalquellen erzeugt und gegen die ursprüngliche C-Tabelle geprüft.
 
-**Stand der Klassen:** 28 Klassen führen bereits die übertragenen Originalregeln
-aus. Die 20 übrigen Klassen und `G_SpawnItem` brauchen noch ihre Implementierung.
+**Stand der Klassen:** 30 Klassen führen bereits die übertragenen Originalregeln
+aus. Die 18 übrigen Klassen und `G_SpawnItem` brauchen noch ihre Implementierung.
 Ohne ausdrücklich gesetzten `state.unportedFn` liefert der Port an diesen Grenzen
 einen Fehler. Die Vergleichstests setzen dort einen aufzeichnenden Callback ein;
 er führt keine vereinfachten Item-, Mover- oder Spielregeln aus. Die Testkarten
@@ -15,7 +15,7 @@ sind damit noch keine vollständig initialisierten, spielbaren Game-Server.
 
 | Aufruf | Verhalten |
 | --- | --- |
-| `spawn.create(level, text)` | Neuer Spawn-Kontext für den Entity-Text; setzt `level.spawner` |
+| `spawn.create(level, text)` | Neuer Spawn-Kontext für den Entity-Text; setzt `level.spawner` und bindet die echte Schadensfunktion für KillBox |
 | `spawn.parseVars(state)` | Nächste Gruppe mit höchstens 64 Paaren und 4.096 gespeicherten Bytes |
 | `spawn.getString`, `getInt`, `getFloat`, `getVector` | Originale Such- und Konvertierungsregeln mit Vorgabewert und Found-Flag |
 | `spawn.parseField(key, value, ent)` | Alle 20 Einträge aus `fields[]`, einschließlich `angle`, ignoriertem `light` und Shader-Namen |
@@ -34,6 +34,7 @@ und `item_botroam`. Hinzugekommen sind `target_delay`, `target_relay`,
 `target_teleporter`, `trigger_multiple`, `trigger_always`, `target_speaker`,
 `target_push`, `func_timer` und `target_location`; ihre Use-/Think-
 Abläufe sind unter [Targets und Ereignisse](TARGETS_AND_EVENTS.md) beschrieben.
+`trigger_hurt` und `target_kill` verwenden die [portierte Schadensberechnung](COMBAT.md).
 Manche dieser Originalfunktionen sind leer oder geben die
 Entity sofort frei; auch dieses Verhalten bleibt erhalten.
 
@@ -78,7 +79,8 @@ Die C-Prüfung kompiliert `g_spawn.c` vollständig und bindet unveränderte
 Server-/Kollisionsdateien sowie extrahierte vollständige Game-Funktionen ein.
 Der Host stellt Speicher, Configstrings, Cvar-Effekte und die ausdrücklich
 markierten offenen Klassen bereit. Nach dem Laden vergleicht er alle Entity-
-Felder und Aufrufreihenfolgen vor, am und nach dem Think-Termin. Danach werden
+bisher portierten Felder und Aufrufreihenfolgen vor, am und nach dem Think-Termin.
+Die neuen privaten Schadensfelder werden zusätzlich in `test_combat.py` geprüft. Danach werden
 Spieler in die geladenen Trigger gesetzt und komplette PlayerStates verglichen.
 `G_Printf`-Diagnosen und der Zeitpräfix des Server-Loggers sind noch nicht Teil
 dieser Abnahme; die Warmup-Logmeldung wird als roher Aufruf aufgezeichnet.
@@ -89,5 +91,6 @@ die Entity-Schleife mit automatischer Ereignisfreigabe ab.
 ```powershell
 python scripts/test_spawn_values.py
 python scripts/test_targets.py
+python scripts/test_combat.py
 python scripts/test_spawn.py D:/Quake3
 ```

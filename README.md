@@ -54,7 +54,7 @@ Maschinengewehr. Dieser Entwicklungsaufruf verarbeitet statische Weltkollision.
 Die dynamische Kollisionsschicht, geometrische Trigger-Abfrage, Sprungpads und
 Teleport-Zustandswechsel haben eigene Replays gegen den Originalcode. Hinzu kommen
 der vollständige `entityState_t`-Speicherdatensatz, Ereignis-Entities und deren Platzverwaltung.
-Vollständige Spielserver-Frames, Schadens-/Todesregeln und Grafik bleiben offen:
+Vollständige Spielserver-Frames, Spieler-Todesregeln und Grafik bleiben offen:
 
 ```powershell
 python scripts/test_shared_game.py
@@ -65,6 +65,7 @@ python scripts/test_transitions.py D:/Quake3
 python scripts/test_transitions.py D:/Quake3 --no-curves
 python scripts/test_spawn_values.py
 python scripts/test_targets.py
+python scripts/test_combat.py
 python scripts/test_spawn.py D:/Quake3
 ```
 
@@ -72,14 +73,17 @@ Die Schnittstellen und ihre Grenzen sind unter
 [Server-Kollision](docs/SERVER_COLLISION.md) und
 [Trigger-/Teleport-Übergänge](docs/GAME_TRANSITIONS.md) beschrieben.
 Das [Spawn-Parsing](docs/SPAWNING.md) übernimmt inzwischen Worldspawn, Feld- und
-Spielmodusregeln sowie 28 Objektklassen. Sprungpads und Teleporter werden aus dem
+Spielmodusregeln sowie 30 Objektklassen. Sprungpads und Teleporter werden aus dem
 Kartentext angelegt und nach verzögerter Zielsuche mit echten Kontakten geprüft.
 Hinzu kommen [Target-Ketten und Ereignisverarbeitung](docs/TARGETS_AND_EVENTS.md):
 verzögerte Targets, Relays, Mehrfach-/Always-Trigger, Shader-Remaps und die
 Entity-Schleife mit Ablauf und Freigabe temporärer Ereignisse.
 Sound-Targets, gerichtete Push-Targets, schaltbare Timer und Ortsmarkierungen
 führen inzwischen ebenfalls ihre ursprünglichen Serverregeln aus.
-Weitere Klassen, Item-Spawns und vollständige Serverframes bleiben offen.
+Die [Schadensberechnung](docs/COMBAT.md) ergänzt Rüstung, Rückstoß, Teamschutz,
+Battlesuit, CTF-Trägerdaten, `trigger_hurt` und `target_kill`; Telefrags sind
+damit verbunden. Weitere Klassen, Item-Spawns, Spieler-Todesregeln und
+vollständige Serverframes bleiben offen.
 
 Auch die Sichtbarkeitsdaten eines Kartenpunkts und Traces gegen versetzte/gedrehte
 Modelle sind direkt abfragbar:

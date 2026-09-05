@@ -9,6 +9,9 @@ import mq3.game.triggers as triggers
 import mq3.game.targets as targets
 import mq3.game.events as events
 import mq3.game.frame as frame
+import mq3.game.combat as combat
+import mq3.game.hazards as hazards
+import mq3.game.teleport as teleport
 import mq3.server.world as sv
 import mq3.collision.world as cm
 import mq3.qcommon.cvar as cv
@@ -275,7 +278,7 @@ function runTargetActions(level,input,check)
         actionField(ent,b,d)
       end case
       case 6
-        game.initEntity(ent); ent.client = game.Client(ps.create(),b,[0,0,0]); ent.client.ps.stats[0] = 100; ent.s.eType = 1
+        game.initEntity(ent); ent.client = game.createClient(ps.create(),b,[0,0,0]); ent.client.ps.stats[0] = 100; ent.s.eType = 1
         ent.r.mins = [-15.0,-15.0,-24.0]; ent.r.maxs = [15.0,15.0,32.0]; ent.r.contents = 0x2000000
       end case
       case 7
@@ -336,6 +339,256 @@ function requireSpawnContract(condition,label)
   if not condition then return error(490,"Failed spawn contract: "+label) end if
   return void
 end function
+function combatCallback(level,kind,ent,inflictor,attacker,amount,mod)
+  health = 0
+  if ent.client != void then health = ent.client.ps.stats[0] end if
+  checkWords(level.context,[kind,ent.slot,actionSlot(inflictor),actionSlot(attacker),amount,mod,ent.health,health,ent.flags,actionSlot(ent.enemy)])
+  if ent.count == 1 then game.free(level,ent) end if
+  return void
+end function
+function combatPain(level,ent,attacker,amount)
+  return combatCallback(level,23,ent,void,attacker,amount,0)
+end function
+function combatDie(level,ent,inflictor,attacker,amount,mod)
+  return combatCallback(level,24,ent,inflictor,attacker,amount,mod)
+end function
+function combatUse(level,ent,inflictor,attacker)
+  return combatCallback(level,25,ent,inflictor,attacker,0,0)
+end function
+function combatField(level,ent,key,value)
+  switch key
+    case 0
+      ent.health = value
+    end case
+    case 1
+      ent.takedamage = value != 0
+    end case
+    case 2
+      ent.flags = value
+    end case
+    case 3
+      ent.s.eType = value
+    end case
+    case 4
+      ent.moverState = value
+    end case
+    case 5
+      ent.pain = void
+      if value != 0 then ent.pain = combatPain end if
+    end case
+    case 6
+      ent.die = void
+      if value != 0 then ent.die = combatDie end if
+    end case
+    case 7
+      ent.timestamp = value
+    end case
+    case 8
+      ent.spawnflags = value
+    end case
+    case 9
+      ent.damage = value
+    end case
+    case 10
+      ent.noise_index = value
+    end case
+    case 11
+      ent.neverFree = value != 0
+    end case
+    case 12
+      ent.count = value
+    end case
+    case 13
+      ent.use = void
+      if value != 0 then ent.use = combatUse end if
+    end case
+    case 20
+      ent.client.team = value
+    end case
+    case 21
+      ent.client.noclip = value != 0
+    end case
+    case 22
+      ent.client.ps.stats[3] = value
+    end case
+    case 23
+      ent.client.ps.stats[6] = value
+    end case
+    case 24
+      ent.client.ps.pm_time = value
+    end case
+    case 25
+      ent.client.ps.pm_flags = value
+    end case
+    case 26,27,28
+      power = 2
+      if key == 27 then power = 7 else if key == 28 then power = 8 end if
+      ent.client.ps.powerups[power] = value
+    end case
+    case 29
+      ent.client.ps.generic1 = value
+    end case
+    case 30
+      ent.client.ps.persistant[1] = value
+    end case
+    case 31
+      ent.client.lasthurtcarrier = n.f32(value)
+    end case
+    case 32
+      ent.client.damage_armor = value
+    end case
+    case 33
+      ent.client.damage_blood = value
+    end case
+    case 34
+      ent.client.damage_knockback = value
+    end case
+    case 35
+      ent.client.lasthurt_client = value
+    end case
+    case 36
+      ent.client.lasthurt_mod = value
+    end case
+    case 37
+      ent.client.ps.externalEvent = value
+    end case
+    case 40
+      level.spawner.gametype = value
+    end case
+    case 41
+      level.friendlyFire = value
+    end case
+    case 42
+      level.knockback = n.bitsFloat(value)
+    end case
+    case 43
+      level.intermissionQueued = value
+    end case
+    case 44
+      level.time = value
+    end case
+  end switch
+  return void
+end function
+function checkCombatExtra(check,ent)
+  checkWords(check,[boolean(ent.takedamage),ent.moverState,actionSlot(ent.enemy),boolean(ent.pain != void),boolean(ent.die != void),ent.timestamp,boolean(ent.client != void)])
+  cl = ent.client
+  if cl == void then return void end if
+  checkWords(check,ps.words(cl.ps)); checkWord(check,cl.team); checkWords(check,cl.cmdAngles); checkWord(check,boolean(cl.noclip))
+  checkWords(check,[cl.damage_armor,cl.damage_blood,cl.damage_knockback]); checkVector(check,cl.damage_from)
+  checkWords(check,[boolean(cl.damage_fromWorld),cl.lasthurt_client,cl.lasthurt_mod]); checkReal(check,cl.lasthurtcarrier)
+  return void
+end function
+function checkCombatState(level,index)
+  check = level.context
+  checkWords(check,[26,index,level.spawner.gametype,level.friendlyFire,n.floatBits(level.knockback),level.intermissionQueued]); checkLevel(check,level)
+  for i = 0 to 2
+    checkSnapshot(check,level.entities[i]); checkCombatExtra(check,level.entities[i])
+  end for
+  i = 64
+  while i < level.num_entities
+    checkCombatExtra(check,level.entities[i]); i = i+1
+  end while
+  checkCombatExtra(check,level.entities[1022])
+  return void
+end function
+function runCombatActions(level,input,check)
+  size = n.readI32(input,0); s = spawn.create(level,decode(slice(input,4,size))); s.motd = "MiniQuake3 spawn parity"
+  s.context = check; s.effectFn = recordSpawnEffect; s.unportedFn = recordSpawnBoundary
+  level.context = check; level.observeFn = recordSpawnSpatial
+  spawn.load(s); checkCombatState(level,-1); off = 4+size; index = 0
+  while off < len(input)
+    command = []
+    for j = 0 to 15
+      command = command+[n.readI32(input,off+j*4)]
+    end for
+    off = off+64; ent = void; other = void; attacker = void
+    if command[1] >= 0 and command[1] < 1024 then ent = level.entities[command[1]] end if
+    if command[2] >= 0 and command[2] < 1024 then other = level.entities[command[2]] end if
+    if command[3] >= 0 and command[3] < 1024 then attacker = level.entities[command[3]] end if
+    switch command[0]
+      case 1
+        game.free(level,ent); game.initEntity(ent); ent.takedamage = true; ent.health = command[4]; ent.pain = combatPain; ent.die = combatDie
+        ent.r.currentOrigin = [10.25,-20.75,32.5]; ent.r.mins = [-15.0,-15.0,-24.0]; ent.r.maxs = [15.0,15.0,32.0]; ent.r.contents = 0x2000000
+        if command[2] != 0 then
+          ent.client = game.createClient(ps.create(),command[3],[0,0,0]); ent.s.eType = 1
+          ent.client.ps.stats[0] = command[4]; ent.client.ps.stats[3] = command[5]; ent.client.ps.stats[6] = command[6]
+        end if
+      end case
+      case 2
+        combatField(level,ent,command[2],command[3])
+      end case
+      case 3
+        dir = [n.bitsFloat(command[7]),n.bitsFloat(command[8]),n.bitsFloat(command[9])]; point = [n.bitsFloat(command[11]),n.bitsFloat(command[12]),n.bitsFloat(command[13])]
+        direction = void; position = void
+        if command[10] != 0 then direction = dir end if
+        if command[14] != 0 then position = point end if
+        combat.damage(level,ent,other,attacker,direction,position,command[4],command[5],command[6])
+        checkWord(check,20); checkVector(check,dir); checkVector(check,point)
+      end case
+      case 4
+        saved = combat.checkArmor(ent,command[2],command[3]); checkWords(check,[21,saved])
+      end case
+      case 5
+        hazards.hurtTouch(level,ent,other,void)
+      end case
+      case 6
+        ent.use(level,ent,other,attacker)
+      end case
+      case 7
+        checkWords(check,[22,boolean(combat.onSameTeam(level,ent,other))])
+      end case
+      case 8
+        combat.checkHurtCarrier(level,ent,other)
+      end case
+      case 9
+        teleport.killBox(level,ent)
+      end case
+      case 10
+        if command[2] != 0 then game.link(level,ent) else game.unlink(level,ent) end if
+      end case
+      case 11
+        game.free(level,ent)
+      end case
+      case 12
+        for axis = 0 to 2
+          ent.r.currentOrigin[axis] = n.bitsFloat(command[2+axis])
+          if ent.client != void then ent.client.ps.origin[axis] = ent.r.currentOrigin[axis]; ent.client.ps.velocity[axis] = n.bitsFloat(command[5+axis]) end if
+        end for
+      end case
+      case 13
+        triggers.touch(level,ent)
+      end case
+      case 14
+        teleport.player(level,ent,[n.bitsFloat(command[2]),n.bitsFloat(command[3]),n.bitsFloat(command[4])],[0.0,90.0,0.0])
+      end case
+    end switch
+    checkCombatState(level,index); index = index+1
+  end while
+  print "PASS: "+str(index)+" combat/hazard actions"
+  return void
+end function
+function runCombatContracts(level)
+  s = spawn.create(level,"")
+  requireSpawnContract(level.damageFn == combat.damage,"spawn binds real damage")
+  ent = game.initEntity(level.entities[0]); ent.client = game.createClient(ps.create(),0,[0,0,0]); ent.health = 1; ent.s.eType = 1
+  level.entities[1022].s.number = 1022
+  // A missing death callback is reported only if the original would invoke it.
+  combat.damage(level,ent,void,void,void,void,100000,8,18)
+  requireSpawnContract(ent.health == 1,"non-damageable entity needs no death handler")
+  ent.takedamage = true; level.intermissionQueued = 1; combat.damage(level,ent,void,void,void,void,100000,8,18)
+  requireSpawnContract(ent.health == 1,"queued intermission needs no death handler")
+  level.intermissionQueued = 0; caught = try(combat.damage(level,ent,void,void,void,void,100000,8,18))
+  requireSpawnContract(caught is error and ent.health == -999 and ent.client.ps.stats[0] == -99999 and ent.enemy == level.entities[1022],"missing death handler after original damage state")
+  ent.client = void; ent.health = 100
+  attacker = game.initEntity(level.entities[1]); attacker.client = game.createClient(ps.create(),0,[0,0,0]); attacker.client.ps.stats[6] = 100
+  caught = try(combat.damage(level,ent,attacker,attacker,void,void,1,0,6))
+  requireSpawnContract(caught is error and attacker.client.ps.persistant[1] == 1 and ent.health == 100,"invalid nonclient hit-counter state is rejected")
+  ent.timestamp = 987; ent.moverState = 3; ent.pain = combatPain; ent.die = combatDie; game.free(level,ent)
+  requireSpawnContract(not ent.takedamage and ent.moverState == 0 and ent.timestamp == 0 and ent.pain == void and ent.die == void and ent.enemy == void,"free clears combat fields")
+  print "PASS: 6 combat runtime contracts"
+  return void
+end function
 function runSpawnContracts(level)
   s = spawn.create(level,""); ent = level.entities[64]
   caught = try(spawn.parseField("origin","1 2",ent)); requireSpawnContract(caught is error,"partial field vector")
@@ -378,6 +631,7 @@ function main(args)
   world = cm.loadWorld(fs.readAllBytes(args[0]),args[3] == "0")
   input = fs.readAllBytes(args[1]); check = Check(fs.readAllBytes(args[2]),0,0,0,0,0); level = game.create(world)
   level.time = 1000; level.startTime = 1000
+  if len(args) > 4 and args[4] == "--combat-contracts" then runCombatContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--contracts" then runSpawnContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--reject-spawn" then
     caught = try(spawn.load(spawn.create(level,decode(slice(input,4,n.readI32(input,0))))))
@@ -398,6 +652,8 @@ function main(args)
     end while
   else if len(args) > 4 and args[4] == "--actions" then
     runTargetActions(level,input,check)
+  else if len(args) > 4 and args[4] == "--combat" then
+    runCombatActions(level,input,check)
   else if len(args) > 4 and args[4] == "--values" then
     off = 0; count = 0
     while off < len(input)
@@ -432,7 +688,7 @@ function main(args)
     while i < limit and probes < 16
       hit = level.entities[i]; i = i+1
       if not hit.inuse or (hit.s.eType != 8 and hit.s.eType != 9) then continue end if
-      ent = level.entities[0]; game.initEntity(ent); ent.client = game.Client(ps.create(),0,[0,0,0]); ent.s.eType = 1
+      ent = level.entities[0]; game.initEntity(ent); ent.client = game.createClient(ps.create(),0,[0,0,0]); ent.s.eType = 1
       ent.client.ps.stats[0] = 100; ent.client.ps.pmove_framecount = 1; ent.r.contents = 0x2000000
       ent.r.mins = [-15.0,-15.0,-24.0]; ent.r.maxs = [15.0,15.0,32.0]
       for axis = 0 to 2

@@ -18,7 +18,7 @@ def main():
     if args.extended and not args.data_root: parser.error("--extended requires --data-root")
     scripts=[("build.py",[]),("test_numeric.py",[]),("test_math.py",[]),("test_core.py",[]),
              ("test_vm.py",[]),("test_archives.py",["--data-root",str(args.data_root)] if args.data_root else []),
-             ("test_rejections.py",[]),("test_brush.py",[]),("test_shared_game.py",[]),("test_entitystate.py",[]),("test_spawn_values.py",[]),("test_targets.py",["--reuse-build"])]
+             ("test_rejections.py",[]),("test_brush.py",[]),("test_shared_game.py",[]),("test_entitystate.py",[]),("test_spawn_values.py",[]),("test_targets.py",["--reuse-build"]),("test_combat.py",["--reuse-build"])]
     if args.data_root:
         scripts.append(("test_maps.py",[str(args.data_root)]))
         scripts.append(("test_runtime_trace.py",[str(args.data_root)]))

@@ -119,12 +119,12 @@ und der vollständige baseq3-Pmove-
 Befehlszyklus sind in MiniLang implementiert und gegen C geprüft. `--pmove-map`
 spielt Textbefehle auf Originalkarten ab; `--trace-model` und `--inspect-visibility`
 prüfen die neuen räumlichen Abfragen. Für die gesamte Schritt-Abnahme fehlen
-die Einbindung in vollständige Server-/Client-Frames und die Schadens-/Todesfolgen
-von Telefrags aus Schritt 6. Dynamische Entities, Trigger-Erkennung und
+die Einbindung in vollständige Server-/Client-Frames und die vollständigen
+Todes-/Score-Folgen von Telefrags aus Schritt 6. Dynamische Entities, Trigger-Erkennung und
 Sprungpad-/Teleport-Replays sind bereits mit Pmove verbunden; Ereignis-Entities,
 Blickwinkel-Deltas und die Auswahl/Aufrufreihenfolge der Telefrag-Kandidaten werden
-gegen C geprüft. Die aktuelle Grenze der Schadensfunktion ist ausdrücklich
-[dokumentiert](GAME_TRANSITIONS.md). Der temporäre
+gegen C geprüft. Die inzwischen ergänzte Schadensberechnung ist mit KillBox
+verbunden; offene Todes-/Score-Handler sind [dokumentiert](COMBAT.md). Der temporäre
 Kapsel-Handle folgt dem festgelegten Originalprofil: kontrollierter Fehler wie
 im unveränderten C-Stand; eine Korrektur wäre ein separates Erweiterungsprofil.
 Zahlen, Grenzen und Testumfang:
@@ -153,16 +153,24 @@ Abweichungen blockieren die nächste Spielabnahme. Voraussetzungen: 2–4.
 EntityState-Speicherfelder, PlayerState-Umwandlung, Entity-Platzverwaltung,
 Target-Auswahl und Trigger-/Teleport-Übergänge sind umgesetzt. Das Spawn-Parsing
 umfasst jetzt alle Feldregeln, Spielmodusfilter, Worldspawn und die originale
-Klassen-/Item-Auswahl. 28 Spawn-Klassen einschließlich Sprungpads, Teleportern,
+Klassen-/Item-Auswahl. 30 Spawn-Klassen einschließlich Sprungpads, Teleportern,
 verzögerter Targets, Relays, Mehrfach-/Always-Trigger, Sound-/Push-Targets,
-schaltbarer Timer und Ortsmarkierungen sind übertragen.
+schaltbarer Timer, Ortsmarkierungen sowie Hurt-/Kill-Objekte sind übertragen.
+`G_Damage`, Rüstung, Rückstoß, Teamschutz, Battlesuit und CTF-Trägerdaten sind
+gegen C geprüft und mit Telefrags verbunden; siehe [Schaden](COMBAT.md).
 Target-Ketten, Shader-Remaps und die Entity-Schleife mit Ereignisfreigabe sind
 gegen den Originalcode geprüft; siehe [Targets und Ereignisse](TARGETS_AND_EVENTS.md).
-`G_RunThink` und die spätere Sprungpad-Ausrichtung sind enthalten. Die 20 weiteren
+`G_RunThink` und die spätere Sprungpad-Ausrichtung sind enthalten. Die 18 weiteren
 Klassen und Item-Spawns bleiben ausdrücklich offene Aufrufgrenzen; siehe
 [SPAWNING.md](SPAWNING.md). Als Nächstes folgen diese Spielobjekte, die Einbindung
-in vollständige Serverframes, Schadens-/Todesregeln und
-Mover-Pushing. Der vollständige Server bleibt bis zu dieser Integration offen.
+in vollständige Serverframes, Spieler-Todesregeln, Scores/Respawn, Waffen-/Radius-
+Trefferberechnung und Mover-Pushing. Der vollständige Server bleibt bis zu dieser
+Integration offen.
+
+Der nächste Abschnitt verbindet `CanDamage`, `G_RadiusDamage` und
+`LogAccuracyHit` mit der vorhandenen Server-Kollision und Schadensberechnung.
+Darauf kann `target_laser` mit den ursprünglichen Trace-/Trefferregeln aufsetzen.
+Spieler-Tod, Scores und Respawn bleiben als anschließende Abhängigkeiten sichtbar.
 
 **Quellen:** `code/game/g_*.c` und `code/server/`.
 

@@ -54,15 +54,16 @@ def main():
             ["SetClientViewAngle","SP_info_player_deathmatch","SP_info_player_start","SP_info_player_intermission"],["scripts/test_entitystate.py","scripts/test_transitions.py","scripts/test_spawn.py"]),
         "code/game/g_utils.c":(["src/mq3/game/entities.ml","src/mq3/game/teleport.ml","src/mq3/game/spawn_values.ml","src/mq3/game/spawn_functions.ml","src/mq3/game/targets.ml","src/mq3/game/events.ml","src/mq3/compat/textnumbers.ml"],
             ["G_InitGentity","G_Spawn","G_EntitiesFree","G_FreeEntity","G_TempEntity","G_SetOrigin","G_Find","G_PickTarget","G_KillBox","G_FindConfigstringIndex","G_ModelIndex","G_SoundIndex","G_SetMovedir","AddRemap","BuildShaderStateConfig","G_UseTargets","G_AddEvent","G_Sound"],["scripts/test_transitions.py","scripts/test_spawn_values.py","scripts/test_spawn.py","scripts/test_targets.py"]),
-        "code/game/g_trigger.c":(["src/mq3/game/triggers.ml","src/mq3/game/spawn_functions.ml","src/mq3/game/targets.ml"],
-            ["trigger_push_touch","trigger_teleporter_touch","InitTrigger","AimAtTarget","SP_trigger_push","SP_trigger_teleport","multi_wait","multi_trigger","Use_Multi","Touch_Multi","SP_trigger_multiple","trigger_always_think","SP_trigger_always","Use_target_push","SP_target_push","func_timer_think","func_timer_use","SP_func_timer"],["scripts/test_transitions.py","scripts/test_spawn.py","scripts/test_targets.py"]),
+        "code/game/g_trigger.c":(["src/mq3/game/triggers.ml","src/mq3/game/spawn_functions.ml","src/mq3/game/targets.ml","src/mq3/game/hazards.ml"],
+            ["trigger_push_touch","trigger_teleporter_touch","InitTrigger","AimAtTarget","SP_trigger_push","SP_trigger_teleport","multi_wait","multi_trigger","Use_Multi","Touch_Multi","SP_trigger_multiple","trigger_always_think","SP_trigger_always","Use_target_push","SP_target_push","func_timer_think","func_timer_use","SP_func_timer","hurt_touch","hurt_use","SP_trigger_hurt"],["scripts/test_transitions.py","scripts/test_spawn.py","scripts/test_targets.py","scripts/test_combat.py"]),
         "code/game/g_spawn.c":(["src/mq3/game/spawn.ml","src/mq3/game/spawn_tables.ml","src/mq3/game/spawn_values.ml","src/mq3/compat/textnumbers.ml"],
             ["G_SpawnString","G_SpawnFloat","G_SpawnInt","G_SpawnVector","fields","spawns","G_CallSpawn","G_NewString","G_ParseField","G_SpawnGEntityFromSpawnVars","G_AddSpawnVarToken","G_ParseSpawnVars","SP_worldspawn","G_SpawnEntitiesFromString","SP_item_botroam"],["scripts/test_spawn_values.py","scripts/test_spawn.py"]),
         "code/game/g_main.c":(["src/mq3/game/spawn_functions.ml","src/mq3/game/frame.ml"],["G_RunThink","G_RunFrame"],["scripts/test_spawn_values.py","scripts/test_spawn.py","scripts/test_targets.py"]),
-        "code/game/g_target.c":(["src/mq3/game/spawn_functions.ml","src/mq3/game/targets.ml"],["SP_target_position","Think_Target_Delay","Use_Target_Delay","SP_target_delay","target_relay_use","SP_target_relay","target_teleporter_use","SP_target_teleporter","Use_Target_Speaker","SP_target_speaker","target_location_linkup","SP_target_location"],["scripts/test_spawn.py","scripts/test_targets.py"]),
+        "code/game/g_target.c":(["src/mq3/game/spawn_functions.ml","src/mq3/game/targets.ml","src/mq3/game/hazards.ml"],["SP_target_position","Think_Target_Delay","Use_Target_Delay","SP_target_delay","target_relay_use","SP_target_relay","target_teleporter_use","SP_target_teleporter","Use_Target_Speaker","SP_target_speaker","target_location_linkup","SP_target_location","target_kill_use","SP_target_kill"],["scripts/test_spawn.py","scripts/test_targets.py","scripts/test_combat.py"]),
         "code/game/g_mover.c":(["src/mq3/game/spawn_functions.ml"],["SP_path_corner"],["scripts/test_spawn.py"]),
-        "code/game/g_team.c":(["src/mq3/game/spawn_functions.ml"],["SP_team_CTF_redplayer","SP_team_CTF_blueplayer","SP_team_CTF_redspawn","SP_team_CTF_bluespawn"],["scripts/test_spawn.py"]),
-        "code/game/g_local.h":(["src/mq3/game/entities.ml","src/mq3/game/spawn.ml"],["gentity_s","level_locals_t"],["scripts/test_transitions.py","scripts/test_spawn_values.py","scripts/test_spawn.py","scripts/test_targets.py"]),
+        "code/game/g_team.c":(["src/mq3/game/spawn_functions.ml","src/mq3/game/combat.ml"],["SP_team_CTF_redplayer","SP_team_CTF_blueplayer","SP_team_CTF_redspawn","SP_team_CTF_bluespawn","OnSameTeam","Team_CheckHurtCarrier"],["scripts/test_spawn.py","scripts/test_combat.py"]),
+        "code/game/g_combat.c":(["src/mq3/game/combat.ml"],["CheckArmor","G_Damage"],["scripts/test_combat.py"]),
+        "code/game/g_local.h":(["src/mq3/game/entities.ml","src/mq3/game/spawn.ml","src/mq3/game/combat.ml"],["gentity_s","level_locals_t","gclient_s","playerTeamState_t"],["scripts/test_transitions.py","scripts/test_spawn_values.py","scripts/test_spawn.py","scripts/test_targets.py","scripts/test_combat.py"]),
     }
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text())
@@ -75,6 +76,8 @@ def main():
                 entry["symbol_mapping"][1]["scope"] = "Allocated-entity loop only; missile/item/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
             if entry["source"] == "code/server/sv_init.c":
                 entry["symbol_mapping"][0]["scope"] = "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
+            if entry["source"] == "code/game/g_combat.c":
+                entry["symbol_mapping"][1]["scope"] = "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die, scoring, radius damage, damage feedback, Missionpack or full server frame. G_Printf diagnostics excluded."
     path.write_text(json.dumps(ledger,indent=2)+"\n")
     evidence=[]
     for path in sorted((ROOT / "build/reference").rglob("result.json")):
