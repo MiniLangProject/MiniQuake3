@@ -6,6 +6,9 @@ import mq3.game.entities as game
 import mq3.game.entitystate as es
 import mq3.game.playerstate as ps
 import mq3.game.triggers as triggers
+import mq3.game.targets as targets
+import mq3.game.events as events
+import mq3.game.frame as frame
 import mq3.server.world as sv
 import mq3.collision.world as cm
 import mq3.qcommon.cvar as cv
@@ -49,7 +52,7 @@ function checkString(check,text)
   if text == void then checkWord(check,-1); return void end if
   data = bytes(text); checkWord(check,len(data))
   for each value in data
-    if check.offset >= len(check.expected) or check.expected[check.offset] != value then return error(490,"Spawn string mismatch at byte "+str(check.offset)) end if
+    if check.offset >= len(check.expected) or check.expected[check.offset] != value then return error(490,"Spawn string mismatch at byte "+str(check.offset)+" in "+text) end if
     check.offset = check.offset+1; check.stringBytes = check.stringBytes+1
   end for
   return void
@@ -71,6 +74,9 @@ function checkSnapshot(check,ent)
   if ent.think == funcs.aimAtTarget then think = 1 else if ent.think != void then think = 2 end if
   if ent.touch == triggers.pushTouch then touch = 1 else if ent.touch == triggers.teleporterTouch then touch = 2 else if ent.touch != void then touch = 3 end if
   checkWords(check,[think,touch])
+  activator = -1
+  if ent.activator != void then activator = ent.activator.slot end if
+  checkWords(check,[boolean(ent.use != void),activator,boolean(ent.unlinkAfterEvent),boolean(ent.physicsObject)])
   for each value in [ent.classname,ent.model,ent.model2,ent.target,ent.targetname,ent.message,ent.team,ent.targetShaderName,ent.targetShaderNewName]
     checkString(check,value)
   end for
@@ -102,6 +108,210 @@ function countSpawnThink(level,ent)
   ent.count = ent.count+1
   return void
 end function
+function actionSlot(ent)
+  if ent == void then return -1 end if
+  return ent.slot
+end function
+function actionThink(level,ent)
+  checkWords(level.context,[11,ent.slot]); ent.count = ent.count+1
+  return void
+end function
+function actionUse(level,ent,other,activator)
+  checkWords(level.context,[10,ent.slot,actionSlot(other),actionSlot(activator),level.time]); ent.count = ent.count+1
+  switch ent.damage
+    case 1
+      game.free(level,other)
+    end case
+    case 2
+      game.free(level,ent)
+    end case
+    case 3
+      game.free(level,level.entities[ent.health])
+    end case
+    case 4
+      other.target = "changed"
+    end case
+    case 5
+      created = game.spawn(level); created.targetname = "leaf"; created.use = actionUse; created.think = actionThink; created.nextthink = level.time
+    end case
+    case 6
+      other.target = void
+    end case
+    case 7
+      game.free(level,other); created = game.spawn(level); created.target = "changed"
+    end case
+  end switch
+  return void
+end function
+function actionRun(level,kind,ent)
+  checkWords(level.context,[12,kind,ent.slot])
+  return void
+end function
+function actionField(ent,field,value)
+  names = [void,"leaf","changed","dest","missing",""]
+  switch field
+    case 0
+      ent.spawnflags = value
+    end case
+    case 1
+      ent.nextthink = value
+    end case
+    case 2
+      ent.eventTime = value
+    end case
+    case 3
+      ent.freeAfterEvent = value != 0
+    end case
+    case 4
+      ent.unlinkAfterEvent = value != 0
+    end case
+    case 5
+      ent.neverFree = value != 0
+    end case
+    case 6
+      ent.physicsObject = value != 0
+    end case
+    case 7
+      ent.s.eType = value
+    end case
+    case 8
+      ent.s.event = value
+    end case
+    case 9
+      ent.s.eventParm = value
+    end case
+    case 10
+      ent.wait = n.bitsFloat(value)
+    end case
+    case 11
+      ent.random = n.bitsFloat(value)
+    end case
+    case 12
+      ent.health = value
+    end case
+    case 13
+      ent.damage = value
+    end case
+    case 14
+      ent.count = value
+    end case
+    case 15
+      ent.target = names[value]
+    end case
+    case 16
+      ent.targetname = names[value]
+    end case
+    case 17
+      ent.think = void
+      if value != 0 then ent.think = actionThink end if
+    end case
+    case 18
+      ent.use = void
+      if value != 0 then ent.use = actionUse end if
+    end case
+    case 19
+      ent.client.team = value
+    end case
+    case 20
+      ent.client.ps.externalEvent = value
+    end case
+    case 21
+      ent.client.ps.events[0] = value
+    end case
+    case 22
+      ent.client.ps.externalEventTime = value
+    end case
+    case 23
+      ent.client.ps.externalEventParm = value
+    end case
+  end switch
+  return void
+end function
+function runTargetActions(level,input,check)
+  size = n.readI32(input,0); s = spawn.create(level,decode(slice(input,4,size))); s.motd = "MiniQuake3 spawn parity"
+  s.context = check; s.effectFn = recordSpawnEffect; s.unportedFn = recordSpawnBoundary
+  level.context = check; level.observeFn = recordSpawnSpatial; level.runEntityFn = actionRun
+  spawn.load(s); checkLevel(check,level); off = 4+size; index = 0; names = [void,"leaf","changed","dest","missing",""]
+  while off < len(input)
+    op = n.readI32(input,off); a = n.readI32(input,off+4); b = n.readI32(input,off+8); d = n.readI32(input,off+12); off = off+32
+    ent = void; other = void; activator = void
+    if a >= 0 and a < 1024 then ent = level.entities[a] end if
+    if b >= 0 and b < 1024 then other = level.entities[b] end if
+    if d >= 0 and d < 1024 then activator = level.entities[d] end if
+    switch op
+      case 0
+        level.time = a
+      end case
+      case 1
+        ent.use(level,ent,other,activator)
+      end case
+      case 2
+        targets.useTargets(level,ent,other)
+      end case
+      case 3
+        funcs.runThink(level,ent)
+      end case
+      case 4
+        frame.runEntities(level)
+      end case
+      case 5
+        actionField(ent,b,d)
+      end case
+      case 6
+        game.initEntity(ent); ent.client = game.Client(ps.create(),b,[0,0,0]); ent.client.ps.stats[0] = 100; ent.s.eType = 1
+        ent.r.mins = [-15.0,-15.0,-24.0]; ent.r.maxs = [15.0,15.0,32.0]; ent.r.contents = 0x2000000
+      end case
+      case 7
+        events.add(level,ent,b,d)
+      end case
+      case 8
+        events.sound(level,ent,b,d)
+      end case
+      case 9
+        if b != 0 then game.link(level,ent) else game.unlink(level,ent) end if
+      end case
+      case 10
+        game.free(level,ent)
+      end case
+      case 11
+        ent = game.spawn(level); ent.targetname = names[a]; ent.use = actionUse
+      end case
+      case 12
+        targets.multiTouch(level,ent,other,void)
+      end case
+      case 13
+        ent.targetShaderName = "shader/"+str(b); ent.targetShaderNewName = "shader/"+str(d)
+      end case
+      case 14
+        targets.addRemap(level,"shader/"+str(a),"shader/"+str(b),n.bitsFloat(d))
+      end case
+      case 15
+        level.shaderRemaps = []
+      end case
+      case 16
+        checkWord(check,13); checkString(check,targets.shaderState(level))
+      end case
+      case 17
+        oldName = str(a); newName = str(b)
+        while len(oldName) < 56
+          oldName = "0"+oldName
+        end while
+        while len(newName) < 56
+          newName = "0"+newName
+        end while
+        targets.addRemap(level,"shader/"+oldName,"shader/"+newName,n.bitsFloat(d))
+      end case
+    end switch
+    checkWords(check,[14,index]); index = index+1; checkLevel(check,level)
+    for i = 0 to 2
+      ent = level.entities[i]; checkSnapshot(check,ent); checkWord(check,boolean(ent.client != void))
+      if ent.client != void then checkWords(check,ps.words(ent.client.ps)) end if
+    end for
+  end while
+  checkWord(check,game.random(level))
+  print "PASS: "+str(index)+" target/event/frame actions"
+  return void
+end function
 function requireSpawnContract(condition,label)
   if not condition then return error(490,"Failed spawn contract: "+label) end if
   return void
@@ -130,7 +340,16 @@ function runSpawnContracts(level)
   caught = try(funcs.setBrushModel(level,ent,void)); requireSpawnContract(caught is error,"NULL brush name")
   caught = try(funcs.setBrushModel(level,ent,"model")); requireSpawnContract(caught is error,"non-brush name")
   caught = try(funcs.setBrushModel(level,ent,"*999999")); requireSpawnContract(caught is error,"invalid inline model")
-  print "PASS: 21 spawn runtime contracts"
+  fresh = game.create(level.scene.world); fresh.num_entities = 65; fresh.time = 1000; node = game.initEntity(fresh.entities[64])
+  for each type in [2,3,4]
+    node.s.eType = type; caught = try(frame.runEntities(fresh)); requireSpawnContract(caught is error,"missing entity frame handler")
+  end for
+  node.s.eType = 0; node.physicsObject = true; caught = try(frame.runEntities(fresh)); requireSpawnContract(caught is error,"missing physics handler")
+  node.inuse = false; game.initEntity(fresh.entities[0]); caught = try(frame.runEntities(fresh)); requireSpawnContract(caught is error,"missing client handler")
+  longName = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  caught = try(targets.addRemap(fresh,longName,"new",0.0)); requireSpawnContract(caught is error,"overlong shader source")
+  caught = try(targets.addRemap(fresh,"old",longName,0.0)); requireSpawnContract(caught is error,"overlong shader destination")
+  print "PASS: 28 spawn/target/frame runtime contracts"
   return void
 end function
 function main(args)
@@ -150,6 +369,8 @@ function main(args)
       if n.readI32(input,off+8) != 0 then ent.think = countSpawnThink end if
       funcs.runThink(level,ent); checkWords(check,[ent.nextthink,ent.count]); off = off+12
     end while
+  else if len(args) > 4 and args[4] == "--actions" then
+    runTargetActions(level,input,check)
   else if len(args) > 4 and args[4] == "--values" then
     off = 0; count = 0
     while off < len(input)

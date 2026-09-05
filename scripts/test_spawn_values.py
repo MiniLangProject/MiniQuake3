@@ -35,7 +35,7 @@ def main():
         c=subprocess.run([str(output/'spawn_oracle.exe'),str(mapfile),str(path),str(target),'0','--values'],capture_output=True,text=True)
         if c.returncode!=72:raise RuntimeError('Original did not reject malformed input '+str(index))
         run([ROOT/'build/spawn_tests.exe',mapfile,path,target,'0','--reject'],ROOT/'build',log=output/f'reject_{index}.log')
-    (output/'result.json').write_text(json.dumps({'passed':True,'cases':args.count,'exact_words':int(match[1]),'string_bytes':int(match[2]),'original_rejections':len(malformed),'runtime_contracts':21,
+    (output/'result.json').write_text(json.dumps({'passed':True,'cases':args.count,'exact_words':int(match[1]),'string_bytes':int(match[2]),'original_rejections':len(malformed),'runtime_contracts':28,
         'think_cases':len(thoughts),'think_exact_words':len(thoughts)*2,'original_missing_think_rejection':True,'think_inputs_sha256':sha(think_input),'think_expected_sha256':sha(think_expected),
         'scope':'all original spawn field types, first-key lookup, last-field assignment, CRT numbers, parser bounds; no spawn class execution',
         'test_sha256':sha(ROOT/'build/spawn_tests.exe'),'inputs_sha256':sha(inputs),'expected_sha256':sha(expected),

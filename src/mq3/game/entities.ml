@@ -47,6 +47,10 @@ struct Entity
   movedir
   nextthink
   think
+  use
+  activator
+  unlinkAfterEvent
+  physicsObject
 end struct
 struct Level
   scene
@@ -60,12 +64,14 @@ struct Level
   observeFn
   context
   spawner
+  shaderRemaps
+  runEntityFn
 end struct
 function blank(slot,r)
-  return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0,void,void,0.0,void,void,0.0,0.0,0,0,0,void,void,0,[0.0,0.0,0.0],0,void)
+  return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0,void,void,0.0,void,void,0.0,0.0,0,0,0,void,void,0,[0.0,0.0,0.0],0,void,void,void,false,false)
 end function
 function create(world)
-  scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void)
+  scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void)
   for i = 0 to 1023
     level.entities = level.entities+[blank(i,scene.entities[i])]
   end for
@@ -127,6 +133,7 @@ function free(level,ent)
   ent.model = void; ent.model2 = void; ent.speed = 0.0; ent.message = void; ent.team = void; ent.wait = 0.0; ent.random = 0.0
   ent.count = 0; ent.health = 0; ent.damage = 0; ent.targetShaderName = void; ent.targetShaderNewName = void; ent.flags = 0
   ent.movedir = [0.0,0.0,0.0]; ent.nextthink = 0; ent.think = void
+  ent.use = void; ent.activator = void; ent.unlinkAfterEvent = false; ent.physicsObject = false
   return void
 end function
 function setOrigin(ent,origin)

@@ -5,6 +5,7 @@ package mq3.game.spawn_functions
 import mq3.game.entities as game
 import mq3.game.spawn_values as values
 import mq3.game.triggers as triggers
+import mq3.game.targets as targets
 import mq3.game.constants as c
 import mq3.shared.math as q
 import mq3.compat.numeric as n
@@ -97,6 +98,26 @@ function dispatch(level,ent)
         values.soundIndex(level.spawner,"sound/world/jumppad.wav"); ent.s.eType = c.ET_TELEPORT_TRIGGER; ent.touch = triggers.teleporterTouch
       end if
       game.link(level,ent)
+    end case
+    case "target_delay"
+      value = values.getFloat(level.spawner,"delay","0"); ent.wait = value[1]
+      if not value[0] then ent.wait = values.getFloat(level.spawner,"wait","1")[1] end if
+      if ent.wait == 0 then ent.wait = 1.0 end if
+      ent.use = targets.delayUse
+    end case
+    case "target_relay"
+      ent.use = targets.relayUse
+    end case
+    case "target_teleporter"
+      ent.use = targets.teleporterUse
+    end case
+    case "trigger_multiple"
+      ent.wait = values.getFloat(level.spawner,"wait","0.5")[1]; ent.random = values.getFloat(level.spawner,"random","0")[1]
+      if ent.random >= ent.wait and ent.wait >= 0 then ent.random = n.fsub(ent.wait,100) end if
+      ent.touch = targets.multiTouch; ent.use = targets.multiUse; initTrigger(level,ent); game.link(level,ent)
+    end case
+    case "trigger_always"
+      ent.nextthink = n.add32(level.time,300); ent.think = targets.alwaysThink
     end case
     case default
       return false

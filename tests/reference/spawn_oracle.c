@@ -19,6 +19,7 @@ static void snapshot(gentity_t *e) {
     word(e->r.contents);word(e->r.bmodel);word(e->r.svFlags);word(e->r.ownerNum);word(e->r.linked);word(e->r.linkcount);hostMetadata((int)(e-g_entities),m);words(m,21);
     words(&e->speed,1);words(&e->wait,1);words(&e->random,1);word(e->count);word(e->health);word(e->damage);word(e->flags);words(e->movedir,3);word(e->nextthink);
     word(e->think==AimAtTarget?1:e->think?2:0);word(e->touch==trigger_push_touch?1:e->touch==trigger_teleporter_touch?2:e->touch?3:0);
+    word(e->use?1:0);word(e->activator?(int)(e->activator-g_entities):-1);word(e->unlinkAfterEvent);word(e->physicsObject);
     string(e->classname);string(e->model);string(e->model2);string(e->target);string(e->targetname);string(e->message);string(e->team);string(e->targetShaderName);string(e->targetShaderNewName);
 }
 static void boundary(gentity_t *e,int kind,int index) {word(4);word(kind);word(index);snapshot(e);}
@@ -42,6 +43,7 @@ void *G_Alloc(int n) {void *p=calloc(1,n);if(!p)exit(73);return p;}
 void G_SpawnItem(gentity_t *e,gitem_t *item) {boundary(e,1,(int)(item-bg_itemlist));}
 #include "spawn_boundaries.inc"
 #include "spawn_functions.inc"
+#include "target_actions.inc"
 static char *readString(FILE *in) {int n;char *s;if(fread(&n,4,1,in)!=1)return NULL;if(n<0 || n>10000000)exit(74);s=calloc(1,n+1);if(n && fread(s,1,n,in)!=n)exit(74);return s;}
 static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
 static void reset(int type,int flags) {
@@ -58,6 +60,8 @@ int main(int argc,char **argv) {
     if(argc==6 && !strcmp(argv[5],"--think")) {
         int q[3];gentity_t *e=&g_entities[64];reset(0,0);
         while(fread(q,4,3,in)==3) {e->nextthink=q[0];level.time=q[1];e->count=0;e->think=q[2]?countThink:NULL;G_RunThink(e);word(e->nextthink);word(e->count);}
+    } else if(argc==6 && !strcmp(argv[5],"--actions")) {
+        reset(0,0);runActions(in);
     } else if(argc==6 && !strcmp(argv[5],"--values")) {
         reset(0,0);
         while((text=readString(in))!=NULL) {

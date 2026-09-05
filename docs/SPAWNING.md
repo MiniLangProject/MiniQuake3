@@ -6,8 +6,8 @@ Worldspawn und die Auswahl von Item-/Klassen-Spawn-Funktionen. Die generierten
 Tabellen enthalten 20 Feldregeln, 48 baseq3-Klassen und 35 Items. Sie werden aus
 den gepinnten Originalquellen erzeugt und gegen die ursprüngliche C-Tabelle geprüft.
 
-**Stand der Klassen:** 19 Klassen führen bereits die übertragenen Originalregeln
-aus. Die 29 übrigen Klassen und `G_SpawnItem` brauchen noch ihre Implementierung.
+**Stand der Klassen:** 24 Klassen führen bereits die übertragenen Originalregeln
+aus. Die 24 übrigen Klassen und `G_SpawnItem` brauchen noch ihre Implementierung.
 Ohne ausdrücklich gesetzten `state.unportedFn` liefert der Port an diesen Grenzen
 einen Fehler. Die Vergleichstests setzen dort einen aufzeichnenden Callback ein;
 er führt keine vereinfachten Item-, Mover- oder Spielregeln aus. Die Testkarten
@@ -30,7 +30,10 @@ Bereits umgesetzte Klassen: `info_player_start`, `info_player_deathmatch`,
 `info_player_intermission`, `info_null`, `info_notnull`, `info_camp`, `func_group`,
 `trigger_push`, `trigger_teleport`, `target_position`, `light`, `path_corner`,
 `misc_teleporter_dest`, `misc_model`, die vier `team_CTF_*player/*spawn`-Klassen
-und `item_botroam`. Manche dieser Originalfunktionen sind leer oder geben die
+und `item_botroam`. Hinzugekommen sind `target_delay`, `target_relay`,
+`target_teleporter`, `trigger_multiple` und `trigger_always`; ihre Use-/Think-
+Abläufe sind unter [Targets und Ereignisse](TARGETS_AND_EVENTS.md) beschrieben.
+Manche dieser Originalfunktionen sind leer oder geben die
 Entity sofort frei; auch dieses Verhalten bleibt erhalten.
 
 Die Feldzuweisung liest alle Paare in Reihenfolge; bei doppelten Feldern gewinnt
@@ -78,10 +81,12 @@ Felder und Aufrufreihenfolgen vor, am und nach dem Think-Termin. Danach werden
 Spieler in die geladenen Trigger gesetzt und komplette PlayerStates verglichen.
 `G_Printf`-Diagnosen und der Zeitpräfix des Server-Loggers sind noch nicht Teil
 dieser Abnahme; die Warmup-Logmeldung wird als roher Aufruf aufgezeichnet.
-Dies prüft noch keine regulären ClientThink-/Serverframes, Item-Initialisierung,
-Mover-Pushes oder automatische Freigabe temporärer Ereignisse.
+Dies prüft noch keine regulären ClientThink-/Serverframes, Item-Initialisierung
+oder Mover-Pushes. Die zusätzliche Target-/Ereignisprüfung deckt inzwischen
+die Entity-Schleife mit automatischer Ereignisfreigabe ab.
 
 ```powershell
 python scripts/test_spawn_values.py
+python scripts/test_targets.py
 python scripts/test_spawn.py D:/Quake3
 ```

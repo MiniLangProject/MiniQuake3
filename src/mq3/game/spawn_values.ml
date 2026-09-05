@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 package mq3.game.spawn_values
 import mq3.compat.textnumbers as textnum
+import mq3.compat.numeric as n
 import std.string as strings
 function getString(state,key,fallback)
   for each pair in state.vars
@@ -11,6 +12,9 @@ function getString(state,key,fallback)
 end function
 function getInt(state,key,fallback)
   value = getString(state,key,fallback); return [value[0],textnum.atoi(value[1])]
+end function
+function getFloat(state,key,fallback)
+  value = getString(state,key,fallback); return [value[0],n.f32(textnum.atof(value[1]))]
 end function
 function setConfig(state,index,value)
   if index < 0 or index >= 1024 then return error(485,"Invalid configstring index") end if
