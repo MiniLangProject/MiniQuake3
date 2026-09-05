@@ -14,6 +14,7 @@ import mq3.game.client_active as clientActive
 import mq3.game.bodies as bodies
 import mq3.game.targets as targets
 import mq3.game.scores as scores
+import mq3.game.intermission as spawnIntermission
 import mq3.game.movement as movement
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
@@ -135,8 +136,8 @@ function spawn(level,ent,dieFn)
   client.ps.torsoAnim = c.TORSO_STAND; client.ps.legsAnim = c.LEGS_IDLE
 
   if level.intermissiontime != 0 then
-    if level.moveIntermissionFn == void then return error(496,"ClientSpawn requires intermission placement") end if
-    level.moveIntermissionFn(level,ent)
+    if level.moveIntermissionFn != void then level.moveIntermissionFn(level,ent)
+    else spawnIntermission.moveClient(level,ent) end if
   else
     targets.useTargets(level,spawnPoint,ent); client.ps.weapon = c.WP_GAUNTLET; weapon = c.WP_NUM_WEAPONS-1
     while weapon > 0

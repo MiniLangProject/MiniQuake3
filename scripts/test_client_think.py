@@ -52,7 +52,7 @@ def main():
     result=dict(passed=True,scenarios=records,scenario_count=len(records),exact_words=sum(r["exact_words"] for r in records),
         output_bytes=sum(r["bytes"] for r in records),ordered_effects=sum(len(r["effects"]) for r in records),runtime_contracts=3,
         test_sha256=sha(ROOT/"build/client_think_tests.exe"),oracle_sha256=sha(output/"spawn_oracle.exe"),map_sha256=sha(mapfile),
-        scope="Verbatim Baseq3 ClientThink_real, ClientThink, G_RunClient, ClientImpacts, SpectatorThink, ClientInactivityTimer, ClientTimerActions, ClientIntermissionThink and ClientEvents. Actual Pmove, dynamic server collision, snapshots, triggers, hook release and medkit state are integrated; engine usercmd, cvar, drop, follow, weapon and AAS calls are ordered observed boundaries.",
+        scope="Verbatim Baseq3 ClientThink_real, ClientThink, G_RunClient, ClientImpacts, SpectatorThink, ClientInactivityTimer, ClientTimerActions, ClientIntermissionThink and ClientEvents. Actual Pmove, dynamic server collision, snapshots, triggers, hook release and medkit state are integrated; engine usercmd, cvar, drop, weapon and AAS calls are ordered observed boundaries. This isolated suite retains a follow override; default follow cycling with actual SpectatorThink attack edges is compared separately in test_follow_tournament.py.",
         original_sources={s.relative_to(ROOT).as_posix():sha(s) for s in sources})
     (output/"result.json").write_text(json.dumps(result,indent=2)+"\n",encoding="utf-8")
 

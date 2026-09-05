@@ -99,8 +99,8 @@ lesen. MiniLang verlangt deshalb alle sieben Konvertierungen und meldet einen
 Fehler, bevor es Sitzungsfelder ändert. Solche Eingaben zählen nicht als gültige
 Differenzfälle. Eingebettete NUL-Bytes werden ebenfalls kontrolliert abgewiesen.
 
-Test-Binary: `ad872f995524f3f09789444e13faee9df6074dd6dd6a87035b0729f632f5f17b`.
-Native x86-Oracle: `3f3b09e05c46bb4d05f67cbe5f4ea6dba86a48fa2a5fe0d5e9ad388bbe31d243`.
+Test-Binary: `d4b7845b1c739824a208d8cd2def2e313f0959a71878592b1d8b5ff66e253cd8`.
+Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
 Einzelbericht: `build/reference/client_connect/result.json`.
 
 Der native Host modelliert die Session-Cvar-Speicherung; MiniLang verwendet seine
@@ -108,6 +108,10 @@ tatsächliche Registry, deren Engine-Regeln separat geprüft sind. IP-Filter,
 Bot-Einrichtung, Userinfo-Zustellung, Log und Serverbefehle enden an ausdrücklich
 beobachteten Schnittstellen. Configstrings werden lokal gespeichert;
 Netzwerkübertragung, kompletter Modulstart/-shutdown, Dateipersistenz,
-Follow-Befehle, Tournament-Nachrücken und Missionpack bleiben offen.
+tatsächliche Kartenwechsel durch die Engine und Missionpack bleiben offen.
+[`ExitLevel`](INTERMISSION.md) verwendet inzwischen die portierte
+Sitzungsspeicherung vor dem Wechsel verbundener Clients auf `CON_CONNECTING`.
+Die neue Intermission-Suite führt diesen Ablauf mit der tatsächlichen Registry aus.
+[Follow-Befehle und Tournament-Nachrücken](FOLLOW_TOURNAMENT.md) sind separat geprüft.
 [Teamwechsel und `ClientDisconnect`](TEAM_CHANGES.md) sind inzwischen separat
 mit tatsächlicher Userinfo-, Spawn- und Rangverarbeitung geprüft.

@@ -91,8 +91,8 @@ das Teamoverlay durch Userinfo und prüfen anschließend `CheckTeamStatus`.
 Fehlerfälle** bestätigen die Ablehnung eines 8.192-Byte-Info-Strings und eines
 zu kleinen Fallback-Namenspuffers; MiniLang meldet hierfür kontrollierte Fehler.
 
-Test-Binary: `3e73baffa57a30c23583f322db2288cca3b5d6c31a45657b61c2be0addc02afc`.
-Native x86-Oracle: `3f3b09e05c46bb4d05f67cbe5f4ea6dba86a48fa2a5fe0d5e9ad388bbe31d243`.
+Test-Binary: `7e82b0266d861c915374d038dce1a130b6baa93e46bb2d467f107cf65f92598b`.
+Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
 Einzelbericht: `build/reference/client_info/result.json`.
 
 Die Engine liefert Userinfo weiterhin über einen Callback. Serverbefehle und
@@ -100,5 +100,8 @@ Log-Nutzlasten enden an geordneten Host-Grenzen; die tatsächliche
 Configstring-Speicherung ist vorhanden, ihre Netzwerkübertragung bleibt offen.
 `ClientConnect` und die Sitzungs-Cvars sind separat portiert und geprüft.
 [Teamwechsel und `ClientDisconnect`](TEAM_CHANGES.md) verwenden diese Abläufe
-inzwischen ebenfalls. IP-Filter, Bot-Einrichtung, Follow-Befehle, Modulstart,
-Client-Befehlsverteilung und Missionpack sind weitere Portschritte.
+inzwischen ebenfalls; ebenso die [Duell-Warteschlange](FOLLOW_TOURNAMENT.md).
+Die [Intermission-Abläufe](INTERMISSION.md) verwenden die tatsächliche
+Duell-Wertung und deren Userinfo-Aktualisierung. IP-Filter, Bot-Einrichtung,
+tatsächliche Engine-Kartenwechsel, Modulstart, Client-Befehlsverteilung
+und Missionpack sind weitere Portschritte.

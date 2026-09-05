@@ -99,11 +99,16 @@ Die Spielabläufe für Tod, Items, Körper, Leiter, Userinfo, Begin/Spawn und R�
 sind echte Implementierungen auf beiden Seiten. Die gesondert geprüften
 Bewegungs-/Endframe- und Intermission-Callbacks werden in dieser Suite beobachtet.
 Engine-Zustellung, Logs, Meldungen, Bot-Queue/-Shutdown sind Host-Grenzen.
-Follow-Befehle, Tournament-Nachrücken, vollständiger Modul-/Serverbetrieb,
-Netzwerk und Missionpack bleiben offen. Die reguläre Gesamtsuite mit CD-Daten
-besteht mit **35 Prüfbereichen**; die nun 50 Gates umfassende erweiterte Suite
-wurde für diesen Stand nicht vollständig ausgeführt.
+[Follow-Befehle und Tournament-Nachrücken](FOLLOW_TOURNAMENT.md) sind inzwischen
+separat mit diesen Abläufen geprüft. Die neue [Intermission-Suite](INTERMISSION.md)
+verwendet `StopFollowing` bei der Platzierung und den tatsächlichen Teamwechsel
+beim Ausscheiden des Duell-Verlierers. Vollständiger Modul-/Serverbetrieb,
+tatsächliche Engine-Kartenwechsel, Netzwerk und Missionpack bleiben offen.
+Die reguläre Gesamtsuite umfasst nun **37 Prüfbereiche**, die erweiterte **52**.
+Der Nachweis des aktuellen Gesamtlaufs steht in [PARITY_AUDIT.md](PARITY_AUDIT.md).
+Die letzte vollständig bestandene erweiterte Suite bleibt die mit **43 Gates**
+am Stand `f8cdf9a`.
 
-Test-Binary: `b31fadb9dd0a9bb5f3e133dadfb6c2a4a9ed7c0d08ea5cf741f3605534780c7c`.
-Native x86-Oracle: `3f3b09e05c46bb4d05f67cbe5f4ea6dba86a48fa2a5fe0d5e9ad388bbe31d243`.
+Test-Binary: `4155f06c3592a8de01356d918dbb5529301dd78e4a0ce181636cc011a0cdadb7`.
+Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
 Einzelbericht: `build/reference/team_changes/result.json`.

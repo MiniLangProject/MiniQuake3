@@ -199,10 +199,16 @@ IP-Filter und Bot-Einrichtung sind noch beobachtete Schnittstellen.
 [Teamwechsel, `team`, `StopFollowing` und `ClientDisconnect`](TEAM_CHANGES.md)
 führen inzwischen die tatsächlichen Todes-, Item-/Flaggen-, Leichen-, Leiter-,
 Userinfo-, Spawn- und Rangabläufe zusammen. 227 Szenarien vergleichen jeden
-Host-Aufruf und alle abschließenden Zustände mit C. Als Nächstes folgen die
-Follow-Befehle und das automatische Nachrücken in Tournament-Partien; weitere
-Spielobjekte, Client-Befehlsverteilung, Waffentreffer und Mover-Pushing bleiben offen.
-Der vollständige Server bleibt bis zu dieser Integration offen.
+Host-Aufruf und alle abschließenden Zustände mit C.
+[Follow-Befehle und Tournament-Nachrücken](FOLLOW_TOURNAMENT.md) sind ebenfalls
+portiert: 192 Szenarien verbinden Zielsuche, Angriffstaste, Duell-Warteschlange,
+Gewinner-/Verliererwechsel und Warmup mit den tatsächlichen Spielabläufen.
+[Intermission und Levelende](INTERMISSION.md) verbinden diese Helfer inzwischen
+mit der Kameraplatzierung, echtem Respawn, Scoreboards und Sitzungsspeicherung.
+Die Spielregeln fordern Maprestart beziehungsweise `nextmap` in Originalreihenfolge an;
+die Ausführung durch die Engine bleibt offen. Als Nächstes folgen die vollständige
+Client-Befehlsverteilung und weitere Waffenpfade. Weitere Spielobjekte,
+Mover-Pushing und der vollständige Server fehlen weiterhin.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
 Shooter-Objekte sind jetzt gegen C geprüft; siehe [Projektile](MISSILES.md). Die
@@ -232,9 +238,12 @@ und die Userinfo-Steuerung des Teamoverlays sind zusammenhängend geprüft.
 ebenfalls portiert; vor einer erneuten Anmeldung werden alle modellierten
 Clientfelder zurückgesetzt. `SetTeam`, `Cmd_Team_f`, `StopFollowing` und
 `ClientDisconnect` sind ebenfalls portiert. Die Verbindung zu Bot-Warteschlange
-und Bot-Shutdown bleibt eine Pflichtschnittstelle. Follow-Befehle, Tournament-
-Nachrücken, Modulinitialisierung, Client-Befehlsverteilung und Netzwerkzustellung
-sind die nächsten Grenzen.
+und Bot-Shutdown bleibt eine Pflichtschnittstelle. Follow-Befehle verwenden
+bereits die tatsächlichen Teamwechsel; `SpectatorThink` und `CheckTournament`
+verwenden standardmäßig den Follow-Zyklus beziehungsweise die Duell-Warteschlange.
+Die Intermission- und Levelende-Funktionen verwenden diese Spielabläufe ebenfalls
+direkt. Engine-Mapwechsel/-Neustart, Modulinitialisierung, Client-Befehlsverteilung,
+Bot-/Einzelspieler-Ergebnissysteme und Netzwerkzustellung sind die nächsten Grenzen.
 Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.

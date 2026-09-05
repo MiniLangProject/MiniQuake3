@@ -5933,7 +5933,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "SpectatorThink",
@@ -5941,7 +5941,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "ClientInactivityTimer",
@@ -5949,7 +5949,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "ClientTimerActions",
@@ -5957,7 +5957,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "ClientIntermissionThink",
@@ -5965,7 +5965,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "ClientEvents",
@@ -5973,7 +5973,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "SendPendingPredictableEvents",
@@ -5989,7 +5989,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "ClientThink",
@@ -5997,7 +5997,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "G_RunClient",
@@ -6005,7 +6005,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "SpectatorClientEndFrame",
@@ -6027,13 +6027,15 @@
       "target": [
         "src/mq3/game/triggers.ml",
         "src/mq3/game/client_frame.ml",
-        "src/mq3/game/client_active.ml"
+        "src/mq3/game/client_active.ml",
+        "src/mq3/game/follow_commands.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_transitions.py",
         "scripts/test_client_frame.py",
-        "scripts/test_client_think.py"
+        "scripts/test_client_think.py",
+        "scripts/test_follow_tournament.py"
       ]
     },
     {
@@ -6137,7 +6139,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -6156,10 +6159,11 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 player placement, persistent/session preservation, transient reset, handicap, inventory, spawn filters, target/weapon/link order and snapshots are compared. Userinfo uses shared case-insensitive first-key lookup after the original 1023-byte trap copy, including truncated handicap digits. Ported ClientThink and ClientEndFrame are the defaults; userinfo/usercmd delivery and intermission placement remain explicit host boundaries."
+          "scope": "Baseq3 player placement, persistent/session preservation, transient reset, handicap, inventory, spawn filters, target/weapon/link order and snapshots are compared. Userinfo uses shared case-insensitive first-key lookup after the original 1023-byte trap copy, including truncated handicap digits. Ported ClientThink, ClientEndFrame and MoveClientToIntermission are defaults; separate integration suites exercise them while isolated tests retain overrides. Userinfo/usercmd and engine delivery remain boundaries."
         },
         {
           "original": "ClientBegin",
@@ -6176,7 +6180,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 entry lifecycle with actual ported ClientSpawn and CalculateRanks: unlink/reinit, playerState reset, entry event/message/log, tournament and spectator branches. Engine delivery remains at explicit callbacks."
@@ -6196,7 +6201,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 connected-client team counting, used by and compared through CheckTournament readiness decisions and PickTeam userinfo selection."
@@ -6216,7 +6222,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -6235,7 +6242,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -6254,7 +6262,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -6273,7 +6282,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -6292,7 +6302,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -6311,7 +6322,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -6330,7 +6342,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -6349,7 +6362,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -6368,7 +6382,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -6387,7 +6402,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -6406,7 +6422,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -6425,7 +6442,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -6444,7 +6462,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -6463,7 +6482,8 @@
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/session.ml",
             "src/mq3/game/entities.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset",
           "scope": "CopyToBodyQue and teleport event ordering are implemented; the default path executes ported ClientSpawn while the death suite retains an explicit test override."
@@ -6531,7 +6551,8 @@
         "src/mq3/game/client_connect.ml",
         "src/mq3/game/session.ml",
         "src/mq3/game/entities.ml",
-        "src/mq3/game/client_disconnect.ml"
+        "src/mq3/game/client_disconnect.ml",
+        "src/mq3/game/intermission.ml"
       ],
       "status": "partial",
       "tests": [
@@ -6545,7 +6566,9 @@
         "scripts/test_deaths.py",
         "scripts/test_client_info.py",
         "scripts/test_client_connect.py",
-        "scripts/test_team_changes.py"
+        "scripts/test_team_changes.py",
+        "scripts/test_follow_tournament.py",
+        "scripts/test_intermission.py"
       ]
     },
     {
@@ -6659,33 +6682,66 @@
         {
           "original": "SetTeam",
           "target_files": [
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/team_changes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Exact scoreboard command payload and recipient; transport callback observed. No network transmission or client display."
+          "scope": "Unchanged Baseq3 team/spectator selection, force balance, capacity override, same-team guard, actual body/death/CTF/leader/userinfo/ClientBegin/Spawn/rank integration and exact command argc/cooldown/loss order. StopFollowing preserves unrelated session fields and clears PMF_FOLLOW/SVF_BOT. Every host effect and action compares all modeled clients, entityStates and selected private/spatial entity fields. Movement/end-frame are observed callbacks in this integration suite; defaults remain ported. Follow commands and tournament promotion are separately ported and compared. Match-transition orchestration is separately ported and compared. Full ClientCommand routing and engine map execution remain open."
         },
         {
           "original": "StopFollowing",
           "target_files": [
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/team_changes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Exact scoreboard command payload and recipient; transport callback observed. No network transmission or client display."
+          "scope": "Unchanged Baseq3 team/spectator selection, force balance, capacity override, same-team guard, actual body/death/CTF/leader/userinfo/ClientBegin/Spawn/rank integration and exact command argc/cooldown/loss order. StopFollowing preserves unrelated session fields and clears PMF_FOLLOW/SVF_BOT. Every host effect and action compares all modeled clients, entityStates and selected private/spatial entity fields. Movement/end-frame are observed callbacks in this integration suite; defaults remain ported. Follow commands and tournament promotion are separately ported and compared. Match-transition orchestration is separately ported and compared. Full ClientCommand routing and engine map execution remain open."
         },
         {
           "original": "Cmd_Team_f",
           "target_files": [
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/team_changes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Exact scoreboard command payload and recipient; transport callback observed. No network transmission or client display."
+          "scope": "Unchanged Baseq3 team/spectator selection, force balance, capacity override, same-team guard, actual body/death/CTF/leader/userinfo/ClientBegin/Spawn/rank integration and exact command argc/cooldown/loss order. StopFollowing preserves unrelated session fields and clears PMF_FOLLOW/SVF_BOT. Every host effect and action compares all modeled clients, entityStates and selected private/spatial entity fields. Movement/end-frame are observed callbacks in this integration suite; defaults remain ported. Follow commands and tournament promotion are separately ported and compared. Match-transition orchestration is separately ported and compared. Full ClientCommand routing and engine map execution remain open."
+        },
+        {
+          "original": "SanitizeString",
+          "target_files": [
+            "src/mq3/game/follow_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing remains open."
+        },
+        {
+          "original": "ClientNumberFromString",
+          "target_files": [
+            "src/mq3/game/follow_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing remains open."
+        },
+        {
+          "original": "Cmd_Follow_f",
+          "target_files": [
+            "src/mq3/game/follow_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing remains open."
+        },
+        {
+          "original": "Cmd_FollowCycle_f",
+          "target_files": [
+            "src/mq3/game/follow_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing remains open."
         }
       ],
       "target": [
         "src/mq3/game/scores.ml",
         "src/mq3/game/vote_commands.ml",
         "src/mq3/game/session.ml",
-        "src/mq3/game/team_changes.ml"
+        "src/mq3/game/team_changes.ml",
+        "src/mq3/game/follow_commands.ml"
       ],
       "status": "partial",
       "tests": [
@@ -6694,7 +6750,8 @@
         "scripts/test_vote_commands.py",
         "scripts/test_client_info.py",
         "scripts/test_client_connect.py",
-        "scripts/test_team_changes.py"
+        "scripts/test_team_changes.py",
+        "scripts/test_follow_tournament.py"
       ]
     },
     {
@@ -7156,7 +7213,9 @@
             "src/mq3/game/session.ml",
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/team_changes.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/follow_commands.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -7186,7 +7245,9 @@
             "src/mq3/game/session.ml",
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/team_changes.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/follow_commands.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -7216,7 +7277,9 @@
             "src/mq3/game/session.ml",
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/team_changes.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/follow_commands.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -7246,7 +7309,9 @@
             "src/mq3/game/session.ml",
             "src/mq3/game/client_connect.ml",
             "src/mq3/game/team_changes.ml",
-            "src/mq3/game/client_disconnect.ml"
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/follow_commands.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         }
@@ -7275,7 +7340,9 @@
         "src/mq3/game/session.ml",
         "src/mq3/game/client_connect.ml",
         "src/mq3/game/team_changes.ml",
-        "src/mq3/game/client_disconnect.ml"
+        "src/mq3/game/client_disconnect.ml",
+        "src/mq3/game/follow_commands.ml",
+        "src/mq3/game/intermission.ml"
       ],
       "status": "partial",
       "tests": [
@@ -7300,7 +7367,9 @@
         "scripts/test_vote_commands.py",
         "scripts/test_client_info.py",
         "scripts/test_client_connect.py",
-        "scripts/test_team_changes.py"
+        "scripts/test_team_changes.py",
+        "scripts/test_follow_tournament.py",
+        "scripts/test_intermission.py"
       ]
     },
     {
@@ -7363,7 +7432,8 @@
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/game/client_connect.ml"
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -7384,7 +7454,8 @@
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/game/client_connect.ml"
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament, exit rules, team status, global/team vote resolution and CheckCvars. Default Cvar refresh uses ported G_UpdateCvars and the engine registry; empty-entity frame probes compare that path, while legacy frame/gameplay suites retain an explicit refresh override. Mover/other physics dispatch and entity-list diagnostics remain callbacks."
@@ -7406,10 +7477,11 @@
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/game/client_connect.ml"
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 tournament promotion, player/team readiness, warmup Cvar changes, countdown and map restart are compared against the unchanged native body. AddTournamentPlayer and engine command delivery remain explicit observed callbacks."
+          "scope": "Baseq3 tournament promotion, player/team readiness, warmup Cvar changes, countdown and map restart are compared against the unchanged native body. Default promotion now executes ported AddTournamentPlayer with real SetTeam/ClientBegin/Spawn/ranks, compared separately including countdown/restart; legacy isolated tests retain an override. Engine command delivery remains a callback."
         },
         {
           "original": "FindIntermissionPoint",
@@ -7428,7 +7500,8 @@
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/game/client_connect.ml"
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -7449,10 +7522,11 @@
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/game/client_connect.ml"
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
+          "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions and defaults to ported intermission/level-exit orchestration; old isolated suites keep a transition override. Engine map execution remains open."
         },
         {
           "original": "CalculateRanks",
@@ -7471,10 +7545,11 @@
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/game/client_connect.ml"
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
+          "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions and defaults to ported intermission/level-exit orchestration; old isolated suites keep a transition override. Engine map execution remains open."
         },
         {
           "original": "SendScoreboardMessageToAllClients",
@@ -7493,7 +7568,8 @@
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/game/client_connect.ml"
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -7514,7 +7590,8 @@
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/game/client_connect.ml"
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset"
         },
@@ -7535,10 +7612,11 @@
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/game/client_connect.ml"
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
+          "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. Ported BeginIntermission/ExitLevel are defaults, with real queue/readiness/timeout chains compared in the intermission suite; old isolated scores keep a transition override. No log-file timestamp/write, engine map execution or network delivery."
         },
         {
           "original": "LogExit",
@@ -7557,10 +7635,11 @@
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/game/client_connect.ml"
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
+          "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. Ported BeginIntermission/ExitLevel are defaults, with real queue/readiness/timeout chains compared in the intermission suite; old isolated scores keep a transition override. No log-file timestamp/write, engine map execution or network delivery."
         },
         {
           "original": "CheckIntermissionExit",
@@ -7579,10 +7658,11 @@
             "src/mq3/game/cvars.ml",
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
-            "src/mq3/game/client_connect.ml"
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/intermission.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
+          "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. Ported BeginIntermission/ExitLevel are defaults, with real queue/readiness/timeout chains compared in the intermission suite; old isolated scores keep a transition override. No log-file timestamp/write, engine map execution or network delivery."
         },
         {
           "original": "CheckVote",
@@ -7667,6 +7747,62 @@
           ],
           "status": "tested_subset",
           "scope": "All 46 pinned Baseq3 table rows and 43 VM snapshots are compared with the actual original engine registry: flags/defaults/order, registration, change counters, latched values, exact broadcasts and gameplay field synchronization. G_RemapTeamShaders has an empty Baseq3 body; Missionpack is excluded. Build date is explicit host metadata matching the native compiler's __DATE__. Empty-entity frame probes use guarded inactive match/vote boundaries."
+        },
+        {
+          "original": "AddTournamentPlayer",
+          "target_files": [
+            "src/mq3/game/tournament.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 oldest eligible spectator selection, stable queue-time ties, scoreboard/dedicated-follow exclusion, ranked winner/loser removal and connected-only win/loss updates. Actual SetTeam/death/body/item/userinfo/ClientBegin/Spawn/ranks and CheckTournament callers are compared, including disconnect/rotation/countdown/restart. BeginIntermission/ExitLevel use these helpers directly and are separately compared. Engine delivery/map execution remain open."
+        },
+        {
+          "original": "RemoveTournamentLoser",
+          "target_files": [
+            "src/mq3/game/tournament.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 oldest eligible spectator selection, stable queue-time ties, scoreboard/dedicated-follow exclusion, ranked winner/loser removal and connected-only win/loss updates. Actual SetTeam/death/body/item/userinfo/ClientBegin/Spawn/ranks and CheckTournament callers are compared, including disconnect/rotation/countdown/restart. BeginIntermission/ExitLevel use these helpers directly and are separately compared. Engine delivery/map execution remain open."
+        },
+        {
+          "original": "RemoveTournamentWinner",
+          "target_files": [
+            "src/mq3/game/tournament.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 oldest eligible spectator selection, stable queue-time ties, scoreboard/dedicated-follow exclusion, ranked winner/loser removal and connected-only win/loss updates. Actual SetTeam/death/body/item/userinfo/ClientBegin/Spawn/ranks and CheckTournament callers are compared, including disconnect/rotation/countdown/restart. BeginIntermission/ExitLevel use these helpers directly and are separately compared. Engine delivery/map execution remain open."
+        },
+        {
+          "original": "AdjustTournamentScores",
+          "target_files": [
+            "src/mq3/game/tournament.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 oldest eligible spectator selection, stable queue-time ties, scoreboard/dedicated-follow exclusion, ranked winner/loser removal and connected-only win/loss updates. Actual SetTeam/death/body/item/userinfo/ClientBegin/Spawn/ranks and CheckTournament callers are compared, including disconnect/rotation/countdown/restart. BeginIntermission/ExitLevel use these helpers directly and are separately compared. Engine delivery/map execution remain open."
+        },
+        {
+          "original": "MoveClientToIntermission",
+          "target_files": [
+            "src/mq3/game/intermission.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 intermission placement and level-exit orchestration. Actual StopFollowing, FindIntermissionPoint, tournament scores/loser removal, respawn/ClientSpawn/ClientBegin, scoreboards and session writes are integrated. All modeled client/entity states, camera, changemap, separate client limits, readiness and session Cvars are compared at each host effect/action. BotInterbreedEndMatch and single-player UpdateTournamentInfo/SpawnModelsOnVictoryPads remain required observed interfaces; spawn Think/EndFrame are isolated overrides in this suite. Engine console/Cvar/network delivery, actual map loading/restart and Missionpack are open."
+        },
+        {
+          "original": "BeginIntermission",
+          "target_files": [
+            "src/mq3/game/intermission.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 intermission placement and level-exit orchestration. Actual StopFollowing, FindIntermissionPoint, tournament scores/loser removal, respawn/ClientSpawn/ClientBegin, scoreboards and session writes are integrated. All modeled client/entity states, camera, changemap, separate client limits, readiness and session Cvars are compared at each host effect/action. BotInterbreedEndMatch and single-player UpdateTournamentInfo/SpawnModelsOnVictoryPads remain required observed interfaces; spawn Think/EndFrame are isolated overrides in this suite. Engine console/Cvar/network delivery, actual map loading/restart and Missionpack are open."
+        },
+        {
+          "original": "ExitLevel",
+          "target_files": [
+            "src/mq3/game/intermission.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 intermission placement and level-exit orchestration. Actual StopFollowing, FindIntermissionPoint, tournament scores/loser removal, respawn/ClientSpawn/ClientBegin, scoreboards and session writes are integrated. All modeled client/entity states, camera, changemap, separate client limits, readiness and session Cvars are compared at each host effect/action. BotInterbreedEndMatch and single-player UpdateTournamentInfo/SpawnModelsOnVictoryPads remain required observed interfaces; spawn Think/EndFrame are isolated overrides in this suite. Engine console/Cvar/network delivery, actual map loading/restart and Missionpack are open."
         }
       ],
       "target": [
@@ -7684,7 +7820,8 @@
         "src/mq3/game/cvars.ml",
         "src/mq3/game/cvar_tables.ml",
         "src/mq3/game/client_info.ml",
-        "src/mq3/game/client_connect.ml"
+        "src/mq3/game/client_connect.ml",
+        "src/mq3/game/intermission.ml"
       ],
       "status": "partial",
       "tests": [
@@ -7703,7 +7840,9 @@
         "scripts/test_vote_commands.py",
         "scripts/test_client_info.py",
         "scripts/test_client_connect.py",
-        "scripts/test_team_changes.py"
+        "scripts/test_team_changes.py",
+        "scripts/test_follow_tournament.py",
+        "scripts/test_intermission.py"
       ]
     },
     {
@@ -9661,17 +9800,10 @@
         {
           "original": "G_PickTarget",
           "target_files": [
-            "src/mq3/game/entities.ml",
-            "src/mq3/game/teleport.ml",
-            "src/mq3/game/spawn_values.ml",
-            "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml",
-            "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/entities.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_subset",
+          "scope": "Baseq3 case-insensitive target lookup, first 32 eligible entities and native Windows rand selection. Missing/NULL target diagnostics use gamePrintFn when provided; the intermission integration compares the missing-camera-target message and its exact state/order. Legacy isolated hosts without a print sink exclude diagnostics."
         },
         {
           "original": "G_KillBox",
@@ -9872,7 +10004,8 @@
         "scripts/test_spawn.py",
         "scripts/test_targets.py",
         "scripts/test_bodies.py",
-        "scripts/test_items.py"
+        "scripts/test_items.py",
+        "scripts/test_intermission.py"
       ]
     },
     {

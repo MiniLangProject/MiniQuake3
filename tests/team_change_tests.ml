@@ -1,4 +1,13 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
+import mq3.game.follow_commands as followCommands
+import mq3.game.intermission as intermissionFlow
+import mq3.game.client_spawn as clientSpawn
+import mq3.game.scores as scores
+import mq3.game.session as sessions
+import mq3.game.tournament as tournament
+import mq3.game.client_active as clientActive
+import mq3.game.pmove as pmove
+import mq3.compat.textnumbers as textnum
 import mq3.game.team_changes as teamChanges
 import mq3.game.client_disconnect as clientDisconnect
 import mq3.game.client_info as clientInfo
@@ -26,6 +35,8 @@ struct Check
   actions
   userinfos
   location
+  followMode
+  intermissionMode
 end struct
 function readInt(reader)
   if reader.offset+4 > len(reader.data) then return error(499,"Incomplete team change input") end if
@@ -177,6 +188,15 @@ function snapshot(level)
     entitySnapshot(level,level.entities[index])
   end for
   check.location = "configs"; textWord(check,level.spawner.configstrings[6]); textWord(check,level.spawner.configstrings[7]); textWord(check,level.spawner.configstrings[23])
+  if check.followMode then word(check,level.warmupModificationCount); boolWord(check,level.restarted); words(check,[level.warmup,level.warmupCvarModificationCount]); textWord(check,level.spawner.configstrings[5]) end if
+  if check.intermissionMode then
+    check.location = "intermission"; floatWords(check,level.intermission_origin); floatWords(check,level.intermission_angle)
+    word(check,level.maxclientsCvar); boolWord(check,level.readyToExit); words(check,[level.exitTime,level.timelimit,level.fraglimit])
+    textWord(check,level.changemap); textWord(check,level.spawner.configstrings[22]); textWord(check,sessions.cvarText(level,"session"))
+    for index = 0 to 63
+      textWord(check,sessions.cvarText(level,"session"+str(index)))
+    end for
+  end if
   return void
 end function
 function record(level,kind,arg,text)
@@ -226,6 +246,24 @@ function botShutdown(level,slot,restart)
 end function
 function gamePrint(level,message)
   return record(level,15,-1,message)
+end function
+function followCvar(level,key,value)
+  return record(level,16,0,key+"="+value)
+end function
+function followConsole(level,mode,text)
+  return record(level,17,mode,text)
+end function
+function intermissionCvar(level,key,value)
+  cv.set2(level.spawner.cvars,key,value,true); return record(level,16,0,key+"="+value)
+end function
+function intermissionBot(level)
+  return record(level,18,0," ")
+end function
+function intermissionUpdate(level)
+  return record(level,19,0," ")
+end function
+function intermissionPads(level)
+  return record(level,20,0," ")
 end function
 function spot(level,slot,name,origin,angles)
   ent = game.initEntity(level.entities[slot]); ent.classname = name; ent.s.origin = origin; ent.s.angles = angles; return void
@@ -281,13 +319,25 @@ function configure(level,reader,check)
   level.context = check; level.observeFn = observe; s.effectFn = effect; level.userinfoFn = userinfo; level.usercmdFn = usercmd
   level.clientThinkFn = think; level.clientEndFrameFn = endFrame; level.moveIntermissionFn = intermission; level.gameLogFn = gameLog; level.serverCommandFn = serverCommand
   level.teamMessageFn = teamMessage; level.removeQueuedBotBeginFn = removeQueued; level.botShutdownFn = botShutdown; level.gamePrintFn = gamePrint
+  if check.followMode then level.cvarSetFn = followCvar; level.consoleCommandFn = followConsole end if
+  if check.intermissionMode then
+    level.moveIntermissionFn = void; level.matchTransitionFn = void; level.playerDieFn = deaths.playerDie
+    level.cvarSetFn = intermissionCvar; level.botInterbreedEndMatchFn = intermissionBot
+    level.updateTournamentInfoFn = intermissionUpdate; level.spawnVictoryPadsFn = intermissionPads
+    level.changemap = void; level.readyToExit = false; level.exitTime = 0
+  end if
   // No Begin/death/item/rank/userinfo overrides: all those game routines are real.
   return void
 end function
 function main(argv)
   if len(argv) < 3 then return error(499,"Expected map, input and oracle output") end if
-  world = cm.loadWorld(fs.readAllBytes(argv[0]),true); if len(argv) > 3 then return contracts(world) end if
-  reader = Reader(fs.readAllBytes(argv[1]),0); check = Check(fs.readAllBytes(argv[2]),0,0,0,0,array(64,""),"")
+  world = cm.loadWorld(fs.readAllBytes(argv[0]),true)
+  if len(argv) > 3 and argv[3] == "--contracts" then return contracts(world) end if
+  if len(argv) > 3 and argv[3] == "--follow-contracts" then return followContracts(world) end if
+  if len(argv) > 3 and argv[3] == "--intermission-contracts" then return intermissionContracts(world) end if
+  intermissionMode = len(argv) > 3 and argv[3] == "--intermission"
+  followMode = intermissionMode or (len(argv) > 3 and argv[3] == "--follow")
+  reader = Reader(fs.readAllBytes(argv[1]),0); check = Check(fs.readAllBytes(argv[2]),0,0,0,0,array(64,""),"",followMode,intermissionMode)
   level = game.create(world); configure(level,reader,check); count = readInt(reader)
   for index = 0 to count-1
     kind = readInt(reader); level.time = readInt(reader); slot = readInt(reader); p0 = readInt(reader); request = readString(reader)
@@ -312,11 +362,25 @@ function main(argv)
         level.entities[slot].client = level.clients[p0]
       end case
       case default
-        return error(499,"Invalid team change action")
+        if not check.followMode then return error(499,"Invalid team change action") end if
+        if check.intermissionMode then
+          if kind >= 19 then runIntermissionAction(level,kind,slot,p0,request)
+          else runFollowAction(level,kind,slot,p0,request) end if
+        else
+          outcome = try(runFollowAction(level,kind,slot,p0,request))
+          if outcome is error then
+            snapshot(level); word(check,222); check.actions = check.actions+1
+            if index != count-1 then return error(499,"Native drop must be the final action") end if
+            return finishResult(reader,check)
+          end if
+        end if
       end case
     end switch
     snapshot(level); check.actions = check.actions+1
   end for
+  return finishResult(reader,check)
+end function
+function finishResult(reader,check)
   if reader.offset != len(reader.data) or check.offset != len(check.expected) then return error(499,"Incomplete team change stream") end if
   print "PASS: "+str(check.actions)+" team change actions / "+str(check.words)+" exact words / "+str(check.events)+" ordered effects"; return 0
 end function
@@ -361,4 +425,194 @@ function contracts(world)
   level.gameLogFn = quietLog; ent.r.svFlags = 8
   require(try(clientDisconnect.disconnect(level,0)) is error and not ent.inuse and level.clients[0].connected == 0,"bot shutdown remains explicit after cleanup"); count = count+1
   print "PASS: "+str(count)+" team change runtime contracts"; return 0
+end function
+
+function runFollowAction(level,kind,slot,p0,request)
+  switch kind
+    case 7
+      found = followCommands.clientNumber(level,level.entities[slot],request); words(level.context,[224,found])
+    end case
+    case 8
+      args = array(p0,"follow"); if p0 > 1 then args[1] = request end if
+      followCommands.follow(level,level.entities[slot],args)
+    end case
+    case 9
+      followCommands.cycle(level,level.entities[slot],p0)
+    end case
+    case 10
+      tournament.addPlayer(level)
+    end case
+    case 11
+      tournament.removeLoser(level)
+    end case
+    case 12
+      tournament.removeWinner(level)
+    end case
+    case 13
+      tournament.adjustScores(level)
+    end case
+    case 14
+      tournament.check(level)
+    end case
+    case 15
+      cmd = pmove.Command(p0,[0,0,0],textnum.atoi(request),0,0,0,0); clientActive.spectatorThink(level,level.entities[slot],cmd)
+    end case
+    case 16
+      clean = followCommands.sanitize(request); word(level.context,223); textWord(level.context,clean)
+    end case
+    case 17
+      level.numPlayingClients = p0
+    end case
+    case 18
+      level.warmup = p0; level.warmupCvarModificationCount = textnum.atoi(request)
+    end case
+    case default
+      return error(499,"Invalid follow action")
+    end case
+  end switch
+  return void
+end function
+function followContracts(world)
+  level = game.create(world); ent = level.entities[0]; count = 0
+  require(try(followCommands.follow(level,ent,["follow"])) is error,"unbound follow"); count = count+1
+  game.bindClient(level,ent,level.clients[0]); client = ent.client; client.spectatorState = 2; client.team = 3
+  require(try(followCommands.cycle(level,ent,1)) is error,"missing spawn state"); count = count+1
+  spawn.create(level,"")
+  require(try(followCommands.sanitize(decode(bytes([65,27])))) is error,"trailing ESC"); count = count+1
+  require(try(followCommands.sanitize(decode(bytes([65,0,66])))) is error,"embedded NUL"); count = count+1
+  require(try(followCommands.clientNumber(level,ent,decode(bytes(1024,65)))) is error,"oversized name buffer"); count = count+1
+  require(try(followCommands.cycle(level,ent,1)) is error,"zero client range"); count = count+1
+  level.maxclients = 4; client.spectatorClient = 0
+  require(followCommands.cycle(level,ent,1) == void and client.spectatorClient == 0,"empty finite cycle preserves state"); count = count+1
+  for each start in [-2147483648,-2,-1,4,2147483647]
+    for each direction in [-1,1]
+      client.spectatorClient = start
+      require(try(followCommands.cycle(level,ent,direction)) is error and client.spectatorClient == start,"native endless cycle bounded"); count = count+1
+    end for
+  end for
+  level.maxclients = 65
+  require(try(followCommands.cycle(level,ent,1)) is error,"invalid client range"); count = count+1
+  require(try(tournament.addPlayer(level)) is error,"invalid queue range"); count = count+1
+  level.maxclients = 4; level.spawner.gametype = 1; client.team = 0; client.losses = 2147483647
+  require(try(followCommands.cycle(level,ent,0)) is error and client.losses == -2147483648,"loss before direction error"); count = count+1
+  level.numPlayingClients = 2; level.sortedClients[1] = 64
+  require(try(tournament.removeLoser(level)) is error,"invalid loser slot"); count = count+1
+  level.sortedClients[0] = -1
+  require(try(tournament.adjustScores(level)) is error,"invalid winner slot"); count = count+1
+  level.numPlayingClients = 0; level.intermissiontime = 1; level.maxclients = 65
+  require(tournament.addPlayer(level) == void,"intermission guard before queue"); count = count+1
+  print "PASS: "+str(count)+" follow runtime contracts"; return 0
+end function
+
+function runIntermissionAction(level,kind,slot,p0,request)
+  ent = level.entities[slot]
+  switch kind
+    case 19
+      intermissionFlow.moveClient(level,ent)
+    end case
+    case 20
+      intermissionFlow.begin(level)
+    end case
+    case 21
+      intermissionFlow.exitLevel(level)
+    end case
+    case 22
+      scores.checkExitRules(level)
+    end case
+    case 23
+      scores.checkIntermissionExit(level)
+    end case
+    case 24
+      scores.calculateRanks(level)
+    end case
+    case 25
+      level.maxclientsCvar = p0
+    end case
+    case 26
+      level.clients[slot].readyToExit = p0 != 0
+    end case
+    case 27
+      level.restarted = p0 != 0; level.changemap = request
+      if request == "<null>" then level.changemap = void end if
+    end case
+    case 28
+      level.intermissionQueued = p0
+    end case
+    case 29
+      clientSpawn.spawn(level,ent,deaths.playerDie)
+    end case
+    case 30
+      level.entities[71].inuse = p0 != 0
+    end case
+    case 31
+      level.entities[71].target = request; level.entities[70].targetname = void
+      if request == "" then level.entities[71].target = void end if
+      if p0 != 0 then level.entities[70].targetname = request end if
+    end case
+    case 32
+      level.intermissiontime = p0
+    end case
+    case 33
+      level.intermission_origin = [-12.5,33.25,99.75]; level.intermission_angle = [8.5,-179.25,11.5]
+      ent.s.eFlags = 0x712; ent.s.eType = 12; ent.s.modelindex = 17; ent.s.loopSound = 45; ent.s.event = 123
+      ent.s.eventParm = 46; ent.s.otherEntityNum = 12; ent.s.frame = 19; ent.s.powerups = 0x1234; ent.r.contents = 0x02000002
+      ent.client.ps.eFlags = 0x10123; ent.client.ps.powerups[0] = 37; ent.client.ps.powerups[15] = 2147483647
+      ent.client.ps.loopSound = 333; ent.client.ps.externalEvent = 77; ent.client.ps.eventSequence = 9
+      ent.client.ps.events = [3,4]; ent.client.ps.eventParms = [5,6]
+    end case
+    case 34
+      clientSpawn.clientBegin(level,slot)
+    end case
+    case 35
+      clientSpawn.respawn(level,ent)
+    end case
+    case 36
+      level.timelimit = p0; level.fraglimit = textnum.atoi(request)
+    end case
+    case default
+      return error(499,"Invalid intermission action")
+    end case
+  end switch
+  return void
+end function
+function intermissionContractLevel(world)
+  level = game.create(world); spawn.create(level,""); level.maxclients = 0; level.maxclientsCvar = 0
+  spot(level,64,"info_player_intermission",[5.0,15.0,25.0],[10.0,20.0,30.0]); level.num_entities = 65; level.time = 1234
+  return level
+end function
+function intermissionContracts(world)
+  count = 0; level = game.create(world); ent = level.entities[0]
+  require(try(intermissionFlow.moveClient(level,void)) is error,"NULL intermission client"); count = count+1
+  require(try(intermissionFlow.moveClient(level,ent)) is error,"unbound intermission client"); count = count+1
+  game.bindClient(level,ent,level.clients[0])
+  require(intermissionFlow.moveClient(level,ent) == void and ent.client.ps.pm_type == c.PM_INTERMISSION,"move requires no spawn context"); count = count+1
+  require(try(intermissionFlow.begin(level)) is error,"begin requires spawn context"); count = count+1
+  level.intermissiontime = 5
+  require(intermissionFlow.begin(level) == void and level.intermissiontime == 5,"already active guard precedes spawn context"); count = count+1
+  level = intermissionContractLevel(world); level.intermissiontime = 11; level.changemap = "pending"
+  require(try(intermissionFlow.exitLevel(level)) is error and level.intermissiontime == 11 and level.changemap == "pending","bot end-match hook precedes exit mutations"); count = count+1
+  level.botInterbreedEndMatchFn = intermissionBot
+  require(try(intermissionFlow.exitLevel(level)) is error and level.intermissiontime == 11,"exit requires console delivery"); count = count+1
+  level.consoleCommandFn = followConsole; level.teamScores[1] = 77
+  require(try(intermissionFlow.exitLevel(level)) is error and level.intermissiontime == 0 and level.teamScores[1] == 0,"session delivery follows score reset"); count = count+1
+  level.cvarSetFn = intermissionCvar
+  require(intermissionFlow.exitLevel(level) == void and sessions.cvarText(level,"session") == "0","empty normal exit writes world session"); count = count+1
+  level = intermissionContractLevel(world); level.spawner.gametype = 1; level.restarted = true
+  require(try(intermissionFlow.exitLevel(level)) is error,"restarted tournament still needs bot hook"); count = count+1
+  level.botInterbreedEndMatchFn = intermissionBot
+  require(intermissionFlow.exitLevel(level) == void,"restarted tournament needs no console delivery"); count = count+1
+  for each limit in [-1,65]
+    level = intermissionContractLevel(world); level.maxclients = limit
+    require(try(intermissionFlow.begin(level)) is error,"invalid begin client range"); count = count+1
+    level = intermissionContractLevel(world); level.maxclientsCvar = limit
+    level.botInterbreedEndMatchFn = intermissionBot; level.consoleCommandFn = followConsole; level.cvarSetFn = intermissionCvar
+    require(try(intermissionFlow.exitLevel(level)) is error,"invalid exit Cvar client range"); count = count+1
+  end for
+  level = intermissionContractLevel(world); level.spawner.gametype = 2
+  require(try(intermissionFlow.begin(level)) is error and level.intermissiontime == level.time,"singleplayer update hook after intermission time"); count = count+1
+  level.intermissiontime = 0; level.updateTournamentInfoFn = intermissionUpdate
+  require(try(intermissionFlow.begin(level)) is error,"singleplayer victory-pad hook"); count = count+1
+  level.intermissiontime = 0; level.spawnVictoryPadsFn = intermissionPads
+  require(intermissionFlow.begin(level) == void and level.intermission_origin[2] == 25.0,"empty singleplayer intermission with explicit hooks"); count = count+1
+  print "PASS: "+str(count)+" intermission runtime contracts"; return 0
 end function

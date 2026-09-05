@@ -22,6 +22,12 @@ static void teamChangeState(void){
     for(i=0;i<64;i++){connectClientState(&g_clients[i]);string(configs[CS_PLAYERS+i]);}
     for(i=0;i<level.num_entities;i++)teamChangeEntity(&g_entities[i]);
     string(configs[6]);string(configs[7]);string(configs[CS_FLAGSTATUS]);
+    if(followOutput){word(level.warmupModificationCount);word(level.restarted);word(g_warmup.integer);word(g_warmup.modificationCount);string(configs[5]);}
+    if(intermissionOutput){
+        words(level.intermission_origin,3);words(level.intermission_angle,3);word(g_maxclients.integer);word(level.readyToExit);word(level.exitTime);
+        word(g_timelimit.integer);word(g_fraglimit.integer);string(level.changemap);string(configs[CS_INTERMISSION]);
+        for(i=0;i<65;i++)string(intermissionSessions[i]);
+    }
 }
 static void teamChangeEvent(int kind,int arg,const char *text){
     if(!teamChangeReady)return;
@@ -32,7 +38,7 @@ static void runTeamChanges(FILE *in){
     if(fread(q,4,13,in)!=13 || q[0]<0 || q[0]>64)exit(74);
     level.maxclients=g_maxclients.integer=q[0];g_gametype.integer=q[1];level.time=q[2];g_teamForceBalance.integer=q[3];g_maxGameClients.integer=q[4];
     level.numNonSpectatorClients=q[5];level.intermissiontime=q[6];level.warmupTime=q[7];level.teamScores[1]=q[8];level.teamScores[2]=q[9];
-    level.sortedClients[0]=q[10];level.sortedClients[1]=q[11];g_blood.integer=q[12];level.spawning=qtrue;level.numSpawnVars=3;g_inactivity.integer=0;
+    level.sortedClients[0]=q[10];level.sortedClients[1]=q[11];g_blood.integer=q[12];level.spawning=qtrue;level.numSpawnVars=3;g_inactivity.integer=0;g_warmup.integer=20;
     clientSpawnSpot(64,"info_player_deathmatch",0,0,64,10,20,30,0);g_entities[64].spawnflags=1;
     clientSpawnSpot(65,"info_player_deathmatch",1000,0,64,-15,180,1,0);
     clientSpawnSpot(66,"info_player_deathmatch",-500,300,96,45,-90,5,0);
@@ -77,6 +83,43 @@ static void runTeamChanges(FILE *in){
         case 4:ClientDisconnect(a[2]);break;
         case 5:g_entities[a[2]].health=g_clients[a[2]].ps.stats[STAT_HEALTH]=a[3];g_clients[a[2]].ps.pm_type=PM_DEAD;break;
         case 6:if(a[3]<0 || a[3]>=64)exit(74);g_entities[a[2]].client=&g_clients[a[3]];break;
+        case 7:{int found=ClientNumberFromString(&g_entities[a[2]],request);word(224);word(found);break;}
+        case 8:cmd_argc=a[3];if(cmd_argc<0 || cmd_argc>64)exit(74);for(j=0;j<cmd_argc;j++)cmd_argv[j]=j==1?request:"follow";Cmd_Follow_f(&g_entities[a[2]]);break;
+        case 9:Cmd_FollowCycle_f(&g_entities[a[2]],a[3]);break;
+        case 10:Original_AddTournamentPlayer();break;
+        case 11:RemoveTournamentLoser();break;
+        case 12:RemoveTournamentWinner();break;
+        case 13:AdjustTournamentScores();break;
+        case 14:Original_CheckTournament();break;
+        case 15:{usercmd_t cmd;memset(&cmd,0,sizeof(cmd));cmd.serverTime=a[3];cmd.buttons=atoi(request);SpectatorThink(&g_entities[a[2]],&cmd);break;}
+        case 16:{char clean[1024];SanitizeString(request,clean);word(223);string(clean);break;}
+        case 17:level.numPlayingClients=a[3];break;
+        case 18:g_warmup.integer=a[3];g_warmup.modificationCount=atoi(request);break;
+        case 19:Original_MoveClientToIntermission(&g_entities[a[2]]);break;
+        case 20:Original_BeginIntermission();break;
+        case 21:Original_ExitLevel();break;
+        case 22:CheckExitRules();break;
+        case 23:CheckIntermissionExit();break;
+        case 24:CalculateRanks();break;
+        case 25:g_maxclients.integer=a[3];break;
+        case 26:g_clients[a[2]].readyToExit=a[3]!=0;break;
+        case 27:level.restarted=a[3]!=0;level.changemap=!strcmp(request,"<null>")?NULL:_strdup(request);break;
+        case 28:level.intermissionQueued=a[3];break;
+        case 29:Original_ClientSpawn(&g_entities[a[2]]);break;
+        case 30:g_entities[71].inuse=a[3]!=0;break;
+        case 31:g_entities[71].target=request[0]?_strdup(request):NULL;g_entities[70].targetname=a[3]?_strdup(request):NULL;break;
+        case 32:level.intermissiontime=a[3];break;
+        case 33:{
+            gentity_t *ent=&g_entities[a[2]];gclient_t *cl=ent->client;
+            VectorSet(level.intermission_origin,-12.5,33.25,99.75);VectorSet(level.intermission_angle,8.5,-179.25,11.5);
+            ent->s.eFlags=0x712;ent->s.eType=12;ent->s.modelindex=17;ent->s.loopSound=45;ent->s.event=123;ent->s.eventParm=46;
+            ent->s.otherEntityNum=12;ent->s.frame=19;ent->s.powerups=0x1234;ent->r.contents=0x02000002;
+            cl->ps.eFlags=0x10123;cl->ps.powerups[0]=37;cl->ps.powerups[15]=2147483647;cl->ps.loopSound=333;cl->ps.externalEvent=77;
+            cl->ps.eventSequence=9;cl->ps.events[0]=3;cl->ps.events[1]=4;cl->ps.eventParms[0]=5;cl->ps.eventParms[1]=6;break;
+        }
+        case 34:Original_ClientBegin(a[2]);break;
+        case 35:respawn(&g_entities[a[2]]);break;
+        case 36:g_timelimit.integer=a[3];g_fraglimit.integer=atoi(request);break;
         default:exit(74);
         }
         teamChangeState();

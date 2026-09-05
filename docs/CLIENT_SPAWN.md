@@ -46,8 +46,9 @@ Der Vergleichshost gibt ihnen deterministische Rückgabewirkungen und protokolli
 ihre Reihenfolge. Dadurch ist der Code vor, zwischen und nach den Grenzen exakt
 gegen die Originalfunktion prüfbar. ClientThink und ClientEndFrame sind inzwischen
 portiert und werden im normalen Pfad verwendet; gesetzte Callbacks erhalten die
-unabhängige ClientSpawn-Prüfung. Userinfo, Usercmd und Intermission-Platzierung
-bleiben Engine-Schnittstellen.
+unabhängige ClientSpawn-Prüfung. Auch die
+[Intermission-Platzierung](INTERMISSION.md) ruft standardmäßig die portierte
+`intermission.moveClient` auf. Userinfo und Usercmd bleiben Engine-Schnittstellen.
 
 ## Nachweis
 
@@ -67,8 +68,8 @@ ursprüngliche Puffergrenze vor beziehungsweise innerhalb des Handicap-Werts.
 Acht zusätzliche Laufzeitverträge prüfen Initialwerte, Userinfo-Auswertung,
 fehlende Pflichtgrenzen und die Standardverbindung aus `deaths.respawn`.
 
-Test-Binary: `db50406a6d58cbe9b0c6f2bee0de7888738efc1f9e2d70c369b59b7cb00518f3`.
-Native x86-Oracle: `3f3b09e05c46bb4d05f67cbe5f4ea6dba86a48fa2a5fe0d5e9ad388bbe31d243`.
+Test-Binary: `c10eaef19608dc7431aa92f6148a2b87e278de1b757c47fa83582ee84d36800e`.
+Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
 
 Der C-Oracle enthält den unveränderten Funktionskörper aus `g_client.c`. Nur die
 fünf oben aufgeführten Abhängigkeiten werden am Host-Rand beobachtet. Spawnwahl,
@@ -77,3 +78,5 @@ laufen auf beiden Seiten als echte Implementierungen.
 
 Der übergeordnete Eintritt mit Ereignis, Meldung, Log und Rangberechnung ist
 unter [ClientBegin](CLIENT_BEGIN.md) zusammenhängend geprüft.
+Die neue Intermission-Suite verwendet den tatsächlichen Respawn-/Spawn-Ablauf
+einschließlich der standardmäßigen Platzierung und Zuschauerfreigabe.

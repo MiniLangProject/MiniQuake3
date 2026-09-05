@@ -181,6 +181,25 @@ def main():
     for source,(targets,symbols) in team_change_mappings.items():
         old_targets,old_symbols,tests=mappings[source]
         mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_team_changes.py"])))
+    follow_mappings={
+        "code/game/g_cmds.c":(["src/mq3/game/follow_commands.ml"],["SanitizeString","ClientNumberFromString","Cmd_Follow_f","Cmd_FollowCycle_f"]),
+        "code/game/g_main.c":(["src/mq3/game/tournament.ml"],["AddTournamentPlayer","RemoveTournamentLoser","RemoveTournamentWinner","AdjustTournamentScores"]),
+        "code/game/g_active.c":(["src/mq3/game/follow_commands.ml"],[]),
+        "code/game/g_client.c":([],[]),
+        "code/game/g_local.h":(["src/mq3/game/follow_commands.ml"],[]),
+    }
+    for source,(targets,symbols) in follow_mappings.items():
+        old_targets,old_symbols,tests=mappings[source]
+        mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_follow_tournament.py"])))
+    intermission_mappings={
+        "code/game/g_main.c":(["src/mq3/game/intermission.ml"],["MoveClientToIntermission","BeginIntermission","ExitLevel"]),
+        "code/game/g_client.c":(["src/mq3/game/intermission.ml"],[]),
+        "code/game/g_utils.c":([],[]),
+        "code/game/g_local.h":(["src/mq3/game/intermission.ml"],[]),
+    }
+    for source,(targets,symbols) in intermission_mappings.items():
+        old_targets,old_symbols,tests=mappings[source]
+        mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_intermission.py"])))
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text(encoding="utf-8"))
     for entry in ledger["files"]:
@@ -193,7 +212,10 @@ def main():
                     if symbol["original"] == "G_RunFrame":
                         symbol["scope"] = "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament, exit rules, team status, global/team vote resolution and CheckCvars. Default Cvar refresh uses ported G_UpdateCvars and the engine registry; empty-entity frame probes compare that path, while legacy frame/gameplay suites retain an explicit refresh override. Mover/other physics dispatch and entity-list diagnostics remain callbacks."
                     elif symbol["original"] == "CheckTournament":
-                        symbol["scope"] = "Baseq3 tournament promotion, player/team readiness, warmup Cvar changes, countdown and map restart are compared against the unchanged native body. AddTournamentPlayer and engine command delivery remain explicit observed callbacks."
+                        symbol["scope"] = "Baseq3 tournament promotion, player/team readiness, warmup Cvar changes, countdown and map restart are compared against the unchanged native body. Default promotion now executes ported AddTournamentPlayer with real SetTeam/ClientBegin/Spawn/ranks, compared separately including countdown/restart; legacy isolated tests retain an override. Engine command delivery remains a callback."
+                    elif symbol["original"] in ("AddTournamentPlayer","RemoveTournamentLoser","RemoveTournamentWinner","AdjustTournamentScores"):
+                        symbol["target_files"] = ["src/mq3/game/tournament.ml"]
+                        symbol["scope"] = "Unchanged Baseq3 oldest eligible spectator selection, stable queue-time ties, scoreboard/dedicated-follow exclusion, ranked winner/loser removal and connected-only win/loss updates. Actual SetTeam/death/body/item/userinfo/ClientBegin/Spawn/ranks and CheckTournament callers are compared, including disconnect/rotation/countdown/restart. BeginIntermission/ExitLevel use these helpers directly and are separately compared. Engine delivery/map execution remain open."
                     elif symbol["original"] == "CheckCvars":
                         symbol["target_files"] = ["src/mq3/game/cvar_maintenance.ml"]
                         symbol["scope"] = "Unchanged Baseq3 password-to-g_needpass maintenance, including initial -1 cache, counter changes/wrap, ASCII none matching, byte capacity and game-module cache persistence across level resets. The Cvar suite integrates actual engine registration/update/set and empty-entity frames; other isolated suites observe the delivery callback."
@@ -207,9 +229,17 @@ def main():
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] in ("SetTeam","StopFollowing","Cmd_Team_f"):
                         symbol["target_files"] = ["src/mq3/game/team_changes.ml"]
-                        symbol["scope"] = "Unchanged Baseq3 team/spectator selection, force balance, capacity override, same-team guard, actual body/death/CTF/leader/userinfo/ClientBegin/Spawn/rank integration and exact command argc/cooldown/loss order. StopFollowing preserves unrelated session fields and clears PMF_FOLLOW/SVF_BOT. Every host effect and action compares all modeled clients, entityStates and selected private/spatial entity fields. Movement/end-frame are observed callbacks in this integration suite; defaults remain ported. Full ClientCommand/follow routing and tournament promotion remain open."
+                        symbol["scope"] = "Unchanged Baseq3 team/spectator selection, force balance, capacity override, same-team guard, actual body/death/CTF/leader/userinfo/ClientBegin/Spawn/rank integration and exact command argc/cooldown/loss order. StopFollowing preserves unrelated session fields and clears PMF_FOLLOW/SVF_BOT. Every host effect and action compares all modeled clients, entityStates and selected private/spatial entity fields. Movement/end-frame are observed callbacks in this integration suite; defaults remain ported. Follow commands and tournament promotion are separately ported and compared. Match-transition orchestration is separately ported and compared. Full ClientCommand routing and engine map execution remain open."
+                    elif symbol["original"] in ("SanitizeString","ClientNumberFromString","Cmd_Follow_f","Cmd_FollowCycle_f"):
+                        symbol["target_files"] = ["src/mq3/game/follow_commands.ml"]
+                        symbol["scope"] = "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing remains open."
             if entry["source"] == "code/server/sv_init.c":
                 entry["symbol_mapping"][0]["scope"] = "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
+            if entry["source"] == "code/game/g_utils.c":
+                for symbol in entry["symbol_mapping"]:
+                    if symbol["original"] == "G_PickTarget":
+                        symbol["target_files"] = ["src/mq3/game/entities.ml"]
+                        symbol["scope"] = "Baseq3 case-insensitive target lookup, first 32 eligible entities and native Windows rand selection. Missing/NULL target diagnostics use gamePrintFn when provided; the intermission integration compares the missing-camera-target message and its exact state/order. Legacy isolated hosts without a print sink exclude diagnostics."
             if entry["source"] == "code/qcommon/cvar.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] in ("Cvar_Register","Cvar_Update"):
@@ -241,9 +271,12 @@ def main():
             if entry["source"] == "code/game/g_main.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] in ("SortRanks","CalculateRanks"):
-                        symbol["scope"] = "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
+                        symbol["scope"] = "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions and defaults to ported intermission/level-exit orchestration; old isolated suites keep a transition override. Engine map execution remains open."
                     if symbol["original"] in ("CheckExitRules","LogExit","CheckIntermissionExit"):
-                        symbol["scope"] = "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
+                        symbol["scope"] = "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. Ported BeginIntermission/ExitLevel are defaults, with real queue/readiness/timeout chains compared in the intermission suite; old isolated scores keep a transition override. No log-file timestamp/write, engine map execution or network delivery."
+                    if symbol["original"] in ("MoveClientToIntermission","BeginIntermission","ExitLevel"):
+                        symbol["target_files"] = ["src/mq3/game/intermission.ml"]
+                        symbol["scope"] = "Unchanged Baseq3 intermission placement and level-exit orchestration. Actual StopFollowing, FindIntermissionPoint, tournament scores/loser removal, respawn/ClientSpawn/ClientBegin, scoreboards and session writes are integrated. All modeled client/entity states, camera, changemap, separate client limits, readiness and session Cvars are compared at each host effect/action. BotInterbreedEndMatch and single-player UpdateTournamentInfo/SpawnModelsOnVictoryPads remain required observed interfaces; spawn Think/EndFrame are isolated overrides in this suite. Engine console/Cvar/network delivery, actual map loading/restart and Missionpack are open."
             if entry["source"] == "code/game/g_cmds.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] in ("gameNames","Cmd_CallVote_f","Cmd_Vote_f","Cmd_CallTeamVote_f","Cmd_TeamVote_f"):
@@ -252,7 +285,7 @@ def main():
                     elif symbol["original"] == "BroadcastTeamChange":
                         symbol["target_files"] = ["src/mq3/game/session.ml"]
                         symbol["scope"] = "All unchanged Baseq3 team announcement branches and exact cp payloads/recipient, including spectator suppression and the two autojoin announcements inside ClientConnect. Server command transport remains a boundary."
-                    else:
+                    elif symbol["original"] in ("DeathmatchScoreboardMessage","Cmd_Score_f"):
                         symbol["target_files"] = ["src/mq3/game/scores.ml"]
                         symbol["scope"] = "Exact scoreboard command payload and recipient; transport callback observed. No network transmission or client display."
             if entry["source"] == "code/game/g_combat.c":
@@ -271,7 +304,7 @@ def main():
             if entry["source"] == "code/game/g_client.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] == "ClientSpawn":
-                        symbol["scope"] = "Baseq3 player placement, persistent/session preservation, transient reset, handicap, inventory, spawn filters, target/weapon/link order and snapshots are compared. Userinfo uses shared case-insensitive first-key lookup after the original 1023-byte trap copy, including truncated handicap digits. Ported ClientThink and ClientEndFrame are the defaults; userinfo/usercmd delivery and intermission placement remain explicit host boundaries."
+                        symbol["scope"] = "Baseq3 player placement, persistent/session preservation, transient reset, handicap, inventory, spawn filters, target/weapon/link order and snapshots are compared. Userinfo uses shared case-insensitive first-key lookup after the original 1023-byte trap copy, including truncated handicap digits. Ported ClientThink, ClientEndFrame and MoveClientToIntermission are defaults; separate integration suites exercise them while isolated tests retain overrides. Userinfo/usercmd and engine delivery remain boundaries."
                     elif symbol["original"] == "ClientBegin":
                         symbol["scope"] = "Baseq3 entry lifecycle with actual ported ClientSpawn and CalculateRanks: unlink/reinit, playerState reset, entry event/message/log, tournament and spectator branches. Engine delivery remains at explicit callbacks."
                     elif symbol["original"] == "ClientConnect":
@@ -293,7 +326,7 @@ def main():
                         symbol["target_files"] = ["src/mq3/game/triggers.ml"]
                     elif symbol["original"] in ("ClientImpacts","SpectatorThink","ClientInactivityTimer","ClientTimerActions","ClientIntermissionThink","ClientEvents","ClientThink_real","ClientThink","G_RunClient"):
                         symbol["target_files"] = ["src/mq3/game/client_active.ml"]
-                        symbol["scope"] = "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, follow, weapon and AAS engine calls remain ordered callbacks; Missionpack is excluded."
+                        symbol["scope"] = "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
                     else:
                         symbol["target_files"] = ["src/mq3/game/client_frame.ml"]
                         symbol["scope"] = "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. The isolated suite observes ClientBegin for invalid explicit spectator targets; the normal path binds the separately verified port."

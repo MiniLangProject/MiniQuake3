@@ -1,17 +1,19 @@
 # Tournament und Warmup
 
-Stand: 2026-09-05. `tournament.check` überträgt Baseq3 `CheckTournament`
+Stand: 2026-09-06. `tournament.check` überträgt Baseq3 `CheckTournament`
 einschließlich der verwendeten `TeamCount`-Abfrage. Der Port behandelt den
 Zwei-Spieler-Tournamentmodus, FFA-/Team-Bereitschaft und die zusätzlichen
 Rot-/Blau-Voraussetzungen für CTF. Änderungen an `g_warmup` starten den Countdown
 neu; ein abgelaufener Countdown setzt `g_restarted` und fordert wie das Original
 `map_restart 0` an.
 
-Configstring 5, `Warmup`-Log, Cvar-Schreibzugriff, Konsolenbefehl und
-`AddTournamentPlayer` sind explizite Host-Schnittstellen. Die
-Spielerpromotion bleibt bis zum Port ihrer Queue- und Sitzungslogik eine
-beobachtete Grenze. `G_RunFrame` ruft die portierte Prüfung bereits an der
-ursprünglichen Stelle vor `CheckExitRules` auf.
+Configstring-Zustellung, `Warmup`-Log, Cvar-Schreibzugriff und Konsolenbefehl
+sind explizite Host-Schnittstellen. `AddTournamentPlayer` ist inzwischen portiert
+und standardmäßig eingebunden. [192 zusätzliche Vergleichsszenarien](FOLLOW_TOURNAMENT.md)
+prüfen Follow, Duell-Warteschlange, Rangentfernung und Siege/Niederlagen mit
+tatsächlichem Teamwechsel, Userinfo, Spawn und Rangberechnung. Die isolierte
+Bereitschaftssuite behält ihren Promotion-Override. `G_RunFrame` ruft die Prüfung
+weiterhin an der ursprünglichen Stelle vor `CheckExitRules` auf.
 
 `scripts/test_tournament.py` extrahiert die unveränderten Körper von
 `CheckTournament` und `TeamCount` aus dem fixierten C-Quellstand. Zwölf Szenarien
@@ -19,10 +21,10 @@ vergleichen **115 32-Bit-Wörter in 547 Bytes** exakt. Sie umfassen keine Spiele
 warten auf einen zweiten Tournamentspieler, erfolgreiche Promotion, deaktiviertes
 Warmup, Cvar-Änderung, abgelaufenen Countdown, FFA-Bereitschaft, fehlendes
 CTF-Team, Singleplayer und einen 32-Bit-Zeitüberlauf. Drei Laufzeitverträge prüfen
-Spawn-Zustand, Promotion-Schnittstelle und Clientlimit.
+Spawn-Zustand, leere Warteschlange ohne Override und Clientlimit.
 
-Test-Binary: `8c83ed1e9c85df9cea975cf6b0786b0e907cfa9d3e7666aa3426b1898ea8397f`.
-Native x86-Oracle: `3f3b09e05c46bb4d05f67cbe5f4ea6dba86a48fa2a5fe0d5e9ad388bbe31d243`.
+Test-Binary: `0a112fb71edb407f189ca39e2778ae0b32fe6ab1904a0f23090cba89ee2ebd3a`.
+Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
 
 Ausführen:
 
@@ -31,5 +33,14 @@ python scripts/test_tournament.py
 ```
 
 Die [Vote-Auflösung](VOTES.md) ist inzwischen ebenfalls portiert. Teamstatus und
-allgemeine Cvar-Wartung bleiben eigene Portschritte. Netzwerkzustellung und der tatsächliche Engine-Maprestart
-folgen mit der Server- und Protokollintegration.
+allgemeine Cvar-Wartung sind ebenfalls separat geprüft.
+[`BeginIntermission` und `ExitLevel`](INTERMISSION.md) binden inzwischen
+`AdjustTournamentScores` beziehungsweise `RemoveTournamentLoser` tatsächlich ein.
+`RemoveTournamentWinner` bleibt als gesondert portierter Helfer verfügbar.
+Die neue Intermission-Suite führt Wertung, Userinfo, Verliererwechsel und
+Begin/Spawn zusammenhängend aus; die vorhandene Bereitschaftssuite behält
+ihren Promotion-Override. Bot-Interbreeding und Singleplayer-Nachbereitung
+benötigen weiterhin die Pflicht-Hooks `botInterbreedEndMatchFn`,
+`updateTournamentInfoFn` und `spawnVictoryPadsFn`. Netzwerkzustellung sowie
+die tatsächliche Ausführung von Engine-Kartenwechsel und `map_restart`
+folgen mit der weiteren Serverintegration.

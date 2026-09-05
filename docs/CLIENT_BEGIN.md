@@ -24,8 +24,8 @@ durch den vollständigen Eintrittspfad. Fünf
 Laufzeitverträge prüfen Slotgrenzen, fehlende Pflichtschnittstellen und die
 Standardregistrierung des Callbacks.
 
-Test-Binary: `46b97fb76cfdbbf760c87a43a4788bf5656a62556788890b24973a139ac9c221`.
-Native x86-Oracle: `3f3b09e05c46bb4d05f67cbe5f4ea6dba86a48fa2a5fe0d5e9ad388bbe31d243`.
+Test-Binary: `7c3598e43af5484147ee7a4a0e9094ff5f9f5671d02d794a2c2ce4ded11622b9`.
+Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
 
 Userinfo, Usercmd, ServerCommand und Game-Log werden an geordneten Host-Grenzen
 zugestellt. Spawnwahl, Kollision, Targets, PlayerState-Konvertierung,
@@ -35,7 +35,10 @@ separat geprüft. [`ClientConnect` und Sitzungs-Persistenz](CLIENT_CONNECT.md)
 sind ebenfalls portiert und vergleichen Userinfo, Teamwahl und Rangberechnung
 im Anmeldepfad. [Teamwechsel und `ClientDisconnect`](TEAM_CHANGES.md) sind
 ebenfalls separat geprüft; `SetTeam` verwendet den tatsächlichen Begin-/Spawn-
-Ablauf. Die Engine-Zustellung von Connect zu Begin, Netzwerk und Missionpack
+Ablauf. Die neue [Intermission-Suite](INTERMISSION.md) führt Begin/Spawn auch
+über den tatsächlichen Duell-Verliererwechsel aus. Die bestehenden isolierten
+Tests behalten ihre Frame- und Intermission-Overrides. Die Engine-Zustellung
+von Connect zu Begin, tatsächliche Engine-Kartenwechsel, Netzwerk und Missionpack
 bleiben eigene Portschritte.
 
 Ausführen:

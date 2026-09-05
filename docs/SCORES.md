@@ -5,8 +5,9 @@ Punktevergabe, Client-Rangfolge, Scoreboard-Nachrichten und Matchende-Entscheidu
 Die Funktionen laufen in MiniLang; unveränderte C-Funktionskörper liefern die
 Vergleichsergebnisse. Die Einbindung in [`player_die`](DEATHS.md) ist inzwischen
 ebenfalls exakt verglichen. Item-Pickups und CTF-Capture verwenden diese
-Punkte-/Ranglistenpfade inzwischen in ihrer eigenen C-Differenzsuite. Client-/Server-Frames,
-Netzwerktransport und tatsächliche Kartenwechsel bleiben offen.
+Punkte-/Ranglistenpfade inzwischen in ihrer eigenen C-Differenzsuite. Client- und
+Game-Frames sind separat portiert. Netzwerktransport und tatsächliche
+Kartenwechsel durch die Engine bleiben offen.
 
 ## Schnittstellen und Originalfunktionen
 
@@ -34,13 +35,16 @@ Zeitwerte und Punktesummen behalten das geprüfte native 32-Bit-Verhalten.
 | --- | --- |
 | `level.serverCommandFn(level, recipient, text)` | Vollständiger Serverbefehl; Empfänger −1 bedeutet Broadcast |
 | `level.gameLogFn(level, text)` | Fertig formatiertes Nutzargument eines `G_LogPrintf`-Aufrufs |
-| `level.matchTransitionFn(level, kind)` | `1`: `BeginIntermission`; `2`: `ExitLevel` |
+| `level.matchTransitionFn(level, kind)` | Optionaler Override: `1` für `BeginIntermission`, `2` für `ExitLevel` |
 
-Ein benötigter, nicht angebundener Callback führt zu einem kontrollierten Fehler.
-Der Testhost zeichnet die Argumente auf. Zwei gesonderte Fälle verändern im
-Übergangs-Callback gezielt `intermissiontime`, um die anschließende Abfrage in
-`CalculateRanks` zu prüfen. Diese Test-Callbacks ersetzen keinen vollständigen
-Kartenwechsel. Zeitstempel, Dateiausgabe und Dedicated-Console-Ausgabe von
+Ohne Übergangs-Override ruft `matchBoundary` die portierten
+[`intermission.begin` und `intermission.exitLevel`](INTERMISSION.md) auf.
+Benötigte ServerCommand- und Game-Log-Schnittstellen bleiben Pflicht; fehlen sie,
+entsteht ein kontrollierter Fehler. Der isolierte Testhost zeichnet weiterhin
+die Übergangsargumente auf. Zwei gesonderte Fälle verändern im Override gezielt
+`intermissiontime`, um die anschließende Abfrage in `CalculateRanks` zu prüfen.
+Die zusätzliche Intermission-Suite verwendet die tatsächlichen Game-Übergänge.
+Zeitstempel, Dateiausgabe und Dedicated-Console-Ausgabe von
 `G_LogPrintf` sind ebenfalls noch nicht enthalten; geprüft werden seine
 formatierten Nutztexte an der Aufrufgrenze.
 
@@ -116,7 +120,8 @@ Beim Versenden an alle werden nur vollständig verbundene Clients ausgewählt.
 
 `CheckExitRules` verarbeitet zuerst eine laufende Intermission, dann eine
 bereits angekündigte Intermission. Nach 1.000 ms wird deren Queue-Wert vor dem
-Übergangs-Callback gelöscht. Ohne Intermission verhindert ein Gleichstand mit
+Aufruf von `BeginIntermission` beziehungsweise seinem Test-Override gelöscht.
+Ohne Intermission verhindert ein Gleichstand mit
 mindestens zwei aktiven Spielern jedes Limit-Ende: Sudden Death hat Vorrang.
 Danach folgen Zeitlimit, Mindestspielerzahl, Fraglimit und Capturelimit in der
 ursprünglichen Reihenfolge. Ein Warmup blockiert das Zeitlimit; Frag- und
@@ -159,5 +164,11 @@ als definierte C-Parität ausgegeben.
 Spieler-Tod, Team-Fragboni, Drop-Entscheidungen und der Respawn-Wrapper rufen diese
 Bausteine inzwischen auf. [Vote-Aufrufe, Stimmabgabe und Auflösung](VOTES.md)
 sowie die [G_RunFrame-Steuerung](FULL_FRAME.md) sind separat geprüft.
-`BeginIntermission`, `ExitLevel`, Netzwerkzustellung, Scoreboard-Grafik und die
-vollständige Serverintegration sind weiterhin offen.
+[`BeginIntermission`, `MoveClientToIntermission` und `ExitLevel`](INTERMISSION.md)
+sind inzwischen portiert und standardmäßig angebunden. Die neue
+`scripts/test_intermission.py` verbindet die Matchende-Regeln mit den echten
+Respawn-/Spawn-, Follow-, Duell- und Sitzungsabläufen. Bot-Interbreeding und die
+Singleplayer-Nachbereitung benötigen weiterhin Host-Schnittstellen.
+Netzwerkzustellung, Scoreboard-Grafik, der tatsächliche Engine-Kartenwechsel
+und die vollständige Serverintegration bleiben offen.
+Ein vollständig spielbarer MiniQuake3-Client/Server steht noch aus.

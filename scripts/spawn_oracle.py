@@ -15,14 +15,14 @@ FUNCTIONS={
     'g_target.c':['SP_target_position','Think_Target_Delay','Use_Target_Delay','SP_target_delay','target_relay_use','SP_target_relay','target_teleporter_use','SP_target_teleporter','Use_Target_Speaker','SP_target_speaker','target_location_linkup','SP_target_location','target_kill_use','SP_target_kill','target_laser_think','target_laser_on','target_laser_off','target_laser_use','target_laser_start','SP_target_laser'],
     'g_team.c':['OtherTeam','TeamName','AddTeamScore','Team_SetFlagStatus','Team_ForceGesture','Team_CheckDroppedItem','Team_ResetFlag','Team_ResetFlags','Team_ReturnFlagSound','Team_TakeFlagSound','Team_CaptureFlagSound','Team_ReturnFlag','Team_FreeEntity','Team_DroppedFlagThink','Team_TouchOurFlag','Team_TouchEnemyFlag','Pickup_Team','SelectRandomTeamSpawnPoint','SelectCTFSpawnPoint','SP_team_CTF_redplayer','SP_team_CTF_blueplayer','SP_team_CTF_redspawn','SP_team_CTF_bluespawn','OnSameTeam','Team_FragBonuses','Team_CheckHurtCarrier','Team_GetLocation','SortClients','TeamplayInfoMessage','CheckTeamStatus'],
     'g_mover.c':['SP_path_corner'],
-    'g_main.c':['G_RunThink','FindIntermissionPoint','SortRanks','CalculateRanks','SendScoreboardMessageToAllClients','ScoreIsTied','CheckExitRules','LogExit','CheckIntermissionExit','CheckVote','PrintTeam','SetLeader','CheckTeamLeader','CheckTeamVote','CheckCvars'],
+    'g_main.c':['AddTournamentPlayer','RemoveTournamentLoser','RemoveTournamentWinner','AdjustTournamentScores','MoveClientToIntermission','BeginIntermission','ExitLevel','G_RunThink','FindIntermissionPoint','SortRanks','CalculateRanks','SendScoreboardMessageToAllClients','ScoreIsTied','CheckExitRules','LogExit','CheckIntermissionExit','CheckVote','PrintTeam','SetLeader','CheckTeamLeader','CheckTeamVote','CheckCvars'],
     'g_trigger.c':['InitTrigger','AimAtTarget','SP_trigger_push','SP_trigger_teleport','trigger_push_touch','trigger_teleporter_touch','multi_wait','multi_trigger','Use_Multi','Touch_Multi','SP_trigger_multiple','trigger_always_think','SP_trigger_always','Use_target_push','SP_target_push','func_timer_think','func_timer_use','SP_func_timer','hurt_use','hurt_touch','SP_trigger_hurt'],
     'g_combat.c':['ScorePlum','AddScore','TossClientItems','LookAtKiller','GibEntity','body_die','CheckAlmostCapture','CheckAlmostScored','player_die','CheckArmor','G_Damage','CanDamage','G_RadiusDamage'],
     'g_weapon.c':['LogAccuracyHit','SnapVectorTowards','Weapon_HookFree','Weapon_HookThink'],
     'g_missile.c':['G_BounceMissile','G_ExplodeMissile','G_MissileImpact','G_RunMissile','fire_plasma','fire_grenade','fire_bfg','fire_rocket','fire_grapple'],
     'g_items.c':['Pickup_Powerup','Pickup_Holdable','Add_Ammo','Pickup_Ammo','Pickup_Weapon','Pickup_Health','Pickup_Armor','RespawnItem','Touch_Item','RegisterItem','LaunchItem','Drop_Item','Use_Item','FinishSpawningItem','G_ItemDisabled','G_SpawnItem','G_BounceItem','G_RunItem'],
     'g_active.c':['P_DamageFeedback','P_WorldEffects','G_SetClientSound','ClientImpacts','G_TouchTriggers','SpectatorThink','ClientInactivityTimer','ClientTimerActions','ClientIntermissionThink','ClientEvents','SendPendingPredictableEvents','ClientThink_real','ClientThink','G_RunClient','SpectatorClientEndFrame','ClientEndFrame'],
-    'g_cmds.c':['SetTeam','StopFollowing','Cmd_Team_f','BroadcastTeamChange','DeathmatchScoreboardMessage','Cmd_Score_f','Cmd_CallVote_f','Cmd_Vote_f','Cmd_CallTeamVote_f','Cmd_TeamVote_f'],
+    'g_cmds.c':['SanitizeString','ClientNumberFromString','Cmd_Follow_f','Cmd_FollowCycle_f','SetTeam','StopFollowing','Cmd_Team_f','BroadcastTeamChange','DeathmatchScoreboardMessage','Cmd_Score_f','Cmd_CallVote_f','Cmd_Vote_f','Cmd_CallTeamVote_f','Cmd_TeamVote_f'],
 }
 def build(output):
     output.mkdir(parents=True,exist_ok=True);source=ROOT/'Quake-III-Arena-original-source/code'
@@ -74,7 +74,15 @@ def build(output):
         elif name=='g_cmds.c':
             match=re.search(r'static const char \*gameNames\[\] = \{.*?\};',path.read_text(),re.S)
             if not match:raise RuntimeError('Missing original vote gameNames')
-            body.append(match[0]+'\n'+extract(path,names))
+            body.append(match[0]+'\n#define Cmd_FollowCycle_f Original_Cmd_FollowCycle_f\n'+extract(path,names)+'\n#undef Cmd_FollowCycle_f')
+        elif name=='g_main.c':
+            # Rename only each definition. Its callers keep the mode-aware
+            # wrappers, preserving the older isolated score/spawn suites.
+            for symbol in names:
+                function=extract(path,[symbol])
+                if symbol in ('AddTournamentPlayer','MoveClientToIntermission','BeginIntermission','ExitLevel'):
+                    body.append(f'#define {symbol} Original_{symbol}\n'+function+f'\n#undef {symbol}')
+                else:body.append(function)
         elif name=='g_missile.c':body.append('#define G_RunMissile Original_RunMissile\n'+extract(path,names)+'\n#undef G_RunMissile')
         else:body.append(extract(path,names))
     (output/'spawn_functions.inc').write_text('\n'.join(body))

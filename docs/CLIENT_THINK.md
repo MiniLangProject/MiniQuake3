@@ -27,13 +27,20 @@ Ausgabe-Bytes sowie 77 geordnete Engine-/Link-Nebenwirkungen. Drei zusätzliche
 Laufzeitverträge prüfen fehlende Usercmd-/Waffenfeuer-Schnittstellen und die
 Kontakt-Deduplizierung.
 
-Test-Binary: `9f8d66366b672409ea635a2bf7d42d8815764c8a122d2e27e615a764359d9b3c`.
-Native x86-Oracle: `3f3b09e05c46bb4d05f67cbe5f4ea6dba86a48fa2a5fe0d5e9ad388bbe31d243`.
+Test-Binary: `d1e157d2a984fad6200d6329bde5a4e981df879cc9be5c126369c1b767e2b1ed`.
+Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
 
-Engine-seitige Usercmd-Zustellung, Cvar-Schreiben, Client-Drop, Zuschauer-Follow,
+Engine-seitige Usercmd-Zustellung, Cvar-Schreiben, Client-Drop,
 Gauntlet-/Waffenaufrufe und AAS-Prüfung enden an geordnet getesteten Callbacks.
-Die Waffenfunktionen selbst, Bot-AI, Netzwerk-Snapshots, `G_RunFrame` und
-Missionpack bleiben eigene Portschritte. Der vollständige Eintrittspfad ist
+Die isolierte Suite beobachtet weiterhin einen Follow-Override. Standardmäßig
+führt die Zuschauer-Angriffstaste jetzt die [portierte Follow-Auswahl](FOLLOW_TOURNAMENT.md)
+aus; zusätzliche Vergleiche prüfen ihre Pmove- und Tastenfolgen.
+[`BeginIntermission` und `MoveClientToIntermission`](INTERMISSION.md) setzen
+inzwischen den Zustand, den `ClientIntermissionThink` verarbeitet.
+Die neue Intermission-Suite verwendet dafür den echten Game-Übergang und
+die tatsächliche ClientSpawn-Platzierung; isolierte Tests behalten ihre Overrides.
+Weitere Waffenfunktionen, Bot-AI, Netzwerk-Snapshots und Missionpack bleiben
+eigene Portschritte. [`G_RunFrame`](FULL_FRAME.md) ist separat portiert. Der vollständige Eintrittspfad ist
 inzwischen unter [ClientBegin](CLIENT_BEGIN.md) geprüft.
 
 Ausführen:

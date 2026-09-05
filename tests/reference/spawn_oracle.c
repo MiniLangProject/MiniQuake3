@@ -25,7 +25,15 @@ static int voteOutput;
 static int voteCommandsOutput;
 static int clientInfoOutput;
 static int clientConnectOutput;
-static int teamChangeOutput,teamChangeReady;
+static int teamChangeOutput,teamChangeReady,followOutput,intermissionOutput;
+static char intermissionSessions[65][1024];
+static void teamChangeState(void);
+void Original_Cmd_FollowCycle_f(gentity_t *ent,int dir);
+void Original_AddTournamentPlayer(void);
+void Original_BeginIntermission(void);
+void Original_ExitLevel(void);
+void Original_MoveClientToIntermission(gentity_t *ent);
+void Original_ClientSpawn(gentity_t *ent);
 static void teamChangeEvent(int kind,int arg,const char *text);
 void Original_ClientBegin(int client);
 static void connectState(void);
@@ -53,8 +61,8 @@ static void reset(int type,int flags);
 static void scoreTransition(int);
 static void frameWord(int kind,int arg);
 void CheckExitRules(void);void CheckIntermissionExit(void);void LogExit(const char *);
-void BeginIntermission(void){scoreTransition(1);}
-void ExitLevel(void){scoreTransition(2);}
+void BeginIntermission(void){if(intermissionOutput){Original_BeginIntermission();return;}scoreTransition(1);}
+void ExitLevel(void){if(intermissionOutput){Original_ExitLevel();return;}scoreTransition(2);}
 int hostContents(const vec3_t,int);
 int trap_PointContents(const vec3_t point,int pass){return hostContents(point,pass);}
 static char configs[MAX_CONFIGSTRINGS][8192],gravityText[1024];static const char *entityPoint;static FILE *output;
@@ -80,7 +88,13 @@ void trap_SetBrushModel(gentity_t *e,const char *name) {hostBrush(e,name);}
 void trap_LocateGameData(gentity_t *e,int count,int size,playerState_t *ps,int clientSize) {if(teamChangeOutput){teamChangeEvent(14,count," ");return;}if(clientFrameOutput){word(80);word(0);word(count);}else if(clientThinkOutput){word(90);word(0);word(count);}else{word(7);word(count);}}
 void trap_GetConfigstring(int index,char *buffer,int size) {Q_strncpyz(buffer,configs[index],size);}
 void trap_SetConfigstring(int index,const char *value) {if(index<0 || index>=MAX_CONFIGSTRINGS)G_Error("configstring index out of range");Q_strncpyz(configs[index],value?value:"",sizeof(configs[index]));if(teamChangeOutput){teamChangeEvent(3,index,value);return;}if(clientConnectOutput){connectEvent(8,index,"",value);return;}if(clientInfoOutput){clientInfoEvent(4,index,value);return;}if(voteCommandsOutput)voteCommandState();word(1);word(index);string("");string(value);}
-void trap_Cvar_Set(const char *key,const char *value) {if(clientConnectOutput){connectCvarSet(key,value);return;}if(teamStatusOutput){word(172);word(level.lastTeamLocationTime);word(g_password.modificationCount);string(key);string(value);}else if(tournamentOutput){word(130);word(3);string(key);string(value);}else if(frameRunOutput){word(110);word(7);string(key);string(value);}else if(clientThinkOutput){word(90);word(10);string(key);string(value);}else{word(2);word(0);string(key);string(value);}if(!strcmp(key,"g_gravity"))Q_strncpyz(gravityText,value,sizeof(gravityText));}
+void trap_Cvar_Set(const char *key,const char *value) {
+    if(intermissionOutput && !strncmp(key,"session",7)){
+        int index=key[7]?atoi(key+7)+1:0;
+        if(index<0 || index>64)G_Error("invalid intermission session Cvar");
+        Q_strncpyz(intermissionSessions[index],value,sizeof(intermissionSessions[index]));
+    }
+    if(followOutput){char text[32768];Com_sprintf(text,sizeof(text),"%s=%s",key,value);teamChangeEvent(16,0,text);return;}if(clientConnectOutput){connectCvarSet(key,value);return;}if(teamStatusOutput){word(172);word(level.lastTeamLocationTime);word(g_password.modificationCount);string(key);string(value);}else if(tournamentOutput){word(130);word(3);string(key);string(value);}else if(frameRunOutput){word(110);word(7);string(key);string(value);}else if(clientThinkOutput){word(90);word(10);string(key);string(value);}else{word(2);word(0);string(key);string(value);}if(!strcmp(key,"g_gravity"))Q_strncpyz(gravityText,value,sizeof(gravityText));}
 qboolean trap_GetEntityToken(char *buffer,int size) {const char *s=COM_Parse(&entityPoint);Q_strncpyz(buffer,s,size);return entityPoint || *s;}
 int trap_EntitiesInBox(const vec3_t mins,const vec3_t maxs,int *list,int count) {return hostArea(mins,maxs,list,count);}
 qboolean trap_EntityContact(const vec3_t mins,const vec3_t maxs,const gentity_t *e) {return hostContact(mins,maxs,(void*)e,0);}
@@ -108,7 +122,7 @@ void QDECL G_LogPrintf(const char *fmt,...) {
 void trap_SendServerCommand(int client,const char *message){if(teamChangeOutput){teamChangeEvent(10,client,message);return;}if(clientConnectOutput){connectEvent(7,client,"",message);return;}if(clientInfoOutput){clientInfoEvent(2,client,message);return;}if(teamStatusOutput){int i;word(171);word(client);word(level.lastTeamLocationTime);for(i=0;i<MAX_CLIENTS;i++)word(g_clients[i].pers.teamState.location);string(message);return;}if(voteOutput || frameRunOutput){voteBoundary(1,client);string(message);return;}if(clientSpawnOutput){word(60);word(9);word(client);string(message);return;}if(clientThinkOutput){word(90);word(4);word(client);string(message);return;}if(!scoreOutput)G_Error("unported server command sink");word(42);word(client);string(message);}
 void trap_DropClient(int client,const char *reason){if(!clientThinkOutput)G_Error("unported client drop sink");word(90);word(5);word(client);string(reason);}
 qboolean trap_InPVS(const vec3_t p1,const vec3_t p2){return SV_inPVS(p1,p2);}
-void QDECL G_Error(const char *fmt,...) {va_list args;va_start(args,fmt);vfprintf(stderr,fmt,args);va_end(args);exit(72);}
+void QDECL G_Error(const char *fmt,...) {if(followOutput && teamChangeReady){teamChangeState();word(222);}va_list args;va_start(args,fmt);vfprintf(stderr,fmt,args);va_end(args);exit(72);}
 void Touch_DoorTrigger(gentity_t *a,gentity_t *b,trace_t *c) {G_Error("unexpected door boundary");}
 void *G_Alloc(int n) {void *p=calloc(1,n);if(!p)exit(73);return p;}
 int trap_Cvar_VariableIntegerValue(const char *name){return 0;}
@@ -116,12 +130,12 @@ void trap_GetUserinfo(int client,char *buffer,int size){if(teamChangeOutput){tea
 void trap_GetUsercmd(int client,usercmd_t *cmd){if(teamChangeOutput){teamChangeEvent(5,client," ");memset(cmd,0,sizeof(*cmd));return;}if(clientThinkOutput){word(90);word(3);word(client);*cmd=clientSpawnCmd;return;}if(!clientSpawnOutput)G_Error("unexpected usercmd read");word(60);word(2);word(client);*cmd=clientSpawnCmd;}
 qboolean CheckGauntletAttack(gentity_t *ent){if(!clientThinkOutput)G_Error("unexpected gauntlet attack");word(90);word(6);word((int)(ent-g_entities));return clientThinkGauntletHit;}
 void FireWeapon(gentity_t *ent){if(!clientThinkOutput)G_Error("unexpected weapon fire");word(90);word(7);word((int)(ent-g_entities));}
-void Cmd_FollowCycle_f(gentity_t *ent,int dir){if(!clientThinkOutput)G_Error("unexpected follow cycle");word(90);word(8);word((int)(ent-g_entities));word(dir);}
+void Cmd_FollowCycle_f(gentity_t *ent,int dir){if(followOutput){Original_Cmd_FollowCycle_f(ent,dir);return;}if(!clientThinkOutput)G_Error("unexpected follow cycle");word(90);word(8);word((int)(ent-g_entities));word(dir);}
 void BotTestAAS(vec3_t origin){if(clientThinkOutput){word(90);word(9);words(origin,3);}}
 void ClientThink(int client){if(teamChangeOutput){teamChangeEvent(6,client," ");return;}if(!clientSpawnOutput)G_Error("unexpected ClientThink");word(60);word(6);word(client);g_clients[client].ps.origin[0]+=1.25f;g_clients[client].ps.commandTime+=7;}
 void ClientEndFrame(gentity_t *ent){if(teamChangeOutput){teamChangeEvent(7,(int)(ent-g_entities)," ");return;}if(frameRunOutput){word(110);word(14);word((int)(ent-g_entities));return;}if(!clientSpawnOutput)G_Error("unexpected ClientEndFrame");word(60);word(7);word((int)(ent-g_entities));ent->client->ps.loopSound=321;}
 void ClientBegin(int client){if(teamChangeOutput){Original_ClientBegin(client);return;}if(!clientFrameOutput)G_Error("unexpected ClientBegin");word(80);word(2);word(client);g_clients[client].ps.generic1=0x12345678;}
-void MoveClientToIntermission(gentity_t *ent){if(teamChangeOutput){teamChangeEvent(8,(int)(ent-g_entities)," ");ent->client->ps.pm_type=PM_INTERMISSION;VectorCopy(level.intermission_origin,ent->client->ps.origin);return;}if(!clientSpawnOutput)G_Error("unexpected MoveClientToIntermission");word(60);word(5);word((int)(ent-g_entities));ent->client->ps.pm_type=PM_INTERMISSION;VectorCopy(level.intermission_origin,ent->client->ps.origin);}
+void MoveClientToIntermission(gentity_t *ent){if(intermissionOutput){Original_MoveClientToIntermission(ent);return;}if(teamChangeOutput){teamChangeEvent(8,(int)(ent-g_entities)," ");ent->client->ps.pm_type=PM_INTERMISSION;VectorCopy(level.intermission_origin,ent->client->ps.origin);return;}if(!clientSpawnOutput)G_Error("unexpected MoveClientToIntermission");word(60);word(5);word((int)(ent-g_entities));ent->client->ps.pm_type=PM_INTERMISSION;VectorCopy(level.intermission_origin,ent->client->ps.origin);}
 void QDECL PrintMsg(gentity_t *ent,const char *fmt,...) {
     char buffer[1024];va_list args;if(!deathOutput && !itemOutput && !teamChangeOutput)G_Error("unported PrintMsg");
     va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);
@@ -129,19 +143,22 @@ void QDECL PrintMsg(gentity_t *ent,const char *fmt,...) {
     word(49);word(ent?(int)(ent-g_entities):-1);string(buffer);
 }
 void ClientSpawn(gentity_t *ent) {
-    int slot=(int)(ent-g_entities);if(!deathOutput)G_Error("unported ClientSpawn");word(50);word(slot);
+    int slot=(int)(ent-g_entities);if(intermissionOutput){Original_ClientSpawn(ent);return;}if(!deathOutput)G_Error("unported ClientSpawn");word(50);word(slot);
     VectorSet(ent->client->ps.origin,111,222,333);ent->s.clientNum=slot+10;
 }
-void trap_SendConsoleCommand(int exec_when,const char *text){if(clientInfoOutput){clientInfoEvent(5,exec_when,text);return;}if(voteOutput || frameRunOutput){voteBoundary(2,exec_when);string(text);return;}if(!tournamentOutput)G_Error("unexpected console command");word(130);word(4);word(exec_when);string(text);}
+void trap_SendConsoleCommand(int exec_when,const char *text){if(followOutput){teamChangeEvent(17,exec_when,text);return;}if(clientInfoOutput){clientInfoEvent(5,exec_when,text);return;}if(voteOutput || frameRunOutput){voteBoundary(2,exec_when);string(text);return;}if(!tournamentOutput)G_Error("unexpected console command");word(130);word(4);word(exec_when);string(text);}
 void ClientUserinfoChanged(int client){if(clientInfoOutput || clientConnectOutput || teamChangeOutput){Original_ClientUserinfoChanged(client);return;}if(!voteOutput && !frameRunOutput)G_Error("unexpected ClientUserinfoChanged");voteBoundary(3,client);word(g_clients[client].sess.teamLeader);}
 qboolean G_FilterPacket(char *from){if(!clientConnectOutput)G_Error("unexpected IP filter");connectEvent(4,-1,"",from);return connectFilterResult;}
 qboolean G_BotConnect(int client,qboolean restart){if(!clientConnectOutput)G_Error("unexpected bot setup");connectEvent(5,client,"",restart?"1":"0");return connectBotResult;}
-void AddTournamentPlayer(void){if(!tournamentOutput)G_Error("unexpected tournament promotion");word(130);word(1);word(level.numPlayingClients);if(tournamentPromote)level.numPlayingClients=2;}
+void AddTournamentPlayer(void){if(followOutput){Original_AddTournamentPlayer();return;}if(!tournamentOutput)G_Error("unexpected tournament promotion");word(130);word(1);word(level.numPlayingClients);if(tournamentPromote)level.numPlayingClients=2;}
 static void frameWord(int kind,int arg){if(!frameRunOutput)G_Error("unexpected frame boundary");word(110);word(kind);word(arg);}
 int trap_Milliseconds(void){return 0;}
 void G_UpdateCvars(void){frameWord(0,0);}
 void G_RemoveQueuedBotBegin(int client){if(!teamChangeOutput)G_Error("unexpected bot queue removal");teamChangeEvent(12,client," ");}
 int BotAIShutdownClient(int client,qboolean restart){if(!teamChangeOutput || restart)G_Error("unexpected bot shutdown");teamChangeEvent(13,client,"0");return qtrue;}
+void BotInterbreedEndMatch(void){if(!intermissionOutput)G_Error("unexpected bot interbreeding");teamChangeEvent(18,0," ");}
+void UpdateTournamentInfo(void){if(!intermissionOutput)G_Error("unexpected single-player tournament update");teamChangeEvent(19,0," ");}
+void SpawnModelsOnVictoryPads(void){if(!intermissionOutput)G_Error("unexpected single-player victory pads");teamChangeEvent(20,0," ");}
 #include "spawn_boundaries.inc"
 #include "spawn_functions.inc"
 #include "tournament.inc"
@@ -177,7 +194,9 @@ int main(int argc,char **argv) {
     int checksum,i,step;FILE *in;char *text;
     if(argc<5)return 2;CM_LoadMap(argv[1],qfalse,&checksum);Cvar_Get("cm_noCurves","0",0)->integer=atoi(argv[4]);
     in=fopen(argv[2],"rb");output=fopen(argv[3],"wb");if(!in || !output)return 3;
-    if(argc==6 && !strcmp(argv[5],"--team-changes")){reset(0,0);teamChangeOutput=1;runTeamChanges(in);
+    if(argc==6 && !strcmp(argv[5],"--intermission")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=1;runTeamChanges(in);
+    } else if(argc==6 && !strcmp(argv[5],"--follow-tournament")){reset(0,0);teamChangeOutput=followOutput=1;runTeamChanges(in);
+    } else if(argc==6 && !strcmp(argv[5],"--team-changes")){reset(0,0);teamChangeOutput=1;runTeamChanges(in);
     } else if(argc==6 && !strcmp(argv[5],"--think")) {
         int q[3];gentity_t *e=&g_entities[64];reset(0,0);
         while(fread(q,4,3,in)==3) {e->nextthink=q[0];level.time=q[1];e->count=0;e->think=q[2]?countThink:NULL;G_RunThink(e);word(e->nextthink);word(e->count);}

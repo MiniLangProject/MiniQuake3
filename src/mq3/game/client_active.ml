@@ -15,6 +15,7 @@ import mq3.game.items as items
 import mq3.game.player_spawns as spawns
 import mq3.game.teleport as teleport
 import mq3.game.missiles as missiles
+import mq3.game.follow_commands as followCommands
 import mq3.collision.brush as brush
 import mq3.server.world as sv
 import mq3.compat.numeric as n
@@ -162,8 +163,8 @@ function spectatorThink(level,ent,cmd)
   end if
   client.oldbuttons = client.buttons; client.buttons = cmd.buttons
   if (client.buttons & BUTTON_ATTACK) != 0 and (client.oldbuttons & BUTTON_ATTACK) == 0 then
-    if level.followCycleFn == void then return error(499,"Spectator attack requires follow-cycle delivery") end if
-    level.followCycleFn(level,ent,1)
+    if level.followCycleFn != void then level.followCycleFn(level,ent,1)
+    else followCommands.cycle(level,ent,1) end if
   end if
   return void
 end function

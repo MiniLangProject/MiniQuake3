@@ -74,7 +74,7 @@ def main():
     result=dict(passed=True,scenarios=records,scenario_count=len(records),exact_words=sum(r['exact_words'] for r in records),
         output_bytes=sum(r['bytes'] for r in records),ordered_boundary_events=sum(len(r['events']) for r in records),runtime_contracts=8,
         test_sha256=sha(ROOT/'build/client_spawn_tests.exe'),oracle_sha256=sha(output/'spawn_oracle.exe'),map_sha256=sha(mapfile),
-        scope='Verbatim Baseq3 ClientSpawn selection and orchestration: persistent/session preservation, transient reset, handicap, spawn filters, CTF/spectator/intermission placement, initial inventory, KillBox/link order, target activation, weapon selection and playerState-to-entityState snapshots. ClientThink, ClientEndFrame, userinfo/usercmd delivery and intermission movement are deterministic observed host boundaries.',
+        scope='Verbatim Baseq3 ClientSpawn selection and orchestration: persistent/session preservation, transient reset, handicap, spawn filters, CTF/spectator/intermission placement, initial inventory, KillBox/link order, target activation, weapon selection and playerState-to-entityState snapshots. This isolated suite observes ClientThink, ClientEndFrame and intermission placement overrides; the normal defaults are separately ported and tested, including real placement in test_intermission.py. Userinfo/usercmd delivery remains an engine boundary.',
         original_sources={s.relative_to(ROOT).as_posix():sha(s) for s in sources})
     (output/'result.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 

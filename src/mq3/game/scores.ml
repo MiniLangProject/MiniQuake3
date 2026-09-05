@@ -1,12 +1,13 @@
 // Copyright (C) 1999-2005 Id Software, Inc.
 // SPDX-License-Identifier: GPL-2.0-or-later
-// Baseq3 score/rank/scoreboard and match-exit decisions. Beginning intermission
-// and switching levels remain explicit integration boundaries.
+// Baseq3 score/rank/scoreboard and match-exit decisions, with real intermission
+// orchestration unless a caller installs a transition override.
 package mq3.game.scores
 import mq3.game.entities as game
 import mq3.game.constants as c
 import mq3.game.spawn_values as values
 import mq3.game.rank_sort as rankSort
+import mq3.game.intermission as matchIntermission
 import mq3.compat.numeric as n
 function clientLimit(limit)
   if limit < 0 or limit > 64 then return error(495,"Invalid score client limit") end if
@@ -37,9 +38,10 @@ function logLine(level,message)
   return void
 end function
 function matchBoundary(level,kind)
-  if level.matchTransitionFn == void then return error(495,"Intermission or level transition is not connected") end if
-  level.matchTransitionFn(level,kind)
-  return void
+  if level.matchTransitionFn != void then level.matchTransitionFn(level,kind); return void end if
+  if kind == 1 then return matchIntermission.begin(level) end if
+  if kind == 2 then return matchIntermission.exitLevel(level) end if
+  return error(495,"Invalid match transition kind")
 end function
 function compareRanks(level,a,b)
   ca = clientAt(level,a); cb = clientAt(level,b)

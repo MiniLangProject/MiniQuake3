@@ -75,7 +75,7 @@ def main():
     result=dict(passed=True,scenarios=records,scenario_count=len(records),exact_words=sum(r['exact_words'] for r in records),
         output_bytes=sum(r['bytes'] for r in records),ordered_boundary_events=sum(len(r['events']) for r in records),runtime_contracts=5,
         test_sha256=sha(ROOT/'build/client_begin_tests.exe'),oracle_sha256=sha(output/'spawn_oracle.exe'),map_sha256=sha(mapfile),
-        scope='Verbatim Baseq3 ClientBegin with actual ported ClientSpawn and CalculateRanks: unlink/reinit, persistent client rebinding, playerState reset with eFlags preservation, spawn, entry event and announcement, game log, rankings and tournament/spectator suppression. Engine userinfo, usercmd, command and log delivery remain deterministic observed host boundaries.',
+        scope='Verbatim Baseq3 ClientBegin with actual ported ClientSpawn and CalculateRanks: unlink/reinit, persistent client rebinding, playerState reset with eFlags preservation, spawn, entry event and announcement, game log, rankings and tournament/spectator suppression. This isolated suite retains spawn Think/EndFrame/intermission-placement overrides; test_intermission.py compares real placement through ClientBegin. Engine userinfo, usercmd, command and log delivery remain deterministic observed host boundaries.',
         original_sources={s.relative_to(ROOT).as_posix():sha(s) for s in sources})
     (output/'result.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
 

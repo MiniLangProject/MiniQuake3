@@ -32,17 +32,17 @@ end function
 function effect(state,kind,index,key,value)
   words(state.level.context,[1,index]); string(state.level.context,key); string(state.level.context,value); return void
 end function
-function addPlayer(level)
+function tournamentTestAddPlayer(level)
   words(level.context,[130,1,level.numPlayingClients]); if level.context.promote then level.numPlayingClients = 2 end if
   return void
 end function
-function log(level,message)
+function tournamentTestLog(level,message)
   words(level.context,[130,2]); string(level.context,message); return void
 end function
-function cvar(level,key,value)
+function tournamentTestCvar(level,key,value)
   words(level.context,[130,3]); string(level.context,key); string(level.context,value); return void
 end function
-function console(level,when,text)
+function tournamentTestConsole(level,when,text)
   words(level.context,[130,4,when]); string(level.context,text); return void
 end function
 function configure(level,input,check)
@@ -58,7 +58,7 @@ function configure(level,input,check)
   while index < limit
     level.clients[index].connected = 2; level.clients[index].team = 2; index = index+1
   end while
-  level.tournamentAddFn = addPlayer; level.gameLogFn = log; level.cvarSetFn = cvar; level.consoleCommandFn = console
+  level.tournamentAddFn = tournamentTestAddPlayer; level.gameLogFn = tournamentTestLog; level.cvarSetFn = tournamentTestCvar; level.consoleCommandFn = tournamentTestConsole
   level.spawner = state
   return state
 end function
@@ -69,7 +69,7 @@ end function
 function contracts(world)
   level = game.create(world); require(try(tournament.check(level)) is error,"spawn state")
   spawn.create(level,""); level.numPlayingClients = 1; level.spawner.gametype = 1
-  require(try(tournament.check(level)) is error,"promotion boundary")
+  require(tournament.addPlayer(level) == void,"empty queue needs no promotion callback")
   level.maxclients = 65; require(try(tournament.teamCount(level,-1,1)) is error,"client limit")
   print "PASS: 3 CheckTournament runtime contracts"; return 0
 end function
