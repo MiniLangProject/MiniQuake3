@@ -1,7 +1,7 @@
 // Copyright (C) 1999-2005 Id Software, Inc.
 // SPDX-License-Identifier: GPL-2.0-or-later
-// Baseq3 G_RunFrame orchestration. Team-status/Cvar maintenance that lives
-// outside the ported gameplay core remains an explicit ordered boundary.
+// Baseq3 G_RunFrame orchestration. Engine Cvar refresh and entity listing
+// remain explicit ordered boundaries.
 package mq3.game.frame
 import mq3.game.entities as game
 import mq3.game.spawn_functions as funcs
@@ -14,6 +14,8 @@ import mq3.game.client_frame as clientFrame
 import mq3.game.scores as scores
 import mq3.game.tournament as tournament
 import mq3.game.votes as votes
+import mq3.game.team_status as teamStatus
+import mq3.game.cvar_maintenance as cvarMaintenance
 import mq3.compat.numeric as n
 function runEntities(level)
   i = 0
@@ -75,7 +77,7 @@ function run(level,levelTime)
 
   tournament.check(level)
   scores.checkExitRules(level)
-  stage(level,2,0); votes.check(level); votes.checkTeam(level,c.TEAM_RED); votes.checkTeam(level,c.TEAM_BLUE); stage(level,5,0)
+  teamStatus.check(level); votes.check(level); votes.checkTeam(level,c.TEAM_RED); votes.checkTeam(level,c.TEAM_BLUE); cvarMaintenance.check(level)
   if level.listEntity != 0 then
     index = 0
     while index < 1024

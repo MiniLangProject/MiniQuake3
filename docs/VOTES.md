@@ -30,8 +30,8 @@ Bewahrt werden die beobachtbaren Besonderheiten des Originals:
 - Zeitdifferenzen und die Ausführungszeit verwenden das geprüfte native
   32-Bit-Profil einschließlich Überlauf und der Bedeutung von Zeitwert null.
 
-`scripts/test_votes.py` prüft **211 Szenarien**, **241 Aktionen**, **85.671 exakt
-gleiche 32-Bit-Wörter** und **462 geordnete Nebenwirkungen** in **363.195 Bytes**.
+`scripts/test_votes.py` prüft **211 Szenarien**, **241 Aktionen**, **85.655 exakt
+gleiche 32-Bit-Wörter** und **456 geordnete Nebenwirkungen** in **363.153 Bytes**.
 Der Referenzhost extrahiert die fünf Funktionskörper unverändert. Er zeichnet
 Konsolen-/Serverbefehle, Configstrings und `ClientUserinfoChanged` auf. Vor
 Server-/Konsolenbefehlen und Userinfo-Aufrufen werden auch die aktuellen
@@ -47,8 +47,13 @@ eingebettete NUL enthaltende Befehle sowie ein `leader`-Text ohne Byte 7 werden
 kontrolliert abgewiesen. Unsichtbare Restbytes hinter einem C-String werden
 nicht als MiniLang-Stringzustand modelliert.
 
-Test-Binary: `97a957446eca2be51a917341b185ff4179bf8bd03cbea44efd44bde069fd134b`.
-Native x86-Oracle: `cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416`.
+Die Frame-Fälle führen inzwischen auch den portierten Teamstatus und
+`CheckCvars` aus. Ihre früheren Testmarker entfallen; die tatsächliche
+`g_needpass`-Ausgabe wird verglichen. Dadurch ändern sich Wort-/Effektzahlen
+bei unverändertem Vote-Szenarienumfang.
+
+Test-Binary: `9a21807b5ef0d5ea7204f3d41b9e5d5a8aee793b3f2842723bcbc256fb495b9b`.
+Native x86-Oracle: `81051414985a5ee1c7acb8e74363e3d3f5e3c19cdd922e95cc9b649fd2fd5a32`.
 
 ```powershell
 python scripts/test_votes.py

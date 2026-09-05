@@ -6,7 +6,8 @@ Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter, BSP-/Kurvenkollision,
 transformierten Modellen, temporären Boxen, PVS-/Areaportal-Verwaltung,
 dynamischer Entity-Kollision, Bewegungsbahnen, Sprungpad-Reaktionen und
 dem vollständigen baseq3-Pmove-Befehlszyklus, serverseitigen Item-Pickups,
-CTF-Flaggenabläufen, Tournament-/Warmup-Steuerung, Vote-Auflösung, `ClientBegin`, `ClientSpawn`,
+CTF-Flaggenabläufen, Tournament-/Warmup-Steuerung, Vote-Auflösung, Teamoverlay,
+Passwortstatus, `ClientBegin`, `ClientSpawn`,
 `ClientThink` und `ClientEndFrame` ist
 vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
@@ -122,8 +123,9 @@ durchgängigen Eintritts-, Spawn-, Think-, Frame- und Ranglistenablauf.
 [`Tournament und Warmup`](docs/TOURNAMENT.md) steuert Spielerbereitschaft,
 Countdown und Maprestart. [`G_RunFrame`](docs/FULL_FRAME.md) führt Entity- und
 Clientframes, Tournament, Matchende und [globale/Team-Abstimmungen](docs/VOTES.md)
-in Originalreihenfolge aus. Auch Teamleiterwechsel sind portiert; Teamstatus und
-Cvar-Wartung bleiben explizite Schnittstellen.
+in Originalreihenfolge aus. Auch Teamleiterwechsel sowie
+[Teamstandorte, Overlay-Nachrichten und Passwortstatus](docs/TEAM_STATUS.md)
+sind portiert. Cvar-Refresh aus der Engine und Netzwerkzustellung bleiben offen.
 
 Auch die Sichtbarkeitsdaten eines Kartenpunkts und Traces gegen versetzte/gedrehte
 Modelle sind direkt abfragbar:

@@ -123,6 +123,15 @@ def main():
     for source,(targets,symbols) in vote_mappings.items():
         old_targets,old_symbols,tests=mappings[source]
         mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_votes.py"])))
+    team_status_mappings={
+        "code/game/g_team.c":(["src/mq3/game/team_status.ml"],["Team_GetLocation","SortClients","TeamplayInfoMessage","CheckTeamStatus"]),
+        "code/game/g_main.c":(["src/mq3/game/cvar_maintenance.ml"],["CheckCvars"]),
+        "code/game/g_local.h":(["src/mq3/game/team_status.ml","src/mq3/game/cvar_maintenance.ml"],[]),
+        "code/server/sv_game.c":([],[]),
+    }
+    for source,(targets,symbols) in team_status_mappings.items():
+        old_targets,old_symbols,tests=mappings[source]
+        mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_team_status.py"])))
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text(encoding="utf-8"))
     for entry in ledger["files"]:
@@ -133,9 +142,12 @@ def main():
             if entry["source"] == "code/game/g_main.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] == "G_RunFrame":
-                        symbol["scope"] = "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament, exit rules and global/team vote resolution. Active vote frame sequences are compared in the vote suite. Mover/other physics dispatch and team-status/Cvar maintenance remain ordered callbacks."
+                        symbol["scope"] = "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament, exit rules, team status, global/team vote resolution and CheckCvars. Active vote, team-overlay and password frame sequences have separate comparisons. Mover/other physics dispatch, G_UpdateCvars and entity-list diagnostics remain ordered callbacks."
                     elif symbol["original"] == "CheckTournament":
                         symbol["scope"] = "Baseq3 tournament promotion, player/team readiness, warmup Cvar changes, countdown and map restart are compared against the unchanged native body. AddTournamentPlayer and engine command delivery remain explicit observed callbacks."
+                    elif symbol["original"] == "CheckCvars":
+                        symbol["target_files"] = ["src/mq3/game/cvar_maintenance.ml"]
+                        symbol["scope"] = "Unchanged Baseq3 password-to-g_needpass maintenance, including initial -1 cache, counter changes/wrap, ASCII none matching, byte capacity and game-module cache persistence across level resets. G_UpdateCvars and Cvar delivery remain host boundaries."
                     elif symbol["original"] in ("CheckVote","CheckTeamVote","PrintTeam","SetLeader","CheckTeamLeader"):
                         symbol["target_files"] = ["src/mq3/game/votes.ml"]
                         symbol["scope"] = "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; vote initiation and network transport are open."
@@ -171,6 +183,9 @@ def main():
                         symbol["scope"] = "Baseq3 death lifecycle with actual score, body, hook, collision, PVS, Drop_Item and Team_ReturnFlag integration. PrintMsg and ClientSpawn remain explicit observed callbacks; no Missionpack or complete client/server frame."
             if entry["source"] == "code/game/g_team.c":
                 for symbol in entry["symbol_mapping"]:
+                    if symbol["original"] in ("Team_GetLocation","SortClients","TeamplayInfoMessage","CheckTeamStatus"):
+                        symbol["target_files"] = ["src/mq3/game/team_status.ml"]
+                        symbol["scope"] = "Unchanged Baseq3 location selection with actual CM PVS/area portals, binary32 distance/ties, strict 1000ms interval, two-pass updates and exact 32-member overlay packets. The original preliminary rank selection/sort is retained; its result is unused by the original output loop. Engine command delivery remains a callback; invalid client bindings/slots, cyclic chains and non-finite PVS inputs fail safely."
                     if symbol["original"] in ("OtherTeam","TeamName","Team_FragBonuses"):
                         symbol["scope"] = "Baseq3 team frag bonuses, including native carrier-defense vector reuse, actual scores and SV_inPVS; PrintMsg delivery is an observed callback."
                     if symbol["original"] in ("Team_SetFlagStatus","Team_CheckDroppedItem","Team_ResetFlag","Team_ReturnFlagSound","Team_ReturnFlag","Team_FreeEntity","Team_DroppedFlagThink"):
@@ -198,7 +213,7 @@ def main():
             if entry["source"] == "code/server/sv_game.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] == "SV_inPVS":
-                        symbol["scope"] = "Point cluster visibility plus area connectivity, used by and compared through Team_FragBonuses. Solid-only negative destination clusters are rejected safely instead of indexing before the C mask."
+                        symbol["scope"] = "Point cluster visibility plus area connectivity, used by and compared through Team_FragBonuses and Team_GetLocation, including explicit PVS masks and portal open/close sequences. Solid-only negative destination clusters are rejected safely instead of indexing before the C mask."
     path.write_text(json.dumps(ledger,indent=2)+"\n",encoding="utf-8",newline="\n")
     evidence=[]
     for path in sorted((ROOT / "build/reference").rglob("result.json")):

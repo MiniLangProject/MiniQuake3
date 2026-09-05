@@ -30,8 +30,8 @@ gleiche 32-Bit-Wörter, 205.122 Ausgabe-Bytes, sechs geordnete Nebenwirkungen un
 zwei zusätzliche Laufzeitverträge. Davon bilden 256 Fälle eine Matrix für
 Schadensrichtung, Kappung, Godmode und Pain-Debounce.
 
-Test-Binary: `fdd6f4f6c60b9fee99ee9dcc52c29f1443dd4f4f353624270dc5654685c656b1`.
-Native x86-Oracle: `cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416`.
+Test-Binary: `d55a98c626009d7d198afc7ff30553f70ba9bc66579771de22494b0edb41f3c6`.
+Native x86-Oracle: `81051414985a5ee1c7acb8e74363e3d3f5e3c19cdd922e95cc9b649fd2fd5a32`.
 
 Die Usercmd-/Pmove-Orchestrierung, ClientEvents und ClientTimerActions sind
 inzwischen gesondert unter [ClientThink](CLIENT_THINK.md) geprüft. Die vollständige

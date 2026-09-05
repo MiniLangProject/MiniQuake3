@@ -6873,7 +6873,9 @@
             "src/mq3/game/deaths.ml",
             "src/mq3/game/team_bonuses.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/team_status.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset"
         },
@@ -6894,7 +6896,9 @@
             "src/mq3/game/deaths.ml",
             "src/mq3/game/team_bonuses.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/team_status.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset"
         },
@@ -6915,7 +6919,9 @@
             "src/mq3/game/deaths.ml",
             "src/mq3/game/team_bonuses.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/team_status.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset"
         },
@@ -6936,7 +6942,9 @@
             "src/mq3/game/deaths.ml",
             "src/mq3/game/team_bonuses.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/team_status.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset"
         }
@@ -6956,7 +6964,9 @@
         "src/mq3/game/deaths.ml",
         "src/mq3/game/team_bonuses.ml",
         "src/mq3/game/items.ml",
-        "src/mq3/game/votes.ml"
+        "src/mq3/game/votes.ml",
+        "src/mq3/game/team_status.ml",
+        "src/mq3/game/cvar_maintenance.ml"
       ],
       "status": "partial",
       "tests": [
@@ -6975,7 +6985,8 @@
         "scripts/test_scores.py",
         "scripts/test_deaths.py",
         "scripts/test_items.py",
-        "scripts/test_votes.py"
+        "scripts/test_votes.py",
+        "scripts/test_team_status.py"
       ]
     },
     {
@@ -7033,7 +7044,8 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset"
         },
@@ -7049,10 +7061,11 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament, exit rules and global/team vote resolution. Active vote frame sequences are compared in the vote suite. Mover/other physics dispatch and team-status/Cvar maintenance remain ordered callbacks."
+          "scope": "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament, exit rules, team status, global/team vote resolution and CheckCvars. Active vote, team-overlay and password frame sequences have separate comparisons. Mover/other physics dispatch, G_UpdateCvars and entity-list diagnostics remain ordered callbacks."
         },
         {
           "original": "CheckTournament",
@@ -7066,7 +7079,8 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 tournament promotion, player/team readiness, warmup Cvar changes, countdown and map restart are compared against the unchanged native body. AddTournamentPlayer and engine command delivery remain explicit observed callbacks."
@@ -7083,7 +7097,8 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset"
         },
@@ -7099,7 +7114,8 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
@@ -7116,7 +7132,8 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
@@ -7133,7 +7150,8 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset"
         },
@@ -7149,7 +7167,8 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset"
         },
@@ -7165,7 +7184,8 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
@@ -7182,7 +7202,8 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
@@ -7199,7 +7220,8 @@
             "src/mq3/game/scores.ml",
             "src/mq3/game/rank_sort.ml",
             "src/mq3/game/items.ml",
-            "src/mq3/game/votes.ml"
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/cvar_maintenance.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
@@ -7243,6 +7265,14 @@
           ],
           "status": "tested_subset",
           "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences are compared. ClientUserinfoChanged and engine delivery remain explicit callbacks; vote initiation and network transport are open."
+        },
+        {
+          "original": "CheckCvars",
+          "target_files": [
+            "src/mq3/game/cvar_maintenance.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 password-to-g_needpass maintenance, including initial -1 cache, counter changes/wrap, ASCII none matching, byte capacity and game-module cache persistence across level resets. G_UpdateCvars and Cvar delivery remain host boundaries."
         }
       ],
       "target": [
@@ -7255,7 +7285,8 @@
         "src/mq3/game/scores.ml",
         "src/mq3/game/rank_sort.ml",
         "src/mq3/game/items.ml",
-        "src/mq3/game/votes.ml"
+        "src/mq3/game/votes.ml",
+        "src/mq3/game/cvar_maintenance.ml"
       ],
       "status": "partial",
       "tests": [
@@ -7268,7 +7299,8 @@
         "scripts/test_bodies.py",
         "scripts/test_scores.py",
         "scripts/test_items.py",
-        "scripts/test_votes.py"
+        "scripts/test_votes.py",
+        "scripts/test_team_status.py"
       ]
     },
     {
@@ -8406,7 +8438,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8417,7 +8450,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8428,7 +8462,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8439,7 +8474,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8450,7 +8486,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8461,7 +8498,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8472,7 +8510,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8483,7 +8522,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8494,7 +8534,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 team frag bonuses, including native carrier-defense vector reuse, actual scores and SV_inPVS; PrintMsg delivery is an observed callback."
@@ -8506,7 +8547,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 team frag bonuses, including native carrier-defense vector reuse, actual scores and SV_inPVS; PrintMsg delivery is an observed callback."
@@ -8518,7 +8560,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 team frag bonuses, including native carrier-defense vector reuse, actual scores and SV_inPVS; PrintMsg delivery is an observed callback."
@@ -8530,7 +8573,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8541,7 +8585,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
@@ -8553,7 +8598,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8564,7 +8610,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
@@ -8576,7 +8623,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
@@ -8588,7 +8636,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8599,7 +8648,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
@@ -8611,7 +8661,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8622,7 +8673,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8633,7 +8685,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
@@ -8645,7 +8698,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
@@ -8657,7 +8711,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
@@ -8669,7 +8724,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8680,7 +8736,8 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
         },
@@ -8691,9 +8748,42 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/team_status.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "Team_GetLocation",
+          "target_files": [
+            "src/mq3/game/team_status.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 location selection with actual CM PVS/area portals, binary32 distance/ties, strict 1000ms interval, two-pass updates and exact 32-member overlay packets. The original preliminary rank selection/sort is retained; its result is unused by the original output loop. Engine command delivery remains a callback; invalid client bindings/slots, cyclic chains and non-finite PVS inputs fail safely."
+        },
+        {
+          "original": "SortClients",
+          "target_files": [
+            "src/mq3/game/team_status.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 location selection with actual CM PVS/area portals, binary32 distance/ties, strict 1000ms interval, two-pass updates and exact 32-member overlay packets. The original preliminary rank selection/sort is retained; its result is unused by the original output loop. Engine command delivery remains a callback; invalid client bindings/slots, cyclic chains and non-finite PVS inputs fail safely."
+        },
+        {
+          "original": "TeamplayInfoMessage",
+          "target_files": [
+            "src/mq3/game/team_status.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 location selection with actual CM PVS/area portals, binary32 distance/ties, strict 1000ms interval, two-pass updates and exact 32-member overlay packets. The original preliminary rank selection/sort is retained; its result is unused by the original output loop. Engine command delivery remains a callback; invalid client bindings/slots, cyclic chains and non-finite PVS inputs fail safely."
+        },
+        {
+          "original": "CheckTeamStatus",
+          "target_files": [
+            "src/mq3/game/team_status.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 location selection with actual CM PVS/area portals, binary32 distance/ties, strict 1000ms interval, two-pass updates and exact 32-member overlay packets. The original preliminary rank selection/sort is retained; its result is unused by the original output loop. Engine command delivery remains a callback; invalid client bindings/slots, cyclic chains and non-finite PVS inputs fail safely."
         }
       ],
       "target": [
@@ -8701,7 +8791,8 @@
         "src/mq3/game/combat.ml",
         "src/mq3/game/player_spawns.ml",
         "src/mq3/game/team_bonuses.ml",
-        "src/mq3/game/items.ml"
+        "src/mq3/game/items.ml",
+        "src/mq3/game/team_status.ml"
       ],
       "status": "partial",
       "tests": [
@@ -8709,7 +8800,8 @@
         "scripts/test_combat.py",
         "scripts/test_bodies.py",
         "scripts/test_deaths.py",
-        "scripts/test_items.py"
+        "scripts/test_items.py",
+        "scripts/test_team_status.py"
       ]
     },
     {
@@ -14907,7 +14999,7 @@
             "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset",
-          "scope": "Point cluster visibility plus area connectivity, used by and compared through Team_FragBonuses. Solid-only negative destination clusters are rejected safely instead of indexing before the C mask."
+          "scope": "Point cluster visibility plus area connectivity, used by and compared through Team_FragBonuses and Team_GetLocation, including explicit PVS masks and portal open/close sequences. Solid-only negative destination clusters are rejected safely instead of indexing before the C mask."
         }
       ],
       "target": [
@@ -14918,7 +15010,8 @@
       "tests": [
         "scripts/test_transitions.py",
         "scripts/test_spawn.py",
-        "scripts/test_deaths.py"
+        "scripts/test_deaths.py",
+        "scripts/test_team_status.py"
       ]
     },
     {

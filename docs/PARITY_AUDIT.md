@@ -4,17 +4,18 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die aktuelle reguläre Regression besteht aus **29 bestandenen Prüfbereichen**
-(`verify.py --data-root D:/Quake3`), einschließlich Vote-/Teamleiterregeln,
+Die aktuelle reguläre Regression besteht aus **30 bestandenen Prüfbereichen**
+(`verify.py --data-root D:/Quake3`), einschließlich Teamstandorten/-overlay,
+Passwortstatus, Vote-/Teamleiterregeln,
 Spawnpunkten, Leichen, Punkten, Spieler-Tod, Items/Flaggen, vollständigen
 Client-Lebenszyklen, `CheckTournament`, `G_RunFrame` und CLI-Laufzeitvergleichen.
 Alle 31 CD-Karten werden geladen; Schadens-, Projektil- und Leichenfälle laufen
 ebenfalls auf den CD-Karten.
 
 Die letzte erweiterte Vollprüfung mit beiden Kollisions-/Bewegungsprofilen
-bestand **43 Prüfbereiche am Stand `f8cdf9a`**, vor dem Vote-Port. Deren Bericht
+bestand **43 Prüfbereiche am Stand `f8cdf9a`**, vor dem Vote- und Teamstatus-Port. Deren Bericht
 ist in der Git-Version dieses Stands archiviert. Die erweiterte Suite enthält
-nun 44 Gates; für den aktuellen Vote-Stand wurde die reguläre Suite ausgeführt.
+nun 45 Gates; für den aktuellen Teamstatus-Stand wurde die reguläre Suite ausgeführt.
 Der finale MiniQuake3-Build hat SHA-256
 `3a8c6f394b337404511f826e34404d0fd5f9c3011af6b7a4b2a96cc5321d99fb`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
@@ -26,7 +27,7 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung, Sprungpad-/Teleport-Replays, ClientBegin und G_RunFrame-Einbindung geprüft; komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, vollständiger Client-Lebenszyklus, Leichen, Items, Punkte, Ränge, Matchende, Tournament/Warmup, Vote-Auflösung, Teamleiterwahl und CTF vorhanden; weitere Klassen, Mover-Pushing, Teamstatus, Cvar-Wartung und Vote-Startbefehle fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, vollständiger Client-Lebenszyklus, Leichen, Items, Punkte, Ränge, Matchende, Tournament/Warmup, Vote-Auflösung, Teamleiterwahl, Teamstandorte/-overlay, Passwortstatus und CTF vorhanden; weitere Klassen, Mover-Pushing, Engine-Cvar-Refresh und Vote-Startbefehle fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -610,8 +611,8 @@ sind enthalten. Details: [CLIENT_BEGIN.md](CLIENT_BEGIN.md).
 
 ## Vollständiger Spielserverframe (Schritt 6)
 
-`scripts/test_full_frame.py` besteht mit **sechs Szenarien**, **3.241 exakt
-gleichen 32-Bit-Wörtern** und **12.977 Ausgabe-Bytes**. Drei Laufzeitverträge
+`scripts/test_full_frame.py` besteht mit **sechs Szenarien**, **3.231 exakt
+gleichen 32-Bit-Wörtern** und **12.992 Ausgabe-Bytes**. Drei Laufzeitverträge
 prüfen Pflichtgrenzen, Clientlimit und Restart-Frühabbruch.
 
 Geprüft sind Framezähler und Zeit, Cvar-Aktualisierung, die vorhandene
@@ -620,8 +621,10 @@ und anschließend Teamstatus, globale und Team-Votes sowie Cvar-Nachverfolgung. 
 die 1.024 Einträge von `g_listEntity` und dessen Cvar-Reset laufen in der
 Originalreihenfolge. Globale und Team-Votes führen inzwischen ihre portierten
 Regeln aus; aktive Vote-Framefolgen sind zusätzlich in `test_votes.py` geprüft.
-Teamstatus, Cvar-Wartung und Mover-/sonstige Physics-Ausführung bleiben
-geordnete Callbacks. Details:
+Teamstatus und `CheckCvars` führen inzwischen ebenfalls ihre portierten Regeln
+aus; aktive Overlay-/Passwortfolgen sind in `test_team_status.py` geprüft.
+`G_UpdateCvars` und Mover-/sonstige Physics-Ausführung bleiben geordnete
+Callbacks. Details:
 [FULL_FRAME.md](FULL_FRAME.md).
 
 ## Tournament und Warmup (Schritt 6)
@@ -639,7 +642,7 @@ bleiben Host-Grenzen. Details: [TOURNAMENT.md](TOURNAMENT.md).
 ## Abstimmungen und Teamleiter (Schritt 6)
 
 `scripts/test_votes.py` besteht mit **211 Szenarien**, **241 Aktionen**,
-**85.671 exakt gleichen 32-Bit-Wörtern**, **363.195 Ausgabe-Bytes** und **462
+**85.655 exakt gleichen 32-Bit-Wörtern**, **363.153 Ausgabe-Bytes** und **456
 geordneten Nebenwirkungen**. Elf Laufzeitverträge ergänzen die Differenzprüfung.
 
 Geprüft sind `CheckVote`, `CheckTeamVote`, `PrintTeam`, `SetLeader` und
@@ -651,6 +654,24 @@ Aktion. Echte Framefolgen prüfen die Einbindung in `G_RunFrame`.
 
 Die Befehle zum Starten/Befüllen einer Abstimmung, `ClientUserinfoChanged` und
 die Netzwerk-/Engine-Zustellung bleiben offen. Details: [VOTES.md](VOTES.md).
+
+## Teamstandorte, Overlay und Passwortstatus (Schritt 6)
+
+`scripts/test_team_status.py` besteht mit **80 Szenarien**, **618 Aktionen**,
+**59.233 exakt gleichen 32-Bit-Wörtern**, **275.011 Ausgabe-Bytes** und **288
+geordneten Nebenwirkungen**. Zwölf Laufzeitverträge ergänzen die Differenzprüfung.
+
+Die unveränderten Funktionen `Team_GetLocation`, `SortClients`,
+`TeamplayInfoMessage`, `CheckTeamStatus` und `CheckCvars` werden mit der echten
+originalen PVS-/Areaportal-Prüfung verglichen. Enthalten sind Float-Distanzen
+und Gleichstände, strikt mehr als 1.000 ms Aktualisierungsabstand, getrennte
+Cvar-/Level-Clientlimits, 32er-Overlay und Slot-Reihenfolge, Empfängerfilter,
+alle Standorte vor dem ersten Paket, Passwortzähler und Modulzustand über
+Level-Resets. Aktive Framefolgen prüfen die Einbindung.
+
+Engine-Cvar-Refresh, Netzwerkzustellung und Clientanzeige bleiben offen;
+formatierte Ortsnamen über `Team_GetLocationMsg` sind noch nicht portiert.
+Details und Zustandslebensdauer: [TEAM_STATUS.md](TEAM_STATUS.md).
 
 ## ClientThink (Schritt 6)
 

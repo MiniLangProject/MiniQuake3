@@ -178,8 +178,10 @@ Rangberechnung; Tournament-, Zuschauer- und Intermissionzweige sind gegen den
 unveränderten C-Ablauf geprüft. [`CheckTournament` und `TeamCount`](TOURNAMENT.md)
 steuern inzwischen Promotion, Bereitschaft, Warmup-Countdown und Maprestart an
 der ursprünglichen Stelle im Frame. [Vote-Auflösung und Teamleiterwahl](VOTES.md)
-sind ebenfalls portiert und mit echten Frame-Folgen geprüft. Als Nächstes folgen
-die übrigen Spielobjekte, Teamstatus und Cvar-Wartung, weitere Waffentreffer und
+sind ebenfalls portiert und mit echten Frame-Folgen geprüft.
+[Teamstandorte, Overlay und Passwortstatus](TEAM_STATUS.md) laufen inzwischen
+an den ursprünglichen Frame-Positionen. Als Nächstes folgen die übrigen
+Spielobjekte, Engine-Cvar-Refresh, Vote-Startbefehle, weitere Waffentreffer und
 Mover-Pushing. Der vollständige Server bleibt bis zu dieser Integration offen.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
@@ -199,8 +201,9 @@ C-Funktionskörper geprüft. [`ClientThink`](CLIENT_THINK.md) ist ebenfalls voll
 in den MiniLang-Spielpfad eingebunden. [`ClientBegin`](CLIENT_BEGIN.md) verbindet
 diesen Lebenszyklus inzwischen vollständig. [`G_RunFrame`](FULL_FRAME.md) führt
 ihn mit Entity-Schleife, Matchende und den geordneten Wartungsstufen zusammen.
-Tournament/Warmup und globale/Team-Vote-Auflösung sind portiert. Teamstatus,
-Cvar-Wartung, Vote-Startbefehle und Netzwerkzustellung sind die nächsten Grenzen.
+Tournament/Warmup, globale/Team-Vote-Auflösung, Teamstatus und `CheckCvars`
+sind portiert. Engine-Cvar-Refresh, Vote-Startbefehle und Netzwerkzustellung
+sind die nächsten Grenzen.
 Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.

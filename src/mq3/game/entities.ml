@@ -3,6 +3,7 @@
 // g_utils lifecycle and target selection. Game fields grow with ported rules;
 // the full network entityState lives in s, the server collision fields in r.
 package mq3.game.entities
+import mq3.game.cvar_maintenance as cvarMaintenance
 import mq3.game.entitystate as es
 import mq3.game.playerstate as ps
 import mq3.game.snapshot as snapshot
@@ -243,6 +244,8 @@ struct Level
   teamVoteYes
   teamVoteNo
   clientUserinfoChangedFn
+  lastTeamLocationTime
+  cvarMaintenance
 end struct
 function createClient(state,team,cmdAngles)
   return Client(state,team,cmdAngles,false,0,0,0,[0.0,0.0,0.0],false,0,0,0.0,0,void,0,0,0,0,0,0,"",false,0,0,0,0,0,0.0,0,0,0,false,0,0,0,0.0,0.0,
@@ -253,7 +256,7 @@ function blank(slot,r)
 end function
 function create(world)
   scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void,false,void,0,1000.0,0,void,0,array(256,0),1,0,[],[0.0,0.0,0.0],[0.0,0.0,0.0],[],0,0,array(64,0),array(4,0),0,0,0,0,0,0,array(2,0),0,0,0,0,false,0,void,void,void,0,void,void,void,void,0,0,0,0,0,0.0,0,5,30,0,void,void,void,void,void,0,false,void,800,320,0,false,8,false,0,void,void,void,void,void,void,void,void,0,false,void,0,20,0,0,void,void,
-    "",0,0,0,0,array(2,""),array(2,0),array(2,0),array(2,0),void)
+    "",0,0,0,0,array(2,""),array(2,0),array(2,0),array(2,0),void,0,cvarMaintenance.create())
   for i = 0 to 1023
     level.entities = level.entities+[blank(i,scene.entities[i])]
   end for

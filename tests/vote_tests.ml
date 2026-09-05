@@ -67,10 +67,14 @@ end function
 function recordStage(level,kind,arg)
   words(level.context,[110,kind,arg]); level.context.events = level.context.events+1; return void
 end function
+function recordVoteCvar(level,key,value)
+  words(level.context,[110,7]); string(level.context,key); string(level.context,value)
+  level.context.events = level.context.events+1; return void
+end function
 function configure(world,reader,check)
   level = game.create(world); state = spawn.create(level,""); level.context = check
   state.effectFn = effect; level.serverCommandFn = recordServer; level.consoleCommandFn = recordConsole
-  level.clientUserinfoChangedFn = recordUserinfoChanged; level.frameStageFn = recordStage
+  level.clientUserinfoChangedFn = recordUserinfoChanged; level.frameStageFn = recordStage; level.cvarSetFn = recordVoteCvar
   level.maxclients = readInt(reader); level.maxclientsCvar = level.maxclients; level.time = readInt(reader)
   level.voteTime = readInt(reader); level.voteExecuteTime = readInt(reader); level.voteYes = readInt(reader)
   level.voteNo = readInt(reader); level.numVotingClients = readInt(reader)
@@ -83,6 +87,7 @@ function configure(world,reader,check)
     level.teamVoteString[index] = readString(reader)
   end for
   for index = 0 to 63
+    game.bindClient(level,level.entities[index],level.clients[index])
     client = level.clients[index]; client.connected = readInt(reader); client.team = readInt(reader)
     client.teamLeader = readInt(reader) != 0; level.entities[index].r.svFlags = readInt(reader); client.netname = readString(reader)
   end for

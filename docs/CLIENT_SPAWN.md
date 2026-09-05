@@ -60,8 +60,8 @@ beide Snapshot-Konvertierungen ab.
 Acht zusätzliche Laufzeitverträge prüfen Initialwerte, Userinfo-Auswertung,
 fehlende Pflichtgrenzen und die Standardverbindung aus `deaths.respawn`.
 
-Test-Binary: `d312fe050ff486405c4a9045f19c956d4a544b2b56331341a154cbf20ceea008`.
-Native x86-Oracle: `cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416`.
+Test-Binary: `fb0961e5dbd3351dadc60732652a90b90c9cf22230c957958a49f5ddfdc8e2ae`.
+Native x86-Oracle: `81051414985a5ee1c7acb8e74363e3d3f5e3c19cdd922e95cc9b649fd2fd5a32`.
 
 Der C-Oracle enthält den unveränderten Funktionskörper aus `g_client.c`. Nur die
 fünf oben aufgeführten Abhängigkeiten werden am Host-Rand beobachtet. Spawnwahl,

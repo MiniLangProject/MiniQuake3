@@ -20,11 +20,12 @@
     "src/mq3/game/client_spawn.ml": "d9523b9d4998ce4fb4d8b0db50a244c3a70ddf3c568ef18f0e235381536e44e0",
     "src/mq3/game/combat.ml": "c4bec13c9fd6185d9531f204b76e84803c07e93e2cf451ce831850454f10d05e",
     "src/mq3/game/constants.ml": "17c50c277b785e016d402b893aea941840cb6cb1971c53d6513c346332413065",
+    "src/mq3/game/cvar_maintenance.ml": "8c5d7cd4eee7bfd700d6be7f64de1099dd5c70f1ce0db7bc85f99651f33bfa6a",
     "src/mq3/game/deaths.ml": "941ce334ecb591440767bdaf7aaeaebb5ca10a6ab7ba9d2742acb23e3b6ddb1e",
-    "src/mq3/game/entities.ml": "f51ba704297834c049859fd5a8246ce7ab365997141a9175e737361a97608d2e",
+    "src/mq3/game/entities.ml": "040325b81b513ceb696d708e6edb3a842bec55db20e930b04f200ab3f0d857fb",
     "src/mq3/game/entitystate.ml": "e553e2f286d13f42aa9058def669dd53c7ee64b3345a92def2687c2c9280bdb1",
     "src/mq3/game/events.ml": "d2ae1a966141639cbae9ed9a61dde746afeb694cac34173f0e4f3ac828893c61",
-    "src/mq3/game/frame.ml": "6aaa78e66e467b3eeec39a807f55d4d2b35accbc4e22655c1ab33e06453c7ae3",
+    "src/mq3/game/frame.ml": "2e832867d340cc5f427a6f118835dd53e713ad19348a8a4f7321925d10cabfb1",
     "src/mq3/game/hazards.ml": "5abfb39e8b6c66ab1d1c3d1cac6ffeda133272a66dca4d53cf1b15b428dc64f7",
     "src/mq3/game/items.ml": "4f5806908ee21412cb2e410c28e7467338db1ffbd2f41cb817d6c53097d80f4e",
     "src/mq3/game/jumppad.ml": "b99ced1c4617234979be0929a4a0f25779be1bc248d3e3729799d5025e23cbe9",
@@ -44,6 +45,7 @@
     "src/mq3/game/spawn_values.ml": "06f4be12c57b1b2b4e1815df44c70e668aec8cb4d4bdaa1187ef44a86550e0f2",
     "src/mq3/game/targets.ml": "bd9f90dcab75cd0c681ee083b82ea216abb5e4be547fb7bad698e138e1d39fad",
     "src/mq3/game/team_bonuses.ml": "9a8330f2c6a3c7db272fd0ad7c5c313421647111025bbf1c3d4380d37bd0d6fc",
+    "src/mq3/game/team_status.ml": "33593ccbb6f7898df01af82dcecb727d7318255f10382b861b42f72a6f5b0503",
     "src/mq3/game/teleport.ml": "82d3b72cd4ed73514cd91c019c87f6222e38ad86f19137916bf167670b1eb193",
     "src/mq3/game/tournament.ml": "9a85faeab8fb76e2a5f1bbd7505edd96c3b6ed81941aff2474f11af052780c9c",
     "src/mq3/game/trajectory.ml": "5783e4be0369c475ba5477d9fe77d1df803cc045ea5bfdd59823fdb6cee88054",
@@ -72,7 +74,7 @@
     "scripts/reference_replay.py": "075a5f4c35cad4d2cf5506106cfed1dcb56e8a61dd60e1de626f8df2c92de1e8",
     "scripts/reference_smoke.py": "ac1b75ffe774b460e6af3d51a4accd85642d4b5aab01f6ee0a503c95cf53d096",
     "scripts/spawn_fixtures.py": "f2228d4cb26b9039696ba523bc8ffa530244aa6e3b4937dd3fee2d9716c3e778",
-    "scripts/spawn_oracle.py": "5c6fd4c3bfedaf8c1a3251063bd9c3bf260ae94487a1ad3c635f80f12966442f",
+    "scripts/spawn_oracle.py": "0b9c2365ddae57ac114a7799ed8b1627aef17e3ad5067d74fd673da57d89ceda",
     "scripts/test_archives.py": "61808f04bc53445facb09066ea90568a0f8e5cf65f03c12a421b38336061d1b4",
     "scripts/test_bodies.py": "0609b25afbf156c0087e85f736428467f0149a003c5a2c84eb80de0c332834a9",
     "scripts/test_brush.py": "f04dc9eae5ab89e4ed50e97e60fcc6e01d7c2ba86cd9156a27856fdb472985df",
@@ -85,7 +87,7 @@
     "scripts/test_core.py": "326e11a4c94ae7e70e67ab6e7db271211a23b75f8d5a0724dfaef61973877ae7",
     "scripts/test_deaths.py": "4e83f979f94d7b5944782007144e7d93db0c5d7239c994f706275a4ed7018945",
     "scripts/test_entitystate.py": "65af30f2665c85a0a7e809ff5f64e49e3a1c64c1685cfa0a491b4449aa020ca5",
-    "scripts/test_full_frame.py": "1bdcacb0e717e658e28444a7b16080f1e1210e5c90d6b787e23a65d4812b77e8",
+    "scripts/test_full_frame.py": "4ab9db4c58248b2b393848aa24131f3fcdcd233e5dad874792c4058ada6bbde7",
     "scripts/test_items.py": "eb44115d3d79e2316c05cfba1c6579f5443c27542893dc439cd23aa52c3d0678",
     "scripts/test_maps.py": "3f44120af9fef99f99f7f9134f7a4792b39ef58a13bc35837cb3fbd6eb0930f0",
     "scripts/test_math.py": "f58dc4d37171d4b113d006c5d53cfe527ce46e2c7597f5f557430e243c0b5a76",
@@ -106,6 +108,7 @@
     "scripts/test_spawn.py": "3f1f7d7c4de8ffde9c91052a80d70d5891dbeb57050f772703a865d619994f6d",
     "scripts/test_spawn_values.py": "4aa0513fa2279542ad4fc479fa116212a00c0c5ab6a3fa33a7f651d579d6b093",
     "scripts/test_targets.py": "e2264722cedfd8fef9bc72a2ce839971ed19a58bbea611db6559d5a844587b46",
+    "scripts/test_team_status.py": "b27ff16ce72c60fb7486f453715d6093a24749bb4985e44afc7e83a5b7d6ec6f",
     "scripts/test_tournament.py": "93f3964977d9ecb36de39d5f776ec32f574615c44e1e594b797b05a421edfd8b",
     "scripts/test_transitions.py": "06ef2df3360da4569d088859f1e5888c2c94d07d7bd0396f0cd5982b60df7d31",
     "scripts/test_visibility.py": "54c5f86cb2fb70e257cda28e8eb0d906eee2faf558ccd9f798af717eaa51aded",
@@ -113,8 +116,8 @@
     "scripts/test_votes.py": "7c8dae764b6a71efff261b914dfb6b3fdb816d9506acb2041b870c492b6eab03",
     "scripts/toolchain.py": "eab72f9e2edb9680c382fccf55533e766b2177d257276a29de363e73e545716a",
     "scripts/transition_oracle.py": "b094c961cde9941d9230cd2af4d4e11a40428705dab40b8f878c1d7e72481d4a",
-    "scripts/update_progress.py": "dcf61c598a64c2c97cd1842e15fefdb89deddd7141c83b0b8b4703e07bba37b3",
-    "scripts/verify.py": "737fa652bbc9954d211ae35327edb940480acc21edcb2e4a02c8d7c6e534dc72",
+    "scripts/update_progress.py": "c88746b6bf7b820d4f3fbc84e309d9bac8cf1d133c7d884b1321d790599dc24e",
+    "scripts/verify.py": "5de241489bcb45820c4b1d9fa0891dbd8f39d4c7e6790cb4fa32037bf10bbce4",
     "tests/archive_tests.ml": "a7266b1d1a15881f117d18344eafc1a03d47e4be053ce42c0616248164510e0c",
     "tests/brush_tests.ml": "a30eee67deb4580b649d643024c9f08acd9c5df7b28cbb2be6289cad151fce04",
     "tests/client_begin_tests.ml": "13bc656a05096362903674ae13ce238fef25b2bfaaf43adba2c47932404e6168",
@@ -124,7 +127,7 @@
     "tests/collision_tests.ml": "c28f47cc00e374f52eb33f88810478fcbeea35819b9a54a91d589113c35a9a57",
     "tests/core_tests.ml": "74b4b7ce5dd8816859b9097053dbbe01d5b49057b76de8cbe22dfa818523765d",
     "tests/entitystate_tests.ml": "6fc3cb68b451e6ac614901bb205d3892a4a66040a6b63d1d4ad039276f0aedd7",
-    "tests/full_frame_tests.ml": "18eca0c08b1d1fdb4797de63f42c4474d705ef5a90474b88a9310ae6e7d0b7b1",
+    "tests/full_frame_tests.ml": "53f848221fbdaf5eafeecdb435e97521860dfab35783b1715c085bd7a4754d07",
     "tests/math_tests.ml": "76be7f3d960cb1dc4d5221621d3bfd716e1944091f83a4be300eccab973f1f1a",
     "tests/movement_tests.ml": "a4bad5a0f6ed1e8395deabbc32314a49a55f7f085528b61fbc30cada97a05765",
     "tests/numeric_probe.ml": "37743c72159031b7e6d0f692f6a27ac062f36f086174f98ac5e5d69747a0d4cc",
@@ -140,7 +143,7 @@
     "tests/reference/combat_actions.inc": "ed0dd9a29522f0db357fa416e3c8571e61055b2dab9e98bd6ef715d24152c169",
     "tests/reference/core_oracle.c": "029c52de4cad3a53065af785abdf1b15d0e5f252e7297746871fe4bcde264703",
     "tests/reference/death_actions.inc": "b3bff00b1470f4f2746aa55acc5ec14e57e123f8bf643ffbe0c25722a4d7c435",
-    "tests/reference/frame_actions.inc": "5917957db1122b9bd633d5466cf26311eb9a9ccbb12f27ad7e088b12a80a564b",
+    "tests/reference/frame_actions.inc": "182ab152356854c5fbc84450e6814b8244d8d93e5b7331877628de2b982542fe",
     "tests/reference/frame_observer.c": "309a76ab1ff5253aa4059d6bf81e25a058d6f234bf976a763f46fdb8c0844fc7",
     "tests/reference/item_actions.inc": "8e86b55cdfd79999f7467ee172e889b69418e3e82fa44405024367e2d6977485",
     "tests/reference/math_oracle.c": "b22ec691ee4d78f5e2d25ab0ad67b30e05e876b482269f8aa8973e3ccd3754a4",
@@ -153,26 +156,28 @@
     "tests/reference/server_world_oracle.c": "93511d75377005303e3ac34d915ee32793245641b65b44e9f2b8c1f2ec934fc3",
     "tests/reference/shared_game_oracle.c": "189875a93caa876ef1d53c75f0d25f1a1fc24e0c9fcca6541392490f6661d04f",
     "tests/reference/spatial_oracle.c": "00a2b131fff36f2a377f09274f3845625ca6c35d47ea7558eb01915ce5d0737c",
-    "tests/reference/spawn_oracle.c": "643deaac6c2b7ebf1943d823a37304c306dac504ed6d3a10efaece61c3de571f",
+    "tests/reference/spawn_oracle.c": "3672d746718ff766eadafaa55530f450fc9b0a93b3db2bc68d85308a78591a0a",
     "tests/reference/spawn_server.c": "779e8ecc04153f3c13508732e80e07b673326c4e00e9e71516ad5025a259d3c8",
     "tests/reference/target_actions.inc": "26d3529ae613e58c5999f61c832b31f8ac9ca84b4abb6b7b3eea7cfecde8723c",
+    "tests/reference/team_status_actions.inc": "fdc6e927b1e936729f0be8d1065a061f04afe931d5788b4882f8eeae5fd5c20b",
     "tests/reference/tournament_actions.inc": "32ee6fef6e437fe139ebd6b4e265ee6d1edf7f36ead6da4f48bb03f4df05d278",
     "tests/reference/transition_oracle.c": "52483281f090e375f082dafc64f6ea64bf23077ef74ce30b4b6f94da028e4a8d",
     "tests/reference/transition_server.c": "63afb26f0e3470aba054733107aaaee9774a234d71f1a6f29b921d9e556dc6ff",
     "tests/reference/visibility_oracle.c": "b0581fa378864ae1ece5b7d7ba5640f75df9820689fe8bf14ffc461d87552c1b",
     "tests/reference/vm_oracle.c": "cdc54ce1830b460715d4e3fee9fdbefd3e7bc09f2981a194a524847a15b030ba",
-    "tests/reference/vote_actions.inc": "6b24561df586b5602aaa17d16a6efc3c33f43a9ac08171386d253281e4c21299",
+    "tests/reference/vote_actions.inc": "afc5bd45946f5ed719103ba9ed2ed838b96e9e417d2be13379a6587dd5e2c64c",
     "tests/rejection_tests.ml": "415c81171228ac96a402b4b1c37a09a14ff4782e66be5a5e57fd0854e1d8bc1c",
     "tests/retail_vm_tests.ml": "22e3aea584615d26ef2cdb468bb16f9cc246ec6fc9a7742c033daabe32d943b9",
     "tests/server_world_tests.ml": "0b14306b0fdd817f0c7d9802d0a8188f6f6dcce4d92f2a0b3da88d00488e2025",
     "tests/shared_game_tests.ml": "377922fb745760cae1d377fd2a982c33667fb4d2c3dd9b9def2fb25d88fde1ec",
     "tests/spatial_tests.ml": "1f120494eaa7ca10d91d26a59c9393743b45466376a8d97bfc95c929bf7bb27f",
     "tests/spawn_tests.ml": "400bea2ecba74cd88a74efdd03516ddc08ac1a216d8bccb3690d169140b7f6f6",
+    "tests/team_status_tests.ml": "3636e3b8561415cd60cf0c14585fcab0417da1a3471c4b68874b8585d5514f17",
     "tests/tournament_tests.ml": "311d97c2601ba8b89a9e319ed12ff10c51e7b78a5588ed1ac2f537728f2d8e09",
     "tests/transition_tests.ml": "5e25faf4e29303558d04e0e6621810a88dbd803cad9448c0998c4d8169a7f4ee",
     "tests/visibility_tests.ml": "1b7da66dcfb3b6d9f66e20d08a6ead1b00efe634cf85659a98822bab6f8d4609",
     "tests/vm_tests.ml": "e82c903d3c8430197abbf66021ab58cdb0422e83aa6b01eb384f84593015b23a",
-    "tests/vote_tests.ml": "405ee2f402bdae67909e2db20a30db8082ba7ae283b62e566f56897332355a79"
+    "tests/vote_tests.ml": "4517260b3ce60e3eaeb4b836aa424c32ad28c9036b7c8068d31b2769621448fe"
   },
   "evidence": [
     {
@@ -187,7 +192,7 @@
     },
     {
       "path": "build/reference/bodies/result.json",
-      "sha256": "8bc9df0b2b68d906909bbad67ccee2e5b7e7353a647dd53bf20b3334b882f295",
+      "sha256": "6a9fc2834a18cc12e0e0924028a50892e7c2a9b77a6d2d2b65d28a4d9d8e41ec",
       "result": {
         "passed": true,
         "scenarios": [
@@ -55334,7 +55339,7 @@
           72,
           1
         ],
-        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
+        "test_sha256": "c103ed1e110b7189bf9374effca834f37bfbe56bd84263efd54a73b5cd28ab82",
         "scope": "Baseq3 spawn selection, body queue, gib/dead-yaw helpers and non-item corpse physics. player_die and the respawn wrapper are covered by test_deaths; item entities are covered separately by test_items; ClientSpawn orchestration is covered by test_client_spawn. Undefined C deathmatch spawn-array overflow is rejected in MiniLang.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -55385,7 +55390,7 @@
     },
     {
       "path": "build/reference/client_begin/result.json",
-      "sha256": "114cb70c8afd57cede5ef9e219d3c3e5a91282b30f794423e9a0907d953c29e9",
+      "sha256": "d0e6ce8a952c094039e24e1df11739db48fbb74498eafcbfdfd796cc3dcca0ac",
       "result": {
         "passed": true,
         "scenarios": [
@@ -55835,8 +55840,8 @@
         "output_bytes": 12111,
         "ordered_boundary_events": 92,
         "runtime_contracts": 5,
-        "test_sha256": "0cc5ea087d8ff228152de2b730cd45a4ca3c46d833caa27b1dce52ec32fdef48",
-        "oracle_sha256": "cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416",
+        "test_sha256": "e2e6fad87f85bb79b32d97fcda44797586f9a8c7aac27be0002e38b2f0c46fca",
+        "oracle_sha256": "81051414985a5ee1c7acb8e74363e3d3f5e3c19cdd922e95cc9b649fd2fd5a32",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 ClientBegin with actual ported ClientSpawn and CalculateRanks: unlink/reinit, persistent client rebinding, playerState reset with eFlags preservation, spawn, entry event and announcement, game log, rankings and tournament/spectator suppression. Engine userinfo, usercmd, command and log delivery remain deterministic observed host boundaries.",
         "original_sources": {
@@ -55877,7 +55882,7 @@
     },
     {
       "path": "build/reference/client_frame/result.json",
-      "sha256": "9d3870c67438874f52cd934f4871146983b5b77b051a956bd836717b804136e8",
+      "sha256": "2cb3226aef9232d1bfcecdd464a62631c3b061a2b94a9dd3ef02e48d2d5112ae",
       "result": {
         "passed": true,
         "scenarios": [
@@ -56052,8 +56057,8 @@
         "output_bytes": 205122,
         "ordered_effects": 6,
         "runtime_contracts": 2,
-        "test_sha256": "fdd6f4f6c60b9fee99ee9dcc52c29f1443dd4f4f353624270dc5654685c656b1",
-        "oracle_sha256": "cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416",
+        "test_sha256": "d55a98c626009d7d198afc7ff30553f70ba9bc66579771de22494b0edb41f3c6",
+        "oracle_sha256": "81051414985a5ee1c7acb8e74363e3d3f5e3c19cdd922e95cc9b649fd2fd5a32",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 ClientEndFrame, SpectatorClientEndFrame, P_WorldEffects, P_DamageFeedback, G_SetClientSound and SendPendingPredictableEvents. Covers powerup expiry, damage direction/clamp/debounce, drowning, lava/slime, Battlesuit, noclip, interpolation/extrapolation, intermission, predictable event entities and spectator follow/scoreboard/loss. The isolated suite observes ClientBegin when an invalid explicit follow target is released; the normal port binds the separately verified ClientBegin implementation.",
         "original_sources": {
@@ -56094,7 +56099,7 @@
     },
     {
       "path": "build/reference/client_spawn/result.json",
-      "sha256": "e8d69394b681410efae2d1c0a8a8ec90d756dcca91d149b0d7bd4136eb857f48",
+      "sha256": "100ee7cc3a8efc835edf6b023e0d259a1e06f8f715954fcbb86c144b81c2a14e",
       "result": {
         "passed": true,
         "scenarios": [
@@ -56721,8 +56726,8 @@
         "output_bytes": 18766,
         "ordered_boundary_events": 116,
         "runtime_contracts": 8,
-        "test_sha256": "d312fe050ff486405c4a9045f19c956d4a544b2b56331341a154cbf20ceea008",
-        "oracle_sha256": "cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416",
+        "test_sha256": "fb0961e5dbd3351dadc60732652a90b90c9cf22230c957958a49f5ddfdc8e2ae",
+        "oracle_sha256": "81051414985a5ee1c7acb8e74363e3d3f5e3c19cdd922e95cc9b649fd2fd5a32",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 ClientSpawn selection and orchestration: persistent/session preservation, transient reset, handicap, spawn filters, CTF/spectator/intermission placement, initial inventory, KillBox/link order, target activation, weapon selection and playerState-to-entityState snapshots. ClientThink, ClientEndFrame, userinfo/usercmd delivery and intermission movement are deterministic observed host boundaries.",
         "original_sources": {
@@ -56763,7 +56768,7 @@
     },
     {
       "path": "build/reference/client_think/result.json",
-      "sha256": "d372155321db17d4c713b935b3cb5740c1e2adda7e8faab5b7f9063fbd6cd1fd",
+      "sha256": "73dc2a4a29cfbcfd34ebc115d8a139e3b2cfbfd7d76480738103e9ca2c1c25ff",
       "result": {
         "passed": true,
         "scenarios": [
@@ -57318,8 +57323,8 @@
         "output_bytes": 29702,
         "ordered_effects": 77,
         "runtime_contracts": 3,
-        "test_sha256": "7d2b4b75c42701a4203f453ce9964b012381f47fd72167cf5ecdc4718323c257",
-        "oracle_sha256": "cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416",
+        "test_sha256": "8541eb5dbcab17a3a438e8392b360c5a21fed471d43b3d94cf8f29520750e87a",
+        "oracle_sha256": "81051414985a5ee1c7acb8e74363e3d3f5e3c19cdd922e95cc9b649fd2fd5a32",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Verbatim Baseq3 ClientThink_real, ClientThink, G_RunClient, ClientImpacts, SpectatorThink, ClientInactivityTimer, ClientTimerActions, ClientIntermissionThink and ClientEvents. Actual Pmove, dynamic server collision, snapshots, triggers, hook release and medkit state are integrated; engine usercmd, cvar, drop, follow, weapon and AAS calls are ordered observed boundaries.",
         "original_sources": {
@@ -57838,7 +57843,7 @@
     },
     {
       "path": "build/reference/combat/result.json",
-      "sha256": "02011ad7a3f087ace4d217c1ea6ead191a4cf52ab911d2ebcc067138c051060d",
+      "sha256": "1b9a98b84a72aa1342b0a36fcf9a58ad97beaa5511e616f806a961880e3b25aa",
       "result": {
         "passed": true,
         "scenarios": [
@@ -60135,7 +60140,7 @@
         "string_bytes": 1790052,
         "traces": 2681,
         "cd_maps": 31,
-        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
+        "test_sha256": "c103ed1e110b7189bf9374effca834f37bfbe56bd84263efd54a73b5cd28ab82",
         "runtime_contracts": 8,
         "controlled_freed_laser_link_rejections": 1,
         "controlled_rejections": [
@@ -60238,7 +60243,7 @@
     },
     {
       "path": "build/reference/deaths/result.json",
-      "sha256": "a60dacce6a24b4f07ae4617b32a948a26d63deeb592fb784a73c3408253bba8e",
+      "sha256": "5637c3cba973b724de8dd947e084c8d31b91c8525e52164af97e2385c9f600d5",
       "result": {
         "passed": true,
         "scenarios": [
@@ -60454,7 +60459,7 @@
         "exact_words": 3887033,
         "string_bytes": 40921,
         "runtime_contracts": 8,
-        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
+        "test_sha256": "c103ed1e110b7189bf9374effca834f37bfbe56bd84263efd54a73b5cd28ab82",
         "scope": "Baseq3 player_die, Team_FragBonuses, TossClientItems, almost-capture/scored checks and respawn wrapper. Drop_Item and Team_ReturnFlag execute actual ported item/flag entities; PrintMsg and the isolated ClientSpawn test override remain observed callbacks. The normal respawn path uses the separately verified ported ClientSpawn. Collision, PVS, scores, body queue and hook cleanup execute in the port.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -60494,7 +60499,7 @@
     },
     {
       "path": "build/reference/entitystate/result.json",
-      "sha256": "fcb35a8b1171d828ca991dd08b0eb7b7ced4fd12412c0d84bf18e8842c3a3cc1",
+      "sha256": "e338999afd7d16693a5887066228e9f45395c273984f781a4a0791a6fa27c930",
       "result": {
         "passed": true,
         "cases": 16384,
@@ -60506,7 +60511,7 @@
         "scope": "BG_PlayerStateToEntityState/ExtraPolate, full entity storage and SetClientViewAngle; native original x86 profile",
         "input_sha256": "bf4bd23fd1026d39f0ea7bf1e494d05c8f8d5e37822c09d047852bc224fb488c",
         "expected_sha256": "7576c564306a4dab7c27d1321229d4391ef58d6d381dc965a5e3c843602d3087",
-        "test_sha256": "d433a0873f3992cebb7d6f1c80331033c9b95387928862664f895fab94214fd6",
+        "test_sha256": "dfc9fb4e721b775eb1068d2b576f9c2376eefeb59bbda3bb21e7c72b4f4156f5",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -60537,16 +60542,16 @@
     },
     {
       "path": "build/reference/full_frame/result.json",
-      "sha256": "184e3a246aec45ade82e51fdfd29a33906c44cfbf2da1c051a22ffbb42641edd",
+      "sha256": "51a75bd1b5dc195a53b3b17a8b9ae81bf89585caf7056683a3570df809e84ae9",
       "result": {
         "passed": true,
         "scenarios": [
           {
             "name": "normal",
-            "exact_words": 36,
-            "bytes": 144,
+            "exact_words": 34,
+            "bytes": 147,
             "inputs_sha256": "b852ee99fe082be549248f6d40362c1a8787ed5bdfdf2ef302f02a0c28485a74",
-            "expected_sha256": "3aad6a4b47ba4190063100a7a70d25ca73ff8eea54bb015cf2ffc73caa9abfea"
+            "expected_sha256": "3eb4f5d3d192dfdd93c1abc8fccbc54538ed74735127808375da49a5030cd315"
           },
           {
             "name": "restart_early_return",
@@ -60557,41 +60562,41 @@
           },
           {
             "name": "empty_frame",
-            "exact_words": 18,
-            "bytes": 72,
+            "exact_words": 16,
+            "bytes": 75,
             "inputs_sha256": "b236094d835b418435b48c3a8fb501efb1a68e4a14f623f64a5a425e9f8e03d6",
-            "expected_sha256": "ea11346305838db63082a01a08e1a842ae7c2e5d06019ca70ef2190813df8ed6"
+            "expected_sha256": "82038e9e373f8f2e3291820ff5bf5993f08680210f757a4315971a3866d78e0d"
           },
           {
             "name": "future_think",
-            "exact_words": 33,
-            "bytes": 132,
+            "exact_words": 31,
+            "bytes": 135,
             "inputs_sha256": "e4d9db26e11383530986237797a9d737e1c912dca14c48b543794765339d4e4f",
-            "expected_sha256": "99006d9b195029ddf576ae8f97b610738d7c17a42d889e86a76e03c70867bcb3"
+            "expected_sha256": "897ce511b7ff0a5d21b63612e07ecd2df6f63a47c7cfd7c42637960b35eea01f"
           },
           {
             "name": "time_wrap",
-            "exact_words": 33,
-            "bytes": 132,
+            "exact_words": 31,
+            "bytes": 135,
             "inputs_sha256": "dde9d3a2e13a502f26bb7019163b70a2ff1e1055bef5064832636c76b449e847",
-            "expected_sha256": "9cc59d140038808a2fc70e9540ba0507f5ab8f7c0a1804949ad704d5b6f0a49c"
+            "expected_sha256": "a7a4e9afa919d01d99f8599958ccc2dacffb2cce3a6cc930a0b021241bc8515f"
           },
           {
             "name": "entity_listing",
-            "exact_words": 3112,
-            "bytes": 12461,
+            "exact_words": 3110,
+            "bytes": 12464,
             "inputs_sha256": "d675f04e1fbb5c5859c72403b259047ba050f643d4abbf5e6208b2e6a9d1cd27",
-            "expected_sha256": "289353553d229e233435a69537606ff9680267556fb571e3c4f739f1a8cb1c72"
+            "expected_sha256": "d8796059c5a206f113735c267e1ae6957c8a5feef8b5d9a782e20ade35b8131e"
           }
         ],
         "scenario_count": 6,
-        "exact_words": 3241,
-        "output_bytes": 12977,
+        "exact_words": 3231,
+        "output_bytes": 12992,
         "runtime_contracts": 3,
-        "test_sha256": "d9bae49c7bf734c5c345fcf72c5dc9456879a4257e847f19612ec8096a0cb82b",
-        "oracle_sha256": "cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416",
+        "test_sha256": "ad613a2d70f09606efaedb8139cd5fd84682fe03e02a9cc8223c31503216de32",
+        "oracle_sha256": "81051414985a5ee1c7acb8e74363e3d3f5e3c19cdd922e95cc9b649fd2fd5a32",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
-        "scope": "Verbatim Baseq3 G_RunFrame ordering: restart guard, frame/time update, Cvar refresh, allocated entities, client end frames, actual CheckTournament, CheckExitRules, CheckVote and CheckTeamVote, team status, CheckCvars and entity-list reset. Team-status/Cvar maintenance and entity class dispatch are ordered observed boundaries. Active vote frame sequences are additionally compared in test_votes.py.",
+        "scope": "Verbatim Baseq3 G_RunFrame ordering: restart guard, frame/time update, Cvar refresh, allocated entities, client end frames, actual CheckTournament, CheckExitRules, CheckTeamStatus, CheckVote, CheckTeamVote, CheckCvars and entity-list reset. G_UpdateCvars and entity class dispatch are ordered observed boundaries. Active vote, team-overlay and password frame sequences are additionally compared in test_votes.py and test_team_status.py.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
           "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
@@ -60630,7 +60635,7 @@
     },
     {
       "path": "build/reference/items/result.json",
-      "sha256": "5d83358eaea908da565a5a4e7c45554e730b0f502bc09817e10a45dd92b01bd8",
+      "sha256": "07e5ae1a67e30e59afc924f54f6d2d56a610426493cc9b774a7b5d829b86cbe8",
       "result": {
         "passed": true,
         "scenarios": [
@@ -60819,7 +60824,7 @@
         "exact_words": 451312,
         "string_bytes": 30625,
         "runtime_contracts": 12,
-        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
+        "test_sha256": "c103ed1e110b7189bf9374effca834f37bfbe56bd84263efd54a73b5cd28ab82",
         "scope": "Baseq3 item registration/spawn/finish, pickup eligibility and item-specific pickup functions, Touch_Item events/targets/respawn, powerup denial, dropped-item physics, and complete CTF flag take/return/capture scoring. Disabled-item Cvar registration remains an explicit boundary.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -61190,7 +61195,7 @@
     },
     {
       "path": "build/reference/missiles/result.json",
-      "sha256": "d9f9e087a8c7f2250b36e3d8e42bfcb3764381cb210a560938b24c39c7cadbb1",
+      "sha256": "8820b71405c8f24e576ca216f511459ea3c1d115c4c73e9fd90dc49abc08d6dc",
       "result": {
         "passed": true,
         "scenarios": [
@@ -84848,7 +84853,7 @@
         "string_bytes": 2612912,
         "traces": 1260,
         "cd_maps": 31,
-        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
+        "test_sha256": "c103ed1e110b7189bf9374effca834f37bfbe56bd84263efd54a73b5cd28ab82",
         "runtime_contracts": 8,
         "controlled_rejections": [
           {
@@ -85665,7 +85670,7 @@
     },
     {
       "path": "build/reference/scores/result.json",
-      "sha256": "3e00bbbe72e19fd7bfe69700e1c232cc81ab7806fa9381a1455d2e52f51c6d81",
+      "sha256": "c1c64bceb272df6e3ba85336fe1fd3e438b59e6e3d9b5cd1cf297dbde23e2f76",
       "result": {
         "passed": true,
         "scenarios": [
@@ -91273,7 +91278,7 @@
         "messages": 412,
         "log_lines": 70,
         "runtime_contracts": 12,
-        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
+        "test_sha256": "c103ed1e110b7189bf9374effca834f37bfbe56bd84263efd54a73b5cd28ab82",
         "sort_profile": {
           "name": "native Windows UCRT qsort",
           "sdk": "10.0.26100.0\\",
@@ -106994,7 +106999,7 @@
     },
     {
       "path": "build/reference/spawn_values/result.json",
-      "sha256": "f91d0c1d18ef0b9e4718ffc13c5889b407a57844373e2b7ff3e94a2777dba554",
+      "sha256": "6e4effcd2d6dbde1e8f8b411b7541a18c8d2aab639a88a2423902610e2cb15c8",
       "result": {
         "passed": true,
         "cases": 4096,
@@ -107008,7 +107013,7 @@
         "think_inputs_sha256": "ea8d9e60174bdb7acbd9a5bfc0e7fdf03aae24b654e97628f464c3fb8e64dec2",
         "think_expected_sha256": "d122208c99f71f87db5effca57f268502399813f1d14c1af8b915e73040bbd45",
         "scope": "all original spawn field types, first-key lookup, last-field assignment, CRT numbers, parser bounds; no spawn class execution",
-        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
+        "test_sha256": "c103ed1e110b7189bf9374effca834f37bfbe56bd84263efd54a73b5cd28ab82",
         "inputs_sha256": "1ce188309d9e2f68b546141a0f21d437db35de077e20ea9eaff63614ad100c43",
         "expected_sha256": "0b79eb4964a52b6530d98f3a926728b3d9dc6277b215edf08f9fdda415cfcc64",
         "original_sources": {
@@ -107049,7 +107054,7 @@
     },
     {
       "path": "build/reference/targets/result.json",
-      "sha256": "f052908325e13edfe2f7d6a6d6d91b0393f55acffd12dbdce265bdeedca63fbd",
+      "sha256": "00f0156317ffc66b26c22c4cf74c92ceefbfd022df9562b87621a321ae6ca671",
       "result": {
         "passed": true,
         "scenarios": [
@@ -107281,7 +107286,7 @@
         "actions": 9691,
         "exact_words": 40453187,
         "string_bytes": 4721815,
-        "test_sha256": "ffc73b8a6eeb25b1016bd022f8235b908068206a471528f66adc1a41d5762e91",
+        "test_sha256": "c103ed1e110b7189bf9374effca834f37bfbe56bd84263efd54a73b5cd28ab82",
         "original_missing_noise_rejection": true,
         "original_freed_timer_rejections": 2,
         "scope": "Original target, event, spawn and allocated-entity frame loop; missile/item/mover/client handlers record dispatch only; no complete G_RunFrame/server acceptance",
@@ -107323,8 +107328,860 @@
       }
     },
     {
+      "path": "build/reference/team_status/result.json",
+      "sha256": "97ad616d13d850b2df6d8225c92f0e4b9f849357cc4b93b54d9a2dcd40e33784",
+      "result": {
+        "passed": true,
+        "scenarios": [
+          {
+            "name": "strict_intervals",
+            "actions": 9,
+            "exact_words": 1233,
+            "ordered_effects": 9,
+            "bytes": 5340,
+            "inputs_sha256": "d556b634fecf11b57fd710bc7fd74cb979590c86cab02b0c1092d71ca562937c",
+            "expected_sha256": "94a7afc9c785ce57f7bbc693bdae8a187c313991c79c8172304bccd355ae4bbb",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "two_pass_update_before_send",
+            "actions": 1,
+            "exact_words": 273,
+            "ordered_effects": 3,
+            "bytes": 1228,
+            "inputs_sha256": "e21508fdf3e99750e57e1b01234f7d093f11957370f8daf4e92c765cd2e2bf96",
+            "expected_sha256": "c1650bb4a527dd27d17a62c386e215afc44384c7e393d8a9865ce942d67379a7",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "no_locations_clears_team_only",
+            "actions": 1,
+            "exact_words": 273,
+            "ordered_effects": 3,
+            "bytes": 1221,
+            "inputs_sha256": "d9573f4501fc4a398a382134204a3abc9a46d5bfbf00492f82e647798c7d0ebe",
+            "expected_sha256": "ec7256a269fe11c96073576e869a80358b81196a7de6a2b5f3b8dabbf24d2404",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "connected_inuse_team_filters",
+            "actions": 1,
+            "exact_words": 205,
+            "ordered_effects": 2,
+            "bytes": 916,
+            "inputs_sha256": "775a370d91deaf989e3ede10c313ff57df91c3cf1c0280e78a8b636fcd34a0bc",
+            "expected_sha256": "4c30a1c889c16089d0c394d898f1e107494c455501b4a33d1b2198ad4466a59a",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "wrap_interval",
+            "actions": 4,
+            "exact_words": 684,
+            "ordered_effects": 6,
+            "bytes": 3008,
+            "inputs_sha256": "2abef5ba9b8b740a5623f12ec831d16ba904faad988b78e61df0e270665043db",
+            "expected_sha256": "2b7c864cb21a5f531d658e21786a5eafd9d85e522fbce192c9e1c1a028151571",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "negative_elapsed_wrap",
+            "actions": 2,
+            "exact_words": 342,
+            "ordered_effects": 3,
+            "bytes": 1504,
+            "inputs_sha256": "f8ff474d07ecda10cf9a25864b8d473e7ce00245523b5959f81c1b4a7b26727e",
+            "expected_sha256": "ff6ba99322c912e2b214db8981fd6dbc845ce40056e633314169a4236bb13d10",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "cvar_limit_exceeds_level_limit",
+            "actions": 1,
+            "exact_words": 273,
+            "ordered_effects": 3,
+            "bytes": 1228,
+            "inputs_sha256": "030394887f6f96d89bc1488139ebd311f1c4bb472836c930dfc2e5b8aa7beaf6",
+            "expected_sha256": "c1650bb4a527dd27d17a62c386e215afc44384c7e393d8a9865ce942d67379a7",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "cvar_limit_below_level_limit",
+            "actions": 1,
+            "exact_words": 137,
+            "ordered_effects": 1,
+            "bytes": 572,
+            "inputs_sha256": "662743dddc858a642c45e11092323083f30b1cfc8cf8c001c972c2f4ce394fbc",
+            "expected_sha256": "05a5e30b943d7aec17994b1bd666bb1a42fe659dcc46c5434a470737fbc4d190",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "zero_cvar_limit",
+            "actions": 1,
+            "exact_words": 69,
+            "ordered_effects": 0,
+            "bytes": 276,
+            "inputs_sha256": "0aa9d1c7eb46078fdf09554f4e96b7b7629f44e35df3987fb441b6b8c3e046cd",
+            "expected_sha256": "bcc57ff8e4bf98d5ff639272cf7719ccc025866655355d260ec5c5c9acd592fe",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "overlay_zero_members",
+            "actions": 1,
+            "exact_words": 137,
+            "ordered_effects": 1,
+            "bytes": 556,
+            "inputs_sha256": "c9bde743de47944ed6987d3a21193405e59107f7b73fb073af81e83a9aac0403",
+            "expected_sha256": "5919f4384a4ab145522e238c422963adb5647da27c172a7c8a793fdbceb978e8",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "overlay_opt_out",
+            "actions": 1,
+            "exact_words": 69,
+            "ordered_effects": 0,
+            "bytes": 276,
+            "inputs_sha256": "a01b3447780fee6d6d1d59149ea2a813a3476f046a4ba4271d848b045f6ad9f3",
+            "expected_sha256": "3e35eb46bc8c82608835689b7c0cd89faaa00764f00be4f91ed6123b96ee177c",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "overlay_32_slot_order",
+            "actions": 1,
+            "exact_words": 137,
+            "ordered_effects": 1,
+            "bytes": 1123,
+            "inputs_sha256": "3c775df58801872c34102527a9e4ac2031669e85d98adf3e14f3704e5e1c65fd",
+            "expected_sha256": "3d32ebdd9e474f75f8e534c548baf064d3c79a6e785de50ff38aca19d235fb1e",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "overlay_sparse_slot63",
+            "actions": 1,
+            "exact_words": 137,
+            "ordered_effects": 1,
+            "bytes": 1091,
+            "inputs_sha256": "abe5214c6d8dc8a1bc61867a2c6ff79ce680e5589633c512c6b7efa8f47a1e2a",
+            "expected_sha256": "7ec74f6575dfd6e967865c6ef0e1cee0a482159fb49274d2a818b8d37af34b84",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "overlay_integer_fields",
+            "actions": 1,
+            "exact_words": 137,
+            "ordered_effects": 1,
+            "bytes": 669,
+            "inputs_sha256": "c59ac41079ed67ac4eff1ad9e3194fe58364b33ca9b288bae64c2acf52e9901d",
+            "expected_sha256": "347fb8488276985560322e88fda96debb3c3ef1f7564e1fe96958053feba2be6",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "location_empty",
+            "actions": 1,
+            "exact_words": 71,
+            "ordered_effects": 0,
+            "bytes": 284,
+            "inputs_sha256": "9451fba82089186c40d1acf44d5a0127cc9a01a8727a4a2d212feb0c7bd2030b",
+            "expected_sha256": "e190185310c03a87e6a4a535d38f00fc2d25371a5e18c340ef63c3c50de61d35",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "location_nearest",
+            "actions": 1,
+            "exact_words": 71,
+            "ordered_effects": 0,
+            "bytes": 284,
+            "inputs_sha256": "a1c4181c5ffb85bd90f57f9cd2ef72b030fae9ea8d029adbb8eb08d0c04b0b36",
+            "expected_sha256": "9ad5cce27b64b1937f54de330ba4e98cb49dda8809691e3f941ddc3cd233d60b",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "location_tie_last",
+            "actions": 1,
+            "exact_words": 71,
+            "ordered_effects": 0,
+            "bytes": 284,
+            "inputs_sha256": "2cdbbb62ff8e65b6859f28cf61390cb826b4592aeb9af406b36c787f31f6c731",
+            "expected_sha256": "9ad5cce27b64b1937f54de330ba4e98cb49dda8809691e3f941ddc3cd233d60b",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "location_tie_last_reversed",
+            "actions": 1,
+            "exact_words": 71,
+            "ordered_effects": 0,
+            "bytes": 284,
+            "inputs_sha256": "e469dd49ec175f0bbf5b30567e1e6916d1217a360e65a59809b87901e0479ce1",
+            "expected_sha256": "9ad5cce27b64b1937f54de330ba4e98cb49dda8809691e3f941ddc3cd233d60b",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "location_at_radius",
+            "actions": 1,
+            "exact_words": 71,
+            "ordered_effects": 0,
+            "bytes": 284,
+            "inputs_sha256": "e0d6a3345bff7aa22a85f074ed86136b1730c184b8712809217a57b1e0968014",
+            "expected_sha256": "5da5cbfa63621f3cea02c1079063f504b20f722614aca8ed96f40daf37ed2163",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "location_beyond_radius",
+            "actions": 1,
+            "exact_words": 71,
+            "ordered_effects": 0,
+            "bytes": 284,
+            "inputs_sha256": "aa54ce5603fcc22afb32469f9a1cde24c81b9be6aff01e1c5c6c7d0ce9624a05",
+            "expected_sha256": "e190185310c03a87e6a4a535d38f00fc2d25371a5e18c340ef63c3c50de61d35",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "location_float_rounded_tie",
+            "actions": 1,
+            "exact_words": 71,
+            "ordered_effects": 0,
+            "bytes": 284,
+            "inputs_sha256": "1284162ff5463664e61d2b25c0616aa9f9fb03c72968523a5c94246fa5297874",
+            "expected_sha256": "9ad5cce27b64b1937f54de330ba4e98cb49dda8809691e3f941ddc3cd233d60b",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "visibility_open",
+            "actions": 2,
+            "exact_words": 208,
+            "ordered_effects": 1,
+            "bytes": 855,
+            "inputs_sha256": "8f812b325af138994019c3d0bf731fa13b16bea31f7aa7bc48497f1b6a9bcbdf",
+            "expected_sha256": "9db371e1596d08effd16fd66cb3f12184770e942ae2a93fe8c3517d8c5bce5f4",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "visibility_pvs_blocked",
+            "actions": 2,
+            "exact_words": 208,
+            "ordered_effects": 1,
+            "bytes": 855,
+            "inputs_sha256": "8f812b325af138994019c3d0bf731fa13b16bea31f7aa7bc48497f1b6a9bcbdf",
+            "expected_sha256": "dfb8a01f5bab4efed5cb6d000d2aff0732e1d25e7b691a1e7c666b70e77eca83",
+            "map_sha256": "2aa00e9c32e61d54a597b473dbff03c3c74cfbe8316079e345f13bc19a8de690"
+          },
+          {
+            "name": "visibility_no_vis",
+            "actions": 2,
+            "exact_words": 208,
+            "ordered_effects": 1,
+            "bytes": 855,
+            "inputs_sha256": "8f812b325af138994019c3d0bf731fa13b16bea31f7aa7bc48497f1b6a9bcbdf",
+            "expected_sha256": "9db371e1596d08effd16fd66cb3f12184770e942ae2a93fe8c3517d8c5bce5f4",
+            "map_sha256": "9189c384cb2cd05d9c04894d26182aa88f0de498d957a498cb4e455d2215c001"
+          },
+          {
+            "name": "portal_open_close_reference_counts",
+            "actions": 10,
+            "exact_words": 834,
+            "ordered_effects": 2,
+            "bytes": 3382,
+            "inputs_sha256": "ae703af189f57be8bc8131f65ae7e6d0ac6b1c9fdb7d20454102fc8a2d5c2a83",
+            "expected_sha256": "bd995632a0b1a442d671713e9425b50316e0c9e6d95e15926c45f577435d2a2c",
+            "map_sha256": "3f16f5d35b448e4571689242191f5a8117aa120b49ab287ca1cd7770f95fcd1f"
+          },
+          {
+            "name": "moving_client_location_changes",
+            "actions": 4,
+            "exact_words": 684,
+            "ordered_effects": 6,
+            "bytes": 3008,
+            "inputs_sha256": "177a3b0db0a9702a8bc8cdd3b850548821a4298bbefcd418e95eb39915c3288e",
+            "expected_sha256": "ca77680652f312bf7e43eb0e9bd2c7dcf5f22ac99eb80f1ee2421ebe57a25660",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "password_initial_and_change_only",
+            "actions": 6,
+            "exact_words": 429,
+            "ordered_effects": 3,
+            "bytes": 1749,
+            "inputs_sha256": "076df0ff1e8c13af685ec6cb89f8b43a3c5fc62cf64a1df11056e93ab3b5d747",
+            "expected_sha256": "46cd58d2243566cf283d84e49dd00d073533793ced77f725ee29c107e9519078",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "password_none_ascii_case",
+            "actions": 10,
+            "exact_words": 740,
+            "ordered_effects": 10,
+            "bytes": 3070,
+            "inputs_sha256": "0346da8b38c9d6baf5dd689f081a993c11b94e58307cef0a2effb41ab5b07396",
+            "expected_sha256": "13bfd188f2c38e96f081c9c520f3848bd0b311fa0b6cd89a6735b689f4f17049",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "password_counter_edges",
+            "actions": 6,
+            "exact_words": 434,
+            "ordered_effects": 4,
+            "bytes": 1780,
+            "inputs_sha256": "0d3493a9bc701da3617082b167e47f0c130b4e2b1c150b2dc5e63ab765746ae1",
+            "expected_sha256": "eebf0ca01d6248f339dcf412eb9b8a7e5eecbef8d553b4fb72aa367051842b27",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "password_native_capacity",
+            "actions": 2,
+            "exact_words": 148,
+            "ordered_effects": 2,
+            "bytes": 614,
+            "inputs_sha256": "24139a70a89c2e63ad4b519ea0828ea01a74f8b897bffa6a94056e4f014cb7b9",
+            "expected_sha256": "1013b528eea3d0f5f144dace7c5039669d7e6ae25ac810ae09f763e9edf02458",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "password_module_state_across_levels",
+            "actions": 9,
+            "exact_words": 636,
+            "ordered_effects": 3,
+            "bytes": 2577,
+            "inputs_sha256": "12074ff96cbb7ab5c2246f5ed7c7cc6d23ae0439baab8d2372aecab76bbcaed4",
+            "expected_sha256": "87bf289445c28b66e74367c5a2ec4e3a5b04b418bd55b38c69dd3a21cc9e5b2f",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "active_frame_team_and_password",
+            "actions": 4,
+            "exact_words": 797,
+            "ordered_effects": 43,
+            "bytes": 3471,
+            "inputs_sha256": "645655978c49a599ccb4abf3163646bf427c43c5a5544bcf80b5ff793276eb9c",
+            "expected_sha256": "90086c899027c921e620b253b8557c85d2eb0f19b8d242b0e86c63b994fe603a",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_0",
+            "actions": 11,
+            "exact_words": 1047,
+            "ordered_effects": 4,
+            "bytes": 4977,
+            "inputs_sha256": "828443ab2e7c0e960f77cca279fb644ff1e3aba0e48a45d1294282e6ed99e893",
+            "expected_sha256": "1b5376880ec86680b37d79c02ac57fc49acbeec13f9b1d803dd6538aff09ef8a",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_1",
+            "actions": 11,
+            "exact_words": 1183,
+            "ordered_effects": 6,
+            "bytes": 6376,
+            "inputs_sha256": "5697ccace5273942cad03e9b22b6f1ecc506e45631fc76fcc475256b0accf98b",
+            "expected_sha256": "73debb4adcb0f6b29cafa97a7e1eba906e3a326f86efdaa328e063dba0e4497c",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_2",
+            "actions": 11,
+            "exact_words": 843,
+            "ordered_effects": 1,
+            "bytes": 3487,
+            "inputs_sha256": "521edadb15a59ed87368444fd7454f8860bc0dd4f9382a372b5f185c159885de",
+            "expected_sha256": "24d8ba027ae247ccd54fc3a785074b2255c5bd12521f07e171146d3174912063",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_3",
+            "actions": 11,
+            "exact_words": 911,
+            "ordered_effects": 2,
+            "bytes": 3967,
+            "inputs_sha256": "f684c84a98bc225e81e5848f9da70295ca29d7b27b01b7b73d3ef2ee9256b7d0",
+            "expected_sha256": "2df753040c73efe485a11d27f22b236f7c56f6b985a7cc3e6b733379fb13aabe",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_4",
+            "actions": 11,
+            "exact_words": 843,
+            "ordered_effects": 1,
+            "bytes": 3464,
+            "inputs_sha256": "1ad7f802db4e822e1cefdd82df4ee469af0dd0e3febde8d17166e61c6eae08b5",
+            "expected_sha256": "526844b70061cfda5a5934abbe1a8a92e23f61054706373e88717c98fae6d2a5",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_5",
+            "actions": 11,
+            "exact_words": 911,
+            "ordered_effects": 2,
+            "bytes": 3995,
+            "inputs_sha256": "6990dcae78e796c2c29e7726b504aab3d88b24a2197c93448fa4128c24b3797a",
+            "expected_sha256": "4c2a13b3065a95a5ca71a088ca211b7da7e87c819d76fe9db9dbea5e19073408",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_6",
+            "actions": 11,
+            "exact_words": 1115,
+            "ordered_effects": 5,
+            "bytes": 5658,
+            "inputs_sha256": "519c28cf04aec586eb8cca9b2de039d9a74795e6bd667670d3238360d3f88a5e",
+            "expected_sha256": "454ed64e46e234d6e1276ad352698f525052743a96d43cc84e4d19cb349d8957",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_7",
+            "actions": 11,
+            "exact_words": 1047,
+            "ordered_effects": 4,
+            "bytes": 4816,
+            "inputs_sha256": "7dbe98fe0ce826610a561269e16122c615c40099e9a567f919b875362b2bcd49",
+            "expected_sha256": "dfe97cd5af6913c397e549a676b29d02eab5d3373d9836d7f4ec54624fbd9c61",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_8",
+            "actions": 11,
+            "exact_words": 911,
+            "ordered_effects": 2,
+            "bytes": 4036,
+            "inputs_sha256": "a5bea53f1a2a7fb83ead5d27f2d62ea6897d86d9c343df86f43d4ef85e1d27aa",
+            "expected_sha256": "1806255db487197608a334bde4bf1d78143fb961f30de516b2ff97e2c1b13223",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_9",
+            "actions": 11,
+            "exact_words": 979,
+            "ordered_effects": 3,
+            "bytes": 4351,
+            "inputs_sha256": "182d1a78c0919aff38f8c32e4ddf83e6ad6931a0ea84bb6be53aa958197ca2ce",
+            "expected_sha256": "0eacaf54dc4ebe62086046b94ff2b13204db15763302ed4613b981711980aa2a",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_10",
+            "actions": 11,
+            "exact_words": 1047,
+            "ordered_effects": 4,
+            "bytes": 4985,
+            "inputs_sha256": "3dce94c7af56b9d0cb1eacb9ea02e1496086b074922868f563e2a4be3c318043",
+            "expected_sha256": "8ddcc9e41725adf3edfdf1662ae848fef88c7afad39ee5840ef9e1c5ecec65d4",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_11",
+            "actions": 11,
+            "exact_words": 979,
+            "ordered_effects": 3,
+            "bytes": 4507,
+            "inputs_sha256": "dd727be02f54ec85c680e62f1b6991c6d9a9e30d891e061871414aaa41aa0385",
+            "expected_sha256": "f59bb6575fc43b37aca4b6b74b1f0731aac2505e1a8963719c7292cc4795bf74",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_12",
+            "actions": 11,
+            "exact_words": 1115,
+            "ordered_effects": 5,
+            "bytes": 5100,
+            "inputs_sha256": "df101f7fd260115ee039b41d15be4eba7ebfa91b9fe84ce97e95d0d55f96e82a",
+            "expected_sha256": "076e9fac6fe6713b81b6032f79568ea8e2df4ec00a029eb0909d8fb7a56f2ff6",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_13",
+            "actions": 11,
+            "exact_words": 1183,
+            "ordered_effects": 6,
+            "bytes": 5823,
+            "inputs_sha256": "b9c6541aa209b48c6703a2ac526d7110ff7ede607976f55da10da8b2c1c6ba56",
+            "expected_sha256": "17687b5167c7db165fc1847fc615ac058459c2d42e8ce662bd3553789a059841",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_14",
+            "actions": 11,
+            "exact_words": 911,
+            "ordered_effects": 2,
+            "bytes": 4024,
+            "inputs_sha256": "63a97abd913ed5d8f21df7100fcc54cbbed7cf5f8d866da345fa7a2563f0ecc0",
+            "expected_sha256": "3a9aad38220b3e063c7ca1f0775f4a530bfe61df28e0b4fdc44c984dd9381ba8",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_15",
+            "actions": 11,
+            "exact_words": 1047,
+            "ordered_effects": 4,
+            "bytes": 5029,
+            "inputs_sha256": "cbc8b67f2f4a9297fece373bf92e52463759a10e333558380da249eb3a3d91af",
+            "expected_sha256": "480ab0841c1ae4910c3e283a192cde7523a9c5c73e0761345376c9cb594db01a",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_16",
+            "actions": 11,
+            "exact_words": 979,
+            "ordered_effects": 3,
+            "bytes": 4511,
+            "inputs_sha256": "170e466748fa93681ecddeb570e66e47a41296cf6882dd4bc5992d28f2d63624",
+            "expected_sha256": "aed1ffd8750571c29c65111daf4b3d0d390d82b49e7ca739fcfb6a083cf53881",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_17",
+            "actions": 11,
+            "exact_words": 911,
+            "ordered_effects": 2,
+            "bytes": 3958,
+            "inputs_sha256": "5130d988cac8981cdf6d5bfea4647d9f0b67e5b122b7be8e888d5ff942eced93",
+            "expected_sha256": "72d735801c8937fdbc1e8a6a07dcc521d53a1cbbef4d388f5b23930ce546093f",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_18",
+            "actions": 11,
+            "exact_words": 979,
+            "ordered_effects": 3,
+            "bytes": 4425,
+            "inputs_sha256": "b91b1e97f506c290323cae6c51020c8eefa0000f8bc523d98009fa3c90d12d6f",
+            "expected_sha256": "0214a978da902eab21a3925d36b998ddfd87dd1bd4bb02e3e8e3b01b25f3eac3",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_19",
+            "actions": 11,
+            "exact_words": 843,
+            "ordered_effects": 1,
+            "bytes": 3521,
+            "inputs_sha256": "9f44ef1be31360b7485446cd6704e5b01c82d43b1df011fecada527231a2fa92",
+            "expected_sha256": "8eeb3f6285e4b0433b6d91e472a58a68a6c1709afde41a35c7f01f2dd881ba6d",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_20",
+            "actions": 11,
+            "exact_words": 911,
+            "ordered_effects": 2,
+            "bytes": 4010,
+            "inputs_sha256": "04e2d5f46aeef76ac97ee861f48c8e14c78d5c3ffb1fc1929e7576a7d2971aba",
+            "expected_sha256": "84e50d84942ad2255a064fe16bbc40129653b8f18b1b0f538d9937760f126f87",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_21",
+            "actions": 11,
+            "exact_words": 979,
+            "ordered_effects": 3,
+            "bytes": 4412,
+            "inputs_sha256": "505e56db8b7705699cc13a40008bad351a6ec8a224c1e9fd691c6fbcca8061b7",
+            "expected_sha256": "f650832c964d4b6b761eb2a0f95ff45bfc323f889fa1d7303cf49a0599775027",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_22",
+            "actions": 11,
+            "exact_words": 1183,
+            "ordered_effects": 6,
+            "bytes": 5956,
+            "inputs_sha256": "28c23f37bb3ced2d2bc27d5b53e8dea7b48dc6aa26fc626b12590348eab292b2",
+            "expected_sha256": "514a3f8467153c4f9752d78c805720782b75b1236c7d30fc4b164842c1b27088",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_23",
+            "actions": 11,
+            "exact_words": 1047,
+            "ordered_effects": 4,
+            "bytes": 5040,
+            "inputs_sha256": "44404eff413b4652ea2291d2782ed77d74fa98f1e173d1b2d6503fcf898e069f",
+            "expected_sha256": "95033b2420590a22b78257dc18eebdc1a977d685ab43c3b6ce3d90aedcf9f7d4",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_24",
+            "actions": 11,
+            "exact_words": 911,
+            "ordered_effects": 2,
+            "bytes": 4013,
+            "inputs_sha256": "9bc5f790d15f6014d5a4ca0225bad0268ffa8299b3f7181d288e5450e964f8f5",
+            "expected_sha256": "6110d6295b5fdd33df872465f906a844f0dacbfc47598b9b46f574a8044c1ee9",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_25",
+            "actions": 11,
+            "exact_words": 1115,
+            "ordered_effects": 5,
+            "bytes": 5328,
+            "inputs_sha256": "ce44667e26d118ff86fe05e38434f73631735d5647966d453cfbf3e19dba46a4",
+            "expected_sha256": "15f9639b62feae4e59cf1733e3b0534752ee8735c12acb043eb1ab604e9c8917",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_26",
+            "actions": 11,
+            "exact_words": 979,
+            "ordered_effects": 3,
+            "bytes": 4600,
+            "inputs_sha256": "c325d757c93902c5428ea7ca45dc56bfc01403c533bc660a8b431d62b5bba34d",
+            "expected_sha256": "aa247183041ac4b304d656c73b6f58f4d29f47903a432cb83ffbb097e9fa3614",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_27",
+            "actions": 11,
+            "exact_words": 1115,
+            "ordered_effects": 5,
+            "bytes": 5540,
+            "inputs_sha256": "dc30fc1cf3c08bbdee2c6356296e6082f3af3eac5ab15175498673d2f6733dfb",
+            "expected_sha256": "4965c0d3251afa19855286d75dc29ef60ec3c00e65f6e630ca4422d5bd835eb4",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_28",
+            "actions": 11,
+            "exact_words": 979,
+            "ordered_effects": 3,
+            "bytes": 4454,
+            "inputs_sha256": "361ed04eba29abf7fcf86c121c6ec3e5f5fd3beb31dcf3f180e8ae29363d7597",
+            "expected_sha256": "ba176dffc024ead4c094492135bf7f1fde44155c6635899336ab3ceaefa18345",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_29",
+            "actions": 11,
+            "exact_words": 1251,
+            "ordered_effects": 7,
+            "bytes": 6266,
+            "inputs_sha256": "4a9b34e3ecd62aee5aed4cbcf0528bcbee0af9b4036477e8b952a320ed0c39fa",
+            "expected_sha256": "0bbaddb88a1ca83c3cfb95506f0ff9820c49a415232788bcd8a7d7a17d6077f2",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_30",
+            "actions": 11,
+            "exact_words": 979,
+            "ordered_effects": 3,
+            "bytes": 4661,
+            "inputs_sha256": "0a9c81364df1a905fe25ae362ff437728c0a1a7cd9040acf3ef32c0e36feb454",
+            "expected_sha256": "99ddf80de4d65886898f612b3e8dd8860c1cb3ceed15356d6878ef0e9e259ddf",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_31",
+            "actions": 11,
+            "exact_words": 979,
+            "ordered_effects": 3,
+            "bytes": 4443,
+            "inputs_sha256": "2d018e83c5c1bf7d5620eff1572540a92aa2462c1839d524afdb015c71d29cbd",
+            "expected_sha256": "e770e48b7d377274b12b1ba1d13f4098ffc0bb8a84a58bb221799096304c27b4",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_32",
+            "actions": 11,
+            "exact_words": 1115,
+            "ordered_effects": 5,
+            "bytes": 5250,
+            "inputs_sha256": "4dcca3d04aa18f4bc7ffb8ee8e41b7b3c90aa335b0c96e3c18819ce72800ee0f",
+            "expected_sha256": "24b8f36b4fa00a2b82d112df4b1dca87111c361fd08b0ef9cd40b0f7ff13d631",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_33",
+            "actions": 11,
+            "exact_words": 911,
+            "ordered_effects": 2,
+            "bytes": 3911,
+            "inputs_sha256": "469efe46d39d02d452e9f8fd5d58375362373a560838be850ce824586c728dc3",
+            "expected_sha256": "28ec60099b827922b5e8f07a50cb62cc09efea0504fec48bf44c9e9e52daded9",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_34",
+            "actions": 11,
+            "exact_words": 1319,
+            "ordered_effects": 8,
+            "bytes": 7291,
+            "inputs_sha256": "59173337857eafb2417a6c786b3420a98a56a733447ad2f429a009be9f3d890a",
+            "expected_sha256": "dab383e714ca14fec43f90d601e254b7d5c2f1bc7452d3bb1db3ebf4db2de252",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_35",
+            "actions": 11,
+            "exact_words": 1183,
+            "ordered_effects": 6,
+            "bytes": 5636,
+            "inputs_sha256": "f21cce0135921ab9bc125bda8e2b575e55b516fe995b76941ab4e9b9a346ef5e",
+            "expected_sha256": "426550390562afb509cff4df5567167fab0167cff6f1fecdbdd040f4cd0ad1ab",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_36",
+            "actions": 11,
+            "exact_words": 911,
+            "ordered_effects": 2,
+            "bytes": 4003,
+            "inputs_sha256": "fbdad79a3088509973bb92e897d9dca63a2ab2ff17df71f24c7caccd1b9fd15b",
+            "expected_sha256": "dba447036b4c5427afa36ff523034ee5679543d7b19e72ae6ad1c550f0705547",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_37",
+            "actions": 11,
+            "exact_words": 1047,
+            "ordered_effects": 4,
+            "bytes": 5352,
+            "inputs_sha256": "54c69d8ef15bd4cf1a4b11b41fd5f3be0297bb6242bd137d08a23257a811c36c",
+            "expected_sha256": "07441120559895be56a0cbe81e029574b11af1e8a5c9341c4f261ab6e0dbb056",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_38",
+            "actions": 11,
+            "exact_words": 979,
+            "ordered_effects": 3,
+            "bytes": 4567,
+            "inputs_sha256": "2e314ff62a5f20cc7ac6fa0ff835a34f54d0a1b9b455214fe6309f3a72046910",
+            "expected_sha256": "5367578d09e3b423403f4909bee09bc033ceffb285d0e6d5ac6f44a6d1e20022",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_39",
+            "actions": 11,
+            "exact_words": 979,
+            "ordered_effects": 3,
+            "bytes": 4598,
+            "inputs_sha256": "98131651556e7c26d48afd2546669873bbebc32d8ab99842534f461e86a97c82",
+            "expected_sha256": "439d865ca0ebe32fc1aaac9557dd8843090106c913b988592c83cd7e5f62e357",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_40",
+            "actions": 11,
+            "exact_words": 1047,
+            "ordered_effects": 4,
+            "bytes": 4856,
+            "inputs_sha256": "81b488aeb6b8ae741d5ae06af1d6a4815d4c6298795c5421ba1daa3c21904193",
+            "expected_sha256": "4f8724dae711b7ee927dcee8bc1312b41fb3f8ce41667a4fa4a97b522e23665a",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_41",
+            "actions": 11,
+            "exact_words": 1251,
+            "ordered_effects": 7,
+            "bytes": 6457,
+            "inputs_sha256": "f5df9be153e43df5513314789a6ee88af723328323485236de7aaec6af661cee",
+            "expected_sha256": "a27ccb8c817749e5b42be9622974be93754e587e64275e35093e08a01764655a",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_42",
+            "actions": 11,
+            "exact_words": 979,
+            "ordered_effects": 3,
+            "bytes": 4165,
+            "inputs_sha256": "b16a35fcaf9c2f3588bf083aff48195a898c00e2bdad28092f96f0dc340480d9",
+            "expected_sha256": "11b0b53131edcad3e3c3777e6fa44a885fb691b2467892cf35059f033d53f941",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_43",
+            "actions": 11,
+            "exact_words": 1047,
+            "ordered_effects": 4,
+            "bytes": 4809,
+            "inputs_sha256": "48a20c6654331010db8f8c3fe07c9d0f48cdd9bf54da623acc0662d47523a56b",
+            "expected_sha256": "23311bb38ca9ce3be27078c79b33f4d9169a0dadd130f1096a3d76c6bae61b4d",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_44",
+            "actions": 11,
+            "exact_words": 979,
+            "ordered_effects": 3,
+            "bytes": 4453,
+            "inputs_sha256": "fa92111a3114083a696e775b74a05be11f3189c1aa3a07d2091864adc7796a1e",
+            "expected_sha256": "887bfc02b8807ce6055553791fee5effb6eb2c57c6e5b7966347dac2bb291f66",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_45",
+            "actions": 11,
+            "exact_words": 1115,
+            "ordered_effects": 5,
+            "bytes": 5917,
+            "inputs_sha256": "275778673833b1fa4888fadd0e5423b64be3b4dbc2ea0c59b9e5a2631481c21e",
+            "expected_sha256": "c088e92fedaf466c719022bf07a697d4e83aef2f29df0824c4fed77c463e57b3",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_46",
+            "actions": 11,
+            "exact_words": 1115,
+            "ordered_effects": 5,
+            "bytes": 5308,
+            "inputs_sha256": "dbaa6d6fcc746a838d11f2a0af08621c9dcc09c2bf7f18b05bbce992f8448200",
+            "expected_sha256": "3997fcff0aac67a130f50867dc58b0e608857e9211dd8d9a0a870e23f708bed5",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          },
+          {
+            "name": "seeded_selection_overlay_47",
+            "actions": 11,
+            "exact_words": 1115,
+            "ordered_effects": 5,
+            "bytes": 5493,
+            "inputs_sha256": "5c8209ce9877de2e550a969dbf3f74b23627150d3d835459cf6f9519ee96c765",
+            "expected_sha256": "4cb80c0a9b1b1510c588eeb77ccf9a352e19741210bce3f9d51d6022664c652f",
+            "map_sha256": "59ca38d7af37d59865b45a3f5510e8fd7556101a833d8c7fb7dad3e4e19c0659"
+          }
+        ],
+        "scenario_count": 80,
+        "actions": 618,
+        "exact_words": 59233,
+        "ordered_effects": 288,
+        "output_bytes": 275011,
+        "runtime_contracts": 12,
+        "test_sha256": "89332781f317c76c76d0a642d93f0c3848526cb2737af7640734d177ada36a2e",
+        "oracle_sha256": "81051414985a5ee1c7acb8e74363e3d3f5e3c19cdd922e95cc9b649fd2fd5a32",
+        "scope": "Unchanged Baseq3 Team_GetLocation, SortClients, TeamplayInfoMessage, CheckTeamStatus and CheckCvars, including actual CM PVS/area portals and G_RunFrame integration. Engine Cvar refresh and command delivery remain observed host boundaries. Password cache has game-module lifetime.",
+        "original_sources": {
+          "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
+          "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
+          "Quake-III-Arena-original-source/code/qcommon/cm_test.c": "2e5d1139c88a5ffc6dea01349865f91d210158491931090d4c7f07d3f11cf4e8",
+          "Quake-III-Arena-original-source/code/qcommon/cm_patch.c": "9fd50664bb46f77a6bf3f7d06a69500867bff1cae4b94c9be168c4ad9e03ca1f",
+          "Quake-III-Arena-original-source/code/qcommon/cm_polylib.c": "b1c1cf3a19ada8682b4ca58556b316144940f5bee5ca59ae4dd6ebe1a947a6ec",
+          "Quake-III-Arena-original-source/code/qcommon/md4.c": "fc5be3df4b9c463711e428b98bdc357351e5aeaa13e785073ec7a5921ccc5b4c",
+          "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29",
+          "Quake-III-Arena-original-source/code/game/q_shared.c": "724dae5f0a9de8bc6ced68893f9f59c5625deca4a1e194b11f5be348fdf2481b",
+          "Quake-III-Arena-original-source/code/game/bg_misc.c": "c71034761ec3f75fd8952f2d75a7f057d664b5cf97b5edf26ae020da65a486e0",
+          "Quake-III-Arena-original-source/code/game/bg_pmove.c": "3ced04aed8686d3da051887dc8c4ace88a24b45a6d0bb4e4d5238cd53cb7a7fc",
+          "Quake-III-Arena-original-source/code/game/bg_slidemove.c": "327fa83a0c523da8a7e8b4fbbbba40cf8870a28613459289ef0e8a865e6bd903",
+          "Quake-III-Arena-original-source/code/game/g_utils.c": "8fdebd93b8976f979a5ac4887523884f8f2b4246a8bd9e8f8d67829ab577163b",
+          "Quake-III-Arena-original-source/code/game/g_client.c": "52a3c908aeff487cc924f54991bc7b4f523f6483a0ff060edc3aa32367f213bf",
+          "Quake-III-Arena-original-source/code/game/g_misc.c": "bf29bf68e000b068497d45cd4be9bbcfb9730797e21e07044ee4b158d74f5441",
+          "Quake-III-Arena-original-source/code/game/g_target.c": "34249fdb42c433e88baa10ce1c10d5214373da0b78b7e6b21ee7afa542d7ef93",
+          "Quake-III-Arena-original-source/code/game/g_team.c": "58005485a30605e33d826da14952abf5158832d9d8bf098178e3b8cc97587a02",
+          "Quake-III-Arena-original-source/code/game/g_mover.c": "4c9934ebd38ee2634affc102cfc423df15fedbd81186b42726da5ef6c72c7500",
+          "Quake-III-Arena-original-source/code/game/g_main.c": "b98c2b5cb2ed272bcce36acd1e5eda1c57d499b9ecd3549ba9a08f69dd1363d4",
+          "Quake-III-Arena-original-source/code/game/g_trigger.c": "09f073e27b764bd8c612c66ac8504deeb05b6f0e721e50b4b375a81b2281dae6",
+          "Quake-III-Arena-original-source/code/game/g_combat.c": "a19a66ecaf1d1bf557e350e08ea57da8356d1a66ee4f61d8cc2fae455c312a48",
+          "Quake-III-Arena-original-source/code/game/g_weapon.c": "cc12c2c9986503206c465ee480e4cf97f9b143380604548ef45c0c54ae704e8a",
+          "Quake-III-Arena-original-source/code/game/g_missile.c": "9915e67656332a2b1765372eca42981823f9bc569866770046f58962505285a2",
+          "Quake-III-Arena-original-source/code/game/g_items.c": "168044c842d19b64000ba3e1b3715e8038c871b268c90a61535cb6c9aaa6535c",
+          "Quake-III-Arena-original-source/code/game/g_active.c": "f56d9e3c3fb6bea5d09bf811ac6aba0e2ab9af2391403363b3ac295c01eb3326",
+          "Quake-III-Arena-original-source/code/game/g_cmds.c": "52fa4d7f279f374f4e2de31fbb20e35c3d78676b4ce67168599fb5bab99cce59",
+          "Quake-III-Arena-original-source/code/game/g_spawn.c": "611d4c13b7794785e1c475f93d2dfcbfad3173132b76e031e80db7b8653bd268",
+          "Quake-III-Arena-original-source/code/game/g_local.h": "10ad6b77320234140ec7515cd3ebea4267f3de260d009172014cee7e99ac09f6",
+          "Quake-III-Arena-original-source/code/game/q_shared.h": "7c356992d3f8b722eeb0160c44a0515bd5a83538ffb86190ca138e352e874115",
+          "Quake-III-Arena-original-source/code/game/bg_public.h": "29679e04ba6f0f730c5ca200410330e057609da59e563e36d101f329fafd09e7",
+          "Quake-III-Arena-original-source/code/server/sv_game.c": "dda52c608aec154610aa554c7a15d2f597196193e813127114c43636fcc1f57b",
+          "Quake-III-Arena-original-source/code/server/sv_world.c": "d67f952c374902c71b6e65523ae983f0d6081e16c379b566779a1fd1b05aba4d",
+          "Quake-III-Arena-original-source/code/server/sv_init.c": "cc7446cc30bf71275e8392988e32ad324fc2ed274bdc927194c8fd9e9ddabff6"
+        }
+      }
+    },
+    {
       "path": "build/reference/tournament/result.json",
-      "sha256": "e4f5dc20e53e85aab960d2a76020c2a6a1bc1569b4a37d24302b45fd2daad684",
+      "sha256": "1225bbad484b787698c8561036bc23d5717b0c11353054fb887927ccd2f0f398",
       "result": {
         "passed": true,
         "scenarios": [
@@ -107417,8 +108274,8 @@
         "exact_words": 115,
         "output_bytes": 547,
         "runtime_contracts": 3,
-        "test_sha256": "7ce17d1b0472cb33741755e7fa00f769688ec6c7c672c4535168a97e35773815",
-        "oracle_sha256": "cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416",
+        "test_sha256": "b07d7f1ef9358e688e6e54a5d44211cb7ec643798375c9f25bc0f27538311e48",
+        "oracle_sha256": "81051414985a5ee1c7acb8e74363e3d3f5e3c19cdd922e95cc9b649fd2fd5a32",
         "scope": "Verbatim Baseq3 CheckTournament and TeamCount: tournament promotion/wait/countdown/restart, FFA/team readiness, warmup Cvar changes, configstrings, logs and 32-bit time boundaries. Promotion and console delivery are observed engine boundaries.",
         "original_sources": {
           "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
@@ -109882,7 +110739,7 @@
     },
     {
       "path": "build/reference/votes/result.json",
-      "sha256": "42ca8e799086c578624d86b707258541d37299329afe7063af2bf192f102e839",
+      "sha256": "d3599dcb0b03cd2e744fbcd74e9bc348547734c33e1fefda84be145263d6e783",
       "result": {
         "passed": true,
         "scenarios": [
@@ -110258,20 +111115,20 @@
           {
             "name": "frame_votes_and_delayed_command",
             "actions": 3,
-            "exact_words": 1148,
-            "ordered_effects": 22,
-            "bytes": 4949,
+            "exact_words": 1134,
+            "ordered_effects": 17,
+            "bytes": 4904,
             "inputs_sha256": "2e32c0a9630b23412aa5c9249347cb990fe0fb49ebef5f261dd5f39d1b80da38",
-            "expected_sha256": "1b29110cff8be654297d405d2899dfd718c1b9bbc6aa926acfda601cb0ff43a6"
+            "expected_sha256": "4425fcba466e0713252788495e45ea9d5fe8fbc8859d3f85bb24765d7bd26867"
           },
           {
             "name": "frame_existing_command_then_failures",
             "actions": 1,
-            "exact_words": 396,
-            "ordered_effects": 10,
-            "bytes": 1694,
+            "exact_words": 394,
+            "ordered_effects": 9,
+            "bytes": 1697,
             "inputs_sha256": "b0bfce37fb4abf8c12d8db5d61b48f8e872db1b10347b2424eb4dc8b94da7632",
-            "expected_sha256": "d8fe5e41967fd8a90332617baf240c96806e213c468b13d75912e713c32077da"
+            "expected_sha256": "e13d14ee61a686bbf01969ed4f7d2435ab9ce921164cd6c1a2ac14ab1091a8e0"
           },
           {
             "name": "majority_0_0_0",
@@ -111788,12 +112645,12 @@
         ],
         "scenario_count": 211,
         "actions": 241,
-        "exact_words": 85671,
-        "ordered_effects": 462,
-        "output_bytes": 363195,
+        "exact_words": 85655,
+        "ordered_effects": 456,
+        "output_bytes": 363153,
         "runtime_contracts": 11,
-        "test_sha256": "97a957446eca2be51a917341b185ff4179bf8bd03cbea44efd44bde069fd134b",
-        "oracle_sha256": "cd54abf841fbae410f8daf19554d4b0b85f0265b3dbb31edad44610df123b416",
+        "test_sha256": "9a21807b5ef0d5ea7204f3d41b9e5d5a8aee793b3f2842723bcbc256fb495b9b",
+        "oracle_sha256": "81051414985a5ee1c7acb8e74363e3d3f5e3c19cdd922e95cc9b649fd2fd5a32",
         "map_sha256": "22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c",
         "scope": "Unchanged Baseq3 CheckVote, CheckTeamVote, PrintTeam, SetLeader and CheckTeamLeader: state, messages, console commands, configstrings, leadership and actual G_RunFrame integration. ClientUserinfoChanged and engine delivery remain observed callbacks; vote initiation and network transport remain open.",
         "original_sources": {
@@ -111852,7 +112709,7 @@
     },
     {
       "path": "build/verification.json",
-      "sha256": "e45a79136a916fbf4fa258b9d35c6091e802d97c6e82ec6a1b0e2d696df0fd68",
+      "sha256": "fc8b85bdce6584fa70ed07b053e95bd9a2db3dc87c695ead5860e0db989632dc",
       "result": {
         "passed": true,
         "scope": "implemented foundations only; full game port remains incomplete",
@@ -111974,6 +112831,10 @@
           },
           {
             "script": "test_votes.py",
+            "arguments": []
+          },
+          {
+            "script": "test_team_status.py",
             "arguments": []
           },
           {

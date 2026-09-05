@@ -26,7 +26,7 @@ static void runVotes(FILE *in){
     for(i=0;i<2;i++)voteReadString(in,level.teamVoteString[i],sizeof(level.teamVoteString[i]));
     for(i=0;i<MAX_CLIENTS;i++){
         if(fread(client,4,4,in)!=4)exit(74);
-        g_clients[i].pers.connected=client[0];g_clients[i].sess.sessionTeam=client[1];g_clients[i].sess.teamLeader=client[2];g_entities[i].r.svFlags=client[3];
+        g_entities[i].client=&g_clients[i];g_clients[i].pers.connected=client[0];g_clients[i].sess.sessionTeam=client[1];g_clients[i].sess.teamLeader=client[2];g_entities[i].r.svFlags=client[3];
         voteReadString(in,g_clients[i].pers.netname,sizeof(g_clients[i].pers.netname));
     }
     strcpy(configs[CS_VOTE_TIME],"vote-before");strcpy(configs[CS_TEAMVOTE_TIME],"red-before");strcpy(configs[CS_TEAMVOTE_TIME+1],"blue-before");

@@ -60,6 +60,10 @@ function configure(level,input,check)
   level.clientEndFrameFn = endFrame; level.cvarSetFn = cvarSet
   level.time = n.readI32(input,0); level.previousTime = n.readI32(input,4); level.framenum = n.readI32(input,8)
   level.restarted = n.readI32(input,12) != 0; level.maxclients = n.readI32(input,16); mode = n.readI32(input,20)
+  level.maxclientsCvar = level.maxclients
+  for slot = 0 to 63
+    game.bindClient(level,level.entities[slot],level.clients[slot])
+  end for
   level.listEntity = 0; if mode == 2 then level.listEntity = 1 end if
   if mode != 0 then
     ent = game.initEntity(level.entities[0]); game.bindClient(level,ent,level.clients[0]); level.clients[0].connected = 2
