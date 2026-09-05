@@ -44,16 +44,17 @@ beobachtete Baseq3-Verhalten ausdrücklich nach; ein Testfall sichert es.
 | `level.itemDropFn(level, self, itemIndex, angle)` | optionaler Test-Override; normal läuft das portierte `Drop_Item` |
 | `level.flagReturnFn(level, team)` | optionaler Test-Override; normal läuft das portierte `Team_ReturnFlag` |
 | `level.teamMessageFn(level, recipient, text)` | formatiertes Nutzargument von `PrintMsg` |
-| `level.clientSpawnFn(level, ent)` | vollständiges `ClientSpawn` |
+| `level.clientSpawnFn(level, ent)` | optionaler Test-Override; normal läuft das portierte `ClientSpawn` |
 
 Die Todesprüfung setzt keine Drop-/Flag-Overrides: Waffen, Powerups und Flaggen
 werden als echte portierte Entities angelegt oder zurückgesetzt. Die optionalen
 Felder erlauben weiterhin isolierte Vertragstests. Der Vergleichshost beobachtet
 `PrintMsg` und verändert im `ClientSpawn`-Callback gezielt Position und
 Clientnummer, damit der nachfolgende Teleport-Effekt die Rückgabewerte wirklich
-verwendet. Item-Aufnahme und CTF-Capture sind inzwischen in der Item-Suite
-verbunden. Vollständige Spielerinitialisierung, Client-Frames und
-Netzwerkzustellung folgen in weiteren Abschnitten von Schritt 6 und 7. Details zu
+verwendet. Im normalen Lauf ruft `deaths.respawn` inzwischen die portierte
+Spielerinitialisierung auf; deren eigener C-Vergleich steht in
+[CLIENT_SPAWN.md](CLIENT_SPAWN.md). Client-Frames und Netzwerkzustellung folgen
+in weiteren Abschnitten von Schritt 6 und 7. Details zu
 den Entity-Pfaden stehen unter [Items und Flaggen](ITEMS.md).
 
 ## Nachweis
@@ -74,6 +75,7 @@ die tatsächlich erzeugten beziehungsweise zurückgesetzten Entities.
 
 Die C-Referenz nutzt die ursprünglichen Funktionen aus `g_combat.c`, `g_team.c`,
 `g_client.c` und `sv_game.c`. Score-, Body-, Entity- und Server-Collision-Code
-laufen auf beiden Seiten wirklich. `PrintMsg` und `ClientSpawn` bleiben
-beobachtete Aufrufe. Missionpack-Pfade und ein vollständiger Matchlauf sind nicht
+laufen auf beiden Seiten wirklich. `PrintMsg` und der bewusst eingesetzte
+`ClientSpawn`-Test-Override bleiben in dieser Suite beobachtete Aufrufe; die
+echte Routine besitzt eine eigene Abnahme. Missionpack-Pfade und ein vollständiger Matchlauf sind nicht
 Teil dieser Abnahme.

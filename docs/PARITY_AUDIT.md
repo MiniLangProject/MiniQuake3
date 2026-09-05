@@ -4,10 +4,11 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die vollständige erweiterte Regression besteht aktuell aus 37 bestandenen
+Die vollständige erweiterte Regression besteht aktuell aus 38 bestandenen
 Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`), einschließlich
 der Spawnpunkt-/Leichenprüfung, der Punkte-/Ranglisten-/Matchende-Regeln und
-der integrierten Spieler-Todesfolge sowie der Item-/Flaggen-Entity-Prüfung.
+der integrierten Spieler-Todesfolge, der Item-/Flaggen-Entity-Prüfung und dem
+vollständigen `ClientSpawn`-Ablauf.
 Der finale MiniQuake3-Build hat SHA-256
 `b6370c7072dc76c58a58fc4c6bb562a6223f1b2ab80c3907cab92225662bda39`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
@@ -19,7 +20,7 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständige Server-/Client-Frames und komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, Leichenverwaltung, Gibs, Item-/Leichenphysik, sämtliche Baseq3-Pickups, Punktevergabe, Ranglisten, Scoreboard-Texte, Matchende-Entscheidungen, `player_die`, Team-Fragboni und CTF-Take/Return/Capture vorhanden; weitere Klassen, `ClientSpawn`, Mover-Pushing und vollständige Serverframes fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, `ClientSpawn`, Leichenverwaltung, Gibs, Item-/Leichenphysik, sämtliche Baseq3-Pickups, Punktevergabe, Ranglisten, Scoreboard-Texte, Matchende-Entscheidungen, `player_die`, Team-Fragboni und CTF-Take/Return/Capture vorhanden; weitere Klassen, ClientThink/ClientEndFrame, Mover-Pushing und vollständige Serverframes fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -399,7 +400,7 @@ Missile-, Item-, Mover- und Client-Handler aufgezeichnete Aufrufgrenzen. Die
 gesonderten Projektil- und Item-Prüfungen führen ihre jeweiligen Zweige mit der
 echten portierten Verarbeitung aus. Dies ist
 **keine vollständige G_RunFrame-Abnahme**: Cvar-/Zeitverwaltung, ClientEndFrame,
-die Frame-Einbindung der Matchende-Regeln, Votes, `ClientSpawn` und vollständige Serverintegration fehlen.
+die Frame-Einbindung der Matchende-Regeln, Votes und vollständige Serverintegration fehlen.
 Schnittstellen und genaue Grenzen: [TARGETS_AND_EVENTS.md](TARGETS_AND_EVENTS.md).
 
 ## Schadensberechnung und Karten-Gefahren
@@ -425,7 +426,7 @@ oder ungültigen Handlerzuständen.
 Pain-, Death- und Mover-Callbacks beobachten in dieser isolierten Suite ihre
 Argumente und Eintrittszustände; einzelne Test-Callbacks geben die Entity frei.
 Die anschließende Todes-Suite verwendet stattdessen den echten `player_die`-Port.
-Offen sind `ClientSpawn`, weitere Waffentreffer und die vollständige Waffensteuerung,
+Offen sind `ClientThink`, `ClientEndFrame`, weitere Waffentreffer und die vollständige Waffensteuerung,
 Schadensfeedback am Frame-Ende, weitere Teamregeln und Serverintegration.
 `G_Printf`-Diagnosen und Missionpack gehören nicht zu dieser Abnahme.
 Der Rüstungsport verwendet die CRT-Mathematikfunktion `ceil`; die Spielregeln
@@ -495,8 +496,8 @@ Test-Binary: `eb2b7b0a14844c61c0833ec957124a4bd48a515daf5841705cd3d1c12c3eacf5`.
 128er-Deathmatch-Arrays wird kontrolliert zurückgewiesen; dieser undefinierte
 C-Pfad wird nicht als identisches Verhalten ausgewiesen. `player_die` und der
 Respawn-Wrapper sind inzwischen in [DEATHS.md](DEATHS.md) integriert; Item-Entities
-und ihre Physik sowie Pickup-Regeln stehen in [ITEMS.md](ITEMS.md). `ClientSpawn` und
-Client-Frames bleiben offen.
+und ihre Physik sowie Pickup-Regeln stehen in [ITEMS.md](ITEMS.md). `ClientSpawn`
+ist inzwischen separat geprüft; Client-Frames bleiben offen.
 
 ## Punkte, Ranglisten und Matchende (Schritt 6)
 
@@ -558,13 +559,31 @@ Hook-Freigabe, Zuschauer-Scoreboards und den tatsächlichen Pfad
 Entfernungsvektor; dieses beobachtete Baseq3-Verhalten wird exakt bewahrt.
 
 `Drop_Item` und `Team_ReturnFlag` laufen in diesen Todesfällen als echte portierte
-Entity-Pfade. Der C-Host protokolliert weiterhin `PrintMsg` und `ClientSpawn`;
+Entity-Pfade. Der C-Host protokolliert weiterhin `PrintMsg` und den für diese
+isolierte Suite eingesetzten `ClientSpawn`-Override;
 Score-, Body-, Hook-, BSP-/PVS- und Entity-Code laufen tatsächlich. Der
 Respawn-Test verändert im `ClientSpawn`-Callback absichtlich Position und
 Clientnummer und weist dadurch nach, dass der nachfolgende Teleport-Effekt die
-Rückgabewerte verwendet. Item-Aufnahme und CTF-Capture sind separat verbunden;
-vollständiges `ClientSpawn`, Client-Frames,
-Netzwerkzustellung und Missionpack bleiben offen. Details: [DEATHS.md](DEATHS.md).
+Rückgabewerte verwendet. Der normale Respawn führt inzwischen den echten
+MiniLang-`ClientSpawn` aus. Item-Aufnahme und CTF-Capture sind separat verbunden;
+Client-Frames, Netzwerkzustellung und Missionpack bleiben offen. Details:
+[DEATHS.md](DEATHS.md).
+
+## ClientSpawn (Schritt 6)
+
+`scripts/test_client_spawn.py` besteht mit **17 Szenarien**, **4.666 exakt
+gleichen 32-Bit-Wörtern**, **18.766 Ausgabe-Bytes** und **116 geordneten
+Host-/Link-Ereignissen**. Acht Laufzeitverträge prüfen die Initialisierung,
+Info-Strings, fehlende Pflichtgrenzen und die Standardverbindung aus `respawn`.
+
+Der Port deckt FFA-, Initial-, CTF-, Team- und Zuschauerpositionen,
+Bot-/Human-Filter, Persistenz und Transient-Reset, Handicap, Spawnzähler,
+Startwaffen, Gesundheit, Teleport-/Vote-Flags, KillBox, Verlinkung, Spawn-Targets,
+Waffenwahl und beide PlayerState-zu-EntityState-Konvertierungen ab. Die native
+Referenz führt den unveränderten `ClientSpawn`-Funktionskörper aus.
+`trap_GetUserinfo`, `trap_GetUsercmd`, `ClientThink`, `ClientEndFrame` und
+`MoveClientToIntermission` bleiben explizit beobachtete Host-Grenzen. Details:
+[CLIENT_SPAWN.md](CLIENT_SPAWN.md).
 
 ## Items, Pickups und CTF-Flaggen (Schritt 6)
 

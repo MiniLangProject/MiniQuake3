@@ -5,7 +5,7 @@
 void CM_LoadMap(const char*,qboolean,int*);cvar_t *Cvar_Get(const char*,const char*,int);
 #include "snapvector.inc"
 gentity_t g_entities[MAX_GENTITIES];gclient_t g_clients[MAX_CLIENTS];level_locals_t level;
-vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit,g_weaponRespawn,g_weaponTeamRespawn;
+vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit,g_weaponRespawn,g_weaponTeamRespawn,g_inactivity;
 void hostServerReset(void*,int,int);void hostLink(void*);void hostUnlink(void*);void hostBrush(void*,const char*);void hostMetadata(int,int*);
 int hostContact(const vec3_t,const vec3_t,void*,int);int hostArea(const vec3_t,const vec3_t,int*,int);
 void hostTrace(trace_t*,const vec3_t,const vec3_t,const vec3_t,const vec3_t,int,int);
@@ -15,6 +15,9 @@ static int bodyOutput;
 static int scoreOutput;
 static int deathOutput;
 static int itemOutput;
+static int clientSpawnOutput;
+static char clientSpawnUserinfo[MAX_INFO_STRING];
+static usercmd_t clientSpawnCmd;
 static void scoreTransition(int);
 void CheckExitRules(void);void CheckIntermissionExit(void);void LogExit(const char *);
 void BeginIntermission(void){scoreTransition(1);}
@@ -37,7 +40,7 @@ static void snapshot(gentity_t *e) {
     string(e->classname);string(e->model);string(e->model2);string(e->target);string(e->targetname);string(e->message);string(e->team);string(e->targetShaderName);string(e->targetShaderNewName);
 }
 static void boundary(gentity_t *e,int kind,int index) {word(4);word(kind);word(index);snapshot(e);}
-void trap_LinkEntity(gentity_t *e) {hostLink(e);word(5);snapshot(e);}
+void trap_LinkEntity(gentity_t *e) {hostLink(e);if(clientSpawnOutput){word(60);word(3);word((int)(e-g_entities));}else{word(5);snapshot(e);}}
 void trap_UnlinkEntity(gentity_t *e) {hostUnlink(e);word(6);snapshot(e);}
 void trap_SetBrushModel(gentity_t *e,const char *name) {hostBrush(e,name);}
 void trap_LocateGameData(gentity_t *e,int count,int size,playerState_t *ps,int clientSize) {word(7);word(count);}
@@ -69,6 +72,11 @@ void QDECL G_Error(const char *fmt,...) {va_list args;va_start(args,fmt);vfprint
 void Touch_DoorTrigger(gentity_t *a,gentity_t *b,trace_t *c) {G_Error("unexpected door boundary");}
 void *G_Alloc(int n) {void *p=calloc(1,n);if(!p)exit(73);return p;}
 int trap_Cvar_VariableIntegerValue(const char *name){return 0;}
+void trap_GetUserinfo(int client,char *buffer,int size){if(!clientSpawnOutput)G_Error("unexpected userinfo read");word(60);word(1);word(client);Q_strncpyz(buffer,clientSpawnUserinfo,size);}
+void trap_GetUsercmd(int client,usercmd_t *cmd){if(!clientSpawnOutput)G_Error("unexpected usercmd read");word(60);word(2);word(client);*cmd=clientSpawnCmd;}
+void ClientThink(int client){if(!clientSpawnOutput)G_Error("unexpected ClientThink");word(60);word(6);word(client);g_clients[client].ps.origin[0]+=1.25f;g_clients[client].ps.commandTime+=7;}
+void ClientEndFrame(gentity_t *ent){if(!clientSpawnOutput)G_Error("unexpected ClientEndFrame");word(60);word(7);word((int)(ent-g_entities));ent->client->ps.loopSound=321;}
+void MoveClientToIntermission(gentity_t *ent){if(!clientSpawnOutput)G_Error("unexpected MoveClientToIntermission");word(60);word(5);word((int)(ent-g_entities));ent->client->ps.pm_type=PM_INTERMISSION;VectorCopy(level.intermission_origin,ent->client->ps.origin);}
 void QDECL PrintMsg(gentity_t *ent,const char *fmt,...) {
     char buffer[1024];va_list args;if(!deathOutput && !itemOutput)G_Error("unported PrintMsg");
     va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);
@@ -87,6 +95,7 @@ void ClientSpawn(gentity_t *ent) {
 #include "death_actions.inc"
 #include "item_actions.inc"
 #include "combat_actions.inc"
+#include "client_spawn_actions.inc"
 static char *readString(FILE *in) {int n;char *s;if(fread(&n,4,1,in)!=1)return NULL;if(n<0 || n>10000000)exit(74);s=calloc(1,n+1);if(n && fread(s,1,n,in)!=n)exit(74);return s;}
 static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);word(level.locationLinked);word(slotOf(level.locationHead));for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
 static void reset(int type,int flags) {
@@ -117,6 +126,8 @@ int main(int argc,char **argv) {
         reset(0,0);scoreOutput=deathOutput=1;runCombat(in);
     } else if(argc==6 && !strcmp(argv[5],"--items")) {
         reset(0,0);itemOutput=1;runCombat(in);
+    } else if(argc==6 && !strcmp(argv[5],"--client-spawn")) {
+        reset(0,0);clientSpawnOutput=1;runClientSpawn(in);
     } else if(argc==6 && !strcmp(argv[5],"--values")) {
         reset(0,0);
         while((text=readString(in))!=NULL) {

@@ -57,7 +57,8 @@ Die bisherigen Übergangstests zeichnen diese Aufrufgrenze weiterhin auf.
 Callback-Reihenfolge bei KillBox und vollständigem Teleport. Ein ohne Spawner
 angelegter Kontext muss seinen Schadenscallback ausdrücklich setzen.
 Die Spieler-Todesregeln und Score-Folgen sind inzwischen in [DEATHS.md](DEATHS.md)
-verbunden. Vollständiges `ClientSpawn` und Match-Telefrag-Replays bleiben offen.
+verbunden. `ClientSpawn` ist inzwischen separat geprüft; vollständige
+Match-Telefrag-Replays und Client-Frames bleiben offen.
 
 Temporäre Entities tragen `eventTime` und `freeAfterEvent`. Ihre automatische
 Entfernung ist in der portierten Entity-Schleife enthalten; der vollständige

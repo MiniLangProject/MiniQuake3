@@ -61,8 +61,7 @@ richtet Sprungpads verzögert auf ihre Targets aus. Die zusätzliche
 Teamschutz. Die [Spieler-Todesfolge](DEATHS.md) verwendet nun außerdem die echte
 PVS-/Area-Abfrage für Team-Boni. Item-Entities verwenden die Kollision inzwischen
 für Drop-Physik, No-Drop-Flächen und die Sichtlinie des Powerup-Denial-Effekts.
-Weitere Spawn-Klassen,
-`ClientSpawn`, Mover-Pushing und vollständige Serverframes bleiben offen;
+Weitere Spawn-Klassen, Client-Frames, Mover-Pushing und vollständige Serverframes bleiben offen;
 siehe [GAME_TRANSITIONS.md](GAME_TRANSITIONS.md).
 
 Die C-Prüfung bindet `sv_world.c` unverändert ein und kompiliert ursprüngliche

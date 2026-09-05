@@ -3,9 +3,9 @@
 Dieser Abschnitt von Schritt 6 überträgt die Spawnpunkt-Auswahl und die
 Leichenverwaltung von `baseq3`. Die [Scoreboard-/Punkteregeln](SCORES.md) und
 die anschließende [`player_die`-Integration](DEATHS.md) sind inzwischen umgesetzt.
-Der Respawn-Wrapper ruft die Leichenkopie und den Teleport-Effekt in der richtigen
-Reihenfolge auf; das vollständige `ClientSpawn`, `ClientThink` und `ClientEndFrame`
-bleibt offen.
+Der Respawn-Wrapper ruft die Leichenkopie, den portierten
+[`ClientSpawn`](CLIENT_SPAWN.md) und den Teleport-Effekt in der richtigen
+Reihenfolge auf. `ClientThink` und `ClientEndFrame` bleiben offene Frame-Grenzen.
 
 ## Übertragene Regeln
 
@@ -105,7 +105,7 @@ ausgegeben.
 Auf CD-Karten werden vorhandene Spieler-, Team- und Intermission-Punkte sowie
 passende Positions-Targets übernommen und Leichen mit der tatsächlichen
 Kartengeometrie simuliert. Das sind gezielte Kartenproben, keine vollständigen
-Matches. Bot-/Human-Spawnfilter aus `ClientSpawn`,
-Respawn-Eingaben, Client-Frames und die grafische Darstellung bleiben Gegenstand
-der weiteren Integration. Todesmeldungen, Drop-Entscheidungen
+Matches. Bot-/Human-Spawnfilter und Respawn-Eingaben sind inzwischen in der
+separaten [`ClientSpawn`-Abnahme](CLIENT_SPAWN.md) enthalten. Client-Frames und
+die grafische Darstellung bleiben Gegenstand der weiteren Integration. Todesmeldungen, Drop-Entscheidungen
 und Score-Einbindung sind in [DEATHS.md](DEATHS.md) nachgewiesen.

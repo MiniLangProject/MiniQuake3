@@ -5,8 +5,8 @@ Status: Implementierung läuft. Ein nativer MiniLang-Build mit Zahlenkompatibili
 Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter, BSP-/Kurvenkollision,
 transformierten Modellen, temporären Boxen, PVS-/Areaportal-Verwaltung,
 dynamischer Entity-Kollision, Bewegungsbahnen, Sprungpad-Reaktionen und
-dem vollständigen baseq3-Pmove-Befehlszyklus sowie serverseitigen Item-Pickups
-und CTF-Flaggenabläufen ist
+dem vollständigen baseq3-Pmove-Befehlszyklus, serverseitigen Item-Pickups,
+CTF-Flaggenabläufen und `ClientSpawn` ist
 vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
 [geprüfte Stand mit offenen Abnahmen](docs/PARITY_AUDIT.md).
@@ -55,7 +55,7 @@ Maschinengewehr. Dieser Entwicklungsaufruf verarbeitet statische Weltkollision.
 Die dynamische Kollisionsschicht, geometrische Trigger-Abfrage, Sprungpads und
 Teleport-Zustandswechsel haben eigene Replays gegen den Originalcode. Hinzu kommen
 der vollständige `entityState_t`-Speicherdatensatz, Ereignis-Entities und deren Platzverwaltung.
-Vollständige Spielserver-Frames, `ClientSpawn` und Grafik bleiben offen:
+Vollständige Spielserver-/Client-Frames und Grafik bleiben offen:
 
 ```powershell
 python scripts/test_shared_game.py
@@ -72,6 +72,7 @@ python scripts/test_bodies.py --data-root D:/Quake3
 python scripts/test_scores.py
 python scripts/test_deaths.py
 python scripts/test_items.py
+python scripts/test_client_spawn.py
 python scripts/test_spawn.py D:/Quake3
 ```
 
@@ -96,10 +97,12 @@ BFG, Grappling-Hook und drei schießende Kartenobjekte mit echter Server-Kollisi
 [Spawnpunkte und Leichen](docs/PLAYER_LIFECYCLE.md) ergänzen Deathmatch-/CTF-/
 Zuschauer-Auswahl, Leichen-Warteschlange, Gibs und Leichenphysik.
 [Spieler-Tod und Team-Boni](docs/DEATHS.md) verbinden Schaden, Scores, Hooks,
-Flaggenentscheidungen, Todesanimationen und den Respawn-Wrapper. [Items und
+Flaggenentscheidungen, Todesanimationen und den Respawn-Wrapper. Der vollständige
+[`ClientSpawn`-Ablauf](docs/CLIENT_SPAWN.md) initialisiert Spieler, Startinventar,
+Spawnfilter, Targets und Snapshots; `ClientThink` und `ClientEndFrame` bleiben
+Host-Grenzen. [Items und
 Flaggen](docs/ITEMS.md) ergänzen Karten- und Drop-Entities, sämtliche Baseq3-
-Pickups, Respawn, Physik sowie Flaggenaufnahme, Rückgabe und Capture;
-`ClientSpawn` bleibt eine sichtbare Grenze.
+Pickups, Respawn, Physik sowie Flaggenaufnahme, Rückgabe und Capture.
 [Punkte, Ranglisten und Scoreboards](docs/SCORES.md) sowie Sudden Death,
 Matchlimits und Bereitschaftsregeln sind gegen C geprüft und in `player_die`
 eingebunden. Netzwerkübertragung und tatsächliche Kartenwechsel bleiben offen.

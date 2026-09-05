@@ -10,6 +10,7 @@ import mq3.game.bodies as bodies
 import mq3.game.missiles as missiles
 import mq3.game.items as items
 import mq3.game.team_bonuses as bonuses
+import mq3.game.client_spawn as clientSpawn
 import mq3.game.movement as movement
 import mq3.server.world as sv
 import mq3.shared.math as q
@@ -194,8 +195,7 @@ function playerDie(level,self,inflictor,attacker,damage,meansOfDeath)
 end function
 function respawn(level,ent)
   bodies.copyToQueue(level,ent)
-  if level.clientSpawnFn == void then return error(496,"respawn requires a ClientSpawn sink") end if
-  level.clientSpawnFn(level,ent)
+  if level.clientSpawnFn != void then level.clientSpawnFn(level,ent) else clientSpawn.spawn(level,ent,playerDie) end if
   effect = game.tempEntity(level,ent.client.ps.origin,c.EV_PLAYER_TELEPORT_IN); effect.s.clientNum = ent.s.clientNum
   return void
 end function

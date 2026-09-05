@@ -6003,6 +6003,7 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6010,10 +6011,24 @@
           "status": "tested_subset"
         },
         {
+          "original": "ClientSpawn",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 player placement, persistent/session preservation, transient reset, handicap, inventory, spawn filters, target/weapon/link order and snapshots are compared. ClientThink, ClientEndFrame, userinfo/usercmd delivery and intermission placement remain explicit host boundaries."
+        },
+        {
           "original": "SP_info_player_deathmatch",
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6025,6 +6040,7 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6036,6 +6052,7 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6047,6 +6064,7 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6058,6 +6076,7 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6069,6 +6088,7 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6080,6 +6100,7 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6091,6 +6112,7 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6102,6 +6124,7 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6113,6 +6136,7 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6124,6 +6148,7 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6135,6 +6160,7 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6146,6 +6172,7 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
@@ -6157,17 +6184,19 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset",
-          "scope": "CopyToBodyQue and teleport event ordering are implemented; ClientSpawn remains an explicit observed callback."
+          "scope": "CopyToBodyQue and teleport event ordering are implemented; the default path executes ported ClientSpawn while the death suite retains an explicit test override."
         }
       ],
       "target": [
         "src/mq3/game/teleport.ml",
         "src/mq3/game/spawn_functions.ml",
+        "src/mq3/game/client_spawn.ml",
         "src/mq3/game/player_spawns.ml",
         "src/mq3/game/bodies.ml",
         "src/mq3/game/deaths.ml"
@@ -6177,6 +6206,7 @@
         "scripts/test_entitystate.py",
         "scripts/test_transitions.py",
         "scripts/test_spawn.py",
+        "scripts/test_client_spawn.py",
         "scripts/test_bodies.py",
         "scripts/test_deaths.py"
       ]
@@ -6661,6 +6691,7 @@
             "src/mq3/game/entities.ml",
             "src/mq3/game/spawn.ml",
             "src/mq3/game/combat.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6676,6 +6707,7 @@
             "src/mq3/game/entities.ml",
             "src/mq3/game/spawn.ml",
             "src/mq3/game/combat.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6691,6 +6723,7 @@
             "src/mq3/game/entities.ml",
             "src/mq3/game/spawn.ml",
             "src/mq3/game/combat.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6706,6 +6739,7 @@
             "src/mq3/game/entities.ml",
             "src/mq3/game/spawn.ml",
             "src/mq3/game/combat.ml",
+            "src/mq3/game/client_spawn.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6720,6 +6754,7 @@
         "src/mq3/game/entities.ml",
         "src/mq3/game/spawn.ml",
         "src/mq3/game/combat.ml",
+        "src/mq3/game/client_spawn.ml",
         "src/mq3/game/bodies.ml",
         "src/mq3/game/player_spawns.ml",
         "src/mq3/game/scores.ml",
@@ -6734,6 +6769,7 @@
         "scripts/test_spawn.py",
         "scripts/test_targets.py",
         "scripts/test_combat.py",
+        "scripts/test_client_spawn.py",
         "scripts/test_bodies.py",
         "scripts/test_scores.py",
         "scripts/test_deaths.py",
