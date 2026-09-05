@@ -1,15 +1,20 @@
 {
   "scope": "implemented foundations; full port incomplete",
   "sources": {
-    "src/main.ml": "d9b63f68fb3f77391a94efd6afcebe626bba368be22db401b2c5c67fc0f6b985",
-    "src/mq3/collision/brush.ml": "aed92c77687624b647daf5443b4b23b89c9ab1c79505e5689fb24c3aca0a7af6",
-    "src/mq3/compat/numeric.ml": "ec88da855ee45fac438a000b675793aa29dff129140a51de9a377289da061c98",
+    "src/main.ml": "04dadb40bc2de804873aeefd12322ae88470ec30ed30c1eab39671e6e333ef93",
+    "src/mq3/collision/brush.ml": "2ce6c6ebcb75c5e5aa9869221bc232a7d35ae8a34b48581f9c07e58473b42d20",
+    "src/mq3/collision/patchmesh.ml": "70730f0d682a5bdbb51edbdfed0594ef1d7954291076e33cf5cd4623dfd6ea4a",
+    "src/mq3/collision/patchtrace.ml": "e8bd9517d0620f0b81d9a647386442ee95fb209122fb66caa2f5326b5bead316",
+    "src/mq3/collision/winding.ml": "624423acdbb837d5a0c78db255261a9b5b426950ae9e928c38f4caa135f55425",
+    "src/mq3/collision/world.ml": "5f0a9eea55d6c4fa2ad50f68182b9cc6e676f42117e2340c69c41bfc89bed3ee",
+    "src/mq3/compat/numeric.ml": "79e2178eb5c85b7cd24831dd25fa9bf3259eae54b29aaf5b43e5bab5347272a9",
     "src/mq3/format/bsp.ml": "891cf26acced8661643df02abf0bd1774aedf8117bf12010d83bebff548c2ac1",
     "src/mq3/format/deflate.ml": "8e6deb910211a8eec266729a6aee0f50dac0503773ddddf2daa93c29d673af61",
     "src/mq3/format/pk3.ml": "f928c29a09282ea0eca113e4aa0d3905a863cbdd09607985330e831397b4149f",
+    "src/mq3/game/movement.ml": "d103e515b628981301d14b9e9f412514256ba7ae9503dc68edf28e6c643e1697",
     "src/mq3/platform/file.ml": "5cf18ed251a4ec61213602d9c0013644d008b99df511b176ca573f2b7660c560",
     "src/mq3/qcommon/cvar.ml": "2ccf0ca51d8336c096e96d79e5999bf2520a2292ed45efe9d66254e0bfb8a6c4",
-    "src/mq3/shared/math.ml": "269559e83b26d52aa7b178b8586b0f80132fdf84710b45dc9c74b66781053cf7",
+    "src/mq3/shared/math.ml": "a8320f913dd5adfac54294c1eb97da3bd577b0b43f6288dd03b8441068706b1c",
     "src/mq3/shared/parser.ml": "90aa075c819b2e3f9bc510521634666b6ea794716fecfe5a04b868d6c6bd3d2c",
     "src/mq3/vm/interpreter.ml": "ec8a553adabb04e43a19358fa33eb9918f2e774e9074e02abba75e9f7115ce59",
     "native/abi.c": "460958e4d1d04aff1b5c72c94c683c8011229bd2bce558a12e481c756f5fdb0a",
@@ -22,29 +27,39 @@
     "scripts/reference_smoke.py": "ac1b75ffe774b460e6af3d51a4accd85642d4b5aab01f6ee0a503c95cf53d096",
     "scripts/test_archives.py": "61808f04bc53445facb09066ea90568a0f8e5cf65f03c12a421b38336061d1b4",
     "scripts/test_brush.py": "f04dc9eae5ab89e4ed50e97e60fcc6e01d7c2ba86cd9156a27856fdb472985df",
+    "scripts/test_collision.py": "e8d2d1b97d580d3673de8df99a114bea8cc15b208b386c597f9db53909707551",
     "scripts/test_core.py": "326e11a4c94ae7e70e67ab6e7db271211a23b75f8d5a0724dfaef61973877ae7",
     "scripts/test_maps.py": "3f44120af9fef99f99f7f9134f7a4792b39ef58a13bc35837cb3fbd6eb0930f0",
     "scripts/test_math.py": "f58dc4d37171d4b113d006c5d53cfe527ce46e2c7597f5f557430e243c0b5a76",
-    "scripts/test_numeric.py": "fcddc1f65c71b05a564e4407b2492f0a0fc0d31a1e71c4a381656f616734849c",
-    "scripts/test_rejections.py": "3918a640d7690b95ce67dddcb1c31b00780e81a6999cae2da409e4dd6f6e366a",
+    "scripts/test_movement.py": "406e68968c31fca8b69e8a09d6aec56c0f41c4482c8333bbec9289cf818b9f4a",
+    "scripts/test_numeric.py": "d1e53b15c1ffef26edb8bfdd359f0160ede31d343e956df77ed41f68b23a3b26",
+    "scripts/test_patches.py": "4419fa6205220fcfeae62e670b055224f1ffa9bd54c437ae1e567ed2e3a42c3c",
+    "scripts/test_rejections.py": "95b2a9add375ea94bd903e5cc3c014cc30507008e1e5b39efe64648cda1a3f48",
     "scripts/test_retail_vm.py": "a2670c29e806894ff0b764d580fa8b5fac96493e17ca2d22f09cd9f713717001",
+    "scripts/test_runtime_trace.py": "f30e93d2c7f1957aff8edf8641217b7e5b8a08d3703a756d6a57ebc4d99c279c",
     "scripts/test_vm.py": "f9a589ab6cb07a82275a67b5a3ae8c100ce55f8fed75903b62de6234ed24012b",
     "scripts/toolchain.py": "eab72f9e2edb9680c382fccf55533e766b2177d257276a29de363e73e545716a",
-    "scripts/update_progress.py": "1ef00b17e4dae9c8fbc82687b5dfaca66d55c932a918946c1ac7341cc09428fa",
-    "scripts/verify.py": "4d8d49433cdcd671de285a89d4eeda84650e7fa363e19fd756bfe5b448269da6",
+    "scripts/update_progress.py": "86dfd6151723108a2bb33434868c446ff028c75153eaaff2ab64efc328424296",
+    "scripts/verify.py": "e1898931cb0818c9eede8719291d772305f4bd4cf0283cbe654a16d7a63a2cd0",
     "tests/archive_tests.ml": "a7266b1d1a15881f117d18344eafc1a03d47e4be053ce42c0616248164510e0c",
     "tests/brush_tests.ml": "a30eee67deb4580b649d643024c9f08acd9c5df7b28cbb2be6289cad151fce04",
+    "tests/collision_tests.ml": "c28f47cc00e374f52eb33f88810478fcbeea35819b9a54a91d589113c35a9a57",
     "tests/core_tests.ml": "74b4b7ce5dd8816859b9097053dbbe01d5b49057b76de8cbe22dfa818523765d",
     "tests/math_tests.ml": "76be7f3d960cb1dc4d5221621d3bfd716e1944091f83a4be300eccab973f1f1a",
+    "tests/movement_tests.ml": "a4bad5a0f6ed1e8395deabbc32314a49a55f7f085528b61fbc30cada97a05765",
     "tests/numeric_probe.ml": "37743c72159031b7e6d0f692f6a27ac062f36f086174f98ac5e5d69747a0d4cc",
-    "tests/numeric_tests.ml": "55c1fe4777ce160ae3cbf314459d7be51a280346b6fa06cd76cd760741b34a54",
+    "tests/numeric_tests.ml": "93947eff3c50604111e9333de852501f6f33fad7979db05ea8dc5ea02a3f9dd3",
+    "tests/patch_tests.ml": "77ca466987c05ffd85f7b5f257ce5e915c6d679f088d4dae5f19d36d7db36a1d",
     "tests/reference/brush_oracle.c": "87e510bf27e6340cf4f8c4bff61b6cfc3673a51de10d1fc84a1507e63ac0ad7a",
+    "tests/reference/collision_oracle.c": "29ce058bc66079c7b17ccacf09d7c09f4a8ea397bf951c67ea2406784d6cb1bb",
     "tests/reference/core_oracle.c": "029c52de4cad3a53065af785abdf1b15d0e5f252e7297746871fe4bcde264703",
     "tests/reference/frame_observer.c": "309a76ab1ff5253aa4059d6bf81e25a058d6f234bf976a763f46fdb8c0844fc7",
     "tests/reference/math_oracle.c": "b22ec691ee4d78f5e2d25ab0ad67b30e05e876b482269f8aa8973e3ccd3754a4",
-    "tests/reference/numeric_oracle.c": "c2f5ec168ba9e1edea440e8668c4d9acbd7788acfc649ba0c33c09b7bbc0bcf5",
+    "tests/reference/movement_oracle.c": "a0db42d6e76fe7a6a7c88b674148f6804b68798036d666e912a74b31f6aee400",
+    "tests/reference/numeric_oracle.c": "e9b414febc92bc400df63445eefda8e7d7b82579d194cb7ccf66bf594b596c4c",
+    "tests/reference/patch_oracle.c": "87f23ecc9a9e48f2e5313209310cb22ef92239a23b254047140678c98b52ffeb",
     "tests/reference/vm_oracle.c": "cdc54ce1830b460715d4e3fee9fdbefd3e7bc09f2981a194a524847a15b030ba",
-    "tests/rejection_tests.ml": "f9b7f951fdd539cc29b2bab254419b2c8ed11a2ca0726cf4c697f837436cc404",
+    "tests/rejection_tests.ml": "a064254bed2d4d8bcfd6f754e69bf7a639334221f204422585b2198c3eb4f6c5",
     "tests/retail_vm_tests.ml": "22e3aea584615d26ef2cdb468bb16f9cc246ec6fc9a7742c033daabe32d943b9",
     "tests/vm_tests.ml": "e82c903d3c8430197abbf66021ab58cdb0422e83aa6b01eb384f84593015b23a"
   },
@@ -68,6 +83,484 @@
         "fields": 36864,
         "expected_sha256": "2453d71f4dcea2d4f1e4f421cc46cbf2fd545cd9e4f202dd0d972ae24efef020",
         "unmodified_kernel_sha256": "553847954c16031711d005dfc398f45a51b756bab8f3bff68d2656e318722e14"
+      }
+    },
+    {
+      "path": "build/reference/collision/curves/result.json",
+      "sha256": "7405b04a9903160c1e5e9429359823fa9fe26be2b64107d0e4b46e22cf83acab",
+      "result": {
+        "passed": true,
+        "profile": "original x86 CM_BoxTrace, cm_noCurves=0; world and inline BSP models",
+        "maps": [
+          {
+            "map": "maps/q3ctf1.bsp",
+            "cases": 1928,
+            "bsp_sha256": "37c9c4f0e6a4d4b582d69353aa2997422ae7abe8fa8b16e9d5796375cc613b1c",
+            "input_sha256": "fe6e238cbc875f8d77ebfc142f742e32ce8f6d6d4b66c7009ccce5c5fd9028fa",
+            "expected_sha256": "3e8f3e979f7ea21b29a6e08ad7a22cea898ad2ec2375e2376de0fb7d74b447ca"
+          },
+          {
+            "map": "maps/q3ctf2.bsp",
+            "cases": 3168,
+            "bsp_sha256": "4497c5876d8ffb4d0040d67589a37cc1cee9f6334b52a9db0951a6d0c97beac3",
+            "input_sha256": "e690eda014adc70fc041d5414b184fd65cae5ec71b8cbee6d297967f44e0d15f",
+            "expected_sha256": "ecc67e7cf5f9c8730389aba1f060454db652bb478197cbd9be918dfb740ef691"
+          },
+          {
+            "map": "maps/q3ctf3.bsp",
+            "cases": 3048,
+            "bsp_sha256": "ca0b993c4ff4fe3f22123539c480866e666084990f8c533f15b90f6333ed809a",
+            "input_sha256": "77a1d95b5bd6e8b626936a88332e4d5a48a169264e97870323b6676a74ee693b",
+            "expected_sha256": "7d006cc299a8180acc3cbe4349761c52407fffe9a3b48dee648e5594367ad60c"
+          },
+          {
+            "map": "maps/q3ctf4.bsp",
+            "cases": 1128,
+            "bsp_sha256": "8bd598501e019baf95e125447aedfe134f0ac52491a9ff88557db6a6945501f0",
+            "input_sha256": "23682b115b320a206fc851b63d99e993ecf283769d7c15a64ffbafadc47eb4c1",
+            "expected_sha256": "96ac43b7084cd3cbc459523831b2a03f29271ecf8d91ddfc6e95d72d5cf86251"
+          },
+          {
+            "map": "maps/q3dm0.bsp",
+            "cases": 1208,
+            "bsp_sha256": "05e9540c598c9b1704c9853d61f2cd60c571735abcbf166609fcb4931fcde39b",
+            "input_sha256": "21f4388163a6a0b8e1c69365287808e509efde30dbc9e32b234c2b5f7aa5f275",
+            "expected_sha256": "76d0daa4a8d8cfe32148212dd1377987abbb10b24f09492c5a23f933cc8ae114"
+          },
+          {
+            "map": "maps/q3dm1.bsp",
+            "cases": 1476,
+            "bsp_sha256": "3d2dad8e6ba05914fc90619a6517ecdee7e5eb50f86013a14a84bb3c61cd702e",
+            "input_sha256": "aa023a8c713d13e7e180f1bca3b300dd4182f17810fb8ea9eb1074b10009ee39",
+            "expected_sha256": "3bfdd0892689fbeec8d9bd196b2fb1c6aaa5168eb7a12187f736004a866e125c"
+          },
+          {
+            "map": "maps/q3dm10.bsp",
+            "cases": 1904,
+            "bsp_sha256": "8d1bc9b4a527f5be6aed01630865a4eee63cec1f3ab6f73b477bd8b6290a4049",
+            "input_sha256": "f3a3b783b961be8e7323d9b630394d78ef8f99cc7a9bad948898bde05b223c15",
+            "expected_sha256": "6ad98d83c25b8df15ed81b4fe1c00b6d445c156ad5af28af27eb41a2bae0971b"
+          },
+          {
+            "map": "maps/q3dm11.bsp",
+            "cases": 1432,
+            "bsp_sha256": "c0cea74839b39fa776d80c6c6b30d86781234edda7b832b8059c618b699ac0e6",
+            "input_sha256": "751c3c90728ab241b649db45646f787fae42cda530ce0997d0342820c0232e8b",
+            "expected_sha256": "f602487da38f9e636551b1dc19e6eae21a1be092a88881ad77ddb92fc9ce8e84"
+          },
+          {
+            "map": "maps/q3dm12.bsp",
+            "cases": 2040,
+            "bsp_sha256": "4d8800b7bab10fea0b7c2214b57ec3b721d17ca12bc6cdd30ccacd99d7bde3b8",
+            "input_sha256": "2364a98514335ffcc6ea23ef6a1c74a3a02c72e3e6ffbccafde75eb4778de563",
+            "expected_sha256": "b98abe9ec7d491614631f3c3f4775da1531eea4845afd11cc703a6e8e618715a"
+          },
+          {
+            "map": "maps/q3dm13.bsp",
+            "cases": 1348,
+            "bsp_sha256": "3bfd001a0c94eb000f759aa2fa126245a484df5ae7c9eea50ccfc1d0d9fd3b73",
+            "input_sha256": "3eb446ace84a13631628fd7147238140f8a782ec676f81ae31d9d61cd9e14cd8",
+            "expected_sha256": "f03063e74420d17c3d0e52251c4bf54a7408391ee88a0cbbc8b4de788fca8a8d"
+          },
+          {
+            "map": "maps/q3dm14.bsp",
+            "cases": 2284,
+            "bsp_sha256": "c90a5ce275a36a275d07c75d729b1def7d9fcbed9a92eb0e6a1beaef66ba3c1b",
+            "input_sha256": "1ac82a21deca1fc08fc3107864510067c5855017a5c02c0567c4d9ea22c2be72",
+            "expected_sha256": "c6465e356f51141e2403c22208cda81bcfd8b444c87f254e6b3f27f1202f3c60"
+          },
+          {
+            "map": "maps/q3dm15.bsp",
+            "cases": 2272,
+            "bsp_sha256": "0b87d7d3d6d1945e7c4b1291cc04db7470f1e03ede7be303be432a4678e1cb37",
+            "input_sha256": "329526190499fac49273499231c7fbc2cd50196ce6df7767a6345139c3a6ac23",
+            "expected_sha256": "ebf481be63239af33465e897ee202bef3febb669e349b2cbfc4086d8ecb5a8af"
+          },
+          {
+            "map": "maps/q3dm16.bsp",
+            "cases": 1428,
+            "bsp_sha256": "bf0f6b813f7a9152e8b185f88e137fbf27627a132961771f5008656e23b05929",
+            "input_sha256": "930e47b747932f800936689379659d55fa7e9192f0294d887138c8e052504d9b",
+            "expected_sha256": "16de76adf1432a9f12fd63fcfe7af9655f94343c79f983a3551692bdc678a1d4"
+          },
+          {
+            "map": "maps/q3dm17.bsp",
+            "cases": 1152,
+            "bsp_sha256": "ee1394417b06d92f705088150d7609d6b9f55f5796a9a7626bfe7982e8fc94e8",
+            "input_sha256": "b80fb30822b58729e12fca54891aa8e380a1ec8524c6b7ccfc61c4d90cb4e517",
+            "expected_sha256": "c91512f69be1d6fc4ed7fea9c27881e1785793d17ab94b6139bcd83f557c7c1c"
+          },
+          {
+            "map": "maps/q3dm18.bsp",
+            "cases": 1912,
+            "bsp_sha256": "e7ed6c8d845216ce29a193d2922c9ddba67b83bbef66a3e22f640f89a487e082",
+            "input_sha256": "fc7f04a3970a3c63d8614ea040c6a2505d77643535f62f3f27c1be910f3f3daa",
+            "expected_sha256": "f82af5ac3de96d7d23602a72c71fff058e6986fab155757041cb252b0ac08cc9"
+          },
+          {
+            "map": "maps/q3dm19.bsp",
+            "cases": 1024,
+            "bsp_sha256": "243b3ed54a8d44151e6ad5f3fa081867578f09a01add7f4aea62682827675600",
+            "input_sha256": "7965b9feb666e43dda8e0d11ab6bd238b0c78eec9e5dcf8c6dc7dd1703ffd781",
+            "expected_sha256": "0f7fb0ae43ab4c82158db972b8c4f35a6df7177eb416b2202a310f1f6acf4ce0"
+          },
+          {
+            "map": "maps/q3dm2.bsp",
+            "cases": 1968,
+            "bsp_sha256": "da97e7c3e2beeb19e49dbb42bc6758021d6430b55c3abc2788f45bfd8eabac87",
+            "input_sha256": "fe3b78247d39402ab9e4944dfbdd2fec07f040d624e7ed57135c0f56bad55123",
+            "expected_sha256": "d23c6064845a42104fe2705adb04ca3167e4a006968a9791f65f48b96132e964"
+          },
+          {
+            "map": "maps/q3dm3.bsp",
+            "cases": 1460,
+            "bsp_sha256": "80177ff9208644ed530eda6e29189c811f332cac0a6202f05e0f4ea25ee048f9",
+            "input_sha256": "9465d46d02d4d62e07dab85066b11d8dabd466d4b5d790b75b308a569d85a795",
+            "expected_sha256": "e6c50a5231df765ca981746d6a9905003f7eb06bfd5beca7bb2779e3875f4672"
+          },
+          {
+            "map": "maps/q3dm4.bsp",
+            "cases": 2524,
+            "bsp_sha256": "8153c6c2c8e32180d45faa3195325116cafffd411391ee87944a9307f5a78cc5",
+            "input_sha256": "2ac2b80db441189e55589034c637b437a816ce692d560c82215e407f6aa64cc3",
+            "expected_sha256": "7652373e0488acd990ec6e68ba20e1f80974ba87604e6b3f40d473eb40407bb0"
+          },
+          {
+            "map": "maps/q3dm5.bsp",
+            "cases": 1928,
+            "bsp_sha256": "e7e884dad9342b00b77ccb8bdd8a8e167c6c479c7a952b9f1d1c0bd3e42b371d",
+            "input_sha256": "d1ae8809b0f63b0cd5430047301f152d69393e940c1cffa4c945eb1f21a246d7",
+            "expected_sha256": "f7f7cf0b7c30fca9341bc9397bcb738adfd65c16c0246fc219462e3b96a21cd8"
+          },
+          {
+            "map": "maps/q3dm6.bsp",
+            "cases": 2456,
+            "bsp_sha256": "5402e640b854d3502cb961df46a41260ecd1bf4017d0c4935b657e4d3551bf7c",
+            "input_sha256": "5379679f174eecb779f0df217e8e5e3258278c656067661ba2c41491bae42560",
+            "expected_sha256": "fb261f45d9b6fff2a76fe7b9fa78c8e4ddf99fd70510b01a6260b54e96a4c226"
+          },
+          {
+            "map": "maps/q3dm7.bsp",
+            "cases": 1780,
+            "bsp_sha256": "ba5d14e590f6fb38085f3b6f8d5be81050f240a21a5de5ca0d8253501baba52d",
+            "input_sha256": "2b031d6aa82bfd305a3fbea01ebdeb4a548df5575bce12352312845bf65879be",
+            "expected_sha256": "32a47a00d4d214f7cb1e931c4d336f94432151298c8ca4f382b169a20d0e8662"
+          },
+          {
+            "map": "maps/q3dm8.bsp",
+            "cases": 2452,
+            "bsp_sha256": "8cc96df2e4bf9e7c8a36bdbb42452cb5d6f188d5473d2bac44550a1f1d6df630",
+            "input_sha256": "1d480b2585f737f4db0ae62c1083e6f75b5d30502bd3979bcc8fdaace52d49c3",
+            "expected_sha256": "d331cb5778282f23f6d548836a4ccc74693aad6ce0d5b280851833bc1a774e7f"
+          },
+          {
+            "map": "maps/q3dm9.bsp",
+            "cases": 2632,
+            "bsp_sha256": "22a2ea22f14fad38e227578edc10ceeb2b210f86c41a30fd30131e19567336d3",
+            "input_sha256": "fbee4e1c58e45d891337d4e93bf5a74cd0d211c6c4c8739ab787fbdd6feec3ab",
+            "expected_sha256": "a0a1816fb7d2190f0c1d9c66ea739a722337821ad6c68ca7301c5c3b886682ea"
+          },
+          {
+            "map": "maps/q3tourney1.bsp",
+            "cases": 2396,
+            "bsp_sha256": "7f54eb1bcf35fb74ec81dbe52982a81f3014f14bc69bcd9b7e13bd6cf1819fb6",
+            "input_sha256": "48a5a2c4bf8d5d4d6414c99f9beac6d2fd6b0fd408898b7df0918c26e289c0b3",
+            "expected_sha256": "2f9383a857fea627cec9d36926b536bddc63b6b48e901721dc5985bf2b7d5a3d"
+          },
+          {
+            "map": "maps/q3tourney2.bsp",
+            "cases": 1848,
+            "bsp_sha256": "fe07a539bf0b76823160d8ffe96a62c182003877d9678aa27c5b2bea8ca0f4c8",
+            "input_sha256": "ab25add82a70e3dd6ef98798fd0f6bfd06edab461f5a512cea45dc9618b24934",
+            "expected_sha256": "0370e9de7a16c2eef0693d9a386198b0be018e263db010792cf8fee60b8ea85b"
+          },
+          {
+            "map": "maps/q3tourney3.bsp",
+            "cases": 1500,
+            "bsp_sha256": "f2811ecc9510d78d7642927ed325cdf5cd84342ba174c983e8fba94b959b33e6",
+            "input_sha256": "4c8e3b3cfec07f151e80c9513fcd057a7a6d0315ab8cd401fb380ffe0974d241",
+            "expected_sha256": "3f64d2d111c84c2794cc528fe8f60a62ccf7e1d45d8aa122adfe3c079acb044d"
+          },
+          {
+            "map": "maps/q3tourney4.bsp",
+            "cases": 1088,
+            "bsp_sha256": "cbc3552662ba336d8a19421b5b0b58452978157638ce28e3832276c7fe6b15bf",
+            "input_sha256": "80cda6dba093d5bc0460865e0238c830190ac1eb5b95f8fd3c8f7efe63376c88",
+            "expected_sha256": "4789e655c7a11a77c6e1ba2887e85444446943c6111a2192d36560a43482270f"
+          },
+          {
+            "map": "maps/q3tourney5.bsp",
+            "cases": 1260,
+            "bsp_sha256": "ec9f56be3bf1b7e91c18aadb499ea46d5ff6e067bd6d37ca186dfeb5b4e8555c",
+            "input_sha256": "235ff60304abc1d820eceadf847e7982dc18dc342a0490a536e511205ca46c0f",
+            "expected_sha256": "270349cf4fdce83707389c186f1e6813c44e4393347b41ae6b9e68ef6c2f8ef3"
+          },
+          {
+            "map": "maps/q3tourney6.bsp",
+            "cases": 1040,
+            "bsp_sha256": "f38c52088ce0dfa7566e732c07937ed47d6e56ef1a571c371832e459f66397a9",
+            "input_sha256": "99169a21c850444d36423c87d38876c357f93e70790754cb4b512cd6d0ec1b77",
+            "expected_sha256": "9b138e42cd0d1fb0c554c4bca73d3d258276da04194f63ed584031caa65a8258"
+          },
+          {
+            "map": "maps/test_bigbox.bsp",
+            "cases": 1024,
+            "bsp_sha256": "c645abec8be60a4adc42ecdbc1f47a58a043afebfb8b77690b758bfc8c9f2b7e",
+            "input_sha256": "a5182d2baab1584fa759786d2a052640386aafbd7032e9512c6e360a6f45bb5a",
+            "expected_sha256": "693b346eca9c4fe078582be36916c9b1ac781d5ecbc605cf02b41eb08ca9c365"
+          }
+        ],
+        "traces": 56108,
+        "exact_fields": 897728,
+        "original_sources": {
+          "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
+          "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
+          "Quake-III-Arena-original-source/code/qcommon/cm_test.c": "2e5d1139c88a5ffc6dea01349865f91d210158491931090d4c7f07d3f11cf4e8",
+          "Quake-III-Arena-original-source/code/qcommon/cm_patch.c": "9fd50664bb46f77a6bf3f7d06a69500867bff1cae4b94c9be168c4ad9e03ca1f",
+          "Quake-III-Arena-original-source/code/qcommon/cm_polylib.c": "b1c1cf3a19ada8682b4ca58556b316144940f5bee5ca59ae4dd6ebe1a947a6ec",
+          "Quake-III-Arena-original-source/code/qcommon/md4.c": "fc5be3df4b9c463711e428b98bdc357351e5aeaa13e785073ec7a5921ccc5b4c",
+          "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29",
+          "Quake-III-Arena-original-source/code/game/q_shared.c": "724dae5f0a9de8bc6ced68893f9f59c5625deca4a1e194b11f5be348fdf2481b"
+        }
+      }
+    },
+    {
+      "path": "build/reference/collision/no_curves/result.json",
+      "sha256": "6f3cac48812e11ac40d8f236c4e7335019c5711f856686b1bcf21af3d42cb165",
+      "result": {
+        "passed": true,
+        "profile": "original x86 CM_BoxTrace, cm_noCurves=1; world and inline BSP models",
+        "maps": [
+          {
+            "map": "maps/q3ctf1.bsp",
+            "cases": 1928,
+            "bsp_sha256": "37c9c4f0e6a4d4b582d69353aa2997422ae7abe8fa8b16e9d5796375cc613b1c",
+            "input_sha256": "fe6e238cbc875f8d77ebfc142f742e32ce8f6d6d4b66c7009ccce5c5fd9028fa",
+            "expected_sha256": "0e78b3259e17eac8c969756569a9c682c1e7f58d1b9614863c2ca61ef628cdda"
+          },
+          {
+            "map": "maps/q3ctf2.bsp",
+            "cases": 3168,
+            "bsp_sha256": "4497c5876d8ffb4d0040d67589a37cc1cee9f6334b52a9db0951a6d0c97beac3",
+            "input_sha256": "e690eda014adc70fc041d5414b184fd65cae5ec71b8cbee6d297967f44e0d15f",
+            "expected_sha256": "a4847929c8385308e1c038dfb6b349ec4d917ffc7b60e580b5cd416228235577"
+          },
+          {
+            "map": "maps/q3ctf3.bsp",
+            "cases": 3048,
+            "bsp_sha256": "ca0b993c4ff4fe3f22123539c480866e666084990f8c533f15b90f6333ed809a",
+            "input_sha256": "77a1d95b5bd6e8b626936a88332e4d5a48a169264e97870323b6676a74ee693b",
+            "expected_sha256": "581bd7702af004625ad525cc98456e522153f1b41d9f56cf41d2ac052c3db7c5"
+          },
+          {
+            "map": "maps/q3ctf4.bsp",
+            "cases": 1128,
+            "bsp_sha256": "8bd598501e019baf95e125447aedfe134f0ac52491a9ff88557db6a6945501f0",
+            "input_sha256": "23682b115b320a206fc851b63d99e993ecf283769d7c15a64ffbafadc47eb4c1",
+            "expected_sha256": "35047d8112bebb0ce09bf88e083714a0628a1bc4d522720b0f946d4fb52eefe2"
+          },
+          {
+            "map": "maps/q3dm0.bsp",
+            "cases": 1208,
+            "bsp_sha256": "05e9540c598c9b1704c9853d61f2cd60c571735abcbf166609fcb4931fcde39b",
+            "input_sha256": "21f4388163a6a0b8e1c69365287808e509efde30dbc9e32b234c2b5f7aa5f275",
+            "expected_sha256": "f184433dfdd9106fd7705f56d9e9230bada1c7bded3e9917d467e0b4ec9b4f19"
+          },
+          {
+            "map": "maps/q3dm1.bsp",
+            "cases": 1476,
+            "bsp_sha256": "3d2dad8e6ba05914fc90619a6517ecdee7e5eb50f86013a14a84bb3c61cd702e",
+            "input_sha256": "aa023a8c713d13e7e180f1bca3b300dd4182f17810fb8ea9eb1074b10009ee39",
+            "expected_sha256": "1669212138f0a70ac572bfe8d25dfa2589a0ff1a4b7f9dc6fbce3edcdc485ad8"
+          },
+          {
+            "map": "maps/q3dm10.bsp",
+            "cases": 1904,
+            "bsp_sha256": "8d1bc9b4a527f5be6aed01630865a4eee63cec1f3ab6f73b477bd8b6290a4049",
+            "input_sha256": "f3a3b783b961be8e7323d9b630394d78ef8f99cc7a9bad948898bde05b223c15",
+            "expected_sha256": "ff6418b28bd872e95226407479d6148614be3107842763825c2166759d7bb95b"
+          },
+          {
+            "map": "maps/q3dm11.bsp",
+            "cases": 1432,
+            "bsp_sha256": "c0cea74839b39fa776d80c6c6b30d86781234edda7b832b8059c618b699ac0e6",
+            "input_sha256": "751c3c90728ab241b649db45646f787fae42cda530ce0997d0342820c0232e8b",
+            "expected_sha256": "60a9cf9e62e8bc2f79ae7ea04ba2a3433cc67581548aba7ca4abeb0c695f2116"
+          },
+          {
+            "map": "maps/q3dm12.bsp",
+            "cases": 2040,
+            "bsp_sha256": "4d8800b7bab10fea0b7c2214b57ec3b721d17ca12bc6cdd30ccacd99d7bde3b8",
+            "input_sha256": "2364a98514335ffcc6ea23ef6a1c74a3a02c72e3e6ffbccafde75eb4778de563",
+            "expected_sha256": "9dd654ffb7cb4e3a344d5eaffdff8c8df36d570f018d48d3496ccb9587b82337"
+          },
+          {
+            "map": "maps/q3dm13.bsp",
+            "cases": 1348,
+            "bsp_sha256": "3bfd001a0c94eb000f759aa2fa126245a484df5ae7c9eea50ccfc1d0d9fd3b73",
+            "input_sha256": "3eb446ace84a13631628fd7147238140f8a782ec676f81ae31d9d61cd9e14cd8",
+            "expected_sha256": "bef425f207181ca81b73dfd7870a5a0456db5ae41db05d16eeb5ba8829973e25"
+          },
+          {
+            "map": "maps/q3dm14.bsp",
+            "cases": 2284,
+            "bsp_sha256": "c90a5ce275a36a275d07c75d729b1def7d9fcbed9a92eb0e6a1beaef66ba3c1b",
+            "input_sha256": "1ac82a21deca1fc08fc3107864510067c5855017a5c02c0567c4d9ea22c2be72",
+            "expected_sha256": "5dc40f99a4ce64a45293438ce7e292107c4a7732cbd01a5f7bc790143dd6b7ec"
+          },
+          {
+            "map": "maps/q3dm15.bsp",
+            "cases": 2272,
+            "bsp_sha256": "0b87d7d3d6d1945e7c4b1291cc04db7470f1e03ede7be303be432a4678e1cb37",
+            "input_sha256": "329526190499fac49273499231c7fbc2cd50196ce6df7767a6345139c3a6ac23",
+            "expected_sha256": "d22689404f6cd8797883a27bbc80065d57ae367f6692559b245e55d9e25fca65"
+          },
+          {
+            "map": "maps/q3dm16.bsp",
+            "cases": 1428,
+            "bsp_sha256": "bf0f6b813f7a9152e8b185f88e137fbf27627a132961771f5008656e23b05929",
+            "input_sha256": "930e47b747932f800936689379659d55fa7e9192f0294d887138c8e052504d9b",
+            "expected_sha256": "8ab65865e38257a017e6ccc7807874e491c6754199e15707e4f9169424fde7f1"
+          },
+          {
+            "map": "maps/q3dm17.bsp",
+            "cases": 1152,
+            "bsp_sha256": "ee1394417b06d92f705088150d7609d6b9f55f5796a9a7626bfe7982e8fc94e8",
+            "input_sha256": "b80fb30822b58729e12fca54891aa8e380a1ec8524c6b7ccfc61c4d90cb4e517",
+            "expected_sha256": "ba52f7856d7701b11ba7eb8551037c4743b4ff96dc7226528611d59e4d0e56cb"
+          },
+          {
+            "map": "maps/q3dm18.bsp",
+            "cases": 1912,
+            "bsp_sha256": "e7ed6c8d845216ce29a193d2922c9ddba67b83bbef66a3e22f640f89a487e082",
+            "input_sha256": "fc7f04a3970a3c63d8614ea040c6a2505d77643535f62f3f27c1be910f3f3daa",
+            "expected_sha256": "5b284481eece15590f6de8e2ad708ef4010ea1cc60c6570134b2e35020708e5e"
+          },
+          {
+            "map": "maps/q3dm19.bsp",
+            "cases": 1024,
+            "bsp_sha256": "243b3ed54a8d44151e6ad5f3fa081867578f09a01add7f4aea62682827675600",
+            "input_sha256": "7965b9feb666e43dda8e0d11ab6bd238b0c78eec9e5dcf8c6dc7dd1703ffd781",
+            "expected_sha256": "0f7fb0ae43ab4c82158db972b8c4f35a6df7177eb416b2202a310f1f6acf4ce0"
+          },
+          {
+            "map": "maps/q3dm2.bsp",
+            "cases": 1968,
+            "bsp_sha256": "da97e7c3e2beeb19e49dbb42bc6758021d6430b55c3abc2788f45bfd8eabac87",
+            "input_sha256": "fe3b78247d39402ab9e4944dfbdd2fec07f040d624e7ed57135c0f56bad55123",
+            "expected_sha256": "e282a9e1e3e74607c4a322049b3f07f8c4aff0b96f36ee37a9ff10043d902054"
+          },
+          {
+            "map": "maps/q3dm3.bsp",
+            "cases": 1460,
+            "bsp_sha256": "80177ff9208644ed530eda6e29189c811f332cac0a6202f05e0f4ea25ee048f9",
+            "input_sha256": "9465d46d02d4d62e07dab85066b11d8dabd466d4b5d790b75b308a569d85a795",
+            "expected_sha256": "16def99d5a37e904471d13ed2ffab9d711dc721083dd05adc8094e68b0617046"
+          },
+          {
+            "map": "maps/q3dm4.bsp",
+            "cases": 2524,
+            "bsp_sha256": "8153c6c2c8e32180d45faa3195325116cafffd411391ee87944a9307f5a78cc5",
+            "input_sha256": "2ac2b80db441189e55589034c637b437a816ce692d560c82215e407f6aa64cc3",
+            "expected_sha256": "f6a120684fe5505c9f2368bd0e2ad9745923e6bf909d544647dca5659fa408de"
+          },
+          {
+            "map": "maps/q3dm5.bsp",
+            "cases": 1928,
+            "bsp_sha256": "e7e884dad9342b00b77ccb8bdd8a8e167c6c479c7a952b9f1d1c0bd3e42b371d",
+            "input_sha256": "d1ae8809b0f63b0cd5430047301f152d69393e940c1cffa4c945eb1f21a246d7",
+            "expected_sha256": "10e9ecc0aa56206f500dec456d038e8f14cfa7e4b9e3935281e30bd620b71aa5"
+          },
+          {
+            "map": "maps/q3dm6.bsp",
+            "cases": 2456,
+            "bsp_sha256": "5402e640b854d3502cb961df46a41260ecd1bf4017d0c4935b657e4d3551bf7c",
+            "input_sha256": "5379679f174eecb779f0df217e8e5e3258278c656067661ba2c41491bae42560",
+            "expected_sha256": "08f45bf02be3d4a9d9fe653c77ce67ea8fd387a9c458e621259f344ba04817b4"
+          },
+          {
+            "map": "maps/q3dm7.bsp",
+            "cases": 1780,
+            "bsp_sha256": "ba5d14e590f6fb38085f3b6f8d5be81050f240a21a5de5ca0d8253501baba52d",
+            "input_sha256": "2b031d6aa82bfd305a3fbea01ebdeb4a548df5575bce12352312845bf65879be",
+            "expected_sha256": "64fe8f68e2a75a94186b5277c4cee9f3abde7a38ce5abe2a8fb5b19d65dbe602"
+          },
+          {
+            "map": "maps/q3dm8.bsp",
+            "cases": 2452,
+            "bsp_sha256": "8cc96df2e4bf9e7c8a36bdbb42452cb5d6f188d5473d2bac44550a1f1d6df630",
+            "input_sha256": "1d480b2585f737f4db0ae62c1083e6f75b5d30502bd3979bcc8fdaace52d49c3",
+            "expected_sha256": "93eb150533c7e05d28e7e8ca2227eb6e326afd957628ffb97510975f48107c71"
+          },
+          {
+            "map": "maps/q3dm9.bsp",
+            "cases": 2632,
+            "bsp_sha256": "22a2ea22f14fad38e227578edc10ceeb2b210f86c41a30fd30131e19567336d3",
+            "input_sha256": "fbee4e1c58e45d891337d4e93bf5a74cd0d211c6c4c8739ab787fbdd6feec3ab",
+            "expected_sha256": "15c90b7d02ab7b3a6a679d28e70ad1211ab6016d687a3ec3e495bf644fde904d"
+          },
+          {
+            "map": "maps/q3tourney1.bsp",
+            "cases": 2396,
+            "bsp_sha256": "7f54eb1bcf35fb74ec81dbe52982a81f3014f14bc69bcd9b7e13bd6cf1819fb6",
+            "input_sha256": "48a5a2c4bf8d5d4d6414c99f9beac6d2fd6b0fd408898b7df0918c26e289c0b3",
+            "expected_sha256": "97b0ae1e31ec0e523257837849e64a1fdf23711e16436a306c27b9ffb432eb18"
+          },
+          {
+            "map": "maps/q3tourney2.bsp",
+            "cases": 1848,
+            "bsp_sha256": "fe07a539bf0b76823160d8ffe96a62c182003877d9678aa27c5b2bea8ca0f4c8",
+            "input_sha256": "ab25add82a70e3dd6ef98798fd0f6bfd06edab461f5a512cea45dc9618b24934",
+            "expected_sha256": "44b3525ea4cfc6938c54f679dd4094ca146f698fd223cf3c814e6c43bb2b79b3"
+          },
+          {
+            "map": "maps/q3tourney3.bsp",
+            "cases": 1500,
+            "bsp_sha256": "f2811ecc9510d78d7642927ed325cdf5cd84342ba174c983e8fba94b959b33e6",
+            "input_sha256": "4c8e3b3cfec07f151e80c9513fcd057a7a6d0315ab8cd401fb380ffe0974d241",
+            "expected_sha256": "f4d2ae8d5c856622950bf82989d5290111328d84c9f655e722112d6197aee1bc"
+          },
+          {
+            "map": "maps/q3tourney4.bsp",
+            "cases": 1088,
+            "bsp_sha256": "cbc3552662ba336d8a19421b5b0b58452978157638ce28e3832276c7fe6b15bf",
+            "input_sha256": "80cda6dba093d5bc0460865e0238c830190ac1eb5b95f8fd3c8f7efe63376c88",
+            "expected_sha256": "2f5ca4b4fd605ed8539d1b431612e8563522f47e77a71be7872447b34b9173fd"
+          },
+          {
+            "map": "maps/q3tourney5.bsp",
+            "cases": 1260,
+            "bsp_sha256": "ec9f56be3bf1b7e91c18aadb499ea46d5ff6e067bd6d37ca186dfeb5b4e8555c",
+            "input_sha256": "235ff60304abc1d820eceadf847e7982dc18dc342a0490a536e511205ca46c0f",
+            "expected_sha256": "d8ff5e99254bcc4d11abdf493f705125092f7d0325c06d8eaa79995fb3f299c6"
+          },
+          {
+            "map": "maps/q3tourney6.bsp",
+            "cases": 1040,
+            "bsp_sha256": "f38c52088ce0dfa7566e732c07937ed47d6e56ef1a571c371832e459f66397a9",
+            "input_sha256": "99169a21c850444d36423c87d38876c357f93e70790754cb4b512cd6d0ec1b77",
+            "expected_sha256": "e1a642aabe0f1546739fef717ad19f6a5ad13fc5e2669225eca2ec076059f032"
+          },
+          {
+            "map": "maps/test_bigbox.bsp",
+            "cases": 1024,
+            "bsp_sha256": "c645abec8be60a4adc42ecdbc1f47a58a043afebfb8b77690b758bfc8c9f2b7e",
+            "input_sha256": "a5182d2baab1584fa759786d2a052640386aafbd7032e9512c6e360a6f45bb5a",
+            "expected_sha256": "693b346eca9c4fe078582be36916c9b1ac781d5ecbc605cf02b41eb08ca9c365"
+          }
+        ],
+        "traces": 56108,
+        "exact_fields": 897728,
+        "original_sources": {
+          "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
+          "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
+          "Quake-III-Arena-original-source/code/qcommon/cm_test.c": "2e5d1139c88a5ffc6dea01349865f91d210158491931090d4c7f07d3f11cf4e8",
+          "Quake-III-Arena-original-source/code/qcommon/cm_patch.c": "9fd50664bb46f77a6bf3f7d06a69500867bff1cae4b94c9be168c4ad9e03ca1f",
+          "Quake-III-Arena-original-source/code/qcommon/cm_polylib.c": "b1c1cf3a19ada8682b4ca58556b316144940f5bee5ca59ae4dd6ebe1a947a6ec",
+          "Quake-III-Arena-original-source/code/qcommon/md4.c": "fc5be3df4b9c463711e428b98bdc357351e5aeaa13e785073ec7a5921ccc5b4c",
+          "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29",
+          "Quake-III-Arena-original-source/code/game/q_shared.c": "724dae5f0a9de8bc6ced68893f9f59c5625deca4a1e194b11f5be348fdf2481b"
+        }
       }
     },
     {
@@ -442,31 +935,397 @@
     },
     {
       "path": "build/reference/math/result.json",
-      "sha256": "dc4e1ce8385985b167bb583995b71dd6129cfea1d947b9288b13f436b4c4066e",
+      "sha256": "fb528de9b7f731f398e08a53218f8ee97db2d690d9a4701807e9b96fc41a066a",
       "result": {
         "passed": true,
         "cases": 4096,
         "reference_sha256": "b51757786681a0f65e3d2def2b1b03089e5052f89b308f4fd90d96e8cd789936",
         "oracle_sha256": "5532f583768e471965343045eb7701e8d40ff27ab1c567690ccc79693154bddf",
-        "test_sha256": "69053a1747f40d66a704b14dc006b1f0f21b4d4b65055a4379dafaf3376391c2",
+        "test_sha256": "e0b7ebbe9b473d3e5b513e451d2762de24ee2a49119d32764d06cbabb683e775",
         "fp": "x86 MSVC /Od /fp:strict /arch:SSE2"
       }
     },
     {
-      "path": "build/reference/numeric/result.json",
-      "sha256": "c208352636e070a65528fa35125a3371ede5b33f205210b77e3f7e7a2aea04cd",
+      "path": "build/reference/movement/curves/result.json",
+      "sha256": "64917b1507114135a14f096ab807f4ac73b39fa0baa1e7561125e1248c7edfb0",
       "result": {
         "passed": true,
-        "results": 80900,
-        "expected_sha256": "e7af696064c79713535e3710e5aee0645fd9438bb8c12c61d77d96e0dbd18543"
+        "profile": "original shared movement kernels; cm_noCurves=0 world traces; independent inputs and chained 64-frame sequences",
+        "maps": [
+          {
+            "map": "q3dm1",
+            "operations": 4096,
+            "generated_step_events": 43,
+            "bsp_sha256": "3d2dad8e6ba05914fc90619a6517ecdee7e5eb50f86013a14a84bb3c61cd702e",
+            "input_sha256": "c9f522d6144a469abb277270668a35d2cdf9d1fd3679ba5f0511224259e9e00a",
+            "expected_sha256": "285d440343d660f2d7ee290fe9af11c92559ef032cbe151091038add6541fe5b"
+          },
+          {
+            "map": "q3dm6",
+            "operations": 4096,
+            "generated_step_events": 43,
+            "bsp_sha256": "5402e640b854d3502cb961df46a41260ecd1bf4017d0c4935b657e4d3551bf7c",
+            "input_sha256": "bd0b2b48edf3309524e5b1f7e7b2af14820beab908798db133479e539f828986",
+            "expected_sha256": "e7f43888b71e2a43c7d0629616c2cb4991769c644b18f7d814fb41fdae7e09da"
+          },
+          {
+            "map": "q3dm17",
+            "operations": 4096,
+            "generated_step_events": 36,
+            "bsp_sha256": "ee1394417b06d92f705088150d7609d6b9f55f5796a9a7626bfe7982e8fc94e8",
+            "input_sha256": "6f7a1b31deb4d2268307dc8f1181b55e14e9e822c23c67e88bf4ba0f432b63c7",
+            "expected_sha256": "af9cab5f34ce7b3fc99b2ff53683341578f0919a584c07484935059249af60dc"
+          },
+          {
+            "map": "q3tourney2",
+            "operations": 4096,
+            "generated_step_events": 40,
+            "bsp_sha256": "fe07a539bf0b76823160d8ffe96a62c182003877d9678aa27c5b2bea8ca0f4c8",
+            "input_sha256": "414fec124f657bec5560384952a35dd046b5b16b888ab36882e11eae8d2a0ccd",
+            "expected_sha256": "02a8e70752a31324c0013864e9d75350da473dbb124cf2cf7f3e08f193b6d543"
+          }
+        ],
+        "operations": 16384,
+        "exact_fields": 770048,
+        "original_sources": {
+          "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
+          "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
+          "Quake-III-Arena-original-source/code/qcommon/cm_test.c": "2e5d1139c88a5ffc6dea01349865f91d210158491931090d4c7f07d3f11cf4e8",
+          "Quake-III-Arena-original-source/code/qcommon/cm_patch.c": "9fd50664bb46f77a6bf3f7d06a69500867bff1cae4b94c9be168c4ad9e03ca1f",
+          "Quake-III-Arena-original-source/code/qcommon/cm_polylib.c": "b1c1cf3a19ada8682b4ca58556b316144940f5bee5ca59ae4dd6ebe1a947a6ec",
+          "Quake-III-Arena-original-source/code/qcommon/md4.c": "fc5be3df4b9c463711e428b98bdc357351e5aeaa13e785073ec7a5921ccc5b4c",
+          "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29",
+          "Quake-III-Arena-original-source/code/game/q_shared.c": "724dae5f0a9de8bc6ced68893f9f59c5625deca4a1e194b11f5be348fdf2481b",
+          "Quake-III-Arena-original-source/code/game/bg_slidemove.c": "327fa83a0c523da8a7e8b4fbbbba40cf8870a28613459289ef0e8a865e6bd903",
+          "Quake-III-Arena-original-source/code/game/bg_misc.c": "c71034761ec3f75fd8952f2d75a7f057d664b5cf97b5edf26ae020da65a486e0",
+          "Quake-III-Arena-original-source/code/game/bg_pmove.c": "3ced04aed8686d3da051887dc8c4ace88a24b45a6d0bb4e4d5238cd53cb7a7fc"
+        }
+      }
+    },
+    {
+      "path": "build/reference/movement/no_curves/result.json",
+      "sha256": "ec6851670403bf090f661c8c0f0c8f5d969b3a6f152a6d7367d0bbd0968ff8bd",
+      "result": {
+        "passed": true,
+        "profile": "original shared movement kernels; cm_noCurves=1 world traces; independent inputs and chained 64-frame sequences",
+        "maps": [
+          {
+            "map": "q3dm1",
+            "operations": 4096,
+            "generated_step_events": 43,
+            "bsp_sha256": "3d2dad8e6ba05914fc90619a6517ecdee7e5eb50f86013a14a84bb3c61cd702e",
+            "input_sha256": "c9f522d6144a469abb277270668a35d2cdf9d1fd3679ba5f0511224259e9e00a",
+            "expected_sha256": "ec8c1dc58c866cdde23fccc573c4f966d249f6f5f73279b1f23e51a9360ba391"
+          },
+          {
+            "map": "q3dm6",
+            "operations": 4096,
+            "generated_step_events": 41,
+            "bsp_sha256": "5402e640b854d3502cb961df46a41260ecd1bf4017d0c4935b657e4d3551bf7c",
+            "input_sha256": "bd0b2b48edf3309524e5b1f7e7b2af14820beab908798db133479e539f828986",
+            "expected_sha256": "fb8b32a9e8339bc26a882e9678f8cd955bac7f47661a40b45f92434a6c6dcb8c"
+          },
+          {
+            "map": "q3dm17",
+            "operations": 4096,
+            "generated_step_events": 35,
+            "bsp_sha256": "ee1394417b06d92f705088150d7609d6b9f55f5796a9a7626bfe7982e8fc94e8",
+            "input_sha256": "6f7a1b31deb4d2268307dc8f1181b55e14e9e822c23c67e88bf4ba0f432b63c7",
+            "expected_sha256": "64165ad10f04fe9f20b9e85c2feaebb2ce4c7ba2a23a3aea1222dda92cbde651"
+          },
+          {
+            "map": "q3tourney2",
+            "operations": 4096,
+            "generated_step_events": 42,
+            "bsp_sha256": "fe07a539bf0b76823160d8ffe96a62c182003877d9678aa27c5b2bea8ca0f4c8",
+            "input_sha256": "414fec124f657bec5560384952a35dd046b5b16b888ab36882e11eae8d2a0ccd",
+            "expected_sha256": "db27b26c94d87af54e380b33d4e41300d091b96584de595dd088561735cce6f5"
+          }
+        ],
+        "operations": 16384,
+        "exact_fields": 770048,
+        "original_sources": {
+          "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
+          "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
+          "Quake-III-Arena-original-source/code/qcommon/cm_test.c": "2e5d1139c88a5ffc6dea01349865f91d210158491931090d4c7f07d3f11cf4e8",
+          "Quake-III-Arena-original-source/code/qcommon/cm_patch.c": "9fd50664bb46f77a6bf3f7d06a69500867bff1cae4b94c9be168c4ad9e03ca1f",
+          "Quake-III-Arena-original-source/code/qcommon/cm_polylib.c": "b1c1cf3a19ada8682b4ca58556b316144940f5bee5ca59ae4dd6ebe1a947a6ec",
+          "Quake-III-Arena-original-source/code/qcommon/md4.c": "fc5be3df4b9c463711e428b98bdc357351e5aeaa13e785073ec7a5921ccc5b4c",
+          "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29",
+          "Quake-III-Arena-original-source/code/game/q_shared.c": "724dae5f0a9de8bc6ced68893f9f59c5625deca4a1e194b11f5be348fdf2481b",
+          "Quake-III-Arena-original-source/code/game/bg_slidemove.c": "327fa83a0c523da8a7e8b4fbbbba40cf8870a28613459289ef0e8a865e6bd903",
+          "Quake-III-Arena-original-source/code/game/bg_misc.c": "c71034761ec3f75fd8952f2d75a7f057d664b5cf97b5edf26ae020da65a486e0",
+          "Quake-III-Arena-original-source/code/game/bg_pmove.c": "3ced04aed8686d3da051887dc8c4ace88a24b45a6d0bb4e4d5238cd53cb7a7fc"
+        }
+      }
+    },
+    {
+      "path": "build/reference/numeric/result.json",
+      "sha256": "682adae606864c94d5521ec4772dd4e12755618c13f838aba7f37b52c0078a5e",
+      "result": {
+        "passed": true,
+        "results": 101125,
+        "expected_sha256": "f0c8c8f68dcacbd1c016391f128ae91f081ea0cf21f99b3bf65c659c1985f16c"
+      }
+    },
+    {
+      "path": "build/reference/patches/result.json",
+      "sha256": "c29c62e8fa6076f3d8c298555b45813f4dabcb52cc035edb07ec80e9430bf2f9",
+      "result": {
+        "passed": true,
+        "maps": [
+          {
+            "map": "maps/q3ctf1.bsp",
+            "patches": 226,
+            "exact_fields": 57907,
+            "bsp_sha256": "37c9c4f0e6a4d4b582d69353aa2997422ae7abe8fa8b16e9d5796375cc613b1c",
+            "expected_sha256": "3fbf77d321461cee80b2743e961ae21d0b5961838cdae108b2c5cbf7274f0731"
+          },
+          {
+            "map": "maps/q3ctf2.bsp",
+            "patches": 536,
+            "exact_fields": 127641,
+            "bsp_sha256": "4497c5876d8ffb4d0040d67589a37cc1cee9f6334b52a9db0951a6d0c97beac3",
+            "expected_sha256": "8adbd6f1feb24dcd3cc6689b51895424f21cf2debdffd0f7e8848ea79a5371fa"
+          },
+          {
+            "map": "maps/q3ctf3.bsp",
+            "patches": 506,
+            "exact_fields": 133696,
+            "bsp_sha256": "ca0b993c4ff4fe3f22123539c480866e666084990f8c533f15b90f6333ed809a",
+            "expected_sha256": "fd86223f69b030636abeb33edbf202b2a6dfdab10e9ab6821a87abb28936bf68"
+          },
+          {
+            "map": "maps/q3ctf4.bsp",
+            "patches": 26,
+            "exact_fields": 21076,
+            "bsp_sha256": "8bd598501e019baf95e125447aedfe134f0ac52491a9ff88557db6a6945501f0",
+            "expected_sha256": "97d792ebd4d5333a24ec6260fb120c831338f14285393d6288db96f753b9b860"
+          },
+          {
+            "map": "maps/q3dm0.bsp",
+            "patches": 46,
+            "exact_fields": 13520,
+            "bsp_sha256": "05e9540c598c9b1704c9853d61f2cd60c571735abcbf166609fcb4931fcde39b",
+            "expected_sha256": "84be43672b79b97a5fd774f0bc3785bd0a34842a1fcac5b6f2df1bd4352c68d0"
+          },
+          {
+            "map": "maps/q3dm1.bsp",
+            "patches": 113,
+            "exact_fields": 60255,
+            "bsp_sha256": "3d2dad8e6ba05914fc90619a6517ecdee7e5eb50f86013a14a84bb3c61cd702e",
+            "expected_sha256": "078f9c45a0fe295b46f75d6cf42f0ad9fd5f46e5cb573a49376fc68ea8ad27c0"
+          },
+          {
+            "map": "maps/q3dm10.bsp",
+            "patches": 220,
+            "exact_fields": 29026,
+            "bsp_sha256": "8d1bc9b4a527f5be6aed01630865a4eee63cec1f3ab6f73b477bd8b6290a4049",
+            "expected_sha256": "4671959c5731a0d054f3de4071b13460b9330a43cdf318ec8dc2df52ccb4755a"
+          },
+          {
+            "map": "maps/q3dm11.bsp",
+            "patches": 102,
+            "exact_fields": 29694,
+            "bsp_sha256": "c0cea74839b39fa776d80c6c6b30d86781234edda7b832b8059c618b699ac0e6",
+            "expected_sha256": "f8d0ed777872922e4bee1c9ee60dbc758d15dd5af04dc5153ab81dd7780daf9c"
+          },
+          {
+            "map": "maps/q3dm12.bsp",
+            "patches": 254,
+            "exact_fields": 41384,
+            "bsp_sha256": "4d8800b7bab10fea0b7c2214b57ec3b721d17ca12bc6cdd30ccacd99d7bde3b8",
+            "expected_sha256": "076c04da278999cec59bc1e427a1b5a9caf65535bfd993587d8646bdd4b13168"
+          },
+          {
+            "map": "maps/q3dm13.bsp",
+            "patches": 81,
+            "exact_fields": 40534,
+            "bsp_sha256": "3bfd001a0c94eb000f759aa2fa126245a484df5ae7c9eea50ccfc1d0d9fd3b73",
+            "expected_sha256": "4e2e2547122cbcfb9841441efff6d1168b24df3656cc6cd4dda0b49180a544aa"
+          },
+          {
+            "map": "maps/q3dm14.bsp",
+            "patches": 315,
+            "exact_fields": 57712,
+            "bsp_sha256": "c90a5ce275a36a275d07c75d729b1def7d9fcbed9a92eb0e6a1beaef66ba3c1b",
+            "expected_sha256": "7793c9207dede9114a4f11a3bda2320aa4d2a041d45e99d607f8660034eccc22"
+          },
+          {
+            "map": "maps/q3dm15.bsp",
+            "patches": 312,
+            "exact_fields": 55436,
+            "bsp_sha256": "0b87d7d3d6d1945e7c4b1291cc04db7470f1e03ede7be303be432a4678e1cb37",
+            "expected_sha256": "8408fb6d13da452274cbf6feff9530d488126ad2064beb4183bdcf03add75bfe"
+          },
+          {
+            "map": "maps/q3dm16.bsp",
+            "patches": 101,
+            "exact_fields": 20549,
+            "bsp_sha256": "bf0f6b813f7a9152e8b185f88e137fbf27627a132961771f5008656e23b05929",
+            "expected_sha256": "f38a4b4f3119af0edba3a7acb7c8b05500da7b2ed4d193c93b89c87b2a87b370"
+          },
+          {
+            "map": "maps/q3dm17.bsp",
+            "patches": 32,
+            "exact_fields": 14837,
+            "bsp_sha256": "ee1394417b06d92f705088150d7609d6b9f55f5796a9a7626bfe7982e8fc94e8",
+            "expected_sha256": "116df6c49bc5c9de1fa9922a00f78d715c46d84d64960e2af5688a2aaafa68b0"
+          },
+          {
+            "map": "maps/q3dm18.bsp",
+            "patches": 222,
+            "exact_fields": 56641,
+            "bsp_sha256": "e7ed6c8d845216ce29a193d2922c9ddba67b83bbef66a3e22f640f89a487e082",
+            "expected_sha256": "06a1a0d3a05b69454732b2a3a939998e94a1840ad0443be79fec3c8a16bd160c"
+          },
+          {
+            "map": "maps/q3dm19.bsp",
+            "patches": 0,
+            "exact_fields": 1,
+            "bsp_sha256": "243b3ed54a8d44151e6ad5f3fa081867578f09a01add7f4aea62682827675600",
+            "expected_sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+          },
+          {
+            "map": "maps/q3dm2.bsp",
+            "patches": 236,
+            "exact_fields": 49130,
+            "bsp_sha256": "da97e7c3e2beeb19e49dbb42bc6758021d6430b55c3abc2788f45bfd8eabac87",
+            "expected_sha256": "12f9e14190ca3f2292b30318986eb60a51f670576eb6b6442e81019c809870f0"
+          },
+          {
+            "map": "maps/q3dm3.bsp",
+            "patches": 109,
+            "exact_fields": 25299,
+            "bsp_sha256": "80177ff9208644ed530eda6e29189c811f332cac0a6202f05e0f4ea25ee048f9",
+            "expected_sha256": "5bce73560bcdccebf917662d21f8545d19accaa6fd9837b7db781aa843ec73e3"
+          },
+          {
+            "map": "maps/q3dm4.bsp",
+            "patches": 375,
+            "exact_fields": 79287,
+            "bsp_sha256": "8153c6c2c8e32180d45faa3195325116cafffd411391ee87944a9307f5a78cc5",
+            "expected_sha256": "e6dd8d283ee7386e187028a7160c32df2f76768abf336b8188c56d4e2c11dac1"
+          },
+          {
+            "map": "maps/q3dm5.bsp",
+            "patches": 226,
+            "exact_fields": 41511,
+            "bsp_sha256": "e7e884dad9342b00b77ccb8bdd8a8e167c6c479c7a952b9f1d1c0bd3e42b371d",
+            "expected_sha256": "88ecb9c4e3427418a3512671c1a7f02753fbb5a4243bdb736744df78e3657ad8"
+          },
+          {
+            "map": "maps/q3dm6.bsp",
+            "patches": 358,
+            "exact_fields": 70059,
+            "bsp_sha256": "5402e640b854d3502cb961df46a41260ecd1bf4017d0c4935b657e4d3551bf7c",
+            "expected_sha256": "bcfce671fd4dc4272ef6a3452e80098c9f1ad4d4a45e11e024141f28c589b99f"
+          },
+          {
+            "map": "maps/q3dm7.bsp",
+            "patches": 189,
+            "exact_fields": 52425,
+            "bsp_sha256": "ba5d14e590f6fb38085f3b6f8d5be81050f240a21a5de5ca0d8253501baba52d",
+            "expected_sha256": "7a122446cd811f553ff99248472b3d8cce595aa2c77b3f5df27e5dc48c3a594c"
+          },
+          {
+            "map": "maps/q3dm8.bsp",
+            "patches": 357,
+            "exact_fields": 67156,
+            "bsp_sha256": "8cc96df2e4bf9e7c8a36bdbb42452cb5d6f188d5473d2bac44550a1f1d6df630",
+            "expected_sha256": "f8f00303245bc7c204266171038ae346e11aee737ec0366d0029bfe58151eb34"
+          },
+          {
+            "map": "maps/q3dm9.bsp",
+            "patches": 402,
+            "exact_fields": 67682,
+            "bsp_sha256": "22a2ea22f14fad38e227578edc10ceeb2b210f86c41a30fd30131e19567336d3",
+            "expected_sha256": "14b52f1ca754cb2ba9d128e3352975b8434263eea0819112c96e3d59eee1fa86"
+          },
+          {
+            "map": "maps/q3tourney1.bsp",
+            "patches": 343,
+            "exact_fields": 71799,
+            "bsp_sha256": "7f54eb1bcf35fb74ec81dbe52982a81f3014f14bc69bcd9b7e13bd6cf1819fb6",
+            "expected_sha256": "746a668f3fc01b39d078097496eba4741ff181a19b8c279f9ac21a1293e2282f"
+          },
+          {
+            "map": "maps/q3tourney2.bsp",
+            "patches": 206,
+            "exact_fields": 36033,
+            "bsp_sha256": "fe07a539bf0b76823160d8ffe96a62c182003877d9678aa27c5b2bea8ca0f4c8",
+            "expected_sha256": "a7cb10624b7d38145c57f393317f918d8180cef658ad88a896a895a6c924d79c"
+          },
+          {
+            "map": "maps/q3tourney3.bsp",
+            "patches": 119,
+            "exact_fields": 20671,
+            "bsp_sha256": "f2811ecc9510d78d7642927ed325cdf5cd84342ba174c983e8fba94b959b33e6",
+            "expected_sha256": "0a713d9eb828afc30e212ab4ee756cb804243d3983fa6848e78b377c6253e9e0"
+          },
+          {
+            "map": "maps/q3tourney4.bsp",
+            "patches": 16,
+            "exact_fields": 849,
+            "bsp_sha256": "cbc3552662ba336d8a19421b5b0b58452978157638ce28e3832276c7fe6b15bf",
+            "expected_sha256": "90ffbab1615e8bf301d6dce1b386cd0504da059758eb55590752ef1c994bef12"
+          },
+          {
+            "map": "maps/q3tourney5.bsp",
+            "patches": 59,
+            "exact_fields": 8636,
+            "bsp_sha256": "ec9f56be3bf1b7e91c18aadb499ea46d5ff6e067bd6d37ca186dfeb5b4e8555c",
+            "expected_sha256": "770c592383c45d1e7ddb1cc19fae92105bc4b945c0f5f2533cf1f844097b076c"
+          },
+          {
+            "map": "maps/q3tourney6.bsp",
+            "patches": 4,
+            "exact_fields": 1712,
+            "bsp_sha256": "f38c52088ce0dfa7566e732c07937ed47d6e56ef1a571c371832e459f66397a9",
+            "expected_sha256": "d80f678c0406a531e45895a48c93d4e917e6e6a31066ebca2cd9bc50f9ca0917"
+          },
+          {
+            "map": "maps/test_bigbox.bsp",
+            "patches": 0,
+            "exact_fields": 1,
+            "bsp_sha256": "c645abec8be60a4adc42ecdbc1f47a58a043afebfb8b77690b758bfc8c9f2b7e",
+            "expected_sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+          }
+        ],
+        "patches": 6091,
+        "exact_fields": 1352159,
+        "original_sources": {
+          "Quake-III-Arena-original-source/code/qcommon/cm_load.c": "feef0ac1c2b9ab7c13b7ab5ea42d3ec3b9c50460b6215f44cc7003d41a77f62e",
+          "Quake-III-Arena-original-source/code/qcommon/cm_trace.c": "7d7d1bf3c1f42bbf4332276e6f5264c936d5842e83ac008a4746884d35518c02",
+          "Quake-III-Arena-original-source/code/qcommon/cm_test.c": "2e5d1139c88a5ffc6dea01349865f91d210158491931090d4c7f07d3f11cf4e8",
+          "Quake-III-Arena-original-source/code/qcommon/cm_patch.c": "9fd50664bb46f77a6bf3f7d06a69500867bff1cae4b94c9be168c4ad9e03ca1f",
+          "Quake-III-Arena-original-source/code/qcommon/cm_polylib.c": "b1c1cf3a19ada8682b4ca58556b316144940f5bee5ca59ae4dd6ebe1a947a6ec",
+          "Quake-III-Arena-original-source/code/qcommon/md4.c": "fc5be3df4b9c463711e428b98bdc357351e5aeaa13e785073ec7a5921ccc5b4c",
+          "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29",
+          "Quake-III-Arena-original-source/code/game/q_shared.c": "724dae5f0a9de8bc6ced68893f9f59c5625deca4a1e194b11f5be348fdf2481b"
+        }
       }
     },
     {
       "path": "build/reference/rejections/result.json",
-      "sha256": "dc95e3bc13ddda390c5e1129c94e08c0e5056d0a0cb4c28e3a7406869a0d2eff",
+      "sha256": "be54b046efc3d06a0e3563a34355fb95a1b7af06bac885f1ffa80c847346b715",
       "result": {
         "passed": true,
-        "cases": 83
+        "cases": 97,
+        "valid_collision_controls": 2
+      }
+    },
+    {
+      "path": "build/reference/runtime_trace/result.json",
+      "sha256": "ba78571977c44d658a838a273e66167b7b9d9c6dc6e4a735f0c3d44d8166a9cf",
+      "result": {
+        "passed": true,
+        "binary_sha256": "85dc5f5a5e51398d8bc9b9f08fcfb6b7ba0789b5ad6a99d67cffb87c33b39094",
+        "map_sha256": "3d2dad8e6ba05914fc90619a6517ecdee7e5eb50f86013a14a84bb3c61cd702e",
+        "expected_sha256": "d7e30f2abccfb5ecc5bec01067ebba91e8d11d586c9cacb650119c9d16a2039a",
+        "exact_fields": 12,
+        "scope": "PK3-to-trace CLI with original player box and active curves",
+        "output": "Player box trace: maps/q3dm1.bsp (brushes and curved surfaces)\nFraction: 9.01692733168602e-002\nEnd: (216., 1328., 24.125)\nNormal: (0., 0., 1.) Distance: -0.\nContents: 1 Surface flags: 0\nStart solid: false All solid: false\n"
       }
     },
     {
@@ -525,13 +1384,13 @@
     },
     {
       "path": "build/reference/vm/result.json",
-      "sha256": "77446e19322f897f6a16b8852d8d07d5104b35aa9f9a5caeed8d3a5855d6008b",
+      "sha256": "a310f05a757a19be7dc27e46d4dff2f81a22ff2a4856085906d3bc39f50fff04",
       "result": {
         "passed": true,
         "cases": 392,
         "reference_sha256": "ce072bfba45205b165685db2c5170e94f062a0bd6f87ef8f22c037ceccb11145",
         "oracle_sha256": "8e05c712cdd7ce00244df9aef8509ec24cb0eed08f225cf75a474175e7593618",
-        "test_sha256": "881ce44a789e967486dd218ce5a15c9b101519acb79b41aef4a2bd83a4119316"
+        "test_sha256": "34e79a3765fcaa58cf829320f9fbb2943ef7576a2824938153e8c01344178c34"
       }
     },
     {

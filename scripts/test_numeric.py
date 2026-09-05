@@ -14,6 +14,6 @@ def main():
     run([output / "numeric_oracle.exe",expected],output)
     subprocess.run([sys.executable,ROOT / "scripts/build.py","--source","tests/numeric_tests.ml","--output","numeric_tests.exe"],check=True)
     print(run([ROOT / "build/numeric_tests.exe",expected],ROOT / "build",log=output / "test.log"))
-    (output / "result.json").write_text(json.dumps({"passed":True,"results":80900,"expected_sha256":sha(expected)},indent=2)+"\n")
+    (output / "result.json").write_text(json.dumps({"passed":True,"results":101125,"expected_sha256":sha(expected)},indent=2)+"\n")
 
 if __name__=="__main__":main()

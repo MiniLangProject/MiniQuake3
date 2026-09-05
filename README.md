@@ -2,7 +2,8 @@
 
 Projekt für einen möglichst originalgetreuen Port von Quake III Arena nach MiniLang.
 Status: Implementierung läuft. Ein nativer MiniLang-Build mit Zahlenkompatibilität,
-Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter und Brush-Kollisionskern ist
+Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter, BSP-/Kurvenkollision und
+gemeinsamen Bewegungskernen ist
 vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
 [geprüfte Stand mit offenen Abnahmen](docs/PARITY_AUDIT.md).
@@ -17,11 +18,23 @@ python scripts/inventory.py
 .\build.ps1
 .\build\MiniQuake3.exe --inspect-map D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp
 python scripts/verify.py --data-root D:/Quake3
+python scripts/verify.py --data-root D:/Quake3 --extended
 ```
 
 Ein vorhandener eingefrorener Compiler liegt unter `artifacts/toolchain/`.
 `inventory.py` nur ausführen, wenn dieser Stand bewusst neu festgelegt werden soll.
 Die C-Referenz- und Replay-Builds sind im [Prüfbericht](docs/PARITY_AUDIT.md) beschrieben.
+Die erweiterte Prüfung vergleicht zusätzlich alle 31 Karten einschließlich
+Kurvenflächen und Bewegungsfolgen mit dem Originalcode. Einzelne Spielerbox-Traces
+lassen sich direkt mit dem MiniLang-Build ausführen:
+
+```powershell
+.\build\MiniQuake3.exe --trace-map D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp 216 1328 128 216 1328 -1024
+```
+
+Die sechs Zahlen sind Start- und Zielposition. Verwendet werden die originale
+Spielerbox `(-15,-15,-24)` bis `(15,15,32)` und `MASK_PLAYERSOLID`, mit aktiver
+Kurvenkollision gegen das Weltmodell.
 
 ## Quellcode und Projektstruktur
 

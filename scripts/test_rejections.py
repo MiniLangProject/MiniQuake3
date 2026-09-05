@@ -8,6 +8,30 @@ import zipfile
 from toolchain import ROOT,run
 from test_vm import assemble
 
+def tiny_bsp(patch=False):
+    lumps=[b"" for _ in range(17)]
+    lumps[1]=struct.pack("<64sii",b"solid",0,1)
+    planes=[(-1,0,0,16),(1,0,0,16),(0,-1,0,16),(0,1,0,16),(0,0,-1,16),(0,0,1,16)]
+    lumps[2]=b"".join(struct.pack("<4f",*p) for p in planes)
+    lumps[3]=struct.pack("<9i",1,-1,-2,-16,-16,-16,16,16,16)
+    lumps[4]=b"".join(struct.pack("<12i",i,0,-16,-16,-16,16,16,16,0,int(patch),0,1) for i in range(2))
+    lumps[5]=struct.pack("<i",0) if patch else b""
+    lumps[6]=struct.pack("<i",0)
+    lumps[7]=struct.pack("<6f4i",-16,-16,-16,16,16,16,0,int(patch),0,1)
+    lumps[8]=struct.pack("<3i",0,6,0)
+    lumps[9]=b"".join(struct.pack("<2i",i,0) for i in range(6))
+    if patch:
+        vertices=[]
+        for j in range(3):
+            for i in range(3): vertices.append(struct.pack("<10f4B",i*8,j*8,0,0,0,0,0,0,0,1,255,255,255,255))
+        lumps[10]=b"".join(vertices)
+        surface=bytearray(104);struct.pack_into("<i",surface,8,2);struct.pack_into("<i",surface,16,9)
+        struct.pack_into("<2i",surface,96,3,3);lumps[13]=surface
+    header=bytearray(struct.pack("<2i",0x50534249,46)+bytes(17*8));position=144
+    for i,data in enumerate(lumps):
+        struct.pack_into("<2i",header,8+i*8,position,len(data));position+=len(data)
+    return header+b"".join(lumps)
+
 def main():
     output=ROOT / "build/reference/rejections"
     output.mkdir(parents=True,exist_ok=True)
@@ -42,10 +66,25 @@ def main():
     for index in range(20):
         data=random.Random(index).randbytes(index*7)
         add("bsp",f"bsp{index}.bsp",data)
+    simple=tiny_bsp()
+    add("collision_valid","valid_collision.bsp",simple)
+    for label,lump,field,value in (("cycle",3,4,0),("child",3,4,99),("nan",2,0,0x7fc00000),
+                                  ("infinity",2,12,0x7f800000),("short_brush",8,4,5)):
+        data=bytearray(simple);offset=struct.unpack_from("<i",data,8+lump*8)[0]
+        struct.pack_into("<I",data,offset+field,value);add("collision",label+".bsp",data)
+    curved=tiny_bsp(patch=True)
+    add("collision_valid","valid_patch.bsp",curved)
+    for label,lump,field,value in (("even_patch",13,96,2),("large_patch",13,100,999999),
+                                  ("nan_vertex",10,0,0x7fc00000),("small_patch",13,16,8)):
+        data=bytearray(curved);offset=struct.unpack_from("<i",data,8+lump*8)[0]
+        struct.pack_into("<I",data,offset+field,value);add("collision",label+".bsp",data)
+    # A valid collision map is used to test invalid query parameters separately.
+    for mode in ("trace_nan","trace_bounds","trace_model","trace_vector","trace_missing_curves"):
+        add(mode,mode+".bsp",simple)
     manifest=output / "cases.tsv"
     manifest.write_text("".join("\t".join(map(str,row))+"\n" for row in cases))
     subprocess.run([sys.executable,ROOT / "scripts/build.py","--source","tests/rejection_tests.ml","--output","rejection_tests.exe"],check=True)
     print(run([ROOT / "build/rejection_tests.exe",manifest],ROOT / "build",log=output / "test.log"))
-    (output / "result.json").write_text(json.dumps({"passed":True,"cases":len(cases)},indent=2)+"\n")
+    (output / "result.json").write_text(json.dumps({"passed":True,"cases":len(cases)-2,"valid_collision_controls":2},indent=2)+"\n")
 
 if __name__=="__main__":main()

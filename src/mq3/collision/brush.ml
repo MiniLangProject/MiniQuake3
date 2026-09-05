@@ -19,10 +19,11 @@ struct Trace
   contents
   startsolid
   allsolid
+  planeMetadata
 end struct
 
 function emptyTrace()
-  return Trace(n.f32(1), [0.0,0.0,0.0], 0.0, 0, 0, false, false)
+  return Trace(n.f32(1), [0.0,0.0,0.0], 0.0, 0, 0, false, false,0)
 end function
 
 function traceThroughBrush(trace, planes, contents, start, finish, mins, maxs, capsule, radius, capsuleOffset)
@@ -89,6 +90,12 @@ function traceThroughBrush(trace, planes, contents, start, finish, mins, maxs, c
     trace.distance = lead.distance
     trace.surfaceFlags = lead.flags
     trace.contents = contents
+    kind = 3;signbits = 0
+    for axis = 0 to 2
+      if lead.normal[axis] == 1 and kind == 3 then kind = axis end if
+      if lead.normal[axis] < 0 then signbits = signbits | (1 << axis) end if
+    end for
+    trace.planeMetadata = kind | (signbits << 8)
   end if
   return trace
 end function

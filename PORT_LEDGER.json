@@ -5154,10 +5154,22 @@
         "BG_PlayerTouchesItem",
         "BG_TouchJumpPad"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "BG_AddPredictableEventToPlayerstate",
+          "target_files": [
+            "src/mq3/game/movement.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/movement.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_movement.py"
+      ]
     },
     {
       "source": "code/game/bg_pmove.c",
@@ -5207,10 +5219,57 @@
         "PmoveSingle",
         "sqrt"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "PM_ClipVelocity",
+          "target_files": [
+            "src/mq3/game/movement.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_Friction",
+          "target_files": [
+            "src/mq3/game/movement.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_Accelerate",
+          "target_files": [
+            "src/mq3/game/movement.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_CmdScale",
+          "target_files": [
+            "src/mq3/game/movement.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_AddTouchEnt",
+          "target_files": [
+            "src/mq3/game/movement.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_AddEvent",
+          "target_files": [
+            "src/mq3/game/movement.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/movement.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_movement.py"
+      ]
     },
     {
       "source": "code/game/bg_public.h",
@@ -5230,10 +5289,29 @@
         "PM_SlideMove",
         "PM_StepSlideMove"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "PM_SlideMove",
+          "target_files": [
+            "src/mq3/game/movement.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "PM_StepSlideMove",
+          "target_files": [
+            "src/mq3/game/movement.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/game/movement.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_movement.py"
+      ]
     },
     {
       "source": "code/game/botlib.h",
@@ -6392,6 +6470,27 @@
             "src/mq3/shared/math.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "VectorLength",
+          "target_files": [
+            "src/mq3/shared/math.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "VectorNormalize",
+          "target_files": [
+            "src/mq3/shared/math.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "VectorNormalize2",
+          "target_files": [
+            "src/mq3/shared/math.ml"
+          ],
+          "status": "tested_subset"
         }
       ],
       "target": [
@@ -6399,7 +6498,9 @@
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_math.py"
+        "scripts/test_math.py",
+        "scripts/test_patches.py",
+        "scripts/test_movement.py"
       ]
     },
     {
@@ -9147,10 +9248,73 @@
         "CMod_LoadVisibility",
         "SetPlaneSignbits"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CMod_LoadPlanes",
+          "target_files": [
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CMod_LoadBrushSides",
+          "target_files": [
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CMod_LoadBrushes",
+          "target_files": [
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_BoundBrush",
+          "target_files": [
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CMod_LoadNodes",
+          "target_files": [
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CMod_LoadLeafs",
+          "target_files": [
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CMod_LoadSubmodels",
+          "target_files": [
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CMod_LoadPatches",
+          "target_files": [
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/collision/world.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_collision.py",
+        "scripts/test_patches.py",
+        "scripts/test_rejections.py"
+      ]
     },
     {
       "source": "code/qcommon/cm_local.h",
@@ -9195,10 +9359,130 @@
         "CM_TransposeGrid",
         "CM_ValidateFacet"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CM_GeneratePatchCollide",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_SubdivideGridColumns",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_TransposeGrid",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_RemoveDegenerateColumns",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_PatchCollideFromGrid",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_AddFacetBevels",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_ValidateFacet",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_FindPlane",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_FindPlane2",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_SetBorderInward",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_TracePointThroughPatchCollide",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_CheckFacetPlane",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_TraceThroughPatchCollide",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_PositionTestInPatchCollide",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/collision/patchmesh.ml",
+        "src/mq3/collision/patchtrace.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_patches.py",
+        "scripts/test_collision.py",
+        "scripts/test_movement.py"
+      ]
     },
     {
       "source": "code/qcommon/cm_patch.h",
@@ -9233,10 +9517,36 @@
         "WindingPlane",
         "pw"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "BaseWindingForPlane",
+          "target_files": [
+            "src/mq3/collision/winding.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "WindingBounds",
+          "target_files": [
+            "src/mq3/collision/winding.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "ChopWindingInPlace",
+          "target_files": [
+            "src/mq3/collision/winding.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/collision/winding.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_patches.py"
+      ]
     },
     {
       "source": "code/qcommon/cm_polylib.h",
@@ -9279,10 +9589,43 @@
         "CM_TransformedPointContents",
         "CM_WriteAreaBits"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CM_PointLeafnum_r",
+          "target_files": [
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_PointLeafnum",
+          "target_files": [
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_PointContents",
+          "target_files": [
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_BoxLeafnums_r",
+          "target_files": [
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/collision/world.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_collision.py"
+      ]
     },
     {
       "source": "code/qcommon/cm_trace.c",
@@ -9317,17 +9660,85 @@
         {
           "original": "CM_TraceThroughBrush",
           "target_files": [
-            "src/mq3/collision/brush.ml"
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_TestBoxInBrush",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_TestInLeaf",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_PositionTest",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_TraceThroughTree",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_TraceThroughLeaf",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_TraceThroughPatch",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_Trace",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "CM_BoxTrace",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
           ],
           "status": "tested_subset"
         }
       ],
       "target": [
-        "src/mq3/collision/brush.ml"
+        "src/mq3/collision/brush.ml",
+        "src/mq3/collision/world.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_brush.py"
+        "scripts/test_brush.py",
+        "scripts/test_collision.py",
+        "scripts/test_movement.py"
       ]
     },
     {

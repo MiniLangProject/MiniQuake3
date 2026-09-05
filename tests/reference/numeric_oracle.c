@@ -4,15 +4,17 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 static uint32_t state=68;
 static uint32_t next(void){state=state*1664525u+1013904223u;return state;}
 static void pair(FILE *out,uint32_t a,uint32_t b){
-    float x,y,z;uint32_t row[6];
+    float x,y,z;uint32_t row[7];
     memcpy(&x,&a,4);memcpy(&y,&b,4);row[0]=a;row[1]=b;
     z=x+y;memcpy(&row[2],&z,4);
     z=x-y;memcpy(&row[3],&z,4);
     z=x*y;memcpy(&row[4],&z,4);
     z=x/y;memcpy(&row[5],&z,4);
+    z=(float)sqrt((double)x);memcpy(&row[6],&z,4);
     fwrite(row,sizeof(row),1,out);
 }
 int main(int argc,char**argv){

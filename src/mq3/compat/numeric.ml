@@ -83,6 +83,37 @@ function fdiv(a, b)
   return bitsFloat(divBits(floatBits(a), floatBits(b)))
 end function
 
+function fsqrt(value)
+  return bitsFloat(sqrtBits(floatBits(value)))
+end function
+
+function fneg(value)
+  return bitsFloat(floatBits(value)^0x80000000)
+end function
+
+function sqrtBits(value)
+  if isNaNBits(value) then return value | 0x400000 end if
+  if (value & 0x7fffffff) == 0 then return value end if
+  if (value & 0x80000000) != 0 then return 0xffc00000 end if
+  if value == 0x7f800000 then return value end if
+  m = mantissa(value)
+  power = exponent(value)
+  while m < 0x800000
+    m = m << 1; power = power-1
+  end while
+  // sqrt(m * 2^power) = sqrt(m * 2^23) * 2^((power-23)/2).
+  // Integer radicands cannot land at the quarter-integer midpoint square.
+  if ((power-23) & 1) != 0 then m = m << 1; power = power-1 end if
+  radicand = m << 23
+  low = 0; high = 0x1000000
+  while low+1 < high
+    mid = (low+high) >> 1
+    if mid*mid <= radicand then low = mid else high = mid end if
+  end while
+  if radicand-low*low > low then low = low+1 end if
+  return packFloat(0,low,(power-23) >> 1)
+end function
+
 function mantissa(bits)
   value = bits & 0x7fffff
   if (bits & 0x7f800000) != 0 then value = value | 0x800000 end if
