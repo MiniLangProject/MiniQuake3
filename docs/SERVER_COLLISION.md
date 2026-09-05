@@ -58,8 +58,9 @@ Verlassen. Teleport-Zustände und Telefrag-Aufrufe sind ebenfalls enthalten.
 Das [Spawn-Parsing](SPAWNING.md) legt inzwischen auch echte Karten-Trigger an und
 richtet Sprungpads verzögert auf ihre Targets aus. Die zusätzliche
 [Schadensprüfung](COMBAT.md) verbindet KillBox/Teleport mit Rüstung, Rückstoß und
-Teamschutz. Weitere Spawn-Klassen, Spieler-Todesregeln, Mover-Pushing und
-vollständige Serverframes bleiben offen;
+Teamschutz. Die [Spieler-Todesfolge](DEATHS.md) verwendet nun außerdem die echte
+PVS-/Area-Abfrage für Team-Boni. Weitere Spawn-Klassen, tatsächliche Item-Entities,
+`ClientSpawn`, Mover-Pushing und vollständige Serverframes bleiben offen;
 siehe [GAME_TRANSITIONS.md](GAME_TRANSITIONS.md).
 
 Die C-Prüfung bindet `sv_world.c` unverändert ein und kompiliert ursprüngliche

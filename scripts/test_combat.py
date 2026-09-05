@@ -321,7 +321,7 @@ def main():
         string_bytes=sum(r['string_bytes'] for r in records),traces=sum(r['traces'] for r in records),cd_maps=sum(r['name'].startswith('cd_') for r in records),
         test_sha256=sha(ROOT/'build/spawn_tests.exe'),runtime_contracts=8,controlled_freed_laser_link_rejections=1,
         controlled_rejections=[dict(name='laser_callback_free',original_exit_code=0,minilang_exit_code=1,reason='Freed entity number differs from its slot',inputs_sha256=sha(invalid),expected_sha256=sha(expected))],
-        scope='Baseq3 damage, armor, teams, radius/visibility/accuracy, hurt/kill/laser spawns; actual server CM and teleport integration. Pain/die/mover callbacks observe dispatch only; no player_die, scoring, damage feedback, projectile physics or complete game server. Freed laser linking rejects its invalid entity number instead of reproducing original metadata aliasing.',
+        scope='Baseq3 damage, armor, teams, radius/visibility/accuracy, hurt/kill/laser spawns; actual server CM and teleport integration. Pain/die/mover callbacks observe this isolated dispatch; player_die integration is covered by test_deaths. Damage feedback, projectile physics and the complete game server remain open. Freed laser linking rejects its invalid entity number instead of reproducing original metadata aliasing.',
         original_sources={s.relative_to(ROOT).as_posix():sha(s) for s in sources}),indent=2)+'\n')
 
 if __name__=='__main__':main()

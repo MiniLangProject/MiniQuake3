@@ -111,9 +111,10 @@ dieselbe Korrektur für `SUBF`; zwölf zusätzliche QVM-Fälle prüfen die NaN-O
 Beliebige NaN-Payloads
 und Signaling-NaNs sind weiterhin kein vollständig geprüfter Eingabeumfang.
 
-Offen bleiben vollständiges Spieler-Waffenfeuer, Hitscan-Waffen, `player_die`,
-die Einbindung der Scores, Respawn, Item-Spawns, Mover-Pushing, Missionpack-Projektile und die
-vollständige Server-/Clientintegration. Summen und Binary-Hashes stehen im
+`player_die` räumt den portierten Grappling-Hook inzwischen über diesen Pfad auf;
+siehe [DEATHS.md](DEATHS.md). Offen bleiben vollständiges Spieler-Waffenfeuer,
+Hitscan-Waffen, tatsächliche Item-Spawns, `ClientSpawn`, Mover-Pushing,
+Missionpack-Projektile und die vollständige Server-/Clientintegration. Summen und Binary-Hashes stehen im
 [Prüfbericht](PARITY_AUDIT.md).
 
 ```powershell

@@ -4,9 +4,10 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die vollständige erweiterte Regression besteht aktuell aus 35 bestandenen
+Die vollständige erweiterte Regression besteht aktuell aus 36 bestandenen
 Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`), einschließlich
-der Spawnpunkt-/Leichenprüfung und der Punkte-/Ranglisten-/Matchende-Regeln.
+der Spawnpunkt-/Leichenprüfung, der Punkte-/Ranglisten-/Matchende-Regeln und
+der integrierten Spieler-Todesfolge.
 Der finale MiniQuake3-Build hat SHA-256
 `cf2a3bb81cada592596e46cfd2bd1f9f7fabb76da0ab8bcd0f006641a53f6229`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
@@ -17,8 +18,8 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 2. Zahlen/Plattform | In Arbeit | 101.445 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff vorhanden; Fenster, Eingabe, UDP und Audio noch offen |
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
-| 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständige Server-/Client-Frames und Telefrag-Todes-/Score-Folgen fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, Leichenverwaltung, Gibs, Leichenphysik, Punktevergabe, Ranglisten, Scoreboard-Texte und Matchende-Entscheidungen vorhanden; weitere Klassen, Item-Spawns, Spieler-Todesregeln, Mover-Pushing und vollständige Serverframes fehlen |
+| 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständige Server-/Client-Frames und komplette Match-Telefrag-Replays fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, Leichenverwaltung, Gibs, Leichenphysik, Punktevergabe, Ranglisten, Scoreboard-Texte, Matchende-Entscheidungen, `player_die`, Team-Fragboni, Drop-Entscheidungen und Respawn-Wrapper vorhanden; weitere Klassen, tatsächliche Item-/Flag-Entities, `ClientSpawn`, Mover-Pushing und vollständige Serverframes fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -301,7 +302,9 @@ Target-/Entity-Schleifenprüfung abgedeckt. Der vollständige Serverframe bleibt
 `MOD_TELEFRAG` stimmen mit `G_KillBox` überein. Die Funktion `G_Damage` ist hier
 eine aufgezeichnete Callback-Grenze. Dieser ältere Test deckt keine Schadensfolgen ab; die zusätzliche Kampfprüfung
 unten vergleicht inzwischen Schaden, Rüstung, Teamschutz und Telefrag-Integration.
-Spieler-Todesregeln und die Einbindung der Scores bleiben offen. Ein fehlender Schadenscallback
+Die Spieler-Todesregeln und Score-Einbindung werden inzwischen in der gesonderten
+Todesprüfung bis `G_Damage → player_die` verglichen. Ein vollständiger
+KillBox-/Match-Replay mit dieser Folge bleibt offen. Ein fehlender Schadenscallback
 wird in MiniLang bei einem betroffenen Client als Fehler behandelt.
 
 Der Original-Allocator bricht im vollen Normalbereich auch bei einem zu kürzlich
@@ -393,7 +396,7 @@ Entities und die Auswahl der weiteren Handler. In diesem Target-Test bleiben die
 aufgezeichnete Aufrufgrenzen. Die gesonderte Projektilprüfung führt den
 Missile-Zweig mit der echten portierten Verarbeitung aus. Dies ist
 **keine vollständige G_RunFrame-Abnahme**: Cvar-/Zeitverwaltung, ClientEndFrame,
-die Frame-Einbindung der Matchende-Regeln, Votes, Spieler-Todesregeln und vollständige Serverintegration fehlen.
+die Frame-Einbindung der Matchende-Regeln, Votes, `ClientSpawn` und vollständige Serverintegration fehlen.
 Schnittstellen und genaue Grenzen: [TARGETS_AND_EVENTS.md](TARGETS_AND_EVENTS.md).
 
 ## Schadensberechnung und Karten-Gefahren
@@ -416,10 +419,11 @@ echten Schadensfunktion verbunden. Acht zusätzliche Laufzeitverträge prüfen
 die Bindung, die Float-Parametergrenzen und kontrollierte Fehler bei fehlenden
 oder ungültigen Handlerzuständen.
 
-Pain-, Death- und Mover-Callbacks beobachten ihre Argumente und Eintrittszustände;
-einzelne Test-Callbacks geben die Entity frei. Dies ersetzt keine Spieler-Todesregeln.
-Offen sind `player_die`, die Einbindung der Scores, Respawn, weitere Waffentreffer und die vollständige Waffensteuerung,
-Schadensfeedback am Frame-Ende, vollständige Teamregeln und Serverintegration.
+Pain-, Death- und Mover-Callbacks beobachten in dieser isolierten Suite ihre
+Argumente und Eintrittszustände; einzelne Test-Callbacks geben die Entity frei.
+Die anschließende Todes-Suite verwendet stattdessen den echten `player_die`-Port.
+Offen sind `ClientSpawn`, weitere Waffentreffer und die vollständige Waffensteuerung,
+Schadensfeedback am Frame-Ende, weitere Teamregeln und Serverintegration.
 `G_Printf`-Diagnosen und Missionpack gehören nicht zu dieser Abnahme.
 Der Rüstungsport verwendet die CRT-Mathematikfunktion `ceil`; die Spielregeln
 bleiben MiniLang und die Projekt-DLL bleibt unverändert.
@@ -486,8 +490,8 @@ Ringumlauf, No-Blood/No-Drop, Zufallsendpunkt und signierte Zeitgrenzen.
 Test-Binary: `0372d9a721c0fee592e2417d8f8fe019efbb5fc668ed1b3c3b0068887f4ec9c1`. Regeln, Grenzen und Quellzuordnung stehen in
 [PLAYER_LIFECYCLE.md](PLAYER_LIFECYCLE.md). Die Überschreitung des ursprünglichen
 128er-Deathmatch-Arrays wird kontrolliert zurückgewiesen; dieser undefinierte
-C-Pfad wird nicht als identisches Verhalten ausgewiesen. `player_die`, die Einbindung der Scores,
-Item-Drops, `ClientSpawn`, vollständiger Respawn und Client-Frames bleiben offen.
+C-Pfad wird nicht als identisches Verhalten ausgewiesen. `player_die` und der Respawn-Wrapper sind inzwischen in [DEATHS.md](DEATHS.md)
+integriert. Tatsächliche Item-Entities, `ClientSpawn` und Client-Frames bleiben offen.
 
 ## Punkte, Ranglisten und Matchende (Schritt 6)
 
@@ -526,8 +530,34 @@ Callbacks; geprüft werden die Entscheidungen und Zustandsänderungen vor und
 nach ihrem Aufruf. Logtexte und Serverbefehle werden an der Aufrufgrenze
 beobachtet. Tatsächliche Kartenwechsel, Logdatei-Zeitstempel/-Ausgabe,
 Netzwerkzustellung und Scoreboard-Grafik sind noch offen. Spieler-Tod,
-Team-Fragboni, Item-Drops, Respawn und vollständige Client-/Server-Frames
-müssen diese Bausteine noch einbinden.
+Team-Fragboni, Drop-Entscheidungen und der Respawn-Wrapper binden diese
+Bausteine inzwischen ein; vollständige Item-/Client-/Server-Pfade bleiben offen.
+
+## Spieler-Tod, Team-Fragboni und Respawn-Wrapper (Schritt 6)
+
+`scripts/test_deaths.py` besteht mit **23 Szenarien**, **330 Aktionen**,
+**3.885.472 exakt gleichen 32-Bit-Wörtern** und **40.488 String-Bytes**.
+Acht Laufzeitverträge ergänzen die gültigen Vergleichsfälle. Nach jeder Aktion
+werden die vollständigen Score-/Entity-/PlayerState-Daten sowie Todesfelder,
+Handler, Feind- und Hook-Referenzen verglichen.
+
+Übertragen sind `TossClientItems`, `CheckAlmostCapture`, `CheckAlmostScored`,
+`player_die`, `OtherTeam`, `TeamName`, `Team_FragBonuses`, `SV_inPVS` und der
+`respawn`-Wrapper. Die Tests umfassen alle Obituary-Namen, Welt-, Eigen-, Team-
+und normale Kills, Gauntlet/Excellent, Team- und Flaggenträgerboni, PVS-/
+Distanzgrenzen, Flaggenpriorität, No-Drop, Todesanimationen, Gibs, Blutoption,
+Hook-Freigabe, Zuschauer-Scoreboards und den tatsächlichen Pfad
+`G_Damage → player_die`. Der originale Trägerschutz überschreibt einen
+Entfernungsvektor; dieses beobachtete Baseq3-Verhalten wird exakt bewahrt.
+
+`Drop_Item`, `Team_ReturnFlag`, `PrintMsg` und `ClientSpawn` bleiben explizite
+Callbacks. Der C-Host protokolliert Aufrufreihenfolge und Argumente; Score-,
+Body-, Hook-, BSP-/PVS- und Entity-Code laufen tatsächlich. Der Respawn-Test
+verändert im `ClientSpawn`-Callback absichtlich Position und Clientnummer und
+weist dadurch nach, dass der nachfolgende Teleport-Effekt die Rückgabewerte
+verwendet. Tatsächliche Item-/Flag-Entities, vollständiges `ClientSpawn`,
+Client-Frames, Netzwerkzustellung und Missionpack bleiben offen. Details:
+[DEATHS.md](DEATHS.md).
 
 ## Reproduzieren
 
@@ -577,6 +607,7 @@ python scripts/test_combat.py --data-root D:/Quake3
 python scripts/test_missiles.py --data-root D:/Quake3
 python scripts/test_bodies.py --data-root D:/Quake3
 python scripts/test_scores.py
+python scripts/test_deaths.py
 python scripts/test_spawn.py D:/Quake3
 ```
 

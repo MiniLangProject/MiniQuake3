@@ -223,7 +223,7 @@ def main():
         string_bytes=sum(r['string_bytes'] for r in records),traces=sum(r['traces'] for r in records),cd_maps=sum(r['name'].startswith('cd_') for r in records),
         test_sha256=sha(ROOT/'build/spawn_tests.exe'),runtime_contracts=8,
         controlled_rejections=[dict(name='freed_projectile',original_exit_code=0,minilang_exit_code=1,reason='Freed entity number differs from its slot',inputs_sha256=sha(invalid),expected_sha256=sha(invalid_expected))],
-        scope='Baseq3 missile/shooter/grapple functions, actual SV/CM and allocated-entity frame loop. No full weapons, player_die, item spawning, client rendering or complete server. Freed projectile callback rejects invalid relinking instead of original SV metadata aliasing.',
+        scope='Baseq3 missile/shooter/grapple functions, actual SV/CM and allocated-entity frame loop. No full weapons, item spawning, client rendering or complete server; player_die hook cleanup is covered by test_deaths. Freed projectile callback rejects invalid relinking instead of original SV metadata aliasing.',
         original_sources={s.relative_to(ROOT).as_posix():sha(s) for s in sources}),indent=2)+'\n',encoding='utf-8')
 
 if __name__=='__main__':main()

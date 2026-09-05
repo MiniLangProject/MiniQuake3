@@ -22,7 +22,7 @@ void G_RunItem(gentity_t *e) {if(bodyOutput)Original_RunItem(e);else actionRun(2
 void G_RunMover(gentity_t *e) {actionRun(3,e);}
 void G_RunClient(gentity_t *e) {actionRun(4,e);}
 #include "entity_frame.inc"
-static const char *actionName(int n) {static const char *names[]={NULL,"leaf","changed","dest","missing",""};return names[n];}
+static const char *actionName(int n) {static const char *names[]={NULL,"leaf","changed","dest","missing","","team_CTF_redflag","team_CTF_blueflag","team_redobelisk","team_blueobelisk"};return names[n];}
 static float actionFloat(int bits) {float f;memcpy(&f,&bits,4);return f;}
 static void actionField(gentity_t *e,int field,int v) {
     switch(field) {

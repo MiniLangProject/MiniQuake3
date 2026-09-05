@@ -9,14 +9,14 @@ import re
 
 FUNCTIONS={
     'g_utils.c':['vectoyaw','G_InitGentity','G_Spawn','G_EntitiesFree','G_FreeEntity','G_SetOrigin','G_Find','G_PickTarget','G_FindConfigstringIndex','G_ModelIndex','G_SoundIndex','G_SetMovedir','G_TempEntity','G_KillBox','vtos','AddRemap','BuildShaderStateConfig','G_UseTargets','G_AddEvent','G_Sound'],
-    'g_client.c':['SpotWouldTelefrag','SelectNearestDeathmatchSpawnPoint','SelectRandomDeathmatchSpawnPoint','SelectRandomFurthestSpawnPoint','SelectSpawnPoint','SelectInitialSpawnPoint','SelectSpectatorSpawnPoint','InitBodyQue','BodySink','CopyToBodyQue','SetClientViewAngle','SP_info_player_deathmatch','SP_info_player_start','SP_info_player_intermission'],
+    'g_client.c':['SpotWouldTelefrag','SelectNearestDeathmatchSpawnPoint','SelectRandomDeathmatchSpawnPoint','SelectRandomFurthestSpawnPoint','SelectSpawnPoint','SelectInitialSpawnPoint','SelectSpectatorSpawnPoint','InitBodyQue','BodySink','CopyToBodyQue','SetClientViewAngle','respawn','SP_info_player_deathmatch','SP_info_player_start','SP_info_player_intermission'],
     'g_misc.c':['TeleportPlayer','SP_info_null','SP_info_notnull','SP_info_camp','SP_light','SP_misc_model','SP_misc_teleporter_dest','Use_Shooter','InitShooter_Finish','InitShooter','SP_shooter_rocket','SP_shooter_grenade','SP_shooter_plasma'],
     'g_target.c':['SP_target_position','Think_Target_Delay','Use_Target_Delay','SP_target_delay','target_relay_use','SP_target_relay','target_teleporter_use','SP_target_teleporter','Use_Target_Speaker','SP_target_speaker','target_location_linkup','SP_target_location','target_kill_use','SP_target_kill','target_laser_think','target_laser_on','target_laser_off','target_laser_use','target_laser_start','SP_target_laser'],
-    'g_team.c':['SelectRandomTeamSpawnPoint','SelectCTFSpawnPoint','SP_team_CTF_redplayer','SP_team_CTF_blueplayer','SP_team_CTF_redspawn','SP_team_CTF_bluespawn','OnSameTeam','Team_CheckHurtCarrier'],
+    'g_team.c':['OtherTeam','TeamName','SelectRandomTeamSpawnPoint','SelectCTFSpawnPoint','SP_team_CTF_redplayer','SP_team_CTF_blueplayer','SP_team_CTF_redspawn','SP_team_CTF_bluespawn','OnSameTeam','Team_FragBonuses','Team_CheckHurtCarrier'],
     'g_mover.c':['SP_path_corner'],
     'g_main.c':['G_RunThink','FindIntermissionPoint','SortRanks','CalculateRanks','SendScoreboardMessageToAllClients','ScoreIsTied','CheckExitRules','LogExit','CheckIntermissionExit'],
     'g_trigger.c':['InitTrigger','AimAtTarget','SP_trigger_push','SP_trigger_teleport','trigger_push_touch','trigger_teleporter_touch','multi_wait','multi_trigger','Use_Multi','Touch_Multi','SP_trigger_multiple','trigger_always_think','SP_trigger_always','Use_target_push','SP_target_push','func_timer_think','func_timer_use','SP_func_timer','hurt_use','hurt_touch','SP_trigger_hurt'],
-    'g_combat.c':['ScorePlum','AddScore','LookAtKiller','GibEntity','body_die','CheckArmor','G_Damage','CanDamage','G_RadiusDamage'],
+    'g_combat.c':['ScorePlum','AddScore','TossClientItems','LookAtKiller','GibEntity','body_die','CheckAlmostCapture','CheckAlmostScored','player_die','CheckArmor','G_Damage','CanDamage','G_RadiusDamage'],
     'g_weapon.c':['LogAccuracyHit','SnapVectorTowards','Weapon_HookFree','Weapon_HookThink'],
     'g_missile.c':['G_BounceMissile','G_ExplodeMissile','G_MissileImpact','G_RunMissile','fire_plasma','fire_grenade','fire_bfg','fire_rocket','fire_grapple'],
     'g_items.c':['RegisterItem','G_BounceItem','G_RunItem'],
@@ -35,6 +35,10 @@ def build(output):
             # G_Damage has alternate preprocessor braces; SpotWouldTelefrag
             # has a commented opening brace. Keep complete top-level bodies.
             source_text=path.read_text()
+            if name=='g_combat.c':
+                match=re.search(r'^char\s+\*modNames\[\]\s*=\s*\{.*?^\};',source_text,re.M|re.S)
+                if not match:raise RuntimeError('Missing original modNames table')
+                body.append(match[0])
             for symbol in names:
                 match=re.search(r'^\w+[ \t]+\*?'+symbol+r'\s*\([^;]*?\)\s*\{.*?^\}',source_text,re.M|re.S)
                 if not match:raise RuntimeError('Missing original game function '+symbol)
@@ -52,7 +56,7 @@ def build(output):
     for index,(name,function) in enumerate(classes):
         if function not in implemented:stubs.append(f'void {function}(gentity_t *e) {{ boundary(e,2,{index}); }}')
     (output/'spawn_boundaries.inc').write_text('\n'.join(stubs)+'\n')
-    (output/'server_functions.inc').write_text(extract(source/'server/sv_game.c',['SV_GentityNum','SV_SvEntityForGentity','SV_GEntityForSvEntity','SV_EntityContact','SV_SetBrushModel']))
+    (output/'server_functions.inc').write_text(extract(source/'server/sv_game.c',['SV_GentityNum','SV_SvEntityForGentity','SV_GEntityForSvEntity','SV_EntityContact','SV_SetBrushModel','SV_inPVS']))
     (output/'snapvector.inc').write_text(extract(source/'win32/win_shared.c',['Sys_SnapVector']))
     sources=[source/'qcommon'/n for n in ('cm_load.c','cm_trace.c','cm_test.c','cm_patch.c','cm_polylib.c','md4.c')]
     sources += [source/'game'/n for n in ('q_math.c','q_shared.c','bg_misc.c','bg_pmove.c','bg_slidemove.c')]

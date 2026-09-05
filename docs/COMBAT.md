@@ -20,7 +20,7 @@ C-Funktionskörper dienen ausschließlich als Vergleichsreferenz.
 | `spawn.create(level, text)` | Bindet `combat.damage` an `level.damageFn`, das `G_KillBox` aufruft |
 | `level.intermissionQueued`, `knockback`, `friendlyFire` | Bereits aktualisierte Spiel-/Cvar-Werte; Vorgaben 0, 1000, 0. Spielmodus aus `level.spawner.gametype`, ohne Spawner FFA |
 | `ent.pain(level, ent, attacker, take)` | Originaler Aufruf nach nicht tödlichem Gesundheitsschaden, falls vorhanden |
-| `ent.die(level, ent, inflictor, attacker, take, mod)` | Erforderlicher Handler bei tödlichem Schaden; die vollständige Spieler-Todeslogik folgt noch |
+| `ent.die(level, ent, inflictor, attacker, take, mod)` | Erforderlicher Handler bei tödlichem Schaden; Spieler-Entities verwenden inzwischen `deaths.playerDie` |
 
 Ein ohne Spawner aufgebauter Game-Kontext kann `level.damageFn = combat.damage`
 explizit setzen. Die bisherigen Übergangstests behalten ihren aufzeichnenden
@@ -144,8 +144,11 @@ Nicht-Client-Zustand, der in C im Trefferzähler auf NULL zugreift, wird kontrol
 abgewiesen; diese Vertragsproben sind keine Übereinstimmung mit einem definierten
 C-Fehlerpfad.
 
-Offen bleiben `player_die`, die Einbindung der Scores, Respawn, weitere Waffentreffer und die vollständige Waffensteuerung,
-Schadensfeedback am Frame-Ende, vollständige Teamregeln, Mover-Steuerung,
+`player_die`, Team-Fragboni und der Respawn-Wrapper sind inzwischen in
+[DEATHS.md](DEATHS.md) gegen C geprüft und mit diesem Schadenspfad verbunden.
+Offen bleiben tatsächliche Item-/Flag-Entities, `ClientSpawn`, weitere
+Waffentreffer und die vollständige Waffensteuerung, Schadensfeedback am Frame-Ende,
+weitere Teamregeln, Mover-Steuerung,
 Missionpack und die vollständige Serverintegration.
 
 ```powershell
@@ -154,10 +157,9 @@ python scripts/test_combat.py --data-root D:/Quake3
 python scripts/verify.py --data-root D:/Quake3 --extended
 ```
 
-Die [Leichenverwaltung](PLAYER_LIFECYCLE.md) bindet `body_die` jetzt an den
-portierten Schadenspfad an und prüft Gibs mit echtem `G_Damage`. `LookAtKiller`
-steht ebenfalls bereit. Die vollständige Spieler-Todeslogik `player_die`
-mit Scores, Drops und Respawn ist weiterhin offen.
+Die [Leichenverwaltung](PLAYER_LIFECYCLE.md) bindet `body_die` an den portierten
+Schadenspfad an und prüft Gibs mit echtem `G_Damage`. `LookAtKiller` wird nun
+auch von der vollständigen Baseq3-Todesfolge verwendet.
 
 Die [Punkte- und Scoreboard-Bausteine](SCORES.md) sind separat gegen C geprüft;
-ihre Verbindung mit `player_die` und Team-Fragboni folgt noch.
+ihre Verbindung mit `player_die` und Team-Fragboni ist ebenfalls nachgewiesen.

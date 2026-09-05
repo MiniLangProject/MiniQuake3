@@ -22,7 +22,7 @@ def main():
              ("test_combat.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else [])),
              ("test_missiles.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else [])),
              ("test_bodies.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else [])),
-             ("test_scores.py",["--reuse-build"])]
+             ("test_scores.py",["--reuse-build"]),("test_deaths.py",["--reuse-build"])]
     if args.data_root:
         scripts.append(("test_maps.py",[str(args.data_root)]))
         scripts.append(("test_runtime_trace.py",[str(args.data_root)]))

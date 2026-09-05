@@ -48,6 +48,7 @@ static void combatState(int index) {
     if(missileOutput)missileState();
     if(bodyOutput)bodyState();
     if(scoreOutput)scoreState();
+    if(deathOutput)deathState();
 }
 static void runCombat(FILE *in) {
     int q[16],index=0,j;gentity_t *e,*other,*attacker;vec3_t dir,point;char *text=readString(in);
@@ -83,7 +84,7 @@ static void runCombat(FILE *in) {
             case 3:VectorCopy(point,e->r.mins);break;case 4:VectorCopy(point,e->r.maxs);break;case 5:VectorCopy(point,e->r.currentOrigin);break;
             case 6:VectorCopy(point,e->r.currentAngles);break;case 7:VectorCopy(point,e->r.absmin);break;case 8:VectorCopy(point,e->r.absmax);break;}break;
         case 20:trap_SetBrushModel(e,va("*%d",q[2]));break;
-        default:if(scoreOutput){if(!scoreAction(q))exit(76);}else if(bodyOutput){if(!bodyAction(q))exit(76);}else if(!missileOutput || !missileAction(q))exit(76);
+        default:if(deathOutput){if(!deathAction(q) && !scoreAction(q))exit(76);}else if(scoreOutput){if(!scoreAction(q))exit(76);}else if(bodyOutput){if(!bodyAction(q))exit(76);}else if(!missileOutput || !missileAction(q))exit(76);
         }
         combatState(index++);
     }

@@ -13,6 +13,7 @@ static int combatTraceOutput;
 static int missileOutput;
 static int bodyOutput;
 static int scoreOutput;
+static int deathOutput;
 static void scoreTransition(int);
 void CheckExitRules(void);void CheckIntermissionExit(void);void LogExit(const char *);
 void BeginIntermission(void){scoreTransition(1);}
@@ -63,16 +64,32 @@ void QDECL G_LogPrintf(const char *fmt,...) {
     else{word(3);word(0);string("");string(fmt);}
 }
 void trap_SendServerCommand(int client,const char *message){if(!scoreOutput)G_Error("unported server command sink");word(42);word(client);string(message);}
+qboolean trap_InPVS(const vec3_t p1,const vec3_t p2){return SV_inPVS(p1,p2);}
 void QDECL G_Error(const char *fmt,...) {va_list args;va_start(args,fmt);vfprintf(stderr,fmt,args);va_end(args);exit(72);}
 void Touch_DoorTrigger(gentity_t *a,gentity_t *b,trace_t *c) {G_Error("unexpected door boundary");}
 void *G_Alloc(int n) {void *p=calloc(1,n);if(!p)exit(73);return p;}
 void G_SpawnItem(gentity_t *e,gitem_t *item) {boundary(e,1,(int)(item-bg_itemlist));}
+gentity_t *Drop_Item(gentity_t *self,gitem_t *item,float angle) {
+    gentity_t *drop;word(47);word((int)(self-g_entities));word((int)(item-bg_itemlist));words(&angle,1);
+    drop=G_Spawn();drop->s.modelindex=(int)(item-bg_itemlist);return drop;
+}
+void Team_ReturnFlag(int team){if(!deathOutput)G_Error("unported flag return");word(48);word(team);}
+void QDECL PrintMsg(gentity_t *ent,const char *fmt,...) {
+    char buffer[1024];va_list args;if(!deathOutput)G_Error("unported PrintMsg");
+    va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);
+    word(49);word(ent?(int)(ent-g_entities):-1);string(buffer);
+}
+void ClientSpawn(gentity_t *ent) {
+    int slot=(int)(ent-g_entities);if(!deathOutput)G_Error("unported ClientSpawn");word(50);word(slot);
+    VectorSet(ent->client->ps.origin,111,222,333);ent->s.clientNum=slot+10;
+}
 #include "spawn_boundaries.inc"
 #include "spawn_functions.inc"
 #include "target_actions.inc"
 #include "missile_actions.inc"
 #include "body_actions.inc"
 #include "score_actions.inc"
+#include "death_actions.inc"
 #include "combat_actions.inc"
 static char *readString(FILE *in) {int n;char *s;if(fread(&n,4,1,in)!=1)return NULL;if(n<0 || n>10000000)exit(74);s=calloc(1,n+1);if(n && fread(s,1,n,in)!=n)exit(74);return s;}
 static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);word(level.locationLinked);word(slotOf(level.locationHead));for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
@@ -100,6 +117,8 @@ int main(int argc,char **argv) {
         reset(0,0);bodyOutput=1;runCombat(in);
     } else if(argc==6 && !strcmp(argv[5],"--scores")) {
         reset(0,0);scoreOutput=1;runCombat(in);
+    } else if(argc==6 && !strcmp(argv[5],"--deaths")) {
+        reset(0,0);scoreOutput=deathOutput=1;runCombat(in);
     } else if(argc==6 && !strcmp(argv[5],"--values")) {
         reset(0,0);
         while((text=readString(in))!=NULL) {

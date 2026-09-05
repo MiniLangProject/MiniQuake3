@@ -15,6 +15,8 @@ import mq3.game.missiles as missiles
 import mq3.game.shooters as shooters
 import mq3.game.bodies as bodies
 import mq3.game.scores as scores
+import mq3.game.deaths as deaths
+import mq3.game.team_bonuses as teamBonuses
 import mq3.game.rank_sort as rankSort
 import mq3.game.player_spawns as playerSpawns
 import mq3.game.movement as movement
@@ -36,6 +38,7 @@ struct Check
   missiles
   bodies
   scores
+  deaths
 end struct
 function checkWord(check,value)
   if check.offset+4 > len(check.expected) then return error(490,"Unexpected spawn output") end if
@@ -540,6 +543,7 @@ function checkCombatState(level,index)
   checkMissileState(level)
   checkBodyState(level)
   checkScoreState(level)
+  checkDeathState(level)
   return void
 end function
 function recordCombatTrace(level,start,finish,mins,maxs,passEntity,mask,hit)
@@ -671,7 +675,10 @@ function runCombatActions(level,input,check)
         funcs.setBrushModel(level,ent,"*"+str(command[2]))
       end case
       case default
-        if check.scores then runScoreAction(level,command) else if check.bodies then runBodyAction(level,command) else runMissileAction(level,command) end if
+        if check.deaths and command[0] >= 80 then runDeathAction(level,command)
+        else if check.scores then runScoreAction(level,command)
+        else if check.bodies then runBodyAction(level,command)
+        else runMissileAction(level,command) end if
       end case
     end switch
     checkCombatState(level,index); index = index+1
@@ -1122,6 +1129,19 @@ function recordScoreTransition(level,kind)
   if level.entities[1022].count == 2 and kind == 2 then level.intermissiontime = 0 end if
   return void
 end function
+function recordDeathDrop(level,self,item,angle)
+  checkWords(level.context,[47,self.slot,item]); checkReal(level.context,angle)
+  drop = game.spawn(level); drop.s.modelindex = item; return drop
+end function
+function recordFlagReturn(level,team)
+  checkWords(level.context,[48,team]); return void
+end function
+function recordTeamMessage(level,slot,message)
+  checkWords(level.context,[49,slot]); checkString(level.context,message); return void
+end function
+function recordClientSpawn(level,ent)
+  checkWords(level.context,[50,ent.slot]); ent.client.ps.origin = [111.0,222.0,333.0]; ent.s.clientNum = ent.slot+10; return void
+end function
 function checkScoreState(level)
   check = level.context
   if not check.scores then return void end if
@@ -1137,6 +1157,158 @@ function checkScoreState(level)
     checkWords(check,[i,level.entities[i].r.singleClient]); i = i+1
   end while
   checkWords(check,[1022,level.entities[1022].r.singleClient])
+  return void
+end function
+function checkDeathState(level)
+  check = level.context
+  if not check.deaths then return void end if
+  checkWords(check,[51,level.blood])
+  for i = 0 to 63
+    cl = level.clients[i]; ent = level.entities[i]; die = 0
+    if ent.die == deaths.playerDie then die = 1 else if ent.die == bodies.die then die = 2 else if ent.die != void then die = 3 end if
+    checkWords(check,[cl.lastkilled_client,cl.respawnTime,cl.rewardTime,cl.lastKillTime,cl.cmdWeapon])
+    checkReal(check,cl.lastfraggedcarrier)
+    checkWords(check,[cl.fragcarrier,cl.carrierdefense,cl.basedefense,actionSlot(cl.hook),die,actionSlot(ent.enemy)])
+  end for
+  return void
+end function
+function runDeathAction(level,a)
+  ent = void
+  if a[1] >= 0 and a[1] < 1024 then ent = level.entities[a[1]] end if
+  switch a[0]
+    case 80
+      game.initEntity(ent); cl = game.createClient(ps.create(),a[3],[0,0,0]); game.bindClient(level,ent,cl)
+      ent.s.eType = 1; ent.s.number = a[1]; cl.ps.clientNum = a[1]; cl.connected = a[2]; cl.team = a[3]; cl.ps.persistant[3] = a[3]
+      ent.health = a[4]; cl.ps.stats[0] = a[4]; ent.takedamage = true; ent.die = deaths.playerDie
+      ent.r.mins = [-15.0,-15.0,-24.0]; ent.r.maxs = [15.0,15.0,32.0]; ent.r.contents = 0x2000000; cl.netname = scoreTestName(a[5])
+    end case
+    case 81
+      key = a[2]; value = a[3]; cl = ent.client
+      switch key
+        case 0
+          ent.s.weapon = value
+        end case
+        case 1
+          cl.ps.weaponstate = value
+        end case
+        case 2
+          cl.cmdWeapon = value
+        end case
+        case 3
+          cl.ps.stats[2] = value
+        end case
+        case 4
+          cl.ps.ammo[a[4]] = value
+        end case
+        case 5
+          cl.ps.powerups[a[4]] = value
+        end case
+        case 6
+          cl.ps.pm_type = value
+        end case
+        case 7
+          cl.lastKillTime = value
+        end case
+        case 8
+          cl.lasthurtcarrier = n.f32(value)
+        end case
+        case 9
+          ent.s.powerups = value
+        end case
+        case 10
+          ent.s.loopSound = value
+        end case
+        case 11
+          ent.s.angles[a[4]] = n.bitsFloat(value)
+        end case
+        case 12
+          cl.ps.legsAnim = value
+        end case
+        case 13
+          cl.ps.torsoAnim = value
+        end case
+        case 14
+          ent.flags = value
+        end case
+        case 15
+          ent.r.svFlags = value
+        end case
+        case 16
+          ent.s.number = value
+        end case
+        case 17
+          ent.s.clientNum = value
+        end case
+        case 18
+          cl.ps.generic1 = value
+        end case
+        case 19
+          cl.hook = void
+          if value >= 0 then cl.hook = level.entities[value] end if
+        end case
+        case 20
+          ent.parent = void
+          if value >= 0 then ent.parent = level.entities[value] end if
+        end case
+        case 21
+          level.blood = value
+        end case
+        case 22
+          ent.health = value
+        end case
+        case 23
+          cl.respawnTime = value
+        end case
+        case 24
+          cl.rewardTime = value
+        end case
+        case 25
+          cl.ps.eFlags = value
+        end case
+      end switch
+    end case
+    case 82
+      inflictor = void; attacker = void
+      if a[2] >= 0 then inflictor = level.entities[a[2]] end if
+      if a[3] >= 0 then attacker = level.entities[a[3]] end if
+      deaths.playerDie(level,ent,inflictor,attacker,a[4],a[5])
+    end case
+    case 83
+      inflictor = void; attacker = void
+      if a[2] >= 0 then inflictor = level.entities[a[2]] end if
+      if a[3] >= 0 then attacker = level.entities[a[3]] end if
+      teamBonuses.fragBonuses(level,ent,inflictor,attacker)
+    end case
+    case 84
+      deaths.tossClientItems(level,ent)
+    end case
+    case 85
+      attacker = void
+      if a[2] >= 0 then attacker = level.entities[a[2]] end if
+      deaths.checkAlmostCapture(level,ent,attacker)
+    end case
+    case 86
+      attacker = void
+      if a[2] >= 0 then attacker = level.entities[a[2]] end if
+      deaths.checkAlmostScored(level,ent,attacker)
+    end case
+    case 87
+      deaths.respawn(level,ent)
+    end case
+    case 88
+      if a[1] >= level.num_entities then ent = game.spawn(level) else game.initEntity(ent) end if
+      ent.classname = [void,"leaf","changed","dest","missing","","team_CTF_redflag","team_CTF_blueflag","team_redobelisk","team_blueobelisk"][a[2]]; ent.flags = a[3]
+      ent.s.origin = [n.bitsFloat(a[4]),n.bitsFloat(a[5]),n.bitsFloat(a[6])]; ent.r.currentOrigin = [n.bitsFloat(a[7]),n.bitsFloat(a[8]),n.bitsFloat(a[9])]
+    end case
+    case 89
+      ent.s.pos.trBase = [n.bitsFloat(a[2]),n.bitsFloat(a[3]),n.bitsFloat(a[4])]
+      ent.r.currentOrigin = [n.bitsFloat(a[5]),n.bitsFloat(a[6]),n.bitsFloat(a[7])]
+      if ent.client != void then ent.client.ps.origin = [n.bitsFloat(a[8]),n.bitsFloat(a[9]),n.bitsFloat(a[10])] end if
+    end case
+    case 90
+      bodies.initQueue(level)
+    end case
+  end switch
   return void
 end function
 function scoreTestName(index)
@@ -1370,10 +1542,28 @@ function runBodyContracts(level)
   print "PASS: 10 body/spawn runtime contracts"
   return void
 end function
+function runDeathContracts(level)
+  spawn.create(level,"")
+  cl = game.createClient(ps.create(),0,[0,0,0])
+  requireSpawnContract(cl.lastkilled_client == 0 and cl.respawnTime == 0 and cl.rewardTime == 0 and cl.lastKillTime == 0 and cl.cmdWeapon == 0,"death client fields initialize")
+  requireSpawnContract(cl.lastfraggedcarrier == 0.0 and cl.fragcarrier == 0 and cl.carrierdefense == 0 and cl.basedefense == 0,"team bonus fields initialize")
+  requireSpawnContract(level.deathAnimIndex == 0 and level.itemDropFn == void and level.flagReturnFn == void and level.teamMessageFn == void and level.clientSpawnFn == void,"death boundaries initialize explicitly")
+  requireSpawnContract(deaths.weaponItem(3) == 9 and deaths.weaponItem(4) == 11 and deaths.weaponItem(10) == 17 and deaths.powerupItem(1) == 28 and deaths.powerupItem(8) == 35,"baseq3 item mappings")
+  ent = game.initEntity(level.entities[0]); game.bindClient(level,ent,cl); deaths.tossClientItems(level,ent)
+  ent.s.weapon = 5; cl.ps.ammo[5] = 1; caught = try(deaths.tossClientItems(level,ent)); requireSpawnContract(caught is error,"weapon drop requires explicit sink")
+  caught = try(deaths.returnFlag(level,1)); requireSpawnContract(caught is error,"flag return requires explicit sink")
+  target = game.initEntity(level.entities[1]); game.bindClient(level,target,game.createClient(ps.create(),1,[0,0,0])); target.client.ps.powerups[8] = 1
+  attacker = game.initEntity(level.entities[2]); game.bindClient(level,attacker,game.createClient(ps.create(),2,[0,0,0])); level.spawner.warmupTime = 1
+  caught = try(teamBonuses.fragBonuses(level,target,void,attacker)); requireSpawnContract(caught is error,"team PrintMsg requires explicit sink")
+  bare = game.initEntity(level.entities[3]); caught = try(deaths.playerDie(level,bare,void,attacker,1,6)); requireSpawnContract(caught is error,"player death requires a client")
+  print "PASS: 8 death lifecycle runtime contracts"
+  return void
+end function
 function main(args)
   world = cm.loadWorld(fs.readAllBytes(args[0]),args[3] == "0")
-  input = fs.readAllBytes(args[1]); check = Check(fs.readAllBytes(args[2]),0,0,0,0,0,false,false,false); level = game.create(world)
+  input = fs.readAllBytes(args[1]); check = Check(fs.readAllBytes(args[2]),0,0,0,0,0,false,false,false,false); level = game.create(world)
   level.time = 1000; level.startTime = 1000
+  if len(args) > 4 and args[4] == "--death-contracts" then runDeathContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--score-contracts" then runScoreContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--body-contracts" then runBodyContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--combat-contracts" then runCombatContracts(level); return 0 end if
@@ -1398,9 +1588,10 @@ function main(args)
     end while
   else if len(args) > 4 and args[4] == "--actions" then
     runTargetActions(level,input,check)
-  else if len(args) > 4 and (args[4] == "--combat" or args[4] == "--missiles" or args[4] == "--bodies" or args[4] == "--scores") then
-    check.missiles = args[4] == "--missiles"; check.bodies = args[4] == "--bodies"; check.scores = args[4] == "--scores"
+  else if len(args) > 4 and (args[4] == "--combat" or args[4] == "--missiles" or args[4] == "--bodies" or args[4] == "--scores" or args[4] == "--deaths") then
+    check.missiles = args[4] == "--missiles"; check.bodies = args[4] == "--bodies"; check.deaths = args[4] == "--deaths"; check.scores = args[4] == "--scores" or check.deaths
     if check.scores then level.serverCommandFn = recordScoreMessage; level.gameLogFn = recordScoreLog; level.matchTransitionFn = recordScoreTransition; level.runEntityFn = actionRun end if
+    if check.deaths then level.itemDropFn = recordDeathDrop; level.flagReturnFn = recordFlagReturn; level.teamMessageFn = recordTeamMessage; level.clientSpawnFn = recordClientSpawn end if
     runCombatActions(level,input,check)
   else if len(args) > 4 and args[4] == "--values" then
     off = 0; count = 0

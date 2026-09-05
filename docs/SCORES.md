@@ -3,9 +3,9 @@
 Dieser Abschnitt von Schritt 6 überträgt die ursprünglichen Baseq3-Regeln für
 Punktevergabe, Client-Rangfolge, Scoreboard-Nachrichten und Matchende-Entscheidungen.
 Die Funktionen laufen in MiniLang; unveränderte C-Funktionskörper liefern die
-Vergleichsergebnisse. Die Einbindung in `player_die`, Item-Drops, vollständige
-Client-/Server-Frames, Netzwerktransport und tatsächliche Kartenwechsel bleibt
-offen.
+Vergleichsergebnisse. Die Einbindung in [`player_die`](DEATHS.md) ist inzwischen
+ebenfalls exakt verglichen. Vollständige Item-Entities, Client-/Server-Frames,
+Netzwerktransport und tatsächliche Kartenwechsel bleiben offen.
 
 ## Schnittstellen und Originalfunktionen
 
@@ -155,6 +155,6 @@ Laufzeitverträge prüfen Speicherbindung und kontrollierte Fehler. Insbesondere
 werden Division durch null, `INT_MIN / -1` und ungültige Client-Indizes nicht
 als definierte C-Parität ausgegeben.
 
-Spieler-Tod, Team-Fragboni, Item-Drops und Respawn müssen diese Bausteine noch
-aufrufen. `BeginIntermission`, `ExitLevel`, Netzwerkzustellung, Scoreboard-Grafik,
+Spieler-Tod, Team-Fragboni, Drop-Entscheidungen und der Respawn-Wrapper rufen diese
+Bausteine inzwischen auf. `BeginIntermission`, `ExitLevel`, Netzwerkzustellung, Scoreboard-Grafik,
 Votes und die vollständige Server-Frame-Steuerung sind weiterhin offen.

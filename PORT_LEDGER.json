@@ -5979,7 +5979,8 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -5989,7 +5990,8 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -5999,7 +6001,8 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6009,7 +6012,8 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6019,7 +6023,8 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6029,7 +6034,8 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6039,7 +6045,8 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6049,7 +6056,8 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6059,7 +6067,8 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6069,7 +6078,8 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6079,7 +6089,8 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6089,7 +6100,8 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6099,7 +6111,8 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6109,23 +6122,38 @@
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "respawn",
+          "target_files": [
+            "src/mq3/game/teleport.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "CopyToBodyQue and teleport event ordering are implemented; ClientSpawn remains an explicit observed callback."
         }
       ],
       "target": [
         "src/mq3/game/teleport.ml",
         "src/mq3/game/spawn_functions.ml",
         "src/mq3/game/player_spawns.ml",
-        "src/mq3/game/bodies.ml"
+        "src/mq3/game/bodies.ml",
+        "src/mq3/game/deaths.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_entitystate.py",
         "scripts/test_transitions.py",
         "scripts/test_spawn.py",
-        "scripts/test_bodies.py"
+        "scripts/test_bodies.py",
+        "scripts/test_deaths.py"
       ]
     },
     {
@@ -6194,7 +6222,8 @@
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_scores.py"
+        "scripts/test_scores.py",
+        "scripts/test_deaths.py"
       ]
     },
     {
@@ -6228,7 +6257,8 @@
           "target_files": [
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6237,17 +6267,19 @@
           "target_files": [
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die-driven scoring, damage feedback, Missionpack or full server frame. G_Printf diagnostics excluded."
+          "scope": "Baseq3 damage state and pain/die/mover dispatch. player_die is connected and separately compared end to end; damage feedback, Missionpack and the full server frame remain open. G_Printf diagnostics are excluded."
         },
         {
           "original": "CanDamage",
           "target_files": [
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6256,7 +6288,8 @@
           "target_files": [
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6265,7 +6298,8 @@
           "target_files": [
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6274,7 +6308,8 @@
           "target_files": [
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6283,7 +6318,8 @@
           "target_files": [
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6292,7 +6328,8 @@
           "target_files": [
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
         },
@@ -6301,21 +6338,68 @@
           "target_files": [
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "TossClientItems",
+          "target_files": [
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 death lifecycle with actual score, body, hook, collision and PVS integration. Drop_Item, Team_ReturnFlag, PrintMsg and ClientSpawn are explicit observed callbacks; no Missionpack or complete client/server frame."
+        },
+        {
+          "original": "CheckAlmostCapture",
+          "target_files": [
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 death lifecycle with actual score, body, hook, collision and PVS integration. Drop_Item, Team_ReturnFlag, PrintMsg and ClientSpawn are explicit observed callbacks; no Missionpack or complete client/server frame."
+        },
+        {
+          "original": "CheckAlmostScored",
+          "target_files": [
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 death lifecycle with actual score, body, hook, collision and PVS integration. Drop_Item, Team_ReturnFlag, PrintMsg and ClientSpawn are explicit observed callbacks; no Missionpack or complete client/server frame."
+        },
+        {
+          "original": "player_die",
+          "target_files": [
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 death lifecycle with actual score, body, hook, collision and PVS integration. Drop_Item, Team_ReturnFlag, PrintMsg and ClientSpawn are explicit observed callbacks; no Missionpack or complete client/server frame."
         }
       ],
       "target": [
         "src/mq3/game/combat.ml",
         "src/mq3/game/bodies.ml",
-        "src/mq3/game/scores.ml"
+        "src/mq3/game/scores.ml",
+        "src/mq3/game/deaths.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_combat.py",
         "scripts/test_bodies.py",
-        "scripts/test_scores.py"
+        "scripts/test_scores.py",
+        "scripts/test_deaths.py"
       ]
     },
     {
@@ -6399,7 +6483,9 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml",
+            "src/mq3/game/team_bonuses.ml"
           ],
           "status": "tested_subset"
         },
@@ -6411,7 +6497,9 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml",
+            "src/mq3/game/team_bonuses.ml"
           ],
           "status": "tested_subset"
         },
@@ -6423,7 +6511,9 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml",
+            "src/mq3/game/team_bonuses.ml"
           ],
           "status": "tested_subset"
         },
@@ -6435,7 +6525,9 @@
             "src/mq3/game/combat.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/scores.ml"
+            "src/mq3/game/scores.ml",
+            "src/mq3/game/deaths.ml",
+            "src/mq3/game/team_bonuses.ml"
           ],
           "status": "tested_subset"
         }
@@ -6446,7 +6538,9 @@
         "src/mq3/game/combat.ml",
         "src/mq3/game/bodies.ml",
         "src/mq3/game/player_spawns.ml",
-        "src/mq3/game/scores.ml"
+        "src/mq3/game/scores.ml",
+        "src/mq3/game/deaths.ml",
+        "src/mq3/game/team_bonuses.ml"
       ],
       "status": "partial",
       "tests": [
@@ -6456,7 +6550,8 @@
         "scripts/test_targets.py",
         "scripts/test_combat.py",
         "scripts/test_bodies.py",
-        "scripts/test_scores.py"
+        "scripts/test_scores.py",
+        "scripts/test_deaths.py"
       ]
     },
     {
@@ -7774,7 +7869,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
-            "src/mq3/game/player_spawns.ml"
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml"
           ],
           "status": "tested_subset"
         },
@@ -7783,7 +7879,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
-            "src/mq3/game/player_spawns.ml"
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml"
           ],
           "status": "tested_subset"
         },
@@ -7792,7 +7889,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
-            "src/mq3/game/player_spawns.ml"
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml"
           ],
           "status": "tested_subset"
         },
@@ -7801,7 +7899,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
-            "src/mq3/game/player_spawns.ml"
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml"
           ],
           "status": "tested_subset"
         },
@@ -7810,7 +7909,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
-            "src/mq3/game/player_spawns.ml"
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml"
           ],
           "status": "tested_subset"
         },
@@ -7819,7 +7919,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
-            "src/mq3/game/player_spawns.ml"
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml"
           ],
           "status": "tested_subset"
         },
@@ -7828,7 +7929,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
-            "src/mq3/game/player_spawns.ml"
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml"
           ],
           "status": "tested_subset"
         },
@@ -7837,21 +7939,57 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
-            "src/mq3/game/player_spawns.ml"
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "OtherTeam",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 team frag bonuses, including native carrier-defense vector reuse, actual scores and SV_inPVS; PrintMsg delivery is an observed callback."
+        },
+        {
+          "original": "TeamName",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 team frag bonuses, including native carrier-defense vector reuse, actual scores and SV_inPVS; PrintMsg delivery is an observed callback."
+        },
+        {
+          "original": "Team_FragBonuses",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 team frag bonuses, including native carrier-defense vector reuse, actual scores and SV_inPVS; PrintMsg delivery is an observed callback."
         }
       ],
       "target": [
         "src/mq3/game/spawn_functions.ml",
         "src/mq3/game/combat.ml",
-        "src/mq3/game/player_spawns.ml"
+        "src/mq3/game/player_spawns.ml",
+        "src/mq3/game/team_bonuses.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_spawn.py",
         "scripts/test_combat.py",
-        "scripts/test_bodies.py"
+        "scripts/test_bodies.py",
+        "scripts/test_deaths.py"
       ]
     },
     {
@@ -14005,6 +14143,15 @@
             "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "SV_inPVS",
+          "target_files": [
+            "src/mq3/server/world.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Point cluster visibility plus area connectivity, used by and compared through Team_FragBonuses. Solid-only negative destination clusters are rejected safely instead of indexing before the C mask."
         }
       ],
       "target": [
@@ -14014,7 +14161,8 @@
       "status": "partial",
       "tests": [
         "scripts/test_transitions.py",
-        "scripts/test_spawn.py"
+        "scripts/test_spawn.py",
+        "scripts/test_deaths.py"
       ]
     },
     {

@@ -163,10 +163,10 @@ siehe [Schaden](COMBAT.md).
 Target-Ketten, Shader-Remaps und die Entity-Schleife mit Ereignisfreigabe sind
 gegen den Originalcode geprüft; siehe [Targets und Ereignisse](TARGETS_AND_EVENTS.md).
 `G_RunThink` und die spätere Sprungpad-Ausrichtung sind enthalten. Die 14 weiteren
-Klassen und Item-Spawns bleiben ausdrücklich offene Aufrufgrenzen; siehe
-[SPAWNING.md](SPAWNING.md). Als Nächstes folgen diese Spielobjekte, die Einbindung
-in vollständige Serverframes, Spieler-Todesregeln, die Einbindung der Scores, Respawn, weitere
-Waffentreffer, Waffenfeuer und Mover-Pushing. Der vollständige Server bleibt bis zu dieser
+Klassen und tatsächlichen Item-Spawns bleiben ausdrücklich offene Aufrufgrenzen;
+siehe [SPAWNING.md](SPAWNING.md). Als Nächstes folgen diese Spielobjekte, die
+Einbindung in vollständige Serverframes, `ClientSpawn`, weitere Waffentreffer,
+Waffenfeuer und Mover-Pushing. Der vollständige Server bleibt bis zu dieser
 Integration offen.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
@@ -175,10 +175,12 @@ Entity-Schleife führt Missile-Entities über die portierte Verarbeitung aus.
 Die [Spawnpunkt-Auswahl und Leichenverwaltung](PLAYER_LIFECYCLE.md) ergänzen
 Deathmatch-/CTF-/Zuschauerpositionen, acht Leichenplätze, Gibs und Leichenphysik.
 [Punktevergabe, Ranglisten, Scoreboards und Matchende-Regeln](SCORES.md) sind
-inzwischen ebenfalls gegen C geprüft. Als nächster Abschnitt folgt die Integration
-von `player_die` mit diesen Score-/Nachrichtenregeln, Item-Drops und vollständigem
-Respawn (`ClientSpawn`/Client-Frames),
-anschließend die weiteren Item- und Waffenpfade. Im Callback freigegebene
+inzwischen ebenfalls gegen C geprüft. [`player_die`, Team-Fragboni,
+Drop-Entscheidungen und der Respawn-Wrapper](DEATHS.md) verbinden diese Bausteine
+nun mit realer Kollision, PVS, Hook- und Leichenverwaltung. `Drop_Item`,
+`Team_ReturnFlag`, `PrintMsg` und `ClientSpawn` sind dabei als beobachtete
+Integrationsgrenzen festgehalten. Als Nächstes folgen die tatsächlichen Item-/
+Flag-Entities und `ClientSpawn`, anschließend weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.
 

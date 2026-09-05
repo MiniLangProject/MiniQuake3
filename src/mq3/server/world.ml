@@ -56,6 +56,17 @@ function getEntity(scene,number)
   if typeof(number) != "int" or number < 0 or number >= 1024 then return error(480,"Invalid server entity number") end if
   return scene.entities[number]
 end function
+function inPVS(scene,p1,p2)
+  visibility = scene.world.visibility
+  leaf1 = cm.pointLeafnum(scene.world,p1); cluster1 = vis.leafCluster(visibility,leaf1); area1 = vis.leafArea(visibility,leaf1)
+  mask = vis.clusterPVS(visibility,cluster1)
+  leaf2 = cm.pointLeafnum(scene.world,p2); cluster2 = vis.leafCluster(visibility,leaf2); area2 = vis.leafArea(visibility,leaf2)
+  // Valid engine points have a non-negative cluster. Guard malformed or
+  // solid-only leaves instead of reproducing C's negative array subscript.
+  if cluster2 < 0 or (cluster2 >> 3) >= len(mask) then return false end if
+  if (mask[cluster2 >> 3] & (1 << (cluster2 & 7))) == 0 then return false end if
+  return vis.areasConnected(visibility,area1,area2)
+end function
 function createSector(scene,depth,mins,maxs)
   index = len(scene.sectors); node = Sector(-1,0.0,[-1,-1],-1)
   scene.sectors = scene.sectors+[node]

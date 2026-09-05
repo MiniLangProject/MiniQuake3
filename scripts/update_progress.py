@@ -90,6 +90,18 @@ def main():
         old_targets,old_symbols,tests=mappings[source]
         mappings[source]=(old_targets+targets,old_symbols+symbols,tests+["scripts/test_scores.py"])
     mappings["code/game/g_cmds.c"]=( ["src/mq3/game/scores.ml"], ["DeathmatchScoreboardMessage","Cmd_Score_f"], ["scripts/test_scores.py"] )
+    death_mappings={
+        "code/game/g_combat.c":(["src/mq3/game/deaths.ml"],["TossClientItems","CheckAlmostCapture","CheckAlmostScored","player_die"]),
+        "code/game/g_team.c":(["src/mq3/game/team_bonuses.ml"],["OtherTeam","TeamName","Team_FragBonuses"]),
+        "code/game/g_client.c":(["src/mq3/game/deaths.ml"],["respawn"]),
+        "code/server/sv_game.c":(["src/mq3/server/world.ml"],["SV_inPVS"]),
+        "code/game/g_local.h":(["src/mq3/game/entities.ml","src/mq3/game/deaths.ml","src/mq3/game/team_bonuses.ml"],[]),
+    }
+    for source,(targets,symbols) in death_mappings.items():
+        old_targets,old_symbols,tests=mappings[source]
+        mappings[source]=(list(dict.fromkeys(old_targets+targets)),list(dict.fromkeys(old_symbols+symbols)),list(dict.fromkeys(tests+["scripts/test_deaths.py"])))
+    old_targets,old_symbols,tests=mappings["code/game/g_cmds.c"]
+    mappings["code/game/g_cmds.c"]=(old_targets,old_symbols,tests+["scripts/test_deaths.py"])
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text(encoding="utf-8"))
     for entry in ledger["files"]:
@@ -102,7 +114,7 @@ def main():
             if entry["source"] == "code/server/sv_init.c":
                 entry["symbol_mapping"][0]["scope"] = "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
             if entry["source"] == "code/game/g_combat.c":
-                entry["symbol_mapping"][1]["scope"] = "Baseq3 damage state and pain/die/mover dispatch; callbacks observed by test host. No player_die-driven scoring, damage feedback, Missionpack or full server frame. G_Printf diagnostics excluded."
+                entry["symbol_mapping"][1]["scope"] = "Baseq3 damage state and pain/die/mover dispatch. player_die is connected and separately compared end to end; damage feedback, Missionpack and the full server frame remain open. G_Printf diagnostics are excluded."
             if entry["source"] == "code/game/g_missile.c":
                 for symbol in entry["symbol_mapping"]:
                     symbol["scope"] = "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
@@ -120,6 +132,22 @@ def main():
             if entry["source"] == "code/game/g_cmds.c":
                 for symbol in entry["symbol_mapping"]:
                     symbol["scope"] = "Exact scoreboard command payload and recipient; transport callback observed. No network transmission or client display."
+            if entry["source"] == "code/game/g_combat.c":
+                for symbol in entry["symbol_mapping"]:
+                    if symbol["original"] in ("TossClientItems","CheckAlmostCapture","CheckAlmostScored","player_die"):
+                        symbol["scope"] = "Baseq3 death lifecycle with actual score, body, hook, collision and PVS integration. Drop_Item, Team_ReturnFlag, PrintMsg and ClientSpawn are explicit observed callbacks; no Missionpack or complete client/server frame."
+            if entry["source"] == "code/game/g_team.c":
+                for symbol in entry["symbol_mapping"]:
+                    if symbol["original"] in ("OtherTeam","TeamName","Team_FragBonuses"):
+                        symbol["scope"] = "Baseq3 team frag bonuses, including native carrier-defense vector reuse, actual scores and SV_inPVS; PrintMsg delivery is an observed callback."
+            if entry["source"] == "code/game/g_client.c":
+                for symbol in entry["symbol_mapping"]:
+                    if symbol["original"] == "respawn":
+                        symbol["scope"] = "CopyToBodyQue and teleport event ordering are implemented; ClientSpawn remains an explicit observed callback."
+            if entry["source"] == "code/server/sv_game.c":
+                for symbol in entry["symbol_mapping"]:
+                    if symbol["original"] == "SV_inPVS":
+                        symbol["scope"] = "Point cluster visibility plus area connectivity, used by and compared through Team_FragBonuses. Solid-only negative destination clusters are rejected safely instead of indexing before the C mask."
     path.write_text(json.dumps(ledger,indent=2)+"\n",encoding="utf-8",newline="\n")
     evidence=[]
     for path in sorted((ROOT / "build/reference").rglob("result.json")):

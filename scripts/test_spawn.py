@@ -50,18 +50,29 @@ def main():
     args=p.parse_args();flag='1' if args.no_curves else '0';output=ROOT/'build/reference/spawn'/('no_curves' if args.no_curves else 'curves');sources=build(output)
     if not args.reuse_build:subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/spawn_tests.ml','--output','spawn_tests.exe'],check=True)
     with zipfile.ZipFile(args.data_root/'baseq3/pak0.pk3') as archive:
-        maps=[]
-        for name in sorted(n for n in archive.namelist() if n.startswith('maps/') and n.endswith('.bsp')):
-            data=archive.read(name);off,size=struct.unpack_from('<2i',data,8);maps.append((name,data,data[off:off+size],range(5)))
+        names=sorted(n for n in archive.namelist() if n.startswith('maps/') and n.endswith('.bsp'))
+    # Load one retail BSP at a time. Keeping every decompressed map live made
+    # long Windows runs needlessly sensitive to process/allocator pressure.
+    maps=[(name,None,None,range(5)) for name in names]
     maps.append(('spawn_fixture.bsp',bsp(),map_text().encode(),range(-1,9)))
     for index,gravity in enumerate(['0','-0','-800']):maps.append((f'spawn_gravity_{index}.bsp',bsp(),map_text(gravity).encode(),[0]))
     records=[]
     for name,data,text,modes in maps:
         if args.map and Path(name).stem not in args.map:continue
+        if data is None:
+            with zipfile.ZipFile(args.data_root/'baseq3/pak0.pk3') as archive:data=archive.read(name)
+            entity_offset,entity_size=struct.unpack_from('<2i',data,8);text=data[entity_offset:entity_offset+entity_size]
         folder=output/Path(name).stem;folder.mkdir(exist_ok=True);mapfile=folder/'map.bsp';mapfile.write_bytes(data)
         for mode in modes:
             inputs=folder/f'mode_{mode}.bin';inputs.write_bytes(struct.pack('<2i',mode,mode&3)+pack(text));expected=folder/f'mode_{mode}.expected'
-            run([output/'spawn_oracle.exe',mapfile,inputs,expected,flag],output,log=folder/f'mode_{mode}.oracle.log')
+            expected.unlink(missing_ok=True)
+            for attempt in range(3):
+                try:
+                    run([output/'spawn_oracle.exe',mapfile,inputs,expected,flag],output,log=folder/f'mode_{mode}.oracle.log')
+                    break
+                except RuntimeError as exc:
+                    if attempt==2 or 'failed (3)' not in str(exc):raise
+                    expected.unlink(missing_ok=True)
             result=run([ROOT/'build/spawn_tests.exe',mapfile,inputs,expected,flag],ROOT/'build',log=folder/f'mode_{mode}.test.log',timeout=600)
             match=re.search(r'(\d+) exact words / (\d+) string bytes',result)
             records.append({'map':name,'gametype':mode,'exact_words':int(match[1]),'string_bytes':int(match[2]),**inspect(expected.read_bytes()),
