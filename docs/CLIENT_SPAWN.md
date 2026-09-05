@@ -24,9 +24,10 @@ der höchsten verfügbaren Waffe. Der Ablauf konvertiert den PlayerState vor und
 nach dem letzten Frame-Hook in den EntityState und verlinkt den Spieler nach dem
 ersten Frame erneut. Zuschauer bleiben unverlinkt.
 
-## Verbleibende Host-Grenzen
+## Host-Grenzen der isolierten Prüfung
 
-Fünf Abhängigkeiten sind noch nicht als Gameplay-Code portiert:
+Die isolierte ClientSpawn-Prüfung ersetzt fünf Abhängigkeiten durch beobachtete
+Callbacks:
 
 | Level-Feld | Original |
 | --- | --- |
@@ -36,11 +37,11 @@ Fünf Abhängigkeiten sind noch nicht als Gameplay-Code portiert:
 | `clientEndFrameFn` | `ClientEndFrame` |
 | `moveIntermissionFn` | `MoveClientToIntermission` |
 
-Diese Aufrufe sind erforderlich und werden nicht still übersprungen. Der
-Vergleichshost gibt ihnen deterministische Rückgabewirkungen und protokolliert
+Der Vergleichshost gibt ihnen deterministische Rückgabewirkungen und protokolliert
 ihre Reihenfolge. Dadurch ist der Code vor, zwischen und nach den Grenzen exakt
-gegen die Originalfunktion prüfbar. Die Funktionen selbst folgen in den nächsten
-Portabschnitten.
+gegen die Originalfunktion prüfbar. ClientEndFrame ist inzwischen portiert und
+wird im normalen Pfad verwendet; ein gesetzter Callback erhält die unabhängige
+ClientSpawn-Prüfung. Die übrigen vier Grenzen bleiben offen.
 
 ## Nachweis
 
@@ -58,8 +59,8 @@ beide Snapshot-Konvertierungen ab.
 Acht zusätzliche Laufzeitverträge prüfen Initialwerte, Userinfo-Auswertung,
 fehlende Pflichtgrenzen und die Standardverbindung aus `deaths.respawn`.
 
-Test-Binary: `5e436532f8b2b80315ca8a4c81bcb27c8f437e5544eea949a451401c69c02b97`.
-Native x86-Oracle: `6673b31b3a5d7c5a82514d705df70ee256f0c4f437b3fa7f0d94a7ef22a4118d`.
+Test-Binary: `44ce3f36f5b9cc7cb50ae7008c9ce36278a4d05b84634f8d3e27024ab3d67f5c`.
+Native x86-Oracle: `a9837e10a4fa910875971cada90d08f6b31ac97876fe0ac6f4c40b7cb5cacb3e`.
 
 Der C-Oracle enthält den unveränderten Funktionskörper aus `g_client.c`. Nur die
 fünf oben aufgeführten Abhängigkeiten werden am Host-Rand beobachtet. Spawnwahl,

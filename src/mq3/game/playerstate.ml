@@ -57,6 +57,35 @@ function create()
   return PlayerState(0,0,0,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],0,0,0,[0,0,0],0,0,0,0,0,0,[0.0,0.0,0.0],0,0,[0,0],[0,0],0,0,0,0,0,0,[0.0,0.0,0.0],0,0,0,0,0,[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],0,0,0,0,0,0,0)
 end function
 
+function copy(source)
+  result = create()
+  result.commandTime = source.commandTime; result.pm_type = source.pm_type; result.bobCycle = source.bobCycle
+  result.pm_flags = source.pm_flags; result.pm_time = source.pm_time
+  result.origin = [source.origin[0],source.origin[1],source.origin[2]]
+  result.velocity = [source.velocity[0],source.velocity[1],source.velocity[2]]
+  result.weaponTime = source.weaponTime; result.gravity = source.gravity; result.speed = source.speed
+  result.delta_angles = [source.delta_angles[0],source.delta_angles[1],source.delta_angles[2]]
+  result.groundEntityNum = source.groundEntityNum; result.legsTimer = source.legsTimer; result.legsAnim = source.legsAnim
+  result.torsoTimer = source.torsoTimer; result.torsoAnim = source.torsoAnim; result.movementDir = source.movementDir
+  result.grapplePoint = [source.grapplePoint[0],source.grapplePoint[1],source.grapplePoint[2]]
+  result.eFlags = source.eFlags; result.eventSequence = source.eventSequence
+  result.events = [source.events[0],source.events[1]]; result.eventParms = [source.eventParms[0],source.eventParms[1]]
+  result.externalEvent = source.externalEvent; result.externalEventParm = source.externalEventParm; result.externalEventTime = source.externalEventTime
+  result.clientNum = source.clientNum; result.weapon = source.weapon; result.weaponstate = source.weaponstate
+  result.viewangles = [source.viewangles[0],source.viewangles[1],source.viewangles[2]]
+  result.viewheight = source.viewheight; result.damageEvent = source.damageEvent; result.damageYaw = source.damageYaw
+  result.damagePitch = source.damagePitch; result.damageCount = source.damageCount
+  result.stats = []; result.persistant = []; result.powerups = []; result.ammo = []
+  for index = 0 to 15
+    result.stats = result.stats+[source.stats[index]]; result.persistant = result.persistant+[source.persistant[index]]
+    result.powerups = result.powerups+[source.powerups[index]]; result.ammo = result.ammo+[source.ammo[index]]
+  end for
+  result.generic1 = source.generic1; result.loopSound = source.loopSound; result.jumppad_ent = source.jumppad_ent
+  result.ping = source.ping; result.pmove_framecount = source.pmove_framecount; result.jumppad_frame = source.jumppad_frame
+  result.entityEventSequence = source.entityEventSequence
+  return result
+end function
+
 function load(data, offset)
   if offset < 0 or offset+BYTE_SIZE > len(data) then return error(470,"Truncated playerState") end if
   ps = create()

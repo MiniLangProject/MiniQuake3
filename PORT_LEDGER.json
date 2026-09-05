@@ -5902,14 +5902,64 @@
             "src/mq3/game/triggers.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "P_DamageFeedback",
+          "target_files": [
+            "src/mq3/game/client_frame.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets; ClientThink and weapon firing remain open."
+        },
+        {
+          "original": "P_WorldEffects",
+          "target_files": [
+            "src/mq3/game/client_frame.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets; ClientThink and weapon firing remain open."
+        },
+        {
+          "original": "G_SetClientSound",
+          "target_files": [
+            "src/mq3/game/client_frame.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets; ClientThink and weapon firing remain open."
+        },
+        {
+          "original": "SendPendingPredictableEvents",
+          "target_files": [
+            "src/mq3/game/client_frame.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets; ClientThink and weapon firing remain open."
+        },
+        {
+          "original": "SpectatorClientEndFrame",
+          "target_files": [
+            "src/mq3/game/client_frame.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets; ClientThink and weapon firing remain open."
+        },
+        {
+          "original": "ClientEndFrame",
+          "target_files": [
+            "src/mq3/game/client_frame.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. ClientBegin remains an observed boundary for invalid explicit spectator targets; ClientThink and weapon firing remain open."
         }
       ],
       "target": [
-        "src/mq3/game/triggers.ml"
+        "src/mq3/game/triggers.ml",
+        "src/mq3/game/client_frame.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_transitions.py"
+        "scripts/test_transitions.py",
+        "scripts/test_client_frame.py"
       ]
     },
     {
@@ -6692,6 +6742,7 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/client_frame.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6708,6 +6759,7 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/client_frame.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6724,6 +6776,7 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/client_frame.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6740,6 +6793,7 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/client_frame.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
@@ -6755,6 +6809,7 @@
         "src/mq3/game/spawn.ml",
         "src/mq3/game/combat.ml",
         "src/mq3/game/client_spawn.ml",
+        "src/mq3/game/client_frame.ml",
         "src/mq3/game/bodies.ml",
         "src/mq3/game/player_spawns.ml",
         "src/mq3/game/scores.ml",
@@ -6770,6 +6825,7 @@
         "scripts/test_targets.py",
         "scripts/test_combat.py",
         "scripts/test_client_spawn.py",
+        "scripts/test_client_frame.py",
         "scripts/test_bodies.py",
         "scripts/test_scores.py",
         "scripts/test_deaths.py",

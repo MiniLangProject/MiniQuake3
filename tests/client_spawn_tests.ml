@@ -185,9 +185,9 @@ function contracts(world)
   ent = game.initEntity(level2.entities[0]); cl = level2.clients[0]; game.bindClient(level2,ent,cl); cl.team = c.TEAM_FREE
   ent.inuse = true; ent.s.number = 0; ent.s.eType = c.ET_PLAYER; ent.s.origin = [10.0,20.0,30.0]; ent.r.currentOrigin = [10.0,20.0,30.0]
   spawnPoint = game.spawn(level2); spawnPoint.classname = "info_player_deathmatch"; spawnPoint.s.origin = [100.0,200.0,300.0]
-  level2.time = 1000; level2.userinfoFn = contractUserinfo; level2.usercmdFn = contractUsercmd; level2.clientThinkFn = contractThink; level2.clientEndFrameFn = contractEndFrame
+  level2.time = 1000; level2.userinfoFn = contractUserinfo; level2.usercmdFn = contractUsercmd; level2.clientThinkFn = contractThink
   deaths.respawn(level2,ent)
-  requireContract(ent.classname == "player" and ent.client.ps.origin[2] == 309.0 and level2.entities[73].s.eType == c.ET_EVENTS+c.EV_PLAYER_TELEPORT_IN,"respawn uses ClientSpawn by default")
+  requireContract(ent.classname == "player" and ent.client.ps.origin[2] == 309.0 and level2.entities[73].s.eType == c.ET_EVENTS+c.EV_PLAYER_TELEPORT_IN,"respawn uses ClientSpawn and ClientEndFrame by default")
   print "PASS: 8 ClientSpawn runtime contracts"
   return 0
 end function

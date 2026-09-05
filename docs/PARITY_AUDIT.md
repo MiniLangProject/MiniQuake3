@@ -4,13 +4,13 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die vollständige erweiterte Regression besteht aktuell aus 38 bestandenen
+Die vollständige erweiterte Regression besteht aktuell aus 39 bestandenen
 Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`), einschließlich
 der Spawnpunkt-/Leichenprüfung, der Punkte-/Ranglisten-/Matchende-Regeln und
-der integrierten Spieler-Todesfolge, der Item-/Flaggen-Entity-Prüfung und dem
-vollständigen `ClientSpawn`-Ablauf.
+der integrierten Spieler-Todesfolge, der Item-/Flaggen-Entity-Prüfung sowie den
+vollständigen `ClientSpawn`- und `ClientEndFrame`-Abläufen.
 Der finale MiniQuake3-Build hat SHA-256
-`b6370c7072dc76c58a58fc4c6bb562a6223f1b2ab80c3907cab92225662bda39`.
+`3a8c6f394b337404511f826e34404d0fd5f9c3011af6b7a4b2a96cc5321d99fb`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
 
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
@@ -20,7 +20,7 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständige Server-/Client-Frames und komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, `ClientSpawn`, Leichenverwaltung, Gibs, Item-/Leichenphysik, sämtliche Baseq3-Pickups, Punktevergabe, Ranglisten, Scoreboard-Texte, Matchende-Entscheidungen, `player_die`, Team-Fragboni und CTF-Take/Return/Capture vorhanden; weitere Klassen, ClientThink/ClientEndFrame, Mover-Pushing und vollständige Serverframes fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, `ClientSpawn`, `ClientEndFrame`, Leichenverwaltung, Gibs, Item-/Leichenphysik, sämtliche Baseq3-Pickups, Punktevergabe, Ranglisten, Scoreboard-Texte, Matchende-Entscheidungen, `player_die`, Team-Fragboni und CTF-Take/Return/Capture vorhanden; weitere Klassen, ClientThink, ClientBegin, Mover-Pushing und vollständige Serverframes fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -399,7 +399,7 @@ Entities und die Auswahl der weiteren Handler. In diesem Target-Test bleiben die
 Missile-, Item-, Mover- und Client-Handler aufgezeichnete Aufrufgrenzen. Die
 gesonderten Projektil- und Item-Prüfungen führen ihre jeweiligen Zweige mit der
 echten portierten Verarbeitung aus. Dies ist
-**keine vollständige G_RunFrame-Abnahme**: Cvar-/Zeitverwaltung, ClientEndFrame,
+**keine vollständige G_RunFrame-Abnahme**: Cvar-/Zeitverwaltung, die Einbindung von ClientEndFrame,
 die Frame-Einbindung der Matchende-Regeln, Votes und vollständige Serverintegration fehlen.
 Schnittstellen und genaue Grenzen: [TARGETS_AND_EVENTS.md](TARGETS_AND_EVENTS.md).
 
@@ -426,8 +426,9 @@ oder ungültigen Handlerzuständen.
 Pain-, Death- und Mover-Callbacks beobachten in dieser isolierten Suite ihre
 Argumente und Eintrittszustände; einzelne Test-Callbacks geben die Entity frei.
 Die anschließende Todes-Suite verwendet stattdessen den echten `player_die`-Port.
-Offen sind `ClientThink`, `ClientEndFrame`, weitere Waffentreffer und die vollständige Waffensteuerung,
-Schadensfeedback am Frame-Ende, weitere Teamregeln und Serverintegration.
+Offen sind `ClientThink`, weitere Waffentreffer und die vollständige Waffensteuerung,
+weitere Teamregeln und Serverintegration. Schadensfeedback am Frame-Ende ist
+inzwischen durch die gesonderte ClientEndFrame-Prüfung abgedeckt.
 `G_Printf`-Diagnosen und Missionpack gehören nicht zu dieser Abnahme.
 Der Rüstungsport verwendet die CRT-Mathematikfunktion `ceil`; die Spielregeln
 bleiben MiniLang und die Projekt-DLL bleibt unverändert.
@@ -582,8 +583,29 @@ Startwaffen, Gesundheit, Teleport-/Vote-Flags, KillBox, Verlinkung, Spawn-Target
 Waffenwahl und beide PlayerState-zu-EntityState-Konvertierungen ab. Die native
 Referenz führt den unveränderten `ClientSpawn`-Funktionskörper aus.
 `trap_GetUserinfo`, `trap_GetUsercmd`, `ClientThink`, `ClientEndFrame` und
-`MoveClientToIntermission` bleiben explizit beobachtete Host-Grenzen. Details:
+`MoveClientToIntermission` bleiben in dieser isolierten ClientSpawn-Suite
+explizit beobachtete Host-Grenzen; der normale MiniLang-Pfad ruft inzwischen
+den portierten Frame-Abschluss auf. Details:
 [CLIENT_SPAWN.md](CLIENT_SPAWN.md).
+
+## ClientEndFrame (Schritt 6)
+
+`scripts/test_client_frame.py` besteht mit **17 Szenariogruppen und 272
+Frame-Ausführungen**, **51.275 exakt gleichen 32-Bit-Wörtern**, **205.122
+Ausgabe-Bytes** und **sechs geordneten Nebenwirkungen**. Zwei Laufzeitverträge
+prüfen die unabhängige vollständige PlayerState-Kopie und die noch erforderliche
+`ClientBegin`-Grenze.
+
+Enthalten sind Powerup-Ablauf, Schadensrichtung, 255er-Kappung, Pain-Debounce,
+Godmode/Tod, Noclip, Ertrinken, Lava/Slime, Battlesuit, Loop-Sound,
+Intermission, normale und extrapolierte EntityStates, vorhersagbare
+Ereignis-Entities sowie direktes und teambezogenes Zuschauer-Follow. Eine
+256-Fälle-Matrix variiert Schadensvektor, -summe, -rückstoß, Godmode und Debounce.
+Die native Referenz führt die unveränderten Funktionskörper von
+`ClientEndFrame`, `SpectatorClientEndFrame`, `P_WorldEffects`,
+`P_DamageFeedback`, `G_SetClientSound` und
+`SendPendingPredictableEvents` aus. Details:
+[CLIENT_FRAMES.md](CLIENT_FRAMES.md).
 
 ## Items, Pickups und CTF-Flaggen (Schritt 6)
 

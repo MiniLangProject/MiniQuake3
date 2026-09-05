@@ -136,6 +136,7 @@ struct Entity
   teamchain
   waterlevel
   watertype
+  pain_debounce_time
 end struct
 struct Level
   scene
@@ -205,16 +206,19 @@ struct Level
   clientThinkFn
   clientEndFrameFn
   moveIntermissionFn
+  sndFry
+  smoothClients
+  clientBeginFn
 end struct
 function createClient(state,team,cmdAngles)
   return Client(state,team,cmdAngles,false,0,0,0,[0.0,0.0,0.0],false,0,0,0.0,0,void,0,0,0,0,0,0,"",false,0,0,0,0,0,0.0,0,0,0,false,0,0,0,0.0,0.0,
     false,false,false,0,0,0,0,0,false,0,0,false,0,0,0,0,0,0,0,0,0,[0.0,0.0,0.0],0,0,false,0,false,0,0)
 end function
 function blank(slot,r)
-  return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0,void,void,0.0,void,void,0.0,0.0,0,0,0,void,void,0,[0.0,0.0,0.0],0,void,void,void,false,false,0,0,void,false,0,void,void,void,0,void,void,0,0,0,0,0,0.0,void,void,void,0,0)
+  return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0,void,void,0.0,void,void,0.0,0.0,0,0,0,void,void,0,[0.0,0.0,0.0],0,void,void,void,false,false,0,0,void,false,0,void,void,void,0,void,void,0,0,0,0,0,0.0,void,void,void,0,0,0)
 end function
 function create(world)
-  scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void,false,void,0,1000.0,0,void,0,array(256,0),1,0,[],[0.0,0.0,0.0],[0.0,0.0,0.0],[],0,0,array(64,0),array(4,0),0,0,0,0,0,0,array(2,0),0,0,0,0,false,0,void,void,void,0,void,void,void,void,0,0,0,0,0,0.0,0,5,30,0,void,void,void,void,void)
+  scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void,false,void,0,1000.0,0,void,0,array(256,0),1,0,[],[0.0,0.0,0.0],[0.0,0.0,0.0],[],0,0,array(64,0),array(4,0),0,0,0,0,0,0,array(2,0),0,0,0,0,false,0,void,void,void,0,void,void,void,void,0,0,0,0,0,0.0,0,5,30,0,void,void,void,void,void,0,false,void)
   for i = 0 to 1023
     level.entities = level.entities+[blank(i,scene.entities[i])]
   end for
@@ -290,6 +294,7 @@ function free(level,ent)
   ent.parent = void; ent.target_ent = void; ent.splashDamage = 0; ent.splashRadius = 0; ent.methodOfDeath = 0; ent.splashMethodOfDeath = 0; ent.clipmask = 0; ent.physicsBounce = 0.0
   ent.item = void; ent.teammaster = void; ent.teamchain = void
   ent.waterlevel = 0; ent.watertype = 0
+  ent.pain_debounce_time = 0
   return void
 end function
 function runThink(level,ent)

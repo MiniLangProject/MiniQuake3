@@ -1,6 +1,6 @@
 // Copyright (C) 1999-2005 Id Software, Inc.
 // SPDX-License-Identifier: GPL-2.0-or-later
-// Baseq3 ClientSpawn orchestration. ClientThink, ClientEndFrame and engine
+// Baseq3 ClientSpawn orchestration. ClientThink and engine
 // user-command/userinfo delivery remain explicit host boundaries.
 package mq3.game.client_spawn
 import mq3.game.constants as c
@@ -9,6 +9,7 @@ import mq3.game.playerstate as playerstate
 import mq3.game.player_spawns as spawns
 import mq3.game.teleport as teleport
 import mq3.game.snapshot as snapshot
+import mq3.game.client_frame as clientFrame
 import mq3.game.targets as targets
 import mq3.game.movement as movement
 import mq3.compat.numeric as n
@@ -140,7 +141,7 @@ function spawn(level,ent,dieFn)
   if client.team != c.TEAM_SPECTATOR then
     snapshot.fromPlayer(client.ps,ent.s,true); ent.r.currentOrigin = movement.copy(client.ps.origin); game.link(level,ent)
   end if
-  if level.clientEndFrameFn == void then return error(496,"ClientSpawn requires ClientEndFrame") end if
-  level.clientEndFrameFn(level,ent); snapshot.fromPlayer(client.ps,ent.s,true)
+  if level.clientEndFrameFn != void then level.clientEndFrameFn(level,ent) else clientFrame.endFrame(level,ent) end if
+  snapshot.fromPlayer(client.ps,ent.s,true)
   return void
 end function

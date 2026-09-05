@@ -167,8 +167,10 @@ Karten-Items werden inzwischen als echte Entities angelegt; die 14 weiteren
 Klassen bleiben ausdrücklich offene Aufrufgrenzen; siehe [SPAWNING.md](SPAWNING.md).
 Die Item-Aufnahme einschließlich CTF-Capture ist inzwischen verbunden.
 `ClientSpawn` setzt Spielerzustand, Startinventar, Handicap, Bot-/Human-Filter,
-Spawn-Targets, Verlinkung und Snapshots in der Originalreihenfolge um; die
-anschließenden Client-Frames bleiben klare Host-Grenzen. Als Nächstes folgen die
+Spawn-Targets, Verlinkung und Snapshots in der Originalreihenfolge um.
+`ClientEndFrame` verarbeitet inzwischen Powerup-Ablauf, Umwelt- und
+Schadensfeedback, Zuschauer-Follow, Snapshots und vorhersagbare Ereignis-Entities.
+`ClientThink` bleibt die nächste Client-Frame-Grenze. Als Nächstes folgen die
 übrigen Spielobjekte, die Einbindung in vollständige
 Serverframes, weitere Waffentreffer, Waffenfeuer und
 Mover-Pushing. Der vollständige Server bleibt bis zu dieser Integration offen.
@@ -184,8 +186,9 @@ Drop-Entscheidungen und der Respawn-Wrapper](DEATHS.md) verbinden diese Baustein
 nun mit realer Kollision, PVS, Hook- und Leichenverwaltung. [Karten-/Drop-Items,
 Pickups, Respawn, Physik und vollständige CTF-Flaggenabläufe](ITEMS.md) laufen als
 echte Entities. Log- und `PrintMsg`-Nutzlasten sind bis zu einer Host-Schnittstelle
-geprüft; [`ClientSpawn`](CLIENT_SPAWN.md) ist ebenfalls gegen den unveränderten
-C-Funktionskörper geprüft. `ClientThink`, `ClientEndFrame` und die
+geprüft; [`ClientSpawn`](CLIENT_SPAWN.md) und
+[`ClientEndFrame`](CLIENT_FRAMES.md) sind ebenfalls gegen die unveränderten
+C-Funktionskörper geprüft. `ClientThink`, vollständiges `ClientBegin` und die
 Netzwerkzustellung sind die nächsten Grenzen. Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.

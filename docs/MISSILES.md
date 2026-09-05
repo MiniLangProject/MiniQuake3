@@ -113,7 +113,7 @@ und Signaling-NaNs sind weiterhin kein vollständig geprüfter Eingabeumfang.
 
 `player_die` räumt den portierten Grappling-Hook inzwischen über diesen Pfad auf;
 siehe [DEATHS.md](DEATHS.md). Offen bleiben vollständiges Spieler-Waffenfeuer,
-Hitscan-Waffen, `ClientThink`/`ClientEndFrame`, Mover-Pushing,
+Hitscan-Waffen, `ClientThink`, Mover-Pushing,
 Missionpack-Projektile und die vollständige Server-/Clientintegration. Summen und Binary-Hashes stehen im
 [Prüfbericht](PARITY_AUDIT.md).
 
