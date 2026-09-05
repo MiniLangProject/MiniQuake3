@@ -153,6 +153,20 @@ const EV_TAUNT_FOLLOWME = 79
 const EV_TAUNT_GETFLAG = 80
 const EV_TAUNT_GUARDBASE = 81
 const EV_TAUNT_PATROL = 82
+const GTS_RED_CAPTURE = 0
+const GTS_BLUE_CAPTURE = 1
+const GTS_RED_RETURN = 2
+const GTS_BLUE_RETURN = 3
+const GTS_RED_TAKEN = 4
+const GTS_BLUE_TAKEN = 5
+const GTS_REDOBELISK_ATTACKED = 6
+const GTS_BLUEOBELISK_ATTACKED = 7
+const GTS_REDTEAM_SCORED = 8
+const GTS_BLUETEAM_SCORED = 9
+const GTS_REDTEAM_TOOK_LEAD = 10
+const GTS_BLUETEAM_TOOK_LEAD = 11
+const GTS_TEAMS_ARE_TIED = 12
+const GTS_KAMIKAZE = 13
 const BOTH_DEATH1 = 0
 const BOTH_DEAD1 = 1
 const BOTH_DEATH2 = 2
@@ -220,6 +234,15 @@ const MOD_SUICIDE = 20
 const MOD_TARGET_LASER = 21
 const MOD_TRIGGER_HURT = 22
 const MOD_GRAPPLE = 23
+const IT_BAD = 0
+const IT_WEAPON = 1
+const IT_AMMO = 2
+const IT_ARMOR = 3
+const IT_HEALTH = 4
+const IT_POWERUP = 5
+const IT_HOLDABLE = 6
+const IT_PERSISTANT_POWERUP = 7
+const IT_TEAM = 8
 const ET_GENERAL = 0
 const ET_PLAYER = 1
 const ET_ITEM = 2
@@ -240,6 +263,12 @@ const TR_LINEAR = 2
 const TR_LINEAR_STOP = 3
 const TR_SINE = 4
 const TR_GRAVITY = 5
+
+function itemType(index)
+  types = [0,3,3,3,4,4,4,4,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,6,6,5,5,5,5,5,5,8,8]
+  if index < 0 or index >= len(types) then return error(471,"Invalid baseq3 item index") end if
+  return types[index]
+end function
 
 function itemTag(index)
   tags = [0,0,0,0,0,0,0,0,1,3,2,4,5,6,7,8,9,10,3,2,4,8,6,5,7,9,1,2,1,2,3,4,5,6,7,8]

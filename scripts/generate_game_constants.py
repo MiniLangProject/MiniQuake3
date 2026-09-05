@@ -9,7 +9,7 @@ def baseq3(text):
 def main():
     folder=ROOT / 'Quake-III-Arena-original-source/code/game'
     text=baseq3((folder / 'bg_public.h').read_text())+'\n'+baseq3((folder/'q_shared.h').read_text())
-    enums=('pmtype_t','weaponstate_t','statIndex_t','persEnum_t','powerup_t','holdable_t','weapon_t','entity_event_t','animNumber_t','team_t','entityType_t','trType_t','meansOfDeath_t')
+    enums=('pmtype_t','weaponstate_t','statIndex_t','persEnum_t','powerup_t','holdable_t','weapon_t','entity_event_t','global_team_sound_t','animNumber_t','team_t','entityType_t','trType_t','meansOfDeath_t','itemType_t')
     values={}
     for body,name in re.findall(r'typedef\s+enum\s*\{([^{}]*)\}\s*(\w+)\s*;',text):
         if name not in enums: continue
@@ -22,16 +22,20 @@ def main():
             if not re.fullmatch(r'\w+',key): raise ValueError(key)
             values[key]=value;value+=1
     items=baseq3((folder / 'bg_misc.c').read_text()).split('bg_itemlist[]')[1].split('int\t\tbg_numItems')[0]
-    tags=[0]
-    for tag in re.findall(r'\bIT_\w+\s*,\s*(\w+)\s*,',items):
+    tags=[0];types=[values['IT_BAD']]
+    for item_type,tag in re.findall(r'\b(IT_\w+)\s*,\s*(\w+)\s*,',items):
+        types.append(values[item_type])
         tags.append(values[tag] if tag in values else int(tag,0))
     lines=['// Copyright (C) 1999-2005 Id Software, Inc.','// SPDX-License-Identifier: GPL-2.0-or-later',
            '// Generated source data, baseq3 without MISSIONPACK.','package mq3.game.constants']
     lines += [f'const {key} = {value}' for key,value in values.items()]
-    lines += ['', 'function itemTag(index)', '  tags = ['+','.join(map(str,tags))+']',
+    lines += ['', 'function itemType(index)', '  types = ['+','.join(map(str,types))+']',
+              '  if index < 0 or index >= len(types) then return error(471,"Invalid baseq3 item index") end if',
+              '  return types[index]','end function',
+              '', 'function itemTag(index)', '  tags = ['+','.join(map(str,tags))+']',
               '  if index < 0 or index >= len(tags) then return error(471,"Invalid baseq3 item index") end if',
               '  return tags[index]','end function','']
     (ROOT / 'src/mq3/game/constants.ml').write_text('\n'.join(lines))
-    print(f'Generated {len(values)} enum constants and {len(tags)} item tags')
+    print(f'Generated {len(values)} enum constants and {len(tags)} item descriptors')
 
 if __name__=='__main__':main()

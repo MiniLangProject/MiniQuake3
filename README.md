@@ -54,7 +54,7 @@ Maschinengewehr. Dieser Entwicklungsaufruf verarbeitet statische Weltkollision.
 Die dynamische Kollisionsschicht, geometrische Trigger-Abfrage, Sprungpads und
 Teleport-Zustandswechsel haben eigene Replays gegen den Originalcode. Hinzu kommen
 der vollständige `entityState_t`-Speicherdatensatz, Ereignis-Entities und deren Platzverwaltung.
-Vollständige Spielserver-Frames, tatsächliche Item-/ClientSpawn-Pfade und Grafik bleiben offen:
+Vollständige Spielserver-Frames, Item-Aufnahme, `ClientSpawn` und Grafik bleiben offen:
 
 ```powershell
 python scripts/test_shared_game.py
@@ -70,6 +70,7 @@ python scripts/test_missiles.py --data-root D:/Quake3
 python scripts/test_bodies.py --data-root D:/Quake3
 python scripts/test_scores.py
 python scripts/test_deaths.py
+python scripts/test_items.py
 python scripts/test_spawn.py D:/Quake3
 ```
 
@@ -87,15 +88,16 @@ führen inzwischen ebenfalls ihre ursprünglichen Serverregeln aus.
 Die [Schadensberechnung](docs/COMBAT.md) ergänzt Rüstung, Rückstoß, Teamschutz,
 Battlesuit, CTF-Trägerdaten, Sichtlinien und Radius-Schaden sowie `trigger_hurt`,
 `target_kill` und `target_laser`; Telefrags sind
-damit verbunden. Weitere Klassen, tatsächliche Item-Spawns und vollständige
-Serverframes bleiben offen.
+damit verbunden. Weitere Klassen, Item-Aufnahme und vollständige Serverframes
+bleiben offen.
 [Projektile und Shooter](docs/MISSILES.md) ergänzen Raketen, Granaten, Plasma,
 BFG, Grappling-Hook und drei schießende Kartenobjekte mit echter Server-Kollision.
 [Spawnpunkte und Leichen](docs/PLAYER_LIFECYCLE.md) ergänzen Deathmatch-/CTF-/
 Zuschauer-Auswahl, Leichen-Warteschlange, Gibs und Leichenphysik.
 [Spieler-Tod und Team-Boni](docs/DEATHS.md) verbinden Schaden, Scores, Hooks,
-Flaggenentscheidungen, Todesanimationen und den Respawn-Wrapper; tatsächliche
-Item-Entities und `ClientSpawn` bleiben sichtbare Integrationsgrenzen.
+Flaggenentscheidungen, Todesanimationen und den Respawn-Wrapper. [Items und
+Flaggen](docs/ITEMS.md) ergänzen Karten- und Drop-Entities, Respawn, Physik sowie
+Flaggenrückgabe; `Touch_Item` und `ClientSpawn` bleiben sichtbare Grenzen.
 [Punkte, Ranglisten und Scoreboards](docs/SCORES.md) sowie Sudden Death,
 Matchlimits und Bereitschaftsregeln sind gegen C geprüft und in `player_die`
 eingebunden. Netzwerkübertragung und tatsächliche Kartenwechsel bleiben offen.

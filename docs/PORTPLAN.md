@@ -162,12 +162,12 @@ gegen C geprüft und mit Telefrags verbunden. `CanDamage`, `G_RadiusDamage`,
 siehe [Schaden](COMBAT.md).
 Target-Ketten, Shader-Remaps und die Entity-Schleife mit Ereignisfreigabe sind
 gegen den Originalcode geprüft; siehe [Targets und Ereignisse](TARGETS_AND_EVENTS.md).
-`G_RunThink` und die spätere Sprungpad-Ausrichtung sind enthalten. Die 14 weiteren
-Klassen und tatsächlichen Item-Spawns bleiben ausdrücklich offene Aufrufgrenzen;
-siehe [SPAWNING.md](SPAWNING.md). Als Nächstes folgen diese Spielobjekte, die
-Einbindung in vollständige Serverframes, `ClientSpawn`, weitere Waffentreffer,
-Waffenfeuer und Mover-Pushing. Der vollständige Server bleibt bis zu dieser
-Integration offen.
+`G_RunThink` und die spätere Sprungpad-Ausrichtung sind enthalten. Alle 35
+Karten-Items werden inzwischen als echte Entities angelegt; die 14 weiteren
+Klassen bleiben ausdrücklich offene Aufrufgrenzen; siehe [SPAWNING.md](SPAWNING.md).
+Als Nächstes folgen Item-Aufnahme, diese Spielobjekte, die Einbindung in
+vollständige Serverframes, `ClientSpawn`, weitere Waffentreffer, Waffenfeuer und
+Mover-Pushing. Der vollständige Server bleibt bis zu dieser Integration offen.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
 Shooter-Objekte sind jetzt gegen C geprüft; siehe [Projektile](MISSILES.md). Die
@@ -177,10 +177,10 @@ Deathmatch-/CTF-/Zuschauerpositionen, acht Leichenplätze, Gibs und Leichenphysi
 [Punktevergabe, Ranglisten, Scoreboards und Matchende-Regeln](SCORES.md) sind
 inzwischen ebenfalls gegen C geprüft. [`player_die`, Team-Fragboni,
 Drop-Entscheidungen und der Respawn-Wrapper](DEATHS.md) verbinden diese Bausteine
-nun mit realer Kollision, PVS, Hook- und Leichenverwaltung. `Drop_Item`,
-`Team_ReturnFlag`, `PrintMsg` und `ClientSpawn` sind dabei als beobachtete
-Integrationsgrenzen festgehalten. Als Nächstes folgen die tatsächlichen Item-/
-Flag-Entities und `ClientSpawn`, anschließend weitere Waffenpfade. Im Callback freigegebene
+nun mit realer Kollision, PVS, Hook- und Leichenverwaltung. [Karten-/Drop-Items,
+Respawn, Physik und Flaggenrückgabe](ITEMS.md) laufen als echte Entities.
+`Touch_Item`, `PrintMsg` und `ClientSpawn` sind die nächsten Grenzen; anschließend
+folgen weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.
 

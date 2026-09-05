@@ -16,6 +16,7 @@ import mq3.game.shooters as shooters
 import mq3.game.bodies as bodies
 import mq3.game.scores as scores
 import mq3.game.deaths as deaths
+import mq3.game.items as items
 import mq3.game.team_bonuses as teamBonuses
 import mq3.game.rank_sort as rankSort
 import mq3.game.player_spawns as playerSpawns
@@ -39,6 +40,7 @@ struct Check
   bodies
   scores
   deaths
+  items
 end struct
 function checkWord(check,value)
   if check.offset+4 > len(check.expected) then return error(490,"Unexpected spawn output") end if
@@ -544,6 +546,7 @@ function checkCombatState(level,index)
   checkBodyState(level)
   checkScoreState(level)
   checkDeathState(level)
+  checkItemState(level)
   return void
 end function
 function recordCombatTrace(level,start,finish,mins,maxs,passEntity,mask,hit)
@@ -675,7 +678,8 @@ function runCombatActions(level,input,check)
         funcs.setBrushModel(level,ent,"*"+str(command[2]))
       end case
       case default
-        if check.deaths and command[0] >= 80 then runDeathAction(level,command)
+        if check.items and command[0] >= 91 then runItemAction(level,command,check)
+        else if check.deaths and command[0] >= 80 then runDeathAction(level,command)
         else if check.scores then runScoreAction(level,command)
         else if check.bodies then runBodyAction(level,command)
         else runMissileAction(level,command) end if
@@ -683,7 +687,7 @@ function runCombatActions(level,input,check)
     end switch
     checkCombatState(level,index); index = index+1
   end while
-  if check.missiles or check.bodies then checkWords(check,[37,game.random(level)]) end if
+  if check.missiles or check.bodies or check.items then checkWords(check,[37,game.random(level)]) end if
   print "PASS: "+str(index)+" combat/hazard actions"
   return void
 end function
@@ -889,10 +893,11 @@ function runSpawnContracts(level)
   caught = try(spawn.newString("tail\\")); requireSpawnContract(caught is error,"trailing escape")
   caught = try(spawn.load(s)); requireSpawnContract(caught is error,"empty map")
   other = spawn.create(level,"{ classname info_null }"); caught = try(spawn.load(other)); requireSpawnContract(caught is error,"first worldspawn")
-  level.spawner = s; ent.classname = "item_quad"; caught = try(spawn.callSpawn(s,ent)); requireSpawnContract(caught is error,"unported item")
+  level.spawner = s; ent.classname = "item_quad"; requireSpawnContract(spawn.callSpawn(s,ent) and ent.item == 28 and ent.think == items.finishSpawning and ent.nextthink == level.time+200,"item spawn dispatch")
   ent.classname = "func_door"; caught = try(spawn.callSpawn(s,ent)); requireSpawnContract(caught is error,"unported class")
   ent.classname = void; requireSpawnContract(not spawn.callSpawn(s,ent),"NULL classname")
   ent.classname = "INFO_PLAYER_START"; requireSpawnContract(not spawn.callSpawn(s,ent),"case-sensitive class")
+  ent.think = void; ent.item = void
   ent.nextthink = 1000; level.time = 1000; caught = try(funcs.runThink(level,ent)); requireSpawnContract(caught is error and ent.nextthink == 0,"missing due thinker")
   ent.nextthink = 1001; funcs.runThink(level,ent); requireSpawnContract(ent.nextthink == 1001,"future thinker")
   ent.nextthink = 0; funcs.runThink(level,ent); requireSpawnContract(ent.nextthink == 0,"disabled thinker")
@@ -1129,13 +1134,6 @@ function recordScoreTransition(level,kind)
   if level.entities[1022].count == 2 and kind == 2 then level.intermissiontime = 0 end if
   return void
 end function
-function recordDeathDrop(level,self,item,angle)
-  checkWords(level.context,[47,self.slot,item]); checkReal(level.context,angle)
-  drop = game.spawn(level); drop.s.modelindex = item; return drop
-end function
-function recordFlagReturn(level,team)
-  checkWords(level.context,[48,team]); return void
-end function
 function recordTeamMessage(level,slot,message)
   checkWords(level.context,[49,slot]); checkString(level.context,message); return void
 end function
@@ -1170,6 +1168,142 @@ function checkDeathState(level)
     checkReal(check,cl.lastfraggedcarrier)
     checkWords(check,[cl.fragcarrier,cl.carrierdefense,cl.basedefense,actionSlot(cl.hook),die,actionSlot(ent.enemy)])
   end for
+  return void
+end function
+function checkItemState(level)
+  check = level.context
+  if not check.items then return void end if
+  checkWords(check,[52,level.redFlagStatus,level.blueFlagStatus,level.neutralFlagStatus]); checkString(check,level.spawner.configstrings[23])
+  checkWord(check,level.num_entities-64)
+  i = 64
+  while i < level.num_entities
+    ent = level.entities[i]; item = -1
+    if ent.item != void then item = ent.item end if
+    checkWords(check,[i,item,actionSlot(ent.teammaster),actionSlot(ent.teamchain)])
+    i = i+1
+  end while
+  return void
+end function
+function runItemAction(level,a,check)
+  ent = void
+  if a[1] >= 0 and a[1] < 1024 then ent = level.entities[a[1]] end if
+  switch a[0]
+    case 91
+      level.spawner.gametype = a[1]; level.time = a[2]; level.previousTime = a[3]
+      level.redFlagStatus = a[4]; level.blueFlagStatus = a[5]; level.neutralFlagStatus = a[6]
+    end case
+    case 92
+      if a[1] >= level.num_entities then
+        created = game.spawn(level)
+        if created != ent then return error(490,"Non-sequential item test slot") end if
+      else game.initEntity(ent) end if
+      ent.item = a[2]; ent.classname = items.itemName(a[2]); ent.flags = a[3]
+      ent.s.eType = 2; ent.s.modelindex = a[2]; ent.s.modelindex2 = boolean((a[3] & 0x1000) != 0); ent.physicsBounce = n.bitsFloat(a[10])
+      ent.r.mins = [-15.0,-15.0,-15.0]; ent.r.maxs = [15.0,15.0,15.0]; ent.r.contents = 0x40000000; ent.touch = items.touch
+      ent.s.pos.trBase = [n.bitsFloat(a[4]),n.bitsFloat(a[5]),n.bitsFloat(a[6])]; ent.r.currentOrigin = movement.copy(ent.s.pos.trBase)
+      if a[11] != 0 then game.link(level,ent) end if
+    end case
+    case 93
+      created = items.launch(level,a[1],[n.bitsFloat(a[2]),n.bitsFloat(a[3]),n.bitsFloat(a[4])],[n.bitsFloat(a[5]),n.bitsFloat(a[6]),n.bitsFloat(a[7])])
+      checkWords(check,[53,created.slot])
+    end case
+    case 94
+      created = items.drop(level,ent,a[2],n.bitsFloat(a[3])); checkWords(check,[53,created.slot])
+    end case
+    case 95
+      items.respawn(level,ent)
+    end case
+    case 96
+      items.checkDropped(level,ent)
+    end case
+    case 97
+      created = items.resetFlag(level,a[1]); checkWords(check,[54,actionSlot(created)])
+    end case
+    case 98
+      items.returnFlag(level,a[1])
+    end case
+    case 99
+      items.teamFree(level,ent)
+    end case
+    case 100
+      items.droppedFlagThink(level,ent)
+    end case
+    case 101
+      items.run(level,ent)
+    end case
+    case 102
+      switch a[2]
+        case 0
+          if a[3] < 0 then ent.item = void else ent.item = a[3] end if
+        end case
+        case 1
+          ent.physicsBounce = n.bitsFloat(a[3])
+        end case
+        case 2
+          ent.s.groundEntityNum = a[3]
+        end case
+        case 3
+          ent.clipmask = a[3]
+        end case
+        case 4
+          ent.s.pos.trType = a[3]
+        end case
+        case 5
+          ent.s.pos.trTime = a[3]
+        end case
+        case 6
+          ent.flags = a[3]
+        end case
+        case 7
+          ent.r.contents = a[3]
+        end case
+        case 8
+          if a[3] < 0 then ent.teammaster = void else ent.teammaster = level.entities[a[3]] end if
+        end case
+        case 9
+          if a[3] < 0 then ent.teamchain = void else ent.teamchain = level.entities[a[3]] end if
+        end case
+        case 10
+          if a[3] == 0 then ent.team = void else ent.team = "group" end if
+        end case
+        case 11
+          ent.r.ownerNum = a[3]
+        end case
+        case 12
+          ent.nextthink = a[3]
+        end case
+        case 13
+          ent.s.eFlags = a[3]
+        end case
+        case 14
+          ent.r.svFlags = a[3]
+        end case
+        case 15
+          ent.speed = n.bitsFloat(a[3])
+        end case
+      end switch
+    end case
+    case 103
+      vector = [n.bitsFloat(a[3]),n.bitsFloat(a[4]),n.bitsFloat(a[5])]
+      if a[2] == 0 then ent.s.pos.trBase = vector
+      else if a[2] == 1 then ent.s.apos.trBase = vector
+      else if a[2] == 2 then ent.s.pos.trDelta = vector
+      else if a[2] == 3 then ent.r.currentOrigin = vector
+      else return error(490,"Unknown item vector") end if
+    end case
+    case 104
+      frame.runEntities(level)
+    end case
+    case 105
+      items.spawnItem(level,ent,a[2])
+    end case
+    case 106
+      items.finishSpawning(level,ent)
+    end case
+    case default
+      return error(490,"Unknown item command")
+    end case
+  end switch
   return void
 end function
 function runDeathAction(level,a)
@@ -1550,8 +1684,9 @@ function runDeathContracts(level)
   requireSpawnContract(level.deathAnimIndex == 0 and level.itemDropFn == void and level.flagReturnFn == void and level.teamMessageFn == void and level.clientSpawnFn == void,"death boundaries initialize explicitly")
   requireSpawnContract(deaths.weaponItem(3) == 9 and deaths.weaponItem(4) == 11 and deaths.weaponItem(10) == 17 and deaths.powerupItem(1) == 28 and deaths.powerupItem(8) == 35,"baseq3 item mappings")
   ent = game.initEntity(level.entities[0]); game.bindClient(level,ent,cl); deaths.tossClientItems(level,ent)
-  ent.s.weapon = 5; cl.ps.ammo[5] = 1; caught = try(deaths.tossClientItems(level,ent)); requireSpawnContract(caught is error,"weapon drop requires explicit sink")
-  caught = try(deaths.returnFlag(level,1)); requireSpawnContract(caught is error,"flag return requires explicit sink")
+  ent.s.weapon = 5; cl.ps.ammo[5] = 1; deaths.tossClientItems(level,ent); dropped = level.entities[64]
+  requireSpawnContract(dropped.inuse and dropped.s.eType == 2 and dropped.item == 12 and dropped.classname == "weapon_rocketlauncher","weapon death drop creates an item entity")
+  caught = try(deaths.returnFlag(level,1)); requireSpawnContract(caught is error,"flag return requires PrintMsg delivery")
   target = game.initEntity(level.entities[1]); game.bindClient(level,target,game.createClient(ps.create(),1,[0,0,0])); target.client.ps.powerups[8] = 1
   attacker = game.initEntity(level.entities[2]); game.bindClient(level,attacker,game.createClient(ps.create(),2,[0,0,0])); level.spawner.warmupTime = 1
   caught = try(teamBonuses.fragBonuses(level,target,void,attacker)); requireSpawnContract(caught is error,"team PrintMsg requires explicit sink")
@@ -1559,10 +1694,24 @@ function runDeathContracts(level)
   print "PASS: 8 death lifecycle runtime contracts"
   return void
 end function
+function runItemContracts(level)
+  s = spawn.create(level,""); ent = game.initEntity(level.entities[64])
+  requireSpawnContract(ent.item == void and ent.teammaster == void and ent.teamchain == void,"item entity references initialize explicitly")
+  requireSpawnContract(level.redFlagStatus == 0 and level.blueFlagStatus == 0 and level.neutralFlagStatus == 0,"flag statuses initialize at base")
+  caught = try(items.itemName(0)); requireSpawnContract(caught is error,"item zero is not a spawnable baseq3 item")
+  caught = try(items.launch(level,36,[0.0,0.0,0.0],[0.0,0.0,0.0])); requireSpawnContract(caught is error,"out-of-range item rejects")
+  caught = try(items.respawn(level,ent)); requireSpawnContract(caught is error,"respawn requires an item descriptor")
+  ent.item = 12; ent.team = "group"; caught = try(items.respawn(level,ent)); requireSpawnContract(caught is error,"teamed item requires a master")
+  caught = try(items.setFlagStatus(level,1,5)); requireSpawnContract(caught is error,"invalid flag status rejects")
+  ent.item = 12; game.free(level,ent); requireSpawnContract(ent.item == void and ent.teammaster == void and ent.teamchain == void,"free clears item references")
+  print "PASS: 8 item/flag runtime contracts"
+  return void
+end function
 function main(args)
   world = cm.loadWorld(fs.readAllBytes(args[0]),args[3] == "0")
-  input = fs.readAllBytes(args[1]); check = Check(fs.readAllBytes(args[2]),0,0,0,0,0,false,false,false,false); level = game.create(world)
+  input = fs.readAllBytes(args[1]); check = Check(fs.readAllBytes(args[2]),0,0,0,0,0,false,false,false,false,false); level = game.create(world)
   level.time = 1000; level.startTime = 1000
+  if len(args) > 4 and args[4] == "--item-contracts" then runItemContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--death-contracts" then runDeathContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--score-contracts" then runScoreContracts(level); return 0 end if
   if len(args) > 4 and args[4] == "--body-contracts" then runBodyContracts(level); return 0 end if
@@ -1588,10 +1737,11 @@ function main(args)
     end while
   else if len(args) > 4 and args[4] == "--actions" then
     runTargetActions(level,input,check)
-  else if len(args) > 4 and (args[4] == "--combat" or args[4] == "--missiles" or args[4] == "--bodies" or args[4] == "--scores" or args[4] == "--deaths") then
-    check.missiles = args[4] == "--missiles"; check.bodies = args[4] == "--bodies"; check.deaths = args[4] == "--deaths"; check.scores = args[4] == "--scores" or check.deaths
+  else if len(args) > 4 and (args[4] == "--combat" or args[4] == "--missiles" or args[4] == "--bodies" or args[4] == "--scores" or args[4] == "--deaths" or args[4] == "--items") then
+    check.missiles = args[4] == "--missiles"; check.bodies = args[4] == "--bodies"; check.deaths = args[4] == "--deaths"; check.items = args[4] == "--items"; check.scores = args[4] == "--scores" or check.deaths
     if check.scores then level.serverCommandFn = recordScoreMessage; level.gameLogFn = recordScoreLog; level.matchTransitionFn = recordScoreTransition; level.runEntityFn = actionRun end if
-    if check.deaths then level.itemDropFn = recordDeathDrop; level.flagReturnFn = recordFlagReturn; level.teamMessageFn = recordTeamMessage; level.clientSpawnFn = recordClientSpawn end if
+    if check.deaths then level.teamMessageFn = recordTeamMessage; level.clientSpawnFn = recordClientSpawn end if
+    if check.items then level.teamMessageFn = recordTeamMessage end if
     runCombatActions(level,input,check)
   else if len(args) > 4 and args[4] == "--values" then
     off = 0; count = 0

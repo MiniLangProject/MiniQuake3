@@ -4,7 +4,7 @@ Dieser Abschnitt von Schritt 6 überträgt die ursprünglichen Baseq3-Regeln fü
 Punktevergabe, Client-Rangfolge, Scoreboard-Nachrichten und Matchende-Entscheidungen.
 Die Funktionen laufen in MiniLang; unveränderte C-Funktionskörper liefern die
 Vergleichsergebnisse. Die Einbindung in [`player_die`](DEATHS.md) ist inzwischen
-ebenfalls exakt verglichen. Vollständige Item-Entities, Client-/Server-Frames,
+ebenfalls exakt verglichen. Item-Aufnahme, Client-/Server-Frames,
 Netzwerktransport und tatsächliche Kartenwechsel bleiben offen.
 
 ## Schnittstellen und Originalfunktionen

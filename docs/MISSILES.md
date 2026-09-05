@@ -75,8 +75,8 @@ Ziel, sofern ein Target-Feld vorhanden ist. Ihre Streuung benutzt die ursprüngl
 Windows-Zufallsfolge, `PerpendicularVector`, `CrossProduct` und die genaue Folge
 der Float-/Double-Rechnungen. Jeder Use-Aufruf erzeugt das passende Projektil und
 ein Feuerereignis. Die Waffen-Item-Suche und `RegisterItem` setzen die ursprünglichen
-Registrierungsbits. Vollständige Item-Spawns, `SaveRegisteredItems` und die
-clientseitige Vorabladung sind damit noch nicht umgesetzt.
+Registrierungsbits. Karten- und Drop-Items sind inzwischen portiert;
+`SaveRegisteredItems` und die clientseitige Vorabladung fehlen noch.
 
 ## Vergleich und Grenzen
 
@@ -113,7 +113,7 @@ und Signaling-NaNs sind weiterhin kein vollständig geprüfter Eingabeumfang.
 
 `player_die` räumt den portierten Grappling-Hook inzwischen über diesen Pfad auf;
 siehe [DEATHS.md](DEATHS.md). Offen bleiben vollständiges Spieler-Waffenfeuer,
-Hitscan-Waffen, tatsächliche Item-Spawns, `ClientSpawn`, Mover-Pushing,
+Hitscan-Waffen, Item-Aufnahme, `ClientSpawn`, Mover-Pushing,
 Missionpack-Projektile und die vollständige Server-/Clientintegration. Summen und Binary-Hashes stehen im
 [Prüfbericht](PARITY_AUDIT.md).
 

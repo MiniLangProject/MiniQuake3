@@ -8,6 +8,7 @@ import mq3.game.events as events
 import mq3.game.scores as scores
 import mq3.game.bodies as bodies
 import mq3.game.missiles as missiles
+import mq3.game.items as items
 import mq3.game.team_bonuses as bonuses
 import mq3.game.movement as movement
 import mq3.server.world as sv
@@ -74,8 +75,8 @@ function powerupItem(powerup)
   return -1
 end function
 function dropItem(level,self,item,angle)
-  if level.itemDropFn == void then return error(496,"TossClientItems requires a Drop_Item sink") end if
-  return level.itemDropFn(level,self,item,angle)
+  if level.itemDropFn != void then return level.itemDropFn(level,self,item,angle) end if
+  return items.drop(level,self,item,angle)
 end function
 function tossClientItems(level,self)
   if self.client == void then return error(496,"TossClientItems requires a client") end if
@@ -105,8 +106,8 @@ function tossClientItems(level,self)
   return void
 end function
 function returnFlag(level,team)
-  if level.flagReturnFn == void then return error(496,"Flag return requires a Team_ReturnFlag sink") end if
-  level.flagReturnFn(level,team); return void
+  if level.flagReturnFn != void then level.flagReturnFn(level,team); return void end if
+  return items.returnFlag(level,team)
 end function
 function returnCarriedFlag(level,self,clear)
   ps = self.client.ps

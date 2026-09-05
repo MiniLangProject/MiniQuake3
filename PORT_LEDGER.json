@@ -5164,7 +5164,8 @@
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -5177,7 +5178,8 @@
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -5190,7 +5192,8 @@
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -5203,7 +5206,8 @@
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -5216,7 +5220,8 @@
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -5229,7 +5234,8 @@
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -5242,7 +5248,8 @@
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -5255,7 +5262,8 @@
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -5268,7 +5276,8 @@
             "src/mq3/game/trajectory.ml",
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         }
@@ -5280,7 +5289,8 @@
         "src/mq3/game/trajectory.ml",
         "src/mq3/game/jumppad.ml",
         "src/mq3/game/snapshot.ml",
-        "src/mq3/game/shooters.ml"
+        "src/mq3/game/shooters.ml",
+        "src/mq3/game/items.ml"
       ],
       "status": "partial",
       "tests": [
@@ -5289,7 +5299,8 @@
         "scripts/test_shared_game.py",
         "scripts/test_server_world.py",
         "scripts/test_entitystate.py",
-        "scripts/test_missiles.py"
+        "scripts/test_missiles.py",
+        "scripts/test_items.py"
       ]
     },
     {
@@ -6352,7 +6363,7 @@
             "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 death lifecycle with actual score, body, hook, collision and PVS integration. Drop_Item, Team_ReturnFlag, PrintMsg and ClientSpawn are explicit observed callbacks; no Missionpack or complete client/server frame."
+          "scope": "Baseq3 death lifecycle with actual score, body, hook, collision, PVS, Drop_Item and Team_ReturnFlag integration. PrintMsg and ClientSpawn remain explicit observed callbacks; no Missionpack or complete client/server frame."
         },
         {
           "original": "CheckAlmostCapture",
@@ -6363,7 +6374,7 @@
             "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 death lifecycle with actual score, body, hook, collision and PVS integration. Drop_Item, Team_ReturnFlag, PrintMsg and ClientSpawn are explicit observed callbacks; no Missionpack or complete client/server frame."
+          "scope": "Baseq3 death lifecycle with actual score, body, hook, collision, PVS, Drop_Item and Team_ReturnFlag integration. PrintMsg and ClientSpawn remain explicit observed callbacks; no Missionpack or complete client/server frame."
         },
         {
           "original": "CheckAlmostScored",
@@ -6374,7 +6385,7 @@
             "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 death lifecycle with actual score, body, hook, collision and PVS integration. Drop_Item, Team_ReturnFlag, PrintMsg and ClientSpawn are explicit observed callbacks; no Missionpack or complete client/server frame."
+          "scope": "Baseq3 death lifecycle with actual score, body, hook, collision, PVS, Drop_Item and Team_ReturnFlag integration. PrintMsg and ClientSpawn remain explicit observed callbacks; no Missionpack or complete client/server frame."
         },
         {
           "original": "player_die",
@@ -6385,7 +6396,7 @@
             "src/mq3/game/deaths.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 death lifecycle with actual score, body, hook, collision and PVS integration. Drop_Item, Team_ReturnFlag, PrintMsg and ClientSpawn are explicit observed callbacks; no Missionpack or complete client/server frame."
+          "scope": "Baseq3 death lifecycle with actual score, body, hook, collision, PVS, Drop_Item and Team_ReturnFlag integration. PrintMsg and ClientSpawn remain explicit observed callbacks; no Missionpack or complete client/server frame."
         }
       ],
       "target": [
@@ -6435,38 +6446,113 @@
           "original": "RegisterItem",
           "target_files": [
             "src/mq3/game/shooters.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Item registration bitset only. Item spawning, pickup, ClearRegisteredItems, SaveRegisteredItems and client precaching remain open."
+          "scope": "Baseq3 item registration bitset, used by shooters and actual map-item spawning. ClearRegisteredItems, SaveRegisteredItems and client precaching remain open."
         },
         {
           "original": "G_BounceItem",
           "target_files": [
             "src/mq3/game/shooters.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Full G_BounceItem arithmetic and stop rules; exercised by corpse physics."
+          "scope": "Actual dropped-item physics, collision, no-drop and frame dispatch are compared. The body suite separately covers the non-item corpse branch. Touch_Item remains open."
         },
         {
           "original": "G_RunItem",
           "target_files": [
             "src/mq3/game/shooters.ml",
-            "src/mq3/game/bodies.ml"
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Non-item body queue path only, with actual SV/CM, think/link ordering and no-drop removal. Item and team-item lifecycle remain open; native dispatcher accepts bodyque entities only."
+          "scope": "Actual dropped-item physics, collision, no-drop and frame dispatch are compared. The body suite separately covers the non-item corpse branch. Touch_Item remains open."
+        },
+        {
+          "original": "RespawnItem",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
+        },
+        {
+          "original": "LaunchItem",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
+        },
+        {
+          "original": "Drop_Item",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
+        },
+        {
+          "original": "Use_Item",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
+        },
+        {
+          "original": "FinishSpawningItem",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
+        },
+        {
+          "original": "G_ItemDisabled",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
+        },
+        {
+          "original": "G_SpawnItem",
+          "target_files": [
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
         }
       ],
       "target": [
         "src/mq3/game/shooters.ml",
-        "src/mq3/game/bodies.ml"
+        "src/mq3/game/bodies.ml",
+        "src/mq3/game/items.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_missiles.py",
-        "scripts/test_bodies.py"
+        "scripts/test_bodies.py",
+        "scripts/test_items.py"
       ]
     },
     {
@@ -6485,7 +6571,8 @@
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/deaths.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -6499,7 +6586,8 @@
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/deaths.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -6513,7 +6601,8 @@
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/deaths.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -6527,7 +6616,8 @@
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/scores.ml",
             "src/mq3/game/deaths.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         }
@@ -6540,7 +6630,8 @@
         "src/mq3/game/player_spawns.ml",
         "src/mq3/game/scores.ml",
         "src/mq3/game/deaths.ml",
-        "src/mq3/game/team_bonuses.ml"
+        "src/mq3/game/team_bonuses.ml",
+        "src/mq3/game/items.ml"
       ],
       "status": "partial",
       "tests": [
@@ -6551,7 +6642,8 @@
         "scripts/test_combat.py",
         "scripts/test_bodies.py",
         "scripts/test_scores.py",
-        "scripts/test_deaths.py"
+        "scripts/test_deaths.py",
+        "scripts/test_items.py"
       ]
     },
     {
@@ -6606,7 +6698,8 @@
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
-            "src/mq3/game/rank_sort.ml"
+            "src/mq3/game/rank_sort.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -6619,10 +6712,11 @@
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
-            "src/mq3/game/rank_sort.ml"
+            "src/mq3/game/rank_sort.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Allocated-entity loop with implemented missile and body-queue corpse physics dispatch; other item/physics/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
+          "scope": "Allocated-entity loop with implemented missile, item and body-queue corpse physics dispatch; other physics/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
         },
         {
           "original": "FindIntermissionPoint",
@@ -6633,7 +6727,8 @@
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
-            "src/mq3/game/rank_sort.ml"
+            "src/mq3/game/rank_sort.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -6646,7 +6741,8 @@
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
-            "src/mq3/game/rank_sort.ml"
+            "src/mq3/game/rank_sort.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
@@ -6660,7 +6756,8 @@
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
-            "src/mq3/game/rank_sort.ml"
+            "src/mq3/game/rank_sort.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions; map transitions remain callbacks."
@@ -6674,7 +6771,8 @@
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
-            "src/mq3/game/rank_sort.ml"
+            "src/mq3/game/rank_sort.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -6687,7 +6785,8 @@
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
-            "src/mq3/game/rank_sort.ml"
+            "src/mq3/game/rank_sort.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -6700,7 +6799,8 @@
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
-            "src/mq3/game/rank_sort.ml"
+            "src/mq3/game/rank_sort.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
@@ -6714,7 +6814,8 @@
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
-            "src/mq3/game/rank_sort.ml"
+            "src/mq3/game/rank_sort.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
@@ -6728,7 +6829,8 @@
             "src/mq3/game/player_spawns.ml",
             "src/mq3/game/bodies.ml",
             "src/mq3/game/scores.ml",
-            "src/mq3/game/rank_sort.ml"
+            "src/mq3/game/rank_sort.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. BeginIntermission/ExitLevel remain explicit callbacks. No log-file timestamp/write, actual map switch or network delivery."
@@ -6741,7 +6843,8 @@
         "src/mq3/game/player_spawns.ml",
         "src/mq3/game/bodies.ml",
         "src/mq3/game/scores.ml",
-        "src/mq3/game/rank_sort.ml"
+        "src/mq3/game/rank_sort.ml",
+        "src/mq3/game/items.ml"
       ],
       "status": "partial",
       "tests": [
@@ -6750,7 +6853,8 @@
         "scripts/test_targets.py",
         "scripts/test_missiles.py",
         "scripts/test_bodies.py",
-        "scripts/test_scores.py"
+        "scripts/test_scores.py",
+        "scripts/test_items.py"
       ]
     },
     {
@@ -7199,7 +7303,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7209,7 +7314,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7219,7 +7325,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7229,7 +7336,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7239,7 +7347,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7249,7 +7358,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7259,7 +7369,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7269,7 +7380,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7279,7 +7391,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7289,7 +7402,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7299,7 +7413,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7309,7 +7424,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7319,7 +7435,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7329,7 +7446,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7339,7 +7457,8 @@
             "src/mq3/game/spawn.ml",
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml"
+            "src/mq3/compat/textnumbers.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         }
@@ -7348,12 +7467,14 @@
         "src/mq3/game/spawn.ml",
         "src/mq3/game/spawn_tables.ml",
         "src/mq3/game/spawn_values.ml",
-        "src/mq3/compat/textnumbers.ml"
+        "src/mq3/compat/textnumbers.ml",
+        "src/mq3/game/items.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_spawn_values.py",
-        "scripts/test_spawn.py"
+        "scripts/test_spawn.py",
+        "scripts/test_items.py"
       ]
     },
     {
@@ -7870,7 +7991,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7880,7 +8002,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7890,7 +8013,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7900,7 +8024,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7910,7 +8035,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7920,7 +8046,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7930,7 +8057,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7940,7 +8068,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
         },
@@ -7950,7 +8079,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 team frag bonuses, including native carrier-defense vector reuse, actual scores and SV_inPVS; PrintMsg delivery is an observed callback."
@@ -7961,7 +8091,8 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 team frag bonuses, including native carrier-defense vector reuse, actual scores and SV_inPVS; PrintMsg delivery is an observed callback."
@@ -7972,24 +8103,111 @@
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/combat.ml",
             "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/team_bonuses.ml"
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 team frag bonuses, including native carrier-defense vector reuse, actual scores and SV_inPVS; PrintMsg delivery is an observed callback."
+        },
+        {
+          "original": "Team_SetFlagStatus",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
+        },
+        {
+          "original": "Team_CheckDroppedItem",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
+        },
+        {
+          "original": "Team_ResetFlag",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
+        },
+        {
+          "original": "Team_ReturnFlagSound",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
+        },
+        {
+          "original": "Team_ReturnFlag",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
+        },
+        {
+          "original": "Team_FreeEntity",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
+        },
+        {
+          "original": "Team_DroppedFlagThink",
+          "target_files": [
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/player_spawns.ml",
+            "src/mq3/game/team_bonuses.ml",
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
         }
       ],
       "target": [
         "src/mq3/game/spawn_functions.ml",
         "src/mq3/game/combat.ml",
         "src/mq3/game/player_spawns.ml",
-        "src/mq3/game/team_bonuses.ml"
+        "src/mq3/game/team_bonuses.ml",
+        "src/mq3/game/items.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_spawn.py",
         "scripts/test_combat.py",
         "scripts/test_bodies.py",
-        "scripts/test_deaths.py"
+        "scripts/test_deaths.py",
+        "scripts/test_items.py"
       ]
     },
     {

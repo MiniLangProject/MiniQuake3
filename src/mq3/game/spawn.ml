@@ -8,6 +8,7 @@ import mq3.game.spawn_tables as tables
 import mq3.game.spawn_functions as functions
 import mq3.game.spawn_values as values
 import mq3.game.movement as movement
+import mq3.game.items as gameItems
 import mq3.shared.parser as parser
 import mq3.qcommon.cvar as cv
 import mq3.compat.textnumbers as textnum
@@ -206,8 +207,7 @@ function callSpawn(state,ent)
   items = tables.items(); index = 1
   while index < len(items)
     if items[index] == ent.classname then
-      if state.unportedFn == void then return error(486,"G_SpawnItem not yet ported: "+ent.classname) end if
-      state.unportedFn(state,ent,1,index); return true
+      gameItems.spawnItem(state.level,ent,index); return true
     end if
     index = index+1
   end while

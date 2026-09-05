@@ -82,4 +82,4 @@ Spawn-Klassen aus. Sie ergänzt die oben beschriebenen direkten Übergangstests 
 geladene Trigger, verzögerte Sprungpad-Ausrichtung und anschließende Kontakte.
 Die [Target-/Ereignisprüfung](TARGETS_AND_EVENTS.md) ergänzt verzögerte Aufrufketten,
 Teamfilter und die Freigabe temporärer Ereignisse in der Entity-Schleife.
-Weitere Klassen, Item-Spawns und der vollständige Serverframe bleiben offen.
+Weitere Klassen, Item-Aufnahme und der vollständige Serverframe bleiben offen.

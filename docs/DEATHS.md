@@ -37,22 +37,23 @@ PVS-Prüfung führt echte BSP-Cluster- und Area-Abfragen aus. Der Originalcode
 danach noch den vorherigen Angreifer-zur-Flagge-Vektor. Der Port bildet dieses
 beobachtete Baseq3-Verhalten ausdrücklich nach; ein Testfall sichert es.
 
-## Explizite Integrationsgrenzen
+## Eingebundene Item-Pfade und verbleibende Grenzen
 
 | Callback | Bedeutung |
 | --- | --- |
-| `level.itemDropFn(level, self, itemIndex, angle)` | `Drop_Item`; liefert die erzeugte Entity zurück |
-| `level.flagReturnFn(level, team)` | `Team_ReturnFlag` |
+| `level.itemDropFn(level, self, itemIndex, angle)` | optionaler Test-Override; normal läuft das portierte `Drop_Item` |
+| `level.flagReturnFn(level, team)` | optionaler Test-Override; normal läuft das portierte `Team_ReturnFlag` |
 | `level.teamMessageFn(level, recipient, text)` | formatiertes Nutzargument von `PrintMsg` |
 | `level.clientSpawnFn(level, ent)` | vollständiges `ClientSpawn` |
 
-Diese Grenzen sind absichtlich sichtbar. Der Vergleichshost zeichnet jeden Aufruf
-mit Reihenfolge und Argumenten auf. Er erzeugt für `Drop_Item` eine beobachtbare
-Test-Entity und verändert im `ClientSpawn`-Callback gezielt Position und
+Die Todesprüfung setzt keine Drop-/Flag-Overrides: Waffen, Powerups und Flaggen
+werden als echte portierte Entities angelegt oder zurückgesetzt. Die optionalen
+Felder erlauben weiterhin isolierte Vertragstests. Der Vergleichshost beobachtet
+`PrintMsg` und verändert im `ClientSpawn`-Callback gezielt Position und
 Clientnummer, damit der nachfolgende Teleport-Effekt die Rückgabewerte wirklich
-verwendet. Vollständige Item-Entities, Flag-Reset, Spielerinitialisierung,
-Client-Frames und Netzwerkzustellung folgen in weiteren Abschnitten von Schritt 6
-und 7.
+verwendet. Item-Aufnahme, vollständige Spielerinitialisierung, Client-Frames und
+Netzwerkzustellung folgen in weiteren Abschnitten von Schritt 6 und 7. Details zu
+den Entity-Pfaden stehen unter [Items und Flaggen](ITEMS.md).
 
 ## Nachweis
 
@@ -60,17 +61,18 @@ und 7.
 python scripts/test_deaths.py
 ```
 
-23 Szenarien mit 330 Aktionen vergleichen 3.885.472 32-Bit-Wörter und 40.488
+23 Szenarien mit 330 Aktionen vergleichen 3.887.033 32-Bit-Wörter und 40.921
 String-Bytes exakt. Enthalten sind alle 24 Obituary-Namen und ungültige Indizes,
 Welt-/Nichtclient-/Eigen-/Teamkills, Gauntlet und Excellent an der Zeitgrenze,
 alle Drop-Entscheidungen, Flaggenpriorität, No-Drop, Team-Boni, PVS und Radien,
 Fast-Capture/Scored, drei Todesanimationen, Blut/Gib/Suicide, Hook-Freigabe,
 Zuschauer-Scoreboards, `G_Damage → player_die`, frühe Rückkehr und der
 Respawn-Wrapper. Acht Laufzeitverträge prüfen Initialwerte, Itemtabellen und
-fehlende Callback-Verbindungen.
+fehlende Callback-Verbindungen. Die Drop- und Flaggenfälle vergleichen dabei
+die tatsächlich erzeugten beziehungsweise zurückgesetzten Entities.
 
 Die C-Referenz nutzt die ursprünglichen Funktionen aus `g_combat.c`, `g_team.c`,
 `g_client.c` und `sv_game.c`. Score-, Body-, Entity- und Server-Collision-Code
-laufen auf beiden Seiten wirklich; die vier oben genannten Grenzen bleiben
+laufen auf beiden Seiten wirklich. `PrintMsg` und `ClientSpawn` bleiben
 beobachtete Aufrufe. Missionpack-Pfade und ein vollständiger Matchlauf sind nicht
 Teil dieser Abnahme.

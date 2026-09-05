@@ -59,7 +59,8 @@ Das [Spawn-Parsing](SPAWNING.md) legt inzwischen auch echte Karten-Trigger an un
 richtet Sprungpads verzögert auf ihre Targets aus. Die zusätzliche
 [Schadensprüfung](COMBAT.md) verbindet KillBox/Teleport mit Rüstung, Rückstoß und
 Teamschutz. Die [Spieler-Todesfolge](DEATHS.md) verwendet nun außerdem die echte
-PVS-/Area-Abfrage für Team-Boni. Weitere Spawn-Klassen, tatsächliche Item-Entities,
+PVS-/Area-Abfrage für Team-Boni. Item-Entities verwenden die Kollision inzwischen
+für Drop-Physik und No-Drop-Flächen. Weitere Spawn-Klassen, Item-Aufnahme,
 `ClientSpawn`, Mover-Pushing und vollständige Serverframes bleiben offen;
 siehe [GAME_TRANSITIONS.md](GAME_TRANSITIONS.md).
 

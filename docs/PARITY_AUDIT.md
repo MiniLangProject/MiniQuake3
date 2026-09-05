@@ -4,12 +4,12 @@ Stand: 2026-09-05. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die vollständige erweiterte Regression besteht aktuell aus 36 bestandenen
+Die vollständige erweiterte Regression besteht aktuell aus 37 bestandenen
 Prüfbereichen (`verify.py --data-root D:/Quake3 --extended`), einschließlich
 der Spawnpunkt-/Leichenprüfung, der Punkte-/Ranglisten-/Matchende-Regeln und
-der integrierten Spieler-Todesfolge.
+der integrierten Spieler-Todesfolge sowie der Item-/Flaggen-Entity-Prüfung.
 Der finale MiniQuake3-Build hat SHA-256
-`cf2a3bb81cada592596e46cfd2bd1f9f7fabb76da0ab8bcd0f006641a53f6229`.
+`d52ded2580a8cd25a9227bae7b1284ee874314e8bb00e7a8ec4b24078c1ea6b9`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
 
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
@@ -19,7 +19,7 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, 448 Parseraufrufe, 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung und Sprungpad-/Teleport-Replays geprüft; vollständige Server-/Client-Frames und komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, Leichenverwaltung, Gibs, Leichenphysik, Punktevergabe, Ranglisten, Scoreboard-Texte, Matchende-Entscheidungen, `player_die`, Team-Fragboni, Drop-Entscheidungen und Respawn-Wrapper vorhanden; weitere Klassen, tatsächliche Item-/Flag-Entities, `ClientSpawn`, Mover-Pushing und vollständige Serverframes fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, Entity-Schleife mit Ereignisfreigabe sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, Spawnpunkt-Auswahl, Leichenverwaltung, Gibs, Item-/Leichenphysik, Punktevergabe, Ranglisten, Scoreboard-Texte, Matchende-Entscheidungen, `player_die`, Team-Fragboni, Drop-Entities, Item-Respawn und Flaggenrückgabe vorhanden; weitere Klassen, Item-Aufnahme, `ClientSpawn`, Mover-Pushing und vollständige Serverframes fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -330,12 +330,12 @@ Ein separater C-Lauf bestätigt den Fehler eines fälligen, fehlenden Think-Call
 `test_spawn.py` prüft 168 Karten-/Spielmodus-Replays: alle 31 CD-Karten in den
 fünf Modi FFA, Tournament, Single Player, Team Deathmatch und CTF; zusätzlich
 eine konstruierte Karte mit zehn Moduswerten und drei Schwerkraftvarianten.
-17.390.053 Wörter und 2.136.910 String-Bytes stimmen exakt. Nach 849 Kontaktproben
+16.494.497 Wörter und 2.047.218 String-Bytes stimmen exakt. Nach 849 Kontaktproben
 an tatsächlich geladenen Triggern tragen 754 PlayerStates einen Sprungpad-Merker
 und 139 das Teleport-Bit. Eine Probe kann durch überlappende Trigger beide Merker
 tragen; diese Zahlen zählen Ergebniszustände, nicht die Zahl einzelner Callbacks.
 Feld-, Think- und Kartenprüfung verwenden dasselbe MiniLang-Testbinary
-(`0372d9a721c0fee592e2417d8f8fe019efbb5fc668ed1b3c3b0068887f4ec9c1`).
+(`a3dff0e45f46e2b7cbd950e01c662c65527b002c56880974ddcd9981c0c6ff75`).
 
 34 der 48 Spawn-Klassen führen bereits die übertragenen Originalfunktionen aus.
 Worldspawn-Effekte, alle Spielmodusfilter, die frühe Brush-Modell-Verlinkung,
@@ -344,12 +344,13 @@ Trigger-Kontakten sind enthalten. Einige originale Positions-/CTF-Spawn-Funktion
 sind leer; manche andere geben ihre Entity unmittelbar frei. Die Abnahme bewahrt
 diese Funktionen, ohne damit bereits Spieler-Respawn oder CTF-Regeln zu behaupten.
 
-**Aufrufgrenzen:** 7.804 Item-/Klassenaufrufe werden in diesen Replays nur
-aufgezeichnet. Die 14 noch nicht portierten Klassen und `G_SpawnItem` erzeugen
-keine vereinfachten Ersatzregeln. Ohne gesetzten `unportedFn` bricht MiniLang an
-einer solchen bekannten Klasse kontrolliert ab. Der Testhost stellt Speicher und
-Configstring-/Cvar-Schnittstellen bereit; Netzwerkverteilung, vollständige Frames,
-Item-Initialisierung und Mover-Pushing bleiben offen. Ereignisfreigabe wird in
+**Aufrufgrenzen:** Die 14 noch nicht portierten Klassen werden in diesen Replays
+aufgezeichnet und erzeugen keine vereinfachten Ersatzregeln. Alle 35 Item-Aufrufe
+laufen dagegen durch `G_SpawnItem`; Platzierung und späteres Verhalten prüft die
+gesonderte Item-Suite. Ohne gesetzten `unportedFn` bricht MiniLang an einer noch
+nicht portierten bekannten Klasse kontrolliert ab. Der Testhost stellt Speicher
+und Configstring-/Cvar-Schnittstellen bereit; Netzwerkverteilung, vollständige
+Frames, Item-Aufnahme und Mover-Pushing bleiben offen. Ereignisfreigabe wird in
 der nachfolgend beschriebenen Entity-Schleife geprüft.
 
 Unvollständige Feldvektoren und ein abschließender `G_NewString`-Backslash haben
@@ -392,9 +393,10 @@ Implementierung und Netzwerkverteilung werden noch nicht verglichen.
 Für `frame.runEntities` wird der Entity-Schleifenblock unverändert aus
 `G_RunFrame` extrahiert. Geprüft sind der strikte Ablauf nach mehr als 300 ms,
 Freigabe-/Unlink-Priorität, `neverFree`, ausbleibende Think-Aufrufe für temporäre
-Entities und die Auswahl der weiteren Handler. In diesem Target-Test bleiben die Missile-, Item-, Mover- und Client-Handler
-aufgezeichnete Aufrufgrenzen. Die gesonderte Projektilprüfung führt den
-Missile-Zweig mit der echten portierten Verarbeitung aus. Dies ist
+Entities und die Auswahl der weiteren Handler. In diesem Target-Test bleiben die
+Missile-, Item-, Mover- und Client-Handler aufgezeichnete Aufrufgrenzen. Die
+gesonderten Projektil- und Item-Prüfungen führen ihre jeweiligen Zweige mit der
+echten portierten Verarbeitung aus. Dies ist
 **keine vollständige G_RunFrame-Abnahme**: Cvar-/Zeitverwaltung, ClientEndFrame,
 die Frame-Einbindung der Matchende-Regeln, Votes, `ClientSpawn` und vollständige Serverintegration fehlen.
 Schnittstellen und genaue Grenzen: [TARGETS_AND_EVENTS.md](TARGETS_AND_EVENTS.md).
@@ -487,11 +489,13 @@ von `G_RunItem` mit echtem Server-Trace, Think-/Link-Reihenfolge und Abprall aus
 Die Tests vergleichen auch alle EntityState-Felder, alte Leichengesundheit,
 Ringumlauf, No-Blood/No-Drop, Zufallsendpunkt und signierte Zeitgrenzen.
 
-Test-Binary: `0372d9a721c0fee592e2417d8f8fe019efbb5fc668ed1b3c3b0068887f4ec9c1`. Regeln, Grenzen und Quellzuordnung stehen in
+Test-Binary: `a3dff0e45f46e2b7cbd950e01c662c65527b002c56880974ddcd9981c0c6ff75`. Regeln, Grenzen und Quellzuordnung stehen in
 [PLAYER_LIFECYCLE.md](PLAYER_LIFECYCLE.md). Die Überschreitung des ursprünglichen
 128er-Deathmatch-Arrays wird kontrolliert zurückgewiesen; dieser undefinierte
-C-Pfad wird nicht als identisches Verhalten ausgewiesen. `player_die` und der Respawn-Wrapper sind inzwischen in [DEATHS.md](DEATHS.md)
-integriert. Tatsächliche Item-Entities, `ClientSpawn` und Client-Frames bleiben offen.
+C-Pfad wird nicht als identisches Verhalten ausgewiesen. `player_die` und der
+Respawn-Wrapper sind inzwischen in [DEATHS.md](DEATHS.md) integriert; Item-Entities
+und ihre Physik stehen in [ITEMS.md](ITEMS.md). `ClientSpawn`, Item-Aufnahme und
+Client-Frames bleiben offen.
 
 ## Punkte, Ranglisten und Matchende (Schritt 6)
 
@@ -524,19 +528,20 @@ Feldzuweisungen ab. Ein eigener Vergleichsfall und Layout-Prüfungen im
 Referenzadapter sichern dieses ausdrücklich auf den nativen Build begrenzte
 Verhalten ab; es ist keine Zusage definierten oder portablen C-Verhaltens.
 
-Test-Binary: `0372d9a721c0fee592e2417d8f8fe019efbb5fc668ed1b3c3b0068887f4ec9c1`. Regeln und Grenzen stehen in
+Test-Binary: `a3dff0e45f46e2b7cbd950e01c662c65527b002c56880974ddcd9981c0c6ff75`. Regeln und Grenzen stehen in
 [SCORES.md](SCORES.md). `BeginIntermission` und `ExitLevel` bleiben explizite
 Callbacks; geprüft werden die Entscheidungen und Zustandsänderungen vor und
 nach ihrem Aufruf. Logtexte und Serverbefehle werden an der Aufrufgrenze
 beobachtet. Tatsächliche Kartenwechsel, Logdatei-Zeitstempel/-Ausgabe,
 Netzwerkzustellung und Scoreboard-Grafik sind noch offen. Spieler-Tod,
 Team-Fragboni, Drop-Entscheidungen und der Respawn-Wrapper binden diese
-Bausteine inzwischen ein; vollständige Item-/Client-/Server-Pfade bleiben offen.
+Bausteine inzwischen ein. Item-Aufnahme sowie vollständige Client-/Server-Pfade
+bleiben offen.
 
 ## Spieler-Tod, Team-Fragboni und Respawn-Wrapper (Schritt 6)
 
 `scripts/test_deaths.py` besteht mit **23 Szenarien**, **330 Aktionen**,
-**3.885.472 exakt gleichen 32-Bit-Wörtern** und **40.488 String-Bytes**.
+**3.887.033 exakt gleichen 32-Bit-Wörtern** und **40.921 String-Bytes**.
 Acht Laufzeitverträge ergänzen die gültigen Vergleichsfälle. Nach jeder Aktion
 werden die vollständigen Score-/Entity-/PlayerState-Daten sowie Todesfelder,
 Handler, Feind- und Hook-Referenzen verglichen.
@@ -550,14 +555,32 @@ Hook-Freigabe, Zuschauer-Scoreboards und den tatsächlichen Pfad
 `G_Damage → player_die`. Der originale Trägerschutz überschreibt einen
 Entfernungsvektor; dieses beobachtete Baseq3-Verhalten wird exakt bewahrt.
 
-`Drop_Item`, `Team_ReturnFlag`, `PrintMsg` und `ClientSpawn` bleiben explizite
-Callbacks. Der C-Host protokolliert Aufrufreihenfolge und Argumente; Score-,
-Body-, Hook-, BSP-/PVS- und Entity-Code laufen tatsächlich. Der Respawn-Test
-verändert im `ClientSpawn`-Callback absichtlich Position und Clientnummer und
-weist dadurch nach, dass der nachfolgende Teleport-Effekt die Rückgabewerte
-verwendet. Tatsächliche Item-/Flag-Entities, vollständiges `ClientSpawn`,
-Client-Frames, Netzwerkzustellung und Missionpack bleiben offen. Details:
-[DEATHS.md](DEATHS.md).
+`Drop_Item` und `Team_ReturnFlag` laufen in diesen Todesfällen als echte portierte
+Entity-Pfade. Der C-Host protokolliert weiterhin `PrintMsg` und `ClientSpawn`;
+Score-, Body-, Hook-, BSP-/PVS- und Entity-Code laufen tatsächlich. Der
+Respawn-Test verändert im `ClientSpawn`-Callback absichtlich Position und
+Clientnummer und weist dadurch nach, dass der nachfolgende Teleport-Effekt die
+Rückgabewerte verwendet. Item-Aufnahme, vollständiges `ClientSpawn`, Client-Frames,
+Netzwerkzustellung und Missionpack bleiben offen. Details: [DEATHS.md](DEATHS.md).
+
+## Items, Drop-Physik und Flaggenrückgabe (Schritt 6)
+
+`scripts/test_items.py` besteht mit **12 Szenarien**, **152 Aktionen**,
+**237.066 exakt gleichen 32-Bit-Wörtern** und **17.943 String-Bytes**. Acht
+Laufzeitverträge ergänzen die gültigen Vergleichsfälle. Nach jeder Aktion werden
+vollständige Entity-/Level-Zustände, Configstrings, Registrierungsbits und der
+Zufallszustand verglichen.
+
+Übertragen sind `RegisterItem`, `G_SpawnItem`, `FinishSpawningItem`, `RespawnItem`,
+`Use_Item`, `LaunchItem`, `Drop_Item`, der ET_ITEM-Zweig von `G_RunItem`,
+`G_BounceItem` sowie Flaggenstatus, Basis-Reset, Rückgabesound, No-Drop-Rückgabe
+und Timeout fallengelassener Flaggen. Die Fälle umfassen alle 35 Baseq3-Items,
+Kartenplatzierung, Powerup-Verzögerung, Teamketten, Abprall und echte
+Serverkollision. Die Todes-Suite verwendet dieselben Drop-/Flaggenpfade.
+
+`Touch_Item` samt Pickup-Familie, `ClearRegisteredItems`, `SaveRegisteredItems`,
+die native Paritätsprüfung deaktivierter Item-Cvars, `PrintMsg`-Transport und
+Missionpack bleiben offen. Details: [ITEMS.md](ITEMS.md).
 
 ## Reproduzieren
 
@@ -608,6 +631,7 @@ python scripts/test_missiles.py --data-root D:/Quake3
 python scripts/test_bodies.py --data-root D:/Quake3
 python scripts/test_scores.py
 python scripts/test_deaths.py
+python scripts/test_items.py
 python scripts/test_spawn.py D:/Quake3
 ```
 

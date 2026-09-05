@@ -90,8 +90,8 @@ Der C-Testhost extrahiert unveränderte Originalfunktionen und verwendet die
 ursprüngliche Server- und BSP-Kollision. Er beobachtet vollständige EntityStates,
 PlayerStates, Leichenplätze, private Felder, Verknüpfungen, Auswahlwerte, Traces
 und den folgenden Zufallswert. Der Host ersetzt diese Regeln nicht durch ein
-vereinfachtes Modell. Der nicht portierte Team-Item-Pfad bricht im Host bei einem
-unerwarteten Aufruf ausdrücklich ab.
+vereinfachtes Modell. Team- und ET_ITEM-Pfade liegen außerhalb dieser Leichen-
+Suite und werden inzwischen in [Items und Flaggen](ITEMS.md) separat ausgeführt.
 
 Prüfumfang und Ergebnis werden im [Prüfbericht](PARITY_AUDIT.md) sowie in
 `reference/evidence.json` festgehalten. Die Fälle umfassen Auswahlgrenzen,
@@ -105,7 +105,7 @@ ausgegeben.
 Auf CD-Karten werden vorhandene Spieler-, Team- und Intermission-Punkte sowie
 passende Positions-Targets übernommen und Leichen mit der tatsächlichen
 Kartengeometrie simuliert. Das sind gezielte Kartenproben, keine vollständigen
-Matches. Bot-/Human-Spawnfilter aus `ClientSpawn`, tatsächliche Item-Entities und
-Flag-Resets, Respawn-Eingaben, Client-Frames und die grafische Darstellung
-bleiben Gegenstand der weiteren Integration. Todesmeldungen, Drop-Entscheidungen
+Matches. Bot-/Human-Spawnfilter aus `ClientSpawn`, Item-Aufnahme,
+Respawn-Eingaben, Client-Frames und die grafische Darstellung bleiben Gegenstand
+der weiteren Integration. Todesmeldungen, Drop-Entscheidungen
 und Score-Einbindung sind in [DEATHS.md](DEATHS.md) nachgewiesen.

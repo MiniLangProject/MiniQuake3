@@ -6,12 +6,14 @@ Worldspawn und die Auswahl von Item-/Klassen-Spawn-Funktionen. Die generierten
 Tabellen enthalten 20 Feldregeln, 48 baseq3-Klassen und 35 Items. Sie werden aus
 den gepinnten Originalquellen erzeugt und gegen die ursprüngliche C-Tabelle geprüft.
 
-**Stand der Klassen:** 34 Klassen führen bereits die übertragenen Originalregeln
-aus. Die 14 übrigen Klassen und `G_SpawnItem` brauchen noch ihre Implementierung.
-Ohne ausdrücklich gesetzten `state.unportedFn` liefert der Port an diesen Grenzen
-einen Fehler. Die Vergleichstests setzen dort einen aufzeichnenden Callback ein;
-er führt keine vereinfachten Item-, Mover- oder Spielregeln aus. Die Testkarten
-sind damit noch keine vollständig initialisierten, spielbaren Game-Server.
+**Stand der Klassen:** 34 Klassen und alle 35 Item-Einträge führen bereits die
+übertragenen Originalregeln aus. Die 14 übrigen Klassen brauchen noch ihre
+Implementierung. Ohne ausdrücklich gesetzten `state.unportedFn` liefert der Port
+an diesen Klassengrenzen einen Fehler. Die Vergleichstests setzen dort einen
+aufzeichnenden Callback ein; er führt keine vereinfachten Mover- oder Spielregeln
+aus. `G_SpawnItem` und `FinishSpawningItem` erzeugen und platzieren dagegen echte
+Item-Entities. `Touch_Item` und damit das Aufnehmen bleiben noch offen, daher sind
+die Testkarten noch keine vollständigen, spielbaren Game-Server.
 
 | Aufruf | Verhalten |
 | --- | --- |
@@ -67,8 +69,8 @@ noch nicht implementierte Klassen werden getrennt geprüft.
 (`kind=1`), Cvar-Setzen (`2`) und die Warmup-Logmeldung (`3`). Die Werte werden
 im lokalen Configstring-Feld bzw. im vorhandenen Cvar-Register gespeichert.
 Ihre Verteilung an Netzwerkclients ist weiterhin Teil der späteren Serverarbeit.
-`state.unportedFn(state, ent, kind, index)` bezeichnet bei `kind=1` einen Item-
-Index ab 1 und bei `kind=2` einen Klassenindex ab 0 aus `spawn_tables.ml`.
+`state.unportedFn(state, ent, kind, index)` bezeichnet bei `kind=2` einen noch
+nicht portierten Klassenindex ab 0 aus `spawn_tables.ml`.
 
 `state.gravity` entspricht dem zwischengespeicherten `g_gravity.value` des
 Game-Moduls. Ein `trap_Cvar_Set` aktualisiert diesen VM-Wert im Original nicht
@@ -86,14 +88,16 @@ Die neuen privaten Schadensfelder werden zusätzlich in `test_combat.py` geprüf
 Spieler in die geladenen Trigger gesetzt und komplette PlayerStates verglichen.
 `G_Printf`-Diagnosen und der Zeitpräfix des Server-Loggers sind noch nicht Teil
 dieser Abnahme; die Warmup-Logmeldung wird als roher Aufruf aufgezeichnet.
-Dies prüft noch keine regulären ClientThink-/Serverframes, Item-Initialisierung
-oder Mover-Pushes. Die zusätzliche Target-/Ereignisprüfung deckt inzwischen
-die Entity-Schleife mit automatischer Ereignisfreigabe ab.
+Dies prüft noch keine regulären ClientThink-/Serverframes, Item-Aufnahme oder
+Mover-Pushes. Die zusätzliche Item-Prüfung deckt Initialisierung, Respawn,
+Drop-Entities und Physik ab; die Target-/Ereignisprüfung deckt die Entity-Schleife
+mit automatischer Ereignisfreigabe ab.
 
 ```powershell
 python scripts/test_spawn_values.py
 python scripts/test_targets.py
 python scripts/test_combat.py --data-root D:/Quake3
 python scripts/test_missiles.py --data-root D:/Quake3
+python scripts/test_items.py
 python scripts/test_spawn.py D:/Quake3
 ```

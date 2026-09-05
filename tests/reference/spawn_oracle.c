@@ -14,13 +14,13 @@ static int missileOutput;
 static int bodyOutput;
 static int scoreOutput;
 static int deathOutput;
+static int itemOutput;
 static void scoreTransition(int);
 void CheckExitRules(void);void CheckIntermissionExit(void);void LogExit(const char *);
 void BeginIntermission(void){scoreTransition(1);}
 void ExitLevel(void){scoreTransition(2);}
 int hostContents(const vec3_t,int);
 int trap_PointContents(const vec3_t point,int pass){return hostContents(point,pass);}
-void Team_FreeEntity(gentity_t *e){G_Error("unported team item physics boundary");}
 static char configs[MAX_CONFIGSTRINGS][8192],gravityText[1024];static const char *entityPoint;static FILE *output;
 void AimAtTarget(gentity_t*);void trigger_push_touch(gentity_t*,gentity_t*,trace_t*);void trigger_teleporter_touch(gentity_t*,gentity_t*,trace_t*);
 static void word(int x) {fwrite(&x,4,1,output);}
@@ -68,14 +68,10 @@ qboolean trap_InPVS(const vec3_t p1,const vec3_t p2){return SV_inPVS(p1,p2);}
 void QDECL G_Error(const char *fmt,...) {va_list args;va_start(args,fmt);vfprintf(stderr,fmt,args);va_end(args);exit(72);}
 void Touch_DoorTrigger(gentity_t *a,gentity_t *b,trace_t *c) {G_Error("unexpected door boundary");}
 void *G_Alloc(int n) {void *p=calloc(1,n);if(!p)exit(73);return p;}
-void G_SpawnItem(gentity_t *e,gitem_t *item) {boundary(e,1,(int)(item-bg_itemlist));}
-gentity_t *Drop_Item(gentity_t *self,gitem_t *item,float angle) {
-    gentity_t *drop;word(47);word((int)(self-g_entities));word((int)(item-bg_itemlist));words(&angle,1);
-    drop=G_Spawn();drop->s.modelindex=(int)(item-bg_itemlist);return drop;
-}
-void Team_ReturnFlag(int team){if(!deathOutput)G_Error("unported flag return");word(48);word(team);}
+int trap_Cvar_VariableIntegerValue(const char *name){return 0;}
+void Touch_Item(gentity_t *ent,gentity_t *other,trace_t *trace){G_Error("unported item pickup boundary");}
 void QDECL PrintMsg(gentity_t *ent,const char *fmt,...) {
-    char buffer[1024];va_list args;if(!deathOutput)G_Error("unported PrintMsg");
+    char buffer[1024];va_list args;if(!deathOutput && !itemOutput)G_Error("unported PrintMsg");
     va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);
     word(49);word(ent?(int)(ent-g_entities):-1);string(buffer);
 }
@@ -90,11 +86,12 @@ void ClientSpawn(gentity_t *ent) {
 #include "body_actions.inc"
 #include "score_actions.inc"
 #include "death_actions.inc"
+#include "item_actions.inc"
 #include "combat_actions.inc"
 static char *readString(FILE *in) {int n;char *s;if(fread(&n,4,1,in)!=1)return NULL;if(n<0 || n>10000000)exit(74);s=calloc(1,n+1);if(n && fread(s,1,n,in)!=n)exit(74);return s;}
 static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);word(level.locationLinked);word(slotOf(level.locationHead));for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
 static void reset(int type,int flags) {
-    memset(&level,0,sizeof(level));memset(g_entities,0,sizeof(g_entities));memset(g_clients,0,sizeof(g_clients));memset(configs,0,sizeof(configs));memset(itemRegistered,0,sizeof(itemRegistered));
+    memset(&level,0,sizeof(level));memset(g_entities,0,sizeof(g_entities));memset(g_clients,0,sizeof(g_clients));memset(configs,0,sizeof(configs));memset(itemRegistered,0,sizeof(itemRegistered));memset(&teamgame,0,sizeof(teamgame));
     level.gentities=g_entities;level.clients=g_clients;level.num_entities=64;level.time=level.startTime=1000;srand(1);
     g_gametype.integer=type;g_restarted.integer=flags&1;g_doWarmup.integer=flags&2;g_gravity.value=800;g_knockback.value=1000;g_friendlyFire.integer=0;g_blood.integer=1;strcpy(g_motd.string,"MiniQuake3 spawn parity");strcpy(gravityText,"800");
     hostServerReset(g_entities,sizeof(gentity_t),64);
@@ -119,6 +116,8 @@ int main(int argc,char **argv) {
         reset(0,0);scoreOutput=1;runCombat(in);
     } else if(argc==6 && !strcmp(argv[5],"--deaths")) {
         reset(0,0);scoreOutput=deathOutput=1;runCombat(in);
+    } else if(argc==6 && !strcmp(argv[5],"--items")) {
+        reset(0,0);itemOutput=1;runCombat(in);
     } else if(argc==6 && !strcmp(argv[5],"--values")) {
         reset(0,0);
         while((text=readString(in))!=NULL) {

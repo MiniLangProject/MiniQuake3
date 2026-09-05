@@ -102,6 +102,17 @@ def main():
         mappings[source]=(list(dict.fromkeys(old_targets+targets)),list(dict.fromkeys(old_symbols+symbols)),list(dict.fromkeys(tests+["scripts/test_deaths.py"])))
     old_targets,old_symbols,tests=mappings["code/game/g_cmds.c"]
     mappings["code/game/g_cmds.c"]=(old_targets,old_symbols,tests+["scripts/test_deaths.py"])
+    item_mappings={
+        "code/game/g_items.c":(["src/mq3/game/items.ml"],["RespawnItem","LaunchItem","Drop_Item","Use_Item","FinishSpawningItem","G_ItemDisabled","G_SpawnItem","G_BounceItem","G_RunItem"]),
+        "code/game/g_team.c":(["src/mq3/game/items.ml"],["Team_SetFlagStatus","Team_CheckDroppedItem","Team_ResetFlag","Team_ReturnFlagSound","Team_ReturnFlag","Team_FreeEntity","Team_DroppedFlagThink"]),
+        "code/game/g_spawn.c":(["src/mq3/game/items.ml"],[]),
+        "code/game/g_main.c":(["src/mq3/game/items.ml"],[]),
+        "code/game/bg_misc.c":(["src/mq3/game/items.ml"],[]),
+        "code/game/g_local.h":(["src/mq3/game/items.ml"],[]),
+    }
+    for source,(targets,symbols) in item_mappings.items():
+        old_targets,old_symbols,tests=mappings[source]
+        mappings[source]=(list(dict.fromkeys(old_targets+targets)),list(dict.fromkeys(old_symbols+symbols)),list(dict.fromkeys(tests+["scripts/test_items.py"])))
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text(encoding="utf-8"))
     for entry in ledger["files"]:
@@ -110,7 +121,7 @@ def main():
             entry.update(target=targets,status="partial",tests=tests,
                          symbol_mapping=[{"original":name,"target_files":targets,"status":"tested_subset"} for name in symbols])
             if entry["source"] == "code/game/g_main.c":
-                entry["symbol_mapping"][1]["scope"] = "Allocated-entity loop with implemented missile and body-queue corpse physics dispatch; other item/physics/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
+                entry["symbol_mapping"][1]["scope"] = "Allocated-entity loop with implemented missile, item and body-queue corpse physics dispatch; other physics/mover/client dispatch callbacks remain open. No full G_RunFrame orchestration."
             if entry["source"] == "code/server/sv_init.c":
                 entry["symbol_mapping"][0]["scope"] = "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
             if entry["source"] == "code/game/g_combat.c":
@@ -119,10 +130,13 @@ def main():
                 for symbol in entry["symbol_mapping"]:
                     symbol["scope"] = "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
             if entry["source"] == "code/game/g_items.c":
-                entry["symbol_mapping"][0]["scope"] = "Item registration bitset only. Item spawning, pickup, ClearRegisteredItems, SaveRegisteredItems and client precaching remain open."
-            if entry["source"] == "code/game/g_items.c":
-                entry["symbol_mapping"][1]["scope"] = "Full G_BounceItem arithmetic and stop rules; exercised by corpse physics."
-                entry["symbol_mapping"][2]["scope"] = "Non-item body queue path only, with actual SV/CM, think/link ordering and no-drop removal. Item and team-item lifecycle remain open; native dispatcher accepts bodyque entities only."
+                for symbol in entry["symbol_mapping"]:
+                    if symbol["original"] == "RegisterItem":
+                        symbol["scope"] = "Baseq3 item registration bitset, used by shooters and actual map-item spawning. ClearRegisteredItems, SaveRegisteredItems and client precaching remain open."
+                    elif symbol["original"] in ("G_BounceItem","G_RunItem"):
+                        symbol["scope"] = "Actual dropped-item physics, collision, no-drop and frame dispatch are compared. The body suite separately covers the non-item corpse branch. Touch_Item remains open."
+                    else:
+                        symbol["scope"] = "Baseq3 map/drop item entity lifecycle and flag reset/return behavior. Touch_Item/pickups, disabled-item Cvar comparison, PrintMsg transport and Missionpack remain open."
             if entry["source"] == "code/game/g_main.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] in ("SortRanks","CalculateRanks"):
@@ -135,11 +149,13 @@ def main():
             if entry["source"] == "code/game/g_combat.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] in ("TossClientItems","CheckAlmostCapture","CheckAlmostScored","player_die"):
-                        symbol["scope"] = "Baseq3 death lifecycle with actual score, body, hook, collision and PVS integration. Drop_Item, Team_ReturnFlag, PrintMsg and ClientSpawn are explicit observed callbacks; no Missionpack or complete client/server frame."
+                        symbol["scope"] = "Baseq3 death lifecycle with actual score, body, hook, collision, PVS, Drop_Item and Team_ReturnFlag integration. PrintMsg and ClientSpawn remain explicit observed callbacks; no Missionpack or complete client/server frame."
             if entry["source"] == "code/game/g_team.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] in ("OtherTeam","TeamName","Team_FragBonuses"):
                         symbol["scope"] = "Baseq3 team frag bonuses, including native carrier-defense vector reuse, actual scores and SV_inPVS; PrintMsg delivery is an observed callback."
+                    if symbol["original"] in ("Team_SetFlagStatus","Team_CheckDroppedItem","Team_ResetFlag","Team_ReturnFlagSound","Team_ReturnFlag","Team_FreeEntity","Team_DroppedFlagThink"):
+                        symbol["scope"] = "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
             if entry["source"] == "code/game/g_client.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] == "respawn":
