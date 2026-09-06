@@ -337,7 +337,15 @@ function finishSpawning(level,ent)
   else
     destination = [ent.s.origin[0],ent.s.origin[1],n.fsub(ent.s.origin[2],4096.0)]
     hit = combat.shotTrace(level,ent.s.origin,destination,ent.r.mins,ent.r.maxs,ent.s.number,1)
-    if hit.trace.startsolid then game.free(level,ent); return void end if
+    if hit.trace.startsolid then
+      location = game.vtos(level,ent.s.origin)
+      if level.gamePrintFn != void then
+        name = ent.classname
+        if name == void then name = "(null)" end if
+        level.gamePrintFn(level,"FinishSpawningItem: "+name+" startsolid at "+location+"\n")
+      end if
+      game.free(level,ent); return void
+    end if
     ent.s.groundEntityNum = hit.entityNum; game.setOrigin(ent,hit.endpos)
   end if
   if (ent.flags & 0x400) != 0 or ent.targetname != void then

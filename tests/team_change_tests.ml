@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
+import mq3.game.client_commands as clientCommands
+import mq3.game.command_args as commandArgs
+import mq3.shared.info as commandInfo
 import mq3.game.follow_commands as followCommands
 import mq3.game.intermission as intermissionFlow
 import mq3.game.client_spawn as clientSpawn
@@ -37,6 +40,7 @@ struct Check
   location
   followMode
   intermissionMode
+  commandsMode
 end struct
 function readInt(reader)
   if reader.offset+4 > len(reader.data) then return error(499,"Incomplete team change input") end if
@@ -197,6 +201,28 @@ function snapshot(level)
       textWord(check,sessions.cvarText(level,"session"+str(index)))
     end for
   end if
+  if check.commandsMode then
+    check.location = "commands"
+    words(check,[level.cheats,level.dedicated,level.allowVote])
+    textWord(check,level.voteString); textWord(check,level.voteDisplayString)
+    words(check,[level.voteTime,level.voteExecuteTime,level.voteYes,level.voteNo])
+    for each value in level.teamVoteString
+      textWord(check,value)
+    end for
+    words(check,level.teamVoteTime); words(check,level.teamVoteYes); words(check,level.teamVoteNo)
+    for index = 8 to 21
+      textWord(check,level.spawner.configstrings[index])
+    end for
+    for index = 0 to 63
+      textWord(check,check.userinfos[index])
+    end for
+    nextmap = cv.find(level.spawner.cvars,"nextmap"); rotation = ""
+    if nextmap != void then rotation = nextmap.string end if
+    textWord(check,rotation); pointer(check,level.locationHead)
+    for index = 0 to level.num_entities-1
+      textWord(check,level.entities[index].message); pointer(check,level.entities[index].nextTrain)
+    end for
+  end if
   return void
 end function
 function record(level,kind,arg,text)
@@ -265,6 +291,9 @@ end function
 function intermissionPads(level)
   return record(level,20,0," ")
 end function
+function commandUserinfoSet(level,slot,text)
+  level.context.userinfos[slot] = text; return record(level,21,slot,text)
+end function
 function spot(level,slot,name,origin,angles)
   ent = game.initEntity(level.entities[slot]); ent.classname = name; ent.s.origin = origin; ent.s.angles = angles; return void
 end function
@@ -326,6 +355,9 @@ function configure(level,reader,check)
     level.updateTournamentInfoFn = intermissionUpdate; level.spawnVictoryPadsFn = intermissionPads
     level.changemap = void; level.readyToExit = false; level.exitTime = 0
   end if
+  if check.commandsMode then
+    level.userinfoSetFn = commandUserinfoSet; s.spawning = false; s.vars = []
+  end if
   // No Begin/death/item/rank/userinfo overrides: all those game routines are real.
   return void
 end function
@@ -335,12 +367,23 @@ function main(argv)
   if len(argv) > 3 and argv[3] == "--contracts" then return contracts(world) end if
   if len(argv) > 3 and argv[3] == "--follow-contracts" then return followContracts(world) end if
   if len(argv) > 3 and argv[3] == "--intermission-contracts" then return intermissionContracts(world) end if
-  intermissionMode = len(argv) > 3 and argv[3] == "--intermission"
+  if len(argv) > 3 and argv[3] == "--commands-contracts" then return commandsContracts(world) end if
+  commandsMode = len(argv) > 3 and argv[3] == "--commands"
+  intermissionMode = commandsMode or (len(argv) > 3 and argv[3] == "--intermission")
   followMode = intermissionMode or (len(argv) > 3 and argv[3] == "--follow")
-  reader = Reader(fs.readAllBytes(argv[1]),0); check = Check(fs.readAllBytes(argv[2]),0,0,0,0,array(64,""),"",followMode,intermissionMode)
+  reader = Reader(fs.readAllBytes(argv[1]),0); check = Check(fs.readAllBytes(argv[2]),0,0,0,0,array(64,""),"",followMode,intermissionMode,commandsMode)
   level = game.create(world); configure(level,reader,check); count = readInt(reader)
   for index = 0 to count-1
     kind = readInt(reader); level.time = readInt(reader); slot = readInt(reader); p0 = readInt(reader); request = readString(reader)
+    commandArgv = []
+    if check.commandsMode and kind == 40 then
+      if p0 < 0 then return error(499,"Negative ClientCommand argc") end if
+      if p0 > 0 then commandArgv = [request] end if
+      nextArg = 1
+      while nextArg < p0
+        commandArgv = commandArgv+[readString(reader)]; nextArg = nextArg+1
+      end while
+    end if
     switch kind
       case 1
         teamChanges.setTeam(level,level.entities[slot],request)
@@ -363,7 +406,14 @@ function main(argv)
       end case
       case default
         if not check.followMode then return error(499,"Invalid team change action") end if
-        if check.intermissionMode then
+        if check.commandsMode and kind >= 40 then
+          outcome = try(runCommandAction(level,kind,slot,p0,request,commandArgv))
+          if outcome is error then
+            snapshot(level); word(check,222); check.actions = check.actions+1
+            if index != count-1 then return error(499,"Native command drop must be the final action") end if
+            return finishResult(reader,check)
+          end if
+        else if check.intermissionMode then
           if kind >= 19 then runIntermissionAction(level,kind,slot,p0,request)
           else runFollowAction(level,kind,slot,p0,request) end if
         else
@@ -615,4 +665,113 @@ function intermissionContracts(world)
   level.intermissiontime = 0; level.spawnVictoryPadsFn = intermissionPads
   require(intermissionFlow.begin(level) == void and level.intermission_origin[2] == 25.0,"empty singleplayer intermission with explicit hooks"); count = count+1
   print "PASS: "+str(count)+" intermission runtime contracts"; return 0
+end function
+
+function runCommandAction(level,kind,slot,p0,request,argv)
+  switch kind
+    case 40
+      clientCommands.command(level,slot,argv)
+    end case
+    case 41
+      level.cheats = p0; level.dedicated = textnum.atoi(request)
+    end case
+    case 42
+      location = game.initEntity(level.entities[82]); location.classname = "target_location"
+      origin = level.entities[slot].r.currentOrigin
+      location.s.origin = [origin[0],origin[1],origin[2]]; location.r.currentOrigin = [origin[0],origin[1],origin[2]]
+      location.count = p0; location.message = request; location.nextTrain = void
+      level.locationHead = location; level.num_entities = 83
+    end case
+    case 43
+      level.allowVote = p0; cv.set2(level.spawner.cvars,"nextmap",request,true)
+    end case
+    case 44
+      level.clients[slot].lastkilled_client = p0; enemy = textnum.atoi(request); level.entities[slot].enemy = void
+      if enemy != -1 then level.entities[slot].enemy = level.entities[enemy] end if
+    end case
+    case 45
+      level.clients[slot].lasthurt_mod = p0; level.clients[slot].rewardTime = textnum.atoi(request)
+    end case
+    case 46
+      value = n.f32(p0); level.entities[slot].s.origin = [value,value,value]
+    end case
+    case default
+      return error(499,"Invalid client command action")
+    end case
+  end switch
+  return void
+end function
+
+function commandContractLevel(world)
+  level = game.create(world); spawn.create(level,""); level.maxclients = 2
+  ent = game.initEntity(level.entities[0]); game.bindClient(level,ent,level.clients[0])
+  ent.health = 100; ent.client.connected = 2; ent.client.ps.stats[c.STAT_HEALTH] = 100
+  ent.client.ps.stats[c.STAT_MAX_HEALTH] = 100
+  return level
+end function
+function commandContractUserinfo(level,slot)
+  return "\\name\\Contract\\teamtask\\1"
+end function
+function commandsContracts(world)
+  count = 0; level = game.create(world)
+  for each slot in [-1,64]
+    require(try(clientCommands.command(level,slot,["stats"])) is error,"router slot bound"); count = count+1
+  end for
+  require(clientCommands.command(level,0,[decode(bytes([0]))]) == void,"NULL client returns before reading argv"); count = count+1
+  level = commandContractLevel(world); ent = level.entities[0]
+  require(clientCommands.command(level,0,["stats"]) == void,"original stats body is empty"); count = count+1
+  require(try(clientCommands.command(level,0,["unknown"])) is error,"unknown command requires delivery"); count = count+1
+  require(try(commandArgs.argument(["a"],0,0)) is error,"argument requires native storage"); count = count+1
+  require(try(commandArgs.argument([decode(bytes([65,0,66]))],0,1024)) is error,"argument rejects embedded NUL"); count = count+1
+  require(commandArgs.argument(["a"],-1,1024) == "" and commandArgs.argument(["a"],1,1024) == "","missing argv is empty"); count = count+1
+  require(commandArgs.concat(["a b","","c"],0) == "a b  c","concat preserves engine token boundaries"); count = count+1
+  require(commandArgs.concat(["say",decode(bytes(1023,120))],1) == "","concat rejects first token at 1023"); count = count+1
+  require(commandArgs.concat(["say","a",decode(bytes(1021,120))],1) == "a ","concat preserves separator before rejected token"); count = count+1
+  require(len(bytes(commandArgs.concat(["say",decode(bytes(1022,120)),""],1))) == 1023,"concat permits final separator at 1023"); count = count+1
+  require(try(clientCommands.command(level,0,["say","hello"])) is error,"chat log delivery is required first"); count = count+1
+  level.gameLogFn = quietLog
+  require(try(clientCommands.command(level,0,["say","hello"])) is error,"chat recipient requires server delivery"); count = count+1
+  level.serverCommandFn = quietCommand; level.dedicated = 1
+  require(try(clientCommands.command(level,0,["say","hello"])) is error,"dedicated chat print required"); count = count+1
+  require(try(clientCommands.command(level,0,["vsay","hello"])) is error,"dedicated voice print required"); count = count+1
+  level.gamePrintFn = quietLog
+  require(clientCommands.command(level,0,["say","hello"]) == void,"chat with explicit host sinks"); count = count+1
+  level.dedicated = 0; level.maxclients = 65
+  require(try(clientCommands.command(level,0,["vsay","hello"])) is error,"voice recipient range bound"); count = count+1
+  level.maxclients = 2
+  require(try(clientCommands.command(level,0,["gc","1","7"])) is error,"native one-past-end game order rejected"); count = count+1
+  level.spawner.gametype = 3
+  require(try(clientCommands.command(level,0,["gc","1","0"])) is error,"team tell NULL target client rejected"); count = count+1
+  ent.client.lastkilled_client = 1024
+  require(try(clientCommands.command(level,0,["vtaunt"])) is error and ent.client.lastkilled_client == 1024,"native taunt pointer outside entity storage rejected"); count = count+1
+  level = commandContractLevel(world); ent = level.entities[0]
+  require(try(clientCommands.command(level,0,["god"])) is error and ent.flags == 0,"cheat rejection requires delivery before mutation"); count = count+1
+  level.cheats = 1
+  require(try(clientCommands.command(level,0,["god"])) is error and (ent.flags & 16) != 0,"god toggle occurs before delivery"); count = count+1
+  require(try(clientCommands.command(level,0,["noclip"])) is error and ent.client.noclip,"noclip toggle occurs before delivery"); count = count+1
+  level.serverCommandFn = quietCommand
+  ent.health = 25; ent.client.ps.stats[c.STAT_HEALTH] = 25
+  require(clientCommands.command(level,0,["give","health"]) == void and ent.health == 100 and ent.client.ps.stats[c.STAT_HEALTH] == 25,"give health leaves player stat until normal game synchronization"); count = count+1
+  awardNames = ["excellent","impressive","gauntletaward","defend","assist"]
+  awardSlots = [c.PERS_EXCELLENT_COUNT,c.PERS_IMPRESSIVE_COUNT,c.PERS_GAUNTLET_FRAG_COUNT,c.PERS_DEFEND_COUNT,c.PERS_ASSIST_COUNT]
+  for index = 0 to 4
+    ent.client.ps.persistant[awardSlots[index]] = 2147483647
+    clientCommands.command(level,0,["give",awardNames[index]])
+    require(ent.client.ps.persistant[awardSlots[index]] == -2147483648,"award int32 overflow"); count = count+1
+  end for
+  require(clientCommands.command(level,0,["teamtask"]) == void,"teamtask argc guard before host reads"); count = count+1
+  require(try(clientCommands.command(level,0,["teamtask","3"])) is error,"teamtask requires userinfo read"); count = count+1
+  level.userinfoFn = commandContractUserinfo
+  require(try(clientCommands.command(level,0,["teamtask","3"])) is error,"teamtask requires userinfo storage"); count = count+1
+  require(commandInfo.removeKey("\\A\\1\\a\\2\\a\\3","a") == "\\A\\1\\a\\3","Info remove is case sensitive and removes only first match"); count = count+1
+  require(commandInfo.removeKey("name\\Ranger\\dangling","dangling") == "name\\Ranger\\dangling","Info remove preserves dangling key"); count = count+1
+  require(commandInfo.setValue("\\a\\1\\a\\2","a","",void,void) == "\\a\\2","Info empty value deletes only first existing pair"); count = count+1
+  require(commandInfo.setValue("\\a\\1","a","2",void,void) == "\\a\\2","Info value prepends updated pair"); count = count+1
+  for each bad in ["a\\b","a;b","a\"b"]
+    require(commandInfo.setValue("\\a\\1",bad,"2",void,void) == "\\a\\1","Info rejected key preserves original"); count = count+1
+  end for
+  require(try(commandInfo.setValue(decode(bytes(1024,120)),"a","1",void,void)) is error,"Info oversize input rejected"); count = count+1
+  require(try(commandInfo.setValue("\\x\\"+decode(bytes(1017,120)),"k","v",void,void)) is error,"Info exact 1024 byte native NUL overflow rejected"); count = count+1
+  require(try(commandInfo.setValue("","k",decode(bytes(31998,120)),void,void)) is error,"Info native format scratch overflow rejected"); count = count+1
+  print "PASS: "+str(count)+" client command runtime contracts"; return 0
 end function

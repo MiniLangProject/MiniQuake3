@@ -54,8 +54,8 @@ Die Frame-Fälle führen inzwischen auch den portierten Teamstatus und
 `g_needpass`-Ausgabe wird verglichen. Dadurch ändern sich Wort-/Effektzahlen
 bei unverändertem Vote-Szenarienumfang.
 
-Test-Binary: `6410be276549919cd304e999f14b398e3f0fa9540d2d26c73e109e9d66992ed3`.
-Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
+Test-Binary: `cc8254bc461b2cc2da4318ebf4caae9ccbf99241ca3533ab851965a6648e02ef`.
+Native x86-Oracle: `497510f616a01b5f9883cf3136e9eb86786e38eae4d21e04422c98a44d1989fb`.
 
 ```powershell
 python scripts/test_votes.py
@@ -141,18 +141,18 @@ und Modul-Rebind. Ist der originale Teamargument-Puffer voll und ein weiteres
 Argument würde `strcat` überlaufen lassen, gibt MiniLang einen kontrollierten
 Fehler zurück. Dieses undefinierte C-Speicherschreiben wird nicht ausgeführt.
 
-Test-Binary: `200b73bb025d521ebf6ae8388edf210caa0a1b5e21356fb7cc141540bac2eda4`.
-Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
+Test-Binary: `e951b9a179b90900ca665a652788e599db8e412bef3101a8efc2ba204c185d51`.
+Native x86-Oracle: `497510f616a01b5f9883cf3136e9eb86786e38eae4d21e04422c98a44d1989fb`.
 
 ```powershell
 python scripts/test_vote_commands.py
 python scripts/test_vote_commands.py --case global_call_cast_resolve_execute
 ```
 
-Die vollständige `ClientCommand`-Verteilung einschließlich Chat während der
-Intermission, Engine-Kommando-Tokenisierung, Netzwerkzustellung und tatsächliche
-Ausführung des Konsolenbefehls bleiben offen. Diese vier direkt aufrufbaren
-Handler bilden deren geprüften Vote-Teil. Im nativen Testhost ist die
+Die vollständige [ClientCommand-Verteilung](CLIENT_COMMANDS.md) samt Chat während
+der Intermission ist inzwischen portiert und gegen C geprüft. Engine-Kommando-
+Tokenisierung, Netzwerkzustellung und die tatsächliche Ausführung des
+Konsolenbefehls bleiben offen. Diese vier Handler bilden den Vote-Teil. Im nativen Testhost ist die
 `nextmap`-Abfrage eine gespeicherte Engine-Antwort; MiniLang nutzt bereits die
 tatsächliche portierte Registry. Die isolierte Befehlssuite verwendet ebenfalls
 den beobachteten `ClientUserinfoChanged`-Override. Den realen Standardpfad und

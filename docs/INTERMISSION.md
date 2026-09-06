@@ -156,9 +156,9 @@ Bei einem fehlenden Kameraziel wird auch die ursprüngliche `G_PickTarget`-
 Diagnose verglichen. `gamePrintFn` nimmt diese Meldung an; ältere isolierte Hosts
 ohne Print-Schnittstelle vergleichen weiterhin keine Diagnoseausgaben.
 
-Test-Binary: `4155f06c3592a8de01356d918dbb5529301dd78e4a0ce181636cc011a0cdadb7`.
-Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
+Test-Binary: `eb9c0be2fd7d2320e8454460c8272ea9c25363f2db0fa7bea41584c91f7a8b14`.
+Native x86-Oracle: `497510f616a01b5f9883cf3136e9eb86786e38eae4d21e04422c98a44d1989fb`.
 Einzelbericht: `build/reference/intermission/result.json`.
-Die reguläre Gesamtsuite umfasst jetzt 37 Prüfbereiche, die erweiterte 52.
-Der aktuelle reguläre Lauf steht in `build/verify-intermission.log`; die letzte
+Die reguläre Gesamtsuite umfasst jetzt 38 Prüfbereiche, die erweiterte 53.
+Der aktuelle reguläre Lauf steht in `build/verify-client-commands.log`; die letzte
 erweiterte Vollprüfung bleibt bei 43 Gates am Stand `f8cdf9a`.

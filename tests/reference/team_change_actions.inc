@@ -28,6 +28,19 @@ static void teamChangeState(void){
         word(g_timelimit.integer);word(g_fraglimit.integer);string(level.changemap);string(configs[CS_INTERMISSION]);
         for(i=0;i<65;i++)string(intermissionSessions[i]);
     }
+    if(clientCommandsOutput){
+        word(g_cheats.integer);word(g_dedicated.integer);word(g_allowVote.integer);
+        string(level.voteString);string(level.voteDisplayString);
+        word(level.voteTime);word(level.voteExecuteTime);word(level.voteYes);word(level.voteNo);
+        for(i=0;i<2;i++)string(level.teamVoteString[i]);
+        words(level.teamVoteTime,2);words(level.teamVoteYes,2);words(level.teamVoteNo,2);
+        for(i=8;i<=21;i++)string(configs[i]);
+        for(i=0;i<64;i++)string(clientInfoValues[i]);
+        string(voteNextmap);word(level.locationHead?level.locationHead-g_entities:-1);
+        for(i=0;i<level.num_entities;i++){
+            string(g_entities[i].message);word(g_entities[i].nextTrain?g_entities[i].nextTrain-g_entities:-1);
+        }
+    }
 }
 static void teamChangeEvent(int kind,int arg,const char *text){
     if(!teamChangeReady)return;
@@ -73,6 +86,9 @@ static void runTeamChanges(FILE *in){
         voteReadString(in,cl->pers.netname,sizeof(cl->pers.netname));voteReadString(in,clientInfoValues[i],sizeof(clientInfoValues[i]));
         Com_sprintf(configs[CS_PLAYERS+i],sizeof(configs[0]),"before-%d",i);if(c[25] && c[1])hostLink(ent);
     }
+    /* Ordinary commands execute after map spawning. G_SpawnString still scans
+       numSpawnVars when spawning is false, so no fake null spawn pairs remain. */
+    if(clientCommandsOutput){level.spawning=qfalse;level.numSpawnVars=0;}
     teamChangeReady=1;if(fread(&count,4,1,in)!=1 || count<1)exit(74);
     for(i=0;i<count;i++){
         if(fread(a,4,4,in)!=4 || a[2]<0 || a[2]>=64)exit(74);level.time=a[1];voteReadString(in,request,sizeof(request));
@@ -120,6 +136,21 @@ static void runTeamChanges(FILE *in){
         case 34:Original_ClientBegin(a[2]);break;
         case 35:respawn(&g_entities[a[2]]);break;
         case 36:g_timelimit.integer=a[3];g_fraglimit.integer=atoi(request);break;
+        case 40:
+            cmd_argc=a[3];if(cmd_argc<0 || cmd_argc>64)exit(74);
+            if(cmd_argc)cmd_argv[0]=request;
+            for(j=1;j<cmd_argc;j++){voteReadString(in,voteArgvStorage[j],sizeof(voteArgvStorage[j]));cmd_argv[j]=voteArgvStorage[j];}
+            ClientCommand(a[2]);break;
+        case 41:g_cheats.integer=a[3];g_dedicated.integer=atoi(request);break;
+        case 42:{
+            gentity_t *ent=&g_entities[82];G_InitGentity(ent);ent->classname="target_location";
+            VectorCopy(g_entities[a[2]].r.currentOrigin,ent->s.origin);VectorCopy(ent->s.origin,ent->r.currentOrigin);
+            ent->count=a[3];ent->message=_strdup(request);ent->nextTrain=NULL;level.locationHead=ent;level.num_entities=83;break;
+        }
+        case 43:g_allowVote.integer=a[3];Q_strncpyz(voteNextmap,request,sizeof(voteNextmap));break;
+        case 44:{int enemy=atoi(request);if(enemy < -1 || enemy>=MAX_GENTITIES)exit(74);g_clients[a[2]].lastkilled_client=a[3];g_entities[a[2]].enemy=enemy==-1?NULL:&g_entities[enemy];break;}
+        case 45:g_clients[a[2]].lasthurt_mod=a[3];g_clients[a[2]].rewardTime=atoi(request);break;
+        case 46:VectorSet(g_entities[a[2]].s.origin,(float)a[3],(float)a[3],(float)a[3]);break;
         default:exit(74);
         }
         teamChangeState();

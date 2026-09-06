@@ -27,8 +27,8 @@ Ausgabe-Bytes sowie 77 geordnete Engine-/Link-Nebenwirkungen. Drei zusätzliche
 Laufzeitverträge prüfen fehlende Usercmd-/Waffenfeuer-Schnittstellen und die
 Kontakt-Deduplizierung.
 
-Test-Binary: `d1e157d2a984fad6200d6329bde5a4e981df879cc9be5c126369c1b767e2b1ed`.
-Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
+Test-Binary: `f67eba4996d1f59955548b2432f220139bab1f076e8c228968db90e9a713923c`.
+Native x86-Oracle: `497510f616a01b5f9883cf3136e9eb86786e38eae4d21e04422c98a44d1989fb`.
 
 Engine-seitige Usercmd-Zustellung, Cvar-Schreiben, Client-Drop,
 Gauntlet-/Waffenaufrufe und AAS-Prüfung enden an geordnet getesteten Callbacks.

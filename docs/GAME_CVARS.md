@@ -75,13 +75,13 @@ weiterhin offene Portschritte.
 
 ## Nachweis
 
-`scripts/test_game_cvars.py` besteht mit **89 Szenarien**, **1.054 Aktionen**,
-**929.595 exakt gleichen 32-Bit-Wörtern**, **19.562 geordneten Nebenwirkungen**
-und **4.059.457 Ausgabe-Bytes**. Der Referenzhost verwendet das vollständige
+`scripts/test_game_cvars.py` besteht mit **92 Szenarien**, **1.074 Aktionen**,
+**948.649 exakt gleichen 32-Bit-Wörtern**, **19.959 geordneten Nebenwirkungen**
+und **4.141.461 Ausgabe-Bytes**. Der Referenzhost verwendet das vollständige
 originale `qcommon/cvar.c`, die unveränderte Baseq3-Tabelle und die unveränderten
 Spiel-Funktionskörper. Die Build-Datumseingabe wird vor dem Lauf aus dem
 nativen Compiler-Build gelesen und als Fixture-Metadatum gespeichert; aktuelles
-Referenzdatum: `Sep  5 2026`. Es ist kein behauptetes Retail-Build-Datum.
+Referenzdatum: `Sep  6 2026`. Es ist kein behauptetes Retail-Build-Datum.
 
 Generische Konsolendiagnosen aus `Cvar_Get`/`Cvar_Set2` bleiben wie im bisherigen
 Engine-Kern-Test ausgeklammert. Der Spielmodus-Warntext von `G_RegisterCvars`
@@ -90,6 +90,8 @@ wird dagegen bis zur Host-Schnittstelle exakt verglichen.
 Geprüft werden sämtliche Tabellenzeilen einzeln, verzögerte Änderungen,
 Neu-Registrierung, ROM-/Force-Verhalten, Zählerüberlauf, Text-/Bytegrenzen,
 Handle null, erhaltene VM-Kopien und 16 deterministische Änderungsfolgen.
+Zusätzliche Fälle vergleichen die Level-Spiegel von sv_cheats und dedicated
+nach Registrierung, verzögerten Engine-Änderungen, Refresh, Rebind und Frame.
 Nach jeder Aktion werden Tabellen-/VM-/Engine-Zustände verglichen. Bei
 Servermeldungen werden zusätzlich die Zähler aller Tabellenzeilen beobachtet.
 
@@ -106,8 +108,8 @@ MiniLang-Fehler bleibt die letzte gültige VM-Kopie erhalten; der originale
 Engine-Abbruch mit teilweise geschriebenem Fehlerzustand wird nicht nachgebildet.
 Eingebettete NUL-Zeichen werden kontrolliert abgewiesen.
 
-Test-Binary: `d1aa2a2d881b9c8424a1206a2ad5bc5b8f8ccd3963eed45951cdbc91f0794667`.
-Native x86-Oracle: `b372543f4b8852ad45456bbc438df804735280aaaa5b72ac6648020c86afb632`.
+Test-Binary: `6aed241ffc98a57e95f70e688fca335895b332ec77e0119667d161741317ec88`.
+Native x86-Oracle: `59bcbf8c5728cadc1b3b7bcda408f5b0facbac63225c56c76a5972b8af47dcf8`.
 
 ```powershell
 python scripts/generate_game_cvars.py

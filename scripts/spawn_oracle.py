@@ -13,7 +13,7 @@ FUNCTIONS={
     'g_client.c':['SpotWouldTelefrag','SelectNearestDeathmatchSpawnPoint','SelectRandomDeathmatchSpawnPoint','SelectRandomFurthestSpawnPoint','SelectSpawnPoint','SelectInitialSpawnPoint','SelectSpectatorSpawnPoint','InitBodyQue','BodySink','CopyToBodyQue','SetClientViewAngle','respawn','ClientSpawn','ClientBegin','TeamCount','TeamLeader','PickTeam','ClientCleanName','ClientUserinfoChanged','ClientConnect','ClientDisconnect','SP_info_player_deathmatch','SP_info_player_start','SP_info_player_intermission'],
     'g_misc.c':['TeleportPlayer','SP_info_null','SP_info_notnull','SP_info_camp','SP_light','SP_misc_model','SP_misc_teleporter_dest','Use_Shooter','InitShooter_Finish','InitShooter','SP_shooter_rocket','SP_shooter_grenade','SP_shooter_plasma'],
     'g_target.c':['SP_target_position','Think_Target_Delay','Use_Target_Delay','SP_target_delay','target_relay_use','SP_target_relay','target_teleporter_use','SP_target_teleporter','Use_Target_Speaker','SP_target_speaker','target_location_linkup','SP_target_location','target_kill_use','SP_target_kill','target_laser_think','target_laser_on','target_laser_off','target_laser_use','target_laser_start','SP_target_laser'],
-    'g_team.c':['OtherTeam','TeamName','AddTeamScore','Team_SetFlagStatus','Team_ForceGesture','Team_CheckDroppedItem','Team_ResetFlag','Team_ResetFlags','Team_ReturnFlagSound','Team_TakeFlagSound','Team_CaptureFlagSound','Team_ReturnFlag','Team_FreeEntity','Team_DroppedFlagThink','Team_TouchOurFlag','Team_TouchEnemyFlag','Pickup_Team','SelectRandomTeamSpawnPoint','SelectCTFSpawnPoint','SP_team_CTF_redplayer','SP_team_CTF_blueplayer','SP_team_CTF_redspawn','SP_team_CTF_bluespawn','OnSameTeam','Team_FragBonuses','Team_CheckHurtCarrier','Team_GetLocation','SortClients','TeamplayInfoMessage','CheckTeamStatus'],
+    'g_team.c':['OtherTeam','TeamName','AddTeamScore','Team_SetFlagStatus','Team_ForceGesture','Team_CheckDroppedItem','Team_ResetFlag','Team_ResetFlags','Team_ReturnFlagSound','Team_TakeFlagSound','Team_CaptureFlagSound','Team_ReturnFlag','Team_FreeEntity','Team_DroppedFlagThink','Team_TouchOurFlag','Team_TouchEnemyFlag','Pickup_Team','SelectRandomTeamSpawnPoint','SelectCTFSpawnPoint','SP_team_CTF_redplayer','SP_team_CTF_blueplayer','SP_team_CTF_redspawn','SP_team_CTF_bluespawn','OnSameTeam','Team_FragBonuses','Team_CheckHurtCarrier','Team_GetLocation','Team_GetLocationMsg','SortClients','TeamplayInfoMessage','CheckTeamStatus'],
     'g_mover.c':['SP_path_corner'],
     'g_main.c':['AddTournamentPlayer','RemoveTournamentLoser','RemoveTournamentWinner','AdjustTournamentScores','MoveClientToIntermission','BeginIntermission','ExitLevel','G_RunThink','FindIntermissionPoint','SortRanks','CalculateRanks','SendScoreboardMessageToAllClients','ScoreIsTied','CheckExitRules','LogExit','CheckIntermissionExit','CheckVote','PrintTeam','SetLeader','CheckTeamLeader','CheckTeamVote','CheckCvars'],
     'g_trigger.c':['InitTrigger','AimAtTarget','SP_trigger_push','SP_trigger_teleport','trigger_push_touch','trigger_teleporter_touch','multi_wait','multi_trigger','Use_Multi','Touch_Multi','SP_trigger_multiple','trigger_always_think','SP_trigger_always','Use_target_push','SP_target_push','func_timer_think','func_timer_use','SP_func_timer','hurt_use','hurt_touch','SP_trigger_hurt'],
@@ -22,7 +22,7 @@ FUNCTIONS={
     'g_missile.c':['G_BounceMissile','G_ExplodeMissile','G_MissileImpact','G_RunMissile','fire_plasma','fire_grenade','fire_bfg','fire_rocket','fire_grapple'],
     'g_items.c':['Pickup_Powerup','Pickup_Holdable','Add_Ammo','Pickup_Ammo','Pickup_Weapon','Pickup_Health','Pickup_Armor','RespawnItem','Touch_Item','RegisterItem','LaunchItem','Drop_Item','Use_Item','FinishSpawningItem','G_ItemDisabled','G_SpawnItem','G_BounceItem','G_RunItem'],
     'g_active.c':['P_DamageFeedback','P_WorldEffects','G_SetClientSound','ClientImpacts','G_TouchTriggers','SpectatorThink','ClientInactivityTimer','ClientTimerActions','ClientIntermissionThink','ClientEvents','SendPendingPredictableEvents','ClientThink_real','ClientThink','G_RunClient','SpectatorClientEndFrame','ClientEndFrame'],
-    'g_cmds.c':['SanitizeString','ClientNumberFromString','Cmd_Follow_f','Cmd_FollowCycle_f','SetTeam','StopFollowing','Cmd_Team_f','BroadcastTeamChange','DeathmatchScoreboardMessage','Cmd_Score_f','Cmd_CallVote_f','Cmd_Vote_f','Cmd_CallTeamVote_f','Cmd_TeamVote_f'],
+    'g_cmds.c':['CheatsOk','ConcatArgs','Cmd_Give_f','Cmd_God_f','Cmd_Notarget_f','Cmd_Noclip_f','Cmd_LevelShot_f','Cmd_TeamTask_f','Cmd_Kill_f','G_SayTo','G_Say','Cmd_Say_f','Cmd_Tell_f','G_VoiceTo','G_Voice','Cmd_Voice_f','Cmd_VoiceTell_f','Cmd_VoiceTaunt_f','Cmd_GameCommand_f','Cmd_Where_f','Cmd_SetViewpos_f','Cmd_Stats_f','ClientCommand','SanitizeString','ClientNumberFromString','Cmd_Follow_f','Cmd_FollowCycle_f','SetTeam','StopFollowing','Cmd_Team_f','BroadcastTeamChange','DeathmatchScoreboardMessage','Cmd_Score_f','Cmd_CallVote_f','Cmd_Vote_f','Cmd_CallTeamVote_f','Cmd_TeamVote_f'],
 }
 def build(output):
     output.mkdir(parents=True,exist_ok=True);source=ROOT/'Quake-III-Arena-original-source/code'
@@ -74,7 +74,12 @@ def build(output):
         elif name=='g_cmds.c':
             match=re.search(r'static const char \*gameNames\[\] = \{.*?\};',path.read_text(),re.S)
             if not match:raise RuntimeError('Missing original vote gameNames')
-            body.append(match[0]+'\n#define Cmd_FollowCycle_f Original_Cmd_FollowCycle_f\n'+extract(path,names)+'\n#undef Cmd_FollowCycle_f')
+            orders=re.search(r'static char\s+\*gc_orders\[\] = \{.*?\};',path.read_text(),re.S)
+            if not orders:raise RuntimeError('Missing original gc_orders table')
+            # Preserve native declaration order for static helpers and callers.
+            source_text=path.read_text()
+            ordered=sorted(names,key=lambda symbol:re.search(r'^[\w* \t]+\b'+re.escape(symbol)+r'\s*\([^;{}]*\)\s*\{',source_text,re.M).start())
+            body.append(match[0]+'\n'+orders[0]+'\n#define EC "\\x19"\n#define Cmd_FollowCycle_f Original_Cmd_FollowCycle_f\n'+extract(path,ordered)+'\n#undef Cmd_FollowCycle_f')
         elif name=='g_main.c':
             # Rename only each definition. Its callers keep the mode-aware
             # wrappers, preserving the older isolated score/spawn suites.
@@ -108,4 +113,4 @@ def build(output):
     run(['cl','/nologo','/Od','/Gy','/fp:strict','/arch:SSE2','/MT','/DWIN32','/DNDEBUG','/D_CRT_SECURE_NO_WARNINGS','/DMQ3_ORACLE_LIBRARY',
          f'/I{source/"game"}',f'/I{source/"qcommon"}',f'/I{output}',*sources,*hosts,f'/Fe:{output/"spawn_oracle.exe"}',
          '/link','/OPT:REF','/Brepro','/stack:8388608'],output,msvc_env('x86'),output/'build.log')
-    return sources+selected+[source/'game/g_spawn.c',source/'game/g_local.h',source/'game/q_shared.h',source/'game/bg_public.h',source/'server/sv_game.c',source/'server/sv_world.c',source/'server/sv_init.c']
+    return sources+selected+[source/'game/g_spawn.c',source/'game/g_local.h',source/'game/q_shared.h',source/'game/bg_public.h',source/'server/sv_game.c',source/'server/sv_world.c',source/'server/sv_init.c',source.parent/'ui/menudef.h']

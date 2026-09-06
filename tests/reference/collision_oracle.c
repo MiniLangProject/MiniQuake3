@@ -19,9 +19,15 @@ void *Z_Malloc(int size) { void *p=calloc(1,size); if(!p) exit(32); return p; }
 void Z_Free(void *p) { free(p); }
 void Com_Memset(void *p,int value,size_t size) { memset(p,value,size); }
 void Com_Memcpy(void *p,const void *q,size_t size) { memcpy(p,q,size); }
-void QDECL Com_Printf(const char *fmt,...) { (void)fmt; }
+/* Optional command-suite diagnostics; other suites retain the quiet host. */
+void (*mq3DiagnosticFn)(const char *text);
+void (*mq3ErrorFn)(void);
+void QDECL Com_Printf(const char *fmt,...) {
+    if(mq3DiagnosticFn){char buffer[32768];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);mq3DiagnosticFn(buffer);}
+}
 void QDECL Com_DPrintf(const char *fmt,...) { (void)fmt; }
 void QDECL Com_Error(int code,const char *fmt,...) {
+    if(mq3ErrorFn)mq3ErrorFn();
     va_list a; va_start(a,fmt);vfprintf(stderr,fmt,a);va_end(a);exit(40+code);
 }
 cvar_t *Cvar_Get(const char *name,const char *value,int flags) {

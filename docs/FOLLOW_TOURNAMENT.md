@@ -16,7 +16,7 @@ tatsächlichen Team-, Todes-, Spawn-, Userinfo- und Rangabläufen gegen C geprü
 
 Die Implementierungen liegen in `src/mq3/game/follow_commands.ml` und
 `src/mq3/game/tournament.ml`. `argv` enthält den Befehlsnamen und die bereits
-zerlegten Argumente. Die vollständige `ClientCommand`-Verteilung bleibt offen.
+zerlegten Argumente. Die vollständige [ClientCommand-Verteilung](CLIENT_COMMANDS.md) ist separat portiert und geprüft.
 
 ## Zielsuche und Follow
 
@@ -93,11 +93,11 @@ Für die zusätzlichen Fehlerpfade wird keine native Verhaltensgleichheit behaup
 Die üblichen Spawn-Think-/Endframe- und Intermission-Callbacks werden in dieser
 Suite beobachtet; die Angriffstastenfälle führen `SpectatorThink` und Pmove
 tatsächlich aus. Die Intermission-Suite prüft die tatsächlichen Übergangsfunktionen.
-Bot-/Engine-Zustellung, vollständige Befehlsverteilung, Engine-Mapausführung,
+Bot-/Engine-Zustellung, Engine-Mapausführung,
 Netzwerk und Missionpack bleiben offen. Die reguläre
-Gesamtsuite umfasst 37 Prüfbereiche, die erweiterte 52. Die letzte vollständig
+Gesamtsuite umfasst 38 Prüfbereiche, die erweiterte 53. Die letzte vollständig
 ausgeführte erweiterte Suite bleibt die mit 43 Gates am Stand `f8cdf9a`.
 
-Test-Binary: `4155f06c3592a8de01356d918dbb5529301dd78e4a0ce181636cc011a0cdadb7`.
-Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
+Test-Binary: `eb9c0be2fd7d2320e8454460c8272ea9c25363f2db0fa7bea41584c91f7a8b14`.
+Native x86-Oracle: `497510f616a01b5f9883cf3136e9eb86786e38eae4d21e04422c98a44d1989fb`.
 Einzelbericht: `build/reference/follow_tournament/result.json`.

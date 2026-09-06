@@ -37,6 +37,14 @@ def scenarios(rows):
     yield 'register_defaults_and_unchanged', [(1,), (2,), (2,), (4,), (2,), (4,)]
     yield 'initial_values_and_aliases', [(3, 'SV_CHEATS', '0', 1), (3, 'g_speed', '123.75', 0),
         (3, 'com_blood', '0', 0), (3, 'sv_maxclients', '16', 0), (1,), (2,)]
+    yield 'command_gate_mirrors_initial', [(3, 'sv_cheats', '-2.75tail', 1),
+        (3, 'DEDICATED', '3.5', 1), (1,), (2,)]
+    yield 'command_gate_mirrors_refresh_and_rebind', [(1,), (3, 'sv_cheats', '0', 1),
+        (3, 'dedicated', '2', 1), (2,), (3, 'sv_cheats', '-3', 1), (3, 'dedicated', '-4tail', 1),
+        (6,), (2,), (2,)]
+    yield 'command_gate_mirrors_frame', [(1,), (3, 'sv_cheats', '0', 1),
+        (3, 'dedicated', '1', 1), (5, 1000), (3, 'sv_cheats', '7', 1),
+        (3, 'dedicated', '0', 1), (5, 1001)]
     yield 'changes_in_original_table_order', [(1,), (3, 'g_inactivity', '4', 1),
         (3, 'g_gravity', '755.75', 1), (3, 'fraglimit', '30', 1), (3, 'g_password', 'secret', 1), (2,), (4,), (2,)]
     yield 'change_twice_before_refresh', [(1,), (3, 'g_speed', '1', 1), (3, 'g_speed', '320', 1), (2,), (2,)]
@@ -144,7 +152,7 @@ def main():
                   output_bytes=sum(r['bytes'] for r in records), table_rows=len(rows), vm_snapshots=43, build_date=build_date,
                   runtime_contracts=13, native_rejections=len(rejections),
                   test_sha256=sha(ROOT / 'build/game_cvar_tests.exe'), oracle_sha256=sha(out / 'game_cvars_oracle.exe'), map_sha256=sha(bsp),
-                  scope='Original engine Cvar_Register/Update and Baseq3 G_RegisterCvars/G_UpdateCvars/CheckCvars with all 46 table rows and 43 VM snapshots. Empty-entity G_RunFrame probes use guarded inactive match/vote boundaries; gameplay remains covered by its separate suites. Missionpack team shaders are excluded.',
+                  scope='Original engine Cvar_Register/Update and Baseq3 G_RegisterCvars/G_UpdateCvars/CheckCvars with all 46 table rows and 43 VM snapshots. Level cheats/dedicated integer mirrors are compared after registration, pending engine changes, VM refresh, module rebind and G_RunFrame. Empty-entity G_RunFrame probes use guarded inactive match/vote boundaries; gameplay remains covered by its separate suites. Missionpack team shaders are excluded.',
                   original_sources={s.relative_to(ROOT).as_posix(): sha(s) for s in sources})
     (out / ('result.json' if not args.case else args.case + '.result.json')).write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8', newline='\n')
     print(f"PASS: {len(records)} scenarios / {result['actions']} actions / {result['exact_words']} exact words / {result['ordered_effects']} ordered effects")

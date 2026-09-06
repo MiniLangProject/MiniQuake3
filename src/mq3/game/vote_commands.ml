@@ -1,7 +1,7 @@
 // Copyright (C) 1999-2005 Id Software, Inc.
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Baseq3 g_cmds.c vote handlers. argv is the already tokenized engine command,
-// including argv[0]; full ClientCommand routing and tokenization remain separate.
+// including argv[0]; client_commands supplies routing, the engine tokenization.
 package mq3.game.vote_commands
 import mq3.game.constants as c
 import mq3.game.votes as votes
@@ -21,6 +21,16 @@ function boundedText(text,capacity)
   end for
   if len(data) >= capacity then return decode(slice(data,0,capacity-1)) end if
   return text
+end function
+function formattedText(level,text,capacity)
+  size = len(bytes(text))
+  if size >= 32000 then return error(492,"Vote format exceeds native temporary storage") end if
+  // Com_sprintf reports overflow before it copies into the destination.
+  // Legacy isolated hosts can omit diagnostics; the full dispatcher observes it.
+  if size >= capacity and level.gamePrintFn != void then
+    level.gamePrintFn(level,"Com_sprintf: overflow of "+str(size)+" in "+str(capacity)+"\n")
+  end if
+  return boundedText(text,capacity)
 end function
 function argument(argv,index,capacity)
   if index >= len(argv) then return "" end if
@@ -72,17 +82,17 @@ function callVote(level,ent,argv)
     mode = textnum.atoi(arg2)
     if mode == 2 or mode < 0 or mode >= 8 then return notice(level,ent,"Invalid gametype.") end if
     names = ["Free For All","Tournament","Single Player","Team Deathmatch","Capture the Flag","One Flag CTF","Overload","Harvester"]
-    level.voteString = boundedText(arg1+" "+str(mode),1024)
-    level.voteDisplayString = boundedText(arg1+" "+names[mode],1024)
+    level.voteString = formattedText(level,arg1+" "+str(mode),1024)
+    level.voteDisplayString = formattedText(level,arg1+" "+names[mode],1024)
   else if strings.equalsIgnoreCaseAscii(arg1,"map") then
     rotation = nextMap(level); command = arg1+" "+arg2
     if rotation != "" then command = command+"; set nextmap \""+rotation+"\"" end if
-    level.voteString = boundedText(command,1024); level.voteDisplayString = level.voteString
+    level.voteString = formattedText(level,command,1024); level.voteDisplayString = level.voteString
   else if strings.equalsIgnoreCaseAscii(arg1,"nextmap") then
     if nextMap(level) == "" then return notice(level,ent,"nextmap not set.") end if
     level.voteString = "vstr nextmap"; level.voteDisplayString = level.voteString
   else
-    level.voteString = boundedText(arg1+" \""+arg2+"\"",1024); level.voteDisplayString = level.voteString
+    level.voteString = formattedText(level,arg1+" \""+arg2+"\"",1024); level.voteDisplayString = level.voteString
   end if
   votes.send(level,-1,"print \""+client.netname+" called a vote.\n\"")
   level.voteTime = level.time; level.voteYes = 1; level.voteNo = 0
@@ -176,7 +186,7 @@ function callTeamVote(level,ent,argv)
       if candidate >= level.maxclients then return notice(level,ent,arg2+" is not a valid player on your team.") end if
     end if
   end if
-  level.teamVoteString[offset] = boundedText(arg1+" "+str(candidate),1024)
+  level.teamVoteString[offset] = formattedText(level,arg1+" "+str(candidate),1024)
   index = 0
   while index < level.maxclients
     member = level.clients[index]

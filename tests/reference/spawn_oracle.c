@@ -4,8 +4,11 @@
 #include "../../Quake-III-Arena-original-source/code/game/g_spawn.c"
 void CM_LoadMap(const char*,qboolean,int*);cvar_t *Cvar_Get(const char*,const char*,int);
 #include "snapvector.inc"
+#include "../../Quake-III-Arena-original-source/ui/menudef.h"
+extern void (*mq3DiagnosticFn)(const char *text);
+extern void (*mq3ErrorFn)(void);
 gentity_t g_entities[MAX_GENTITIES];gclient_t g_clients[MAX_CLIENTS];level_locals_t level;
-vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_warmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit,g_weaponRespawn,g_weaponTeamRespawn,g_inactivity,g_smoothClients,g_dmflags,g_speed,g_forcerespawn,g_debugMove,g_synchronousClients,g_listEntity,g_password,g_allowVote,g_teamAutoJoin,g_maxGameClients,g_teamForceBalance,pmove_fixed,pmove_msec;
+vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_warmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit,g_weaponRespawn,g_weaponTeamRespawn,g_inactivity,g_smoothClients,g_dmflags,g_speed,g_forcerespawn,g_debugMove,g_synchronousClients,g_listEntity,g_password,g_allowVote,g_teamAutoJoin,g_maxGameClients,g_teamForceBalance,g_cheats,g_dedicated,pmove_fixed,pmove_msec;
 void hostServerReset(void*,int,int);void hostLink(void*);void hostUnlink(void*);void hostBrush(void*,const char*);void hostMetadata(int,int*);
 int hostContact(const vec3_t,const vec3_t,void*,int);int hostArea(const vec3_t,const vec3_t,int*,int);
 void hostTrace(trace_t*,const vec3_t,const vec3_t,const vec3_t,const vec3_t,int,int);
@@ -25,7 +28,7 @@ static int voteOutput;
 static int voteCommandsOutput;
 static int clientInfoOutput;
 static int clientConnectOutput;
-static int teamChangeOutput,teamChangeReady,followOutput,intermissionOutput;
+static int teamChangeOutput,teamChangeReady,followOutput,intermissionOutput,clientCommandsOutput;
 static char intermissionSessions[65][1024];
 static void teamChangeState(void);
 void Original_Cmd_FollowCycle_f(gentity_t *ent,int dir);
@@ -52,7 +55,7 @@ static char voteArgvStorage[64][8192],voteNextmap[8192];
 #include "vote_argv.inc"
 int trap_Argc(void){return Cmd_Argc();}
 void trap_Argv(int arg,char *buffer,int size){Cmd_ArgvBuffer(arg,buffer,size);}
-void trap_Cvar_VariableStringBuffer(const char *name,char *buffer,int size){if(clientConnectOutput){connectCvarGet(name,buffer,size);return;}if(!voteCommandsOutput || strcmp(name,"nextmap"))G_Error("unexpected vote Cvar query");Q_strncpyz(buffer,voteNextmap,size);}
+void trap_Cvar_VariableStringBuffer(const char *name,char *buffer,int size){if(clientConnectOutput){connectCvarGet(name,buffer,size);return;}if((!voteCommandsOutput && !clientCommandsOutput) || strcmp(name,"nextmap"))G_Error("unexpected vote Cvar query");Q_strncpyz(buffer,voteNextmap,size);}
 static int teamStatusOutput;
 static int clientThinkGauntletHit;
 static char clientSpawnUserinfo[16384];
@@ -127,6 +130,7 @@ void Touch_DoorTrigger(gentity_t *a,gentity_t *b,trace_t *c) {G_Error("unexpecte
 void *G_Alloc(int n) {void *p=calloc(1,n);if(!p)exit(73);return p;}
 int trap_Cvar_VariableIntegerValue(const char *name){return 0;}
 void trap_GetUserinfo(int client,char *buffer,int size){if(teamChangeOutput){teamChangeEvent(4,client," ");Q_strncpyz(buffer,clientInfoValues[client],size);return;}if(clientConnectOutput){connectEvent(3,client,"","");Q_strncpyz(buffer,clientInfoValues[client],size);return;}if(clientInfoOutput){clientInfoEvent(1,client,"");Q_strncpyz(buffer,clientInfoValues[client],size);return;}if(!clientSpawnOutput)G_Error("unexpected userinfo read");word(60);word(1);word(client);Q_strncpyz(buffer,clientSpawnUserinfo,size);}
+void trap_SetUserinfo(int client,const char *text){if(!clientCommandsOutput || client<0 || client>=64)G_Error("unexpected userinfo write");Q_strncpyz(clientInfoValues[client],text,sizeof(clientInfoValues[client]));teamChangeEvent(21,client,text);}
 void trap_GetUsercmd(int client,usercmd_t *cmd){if(teamChangeOutput){teamChangeEvent(5,client," ");memset(cmd,0,sizeof(*cmd));return;}if(clientThinkOutput){word(90);word(3);word(client);*cmd=clientSpawnCmd;return;}if(!clientSpawnOutput)G_Error("unexpected usercmd read");word(60);word(2);word(client);*cmd=clientSpawnCmd;}
 qboolean CheckGauntletAttack(gentity_t *ent){if(!clientThinkOutput)G_Error("unexpected gauntlet attack");word(90);word(6);word((int)(ent-g_entities));return clientThinkGauntletHit;}
 void FireWeapon(gentity_t *ent){if(!clientThinkOutput)G_Error("unexpected weapon fire");word(90);word(7);word((int)(ent-g_entities));}
@@ -190,11 +194,14 @@ static void reset(int type,int flags) {
     hostServerReset(g_entities,sizeof(gentity_t),64);
 }
 static void countThink(gentity_t *e) {e->count++;}
+static void commandDiagnostic(const char *text){teamChangeEvent(15,-1,text);}
+static void commandError(void){if(teamChangeReady){teamChangeState();word(222);}}
 int main(int argc,char **argv) {
     int checksum,i,step;FILE *in;char *text;
     if(argc<5)return 2;CM_LoadMap(argv[1],qfalse,&checksum);Cvar_Get("cm_noCurves","0",0)->integer=atoi(argv[4]);
     in=fopen(argv[2],"rb");output=fopen(argv[3],"wb");if(!in || !output)return 3;
-    if(argc==6 && !strcmp(argv[5],"--intermission")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=1;runTeamChanges(in);
+    if(argc==6 && !strcmp(argv[5],"--client-commands")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=clientCommandsOutput=1;mq3DiagnosticFn=commandDiagnostic;mq3ErrorFn=commandError;runTeamChanges(in);
+    } else if(argc==6 && !strcmp(argv[5],"--intermission")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=1;runTeamChanges(in);
     } else if(argc==6 && !strcmp(argv[5],"--follow-tournament")){reset(0,0);teamChangeOutput=followOutput=1;runTeamChanges(in);
     } else if(argc==6 && !strcmp(argv[5],"--team-changes")){reset(0,0);teamChangeOutput=1;runTeamChanges(in);
     } else if(argc==6 && !strcmp(argv[5],"--think")) {

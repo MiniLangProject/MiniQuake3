@@ -61,6 +61,12 @@ function syncValue(level,row)
   v = row.vm
   if v == void then return void end if
   switch row.vmName
+    case "g_cheats"
+      level.cheats = v.integer
+    end case
+    case "g_dedicated"
+      level.dedicated = v.integer
+    end case
     case "g_gametype"
       level.spawner.gametype = v.integer
     end case

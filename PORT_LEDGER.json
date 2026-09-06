@@ -5165,7 +5165,8 @@
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
             "src/mq3/game/shooters.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/utility_commands.ml"
           ],
           "status": "tested_subset"
         },
@@ -5179,7 +5180,8 @@
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
             "src/mq3/game/shooters.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/utility_commands.ml"
           ],
           "status": "tested_subset"
         },
@@ -5193,7 +5195,8 @@
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
             "src/mq3/game/shooters.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/utility_commands.ml"
           ],
           "status": "tested_subset"
         },
@@ -5207,7 +5210,8 @@
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
             "src/mq3/game/shooters.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/utility_commands.ml"
           ],
           "status": "tested_subset"
         },
@@ -5221,7 +5225,8 @@
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
             "src/mq3/game/shooters.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/utility_commands.ml"
           ],
           "status": "tested_subset"
         },
@@ -5235,7 +5240,8 @@
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
             "src/mq3/game/shooters.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/utility_commands.ml"
           ],
           "status": "tested_subset"
         },
@@ -5249,7 +5255,8 @@
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
             "src/mq3/game/shooters.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/utility_commands.ml"
           ],
           "status": "tested_subset"
         },
@@ -5263,7 +5270,8 @@
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
             "src/mq3/game/shooters.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/utility_commands.ml"
           ],
           "status": "tested_subset"
         },
@@ -5277,7 +5285,8 @@
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
             "src/mq3/game/shooters.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/utility_commands.ml"
           ],
           "status": "tested_subset"
         },
@@ -5291,9 +5300,18 @@
             "src/mq3/game/jumppad.ml",
             "src/mq3/game/snapshot.ml",
             "src/mq3/game/shooters.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/utility_commands.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "BG_FindItem",
+          "target_files": [
+            "src/mq3/game/utility_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All 35 Baseq3 item pickup names, original order and ASCII case-insensitive matching, compared through give with real spawn/finish/touch/free. Missionpack items are excluded."
         }
       ],
       "target": [
@@ -5304,7 +5322,8 @@
         "src/mq3/game/jumppad.ml",
         "src/mq3/game/snapshot.ml",
         "src/mq3/game/shooters.ml",
-        "src/mq3/game/items.ml"
+        "src/mq3/game/items.ml",
+        "src/mq3/game/utility_commands.ml"
       ],
       "status": "partial",
       "tests": [
@@ -5314,7 +5333,8 @@
         "scripts/test_server_world.py",
         "scripts/test_entitystate.py",
         "scripts/test_missiles.py",
-        "scripts/test_items.py"
+        "scripts/test_items.py",
+        "scripts/test_client_commands.py"
       ]
     },
     {
@@ -6637,7 +6657,7 @@
             "src/mq3/game/vote_commands.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Command tokenization/full ClientCommand dispatch and engine/network command delivery remain boundaries."
+          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Full ClientCommand dispatch is separately ported and compared; command tokenization and engine/network command delivery remain boundaries."
         },
         {
           "original": "Cmd_CallVote_f",
@@ -6645,7 +6665,7 @@
             "src/mq3/game/vote_commands.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Command tokenization/full ClientCommand dispatch and engine/network command delivery remain boundaries."
+          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Full ClientCommand dispatch is separately ported and compared; command tokenization and engine/network command delivery remain boundaries."
         },
         {
           "original": "Cmd_Vote_f",
@@ -6653,7 +6673,7 @@
             "src/mq3/game/vote_commands.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Command tokenization/full ClientCommand dispatch and engine/network command delivery remain boundaries."
+          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Full ClientCommand dispatch is separately ported and compared; command tokenization and engine/network command delivery remain boundaries."
         },
         {
           "original": "Cmd_CallTeamVote_f",
@@ -6661,7 +6681,7 @@
             "src/mq3/game/vote_commands.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Command tokenization/full ClientCommand dispatch and engine/network command delivery remain boundaries."
+          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Full ClientCommand dispatch is separately ported and compared; command tokenization and engine/network command delivery remain boundaries."
         },
         {
           "original": "Cmd_TeamVote_f",
@@ -6669,7 +6689,7 @@
             "src/mq3/game/vote_commands.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Command tokenization/full ClientCommand dispatch and engine/network command delivery remain boundaries."
+          "scope": "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Full ClientCommand dispatch is separately ported and compared; command tokenization and engine/network command delivery remain boundaries."
         },
         {
           "original": "BroadcastTeamChange",
@@ -6685,7 +6705,7 @@
             "src/mq3/game/team_changes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 team/spectator selection, force balance, capacity override, same-team guard, actual body/death/CTF/leader/userinfo/ClientBegin/Spawn/rank integration and exact command argc/cooldown/loss order. StopFollowing preserves unrelated session fields and clears PMF_FOLLOW/SVF_BOT. Every host effect and action compares all modeled clients, entityStates and selected private/spatial entity fields. Movement/end-frame are observed callbacks in this integration suite; defaults remain ported. Follow commands and tournament promotion are separately ported and compared. Match-transition orchestration is separately ported and compared. Full ClientCommand routing and engine map execution remain open."
+          "scope": "Unchanged Baseq3 team/spectator selection, force balance, capacity override, same-team guard, actual body/death/CTF/leader/userinfo/ClientBegin/Spawn/rank integration and exact command argc/cooldown/loss order. StopFollowing preserves unrelated session fields and clears PMF_FOLLOW/SVF_BOT. Every host effect and action compares all modeled clients, entityStates and selected private/spatial entity fields. Movement/end-frame are observed callbacks in this integration suite; defaults remain ported. Follow commands and tournament promotion are separately ported and compared. Match-transition orchestration is separately ported and compared. Full ClientCommand routing is separately ported and compared; engine map execution remains open."
         },
         {
           "original": "StopFollowing",
@@ -6693,7 +6713,7 @@
             "src/mq3/game/team_changes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 team/spectator selection, force balance, capacity override, same-team guard, actual body/death/CTF/leader/userinfo/ClientBegin/Spawn/rank integration and exact command argc/cooldown/loss order. StopFollowing preserves unrelated session fields and clears PMF_FOLLOW/SVF_BOT. Every host effect and action compares all modeled clients, entityStates and selected private/spatial entity fields. Movement/end-frame are observed callbacks in this integration suite; defaults remain ported. Follow commands and tournament promotion are separately ported and compared. Match-transition orchestration is separately ported and compared. Full ClientCommand routing and engine map execution remain open."
+          "scope": "Unchanged Baseq3 team/spectator selection, force balance, capacity override, same-team guard, actual body/death/CTF/leader/userinfo/ClientBegin/Spawn/rank integration and exact command argc/cooldown/loss order. StopFollowing preserves unrelated session fields and clears PMF_FOLLOW/SVF_BOT. Every host effect and action compares all modeled clients, entityStates and selected private/spatial entity fields. Movement/end-frame are observed callbacks in this integration suite; defaults remain ported. Follow commands and tournament promotion are separately ported and compared. Match-transition orchestration is separately ported and compared. Full ClientCommand routing is separately ported and compared; engine map execution remains open."
         },
         {
           "original": "Cmd_Team_f",
@@ -6701,7 +6721,7 @@
             "src/mq3/game/team_changes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 team/spectator selection, force balance, capacity override, same-team guard, actual body/death/CTF/leader/userinfo/ClientBegin/Spawn/rank integration and exact command argc/cooldown/loss order. StopFollowing preserves unrelated session fields and clears PMF_FOLLOW/SVF_BOT. Every host effect and action compares all modeled clients, entityStates and selected private/spatial entity fields. Movement/end-frame are observed callbacks in this integration suite; defaults remain ported. Follow commands and tournament promotion are separately ported and compared. Match-transition orchestration is separately ported and compared. Full ClientCommand routing and engine map execution remain open."
+          "scope": "Unchanged Baseq3 team/spectator selection, force balance, capacity override, same-team guard, actual body/death/CTF/leader/userinfo/ClientBegin/Spawn/rank integration and exact command argc/cooldown/loss order. StopFollowing preserves unrelated session fields and clears PMF_FOLLOW/SVF_BOT. Every host effect and action compares all modeled clients, entityStates and selected private/spatial entity fields. Movement/end-frame are observed callbacks in this integration suite; defaults remain ported. Follow commands and tournament promotion are separately ported and compared. Match-transition orchestration is separately ported and compared. Full ClientCommand routing is separately ported and compared; engine map execution remains open."
         },
         {
           "original": "SanitizeString",
@@ -6709,7 +6729,7 @@
             "src/mq3/game/follow_commands.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing remains open."
+          "scope": "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing is separately ported and compared; engine command tokenization remains open."
         },
         {
           "original": "ClientNumberFromString",
@@ -6717,7 +6737,7 @@
             "src/mq3/game/follow_commands.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing remains open."
+          "scope": "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing is separately ported and compared; engine command tokenization remains open."
         },
         {
           "original": "Cmd_Follow_f",
@@ -6725,7 +6745,7 @@
             "src/mq3/game/follow_commands.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing remains open."
+          "scope": "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing is separately ported and compared; engine command tokenization remains open."
         },
         {
           "original": "Cmd_FollowCycle_f",
@@ -6733,7 +6753,199 @@
             "src/mq3/game/follow_commands.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing remains open."
+          "scope": "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing is separately ported and compared; engine command tokenization remains open."
+        },
+        {
+          "original": "ClientCommand",
+          "target_files": [
+            "src/mq3/game/client_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "ConcatArgs",
+          "target_files": [
+            "src/mq3/game/command_args.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "G_SayTo",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "G_Say",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_Say_f",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_Tell_f",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "G_VoiceTo",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "G_Voice",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_Voice_f",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_VoiceTell_f",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_VoiceTaunt_f",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "gc_orders",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_GameCommand_f",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_Where_f",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "CheatsOk",
+          "target_files": [
+            "src/mq3/game/utility_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_Give_f",
+          "target_files": [
+            "src/mq3/game/utility_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_God_f",
+          "target_files": [
+            "src/mq3/game/utility_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_Notarget_f",
+          "target_files": [
+            "src/mq3/game/utility_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_Noclip_f",
+          "target_files": [
+            "src/mq3/game/utility_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_LevelShot_f",
+          "target_files": [
+            "src/mq3/game/utility_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_TeamTask_f",
+          "target_files": [
+            "src/mq3/game/utility_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_Kill_f",
+          "target_files": [
+            "src/mq3/game/utility_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_SetViewpos_f",
+          "target_files": [
+            "src/mq3/game/utility_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Cmd_Stats_f",
+          "target_files": [
+            "src/mq3/game/utility_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
         }
       ],
       "target": [
@@ -6741,7 +6953,11 @@
         "src/mq3/game/vote_commands.ml",
         "src/mq3/game/session.ml",
         "src/mq3/game/team_changes.ml",
-        "src/mq3/game/follow_commands.ml"
+        "src/mq3/game/follow_commands.ml",
+        "src/mq3/game/client_commands.ml",
+        "src/mq3/game/command_args.ml",
+        "src/mq3/game/chat_commands.ml",
+        "src/mq3/game/utility_commands.ml"
       ],
       "status": "partial",
       "tests": [
@@ -6751,7 +6967,8 @@
         "scripts/test_client_info.py",
         "scripts/test_client_connect.py",
         "scripts/test_team_changes.py",
-        "scripts/test_follow_tournament.py"
+        "scripts/test_follow_tournament.py",
+        "scripts/test_client_commands.py"
       ]
     },
     {
@@ -7178,7 +7395,8 @@
       "tests": [
         "scripts/test_missiles.py",
         "scripts/test_bodies.py",
-        "scripts/test_items.py"
+        "scripts/test_items.py",
+        "scripts/test_client_commands.py"
       ]
     },
     {
@@ -7369,7 +7587,8 @@
         "scripts/test_client_connect.py",
         "scripts/test_team_changes.py",
         "scripts/test_follow_tournament.py",
-        "scripts/test_intermission.py"
+        "scripts/test_intermission.py",
+        "scripts/test_client_commands.py"
       ]
     },
     {
@@ -7670,7 +7889,7 @@
             "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged uses its ported default, with real team-vote integration in the userinfo suite; legacy vote suites retain an override. Engine delivery, complete command routing and network transport are open."
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged uses its ported default, with real team-vote integration in the userinfo suite; legacy vote suites retain an override. Full ClientCommand routing is separately ported and compared; engine delivery and network transport are open."
         },
         {
           "original": "CheckTeamVote",
@@ -7678,7 +7897,7 @@
             "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged uses its ported default, with real team-vote integration in the userinfo suite; legacy vote suites retain an override. Engine delivery, complete command routing and network transport are open."
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged uses its ported default, with real team-vote integration in the userinfo suite; legacy vote suites retain an override. Full ClientCommand routing is separately ported and compared; engine delivery and network transport are open."
         },
         {
           "original": "PrintTeam",
@@ -7686,7 +7905,7 @@
             "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged uses its ported default, with real team-vote integration in the userinfo suite; legacy vote suites retain an override. Engine delivery, complete command routing and network transport are open."
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged uses its ported default, with real team-vote integration in the userinfo suite; legacy vote suites retain an override. Full ClientCommand routing is separately ported and compared; engine delivery and network transport are open."
         },
         {
           "original": "SetLeader",
@@ -7694,7 +7913,7 @@
             "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged uses its ported default, with real team-vote integration in the userinfo suite; legacy vote suites retain an override. Engine delivery, complete command routing and network transport are open."
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged uses its ported default, with real team-vote integration in the userinfo suite; legacy vote suites retain an override. Full ClientCommand routing is separately ported and compared; engine delivery and network transport are open."
         },
         {
           "original": "CheckTeamLeader",
@@ -7702,7 +7921,7 @@
             "src/mq3/game/votes.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged uses its ported default, with real team-vote integration in the userinfo suite; legacy vote suites retain an override. Engine delivery, complete command routing and network transport are open."
+          "scope": "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged uses its ported default, with real team-vote integration in the userinfo suite; legacy vote suites retain an override. Full ClientCommand routing is separately ported and compared; engine delivery and network transport are open."
         },
         {
           "original": "CheckCvars",
@@ -7842,7 +8061,8 @@
         "scripts/test_client_connect.py",
         "scripts/test_team_changes.py",
         "scripts/test_follow_tournament.py",
-        "scripts/test_intermission.py"
+        "scripts/test_intermission.py",
+        "scripts/test_client_commands.py"
       ]
     },
     {
@@ -9377,6 +9597,14 @@
           ],
           "status": "tested_subset",
           "scope": "Unchanged Baseq3 location selection with actual CM PVS/area portals, binary32 distance/ties, strict 1000ms interval, two-pass updates and exact 32-member overlay packets. The original preliminary rank selection/sort is retained; its result is unused by the original output loop. Engine command delivery remains a callback; invalid client bindings/slots, cyclic chains and non-finite PVS inputs fail safely."
+        },
+        {
+          "original": "Team_GetLocationMsg",
+          "target_files": [
+            "src/mq3/game/team_status.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original PVS location selection, nonzero count color clamping and mutation, MSVC null-string formatting, byte truncation and Com_sprintf diagnostics, compared through team chat and tells."
         }
       ],
       "target": [
@@ -9396,7 +9624,8 @@
         "scripts/test_items.py",
         "scripts/test_team_status.py",
         "scripts/test_client_info.py",
-        "scripts/test_team_changes.py"
+        "scripts/test_team_changes.py",
+        "scripts/test_client_commands.py"
       ]
     },
     {
@@ -9984,6 +10213,14 @@
             "src/mq3/game/items.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "vtos",
+          "target_files": [
+            "src/mq3/game/entities.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Native truncating float-to-int position formatting and 32-byte Com_sprintf truncation/diagnostic, used by where and item startsolid diagnostics; owned strings replace the original rotating static buffers."
         }
       ],
       "target": [
@@ -10005,7 +10242,8 @@
         "scripts/test_targets.py",
         "scripts/test_bodies.py",
         "scripts/test_items.py",
-        "scripts/test_intermission.py"
+        "scripts/test_intermission.py",
+        "scripts/test_client_commands.py"
       ]
     },
     {
@@ -10523,6 +10761,22 @@
           ],
           "status": "tested_subset",
           "scope": "Original info-string lookup: ASCII case-insensitive first key, optional leading separator, empty/malformed pairs, NULL lookup and 8191-byte bound. Validation excludes only quotes and semicolons. Embedded NUL and invalid copy capacity fail safely. Owned MiniLang strings replace C's alternating static result buffers; no pointer aliasing is claimed. ClientSpawn shares lookup and the original 1023-byte userinfo copy."
+        },
+        {
+          "original": "Info_RemoveKey",
+          "target_files": [
+            "src/mq3/shared/info.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Case-sensitive first-key removal and value insertion at the front with original invalid-character, removal, formatting and size-check order. Compared through Cmd_TeamTask_f userinfo writes and actual ClientUserinfoChanged. Exactly 1024 bytes would overrun the native terminator and are rejected separately. MiniLang owns result strings; C pointer aliasing is not claimed."
+        },
+        {
+          "original": "Info_SetValueForKey",
+          "target_files": [
+            "src/mq3/shared/info.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Case-sensitive first-key removal and value insertion at the front with original invalid-character, removal, formatting and size-check order. Compared through Cmd_TeamTask_f userinfo writes and actual ClientUserinfoChanged. Exactly 1024 bytes would overrun the native terminator and are rejected separately. MiniLang owns result strings; C pointer aliasing is not claimed."
         }
       ],
       "target": [
@@ -10532,7 +10786,8 @@
       "status": "partial",
       "tests": [
         "scripts/test_core.py",
-        "scripts/test_client_info.py"
+        "scripts/test_client_info.py",
+        "scripts/test_client_commands.py"
       ]
     },
     {
@@ -30059,10 +30314,55 @@
       "sha256": "36792a7c9733dbabc2da065cf9ac7c85030fc5e8a7c6bfc00ebbaa0283c98ad8",
       "category": "tool",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "retained_original",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "VOICECHAT_DEATHINSULT",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The five Baseq3 voice-taunt string constants used by Cmd_VoiceTaunt_f. No UI, audio or Missionpack implementation is implied."
+        },
+        {
+          "original": "VOICECHAT_KILLGAUNTLET",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The five Baseq3 voice-taunt string constants used by Cmd_VoiceTaunt_f. No UI, audio or Missionpack implementation is implied."
+        },
+        {
+          "original": "VOICECHAT_KILLINSULT",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The five Baseq3 voice-taunt string constants used by Cmd_VoiceTaunt_f. No UI, audio or Missionpack implementation is implied."
+        },
+        {
+          "original": "VOICECHAT_PRAISE",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The five Baseq3 voice-taunt string constants used by Cmd_VoiceTaunt_f. No UI, audio or Missionpack implementation is implied."
+        },
+        {
+          "original": "VOICECHAT_TAUNT",
+          "target_files": [
+            "src/mq3/game/chat_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The five Baseq3 voice-taunt string constants used by Cmd_VoiceTaunt_f. No UI, audio or Missionpack implementation is implied."
+        }
+      ],
+      "target": [
+        "src/mq3/game/chat_commands.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_client_commands.py"
+      ]
     },
     {
       "source": "ui/menus.txt",

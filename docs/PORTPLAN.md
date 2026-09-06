@@ -87,6 +87,8 @@ Native ZIP-Helfer nur mit festgelegter Grenze; Such- und Pure-Logik bleibt MiniL
 ist einschließlich stabiler Handles, Latching und Spielmodul-Tabelle portiert.
 Die gemeinsame [Info-Schlüsselsuche und -Validierung](CLIENT_INFO.md) ist gegen
 die Originalfunktionen geprüft und mit Userinfo sowie `ClientSpawn` verbunden.
+`Info_RemoveKey` und `Info_SetValueForKey` ergänzen inzwischen die über
+[`teamtask`](CLIENT_COMMANDS.md) geprüfte Userinfo-Mutation.
 `cvar_restart`, Config-Persistenz, Command-Buffer und vollständige Engine-Schleife
 bleiben offene Teile dieser Abnahme.
 
@@ -206,8 +208,10 @@ Gewinner-/Verliererwechsel und Warmup mit den tatsächlichen Spielabläufen.
 [Intermission und Levelende](INTERMISSION.md) verbinden diese Helfer inzwischen
 mit der Kameraplatzierung, echtem Respawn, Scoreboards und Sitzungsspeicherung.
 Die Spielregeln fordern Maprestart beziehungsweise `nextmap` in Originalreihenfolge an;
-die Ausführung durch die Engine bleibt offen. Als Nächstes folgen die vollständige
-Client-Befehlsverteilung und weitere Waffenpfade. Weitere Spielobjekte,
+die Ausführung durch die Engine bleibt offen. Die vollständige
+[Client-Befehlsverteilung](CLIENT_COMMANDS.md) verbindet jetzt alle Baseq3-Handler,
+Textchat/Voice, Cheats, Item-Give, Suicide, Teamtask und Teleport. Als Nächstes
+folgen weitere Waffenpfade. Weitere Spielobjekte,
 Mover-Pushing und der vollständige Server fehlen weiterhin.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
@@ -242,7 +246,8 @@ und Bot-Shutdown bleibt eine Pflichtschnittstelle. Follow-Befehle verwenden
 bereits die tatsächlichen Teamwechsel; `SpectatorThink` und `CheckTournament`
 verwenden standardmäßig den Follow-Zyklus beziehungsweise die Duell-Warteschlange.
 Die Intermission- und Levelende-Funktionen verwenden diese Spielabläufe ebenfalls
-direkt. Engine-Mapwechsel/-Neustart, Modulinitialisierung, Client-Befehlsverteilung,
+direkt. Die Client-Befehlsverteilung ist ebenfalls verbunden und geprüft.
+Engine-Mapwechsel/-Neustart, Modulinitialisierung, Engine-Kommando-Tokenisierung,
 Bot-/Einzelspieler-Ergebnissysteme und Netzwerkzustellung sind die nächsten Grenzen.
 Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert

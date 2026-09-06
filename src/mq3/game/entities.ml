@@ -264,6 +264,9 @@ struct Level
   botInterbreedEndMatchFn
   updateTournamentInfoFn
   spawnVictoryPadsFn
+  cheats
+  dedicated
+  userinfoSetFn
 end struct
 function createClient(state,team,cmdAngles)
   return Client(state,team,cmdAngles,false,0,0,0,[0.0,0.0,0.0],false,0,0,0.0,0,void,0,0,0,0,0,0,"",false,0,0,0,0,0,0.0,0,0,0,false,0,0,0,0.0,0.0,
@@ -301,7 +304,7 @@ function blank(slot,r)
 end function
 function create(world)
   scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void,false,void,0,1000.0,0,void,0,array(256,0),1,0,[],[0.0,0.0,0.0],[0.0,0.0,0.0],[],0,0,array(64,0),array(4,0),0,0,0,0,0,0,array(2,0),0,0,0,0,false,0,void,void,void,0,void,void,void,void,0,0,0,0,0,0.0,0,5,30,0,void,void,void,void,void,0,false,void,800,320,0,false,8,false,0,void,void,void,void,void,void,void,void,0,false,void,0,20,0,0,void,void,
-    "",0,0,0,0,array(2,""),array(2,0),array(2,0),array(2,0),void,0,cvarMaintenance.create(),void,void,"",0,false,0,0,void,void,void,void,0,void,void,void,void,void,void)
+    "",0,0,0,0,array(2,""),array(2,0),array(2,0),array(2,0),void,0,cvarMaintenance.create(),void,void,"",0,false,0,0,void,void,void,void,0,void,void,void,void,void,void,0,0,void)
   for i = 0 to 1023
     level.entities = level.entities+[blank(i,scene.entities[i])]
   end for
@@ -392,6 +395,17 @@ function setOrigin(ent,origin)
   ent.s.pos.trBase = movement.copy(origin); ent.s.pos.trType = c.TR_STATIONARY; ent.s.pos.trTime = 0; ent.s.pos.trDuration = 0
   ent.s.pos.trDelta = [0.0,0.0,0.0]; ent.r.currentOrigin = movement.copy(origin)
   return void
+end function
+function vtos(level,vector)
+  // Original g_utils.c vtos uses float-to-int truncation and Com_sprintf into
+  // 32 bytes. Return owned text instead of one of eight static native buffers.
+  text = "("+str(n.trunc32(vector[0]))+" "+str(n.trunc32(vector[1]))+" "+str(n.trunc32(vector[2]))+")"
+  data = bytes(text); size = len(data)
+  if size >= 32 then
+    if level.gamePrintFn != void then level.gamePrintFn(level,"Com_sprintf: overflow of "+str(size)+" in 32\n") end if
+    return decode(slice(data,0,31))
+  end if
+  return text
 end function
 function tempEntity(level,origin,event)
   ent = spawn(level); ent.s.eType = c.ET_EVENTS+event; ent.classname = "tempEntity"

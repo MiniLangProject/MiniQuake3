@@ -200,6 +200,26 @@ def main():
     for source,(targets,symbols) in intermission_mappings.items():
         old_targets,old_symbols,tests=mappings[source]
         mappings[source]=(list(dict.fromkeys(old_targets+targets)),old_symbols+symbols,list(dict.fromkeys(tests+["scripts/test_intermission.py"])))
+    command_groups={
+        "src/mq3/game/client_commands.ml":["ClientCommand"],
+        "src/mq3/game/command_args.ml":["ConcatArgs"],
+        "src/mq3/game/chat_commands.ml":["G_SayTo","G_Say","Cmd_Say_f","Cmd_Tell_f","G_VoiceTo","G_Voice","Cmd_Voice_f","Cmd_VoiceTell_f","Cmd_VoiceTaunt_f","gc_orders","Cmd_GameCommand_f","Cmd_Where_f"],
+        "src/mq3/game/utility_commands.ml":["CheatsOk","Cmd_Give_f","Cmd_God_f","Cmd_Notarget_f","Cmd_Noclip_f","Cmd_LevelShot_f","Cmd_TeamTask_f","Cmd_Kill_f","Cmd_SetViewpos_f","Cmd_Stats_f"],
+    }
+    command_mappings={
+        "code/game/g_cmds.c":(list(command_groups),[symbol for names in command_groups.values() for symbol in names]),
+        "code/game/g_team.c":(["src/mq3/game/team_status.ml"],["Team_GetLocationMsg"]),
+        "code/game/q_shared.c":(["src/mq3/shared/info.ml"],["Info_RemoveKey","Info_SetValueForKey"]),
+        "code/game/bg_misc.c":(["src/mq3/game/utility_commands.ml"],["BG_FindItem"]),
+        "code/game/g_utils.c":(["src/mq3/game/entities.ml"],["vtos"]),
+        "code/game/g_items.c":(["src/mq3/game/items.ml"],[]),
+        "code/game/g_local.h":(["src/mq3/game/entities.ml"],[]),
+        "code/game/g_main.c":(["src/mq3/game/cvars.ml"],[]),
+        "ui/menudef.h":(["src/mq3/game/chat_commands.ml"],["VOICECHAT_DEATHINSULT","VOICECHAT_KILLGAUNTLET","VOICECHAT_KILLINSULT","VOICECHAT_PRAISE","VOICECHAT_TAUNT"]),
+    }
+    for source,(targets,symbols) in command_mappings.items():
+        old_targets,old_symbols,tests=mappings.get(source,([],[],[]))
+        mappings[source]=(list(dict.fromkeys(old_targets+targets)),list(dict.fromkeys(old_symbols+symbols)),list(dict.fromkeys(tests+["scripts/test_client_commands.py"])))
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text(encoding="utf-8"))
     for entry in ledger["files"]:
@@ -224,15 +244,15 @@ def main():
                         symbol["scope"] = "All 46 pinned Baseq3 table rows and 43 VM snapshots are compared with the actual original engine registry: flags/defaults/order, registration, change counters, latched values, exact broadcasts and gameplay field synchronization. G_RemapTeamShaders has an empty Baseq3 body; Missionpack is excluded. Build date is explicit host metadata matching the native compiler's __DATE__. Empty-entity frame probes use guarded inactive match/vote boundaries."
                     elif symbol["original"] in ("CheckVote","CheckTeamVote","PrintTeam","SetLeader","CheckTeamLeader"):
                         symbol["target_files"] = ["src/mq3/game/votes.ml"]
-                        symbol["scope"] = "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged uses its ported default, with real team-vote integration in the userinfo suite; legacy vote suites retain an override. Engine delivery, complete command routing and network transport are open."
+                        symbol["scope"] = "Unchanged Baseq3 vote resolution and team leadership: integer majority thresholds, timeout and delayed execution, configstrings, ordered messages and leader flags, including the original two-loop auto-selection. Actual G_RunFrame vote sequences and full call/cast/resolution chains are compared. ClientUserinfoChanged uses its ported default, with real team-vote integration in the userinfo suite; legacy vote suites retain an override. Full ClientCommand routing is separately ported and compared; engine delivery and network transport are open."
             if entry["source"] == "code/game/g_cmds.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] in ("SetTeam","StopFollowing","Cmd_Team_f"):
                         symbol["target_files"] = ["src/mq3/game/team_changes.ml"]
-                        symbol["scope"] = "Unchanged Baseq3 team/spectator selection, force balance, capacity override, same-team guard, actual body/death/CTF/leader/userinfo/ClientBegin/Spawn/rank integration and exact command argc/cooldown/loss order. StopFollowing preserves unrelated session fields and clears PMF_FOLLOW/SVF_BOT. Every host effect and action compares all modeled clients, entityStates and selected private/spatial entity fields. Movement/end-frame are observed callbacks in this integration suite; defaults remain ported. Follow commands and tournament promotion are separately ported and compared. Match-transition orchestration is separately ported and compared. Full ClientCommand routing and engine map execution remain open."
+                        symbol["scope"] = "Unchanged Baseq3 team/spectator selection, force balance, capacity override, same-team guard, actual body/death/CTF/leader/userinfo/ClientBegin/Spawn/rank integration and exact command argc/cooldown/loss order. StopFollowing preserves unrelated session fields and clears PMF_FOLLOW/SVF_BOT. Every host effect and action compares all modeled clients, entityStates and selected private/spatial entity fields. Movement/end-frame are observed callbacks in this integration suite; defaults remain ported. Follow commands and tournament promotion are separately ported and compared. Match-transition orchestration is separately ported and compared. Full ClientCommand routing is separately ported and compared; engine map execution remains open."
                     elif symbol["original"] in ("SanitizeString","ClientNumberFromString","Cmd_Follow_f","Cmd_FollowCycle_f"):
                         symbol["target_files"] = ["src/mq3/game/follow_commands.ml"]
-                        symbol["scope"] = "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing remains open."
+                        symbol["scope"] = "Unchanged Baseq3 signed-char/ESC sanitization, numeric-first/name lookup, follow start/stop and cycling with actual team/death/spawn/rank effects. Native partial state at four bad-direction errors and SpectatorThink attack edges are compared. Trailing ESC would read beyond the C terminator; zero client ranges and invalid-start cycles without candidates can access invalid storage or hang. MiniLang rejects these separately without claiming native parity. Full ClientCommand routing is separately ported and compared; engine command tokenization remains open."
             if entry["source"] == "code/server/sv_init.c":
                 entry["symbol_mapping"][0]["scope"] = "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
             if entry["source"] == "code/game/g_utils.c":
@@ -281,7 +301,7 @@ def main():
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] in ("gameNames","Cmd_CallVote_f","Cmd_Vote_f","Cmd_CallTeamVote_f","Cmd_TeamVote_f"):
                         symbol["target_files"] = ["src/mq3/game/vote_commands.ml"]
-                        symbol["scope"] = "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Command tokenization/full ClientCommand dispatch and engine/network command delivery remain boundaries."
+                        symbol["scope"] = "Unchanged Baseq3 global/team vote initiation and casting, native argv byte copies, permission order, original vote-count non-increment and msg[1] Yes quirks, map rotation, display strings, team target names/slots, flags and configstrings. Every callback and action compares all 64 client vote/leader states; complete call/cast/resolution chains are included. MiniLang reads actual engine nextmap registry and refreshes allowVote from registered VM Cvars. Original overflowing team strcat is safely rejected. Legacy vote suites override ClientUserinfoChanged; its ported default is integrated through real team-vote sequences in test_client_info.py. Full ClientCommand dispatch is separately ported and compared; command tokenization and engine/network command delivery remain boundaries."
                     elif symbol["original"] == "BroadcastTeamChange":
                         symbol["target_files"] = ["src/mq3/game/session.ml"]
                         symbol["scope"] = "All unchanged Baseq3 team announcement branches and exact cp payloads/recipient, including spectator suppression and the two autojoin announcements inside ClientConnect. Server command transport remains a boundary."
@@ -334,6 +354,29 @@ def main():
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] == "SV_inPVS":
                         symbol["scope"] = "Point cluster visibility plus area connectivity, used by and compared through Team_FragBonuses and Team_GetLocation, including explicit PVS masks and portal open/close sequences. Solid-only negative destination clusters are rejected safely instead of indexing before the C mask."
+    # Narrow the new command helpers to their actual MiniLang definitions.
+    for entry in ledger["files"]:
+        for symbol in entry.get("symbol_mapping",[]):
+            name=symbol["original"]
+            if entry["source"]=="code/game/g_cmds.c":
+                for target,names in command_groups.items():
+                    if name in names:
+                        symbol["target_files"]=[target]
+                        symbol["scope"]="Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+            elif entry["source"]=="code/game/g_team.c" and name=="Team_GetLocationMsg":
+                symbol["target_files"]=["src/mq3/game/team_status.ml"]
+                symbol["scope"]="Original PVS location selection, nonzero count color clamping and mutation, MSVC null-string formatting, byte truncation and Com_sprintf diagnostics, compared through team chat and tells."
+            elif entry["source"]=="code/game/q_shared.c" and name in ("Info_RemoveKey","Info_SetValueForKey"):
+                symbol["target_files"]=["src/mq3/shared/info.ml"]
+                symbol["scope"]="Case-sensitive first-key removal and value insertion at the front with original invalid-character, removal, formatting and size-check order. Compared through Cmd_TeamTask_f userinfo writes and actual ClientUserinfoChanged. Exactly 1024 bytes would overrun the native terminator and are rejected separately. MiniLang owns result strings; C pointer aliasing is not claimed."
+            elif entry["source"]=="code/game/bg_misc.c" and name=="BG_FindItem":
+                symbol["target_files"]=["src/mq3/game/utility_commands.ml"]
+                symbol["scope"]="All 35 Baseq3 item pickup names, original order and ASCII case-insensitive matching, compared through give with real spawn/finish/touch/free. Missionpack items are excluded."
+            elif entry["source"]=="code/game/g_utils.c" and name=="vtos":
+                symbol["target_files"]=["src/mq3/game/entities.ml"]
+                symbol["scope"]="Native truncating float-to-int position formatting and 32-byte Com_sprintf truncation/diagnostic, used by where and item startsolid diagnostics; owned strings replace the original rotating static buffers."
+            elif entry["source"]=="ui/menudef.h":
+                symbol["scope"]="The five Baseq3 voice-taunt string constants used by Cmd_VoiceTaunt_f. No UI, audio or Missionpack implementation is implied."
     path.write_text(json.dumps(ledger,indent=2)+"\n",encoding="utf-8",newline="\n")
     evidence=[]
     for path in sorted((ROOT / "build/reference").rglob("result.json")):

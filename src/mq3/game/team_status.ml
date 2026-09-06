@@ -5,6 +5,7 @@ package mq3.game.team_status
 import mq3.game.constants as c
 import mq3.server.world as sv
 import mq3.compat.numeric as n
+import mq3.shared.info as infoStrings
 const TEAM_MAXOVERLAY = 32
 const TEAM_LOCATION_UPDATE_TIME = 1000
 
@@ -22,6 +23,25 @@ function getLocation(level,ent)
     location = location.nextTrain
   end while
   return best
+end function
+function getLocationMsg(level,ent,capacity)
+  best = getLocation(level,ent)
+  if best == void then return void end if
+  text = best.message
+  // The pinned MSVC formatter emits this spelling for a NULL %s argument.
+  if text == void then text = "(null)" end if
+  if best.count != 0 then
+    if best.count < 0 then best.count = 0 end if
+    if best.count > 7 then best.count = 7 end if
+    text = "^"+str(best.count)+text+"^7"
+  end if
+  size = len(infoStrings.textBytes(text))
+  if size >= 32000 then return error(490,"Location message exceeds native temporary storage") end if
+  if size >= capacity then
+    if level.gamePrintFn == void then return error(490,"Location truncation requires game-print delivery") end if
+    level.gamePrintFn(level,"Com_sprintf: overflow of "+str(size)+" in "+str(capacity)+"\n")
+  end if
+  return infoStrings.copy(text,capacity)
 end function
 function overlayLimit(level)
   if level.maxclientsCvar < 0 or level.maxclientsCvar > 64 then return error(490,"Invalid team-status Cvar client limit") end if

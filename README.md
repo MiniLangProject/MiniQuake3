@@ -9,7 +9,8 @@ dem vollständigen baseq3-Pmove-Befehlszyklus, serverseitigen Item-Pickups,
 CTF-Flaggenabläufen, Tournament-/Warmup-Steuerung, Vote-Aufrufen/Stimmabgabe/Auflösung, Teamoverlay,
 Passwortstatus, Engine-/Spielmodul-Cvar-Aktualisierung, Namen/Userinfo/Teamwahl,
 `ClientConnect` und Sitzungsdaten, Team-/Zuschauerwechsel, Follow-Befehlen, Duell-Warteschlange, `ClientDisconnect`, `ClientBegin`, `ClientSpawn`,
-`ClientThink`, `ClientEndFrame` und Intermission-/Levelende-Steuerung ist
+`ClientThink`, `ClientEndFrame`, Intermission-/Levelende-Steuerung und vollständiger
+Baseq3-Client-Befehlsverteilung mit Chat/Voice/Cheats/Spielkommandos ist
 vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
 [geprüfte Stand mit offenen Abnahmen](docs/PARITY_AUDIT.md).
@@ -142,6 +143,9 @@ Verliererwechsel mit tatsächlichen Team-, Spawn- und Rangabläufen.
 [Intermission und Levelende](docs/INTERMISSION.md) verbinden diese Funktionen
 mit Kameraplatzierung, Respawn, Scoreboards und Sitzungsspeicherung, bevor
 Maprestart oder `nextmap` bei der Engine angefordert werden.
+Die vollständige [Client-Befehlsverteilung](docs/CLIENT_COMMANDS.md) verbindet alle
+Baseq3-Handler: Chat/Voice, Taunts, Cheats, Items, Suicide, Teamtask und Teleport
+sowie die bestehenden Score-/Team-/Follow-/Vote-Abläufe.
 [`Tournament und Warmup`](docs/TOURNAMENT.md) steuert Spielerbereitschaft,
 Countdown und Maprestart. [`G_RunFrame`](docs/FULL_FRAME.md) führt Entity- und
 Clientframes, Tournament, Matchende und [globale/Team-Abstimmungen](docs/VOTES.md)

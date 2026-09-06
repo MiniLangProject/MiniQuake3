@@ -4,11 +4,12 @@ Stand: 2026-09-06. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die aktuelle reguläre Regression besteht aus **37 bestandenen Prüfbereichen**
+Die aktuelle reguläre Regression besteht aus **38 bestandenen Prüfbereichen**
 (`verify.py --data-root D:/Quake3`), einschließlich Engine-/Spielmodul-Cvars, Teamstandorten/-overlay,
 Passwortstatus, Userinfo/Namen/Teamwahl, ClientConnect/Sitzungsdaten,
 Team-/Zuschauerwechsel, ClientDisconnect, Follow-Befehle, Duell-Warteschlange,
-Intermission und Levelende-Steuerung,
+Intermission und Levelende-Steuerung, vollständiger Baseq3-Client-Befehlsverteilung,
+Textchat/Voice, Cheats und Spielkommandos,
 Vote-Aufrufen/Stimmabgabe und Vote-/Teamleiterregeln,
 Spawnpunkten, Leichen, Punkten, Spieler-Tod, Items/Flaggen, vollständigen
 Client-Abläufen ab `ClientBegin`, `CheckTournament`, `G_RunFrame` und CLI-Laufzeitvergleichen.
@@ -18,8 +19,8 @@ ebenfalls auf den CD-Karten.
 Die letzte erweiterte Vollprüfung mit beiden Kollisions-/Bewegungsprofilen
 bestand **43 Prüfbereiche am Stand `f8cdf9a`**, vor den Vote-, Teamstatus- und Spiel-Cvar-Ports. Deren Bericht
 ist in der Git-Version dieses Stands archiviert. Die erweiterte Suite enthält
-nun 52 Gates; für den aktuellen Follow-/Duell-/Intermission-Stand wurde die reguläre Suite ausgeführt.
-Der Lauf ist in `build/verify-intermission.log` protokolliert.
+nun 53 Gates; für den aktuellen ClientCommand-Stand wurde die reguläre Suite ausgeführt.
+Der Lauf ist in `build/verify-client-commands.log` protokolliert.
 Der finale MiniQuake3-Build hat SHA-256
 `3a8c6f394b337404511f826e34404d0fd5f9c3011af6b7a4b2a96cc5321d99fb`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
@@ -28,10 +29,10 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | --- | --- | --- |
 | 1. Referenz | Grundabnahme bestanden | Originale x86-Engine, drei native Module, drei neu gebaute QVMs; MiniLang-Build; 1.409 Dateien inventarisiert; 120 Frames mit zwei Bots aufgezeichnet und zweimal bytegleich wiedergegeben |
 | 2. Zahlen/Plattform | In Arbeit | 101.445 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff vorhanden; Fenster, Eingabe, UDP und Audio noch offen |
-| 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, Engine-/VM-Cvar-Registrierung/-Aktualisierung und Spielmodul-Tabelle, 448 Parseraufrufe, Info-Schlüsselsuche/-Validierung und 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, Cvar-Neustart/Config-Persistenz, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
+| 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, Engine-/VM-Cvar-Registrierung/-Aktualisierung und Spielmodul-Tabelle, 448 Parseraufrufe, Info-Schlüsselsuche/-Validierung sowie über teamtask geprüfte Info-Mutation und 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, Cvar-Neustart/Config-Persistenz, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung, Sprungpad-/Teleport-Replays, ClientBegin und G_RunFrame-Einbindung geprüft; komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, ClientConnect/Sitzungs-Cvars, Team-/Zuschauerwechsel, Follow-Befehle, Duell-Warteschlange, ClientDisconnect, Client-Abläufe ab ClientBegin, Userinfo/Namen/Teamwahl, Leichen, Items, Punkte, Ränge, Matchende, Intermission-/Levelende-Steuerung, Tournament/Warmup, Vote-Aufrufe/Stimmabgabe/Auflösung, Teamleiterwahl, Teamstandorte/-overlay, Passwortstatus, Engine-Cvar-Refresh und CTF vorhanden; Engine-Mapausführung, IP-Filter, Bot-Einrichtung/-Shutdown/-Matchende, Einzelspieler-Ergebnis/Podium, weitere Klassen, Mover-Pushing, vollständige Modulinitialisierung und Client-Befehlsverteilung fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, ClientConnect/Sitzungs-Cvars, Team-/Zuschauerwechsel, Follow-Befehle, Duell-Warteschlange, ClientDisconnect, Client-Abläufe ab ClientBegin, Userinfo/Namen/Teamwahl, Leichen, Items, Punkte, Ränge, Matchende, Intermission-/Levelende-Steuerung, Tournament/Warmup, Vote-Aufrufe/Stimmabgabe/Auflösung, Teamleiterwahl, Teamstandorte/-overlay, Passwortstatus, Engine-Cvar-Refresh, ClientCommand mit Chat/Voice/Cheats/Spielkommandos und CTF vorhanden; Engine-Mapausführung, IP-Filter, Bot-Einrichtung/-Shutdown/-Matchende, Einzelspieler-Ergebnis/Podium, weitere Klassen, Mover-Pushing, vollständige Modulinitialisierung und Engine-Kommando-Tokenisierung fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -688,13 +689,14 @@ bei jedem Host-Aufruf und nach jeder Aktion verglichen. Dazu kommen Rang-,
 Configstring-, Item- und Leichenwarteschlangen-Zustände. Ein Null-Clientlimit-Fall
 belegt die Korrektur einer rückwärts laufenden Zuschauer-Schleife in `playerDie`.
 
-Test-Binary: `4155f06c3592a8de01356d918dbb5529301dd78e4a0ce181636cc011a0cdadb7`.
-Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
+Test-Binary: `eb9c0be2fd7d2320e8454460c8272ea9c25363f2db0fa7bea41584c91f7a8b14`.
+Native x86-Oracle: `497510f616a01b5f9883cf3136e9eb86786e38eae4d21e04422c98a44d1989fb`.
 Bot-Queue/-Shutdown und Engine-Zustellung bleiben Pflichtschnittstellen;
 Bewegung, Endframe und Intermission werden in dieser Integrationssuite beobachtet.
 Follow-Befehle und Tournament-Nachrücken sind inzwischen separat geprüft.
 Die tatsächlichen Intermission-/Levelende-Funktionen sind separat verbunden.
-Vollständige ClientCommand-Verteilung und Engine-Mapausführung folgen noch.
+Die vollständige [ClientCommand-Verteilung](CLIENT_COMMANDS.md) ist separat geprüft;
+Engine-Mapausführung bleibt offen.
 Details: [TEAM_CHANGES.md](TEAM_CHANGES.md).
 
 ## Follow-Befehle und Duell-Warteschlange (Schritt 6)
@@ -719,11 +721,12 @@ Kandidaten können in C ungültig lesen oder endlos suchen. MiniLang meldet daf�
 begrenzte Fehler; diese Pfade zählen nicht als native Verhaltensgleichheit.
 Spawn-Think-/Endframe-/Intermission-Callbacks bleiben hier beobachtet;
 Die Intermission-/Levelende-Funktionen sind im nächsten Nachweis direkt verbunden.
-Engine-Zustellung und vollständige Befehlsverteilung sind weitere Integrationsschritte.
+Die vollständige [Befehlsverteilung](CLIENT_COMMANDS.md) ist separat geprüft.
+Engine-Zustellung bleibt offen.
 Details: [FOLLOW_TOURNAMENT.md](FOLLOW_TOURNAMENT.md).
 
-Test-Binary: `4155f06c3592a8de01356d918dbb5529301dd78e4a0ce181636cc011a0cdadb7`.
-Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
+Test-Binary: `eb9c0be2fd7d2320e8454460c8272ea9c25363f2db0fa7bea41584c91f7a8b14`.
+Native x86-Oracle: `497510f616a01b5f9883cf3136e9eb86786e38eae4d21e04422c98a44d1989fb`.
 
 ## Intermission und Levelende (Schritt 6)
 
@@ -747,8 +750,33 @@ erhält `map_restart` beziehungsweise `vstr nextmap`, führt diese Befehle im Po
 aber noch nicht als vollständigen Kartenwechsel aus. Spawn-Think-/Endframe bleiben
 hier isolierte Overrides. Details: [INTERMISSION.md](INTERMISSION.md).
 
-Test-Binary: `4155f06c3592a8de01356d918dbb5529301dd78e4a0ce181636cc011a0cdadb7`.
-Native x86-Oracle: `c85bca4d0e6b14f0deb96ec86447cb0bfee1a8c0f8a7088856a362370b3cf678`.
+Test-Binary: `eb9c0be2fd7d2320e8454460c8272ea9c25363f2db0fa7bea41584c91f7a8b14`.
+Native x86-Oracle: `497510f616a01b5f9883cf3136e9eb86786e38eae4d21e04422c98a44d1989fb`.
+
+## ClientCommand, Chat und Spielkommandos (Schritt 6)
+
+`scripts/test_client_commands.py` besteht mit **221 Szenarien**, **687 Aktionen**, **42.518.499 exakt gleichen 32-Bit-Wörtern**, **1.333 geordneten Nebenwirkungen** und **203.944.229 Ausgabe-Bytes**.
+**43 Laufzeitverträge** prüfen zusätzliche Speicher-/Schnittstellengrenzen.
+Ein originaler Com_Error-Abbruch nach Startsolid beim Item-Give wird
+einschließlich Diagnose, Freigabe und erreichtem Teilzustand verglichen.
+
+Die reguläre Gesamtsuite besteht mit **38/38 Gates**; die erweiterte Suite
+umfasst 53 Gates, ihre letzte vollständig ausgeführte Abnahme bleibt bei
+43 Gates am Stand `f8cdf9a`.
+
+Test-Binary: `eb9c0be2fd7d2320e8454460c8272ea9c25363f2db0fa7bea41584c91f7a8b14`.
+Native x86-Oracle: `497510f616a01b5f9883cf3136e9eb86786e38eae4d21e04422c98a44d1989fb`.
+Fixture-Karte: `22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c`.
+
+Alle 37 Funktionskörper aus g_cmds.c sind im nativen Vergleichshost
+enthalten. Der neue Dispatcher verbindet die bisherigen Score-, Team-,
+Follow- und Vote-Ports mit Textchat/Voice, Taunts, Cheats, Item-Give,
+Suicide, Levelshot, Teamtask und Setviewpos. Argumente und Servermeldungen
+werden bytegenau, Zustände vor und nach jeder Host-Zustellung verglichen.
+Info-Mutation, Ortsfarben, native Formatdiagnosen, Userinfo-Speicherung
+und Cheat-/Dedicated-Cvar-Spiegel sind integriert. Netzwerkzustellung,
+Engine-Tokenizer/Command-Buffer, Modulstart und weitere Spielsysteme
+bleiben offen. Details und bewusste Grenzen: [CLIENT_COMMANDS.md](CLIENT_COMMANDS.md).
 
 ## Vollständiger Spielserverframe (Schritt 6)
 
@@ -812,9 +840,9 @@ von `strcat` bei Teamargumenten wird kontrolliert abgewiesen.
 
 Die isolierten Vote-Suiten verwenden einen `ClientUserinfoChanged`-Override;
 die reale Standardverbindung mit Spieler-Configstrings wird jetzt separat in
-`test_client_info.py` geprüft. Vollständiger `ClientCommand`-Dispatcher samt
-Intermission-Verhalten, Kommando-Tokenisierung und Netzwerk-/Engine-Zustellung
-bleiben offen. Details: [VOTES.md](VOTES.md).
+`test_client_info.py` geprüft. Der vollständige [ClientCommand-Dispatcher](CLIENT_COMMANDS.md)
+samt Intermission-Verhalten ist inzwischen verbunden. Kommando-Tokenisierung und
+Netzwerk-/Engine-Zustellung bleiben offen. Details: [VOTES.md](VOTES.md).
 
 ## Teamstandorte, Overlay und Passwortstatus (Schritt 6)
 
@@ -831,14 +859,15 @@ alle Standorte vor dem ersten Paket, Passwortzähler und Modulzustand über
 Level-Resets. Aktive Framefolgen prüfen die Einbindung.
 
 Der Engine-Cvar-Refresh ist inzwischen separat portiert; Netzwerkzustellung und Clientanzeige bleiben offen;
-formatierte Ortsnamen über `Team_GetLocationMsg` sind noch nicht portiert.
+formatierte Ortsnamen über `Team_GetLocationMsg` sind inzwischen mit den
+[Chat- und Tell-Befehlen](CLIENT_COMMANDS.md) portiert und geprüft.
 Details und Zustandslebensdauer: [TEAM_STATUS.md](TEAM_STATUS.md).
 
 ## Engine- und Spiel-Cvars (Schritte 3 und 6)
 
-`scripts/test_game_cvars.py` besteht mit **89 Szenarien**, **1.054 Aktionen**,
-**929.595 exakt gleichen 32-Bit-Wörtern**, **4.059.457 Ausgabe-Bytes** und
-**19.562 geordneten Nebenwirkungen**. 13 Laufzeitverträge und vier native
+`scripts/test_game_cvars.py` besteht mit **92 Szenarien**, **1.074 Aktionen**,
+**948.649 exakt gleichen 32-Bit-Wörtern**, **4.141.461 Ausgabe-Bytes** und
+**19.959 geordneten Nebenwirkungen**. 13 Laufzeitverträge und vier native
 Fehlerfälle prüfen zusätzlich ungültige Handles, Speichergrenzen und
 Modulinitialisierung.
 
