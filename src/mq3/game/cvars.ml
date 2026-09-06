@@ -124,6 +124,9 @@ function syncValue(level,row)
     case "g_knockback"
       level.knockback = v.value
     end case
+    case "g_quadfactor"
+      level.quadfactor = v.value
+    end case
     case "g_weaponRespawn"
       level.weaponRespawn = v.integer
     end case

@@ -10,8 +10,8 @@ CTF-Flaggenabläufen, Tournament-/Warmup-Steuerung, Vote-Aufrufen/Stimmabgabe/Au
 Passwortstatus, Engine-/Spielmodul-Cvar-Aktualisierung, Namen/Userinfo/Teamwahl,
 `ClientConnect` und Sitzungsdaten, Team-/Zuschauerwechsel, Follow-Befehlen, Duell-Warteschlange, `ClientDisconnect`, `ClientBegin`, `ClientSpawn`,
 `ClientThink`, `ClientEndFrame`, Intermission-/Levelende-Steuerung und vollständiger
-Baseq3-Client-Befehlsverteilung mit Chat/Voice/Cheats/Spielkommandos ist
-vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
+Baseq3-Client-Befehlsverteilung mit Chat/Voice/Cheats/Spielkommandos sowie
+serverseitigem Abfeuern aller zehn Baseq3-Waffen ist vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
 [geprüfte Stand mit offenen Abnahmen](docs/PARITY_AUDIT.md).
 
@@ -73,6 +73,7 @@ python scripts/test_spawn_values.py
 python scripts/test_targets.py
 python scripts/test_combat.py --data-root D:/Quake3
 python scripts/test_missiles.py --data-root D:/Quake3
+python scripts/test_weapons.py
 python scripts/test_bodies.py --data-root D:/Quake3
 python scripts/test_scores.py
 python scripts/test_deaths.py

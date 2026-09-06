@@ -18,7 +18,7 @@ FUNCTIONS={
     'g_main.c':['AddTournamentPlayer','RemoveTournamentLoser','RemoveTournamentWinner','AdjustTournamentScores','MoveClientToIntermission','BeginIntermission','ExitLevel','G_RunThink','FindIntermissionPoint','SortRanks','CalculateRanks','SendScoreboardMessageToAllClients','ScoreIsTied','CheckExitRules','LogExit','CheckIntermissionExit','CheckVote','PrintTeam','SetLeader','CheckTeamLeader','CheckTeamVote','CheckCvars'],
     'g_trigger.c':['InitTrigger','AimAtTarget','SP_trigger_push','SP_trigger_teleport','trigger_push_touch','trigger_teleporter_touch','multi_wait','multi_trigger','Use_Multi','Touch_Multi','SP_trigger_multiple','trigger_always_think','SP_trigger_always','Use_target_push','SP_target_push','func_timer_think','func_timer_use','SP_func_timer','hurt_use','hurt_touch','SP_trigger_hurt'],
     'g_combat.c':['ScorePlum','AddScore','TossClientItems','LookAtKiller','GibEntity','body_die','CheckAlmostCapture','CheckAlmostScored','player_die','CheckArmor','G_Damage','CanDamage','G_RadiusDamage'],
-    'g_weapon.c':['LogAccuracyHit','SnapVectorTowards','Weapon_HookFree','Weapon_HookThink'],
+    'g_weapon.c':['G_BounceProjectile','Weapon_Gauntlet','CheckGauntletAttack','SnapVectorTowards','Bullet_Fire','BFG_Fire','ShotgunPellet','ShotgunPattern','weapon_supershotgun_fire','weapon_grenadelauncher_fire','Weapon_RocketLauncher_Fire','Weapon_Plasmagun_Fire','weapon_railgun_fire','Weapon_GrapplingHook_Fire','Weapon_HookFree','Weapon_HookThink','Weapon_LightningFire','LogAccuracyHit','CalcMuzzlePoint','CalcMuzzlePointOrigin','FireWeapon'],
     'g_missile.c':['G_BounceMissile','G_ExplodeMissile','G_MissileImpact','G_RunMissile','fire_plasma','fire_grenade','fire_bfg','fire_rocket','fire_grapple'],
     'g_items.c':['Pickup_Powerup','Pickup_Holdable','Add_Ammo','Pickup_Ammo','Pickup_Weapon','Pickup_Health','Pickup_Armor','RespawnItem','Touch_Item','RegisterItem','LaunchItem','Drop_Item','Use_Item','FinishSpawningItem','G_ItemDisabled','G_SpawnItem','G_BounceItem','G_RunItem'],
     'g_active.c':['P_DamageFeedback','P_WorldEffects','G_SetClientSound','ClientImpacts','G_TouchTriggers','SpectatorThink','ClientInactivityTimer','ClientTimerActions','ClientIntermissionThink','ClientEvents','SendPendingPredictableEvents','ClientThink_real','ClientThink','G_RunClient','SpectatorClientEndFrame','ClientEndFrame'],
@@ -47,6 +47,23 @@ def build(output):
                 if symbol=='ClientSpawn':body.append('#define ClientSpawn Original_ClientSpawn\n'+match[0]+'\n#undef ClientSpawn')
                 elif symbol=='ClientBegin':body.append('#define ClientBegin Original_ClientBegin\n#define ClientSpawn Original_ClientSpawn\n'+match[0]+'\n#undef ClientSpawn\n#undef ClientBegin')
                 elif symbol=='ClientUserinfoChanged':body.append('#define ClientUserinfoChanged Original_ClientUserinfoChanged\n'+match[0]+'\n#undef ClientUserinfoChanged')
+                else:body.append(match[0])
+        elif name=='g_weapon.c':
+            # Conditional branches contain alternate braces. Keep each complete
+            # original top-level body and its shared mutable firing state.
+            source_text=path.read_text()
+            declarations=re.search(r'^static\s+float\s+s_quadFactor;.*?^static\s+vec3_t\s+muzzle;',source_text,re.M|re.S)
+            if not declarations:raise RuntimeError('Missing original weapon state')
+            body.append(declarations[0])
+            for define in ('MACHINEGUN_SPREAD','MACHINEGUN_DAMAGE','MACHINEGUN_TEAM_DAMAGE','DEFAULT_SHOTGUN_DAMAGE','MAX_RAIL_HITS'):
+                match=re.search(r'^#define[ \t]+'+define+r'\b[^\n]*',source_text,re.M)
+                if not match:raise RuntimeError('Missing original weapon define '+define)
+                body.append(match[0])
+            for symbol in names:
+                match=re.search(r'^\w+[ \t]+\*?'+symbol+r'\s*\([^;]*?\)\s*\{.*?^\}',source_text,re.M|re.S)
+                if not match:raise RuntimeError('Missing original weapon function '+symbol)
+                if symbol in ('FireWeapon','CheckGauntletAttack'):
+                    body.append(f'#define {symbol} Original_{symbol}\n'+match[0]+f'\n#undef {symbol}')
                 else:body.append(match[0])
         elif name=='g_active.c':
             source_text=path.read_text();functions=[]

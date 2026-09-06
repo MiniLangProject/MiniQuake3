@@ -220,6 +220,21 @@ def main():
     for source,(targets,symbols) in command_mappings.items():
         old_targets,old_symbols,tests=mappings.get(source,([],[],[]))
         mappings[source]=(list(dict.fromkeys(old_targets+targets)),list(dict.fromkeys(old_symbols+symbols)),list(dict.fromkeys(tests+["scripts/test_client_commands.py"])))
+    weapon_groups={
+        "src/mq3/game/weapons.ml":["G_BounceProjectile","Weapon_Gauntlet","CheckGauntletAttack","BFG_Fire","weapon_grenadelauncher_fire","Weapon_RocketLauncher_Fire","Weapon_Plasmagun_Fire","Weapon_GrapplingHook_Fire","CalcMuzzlePoint","CalcMuzzlePointOrigin","FireWeapon"],
+        "src/mq3/game/weapon_hitscan.ml":["Bullet_Fire","ShotgunPellet","ShotgunPattern","weapon_supershotgun_fire","weapon_railgun_fire","Weapon_LightningFire"],
+    }
+    weapon_mappings={
+        "code/game/g_weapon.c":(list(weapon_groups)+["src/mq3/game/weapon_state.ml"],[symbol for names in weapon_groups.values() for symbol in names]),
+        "code/game/g_active.c":(["src/mq3/game/client_active.ml"],[]),
+        "code/game/g_combat.c":([],[]),
+        "code/game/g_missile.c":([],[]),
+        "code/game/g_local.h":(["src/mq3/game/entities.ml"],[]),
+        "code/game/g_main.c":(["src/mq3/game/cvars.ml"],[]),
+    }
+    for source,(targets,symbols) in weapon_mappings.items():
+        old_targets,old_symbols,tests=mappings[source]
+        mappings[source]=(list(dict.fromkeys(old_targets+targets)),list(dict.fromkeys(old_symbols+symbols)),list(dict.fromkeys(tests+["scripts/test_weapons.py"])))
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text(encoding="utf-8"))
     for entry in ledger["files"]:
@@ -274,10 +289,10 @@ def main():
                 for symbol in entry["symbol_mapping"]:
                     symbol["scope"] = "All five unchanged Baseq3 session functions: seven-field serialization and native CRT %i scan, noncanonical leader integers, initial team/capacity rules, sticky newSession and connected-only shutdown writes. Actual team selection, broadcasts and ClientConnect callers are compared. MiniLang reads its real engine registry and uses registered Cvar set delivery; the native host models session Cvar storage. Level-reconstruction fixtures retain registry data. Incomplete scans are rejected before mutation because original C reads uninitialized locals; full engine/module restart and disk persistence are open."
             if entry["source"] == "code/game/g_combat.c":
-                entry["symbol_mapping"][1]["scope"] = "Baseq3 damage state and pain/die/mover dispatch. player_die is connected and separately compared end to end; damage feedback, Missionpack and the full server frame remain open. G_Printf diagnostics are excluded."
+                entry["symbol_mapping"][1]["scope"] = "Baseq3 damage state and pain/die/mover dispatch. player_die and damage feedback are connected and separately compared; the weapons suite adds real Baseq3 firing chains. Missionpack and whole-engine match execution remain open. G_Printf diagnostics are excluded."
             if entry["source"] == "code/game/g_missile.c":
                 for symbol in entry["symbol_mapping"]:
-                    symbol["scope"] = "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+                    symbol["scope"] = "Baseq3 native projectile rules and actual SV/CM. The weapons suite additionally connects real FireWeapon, quad scaling, ClientEvents/ClientThink and player_die. Missionpack and rendering remain open. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
             if entry["source"] == "code/game/g_items.c":
                 for symbol in entry["symbol_mapping"]:
                     if symbol["original"] == "RegisterItem":
@@ -346,7 +361,7 @@ def main():
                         symbol["target_files"] = ["src/mq3/game/triggers.ml"]
                     elif symbol["original"] in ("ClientImpacts","SpectatorThink","ClientInactivityTimer","ClientTimerActions","ClientIntermissionThink","ClientEvents","ClientThink_real","ClientThink","G_RunClient"):
                         symbol["target_files"] = ["src/mq3/game/client_active.ml"]
-                        symbol["scope"] = "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
+                        symbol["scope"] = "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect and AAS engine calls remain ordered callbacks. Weapon firing and gauntlet attacks now use the ported Baseq3 defaults, compared separately through real ClientEvents and ClientThink; legacy isolated tests retain explicit weapon overrides. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
                     else:
                         symbol["target_files"] = ["src/mq3/game/client_frame.ml"]
                         symbol["scope"] = "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. The isolated suite observes ClientBegin for invalid explicit spectator targets; the normal path binds the separately verified port."
@@ -377,6 +392,13 @@ def main():
                 symbol["scope"]="Native truncating float-to-int position formatting and 32-byte Com_sprintf truncation/diagnostic, used by where and item startsolid diagnostics; owned strings replace the original rotating static buffers."
             elif entry["source"]=="ui/menudef.h":
                 symbol["scope"]="The five Baseq3 voice-taunt string constants used by Cmd_VoiceTaunt_f. No UI, audio or Missionpack implementation is implied."
+    for entry in ledger["files"]:
+        if entry["source"]=="code/game/g_weapon.c":
+            for symbol in entry["symbol_mapping"]:
+                for target,names in weapon_groups.items():
+                    if symbol["original"] in names:
+                        symbol["target_files"]=[target]
+                        symbol["scope"]="Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
     path.write_text(json.dumps(ledger,indent=2)+"\n",encoding="utf-8",newline="\n")
     evidence=[]
     for path in sorted((ROOT / "build/reference").rglob("result.json")):

@@ -153,10 +153,10 @@ und wird zusammen mit den Quellhashes in `docs/reference/evidence.json` archivie
 Ein originaler Com_Error-Abbruch nach Startsolid beim Item-Give wird
 einschließlich Diagnose, Freigabe und erreichtem Teilzustand verglichen.
 
-Die reguläre Gesamtsuite besteht mit **38/38 Gates**; die erweiterte Suite
-umfasst 53 Gates, ihre letzte vollständig ausgeführte Abnahme bleibt bei
+Die reguläre Gesamtsuite besteht mit **39/39 Gates**; die erweiterte Suite
+umfasst 54 Gates, ihre letzte vollständig ausgeführte Abnahme bleibt bei
 43 Gates am Stand `f8cdf9a`.
 
-Test-Binary: `eb9c0be2fd7d2320e8454460c8272ea9c25363f2db0fa7bea41584c91f7a8b14`.
-Native x86-Oracle: `497510f616a01b5f9883cf3136e9eb86786e38eae4d21e04422c98a44d1989fb`.
+Test-Binary: `58421af6bbc15ea9508720f569740b513072c801a3ce9ae64c78fb552d9a93ad`.
+Native x86-Oracle: `521abdafbaef527d00e46f84e2bc81768dccfa05be44b5b5faee1b328fc364cc`.
 Fixture-Karte: `22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c`.

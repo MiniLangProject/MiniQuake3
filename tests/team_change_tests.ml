@@ -2,6 +2,12 @@
 import mq3.game.client_commands as clientCommands
 import mq3.game.command_args as commandArgs
 import mq3.shared.info as commandInfo
+import mq3.game.weapons as weapons
+import mq3.game.weapon_hitscan as weaponHitscan
+import mq3.game.weapon_state as weaponState
+import mq3.game.missiles as weaponMissiles
+import mq3.server.world as weaponWorld
+import std.string as fixtureStrings
 import mq3.game.follow_commands as followCommands
 import mq3.game.intermission as intermissionFlow
 import mq3.game.client_spawn as clientSpawn
@@ -41,6 +47,8 @@ struct Check
   followMode
   intermissionMode
   commandsMode
+  weaponsMode
+  traces
 end struct
 function readInt(reader)
   if reader.offset+4 > len(reader.data) then return error(499,"Incomplete team change input") end if
@@ -223,6 +231,31 @@ function snapshot(level)
       textWord(check,level.entities[index].message); pointer(check,level.entities[index].nextTrain)
     end for
   end if
+  if check.weaponsMode then
+    check.location = "weapons"
+    word(check,n.floatBits(level.quadfactor)); word(check,level.friendlyFire); word(check,n.floatBits(level.knockback))
+    state = weaponState.get(level); word(check,n.floatBits(state.quadFactor))
+    floatWords(check,state.forward); floatWords(check,state.right); floatWords(check,state.up); floatWords(check,state.muzzle)
+    for index = 0 to 63
+      pointer(check,level.clients[index].hook)
+    end for
+    for index = 0 to level.num_entities-1
+      ent = level.entities[index]
+      words(check,[ent.damage,ent.splashDamage,ent.splashRadius,ent.methodOfDeath,ent.splashMethodOfDeath])
+      pointer(check,ent.target_ent)
+    end for
+  end if
+  return void
+end function
+function weaponTraceRecord(level,start,finish,mins,maxs,passEntity,mask,hit)
+  snapshot(level); check = level.context; check.location = "weapon trace"; tr = hit.trace
+  words(check,[227,passEntity,mask]); boolWord(check,mins != void); boolWord(check,maxs != void)
+  floatWords(check,start); floatWords(check,finish)
+  if mins == void then floatWords(check,[0.0,0.0,0.0]) else floatWords(check,mins) end if
+  if maxs == void then floatWords(check,[0.0,0.0,0.0]) else floatWords(check,maxs) end if
+  word(check,n.floatBits(tr.fraction)); floatWords(check,tr.normal); word(check,n.floatBits(tr.distance))
+  words(check,[tr.surfaceFlags,tr.contents]); boolWord(check,tr.startsolid); boolWord(check,tr.allsolid)
+  floatWords(check,hit.endpos); words(check,[tr.planeMetadata,hit.entityNum]); check.traces = check.traces+1
   return void
 end function
 function record(level,kind,arg,text)
@@ -358,7 +391,277 @@ function configure(level,reader,check)
   if check.commandsMode then
     level.userinfoSetFn = commandUserinfoSet; s.spawning = false; s.vars = []
   end if
+  if check.weaponsMode then
+    for index = 0 to 63
+      if level.entities[index].client != void then
+        level.entities[index].die = deaths.playerDie
+        level.entities[index].client.ps.viewheight = 26; level.entities[index].client.ps.viewangles = [0.0,0.0,0.0]
+      end if
+    end for
+    level.playerSpeed = 320; level.quadfactor = 3.0; level.pmoveMsec = 8; level.gravity = 800; level.inactivity = 0
+    level.traceObserveFn = weaponTraceRecord; level.fireWeaponFn = void; level.gauntletAttackFn = void
+  end if
   // No Begin/death/item/rank/userinfo overrides: all those game routines are real.
+  return void
+end function
+
+function weaponFixtureValues(request)
+  result = array(16,0); index = 0
+  if request == "" then return result end if
+  for each token in fixtureStrings.split(request,",")
+    if index >= 16 then return error(499,"Too many weapon fixture words") end if
+    result[index] = textnum.atoi(token); index = index+1
+  end for
+  return result
+end function
+function weaponFixtureRelink(level,ent)
+  if ent.r.linked then
+    game.syncSpatial(ent); weaponWorld.linkEntity(level.scene,ent.slot); ent.s.solid = ent.r.solid
+  end if
+  return void
+end function
+function weaponFixtureScalar(level,slot,field,value)
+  ent = level.entities[slot]; client = level.clients[slot]
+  switch field
+    case 1
+      ent.s.weapon = value; client.ps.weapon = value
+    end case
+    case 2
+      client.ps.viewheight = value
+    end case
+    case 3
+      level.quadfactor = n.bitsFloat(value)
+    end case
+    case 4
+      client.accuracy_shots = value
+    end case
+    case 5
+      client.accuracy_hits = value
+    end case
+    case 6
+      client.accurateCount = value
+    end case
+    case 7
+      client.ps.stats[c.STAT_ARMOR] = value
+    end case
+    case 8
+      ent.health = value; client.ps.stats[c.STAT_HEALTH] = value
+    end case
+    case 9
+      client.ps.stats[c.STAT_MAX_HEALTH] = value
+    end case
+    case 10
+      ent.takedamage = value != 0
+    end case
+    case 11
+      ent.r.contents = value; weaponFixtureRelink(level,ent)
+    end case
+    case 12
+      ent.client = void; if value != 0 then ent.client = client end if
+    end case
+    case 13
+      level.friendlyFire = value
+    end case
+    case 14
+      level.knockback = n.bitsFloat(value)
+    end case
+    case 15
+      client.ps.powerups[c.PW_QUAD] = value
+    end case
+    case 16
+      client.fireHeld = value != 0
+    end case
+    case 17
+      client.hook = void; if value != -1 then client.hook = level.entities[value] end if
+    end case
+    case 18
+      ent.die = void; if value != 0 then ent.die = deaths.playerDie end if
+    end case
+    case 19
+      client.ps.eFlags = value
+    end case
+    case 20
+      client.ps.weaponTime = value
+    end case
+    case 21
+      client.noclip = value != 0
+    end case
+    case 22
+      client.ps.commandTime = value
+    end case
+    case 23
+      ent.enemy = void; if value != -1 then ent.enemy = level.entities[value] end if
+    end case
+    case 24
+      ent.flags = value
+    end case
+    case 25
+      client.ps.pm_flags = value
+    end case
+    case 26
+      client.rewardTime = value
+    end case
+    case 27
+      client.ps.persistant[c.PERS_IMPRESSIVE_COUNT] = value
+    end case
+    case 28
+      client.ps.stats[c.STAT_WEAPONS] = value
+    end case
+    case 29
+      client.ps.weaponstate = value
+    end case
+    case 30
+      ent.s.weapon = value
+    end case
+    case 31
+      client.ps.weapon = value
+    end case
+    case 32
+      client.ps.stats[c.STAT_HEALTH] = value
+    end case
+    case default
+      return error(499,"Invalid weapon scalar fixture")
+    end case
+  end switch
+  return void
+end function
+function weaponFixtureVector(level,slot,field,value)
+  ent = level.entities[slot]; client = level.clients[slot]; state = weaponState.get(level)
+  vector = [n.bitsFloat(value[0]),n.bitsFloat(value[1]),n.bitsFloat(value[2])]
+  switch field
+    case 1
+      client.ps.origin = [vector[0],vector[1],vector[2]]; ent.s.origin = [vector[0],vector[1],vector[2]]
+      ent.s.pos.trBase = [vector[0],vector[1],vector[2]]; ent.r.currentOrigin = [vector[0],vector[1],vector[2]]
+      weaponFixtureRelink(level,ent)
+    end case
+    case 2
+      client.ps.viewangles = vector
+    end case
+    case 3
+      ent.s.pos.trBase = vector
+    end case
+    case 4
+      client.oldOrigin = vector
+    end case
+    case 5
+      client.ps.velocity = vector
+    end case
+    case 6
+      ent.r.mins = vector; weaponFixtureRelink(level,ent)
+    end case
+    case 7
+      ent.r.maxs = vector; weaponFixtureRelink(level,ent)
+    end case
+    case 8
+      state.forward = vector
+    end case
+    case 9
+      state.right = vector
+    end case
+    case 10
+      state.up = vector
+    end case
+    case 11
+      state.muzzle = vector
+    end case
+    case default
+      return error(499,"Invalid weapon vector fixture")
+    end case
+  end switch
+  return void
+end function
+function weaponFixtureDirect(level,ent,method,value)
+  state = weaponState.get(level); result = [0.0,0.0,0.0]
+  first = [n.bitsFloat(value[0]),n.bitsFloat(value[1]),n.bitsFloat(value[2])]
+  second = [n.bitsFloat(value[3]),n.bitsFloat(value[4]),n.bitsFloat(value[5])]
+  third = [n.bitsFloat(value[6]),n.bitsFloat(value[7]),n.bitsFloat(value[8])]
+  switch method
+    case 1
+      weaponHitscan.bullet(level,ent,n.bitsFloat(value[0]),value[1])
+    end case
+    case 2
+      weaponHitscan.shotgunPattern(level,first,second,value[6],ent)
+    end case
+    case 3
+      hit = weaponHitscan.shotgunPellet(level,first,second,ent); word(level.context,224); boolWord(level.context,hit)
+    end case
+    case 4
+      weaponHitscan.shotgun(level,ent)
+    end case
+    case 5
+      weaponHitscan.rail(level,ent)
+    end case
+    case 6
+      weaponHitscan.lightning(level,ent)
+    end case
+    case 7
+      weapons.grenade(level,ent)
+    end case
+    case 8
+      weapons.rocket(level,ent)
+    end case
+    case 9
+      weapons.plasma(level,ent)
+    end case
+    case 10
+      weapons.bfg(level,ent)
+    end case
+    case 11
+      weapons.grapple(level,ent)
+    end case
+    case 12
+      weapons.calcMuzzlePoint(ent,state.forward,state.right,state.up,result); word(level.context,225); floatWords(level.context,result)
+    end case
+    case 13
+      weapons.calcMuzzlePointOrigin(ent,first,state.forward,state.right,state.up,result); word(level.context,225); floatWords(level.context,result)
+    end case
+    case 14
+      weapons.bounceProjectile(first,second,third,result); word(level.context,225); floatWords(level.context,result)
+    end case
+    case default
+      return error(499,"Invalid direct weapon fixture")
+    end case
+  end switch
+  return void
+end function
+function runWeaponAction(level,kind,slot,p0,request)
+  value = weaponFixtureValues(request); ent = level.entities[slot]
+  switch kind
+    case 50
+      weapons.fire(level,ent)
+    end case
+    case 51
+      hit = weapons.checkGauntlet(level,ent); word(level.context,224); boolWord(level.context,hit)
+    end case
+    case 52
+      level.randSeed = n.i32(p0)
+    end case
+    case 53
+      weaponFixtureScalar(level,slot,p0,value[0])
+    end case
+    case 54
+      weaponFixtureVector(level,slot,p0,value)
+    end case
+    case 55
+      weaponFixtureDirect(level,ent,p0,value)
+    end case
+    case 56
+      ent.client.ps.eventSequence = n.add32(p0,1); ent.client.ps.events[p0 & 1] = c.EV_FIRE_WEAPON
+      clientActive.clientEvents(level,ent,p0)
+    end case
+    case 57
+      client = ent.client; client.cmdServerTime = value[0]; client.cmdButtons = value[1]; client.cmdWeapon = value[2]
+      client.cmdAngles = [value[3],value[4],value[5]]
+      client.cmdForwardmove = value[6]; client.cmdRightmove = value[7]; client.cmdUpmove = value[8]
+      clientActive.realThink(level,ent)
+    end case
+    case 58
+      weaponMissiles.run(level,level.entities[p0])
+    end case
+    case default
+      return error(499,"Invalid weapon action")
+    end case
+  end switch
   return void
 end function
 function main(argv)
@@ -368,10 +671,12 @@ function main(argv)
   if len(argv) > 3 and argv[3] == "--follow-contracts" then return followContracts(world) end if
   if len(argv) > 3 and argv[3] == "--intermission-contracts" then return intermissionContracts(world) end if
   if len(argv) > 3 and argv[3] == "--commands-contracts" then return commandsContracts(world) end if
-  commandsMode = len(argv) > 3 and argv[3] == "--commands"
+  if len(argv) > 3 and argv[3] == "--weapons-contracts" then return weaponsContracts(world) end if
+  weaponsMode = len(argv) > 3 and argv[3] == "--weapons"
+  commandsMode = weaponsMode or (len(argv) > 3 and argv[3] == "--commands")
   intermissionMode = commandsMode or (len(argv) > 3 and argv[3] == "--intermission")
   followMode = intermissionMode or (len(argv) > 3 and argv[3] == "--follow")
-  reader = Reader(fs.readAllBytes(argv[1]),0); check = Check(fs.readAllBytes(argv[2]),0,0,0,0,array(64,""),"",followMode,intermissionMode,commandsMode)
+  reader = Reader(fs.readAllBytes(argv[1]),0); check = Check(fs.readAllBytes(argv[2]),0,0,0,0,array(64,""),"",followMode,intermissionMode,commandsMode,weaponsMode,0)
   level = game.create(world); configure(level,reader,check); count = readInt(reader)
   for index = 0 to count-1
     kind = readInt(reader); level.time = readInt(reader); slot = readInt(reader); p0 = readInt(reader); request = readString(reader)
@@ -407,7 +712,9 @@ function main(argv)
       case default
         if not check.followMode then return error(499,"Invalid team change action") end if
         if check.commandsMode and kind >= 40 then
-          outcome = try(runCommandAction(level,kind,slot,p0,request,commandArgv))
+          outcome = void
+          if check.weaponsMode and kind >= 50 then runWeaponAction(level,kind,slot,p0,request)
+          else outcome = try(runCommandAction(level,kind,slot,p0,request,commandArgv)) end if
           if outcome is error then
             snapshot(level); word(check,222); check.actions = check.actions+1
             if index != count-1 then return error(499,"Native command drop must be the final action") end if
@@ -428,11 +735,12 @@ function main(argv)
     end switch
     snapshot(level); check.actions = check.actions+1
   end for
+  if check.weaponsMode then words(check,[226,game.random(level)]) end if
   return finishResult(reader,check)
 end function
 function finishResult(reader,check)
   if reader.offset != len(reader.data) or check.offset != len(check.expected) then return error(499,"Incomplete team change stream") end if
-  print "PASS: "+str(check.actions)+" team change actions / "+str(check.words)+" exact words / "+str(check.events)+" ordered effects"; return 0
+  print "PASS: "+str(check.actions)+" team change actions / "+str(check.words)+" exact words / "+str(check.events)+" ordered effects / "+str(check.traces)+" weapon traces"; return 0
 end function
 function require(condition,label)
   if not condition then return error(499,"Failed team change contract: "+label) end if
@@ -774,4 +1082,35 @@ function commandsContracts(world)
   require(try(commandInfo.setValue("\\x\\"+decode(bytes(1017,120)),"k","v",void,void)) is error,"Info exact 1024 byte native NUL overflow rejected"); count = count+1
   require(try(commandInfo.setValue("","k",decode(bytes(31998,120)),void,void)) is error,"Info native format scratch overflow rejected"); count = count+1
   print "PASS: "+str(count)+" client command runtime contracts"; return 0
+end function
+
+function weaponsContracts(world)
+  count = 0; level = game.create(world); ent = level.entities[0]
+  require(try(weapons.fire(level,ent)) is error,"FireWeapon requires bound client"); count = count+1
+  require(try(weapons.checkGauntlet(level,ent)) is error,"gauntlet check requires bound client"); count = count+1
+  require(try(weapons.grapple(level,ent)) is error,"grapple requires bound client"); count = count+1
+  require(weapons.gauntlet(level,void) == void,"original Weapon_Gauntlet body is empty"); count = count+1
+  result = [0.0,0.0,0.0]
+  require(try(weapons.calcMuzzlePoint(ent,[1.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],result)) is error,"muzzle requires bound client"); count = count+1
+  state = weaponState.get(level); state.quadFactor = 3.0
+  require(weaponState.get(level) == state and weaponState.get(game.create(world)).quadFactor == 0.0,"weapon statics persist per game instance"); count = count+1
+  game.bindClient(level,ent,level.clients[0]); ent.client.ps.viewheight = 26
+  ent.s.pos.trBase = [-1.5,2.75,10.25]
+  weapons.calcMuzzlePoint(ent,[0.5,-0.25,0.125],[100.0,100.0,100.0],[-100.0,-100.0,-100.0],result)
+  require(result[0] == 5.0 and result[1] == 0.0 and result[2] == 38.0,"muzzle adds height and forward then truncates"); count = count+1
+  reference = [result[0],result[1],result[2]]
+  weapons.calcMuzzlePointOrigin(ent,[999.0,-999.0,123.0],[0.5,-0.25,0.125],[0.0,0.0,0.0],[0.0,0.0,0.0],result)
+  require(result[0] == reference[0] and result[1] == reference[1] and result[2] == reference[2],"muzzle origin argument is ignored"); count = count+1
+  weapons.bounceProjectile([1.0,2.0,3.0],[1.0,2.0,3.0],[0.0,0.0,1.0],result)
+  require(result[0] == 1.0 and result[1] == 2.0 and result[2] == 3.0,"zero bounce retains impact"); count = count+1
+  ent.s.weapon = 0; ent.client.accuracy_shots = 2147483647
+  require(weapons.fire(level,ent) == void and ent.client.accuracy_shots == -2147483648,"unknown weapon still counts shots with int32 wrap"); count = count+1
+  ent.s.weapon = 2; ent.client.accuracy_shots = 0
+  require(try(weapons.fire(level,ent)) is error and ent.client.accuracy_shots == 1,"machinegun spawn-state boundary follows shot and aim mutation"); count = count+1
+  ent.s.weapon = 0; ent.client.ps.events[0] = c.EV_FIRE_WEAPON; ent.client.ps.eventSequence = 1
+  clientActive.clientEvents(level,ent,0)
+  require(ent.client.accuracy_shots == 2 and level.fireWeaponFn == void,"ClientEvents uses real FireWeapon by default"); count = count+1
+  require(try(weaponHitscan.hitscanEntity(level,-1)) is error,"negative trace entity rejected"); count = count+1
+  require(try(weaponHitscan.hitscanEntity(level,1024)) is error,"trace entity outside native storage rejected"); count = count+1
+  print "PASS: "+str(count)+" weapon runtime contracts"; return 0
 end function

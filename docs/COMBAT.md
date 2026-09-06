@@ -147,9 +147,9 @@ C-Fehlerpfad.
 `player_die`, Team-Fragboni und der Respawn-Wrapper sind inzwischen in
 [DEATHS.md](DEATHS.md) gegen C geprüft und mit diesem Schadenspfad verbunden.
 Item-Aufnahme und CTF-Capture sind inzwischen über die gemeinsame Score- und
-Kollisionsschicht verbunden. `ClientSpawn` ist inzwischen separat geprüft. Offen bleiben weitere
-Waffentreffer und die vollständige Waffensteuerung, Schadensfeedback am Frame-Ende,
-weitere Teamregeln, Mover-Steuerung,
+Kollisionsschicht verbunden. `ClientSpawn` und das Schadensfeedback am Frame-Ende
+sind separat geprüft. Die [Baseq3-Waffen](WEAPONS.md) führen jetzt ihre
+Schüsse über den tatsächlichen Schadens- und Todespfad aus. Offen bleiben Mover-Steuerung,
 Missionpack und die vollständige Serverintegration.
 
 ```powershell

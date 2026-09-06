@@ -5953,7 +5953,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect and AAS engine calls remain ordered callbacks. Weapon firing and gauntlet attacks now use the ported Baseq3 defaults, compared separately through real ClientEvents and ClientThink; legacy isolated tests retain explicit weapon overrides. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "SpectatorThink",
@@ -5961,7 +5961,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect and AAS engine calls remain ordered callbacks. Weapon firing and gauntlet attacks now use the ported Baseq3 defaults, compared separately through real ClientEvents and ClientThink; legacy isolated tests retain explicit weapon overrides. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "ClientInactivityTimer",
@@ -5969,7 +5969,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect and AAS engine calls remain ordered callbacks. Weapon firing and gauntlet attacks now use the ported Baseq3 defaults, compared separately through real ClientEvents and ClientThink; legacy isolated tests retain explicit weapon overrides. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "ClientTimerActions",
@@ -5977,7 +5977,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect and AAS engine calls remain ordered callbacks. Weapon firing and gauntlet attacks now use the ported Baseq3 defaults, compared separately through real ClientEvents and ClientThink; legacy isolated tests retain explicit weapon overrides. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "ClientIntermissionThink",
@@ -5985,7 +5985,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect and AAS engine calls remain ordered callbacks. Weapon firing and gauntlet attacks now use the ported Baseq3 defaults, compared separately through real ClientEvents and ClientThink; legacy isolated tests retain explicit weapon overrides. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "ClientEvents",
@@ -5993,7 +5993,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect and AAS engine calls remain ordered callbacks. Weapon firing and gauntlet attacks now use the ported Baseq3 defaults, compared separately through real ClientEvents and ClientThink; legacy isolated tests retain explicit weapon overrides. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "SendPendingPredictableEvents",
@@ -6009,7 +6009,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect and AAS engine calls remain ordered callbacks. Weapon firing and gauntlet attacks now use the ported Baseq3 defaults, compared separately through real ClientEvents and ClientThink; legacy isolated tests retain explicit weapon overrides. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "ClientThink",
@@ -6017,7 +6017,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect and AAS engine calls remain ordered callbacks. Weapon firing and gauntlet attacks now use the ported Baseq3 defaults, compared separately through real ClientEvents and ClientThink; legacy isolated tests retain explicit weapon overrides. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "G_RunClient",
@@ -6025,7 +6025,7 @@
             "src/mq3/game/client_active.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect, weapon and AAS engine calls remain ordered callbacks. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
+          "scope": "Baseq3 command clamping, Pmove/collision/trigger integration, spectators, inactivity, events, timers, snapshots, button latching and wrapper scheduling are compared against unchanged native bodies. Usercmd, Cvar, disconnect and AAS engine calls remain ordered callbacks. Weapon firing and gauntlet attacks now use the ported Baseq3 defaults, compared separately through real ClientEvents and ClientThink; legacy isolated tests retain explicit weapon overrides. Spectator attack uses the ported follow-cycle default, with actual Pmove/button-edge integration tested separately; legacy isolated tests retain a follow override. Missionpack is excluded."
         },
         {
           "original": "SpectatorClientEndFrame",
@@ -6055,7 +6055,8 @@
         "scripts/test_transitions.py",
         "scripts/test_client_frame.py",
         "scripts/test_client_think.py",
-        "scripts/test_follow_tournament.py"
+        "scripts/test_follow_tournament.py",
+        "scripts/test_weapons.py"
       ]
     },
     {
@@ -7020,7 +7021,7 @@
             "src/mq3/game/client_disconnect.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 damage state and pain/die/mover dispatch. player_die is connected and separately compared end to end; damage feedback, Missionpack and the full server frame remain open. G_Printf diagnostics are excluded."
+          "scope": "Baseq3 damage state and pain/die/mover dispatch. player_die and damage feedback are connected and separately compared; the weapons suite adds real Baseq3 firing chains. Missionpack and whole-engine match execution remain open. G_Printf diagnostics are excluded."
         },
         {
           "original": "CanDamage",
@@ -7173,7 +7174,8 @@
         "scripts/test_bodies.py",
         "scripts/test_scores.py",
         "scripts/test_deaths.py",
-        "scripts/test_team_changes.py"
+        "scripts/test_team_changes.py",
+        "scripts/test_weapons.py"
       ]
     },
     {
@@ -7588,7 +7590,8 @@
         "scripts/test_team_changes.py",
         "scripts/test_follow_tournament.py",
         "scripts/test_intermission.py",
-        "scripts/test_client_commands.py"
+        "scripts/test_client_commands.py",
+        "scripts/test_weapons.py"
       ]
     },
     {
@@ -8062,7 +8065,8 @@
         "scripts/test_team_changes.py",
         "scripts/test_follow_tournament.py",
         "scripts/test_intermission.py",
-        "scripts/test_client_commands.py"
+        "scripts/test_client_commands.py",
+        "scripts/test_weapons.py"
       ]
     },
     {
@@ -8266,7 +8270,7 @@
             "src/mq3/game/missiles.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+          "scope": "Baseq3 native projectile rules and actual SV/CM. The weapons suite additionally connects real FireWeapon, quad scaling, ClientEvents/ClientThink and player_die. Missionpack and rendering remain open. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
         },
         {
           "original": "G_ExplodeMissile",
@@ -8274,7 +8278,7 @@
             "src/mq3/game/missiles.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+          "scope": "Baseq3 native projectile rules and actual SV/CM. The weapons suite additionally connects real FireWeapon, quad scaling, ClientEvents/ClientThink and player_die. Missionpack and rendering remain open. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
         },
         {
           "original": "G_MissileImpact",
@@ -8282,7 +8286,7 @@
             "src/mq3/game/missiles.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+          "scope": "Baseq3 native projectile rules and actual SV/CM. The weapons suite additionally connects real FireWeapon, quad scaling, ClientEvents/ClientThink and player_die. Missionpack and rendering remain open. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
         },
         {
           "original": "G_RunMissile",
@@ -8290,7 +8294,7 @@
             "src/mq3/game/missiles.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+          "scope": "Baseq3 native projectile rules and actual SV/CM. The weapons suite additionally connects real FireWeapon, quad scaling, ClientEvents/ClientThink and player_die. Missionpack and rendering remain open. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
         },
         {
           "original": "fire_plasma",
@@ -8298,7 +8302,7 @@
             "src/mq3/game/missiles.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+          "scope": "Baseq3 native projectile rules and actual SV/CM. The weapons suite additionally connects real FireWeapon, quad scaling, ClientEvents/ClientThink and player_die. Missionpack and rendering remain open. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
         },
         {
           "original": "fire_grenade",
@@ -8306,7 +8310,7 @@
             "src/mq3/game/missiles.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+          "scope": "Baseq3 native projectile rules and actual SV/CM. The weapons suite additionally connects real FireWeapon, quad scaling, ClientEvents/ClientThink and player_die. Missionpack and rendering remain open. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
         },
         {
           "original": "fire_bfg",
@@ -8314,7 +8318,7 @@
             "src/mq3/game/missiles.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+          "scope": "Baseq3 native projectile rules and actual SV/CM. The weapons suite additionally connects real FireWeapon, quad scaling, ClientEvents/ClientThink and player_die. Missionpack and rendering remain open. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
         },
         {
           "original": "fire_rocket",
@@ -8322,7 +8326,7 @@
             "src/mq3/game/missiles.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+          "scope": "Baseq3 native projectile rules and actual SV/CM. The weapons suite additionally connects real FireWeapon, quad scaling, ClientEvents/ClientThink and player_die. Missionpack and rendering remain open. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
         },
         {
           "original": "fire_grapple",
@@ -8330,7 +8334,7 @@
             "src/mq3/game/missiles.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 native projectile rules and actual SV/CM; no Missionpack, complete weapon input, player_die or renderer. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+          "scope": "Baseq3 native projectile rules and actual SV/CM. The weapons suite additionally connects real FireWeapon, quad scaling, ClientEvents/ClientThink and player_die. Missionpack and rendering remain open. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
         }
       ],
       "target": [
@@ -8338,7 +8342,8 @@
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_missiles.py"
+        "scripts/test_missiles.py",
+        "scripts/test_weapons.py"
       ]
     },
     {
@@ -10284,7 +10289,10 @@
           "original": "LogAccuracyHit",
           "target_files": [
             "src/mq3/game/combat.ml",
-            "src/mq3/game/missiles.ml"
+            "src/mq3/game/missiles.ml",
+            "src/mq3/game/weapons.ml",
+            "src/mq3/game/weapon_hitscan.ml",
+            "src/mq3/game/weapon_state.ml"
           ],
           "status": "tested_subset"
         },
@@ -10292,7 +10300,10 @@
           "original": "SnapVectorTowards",
           "target_files": [
             "src/mq3/game/combat.ml",
-            "src/mq3/game/missiles.ml"
+            "src/mq3/game/missiles.ml",
+            "src/mq3/game/weapons.ml",
+            "src/mq3/game/weapon_hitscan.ml",
+            "src/mq3/game/weapon_state.ml"
           ],
           "status": "tested_subset"
         },
@@ -10300,7 +10311,10 @@
           "original": "Weapon_HookFree",
           "target_files": [
             "src/mq3/game/combat.ml",
-            "src/mq3/game/missiles.ml"
+            "src/mq3/game/missiles.ml",
+            "src/mq3/game/weapons.ml",
+            "src/mq3/game/weapon_hitscan.ml",
+            "src/mq3/game/weapon_state.ml"
           ],
           "status": "tested_subset"
         },
@@ -10308,19 +10322,162 @@
           "original": "Weapon_HookThink",
           "target_files": [
             "src/mq3/game/combat.ml",
-            "src/mq3/game/missiles.ml"
+            "src/mq3/game/missiles.ml",
+            "src/mq3/game/weapons.ml",
+            "src/mq3/game/weapon_hitscan.ml",
+            "src/mq3/game/weapon_state.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "G_BounceProjectile",
+          "target_files": [
+            "src/mq3/game/weapons.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "Weapon_Gauntlet",
+          "target_files": [
+            "src/mq3/game/weapons.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "CheckGauntletAttack",
+          "target_files": [
+            "src/mq3/game/weapons.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "BFG_Fire",
+          "target_files": [
+            "src/mq3/game/weapons.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "weapon_grenadelauncher_fire",
+          "target_files": [
+            "src/mq3/game/weapons.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "Weapon_RocketLauncher_Fire",
+          "target_files": [
+            "src/mq3/game/weapons.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "Weapon_Plasmagun_Fire",
+          "target_files": [
+            "src/mq3/game/weapons.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "Weapon_GrapplingHook_Fire",
+          "target_files": [
+            "src/mq3/game/weapons.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "CalcMuzzlePoint",
+          "target_files": [
+            "src/mq3/game/weapons.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "CalcMuzzlePointOrigin",
+          "target_files": [
+            "src/mq3/game/weapons.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "FireWeapon",
+          "target_files": [
+            "src/mq3/game/weapons.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "Bullet_Fire",
+          "target_files": [
+            "src/mq3/game/weapon_hitscan.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "ShotgunPellet",
+          "target_files": [
+            "src/mq3/game/weapon_hitscan.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "ShotgunPattern",
+          "target_files": [
+            "src/mq3/game/weapon_hitscan.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "weapon_supershotgun_fire",
+          "target_files": [
+            "src/mq3/game/weapon_hitscan.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "weapon_railgun_fire",
+          "target_files": [
+            "src/mq3/game/weapon_hitscan.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "Weapon_LightningFire",
+          "target_files": [
+            "src/mq3/game/weapon_hitscan.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
         }
       ],
       "target": [
         "src/mq3/game/combat.ml",
-        "src/mq3/game/missiles.ml"
+        "src/mq3/game/missiles.ml",
+        "src/mq3/game/weapons.ml",
+        "src/mq3/game/weapon_hitscan.ml",
+        "src/mq3/game/weapon_state.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_combat.py",
-        "scripts/test_missiles.py"
+        "scripts/test_missiles.py",
+        "scripts/test_weapons.py"
       ]
     },
     {

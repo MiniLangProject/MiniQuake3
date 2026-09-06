@@ -68,7 +68,8 @@ Mittelpunkt der aktuellen Bounding-Box; andernfalls den Treffpunkt. Er setzt
 `PMF_GRAPPLE_PULL` und `grapplePoint`. `Weapon_HookThink` verfolgt ein Ziel bei
 seinem Aufruf weiter, plant aber im Original keinen weiteren Think-Termin.
 Freigabe entfernt die Besitzerverknüpfung und das Pull-Flag. Diese Serverzustände
-ersetzen noch keine clientseitige Darstellung des Seils oder Waffensteuerung.
+ersetzen noch keine clientseitige Darstellung des Seils. Die serverseitige
+Waffensteuerung ist inzwischen unter [WEAPONS.md](WEAPONS.md) angeschlossen.
 
 `shooter_rocket`, `shooter_grenade` und `shooter_plasma` wählen nach 500 ms ihr
 Ziel, sofern ein Target-Feld vorhanden ist. Ihre Streuung benutzt die ursprüngliche
@@ -113,8 +114,9 @@ und Signaling-NaNs sind weiterhin kein vollständig geprüfter Eingabeumfang.
 
 `player_die` räumt den portierten Grappling-Hook inzwischen über diesen Pfad auf;
 siehe [DEATHS.md](DEATHS.md). `ClientThink` löst Waffen- und Gauntlet-Aufrufe
-inzwischen in der Originalreihenfolge aus. Offen bleiben deren vollständige
-Spieler-Waffenimplementierungen, Hitscan-Waffen, Mover-Pushing,
+inzwischen in der Originalreihenfolge über die [vollständigen Baseq3-Feuerpfade](WEAPONS.md)
+aus. Die Waffen-Suite verbindet Quad-Skalierung, echte Projektiltreffer und
+Genauigkeitsstatistik mit diesen Funktionen. Offen bleiben Mover-Pushing,
 Missionpack-Projektile und die vollständige Server-/Clientintegration. Summen und Binary-Hashes stehen im
 [Prüfbericht](PARITY_AUDIT.md).
 

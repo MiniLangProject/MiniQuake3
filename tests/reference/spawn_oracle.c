@@ -8,7 +8,7 @@ void CM_LoadMap(const char*,qboolean,int*);cvar_t *Cvar_Get(const char*,const ch
 extern void (*mq3DiagnosticFn)(const char *text);
 extern void (*mq3ErrorFn)(void);
 gentity_t g_entities[MAX_GENTITIES];gclient_t g_clients[MAX_CLIENTS];level_locals_t level;
-vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_warmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit,g_weaponRespawn,g_weaponTeamRespawn,g_inactivity,g_smoothClients,g_dmflags,g_speed,g_forcerespawn,g_debugMove,g_synchronousClients,g_listEntity,g_password,g_allowVote,g_teamAutoJoin,g_maxGameClients,g_teamForceBalance,g_cheats,g_dedicated,pmove_fixed,pmove_msec;
+vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_warmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit,g_weaponRespawn,g_weaponTeamRespawn,g_inactivity,g_smoothClients,g_dmflags,g_speed,g_forcerespawn,g_debugMove,g_synchronousClients,g_listEntity,g_password,g_allowVote,g_teamAutoJoin,g_maxGameClients,g_teamForceBalance,g_cheats,g_dedicated,g_quadfactor,pmove_fixed,pmove_msec;
 void hostServerReset(void*,int,int);void hostLink(void*);void hostUnlink(void*);void hostBrush(void*,const char*);void hostMetadata(int,int*);
 int hostContact(const vec3_t,const vec3_t,void*,int);int hostArea(const vec3_t,const vec3_t,int*,int);
 void hostTrace(trace_t*,const vec3_t,const vec3_t,const vec3_t,const vec3_t,int,int);
@@ -28,9 +28,11 @@ static int voteOutput;
 static int voteCommandsOutput;
 static int clientInfoOutput;
 static int clientConnectOutput;
-static int teamChangeOutput,teamChangeReady,followOutput,intermissionOutput,clientCommandsOutput;
+static int teamChangeOutput,teamChangeReady,followOutput,intermissionOutput,clientCommandsOutput,weaponOutput,weaponTraceDepth;
 static char intermissionSessions[65][1024];
 static void teamChangeState(void);
+void Original_FireWeapon(gentity_t *ent);
+qboolean Original_CheckGauntletAttack(gentity_t *ent);
 void Original_Cmd_FollowCycle_f(gentity_t *ent,int dir);
 void Original_AddTournamentPlayer(void);
 void Original_BeginIntermission(void);
@@ -104,8 +106,9 @@ qboolean trap_EntityContact(const vec3_t mins,const vec3_t maxs,const gentity_t 
 void trap_SnapVector(float *v) {Sys_SnapVector(v);}
 void trap_Trace(trace_t *tr,const vec3_t start,const vec3_t mins,const vec3_t maxs,const vec3_t end,int pass,int mask) {
     hostTrace(tr,start,mins,maxs,end,pass,mask);
-    if(combatTraceOutput) {
-        word(27);word(pass);word(mask);word(mins?1:0);word(maxs?1:0);
+    if(combatTraceOutput || (weaponOutput && weaponTraceDepth)) {
+        if(weaponOutput)teamChangeState();
+        word(weaponOutput?227:27);word(pass);word(mask);word(mins?1:0);word(maxs?1:0);
         words(start,3);words(end,3);words(mins?mins:vec3_origin,3);words(maxs?maxs:vec3_origin,3);
         words(&tr->fraction,1);words(tr->plane.normal,3);words(&tr->plane.dist,1);
         word(tr->surfaceFlags);word(tr->contents);word(tr->startsolid);word(tr->allsolid);
@@ -132,8 +135,8 @@ int trap_Cvar_VariableIntegerValue(const char *name){return 0;}
 void trap_GetUserinfo(int client,char *buffer,int size){if(teamChangeOutput){teamChangeEvent(4,client," ");Q_strncpyz(buffer,clientInfoValues[client],size);return;}if(clientConnectOutput){connectEvent(3,client,"","");Q_strncpyz(buffer,clientInfoValues[client],size);return;}if(clientInfoOutput){clientInfoEvent(1,client,"");Q_strncpyz(buffer,clientInfoValues[client],size);return;}if(!clientSpawnOutput)G_Error("unexpected userinfo read");word(60);word(1);word(client);Q_strncpyz(buffer,clientSpawnUserinfo,size);}
 void trap_SetUserinfo(int client,const char *text){if(!clientCommandsOutput || client<0 || client>=64)G_Error("unexpected userinfo write");Q_strncpyz(clientInfoValues[client],text,sizeof(clientInfoValues[client]));teamChangeEvent(21,client,text);}
 void trap_GetUsercmd(int client,usercmd_t *cmd){if(teamChangeOutput){teamChangeEvent(5,client," ");memset(cmd,0,sizeof(*cmd));return;}if(clientThinkOutput){word(90);word(3);word(client);*cmd=clientSpawnCmd;return;}if(!clientSpawnOutput)G_Error("unexpected usercmd read");word(60);word(2);word(client);*cmd=clientSpawnCmd;}
-qboolean CheckGauntletAttack(gentity_t *ent){if(!clientThinkOutput)G_Error("unexpected gauntlet attack");word(90);word(6);word((int)(ent-g_entities));return clientThinkGauntletHit;}
-void FireWeapon(gentity_t *ent){if(!clientThinkOutput)G_Error("unexpected weapon fire");word(90);word(7);word((int)(ent-g_entities));}
+qboolean CheckGauntletAttack(gentity_t *ent){if(weaponOutput){qboolean hit;weaponTraceDepth++;hit=Original_CheckGauntletAttack(ent);weaponTraceDepth--;return hit;}if(!clientThinkOutput)G_Error("unexpected gauntlet attack");word(90);word(6);word((int)(ent-g_entities));return clientThinkGauntletHit;}
+void FireWeapon(gentity_t *ent){if(weaponOutput){weaponTraceDepth++;Original_FireWeapon(ent);weaponTraceDepth--;return;}if(!clientThinkOutput)G_Error("unexpected weapon fire");word(90);word(7);word((int)(ent-g_entities));}
 void Cmd_FollowCycle_f(gentity_t *ent,int dir){if(followOutput){Original_Cmd_FollowCycle_f(ent,dir);return;}if(!clientThinkOutput)G_Error("unexpected follow cycle");word(90);word(8);word((int)(ent-g_entities));word(dir);}
 void BotTestAAS(vec3_t origin){if(clientThinkOutput){word(90);word(9);words(origin,3);}}
 void ClientThink(int client){if(teamChangeOutput){teamChangeEvent(6,client," ");return;}if(!clientSpawnOutput)G_Error("unexpected ClientThink");word(60);word(6);word(client);g_clients[client].ps.origin[0]+=1.25f;g_clients[client].ps.commandTime+=7;}
@@ -184,6 +187,7 @@ void SpawnModelsOnVictoryPads(void){if(!intermissionOutput)G_Error("unexpected s
 #include "team_status_actions.inc"
 #include "client_info_actions.inc"
 #include "client_connect_actions.inc"
+#include "weapon_actions.inc"
 #include "team_change_actions.inc"
 static char *readString(FILE *in) {int n;char *s;if(fread(&n,4,1,in)!=1)return NULL;if(n<0 || n>10000000)exit(74);s=calloc(1,n+1);if(n && fread(s,1,n,in)!=n)exit(74);return s;}
 static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);word(level.locationLinked);word(slotOf(level.locationHead));for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
@@ -200,7 +204,8 @@ int main(int argc,char **argv) {
     int checksum,i,step;FILE *in;char *text;
     if(argc<5)return 2;CM_LoadMap(argv[1],qfalse,&checksum);Cvar_Get("cm_noCurves","0",0)->integer=atoi(argv[4]);
     in=fopen(argv[2],"rb");output=fopen(argv[3],"wb");if(!in || !output)return 3;
-    if(argc==6 && !strcmp(argv[5],"--client-commands")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=clientCommandsOutput=1;mq3DiagnosticFn=commandDiagnostic;mq3ErrorFn=commandError;runTeamChanges(in);
+    if(argc==6 && !strcmp(argv[5],"--weapons")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=clientCommandsOutput=weaponOutput=1;mq3DiagnosticFn=commandDiagnostic;mq3ErrorFn=commandError;runTeamChanges(in);word(226);word(rand());
+    } else if(argc==6 && !strcmp(argv[5],"--client-commands")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=clientCommandsOutput=1;mq3DiagnosticFn=commandDiagnostic;mq3ErrorFn=commandError;runTeamChanges(in);
     } else if(argc==6 && !strcmp(argv[5],"--intermission")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=1;runTeamChanges(in);
     } else if(argc==6 && !strcmp(argv[5],"--follow-tournament")){reset(0,0);teamChangeOutput=followOutput=1;runTeamChanges(in);
     } else if(argc==6 && !strcmp(argv[5],"--team-changes")){reset(0,0);teamChangeOutput=1;runTeamChanges(in);

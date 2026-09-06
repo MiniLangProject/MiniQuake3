@@ -30,14 +30,14 @@ gleiche 32-Bit-Wörter, 205.122 Ausgabe-Bytes, sechs geordnete Nebenwirkungen un
 zwei zusätzliche Laufzeitverträge. Davon bilden 256 Fälle eine Matrix für
 Schadensrichtung, Kappung, Godmode und Pain-Debounce.
 
-Test-Binary: `3e4e964fad03fae1b83c3ba18f18fa24c02a55cef57c13ccdaded0f94f9108a2`.
-Native x86-Oracle: `497510f616a01b5f9883cf3136e9eb86786e38eae4d21e04422c98a44d1989fb`.
+Test-Binary: `34bfa346e12d5f2e194f8e6d2f81aaeb0cbad69c342f1aca31e66864323e33af`.
+Native x86-Oracle: `521abdafbaef527d00e46f84e2bc81768dccfa05be44b5b5faee1b328fc364cc`.
 
 Die Usercmd-/Pmove-Orchestrierung, ClientEvents und ClientTimerActions sind
 inzwischen gesondert unter [ClientThink](CLIENT_THINK.md) geprüft. Die vollständige
-Eintrittsverbindung ist unter [ClientBegin](CLIENT_BEGIN.md) geprüft. Offen bleiben
-weitere Waffenpfade sowie die tatsächliche
-Snapshot- und Netzwerkzustellung. Missionpack-Code gehört nicht zu dieser Baseq3-Abnahme.
+Eintrittsverbindung ist unter [ClientBegin](CLIENT_BEGIN.md) geprüft. Die
+[Baseq3-Waffenpfade](WEAPONS.md) verwenden nun die tatsächlichen Trefferregeln.
+Offen bleiben die Snapshot- und Netzwerkzustellung. Missionpack-Code gehört nicht zu dieser Baseq3-Abnahme.
 
 Ausführen:
 

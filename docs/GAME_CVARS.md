@@ -75,9 +75,9 @@ weiterhin offene Portschritte.
 
 ## Nachweis
 
-`scripts/test_game_cvars.py` besteht mit **92 Szenarien**, **1.074 Aktionen**,
-**948.649 exakt gleichen 32-Bit-Wörtern**, **19.959 geordneten Nebenwirkungen**
-und **4.141.461 Ausgabe-Bytes**. Der Referenzhost verwendet das vollständige
+`scripts/test_game_cvars.py` besteht mit **94 Szenarien**, **1.087 Aktionen**,
+**961.431 exakt gleichen 32-Bit-Wörtern**, **20.271 geordneten Nebenwirkungen**
+und **4.196.674 Ausgabe-Bytes**. Der Referenzhost verwendet das vollständige
 originale `qcommon/cvar.c`, die unveränderte Baseq3-Tabelle und die unveränderten
 Spiel-Funktionskörper. Die Build-Datumseingabe wird vor dem Lauf aus dem
 nativen Compiler-Build gelesen und als Fixture-Metadatum gespeichert; aktuelles
@@ -92,6 +92,8 @@ Neu-Registrierung, ROM-/Force-Verhalten, Zählerüberlauf, Text-/Bytegrenzen,
 Handle null, erhaltene VM-Kopien und 16 deterministische Änderungsfolgen.
 Zusätzliche Fälle vergleichen die Level-Spiegel von sv_cheats und dedicated
 nach Registrierung, verzögerten Engine-Änderungen, Refresh, Rebind und Frame.
+Der Waffen-Cvar g_quadfactor wird ebenfalls als Float in den Level-Zustand
+übertragen und bei Registrierung, Update, Rebind und Frame-Refresh geprüft.
 Nach jeder Aktion werden Tabellen-/VM-/Engine-Zustände verglichen. Bei
 Servermeldungen werden zusätzlich die Zähler aller Tabellenzeilen beobachtet.
 
@@ -108,8 +110,8 @@ MiniLang-Fehler bleibt die letzte gültige VM-Kopie erhalten; der originale
 Engine-Abbruch mit teilweise geschriebenem Fehlerzustand wird nicht nachgebildet.
 Eingebettete NUL-Zeichen werden kontrolliert abgewiesen.
 
-Test-Binary: `6aed241ffc98a57e95f70e688fca335895b332ec77e0119667d161741317ec88`.
-Native x86-Oracle: `59bcbf8c5728cadc1b3b7bcda408f5b0facbac63225c56c76a5972b8af47dcf8`.
+Test-Binary: `6baa31ae28a0577aa677135974b78c2a0540cc8e81b0dfc589513aea74b4e3da`.
+Native x86-Oracle: `77d46a5b3dad879050d4d84a8bf386a340d20f09862d7e137af46424624faf7d`.
 
 ```powershell
 python scripts/generate_game_cvars.py

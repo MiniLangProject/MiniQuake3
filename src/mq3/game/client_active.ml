@@ -16,6 +16,7 @@ import mq3.game.player_spawns as spawns
 import mq3.game.teleport as teleport
 import mq3.game.missiles as missiles
 import mq3.game.follow_commands as followCommands
+import mq3.game.weapons as activeWeapons
 import mq3.collision.brush as brush
 import mq3.server.world as sv
 import mq3.compat.numeric as n
@@ -127,8 +128,8 @@ function clientEvents(level,ent,oldEventSequence)
         combat.damage(level,ent,void,void,void,void,damage,0,c.MOD_FALLING)
       end if
     else if event == c.EV_FIRE_WEAPON then
-      if level.fireWeaponFn == void then return error(499,"ClientThink requires weapon firing") end if
-      level.fireWeaponFn(level,ent)
+      if level.fireWeaponFn != void then level.fireWeaponFn(level,ent)
+      else activeWeapons.fire(level,ent) end if
     else if event == c.EV_USE_ITEM1 then
       if client.ps.powerups[c.PW_REDFLAG] != 0 then droppedFlag(level,ent,c.PW_REDFLAG,34)
       else if client.ps.powerups[c.PW_BLUEFLAG] != 0 then droppedFlag(level,ent,c.PW_BLUEFLAG,35)
@@ -142,7 +143,10 @@ function clientEvents(level,ent,oldEventSequence)
 end function
 
 function configureMove(level,ent,cmd)
-  client = ent.client; p = pmove.create(client.ps,sv.pmoveTrace,sv.pmoveContents,level.scene); p.cmd = cmd
+  client = ent.client; p = pmove.create(client.ps,sv.pmoveTrace,sv.pmoveContents,level.scene)
+  // C copies *ucmd into pm.cmd. Pmove can clear attack/movement while talking;
+  // subsequent game button latching and respawn still read the original ucmd.
+  p.cmd = pmove.Command(cmd.serverTime,[cmd.angles[0],cmd.angles[1],cmd.angles[2]],cmd.buttons,cmd.weapon,cmd.forwardmove,cmd.rightmove,cmd.upmove)
   // ClientThink zeroes pmove_t before Pmove; normal/dead/spectator movement
   // fills these bounds in PM_CheckDuck, while noclip deliberately leaves zeroes.
   p.k.mins = [0.0,0.0,0.0]; p.k.maxs = [0.0,0.0,0.0]
@@ -202,8 +206,8 @@ function realThink(level,ent)
   oldEventSequence = client.ps.eventSequence
   gauntletHit = false
   if client.ps.weapon == c.WP_GAUNTLET and (cmd.buttons & BUTTON_TALK) == 0 and (cmd.buttons & BUTTON_ATTACK) != 0 and client.ps.weaponTime <= 0 then
-    if level.gauntletAttackFn == void then return error(499,"ClientThink requires gauntlet attack delivery") end if
-    gauntletHit = level.gauntletAttackFn(level,ent)
+    if level.gauntletAttackFn != void then gauntletHit = level.gauntletAttackFn(level,ent)
+    else gauntletHit = activeWeapons.checkGauntlet(level,ent) end if
   end if
   if (ent.flags & FL_FORCE_GESTURE) != 0 then ent.flags = ent.flags & ~FL_FORCE_GESTURE; client.cmdButtons = client.cmdButtons | BUTTON_GESTURE; cmd.buttons = client.cmdButtons end if
   p = configureMove(level,ent,cmd); p.gauntletHit = gauntletHit

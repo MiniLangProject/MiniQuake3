@@ -54,8 +54,8 @@ Die Frame-Fälle führen inzwischen auch den portierten Teamstatus und
 `g_needpass`-Ausgabe wird verglichen. Dadurch ändern sich Wort-/Effektzahlen
 bei unverändertem Vote-Szenarienumfang.
 
-Test-Binary: `cc8254bc461b2cc2da4318ebf4caae9ccbf99241ca3533ab851965a6648e02ef`.
-Native x86-Oracle: `497510f616a01b5f9883cf3136e9eb86786e38eae4d21e04422c98a44d1989fb`.
+Test-Binary: `0294b2a7eafc2d82003fc3527f0b92d6ac1c50a90bc2298980a818112a3be705`.
+Native x86-Oracle: `521abdafbaef527d00e46f84e2bc81768dccfa05be44b5b5faee1b328fc364cc`.
 
 ```powershell
 python scripts/test_votes.py
@@ -141,8 +141,8 @@ und Modul-Rebind. Ist der originale Teamargument-Puffer voll und ein weiteres
 Argument würde `strcat` überlaufen lassen, gibt MiniLang einen kontrollierten
 Fehler zurück. Dieses undefinierte C-Speicherschreiben wird nicht ausgeführt.
 
-Test-Binary: `e951b9a179b90900ca665a652788e599db8e412bef3101a8efc2ba204c185d51`.
-Native x86-Oracle: `497510f616a01b5f9883cf3136e9eb86786e38eae4d21e04422c98a44d1989fb`.
+Test-Binary: `c4807418ee0fa8bbfeb782220403a839f576a5593e253c193f0901578070bbc1`.
+Native x86-Oracle: `521abdafbaef527d00e46f84e2bc81768dccfa05be44b5b5faee1b328fc364cc`.
 
 ```powershell
 python scripts/test_vote_commands.py

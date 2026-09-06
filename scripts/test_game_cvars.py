@@ -45,6 +45,10 @@ def scenarios(rows):
     yield 'command_gate_mirrors_frame', [(1,), (3, 'sv_cheats', '0', 1),
         (3, 'dedicated', '1', 1), (5, 1000), (3, 'sv_cheats', '7', 1),
         (3, 'dedicated', '0', 1), (5, 1001)]
+    yield 'quadfactor_initial_and_refresh', [(3, 'g_quadfactor', '2.75tail', 1), (1,),
+        (3, 'g_quadfactor', '0.5', 1), (2,), (3, 'g_quadfactor', '-2', 1), (2,), (6,), (2,)]
+    yield 'quadfactor_frame_refresh', [(1,), (3, 'g_quadfactor', '4.125', 1), (5, 1000),
+        (3, 'g_quadfactor', '0', 1), (5, 1001)]
     yield 'changes_in_original_table_order', [(1,), (3, 'g_inactivity', '4', 1),
         (3, 'g_gravity', '755.75', 1), (3, 'fraglimit', '30', 1), (3, 'g_password', 'secret', 1), (2,), (4,), (2,)]
     yield 'change_twice_before_refresh', [(1,), (3, 'g_speed', '1', 1), (3, 'g_speed', '320', 1), (2,), (2,)]

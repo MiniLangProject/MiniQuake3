@@ -227,8 +227,14 @@ end function
 function contracts(world)
   level = game.create(world); ent = game.initEntity(level.entities[0]); game.bindClient(level,ent,level.clients[0]); ent.client.connected = 2
   caught = try(active.think(level,0)); if caught is not error then return error(499,"Missing user-command contract") end if
-  ent.client.ps.eventSequence = 1; ent.client.ps.events[0] = c.EV_FIRE_WEAPON
-  caught = try(active.clientEvents(level,ent,0)); if caught is not error then return error(499,"Missing weapon-fire contract") end if
+  allocation = bytes(12,0); n.writeU32(allocation,0,90); n.writeU32(allocation,4,0); n.writeU32(allocation,8,65)
+  level.context = Check(allocation,0,0); level.observeFn = observe
+  ent.client.ps.eventSequence = 1; ent.client.ps.events[0] = c.EV_FIRE_WEAPON; ent.s.weapon = c.WP_ROCKET_LAUNCHER
+  active.clientEvents(level,ent,0)
+  if ent.client.accuracy_shots != 1 or level.num_entities != 65 or level.entities[64].s.weapon != c.WP_ROCKET_LAUNCHER or level.entities[64].damage != 100 then
+    return error(499,"Default ClientEvents weapon firing contract")
+  end if
+  if level.context.offset != len(allocation) or level.context.words != 3 then return error(499,"Default weapon allocation delivery contract") end if
   contractImpacts(world)
   print "PASS: 3 ClientThink runtime contracts"; return 0
 end function

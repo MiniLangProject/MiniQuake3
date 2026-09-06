@@ -41,6 +41,7 @@ static void teamChangeState(void){
             string(g_entities[i].message);word(g_entities[i].nextTrain?g_entities[i].nextTrain-g_entities:-1);
         }
     }
+    if(weaponOutput)weaponState();
 }
 static void teamChangeEvent(int kind,int arg,const char *text){
     if(!teamChangeReady)return;
@@ -89,6 +90,7 @@ static void runTeamChanges(FILE *in){
     /* Ordinary commands execute after map spawning. G_SpawnString still scans
        numSpawnVars when spawning is false, so no fake null spawn pairs remain. */
     if(clientCommandsOutput){level.spawning=qfalse;level.numSpawnVars=0;}
+    if(weaponOutput)weaponConfigure();
     teamChangeReady=1;if(fread(&count,4,1,in)!=1 || count<1)exit(74);
     for(i=0;i<count;i++){
         if(fread(a,4,4,in)!=4 || a[2]<0 || a[2]>=64)exit(74);level.time=a[1];voteReadString(in,request,sizeof(request));
@@ -151,7 +153,7 @@ static void runTeamChanges(FILE *in){
         case 44:{int enemy=atoi(request);if(enemy < -1 || enemy>=MAX_GENTITIES)exit(74);g_clients[a[2]].lastkilled_client=a[3];g_entities[a[2]].enemy=enemy==-1?NULL:&g_entities[enemy];break;}
         case 45:g_clients[a[2]].lasthurt_mod=a[3];g_clients[a[2]].rewardTime=atoi(request);break;
         case 46:VectorSet(g_entities[a[2]].s.origin,(float)a[3],(float)a[3],(float)a[3]);break;
-        default:exit(74);
+        default:if(!weaponOutput)exit(74);weaponAction(a,request);break;
         }
         teamChangeState();
     }

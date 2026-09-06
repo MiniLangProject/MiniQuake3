@@ -210,8 +210,9 @@ mit der Kameraplatzierung, echtem Respawn, Scoreboards und Sitzungsspeicherung.
 Die Spielregeln fordern Maprestart beziehungsweise `nextmap` in Originalreihenfolge an;
 die Ausführung durch die Engine bleibt offen. Die vollständige
 [Client-Befehlsverteilung](CLIENT_COMMANDS.md) verbindet jetzt alle Baseq3-Handler,
-Textchat/Voice, Cheats, Item-Give, Suicide, Teamtask und Teleport. Als Nächstes
-folgen weitere Waffenpfade. Weitere Spielobjekte,
+Textchat/Voice, Cheats, Item-Give, Suicide, Teamtask und Teleport.
+[Alle Baseq3-Waffen](WEAPONS.md) sind mit echten Treffern, Schaden,
+Genauigkeitsstatistik und den Standardaufrufen aus ClientThink verbunden. Weitere Spielobjekte,
 Mover-Pushing und der vollständige Server fehlen weiterhin.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
@@ -249,7 +250,8 @@ Die Intermission- und Levelende-Funktionen verwenden diese Spielabläufe ebenfal
 direkt. Die Client-Befehlsverteilung ist ebenfalls verbunden und geprüft.
 Engine-Mapwechsel/-Neustart, Modulinitialisierung, Engine-Kommando-Tokenisierung,
 Bot-/Einzelspieler-Ergebnissysteme und Netzwerkzustellung sind die nächsten Grenzen.
-Anschließend folgen weitere Waffenpfade. Im Callback freigegebene
+Der Baseq3-Waffenserver einschließlich Rail-Durchschüssen, Schrotstreuung und
+Quad-Skalierung ist inzwischen verbunden. Im Callback freigegebene
 Laser oder Projektile werden beim ungültigen erneuten Link kontrolliert
 abgewiesen; diese Abweichungen sind im Prüfbericht festgehalten.
 
