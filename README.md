@@ -11,7 +11,8 @@ Passwortstatus, Engine-/Spielmodul-Cvar-Aktualisierung, Namen/Userinfo/Teamwahl,
 `ClientConnect` und Sitzungsdaten, Team-/Zuschauerwechsel, Follow-Befehlen, Duell-Warteschlange, `ClientDisconnect`, `ClientBegin`, `ClientSpawn`,
 `ClientThink`, `ClientEndFrame`, Intermission-/Levelende-Steuerung und vollständiger
 Baseq3-Client-Befehlsverteilung mit Chat/Voice/Cheats/Spielkommandos sowie
-serverseitigem Abfeuern aller zehn Baseq3-Waffen ist vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
+serverseitigem Abfeuern aller zehn Baseq3-Waffen, Serverkonsole, IP-Sperren,
+Spielarena und Item-/Teaminitialisierung ist vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
 [geprüfte Stand mit offenen Abnahmen](docs/PARITY_AUDIT.md).
 
@@ -70,6 +71,10 @@ python scripts/test_entitystate.py
 python scripts/test_transitions.py D:/Quake3
 python scripts/test_transitions.py D:/Quake3 --no-curves
 python scripts/test_spawn_values.py
+python scripts/test_game_memory.py
+python scripts/test_initialization.py
+python scripts/test_ip_filters.py
+python scripts/test_server_commands.py
 python scripts/test_targets.py
 python scripts/test_combat.py --data-root D:/Quake3
 python scripts/test_missiles.py --data-root D:/Quake3
@@ -107,7 +112,7 @@ führen inzwischen ebenfalls ihre ursprünglichen Serverregeln aus.
 Die [Schadensberechnung](docs/COMBAT.md) ergänzt Rüstung, Rückstoß, Teamschutz,
 Battlesuit, CTF-Trägerdaten, Sichtlinien und Radius-Schaden sowie `trigger_hurt`,
 `target_kill` und `target_laser`; Telefrags sind
-damit verbunden. Weitere Klassen und vollständige Serverframes
+damit verbunden. Weitere Klassen und vollständige Engine-/Match-Replays
 bleiben offen.
 [Projektile und Shooter](docs/MISSILES.md) ergänzen Raketen, Granaten, Plasma,
 BFG, Grappling-Hook und drei schießende Kartenobjekte mit echter Server-Kollision.
@@ -133,7 +138,8 @@ Spielerangaben, Handicap, Modelle und Player-Configstrings originalgetreu.
 Teamleiterwechsel verwenden diese Verarbeitung standardmäßig.
 [`ClientConnect` und Sitzungsdaten](docs/CLIENT_CONNECT.md) ergänzen die
 Anmelderegeln, Client-Reset, Wiederverbindung und Speicherung über Levelwechsel.
-IP-Filter und Bot-Einrichtung bleiben beobachtete Schnittstellen.
+[IP-Filter](docs/IP_FILTERS.md) liefern jetzt die Standardentscheidung;
+Bot-Einrichtung bleibt eine beobachtete Schnittstelle.
 [Team-/Zuschauerwechsel und `ClientDisconnect`](docs/TEAM_CHANGES.md) verbinden
 den `team`-Befehl mit Tod, Leichenverwaltung, Item-/Flaggenabgabe, Teamleitern,
 Userinfo, erneutem Spawn und Ranglisten. Die Zuschauerfreigabe beim Disconnect
@@ -147,6 +153,10 @@ Maprestart oder `nextmap` bei der Engine angefordert werden.
 Die vollständige [Client-Befehlsverteilung](docs/CLIENT_COMMANDS.md) verbindet alle
 Baseq3-Handler: Chat/Voice, Taunts, Cheats, Items, Suicide, Teamtask und Teleport
 sowie die bestehenden Score-/Team-/Follow-/Vote-Abläufe.
+Die [Serverkonsole](docs/SERVER_COMMANDS.md) ergänzt Administration und
+Dedizierten-Serverchat. [Item- und Entity-Teaminitialisierung](docs/GAME_INITIALIZATION.md)
+sowie die [Spielarena mit Spawn-Strings](docs/GAME_MEMORY.md) bereiten den
+vollständigen Modulstart vor.
 [`Tournament und Warmup`](docs/TOURNAMENT.md) steuert Spielerbereitschaft,
 Countdown und Maprestart. [`G_RunFrame`](docs/FULL_FRAME.md) führt Entity- und
 Clientframes, Tournament, Matchende und [globale/Team-Abstimmungen](docs/VOTES.md)

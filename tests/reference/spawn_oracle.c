@@ -8,7 +8,7 @@ void CM_LoadMap(const char*,qboolean,int*);cvar_t *Cvar_Get(const char*,const ch
 extern void (*mq3DiagnosticFn)(const char *text);
 extern void (*mq3ErrorFn)(void);
 gentity_t g_entities[MAX_GENTITIES];gclient_t g_clients[MAX_CLIENTS];level_locals_t level;
-vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_warmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit,g_weaponRespawn,g_weaponTeamRespawn,g_inactivity,g_smoothClients,g_dmflags,g_speed,g_forcerespawn,g_debugMove,g_synchronousClients,g_listEntity,g_password,g_allowVote,g_teamAutoJoin,g_maxGameClients,g_teamForceBalance,g_cheats,g_dedicated,g_quadfactor,pmove_fixed,pmove_msec;
+vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_warmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit,g_weaponRespawn,g_weaponTeamRespawn,g_inactivity,g_smoothClients,g_dmflags,g_speed,g_forcerespawn,g_debugMove,g_synchronousClients,g_listEntity,g_password,g_allowVote,g_teamAutoJoin,g_maxGameClients,g_teamForceBalance,g_cheats,g_dedicated,g_quadfactor,pmove_fixed,pmove_msec,g_debugAlloc,g_banIPs,g_filterBan;
 void hostServerReset(void*,int,int);void hostLink(void*);void hostUnlink(void*);void hostBrush(void*,const char*);void hostMetadata(int,int*);
 int hostContact(const vec3_t,const vec3_t,void*,int);int hostArea(const vec3_t,const vec3_t,int*,int);
 void hostTrace(trace_t*,const vec3_t,const vec3_t,const vec3_t,const vec3_t,int,int);
@@ -28,7 +28,13 @@ static int voteOutput;
 static int voteCommandsOutput;
 static int clientInfoOutput;
 static int clientConnectOutput;
-static int teamChangeOutput,teamChangeReady,followOutput,intermissionOutput,clientCommandsOutput,weaponOutput,weaponTraceDepth;
+static int teamChangeOutput,teamChangeReady,followOutput,intermissionOutput,clientCommandsOutput,weaponOutput,weaponTraceDepth,serverCommandsOutput;
+static char serverBanEngine[8192];
+static void serverCommandState(void);
+static void serverCommandConfigure(void);
+static void serverCommandAction(int *action,const char *request);
+void *Original_G_Alloc(int size);
+qboolean Original_G_FilterPacket(char *from);
 static char intermissionSessions[65][1024];
 static void teamChangeState(void);
 void Original_FireWeapon(gentity_t *ent);
@@ -94,6 +100,7 @@ void trap_LocateGameData(gentity_t *e,int count,int size,playerState_t *ps,int c
 void trap_GetConfigstring(int index,char *buffer,int size) {Q_strncpyz(buffer,configs[index],size);}
 void trap_SetConfigstring(int index,const char *value) {if(index<0 || index>=MAX_CONFIGSTRINGS)G_Error("configstring index out of range");Q_strncpyz(configs[index],value?value:"",sizeof(configs[index]));if(teamChangeOutput){teamChangeEvent(3,index,value);return;}if(clientConnectOutput){connectEvent(8,index,"",value);return;}if(clientInfoOutput){clientInfoEvent(4,index,value);return;}if(voteCommandsOutput)voteCommandState();word(1);word(index);string("");string(value);}
 void trap_Cvar_Set(const char *key,const char *value) {
+    if(serverCommandsOutput && !strcmp(key,"g_banIPs"))Q_strncpyz(serverBanEngine,value,sizeof(serverBanEngine));
     if(intermissionOutput && !strncmp(key,"session",7)){
         int index=key[7]?atoi(key+7)+1:0;
         if(index<0 || index>64)G_Error("invalid intermission session Cvar");
@@ -130,7 +137,7 @@ void trap_DropClient(int client,const char *reason){if(!clientThinkOutput)G_Erro
 qboolean trap_InPVS(const vec3_t p1,const vec3_t p2){return SV_inPVS(p1,p2);}
 void QDECL G_Error(const char *fmt,...) {if(followOutput && teamChangeReady){teamChangeState();word(222);}va_list args;va_start(args,fmt);vfprintf(stderr,fmt,args);va_end(args);exit(72);}
 void Touch_DoorTrigger(gentity_t *a,gentity_t *b,trace_t *c) {G_Error("unexpected door boundary");}
-void *G_Alloc(int n) {void *p=calloc(1,n);if(!p)exit(73);return p;}
+void *G_Alloc(int n) {void *p;if(serverCommandsOutput)return Original_G_Alloc(n);p=calloc(1,n);if(!p)exit(73);return p;}
 int trap_Cvar_VariableIntegerValue(const char *name){return 0;}
 void trap_GetUserinfo(int client,char *buffer,int size){if(teamChangeOutput){teamChangeEvent(4,client," ");Q_strncpyz(buffer,clientInfoValues[client],size);return;}if(clientConnectOutput){connectEvent(3,client,"","");Q_strncpyz(buffer,clientInfoValues[client],size);return;}if(clientInfoOutput){clientInfoEvent(1,client,"");Q_strncpyz(buffer,clientInfoValues[client],size);return;}if(!clientSpawnOutput)G_Error("unexpected userinfo read");word(60);word(1);word(client);Q_strncpyz(buffer,clientSpawnUserinfo,size);}
 void trap_SetUserinfo(int client,const char *text){if(!clientCommandsOutput || client<0 || client>=64)G_Error("unexpected userinfo write");Q_strncpyz(clientInfoValues[client],text,sizeof(clientInfoValues[client]));teamChangeEvent(21,client,text);}
@@ -155,7 +162,7 @@ void ClientSpawn(gentity_t *ent) {
 }
 void trap_SendConsoleCommand(int exec_when,const char *text){if(followOutput){teamChangeEvent(17,exec_when,text);return;}if(clientInfoOutput){clientInfoEvent(5,exec_when,text);return;}if(voteOutput || frameRunOutput){voteBoundary(2,exec_when);string(text);return;}if(!tournamentOutput)G_Error("unexpected console command");word(130);word(4);word(exec_when);string(text);}
 void ClientUserinfoChanged(int client){if(clientInfoOutput || clientConnectOutput || teamChangeOutput){Original_ClientUserinfoChanged(client);return;}if(!voteOutput && !frameRunOutput)G_Error("unexpected ClientUserinfoChanged");voteBoundary(3,client);word(g_clients[client].sess.teamLeader);}
-qboolean G_FilterPacket(char *from){if(!clientConnectOutput)G_Error("unexpected IP filter");connectEvent(4,-1,"",from);return connectFilterResult;}
+qboolean G_FilterPacket(char *from){if(serverCommandsOutput)return Original_G_FilterPacket(from);if(!clientConnectOutput)G_Error("unexpected IP filter");connectEvent(4,-1,"",from);return connectFilterResult;}
 qboolean G_BotConnect(int client,qboolean restart){if(!clientConnectOutput)G_Error("unexpected bot setup");connectEvent(5,client,"",restart?"1":"0");return connectBotResult;}
 void AddTournamentPlayer(void){if(followOutput){Original_AddTournamentPlayer();return;}if(!tournamentOutput)G_Error("unexpected tournament promotion");word(130);word(1);word(level.numPlayingClients);if(tournamentPromote)level.numPlayingClients=2;}
 static void frameWord(int kind,int arg){if(!frameRunOutput)G_Error("unexpected frame boundary");word(110);word(kind);word(arg);}
@@ -188,6 +195,7 @@ void SpawnModelsOnVictoryPads(void){if(!intermissionOutput)G_Error("unexpected s
 #include "client_info_actions.inc"
 #include "client_connect_actions.inc"
 #include "weapon_actions.inc"
+#include "server_command_actions.inc"
 #include "team_change_actions.inc"
 static char *readString(FILE *in) {int n;char *s;if(fread(&n,4,1,in)!=1)return NULL;if(n<0 || n>10000000)exit(74);s=calloc(1,n+1);if(n && fread(s,1,n,in)!=n)exit(74);return s;}
 static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);word(level.locationLinked);word(slotOf(level.locationHead));for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
@@ -204,7 +212,8 @@ int main(int argc,char **argv) {
     int checksum,i,step;FILE *in;char *text;
     if(argc<5)return 2;CM_LoadMap(argv[1],qfalse,&checksum);Cvar_Get("cm_noCurves","0",0)->integer=atoi(argv[4]);
     in=fopen(argv[2],"rb");output=fopen(argv[3],"wb");if(!in || !output)return 3;
-    if(argc==6 && !strcmp(argv[5],"--weapons")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=clientCommandsOutput=weaponOutput=1;mq3DiagnosticFn=commandDiagnostic;mq3ErrorFn=commandError;runTeamChanges(in);word(226);word(rand());
+    if(argc==6 && !strcmp(argv[5],"--server-commands")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=clientCommandsOutput=serverCommandsOutput=1;mq3DiagnosticFn=commandDiagnostic;mq3ErrorFn=commandError;runTeamChanges(in);
+    } else if(argc==6 && !strcmp(argv[5],"--weapons")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=clientCommandsOutput=weaponOutput=1;mq3DiagnosticFn=commandDiagnostic;mq3ErrorFn=commandError;runTeamChanges(in);word(226);word(rand());
     } else if(argc==6 && !strcmp(argv[5],"--client-commands")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=clientCommandsOutput=1;mq3DiagnosticFn=commandDiagnostic;mq3ErrorFn=commandError;runTeamChanges(in);
     } else if(argc==6 && !strcmp(argv[5],"--intermission")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=1;runTeamChanges(in);
     } else if(argc==6 && !strcmp(argv[5],"--follow-tournament")){reset(0,0);teamChangeOutput=followOutput=1;runTeamChanges(in);

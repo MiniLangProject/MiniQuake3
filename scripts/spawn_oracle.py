@@ -8,6 +8,8 @@ from generate_spawn import tables
 import re
 
 FUNCTIONS={
+    'g_mem.c':['G_Alloc','G_InitMemory','Svcmd_GameMem_f'],
+    'g_svcmds.c':['StringToFilter','UpdateIPBans','G_FilterPacket','AddIP','G_ProcessIPBans','Svcmd_AddIP_f','Svcmd_RemoveIP_f','Svcmd_EntityList_f','ClientForString','Svcmd_ForceTeam_f','ConsoleCommand'],
     'g_session.c':['G_WriteClientSessionData','G_ReadSessionData','G_InitSessionData','G_InitWorldSession','G_WriteSessionData'],
     'g_utils.c':['vectoyaw','G_InitGentity','G_Spawn','G_EntitiesFree','G_FreeEntity','G_SetOrigin','G_Find','G_PickTarget','G_FindConfigstringIndex','G_ModelIndex','G_SoundIndex','G_SetMovedir','G_TempEntity','G_KillBox','vtos','AddRemap','BuildShaderStateConfig','G_UseTargets','G_AddPredictableEvent','G_AddEvent','G_Sound'],
     'g_client.c':['SpotWouldTelefrag','SelectNearestDeathmatchSpawnPoint','SelectRandomDeathmatchSpawnPoint','SelectRandomFurthestSpawnPoint','SelectSpawnPoint','SelectInitialSpawnPoint','SelectSpectatorSpawnPoint','InitBodyQue','BodySink','CopyToBodyQue','SetClientViewAngle','respawn','ClientSpawn','ClientBegin','TeamCount','TeamLeader','PickTeam','ClientCleanName','ClientUserinfoChanged','ClientConnect','ClientDisconnect','SP_info_player_deathmatch','SP_info_player_start','SP_info_player_intermission'],
@@ -33,7 +35,17 @@ def build(output):
           'qboolean itemRegistered[MAX_ITEMS];', '#define MAX_SPAWN_POINTS 128', '#define MAX_TEAM_SPAWN_POINTS 32', 'static vec3_t playerMins={-15,-15,-24},playerMaxs={15,15,32};'];selected=[]
     for name,names in FUNCTIONS.items():
         path=source/'game'/name;selected.append(path)
-        if name in ('g_combat.c','g_client.c'):
+        if name=='g_mem.c':
+            source_text=path.read_text(encoding='utf-8')
+            declarations=re.search(r'^#define POOLSIZE.*?^static int\s+allocPoint;',source_text,re.M|re.S)
+            if not declarations:raise RuntimeError('Missing original game memory storage')
+            body.append(declarations[0]+'\n#define G_Alloc Original_G_Alloc\n'+extract(path,names)+'\n#undef G_Alloc')
+        elif name=='g_svcmds.c':
+            source_text=path.read_text(encoding='utf-8')
+            declarations=re.search(r'^typedef struct ipFilter_s.*?^static int\s+numIPFilters;',source_text,re.M|re.S)
+            if not declarations:raise RuntimeError('Missing original IP filter storage')
+            body.append(declarations[0]+'\nchar *ConcatArgs(int start);\n#define G_FilterPacket Original_G_FilterPacket\n'+extract(path,names)+'\n#undef G_FilterPacket')
+        elif name in ('g_combat.c','g_client.c'):
             # G_Damage has alternate preprocessor braces; SpotWouldTelefrag
             # has a commented opening brace. Keep complete top-level bodies.
             source_text=path.read_text()

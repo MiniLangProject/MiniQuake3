@@ -91,7 +91,7 @@ Die Fälle umfassen Ablehnungspriorität, Bot-/Passwortkombinationen, Erst- und
 Wiederverbindung, automatische Teams, Kapazitäten, Sitzungs-Rundläufe,
 Ganzzahlgrenzen, Namens-/Userinfo-Puffer, Slot 63, Clientlimit null,
 Spielmoduswechsel und Schreiben → Level-Neuaufbau → Wiederverbindung.
-**25 Laufzeitverträge** ergänzen Bindungen, Pflichtschnittstellen, Registry-
+**27 Laufzeitverträge** ergänzen Bindungen, Pflichtschnittstellen, Registry-
 Integration, Cvar-Refresh und ungültige Sitzungsdaten.
 
 Unvollständiges `sscanf` würde im Original nicht initialisierte lokale Variablen
@@ -99,13 +99,15 @@ lesen. MiniLang verlangt deshalb alle sieben Konvertierungen und meldet einen
 Fehler, bevor es Sitzungsfelder ändert. Solche Eingaben zählen nicht als gültige
 Differenzfälle. Eingebettete NUL-Bytes werden ebenfalls kontrolliert abgewiesen.
 
-Test-Binary: `c76d6cc0c8a6b5b948a08e8037b533922d9440ae218c9eeb99effa013940d516`.
-Native x86-Oracle: `521abdafbaef527d00e46f84e2bc81768dccfa05be44b5b5faee1b328fc364cc`.
+Test-Binary: `e620146c12e1a20064025fbe6540b325fdec6ede10af3a1f52168716e9a99126`.
+Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 Einzelbericht: `build/reference/client_connect/result.json`.
 
 Der native Host modelliert die Session-Cvar-Speicherung; MiniLang verwendet seine
-tatsächliche Registry, deren Engine-Regeln separat geprüft sind. IP-Filter,
-Bot-Einrichtung, Userinfo-Zustellung, Log und Serverbefehle enden an ausdrücklich
+tatsächliche Registry, deren Engine-Regeln separat geprüft sind. Die [IP-Filter](IP_FILTERS.md)
+sind inzwischen implementiert und liefern die Standardentscheidung. Die ältere
+Differentialsuite behält ihren beobachteten IP-Override; zusätzliche Verträge
+prüfen tatsächliche Ban-/Whitelist-Ablehnungen. Bot-Einrichtung, Userinfo-Zustellung, Log und Serverbefehle enden an ausdrücklich
 beobachteten Schnittstellen. Configstrings werden lokal gespeichert;
 Netzwerkübertragung, kompletter Modulstart/-shutdown, Dateipersistenz,
 tatsächliche Kartenwechsel durch die Engine und Missionpack bleiben offen.

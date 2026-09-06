@@ -4,26 +4,41 @@ Stand: 2026-09-06. Der Port ist **in Arbeit und noch nicht spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die aktuelle reguläre Regression besteht aus **39 bestandenen Prüfbereichen**
+Die aktuelle reguläre Regression besteht aus **43 bestandenen Prüfbereichen**
 (`verify.py --data-root D:/Quake3`), einschließlich Engine-/Spielmodul-Cvars, Teamstandorten/-overlay,
 Passwortstatus, Userinfo/Namen/Teamwahl, ClientConnect/Sitzungsdaten,
 Team-/Zuschauerwechsel, ClientDisconnect, Follow-Befehle, Duell-Warteschlange,
 Intermission und Levelende-Steuerung, vollständiger Baseq3-Client-Befehlsverteilung,
-Textchat/Voice, Cheats, Spielkommandos und allen Baseq3-Waffen,
+Textchat/Voice, Cheats, Spielkommandos, allen Baseq3-Waffen,
+Serverkonsole, IP-Sperren, Spielarena und Item-/Teaminitialisierung,
 Vote-Aufrufen/Stimmabgabe und Vote-/Teamleiterregeln,
 Spawnpunkten, Leichen, Punkten, Spieler-Tod, Items/Flaggen, vollständigen
 Client-Abläufen ab `ClientBegin`, `CheckTournament`, `G_RunFrame` und CLI-Laufzeitvergleichen.
 Alle 31 CD-Karten werden geladen; Schadens-, Projektil- und Leichenfälle laufen
 ebenfalls auf den CD-Karten.
 
-Die letzte erweiterte Vollprüfung mit beiden Kollisions-/Bewegungsprofilen
-bestand **43 Prüfbereiche am Stand `f8cdf9a`**, vor den Vote-, Teamstatus- und Spiel-Cvar-Ports. Deren Bericht
-ist in der Git-Version dieses Stands archiviert. Die erweiterte Suite enthält
-nun 54 Gates; für den aktuellen Waffen-Stand wurde die reguläre Suite ausgeführt.
-Der Lauf ist in `build/verify-weapons-full.log` protokolliert.
+Die aktuelle erweiterte Vollprüfung besteht mit **58/58 Gates**. Sie enthält
+alle 43 regulären Prüfbereiche und die zusätzlichen Kollisions-, Bewegungs-,
+Pmove-, Sichtbarkeits-, Serverwelt-, Trigger- und Spawnvergleiche auf den
+31 CD-Karten, einschließlich der Profile mit und ohne Kurven.
+Der Lauf ist in `build/verify-server-bootstrap-extended.log` protokolliert.
 Der finale MiniQuake3-Build hat SHA-256
 `3a8c6f394b337404511f826e34404d0fd5f9c3011af6b7a4b2a96cc5321d99fb`.
 Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archiviert.
+
+Nach der Vollprüfung wurden kollidierende Artefaktnamen in fünf Python-Testtreibern
+korrigiert: Serverbefehle, Follow/Tournament, ClientConnect, ClientInfo und
+Vote-Befehle. Alle fünf Suiten wurden vollständig neu gebaut und wiederholt.
+**1.174 Szenarien** liefern unveränderte Eingaben, Ausgaben, Metriken und
+Binaryhashes; **2.350 gespeicherte Eingabe-/Referenzdateien** wurden einzeln
+nachgeprüft. Die Dateinamen enthalten jetzt einen Hash des vollständigen
+Szenarionamens und werden auch ohne Unterscheidung von Groß-/Kleinschreibung
+auf Kollisionen geprüft.
+Zwei Beschreibungstexte im Ledgergenerator wurden ebenfalls präzisiert;
+Spielcode, native Referenzhosts und MiniLang-Tests blieben unverändert.
+Der ergänzende Bericht `build/reference/artifact_reverification/result.json`
+ist an den Hash des unveränderten 58-Gate-Berichts gebunden und ebenfalls
+in `reference/evidence.json` archiviert.
 
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
 | --- | --- | --- |
@@ -32,7 +47,7 @@ Der Gesamtbericht und die Einzelbelege sind in `reference/evidence.json` archivi
 | 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, Engine-/VM-Cvar-Registrierung/-Aktualisierung und Spielmodul-Tabelle, 448 Parseraufrufe, Info-Schlüsselsuche/-Validierung sowie über teamtask geprüfte Info-Mutation und 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, Cvar-Neustart/Config-Persistenz, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
 | 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und Modulinitialisierung fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung, Sprungpad-/Teleport-Replays, ClientBegin und G_RunFrame-Einbindung geprüft; komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, ClientConnect/Sitzungs-Cvars, Team-/Zuschauerwechsel, Follow-Befehle, Duell-Warteschlange, ClientDisconnect, Client-Abläufe ab ClientBegin, Userinfo/Namen/Teamwahl, Leichen, Items, Punkte, Ränge, Matchende, Intermission-/Levelende-Steuerung, Tournament/Warmup, Vote-Aufrufe/Stimmabgabe/Auflösung, Teamleiterwahl, Teamstandorte/-overlay, Passwortstatus, Engine-Cvar-Refresh, ClientCommand mit Chat/Voice/Cheats/Spielkommandos, alle zehn Baseq3-Feuerpfade samt Schrotstreuung/Rail-Durchschüssen/Quad-Skalierung und CTF vorhanden; Engine-Mapausführung, IP-Filter, Bot-Einrichtung/-Shutdown/-Matchende, Einzelspieler-Ergebnis/Podium, weitere Klassen, Mover-Pushing, vollständige Modulinitialisierung und Engine-Kommando-Tokenisierung fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 34 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, ClientConnect/Sitzungs-Cvars, Team-/Zuschauerwechsel, Follow-Befehle, Duell-Warteschlange, ClientDisconnect, Client-Abläufe ab ClientBegin, Userinfo/Namen/Teamwahl, Leichen, Items, Punkte, Ränge, Matchende, Intermission-/Levelende-Steuerung, Tournament/Warmup, Vote-Aufrufe/Stimmabgabe/Auflösung, Teamleiterwahl, Teamstandorte/-overlay, Passwortstatus, Engine-Cvar-Refresh, ClientCommand mit Chat/Voice/Cheats/Spielkommandos, alle zehn Baseq3-Feuerpfade samt Schrotstreuung/Rail-Durchschüssen/Quad-Skalierung und CTF sowie Serverkonsole, IP-Filter, Spielarena und Item-/Teaminitialisierung vorhanden; Engine-Mapausführung, Bot-Einrichtung/-Shutdown/-Matchende, Einzelspieler-Ergebnis/Podium, weitere Klassen, Mover-Pushing, vollständige Modulinitialisierung und Engine-Kommando-Tokenisierung fehlen |
 | 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
 | 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
 | 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
@@ -309,7 +324,8 @@ assetfreien Karte. Das Pmove/Link/Touch-Protokoll stammt aus dem Vergleichshost;
 es ersetzt noch keinen vollständigen `ClientThink`-/Serverframe und kein
 ursprüngliches Spawn-Parsing. Ereignis-Entities erhalten die Originalmerker für
 spätere Freigabe; ihre automatische Entfernung ist inzwischen in der gesonderten
-Target-/Entity-Schleifenprüfung abgedeckt. Der vollständige Serverframe bleibt offen.
+Target-/Entity-Schleifenprüfung abgedeckt. Client- und Spielmodul-Frames sind
+inzwischen separat geprüft; durchgängige Engine-/Match-Replays bleiben offen.
 
 **Telefrag-Grenze:** Kandidaten, Aufrufreihenfolge, Schaden 100.000, Flags und
 `MOD_TELEFRAG` stimmen mit `G_KillBox` überein. Die Funktion `G_Damage` ist hier
@@ -511,7 +527,9 @@ Test-Binary: `eb2b7b0a14844c61c0833ec957124a4bd48a515daf5841705cd3d1c12c3eacf5`.
 C-Pfad wird nicht als identisches Verhalten ausgewiesen. `player_die` und der
 Respawn-Wrapper sind inzwischen in [DEATHS.md](DEATHS.md) integriert; Item-Entities
 und ihre Physik sowie Pickup-Regeln stehen in [ITEMS.md](ITEMS.md). `ClientSpawn`
-ist inzwischen separat geprüft; Client-Frames bleiben offen.
+ist inzwischen separat geprüft. Die Client-Frames sind in
+[CLIENT_THINK.md](CLIENT_THINK.md) und [CLIENT_FRAMES.md](CLIENT_FRAMES.md)
+verglichen; vollständige Engine-/Match-Replays bleiben offen.
 
 ## Punkte, Ranglisten und Matchende (Schritt 6)
 
@@ -645,7 +663,7 @@ zusätzlich nicht normalisierte Leiterwerte. Details: [CLIENT_INFO.md](CLIENT_IN
 
 `scripts/test_client_connect.py` besteht mit **268 Szenarien**, **377 Aktionen**,
 **26.734.597 exakt gleichen 32-Bit-Wörtern**, **111.455.661 Ausgabe-Bytes** und
-**1.771 geordneten Nebenwirkungen**. 25 Laufzeitverträge ergänzen den Vergleich.
+**1.771 geordneten Nebenwirkungen**. 27 Laufzeitverträge ergänzen den Vergleich.
 
 `ClientConnect`, alle fünf Funktionen aus `g_session.c` und `BroadcastTeamChange`
 sind gegen ihre unveränderten Originalkörper geprüft. Enthalten sind IP-/
@@ -663,7 +681,10 @@ verbundener Clients. Schreiben → Level-Neuaufbau → Wiederverbindung erhält 
 tatsächliche MiniLang-Registry. Die Verbindung mit registrierten und aktualisierten
 `g_teamAutoJoin`-/`g_maxGameClients`-Kopien ist zusätzlich geprüft.
 
-Der native Host modelliert Session-Cvar-Speicherung. IP-Filter, Bot-Einrichtung,
+Der native Host modelliert Session-Cvar-Speicherung und behält seinen
+beobachteten IP-Override. Die portierten IP-Filter liefern jetzt die
+Standardentscheidung und sind separat geprüft; zusätzliche Connect-Verträge
+prüfen echte Ban-/Whitelist-Ablehnungen. Bot-Einrichtung und
 Userinfo-/Server-/Log-Zustellung bleiben beobachtete Schnittstellen. Unvollständige
 Scans werden vor einer MiniLang-Zustandsänderung kontrolliert abgewiesen;
 der Originalcode würde dabei nicht initialisierte lokale Variablen lesen.
@@ -689,8 +710,8 @@ bei jedem Host-Aufruf und nach jeder Aktion verglichen. Dazu kommen Rang-,
 Configstring-, Item- und Leichenwarteschlangen-Zustände. Ein Null-Clientlimit-Fall
 belegt die Korrektur einer rückwärts laufenden Zuschauer-Schleife in `playerDie`.
 
-Test-Binary: `58421af6bbc15ea9508720f569740b513072c801a3ce9ae64c78fb552d9a93ad`.
-Native x86-Oracle: `521abdafbaef527d00e46f84e2bc81768dccfa05be44b5b5faee1b328fc364cc`.
+Test-Binary: `5ee99bc1fa67e847b07935d6968d26371e179e06d6a5c3d640f406f9e0d2f7a1`.
+Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 Bot-Queue/-Shutdown und Engine-Zustellung bleiben Pflichtschnittstellen;
 Bewegung, Endframe und Intermission werden in dieser Integrationssuite beobachtet.
 Follow-Befehle und Tournament-Nachrücken sind inzwischen separat geprüft.
@@ -725,8 +746,8 @@ Die vollständige [Befehlsverteilung](CLIENT_COMMANDS.md) ist separat geprüft.
 Engine-Zustellung bleibt offen.
 Details: [FOLLOW_TOURNAMENT.md](FOLLOW_TOURNAMENT.md).
 
-Test-Binary: `58421af6bbc15ea9508720f569740b513072c801a3ce9ae64c78fb552d9a93ad`.
-Native x86-Oracle: `521abdafbaef527d00e46f84e2bc81768dccfa05be44b5b5faee1b328fc364cc`.
+Test-Binary: `5ee99bc1fa67e847b07935d6968d26371e179e06d6a5c3d640f406f9e0d2f7a1`.
+Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 
 ## Intermission und Levelende (Schritt 6)
 
@@ -750,8 +771,8 @@ erhält `map_restart` beziehungsweise `vstr nextmap`, führt diese Befehle im Po
 aber noch nicht als vollständigen Kartenwechsel aus. Spawn-Think-/Endframe bleiben
 hier isolierte Overrides. Details: [INTERMISSION.md](INTERMISSION.md).
 
-Test-Binary: `58421af6bbc15ea9508720f569740b513072c801a3ce9ae64c78fb552d9a93ad`.
-Native x86-Oracle: `521abdafbaef527d00e46f84e2bc81768dccfa05be44b5b5faee1b328fc364cc`.
+Test-Binary: `5ee99bc1fa67e847b07935d6968d26371e179e06d6a5c3d640f406f9e0d2f7a1`.
+Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 
 ## ClientCommand, Chat und Spielkommandos (Schritt 6)
 
@@ -760,12 +781,11 @@ Native x86-Oracle: `521abdafbaef527d00e46f84e2bc81768dccfa05be44b5b5faee1b328fc3
 Ein originaler Com_Error-Abbruch nach Startsolid beim Item-Give wird
 einschließlich Diagnose, Freigabe und erreichtem Teilzustand verglichen.
 
-Die reguläre Gesamtsuite besteht mit **39/39 Gates**; die erweiterte Suite
-umfasst 54 Gates, ihre letzte vollständig ausgeführte Abnahme bleibt bei
-43 Gates am Stand `f8cdf9a`.
+Die aktuelle erweiterte Gesamtsuite besteht mit **58/58 Gates** einschließlich
+aller **43 regulären Gates** und der zusätzlichen CD-Kartenvergleiche.
 
-Test-Binary: `58421af6bbc15ea9508720f569740b513072c801a3ce9ae64c78fb552d9a93ad`.
-Native x86-Oracle: `521abdafbaef527d00e46f84e2bc81768dccfa05be44b5b5faee1b328fc364cc`.
+Test-Binary: `5ee99bc1fa67e847b07935d6968d26371e179e06d6a5c3d640f406f9e0d2f7a1`.
+Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 Fixture-Karte: `22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c`.
 
 Alle 37 Funktionskörper aus g_cmds.c sind im nativen Vergleichshost
@@ -778,6 +798,29 @@ und Cheat-/Dedicated-Cvar-Spiegel sind integriert. Netzwerkzustellung,
 Engine-Tokenizer/Command-Buffer, Modulstart und weitere Spielsysteme
 bleiben offen. Details und bewusste Grenzen: [CLIENT_COMMANDS.md](CLIENT_COMMANDS.md).
 
+## Serververwaltung und Karteninitialisierung (Schritt 6)
+
+| Bereich | Szenarien | Aktionen | Exakte Wörter | Geordnete Effekte |
+| --- | ---: | ---: | ---: | ---: |
+| [Spielarena und Spawn-Strings](GAME_MEMORY.md) | 53 | 1.566 | 125.480 | 412 |
+| [Item- und Entity-Teaminitialisierung](GAME_INITIALIZATION.md) | 71 | 223 | 202.891 | 189 |
+| [IP-Sperren und VM-Persistenz](IP_FILTERS.md) | 90 | 986 | 3.508.670 | 647 |
+| [Serverkonsole und echte Teamwechsel](SERVER_COMMANDS.md) | 182 | 315 | 51.110.232 | 1.543 |
+
+19 weitere Originalfunktionen sind portiert: sämtliche elf Funktionen aus
+g_svcmds.c, drei Arena-Funktionen sowie fünf Funktionen für Item-Registrierung,
+CTF-Initialisierung und Entity-Teams. G_NewString und der normale F_LSTRING-
+Spawnpfad verwenden jetzt die echte MiniLang-Spielarena. Die Standardentscheidung
+bei ClientConnect verwendet die portierten IP-Filter. forceteam führt tatsächliche
+Team-, Todes-, Spawn- und Rangabläufe aus.
+
+107 zusätzliche Laufzeitverträge prüfen definierte Schnittstellengrenzen.
+Die Initialisierung normalisiert ausdrücklich 18 einzelne undefinierte CTF-Bytes;
+die unveränderten nativen Rohbytes sind archiviert. Dafür wird keine exakte
+Parität behauptet. Bot-Kommandos und Podium-Abbruch benötigen weiterhin ihre
+ausdrücklichen Schnittstellen. Vollständiger Modulstart/-shutdown, Engine-
+Kartenwechsel, Mover-Pushing, Netzwerk, Darstellung und Bot-KI bleiben offen.
+
 ## Baseq3-Waffen (Schritt 6)
 
 `scripts/test_weapons.py` besteht mit **235 Szenarien**,
@@ -788,8 +831,8 @@ zusätzliche Schnittstellen- und Zustandsgrenzen. Der separate Protokollleser
 bestätigt tatsächlich erreichte Treffer, Schaden, NoImpact-Flächen, Rail-Limit
 und die einmalige Accuracy-Gutschrift bei direktem Raketen- plus Explosionsschaden.
 
-Test-Binary: `58421af6bbc15ea9508720f569740b513072c801a3ce9ae64c78fb552d9a93ad`.
-Native x86-Oracle: `521abdafbaef527d00e46f84e2bc81768dccfa05be44b5b5faee1b328fc364cc`.
+Test-Binary: `5ee99bc1fa67e847b07935d6968d26371e179e06d6a5c3d640f406f9e0d2f7a1`.
+Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 Fixture weapons-0.bsp: `98064ce978246d76db75ff41849a23f2bb76dea5c5513da16a85eb60c7c16657`.
 Fixture weapons-16.bsp: `075c0ae49b3ad2148fde3426f66bf869c3f0228085afe850006bb6c6074ab391`.
 
@@ -958,7 +1001,8 @@ Assist-Effekte. Die Fälle umfassen alle 35 Baseq3-Items, Aufnahmegrenzen,
 Powerup-Denial, Ereignisse, Targets, Respawn, Teamketten, Abprall und echte
 Serverkollision. Die Todes-Suite verwendet dieselben Drop-/Flaggenpfade.
 
-`ClearRegisteredItems`, `SaveRegisteredItems`, die native Paritätsprüfung
+[`ClearRegisteredItems`, `SaveRegisteredItems` und `G_CheckTeamItems`](GAME_INITIALIZATION.md)
+sind inzwischen separat geprüft. Die native Paritätsprüfung
 nichtnulliger Item-Deaktivierungs-Cvars, tatsächliche `PrintMsg`-Netzwerkzustellung
 und Missionpack bleiben offen. Details: [ITEMS.md](ITEMS.md).
 
@@ -1005,6 +1049,10 @@ python scripts/test_entitystate.py
 python scripts/test_transitions.py D:/Quake3 --no-curves
 python scripts/test_transitions.py D:/Quake3
 python scripts/test_spawn_values.py
+python scripts/test_game_memory.py
+python scripts/test_initialization.py
+python scripts/test_ip_filters.py
+python scripts/test_server_commands.py
 python scripts/test_targets.py
 python scripts/test_combat.py --data-root D:/Quake3
 python scripts/test_missiles.py --data-root D:/Quake3

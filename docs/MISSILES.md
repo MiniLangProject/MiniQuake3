@@ -77,7 +77,8 @@ Windows-Zufallsfolge, `PerpendicularVector`, `CrossProduct` und die genaue Folge
 der Float-/Double-Rechnungen. Jeder Use-Aufruf erzeugt das passende Projektil und
 ein Feuerereignis. Die Waffen-Item-Suche und `RegisterItem` setzen die ursprünglichen
 Registrierungsbits. Karten- und Drop-Items sind inzwischen portiert;
-`SaveRegisteredItems` und die clientseitige Vorabladung fehlen noch.
+[`SaveRegisteredItems`](GAME_INITIALIZATION.md) ist inzwischen portiert und
+geprüft; die clientseitige Vorabladung bleibt offen.
 
 ## Vergleich und Grenzen
 

@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 import mq3.game.client_commands as clientCommands
+import mq3.game.server_commands as serverCommands
+import mq3.game.memory as serverMemory
+import mq3.game.ip_filters as serverFilters
 import mq3.game.command_args as commandArgs
 import mq3.shared.info as commandInfo
 import mq3.game.weapons as weapons
@@ -48,6 +51,7 @@ struct Check
   intermissionMode
   commandsMode
   weaponsMode
+  serverCommandsMode
   traces
 end struct
 function readInt(reader)
@@ -245,6 +249,20 @@ function snapshot(level)
       pointer(check,ent.target_ent)
     end for
   end if
+  if check.serverCommandsMode then
+    check.location = "server commands"
+    mem = serverMemory.get(level); filters = serverFilters.get(level)
+    words(check,[mem.allocPoint,mem.debugAlloc,filters.count])
+    for each filter in filters.filters
+      words(check,[filter.mask,filter.compare])
+    end for
+    banData = serverFilters.banBytes(level)
+    for index = 0 to 63
+      word(check,n.readU32(banData,index*4))
+    end for
+    word(check,serverFilters.filterVm(level,"g_filterBan").integer)
+    textWord(check,cv.find(level.spawner.cvars,"g_banIPs").string)
+  end if
   return void
 end function
 function weaponTraceRecord(level,start,finish,mins,maxs,passEntity,mask,hit)
@@ -327,6 +345,31 @@ end function
 function commandUserinfoSet(level,slot,text)
   level.context.userinfos[slot] = text; return record(level,21,slot,text)
 end function
+function serverBotArgs(argv)
+  text = ""
+  for each arg in argv
+    text = text+str(len(bytes(arg)))+":"+arg
+  end for
+  return text
+end function
+function serverAddBot(level,argv)
+  return record(level,22,len(argv),serverBotArgs(argv))
+end function
+function serverBotList(level,argv)
+  return record(level,23,len(argv),serverBotArgs(argv))
+end function
+function serverAbortPodium(level,argv)
+  return record(level,24,len(argv),serverBotArgs(argv))
+end function
+function serverConfigure(level)
+  serverMemory.init(level); serverMemory.get(level).debugAlloc = 0
+  banVm = cv.createVm(); filterVm = cv.createVm()
+  cv.registerVm(level.spawner.cvars,banVm,"g_banIPs","",0)
+  cv.registerVm(level.spawner.cvars,filterVm,"g_filterBan","1",0)
+  serverFilters.bindVm(level,banVm,filterVm)
+  serverCommands.attach(level,serverAddBot,serverBotList,serverAbortPodium)
+  return void
+end function
 function spot(level,slot,name,origin,angles)
   ent = game.initEntity(level.entities[slot]); ent.classname = name; ent.s.origin = origin; ent.s.angles = angles; return void
 end function
@@ -401,6 +444,7 @@ function configure(level,reader,check)
     level.playerSpeed = 320; level.quadfactor = 3.0; level.pmoveMsec = 8; level.gravity = 800; level.inactivity = 0
     level.traceObserveFn = weaponTraceRecord; level.fireWeaponFn = void; level.gauntletAttackFn = void
   end if
+  if check.serverCommandsMode then serverConfigure(level) end if
   // No Begin/death/item/rank/userinfo overrides: all those game routines are real.
   return void
 end function
@@ -672,17 +716,19 @@ function main(argv)
   if len(argv) > 3 and argv[3] == "--intermission-contracts" then return intermissionContracts(world) end if
   if len(argv) > 3 and argv[3] == "--commands-contracts" then return commandsContracts(world) end if
   if len(argv) > 3 and argv[3] == "--weapons-contracts" then return weaponsContracts(world) end if
+  if len(argv) > 3 and argv[3] == "--server-commands-contracts" then return serverCommandsContracts(world) end if
   weaponsMode = len(argv) > 3 and argv[3] == "--weapons"
-  commandsMode = weaponsMode or (len(argv) > 3 and argv[3] == "--commands")
+  serverCommandsMode = len(argv) > 3 and argv[3] == "--server-commands"
+  commandsMode = serverCommandsMode or weaponsMode or (len(argv) > 3 and argv[3] == "--commands")
   intermissionMode = commandsMode or (len(argv) > 3 and argv[3] == "--intermission")
   followMode = intermissionMode or (len(argv) > 3 and argv[3] == "--follow")
-  reader = Reader(fs.readAllBytes(argv[1]),0); check = Check(fs.readAllBytes(argv[2]),0,0,0,0,array(64,""),"",followMode,intermissionMode,commandsMode,weaponsMode,0)
+  reader = Reader(fs.readAllBytes(argv[1]),0); check = Check(fs.readAllBytes(argv[2]),0,0,0,0,array(64,""),"",followMode,intermissionMode,commandsMode,weaponsMode,serverCommandsMode,0)
   level = game.create(world); configure(level,reader,check); count = readInt(reader)
   for index = 0 to count-1
     kind = readInt(reader); level.time = readInt(reader); slot = readInt(reader); p0 = readInt(reader); request = readString(reader)
     commandArgv = []
-    if check.commandsMode and kind == 40 then
-      if p0 < 0 then return error(499,"Negative ClientCommand argc") end if
+    if check.commandsMode and (kind == 40 or (check.serverCommandsMode and kind == 60)) then
+      if p0 < 0 or p0 > 64 then return error(499,"Invalid command argc") end if
       if p0 > 0 then commandArgv = [request] end if
       nextArg = 1
       while nextArg < p0
@@ -713,7 +759,8 @@ function main(argv)
         if not check.followMode then return error(499,"Invalid team change action") end if
         if check.commandsMode and kind >= 40 then
           outcome = void
-          if check.weaponsMode and kind >= 50 then runWeaponAction(level,kind,slot,p0,request)
+          if check.serverCommandsMode and kind >= 60 then runServerCommandAction(level,kind,slot,p0,request,commandArgv)
+          else if check.weaponsMode and kind >= 50 then runWeaponAction(level,kind,slot,p0,request)
           else outcome = try(runCommandAction(level,kind,slot,p0,request,commandArgv)) end if
           if outcome is error then
             snapshot(level); word(check,222); check.actions = check.actions+1
@@ -737,6 +784,115 @@ function main(argv)
   end for
   if check.weaponsMode then words(check,[226,game.random(level)]) end if
   return finishResult(reader,check)
+end function
+
+function serverFixtureBanVm(level,text)
+  if len(bytes(text)) > 255 then return error(499,"Ban fixture exceeds VM storage") end if
+  vm = serverFilters.filterVm(level,"g_banIPs"); vm.string = text; vm.modificationCount = vm.modificationCount+1
+  return void
+end function
+function runServerCommandAction(level,kind,slot,p0,request,argv)
+  switch kind
+    case 60
+      handled = serverCommands.command(level,argv); word(level.context,228); boolWord(level.context,handled)
+    end case
+    case 61
+      client = serverCommands.clientForString(level,request); found = -1
+      if client != void then found = sessions.sessionSlot(level,client) end if
+      words(level.context,[229,found])
+    end case
+    case 62
+      if slot < 0 or slot >= 1024 then return error(499,"Entity list fixture slot outside storage") end if
+      ent = game.initEntity(level.entities[slot]); ent.s.eType = p0; ent.classname = request
+      if request == "<null>" then ent.classname = void end if
+      if level.num_entities <= slot then level.num_entities = slot+1 end if
+    end case
+    case 63
+      serverMemory.init(level)
+    end case
+    case 64
+      block = serverMemory.allocate(level,p0); words(level.context,[230,block.offset])
+    end case
+    case 65
+      serverMemory.get(level).debugAlloc = p0
+    end case
+    case 66
+      cv.set2(level.spawner.cvars,"g_banIPs",request,true); serverFixtureBanVm(level,request)
+      serverFilters.filterVm(level,"g_filterBan").integer = p0
+    end case
+    case 67
+      serverFilters.processBans(level)
+    end case
+    case 68
+      rejected = serverFilters.filterPacket(level,request); word(level.context,231); boolWord(level.context,rejected)
+    end case
+    case 69
+      serverFixtureBanVm(level,cv.find(level.spawner.cvars,"g_banIPs").string)
+    end case
+    case default
+      return error(499,"Invalid server command action")
+    end case
+  end switch
+  return void
+end function
+function serverContractBot(level,argv)
+  level.time = level.time+len(argv); return void
+end function
+function serverContractConsole(level,mode,text)
+  level.time = mode; level.changemap = text; return void
+end function
+function serverContractPrint(level,text)
+  level.time = level.time+1; level.changemap = level.changemap+text; return void
+end function
+function serverCommandsContracts(world)
+  count = 0; level = game.create(world)
+  require(not serverCommands.command(level,[]) and not serverCommands.command(level,["unknown"]),"unknown nondedicated needs no sinks"); count = count+1
+  require(serverCommands.get(level) == serverCommands.get(level),"stable per-level console state"); count = count+1
+  require(serverCommands.get(level) != serverCommands.get(game.create(world)),"isolated console state"); count = count+1
+  for each name in ["addbot","botlist","abort_podium"]
+    require(try(serverCommands.command(level,[name])) is error,"bot command requires its explicit implementation"); count = count+1
+  end for
+  serverCommands.attach(level,serverContractBot,serverContractBot,serverContractBot)
+  level.time = 0
+  for each name in ["ADDbot","BOTLIST","ABORT_podium"]
+    require(serverCommands.command(level,[name,"","two words"]) and level.time > 0,"bot callback receives complete argv"); count = count+1
+  end for
+  require(level.time == 9,"all bot boundary argv lengths preserved"); count = count+1
+  require(try(serverCommands.command(level,["listip"])) is error,"listip requires console sink"); count = count+1
+  level.consoleCommandFn = serverContractConsole
+  require(serverCommands.command(level,["LiStIp"]) and level.time == 0 and level.changemap == "g_banIPs\n","listip executes now"); count = count+1
+  require(try(serverCommands.command(level,["game_memory"])) is error,"memory status requires print sink"); count = count+1
+  level.gamePrintFn = quietLog
+  require(serverCommands.command(level,["game_memory"]),"memory status uses real arena"); count = count+1
+  level.maxclients = 0
+  require(serverCommands.clientForString(level,"0") == void,"zero client limit"); count = count+1
+  for each limit in [-1,65]
+    level.maxclients = limit
+    require(try(serverCommands.clientForString(level,"0")) is error,"client lookup native storage bound"); count = count+1
+  end for
+  level.maxclients = 2; level.clients[0].connected = 1; level.clients[0].netname = "^1Player"
+  require(serverCommands.clientForString(level,"^1pLaYeR") == level.clients[0],"raw name lookup accepts connecting"); count = count+1
+  require(serverCommands.clientForString(level,"Player") == void,"lookup retains color escapes"); count = count+1
+  require(serverCommands.clientForString(level,"0suffix") == level.clients[0],"numeric lookup uses atoi prefix"); count = count+1
+  require(try(serverCommands.clientForString(level,decode(bytes([65,0,66])))) is error,"lookup rejects embedded NUL"); count = count+1
+  require(try(serverCommands.clientForString(level,decode(bytes(997,120)))) is error,"missing-name output rejects native G_Printf overflow"); count = count+1
+  require(try(serverCommands.serverPrint(level,decode(bytes(1024,120)))) is error,"classname output rejects native G_Printf overflow"); count = count+1
+  ent = game.initEntity(level.entities[1]); ent.s.eType = 2; ent.classname = decode(bytes(1024,120))
+  level.num_entities = 2; level.time = 0; level.changemap = ""; level.gamePrintFn = serverContractPrint
+  require(try(serverCommands.entityList(level)) is error and level.time == 2 and level.changemap == "  1:ET_ITEM             ","entity classname overflow follows slot and type output"); count = count+1
+  level.gamePrintFn = quietLog
+  level.num_entities = 0
+  require(serverCommands.entityList(level) == void,"empty entity list has no descending loop"); count = count+1
+  for each size in [-1,1025]
+    level.num_entities = size
+    require(try(serverCommands.entityList(level)) is error,"entity list native storage bound"); count = count+1
+  end for
+  level.dedicated = 1
+  require(try(serverCommands.command(level,["unknown"])) is error,"dedicated fallback requires delivery"); count = count+1
+  level.serverCommandFn = quietCommand
+  require(serverCommands.command(level,[]) and serverCommands.command(level,["SAY"]),"empty dedicated argv and chat"); count = count+1
+  require(try(serverCommands.command(level,[decode(bytes([65,0,66]))])) is error,"console argv rejects embedded NUL"); count = count+1
+  print "PASS: "+str(count)+" server command runtime contracts"; return 0
 end function
 function finishResult(reader,check)
   if reader.offset != len(reader.data) or check.offset != len(check.expected) then return error(499,"Incomplete team change stream") end if

@@ -1,6 +1,7 @@
 """Unchanged Baseq3 vote calls/casts, original argv copies and resolution chains."""
 import argparse
 from dataclasses import dataclass, replace
+import hashlib
 import json
 import re
 import subprocess
@@ -162,6 +163,11 @@ def scenarios():
     yield 'leader_uppercase_executes_console', case([action(3, 'callteamvote', 'LEADER', '1'), action(4, 'teamvote', 'yes', slot=1), action(6, slot=1)])
 
 
+def artifact_stem(name):
+    slug = re.sub(r'[^a-zA-Z0-9_-]', '_', name)[:64]
+    return slug + '--' + hashlib.sha256(name.encode('utf-8')).hexdigest()
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--case')
@@ -174,26 +180,34 @@ def main():
                         'tests/vote_command_tests.ml', '--output', 'vote_command_tests.exe'], check=True)
     bsp = out / 'vote_commands.bsp'
     bsp.write_bytes(map_bytes())
-    records = []
+    records, seen_names, seen_stems = [], set(), {}
     for name, data in scenarios():
+        if name in seen_names:
+            raise RuntimeError('Duplicate vote-command scenario ' + name)
+        seen_names.add(name)
+        stem = artifact_stem(name)
+        stem_key = stem.casefold()
+        if stem_key in seen_stems:
+            raise RuntimeError(f'Vote-command artifact collision: {seen_stems[stem_key]!r} and {name!r}')
+        seen_stems[stem_key] = name
         if args.case and args.case != name:
             continue
-        inp, expected = out / (name + '.bin'), out / (name + '.expected')
+        inp, expected = out / (stem + '.bin'), out / (stem + '.expected')
         inp.write_bytes(data)
-        run([out / 'spawn_oracle.exe', bsp, inp, expected, '0', '--vote-commands'], out, log=out / (name + '.oracle.log'))
-        output = run([ROOT / 'build/vote_command_tests.exe', bsp, inp, expected], ROOT / 'build', log=out / (name + '.test.log'))
+        run([out / 'spawn_oracle.exe', bsp, inp, expected, '0', '--vote-commands'], out, log=out / (stem + '.oracle.log'))
+        output = run([ROOT / 'build/vote_command_tests.exe', bsp, inp, expected], ROOT / 'build', log=out / (stem + '.test.log'))
         match = re.search(r'(\d+) vote-command actions / (\d+) exact words / (\d+) ordered effects', output)
         if not match:
             raise RuntimeError(output)
-        records.append(dict(name=name, actions=int(match[1]), exact_words=int(match[2]),
+        records.append(dict(name=name, artifact_stem=stem, actions=int(match[1]), exact_words=int(match[2]),
                             ordered_effects=int(match[3]), bytes=expected.stat().st_size,
                             inputs_sha256=sha(inp), expected_sha256=sha(expected)))
         if len(records) % 40 == 0 or args.case:
             print(f'{len(records)} scenarios passed ({name})', flush=True)
     if not records:
         raise RuntimeError('No matching vote-command scenario')
-    output = run([ROOT / 'build/vote_command_tests.exe', bsp, out / (records[0]['name'] + '.bin'),
-                  out / (records[0]['name'] + '.expected'), '--contracts'], ROOT / 'build', log=out / 'contracts.log')
+    output = run([ROOT / 'build/vote_command_tests.exe', bsp, out / (records[0]['artifact_stem'] + '.bin'),
+                  out / (records[0]['artifact_stem'] + '.expected'), '--contracts'], ROOT / 'build', log=out / 'contracts.log')
     print(output.strip())
     result = dict(passed=True, scenarios=records, scenario_count=len(records),
                   actions=sum(r['actions'] for r in records), exact_words=sum(r['exact_words'] for r in records),
@@ -202,10 +216,11 @@ def main():
                   oracle_sha256=sha(out / 'spawn_oracle.exe'), map_sha256=sha(bsp),
                   scope='Unchanged Baseq3 Cmd_CallVote_f, Cmd_Vote_f, Cmd_CallTeamVote_f and Cmd_TeamVote_f, original Cmd_Argc/Argv/ArgvBuffer copies, plus complete call/cast/resolution chains. Every callback and action compares vote state, all 64 clients and 12 configstrings. Engine nextmap query is hosted; MiniLang reads its real Cvar registry. This suite overrides ClientUserinfoChanged; the actual default and real team-vote integration are compared by test_client_info.py. Full ClientCommand routing is separately ported and compared by test_client_commands.py; command tokenization and engine/network delivery remain open. Unsafe original team argument strcat overflow is rejected by a MiniLang contract.',
                   original_sources={s.relative_to(ROOT).as_posix(): sha(s) for s in sources})
-    report = out / ('result.json' if not args.case else args.case + '.result.json')
+    selected_stem = records[0]['artifact_stem'] if args.case else None
+    report = out / ('result.json' if not args.case else selected_stem + '.result.json')
     # A reused local build must not replace the provenance-bearing full report.
     if args.reuse_build:
-        report = out / ('reused-' + (args.case or 'all') + '.json')
+        report = out / ('reused-' + (selected_stem or 'all') + '.json')
     report.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8', newline='\n')
     print(f"PASS: {len(records)} scenarios / {result['actions']} actions / {result['exact_words']} exact words / {result['ordered_effects']} ordered effects")
 

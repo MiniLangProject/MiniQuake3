@@ -6,13 +6,12 @@ import mq3.game.constants as c
 import mq3.game.movement as movement
 import mq3.game.missiles as missiles
 import mq3.game.events as events
+import mq3.game.items as itemRules
 import mq3.shared.math as q
 import mq3.shared.directions as directions
 import mq3.compat.numeric as n
 function registerItem(level,index)
-  if index < 0 or index >= 36 then return error(492,"RegisterItem requires a baseq3 item") end if
-  level.itemRegistered[index] = 1
-  return void
+  return itemRules.register(level,index)
 end function
 function weaponItem(weapon)
   // All IT_WEAPON entries in the pinned baseq3 table, in original order.

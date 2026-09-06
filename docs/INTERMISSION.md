@@ -156,8 +156,8 @@ Bei einem fehlenden Kameraziel wird auch die ursprüngliche `G_PickTarget`-
 Diagnose verglichen. `gamePrintFn` nimmt diese Meldung an; ältere isolierte Hosts
 ohne Print-Schnittstelle vergleichen weiterhin keine Diagnoseausgaben.
 
-Test-Binary: `58421af6bbc15ea9508720f569740b513072c801a3ce9ae64c78fb552d9a93ad`.
-Native x86-Oracle: `521abdafbaef527d00e46f84e2bc81768dccfa05be44b5b5faee1b328fc364cc`.
+Test-Binary: `5ee99bc1fa67e847b07935d6968d26371e179e06d6a5c3d640f406f9e0d2f7a1`.
+Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 Einzelbericht: `build/reference/intermission/result.json`.
 Die reguläre Gesamtsuite umfasst jetzt 38 Prüfbereiche, die erweiterte 53.
 Der aktuelle reguläre Lauf steht in `build/verify-client-commands.log`; die letzte

@@ -9,6 +9,7 @@ import mq3.game.spawn_functions as functions
 import mq3.game.spawn_values as values
 import mq3.game.movement as movement
 import mq3.game.items as gameItems
+import mq3.game.memory as memory
 import mq3.shared.parser as parser
 import mq3.qcommon.cvar as cv
 import mq3.compat.textnumbers as textnum
@@ -69,6 +70,9 @@ function newString(value)
   return decode(slice(result,0,written))
 end function
 function parseField(key,value,ent)
+  return parseLevelField(void,key,value,ent)
+end function
+function parseLevelField(level,key,value,ent)
   field = void
   for each row in tables.fields()
     if strings.equalsIgnoreCaseAscii(key,row[0]) then field = row; break end if
@@ -77,7 +81,7 @@ function parseField(key,value,ent)
   converted = void
   switch field[2]
     case "F_LSTRING"
-      converted = newString(value)
+      if level == void then converted = newString(value) else converted = memory.newString(level,value) end if
     end case
     case "F_INT"
       converted = textnum.atoi(value)
@@ -227,7 +231,7 @@ end function
 function fromVars(state)
   ent = game.spawn(state.level)
   for each pair in state.vars
-    parseField(pair[0],pair[1],ent)
+    parseLevelField(state.level,pair[0],pair[1],ent)
   end for
   if state.gametype == 2 and getInt(state,"notsingle","0")[1] != 0 then game.free(state.level,ent); return void end if
   key = "notfree"

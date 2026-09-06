@@ -1,5 +1,6 @@
 """Original name lookup, follow commands, spectator input and tournament queue."""
 import argparse
+import hashlib
 import json
 import random
 import re
@@ -13,6 +14,10 @@ from test_bodies import map_bytes
 from toolchain import ROOT, run
 
 WATCH=Client(team=3,spectator=2,target=1,name='Watcher')
+def artifact_stem(name):
+    slug=re.sub(r'[^a-zA-Z0-9_-]','_',name)[:64]
+    return slug+'--'+hashlib.sha256(name.encode('utf-8')).hexdigest()
+
 def follow(actions,clients=None,**kwargs):
     population={0:WATCH,1:Client(name='Other')};population.update(clients or {})
     return case(actions,clients=population,**kwargs)
@@ -106,10 +111,14 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('--case');parser.add_argument('--reuse-build',action='store_true');args=parser.parse_args()
     out=ROOT/'build/reference/follow_tournament';sources=build(out) if not args.reuse_build else []
     if not args.reuse_build:subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/team_change_tests.ml','--output','team_change_tests.exe'],check=True)
-    bsp=out/'follow_tournament.bsp';bsp.write_bytes(map_bytes());records=[]
+    bsp=out/'follow_tournament.bsp';bsp.write_bytes(map_bytes());records=[];seen=set();seen_stems={}
     for name,data in scenarios():
+        if name in seen:raise RuntimeError('Duplicate follow scenario '+name)
+        seen.add(name);safe=artifact_stem(name);stem_key=safe.casefold()
+        if stem_key in seen_stems:raise RuntimeError(f'Follow artifact collision: {seen_stems[stem_key]!r} and {name!r}')
+        seen_stems[stem_key]=name
         if args.case and args.case!=name:continue
-        safe=re.sub(r'[^a-zA-Z0-9_-]','_',name);inp,expected=out/(safe+'.bin'),out/(safe+'.expected');inp.write_bytes(data)
+        inp,expected=out/(safe+'.bin'),out/(safe+'.expected');inp.write_bytes(data)
         command=[out/'spawn_oracle.exe',bsp,inp,expected,'0','--follow-tournament']
         native_error=name.startswith('error_')
         if native_error:
@@ -120,7 +129,7 @@ def main():
         output=run([ROOT/'build/team_change_tests.exe',bsp,inp,expected,'--follow'],ROOT/'build',log=out/(safe+'.test.log'),timeout=20)
         match=re.search(r'(\d+) team change actions / (\d+) exact words / (\d+) ordered effects',output)
         if not match:raise RuntimeError(output)
-        records.append(dict(name=name,actions=int(match[1]),exact_words=int(match[2]),ordered_effects=int(match[3]),native_error=native_error,bytes=expected.stat().st_size,inputs_sha256=sha(inp),expected_sha256=sha(expected)))
+        records.append(dict(name=name,artifact_stem=safe,actions=int(match[1]),exact_words=int(match[2]),ordered_effects=int(match[3]),native_error=native_error,bytes=expected.stat().st_size,inputs_sha256=sha(inp),expected_sha256=sha(expected)))
         if len(records)%20==0 or args.case:print(f'{len(records)} follow scenarios passed ({name})',flush=True)
     if not records:raise RuntimeError('No matching follow scenario')
     output=run([ROOT/'build/team_change_tests.exe',bsp,inp,expected,'--follow-contracts'],ROOT/'build',log=out/'contracts.log');print(output.strip())
@@ -128,7 +137,8 @@ def main():
     result=dict(passed=True,scenarios=records,scenario_count=len(records),actions=sum(r['actions'] for r in records),exact_words=sum(r['exact_words'] for r in records),ordered_effects=sum(r['ordered_effects'] for r in records),output_bytes=sum(r['bytes'] for r in records),runtime_contracts=contracts,native_errors=sum(r['native_error'] for r in records),test_sha256=sha(ROOT/'build/team_change_tests.exe'),oracle_sha256=sha(out/'spawn_oracle.exe'),map_sha256=sha(bsp),
         scope='Unchanged Baseq3 SanitizeString, ClientNumberFromString, Cmd_Follow_f, Cmd_FollowCycle_f, AddTournamentPlayer, RemoveTournamentLoser, RemoveTournamentWinner and AdjustTournamentScores. Actual SetTeam/death/items/body/userinfo/ClientBegin/Spawn/ranks, SpectatorThink/Pmove attack edges, CheckTournament promotion/countdown/restart and disconnect/rotation sequences. All modeled clients, entityStates, selected private/spatial fields and queue/rank/config state are compared at every host effect and action. Four original bad-direction drops include their partial state. Undefined trailing-ESC reads, zero client ranges and endless invalid-start cycles are separately rejected; no native parity is claimed for those guards. Match-transition orchestration is separately ported and compared by test_intermission.py. Full ClientCommand routing is separately ported and compared by test_client_commands.py. Bots, engine transport/map execution and Missionpack remain open.',
         original_sources={s.relative_to(ROOT).as_posix():sha(s) for s in sources})
-    name=('reused-'+(args.case or 'all')+'.json') if args.reuse_build else ((args.case+'.result.json') if args.case else 'result.json')
+    selected_stem=records[0]['artifact_stem'] if args.case else None
+    name=('reused-'+(selected_stem or 'all')+'.json') if args.reuse_build else ((selected_stem+'.result.json') if selected_stem else 'result.json')
     (out/name).write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(f"PASS: {len(records)} follow scenarios / {result['actions']} actions / {result['exact_words']} exact words / {result['ordered_effects']} ordered effects")
 

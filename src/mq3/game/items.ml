@@ -52,7 +52,60 @@ function centeredRandom(level)
   return 2.0*(n.fdiv(game.random(level),32767)-0.5)
 end function
 function register(level,item)
-  item = requireItem(item); level.itemRegistered[item] = 1; return void
+  // Frozen MiniLang compares integer zero equal to void; inspect its type
+  // first so the valid bg_itemlist[0] pointer is not mistaken for NULL.
+  if typeof(item) != "int" then
+    if item == void then return error(497,"RegisterItem: NULL") end if
+    return error(497,"RegisterItem requires an original item-array pointer")
+  end if
+  // RegisterItem only computes an array offset; unlike pickup/spawn it does
+  // not dereference the item. Include the dummy and terminating descriptors.
+  if item < 0 or item > len(tables.items()) then return error(497,"RegisterItem requires an original item-array pointer") end if
+  level.itemRegistered[item] = 1; return void
+end function
+function clearRegistered(level)
+  for index = 0 to 255
+    level.itemRegistered[index] = 0
+  end for
+  // BG_FindItemForWeapon returns these two descriptors in the pinned table.
+  register(level,10); register(level,8); return void
+end function
+function itemInitializationPrint(level,text)
+  if level.gamePrintFn == void then return error(497,"Item initialization requires game diagnostic delivery") end if
+  level.gamePrintFn(level,text); return void
+end function
+function saveRegistered(level)
+  count = 0; bits = bytes(len(tables.items()),48)
+  for index = 0 to len(tables.items())-1
+    if level.itemRegistered[index] != 0 then bits[index] = 49; count = count+1 end if
+  end for
+  itemInitializationPrint(level,str(count)+" items registered\n")
+  if level.spawner == void then return error(497,"Item registration requires game configstrings") end if
+  return values.setConfig(level.spawner,27,decode(bits))
+end function
+function initTeamGame(level)
+  level.lastFlagCapture = 0.0; level.lastCaptureTeam = 0
+  level.redFlagStatus = 0; level.blueFlagStatus = 0; level.neutralFlagStatus = 0
+  level.redTakenTime = 0; level.blueTakenTime = 0
+  level.redObeliskAttackedTime = 0; level.blueObeliskAttackedTime = 0
+  if level.spawner == void then return error(497,"Team initialization requires game spawn state") end if
+  if level.spawner.gametype == 4 then
+    level.redFlagStatus = -1; level.blueFlagStatus = -1
+    // Native Team_SetFlagStatus(RED,ATBASE) reads ctfFlagStatusRemap[-1]
+    // for blue. Keep its state transition and first publication, defining the
+    // otherwise undefined second byte as NUL. The next publication is "00".
+    level.redFlagStatus = 0; values.setConfig(level.spawner,23,"0")
+    setFlagStatus(level,c.TEAM_BLUE,FLAG_ATBASE)
+  end if
+  return void
+end function
+function checkTeamItems(level)
+  initTeamGame(level)
+  if level.spawner.gametype == 4 then
+    if level.itemRegistered[34] == 0 then itemInitializationPrint(level,"^3WARNING: No team_CTF_redflag in map") end if
+    if level.itemRegistered[35] == 0 then itemInitializationPrint(level,"^3WARNING: No team_CTF_blueflag in map") end if
+  end if
+  return void
 end function
 function predictableEvent(level,ent,event,parm)
   state = ent.client.ps; slot = state.eventSequence & 1

@@ -4,6 +4,7 @@ import mq3.game.session as sessions
 import mq3.game.client_info as clientInfo
 import mq3.game.votes as votes
 import mq3.game.cvars as gameCvars
+import mq3.game.ip_filters as ipFilters
 import mq3.game.entities as game
 import mq3.game.playerstate as ps
 import mq3.game.spawn as spawn
@@ -359,6 +360,9 @@ end function
 function contractConnectInfo(level,slot)
   return "\\name\\Ranger\\ip\\localhost\\handicap\\50"
 end function
+function contractConnectRemoteInfo(level,slot)
+  return "\\name\\Ranger\\ip\\192.168.3.4:27960\\handicap\\50"
+end function
 function contractConnectFilter(level,text)
   return false
 end function
@@ -374,7 +378,7 @@ function connectContracts(world)
   requireConnect(try(clientConnect.connect(level,64,true,false)) is error,"upper slot"); count = count+1
   requireConnect(try(clientConnect.connect(level,0,true,false)) is error,"userinfo delivery"); count = count+1
   level.userinfoFn = contractConnectInfo
-  requireConnect(try(clientConnect.connect(level,0,true,false)) is error,"IP filter decision"); count = count+1
+  requireConnect(try(clientConnect.connect(level,0,true,false)) is error,"default IP filter requires registered VM Cvars"); count = count+1
   requireConnect(try(sessions.sessionSlot(level,void)) is error,"NULL client"); count = count+1
   requireConnect(try(sessions.sessionSlot(level,game.createClient(ps.create(),0,[0,0,0]))) is error,"foreign client"); count = count+1
   requireConnect(try(sessions.cvarText(level,"session")) is error,"Cvar storage"); count = count+1
@@ -397,6 +401,11 @@ function connectContracts(world)
   gameCvars.attach(level,"Sep  5 2026"); gameCvars.register(level)
   cv.set2(level.spawner.cvars,"g_teamAutoJoin","1",true); cv.set2(level.spawner.cvars,"g_maxGameClients","2",true); gameCvars.update(level)
   requireConnect(level.teamAutoJoin == 1 and level.maxGameClients == 2,"registered Cvars refresh session decisions"); count = count+1
+  ipFilters.addIP(level,"0.0.0.0"); held = level.clients[0]; held.wins = 919
+  requireConnect(clientConnect.connect(level,0,true,false) == "You are banned from this server." and held.wins == 919,"default ban rejects before client reset and host effects"); count = count+1
+  cv.set2(level.spawner.cvars,"g_filterBan","0",true); gameCvars.update(level); level.userinfoFn = contractConnectRemoteInfo
+  requireConnect(clientConnect.connect(level,0,true,false) == "You are banned from this server." and held.wins == 919,"default whitelist rejects unmatched remote IP"); count = count+1
+  cv.set2(level.spawner.cvars,"g_filterBan","1",true); gameCvars.update(level); level.userinfoFn = contractConnectInfo
   level.filterPacketFn = contractConnectFilter; level.newSession = false
   requireConnect(try(clientConnect.connect(level,0,true,true)) is error,"bot setup delivery"); count = count+1
   requireConnect(try(clientConnect.connect(level,0,true,false)) is error,"connect log delivery"); count = count+1

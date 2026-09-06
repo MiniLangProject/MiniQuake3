@@ -1,11 +1,12 @@
 // Copyright (C) 1999-2005 Id Software, Inc.
 // SPDX-License-Identifier: GPL-2.0-or-later
-// Baseq3 ClientConnect; IP filtering and bot setup remain explicit boundaries.
+// Baseq3 ClientConnect with default IP filtering; bot setup remains a boundary.
 package mq3.game.client_connect
 import mq3.game.entities as game
 import mq3.game.session as sessions
 import mq3.game.client_info as clientInfo
 import mq3.game.scores as scores
+import mq3.game.ip_filters as ipFilters
 import mq3.shared.info as infoStrings
 import std.string as strings
 
@@ -14,8 +15,10 @@ function connect(level,slot,firstTime,isBot)
   ent = level.entities[slot]
   if level.userinfoFn == void then return error(492,"Connect requires userinfo delivery") end if
   info = infoStrings.copy(level.userinfoFn(level,slot),1024); ip = infoStrings.value(info,"ip")
-  if level.filterPacketFn == void then return error(492,"Connect requires IP-filter decision") end if
-  if level.filterPacketFn(level,ip) then return "You are banned from this server." end if
+  banned = false
+  if level.filterPacketFn != void then banned = level.filterPacketFn(level,ip)
+  else banned = ipFilters.filterPacket(level,ip) end if
+  if banned then return "You are banned from this server." end if
   // Password exemption checks the existing entity flag, not the isBot argument.
   if (ent.r.svFlags & 8) == 0 and ip != "localhost" then
     password = level.cvarMaintenance.password

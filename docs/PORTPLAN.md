@@ -197,7 +197,8 @@ Info-Schlüsselsuche und die ursprüngliche Userinfo-Puffergrenze.
 [`ClientConnect` und alle fünf Sitzungsfunktionen](CLIENT_CONNECT.md) verbinden
 jetzt Passwortprüfung, Client-Reset, Sitzung, Userinfo und Rangberechnung.
 Speichern, Level-Neuaufbau und Wiederverbindung sind gegen C geprüft;
-IP-Filter und Bot-Einrichtung sind noch beobachtete Schnittstellen.
+[IP-Filter](IP_FILTERS.md) sind jetzt als Standardentscheidung eingebunden;
+Bot-Einrichtung bleibt eine beobachtete Schnittstelle.
 [Teamwechsel, `team`, `StopFollowing` und `ClientDisconnect`](TEAM_CHANGES.md)
 führen inzwischen die tatsächlichen Todes-, Item-/Flaggen-, Leichen-, Leiter-,
 Userinfo-, Spawn- und Rangabläufe zusammen. 227 Szenarien vergleichen jeden
@@ -212,7 +213,11 @@ die Ausführung durch die Engine bleibt offen. Die vollständige
 [Client-Befehlsverteilung](CLIENT_COMMANDS.md) verbindet jetzt alle Baseq3-Handler,
 Textchat/Voice, Cheats, Item-Give, Suicide, Teamtask und Teleport.
 [Alle Baseq3-Waffen](WEAPONS.md) sind mit echten Treffern, Schaden,
-Genauigkeitsstatistik und den Standardaufrufen aus ClientThink verbunden. Weitere Spielobjekte,
+Genauigkeitsstatistik und den Standardaufrufen aus ClientThink verbunden.
+Die [Serverkonsole](SERVER_COMMANDS.md) nutzt echte Teamwechsel, IP-Filter und
+die [Spielarena](GAME_MEMORY.md). [Item-Registrierung, CTF-Initialisierung und
+Entity-Teams](GAME_INITIALIZATION.md) ergänzen die Bausteine des Modulstarts.
+Weitere Spielobjekte,
 Mover-Pushing und der vollständige Server fehlen weiterhin.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und

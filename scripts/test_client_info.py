@@ -1,6 +1,7 @@
 """Original Baseq3 userinfo, name cleaning, team selection and real vote callers."""
 import argparse
 from dataclasses import dataclass, replace
+import hashlib
 import json
 import random
 import re
@@ -12,6 +13,11 @@ from spawn_oracle import build
 from test_bodies import map_bytes
 from test_votes import ints, text
 from toolchain import ROOT, run
+
+
+def artifact_stem(name):
+    slug = re.sub(r'[^a-zA-Z0-9_-]', '_', name)[:64]
+    return slug + '--' + hashlib.sha256(name.encode('utf-8')).hexdigest()
 
 
 def info(**changes):
@@ -171,36 +177,43 @@ def main():
     sources = build(out) if not args.reuse_build else []
     if not args.reuse_build:
         subprocess.run([sys.executable, ROOT / 'scripts/build.py', '--source', 'tests/client_info_tests.ml', '--output', 'client_info_tests.exe'], check=True)
-    bsp = out / 'client_info.bsp'; bsp.write_bytes(map_bytes()); records = []
+    bsp = out / 'client_info.bsp'; bsp.write_bytes(map_bytes()); records = []; seen_stems = {}
     for name, data in scenarios():
+        safe = artifact_stem(name); stem_key = safe.casefold()
+        if stem_key in seen_stems: raise RuntimeError(f'Userinfo artifact collision: {seen_stems[stem_key]!r} and {name!r}')
+        seen_stems[stem_key] = name
         if args.case and args.case != name: continue
-        inp, expected = out / (name + '.bin'), out / (name + '.expected'); inp.write_bytes(data)
-        run([out / 'spawn_oracle.exe', bsp, inp, expected, '0', '--client-info'], out, log=out / (name + '.oracle.log'))
-        output = run([ROOT / 'build/client_info_tests.exe', bsp, inp, expected], ROOT / 'build', log=out / (name + '.test.log'))
+        inp, expected = out / (safe + '.bin'), out / (safe + '.expected'); inp.write_bytes(data)
+        run([out / 'spawn_oracle.exe', bsp, inp, expected, '0', '--client-info'], out, log=out / (safe + '.oracle.log'))
+        output = run([ROOT / 'build/client_info_tests.exe', bsp, inp, expected], ROOT / 'build', log=out / (safe + '.test.log'))
         match = re.search(r'(\d+) userinfo actions / (\d+) exact words / (\d+) ordered effects', output)
         if not match: raise RuntimeError(output)
-        records.append(dict(name=name, actions=int(match[1]), exact_words=int(match[2]), ordered_effects=int(match[3]),
+        records.append(dict(name=name, artifact_stem=safe, actions=int(match[1]), exact_words=int(match[2]), ordered_effects=int(match[3]),
                             bytes=expected.stat().st_size, inputs_sha256=sha(inp), expected_sha256=sha(expected)))
         if len(records) % 20 == 0 or args.case: print(f'{len(records)} scenarios passed ({name})', flush=True)
     if not records: raise RuntimeError('No matching userinfo scenario')
-    first = records[0]['name']
+    first = records[0]['artifact_stem']
     output = run([ROOT / 'build/client_info_tests.exe', bsp, out / (first + '.bin'), out / (first + '.expected'), '--contracts'],
                  ROOT / 'build', log=out / 'contracts.log'); print(output.strip())
     rejections = []
     for name, data, status in [('oversize_info', case([action(3, 'x' * 8192, 'x')]), 41),
                                ('name_fallback_capacity', case([action(2, '', param=1)]), 40)]:
-        inp, expected = out / (name + '.bin'), out / (name + '.expected'); inp.write_bytes(data)
+        safe = artifact_stem(name); stem_key = safe.casefold()
+        if stem_key in seen_stems: raise RuntimeError(f'Userinfo artifact collision: {seen_stems[stem_key]!r} and {name!r}')
+        seen_stems[stem_key] = name
+        inp, expected = out / (safe + '.bin'), out / (safe + '.expected'); inp.write_bytes(data)
         result = subprocess.run([out / 'spawn_oracle.exe', bsp, inp, expected, '0', '--client-info'], capture_output=True, text=True)
         assert result.returncode == status, (name, result.returncode, result.stderr)
-        rejections.append(dict(name=name, status=status, message=result.stderr.strip(), inputs_sha256=sha(inp)))
+        rejections.append(dict(name=name, artifact_stem=safe, status=status, message=result.stderr.strip(), inputs_sha256=sha(inp)))
     result = dict(passed=True, scenarios=records, scenario_count=len(records), actions=sum(r['actions'] for r in records),
                   exact_words=sum(r['exact_words'] for r in records), ordered_effects=sum(r['ordered_effects'] for r in records),
                   output_bytes=sum(r['bytes'] for r in records), runtime_contracts=18, native_rejections=rejections,
                   test_sha256=sha(ROOT / 'build/client_info_tests.exe'), oracle_sha256=sha(out / 'spawn_oracle.exe'), map_sha256=sha(bsp),
                   scope='Unchanged Baseq3 ClientUserinfoChanged/ClientCleanName/TeamLeader/PickTeam and original Info_ValueForKey/Info_Validate. Full 117-word playerStates plus relevant client/session/entity fields, 64 player configstrings and team-vote state are compared before every engine delivery and after stateful actions. Team leader changes and complete team vote/overlay sequences use actual ported userinfo. Pure helpers have separate exact result batches. Userinfo transport, server commands, configstring broadcasting and log-file writes remain observed host boundaries. ClientConnect, session persistence and noncanonical stored leader integers are separately compared in test_client_connect.py; Missionpack and networking remain open.',
                   original_sources={s.relative_to(ROOT).as_posix(): sha(s) for s in sources})
-    report = out / ('result.json' if not args.case else args.case + '.result.json')
-    if args.reuse_build: report = out / ('reused-' + (args.case or 'all') + '.json')
+    selected_stem = records[0]['artifact_stem'] if args.case else None
+    report = out / ('result.json' if not selected_stem else selected_stem + '.result.json')
+    if args.reuse_build: report = out / ('reused-' + (selected_stem or 'all') + '.json')
     report.write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8', newline='\n')
     print(f"PASS: {len(records)} scenarios / {result['actions']} actions / {result['exact_words']} exact words / {result['ordered_effects']} ordered effects")
 

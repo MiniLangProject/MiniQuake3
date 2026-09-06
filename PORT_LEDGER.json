@@ -6548,7 +6548,7 @@
             "src/mq3/game/entities.ml"
           ],
           "status": "tested_subset",
-          "scope": "Unchanged Baseq3 connection order: userinfo copy, IP decision, password rules based on the existing entity bot flag, persistent client rebinding/reset, actual session init/read, bot setup return, real UserinfoChanged, announcements and CalculateRanks. All 66 modeled client fields (including 117 playerState words), session storage and rank/configstring state are compared at every callback. IP filtering, bot setup, userinfo/command/log delivery are observed boundaries. Missing interfaces fail explicitly; no full engine connection transport or bot AI. ClientDisconnect is separately ported and compared."
+          "scope": "Unchanged Baseq3 connection order: userinfo copy, IP decision, password rules based on the existing entity bot flag, persistent client rebinding/reset, actual session init/read, bot setup return, real UserinfoChanged, announcements and CalculateRanks. All 66 modeled client fields (including 117 playerState words), session storage and rank/configstring state are compared at every callback. Default IP decisions now use the separately compared real filter; legacy native connection fixtures retain an explicit decision override, with real default ban/whitelist paths covered by runtime contracts. Bot setup and userinfo/command/log delivery remain observed boundaries; no full engine connection transport or bot AI. ClientDisconnect is separately ported and compared."
         },
         {
           "original": "ClientDisconnect",
@@ -7210,12 +7210,10 @@
         {
           "original": "RegisterItem",
           "target_files": [
-            "src/mq3/game/shooters.ml",
-            "src/mq3/game/bodies.ml",
             "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 item registration bitset, used by shooters and actual map-item spawning. ClearRegisteredItems, SaveRegisteredItems and client precaching remain open."
+          "scope": "Original 256 qboolean registration slots (1,024 bytes), dummy and sentinel item descriptors, mandatory starting weapons, 36-character CS_ITEMS and exact print-before-publish order. CTF missing-flag checks call real team initialization. The one undefined native CTF initial status byte is explicitly normalized and archived separately; client asset precaching and full map startup remain open."
         },
         {
           "original": "G_BounceItem",
@@ -7386,6 +7384,30 @@
           ],
           "status": "tested_subset",
           "scope": "Baseq3 map/drop lifecycle, pickup rules, events, targets, respawn and CTF take/return/capture effects are compared. Log and PrintMsg payloads end at explicit host callbacks; network delivery and Missionpack remain open."
+        },
+        {
+          "original": "ClearRegisteredItems",
+          "target_files": [
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original 256 qboolean registration slots (1,024 bytes), dummy and sentinel item descriptors, mandatory starting weapons, 36-character CS_ITEMS and exact print-before-publish order. CTF missing-flag checks call real team initialization. The one undefined native CTF initial status byte is explicitly normalized and archived separately; client asset precaching and full map startup remain open."
+        },
+        {
+          "original": "SaveRegisteredItems",
+          "target_files": [
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original 256 qboolean registration slots (1,024 bytes), dummy and sentinel item descriptors, mandatory starting weapons, 36-character CS_ITEMS and exact print-before-publish order. CTF missing-flag checks call real team initialization. The one undefined native CTF initial status byte is explicitly normalized and archived separately; client asset precaching and full map startup remain open."
+        },
+        {
+          "original": "G_CheckTeamItems",
+          "target_files": [
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original 256 qboolean registration slots (1,024 bytes), dummy and sentinel item descriptors, mandatory starting weapons, 36-character CS_ITEMS and exact print-before-publish order. CTF missing-flag checks call real team initialization. The one undefined native CTF initial status byte is explicitly normalized and archived separately; client asset precaching and full map startup remain open."
         }
       ],
       "target": [
@@ -7398,7 +7420,8 @@
         "scripts/test_missiles.py",
         "scripts/test_bodies.py",
         "scripts/test_items.py",
-        "scripts/test_client_commands.py"
+        "scripts/test_client_commands.py",
+        "scripts/test_initialization.py"
       ]
     },
     {
@@ -7591,7 +7614,11 @@
         "scripts/test_follow_tournament.py",
         "scripts/test_intermission.py",
         "scripts/test_client_commands.py",
-        "scripts/test_weapons.py"
+        "scripts/test_weapons.py",
+        "scripts/test_game_memory.py",
+        "scripts/test_initialization.py",
+        "scripts/test_ip_filters.py",
+        "scripts/test_server_commands.py"
       ]
     },
     {
@@ -7655,7 +7682,8 @@
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
             "src/mq3/game/client_connect.ml",
-            "src/mq3/game/intermission.ml"
+            "src/mq3/game/intermission.ml",
+            "src/mq3/game/initialization.ml"
           ],
           "status": "tested_subset"
         },
@@ -7677,7 +7705,8 @@
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
             "src/mq3/game/client_connect.ml",
-            "src/mq3/game/intermission.ml"
+            "src/mq3/game/intermission.ml",
+            "src/mq3/game/initialization.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 G_RunFrame order is compared end to end: restart guard, time/frame update, entities, ported client dispatch, client end frames, actual CheckTournament, exit rules, team status, global/team vote resolution and CheckCvars. Default Cvar refresh uses ported G_UpdateCvars and the engine registry; empty-entity frame probes compare that path, while legacy frame/gameplay suites retain an explicit refresh override. Mover/other physics dispatch and entity-list diagnostics remain callbacks."
@@ -7700,7 +7729,8 @@
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
             "src/mq3/game/client_connect.ml",
-            "src/mq3/game/intermission.ml"
+            "src/mq3/game/intermission.ml",
+            "src/mq3/game/initialization.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 tournament promotion, player/team readiness, warmup Cvar changes, countdown and map restart are compared against the unchanged native body. Default promotion now executes ported AddTournamentPlayer with real SetTeam/ClientBegin/Spawn/ranks, compared separately including countdown/restart; legacy isolated tests retain an override. Engine command delivery remains a callback."
@@ -7723,7 +7753,8 @@
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
             "src/mq3/game/client_connect.ml",
-            "src/mq3/game/intermission.ml"
+            "src/mq3/game/intermission.ml",
+            "src/mq3/game/initialization.ml"
           ],
           "status": "tested_subset"
         },
@@ -7745,7 +7776,8 @@
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
             "src/mq3/game/client_connect.ml",
-            "src/mq3/game/intermission.ml"
+            "src/mq3/game/intermission.ml",
+            "src/mq3/game/initialization.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions and defaults to ported intermission/level-exit orchestration; old isolated suites keep a transition override. Engine map execution remains open."
@@ -7768,7 +7800,8 @@
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
             "src/mq3/game/client_connect.ml",
-            "src/mq3/game/intermission.ml"
+            "src/mq3/game/intermission.ml",
+            "src/mq3/game/initialization.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 client ranks with the tested native Windows UCRT sorting profile. The original four-write reset overruns the two team-vote counters; observed spawning/numSpawnVars clears use safe explicit field writes. QVM qsort ordering is separate. CalculateRanks calls actual exit decisions and defaults to ported intermission/level-exit orchestration; old isolated suites keep a transition override. Engine map execution remains open."
@@ -7791,7 +7824,8 @@
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
             "src/mq3/game/client_connect.ml",
-            "src/mq3/game/intermission.ml"
+            "src/mq3/game/intermission.ml",
+            "src/mq3/game/initialization.ml"
           ],
           "status": "tested_subset"
         },
@@ -7813,7 +7847,8 @@
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
             "src/mq3/game/client_connect.ml",
-            "src/mq3/game/intermission.ml"
+            "src/mq3/game/intermission.ml",
+            "src/mq3/game/initialization.ml"
           ],
           "status": "tested_subset"
         },
@@ -7835,7 +7870,8 @@
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
             "src/mq3/game/client_connect.ml",
-            "src/mq3/game/intermission.ml"
+            "src/mq3/game/intermission.ml",
+            "src/mq3/game/initialization.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. Ported BeginIntermission/ExitLevel are defaults, with real queue/readiness/timeout chains compared in the intermission suite; old isolated scores keep a transition override. No log-file timestamp/write, engine map execution or network delivery."
@@ -7858,7 +7894,8 @@
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
             "src/mq3/game/client_connect.ml",
-            "src/mq3/game/intermission.ml"
+            "src/mq3/game/intermission.ml",
+            "src/mq3/game/initialization.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. Ported BeginIntermission/ExitLevel are defaults, with real queue/readiness/timeout chains compared in the intermission suite; old isolated scores keep a transition override. No log-file timestamp/write, engine map execution or network delivery."
@@ -7881,7 +7918,8 @@
             "src/mq3/game/cvar_tables.ml",
             "src/mq3/game/client_info.ml",
             "src/mq3/game/client_connect.ml",
-            "src/mq3/game/intermission.ml"
+            "src/mq3/game/intermission.ml",
+            "src/mq3/game/initialization.ml"
           ],
           "status": "tested_subset",
           "scope": "Baseq3 decisions, state changes, configstrings and formatted message/log payloads. Ported BeginIntermission/ExitLevel are defaults, with real queue/readiness/timeout chains compared in the intermission suite; old isolated scores keep a transition override. No log-file timestamp/write, engine map execution or network delivery."
@@ -8025,6 +8063,14 @@
           ],
           "status": "tested_subset",
           "scope": "Unchanged Baseq3 intermission placement and level-exit orchestration. Actual StopFollowing, FindIntermissionPoint, tournament scores/loser removal, respawn/ClientSpawn/ClientBegin, scoreboards and session writes are integrated. All modeled client/entity states, camera, changemap, separate client limits, readiness and session Cvars are compared at each host effect/action. BotInterbreedEndMatch and single-player UpdateTournamentInfo/SpawnModelsOnVictoryPads remain required observed interfaces; spawn Think/EndFrame are isolated overrides in this suite. Engine console/Cvar/network delivery, actual map loading/restart and Missionpack are open."
+        },
+        {
+          "original": "G_FindTeams",
+          "target_files": [
+            "src/mq3/game/initialization.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original index-one, in-use and non-slave grouping, case-sensitive team names, NULL versus empty strings, existing chain preservation, slave prepend and last non-NULL targetname transfer. Relevant state and original print order are compared; full G_InitGame orchestration remains open."
         }
       ],
       "target": [
@@ -8043,7 +8089,8 @@
         "src/mq3/game/cvar_tables.ml",
         "src/mq3/game/client_info.ml",
         "src/mq3/game/client_connect.ml",
-        "src/mq3/game/intermission.ml"
+        "src/mq3/game/intermission.ml",
+        "src/mq3/game/initialization.ml"
       ],
       "status": "partial",
       "tests": [
@@ -8066,7 +8113,8 @@
         "scripts/test_follow_tournament.py",
         "scripts/test_intermission.py",
         "scripts/test_client_commands.py",
-        "scripts/test_weapons.py"
+        "scripts/test_weapons.py",
+        "scripts/test_initialization.py"
       ]
     },
     {
@@ -8078,10 +8126,40 @@
         "G_InitMemory",
         "Svcmd_GameMem_f"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "G_Alloc",
+          "target_files": [
+            "src/mq3/game/memory.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original 256 KiB arena, 32-byte alignment, zero-size allocation pointers, diagnostic-before-mutation/drop ordering, retained bytes and block aliases across rewind. Compared allocation cases use nonnegative sizes up to 2147483616 with allocPoint + size within INT_MAX. Sizes outside this conservative domain are separate MiniLang contracts, including larger requests that native C can reject before alignment when debugging is disabled. State can be rebound across levels; complete module lifecycle is open."
+        },
+        {
+          "original": "G_InitMemory",
+          "target_files": [
+            "src/mq3/game/memory.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original 256 KiB arena, 32-byte alignment, zero-size allocation pointers, diagnostic-before-mutation/drop ordering, retained bytes and block aliases across rewind. Compared allocation cases use nonnegative sizes up to 2147483616 with allocPoint + size within INT_MAX. Sizes outside this conservative domain are separate MiniLang contracts, including larger requests that native C can reject before alignment when debugging is disabled. State can be rebound across levels; complete module lifecycle is open."
+        },
+        {
+          "original": "Svcmd_GameMem_f",
+          "target_files": [
+            "src/mq3/game/memory.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original 256 KiB arena, 32-byte alignment, zero-size allocation pointers, diagnostic-before-mutation/drop ordering, retained bytes and block aliases across rewind. Compared allocation cases use nonnegative sizes up to 2147483616 with allocPoint + size within INT_MAX. Sizes outside this conservative domain are separate MiniLang contracts, including larger requests that native C can reject before alignment when debugging is disabled. State can be rebound across levels; complete module lifecycle is open."
+        }
+      ],
+      "target": [
+        "src/mq3/game/memory.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_game_memory.py",
+        "scripts/test_server_commands.py"
+      ]
     },
     {
       "source": "code/game/g_misc.c",
@@ -8568,7 +8646,8 @@
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/memory.ml"
           ],
           "status": "tested_subset"
         },
@@ -8579,7 +8658,8 @@
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/memory.ml"
           ],
           "status": "tested_subset"
         },
@@ -8590,7 +8670,8 @@
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/memory.ml"
           ],
           "status": "tested_subset"
         },
@@ -8601,7 +8682,8 @@
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/memory.ml"
           ],
           "status": "tested_subset"
         },
@@ -8612,7 +8694,8 @@
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/memory.ml"
           ],
           "status": "tested_subset"
         },
@@ -8623,7 +8706,8 @@
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/memory.ml"
           ],
           "status": "tested_subset"
         },
@@ -8634,31 +8718,26 @@
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/memory.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "G_NewString",
           "target_files": [
-            "src/mq3/game/spawn.ml",
-            "src/mq3/game/spawn_tables.ml",
-            "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/memory.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_subset",
+          "scope": "Real arena-backed string allocation including original byte extent, escape translation, first-NUL termination and unchanged padding. Map entity F_LSTRING parsing uses this default; standalone conversion helpers remain available. Terminal backslash would omit the native NUL and is a separate MiniLang rejection after allocation/writes. Entity field strings are owned MiniLang values; arbitrary C pointer aliasing is not claimed."
         },
         {
           "original": "G_ParseField",
           "target_files": [
-            "src/mq3/game/spawn.ml",
-            "src/mq3/game/spawn_tables.ml",
-            "src/mq3/game/spawn_values.ml",
-            "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/spawn.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_subset",
+          "scope": "Original field lookup/conversion with arena-backed F_LSTRING in the actual map spawn path; all nine string fields, ignored/unknown fields, overwrite allocation and exact bytes/order are additionally compared. Pure field-conversion fixtures retain the legacy allocation-independent wrapper."
         },
         {
           "original": "G_SpawnGEntityFromSpawnVars",
@@ -8667,7 +8746,8 @@
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/memory.ml"
           ],
           "status": "tested_subset"
         },
@@ -8678,7 +8758,8 @@
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/memory.ml"
           ],
           "status": "tested_subset"
         },
@@ -8689,7 +8770,8 @@
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/memory.ml"
           ],
           "status": "tested_subset"
         },
@@ -8700,7 +8782,8 @@
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/memory.ml"
           ],
           "status": "tested_subset"
         },
@@ -8711,7 +8794,8 @@
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/memory.ml"
           ],
           "status": "tested_subset"
         },
@@ -8722,7 +8806,8 @@
             "src/mq3/game/spawn_tables.ml",
             "src/mq3/game/spawn_values.ml",
             "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/memory.ml"
           ],
           "status": "tested_subset"
         }
@@ -8732,13 +8817,15 @@
         "src/mq3/game/spawn_tables.ml",
         "src/mq3/game/spawn_values.ml",
         "src/mq3/compat/textnumbers.ml",
-        "src/mq3/game/items.ml"
+        "src/mq3/game/items.ml",
+        "src/mq3/game/memory.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_spawn_values.py",
         "scripts/test_spawn.py",
-        "scripts/test_items.py"
+        "scripts/test_items.py",
+        "scripts/test_game_memory.py"
       ]
     },
     {
@@ -8758,10 +8845,105 @@
         "Svcmd_RemoveIP_f",
         "UpdateIPBans"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "StringToFilter",
+          "target_files": [
+            "src/mq3/game/ip_filters.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original Baseq3 1024-slot IP masks, sentinel/free-slot reuse, ban-list capacity and formatting, VM snapshot mutation, delayed refresh, packet filtering and add/remove commands. ClientConnect uses the real filter by default, retaining explicit fixture overrides. Short packet inputs that would depend on uninitialized native octets, overflowing native parse buffers and G_Printf outputs beyond 1023 bytes are separate MiniLang contracts. Engine command tokenization, networking and module restart orchestration remain open."
+        },
+        {
+          "original": "UpdateIPBans",
+          "target_files": [
+            "src/mq3/game/ip_filters.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original Baseq3 1024-slot IP masks, sentinel/free-slot reuse, ban-list capacity and formatting, VM snapshot mutation, delayed refresh, packet filtering and add/remove commands. ClientConnect uses the real filter by default, retaining explicit fixture overrides. Short packet inputs that would depend on uninitialized native octets, overflowing native parse buffers and G_Printf outputs beyond 1023 bytes are separate MiniLang contracts. Engine command tokenization, networking and module restart orchestration remain open."
+        },
+        {
+          "original": "G_FilterPacket",
+          "target_files": [
+            "src/mq3/game/ip_filters.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original Baseq3 1024-slot IP masks, sentinel/free-slot reuse, ban-list capacity and formatting, VM snapshot mutation, delayed refresh, packet filtering and add/remove commands. ClientConnect uses the real filter by default, retaining explicit fixture overrides. Short packet inputs that would depend on uninitialized native octets, overflowing native parse buffers and G_Printf outputs beyond 1023 bytes are separate MiniLang contracts. Engine command tokenization, networking and module restart orchestration remain open."
+        },
+        {
+          "original": "AddIP",
+          "target_files": [
+            "src/mq3/game/ip_filters.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original Baseq3 1024-slot IP masks, sentinel/free-slot reuse, ban-list capacity and formatting, VM snapshot mutation, delayed refresh, packet filtering and add/remove commands. ClientConnect uses the real filter by default, retaining explicit fixture overrides. Short packet inputs that would depend on uninitialized native octets, overflowing native parse buffers and G_Printf outputs beyond 1023 bytes are separate MiniLang contracts. Engine command tokenization, networking and module restart orchestration remain open."
+        },
+        {
+          "original": "G_ProcessIPBans",
+          "target_files": [
+            "src/mq3/game/ip_filters.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original Baseq3 1024-slot IP masks, sentinel/free-slot reuse, ban-list capacity and formatting, VM snapshot mutation, delayed refresh, packet filtering and add/remove commands. ClientConnect uses the real filter by default, retaining explicit fixture overrides. Short packet inputs that would depend on uninitialized native octets, overflowing native parse buffers and G_Printf outputs beyond 1023 bytes are separate MiniLang contracts. Engine command tokenization, networking and module restart orchestration remain open."
+        },
+        {
+          "original": "Svcmd_AddIP_f",
+          "target_files": [
+            "src/mq3/game/ip_filters.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original Baseq3 1024-slot IP masks, sentinel/free-slot reuse, ban-list capacity and formatting, VM snapshot mutation, delayed refresh, packet filtering and add/remove commands. ClientConnect uses the real filter by default, retaining explicit fixture overrides. Short packet inputs that would depend on uninitialized native octets, overflowing native parse buffers and G_Printf outputs beyond 1023 bytes are separate MiniLang contracts. Engine command tokenization, networking and module restart orchestration remain open."
+        },
+        {
+          "original": "Svcmd_RemoveIP_f",
+          "target_files": [
+            "src/mq3/game/ip_filters.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original Baseq3 1024-slot IP masks, sentinel/free-slot reuse, ban-list capacity and formatting, VM snapshot mutation, delayed refresh, packet filtering and add/remove commands. ClientConnect uses the real filter by default, retaining explicit fixture overrides. Short packet inputs that would depend on uninitialized native octets, overflowing native parse buffers and G_Printf outputs beyond 1023 bytes are separate MiniLang contracts. Engine command tokenization, networking and module restart orchestration remain open."
+        },
+        {
+          "original": "Svcmd_EntityList_f",
+          "target_files": [
+            "src/mq3/game/server_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original Baseq3 server command dispatch, exact EntityList print fragments, numeric-first/literal-name client lookup, real SetTeam/death/spawn/rank integration, dedicated chat/fallback, IP administration and arena status. State and ordered effects are compared through unchanged native bodies. The isolated server fixture observes ClientThink/ClientEndFrame after real ClientSpawn; their actual default ports are tested separately. Overlong G_Printf output is a separate MiniLang contract. Bot creation/listing and podium abort require explicit callbacks; engine argv tokenization, console buffering, command/network transport and full module startup remain open."
+        },
+        {
+          "original": "ClientForString",
+          "target_files": [
+            "src/mq3/game/server_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original Baseq3 server command dispatch, exact EntityList print fragments, numeric-first/literal-name client lookup, real SetTeam/death/spawn/rank integration, dedicated chat/fallback, IP administration and arena status. State and ordered effects are compared through unchanged native bodies. The isolated server fixture observes ClientThink/ClientEndFrame after real ClientSpawn; their actual default ports are tested separately. Overlong G_Printf output is a separate MiniLang contract. Bot creation/listing and podium abort require explicit callbacks; engine argv tokenization, console buffering, command/network transport and full module startup remain open."
+        },
+        {
+          "original": "Svcmd_ForceTeam_f",
+          "target_files": [
+            "src/mq3/game/server_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original Baseq3 server command dispatch, exact EntityList print fragments, numeric-first/literal-name client lookup, real SetTeam/death/spawn/rank integration, dedicated chat/fallback, IP administration and arena status. State and ordered effects are compared through unchanged native bodies. The isolated server fixture observes ClientThink/ClientEndFrame after real ClientSpawn; their actual default ports are tested separately. Overlong G_Printf output is a separate MiniLang contract. Bot creation/listing and podium abort require explicit callbacks; engine argv tokenization, console buffering, command/network transport and full module startup remain open."
+        },
+        {
+          "original": "ConsoleCommand",
+          "target_files": [
+            "src/mq3/game/server_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original Baseq3 server command dispatch, exact EntityList print fragments, numeric-first/literal-name client lookup, real SetTeam/death/spawn/rank integration, dedicated chat/fallback, IP administration and arena status. State and ordered effects are compared through unchanged native bodies. The isolated server fixture observes ClientThink/ClientEndFrame after real ClientSpawn; their actual default ports are tested separately. Overlong G_Printf output is a separate MiniLang contract. Bot creation/listing and podium abort require explicit callbacks; engine argv tokenization, console buffering, command/network transport and full module startup remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/game/ip_filters.ml",
+        "src/mq3/game/server_commands.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_ip_filters.py",
+        "scripts/test_server_commands.py"
+      ]
     },
     {
       "source": "code/game/g_syscalls.asm",
@@ -9610,6 +9792,14 @@
           ],
           "status": "tested_subset",
           "scope": "Original PVS location selection, nonzero count color clamping and mutation, MSVC null-string formatting, byte truncation and Com_sprintf diagnostics, compared through team chat and tells."
+        },
+        {
+          "original": "Team_InitGame",
+          "target_files": [
+            "src/mq3/game/items.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All nine teamgame fields reset, Baseq3 CTF invalid-status setup, two status publications and original intermediate states. Original first publication reads ctfFlagStatusRemap[-1]; only that undefined byte is normalized to NUL with native raw bytes archived, not claimed as exact parity. Second publication and all defined state are compared exactly; Missionpack is excluded."
         }
       ],
       "target": [
@@ -9630,7 +9820,8 @@
         "scripts/test_team_status.py",
         "scripts/test_client_info.py",
         "scripts/test_team_changes.py",
-        "scripts/test_client_commands.py"
+        "scripts/test_client_commands.py",
+        "scripts/test_initialization.py"
       ]
     },
     {

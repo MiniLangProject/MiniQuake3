@@ -55,8 +55,9 @@ gelten die kleineren Bonuswerte des Baseq3-Profils; die höheren
 
 ## Offene Grenzen
 
-`ClearRegisteredItems` und `SaveRegisteredItems` folgen mit der
-Client-Vorbereitung. Die lokale
+`ClearRegisteredItems`, `SaveRegisteredItems` und `G_CheckTeamItems` sind mit
+[Item-/Teaminitialisierung](GAME_INITIALIZATION.md) inzwischen separat geprüft.
+Die clientseitige Vorabladung bleibt offen. Die lokale
 Item-Deaktivierung über vorhandene Cvars ist implementiert; die native
 Vergleichsreferenz hält diese Cvars für diesen Test jedoch fest auf null, daher
 ist der Nichtnull-Fall noch nicht als C-Parität abgenommen. Die Host-Schnittstellen

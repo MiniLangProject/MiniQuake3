@@ -1,6 +1,7 @@
 """Original ClientConnect, all Baseq3 session functions and actual userinfo/ranks."""
 import argparse
 from dataclasses import dataclass, replace
+import hashlib
 import json
 import random
 import re
@@ -13,6 +14,11 @@ from test_bodies import map_bytes
 from test_client_info import info
 from test_votes import ints, text
 from toolchain import ROOT, run
+
+
+def artifact_stem(name):
+    slug=re.sub(r'[^a-zA-Z0-9_-]','_',name)[:64]
+    return slug+'--'+hashlib.sha256(name.encode('utf-8')).hexdigest()
 
 
 @dataclass(frozen=True)
@@ -128,16 +134,18 @@ def main():
     sources=build(out) if not args.reuse_build else []
     if not args.reuse_build:
         subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/client_connect_tests.ml','--output','client_connect_tests.exe'],check=True)
-    bsp=out/'client_connect.bsp';bsp.write_bytes(map_bytes());records=[]
+    bsp=out/'client_connect.bsp';bsp.write_bytes(map_bytes());records=[];seen_stems={}
     for name,data in scenarios():
+        safe=artifact_stem(name);stem_key=safe.casefold()
+        if stem_key in seen_stems:raise RuntimeError(f'Connect artifact collision: {seen_stems[stem_key]!r} and {name!r}')
+        seen_stems[stem_key]=name
         if args.case and args.case!=name:continue
-        safe=re.sub(r'[^a-zA-Z0-9_-]','_',name)
         inp,expected=out/(safe+'.bin'),out/(safe+'.expected');inp.write_bytes(data)
         run([out/'spawn_oracle.exe',bsp,inp,expected,'0','--client-connect'],out,log=out/(safe+'.oracle.log'))
         output=run([ROOT/'build/client_connect_tests.exe',bsp,inp,expected],ROOT/'build',log=out/(safe+'.test.log'))
         match=re.search(r'(\d+) connect actions / (\d+) exact words / (\d+) ordered effects',output)
         if not match:raise RuntimeError(output)
-        records.append(dict(name=name,actions=int(match[1]),exact_words=int(match[2]),ordered_effects=int(match[3]),
+        records.append(dict(name=name,artifact_stem=safe,actions=int(match[1]),exact_words=int(match[2]),ordered_effects=int(match[3]),
             bytes=expected.stat().st_size,inputs_sha256=sha(inp),expected_sha256=sha(expected)))
         if len(records)%20==0 or args.case:print(f'{len(records)} scenarios passed ({name})',flush=True)
     if not records:raise RuntimeError('No matching connect scenario')
@@ -147,9 +155,10 @@ def main():
         exact_words=sum(r['exact_words'] for r in records),ordered_effects=sum(r['ordered_effects'] for r in records),
         output_bytes=sum(r['bytes'] for r in records),runtime_contracts=contracts,
         test_sha256=sha(ROOT/'build/client_connect_tests.exe'),oracle_sha256=sha(out/'spawn_oracle.exe'),map_sha256=sha(bsp),
-        scope='Unchanged Baseq3 ClientConnect, five session functions and BroadcastTeamChange, with actual userinfo, team selection and CalculateRanks. All modeled client fields and all 117 playerState words in every slot are compared at each host effect and action; session Cvar storage survives level reconstruction. MiniLang uses its real registry, native host models Cvar storage. IP filtering, bot setup, userinfo delivery, logs, commands and configstring broadcast remain observed boundaries. Session reads require all seven native CRT conversions; incomplete input would use uninitialized original C locals and is rejected safely before MiniLang mutation. ClientDisconnect and team changes are compared separately. Full module lifecycle, IP filters, bot AI, map/network delivery and Missionpack remain open.',
+        scope='Unchanged Baseq3 ClientConnect, five session functions and BroadcastTeamChange, with actual userinfo, team selection and CalculateRanks. All modeled client fields and all 117 playerState words in every slot are compared at each host effect and action; session Cvar storage survives level reconstruction. MiniLang uses its real registry, native host models Cvar storage. This legacy differential fixture observes IP decisions; real filtering is now the default and is tested separately, with actual default ban/whitelist connection paths in the runtime contracts. Bot setup, userinfo delivery, logs, commands and configstring broadcast remain observed boundaries. Session reads require all seven native CRT conversions; incomplete input would use uninitialized original C locals and is rejected safely before MiniLang mutation. ClientDisconnect and team changes are compared separately. Full module lifecycle, bot AI, map/network delivery and Missionpack remain open.',
         original_sources={s.relative_to(ROOT).as_posix():sha(s) for s in sources})
-    name=('reused-'+(args.case or 'all')+'.json') if args.reuse_build else ((args.case+'.result.json') if args.case else 'result.json')
+    selected_stem=records[0]['artifact_stem'] if args.case else None
+    name=('reused-'+(selected_stem or 'all')+'.json') if args.reuse_build else ((selected_stem+'.result.json') if selected_stem else 'result.json')
     (out/name).write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(f"PASS: {len(records)} scenarios / {result['actions']} actions / {result['exact_words']} exact words / {result['ordered_effects']} ordered effects")
 

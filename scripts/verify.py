@@ -18,12 +18,12 @@ def main():
     if args.extended and not args.data_root: parser.error("--extended requires --data-root")
     scripts=[("build.py",[]),("test_numeric.py",[]),("test_math.py",[]),("test_core.py",[]),
              ("test_vm.py",[]),("test_archives.py",["--data-root",str(args.data_root)] if args.data_root else []),
-             ("test_rejections.py",[]),("test_brush.py",[]),("test_shared_game.py",[]),("test_entitystate.py",[]),("test_spawn_values.py",[]),("test_targets.py",["--reuse-build"]),
+             ("test_rejections.py",[]),("test_brush.py",[]),("test_shared_game.py",[]),("test_entitystate.py",[]),("test_spawn_values.py",[]),("test_game_memory.py",[]),("test_initialization.py",[]),("test_targets.py",["--reuse-build"]),
              ("test_combat.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else [])),
              ("test_missiles.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else [])),
              ("test_bodies.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else [])),
              ("test_scores.py",["--reuse-build"]),("test_deaths.py",["--reuse-build"]),("test_items.py",["--reuse-build"]),
-             ("test_client_spawn.py",[]),("test_client_begin.py",[]),("test_client_info.py",[]),("test_client_connect.py",[]),("test_team_changes.py",[]),("test_follow_tournament.py",[]),("test_intermission.py",[]),("test_client_commands.py",[]),("test_weapons.py",[]),("test_client_frame.py",[]),("test_client_think.py",[]),
+             ("test_client_spawn.py",[]),("test_client_begin.py",[]),("test_client_info.py",[]),("test_client_connect.py",[]),("test_ip_filters.py",[]),("test_team_changes.py",[]),("test_follow_tournament.py",[]),("test_intermission.py",[]),("test_client_commands.py",[]),("test_server_commands.py",[]),("test_weapons.py",[]),("test_client_frame.py",[]),("test_client_think.py",[]),
              ("test_tournament.py",[]),("test_votes.py",[]),("test_vote_commands.py",[]),("test_team_status.py",[]),("test_game_cvars.py",[]),("test_full_frame.py",[])]
     if args.data_root:
         scripts.append(("test_maps.py",[str(args.data_root)]))

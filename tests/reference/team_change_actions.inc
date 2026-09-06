@@ -42,6 +42,7 @@ static void teamChangeState(void){
         }
     }
     if(weaponOutput)weaponState();
+    if(serverCommandsOutput)serverCommandState();
 }
 static void teamChangeEvent(int kind,int arg,const char *text){
     if(!teamChangeReady)return;
@@ -91,9 +92,10 @@ static void runTeamChanges(FILE *in){
        numSpawnVars when spawning is false, so no fake null spawn pairs remain. */
     if(clientCommandsOutput){level.spawning=qfalse;level.numSpawnVars=0;}
     if(weaponOutput)weaponConfigure();
+    if(serverCommandsOutput)serverCommandConfigure();
     teamChangeReady=1;if(fread(&count,4,1,in)!=1 || count<1)exit(74);
     for(i=0;i<count;i++){
-        if(fread(a,4,4,in)!=4 || a[2]<0 || a[2]>=64)exit(74);level.time=a[1];voteReadString(in,request,sizeof(request));
+        if(fread(a,4,4,in)!=4 || a[2]<0 || a[2]>=(serverCommandsOutput && a[0]==62?1024:64))exit(74);level.time=a[1];voteReadString(in,request,sizeof(request));
         switch(a[0]){
         case 1:SetTeam(&g_entities[a[2]],request);break;
         case 2:cmd_argc=a[3];if(cmd_argc<0 || cmd_argc>64)exit(74);for(j=0;j<cmd_argc;j++)cmd_argv[j]=j==1?request:"team";Cmd_Team_f(&g_entities[a[2]]);break;
@@ -139,10 +141,12 @@ static void runTeamChanges(FILE *in){
         case 35:respawn(&g_entities[a[2]]);break;
         case 36:g_timelimit.integer=a[3];g_fraglimit.integer=atoi(request);break;
         case 40:
+        case 60:
             cmd_argc=a[3];if(cmd_argc<0 || cmd_argc>64)exit(74);
             if(cmd_argc)cmd_argv[0]=request;
             for(j=1;j<cmd_argc;j++){voteReadString(in,voteArgvStorage[j],sizeof(voteArgvStorage[j]));cmd_argv[j]=voteArgvStorage[j];}
-            ClientCommand(a[2]);break;
+            if(a[0]==60){qboolean handled;if(!serverCommandsOutput)exit(74);handled=ConsoleCommand();word(228);word(handled);}
+            else ClientCommand(a[2]);break;
         case 41:g_cheats.integer=a[3];g_dedicated.integer=atoi(request);break;
         case 42:{
             gentity_t *ent=&g_entities[82];G_InitGentity(ent);ent->classname="target_location";
@@ -153,7 +157,7 @@ static void runTeamChanges(FILE *in){
         case 44:{int enemy=atoi(request);if(enemy < -1 || enemy>=MAX_GENTITIES)exit(74);g_clients[a[2]].lastkilled_client=a[3];g_entities[a[2]].enemy=enemy==-1?NULL:&g_entities[enemy];break;}
         case 45:g_clients[a[2]].lasthurt_mod=a[3];g_clients[a[2]].rewardTime=atoi(request);break;
         case 46:VectorSet(g_entities[a[2]].s.origin,(float)a[3],(float)a[3],(float)a[3]);break;
-        default:if(!weaponOutput)exit(74);weaponAction(a,request);break;
+        default:if(serverCommandsOutput){serverCommandAction(a,request);break;}if(!weaponOutput)exit(74);weaponAction(a,request);break;
         }
         teamChangeState();
     }

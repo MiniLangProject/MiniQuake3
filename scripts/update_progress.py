@@ -235,6 +235,39 @@ def main():
     for source,(targets,symbols) in weapon_mappings.items():
         old_targets,old_symbols,tests=mappings[source]
         mappings[source]=(list(dict.fromkeys(old_targets+targets)),list(dict.fromkeys(old_symbols+symbols)),list(dict.fromkeys(tests+["scripts/test_weapons.py"])))
+    startup_groups={
+        "code/game/g_svcmds.c":[
+            ("src/mq3/game/ip_filters.ml",["StringToFilter","UpdateIPBans","G_FilterPacket","AddIP","G_ProcessIPBans","Svcmd_AddIP_f","Svcmd_RemoveIP_f"],["scripts/test_ip_filters.py","scripts/test_server_commands.py"],
+             "Original Baseq3 1024-slot IP masks, sentinel/free-slot reuse, ban-list capacity and formatting, VM snapshot mutation, delayed refresh, packet filtering and add/remove commands. ClientConnect uses the real filter by default, retaining explicit fixture overrides. Short packet inputs that would depend on uninitialized native octets, overflowing native parse buffers and G_Printf outputs beyond 1023 bytes are separate MiniLang contracts. Engine command tokenization, networking and module restart orchestration remain open."),
+            ("src/mq3/game/server_commands.ml",["Svcmd_EntityList_f","ClientForString","Svcmd_ForceTeam_f","ConsoleCommand"],["scripts/test_server_commands.py"],
+             "Original Baseq3 server command dispatch, exact EntityList print fragments, numeric-first/literal-name client lookup, real SetTeam/death/spawn/rank integration, dedicated chat/fallback, IP administration and arena status. State and ordered effects are compared through unchanged native bodies. The isolated server fixture observes ClientThink/ClientEndFrame after real ClientSpawn; their actual default ports are tested separately. Overlong G_Printf output is a separate MiniLang contract. Bot creation/listing and podium abort require explicit callbacks; engine argv tokenization, console buffering, command/network transport and full module startup remain open.")],
+        "code/game/g_mem.c":[
+            ("src/mq3/game/memory.ml",["G_Alloc","G_InitMemory","Svcmd_GameMem_f"],["scripts/test_game_memory.py","scripts/test_server_commands.py"],
+             "Original 256 KiB arena, 32-byte alignment, zero-size allocation pointers, diagnostic-before-mutation/drop ordering, retained bytes and block aliases across rewind. Compared allocation cases use nonnegative sizes up to 2147483616 with allocPoint + size within INT_MAX. Sizes outside this conservative domain are separate MiniLang contracts, including larger requests that native C can reject before alignment when debugging is disabled. State can be rebound across levels; complete module lifecycle is open.")],
+        "code/game/g_spawn.c":[
+            ("src/mq3/game/memory.ml",["G_NewString"],["scripts/test_game_memory.py"],
+             "Real arena-backed string allocation including original byte extent, escape translation, first-NUL termination and unchanged padding. Map entity F_LSTRING parsing uses this default; standalone conversion helpers remain available. Terminal backslash would omit the native NUL and is a separate MiniLang rejection after allocation/writes. Entity field strings are owned MiniLang values; arbitrary C pointer aliasing is not claimed."),
+            ("src/mq3/game/spawn.ml",["G_ParseField"],["scripts/test_game_memory.py"],
+             "Original field lookup/conversion with arena-backed F_LSTRING in the actual map spawn path; all nine string fields, ignored/unknown fields, overwrite allocation and exact bytes/order are additionally compared. Pure field-conversion fixtures retain the legacy allocation-independent wrapper.")],
+        "code/game/g_main.c":[
+            ("src/mq3/game/initialization.ml",["G_FindTeams"],["scripts/test_initialization.py"],
+             "Original index-one, in-use and non-slave grouping, case-sensitive team names, NULL versus empty strings, existing chain preservation, slave prepend and last non-NULL targetname transfer. Relevant state and original print order are compared; full G_InitGame orchestration remains open.")],
+        "code/game/g_items.c":[
+            ("src/mq3/game/items.ml",["RegisterItem","ClearRegisteredItems","SaveRegisteredItems","G_CheckTeamItems"],["scripts/test_initialization.py"],
+             "Original 256 qboolean registration slots (1,024 bytes), dummy and sentinel item descriptors, mandatory starting weapons, 36-character CS_ITEMS and exact print-before-publish order. CTF missing-flag checks call real team initialization. The one undefined native CTF initial status byte is explicitly normalized and archived separately; client asset precaching and full map startup remain open.")],
+        "code/game/g_team.c":[
+            ("src/mq3/game/items.ml",["Team_InitGame"],["scripts/test_initialization.py"],
+             "All nine teamgame fields reset, Baseq3 CTF invalid-status setup, two status publications and original intermediate states. Original first publication reads ctfFlagStatusRemap[-1]; only that undefined byte is normalized to NUL with native raw bytes archived, not claimed as exact parity. Second publication and all defined state are compared exactly; Missionpack is excluded.")],
+    }
+    for source,groups in startup_groups.items():
+        old_targets,old_symbols,tests=mappings.get(source,([],[],[]))
+        for target,symbols,checks,scope in groups:
+            old_targets=list(dict.fromkeys(old_targets+[target]))
+            old_symbols=list(dict.fromkeys(old_symbols+symbols))
+            tests=list(dict.fromkeys(tests+checks))
+        mappings[source]=(old_targets,old_symbols,tests)
+    targets,symbols,tests=mappings["code/game/g_local.h"]
+    mappings["code/game/g_local.h"]=(targets,symbols,list(dict.fromkeys(tests+["scripts/test_game_memory.py","scripts/test_initialization.py","scripts/test_ip_filters.py","scripts/test_server_commands.py"])))
     path=ROOT / "PORT_LEDGER.json"
     ledger=json.loads(path.read_text(encoding="utf-8"))
     for entry in ledger["files"]:
@@ -344,7 +377,7 @@ def main():
                         symbol["scope"] = "Baseq3 entry lifecycle with actual ported ClientSpawn and CalculateRanks: unlink/reinit, playerState reset, entry event/message/log, tournament and spectator branches. Engine delivery remains at explicit callbacks."
                     elif symbol["original"] == "ClientConnect":
                         symbol["target_files"] = ["src/mq3/game/client_connect.ml","src/mq3/game/entities.ml"]
-                        symbol["scope"] = "Unchanged Baseq3 connection order: userinfo copy, IP decision, password rules based on the existing entity bot flag, persistent client rebinding/reset, actual session init/read, bot setup return, real UserinfoChanged, announcements and CalculateRanks. All 66 modeled client fields (including 117 playerState words), session storage and rank/configstring state are compared at every callback. IP filtering, bot setup, userinfo/command/log delivery are observed boundaries. Missing interfaces fail explicitly; no full engine connection transport or bot AI. ClientDisconnect is separately ported and compared."
+                        symbol["scope"] = "Unchanged Baseq3 connection order: userinfo copy, IP decision, password rules based on the existing entity bot flag, persistent client rebinding/reset, actual session init/read, bot setup return, real UserinfoChanged, announcements and CalculateRanks. All 66 modeled client fields (including 117 playerState words), session storage and rank/configstring state are compared at every callback. Default IP decisions now use the separately compared real filter; legacy native connection fixtures retain an explicit decision override, with real default ban/whitelist paths covered by runtime contracts. Bot setup and userinfo/command/log delivery remain observed boundaries; no full engine connection transport or bot AI. ClientDisconnect is separately ported and compared."
                     elif symbol["original"] == "ClientDisconnect":
                         symbol["target_files"] = ["src/mq3/game/client_disconnect.ml"]
                         symbol["scope"] = "Unchanged Baseq3 engine callback: queued bot removal before NULL-client guard, actual StopFollowing, teleport-out and item/flag drops, tournament winner update, unlink/config clearing and CalculateRanks, then bot shutdown. Every effect and action compares all 66 modeled client fields (including 117 playerState words) in all slots and all allocated entityStates with selected private/spatial fields. Bot begin queue/shutdown and engine delivery remain explicit required interfaces; this is not the engine trap_DropClient implementation."
@@ -399,6 +432,12 @@ def main():
                     if symbol["original"] in names:
                         symbol["target_files"]=[target]
                         symbol["scope"]="Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+    for entry in ledger["files"]:
+        for target,names,checks,scope in startup_groups.get(entry["source"],[]):
+            for symbol in entry["symbol_mapping"]:
+                if symbol["original"] in names:
+                    symbol["target_files"]=[target]
+                    symbol["scope"]=scope
     path.write_text(json.dumps(ledger,indent=2)+"\n",encoding="utf-8",newline="\n")
     evidence=[]
     for path in sorted((ROOT / "build/reference").rglob("result.json")):
