@@ -105,6 +105,24 @@ def scenarios():
                 else: actions.append((6, 'g_banIPs', rng.choice(['', ' ', '1 2 ', '3', 'bad 5 ', '10.* 1.2.3.4 '])))
             else: actions.append((7, rng.randrange(3)))
         yield f'seeded_{case}', actions + [(7, 0), (5,), (4, '1.2.3.4')]
+    # Append regressions so every pre-existing action stream and result remains
+    # in its original order. No artificial generation is added to native state.
+    yield 'reregister_empty_tail', [(7, 1), (13, 100, 88), (7, 1), (5,), (14, 1), (5,)]
+    yield 'reregister_populated_without_space', [(6, 'g_banIPs', '1.2.3.4'), (7, 1),
+        (5,), (13, 100, 88), (7, 1), (14, 1), (5,)]
+    yield 'reregister_after_process', [(6, 'g_banIPs', '1.2.3.4 '), (7, 1), (5,),
+        (13, 100, 88), (7, 1), (5,), (14, 1), (5,), (5,)]
+    yield 'reregister_visible_poison', [(6, 'g_banIPs', '1.2.3.4 '), (7, 1),
+        (13, 0, 88), (13, 100, 89), (7, 1), (5,), (14, 1), (5,)]
+    yield 'reregister_counter_minus_one_no_copy', [(12, 'g_banIPs', -1), (7, 1),
+        (13, 100, 88), (14, 1), (5,), (7, 1), (14, 0), (12, 'g_banIPs', 0), (14, 1)]
+    yield 'update_new_counter_clears_tail', [(6, 'g_banIPs', '10.* '), (7, 1),
+        (13, 100, 88), (12, 'g_banIPs', 3), (7, 1), (5,)]
+    yield 'reregister_other_vm_keeps_tail', [(13, 100, 88), (14, 2), (7, 2), (5,), (14, 0)]
+    hidden = [(13, 16 + index, value) for index, value in enumerate(b'1.2.3.4 ')]
+    yield 'reregister_invisible_tokens', hidden + [(13, 254, 254), (5,), (7, 1), (5,), (14, 1), (5,)]
+    yield 'reregister_sets_counter_without_copy', [(13, 100, 88), (12, 'g_banIPs', -1),
+        (14, 1), (7, 1), (5,), (12, 'g_banIPs', 0), (7, 1)]
 
 
 def source_files():
@@ -248,6 +266,34 @@ def semantic_assertions(name, actions, records):
     elif name == 'capacity_last_slot': require(states[1]['count'] == 1024 and records[2]['effects'][0]['text'] == b'IP filter list is full\n', 'last newly allocated slot and next add limit')
     elif name == 'noncanonical_mask_persistence': require(states[1]['engine_ban']['text'] == b'120.86.*.* ', 'every mask byte other than 255 prints wildcard')
     elif name == 'empty_persistence_after_free': require(states[-1]['count'] == 1 and states[-1]['engine_ban']['text'] == b'', 'persistence skips freed entries without shrinking count')
+    elif name == 'reregister_empty_tail':
+        require([state['raw'][100] for state in states] == [0, 88, 88, 88, 0, 0], 'unchanged update preserves invisible byte; actual registration zero-pads it')
+        require(all(state['ban'] == states[0]['ban'] for state in states), 'VM identity fields and visible text cannot reveal this native copy')
+    elif name == 'reregister_populated_without_space':
+        require(states[4]['raw'][100] == 88 and states[5]['raw'][100] == 0 and states[4]['ban'] == states[5]['ban'], 'forced copy clears tail with unchanged nonempty VM text and counter')
+        require(states[-1]['count'] == 0, 'process before and after registration still ignores unspaced final token')
+    elif name == 'reregister_after_process':
+        require([states[index]['count'] for index in (2, 5, 7, 8)] == [1, 1, 2, 2], 'actual re-registration restores trailing space and enables one more parse')
+        require(states[5]['raw'][100] == 88 and states[6]['raw'][100] == 0, 'no-op refresh and process preserve poison until actual native copy')
+    elif name == 'reregister_visible_poison':
+        require(states[4]['ban']['text'] == b'X.2.3.4 ' and states[4]['raw'][100] == 89, 'unchanged update preserves visible and invisible writes')
+        require(prints == [b'Bad filter address: X.2.3.4\n'] and states[5]['count'] == 1, 'process reads the poisoned live VM bytes')
+        require(states[6]['raw'] == bytes(256), 're-register copies newly emptied engine storage')
+    elif name == 'reregister_counter_minus_one_no_copy':
+        require(all(states[index]['raw'][100] == 88 for index in range(2, 8)), 'registration sentinel equal to engine minus-one counter performs no copy')
+        require(states[-1]['raw'] == bytes(256) and states[-1]['ban']['counter'] == 0, 'successful later copy clears hidden bytes')
+    elif name == 'update_new_counter_clears_tail':
+        require(states[2]['raw'][100] == 88 and states[4]['raw'][100] == 0 and states[4]['ban']['text'] == b'10.* ', 'successful ordinary Cvar_Update also zero-pads invisible bytes')
+    elif name == 'reregister_other_vm_keeps_tail':
+        require([state['raw'][100] for state in states] == [88, 88, 88, 88, 0], 'filterBan VM copies cannot invalidate unrelated ban storage')
+    elif name == 'reregister_invisible_tokens':
+        require(states[11]['raw'][16:24] == b'1.2.3.4 ' and states[11]['raw'][254] == 254 and states[11]['count'] == 0, 'strchr never reaches tokens hidden behind the initial NUL')
+        require(states[-2]['raw'] == bytes(256) and states[-1]['count'] == 0, 'forced same-value copy removes every invisible byte')
+    elif name == 'reregister_sets_counter_without_copy':
+        require(states[1]['ban']['counter'] == 1 and states[2]['ban']['counter'] == 0xffffffff and states[2]['raw'][100] == 88,
+                'register changes VM counter to minus one without copying when engine counter already equals minus one')
+        require(all(state['raw'][100] == 88 for state in states[:-1]) and states[-1]['raw'] == bytes(256),
+                'counter mutation alone cannot invalidate live tail; next successful update must clear it')
     return assertions
 
 
@@ -298,13 +344,19 @@ def main():
         test_sha256=None if args.native_only else sha(ROOT / 'build/ip_filter_tests.exe'), oracle_sha256=sha(out / 'ip_filters_oracle.exe'),
         scope='All seven unchanged Baseq3 IP functions with actual original Cvar_Register/Cvar_Update/Cvar_Set2. '
               'All 1024 filters, the 256-byte live ban VM buffer, both VM and engine Cvars are compared at every diagnostic, '
-              'Cvar-set callback and action. Packet parses must initialize all four native octets; shortened undefined C paths, '
+              'Cvar-set callback and action. Defined VM-byte writes prove full zero-padding on successful re-registration '
+              'even when visible text and engine counter are unchanged; no-op Cvar_Update and the minus-one counter '
+              'registration sentinel preserve the raw tail. The native snapshot contains no synthetic copy generation. '
+              'Packet parses must initialize all four native octets; shortened undefined C paths, '
               'embedded NUL, numeric scratch overflow and diagnostics exceeding G_Printf msg[1024] are controlled MiniLang contracts only. '
               'Fixture fills exercise 1024-slot capacity without replacing AddIP or UpdateIPBans. Module lifecycle and network delivery remain host boundaries.',
         original_sources={source.relative_to(ROOT).as_posix(): sha(source) for source in source_files()},
-        port_sources={path: sha(ROOT / path) for path in ['src/mq3/game/ip_filters.ml', 'src/mq3/game/client_connect.ml',
+        port_sources={path: sha(ROOT / path) for path in ['src/mq3/game/ip_filters.ml', 'src/mq3/qcommon/cvar.ml', 'src/mq3/game/client_connect.ml',
                       'tests/ip_filter_tests.ml', 'tests/client_connect_tests.ml', 'scripts/test_ip_filters.py']})
-    target = (args.case + '.' if args.case else '') + ('native.json' if args.native_only else 'result.json')
+    if args.reuse_build:
+        target = 'reused-' + (args.case or 'all') + ('.native.json' if args.native_only else '.json')
+    else:
+        target = (args.case + '.' if args.case else '') + ('native.json' if args.native_only else 'result.json')
     (out / target).write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8', newline='\n')
     print(f"PASS: {len(records)} IP scenarios / {result['actions']} actions / {result['exact_words']} exact words / "
           f"{result['ordered_effects']} ordered effects / {result['semantic_assertions']} semantic assertions")

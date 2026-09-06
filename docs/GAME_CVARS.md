@@ -20,8 +20,8 @@ Bewahrt werden die ursprünglichen Regeln:
 - Stabile Engine-Handles beginnen bei **null**. Registrierung setzt den
   Modifikationszähler der VM-Kopie zunächst auf `-1` und aktualisiert sie danach.
   Der Engine-Zähler selbst wird dadurch nicht zurückgesetzt.
-- Unveränderte Zähler und geleerte Engine-Strings führen zum ursprünglichen
-  frühen Rücksprung. Die bisherige VM-Kopie bleibt dann erhalten. Der Vergleich
+- Unveränderte Zähler und NULL-Engine-Stringzeiger führen zum ursprünglichen
+  frühen Rücksprung. Ein leerer Text wird bei geändertem Zähler dagegen kopiert. Die bisherige VM-Kopie bleibt dann erhalten. Der Vergleich
   schließt auch den ungewöhnlichen Registrierungsfall mit Engine-Zähler `-1` ein.
 - VM-Strings enthalten höchstens 255 Datenbytes. Integer und binary32-Wert
   werden aus der Engine-Kopie übernommen; eine unabhängige Neuinterpretation
@@ -69,9 +69,28 @@ Aufruf direkt aus derselben Engine-Registry mit der ursprünglichen Bytegrenze.
 
 Bei einem Level-Reset innerhalb desselben Moduls übernimmt
 `cvars.rebind(newLevel, state)` die Registry, VM-Kopien, Tabellenzähler und den
-Passwort-Cache. Ein neues Modul erhält einen neuen Zustand. Vollständige
-`G_InitGame`-/Shutdown-Abläufe, `cvar_restart` und die QVM-Trap-Zustellung sind
-weiterhin offene Portschritte.
+Passwort-Cache. Ein neues Modul erhält einen neuen Zustand. Die
+[G_InitGame-/Shutdown-Abläufe](GAME_LIFECYCLE.md) sind inzwischen eingebunden.
+`cvar_restart`, tatsächliches Engine-VM-Neuladen und die QVM-Trap-Zustellung
+bleiben offene Portschritte.
+
+`VmCvar.copyGeneration` zählt ausschließlich tatsächlich erfolgte Pufferkopien.
+Die IP-Verarbeitung kann dadurch eine erneute Registrierung mit gleichem
+sichtbarem Text und Zähler von einem übersprungenen `Cvar_Update` unterscheiden.
+Der normale native Modifikationszähler bleibt unverändert nachgebildet; Details
+und Referenzfälle stehen in [IP_FILTERS.md](IP_FILTERS.md).
+
+Bei einem zu langen Enginewert schreibt `Cvar_Update` den neuen
+Modifikationszähler bereits vor dem originalen `Com_Error`. String, Float,
+Integer und Kopiergeneration bleiben auf dem vorherigen Stand. Die
+Fehlerzustandsprüfung vergleicht diese tatsächlich erreichte Zwischenlage
+mit dem nativen Speicher; MiniLang verwendet weiterhin seine eigene
+Fehlermeldung für den kontrollierten Abbruch. Drei zusätzliche Fälle prüfen
+frische Registrierung, erneute Registrierung und Update mit je 256 Bytes:
+**1.615 Zustandswörter**, **8.870 Ausgabe-Bytes**, **24 semantische Assertions**
+und **neun MiniLang-Verträge**. Diese Fehlerfälle werden getrennt von den
+94 erfolgreichen Szenarien und den vier bisherigen nativen Ablehnungen
+archiviert; deren Referenzströme bleiben unverändert.
 
 ## Nachweis
 
@@ -105,13 +124,14 @@ ab. Die bestehenden separaten Gameplay-/Frame-Suiten decken diese Spielregeln ab
 
 **13 Laufzeitverträge** prüfen Pflichtzustände, unabhängige Module, Handles bis
 1023 und Kapazitäts-/Stringfehler. **Vier native Fehlerfälle** bestätigen die
-Ablehnung ungültiger Handles und überlanger VM-Strings. Nach einem gefangenen
-MiniLang-Fehler bleibt die letzte gültige VM-Kopie erhalten; der originale
-Engine-Abbruch mit teilweise geschriebenem Fehlerzustand wird nicht nachgebildet.
+Ablehnung ungültiger Handles und überlanger VM-Strings. Bei einem überlangen
+Wert bleiben Text, Float und Integer der bisherigen VM-Kopie erhalten;
+der Modifikationszähler ist bereits übernommen. Die drei zusätzlichen
+Fehlerzustandsvergleiche sichern genau diesen nativen Teilzustand ab.
 Eingebettete NUL-Zeichen werden kontrolliert abgewiesen.
 
-Test-Binary: `e4664582084e14e3b9b7472f111c9b4b31d8e68ebec5c3930d79808d01452cd9`.
-Native x86-Oracle: `77d46a5b3dad879050d4d84a8bf386a340d20f09862d7e137af46424624faf7d`.
+Test-Binary: `7af83b616e821928e933a3c96e5144c1c3312ca7ee380331cf10e991a28599c7`.
+Native x86-Oracle: `9b076c74a0aec2593ec18937bb589b4ad45593edf3042065241eabd7182270fb`.
 
 ```powershell
 python scripts/generate_game_cvars.py

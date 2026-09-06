@@ -153,9 +153,9 @@ und wird zusammen mit den Quellhashes in `docs/reference/evidence.json` archivie
 Ein originaler Com_Error-Abbruch nach Startsolid beim Item-Give wird
 einschließlich Diagnose, Freigabe und erreichtem Teilzustand verglichen.
 
-Die aktuelle erweiterte Gesamtsuite besteht mit **58/58 Gates** einschließlich
-aller **43 regulären Gates** und der zusätzlichen CD-Kartenvergleiche.
+Der aktuelle Nachweis der regulären und erweiterten Gesamtsuite einschließlich
+der CD-Kartenvergleiche steht in [PARITY_AUDIT.md](PARITY_AUDIT.md).
 
-Test-Binary: `5ee99bc1fa67e847b07935d6968d26371e179e06d6a5c3d640f406f9e0d2f7a1`.
+Test-Binary: `0d913cb078cfebe64cc4cf3b1c664901169f16e443c9785a925781b92b91ce97`.
 Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 Fixture-Karte: `22631605b62b568cab3cec99ccfdf71a64ce9964f12b5e4256329ef30a769c3c`.

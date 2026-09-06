@@ -51,10 +51,14 @@ function die(level,self,inflictor,attacker,damage,meansOfDeath)
   return gib(level,self,0)
 end function
 function initQueue(level)
-  level.bodyQueIndex = 0; level.bodyQue = []
+  level.bodyQueIndex = 0
+  // Standalone levels start without a queue; a live module owns eight fixed
+  // pointer slots. Preserve each old pointer until its G_Spawn has completed.
+  if len(level.bodyQue) == 0 then level.bodyQue = array(8,void) end if
+  if len(level.bodyQue) != 8 then return error(494,"Body queue requires eight slots") end if
   for i = 0 to 7
     ent = game.spawn(level); ent.classname = "bodyque"; ent.neverFree = true
-    level.bodyQue = level.bodyQue+[ent]
+    level.bodyQue[i] = ent
   end for
   return void
 end function

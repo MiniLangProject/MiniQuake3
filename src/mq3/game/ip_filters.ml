@@ -20,6 +20,7 @@ struct State
   bufferVm
   bufferVersion
   bufferVisible
+  bufferCopyGeneration
 end struct
 function get(level)
   if level.ipFilters == void then
@@ -27,7 +28,7 @@ function get(level)
     for index = 0 to 1023
       filters = filters+[Filter(0,0)]
     end for
-    level.ipFilters = State(filters,0,bytes(256,0),void,void,void,0,"")
+    level.ipFilters = State(filters,0,bytes(256,0),void,void,void,0,"",0)
   end if
   return level.ipFilters
 end function
@@ -150,14 +151,16 @@ function filterPacket(level,address)
 end function
 function banBytes(level)
   state = get(level); vm = filterVm(level,"g_banIPs")
-  if state.bufferVm != vm or state.bufferVersion != vm.modificationCount or state.bufferVisible != vm.string then
+  // Only an actual VM copy clears the hidden tail. Register first writes -1
+  // to the counter and can still skip copying if the engine counter is -1.
+  if state.bufferVm != vm or state.bufferVisible != vm.string or state.bufferCopyGeneration != vm.copyGeneration then
     data = infoStrings.textBytes(vm.string)
     if len(data) > 255 then return error(486,"Ban VM string exceeds native storage") end if
     state.banBuffer = bytes(256,0); index = 0
     while index < len(data)
       state.banBuffer[index] = data[index]; index = index+1
     end while
-    state.bufferVm = vm; state.bufferVersion = vm.modificationCount; state.bufferVisible = vm.string
+    state.bufferVm = vm; state.bufferVersion = vm.modificationCount; state.bufferVisible = vm.string; state.bufferCopyGeneration = vm.copyGeneration
   end if
   return state.banBuffer
 end function

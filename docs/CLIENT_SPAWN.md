@@ -68,7 +68,7 @@ ursprüngliche Puffergrenze vor beziehungsweise innerhalb des Handicap-Werts.
 Acht zusätzliche Laufzeitverträge prüfen Initialwerte, Userinfo-Auswertung,
 fehlende Pflichtgrenzen und die Standardverbindung aus `deaths.respawn`.
 
-Test-Binary: `3ae67c65e7f25b1e5738c566d84b71919b1cfef78903b59b90054445fa2f1653`.
+Test-Binary: `455576244638904d7866c52c3d1550abed16e856b6974a0a7a828296ba1ce0dc`.
 Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 
 Der C-Oracle enthält den unveränderten Funktionskörper aus `g_client.c`. Nur die

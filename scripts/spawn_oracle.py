@@ -26,7 +26,7 @@ FUNCTIONS={
     'g_active.c':['P_DamageFeedback','P_WorldEffects','G_SetClientSound','ClientImpacts','G_TouchTriggers','SpectatorThink','ClientInactivityTimer','ClientTimerActions','ClientIntermissionThink','ClientEvents','SendPendingPredictableEvents','ClientThink_real','ClientThink','G_RunClient','SpectatorClientEndFrame','ClientEndFrame'],
     'g_cmds.c':['CheatsOk','ConcatArgs','Cmd_Give_f','Cmd_God_f','Cmd_Notarget_f','Cmd_Noclip_f','Cmd_LevelShot_f','Cmd_TeamTask_f','Cmd_Kill_f','G_SayTo','G_Say','Cmd_Say_f','Cmd_Tell_f','G_VoiceTo','G_Voice','Cmd_Voice_f','Cmd_VoiceTell_f','Cmd_VoiceTaunt_f','Cmd_GameCommand_f','Cmd_Where_f','Cmd_SetViewpos_f','Cmd_Stats_f','ClientCommand','SanitizeString','ClientNumberFromString','Cmd_Follow_f','Cmd_FollowCycle_f','SetTeam','StopFollowing','Cmd_Team_f','BroadcastTeamChange','DeathmatchScoreboardMessage','Cmd_Score_f','Cmd_CallVote_f','Cmd_Vote_f','Cmd_CallTeamVote_f','Cmd_TeamVote_f'],
 }
-def build(output):
+def build(output, *, lifecycle=False):
     output.mkdir(parents=True,exist_ok=True);source=ROOT/'Quake-III-Arena-original-source/code'
     body=['#define MAXCHOICES 32', '#define MAX_SHADER_REMAPS 128',
           'typedef struct {char oldShader[MAX_QPATH],newShader[MAX_QPATH];float timeOffset;} shaderRemap_t;',
@@ -139,7 +139,28 @@ def build(output):
     sources=[source/'qcommon'/n for n in ('cm_load.c','cm_trace.c','cm_test.c','cm_patch.c','cm_polylib.c','md4.c')]
     sources += [source/'game'/n for n in ('q_math.c','q_shared.c','bg_misc.c','bg_pmove.c','bg_slidemove.c')]
     hosts=[ROOT/'tests/reference'/n for n in ('collision_oracle.c','spawn_server.c','spawn_oracle.c')]
+    extra=[]
+    if lifecycle:
+        from generate_game_cvars import tables as cvar_tables
+        main_source, table, _ = cvar_tables()
+        original=main_source.read_text(encoding='utf-8')
+        typedef=re.search(r'typedef struct \{.*?\} cvarTable_t;',original,re.S)[0]
+        declarations=original[original.index('vmCvar_t\tg_gametype;'):original.index('// bk001129 - made static')]
+        (output/'game_cvar_table.inc').write_text(typedef+'\n'+declarations+'\n'+table+'\nstatic int gameCvarTableSize=sizeof(gameCvarTable)/sizeof(gameCvarTable[0]);\n',encoding='utf-8',newline='\n')
+        additions={'g_main.c':['G_Printf','G_Error','G_LogPrintf','G_RemapTeamShaders','G_RegisterCvars','G_UpdateCvars','G_FindTeams','G_InitGame','G_ShutdownGame'],
+                   'g_items.c':['ClearRegisteredItems','SaveRegisteredItems','G_CheckTeamItems'], 'g_team.c':['Team_InitGame']}
+        original_bodies=[]
+        for filename,symbols in additions.items():
+            original=(source/'game'/filename).read_text(encoding='utf-8')
+            for symbol in symbols:
+                match=re.search(r'^(?:static[ \t]+)?[\w* \t]+\b'+symbol+r'\s*\([^;]*?\)\s*\{.*?^\}',original,re.M|re.S)
+                if not match:raise RuntimeError('Missing lifecycle function '+symbol)
+                original_bodies.append(match[0])
+        (output/'game_lifecycle_functions.inc').write_text('\n\n'.join(original_bodies)+'\n',encoding='utf-8',newline='\n')
+        hosts.append(ROOT/'tests/reference/game_lifecycle_cvars.c')
+        selected.append(source/'qcommon/cvar.c')
+        extra=['/DMQ3_LIFECYCLE_ORACLE','/DCvar_Get=lifecycleCollisionCvarGet']
     run(['cl','/nologo','/Od','/Gy','/fp:strict','/arch:SSE2','/MT','/DWIN32','/DNDEBUG','/D_CRT_SECURE_NO_WARNINGS','/DMQ3_ORACLE_LIBRARY',
-         f'/I{source/"game"}',f'/I{source/"qcommon"}',f'/I{output}',*sources,*hosts,f'/Fe:{output/"spawn_oracle.exe"}',
+         f'/I{source/"game"}',f'/I{source/"qcommon"}',f'/I{output}',*extra,*sources,*hosts,f'/Fe:{output/"spawn_oracle.exe"}',
          '/link','/OPT:REF','/Brepro','/stack:8388608'],output,msvc_env('x86'),output/'build.log')
     return sources+selected+[source/'game/g_spawn.c',source/'game/g_local.h',source/'game/q_shared.h',source/'game/bg_public.h',source/'server/sv_game.c',source/'server/sv_world.c',source/'server/sv_init.c',source.parent/'ui/menudef.h']

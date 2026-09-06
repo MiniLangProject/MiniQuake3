@@ -102,14 +102,14 @@ def scenarios(rows):
 def build(out):
     out.mkdir(parents=True, exist_ok=True)
     source, table, rows = tables()
-    original = source.read_text()
+    original = source.read_text(encoding='utf-8')
     typedef = re.search(r'typedef struct \{.*?\} cvarTable_t;', original, re.S)[0]
     declarations = original[original.index('vmCvar_t\tg_gametype;'):original.index('// bk001129 - made static')]
     (out / 'game_cvar_table.inc').write_text(
         typedef + '\n' + declarations + '\n' + table +
-        '\nstatic int gameCvarTableSize=sizeof(gameCvarTable)/sizeof(gameCvarTable[0]);\n')
+        '\nstatic int gameCvarTableSize=sizeof(gameCvarTable)/sizeof(gameCvarTable[0]);\n', encoding='utf-8', newline='\n')
     (out / 'game_cvar_functions.inc').write_text(extract(source, ['G_RemapTeamShaders', 'G_RegisterCvars', 'G_UpdateCvars', 'CheckCvars']) +
-        extract(source.parent / 'g_team.c', ['CheckTeamStatus']) + extract(source, ['G_RunFrame']))
+        extract(source.parent / 'g_team.c', ['CheckTeamStatus']) + extract(source, ['G_RunFrame']), encoding='utf-8', newline='\n')
     code = ROOT / 'Quake-III-Arena-original-source/code'
     sources = [code / 'qcommon/cvar.c', code / 'game/q_shared.c']
     run(['cl', '/nologo', '/Od', '/Gy', '/fp:strict', '/arch:SSE2', '/MT', '/DWIN32', '/DNDEBUG', '/D_CRT_SECURE_NO_WARNINGS',
@@ -119,11 +119,89 @@ def build(out):
     return [source, source.parent / 'g_team.c', *sources, code / 'game/g_local.h', code / 'game/q_shared.h', code / 'game/bg_public.h'], rows, build_date
 
 
+def failed_copy_scenarios():
+    oversized = '99' + 'x' * 254
+    yield 'failed_register_fresh_256', [(10, 'probe', oversized, 0)], '', 0.0, 0, 1
+    yield 'failed_register_existing_256', [(10, 'probe', '-3.25', 0),
+        (3, 'probe', oversized, 1), (10, 'probe', 'unused default', 0)], '-3.25', -3.25, -3, 2
+    yield 'failed_update_existing_256', [(10, 'probe', '12.5', 0),
+        (3, 'probe', oversized, 1), (11,)], '12.5', 12.5, 12, 2
+
+
+def decode_failed_copy(data, prior_text, prior_value, prior_integer, expected_counter):
+    size = struct.unpack_from('<i', data, len(data)-4)[0]
+    start = len(data)-4-size
+    if start < 0: raise AssertionError('Truncated Cvar error-state trailer')
+    offset = start
+    def number():
+        nonlocal offset
+        value = struct.unpack_from('<i', data, offset)[0]; offset += 4; return value
+    def string():
+        nonlocal offset
+        size = number()
+        if size == -1: return None
+        if size < 0 or offset+size > len(data): raise AssertionError('Invalid Cvar error-state string')
+        value = data[offset:offset+size]; offset += size; return value
+    header = [number() for _ in range(3)]
+    vm = [number() for _ in range(5)]; vm_text = string(); probe_name = string()
+    engine = [number() for _ in range(7)]
+    engine_text, reset_text, latched_text = string(), string(), string()
+    raw_vm = data[offset:offset+256]; offset += 256
+    if number() != size or offset != len(data): raise AssertionError('Invalid Cvar error-state trailer size')
+    assertions = 0
+    def require(condition, label):
+        nonlocal assertions
+        if not condition: raise AssertionError(label)
+        assertions += 1
+    prior_bits = struct.unpack('<i', struct.pack('<f', prior_value))[0]
+    require(header[0] == 199 and header[1] == 2, 'Com_Error captures the live engine registry')
+    require(vm[0] == 1 and vm[1] == 1 and probe_name == b'probe', 'registration already assigned the actual engine handle')
+    require(vm[2] == expected_counter and engine[4] == expected_counter, 'native VM counter advances before the length error')
+    require(vm_text == prior_text.encode('utf-8'), 'failed native copy retains old visible string')
+    require(vm[3] == prior_bits and vm[4] == prior_integer, 'failed native copy retains old float/integer')
+    require(raw_vm == prior_text.encode('utf-8') + bytes(256-len(prior_text.encode('utf-8'))), 'all 256 native VM string bytes remain unchanged')
+    require(engine[0] == 1 and engine[1] == vm[1] and engine[5] == struct.unpack('<i',struct.pack('<f',99.0))[0] and engine[6] == 99,
+            'engine numeric values differ from the retained VM values')
+    require(engine_text == ('99'+'x'*254).encode('utf-8') and len(engine_text) == 256, 'engine source has exactly 256 bytes')
+    return dict(semantic_assertions=assertions, state_offset=start, state_bytes=size+4,
+                vm_handle=vm[1], vm_counter=vm[2], vm_text=vm_text.decode('utf-8'),
+                vm_float_bits=vm[3], vm_integer=vm[4], engine_counter=engine[4],
+                engine_text_bytes=len(engine_text), retained_vm_bytes=256)
+
+
+def verify_failed_copies(out, build_date, bsp, *, mini=True):
+    records = []
+    for name, actions, prior_text, prior_value, prior_integer, counter in failed_copy_scenarios():
+        inp, expected = out/(name+'.bin'), out/(name+'.expected'); inp.write_bytes(pack(actions,build_date))
+        rejected = subprocess.run([out/'game_cvars_oracle.exe',inp,expected,'--error-state'],
+                                  capture_output=True,text=True,encoding='utf-8')
+        if rejected.returncode != 21 or 'exceeds MAX_CVAR_VALUE_STRING' not in rejected.stderr:
+            raise RuntimeError(f'Unexpected failed-copy native result: {name}: {rejected.returncode}: {rejected.stderr}')
+        (out/(name+'.oracle.log')).write_text(rejected.stderr,encoding='utf-8',newline='\n')
+        record = decode_failed_copy(expected.read_bytes(),prior_text,prior_value,prior_integer,counter)
+        record.update(name=name,actions=len(actions),bytes=expected.stat().st_size,inputs_sha256=sha(inp),
+                      expected_sha256=sha(expected),native_exit=rejected.returncode,native_diagnostic=rejected.stderr)
+        if mini:
+            output = run([ROOT/'build/game_cvar_tests.exe',bsp,inp,expected,'--error-state'], ROOT/'build',log=out/(name+'.test.log'))
+            match = re.search(r'(\d+) game-Cvar rejected actions / (\d+) exact words / (\d+) ordered effects / (\d+) failed-copy contracts',output)
+            if not match or int(match[1]) != len(actions): raise RuntimeError(output)
+            record.update(exact_words=int(match[2]),ordered_effects=int(match[3]),runtime_contracts=int(match[4]))
+            print(name+': '+output.strip(),flush=True)
+        records.append(record)
+    return records
+
+
 def main():
-    parser = argparse.ArgumentParser(); parser.add_argument('--case'); args = parser.parse_args()
+    parser = argparse.ArgumentParser(); parser.add_argument('--case'); parser.add_argument('--reuse-build',action='store_true'); args = parser.parse_args()
     out = ROOT / 'build/reference/game_cvars'
-    sources, rows, build_date = build(out)
-    subprocess.run([sys.executable, ROOT / 'scripts/build.py', '--source', 'tests/game_cvar_tests.ml', '--output', 'game_cvar_tests.exe'], check=True)
+    if args.reuse_build:
+        source, table, rows = tables(); code = ROOT/'Quake-III-Arena-original-source/code'
+        sources = [source,source.parent/'g_team.c',code/'qcommon/cvar.c',code/'game/q_shared.c',
+                   code/'game/g_local.h',code/'game/q_shared.h',code/'game/bg_public.h']
+        build_date = run([out/'game_cvars_oracle.exe','--build-date'],out).strip()
+    else:
+        sources, rows, build_date = build(out)
+        subprocess.run([sys.executable, ROOT / 'scripts/build.py', '--source', 'tests/game_cvar_tests.ml', '--output', 'game_cvar_tests.exe'], check=True)
     bsp = out / 'empty.bsp'; bsp.write_bytes(map_bytes()); records = []
     for name, actions in scenarios(rows):
         if args.case and args.case != name: continue
@@ -151,14 +229,21 @@ def main():
         if rejected.returncode != 21 or message not in rejected.stderr:
             raise RuntimeError(f'Unexpected native rejection: {name}: {rejected.returncode}: {rejected.stderr}')
         (out / (name + '.rejection.log')).write_text(rejected.stderr, encoding='utf-8', newline='\n')
+    failed_copies = verify_failed_copies(out,build_date,bsp)
     result = dict(passed=True, scenario_count=len(records), scenarios=records, actions=sum(r['actions'] for r in records),
                   exact_words=sum(r['exact_words'] for r in records), ordered_effects=sum(r['ordered_effects'] for r in records),
                   output_bytes=sum(r['bytes'] for r in records), table_rows=len(rows), vm_snapshots=43, build_date=build_date,
                   runtime_contracts=13, native_rejections=len(rejections),
+                  failed_copy_scenarios=failed_copies, failed_copy_scenario_count=len(failed_copies),
+                  failed_copy_exact_words=sum(r['exact_words'] for r in failed_copies),
+                  failed_copy_semantic_assertions=sum(r['semantic_assertions'] for r in failed_copies),
+                  failed_copy_runtime_contracts=sum(r['runtime_contracts'] for r in failed_copies),
                   test_sha256=sha(ROOT / 'build/game_cvar_tests.exe'), oracle_sha256=sha(out / 'game_cvars_oracle.exe'), map_sha256=sha(bsp),
-                  scope='Original engine Cvar_Register/Update and Baseq3 G_RegisterCvars/G_UpdateCvars/CheckCvars with all 46 table rows and 43 VM snapshots. Level cheats/dedicated integer mirrors are compared after registration, pending engine changes, VM refresh, module rebind and G_RunFrame. Empty-entity G_RunFrame probes use guarded inactive match/vote boundaries; gameplay remains covered by its separate suites. Missionpack team shaders are excluded.',
+                  scope='Original engine Cvar_Register/Update and Baseq3 G_RegisterCvars/G_UpdateCvars/CheckCvars with all 46 table rows and 43 VM snapshots. Level cheats/dedicated integer mirrors are compared after registration, pending engine changes, VM refresh, module rebind and G_RunFrame. Empty-entity G_RunFrame probes use guarded inactive match/vote boundaries; gameplay remains covered by its separate suites. Separate successful-state records remain unchanged. Three additional defined 256-byte Com_Error cases compare the actual failed Register/Update state: new handle/counter, unchanged 256-byte VM buffer/value/integer and live engine storage. Mini contracts additionally require unchanged copyGeneration. Native diagnostics and exit code are archived; Mini uses its own safe rejection text and no diagnostic-text parity is claimed. The four prior native negative cases remain separate. Missionpack team shaders are excluded.',
                   original_sources={s.relative_to(ROOT).as_posix(): sha(s) for s in sources})
-    (out / ('result.json' if not args.case else args.case + '.result.json')).write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8', newline='\n')
+    target = 'result.json' if not args.case else args.case+'.result.json'
+    if args.reuse_build: target = 'reused-'+(args.case or 'all')+'.json'
+    (out / target).write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8', newline='\n')
     print(f"PASS: {len(records)} scenarios / {result['actions']} actions / {result['exact_words']} exact words / {result['ordered_effects']} ordered effects")
 
 

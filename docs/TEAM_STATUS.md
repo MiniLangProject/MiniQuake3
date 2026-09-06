@@ -39,7 +39,8 @@ hinweg. Dafür liegt er mit Passwort und aktuellem Zähler im expliziten
 `level.cvarMaintenance`-Objekt: Bei einem Level-Reset innerhalb desselben
 Spielmoduls muss dieses Objekt übernommen werden. Ein neues Spielmodul erhält
 über `cvar_maintenance.create()` einen frischen Cache. Die beiden Lebenszyklen
-sind getrennt geprüft; vollständige Modulinitialisierung ist weiterhin offen.
+sind getrennt geprüft und in [G_InitGame](GAME_LIFECYCLE.md) eingebunden.
+Tatsächliches Neuladen des Moduls durch die Engine bleibt offen.
 
 `scripts/test_team_status.py` besteht mit **80 Szenarien**, **618 Aktionen**,
 **59.233 exakt gleichen 32-Bit-Wörtern**, **288 geordneten Nebenwirkungen**
@@ -62,7 +63,7 @@ ungültigen Zustände werden kontrolliert abgewiesen und zählen nicht als
 Vergleich gültiger C-Eingaben. Clientbindungen müssen wie nach dem originalen
 `G_InitGame` für alle Slots unterhalb des Cvar-Clientlimits vorhanden sein.
 
-Test-Binary: `f8df146c77732380c253f1c330413d280f16851524f8f89fa02dd1877d497fc9`.
+Test-Binary: `6f4eec8cf561e21928f229919058d0c01631c418f60d6cb72a820b6bdd6bd77a`.
 Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 
 ```powershell

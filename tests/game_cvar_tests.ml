@@ -117,9 +117,10 @@ function cvarContracts(world)
   requireCvar(try(cv.updateVm(registry,void)) is error,"NULL VM snapshot")
   snapshot.handle = -1; requireCvar(try(cv.updateVm(registry,snapshot)) is error,"negative handle")
   snapshot.handle = registry.numIndexes; requireCvar(try(cv.updateVm(registry,snapshot)) is error,"handle at upper bound")
-  cv.registerVm(registry,snapshot,"probe","valid",0); cv.set2(registry,"probe",decode(bytes(256,97)),true)
+  cv.registerVm(registry,snapshot,"probe","valid",0); generation = snapshot.copyGeneration; cv.set2(registry,"probe",decode(bytes(256,97)),true)
   requireCvar(try(cv.updateVm(registry,snapshot)) is error,"VM string storage")
-  requireCvar(snapshot.modificationCount == 1 and snapshot.string == "valid","caught update preserves valid snapshot")
+  requireCvar(snapshot.modificationCount == 2 and snapshot.string == "valid" and snapshot.copyGeneration == generation,
+    "failed update advances native counter without copying storage")
   cv.set2(registry,"probe",decode(bytes([97,0,98])),true)
   requireCvar(try(cv.updateVm(registry,snapshot)) is error,"embedded NUL")
   level = game.create(world)
@@ -141,6 +142,20 @@ function cvarContracts(world)
   requireCvar(try(cv.registerVm(lastRegistry,snapshot,"one too many","0",0)) is error,"registry capacity")
   print "PASS: 13 game-Cvar runtime contracts"; return 0
 end function
+function gameCvarFailureSnapshot(level,probe,probeName)
+  check = level.context; start = check.offset; registry = level.gameCvars.registry
+  words(check,[199,registry.numIndexes,registry.modifiedFlags]); vmWords(check,probe)
+  textWord(check,probeName); engineWords(check,registry,probeName)
+  // The fixture's previous successful copy zero-padded this entire native VM
+  // buffer. No byte is copied from the expected stream as a MiniLang result.
+  data = bytes(probe.string); requireCvar(len(data) <= 255,"rejected copy retains bounded prior VM storage")
+  for index = 0 to 255
+    value = 0; if index < len(data) then value = data[index] end if
+    if check.offset >= len(check.expected) or check.expected[check.offset] != value then return error(499,"Game-Cvar failed-copy byte mismatch") end if
+    check.offset = check.offset+1
+  end for
+  word(check,check.offset-start); return void
+end function
 function main(args)
   world = cm.loadWorld(fs.readAllBytes(args[0]),true)
   if len(args)>3 and args[3]=="--contracts" then return cvarContracts(world) end if
@@ -149,6 +164,21 @@ function main(args)
   probe = cv.createVm(); probeName = ""; count = readInt(reader)
   for action = 1 to count
     kind = readInt(reader)
+    if len(args)>3 and args[3]=="--error-state" and action == count then
+      generation = probe.copyGeneration; priorText = probe.string; priorValue = n.floatBits(probe.value); priorInteger = probe.integer
+      failure = void
+      if kind == 10 then
+        name = readText(reader); value = readText(reader); flags = readInt(reader); probeName = name
+        failure = try(cv.registerVm(state.registry,probe,name,value,flags))
+      else if kind == 11 then failure = try(cv.updateVm(state.registry,probe))
+      else return error(499,"Invalid failed-copy action") end if
+      requireCvar(failure is error,"actual VM copy rejects overlength engine text")
+      requireCvar(probe.copyGeneration == generation,"failed copy does not advance generation")
+      requireCvar(probe.string == priorText and n.floatBits(probe.value) == priorValue and probe.integer == priorInteger,"failed copy preserves text/value/integer")
+      gameCvarFailureSnapshot(level,probe,probeName)
+      if reader.offset != len(reader.data) or check.offset != len(check.expected) then return error(499,"Incomplete game-Cvar failure-state stream") end if
+      print "PASS: "+str(count)+" game-Cvar rejected actions / "+str(check.words)+" exact words / "+str(check.effects)+" ordered effects / 3 failed-copy contracts"; return 0
+    end if
     switch kind
       case 1
         gameCvars.register(level)

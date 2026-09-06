@@ -13,9 +13,9 @@ dbe4ddb10315479fc00086f08e25d968b4b43c49.
 | G_CheckTeamItems | items.checkTeamItems(level) |
 
 Team_SetFlagStatus verwendet weiterhin den bestehenden Port
-items.setFlagStatus. Die neuen Funktionen stehen für die Karteninitialisierung
-bereit. Ihre automatische Aufrufreihenfolge durch ein vollständiges G_InitGame
-ist noch nicht eingebunden.
+items.setFlagStatus. Die Funktionen sind inzwischen in die ursprüngliche
+Aufrufreihenfolge von [G_InitGame](GAME_LIFECYCLE.md) eingebunden. Engine-Kartenwechsel,
+Bot-KI und noch fehlende Kartenklassen bleiben eigene Aufgaben.
 
 ## Verhalten und Reihenfolge
 
@@ -110,7 +110,7 @@ Teaminitialisierung nach veränderten Live-Statuswerten.
 Bericht: build/reference/initialization/result.json.
 
 - MiniLang-Test SHA-256:
-  0fa16626a41a7a0fefaebe3429c791ec851366ffcaaccdd4def7422b1551e267
+  62014506192e0ff44e51fcf1fb6eac84294a046e4a250a7f602b937433aa2cb5
 - Native Oracle SHA-256:
   0d095ac01b123a562cf107b4f67a17af83a57e990373ddb4672226e855033696
 - Test-BSP SHA-256:

@@ -44,9 +44,11 @@ entsteht ein kontrollierter Fehler. Der isolierte Testhost zeichnet weiterhin
 die Übergangsargumente auf. Zwei gesonderte Fälle verändern im Override gezielt
 `intermissiontime`, um die anschließende Abfrage in `CalculateRanks` zu prüfen.
 Die zusätzliche Intermission-Suite verwendet die tatsächlichen Game-Übergänge.
-Zeitstempel, Dateiausgabe und Dedicated-Console-Ausgabe von
-`G_LogPrintf` sind ebenfalls noch nicht enthalten; geprüft werden seine
-formatierten Nutztexte an der Aufrufgrenze.
+Die isolierte Score-Suite prüft formatierte Log-Nutztexte an der Aufrufgrenze.
+Zeitstempel sowie die Reihenfolge von Dateiausgabe und Dedicated-Konsole sind
+inzwischen in [G_LogPrintf](GAME_LOGGING.md) portiert und über
+[den Spielmodulstart](GAME_LIFECYCLE.md) standardmäßig gebunden. Die eigentliche
+Datei-/Konsolenzustellung bleibt eine Engine-Schnittstelle.
 
 ## Punkte und Rangfolge
 

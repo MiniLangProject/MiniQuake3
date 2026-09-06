@@ -206,8 +206,15 @@ function worldspawn(state)
   else if state.doWarmup != 0 then state.warmupTime = -1; setConfig(state,5,"-1"); effect(state,3,0,"","Warmup:\n") end if
   return void
 end function
+function spawnDiagnostic(state,text)
+  if len(bytes(text)) > 1023 then return error(486,"Spawn diagnostic exceeds original G_Printf buffer") end if
+  // Isolated spawn fixtures may omit console transport. Attached modules bind
+  // it and observe the diagnostic before the caller frees the failed entity.
+  if state.level.gamePrintFn != void then state.level.gamePrintFn(state.level,text) end if
+  return void
+end function
 function callSpawn(state,ent)
-  if ent.classname == void then return false end if
+  if ent.classname == void then spawnDiagnostic(state,"G_CallSpawn: NULL classname\n"); return false end if
   items = tables.items(); index = 1
   while index < len(items)
     if items[index] == ent.classname then
@@ -226,7 +233,7 @@ function callSpawn(state,ent)
     end if
     index = index+1
   end for
-  return false
+  spawnDiagnostic(state,ent.classname+" doesn't have a spawn function\n"); return false
 end function
 function fromVars(state)
   ent = game.spawn(state.level)

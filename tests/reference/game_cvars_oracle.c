@@ -3,7 +3,9 @@
  * Frame probes have no live entities, players, matches or votes.
  */
 #define main unused_core_main
+#define Com_Error unused_game_cvar_core_error
 #include "core_oracle.c"
+#undef Com_Error
 #undef main
 #include "g_local.h"
 extern cvar_t cvar_indexes[];
@@ -12,6 +14,13 @@ static FILE *result;
 static int registered;
 static vmCvar_t probe;
 static char probeName[1024];
+static int captureErrorState;
+static void gameCvarErrorState(void);
+void QDECL Com_Error(int code,const char *fmt,...){
+    va_list args;
+    if(captureErrorState){gameCvarErrorState();fflush(result);}
+    va_start(args,fmt);vfprintf(stderr,fmt,args);va_end(args);exit(20+code);
+}
 level_locals_t level;
 gentity_t g_entities[MAX_GENTITIES];
 gclient_t g_clients[MAX_CLIENTS];
@@ -62,6 +71,14 @@ static void engineState(const char *name){
     emit((int)(v-cvar_indexes));emit(v->flags);emit(v->modified);emit(v->modificationCount);fwrite(&v->value,4,1,result);emit(v->integer);
     emitText(v->string);emitText(v->resetString);emitText(v->latchedString);
 }
+static void gameCvarErrorState(void){
+    long start=ftell(result);
+    /* Observe the actual storage at Com_Error; never repair the VM or repeat
+       Cvar_Update. This optional trailer leaves successful streams unchanged. */
+    emit(199);emit(cvar_numIndexes);emit(cvar_modifiedFlags);vmState(&probe);
+    emitText(probeName);engineState(probeName);fwrite(probe.string,256,1,result);
+    emit((int)(ftell(result)-start));
+}
 static void snapshot(void){
     int i;emit(190);emit(registered);emit(level.time);emit(level.previousTime);emit(level.framenum);emit(level.lastTeamLocationTime);emit(level.warmupModificationCount);
     emit(cvar_numIndexes);emit(cvar_modifiedFlags);
@@ -83,7 +100,8 @@ static char *readText(FILE *in){int n=readInt(in);char *v;if(n<0 || n>65536)exit
 int main(int argc,char **argv){
     FILE *in;int count,i,kind,arg,flags;char *name,*value;cvar_t *v;
     if(argc==2 && !strcmp(argv[1],"--build-date")){puts(__DATE__);return 0;}
-    if(argc!=3 || !(in=fopen(argv[1],"rb")) || !(result=fopen(argv[2],"wb")))return 2;
+    if((argc!=3 && argc!=4) || (argc==4 && strcmp(argv[3],"--error-state")) || !(in=fopen(argv[1],"rb")) || !(result=fopen(argv[2],"wb")))return 2;
+    captureErrorState=argc==4;
     Cvar_Init();level.num_entities=64;level.clients=g_clients;level.gentities=g_entities;
     for(i=0;i<64;i++)g_entities[i].client=&g_clients[i];
     value=readText(in);if(strcmp(value,__DATE__))return 3;free(value);count=readInt(in);

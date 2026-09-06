@@ -37,7 +37,7 @@ Der [Engine-/Spiel-Cvar-Vergleich](GAME_CVARS.md) prüft zusätzlich den
 standardmäßigen Registry-Pfad innerhalb des unveränderten Frames mit
 ausschließlich inaktiven Entities, einschließlich Passwort und Entity-Listen-Reset.
 
-Test-Binary: `b4547fe4f4ee4562e6ebfe190270f21fbff25561f541eadcd20bb922bb0a8846`.
+Test-Binary: `5d8c3e309c71cf15247869bbff919df36ecb93aad0d356c4d5f114655cf0b0ca`.
 Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 
 Ausführen:
@@ -46,5 +46,6 @@ Ausführen:
 python scripts/test_full_frame.py
 ```
 
-Für einen selbständig laufenden Dedicated Server fehlen weiterhin vollständige
-Modulinitialisierung, weitere Mover-/Physics-Pfade, Engine-Frame und Netzwerk.
+Die Spielmodulinitialisierung ist über [G_InitGame](GAME_LIFECYCLE.md)
+inzwischen portiert. Für einen selbständig laufenden Dedicated Server fehlen
+weiterhin Engine-VM-Neuladen, weitere Mover-/Physics-Pfade, Engine-Frame und Netzwerk.

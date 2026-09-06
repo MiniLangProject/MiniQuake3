@@ -216,7 +216,8 @@ Textchat/Voice, Cheats, Item-Give, Suicide, Teamtask und Teleport.
 Genauigkeitsstatistik und den Standardaufrufen aus ClientThink verbunden.
 Die [Serverkonsole](SERVER_COMMANDS.md) nutzt echte Teamwechsel, IP-Filter und
 die [Spielarena](GAME_MEMORY.md). [Item-Registrierung, CTF-Initialisierung und
-Entity-Teams](GAME_INITIALIZATION.md) ergänzen die Bausteine des Modulstarts.
+Entity-Teams](GAME_INITIALIZATION.md) sind mit [G_InitGame/G_ShutdownGame](GAME_LIFECYCLE.md)
+und der [originalen Logausgabe](GAME_LOGGING.md) verbunden.
 Weitere Spielobjekte,
 Mover-Pushing und der vollständige Server fehlen weiterhin.
 
@@ -253,7 +254,7 @@ bereits die tatsächlichen Teamwechsel; `SpectatorThink` und `CheckTournament`
 verwenden standardmäßig den Follow-Zyklus beziehungsweise die Duell-Warteschlange.
 Die Intermission- und Levelende-Funktionen verwenden diese Spielabläufe ebenfalls
 direkt. Die Client-Befehlsverteilung ist ebenfalls verbunden und geprüft.
-Engine-Mapwechsel/-Neustart, Modulinitialisierung, Engine-Kommando-Tokenisierung,
+Engine-Mapwechsel/-Neustart und VM-Neuladen, Engine-Kommando-Tokenisierung,
 Bot-/Einzelspieler-Ergebnissysteme und Netzwerkzustellung sind die nächsten Grenzen.
 Der Baseq3-Waffenserver einschließlich Rail-Durchschüssen, Schrotstreuung und
 Quad-Skalierung ist inzwischen verbunden. Im Callback freigegebene

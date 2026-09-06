@@ -99,7 +99,7 @@ lesen. MiniLang verlangt deshalb alle sieben Konvertierungen und meldet einen
 Fehler, bevor es Sitzungsfelder ändert. Solche Eingaben zählen nicht als gültige
 Differenzfälle. Eingebettete NUL-Bytes werden ebenfalls kontrolliert abgewiesen.
 
-Test-Binary: `e620146c12e1a20064025fbe6540b325fdec6ede10af3a1f52168716e9a99126`.
+Test-Binary: `ccb09785226e022db7bc6da6f0a19ec98c765ab78eefc11402ccf88c708b5e1a`.
 Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 Einzelbericht: `build/reference/client_connect/result.json`.
 

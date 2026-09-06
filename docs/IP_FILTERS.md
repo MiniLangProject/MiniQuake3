@@ -90,6 +90,22 @@ Bei unverändertem Modification-Counter überspringt Cvar_Update dagegen die Kop
 auch der bereits mutierte Restpuffer bleibt dann erhalten. Der eigene Native-Host
 benutzt hierfür die tatsächlichen Original-Cvar-Funktionen.
 
+Eine erneute Registrierung setzt den VM-Counter zunächst auf -1. So kann sie
+eine vollständige Kopie erzwingen, obwohl VM-Identität, sichtbarer Text und
+abschließender Counter unverändert aussehen. Der VM-Port zählt deshalb jede
+tatsächlich erfolgreiche Kopie mit einer internen `copyGeneration`; der Ban-Cache
+beobachtet dieses Kopierereignis zusätzlich. Ist der Engine-Counter selbst -1,
+überspringt das Original die Kopie hingegen auch bei Registrierung. Das bloße
+Ändern eines Counters darf den Restpuffer deshalb nicht zurücksetzen.
+
+Die native Reproduktion schreibt etwa Byte 100 eines ansonsten leeren
+`g_banIPs.string` auf 88. Ein unverändertes Update und ProcessIPBans lassen es
+stehen; erneute Registrierung bei Counter 1 setzt es durch echte Nullauffüllung
+auf 0. Alle sichtbaren VM-Felder bleiben dabei identisch. Weitere Fälle prüfen
+gefüllte Strings, versteckte Tokens, Byte 254, Parse-Aufrufe vor und nach der
+Registrierung sowie beide -1-Counter-Konstellationen. Die C-Referenz enthält
+keine künstliche Generation und behält ihr ursprüngliches Snapshotformat.
+
 ## ClientConnect und definierte Grenzen
 
 Der bisherige `filterPacketFn`-Override bleibt erhalten. Ohne Override läuft die
@@ -150,15 +166,24 @@ Sentinel-Kollisionen, ausstehende VM-Änderungen und den 255-Byte-Persistenzrand
 python scripts/test_ip_filters.py
 ```
 
-Der vollständige Lauf besteht mit **90 Szenarien**, **986 Aktionen**,
-**3.508.670 exakt gleichen 32-Bit-Wörtern**, **647 geordneten Nebenwirkungen**,
-**4.383 zusätzlichen semantischen Assertions** und **14.119.049 Ausgabe-Bytes**.
-**36 Laufzeitverträge** prüfen die ergänzenden MiniLang-Grenzen. Die separat
-kompilierten ClientConnect-Verträge bestehen mit **27 Prüfungen**.
+`--reuse-build` schreibt getrennte `reused-*.json`-Berichte. `--case` benennt den
+ausgewählten Fall; `--native-only` verwendet zusätzlich die Endung `.native.json`.
+Kanonische Ergebnisse eines Neubuilds werden dadurch nicht ersetzt.
 
-Ergebnisdatei: `build/reference/ip_filters/result.json`.
+Der vollständige Vergleich nach dem erneuten MiniLang-Build besteht mit
+**99 Szenarien**, **1.057 Aktionen**, **3.671.989 exakt gleichen 32-Bit-Wörtern**,
+**652 geordneten Nebenwirkungen**, **4.632 zusätzlichen semantischen Assertions**
+und **14.773.089 Ausgabe-Bytes**. Die vollständigen Ergebnis-Records der
+ursprünglichen 90 Szenarien bleiben unverändert, einschließlich Reihenfolge,
+Namen, Eingabe- und Native-Ausgabehashes sowie sämtlicher Fallmetriken.
+**36 Laufzeitverträge** prüfen die ergänzenden MiniLang-Grenzen. Die separat
+bereits geprüften ClientConnect-Verträge umfassen **27 Prüfungen**.
+
+Der aktuelle kanonische Neubuild und Vergleich steht in
+`build/reference/ip_filters/result.json`; er enthält auch die abschließende
+Korrektur der Counter-Reihenfolge vor einem fehlgeschlagenen Cvar-Update.
 Test-Binary-SHA256:
-`6fe5ae1cc22e8a5316c59f93ed882ac73e7624e2287b0b0dd25ef4eabbc9a1e9`.
+`5dd19401f6163f3cb275071c7ba7284f4b1f7af19f0bf895ea966a97ecead6c3`.
 Oracle-SHA256:
-`fc7b78ac77fed623755fb586e66a8c043c2c411ae14e3f0b7c02f49676208642`.
+`331f284bdd493ac867ce47ee352d429a58df99f3bdc8739e72186221ee377749`.
 Quell- und Fallhashes stehen im Ergebnisbericht.

@@ -95,6 +95,14 @@ int main(int argc,char **argv) {
             result=StringToFilter(text,&parsed);free(text);break;
         case 11:UpdateIPBans();break;
         case 12:name=ip_read_text(input);ip_lookup(name)->modificationCount=ip_read_int(input);free(name);break;
+        case 13:
+            index=ip_read_int(input);which=ip_read_int(input);
+            if(index<0 || index>=MAX_CVAR_VALUE_STRING || (index==255 && (which&255)!=0))exit(74);
+            g_banIPs.string[index]=(char)(which&255);break;
+        case 14:
+            which=ip_read_int(input);
+            if(which==0 || which==1)Cvar_Register(&g_banIPs,"g_banIPs","",CVAR_ARCHIVE);
+            if(which==0 || which==2)Cvar_Register(&g_filterBan,"g_filterBan","1",CVAR_ARCHIVE);break;
         default:exit(74);
         }
         ip_word(202);ip_word(kind);ip_word(result);ip_word(parsed.mask);ip_word(parsed.compare);ip_snapshot();

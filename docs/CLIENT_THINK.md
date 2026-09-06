@@ -32,7 +32,7 @@ Ausgabe-Bytes sowie 77 geordnete Engine-/Link-Nebenwirkungen. Drei zusätzliche
 Laufzeitverträge prüfen die fehlende Usercmd-Schnittstelle, tatsächliches
 Raketenfeuer ohne Override und die Kontakt-Deduplizierung.
 
-Test-Binary: `ee2fd6b5895c94d9a60c4661162e75f883b06239ba959b6bcdbe2bacfe406d57`.
+Test-Binary: `82019200f183394fb4b13b79ec4df05081e91c0ebb67f42d7881787e24948d76`.
 Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 
 Engine-seitige Usercmd-Zustellung, Cvar-Schreiben, Client-Drop und AAS-Prüfung

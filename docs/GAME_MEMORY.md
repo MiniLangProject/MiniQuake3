@@ -48,8 +48,9 @@ konservativen Domäne erhalten eigene Vertragsfehler. Das schließt auch größe
 Anforderungen aus, die C bei deaktivierter Debugausgabe bereits vor der
 Ausrichtungsrechnung als Kapazitätsfehler ablehnen kann. Entity-Stringfelder bleiben eigene MiniLang-Strings;
 beliebiges Aliasing von C-Stringzeigern ist damit nicht zugesichert.
-Die vollständige Reihenfolge von `G_InitGame`, `G_ShutdownGame` und
-Engine-Kartenwechseln ist weiterhin eine gesonderte offene Integration.
+Die Reihenfolge von [G_InitGame/G_ShutdownGame](GAME_LIFECYCLE.md) bindet den
+Arena-Rewind inzwischen ein. Direkte weitere Init-Aufrufe behalten die Poolbytes;
+Engine-Kartenwechsel und echtes VM-Neuladen sind weiterhin gesonderte Aufgaben.
 
-Test-Binary: `4ad58b96c997fb5f4ac56262281959b8b772708b5c131d651254de0bb2059a6d`.
+Test-Binary: `441022c6f901bc5d0a64a937b6e55854ab95059292bc86521e7d68bb15c72aa0`.
 Native x86-Oracle: `80c7cefc3b6aac37d9adb0118e78490f10e07addfb796c1928c3890522f29b3f`.

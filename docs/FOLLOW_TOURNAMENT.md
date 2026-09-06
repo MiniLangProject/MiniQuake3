@@ -94,10 +94,9 @@ Die üblichen Spawn-Think-/Endframe- und Intermission-Callbacks werden in dieser
 Suite beobachtet; die Angriffstastenfälle führen `SpectatorThink` und Pmove
 tatsächlich aus. Die Intermission-Suite prüft die tatsächlichen Übergangsfunktionen.
 Bot-/Engine-Zustellung, Engine-Mapausführung,
-Netzwerk und Missionpack bleiben offen. Die reguläre
-Gesamtsuite umfasst 38 Prüfbereiche, die erweiterte 53. Die letzte vollständig
-ausgeführte erweiterte Suite bleibt die mit 43 Gates am Stand `f8cdf9a`.
+Netzwerk und Missionpack bleiben offen. Der aktuelle Nachweis der regulären
+und erweiterten Gesamtsuite steht in [PARITY_AUDIT.md](PARITY_AUDIT.md).
 
-Test-Binary: `5ee99bc1fa67e847b07935d6968d26371e179e06d6a5c3d640f406f9e0d2f7a1`.
+Test-Binary: `0d913cb078cfebe64cc4cf3b1c664901169f16e443c9785a925781b92b91ce97`.
 Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 Einzelbericht: `build/reference/follow_tournament/result.json`.

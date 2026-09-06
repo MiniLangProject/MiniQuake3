@@ -46,22 +46,29 @@ struct VmCvar
   value
   integer
   string
+  copyGeneration
 end struct
 function createVm()
-  return VmCvar(0,0,0.0,0,"")
+  return VmCvar(0,0,0.0,0,"",0)
 end function
 function updateVm(registry,snapshot)
   if snapshot == void then return error(3302,"Cvar_Update NULL snapshot") end if
   if snapshot.handle < 0 or snapshot.handle >= registry.numIndexes then return error(3302,"Cvar_Update handle out of range") end if
   variable = registry.indexes[snapshot.handle]
   if variable.modificationCount == snapshot.modificationCount or variable.string == void then return void end if
+  // The original advances the counter even when the following size check drops.
+  // The old buffer/value and copy generation survive that failed update.
+  snapshot.modificationCount = variable.modificationCount
   data = bytes(variable.string)
   if len(data) > 255 then return error(3302,"Cvar_Update exceeds native string storage") end if
   for each part in data
     if part == 0 then return error(3302,"Cvar_Update embedded NUL") end if
   end for
-  snapshot.modificationCount = variable.modificationCount; snapshot.string = variable.string
-  snapshot.value = variable.value; snapshot.integer = variable.integer; return void
+  snapshot.string = variable.string
+  snapshot.value = variable.value; snapshot.integer = variable.integer
+  // Registration can force the same visible value/counter to be copied again.
+  // Byte-buffer consumers must distinguish that full copy from a no-op update.
+  snapshot.copyGeneration = snapshot.copyGeneration+1; return void
 end function
 function registerVm(registry,snapshot,name,defaultValue,flags)
   variable = get(registry,name,defaultValue,flags)

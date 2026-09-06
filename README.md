@@ -12,7 +12,8 @@ Passwortstatus, Engine-/Spielmodul-Cvar-Aktualisierung, Namen/Userinfo/Teamwahl,
 `ClientThink`, `ClientEndFrame`, Intermission-/Levelende-Steuerung und vollständiger
 Baseq3-Client-Befehlsverteilung mit Chat/Voice/Cheats/Spielkommandos sowie
 serverseitigem Abfeuern aller zehn Baseq3-Waffen, Serverkonsole, IP-Sperren,
-Spielarena und Item-/Teaminitialisierung ist vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
+Spielarena, Item-/Teaminitialisierung, `G_InitGame`/`G_ShutdownGame` und
+Logformatierung ist vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
 [geprüfte Stand mit offenen Abnahmen](docs/PARITY_AUDIT.md).
 
@@ -155,16 +156,18 @@ Baseq3-Handler: Chat/Voice, Taunts, Cheats, Items, Suicide, Teamtask und Telepor
 sowie die bestehenden Score-/Team-/Follow-/Vote-Abläufe.
 Die [Serverkonsole](docs/SERVER_COMMANDS.md) ergänzt Administration und
 Dedizierten-Serverchat. [Item- und Entity-Teaminitialisierung](docs/GAME_INITIALIZATION.md)
-sowie die [Spielarena mit Spawn-Strings](docs/GAME_MEMORY.md) bereiten den
-vollständigen Modulstart vor.
+sowie die [Spielarena mit Spawn-Strings](docs/GAME_MEMORY.md) sind in den
+[Spielmodul-Start und -Shutdown](docs/GAME_LIFECYCLE.md) eingebunden.
+Die [Logausgabe](docs/GAME_LOGGING.md) ergänzt originale Zeitstempel sowie
+die Reihenfolge von Dedicated-Konsole und Dateizustellung.
 [`Tournament und Warmup`](docs/TOURNAMENT.md) steuert Spielerbereitschaft,
 Countdown und Maprestart. [`G_RunFrame`](docs/FULL_FRAME.md) führt Entity- und
 Clientframes, Tournament, Matchende und [globale/Team-Abstimmungen](docs/VOTES.md)
 in Originalreihenfolge aus. Auch Teamleiterwechsel sowie
 [Teamstandorte, Overlay-Nachrichten und Passwortstatus](docs/TEAM_STATUS.md)
 sind portiert. Die [Engine-/Spielmodul-Cvar-Aktualisierung](docs/GAME_CVARS.md)
-ist standardmäßig eingebunden; vollständige Modulinitialisierung und
-Netzwerkzustellung bleiben offen.
+ist standardmäßig eingebunden. Engine-VM-Neuladen, Kartenwechsel, fehlende
+Spielobjekte und Netzwerkzustellung bleiben offen.
 
 Auch die Sichtbarkeitsdaten eines Kartenpunkts und Traces gegen versetzte/gedrehte
 Modelle sind direkt abfragbar:

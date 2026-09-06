@@ -227,7 +227,7 @@ zusätzliche Schnittstellen- und Zustandsgrenzen. Der separate Protokollleser
 bestätigt tatsächlich erreichte Treffer, Schaden, NoImpact-Flächen, Rail-Limit
 und die einmalige Accuracy-Gutschrift bei direktem Raketen- plus Explosionsschaden.
 
-Test-Binary: `5ee99bc1fa67e847b07935d6968d26371e179e06d6a5c3d640f406f9e0d2f7a1`.
+Test-Binary: `0d913cb078cfebe64cc4cf3b1c664901169f16e443c9785a925781b92b91ce97`.
 Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 Fixture weapons-0.bsp: `98064ce978246d76db75ff41849a23f2bb76dea5c5513da16a85eb60c7c16657`.
 Fixture weapons-16.bsp: `075c0ae49b3ad2148fde3426f66bf869c3f0228085afe850006bb6c6074ab391`.

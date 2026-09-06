@@ -1,14 +1,26 @@
 /* SPDX-License-Identifier: GPL-2.0-or-later
  * Complete original g_spawn.c. Unported spawn callbacks only record dispatch.
  */
+#ifdef MQ3_LIFECYCLE_ORACLE
+#undef Cvar_Get
+#define G_SpawnEntitiesFromString lifecycleOriginalSpawn
+#endif
 #include "../../Quake-III-Arena-original-source/code/game/g_spawn.c"
+#ifdef MQ3_LIFECYCLE_ORACLE
+#undef G_SpawnEntitiesFromString
+#include "game_lifecycle_api.h"
+#endif
 void CM_LoadMap(const char*,qboolean,int*);cvar_t *Cvar_Get(const char*,const char*,int);
 #include "snapvector.inc"
 #include "../../Quake-III-Arena-original-source/ui/menudef.h"
 extern void (*mq3DiagnosticFn)(const char *text);
 extern void (*mq3ErrorFn)(void);
 gentity_t g_entities[MAX_GENTITIES];gclient_t g_clients[MAX_CLIENTS];level_locals_t level;
+#ifdef MQ3_LIFECYCLE_ORACLE
+#include "game_cvar_table.inc"
+#else
 vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_warmup,g_gravity,g_knockback,g_friendlyFire,g_debugDamage,g_blood,g_maxclients,g_timelimit,g_fraglimit,g_capturelimit,g_weaponRespawn,g_weaponTeamRespawn,g_inactivity,g_smoothClients,g_dmflags,g_speed,g_forcerespawn,g_debugMove,g_synchronousClients,g_listEntity,g_password,g_allowVote,g_teamAutoJoin,g_maxGameClients,g_teamForceBalance,g_cheats,g_dedicated,g_quadfactor,pmove_fixed,pmove_msec,g_debugAlloc,g_banIPs,g_filterBan;
+#endif
 void hostServerReset(void*,int,int);void hostLink(void*);void hostUnlink(void*);void hostBrush(void*,const char*);void hostMetadata(int,int*);
 int hostContact(const vec3_t,const vec3_t,void*,int);int hostArea(const vec3_t,const vec3_t,int*,int);
 void hostTrace(trace_t*,const vec3_t,const vec3_t,const vec3_t,const vec3_t,int,int);
@@ -63,7 +75,11 @@ static char voteArgvStorage[64][8192],voteNextmap[8192];
 #include "vote_argv.inc"
 int trap_Argc(void){return Cmd_Argc();}
 void trap_Argv(int arg,char *buffer,int size){Cmd_ArgvBuffer(arg,buffer,size);}
-void trap_Cvar_VariableStringBuffer(const char *name,char *buffer,int size){if(clientConnectOutput){connectCvarGet(name,buffer,size);return;}if((!voteCommandsOutput && !clientCommandsOutput) || strcmp(name,"nextmap"))G_Error("unexpected vote Cvar query");Q_strncpyz(buffer,voteNextmap,size);}
+void trap_Cvar_VariableStringBuffer(const char *name,char *buffer,int size){
+#ifdef MQ3_LIFECYCLE_ORACLE
+if(lifecycleOutput){Cvar_VariableStringBuffer(name,buffer,size);return;}
+#endif
+if(clientConnectOutput){connectCvarGet(name,buffer,size);return;}if((!voteCommandsOutput && !clientCommandsOutput) || strcmp(name,"nextmap"))G_Error("unexpected vote Cvar query");Q_strncpyz(buffer,voteNextmap,size);}
 static int teamStatusOutput;
 static int clientThinkGauntletHit;
 static char clientSpawnUserinfo[16384];
@@ -92,14 +108,38 @@ static void snapshot(gentity_t *e) {
     word(e->noise_index);word(e->fly_sound_debounce_time);word(e->nextTrain?(int)(e->nextTrain-g_entities):-1);
     string(e->classname);string(e->model);string(e->model2);string(e->target);string(e->targetname);string(e->message);string(e->team);string(e->targetShaderName);string(e->targetShaderNewName);
 }
-static void boundary(gentity_t *e,int kind,int index) {word(4);word(kind);word(index);snapshot(e);}
-void trap_LinkEntity(gentity_t *e) {hostLink(e);if(teamChangeOutput){teamChangeEvent(1,(int)(e-g_entities)," ");return;}if(clientSpawnOutput){word(60);word(3);word((int)(e-g_entities));}else if(clientFrameOutput){word(80);word(1);word((int)(e-g_entities));}else if(clientThinkOutput){word(90);word(1);word((int)(e-g_entities));}else{word(5);snapshot(e);}}
-void trap_UnlinkEntity(gentity_t *e) {hostUnlink(e);if(teamChangeOutput){teamChangeEvent(2,(int)(e-g_entities)," ");return;}if(clientSpawnOutput){word(60);word(8);word((int)(e-g_entities));}else if(clientThinkOutput){word(90);word(2);word((int)(e-g_entities));}else{word(6);snapshot(e);}}
+static void boundary(gentity_t *e,int kind,int index) {
+#ifdef MQ3_LIFECYCLE_ORACLE
+if(lifecycleOutput){lifecycleEvent(18,(int)(e-g_entities),index,e->classname,"");return;}
+#endif
+word(4);word(kind);word(index);snapshot(e);}
+void trap_LinkEntity(gentity_t *e) {hostLink(e);
+#ifdef MQ3_LIFECYCLE_ORACLE
+if(lifecycleOutput){lifecycleEvent(7,(int)(e-g_entities),0,"","");return;}
+#endif
+if(teamChangeOutput){teamChangeEvent(1,(int)(e-g_entities)," ");return;}if(clientSpawnOutput){word(60);word(3);word((int)(e-g_entities));}else if(clientFrameOutput){word(80);word(1);word((int)(e-g_entities));}else if(clientThinkOutput){word(90);word(1);word((int)(e-g_entities));}else{word(5);snapshot(e);}}
+void trap_UnlinkEntity(gentity_t *e) {hostUnlink(e);
+#ifdef MQ3_LIFECYCLE_ORACLE
+if(lifecycleOutput){lifecycleEvent(8,(int)(e-g_entities),0,"","");return;}
+#endif
+if(teamChangeOutput){teamChangeEvent(2,(int)(e-g_entities)," ");return;}if(clientSpawnOutput){word(60);word(8);word((int)(e-g_entities));}else if(clientThinkOutput){word(90);word(2);word((int)(e-g_entities));}else{word(6);snapshot(e);}}
 void trap_SetBrushModel(gentity_t *e,const char *name) {hostBrush(e,name);}
-void trap_LocateGameData(gentity_t *e,int count,int size,playerState_t *ps,int clientSize) {if(teamChangeOutput){teamChangeEvent(14,count," ");return;}if(clientFrameOutput){word(80);word(0);word(count);}else if(clientThinkOutput){word(90);word(0);word(count);}else{word(7);word(count);}}
+void trap_LocateGameData(gentity_t *e,int count,int size,playerState_t *ps,int clientSize) {
+#ifdef MQ3_LIFECYCLE_ORACLE
+if(lifecycleOutput){lifecycleEvent(6,count,0,"","");return;}
+#endif
+if(teamChangeOutput){teamChangeEvent(14,count," ");return;}if(clientFrameOutput){word(80);word(0);word(count);}else if(clientThinkOutput){word(90);word(0);word(count);}else{word(7);word(count);}}
 void trap_GetConfigstring(int index,char *buffer,int size) {Q_strncpyz(buffer,configs[index],size);}
-void trap_SetConfigstring(int index,const char *value) {if(index<0 || index>=MAX_CONFIGSTRINGS)G_Error("configstring index out of range");Q_strncpyz(configs[index],value?value:"",sizeof(configs[index]));if(teamChangeOutput){teamChangeEvent(3,index,value);return;}if(clientConnectOutput){connectEvent(8,index,"",value);return;}if(clientInfoOutput){clientInfoEvent(4,index,value);return;}if(voteCommandsOutput)voteCommandState();word(1);word(index);string("");string(value);}
+void trap_SetConfigstring(int index,const char *value) {
+#ifdef MQ3_LIFECYCLE_ORACLE
+if(lifecycleOutput){lifecycleConfig(index,value);return;}
+#endif
+if(index<0 || index>=MAX_CONFIGSTRINGS)G_Error("configstring index out of range");Q_strncpyz(configs[index],value?value:"",sizeof(configs[index]));if(teamChangeOutput){teamChangeEvent(3,index,value);return;}if(clientConnectOutput){connectEvent(8,index,"",value);return;}if(clientInfoOutput){clientInfoEvent(4,index,value);return;}if(voteCommandsOutput)voteCommandState();word(1);word(index);string("");string(value);}
 void trap_Cvar_Set(const char *key,const char *value) {
+#ifdef MQ3_LIFECYCLE_ORACLE
+if(lifecycleOutput){lifecycleCvarSet(key,value);return;}
+#endif
+
     if(serverCommandsOutput && !strcmp(key,"g_banIPs"))Q_strncpyz(serverBanEngine,value,sizeof(serverBanEngine));
     if(intermissionOutput && !strncmp(key,"session",7)){
         int index=key[7]?atoi(key+7)+1:0;
@@ -122,6 +162,7 @@ void trap_Trace(trace_t *tr,const vec3_t start,const vec3_t mins,const vec3_t ma
         words(tr->endpos,3);word(tr->plane.type|(tr->plane.signbits<<8));word(tr->entityNum);
     }
 }
+#ifndef MQ3_LIFECYCLE_ORACLE
 void QDECL G_Printf(const char *fmt,...) {if(teamChangeOutput){char buffer[32768];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);teamChangeEvent(15,-1,buffer);return;}if(clientConnectOutput){char buffer[32768];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);connectEvent(9,-1,"",buffer);return;}if(frameRunOutput){int slot;va_list args;va_start(args,fmt);slot=va_arg(args,int);va_end(args);frameWord(6,slot);}}
 void QDECL G_LogPrintf(const char *fmt,...) {
     if(teamChangeOutput){char buffer[32768];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);teamChangeEvent(9,-1,buffer);return;}
@@ -132,13 +173,28 @@ void QDECL G_LogPrintf(const char *fmt,...) {
     else if(scoreOutput || itemOutput){char buffer[2048];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);word(41);string(buffer);}
     else{word(3);word(0);string("");string(fmt);}
 }
-void trap_SendServerCommand(int client,const char *message){if(teamChangeOutput){teamChangeEvent(10,client,message);return;}if(clientConnectOutput){connectEvent(7,client,"",message);return;}if(clientInfoOutput){clientInfoEvent(2,client,message);return;}if(teamStatusOutput){int i;word(171);word(client);word(level.lastTeamLocationTime);for(i=0;i<MAX_CLIENTS;i++)word(g_clients[i].pers.teamState.location);string(message);return;}if(voteOutput || frameRunOutput){voteBoundary(1,client);string(message);return;}if(clientSpawnOutput){word(60);word(9);word(client);string(message);return;}if(clientThinkOutput){word(90);word(4);word(client);string(message);return;}if(!scoreOutput)G_Error("unported server command sink");word(42);word(client);string(message);}
+#endif
+void trap_SendServerCommand(int client,const char *message){
+#ifdef MQ3_LIFECYCLE_ORACLE
+if(lifecycleOutput){lifecycleEvent(20,client,0,"",message);return;}
+#endif
+if(teamChangeOutput){teamChangeEvent(10,client,message);return;}if(clientConnectOutput){connectEvent(7,client,"",message);return;}if(clientInfoOutput){clientInfoEvent(2,client,message);return;}if(teamStatusOutput){int i;word(171);word(client);word(level.lastTeamLocationTime);for(i=0;i<MAX_CLIENTS;i++)word(g_clients[i].pers.teamState.location);string(message);return;}if(voteOutput || frameRunOutput){voteBoundary(1,client);string(message);return;}if(clientSpawnOutput){word(60);word(9);word(client);string(message);return;}if(clientThinkOutput){word(90);word(4);word(client);string(message);return;}if(!scoreOutput)G_Error("unported server command sink");word(42);word(client);string(message);}
 void trap_DropClient(int client,const char *reason){if(!clientThinkOutput)G_Error("unported client drop sink");word(90);word(5);word(client);string(reason);}
 qboolean trap_InPVS(const vec3_t p1,const vec3_t p2){return SV_inPVS(p1,p2);}
+#ifndef MQ3_LIFECYCLE_ORACLE
 void QDECL G_Error(const char *fmt,...) {if(followOutput && teamChangeReady){teamChangeState();word(222);}va_list args;va_start(args,fmt);vfprintf(stderr,fmt,args);va_end(args);exit(72);}
+#endif
 void Touch_DoorTrigger(gentity_t *a,gentity_t *b,trace_t *c) {G_Error("unexpected door boundary");}
-void *G_Alloc(int n) {void *p;if(serverCommandsOutput)return Original_G_Alloc(n);p=calloc(1,n);if(!p)exit(73);return p;}
-int trap_Cvar_VariableIntegerValue(const char *name){return 0;}
+void *G_Alloc(int n) {void *p;
+#ifdef MQ3_LIFECYCLE_ORACLE
+if(lifecycleOutput)return Original_G_Alloc(n);
+#endif
+if(serverCommandsOutput)return Original_G_Alloc(n);p=calloc(1,n);if(!p)exit(73);return p;}
+int trap_Cvar_VariableIntegerValue(const char *name){
+#ifdef MQ3_LIFECYCLE_ORACLE
+if(lifecycleOutput){int value=Cvar_VariableIntegerValue(name);if(!strcmp(name,"bot_enable") || !strcmp(name,"com_buildScript"))lifecycleEvent(17,value,0,name,"");return value;}
+#endif
+return 0;}
 void trap_GetUserinfo(int client,char *buffer,int size){if(teamChangeOutput){teamChangeEvent(4,client," ");Q_strncpyz(buffer,clientInfoValues[client],size);return;}if(clientConnectOutput){connectEvent(3,client,"","");Q_strncpyz(buffer,clientInfoValues[client],size);return;}if(clientInfoOutput){clientInfoEvent(1,client,"");Q_strncpyz(buffer,clientInfoValues[client],size);return;}if(!clientSpawnOutput)G_Error("unexpected userinfo read");word(60);word(1);word(client);Q_strncpyz(buffer,clientSpawnUserinfo,size);}
 void trap_SetUserinfo(int client,const char *text){if(!clientCommandsOutput || client<0 || client>=64)G_Error("unexpected userinfo write");Q_strncpyz(clientInfoValues[client],text,sizeof(clientInfoValues[client]));teamChangeEvent(21,client,text);}
 void trap_GetUsercmd(int client,usercmd_t *cmd){if(teamChangeOutput){teamChangeEvent(5,client," ");memset(cmd,0,sizeof(*cmd));return;}if(clientThinkOutput){word(90);word(3);word(client);*cmd=clientSpawnCmd;return;}if(!clientSpawnOutput)G_Error("unexpected usercmd read");word(60);word(2);word(client);*cmd=clientSpawnCmd;}
@@ -167,7 +223,9 @@ qboolean G_BotConnect(int client,qboolean restart){if(!clientConnectOutput)G_Err
 void AddTournamentPlayer(void){if(followOutput){Original_AddTournamentPlayer();return;}if(!tournamentOutput)G_Error("unexpected tournament promotion");word(130);word(1);word(level.numPlayingClients);if(tournamentPromote)level.numPlayingClients=2;}
 static void frameWord(int kind,int arg){if(!frameRunOutput)G_Error("unexpected frame boundary");word(110);word(kind);word(arg);}
 int trap_Milliseconds(void){return 0;}
+#ifndef MQ3_LIFECYCLE_ORACLE
 void G_UpdateCvars(void){frameWord(0,0);}
+#endif
 void G_RemoveQueuedBotBegin(int client){if(!teamChangeOutput)G_Error("unexpected bot queue removal");teamChangeEvent(12,client," ");}
 int BotAIShutdownClient(int client,qboolean restart){if(!teamChangeOutput || restart)G_Error("unexpected bot shutdown");teamChangeEvent(13,client,"0");return qtrue;}
 void BotInterbreedEndMatch(void){if(!intermissionOutput)G_Error("unexpected bot interbreeding");teamChangeEvent(18,0," ");}
@@ -175,6 +233,9 @@ void UpdateTournamentInfo(void){if(!intermissionOutput)G_Error("unexpected singl
 void SpawnModelsOnVictoryPads(void){if(!intermissionOutput)G_Error("unexpected single-player victory pads");teamChangeEvent(20,0," ");}
 #include "spawn_boundaries.inc"
 #include "spawn_functions.inc"
+#ifdef MQ3_LIFECYCLE_ORACLE
+#include "game_lifecycle_functions.inc"
+#endif
 #include "tournament.inc"
 #include "full_frame.inc"
 #include "target_actions.inc"
@@ -197,6 +258,9 @@ void SpawnModelsOnVictoryPads(void){if(!intermissionOutput)G_Error("unexpected s
 #include "weapon_actions.inc"
 #include "server_command_actions.inc"
 #include "team_change_actions.inc"
+#ifdef MQ3_LIFECYCLE_ORACLE
+#include "game_lifecycle_actions.inc"
+#endif
 static char *readString(FILE *in) {int n;char *s;if(fread(&n,4,1,in)!=1)return NULL;if(n<0 || n>10000000)exit(74);s=calloc(1,n+1);if(n && fread(s,1,n,in)!=n)exit(74);return s;}
 static void state(void) {int i;word(8);word(level.time);word(level.num_entities);word(level.spawning);word(level.numSpawnVars);word(level.numSpawnVarChars);word(level.warmupTime);word(level.locationLinked);word(slotOf(level.locationHead));for(i=64;i<level.num_entities;i++)snapshot(&g_entities[i]);snapshot(&g_entities[1022]);}
 static void reset(int type,int flags) {
@@ -210,8 +274,19 @@ static void commandDiagnostic(const char *text){teamChangeEvent(15,-1,text);}
 static void commandError(void){if(teamChangeReady){teamChangeState();word(222);}}
 int main(int argc,char **argv) {
     int checksum,i,step;FILE *in;char *text;
-    if(argc<5)return 2;CM_LoadMap(argv[1],qfalse,&checksum);Cvar_Get("cm_noCurves","0",0)->integer=atoi(argv[4]);
+#ifdef MQ3_LIFECYCLE_ORACLE
+    if(argc==2 && !strcmp(argv[1],"--build-date")){puts(__DATE__);return 0;}
+#endif
+    if(argc<5)return 2;CM_LoadMap(argv[1],qfalse,&checksum);
+#ifdef MQ3_LIFECYCLE_ORACLE
+    lifecycleCollisionCvarGet("cm_noCurves","0",0)->integer=atoi(argv[4]);
+#else
+    Cvar_Get("cm_noCurves","0",0)->integer=atoi(argv[4]);
+#endif
     in=fopen(argv[2],"rb");output=fopen(argv[3],"wb");if(!in || !output)return 3;
+#ifdef MQ3_LIFECYCLE_ORACLE
+    if(argc==7 && !strcmp(argv[5],"--lifecycle")){lifecycleOutput=1;runLifecycle(in,argv[6]);fclose(in);fclose(output);return 0;}
+#endif
     if(argc==6 && !strcmp(argv[5],"--server-commands")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=clientCommandsOutput=serverCommandsOutput=1;mq3DiagnosticFn=commandDiagnostic;mq3ErrorFn=commandError;runTeamChanges(in);
     } else if(argc==6 && !strcmp(argv[5],"--weapons")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=clientCommandsOutput=weaponOutput=1;mq3DiagnosticFn=commandDiagnostic;mq3ErrorFn=commandError;runTeamChanges(in);word(226);word(rand());
     } else if(argc==6 && !strcmp(argv[5],"--client-commands")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=clientCommandsOutput=1;mq3DiagnosticFn=commandDiagnostic;mq3ErrorFn=commandError;runTeamChanges(in);

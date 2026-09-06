@@ -789,6 +789,7 @@ end function
 function serverFixtureBanVm(level,text)
   if len(bytes(text)) > 255 then return error(499,"Ban fixture exceeds VM storage") end if
   vm = serverFilters.filterVm(level,"g_banIPs"); vm.string = text; vm.modificationCount = vm.modificationCount+1
+  vm.copyGeneration = vm.copyGeneration+1 // This fixture models an actual full native VM-buffer copy.
   return void
 end function
 function runServerCommandAction(level,kind,slot,p0,request,argv)

@@ -24,7 +24,7 @@ durch den vollständigen Eintrittspfad. Fünf
 Laufzeitverträge prüfen Slotgrenzen, fehlende Pflichtschnittstellen und die
 Standardregistrierung des Callbacks.
 
-Test-Binary: `9ca9e8c6ca7f16cc74faf0f895d762e4f1fe2882d002b639520af36447e1ce1a`.
+Test-Binary: `2df48bb64faffad137190fb9c053c384205e4c9b7ba4d39bdcd5b9761b317510`.
 Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
 
 Userinfo, Usercmd, ServerCommand und Game-Log werden an geordneten Host-Grenzen

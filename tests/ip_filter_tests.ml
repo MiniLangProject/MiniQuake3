@@ -218,6 +218,20 @@ function main(args)
       case 12
         name = ipReadText(reader); cv.find(level.registry,name).modificationCount = ipReadInt(reader)
       end case
+      case 13
+        index = ipReadInt(reader); value = ipReadInt(reader) & 255
+        if index < 0 or index >= 256 or (index == 255 and value != 0) then return error(499,"Invalid VM byte fixture") end if
+        buffer = ip.banBytes(level); buffer[index] = value; visible = 0
+        while buffer[visible] != 0
+          visible = visible+1
+        end while
+        vm = ip.filterVm(level,"g_banIPs"); vm.string = decode(slice(buffer,0,visible)); state.bufferVisible = vm.string
+      end case
+      case 14
+        which = ipReadInt(reader)
+        if which == 0 or which == 1 then cv.registerVm(level.registry,ip.filterVm(level,"g_banIPs"),"g_banIPs","",1) end if
+        if which == 0 or which == 2 then cv.registerVm(level.registry,ip.filterVm(level,"g_filterBan"),"g_filterBan","1",1) end if
+      end case
       case default
         return error(499,"Invalid IP action")
       end case
