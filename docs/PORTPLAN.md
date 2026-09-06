@@ -128,12 +128,13 @@ und der vollständige baseq3-Pmove-
 Befehlszyklus sind in MiniLang implementiert und gegen C geprüft. `--pmove-map`
 spielt Textbefehle auf Originalkarten ab; `--trace-model` und `--inspect-visibility`
 prüfen die neuen räumlichen Abfragen. Für die gesamte Schritt-Abnahme fehlen
-die vollständigen Todes-/Score-Folgen von Telefrags aus Schritt 6. Die äußere
+durchgängige Match-Replays im vollständigen Engine-/Serverbetrieb. Die äußere
 `G_RunFrame`-Reihenfolge ist inzwischen eingebunden. Dynamische Entities, Trigger-Erkennung und
 Sprungpad-/Teleport-Replays sind bereits mit Pmove verbunden; Ereignis-Entities,
 Blickwinkel-Deltas und die Auswahl/Aufrufreihenfolge der Telefrag-Kandidaten werden
 gegen C geprüft. Die inzwischen ergänzte Schadensberechnung ist mit KillBox
-verbunden; offene Todes-/Score-Handler sind [dokumentiert](COMBAT.md). Der temporäre
+verbunden; die tatsächlichen [Todes-/Score-Folgen](DEATHS.md) sind ebenfalls
+portiert und integriert geprüft. Der temporäre
 Kapsel-Handle folgt dem festgelegten Originalprofil: kontrollierter Fehler wie
 im unveränderten C-Stand; eine Korrektur wäre ein separates Erweiterungsprofil.
 Zahlen, Grenzen und Testumfang:
@@ -162,9 +163,11 @@ Abweichungen blockieren die nächste Spielabnahme. Voraussetzungen: 2–4.
 EntityState-Speicherfelder, PlayerState-Umwandlung, Entity-Platzverwaltung,
 Target-Auswahl und Trigger-/Teleport-Übergänge sind umgesetzt. Das Spawn-Parsing
 umfasst jetzt alle Feldregeln, Spielmodusfilter, Worldspawn und die originale
-Klassen-/Item-Auswahl. 34 Spawn-Klassen einschließlich Sprungpads, Teleportern,
+Klassen-/Item-Auswahl. 40 Spawn-Klassen einschließlich Sprungpads, Teleportern,
 verzögerter Targets, Relays, Mehrfach-/Always-Trigger, Sound-/Push-Targets,
-schaltbarer Timer, Ortsmarkierungen, Hurt-/Kill-/Laser-Objekte und drei Shooter-Klassen sind übertragen.
+schaltbarer Timer, Ortsmarkierungen, Hurt-/Kill-/Laser-Objekte, drei Shooter-Klassen,
+[Give-/Powerup-/Score-/Print-Targets](MAP_TARGETS.md) sowie
+[Portalflächen und -kameras](PORTALS.md) sind übertragen.
 `G_Damage`, Rüstung, Rückstoß, Teamschutz, Battlesuit und CTF-Trägerdaten sind
 gegen C geprüft und mit Telefrags verbunden. `CanDamage`, `G_RadiusDamage`,
 `LogAccuracyHit` und die Lasersteuerung verwenden die tatsächliche Server-Kollision;
@@ -172,9 +175,20 @@ siehe [Schaden](COMBAT.md).
 Target-Ketten, Shader-Remaps und die Entity-Schleife mit Ereignisfreigabe sind
 gegen den Originalcode geprüft; siehe [Targets und Ereignisse](TARGETS_AND_EVENTS.md).
 `G_RunThink` und die spätere Sprungpad-Ausrichtung sind enthalten. Alle 35
-Karten-Items werden inzwischen als echte Entities angelegt; die 14 weiteren
+Karten-Items werden inzwischen als echte Entities angelegt; die acht weiteren
 Klassen bleiben ausdrücklich offene Aufrufgrenzen; siehe [SPAWNING.md](SPAWNING.md).
 Die Item-Aufnahme einschließlich CTF-Capture ist inzwischen verbunden.
+
+**Nächster Arbeitsblock:** Die acht offenen Mover-Klassen benötigen noch 34
+aktive Baseq3-Funktionskörper. Zuerst folgen die gemeinsamen Entityfelder, der
+Push-Speicher und der Server-Adapter für Areaportale, anschließend der Bewegungs-
+und Schiebekern mit Team-Rollback und `G_RunFrame`-Einbindung. Der erste vollständige
+Kartenpfad verbindet danach `func_button` mit Touch/Schaden, Bewegung, Zielerreichung
+und Rückfahrt. Darauf bauen statische, rotierende und periodische Mover, Türen
+und Plattformen samt Zuschauer-Triggern sowie abschließend Züge mit ihren
+`path_corner`-Ketten auf. Jeder Teil wird gegen echte CM-/SV-Kollision und die
+unveränderten Originalfunktionen geprüft; erst danach entfällt seine offene
+Spawn-Aufrufgrenze.
 `ClientSpawn` setzt Spielerzustand, Startinventar, Handicap, Bot-/Human-Filter,
 Spawn-Targets, Verlinkung und Snapshots in der Originalreihenfolge um.
 `ClientEndFrame` verarbeitet inzwischen Powerup-Ablauf, Umwelt- und
@@ -218,8 +232,7 @@ Die [Serverkonsole](SERVER_COMMANDS.md) nutzt echte Teamwechsel, IP-Filter und
 die [Spielarena](GAME_MEMORY.md). [Item-Registrierung, CTF-Initialisierung und
 Entity-Teams](GAME_INITIALIZATION.md) sind mit [G_InitGame/G_ShutdownGame](GAME_LIFECYCLE.md)
 und der [originalen Logausgabe](GAME_LOGGING.md) verbunden.
-Weitere Spielobjekte,
-Mover-Pushing und der vollständige Server fehlen weiterhin.
+Acht Mover-Klassen, Mover-Pushing und der vollständige Server fehlen weiterhin.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
 Shooter-Objekte sind jetzt gegen C geprüft; siehe [Projektile](MISSILES.md). Die

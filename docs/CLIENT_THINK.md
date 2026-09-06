@@ -32,8 +32,8 @@ Ausgabe-Bytes sowie 77 geordnete Engine-/Link-Nebenwirkungen. Drei zusätzliche
 Laufzeitverträge prüfen die fehlende Usercmd-Schnittstelle, tatsächliches
 Raketenfeuer ohne Override und die Kontakt-Deduplizierung.
 
-Test-Binary: `82019200f183394fb4b13b79ec4df05081e91c0ebb67f42d7881787e24948d76`.
-Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
+Test-Binary: `9ba74275bead8cdc6cc134c6eba8890d179e2c12f18864ffe603164e21569f2e`.
+Native x86-Oracle: `70862eaa75de21973c006a95d3ab96e2e606ba3949faa33ae085fdacc1fc843b`.
 
 Engine-seitige Usercmd-Zustellung, Cvar-Schreiben, Client-Drop und AAS-Prüfung
 enden an geordnet getesteten Callbacks. Gauntlet und Waffenfeuer verwenden

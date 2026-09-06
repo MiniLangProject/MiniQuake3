@@ -6,10 +6,13 @@ import mq3.game.entities as game
 import mq3.game.spawn_values as values
 import mq3.game.triggers as triggers
 import mq3.game.targets as targets
+import mq3.game.map_targets as mapTargets
 import mq3.game.hazards as hazards
 import mq3.game.shooters as shooters
+import mq3.game.portals as portals
 import mq3.game.constants as c
 import mq3.shared.math as q
+import mq3.shared.directions as dirs
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
 import mq3.compat.transcendental as crt
@@ -18,9 +21,7 @@ import mq3.server.world as sv
 import mq3.game.movement as movement
 import std.string as strings
 function movedirVector(angles)
-  if angles[0] == 0 and angles[2] == 0 and angles[1] == -1 then return [0.0,0.0,1.0] end if
-  if angles[0] == 0 and angles[2] == 0 and angles[1] == -2 then return [0.0,0.0,-1.0] end if
-  axes = q.AngleVectors(angles); return axes[0]
+  return dirs.movedirVector(angles)
 end function
 function setMovedir(ent)
   ent.movedir = movedirVector(ent.s.angles)
@@ -70,12 +71,17 @@ end function
 function laserStart(level,self)
   self.s.eType = c.ET_BEAM
   if self.target != void then
-    self.enemy = void; i = 0
+    enemy = void; i = 0
     // G_Find(NULL, targetname, target) selects the first live matching entity.
     while i < level.num_entities
       ent = level.entities[i]; i = i+1
-      if ent.inuse and ent.targetname != void and strings.equalsIgnoreCaseAscii(ent.targetname,self.target) then self.enemy = ent; break end if
+      if ent.inuse and ent.targetname != void and strings.equalsIgnoreCaseAscii(ent.targetname,self.target) then enemy = ent; break end if
     end while
+    if enemy == void then
+      targetName = self.target; position = game.vtos(level,self.s.origin)
+      game.diagnostic(level,game.diagnosticArgument(self.classname)+" at "+position+": "+game.diagnosticArgument(targetName)+" is a bad target\n")
+    end if
+    self.enemy = enemy
   else
     setMovedir(self)
   end if
@@ -107,7 +113,10 @@ function dispatch(level,ent)
       game.setOrigin(ent,ent.s.origin)
     end case
     case "path_corner"
-      if ent.targetname == void then game.free(level,ent) end if
+      if ent.targetname == void then
+        game.diagnostic(level,"path_corner with no targetname at "+game.vtos(level,ent.s.origin)+"\n")
+        game.free(level,ent)
+      end if
     end case
     case "info_player_intermission","misc_teleporter_dest","team_CTF_redplayer","team_CTF_blueplayer","team_CTF_redspawn","team_CTF_bluespawn","item_botroam"
       // These original spawn functions have empty bodies.
@@ -132,12 +141,36 @@ function dispatch(level,ent)
     case "target_relay"
       ent.use = targets.relayUse
     end case
+    case "target_give"
+      mapTargets.giveSpawn(level,ent)
+    end case
+    case "target_remove_powerups"
+      mapTargets.removePowerupsSpawn(level,ent)
+    end case
+    case "target_score"
+      mapTargets.scoreSpawn(level,ent)
+    end case
+    case "target_print"
+      mapTargets.printSpawn(level,ent)
+    end case
+    case "misc_portal_surface"
+      portals.surface(level,ent)
+    end case
+    case "misc_portal_camera"
+      portals.camera(level,ent)
+    end case
     case "target_teleporter"
+      if ent.targetname == void then
+        position = game.vtos(level,ent.s.origin)
+        game.diagnostic(level,"untargeted "+game.diagnosticArgument(ent.classname)+" at "+position+"\n")
+      end if
       ent.use = targets.teleporterUse
     end case
     case "trigger_multiple"
       ent.wait = values.getFloat(level.spawner,"wait","0.5")[1]; ent.random = values.getFloat(level.spawner,"random","0")[1]
-      if ent.random >= ent.wait and ent.wait >= 0 then ent.random = n.fsub(ent.wait,100) end if
+      if ent.random >= ent.wait and ent.wait >= 0 then
+        ent.random = n.fsub(ent.wait,100); game.diagnostic(level,"trigger_multiple has random >= wait\n")
+      end if
       ent.touch = targets.multiTouch; ent.use = targets.multiUse; initTrigger(level,ent); game.link(level,ent)
     end case
     case "trigger_always"
@@ -172,7 +205,10 @@ function dispatch(level,ent)
     case "func_timer"
       ent.random = values.getFloat(level.spawner,"random","1")[1]; ent.wait = values.getFloat(level.spawner,"wait","1")[1]
       ent.use = targets.timerUse; ent.think = targets.timerThink
-      if ent.random >= ent.wait then ent.random = n.fsub(ent.wait,100) end if
+      if ent.random >= ent.wait then
+        ent.random = n.fsub(ent.wait,100)
+        game.diagnostic(level,"func_timer at "+game.vtos(level,ent.s.origin)+" has random >= wait\n")
+      end if
       if (ent.spawnflags & 1) != 0 then ent.nextthink = n.add32(level.time,100); ent.activator = ent end if
       ent.r.svFlags = 1
     end case

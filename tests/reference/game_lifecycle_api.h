@@ -14,3 +14,8 @@ static void lifecycleConfig(int,const char*);
 static void lifecycleCvarSet(const char*,const char*);
 void G_SpawnEntitiesFromString(void);
 static char *readString(FILE *in);
+static int mapObjectsOutput;
+void QDECL Original_PrintMsg(gentity_t*,const char*,...);
+static void mapObjectExtraState(void);
+static void mapObjectAction(int*,const char*,const char*);
+static void mapObjectMutation(int,int);

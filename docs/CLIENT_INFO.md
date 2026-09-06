@@ -91,8 +91,8 @@ das Teamoverlay durch Userinfo und prüfen anschließend `CheckTeamStatus`.
 Fehlerfälle** bestätigen die Ablehnung eines 8.192-Byte-Info-Strings und eines
 zu kleinen Fallback-Namenspuffers; MiniLang meldet hierfür kontrollierte Fehler.
 
-Test-Binary: `2eb8bb3ba7ef0b6c5ebf0839072136e838771d5877f1cc3897e2525711d0b4e7`.
-Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
+Test-Binary: `e0cecc2931a8fa3081c1c45a7b086281591fd759aaedd4c8f847c35a582a6a03`.
+Native x86-Oracle: `70862eaa75de21973c006a95d3ab96e2e606ba3949faa33ae085fdacc1fc843b`.
 Einzelbericht: `build/reference/client_info/result.json`.
 
 Die Engine liefert Userinfo weiterhin über einen Callback. Serverbefehle und

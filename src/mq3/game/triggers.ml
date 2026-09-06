@@ -18,7 +18,8 @@ function teleporterTouch(level,self,other,trace)
   if other.client == void or other.client.ps.pm_type == c.PM_DEAD then return void end if
   if (self.spawnflags & 1) != 0 and other.client.team != c.TEAM_SPECTATOR then return void end if
   dest = entities.pickTarget(level,self.target)
-  if dest != void then teleport.player(level,other,dest.s.origin,dest.s.angles) end if
+  if dest != void then teleport.player(level,other,dest.s.origin,dest.s.angles)
+  else entities.diagnostic(level,"Couldn't find teleporter destination\n") end if
   return void
 end function
 function touch(level,ent)

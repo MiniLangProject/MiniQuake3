@@ -8234,7 +8234,8 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/portals.ml"
           ],
           "status": "tested_subset"
         },
@@ -8243,7 +8244,8 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/portals.ml"
           ],
           "status": "tested_subset"
         },
@@ -8252,7 +8254,8 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/portals.ml"
           ],
           "status": "tested_subset"
         },
@@ -8261,7 +8264,8 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/portals.ml"
           ],
           "status": "tested_subset"
         },
@@ -8270,7 +8274,8 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/portals.ml"
           ],
           "status": "tested_subset"
         },
@@ -8279,7 +8284,8 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/portals.ml"
           ],
           "status": "tested_subset"
         },
@@ -8288,7 +8294,8 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/portals.ml"
           ],
           "status": "tested_subset"
         },
@@ -8297,7 +8304,8 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/portals.ml"
           ],
           "status": "tested_subset"
         },
@@ -8306,7 +8314,8 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/portals.ml"
           ],
           "status": "tested_subset"
         },
@@ -8315,7 +8324,8 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/portals.ml"
           ],
           "status": "tested_subset"
         },
@@ -8324,7 +8334,8 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/portals.ml"
           ],
           "status": "tested_subset"
         },
@@ -8333,7 +8344,8 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/portals.ml"
           ],
           "status": "tested_subset"
         },
@@ -8342,21 +8354,48 @@
           "target_files": [
             "src/mq3/game/teleport.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/shooters.ml"
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/portals.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "locateCamera",
+          "target_files": [
+            "src/mq3/game/portals.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original portal surface/camera spawn and delayed camera lookup, link-before-flags/type ordering, mirrored origin, owner/frame/rotation fields, actual capped target selection and CRT random consumption, normalized aim or angle-consuming G_SetMovedir fallback, and DirToByte. Roll retains the native double intermediate and signed truncation; undefined integer casts are rejected after the original link. Renderer/cgame portal display remains open."
+        },
+        {
+          "original": "SP_misc_portal_surface",
+          "target_files": [
+            "src/mq3/game/portals.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original portal surface/camera spawn and delayed camera lookup, link-before-flags/type ordering, mirrored origin, owner/frame/rotation fields, actual capped target selection and CRT random consumption, normalized aim or angle-consuming G_SetMovedir fallback, and DirToByte. Roll retains the native double intermediate and signed truncation; undefined integer casts are rejected after the original link. Renderer/cgame portal display remains open."
+        },
+        {
+          "original": "SP_misc_portal_camera",
+          "target_files": [
+            "src/mq3/game/portals.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original portal surface/camera spawn and delayed camera lookup, link-before-flags/type ordering, mirrored origin, owner/frame/rotation fields, actual capped target selection and CRT random consumption, normalized aim or angle-consuming G_SetMovedir fallback, and DirToByte. Roll retains the native double intermediate and signed truncation; undefined integer casts are rejected after the original link. Renderer/cgame portal display remains open."
         }
       ],
       "target": [
         "src/mq3/game/teleport.ml",
         "src/mq3/game/spawn_functions.ml",
-        "src/mq3/game/shooters.ml"
+        "src/mq3/game/shooters.ml",
+        "src/mq3/game/portals.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_transitions.py",
         "scripts/test_spawn.py",
-        "scripts/test_missiles.py"
+        "scripts/test_missiles.py",
+        "scripts/test_map_objects.py"
       ]
     },
     {
@@ -8514,7 +8553,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_subset",
+          "scope": "Original path-corner NULL-targetname warning before freeing the entity. Actual train/mover implementation remains open."
         }
       ],
       "target": [
@@ -9229,7 +9269,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9238,7 +9279,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9247,7 +9289,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9256,7 +9299,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9265,7 +9309,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9274,7 +9319,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9283,25 +9329,26 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "SP_target_teleporter",
           "target_files": [
-            "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/spawn_functions.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_subset",
+          "scope": "Original laser setup and teleporter spawn, including previously silent missing-target/name diagnostics. Laser enemy assignment follows the diagnostic so observers see the original intermediate state. Diagnostic C-string payloads and position formatting use the selected native CRT profile; format overflow and arbitrary retained native string aliases are outside defined parity."
         },
         {
           "original": "Use_Target_Speaker",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9310,7 +9357,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9319,7 +9367,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9328,7 +9377,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9337,7 +9387,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9346,7 +9397,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9355,7 +9407,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9364,7 +9417,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9373,7 +9427,8 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
@@ -9382,39 +9437,106 @@
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "target_laser_start",
           "target_files": [
-            "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/spawn_functions.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_subset",
+          "scope": "Original laser setup and teleporter spawn, including previously silent missing-target/name diagnostics. Laser enemy assignment follows the diagnostic so observers see the original intermediate state. Diagnostic C-string payloads and position formatting use the selected native CRT profile; format overflow and arbitrary retained native string aliases are outside defined parity."
         },
         {
           "original": "SP_target_laser",
           "target_files": [
             "src/mq3/game/spawn_functions.ml",
             "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/map_targets.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "Use_Target_Give",
+          "target_files": [
+            "src/mq3/game/map_targets.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original four Baseq3 map targets, connected to real Touch_Item, flag return and AddScore. Live target iteration, refused-pickup cleanup, flag precedence and final powerup clear, score defaults, private/team/global print routing and ordered state/effects are compared. Native va buffer overlap in multi-recipient team broadcasts and NULL-string formatting are characterized separately from defined C parity; MiniLang preserves the message for all recipients and uses the observed MSVC (null) text. Native format overflows and invalid activators are separate contracts. Network delivery remains an engine interface."
+        },
+        {
+          "original": "SP_target_give",
+          "target_files": [
+            "src/mq3/game/map_targets.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original four Baseq3 map targets, connected to real Touch_Item, flag return and AddScore. Live target iteration, refused-pickup cleanup, flag precedence and final powerup clear, score defaults, private/team/global print routing and ordered state/effects are compared. Native va buffer overlap in multi-recipient team broadcasts and NULL-string formatting are characterized separately from defined C parity; MiniLang preserves the message for all recipients and uses the observed MSVC (null) text. Native format overflows and invalid activators are separate contracts. Network delivery remains an engine interface."
+        },
+        {
+          "original": "Use_target_remove_powerups",
+          "target_files": [
+            "src/mq3/game/map_targets.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original four Baseq3 map targets, connected to real Touch_Item, flag return and AddScore. Live target iteration, refused-pickup cleanup, flag precedence and final powerup clear, score defaults, private/team/global print routing and ordered state/effects are compared. Native va buffer overlap in multi-recipient team broadcasts and NULL-string formatting are characterized separately from defined C parity; MiniLang preserves the message for all recipients and uses the observed MSVC (null) text. Native format overflows and invalid activators are separate contracts. Network delivery remains an engine interface."
+        },
+        {
+          "original": "SP_target_remove_powerups",
+          "target_files": [
+            "src/mq3/game/map_targets.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original four Baseq3 map targets, connected to real Touch_Item, flag return and AddScore. Live target iteration, refused-pickup cleanup, flag precedence and final powerup clear, score defaults, private/team/global print routing and ordered state/effects are compared. Native va buffer overlap in multi-recipient team broadcasts and NULL-string formatting are characterized separately from defined C parity; MiniLang preserves the message for all recipients and uses the observed MSVC (null) text. Native format overflows and invalid activators are separate contracts. Network delivery remains an engine interface."
+        },
+        {
+          "original": "Use_Target_Score",
+          "target_files": [
+            "src/mq3/game/map_targets.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original four Baseq3 map targets, connected to real Touch_Item, flag return and AddScore. Live target iteration, refused-pickup cleanup, flag precedence and final powerup clear, score defaults, private/team/global print routing and ordered state/effects are compared. Native va buffer overlap in multi-recipient team broadcasts and NULL-string formatting are characterized separately from defined C parity; MiniLang preserves the message for all recipients and uses the observed MSVC (null) text. Native format overflows and invalid activators are separate contracts. Network delivery remains an engine interface."
+        },
+        {
+          "original": "SP_target_score",
+          "target_files": [
+            "src/mq3/game/map_targets.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original four Baseq3 map targets, connected to real Touch_Item, flag return and AddScore. Live target iteration, refused-pickup cleanup, flag precedence and final powerup clear, score defaults, private/team/global print routing and ordered state/effects are compared. Native va buffer overlap in multi-recipient team broadcasts and NULL-string formatting are characterized separately from defined C parity; MiniLang preserves the message for all recipients and uses the observed MSVC (null) text. Native format overflows and invalid activators are separate contracts. Network delivery remains an engine interface."
+        },
+        {
+          "original": "Use_Target_Print",
+          "target_files": [
+            "src/mq3/game/map_targets.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original four Baseq3 map targets, connected to real Touch_Item, flag return and AddScore. Live target iteration, refused-pickup cleanup, flag precedence and final powerup clear, score defaults, private/team/global print routing and ordered state/effects are compared. Native va buffer overlap in multi-recipient team broadcasts and NULL-string formatting are characterized separately from defined C parity; MiniLang preserves the message for all recipients and uses the observed MSVC (null) text. Native format overflows and invalid activators are separate contracts. Network delivery remains an engine interface."
+        },
+        {
+          "original": "SP_target_print",
+          "target_files": [
+            "src/mq3/game/map_targets.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original four Baseq3 map targets, connected to real Touch_Item, flag return and AddScore. Live target iteration, refused-pickup cleanup, flag precedence and final powerup clear, score defaults, private/team/global print routing and ordered state/effects are compared. Native va buffer overlap in multi-recipient team broadcasts and NULL-string formatting are characterized separately from defined C parity; MiniLang preserves the message for all recipients and uses the observed MSVC (null) text. Native format overflows and invalid activators are separate contracts. Network delivery remains an engine interface."
         }
       ],
       "target": [
         "src/mq3/game/spawn_functions.ml",
         "src/mq3/game/targets.ml",
-        "src/mq3/game/hazards.ml"
+        "src/mq3/game/hazards.ml",
+        "src/mq3/game/map_targets.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_spawn.py",
         "scripts/test_targets.py",
-        "scripts/test_combat.py"
+        "scripts/test_combat.py",
+        "scripts/test_map_objects.py"
       ]
     },
     {
@@ -9682,15 +9804,10 @@
         {
           "original": "Team_ReturnFlagSound",
           "target_files": [
-            "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/combat.ml",
-            "src/mq3/game/player_spawns.ml",
-            "src/mq3/game/team_bonuses.ml",
-            "src/mq3/game/items.ml",
-            "src/mq3/game/team_status.ml"
+            "src/mq3/game/items.ml"
           ],
           "status": "tested_subset",
-          "scope": "Baseq3 flag status configstrings, reset/return entities, global return sounds and dropped-flag timeout/no-drop behavior. PrintMsg transport remains an observed callback."
+          "scope": "Original global team-sound entity and return-side selection, plus the exact NULL-base warning before return. The map-object suite observes this diagnostic before the subsequent PrintMsg delivery during actual target_remove_powerups flag return."
         },
         {
           "original": "Team_TakeFlagSound",
@@ -9859,7 +9976,8 @@
         "scripts/test_client_info.py",
         "scripts/test_team_changes.py",
         "scripts/test_client_commands.py",
-        "scripts/test_initialization.py"
+        "scripts/test_initialization.py",
+        "scripts/test_map_objects.py"
       ]
     },
     {
@@ -9912,12 +10030,10 @@
         {
           "original": "trigger_teleporter_touch",
           "target_files": [
-            "src/mq3/game/triggers.ml",
-            "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/triggers.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_subset",
+          "scope": "Original client/dead/spectator filtering and real target selection/teleport. Missing destination emits its original diagnostic after G_PickTarget before returning."
         },
         {
           "original": "InitTrigger",
@@ -10002,12 +10118,10 @@
         {
           "original": "SP_trigger_multiple",
           "target_files": [
-            "src/mq3/game/triggers.ml",
-            "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/spawn_functions.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_subset",
+          "scope": "Original trigger/timer spawn order, random correction before the corresponding warning, live subsequent setup and actual link/think behavior. The regular CD spawn replays now observe diagnostic text as well as state and effects."
         },
         {
           "original": "trigger_always_think",
@@ -10072,12 +10186,10 @@
         {
           "original": "SP_func_timer",
           "target_files": [
-            "src/mq3/game/triggers.ml",
-            "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml",
-            "src/mq3/game/hazards.ml"
+            "src/mq3/game/spawn_functions.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_subset",
+          "scope": "Original trigger/timer spawn order, random correction before the corresponding warning, live subsequent setup and actual link/think behavior. The regular CD spawn replays now observe diagnostic text as well as state and effects."
         },
         {
           "original": "hurt_touch",
@@ -10166,7 +10278,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10181,7 +10295,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10196,7 +10312,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10211,7 +10329,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10226,7 +10346,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10241,7 +10363,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10256,7 +10380,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10279,7 +10405,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10294,7 +10422,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10309,7 +10439,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10324,24 +10456,21 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
         {
           "original": "G_SetMovedir",
           "target_files": [
-            "src/mq3/game/entities.ml",
-            "src/mq3/game/teleport.ml",
-            "src/mq3/game/spawn_values.ml",
+            "src/mq3/shared/directions.ml",
             "src/mq3/game/spawn_functions.ml",
-            "src/mq3/game/targets.ml",
-            "src/mq3/game/events.ml",
-            "src/mq3/compat/textnumbers.ml",
-            "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/portals.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_subset",
+          "scope": "Original up/down angle sentinels and AngleVectors direction calculation, shared by the existing spawn wrapper and the portal camera fallback. Callers zero the original angle components after calculation; the portal fallback consumes the live owner angles after target-search diagnostics, including self-target and repeated lookup cases."
         },
         {
           "original": "AddRemap",
@@ -10354,7 +10483,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10369,7 +10500,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10384,7 +10517,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10399,7 +10534,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10414,7 +10551,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10429,7 +10568,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10444,7 +10585,9 @@
             "src/mq3/game/events.ml",
             "src/mq3/compat/textnumbers.ml",
             "src/mq3/game/bodies.ml",
-            "src/mq3/game/items.ml"
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/shared/directions.ml"
           ],
           "status": "tested_subset"
         },
@@ -10455,6 +10598,14 @@
           ],
           "status": "tested_subset",
           "scope": "Native truncating float-to-int position formatting and 32-byte Com_sprintf truncation/diagnostic, used by where and item startsolid diagnostics; owned strings replace the original rotating static buffers."
+        },
+        {
+          "original": "G_TeamCommand",
+          "target_files": [
+            "src/mq3/game/map_targets.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original slot-order team command delivery, connected-only filtering and live per-slot team reads. Defined native comparisons avoid overlapping nested va buffers; multi-recipient target_print broadcasts are separate MiniLang semantics and native implementation observations, with no ISO-C-defined parity claim. Engine command transport remains open."
         }
       ],
       "target": [
@@ -10466,7 +10617,9 @@
         "src/mq3/game/events.ml",
         "src/mq3/compat/textnumbers.ml",
         "src/mq3/game/bodies.ml",
-        "src/mq3/game/items.ml"
+        "src/mq3/game/items.ml",
+        "src/mq3/game/map_targets.ml",
+        "src/mq3/shared/directions.ml"
       ],
       "status": "partial",
       "tests": [
@@ -10477,7 +10630,8 @@
         "scripts/test_bodies.py",
         "scripts/test_items.py",
         "scripts/test_intermission.py",
-        "scripts/test_client_commands.py"
+        "scripts/test_client_commands.py",
+        "scripts/test_map_objects.py"
       ]
     },
     {

@@ -6,9 +6,10 @@ Worldspawn und die Auswahl von Item-/Klassen-Spawn-Funktionen. Die generierten
 Tabellen enthalten 20 Feldregeln, 48 baseq3-Klassen und 35 Items. Sie werden aus
 den gepinnten Originalquellen erzeugt und gegen die ursprüngliche C-Tabelle geprüft.
 
-**Stand der Klassen:** 34 Klassen und alle 35 Item-Einträge führen bereits die
-übertragenen Originalregeln aus. Die 14 übrigen Klassen brauchen noch ihre
-Implementierung. Ohne ausdrücklich gesetzten `state.unportedFn` liefert der Port
+**Stand der Klassen:** 40 Klassen und alle 35 Item-Einträge führen bereits die
+übertragenen Originalregeln aus. Die acht übrigen Klassen sind die Mover
+`func_plat`, `func_button`, `func_door`, `func_static`, `func_rotating`,
+`func_bobbing`, `func_pendulum` und `func_train`; ihre Implementierung fehlt noch. Ohne ausdrücklich gesetzten `state.unportedFn` liefert der Port
 an diesen Klassengrenzen einen Fehler. Die Vergleichstests setzen dort einen
 aufzeichnenden Callback ein; er führt keine vereinfachten Mover- oder Spielregeln
 aus. `G_SpawnItem` und `FinishSpawningItem` erzeugen und platzieren dagegen echte
@@ -39,7 +40,11 @@ und `item_botroam`. Hinzugekommen sind `target_delay`, `target_relay`,
 Abläufe sind unter [Targets und Ereignisse](TARGETS_AND_EVENTS.md) beschrieben.
 `trigger_hurt`, `target_kill` und `target_laser` verwenden die [portierte Schadensberechnung](COMBAT.md).
 Die drei [Shooter-Klassen](MISSILES.md) erzeugen Raketen, Granaten und Plasma
-mit ursprünglicher Zielsuche und Streuung.
+mit ursprünglicher Zielsuche und Streuung. Die vier
+[Give-/Powerup-/Score-/Print-Targets](MAP_TARGETS.md) verwenden die tatsächlichen
+Item-, Flaggen- und Scoreabläufe. [Portalflächen und -kameras](PORTALS.md)
+übernehmen Mirror-/Kameradaten, verzögerte Zielsuche und Richtungskodierung;
+die Darstellung durch Renderer und Cgame bleibt offen.
 Manche dieser Originalfunktionen sind leer oder geben die
 Entity sofort frei; auch dieses Verhalten bleibt erhalten.
 
@@ -83,12 +88,15 @@ Targets verfügbar. Fehlende Targets oder eine Flugzeit von null geben es frei.
 Die C-Prüfung kompiliert `g_spawn.c` vollständig und bindet unveränderte
 Server-/Kollisionsdateien sowie extrahierte vollständige Game-Funktionen ein.
 Der Host stellt Speicher, Configstrings, Cvar-Effekte und die ausdrücklich
-markierten offenen Klassen bereit. Nach dem Laden vergleicht er alle Entity-
-bisher portierten Felder und Aufrufreihenfolgen vor, am und nach dem Think-Termin.
+markierten offenen Klassen bereit. Nach dem Laden vergleicht er alle bisher
+modellierten Entity-Felder und Aufrufreihenfolgen vor, am und nach dem Think-Termin.
 Die neuen privaten Schadensfelder werden zusätzlich in `test_combat.py` geprüft. Danach werden
 Spieler in die geladenen Trigger gesetzt und komplette PlayerStates verglichen.
-`G_Printf`-Diagnosen und der Zeitpräfix des Server-Loggers sind noch nicht Teil
-dieser Abnahme; die Warmup-Logmeldung wird als roher Aufruf aufgezeichnet.
+Der reguläre Spawn-Vergleich beobachtet auch `G_Printf`-Diagnosen. Dazu gehören
+die ursprünglichen Warnungen zu Timer-/Multiple-Zufallswerten, fehlenden
+Path-Corner-Namen und Teleporter-/Laserzielen. Der
+Zeitpräfix des Server-Loggers wird separat geprüft; die Warmup-Logmeldung
+bleibt in der isolierten Spawn-Suite ein roher Aufruf.
 Dies prüft noch keine regulären ClientThink-/Serverframes oder
 Mover-Pushes. Die zusätzliche Item-Prüfung deckt Initialisierung, Respawn,
 Drop-Entities, Pickups, CTF-Abläufe und Physik ab; die Target-/Ereignisprüfung deckt die Entity-Schleife
@@ -97,6 +105,7 @@ mit automatischer Ereignisfreigabe ab.
 ```powershell
 python scripts/test_spawn_values.py
 python scripts/test_targets.py
+python scripts/test_map_objects.py
 python scripts/test_combat.py --data-root D:/Quake3
 python scripts/test_missiles.py --data-root D:/Quake3
 python scripts/test_items.py

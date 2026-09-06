@@ -37,8 +37,8 @@ Der [Engine-/Spiel-Cvar-Vergleich](GAME_CVARS.md) prüft zusätzlich den
 standardmäßigen Registry-Pfad innerhalb des unveränderten Frames mit
 ausschließlich inaktiven Entities, einschließlich Passwort und Entity-Listen-Reset.
 
-Test-Binary: `5d8c3e309c71cf15247869bbff919df36ecb93aad0d356c4d5f114655cf0b0ca`.
-Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
+Test-Binary: `fdffbb24360542fff5d315894296a4a9e289061202c419c1044f428304dbb972`.
+Native x86-Oracle: `70862eaa75de21973c006a95d3ab96e2e606ba3949faa33ae085fdacc1fc843b`.
 
 Ausführen:
 

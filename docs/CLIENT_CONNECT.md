@@ -99,8 +99,8 @@ lesen. MiniLang verlangt deshalb alle sieben Konvertierungen und meldet einen
 Fehler, bevor es Sitzungsfelder ändert. Solche Eingaben zählen nicht als gültige
 Differenzfälle. Eingebettete NUL-Bytes werden ebenfalls kontrolliert abgewiesen.
 
-Test-Binary: `ccb09785226e022db7bc6da6f0a19ec98c765ab78eefc11402ccf88c708b5e1a`.
-Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
+Test-Binary: `1b30a8e44850fbb244e50bfdee510c8e6da6557a913f45dece8a7c8a96fa1ff9`.
+Native x86-Oracle: `70862eaa75de21973c006a95d3ab96e2e606ba3949faa33ae085fdacc1fc843b`.
 Einzelbericht: `build/reference/client_connect/result.json`.
 
 Der native Host modelliert die Session-Cvar-Speicherung; MiniLang verwendet seine

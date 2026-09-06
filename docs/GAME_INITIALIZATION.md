@@ -110,7 +110,7 @@ Teaminitialisierung nach veränderten Live-Statuswerten.
 Bericht: build/reference/initialization/result.json.
 
 - MiniLang-Test SHA-256:
-  62014506192e0ff44e51fcf1fb6eac84294a046e4a250a7f602b937433aa2cb5
+  6a610c210ee5e6e69e1249770ca1315da01a084bb43933fefb97b44628d20b0b
 - Native Oracle SHA-256:
   0d095ac01b123a562cf107b4f67a17af83a57e990373ddb4672226e855033696
 - Test-BSP SHA-256:

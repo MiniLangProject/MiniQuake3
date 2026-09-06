@@ -52,5 +52,5 @@ Die Reihenfolge von [G_InitGame/G_ShutdownGame](GAME_LIFECYCLE.md) bindet den
 Arena-Rewind inzwischen ein. Direkte weitere Init-Aufrufe behalten die Poolbytes;
 Engine-Kartenwechsel und echtes VM-Neuladen sind weiterhin gesonderte Aufgaben.
 
-Test-Binary: `441022c6f901bc5d0a64a937b6e55854ab95059292bc86521e7d68bb15c72aa0`.
+Test-Binary: `efc778103b44075bb2883b6573306168d6b4fc9c995c0ce3260c6a7a18ce1b84`.
 Native x86-Oracle: `80c7cefc3b6aac37d9adb0118e78490f10e07addfb796c1928c3890522f29b3f`.

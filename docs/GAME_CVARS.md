@@ -130,7 +130,7 @@ der Modifikationszähler ist bereits übernommen. Die drei zusätzlichen
 Fehlerzustandsvergleiche sichern genau diesen nativen Teilzustand ab.
 Eingebettete NUL-Zeichen werden kontrolliert abgewiesen.
 
-Test-Binary: `7af83b616e821928e933a3c96e5144c1c3312ca7ee380331cf10e991a28599c7`.
+Test-Binary: `7d8bc1968e76bc4409ba9f4974a3150cdf019f969ee2f9dae7027a0767345b42`.
 Native x86-Oracle: `9b076c74a0aec2593ec18937bb589b4ad45593edf3042065241eabd7182270fb`.
 
 ```powershell

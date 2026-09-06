@@ -4,6 +4,11 @@ package mq3.shared.directions
 import mq3.shared.bytedirs as bytedirs
 import mq3.shared.math as q
 import mq3.compat.numeric as n
+function movedirVector(angles)
+  if angles[0] == 0 and angles[2] == 0 and angles[1] == -1 then return [0.0,0.0,1.0] end if
+  if angles[0] == 0 and angles[2] == 0 and angles[1] == -2 then return [0.0,0.0,-1.0] end if
+  axes = q.AngleVectors(angles); return axes[0]
+end function
 function dirToByte(dir)
   if dir == void then return 0 end if
   best = 0; bestd = 0.0; i = 0

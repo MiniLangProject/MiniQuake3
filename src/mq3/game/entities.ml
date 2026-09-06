@@ -406,6 +406,19 @@ function setOrigin(ent,origin)
   ent.s.pos.trDelta = [0.0,0.0,0.0]; ent.r.currentOrigin = movement.copy(origin)
   return void
 end function
+function diagnostic(level,text)
+  if len(bytes(text)) > 1023 then return error(485,"Game diagnostic exceeds original G_Printf buffer") end if
+  if level.gamePrintFn != void then level.gamePrintFn(level,text) end if
+  return void
+end function
+function diagnosticArgument(text)
+  if text == void then return "(null)" end if
+  data = bytes(text); size = 0
+  while size < len(data) and data[size] != 0
+    size = size+1
+  end while
+  return decode(slice(data,0,size))
+end function
 function vtos(level,vector)
   // Original g_utils.c vtos uses float-to-int truncation and Com_sprintf into
   // 32 bytes. Return owned text instead of one of eight static native buffers.

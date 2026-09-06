@@ -1,4 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
+import mq3.game.map_targets as mapTargets
+import mq3.game.portals as portals
 import mq3.game.spawn as spawn
 import mq3.game.spawn_functions as funcs
 import mq3.game.spawn_values as values
@@ -91,17 +93,22 @@ function checkSnapshot(check,ent)
   checkWords(check,[r.lastCluster,r.areanum,r.areanum2,r.sector])
   checkReal(check,ent.speed); checkReal(check,ent.wait); checkReal(check,ent.random); checkWords(check,[ent.count,ent.health,ent.damage,ent.flags]); checkVector(check,ent.movedir); checkWord(check,ent.nextthink)
   think = 0; touch = 0
-  if ent.think == funcs.aimAtTarget then think = 1 else if ent.think != void then think = 2 end if
+  if ent.think == funcs.aimAtTarget then think = 1 else if ent.think == portals.locateCamera then think = 3 else if ent.think != void then think = 2 end if
   if ent.touch == triggers.pushTouch then touch = 1 else if ent.touch == triggers.teleporterTouch then touch = 2 else if ent.touch != void then touch = 3 end if
   checkWords(check,[think,touch])
   activator = -1
   if ent.activator != void then activator = ent.activator.slot end if
-  checkWords(check,[boolean(ent.use != void),activator,boolean(ent.unlinkAfterEvent),boolean(ent.physicsObject)])
+  useId = boolean(ent.use != void)
+  if ent.use == mapTargets.giveUse then useId = 2 else if ent.use == mapTargets.removePowerupsUse then useId = 3 else if ent.use == mapTargets.scoreUse then useId = 4 else if ent.use == mapTargets.printUse then useId = 5 end if
+  checkWords(check,[useId,activator,boolean(ent.unlinkAfterEvent),boolean(ent.physicsObject)])
   checkWords(check,[ent.noise_index,ent.fly_sound_debounce_time,actionSlot(ent.nextTrain)])
   for each value in [ent.classname,ent.model,ent.model2,ent.target,ent.targetname,ent.message,ent.team,ent.targetShaderName,ent.targetShaderNewName]
     checkString(check,value)
   end for
   return void
+end function
+function recordSpawnDiagnostic(level,text)
+  checkWord(level.context,16); checkString(level.context,text); return void
 end function
 function recordSpawnEffect(state,kind,index,key,value)
   check = state.context; checkWords(check,[kind,index]); checkString(check,key); checkString(check,value)
@@ -1901,7 +1908,7 @@ function main(args)
   else
     size = n.readI32(input,8); s = spawn.create(level,decode(slice(input,12,size)))
     s.gametype = n.readI32(input,0); flags = n.readI32(input,4); s.restarted = flags & 1; s.doWarmup = flags & 2; s.motd = "MiniQuake3 spawn parity"
-    s.context = check; s.effectFn = recordSpawnEffect; s.unportedFn = recordSpawnBoundary; level.context = check; level.observeFn = recordSpawnSpatial
+    s.context = check; s.effectFn = recordSpawnEffect; s.unportedFn = recordSpawnBoundary; level.context = check; level.observeFn = recordSpawnSpatial; level.gamePrintFn = recordSpawnDiagnostic
     spawn.load(s); checkLevel(check,level)
     s.gravity = cv.find(s.cvars,"g_gravity").value
     for step = 0 to 2

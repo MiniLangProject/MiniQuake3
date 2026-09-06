@@ -13,7 +13,7 @@ Passwortstatus, Engine-/Spielmodul-Cvar-Aktualisierung, Namen/Userinfo/Teamwahl,
 Baseq3-Client-Befehlsverteilung mit Chat/Voice/Cheats/Spielkommandos sowie
 serverseitigem Abfeuern aller zehn Baseq3-Waffen, Serverkonsole, IP-Sperren,
 Spielarena, Item-/Teaminitialisierung, `G_InitGame`/`G_ShutdownGame` und
-Logformatierung ist vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
+Logformatierung sowie 40 von 48 Kartenklassen ist vorhanden. **Noch kein spielbarer Port.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
 [geprüfte Stand mit offenen Abnahmen](docs/PARITY_AUDIT.md).
 
@@ -77,6 +77,7 @@ python scripts/test_initialization.py
 python scripts/test_ip_filters.py
 python scripts/test_server_commands.py
 python scripts/test_targets.py
+python scripts/test_map_objects.py
 python scripts/test_combat.py --data-root D:/Quake3
 python scripts/test_missiles.py --data-root D:/Quake3
 python scripts/test_weapons.py
@@ -103,11 +104,13 @@ Die Schnittstellen und ihre Grenzen sind unter
 [Server-Kollision](docs/SERVER_COLLISION.md) und
 [Trigger-/Teleport-Übergänge](docs/GAME_TRANSITIONS.md) beschrieben.
 Das [Spawn-Parsing](docs/SPAWNING.md) übernimmt inzwischen Worldspawn, Feld- und
-Spielmodusregeln sowie 34 Objektklassen. Sprungpads und Teleporter werden aus dem
+Spielmodusregeln sowie 40 Objektklassen. Sprungpads und Teleporter werden aus dem
 Kartentext angelegt und nach verzögerter Zielsuche mit echten Kontakten geprüft.
 Hinzu kommen [Target-Ketten und Ereignisverarbeitung](docs/TARGETS_AND_EVENTS.md):
 verzögerte Targets, Relays, Mehrfach-/Always-Trigger, Shader-Remaps und die
 Entity-Schleife mit Ablauf und Freigabe temporärer Ereignisse.
+[Give-/Powerup-/Score-/Print-Targets](docs/MAP_TARGETS.md) und
+[Portalflächen und -kameras](docs/PORTALS.md) sind ebenfalls eingebunden.
 Sound-Targets, gerichtete Push-Targets, schaltbare Timer und Ortsmarkierungen
 führen inzwischen ebenfalls ihre ursprünglichen Serverregeln aus.
 Die [Schadensberechnung](docs/COMBAT.md) ergänzt Rüstung, Rückstoß, Teamschutz,

@@ -63,8 +63,8 @@ ungültigen Zustände werden kontrolliert abgewiesen und zählen nicht als
 Vergleich gültiger C-Eingaben. Clientbindungen müssen wie nach dem originalen
 `G_InitGame` für alle Slots unterhalb des Cvar-Clientlimits vorhanden sein.
 
-Test-Binary: `6f4eec8cf561e21928f229919058d0c01631c418f60d6cb72a820b6bdd6bd77a`.
-Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
+Test-Binary: `4d068ad30b94fec715d27d79af854f95500e069e9a8d8886b06a0140a48d8713`.
+Native x86-Oracle: `70862eaa75de21973c006a95d3ab96e2e606ba3949faa33ae085fdacc1fc843b`.
 
 ```powershell
 python scripts/test_team_status.py

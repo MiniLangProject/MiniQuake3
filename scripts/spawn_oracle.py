@@ -11,10 +11,10 @@ FUNCTIONS={
     'g_mem.c':['G_Alloc','G_InitMemory','Svcmd_GameMem_f'],
     'g_svcmds.c':['StringToFilter','UpdateIPBans','G_FilterPacket','AddIP','G_ProcessIPBans','Svcmd_AddIP_f','Svcmd_RemoveIP_f','Svcmd_EntityList_f','ClientForString','Svcmd_ForceTeam_f','ConsoleCommand'],
     'g_session.c':['G_WriteClientSessionData','G_ReadSessionData','G_InitSessionData','G_InitWorldSession','G_WriteSessionData'],
-    'g_utils.c':['vectoyaw','G_InitGentity','G_Spawn','G_EntitiesFree','G_FreeEntity','G_SetOrigin','G_Find','G_PickTarget','G_FindConfigstringIndex','G_ModelIndex','G_SoundIndex','G_SetMovedir','G_TempEntity','G_KillBox','vtos','AddRemap','BuildShaderStateConfig','G_UseTargets','G_AddPredictableEvent','G_AddEvent','G_Sound'],
+    'g_utils.c':['G_TeamCommand','vectoyaw','G_InitGentity','G_Spawn','G_EntitiesFree','G_FreeEntity','G_SetOrigin','G_Find','G_PickTarget','G_FindConfigstringIndex','G_ModelIndex','G_SoundIndex','G_SetMovedir','G_TempEntity','G_KillBox','vtos','AddRemap','BuildShaderStateConfig','G_UseTargets','G_AddPredictableEvent','G_AddEvent','G_Sound'],
     'g_client.c':['SpotWouldTelefrag','SelectNearestDeathmatchSpawnPoint','SelectRandomDeathmatchSpawnPoint','SelectRandomFurthestSpawnPoint','SelectSpawnPoint','SelectInitialSpawnPoint','SelectSpectatorSpawnPoint','InitBodyQue','BodySink','CopyToBodyQue','SetClientViewAngle','respawn','ClientSpawn','ClientBegin','TeamCount','TeamLeader','PickTeam','ClientCleanName','ClientUserinfoChanged','ClientConnect','ClientDisconnect','SP_info_player_deathmatch','SP_info_player_start','SP_info_player_intermission'],
-    'g_misc.c':['TeleportPlayer','SP_info_null','SP_info_notnull','SP_info_camp','SP_light','SP_misc_model','SP_misc_teleporter_dest','Use_Shooter','InitShooter_Finish','InitShooter','SP_shooter_rocket','SP_shooter_grenade','SP_shooter_plasma'],
-    'g_target.c':['SP_target_position','Think_Target_Delay','Use_Target_Delay','SP_target_delay','target_relay_use','SP_target_relay','target_teleporter_use','SP_target_teleporter','Use_Target_Speaker','SP_target_speaker','target_location_linkup','SP_target_location','target_kill_use','SP_target_kill','target_laser_think','target_laser_on','target_laser_off','target_laser_use','target_laser_start','SP_target_laser'],
+    'g_misc.c':['locateCamera','SP_misc_portal_surface','SP_misc_portal_camera','TeleportPlayer','SP_info_null','SP_info_notnull','SP_info_camp','SP_light','SP_misc_model','SP_misc_teleporter_dest','Use_Shooter','InitShooter_Finish','InitShooter','SP_shooter_rocket','SP_shooter_grenade','SP_shooter_plasma'],
+    'g_target.c':['Use_Target_Give','SP_target_give','Use_target_remove_powerups','SP_target_remove_powerups','Use_Target_Score','SP_target_score','Use_Target_Print','SP_target_print','SP_target_position','Think_Target_Delay','Use_Target_Delay','SP_target_delay','target_relay_use','SP_target_relay','target_teleporter_use','SP_target_teleporter','Use_Target_Speaker','SP_target_speaker','target_location_linkup','SP_target_location','target_kill_use','SP_target_kill','target_laser_think','target_laser_on','target_laser_off','target_laser_use','target_laser_start','SP_target_laser'],
     'g_team.c':['OtherTeam','TeamName','AddTeamScore','Team_SetFlagStatus','Team_ForceGesture','Team_CheckDroppedItem','Team_ResetFlag','Team_ResetFlags','Team_ReturnFlagSound','Team_TakeFlagSound','Team_CaptureFlagSound','Team_ReturnFlag','Team_FreeEntity','Team_DroppedFlagThink','Team_TouchOurFlag','Team_TouchEnemyFlag','Pickup_Team','SelectRandomTeamSpawnPoint','SelectCTFSpawnPoint','SP_team_CTF_redplayer','SP_team_CTF_blueplayer','SP_team_CTF_redspawn','SP_team_CTF_bluespawn','OnSameTeam','Team_FragBonuses','Team_CheckHurtCarrier','Team_GetLocation','Team_GetLocationMsg','SortClients','TeamplayInfoMessage','CheckTeamStatus'],
     'g_mover.c':['SP_path_corner'],
     'g_main.c':['AddTournamentPlayer','RemoveTournamentLoser','RemoveTournamentWinner','AdjustTournamentScores','MoveClientToIntermission','BeginIntermission','ExitLevel','G_RunThink','FindIntermissionPoint','SortRanks','CalculateRanks','SendScoreboardMessageToAllClients','ScoreIsTied','CheckExitRules','LogExit','CheckIntermissionExit','CheckVote','PrintTeam','SetLeader','CheckTeamLeader','CheckTeamVote','CheckCvars'],
@@ -148,14 +148,14 @@ def build(output, *, lifecycle=False):
         declarations=original[original.index('vmCvar_t\tg_gametype;'):original.index('// bk001129 - made static')]
         (output/'game_cvar_table.inc').write_text(typedef+'\n'+declarations+'\n'+table+'\nstatic int gameCvarTableSize=sizeof(gameCvarTable)/sizeof(gameCvarTable[0]);\n',encoding='utf-8',newline='\n')
         additions={'g_main.c':['G_Printf','G_Error','G_LogPrintf','G_RemapTeamShaders','G_RegisterCvars','G_UpdateCvars','G_FindTeams','G_InitGame','G_ShutdownGame'],
-                   'g_items.c':['ClearRegisteredItems','SaveRegisteredItems','G_CheckTeamItems'], 'g_team.c':['Team_InitGame']}
+                   'g_items.c':['ClearRegisteredItems','SaveRegisteredItems','G_CheckTeamItems'], 'g_team.c':['Team_InitGame','PrintMsg']}
         original_bodies=[]
         for filename,symbols in additions.items():
             original=(source/'game'/filename).read_text(encoding='utf-8')
             for symbol in symbols:
                 match=re.search(r'^(?:static[ \t]+)?[\w* \t]+\b'+symbol+r'\s*\([^;]*?\)\s*\{.*?^\}',original,re.M|re.S)
                 if not match:raise RuntimeError('Missing lifecycle function '+symbol)
-                original_bodies.append(match[0])
+                original_bodies.append(('#define PrintMsg Original_PrintMsg\n'+match[0]+'\n#undef PrintMsg') if symbol=='PrintMsg' else match[0])
         (output/'game_lifecycle_functions.inc').write_text('\n\n'.join(original_bodies)+'\n',encoding='utf-8',newline='\n')
         hosts.append(ROOT/'tests/reference/game_lifecycle_cvars.c')
         selected.append(source/'qcommon/cvar.c')

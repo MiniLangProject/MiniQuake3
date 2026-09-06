@@ -87,7 +87,8 @@ end function
 function teleporterUse(level,ent,other,activator)
   if activator.client == void then return void end if
   target = game.pickTarget(level,ent.target)
-  if target != void then teleport.player(level,activator,target.s.origin,target.s.angles) end if
+  if target != void then teleport.player(level,activator,target.s.origin,target.s.angles)
+  else game.diagnostic(level,"Couldn't find teleporter destination\n") end if
   return void
 end function
 function multiWait(level,ent)

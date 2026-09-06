@@ -4,9 +4,10 @@
 `target_relay`, `target_teleporter`, `trigger_multiple`, `trigger_always`,
 `target_speaker`, `target_push`, `func_timer` und `target_location`.
 Zusammen mit den bisherigen Klassen, den [Hurt-/Kill-/Laser-Objekten](COMBAT.md)
-und den drei [Shooter-Klassen](MISSILES.md) sind
-damit 34 der 48 baseq3-Spawn-Klassen
-umgesetzt. Die übrigen 14 Klassen bleiben offen; alle 35 Item-Spawns sind in
+und den drei [Shooter-Klassen](MISSILES.md), den
+[Give-/Powerup-/Score-/Print-Targets](MAP_TARGETS.md) und
+[Portalflächen und -kameras](PORTALS.md) sind 40 der 48 baseq3-Spawn-Klassen
+umgesetzt. Die übrigen acht Klassen bleiben offen; alle 35 Item-Spawns sind in
 [Items und Flaggen](ITEMS.md) portiert.
 
 | Aufruf | Verhalten |
@@ -87,7 +88,7 @@ Ein fehlendes `message` wird wie ein NULL-Configstring als leer gespeichert;
 der beobachtete Trap-Aufruf behält dabei sein ursprüngliches NULL-Argument.
 Dies ist der lokale Speichervertrag aus `SV_SetConfigstring`, keine Abnahme
 seiner Netzwerkverteilung. Die Auswahl des sichtbaren/nächsten Ortes und
-Team-Overlays folgen mit den übrigen Teamregeln.
+[Team-Overlays](TEAM_STATUS.md) sind inzwischen portiert und separat geprüft.
 
 Shader-Zeiten verwenden `%5.2f` und die Standardrundung der festgelegten MSVC-
 Referenz. MiniLang übergibt die exakte Float-zu-Double-Promotion über die x64-

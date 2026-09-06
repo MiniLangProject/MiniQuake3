@@ -158,6 +158,6 @@ Teil- und Wiederverwendungsläufe überschreiben diesen Bericht nicht.
 rohe CTF-Daten. Quellen und erzeugte Programme werden vor und nach dem Lauf
 per Hash an den Nachweis gebunden.
 
-Test-Binary: `7e9529adbb65dd6a6429e48453a9a9e3657cf422d7cd49ee87d9875582b093ee`.
-Native x86-Oracle: `1f0a0436c13122754b2be77d51ee7b605b5dc4847b1bed2fc19a99f1e6062a38`.
+Test-Binary: `b164617046dfaef7c552579f272ca3d59ab5b8094cd67cd053d35e165a38ec3f`.
+Native x86-Oracle: `2cc10cbf9091f16d57da37d4d6bc08ab3275bfd224a7cd1a36d9af1abf133992`.
 Die separate Loggerprüfung ist in [GAME_LOGGING.md](GAME_LOGGING.md) dokumentiert.

@@ -24,6 +24,8 @@ vmCvar_t g_gametype,g_motd,g_restarted,g_doWarmup,g_warmup,g_gravity,g_knockback
 void hostServerReset(void*,int,int);void hostLink(void*);void hostUnlink(void*);void hostBrush(void*,const char*);void hostMetadata(int,int*);
 int hostContact(const vec3_t,const vec3_t,void*,int);int hostArea(const vec3_t,const vec3_t,int*,int);
 void hostTrace(trace_t*,const vec3_t,const vec3_t,const vec3_t,const vec3_t,int,int);
+static int spawnDiagnosticsOutput;
+static void spawnDiagnostic(const char *text);
 static int combatTraceOutput;
 static int missileOutput;
 static int bodyOutput;
@@ -93,6 +95,9 @@ void ExitLevel(void){if(intermissionOutput){Original_ExitLevel();return;}scoreTr
 int hostContents(const vec3_t,int);
 int trap_PointContents(const vec3_t point,int pass){return hostContents(point,pass);}
 static char configs[MAX_CONFIGSTRINGS][8192],gravityText[1024];static const char *entityPoint;static FILE *output;
+void locateCamera(gentity_t*);
+void Use_Target_Give(gentity_t*,gentity_t*,gentity_t*);void Use_target_remove_powerups(gentity_t*,gentity_t*,gentity_t*);
+void Use_Target_Score(gentity_t*,gentity_t*,gentity_t*);void Use_Target_Print(gentity_t*,gentity_t*,gentity_t*);
 void AimAtTarget(gentity_t*);void trigger_push_touch(gentity_t*,gentity_t*,trace_t*);void trigger_teleporter_touch(gentity_t*,gentity_t*,trace_t*);
 static void word(int x) {fwrite(&x,4,1,output);}
 static void words(const void *p,int n) {fwrite(p,4,n,output);}
@@ -103,8 +108,8 @@ static void snapshot(gentity_t *e) {
     words(e->r.mins,3);words(e->r.maxs,3);words(e->r.currentOrigin,3);words(e->r.currentAngles,3);words(e->r.absmin,3);words(e->r.absmax,3);
     word(e->r.contents);word(e->r.bmodel);word(e->r.svFlags);word(e->r.ownerNum);word(e->r.linked);word(e->r.linkcount);hostMetadata((int)(e-g_entities),m);words(m,21);
     words(&e->speed,1);words(&e->wait,1);words(&e->random,1);word(e->count);word(e->health);word(e->damage);word(e->flags);words(e->movedir,3);word(e->nextthink);
-    word(e->think==AimAtTarget?1:e->think?2:0);word(e->touch==trigger_push_touch?1:e->touch==trigger_teleporter_touch?2:e->touch?3:0);
-    word(e->use?1:0);word(e->activator?(int)(e->activator-g_entities):-1);word(e->unlinkAfterEvent);word(e->physicsObject);
+    word(e->think==AimAtTarget?1:e->think==locateCamera?3:e->think?2:0);word(e->touch==trigger_push_touch?1:e->touch==trigger_teleporter_touch?2:e->touch?3:0);
+    word(e->use==Use_Target_Give?2:e->use==Use_target_remove_powerups?3:e->use==Use_Target_Score?4:e->use==Use_Target_Print?5:e->use?1:0);word(e->activator?(int)(e->activator-g_entities):-1);word(e->unlinkAfterEvent);word(e->physicsObject);
     word(e->noise_index);word(e->fly_sound_debounce_time);word(e->nextTrain?(int)(e->nextTrain-g_entities):-1);
     string(e->classname);string(e->model);string(e->model2);string(e->target);string(e->targetname);string(e->message);string(e->team);string(e->targetShaderName);string(e->targetShaderNewName);
 }
@@ -163,7 +168,7 @@ void trap_Trace(trace_t *tr,const vec3_t start,const vec3_t mins,const vec3_t ma
     }
 }
 #ifndef MQ3_LIFECYCLE_ORACLE
-void QDECL G_Printf(const char *fmt,...) {if(teamChangeOutput){char buffer[32768];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);teamChangeEvent(15,-1,buffer);return;}if(clientConnectOutput){char buffer[32768];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);connectEvent(9,-1,"",buffer);return;}if(frameRunOutput){int slot;va_list args;va_start(args,fmt);slot=va_arg(args,int);va_end(args);frameWord(6,slot);}}
+void QDECL G_Printf(const char *fmt,...) {if(spawnDiagnosticsOutput){char text[1024];int length;va_list args;va_start(args,fmt);length=vsnprintf(text,sizeof(text),fmt,args);va_end(args);if(length<0 || length>=sizeof(text)){fprintf(stderr,"Spawn diagnostic exceeds native G_Printf storage");exit(74);}spawnDiagnostic(text);return;}if(teamChangeOutput){char buffer[32768];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);teamChangeEvent(15,-1,buffer);return;}if(clientConnectOutput){char buffer[32768];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);connectEvent(9,-1,"",buffer);return;}if(frameRunOutput){int slot;va_list args;va_start(args,fmt);slot=va_arg(args,int);va_end(args);frameWord(6,slot);}}
 void QDECL G_LogPrintf(const char *fmt,...) {
     if(teamChangeOutput){char buffer[32768];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);teamChangeEvent(9,-1,buffer);return;}
     if(clientConnectOutput){char buffer[32768];va_list args;va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);connectEvent(6,-1,"",buffer);return;}
@@ -207,7 +212,11 @@ void ClientEndFrame(gentity_t *ent){if(teamChangeOutput){teamChangeEvent(7,(int)
 void ClientBegin(int client){if(teamChangeOutput){Original_ClientBegin(client);return;}if(!clientFrameOutput)G_Error("unexpected ClientBegin");word(80);word(2);word(client);g_clients[client].ps.generic1=0x12345678;}
 void MoveClientToIntermission(gentity_t *ent){if(intermissionOutput){Original_MoveClientToIntermission(ent);return;}if(teamChangeOutput){teamChangeEvent(8,(int)(ent-g_entities)," ");ent->client->ps.pm_type=PM_INTERMISSION;VectorCopy(level.intermission_origin,ent->client->ps.origin);return;}if(!clientSpawnOutput)G_Error("unexpected MoveClientToIntermission");word(60);word(5);word((int)(ent-g_entities));ent->client->ps.pm_type=PM_INTERMISSION;VectorCopy(level.intermission_origin,ent->client->ps.origin);}
 void QDECL PrintMsg(gentity_t *ent,const char *fmt,...) {
-    char buffer[1024];va_list args;if(!deathOutput && !itemOutput && !teamChangeOutput)G_Error("unported PrintMsg");
+    char buffer[1024];va_list args;
+#ifdef MQ3_LIFECYCLE_ORACLE
+    if(mapObjectsOutput){int length;va_start(args,fmt);length=vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);if(length<0 || length>=sizeof(buffer))exit(74);Original_PrintMsg(ent,"%s",buffer);return;}
+#endif
+if(!deathOutput && !itemOutput && !teamChangeOutput)G_Error("unported PrintMsg");
     va_start(args,fmt);vsnprintf(buffer,sizeof(buffer),fmt,args);va_end(args);
     if(teamChangeOutput){teamChangeEvent(11,ent?(int)(ent-g_entities):-1,buffer);return;}
     word(49);word(ent?(int)(ent-g_entities):-1);string(buffer);
@@ -270,6 +279,7 @@ static void reset(int type,int flags) {
     hostServerReset(g_entities,sizeof(gentity_t),64);
 }
 static void countThink(gentity_t *e) {e->count++;}
+static void spawnDiagnostic(const char *text){word(16);string(text);}
 static void commandDiagnostic(const char *text){teamChangeEvent(15,-1,text);}
 static void commandError(void){if(teamChangeReady){teamChangeState();word(222);}}
 int main(int argc,char **argv) {
@@ -285,6 +295,7 @@ int main(int argc,char **argv) {
 #endif
     in=fopen(argv[2],"rb");output=fopen(argv[3],"wb");if(!in || !output)return 3;
 #ifdef MQ3_LIFECYCLE_ORACLE
+    if(argc==7 && !strcmp(argv[5],"--map-objects")){lifecycleOutput=mapObjectsOutput=1;runLifecycle(in,argv[6]);fclose(in);fclose(output);return 0;}
     if(argc==7 && !strcmp(argv[5],"--lifecycle")){lifecycleOutput=1;runLifecycle(in,argv[6]);fclose(in);fclose(output);return 0;}
 #endif
     if(argc==6 && !strcmp(argv[5],"--server-commands")){reset(0,0);teamChangeOutput=followOutput=intermissionOutput=clientCommandsOutput=serverCommandsOutput=1;mq3DiagnosticFn=commandDiagnostic;mq3ErrorFn=commandError;runTeamChanges(in);
@@ -345,7 +356,7 @@ int main(int argc,char **argv) {
             word(G_ParseSpawnVars());word(level.numSpawnVars);word(level.numSpawnVarChars);free(text);
         }
     } else {
-        int opts[2];if(fread(opts,4,2,in)!=2)return 4;text=readString(in);if(!text)return 4;
+        int opts[2];spawnDiagnosticsOutput=1;mq3DiagnosticFn=spawnDiagnostic;if(fread(opts,4,2,in)!=2)return 4;text=readString(in);if(!text)return 4;
         reset(opts[0],opts[1]);entityPoint=text;COM_BeginParseSession("spawn-map");G_SpawnEntitiesFromString();state();
         // The real frame refreshes vmCvar_t before invoking entity thinkers.
         g_gravity.value=(float)atof(gravityText);

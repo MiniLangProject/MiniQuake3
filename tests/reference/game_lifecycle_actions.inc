@@ -55,10 +55,11 @@ static void lifecycleState(void){
     for(i=0;i<64;i++)connectClientState(&g_clients[i]);
     limit=level.num_entities>128?level.num_entities:128;if(limit>1022)limit=1022;
     word(limit+2);for(i=0;i<limit;i++)lifecycleEntity(&g_entities[i]);lifecycleEntity(&g_entities[1022]);lifecycleEntity(&g_entities[1023]);
+    if(mapObjectsOutput)mapObjectExtraState();
     end=ftell(output);fseek(output,sizeOffset,SEEK_SET);word((int)(end-start));fseek(output,end,SEEK_SET);
 }
 static void lifecycleEffectBytes(int kind,int a,int b,const char *key,const void *data,int size){
-    lifecycleState();word(901);word(kind);word(a);word(b);string(key);lifecycleBlob(data,size);
+    lifecycleState();word(901);word(kind);word(a);word(b);string(key);lifecycleBlob(data,size);if(mapObjectsOutput)mapObjectMutation(kind,a);
 }
 static void lifecycleEvent(int kind,int a,int b,const char *key,const char *text){lifecycleEffectBytes(kind,a,b,key,text,(int)strlen(text));}
 static void lifecycleConfig(int index,const char *text){
@@ -145,10 +146,12 @@ static void runLifecycle(FILE *in,const char *rawName){
         case 12:Svcmd_GameMem_f();break;
         case 13:InitBodyQue();break;
         case 14:if(a[1]<0 || a[1]>=MAX_GENTITIES)exit(74);seed=G_CallSpawn(&g_entities[a[1]]);word(904);word(seed);break;
-        default:exit(74);
+        default:if(mapObjectsOutput){mapObjectAction(a,first,second);break;}exit(74);
         }
         free(first);free(second);lifecycleState();
     }
     word(902);word(rand());word(903);word(lifecycleNormalizations);
     if(fgetc(in)!=EOF)exit(74);fclose(lifecycleRaw);
 }
+
+#include "map_object_actions.inc"

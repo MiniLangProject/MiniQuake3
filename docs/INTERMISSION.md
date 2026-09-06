@@ -156,8 +156,8 @@ Bei einem fehlenden Kameraziel wird auch die ursprüngliche `G_PickTarget`-
 Diagnose verglichen. `gamePrintFn` nimmt diese Meldung an; ältere isolierte Hosts
 ohne Print-Schnittstelle vergleichen weiterhin keine Diagnoseausgaben.
 
-Test-Binary: `0d913cb078cfebe64cc4cf3b1c664901169f16e443c9785a925781b92b91ce97`.
-Native x86-Oracle: `bf341634200dbd35e528b1a0316a9699e500a512b4c7f8ac40f08e21017de7a6`.
+Test-Binary: `5d0271914116e682bfda6552e0dc0384b03368f1e7b81268ae01767b6796da1b`.
+Native x86-Oracle: `70862eaa75de21973c006a95d3ab96e2e606ba3949faa33ae085fdacc1fc843b`.
 Einzelbericht: `build/reference/intermission/result.json`.
 Der aktuelle Nachweis der regulären und erweiterten Gesamtsuite steht in
 [PARITY_AUDIT.md](PARITY_AUDIT.md).

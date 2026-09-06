@@ -451,7 +451,10 @@ function resetFlag(level,team)
   return rent
 end function
 function returnFlagSound(level,ent,team)
-  if ent == void then return void end if
+  if ent == void then
+    if level.gamePrintFn != void then level.gamePrintFn(level,"Warning:  NULL passed to Team_ReturnFlagSound\n") end if
+    return void
+  end if
   temp = game.tempEntity(level,ent.s.pos.trBase,c.EV_GLOBAL_TEAM_SOUND)
   if team == c.TEAM_BLUE then temp.s.eventParm = c.GTS_RED_RETURN else temp.s.eventParm = c.GTS_BLUE_RETURN end if
   temp.r.svFlags = temp.r.svFlags | 32

@@ -271,7 +271,36 @@ def main():
             ("src/mq3/game/items.ml",["Team_InitGame"],["scripts/test_initialization.py"],
              "All nine teamgame fields reset, Baseq3 CTF invalid-status setup, two status publications and original intermediate states. Original first publication reads ctfFlagStatusRemap[-1]; only that undefined byte is normalized to NUL with native raw bytes archived, not claimed as exact parity. Second publication and all defined state are compared exactly; Missionpack is excluded.")],
     }
-    for source,groups in startup_groups.items():
+    map_object_groups={
+        "code/game/g_target.c":[
+            ("src/mq3/game/spawn_functions.ml",["target_laser_start","SP_target_teleporter"],["scripts/test_spawn.py"],
+             "Original laser setup and teleporter spawn, including previously silent missing-target/name diagnostics. Laser enemy assignment follows the diagnostic so observers see the original intermediate state. Diagnostic C-string payloads and position formatting use the selected native CRT profile; format overflow and arbitrary retained native string aliases are outside defined parity."),
+            ("src/mq3/game/map_targets.ml",["Use_Target_Give","SP_target_give","Use_target_remove_powerups","SP_target_remove_powerups","Use_Target_Score","SP_target_score","Use_Target_Print","SP_target_print"],["scripts/test_map_objects.py","scripts/test_spawn.py"],
+             "Original four Baseq3 map targets, connected to real Touch_Item, flag return and AddScore. Live target iteration, refused-pickup cleanup, flag precedence and final powerup clear, score defaults, private/team/global print routing and ordered state/effects are compared. Native va buffer overlap in multi-recipient team broadcasts and NULL-string formatting are characterized separately from defined C parity; MiniLang preserves the message for all recipients and uses the observed MSVC (null) text. Native format overflows and invalid activators are separate contracts. Network delivery remains an engine interface.")],
+        "code/game/g_trigger.c":[
+            ("src/mq3/game/spawn_functions.ml",["SP_trigger_multiple","SP_func_timer"],["scripts/test_spawn.py"],
+             "Original trigger/timer spawn order, random correction before the corresponding warning, live subsequent setup and actual link/think behavior. The regular CD spawn replays now observe diagnostic text as well as state and effects."),
+            ("src/mq3/game/triggers.ml",["trigger_teleporter_touch"],["scripts/test_spawn.py"],
+             "Original client/dead/spectator filtering and real target selection/teleport. Missing destination emits its original diagnostic after G_PickTarget before returning.")],
+        "code/game/g_mover.c":[
+            ("src/mq3/game/spawn_functions.ml",["SP_path_corner"],["scripts/test_spawn.py"],
+             "Original path-corner NULL-targetname warning before freeing the entity. Actual train/mover implementation remains open.")],
+        "code/game/g_misc.c":[
+            ("src/mq3/game/portals.ml",["locateCamera","SP_misc_portal_surface","SP_misc_portal_camera"],["scripts/test_map_objects.py","scripts/test_spawn.py"],
+             "Original portal surface/camera spawn and delayed camera lookup, link-before-flags/type ordering, mirrored origin, owner/frame/rotation fields, actual capped target selection and CRT random consumption, normalized aim or angle-consuming G_SetMovedir fallback, and DirToByte. Roll retains the native double intermediate and signed truncation; undefined integer casts are rejected after the original link. Renderer/cgame portal display remains open.")],
+        "code/game/g_utils.c":[
+            ("src/mq3/game/map_targets.ml",["G_TeamCommand"],["scripts/test_map_objects.py"],
+             "Original slot-order team command delivery, connected-only filtering and live per-slot team reads. Defined native comparisons avoid overlapping nested va buffers; multi-recipient target_print broadcasts are separate MiniLang semantics and native implementation observations, with no ISO-C-defined parity claim. Engine command transport remains open."),
+            ("src/mq3/shared/directions.ml",["G_SetMovedir"],["scripts/test_map_objects.py"],
+             "Original up/down angle sentinels and AngleVectors direction calculation, shared by the existing spawn wrapper and the portal camera fallback. Callers zero the original angle components after calculation; the portal fallback consumes the live owner angles after target-search diagnostics, including self-target and repeated lookup cases.")],
+        "code/game/g_team.c":[
+            ("src/mq3/game/items.ml",["Team_ReturnFlagSound"],["scripts/test_map_objects.py"],
+             "Original global team-sound entity and return-side selection, plus the exact NULL-base warning before return. The map-object suite observes this diagnostic before the subsequent PrintMsg delivery during actual target_remove_powerups flag return.")],
+    }
+    verified_groups={source:list(groups) for source,groups in startup_groups.items()}
+    for source,groups in map_object_groups.items():
+        verified_groups.setdefault(source,[]).extend(groups)
+    for source,groups in verified_groups.items():
         old_targets,old_symbols,tests=mappings.get(source,([],[],[]))
         for target,symbols,checks,scope in groups:
             old_targets=list(dict.fromkeys(old_targets+[target]))
@@ -445,11 +474,13 @@ def main():
                         symbol["target_files"]=[target]
                         symbol["scope"]="Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
     for entry in ledger["files"]:
-        for target,names,checks,scope in startup_groups.get(entry["source"],[]):
+        for target,names,checks,scope in verified_groups.get(entry["source"],[]):
             for symbol in entry["symbol_mapping"]:
                 if symbol["original"] in names:
                     symbol["target_files"]=[target]
                     symbol["scope"]=scope
+                    if entry["source"]=="code/game/g_utils.c" and symbol["original"]=="G_SetMovedir":
+                        symbol["target_files"]=["src/mq3/shared/directions.ml","src/mq3/game/spawn_functions.ml","src/mq3/game/portals.ml"]
     path.write_text(json.dumps(ledger,indent=2)+"\n",encoding="utf-8",newline="\n")
     evidence=[]
     for path in sorted((ROOT / "build/reference").rglob("result.json")):
