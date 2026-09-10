@@ -1,10 +1,12 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Original map objects through the complete real lifecycle/game fixture.
-import mq3.game.lifecycle as lifecycle
+import mq3.game.lifecycle as gameLifecycle
 import map_object_contracts as mapContracts
 import mq3.game.map_targets as mapTargets
 import mq3.game.portals as portals
 import mq3.game.items as mapItems
+import mq3.game.movers as movers
+import mq3.game.frame as frame
 import mq3.shared.parser as mapParser
 import mq3.game.cvars as gameCvars
 import mq3.game.memory as memory
@@ -201,7 +203,7 @@ function lifecycleEntityWords(level,ent)
   return void
 end function
 function lifecycleSnapshot(level)
-  check = level.context; state = lifecycle.get(level); check.location = "level"
+  check = level.context; state = gameLifecycle.get(level); check.location = "level"
   word(check,900); snapshotSize = n.readI32(check.expected,check.offset); word(check,snapshotSize); snapshotStart = check.offset
   boolWord(check,state.entitiesBound); boolWord(check,state.clientsBound)
   words(check,[level.time,level.previousTime,level.startTime,level.num_entities,level.maxclients,level.framenum,level.logFile,level.sndFry])
@@ -337,17 +339,21 @@ end function
 function lifecycleServerCommandHook(level,client,message)
   return lifecycleTextEffect(level,20,client,0,"",message)
 end function
+function mapObjectMinimumPlayers(level)
+  return void
+end function
 function lifecycleFixture(world,check,buildDate)
-  level = game.create(world); spawn.create(level,""); level.context = check; state = lifecycle.attach(level,buildDate)
+  level = game.create(world); spawn.create(level,""); level.context = check; state = gameLifecycle.attach(level,buildDate)
   state.cvarEffectFn = lifecycleCvarHook; state.spawnEffectFn = lifecycleSpawnHook; state.entityObserveFn = lifecycleEntityHook
   state.openLogFn = lifecycleOpenHook; state.serverInfoFn = lifecycleInfoHook; state.locateFn = lifecycleLocateHook
   state.closeLogFn = lifecycleCloseHook; state.botSetupFn = lifecycleBotSetupHook; state.botLoadMapFn = lifecycleBotLoadHook
   state.initBotsFn = lifecycleInitBotsHook; state.botShutdownFn = lifecycleBotShutdownHook; state.integerQueryFn = lifecycleQueryHook
+  state.botClients.minimumPlayersFn = mapObjectMinimumPlayers
   level.spawner.unportedFn = lifecycleUnportedHook; level.gamePrintFn = lifecyclePrintHook; level.logWriteFn = lifecycleWriteHook
   level.serverCommandFn = lifecycleServerCommandHook; level.teamMessageFn = mapObjectPrintMsg; return level
 end function
 function lifecyclePoison(level)
-  state = lifecycle.get(level); state.entitiesBound = true; state.clientsBound = true
+  state = gameLifecycle.get(level); state.entitiesBound = true; state.clientsBound = true
   level.time = 123456; level.previousTime = -7; level.startTime = 17; level.num_entities = 99; level.maxclients = 2
   level.framenum = 42; level.logFile = 17; level.sndFry = 777; level.newSession = true; level.restarted = true
   level.warmupModificationCount = 9; level.spawner.warmupTime = -1; level.spawner.spawning = true
@@ -377,10 +383,10 @@ end function
 function lifecycleAction(level,kind,a,b,c,first,second)
   switch kind
     case 1
-      lifecycle.init(level,a,b,c,first)
+      gameLifecycle.init(level,a,b,c,first)
     end case
     case 2
-      lifecycle.shutdown(level,a)
+      gameLifecycle.shutdown(level,a)
     end case
     case 3
       cv.set2(level.spawner.cvars,first,second,a != 0)
@@ -517,6 +523,21 @@ function mapObjectEntityScalar(ent,field,value,level)
     end case
     case 30
       ent.takedamage = value != 0
+    end case
+    case 31
+      ent.s.groundEntityNum = value
+    end case
+    case 32
+      ent.s.pos.trType = value
+    end case
+    case 33
+      ent.s.pos.trTime = value
+    end case
+    case 34
+      ent.s.pos.trDuration = value
+    end case
+    case 35
+      ent.clipmask = value
     end case
     case 12
       ent.client = void; if value >= 0 then ent.client = level.clients[value] end if
@@ -714,8 +735,9 @@ function mapObjectAction(level,kind,a,b,c,first,second)
     end case
     case 27
       if a == 1 then level.spawner.warmupTime = b
-      else if a == 2 then lifecycle.vm(level,"g_gametype").integer = b; level.spawner.gametype = b
-      else if a == 3 then level.maxclients = b end if
+      else if a == 2 then gameLifecycle.vm(level,"g_gametype").integer = b; level.spawner.gametype = b
+      else if a == 3 then level.maxclients = b
+      else if a == 4 then level.num_entities = b end if
     end case
     case 28
       if b != 0 then game.link(level,level.entities[a]) else game.unlink(level,level.entities[a]) end if
@@ -775,6 +797,16 @@ function mapObjectAction(level,kind,a,b,c,first,second)
     case 34
       activator = void; if b >= 0 then activator = level.entities[b] end if; targets.useTargets(level,level.entities[a],activator)
     end case
+    case 35
+      level.previousTime = level.time; level.time = b; movers.run(level,level.entities[a])
+    end case
+    case 36
+      ent = level.entities[a]
+      ent.touch(level,ent,level.entities[b],void)
+    end case
+    case 37
+      frame.run(level,a)
+    end case
     case default
       return error(499,"Invalid map action")
     end case
@@ -801,4 +833,3 @@ function main(args)
   if reader.offset != len(reader.data) or check.offset != len(check.expected) then return error(499,"Incomplete lifecycle stream") end if
   print "PASS: "+str(count)+" map-object actions / "+str(check.words)+" exact words / "+str(check.effects)+" ordered effects"; return 0
 end function
-

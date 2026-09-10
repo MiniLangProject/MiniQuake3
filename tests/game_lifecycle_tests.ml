@@ -450,6 +450,31 @@ end function
 function lifecycleQuietBot(level,restart)
   return void
 end function
+struct BotWireContext
+  events
+end struct
+function botWireEvent(state,text)
+  state.context.events = state.context.events+[text]; return void
+end function
+function botWireVar(state,name,value)
+  if name == "maxclients" then return botWireEvent(state,"vars") end if
+  return void
+end function
+function botWireSetup(state)
+  botWireEvent(state,"setup"); return 0
+end function
+function botWireLoad(state,mapname)
+  return botWireEvent(state,"load:"+mapname)
+end function
+function botWireDeathmatch(state)
+  return botWireEvent(state,"deathmatch")
+end function
+function botWireShutdown(state)
+  return botWireEvent(state,"shutdown")
+end function
+function botWireInit(level,restart)
+  return botWireEvent(level.botLifecycleState,"init:"+str(restart))
+end function
 function lifecycleQuietLevel(world)
   level = game.create(world); spawn.create(level,""); lifecycle.attach(level,"Sep  6 2026"); level.gamePrintFn = lifecycleQuietPrint
   cv.set2(level.spawner.cvars,"g_log","",true); return level
@@ -484,17 +509,29 @@ function lifecycleHostContracts(world)
   total = total+lifecycleContractRequire(try(lifecycle.init(level,1000,1,0,map)) is error,"missing write host")
   level = lifecycleQuietLevel(world)
   total = total+lifecycleContractRequire(try(lifecycle.init(level,1000,1,0,map)) is error,"missing locate host")
-  for missing = 0 to 2
+  for missing = 0 to 1
     level = lifecycleQuietLevel(world); state = lifecycle.get(level); state.locateFn = lifecycleQuietLocate
     cv.set2(level.spawner.cvars,"bot_enable","1",true)
     if missing > 0 then state.botSetupFn = lifecycleQuietBot end if
     if missing > 1 then state.botLoadMapFn = lifecycleQuietBot end if
-    total = total+lifecycleContractRequire(try(lifecycle.init(level,1000,1,0,map)) is error,"missing bot initialization host")
+    total = total+lifecycleContractRequire(try(lifecycle.init(level,1000,1,0,map)) is error,"missing bot lifecycle host")
   end for
   level = lifecycleQuietLevel(world); level.logFile = 7; level.logWriteFn = lifecycleQuietWrite
   total = total+lifecycleContractRequire(try(lifecycle.shutdown(level,0)) is error,"missing close host")
   level = lifecycleQuietLevel(world); cv.set2(level.spawner.cvars,"bot_enable","1",true)
   total = total+lifecycleContractRequire(try(lifecycle.shutdown(level,0)) is error,"missing bot shutdown host")
+  level = lifecycleQuietLevel(world); state = lifecycle.get(level); state.locateFn = lifecycleQuietLocate
+  cv.set2(level.spawner.cvars,"bot_enable","1",true); botState = state.botState
+  total = total+lifecycleContractRequire(level.botLifecycleState == botState,"attached lifecycle publishes bot state")
+  botState.context = BotWireContext([]); botState.botLibVarSetFn = botWireVar; botState.botLibSetupFn = botWireSetup
+  botState.botLibLoadMapFn = botWireLoad; botState.deathmatchSetupFn = botWireDeathmatch
+  botState.botLibShutdownFn = botWireShutdown; state.initBotsFn = botWireInit
+  lifecycle.init(level,1000,1,0,map)
+  events = botState.context.events
+  total = total+lifecycleContractRequire(len(events)==5 and events[0]=="vars" and events[1]=="setup" and events[2]=="load:" and events[3]=="deathmatch" and events[4]=="init:0","InitGame uses bot lifecycle defaults in original order")
+  total = total+lifecycleContractRequire(cv.find(level.spawner.cvars,"bot_thinktime").integer==100,"default BotAISetup registers bot Cvars")
+  lifecycle.shutdown(level,0)
+  total = total+lifecycleContractRequire(botState.context.events[5]=="shutdown","ShutdownGame uses bot lifecycle default")
   level = lifecycleQuietLevel(world); ent = level.entities[0]; ent.classname = decode(bytes(1000,120))
   failure = try(spawn.callSpawn(level.spawner,ent))
   total = total+lifecycleContractRequire(failure is error,"oversized missing-spawn diagnostic")

@@ -118,14 +118,15 @@ aktualisiert Cvars zuvor. Ohne externen Handler laufen Missile-Entities über di
 [portierte Projektilverarbeitung](MISSILES.md); nicht als Item markierte
 `bodyque`-Entities mit `physicsObject` führen die [Leichenphysik](PLAYER_LIFECYCLE.md)
 aus. Clients laufen standardmäßig über den [portierten Client-Befehlszyklus](CLIENT_THINK.md).
-Die übrigen Kategorien benötigen weiterhin `level.runEntityFn(level, kind, ent)`:
-`2` sonstige Physics-Entities und `3` Mover. Ein gesetzter Handler übernimmt
+Mover laufen über den portierten `G_RunMover`-Pfad. Die übrige Physics-Kategorie
+benötigt weiterhin `level.runEntityFn(level, kind, ent)` mit Kennung `2`. Ein gesetzter Handler übernimmt
 alle vier Kategorien einschließlich `1` Missile und `4` Client.
 Der Target-Test beobachtet alle vier Kategorien; die gesonderte Projektilprüfung
 führt den echten Missile-Zweig aus. Die äußere [G_RunFrame-Steuerung](FULL_FRAME.md),
 Client-Frames, [Matchende-Regeln](SCORES.md) und [Votes](VOTES.md) sind inzwischen
-in getrennten Suiten geprüft. Mover-Pushing und die vollständige Serverintegration
-bleiben offen.
+in getrennten Suiten geprüft. Isolierte Mover-Blockaden und Team-Rollbacks werden
+direkt gegen `g_mover.c` geprüft; vollständige Retail-Karten-Replays und die
+Serverintegration bleiben offen.
 Der ET_ITEM-Zweig läuft in der gesonderten [Item-Prüfung](ITEMS.md) mit echter
 Physik und vollständiger Pickup-Target-Auslösung. `target_teleporter` ist über
 KillBox inzwischen mit der

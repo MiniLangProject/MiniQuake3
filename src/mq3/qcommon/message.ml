@@ -1,0 +1,238 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Baseq3 msg_t primitives, including the protocol-68 Huffman bitstream.
+package mq3.qcommon.message
+import mq3.compat.numeric as n
+import mq3.qcommon.huffman as huffman
+
+const MAX_STRING_CHARS = 1024
+const BIG_INFO_STRING = 8192
+
+struct Message
+  allowoverflow
+  overflowed
+  oob
+  data
+  maxsize
+  cursize
+  readcount
+  bit
+  codec
+end struct
+
+function initStorage(data,length,oob)
+  return Message(false,false,oob,data,length,0,0,0,huffman.initMessageStatic())
+end function
+
+function init(length)
+  return initStorage(bytes(length,0),length,false)
+end function
+
+function initOob(length)
+  return initStorage(bytes(length,0),length,true)
+end function
+
+function clear(msg)
+  msg.cursize = 0; msg.overflowed = false; msg.bit = 0
+  return void
+end function
+
+function bitstream(msg)
+  msg.oob = false; return void
+end function
+
+function beginReading(msg)
+  msg.readcount = 0; msg.bit = 0; msg.oob = false
+  return void
+end function
+
+function beginReadingOob(msg)
+  msg.readcount = 0; msg.bit = 0; msg.oob = true
+  return void
+end function
+
+function writeBits(msg,value,bits)
+  if msg.maxsize-msg.cursize < 4 then
+    msg.overflowed = true; return false
+  end if
+  if bits == 0 or bits < -31 or bits > 32 then return error(6802,"message.writeBits: invalid bit width") end if
+  width = bits
+  if width < 0 then width = 0-width end if
+  if msg.oob then
+    if width != 8 and width != 16 and width != 32 then return error(6804,"message.writeBits: invalid OOB width") end if
+    msg.data[msg.cursize] = value & 255
+    if width >= 16 then msg.data[msg.cursize+1] = (value >> 8) & 255 end if
+    if width == 32 then
+      msg.data[msg.cursize+2] = (value >> 16) & 255
+      msg.data[msg.cursize+3] = (value >> 24) & 255
+    end if
+    msg.cursize = msg.cursize+(width>>3)
+    if width == 32 then msg.bit = msg.bit+8 else msg.bit = msg.bit+width end if
+  else
+    if width != 32 then value=value & (0xFFFFFFFF>>(32-width)) end if
+    remainder=width&7
+    required=remainder; pending=value>>remainder; probe=0
+    while probe<width-remainder
+      required=required+huffman.bitLength(msg.codec,pending&255)
+      pending=pending>>8; probe=probe+8
+    end while
+    if ((msg.bit+required)>>3)+1 > msg.maxsize or ((msg.bit+required+7)>>3)>len(msg.data) then
+      msg.overflowed=true; return false
+    end if
+    if remainder != 0 then
+      for index=0 to remainder-1
+        msg.bit=huffman.putBit(value&1,msg.data,msg.bit); value=value>>1
+      end for
+      width=width-remainder
+    end if
+    index=0
+    while index<width
+      msg.bit=huffman.transmit(msg.codec,value&255,msg.data,msg.bit)
+      value=value>>8; index=index+8
+    end while
+    msg.cursize=(msg.bit>>3)+1
+  end if
+  return true
+end function
+
+function writeChar(msg,value) return writeBits(msg,value,8) end function
+function writeByte(msg,value) return writeBits(msg,value,8) end function
+function writeShort(msg,value) return writeBits(msg,value,16) end function
+function writeLong(msg,value) return writeBits(msg,value,32) end function
+
+function writeData(msg,data)
+  for each value in data writeByte(msg,value) end for
+  return void
+end function
+
+function writeString(msg,text)
+  if text == void then writeByte(msg,0); return void end if
+  raw = bytes(text)
+  length = 0
+  while length < len(raw) and raw[length] != 0 length = length+1 end while
+  if length >= MAX_STRING_CHARS then writeByte(msg,0); return void end if
+  if length > 0 then
+    for index = 0 to length-1
+      value = raw[index]
+      if value > 127 then value = 46 end if
+      writeByte(msg,value)
+    end for
+  end if
+  writeByte(msg,0); return void
+end function
+
+function writeBigString(msg,text)
+  if text==void then writeByte(msg,0);return void end if
+  raw=bytes(text);length=0
+  while length<len(raw) and raw[length]!=0 length=length+1 end while
+  if length>=BIG_INFO_STRING then writeByte(msg,0);return void end if
+  if length>0 then
+    for index=0 to length-1
+      value=raw[index];if value>127 then value=46 end if;writeByte(msg,value)
+    end for
+  end if
+  writeByte(msg,0);return void
+end function
+
+function readBits(msg,bits)
+  width = bits; signed = false
+  if width < 0 then width = 0-width; signed = true end if
+  value=0; signWidth=width
+  if msg.oob then
+    if width != 8 and width != 16 and width != 32 then return error(6806,"message.readBits: invalid OOB width") end if
+    offset = msg.readcount; octets = width>>3
+    if offset < 0 or offset+octets > len(msg.data) then
+      msg.readcount = msg.readcount+octets; msg.bit = msg.bit+width
+      return 0
+    end if
+    value = msg.data[offset]
+    if width >= 16 then value = value | (msg.data[offset+1] << 8) end if
+    if width == 32 then value = value | (msg.data[offset+2] << 16) | (msg.data[offset+3] << 24) end if
+    msg.readcount = msg.readcount+octets; msg.bit = msg.bit+width
+  else
+    remainder=width&7
+    limit=msg.cursize*8
+    physical=len(msg.data)*8
+    if physical<limit then limit=physical end if
+    if remainder != 0 then
+      for index=0 to remainder-1
+        pair=huffman.getBitBounded(msg.data,msg.bit,limit)
+        if not pair[2] then msg.readcount=msg.cursize+1; return 0 end if
+        msg.bit=pair[1]
+        value=value | (pair[0]<<index)
+      end for
+      width=width-remainder; signWidth=width
+    end if
+    index=0
+    while index<width
+      decoded=huffman.receiveBounded(msg.codec,msg.data,msg.bit,limit)
+      if not decoded[2] then msg.readcount=msg.cursize+1; return 0 end if
+      msg.bit=decoded[1]
+      value=value | (decoded[0]<<(index+remainder)); index=index+8
+    end while
+    msg.readcount=(msg.bit>>3)+1
+  end if
+  if signed then
+    if signWidth>0 and signWidth<32 and (value & (1<<(signWidth-1))) != 0 then
+      value=value | (-1 ^ ((1<<signWidth)-1))
+    else if signWidth==32 then value=n.i32(value)
+    end if
+  end if
+  return n.i32(value)
+end function
+
+function readI8(msg)
+  value = n.i8(readBits(msg,8))
+  if msg.readcount > msg.cursize then return -1 end if
+  return value
+end function
+
+function readU8(msg)
+  value = readBits(msg,8) & 255
+  if msg.readcount > msg.cursize then return -1 end if
+  return value
+end function
+
+function readI16(msg)
+  value = n.i16(readBits(msg,16))
+  if msg.readcount > msg.cursize then return -1 end if
+  return value
+end function
+
+function readI32(msg)
+  value = n.i32(readBits(msg,32))
+  if msg.readcount > msg.cursize then return -1 end if
+  return value
+end function
+
+function readText(msg,lineOnly)
+  result = ""; count = 0
+  while count < MAX_STRING_CHARS-1
+    value = readU8(msg)
+    if value == -1 or value == 0 or (lineOnly and value == 10) then break end if
+    if value == 37 or (not lineOnly and value > 127) then value = 46 end if
+    result = result+decode(bytes([value])); count = count+1
+  end while
+  return result
+end function
+
+function readCString(msg) return readText(msg,false) end function
+function readCStringLine(msg) return readText(msg,true) end function
+
+function readBigCString(msg)
+  text="";length=0
+  while length<BIG_INFO_STRING-1
+    value=readU8(msg)
+    if value<0 or value==0 then break end if
+    if value==37 then value=46 end if
+    text=text+decode(bytes([value]));length=length+1
+  end while
+  return text
+end function
+
+function readData(msg,length)
+  result = bytes(length,0)
+  if length > 0 then
+    for index = 0 to length-1 result[index] = readU8(msg) & 255 end for
+  end if
+  return result
+end function

@@ -7,6 +7,7 @@ import mq3.game.session as sessions
 import mq3.game.client_info as clientInfo
 import mq3.game.scores as scores
 import mq3.game.ip_filters as ipFilters
+import mq3.game.bot_clients as botClients
 import mq3.shared.info as infoStrings
 import std.string as strings
 
@@ -29,8 +30,13 @@ function connect(level,slot,firstTime,isBot)
   sessions.readClient(level,client)
   if isBot then
     ent.r.svFlags = ent.r.svFlags | 8; ent.inuse = true
-    if level.botConnectFn == void then return error(492,"Connect requires bot setup") end if
-    if not level.botConnectFn(level,slot,not firstTime) then return "BotConnectfailed" end if
+    connected = false
+    if level.botConnectFn != void then connected = level.botConnectFn(level,slot,not firstTime)
+    else
+      if level.lifecycleState == void or level.lifecycleState.botClients == void then return error(492,"Connect requires bot setup") end if
+      connected = botClients.botConnect(level,level.lifecycleState.botClients,slot,not firstTime)
+    end if
+    if not connected then return "BotConnectfailed" end if
   end if
   if level.gameLogFn == void then return error(492,"Connect requires game-log delivery") end if
   level.gameLogFn(level,"ClientConnect: "+str(slot)+"\n"); clientInfo.changed(level,slot)

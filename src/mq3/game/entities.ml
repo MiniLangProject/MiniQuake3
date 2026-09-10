@@ -120,6 +120,15 @@ struct Entity
   nextTrain
   takedamage
   moverState
+  pos1
+  pos2
+  reached
+  blocked
+  soundPos1
+  sound1to2
+  sound2to1
+  soundPos2
+  soundLoop
   enemy
   pain
   die
@@ -277,6 +286,10 @@ struct Level
   lifecycleState
   logFile
   logWriteFn
+  podium1
+  podium2
+  podium3
+  botLifecycleState
 end struct
 function createClient(state,team,cmdAngles)
   return Client(state,team,cmdAngles,false,0,0,0,[0.0,0.0,0.0],false,0,0,0.0,0,void,0,0,0,0,0,0,"",false,0,0,0,0,0,0.0,0,0,0,false,0,0,0,0.0,0.0,
@@ -310,11 +323,11 @@ function resetClient(client)
   return void
 end function
 function blank(slot,r)
-  return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0,void,void,0.0,void,void,0.0,0.0,0,0,0,void,void,0,[0.0,0.0,0.0],0,void,void,void,false,false,0,0,void,false,0,void,void,void,0,void,void,0,0,0,0,0,0.0,void,void,void,0,0,0)
+  return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0,void,void,0.0,void,void,0.0,0.0,0,0,0,void,void,0,[0.0,0.0,0.0],0,void,void,void,false,false,0,0,void,false,0,[0.0,0.0,0.0],[0.0,0.0,0.0],void,void,0,0,0,0,0,void,void,void,0,void,void,0,0,0,0,0,0.0,void,void,void,0,0,0)
 end function
 function create(world)
   scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void,false,void,0,1000.0,0,void,0,array(256,0),1,0,[],[0.0,0.0,0.0],[0.0,0.0,0.0],[],0,0,array(64,0),array(4,0),0,0,0,0,0,0,array(2,0),0,0,0,0,false,0,void,void,void,0,void,void,void,void,0,0,0,0,0,0.0,0,5,30,0,void,void,void,void,void,0,false,void,800,320,0,false,8,false,0,void,void,void,void,void,void,void,void,0,false,void,0,20,0,0,void,void,
-    "",0,0,0,0,array(2,""),array(2,0),array(2,0),array(2,0),void,0,cvarMaintenance.create(),void,void,"",0,false,0,0,void,void,void,void,0,void,void,void,void,void,void,0,0,void,0.0,void,void,void,void,0,0,void,0,void)
+    "",0,0,0,0,array(2,""),array(2,0),array(2,0),array(2,0),void,0,cvarMaintenance.create(),void,void,"",0,false,0,0,void,void,void,void,0,void,void,void,void,void,void,0,0,void,0.0,void,void,void,void,0,0,void,0,void,void,void,void,void)
   for i = 0 to 1023
     level.entities = level.entities+[blank(i,scene.entities[i])]
   end for
@@ -386,7 +399,9 @@ function free(level,ent)
   ent.movedir = [0.0,0.0,0.0]; ent.nextthink = 0; ent.think = void
   ent.use = void; ent.activator = void; ent.unlinkAfterEvent = false; ent.physicsObject = false
   ent.noise_index = 0; ent.fly_sound_debounce_time = 0; ent.nextTrain = void
-  ent.takedamage = false; ent.moverState = 0; ent.enemy = void; ent.pain = void; ent.die = void; ent.timestamp = 0
+  ent.takedamage = false; ent.moverState = 0; ent.pos1 = [0.0,0.0,0.0]; ent.pos2 = [0.0,0.0,0.0]
+  ent.reached = void; ent.blocked = void; ent.soundPos1 = 0; ent.sound1to2 = 0; ent.sound2to1 = 0; ent.soundPos2 = 0; ent.soundLoop = 0
+  ent.enemy = void; ent.pain = void; ent.die = void; ent.timestamp = 0
   ent.parent = void; ent.target_ent = void; ent.splashDamage = 0; ent.splashRadius = 0; ent.methodOfDeath = 0; ent.splashMethodOfDeath = 0; ent.clipmask = 0; ent.physicsBounce = 0.0
   ent.item = void; ent.teammaster = void; ent.teamchain = void
   ent.waterlevel = 0; ent.watertype = 0

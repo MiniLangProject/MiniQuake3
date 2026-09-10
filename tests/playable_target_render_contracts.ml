@@ -1,0 +1,41 @@
+import mq3.client.playable_target_render as targets
+import mq3.client.playable_viewer as viewer
+
+function require(ok,text) if not ok then return error(7535,text) end if;return 1 end function
+function main(args)
+  c=0
+  value=targets.target([100.0,0.0,0.0],100,100)
+  c=c+require(value.origin==[100.0,0.0,0.0] and value.alive,"target construction")
+  c=c+require(targets.healthFraction(value)==1.0,"full health fraction")
+  c=c+require(try(targets.target([0.0,0.0],100,100)) is error,"invalid origin rejected")
+  c=c+require(try(targets.target([0.0,0.0,0.0],100,0)) is error,"invalid maximum health rejected")
+  capped=targets.target([0.0,0.0,0.0],200,100);c=c+require(capped.health==100,"health clamps high")
+  empty=targets.target([0.0,0.0,0.0],-1,100);c=c+require(empty.health==0 and not empty.alive,"health clamps low")
+  c=c+require(targets.hit(value,25,1000) and value.health==75 and value.hitFlashUntil==1120,"hit mutates health and flash")
+  c=c+require(targets.bodyColor(value,1000)==[255,255,255],"hit flash is white")
+  c=c+require(targets.bodyColor(value,1120)==[80,176,255],"normal living color")
+  c=c+require(try(targets.hit(value,-1,1000)) is error,"negative hit rejected")
+  targets.hit(value,50,1200);c=c+require(value.health==25 and targets.bodyColor(value,1320)==[255,48,32],"critical health color")
+  targets.hit(value,25,1400);c=c+require(not value.alive and value.respawnAt==4400,"lethal hit schedules respawn")
+  c=c+require(targets.respawnRemaining(value,2000)==2400 and targets.respawnRemaining(value,4400)==0,"respawn countdown")
+  c=c+require(not targets.hit(value,10,1500),"dead target ignores hits")
+  c=c+require(not targets.update(value,4399) and not value.alive,"early update stays dead")
+  c=c+require(targets.update(value,4400) and value.alive and value.health==100,"deadline respawns at full health")
+  cam=viewer.camera([0.0,0.0,24.0],0.0,0.0,0.0,0.0)
+  lines=targets.targetLines(cam,value,5000,640,480,90.0,1.0)
+  c=c+require(len(lines)==12,"living silhouette and health bar line count")
+  c=c+require(lines[0].red==80 and lines[0].green==176,"living silhouette color")
+  c=c+require(lines[10].red==28 and lines[11].green==255,"health bar background and fill")
+  behind=targets.target([-100.0,0.0,0.0],100,100)
+  c=c+require(len(targets.targetLines(cam,behind,0,640,480,90.0,1.0))==0,"behind-camera target hidden")
+  dead=targets.target([100.0,20.0,0.0],100,100);targets.hit(dead,100,1000)
+  deadLines=targets.targetLines(cam,dead,1100,640,480,90.0,1.0)
+  c=c+require(len(deadLines)==6,"dead respawn marker line count")
+  c=c+require(deadLines[0].red==96 and deadLines[0].green==96,"dead marker color")
+  dead.respawnAt=1000;c=c+require(targets.bodyColor(dead,1100)==[96,255,128],"ready-to-respawn color")
+  group=targets.frameLines(cam,[value,behind,dead],1100,640,480,90.0,1.0)
+  c=c+require(len(group)==18,"frame combines visible targets")
+  c=c+require(targets.clampWidth(1.0)==4 and targets.clampWidth(100.0)==24,"silhouette width clamps")
+  c=c+require(targets.healthFraction(void)==0.0,"void health fraction")
+  print("PASS: "+str(c)+" playable-target-render contracts");return 0
+end function

@@ -16,7 +16,13 @@ FUNCTIONS={
     'g_misc.c':['locateCamera','SP_misc_portal_surface','SP_misc_portal_camera','TeleportPlayer','SP_info_null','SP_info_notnull','SP_info_camp','SP_light','SP_misc_model','SP_misc_teleporter_dest','Use_Shooter','InitShooter_Finish','InitShooter','SP_shooter_rocket','SP_shooter_grenade','SP_shooter_plasma'],
     'g_target.c':['Use_Target_Give','SP_target_give','Use_target_remove_powerups','SP_target_remove_powerups','Use_Target_Score','SP_target_score','Use_Target_Print','SP_target_print','SP_target_position','Think_Target_Delay','Use_Target_Delay','SP_target_delay','target_relay_use','SP_target_relay','target_teleporter_use','SP_target_teleporter','Use_Target_Speaker','SP_target_speaker','target_location_linkup','SP_target_location','target_kill_use','SP_target_kill','target_laser_think','target_laser_on','target_laser_off','target_laser_use','target_laser_start','SP_target_laser'],
     'g_team.c':['OtherTeam','TeamName','AddTeamScore','Team_SetFlagStatus','Team_ForceGesture','Team_CheckDroppedItem','Team_ResetFlag','Team_ResetFlags','Team_ReturnFlagSound','Team_TakeFlagSound','Team_CaptureFlagSound','Team_ReturnFlag','Team_FreeEntity','Team_DroppedFlagThink','Team_TouchOurFlag','Team_TouchEnemyFlag','Pickup_Team','SelectRandomTeamSpawnPoint','SelectCTFSpawnPoint','SP_team_CTF_redplayer','SP_team_CTF_blueplayer','SP_team_CTF_redspawn','SP_team_CTF_bluespawn','OnSameTeam','Team_FragBonuses','Team_CheckHurtCarrier','Team_GetLocation','Team_GetLocationMsg','SortClients','TeamplayInfoMessage','CheckTeamStatus'],
-    'g_mover.c':['SP_path_corner'],
+    'g_mover.c':['G_TestEntityPosition','G_CreateRotationMatrix','G_TransposeMatrix','G_RotatePoint','G_TryPushingEntity','G_MoverPush','G_MoverTeam','G_RunMover',
+                 'SetMoverState','MatchTeam','ReturnToPos1','Reached_BinaryMover','Use_BinaryMover','InitMover',
+                 'Blocked_Door','Touch_DoorTriggerSpectator','Touch_DoorTrigger','Think_SpawnNewDoorTrigger','Think_MatchTeam','SP_func_door',
+                 'Touch_Plat','Touch_PlatCenterTrigger','SpawnPlatTrigger','SP_func_plat',
+                 'Touch_Button','SP_func_button','Think_BeginMoving','Reached_Train',
+                 'Think_SetupTrainTargets','SP_path_corner','SP_func_train','SP_func_static',
+                 'SP_func_rotating','SP_func_bobbing','SP_func_pendulum'],
     'g_main.c':['AddTournamentPlayer','RemoveTournamentLoser','RemoveTournamentWinner','AdjustTournamentScores','MoveClientToIntermission','BeginIntermission','ExitLevel','G_RunThink','FindIntermissionPoint','SortRanks','CalculateRanks','SendScoreboardMessageToAllClients','ScoreIsTied','CheckExitRules','LogExit','CheckIntermissionExit','CheckVote','PrintTeam','SetLeader','CheckTeamLeader','CheckTeamVote','CheckCvars'],
     'g_trigger.c':['InitTrigger','AimAtTarget','SP_trigger_push','SP_trigger_teleport','trigger_push_touch','trigger_teleporter_touch','multi_wait','multi_trigger','Use_Multi','Touch_Multi','SP_trigger_multiple','trigger_always_think','SP_trigger_always','Use_target_push','SP_target_push','func_timer_think','func_timer_use','SP_func_timer','hurt_use','hurt_touch','SP_trigger_hurt'],
     'g_combat.c':['ScorePlum','AddScore','TossClientItems','LookAtKiller','GibEntity','body_die','CheckAlmostCapture','CheckAlmostScored','player_die','CheckArmor','G_Damage','CanDamage','G_RadiusDamage'],
@@ -29,8 +35,13 @@ FUNCTIONS={
 def build(output, *, lifecycle=False):
     output.mkdir(parents=True,exist_ok=True);source=ROOT/'Quake-III-Arena-original-source/code'
     body=['#define MAXCHOICES 32', '#define MAX_SHADER_REMAPS 128',
+          '#define TRAIN_START_ON 1', '#define TRAIN_TOGGLE 2', '#define TRAIN_BLOCK_STOPS 4',
           'typedef struct {char oldShader[MAX_QPATH],newShader[MAX_QPATH];float timeOffset;} shaderRemap_t;',
           'int remapCount=0; shaderRemap_t remappedShaders[MAX_SHADER_REMAPS];',
+          # The retail door replay reaches this engine trap from unchanged
+          # Reached_BinaryMover. Visibility portal accounting has its own direct
+          # differential suite; lifecycle snapshots observe the mover state.
+          'void trap_AdjustAreaPortalState(gentity_t *ent,qboolean open){(void)ent;(void)open;}',
           '#define MISSILE_PRESTEP_TIME 50', '#define RESPAWN_ARMOR 25', '#define RESPAWN_HEALTH 35', '#define RESPAWN_AMMO 40', '#define RESPAWN_HOLDABLE 60', '#define RESPAWN_MEGAHEALTH 35', '#define RESPAWN_POWERUP 120',
           'qboolean itemRegistered[MAX_ITEMS];', '#define MAX_SPAWN_POINTS 128', '#define MAX_TEAM_SPAWN_POINTS 32', 'static vec3_t playerMins={-15,-15,-24},playerMaxs={15,15,32};'];selected=[]
     for name,names in FUNCTIONS.items():
@@ -109,6 +120,16 @@ def build(output, *, lifecycle=False):
             source_text=path.read_text()
             ordered=sorted(names,key=lambda symbol:re.search(r'^[\w* \t]+\b'+re.escape(symbol)+r'\s*\([^;{}]*\)\s*\{',source_text,re.M).start())
             body.append(match[0]+'\n'+orders[0]+'\n#define EC "\\x19"\n#define Cmd_FollowCycle_f Original_Cmd_FollowCycle_f\n'+extract(path,ordered)+'\n#undef Cmd_FollowCycle_f')
+        elif name=='g_mover.c':
+            source_text=path.read_text(encoding='utf-8')
+            storage=re.search(r'typedef struct \{\s*gentity_t\s+\*ent;.*?pushed_t\s+pushed\[MAX_GENTITIES\], \*pushed_p;',source_text,re.S)
+            if not storage:raise RuntimeError('Missing original mover push storage')
+            functions=[]
+            for symbol in names:
+                function=extract(path,[symbol])
+                if symbol=='G_RunMover':functions.append('#define G_RunMover Original_G_RunMover\n'+function+'\n#undef G_RunMover')
+                else:functions.append(function)
+            body.append(storage[0]+'\n'+'\n'.join(functions))
         elif name=='g_main.c':
             # Rename only each definition. Its callers keep the mode-aware
             # wrappers, preserving the older isolated score/spawn suites.

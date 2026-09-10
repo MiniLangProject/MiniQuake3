@@ -10,6 +10,7 @@ import mq3.game.map_targets as mapTargets
 import mq3.game.hazards as hazards
 import mq3.game.shooters as shooters
 import mq3.game.portals as portals
+import mq3.game.movers as movers
 import mq3.game.constants as c
 import mq3.shared.math as q
 import mq3.shared.directions as dirs
@@ -99,6 +100,7 @@ function initShooter(level,ent,weapon)
   return game.link(level,ent)
 end function
 function dispatch(level,ent)
+  if movers.dispatch(level,ent) then return true end if
   switch ent.classname
     case "info_player_start"
       ent.classname = "info_player_deathmatch"; playerDeathmatch(level,ent)

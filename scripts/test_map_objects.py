@@ -1,4 +1,4 @@
-"""Six actual Baseq3 map classes against unchanged C and real lifecycle/game subsystems.
+"""Actual Baseq3 map classes against unchanged C and real lifecycle/game subsystems.
 
 Defined cases and measured MSVC va-overlap/NULL-format profiles are separate.
 Full fresh builds alone write canonical result.json; partial/reused reports are isolated.
@@ -46,6 +46,14 @@ def scenarios():
         yield spec('camera_roll_'+roll,fixture(row('misc_portal_camera',roll=roll)),camera_num=expected)
     yield spec('portal_missing_owner',fixture(row('misc_portal_surface',target='absent'))+[direct(72,7)],freed=72)
     yield spec('portal_camera_fallback',fixture(row('misc_portal_surface',target='cam'),row('misc_portal_camera',targetname='cam',angles='10 45 0'))+[direct(72,7)],owner=73)
+    for label,flags,speed,delta in [
+        ('default_y',0,100,[0,100,0]),
+        ('x_axis',8,37,[37,0,0]),
+        ('z_axis_negative',4,-25,[0,0,-25]),
+    ]:
+        fields=dict(model='*1',spawnflags=flags)
+        if speed != 100:fields['speed']=speed
+        yield spec('mover_rotating_'+label,fixture(row('func_rotating',**fields)),mover_rotation=delta)
     import map_portal_cases, map_target_cases
     yield from map_portal_cases.scenarios(sys.modules[__name__])
     yield from map_target_cases.scenarios(sys.modules[__name__])
@@ -87,7 +95,7 @@ def inspect_snapshot(data):
         spawnflags=r.integer();target,targetname,model,model2=(r.string() for _ in range(4));rates=r.ints(3)
         message,ent_team=r.string(),r.string();damage=r.integer();shader,shader_new=r.string(),r.string();tail=r.ints(41)
         entities[slot]={'active':active,'client':client,'classname':classname,'base':base,'targetname':targetname,'team':ent_team,
-                        'message':message,'tail':tail,'state':es,'spawnflags':spawnflags,'target':target,'rates':rates}
+                        'message':message,'tail':tail,'state':es,'spawnflags':spawnflags,'target':target,'rates':rates,'damage':damage}
     assert r.integer()==950
     mutation=r.ints(7);mutation_text=r.string();callback_count=r.integer()
     assert callback_count==len(entities)
@@ -131,6 +139,12 @@ def semantic_proof(scenario,parsed):
     if 'camera_num' in expected:assert last['entities'][72]['state'][42]==expected['camera_num']
     if 'freed' in expected:assert last['entities'][expected['freed']]['active']==0
     if 'owner' in expected:assert last['entities'][72]['base'][23]==expected['owner']
+    if 'mover_rotation' in expected:
+        ent=last['entities'][72];delta=tuple(bits(value) for value in expected['mover_rotation'])
+        assert ent['state'][1]==4 and ent['state'][12]==2,(name,ent['state'][1],ent['state'][12])
+        assert ent['state'][18:21]==delta,(name,ent['state'][18:21],delta)
+        assert ent['base'][22]==128 and ent['damage']==2,(name,ent['base'][22],ent['damage'])
+        assert last['callbacks'][72]==(0,99,0),(name,last['callbacks'][72])
     import map_portal_cases, map_target_cases
     portal_proof=map_portal_cases.validate(scenario,parsed)
     target_proof=map_target_cases.validate(scenario,parsed)
@@ -203,7 +217,7 @@ def main():
     defined=domain_report('defined');crt=domain_report('crt_null');overlap=domain_report('va_overlap')
     result=dict(passed=True,canonical=not args.case and not args.reuse_build,**defined,
         crt_null_profile=crt,va_overlap_profile=overlap,all_scenario_count=len(records),runtime_contracts=int(match[1]),
-        profile='Unchanged six Baseq3 map classes and their use/think functions, composed with real lifecycle, arena, Cvars, parsing, items, scores, CTF and CM/SV.',
+        profile='Unchanged Baseq3 map classes and their use/think functions, including deterministic func_rotating axes, composed with real lifecycle, arena, Cvars, parsing, items, scores, CTF and CM/SV.',
         scope='Input begins with real G_InitGame and entity text. Engine FS/serverinfo/LocateGameData and Bot-AI are observed hosts. The PrintMsg delivery adapter reproduces the original quote replacement and server command, while actual item, flag and score algorithms execute on both sides. All observed game delivery effects carry full ordered snapshots. Internal item/CM trace payloads are not new records here; the separate Items/Combat/Collision suites cover those, and this suite asserts concrete item outcomes and SV state. Full snapshots include entities, clients, original server metadata, Cvars, arena bytes, configstrings, module state, concrete callbacks and post-delivery fixture mutation controls. One selected native first-CTF-status byte is archived under the existing isolated normalization. Native NULL %s formatting and multiple same-team va-buffer recipients are measured separately as MSVC CRT profiles, excluded from defined-case counters; Mini contracts independently require intact multi-recipient messages. Unsupported model states and original undefined format/cast/pointer cases use separate Mini contracts; no native parity is claimed for those rejections.',
         build_date=build_date,source_bindings_unchanged_during_run=True,normalization='Exact isolated Team_InitGame red=0/blue=-1 host boundary only; raw sequence/index/three bytes are archived per case.',
         original_sources={p.relative_to(ROOT).as_posix():sha(p) for p in sorted(set(sources))},

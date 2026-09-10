@@ -124,7 +124,7 @@ def scenarios():
             dict(classname='weapon_plasmagun', notsingle='1'),dict(classname='ammo_shells', notq3a='1'),
             dict(classname='info_notnull', gametype='ctf'),dict(classname='info_null'),dict(classname='unknown_fixture_class')]
         yield f'spawn_gametype_filter_{gametype}', [setvar('g_gametype', gametype), init(entities=maptext(*filtered)), shutdown()]
-    yield 'spawn_known_missing_class_explicit_boundary', [init(entities=maptext(dict(classname='func_door', model='*1'))), shutdown()]
+    yield 'spawn_real_func_door', [init(entities=maptext(dict(classname='func_door', model='*1'))), shutdown()]
     yield 'spawn_real_speaker_links_and_metadata_retention', [init(entities=maptext(dict(classname='target_speaker', noise='sound/test.wav', spawnflags='1', origin='96 0 96'))),
         init(2000, 2, 1), shutdown()]
     yield 'arena_reset_preserves_written_tail', [action(8, 512, 0xA5), init(entities=maptext(dict(classname='info_notnull', message='long first message'))),
@@ -249,7 +249,9 @@ def semantic_proof(name, actions, parsed):
         names={e['classname'] for e in last['entities'].values() if e['active']}
         assert {'weapon_shotgun','weapon_rocketlauncher','item_quad'}<=names
         assert all(last['entities'][slot]['base'][11]==1200 and last['entities'][slot]['base'][15] for slot in range(72,78))
-    if name=='spawn_known_missing_class_explicit_boundary':assert counts[18]==1
+    if name=='spawn_real_func_door':
+        door=last['entities'][72]
+        assert counts[18]==0 and door['active'] and door['state'][1]==4 and door['state'][5]>0
     if name=='spawn_real_speaker_links_and_metadata_retention':
         assert counts[7]>0 and last['entities'][72]['classname'] is None
         assert last['entities'][72]['tail'][-1]>=0, 'server sector survives direct game memset'

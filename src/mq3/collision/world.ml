@@ -494,10 +494,13 @@ end function
 
 function throughTree(work)
   // Depth-first stack retains the original near-child/far-child visit order.
-  stack = [[0,0.0,1.0,work.start,work.finish]]
-  while len(stack) > 0
-    item = stack[len(stack)-1]
-    stack = arrays.slice(stack,0,len(stack)-1)
+  // The BSP has already been validated as a tree, so its maximum pending
+  // frontier is bounded. An indexed stack avoids copying that frontier on
+  // every pop and push in each gameplay trace.
+  stack = array(len(work.world.nodes)+1,void); top = 0
+  stack[0] = [0,0.0,1.0,work.start,work.finish]
+  while top >= 0
+    item = stack[top]; top = top-1
     num = item[0]; p1f = item[1]; p2f = item[2]; p1 = item[3]; p2 = item[4]
     if work.trace.fraction <= p1f then continue end if
     if num < 0 then throughLeaf(work,work.world.leaves[-1-num],false); continue end if
@@ -513,10 +516,10 @@ function throughTree(work)
       if not work.isPoint then offset = n.f32(2048) end if
     end if
     if t1 >= n.fadd(offset,1.0) and t2 >= n.fadd(offset,1.0) then
-      stack = stack+[[node.children[0],p1f,p2f,p1,p2]]; continue
+      top = top+1; stack[top] = [node.children[0],p1f,p2f,p1,p2]; continue
     end if
     if t1 < n.fsub(-offset,1.0) and t2 < n.fsub(-offset,1.0) then
-      stack = stack+[[node.children[1],p1f,p2f,p1,p2]]; continue
+      top = top+1; stack[top] = [node.children[1],p1f,p2f,p1,p2]; continue
     end if
     side = 0; fraction = n.f32(1); fraction2 = n.f32(0)
     if t1 < t2 then
@@ -533,7 +536,8 @@ function throughTree(work)
     fraction2 = max(0.0,min(1.0,fraction2))
     midf = n.fadd(p1f,n.fmul(n.fsub(p2f,p1f),fraction))
     midf2 = n.fadd(p1f,n.fmul(n.fsub(p2f,p1f),fraction2))
-    stack = stack+[[node.children[side^1],midf2,p2f,interpolate(p1,p2,fraction2),p2], [node.children[side],p1f,midf,p1,interpolate(p1,p2,fraction)]]
+    top = top+1; stack[top] = [node.children[side^1],midf2,p2f,interpolate(p1,p2,fraction2),p2]
+    top = top+1; stack[top] = [node.children[side],p1f,midf,p1,interpolate(p1,p2,fraction)]
   end while
   return void
 end function

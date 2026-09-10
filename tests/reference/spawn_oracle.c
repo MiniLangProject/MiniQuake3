@@ -189,7 +189,6 @@ qboolean trap_InPVS(const vec3_t p1,const vec3_t p2){return SV_inPVS(p1,p2);}
 #ifndef MQ3_LIFECYCLE_ORACLE
 void QDECL G_Error(const char *fmt,...) {if(followOutput && teamChangeReady){teamChangeState();word(222);}va_list args;va_start(args,fmt);vfprintf(stderr,fmt,args);va_end(args);exit(72);}
 #endif
-void Touch_DoorTrigger(gentity_t *a,gentity_t *b,trace_t *c) {G_Error("unexpected door boundary");}
 void *G_Alloc(int n) {void *p;
 #ifdef MQ3_LIFECYCLE_ORACLE
 if(lifecycleOutput)return Original_G_Alloc(n);

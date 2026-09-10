@@ -1,0 +1,10 @@
+function main(args)
+  print "abi|6|3084|11332"
+  print "render|18|19|20|21|26|27|28"
+  print "keys|33|34|35|36|37|38|39|40|41"
+  print "client|42|43|44|45"
+  print "ping|46|47|48|49"
+  print "browser|65|66|67|68|69|70|71|72|73|74"
+  print "query|52|82|83|84|85"
+  return 0
+end function

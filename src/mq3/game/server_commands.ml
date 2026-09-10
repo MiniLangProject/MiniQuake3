@@ -7,6 +7,7 @@ import mq3.game.team_changes as teamChanges
 import mq3.game.session as sessions
 import mq3.game.memory as gameMemory
 import mq3.game.ip_filters as ipFilters
+import mq3.game.arenas as arenas
 import mq3.shared.info as infoStrings
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
@@ -94,7 +95,11 @@ function command(level,argv)
   if strings.equalsIgnoreCaseAscii(cmd,"game_memory") then gameMemory.status(level); return true end if
   if strings.equalsIgnoreCaseAscii(cmd,"addbot") then botBoundary(level,argv,get(level).addBotFn,"bot creation"); return true end if
   if strings.equalsIgnoreCaseAscii(cmd,"botlist") then botBoundary(level,argv,get(level).botListFn,"bot listing"); return true end if
-  if strings.equalsIgnoreCaseAscii(cmd,"abort_podium") then botBoundary(level,argv,get(level).abortPodiumFn,"podium abort"); return true end if
+  if strings.equalsIgnoreCaseAscii(cmd,"abort_podium") then
+    callback = get(level).abortPodiumFn
+    if callback != void then callback(level,argv) else arenas.abortPodium(level,argv) end if
+    return true
+  end if
   if strings.equalsIgnoreCaseAscii(cmd,"addip") then ipFilters.addCommand(level,argv); return true end if
   if strings.equalsIgnoreCaseAscii(cmd,"removeip") then ipFilters.removeCommand(level,argv); return true end if
   if strings.equalsIgnoreCaseAscii(cmd,"listip") then

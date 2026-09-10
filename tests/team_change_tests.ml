@@ -13,6 +13,7 @@ import mq3.server.world as weaponWorld
 import std.string as fixtureStrings
 import mq3.game.follow_commands as followCommands
 import mq3.game.intermission as intermissionFlow
+import mq3.game.bot_lifecycle as botLifecycle
 import mq3.game.client_spawn as clientSpawn
 import mq3.game.scores as scores
 import mq3.game.session as sessions
@@ -1106,6 +1107,10 @@ function intermissionContracts(world)
   require(intermissionFlow.begin(level) == void and level.intermissiontime == 5,"already active guard precedes spawn context"); count = count+1
   level = intermissionContractLevel(world); level.intermissiontime = 11; level.changemap = "pending"
   require(try(intermissionFlow.exitLevel(level)) is error and level.intermissiontime == 11 and level.changemap == "pending","bot end-match hook precedes exit mutations"); count = count+1
+  level.botLifecycleState = botLifecycle.create(level.spawner.cvars); level.botLifecycleState.interbreed = true
+  level.botLifecycleState.interbreedcycle.integer = 2; level.consoleCommandFn = followConsole; level.cvarSetFn = intermissionCvar
+  require(intermissionFlow.exitLevel(level) == void and level.intermissiontime == 0 and level.botLifecycleState.interbreedMatchCount == 1,"ExitLevel advances attached bot lifecycle default"); count = count+1
+  level = intermissionContractLevel(world); level.intermissiontime = 11
   level.botInterbreedEndMatchFn = intermissionBot
   require(try(intermissionFlow.exitLevel(level)) is error and level.intermissiontime == 11,"exit requires console delivery"); count = count+1
   level.consoleCommandFn = followConsole; level.teamScores[1] = 77

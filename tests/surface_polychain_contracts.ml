@@ -1,0 +1,35 @@
+import mq3.renderer.surface_polychain as poly
+function require(ok,text) if not ok then return error(7180,text) end if;return 1 end function
+function v(x,color) return poly.vertex(x,0.0,1.0,x/4.0,0.5,color,color+1,color+2,color+3) end function
+function main(args)
+  count=0;b=poly.create(20,40);vertices=[v(0.0,10),v(1.0,20),v(2.0,30),v(3.0,40)]
+  triangles=poly.append(b,vertices)
+  count=count+require(triangles==2,"quad triangle count")
+  count=count+require(b.numVertexes==4,"quad vertex count")
+  count=count+require(b.numIndexes==6,"quad index count")
+  count=count+require(b.indexes==[0,1,2,0,2,3],"quad fan winding")
+  count=count+require(b.xyz[2]==[2.0,0.0,1.0],"position copy")
+  count=count+require(b.texCoords[3]==[0.75,0.5],"texture coordinate copy")
+  count=count+require(b.colors[1]==[20,21,22,23],"modulate copy")
+  count=count+require(b.flushes==0,"no premature flush")
+  poly.append(b,[v(4.0,50),v(5.0,60),v(6.0,70)])
+  count=count+require(b.indexes[6]==4 and b.indexes[8]==6,"second polygon base offset")
+  count=count+require(b.numVertexes==7 and b.numIndexes==9,"append counts")
+  tight=poly.create(8,20);poly.append(tight,vertices);poly.append(tight,[v(8.0,1),v(9.0,2),v(10.0,3),v(11.0,4)])
+  count=count+require(tight.flushes==1,"strict capacity boundary flush")
+  count=count+require(tight.numVertexes==4 and tight.numIndexes==6,"surface restart counts")
+  count=count+require(tight.indexes==[0,1,2,0,2,3],"surface restart rebases indexes")
+  count=count+require(tight.xyz[0][0]==8.0,"surface restart retains new polygon")
+  c=poly.vertex(0.0,0.0,0.0,0.0,0.0,257,-1,511,256)
+  count=count+require(c.modulate==[1,255,255,0],"byte color packing")
+  count=count+require(try(poly.append(b,[v(0.0,0),v(1.0,0)])) is error,"short polygon rejected")
+  count=count+require(try(poly.append(poly.create(3,20),[v(0.0,0),v(1.0,0),v(2.0,0)])) is error,"vertex capacity rejects equality")
+  count=count+require(try(poly.append(poly.create(20,3),[v(0.0,0),v(1.0,0),v(2.0,0)])) is error,"index capacity rejects equality")
+  malformed=poly.Vertex([0.0,1.0],[0.0,0.0],[1,2,3,4])
+  count=count+require(try(poly.append(poly.create(10,10),[malformed,v(1.0,0),v(2.0,0)])) is error,"malformed vertex rejected")
+  empty=poly.create(4,4);poly.clear(empty)
+  count=count+require(empty.numVertexes==0 and empty.numIndexes==0,"explicit clear")
+  count=count+require(try(poly.create(0,4)) is error,"invalid capacity rejected")
+  print("PASS: "+str(count)+" surface-polychain contracts")
+  return 0
+end function

@@ -1,0 +1,17 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+import mq3.client.netchan as clientNet
+import mq3.qcommon.netchan as net
+import mq3.qcommon.message as msg
+struct Context packet end struct
+function send(runtime,sock,data,address) runtime.context.packet=data;return void end function
+function hx(data) d=bytes("0123456789abcdef");s="";if len(data)>0 then for each v in data s=s+decode(bytes([d[(v>>4)&15],d[v&15]])) end for end if;return s end function
+function line(tag,m) print tag+"|"+str(m.cursize)+"|"+str(m.readcount)+"|"+str(m.bit)+"|"+hx(slice(m.data,0,m.cursize));return void end function
+function serverXor(connection,m,sequence,text) start=m.readcount+4;key=(connection.challenge^sequence)&255;raw=bytes(text);index=0;if start<m.cursize then for i=start to m.cursize-1 v=0;if index<len(raw) then v=raw[index] end if;if v==0 then index=0;if len(raw)>0 then v=raw[0] end if end if;if v>127 or v==37 then v=46 end if;key=(key^(v<<(i&1)))&255;index=index+1;m.data[i]=(m.data[i]^key)&255 end for end if;return void end function
+function main(args)
+ c=clientNet.createConnection();c.challenge=0x13579bdf;c.serverCommands[1]="sv%ä-x";transport=net.init(31337);transport.context=Context(bytes(0,0));transport.sendPacketFn=send;runtime=clientNet.create(transport,c);address=net.Address(2,[127,0,0,1],27960)
+ m=msg.init(16384);msg.writeLong(m,0x10203040);msg.writeLong(m,0x55667788);msg.writeLong(m,65);for i=0 to 8 msg.writeByte(m,i*17+3) end for;m.readcount=3;m.bit=19;m.oob=true;clientNet.encode(c,m);line("encode",m);clientNet.encode(c,m);print "encode_twice|"+str(m.readcount)+"|"+hx(slice(m.data,0,m.cursize))
+ m=msg.init(16384);m.data[0]=7;m.cursize=4;m.bit=32;msg.writeLong(m,65);for i=0 to 7 msg.writeByte(m,200-i*9) end for;plain=slice(m.data,0,m.cursize);c.reliableCommands[1]="cmd%ñ-z";m.readcount=4;m.bit=32;serverXor(c,m,7,c.reliableCommands[1]);m.oob=true;clientNet.decodeMessage(c,m);line("decode",m);same=0;if slice(m.data,0,m.cursize)==plain then same=1 end if;print "decode_plain|"+str(same)+"|"+hx(plain)
+ ch=net.setup(net.NS_CLIENT,address,999);m=msg.init(16384);msg.writeLong(m,0x10203040);msg.writeLong(m,0x55667788);msg.writeLong(m,65);msg.writeByte(m,77);clientNet.transmit(runtime,ch,m);print "transmit|"+str(len(transport.context.packet))+"|"+str(ch.outgoingSequence)+"|"+str(m.cursize)+"|"+hx(transport.context.packet)
+ ch=net.setup(net.NS_CLIENT,address,999);m=msg.init(16384);msg.writeLong(m,0x10203040);msg.writeLong(m,0x55667788);msg.writeLong(m,65);for i=0 to 1499 msg.writeByte(m,(i*29+5)&255) end for;clientNet.transmit(runtime,ch,m);print "frag1|"+str(len(transport.context.packet))+"|"+str(ch.unsentFragmentStart)+"|"+str(ch.outgoingSequence)+"|"+hx(transport.context.packet);clientNet.transmitNextFragment(runtime,ch);print "frag2|"+str(len(transport.context.packet))+"|"+str(ch.unsentFragmentStart)+"|"+str(ch.outgoingSequence)+"|"+hx(transport.context.packet)
+ chs=net.setup(net.NS_SERVER,address,0);m=msg.init(16384);msg.writeLong(m,65);for i=0 to 6 msg.writeByte(m,90+i) end for;m.readcount=0;serverXor(c,m,chs.outgoingSequence,c.reliableCommands[1]);net.transmit(transport,chs,slice(m.data,0,m.cursize));ch=net.setup(net.NS_CLIENT,address,0);wire=transport.context.packet;m=msg.initStorage(wire,16384,false);m.cursize=len(wire);if not clientNet.process(runtime,ch,m) then return 3 end if;line("process",m);print "process_state|"+str(ch.incomingSequence)+"|"+str(ch.dropped)+"|"+str(runtime.newsize);return 0
+end function

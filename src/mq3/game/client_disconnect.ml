@@ -11,11 +11,16 @@ import mq3.game.votes as votes
 import mq3.game.spawn_values as values
 import mq3.game.constants as c
 import mq3.compat.numeric as n
+import mq3.game.bot_clients as botClients
 
 function disconnect(level,slot)
   if slot < 0 or slot >= 64 then return error(492,"Invalid disconnecting client slot") end if
-  if level.removeQueuedBotBeginFn == void then return error(492,"Disconnect requires bot begin queue removal") end if
-  level.removeQueuedBotBeginFn(level,slot); ent = level.entities[slot]
+  if level.removeQueuedBotBeginFn != void then level.removeQueuedBotBeginFn(level,slot)
+  else
+    if level.lifecycleState == void or level.lifecycleState.botClients == void then return error(492,"Disconnect requires bot begin queue removal") end if
+    botClients.removeQueuedBotBegin(level.lifecycleState.botClients,slot)
+  end if
+  ent = level.entities[slot]
   if ent.client == void then return void end if
   clientInfo.infoClientLimit(level); index = 0
   while index < level.maxclients
@@ -39,8 +44,13 @@ function disconnect(level,slot)
   ent.client.connected = 0; ent.client.ps.persistant[c.PERS_TEAM] = 0; ent.client.team = 0
   values.setConfig(level.spawner,544+slot,""); scores.calculateRanks(level)
   if (ent.r.svFlags & 8) != 0 then
-    if level.botShutdownFn == void then return error(492,"Disconnect requires bot shutdown") end if
-    level.botShutdownFn(level,slot,false)
+    if level.botShutdownFn != void then level.botShutdownFn(level,slot,false)
+    else
+      if level.lifecycleState == void or level.lifecycleState.botState == void then return error(492,"Disconnect requires bot shutdown") end if
+      botState = level.lifecycleState.botState
+      if botState.shutdownClientFn == void then return error(492,"Disconnect requires bot shutdown") end if
+      botState.shutdownClientFn(botState,slot,false)
+    end if
   end if
   return void
 end function

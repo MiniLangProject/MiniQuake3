@@ -89,8 +89,19 @@ Die gemeinsame [Info-Schlüsselsuche und -Validierung](CLIENT_INFO.md) ist gegen
 die Originalfunktionen geprüft und mit Userinfo sowie `ClientSpawn` verbunden.
 `Info_RemoveKey` und `Info_SetValueForKey` ergänzen inzwischen die über
 [`teamtask`](CLIENT_COMMANDS.md) geprüfte Userinfo-Mutation.
-`cvar_restart`, Config-Persistenz, Command-Buffer und vollständige Engine-Schleife
-bleiben offene Teile dieser Abnahme.
+Der Engine-Command-Buffer ist einschließlich Tokenisierung, Argumentzugriff,
+Quote-/Kommentargrenzen, Registrierung, Move-to-front-Dispatch und den eingebauten
+`cmdlist`-, `exec`-, `vstr`-, `echo`- und `wait`-Pfaden portiert. Datei-, Cvar-,
+Client-, Server- und UI-Übergänge sind explizite Dienste. 28 Puffer-/Tokenizer-
+und 16 Registry-Differentialdatensätze sowie 16 MiniLang-Verträge vergleichen
+die Originalkörper. Die Startup-Kommandozeile trennt zusätzlich Quotes, Plus-,
+CR-/LF-Grenzen und höchstens 32 Abschnitte, verbraucht `safe`/`cvar_restart`,
+setzt frühe `set`-Cvars und reiht verbleibende Befehle in den Command-Buffer ein;
+10 direkte Differentialdatensätze und 16 Verträge decken diesen Ablauf ab.
+Die benannte [QVM-Laufzeitverwaltung](VM_RUNTIME.md) ergänzt drei Slots,
+case-insensitive Wiederverwendung, Call-Kontext, Restart und Freigabe in 17
+Verträgen. Die Ausführung von `cvar_restart`, Config-Persistenz und die
+vollständige Client-Schleife bleiben offene Teile dieser Abnahme.
 
 **Ergebnis:** Headless-Engine mit Konsole, Configs und PK3-Lesezugriff;
 synthetische Archive und Parser-Testfälle ohne kommerzielle Daten.
@@ -118,6 +129,33 @@ JIT erst nach Interpreterparität erwägen, native Fremdmodule gesondert behande
 Originalmodule laden und bestehen Initialisierungs-/Vertragstests. Fehlerhafte
 QVMs werden kontrolliert behandelt; vollständige Integration folgt in 6–10.
 Voraussetzungen: 2–3.
+
+Der QVM-Lebenszyklus verwaltet jetzt drei benannte, ohne Groß-/Kleinschreibung
+wiederverwendete Slots, sichere Call-Kontexte, Image-Restart, Freigabe und
+Generationen. 17 Verträge ergänzen die 404 Interpreter-Differentialfälle. Die
+gemeinsame QVM-Syscallgrenze für qagame, cgame und UI umfasst Print/Error/Zeit,
+Cvars, Befehlsargumente, Konsolenbefehle und Datei-I/O einschließlich der exakten
+272-Byte-`vmCvar_t`-ABI. Vier direkte C-Datensätze und 32 Verträge sind grün.
+Der qagame-Dispatcher ergänzt 18 servereigene Traps für Spielspeicher, Clients,
+Configstrings, Userinfo/Serverinfo, Brushmodelle, PVS/Portale, Entity-Linking,
+Bot-Slots und Entity-Token. Die qagame-Startsequenz bildet `GAME_INIT`, Restart,
+Shutdown und alle elf Exports ab. Dafür bestehen weitere 14 direkte ABI-Werte
+und 54 Verträge. Als nächste VM-Schritte fehlen die großen binären Trace-/Usercmd-
+Traps sowie die Dispatcher von cgame und UI. Der cgame-Modulstart einschließlich
+Pure-QVM-Zwang, `CG_INIT`, sämtlicher neun Exports und Shutdown ist mit zwölf
+direkten ABI-Werten und 20 Verträgen bereits abgenommen. Der cgame-Dispatcher
+ergänzt 19 Traps für Befehle, Rendererregistrierung, GLConfig, Gamestate,
+Snapshots, Serverkommandos und Usercmds mit vier exakten x86-Layoutdatensätzen
+und 37 Verträgen. Die binären qagame-Welttraps ergänzen Trace/TraceCapsule,
+PointContents, EntitiesInBox, EntityContact/EntityContactCapsule und GetUsercmd
+mit fünf ABI-Datensätzen und 37 Verträgen. Der UI-Modulstart verhandelt die
+API-Versionen 4/6, erzwingt Pure-QVMs und bildet alle zehn Exports sowie Shutdown
+ab; 14 direkte Headerwerte und 22 Verträge sind grün. Der UI-Dispatcher ergänzt
+39 Traps für 2D-Rendering, Tasten/Bindings, Clipboard, GL-/Clientzustand,
+Configstrings und den LAN-Serverbrowser; sieben ABI-Datensätze und 58 Verträge
+sind grün. Weitere 16 Medien-/Spezialtraps decken Sound, Musik, `qtime_t`,
+Cinematics, Shader-Remap, CD-Key, FS-Seek und PB-Kompatibilität mit fünf
+ABI-Datensätzen und 42 Verträgen ab.
 
 ## 5. BSP-Kollision und gemeinsame Spielphysik exakt übertragen
 
@@ -163,7 +201,7 @@ Abweichungen blockieren die nächste Spielabnahme. Voraussetzungen: 2–4.
 EntityState-Speicherfelder, PlayerState-Umwandlung, Entity-Platzverwaltung,
 Target-Auswahl und Trigger-/Teleport-Übergänge sind umgesetzt. Das Spawn-Parsing
 umfasst jetzt alle Feldregeln, Spielmodusfilter, Worldspawn und die originale
-Klassen-/Item-Auswahl. 40 Spawn-Klassen einschließlich Sprungpads, Teleportern,
+Klassen-/Item-Auswahl. Alle 48 Spawn-Klassen einschließlich Sprungpads, Teleportern,
 verzögerter Targets, Relays, Mehrfach-/Always-Trigger, Sound-/Push-Targets,
 schaltbarer Timer, Ortsmarkierungen, Hurt-/Kill-/Laser-Objekte, drei Shooter-Klassen,
 [Give-/Powerup-/Score-/Print-Targets](MAP_TARGETS.md) sowie
@@ -175,20 +213,157 @@ siehe [Schaden](COMBAT.md).
 Target-Ketten, Shader-Remaps und die Entity-Schleife mit Ereignisfreigabe sind
 gegen den Originalcode geprüft; siehe [Targets und Ereignisse](TARGETS_AND_EVENTS.md).
 `G_RunThink` und die spätere Sprungpad-Ausrichtung sind enthalten. Alle 35
-Karten-Items werden inzwischen als echte Entities angelegt; die acht weiteren
-Klassen bleiben ausdrücklich offene Aufrufgrenzen; siehe [SPAWNING.md](SPAWNING.md).
+Karten-Items werden inzwischen als echte Entities angelegt; auch die acht
+Mover-Klassen laufen durch echte Spawn- und Framepfade; siehe [SPAWNING.md](SPAWNING.md).
 Die Item-Aufnahme einschließlich CTF-Capture ist inzwischen verbunden.
 
-**Nächster Arbeitsblock:** Die acht offenen Mover-Klassen benötigen noch 34
-aktive Baseq3-Funktionskörper. Zuerst folgen die gemeinsamen Entityfelder, der
-Push-Speicher und der Server-Adapter für Areaportale, anschließend der Bewegungs-
-und Schiebekern mit Team-Rollback und `G_RunFrame`-Einbindung. Der erste vollständige
-Kartenpfad verbindet danach `func_button` mit Touch/Schaden, Bewegung, Zielerreichung
-und Rückfahrt. Darauf bauen statische, rotierende und periodische Mover, Türen
-und Plattformen samt Zuschauer-Triggern sowie abschließend Züge mit ihren
-`path_corner`-Ketten auf. Jeder Teil wird gegen echte CM-/SV-Kollision und die
-unveränderten Originalfunktionen geprüft; erst danach entfällt seine offene
-Spawn-Aufrufgrenze.
+Die Mover-Implementierung umfasst gemeinsame Entityfelder, Binärzustände,
+Team-Rollback, den `G_RunFrame`-Zweig, Buttons, statische, rotierende und periodische
+Mover, Türen und Plattformen samt Triggern sowie Züge mit ihren `path_corner`-Ketten.
+Der Schiebekern ist in fünf isolierten Szenarien direkt gegen das unveränderte
+`g_mover.c` geprüft: linearer Erfolg, Rotation mit Client-Yaw, blockierter Rollback,
+`EF_MOVER_STOP` und verketteter Team-Rollback. Dabei stimmen 545 Zustandswörter
+exakt; 30 native Trap-/Callback-Beobachtungen sind zusätzlich fest geprüft.
+
+Die Retail-Mover-Abnahme umfasst `q3ctf4`, `q3dm15` und `q3dm0`. Damit laufen
+`func_bobbing`, drei Pendel, zwei rotierende Mover, ein zweiteiliges Türteam und
+ein Button über originale BSP- und Entity-Lumps. Acht Mover-Master stimmen in
+77.073.336 Zustandswörtern und 1.684 geordneten Effekten exakt. Der Vergleich deckte eine
+falsch gespeicherte Pendeldauer auf; sie ist jetzt wie in `SP_func_pendulum`
+vor `InitMover` in `s.pos.trDuration` gesetzt.
+
+Der Bot-Lifecycle-Kern für Setup, Map-Reset, Shutdown und Interbreed-Matchende ist
+mit 24 Verträgen geprüft und als Standard in Lifecycle und Intermission verdrahtet.
+Das Einzelspieler-Postgame samt Podium, Siegesmodellen und Abbruch ist ebenfalls
+eingebunden und stimmt in fünf direkten `g_arenas.c`-Szenarien exakt.
+
+Aktive Retail-Mover sind nun ebenfalls abgenommen. Das `q3dm0`-Türteam läuft über
+Trigger-Touch, Use, beide Reached-Enden und Rückfahrt; ein Button nutzt einen
+echten `q3dm0`-Inline-Brush über Spawn, Touch, Use und Rückkehr nach POS1. Die
+gesamte Retail-Suite vergleicht 77.073.336 Wörter und 1.684 Effekte. Ein echter
+Spieler und ein physikalisches Item werden über fünf vollständige `G_RunFrame`-
+Frames vom q3ctf4-Bobbing-Mover jeweils exakt 664 Einheiten getragen.
+
+Bot-/Arena-Registry, Spawnqueue, Bot-Connect, Queueprüfung, Minimum-Player-Regel,
+Bot-Erzeugung/-Entfernung, `addbot`, `botlist` und Einzelspieler-Spawns sind portiert.
+Lifecycle, ClientConnect, ClientDisconnect und Frame verwenden die echten Defaults,
+solange kein Test-Hook installiert ist. Die Registry stimmt zusätzlich in fünf
+direkten `g_bot.c`-Szenarien mit 596 Wörtern exakt. `BotAISetupClient` und
+`BotAIShutdownClient` besitzen vollständige Botlib-Ressourcenpfade samt
+Teilfehler-Cleanup und sind als Lifecycle-Defaults verdrahtet.
+`BotAIStartFrame`, regelmäßige Itemaktualisierung und die Snapshot-, Entity- und
+Client-State-Grenzen sind ebenfalls portiert. Sieben direkte C-Szenarien erfassen
+42 Beobachtungen; 25 zusätzliche Frameverträge prüfen Timing, Filter, Botcadence
+und den zentralen Default-BotAI-Aufruf.
+
+View-Winkel, Delta-Angles, `BotInputToUserCommand`, Action-/Button-/Weapon-Mapping,
+Signed-Char-Bewegung, verzögerter Sprung und Respawn-Hack sind inzwischen ebenfalls
+als Frame-Default portiert. Sechs C-Szenarien und 17 MiniLang-Verträge sind grün.
+Der Default-BotAI-Pfad verarbeitet außerdem `print`, `chat` und `tchat`, entfernt
+Farbcodes und erzeugt LTG-Status-Configstrings und Team-Berichte. Sechs native
+Szenarien mit 31 Beobachtungen sowie 26 Verträge sind grün.
+Der erste `ai_dmq3.c`-Kampfblock deckt Entity-/Powerup-Prädikate, CTF-Tragen,
+Teleport-, Todes-, Intermission- und Gefahrenzustand, Aggressionsbewertung,
+Rückzug/Verfolgung, Rocket-Jump-Freigabe und das zweiachsige Sichtfeld ab.
+Zwölf native Szenarien mit 68 exakten Beobachtungen sowie 35 MiniLang-Verträge
+sind grün; Inventar, Waffe, Ursprung und Teleportzustand liegen im zentralen BotState.
+Darauf bauen Feindersuche, sichtbares und letztes bekanntes Ziel, Reaktions- und
+Feuerratensteuerung, Gauntlet-Reichweite, Sichtfeld/Hindernisse, Teamschutz,
+Radialschaden-Selbstschutz und Fire-on-release auf. Zehn native Szenarien mit
+25 exakten Beobachtungen und 24 weitere MiniLang-Verträge sind grün.
+`BotChooseWeapon` und `BotUpdateBattleInventory` ergänzen Waffenwechselzeit,
+Auswahldispatch sowie C-abgeschnittene Gegnerhöhe/-distanz; 13 direkte
+Datensätze und sieben Verträge sind grün.
+`BotUpdateInventory` projiziert außerdem den vollständigen Baseq3-PlayerState-Bestand
+aus Waffen, Munition, Gesundheit, Rüstung, Holdables, Powerups und CTF-Flaggen.
+Vier Datensätze vergleichen 60 Werte; zehn Verträge sind grün.
+Die restlichen Zielkorrekturen decken den Bewegungs-Cache, exakte AAS- und
+lineare Projektilvorhersage, kurze Strafeschritte, dreistufig geprüfte
+Splash-Bodenziele samt Selbstschutz sowie vorhergesagte Raketen-/Granaten-/BFG-
+Eckenschüsse ab. Sechs native Szenarien mit 19 exakten Beobachtungen und 13
+weitere MiniLang-Verträge sind grün.
+`BotAttackMove` schließt die lokale Kampfbewegung mit Chase-Ziel, Skill-Grenze,
+Gauntlet-/Distanzbändern, Sprung-/Duck-Cooldowns und adaptivem Zweiversuch-
+Strafing. Zwölf native Szenarien erfassen 21 exakte Beobachtungen; 15
+MiniLang-Verträge sind grün.
+Der höhere `Battle_Fight`-Zustand verbindet diese Bausteine jetzt in der
+Originalreihenfolge: Zustandswechsel, Feindersuche, Todes-/Unsichtbarkeits- und
+Chatpfade, letzter erreichbarer Gegnerort, Kampfinventar, Sichtverlust mit
+Chase, Item- und Waffenwahl, `BotAttackMove`, Blockadebehandlung, Zielen,
+Angriff und Rückzug. 13 native Szenarien erfassen 26 exakte Beobachtungen;
+14 MiniLang-Verträge sind grün. `Battle_Chase`, `Battle_Retreat` und
+`Battle_NBG` sind ebenfalls vollständig verbunden: letzte Gegnerposition,
+Zehnsekunden-Chase, LTG-/NBG-Wechsel, Sichtverlust, Bewegungsansicht,
+Bewegungswaffe und Rückkehr in Kampf oder Rückzug folgen der Baseq3-Reihenfolge.
+19 native Szenarien mit 43 exakten Beobachtungen und 24 MiniLang-Verträge sind
+grün; das C-Orakel kompiliert dazu die bytegenau extrahierten Originalkörper.
+Der `BotAI`-Pfad ruft nach dem Deathmatch-Setup außerdem den begrenzten
+Node-Dispatcher auf: maximal 50 Zustandswechsel, erneuter Dispatch bei `false`,
+Leerlauf für Node null und ein harter Fehler für unbekannte gesetzte Nodes. Ein
+Frame-Vertrag weist den Weg vom `BotAIStartFrame` bis zum konfigurierten
+Battle-Node nach.
+Der natürliche Langzeitziel-Einstieg ist nun ebenfalls geschlossen:
+`AIEnter_Seek_LTG` und `AINode_Seek_LTG` führen vom Frame über Feindersuche in
+`Battle_Fight` oder `Battle_Retreat`, andernfalls über Team-, LTG-, NBG- und
+Hindernisentscheidungen bis zur AAS-Bewegung. Dabei bleiben die Baseq3-Bits
+WAITING/VIEWSET/WEAPON als 4/8/16 und `BFL_IDEALVIEWSET` als 32 getrennt. Das
+unveränderte C-Orakel prüft zusammen mit `Seek_NBG`, `Seek_ActivateEntity`,
+`Stand`, `Respawn`, `Observer` und `Intermission` nun 43 Szenarien mit 101
+Beobachtungen; 38 MiniLang-Verträge schließen den vollständigen
+`BotAIStartFrame`-Dispatcherpfad und die gekoppelten Zustandswechsel ein.
+Die ersten fünf `ai_team.c`-Helfer decken außerdem Teamführerprüfung,
+Teamzählung und stabile Angreifer-/Verteidigerpräferenzen ab. Sechs direkte
+Differentialdatensätze und neun zusätzliche Verträge sind grün.
+Fünf weitere Team-Kommunikationsfunktionen bilden Self-Queue, gerichtete Tell-
+Nachrichten und die drei Baseq3-Voice-No-ops ab; sieben direkte Datensätze und
+fünf Verträge stimmen.
+`BotCTFOrders` und `BotCreateGroup` wählen darüber hinaus teamrelativ alle vier
+Flagstatuspfade und bauen Selbst-/Fremdführergruppen in Originalreihenfolge;
+16 direkte Datensätze und elf Verträge stimmen.
+`FindHumanTeamLeader` ergänzt die 64-Slot-Auswahl eines menschlichen Leiters samt
+Bot-/Sperr-/Teamfilter und bedingter Standardverteidigung; drei Szenarien mit
+sechs Beobachtungen und sechs Verträge sind grün.
+Sechs weitere `ai_dmq3.c`-Abfragefunktionen bilden Team/Gegnerteam,
+Teamgleichheit, farbbereinigte Namensauflösung und PlayerState-Tod ab; neun
+direkte Datensätze und elf Verträge sind grün.
+Der erste Navigationsblock setzt den Botlib-Bewegungszustand bitgetreu auf,
+behandelt besondere Auf-/Ab-Mover-Richtungen sowie zufällige Ausweichbewegung
+und sagt AAS-Mover-Hindernisse samt Aktivierungsziel voraus. Inzwischen sind
+auch `BotAlternateRoute` und `BotGetAlternateRouteGoal` portiert: Rot-/Blau-
+Routenwahl, Zufallsindex-Klemmung, Zielgrenzen, Reisezeit unter 20 und der
+persistente Erreicht-Zustand wurden um die Aktivierungsziel-Ausführung ergänzt.
+Der originale Acht-Slot-Heap, LIFO-Push/Pop/Clear, Routingbereich-Freigabe,
+Zwei-Sekunden-Wiederverwendungsschutz und `BotGoForActivateGoal` sind zentral
+verfügbar. `BotGetActivateGoal` löst nun außerdem den blockierenden Mover zum
+BSP-Entity zurück, behandelt beschießbare, startoffene und bereits bewegte
+Türen, sortiert Mover-Areas in zwei Durchläufen und folgt Button-/Trigger-/
+Relay-/Delay-Bäumen samt Duplikat- und Reisezeitprüfung. Insgesamt prüfen 36
+native Szenarien 136 Beobachtungen; 54 MiniLang-Verträge waren grün. Der
+allgemeine Zielwahlblock ergänzt `BotGoCamp`, `BotWantsToCamp`, `BotDontAvoid`
+und `BotGoForPowerups` samt Cooldown, Wahrscheinlichkeits-, Aggressions- und
+Waffenprüfung, 150er-Reisezeitlimit und fünf Powerup-Avoid-Resets. Navigation
+ist nun um die zusammenhängende `ai_dmnet.c`-Route aus `BotGetAirGoal`,
+`BotGoForAir`, `BotNearbyGoal`, `BotReachedGoal` und
+`BotGetItemLongTermGoal` erweitert. Wasseroberflächen-Projektion,
+NBG-Ausweichziele, Flagträger-Reichweite, Zielabschluss und LTG-Erneuerung
+folgen der Originalreihenfolge über explizite Dienste. Darauf bauen nun
+`BotGetLongTermGoal` und `BotLongTermGoal` auf: Hilfe/Begleitung, Verteidigung,
+Kill/GetItem, Camp, Patrouille und die Baseq3-CTF-Ziele sowie Führungsabbruch,
+Sicht-, Rückwärts- und Distanzlogik verwenden den zentralen Botzustand. Das
+C-Orakel kompiliert beide unverändert extrahierten Originalkörper. Navigation
+steht damit bei 79 nativen Szenarien, 244 Beobachtungen und 104 Verträgen.
+
+Die vierte detaillierte CTF-Auftragspolitik `BotCTFOrders_BothFlagsAtBase` ist
+nun ebenfalls vollständig und als Standard eingebunden. Passive und aggressive
+Verteilungen decken alle Teamgrößenpfade, Präferenzsortierung, die gerundeten
+50/40- beziehungsweise 40/50-Prozent-Bänder sowie die Caps 5/4 und 4/5 ab.
+Vierzehn exakte Datensätze aus dem unveränderten Originalfunktionskörper und
+17 MiniLang-Verträge sind grün. Damit sind alle vier durch `BotCTFOrders`
+gewählten Baseq3-Flagstatuspolitiken detailliert portiert.
+
+**Nächster Arbeitsblock:** `Seek_NBG`, Aktivierungs-, Stand- und Respawn-Routen
+an den jetzt geschlossenen Seek-LTG-/Battle-Dispatcher anbinden. Die Retail-Mapausführung besitzt inzwischen eine direkte Mover-Abnahme auf drei Karten;
+parallel den PK3-Downloadtransport und die Netzwerkdienste anbinden.
 `ClientSpawn` setzt Spielerzustand, Startinventar, Handicap, Bot-/Human-Filter,
 Spawn-Targets, Verlinkung und Snapshots in der Originalreihenfolge um.
 `ClientEndFrame` verarbeitet inzwischen Powerup-Ablauf, Umwelt- und
@@ -212,7 +387,9 @@ Info-Schlüsselsuche und die ursprüngliche Userinfo-Puffergrenze.
 jetzt Passwortprüfung, Client-Reset, Sitzung, Userinfo und Rangberechnung.
 Speichern, Level-Neuaufbau und Wiederverbindung sind gegen C geprüft;
 [IP-Filter](IP_FILTERS.md) sind jetzt als Standardentscheidung eingebunden;
-Bot-Einrichtung bleibt eine beobachtete Schnittstelle.
+Bot-Userinfo wird standardmäßig über den portierten `G_BotConnect`-Pfad ausgewertet.
+Die `BotAISetupClient`-/`BotAIShutdownClient`-Ressourcen sind portiert und zentral
+verdrahtet; die darunterliegenden Botlib-Dienste bleiben explizite Engine-Schnittstellen.
 [Teamwechsel, `team`, `StopFollowing` und `ClientDisconnect`](TEAM_CHANGES.md)
 führen inzwischen die tatsächlichen Todes-, Item-/Flaggen-, Leichen-, Leiter-,
 Userinfo-, Spawn- und Rangabläufe zusammen. 227 Szenarien vergleichen jeden
@@ -232,7 +409,12 @@ Die [Serverkonsole](SERVER_COMMANDS.md) nutzt echte Teamwechsel, IP-Filter und
 die [Spielarena](GAME_MEMORY.md). [Item-Registrierung, CTF-Initialisierung und
 Entity-Teams](GAME_INITIALIZATION.md) sind mit [G_InitGame/G_ShutdownGame](GAME_LIFECYCLE.md)
 und der [originalen Logausgabe](GAME_LOGGING.md) verbunden.
-Acht Mover-Klassen, Mover-Pushing und der vollständige Server fehlen weiterhin.
+Die Mover-Klassen, lineares und rotierendes Mover-Pushing sowie Areaportal-Umschaltung
+sind implementiert. Fünf direkte Vergleiche gegen das unveränderte `g_mover.c`
+decken lineares Schieben, Rotation samt Client-Yaw, blockierten Rollback,
+`EF_MOVER_STOP` und verketteten Team-Rollback ab. Drei vollständige Retail-Läufe
+decken Bobbing, Pendel, Rotation und ein Türteam ab; aktiv ausgelöste Buttons und
+Türen sowie der eigenständige Server fehlen weiterhin.
 
 Projektil-Erzeugung, Flug-/Aufprallregeln, Granaten-Abprall, Grappling-Hook und
 Shooter-Objekte sind jetzt gegen C geprüft; siehe [Projektile](MISSILES.md). Die
@@ -267,7 +449,7 @@ bereits die tatsächlichen Teamwechsel; `SpectatorThink` und `CheckTournament`
 verwenden standardmäßig den Follow-Zyklus beziehungsweise die Duell-Warteschlange.
 Die Intermission- und Levelende-Funktionen verwenden diese Spielabläufe ebenfalls
 direkt. Die Client-Befehlsverteilung ist ebenfalls verbunden und geprüft.
-Engine-Mapwechsel/-Neustart und VM-Neuladen, Engine-Kommando-Tokenisierung,
+Engine-Mapwechsel/-Neustart und VM-Neuladen, tatsächliche Netzwerkzustellung,
 Bot-/Einzelspieler-Ergebnissysteme und Netzwerkzustellung sind die nächsten Grenzen.
 Der Baseq3-Waffenserver einschließlich Rail-Durchschüssen, Schrotstreuung und
 Quad-Skalierung ist inzwischen verbunden. Im Callback freigegebene
@@ -309,6 +491,148 @@ Eingaben überein. Verlust, Duplikate, Umordnung und Reconnect funktionieren;
 Originaldemos liefern gleiche normalisierte Snapshot-/Ereignisfolgen.
 Voraussetzungen: 3–6.
 
+**Begonnener Grundblock:** Die [Nachrichtenpuffer und der Huffman-Bitstrom](MESSAGE_IO.md)
+portieren `msg_t`-Zustand sowie Byte/Char/Short/Long/Data/C-String-Lesen und
+-Schreiben aus `qcommon/msg.c`. 17 direkte Original-C-Differenzdatensätze und
+24 Verträge decken Little Endian, Vorzeichen, Überlaufreserve, Lese-OOB und
+Stringgrenzen ab. Der adaptive Huffman-Baum und der komprimierte
+`MSG_WriteBits`-/`MSG_ReadBits`-Pfad ergänzen acht direkte Datensätze und 83
+Verträge. Die skalaren Integer-/Float-/Key-Deltas und beide Usercmd-Codecs
+ergänzen acht bytegenaue direkte Datensätze und 52 Verträge; abgedeckt sind
+8-/32-Bit-Zeiten, XOR-Key, Winkel, signierte Bewegungswerte und der gemeinsame
+Unchanged-Payload-Pfad. Die 51 EntityState- und 48 PlayerState-Netfields sind
+nun ebenfalls inklusive
+`lc`, Remove/No-Delta/Force, Float-Integraloptimierung und den vier
+PlayerState-Arraymasken portiert. 108 vollständige direkte Paketdatensätze
+und 28 Verträge sind grün; primitive Float-/Winkel-Helfer und die
+eigenständige Ganzpuffer-Kompression bleiben offen.
+
+Die Server-Snapshot-Deltakette bildet jetzt `SV_EmitPacketEntities`, den
+Snapshot-Ring, Deltaframe-Verfall und die Payload aus Header, Areabits,
+Playerstate und Packetentities ab. Sechs vollständige Paketstreams stimmen
+bytegenau mit dem unveränderten Original überein; 26 Serververträge sind grün.
+Der Frameaufbau aus `SV_AddEntToSnapshot`, `SV_QsortEntityNumbers`,
+`SV_AddEntitiesVisibleFromPoint` und `SV_BuildClientSnapshot` ist ebenfalls
+portiert. Fünf direkte Original-C-Szenarien und 26 Verträge decken PVS-/Area-
+Filter, sämtliche Clientflags, Broadcast, Portalrekursion, Viewpoint,
+Areabit-Invertierung, Sortierung und Ringablage ab. Collision/PVS/Area bleiben
+explizite Hostdienste. Der konkrete Runtime-Adapter verbindet sie mit dem
+geladenen BSP, `server.world` und den Game-Entity-/PlayerState-Strukturen.
+16 assetfreie Verträge sowie ein `q3dm0`-Retail-Lauf vom tatsächlichen
+Player-Spawn bis zum 62-Byte-Snapshotpaket sind grün.
+Die davor liegende Reliable-Command-Einbettung portiert den 64er-Befehlsring,
+Sequenz und Acknowledgement sowie das erneute Senden ausstehender Befehle. Sieben
+weitere vollständige komprimierte Streams und 19 Verträge sind grün.
+Die vollständige serverseitige Sendeorchestrierung verbindet Client-Ack,
+Reliable-Befehle, Deltaauswahl, Flags, Payload, Padding, Downloadcallback und EOF
+mit einer klaren Netchan-Übergabe. Sechs komplette Nachrichten und 25 Verträge
+prüfen zusätzlich Frame-Metadaten sowie Rate-, Inaktiv-, Loopback- und LAN-Timing.
+Die konkrete `server/pipeline.ml` verbindet Runtime-Frameaufbau, Frameslot und
+Entity-Ringzähler mit Snapshot-Senden, Downloadfenster und Netchan. Elf
+Integrationsverträge decken auch einen über zwei Fragmente gesendeten
+2.048-Byte-Download ab.
+Das serverseitige Downloadfenster ergänzt acht Ringslots, 2.048-Byte-Blöcke,
+EOF, Block-Acks und Timeout-Resend. Zwölf direkte Originaldatensätze und 19
+Verträge einschließlich Rate- und Nachrichtenbudget sind grün.
+Der Client-Gegenpfad portiert `CL_DeltaEntity` und `CL_ParsePacketEntities` und
+dekodiert den gemischten Original-Serverstream in fünf Entities; insgesamt
+bestehen dort 15 Verträge. Davon getrennt portiert `CL_ParseSnapshot` Header,
+Deltaframe-Gültigkeit, Areamask, Playerstate/Packetentities, Clientframe-Ring,
+Lückenentwertung, Ping und Demo-Warteflag. Vier direkte Zustandsübergänge aus den
+unveränderten Client-Funktionskörpern und zehn Verträge sind grün.
+`CL_ParseCommandString` und `CL_ParseServerMessage` sind als äußerer Dispatcher
+ergänzt. Drei direkte Original-C-Übergänge und zehn Verträge decken
+Acknowledgement-Reparatur, Duplikate, 64er-Commandring sowie
+`nop`/`snapshot`/`EOF` und den vollständigen Reliable-plus-Snapshot-Stream ab.
+`CL_ParseDownload` ergänzt Blocknummer, Dateigröße/Serverfehler, Dateiöffnung,
+`stopdl`/`nextdl`, Bytezähler und EOF mit Close/Rename, doppeltem Packet-Ack und
+nächstem Download. Vier unveränderte C-Zustandsfolgen und 20 Verträge sind grün.
+`CL_ParseGamestate` ergänzt Configstring-Speicher/-Offsets, BigString, Baselines,
+Clientnummer und Checksum-Feed. Ein unveränderter C-Übergang und zwölf Verträge
+sind grün. `CL_SystemInfoChanged` ergänzt Server-ID, Demo-Schranke, Cheat-Reset,
+Pure-Pak-Listen, geordnete Cvar-Übernahme, `fs_game`-Korrektur und Pure-Status.
+Fünf unveränderte C-Übergänge und 22 Verträge sind grün; konkrete Cvar- und
+Dateisystemoperationen bleiben Hostdienste. Die konkrete `client/protocol_runtime.ml` verdrahtet Gamestate,
+Download und Snapshot mit dem Server-Message-Dispatcher. Zwölf Integrationsverträge
+prüfen Reset, Sequenzübernahme, Baseline-Synchronisierung und eine gemeinsame
+Gamestate-/Download-/Snapshot-Nachricht. Das Demo-Dateiframing portiert `CL_WriteDemoMessage`,
+`CL_DemoFilename` und `CL_ReadDemoMessage`. Zwölf direkte Datensätze aus den
+unveränderten Funktionskörpern und 27 Verträge decken Dateibytes,
+Netchan-Headerentfernung, Sequenz-/Zeitübergänge, EOF, Trunkierung, Größenlimits,
+Dateinamen und den synthetischen Start-Gamestate ab. Reale Dateizugriffe,
+die laufende Demo-/Timedemo-Schleife und Live-Netzwerkzustellung
+bleiben offen.
+
+Der serverseitige OOB-Kern portiert den 1.024er Challenge-Ring, LAN-/Authorize-
+Policy, Protokoll-/Ping-/Reconnect-Prüfung und öffentliche, private sowie lokale
+Bot-Slotwahl. 13 direkte Original-C-Datensätze und 26 Verträge sind grün;
+DNS, Autorisierungsserver, Game-VM-Aufnahme und UDP bleiben Hostdienste.
+Der connectionless Dispatcher portiert zusätzlich `SV_ConnectionlessPacket` und
+verbindet `getchallenge` und `connect` mit diesem OOB-Kern. `getstatus`, `getinfo`,
+`rcon`, `ipAuthorize`, unbekannte Befehle und die Connect-Dekompression laufen
+über klar benannte Hostdienste. Acht exakte Dispatch-Datensätze aus dem
+unveränderten C-Funktionskörper und 18 MiniLang-Verträge sind grün.
+
+Der [deterministische Netchan-Kern](NETCHAN.md) ergänzt Setup, Sequenz- und
+qport-Header, Versandaufteilung, das Null-Endfragment bei exakten 1300-Byte-
+Vielfachen, Drop-/Duplikaterkennung und geordnete Empfangsmontage. 29 direkte
+Baseq3-Differenzdatensätze mit vollständigen Paketbytes und 29 Verträge sind grün. `NET_SendPacket` bleibt
+eine explizite UDP-Dienstgrenze. Die darauf aufbauende Client-Schicht portiert
+alle fünf Funktionen aus `client/cl_net_chan.c`: neun unveränderte C-Übergänge
+mit vollständigen Paketbytes und 18 Verträge prüfen Encode/Decode, EOF-Anhang,
+Transmit, Fragmentfortsetzung und Process. OOB/Handshake und echte
+Interoperabilität sind offen.
+Der eingehende Client-OOB-Pfad portiert zusätzlich `CL_CheckForResend`,
+`CL_DisconnectPacket` und `CL_ConnectionlessPacket`. 17 direkte unveränderte
+C-Übergänge und 27 Verträge decken Proxy-Handoff, Connectvalidierung,
+NetChan-Setup, Info/Status/Print, Disconnect-Spoofschutz, LAN-/WAN-Resend und die
+exakte quotierte Connect-Nutzlast ab. UDP und Browserdatenhaltung bleiben
+Hostgrenzen. Details: [CLIENT_CONNECTIONLESS.md](CLIENT_CONNECTIONLESS.md).
+Die Serverschicht ergänzt XOR-Encode/Decode, `svc_EOF`, Fragmentfortsetzung und
+die unkodierte FIFO für Nachrichten, die während eines Fragmentstroms entstehen.
+Zwölf direkte Datensätze aus allen fünf unveränderten `SV_Netchan_*`-Körpern und
+26 Verträge vergleichen vollständige Paketbytes und Zustände, einschließlich
+beider Process-Headerbreiten und Queue-Pop nach dem letzten Fragment.
+Die [Windows-UDP-Plattform](UDP_PLATFORM.md) stellt darunter eine kleine
+Winsock-x64-DLL und einen MiniLang-Wrapper für Startup, nichtblockierende
+IPv4-Sockets, Bind, Send/Receive und Close bereit. Zwei Localhost-Sockets
+bestehen 13 Verträge mit exakten 9- und 2.048-Byte-Binärpayloads sowie
+Adress-/Port-Roundtrip und leerer Receive-Queue. Die Live-Verkabelung der
+Client-/Server-Netzwerkschleife mit dieser Plattformgrenze bleibt offen.
+Der [UDP-Netztransport](NET_TRANSPORT.md) schließt nun die nächste Schicht:
+IPv4-Konvertierung, Netchan-`sendPacketFn`, nichtblockierender Empfang,
+Connectionless-Textpakete und der ab Byte 12 adaptive komprimierte
+`connect`-Datensatz laufen über echte Localhost-Sockets. 15 Verträge sind
+grün; `Huff_Compress` und `Huff_Decompress` erhöhen das unveränderte
+Huffman-C-Orakel auf zehn Datensätze. Der Client-Paketeingang portiert außerdem
+`CL_PacketEvent` mit neun direkten C-Datensätzen und 23 Verträgen. Offen ist
+die Engine-Frame-Pollschleife, welche die Sockets fortlaufend leert.
+Der [Network-Runtime-Block](NETWORK_RUNTIME.md) ergänzt inzwischen eine
+budgetierte, faire Pollschleife, `SV_PacketEvent` und den äußeren
+`SV_ExecuteClientMessage`-Parser und den Befehlsdispatcher
+`SV_ExecuteClientCommand`. 20 Pump-Verträge, zehn direkte
+Server-PacketEvent-C-Datensätze plus 28 Verträge sowie 13 direkte
+ClientMessage-C-Datensätze plus 15 Verträge sowie neun direkte
+Command-Dispatcher-C-Datensätze plus 16 Verträge sind grün. Ein echter
+20-Verträge-Localhostlauf durchläuft Challenge, komprimierten Connect,
+ConnectResponse und das erste sequenzierte, serverseitig XOR-dekodierte Paket.
+Der Reliable-Rumpf von `SV_ClientCommand` stimmt in elf direkten C-Datensätzen
+überein und besteht 20 Verträge. Der produktive Ingress-Adapter verbindet die
+gesamte Kette über echte Localhost-Sockets und besteht 19 End-to-End-Verträge.
+`SV_UserMove` stimmt in zwölf direkten C-Datensätzen überein und besteht 30
+Verträge. Weitere 14 Integrationsverträge verbinden ClientMessage,
+Reliable-Command, Dispatcher und UserMove über einen gemeinsamen Clientzustand.
+Damit ist der sequenzierte Server-Eingabepfad geschlossen. Der Client-Ingress
+führt echte UDP-Pakete zusätzlich bis `CL_ParseServerMessage`; 21 Verträge sind
+grün. Der Desktop-Framehost verwaltet Winsock, beide Sockets, Pumpbudget,
+Zeitfortschritt und Shutdown in 25 Verträgen. `SV_CalcPings` ergänzt vier
+direkte C-Datensätze und 16 Verträge. `SV_CheckTimeouts` ergänzt sechs direkte
+C-Datensätze und 24 Verträge, `SV_CheckPaused` 23 und 22 sowie
+`SV_SendClientMessages`/`SV_RateMsec` drei und 19. Die äußere
+`SV_Frame`-Komposition stimmt anschließend in neun direkten C-Datensätzen
+überein und besteht 28 Verträge, einschließlich Heartbeat-, Restart-,
+Info-Config-, Bot- und Game-Frame-Reihenfolge.
+
 ## 8. Renderer und Client-Präsentation originalgetreu portieren
 
 **Quellen:** `code/renderer/`, `code/cgame/cg_*.c`, `code/qcommon/qfiles.h`.
@@ -324,12 +648,103 @@ Backends erst nach der klassischen Vergleichsbasis planen.
 **Ergebnis:** `src/renderer/`, `src/cgame/` und ein deterministischer Screenshot-
 Runner mit festgelegter Kamera, Zeit, Auflösung, Cvars und Treiberprofil.
 
+Der erste [Renderer-Datenbaustein](RENDERER_FOUNDATION.md) portiert inzwischen
+Shader-Hash, Textindex und Definitionensuche aus `tr_shader.c`. Zehn direkte
+C-Datensätze und zehn Verträge sind grün. Shader-/Stage-/TexMod-Analyse ergänzt
+30 direkte C-Datensätze und 32 Verträge; der TGA-Decoder weitere fünf und 22.
+Resampling, Licht-/Gamma-Skalierung und beide Mipmap-Pfade ergänzen zehn direkte
+C-Datensätze und 19 Verträge. `RB_SurfacePolychain` startet die CPU-Tessellation
+mit drei direkten Datensätzen und 21 Verträgen. Die Bildregistrierung ist
+inzwischen als CPU-seitiger Cache- und Uploadplan mit acht
+direkten C-Datensätzen und 29 Verträgen vorhanden. `RB_SurfaceTriangles` und
+`RB_SurfaceFace` ergänzen drei C-Datensätze und 30 Verträge. Die Texturzustände
+`GL_Bind`, `GL_SelectTexture` und `GL_BindMultitexture` bestehen 18 direkte
+C-Datensätze und 30 Verträge. `RB_SurfaceGrid` ergänzt fünf C-Datensätze und 30
+Verträge; die Renderer-Commandqueue mit SetColor, StretchPic, DrawBuffer und Swap
+weitere sieben und 29. MD3-Interpolation und Mesh-Einreichung ergänzen drei
+direkte C-Datensätze und 31 Verträge. MD3-Tags/Modellgrenzen, View-Transformation
+und Frustum-Culling sowie rotierte Sprite-Quads ergänzen 24 direkte C-Datensätze
+und 93 Verträge. Als Nächstes folgen weitere Flächentypen und die tatsächliche
+OpenGL-Ausgabe.
+
+Die Szenenaufnahme verwaltet Polygone samt Fog, Referenzentities und dynamische
+Lichter mit sechs Headerwerten und 24 Verträgen. Draw-Surfaces verwenden das
+exakte QSORT-Bitlayout, einen maskierten Ringpuffer und stabile Sortierung; fünf
+C-Datensätze und 34 Verträge sind grün.
+
+Ein erster [spielbarer Preview-Vertical-Slice](PLAYABLE_PREVIEW.md) lädt BSP46
+aus der Retail-PK3, wählt einen Deathmatch-Spawn und verbindet MiniLang-Kamera,
+Near-Clipping, Brush-/Patchkollision, ein Bitmap-Menü und lichtgemappte
+BSP-Dreiecke mit einem echten Win32-Fenster. Ein CPU-Rasterizer stellt
+perspektivisch interpolierte UVs, Tiefenpuffer, Alpha und bis zu 64 Lightmaps
+bereit. Kamera/Projektion bestehen 50, BSP-Wireframe 34 und Renderdaten samt
+adaptiver Bezier-Patch-Tessellation 55 Verträge. Der WinMM-Pfad lädt außerdem PCM-WAV direkt aus `pak0.pk3`; 35
+Parser-Verträge sowie native Build-/Lifecycle-Prüfungen sind grün. Der
+Materialpfad wertet `map`, `clampMap` und das erste `animMap`-Bild aus und
+multipliziert TGA/JPEG-Basistexuren mit BSP-Lightmaps; 20 Verträge sind grün.
+Der spielbare Controller ergänzt Gravitation, Boden-/Luftbeschleunigung, Reibung,
+ Sprung, Sliding und Stufen mit 26 Verträgen. Das spielbare HUD verwendet nun 32
+ originale Baseq3-Texturen für Fadenkreuz, Ziffern, Sarge-Porträt, Health, Armor,
+ Ammo, Waffen-, Pickup- und Frag-Anzeigen; 28 eigene Verträge und die bestehenden
+ 62 HUD-Verträge sind grün. Der Fenstertitel zeigt geglättete FPS. Der Retail-Smoke lädt für
+`q3dm1` 78 Texturen aus 27 Shader-Skripten, tesselliert 113 Patches und beendet
+ 30 Frames erfolgreich. Vorberechnete Kameraprojektion, direkte MD3-Transformationen
+ und ein scanline-begrenzter inkrementeller Rasterizer senken die gemessene Framezeit
+ im gleichen 30-Frame-Lauf von etwa 292 auf 96 ms. Ein weiterer Gameplay-Slice lädt 18 q3dm1-Items direkt
+aus dem BSP, simuliert Pickup und Respawn, aktualisiert das HUD und ergänzt eine
+kollisionsgeprüfte Hitscan-Waffe mit Ammo/Cooldown. Die 18 q3dm1-Items werden
+inzwischen als originale, texturierte und rotierende/bobbende MD3-Modelle
+gezeichnet. Item-, Waffen- und Effektlogik bestehen 33, 34 und 31 Verträge; der gemeinsame
+Retail-Smoke läuft 60 Frames. Fünf lokale Ziele aus den übrigen q3dm1-Spawns
+ergänzen Health, Hitscan-Schaden, Frag-Score und Drei-Sekunden-Respawn. Sie
+prüfen Sicht durch BSP-Traces, patrouillieren, verfolgen, strafet und greifen
+den Spieler an. Armor-Schadensaufnahme, Tod, Spawnwechsel, Spawn-Schutz und
+Respawn des Spielers sind integriert. Die First-Person-Ansicht wechselt mit dem
+Pickup auf das jeweilige originale texturierte Waffen-MD3; Feuerintervalle und
+Direktschäden folgen den Baseq3-Waffenprofilen. Rückstoß, Hitmarker und K/D
+bestehen weitere 40 Verträge;
+Spielerzustand und Gegner-KI weitere 24 und 17. Der echte Sarge wird aus Lower,
+Upper und Head über `tag_torso` und `tag_head` zusammengesetzt, aus seiner
+`animation.cfg` interpoliert und mit den beiden Default-Skinbildern texturiert.
+Der Nahbereich zeichnet alle 795 Sarge-Dreiecke mit aufgelösten Skins und
+Normalenlicht; mittlere und weite LODs behalten alle Modellflächen. 37 MD3-,
+27 Animations-, 32 Assembly- und 25 Skin-Verträge sowie Retail-Assetproben
+sichern den Pfad. Pro Ziel wählen Gameplay-Ereignisse nun Idle, Walk, Run,
+Attack, Pain, Death und Respawn; 22 Ereignis- und 29 Zustandsverträge prüfen die
+Übergänge. Ein quantisierter Pose-/LOD-Cache besteht 25 weitere Verträge. Die
+Weltgeometrie wird vollständig gecacht und pro Kamera über Leaf/PVS, Frustum,
+Distanz und Backface ausgewählt; q3dm1 nutzt am Testspawn 324 Flächen mit rund
+1.766 Dreiecken aus insgesamt 12.203. Welt-
+und Spielermaterialien teilen denselben Shaderindex und halbieren damit ungefähr
+die gemessene Asset-Smoke-Zeit. Vollständige Shaderstufen, exakte cgame-
+Animationsmischung, QVM-Entities und die Matchschleife folgen. Gegnerbewegung
+wird inzwischen mit Spielerhülle, Wall-Slide, 18-Unit-Step und Bodenbindung
+gegen das BSP aufgelöst. Angriffe erzeugen 420 Units/s schnelle Plasma-Projektile
+mit BSP-/Spielertreffer, einmaligem Schaden, Trail, Glow, Einschlag und originalen
+Sounds. Bewegung, Projektilsimulation und Darstellung bestehen weitere 22, 25
+und 35 Verträge sowie eine q3dm1-Kollisionsprobe.
+
+Der äußere [Client-Frame](CLIENT_MAIN_FRAME.md) ist ebenfalls vorhanden:
+Timeout, Userinfo, Menüs, AVI-Zeit und die SendCmd-/Resend-/Cgame-/Screen-/
+Sound-/Cinematic-/Console-Reihenfolge stimmen in 13 direkten C-Datensätzen
+überein und bestehen 28 Verträge. Renderer-, Audio- und UI-Callbacks sind nun
+an einem produktiven Framevertrag anschließbar.
+
+Die [Clientzeit](CGAME_TIME.md) verbindet Snapshots mit dem cgame-Frame. Reset-,
+Fast- und Slow-Drift, erste aktive Snapshots, Pause, `timeNudge`, Demo-Freeze,
+Timedemo und Demo-Nachladen bestehen vier direkte Headerwerte und 26 Verträge.
+
 **Abnahme:** Repräsentative Originalkarten zeigen keine fehlenden Materialien,
 Modelle oder Effekte. Szenen-/Draw-Traces stimmen überein; Bildvergleiche bestehen
 vorab festgelegte, begründete Toleranzen. CPU-Geometrie und Shader-Auswertung
 werden zusätzlich unabhängig vom GPU-Bild verglichen. Voraussetzungen: 5–7.
 
 ## 9. Bots, Audio, Menüs und Cinematics vervollständigen
+
+Der erste [Audiokern](AUDIO.md) überträgt 24.8-Mixwerte exakt in Mono-/Stereo-
+DMA-Ringpuffer mit 8/16 Bit. Sieben direkte C-Datensätze und 20 Verträge sind
+grün. Das Kanalpainting aus 16-Bit-Quellen ergänzt sieben direkte C-Datensätze
+und 32 Verträge; Streaming und das Windows-Audiogerät folgen.
 
 **Quellen:** `code/botlib/`, `code/game/ai_*.c`, `code/q3_ui/`,
 `code/client/snd_*.c`, `code/client/cl_cin.c` und die Eingabe-/Soundteile der Plattformschicht.

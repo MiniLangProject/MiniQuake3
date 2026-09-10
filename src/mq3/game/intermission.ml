@@ -1,7 +1,7 @@
 // Copyright (C) 1999-2005 Id Software, Inc.
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Baseq3 intermission placement, match completion and level-exit orchestration.
-// Bot interbreeding and single-player victory presentation are explicit hosts.
+// Single-player victory presentation remains overrideable for oracle fixtures.
 package mq3.game.intermission
 import mq3.game.constants as c
 import mq3.game.player_spawns as intermissionSpawns
@@ -10,6 +10,8 @@ import mq3.game.team_changes as intermissionTeamChanges
 import mq3.game.tournament as intermissionTournament
 import mq3.game.scores as intermissionScores
 import mq3.game.session as intermissionSessions
+import mq3.game.arenas as intermissionArenas
+import mq3.game.bot_lifecycle as intermissionBots
 
 function intermissionClientLimit(limit)
   if limit < 0 or limit > 64 then return error(487,"Invalid intermission client limit") end if
@@ -43,10 +45,10 @@ function begin(level)
   if level.spawner.gametype == 1 then intermissionTournament.adjustScores(level) end if
   level.intermissiontime = level.time; intermissionSpawns.findIntermission(level)
   if level.spawner.gametype == 2 then
-    if level.updateTournamentInfoFn == void then return error(487,"Single-player intermission requires tournament postgame delivery") end if
-    level.updateTournamentInfoFn(level)
-    if level.spawnVictoryPadsFn == void then return error(487,"Single-player intermission requires victory-pad delivery") end if
-    level.spawnVictoryPadsFn(level)
+    if level.updateTournamentInfoFn != void then level.updateTournamentInfoFn(level)
+    else intermissionArenas.updateTournamentInfo(level) end if
+    if level.spawnVictoryPadsFn != void then level.spawnVictoryPadsFn(level)
+    else intermissionArenas.spawnModelsOnVictoryPads(level) end if
   end if
   count = intermissionClientLimit(level.maxclients); index = 0
   while index < count
@@ -63,8 +65,11 @@ function begin(level)
 end function
 
 function exitLevel(level)
-  if level.botInterbreedEndMatchFn == void then return error(487,"ExitLevel requires bot interbreeding end-match delivery") end if
-  level.botInterbreedEndMatchFn(level)
+  if level.botInterbreedEndMatchFn != void then level.botInterbreedEndMatchFn(level)
+  else
+    if level.botLifecycleState == void then return error(487,"ExitLevel requires bot lifecycle state") end if
+    intermissionBots.endMatch(level.botLifecycleState)
+  end if
   if level.spawner == void then return error(487,"ExitLevel requires game spawn state") end if
   if level.spawner.gametype == 1 then
     if not level.restarted then

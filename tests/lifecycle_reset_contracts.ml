@@ -163,6 +163,8 @@ function lifecycleResetArrays(level)
   ent = level.entities[64]; r = ent.r; heldState = ent.s; client = level.clients[63]; heldPs = client.ps
   resetGame.initEntity(ent); ent.client = client; ent.health = 43; ent.targetname = "old"; ent.teamchain = level.entities[65]
   ent.item = 7; ent.touch = lifecycleResetHost; ent.movedir = [1.0,2.0,3.0]; ent.waterlevel = 3; ent.physicsBounce = 0.75
+  ent.pos1 = [7.0,8.0,9.0]; ent.pos2 = [10.0,11.0,12.0]; ent.reached = lifecycleResetHost; ent.blocked = lifecycleResetHost
+  ent.soundPos1 = 1; ent.sound1to2 = 2; ent.sound2to1 = 3; ent.soundPos2 = 4; ent.soundLoop = 5
   ent.s.pos.trBase = [4.0,5.0,6.0]; ent.s.event = 92
   r.number = 64; r.modelindex = 2; r.solid = 3; r.origin = [1.0,2.0,3.0]; r.angles = [4.0,5.0,6.0]
   r.linked = true; r.linkcount = 9; r.svFlags = 15; r.bmodel = true; r.mins = [-1.0,-2.0,-3.0]; r.maxs = [1.0,2.0,3.0]
@@ -182,7 +184,9 @@ function lifecycleResetArrays(level)
     "entity-array reset keeps entity and shared-r identity")
   count = count+lifecycleResetRequire(ent.slot == 64 and ent.s != heldState and lifecycleResetZero(resetEntityState.words(ent.s),52),"entity metadata slot survives while all network words reset")
   count = count+lifecycleResetRequire(ent.client is void and not ent.inuse and ent.classname is void and ent.health == 0 and ent.targetname is void and ent.teamchain is void and
-    ent.item is void and ent.touch is void and lifecycleResetZero(ent.movedir,3) and ent.waterlevel == 0 and ent.physicsBounce == 0.0,"private entity state becomes zero without G_InitGentity defaults")
+    ent.item is void and ent.touch is void and lifecycleResetZero(ent.movedir,3) and lifecycleResetZero(ent.pos1,3) and lifecycleResetZero(ent.pos2,3) and
+    ent.reached is void and ent.blocked is void and lifecycleResetZero([ent.soundPos1,ent.sound1to2,ent.sound2to1,ent.soundPos2,ent.soundLoop],5) and
+    ent.waterlevel == 0 and ent.physicsBounce == 0.0,"private entity state becomes zero without G_InitGentity defaults")
   count = count+lifecycleResetRequire(lifecycleResetZero([r.number,r.modelindex,r.solid,r.linkcount,r.svFlags,r.contents,r.ownerNum,r.singleClient],8) and not r.linked and not r.bmodel and
     lifecycleResetZero(r.origin,3) and lifecycleResetZero(r.angles,3) and lifecycleResetZero(r.mins,3) and lifecycleResetZero(r.maxs,3) and lifecycleResetZero(r.absmin,3) and
     lifecycleResetZero(r.absmax,3) and lifecycleResetZero(r.currentOrigin,3) and lifecycleResetZero(r.currentAngles,3),"all modeled shared-r bytes become zero")
@@ -290,7 +294,8 @@ function run(world)
     level.playerSpeed == 0.0 and level.pmoveMsec == 0 and level.warmup == 0 and not level.gameCvars.registered and lifecycle.vm(level,"g_gravity").integer == 0,
     "fresh VM snapshots are zero before Register despite existing engine values and constructor defaults")
   count = count+lifecycleResetRequire(level.randSeed == 1 and level.deathAnimIndex == 0 and lifecycleResetZero(level.itemRegistered,256) and len(level.shaderRemaps) == 0 and
-    level.weaponState == void and level.ipFilters == void and level.memoryState == void and level.serverCommands == void and level.cvarMaintenance != oldMaintenance and
+    level.weaponState == void and level.ipFilters == void and level.memoryState == void and level.serverCommands != void and
+    level.serverCommands.addBotFn == lifecycle.populationAddCommand and level.serverCommands.botListFn == lifecycle.populationListCommand and level.cvarMaintenance != oldMaintenance and
     level.cvarMaintenance.lastPasswordModificationCount == -1,"fresh VM resets module statics and restores initialized static defaults")
   count = count+lifecycleResetRequire(lifecycleResetZero([level.redFlagStatus,level.blueFlagStatus,level.neutralFlagStatus,level.redTakenTime,level.blueTakenTime,
     level.lastFlagCapture,level.lastCaptureTeam,level.redObeliskAttackedTime,level.blueObeliskAttackedTime],9),"fresh VM also clears every teamgame static")

@@ -1,0 +1,137 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Camera-projected player silhouettes for the local playable preview.
+package mq3.client.playable_target_render
+
+import mq3.client.playable_viewer as viewer
+import mq3.platform.playable_window as window
+import mq3.compat.numeric as numeric
+
+const DEFAULT_MAX_HEALTH=100
+const DEFAULT_RESPAWN_MILLISECONDS=3000
+const DEFAULT_HIT_FLASH_MILLISECONDS=120
+
+struct PreviewTarget origin health maxHealth alive respawnAt hitFlashUntil end struct
+struct LineCommand a b red green blue end struct
+
+function validPoint(point) return point!=void and len(point)==3 end function
+function point(x,y,depth) return viewer.ScreenPoint(x,y,depth) end function
+function line(a,b,rgb) return LineCommand(a,b,rgb[0],rgb[1],rgb[2]) end function
+
+function target(origin,health,maxHealth)
+  if not validPoint(origin) then return error(7530,"preview target needs a three-component origin") end if
+  if maxHealth<=0 then return error(7531,"preview target maximum health must be positive") end if
+  value=health;if value<0 then value=0 end if;if value>maxHealth then value=maxHealth end if
+  return PreviewTarget([numeric.f32(origin[0]),numeric.f32(origin[1]),numeric.f32(origin[2])],value,maxHealth,value>0,0,0)
+end function
+
+function healthFraction(value)
+  if value==void or value.maxHealth<=0 or value.health<=0 then return 0.0 end if
+  if value.health>=value.maxHealth then return 1.0 end if
+  return numeric.fdiv(numeric.f32(value.health),numeric.f32(value.maxHealth))
+end function
+
+function respawnRemaining(value,nowMilliseconds)
+  if value==void or value.alive or value.respawnAt<=nowMilliseconds then return 0 end if
+  return value.respawnAt-nowMilliseconds
+end function
+
+function hit(value,damage,nowMilliseconds)
+  if value==void then return error(7532,"hit needs a preview target") end if
+  if damage<0 then return error(7533,"hit damage cannot be negative") end if
+  if not value.alive then return false end if
+  value.health=value.health-damage
+  value.hitFlashUntil=nowMilliseconds+DEFAULT_HIT_FLASH_MILLISECONDS
+  if value.health<=0 then
+    value.health=0;value.alive=false;value.respawnAt=nowMilliseconds+DEFAULT_RESPAWN_MILLISECONDS
+  end if
+  return true
+end function
+
+function update(value,nowMilliseconds)
+  if value==void then return error(7534,"update needs a preview target") end if
+  if not value.alive and value.respawnAt>0 and nowMilliseconds>=value.respawnAt then
+    value.health=value.maxHealth;value.alive=true;value.respawnAt=0;value.hitFlashUntil=0
+    return true
+  end if
+  return false
+end function
+
+function bodyColor(value,nowMilliseconds)
+  if not value.alive then
+    if value.respawnAt>0 and nowMilliseconds>=value.respawnAt then return [96,255,128] end if
+    return [96,96,104]
+  end if
+  if nowMilliseconds<value.hitFlashUntil then return [255,255,255] end if
+  fraction=healthFraction(value)
+  if fraction<=0.25 then return [255,48,32] end if
+  if fraction<=0.5 then return [255,144,40] end if
+  return [80,176,255]
+end function
+
+function clampWidth(value)
+  result=numeric.trunc32(value)
+  if result<4 then return 4 end if
+  if result>24 then return 24 end if
+  return result
+end function
+
+function visibleBounds(feet,head,width,height)
+  if feet.x < -64 and head.x < -64 then return false end if
+  if feet.x > width+64 and head.x > width+64 then return false end if
+  if feet.y < -96 and head.y < -96 then return false end if
+  if feet.y > height+96 and head.y > height+96 then return false end if
+  return true
+end function
+
+function deadLines(feet,head,value,nowMilliseconds)
+  rgb=bodyColor(value,nowMilliseconds);cx=(feet.x+head.x)/2;cy=(feet.y+head.y)/2;d=feet.depth
+  size=clampWidth((feet.y-head.y)*0.22)
+  a=point(cx-size,cy-size,d);b=point(cx+size,cy-size,d);c=point(cx+size,cy+size,d);e=point(cx-size,cy+size,d)
+  result=[line(a,c,rgb),line(b,e,rgb)]
+  if value.respawnAt>0 then result=result+[line(a,b,rgb),line(b,c,rgb),line(c,e,rgb),line(e,a,rgb)] end if
+  return result
+end function
+
+function aliveLines(feet,hips,chest,head,value,nowMilliseconds)
+  rgb=bodyColor(value,nowMilliseconds);d=chest.depth
+  bodyHeight=feet.y-head.y;if bodyHeight<0 then bodyHeight=0-bodyHeight end if
+  shoulder=clampWidth(bodyHeight*0.22);headRadius=clampWidth(bodyHeight*0.1)
+  headTop=point(head.x,head.y-headRadius,d);headRight=point(head.x+headRadius,head.y,d)
+  headBottom=point(head.x,head.y+headRadius,d);headLeft=point(head.x-headRadius,head.y,d)
+  leftShoulder=point(chest.x-shoulder,chest.y,d);rightShoulder=point(chest.x+shoulder,chest.y,d)
+  leftHand=point(hips.x-shoulder,hips.y,d);rightHand=point(hips.x+shoulder,hips.y,d)
+  leftFoot=point(feet.x-shoulder/2,feet.y,d);rightFoot=point(feet.x+shoulder/2,feet.y,d)
+  result=[line(headTop,headRight,rgb),line(headRight,headBottom,rgb),line(headBottom,headLeft,rgb),line(headLeft,headTop,rgb)]
+  result=result+[line(leftShoulder,rightShoulder,rgb),line(leftShoulder,leftHand,rgb),line(rightShoulder,rightHand,rgb)]
+  result=result+[line(chest,hips,rgb),line(hips,leftFoot,rgb),line(hips,rightFoot,rgb)]
+  barY=head.y-headRadius-5;barLeft=head.x-shoulder;barRight=head.x+shoulder
+  dark=[28,28,32];result=result+[line(point(barLeft,barY,d),point(barRight,barY,d),dark)]
+  fill=barLeft+(barRight-barLeft)*healthFraction(value)
+  healthRgb=[64,255,80];if healthFraction(value)<=0.5 then healthRgb=[255,176,48] end if;if healthFraction(value)<=0.25 then healthRgb=[255,48,32] end if
+  result=result+[line(point(barLeft,barY-1,d),point(fill,barY-1,d),healthRgb)]
+  return result
+end function
+
+function targetLines(camera,value,nowMilliseconds,width,height,horizontalFovDegrees,nearDistance)
+  if value==void or not validPoint(value.origin) then return [] end if
+  origin=value.origin
+  feet=viewer.projectPoint(camera,[origin[0],origin[1],origin[2]+2.0],width,height,horizontalFovDegrees,nearDistance)
+  head=viewer.projectPoint(camera,[origin[0],origin[1],origin[2]+56.0],width,height,horizontalFovDegrees,nearDistance)
+  if feet==void or head==void or not visibleBounds(feet,head,width,height) then return [] end if
+  if not value.alive then return deadLines(feet,head,value,nowMilliseconds) end if
+  hips=viewer.projectPoint(camera,[origin[0],origin[1],origin[2]+22.0],width,height,horizontalFovDegrees,nearDistance)
+  chest=viewer.projectPoint(camera,[origin[0],origin[1],origin[2]+42.0],width,height,horizontalFovDegrees,nearDistance)
+  if hips==void or chest==void then return [] end if
+  return aliveLines(feet,hips,chest,head,value,nowMilliseconds)
+end function
+
+function frameLines(camera,targets,nowMilliseconds,width,height,horizontalFovDegrees,nearDistance)
+  result=[]
+  for each value in targets result=result+targetLines(camera,value,nowMilliseconds,width,height,horizontalFovDegrees,nearDistance) end for
+  return result
+end function
+
+function draw(lines)
+  for each entry in lines window.drawLine(entry.a,entry.b,entry.red,entry.green,entry.blue) end for
+  return len(lines)
+end function

@@ -11,6 +11,8 @@ import mq3.game.triggers as triggers
 import mq3.game.targets as targets
 import mq3.game.events as events
 import mq3.game.frame as frame
+import mq3.game.movers as movers
+import mq3.collision.visibility as vis
 import mq3.game.combat as combat
 import mq3.game.hazards as hazards
 import mq3.game.missiles as missiles
@@ -135,6 +137,10 @@ function checkLevel(check,level)
 end function
 function countSpawnThink(level,ent)
   ent.count = ent.count+1
+  return void
+end function
+function recordMoverRestore(level,kind,ent)
+  if kind == 1 then level.context = level.context+[ent.slot] end if
   return void
 end function
 function actionSlot(ent)
@@ -901,7 +907,29 @@ function runSpawnContracts(level)
   caught = try(spawn.load(s)); requireSpawnContract(caught is error,"empty map")
   other = spawn.create(level,"{ classname info_null }"); caught = try(spawn.load(other)); requireSpawnContract(caught is error,"first worldspawn")
   level.spawner = s; ent.classname = "item_quad"; requireSpawnContract(spawn.callSpawn(s,ent) and ent.item == 28 and ent.think == items.finishSpawning and ent.nextthink == level.time+200,"item spawn dispatch")
-  ent.classname = "func_door"; caught = try(spawn.callSpawn(s,ent)); requireSpawnContract(caught is error,"unported class")
+  level.spawner.gravity = 800.0
+  for each moverClass in ["func_static","func_rotating","func_bobbing","func_pendulum"]
+    mover = game.spawn(level); mover.classname = moverClass; mover.model = "*1"
+    requireSpawnContract(spawn.callSpawn(s,mover) and mover.s.eType == c.ET_MOVER and mover.r.linked,"mover spawn dispatch "+moverClass)
+    if moverClass == "func_pendulum" then
+      requireSpawnContract(mover.s.pos.trDuration == 1 and mover.s.apos.trDuration > 1,"pendulum preserves Baseq3 stationary and angular periods")
+    end if
+  end for
+  mover = game.spawn(level); mover.classname = "func_door"; mover.model = "*1"; mover.s.angles = [0.0,0.0,0.0]
+  requireSpawnContract(spawn.callSpawn(s,mover) and mover.s.eType == c.ET_MOVER and mover.r.linked and mover.moverState == 0,"door spawn dispatch")
+  mover.use(level,mover,mover,mover); requireSpawnContract(mover.moverState == 2 and mover.s.pos.trType == c.TR_LINEAR_STOP and mover.s.pos.trTime == level.time+50,"door starts binary motion")
+  oldVis = level.scene.world.visibility; portalAreas = oldVis.numAreas; if portalAreas < 2 then portalAreas = 2 end if
+  portalVis = vis.Visibility(oldVis.clusters,oldVis.areas,oldVis.numClusters,portalAreas,oldVis.clusterBytes,oldVis.data,oldVis.vised,array(portalAreas*portalAreas,0),array(portalAreas,0),false); level.scene.world.visibility = portalVis
+  mover.r.areanum = 0; mover.r.areanum2 = 1; movers.adjustAreaPortal(level,mover,true)
+  requireSpawnContract(portalVis.portals[1] == 1 and portalVis.portals[portalAreas] == 1,"door opens BSP area portal")
+  movers.adjustAreaPortal(level,mover,false)
+  requireSpawnContract(portalVis.portals[1] == 0 and portalVis.portals[portalAreas] == 0,"door closes BSP area portal at pos1")
+  plat = game.spawn(level); plat.classname = "func_plat"; plat.model = "*1"; plat.targetname = "remote"
+  requireSpawnContract(spawn.callSpawn(s,plat) and plat.s.eType == c.ET_MOVER and plat.parent == plat and plat.blocked != void,"platform spawn dispatch")
+  button = game.spawn(level); button.classname = "func_button"; button.model = "*1"
+  requireSpawnContract(spawn.callSpawn(s,button) and button.s.eType == c.ET_MOVER and button.touch != void and button.use != void,"button spawn dispatch")
+  train = game.spawn(level); train.classname = "func_train"; train.model = "*1"; train.target = "corner"
+  requireSpawnContract(spawn.callSpawn(s,train) and train.s.eType == c.ET_MOVER and train.reached != void and train.think != void,"train spawn dispatch")
   ent.classname = void; requireSpawnContract(not spawn.callSpawn(s,ent),"NULL classname")
   ent.classname = "INFO_PLAYER_START"; requireSpawnContract(not spawn.callSpawn(s,ent),"case-sensitive class")
   ent.think = void; ent.item = void
@@ -920,9 +948,55 @@ function runSpawnContracts(level)
   caught = try(funcs.setBrushModel(level,ent,"model")); requireSpawnContract(caught is error,"non-brush name")
   caught = try(funcs.setBrushModel(level,ent,"*999999")); requireSpawnContract(caught is error,"invalid inline model")
   fresh = game.create(level.scene.world); fresh.num_entities = 65; fresh.time = 1000; node = game.initEntity(fresh.entities[64])
-  for each type in [2,4]
+  for each type in [2]
     node.s.eType = type; caught = try(frame.runEntities(fresh)); requireSpawnContract(caught is error,"missing entity frame handler")
   end for
+  node.s.eType = c.ET_MOVER; node.think = countSpawnThink; node.nextthink = fresh.time; node.count = 0
+  caught = try(frame.runEntities(fresh)); requireSpawnContract(not (caught is error) and node.count == 1 and node.nextthink == 0,"mover frame uses actual handler")
+  pushLevel = game.create(level.scene.world); pushLevel.num_entities = 66; pushLevel.previousTime = 1000; pushLevel.time = 1100
+  pusher = game.initEntity(pushLevel.entities[64]); pusher.s.eType = c.ET_MOVER; pusher.r.contents = 1; pusher.r.mins = [-16.0,-16.0,-8.0]; pusher.r.maxs = [16.0,16.0,8.0]
+  pusher.s.pos.trType = c.TR_LINEAR_STOP; pusher.s.pos.trTime = 1000; pusher.s.pos.trDuration = 1000; pusher.s.pos.trBase = [0.0,0.0,256.0]; pusher.s.pos.trDelta = [100.0,0.0,0.0]; pusher.r.currentOrigin = [0.0,0.0,256.0]; game.link(pushLevel,pusher)
+  rider = game.initEntity(pushLevel.entities[65]); rider.s.eType = c.ET_ITEM; rider.physicsObject = true; rider.r.contents = 1; rider.r.mins = [-4.0,-4.0,-4.0]; rider.r.maxs = [4.0,4.0,4.0]
+  rider.s.pos.trBase = [0.0,0.0,269.0]; rider.r.currentOrigin = [0.0,0.0,269.0]; rider.s.groundEntityNum = 64; game.link(pushLevel,rider); movers.run(pushLevel,pusher)
+  requireSpawnContract(rider.s.pos.trBase[0] == 10.0 and pusher.r.currentOrigin[0] == 10.0,"linear mover carries grounded entity")
+  rollbackLevel = game.create(level.scene.world); rollbackLevel.num_entities = 65
+  rider = game.initEntity(rollbackLevel.entities[64]); rider.s.eType = c.ET_PLAYER; rider.client = game.createClient(ps.create(),0,[0,0,0]); rider.r.contents = 0x2000000
+  rider.s.pos.trBase = [30.0,40.0,50.0]; rider.s.apos.trBase = [1.0,2.0,3.0]; rider.client.ps.origin = [31.0,41.0,51.0]; rider.client.ps.delta_angles[1] = 222
+  movers.restorePush(rollbackLevel,[rider,[10.0,20.0,30.0],[4.0,5.0,6.0],111])
+  requireSpawnContract(rider.s.pos.trBase == [10.0,20.0,30.0] and rider.s.apos.trBase == [4.0,5.0,6.0] and rider.client.ps.origin == [10.0,20.0,30.0] and rider.client.ps.delta_angles[1] == 111,"mover rollback restores origin, angles, and client yaw")
+  rotateLevel = game.create(level.scene.world); rotateLevel.num_entities = 66; rotateLevel.previousTime = 1000; rotateLevel.time = 1100
+  rotator = game.initEntity(rotateLevel.entities[64]); rotator.s.eType = c.ET_MOVER; rotator.r.contents = 1; rotator.r.mins = [-16.0,-16.0,-8.0]; rotator.r.maxs = [16.0,16.0,8.0]
+  rotator.s.pos.trBase = [0.0,0.0,1024.0]; rotator.s.apos.trType = c.TR_LINEAR; rotator.s.apos.trTime = 1000; rotator.s.apos.trBase = [0.0,0.0,0.0]; rotator.s.apos.trDelta = [0.0,90.0,0.0]; rotator.r.currentOrigin = [0.0,0.0,1024.0]; game.link(rotateLevel,rotator)
+  rider = game.initEntity(rotateLevel.entities[65]); rider.s.eType = c.ET_ITEM; rider.physicsObject = true; rider.r.contents = 1; rider.r.mins = [-4.0,-4.0,-4.0]; rider.r.maxs = [4.0,4.0,4.0]
+  rider.s.pos.trBase = [10.0,0.0,1038.0]; rider.r.currentOrigin = [10.0,0.0,1038.0]; rider.s.groundEntityNum = 64; game.link(rotateLevel,rider); movers.run(rotateLevel,rotator)
+  requireSpawnContract(rotator.r.currentAngles[1] != 0.0 and (rider.s.pos.trBase[0] != 10.0 or rider.s.pos.trBase[1] != 0.0),"rotating mover carries grounded entity around its axis")
+  clientRider = game.initEntity(rotateLevel.entities[66]); rotateLevel.num_entities = 67; clientRider.s.eType = c.ET_PLAYER; clientRider.client = game.createClient(ps.create(),0,[0,0,0])
+  clientRider.r.mins = [-4.0,-4.0,-4.0]; clientRider.r.maxs = [4.0,4.0,4.0]; clientRider.s.pos.trBase = [10.0,0.0,1050.0]; clientRider.client.ps.origin = [10.0,0.0,1050.0]
+  pushedClient = movers.tryPush(rotateLevel,clientRider,rotator,[0.0,0.0,0.0],[0.0,9.0,0.0])
+  requireSpawnContract(pushedClient[0] and clientRider.client.ps.origin[1] != 0.0 and clientRider.client.ps.delta_angles[1] == 1638,"rotating mover carries client and adjusts view yaw")
+  restoreLevel = game.create(level.scene.world); restoreLevel.context = []; restoreLevel.observeFn = recordMoverRestore
+  first = game.initEntity(restoreLevel.entities[62]); second = game.initEntity(restoreLevel.entities[63])
+  first.r.mins = [-1.0,-1.0,-1.0]; first.r.maxs = [1.0,1.0,1.0]; second.r.mins = [-1.0,-1.0,-1.0]; second.r.maxs = [1.0,1.0,1.0]
+  first.r.currentOrigin = [31.0,0.0,1024.0]; second.r.currentOrigin = [32.0,0.0,1024.0]
+  records = [[first,[11.0,0.0,1024.0],[0.0,1.0,0.0],111],[second,[22.0,0.0,1024.0],[0.0,2.0,0.0],222]]; index = len(records)-1
+  while index >= 0
+    movers.restorePush(restoreLevel,records[index]); index = index-1
+  end while
+  requireSpawnContract(restoreLevel.context == [63,62] and first.s.pos.trBase == [11.0,0.0,1024.0] and second.s.pos.trBase == [22.0,0.0,1024.0] and first.r.currentOrigin == [31.0,0.0,1024.0] and second.r.currentOrigin == [32.0,0.0,1024.0],"multiple push records restore newest first without rewriting currentOrigin")
+  teamLevel = game.create(level.scene.world); teamLevel.num_entities = 66; teamLevel.previousTime = 1000; teamLevel.time = 1100; teamLevel.context = []; teamLevel.observeFn = recordMoverRestore
+  leader = game.initEntity(teamLevel.entities[64]); slave = game.initEntity(teamLevel.entities[65]); leader.teamchain = slave
+  leader.s.pos.trType = c.TR_LINEAR_STOP; leader.s.pos.trBase = [0.0,0.0,1024.0]; leader.s.pos.trDelta = [100.0,0.0,0.0]; leader.s.pos.trTime = 1000; leader.s.pos.trDuration = 1000; leader.r.currentOrigin = [10.0,0.0,1024.0]
+  slave.s.pos.trType = c.TR_LINEAR_STOP; slave.s.pos.trBase = [100.0,0.0,1024.0]; slave.s.pos.trDelta = [100.0,0.0,0.0]; slave.s.pos.trTime = 1000; slave.s.pos.trDuration = 1000; slave.r.currentOrigin = [110.0,0.0,1024.0]
+  first = game.initEntity(teamLevel.entities[62]); second = game.initEntity(teamLevel.entities[63]); first.r.currentOrigin = [31.0,0.0,1024.0]; second.r.currentOrigin = [32.0,0.0,1024.0]
+  records = [[first,[11.0,0.0,1024.0],[0.0,1.0,0.0],111],[second,[22.0,0.0,1024.0],[0.0,2.0,0.0],222]]
+  movers.rollbackTeam(teamLevel,leader,records)
+  requireSpawnContract(teamLevel.context == [63,62,64,65] and first.s.pos.trBase[0] == 11.0 and second.s.pos.trBase[0] == 22.0 and first.r.currentOrigin[0] == 31.0 and second.r.currentOrigin[0] == 32.0 and leader.r.currentOrigin[0] == 0.0 and slave.r.currentOrigin[0] == 100.0 and leader.s.pos.trTime == 1100 and slave.s.pos.trTime == 1100,"team rollback restores records in reverse and retimes every mover part")
+  stopLevel = game.create(level.scene.world); stopLevel.num_entities = 66
+  stop = game.initEntity(stopLevel.entities[64]); stop.s.eFlags = stop.s.eFlags | 0x400
+  pushed = game.initEntity(stopLevel.entities[65]); pushed.s.eType = c.ET_ITEM; pushed.physicsObject = true; pushed.r.mins = [-4.0,-4.0,-4.0]; pushed.r.maxs = [4.0,4.0,4.0]
+  pushed.s.pos.trBase = [0.0,0.0,1024.0]; pushed.r.currentOrigin = [0.0,0.0,1024.0]
+  stopped = movers.tryPush(stopLevel,pushed,stop,[5.0,0.0,0.0],[0.0,0.0,0.0]); requireSpawnContract(not stopped[0] and pushed.s.pos.trBase[0] == 0.0,"EF_MOVER_STOP rejects non-rider")
+  pushed.s.groundEntityNum = stop.s.number; carried = movers.tryPush(stopLevel,pushed,stop,[5.0,0.0,0.0],[0.0,0.0,0.0]); requireSpawnContract(carried[0] and pushed.s.pos.trBase[0] == 5.0,"EF_MOVER_STOP carries rider")
   node.s.eType = 0; node.physicsObject = true; caught = try(frame.runEntities(fresh)); requireSpawnContract(caught is error,"missing physics handler")
   node.physicsObject = false; node.s.eType = 3; node.r.ownerNum = 1023; game.setOrigin(node,[0.0,0.0,128.0]); frame.runEntities(fresh)
   requireSpawnContract(node.r.linked,"missile frame uses actual handler")
@@ -932,7 +1006,7 @@ function runSpawnContracts(level)
   caught = try(targets.addRemap(fresh,"old",longName,0.0)); requireSpawnContract(caught is error,"overlong shader destination")
   ent.classname = "target_speaker"; caught = try(funcs.dispatch(level,ent)); requireSpawnContract(caught is error,"speaker requires noise key")
   values.setConfig(s,608,void); requireSpawnContract(s.configstrings[608] == "","NULL configstring storage")
-  print "PASS: 30 spawn/target/frame runtime contracts"
+  print "PASS: 52 spawn/target/frame runtime contracts"
   return void
 end function
 function checkBodyExtra(check,ent)

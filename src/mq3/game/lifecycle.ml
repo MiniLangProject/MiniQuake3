@@ -12,6 +12,14 @@ import mq3.game.session as sessions
 import mq3.game.bodies as bodies
 import mq3.game.items as items
 import mq3.game.initialization as initialization
+import mq3.game.bot_lifecycle as bots
+import mq3.game.bot_registry as botRegistry
+import mq3.game.bot_clients as botClients
+import mq3.game.bot_client_resources as botClientResources
+import mq3.game.bot_population as botPopulation
+import mq3.game.bot_ai_frame as botAiFrame
+import mq3.game.client_connect as clientConnect
+import mq3.game.server_commands as serverCommands
 import mq3.game.spawn as spawn
 import mq3.game.spawn_values as values
 import mq3.server.world as sv
@@ -32,14 +40,26 @@ struct State
   botLoadMapFn
   initBotsFn
   botShutdownFn
+  botAllocateClientFn
   integerQueryFn
   spawnEffectFn
   entityObserveFn
   cvarEffectFn
+  botState
+  botRegistry
+  botClients
+  botClientResources
+  botPopulation
+  botAiFrame
 end struct
 function get(level)
   if level.lifecycleState == void then return error(476,"Game lifecycle requires module bindings") end if
   return level.lifecycleState
+end function
+function startBotFrame(level,time)
+  state = get(level)
+  if state.botAiFrame == void then return error(476,"Game lifecycle requires BotAI frame service") end if
+  return botAiFrame.startFrame(level,state.botAiFrame,time)
 end function
 function gamePrint(level,text)
   if len(bytes(text)) > 1023 then return error(476,"Game diagnostic exceeds original G_Printf buffer") end if
@@ -80,6 +100,105 @@ function entityObserve(level,kind,ent)
   if state.entityObserveFn != void then state.entityObserveFn(level,kind,ent) end if
   return void
 end function
+function registryPrint(level,text)
+  return gamePrint(level,text)
+end function
+function queuedBotUserinfo(level,slot)
+  if level.userinfoFn == void then return error(476,"Bot client integration requires userinfo delivery") end if
+  return level.userinfoFn(level,slot)
+end function
+function queuedBotBegin(level,slot)
+  if level.clientBeginFn == void then return error(476,"Bot client integration requires ClientBegin") end if
+  level.clientBeginFn(level,slot); return void
+end function
+function queuedBotDrop(level,slot,message)
+  if level.dropClientFn == void then return error(476,"Bot client integration requires DropClient") end if
+  level.dropClientFn(level,slot,message); return void
+end function
+function queuedBotPrint(level,text)
+  return gamePrint(level,text)
+end function
+function resourceBotSetup(level,slot,settings,restart)
+  return botClientResources.setupClient(get(level).botClientResources,slot,settings,restart)
+end function
+function resourceBotShutdown(state,slot,restart)
+  if state.clientResources == void then return error(476,"Bot client integration requires resource bindings") end if
+  return botClientResources.shutdownClient(state.clientResources,slot,restart)
+end function
+function populationMinimum(level)
+  return botPopulation.checkMinimumPlayers(level,get(level).botPopulation)
+end function
+function populationPrint(level,text)
+  return gamePrint(level,text)
+end function
+function populationConsole(level,mode,text)
+  if level.consoleCommandFn == void then return error(476,"Bot population requires console-command delivery") end if
+  level.consoleCommandFn(level,mode,text); return void
+end function
+function populationServer(level,slot,text)
+  if level.serverCommandFn == void then return error(476,"Bot population requires server-command delivery") end if
+  level.serverCommandFn(level,slot,text); return void
+end function
+function populationCvarSet(level,key,value)
+  if level.cvarSetFn == void then return error(476,"Bot population requires Cvar_Set delivery") end if
+  level.cvarSetFn(level,key,value); return void
+end function
+function populationSetUserinfo(level,slot,value)
+  if level.userinfoSetFn == void then return error(476,"Bot population requires SetUserinfo delivery") end if
+  level.userinfoSetFn(level,slot,value); return void
+end function
+function populationConnect(level,slot,firstTime,isBot)
+  return clientConnect.connect(level,slot,firstTime,isBot)
+end function
+function populationAllocate(level)
+  callback = get(level).botAllocateClientFn
+  if callback == void then return error(476,"Bot population requires BotAllocateClient delivery") end if
+  return callback(level)
+end function
+function populationAddCommand(level,argv)
+  state = get(level).botPopulation
+  state.botEnable = integerValue(level,"bot_enable") != 0
+  state.clRunning = integerValue(level,"cl_running") != 0
+  skill = cv.find(level.spawner.cvars,"g_spSkill"); if skill != void then state.spSkill = skill.value end if
+  args = []; index = 1
+  while index < len(argv) args = args+[argv[index]]; index = index+1 end while
+  botPopulation.serviceAddBot(level,state,args); return void
+end function
+function populationListCommand(level,argv)
+  botPopulation.botList(level,get(level).botPopulation); return void
+end function
+function defaultInitBots(level,restart)
+  state = get(level); registry = state.botRegistry
+  botsFile = cv.createVm(); arenasFile = cv.createVm(); minimum = cv.createVm()
+  cv.registerVm(level.spawner.cvars,botsFile,"g_botsFile","",cv.INIT | cv.ROM)
+  cv.registerVm(level.spawner.cvars,arenasFile,"g_arenasFile","",cv.INIT | cv.ROM)
+  botRegistry.loadBots(registry,true,botsFile.string)
+  botRegistry.loadArenas(registry,arenasFile.string)
+  cv.registerVm(level.spawner.cvars,minimum,"bot_minplayers","0",cv.SERVERINFO)
+  population = state.botPopulation; population.minimumVm = minimum; population.minimumPlayers = minimum.integer
+  skill = cv.find(level.spawner.cvars,"g_spSkill"); if skill != void then population.spSkill = skill.value end if
+  population.botEnable = integerValue(level,"bot_enable") != 0; population.clRunning = integerValue(level,"cl_running") != 0
+  if level.spawner.gametype == 2 then
+    if state.serverInfoFn == void then return error(476,"Single-player bot init requires serverinfo") end if
+    serverinfo = infoStrings.copy(state.serverInfoFn(level,1024),1024)
+    botPopulation.initSinglePlayer(level,population,restart != 0,infoStrings.value(serverinfo,"mapname"))
+  end if
+  return void
+end function
+function defaultBotConnect(level,slot,restart)
+  return botClients.botConnect(level,get(level).botClients,slot,restart)
+end function
+function defaultRemoveQueuedBotBegin(level,slot)
+  botClients.removeQueuedBotBegin(get(level).botClients,slot); return void
+end function
+function defaultBotShutdownClient(level,slot,restart)
+  state = get(level).botState
+  if state.shutdownClientFn == void then return error(476,"Bot client integration requires BotAIShutdownClient") end if
+  return state.shutdownClientFn(state,slot,restart)
+end function
+function checkBotSpawn(level)
+  return botClients.checkBotSpawn(level,get(level).botClients)
+end function
 function clearLevel(level)
   // Only fields of native level_locals_t. Cvar mirrors, module statics, engine
   // storage and host interfaces deliberately survive this memset phase.
@@ -96,7 +215,7 @@ function clearLevel(level)
   level.intermissionQueued = 0; level.intermissiontime = 0; level.changemap = void
   level.readyToExit = false; level.exitTime = 0; level.intermission_origin = [0.0,0.0,0.0]
   level.intermission_angle = [0.0,0.0,0.0]; level.locationLinked = false; level.locationHead = void
-  level.bodyQueIndex = 0; level.bodyQue = array(8,void)
+  level.bodyQueIndex = 0; level.bodyQue = array(8,void); level.podium1 = void; level.podium2 = void; level.podium3 = void
   level.spawner.vars = []; level.spawner.chars = 0; level.spawner.spawning = false; level.spawner.warmupTime = 0
   return void
 end function
@@ -161,6 +280,15 @@ function clearEntities(level)
     ent.nextTrain = freshEntity.nextTrain
     ent.takedamage = freshEntity.takedamage
     ent.moverState = freshEntity.moverState
+    ent.pos1 = freshEntity.pos1
+    ent.pos2 = freshEntity.pos2
+    ent.reached = freshEntity.reached
+    ent.blocked = freshEntity.blocked
+    ent.soundPos1 = freshEntity.soundPos1
+    ent.sound1to2 = freshEntity.sound1to2
+    ent.sound2to1 = freshEntity.sound2to1
+    ent.soundPos2 = freshEntity.soundPos2
+    ent.soundLoop = freshEntity.soundLoop
     ent.enemy = freshEntity.enemy
     ent.pain = freshEntity.pain
     ent.die = freshEntity.die
@@ -194,7 +322,7 @@ function attach(level,buildDate)
   if level.spawner == void then return error(476,"Module requires an engine world and entity-token source") end if
   infoStrings.textBytes(buildDate)
   if len(bytes(buildDate)) > 1012 then return error(476,"Build date exceeds original initialization diagnostic buffer") end if
-  state = State(buildDate,false,false,void,void,void,void,void,void,void,void,void,level.spawner.effectFn,level.observeFn,void)
+  state = State(buildDate,false,false,void,void,void,void,void,void,void,void,void,void,level.spawner.effectFn,level.observeFn,void,void,void,void,void,void,void)
   level.lifecycleState = state
   // A newly loaded VM image starts with zeroed game storage, even though the
   // convenient isolated-fixture constructors have nonzero defaults.
@@ -206,6 +334,23 @@ function attach(level,buildDate)
   level.redTakenTime = 0; level.blueTakenTime = 0; level.lastFlagCapture = 0.0; level.lastCaptureTeam = 0
   level.redObeliskAttackedTime = 0; level.blueObeliskAttackedTime = 0
   cvarState = gameCvars.attach(level,buildDate)
+  state.botState = bots.create(level.spawner.cvars); level.botLifecycleState = state.botState
+  state.botRegistry = botRegistry.create(void,void,registryPrint,level)
+  state.botClients = botClients.create()
+  state.botClients.userinfoFn = queuedBotUserinfo; state.botClients.clientBeginFn = queuedBotBegin
+  state.botClients.dropClientFn = queuedBotDrop; state.botClients.printFn = queuedBotPrint
+  state.botClientResources = botClientResources.create(state.botState)
+  state.botState.clientResources = state.botClientResources; state.botState.shutdownClientFn = resourceBotShutdown
+  state.botClients.setupClientFn = resourceBotSetup
+  state.botPopulation = botPopulation.create(state.botRegistry,state.botClients)
+  state.botAiFrame = botAiFrame.create(state.botState)
+  state.botPopulation.allocateClientFn = populationAllocate
+  state.botPopulation.connectClientFn = populationConnect; state.botPopulation.setUserinfoFn = populationSetUserinfo
+  state.botPopulation.consoleFn = populationConsole; state.botPopulation.serverCommandFn = populationServer
+  state.botPopulation.printFn = populationPrint; state.botPopulation.cvarSetFn = populationCvarSet
+  state.botClients.minimumPlayersFn = populationMinimum
+  commandState = serverCommands.get(level)
+  serverCommands.attach(level,populationAddCommand,populationListCommand,commandState.abortPodiumFn)
   for each row in cvarState.rows
     gameCvars.syncValue(level,row)
   end for
@@ -262,12 +407,12 @@ function init(level,levelTime,randomSeed,restart,entityText)
     values.soundIndex(level.spawner,"sound/player/gurp1.wav"); values.soundIndex(level.spawner,"sound/player/gurp2.wav")
   end if
   if integerValue(level,"bot_enable") != 0 then
-    if state.botSetupFn == void then return error(476,"Game lifecycle requires BotAISetup") end if
-    state.botSetupFn(level,restart)
-    if state.botLoadMapFn == void then return error(476,"Game lifecycle requires BotAILoadMap") end if
-    state.botLoadMapFn(level,restart)
-    if state.initBotsFn == void then return error(476,"Game lifecycle requires G_InitBots") end if
-    state.initBotsFn(level,restart)
+    if state.botSetupFn != void then state.botSetupFn(level,restart)
+    else bots.setup(state.botState,restart) end if
+    if state.botLoadMapFn != void then state.botLoadMapFn(level,restart)
+    else bots.loadMap(state.botState,restart) end if
+    if state.initBotsFn != void then state.initBotsFn(level,restart)
+    else defaultInitBots(level,restart) end if
   end if
   gameCvars.remapTeamShaders(level); return void
 end function
@@ -282,8 +427,8 @@ function shutdown(level,restart)
   end if
   sessions.writeWorld(level)
   if integerValue(level,"bot_enable") != 0 then
-    if state.botShutdownFn == void then return error(476,"Game lifecycle requires BotAIShutdown") end if
-    state.botShutdownFn(level,restart)
+    if state.botShutdownFn != void then state.botShutdownFn(level,restart)
+    else bots.shutdown(state.botState,restart) end if
   end if
   return void
 end function

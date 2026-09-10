@@ -1,0 +1,68 @@
+// Copyright (C) 1999-2005 Id Software, Inc.
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Client download block receiver from client/cl_parse.c.
+package mq3.client.download
+import mq3.qcommon.message as message
+
+const MAX_MSGLEN=16384
+struct State downloadSize downloadBlock download downloadTempName downloadName downloadCount end struct
+struct Services cvarValueFn cvarStringFn reliableFn openFn writeFn closeFn renameFn packetFn nextFn printFn context end struct
+
+function create() return State(0,0,0,"","",0) end function
+function services() return Services(void,void,void,void,void,void,void,void,void,void,void) end function
+function call(service,host,a,b) if service!=void then service(host,a,b) end if;return void end function
+
+function parseDownload(state,host,msg)
+  if state==void or host==void or msg==void then return error(6910,"download: missing state") end if
+  block=message.readI16(msg)
+  if msg.readcount>msg.cursize then return error(6911,"download: truncated block") end if
+  if block==0 then
+    state.downloadSize=message.readI32(msg)
+    if host.cvarValueFn!=void then host.cvarValueFn(host,"cl_downloadSize",state.downloadSize) end if
+    if state.downloadSize<0 then
+      text=message.readCString(msg)
+      if msg.readcount>msg.cursize then return error(6912,"download: truncated error text") end if
+      return error(6913,text)
+    end if
+  end if
+  size=message.readI16(msg)
+  if msg.readcount>msg.cursize then return error(6914,"download: truncated size") end if
+  if size<0 or size>MAX_MSGLEN then return error(6915,"download: invalid block size") end if
+  data=bytes(0)
+  if size>0 then data=message.readData(msg,size);if msg.readcount>msg.cursize then return error(6916,"download: truncated data") end if end if
+  if state.downloadBlock!=block then return false end if
+  if state.download==0 then
+    if state.downloadTempName=="" then
+      if host.printFn!=void then host.printFn(host,"unrequested","") end if
+      if host.reliableFn!=void then host.reliableFn(host,"stopdl") end if
+      return false
+    end if
+    if host.openFn==void then return error(6917,"download: missing file-open host") end if
+    state.download=host.openFn(host,state.downloadTempName)
+    if state.download==0 then
+      if host.printFn!=void then host.printFn(host,"create",state.downloadTempName) end if
+      if host.reliableFn!=void then host.reliableFn(host,"stopdl") end if
+      if host.nextFn!=void then host.nextFn(host) end if
+      return false
+    end if
+  end if
+  if size!=0 then
+    if host.writeFn==void then return error(6918,"download: missing file-write host") end if
+    host.writeFn(host,data,size,state.download)
+  end if
+  if host.reliableFn!=void then host.reliableFn(host,"nextdl "+str(state.downloadBlock)) end if
+  state.downloadBlock=state.downloadBlock+1;state.downloadCount=state.downloadCount+size
+  if host.cvarValueFn!=void then host.cvarValueFn(host,"cl_downloadCount",state.downloadCount) end if
+  if size==0 then
+    if state.download!=0 then
+      if host.closeFn!=void then host.closeFn(host,state.download) end if
+      state.download=0
+      if host.renameFn!=void then host.renameFn(host,state.downloadTempName,state.downloadName) end if
+    end if
+    state.downloadTempName="";state.downloadName=""
+    if host.cvarStringFn!=void then host.cvarStringFn(host,"cl_downloadName","") end if
+    if host.packetFn!=void then host.packetFn(host);host.packetFn(host) end if
+    if host.nextFn!=void then host.nextFn(host) end if
+  end if
+  return true
+end function

@@ -6,13 +6,13 @@ Worldspawn und die Auswahl von Item-/Klassen-Spawn-Funktionen. Die generierten
 Tabellen enthalten 20 Feldregeln, 48 baseq3-Klassen und 35 Items. Sie werden aus
 den gepinnten Originalquellen erzeugt und gegen die ursprüngliche C-Tabelle geprüft.
 
-**Stand der Klassen:** 40 Klassen und alle 35 Item-Einträge führen bereits die
-übertragenen Originalregeln aus. Die acht übrigen Klassen sind die Mover
-`func_plat`, `func_button`, `func_door`, `func_static`, `func_rotating`,
-`func_bobbing`, `func_pendulum` und `func_train`; ihre Implementierung fehlt noch. Ohne ausdrücklich gesetzten `state.unportedFn` liefert der Port
-an diesen Klassengrenzen einen Fehler. Die Vergleichstests setzen dort einen
-aufzeichnenden Callback ein; er führt keine vereinfachten Mover- oder Spielregeln
-aus. `G_SpawnItem` und `FinishSpawningItem` erzeugen und platzieren dagegen echte
+**Stand der Klassen:** Alle 48 Klassen und alle 35 Item-Einträge führen übertragene
+Originalregeln aus. Die zuletzt ergänzten Mover `func_plat`, `func_button`,
+`func_door`, `func_static`, `func_rotating`, `func_bobbing`, `func_pendulum` und
+`func_train` besitzen Binärzustände, Teambewegung, Blockieren/Zurückrollen,
+Touch-Auslösung, Sounds und `path_corner`-Ketten. Rotationsbedingtes Mitschieben,
+Client-Yaw und Areaportal-Umschaltung sind implementiert; die linearen und rotierenden
+Schiebepfade sind implementiert. `G_SpawnItem` und `FinishSpawningItem` erzeugen echte
 Item-Entities. `Touch_Item` und sämtliche Baseq3-Pickups sind inzwischen separat
 gegen C geprüft. Die Testkarten sind wegen der übrigen Client-/Serverpfade noch
 keine vollständigen, spielbaren Game-Server.
@@ -97,8 +97,11 @@ die ursprünglichen Warnungen zu Timer-/Multiple-Zufallswerten, fehlenden
 Path-Corner-Namen und Teleporter-/Laserzielen. Der
 Zeitpräfix des Server-Loggers wird separat geprüft; die Warmup-Logmeldung
 bleibt in der isolierten Spawn-Suite ein roher Aufruf.
-Dies prüft noch keine regulären ClientThink-/Serverframes oder
-Mover-Pushes. Die zusätzliche Item-Prüfung deckt Initialisierung, Respawn,
+Dies prüft noch keine vollständigen ClientThink-/Serverframes. Der Mover-Framezweig
+und lokale Spawn-/Bewegungsverträge sind enthalten. `scripts/test_mover_push.py`
+vergleicht den Schiebekern zusätzlich in fünf isolierten Erfolgs-, Rotations-,
+Blockade-, Stop- und Team-Rollback-Fällen direkt mit `G_MoverPush`/`G_MoverTeam`.
+Vollständige Karten-Replays stehen noch aus. Die zusätzliche Item-Prüfung deckt Initialisierung, Respawn,
 Drop-Entities, Pickups, CTF-Abläufe und Physik ab; die Target-/Ereignisprüfung deckt die Entity-Schleife
 mit automatischer Ereignisfreigabe ab.
 

@@ -39,7 +39,8 @@ static void mapObjectAction(int *a,const char *first,const char *second){
         case 20:e->neverFree=a[3]!=0;break;case 21:e->freeAfterEvent=a[3]!=0;break;case 22:e->unlinkAfterEvent=a[3]!=0;break;
         case 23:e->r.contents=a[3];break;case 24:e->s.eFlags=a[3];break;case 25:e->r.singleClient=a[3];break;case 26:e->eventTime=a[3];break;
         case 27:e->s.event=a[3];break;case 28:e->s.eventParm=a[3];break;case 29:e->physicsObject=a[3]!=0;break;
-        case 30:e->takedamage=a[3]!=0;break;default:exit(74);}break;
+        case 30:e->takedamage=a[3]!=0;break;case 31:e->s.groundEntityNum=a[3];break;case 32:e->s.pos.trType=a[3];break;
+        case 33:e->s.pos.trTime=a[3];break;case 34:e->s.pos.trDuration=a[3];break;case 35:e->clipmask=a[3];break;default:exit(74);}break;
     case 22:e=mapEntity(a[1]);if(mapWords(first,v,3)!=3)exit(74);switch(a[2]){
         case 1:vector=e->s.origin;break;case 2:vector=e->r.currentOrigin;break;
         case 3:if(!e->client)exit(74);vector=e->client->ps.origin;break;case 4:vector=e->s.angles;break;
@@ -58,7 +59,7 @@ static void mapObjectAction(int *a,const char *first,const char *second){
         case 13:Q_strncpyz(client->pers.netname,first,sizeof(client->pers.netname));break;default:exit(74);}break;
     case 25:client=mapClient(a[1]);if(a[2]<0 || a[2]>=16)exit(74);client->ps.powerups[a[2]]=a[3];break;
     case 26:client=mapClient(a[1]);if(a[2]<0 || a[2]>=16)exit(74);client->ps.ammo[a[2]]=a[3];break;
-    case 27:switch(a[1]){case 1:level.warmupTime=a[2];break;case 2:g_gametype.integer=a[2];break;case 3:if(a[2]<0 || a[2]>64)exit(74);level.maxclients=a[2];break;default:exit(74);}break;
+    case 27:switch(a[1]){case 1:level.warmupTime=a[2];break;case 2:g_gametype.integer=a[2];break;case 3:if(a[2]<0 || a[2]>64)exit(74);level.maxclients=a[2];break;case 4:if(a[2]<0 || a[2]>1022)exit(74);level.num_entities=a[2];break;default:exit(74);}break;
     case 28:e=mapEntity(a[1]);if(a[2])trap_LinkEntity(e);else trap_UnlinkEntity(e);break;
     case 29:entityPoint=_strdup(first);level.spawning=qtrue;COM_BeginParseSession("map-object-vars");if(!G_ParseSpawnVars())exit(74);break;
     case 30:mapMutationKind=a[1];mapMutationArg=a[2];mapMutationRemaining=a[3];if(mapWords(first,mapMutationAction,4)!=4 || strlen(second)>=sizeof(mapMutationText))exit(74);strcpy(mapMutationText,second);break;
@@ -69,6 +70,9 @@ static void mapObjectAction(int *a,const char *first,const char *second){
     case 32:Team_SetFlagStatus(a[1],a[2]);break;
     case 33:srand(a[1]);break;
     case 34:e=mapEntity(a[1]);activator=a[2]<0?NULL:mapEntity(a[2]);G_UseTargets(e,activator);break;
+    case 35:e=mapEntity(a[1]);level.previousTime=level.time;level.time=a[2];retailMoverOutput=1;G_RunMover(e);retailMoverOutput=0;break;
+    case 36:e=mapEntity(a[1]);other=mapEntity(a[2]);if(!e->touch)exit(74);e->touch(e,other,NULL);break;
+    case 37:frameRunOutput=1;Original_G_RunFrame(a[1]);frameRunOutput=0;break;
     default:exit(74);
     }
 }

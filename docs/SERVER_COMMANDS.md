@@ -16,7 +16,8 @@ Engine-Befehlspuffers bleiben eigene Arbeitspakete.
 | `game_memory` | Ruft das echte `memory.status` für die 256-KiB-Arena des Levels auf. |
 | `addip`, `removeip` | Rufen die echten Befehlsimplementierungen aus `ip_filters` auf. |
 | `listip` | Ruft `level.consoleCommandFn(level, 0, "g_banIPs\n")` mit dem originalen `EXEC_NOW` auf. |
-| `addbot`, `botlist`, `abort_podium` | Verlangen explizite Callbacks für Boterstellung, Botliste beziehungsweise Podiumsabbruch. |
+| `addbot`, `botlist` | Verlangen explizite Callbacks für Boterstellung beziehungsweise Botliste. |
+| `abort_podium` | Nutzt standardmäßig den portierten Podiumsabbruch; ein installierter Callback kann ihn für Tests überschreiben. |
 | `say` oder ein unbekannter Befehl auf einem Dedicated-Server | Sendet den originalen Server-Print an Client-Slot -1, mit den echten Bytegrenzen von `ConcatArgs` und ohne zusätzlichen Zeilenumbruch. |
 | Unbekannter Befehl auf einem Listen-Server | Liefert ohne weiteren Effekt false zurück. |
 
@@ -40,7 +41,8 @@ Respawn kann diese Wartezeit beim Zurücksetzen des Clients auf null setzen.
 
 `attach(level, addBotFn, botListFn, abortPodiumFn)` installiert drei Callbacks mit
 der Signatur `(level, argv)`. `get(level)` bewahrt sie pro Level. Fehlende
-Implementierungen führen zu expliziten Vertragsfehlern. Das native Oracle
+Bot-Implementierungen führen zu expliziten Vertragsfehlern; der fehlende
+Podiums-Callback fällt auf die echte Implementierung zurück. Das native Oracle
 beobachtet dieselben drei Grenzen und ersetzt dort kein Botverhalten durch
 vereinfachte Spielalgorithmen.
 

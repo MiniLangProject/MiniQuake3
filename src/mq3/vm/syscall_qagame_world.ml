@@ -1,0 +1,143 @@
+// Copyright (C) 1999-2005 Id Software, Inc.
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Binary world-query and usercmd traps from SV_GameSystemCalls.
+package mq3.vm.syscall_qagame_world
+import mq3.vm.syscall_common as common
+import mq3.compat.numeric as n
+import mq3.qcommon.message_delta as messageDelta
+
+const TRACE_SIZE=56
+const USERCMD_SIZE=24
+
+struct TraceResult
+  allsolid
+  startsolid
+  fraction
+  endpos
+  planeNormal
+  planeDist
+  planeType
+  planeSignBits
+  surfaceFlags
+  contents
+  entityNum
+end struct
+
+struct Services
+  context
+  traceFn
+  pointContentsFn
+  entitiesInBoxFn
+  entityContactFn
+  getUsercmdFn
+end struct
+
+function services(context) return Services(context,void,void,void,void,void) end function
+function unavailable(name) return error(3422,"qagame world syscall: "+name+" service unavailable") end function
+function arg(vm,base,index) return common.argument(vm,base,index) end function
+
+function vector(vm,address,label)
+  at=common.pointer(vm,address,12,label)
+  return [n.bitsFloat(n.readU32(vm.data,at)),n.bitsFloat(n.readU32(vm.data,at+4)),n.bitsFloat(n.readU32(vm.data,at+8))]
+end function
+
+function nullableVector(vm,address,label)
+  if address==0 then return void end if
+  return vector(vm,address,label)
+end function
+
+function requireVector(value,label)
+  if value==void or len(value)!=3 then return error(3422,"qagame world syscall: invalid "+label) end if
+  return value
+end function
+
+function writeTrace(vm,address,result)
+  at=common.pointer(vm,address,TRACE_SIZE,"trace_t output")
+  if result==void then return error(3422,"qagame world syscall: trace service returned no result") end if
+  finish=requireVector(result.endpos,"trace endpos")
+  normal=requireVector(result.planeNormal,"trace plane normal")
+  allsolid=0;if result.allsolid then allsolid=1 end if
+  startsolid=0;if result.startsolid then startsolid=1 end if
+  n.writeU32(vm.data,at,allsolid);n.writeU32(vm.data,at+4,startsolid)
+  n.writeU32(vm.data,at+8,n.floatBits(result.fraction))
+  for axis=0 to 2 n.writeU32(vm.data,at+12+axis*4,n.floatBits(finish[axis])) end for
+  for axis=0 to 2 n.writeU32(vm.data,at+24+axis*4,n.floatBits(normal[axis])) end for
+  n.writeU32(vm.data,at+36,n.floatBits(result.planeDist))
+  vm.data[at+40]=result.planeType & 255;vm.data[at+41]=result.planeSignBits & 255
+  vm.data[at+42]=0;vm.data[at+43]=0
+  n.writeU32(vm.data,at+44,result.surfaceFlags);n.writeU32(vm.data,at+48,result.contents);n.writeU32(vm.data,at+52,result.entityNum)
+  return 0
+end function
+
+function writeUsercmd(vm,address,command)
+  at=common.pointer(vm,address,USERCMD_SIZE,"usercmd_t output")
+  if command==void or command.angles==void or len(command.angles)!=3 then return error(3422,"qagame world syscall: invalid usercmd result") end if
+  n.writeU32(vm.data,at,command.serverTime)
+  for axis=0 to 2 n.writeU32(vm.data,at+4+axis*4,command.angles[axis]) end for
+  n.writeU32(vm.data,at+16,command.buttons)
+  vm.data[at+20]=command.weapon & 255;vm.data[at+21]=command.forwardmove & 255
+  vm.data[at+22]=command.rightmove & 255;vm.data[at+23]=command.upmove & 255
+  return 0
+end function
+
+function trace(vm,base,host,capsule)
+  if host.traceFn==void then return unavailable("trace") end if
+  output=arg(vm,base,1);common.pointer(vm,output,TRACE_SIZE,"trace_t output")
+  start=vector(vm,arg(vm,base,2),"trace start")
+  mins=nullableVector(vm,arg(vm,base,3),"trace mins")
+  maxs=nullableVector(vm,arg(vm,base,4),"trace maxs")
+  finish=vector(vm,arg(vm,base,5),"trace end")
+  result=host.traceFn(host.context,start,mins,maxs,finish,arg(vm,base,6),arg(vm,base,7),capsule)
+  return writeTrace(vm,output,result)
+end function
+
+function pointContents(vm,base,host)
+  if host.pointContentsFn==void then return unavailable("point contents") end if
+  return host.pointContentsFn(host.context,vector(vm,arg(vm,base,1),"point contents origin"),arg(vm,base,2))
+end function
+
+function entitiesInBox(vm,base,host)
+  if host.entitiesInBoxFn==void then return unavailable("entities in box") end if
+  mins=vector(vm,arg(vm,base,1),"area mins");maxs=vector(vm,arg(vm,base,2),"area maxs")
+  address=arg(vm,base,3);capacity=arg(vm,base,4)
+  if capacity<0 then return error(3422,"qagame world syscall: negative entity-list capacity") end if
+  if capacity>(len(vm.data)>>2) then return error(3422,"qagame world syscall: entity-list capacity overflow") end if
+  at=0;if capacity>0 then at=common.pointer(vm,address,capacity*4,"entity-list output") end if
+  found=host.entitiesInBoxFn(host.context,mins,maxs,capacity)
+  if found==void then return error(3422,"qagame world syscall: entity service returned no list") end if
+  if len(found)>capacity then return error(3422,"qagame world syscall: entity service exceeded capacity") end if
+  if len(found)>0 then for index=0 to len(found)-1 n.writeU32(vm.data,at+index*4,found[index]) end for end if
+  return len(found)
+end function
+
+function entityContact(vm,base,host,capsule)
+  if host.entityContactFn==void then return unavailable("entity contact") end if
+  mins=vector(vm,arg(vm,base,1),"contact mins");maxs=vector(vm,arg(vm,base,2),"contact maxs")
+  entity=common.pointer(vm,arg(vm,base,3),1,"contact entity")
+  if host.entityContactFn(host.context,mins,maxs,entity,capsule) then return 1 end if
+  return 0
+end function
+
+function getUsercmd(vm,base,host)
+  if host.getUsercmdFn==void then return unavailable("get usercmd") end if
+  address=arg(vm,base,2);common.pointer(vm,address,USERCMD_SIZE,"usercmd_t output")
+  return writeUsercmd(vm,address,host.getUsercmdFn(host.context,arg(vm,base,1)))
+end function
+
+function dispatch(host,vm,base,op)
+  if host==void then return error(3422,"qagame world syscall: invalid dispatcher context") end if
+  switch op
+    case 24 return trace(vm,base,host,false) end case
+    case 25 return pointContents(vm,base,host) end case
+    case 32 return entitiesInBox(vm,base,host) end case
+    case 33 return entityContact(vm,base,host,false) end case
+    case 36 return getUsercmd(vm,base,host) end case
+    case 43 return trace(vm,base,host,true) end case
+    case 44 return entityContact(vm,base,host,true) end case
+  end switch
+  return error(3422,"qagame world syscall: unsupported trap "+str(op))
+end function
+
+function userCommand(serverTime,angles,buttons,weapon,forwardmove,rightmove,upmove)
+  return messageDelta.UserCommand(serverTime,angles,buttons,weapon,forwardmove,rightmove,upmove)
+end function

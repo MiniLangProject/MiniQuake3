@@ -1,0 +1,51 @@
+import mq3.renderer.surface_md3 as mesh
+import mq3.compat.numeric as numeric
+
+function require(ok,text) if not ok then return error(7370,text) end if;return 1 end function
+function makeSurface()
+  f0=[mesh.vertex(64,0,0,0x0000),mesh.vertex(0,64,0,0x0040),mesh.vertex(-64,0,64,0x4000),mesh.vertex(32,-32,96,0x4040)]
+  f1=[mesh.vertex(128,64,0,0x0040),mesh.vertex(64,128,64,0x4000),mesh.vertex(-128,64,128,0x4040),mesh.vertex(96,-96,160,0x0080)]
+  return mesh.surface(2,4,2,[0,1,2,2,3,0],[[0.0,1.0],[0.25,0.875],[0.5,0.75],[0.75,0.625]],[f0,f1])
+end function
+function main(args)
+  count=0;s=makeSurface();direct=mesh.submit(s,1,0,0.0,2,3,16,48,13)
+  count=count+require(direct.baseVertex==2 and direct.baseIndex==3,"existing tessellation bases")
+  count=count+require(direct.numVertexes==6 and direct.numIndexes==9,"combined tessellation counts")
+  count=count+require(direct.indexes==[2,3,4,4,5,2],"indexes rebased")
+  count=count+require(direct.xyz[0]==[2.0,1.0,0.0],"direct frame position")
+  count=count+require(direct.xyz[3]==[1.5,-1.5,2.5],"direct last position")
+  count=count+require(direct.texCoords[2]==[0.5,0.75],"texture coordinates")
+  count=count+require(not direct.flushed,"fitting mesh does not flush")
+  count=count+require(direct.dlightBits==13 and not direct.touchesDlights,"mesh leaves dynamic lights alone")
+  same=mesh.submit(s,1,1,0.75,0,0,16,48,0)
+  count=count+require(same.xyz==mesh.submit(s,1,0,0.0,0,0,16,48,0).xyz,"equal frames force zero backlerp at caller")
+  lerped=mesh.submit(s,1,0,0.25,0,0,16,48,7)
+  count=count+require(lerped.xyz[0]==[1.75,0.75,0.0],"position backlerp")
+  count=count+require(numeric.floatBits(lerped.normals[0][0])!=numeric.floatBits(direct.normals[0][0]),"normal interpolation")
+  length=numeric.fadd(numeric.fadd(numeric.fmul(lerped.normals[0][0],lerped.normals[0][0]),numeric.fmul(lerped.normals[0][1],lerped.normals[0][1])),numeric.fmul(lerped.normals[0][2],lerped.normals[0][2]))
+  count=count+require(length>0.99 and length<1.01,"fast normal normalization")
+  overflow=mesh.submit(s,1,0,0.25,14,44,16,48,13)
+  count=count+require(overflow.flushed and overflow.baseVertex==0 and overflow.baseIndex==0,"RB_CHECKOVERFLOW reset")
+  count=count+require(overflow.numVertexes==4 and overflow.numIndexes==6,"post-flush counts")
+  count=count+require(overflow.indexes==[0,1,2,2,3,0],"post-flush indexes")
+  count=count+require(mesh.decodeNormal(0x0000)[2]>0.999,"north-pole normal")
+  count=count+require(mesh.decodeNormal(0x0040)[0]>0.999,"longitude normal")
+  count=count+require(mesh.vertex(65535,32768,32767,0x12345).xyz==[-1,-32768,32767],"packed signed coordinates")
+  count=count+require(mesh.vertex(0,0,0,0x12345).packedNormal==0x2345,"packed normal width")
+  count=count+require(try(mesh.submit(s,2,0,0.0,0,0,16,48,0)) is error,"new frame bounds")
+  count=count+require(try(mesh.submit(s,1,-1,0.5,0,0,16,48,0)) is error,"old frame bounds")
+  count=count+require(try(mesh.submit(s,1,0,-0.1,0,0,16,48,0)) is error,"negative backlerp")
+  count=count+require(try(mesh.submit(s,1,0,1.1,0,0,16,48,0)) is error,"large backlerp")
+  count=count+require(try(mesh.submit(s,1,0,0.0,0,0,3,48,0)) is error,"vertex capacity")
+  count=count+require(try(mesh.submit(s,1,0,0.0,0,0,16,5,0)) is error,"index capacity")
+  count=count+require(try(mesh.submit(s,1,0,0.0,-1,0,16,48,0)) is error,"negative current count")
+  bad=mesh.surface(2,4,2,[0,1,4,2,3,0],s.texCoords,s.frames)
+  count=count+require(try(mesh.submit(bad,1,0,0.0,0,0,16,48,0)) is error,"triangle range")
+  bad=mesh.surface(2,4,2,[0,1,2,2,3,0],[[0.0,1.0]],s.frames)
+  count=count+require(try(mesh.submit(bad,1,0,0.0,0,0,16,48,0)) is error,"texture count")
+  bad=mesh.surface(2,4,2,[0,1,2,2,3,0],s.texCoords,[s.frames[0]])
+  count=count+require(try(mesh.submit(bad,1,0,0.0,0,0,16,48,0)) is error,"frame count")
+  count=count+require(len(direct.normals)==4 and len(direct.texCoords)==4,"one attribute per vertex")
+  count=count+require(len(direct.indexes)==s.numTriangles*3,"three indexes per triangle")
+  print("PASS: "+str(count)+" surface-md3 contracts");return 0
+end function

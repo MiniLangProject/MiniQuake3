@@ -1,0 +1,138 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Quake-style movement adapter for the standalone playable preview.
+package mq3.client.playable_movement
+
+import mq3.game.movement as movement
+import mq3.collision.world as collision
+import mq3.shared.math as qmath
+import mq3.compat.numeric as numeric
+
+const PLAYER_MASK=0x2010001
+const GRAVITY=800
+const SPEED=320
+const JUMP_VELOCITY=270.0
+const GROUND_NORMAL=0.7
+const GROUND_PROBE=0.25
+const MAX_FRAME_MILLISECONDS=100
+const SUBSTEP_MILLISECONDS=8
+
+struct Controller
+  motion
+  grounded
+  jumpHeld
+end struct
+
+function worldTrace(state,startPoint,endPoint)
+  hit=collision.boxTrace(state.context,startPoint,endPoint,state.mins,state.maxs,0,state.mask,false)
+  if hit is error then return hit end if
+  entity=1023;if hit.trace.fraction<1.0 then entity=1022 end if
+  return movement.Collision(hit.trace,hit.endpos,entity)
+end function
+
+function validPosition(position)
+  return typeof(position)=="array" and len(position)==3
+end function
+
+function createWithTrace(traceFn,context,position)
+  if traceFn==void or not validPosition(position) then return error(7490,"playable movement needs a trace function and three-component position") end if
+  motion=movement.create(traceFn,context)
+  motion.origin=[numeric.f32(position[0]),numeric.f32(position[1]),numeric.f32(position[2])]
+  // Bounds use the camera/eye as their origin, matching playable_app's old trace.
+  motion.mins=[-15.0,-15.0,-48.0];motion.maxs=[15.0,15.0,8.0]
+  motion.mask=PLAYER_MASK;motion.gravity=GRAVITY;motion.speed=SPEED
+  return Controller(motion,false,false)
+end function
+
+function create(world,position)
+  if world==void then return error(7491,"playable movement needs a collision world") end if
+  return createWithTrace(worldTrace,world,position)
+end function
+
+function clampDelta(milliseconds)
+  if milliseconds<0 then return 0 end if
+  if milliseconds>MAX_FRAME_MILLISECONDS then return MAX_FRAME_MILLISECONDS end if
+  return milliseconds
+end function
+
+function groundCheck(controller)
+  state=controller.motion
+  down=[state.origin[0],state.origin[1],numeric.fsub(state.origin[2],GROUND_PROBE)]
+  hit=state.traceFn(state,state.origin,down);if hit is error then return hit end if
+  state.groundPlane=false;state.walking=false;state.groundNormal=[0.0,0.0,1.0];state.groundFlags=0
+  if hit.trace.allsolid then
+    controller.grounded=true;state.groundPlane=true;state.walking=true
+    if state.velocity[2]<0.0 then state.velocity[2]=0.0 end if
+    return true
+  end if
+  if hit.trace.fraction<1.0 then
+    state.groundPlane=true;state.groundNormal=[hit.trace.normal[0],hit.trace.normal[1],hit.trace.normal[2]]
+    state.groundFlags=hit.trace.surfaceFlags
+    if hit.trace.normal[2]>=GROUND_NORMAL and state.velocity[2]<=10.0 then
+      state.walking=true;controller.grounded=true
+      if state.velocity[2]<0.0 then state.velocity[2]=0.0 end if
+      return true
+    end if
+  end if
+  controller.grounded=false
+  return false
+end function
+
+function wishDirection(yaw,forwardInput,rightInput)
+  axes=qmath.AngleVectors([0.0,numeric.f32(yaw),0.0])
+  wish=[numeric.fadd(numeric.fmul(forwardInput,axes[0][0]),numeric.fmul(rightInput,axes[1][0])),numeric.fadd(numeric.fmul(forwardInput,axes[0][1]),numeric.fmul(rightInput,axes[1][1])),0.0]
+  length=qmath.VectorLength(wish)
+  if length==0.0 then return [wish,0.0] end if
+  qmath.VectorNormalize(wish)
+  if length>1.0 then length=1.0 end if
+  return [wish,numeric.fmul(SPEED,length)]
+end function
+
+function substep(controller,yaw,forwardInput,rightInput,jumpPressed,milliseconds)
+  state=controller.motion;state.frametime=numeric.fdiv(milliseconds,1000.0)
+  grounded=groundCheck(controller);if grounded is error then return grounded end if
+  jumped=false
+  if jumpPressed and controller.grounded then
+    state.velocity[2]=JUMP_VELOCITY;controller.grounded=false;state.walking=false;state.groundPlane=false;jumped=true
+  end if
+  wish=wishDirection(yaw,forwardInput,rightInput)
+  if controller.grounded then
+    movement.friction(state)
+    movement.accelerate(state,wish[0],wish[1],10.0)
+  else
+    movement.accelerate(state,wish[0],wish[1],1.0)
+  end if
+  movement.stepSlideMove(state,true)
+  grounded=groundCheck(controller);if grounded is error then return grounded end if
+  return jumped
+end function
+
+function step(controller,yaw,forwardInput,rightInput,jumpDown,deltaMilliseconds)
+  if controller==void then return error(7492,"playable movement step needs a controller") end if
+  milliseconds=clampDelta(deltaMilliseconds)
+  forwardInput=numeric.f32(forwardInput);rightInput=numeric.f32(rightInput)
+  if forwardInput>1.0 then forwardInput=1.0 else if forwardInput< -1.0 then forwardInput=-1.0 end if
+  if rightInput>1.0 then rightInput=1.0 else if rightInput< -1.0 then rightInput=-1.0 end if
+  jumpPressed=jumpDown and not controller.jumpHeld
+  // A supported, motionless player has no integration work. Confirm the
+  // ground once so custom trace contexts can still remove support, then avoid
+  // repeating the same static BSP trace for every 8 ms substep of a slow frame.
+  state=controller.motion
+  idle=milliseconds>0 and controller.grounded and not jumpPressed and forwardInput==0.0 and rightInput==0.0 and state.velocity[0]==0.0 and state.velocity[1]==0.0 and state.velocity[2]==0.0
+  if idle then
+    grounded=groundCheck(controller);if grounded is error then return grounded end if
+    if grounded then controller.jumpHeld=jumpDown;return false end if
+  end if
+  remaining=milliseconds;jumped=false
+  while remaining>0
+    slice=remaining;if slice>SUBSTEP_MILLISECONDS then slice=SUBSTEP_MILLISECONDS end if
+    result=substep(controller,yaw,forwardInput,rightInput,jumpPressed,slice);if result is error then return result end if
+    if result then jumped=true end if
+    jumpPressed=false;remaining=remaining-slice
+  end while
+  controller.jumpHeld=jumpDown
+  return jumped
+end function
+
+function position(controller) return controller.motion.origin end function
+function velocity(controller) return controller.motion.velocity end function
+function isGrounded(controller) return controller.grounded end function

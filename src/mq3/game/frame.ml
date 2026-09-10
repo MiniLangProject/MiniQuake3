@@ -8,6 +8,7 @@ import mq3.game.constants as c
 import mq3.game.missiles as missiles
 import mq3.game.bodies as bodies
 import mq3.game.items as items
+import mq3.game.movers as movers
 import mq3.game.client_active as clientActive
 import mq3.game.client_frame as clientFrame
 import mq3.game.scores as scores
@@ -16,6 +17,7 @@ import mq3.game.votes as votes
 import mq3.game.team_status as teamStatus
 import mq3.game.cvar_maintenance as cvarMaintenance
 import mq3.game.cvars as cvars
+import mq3.game.bot_clients as botClients
 import mq3.compat.numeric as n
 function runEntities(level)
   i = 0
@@ -41,6 +43,7 @@ function runEntities(level)
       if kind == 1 and level.runEntityFn == void then missiles.run(level,ent)
       else if kind == 2 and ent.s.eType == c.ET_ITEM and level.runEntityFn == void then items.run(level,ent)
       else if kind == 2 and ent.s.eType != c.ET_ITEM and ent.classname == "bodyque" and level.runEntityFn == void then bodies.run(level,ent)
+      else if kind == 3 and level.runEntityFn == void then movers.run(level,ent)
       else if kind == 4 and level.runEntityFn == void then clientActive.runClient(level,ent)
       else
         if level.runEntityFn == void then return error(488,"Entity frame requires unported item/mover/client handler") end if
@@ -64,6 +67,9 @@ function run(level,levelTime)
   level.framenum = n.add32(level.framenum,1)
   level.previousTime = level.time; level.time = n.i32(levelTime)
   if level.updateCvarsFn != void then level.updateCvarsFn(level) else cvars.update(level) end if
+  if level.lifecycleState != void and level.lifecycleState.botClients != void then
+    botClients.checkBotSpawn(level,level.lifecycleState.botClients)
+  end if
   runEntities(level)
 
   if level.maxclients < 0 or level.maxclients > 64 then return error(488,"Invalid frame client limit") end if

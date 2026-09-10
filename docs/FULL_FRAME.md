@@ -6,9 +6,9 @@ Cvar-Aktualisierung, Entity-Schleife, Client-Endframes, portierte Tournament-Pr�
 portierte Matchende-Regeln und Teamstatus, portierte globale und Team-Votes
 sowie die Passwortstatus-Nachverfolgung durch `CheckCvars`.
 
-Die Entity-Schleife führt Raketen, Items, Leichen und Clients standardmäßig über
-die portierten Implementierungen aus. Mover und sonstige Physics-Entities bleiben
-bis zu ihren eigenen Portschritten am vorhandenen Entity-Callback.
+Die Entity-Schleife führt Raketen, Items, Leichen, Mover und Clients standardmäßig
+über die portierten Implementierungen aus. Sonstige Physics-Entities bleiben bis
+zu ihren eigenen Portschritten am vorhandenen Entity-Callback.
 `G_UpdateCvars` aktualisiert standardmäßig die registrierten VM-Cvar-Kopien
 aus der portierten Engine-Registry. Die optionale `g_listEntity`-Schleife umfasst alle 1.024
 Slots und setzt die Cvar wie das Original über die Host-Schnittstelle zurück.
@@ -48,4 +48,4 @@ python scripts/test_full_frame.py
 
 Die Spielmodulinitialisierung ist über [G_InitGame](GAME_LIFECYCLE.md)
 inzwischen portiert. Für einen selbständig laufenden Dedicated Server fehlen
-weiterhin Engine-VM-Neuladen, weitere Mover-/Physics-Pfade, Engine-Frame und Netzwerk.
+weiterhin Engine-VM-Neuladen, sonstige Physics-Pfade, Engine-Frame und Netzwerk.

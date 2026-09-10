@@ -1,0 +1,58 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Windows-x64 raw UDP boundary. Quake packet policy belongs to qcommon/client/server.
+package mq3.platform.udp
+import mq3.compat.numeric as n
+
+extern function mq3_udp_startup() from "miniquake3_udp.dll" returns i32
+extern function mq3_udp_cleanup() from "miniquake3_udp.dll" returns i32
+extern function mq3_udp_socket() from "miniquake3_udp.dll" returns ptr
+extern function mq3_udp_bind(socket as ptr,address as u32,port as u32) from "miniquake3_udp.dll" returns i32
+extern function mq3_udp_local_address(socket as ptr) from "miniquake3_udp.dll" returns u32
+extern function mq3_udp_local_port(socket as ptr) from "miniquake3_udp.dll" returns i32
+extern function mq3_udp_send(socket as ptr,address as u32,port as u32,data as ptr,length as i32) from "miniquake3_udp.dll" returns i32
+extern function mq3_udp_recv(socket as ptr,data as ptr,capacity as i32,metadata as bytes) from "miniquake3_udp.dll" returns i32
+extern function mq3_udp_close(socket as ptr) from "miniquake3_udp.dll" returns i32
+
+struct Endpoint address port end struct
+struct Datagram received endpoint data end struct
+
+function ipv4(a,b,c,d)
+  if a<0 or a>255 or b<0 or b>255 or c<0 or c>255 or d<0 or d>255 then return error(6960,"udp: invalid IPv4 octet") end if
+  return (a<<24)|(b<<16)|(c<<8)|d
+end function
+function octets(address) return [(address>>24)&255,(address>>16)&255,(address>>8)&255,address&255] end function
+function startup()
+  code=mq3_udp_startup();if code!=0 then return error(6961,"udp: WSAStartup failed "+str(code)) end if;return void
+end function
+function cleanup()
+  code=mq3_udp_cleanup();if code!=0 then return error(6962,"udp: WSACleanup failed "+str(code)) end if;return void
+end function
+function open()
+  socket=mq3_udp_socket();if socket==-1 then return error(6963,"udp: socket failed") end if;return socket
+end function
+function bind(socket,endpoint)
+  if socket==void or endpoint==void or endpoint.port<0 or endpoint.port>65535 then return error(6964,"udp: invalid bind") end if
+  code=mq3_udp_bind(socket,endpoint.address,endpoint.port);if code!=0 then return error(6964,"udp: bind failed "+str(code)) end if;return localEndpoint(socket)
+end function
+function localEndpoint(socket)
+  port=mq3_udp_local_port(socket);if port<0 then return error(6965,"udp: getsockname failed "+str(0-port)) end if
+  return Endpoint(mq3_udp_local_address(socket),port)
+end function
+function sendTo(socket,endpoint,data)
+  if socket==void or endpoint==void or data==void or endpoint.port<0 or endpoint.port>65535 then return error(6966,"udp: invalid send") end if
+  result=mq3_udp_send(socket,endpoint.address,endpoint.port,nativeBytesPtr(data),len(data))
+  if result<0 then return error(6966,"udp: sendto failed "+str(0-result)) end if
+  if result!=len(data) then return error(6966,"udp: partial datagram") end if
+  return result
+end function
+function receiveFrom(socket,capacity)
+  if socket==void or capacity<1 or capacity>65535 then return error(6967,"udp: invalid receive capacity") end if
+  data=bytes(capacity,0);metadata=bytes(8,0);result=mq3_udp_recv(socket,nativeBytesPtr(data),capacity,metadata)
+  if result==-2 then return Datagram(false,void,bytes(0,0)) end if
+  if result<0 then return error(6967,"udp: recvfrom failed "+str(0-result)) end if
+  return Datagram(true,Endpoint(n.readU32(metadata,0),n.readU32(metadata,4)),slice(data,0,result))
+end function
+function close(socket)
+  if socket==void then return error(6968,"udp: invalid socket") end if
+  code=mq3_udp_close(socket);if code!=0 then return error(6968,"udp: closesocket failed "+str(code)) end if;return void
+end function

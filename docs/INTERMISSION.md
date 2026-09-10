@@ -95,18 +95,16 @@ werden durch `ExitLevel` selbst nicht zusätzlich zurückgesetzt. Das neue
 Drei Aufrufe betreffen weiterhin fehlende Spielmodule. Sie sind ausdrücklich
 erforderliche Schnittstellen und werden im Referenzharness beobachtet:
 
-| Level-Schnittstelle | Noch fehlendes Spielmodul |
+| Level-Schnittstelle | Verwendung |
 | --- | --- |
-| `botInterbreedEndMatchFn(level)` | `BotInterbreedEndMatch`, Bot-Zuchtzustand und Botlib-Arbeit |
-| `updateTournamentInfoFn(level)` | `UpdateTournamentInfo`, Baseq3-Einzelspieler-Postgame-Auswertung |
-| `spawnVictoryPadsFn(level)` | `SpawnModelsOnVictoryPads`, Podiumsmodelle und Siegesanimationen |
+| `botInterbreedEndMatchFn(level)` | Optionale Testüberschreibung; Standard ist der portierte Bot-Lifecycle-Kern |
+| `updateTournamentInfoFn(level)` | Optionale Testüberschreibung; Standard ist die echte Baseq3-Postgame-Auswertung |
+| `spawnVictoryPadsFn(level)` | Optionale Testüberschreibung; Standard sind Podium, Siegesmodelle und Animationen |
 
 Die beiden Einzelspieler-Aufrufe erfolgen nur bei `GT_SINGLE_PLAYER`, nach dem
-Setzen der Intermissionzeit und der Punktsuche. Fehlende Schnittstellen melden
-einen Fehler an ihrer Aufrufposition; ein vorhandener Postgame-Aufruf wird vor
-der Prüfung der Podiumsschnittstelle ausgeführt. Die Prüfung dieser Reihenfolge
-ersetzt keinen Port der dahinterliegenden Spielmodule. Missionpack ist nicht
-Gegenstand dieses Schritts.
+Setzen der Intermissionzeit und der Punktsuche. Ohne Testüberschreibung laufen
+`UpdateTournamentInfo` und `SpawnModelsOnVictoryPads` aus dem portierten
+`g_arenas.c`-Block. Missionpack ist nicht Gegenstand dieses Schritts.
 
 Davon getrennt bleiben Engine-Aufgaben: `consoleCommandFn` nimmt die
 Mapwechsel-/Restart-Befehle entgegen; `cvarSetFn` liefert die tatsächlich

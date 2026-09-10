@@ -1,10 +1,18 @@
 # MiniQuake3: überprüfter Stand
 
-Stand: 2026-09-06. Der Port ist **in Arbeit und noch nicht spielbar**.
+Stand: 2026-09-10. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
-Die aktuelle reguläre Regression besteht aus **46 bestandenen Prüfbereichen**
+Die aktuelle asset-freie Prüfauswahl umfasst **154 Gates** (`verify.py`). Die
+vollständige Retail-Auswahl mit `D:/Quake3` umfasst **158 Gates** und ist am
+10. September 2026 vollständig bestanden. Sie umfasst einschließlich der
+Preview-Renderer-, HUD-, Bewegungs- und Audio-Gates außerdem den sequenzierten
+Server-Eingabepfad von Windows-UDP bis Reliable-Command, Dispatcher, UserMove
+und ClientThink. Der aktuelle MiniQuake3-Build hat SHA-256
+`7a847d761cba3a3fc84446b1d0f8fd1f0a7e57d36a0c7b57f0eec55524e7d822`.
+
+Der letzte archivierte Lauf mit den CD-Daten bestand aus **46 regulären Prüfbereichen**
 (`verify.py --data-root D:/Quake3`), einschließlich Engine-/Spielmodul-Cvars, Teamstandorten/-overlay,
 Passwortstatus, Userinfo/Namen/Teamwahl, ClientConnect/Sitzungsdaten,
 Team-/Zuschauerwechsel, ClientDisconnect, Follow-Befehle, Duell-Warteschlange,
@@ -19,7 +27,7 @@ Client-Abläufen ab `ClientBegin`, `CheckTournament`, `G_RunFrame` und CLI-Laufz
 Alle 31 CD-Karten werden geladen; Schadens-, Projektil- und Leichenfälle laufen
 ebenfalls auf den CD-Karten.
 
-Die aktuelle erweiterte Vollprüfung besteht mit **61/61 Gates**. Sie enthält
+Die letzte erweiterte CD-Vollprüfung bestand mit **61/61 Gates**. Sie enthält
 alle 46 regulären Prüfbereiche und die zusätzlichen Kollisions-, Bewegungs-,
 Pmove-, Sichtbarkeits-, Serverwelt-, Trigger- und Spawnvergleiche auf den
 31 CD-Karten, einschließlich der Profile mit und ohne Kurven.
@@ -48,14 +56,14 @@ Der Original-Checkout ist sauber und auf derselben festgeschriebenen Revision.
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
 | --- | --- | --- |
 | 1. Referenz | Grundabnahme bestanden | Originale x86-Engine, drei native Module, drei neu gebaute QVMs; MiniLang-Build; 1.409 Dateien inventarisiert; 120 Frames mit zwei Bots aufgezeichnet und zweimal bytegleich wiedergegeben |
-| 2. Zahlen/Plattform | In Arbeit | 101.445 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff vorhanden; Fenster, Eingabe, UDP und Audio noch offen |
-| 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, Engine-/VM-Cvar-Registrierung/-Aktualisierung und Spielmodul-Tabelle, 448 Parseraufrufe, Info-Schlüsselsuche/-Validierung sowie über teamtask geprüfte Info-Mutation und 84 ZIP/DEFLATE-Vergleiche bestanden; Command-Buffer, Cvar-Neustart/Config-Persistenz, vollständige Suchpfade/Pure-Checksummen und Engine-Schleife fehlen |
-| 4. QVM | In Arbeit | 404 Vergleiche mit dem Originalinterpreter; drei begrenzte Einstiegspunkte echter CD- und neu gebauter QVMs; vollständige Engine-Traps und QVM-/Engine-Modulstart fehlen |
-| 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung, Sprungpad-/Teleport-Replays, ClientBegin und G_RunFrame-Einbindung geprüft; komplette Match-Telefrag-Replays fehlen |
-| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, 40 Spawn-Klassen und alle 35 Item-Spawns, Target-Ketten, Speaker-/Push-Targets, Timer, Ortsmarkierungen, Shader-Remaps, `G_RunFrame` samt Entity-/Client-Schleifen sowie Schaden/Rüstung/Rückstoß, Hurt-/Kill-/Laser-Objekte, Radius-/Sichtlinien-Treffer, Raketen/Granaten/Plasma/BFG, Grappling-Hook, Shooter, Telefrag-Integration, ClientConnect/Sitzungs-Cvars, Team-/Zuschauerwechsel, Follow-Befehle, Duell-Warteschlange, ClientDisconnect, Client-Abläufe ab ClientBegin, Userinfo/Namen/Teamwahl, Leichen, Items, Punkte, Ränge, Matchende, Intermission-/Levelende-Steuerung, Tournament/Warmup, Vote-Aufrufe/Stimmabgabe/Auflösung, Teamleiterwahl, Teamstandorte/-overlay, Passwortstatus, Engine-Cvar-Refresh, ClientCommand mit Chat/Voice/Cheats/Spielkommandos, alle zehn Baseq3-Feuerpfade samt Schrotstreuung/Rail-Durchschüssen/Quad-Skalierung und CTF sowie Serverkonsole, IP-Filter, Spielarena, Item-/Teaminitialisierung, G_InitGame/G_ShutdownGame und Logformatierung vorhanden; Engine-Mapausführung, Bot-Einrichtung/-Shutdown/-Matchende, Einzelspieler-Ergebnis/Podium, acht Mover-Klassen, Mover-Pushing, Engine-VM-Neuladen und Engine-Kommando-Tokenisierung fehlen |
-| 7. Netzwerk/Client | Offen | Noch keine MiniLang-Implementierung |
-| 8. Renderer/Cgame | Offen | Noch keine MiniLang-Implementierung |
-| 9. Bots/Audio/UI | Offen | Noch keine MiniLang-Implementierung |
+| 2. Zahlen/Plattform | In Arbeit | 101.445 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff, nichtblockierende UDP-Grenze, Desktop-Framehost und eine mit 2 C-Fällen plus 26 Verträgen geprüfte Eingabequeue sind vorhanden; Win32-DIB-Previewhost und WinMM-Audiogrenze bestehen ihre `/W4 /WX`-Lifecycle-Tests; produktives OpenGL bleibt offen |
+| 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, Engine-/VM-Cvar-Registrierung/-Aktualisierung und Spielmodul-Tabelle, 448 Parseraufrufe, Info-Schlüsselsuche/-Validierung, 28 bytegenaue `cmd.c`-Puffer-/Tokenizer-, 16 Registry-/Builtin- und 10 Startup-Differentialdatensätze plus 32 Verträge, 84 ZIP/DEFLATE-Vergleiche sowie 48 direkte C-Vergleiche der MD4-basierten Pak-Prüfsummen und 25 Suchpfad-/Pure-/Referenz-/Downloadvergleichsverträge bestanden; Downloadtransport, UTF-16-Dateinamen, Cvar-Neustart/Config-Persistenz und Engine-Schleife fehlen |
+| 4. QVM | In Arbeit | 404 Interpretervergleiche und 17 Runtime-Verträge; gemeinsame Traps 4/32; qagame-Servertraps 3/32 plus binäre Welttraps 5/37 und Lifecycle 11/22; cgame-Lifecycle 12/20 plus 19 Traps 4/37; UI-Lifecycle 14/22 plus 39 Kerntraps 7/58 und 16 Medien-/Spezialtraps 5/42; verbliebene Botlib-, Renderer-3D- und seltene Plattformtraps fehlen |
+| 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung, Sprungpad-/Teleport-Replays, ClientBegin und G_RunFrame-Einbindung geprüft; der spielbare Pfad nutzt zusätzlich 800er Gravitation, Bodenprobe, Sprung, Quake-Reibung/-Beschleunigung, Collision-Slide und 18-Unit-Step in 26 Verträgen; Gegner verwenden ebenfalls Spielerhülle, Wall-Slide, Step und Bodenbindung, in 22 Verträgen plus q3dm1-Probe geprüft; komplette Match-Telefrag-Replays fehlen |
+| 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, alle 48 Spawn-Klassen und 35 Item-Spawns, Mover-Zustände/Trigger/Züge samt aktiven Retail-Türen/Buttons und vollständigen Retail-Rider-Frames, Target-Ketten, `G_RunFrame`, Schaden, Waffen, Client-/Match-/CTF-Abläufe, Einzelspieler-Postgame/Podium, Bot-Lifecycle, Bot-/Arena-Registry, Spawnqueue, Minimum-Player, Bot-Erzeugung/-Entfernung und BotConnect/SetupClient/ShutdownClient, Serverkonsole, IP-Filter, Spielarena sowie G_InitGame/G_ShutdownGame vorhanden; der spielbare Slice lädt 18 q3dm1-Pickups und fünf Ziele mit Hitscan-Schaden, Tod, Fragwertung und Respawn; BSP-Sichtprüfung steuert Patrouille, Verfolgung, Strafe und Angriffe; Gegnerangriffe fliegen als BSP-getracete Projektile und schädigen den Spieler nur beim räumlichen Treffer; Projektilsimulation besteht 25 Verträge; Armor, Spieler-Tod, Spawnwechsel, Schutz und Respawn sind integriert; Engine-VM-Neuladen und Netzwerkzustellung fehlen |
+| 7. Netzwerk/Client | In Arbeit | Message/OOB, Protokoll-68-Huffman, Deltas, Snapshots, Downloads, Demo-Framing, Netchan und Windows-UDP sind implementiert; echte Localhostpfade führen serverseitig bis ClientThink und clientseitig bis `CL_ParseServerMessage`; der äußere `CL_Frame` stimmt in 13 C-Datensätzen überein und besteht 28 Verträge; Snapshot-/cgame-Zeit einschließlich Drift, Pause, Demo und Timedemo besteht 4 Headerwerte plus 26 Verträge; die vollständige Match-Schleife fehlt |
+| 8. Renderer/Cgame | In Arbeit | Shader-Index 10/10, Shaderparser 30/32 und TGA 5/22; Bildverarbeitung 10/19 und Bildcache 8/29; Polychain 3/21, Triangle/Face 3/30, MD3-Mesh 3/31, MD3-Tags/Bounds 7/26, Sprite-Quads 6/31 und Grid 5/30; View-Transformation/Culling 11/36; Texturzustände 18/30; Commandqueue 7/29; Szene Polys/Entities/Lichter 6/24; Draw-Surface-Schlüssel/Ring/Sortierung 5/34; interaktiver BSP-Vertical-Slice mit texturierten Bezier-Patches, originalem Baseq3-HUD, echten Pickup-Modellen, Projektilen und texturierter First-Person-Machinegun; der Retail-Sarge wird aus Lower/Upper/Head über Tags zusammengesetzt, interpoliert, mit zwei PK3-Skinbildern texturiert und im Nahbereich mit allen 795 Dreiecken gezeichnet; Idle/Walk/Run/Attack/Pain/Death/Respawn folgen Gameplay-Ereignissen; vorberechnete Projektion, direkte MD3-Transformation und scanline-begrenztes Rasterisieren liefern im gemessenen q3dm1-Smoke etwa 10,4 FPS; vollständige Shaderstufen, exakte cgame-Animationsmischung und Cgame-Präsentation fehlen |
+| 9. Bots/Audio/UI | In Arbeit | Umfangreiche Botnavigation, Kampf- und Teamlogik ist mit direkten C-Orakeln portiert; UI-Lifecycle und 55 UI-Traps einschließlich Sound/Cinematics/LAN sind vorhanden; Audio-DMA-Transfer 7/20 und 16-Bit-Kanalpainting 7/32; der spielbare Pfad ergänzt Bitmap-Menü, geprüften WAV-PCM-Parser (35 Verträge), echtes WinMM-Gerät für alle 591 PCM-WAVs aus pak0 sowie Schuss-, Sprung-, Pickup-, Schmerz- und Todessounds; räumliche Kanalauswahl, Streaming und vollständige UI-/Cinematic-Präsentation fehlen |
 | 10. Gesamtparität | Offen | Hängt von allen vorangehenden Abnahmen ab |
 
 115 zusätzliche Tests prüfen beschädigte Dateieingaben, VM-Limits, räumliche
@@ -107,12 +115,15 @@ gezielte Testsammlung, keine vollständige Fuzzing- oder Sicherheitsabnahme.
   kontrolliert zurück. Der Originalparser kann bei überlangen quoted tokens
   seinen C-Puffer überschreiten; MiniLang weist diese Eingabe zurück.
 - ZIP64, verschlüsselte und mehrteilige ZIPs sowie Nicht-ASCII-Dateinamen sind
-  noch kein zugesicherter Kompatibilitätsumfang. PK3-Pfadpriorität und Pure-Server-
-  MD4-Checksummen sind noch nicht implementiert. CRC32 allein ersetzt diese nicht.
+  noch kein zugesicherter Kompatibilitätsumfang. PK3-Pfadpriorität, Dateilisten
+  und Pure-Server-MD4-Prüfsummen sind für explizit vom Host aufgelistete Paks
+  umgesetzt; automatische Verzeichnissuche, Downloads, Restrict-Modus und
+  referenzierte-Pak-Verhandlung fehlen. Details stehen in [FILESYSTEM.md](FILESYSTEM.md).
 - BSP-Lesen, Welt-/Inline-Modellkollision, Kurvenflächen, Transformationen,
   temporäre Boxen, Sichtbarkeitsdaten und Areaportale haben eigene Vergleichstests.
-  Bewegte Entities sind mit Pmove verbunden; Türsteuerung, Mover-Pushing und
-  Rendering sind noch offen.
+  Bewegte Entities sind mit Pmove verbunden; Türsteuerung und lineares
+  Mover-Pushing, Drehmitnahme, Client-Yaw und Areaportal-Umschaltung sind implementiert.
+  Differentialreplays für komplexe Blockaden sowie Rendering sind noch offen.
 - Die x86-Referenz verwendet in `BoxOnPlaneSide` die originale x87-Assemblerfassung.
   Der Port vergleicht die Summen hier ohne Zwischenrundung auf binary32. Die
   getesteten CD-Koordinaten stimmen; das ist keine pauschale Zusage für beliebige
@@ -371,20 +382,20 @@ tragen; diese Zahlen zählen Ergebniszustände, nicht die Zahl einzelner Callbac
 Feld-, Think- und Kartenprüfung verwenden dasselbe MiniLang-Testbinary
 (`eb2b7b0a14844c61c0833ec957124a4bd48a515daf5841705cd3d1c12c3eacf5`).
 
-40 der 48 Spawn-Klassen führen bereits die übertragenen Originalfunktionen aus.
+Alle 48 Spawn-Klassen führen übertragene Originalfunktionen aus.
 Worldspawn-Effekte, alle Spielmodusfilter, die frühe Brush-Modell-Verlinkung,
 die 100-ms-Zielausrichtung der Sprungpads und komplette PlayerStates nach
 Trigger-Kontakten sind enthalten. Einige originale Positions-/CTF-Spawn-Funktionen
 sind leer; manche andere geben ihre Entity unmittelbar frei. Die Abnahme bewahrt
 diese Funktionen, ohne damit bereits Spieler-Respawn oder CTF-Regeln zu behaupten.
 
-**Aufrufgrenzen:** Die acht noch nicht portierten Klassen werden in diesen Replays
-aufgezeichnet und erzeugen keine vereinfachten Ersatzregeln. Alle 35 Item-Aufrufe
-laufen dagegen durch `G_SpawnItem`; Platzierung und späteres Verhalten prüft die
-gesonderte Item-Suite. Ohne gesetzten `unportedFn` bricht MiniLang an einer noch
-nicht portierten bekannten Klasse kontrolliert ab. Der Testhost stellt Speicher
-und Configstring-/Cvar-Schnittstellen bereit; Netzwerkverteilung, vollständige
-Frames und Mover-Pushing bleiben offen. Die Item-Suite prüft inzwischen
+**Mover-Abnahme:** Die acht Mover-Klassen laufen inzwischen durch echte Spawn- und
+Framepfade. Lineares und rotierendes Schieben, Client-Yaw, Rückrolldaten und
+Areaportal-Referenzzähler besitzen Laufzeitverträge; drei `func_rotating`-Achsen
+werden außerdem exakt gegen das unveränderte C-Orakel verglichen. Alle 35 Item-Aufrufe laufen durch `G_SpawnItem`; Platzierung und
+späteres Verhalten prüft die gesonderte Item-Suite. Der Testhost stellt Speicher
+und Configstring-/Cvar-Schnittstellen bereit; Netzwerkverteilung und vollständige
+Karten-Replays komplexer Blockaden des Mover-Schiebekerns bleiben offen. Die Item-Suite prüft inzwischen
 Aufnahme, Pickup-Targets und Respawn. Ereignisfreigabe wird in
 der nachfolgend beschriebenen Entity-Schleife geprüft.
 
@@ -690,8 +701,10 @@ tatsächliche MiniLang-Registry. Die Verbindung mit registrierten und aktualisie
 Der native Host modelliert Session-Cvar-Speicherung und behält seinen
 beobachteten IP-Override. Die portierten IP-Filter liefern jetzt die
 Standardentscheidung und sind separat geprüft; zusätzliche Connect-Verträge
-prüfen echte Ban-/Whitelist-Ablehnungen. Bot-Einrichtung und
-Userinfo-/Server-/Log-Zustellung bleiben beobachtete Schnittstellen. Unvollständige
+prüfen echte Ban-/Whitelist-Ablehnungen. Bot-Userinfo und Setup-Einstellungen laufen
+standardmäßig durch `G_BotConnect` und den portierten `BotAISetupClient`-
+Ressourcenpfad. `BotAIShutdownClient` ist ebenfalls Lifecycle-Default; die einzelnen
+Botlib-, Userinfo-, Server- und Logdienste bleiben explizite Host-Schnittstellen. Unvollständige
 Scans werden vor einer MiniLang-Zustandsänderung kontrolliert abgewiesen;
 der Originalcode würde dabei nicht initialisierte lokale Variablen lesen.
 Vollständiger Engine-/Modullebenszyklus, Engine-Mapausführung,
@@ -771,8 +784,10 @@ Bereitschaft, Wartezeiten, Punktelimits und alle Sitzungs-Cvars sind eingeschlos
 Die neue Integration ergänzt auch die zuvor fehlende `G_PickTarget`-Diagnose
 bei vorhandenem Print-Host.
 
-Bot-Interbreeding und Einzelspieler-Postgame/Podium bleiben ausdrücklich
-benötigte Spielschnittstellen; ihre Reihenfolge wird beobachtet. Die Engine
+Der Einzelspieler-Postgame-/Podiumspfad ist als echter Standard implementiert,
+mit 22 Verträgen geprüft und stimmt in fünf direkten Szenarien mit 1.343 Wörtern
+gegen das unveränderte `g_arenas.c`. Bot-Interbreeding läuft standardmäßig über
+den portierten Bot-Lifecycle-Kern. Die Engine
 erhält `map_restart` beziehungsweise `vstr nextmap`, führt diese Befehle im Port
 aber noch nicht als vollständigen Kartenwechsel aus. Spawn-Think-/Endframe bleiben
 hier isolierte Overrides. Details: [INTERMISSION.md](INTERMISSION.md).
@@ -823,9 +838,11 @@ Team-, Todes-, Spawn- und Rangabläufe aus.
 107 zusätzliche Laufzeitverträge prüfen definierte Schnittstellengrenzen.
 Die Initialisierung normalisiert ausdrücklich 18 einzelne undefinierte CTF-Bytes;
 die unveränderten nativen Rohbytes sind archiviert. Dafür wird keine exakte
-Parität behauptet. Bot-Kommandos und Podium-Abbruch benötigen weiterhin ihre
-ausdrücklichen Schnittstellen. [Modulstart/-shutdown](GAME_LIFECYCLE.md) ist
-inzwischen verbunden; Engine-Kartenwechsel und VM-Neuladen, Mover-Pushing,
+Parität behauptet. Boterstellung und Botliste benötigen weiterhin ihre
+ausdrücklichen Schnittstellen; Registry, Spawnqueue und Connect-Glue sind portiert,
+und der Podium-Abbruch besitzt den echten Baseq3-
+Standardpfad. [Modulstart/-shutdown](GAME_LIFECYCLE.md) ist
+inzwischen verbunden; Engine-Kartenwechsel und VM-Neuladen, die vollständige Mover-Differentialabnahme,
 Netzwerk, Darstellung und Bot-KI bleiben offen.
 
 ## Spielmodulstart, Shutdown und Protokollausgabe (Schritt 6)
@@ -855,7 +872,7 @@ Mini-Verträge ergänzen die bisherigen Cvar-Nachweise.
 Zehn einzelne undefinierte erste CTF-Statusbytes werden im Lifecyclevergleich
 normalisiert und mit den nativen Rohbytes archiviert. Das ist kein Anspruch
 auf Parität mit undefiniertem C-Speicher. Tatsächliches Engine-VM-Neuladen,
-Kartenwechsel, Betriebssystem-Dateidienste, Bot-KI und fehlende Spawn-Klassen
+Kartenwechsel, Betriebssystem-Dateidienste, Bot-KI und die vollständige Mover-Abnahme
 bleiben offen. Der Port ist weiterhin nicht spielbar.
 
 ## Weitere Karten-Targets und Portale (Schritt 6)
@@ -875,8 +892,8 @@ Kanonischer Bericht: `build/reference/map_objects/result.json`.
 
 Die vier [Give-/Powerup-/Score-/Print-Targets](MAP_TARGETS.md) und die beiden
 [Portal-Klassen](PORTALS.md) schließen die verbliebenen Nicht-Mover-Klassen.
-Die zentrale Spawn-Auswahl enthält damit 40 von 48 Baseq3-Klassen und weiterhin
-alle 35 Karten-Items. Acht Mover-Klassen bleiben explizite Aufrufgrenzen.
+Die zentrale Spawn-Auswahl enthält damit alle 48 Baseq3-Klassen und weiterhin
+alle 35 Karten-Items. Die acht Mover-Klassen besitzen echte Spawn- und Framepfade.
 
 Der neue Vergleich startet über das tatsächliche `G_InitGame` und führt die
 unveränderten nativen Use-/Think-Körper aus. Item-Aufnahme, Flaggenrückgabe,
@@ -898,14 +915,23 @@ Timer-/Multiple-Warnungen und fehlende Path-Corner-/Teleporter-/Laserziele;
 entsprechende bisher stumme MiniLang-Pfade sind ergänzt. Bei identischen
 Kartendaten und Eingaben bleiben 55 der 168 Spawnströme unverändert. 113
 ändern sich durch 279 ersetzte Klassen-Aufrufgrenzen und 228 nun beobachtete
-Diagnosen. Die verbleibenden Mover-Aufrufzahlen sind unverändert.
+Diagnosen. Die Mover-Funktionen werden ebenfalls direkt durch das C-Orakel gebaut.
+`scripts/test_mover_push.py` vergleicht fünf Schiebeszenarien mit der unveränderten
+Originaldatei: linearen Erfolg, 90-Grad-Rotation mit Client-Yaw, blockierten
+Rollback, `EF_MOVER_STOP` und den vollständigen Rollback eines zweiteiligen Teams.
+Alle 545 verglichenen Zustandswörter stimmen exakt; 30 native Area-, Trace-, Link-
+und Callback-Beobachtungen sind zusätzlich fest geprüft.
 
 Verschachtelte `va`-Pufferüberlappung bei mehrfachem Teamempfang ist kein
 ISO-C-definierter Vergleichsfall. Native Beobachtungen werden getrennt geführt;
 MiniLang stellt den gespeicherten Text allen passenden Spielern zu.
 Nicht darstellbare Roll-Casts und überlaufende Formatpuffer erhalten eigene
-Verträge. Netzwerkzustellung, Portalansichten in Cgame/Renderer und Mover-Pushing
-sind dadurch noch nicht portiert.
+Verträge. `scripts/test_retail_movers.py` prüft zusätzlich die echten Entity-Lumps
+von `q3ctf4`, `q3dm15` und `q3dm0`: Bobbing, drei Pendel, zwei rotierende Mover,
+ein aktiviertes zweiteiliges Türteam und ein Button stimmen in 77.073.336 Wörtern
+und 1.684 geordneten Effekten. q3ctf4 trägt zusätzlich einen gelinkten Spieler und
+ein physikalisches Item über fünf vollständige Original-/MiniLang-Frames jeweils
+664 Einheiten. Netzwerkzustellung und Portalansichten in Cgame/Renderer bleiben offen.
 
 ## Baseq3-Waffen (Schritt 6)
 
@@ -1092,6 +1118,68 @@ sind inzwischen separat geprüft. Die native Paritätsprüfung
 nichtnulliger Item-Deaktivierungs-Cvars, tatsächliche `PrintMsg`-Netzwerkzustellung
 und Missionpack bleiben offen. Details: [ITEMS.md](ITEMS.md).
 
+## Nachrichten-Huffman (Schritt 7)
+
+`test_huffman_message.py` prüft den adaptiven Grundcodec aus `huffman.c` und
+den mit 1.053.340 Baseq3-Häufigkeitsreferenzen initialisierten
+`MSG_WriteBits`-/`MSG_ReadBits`-Pfad. Acht direkte Datensätze vergleichen
+vollständige Bitströme und Ergebnisse aus unveränderten C-Funktionskörpern;
+83 Verträge ergänzen Baumzustand, alle gültigen Breiten, Vorzeichen, Cursor und
+Überlauf. Skalare, Usercmd-, EntityState- und PlayerState-Deltacodecs sind
+inzwischen separat direkt gegen `msg.c` geprüft.
+Details: [MESSAGE_IO.md](MESSAGE_IO.md).
+
+## Entity-/PlayerState-Deltas (Schritt 7)
+
+`message_state_delta.ml` bildet alle 51 Entity- und 48 Player-Netfields in
+Originalreihenfolge ab. 108 direkte Orakeldatensätze vergleichen vollständige
+Huffman-Paketbytes und die rekonstruierten Zustandswörter. Sie decken Skip,
+Force, Remove, frühe und späte `lc`-Grenzen, Null-, integrale und vollständige
+Floats, signierte Felder sowie alle vier Arraymasken ab. 28 MiniLang-Verträge
+ergänzen Strukturgrenzen, Kopiersemantik und ungültige Feldzähler.
+
+## Netchan-Sequenzen und Fragmentierung (Schritt 7)
+
+`test_netchan.py` kompiliert fünf unveränderte Funktionskörper aus
+`qcommon/net_chan.c` in einem isolierten Host und vergleicht sie mit
+`qcommon/netchan.ml`. 29 Datensätze mit vollständigen hexadezimalen Paketbytes prüfen Setup, Client-/Serverheader, qport,
+leere und kurze Nachrichten, 1300-Byte-Grenze, Null-Endfragment, Dropzählung,
+Duplikate, Fragmentlücken, Retries, Sequenzwechsel während Teilmontagen und
+vollständige Empfangsmontage. 29 MiniLang-Verträge ergänzen Dienst- und
+Puffergrenzen sowie einen `message.ml`-Integrationstest. Der Zielpuffer wird
+bewusst einschließlich des rekonstruierten Vier-Byte-Sequenzheaders geprüft;
+damit schließt der Port einen Vier-Byte-Überlauf der Originalroutine. Der echte UDP-Versand bleibt im
+Netchan als `sendPacketFn` injiziert. Der Client-Payloadcodec ist separat geprüft. Die
+Client-Schicht aus `client/cl_net_chan.c` ist nun mit
+allen fünf `CL_Netchan_*`-Funktionen portiert: neun direkte C-Orakeldatensätze
+vergleichen vollständige Bytes und Zustände, 18 Verträge sichern Encode/Decode,
+EOF, Fragmentweitergabe, Process und Größenfortschreibung. UDP und OOB bleiben
+Hostgrenzen des Protokollmoduls. Details: [NETCHAN.md](NETCHAN.md).
+
+`client/connectionless.ml` bildet Client-OOB und Resend aus `cl_main.c` ab.
+17 direkte Datensätze führen `CL_CheckForResend`, `CL_DisconnectPacket` und
+`CL_ConnectionlessPacket` unverändert aus; 27 Verträge prüfen Zustände,
+Adressen, Timeouts, Callbacks und die vollständige Connect-Nutzlast. UDP-Empfang
+und die Browserdatenhaltung bleiben eigene Grenzen. Details:
+[CLIENT_CONNECTIONLESS.md](CLIENT_CONNECTIONLESS.md).
+
+Die Serverschicht `server/netchan.ml` portiert alle fünf `SV_Netchan_*`-Pfade:
+XOR-Encode/Decode, Process, `svc_EOF`, Fragmentfortsetzung und die unkodierte
+FIFO mit sequenzabhängiger Kodierung beim Pop. Zwölf direkte Datensätze führen
+die unveränderten Serverkörper gemeinsam mit den unveränderten Netchan-, MSG-
+und Huffman-Körpern aus und vergleichen vollständige Paketbytes sowie Cursor-,
+Sequenz-, Fragment- und Queuezustände. 26 Verträge prüfen zusätzlich beide
+Process-Headerbreiten, Schlüsselsonderzeichen, Queuefehler und mehrstufigen
+Fragmentdrain. Die interne Offset-null-Sicht hinter dem byteausgerichteten
+4-/6-Byte-Header ist separat abgenommen und byteidentisch zum globalen C-Bitzeiger.
+
+Die [Windows-UDP-Plattform](UDP_PLATFORM.md) implementiert den darunterliegenden
+rohen Transport als kleine x64-DLL um Winsock 2.2 und als MiniLang-Wrapper.
+Zwei nichtblockierende Localhost-Sockets übertragen in 13 Verträgen exakte
+9- und 2.048-Byte-Payloads in beide Richtungen; Quelladresse, Quellport und
+leere Receive-Queue werden ebenfalls geprüft. Noch offen ist die Live-Verkabelung
+dieser Plattformaufrufe mit den `sendPacketFn`-Callbacks und dem Engine-Polling.
+
 ## Reproduzieren
 
 Aus dem MiniQuake3-Verzeichnis, mit Python 3 und Visual Studio C++-Toolchain:
@@ -1171,3 +1259,176 @@ Der abschließende CLI-Test prüft den gesamten Weg von `pak0.pk3` über den
 MiniLang-Lader bis zur formatierten Trace-Ausgabe gegen zwölf ursprüngliche C-Felder.
 Der dabei aufgezeichnete Binary-Hash bezeichnet den finalen Build; reine
 Ausgabeformatänderungen können einen neueren Hash als der vorherige Kern-Testlauf haben.
+### Server-Snapshot-Deltakette
+
+`src/mq3/server/snapshot_build.ml` portiert `SV_AddEntToSnapshot`,
+`SV_QsortEntityNumbers`, `SV_AddEntitiesVisibleFromPoint` und
+`SV_BuildClientSnapshot`. Sechs Hostcallbacks grenzen Collision-Leafs, PVS,
+Areabits und Area-Verbindungen ab. Fünf direkte Szenarien führen die vier
+unveränderten Originalkörper aus und stimmen bei Entityfiltern, Broadcast,
+Portalrekursion, Deduplizierung, Sortierung, Viewpoint, Areabit-Invertierung
+und zirkulärer Ringablage überein. Hinzu kommen 26 MiniLang-Verträge.
+
+`src/mq3/server/snapshot_runtime.ml` stellt die produktive Adaptergrenze zu
+`collision.world`, `collision.visibility`, `server.world` und den Game-Level-
+Entities her. 16 assetfreie Verträge prüfen Mapping, Synchronisierung, Wachstum,
+Schrumpfen, Zählererhalt und Fehlergrenzen. Ein Retail-Lauf auf `q3dm0` verwendet
+den Player-Spawn `(-984, -1056, 128)`, löst Leaf 2623, Cluster 1287 und Area 3
+auf und kodiert die PVS-sichtbare Entity 64 plus Broadcast-Entity 65 als
+sendefertiges 62-Byte-Paket. Der geprüfte BSP-Hash ist
+`05e9540c598c9b1704c9853d61f2cd60c571735abcbf166609fcb4931fcde39b`.
+
+`src/mq3/server/snapshot_delta.ml` portiert den sortierten Packet-Entity-Merge
+aus `SV_EmitPacketEntities` einschließlich Baseline-Add, Remove, unverändertem
+Skip, Entity-Delta, Ring-Wrap und Protokollterminator. Außerdem bildet das Modul
+die unmittelbar anschließende Snapshot-Payload mit `svc_snapshot`, Serverzeit,
+Lastframe, Flags, Areabits, Playerstate und Packetentities ab. Die Auswahl und
+Speicherung der Clientframes sowie UDP-Scheduling bleiben Server-Hostgrenzen.
+
+`test_snapshot_delta.py` extrahiert den unveränderten Originalkörper aus
+`code/server/sv_snapshot.c` und vergleicht sechs vollständige komprimierte
+Bytefolgen. Alle sechs Orakel-Datensätze und 26 MiniLang-Verträge sind grün.
+`src/mq3/server/reliable_commands.ml` portiert außerdem
+`SV_UpdateServerCommandsToClient`, die 64er-Ringadressierung und die zugehörige
+Sequenz-/Acknowledgement-Semantik. Sieben komprimierte Streams aus dem
+unveränderten Originalkörper stimmen vollständig überein; 19 MiniLang-Verträge
+decken Resend, Acknowledge-Grenze, Einfügeüberlauf, Ring-Wrap und Hostfehler ab.
+`src/mq3/server/snapshot_send.ml` führt den vollständigen Nachrichtenpfad vom
+Client-Command-Acknowledgement bis zum Netchan-Callback aus. Die Deltaauswahl,
+Rate-/Inactive-Flags, Padding, Downloadreihenfolge, `svc_EOF`, Frame-Metadaten
+und Rate-/Snapshot-Terminierung liegen dabei in MiniLang. Sechs vollständige
+komprimierte Nachrichten aus den unveränderten Funktionen
+`SV_UpdateServerCommandsToClient`, `SV_WriteSnapshotToClient` und
+`SV_EmitPacketEntities` stimmen bytegenau überein; 25 Verträge decken zusätzlich
+Loopback/LAN, Rategrenzen, Inaktivität, Bot-Skip, Übertragungsgrenze und Fehler ab.
+Der dabei aufgerufene Downloadcallback besitzt nun eine MiniLang-Implementierung
+in `src/mq3/server/download.ml`. Zwölf direkte Datensätze aus unverändertem
+`SV_WriteDownloadToClient`, `SV_NextDownload_f` und `SV_CloseDownload` stimmen
+einschließlich komprimierter Paketbytes und Zustandsübergänge überein. 19
+Verträge prüfen Achtblockfenster, 2.048-Byte-Blöcke, EOF, Acks, Timeout-Resend,
+Rate- und Nachrichtenbudget sowie Ablehnungen.
+`src/mq3/client/snapshot_parse.ml` ergänzt den Gegenpfad aus `CL_DeltaEntity`
+und `CL_ParsePacketEntities`; 15 Verträge dekodieren darunter denselben
+gemischten Original-Serverstream vollständig und prüfen Ring-, Baseline-,
+Remove-, Tail-Copy-, Reihenfolge- und Trunkierungssemantik.
+
+`src/mq3/client/snapshot_command.ml` bildet den davon getrennten äußeren
+`CL_ParseSnapshot`-Zustandsübergang ab. `test_snapshot_command.py` extrahiert
+`CL_DeltaEntity`, `CL_ParsePacketEntities` und `CL_ParseSnapshot` unverändert aus
+`client/cl_parse.c`. Vier vollständige Übergänge prüfen Vollsnapshot, gültiges
+Delta, ungültiges und dennoch vollständig konsumiertes Delta sowie die
+Parse-Entity-Altersgrenze. Zehn Verträge ergänzen Header, 32-Byte-Areamask,
+Clientframe-Ring, Lückenentwertung, Ping, Demo-Warteflag und Wertkopiersemantik.
+`src/mq3/client/server_message.ml` portiert darüber `CL_ParseCommandString` und
+`CL_ParseServerMessage`. Drei direkte Übergänge aus den unveränderten
+Originalkörpern prüfen einen vollständigen Reliable-plus-Snapshot-Stream,
+veraltete Acknowledgement-Reparatur, Duplikatunterdrückung, Ringmaskierung und
+Gamestate-/Download-Dispatch. Zehn Verträge ergänzen `nop`, `EOF`, Trunkierung
+und ungültige Opcodes. `src/mq3/client/download.ml` portiert zusätzlich
+`CL_ParseDownload` mit Block-/Größenprüfung, Serverfehlertext, Dateiübergängen,
+`stopdl`/`nextdl`, Zähler und EOF-Acknowledgement. Vier direkte unveränderte
+C-Zustandsfolgen und 20 Verträge bestehen.
+`src/mq3/client/gamestate.ml` ergänzt `CL_ParseGamestate`. Ein unveränderter
+Original-C-Übergang und zwölf Verträge decken Configstring-Offsets und den
+16000-Byte-Speicher, BigString, Baselines, Servercommand-Sequenz, `clientNum`,
+`checksumFeed`, Reset und Abschlusscallbacks ab. `src/mq3/client/system_info.ml`
+portiert die anschließende `CL_SystemInfoChanged`-Policy: Server-ID und Demo-
+Schranke, Cheat-Reset, geladene und referenzierte Pure-Paks, geordnete Cvar-
+Übernahme, case-insensitive `fs_game`-Erkennung/-Leerung und den über
+`Cvar_VariableValue` gelesenen Pure-Zustand. Fünf Übergänge führen den
+unveränderten Originalkörper samt unveränderten Info-Helfern aus; 22 Verträge
+prüfen zusätzlich Fehler- und Gamestate-Bindungsgrenzen. Konkrete Cvar-/
+Dateisystemdienste, Dateisystem-Neustart und Downloadinitialisierung bleiben Hostdienste.
+`src/mq3/client/protocol_runtime.ml` installiert die konkreten Gamestate- und
+Downloadhandler im Dispatcher und synchronisiert danach Baselines, Reliable-
+Sequenz und Snapshotzustand. Zwölf Integrationsverträge führen Gamestate,
+Downloadblock und Snapshot in einer Nachricht aus. Echte
+Dateizugriffe und Live-Netzwerkzustellung bleiben Hostgrenzen.
+
+`src/mq3/client/demo.ml` portiert das Protocol-68-Dateiframing von
+`CL_WriteDemoMessage`, die Namensbildung von `CL_DemoFilename` und die
+Wiedergabeübergänge von `CL_ReadDemoMessage`. Zwölf direkte Datensätze führen
+diese drei Funktionskörper unverändert aus und vergleichen vollständige
+Datensatzbytes, fünf Namensfälle sowie Erfolg, EOF und drei Trunkierungsgrenzen.
+27 MiniLang-Verträge ergänzen Headerentfernung, verkettete Datensätze,
+Größenablehnung, Sequenz-/Zeitstatus und den synthetischen Start-Gamestate. Die
+historische Rückgabe `demo9999.tga` für ungültige Nummern ist dabei ausdrücklich
+abgenommen. Dateisystemintegration und die laufende Demo-/Timedemo-Schleife sind
+noch offen.
+
+### OOB-Challenge und Direct Connect
+
+`src/mq3/server/oob_connect.ml` portiert `SV_GetChallenge` und den Kern von
+`SV_DirectConnect`: 1.024er Challenge-Ring, Wiederverwendung und ältester Slot,
+LAN-/Authorize-Timeout, Protokoll 68, Challenge-/Ping-/Reconnect-Prüfung sowie
+öffentliche, private und lokale Bot-Slotwahl. 13 direkte Datensätze führen beide
+unveränderten Baseq3-Körper aus; 26 Verträge prüfen zusätzliche Ring-, Slot- und
+Fehlergrenzen. `src/mq3/server/connectionless.ml` ergänzt den unveränderten
+Dispatch von `SV_ConnectionlessPacket`: OOB-Markierung, tokenbasierte und
+case-insensitive Befehlswahl, Connect-Dekompression ab Byte 12 sowie direkte
+Anbindung von `getchallenge` und `connect` an den portierten OOB-Kern. Acht
+exakte C-Dispatch-Datensätze und 18 Verträge decken `getstatus`, `getinfo`,
+`getchallenge`, `connect`, `ipAuthorize`, `rcon`, `disconnect` und unbekannte
+Befehle ab. UDP-Empfang, Status-/Info-Payloadaufbau, Rcon-Ausführung, externe
+Autorisierung und Game-VM-Aufnahme sind explizite Hostdienste.
+
+### Client packet event and live UDP transport
+
+`src/mq3/client/packet_event.ml` portiert den sequenzierten Paketeingang aus
+`CL_PacketEvent` mit Adressprüfung, Netchan-Process, Serversequenz sowie
+Parse- und Demo-Reihenfolge. Neun direkte Datensätze aus dem unveränderten
+C-Körper und 23 Verträge decken OOB, Runt, falsche Absender, abgelehnte
+Sequenzen, erfolgreiche Pakete und Demo-Wait ab.
+
+`src/mq3/qcommon/net_transport.ml` verbindet die Protokollschichten mit dem
+geprüften Winsock-Wrapper. 15 echte UDP-Verträge prüfen Netchan-Callback,
+Quelladresse, OOB-Marker, Text und den komprimierten Connect-Roundtrip.
+`Huff_Compress` und `Huff_Decompress` stimmen im erweiterten unveränderten
+C-Orakel bytegenau überein; das Huffman-Gate umfasst nun zehn Datensätze und
+83 Verträge.
+
+### Network runtime integration
+
+`src/mq3/qcommon/network_pump.ml` leert beide nichtblockierenden UDP-Sockets
+mit explizitem Framebudget und alternierender Priorität. 20 Verträge verwenden
+echte Localhost-Sockets und prüfen FIFO, Fairness, leere Queues, Restbudget,
+beide Richtungen und Binärdaten bis 2.048 Byte.
+
+`src/mq3/server/packet_event.ml` portiert `SV_PacketEvent`: OOB-Routing,
+Runt- und Adressprüfung, qport-Clientsuche, NAT-Portkorrektur, Netchan,
+Zombie-Regel, Zeitstempel und ClientMessage-Callback. Zehn unveränderte
+C-Datensätze und 28 Verträge sind grün. Der äußere Parser
+`src/mq3/server/client_message.ml` ergänzt Server-ID-, Download- und
+Acknowledgement-Policy, wiederholte ClientCommands, EOF sowie Move/NoDelta.
+13 unveränderte C-Datensätze und 15 Verträge bestehen. Der anschließende
+`SV_ExecuteClientCommand`-Dispatcher fängt alle acht Engine-Befehle ab und
+leitet unbekannte Befehle nur bei aktivem Spielzustand und bestandener
+Floodprüfung an die Game-VM weiter. Neun unveränderte C-Datensätze und 16
+MiniLang-Verträge bestehen.
+
+Der Reliable-Rumpf `SV_ClientCommand` behandelt Duplikate, Sequenzlücken,
+Floodschutz und den für die Netchan-XOR-Kodierung maßgeblichen letzten Befehl.
+Elf unveränderte C-Datensätze und 20 Verträge bestehen. Der produktive
+`server.network_ingress`-Adapter führt UDP-Pump, PacketEvent, Netchan und
+ClientMessage in 19 echten Localhost-End-to-End-Verträgen zusammen.
+
+Der echte Localhost-Handshake besteht 20 weitere Verträge vom `getchallenge`
+bis zum ersten serverseitig dekodierten Netchan-Paket. Dabei wurden quoted
+Userinfo-Tokenisierung und das gültige OOB-Datagrammende ohne NUL gegen die
+Originalsemantik korrigiert. `SV_UserMove` ergänzt keyed Usercmd-Decodierung,
+Frame-Ack, Pure/CP-Gates, EnterWorld und ClientThink; zwölf unveränderte
+C-Datensätze und 30 Verträge bestehen. 14 weitere Integrationsverträge
+schließen ClientMessage, Reliable-Command, Dispatcher und UserMove über einen
+gemeinsamen Clientzustand zusammen.
+
+Der Client-Ingress verbindet den NetworkPump mit `CL_PacketEvent`,
+Client-Netchan und `CL_ParseServerMessage`; 21 echte Localhost-Verträge prüfen
+Reliable Commands, OOB, Demo-Grenze und beide Pumpseiten. Der Desktop-Framehost
+ergänzt in 25 Verträgen Winsock-Lebenszyklus, Socket-Bindings, Pumpbudget,
+gekappte Framezeit, Server-/Client-Reihenfolge, Rollback und Shutdown.
+`SV_CalcPings` stimmt in vier unveränderten C-Datensätzen überein und besteht
+16 MiniLang-Verträge. `SV_CheckTimeouts` ergänzt sechs unveränderte C-Fälle und
+24 Verträge, `SV_CheckPaused` 23 und 22 sowie `SV_SendClientMessages` mit
+`SV_RateMsec` drei und 19. Die äußere `SV_Frame`-Komposition stimmt in neun
+unveränderten C-Datensätzen überein und besteht 28 Verträge, einschließlich
+Kill/Restart, Residualzeit, Info-Config, Bot-/Game-Frames und Heartbeat.

@@ -107,7 +107,11 @@ Der native Host modelliert die Session-Cvar-Speicherung; MiniLang verwendet sein
 tatsächliche Registry, deren Engine-Regeln separat geprüft sind. Die [IP-Filter](IP_FILTERS.md)
 sind inzwischen implementiert und liefern die Standardentscheidung. Die ältere
 Differentialsuite behält ihren beobachteten IP-Override; zusätzliche Verträge
-prüfen tatsächliche Ban-/Whitelist-Ablehnungen. Bot-Einrichtung, Userinfo-Zustellung, Log und Serverbefehle enden an ausdrücklich
+prüfen tatsächliche Ban-/Whitelist-Ablehnungen. Bot-Userinfo wird standardmäßig
+über den portierten `G_BotConnect`-Pfad in Characterdatei, Skill und Team zerlegt.
+`BotAISetupClient` und `BotAIShutdownClient` verwalten Character-, Goal-, Weapon-,
+Chat- und Move-Ressourcen mit der originalen Fehler- und Cleanup-Reihenfolge. Die
+Botlib-Dienste, Userinfo-Zustellung, Log und Serverbefehle enden an ausdrücklich
 beobachteten Schnittstellen. Configstrings werden lokal gespeichert;
 Netzwerkübertragung, kompletter Modulstart/-shutdown, Dateipersistenz,
 tatsächliche Kartenwechsel durch die Engine und Missionpack bleiben offen.

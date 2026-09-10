@@ -3947,10 +3947,48 @@
         "CL_ShutdownCGame",
         "FloatAsInt"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CL_InitCGame / CL_GameCommand / CL_CGameRendering / CL_ShutdownCGame",
+          "target_files": [
+            "src/mq3/client/cgame_vm.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Serverinfo map path, pure-QVM mode, loading/primed transition, CG_INIT, all nine cgame exports, renderer/memory finalization and shutdown key-catcher cleanup. Twelve exact ABI values and 20 contracts pass."
+        },
+        {
+          "original": "CL_CgameSystemCalls",
+          "target_files": [
+            "src/mq3/vm/syscall_common.ml",
+            "src/mq3/vm/syscall_cgame.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Nineteen cgame traps for commands, renderer registration, GLConfig, gamestate, snapshots, server commands and usercmds. Four exact Baseq3 x86 layout records and 37 contracts pass."
+        },
+        {
+          "original": "CL_AdjustTimeDelta / CL_FirstSnapshot / CL_SetCGameTime",
+          "target_files": [
+            "src/mq3/client/cgame_time.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Snapshot clock drift, primed-to-active transition, pause, timeNudge, monotonic time, demo freeze/skip/catchup and timedemo stepping. Four exact header constants and 26 contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_vm.ml",
+        "src/mq3/vm/syscall_cgame.ml",
+        "src/mq3/client/cgame_time.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_cgame_vm_lifecycle.py",
+        "tests/reference/cgame_vm_lifecycle_oracle.c",
+        "tests/cgame_vm_lifecycle_contracts.ml",
+        "scripts/test_vm_syscall_cgame.py",
+        "tests/vm_syscall_cgame_contracts.ml",
+        "scripts/test_cgame_time.py",
+        "tests/cgame_time_contracts.ml"
+      ]
     },
     {
       "source": "code/client/cl_cin.c",
@@ -4244,10 +4282,64 @@
         "CL_WriteDemoMessage",
         "packets"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CL_WriteDemoMessage, CL_DemoFilename and CL_ReadDemoMessage",
+          "target_files": [
+            "src/mq3/client/demo.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Protocol-68 demo record framing, filename formatting and playback sequence/time/EOF/truncation transitions. Twelve exact records execute the three unchanged C function bodies; 27 MiniLang contracts cover framing, limits, state, filenames and the initial gamestate."
+        },
+      {
+        "original": "CL_CheckForResend, CL_DisconnectPacket and CL_ConnectionlessPacket",
+          "target_files": [
+            "src/mq3/client/connectionless.ml"
+          ],
+          "status": "tested_exact",
+        "scope": "Client resend timing/state/demo gates, LAN/WAN authorization and exact quoted connect userinfo; challenge/connect response state and address validation, netchan setup, info/status/print/echo dispatch and spoof-resistant disconnect. Seventeen unchanged-C records and 27 MiniLang contracts pass."
+      },
+        {
+          "original": "CL_PacketEvent",
+        "target_files": [
+          "src/mq3/client/packet_event.ml"
+        ],
+        "status": "tested_exact",
+          "scope": "OOB routing, connection/address/runt rejection, client Netchan processing, server message sequence, parser dispatch and post-parse demo recording order. Nine unchanged-C records and 23 MiniLang contracts pass. The production network_ingress adapter adds 21 real-localhost contracts through CL_ParseServerMessage."
+        },
+        {
+          "original": "CL_CheckTimeout, CL_CheckUserinfo and CL_Frame",
+          "target_files": [
+            "src/mq3/client/frame.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Running/menu/CD gates, AVI fixed time, realtime, userinfo forwarding, timeout grace and SendCmd/resend/Cgame/screen/sound/cinematic/console ordering. Thirteen unchanged-C records and 28 MiniLang contracts pass."
+      }
+      ],
+      "target": [
+      "src/mq3/client/demo.ml",
+      "src/mq3/client/connectionless.ml",
+        "src/mq3/client/packet_event.ml",
+        "src/mq3/client/network_ingress.ml",
+        "src/mq3/client/frame.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_demo.py",
+        "scripts/test_client_connectionless.py",
+        "tests/reference/client_connectionless_oracle.c",
+      "tests/client_connectionless_oracle.ml",
+      "tests/client_connectionless_contracts.ml",
+      "scripts/test_packet_event.py",
+      "tests/reference/packet_event_oracle.c",
+      "tests/packet_event_oracle.ml",
+        "tests/packet_event_contracts.ml",
+        "scripts/test_client_network_ingress.py",
+        "tests/client_network_ingress_contracts.ml",
+        "scripts/test_client_main_frame.py",
+        "tests/reference/client_frame_oracle.c",
+        "tests/client_frame_contracts.ml"
+      ]
     },
     {
       "source": "code/client/cl_net_chan.c",
@@ -4260,10 +4352,51 @@
         "CL_Netchan_Transmit",
         "CL_Netchan_TransmitNextFragment"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "source": "CL_Netchan_Encode",
+          "target": "client.netchan.encode",
+          "status": "ported",
+          "scope": "Protocol-68 XOR encoding from the three client header longs and acknowledged 64-slot server-command ring; msg read state restored."
+        },
+        {
+          "source": "CL_Netchan_Decode",
+          "target": "client.netchan.decode",
+          "status": "ported",
+          "scope": "Protocol-68 XOR decoding from reliable acknowledgement, packet sequence, challenge and acknowledged client-command ring."
+        },
+        {
+          "source": "CL_Netchan_Transmit",
+          "target": "client.netchan.transmit",
+          "status": "ported",
+          "scope": "Appends clc_EOF, encodes, and delegates complete bytes to qcommon.netchan."
+        },
+        {
+          "source": "CL_Netchan_TransmitNextFragment",
+          "target": "client.netchan.transmitNextFragment",
+          "status": "ported",
+          "scope": "Delegates pending fragment transmission to the verified qcommon channel."
+        },
+        {
+          "source": "CL_Netchan_Process",
+          "target": "client.netchan.process",
+          "status": "ported",
+          "scope": "Processes through qcommon.netchan, decodes accepted messages and accounts decoded cursize."
+        }
+      ],
+      "target": [
+        "src/mq3/client/netchan.ml",
+        "src/mq3/qcommon/netchan.ml",
+        "src/mq3/qcommon/message.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_client_netchan.py",
+        "tests/reference/client_netchan_oracle.c",
+        "tests/client_netchan_oracle.ml",
+        "tests/client_netchan_contracts.ml",
+        "scripts/test_netchan.py"
+      ]
     },
     {
       "source": "code/client/cl_parse.c",
@@ -4280,10 +4413,95 @@
         "CL_SystemInfoChanged",
         "SHOWNET"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CL_DeltaEntity",
+          "target_files": [
+            "src/mq3/client/snapshot_parse.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Entity delta decode into the 2048-entry circular parse buffer, including unchanged copy and removed-record omission. Covered by the 15 packet-merge contracts and by four direct unchanged-client-body CL_ParseSnapshot transitions."
+        },
+        {
+          "original": "CL_ParsePacketEntities",
+          "target_files": [
+            "src/mq3/client/snapshot_parse.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Sorted old/wire two-way merge, baseline additions, changed entities, removals and unchanged tail copies. Fifteen contracts include full reconstruction of the unchanged-C server merge packet; four direct transitions also execute this unchanged client body inside CL_ParseSnapshot."
+        },
+        {
+          "original": "CL_ParseCommandString",
+          "target_files": [
+            "src/mq3/client/server_message.ml",
+            "src/mq3/client/protocol_runtime.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Absolute reliable server-command sequence, duplicate suppression and masked 64-entry command-ring storage. Executed directly in three unchanged-C server-message transitions; ten MiniLang contracts cover the dispatcher block."
+        },
+        {
+          "original": "CL_ParseServerMessage",
+          "target_files": [
+            "src/mq3/client/server_message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Bitstream setup, stale reliable-acknowledgement repair, nop/server-command/snapshot/EOF dispatch and concrete gamestate/download handlers. Three unchanged-C transitions include a complete reliable-command plus snapshot stream; twelve protocol-runtime contracts compose gamestate, download and snapshot in one message."
+        },
+        {
+          "original": "CL_ParseDownload",
+          "target_files": [
+            "src/mq3/client/download.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Download block number and file-size parsing, server error text, expected-block gate, file open/write, stopdl and nextdl reliable commands, byte count, EOF close/rename, double packet flush and next-download transition. Four direct unchanged-C records and 20 MiniLang contracts pass."
+        },
+        {
+          "original": "CL_ParseGamestate",
+          "target_files": [
+            "src/mq3/client/gamestate.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Configstring offsets and 16000-byte storage with BigString semantics, entity baselines, server-command sequence, clientNum, checksumFeed, state reset and completion callback order. One direct unchanged-C transition and 12 MiniLang contracts pass; real filesystem/download startup remains a host service."
+        },
+        {
+          "original": "CL_ParseSnapshot",
+          "target_files": [
+            "src/mq3/client/snapshot_command.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Snapshot header, delta validity and age checks, 32-byte area mask, player/entity decode, invalid-frame consumption, backup-ring promotion and gap invalidation, ping and demo-waiting state. Four direct unchanged-C transitions and ten MiniLang contracts pass; the outer server-message dispatch is covered separately."
+        },
+        {
+          "original": "CL_SystemInfoChanged",
+          "target_files": [
+            "src/mq3/client/system_info.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Server ID, demo gate, cheat-state reset, loaded/referenced pure pak lists, ordered system cvar propagation, case-insensitive fs_game handling and Cvar_VariableValue pure-state conversion. Five exact transitions execute the unchanged Baseq3 body plus unchanged Info helpers; 22 MiniLang contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/snapshot_parse.ml",
+        "src/mq3/client/snapshot_command.ml",
+        "src/mq3/client/server_message.ml",
+        "src/mq3/client/download.ml",
+        "src/mq3/client/gamestate.ml",
+        "src/mq3/client/protocol_runtime.ml",
+        "src/mq3/client/system_info.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_snapshot_parse.py",
+        "scripts/test_snapshot_command.py",
+        "scripts/test_server_message.py",
+        "scripts/test_download.py",
+        "scripts/test_gamestate.py",
+        "scripts/test_protocol_runtime.py",
+        "scripts/test_system_info.py",
+        "tests/reference/system_info_oracle.c",
+        "tests/system_info_oracle.ml",
+        "tests/system_info_contracts.ml"
+      ]
     },
     {
       "source": "code/client/cl_scrn.c",
@@ -4355,10 +4573,48 @@
         "UI_GameCommand",
         "UI_usesUniqueCDKey"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CL_InitUI / UI_GameCommand / UI_usesUniqueCDKey / CL_ShutdownUI",
+          "target_files": [
+            "src/mq3/client/ui_vm.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Pure-QVM mode, API versions 4/6, connection-state UI_INIT, all ten uiExport_t calls, inactive helpers and shutdown key-catcher cleanup. Fourteen exact header values and 22 contracts pass."
+        },
+        {
+          "original": "CL_UISystemCalls",
+          "target_files": [
+            "src/mq3/vm/syscall_common.ml",
+            "src/mq3/vm/syscall_ui.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Thirty-nine UI traps for renderer registration/2D draw, keys/bindings, clipboard, exact GL/client state, configstrings, memory and LAN server browsing. Seven exact ABI records and 58 contracts pass."
+        },
+        {
+          "original": "CL_UISystemCalls media and compatibility traps",
+          "target_files": [
+            "src/mq3/vm/syscall_ui_media.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Sixteen traps for sound/music, qtime_t, cinematics, shader remap, CD keys, FS seek and PB compatibility. Five exact ABI records and 42 contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_vm.ml",
+        "src/mq3/vm/syscall_ui.ml",
+        "src/mq3/vm/syscall_ui_media.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_ui_vm_lifecycle.py",
+        "tests/reference/ui_vm_lifecycle_oracle.c",
+        "tests/ui_vm_lifecycle_contracts.ml",
+        "scripts/test_vm_syscall_ui.py",
+        "tests/vm_syscall_ui_contracts.ml",
+        "scripts/test_vm_syscall_ui_media.py",
+        "tests/vm_syscall_ui_media_contracts.ml"
+      ]
     },
     {
       "source": "code/client/client.h",
@@ -4495,10 +4751,25 @@
         "S_TransferStereo16",
         "S_WriteLinearBlastStereo16"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "S_WriteLinearBlastStereo16 / S_TransferStereo16 / S_TransferPaintBuffer",
+          "target_files": ["src/mq3/audio/mixer_transfer.ml"],
+          "status": "tested_exact",
+          "scope": "24.8 paint conversion, signed-16 clipping, unsigned-8 bias, mono/stereo selection and DMA ring wrap. Seven exact C records and 20 contracts pass."
+        },
+        {
+          "original": "S_PaintChannelFrom16",
+          "target_files": [
+            "src/mq3/audio/channel_paint.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Stereo paint accumulation, 1024-sample chunk/ring transitions, oldDopplerScale offsets and Doppler interval resampling. Seven exact C records and 32 contracts pass."
+        }
+      ],
+      "target": ["src/mq3/audio/mixer_transfer.ml", "src/mq3/audio/channel_paint.ml"],
+      "status": "partial",
+      "tests": ["scripts/test_audio_mixer_transfer.py", "tests/reference/audio_mixer_transfer_oracle.c", "tests/audio_mixer_transfer_contracts.ml", "scripts/test_audio_channel_paint.py", "tests/reference/audio_channel_paint_oracle.c", "tests/audio_channel_paint_contracts.ml"]
     },
     {
       "source": "code/client/snd_public.h",
@@ -4698,10 +4969,161 @@
         "BotResetNodeSwitches",
         "BotSelectActivateWeapon"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "source": "AIEnter_Battle_Fight",
+          "target": "mq3.game.bot_fight_state.enterFight"
+        },
+        {
+          "source": "AIEnter_Battle_SuicidalFight",
+          "target": "mq3.game.bot_fight_state.enterSuicidalFight"
+        },
+        {
+          "source": "AIEnter_Battle_Chase",
+          "target": "mq3.game.bot_fight_state.enterChase"
+        },
+        {
+          "source": "AINode_Battle_Fight",
+          "target": "mq3.game.bot_fight_state.fightNode"
+        },
+        {
+          "source": "AIEnter_Battle_Retreat",
+          "target": "mq3.game.bot_fight_state.enterRetreat"
+        },
+        {
+          "source": "AIEnter_Battle_NBG",
+          "target": "mq3.game.bot_fight_state.enterNbg"
+        },
+        {
+          "source": "AINode_Battle_Chase",
+          "target": "mq3.game.bot_fight_state.chaseNode"
+        },
+        {
+          "source": "AINode_Battle_Retreat",
+          "target": "mq3.game.bot_fight_state.retreatNode"
+        },
+        {
+          "source": "AINode_Battle_NBG",
+          "target": "mq3.game.bot_fight_state.nbgNode"
+        },
+        {
+          "source": "BotGetLongTermGoal",
+          "target": "mq3.game.bot_navigation.getLongTermGoal"
+        },
+        {
+          "source": "BotLongTermGoal",
+          "target": "mq3.game.bot_navigation.longTermGoal"
+        },
+        {
+          "source": "AIEnter_Seek_LTG",
+          "target": "mq3.game.bot_seek_state.enterSeek"
+        },
+        {
+          "source": "AINode_Seek_LTG",
+          "target": "mq3.game.bot_seek_state.seekNode"
+        },
+        {
+          "source": "AIEnter_Seek_NBG",
+          "target": "mq3.game.bot_seek_state.enterSeekNbg",
+          "status": "tested_subset",
+          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+        },
+        {
+          "source": "AINode_Seek_NBG",
+          "target": "mq3.game.bot_seek_state.seekNbgNode",
+          "status": "tested_subset",
+          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+        },
+        {
+          "source": "AIEnter_Seek_ActivateEntity",
+          "target": "mq3.game.bot_seek_state.enterActivate",
+          "status": "tested_subset",
+          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+        },
+        {
+          "source": "AINode_Seek_ActivateEntity",
+          "target": "mq3.game.bot_seek_state.activateNode",
+          "status": "tested_subset",
+          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+        },
+        {
+          "source": "AIEnter_Stand",
+          "target": "mq3.game.bot_seek_state.enterStand",
+          "status": "tested_subset",
+          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+        },
+        {
+          "source": "AINode_Stand",
+          "target": "mq3.game.bot_seek_state.standNode",
+          "status": "tested_subset",
+          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+        },
+        {
+          "source": "AIEnter_Respawn",
+          "target": "mq3.game.bot_seek_state.enterRespawn",
+          "status": "tested_subset",
+          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+        },
+        {
+          "source": "AINode_Respawn",
+          "target": "mq3.game.bot_seek_state.respawnNode",
+          "status": "tested_subset",
+          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+        },
+        {
+          "source": "AIEnter_Observer",
+          "target": "mq3.game.bot_seek_state.enterObserver",
+          "status": "tested_subset",
+          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+        },
+        {
+          "source": "AINode_Observer",
+          "target": "mq3.game.bot_seek_state.observerNode",
+          "status": "tested_subset",
+          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+        },
+        {
+          "source": "AIEnter_Intermission",
+          "target": "mq3.game.bot_seek_state.enterIntermission",
+          "status": "tested_subset",
+          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+        },
+        {
+          "source": "AINode_Intermission",
+          "target": "mq3.game.bot_seek_state.intermissionNode",
+          "status": "tested_subset",
+          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/game/bot_ai_commands.ml",
+        "src/mq3/game/bot_ai_frame.ml",
+        "src/mq3/game/bot_fight_state.ml",
+        "src/mq3/game/bot_lifecycle.ml",
+        "src/mq3/game/bot_navigation.ml",
+        "src/mq3/game/bot_seek_state.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_bot_battle_states.py",
+        "scripts/test_bot_fight_state.py",
+        "scripts/test_bot_navigation.py",
+        "scripts/test_bot_seek_state.py",
+        "tests/bot_battle_states_contracts.ml",
+        "tests/bot_fight_state_contracts.ml",
+        "tests/bot_long_term_goal_contracts.ml",
+        "tests/bot_seek_state_contracts.ml",
+        "tests/reference/bot_activate_node_oracle.c",
+        "tests/reference/bot_activate_node_original.inc",
+        "tests/reference/bot_battle_states_oracle.c",
+        "tests/reference/bot_fight_state_oracle.c",
+        "tests/reference/bot_idle_nodes_oracle.c",
+        "tests/reference/bot_idle_nodes_original.inc",
+        "tests/reference/bot_long_term_oracle.c",
+        "tests/reference/bot_long_term_original.inc",
+        "tests/reference/bot_seek_ltg_original.inc",
+        "tests/reference/bot_seek_state_oracle.c"
+      ]
     },
     {
       "source": "code/game/ai_dmnet.h",
@@ -4833,10 +5255,129 @@
         "TeamPlayIsOn",
         "stristr"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "BotCTFCarryingFlag, EntityCarriesFlag, EntityIsInvisible, EntityIsShooting, EntityIsChatting, EntityHasQuad, BotSetTeleportTime, BotIsDead, BotIntermission, BotInLavaOrSlime, TeamPlayIsOn, BotAggression, BotFeelingBad, BotWantsToRetreat, BotWantsToChase, BotCanAndWantsToRocketJump and InFieldOfVision",
+          "target_files": [
+            "src/mq3/game/bot_combat_ai.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Combat-state predicates, CTF carrying, teleport/death/intermission/hazard state, weapon-based aggression, retreat/chase, rocket-jump eligibility and two-axis field-of-view decisions are ported. Twelve native scenarios capture 68 exact observations and 35 MiniLang contracts pass."
+        },
+        {
+          "original": "BotFindEnemy, BotAimAtEnemy and BotCheckAttack",
+          "target_files": [
+            "src/mq3/game/bot_combat_ai.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Enemy scanning/replacement, reaction-gated direct, visible and last-known aiming, fire throttling, gauntlet/FOV/obstruction/team checks, radial self-damage avoidance and fire-release toggling are ported through explicit entity, visibility, trace, characteristic, weapon and action services. Ten native scenarios capture 25 exact observations and 24 MiniLang contracts pass. The remaining motion-cache, exact AAS and linear projectile lead, short-strafe suppression, splash-ground/self-distance checks and rocket/grenade/BFG corner prediction branches add six native scenarios with 19 exact observations and 13 contracts. Battle movement remains open."
+        },
+        {
+          "original": "BotAttackMove",
+          "target_files": [
+            "src/mq3/game/bot_combat_ai.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "status": "ported",
+          "scope": "The complete local combat movement body is ported: chase-goal routing, skill early exit, gauntlet and ranged distance bands, jump and crouch cooldowns, adaptive strafe timing, distance correction and the two-attempt direction flip. Twelve native scenarios capture 21 exact observations and 15 MiniLang contracts pass."
+        },
+        {
+          "original": "BotChooseWeapon and BotUpdateBattleInventory",
+          "target_files": [
+            "src/mq3/game/bot_inventory_ai.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Weapon raising/dropping retention, best-fight-weapon selection, change timestamps, selection dispatch and C-truncated enemy height/horizontal distance projection are ported through explicit services. Two unchanged ai_dmq3.c bodies produce thirteen exact differential records and seven MiniLang contracts pass."
+        },
+        {
+          "original": "BotUpdateInventory",
+          "target_files": [
+            "src/mq3/game/bot_inventory_ai.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Full Baseq3 PlayerState inventory projection is ported. Four exact records compare sixty values and ten MiniLang contracts pass."
+        },
+        {
+          "original": "BotUpdateInventory",
+          "target_files": [
+            "src/mq3/game/bot_inventory_ai.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The full Baseq3 PlayerState projection covers armor, health, ten weapon bits, eight ammo slots, teleporter/medkit, six powerups, both CTF flags and the old-inventory pickup callback. Four exact records compare sixty projected values and ten MiniLang contracts pass."
+        },
+        {
+          "original": "BotSetupForMovement, BotSetMovedir, BotRandomMove, BotAIPredictObstacles, BotAlternateRoute, BotGetAlternateRouteGoal, BotPopFromActivateGoalStack, BotPushOntoActivateGoalStack, BotClearActivateGoalStack, BotEnableActivateGoalAreas, BotIsGoingToActivateEntity, BotGoForActivateGoal, BotGetActivateGoal, BotGoCamp, BotWantsToCamp, BotDontAvoid and BotGoForPowerups",
+          "target_files": [
+            "src/mq3/game/bot_navigation.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Movement projection, AAS obstacle prediction, alternative routes, activation discovery/execution and general camp/powerup goal policy are ported through explicit services. Camping preserves cooldown, probability, aggression and weapon gates, closest camp travel limits and powerup avoid reset order. Forty-seven native scenarios capture 163 exact observations and 63 MiniLang contracts pass. Full route execution remains open."
+        },
+        {
+          "original": "BotTeam, BotOppositeTeam, EntityIsDead, ClientFromName, ClientOnSameTeamFromName and BotSameTeam",
+          "target_files": [
+            "src/mq3/game/bot_team_helpers.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Team/opposite-team lookup, team-mode and range checked equality, color-cleaned case-insensitive client lookup, same-team name lookup and player-state death classification are ported. Six unchanged ai_dmq3.c bodies produce nine exact differential records and eleven MiniLang contracts pass."
+        },
+        {
+          "original": "BotDeathmatchAI node loop",
+          "target_files": [
+            "src/mq3/game/bot_ai_commands.ml",
+            "src/mq3/game/bot_ai_frame.ml",
+            "src/mq3/game/bot_fight_state.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The configured Fight/Chase/Retreat/NBG dispatcher runs after deathmatch setup, repeats false-return transitions, preserves the Baseq3 50-switch bound, leaves node zero idle and rejects unknown nonzero nodes. Command and end-to-end frame contracts cover the path."
+        }
+      ],
+      "target": [
+        "src/mq3/game/bot_combat_ai.ml",
+        "src/mq3/game/bot_inventory_ai.ml",
+        "src/mq3/game/bot_navigation.ml",
+        "src/mq3/game/bot_team_helpers.ml",
+        "src/mq3/game/bot_lifecycle.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_bot_combat_ai.py",
+        "scripts/test_bot_combat_targeting.py",
+        "scripts/test_bot_inventory_ai.py",
+        "scripts/test_bot_inventory_update.py",
+        "scripts/test_bot_inventory_update.py",
+        "scripts/test_bot_combat_prediction.py",
+        "scripts/test_bot_attack_move.py",
+        "scripts/test_bot_navigation.py",
+        "scripts/test_bot_team_queries.py",
+        "tests/bot_combat_ai_contracts.ml",
+        "tests/bot_combat_targeting_contracts.ml",
+        "tests/bot_inventory_ai_contracts.ml",
+        "tests/bot_inventory_update_contracts.ml",
+        "tests/bot_inventory_update_contracts.ml",
+        "tests/bot_combat_prediction_contracts.ml",
+        "tests/bot_attack_move_contracts.ml",
+        "tests/bot_navigation_contracts.ml",
+        "tests/bot_team_query_contracts.ml",
+        "tests/reference/bot_activation_oracle.c",
+        "tests/reference/bot_activate_discovery_oracle.c",
+        "tests/reference/bot_item_goals_oracle.c",
+        "tests/reference/bot_combat_ai_oracle.c",
+        "tests/reference/bot_combat_targeting_oracle.c",
+        "tests/reference/bot_aim_prediction_oracle.c",
+        "tests/reference/bot_attack_move_oracle.c",
+        "tests/reference/bot_navigation_oracle.c",
+        "scripts/test_bot_ai_commands.py",
+        "scripts/test_bot_ai_frame.py",
+        "tests/bot_ai_command_contracts.ml",
+        "tests/bot_ai_frame_contracts.ml"
+      ]
     },
     {
       "source": "code/game/ai_dmq3.h",
@@ -4891,10 +5432,60 @@
         "NumBots",
         "RemoveColorEscapeSequences"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "BotInitLibrary, BotAISetup, BotResetState, BotAILoadMap, BotAIShutdown, BotInterbreedBots, BotWriteInterbreeded and BotInterbreedEndMatch",
+          "target_files": [
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The Baseq3 bot setup, map reset, shutdown and interbreed match-end control is ported with injectable Botlib/AAS services and 24 core contracts. It is wired as the default through lifecycle and intermission with hook overrides preserved; lifecycle has 113 contracts and intermission 19. Registry and client setup/shutdown resources are also integrated; higher-level decision AI remains open."
+        },
+        {
+          "original": "BotAIStartFrame, BotAIRegularUpdate, BotAI_GetClientState, BotAI_GetEntityState and BotAI_GetSnapshotEntity",
+          "target_files": [
+            "src/mq3/game/bot_ai_frame.ml",
+            "src/mq3/game/lifecycle.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Frame timing, 200 ms cap, 1024 entity updates, missile/event/no-client filters, per-bot cadence, input delivery and snapshot/client/entity service boundaries are ported. Seven direct C scenarios capture 42 observations and 26 MiniLang contracts pass."
+        },
+        {
+          "original": "AngleDifference, BotChangeViewAngle, BotChangeViewAngles, BotInputToUserCommand and BotUpdateInput",
+          "target_files": [
+            "src/mq3/game/bot_input.ml",
+            "src/mq3/game/bot_ai_frame.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Binary32 view easing, angle quantization, delta angles, action/button/weapon conversion, signed movement bytes, delayed jump and respawn mapping are ported and used as the frame default. Six direct C scenarios capture 18 observations and 17 MiniLang contracts pass."
+        },
+        {
+          "original": "BotAI, RemoveColorEscapeSequences, BotSetInfoConfigString, BotUpdateInfoConfigStrings, BotReportStatus and BotTeamplayReport",
+          "target_files": [
+            "src/mq3/game/bot_ai_commands.ml",
+            "src/mq3/game/bot_ai_frame.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Player-state copy, print/chat/tchat ingestion, color filtering, deathmatch refresh, LTG status configstrings and team/status console reports are ported as the default BotAI boundary. Six native scenarios capture 31 exact observations and 30 MiniLang contracts pass. The configured decision-node callback is dispatched after deathmatch setup with the Baseq3 50-switch bound."
+        }
+      ],
+      "target": [
+        "src/mq3/game/bot_lifecycle.ml",
+        "src/mq3/game/bot_ai_frame.ml",
+        "src/mq3/game/bot_input.ml",
+        "src/mq3/game/bot_ai_commands.ml",
+        "src/mq3/game/lifecycle.ml",
+        "src/mq3/game/intermission.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "tests/bot_lifecycle_contracts.ml",
+        "scripts/test_bot_ai_frame.py",
+        "scripts/test_bot_input.py",
+        "scripts/test_bot_ai_commands.py",
+        "scripts/test_game_lifecycle.py",
+        "scripts/test_intermission.py"
+      ]
     },
     {
       "source": "code/game/ai_main.h",
@@ -4940,10 +5531,94 @@
         "BotVoiceChatOnly",
         "FindHumanTeamLeader"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "BotValidTeamLeader, BotNumTeamMates, BotSetTeamMateTaskPreference, BotGetTeamMateTaskPreference and BotSortTeamMatesByTaskPreference",
+          "target_files": [
+            "src/mq3/game/bot_team_helpers.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Team-leader validation, configstring-based teammate enumeration, slot-safe named task preferences and stable defender/roamer/attacker ordering are ported. Five unchanged ai_team.c bodies produce six exact differential records and nine MiniLang contracts pass."
+        },
+        {
+          "original": "BotSayTeamOrderAlways, BotSayTeamOrder, BotVoiceChat, BotVoiceChatOnly and BotSayVoiceTeamOrder",
+          "target_files": [
+            "src/mq3/game/bot_team_helpers.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 self-queued team chat, directed tell dispatch and the three non-MISSIONPACK voice no-ops are ported. Five unchanged ai_team.c bodies produce seven exact differential records and five MiniLang contracts pass."
+        },
+        {
+          "original": "BotCTFOrders and BotCreateGroup",
+          "target_files": [
+            "src/mq3/game/bot_team_helpers.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Red/blue-relative dispatch across all four CTF flag-state combinations and stable self-led/other-led group order generation are ported. Two unchanged ai_team.c bodies produce sixteen exact differential records and eleven MiniLang contracts pass."
+        },
+        {
+          "original": "FindHumanTeamLeader",
+          "target_files": [
+            "src/mq3/game/bot_team_helpers.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The 64-slot human leader scan preserves bot, not-leader and team filters, copies the selected name and issues default defense only when no ordered task exists. Three native scenarios expose six exact observations and six MiniLang contracts pass."
+        },
+        {
+          "original": "BotCTFOrders_BothFlagsNotAtBase",
+          "target_files": [
+            "src/mq3/game/bot_team_helpers.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The complete both-flags-away CTF policy covers every team-size switch, local, remote and missing carriers, preference sorting, escort/retrieval rounding and the original caps. The unchanged extracted C body produces ten exact records and twelve MiniLang contracts pass."
+        },
+        {
+          "original": "BotCTFOrders_FlagNotAtBase",
+          "target_files": [
+            "src/mq3/game/bot_team_helpers.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The complete own-flag-away policy preserves passive and aggressive team-size switches, preference sorting, 30/70 and 20/70 assignment bands, the original caps and overlapping assignments. The unchanged extracted C body produces ten exact records and thirteen MiniLang contracts pass."
+        },
+        {
+          "original": "BotCTFOrders_EnemyFlagNotAtBase",
+          "target_files": [
+            "src/mq3/game/bot_team_helpers.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The complete enemy-flag-away policy preserves every team-size switch, carrier substitution, preference sorting, rounded 60/30 assignment bands, the six/three caps and local, remote and missing-carrier orders. The unchanged extracted C body produces twelve exact records and fifteen MiniLang contracts pass."
+        },
+        {
+          "original": "BotCTFOrders_BothFlagsAtBase",
+          "target_files": [
+            "src/mq3/game/bot_team_helpers.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The complete both-flags-at-base policy preserves passive and aggressive branches for every team-size switch, preference sorting, half-up 50/40 and 40/50 assignment bands and the original five/four and four/five caps. The unchanged extracted C body produces fourteen exact records and seventeen MiniLang contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/game/bot_team_helpers.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_bot_team_helpers.py",
+        "tests/bot_team_helper_contracts.ml",
+        "scripts/test_bot_team_orders.py",
+        "tests/bot_team_order_contracts.ml",
+        "scripts/test_bot_team_strategy.py",
+        "tests/bot_team_strategy_contracts.ml",
+        "scripts/test_bot_team_leader.py",
+        "tests/bot_team_leader_contracts.ml",
+        "scripts/test_bot_ctf_both_away.py",
+        "tests/bot_ctf_both_away_contracts.ml",
+        "scripts/test_bot_ctf_own_away.py",
+        "tests/bot_ctf_own_away_contracts.ml",
+        "scripts/test_bot_ctf_enemy_away.py",
+        "tests/bot_ctf_enemy_away_contracts.ml",
+        "scripts/test_bot_ctf_both_at_base.py",
+        "tests/bot_ctf_both_at_base_contracts.ml"
+      ]
     },
     {
       "source": "code/game/ai_team.h",
@@ -6073,10 +6748,29 @@
         "Svcmd_AbortPodium_f",
         "UpdateTournamentInfo"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UpdateTournamentInfo, SpawnModelOnVictoryPad, CelebrateStart, CelebrateStop, PodiumPlacementThink, SpawnPodium, SpawnModelsOnVictoryPads and Svcmd_AbortPodium_f",
+          "target_files": [
+            "src/mq3/game/arenas.ml",
+            "src/mq3/game/intermission.ml",
+            "src/mq3/game/server_commands.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All Baseq3 single-player postgame and victory-podium paths are implemented as real defaults, including postgame payloads, model placement, celebration timing and podium abort. Twenty-two runtime contracts pass, and five direct scenarios against unchanged g_arenas.c compare 1,343 exact words. Missionpack and renderer presentation remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/game/arenas.ml",
+        "src/mq3/game/intermission.ml",
+        "src/mq3/game/server_commands.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "tests/arena_tests.ml",
+        "scripts/test_arenas.py",
+        "scripts/test_intermission.py"
+      ]
     },
     {
       "source": "code/game/g_bot.c",
@@ -6108,10 +6802,70 @@
         "Svcmd_BotList_f",
         "trap_Cvar_VariableValue"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "G_ParseInfos, G_LoadBots, G_LoadBotsFromFile, G_LoadArenas, G_LoadArenasFromFile, G_GetArenaInfoByMap, G_GetBotInfoByNumber and G_GetBotInfoByName",
+          "target_files": [
+            "src/mq3/game/bot_registry.ml",
+            "src/mq3/game/lifecycle.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Bot and arena registry parsing, file ordering, 8192-byte boundaries, numbering and lookup are ported and wired into lifecycle defaults. Five direct scenarios against unchanged g_bot.c compare 596 exact words, with 20 additional runtime contracts."
+        },
+        {
+          "original": "G_CountHumanPlayers, G_CountBotPlayers, AddBotToSpawnQueue, G_RemoveQueuedBotBegin, G_CheckBotSpawn and G_BotConnect",
+          "target_files": [
+            "src/mq3/game/bot_clients.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/frame.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The sixteen-entry delayed begin queue, player counts and bot connection settings are ported, directly oracle-checked and wired into connect, disconnect and frame defaults. Twenty core contracts and ten integration contracts pass."
+        },
+        {
+          "original": "G_AddRandomBot, G_RemoveRandomBot, G_CheckMinimumPlayers, G_AddBot, Svcmd_AddBot_f, Svcmd_BotList_f, G_SpawnBots and single-player G_InitBots policy",
+          "target_files": [
+            "src/mq3/game/bot_population.ml",
+            "src/mq3/game/lifecycle.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Minimum-player balancing, random bot selection/removal, addbot userinfo and delayed begin, botlist formatting and single-player arena bot scheduling are ported and centrally wired. A direct native oracle and 31 MiniLang contracts pass; server-command and lifecycle regressions remain exact."
+        },
+        {
+          "original": "BotAISetupClient and BotAIShutdownClient resource ownership",
+          "target_files": [
+            "src/mq3/game/bot_client_resources.ml",
+            "src/mq3/game/bot_lifecycle.ml",
+            "src/mq3/game/lifecycle.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Character, goal, weapon, chat and movement resources, partial-failure cleanup, gender, scheduling, session restart and shutdown ordering are ported. Eight native oracle scenarios, 22 MiniLang resource contracts and central lifecycle integration pass. Decision AI remains open."
+        }
+      ],
+      "target": [
+        "src/mq3/game/bot_registry.ml",
+        "src/mq3/game/bot_clients.ml",
+        "src/mq3/game/bot_client_resources.ml",
+        "src/mq3/game/bot_population.ml",
+        "src/mq3/game/bot_lifecycle.ml",
+        "src/mq3/game/lifecycle.ml",
+        "src/mq3/game/client_connect.ml",
+        "src/mq3/game/client_disconnect.ml",
+        "src/mq3/game/frame.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_bot_registry.py",
+        "scripts/test_bot_clients.py",
+        "scripts/test_bot_ai_clients.py",
+        "scripts/test_bot_population.py",
+        "tests/bot_registry_tests.ml",
+        "tests/bot_client_contracts.ml",
+        "tests/bot_client_resource_contracts.ml",
+        "tests/bot_population_contracts.ml",
+        "tests/bot_integration_contracts.ml"
+      ]
     },
     {
       "source": "code/game/g_client.c",
@@ -8554,15 +9308,31 @@
             "src/mq3/game/spawn_functions.ml"
           ],
           "status": "tested_subset",
-          "scope": "Original path-corner NULL-targetname warning before freeing the entity. Actual train/mover implementation remains open."
+          "scope": "Original path-corner NULL-targetname warning before freeing the entity; now connected to the func_train path chain."
+        },
+        {
+          "original": "binary movers, periodic movers, trains and G_RunMover",
+          "target_files": [
+            "src/mq3/game/movers.ml",
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/entities.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All eight Baseq3 mover classes, binary state transitions, team rollback, touch/blocked callbacks, path-corner trains, linear and rotational pushing, client yaw carry and area-portal delivery are implemented. Spawn/frame contracts and lifecycle parity pass. Five direct scenarios against unchanged g_mover.c cover linear success, 90-degree client rotation, blocked rollback, EF_MOVER_STOP and two-part team rollback with 545 exact state words plus 30 native host observations. Retail BSP replays for q3ctf4, q3dm15 and q3dm0 cover eight mover masters, including an activated door team and button, with 77,073,336 exact words and 1,684 ordered effects. A linked player and physical item are carried through five complete q3ctf4 G_RunFrame frames with exact parity."
         }
       ],
       "target": [
-        "src/mq3/game/spawn_functions.ml"
+        "src/mq3/game/spawn_functions.ml",
+        "src/mq3/game/movers.ml",
+        "src/mq3/game/frame.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_spawn.py"
+        "scripts/test_spawn.py",
+        "scripts/test_game_lifecycle.py",
+        "scripts/test_full_frame.py",
+        "scripts/test_mover_push.py",
+        "scripts/test_retail_movers.py"
       ]
     },
     {
@@ -14816,10 +15586,40 @@
         "Cmd_Wait_f",
         "argv"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Cmd_TokenizeString, Cmd_Argc, Cmd_Argv, Cmd_ArgvBuffer, Cmd_Args, Cmd_ArgsFrom, Cmd_ArgsBuffer and Cmd_Cmd",
+          "target_files": [
+            "src/mq3/qcommon/command_buffer.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Tokenization, quoting, comments, signed-byte handling and original token/argument limits match 28 byte-exact records from fourteen unchanged cmd.c bodies."
+        },
+        {
+          "original": "Cbuf_Init, Cbuf_AddText, Cbuf_InsertText, Cbuf_ExecuteText, Cbuf_Execute and Cmd_Wait_f",
+          "target_files": [
+            "src/mq3/qcommon/command_buffer.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Append, insertion, immediate execution, line splitting, wait and the 16384-byte boundary are covered by the direct cmd.c differential suite."
+        },
+        {
+          "original": "Cmd_AddCommand, Cmd_RemoveCommand, Cmd_CommandCompletion, Cmd_ExecuteString, Cmd_List_f, Cmd_Exec_f, Cmd_Vstr_f, Cmd_Echo_f and Cmd_Init",
+          "target_files": [
+            "src/mq3/qcommon/command_buffer.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Registry order, move-to-front dispatch, cvar/client/server/UI forwarding and built-ins match 16 direct records plus 16 MiniLang boundary contracts; filesystem and subsystem calls remain explicit services."
+        }
+      ],
+      "target": [
+        "src/mq3/qcommon/command_buffer.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_command_buffer.py",
+        "scripts/test_command_registry.py"
+      ]
     },
     {
       "source": "code/qcommon/cmd.c.save",
@@ -14920,10 +15720,47 @@
         "keyConcatArgs",
         "permanent"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+      {
+        "original": "Com_ParseCommandLine, Com_SafeMode, Com_StartupVariable and Com_AddStartupCommands",
+          "target_files": [
+            "src/mq3/qcommon/startup_commands.ml"
+          ],
+          "status": "tested_subset",
+        "scope": "Startup command splitting, 32-line truncation, safe-mode consumption, early set variables and command-buffer append behavior match 10 direct unchanged-C records plus 16 MiniLang contracts through explicit Cvar services."
+      },
+        {
+          "original": "Com_EventLoop network packet draining",
+        "target_files": [
+          "src/mq3/qcommon/network_pump.ml"
+        ],
+        "status": "tested_subset",
+          "scope": "Bounded nonblocking client/server UDP draining with alternating preference, FIFO delivery and injected packet-event callbacks. Twenty live two-socket contracts pass; journaling remains open."
+        },
+        {
+          "original": "Com_EventLoop input and outer frame composition",
+          "target_files": [
+            "src/mq3/platform/input_events.ml",
+            "src/mq3/platform/engine_loop.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Sys-style input FIFO is drained with a fixed budget before the ported SV_Frame and CL_Frame callbacks. Fifteen integration contracts cover ordering, remainder, time and frame accounting; journaling remains open."
+      }
+      ],
+      "target": [
+      "src/mq3/qcommon/startup_commands.ml",
+      "src/mq3/qcommon/network_pump.ml",
+      "src/mq3/platform/input_events.ml",
+      "src/mq3/platform/engine_loop.ml"
+      ],
+      "status": "partial",
+      "tests": [
+      "scripts/test_startup_commands.py",
+      "scripts/test_network_pump.py",
+      "tests/network_pump_contracts.ml",
+      "scripts/test_engine_loop.py",
+      "tests/engine_loop_contracts.ml"
+      ]
     },
     {
       "source": "code/qcommon/cvar.c",
@@ -15100,10 +15937,46 @@
         "readable",
         "write"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "FS_LoadZipFile / FS_AddGameDirectory / FS_FOpenFileRead",
+          "target_files": [
+            "src/mq3/qcommon/filesystem.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Windows game directories are enumerated automatically: top-level PK3 files are sorted and mounted with Baseq3 priority while loose files are indexed recursively. Non-ASCII host filenames still require a UTF-16 conversion bridge."
+        },
+        {
+          "original": "FS_ListFiles / FS_PakIsPure / FS_PureServerSetLoadedPaks",
+          "target_files": [
+            "src/mq3/qcommon/filesystem.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "FS_ReferencedPakChecksums / FS_ReferencedPakPureChecksums / FS_ReferencedPakNames / FS_ClearPakReferences / FS_PureServerSetReferencedPaks",
+          "target_files": [
+            "src/mq3/qcommon/filesystem.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Pak reads track Baseq3 general, UI, CGame and QAGame reference flags. Loaded and referenced server lists remain separate; pure reference tokens preserve the original CGame/UI/@/general order and feed/count proof."
+        },
+        {
+          "original": "FS_idPak / FS_ComparePaks",
+          "target_files": [
+            "src/mq3/qcommon/filesystem.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Missing server paks are compared by checksum, official id paks are excluded from autodownload, local name collisions receive the original eight-digit checksum suffix, and both download and diagnostic strings honor the destination capacity. Twenty-five VFS/Pure contracts pass overall."
+        }
+      ],
+      "target": [
+        "src/mq3/qcommon/filesystem.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_pure_filesystem.py"
+      ]
     },
     {
       "source": "code/qcommon/huffman.c",
@@ -15129,10 +16002,154 @@
         "swap",
         "swaplist"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Huff_Compress and Huff_Decompress",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Packet-level adaptive codec with big-endian raw length, arbitrary preserved prefix and Baseq3 padding/capacity behavior. Two direct unchanged-C records compare the complete compressed bytes and decompressed result."
+        },
+        {
+          "original": "Huff_Init",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "Huff_Receive",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "Huff_addRef",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "Huff_getBit",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "Huff_offsetReceive",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "Huff_offsetTransmit",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "Huff_putBit",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "Huff_transmit",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "add_bit",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "free_ppnode",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "get_bit",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "get_ppnode",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "increment",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "send",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "swap",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        },
+        {
+          "original": "swaplist",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Adaptive Baseq3 Huffman NYT/tree/list update, bit I/O, transmit/receive and the protocol-68 pretrained 513-node message tree. Ten direct original-C records, including packet compression/decompression, and 83 MiniLang contracts cover exact streams, all valid bit widths, signed reads, truncation, overflow, cursors and exact bytes."
+        }
+      ],
+      "target": [
+        "src/mq3/qcommon/huffman.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_huffman_message.py",
+        "tests/reference/huffman_message_oracle.c",
+        "tests/huffman_message_oracle.ml",
+        "tests/huffman_message_contracts.ml"
+      ]
     },
     {
       "source": "code/qcommon/md4.c",
@@ -15148,10 +16165,29 @@
         "MD4Transform",
         "MD4Update"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "MD4Init / MD4Update / MD4Final / MD4Transform",
+          "target_files": [
+            "src/mq3/qcommon/md4.ml"
+          ],
+          "status": "tested_subset"
+        },
+        {
+          "original": "Com_BlockChecksum / Com_BlockChecksumKey",
+          "target_files": [
+            "src/mq3/qcommon/md4.ml"
+          ],
+          "status": "tested_subset"
+        }
+      ],
+      "target": [
+        "src/mq3/qcommon/md4.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_pure_filesystem.py"
+      ]
     },
     {
       "source": "code/qcommon/msg.c",
@@ -15207,10 +16243,327 @@
         "MSG_WriteString",
         "MSG_initHuffman"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "MSG_Init",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_InitOOB",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_Clear",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_Bitstream",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_BeginReading",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_BeginReadingOOB",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_WriteBits",
+          "target_files": [
+            "src/mq3/qcommon/message.ml",
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Compressed protocol-68 MSG bitstream using the exact Baseq3 pretrained Huffman tree, raw remainder bits and Huffman full bytes for widths 1..32, including signed byte/short reads, bit/read/cursize cursors and the four-byte overflow reserve. Delta codecs and float/angle helpers remain open."
+        },
+        {
+          "original": "MSG_WriteChar",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_WriteByte",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_WriteData",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_WriteShort",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_WriteLong",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_WriteString",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_ReadBits",
+          "target_files": [
+            "src/mq3/qcommon/message.ml",
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Compressed protocol-68 MSG bitstream using the exact Baseq3 pretrained Huffman tree, raw remainder bits and Huffman full bytes for widths 1..32, including signed byte/short reads, bit/read/cursize cursors and the four-byte overflow reserve. Delta codecs and float/angle helpers remain open."
+        },
+        {
+          "original": "MSG_ReadChar",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_ReadByte",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_ReadShort",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_ReadLong",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_ReadString",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_ReadStringLine",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_ReadData",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+        },
+        {
+          "original": "MSG_initHuffman",
+          "target_files": [
+            "src/mq3/qcommon/huffman.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "MSG_initHuffman protocol-68 tree initialization from all 1,053,340 Baseq3 frequency references, represented at runtime by its exact 513-node trained tree; delta codecs remain open."
+        },
+        {
+          "original": "MSG_WriteDelta",
+          "target_files": [
+            "src/mq3/qcommon/message_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Protocol-68 scalar delta bit and changed integer payload, compared as complete Huffman-compressed bytes."
+        },
+        {
+          "original": "MSG_ReadDelta",
+          "target_files": [
+            "src/mq3/qcommon/message_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Protocol-68 scalar unchanged/changed integer reconstruction, including signed-width behavior."
+        },
+        {
+          "original": "MSG_WriteDeltaFloat",
+          "target_files": [
+            "src/mq3/qcommon/message_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Binary32 delta comparison and exact changed bit-pattern transport."
+        },
+        {
+          "original": "MSG_ReadDeltaFloat",
+          "target_files": [
+            "src/mq3/qcommon/message_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Binary32 unchanged value or exact transported bit-pattern reconstruction."
+        },
+        {
+          "original": "MSG_WriteDeltaKey",
+          "target_files": [
+            "src/mq3/qcommon/message_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "XOR-key integer delta encoding at original field widths."
+        },
+        {
+          "original": "MSG_ReadDeltaKey",
+          "target_files": [
+            "src/mq3/qcommon/message_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "XOR-key integer reconstruction using the original kbitmask indexing semantics."
+        },
+        {
+          "original": "MSG_WriteDeltaKeyFloat",
+          "target_files": [
+            "src/mq3/qcommon/message_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "XOR-key Binary32 bit-pattern delta encoding."
+        },
+        {
+          "original": "MSG_ReadDeltaKeyFloat",
+          "target_files": [
+            "src/mq3/qcommon/message_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "XOR-key Binary32 bit-pattern reconstruction."
+        },
+        {
+          "original": "MSG_WriteDeltaUsercmd",
+          "target_files": [
+            "src/mq3/qcommon/message_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete usercmd delta bytes for 8/32-bit time, three angles, signed movement bytes, buttons and weapon."
+        },
+        {
+          "original": "MSG_ReadDeltaUsercmd",
+          "target_files": [
+            "src/mq3/qcommon/message_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete usercmd reconstruction with C signed-char narrowing and boundary values."
+        },
+        {
+          "original": "MSG_WriteDeltaUsercmdKey",
+          "target_files": [
+            "src/mq3/qcommon/message_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Keyed usercmd encoding with key xor serverTime and the original shared unchanged-payload bit."
+        },
+        {
+          "original": "MSG_ReadDeltaUsercmdKey",
+          "target_files": [
+            "src/mq3/qcommon/message_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Keyed usercmd reconstruction for unchanged and changed payloads."
+        },
+        {
+          "original": "MSG_WriteDeltaEntity",
+          "target_files": [
+            "src/mq3/qcommon/message_state_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All 51 protocol-68 entityState netfields in original wire order, including lc, unchanged skip, force/no-delta, remove and zero/integral/full Binary32 encodings; 108 direct packet records exhaustively cover all 51 entity and 48 player netfields, while 28 contracts cover both codecs and safety bounds."
+        },
+        {
+          "original": "MSG_ReadDeltaEntity",
+          "target_files": [
+            "src/mq3/qcommon/message_state_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Entity delta reconstruction from an already-consumed 10-bit number, remove sentinel, baseline copy, original field widths and guarded lc bounds."
+        },
+        {
+          "original": "MSG_WriteDeltaPlayerstate",
+          "target_files": [
+            "src/mq3/qcommon/message_state_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All 48 protocol-68 playerState netfields, signed field widths, integral/full Binary32 optimization and original stats/persistant/ammo/powerups masks."
+        },
+        {
+          "original": "MSG_ReadDeltaPlayerstate",
+          "target_files": [
+            "src/mq3/qcommon/message_state_delta.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "PlayerState baseline reconstruction, four masked 16-slot arrays, signed short/long values, untransmitted-field preservation and guarded lc bounds."
+        }
+      ],
+      "target": [
+        "src/mq3/qcommon/huffman.ml",
+        "src/mq3/qcommon/message.ml",
+        "src/mq3/qcommon/message_delta.ml",
+        "src/mq3/qcommon/message_state_delta.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_huffman_message.py",
+        "scripts/test_message.py",
+        "scripts/test_message_delta.py",
+        "scripts/test_message_state_delta.py"
+      ]
     },
     {
       "source": "code/qcommon/net_chan.c",
@@ -15235,10 +16588,38 @@
         "Netchan_UnScramblePacket",
         "datagram"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Netchan_Init, Netchan_Setup, Netchan_Transmit, Netchan_TransmitNextFragment and Netchan_Process",
+          "target_files": [
+            "src/mq3/qcommon/netchan.ml"
+          ],
+        "status": "tested_subset",
+        "scope": "Protocol-68 qport and sequence headers, transmit fragmentation including exact-multiple zero terminators, duplicate/drop decisions, retry/state preservation and ordered receive reassembly match 29 direct Baseq3 records with complete packet bytes plus 29 MiniLang contracts and a message.ml integration path. Receive capacity safely includes the reconstructed four-byte sequence header."
+      },
+      {
+        "original": "NET_SendPacket, NET_OutOfBandPrint and NET_OutOfBandData",
+        "target_files": [
+          "src/mq3/qcommon/net_transport.ml",
+          "src/mq3/platform/udp.ml"
+        ],
+        "status": "tested_subset",
+        "scope": "Windows IPv4 UDP send/receive, Netchan send callback, address conversion, four-byte OOB marker and adaptive connect compression at offset 12. Fifteen live two-socket transport contracts pass; the packet codec is covered by the unchanged-C Huffman differential gate. Loopback queues, broadcast and string-to-address remain open."
+      }
+      ],
+      "target": [
+      "src/mq3/qcommon/netchan.ml",
+      "src/mq3/server/pipeline.ml",
+      "src/mq3/qcommon/net_transport.ml",
+      "src/mq3/platform/udp.ml"
+      ],
+      "status": "partial",
+      "tests": [
+      "scripts/test_netchan.py",
+      "scripts/test_server_pipeline.py",
+      "scripts/test_net_transport.py",
+      "tests/net_transport_contracts.ml"
+      ]
     },
     {
       "source": "code/qcommon/qcommon.h",
@@ -15390,18 +16771,27 @@
         {
           "original": "VM_Create",
           "target_files": [
-            "src/mq3/vm/interpreter.ml"
+            "src/mq3/vm/interpreter.ml",
+            "src/mq3/vm/runtime.ml",
+            "src/mq3/vm/syscall_common.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_subset",
+          "scope": "QVM validation/interpreter plus three named case-insensitive lifecycle slots, reuse, restart, call context, free and generation tracking. The common qagame/cgame/UI syscall boundary covers print/error/time, Cvars, arguments, console commands and file I/O with the exact 272-byte vmCvar ABI. The interpreter has 404 exact C cases; lifecycle adds 17 contracts; common syscalls add 4 exact C records and 32 contracts. Module-specific engine traps remain open."
         }
       ],
       "target": [
-        "src/mq3/vm/interpreter.ml"
+        "src/mq3/vm/interpreter.ml",
+        "src/mq3/vm/runtime.ml",
+        "src/mq3/vm/syscall_common.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_vm.py",
-        "scripts/test_rejections.py"
+        "scripts/test_rejections.py",
+        "scripts/test_vm_runtime.py",
+        "tests/vm_runtime_contracts.ml",
+        "scripts/test_vm_syscall_common.py",
+        "tests/vm_syscall_common_contracts.ml"
       ]
     },
     {
@@ -15658,10 +17048,25 @@
         "RE_UploadCinematic",
         "SetViewportAndScissor"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "GL_Bind / GL_SelectTexture / GL_BindMultitexture",
+          "target_files": [
+            "src/mq3/renderer/texture_state.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Two-TMU selection and bind cache, frame-use tracking, NULL fallback, r_nobind and callback ordering behind an injected GL boundary. Eighteen exact C records and 30 contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/texture_state.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_texture_state.py",
+        "tests/reference/texture_state_oracle.c",
+        "tests/texture_state_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_bsp.c",
@@ -15721,10 +17126,25 @@
         "R_ShutdownCommandBuffers",
         "R_SyncRenderThread"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "R_GetCommandBuffer / RE_SetColor / RE_StretchPic",
+          "target_files": [
+            "src/mq3/renderer/command_queue.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "0x40000-byte command budget plus set-color, stretch-pic, draw-buffer and swap execution through injected backend callbacks. Seven exact C records and 29 contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/command_queue.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_renderer_commands.py",
+        "tests/reference/renderer_command_oracle.c",
+        "tests/renderer_command_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_curve.c",
@@ -15829,10 +17249,49 @@
         "jpegDest",
         "term_destination"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "LoadTGA",
+          "target_files": [
+            "src/mq3/renderer/tga.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Type 2/3/10 TGA decoding, 8/24/32-bit pixels, BGR(A)-to-RGBA, bottom-up rows, image ID and RLE packets. Five unchanged-C records and 22 MiniLang contracts pass."
+        },
+        {
+          "original": "ResampleTexture / R_LightScaleTexture / R_MipMap2 / R_MipMap",
+          "target_files": [
+            "src/mq3/renderer/image_processing.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "CPU resampling, gamma/intensity scaling and simple/filtered mipmaps. Ten exact unchanged-C records and 19 contracts pass."
+        },
+        {
+          "original": "generateHashValue / R_CreateImage / R_FindImageFile",
+          "target_files": [
+            "src/mq3/renderer/image_registry.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Filename hash/cache, extension fallback, flags, lightmap TMU, texture numbering and CPU upload planning through an injected submission boundary. Eight exact C records and 29 contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/tga.ml",
+        "src/mq3/renderer/image_processing.ml",
+        "src/mq3/renderer/image_registry.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_tga.py",
+        "tests/reference/tga_oracle.c",
+        "tests/tga_contracts.ml",
+        "scripts/test_image_processing.py",
+        "tests/reference/image_processing_oracle.c",
+        "tests/image_processing_contracts.ml",
+        "scripts/test_image_registry.py",
+        "tests/reference/image_registry_oracle.c",
+        "tests/image_registry_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_init.c",
@@ -15931,10 +17390,37 @@
         "qsortFast",
         "shortsort"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "R_AddDrawSurf / R_DecomposeSort / R_SortDrawSurfs",
+          "target_files": [
+            "src/mq3/renderer/draw_surfs.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Exact QSORT key layout, masked draw-surface ring, decomposition, capacity handling and stable ordering. Five exact C records and 34 contracts pass."
+        },
+        {
+          "original": "R_LocalNormalToWorld / R_LocalPointToWorld / R_WorldToLocal / R_TransformModelToClip / R_TransformClipToWindow / R_CullPointAndRadius / R_CullLocalPointAndRadius / R_CullLocalBox",
+          "target_files": [
+            "src/mq3/renderer/view_math.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Local/world/model/clip/window transforms and point, radius and local-box frustum culling. Eleven exact C records and 36 contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/draw_surfs.ml",
+        "src/mq3/renderer/view_math.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_draw_surfs.py",
+        "tests/reference/draw_surfs_oracle.c",
+        "tests/draw_surfs_contracts.ml",
+        "scripts/test_renderer_view_math.py",
+        "tests/reference/renderer_view_math_oracle.c",
+        "tests/renderer_view_math_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_marks.c",
@@ -15984,10 +17470,25 @@
         "R_ModelInit",
         "R_Modellist_f"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "R_GetTag / R_LerpTag / R_ModelBounds",
+          "target_files": [
+            "src/mq3/renderer/model_tags.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "MD3 tag lookup and frame clamping, binary32 origin/axis interpolation, per-axis normalization, missing-model identity and brush/MD3 bounds. Seven exact C records and 26 contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/model_tags.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_model_tags.py",
+        "tests/reference/model_tags_oracle.c",
+        "tests/model_tags_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_noise.c",
@@ -16028,10 +17529,17 @@
         "R_AddPolygonSurfaces",
         "R_ToggleSmpFrame"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "RE_ClearScene / RE_AddPolyToScene / RE_AddRefEntityToScene / RE_AddDynamicLightToScene",
+          "target_files": ["src/mq3/renderer/scene_queue.ml"],
+          "status": "tested_subset",
+          "scope": "Scene marks, polygon capacity/copy/fog, reference entities and normal/additive lights with hardware restrictions. Six exact header constants and 24 contracts pass."
+        }
+      ],
+      "target": ["src/mq3/renderer/scene_queue.ml"],
+      "status": "partial",
+      "tests": ["scripts/test_scene_queue.py", "tests/reference/scene_queue_oracle.c", "tests/scene_queue_contracts.ml"]
     },
     {
       "source": "code/renderer/tr_shade.c",
@@ -16144,10 +17652,37 @@
         "modes",
         "valid"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "generateHashValue and FindShaderInShaderText",
+          "target_files": [
+            "src/mq3/renderer/shader_index.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "ASCII case/slash/extension-normalized hash, 2048-bucket shader text index, first duplicate and nested-brace lookup. Ten unchanged-C records and ten MiniLang contracts pass."
+        },
+        {
+          "original": "ParseShader, ParseStage and shader directive helpers",
+          "target_files": [
+            "src/mq3/renderer/shader_parser.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Map/animation, blend/depth, rgb/alpha generation, tcGen/texgen/tcMod, surface, sort, cull and material flags. Thirty unchanged-C records and 32 MiniLang contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/shader_index.ml",
+        "src/mq3/renderer/shader_parser.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_shader_index.py",
+        "tests/reference/shader_index_oracle.c",
+        "tests/shader_index_contracts.ml",
+        "scripts/test_shader_parser.py",
+        "tests/reference/shader_parser_oracle.c",
+        "tests/shader_parser_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_shadows.c",
@@ -16219,10 +17754,73 @@
         "RB_SurfaceTriangles",
         "VectorArrayNormalize"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "RB_SurfacePolychain",
+          "target_files": [
+            "src/mq3/renderer/surface_polychain.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Vertex/ST/RGBA append, fan indices, base offsets and strict Baseq3 overflow behavior. Three exact C records and 21 contracts pass."
+        },
+        {
+          "original": "RB_SurfaceTriangles / RB_SurfaceFace",
+          "target_files": [
+            "src/mq3/renderer/surface_mesh.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Rebased indices, positions, optional normals, base/lightmap coordinates, colors, dlight bits and strict overflow/flush behavior. Three exact C records and 30 contracts pass."
+        },
+        {
+          "original": "VectorArrayNormalize / LerpMeshVertexes / RB_SurfaceMesh",
+          "target_files": [
+            "src/mq3/renderer/surface_md3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Binary32 MD3 frame interpolation, original sine-table normal decoding, Q_rsqrt normalization, texcoords, rebased indices and overflow behavior. Three exact C records and 31 contracts pass."
+        },
+        {
+          "original": "RB_SurfaceGrid",
+          "target_files": [
+            "src/mq3/renderer/surface_grid.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "LOD row/column selection, multi-batch strips, boundary rows, winding, full vertex attributes and dynamic-light behavior. Five exact C records and 30 contracts pass."
+        },
+        {
+          "original": "RB_AddQuadStampExt / RB_AddQuadStamp / RB_SurfaceSprite",
+          "target_files": [
+            "src/mq3/renderer/surface_entities.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Binary32 sprite rotation and mirroring, positions, normals, both UV sets, colors, index rebasing and strict overflow sentinel behavior. Six exact C records and 31 contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/surface_polychain.ml",
+        "src/mq3/renderer/surface_mesh.ml",
+        "src/mq3/renderer/surface_md3.ml",
+        "src/mq3/renderer/surface_grid.ml",
+        "src/mq3/renderer/surface_entities.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_surface_polychain.py",
+        "tests/reference/surface_polychain_oracle.c",
+        "tests/surface_polychain_contracts.ml",
+        "scripts/test_surface_mesh.py",
+        "tests/reference/surface_mesh_oracle.c",
+        "tests/surface_mesh_contracts.ml",
+        "scripts/test_surface_md3.py",
+        "tests/reference/surface_md3_oracle.c",
+        "tests/surface_md3_contracts.ml",
+        "scripts/test_surface_grid.py",
+        "tests/reference/surface_grid_oracle.c",
+        "tests/surface_grid_contracts.ml",
+        "scripts/test_surface_entities.py",
+        "tests/reference/surface_entities_oracle.c",
+        "tests/surface_entities_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_world.c",
@@ -16386,10 +17984,86 @@
         "SV_VerifyPaks_f",
         "SV_WriteDownloadToClient"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "SV_CloseDownload, SV_NextDownload_f and SV_WriteDownloadToClient",
+          "target_files": [
+            "src/mq3/server/download.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Eight-slot 2048-byte block window, rate-derived per-snapshot budget, block-zero size, EOF block and close, ordered acknowledgements, broken-ack drop, one-second retransmit, id-p/disabled/missing failures and bounded message overflow. Twelve unchanged-C records and 19 MiniLang contracts pass."
+        },
+      {
+        "original": "SV_GetChallenge and SV_DirectConnect",
+          "target_files": [
+            "src/mq3/server/oob_connect.ml"
+          ],
+          "status": "tested_subset",
+        "scope": "Challenge-ring allocation/reuse, LAN/authorization-timeout policy, protocol/challenge/ping/reconnect validation, public/private/reused/local-bot slot selection and accepted-client timing state. Thirteen records execute both unchanged Baseq3 bodies; 26 contracts cover additional boundaries. OOB transport, authorize server and VM admission are explicit services."
+      },
+      {
+        "original": "SV_ExecuteClientMessage",
+        "target_files": [
+          "src/mq3/server/client_message.ml"
+        ],
+        "status": "tested_exact",
+          "scope": "Message and reliable acknowledgements, stale repair, server-id/restart/download/nextdl policy, repeated client commands, zombie/flood exits, move/no-delta dispatch, EOF and bad opcodes. Thirteen unchanged-C records and 15 MiniLang contracts pass; concrete payload callbacks are supplied by client_input.ml."
+        },
+        {
+          "original": "SV_ExecuteClientCommand",
+          "target_files": [
+            "src/mq3/server/client_command_dispatch.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Eight engine-owned commands, case-sensitive lookup, flood gate, active-game gate and Game-VM fallback. Nine unchanged-C records and 16 MiniLang contracts pass."
+        },
+        {
+          "original": "SV_ClientCommand",
+          "target_files": [
+            "src/mq3/server/client_command.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Reliable sequencing, retransmissions, gap drop, flood timing and Netchan command-string state. Eleven unchanged-C records and 20 MiniLang contracts pass."
+        },
+        {
+          "original": "SV_UserMove and SV_ClientThink",
+          "target_files": [
+            "src/mq3/server/user_move.ml",
+            "src/mq3/server/client_input.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Keyed delta usercmd batches, frame acknowledgement, pure/CP policy, enter-world, duplicate filtering and game think callback. Twelve unchanged-C records, 30 MiniLang contracts and 14 payload-integration contracts pass."
+      }
+      ],
+      "target": [
+        "src/mq3/server/download.ml",
+      "src/mq3/server/pipeline.ml",
+      "src/mq3/server/oob_connect.ml",
+        "src/mq3/server/client_message.ml",
+        "src/mq3/server/client_command_dispatch.ml",
+        "src/mq3/server/client_command.ml",
+        "src/mq3/server/user_move.ml",
+        "src/mq3/server/client_input.ml",
+        "src/mq3/server/network_ingress.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_server_download.py",
+        "scripts/test_server_pipeline.py",
+      "scripts/test_oob_connect.py",
+      "scripts/test_server_client_message.py",
+      "tests/reference/server_client_message_oracle.c",
+      "tests/server_client_message_oracle.ml",
+        "tests/server_client_message_contracts.ml",
+        "scripts/test_client_command_dispatch.py",
+        "scripts/test_server_client_command.py",
+        "scripts/test_server_user_move.py",
+        "scripts/test_server_client_input.py",
+        "scripts/test_server_network_ingress.py",
+        "tests/reference/client_command_dispatch_oracle.c",
+        "tests/reference/server_client_command_oracle.c",
+        "tests/reference/server_user_move_oracle.c"
+      ]
     },
     {
       "source": "code/server/sv_game.c",
@@ -16446,18 +18120,42 @@
           ],
           "status": "tested_subset",
           "scope": "Point cluster visibility plus area connectivity, used by and compared through Team_FragBonuses and Team_GetLocation, including explicit PVS masks and portal open/close sequences. Solid-only negative destination clusters are rejected safely instead of indexing before the C mask."
+        },
+        {
+          "original": "SV_GameSystemCalls",
+          "target_files": [
+            "src/mq3/vm/syscall_common.ml",
+            "src/mq3/vm/syscall_qagame.ml",
+            "src/mq3/vm/syscall_qagame_world.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Common traps plus 18 qagame server traps for game data, clients, configstrings, info, PVS/portals, entity linking, bot slots and entity tokens. Binary delegation adds trace/capsule, point contents, entity boxes/contacts and usercmds with exact trace_t/usercmd_t layouts. The layers pass eight exact ABI records and 69 contracts."
+        },
+        {
+          "original": "SV_InitGameProgs / SV_InitGameVM / SV_RestartGameProgs / SV_ShutdownGameProgs",
+          "target_files": [
+            "src/mq3/server/game_vm.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "qagame load, GAME_INIT, restart, shutdown and every gameExport_t wrapper. Eleven exact ABI values and 22 lifecycle contracts pass."
         }
       ],
       "target": [
         "src/mq3/server/world.ml",
-        "src/mq3/game/spawn_functions.ml"
+        "src/mq3/game/spawn_functions.ml",
+        "src/mq3/vm/syscall_qagame.ml",
+        "src/mq3/vm/syscall_qagame_world.ml",
+        "src/mq3/server/game_vm.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_transitions.py",
         "scripts/test_spawn.py",
         "scripts/test_deaths.py",
-        "scripts/test_team_status.py"
+        "scripts/test_team_status.py",
+        "scripts/test_vm_syscall_qagame.py",
+        "scripts/test_vm_syscall_qagame_world.py",
+        "scripts/test_game_vm_lifecycle.py"
       ]
     },
     {
@@ -16521,10 +18219,113 @@
         "SV_ReplacePendingServerCommands",
         "SV_SendServerCommand"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+      {
+        "original": "SV_ConnectionlessPacket",
+          "target_files": [
+            "src/mq3/server/connectionless.ml"
+          ],
+          "status": "tested_subset",
+        "scope": "OOB marker validation, command tokenization and case-insensitive dispatch are ported. getchallenge and connect call the ported OOB core; getstatus, getinfo, rcon, ipAuthorize, connect decompression, diagnostics and UDP receive remain explicit host services. Eight unchanged-C dispatch records and 18 MiniLang contracts cover the routing behavior."
+      },
+        {
+          "original": "SV_PacketEvent",
+        "target_files": [
+          "src/mq3/server/packet_event.ml"
+        ],
+        "status": "tested_exact",
+          "scope": "OOB routing, runt/address/qport filtering, client lookup, translated-port repair, server Netchan processing, zombie rule, time updates and client-message callback. Ten unchanged-C records and 28 MiniLang contracts pass."
+        },
+        {
+          "original": "SV_CalcPings",
+          "target_files": [
+            "src/mq3/server/client_pings.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Frame-ring averages, inactive/missing-entity and bot rules, C truncation, upper clamp and active playerState mirroring. Four unchanged-C records and 16 MiniLang contracts pass."
+        },
+        {
+          "original": "SV_Frame (desktop ownership subset)",
+          "target_files": [
+            "src/mq3/platform/desktop_frame_host.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Winsock/socket lifetime, bounded event pump, monotonic capped frame time, server/client frame order, rollback and shutdown. Nineteen isolated and six live-localhost contracts pass."
+        },
+        {
+          "original": "SV_CheckTimeouts",
+          "target_files": [
+            "src/mq3/server/timeouts.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Strict timeout bounds, future-time repair, grace counter, drop/free, zombie expiry and signed 32-bit time arithmetic. Six unchanged-C records and 24 MiniLang contracts pass."
+        },
+        {
+          "original": "SV_CheckPaused",
+          "target_files": [
+            "src/mq3/server/pause.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Client-state counting, bot exclusion and exact sv_paused transition semantics. Twenty-three unchanged-C records and 22 MiniLang contracts pass."
+        },
+        {
+          "original": "SV_RateMsec and SV_SendClientMessages",
+          "target_files": [
+            "src/mq3/server/snapshot_schedule.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Due-client selection, unsent fragment priority and rate-derived next snapshot timing with snapshot send as an explicit callback. Three unchanged-C records and 19 MiniLang contracts pass."
+        },
+        {
+          "original": "SV_Frame",
+          "target_files": [
+            "src/mq3/server/frame.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Kill/running/pause gates, FPS residual and sleep, wrap/restart policy, info configstrings, ping, bot/game frame loop, timeout, snapshot scheduling and heartbeat in original order. Nine unchanged-C records and 28 MiniLang contracts pass."
+      }
+      ],
+      "target": [
+      "src/mq3/server/connectionless.ml",
+        "src/mq3/server/packet_event.ml",
+        "src/mq3/server/client_pings.ml",
+        "src/mq3/platform/desktop_frame_host.ml",
+        "src/mq3/server/timeouts.ml",
+        "src/mq3/server/pause.ml",
+        "src/mq3/server/snapshot_schedule.ml",
+        "src/mq3/server/frame.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_connectionless.py",
+        "tests/reference/connectionless_oracle.c",
+        "tests/connectionless_oracle.ml",
+      "tests/connectionless_contracts.ml",
+      "scripts/test_server_packet_event.py",
+      "tests/reference/server_packet_event_oracle.c",
+      "tests/server_packet_event_oracle.ml",
+      "tests/server_packet_event_contracts.ml",
+      "scripts/test_localhost_handshake.py",
+        "tests/localhost_handshake_contracts.ml",
+        "scripts/test_server_client_pings.py",
+        "tests/reference/server_client_pings_oracle.c",
+        "tests/server_client_pings_contracts.ml",
+        "scripts/test_desktop_frame_host.py",
+        "tests/desktop_frame_host_contracts.ml",
+        "tests/desktop_frame_host_live_contracts.ml",
+        "scripts/test_server_timeouts.py",
+        "tests/reference/server_timeouts_oracle.c",
+        "tests/server_timeouts_contracts.ml",
+        "scripts/test_server_pause.py",
+        "tests/reference/server_pause_oracle.c",
+        "tests/server_pause_contracts.ml",
+        "scripts/test_snapshot_schedule.py",
+        "tests/reference/snapshot_schedule_oracle.c",
+        "tests/snapshot_schedule_contracts.ml",
+        "scripts/test_server_frame.py",
+        "tests/reference/server_frame_oracle.c",
+        "tests/server_frame_contracts.ml"
+      ]
     },
     {
       "source": "code/server/sv_net_chan.c",
@@ -16537,10 +18338,23 @@
         "SV_Netchan_TransmitNextFragment",
         "fragments"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "SV_Netchan_Encode, SV_Netchan_Decode, SV_Netchan_Process, SV_Netchan_Transmit and SV_Netchan_TransmitNextFragment",
+          "target_files": [
+            "src/mq3/server/netchan.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Server XOR codec, svc_EOF, shared netchan transmission/process, fragment continuation and deferred unencoded FIFO queue. Twelve direct records execute all five unchanged server bodies together with unchanged MSG/Huffman/netchan code and compare complete packets and state; 26 contracts cover boundaries including 4/6-byte process headers."
+        }
+      ],
+      "target": [
+        "src/mq3/server/netchan.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_server_netchan.py"
+      ]
     },
     {
       "source": "code/server/sv_rankings.c",
@@ -16598,10 +18412,68 @@
         "SV_WriteSnapshotToClient",
         "number"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "SV_AddEntToSnapshot, SV_QsortEntityNumbers, SV_AddEntitiesVisibleFromPoint and SV_BuildClientSnapshot",
+          "target_files": [
+            "src/mq3/server/snapshot_build.ml",
+            "src/mq3/server/snapshot_runtime.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Entity collection, duplicate-safe ordering, linked/PVS/area and client-flag filtering, broadcast and portal recursion, player viewpoint, area-mask inversion and circular snapshot-ring storage. Five direct scenarios execute all four unchanged Baseq3 bodies; 26 MiniLang contracts cover boundaries and copy semantics. The concrete collision.world/visibility/server.world/Game-Level adapter has 16 contracts and a q3dm0 retail path through a 62-byte encoded snapshot."
+        },
+        {
+          "original": "SV_EmitPacketEntities",
+          "target_files": [
+            "src/mq3/server/snapshot_delta.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete sorted old/new entity merge, baseline adds, removals, unchanged omission, changed deltas, circular snapshot-ring addressing and packet-entity terminator; six full compressed byte streams match the unchanged Baseq3 body."
+        },
+        {
+          "original": "SV_WriteSnapshotToClient",
+          "target_files": [
+            "src/mq3/server/snapshot_delta.ml",
+            "src/mq3/server/snapshot_send.ml",
+            "src/mq3/server/pipeline.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete delta-frame selection, svc_snapshot header, time, lastframe, rate/inactive flags, area bits, playerstate, packetentities and debug padding; six complete compressed messages exercise full, reliable, valid/stale delta, flags/padding and download ordering through EOF."
+        },
+        {
+          "original": "SV_UpdateServerCommandsToClient",
+          "target_files": [
+            "src/mq3/server/reliable_commands.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete unacknowledged reliable-command emission with svc opcode, absolute sequence, 64-slot masked command ring, C-string payload and reliableSent advancement; seven compressed streams match the unchanged Baseq3 body and 19 MiniLang contracts cover ring lifecycle semantics."
+        },
+        {
+          "original": "SV_RateMsec, SV_SendMessageToClient and SV_SendClientSnapshot",
+          "target_files": [
+            "src/mq3/server/snapshot_send.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Complete MiniLang orchestration for build callback, bot send skip, last-client-command header, reliable/snapshot/download ordering, overflow clear, frame send metadata, EOF, Netchan callback and rate/snapshot/inactive/local/LAN scheduling. Message bytes are covered by six exact unchanged-C streams and scheduling by 25 contracts; real Netchan queue/encoding remains separate."
+        }
+      ],
+      "target": [
+        "src/mq3/server/snapshot_build.ml",
+        "src/mq3/server/snapshot_runtime.ml",
+        "src/mq3/server/snapshot_delta.ml",
+        "src/mq3/server/reliable_commands.ml",
+        "src/mq3/server/snapshot_send.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_snapshot_build.py",
+        "scripts/test_snapshot_runtime.py",
+        "scripts/test_snapshot_delta.py",
+        "scripts/test_snapshot_parse.py",
+        "scripts/test_reliable_commands.py",
+        "scripts/test_snapshot_send.py",
+        "scripts/test_server_pipeline.py"
+      ]
     },
     {
       "source": "code/server/sv_world.c",
@@ -19020,10 +20892,25 @@
         "strgtr",
         "systems"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Sys_QueEvent",
+          "target_files": [
+            "src/mq3/platform/input_events.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "256-entry FIFO, oldest-event overflow, zero-time clock substitution and key/char/mouse/wheel/joystick producers and dispatch. Two unchanged-C records and 26 MiniLang contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/input_events.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_input_event_queue.py",
+        "tests/reference/input_event_queue_oracle.c",
+        "tests/input_event_queue_contracts.ml"
+      ]
     },
     {
       "source": "code/win32/win_net.c",
@@ -19052,10 +20939,26 @@
         "Sys_StringToAdr",
         "Sys_StringToSockaddr"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "NET_Init, NET_IPSocket, Sys_SendPacket, Sys_GetPacket and NET_Shutdown",
+          "target_files": [
+            "native/udp_win64.c",
+            "src/mq3/platform/udp.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Windows-x64 Winsock 2.2 startup/cleanup, nonblocking IPv4 UDP socket creation, bind/getsockname, raw sendto/recvfrom and close. Thirteen MiniLang integration contracts use two localhost sockets and compare exact binary payloads, no-data behavior and address/port roundtrips. Quake address selection, SOCKS/IPX, cvars, LAN classification and live engine-loop wiring remain open."
+        }
+      ],
+      "target": [
+        "native/udp_win64.c",
+        "src/mq3/platform/udp.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_udp_platform.py",
+        "tests/udp_platform_contracts.ml"
+      ]
     },
     {
       "source": "code/win32/win_qgl.c",

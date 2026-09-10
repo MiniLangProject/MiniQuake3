@@ -1,0 +1,83 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Deterministic Baseq3 shotgun pattern for the standalone playable preview.
+package mq3.client.playable_shotgun
+
+import mq3.collision.world as collision
+import mq3.client.playable_targets as targets
+import mq3.shared.math as qmath
+import mq3.shared.directions as directions
+import mq3.compat.numeric as numeric
+
+// code/game/bg_public.h and code/game/g_weapon.c.
+const SHOT_MASK=0x6000001
+const DEFAULT_SHOTGUN_SPREAD=700.0
+const DEFAULT_SHOTGUN_COUNT=11
+const DEFAULT_SHOTGUN_DAMAGE=10
+const PATTERN_RANGE=131072.0
+
+struct Pellet start endPoint intended hit normal distance fraction targetIndex damage killed end struct
+struct Blast pellets hits totalDamage kills awardedScore accuracyHit seed seedEnd end struct
+
+function fail(message) return error(7595,"playable shotgun: "+message) end function
+function validPoint(value) return value!=void and typeof(value)=="array" and len(value)==3 end function
+function copyPoint(value) return [numeric.f32(value[0]),numeric.f32(value[1]),numeric.f32(value[2])] end function
+
+function worldPointTrace(context,startPoint,endPoint)
+  return collision.boxTrace(context,startPoint,endPoint,[0.0,0.0,0.0],[0.0,0.0,0.0],0,SHOT_MASK,false)
+end function
+
+// This is ShotgunPattern's client/server-shared deterministic spread loop.
+// origin2 is normalized exactly as in g_weapon.c before the basis is derived.
+function patternEndpoints(origin,origin2,seed)
+  if not validPoint(origin) or not validPoint(origin2) then return fail("origin and direction need three axes") end if
+  forward=qmath.VectorNormalize2(origin2)
+  if qmath.VectorLength(forward)==0.0 then return fail("direction cannot be zero") end if
+  right=directions.perpendicular(forward);up=qmath.CrossProduct(forward,right)
+  randomState=qmath.RandomState(numeric.i32(seed));result=[]
+  for index=0 to DEFAULT_SHOTGUN_COUNT-1
+    horizontal=numeric.fmul(numeric.fmul(qmath.Q_crandom(randomState),DEFAULT_SHOTGUN_SPREAD),16.0)
+    vertical=numeric.fmul(numeric.fmul(qmath.Q_crandom(randomState),DEFAULT_SHOTGUN_SPREAD),16.0)
+    finish=qmath.VectorMA(origin,PATTERN_RANGE,forward)
+    finish=qmath.VectorMA(finish,horizontal,right);finish=qmath.VectorMA(finish,vertical,up)
+    result=result+[finish]
+  end for
+  return [result,randomState.seed]
+end function
+
+function tracePellets(traceFn,context,origin,endpoints)
+  tracedPellets=[]
+  for each intended in endpoints
+    traced=traceFn(context,origin,intended);if traced is error then return traced end if
+    fraction=traced.trace.fraction;worldHit=fraction<1.0;normal=[0.0,0.0,0.0]
+    if worldHit then normal=copyPoint(traced.trace.normal) end if
+    delta=[traced.endpos[0]-origin[0],traced.endpos[1]-origin[1],traced.endpos[2]-origin[2]]
+    tracedPellets=tracedPellets+[Pellet(copyPoint(origin),copyPoint(traced.endpos),copyPoint(intended),worldHit,normal,qmath.VectorLength(delta),fraction,-1,0,false)]
+  end for
+  return tracedPellets
+end function
+
+// The BSP endpoint bounds playableTargets.applyShot, so a wall always shields
+// a target behind it. Damage is applied one pellet at a time like g_weapon.c.
+function fireWithTrace(traceFn,context,targetState,origin,origin2,seed,now)
+  if traceFn==void or targetState==void then return fail("trace and targets are required") end if
+  if now<0 then return fail("time cannot be negative") end if
+  pattern=patternEndpoints(origin,origin2,seed);if pattern is error then return pattern end if
+  pellets=tracePellets(traceFn,context,origin,pattern[0]);if pellets is error then return pellets end if
+  hits=[];totalDamage=0;kills=0;awardedScore=0;accuracyHit=false
+  for each pellet in pellets
+    targetHit=targets.applyShot(targetState,pellet,DEFAULT_SHOTGUN_DAMAGE,now);if targetHit is error then return targetHit end if
+    if targetHit!=void then
+      pellet.targetIndex=targetHit.targetIndex;pellet.damage=targetHit.damage;pellet.killed=targetHit.killed
+      hits=hits+[targetHit];totalDamage=totalDamage+targetHit.damage;awardedScore=awardedScore+targetHit.awardedScore
+      if targetHit.killed then kills=kills+1 end if
+      // Baseq3 records at most one accuracy hit for the complete blast.
+      if not accuracyHit then accuracyHit=true end if
+    end if
+  end for
+  return Blast(pellets,hits,totalDamage,kills,awardedScore,accuracyHit,numeric.i32(seed),pattern[1])
+end function
+
+function fire(world,targetState,origin,origin2,seed,now)
+  if world==void then return fail("collision world is required") end if
+  return fireWithTrace(worldPointTrace,world,targetState,origin,origin2,seed,now)
+end function

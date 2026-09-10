@@ -520,7 +520,8 @@ function bounce(level,ent,hit)
   return void
 end function
 function run(level,ent)
-  requireItem(ent.item)
+  if ent.item != void then requireItem(ent.item)
+  else if not ent.physicsObject then return error(497,"G_RunItem requires an item or physics object") end if
   if ent.s.groundEntityNum == -1 and ent.s.pos.trType != c.TR_GRAVITY then ent.s.pos.trType = c.TR_GRAVITY; ent.s.pos.trTime = level.time end if
   if ent.s.pos.trType == c.TR_STATIONARY then return game.runThink(level,ent) end if
   origin = trajectory.evaluate(ent.s.pos,level.time); mask = ent.clipmask
@@ -531,7 +532,7 @@ function run(level,ent)
   game.link(level,ent); game.runThink(level,ent)
   if hit.trace.fraction == 1 then return void end if
   if (sv.pointContents(level.scene,ent.r.currentOrigin,-1) & 0x80000000) != 0 then
-    if itemType(ent.item) == c.IT_TEAM then return teamFree(level,ent) end if
+    if ent.item != void and itemType(ent.item) == c.IT_TEAM then return teamFree(level,ent) end if
     return game.free(level,ent)
   end if
   return bounce(level,ent,hit)
