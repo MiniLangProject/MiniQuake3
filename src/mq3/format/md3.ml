@@ -61,13 +61,15 @@ function load(data)
   ofsFrames=i32(data,92);ofsTags=i32(data,96);ofsSurfaces=i32(data,100);ofsEnd=i32(data,104)
   if numFrames<1 or numFrames>MAX_FRAMES then return fail("invalid frame count") end if
   if numTags<0 or numTags>MAX_TAGS then return fail("invalid tag count") end if
-  if numSurfaces<1 or numSurfaces>MAX_SURFACES then return fail("invalid surface count") end if
+  // Tag-only *_hand.md3 files are valid MD3 models used by Baseq3 to attach
+  // first-person weapons. They intentionally contain no render surfaces.
+  if numSurfaces<0 or numSurfaces>MAX_SURFACES then return fail("invalid surface count") end if
   if numSkins<0 or numSkins>MAX_SHADERS then return fail("invalid skin count") end if
   if ofsEnd<HEADER_SIZE or ofsEnd>len(data) then return fail("invalid file end") end if
   if ofsFrames<HEADER_SIZE or ofsTags<ofsFrames+numFrames*FRAME_SIZE or ofsSurfaces<ofsTags+numFrames*numTags*TAG_SIZE then return fail("overlapping model sections") end if
   check=span(ofsFrames,numFrames*FRAME_SIZE,ofsEnd);if check is error then return check end if
   check=span(ofsTags,numFrames*numTags*TAG_SIZE,ofsEnd);if check is error then return check end if
-  check=span(ofsSurfaces,SURFACE_SIZE,ofsEnd);if check is error then return check end if
+  if numSurfaces>0 then check=span(ofsSurfaces,SURFACE_SIZE,ofsEnd);if check is error then return check end if end if
 
   frames=[];boundsMin=[0.0,0.0,0.0];boundsMax=[0.0,0.0,0.0]
   for frameIndex=0 to numFrames-1
@@ -93,7 +95,7 @@ function load(data)
   end for
 
   surfaces=[];surfaceOffset=ofsSurfaces
-  for surfaceIndex=0 to numSurfaces-1
+  if numSurfaces>0 then for surfaceIndex=0 to numSurfaces-1
     check=span(surfaceOffset,SURFACE_SIZE,ofsEnd);if check is error then return fail("truncated surface header") end if
     if i32(data,surfaceOffset)!=MD3_IDENT then return fail("invalid surface signature") end if
     surfaceName=fixedString(data,surfaceOffset+4,64)
@@ -133,7 +135,7 @@ function load(data)
     end for
     surfaces=surfaces+[Surface(surfaceName,shaders,md3Mesh.surface(numFrames,numVerts,numTriangles,triangles,texCoords,packedFrames))]
     surfaceOffset=surfaceOffset+surfaceEnd
-  end for
+  end for end if
   if surfaceOffset!=ofsEnd then return fail("surface chain does not reach file end") end if
   return Model(name,flags,numFrames,numTags,numSurfaces,numSkins,frames,tags,surfaces,[boundsMin,boundsMax])
 end function

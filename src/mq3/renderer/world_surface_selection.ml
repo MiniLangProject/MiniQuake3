@@ -201,6 +201,14 @@ function prepareCached(cache,camera,cfg)
   return PreparedWorld(chosen,cachedRenderData(cache,chosen))
 end function
 
+// Camera checks run regularly, but rebuilding retained material commands is
+// only necessary when the selected BSP face set actually changes.
+function sameFaces(left,right)
+  if left==void or right==void or len(left)!=len(right) then return false end if
+  for index=0 to len(left)-1 if left[index]!=right[index] then return false end if end for
+  return true
+end function
+
 function prepare(map,camera,cfg)
   chosen=choose(map,camera,cfg);if chosen is error then return chosen end if
   data=render.extractWithPatchError(map,chosen.faceIndexes,cfg.triangleBudget,cfg.patchError);if data is error then return data end if

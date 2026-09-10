@@ -60,7 +60,9 @@ fallbacks use weapon-colored glows and crosses. Start, jump, pickup, pain, death
 weapon fire and weapon impact actions use original WAV assets from `pak0.pk3`.
 The WinMM boundary mixes up to 16 concurrent voices, so fast shots and impacts
 no longer cut each other off. Looped-on `target_speaker` entities are extracted
-from the BSP; q3dm1's eight fire speakers share one continuously playing retail WAV.
+from the BSP. q3dm1's eight fire speakers share one phase-continuous retail WAV
+source, but retain individual origins for Baseq3 distance attenuation and
+listener-relative stereo panning through a triple-buffered WinMM stream.
 The q3dm1 `tim_hell` sky is camera-anchored and renders both original scrolling
 retail layers. Every selectable weapon loads its stock `_flash.md3`; impulse
 weapons show it for the source-anchored 20 ms interval, while Gauntlet and
@@ -86,7 +88,12 @@ Enemy movement is resolved through a player-sized BSP hull with wall sliding,
 plasma projectiles. Each flight is traced against the BSP and the player bounds;
 walls win exact collision ties and therefore shield the player. Trails, glows,
 fading impact crosses and original plasma fire/impact sounds expose the complete
-path. The first-person view switches to the current original textured weapon MD3;
+path. The first-person view switches to the current original textured weapon MD3.
+Its bob, landing motion and idle drift follow `CG_CalculateWeaponPosition`; the
+visible model is attached through the complete animated `tag_weapon` transform
+loaded from the retail tag-only `_hand.md3`. Until the software renderer gains
+Quake 3's separate `RF_DEPTHHACK` projection, a contained parent-position
+compensation keeps this attachment inside its valid near volume;
 the weapon state uses stock Baseq3 fire intervals and direct-hit damage with
 recoil, hit marker and damage direction. The window caption samples and
 smooths the live frame rate every 500 ms.
@@ -120,14 +127,18 @@ III match.
 The software path now precomputes camera axes and focal length once per frame,
 uses direct validated MD3 transforms, and rasterizes only each triangle's covered
 scanline span with incremental barycentric coordinates. On the development
-machine, recent retail smokes take roughly 58-76 ms per frame
-(about 26-42 ms update plus 32-36 ms render), down from the original roughly 292 ms,
+machine, recent retail smokes take roughly 53-65 ms per frame
+(about 32-37 ms update plus 20-29 ms render), down from the original roughly 292 ms,
 while keeping about 1,700 selected world triangles, textures, lightmaps, item
 models, five animated targets, projectile effects, the two-layer retail sky and HUD.
 The selected base world is retained as one native batch between PVS refreshes;
 visible animated and blended material stages add their own passes. MD3 surfaces
 transform shared indexed vertices once per frame, keeping pickup
 bobbing and rotation at full frame cadence.
+Native world batches of at least 256 triangles split into as many as four
+disjoint scanline bands. An isolated parity benchmark measured 531.2 ms for
+the scalar path and 148.4 ms for the parallel path (3.58x), with identical
+framebuffer and depth output.
 
 Validation:
 
@@ -153,7 +164,8 @@ Validation:
 - `python scripts/test_playable_player.py`: 24 armor/death/respawn contracts.
 - `python scripts/test_playable_enemy_ai.py`: 17 AI contracts plus 40 q3dm1
   collision frames.
-- `python scripts/test_md3_asset.py`: 37 MD3 contracts plus the retail Sarge
+- `python scripts/test_md3_asset.py`: 38 MD3 contracts, including valid
+  tag-only hand models, plus the retail Sarge
   `lower.md3` asset probe.
 - `python scripts/test_player_animation.py`: 27 animation.cfg and sampling
   contracts plus a retail Sarge probe.
@@ -171,7 +183,7 @@ Validation:
   transform and budget contracts plus a retail q3dm1 probe.
 - `python scripts/benchmark_playable_item_models.py`: indexed MD3 transform
   benchmark with an exact legacy/new geometry comparison.
-- `python scripts/test_world_surface_selection.py`: 26 BSP PVS, frustum,
+- `python scripts/test_world_surface_selection.py`: 28 BSP PVS, frustum,
   backface, budget and cached-geometry contracts plus a retail q3dm1 probe.
 - `python scripts/test_playable_enemy_animation.py`: 29 state-transition and
   one-shot animation contracts.
@@ -193,6 +205,9 @@ Validation:
   41 selection contracts plus 21 decoded retail weapon WAV files, including the Gauntlet loop.
 - `python scripts/test_playable_target_render.py`: 26 silhouette/health contracts.
 - `python scripts/test_playable_combat_view.py`: 40 weapon/feedback contracts.
+- `python scripts/test_playable_viewmodel.py --pak D:/Quake3/baseq3/pak0.pk3`: 21 Baseq3 weapon-position,
+  `AnglesToAxis`, animated hand-tag attachment and software-depthhack boundary
+  contracts plus all ten retail tag-only hand MD3s.
 - `python scripts/test_playable_fps_title.py`: 14 sampling, smoothing and native
   window-caption contracts.
 - `python scripts/test_baseq3_hud.py --pak D:/Quake3/baseq3/pak0.pk3`: 50 HUD
@@ -202,7 +217,10 @@ Validation:
   menu contracts plus four retail font/cursor artwork checks.
 - `python scripts/test_wav.py`: 35 RIFF/WAVE PCM contracts.
 - `python scripts/test_playable_ambient_sounds.py --pak D:/Quake3/baseq3/pak0.pk3`:
-  10 speaker-policy contracts plus eight q3dm1 speakers sharing one decoded WAV.
+  13 speaker-policy contracts plus eight q3dm1 speakers sharing one decoded WAV.
+- `python scripts/test_spatial_ambient.py --pak D:/Quake3/baseq3/pak0.pk3`:
+  42 spatial mixing, resampling, limiting, phase and runtime contracts plus all
+  eight audible q3dm1 fire sources.
 - `python scripts/test_playable_sky.py --pak D:/Quake3/baseq3/pak0.pk3`: 16
   contracts plus both 256x256 q3dm1 retail sky layers.
 - `python scripts/test_playable_match.py`: 25 countdown, announcer, clock, limit and
@@ -212,6 +230,10 @@ Validation:
 - `python scripts/playable_window_build_test.py`: `/W4 /WX` renderer lifecycle.
 - `python scripts/playable_audio_build_test.py`: `/W4 /WX` 16-voice/looping
   WinMM lifecycle and MiniLang FFI boundary.
+- `python scripts/playable_ambient_build_test.py`: `/W4 /WX` triple-buffered
+  streaming WinMM lifecycle and MiniLang FFI boundary.
+- `python scripts/benchmark_playable_world_batch_native.py`: parallel/scalar
+  native raster parity and timing benchmark.
 - `MiniQuake3.exe --play-smoke-bsp <map.bsp> 3`: real three-frame window run.
 - `MiniQuake3.exe --play-smoke <pak0.pk3> maps/q3dm1.bsp 60`: retail material,
   patch, movement, HUD, entity and effects sixty-frame run.

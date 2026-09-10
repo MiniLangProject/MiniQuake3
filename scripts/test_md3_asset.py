@@ -19,7 +19,7 @@ def main() -> int:
         "tests/md3_asset_contracts.ml", "--output", "md3_asset_contracts.exe",
     ], cwd=ROOT, check=True)
     output = run([ROOT / "build/md3_asset_contracts.exe"], ROOT / "build").strip()
-    expected = "PASS: 37 MD3 asset contracts"
+    expected = "PASS: 38 MD3 asset contracts"
     if output != expected:
         raise RuntimeError(output)
     print(expected)

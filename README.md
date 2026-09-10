@@ -70,14 +70,16 @@ direct and splash damage, while grenades bounce and settle until their fuse.
 Their original retail MD3s and textures are rendered in flight; Plasma uses its
 original camera-facing sprite. Source-anchored Rocket/Grenade smoke, Plasma
 particles and projectile light overlays accompany them. The audio boundary now
-mixes up to 16 effects while q3dm1's looped fire ambience remains active.
+mixes up to 16 effects while q3dm1's looped fire ambience streams with
+source-relative attenuation and stereo panning.
 Five local targets
 come from the remaining q3dm1 deathmatch spawns; they trace BSP line of sight,
 patrol, chase, strafe, attack, take damage, die and respawn. Their animated,
 skinned model geometry is assembled from the real Sarge `lower.md3`, `upper.md3`
 and `head.md3` through `tag_torso` and `tag_head`. Armor absorption, player death,
 spawn cycling and protection, score/KD, a textured retail first-person
-weapon model selected from the current pickup, real rotating/bobbing pickup MD3s,
+weapon model selected from the current pickup and attached through its original
+tag-only `_hand.md3`, real rotating/bobbing pickup MD3s,
 stock weapon fire timing and damage, recoil, hit/kill feedback and 21 decoded
 retail weapon sounds make those actions visible and audible. Enemy models now switch between idle, walk, run,
 attack, pain, death and respawn animation inputs. Near players use the complete
@@ -93,9 +95,9 @@ from the live score and death counts. Timer, countdown, centerprint and the
 sorted intermission scoreboard use the original `bigchars` atlas with stock
 shadows and sizing. Prepared camera projection and scanline-bounded
 incremental rasterization and an inverse-depth early test reduce the measured
-q3dm1 frame time from about 292 ms to roughly 58-76 ms on the development machine
-in the current 60-frame smoke with the new two-layer sky and full muzzle asset
-catalog (about 26-42 ms update plus 32-36 ms render across recent runs). The world renderer retains a
+q3dm1 frame time from about 292 ms to roughly 53-65 ms on the development machine
+in recent smokes with the two-layer sky and full muzzle asset catalog
+(about 32-37 ms update plus 20-29 ms render). The world renderer retains a
 base batch and submits the visible animated and blended material passes alongside
 it; indexed MD3 surfaces transform each shared
 vertex once while preserving per-frame pickup bobbing and rotation.

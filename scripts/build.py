@@ -60,6 +60,17 @@ def main():
              "/link", "/Brepro", "winmm.lib", f"/out:{audio}"],
             output, env, output / "playable-audio-build.log")
         audio_stamp.write_text(json.dumps({"inputs":audio_inputs,"binary":sha(audio)},indent=2)+"\n")
+    ambient=output / "playable_ambient.dll"
+    ambient_stamp=output / "playable-ambient-inputs.json"
+    ambient_inputs={"source":sha(ROOT / "native/playable_ambient_win32.c"),"compiler":inputs["compiler"],
+                    "flags":"/LD /O2 /W4 /WX /MT /Brepro winmm.lib"}
+    ambient_previous=json.loads(ambient_stamp.read_text()) if ambient_stamp.exists() else {}
+    if not ambient.exists() or ambient_previous.get("inputs")!=ambient_inputs or ambient_previous.get("binary")!=sha(ambient):
+        if not compiler_path: raise RuntimeError("MSVC cl.exe is required to rebuild playable_ambient.dll")
+        run(["cl", "/nologo", "/LD", "/O2", "/W4", "/WX", "/MT", ROOT / "native/playable_ambient_win32.c",
+             "/link", "/Brepro", "winmm.lib", f"/out:{ambient}"],
+            output, env, output / "playable-ambient-build.log")
+        ambient_stamp.write_text(json.dumps({"inputs":ambient_inputs,"binary":sha(ambient)},indent=2)+"\n")
     frozen = ROOT / "artifacts/toolchain"
     compiler = frozen / "build/mlc_win64.exe"
     if not compiler.exists():

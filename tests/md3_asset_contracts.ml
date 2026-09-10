@@ -71,5 +71,6 @@ function main(args)
   emptyTags=copy(data);w32(emptyTags,80,0);count=count+require(len(md3.load(emptyTags).tags[0])==0,"zero tags")
   emptyShaders=copy(data);w32(emptyShaders,276+76,0);count=count+require(len(md3.load(emptyShaders).surfaces[0].shaders)==0,"zero shaders")
   emptyTriangles=copy(data);w32(emptyTriangles,276+84,0);emptyModel=md3.load(emptyTriangles);count=count+require(len(emptyModel.surfaces[0].mesh.triangles)==0 and len(md3.renderTriangles(emptyModel,0,0,0,0.0,4))==0,"zero triangles")
+  tagOnly=bytes(276,0);for index=0 to 275 tagOnly[index]=data[index] end for;w32(tagOnly,84,0);w32(tagOnly,100,276);w32(tagOnly,104,276);tagModel=md3.load(tagOnly);count=count+require(tagModel.numSurfaces==0 and len(tagModel.surfaces)==0 and tagModel.tags[0][0].name=="tag_weapon","tag-only hand MD3")
   print("PASS: "+str(count)+" MD3 asset contracts");return 0
 end function

@@ -43,6 +43,8 @@ static playableTexture textures[PLAYABLE_TEXTURE_SLOTS];
 static int rasterBlendMode;
 static int rasterDepthEqual;
 static int rasterDepthWrite = 1;
+static __declspec(thread) int rasterClipMinimumY;
+static __declspec(thread) int rasterClipMaximumY = INT_MAX;
 
 /* Compact little-endian command consumed by the batch entry point. */
 #define PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES 116
@@ -518,6 +520,9 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
     if (minimumY < 0) minimumY = 0;
     if (maximumX >= surfaceWidth) maximumX = surfaceWidth - 1;
     if (maximumY >= surfaceHeight) maximumY = surfaceHeight - 1;
+    if (minimumY < rasterClipMinimumY) minimumY = rasterClipMinimumY;
+    if (maximumY > rasterClipMaximumY) maximumY = rasterClipMaximumY;
+    if (minimumX > maximumX || minimumY > maximumY) return;
     texture = textureAt(textureSlot);
     rowB0 = edgeValue(x1, y1, x2, y2, (double)minimumX + 0.5, (double)minimumY + 0.5) * inverseArea;
     rowB1 = edgeValue(x2, y2, x0, y0, (double)minimumX + 0.5, (double)minimumY + 0.5) * inverseArea;
@@ -693,6 +698,9 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
     if (minimumY < 0) minimumY = 0;
     if (maximumX >= surfaceWidth) maximumX = surfaceWidth - 1;
     if (maximumY >= surfaceHeight) maximumY = surfaceHeight - 1;
+    if (minimumY < rasterClipMinimumY) minimumY = rasterClipMinimumY;
+    if (maximumY > rasterClipMaximumY) maximumY = rasterClipMaximumY;
+    if (minimumX > maximumX || minimumY > maximumY) return;
     rowB0 = edgeValue(x1, y1, x2, y2, (double)minimumX + 0.5, (double)minimumY + 0.5) * inverseArea;
     rowB1 = edgeValue(x2, y2, x0, y0, (double)minimumX + 0.5, (double)minimumY + 0.5) * inverseArea;
     stepB0X = (y2 - y1) * inverseArea;
@@ -878,6 +886,50 @@ PLAYABLE_API int playable_window_draw_triangle_batch(const unsigned char *record
 /* Projects a static world-space batch and feeds the existing rasterizers.  The
  * command layout deliberately matches playable_window_draw_triangle_batch so
  * callers can build and retain one stream until visible-world selection changes. */
+typedef struct playableWorldBatchWork_s {
+    const unsigned char *records;
+    int byteCount;
+    int triangleCount;
+    double position[3];
+    double right[3];
+    double up[3];
+    double forward[3];
+    double halfWidth;
+    double halfHeight;
+    double focal;
+    double nearDistance;
+    int minimumY;
+    int maximumY;
+} playableWorldBatchWork;
+
+PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *records,
+        int byteCount, int triangleCount,
+        double positionX, double positionY, double positionZ,
+        double rightX, double rightY, double rightZ,
+        double upX, double upY, double upZ,
+        double forwardX, double forwardY, double forwardZ,
+        double halfWidth, double halfHeight, double focal, double nearDistance);
+
+static void drawWorldBatchBand(playableWorldBatchWork *work) {
+    rasterClipMinimumY = work->minimumY;
+    rasterClipMaximumY = work->maximumY;
+    playable_window_draw_world_triangle_batch(work->records, work->byteCount, work->triangleCount,
+        work->position[0], work->position[1], work->position[2],
+        work->right[0], work->right[1], work->right[2],
+        work->up[0], work->up[1], work->up[2],
+        work->forward[0], work->forward[1], work->forward[2],
+        work->halfWidth, work->halfHeight, work->focal, work->nearDistance);
+    rasterClipMinimumY = 0;
+    rasterClipMaximumY = INT_MAX;
+}
+
+static void CALLBACK drawWorldBatchBandCallback(PTP_CALLBACK_INSTANCE instance,
+        void *context, PTP_WORK callbackWork) {
+    (void)instance;
+    (void)callbackWork;
+    drawWorldBatchBand((playableWorldBatchWork *)context);
+}
+
 PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *records,
         int byteCount, int triangleCount,
         double positionX, double positionY, double positionZ,
@@ -898,6 +950,45 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *
     if (!records) return 0;
     required = (SIZE_T)triangleCount * (SIZE_T)PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
     if (required > (SIZE_T)INT_MAX || (SIZE_T)byteCount < required) return 0;
+    if (rasterClipMaximumY == INT_MAX && triangleCount >= 256 && surfaceHeight >= 128) {
+        SYSTEM_INFO systemInfo;
+        playableWorldBatchWork work[4];
+        PTP_WORK handles[4] = {0, 0, 0, 0};
+        int bandCount;
+        int band;
+        GetSystemInfo(&systemInfo);
+        bandCount = (int)systemInfo.dwNumberOfProcessors;
+        if (bandCount > 4) bandCount = 4;
+        if (bandCount > surfaceHeight) bandCount = surfaceHeight;
+        if (bandCount > 1) {
+            for (band = 0; band < bandCount; ++band) {
+                playableWorldBatchWork *item = &work[band];
+                item->records = records; item->byteCount = byteCount; item->triangleCount = triangleCount;
+                item->position[0] = positionX; item->position[1] = positionY; item->position[2] = positionZ;
+                item->right[0] = rightX; item->right[1] = rightY; item->right[2] = rightZ;
+                item->up[0] = upX; item->up[1] = upY; item->up[2] = upZ;
+                item->forward[0] = forwardX; item->forward[1] = forwardY; item->forward[2] = forwardZ;
+                item->halfWidth = halfWidth; item->halfHeight = halfHeight; item->focal = focal;
+                item->nearDistance = nearDistance;
+                item->minimumY = surfaceHeight * band / bandCount;
+                item->maximumY = surfaceHeight * (band + 1) / bandCount - 1;
+                if (band > 0) {
+                    handles[band] = CreateThreadpoolWork(drawWorldBatchBandCallback, item, 0);
+                    if (handles[band]) SubmitThreadpoolWork(handles[band]);
+                }
+            }
+            drawWorldBatchBand(&work[0]);
+            for (band = 1; band < bandCount; ++band) {
+                if (handles[band]) {
+                    WaitForThreadpoolWorkCallbacks(handles[band], FALSE);
+                    CloseThreadpoolWork(handles[band]);
+                } else {
+                    drawWorldBatchBand(&work[band]);
+                }
+            }
+            return triangleCount;
+        }
+    }
     for (index = 0; index < triangleCount; ++index) {
         playableTriangleBatchRecord command;
         double projected[3][3];

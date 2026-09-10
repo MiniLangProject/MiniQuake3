@@ -12,7 +12,7 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     subprocess.run([sys.executable, ROOT / "scripts/build.py", "--source", "tests/world_surface_selection_contracts.ml", "--output", "world_surface_selection_contracts.exe"], cwd=ROOT, check=True)
     contracts = run([ROOT / "build/world_surface_selection_contracts.exe"], ROOT / "build", log=out / "contracts.log").strip()
-    expected = "PASS: 26 world-surface-selection contracts"
+    expected = "PASS: 28 world-surface-selection contracts"
     if contracts != expected:
         raise RuntimeError(contracts)
 
@@ -33,9 +33,9 @@ def main():
     ]
     report = {
         "passed": True,
-        "contracts": 26,
+        "contracts": 28,
         "q3dm1": q3dm1,
-        "scope": "BSP leaf/PVS discovery, spherical frustum and distance rejection, planar backface culling, stable projected-importance ordering, configurable whole-surface triangle budget, and one-time tessellated geometry cache.",
+        "scope": "BSP leaf/PVS discovery, spherical frustum and distance rejection, planar backface culling, stable projected-importance ordering, configurable whole-surface triangle budget, retained face-set comparison, and one-time tessellated geometry cache.",
         "sources": {str(p.relative_to(ROOT)).replace("\\", "/"): sha(p) for p in files},
     }
     (out / "result.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8", newline="\n")

@@ -19,6 +19,9 @@ if not exist "build\playable_window.dll" (
 if not exist "build\playable_audio.dll" (
   python scripts\build.py || exit /b 5
 )
+if not exist "build\playable_ambient.dll" (
+  python scripts\build.py || exit /b 6
+)
 echo Starting the first MiniQuake3 playable preview...
 echo Enter starts, WASD moves, mouse looks, left mouse fires, Q/E or 1-9 changes weapons, Space jumps.
 echo Escape returns to the menu; Escape again quits.

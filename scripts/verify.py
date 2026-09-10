@@ -90,6 +90,8 @@ def main():
     scripts.append(("test_playable_projectile_models.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_playable_weapon_sounds.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_playable_ambient_sounds.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
+    scripts.append(("test_spatial_ambient.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
+    scripts.append(("test_playable_viewmodel.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_playable_match.py",[]))
     scripts.append(("test_playable_fps_title.py",[]))
     scripts.append(("test_baseq3_hud.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
@@ -98,6 +100,7 @@ def main():
     scripts.append(("playable_window_build_test.py",[]))
     scripts.append(("test_wav.py",[]))
     scripts.append(("playable_audio_build_test.py",[]))
+    scripts.append(("playable_ambient_build_test.py",[]))
     if args.data_root:
         scripts.append(("test_maps.py",[str(args.data_root)]))
         scripts.append(("test_runtime_trace.py",[str(args.data_root)]))

@@ -17,8 +17,9 @@ int main(void) {
         192, 192, 255, 255, 224, 160, 128, 255
     };
     playableTriangleBatchRecord command;
-    uint32_t expectedPixels[64 * 64];
-    float expectedDepth[64 * 64];
+    uint32_t expectedPixels[128 * 128];
+    float expectedDepth[128 * 128];
+    playableTriangleBatchRecord parallelCommands[256];
     const double halfWidth = 32.0;
     const double halfHeight = 32.0;
     const double focal = 32.0;
@@ -40,7 +41,7 @@ int main(void) {
         command.vertex[vertex][6] = command.vertex[vertex][4];
         command.vertex[vertex][7] = 0.35f + (float)vertex * 0.3f;
     }
-    if (!allocateSurface(64, 64) ||
+    if (!allocateSurface(128, 128) ||
             !playable_window_upload_texture(0, baseRgba, 2, 2) ||
             !playable_window_upload_texture(1, lightmapRgba, 2, 2)) return 1;
     playable_window_begin_frame(7, 10, 16);
@@ -68,6 +69,35 @@ int main(void) {
             halfWidth, halfHeight, focal, 1.0) != 1) return 2;
     if (memcmp(expectedPixels, pixels, sizeof(expectedPixels)) != 0 ||
             memcmp(expectedDepth, depthPixels, sizeof(expectedDepth)) != 0) return 3;
+
+    for (vertex = 0; vertex < 256; ++vertex) {
+        parallelCommands[vertex] = command;
+        parallelCommands[vertex].vertex[0][1] += (float)((vertex % 8) - 4) * 0.2f;
+        parallelCommands[vertex].vertex[1][1] += (float)((vertex % 8) - 4) * 0.2f;
+        parallelCommands[vertex].vertex[2][2] += (float)((vertex % 5) - 2) * 0.2f;
+    }
+    playable_window_begin_frame(7, 10, 16);
+    rasterClipMaximumY = 127;
+    if (playable_window_draw_world_triangle_batch((const unsigned char *)parallelCommands,
+            (int)sizeof(parallelCommands), 256,
+            0.0, 0.0, 0.0,
+            0.0, 1.0, 0.0,
+            0.0, 0.0, 1.0,
+            1.0, 0.0, 0.0,
+            halfWidth, halfHeight, focal, 1.0) != 256) return 4;
+    rasterClipMaximumY = INT_MAX;
+    memcpy(expectedPixels, pixels, sizeof(expectedPixels));
+    memcpy(expectedDepth, depthPixels, sizeof(expectedDepth));
+    playable_window_begin_frame(7, 10, 16);
+    if (playable_window_draw_world_triangle_batch((const unsigned char *)parallelCommands,
+            (int)sizeof(parallelCommands), 256,
+            0.0, 0.0, 0.0,
+            0.0, 1.0, 0.0,
+            0.0, 0.0, 1.0,
+            1.0, 0.0, 0.0,
+            halfWidth, halfHeight, focal, 1.0) != 256) return 5;
+    if (memcmp(expectedPixels, pixels, sizeof(expectedPixels)) != 0 ||
+            memcmp(expectedDepth, depthPixels, sizeof(expectedDepth)) != 0) return 6;
     playable_window_shutdown();
     puts("playable world batch native parity: PASS");
     return 0;
