@@ -29,7 +29,7 @@ const ALPHA_TEST_GE128=3
 
 struct Image width height pixels end struct
 struct UvMod kind a b c d wave end struct
-struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest tcGen rgbGen rgbWave bspLightmap end struct
+struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest tcGen rgbGen rgbWave bspLightmap clampTexture end struct
 struct Material textureIndex shaderName imageName image slot stages end struct
 struct Catalog materials scripts attempted loaded textureCount animatedStageCount effectStageCount end struct
 
@@ -136,6 +136,7 @@ function stageBlend(stage)
   return BLEND_OPAQUE
 end function
 function stageTcGen(stage) if stage.tcGen=="bad" then return "texture" end if;return stage.tcGen end function
+function stageClamp(stage) return stage.mapMode=="clamp" end function
 
 function stageAlphaTest(stage)
   if stage.alphaFunc==shaderParser.GLS_ATEST_GT_0 then return ALPHA_TEST_GT0 end if
@@ -170,17 +171,17 @@ function loadRuntimeStage(archive,stage,nextSlot,endSlot)
     if loaded!=void then names=names+[loaded[0]];images=images+[loaded[1]];slots=slots+[nextSlot];nextSlot=nextSlot+1 end if
   end for
   if len(images)==0 then return void end if
-  return [RuntimeStage(names,images,slots,stage.animationSpeed,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),stageTcGen(stage),stage.rgbGen,stage.rgbWave,false),nextSlot]
+  return [RuntimeStage(names,images,slots,stage.animationSpeed,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),stageTcGen(stage),stage.rgbGen,stage.rgbWave,false,stageClamp(stage)),nextSlot]
 end function
 
 function lightmapRuntimeStage(stage)
-  return RuntimeStage([],[],[],0.0,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),"lightmap",stage.rgbGen,stage.rgbWave,true)
+  return RuntimeStage([],[],[],0.0,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),"lightmap",stage.rgbGen,stage.rgbWave,true,false)
 end function
 
 function directRuntimeStage(archive,name,nextSlot,endSlot)
   if nextSlot>=endSlot then return void end if
   loaded=loadImage(archive,name);if loaded==void then return void end if
-  return [RuntimeStage([loaded[0]],[loaded[1]],[nextSlot],0.0,[],BLEND_OPAQUE,ALPHA_TEST_NONE,"texture","identitylighting",shaderParser.blankWave(),false),nextSlot+1]
+  return [RuntimeStage([loaded[0]],[loaded[1]],[nextSlot],0.0,[],BLEND_OPAQUE,ALPHA_TEST_NONE,"texture","identitylighting",shaderParser.blankWave(),false,false),nextSlot+1]
 end function
 
 function runtimeStages(archive,index,name,nextSlot,endSlot)

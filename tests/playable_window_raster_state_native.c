@@ -16,11 +16,20 @@ static void drawUiTriangle(int textureSlot) {
         255, 255, 255);
 }
 
+static void drawUiTriangleUv(int textureSlot, double u) {
+    playable_window_draw_triangle(textureSlot,
+        1.0, 1.0, 2.0, u, 0.0, 1.0,
+        7.0, 1.0, 2.0, u, 0.0, 1.0,
+        1.0, 7.0, 2.0, u, 0.0, 1.0,
+        255, 255, 255);
+}
+
 int main(void) {
     static const unsigned char halfRed[4] = { 255, 0, 0, 128 };
     static const unsigned char halfBlue[4] = { 0, 0, 255, 128 };
     static const unsigned char lowGreen[4] = { 0, 255, 0, 127 };
     static const unsigned char filterGray[4] = { 128, 64, 255, 255 };
+    static const unsigned char edgeColors[8] = { 255, 0, 0, 255, 0, 255, 0, 255 };
     const SIZE_T sample = 2u * 8u + 2u;
     float clearedDepth;
 
@@ -28,7 +37,8 @@ int main(void) {
             !playable_window_upload_texture(0, halfRed, 1, 1) ||
             !playable_window_upload_texture(1, halfBlue, 1, 1) ||
             !playable_window_upload_texture(2, lowGreen, 1, 1) ||
-            !playable_window_upload_texture(3, filterGray, 1, 1)) return 1;
+            !playable_window_upload_texture(3, filterGray, 1, 1) ||
+            !playable_window_upload_texture(4, edgeColors, 2, 1)) return 1;
 
     playable_window_begin_frame(0, 0, 0);
     clearedDepth = depthPixels[sample];
@@ -112,6 +122,15 @@ int main(void) {
     drawUiTriangle(3);
     if (pixels[sample] != UINT32_C(0xc0ff0000) || depthPixels[sample] != 0.5f) return 25;
     if (playable_window_set_raster_state(5, 0, 0)) return 26;
+
+    playable_window_begin_frame(0, 0, 0);
+    drawUiTriangleUv(4, 1.25);
+    if (pixels[sample] != UINT32_C(0xffff0000)) return 27;
+    playable_window_begin_frame(0, 0, 0);
+    if (!playable_window_set_texture_clamp(1)) return 28;
+    drawUiTriangleUv(4, 1.25);
+    if (pixels[sample] != UINT32_C(0xff00ff00)) return 29;
+    if (playable_window_set_texture_clamp(2)) return 30;
 
     playable_window_shutdown();
     puts("playable window raster-state regression: PASS");

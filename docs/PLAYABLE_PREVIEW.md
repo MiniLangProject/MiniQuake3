@@ -28,6 +28,7 @@ screen clipping, perspective-correct UV and light interpolation, alpha, vertex
 colour and up to 64 uploaded 128x128 BSP lightmaps and 256 world-material texture slots within a 512-slot native registry. A bounded material resolver
 reads all `scripts/*.shader` files, follows `map`, `clampMap` and up to eight
 `animMap` frames, resolves Quake's TGA/JPEG extension fallback, decodes both image formats,
+uses edge-clamped native sampling for `clampMap` while ordinary maps repeat,
 applies scroll/scale/rotate/turb/stretch `tcMod` in shader order, evaluates camera-dependent
 `tcGen environment` reflection coordinates, enforces `alphaFunc GT0`, `LT128` and `GE128`, and executes opaque,
 alpha, additive and multiplicative `filter` stages. Scripted `$lightmap` stages retain their
@@ -158,8 +159,8 @@ Validation:
   near-plane-polygon contracts.
 - `python scripts/test_bsp_preview.py`: 34 BSP geometry contracts.
 - `python scripts/test_bsp_render_data.py`: 56 triangle/lightmap/patch contracts.
-- `python scripts/test_playable_materials.py`: 44 BSP/shader/image/generator contracts.
-- `python scripts/test_playable_world_batch.py`: 33 retained-command, material-stage,
+- `python scripts/test_playable_materials.py`: 45 BSP/shader/image/generator contracts.
+- `python scripts/test_playable_world_batch.py`: 34 retained-command, material-stage,
   sky-filtering and one-call submission contracts; the native lifecycle also
   compares framebuffer pixels and depth bit-for-bit with the scalar path.
 - `python scripts/test_playable_movement.py`: 27 gravity/jump/slide/idle contracts.

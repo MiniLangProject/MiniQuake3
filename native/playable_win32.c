@@ -44,6 +44,7 @@ static int rasterBlendMode;
 static int rasterDepthEqual;
 static int rasterDepthWrite = 1;
 static int rasterAlphaTest;
+static int rasterClampTexture;
 static double rasterDepthRangeScale = 1.0;
 static double rasterDepthRangeNear = 1.0;
 static __declspec(thread) int rasterClipMinimumY;
@@ -303,6 +304,7 @@ PLAYABLE_API void playable_window_begin_frame(int red, int green, int blue) {
     rasterDepthEqual = 0;
     rasterDepthWrite = 1;
     rasterAlphaTest = 0;
+    rasterClampTexture = 0;
     rasterDepthRangeScale = 1.0;
     rasterDepthRangeNear = 1.0;
 }
@@ -489,6 +491,12 @@ PLAYABLE_API int playable_window_set_alpha_test(int mode) {
     return 1;
 }
 
+PLAYABLE_API int playable_window_set_texture_clamp(int enabled) {
+    if (enabled != 0 && enabled != 1) return 0;
+    rasterClampTexture = enabled;
+    return 1;
+}
+
 static int alphaTestPasses(uint32_t color) {
     uint32_t alpha = color >> 24;
     if (rasterAlphaTest == 1) return alpha > 0u;
@@ -511,10 +519,18 @@ static playableTexture *textureAt(int slot) {
 }
 
 static uint32_t sampleTexture(const playableTexture *texture, double u, double v) {
-    double wrappedU = u - floor(u);
-    double wrappedV = v - floor(v);
-    int textureX = (int)(wrappedU * (double)texture->width);
-    int textureY = (int)(wrappedV * (double)texture->height);
+    double sampledU = u;
+    double sampledV = v;
+    int textureX;
+    int textureY;
+    if (rasterClampTexture) {
+        if (sampledU < 0.0) sampledU = 0.0;if (sampledU > 1.0) sampledU = 1.0;
+        if (sampledV < 0.0) sampledV = 0.0;if (sampledV > 1.0) sampledV = 1.0;
+    } else {
+        sampledU -= floor(sampledU);sampledV -= floor(sampledV);
+    }
+    textureX = (int)(sampledU * (double)texture->width);textureY = (int)(sampledV * (double)texture->height);
+    if (textureX >= texture->width) textureX = texture->width-1;if (textureY >= texture->height) textureY = texture->height-1;
     return texture->pixels[(SIZE_T)textureY * (SIZE_T)texture->width + (SIZE_T)textureX];
 }
 
