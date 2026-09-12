@@ -64,6 +64,7 @@ def main():
     scripts.append(("test_playable_weapon_inventory.py",[]))
     scripts.append(("test_playable_weapon.py",[]))
     scripts.append(("test_playable_muzzle_flash.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
+    scripts.append(("test_playable_weapon_barrel.py",[]))
     scripts.append(("test_playable_shotgun.py",[]))
     scripts.append(("test_playable_effects.py",[]))
     scripts.append(("test_playable_targets.py",[]))

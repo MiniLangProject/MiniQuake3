@@ -25,6 +25,7 @@ import mq3.client.playable_projectile_models as projectileModels
 import mq3.client.playable_projectile_fx as projectileFx
 import mq3.client.playable_sky as playableSky
 import mq3.client.playable_muzzle_flash as muzzleFlash
+import mq3.client.playable_weapon_barrel as weaponBarrel
 import mq3.client.playable_match as playableMatch
 import mq3.client.playable_weapon_sounds as weaponSounds
 import mq3.client.playable_ambient_sounds as ambientSounds
@@ -222,6 +223,12 @@ function itemClassnames(items)
   // The machinegun also supplies the first-person view model, even on maps
   // which do not place a machinegun pickup.
   result=["weapon_gauntlet","weapon_machinegun"]
+  // Attachment models are required by the first-person path and must remain
+  // ahead of optional map assets when a catalog budget is reached.
+  for each name in weaponBarrel.classnames()
+    found=false;for each existing in result if stringEqualsIgnoreCaseAscii(existing,name) then found=true end if end for
+    if not found then result=result+[name] end if
+  end for
   for each value in items
     found=false;for each name in result if stringEqualsIgnoreCaseAscii(name,value.classname) then found=true end if end for
     if not found then result=result+[value.classname] end if
@@ -407,7 +414,7 @@ function drawTintedItemTriangles(projection,triangles,red,green,blue)
   return drawn
 end function
 
-function renderViewModel(projection,catalog,weaponState,combatState,now,transform,weaponClass,showFlash)
+function renderViewModel(projection,catalog,weaponState,combatState,now,transform,weaponClass,barrelAngle,showFlash)
   if catalog==void then return 0 end if
   asset=itemModels.find(catalog,weaponClass)
   if asset==void then asset=itemModels.find(catalog,"weapon_machinegun") end if
@@ -417,6 +424,8 @@ function renderViewModel(projection,catalog,weaponState,combatState,now,transfor
   viewState=multitexture.setState(multitexture.BLEND_OPAQUE,false,true);if viewState is error then return viewState end if
   if not window.setDepthRange(0.3,projection.nearDistance) then return error(7490,"could not enable viewmodel depth range") end if
   drawn=drawClippedItemTriangles(projection,triangles);if drawn is error then return drawn end if
+  barrelTriangles=weaponBarrel.render(catalog,weaponClass,transform,barrelAngle,MAX_VIEWMODEL_TRIANGLES);if barrelTriangles is error then return barrelTriangles end if
+  barrelDrawn=drawClippedItemTriangles(projection,barrelTriangles);if barrelDrawn is error then return barrelDrawn end if
   flashDrawn=0
   if showFlash then
     flash=muzzleFlash.render(catalog,weaponClass,transform,combatState.lastFire,now,weaponState.triggerHeld,MAX_VIEWMODEL_TRIANGLES);if flash is error then return flash end if
@@ -425,7 +434,7 @@ function renderViewModel(projection,catalog,weaponState,combatState,now,transfor
   end if
   if not window.setDepthRange(1.0,projection.nearDistance) then return error(7490,"could not restore world depth range") end if
   restoreState=multitexture.setState(multitexture.BLEND_OPAQUE,false,true);if restoreState is error then return restoreState end if
-  return drawn+flashDrawn
+  return drawn+barrelDrawn+flashDrawn
 end function
 
 function appendSkinTextures(textures,skin,part)
@@ -562,7 +571,7 @@ function reservePlayerSpawn(targetState,playerState,spawnIndex)
   return void
 end function
 
-function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelSwitching,now,menuOpen)
+function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,now,menuOpen)
   window.beginFrame(7,10,16)
   if menuOpen then
     menuDraw=menu.drawRetailState(menuCatalog,menuState,WIDTH,HEIGHT,now);if menuDraw is error then return menuDraw end if
@@ -595,7 +604,7 @@ function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemC
     end if
     projectileCommands=projectileView.frameCommands(camera,fallbackProjectiles,now,WIDTH,HEIGHT,HORIZONTAL_FOV,1.0)
     projectileView.draw(projectileCommands)
-    viewDraw=renderViewModel(projection,itemCatalog,weaponState,combatState,now,viewmodelTransform,viewmodelClassname,not viewmodelSwitching);if viewDraw is error then return viewDraw end if
+    viewDraw=renderViewModel(projection,itemCatalog,weaponState,combatState,now,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,not viewmodelSwitching);if viewDraw is error then return viewDraw end if
     uiState=multitexture.setState(multitexture.BLEND_ALPHA,false,false);if uiState is error then return uiState end if
     if baseHudCatalog!=void then
       drawnHud=baseHud.draw(baseHudCatalog,baseHudState,WIDTH,HEIGHT,now);if drawnHud is error then return drawnHud end if
@@ -618,7 +627,7 @@ function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemC
   return void
 end function
 
-function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,worldCache,worldConfig,selectedFaceIndexes,materialSlots,skyTextureFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound)
+function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,worldCache,worldConfig,selectedFaceIndexes,materialSlots,skyTextureFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound)
   previous=window.milliseconds();frames=0;menuOpen=maxFrames<0;lastEnter=false;lastEscape=false;lastPreviousWeapon=false;lastNextWeapon=false;lastDigitWeapon=0;shotEffects=[];projectileEffects=[];pickupTriangles=[];updateMilliseconds=0;renderMilliseconds=0;matchView=void;lastMatchMessage="";matchCenter=void
   if maxFrames>=0 then started=playableMatch.start(matchState,previous);if started is error then return started end if;hudSelection=syncHudWeaponSelection(baseHudState,inventoryState,previous);if hudSelection is error then return hudSelection end if end if
   while not window.shouldClose() and (maxFrames<0 or frames<maxFrames)
@@ -797,12 +806,13 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,wor
         end if
       end if
     end if
-    viewmodelTransform=void;viewmodelClassname=weaponState.classname;viewmodelSwitching=false
+    viewmodelTransform=void;viewmodelClassname=weaponState.classname;viewmodelBarrelAngle=0.0;viewmodelSwitching=false
     if not menuOpen then
       bob=viewmodel.advance(viewmodelTracker,controller.motion.velocity,playableMovement.isGrounded(controller),current);if bob is error then return bob end if
       recoil=combatView.pulse(combatState,current).recoil
       weaponFrame=viewmodel.sampleWeaponAnimation(viewmodelAnimation,weaponState.classname,current,combatState.lastFire);if weaponFrame is error then return weaponFrame end if
       viewmodelClassname=weaponFrame.classname;viewmodelSwitching=weaponFrame.switching;attachment=viewmodel.findAttachment(viewmodelCatalog,viewmodelClassname)
+      viewmodelBarrelAngle=weaponBarrel.advance(barrelState,current,weaponState.triggerHeld and not viewmodelSwitching);if viewmodelBarrelAngle is error then return viewmodelBarrelAngle end if
       if attachment!=void then viewmodelTransform=viewmodel.frameWeaponTransform(camera,bob,current,-1000,0.0,recoil,viewmodelSettings,attachment,weaponFrame.oldFrame,weaponFrame.frame,weaponFrame.backlerp);if viewmodelTransform is error then return viewmodelTransform end if end if
       if spatialRuntime!=void then
         listenerAxes=viewer.cameraBasis(camera)
@@ -815,7 +825,7 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,wor
     visibleTargets=renderTargets
     if not menuOpen then visibleTargets=visibleTargetViews(enemyState,renderTargets,current) end if
     renderStarted=window.milliseconds();updateMilliseconds=updateMilliseconds+(renderStarted-current)
-    rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelSwitching,current,menuOpen);if rendered is error then return rendered end if;renderMilliseconds=renderMilliseconds+(window.milliseconds()-renderStarted);frames=frames+1
+    rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,current,menuOpen);if rendered is error then return rendered end if;renderMilliseconds=renderMilliseconds+(window.milliseconds()-renderStarted);frames=frames+1
     caption=fpsTitle.frame(fpsState,window.milliseconds());if caption is error then return caption end if
     if caption!=void and not window.setTitle(caption) then return error(7489,"could not update preview window title") end if
     lastEnter=enterDown;lastEscape=escapeDown;lastPreviousWeapon=window.keyDown(window.VK_Q);lastNextWeapon=window.keyDown(window.VK_E);lastDigitWeapon=digitWeaponDown()
@@ -1007,6 +1017,9 @@ function runLimited(map,maxFrames,sound,archive)
   itemModelCount=0;itemTextureCount=0
   if itemCatalog!=void then itemModelCount=len(itemCatalog.assets);itemTextureCount=len(itemCatalog.textures) end if
   print "MD3 item models: "+str(itemModelCount)+" item textures: "+str(itemTextureCount)
+  barrelModelCount=0
+  if itemCatalog!=void then for each name in weaponBarrel.classnames() if itemModels.find(itemCatalog,name)!=void then barrelModelCount=barrelModelCount+1 end if end for end if
+  print "Retail weapon barrels: "+str(barrelModelCount)
   hudTextureCount=0;if baseHudCatalog!=void then hudTextureCount=baseHudCatalog.textureCount end if
   print "Baseq3 HUD textures: "+str(hudTextureCount)
   menuTextureCount=0;if menuCatalog!=void then menuTextureCount=menuCatalog.textureCount end if
@@ -1023,8 +1036,8 @@ function runLimited(map,maxFrames,sound,archive)
   materialCount=0;if catalog!=void then materialCount=len(catalog.materials) end if
   print "Render triangles: "+str(len(triangles.triangles))+" base textures: "+str(materialCount)+" lightmaps: "+str(lightmapCount)
   print "World cache: "+str(worldCache.totalTriangleCount)+" triangles; visible surfaces: "+str(preparedWorld.selection.selectedSurfaceCount)
-  viewmodelTracker=viewmodel.tracker();viewmodelSettings=viewmodel.softwareRendererSettings();viewmodelAnimation=viewmodel.weaponAnimation(weaponState.classname)
-  result=try(frameLoop(camera,geometry,triangles,worldBatchState,catalog,worldCache,worldConfig,preparedWorld.selection.faceIndexes,materialSlots,skyTextureFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound))
+  viewmodelTracker=viewmodel.tracker();viewmodelSettings=viewmodel.softwareRendererSettings();viewmodelAnimation=viewmodel.weaponAnimation(weaponState.classname);barrelState=weaponBarrel.state()
+  result=try(frameLoop(camera,geometry,triangles,worldBatchState,catalog,worldCache,worldConfig,preparedWorld.selection.faceIndexes,materialSlots,skyTextureFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound))
   for index=0 to lightmapCount-1 window.releaseTexture(index) end for
   if catalog!=void then playableWorldBatch.releaseMaterials(catalog) end if
   if modelAssets!=void then for each texture in modelAssets.textures window.releaseTexture(texture.slot) end for end if

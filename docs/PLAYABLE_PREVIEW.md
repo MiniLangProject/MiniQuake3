@@ -101,6 +101,9 @@ Attack frames
 1-6 run at the original 15 fps with interpolated tags. Weapon changes retain
 the old model through the mapped drop frames, then hold the new hand at frame
 zero during Baseq3's 250 ms raise interval;
+Gauntlet, Machinegun and BFG load their retail `_barrel.md3`, attach it through
+the weapon's `tag_barrel`, and follow `CG_MachinegunSpinAngle` at full speed
+and through its one-second coast with 16-bit angle wrapping;
 the weapon state uses stock Baseq3 fire intervals and direct-hit damage with
 recoil, hit marker and damage direction. The window caption samples and
 smooths the live frame rate every 500 ms.
@@ -165,6 +168,8 @@ Validation:
   cooldown contracts.
 - `python scripts/test_playable_muzzle_flash.py --pak D:/Quake3/baseq3/pak0.pk3`:
   27 contracts plus nine retail flash models, 29 shared textures and 240 triangles.
+- `python scripts/test_playable_weapon_barrel.py`: 13 retail barrel mapping,
+  spin/coast transition, angle wrapping and rotated-tag contracts.
 - `python scripts/test_playable_shotgun.py`: 20 original-source-anchored spread,
   pellet trace, BSP shielding, damage and score contracts.
 - `python scripts/test_playable_effects.py`: 31 item/tracer/impact contracts.

@@ -80,8 +80,8 @@ and `head.md3` through `tag_torso` and `tag_head`. Armor absorption, player deat
 spawn cycling and protection, score/KD, a textured retail first-person
 weapon model selected from the current pickup and attached through its original
 tag-only `_hand.md3`, including interpolated attack and weapon-change frames,
-near-plane-clipped textured geometry, Baseq3's 0..0.3 viewmodel depth range
-and real rotating/bobbing pickup MD3s,
+near-plane-clipped textured geometry, Baseq3's 0..0.3 viewmodel depth range,
+tagged spinning/coasting retail barrels and real rotating/bobbing pickup MD3s,
 stock weapon fire timing and damage, recoil, hit/kill feedback and 21 decoded
 retail weapon sounds make those actions visible and audible. Enemy models now switch between idle, walk, run,
 attack, pain, death and respawn animation inputs. Near players use the complete

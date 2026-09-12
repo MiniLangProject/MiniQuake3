@@ -47,6 +47,9 @@ function definition(classname)
   if name=="flash_railgun" then return item(name,"flash","models/weapons2/railgun/railgun_flash.md3",1.0,0.0) end if
   if name=="flash_plasmagun" then return item(name,"flash","models/weapons2/plasma/plasma_flash.md3",1.0,0.0) end if
   if name=="flash_bfg" then return item(name,"flash","models/weapons2/bfg/bfg_flash.md3",1.0,0.0) end if
+  if name=="barrel_gauntlet" then return item(name,"barrel","models/weapons2/gauntlet/gauntlet_barrel.md3",1.0,0.0) end if
+  if name=="barrel_machinegun" then return item(name,"barrel","models/weapons2/machinegun/machinegun_barrel.md3",1.0,0.0) end if
+  if name=="barrel_bfg" then return item(name,"barrel","models/weapons2/bfg/bfg_barrel.md3",1.0,0.0) end if
   if name=="weapon_gauntlet" then return item(name,"weapon","models/weapons2/gauntlet/gauntlet.md3",1.0,0.0) end if
   if name=="weapon_machinegun" then return item(name,"weapon","models/weapons2/machinegun/machinegun.md3",1.0,0.0) end if
   if name=="weapon_shotgun" then return item(name,"weapon","models/weapons2/shotgun/shotgun.md3",1.0,0.0) end if
