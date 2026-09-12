@@ -20,6 +20,7 @@ const MAX_ANIMATION_FRAMES=8
 const BLEND_OPAQUE=0
 const BLEND_ALPHA=1
 const BLEND_ADD=2
+const BLEND_FILTER=3
 const ALPHA_TEST_NONE=0
 const ALPHA_TEST_GT0=1
 const ALPHA_TEST_LT128=2
@@ -128,8 +129,16 @@ end function
 function stageBlend(stage)
   if stage.blendSrc==shaderParser.GLS_SRCBLEND_ONE and stage.blendDst==shaderParser.GLS_DSTBLEND_ONE then return BLEND_ADD end if
   if stage.blendSrc==shaderParser.GLS_SRCBLEND_SRC_ALPHA and stage.blendDst==shaderParser.GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA then return BLEND_ALPHA end if
+  if stage.blendSrc==shaderParser.GLS_SRCBLEND_DST_COLOR and stage.blendDst==shaderParser.GLS_DSTBLEND_ZERO then return BLEND_FILTER end if
+  if stage.blendSrc==shaderParser.GLS_SRCBLEND_ZERO and stage.blendDst==shaderParser.GLS_DSTBLEND_SRC_COLOR then return BLEND_FILTER end if
   return BLEND_OPAQUE
 end function
+function stageBlendForRuntime(stage,sawLightmap,first)
+  blend=stageBlend(stage)
+  if first and sawLightmap and blend==BLEND_FILTER then return BLEND_OPAQUE end if
+  return blend
+end function
+function stageTcGen(stage) if stage.tcGen=="bad" then return "texture" end if;return stage.tcGen end function
 
 function stageAlphaTest(stage)
   if stage.alphaFunc==shaderParser.GLS_ATEST_GT_0 then return ALPHA_TEST_GT0 end if
@@ -164,8 +173,7 @@ function loadRuntimeStage(archive,stage,nextSlot,endSlot)
     if loaded!=void then names=names+[loaded[0]];images=images+[loaded[1]];slots=slots+[nextSlot];nextSlot=nextSlot+1 end if
   end for
   if len(images)==0 then return void end if
-  tcGen=stage.tcGen;if tcGen=="bad" then tcGen="texture" end if
-  return [RuntimeStage(names,images,slots,stage.animationSpeed,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),tcGen,stage.rgbGen,stage.rgbWave),nextSlot]
+  return [RuntimeStage(names,images,slots,stage.animationSpeed,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),stageTcGen(stage),stage.rgbGen,stage.rgbWave),nextSlot]
 end function
 
 function directRuntimeStage(archive,name,nextSlot,endSlot)
@@ -175,12 +183,18 @@ function directRuntimeStage(archive,name,nextSlot,endSlot)
 end function
 
 function runtimeStages(archive,index,name,nextSlot,endSlot)
-  result=[];parsed=try(shaderParser.parseIndexed(index,name))
+  result=[];parsed=try(shaderParser.parseIndexed(index,name));sawLightmap=false
   if not (parsed is error) and parsed!=void then
     for each parsedStage in parsed.stages
+      if parsedStage.isLightmap then sawLightmap=true end if
       if usableStage(parsedStage) and len(result)<MAX_RUNTIME_STAGES then
         loaded=loadRuntimeStage(archive,parsedStage,nextSlot,endSlot)
-        if loaded!=void then result=result+[loaded[0]];nextSlot=loaded[1] end if
+        if loaded!=void then
+          // The software world path already combines the BSP lightmap with
+          // the first texture. Avoid applying its GL_DST_COLOR/GL_ZERO again.
+          loaded[0].blend=stageBlendForRuntime(parsedStage,sawLightmap,len(result)==0)
+          result=result+[loaded[0]];nextSlot=loaded[1]
+        end if
       end if
     end for
   end if

@@ -447,8 +447,15 @@ static uint32_t addColor(uint32_t source, uint32_t destination) {
     return (red << 16) | (green << 8) | blue;
 }
 
+static uint32_t filterColor(uint32_t source, uint32_t destination) {
+    uint32_t red = (((source >> 16) & 255u) * ((destination >> 16) & 255u) + 127u) / 255u;
+    uint32_t green = (((source >> 8) & 255u) * ((destination >> 8) & 255u) + 127u) / 255u;
+    uint32_t blue = ((source & 255u) * (destination & 255u) + 127u) / 255u;
+    return (red << 16) | (green << 8) | blue;
+}
+
 PLAYABLE_API int playable_window_set_raster_state(int blendMode, int depthEqual, int depthWrite) {
-    if (blendMode < 0 || blendMode > 2 || (depthEqual != 0 && depthEqual != 1) ||
+    if (blendMode < 0 || blendMode > 3 || (depthEqual != 0 && depthEqual != 1) ||
             (depthWrite != 0 && depthWrite != 1)) return 0;
     rasterBlendMode = blendMode;
     rasterDepthEqual = depthEqual;
@@ -665,7 +672,8 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
             }
             if (!unitLight) color = modulateColor(color, light);
             if (!alphaTestPasses(color) || (color >> 24) == 0u) continue;
-            if (rasterBlendMode == 2) pixels[offset] = addColor(color, pixels[offset]);
+            if (rasterBlendMode == 3) pixels[offset] = filterColor(color, pixels[offset]);
+            else if (rasterBlendMode == 2) pixels[offset] = addColor(color, pixels[offset]);
             else if (rasterBlendMode == 1) pixels[offset] = blendColor(color, pixels[offset]);
             else pixels[offset] = color & 0x00ffffffu;
             if (rasterDepthWrite) depthPixels[offset] = (float)comparisonDepth;
@@ -881,7 +889,8 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
                 double difference = comparisonDepth - (double)depthPixels[offset];
                 if (difference < -0.00001 || difference > 0.00001) continue;
             }
-            if (rasterBlendMode == 2) pixels[offset] = addColor(color, pixels[offset]);
+            if (rasterBlendMode == 3) pixels[offset] = filterColor(color, pixels[offset]);
+            else if (rasterBlendMode == 2) pixels[offset] = addColor(color, pixels[offset]);
             else if (rasterBlendMode == 1) pixels[offset] = blendColor(color, pixels[offset]);
             else pixels[offset] = color & 0x00ffffffu;
             if (rasterDepthWrite) depthPixels[offset] = (float)comparisonDepth;

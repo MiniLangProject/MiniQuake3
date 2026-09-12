@@ -30,7 +30,7 @@ reads all `scripts/*.shader` files, follows `map`, `clampMap` and up to eight
 `animMap` frames, resolves Quake's TGA/JPEG extension fallback, decodes both image formats,
 applies scroll/scale/rotate/turb/stretch `tcMod` in shader order, evaluates camera-dependent
 `tcGen environment` reflection coordinates, enforces `alphaFunc GT0`, `LT128` and `GE128`, and executes opaque,
-alpha and additive stages over the BSP lightmap. Quadratic Bezier patch grids are adaptively tessellated with their
+alpha, additive and multiplicative `filter` stages over the BSP lightmap. Quadratic Bezier patch grids are adaptively tessellated with their
 base UVs, lightmap UVs and vertex colours. Movement uses 800-unit gravity,
 Quake friction and ground/air acceleration, collision sliding, an 18-unit step
 and Space jumping against the ported brush and patch collision world.

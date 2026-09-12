@@ -9,6 +9,7 @@ extern function setAlphaTestNative(mode as i32) from "playable_window.dll" symbo
 const BLEND_OPAQUE=0
 const BLEND_ALPHA=1
 const BLEND_ADD=2
+const BLEND_FILTER=3
 const ALPHA_TEST_NONE=0
 const ALPHA_TEST_GT0=1
 const ALPHA_TEST_LT128=2

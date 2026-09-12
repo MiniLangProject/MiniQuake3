@@ -20,13 +20,15 @@ int main(void) {
     static const unsigned char halfRed[4] = { 255, 0, 0, 128 };
     static const unsigned char halfBlue[4] = { 0, 0, 255, 128 };
     static const unsigned char lowGreen[4] = { 0, 255, 0, 127 };
+    static const unsigned char filterGray[4] = { 128, 64, 255, 255 };
     const SIZE_T sample = 2u * 8u + 2u;
     float clearedDepth;
 
     if (!allocateSurface(8, 8) ||
             !playable_window_upload_texture(0, halfRed, 1, 1) ||
             !playable_window_upload_texture(1, halfBlue, 1, 1) ||
-            !playable_window_upload_texture(2, lowGreen, 1, 1)) return 1;
+            !playable_window_upload_texture(2, lowGreen, 1, 1) ||
+            !playable_window_upload_texture(3, filterGray, 1, 1)) return 1;
 
     playable_window_begin_frame(0, 0, 0);
     clearedDepth = depthPixels[sample];
@@ -93,6 +95,15 @@ int main(void) {
     drawUiTriangle(1);
     drawUiTriangle(2);
     if (pixels[sample] != UINT32_C(0x0000ff00) || depthPixels[sample] != 0.5f) return 19;
+
+    /* GL_DST_COLOR/GL_ZERO multiplies the new stage with the framebuffer. */
+    playable_window_begin_frame(0, 0, 0);
+    if (!playable_window_set_alpha_test(0) || !playable_window_set_raster_state(0, 0, 1)) return 20;
+    drawUiTriangle(0);
+    if (!playable_window_set_raster_state(3, 1, 0)) return 21;
+    drawUiTriangle(3);
+    if (pixels[sample] != UINT32_C(0x00800000) || depthPixels[sample] != 0.5f) return 22;
+    if (playable_window_set_raster_state(4, 0, 0)) return 23;
 
     playable_window_shutdown();
     puts("playable window raster-state regression: PASS");
