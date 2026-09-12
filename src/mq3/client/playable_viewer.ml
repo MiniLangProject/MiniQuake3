@@ -124,15 +124,54 @@ function prepareProjection(state,width,height,horizontalFovDegrees,nearDistance)
   return Projection(state.position,axes[1],axes[2],axes[0],width*0.5,height*0.5,focal,nearDistance)
 end function
 
-function projectPrepared(projection,world)
+function preparedViewPoint(projection,world)
   if projection==void or world==void or len(world)!=3 then return error(7481,"prepared projection needs a point") end if
   dx=world[0]-projection.position[0];dy=world[1]-projection.position[1];dz=world[2]-projection.position[2]
   side=dx*projection.right[0]+dy*projection.right[1]+dz*projection.right[2]
   up=dx*projection.up[0]+dy*projection.up[1]+dz*projection.up[2]
   depth=dx*projection.forward[0]+dy*projection.forward[1]+dz*projection.forward[2]
+  return [side,up,depth]
+end function
+
+function projectPreparedView(projection,point)
+  if projection==void or point==void or len(point)!=3 then return error(7482,"prepared view projection needs a point") end if
+  depth=point[2]
   if depth<projection.nearDistance then return void end if
   scale=projection.focal/depth
-  return ScreenPoint(projection.halfWidth+side*scale,projection.halfHeight-up*scale,depth)
+  return ScreenPoint(projection.halfWidth+point[0]*scale,projection.halfHeight-point[1]*scale,depth)
+end function
+
+function projectPrepared(projection,world)
+  point=preparedViewPoint(projection,world);if point is error then return point end if
+  return projectPreparedView(projection,point)
+end function
+
+function clipNearVertex(a,b,nearDistance)
+  denominator=b[2]-a[2];if denominator==0.0 then return void end if
+  fraction=(nearDistance-a[2])/denominator;result=[]
+  for component=0 to len(a)-1 result=result+[a[component]+fraction*(b[component]-a[component])] end for
+  result[2]=nearDistance
+  return result
+end function
+
+// Sutherland-Hodgman clipping for a camera-space polygon. Components after
+// xyz are interpolated with the intersection and can carry UV/light values.
+function clipNearPolygon(vertices,nearDistance)
+  if vertices==void or len(vertices)<3 or nearDistance<=0.0 then return error(7483,"invalid near-plane polygon") end if
+  width=len(vertices[0]);if width<3 then return error(7483,"invalid near-plane polygon") end if
+  for each vertex in vertices if vertex==void or len(vertex)!=width then return error(7483,"invalid near-plane polygon") end if end for
+  result=[];previous=vertices[len(vertices)-1];previousInside=previous[2]>=nearDistance
+  for each current in vertices
+    currentInside=current[2]>=nearDistance
+    if currentInside then
+      if not previousInside then intersection=clipNearVertex(previous,current,nearDistance);if intersection!=void then result=result+[intersection] end if end if
+      result=result+[current]
+    else if previousInside then
+      intersection=clipNearVertex(previous,current,nearDistance);if intersection!=void then result=result+[intersection] end if
+    end if
+    previous=current;previousInside=currentInside
+  end for
+  return result
 end function
 
 function clipNear(a,b,nearDistance)

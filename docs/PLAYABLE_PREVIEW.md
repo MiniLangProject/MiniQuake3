@@ -91,7 +91,9 @@ fading impact crosses and original plasma fire/impact sounds expose the complete
 path. The first-person view switches to the current original textured weapon MD3.
 Its bob, landing motion and idle drift follow `CG_CalculateWeaponPosition`; the
 visible model is attached through the complete animated `tag_weapon` transform
-loaded from the retail tag-only `_hand.md3`. Until the software renderer gains
+loaded from the retail tag-only `_hand.md3`. Viewmodel polygons crossing the
+near plane are clipped and retriangulated with interpolated UV and light values
+instead of being discarded as whole triangles. Until the software renderer gains
 Quake 3's separate `RF_DEPTHHACK` projection, a contained parent-position
 compensation keeps this attachment inside its valid near volume. Attack frames
 1-6 run at the original 15 fps with interpolated tags. Weapon changes retain
@@ -145,7 +147,8 @@ framebuffer and depth output.
 
 Validation:
 
-- `python scripts/test_playable_viewer.py`: 50 camera/projection contracts.
+- `python scripts/test_playable_viewer.py`: 56 camera/projection and attributed
+  near-plane-polygon contracts.
 - `python scripts/test_bsp_preview.py`: 34 BSP geometry contracts.
 - `python scripts/test_bsp_render_data.py`: 55 triangle/lightmap/patch contracts.
 - `python scripts/test_playable_materials.py`: 35 BSP/shader/image/generator contracts.
@@ -210,7 +213,8 @@ Validation:
 - `python scripts/test_playable_combat_view.py`: 40 weapon/feedback contracts.
 - `python scripts/test_playable_viewmodel.py --pak D:/Quake3/baseq3/pak0.pk3`: 26 Baseq3 weapon-position,
   `AnglesToAxis`, animated hand-tag attachment and software-depthhack boundary
-  contracts plus all ten retail tag-only hand MD3s.
+  contracts plus all ten retail tag-only hand MD3s and an in-viewport retail
+  Machinegun check after near-plane clipping.
 - `python scripts/test_playable_fps_title.py`: 14 sampling, smoothing and native
   window-caption contracts.
 - `python scripts/test_baseq3_hud.py --pak D:/Quake3/baseq3/pak0.pk3`: 50 HUD

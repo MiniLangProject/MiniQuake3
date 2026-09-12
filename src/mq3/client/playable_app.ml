@@ -326,16 +326,43 @@ function modelLight(normal)
   return value
 end function
 
+function drawModelTriangle(projection,triangle,red,green,blue,lit)
+  vertices=[]
+  for corner=0 to 2
+    point=viewer.preparedViewPoint(projection,triangle.positions[corner]);if point is error then return point end if
+    light=1.0;if lit then light=modelLight(triangle.normals[corner]) end if
+    vertices=vertices+[[point[0],point[1],point[2],triangle.texCoords[corner][0],triangle.texCoords[corner][1],light]]
+  end for
+  clipped=viewer.clipNearPolygon(vertices,projection.nearDistance);if clipped is error then return clipped end if
+  drawn=0
+  if len(clipped)>=3 then
+    for index=1 to len(clipped)-2
+      va=clipped[0];vb=clipped[index];vc=clipped[index+1]
+      a=viewer.projectPreparedView(projection,[va[0],va[1],va[2]]);b=viewer.projectPreparedView(projection,[vb[0],vb[1],vb[2]]);c=viewer.projectPreparedView(projection,[vc[0],vc[1],vc[2]])
+      if a!=void and b!=void and c!=void then
+        window.drawTriangle(triangle.textureSlot,a,[va[3],va[4]],va[5],b,[vb[3],vb[4]],vb[5],c,[vc[3],vc[4]],vc[5],red,green,blue);drawn=drawn+1
+      end if
+    end for
+  end if
+  return drawn
+end function
+
 function drawItemTriangles(projection,triangles)
   for each triangle in triangles
-    a=viewer.projectPrepared(projection,triangle.positions[0])
-    b=viewer.projectPrepared(projection,triangle.positions[1])
-    c=viewer.projectPrepared(projection,triangle.positions[2])
+    a=viewer.projectPrepared(projection,triangle.positions[0]);b=viewer.projectPrepared(projection,triangle.positions[1]);c=viewer.projectPrepared(projection,triangle.positions[2])
     if a!=void and b!=void and c!=void then
       window.drawTriangle(triangle.textureSlot,a,triangle.texCoords[0],modelLight(triangle.normals[0]),b,triangle.texCoords[1],modelLight(triangle.normals[1]),c,triangle.texCoords[2],modelLight(triangle.normals[2]),255,255,255)
     end if
   end for
   return len(triangles)
+end function
+
+function drawClippedItemTriangles(projection,triangles)
+  drawn=0
+  for each triangle in triangles
+    count=drawModelTriangle(projection,triangle,255,255,255,true);if count is error then return count end if;drawn=drawn+count
+  end for
+  return drawn
 end function
 
 function drawProjectileTriangles(projection,triangles)
@@ -373,13 +400,11 @@ function pickupModelTriangles(camera,catalog,items,now)
 end function
 
 function drawTintedItemTriangles(projection,triangles,red,green,blue)
+  drawn=0
   for each triangle in triangles
-    a=viewer.projectPrepared(projection,triangle.positions[0]);b=viewer.projectPrepared(projection,triangle.positions[1]);c=viewer.projectPrepared(projection,triangle.positions[2])
-    if a!=void and b!=void and c!=void then
-      window.drawTriangle(triangle.textureSlot,a,triangle.texCoords[0],1.0,b,triangle.texCoords[1],1.0,c,triangle.texCoords[2],1.0,red,green,blue)
-    end if
+    count=drawModelTriangle(projection,triangle,red,green,blue,false);if count is error then return count end if;drawn=drawn+count
   end for
-  return len(triangles)
+  return drawn
 end function
 
 function renderViewModel(projection,catalog,weaponState,combatState,now,transform,weaponClass,showFlash)
@@ -390,7 +415,7 @@ function renderViewModel(projection,catalog,weaponState,combatState,now,transfor
   if transform==void then return 0 end if
   triangles=itemModels.renderAsset(asset,transform,MAX_VIEWMODEL_TRIANGLES);if triangles is error then return triangles end if
   window.clearDepth(1000000000.0)
-  drawn=drawItemTriangles(projection,triangles)
+  drawn=drawClippedItemTriangles(projection,triangles)
   flashDrawn=0
   if showFlash then
     flash=muzzleFlash.render(catalog,weaponClass,transform,combatState.lastFire,now,weaponState.triggerHeld,MAX_VIEWMODEL_TRIANGLES);if flash is error then return flash end if

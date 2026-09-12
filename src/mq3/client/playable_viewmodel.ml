@@ -34,9 +34,10 @@ function valid3(value) return value!=void and typeof(value)=="array" and len(val
 
 function defaults() return Settings(DEFAULT_FOV,0.0,0.0,0.0,1.0) end function
 
-// The native software path does not yet expose RF_DEPTHHACK's dedicated
-// first-person projection/depth range. Keep the genuine hand tag transform,
-// but move its parent far enough into that renderer's valid near volume.
+// Near-plane polygon clipping preserves partially visible weapon triangles.
+// The retail CD machinegun's unmodified hand-tag attachment still projects
+// entirely below a 640x480 viewport, so keep the visible parent adjustment
+// isolated here until the dedicated viewmodel projection is source-matched.
 function softwareRendererSettings()
   return Settings(DEFAULT_FOV,SOFTWARE_DEPTHHACK_FORWARD,SOFTWARE_DEPTHHACK_SIDE,SOFTWARE_DEPTHHACK_UP,1.0)
 end function
