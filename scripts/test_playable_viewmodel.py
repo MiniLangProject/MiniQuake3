@@ -24,7 +24,7 @@ def main() -> int:
         check=True,
     )
     result = run([ROOT / "build/playable_viewmodel_contracts.exe"], ROOT / "build", log=out / "contracts.log").strip()
-    expected = "PASS: 21 playable viewmodel contracts"
+    expected = "PASS: 26 playable viewmodel contracts"
     if result != expected:
         raise RuntimeError(result)
     retail = None
@@ -40,9 +40,9 @@ def main() -> int:
     files = [ROOT / "src/mq3/client/playable_viewmodel.ml", ROOT / "src/mq3/format/md3.ml", ROOT / "tests/playable_viewmodel_contracts.ml", ROOT / "tests/playable_viewmodel_retail_probe.ml"]
     report = {
         "passed": True,
-        "contracts": 21,
+        "contracts": 26,
         "retail": retail,
-        "scope": "Baseq3 CG_CalculateWeaponPosition bob, idle drift, landing displacement, AnglesToAxis and complete hand tag attachment transform.",
+        "scope": "Baseq3 CG_CalculateWeaponPosition, AnglesToAxis, complete interpolated hand-tag attachment and mapped attack/drop/raise weapon frames.",
         "sources": {str(path.relative_to(ROOT)).replace("\\", "/"): sha(path) for path in files},
     }
     (out / "result.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8", newline="\n")

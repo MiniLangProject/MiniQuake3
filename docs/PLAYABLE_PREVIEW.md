@@ -93,7 +93,10 @@ Its bob, landing motion and idle drift follow `CG_CalculateWeaponPosition`; the
 visible model is attached through the complete animated `tag_weapon` transform
 loaded from the retail tag-only `_hand.md3`. Until the software renderer gains
 Quake 3's separate `RF_DEPTHHACK` projection, a contained parent-position
-compensation keeps this attachment inside its valid near volume;
+compensation keeps this attachment inside its valid near volume. Attack frames
+1-6 run at the original 15 fps with interpolated tags. Weapon changes retain
+the old model through the mapped drop frames, then hold the new hand at frame
+zero during Baseq3's 250 ms raise interval;
 the weapon state uses stock Baseq3 fire intervals and direct-hit damage with
 recoil, hit marker and damage direction. The window caption samples and
 smooths the live frame rate every 500 ms.
@@ -205,7 +208,7 @@ Validation:
   41 selection contracts plus 21 decoded retail weapon WAV files, including the Gauntlet loop.
 - `python scripts/test_playable_target_render.py`: 26 silhouette/health contracts.
 - `python scripts/test_playable_combat_view.py`: 40 weapon/feedback contracts.
-- `python scripts/test_playable_viewmodel.py --pak D:/Quake3/baseq3/pak0.pk3`: 21 Baseq3 weapon-position,
+- `python scripts/test_playable_viewmodel.py --pak D:/Quake3/baseq3/pak0.pk3`: 26 Baseq3 weapon-position,
   `AnglesToAxis`, animated hand-tag attachment and software-depthhack boundary
   contracts plus all ten retail tag-only hand MD3s.
 - `python scripts/test_playable_fps_title.py`: 14 sampling, smoothing and native

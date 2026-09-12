@@ -26,6 +26,8 @@ struct BobSample cycle fraction xySpeed end struct
 struct Pose origin axis scale fovOffset bobCycle bobFraction xySpeed end struct
 struct Attachment classname path frames end struct
 struct Catalog attachments skipped end struct
+struct WeaponAnimation displayedClass targetClass transitionStart switching end struct
+struct FrameSample classname oldFrame frame backlerp switching end struct
 
 function fail(message) return error(7620,"playable viewmodel: "+message) end function
 function valid3(value) return value!=void and typeof(value)=="array" and len(value)==3 end function
@@ -45,6 +47,39 @@ function settings(horizontalFov,gunX,gunY,gunZ,modelScale)
 end function
 
 function tracker() return Tracker(0.0,0,false) end function
+
+function weaponAnimation(initialClass)
+  if typeof(initialClass)!="string" or initialClass=="" then return fail("weapon animation needs an initial classname") end if
+  return WeaponAnimation(initialClass,initialClass,0,false)
+end function
+
+function animatedFrames(classname,firstFrame,count,fps,elapsed,switching)
+  if elapsed<0 or count<1 or fps<1 then return FrameSample(classname,0,0,0.0,switching) end if
+  step=numeric.trunc32(elapsed*fps/1000)
+  if step>=count then return FrameSample(classname,0,0,0.0,switching) end if
+  frame=firstFrame+step;oldFrame=frame;if step>0 then oldFrame=frame-1 end if
+  frameStart=step*1000/fps;fraction=(elapsed-frameStart)*fps/1000.0
+  return FrameSample(classname,oldFrame,frame,1.0-fraction,switching)
+end function
+
+// CG_MapTorsoToWeaponFrame maps the six 15-fps attack frames to hand frames
+// 1..6. A weapon change spends 200 ms dropping the old model through the
+// mapped 20-fps frames beginning at 6, then 250 ms raising the new model; the
+// source mapping intentionally leaves TORSO_RAISE on hand frame zero.
+function sampleWeaponAnimation(state,classname,now,lastFire)
+  if state==void or typeof(classname)!="string" or classname=="" or now<0 then return fail("invalid weapon animation sample") end if
+  if not stringEqualsIgnoreCaseAscii(state.targetClass,classname) then
+    state.targetClass=classname;state.transitionStart=now;state.switching=true
+  end if
+  if state.switching then
+    elapsed=now-state.transitionStart;if elapsed<0 then return fail("weapon animation time moved backwards") end if
+    if elapsed<200 then return animatedFrames(state.displayedClass,6,5,20,elapsed,true) end if
+    state.displayedClass=state.targetClass
+    if elapsed<450 then return FrameSample(state.displayedClass,0,0,0.0,true) end if
+    state.switching=false
+  end if
+  return animatedFrames(state.displayedClass,1,6,15,now-lastFire,false)
+end function
 
 function handPath(classname)
   name=strings.toLowerAscii(classname)
@@ -166,13 +201,26 @@ function multiplyAxis(left,right)
   return result
 end function
 
+function attachmentTag(attachment,oldFrame,frame,backlerp)
+  if attachment==void or oldFrame<0 or frame<0 or backlerp<0.0 or backlerp>1.0 or len(attachment.frames)==0 then return fail("invalid attachment tag sample") end if
+  if oldFrame>=len(attachment.frames) then oldFrame=len(attachment.frames)-1 end if
+  if frame>=len(attachment.frames) then frame=len(attachment.frames)-1 end if
+  oldTag=tagFromFrame(attachment.frames[oldFrame],"tag_weapon");currentTag=tagFromFrame(attachment.frames[frame],"tag_weapon")
+  if oldTag==void or currentTag==void then return fail("attachment has no tag_weapon") end if
+  front=1.0-backlerp;origin=[];axis=[]
+  for component=0 to 2 origin=origin+[oldTag.origin[component]*backlerp+currentTag.origin[component]*front] end for
+  for row=0 to 2
+    blended=[];for component=0 to 2 blended=blended+[oldTag.axis[row][component]*backlerp+currentTag.axis[row][component]*front] end for
+    qmath.VectorNormalize(blended);axis=axis+[blended]
+  end for
+  return md3.Tag("tag_weapon",origin,axis)
+end function
+
 // CG_PositionEntityOnTag: translate through the parent hand basis, then
 // compose tag orientation with the hand orientation in the original order.
-function attachWeapon(pose,attachment,frame)
-  if pose==void or attachment==void or frame<0 then return fail("weapon pose, attachment and frame are required") end if
-  if len(attachment.frames)==0 then return fail("attachment has no tag frames") end if
-  if frame>=len(attachment.frames) then frame=len(attachment.frames)-1 end if
-  tag=tagFromFrame(attachment.frames[frame],"tag_weapon");if tag==void then return fail("attachment has no tag_weapon") end if
+function attachWeapon(pose,attachment,oldFrame,frame,backlerp)
+  if pose==void then return fail("weapon pose is required") end if
+  tag=attachmentTag(attachment,oldFrame,frame,backlerp);if tag is error then return tag end if
   origin=qmath.VectorMA(pose.origin,tag.origin[0],pose.axis[0]);origin=qmath.VectorMA(origin,tag.origin[1],pose.axis[1]);origin=qmath.VectorMA(origin,tag.origin[2],pose.axis[2])
   return itemModels.transform(origin,multiplyAxis(tag.axis,pose.axis),pose.scale)
 end function
@@ -193,8 +241,8 @@ function frameTransform(camera,bob,now,landTime,landChange,recoil,config)
   return transform(pose)
 end function
 
-function frameWeaponTransform(camera,bob,now,landTime,landChange,recoil,config,attachment,frame)
+function frameWeaponTransform(camera,bob,now,landTime,landChange,recoil,config,attachment,oldFrame,frame,backlerp)
   pose=calculate(camera,bob,now,landTime,landChange,config);if pose is error then return pose end if
   pose=withRecoil(pose,camera,recoil);if pose is error then return pose end if
-  return attachWeapon(pose,attachment,frame)
+  return attachWeapon(pose,attachment,oldFrame,frame,backlerp)
 end function
