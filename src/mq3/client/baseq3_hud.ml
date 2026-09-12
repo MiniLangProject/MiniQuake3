@@ -62,9 +62,9 @@ end function
 
 function load(archive,firstTextureSlot,maxTextureSlots)
   if archive==void then return fail("PK3 archive is required") end if
-  if firstTextureSlot<0 or firstTextureSlot>=256 then return fail("first texture slot outside native range") end if
+  if firstTextureSlot<0 or firstTextureSlot>=512 then return fail("first texture slot outside native range") end if
   definitions=descriptors()
-  if maxTextureSlots<len(definitions) or firstTextureSlot+len(definitions)>256 then return fail("insufficient texture slots") end if
+  if maxTextureSlots<len(definitions) or firstTextureSlot+len(definitions)>512 then return fail("insufficient texture slots") end if
   scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if
   assets=[]
   for index=0 to len(definitions)-1

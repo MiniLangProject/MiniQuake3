@@ -63,10 +63,10 @@ const HEIGHT=480
 const HORIZONTAL_FOV=90.0
 const MAX_LINES=0
 const WORLD_SELECTION_INTERVAL=15
-const PLAYER_TEXTURE_FIRST_SLOT=208
+const PLAYER_TEXTURE_FIRST_SLOT=336
 const PLAYER_TRIANGLES_PER_SURFACE=8192
 const MAX_DETAILED_PLAYER_MODELS=5
-const MAX_NATIVE_TEXTURE_SLOTS=256
+const MAX_NATIVE_TEXTURE_SLOTS=512
 const MAX_ITEM_MODELS=24
 const MAX_ITEM_TEXTURES=48
 const MAX_VISIBLE_ITEMS=24
@@ -865,7 +865,7 @@ function runLimited(map,maxFrames,sound,archive)
   if archive!=void then loadedScripts=try(materials.buildScriptIndex(archive));if not (loadedScripts is error) then shaderScripts=loadedScripts end if end if
   catalog=void
   if archive!=void and shaderScripts!=void then
-    loadedCatalog=try(materials.loadIndexed(archive,map,128,64,shaderScripts[0],shaderScripts[1]))
+    loadedCatalog=try(materials.loadIndexed(archive,map,256,64,shaderScripts[0],shaderScripts[1]))
     if not (loadedCatalog is error) then catalog=loadedCatalog end if
   end if
   projectileCatalog=void

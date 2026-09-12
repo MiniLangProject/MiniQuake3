@@ -14,7 +14,7 @@ import std.string as strings
 const SHADER_STRIDE=72
 const SHADER_NAME_BYTES=64
 const BASE_TEXTURE_FIRST_SLOT=64
-const BASE_TEXTURE_SLOT_COUNT=128
+const BASE_TEXTURE_SLOT_COUNT=256
 const MAX_RUNTIME_STAGES=3
 const MAX_ANIMATION_FRAMES=8
 const BLEND_OPAQUE=0
@@ -27,7 +27,7 @@ const ALPHA_TEST_GE128=3
 
 struct Image width height pixels end struct
 struct UvMod kind a b c d wave end struct
-struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest rgbGen rgbWave end struct
+struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest tcGen rgbGen rgbWave end struct
 struct Material textureIndex shaderName imageName image slot stages end struct
 struct Catalog materials scripts attempted loaded textureCount animatedStageCount effectStageCount end struct
 
@@ -49,7 +49,9 @@ end function
 
 function candidates(name)
   if name==void or name=="" then return [] end if
-  if endsIgnoreCase(name,".tga") or endsIgnoreCase(name,".jpg") or endsIgnoreCase(name,".jpeg") then return [name] end if
+  if endsIgnoreCase(name,".tga") then stem=decode(slice(bytes(name),0,len(bytes(name))-4));return [name,stem+".jpg",stem+".jpeg"] end if
+  if endsIgnoreCase(name,".jpg") then stem=decode(slice(bytes(name),0,len(bytes(name))-4));return [name,stem+".tga",stem+".jpeg"] end if
+  if endsIgnoreCase(name,".jpeg") then stem=decode(slice(bytes(name),0,len(bytes(name))-5));return [name,stem+".tga",stem+".jpg"] end if
   return [name+".tga",name+".jpg",name+".jpeg"]
 end function
 
@@ -162,13 +164,14 @@ function loadRuntimeStage(archive,stage,nextSlot,endSlot)
     if loaded!=void then names=names+[loaded[0]];images=images+[loaded[1]];slots=slots+[nextSlot];nextSlot=nextSlot+1 end if
   end for
   if len(images)==0 then return void end if
-  return [RuntimeStage(names,images,slots,stage.animationSpeed,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),stage.rgbGen,stage.rgbWave),nextSlot]
+  tcGen=stage.tcGen;if tcGen=="bad" then tcGen="texture" end if
+  return [RuntimeStage(names,images,slots,stage.animationSpeed,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),tcGen,stage.rgbGen,stage.rgbWave),nextSlot]
 end function
 
 function directRuntimeStage(archive,name,nextSlot,endSlot)
   if nextSlot>=endSlot then return void end if
   loaded=loadImage(archive,name);if loaded==void then return void end if
-  return [RuntimeStage([loaded[0]],[loaded[1]],[nextSlot],0.0,[],BLEND_OPAQUE,ALPHA_TEST_NONE,"identitylighting",shaderParser.blankWave()),nextSlot+1]
+  return [RuntimeStage([loaded[0]],[loaded[1]],[nextSlot],0.0,[],BLEND_OPAQUE,ALPHA_TEST_NONE,"texture","identitylighting",shaderParser.blankWave()),nextSlot+1]
 end function
 
 function runtimeStages(archive,index,name,nextSlot,endSlot)
@@ -256,6 +259,17 @@ end function
 
 function transformUV(stage,uv,nowMilliseconds)
   return transformUVAt(stage,uv,[0.0,0.0,0.0],nowMilliseconds)
+end function
+
+// RB_CalcEnvironmentTexCoords: reflect the normalized eye vector around the
+// BSP vertex normal and map reflected Y/Z into texture space.
+function environmentUV(position,normal,viewOrigin)
+  if position==void or normal==void or viewOrigin==void or len(position)!=3 or len(normal)!=3 or len(viewOrigin)!=3 then return fail("environment coordinates require three-component vectors") end if
+  viewer=[viewOrigin[0]-position[0],viewOrigin[1]-position[1],viewOrigin[2]-position[2]]
+  length=n.fsqrt(viewer[0]*viewer[0]+viewer[1]*viewer[1]+viewer[2]*viewer[2]);if length>0.0 then viewer=[viewer[0]/length,viewer[1]/length,viewer[2]/length] end if
+  dot=normal[0]*viewer[0]+normal[1]*viewer[1]+normal[2]*viewer[2]
+  reflectedY=normal[1]*2.0*dot-viewer[1];reflectedZ=normal[2]*2.0*dot-viewer[2]
+  return [0.5+reflectedY*0.5,0.5-reflectedZ*0.5]
 end function
 
 function loadIndexed(archive,map,maxMaterials,firstSlot,index,scriptCount)

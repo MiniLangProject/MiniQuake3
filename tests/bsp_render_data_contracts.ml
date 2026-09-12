@@ -14,6 +14,7 @@ function fixture()
     off=160+i*44
     for axis=0 to 2 putF(data,off+axis*4,positions[i][axis]) end for
     putF(data,off+12,i+0.125);putF(data,off+16,i+0.25);putF(data,off+20,i+0.5);putF(data,off+24,i+0.75)
+    putF(data,off+28,0.0);putF(data,off+32,0.0);putF(data,off+36,1.0)
     data[off+40]=10+i;data[off+41]=20+i;data[off+42]=30+i;data[off+43]=40+i
   end for
   offsets[11]=800;counts[11]=9;lengths[11]=36
@@ -44,6 +45,7 @@ function main(args)
   count=count+require(first.vertices[2].position==[2.0,2.0,0.0],"position two")
   count=count+require(first.vertices[0].baseUV==[0.125,0.25],"base uv")
   count=count+require(first.vertices[0].lightmapUV==[0.5,0.75],"lightmap uv")
+  count=count+require(first.vertices[0].normal==[0.0,0.0,1.0] and result.triangles[4].vertices[2].normal==[0.0,0.0,1.0],"BSP and patch normals retained")
   count=count+require(first.vertices[0].color==[10,20,30,40],"vertex color")
   count=count+require(result.triangles[1].vertices[2].position==[0.0,2.0,0.0],"second triangle winding")
   count=count+require(result.triangles[1].triangleIndex==1,"local triangle index")

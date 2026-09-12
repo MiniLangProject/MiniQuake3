@@ -54,8 +54,8 @@ function descriptor(key,name) return [key,name] end function
 function descriptors() return [descriptor("font","menu/art/font1_prop"),descriptor("glow","menu/art/font1_prop_glo"),descriptor("banner","menu/art/font2_prop"),descriptor("cursor","menu/art/3_cursor2")] end function
 function load(archive,firstTextureSlot,maxTextureSlots)
   if archive==void then return fail("PK3 archive is required") end if
-  if firstTextureSlot<0 or firstTextureSlot>=256 then return fail("first texture slot outside native range") end if
-  if maxTextureSlots<REQUIRED_TEXTURES or firstTextureSlot+REQUIRED_TEXTURES>256 then return fail("insufficient texture slots") end if
+  if firstTextureSlot<0 or firstTextureSlot>=512 then return fail("first texture slot outside native range") end if
+  if maxTextureSlots<REQUIRED_TEXTURES or firstTextureSlot+REQUIRED_TEXTURES>512 then return fail("insufficient texture slots") end if
   assets=[];definitions=descriptors()
   for index=0 to len(definitions)-1
     item=definitions[index];loaded=materials.loadImage(archive,item[1])

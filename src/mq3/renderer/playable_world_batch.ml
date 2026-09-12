@@ -9,8 +9,8 @@ import mq3.compat.transcendental as trans
 
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
-struct StagePass commands sourceUvs sourcePositions sourceLights stage primary depthEqual end struct
-struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses end struct
+struct StagePass commands sourceUvs sourcePositions sourceNormals sourceLights stage primary depthEqual end struct
+struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
 function vertexLight(vertex) return (vertex.color[0]+vertex.color[1]+vertex.color[2])/(255.0*3.0) end function
@@ -38,7 +38,7 @@ end function
 function draw(batch,projection) if batch==void or batch.commands==void then return fail("missing batch") end if;return window.submitWorldTriangleBatch(batch.commands,projection) end function
 
 function materialFor(catalog,textureIndex) if catalog==void then return void end if;for each material in catalog.materials if material.textureIndex==textureIndex then return material end if end for;return void end function
-function dynamicStage(stage) return len(stage.slots)>1 or len(stage.uvMods)>0 or stage.blend!=materials.BLEND_OPAQUE or stage.alphaTest!=materials.ALPHA_TEST_NONE or stage.rgbGen=="wave" end function
+function dynamicStage(stage) return len(stage.slots)>1 or len(stage.uvMods)>0 or stage.blend!=materials.BLEND_OPAQUE or stage.alphaTest!=materials.ALPHA_TEST_NONE or stage.tcGen=="environment" or stage.rgbGen=="wave" end function
 function contains(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
 function uploadMaterials(catalog)
   if catalog==void or catalog.materials==void then return fail("missing material catalog") end if
@@ -72,16 +72,17 @@ end function
 function countStageTriangles(renderData,textureIndex,flags) count=0;for each triangle in renderData.triangles if triangle.textureIndex==textureIndex and not isSky(triangle,flags) then count=count+1 end if end for;return count end function
 function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
   count=countStageTriangles(renderData,material.textureIndex,flags);if count<1 then return void end if
-  commands=window.createTriangleBatch(count);sourceUvs=[];sourcePositions=[];sourceLights=[]
+  commands=window.createTriangleBatch(count);sourceUvs=[];sourcePositions=[];sourceNormals=[];sourceLights=[]
   for each triangle in renderData.triangles
     if triangle.textureIndex==material.textureIndex and not isSky(triangle,flags) then
       commands=appendResolved(commands,triangle,stage.slots[0],primary);if commands is error then return commands end if
       sourceUvs=sourceUvs+[[triangle.vertices[0].baseUV,triangle.vertices[1].baseUV,triangle.vertices[2].baseUV]]
       sourcePositions=sourcePositions+[[triangle.vertices[0].position,triangle.vertices[1].position,triangle.vertices[2].position]]
+      sourceNormals=sourceNormals+[[triangle.vertices[0].normal,triangle.vertices[1].normal,triangle.vertices[2].normal]]
       sourceLights=sourceLights+[[vertexLight(triangle.vertices[0]),vertexLight(triangle.vertices[1]),vertexLight(triangle.vertices[2])]]
     end if
   end for
-  return StagePass(commands,sourceUvs,sourcePositions,sourceLights,stage,primary,depthEqual)
+  return StagePass(commands,sourceUvs,sourcePositions,sourceNormals,sourceLights,stage,primary,depthEqual)
 end function
 
 // Static opaque primaries stay in the bit-identical base stream. Dynamic and
@@ -97,7 +98,7 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
     else if not dynamicStage(material.stages[0]) then base=appendResolved(base,triangle,material.stages[0].slots[0],true) end if
     if base is error then return base end if
   end for
-  passes=[];animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;stretchCount=0;emitted=base.count
+  passes=[];animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;stretchCount=0;environmentCount=0;emitted=base.count
   for each material in catalog.materials
     primaryWrites=false;if len(material.stages)>0 then primaryWrites=material.stages[0].blend==materials.BLEND_OPAQUE end if
     for stageIndex=0 to len(material.stages)-1
@@ -108,12 +109,13 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
         if len(stage.slots)>1 then animated=animated+1 end if;if len(stage.uvMods)>0 then modified=modified+1 end if;if stage.blend!=materials.BLEND_OPAQUE then blended=blended+1 end if
         if stage.rgbGen=="wave" then generated=generated+1 end if
         if stage.alphaTest!=materials.ALPHA_TEST_NONE then alphaTested=alphaTested+1 end if
+        if stage.tcGen=="environment" then environmentCount=environmentCount+1 end if
         for each mod in stage.uvMods if mod.kind=="turb" then turbulentCount=turbulentCount+1;break end if end for
         for each mod in stage.uvMods if mod.kind=="stretch" then stretchCount=stretchCount+1;break end if end for
       end if
     end for
   end for
-  return MaterialBatch(base,passes,len(renderData.triangles),drawable,emitted,skippedSky,animated,modified,blended,generated,alphaTested,turbulentCount,stretchCount)
+  return MaterialBatch(base,passes,len(renderData.triangles),drawable,emitted,skippedSky,animated,modified,blended,generated,alphaTested,turbulentCount,stretchCount,environmentCount)
 end function
 
 function identityAffine() return UvAffine(1.0,0.0,0.0,1.0,0.0,0.0) end function
@@ -134,23 +136,25 @@ function affineFor(stage,nowMilliseconds)
 end function
 function applyAffine(transform,uv) return [uv[0]*transform.m00+uv[1]*transform.m01+transform.tx,uv[0]*transform.m10+uv[1]*transform.m11+transform.ty] end function
 function hasTurbulence(stage) for each mod in stage.uvMods if mod.kind=="turb" then return true end if end for;return false end function
-function updatePass(pass,nowMilliseconds)
+function updatePassView(pass,viewOrigin,nowMilliseconds)
   slot=materials.slotAt(pass.stage,nowMilliseconds);transform=affineFor(pass.stage,nowMilliseconds);turbulent=hasTurbulence(pass.stage)
   for triangleIndex=0 to pass.commands.count-1
     offset=triangleIndex*window.TRIANGLE_BATCH_RECORD_BYTES;window.writeBatchI32(pass.commands.data,offset,slot)
     for vertex=0 to 2
-      uv=[0.0,0.0];if turbulent then uv=materials.transformUVAt(pass.stage,pass.sourceUvs[triangleIndex][vertex],pass.sourcePositions[triangleIndex][vertex],nowMilliseconds) else uv=applyAffine(transform,pass.sourceUvs[triangleIndex][vertex]) end if;uvOffset=offset+32+vertex*32;window.writeBatchF32(pass.commands.data,uvOffset,uv[0]);window.writeBatchF32(pass.commands.data,uvOffset+4,uv[1])
+      sourceUv=pass.sourceUvs[triangleIndex][vertex];if pass.stage.tcGen=="environment" then sourceUv=materials.environmentUV(pass.sourcePositions[triangleIndex][vertex],pass.sourceNormals[triangleIndex][vertex],viewOrigin) end if
+      uv=[0.0,0.0];if turbulent then uv=materials.transformUVAt(pass.stage,sourceUv,pass.sourcePositions[triangleIndex][vertex],nowMilliseconds) else uv=applyAffine(transform,sourceUv) end if;uvOffset=offset+32+vertex*32;window.writeBatchF32(pass.commands.data,uvOffset,uv[0]);window.writeBatchF32(pass.commands.data,uvOffset+4,uv[1])
       window.writeBatchF32(pass.commands.data,offset+48+vertex*32,materials.stageLight(pass.stage,pass.sourceLights[triangleIndex][vertex],nowMilliseconds))
     end for
   end for
   return slot
 end function
+function updatePass(pass,nowMilliseconds) return updatePassView(pass,[0.0,0.0,0.0],nowMilliseconds) end function
 function drawMaterials(batch,projection,nowMilliseconds)
   if batch==void or batch.base==void or batch.passes==void or nowMilliseconds<0 then return fail("invalid material draw") end if
   drawn=0;multitexture.setState(multitexture.BLEND_OPAQUE,false,true);multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE)
   if batch.base.count>0 then value=window.submitWorldTriangleBatch(batch.base,projection);if value is error then return value end if;drawn=drawn+value end if
   for each pass in batch.passes
-    updatePass(pass,nowMilliseconds);depthWrite=pass.primary and pass.stage.blend==materials.BLEND_OPAQUE;multitexture.setState(pass.stage.blend,pass.depthEqual,depthWrite);multitexture.setAlphaTest(pass.stage.alphaTest)
+    updatePassView(pass,projection.position,nowMilliseconds);depthWrite=pass.primary and pass.stage.blend==materials.BLEND_OPAQUE;multitexture.setState(pass.stage.blend,pass.depthEqual,depthWrite);multitexture.setAlphaTest(pass.stage.alphaTest)
     value=window.submitWorldTriangleBatch(pass.commands,projection);if value is error then return value end if;drawn=drawn+value
   end for
   multitexture.setState(multitexture.BLEND_OPAQUE,false,true);multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);return drawn

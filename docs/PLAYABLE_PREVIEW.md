@@ -25,10 +25,11 @@ Controls:
 The preview extracts bounded planar, triangle-soup and curved patch geometry from BSP46 and
 draws it through a native CPU rasterizer. It currently supports a depth buffer,
 screen clipping, perspective-correct UV and light interpolation, alpha, vertex
-colour and up to 64 uploaded 128x128 BSP lightmaps and 128 base-texture slots. A bounded material resolver
+colour and up to 64 uploaded 128x128 BSP lightmaps and 256 world-material texture slots within a 512-slot native registry. A bounded material resolver
 reads all `scripts/*.shader` files, follows `map`, `clampMap` and up to eight
-`animMap` frames, decodes TGA/JPEG images, applies scroll/scale/rotate/turb/stretch `tcMod`
-operations, enforces `alphaFunc GT0`, `LT128` and `GE128`, and executes opaque,
+`animMap` frames, resolves Quake's TGA/JPEG extension fallback, decodes both image formats,
+applies scroll/scale/rotate/turb/stretch `tcMod` in shader order, evaluates camera-dependent
+`tcGen environment` reflection coordinates, enforces `alphaFunc GT0`, `LT128` and `GE128`, and executes opaque,
 alpha and additive stages over the BSP lightmap. Quadratic Bezier patch grids are adaptively tessellated with their
 base UVs, lightmap UVs and vertex colours. Movement uses 800-unit gravity,
 Quake friction and ground/air acceleration, collision sliding, an 18-unit step

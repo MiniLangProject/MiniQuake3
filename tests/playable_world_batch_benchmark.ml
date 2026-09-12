@@ -5,11 +5,11 @@ import mq3.platform.playable_window as window
 const TRIANGLES=1700
 const FRAMES=200
 
-struct Vertex position baseUV lightmapUV color end struct
+struct Vertex position baseUV lightmapUV normal color end struct
 struct Triangle vertices textureIndex lightmapIndex end struct
 struct RenderData triangles end struct
 
-function vertex(x,y,z) return Vertex([x,y,z],[0.0,0.0],[0.0,0.0],[255,255,255,255]) end function
+function vertex(x,y,z) return Vertex([x,y,z],[0.0,0.0],[0.0,0.0],[0.0,0.0,1.0],[255,255,255,255]) end function
 function main(args)
   triangles=[]
   for index=0 to TRIANGLES-1

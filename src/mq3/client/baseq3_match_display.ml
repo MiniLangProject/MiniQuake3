@@ -30,7 +30,7 @@ function fail(message) return error(7583,"Baseq3 match display: "+message) end f
 // cgs.media.charsetShader is registered from this exact retail shader name.
 function load(archive,textureSlot)
   if archive==void then return fail("PK3 archive is required") end if
-  if textureSlot<0 or textureSlot>=256 then return fail("texture slot outside native range") end if
+  if textureSlot<0 or textureSlot>=512 then return fail("texture slot outside native range") end if
   scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if
   name="gfx/2d/bigchars";mapped=materials.mappedImageName(scripts[0],name);if mapped==void then mapped=name end if
   loaded=materials.loadImage(archive,mapped)

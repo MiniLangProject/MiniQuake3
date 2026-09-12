@@ -30,7 +30,7 @@ static int lastMouseY;
 static LARGE_INTEGER timerFrequency;
 static LARGE_INTEGER timerStart;
 
-#define PLAYABLE_TEXTURE_SLOTS 256
+#define PLAYABLE_TEXTURE_SLOTS 512
 #define PLAYABLE_MAX_TEXTURE_SIZE 4096
 
 typedef struct playableTexture_s {

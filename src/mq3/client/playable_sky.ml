@@ -36,7 +36,7 @@ end function
 
 function load(archive,firstTextureSlot,maxTextureSlots)
   if archive==void then return fail("PK3 archive is required") end if
-  if firstTextureSlot<0 or firstTextureSlot+REQUIRED_TEXTURES>256 or maxTextureSlots<REQUIRED_TEXTURES then return fail("insufficient native texture slots") end if
+  if firstTextureSlot<0 or firstTextureSlot+REQUIRED_TEXTURES>512 or maxTextureSlots<REQUIRED_TEXTURES then return fail("insufficient native texture slots") end if
   first=materials.loadImage(archive,FIRST_IMAGE);if first==void then return fail("missing retail image "+FIRST_IMAGE) end if
   second=materials.loadImage(archive,SECOND_IMAGE);if second==void then return fail("missing retail image "+SECOND_IMAGE) end if
   layers=[Layer(first[0],first[1],firstTextureSlot,2.0,2.0,0.05,0.10,false),Layer(second[0],additiveImage(second[1]),firstTextureSlot+1,3.0,2.0,0.05,0.06,true)]
