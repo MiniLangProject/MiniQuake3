@@ -293,7 +293,7 @@ static void clearDepth(double depth) {
 }
 
 PLAYABLE_API void playable_window_begin_frame(int red, int green, int blue) {
-    uint32_t color = makeColor(red, green, blue);
+    uint32_t color = makeColor(red, green, blue) | 0xff000000u;
     SIZE_T count = (SIZE_T)surfaceWidth * (SIZE_T)surfaceHeight;
     SIZE_T i;
     if (!pixels) return;
@@ -423,39 +423,57 @@ static uint32_t modulateColor(uint32_t color, double light) {
 
 static uint32_t blendColor(uint32_t source, uint32_t destination) {
     uint32_t alpha = source >> 24;
+    uint32_t destinationAlpha = destination >> 24;
     uint32_t inverse;
     uint32_t red;
     uint32_t green;
     uint32_t blue;
-    if (alpha == 255u) return source & 0x00ffffffu;
+    uint32_t outputAlpha;
+    if (alpha == 255u) return source;
     if (alpha == 0u) return destination;
     inverse = 255u - alpha;
     red = ((((source >> 16) & 255u) * alpha) + (((destination >> 16) & 255u) * inverse) + 127u) / 255u;
     green = ((((source >> 8) & 255u) * alpha) + (((destination >> 8) & 255u) * inverse) + 127u) / 255u;
     blue = (((source & 255u) * alpha) + ((destination & 255u) * inverse) + 127u) / 255u;
-    return (red << 16) | (green << 8) | blue;
+    outputAlpha = (alpha * alpha + destinationAlpha * inverse + 127u) / 255u;
+    return (outputAlpha << 24) | (red << 16) | (green << 8) | blue;
 }
 
 static uint32_t addColor(uint32_t source, uint32_t destination) {
     uint32_t alpha = source >> 24;
+    uint32_t outputAlpha = alpha + (destination >> 24);
     uint32_t red = ((source >> 16) & 255u) * alpha / 255u + ((destination >> 16) & 255u);
     uint32_t green = ((source >> 8) & 255u) * alpha / 255u + ((destination >> 8) & 255u);
     uint32_t blue = (source & 255u) * alpha / 255u + (destination & 255u);
     if (red > 255u) red = 255u;
     if (green > 255u) green = 255u;
     if (blue > 255u) blue = 255u;
-    return (red << 16) | (green << 8) | blue;
+    if (outputAlpha > 255u) outputAlpha = 255u;
+    return (outputAlpha << 24) | (red << 16) | (green << 8) | blue;
 }
 
 static uint32_t filterColor(uint32_t source, uint32_t destination) {
+    uint32_t alpha = ((source >> 24) * (destination >> 24) + 127u) / 255u;
     uint32_t red = (((source >> 16) & 255u) * ((destination >> 16) & 255u) + 127u) / 255u;
     uint32_t green = (((source >> 8) & 255u) * ((destination >> 8) & 255u) + 127u) / 255u;
     uint32_t blue = ((source & 255u) * (destination & 255u) + 127u) / 255u;
-    return (red << 16) | (green << 8) | blue;
+    return (alpha << 24) | (red << 16) | (green << 8) | blue;
+}
+
+static uint32_t destinationAlphaColor(uint32_t source, uint32_t destination) {
+    uint32_t destinationAlpha = destination >> 24;
+    uint32_t inverse = 255u - destinationAlpha;
+    uint32_t red = ((destination >> 16) & 255u) * (((source >> 16) & 255u) + inverse);
+    uint32_t green = ((destination >> 8) & 255u) * (((source >> 8) & 255u) + inverse);
+    uint32_t blue = (destination & 255u) * ((source & 255u) + inverse);
+    uint32_t alpha = destinationAlpha * ((source >> 24) + inverse);
+    red = (red + 127u) / 255u;green = (green + 127u) / 255u;blue = (blue + 127u) / 255u;alpha = (alpha + 127u) / 255u;
+    if (red>255u) red=255u;if (green>255u) green=255u;if (blue>255u) blue=255u;if (alpha>255u) alpha=255u;
+    return (alpha << 24) | (red << 16) | (green << 8) | blue;
 }
 
 PLAYABLE_API int playable_window_set_raster_state(int blendMode, int depthEqual, int depthWrite) {
-    if (blendMode < 0 || blendMode > 3 || (depthEqual != 0 && depthEqual != 1) ||
+    if (blendMode < 0 || blendMode > 4 || (depthEqual != 0 && depthEqual != 1) ||
             (depthWrite != 0 && depthWrite != 1)) return 0;
     rasterBlendMode = blendMode;
     rasterDepthEqual = depthEqual;
@@ -672,10 +690,11 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
             }
             if (!unitLight) color = modulateColor(color, light);
             if (!alphaTestPasses(color) || (color >> 24) == 0u) continue;
-            if (rasterBlendMode == 3) pixels[offset] = filterColor(color, pixels[offset]);
+            if (rasterBlendMode == 4) pixels[offset] = destinationAlphaColor(color, pixels[offset]);
+            else if (rasterBlendMode == 3) pixels[offset] = filterColor(color, pixels[offset]);
             else if (rasterBlendMode == 2) pixels[offset] = addColor(color, pixels[offset]);
             else if (rasterBlendMode == 1) pixels[offset] = blendColor(color, pixels[offset]);
-            else pixels[offset] = color & 0x00ffffffu;
+            else pixels[offset] = color;
             if (rasterDepthWrite) depthPixels[offset] = (float)comparisonDepth;
         }
         rowB0 += stepB0Y;
@@ -889,10 +908,11 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
                 double difference = comparisonDepth - (double)depthPixels[offset];
                 if (difference < -0.00001 || difference > 0.00001) continue;
             }
-            if (rasterBlendMode == 3) pixels[offset] = filterColor(color, pixels[offset]);
+            if (rasterBlendMode == 4) pixels[offset] = destinationAlphaColor(color, pixels[offset]);
+            else if (rasterBlendMode == 3) pixels[offset] = filterColor(color, pixels[offset]);
             else if (rasterBlendMode == 2) pixels[offset] = addColor(color, pixels[offset]);
             else if (rasterBlendMode == 1) pixels[offset] = blendColor(color, pixels[offset]);
-            else pixels[offset] = color & 0x00ffffffu;
+            else pixels[offset] = color;
             if (rasterDepthWrite) depthPixels[offset] = (float)comparisonDepth;
         }
         rowB0 += stepB0Y;

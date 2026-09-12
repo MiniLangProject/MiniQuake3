@@ -40,7 +40,7 @@ int main(void) {
 
     /* Red at 50% over black, then blue at 50% at the same depth. Both UI
      * layers must survive, and disabled depth writes must preserve clear. */
-    if (pixels[sample] != UINT32_C(0x00400080)) return 4;
+    if (pixels[sample] != UINT32_C(0x9f400080)) return 4;
     if (depthPixels[sample] != clearedDepth) return 5;
 
     /* Control case: with depth writes enabled, the first equal-depth layer
@@ -49,7 +49,7 @@ int main(void) {
     if (!playable_window_set_raster_state(1, 0, 1)) return 6;
     drawUiTriangle(0);
     drawUiTriangle(1);
-    if (pixels[sample] != UINT32_C(0x00800000)) return 7;
+    if (pixels[sample] != UINT32_C(0xbf800000)) return 7;
     if (depthPixels[sample] != 0.5f) return 8;
 
     /* RF_DEPTHHACK maps a far viewmodel into the front 30 percent while a
@@ -65,7 +65,7 @@ int main(void) {
         1.0, 1.0, 10.0, 0.0, 0.0, 1.0,
         7.0, 1.0, 10.0, 0.0, 0.0, 1.0,
         1.0, 7.0, 10.0, 0.0, 0.0, 1.0, 0, 0, 255);
-    if (pixels[sample] != UINT32_C(0x000000ff)) return 11;
+    if (pixels[sample] != UINT32_C(0xff0000ff)) return 11;
     if (depthPixels[sample] < 0.7299f || depthPixels[sample] > 0.7301f) return 12;
     playable_window_begin_frame(0, 0, 0);
     playable_window_draw_triangle(-1,
@@ -77,16 +77,16 @@ int main(void) {
         1.0, 1.0, 10.0, 0.0, 0.0, 1.0,
         7.0, 1.0, 10.0, 0.0, 0.0, 1.0,
         1.0, 7.0, 10.0, 0.0, 0.0, 1.0, 0, 0, 255);
-    if (pixels[sample] != UINT32_C(0x00ff0000)) return 14;
+    if (pixels[sample] != UINT32_C(0xffff0000)) return 14;
 
     /* Quake 3's GE128 cutout keeps alpha 128 as an opaque fragment and
      * discards alpha 127 without touching color or depth. */
     playable_window_begin_frame(0, 0, 0);
     if (!playable_window_set_alpha_test(3)) return 15;
     drawUiTriangle(2);
-    if (pixels[sample] != 0 || depthPixels[sample] != clearedDepth) return 16;
+    if (pixels[sample] != UINT32_C(0xff000000) || depthPixels[sample] != clearedDepth) return 16;
     drawUiTriangle(1);
-    if (pixels[sample] != UINT32_C(0x000000ff) || depthPixels[sample] != 0.5f) return 17;
+    if (pixels[sample] != UINT32_C(0x800000ff) || depthPixels[sample] != 0.5f) return 17;
 
     /* LT128 is the inverse threshold and also writes surviving texels
      * opaquely when blending is disabled. */
@@ -94,7 +94,7 @@ int main(void) {
     if (!playable_window_set_alpha_test(2)) return 18;
     drawUiTriangle(1);
     drawUiTriangle(2);
-    if (pixels[sample] != UINT32_C(0x0000ff00) || depthPixels[sample] != 0.5f) return 19;
+    if (pixels[sample] != UINT32_C(0x7f00ff00) || depthPixels[sample] != 0.5f) return 19;
 
     /* GL_DST_COLOR/GL_ZERO multiplies the new stage with the framebuffer. */
     playable_window_begin_frame(0, 0, 0);
@@ -102,8 +102,16 @@ int main(void) {
     drawUiTriangle(0);
     if (!playable_window_set_raster_state(3, 1, 0)) return 21;
     drawUiTriangle(3);
-    if (pixels[sample] != UINT32_C(0x00800000) || depthPixels[sample] != 0.5f) return 22;
-    if (playable_window_set_raster_state(4, 0, 0)) return 23;
+    if (pixels[sample] != UINT32_C(0x80800000) || depthPixels[sample] != 0.5f) return 22;
+
+    /* GL_DST_COLOR/GL_ONE_MINUS_DST_ALPHA consumes preserved destination alpha. */
+    playable_window_begin_frame(0, 0, 0);
+    if (!playable_window_set_raster_state(0, 0, 1)) return 23;
+    drawUiTriangle(0);
+    if (!playable_window_set_raster_state(4, 1, 0)) return 24;
+    drawUiTriangle(3);
+    if (pixels[sample] != UINT32_C(0xc0ff0000) || depthPixels[sample] != 0.5f) return 25;
+    if (playable_window_set_raster_state(5, 0, 0)) return 26;
 
     playable_window_shutdown();
     puts("playable window raster-state regression: PASS");

@@ -68,10 +68,10 @@ int main(void) {
         0.0, 1.0, 2.0, 0.0, 1.0, 0.0, 1.0, 1.0,
         255, 255, 255);
     if (playable_window_set_raster_state(-1, 0, 1) ||
-        playable_window_set_raster_state(4, 0, 1) ||
+        playable_window_set_raster_state(5, 0, 1) ||
         playable_window_set_raster_state(0, 2, 1) ||
         playable_window_set_raster_state(0, 0, 2) ||
-            !playable_window_set_raster_state(3, 1, 0) ||
+            !playable_window_set_raster_state(4, 1, 0) ||
             !playable_window_set_raster_state(0, 0, 1)) return 10;
     if (playable_window_set_alpha_test(-1) || playable_window_set_alpha_test(4) ||
             !playable_window_set_alpha_test(3) || !playable_window_set_alpha_test(0)) return 13;

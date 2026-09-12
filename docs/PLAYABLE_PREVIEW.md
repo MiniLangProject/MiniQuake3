@@ -30,7 +30,8 @@ reads all `scripts/*.shader` files, follows `map`, `clampMap` and up to eight
 `animMap` frames, resolves Quake's TGA/JPEG extension fallback, decodes both image formats,
 applies scroll/scale/rotate/turb/stretch `tcMod` in shader order, evaluates camera-dependent
 `tcGen environment` reflection coordinates, enforces `alphaFunc GT0`, `LT128` and `GE128`, and executes opaque,
-alpha, additive and multiplicative `filter` stages over the BSP lightmap. Quadratic Bezier patch grids are adaptively tessellated with their
+alpha, additive and multiplicative `filter` stages. Scripted `$lightmap` stages retain their
+own BSP slots and UVs, including `GL_DST_COLOR GL_ONE_MINUS_DST_ALPHA` with preserved framebuffer alpha. Quadratic Bezier patch grids are adaptively tessellated with their
 base UVs, lightmap UVs and vertex colours. Movement uses 800-unit gravity,
 Quake friction and ground/air acceleration, collision sliding, an 18-unit step
 and Space jumping against the ported brush and patch collision world.
@@ -156,9 +157,9 @@ Validation:
 - `python scripts/test_playable_viewer.py`: 56 camera/projection and attributed
   near-plane-polygon contracts.
 - `python scripts/test_bsp_preview.py`: 34 BSP geometry contracts.
-- `python scripts/test_bsp_render_data.py`: 55 triangle/lightmap/patch contracts.
-- `python scripts/test_playable_materials.py`: 35 BSP/shader/image/generator contracts.
-- `python scripts/test_playable_world_batch.py`: 20 retained-command, material-stage,
+- `python scripts/test_bsp_render_data.py`: 56 triangle/lightmap/patch contracts.
+- `python scripts/test_playable_materials.py`: 44 BSP/shader/image/generator contracts.
+- `python scripts/test_playable_world_batch.py`: 33 retained-command, material-stage,
   sky-filtering and one-call submission contracts; the native lifecycle also
   compares framebuffer pixels and depth bit-for-bit with the scalar path.
 - `python scripts/test_playable_movement.py`: 27 gravity/jump/slide/idle contracts.

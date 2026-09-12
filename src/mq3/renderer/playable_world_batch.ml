@@ -10,7 +10,7 @@ import mq3.compat.transcendental as trans
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
 struct StagePass commands sourceUvs sourcePositions sourceNormals sourceLights stage primary depthEqual end struct
-struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses end struct
+struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
 function vertexLight(vertex) return (vertex.color[0]+vertex.color[1]+vertex.color[2])/(255.0*3.0) end function
@@ -38,13 +38,15 @@ end function
 function draw(batch,projection) if batch==void or batch.commands==void then return fail("missing batch") end if;return window.submitWorldTriangleBatch(batch.commands,projection) end function
 
 function materialFor(catalog,textureIndex) if catalog==void then return void end if;for each material in catalog.materials if material.textureIndex==textureIndex then return material end if end for;return void end function
-function dynamicStage(stage) return len(stage.slots)>1 or len(stage.uvMods)>0 or stage.blend!=materials.BLEND_OPAQUE or stage.alphaTest!=materials.ALPHA_TEST_NONE or stage.tcGen=="environment" or stage.rgbGen=="wave" end function
+function dynamicStage(stage) return stage.bspLightmap or len(stage.slots)>1 or len(stage.uvMods)>0 or stage.blend!=materials.BLEND_OPAQUE or stage.alphaTest!=materials.ALPHA_TEST_NONE or stage.tcGen=="environment" or stage.rgbGen=="wave" end function
+function materialUsesBspLightmap(material) for each stage in material.stages if stage.bspLightmap then return true end if end for;return false end function
 function contains(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
 function uploadMaterials(catalog)
   if catalog==void or catalog.materials==void then return fail("missing material catalog") end if
   uploaded=[]
   for each material in catalog.materials
     for each stage in material.stages
+      if len(stage.slots)>0 then
       for index=0 to len(stage.slots)-1
         slot=stage.slots[index]
         if not contains(uploaded,slot) then
@@ -53,6 +55,7 @@ function uploadMaterials(catalog)
           uploaded=uploaded+[slot]
         end if
       end for
+      end if
     end for
   end for
   return len(uploaded)
@@ -75,8 +78,15 @@ function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
   commands=window.createTriangleBatch(count);sourceUvs=[];sourcePositions=[];sourceNormals=[];sourceLights=[]
   for each triangle in renderData.triangles
     if triangle.textureIndex==material.textureIndex and not isSky(triangle,flags) then
-      commands=appendResolved(commands,triangle,stage.slots[0],primary);if commands is error then return commands end if
-      sourceUvs=sourceUvs+[[triangle.vertices[0].baseUV,triangle.vertices[1].baseUV,triangle.vertices[2].baseUV]]
+      if stage.bspLightmap then
+        va=triangle.vertices[0];vb=triangle.vertices[1];vc=triangle.vertices[2]
+        commands=window.appendSingleTextureTriangle(commands,resolvedLightmapSlot(triangle),worldPoint(va.position),va.lightmapUV,vertexLight(va),worldPoint(vb.position),vb.lightmapUV,vertexLight(vb),worldPoint(vc.position),vc.lightmapUV,vertexLight(vc),va.color[0],va.color[1],va.color[2])
+        sourceUvs=sourceUvs+[[va.lightmapUV,vb.lightmapUV,vc.lightmapUV]]
+      else
+        commands=appendResolved(commands,triangle,stage.slots[0],primary)
+        sourceUvs=sourceUvs+[[triangle.vertices[0].baseUV,triangle.vertices[1].baseUV,triangle.vertices[2].baseUV]]
+      end if
+      if commands is error then return commands end if
       sourcePositions=sourcePositions+[[triangle.vertices[0].position,triangle.vertices[1].position,triangle.vertices[2].position]]
       sourceNormals=sourceNormals+[[triangle.vertices[0].normal,triangle.vertices[1].normal,triangle.vertices[2].normal]]
       sourceLights=sourceLights+[[vertexLight(triangle.vertices[0]),vertexLight(triangle.vertices[1]),vertexLight(triangle.vertices[2])]]
@@ -95,15 +105,15 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
     if isSky(triangle,skyTextureFlags) then skippedSky=skippedSky+1;continue end if
     drawable=drawable+1;material=materialFor(catalog,triangle.textureIndex)
     if material==void or len(material.stages)==0 then base=appendResolved(base,triangle,-1,true)
-    else if not dynamicStage(material.stages[0]) then base=appendResolved(base,triangle,material.stages[0].slots[0],true) end if
+    else if not dynamicStage(material.stages[0]) then base=appendResolved(base,triangle,material.stages[0].slots[0],not materialUsesBspLightmap(material)) end if
     if base is error then return base end if
   end for
-  passes=[];animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;stretchCount=0;environmentCount=0;filterCount=0;emitted=base.count
+  passes=[];animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;stretchCount=0;environmentCount=0;filterCount=0;destinationAlphaCount=0;emitted=base.count
   for each material in catalog.materials
     primaryWrites=false;if len(material.stages)>0 then primaryWrites=material.stages[0].blend==materials.BLEND_OPAQUE end if
     for stageIndex=0 to len(material.stages)-1
       stage=material.stages[stageIndex];if not dynamicStage(stage) then continue end if
-      pass=buildStagePass(renderData,material,stage,stageIndex==0,stageIndex>0 and primaryWrites,skyTextureFlags);if pass is error then return pass end if
+      pass=buildStagePass(renderData,material,stage,stageIndex==0 and not materialUsesBspLightmap(material),stageIndex>0 and primaryWrites,skyTextureFlags);if pass is error then return pass end if
       if pass!=void then
         passes=passes+[pass];emitted=emitted+pass.commands.count
         if len(stage.slots)>1 then animated=animated+1 end if;if len(stage.uvMods)>0 then modified=modified+1 end if;if stage.blend!=materials.BLEND_OPAQUE then blended=blended+1 end if
@@ -111,12 +121,13 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
         if stage.alphaTest!=materials.ALPHA_TEST_NONE then alphaTested=alphaTested+1 end if
         if stage.tcGen=="environment" then environmentCount=environmentCount+1 end if
         if stage.blend==materials.BLEND_FILTER then filterCount=filterCount+1 end if
+        if stage.blend==materials.BLEND_DST_COLOR_ONE_MINUS_DST_ALPHA then destinationAlphaCount=destinationAlphaCount+1 end if
         for each mod in stage.uvMods if mod.kind=="turb" then turbulentCount=turbulentCount+1;break end if end for
         for each mod in stage.uvMods if mod.kind=="stretch" then stretchCount=stretchCount+1;break end if end for
       end if
     end for
   end for
-  return MaterialBatch(base,passes,len(renderData.triangles),drawable,emitted,skippedSky,animated,modified,blended,generated,alphaTested,turbulentCount,stretchCount,environmentCount,filterCount)
+  return MaterialBatch(base,passes,len(renderData.triangles),drawable,emitted,skippedSky,animated,modified,blended,generated,alphaTested,turbulentCount,stretchCount,environmentCount,filterCount,destinationAlphaCount)
 end function
 
 function identityAffine() return UvAffine(1.0,0.0,0.0,1.0,0.0,0.0) end function
@@ -140,7 +151,7 @@ function hasTurbulence(stage) for each mod in stage.uvMods if mod.kind=="turb" t
 function updatePassView(pass,viewOrigin,nowMilliseconds)
   slot=materials.slotAt(pass.stage,nowMilliseconds);transform=affineFor(pass.stage,nowMilliseconds);turbulent=hasTurbulence(pass.stage)
   for triangleIndex=0 to pass.commands.count-1
-    offset=triangleIndex*window.TRIANGLE_BATCH_RECORD_BYTES;window.writeBatchI32(pass.commands.data,offset,slot)
+    offset=triangleIndex*window.TRIANGLE_BATCH_RECORD_BYTES;if not pass.stage.bspLightmap then window.writeBatchI32(pass.commands.data,offset,slot) end if
     for vertex=0 to 2
       sourceUv=pass.sourceUvs[triangleIndex][vertex];if pass.stage.tcGen=="environment" then sourceUv=materials.environmentUV(pass.sourcePositions[triangleIndex][vertex],pass.sourceNormals[triangleIndex][vertex],viewOrigin) end if
       uv=[0.0,0.0];if turbulent then uv=materials.transformUVAt(pass.stage,sourceUv,pass.sourcePositions[triangleIndex][vertex],nowMilliseconds) else uv=applyAffine(transform,sourceUv) end if;uvOffset=offset+32+vertex*32;window.writeBatchF32(pass.commands.data,uvOffset,uv[0]);window.writeBatchF32(pass.commands.data,uvOffset+4,uv[1])
