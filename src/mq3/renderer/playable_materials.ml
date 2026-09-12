@@ -26,7 +26,7 @@ const ALPHA_TEST_LT128=2
 const ALPHA_TEST_GE128=3
 
 struct Image width height pixels end struct
-struct UvMod kind a b c d end struct
+struct UvMod kind a b c d wave end struct
 struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest rgbGen rgbWave end struct
 struct Material textureIndex shaderName imageName image slot stages end struct
 struct Catalog materials scripts attempted loaded textureCount animatedStageCount effectStageCount end struct
@@ -139,10 +139,11 @@ end function
 function stageMods(stage)
   result=[]
   for each mod in stage.texMods
-    if mod.kind=="scroll" and len(mod.values)>=2 then result=result+[UvMod("scroll",mod.values[0],mod.values[1],0.0,0.0)]
-    else if mod.kind=="scale" and len(mod.values)>=2 then result=result+[UvMod("scale",mod.values[0],mod.values[1],0.0,0.0)]
-    else if mod.kind=="rotate" and len(mod.values)>=1 then result=result+[UvMod("rotate",mod.values[0],0.0,0.0,0.0)]
-    else if mod.kind=="turb" and len(mod.values)>=4 then result=result+[UvMod("turb",mod.values[0],mod.values[1],mod.values[2],mod.values[3])]
+    if mod.kind=="scroll" and len(mod.values)>=2 then result=result+[UvMod("scroll",mod.values[0],mod.values[1],0.0,0.0,shaderParser.blankWave())]
+    else if mod.kind=="scale" and len(mod.values)>=2 then result=result+[UvMod("scale",mod.values[0],mod.values[1],0.0,0.0,shaderParser.blankWave())]
+    else if mod.kind=="rotate" and len(mod.values)>=1 then result=result+[UvMod("rotate",mod.values[0],0.0,0.0,0.0,shaderParser.blankWave())]
+    else if mod.kind=="turb" and len(mod.values)>=4 then result=result+[UvMod("turb",mod.values[0],mod.values[1],mod.values[2],mod.values[3],shaderParser.blankWave())]
+    else if mod.kind=="stretch" then result=result+[UvMod("stretch",0.0,0.0,0.0,0.0,mod.wave)]
     end if
   end for
   return result
@@ -214,8 +215,9 @@ function waveSignal(wave,nowMilliseconds)
   radians=n.fmul(index,n.fdiv(n.fmul(2.0,n.f32(3.14159265358979323846)),1023.0))
   return n.f32(trans.sin(radians))
 end function
+function waveSample(wave,nowMilliseconds) return n.fadd(wave.base,n.fmul(wave.amplitude,waveSignal(wave,nowMilliseconds))) end function
 function waveValue(wave,nowMilliseconds)
-  value=n.fadd(wave.base,n.fmul(wave.amplitude,waveSignal(wave,nowMilliseconds)))
+  value=waveSample(wave,nowMilliseconds)
   if value<0.0 then return 0.0 end if;if value>1.0 then return 1.0 end if;return value
 end function
 function stageLight(stage,vertexLight,nowMilliseconds)
@@ -246,6 +248,7 @@ function transformUVAt(stage,uv,position,nowMilliseconds)
       radians=0.0-mod.a*seconds*3.14159265358979323846/180.0;sine=trans.sin(radians);cosine=trans.cos(radians);x=result[0]-0.5;y=result[1]-0.5
       result=[x*cosine-y*sine+0.5,x*sine+y*cosine+0.5]
     else if mod.kind=="turb" then result=[result[0]+turbulentOffset(position[0]+position[2],mod,nowMilliseconds),result[1]+turbulentOffset(position[1],mod,nowMilliseconds)]
+    else if mod.kind=="stretch" then p=1.0/waveSample(mod.wave,nowMilliseconds);offset=0.5-0.5*p;result=[result[0]*p+offset,result[1]*p+offset]
     end if
   end for
   return result

@@ -10,7 +10,7 @@ import mq3.compat.transcendental as trans
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
 struct StagePass commands sourceUvs sourcePositions sourceLights stage primary depthEqual end struct
-struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses end struct
+struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
 function vertexLight(vertex) return (vertex.color[0]+vertex.color[1]+vertex.color[2])/(255.0*3.0) end function
@@ -97,7 +97,7 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
     else if not dynamicStage(material.stages[0]) then base=appendResolved(base,triangle,material.stages[0].slots[0],true) end if
     if base is error then return base end if
   end for
-  passes=[];animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;emitted=base.count
+  passes=[];animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;stretchCount=0;emitted=base.count
   for each material in catalog.materials
     primaryWrites=false;if len(material.stages)>0 then primaryWrites=material.stages[0].blend==materials.BLEND_OPAQUE end if
     for stageIndex=0 to len(material.stages)-1
@@ -109,10 +109,11 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
         if stage.rgbGen=="wave" then generated=generated+1 end if
         if stage.alphaTest!=materials.ALPHA_TEST_NONE then alphaTested=alphaTested+1 end if
         for each mod in stage.uvMods if mod.kind=="turb" then turbulentCount=turbulentCount+1;break end if end for
+        for each mod in stage.uvMods if mod.kind=="stretch" then stretchCount=stretchCount+1;break end if end for
       end if
     end for
   end for
-  return MaterialBatch(base,passes,len(renderData.triangles),drawable,emitted,skippedSky,animated,modified,blended,generated,alphaTested,turbulentCount)
+  return MaterialBatch(base,passes,len(renderData.triangles),drawable,emitted,skippedSky,animated,modified,blended,generated,alphaTested,turbulentCount,stretchCount)
 end function
 
 function identityAffine() return UvAffine(1.0,0.0,0.0,1.0,0.0,0.0) end function
@@ -126,6 +127,7 @@ function affineFor(stage,nowMilliseconds)
       radians=0.0-mod.a*seconds*3.14159265358979323846/180.0;sine=trans.sin(radians);cosine=trans.cos(radians)
       m00=cosine*result.m00-sine*result.m10;m01=cosine*result.m01-sine*result.m11;m10=sine*result.m00+cosine*result.m10;m11=sine*result.m01+cosine*result.m11
       tx=cosine*(result.tx-0.5)-sine*(result.ty-0.5)+0.5;ty=sine*(result.tx-0.5)+cosine*(result.ty-0.5)+0.5;result=UvAffine(m00,m01,m10,m11,tx,ty)
+    else if mod.kind=="stretch" then p=1.0/materials.waveSample(mod.wave,nowMilliseconds);offset=0.5-0.5*p;result=UvAffine(result.m00*p,result.m01*p,result.m10*p,result.m11*p,result.tx*p+offset,result.ty*p+offset)
     end if
   end for
   return result
