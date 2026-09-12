@@ -20,9 +20,9 @@ def main():
     if native!=mini: raise RuntimeError('shader parser primitive mismatch\nC:\n'+native+'MiniLang:\n'+mini)
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/shader_parser_contracts.ml','--output','shader_parser_contracts.exe'],cwd=ROOT,check=True)
     contracts=run([ROOT/'build/shader_parser_contracts.exe'],ROOT/'build',log=out/'contracts.log').strip()
-    if contracts!='PASS: 32 shader-parser contracts': raise RuntimeError(contracts)
+    if contracts!='PASS: 34 shader-parser contracts': raise RuntimeError(contracts)
     files=[original,harness,ROOT/'src/mq3/renderer/shader_parser.ml',ROOT/'tests/shader_parser_oracle.ml',ROOT/'tests/shader_parser_contracts.ml']
-    result={'passed':True,'records':len(native.splitlines()),'contracts':32,'functions':functions,'scope':'Renderer shader/stage parsing: maps, blends, color/alpha/tc generation, tcMods, depth state, cull, sort and surface parameters.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
+    result={'passed':True,'records':len(native.splitlines()),'contracts':34,'functions':functions,'scope':'Renderer shader/stage parsing: maps, blends, color/alpha/tc generation, tcMods, wave vertex deformations, depth state, cull, sort and surface parameters.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
     (out/'result.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8',newline='\n')
-    print(f"PASS: {result['records']} exact Baseq3 shader-parser records + 32 contracts")
+    print(f"PASS: {result['records']} exact Baseq3 shader-parser records + 34 contracts")
 if __name__=='__main__': main()

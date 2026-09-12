@@ -36,8 +36,9 @@ const MAX_IMAGE_ANIMATIONS=8
 
 struct Wave func base amplitude phase frequency end struct
 struct TexMod kind values wave end struct
+struct Deform kind spread wave end struct
 struct Stage active mapMode images animationSpeed isLightmap blendSrc blendDst rgbGen alphaGen rgbWave alphaWave constantColor portalRange tcGen tcGenVectors texMods depthWrite depthExplicit alphaFunc depthFunc detail stateBits end struct
-struct Shader name stages sort cull surfaceParms noMipMaps noPicMip polygonOffset entityMergable portalRange clampTime warnings end struct
+struct Shader name stages sort cull surfaceParms noMipMaps noPicMip polygonOffset entityMergable portalRange clampTime deforms warnings end struct
 
 function lower(text) return strings.toLowerAscii(text) end function
 function number(text) return n.f32(numbers.atof(text)) end function
@@ -126,6 +127,16 @@ function restOfLine(state)
     token=parser.parseExt(state,false);if token=="" then break end if;values=values+[token]
   end while
   return values
+end function
+
+function parseDeform(state)
+  kind=lower(parser.parseExt(state,false));if kind=="" then return error(7144,"missing deformVertexes type") end if
+  if kind=="wave" then
+    divisor=parser.parseExt(state,false);if divisor=="" then return error(7145,"missing deformVertexes spread") end if
+    value=number(divisor);spread=100.0;if value!=0.0 then spread=1.0/value end if
+    return Deform("wave",spread,parseWave(state))
+  end if
+  restOfLine(state);return Deform(kind,0.0,blankWave())
 end function
 
 function parseTexMod(tokens)
@@ -218,7 +229,7 @@ function skipLine(state) restOfLine(state);return 1 end function
 
 function parse(state,name)
   if parser.parseExt(state,true)!="{" then return error(7139,"shader definition must begin with {") end if
-  shader=Shader(name,[],0.0,"front",[],false,false,false,false,0.0,0.0,[])
+  shader=Shader(name,[],0.0,"front",[],false,false,false,false,0.0,0.0,[],[])
   while true
     token=parser.parseExt(state,true);if token=="" then return error(7140,"unterminated shader definition: "+name) end if
     if token=="}" then break end if
@@ -237,6 +248,7 @@ function parse(state,name)
       else if command=="sort" then value=parser.parseExt(state,false);if value!="" then shader.sort=sortValue(value) end if
       else if command=="cull" then value=lower(parser.parseExt(state,false));if value=="none" or value=="twosided" or value=="disable" then shader.cull="twoSided" else if value=="back" or value=="backside" or value=="backsided" then shader.cull="back" end if
       else if command=="clamptime" then value=parser.parseExt(state,false);if value!="" then shader.clampTime=number(value) end if
+      else if command=="deformvertexes" then shader.deforms=shader.deforms+[parseDeform(state)]
       else if command=="light" then parser.parseExt(state,false)
       else return error(7142,"unsupported general shader directive: "+token)
       end if

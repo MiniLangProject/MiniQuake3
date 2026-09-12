@@ -33,7 +33,9 @@ applies scroll/scale/rotate/turb/stretch `tcMod` in shader order, evaluates came
 `tcGen environment` reflection coordinates, enforces `alphaFunc GT0`, `LT128` and `GE128`, and executes opaque,
 alpha, additive and multiplicative `filter` stages. Scripted `$lightmap` stages retain their
 own BSP slots and UVs, including `GL_DST_COLOR GL_ONE_MINUS_DST_ALPHA` with preserved framebuffer alpha. Quadratic Bezier patch grids are adaptively tessellated with their
-base UVs, lightmap UVs and vertex colours. Movement uses 800-unit gravity,
+base UVs, lightmap UVs and vertex colours. Baseq3 `deformVertexes wave` moves retained
+world vertices along their BSP normals with spatial phase and multiple deformations in script order;
+q3dm1 uses this for the animated banner and lava surface. Movement uses 800-unit gravity,
 Quake friction and ground/air acceleration, collision sliding, an 18-unit step
 and Space jumping against the ported brush and patch collision world.
 The gameplay view draws the original Baseq3 crosshair, large number shaders,
@@ -159,8 +161,8 @@ Validation:
   near-plane-polygon contracts.
 - `python scripts/test_bsp_preview.py`: 34 BSP geometry contracts.
 - `python scripts/test_bsp_render_data.py`: 56 triangle/lightmap/patch contracts.
-- `python scripts/test_playable_materials.py`: 45 BSP/shader/image/generator contracts.
-- `python scripts/test_playable_world_batch.py`: 34 retained-command, material-stage,
+- `python scripts/test_playable_materials.py`: 46 BSP/shader/image/generator contracts.
+- `python scripts/test_playable_world_batch.py`: 37 retained-command, material-stage,
   sky-filtering and one-call submission contracts; the native lifecycle also
   compares framebuffer pixels and depth bit-for-bit with the scalar path.
 - `python scripts/test_playable_movement.py`: 27 gravity/jump/slide/idle contracts.

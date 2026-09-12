@@ -4,7 +4,7 @@ import mq3.renderer.shader_parser as shaders
 function require(ok,text) if not ok then return error(7150,text) end if;return 1 end function
 function main(args)
   count=0
-  source="textures/demo/full {\n surfaceparm metalsteps\n surfaceparm noimpact\n cull none\n sort additive\n nomipmaps\n polygonOffset\n {\n  clampmap textures/demo/a.tga\n  blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA\n  rgbGen wave sin 0.5 0.5 0 2\n  alphaGen portal 128\n  tcGen vector ( 1 0 0 ) ( 0 1 0 )\n  tcMod scroll 0.25 -0.5\n  tcMod rotate 45\n  alphaFunc GE128\n  depthFunc equal\n  depthWrite\n  detail\n }\n {\n  animMap 4 textures/a.tga textures/b.tga textures/c.tga\n  blendFunc filter\n  rgbGen vertex\n  tcGen lightmap\n }\n}\n"
+  source="textures/demo/full {\n surfaceparm metalsteps\n surfaceparm noimpact\n cull none\n sort additive\n nomipmaps\n polygonOffset\n deformVertexes wave 100 sin 0 3 0 .7\n deformVertexes wave 0 sawtooth 1 2 .25 0\n {\n  clampmap textures/demo/a.tga\n  blendFunc GL_SRC_ALPHA GL_ONE_MINUS_SRC_ALPHA\n  rgbGen wave sin 0.5 0.5 0 2\n  alphaGen portal 128\n  tcGen vector ( 1 0 0 ) ( 0 1 0 )\n  tcMod scroll 0.25 -0.5\n  tcMod rotate 45\n  alphaFunc GE128\n  depthFunc equal\n  depthWrite\n  detail\n }\n {\n  animMap 4 textures/a.tga textures/b.tga textures/c.tga\n  blendFunc filter\n  rgbGen vertex\n  tcGen lightmap\n }\n}\n"
   index=shaderIndex.build(source);shader=shaders.parseIndexed(index,"TEXTURES/DEMO/FULL")
   count=count+require(shader.name=="textures/demo/full","indexed definition name")
   count=count+require(len(shader.stages)==2,"two stages")
@@ -13,6 +13,8 @@ function main(args)
   count=count+require(shader.noMipMaps and shader.noPicMip,"nomipmaps coupling")
   count=count+require(shader.polygonOffset,"polygon offset")
   count=count+require(len(shader.surfaceParms)==2 and shader.surfaceParms[0]=="metalsteps","surface parameters")
+  count=count+require(len(shader.deforms)==2 and shader.deforms[0].kind=="wave","wave deformations retained")
+  count=count+require(shader.deforms[0].spread==0.01 and shader.deforms[0].wave.amplitude==3.0 and shader.deforms[1].spread==100.0,"deformation spread follows Baseq3 reciprocal and zero fallback")
   first=shader.stages[0]
   count=count+require(first.mapMode=="clamp" and first.images[0]=="textures/demo/a.tga","clamp map")
   count=count+require(first.blendSrc==shaders.GLS_SRCBLEND_SRC_ALPHA and first.blendDst==shaders.GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA,"explicit blend")
