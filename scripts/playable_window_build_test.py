@@ -17,6 +17,7 @@ RASTER_STATE_TEST = ROOT / "tests" / "playable_window_raster_state_native.c"
 RASTER_EXPORTS = (
     "playable_window_set_title_utf8",
     "playable_window_clear_depth",
+    "playable_window_set_depth_range",
     "playable_window_upload_texture",
     "playable_window_release_texture",
     "playable_window_draw_triangle",

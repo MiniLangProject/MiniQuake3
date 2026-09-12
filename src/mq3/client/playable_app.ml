@@ -414,13 +414,17 @@ function renderViewModel(projection,catalog,weaponState,combatState,now,transfor
   if asset==void then return 0 end if
   if transform==void then return 0 end if
   triangles=itemModels.renderAsset(asset,transform,MAX_VIEWMODEL_TRIANGLES);if triangles is error then return triangles end if
-  window.clearDepth(1000000000.0)
-  drawn=drawClippedItemTriangles(projection,triangles)
+  viewState=multitexture.setState(multitexture.BLEND_OPAQUE,false,true);if viewState is error then return viewState end if
+  if not window.setDepthRange(0.3,projection.nearDistance) then return error(7490,"could not enable viewmodel depth range") end if
+  drawn=drawClippedItemTriangles(projection,triangles);if drawn is error then return drawn end if
   flashDrawn=0
   if showFlash then
     flash=muzzleFlash.render(catalog,weaponClass,transform,combatState.lastFire,now,weaponState.triggerHeld,MAX_VIEWMODEL_TRIANGLES);if flash is error then return flash end if
-    flashDrawn=drawTintedItemTriangles(projection,flash.triangles,flash.red,flash.green,flash.blue)
+    flashState=multitexture.setState(multitexture.BLEND_ADD,false,false);if flashState is error then return flashState end if
+    flashDrawn=drawTintedItemTriangles(projection,flash.triangles,flash.red,flash.green,flash.blue);if flashDrawn is error then return flashDrawn end if
   end if
+  if not window.setDepthRange(1.0,projection.nearDistance) then return error(7490,"could not restore world depth range") end if
+  restoreState=multitexture.setState(multitexture.BLEND_OPAQUE,false,true);if restoreState is error then return restoreState end if
   return drawn+flashDrawn
 end function
 

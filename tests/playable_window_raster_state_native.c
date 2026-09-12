@@ -48,6 +48,33 @@ int main(void) {
     if (pixels[sample] != UINT32_C(0x00800000)) return 7;
     if (depthPixels[sample] != 0.5f) return 8;
 
+    /* RF_DEPTHHACK maps a far viewmodel into the front 30 percent while a
+     * fragment exactly on the near plane still wins. */
+    playable_window_begin_frame(0, 0, 0);
+    if (!playable_window_set_raster_state(0, 0, 1)) return 9;
+    playable_window_draw_triangle(-1,
+        1.0, 1.0, 2.0, 0.0, 0.0, 1.0,
+        7.0, 1.0, 2.0, 0.0, 0.0, 1.0,
+        1.0, 7.0, 2.0, 0.0, 0.0, 1.0, 255, 0, 0);
+    if (!playable_window_set_depth_range(0.3, 1.0)) return 10;
+    playable_window_draw_triangle(-1,
+        1.0, 1.0, 10.0, 0.0, 0.0, 1.0,
+        7.0, 1.0, 10.0, 0.0, 0.0, 1.0,
+        1.0, 7.0, 10.0, 0.0, 0.0, 1.0, 0, 0, 255);
+    if (pixels[sample] != UINT32_C(0x000000ff)) return 11;
+    if (depthPixels[sample] < 0.7299f || depthPixels[sample] > 0.7301f) return 12;
+    playable_window_begin_frame(0, 0, 0);
+    playable_window_draw_triangle(-1,
+        1.0, 1.0, 1.0, 0.0, 0.0, 1.0,
+        7.0, 1.0, 1.0, 0.0, 0.0, 1.0,
+        1.0, 7.0, 1.0, 0.0, 0.0, 1.0, 255, 0, 0);
+    if (!playable_window_set_depth_range(0.3, 1.0)) return 13;
+    playable_window_draw_triangle(-1,
+        1.0, 1.0, 10.0, 0.0, 0.0, 1.0,
+        7.0, 1.0, 10.0, 0.0, 0.0, 1.0,
+        1.0, 7.0, 10.0, 0.0, 0.0, 1.0, 0, 0, 255);
+    if (pixels[sample] != UINT32_C(0x00ff0000)) return 14;
+
     playable_window_shutdown();
     puts("playable window raster-state regression: PASS");
     return 0;

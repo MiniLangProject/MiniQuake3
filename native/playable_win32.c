@@ -43,6 +43,8 @@ static playableTexture textures[PLAYABLE_TEXTURE_SLOTS];
 static int rasterBlendMode;
 static int rasterDepthEqual;
 static int rasterDepthWrite = 1;
+static double rasterDepthRangeScale = 1.0;
+static double rasterDepthRangeNear = 1.0;
 static __declspec(thread) int rasterClipMinimumY;
 static __declspec(thread) int rasterClipMaximumY = INT_MAX;
 
@@ -272,6 +274,15 @@ static uint32_t makeColor(int red, int green, int blue) {
         ((uint32_t)colorByte(red) << 16);
 }
 
+/* OpenGL maps normalized depth into glDepthRange(0, scale). This rasterizer
+ * stores reciprocal eye depth, so the equivalent comparison value is
+ * (1-scale)/zNear + scale/z. Attribute interpolation still uses the original
+ * reciprocal depth, just as OpenGL keeps clip-space W unchanged. */
+static double depthRangeInverse(double inverseDepth) {
+    return (1.0 - rasterDepthRangeScale) / rasterDepthRangeNear +
+        rasterDepthRangeScale * inverseDepth;
+}
+
 static void clearDepth(double depth) {
     SIZE_T count = (SIZE_T)surfaceWidth * (SIZE_T)surfaceHeight;
     SIZE_T i;
@@ -290,6 +301,8 @@ PLAYABLE_API void playable_window_begin_frame(int red, int green, int blue) {
     rasterBlendMode = 0;
     rasterDepthEqual = 0;
     rasterDepthWrite = 1;
+    rasterDepthRangeScale = 1.0;
+    rasterDepthRangeNear = 1.0;
 }
 
 PLAYABLE_API void playable_window_clear_depth(double depth) {
@@ -438,6 +451,14 @@ PLAYABLE_API int playable_window_set_raster_state(int blendMode, int depthEqual,
     rasterBlendMode = blendMode;
     rasterDepthEqual = depthEqual;
     rasterDepthWrite = depthWrite;
+    return 1;
+}
+
+PLAYABLE_API int playable_window_set_depth_range(double scale, double nearDistance) {
+    if (!_finite(scale) || !_finite(nearDistance) || scale <= 0.0 || scale > 1.0 ||
+            nearDistance <= 0.0) return 0;
+    rasterDepthRangeScale = scale;
+    rasterDepthRangeNear = nearDistance;
     return 1;
 }
 
@@ -593,6 +614,7 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
             double b1 = nextB1;
             double b2 = 1.0 - b0 - b1;
             double inverseDepth = nextInverseDepth;
+            double comparisonDepth;
             double lightOverDepth = nextLightOverDepth;
             double uOverDepth = nextUOverDepth;
             double vOverDepth = nextVOverDepth;
@@ -608,12 +630,13 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
             nextVOverDepth += stepVOverDepthX;
             if (b0 < 0.0 || b1 < 0.0 || b2 < 0.0) continue;
             if (inverseDepth <= 0.0) continue;
+            comparisonDepth = depthRangeInverse(inverseDepth);
             offset = (SIZE_T)y * (SIZE_T)surfaceWidth + (SIZE_T)x;
             if (rasterDepthEqual) {
-                double difference = inverseDepth - (double)depthPixels[offset];
-                double tolerance = fabs(inverseDepth) * 0.00001 + 0.0000001;
+                double difference = comparisonDepth - (double)depthPixels[offset];
+                double tolerance = fabs(comparisonDepth) * 0.00001 + 0.0000001;
                 if (difference < -tolerance || difference > tolerance) continue;
-            } else if (inverseDepth <= (double)depthPixels[offset]) continue;
+            } else if (comparisonDepth <= (double)depthPixels[offset]) continue;
             depth = constantDepth ? constantDepthScale : 1.0 / inverseDepth;
             light = unitLight ? 1.0 : lightOverDepth * depth;
             color = fallback;
@@ -626,7 +649,7 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
             if ((color >> 24) == 0u) continue;
             if (rasterBlendMode == 2) pixels[offset] = addColor(color, pixels[offset]);
             else pixels[offset] = blendColor(color, pixels[offset]);
-            if (rasterDepthWrite) depthPixels[offset] = (float)inverseDepth;
+            if (rasterDepthWrite) depthPixels[offset] = (float)comparisonDepth;
         }
         rowB0 += stepB0Y;
         rowB1 += stepB1Y;
@@ -794,6 +817,7 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
             double b1 = nextB1;
             double b2 = 1.0 - b0 - b1;
             double inverseDepth = nextInverseDepth;
+            double comparisonDepth;
             double lightOverDepth = nextLightOverDepth;
             double uOverDepth = nextUOverDepth;
             double vOverDepth = nextVOverDepth;
@@ -813,12 +837,13 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
             nextLvOverDepth += stepLvOverDepthX;
             if (b0 < 0.0 || b1 < 0.0 || b2 < 0.0) continue;
             if (inverseDepth <= 0.0) continue;
+            comparisonDepth = depthRangeInverse(inverseDepth);
             offset = (SIZE_T)y * (SIZE_T)surfaceWidth + (SIZE_T)x;
             if (rasterDepthEqual) {
-                double difference = inverseDepth - (double)depthPixels[offset];
-                double tolerance = fabs(inverseDepth) * 0.00001 + 0.0000001;
+                double difference = comparisonDepth - (double)depthPixels[offset];
+                double tolerance = fabs(comparisonDepth) * 0.00001 + 0.0000001;
                 if (difference < -tolerance || difference > tolerance) continue;
-            } else if (inverseDepth <= (double)depthPixels[offset]) continue;
+            } else if (comparisonDepth <= (double)depthPixels[offset]) continue;
             depth = 1.0 / inverseDepth;
             light = lightOverDepth * depth;
             if (baseTexture) {
@@ -834,12 +859,12 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
             color = modulateColor(color, light);
             if ((color >> 24) == 0u) continue;
             if (rasterDepthEqual) {
-                double difference = inverseDepth - (double)depthPixels[offset];
+                double difference = comparisonDepth - (double)depthPixels[offset];
                 if (difference < -0.00001 || difference > 0.00001) continue;
             }
             if (rasterBlendMode == 2) pixels[offset] = addColor(color, pixels[offset]);
             else pixels[offset] = blendColor(color, pixels[offset]);
-            if (rasterDepthWrite) depthPixels[offset] = (float)inverseDepth;
+            if (rasterDepthWrite) depthPixels[offset] = (float)comparisonDepth;
         }
         rowB0 += stepB0Y;
         rowB1 += stepB1Y;

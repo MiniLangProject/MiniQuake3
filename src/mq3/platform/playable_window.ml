@@ -16,6 +16,7 @@ extern function lineNative(x0 as i32,y0 as i32,x1 as i32,y1 as i32,red as i32,gr
 extern function presentNative() from "playable_window.dll" symbol "playable_window_present" returns void
 extern function shutdownNative() from "playable_window.dll" symbol "playable_window_shutdown" returns void
 extern function clearDepthNative(depth as double) from "playable_window.dll" symbol "playable_window_clear_depth" returns void
+extern function setDepthRangeNative(scale as double,nearDistance as double) from "playable_window.dll" symbol "playable_window_set_depth_range" returns i32
 extern function uploadTextureNative(slot as i32,rgba as ptr,width as i32,height as i32) from "playable_window.dll" symbol "playable_window_upload_texture" returns i32
 extern function releaseTextureNative(slot as i32) from "playable_window.dll" symbol "playable_window_release_texture" returns void
 extern function triangleNative(textureSlot as i32,x0 as double,y0 as double,depth0 as double,u0 as double,v0 as double,light0 as double,x1 as double,y1 as double,depth1 as double,u1 as double,v1 as double,light1 as double,x2 as double,y2 as double,depth2 as double,u2 as double,v2 as double,light2 as double,red as i32,green as i32,blue as i32) from "playable_window.dll" symbol "playable_window_draw_triangle" returns void
@@ -72,6 +73,7 @@ end function
 function present() presentNative();return void end function
 function shutdown() shutdownNative();return void end function
 function clearDepth(depth) clearDepthNative(depth);return void end function
+function setDepthRange(scale,nearDistance) return setDepthRangeNative(scale,nearDistance)!=0 end function
 function uploadTexture(slot,rgba,width,height)
   if typeof(rgba)!="bytes" then return error(7483,"preview texture must be RGBA bytes") end if
   return uploadTextureNative(slot,nativeBytesPtr(rgba),width,height)!=0

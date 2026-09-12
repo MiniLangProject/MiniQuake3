@@ -12,6 +12,7 @@ __declspec(dllimport) int playable_window_consume_mouse_dy(void);
 __declspec(dllimport) int playable_window_milliseconds(void);
 __declspec(dllimport) void playable_window_begin_frame(int, int, int);
 __declspec(dllimport) void playable_window_clear_depth(double);
+__declspec(dllimport) int playable_window_set_depth_range(double, double);
 __declspec(dllimport) int playable_window_upload_texture(int, const unsigned char *, int, int);
 __declspec(dllimport) void playable_window_release_texture(int);
 __declspec(dllimport) void playable_window_draw_triangle(int,
@@ -68,8 +69,13 @@ int main(void) {
         playable_window_set_raster_state(3, 0, 1) ||
         playable_window_set_raster_state(0, 2, 1) ||
         playable_window_set_raster_state(0, 0, 2) ||
-        !playable_window_set_raster_state(2, 1, 0) ||
-        !playable_window_set_raster_state(0, 0, 1)) return 10;
+            !playable_window_set_raster_state(2, 1, 0) ||
+            !playable_window_set_raster_state(0, 0, 1)) return 10;
+    if (playable_window_set_depth_range(0.0, 1.0) ||
+            playable_window_set_depth_range(1.1, 1.0) ||
+            playable_window_set_depth_range(0.3, 0.0) ||
+            !playable_window_set_depth_range(0.3, 1.0) ||
+            !playable_window_set_depth_range(1.0, 1.0)) return 12;
     if (playable_window_draw_triangle_batch(0, 116, 1) ||
         playable_window_draw_triangle_batch(batch, 115, 1) ||
         playable_window_draw_triangle_batch(batch, 116, -1) ||

@@ -93,9 +93,11 @@ Its bob, landing motion and idle drift follow `CG_CalculateWeaponPosition`; the
 visible model is attached through the complete animated `tag_weapon` transform
 loaded from the retail tag-only `_hand.md3`. Viewmodel polygons crossing the
 near plane are clipped and retriangulated with interpolated UV and light values
-instead of being discarded as whole triangles. Until the software renderer gains
-Quake 3's separate `RF_DEPTHHACK` projection, a contained parent-position
-compensation keeps this attachment inside its valid near volume. Attack frames
+instead of being discarded as whole triangles. The software depth buffer maps
+viewmodel fragments into Quake 3's `RF_DEPTHHACK` 0..0.3 range while preserving
+the original perspective depth for UV and light interpolation. A contained
+parent-position compensation keeps the retail CD Machinegun inside the viewport.
+Attack frames
 1-6 run at the original 15 fps with interpolated tags. Weapon changes retain
 the old model through the mapped drop frames, then hold the new hand at frame
 zero during Baseq3's 250 ms raise interval;
