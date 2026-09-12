@@ -20,10 +20,14 @@ const MAX_ANIMATION_FRAMES=8
 const BLEND_OPAQUE=0
 const BLEND_ALPHA=1
 const BLEND_ADD=2
+const ALPHA_TEST_NONE=0
+const ALPHA_TEST_GT0=1
+const ALPHA_TEST_LT128=2
+const ALPHA_TEST_GE128=3
 
 struct Image width height pixels end struct
 struct UvMod kind a b end struct
-struct RuntimeStage imageNames images slots animationSpeed uvMods blend rgbGen rgbWave end struct
+struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest rgbGen rgbWave end struct
 struct Material textureIndex shaderName imageName image slot stages end struct
 struct Catalog materials scripts attempted loaded textureCount animatedStageCount effectStageCount end struct
 
@@ -125,6 +129,13 @@ function stageBlend(stage)
   return BLEND_OPAQUE
 end function
 
+function stageAlphaTest(stage)
+  if stage.alphaFunc==shaderParser.GLS_ATEST_GT_0 then return ALPHA_TEST_GT0 end if
+  if stage.alphaFunc==shaderParser.GLS_ATEST_LT_80 then return ALPHA_TEST_LT128 end if
+  if stage.alphaFunc==shaderParser.GLS_ATEST_GE_80 then return ALPHA_TEST_GE128 end if
+  return ALPHA_TEST_NONE
+end function
+
 function stageMods(stage)
   result=[]
   for each mod in stage.texMods
@@ -148,13 +159,13 @@ function loadRuntimeStage(archive,stage,nextSlot,endSlot)
     if loaded!=void then names=names+[loaded[0]];images=images+[loaded[1]];slots=slots+[nextSlot];nextSlot=nextSlot+1 end if
   end for
   if len(images)==0 then return void end if
-  return [RuntimeStage(names,images,slots,stage.animationSpeed,stageMods(stage),stageBlend(stage),stage.rgbGen,stage.rgbWave),nextSlot]
+  return [RuntimeStage(names,images,slots,stage.animationSpeed,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),stage.rgbGen,stage.rgbWave),nextSlot]
 end function
 
 function directRuntimeStage(archive,name,nextSlot,endSlot)
   if nextSlot>=endSlot then return void end if
   loaded=loadImage(archive,name);if loaded==void then return void end if
-  return [RuntimeStage([loaded[0]],[loaded[1]],[nextSlot],0.0,[],BLEND_OPAQUE,"identitylighting",shaderParser.blankWave()),nextSlot+1]
+  return [RuntimeStage([loaded[0]],[loaded[1]],[nextSlot],0.0,[],BLEND_OPAQUE,ALPHA_TEST_NONE,"identitylighting",shaderParser.blankWave()),nextSlot+1]
 end function
 
 function runtimeStages(archive,index,name,nextSlot,endSlot)
@@ -243,7 +254,7 @@ function loadIndexed(archive,map,maxMaterials,firstSlot,index,scriptCount)
       first=stages[0];materialList=materialList+[Material(textureIndex,name,first.imageNames[0],first.images[0],first.slots[0],stages)]
       for each stage in stages
         if len(stage.slots)>1 then animated=animated+1 end if
-        if stage.blend!=BLEND_OPAQUE or len(stage.uvMods)>0 then effects=effects+1 end if
+        if stage.blend!=BLEND_OPAQUE or stage.alphaTest!=ALPHA_TEST_NONE or len(stage.uvMods)>0 then effects=effects+1 end if
       end for
     end if
     textureIndex=textureIndex+1

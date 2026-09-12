@@ -19,12 +19,14 @@ static void drawUiTriangle(int textureSlot) {
 int main(void) {
     static const unsigned char halfRed[4] = { 255, 0, 0, 128 };
     static const unsigned char halfBlue[4] = { 0, 0, 255, 128 };
+    static const unsigned char lowGreen[4] = { 0, 255, 0, 127 };
     const SIZE_T sample = 2u * 8u + 2u;
     float clearedDepth;
 
     if (!allocateSurface(8, 8) ||
             !playable_window_upload_texture(0, halfRed, 1, 1) ||
-            !playable_window_upload_texture(1, halfBlue, 1, 1)) return 1;
+            !playable_window_upload_texture(1, halfBlue, 1, 1) ||
+            !playable_window_upload_texture(2, lowGreen, 1, 1)) return 1;
 
     playable_window_begin_frame(0, 0, 0);
     clearedDepth = depthPixels[sample];
@@ -74,6 +76,23 @@ int main(void) {
         7.0, 1.0, 10.0, 0.0, 0.0, 1.0,
         1.0, 7.0, 10.0, 0.0, 0.0, 1.0, 0, 0, 255);
     if (pixels[sample] != UINT32_C(0x00ff0000)) return 14;
+
+    /* Quake 3's GE128 cutout keeps alpha 128 as an opaque fragment and
+     * discards alpha 127 without touching color or depth. */
+    playable_window_begin_frame(0, 0, 0);
+    if (!playable_window_set_alpha_test(3)) return 15;
+    drawUiTriangle(2);
+    if (pixels[sample] != 0 || depthPixels[sample] != clearedDepth) return 16;
+    drawUiTriangle(1);
+    if (pixels[sample] != UINT32_C(0x000000ff) || depthPixels[sample] != 0.5f) return 17;
+
+    /* LT128 is the inverse threshold and also writes surviving texels
+     * opaquely when blending is disabled. */
+    playable_window_begin_frame(0, 0, 0);
+    if (!playable_window_set_alpha_test(2)) return 18;
+    drawUiTriangle(1);
+    drawUiTriangle(2);
+    if (pixels[sample] != UINT32_C(0x0000ff00) || depthPixels[sample] != 0.5f) return 19;
 
     playable_window_shutdown();
     puts("playable window raster-state regression: PASS");

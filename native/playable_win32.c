@@ -43,6 +43,7 @@ static playableTexture textures[PLAYABLE_TEXTURE_SLOTS];
 static int rasterBlendMode;
 static int rasterDepthEqual;
 static int rasterDepthWrite = 1;
+static int rasterAlphaTest;
 static double rasterDepthRangeScale = 1.0;
 static double rasterDepthRangeNear = 1.0;
 static __declspec(thread) int rasterClipMinimumY;
@@ -301,6 +302,7 @@ PLAYABLE_API void playable_window_begin_frame(int red, int green, int blue) {
     rasterBlendMode = 0;
     rasterDepthEqual = 0;
     rasterDepthWrite = 1;
+    rasterAlphaTest = 0;
     rasterDepthRangeScale = 1.0;
     rasterDepthRangeNear = 1.0;
 }
@@ -451,6 +453,22 @@ PLAYABLE_API int playable_window_set_raster_state(int blendMode, int depthEqual,
     rasterBlendMode = blendMode;
     rasterDepthEqual = depthEqual;
     rasterDepthWrite = depthWrite;
+    return 1;
+}
+
+/* Mirrors GLS_ATEST_GT_0, GLS_ATEST_LT_80 and GLS_ATEST_GE_80 after the
+ * texture and vertex-light color calculations have produced fragment alpha. */
+PLAYABLE_API int playable_window_set_alpha_test(int mode) {
+    if (mode < 0 || mode > 3) return 0;
+    rasterAlphaTest = mode;
+    return 1;
+}
+
+static int alphaTestPasses(uint32_t color) {
+    uint32_t alpha = color >> 24;
+    if (rasterAlphaTest == 1) return alpha > 0u;
+    if (rasterAlphaTest == 2) return alpha < 128u;
+    if (rasterAlphaTest == 3) return alpha >= 128u;
     return 1;
 }
 
@@ -646,9 +664,10 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
                 color = sampleTexture(texture, u, v);
             }
             if (!unitLight) color = modulateColor(color, light);
-            if ((color >> 24) == 0u) continue;
+            if (!alphaTestPasses(color) || (color >> 24) == 0u) continue;
             if (rasterBlendMode == 2) pixels[offset] = addColor(color, pixels[offset]);
-            else pixels[offset] = blendColor(color, pixels[offset]);
+            else if (rasterBlendMode == 1) pixels[offset] = blendColor(color, pixels[offset]);
+            else pixels[offset] = color & 0x00ffffffu;
             if (rasterDepthWrite) depthPixels[offset] = (float)comparisonDepth;
         }
         rowB0 += stepB0Y;
@@ -857,13 +876,14 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
                 color = multiplyTextures(color, sampleTexture(lightmapTexture, u, v));
             }
             color = modulateColor(color, light);
-            if ((color >> 24) == 0u) continue;
+            if (!alphaTestPasses(color) || (color >> 24) == 0u) continue;
             if (rasterDepthEqual) {
                 double difference = comparisonDepth - (double)depthPixels[offset];
                 if (difference < -0.00001 || difference > 0.00001) continue;
             }
             if (rasterBlendMode == 2) pixels[offset] = addColor(color, pixels[offset]);
-            else pixels[offset] = blendColor(color, pixels[offset]);
+            else if (rasterBlendMode == 1) pixels[offset] = blendColor(color, pixels[offset]);
+            else pixels[offset] = color & 0x00ffffffu;
             if (rasterDepthWrite) depthPixels[offset] = (float)comparisonDepth;
         }
         rowB0 += stepB0Y;
