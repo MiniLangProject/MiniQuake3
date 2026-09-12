@@ -30,7 +30,7 @@ const ALPHA_TEST_GE128=3
 struct Image width height pixels end struct
 struct UvMod kind a b c d wave end struct
 struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest tcGen rgbGen rgbWave bspLightmap clampTexture end struct
-struct Material textureIndex shaderName imageName image slot stages deforms end struct
+struct Material textureIndex shaderName imageName image slot stages deforms twoSided end struct
 struct Catalog materials scripts attempted loaded textureCount animatedStageCount effectStageCount end struct
 
 function fail(message) return error(7486,"preview materials: "+message) end function
@@ -185,9 +185,9 @@ function directRuntimeStage(archive,name,nextSlot,endSlot)
 end function
 
 function runtimeStages(archive,index,name,nextSlot,endSlot)
-  result=[];deforms=[];parsed=try(shaderParser.parseIndexed(index,name))
+  result=[];deforms=[];twoSided=false;parsed=try(shaderParser.parseIndexed(index,name))
   if not (parsed is error) and parsed!=void then
-    deforms=parsed.deforms
+    deforms=parsed.deforms;twoSided=parsed.cull=="twoSided"
     for each parsedStage in parsed.stages
       if parsedStage.isLightmap and len(result)<MAX_RUNTIME_STAGES then result=result+[lightmapRuntimeStage(parsedStage)]
       else if usableStage(parsedStage) and len(result)<MAX_RUNTIME_STAGES then
@@ -204,7 +204,7 @@ function runtimeStages(archive,index,name,nextSlot,endSlot)
     if loaded==void and mapped!=name then loaded=directRuntimeStage(archive,name,nextSlot,endSlot) end if
     if loaded!=void then result=[loaded[0]];nextSlot=loaded[1] end if
   end if
-  return [result,nextSlot,deforms]
+  return [result,nextSlot,deforms,twoSided]
 end function
 
 function floorNumber(value) integer=n.trunc32(value);if value<integer then return integer-1 end if;return integer end function
@@ -304,7 +304,7 @@ function loadIndexed(archive,map,maxMaterials,firstSlot,index,scriptCount)
     if len(stages)>0 then
       firstImageName="";firstImage=void;firstImageSlot=-1
       for each stage in stages if firstImageSlot<0 and len(stage.slots)>0 then firstImageName=stage.imageNames[0];firstImage=stage.images[0];firstImageSlot=stage.slots[0] end if end for
-      materialList=materialList+[Material(textureIndex,name,firstImageName,firstImage,firstImageSlot,stages,resolved[2])]
+      materialList=materialList+[Material(textureIndex,name,firstImageName,firstImage,firstImageSlot,stages,resolved[2],resolved[3])]
       for each stage in stages
         if len(stage.slots)>1 then animated=animated+1 end if
         if stage.blend!=BLEND_OPAQUE or stage.alphaTest!=ALPHA_TEST_NONE or len(stage.uvMods)>0 then effects=effects+1 end if

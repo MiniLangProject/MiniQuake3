@@ -868,6 +868,11 @@ function runLimited(map,maxFrames,sound,archive)
     loadedCatalog=try(materials.loadIndexed(archive,map,256,64,shaderScripts[0],shaderScripts[1]))
     if not (loadedCatalog is error) then catalog=loadedCatalog end if
   end if
+  if catalog!=void then
+    twoSidedTextures=array(map.counts[1],false);for each material in catalog.materials twoSidedTextures[material.textureIndex]=material.twoSided end for
+    configuredCache=worldSelection.setTwoSidedTextures(worldCache,twoSidedTextures);if configuredCache is error then return configuredCache end if
+    preparedWorld=worldSelection.prepareCached(worldCache,camera,worldConfig);if preparedWorld is error then return preparedWorld end if;triangles=preparedWorld.renderData
+  end if
   projectileCatalog=void
   if archive!=void then
     projectileFirst=64;if catalog!=void then projectileFirst=64+catalog.textureCount end if

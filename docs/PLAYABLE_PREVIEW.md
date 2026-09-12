@@ -128,13 +128,14 @@ WAV policy remains in MiniLang. The native boundaries provide window/input,
 pixels and asynchronous WinMM PCM playback.
 
 The world renderer caches all 12,203 tessellated q3dm1 triangles once, then uses
-the camera leaf, BSP PVS, frustum, distance and planar backface tests to choose
-whole visible surfaces. In the current 60-frame smoke this selects 1,698 triangles
+the camera leaf, BSP PVS, frustum, distance and shader-aware planar backface tests to choose
+whole visible surfaces. Materials declared with `cull disable` remain selectable from either
+side; q3dm1 contains seven such loaded materials. In the current smoke this selects 1,698 triangles
 from 321 surfaces across the full face-index range. The full-map q3dm1 material
-probe finds one animated pass, eight UV-modified passes and twelve blended passes.
-One of those retained passes uses `rgbGen wave`; each frame evaluates the original
+probe finds seven animated passes, 13 UV-modified passes, 38 blended passes and three
+wave-deformed passes. Eleven retained passes use `rgbGen wave`; each frame evaluates the original
 1,024-entry waveform phase and quantizes its grayscale intensity to the vertex
-color byte before rasterization. Other shader generators/deforms, exact lower/upper animation-state
+color byte before rasterization. Other shader generators and deformation types, exact lower/upper animation-state
 blending and the complete cgame/qagame match loop remain in work.
 This is a real local gameplay integration slice, rather than a complete Quake
 III match.
@@ -201,8 +202,8 @@ Validation:
   transform and budget contracts plus a retail q3dm1 probe.
 - `python scripts/benchmark_playable_item_models.py`: indexed MD3 transform
   benchmark with an exact legacy/new geometry comparison.
-- `python scripts/test_world_surface_selection.py`: 28 BSP PVS, frustum,
-  backface, budget and cached-geometry contracts plus a retail q3dm1 probe.
+- `python scripts/test_world_surface_selection.py`: 30 BSP PVS, frustum,
+  shader-controlled two-sided backface, budget and cached-geometry contracts plus a retail q3dm1 probe.
 - `python scripts/test_playable_enemy_animation.py`: 29 state-transition and
   one-shot animation contracts.
 - `python scripts/test_playable_enemy_movement.py`: 22 collision/step/ground

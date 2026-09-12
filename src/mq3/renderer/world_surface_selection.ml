@@ -19,7 +19,7 @@ struct SelectionConfig width height horizontalFov nearDistance farDistance trian
 struct Candidate faceIndex triangleCount distanceSquared importance end struct
 struct Selection faceIndexes candidateCount selectedSurfaceCount estimatedTriangleCount pvsUsed cameraLeaf cameraCluster rejectedPvs rejectedFrustum rejectedBackface rejectedDistance rejectedBudget end struct
 struct PreparedWorld selection renderData end struct
-struct WorldCache map faceCenters faceRadii faceTriangleCounts faceKinds faceNormals trianglesByFace patchError totalTriangleCount end struct
+struct WorldCache map faceCenters faceRadii faceTriangleCounts faceKinds faceNormals faceTextureIndexes twoSidedTextureFlags trianglesByFace patchError totalTriangleCount end struct
 
 function fail(text) return error(7490,"World surface selection: "+text) end function
 function validMap(map)
@@ -113,9 +113,9 @@ end function
 function buildCache(map,patchError)
   if not validMap(map) then return fail("invalid BSP object") end if
   if patchError<=0.0 then return fail("non-positive patch error") end if
-  centers=array(map.counts[13],void);radii=array(map.counts[13],0.0);counts=array(map.counts[13],0);kinds=array(map.counts[13],0);normals=array(map.counts[13],void);byFace=array(map.counts[13],void)
+  centers=array(map.counts[13],void);radii=array(map.counts[13],0.0);counts=array(map.counts[13],0);kinds=array(map.counts[13],0);normals=array(map.counts[13],void);textureIndexes=array(map.counts[13],-1);byFace=array(map.counts[13],void)
   for faceIndex=0 to map.counts[13]-1
-    byFace[faceIndex]=[];offset=map.offsets[13]+faceIndex*FACE_STRIDE;kind=i32(map,offset+8);kinds[faceIndex]=kind
+    byFace[faceIndex]=[];offset=map.offsets[13]+faceIndex*FACE_STRIDE;textureIndexes[faceIndex]=i32(map,offset);kind=i32(map,offset+8);kinds[faceIndex]=kind
     if kind==render.MST_PLANAR or kind==render.MST_PATCH or kind==render.MST_TRIANGLE_SOUP then
       bounds=faceBounds(map,offset);if bounds is error then return bounds end if;centers[faceIndex]=bounds[0];radii[faceIndex]=bounds[1]
       amount=faceTriangleCount(map,offset,patchError);if amount is error then return amount end if;counts[faceIndex]=amount
@@ -125,7 +125,12 @@ function buildCache(map,patchError)
   faces=[];for faceIndex=0 to map.counts[13]-1 faces=faces+[faceIndex] end for
   allTriangles=render.extractWithPatchError(map,faces,2147483647,patchError);if allTriangles is error then return allTriangles end if
   for each triangle in allTriangles.triangles byFace[triangle.faceIndex]=byFace[triangle.faceIndex]+[triangle] end for
-  return WorldCache(map,centers,radii,counts,kinds,normals,byFace,n.f32(patchError),allTriangles.triangleCount)
+  return WorldCache(map,centers,radii,counts,kinds,normals,textureIndexes,array(map.counts[1],false),byFace,n.f32(patchError),allTriangles.triangleCount)
+end function
+
+function setTwoSidedTextures(cache,flags)
+  if cache==void or flags==void or len(flags)!=cache.map.counts[1] then return fail("two-sided texture table does not match BSP shaders") end if
+  cache.twoSidedTextureFlags=flags;return cache
 end function
 
 function chooseCore(map,camera,cfg,cache)
@@ -155,8 +160,9 @@ function chooseCore(map,camera,cfg,cache)
       local=viewer.viewPoint(camera,center);distanceSquared=local[0]*local[0]+local[1]*local[1]+local[2]*local[2]
       if distanceSquared>(cfg.farDistance+radius)*(cfg.farDistance+radius) then rejectedDistance=rejectedDistance+1 else
         if not visibleInFrustum(local,radius,cfg) then rejectedFrustum=rejectedFrustum+1 else
-          back=false
-          if cfg.backfaceCull and kind==render.MST_PLANAR then
+          back=false;twoSided=false
+          if cache!=void then textureIndex=cache.faceTextureIndexes[faceIndex];if textureIndex>=0 and textureIndex<len(cache.twoSidedTextureFlags) then twoSided=cache.twoSidedTextureFlags[textureIndex] end if end if
+          if cfg.backfaceCull and kind==render.MST_PLANAR and not twoSided then
             nx=0.0;ny=0.0;nz=0.0
             if cache==void then nx=f32(map,faceOffset+84);ny=f32(map,faceOffset+88);nz=f32(map,faceOffset+92) else nx=cache.faceNormals[faceIndex][0];ny=cache.faceNormals[faceIndex][1];nz=cache.faceNormals[faceIndex][2] end if
             back=nx*(camera.position[0]-center[0])+ny*(camera.position[1]-center[1])+nz*(camera.position[2]-center[2])<0.0
