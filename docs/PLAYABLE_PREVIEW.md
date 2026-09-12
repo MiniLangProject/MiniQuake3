@@ -27,7 +27,7 @@ draws it through a native CPU rasterizer. It currently supports a depth buffer,
 screen clipping, perspective-correct UV and light interpolation, alpha, vertex
 colour and up to 64 uploaded 128x128 BSP lightmaps and 128 base-texture slots. A bounded material resolver
 reads all `scripts/*.shader` files, follows `map`, `clampMap` and up to eight
-`animMap` frames, decodes TGA/JPEG images, applies scroll/rotate `tcMod`
+`animMap` frames, decodes TGA/JPEG images, applies scroll/scale/rotate/turb `tcMod`
 operations, enforces `alphaFunc GT0`, `LT128` and `GE128`, and executes opaque,
 alpha and additive stages over the BSP lightmap. Quadratic Bezier patch grids are adaptively tessellated with their
 base UVs, lightmap UVs and vertex colours. Movement uses 800-unit gravity,

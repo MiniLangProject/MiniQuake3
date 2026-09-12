@@ -26,7 +26,7 @@ const ALPHA_TEST_LT128=2
 const ALPHA_TEST_GE128=3
 
 struct Image width height pixels end struct
-struct UvMod kind a b end struct
+struct UvMod kind a b c d end struct
 struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest rgbGen rgbWave end struct
 struct Material textureIndex shaderName imageName image slot stages end struct
 struct Catalog materials scripts attempted loaded textureCount animatedStageCount effectStageCount end struct
@@ -139,8 +139,10 @@ end function
 function stageMods(stage)
   result=[]
   for each mod in stage.texMods
-    if mod.kind=="scroll" and len(mod.values)>=2 then result=result+[UvMod("scroll",mod.values[0],mod.values[1])]
-    else if mod.kind=="rotate" and len(mod.values)>=1 then result=result+[UvMod("rotate",mod.values[0],0.0)]
+    if mod.kind=="scroll" and len(mod.values)>=2 then result=result+[UvMod("scroll",mod.values[0],mod.values[1],0.0,0.0)]
+    else if mod.kind=="scale" and len(mod.values)>=2 then result=result+[UvMod("scale",mod.values[0],mod.values[1],0.0,0.0)]
+    else if mod.kind=="rotate" and len(mod.values)>=1 then result=result+[UvMod("rotate",mod.values[0],0.0,0.0,0.0)]
+    else if mod.kind=="turb" and len(mod.values)>=4 then result=result+[UvMod("turb",mod.values[0],mod.values[1],mod.values[2],mod.values[3])]
     end if
   end for
   return result
@@ -223,20 +225,34 @@ function stageLight(stage,vertexLight,nowMilliseconds)
   return vertexLight
 end function
 
-// RB_CalcScrollTexCoords and RB_CalcRotateTexCoords, in original tcMod order.
-function transformUV(stage,uv,nowMilliseconds)
-  if stage==void or uv==void or len(uv)!=2 then return fail("stage and two-component UV are required") end if
+function turbulentOffset(coordinate,mod,nowMilliseconds)
+  phase=mod.c+nowMilliseconds*0.001*mod.d
+  index=n.trunc32((coordinate/1024.0+phase)*1024.0)&1023
+  radians=index*2.0*3.14159265358979323846/1024.0
+  return trans.sin(radians)*mod.b
+end function
+
+// Baseq3 applies tcMods in declaration order. Turbulence additionally uses
+// the unmodified world position of each vertex.
+function transformUVAt(stage,uv,position,nowMilliseconds)
+  if stage==void or uv==void or len(uv)!=2 or position==void or len(position)!=3 then return fail("stage, UV and world position are required") end if
   result=[uv[0],uv[1]];seconds=nowMilliseconds*0.001
   for each mod in stage.uvMods
     if mod.kind=="scroll" then
       scrollS=mod.a*seconds;scrollS=scrollS-floorNumber(scrollS);scrollT=mod.b*seconds;scrollT=scrollT-floorNumber(scrollT)
       result=[result[0]+scrollS,result[1]+scrollT]
+    else if mod.kind=="scale" then result=[result[0]*mod.a,result[1]*mod.b]
     else if mod.kind=="rotate" then
       radians=0.0-mod.a*seconds*3.14159265358979323846/180.0;sine=trans.sin(radians);cosine=trans.cos(radians);x=result[0]-0.5;y=result[1]-0.5
       result=[x*cosine-y*sine+0.5,x*sine+y*cosine+0.5]
+    else if mod.kind=="turb" then result=[result[0]+turbulentOffset(position[0]+position[2],mod,nowMilliseconds),result[1]+turbulentOffset(position[1],mod,nowMilliseconds)]
     end if
   end for
   return result
+end function
+
+function transformUV(stage,uv,nowMilliseconds)
+  return transformUVAt(stage,uv,[0.0,0.0,0.0],nowMilliseconds)
 end function
 
 function loadIndexed(archive,map,maxMaterials,firstSlot,index,scriptCount)

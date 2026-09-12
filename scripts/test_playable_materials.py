@@ -21,7 +21,7 @@ def main() -> int:
     for token in ("R_BindAnimatedImage", "imageAnimationSpeed", "numImageAnimations"):
         if token not in shade:
             raise RuntimeError(f"missing original animation anchor {token}")
-    for token in ("RB_CalcScrollTexCoords", "RB_CalcRotateTexCoords", "tess.shaderTime"):
+    for token in ("RB_CalcScrollTexCoords", "RB_CalcScaleTexCoords", "RB_CalcRotateTexCoords", "RB_CalcTurbulentTexCoords", "tess.shaderTime"):
         if token not in calc:
             raise RuntimeError(f"missing original tcMod anchor {token}")
     for token in ("WAVEVALUE", "RB_CalcWaveColor", "FUNCTABLE_SIZE"):
@@ -36,7 +36,7 @@ def main() -> int:
         "playable_materials_contracts.exe",
     ], cwd=ROOT, check=True)
     output = run([ROOT / "build/playable_materials_contracts.exe"], ROOT / "build").strip()
-    expected = "PASS: 36 playable material contracts"
+    expected = "PASS: 38 playable material contracts"
     if output != expected:
         raise RuntimeError(output)
     print(expected)
