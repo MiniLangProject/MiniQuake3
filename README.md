@@ -175,15 +175,22 @@ WASD, mouse look, Space and the left mouse button become original `usercmd_t`
 records for the unchanged qagame QVM; slow render frames catch up simulation
 ticks instead of slowing the match clock. All three cgame `refdef_t` submissions
 retain their own camera, FOV, viewport and scissor rectangle. The world view uses
-BSP PVS/frustum selection and lightmaps, while MD3 entities use interpolated
+BSP PVS/frustum selection, lightmaps, retail sky shaders, fog volumes and projected
+dynamic lights, while MD3 entities use interpolated
 frames, skin-resolved multi-pass materials, dynamic lights and BSP light-grid
 vertex lighting. The cgame 2D stream draws the original textured HUD after 3D.
 Its registered start, local, entity, listener, loop and music sound commands are
 resolved to retail WAV files, spatially mixed into 16-bit stereo PCM and fed to
-the queued WinMM output. The native window matches the advertised 1280x720
-glconfig, reports smoothed FPS in its title and closes with Escape. The retail
-smoke validates a complete dynamic frame with three views, thousands of textured
-QVM triangles, HUD quads and more than 120 decoded sounds.
+the queued WinMM output. Escape opens the interactive original ingame menu;
+native key transitions, characters and mouse motion are delivered through
+`KEYCATCH_UI`, and the UI's 2D commands share the cgame queue. Original
+`R_MarkFragments` calls project impact decals against planar BSP surfaces and
+patches. The native window matches the advertised 1280x720 glconfig and reports
+smoothed FPS in its title. Shared MD3 vertices and a persistent interpolated-frame
+cache cut the measured QVM geometry stage from about 177 to 120.5 ms per frame in
+the current two-frame smoke. The retail smoke validates three views, thousands of
+textured QVM triangles, stock HUD/menu quads, world effects and more than 120
+decoded sounds.
 
 Ein vorhandener eingefrorener Compiler liegt unter `artifacts/toolchain/`.
 `inventory.py` nur ausführen, wenn dieser Stand bewusst neu festgelegt werden soll.

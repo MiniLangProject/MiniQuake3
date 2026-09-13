@@ -30,6 +30,8 @@ function main(args)
   complete=true;for each gridVertex in grid if gridVertex==void then complete=false end if end for
   referenceUv=sky.baseUv(camera,640,480,320.0,0.0)
   count=count+require(len(grid)==(sky.GRID_ROWS+1)*(sky.GRID_COLUMNS+1) and complete and near(grid[6].uv[0],referenceUv[0]) and near(grid[6].uv[1],referenceUv[1]),"prepared grid preserves every camera sample")
+  viewportGrid=sky.baseGridPrepared(viewer.cameraBasis(camera),100,50,320,240)
+  count=count+require(viewportGrid[0].point.x==100 and viewportGrid[0].point.y==50 and viewportGrid[len(viewportGrid)-1].point.x==420 and viewportGrid[len(viewportGrid)-1].point.y==290,"viewport grid is offset and bounded")
   count=count+require(near(sky.unwrap(1.95,0.02),2.02),"positive seam unwrap")
   count=count+require(near(sky.unwrap(-1.95,-0.02),-2.02),"negative seam unwrap")
   layer=firstLayer
@@ -42,5 +44,7 @@ function main(args)
   batch=sky.buildBatch(catalog,camera,640,480,1000)
   count=count+require(batch.count==384 and batch.capacity==384,"two layers share one native batch")
   count=count+require(len(batch.data)==384*128,"fixed batch allocation")
+  viewportBatch=sky.buildBatchPrepared(catalog,viewer.cameraBasis(camera),100,50,320,240,1000)
+  count=count+require(viewportBatch.count==384 and viewportBatch.capacity==384,"viewport sky retains fixed batching")
   print("PASS: "+str(count)+" playable sky contracts");return 0
 end function

@@ -128,19 +128,20 @@ function vertex(camera,width,height,x,y,layer,nowMilliseconds,depth)
   return Vertex(viewer.ScreenPoint(x,y,depth),mapped)
 end function
 
-function baseGrid(camera,width,height)
+function baseGridPrepared(basis,left,top,width,height)
   focal=viewer.focalLength(width,90.0);if focal is error then return focal end if
-  basis=viewer.cameraBasis(camera);vertices=array((GRID_ROWS+1)*(GRID_COLUMNS+1),void);index=0
+  vertices=array((GRID_ROWS+1)*(GRID_COLUMNS+1),void);index=0
   for row=0 to GRID_ROWS
     y=height*row/GRID_ROWS
     for column=0 to GRID_COLUMNS
       x=width*column/GRID_COLUMNS
       uv=baseUvPrepared(basis,focal,width,height,x,y)
-      vertices[index]=Vertex(viewer.ScreenPoint(x,y,SKY_DEPTH),uv);index=index+1
+      vertices[index]=Vertex(viewer.ScreenPoint(left+x,top+y,SKY_DEPTH),uv);index=index+1
     end for
   end for
   return vertices
 end function
+function baseGrid(camera,width,height) return baseGridPrepared(viewer.cameraBasis(camera),0,0,width,height) end function
 
 function mappedVertex(source,layer,seconds,depth)
   uv=[source.uv[0]*layer.scaleU+seconds*layer.scrollU,source.uv[1]*layer.scaleV+seconds*layer.scrollV]
@@ -161,8 +162,8 @@ function appendTriangle(batch,layer,a,b,c)
   return window.appendSingleTextureTriangle(batch,layer.slot,a.point,uvA,1.0,b.point,uvB,1.0,c.point,uvC,1.0,255,255,255)
 end function
 
-function buildBatch(catalog,camera,width,height,nowMilliseconds)
-  grid=baseGrid(camera,width,height);if grid is error then return grid end if
+function buildBatchPrepared(catalog,basis,left,top,width,height,nowMilliseconds)
+  grid=baseGridPrepared(basis,left,top,width,height);if grid is error then return grid end if
   batch=window.createTriangleBatch(len(catalog.layers)*GRID_COLUMNS*GRID_ROWS*2);if batch is error then return batch end if
   seconds=nowMilliseconds/1000.0
   for layerIndex=0 to len(catalog.layers)-1
@@ -181,6 +182,7 @@ function buildBatch(catalog,camera,width,height,nowMilliseconds)
   end for
   return batch
 end function
+function buildBatch(catalog,camera,width,height,nowMilliseconds) return buildBatchPrepared(catalog,viewer.cameraBasis(camera),0,0,width,height,nowMilliseconds) end function
 
 function drawLayer(layer,camera,width,height,nowMilliseconds,layerIndex)
   depth=SKY_DEPTH-layerIndex
@@ -202,5 +204,10 @@ end function
 function draw(catalog,camera,width,height,nowMilliseconds)
   if catalog==void or camera==void or width<1 or height<1 or nowMilliseconds<0 then return fail("catalog, camera, surface and non-negative time are required") end if
   batch=buildBatch(catalog,camera,width,height,nowMilliseconds);if batch is error then return batch end if
+  return window.submitTriangleBatch(batch)
+end function
+function drawViewport(catalog,basis,area,nowMilliseconds)
+  if catalog==void or basis==void or len(basis)!=3 or area==void or area.width<1 or area.height<1 or nowMilliseconds<0 then return fail("catalog, view axes, viewport and non-negative time are required") end if
+  batch=buildBatchPrepared(catalog,basis,area.x,area.y,area.width,area.height,nowMilliseconds);if batch is error then return batch end if
   return window.submitTriangleBatch(batch)
 end function

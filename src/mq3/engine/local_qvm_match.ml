@@ -29,6 +29,7 @@ import mq3.server.world as serverWorld
 import mq3.server.snapshot_build as snapshotBuild
 import mq3.renderer.playable_light_grid as lightGrid
 import mq3.renderer.model_tags as modelTags
+import mq3.renderer.mark_fragments as markFragments
 import mq3.format.md3 as md3
 import std.fs as fs
 import std.string as strings
@@ -56,7 +57,7 @@ struct FileCursor data offset end struct
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
 struct RenderView refdef scene end struct
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews end struct
+struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap end struct
 struct Boot game runtime context cgame ui end struct
 struct Snapshot serverTime playerState entities end struct
 
@@ -222,7 +223,7 @@ function bootWithQvms(archive,map,now,qvmRoot)
   spatialScene=serverWorld.create(collisionWorld)
   initialCommand=qworld.userCommand(now,[0,0,0],0,2,0,0,0)
   grid=lightGrid.load(map);if grid is error then return grid end if
-  context=Context(archive,parser.create(entityBytes),registry,commands.create(),array(MAX_CONFIGSTRINGS,""),array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,array(64,void),0,0,grid,0,0,[])
+  context=Context(archive,parser.create(entityBytes),registry,commands.create(),array(MAX_CONFIGSTRINGS,""),array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,array(64,void),0,0,grid,0,0,[],map)
   runtimeHost=runtime.services();runtimeHost.context=context;runtimeHost.loadFn=imageLoader
   machineRuntime=runtime.create(runtimeHost);if machineRuntime is error then return machineRuntime end if;context.machineRuntime=machineRuntime
   shared=common.services(registry,context.commandState,context);shared.printFn=emitPrint;shared.errorFn=emitError;shared.millisecondsFn=milliseconds;shared.consoleFn=consoleCommand
@@ -427,6 +428,17 @@ end function
 function captureRenderView(context,vm,address)
   refdef=decodeRefdef(vm,address);context.latestRefdef=refdef;view=sceneQueue.finishScene(context.scene);context.renderViews=context.renderViews+[RenderView(refdef,view)];return 0
 end function
+function cgameMarkFragments(context,vm,base)
+  numPoints=common.argument(vm,base,1);maxPoints=common.argument(vm,base,4);maxFragments=common.argument(vm,base,6)
+  if numPoints<3 or numPoints>1024 or maxPoints<0 or maxPoints>131072 or maxFragments<0 or maxFragments>131072 then return fail("invalid cgame mark-fragment counts") end if
+  pointsAt=common.pointer(vm,common.argument(vm,base,2),numPoints*12,"mark source points");points=[]
+  for index=0 to numPoints-1 points=points+[readVector(vm.data,pointsAt+index*12)] end for
+  projection=common.readFloatVector(vm,common.argument(vm,base,3),3,"mark projection")
+  result=markFragments.project(context.markMap,context.collisionWorld,points,projection,maxPoints,maxFragments);if result is error then return result end if
+  if len(result.points)>0 then outputAt=common.pointer(vm,common.argument(vm,base,5),maxPoints*12,"mark point output");for index=0 to len(result.points)-1 writeVector(vm.data,outputAt+index*12,result.points[index]) end for end if
+  if len(result.fragments)>0 then fragmentsAt=common.pointer(vm,common.argument(vm,base,7),maxFragments*8,"mark fragment output");for index=0 to len(result.fragments)-1 fragment=result.fragments[index];n.writeU32(vm.data,fragmentsAt+index*8,fragment.firstPoint);n.writeU32(vm.data,fragmentsAt+index*8+4,fragment.numPoints) end for end if
+  return len(result.fragments)
+end function
 
 function extendedCgame(context,vm,base,op)
   // Capture every retail sound/renderer submission. Structured decoding is
@@ -441,7 +453,7 @@ function extendedCgame(context,vm,base,op)
   if op==24 then context.cgameCollisionQueries=context.cgameCollisionQueries+1;return collision.transformedPointContents(context.collisionWorld,cgameVector(vm,base,1,"transformed point"),common.argument(vm,base,2),cgameVector(vm,base,3,"model origin"),cgameVector(vm,base,4,"model angles")) end if
   if op==25 or op==83 then return cgameBoxTrace(context,vm,base,op==83,false) end if
   if op==26 or op==84 then return cgameBoxTrace(context,vm,base,op==84,true) end if
-  if op==27 then return 0 end if
+  if op==27 then return cgameMarkFragments(context,vm,base) end if
   if op==28 then context.soundCommands=context.soundCommands+[soundEvent("start",common.argument(vm,base,2),common.argument(vm,base,3),common.argument(vm,base,4),soundVector(vm,common.argument(vm,base,1),"sound origin"),void,void,false,"","")];return 0 end if
   if op==29 then context.soundCommands=context.soundCommands+[soundEvent("local",-1,common.argument(vm,base,2),common.argument(vm,base,1),void,void,void,false,"","")];return 0 end if
   if op==30 then context.soundCommands=context.soundCommands+[soundEvent("clearLoops",-1,0,0,void,void,void,common.argument(vm,base,1)!=0,"","")];return 0 end if

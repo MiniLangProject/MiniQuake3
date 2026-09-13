@@ -10,7 +10,7 @@ def main():
     out=ROOT/'build/reference/playable_sky';out.mkdir(parents=True,exist_ok=True)
     build('tests/playable_sky_contracts.ml','playable_sky_contracts.exe')
     contracts=run([ROOT/'build/playable_sky_contracts.exe'],ROOT/'build',log=out/'contracts.log').strip()
-    if contracts!='PASS: 18 playable sky contracts': raise RuntimeError(contracts)
+    if contracts!='PASS: 20 playable sky contracts': raise RuntimeError(contracts)
     retail=None
     if args.pak:
         build('tests/playable_sky_retail_probe.ml','playable_sky_retail_probe.exe')

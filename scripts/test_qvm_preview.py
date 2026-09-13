@@ -21,8 +21,8 @@ def main():
         text=True,
         capture_output=True,
     )
-    match = re.search(r"selected=(\d+)x(\d+) models=(\d+) triangles=(\d+) textures=(\d+) hudQuads=(\d+) sounds=(\d+) frames=(\d+)", result.stdout)
-    if not match or min(map(int, match.groups())) <= 0 or int(match.group(8)) != 1:
+    match = re.search(r"selected=(\d+)x(\d+) models=(\d+) triangles=(\d+) textures=(\d+) hudQuads=(\d+) sounds=(\d+) frames=(\d+) worldEffects=(\d+)", result.stdout)
+    if not match or min(map(int, match.groups())) <= 0 or int(match.group(8)) != 1 or int(match.group(9)) < 2:
         raise RuntimeError(f"invalid QVM preview report: {result.stdout!r}")
     print("PASS: native original-QVM frame " + match.group(0))
 

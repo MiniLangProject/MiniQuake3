@@ -201,14 +201,23 @@ PVS-/Frustum-ausgewählte BSP-Geometrie, Lightmaps, QVM-MD3/Polygone,
 Skin-/Shader-Mehrpässe, dynamische Lichter und BSP-Lichtgitterbeleuchtung. Die
 QVM-2D-Queue liefert das echte cgame-HUD; 28 Verträge und eine Retail-Probe mit
 36 cgame- sowie 174 UI-Quads prüfen Auflösung, NoMip-Regeln und 420 native
-Dreiecke. 123 registrierte QVM-Sounds werden aus `pak0.pk3` aufgelöst und als
-räumlicher 16-Bit-Stereo-Stream wiedergegeben; 31 Mixer-/Kommandoregeln und ein
-echter qagame/cgame-Lauf sind grün. Acht weitere Verträge sowie native Rastertests
-decken die Viewportgrenzen ab. Normalentabellen, feste Ausgabearrays,
-Materialbindungen und Weltflächenauswahl reduzieren die gemessenen laufenden
-Kosten deutlich. Offen bleiben `MarkFragments`, vollständige Font-,
-Cinematic- und Parser-Traps für alternative UIs, RoQ-Wiedergabe und weitere
-Performancearbeit bis zu einer flüssigen Bildrate.
+Dreiecke. Die originale `ui.qvm` ist nun auch im nativen Spielpfad interaktiv:
+Escape öffnet `UIMENU_INGAME`, 80 Windows-Tasten werden in Quake-Keycodes und
+Zeichenereignisse übersetzt, Mausereignisse folgen dem `KEYCATCH_UI`, und
+`UI_REFRESH` hängt die Menübefehle hinter das cgame-HUD. 18 Sitzungsverträge und
+eine Retail-Probe mit Hauptmenü-, Navigations- und Ingame-Menüframes prüfen diesen
+Pfad. `R_MarkFragments` projiziert Einschussmarken auf planare BSP-Flächen und
+Patches und schreibt die originale Fragment-ABI zurück; 17 Verträge und ein
+q3dm1-Retail-Treffer mit vier Punkten sind grün. 125 registrierte QVM-Sounds werden
+aus `pak0.pk3` aufgelöst und als räumlicher 16-Bit-Stereo-Stream wiedergegeben.
+Der Weltpfad zeichnet Sky-Shader pro `refdef_t`-Viewport, BSP-Nebel und die von
+cgame eingereichten dynamischen Lichter. Ein geteilter MD3-Framecache und einmalige
+Transformation jedes Surface-Vertex reduzieren den isolierten Geometriebenchmark
+von 3.403 auf 799 ms für acht Frames; im integrierten 1280x720-Smoke sank die
+Geometriephase gegenüber dem vorherigen Messpunkt von etwa 177 auf 120,5 ms pro
+Frame. Vollständige Font-, Cinematic- und Parser-Traps für alternative UIs,
+RoQ-Wiedergabe sowie weitere Raster-/Geometrieoptimierung bis zu einer flüssigen
+Bildrate bleiben offen.
 
 ## 5. BSP-Kollision und gemeinsame Spielphysik exakt übertragen
 

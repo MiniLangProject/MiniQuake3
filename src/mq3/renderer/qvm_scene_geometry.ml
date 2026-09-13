@@ -9,12 +9,15 @@ import mq3.renderer.view_math as viewMath
 import mq3.renderer.surface_md3 as surfaceMd3
 import mq3.renderer.playable_light_grid as lightGrid
 import mq3.format.md3 as md3
+import std.array as arrays
 
 const RT_MODEL=0
 const RT_SPRITE=2
 
 struct Triangle positions texCoords normals colors modelHandle customSkin shaderHandle shaderName surfaceName entityIndex surfaceIndex end struct
-struct Geometry triangles triangleCount modelEntities spriteEntities polySurfaces skippedInline skippedUnsupported end struct
+struct Geometry triangles triangleCount modelEntities spriteEntities polySurfaces skippedInline skippedUnsupported sourceVertices vertexTransforms end struct
+struct FrameEntry modelHandle surfaceIndex frame oldFrame backlerp xyz normals end struct
+struct FrameCache normalTable entries maxEntries hits misses end struct
 
 function fail(message) return error(7670,"QVM scene geometry: "+message) end function
 function normal() return [0.0,0.0,1.0] end function
@@ -56,16 +59,48 @@ function transformTriangle(source,orientation,color,modelHandle,customSkin,shade
   return triangle(positions,source.texCoords,normals,colors,modelHandle,customSkin,shaderHandle,source.shaderName,surfaceName,entityIndex,source.surfaceIndex)
 end function
 function createNormalTable() return surfaceMd3.normalTable() end function
-function addModel(output,decoded,model,entityIndex,maxTrianglesPerSurface,normalTable,grid,refdef)
+function createFrameCache(normalTable,maxEntries)
+  if maxEntries<1 then return fail("frame cache needs positive capacity") end if
+  if normalTable==void then normalTable=createNormalTable() end if
+  return FrameCache(normalTable,[],maxEntries,0,0)
+end function
+function cachedFrame(cache,modelHandle,model,surfaceIndex,frame,oldFrame,backlerp,normalTable)
+  if cache!=void then
+    for each entry in cache.entries
+      if entry.modelHandle==modelHandle and entry.surfaceIndex==surfaceIndex and entry.frame==frame and entry.oldFrame==oldFrame and entry.backlerp==backlerp then cache.hits=cache.hits+1;return entry end if
+    end for
+  end if
+  table=normalTable;if cache!=void then table=cache.normalTable end if
+  surface=model.surfaces[surfaceIndex];lerped=surfaceMd3.lerpVertexesCached(surface.mesh,frame,oldFrame,backlerp,table);if lerped is error then return lerped end if
+  entry=FrameEntry(modelHandle,surfaceIndex,frame,oldFrame,backlerp,lerped[0],lerped[1])
+  if cache!=void then
+    if len(cache.entries)>=cache.maxEntries then cache.entries=arrays.slice(cache.entries,1,len(cache.entries)-1) end if
+    cache.entries=cache.entries+[entry];cache.misses=cache.misses+1
+  end if
+  return entry
+end function
+function addModelOptimized(output,decoded,model,entityIndex,maxTrianglesPerSurface,cache,normalTable,grid,refdef)
   if decoded.frame<0 or decoded.frame>=model.numFrames or decoded.oldframe<0 or decoded.oldframe>=model.numFrames then return fail("MD3 frame outside model") end if
   if decoded.backlerp<0.0 or decoded.backlerp>1.0 then return fail("MD3 backlerp outside zero to one") end if
   orientation=viewMath.orientation(decoded.origin,decoded.axis)
   lighting=void
   if grid!=void and refdef!=void and (refdef.flags&1)==0 then lightOrigin=decoded.origin;if (decoded.renderfx&128)!=0 then lightOrigin=decoded.lightingOrigin end if;lighting=lightGrid.entitySample(grid,lightOrigin) end if
   for surfaceIndex=0 to len(model.surfaces)-1
-    source=md3.renderTrianglesCached(model,surfaceIndex,decoded.frame,decoded.oldframe,decoded.backlerp,maxTrianglesPerSurface,normalTable);if source is error then return source end if
-    for each value in source
-      converted=transformTriangle(value,orientation,decoded.shaderRGBA,decoded.hModel,decoded.customSkin,decoded.customShader,model.surfaces[surfaceIndex].name,entityIndex,lighting);if converted is error then return converted end if
+    surface=model.surfaces[surfaceIndex];limit=surface.mesh.numTriangles;if limit>maxTrianglesPerSurface then limit=maxTrianglesPerSurface end if
+    if limit==0 then continue end if
+    frameData=cachedFrame(cache,decoded.hModel,model,surfaceIndex,decoded.frame,decoded.oldframe,decoded.backlerp,normalTable);if frameData is error then return frameData end if
+    worldPositions=array(surface.mesh.numVerts,void);worldNormals=array(surface.mesh.numVerts,void);vertexColors=array(surface.mesh.numVerts,void)
+    for vertexIndex=0 to surface.mesh.numVerts-1
+      point=viewMath.localPointToWorld(frameData.xyz[vertexIndex],orientation);if point is error then return point end if
+      direction=viewMath.localNormalToWorld(frameData.normals[vertexIndex],orientation);if direction is error then return direction end if
+      color=decoded.shaderRGBA;if lighting!=void then color=lightGrid.vertexColor(lighting,direction);color[3]=decoded.shaderRGBA[3] end if
+      worldPositions[vertexIndex]=point;worldNormals[vertexIndex]=direction;vertexColors[vertexIndex]=color
+    end for
+    output.sourceVertices=output.sourceVertices+surface.mesh.numVerts;output.vertexTransforms=output.vertexTransforms+surface.mesh.numVerts
+    shaderName="";if len(surface.shaders)>0 then shaderName=surface.shaders[0] end if
+    for triangleIndex=0 to limit-1
+      base=triangleIndex*3;a=surface.mesh.triangles[base];b=surface.mesh.triangles[base+1];c=surface.mesh.triangles[base+2]
+      converted=triangle([worldPositions[a],worldPositions[b],worldPositions[c]],[surface.mesh.texCoords[a],surface.mesh.texCoords[b],surface.mesh.texCoords[c]],[worldNormals[a],worldNormals[b],worldNormals[c]],[vertexColors[a],vertexColors[b],vertexColors[c]],decoded.hModel,decoded.customSkin,decoded.customShader,shaderName,surface.name,entityIndex,surfaceIndex)
       stored=appendTriangle(output,converted);if stored is error then return stored end if
     end for
   end for
@@ -96,17 +131,17 @@ function addPolys(output,polys)
   end for
   return void
 end function
-function buildRecordsCachedLit(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,normalTable,grid)
+function buildRecordsFrameCachedLit(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid)
   if entities==void or polys==void or assetKinds==void or modelAssets==void or maxTrianglesPerSurface<0 then return fail("invalid build input") end if
   capacity=expectedTriangles(entities,polys,assetKinds,modelAssets,maxTrianglesPerSurface);if capacity is error then return capacity end if
-  output=Geometry(array(capacity,void),0,0,0,0,0,0);entityIndex=0
+  output=Geometry(array(capacity,void),0,0,0,0,0,0,0,0);entityIndex=0
   for each value in entities
     decoded=sceneQueue.decodeEntity(value);if decoded is error then return decoded end if
     if decoded.reType==RT_MODEL then
       model=modelAt(assetKinds,modelAssets,decoded.hModel)
       if model==void then output.skippedUnsupported=output.skippedUnsupported+1
       else if typeof(model)=="string" then output.skippedInline=output.skippedInline+1
-      else added=addModel(output,decoded,model,entityIndex,maxTrianglesPerSurface,normalTable,grid,refdef);if added is error then return added end if
+      else added=addModelOptimized(output,decoded,model,entityIndex,maxTrianglesPerSurface,cache,normalTable,grid,refdef);if added is error then return added end if
       end if
     else if decoded.reType==RT_SPRITE then added=addSprite(output,decoded,refdef,entityIndex);if added is error then return added end if
     else output.skippedUnsupported=output.skippedUnsupported+1
@@ -115,6 +150,11 @@ function buildRecordsCachedLit(entities,polys,assetKinds,modelAssets,refdef,maxT
   end for
   addedPolys=addPolys(output,polys);if addedPolys is error then return addedPolys end if
   return output
+end function
+function buildRecordsCachedLit(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,normalTable,grid) return buildRecordsFrameCachedLit(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,void,normalTable,grid) end function
+function buildRecordsWithFrameCache(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,grid)
+  if cache==void then return fail("frame cache is required") end if
+  return buildRecordsFrameCachedLit(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,cache.normalTable,grid)
 end function
 function buildRecordsCached(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,normalTable) return buildRecordsCachedLit(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,normalTable,void) end function
 function buildRecords(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface) return buildRecordsCached(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,void) end function
