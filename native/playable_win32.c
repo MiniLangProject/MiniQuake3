@@ -655,8 +655,18 @@ static uint32_t dynamicLightColor(uint32_t source, uint32_t destination) {
     return (alpha << 24) | (red << 16) | (green << 8) | blue;
 }
 
+/* GLS_SRCBLEND_ZERO | GLS_DSTBLEND_ONE_MINUS_SRC_COLOR, used by the
+ * monochrome Baseq3 impact-mark shaders. */
+static uint32_t inverseSourceColor(uint32_t source, uint32_t destination) {
+    uint32_t alpha = ((destination >> 24) * (255u - (source >> 24)) + 127u) / 255u;
+    uint32_t red = (((destination >> 16) & 255u) * (255u - ((source >> 16) & 255u)) + 127u) / 255u;
+    uint32_t green = (((destination >> 8) & 255u) * (255u - ((source >> 8) & 255u)) + 127u) / 255u;
+    uint32_t blue = ((destination & 255u) * (255u - (source & 255u)) + 127u) / 255u;
+    return (alpha << 24) | (red << 16) | (green << 8) | blue;
+}
+
 PLAYABLE_API int playable_window_set_raster_state(int blendMode, int depthEqual, int depthWrite) {
-    if (blendMode < 0 || blendMode > 5 || (depthEqual != 0 && depthEqual != 1) ||
+    if (blendMode < 0 || blendMode > 6 || (depthEqual != 0 && depthEqual != 1) ||
             (depthWrite != 0 && depthWrite != 1)) return 0;
     rasterBlendMode = blendMode;
     rasterDepthEqual = depthEqual;
@@ -973,7 +983,8 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
                     inverseDepth0, inverseDepth1, inverseDepth2, depth);
             }
             if (!alphaTestPasses(color) || (color >> 24) == 0u) continue;
-            if (rasterBlendMode == 5) pixels[offset] = dynamicLightColor(color, pixels[offset]);
+            if (rasterBlendMode == 6) pixels[offset] = inverseSourceColor(color, pixels[offset]);
+            else if (rasterBlendMode == 5) pixels[offset] = dynamicLightColor(color, pixels[offset]);
             else if (rasterBlendMode == 4) pixels[offset] = destinationAlphaColor(color, pixels[offset]);
             else if (rasterBlendMode == 3) pixels[offset] = filterColor(color, pixels[offset]);
             else if (rasterBlendMode == 2) pixels[offset] = addColor(color, pixels[offset]);
@@ -1200,7 +1211,8 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
                 double difference = comparisonDepth - (double)depthPixels[offset];
                 if (difference < -0.00001 || difference > 0.00001) continue;
             }
-            if (rasterBlendMode == 5) pixels[offset] = dynamicLightColor(color, pixels[offset]);
+            if (rasterBlendMode == 6) pixels[offset] = inverseSourceColor(color, pixels[offset]);
+            else if (rasterBlendMode == 5) pixels[offset] = dynamicLightColor(color, pixels[offset]);
             else if (rasterBlendMode == 4) pixels[offset] = destinationAlphaColor(color, pixels[offset]);
             else if (rasterBlendMode == 3) pixels[offset] = filterColor(color, pixels[offset]);
             else if (rasterBlendMode == 2) pixels[offset] = addColor(color, pixels[offset]);

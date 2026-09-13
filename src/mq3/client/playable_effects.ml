@@ -19,7 +19,7 @@ const DEFAULT_EFFECT_MILLISECONDS=180
 const MAX_EFFECT_MILLISECONDS=2000
 
 struct ItemMarker classname origin active end struct
-struct ShotEffect startPoint impactPoint bornAt expiresAt end struct
+struct ShotEffect startPoint impactPoint bornAt expiresAt key classname normal worldHit end struct
 struct LineCommand a b red green blue end struct
 
 function validPoint(point) return point!=void and len(point)==3 end function
@@ -61,7 +61,12 @@ end function
 function shot(startPoint,impactPoint,nowMilliseconds,durationMilliseconds)
   if not validPoint(startPoint) or not validPoint(impactPoint) then return error(7502,"shot effect needs two three-component points") end if
   if durationMilliseconds<=0 or durationMilliseconds>MAX_EFFECT_MILLISECONDS then return error(7503,"shot effect duration is outside preview bounds") end if
-  return ShotEffect(startPoint,impactPoint,nowMilliseconds,nowMilliseconds+durationMilliseconds)
+  return ShotEffect(startPoint,impactPoint,nowMilliseconds,nowMilliseconds+durationMilliseconds,nowMilliseconds,"",[0.0,0.0,0.0],false)
+end function
+
+function weaponShot(key,classname,startPoint,impactPoint,normal,worldHit,nowMilliseconds)
+  value=defaultShot(startPoint,impactPoint,nowMilliseconds);if value is error then return value end if
+  value.key=key;value.classname=classname;value.normal=normal;value.worldHit=worldHit;return value
 end function
 
 function defaultShot(startPoint,impactPoint,nowMilliseconds)

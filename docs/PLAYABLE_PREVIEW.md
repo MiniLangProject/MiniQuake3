@@ -97,7 +97,7 @@ Enemy movement is resolved through a player-sized BSP hull with wall sliding,
 18-unit steps and ground binding. Their attacks now launch 420-unit-per-second
 plasma projectiles. Each flight is traced against the BSP and the player bounds;
 walls win exact collision ties and therefore shield the player. Trails, glows,
-fading impact crosses and original plasma fire/impact sounds expose the complete
+retail impact marks and original plasma fire/impact sounds expose the complete
 path. The first-person view switches to the current original textured weapon MD3.
 Its bob, landing motion and idle drift follow `CG_CalculateWeaponPosition`; the
 visible model is attached through the complete animated `tag_weapon` transform
@@ -182,6 +182,14 @@ inverse-square dlight texture. The retained BSP pass projects world XYZ into
 the light, rejects triangles with shared clip bits, applies the original Z
 attenuation and blends at equal depth with `GL_DST_COLOR GL_ONE`. Sky,
 translucent and `SURF_NODLIGHT` materials do not receive the extra pass.
+World impacts retain Baseq3's original bullet, burn, Lightning-hole and plasma
+mark textures for ten seconds. Machinegun, Shotgun, Lightning, Rail, Rocket,
+Grenade, Plasma and BFG use the stock radii and normal-aligned orientation.
+Monochrome marks use the shader's `GL_ZERO GL_ONE_MINUS_SRC_COLOR` framebuffer
+darkening; energy marks use alpha blending, the original three-second colour
+decay and final one-second alpha fade. Native polygon offset keeps coplanar
+marks visible without writing depth, and hits on player models do not leave
+marks on the world.
 Eleven q3dm1 passes use `rgbGen wave`; their original 1,024-entry waveform phase
 is quantized to colour bytes before rasterization. Remaining shader generators
 and deformation types, exact lower/upper animation-state
@@ -230,7 +238,9 @@ Validation:
   spin/coast transition, angle wrapping and rotated-tag contracts.
 - `python scripts/test_playable_shotgun.py`: 20 original-source-anchored spread,
   pellet trace, BSP shielding, damage and score contracts.
-- `python scripts/test_playable_effects.py`: 31 item/tracer/impact contracts.
+- `python scripts/test_playable_effects.py`: 32 item/tracer/impact contracts.
+- `python scripts/test_playable_marks.py`: 13 Baseq3 weapon-profile, persistent
+  lifetime, orientation, de-duplication and colour/alpha-fade contracts.
 - `python scripts/test_playable_targets.py`: 29 target/damage/frag contracts.
 - `python scripts/test_playable_player.py`: 24 armor/death/respawn contracts.
 - `python scripts/test_playable_enemy_ai.py`: 17 AI contracts plus 40 q3dm1

@@ -23,6 +23,7 @@ import mq3.client.playable_player_projectiles as playerProjectiles
 import mq3.client.playable_projectile_view as projectileView
 import mq3.client.playable_projectile_models as projectileModels
 import mq3.client.playable_projectile_fx as projectileFx
+import mq3.client.playable_marks as playableMarks
 import mq3.client.playable_sky as playableSky
 import mq3.client.playable_muzzle_flash as muzzleFlash
 import mq3.client.playable_weapon_barrel as weaponBarrel
@@ -573,7 +574,7 @@ function reservePlayerSpawn(targetState,playerState,spawnIndex)
   return void
 end function
 
-function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,now,menuOpen)
+function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatalog,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,now,menuOpen)
   window.beginFrame(7,10,16)
   if menuOpen then
     menuDraw=menu.drawRetailState(menuCatalog,menuState,WIDTH,HEIGHT,now);if menuDraw is error then return menuDraw end if
@@ -586,6 +587,7 @@ function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemC
   if materialCatalog!=void then worldDrawn=playableWorldBatch.drawMaterialsLit(worldBatchState,projection,now,projectileFx.worldLights(projectileEffects,now))
   else worldDrawn=playableWorldBatch.draw(worldBatchState,projection) end if
   if worldDrawn is error then return worldDrawn end if
+  if markCatalog!=void then markDrawn=playableMarks.draw(markState,markCatalog,projection,now);if markDrawn is error then return markDrawn end if end if
   for each edge in geometry.lines
     projected=viewer.projectLine(camera,edge.a,edge.b,WIDTH,HEIGHT,HORIZONTAL_FOV,1.0)
     if projected.visible then window.drawLine(projected.a,projected.b,28,80,90) end if
@@ -604,6 +606,7 @@ function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemC
       projectileDraw=drawProjectileTriangles(projection,projectileBatch.triangles);if projectileDraw is error then return projectileDraw end if
       fallbackProjectiles=projectileBatch.fallbackSnapshots
     end if
+    if markCatalog!=void then flyingFallback=[];for each fallback in fallbackProjectiles if fallback.state==projectileView.STATE_FLYING then flyingFallback=flyingFallback+[fallback] end if end for;fallbackProjectiles=flyingFallback end if
     projectileCommands=projectileView.frameCommands(camera,fallbackProjectiles,now,WIDTH,HEIGHT,HORIZONTAL_FOV,1.0)
     projectileView.draw(projectileCommands)
     viewDraw=renderViewModel(projection,itemCatalog,weaponState,combatState,now,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,not viewmodelSwitching);if viewDraw is error then return viewDraw end if
@@ -629,7 +632,7 @@ function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemC
   return void
 end function
 
-function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fogCatalog,dlightCatalog,worldCache,worldConfig,selectedFaceIndexes,materialSlots,skyTextureFlags,dlightReceiveFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound)
+function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fogCatalog,dlightCatalog,markCatalog,markState,worldCache,worldConfig,selectedFaceIndexes,materialSlots,skyTextureFlags,dlightReceiveFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound)
   previous=window.milliseconds();frames=0;menuOpen=maxFrames<0;lastEnter=false;lastEscape=false;lastPreviousWeapon=false;lastNextWeapon=false;lastDigitWeapon=0;shotEffects=[];projectileEffects=[];pickupTriangles=[];updateMilliseconds=0;renderMilliseconds=0;matchView=void;lastMatchMessage="";matchCenter=void
   if maxFrames>=0 then started=playableMatch.start(matchState,previous);if started is error then return started end if;hudSelection=syncHudWeaponSelection(baseHudState,inventoryState,previous);if hudSelection is error then return hudSelection end if end if
   while not window.shouldClose() and (maxFrames<0 or frames<maxFrames)
@@ -726,14 +729,16 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fog
           if weaponState.classname=="weapon_shotgun" then
             basis=viewer.cameraBasis(camera)
             blast=playableShotgun.fire(controller.motion.context,targetState,shot.start,basis[0],weaponState.shotsFired&255,current);if blast is error then return blast end if
-            hitCursor=0
+            hitCursor=0;pelletNumber=0
             for each pellet in blast.pellets
               pelletImpact=pellet.endPoint
               if pellet.targetIndex>=0 then
                 pelletHit=blast.hits[hitCursor];hitCursor=hitCursor+1;pelletImpact=pelletHit.point
                 syncRenderTargets(targetState,renderTargets,pelletHit,current)
               end if
-              shotEffects=shotEffects+[effects.defaultShot(pellet.start,pelletImpact,current)]
+              if pellet.targetIndex<0 and pellet.hit then shotEffects=shotEffects+[effects.weaponShot(weaponState.shotsFired*32+pelletNumber,"weapon_shotgun",pellet.start,pelletImpact,pellet.normal,true,current)]
+              else shotEffects=shotEffects+[effects.defaultShot(pellet.start,pelletImpact,current)] end if
+              pelletNumber=pelletNumber+1
             end for
             if blast.accuracyHit then combatView.registerHit(combatState,current) end if
             if blast.kills>0 then
@@ -751,7 +756,10 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fog
               if combatHit.killed then combatView.registerKill(combatState,current,targetState.score);if baseHudCatalog!=void then baseHud.frag(baseHudState,current) end if end if
             end if
             syncRenderTargets(targetState,renderTargets,combatHit,current)
-            if weaponState.classname!="weapon_gauntlet" or combatHit!=void then shotEffects=shotEffects+[effects.defaultShot(shot.start,impact,current)] end if
+            if weaponState.classname!="weapon_gauntlet" or combatHit!=void then
+              if combatHit==void and shot.hit then shotEffects=shotEffects+[effects.weaponShot(weaponState.shotsFired,weaponState.classname,shot.start,impact,shot.normal,true,current)]
+              else shotEffects=shotEffects+[effects.defaultShot(shot.start,impact,current)] end if
+            end if
           end if
           selectedFireSound=fireSound
           if weaponSoundCatalog!=void then candidate=weaponSounds.fireSound(weaponSoundCatalog,weaponState.classname,weaponState.shotsFired-1);if candidate!=void then selectedFireSound=candidate end if end if
@@ -787,6 +795,7 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fog
       end for
       projectileEffects=projectileEffects+playerProjectileSnapshots(projectileEffects,playerProjectileState,current)
       trailCount=projectileFx.update(projectileFxState,projectileEffects,current);if trailCount is error then return trailCount end if
+      markCount=playableMarks.update(markState,projectileEffects,shotEffects,current);if markCount is error then return markCount end if
       itemState.stats.health=playerState.health;itemState.stats.armor=playerState.armor
       enemyInputs=enemyEvents.update(eventState,targetState,enemyState,current);if enemyInputs is error then return enemyInputs end if
       shotEffects=effects.liveEffects(shotEffects,current)
@@ -829,7 +838,7 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fog
     visibleTargets=renderTargets
     if not menuOpen then visibleTargets=visibleTargetViews(enemyState,renderTargets,current) end if
     renderStarted=window.milliseconds();updateMilliseconds=updateMilliseconds+(renderStarted-current)
-    rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,current,menuOpen);if rendered is error then return rendered end if;renderMilliseconds=renderMilliseconds+(window.milliseconds()-renderStarted);frames=frames+1
+    rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatalog,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,current,menuOpen);if rendered is error then return rendered end if;renderMilliseconds=renderMilliseconds+(window.milliseconds()-renderStarted);frames=frames+1
     caption=fpsTitle.frame(fpsState,window.milliseconds());if caption is error then return caption end if
     if caption!=void and not window.setTitle(caption) then return error(7489,"could not update preview window title") end if
     lastEnter=enterDown;lastEscape=escapeDown;lastPreviousWeapon=window.keyDown(window.VK_Q);lastNextWeapon=window.keyDown(window.VK_E);lastDigitWeapon=digitWeaponDown()
@@ -862,6 +871,7 @@ function runLimited(map,maxFrames,sound,archive)
   projectileState=enemyProjectiles.createAabb(0);if projectileState is error then return projectileState end if
   playerProjectileState=playerProjectiles.create(0);if playerProjectileState is error then return playerProjectileState end if
   projectileFxState=projectileFx.create()
+  markState=playableMarks.create()
   renderTargets=createRenderTargets(targetState)
   combatState=combatView.state(pickupName(playerState.weapon))
   matchState=playableMatch.create(10,5,3000);if matchState is error then return matchState end if
@@ -909,6 +919,11 @@ function runLimited(map,maxFrames,sound,archive)
     dlightTextureSlot=64+catalog.textureCount;if projectileCatalog!=void then dlightTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if;if skyCatalog!=void then dlightTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if;if fogCatalog!=void then dlightTextureSlot=fogCatalog.textureSlot+1 end if
     if dlightTextureSlot<PLAYER_TEXTURE_FIRST_SLOT then createdDlights=try(dynamicLights.createCatalog(dlightTextureSlot));if not (createdDlights is error) then dlightCatalog=createdDlights end if end if
   end if
+  markCatalog=void
+  if archive!=void then
+    markTextureSlot=64;if catalog!=void then markTextureSlot=64+catalog.textureCount end if;if projectileCatalog!=void then markTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if;if skyCatalog!=void then markTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if;if fogCatalog!=void then markTextureSlot=fogCatalog.textureSlot+1 end if;if dlightCatalog!=void then markTextureSlot=dlightCatalog.textureSlot+1 end if
+    if markTextureSlot+4<=PLAYER_TEXTURE_FIRST_SLOT then loadedMarks=try(playableMarks.load(archive,markTextureSlot,4));if not (loadedMarks is error) then markCatalog=loadedMarks end if end if
+  end if
   modelAssets=void;if shaderScripts!=void then modelAssets=archivePlayerAssets(archive,shaderScripts[0]) end if
   itemCatalog=void
   viewmodelCatalog=void
@@ -930,6 +945,7 @@ function runLimited(map,maxFrames,sound,archive)
     if skyCatalog!=void then hudTextureFirst=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if
     if fogCatalog!=void then hudTextureFirst=fogCatalog.textureSlot+1 end if
     if dlightCatalog!=void then hudTextureFirst=dlightCatalog.textureSlot+1 end if
+    if markCatalog!=void then hudTextureFirst=markCatalog.firstTextureSlot+markCatalog.textureCount end if
     hudTextureCount=PLAYER_TEXTURE_FIRST_SLOT-hudTextureFirst
     loadedHud=try(baseHud.load(archive,hudTextureFirst,hudTextureCount));if not (loadedHud is error) then baseHudCatalog=loadedHud end if
   end if
@@ -990,6 +1006,7 @@ function runLimited(map,maxFrames,sound,archive)
     if skyCatalog!=void then uploadedSky=playableSky.upload(skyCatalog);if uploadedSky is error then window.shutdown();return uploadedSky end if end if
     if fogCatalog!=void then uploadedFog=playableFog.upload(fogCatalog);if uploadedFog is error then window.shutdown();return uploadedFog end if end if
     if dlightCatalog!=void then uploadedDlights=dynamicLights.upload(dlightCatalog);if uploadedDlights is error then window.shutdown();return uploadedDlights end if end if
+    if markCatalog!=void then uploadedMarks=playableMarks.upload(markCatalog);if uploadedMarks is error then window.shutdown();return uploadedMarks end if end if
     if modelAssets!=void then
       uploaded=[]
       for each texture in modelAssets.textures
@@ -1069,8 +1086,9 @@ function runLimited(map,maxFrames,sound,archive)
   print "World cache: "+str(worldCache.totalTriangleCount)+" triangles; visible surfaces: "+str(preparedWorld.selection.selectedSurfaceCount)
   fogVolumeCount=0;if fogCatalog!=void then fogVolumeCount=len(fogCatalog.fogs)-1 end if;fogTriangleCount=0;if catalog!=void and worldBatchState.fogBatch!=void then fogTriangleCount=worldBatchState.fogBatch.commands.count end if;print "Retail fog volumes: "+str(fogVolumeCount)+" visible triangles: "+str(fogTriangleCount)
   dlightReceiverCount=0;if catalog!=void and worldBatchState.dlightBatch!=void then dlightReceiverCount=len(worldBatchState.dlightBatch.triangles) end if;print "Projected dlight receivers: "+str(dlightReceiverCount)
+  markTextureCount=0;if markCatalog!=void then markTextureCount=markCatalog.textureCount end if;print "Retail impact-mark textures: "+str(markTextureCount)
   viewmodelTracker=viewmodel.tracker();viewmodelSettings=viewmodel.softwareRendererSettings();viewmodelAnimation=viewmodel.weaponAnimation(weaponState.classname);barrelState=weaponBarrel.state()
-  result=try(frameLoop(camera,geometry,triangles,worldBatchState,catalog,fogCatalog,dlightCatalog,worldCache,worldConfig,preparedWorld.selection.faceIndexes,materialSlots,skyTextureFlags,dlightReceiveFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound))
+  result=try(frameLoop(camera,geometry,triangles,worldBatchState,catalog,fogCatalog,dlightCatalog,markCatalog,markState,worldCache,worldConfig,preparedWorld.selection.faceIndexes,materialSlots,skyTextureFlags,dlightReceiveFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound))
   for index=0 to lightmapCount-1 window.releaseTexture(index) end for
   if catalog!=void then playableWorldBatch.releaseMaterials(catalog) end if
   if modelAssets!=void then for each texture in modelAssets.textures window.releaseTexture(texture.slot) end for end if
@@ -1079,6 +1097,7 @@ function runLimited(map,maxFrames,sound,archive)
   if skyCatalog!=void then playableSky.release(skyCatalog) end if
   if fogCatalog!=void then playableFog.release(fogCatalog) end if
   if dlightCatalog!=void then dynamicLights.release(dlightCatalog) end if
+  if markCatalog!=void then playableMarks.release(markCatalog) end if
   if baseHudCatalog!=void then baseHud.release(baseHudCatalog) end if
   if menuCatalog!=void then menu.release(menuCatalog) end if
   if matchMedia!=void then baseMatchDisplay.release(matchMedia) end if
