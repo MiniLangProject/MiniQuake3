@@ -57,7 +57,8 @@ passes in Quake's explicit and inferred shader-sort order. Each retained stage
 also applies its parsed `depthWrite` and `depthFunc equal` state. Materials with
 `polygonOffset` use Quake's slope-scaled decal depth bias. Retained effect
 passes and lightmaps use bilinear texture filtering with Quake-style repeat or
-clamped edge sampling. They carry perspective-correct RGBA vertex colours
+clamped edge sampling. Uploads build complete box-filtered mip chains, and
+screen-space UV gradients select a level for minified triangles. They carry perspective-correct RGBA vertex colours
 into the native rasterizer and evaluate `rgbGen vertex`, `exactVertex`,
 `oneMinusVertex`, `const` and `wave` together with the corresponding `alphaGen`
 modes. Wave generators use the original 1,024-entry phase lookup and byte

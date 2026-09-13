@@ -32,6 +32,7 @@ static LARGE_INTEGER timerStart;
 
 #define PLAYABLE_TEXTURE_SLOTS 512
 #define PLAYABLE_MAX_TEXTURE_SIZE 4096
+#define PLAYABLE_MAX_MIP_LEVELS 13
 
 typedef struct playableTexture_s {
     uint32_t *pixels;
@@ -39,6 +40,10 @@ typedef struct playableTexture_s {
     int height;
     int widthMask;
     int heightMask;
+    uint32_t *mipPixels[PLAYABLE_MAX_MIP_LEVELS - 1];
+    int mipWidths[PLAYABLE_MAX_MIP_LEVELS - 1];
+    int mipHeights[PLAYABLE_MAX_MIP_LEVELS - 1];
+    int mipLevelCount;
 } playableTexture;
 
 static playableTexture textures[PLAYABLE_TEXTURE_SLOTS];
@@ -341,6 +346,10 @@ PLAYABLE_API int playable_window_upload_texture(int slot, const unsigned char *r
     SIZE_T byteCount;
     SIZE_T i;
     uint32_t *copy;
+    uint32_t *mipPixels[PLAYABLE_MAX_MIP_LEVELS - 1] = {0};
+    int mipWidths[PLAYABLE_MAX_MIP_LEVELS - 1] = {0};
+    int mipHeights[PLAYABLE_MAX_MIP_LEVELS - 1] = {0};
+    int mipCount = 0;
     if (slot < 0 || slot >= PLAYABLE_TEXTURE_SLOTS || !rgba || width < 1 || height < 1 ||
             width > PLAYABLE_MAX_TEXTURE_SIZE || height > PLAYABLE_MAX_TEXTURE_SIZE) return 0;
     pixelCount = (SIZE_T)width * (SIZE_T)height;
@@ -354,13 +363,74 @@ PLAYABLE_API int playable_window_upload_texture(int slot, const unsigned char *r
         copy[i] = makeColor((int)rgba[source], (int)rgba[source + 1u], (int)rgba[source + 2u]) |
             ((uint32_t)rgba[source + 3u] << 24);
     }
+    {
+        uint32_t *previous = copy;
+        int previousWidth = width;
+        int previousHeight = height;
+        while ((previousWidth > 1 || previousHeight > 1) &&
+                mipCount < PLAYABLE_MAX_MIP_LEVELS - 1) {
+            int nextWidth = previousWidth > 1 ? previousWidth / 2 : 1;
+            int nextHeight = previousHeight > 1 ? previousHeight / 2 : 1;
+            SIZE_T nextCount = (SIZE_T)nextWidth * (SIZE_T)nextHeight;
+            uint32_t *next = (uint32_t *)VirtualAlloc(0, nextCount * sizeof(uint32_t),
+                MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
+            int y;
+            if (!next) {
+                int level;
+                VirtualFree(copy, 0, MEM_RELEASE);
+                for (level = 0; level < mipCount; ++level)
+                    VirtualFree(mipPixels[level], 0, MEM_RELEASE);
+                return 0;
+            }
+            for (y = 0; y < nextHeight; ++y) {
+                int x;
+                int sy0 = y * 2;
+                int sy1 = sy0 + 1 < previousHeight ? sy0 + 1 : sy0;
+                for (x = 0; x < nextWidth; ++x) {
+                    int sx0 = x * 2;
+                    int sx1 = sx0 + 1 < previousWidth ? sx0 + 1 : sx0;
+                    uint32_t values[4] = {
+                        previous[(SIZE_T)sy0 * (SIZE_T)previousWidth + (SIZE_T)sx0],
+                        previous[(SIZE_T)sy0 * (SIZE_T)previousWidth + (SIZE_T)sx1],
+                        previous[(SIZE_T)sy1 * (SIZE_T)previousWidth + (SIZE_T)sx0],
+                        previous[(SIZE_T)sy1 * (SIZE_T)previousWidth + (SIZE_T)sx1]
+                    };
+                    uint32_t color = 0u;
+                    int shift;
+                    for (shift = 0; shift <= 24; shift += 8) {
+                        uint32_t sum = ((values[0] >> shift) & 255u) +
+                            ((values[1] >> shift) & 255u) +
+                            ((values[2] >> shift) & 255u) + ((values[3] >> shift) & 255u);
+                        color |= ((sum + 2u) / 4u) << shift;
+                    }
+                    next[(SIZE_T)y * (SIZE_T)nextWidth + (SIZE_T)x] = color;
+                }
+            }
+            mipPixels[mipCount] = next;mipWidths[mipCount] = nextWidth;
+            mipHeights[mipCount] = nextHeight;mipCount++;
+            previous = next;previousWidth = nextWidth;previousHeight = nextHeight;
+        }
+    }
     texture = &textures[slot];
-    if (texture->pixels) VirtualFree(texture->pixels, 0, MEM_RELEASE);
+    if (texture->pixels) {
+        int level;
+        VirtualFree(texture->pixels, 0, MEM_RELEASE);
+        for (level = 1; level < texture->mipLevelCount; ++level)
+            if (texture->mipPixels[level - 1]) VirtualFree(texture->mipPixels[level - 1], 0, MEM_RELEASE);
+    }
+    for (i = 0; i < PLAYABLE_MAX_MIP_LEVELS - 1; ++i) {
+        texture->mipPixels[i] = 0;texture->mipWidths[i] = 0;texture->mipHeights[i] = 0;
+    }
     texture->pixels = copy;
     texture->width = width;
     texture->height = height;
     texture->widthMask = (width & (width - 1)) == 0 ? width - 1 : -1;
     texture->heightMask = (height & (height - 1)) == 0 ? height - 1 : -1;
+    texture->mipLevelCount = mipCount + 1;
+    for (i = 0; i < (SIZE_T)mipCount; ++i) {
+        texture->mipPixels[i] = mipPixels[i];texture->mipWidths[i] = mipWidths[i];
+        texture->mipHeights[i] = mipHeights[i];
+    }
     return 1;
 }
 
@@ -368,12 +438,21 @@ PLAYABLE_API void playable_window_release_texture(int slot) {
     playableTexture *texture;
     if (slot < 0 || slot >= PLAYABLE_TEXTURE_SLOTS) return;
     texture = &textures[slot];
-    if (texture->pixels) VirtualFree(texture->pixels, 0, MEM_RELEASE);
+    if (texture->pixels) {
+        int level;
+        VirtualFree(texture->pixels, 0, MEM_RELEASE);
+        for (level = 1; level < texture->mipLevelCount; ++level) {
+            if (texture->mipPixels[level - 1])
+                VirtualFree(texture->mipPixels[level - 1], 0, MEM_RELEASE);
+            texture->mipPixels[level - 1] = 0;
+        }
+    }
     texture->pixels = 0;
     texture->width = 0;
     texture->height = 0;
     texture->widthMask = -1;
     texture->heightMask = -1;
+    texture->mipLevelCount = 0;
 }
 
 static double edgeValue(double ax, double ay, double bx, double by, double px, double py) {
@@ -618,9 +697,50 @@ static uint32_t bilinearColor(uint32_t c00, uint32_t c10, uint32_t c01,
         lerpColor(c01, c11, fractionX), fractionY);
 }
 
-static uint32_t sampleTexture(const playableTexture *texture, double u, double v) {
-    double x = u * (double)texture->width - 0.5;
-    double y = v * (double)texture->height - 0.5;
+static int mipLevelFor(const playableTexture *texture,
+        double x0, double y0, double u0, double v0,
+        double x1, double y1, double u1, double v1,
+        double x2, double y2, double u2, double v2) {
+    double determinant = (x1 - x0) * (y2 - y0) - (x2 - x0) * (y1 - y0);
+    double duDx;
+    double duDy;
+    double dvDx;
+    double dvDy;
+    double rhoX;
+    double rhoY;
+    double rho;
+    int level = 0;
+    if (!texture || texture->mipLevelCount < 2 || fabs(determinant) < 0.0000001) return 0;
+    duDx = ((u1 - u0) * (y2 - y0) - (u2 - u0) * (y1 - y0)) / determinant;
+    duDy = ((x1 - x0) * (u2 - u0) - (x2 - x0) * (u1 - u0)) / determinant;
+    dvDx = ((v1 - v0) * (y2 - y0) - (v2 - v0) * (y1 - y0)) / determinant;
+    dvDy = ((x1 - x0) * (v2 - v0) - (x2 - x0) * (v1 - v0)) / determinant;
+    rhoX = sqrt(duDx * duDx * (double)(texture->width * texture->width) +
+        dvDx * dvDx * (double)(texture->height * texture->height));
+    rhoY = sqrt(duDy * duDy * (double)(texture->width * texture->width) +
+        dvDy * dvDy * (double)(texture->height * texture->height));
+    rho = rhoX > rhoY ? rhoX : rhoY;
+    while (rho > 1.5 && level + 1 < texture->mipLevelCount) { rho *= 0.5;level++; }
+    return level;
+}
+
+static uint32_t sampleTexture(const playableTexture *texture, int level, double u, double v) {
+    const uint32_t *texels = texture->pixels;
+    int width = texture->width;
+    int height = texture->height;
+    int widthMask = texture->widthMask;
+    int heightMask = texture->heightMask;
+    double x;
+    double y;
+    if (level > 0) {
+        if (level >= texture->mipLevelCount) level = texture->mipLevelCount - 1;
+        texels = texture->mipPixels[level - 1];width = texture->mipWidths[level - 1];
+        height = texture->mipHeights[level - 1];
+        widthMask = (width & (width - 1)) == 0 ? width - 1 : -1;
+        heightMask = (height & (height - 1)) == 0 ? height - 1 : -1;
+    }
+    x = u * (double)width - 0.5;
+    y = v * (double)height - 0.5;
     double floorX = floor(x);
     double floorY = floor(y);
     int x0 = (int)floorX;
@@ -629,26 +749,25 @@ static uint32_t sampleTexture(const playableTexture *texture, double u, double v
     int y1;
     unsigned int fractionX = (unsigned int)((x - floorX) * 256.0);
     unsigned int fractionY = (unsigned int)((y - floorY) * 256.0);
-    if (texture->width == 1 && texture->height == 1) return texture->pixels[0];
+    if (width == 1 && height == 1) return texels[0];
     if (rasterClampTexture) {
         x1 = x0 + 1;y1 = y0 + 1;
-        if (x0 < 0) x0 = 0;else if (x0 >= texture->width) x0 = texture->width - 1;
-        if (y0 < 0) y0 = 0;else if (y0 >= texture->height) y0 = texture->height - 1;
-        if (x1 < 0) x1 = 0;else if (x1 >= texture->width) x1 = texture->width - 1;
-        if (y1 < 0) y1 = 0;else if (y1 >= texture->height) y1 = texture->height - 1;
+        if (x0 < 0) x0 = 0;else if (x0 >= width) x0 = width - 1;
+        if (y0 < 0) y0 = 0;else if (y0 >= height) y0 = height - 1;
+        if (x1 < 0) x1 = 0;else if (x1 >= width) x1 = width - 1;
+        if (y1 < 0) y1 = 0;else if (y1 >= height) y1 = height - 1;
     } else {
-        if (texture->widthMask >= 0) x0 &= texture->widthMask;
-        else { x0 %= texture->width;if (x0 < 0) x0 += texture->width; }
-        if (texture->heightMask >= 0) y0 &= texture->heightMask;
-        else { y0 %= texture->height;if (y0 < 0) y0 += texture->height; }
-        x1 = x0 + 1;if (x1 == texture->width) x1 = 0;
-        y1 = y0 + 1;if (y1 == texture->height) y1 = 0;
+        if (widthMask >= 0) x0 &= widthMask;
+        else { x0 %= width;if (x0 < 0) x0 += width; }
+        if (heightMask >= 0) y0 &= heightMask;
+        else { y0 %= height;if (y0 < 0) y0 += height; }
+        x1 = x0 + 1;if (x1 == width) x1 = 0;
+        y1 = y0 + 1;if (y1 == height) y1 = 0;
     }
-    SIZE_T row0 = (SIZE_T)y0 * (SIZE_T)texture->width;
-    SIZE_T row1 = (SIZE_T)y1 * (SIZE_T)texture->width;
-    return bilinearColor(texture->pixels[row0 + (SIZE_T)x0],
-        texture->pixels[row0 + (SIZE_T)x1], texture->pixels[row1 + (SIZE_T)x0],
-        texture->pixels[row1 + (SIZE_T)x1], fractionX, fractionY);
+    SIZE_T row0 = (SIZE_T)y0 * (SIZE_T)width;
+    SIZE_T row1 = (SIZE_T)y1 * (SIZE_T)width;
+    return bilinearColor(texels[row0 + (SIZE_T)x0], texels[row0 + (SIZE_T)x1],
+        texels[row1 + (SIZE_T)x0], texels[row1 + (SIZE_T)x1], fractionX, fractionY);
 }
 
 static uint32_t multiplyTextures(uint32_t base, uint32_t lightmap) {
@@ -695,6 +814,7 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
     double constantDepthScale;
     int x;
     int y;
+    int textureMipLevel = 0;
     playableTexture *texture = 0;
     uint32_t fallback = makeColor(fallbackRed, fallbackGreen, fallbackBlue) | 0xff000000u;
     if (!pixels || !depthPixels || !_finite(x0) || !_finite(y0) || !_finite(depth0) ||
@@ -721,6 +841,7 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
     if (maximumY > rasterClipMaximumY) maximumY = rasterClipMaximumY;
     if (minimumX > maximumX || minimumY > maximumY) return;
     texture = textureAt(textureSlot);
+    textureMipLevel = mipLevelFor(texture,x0,y0,u0,v0,x1,y1,u1,v1,x2,y2,u2,v2);
     rowB0 = edgeValue(x1, y1, x2, y2, (double)minimumX + 0.5, (double)minimumY + 0.5) * inverseArea;
     rowB1 = edgeValue(x2, y2, x0, y0, (double)minimumX + 0.5, (double)minimumY + 0.5) * inverseArea;
     stepB0X = (y2 - y1) * inverseArea;
@@ -821,7 +942,7 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
             if (texture) {
                 double u = uOverDepth * depth;
                 double v = vOverDepth * depth;
-                color = sampleTexture(texture, u, v);
+                color = sampleTexture(texture, textureMipLevel, u, v);
             }
             if (!unitLight) color = modulateColor(color, light);
             if (rasterVertexColorEnabled) {
@@ -888,6 +1009,8 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
     int y;
     playableTexture *baseTexture = textureAt(baseTextureSlot);
     playableTexture *lightmapTexture = textureAt(lightmapTextureSlot);
+    int baseMipLevel = mipLevelFor(baseTexture,x0,y0,u0,v0,x1,y1,u1,v1,x2,y2,u2,v2);
+    int lightmapMipLevel = mipLevelFor(lightmapTexture,x0,y0,lu0,lv0,x1,y1,lu1,lv1,x2,y2,lu2,lv2);
     uint32_t fallback = makeColor(fallbackRed, fallbackGreen, fallbackBlue) | 0xff000000u;
     if (!pixels || !depthPixels || !_finite(x0) || !_finite(y0) || !_finite(depth0) ||
             !_finite(x1) || !_finite(y1) || !_finite(depth1) || !_finite(x2) ||
@@ -1036,12 +1159,12 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
             if (baseTexture) {
                 double u = uOverDepth * depth;
                 double v = vOverDepth * depth;
-                color = sampleTexture(baseTexture, u, v);
+                color = sampleTexture(baseTexture, baseMipLevel, u, v);
             }
             if (lightmapTexture) {
                 double u = luOverDepth * depth;
                 double v = lvOverDepth * depth;
-                color = multiplyTextures(color, sampleTexture(lightmapTexture, u, v));
+                color = multiplyTextures(color, sampleTexture(lightmapTexture, lightmapMipLevel, u, v));
             }
             color = modulateColor(color, light);
             if (rasterVertexColorEnabled) {

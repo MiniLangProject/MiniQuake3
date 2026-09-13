@@ -164,6 +164,23 @@ int main(void) {
     drawUiTriangleUv2(5, 0.5, 0.5);
     if (pixels[sample] != UINT32_C(0xff808080)) return 36;
 
+    /* Upload builds the complete chain, and a heavily minified triangle picks
+     * the 1x1 average instead of aliasing between the four source texels. */
+    if (textures[5].mipLevelCount != 2 || textures[5].mipWidths[0] != 1 ||
+            textures[5].mipHeights[0] != 1 ||
+            textures[5].mipPixels[0][0] != UINT32_C(0xff808080)) return 37;
+    playable_window_begin_frame(0, 0, 0);
+    playable_window_draw_triangle(5,
+        1.0, 1.0, 2.0, 0.0, 0.0, 1.0,
+        7.0, 1.0, 2.0, 12.0, 0.0, 1.0,
+        1.0, 7.0, 2.0, 0.0, 12.0, 1.0,
+        255, 255, 255);
+    if (pixels[sample] != UINT32_C(0xff808080)) return 38;
+    if (!playable_window_upload_texture(5, halfRed, 1, 1) ||
+            textures[5].mipLevelCount != 1 || textures[5].mipPixels[0] != 0) return 39;
+    playable_window_release_texture(5);
+    if (textures[5].pixels != 0 || textures[5].mipLevelCount != 0) return 40;
+
     playable_window_shutdown();
     puts("playable window raster-state regression: PASS");
     return 0;

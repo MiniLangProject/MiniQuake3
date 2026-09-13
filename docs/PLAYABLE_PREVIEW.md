@@ -150,6 +150,9 @@ world-space displacement.
 Base textures, shader stages and lightmaps use bilinear sampling around OpenGL
 texel centers. Repeating textures interpolate across their wrap boundary;
 `clampMap` stages hold the nearest edge texel instead.
+Texture uploads also build the full box-filtered mip chain down to 1x1. A
+screen-space UV-footprint selects the closest mip level per triangle, reducing
+distant shimmer and improving cache locality without changing magnified UI.
 Retained stages evaluate `rgbGen vertex`, `exactVertex`,
 `oneMinusVertex`, `const` and `wave`, plus the corresponding `alphaGen` modes.
 The native batch transports an independent RGBA value for every triangle vertex

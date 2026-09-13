@@ -67,6 +67,8 @@ steigungsabhängigen Decal-Tiefenbias im inversen Tiefenpuffer. Die Abnahme umfa
 54 Material-, 15 Batch-Layout- und 42 World-Batch-Verträge sowie einen
 nativen Pixelvergleich unter `/W4 /WX`. Textur- und Lightmap-Abtastung arbeitet
 bilinear mit OpenGL-Texelzentren und getrenntem Repeat-/Clamp-Randverhalten.
+Vollständige Boxfilter-Mipketten und eine UV-Gradienten-basierte Levelwahl
+reduzieren zusätzlich das Distanzflimmern.
 
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
 | --- | --- | --- |
