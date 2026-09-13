@@ -193,6 +193,10 @@ inverse-square dlight texture. The retained BSP pass projects world XYZ into
 the light, rejects triangles with shared clip bits, applies the original Z
 attenuation and blends at equal depth with `GL_DST_COLOR GL_ONE`. Sky,
 translucent and `SURF_NODLIGHT` materials do not receive the extra pass.
+The same scene lights now illuminate players, pickups, projectiles and the
+first-person weapon. Their RGB contribution uses Baseq3's inverse-square
+entity-light formula, 16-unit minimum distance and magnitude-weighted light
+direction, combined with the static BSP light grid.
 World impacts retain Baseq3's original bullet, burn, Lightning-hole and plasma
 mark textures for ten seconds. Machinegun, Shotgun, Lightning, Rail, Rocket,
 Grenade, Plasma and BFG use the stock radii and normal-aligned orientation.
@@ -281,8 +285,9 @@ Validation:
 - `python scripts/test_player_render_quality.py`: 20 complete-model LOD, skin
   and vertex-lighting contracts plus a retail Sarge probe.
 - `python scripts/test_playable_light_grid.py --pak D:/Quake3/baseq3/pak0.pk3`:
-  13 grid-layout, overbright, trilinear interpolation, wall-sample, RGB diffuse,
-  direction and minimum-light contracts plus all 8,514 q3dm1 grid points.
+  18 grid-layout, overbright, trilinear interpolation, wall-sample, RGB diffuse,
+  direction, minimum-light and dynamic entity-light contracts plus all 8,514
+  q3dm1 grid points.
 - `python scripts/test_playable_player_shadows.py --pak D:/Quake3/baseq3/pak0.pk3`:
   nine Baseq3 trace-bounds, distance, fade, orientation and plane contracts plus
   the retail 32x32 `markShadow` texture and ground hits for all five q3dm1 targets.

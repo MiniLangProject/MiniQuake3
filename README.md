@@ -83,8 +83,9 @@ Rocket, Plasma, Grenade and BFG travel through the map with original speed,
 direct and splash damage, while grenades bounce and settle until their fuse.
 Their original retail MD3s and textures are rendered in flight; Plasma uses its
 original camera-facing sprite. Source-anchored Rocket/Grenade smoke, Plasma
-particles and projectile light overlays accompany them. The audio boundary now
-mixes up to 16 effects while q3dm1's looped fire ambience streams with
+particles and projectile light overlays accompany them; the same RGB lights now
+illuminate players, pickups, projectiles and the first-person weapon. The audio
+boundary now mixes up to 16 effects while q3dm1's looped fire ambience streams with
 source-relative attenuation and stereo panning.
 Five local targets
 come from the remaining q3dm1 deathmatch spawns; they trace BSP line of sight,

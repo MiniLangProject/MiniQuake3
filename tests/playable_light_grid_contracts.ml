@@ -1,4 +1,5 @@
 import mq3.renderer.playable_light_grid as lightGrid
+import mq3.renderer.playable_dynamic_lights as dynamicLights
 import mq3.format.bsp as bsp
 import mq3.compat.numeric as numeric
 
@@ -23,6 +24,12 @@ function main(args)
   count=count+require(lightGrid.vertexColor(entity,[0.0,0.0,1.0])==[132,172,212,255],"diffuse color preserves RGB channels")
   count=count+require(lightGrid.vertexColor(entity,[0.0,0.0,-1.0])==[52,72,92,255],"back-facing diffuse color uses RGB ambient")
   count=count+require(lightGrid.vertexColor(lightGrid.Sample([250.0,1.0,2.0],[20.0,2.0,3.0],[0.0,0.0,1.0],1.0),[0.0,0.0,1.0])==[255,3,5,255],"diffuse color clamps each channel")
-  invalid=lightGrid.Grid(bytes(1,0),0,1,[0.0,0.0,0.0],[1.0,1.0,1.0],[1.0,1.0,1.0],[1,1,1],false);count=count+require(lightGrid.sample(invalid,[0.0,0.0,0.0]).totalFactor==0.0,"invalid grid returns safe sample")
+  base=lightGrid.Sample([10.0,20.0,30.0],[3.0,4.0,0.0],[0.0,0.0,1.0],1.0);light=dynamicLights.Light([16.0,0.0,0.0],16.0,[1.0,0.5,0.25],false);dynamic=lightGrid.withDynamicLights(base,[0.0,0.0,0.0],[light])
+  count=count+require(dynamic.directed==[19.0,12.0,4.0],"dlight contributes inverse-square RGB at its radius")
+  count=count+require(dynamic.direction[0]>0.95 and dynamic.direction[2]>0.29 and dynamic.direction[2]<0.30,"dlight direction combines with static directed magnitude")
+  count=count+require(base.directed==[3.0,4.0,0.0] and dynamic.ambient==base.ambient,"dynamic sample preserves its source and ambient")
+  nearLight=dynamicLights.Light([0.0,0.0,0.0],100.0,[1.0,0.0,0.0],false);nearDynamic=lightGrid.withDynamicLights(base,[0.0,0.0,0.0],[nearLight]);count=count+require(nearDynamic.directed[0]==628.0,"dlight distance clamps to 16 units")
+  staticCenter=lightGrid.entitySample(grid,[5.0,10.0,15.0]);lightGrid.setDynamicLights(grid,[light]);integrated=lightGrid.entitySample(grid,[5.0,10.0,15.0]);count=count+require(integrated.directed[0]>staticCenter.directed[0],"entity sampling consumes current scene dlights")
+  invalid=lightGrid.Grid(bytes(1,0),0,1,[0.0,0.0,0.0],[1.0,1.0,1.0],[1.0,1.0,1.0],[1,1,1],false,[]);count=count+require(lightGrid.sample(invalid,[0.0,0.0,0.0]).totalFactor==0.0,"invalid grid returns safe sample")
   print("PASS: "+str(count)+" playable light-grid contracts");return 0
 end function

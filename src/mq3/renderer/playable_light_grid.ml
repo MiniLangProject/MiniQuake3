@@ -14,8 +14,10 @@ const DEFAULT_Y=64.0
 const DEFAULT_Z=128.0
 const PI=3.14159265358979323846
 const MINLIGHT=32.0
+const DLIGHT_AT_RADIUS=16.0
+const DLIGHT_MINIMUM_RADIUS=16.0
 
-struct Grid data offset length origin size inverse bounds valid end struct
+struct Grid data offset length origin size inverse bounds valid dynamicLights end struct
 struct Sample ambient directed direction totalFactor end struct
 
 function fail(message) return error(7660,"playable light grid: "+message) end function
@@ -34,7 +36,7 @@ function load(map)
   origin=[];bounds=[];inverse=[]
   for axis=0 to 2 first=size[axis]*ceilNumber(mins[axis]/size[axis]);last=size[axis]*floorNumber(maxs[axis]/size[axis]);origin=origin+[first];bounds=bounds+[numeric.trunc32((last-first)/size[axis])+1];inverse=inverse+[1.0/size[axis]] end for
   expected=bounds[0]*bounds[1]*bounds[2]*8;valid=map.lengths[15]==expected and expected>0
-  return Grid(map.data,map.offsets[15],map.lengths[15],origin,size,inverse,bounds,valid)
+  return Grid(map.data,map.offsets[15],map.lengths[15],origin,size,inverse,bounds,valid,[])
 end function
 
 function shiftColor(red,green,blue)
@@ -61,8 +63,24 @@ function sample(grid,point)
   return Sample(ambient,directed,direction,total)
 end function
 
+function withDynamicLights(value,point,lights)
+  if value==void or point==void or lights==void or len(lights)==0 then return value end if
+  ambient=[value.ambient[0],value.ambient[1],value.ambient[2]];directed=[value.directed[0],value.directed[1],value.directed[2]];length=qmath.VectorLength(directed);direction=qmath.VectorScale(value.direction,length);total=value.totalFactor
+  for each light in lights
+    if light!=void and light.radius>0.0 and light.origin!=void and light.color!=void then
+      delta=[light.origin[0]-point[0],light.origin[1]-point[1],light.origin[2]-point[2]];distance=qmath.VectorNormalize(delta);if distance<DLIGHT_MINIMUM_RADIUS then distance=DLIGHT_MINIMUM_RADIUS end if
+      amount=DLIGHT_AT_RADIUS*light.radius*light.radius/(distance*distance)
+      for channel=0 to 2 directed[channel]=directed[channel]+amount*light.color[channel] end for
+      direction=qmath.VectorMA(direction,amount,delta);if amount>0.0 then total=1.0 end if
+    end if
+  end for
+  if qmath.VectorNormalize(direction)==0.0 then direction=[0.0,0.0,1.0] end if
+  return Sample(ambient,directed,direction,total)
+end function
+function setDynamicLights(grid,lights) if grid!=void then if lights==void then grid.dynamicLights=[] else grid.dynamicLights=lights end if end if;return grid end function
 function entitySample(grid,point)
-  value=sample(grid,point);for channel=0 to 2 value.ambient[channel]=value.ambient[channel]+MINLIGHT;if value.ambient[channel]>255.0 then value.ambient[channel]=255.0 end if end for;return value
+  value=sample(grid,point);for channel=0 to 2 value.ambient[channel]=value.ambient[channel]+MINLIGHT;if value.ambient[channel]>255.0 then value.ambient[channel]=255.0 end if end for
+  if grid!=void then value=withDynamicLights(value,point,grid.dynamicLights) end if;return value
 end function
 function vertexLight(value,normal)
   if value==void or normal==void then return 1.0 end if;dot=qmath.DotProduct(normal,value.direction);if dot<0.0 then dot=0.0 end if
