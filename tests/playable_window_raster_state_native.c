@@ -180,6 +180,9 @@ int main(void) {
             textures[5].mipLevelCount != 1 || textures[5].mipPixels[0] != 0) return 39;
     playable_window_release_texture(5);
     if (textures[5].pixels != 0 || textures[5].mipLevelCount != 0) return 40;
+    if (playable_window_upload_texture_mipmapped(5, bilinearColors, 2, 2, 2) ||
+            !playable_window_upload_texture_mipmapped(5, bilinearColors, 2, 2, 0) ||
+            textures[5].mipLevelCount != 1 || textures[5].mipPixels[0] != 0) return 41;
 
     playable_window_shutdown();
     puts("playable window raster-state regression: PASS");

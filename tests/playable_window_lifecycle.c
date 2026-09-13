@@ -14,6 +14,7 @@ __declspec(dllimport) void playable_window_begin_frame(int, int, int);
 __declspec(dllimport) void playable_window_clear_depth(double);
 __declspec(dllimport) int playable_window_set_depth_range(double, double);
 __declspec(dllimport) int playable_window_upload_texture(int, const unsigned char *, int, int);
+__declspec(dllimport) int playable_window_upload_texture_mipmapped(int, const unsigned char *, int, int, int);
 __declspec(dllimport) void playable_window_release_texture(int);
 __declspec(dllimport) void playable_window_draw_triangle(int,
     double, double, double, double, double, double,
@@ -58,7 +59,9 @@ int main(void) {
         playable_window_upload_texture(512, texture, 2, 2) ||
         playable_window_upload_texture(0, 0, 2, 2) ||
         !playable_window_upload_texture(0, texture, 2, 2) ||
-        !playable_window_upload_texture(511, texture, 2, 2)) return 2;
+        !playable_window_upload_texture(511, texture, 2, 2) ||
+        playable_window_upload_texture_mipmapped(1, texture, 2, 2, 2) ||
+        !playable_window_upload_texture_mipmapped(1, texture, 2, 2, 0)) return 2;
     playable_window_draw_triangle(0,
         0.0, 0.0, 2.0, 0.0, 0.0, 1.0,
         1.0, 0.0, 2.0, 1.0, 0.0, 1.0,

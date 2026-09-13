@@ -68,7 +68,8 @@ steigungsabhängigen Decal-Tiefenbias im inversen Tiefenpuffer. Die Abnahme umfa
 nativen Pixelvergleich unter `/W4 /WX`. Textur- und Lightmap-Abtastung arbeitet
 bilinear mit OpenGL-Texelzentren und getrenntem Repeat-/Clamp-Randverhalten.
 Vollständige Boxfilter-Mipketten und eine UV-Gradienten-basierte Levelwahl
-reduzieren zusätzlich das Distanzflimmern.
+reduzieren zusätzlich das Distanzflimmern. Geparste `nomipmaps`-Shader sowie
+HUD-, Menü- und Fontbilder bleiben wie in Baseq3 auf der Basisebene.
 
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
 | --- | --- | --- |

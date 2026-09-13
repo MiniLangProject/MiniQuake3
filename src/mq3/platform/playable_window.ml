@@ -18,6 +18,7 @@ extern function shutdownNative() from "playable_window.dll" symbol "playable_win
 extern function clearDepthNative(depth as double) from "playable_window.dll" symbol "playable_window_clear_depth" returns void
 extern function setDepthRangeNative(scale as double,nearDistance as double) from "playable_window.dll" symbol "playable_window_set_depth_range" returns i32
 extern function uploadTextureNative(slot as i32,rgba as ptr,width as i32,height as i32) from "playable_window.dll" symbol "playable_window_upload_texture" returns i32
+extern function uploadTextureMipmappedNative(slot as i32,rgba as ptr,width as i32,height as i32,mipmapped as i32) from "playable_window.dll" symbol "playable_window_upload_texture_mipmapped" returns i32
 extern function releaseTextureNative(slot as i32) from "playable_window.dll" symbol "playable_window_release_texture" returns void
 extern function triangleNative(textureSlot as i32,x0 as double,y0 as double,depth0 as double,u0 as double,v0 as double,light0 as double,x1 as double,y1 as double,depth1 as double,u1 as double,v1 as double,light1 as double,x2 as double,y2 as double,depth2 as double,u2 as double,v2 as double,light2 as double,red as i32,green as i32,blue as i32) from "playable_window.dll" symbol "playable_window_draw_triangle" returns void
 extern function triangleBatchNative(records as ptr,byteCount as i32,triangleCount as i32) from "playable_window.dll" symbol "playable_window_draw_triangle_batch" returns i32
@@ -78,6 +79,12 @@ function uploadTexture(slot,rgba,width,height)
   if typeof(rgba)!="bytes" then return error(7483,"preview texture must be RGBA bytes") end if
   return uploadTextureNative(slot,nativeBytesPtr(rgba),width,height)!=0
 end function
+function uploadTextureMipmapped(slot,rgba,width,height,mipmapped)
+  if typeof(rgba)!="bytes" then return error(7483,"preview texture must be RGBA bytes") end if
+  value=0;if mipmapped then value=1 end if
+  return uploadTextureMipmappedNative(slot,nativeBytesPtr(rgba),width,height,value)!=0
+end function
+function uploadTextureNoMip(slot,rgba,width,height) return uploadTextureMipmapped(slot,rgba,width,height,false) end function
 function releaseTexture(slot) releaseTextureNative(slot);return void end function
 function drawTriangle(textureSlot,a,uvA,lightA,b,uvB,lightB,c,uvC,lightC,red,green,blue)
   triangleNative(textureSlot,a.x,a.y,a.depth,uvA[0],uvA[1],lightA,b.x,b.y,b.depth,uvB[0],uvB[1],lightB,c.x,c.y,c.depth,uvC[0],uvC[1],lightC,red,green,blue)

@@ -41,7 +41,7 @@ end function
 
 function upload(media)
   if media==void then return fail("media is required") end if
-  if not window.uploadTexture(media.slot,media.image.pixels,media.image.width,media.image.height) then return fail("could not upload "+media.imageName) end if
+  if not window.uploadTextureNoMip(media.slot,media.image.pixels,media.image.width,media.image.height) then return fail("could not upload "+media.imageName) end if
   return true
 end function
 

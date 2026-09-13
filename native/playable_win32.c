@@ -339,8 +339,8 @@ PLAYABLE_API void playable_window_clear_depth(double depth) {
     clearDepth(depth);
 }
 
-PLAYABLE_API int playable_window_upload_texture(int slot, const unsigned char *rgba,
-        int width, int height) {
+static int uploadTexture(int slot, const unsigned char *rgba,
+        int width, int height, int mipmapped) {
     playableTexture *texture;
     SIZE_T pixelCount;
     SIZE_T byteCount;
@@ -367,7 +367,7 @@ PLAYABLE_API int playable_window_upload_texture(int slot, const unsigned char *r
         uint32_t *previous = copy;
         int previousWidth = width;
         int previousHeight = height;
-        while ((previousWidth > 1 || previousHeight > 1) &&
+        while (mipmapped && (previousWidth > 1 || previousHeight > 1) &&
                 mipCount < PLAYABLE_MAX_MIP_LEVELS - 1) {
             int nextWidth = previousWidth > 1 ? previousWidth / 2 : 1;
             int nextHeight = previousHeight > 1 ? previousHeight / 2 : 1;
@@ -432,6 +432,17 @@ PLAYABLE_API int playable_window_upload_texture(int slot, const unsigned char *r
         texture->mipHeights[i] = mipHeights[i];
     }
     return 1;
+}
+
+PLAYABLE_API int playable_window_upload_texture(int slot, const unsigned char *rgba,
+        int width, int height) {
+    return uploadTexture(slot, rgba, width, height, 1);
+}
+
+PLAYABLE_API int playable_window_upload_texture_mipmapped(int slot,
+        const unsigned char *rgba, int width, int height, int mipmapped) {
+    if (mipmapped != 0 && mipmapped != 1) return 0;
+    return uploadTexture(slot, rgba, width, height, mipmapped);
 }
 
 PLAYABLE_API void playable_window_release_texture(int slot) {

@@ -153,6 +153,9 @@ texel centers. Repeating textures interpolate across their wrap boundary;
 Texture uploads also build the full box-filtered mip chain down to 1x1. A
 screen-space UV-footprint selects the closest mip level per triangle, reducing
 distant shimmer and improving cache locality without changing magnified UI.
+Shader-level `nomipmaps` is retained through material loading and disables that
+chain for every image in the shader. HUD, menu and match-font uploads also use
+the explicit non-mipmapped path, matching Baseq3's 2D image policy.
 Retained stages evaluate `rgbGen vertex`, `exactVertex`,
 `oneMinusVertex`, `const` and `wave`, plus the corresponding `alphaGen` modes.
 The native batch transports an independent RGBA value for every triangle vertex

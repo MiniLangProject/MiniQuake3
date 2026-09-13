@@ -71,7 +71,7 @@ function find(catalog,key)
 end function
 function upload(catalog)
   if catalog==void then return fail("catalog is required") end if
-  for each asset in catalog.assets if not window.uploadTexture(asset.slot,asset.image.pixels,asset.image.width,asset.image.height) then release(catalog);return fail("could not upload "+asset.imageName) end if end for
+  for each asset in catalog.assets if not window.uploadTextureNoMip(asset.slot,asset.image.pixels,asset.image.width,asset.image.height) then release(catalog);return fail("could not upload "+asset.imageName) end if end for
   return true
 end function
 function release(catalog) if catalog!=void then for each asset in catalog.assets window.releaseTexture(asset.slot) end for end if;return void end function

@@ -19,6 +19,7 @@ RASTER_EXPORTS = (
     "playable_window_clear_depth",
     "playable_window_set_depth_range",
     "playable_window_upload_texture",
+    "playable_window_upload_texture_mipmapped",
     "playable_window_release_texture",
     "playable_window_draw_triangle",
     "playable_window_draw_triangle_multitexture",

@@ -65,7 +65,7 @@ function uploadMaterials(catalog)
         slot=stage.slots[index]
         if not contains(uploaded,slot) then
           image=stage.images[index]
-          if image==void or not window.uploadTexture(slot,image.pixels,image.width,image.height) then return fail("could not upload material stage") end if
+          if image==void or not window.uploadTextureMipmapped(slot,image.pixels,image.width,image.height,not material.noMipMaps) then return fail("could not upload material stage") end if
           uploaded=uploaded+[slot]
         end if
       end for
