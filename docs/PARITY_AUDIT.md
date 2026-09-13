@@ -65,7 +65,8 @@ Geparste `depthWrite`- und `depthFunc equal`-Zustände werden pro Stage bis an d
 nativen Rasterzustand weitergegeben. `polygonOffset` nutzt zusätzlich Baseq3s
 steigungsabhängigen Decal-Tiefenbias im inversen Tiefenpuffer. Die Abnahme umfasst
 54 Material-, 15 Batch-Layout- und 42 World-Batch-Verträge sowie einen
-nativen Pixelvergleich unter `/W4 /WX`.
+nativen Pixelvergleich unter `/W4 /WX`. Textur- und Lightmap-Abtastung arbeitet
+bilinear mit OpenGL-Texelzentren und getrenntem Repeat-/Clamp-Randverhalten.
 
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
 | --- | --- | --- |

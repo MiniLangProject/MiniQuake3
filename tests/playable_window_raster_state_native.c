@@ -24,12 +24,24 @@ static void drawUiTriangleUv(int textureSlot, double u) {
         255, 255, 255);
 }
 
+static void drawUiTriangleUv2(int textureSlot, double u, double v) {
+    playable_window_draw_triangle(textureSlot,
+        1.0, 1.0, 2.0, u, v, 1.0,
+        7.0, 1.0, 2.0, u, v, 1.0,
+        1.0, 7.0, 2.0, u, v, 1.0,
+        255, 255, 255);
+}
+
 int main(void) {
     static const unsigned char halfRed[4] = { 255, 0, 0, 128 };
     static const unsigned char halfBlue[4] = { 0, 0, 255, 128 };
     static const unsigned char lowGreen[4] = { 0, 255, 0, 127 };
     static const unsigned char filterGray[4] = { 128, 64, 255, 255 };
     static const unsigned char edgeColors[8] = { 255, 0, 0, 255, 0, 255, 0, 255 };
+    static const unsigned char bilinearColors[16] = {
+        255, 0, 0, 255, 0, 255, 0, 255,
+        0, 0, 255, 255, 255, 255, 255, 255
+    };
     const SIZE_T sample = 2u * 8u + 2u;
     float clearedDepth;
 
@@ -38,7 +50,8 @@ int main(void) {
             !playable_window_upload_texture(1, halfBlue, 1, 1) ||
             !playable_window_upload_texture(2, lowGreen, 1, 1) ||
             !playable_window_upload_texture(3, filterGray, 1, 1) ||
-            !playable_window_upload_texture(4, edgeColors, 2, 1)) return 1;
+            !playable_window_upload_texture(4, edgeColors, 2, 1) ||
+            !playable_window_upload_texture(5, bilinearColors, 2, 2)) return 1;
 
     playable_window_begin_frame(0, 0, 0);
     clearedDepth = depthPixels[sample];
@@ -144,6 +157,12 @@ int main(void) {
     drawUiTriangle(1);
     if (pixels[sample] != UINT32_C(0x800000ff) || depthPixels[sample] <= 0.5f) return 34;
     if (!playable_window_set_polygon_offset(0) || playable_window_set_polygon_offset(2)) return 35;
+
+    /* GL_LINEAR samples around texel centers. The middle of this 2x2 texture
+     * is the equal RGBA average of red, green, blue and white. */
+    playable_window_begin_frame(0, 0, 0);
+    drawUiTriangleUv2(5, 0.5, 0.5);
+    if (pixels[sample] != UINT32_C(0xff808080)) return 36;
 
     playable_window_shutdown();
     puts("playable window raster-state regression: PASS");

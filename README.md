@@ -56,7 +56,8 @@ executes q3dm1's animated, scrolling, rotating, alpha and additive material
 passes in Quake's explicit and inferred shader-sort order. Each retained stage
 also applies its parsed `depthWrite` and `depthFunc equal` state. Materials with
 `polygonOffset` use Quake's slope-scaled decal depth bias. Retained effect
-passes carry perspective-correct RGBA vertex colours
+passes and lightmaps use bilinear texture filtering with Quake-style repeat or
+clamped edge sampling. They carry perspective-correct RGBA vertex colours
 into the native rasterizer and evaluate `rgbGen vertex`, `exactVertex`,
 `oneMinusVertex`, `const` and `wave` together with the corresponding `alphaGen`
 modes. Wave generators use the original 1,024-entry phase lookup and byte

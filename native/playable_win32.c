@@ -37,6 +37,8 @@ typedef struct playableTexture_s {
     uint32_t *pixels;
     int width;
     int height;
+    int widthMask;
+    int heightMask;
 } playableTexture;
 
 static playableTexture textures[PLAYABLE_TEXTURE_SLOTS];
@@ -357,6 +359,8 @@ PLAYABLE_API int playable_window_upload_texture(int slot, const unsigned char *r
     texture->pixels = copy;
     texture->width = width;
     texture->height = height;
+    texture->widthMask = (width & (width - 1)) == 0 ? width - 1 : -1;
+    texture->heightMask = (height & (height - 1)) == 0 ? height - 1 : -1;
     return 1;
 }
 
@@ -368,6 +372,8 @@ PLAYABLE_API void playable_window_release_texture(int slot) {
     texture->pixels = 0;
     texture->width = 0;
     texture->height = 0;
+    texture->widthMask = -1;
+    texture->heightMask = -1;
 }
 
 static double edgeValue(double ax, double ay, double bx, double by, double px, double py) {
@@ -597,20 +603,52 @@ static playableTexture *textureAt(int slot) {
     return &textures[slot];
 }
 
+static uint32_t lerpColor(uint32_t first, uint32_t second, unsigned int fraction) {
+    unsigned int inverse = 256u - fraction;
+    uint32_t redBlue = (((first & 0x00ff00ffu) * inverse +
+        (second & 0x00ff00ffu) * fraction + 0x00800080u) >> 8) & 0x00ff00ffu;
+    uint32_t alphaGreen = ((((first >> 8) & 0x00ff00ffu) * inverse +
+        ((second >> 8) & 0x00ff00ffu) * fraction + 0x00800080u) >> 8) & 0x00ff00ffu;
+    return redBlue | (alphaGreen << 8);
+}
+
+static uint32_t bilinearColor(uint32_t c00, uint32_t c10, uint32_t c01,
+        uint32_t c11, unsigned int fractionX, unsigned int fractionY) {
+    return lerpColor(lerpColor(c00, c10, fractionX),
+        lerpColor(c01, c11, fractionX), fractionY);
+}
+
 static uint32_t sampleTexture(const playableTexture *texture, double u, double v) {
-    double sampledU = u;
-    double sampledV = v;
-    int textureX;
-    int textureY;
+    double x = u * (double)texture->width - 0.5;
+    double y = v * (double)texture->height - 0.5;
+    double floorX = floor(x);
+    double floorY = floor(y);
+    int x0 = (int)floorX;
+    int y0 = (int)floorY;
+    int x1;
+    int y1;
+    unsigned int fractionX = (unsigned int)((x - floorX) * 256.0);
+    unsigned int fractionY = (unsigned int)((y - floorY) * 256.0);
+    if (texture->width == 1 && texture->height == 1) return texture->pixels[0];
     if (rasterClampTexture) {
-        if (sampledU < 0.0) sampledU = 0.0;if (sampledU > 1.0) sampledU = 1.0;
-        if (sampledV < 0.0) sampledV = 0.0;if (sampledV > 1.0) sampledV = 1.0;
+        x1 = x0 + 1;y1 = y0 + 1;
+        if (x0 < 0) x0 = 0;else if (x0 >= texture->width) x0 = texture->width - 1;
+        if (y0 < 0) y0 = 0;else if (y0 >= texture->height) y0 = texture->height - 1;
+        if (x1 < 0) x1 = 0;else if (x1 >= texture->width) x1 = texture->width - 1;
+        if (y1 < 0) y1 = 0;else if (y1 >= texture->height) y1 = texture->height - 1;
     } else {
-        sampledU -= floor(sampledU);sampledV -= floor(sampledV);
+        if (texture->widthMask >= 0) x0 &= texture->widthMask;
+        else { x0 %= texture->width;if (x0 < 0) x0 += texture->width; }
+        if (texture->heightMask >= 0) y0 &= texture->heightMask;
+        else { y0 %= texture->height;if (y0 < 0) y0 += texture->height; }
+        x1 = x0 + 1;if (x1 == texture->width) x1 = 0;
+        y1 = y0 + 1;if (y1 == texture->height) y1 = 0;
     }
-    textureX = (int)(sampledU * (double)texture->width);textureY = (int)(sampledV * (double)texture->height);
-    if (textureX >= texture->width) textureX = texture->width-1;if (textureY >= texture->height) textureY = texture->height-1;
-    return texture->pixels[(SIZE_T)textureY * (SIZE_T)texture->width + (SIZE_T)textureX];
+    SIZE_T row0 = (SIZE_T)y0 * (SIZE_T)texture->width;
+    SIZE_T row1 = (SIZE_T)y1 * (SIZE_T)texture->width;
+    return bilinearColor(texture->pixels[row0 + (SIZE_T)x0],
+        texture->pixels[row0 + (SIZE_T)x1], texture->pixels[row1 + (SIZE_T)x0],
+        texture->pixels[row1 + (SIZE_T)x1], fractionX, fractionY);
 }
 
 static uint32_t multiplyTextures(uint32_t base, uint32_t lightmap) {

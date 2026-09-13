@@ -147,6 +147,9 @@ Shader-level `polygonOffset` is retained as an isolated material pass and uses
 Baseq3's default slope factor -1 and unit factor -2, converted for the native
 inverse-depth buffer. This keeps coplanar decals in front without a fixed
 world-space displacement.
+Base textures, shader stages and lightmaps use bilinear sampling around OpenGL
+texel centers. Repeating textures interpolate across their wrap boundary;
+`clampMap` stages hold the nearest edge texel instead.
 Retained stages evaluate `rgbGen vertex`, `exactVertex`,
 `oneMinusVertex`, `const` and `wave`, plus the corresponding `alphaGen` modes.
 The native batch transports an independent RGBA value for every triangle vertex
