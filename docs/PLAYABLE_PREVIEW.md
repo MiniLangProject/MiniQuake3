@@ -91,7 +91,13 @@ frames are interpolated and both default skin images are decoded from the PK3.
 Per-target gameplay events select idle, walk, run, attack, pain, death and
 respawn inputs. Near targets use all 795 triangles; medium and far LODs retain
 398 and 200 triangles while preserving every model surface. Interpolated MD3
-normals provide per-vertex lighting. A bounded pose cache reuses quantized MD3 interpolation results;
+normals now receive position-dependent light from the BSP light grid. The loader
+honors `worldspawn`'s `gridsize`, reconstructs the grid from world bounds, applies
+Baseq3 overbright scaling, ignores solid-wall samples and trilinearly blends all
+eight neighboring ambient, directed and encoded-direction values. Targets,
+pickups, projectiles and the first-person weapon share this lighting path. Each
+entity samples once per pose, so the added fidelity does not multiply the work
+by every MD3 vertex. A bounded pose cache reuses quantized MD3 interpolation results;
 world and player materials also share the same 27-script shader index.
 Enemy movement is resolved through a player-sized BSP hull with wall sliding,
 18-unit steps and ground binding. Their attacks now launch 420-unit-per-second
@@ -269,6 +275,9 @@ Validation:
   contracts.
 - `python scripts/test_player_render_quality.py`: 20 complete-model LOD, skin
   and vertex-lighting contracts plus a retail Sarge probe.
+- `python scripts/test_playable_light_grid.py --pak D:/Quake3/baseq3/pak0.pk3`:
+  ten grid-layout, overbright, trilinear interpolation, wall-sample,
+  direction and minimum-light contracts plus all 8,514 q3dm1 grid points.
 - `python scripts/test_playable_item_models.py`: 44 pickup-model, material,
   transform and budget contracts plus a retail q3dm1 probe.
 - `python scripts/benchmark_playable_item_models.py`: indexed MD3 transform

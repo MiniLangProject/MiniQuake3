@@ -21,7 +21,7 @@ const PI=3.14159265358979323846
 struct Definition style kind modelPath shaderName radius expectedTextures end struct
 struct Asset style kind modelPath shaderName modelAsset textureSlot imageName image radius end struct
 struct Catalog assets textures shaderIndex scriptCount firstTextureSlot maxTextureSlots skipped end struct
-struct Triangle positions texCoords normals textureSlot imageName shaderName style surfaceIndex end struct
+struct Triangle positions texCoords normals textureSlot imageName shaderName style surfaceIndex lightOrigin end struct
 struct Rendered triangles fallback style end struct
 struct Batch triangles fallbackSnapshots end struct
 
@@ -129,7 +129,7 @@ function snapshotAxis(snapshot,nowMilliseconds)
 end function
 
 function wrapModelTriangle(source,style)
-  return Triangle(source.positions,source.texCoords,source.normals,source.textureSlot,source.imageName,source.shaderName,style,source.surfaceIndex)
+  return Triangle(source.positions,source.texCoords,source.normals,source.textureSlot,source.imageName,source.shaderName,style,source.surfaceIndex,source.lightOrigin)
 end function
 
 function renderModel(asset,snapshot,nowMilliseconds,maxTriangles)
@@ -150,8 +150,8 @@ function renderSprite(asset,snapshot,camera,maxTriangles)
   basis=viewer.cameraBasis(camera);right=basis[1];up=basis[2];r=asset.radius;c=snapshot.position
   p0=spritePoint(c,right,up,0.0-r,0.0-r);p1=spritePoint(c,right,up,r,0.0-r);p2=spritePoint(c,right,up,r,r);p3=spritePoint(c,right,up,0.0-r,r)
   normal=[0.0-basis[0][0],0.0-basis[0][1],0.0-basis[0][2]];normals=[normal,normal,normal]
-  one=Triangle([p0,p1,p2],[[0.0,1.0],[1.0,1.0],[1.0,0.0]],normals,asset.textureSlot,asset.imageName,asset.shaderName,asset.style,0)
-  two=Triangle([p0,p2,p3],[[0.0,1.0],[1.0,0.0],[0.0,0.0]],normals,asset.textureSlot,asset.imageName,asset.shaderName,asset.style,0)
+  one=Triangle([p0,p1,p2],[[0.0,1.0],[1.0,1.0],[1.0,0.0]],normals,asset.textureSlot,asset.imageName,asset.shaderName,asset.style,0,snapshot.position)
+  two=Triangle([p0,p2,p3],[[0.0,1.0],[1.0,0.0],[0.0,0.0]],normals,asset.textureSlot,asset.imageName,asset.shaderName,asset.style,0,snapshot.position)
   return [one,two]
 end function
 

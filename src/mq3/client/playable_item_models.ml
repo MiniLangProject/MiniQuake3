@@ -25,7 +25,7 @@ struct CachedSurface positions normals triangleIndexes triangleTexCoords surface
 struct Asset classname category modelPath skinPath model bindings sourceTriangles scale heightOffset bobAmplitude spinDegreesPerSecond end struct
 struct Catalog assets textures shaderIndex scriptCount firstTextureSlot maxTextureSlots skipped end struct
 struct Transform origin axis scale end struct
-struct Triangle positions texCoords normals textureSlot imageName shaderName classname surfaceIndex end struct
+struct Triangle positions texCoords normals textureSlot imageName shaderName classname surfaceIndex lightOrigin end struct
 struct Batch triangles drawnItems skippedItems end struct
 
 function fail(message) return error(7560,"preview item models: "+message) end function
@@ -247,7 +247,7 @@ function renderAsset(asset,value,maxTriangles)
           end if
           positions[corner]=point;normals[corner]=normal
         end for
-        result[outputIndex]=Triangle(positions,surface.triangleTexCoords[triangleIndex],normals,binding.textureSlot,binding.imageName,binding.shaderName,asset.classname,surface.surfaceIndex)
+        result[outputIndex]=Triangle(positions,surface.triangleTexCoords[triangleIndex],normals,binding.textureSlot,binding.imageName,binding.shaderName,asset.classname,surface.surfaceIndex,value.origin)
         outputIndex=outputIndex+1;triangleIndex=triangleIndex+1
       end while
     end if

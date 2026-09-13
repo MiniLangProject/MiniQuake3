@@ -45,6 +45,7 @@ import mq3.renderer.bsp_render_data as renderData
 import mq3.renderer.world_surface_selection as worldSelection
 import mq3.renderer.playable_fog as playableFog
 import mq3.renderer.playable_dynamic_lights as dynamicLights
+import mq3.renderer.playable_light_grid as playableLightGrid
 import mq3.renderer.playable_world_batch as playableWorldBatch
 import mq3.renderer.playable_materials as materials
 import mq3.renderer.player_model_assembly as playerAssembly
@@ -328,20 +329,24 @@ function gauntletHasTarget(weaponState,camera,targetState)
   return false
 end function
 
-function modelLight(normal)
-  // Stable ambient + directed light keeps MD3 shape readable until dynamic
-  // BSP light-grid sampling is wired into the preview.
+function fallbackModelLight(normal)
+  // Keep MD3 shape readable for asset-free BSP fixtures without a light grid.
   direction=[0.35,-0.25,0.90];qmath.VectorNormalize(direction)
   dot=qmath.DotProduct(normal,direction);if dot<0.0 then dot=0.0 end if
   value=0.42+dot*0.58;if value>1.0 then value=1.0 end if
   return value
 end function
 
-function drawModelTriangle(projection,triangle,red,green,blue,lit)
+function modelLight(sampled,normal)
+  if sampled!=void and sampled.totalFactor>0.0 then return playableLightGrid.vertexLight(sampled,normal) end if
+  return fallbackModelLight(normal)
+end function
+
+function drawModelTriangle(projection,triangle,red,green,blue,lit,sampled)
   vertices=[]
   for corner=0 to 2
     point=viewer.preparedViewPoint(projection,triangle.positions[corner]);if point is error then return point end if
-    light=1.0;if lit then light=modelLight(triangle.normals[corner]) end if
+    light=1.0;if lit then light=modelLight(sampled,triangle.normals[corner]) end if
     vertices=vertices+[[point[0],point[1],point[2],triangle.texCoords[corner][0],triangle.texCoords[corner][1],light]]
   end for
   clipped=viewer.clipNearPolygon(vertices,projection.nearDistance);if clipped is error then return clipped end if
@@ -358,31 +363,36 @@ function drawModelTriangle(projection,triangle,red,green,blue,lit)
   return drawn
 end function
 
-function drawItemTriangles(projection,triangles)
+function drawItemTriangles(projection,triangles,lightGrid)
+  sampled=void;sampleOrigin=void
   for each triangle in triangles
     a=viewer.projectPrepared(projection,triangle.positions[0]);b=viewer.projectPrepared(projection,triangle.positions[1]);c=viewer.projectPrepared(projection,triangle.positions[2])
     if a!=void and b!=void and c!=void then
-      window.drawTriangle(triangle.textureSlot,a,triangle.texCoords[0],modelLight(triangle.normals[0]),b,triangle.texCoords[1],modelLight(triangle.normals[1]),c,triangle.texCoords[2],modelLight(triangle.normals[2]),255,255,255)
+      if lightGrid!=void and (sampleOrigin==void or sampleOrigin!=triangle.lightOrigin) then sampleOrigin=triangle.lightOrigin;sampled=playableLightGrid.entitySample(lightGrid,sampleOrigin) end if
+      window.drawTriangle(triangle.textureSlot,a,triangle.texCoords[0],modelLight(sampled,triangle.normals[0]),b,triangle.texCoords[1],modelLight(sampled,triangle.normals[1]),c,triangle.texCoords[2],modelLight(sampled,triangle.normals[2]),255,255,255)
     end if
   end for
   return len(triangles)
 end function
 
-function drawClippedItemTriangles(projection,triangles)
-  drawn=0
+function drawClippedItemTriangles(projection,triangles,lightGrid)
+  drawn=0;sampled=void;sampleOrigin=void
   for each triangle in triangles
-    count=drawModelTriangle(projection,triangle,255,255,255,true);if count is error then return count end if;drawn=drawn+count
+    if lightGrid!=void and (sampleOrigin==void or sampleOrigin!=triangle.lightOrigin) then sampleOrigin=triangle.lightOrigin;sampled=playableLightGrid.entitySample(lightGrid,sampleOrigin) end if
+    count=drawModelTriangle(projection,triangle,255,255,255,true,sampled);if count is error then return count end if;drawn=drawn+count
   end for
   return drawn
 end function
 
-function drawProjectileTriangles(projection,triangles)
+function drawProjectileTriangles(projection,triangles,lightGrid)
+  sampled=void;sampleOrigin=void
   for each triangle in triangles
     a=viewer.projectPrepared(projection,triangle.positions[0]);b=viewer.projectPrepared(projection,triangle.positions[1]);c=viewer.projectPrepared(projection,triangle.positions[2])
     if a!=void and b!=void and c!=void then
       la=1.0;lb=1.0;lc=1.0
       if triangle.style!=projectileView.STYLE_PLASMA and triangle.style!=projectileView.STYLE_BFG then
-        la=modelLight(triangle.normals[0]);lb=modelLight(triangle.normals[1]);lc=modelLight(triangle.normals[2])
+        if lightGrid!=void and (sampleOrigin==void or sampleOrigin!=triangle.lightOrigin) then sampleOrigin=triangle.lightOrigin;sampled=playableLightGrid.entitySample(lightGrid,sampleOrigin) end if
+        la=modelLight(sampled,triangle.normals[0]);lb=modelLight(sampled,triangle.normals[1]);lc=modelLight(sampled,triangle.normals[2])
       end if
       window.drawTriangle(triangle.textureSlot,a,triangle.texCoords[0],la,b,triangle.texCoords[1],lb,c,triangle.texCoords[2],lc,255,255,255)
     end if
@@ -413,12 +423,12 @@ end function
 function drawTintedItemTriangles(projection,triangles,red,green,blue)
   drawn=0
   for each triangle in triangles
-    count=drawModelTriangle(projection,triangle,red,green,blue,false);if count is error then return count end if;drawn=drawn+count
+    count=drawModelTriangle(projection,triangle,red,green,blue,false,void);if count is error then return count end if;drawn=drawn+count
   end for
   return drawn
 end function
 
-function renderViewModel(projection,catalog,weaponState,combatState,now,transform,weaponClass,barrelAngle,showFlash)
+function renderViewModel(projection,catalog,weaponState,combatState,now,transform,weaponClass,barrelAngle,showFlash,lightGrid)
   if catalog==void then return 0 end if
   asset=itemModels.find(catalog,weaponClass)
   if asset==void then asset=itemModels.find(catalog,"weapon_machinegun") end if
@@ -427,9 +437,9 @@ function renderViewModel(projection,catalog,weaponState,combatState,now,transfor
   triangles=itemModels.renderAsset(asset,transform,MAX_VIEWMODEL_TRIANGLES);if triangles is error then return triangles end if
   viewState=multitexture.setState(multitexture.BLEND_OPAQUE,false,true);if viewState is error then return viewState end if
   if not window.setDepthRange(0.3,projection.nearDistance) then return error(7490,"could not enable viewmodel depth range") end if
-  drawn=drawClippedItemTriangles(projection,triangles);if drawn is error then return drawn end if
+  drawn=drawClippedItemTriangles(projection,triangles,lightGrid);if drawn is error then return drawn end if
   barrelTriangles=weaponBarrel.render(catalog,weaponClass,transform,barrelAngle,MAX_VIEWMODEL_TRIANGLES);if barrelTriangles is error then return barrelTriangles end if
-  barrelDrawn=drawClippedItemTriangles(projection,barrelTriangles);if barrelDrawn is error then return barrelDrawn end if
+  barrelDrawn=drawClippedItemTriangles(projection,barrelTriangles,lightGrid);if barrelDrawn is error then return barrelDrawn end if
   flashDrawn=0
   if showFlash then
     flash=muzzleFlash.render(catalog,weaponClass,transform,combatState.lastFire,now,weaponState.triggerHeld,MAX_VIEWMODEL_TRIANGLES);if flash is error then return flash end if
@@ -506,7 +516,7 @@ function animatedPlayerTriangles(assets,now)
   return triangles
 end function
 
-function renderTargetModels(camera,projection,renderTargets,modelAssets,eventState,enemyState,now)
+function renderTargetModels(camera,projection,renderTargets,modelAssets,eventState,enemyState,now,lightGrid)
   if modelAssets==void or eventState==void then return void end if
   reset=playerCache.beginFrame(modelAssets.cache);if reset is error then return reset end if
   for index=0 to len(renderTargets)-1
@@ -521,13 +531,15 @@ function renderTargetModels(camera,projection,renderTargets,modelAssets,eventSta
         root=targetTransform(target,camera)
         modelTriangles=playerCache.renderTargetDetailed(modelAssets.cache,lower,upper,root,camera.position,show)
         if not (modelTriangles is error) then
+          targetLight=void;if lightGrid!=void then targetLight=playableLightGrid.entitySample(lightGrid,target.origin) end if
           for each triangle in modelTriangles
             a=viewer.projectPrepared(projection,triangle.positions[0])
             b=viewer.projectPrepared(projection,triangle.positions[1])
             c=viewer.projectPrepared(projection,triangle.positions[2])
             if a!=void and b!=void and c!=void then
               slot=detailedPlayerTextureSlot(modelAssets,triangle)
-              window.drawTriangle(slot,a,triangle.texCoords[0],triangle.lights[0],b,triangle.texCoords[1],triangle.lights[1],c,triangle.texCoords[2],triangle.lights[2],255,255,255)
+              la=triangle.lights[0];lb=triangle.lights[1];lc=triangle.lights[2];if targetLight!=void and targetLight.totalFactor>0.0 then la=playableLightGrid.vertexLight(targetLight,triangle.normals[0]);lb=playableLightGrid.vertexLight(targetLight,triangle.normals[1]);lc=playableLightGrid.vertexLight(targetLight,triangle.normals[2]) end if
+              window.drawTriangle(slot,a,triangle.texCoords[0],la,b,triangle.texCoords[1],lb,c,triangle.texCoords[2],lc,255,255,255)
             end if
           end for
         end if
@@ -575,7 +587,7 @@ function reservePlayerSpawn(targetState,playerState,spawnIndex)
   return void
 end function
 
-function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatalog,explosionCatalog,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,now,menuOpen)
+function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatalog,explosionCatalog,lightGrid,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,now,menuOpen)
   window.beginFrame(7,10,16)
   if menuOpen then
     menuDraw=menu.drawRetailState(menuCatalog,menuState,WIDTH,HEIGHT,now);if menuDraw is error then return menuDraw end if
@@ -598,20 +610,20 @@ function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemC
     menu.drawRetail(menuCatalog,WIDTH,HEIGHT,now)
     if menuCatalog==void then hud.drawText("SPACE JUMP  MOUSE1 FIRE",WIDTH/2-138,HEIGHT/2+112,2,150,205,215) end if
   else
-    itemDraw=drawItemTriangles(projection,pickupTriangles);if itemDraw is error then return itemDraw end if
-    targetDraw=renderTargetModels(camera,projection,renderTargets,modelAssets,eventState,enemyState,now);if targetDraw is error then return targetDraw end if
+    itemDraw=drawItemTriangles(projection,pickupTriangles,lightGrid);if itemDraw is error then return itemDraw end if
+    targetDraw=renderTargetModels(camera,projection,renderTargets,modelAssets,eventState,enemyState,now,lightGrid);if targetDraw is error then return targetDraw end if
     trailCommands=projectileFx.frameCommands(projectileFxState,camera,projectileEffects,now,WIDTH,HEIGHT,HORIZONTAL_FOV,1.0)
     projectileFx.drawPuffs(trailCommands)
     fallbackProjectiles=projectileEffects
     if projectileCatalog!=void then
       projectileBatch=projectileModels.renderSnapshots(projectileCatalog,projectileEffects,camera,now,MAX_TRIANGLES_PER_PROJECTILE,MAX_PROJECTILE_TRIANGLES);if projectileBatch is error then return projectileBatch end if
-      projectileDraw=drawProjectileTriangles(projection,projectileBatch.triangles);if projectileDraw is error then return projectileDraw end if
+      projectileDraw=drawProjectileTriangles(projection,projectileBatch.triangles,lightGrid);if projectileDraw is error then return projectileDraw end if
       fallbackProjectiles=projectileBatch.fallbackSnapshots
     end if
     if explosionCatalog!=void then flyingFallback=[];for each fallback in fallbackProjectiles if fallback.state==projectileView.STATE_FLYING then flyingFallback=flyingFallback+[fallback] end if end for;fallbackProjectiles=flyingFallback end if
     projectileCommands=projectileView.frameCommands(camera,fallbackProjectiles,now,WIDTH,HEIGHT,HORIZONTAL_FOV,1.0)
     projectileView.draw(projectileCommands)
-    viewDraw=renderViewModel(projection,itemCatalog,weaponState,combatState,now,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,not viewmodelSwitching);if viewDraw is error then return viewDraw end if
+    viewDraw=renderViewModel(projection,itemCatalog,weaponState,combatState,now,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,not viewmodelSwitching,lightGrid);if viewDraw is error then return viewDraw end if
     uiState=multitexture.setState(multitexture.BLEND_ALPHA,false,false);if uiState is error then return uiState end if
     if baseHudCatalog!=void then
       drawnHud=baseHud.draw(baseHudCatalog,baseHudState,WIDTH,HEIGHT,now);if drawnHud is error then return drawnHud end if
@@ -840,7 +852,7 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fog
     visibleTargets=renderTargets
     if not menuOpen then visibleTargets=visibleTargetViews(enemyState,renderTargets,current) end if
     renderStarted=window.milliseconds();updateMilliseconds=updateMilliseconds+(renderStarted-current)
-    rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatalog,explosionCatalog,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,current,menuOpen);if rendered is error then return rendered end if;renderMilliseconds=renderMilliseconds+(window.milliseconds()-renderStarted);frames=frames+1
+    rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatalog,explosionCatalog,worldConfig.lightGrid,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,current,menuOpen);if rendered is error then return rendered end if;renderMilliseconds=renderMilliseconds+(window.milliseconds()-renderStarted);frames=frames+1
     caption=fpsTitle.frame(fpsState,window.milliseconds());if caption is error then return caption end if
     if caption!=void and not window.setTitle(caption) then return error(7489,"could not update preview window title") end if
     lastEnter=enterDown;lastEscape=escapeDown;lastPreviousWeapon=window.keyDown(window.VK_Q);lastNextWeapon=window.keyDown(window.VK_E);lastDigitWeapon=digitWeaponDown()
@@ -853,9 +865,11 @@ end function
 function runLimited(map,maxFrames,sound,archive)
   geometry=preview.wireframe(map,[],MAX_LINES);if geometry is error then return geometry end if
   world=collision.load(map.data);if world is error then return world end if
+  lightGrid=playableLightGrid.load(map);if lightGrid is error then return lightGrid end if
   playerState=playablePlayer.load(map);if playerState is error then return playerState end if
   camera=viewer.camera(playerState.position,playerState.yaw,0.0,320.0,0.12);if camera is error then return camera end if
   worldConfig=worldSelection.defaults(WIDTH,HEIGHT);if worldConfig is error then return worldConfig end if
+  worldConfig.lightGrid=lightGrid
   worldConfig.horizontalFov=HORIZONTAL_FOV
   worldConfig.triangleBudget=20000
   worldCache=worldSelection.buildCache(map,worldConfig.patchError);if worldCache is error then return worldCache end if
@@ -1097,6 +1111,7 @@ function runLimited(map,maxFrames,sound,archive)
   dlightReceiverCount=0;if catalog!=void and worldBatchState.dlightBatch!=void then dlightReceiverCount=len(worldBatchState.dlightBatch.triangles) end if;print "Projected dlight receivers: "+str(dlightReceiverCount)
   markTextureCount=0;if markCatalog!=void then markTextureCount=markCatalog.textureCount end if;print "Retail impact-mark textures: "+str(markTextureCount)
   explosionTextureCount=0;if explosionCatalog!=void then explosionTextureCount=explosionCatalog.textureCount end if;print "Retail explosion textures: "+str(explosionTextureCount)
+  lightGridPoints=0;if lightGrid.valid then lightGridPoints=lightGrid.bounds[0]*lightGrid.bounds[1]*lightGrid.bounds[2] end if;print "BSP light-grid points: "+str(lightGridPoints)
   viewmodelTracker=viewmodel.tracker();viewmodelSettings=viewmodel.softwareRendererSettings();viewmodelAnimation=viewmodel.weaponAnimation(weaponState.classname);barrelState=weaponBarrel.state()
   result=try(frameLoop(camera,geometry,triangles,worldBatchState,catalog,fogCatalog,dlightCatalog,markCatalog,markState,explosionCatalog,worldCache,worldConfig,preparedWorld.selection.faceIndexes,materialSlots,skyTextureFlags,dlightReceiveFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound))
   for index=0 to lightmapCount-1 window.releaseTexture(index) end for

@@ -15,7 +15,7 @@ const DEFAULT_NEAR_DISTANCE=1.0
 const DEFAULT_FAR_DISTANCE=8192.0
 const DEFAULT_TRIANGLE_BUDGET=12000
 
-struct SelectionConfig width height horizontalFov nearDistance farDistance triangleBudget backfaceCull patchError end struct
+struct SelectionConfig width height horizontalFov nearDistance farDistance triangleBudget backfaceCull patchError lightGrid end struct
 struct Candidate faceIndex triangleCount distanceSquared importance end struct
 struct Selection faceIndexes candidateCount selectedSurfaceCount estimatedTriangleCount pvsUsed cameraLeaf cameraCluster rejectedPvs rejectedFrustum rejectedBackface rejectedDistance rejectedBudget end struct
 struct PreparedWorld selection renderData end struct
@@ -37,7 +37,7 @@ function config(width,height,horizontalFov,nearDistance,farDistance,triangleBudg
   if nearDistance<=0.0 or farDistance<=nearDistance then return fail("invalid distance range") end if
   if triangleBudget<0 then return fail("negative triangle budget") end if
   if patchError<=0.0 then return fail("non-positive patch error") end if
-  return SelectionConfig(width,height,n.f32(horizontalFov),n.f32(nearDistance),n.f32(farDistance),triangleBudget,backfaceCull,n.f32(patchError))
+  return SelectionConfig(width,height,n.f32(horizontalFov),n.f32(nearDistance),n.f32(farDistance),triangleBudget,backfaceCull,n.f32(patchError),void)
 end function
 function defaults(width,height) return config(width,height,DEFAULT_HORIZONTAL_FOV,DEFAULT_NEAR_DISTANCE,DEFAULT_FAR_DISTANCE,DEFAULT_TRIANGLE_BUDGET,true,render.DEFAULT_PATCH_ERROR) end function
 
