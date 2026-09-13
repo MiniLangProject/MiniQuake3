@@ -13,8 +13,8 @@ import mq3.shared.math as qmath
 
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
-struct VertexCache slots frames positions normals end struct
-struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceLights sourceColors stage deforms normalNoise vertexCache primary depthEqual sort polygonOffset end struct
+struct VertexCache slots frames positions normals uvs colors end struct
+struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceLights sourceColors stage deforms normalNoise vertexCache cacheSerial primary depthEqual sort polygonOffset end struct
 struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses polygonOffsetPasses end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
@@ -106,7 +106,7 @@ function createVertexCache(sourceIndexes)
     end for
     slots=slots+[triangleSlots]
   end for
-  return VertexCache(slots,array(count,-1),array(count,void),array(count,void))
+  return VertexCache(slots,array(count,-1),array(count,void),array(count,void),array(count,void),array(count,void))
 end function
 function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
   count=countStageTriangles(renderData,material.textureIndex,flags);if count<1 then return void end if
@@ -131,8 +131,8 @@ function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
     end if
   end for
   normalNoise=void;if stage.tcGen=="environment" and hasDeform(material.deforms,"normal") then normalNoise=rendererNoise.create() end if
-  vertexCache=void;if len(material.deforms)>0 and not hasDeform(material.deforms,"autosprite") and not hasDeform(material.deforms,"autosprite2") then vertexCache=createVertexCache(sourceIndexes) end if
-  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceLights,sourceColors,stage,material.deforms,normalNoise,vertexCache,primary,depthEqual,material.sort,material.polygonOffset)
+  vertexCache=void;if not hasDeform(material.deforms,"autosprite") and not hasDeform(material.deforms,"autosprite2") then vertexCache=createVertexCache(sourceIndexes) end if
+  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceLights,sourceColors,stage,material.deforms,normalNoise,vertexCache,0,primary,depthEqual,material.sort,material.polygonOffset)
 end function
 
 // Static opaque primaries stay in the bit-identical base stream. Dynamic and
@@ -284,6 +284,7 @@ function deformedNormal(position,normal,deforms,nowMilliseconds,noise)
 end function
 function updatePassAxes(pass,viewOrigin,leftDir,upDir,nowMilliseconds)
   slot=materials.slotAt(pass.stage,nowMilliseconds);transform=affineFor(pass.stage,nowMilliseconds);turbulent=hasTurbulence(pass.stage);autosprite=hasDeform(pass.deforms,"autosprite");autosprite2=hasDeform(pass.deforms,"autosprite2");quad=void;quad2=void
+  cacheEpoch=0;if pass.vertexCache!=void then pass.cacheSerial=pass.cacheSerial+1;cacheEpoch=pass.cacheSerial end if
   forward=[leftDir[1]*upDir[2]-leftDir[2]*upDir[1],leftDir[2]*upDir[0]-leftDir[0]*upDir[2],leftDir[0]*upDir[1]-leftDir[1]*upDir[0]];spriteNormal=[0.0-forward[0],0.0-forward[1],0.0-forward[2]]
   for triangleIndex=0 to pass.commands.count-1
     offset=triangleIndex*window.TRIANGLE_BATCH_RECORD_BYTES;if not pass.stage.bspLightmap then window.writeBatchI32(pass.commands.data,offset,slot) end if
@@ -292,17 +293,19 @@ function updatePassAxes(pass,viewOrigin,leftDir,upDir,nowMilliseconds)
       sourcePosition=pass.sourcePositions[triangleIndex][vertex];sourceUv=pass.sourceUvs[triangleIndex][vertex];sourceNormal=pass.sourceNormals[triangleIndex][vertex];vertexColor=pass.sourceColors[triangleIndex][vertex]
       if autosprite and quad!=void then sourcePosition=quad[autospriteCorner(triangleIndex,vertex)];sourceUv=autospriteUV(triangleIndex,vertex);sourceNormal=spriteNormal;vertexColor=pass.sourceColors[triangleIndex-triangleIndex%2][0] end if
       if autosprite2 and quad2!=void then sourcePosition=quad2[1][pass.sourceIndexes[triangleIndex][vertex]-quad2[0]] end if
-      position=sourcePosition;cacheSlot=-1;if pass.vertexCache!=void then cacheSlot=pass.vertexCache.slots[triangleIndex][vertex] end if
-      if cacheSlot>=0 and pass.vertexCache.frames[cacheSlot]==nowMilliseconds then position=pass.vertexCache.positions[cacheSlot];sourceNormal=pass.vertexCache.normals[cacheSlot]
+      position=sourcePosition;uv=[0.0,0.0];stageColor=[255,255,255,255];cacheSlot=-1;if pass.vertexCache!=void then cacheSlot=pass.vertexCache.slots[triangleIndex][vertex] end if
+      if cacheSlot>=0 and pass.vertexCache.frames[cacheSlot]==cacheEpoch then position=pass.vertexCache.positions[cacheSlot];sourceNormal=pass.vertexCache.normals[cacheSlot];uv=pass.vertexCache.uvs[cacheSlot];stageColor=pass.vertexCache.colors[cacheSlot]
       else
         position=deformedPosition(sourcePosition,sourceNormal,pass.sourceDeformUvs[triangleIndex][vertex],pass.deforms,nowMilliseconds)
         if pass.stage.tcGen=="environment" then sourceNormal=deformedNormal(position,sourceNormal,pass.deforms,nowMilliseconds,pass.normalNoise) end if
-        if cacheSlot>=0 then pass.vertexCache.frames[cacheSlot]=nowMilliseconds;pass.vertexCache.positions[cacheSlot]=position;pass.vertexCache.normals[cacheSlot]=sourceNormal end if
+        if pass.stage.tcGen=="environment" then sourceUv=materials.environmentUV(position,sourceNormal,viewOrigin) else if pass.stage.tcGen=="vector" then sourceUv=materials.vectorUV(pass.stage,position) end if
+        if turbulent then uv=materials.transformUVAt(pass.stage,sourceUv,position,nowMilliseconds) else uv=applyAffine(transform,sourceUv) end if
+        stageColor=materials.stageColorAt(pass.stage,vertexColor,position,viewOrigin,nowMilliseconds)
+        if cacheSlot>=0 then pass.vertexCache.frames[cacheSlot]=cacheEpoch;pass.vertexCache.positions[cacheSlot]=position;pass.vertexCache.normals[cacheSlot]=sourceNormal;pass.vertexCache.uvs[cacheSlot]=uv;pass.vertexCache.colors[cacheSlot]=stageColor end if
       end if
       positionOffset=offset+20+vertex*32;window.writeBatchF32(pass.commands.data,positionOffset,position[0]);window.writeBatchF32(pass.commands.data,positionOffset+4,position[1]);window.writeBatchF32(pass.commands.data,positionOffset+8,position[2])
-      if pass.stage.tcGen=="environment" then sourceUv=materials.environmentUV(position,sourceNormal,viewOrigin) else if pass.stage.tcGen=="vector" then sourceUv=materials.vectorUV(pass.stage,position) end if
-      uv=[0.0,0.0];if turbulent then uv=materials.transformUVAt(pass.stage,sourceUv,position,nowMilliseconds) else uv=applyAffine(transform,sourceUv) end if;uvOffset=offset+32+vertex*32;window.writeBatchF32(pass.commands.data,uvOffset,uv[0]);window.writeBatchF32(pass.commands.data,uvOffset+4,uv[1])
-      window.writeBatchF32(pass.commands.data,offset+48+vertex*32,1.0);window.writeBatchColor(pass.commands.data,offset+116+vertex*4,materials.stageColorAt(pass.stage,vertexColor,position,viewOrigin,nowMilliseconds))
+      uvOffset=offset+32+vertex*32;window.writeBatchF32(pass.commands.data,uvOffset,uv[0]);window.writeBatchF32(pass.commands.data,uvOffset+4,uv[1])
+      window.writeBatchF32(pass.commands.data,offset+48+vertex*32,1.0);window.writeBatchColor(pass.commands.data,offset+116+vertex*4,stageColor)
     end for
   end for
   return slot
