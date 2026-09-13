@@ -39,6 +39,8 @@ function main(args)
   effectStage=materials.RuntimeStage(["fx0","fx1"],[image,image],[90,91],2.0,[materials.UvMod("scroll",0.25,-0.5,0.0,0.0,0.0,0.0,shaderParser.blankWave())],materials.BLEND_ADD,materials.ALPHA_TEST_NONE,"texture","wave",shaderParser.Wave(5,0.0,1.0,0.0,1.0),"identity",shaderParser.blankWave(),[255,255,255,255],false,false,false,false,256.0,[])
   material=materials.Material(1,"shader","base",image,81,[staticStage,effectStage],[],false,3.0,false,false)
   catalog=materials.Catalog([material],0,1,1,3,1,1)
+  lookup=worldBatch.materialTable(RenderData([textured,fallback,sky]),catalog);count=count+require(len(lookup)==3 and lookup[0]==void and lookup[1]==material,"material table keeps sparse shader indexes")
+  groups=worldBatch.groupedTriangles(RenderData([textured,fallback,sky]),[false,false,true],len(lookup));count=count+require(len(groups[0])==1 and len(groups[1])==1 and len(groups[2])==0 and groups[1][0]==textured,"material grouping filters sky and preserves order")
   lateMaterial=materials.Material(2,"late","base",image,81,[effectStage],[],false,9.0,false,false);earlyMaterial=materials.Material(0,"early","base",image,81,[effectStage],[],false,3.0,false,false);orderedMaterials=worldBatch.sortedMaterials([lateMaterial,material,earlyMaterial]);count=count+require(orderedMaterials[0].textureIndex==0 and orderedMaterials[1].textureIndex==1 and orderedMaterials[2].textureIndex==2,"materials sort by shader key then texture index")
   staged=worldBatch.buildMaterials(RenderData([textured,fallback,sky]),catalog,[false,false,true]);if staged is error then return staged end if
   count=count+require(staged.sourceTriangles==3 and staged.drawableTriangles==2 and staged.skippedSky==1,"material filtering counts")

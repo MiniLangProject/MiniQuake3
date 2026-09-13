@@ -12,7 +12,7 @@ struct Texture imageName image slot end struct
 // existing multi-pass native batch path can consume QVM materials directly.
 struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps end struct
 struct ResolvedTriangle triangle materialIndex end struct
-struct Catalog triangles materials textures scriptIndex scriptCount loadedSkins bindings resolvedTriangles unresolvedTriangles nextTextureSlot end struct
+struct Catalog triangles materials textures scriptIndex scriptCount loadedSkins bindings resolvedTriangles unresolvedTriangles nextTextureSlot recentBinding end struct
 
 function fail(message) return error(7680,"QVM scene materials: "+message) end function
 // R_FindShader strips the extension before consulting shader text.
@@ -72,14 +72,19 @@ function resolveShaderName(triangle,archive,assets,kinds,skinCache)
   return [triangle.shaderName,skinCache]
 end function
 function textKey(value) if value==void then return "" end if;return value end function
-function cachedBinding(bindings,triangle)
+function sameBinding(binding,triangle)
+  if binding==void then return false end if
   shader=textKey(triangle.shaderName);surface=textKey(triangle.surfaceName)
-  for each binding in bindings if binding.shaderHandle==triangle.shaderHandle and binding.customSkin==triangle.customSkin and binding.shaderName==shader and binding.surfaceName==surface then return binding.materialIndex end if end for
+  return binding.shaderHandle==triangle.shaderHandle and binding.customSkin==triangle.customSkin and binding.shaderName==shader and binding.surfaceName==surface
+end function
+function cachedBinding(output,triangle)
+  if sameBinding(output.recentBinding,triangle) then return output.recentBinding.materialIndex end if
+  for each binding in output.bindings if sameBinding(binding,triangle) then output.recentBinding=binding;return binding.materialIndex end if end for
   return -2
 end function
 
 function bindTriangle(output,triangle,outputIndex,archive,assets,kinds,endSlot)
-  index=cachedBinding(output.bindings,triangle)
+  index=cachedBinding(output,triangle)
   if index== -2 then
     named=resolveShaderName(triangle,archive,assets,kinds,output.loadedSkins);shaderName=strippedName(named[0]);output.loadedSkins=named[1];index=-1
     if shaderName!="" then
@@ -93,7 +98,7 @@ function bindTriangle(output,triangle,outputIndex,archive,assets,kinds,endSlot)
         index=len(output.materials)-1;output.textures=addTextures(output.textures,stages)
       end if
     end if
-    output.bindings=output.bindings+[Binding(triangle.shaderHandle,triangle.customSkin,textKey(triangle.shaderName),textKey(triangle.surfaceName),index)]
+    binding=Binding(triangle.shaderHandle,triangle.customSkin,textKey(triangle.shaderName),textKey(triangle.surfaceName),index);output.bindings=output.bindings+[binding];output.recentBinding=binding
   end if
   if index>=0 and hasImage(output.materials[index].stages) then output.resolvedTriangles=output.resolvedTriangles+1 else output.unresolvedTriangles=output.unresolvedTriangles+1 end if
   output.triangles[outputIndex]=ResolvedTriangle(triangle,index);return void
@@ -104,7 +109,7 @@ function build(archive,triangles,assets,kinds,firstTextureSlot,maxTextureSlots)
   if len(assets)!=len(kinds) then return fail("asset registry length mismatch") end if
   if firstTextureSlot<0 or maxTextureSlots<0 then return fail("invalid texture slot range") end if
   scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if
-  output=Catalog(array(len(triangles),void),[],[],scripts[0],scripts[1],[],[],0,0,firstTextureSlot);endSlot=firstTextureSlot+maxTextureSlots;triangleIndex=0
+  output=Catalog(array(len(triangles),void),[],[],scripts[0],scripts[1],[],[],0,0,firstTextureSlot,void);endSlot=firstTextureSlot+maxTextureSlots;triangleIndex=0
   for each triangle in triangles bindTriangle(output,triangle,triangleIndex,archive,assets,kinds,endSlot);triangleIndex=triangleIndex+1 end for
   return output
 end function

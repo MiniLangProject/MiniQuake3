@@ -31,6 +31,9 @@ import mq3.renderer.playable_light_grid as lightGrid
 import mq3.renderer.model_tags as modelTags
 import mq3.renderer.mark_fragments as markFragments
 import mq3.format.md3 as md3
+import mq3.vm.font_abi as fontAbi
+import mq3.vm.pc_parser as pcParser
+import mq3.client.cinematic_runtime as cinematics
 import std.fs as fs
 import std.string as strings
 
@@ -57,7 +60,7 @@ struct FileCursor data offset end struct
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
 struct RenderView refdef scene end struct
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap end struct
+struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics end struct
 struct Boot game runtime context cgame ui end struct
 struct Snapshot serverTime playerState entities end struct
 
@@ -96,6 +99,7 @@ function readFile(context,handle,count)
 end function
 function writeFile(context,handle,data) return 0 end function
 function closeFile(context,handle) if handle>0 and handle<len(context.files) then context.files[handle]=FileCursor(bytes(0,0),-1) end if;return void end function
+function pcLoad(context,name) data=try(pk3.read(context.archive,name));if data is error then return void end if;return data end function
 
 function locateGameData(context,entities,count,entityStride,clients,clientStride)
   context.gameEntities=entities;context.gameClients=clients;context.entityCount=count;context.entityStride=entityStride;context.clientStride=clientStride;return void
@@ -223,7 +227,8 @@ function bootWithQvms(archive,map,now,qvmRoot)
   spatialScene=serverWorld.create(collisionWorld)
   initialCommand=qworld.userCommand(now,[0,0,0],0,2,0,0,0)
   grid=lightGrid.load(map);if grid is error then return grid end if
-  context=Context(archive,parser.create(entityBytes),registry,commands.create(),array(MAX_CONFIGSTRINGS,""),array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,array(64,void),0,0,grid,0,0,[],map)
+  context=Context(archive,parser.create(entityBytes),registry,commands.create(),array(MAX_CONFIGSTRINGS,""),array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,array(64,void),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive))
+  context.pcRegistry=pcParser.create(context,pcLoad)
   runtimeHost=runtime.services();runtimeHost.context=context;runtimeHost.loadFn=imageLoader
   machineRuntime=runtime.create(runtimeHost);if machineRuntime is error then return machineRuntime end if;context.machineRuntime=machineRuntime
   shared=common.services(registry,context.commandState,context);shared.printFn=emitPrint;shared.errorFn=emitError;shared.millisecondsFn=milliseconds;shared.consoleFn=consoleCommand
@@ -440,6 +445,24 @@ function cgameMarkFragments(context,vm,base)
   return len(result.fragments)
 end function
 
+function registerQvmFont(context,vm,base)
+  name=common.readString(vm,common.argument(vm,base,1));pointSize=common.argument(vm,base,2);address=common.argument(vm,base,3)
+  loaded=fontAbi.load(context.fontRegistry,context,registerShaderNoMip,name,pointSize);if loaded is error then return loaded end if
+  if loaded.found then common.writeRaw(vm,address,loaded.data,fontAbi.FONT_INFO_SIZE,"fontInfo_t output") end if
+  return 0
+end function
+function pcAddDefine(context,vm,base) return pcParser.addDefine(context.pcRegistry,common.readString(vm,common.argument(vm,base,1))) end function
+function pcLoadSource(context,vm,base) return pcParser.load(context.pcRegistry,common.readString(vm,common.argument(vm,base,1))) end function
+function pcFreeSource(context,vm,base) return pcParser.free(context.pcRegistry,common.argument(vm,base,1)) end function
+function pcReadToken(context,vm,base)
+  token=pcParser.read(context.pcRegistry,common.argument(vm,base,1));if token is error then return token end if;if token==void then return 0 end if
+  data=pcParser.encode(token);if data is error then return data end if;common.writeRaw(vm,common.argument(vm,base,2),data,pcParser.TOKEN_SIZE,"pc_token_t output");return 1
+end function
+function pcSourceLine(context,vm,base)
+  location=pcParser.location(context.pcRegistry,common.argument(vm,base,1));if location==void then return 0 end if
+  common.writeBuffer(vm,common.argument(vm,base,2),64,location[0],"parser source filename");lineAt=common.pointer(vm,common.argument(vm,base,3),4,"parser source line");n.writeU32(vm.data,lineAt,location[1]);return 1
+end function
+
 function extendedCgame(context,vm,base,op)
   // Capture every retail sound/renderer submission. Structured decoding is
   // added per trap while the original module remains the sole scene producer.
@@ -488,7 +511,22 @@ function extendedCgame(context,vm,base,op)
     bounds=rendererModelBounds(context,common.argument(vm,base,1));writeVector(vm.data,mins,bounds[0]);writeVector(vm.data,maxs,bounds[1]);return 0
   end if
   if op==48 then return lerpModelTag(context,vm,base) end if
+  if op==59 then return registerQvmFont(context,vm,base) end if
+  if op==60 then return 0 end if
+  if op==61 then return context.uiKeyCatcher end if
+  if op==62 then context.uiKeyCatcher=common.argument(vm,base,1);return 0 end if
+  if op==63 then return 0 end if
+  if op==64 then return pcAddDefine(context,vm,base) end if
+  if op==65 then return pcLoadSource(context,vm,base) end if
+  if op==66 then return pcFreeSource(context,vm,base) end if
+  if op==67 then return pcReadToken(context,vm,base) end if
+  if op==68 then return pcSourceLine(context,vm,base) end if
   if op==73 then return lightForPoint(context,vm,base) end if
+  if op==75 then return uiPlayCinematic(context,common.readString(vm,common.argument(vm,base,1)),common.argument(vm,base,2),common.argument(vm,base,3),common.argument(vm,base,4),common.argument(vm,base,5),common.argument(vm,base,6)) end if
+  if op==76 then return uiCinematicStop(context,common.argument(vm,base,1)) end if
+  if op==77 then return uiCinematicRun(context,common.argument(vm,base,1)) end if
+  if op==78 then uiCinematicDraw(context,common.argument(vm,base,1));return 0 end if
+  if op==79 then uiCinematicExtents(context,common.argument(vm,base,1),common.argument(vm,base,2),common.argument(vm,base,3),common.argument(vm,base,4),common.argument(vm,base,5));return 0 end if
   if op==87 then return addCgamePolys(context,vm,base,true) end if
   if op==89 then if inPvs(context,cgameVector(vm,base,1,"PVS point 1"),cgameVector(vm,base,2,"PVS point 2"),false) then return 1 end if;return 0 end if
   if op>=18 and op<=35 or op>=41 and op<=48 or op>=59 and op<=71 or op>=73 and op<=89 then return 0 end if
@@ -575,11 +613,11 @@ function uiSetCdKey(context,key) return void end function
 function uiVerifyCdKey(context,key,checksum) return true end function
 function uiSeek(context,handle,offset,origin) return -1 end function
 function uiPb(context,status) return void end function
-function uiPlayCinematic(context,name,x,y,w,h,bits) return -1 end function
-function uiCinematicStop(context,handle) return 0 end function
-function uiCinematicRun(context,handle) return 0 end function
-function uiCinematicDraw(context,handle) return void end function
-function uiCinematicExtents(context,handle,x,y,w,h) return void end function
+function uiPlayCinematic(context,name,x,y,w,h,bits) return cinematics.play(context.cinematics,name,x,y,w,h,bits,context.now) end function
+function uiCinematicStop(context,handle) return cinematics.stop(context.cinematics,handle) end function
+function uiCinematicRun(context,handle) return cinematics.run(context.cinematics,handle,context.now) end function
+function uiCinematicDraw(context,handle) cinematics.draw(context.cinematics,handle);return void end function
+function uiCinematicExtents(context,handle,x,y,w,h) cinematics.setExtents(context.cinematics,handle,x,y,w,h);return void end function
 
 function extendedUi(context,vm,base,op)
   if op==22 then at=common.pointer(vm,common.argument(vm,base,1),140,"UI refEntity");sceneQueue.addEntity(context.scene,n.readI32(vm.data,at),slice(vm.data,at,140));return 0 end if
@@ -591,14 +629,16 @@ function extendedUi(context,vm,base,op)
   if op==25 then return captureRenderView(context,vm,common.argument(vm,base,1)) end if
   if op==29 then return lerpModelTag(context,vm,base) end if
   if op==30 then return 0 end if
-  if op==55 then return 0 end if
+  if op==55 then return registerQvmFont(context,vm,base) end if
   if op==56 then
     mins=common.pointer(vm,common.argument(vm,base,2),12,"UI model mins");maxs=common.pointer(vm,common.argument(vm,base,3),12,"UI model maxs")
     bounds=rendererModelBounds(context,common.argument(vm,base,1));writeVector(vm.data,mins,bounds[0]);writeVector(vm.data,maxs,bounds[1]);return 0
   end if
-  // The Baseq3 q3_ui module does not use the Team Arena parser imports. Keep
-  // their failure semantics explicit for compatible UI modules.
-  if op>=57 and op<=61 then return 0 end if
+  if op==57 then return pcAddDefine(context,vm,base) end if
+  if op==58 then return pcLoadSource(context,vm,base) end if
+  if op==59 then return pcFreeSource(context,vm,base) end if
+  if op==60 then return pcReadToken(context,vm,base) end if
+  if op==61 then return pcSourceLine(context,vm,base) end if
   return error(7643,"local QVM match: unsupported retail UI trap "+str(op))
 end function
 
@@ -619,4 +659,4 @@ end function
 function refreshUi(value,time) if value==void or value.ui==void then return fail("UI is not active") end if;value.context.now=time;result=uiVm.refresh(value.ui,time);if not (result is error) then value.context.uiFrames=value.context.uiFrames+1 end if;return result end function
 function setUiMenu(value,menu) if value==void or value.ui==void then return fail("UI is not active") end if;return uiVm.setActiveMenu(value.ui,menu) end function
 
-function shutdown(value) if value!=void then if value.ui!=void then uiVm.shutdown(value.ui) end if;if value.cgame!=void then cgameVm.shutdown(value.cgame) end if;return gameVm.shutdown(value.game) end if;return void end function
+function shutdown(value) if value!=void then cinematics.closeAll(value.context.cinematics);if value.ui!=void then uiVm.shutdown(value.ui) end if;if value.cgame!=void then cgameVm.shutdown(value.cgame) end if;return gameVm.shutdown(value.game) end if;return void end function

@@ -19,7 +19,7 @@ def main() -> int:
         text=True,
     )
     output = result.stdout.strip()
-    if output != "PASS: 52 playable world batch contracts":
+    if output != "PASS: 54 playable world batch contracts":
         raise RuntimeError(output)
     print(output)
     return 0

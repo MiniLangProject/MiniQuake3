@@ -759,21 +759,41 @@ static int mipLevelFor(const playableTexture *texture,
     return level;
 }
 
-static uint32_t sampleTexture(const playableTexture *texture, int level, double u, double v) {
-    const uint32_t *texels = texture->pixels;
-    int width = texture->width;
-    int height = texture->height;
-    int widthMask = texture->widthMask;
-    int heightMask = texture->heightMask;
+typedef struct playableTextureView_s {
+    const uint32_t *texels;
+    int width;
+    int height;
+    int widthMask;
+    int heightMask;
+} playableTextureView;
+
+static playableTextureView textureView(const playableTexture *texture, int level) {
+    playableTextureView view;
+    if (level >= texture->mipLevelCount) level = texture->mipLevelCount - 1;
+    if (level > 0) {
+        view.texels = texture->mipPixels[level - 1];
+        view.width = texture->mipWidths[level - 1];
+        view.height = texture->mipHeights[level - 1];
+        view.widthMask = (view.width & (view.width - 1)) == 0 ? view.width - 1 : -1;
+        view.heightMask = (view.height & (view.height - 1)) == 0 ? view.height - 1 : -1;
+    } else {
+        view.texels = texture->pixels;
+        view.width = texture->width;
+        view.height = texture->height;
+        view.widthMask = texture->widthMask;
+        view.heightMask = texture->heightMask;
+    }
+    return view;
+}
+
+static uint32_t sampleTextureView(const playableTextureView *view, double u, double v) {
+    const uint32_t *texels = view->texels;
+    int width = view->width;
+    int height = view->height;
+    int widthMask = view->widthMask;
+    int heightMask = view->heightMask;
     double x;
     double y;
-    if (level > 0) {
-        if (level >= texture->mipLevelCount) level = texture->mipLevelCount - 1;
-        texels = texture->mipPixels[level - 1];width = texture->mipWidths[level - 1];
-        height = texture->mipHeights[level - 1];
-        widthMask = (width & (width - 1)) == 0 ? width - 1 : -1;
-        heightMask = (height & (height - 1)) == 0 ? height - 1 : -1;
-    }
     x = u * (double)width - 0.5;
     y = v * (double)height - 0.5;
     double floorX = floor(x);
@@ -851,6 +871,7 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
     int y;
     int textureMipLevel = 0;
     playableTexture *texture = 0;
+    playableTextureView sampler;
     uint32_t fallback = makeColor(fallbackRed, fallbackGreen, fallbackBlue) | 0xff000000u;
     if (!pixels || !depthPixels || !_finite(x0) || !_finite(y0) || !_finite(depth0) ||
             !_finite(x1) || !_finite(y1) || !_finite(depth1) || !_finite(x2) ||
@@ -879,6 +900,7 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
     if (minimumX > maximumX || minimumY > maximumY) return;
     texture = textureAt(textureSlot);
     textureMipLevel = mipLevelFor(texture,x0,y0,u0,v0,x1,y1,u1,v1,x2,y2,u2,v2);
+    if (texture) sampler = textureView(texture, textureMipLevel);
     rowB0 = edgeValue(x1, y1, x2, y2, (double)minimumX + 0.5, (double)minimumY + 0.5) * inverseArea;
     rowB1 = edgeValue(x2, y2, x0, y0, (double)minimumX + 0.5, (double)minimumY + 0.5) * inverseArea;
     stepB0X = (y2 - y1) * inverseArea;
@@ -979,7 +1001,7 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
             if (texture) {
                 double u = uOverDepth * depth;
                 double v = vOverDepth * depth;
-                color = sampleTexture(texture, textureMipLevel, u, v);
+                color = sampleTextureView(&sampler, u, v);
             }
             if (!unitLight) color = modulateColor(color, light);
             if (rasterVertexColorEnabled) {
@@ -987,7 +1009,8 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
                     inverseDepth0, inverseDepth1, inverseDepth2, depth);
             }
             if (!alphaTestPasses(color) || (color >> 24) == 0u) continue;
-            if (rasterBlendMode == 6) pixels[offset] = inverseSourceColor(color, pixels[offset]);
+            if (rasterBlendMode == 0) pixels[offset] = color;
+            else if (rasterBlendMode == 6) pixels[offset] = inverseSourceColor(color, pixels[offset]);
             else if (rasterBlendMode == 5) pixels[offset] = dynamicLightColor(color, pixels[offset]);
             else if (rasterBlendMode == 4) pixels[offset] = destinationAlphaColor(color, pixels[offset]);
             else if (rasterBlendMode == 3) pixels[offset] = filterColor(color, pixels[offset]);
@@ -1082,10 +1105,13 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
     int maximumX;
     int minimumY;
     int maximumY;
+    int unitLight;
     int x;
     int y;
     playableTexture *baseTexture = textureAt(baseTextureSlot);
     playableTexture *lightmapTexture = textureAt(lightmapTextureSlot);
+    playableTextureView baseSampler;
+    playableTextureView lightmapSampler;
     int baseMipLevel = mipLevelFor(baseTexture,x0,y0,u0,v0,x1,y1,u1,v1,x2,y2,u2,v2);
     int lightmapMipLevel = mipLevelFor(lightmapTexture,x0,y0,lu0,lv0,x1,y1,lu1,lv1,x2,y2,lu2,lv2);
     uint32_t fallback = makeColor(fallbackRed, fallbackGreen, fallbackBlue) | 0xff000000u;
@@ -1098,6 +1124,7 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
     inverseDepth0 = 1.0 / depth0;
     inverseDepth1 = 1.0 / depth1;
     inverseDepth2 = 1.0 / depth2;
+    unitLight = light0 == 1.0 && light1 == 1.0 && light2 == 1.0;
     minimumX = lowerPixel(min(x0, min(x1, x2)));
     maximumX = upperPixel(max(x0, max(x1, x2)));
     minimumY = lowerPixel(min(y0, min(y1, y2)));
@@ -1111,6 +1138,8 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
     if (minimumY < rasterClipMinimumY) minimumY = rasterClipMinimumY;
     if (maximumY > rasterClipMaximumY) maximumY = rasterClipMaximumY;
     if (minimumX > maximumX || minimumY > maximumY) return;
+    if (baseTexture) baseSampler = textureView(baseTexture, baseMipLevel);
+    if (lightmapTexture) lightmapSampler = textureView(lightmapTexture, lightmapMipLevel);
     rowB0 = edgeValue(x1, y1, x2, y2, (double)minimumX + 0.5, (double)minimumY + 0.5) * inverseArea;
     rowB1 = edgeValue(x2, y2, x0, y0, (double)minimumX + 0.5, (double)minimumY + 0.5) * inverseArea;
     stepB0X = (y2 - y1) * inverseArea;
@@ -1234,18 +1263,18 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
                 if (difference < -tolerance || difference > tolerance) continue;
             } else if (comparisonDepth <= (double)depthPixels[offset]) continue;
             depth = 1.0 / inverseDepth;
-            light = lightOverDepth * depth;
+            light = unitLight ? 1.0 : lightOverDepth * depth;
             if (baseTexture) {
                 double u = uOverDepth * depth;
                 double v = vOverDepth * depth;
-                color = sampleTexture(baseTexture, baseMipLevel, u, v);
+                color = sampleTextureView(&baseSampler, u, v);
             }
             if (lightmapTexture) {
                 double u = luOverDepth * depth;
                 double v = lvOverDepth * depth;
-                color = multiplyTextures(color, sampleTexture(lightmapTexture, lightmapMipLevel, u, v));
+                color = multiplyTextures(color, sampleTextureView(&lightmapSampler, u, v));
             }
-            color = modulateColor(color, light);
+            if (!unitLight) color = modulateColor(color, light);
             if (rasterVertexColorEnabled) {
                 color = modulateBatchVertexColor(color, b0, b1, b2,
                     inverseDepth0, inverseDepth1, inverseDepth2, depth);
@@ -1255,7 +1284,8 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
                 double difference = comparisonDepth - (double)depthPixels[offset];
                 if (difference < -0.00001 || difference > 0.00001) continue;
             }
-            if (rasterBlendMode == 6) pixels[offset] = inverseSourceColor(color, pixels[offset]);
+            if (rasterBlendMode == 0) pixels[offset] = color;
+            else if (rasterBlendMode == 6) pixels[offset] = inverseSourceColor(color, pixels[offset]);
             else if (rasterBlendMode == 5) pixels[offset] = dynamicLightColor(color, pixels[offset]);
             else if (rasterBlendMode == 4) pixels[offset] = destinationAlphaColor(color, pixels[offset]);
             else if (rasterBlendMode == 3) pixels[offset] = filterColor(color, pixels[offset]);
@@ -1275,6 +1305,34 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
     }
 }
 
+typedef struct playableTriangleBatchWork_s {
+    const unsigned char *records;
+    int byteCount;
+    int triangleCount;
+    int minimumY;
+    int maximumY;
+} playableTriangleBatchWork;
+
+PLAYABLE_API int playable_window_draw_triangle_batch(const unsigned char *records,
+        int byteCount, int triangleCount);
+
+static void drawTriangleBatchBand(playableTriangleBatchWork *work) {
+    int previousMinimumY = rasterClipMinimumY;
+    int previousMaximumY = rasterClipMaximumY;
+    rasterClipMinimumY = work->minimumY;
+    rasterClipMaximumY = work->maximumY;
+    playable_window_draw_triangle_batch(work->records, work->byteCount, work->triangleCount);
+    rasterClipMinimumY = previousMinimumY;
+    rasterClipMaximumY = previousMaximumY;
+}
+
+static void CALLBACK drawTriangleBatchBandCallback(PTP_CALLBACK_INSTANCE instance,
+        void *context, PTP_WORK callbackWork) {
+    (void)instance;
+    (void)callbackWork;
+    drawTriangleBatchBand((playableTriangleBatchWork *)context);
+}
+
 PLAYABLE_API int playable_window_draw_triangle_batch(const unsigned char *records,
         int byteCount, int triangleCount) {
     int index;
@@ -1284,6 +1342,39 @@ PLAYABLE_API int playable_window_draw_triangle_batch(const unsigned char *record
     if (!records) return 0;
     required = (SIZE_T)triangleCount * (SIZE_T)PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
     if (required > (SIZE_T)INT_MAX || (SIZE_T)byteCount < required) return 0;
+    if (rasterClipMaximumY == INT_MAX && triangleCount >= 256 && surfaceHeight >= 128) {
+        SYSTEM_INFO systemInfo;
+        playableTriangleBatchWork work[4];
+        PTP_WORK handles[4] = {0, 0, 0, 0};
+        int bandCount;
+        int band;
+        GetSystemInfo(&systemInfo);
+        bandCount = (int)systemInfo.dwNumberOfProcessors;
+        if (bandCount > 4) bandCount = 4;
+        if (bandCount > surfaceHeight) bandCount = surfaceHeight;
+        if (bandCount > 1) {
+            for (band = 0; band < bandCount; ++band) {
+                playableTriangleBatchWork *item = &work[band];
+                item->records = records;item->byteCount = byteCount;item->triangleCount = triangleCount;
+                item->minimumY = surfaceHeight * band / bandCount;
+                item->maximumY = surfaceHeight * (band + 1) / bandCount - 1;
+                if (band > 0) {
+                    handles[band] = CreateThreadpoolWork(drawTriangleBatchBandCallback, item, 0);
+                    if (handles[band]) SubmitThreadpoolWork(handles[band]);
+                }
+            }
+            drawTriangleBatchBand(&work[0]);
+            for (band = 1; band < bandCount; ++band) {
+                if (handles[band]) {
+                    WaitForThreadpoolWorkCallbacks(handles[band], FALSE);
+                    CloseThreadpoolWork(handles[band]);
+                } else {
+                    drawTriangleBatchBand(&work[band]);
+                }
+            }
+            return triangleCount;
+        }
+    }
     for (index = 0; index < triangleCount; ++index) {
         playableTriangleBatchRecord command;
         const unsigned char *source = records + (SIZE_T)index * PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
@@ -1323,6 +1414,8 @@ typedef struct playableWorldBatchWork_s {
     double halfHeight;
     double focal;
     double nearDistance;
+    int minimumX;
+    int maximumX;
     int minimumY;
     int maximumY;
 } playableWorldBatchWork;
@@ -1336,6 +1429,12 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *
         double halfWidth, double halfHeight, double focal, double nearDistance);
 
 static void drawWorldBatchBand(playableWorldBatchWork *work) {
+    int previousMinimumX = rasterClipMinimumX;
+    int previousMaximumX = rasterClipMaximumX;
+    int previousMinimumY = rasterClipMinimumY;
+    int previousMaximumY = rasterClipMaximumY;
+    rasterClipMinimumX = work->minimumX;
+    rasterClipMaximumX = work->maximumX;
     rasterClipMinimumY = work->minimumY;
     rasterClipMaximumY = work->maximumY;
     playable_window_draw_world_triangle_batch(work->records, work->byteCount, work->triangleCount,
@@ -1344,8 +1443,10 @@ static void drawWorldBatchBand(playableWorldBatchWork *work) {
         work->up[0], work->up[1], work->up[2],
         work->forward[0], work->forward[1], work->forward[2],
         work->halfWidth, work->halfHeight, work->focal, work->nearDistance);
-    rasterClipMinimumY = 0;
-    rasterClipMaximumY = INT_MAX;
+    rasterClipMinimumX = previousMinimumX;
+    rasterClipMaximumX = previousMaximumX;
+    rasterClipMinimumY = previousMinimumY;
+    rasterClipMaximumY = previousMaximumY;
 }
 
 static void CALLBACK drawWorldBatchBandCallback(PTP_CALLBACK_INSTANCE instance,
@@ -1353,6 +1454,68 @@ static void CALLBACK drawWorldBatchBandCallback(PTP_CALLBACK_INSTANCE instance,
     (void)instance;
     (void)callbackWork;
     drawWorldBatchBand((playableWorldBatchWork *)context);
+}
+
+static int drawWorldBatchParallel(const unsigned char *records,
+        int byteCount, int triangleCount,
+        double positionX, double positionY, double positionZ,
+        double rightX, double rightY, double rightZ,
+        double upX, double upY, double upZ,
+        double forwardX, double forwardY, double forwardZ,
+        double halfWidth, double halfHeight, double focal, double nearDistance,
+        int minimumX, int maximumX, int minimumY, int maximumY) {
+    SYSTEM_INFO systemInfo;
+    playableWorldBatchWork work[4];
+    PTP_WORK handles[4] = {0, 0, 0, 0};
+    int height = maximumY - minimumY + 1;
+    int bandCount;
+    int band;
+    if (triangleCount < 256 || height < 128) return 0;
+    GetSystemInfo(&systemInfo);
+    bandCount = (int)systemInfo.dwNumberOfProcessors;
+    if (bandCount > 4) bandCount = 4;
+    if (bandCount > height) bandCount = height;
+    if (bandCount <= 1) return 0;
+    for (band = 0; band < bandCount; ++band) {
+        playableWorldBatchWork *item = &work[band];
+        item->records = records;
+        item->byteCount = byteCount;
+        item->triangleCount = triangleCount;
+        item->position[0] = positionX;
+        item->position[1] = positionY;
+        item->position[2] = positionZ;
+        item->right[0] = rightX;
+        item->right[1] = rightY;
+        item->right[2] = rightZ;
+        item->up[0] = upX;
+        item->up[1] = upY;
+        item->up[2] = upZ;
+        item->forward[0] = forwardX;
+        item->forward[1] = forwardY;
+        item->forward[2] = forwardZ;
+        item->halfWidth = halfWidth;
+        item->halfHeight = halfHeight;
+        item->focal = focal;
+        item->nearDistance = nearDistance;
+        item->minimumX = minimumX;
+        item->maximumX = maximumX;
+        item->minimumY = minimumY + height * band / bandCount;
+        item->maximumY = minimumY + height * (band + 1) / bandCount - 1;
+        if (band > 0) {
+            handles[band] = CreateThreadpoolWork(drawWorldBatchBandCallback, item, 0);
+            if (handles[band]) SubmitThreadpoolWork(handles[band]);
+        }
+    }
+    drawWorldBatchBand(&work[0]);
+    for (band = 1; band < bandCount; ++band) {
+        if (handles[band]) {
+            WaitForThreadpoolWorkCallbacks(handles[band], FALSE);
+            CloseThreadpoolWork(handles[band]);
+        } else {
+            drawWorldBatchBand(&work[band]);
+        }
+    }
+    return 1;
 }
 
 PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *records,
@@ -1375,45 +1538,14 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *
     if (!records) return 0;
     required = (SIZE_T)triangleCount * (SIZE_T)PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
     if (required > (SIZE_T)INT_MAX || (SIZE_T)byteCount < required) return 0;
-    if (rasterClipMaximumY == INT_MAX && triangleCount >= 256 && surfaceHeight >= 128) {
-        SYSTEM_INFO systemInfo;
-        playableWorldBatchWork work[4];
-        PTP_WORK handles[4] = {0, 0, 0, 0};
-        int bandCount;
-        int band;
-        GetSystemInfo(&systemInfo);
-        bandCount = (int)systemInfo.dwNumberOfProcessors;
-        if (bandCount > 4) bandCount = 4;
-        if (bandCount > surfaceHeight) bandCount = surfaceHeight;
-        if (bandCount > 1) {
-            for (band = 0; band < bandCount; ++band) {
-                playableWorldBatchWork *item = &work[band];
-                item->records = records; item->byteCount = byteCount; item->triangleCount = triangleCount;
-                item->position[0] = positionX; item->position[1] = positionY; item->position[2] = positionZ;
-                item->right[0] = rightX; item->right[1] = rightY; item->right[2] = rightZ;
-                item->up[0] = upX; item->up[1] = upY; item->up[2] = upZ;
-                item->forward[0] = forwardX; item->forward[1] = forwardY; item->forward[2] = forwardZ;
-                item->halfWidth = halfWidth; item->halfHeight = halfHeight; item->focal = focal;
-                item->nearDistance = nearDistance;
-                item->minimumY = surfaceHeight * band / bandCount;
-                item->maximumY = surfaceHeight * (band + 1) / bandCount - 1;
-                if (band > 0) {
-                    handles[band] = CreateThreadpoolWork(drawWorldBatchBandCallback, item, 0);
-                    if (handles[band]) SubmitThreadpoolWork(handles[band]);
-                }
-            }
-            drawWorldBatchBand(&work[0]);
-            for (band = 1; band < bandCount; ++band) {
-                if (handles[band]) {
-                    WaitForThreadpoolWorkCallbacks(handles[band], FALSE);
-                    CloseThreadpoolWork(handles[band]);
-                } else {
-                    drawWorldBatchBand(&work[band]);
-                }
-            }
-            return triangleCount;
-        }
-    }
+    if (rasterClipMaximumY == INT_MAX && drawWorldBatchParallel(records,
+            byteCount, triangleCount,
+            positionX, positionY, positionZ,
+            rightX, rightY, rightZ,
+            upX, upY, upZ,
+            forwardX, forwardY, forwardZ,
+            halfWidth, halfHeight, focal, nearDistance,
+            0, surfaceWidth - 1, 0, surfaceHeight - 1)) return triangleCount;
     for (index = 0; index < triangleCount; ++index) {
         playableTriangleBatchRecord command;
         double projected[3][3];
@@ -1475,10 +1607,31 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch_viewport(const unsign
     int previousMinimumY = rasterClipMinimumY;
     int previousMaximumY = rasterClipMaximumY;
     int result;
+    SIZE_T required;
     if (viewportX < 0 || viewportY < 0 || viewportWidth < 1 || viewportHeight < 1 ||
             viewportWidth > surfaceWidth || viewportHeight > surfaceHeight ||
             viewportX > surfaceWidth - viewportWidth ||
             viewportY > surfaceHeight - viewportHeight) return 0;
+    if (triangleCount < 0 || triangleCount > PLAYABLE_TRIANGLE_BATCH_MAX_COUNT ||
+            byteCount < 0 || !_finite(positionX) || !_finite(positionY) ||
+            !_finite(positionZ) || !_finite(rightX) || !_finite(rightY) ||
+            !_finite(rightZ) || !_finite(upX) || !_finite(upY) || !_finite(upZ) ||
+            !_finite(forwardX) || !_finite(forwardY) || !_finite(forwardZ) ||
+            !_finite(focal) || !_finite(nearDistance) || focal <= 0.0 ||
+            nearDistance <= 0.0) return 0;
+    if (triangleCount == 0 || !records) return 0;
+    required = (SIZE_T)triangleCount * (SIZE_T)PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
+    if (required > (SIZE_T)INT_MAX || (SIZE_T)byteCount < required) return 0;
+    if (drawWorldBatchParallel(records, byteCount, triangleCount,
+            positionX, positionY, positionZ,
+            rightX, rightY, rightZ,
+            upX, upY, upZ,
+            forwardX, forwardY, forwardZ,
+            (double)viewportX + (double)viewportWidth * 0.5,
+            (double)viewportY + (double)viewportHeight * 0.5,
+            focal, nearDistance,
+            viewportX, viewportX + viewportWidth - 1,
+            viewportY, viewportY + viewportHeight - 1)) return triangleCount;
     rasterClipMinimumX = viewportX;
     rasterClipMaximumX = viewportX + viewportWidth - 1;
     rasterClipMinimumY = viewportY;

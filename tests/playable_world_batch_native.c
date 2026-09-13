@@ -23,6 +23,7 @@ int main(void) {
     const double halfWidth = 32.0;
     const double halfHeight = 32.0;
     const double focal = 32.0;
+    int repeat;
     int vertex;
 
     ZeroMemory(&command, sizeof(command));
@@ -158,6 +159,65 @@ int main(void) {
             0.0, 0.0, 1.0,
             1.0, 0.0, 0.0,
             8.0, 1.0) != 0) return 12;
+
+    /* The viewport entry point used by refdef_t rendering must retain exact
+     * serial pixels when it splits a sufficiently large world batch.  The
+     * 256th opaque copy is intentionally redundant, allowing 255 records to
+     * force the serial path while producing the same reference image. */
+    for (vertex = 0; vertex < 256; ++vertex) parallelCommands[vertex] = command;
+    playable_window_begin_frame(7, 10, 16);
+    if (playable_window_draw_world_triangle_batch_viewport(
+            (const unsigned char *)parallelCommands,
+            (int)(sizeof(command) * 255), 255, 0, 0, 128, 128,
+            0.0, 0.0, 0.0,
+            0.0, 1.0, 0.0,
+            0.0, 0.0, 1.0,
+            1.0, 0.0, 0.0,
+            32.0, 1.0) != 255) return 16;
+    memcpy(expectedPixels, pixels, sizeof(expectedPixels));
+    memcpy(expectedDepth, depthPixels, sizeof(expectedDepth));
+    for (repeat = 0; repeat < 16; ++repeat) {
+        playable_window_begin_frame(7, 10, 16);
+        if (playable_window_draw_world_triangle_batch_viewport(
+                (const unsigned char *)parallelCommands,
+                (int)sizeof(parallelCommands), 256, 0, 0, 128, 128,
+                0.0, 0.0, 0.0,
+                0.0, 1.0, 0.0,
+                0.0, 0.0, 1.0,
+                1.0, 0.0, 0.0,
+                32.0, 1.0) != 256) return 17;
+        if (memcmp(expectedPixels, pixels, sizeof(expectedPixels)) != 0 ||
+                memcmp(expectedDepth, depthPixels, sizeof(expectedDepth)) != 0) return 18;
+    }
+
+    /* Screen-space batches such as the sky retain command order while four
+     * disjoint scanline bands rasterize in parallel. */
+    for (vertex = 0; vertex < 256; ++vertex) {
+        playableTriangleBatchRecord *screen = &parallelCommands[vertex];
+        float x = (float)((vertex % 16) * 8);
+        float y = (float)((vertex / 16) * 8);
+        ZeroMemory(screen, sizeof(*screen));
+        screen->baseTextureSlot = -1;screen->lightmapTextureSlot = -1;
+        screen->fallbackRed = 37;screen->fallbackGreen = 91;screen->fallbackBlue = 173;
+        memset(screen->vertexColor, 255, sizeof(screen->vertexColor));
+        screen->vertex[0][0] = x;screen->vertex[0][1] = y;screen->vertex[0][2] = 2.0f;screen->vertex[0][7] = 1.0f;
+        screen->vertex[1][0] = x + 7.0f;screen->vertex[1][1] = y;screen->vertex[1][2] = 2.0f;screen->vertex[1][7] = 1.0f;
+        screen->vertex[2][0] = x;screen->vertex[2][1] = y + 7.0f;screen->vertex[2][2] = 2.0f;screen->vertex[2][7] = 1.0f;
+    }
+    playable_window_begin_frame(7, 10, 16);
+    rasterClipMaximumY = 127;
+    if (playable_window_draw_triangle_batch((const unsigned char *)parallelCommands,
+            (int)sizeof(parallelCommands), 256) != 256) return 13;
+    rasterClipMaximumY = INT_MAX;
+    memcpy(expectedPixels, pixels, sizeof(expectedPixels));
+    memcpy(expectedDepth, depthPixels, sizeof(expectedDepth));
+    for (repeat = 0; repeat < 16; ++repeat) {
+        playable_window_begin_frame(7, 10, 16);
+        if (playable_window_draw_triangle_batch((const unsigned char *)parallelCommands,
+                (int)sizeof(parallelCommands), 256) != 256) return 14;
+        if (memcmp(expectedPixels, pixels, sizeof(expectedPixels)) != 0 ||
+                memcmp(expectedDepth, depthPixels, sizeof(expectedDepth)) != 0) return 15;
+    }
     playable_window_shutdown();
     puts("playable world batch native parity: PASS");
     return 0;

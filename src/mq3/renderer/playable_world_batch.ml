@@ -94,6 +94,19 @@ function releaseMaterials(catalog)
   return len(released)
 end function
 function countStageTriangles(renderData,textureIndex,flags) count=0;for each triangle in renderData.triangles if triangle.textureIndex==textureIndex and not isSky(triangle,flags) then count=count+1 end if end for;return count end function
+function materialTable(renderData,catalog)
+  maximum=-1;for each material in catalog.materials if material.textureIndex>maximum then maximum=material.textureIndex end if end for;for each triangle in renderData.triangles if triangle.textureIndex>maximum then maximum=triangle.textureIndex end if end for
+  if maximum<0 then return [] end if
+  result=array(maximum+1,void);for each material in catalog.materials if material.textureIndex>=0 then result[material.textureIndex]=material end if end for;return result
+end function
+function groupedTriangles(renderData,flags,count)
+  if count==0 then return [] end if
+  sizes=array(count,0)
+  for each triangle in renderData.triangles if not isSky(triangle,flags) and triangle.textureIndex>=0 and triangle.textureIndex<count then sizes[triangle.textureIndex]=sizes[triangle.textureIndex]+1 end if end for
+  result=array(count,void);offsets=array(count,0);for index=0 to count-1 result[index]=array(sizes[index],void) end for
+  for each triangle in renderData.triangles if not isSky(triangle,flags) and triangle.textureIndex>=0 and triangle.textureIndex<count then index=triangle.textureIndex;result[index][offsets[index]]=triangle;offsets[index]=offsets[index]+1 end if end for
+  return result
+end function
 function createVertexCache(sourceIndexes)
   maximum=-1
   for each triangle in sourceIndexes for each sourceIndex in triangle if sourceIndex>maximum then maximum=sourceIndex end if end for end for
@@ -110,11 +123,10 @@ function createVertexCache(sourceIndexes)
   end for
   return VertexCache(slots,array(count,-1),array(count,void),array(count,void),array(count,void),array(count,void))
 end function
-function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
-  count=countStageTriangles(renderData,material.textureIndex,flags);if count<1 then return void end if
+function buildStagePassTriangles(triangles,material,stage,primary,depthEqual)
+  count=len(triangles);if count<1 then return void end if
   commands=window.createTriangleBatch(count);sourceUvs=array(count,void);sourceDeformUvs=array(count,void);sourcePositions=array(count,void);sourceIndexes=array(count,void);sourceNormals=array(count,void);sourceLights=array(count,void);sourceColors=array(count,void);outputIndex=0
-  for each triangle in renderData.triangles
-    if triangle.textureIndex==material.textureIndex and not isSky(triangle,flags) then
+  for each triangle in triangles
       if stage.bspLightmap then
         va=triangle.vertices[0];vb=triangle.vertices[1];vc=triangle.vertices[2]
         commands=window.appendSingleTextureTriangle(commands,resolvedLightmapSlot(triangle),worldPoint(va.position),va.lightmapUV,vertexLight(va),worldPoint(vb.position),vb.lightmapUV,vertexLight(vb),worldPoint(vc.position),vc.lightmapUV,vertexLight(vc),va.color[0],va.color[1],va.color[2])
@@ -130,22 +142,26 @@ function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
       sourceNormals[outputIndex]=[triangle.vertices[0].normal,triangle.vertices[1].normal,triangle.vertices[2].normal]
       sourceLights[outputIndex]=[vertexLight(triangle.vertices[0]),vertexLight(triangle.vertices[1]),vertexLight(triangle.vertices[2])]
       sourceColors[outputIndex]=[triangle.vertices[0].color,triangle.vertices[1].color,triangle.vertices[2].color];outputIndex=outputIndex+1
-    end if
   end for
   normalNoise=void;if (stage.tcGen=="environment" or stage.alphaGen=="lightingspecular") and hasDeform(material.deforms,"normal") then normalNoise=rendererNoise.create() end if
   vertexCache=void;if not hasDeform(material.deforms,"autosprite") and not hasDeform(material.deforms,"autosprite2") then vertexCache=createVertexCache(sourceIndexes) end if
   return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceLights,sourceColors,stage,material.deforms,normalNoise,vertexCache,0,primary,depthEqual,material.sort,material.polygonOffset)
+end function
+function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
+  triangles=[];for each triangle in renderData.triangles if triangle.textureIndex==material.textureIndex and not isSky(triangle,flags) then triangles=triangles+[triangle] end if end for
+  return buildStagePassTriangles(triangles,material,stage,primary,depthEqual)
 end function
 
 // Static opaque primaries stay in the bit-identical base stream. Dynamic and
 // supported blended stages become retained passes with their source UVs.
 function buildMaterials(renderData,catalog,skyTextureFlags)
   if renderData==void or renderData.triangles==void or catalog==void or catalog.materials==void or skyTextureFlags==void then return fail("missing material batch inputs") end if
+  lookup=materialTable(renderData,catalog);groups=groupedTriangles(renderData,skyTextureFlags,len(lookup))
   capacity=len(renderData.triangles);if capacity<1 then capacity=1 end if
   base=window.createTriangleBatch(capacity);if base is error then return base end if;skippedSky=0;drawable=0
   for each triangle in renderData.triangles
     if isSky(triangle,skyTextureFlags) then skippedSky=skippedSky+1;continue end if
-    drawable=drawable+1;material=materialFor(catalog,triangle.textureIndex)
+    drawable=drawable+1;material=void;if triangle.textureIndex>=0 and triangle.textureIndex<len(lookup) then material=lookup[triangle.textureIndex] end if
     if material==void or len(material.stages)==0 then base=appendResolved(base,triangle,-1,true)
     else if not dynamicMaterialStage(material,material.stages[0]) then base=appendResolved(base,triangle,material.stages[0].slots[0],not materialUsesBspLightmap(material)) end if
     if base is error then return base end if
@@ -155,7 +171,8 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
     primaryWrites=false;if len(material.stages)>0 then primaryWrites=material.stages[0].depthWrite end if
     for stageIndex=0 to len(material.stages)-1
       stage=material.stages[stageIndex];if not dynamicMaterialStage(material,stage) then continue end if
-      pass=buildStagePass(renderData,material,stage,stageIndex==0 and not materialUsesBspLightmap(material),stage.depthEqual or (stageIndex>0 and primaryWrites),skyTextureFlags);if pass is error then return pass end if
+      triangles=[];if material.textureIndex>=0 and material.textureIndex<len(groups) then triangles=groups[material.textureIndex] end if
+      pass=buildStagePassTriangles(triangles,material,stage,stageIndex==0 and not materialUsesBspLightmap(material),stage.depthEqual or (stageIndex>0 and primaryWrites));if pass is error then return pass end if
       if pass!=void then
         passes=passes+[pass];emitted=emitted+pass.commands.count
         if len(stage.slots)>1 then animated=animated+1 end if;if len(stage.uvMods)>0 then modified=modified+1 end if;if stage.blend!=materials.BLEND_OPAQUE then blended=blended+1 end if

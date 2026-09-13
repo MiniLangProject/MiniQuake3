@@ -186,11 +186,18 @@ native key transitions, characters and mouse motion are delivered through
 `KEYCATCH_UI`, and the UI's 2D commands share the cgame queue. Original
 `R_MarkFragments` calls project impact decals against planar BSP surfaces and
 patches. The native window matches the advertised 1280x720 glconfig and reports
-smoothed FPS in its title. Shared MD3 vertices and a persistent interpolated-frame
-cache cut the measured QVM geometry stage from about 177 to 120.5 ms per frame in
-the current two-frame smoke. The retail smoke validates three views, thousands of
-textured QVM triangles, stock HUD/menu quads, world effects and more than 120
-decoded sounds.
+smoothed FPS in its title. Original `RegisterFont` data and the UI/cgame `PC_*`
+parser traps are implemented. RoQ cinematics decode their VQ video and DPCM audio,
+render through per-handle RGBA textures behind the stock 2D UI, and feed PCM into
+the queued audio output. The retail `video/idlogo.RoQ` probe decodes all 210
+512x256 frames to exact EOF. Shared MD3 vertices, cached material bindings and
+grouped world passes cut the measured QVM geometry stage from about 177 to 69.5 ms
+per frame. Four scanline workers preserve byte-identical color/depth output while
+reducing the median isolated 1280x720 raster benchmark from 82.15 to 37.76 ms per
+frame across three final runs (2.16x);
+the current 20-frame q3dm1 smoke measures 40.65 ms in rendering. The retail smoke
+validates three views, thousands of textured QVM triangles, stock HUD/menu quads,
+world effects and more than 120 decoded sounds.
 
 Ein vorhandener eingefrorener Compiler liegt unter `artifacts/toolchain/`.
 `inventory.py` nur ausführen, wenn dieser Stand bewusst neu festgelegt werden soll.

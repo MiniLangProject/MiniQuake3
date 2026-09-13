@@ -214,10 +214,25 @@ Der Weltpfad zeichnet Sky-Shader pro `refdef_t`-Viewport, BSP-Nebel und die von
 cgame eingereichten dynamischen Lichter. Ein geteilter MD3-Framecache und einmalige
 Transformation jedes Surface-Vertex reduzieren den isolierten Geometriebenchmark
 von 3.403 auf 799 ms für acht Frames; im integrierten 1280x720-Smoke sank die
-Geometriephase gegenüber dem vorherigen Messpunkt von etwa 177 auf 120,5 ms pro
-Frame. Vollständige Font-, Cinematic- und Parser-Traps für alternative UIs,
-RoQ-Wiedergabe sowie weitere Raster-/Geometrieoptimierung bis zu einer flüssigen
-Bildrate bleiben offen.
+Geometriephase gegenüber dem vorherigen Messpunkt von etwa 177 auf 69,5 ms pro
+Frame. Materialzuordnung und Weltpass-Gruppierung vermeiden dabei wiederholte
+lineare Dreiecksscans. Große native Weltbatches werden in bis zu vier unabhängige
+Viewport-Scanline-Bänder geteilt; 16-fache Farb-/Tiefenpuffer-Parität ist grün und
+der isolierte 1280x720-Rasterbenchmark sank im Median dreier abschließender Läufe
+von 82,15 auf 37,76 ms pro Frame (Faktor 2,16).
+Der integrierte q3dm1-Retail-Lauf misst 40,65 ms Renderzeit pro Frame.
+
+`RegisterFont` lädt das originale bytegenaue `fontInfo_t`-/`glyphInfo_t`-Format,
+und die UI-/cgame-`PC_*`-Traps bieten 63 Parserhandles, Includes, Kommentare,
+Zahlen, Punctuation und Objektmakros. Der RoQ-Pfad parst die Retail-Container,
+dekodiert YUV-VQ-Videoframes samt Bewegungskompensation und Baseq3-DPCM-Audio und
+implementiert Play/Run/Draw/Stop/SetExtents mit Loop-, Hold-, Silent- und
+Shader-Flag-Timing. Cinematic-Frames gelangen als RGBA-Texturen in die native
+Präsentation, PCM-Blöcke in die gepufferte Audioausgabe. `video/idlogo.RoQ` läuft
+mit 512x256 Pixeln über alle 210 Frames bis zum exakten EOF. Für vollständige
+1:1-Abnahme bleiben insbesondere Botlib/AAS, komplette Netzwerk-/Dedicated-
+Server-Replays, shadergebundene Cinematic-Texturen, alle Renderer-Sonderpfade und
+eine flüssige Gesamtbildrate offen.
 
 ## 5. BSP-Kollision und gemeinsame Spielphysik exakt übertragen
 
@@ -811,7 +826,9 @@ DMA-Ringpuffer mit 8/16 Bit. Sieben direkte C-Datensätze und 20 Verträge sind
 grün. Das Kanalpainting aus 16-Bit-Quellen ergänzt sieben direkte C-Datensätze
 und 32 Verträge. Der interaktive Original-QVM-Pfad löst Soundhandles in Retail-
 WAVs auf, mischt räumliche Stimmen, Loops und Musik und streamt sie gepuffert an
-WinMM. Die vollständige DMA-/Raw-Streaming-Integration und RoQ-Audio bleiben offen.
+WinMM. RoQ-Audio wird inzwischen aus Mono-/Stereo-DPCM in 22.050-Hz-Stereo-PCM dekodiert
+und im nativen QVM-Pfad vorrangig an dieselbe gepufferte Ausgabe übergeben. Die
+vollständige DMA-/Raw-Streaming-Parität des allgemeinen Soundsystems bleibt offen.
 
 **Quellen:** `code/botlib/`, `code/game/ai_*.c`, `code/q3_ui/`,
 `code/client/snd_*.c`, `code/client/cl_cin.c` und die Eingabe-/Soundteile der Plattformschicht.

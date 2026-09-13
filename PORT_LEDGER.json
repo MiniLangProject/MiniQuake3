@@ -1210,10 +1210,17 @@
         "SourceWarning",
         "UnreadSignToken"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "PC_AddGlobalDefine / PC_LoadSourceHandle / PC_FreeSourceHandle / PC_ReadTokenHandle / PC_SourceFileAndLine",
+          "target_files": ["src/mq3/vm/pc_parser.ml", "src/mq3/engine/local_qvm_match.ml"],
+          "status": "tested_subset",
+          "scope": "Handles 1..63, includes, global and multi-token object defines plus cgame/UI trap marshalling pass 23 contracts. Conditional expressions and parameterized macros remain open."
+        }
+      ],
+      "target": ["src/mq3/vm/pc_parser.ml", "src/mq3/engine/local_qvm_match.ml"],
+      "status": "partial",
+      "tests": ["scripts/test_pc_parser.py", "tests/pc_parser_contracts.ml"]
     },
     {
       "source": "code/botlib/l_precomp.h",
@@ -1270,10 +1277,17 @@
         "StripDoubleQuotes",
         "StripSingleQuotes"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "PS_ReadToken lexical subset used by PC_* UI parsers",
+          "target_files": ["src/mq3/vm/pc_parser.ml", "src/mq3/engine/local_qvm_match.ml"],
+          "status": "tested_subset",
+          "scope": "Strings, literals, decimal/octal/hex/float numbers, comments, line tracking and original punctuation subtypes are encoded into the 1040-byte pc_token_t ABI."
+        }
+      ],
+      "target": ["src/mq3/vm/pc_parser.ml", "src/mq3/engine/local_qvm_match.ml"],
+      "status": "partial",
+      "tests": ["scripts/test_pc_parser.py", "tests/pc_parser_contracts.ml"]
     },
     {
       "source": "code/botlib/l_script.h",
@@ -4034,10 +4048,17 @@
         "yuv_to_rgb",
         "yuv_to_rgb24"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CIN_PlayCinematic / CIN_StopCinematic / CIN_RunCinematic / CIN_DrawCinematic / CIN_SetExtents and RoQ VQ/DPCM decoding",
+          "target_files": ["src/mq3/format/roq.ml", "src/mq3/video/roq_video.ml", "src/mq3/client/cinematic_runtime.ml", "src/mq3/client/qvm_preview_app.ml", "src/mq3/engine/local_qvm_match.ml"],
+          "status": "tested_subset",
+          "scope": "Bounded RoQ parsing, YUV codebooks, 2/4/8-pixel VQ, skip/subdivide/motion, timing, native RGBA presentation and stereo PCM output. Retail idlogo reaches exact EOF after all 210 frames; JPEG, packet chunks and shader-backed texture animation remain open."
+        }
+      ],
+      "target": ["src/mq3/format/roq.ml", "src/mq3/video/roq_video.ml", "src/mq3/client/cinematic_runtime.ml", "src/mq3/client/qvm_preview_app.ml", "src/mq3/engine/local_qvm_match.ml"],
+      "status": "partial",
+      "tests": ["scripts/test_roq_cinematics.py", "tests/roq_contracts.ml", "tests/cinematic_runtime_retail_probe.ml"]
     },
     {
       "source": "code/client/cl_console.c",
@@ -17200,10 +17221,17 @@
         "readFloat",
         "readInt"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "RE_RegisterFont pre-rendered fontInfo_t path",
+          "target_files": ["src/mq3/vm/font_abi.ml", "src/mq3/engine/local_qvm_match.ml"],
+          "status": "tested_subset",
+          "scope": "Loads byte-exact 20548-byte fontInfo_t data, rebinds glyph shaders, caches by point size and exposes the cgame/UI traps. Runtime FreeType glyph construction remains outside this subset. Ten ABI contracts pass."
+        }
+      ],
+      "target": ["src/mq3/vm/font_abi.ml", "src/mq3/engine/local_qvm_match.ml"],
+      "status": "partial",
+      "tests": ["scripts/test_font_abi.py", "tests/font_abi_contracts.ml"]
     },
     {
       "source": "code/renderer/tr_image.c",
