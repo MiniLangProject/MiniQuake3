@@ -136,7 +136,10 @@ whole visible surfaces. Materials declared with `cull disable` remain selectable
 side; q3dm1 contains seven such loaded materials. In the current smoke this selects 1,698 triangles
 from 321 surfaces across the full face-index range. The full-map q3dm1 material
 probe finds seven animated passes, 13 UV-modified passes, 38 blended passes and three
-wave-deformed passes. Retained stages evaluate `rgbGen vertex`, `exactVertex`,
+wave-deformed passes. The 55 retained q3dm1 passes are stably ordered by Quake's
+explicit shader `sort` value or its opaque, decal, see-through and blended
+fallback inference; q3dm1 contributes 84 opaque and three later-sorted materials.
+Retained stages evaluate `rgbGen vertex`, `exactVertex`,
 `oneMinusVertex`, `const` and `wave`, plus the corresponding `alphaGen` modes.
 The native batch transports an independent RGBA value for every triangle vertex
 and interpolates it perspective-correctly before blending and alpha testing.
@@ -169,10 +172,11 @@ Validation:
   near-plane-polygon contracts.
 - `python scripts/test_bsp_preview.py`: 34 BSP geometry contracts.
 - `python scripts/test_bsp_render_data.py`: 56 triangle/lightmap/patch contracts.
-- `python scripts/test_playable_materials.py`: 50 BSP/shader/image/generator contracts.
+- `python scripts/test_playable_materials.py`: 53 BSP/shader/image/generator and
+  explicit/inferred shader-sort contracts.
 - `playable_triangle_batch_contracts.exe`: 15 record-layout, default-colour and
   independent per-vertex RGBA contracts.
-- `python scripts/test_playable_world_batch.py`: 38 retained-command, material-stage,
+- `python scripts/test_playable_world_batch.py`: 39 retained-command, material-stage,
   sky-filtering and one-call submission contracts; the native lifecycle also
   compares framebuffer pixels and depth bit-for-bit with the scalar path.
 - `python scripts/test_playable_movement.py`: 27 gravity/jump/slide/idle contracts.

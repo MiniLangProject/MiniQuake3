@@ -9,7 +9,7 @@ import mq3.compat.transcendental as trans
 
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
-struct StagePass commands sourceUvs sourcePositions sourceNormals sourceLights sourceColors stage deforms primary depthEqual end struct
+struct StagePass commands sourceUvs sourcePositions sourceNormals sourceLights sourceColors stage deforms primary depthEqual sort end struct
 struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
@@ -43,6 +43,18 @@ function dynamicStage(stage) return stage.bspLightmap or stage.clampTexture or l
 function dynamicMaterialStage(material,stage) return len(material.deforms)>0 or dynamicStage(stage) end function
 function materialUsesBspLightmap(material) for each stage in material.stages if stage.bspLightmap then return true end if end for;return false end function
 function contains(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
+function sortedMaterials(values)
+  result=[]
+  for each material in values
+    inserted=false;next=[]
+    for each current in result
+      if not inserted and (material.sort<current.sort or (material.sort==current.sort and material.textureIndex<current.textureIndex)) then next=next+[material];inserted=true end if
+      next=next+[current]
+    end for
+    if not inserted then next=next+[material] end if;result=next
+  end for
+  return result
+end function
 function uploadMaterials(catalog)
   if catalog==void or catalog.materials==void then return fail("missing material catalog") end if
   uploaded=[]
@@ -95,7 +107,7 @@ function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
       sourceColors=sourceColors+[[triangle.vertices[0].color,triangle.vertices[1].color,triangle.vertices[2].color]]
     end if
   end for
-  return StagePass(commands,sourceUvs,sourcePositions,sourceNormals,sourceLights,sourceColors,stage,material.deforms,primary,depthEqual)
+  return StagePass(commands,sourceUvs,sourcePositions,sourceNormals,sourceLights,sourceColors,stage,material.deforms,primary,depthEqual,material.sort)
 end function
 
 // Static opaque primaries stay in the bit-identical base stream. Dynamic and
@@ -112,7 +124,7 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
     if base is error then return base end if
   end for
   passes=[];animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;stretchCount=0;environmentCount=0;filterCount=0;destinationAlphaCount=0;clampedCount=0;deformedCount=0;emitted=base.count
-  for each material in catalog.materials
+  for each material in sortedMaterials(catalog.materials)
     primaryWrites=false;if len(material.stages)>0 then primaryWrites=material.stages[0].blend==materials.BLEND_OPAQUE end if
     for stageIndex=0 to len(material.stages)-1
       stage=material.stages[stageIndex];if not dynamicMaterialStage(material,stage) then continue end if
