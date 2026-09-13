@@ -76,7 +76,10 @@ The camera-anchored sky follows each BSP's `surfaceparm sky` material. q3dm1
 original two scrolling retail layers with ordered scale/scroll transforms.
 Every selectable weapon loads its stock `_flash.md3`; impulse
 weapons show it for the source-anchored 20 ms interval, while Gauntlet and
-Lightning keep it visible during continuous fire.
+Lightning keep it visible during continuous fire. Its animated `tag_flash`
+origin now emits Baseq3's matching RGB dynamic light with the original randomized
+300..331-unit radius. That light reaches the BSP, targets, pickups, projectiles
+and view weapon through the shared scene-light list.
 
 Five local combat targets are created from the remaining q3dm1 deathmatch
 spawns. BSP point traces drive their line of sight. They patrol, chase, strafe
@@ -260,7 +263,8 @@ Validation:
 - `python scripts/test_playable_weapon.py`: 37 weapon profile, muzzle, hitscan, ammo and
   cooldown contracts.
 - `python scripts/test_playable_muzzle_flash.py --pak D:/Quake3/baseq3/pak0.pk3`:
-  27 contracts plus nine retail flash models, 29 shared textures and 240 triangles.
+  30 timing, tag placement, colour and dlight-radius contracts plus nine retail
+  flash models, 29 shared textures and 240 triangles.
 - `python scripts/test_playable_weapon_barrel.py`: 13 retail barrel mapping,
   spin/coast transition, angle wrapping and rotated-tag contracts.
 - `python scripts/test_playable_shotgun.py`: 20 original-source-anchored spread,

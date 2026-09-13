@@ -607,7 +607,9 @@ function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemC
   end if
   if skyCatalog!=void then skyDraw=playableSky.draw(skyCatalog,camera,WIDTH,HEIGHT,now);if skyDraw is error then return skyDraw end if end if
   projection=viewer.prepareProjection(camera,WIDTH,HEIGHT,HORIZONTAL_FOV,1.0);if projection is error then return projection end if
-  sceneLights=projectileFx.worldLights(projectileEffects,now);playableLightGrid.setDynamicLights(lightGrid,sceneLights)
+  sceneLights=projectileFx.worldLights(projectileEffects,now)
+  if not viewmodelSwitching then muzzleLight=muzzleFlash.dynamicLight(itemCatalog,viewmodelClassname,viewmodelTransform,combatState.lastFire,now,weaponState.triggerHeld);if muzzleLight is error then return muzzleLight end if;if muzzleLight!=void then sceneLights=sceneLights+[muzzleLight] end if end if
+  playableLightGrid.setDynamicLights(lightGrid,sceneLights)
   worldDrawn=0
   if materialCatalog!=void then worldDrawn=playableWorldBatch.drawMaterialsLit(worldBatchState,projection,now,sceneLights)
   else worldDrawn=playableWorldBatch.draw(worldBatchState,projection) end if

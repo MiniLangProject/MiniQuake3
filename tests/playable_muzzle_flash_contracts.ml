@@ -23,6 +23,8 @@ function main(args)
   count=count+require(flash.visible(gauntlet,0,900,true),"gauntlet continuous while firing")
   count=count+require(not flash.visible(gauntlet,0,900,false),"gauntlet stops with firing flag")
   count=count+require(flash.definition("weapon_lightning").continuous and not machine.continuous,"continuous families match cgame")
+  count=count+require(flash.lightColor(flash.definition("weapon_plasmagun"))==[0.6,0.6,1.0] and flash.lightColor(flash.definition("weapon_rocketlauncher"))==[1.0,0.75,0.0],"exact Baseq3 flash dlight colors")
+  count=count+require(flash.lightRadius(0)>=300 and flash.lightRadius(0)<=331 and flash.lightRadius(1)>=300 and flash.lightRadius(1)<=331,"muzzle dlight keeps Baseq3 random radius range")
   identity=[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]]
   rotated=[[0.0,1.0,0.0],[-1.0,0.0,0.0],[0.0,0.0,1.0]]
   product=flash.multiplyAxis(rotated,identity);count=count+require(product==rotated,"axis multiply identity")
@@ -35,5 +37,6 @@ function main(args)
   count=count+require(try(flash.render(void,"weapon_machinegun",parent,0,0,false,-1)) is error,"negative render budget rejected")
   unknown=flash.render(void,"unknown",parent,0,0,false,10);count=count+require(len(unknown.triangles)==0,"unknown weapon has no flash")
   absent=flash.render(void,"weapon_rocketlauncher",parent,0,10,false,10);count=count+require(len(absent.triangles)==0 and absent.red==255 and absent.green==191,"missing catalog is graceful and colored")
+  count=count+require(flash.dynamicLight(void,"weapon_machinegun",parent,0,0,false)==void,"missing retail catalog suppresses muzzle dlight")
   print("PASS: "+str(count)+" playable muzzle-flash contracts");return 0
 end function

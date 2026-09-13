@@ -13,6 +13,7 @@ function main(args)
   for each def in flash.definitions()
     rendered=flash.render(catalog,def.weaponClass,parent,100,100,true,2048);if rendered is error then return rendered end if
     if len(rendered.triangles)==0 then return error(7612,"empty retail flash "+def.weaponClass) end if
+    light=flash.dynamicLight(catalog,def.weaponClass,parent,100,100,true);if light is error then return light end if;if light==void or light.radius<300.0 or light.radius>331.0 or light.color!=flash.lightColor(def) then return error(7612,"invalid retail flash dlight "+def.weaponClass) end if
     triangles=triangles+len(rendered.triangles)
   end for
   print("PASS: retail muzzle flashes 9 weapons / "+str(len(catalog.textures))+" textures / "+str(triangles)+" triangles");return 0

@@ -79,13 +79,15 @@ weapons with separate Baseq3 ammo pools; keys 1-9 directly select owned weapons,
 including the Gauntlet on 1. Empty weapons automatically fall back to the highest
 usable weapon. The HUD selects the matching original ammo icon. Every stock
 weapon uses its original `_flash.md3` muzzle model; Gauntlet and Lightning
-retain their continuous firing flash. Machinegun, Lightning and
+retain their continuous firing flash. Each visible flash also contributes the
+original 300..331-unit weapon-coloured light to the BSP and nearby models.
+Machinegun, Lightning and
 Rail use hitscan; the Shotgun fires the original deterministic 11-pellet spread.
 Rocket, Plasma, Grenade and BFG travel through the map with original speed,
 direct and splash damage, while grenades bounce and settle until their fuse.
 Their original retail MD3s and textures are rendered in flight; Plasma uses its
 original camera-facing sprite. Source-anchored Rocket/Grenade smoke, Plasma
-particles and projectile light overlays accompany them; the same RGB lights now
+particles and projectile light overlays accompany them; these RGB lights
 illuminate players, pickups, projectiles and the first-person weapon. The audio
 boundary now mixes up to 16 effects while q3dm1's looped fire ambience streams with
 source-relative attenuation and stereo panning.

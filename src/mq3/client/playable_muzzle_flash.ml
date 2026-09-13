@@ -3,6 +3,8 @@
 package mq3.client.playable_muzzle_flash
 
 import mq3.client.playable_item_models as itemModels
+import mq3.renderer.playable_dynamic_lights as dynamicLights
+import mq3.compat.numeric as numeric
 
 const MUZZLE_FLASH_TIME=20
 
@@ -32,6 +34,23 @@ end function
 
 function classnames()
   result=[];for each value in definitions() result=result+[value.flashClass] end for;return result
+end function
+
+function lightColor(value)
+  if value==void then return [0.0,0.0,0.0] end if
+  if value.weaponClass=="weapon_gauntlet" or value.weaponClass=="weapon_lightning" or value.weaponClass=="weapon_plasmagun" then return [0.6,0.6,1.0] end if
+  if value.weaponClass=="weapon_grenadelauncher" then return [1.0,0.7,0.0] end if
+  if value.weaponClass=="weapon_rocketlauncher" then return [1.0,0.75,0.0] end if
+  if value.weaponClass=="weapon_railgun" then return [1.0,0.5,0.0] end if
+  if value.weaponClass=="weapon_bfg" then return [1.0,0.7,1.0] end if
+  return [1.0,1.0,0.0]
+end function
+
+// Baseq3 uses 300 + (rand() & 31). Keep that exact radius range while deriving
+// the variation deterministically from frame time for reproducible preview runs.
+function lightRadius(now)
+  seed=numeric.add32(numeric.mul32(now,214013),2531011)
+  return 300+((seed >> 16) & 31)
 end function
 
 // CG_AddPlayerWeapon keeps Lightning/Gauntlet flashes while EF_FIRING is set;
@@ -65,6 +84,14 @@ function attachTransform(parent,attachment)
   local=attachment.origin
   origin=[parent.origin[0]+parent.scale*(local[0]*parent.axis[0][0]+local[1]*parent.axis[1][0]+local[2]*parent.axis[2][0]),parent.origin[1]+parent.scale*(local[0]*parent.axis[0][1]+local[1]*parent.axis[1][1]+local[2]*parent.axis[2][1]),parent.origin[2]+parent.scale*(local[0]*parent.axis[0][2]+local[1]*parent.axis[1][2]+local[2]*parent.axis[2][2])]
   return itemModels.transform(origin,multiplyAxis(attachment.axis,parent.axis),parent.scale)
+end function
+
+function dynamicLight(catalog,weaponClass,gunTransform,lastFire,now,triggerHeld)
+  def=definition(weaponClass);if def==void or not visible(def,lastFire,now,triggerHeld) or catalog==void or gunTransform==void then return void end if
+  gun=itemModels.find(catalog,weaponClass);if gun==void then return void end if
+  flashTag=tag(gun.model,"tag_flash");if flashTag==void then return void end if
+  placed=attachTransform(gunTransform,flashTag);if placed is error then return placed end if
+  return dynamicLights.Light(placed.origin,lightRadius(now),lightColor(def),false)
 end function
 
 function render(catalog,weaponClass,gunTransform,lastFire,now,triggerHeld,maxTriangles)
