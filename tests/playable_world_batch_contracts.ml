@@ -15,6 +15,7 @@ function main(args)
   a=v(10.0,-2.0,1.0,0.0,0.25,0.5,0.75,255,128,32)
   b=v(12.0,2.0,1.0,1.0,0.25,0.75,0.75,64,96,128)
   c=v(11.0,0.0,4.0,0.5,1.0,0.625,1.0,10,20,30)
+  a.sourceIndex=10;b.sourceIndex=11;c.sourceIndex=12
   textured=Triangle([a,b,c],1,7)
   fallback=Triangle([a,c,b],0,9)
   sky=Triangle([a,b,c],2,11)
@@ -90,8 +91,8 @@ function main(args)
   worldBatch.updatePassView(environmentPass,[10.0,-1.0,1.0],0);environmentU=numeric.bitsFloat(numeric.readU32(environmentPass.commands.data,32));environmentV=numeric.bitsFloat(numeric.readU32(environmentPass.commands.data,36))
   count=count+require(environmentU>0.9999 and environmentV>0.4999 and environmentV<0.5001,"environment pass follows the camera-relative reflection coordinates")
   normalDeform=shaderParser.Deform("normal",0.0,shaderParser.Wave(1,0.0,0.5,0.0,0.1),[0.0,0.0,0.0],0.0,0.0,0.0);normalMaterial=materials.Material(1,"normal","environment",image,96,[environmentStage],[normalDeform],false,3.0,false,false)
-  normalBatch=worldBatch.buildMaterials(RenderData([textured]),materials.Catalog([normalMaterial],0,1,1,1,0,1),[false,false,false]);normalPass=normalBatch.passes[0];worldBatch.updatePassView(normalPass,[10.0,-1.0,1.0],1000);normalU=numeric.bitsFloat(numeric.readU32(normalPass.commands.data,32));normalV=numeric.bitsFloat(numeric.readU32(normalPass.commands.data,36))
-  count=count+require(normalPass.normalNoise!=void and (normalU<0.999 or normalV<0.499 or normalV>0.501),"normal deformation drives environment coordinates with Quake renderer noise")
+  normalBatch=worldBatch.buildMaterials(RenderData([textured,Triangle([a,c,b],1,7)]),materials.Catalog([normalMaterial],0,1,1,1,0,1),[false,false,false]);normalPass=normalBatch.passes[0];worldBatch.updatePassView(normalPass,[10.0,-1.0,1.0],1000);normalU=numeric.bitsFloat(numeric.readU32(normalPass.commands.data,32));normalV=numeric.bitsFloat(numeric.readU32(normalPass.commands.data,36))
+  count=count+require(normalPass.normalNoise!=void and normalPass.vertexCache!=void and len(normalPass.vertexCache.frames)==3 and normalPass.vertexCache.frames[0]==1000 and (normalU<0.999 or normalV<0.499 or normalV>0.501),"normal deformation caches shared vertices and drives environment coordinates with Quake renderer noise")
   portalStage=materials.RuntimeStage(["portal"],[image],[97],0.0,[],materials.BLEND_ALPHA,materials.ALPHA_TEST_NONE,"texture","identity",shaderParser.blankWave(),"portal",shaderParser.blankWave(),[255,255,255,255],false,false,false,false,256.0,[])
   portalMaterial=materials.Material(1,"portal","portal",image,97,[portalStage],[],false,9.0,false,false);portalBatch=worldBatch.buildMaterials(RenderData([textured]),materials.Catalog([portalMaterial],0,1,1,1,0,1),[false,false,false]);portalPass=portalBatch.passes[0]
   worldBatch.updatePassView(portalPass,a.position,0);nearAlpha=portalPass.commands.data[119];worldBatch.updatePassView(portalPass,[10.0,-2.0,-127.0],0);middleAlpha=portalPass.commands.data[119];worldBatch.updatePassView(portalPass,[10.0,-2.0,-300.0],0);farAlpha=portalPass.commands.data[119]
