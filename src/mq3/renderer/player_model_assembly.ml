@@ -106,6 +106,15 @@ function assemble(value,lowerAnimation,upperAnimation,headAnimation,root)
   return Assembly(lowerPart,upperPart,headPart)
 end function
 
+// CG_AddPlayerWeapon attaches the weapon model to the animated torso rather
+// than to the player root. Keep this transform renderer-neutral so view and
+// world weapon models share the same item-model path.
+function upperAttachment(value,name)
+  if value==void or value.upper==void or name=="" then return fail("upper attachment needs an assembled player and tag name") end if
+  orientation=tagOrientation(value.upper.model,value.upper.animation,name);if orientation is error then return orientation end if
+  return attach(value.upper.transform,orientation)
+end function
+
 function transformTriangle(source,part)
   positions=[];normals=[]
   for corner=0 to 2

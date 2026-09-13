@@ -73,6 +73,7 @@ const WORLD_SELECTION_INTERVAL=15
 const PLAYER_TEXTURE_FIRST_SLOT=336
 const PLAYER_TRIANGLES_PER_SURFACE=8192
 const MAX_DETAILED_PLAYER_MODELS=5
+const MAX_TARGET_WEAPON_TRIANGLES=512
 const MAX_NATIVE_TEXTURE_SLOTS=512
 const MAX_ITEM_MODELS=24
 const MAX_ITEM_TEXTURES=48
@@ -89,7 +90,7 @@ const MAX_TRIANGLES_PER_PROJECTILE=256
 
 struct PlayerTexture part surface imageName image slot end struct
 struct PlayerSkinSet lower upper head end struct
-struct PlayerModelAssets models animation textures cache end struct
+struct PlayerModelAssets models animation textures cache barrelStates end struct
 struct RenderRuntime lightGrid collisionWorld shadowCatalog end struct
 
 function captureEnemyPositions(targetState)
@@ -481,7 +482,8 @@ function archivePlayerAssets(archive,shaderScripts)
   light=try(playerCache.lighting([0.35,-0.25,0.90],0.42,0.58));if light is error then return void end if
   skinSet=PlayerSkinSet(lowerSkin,upperSkin,headSkin)
   cache=try(playerCache.createDetailed(modelSet,skinSet,4,48,MAX_DETAILED_PLAYER_MODELS,policy,light));if cache is error then return void end if
-  return PlayerModelAssets(modelSet,animation,textures,cache)
+  barrelStates=[];for index=0 to MAX_DETAILED_PLAYER_MODELS-1 barrelStates=barrelStates+[weaponBarrel.state()] end for
+  return PlayerModelAssets(modelSet,animation,textures,cache,barrelStates)
 end function
 
 function playerTextureSlot(assets,triangle)
@@ -519,7 +521,27 @@ function animatedPlayerTriangles(assets,now)
   return triangles
 end function
 
-function renderTargetModels(camera,projection,renderTargets,modelAssets,eventState,enemyState,now,lightGrid)
+function targetWeaponTransform(modelAssets,lowerSample,upperSample,root)
+  key=playerCache.keyFor(modelAssets.cache,lowerSample,upperSample);if key is error then return key end if
+  lower=playerAssembly.animation(key.lowerFrame,key.lowerOldFrame,playerCache.phaseBacklerp(modelAssets.cache,key.lowerPhase))
+  upper=playerAssembly.animation(key.upperFrame,key.upperOldFrame,playerCache.phaseBacklerp(modelAssets.cache,key.upperPhase))
+  assembled=playerAssembly.assemble(modelAssets.models,lower,upper,playerAssembly.animation(0,0,0.0),root);if assembled is error then return assembled end if
+  attached=playerAssembly.upperAttachment(assembled,"tag_weapon");if attached is error then return attached end if
+  return itemModels.transform(attached.origin,attached.axis,1.0)
+end function
+
+function drawTargetWeapon(projection,itemCatalog,modelAssets,index,input,lower,upper,root,show,now,lightGrid)
+  if not show or itemCatalog==void then return 0 end if
+  asset=itemModels.find(itemCatalog,"weapon_machinegun");if asset==void then return 0 end if
+  transform=targetWeaponTransform(modelAssets,lower,upper,root);if transform is error then return transform end if
+  triangles=itemModels.renderAsset(asset,transform,MAX_TARGET_WEAPON_TRIANGLES);if triangles is error then return triangles end if
+  while index>=len(modelAssets.barrelStates) modelAssets.barrelStates=modelAssets.barrelStates+[weaponBarrel.state()] end while
+  barrelAngle=weaponBarrel.advance(modelAssets.barrelStates[index],now,input.action=="attack");if barrelAngle is error then return barrelAngle end if
+  barrel=weaponBarrel.render(itemCatalog,"weapon_machinegun",transform,barrelAngle,MAX_TARGET_WEAPON_TRIANGLES);if barrel is error then return barrel end if
+  return drawItemTriangles(projection,triangles+barrel,lightGrid)
+end function
+
+function renderTargetModels(camera,projection,renderTargets,modelAssets,itemCatalog,eventState,enemyState,now,lightGrid)
   if modelAssets==void or eventState==void then return void end if
   reset=playerCache.beginFrame(modelAssets.cache);if reset is error then return reset end if
   for index=0 to len(renderTargets)-1
@@ -545,6 +567,7 @@ function renderTargetModels(camera,projection,renderTargets,modelAssets,eventSta
               window.drawTriangleColored(slot,a,triangle.texCoords[0],ca,b,triangle.texCoords[1],cb,c,triangle.texCoords[2],cc,255,255,255)
             end if
           end for
+          weaponDraw=drawTargetWeapon(projection,itemCatalog,modelAssets,index,input,lower,upper,root,show,now,lightGrid);if weaponDraw is error then return weaponDraw end if
         end if
       end if
     end if
@@ -626,7 +649,7 @@ function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemC
   else
     itemDraw=drawItemTriangles(projection,pickupTriangles,lightGrid);if itemDraw is error then return itemDraw end if
     shadowDraw=renderTargetShadows(projection,renderTargets,eventState,enemyState,now,runtime);if shadowDraw is error then return shadowDraw end if
-    targetDraw=renderTargetModels(camera,projection,renderTargets,modelAssets,eventState,enemyState,now,lightGrid);if targetDraw is error then return targetDraw end if
+    targetDraw=renderTargetModels(camera,projection,renderTargets,modelAssets,itemCatalog,eventState,enemyState,now,lightGrid);if targetDraw is error then return targetDraw end if
     trailCommands=projectileFx.frameCommands(projectileFxState,camera,projectileEffects,now,WIDTH,HEIGHT,HORIZONTAL_FOV,1.0)
     projectileFx.drawPuffs(trailCommands)
     fallbackProjectiles=projectileEffects

@@ -91,6 +91,10 @@ spawn protection window and a 1.7-second respawn. Each visible target is now a
 complete near-LOD Sarge assembled from the real `lower.md3`, `upper.md3`
 and `head.md3` through `tag_torso` and `tag_head`. The `animation.cfg` locomotion
 frames are interpolated and both default skin images are decoded from the PK3.
+The upper-body pose also interpolates `tag_weapon`; the real 171-triangle
+Machinegun and its separate 72-triangle barrel follow that transform and share
+the player's RGB light-grid and dynamic-light sampling. The barrel keeps an
+independent per-target spin/coast state driven by attack events.
 Per-target gameplay events select idle, walk, run, attack, pain, death and
 respawn inputs. Near targets use all 795 triangles; medium and far LODs retain
 398 and 200 triangles while preserving every model surface. Interpolated MD3
@@ -281,8 +285,9 @@ Validation:
   `lower.md3` asset probe.
 - `python scripts/test_player_animation.py`: 27 animation.cfg and sampling
   contracts plus a retail Sarge probe.
-- `python scripts/test_player_model_assembly.py`: 32 tag hierarchy and transform
-  contracts plus a three-part retail Sarge probe.
+- `python scripts/test_player_model_assembly.py`: 34 tag hierarchy, transform
+  and upper-weapon attachment contracts plus a retail Sarge probe that renders
+  the attached 171-triangle Machinegun and 72-triangle barrel.
 - `python scripts/test_player_skins.py`: 25 skin parser/resolver contracts plus
   decoding of both unique default Sarge textures.
 - `python scripts/test_playable_enemy_events.py`: 22 per-target gameplay event

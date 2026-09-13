@@ -29,7 +29,7 @@ def main() -> int:
 
     build("tests/player_model_assembly_contracts.ml", "player_model_assembly_contracts.exe")
     output = run([ROOT / "build/player_model_assembly_contracts.exe"], ROOT / "build").strip()
-    expected = "PASS: 32 player-model assembly contracts"
+    expected = "PASS: 34 player-model assembly contracts"
     if output != expected:
         raise RuntimeError(output)
     print(expected)
