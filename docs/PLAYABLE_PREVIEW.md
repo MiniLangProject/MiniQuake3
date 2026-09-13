@@ -95,7 +95,9 @@ normals now receive position-dependent light from the BSP light grid. The loader
 honors `worldspawn`'s `gridsize`, reconstructs the grid from world bounds, applies
 Baseq3 overbright scaling, ignores solid-wall samples and trilinearly blends all
 eight neighboring ambient, directed and encoded-direction values. Targets,
-pickups, projectiles and the first-person weapon share this lighting path. Each
+pickups, projectiles and the first-person weapon share this lighting path. The
+result remains separate RGB vertex color through perspective-correct native
+rasterization instead of collapsing the map's colored light to grayscale. Each
 entity samples once per pose, so the added fidelity does not multiply the work
 by every MD3 vertex. A bounded pose cache reuses quantized MD3 interpolation results;
 world and player materials also share the same 27-script shader index.
@@ -276,7 +278,7 @@ Validation:
 - `python scripts/test_player_render_quality.py`: 20 complete-model LOD, skin
   and vertex-lighting contracts plus a retail Sarge probe.
 - `python scripts/test_playable_light_grid.py --pak D:/Quake3/baseq3/pak0.pk3`:
-  ten grid-layout, overbright, trilinear interpolation, wall-sample,
+  13 grid-layout, overbright, trilinear interpolation, wall-sample, RGB diffuse,
   direction and minimum-light contracts plus all 8,514 q3dm1 grid points.
 - `python scripts/test_playable_item_models.py`: 44 pickup-model, material,
   transform and budget contracts plus a retail q3dm1 probe.

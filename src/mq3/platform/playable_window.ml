@@ -21,6 +21,7 @@ extern function uploadTextureNative(slot as i32,rgba as ptr,width as i32,height 
 extern function uploadTextureMipmappedNative(slot as i32,rgba as ptr,width as i32,height as i32,mipmapped as i32) from "playable_window.dll" symbol "playable_window_upload_texture_mipmapped" returns i32
 extern function releaseTextureNative(slot as i32) from "playable_window.dll" symbol "playable_window_release_texture" returns void
 extern function triangleNative(textureSlot as i32,x0 as double,y0 as double,depth0 as double,u0 as double,v0 as double,light0 as double,x1 as double,y1 as double,depth1 as double,u1 as double,v1 as double,light1 as double,x2 as double,y2 as double,depth2 as double,u2 as double,v2 as double,light2 as double,red as i32,green as i32,blue as i32) from "playable_window.dll" symbol "playable_window_draw_triangle" returns void
+extern function triangleColoredNative(textureSlot as i32,x0 as double,y0 as double,depth0 as double,u0 as double,v0 as double,x1 as double,y1 as double,depth1 as double,u1 as double,v1 as double,x2 as double,y2 as double,depth2 as double,u2 as double,v2 as double,red0 as i32,green0 as i32,blue0 as i32,alpha0 as i32,red1 as i32,green1 as i32,blue1 as i32,alpha1 as i32,red2 as i32,green2 as i32,blue2 as i32,alpha2 as i32,red as i32,green as i32,blue as i32) from "playable_window.dll" symbol "playable_window_draw_triangle_colored" returns void
 extern function triangleBatchNative(records as ptr,byteCount as i32,triangleCount as i32) from "playable_window.dll" symbol "playable_window_draw_triangle_batch" returns i32
 extern function worldTriangleBatchNative(records as ptr,byteCount as i32,triangleCount as i32,positionX as double,positionY as double,positionZ as double,rightX as double,rightY as double,rightZ as double,upX as double,upY as double,upZ as double,forwardX as double,forwardY as double,forwardZ as double,halfWidth as double,halfHeight as double,focal as double,nearDistance as double) from "playable_window.dll" symbol "playable_window_draw_world_triangle_batch" returns i32
 
@@ -88,6 +89,10 @@ function uploadTextureNoMip(slot,rgba,width,height) return uploadTextureMipmappe
 function releaseTexture(slot) releaseTextureNative(slot);return void end function
 function drawTriangle(textureSlot,a,uvA,lightA,b,uvB,lightB,c,uvC,lightC,red,green,blue)
   triangleNative(textureSlot,a.x,a.y,a.depth,uvA[0],uvA[1],lightA,b.x,b.y,b.depth,uvB[0],uvB[1],lightB,c.x,c.y,c.depth,uvC[0],uvC[1],lightC,red,green,blue)
+  return void
+end function
+function drawTriangleColored(textureSlot,a,uvA,colorA,b,uvB,colorB,c,uvC,colorC,red,green,blue)
+  triangleColoredNative(textureSlot,a.x,a.y,a.depth,uvA[0],uvA[1],b.x,b.y,b.depth,uvB[0],uvB[1],c.x,c.y,c.depth,uvC[0],uvC[1],colorA[0],colorA[1],colorA[2],colorA[3],colorB[0],colorB[1],colorB[2],colorB[3],colorC[0],colorC[1],colorC[2],colorC[3],red,green,blue)
   return void
 end function
 

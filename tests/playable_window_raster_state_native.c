@@ -203,6 +203,21 @@ int main(void) {
     drawUiTriangle(3);
     if (pixels[sample] != UINT32_C(0x00206000) || depthPixels[sample] != 0.5f) return 46;
 
+    /* Entity light-grid RGB reaches the rasterizer as perspective-correct
+     * vertex color, and the direct call restores state for legacy draws. */
+    playable_window_begin_frame(0, 0, 0);
+    if (!playable_window_set_raster_state(0, 0, 1)) return 47;
+    playable_window_draw_triangle_colored(-1,
+        1.0, 1.0, 2.0, 0.0, 0.0,
+        7.0, 1.0, 2.0, 0.0, 0.0,
+        1.0, 7.0, 2.0, 0.0, 0.0,
+        64, 128, 192, 255, 64, 128, 192, 255, 64, 128, 192, 255,
+        255, 255, 255);
+    if (pixels[sample] != UINT32_C(0xff4080c0)) return 48;
+    playable_window_begin_frame(0, 0, 0);
+    drawUiTriangle(-1);
+    if (pixels[sample] != UINT32_C(0xffffffff)) return 49;
+
     playable_window_shutdown();
     puts("playable window raster-state regression: PASS");
     return 0;

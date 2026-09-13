@@ -57,6 +57,7 @@ import mq3.format.md3 as md3
 import mq3.format.player_animation as playerAnimation
 import mq3.audio.wav as wav
 import mq3.collision.world as collision
+import mq3.compat.numeric as numeric
 import mq3.compat.textnumbers as textnumbers
 import mq3.shared.math as qmath
 import std.time as time
@@ -337,17 +338,17 @@ function fallbackModelLight(normal)
   return value
 end function
 
-function modelLight(sampled,normal)
-  if sampled!=void and sampled.totalFactor>0.0 then return playableLightGrid.vertexLight(sampled,normal) end if
-  return fallbackModelLight(normal)
+function modelColor(sampled,normal)
+  if sampled!=void and sampled.totalFactor>0.0 then return playableLightGrid.vertexColor(sampled,normal) end if
+  component=numeric.trunc32(fallbackModelLight(normal)*255.0);return [component,component,component,255]
 end function
 
 function drawModelTriangle(projection,triangle,red,green,blue,lit,sampled)
   vertices=[]
   for corner=0 to 2
     point=viewer.preparedViewPoint(projection,triangle.positions[corner]);if point is error then return point end if
-    light=1.0;if lit then light=modelLight(sampled,triangle.normals[corner]) end if
-    vertices=vertices+[[point[0],point[1],point[2],triangle.texCoords[corner][0],triangle.texCoords[corner][1],light]]
+    color=[255,255,255,255];if lit then color=modelColor(sampled,triangle.normals[corner]) end if
+    vertices=vertices+[[point[0],point[1],point[2],triangle.texCoords[corner][0],triangle.texCoords[corner][1],color[0],color[1],color[2],color[3]]]
   end for
   clipped=viewer.clipNearPolygon(vertices,projection.nearDistance);if clipped is error then return clipped end if
   drawn=0
@@ -356,7 +357,7 @@ function drawModelTriangle(projection,triangle,red,green,blue,lit,sampled)
       va=clipped[0];vb=clipped[index];vc=clipped[index+1]
       a=viewer.projectPreparedView(projection,[va[0],va[1],va[2]]);b=viewer.projectPreparedView(projection,[vb[0],vb[1],vb[2]]);c=viewer.projectPreparedView(projection,[vc[0],vc[1],vc[2]])
       if a!=void and b!=void and c!=void then
-        window.drawTriangle(triangle.textureSlot,a,[va[3],va[4]],va[5],b,[vb[3],vb[4]],vb[5],c,[vc[3],vc[4]],vc[5],red,green,blue);drawn=drawn+1
+        window.drawTriangleColored(triangle.textureSlot,a,[va[3],va[4]],[va[5],va[6],va[7],va[8]],b,[vb[3],vb[4]],[vb[5],vb[6],vb[7],vb[8]],c,[vc[3],vc[4]],[vc[5],vc[6],vc[7],vc[8]],red,green,blue);drawn=drawn+1
       end if
     end for
   end if
@@ -369,7 +370,7 @@ function drawItemTriangles(projection,triangles,lightGrid)
     a=viewer.projectPrepared(projection,triangle.positions[0]);b=viewer.projectPrepared(projection,triangle.positions[1]);c=viewer.projectPrepared(projection,triangle.positions[2])
     if a!=void and b!=void and c!=void then
       if lightGrid!=void and (sampleOrigin==void or sampleOrigin!=triangle.lightOrigin) then sampleOrigin=triangle.lightOrigin;sampled=playableLightGrid.entitySample(lightGrid,sampleOrigin) end if
-      window.drawTriangle(triangle.textureSlot,a,triangle.texCoords[0],modelLight(sampled,triangle.normals[0]),b,triangle.texCoords[1],modelLight(sampled,triangle.normals[1]),c,triangle.texCoords[2],modelLight(sampled,triangle.normals[2]),255,255,255)
+      window.drawTriangleColored(triangle.textureSlot,a,triangle.texCoords[0],modelColor(sampled,triangle.normals[0]),b,triangle.texCoords[1],modelColor(sampled,triangle.normals[1]),c,triangle.texCoords[2],modelColor(sampled,triangle.normals[2]),255,255,255)
     end if
   end for
   return len(triangles)
@@ -389,12 +390,12 @@ function drawProjectileTriangles(projection,triangles,lightGrid)
   for each triangle in triangles
     a=viewer.projectPrepared(projection,triangle.positions[0]);b=viewer.projectPrepared(projection,triangle.positions[1]);c=viewer.projectPrepared(projection,triangle.positions[2])
     if a!=void and b!=void and c!=void then
-      la=1.0;lb=1.0;lc=1.0
+      ca=[255,255,255,255];cb=ca;cc=ca
       if triangle.style!=projectileView.STYLE_PLASMA and triangle.style!=projectileView.STYLE_BFG then
         if lightGrid!=void and (sampleOrigin==void or sampleOrigin!=triangle.lightOrigin) then sampleOrigin=triangle.lightOrigin;sampled=playableLightGrid.entitySample(lightGrid,sampleOrigin) end if
-        la=modelLight(sampled,triangle.normals[0]);lb=modelLight(sampled,triangle.normals[1]);lc=modelLight(sampled,triangle.normals[2])
+        ca=modelColor(sampled,triangle.normals[0]);cb=modelColor(sampled,triangle.normals[1]);cc=modelColor(sampled,triangle.normals[2])
       end if
-      window.drawTriangle(triangle.textureSlot,a,triangle.texCoords[0],la,b,triangle.texCoords[1],lb,c,triangle.texCoords[2],lc,255,255,255)
+      window.drawTriangleColored(triangle.textureSlot,a,triangle.texCoords[0],ca,b,triangle.texCoords[1],cb,c,triangle.texCoords[2],cc,255,255,255)
     end if
   end for
   return len(triangles)
@@ -530,7 +531,7 @@ function renderTargetModels(camera,projection,renderTargets,modelAssets,eventSta
       if not (lower is error) and not (upper is error) then
         root=targetTransform(target,camera)
         modelTriangles=playerCache.renderTargetDetailed(modelAssets.cache,lower,upper,root,camera.position,show)
-        if not (modelTriangles is error) then
+        if not (modelTriangles is error) and len(modelTriangles)>0 then
           targetLight=void;if lightGrid!=void then targetLight=playableLightGrid.entitySample(lightGrid,target.origin) end if
           for each triangle in modelTriangles
             a=viewer.projectPrepared(projection,triangle.positions[0])
@@ -538,8 +539,8 @@ function renderTargetModels(camera,projection,renderTargets,modelAssets,eventSta
             c=viewer.projectPrepared(projection,triangle.positions[2])
             if a!=void and b!=void and c!=void then
               slot=detailedPlayerTextureSlot(modelAssets,triangle)
-              la=triangle.lights[0];lb=triangle.lights[1];lc=triangle.lights[2];if targetLight!=void and targetLight.totalFactor>0.0 then la=playableLightGrid.vertexLight(targetLight,triangle.normals[0]);lb=playableLightGrid.vertexLight(targetLight,triangle.normals[1]);lc=playableLightGrid.vertexLight(targetLight,triangle.normals[2]) end if
-              window.drawTriangle(slot,a,triangle.texCoords[0],la,b,triangle.texCoords[1],lb,c,triangle.texCoords[2],lc,255,255,255)
+              ca=modelColor(targetLight,triangle.normals[0]);cb=modelColor(targetLight,triangle.normals[1]);cc=modelColor(targetLight,triangle.normals[2])
+              window.drawTriangleColored(slot,a,triangle.texCoords[0],ca,b,triangle.texCoords[1],cb,c,triangle.texCoords[2],cc,255,255,255)
             end if
           end for
         end if

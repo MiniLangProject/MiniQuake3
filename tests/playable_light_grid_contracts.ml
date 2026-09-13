@@ -20,6 +20,9 @@ function main(args)
   entity=lightGrid.entitySample(grid,[5.0,10.0,15.0]);count=count+require(near(entity.ambient[0],52.0) and near(entity.ambient[2],92.0),"entity minimum light added")
   count=count+require(near(lightGrid.vertexLight(entity,[0.0,0.0,1.0]),(52.0+72.0+92.0+80.0+100.0+120.0)/(255.0*3.0)),"directed vertex light follows surface normal")
   count=count+require(near(lightGrid.vertexLight(entity,[0.0,0.0,-1.0]),(52.0+72.0+92.0)/(255.0*3.0)),"back-facing normal receives ambient only")
+  count=count+require(lightGrid.vertexColor(entity,[0.0,0.0,1.0])==[132,172,212,255],"diffuse color preserves RGB channels")
+  count=count+require(lightGrid.vertexColor(entity,[0.0,0.0,-1.0])==[52,72,92,255],"back-facing diffuse color uses RGB ambient")
+  count=count+require(lightGrid.vertexColor(lightGrid.Sample([250.0,1.0,2.0],[20.0,2.0,3.0],[0.0,0.0,1.0],1.0),[0.0,0.0,1.0])==[255,3,5,255],"diffuse color clamps each channel")
   invalid=lightGrid.Grid(bytes(1,0),0,1,[0.0,0.0,0.0],[1.0,1.0,1.0],[1.0,1.0,1.0],[1,1,1],false);count=count+require(lightGrid.sample(invalid,[0.0,0.0,0.0]).totalFactor==0.0,"invalid grid returns safe sample")
   print("PASS: "+str(count)+" playable light-grid contracts");return 0
 end function

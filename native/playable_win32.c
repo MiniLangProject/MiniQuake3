@@ -1001,6 +1001,44 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
     }
 }
 
+PLAYABLE_API void playable_window_draw_triangle_colored(int textureSlot,
+        double x0, double y0, double depth0, double u0, double v0,
+        double x1, double y1, double depth1, double u1, double v1,
+        double x2, double y2, double depth2, double u2, double v2,
+        int red0, int green0, int blue0, int alpha0,
+        int red1, int green1, int blue1, int alpha1,
+        int red2, int green2, int blue2, int alpha2,
+        int fallbackRed, int fallbackGreen, int fallbackBlue) {
+    int colors[3][4] = {
+        {red0, green0, blue0, alpha0},
+        {red1, green1, blue1, alpha1},
+        {red2, green2, blue2, alpha2}
+    };
+    int vertex;
+    int channel;
+    rasterVertexColorEnabled = 0;
+    rasterVertexColorUniform = 1;
+    for (vertex = 0; vertex < 3; ++vertex) {
+        for (channel = 0; channel < 4; ++channel) {
+            int value = colors[vertex][channel];
+            if (value < 0) value = 0;
+            if (value > 255) value = 255;
+            rasterVertexColor[vertex][channel] = (unsigned char)value;
+            if (value != 255) rasterVertexColorEnabled = 1;
+            if (vertex > 0 && rasterVertexColor[vertex][channel] !=
+                    rasterVertexColor[0][channel]) rasterVertexColorUniform = 0;
+        }
+    }
+    if (!rasterVertexColorEnabled) rasterVertexColorUniform = 0;
+    playable_window_draw_triangle(textureSlot,
+        x0, y0, depth0, u0, v0, 1.0,
+        x1, y1, depth1, u1, v1, 1.0,
+        x2, y2, depth2, u2, v2, 1.0,
+        fallbackRed, fallbackGreen, fallbackBlue);
+    rasterVertexColorEnabled = 0;
+    rasterVertexColorUniform = 0;
+}
+
 PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot,
         int lightmapTextureSlot,
         double x0, double y0, double depth0, double u0, double v0, double lu0, double lv0, double light0,

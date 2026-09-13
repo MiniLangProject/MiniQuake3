@@ -68,3 +68,9 @@ function vertexLight(value,normal)
   if value==void or normal==void then return 1.0 end if;dot=qmath.DotProduct(normal,value.direction);if dot<0.0 then dot=0.0 end if
   brightness=(value.ambient[0]+value.ambient[1]+value.ambient[2]+dot*(value.directed[0]+value.directed[1]+value.directed[2]))/(255.0*3.0);if brightness<0.0 then brightness=0.0 end if;if brightness>1.0 then brightness=1.0 end if;return brightness
 end function
+function vertexColor(value,normal)
+  if value==void or normal==void then return [255,255,255,255] end if
+  incoming=qmath.DotProduct(normal,value.direction);if incoming<0.0 then incoming=0.0 end if;color=[]
+  for channel=0 to 2 component=numeric.trunc32(value.ambient[channel]+incoming*value.directed[channel]);if component<0 then component=0 end if;if component>255 then component=255 end if;color=color+[component] end for
+  return color+[255]
+end function
