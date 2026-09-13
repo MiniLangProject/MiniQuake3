@@ -19,8 +19,9 @@ function isSky(triangle,flags) return triangle.textureIndex>=0 and triangle.text
 function resolvedLightmapSlot(triangle) slot=triangle.lightmapIndex;if slot<0 or slot>=64 then return -1 end if;return slot end function
 function appendResolved(commands,triangle,baseSlot,useLightmap)
   va=triangle.vertices[0];vb=triangle.vertices[1];vc=triangle.vertices[2];lightmapSlot=-1;if useLightmap then lightmapSlot=resolvedLightmapSlot(triangle) end if
-  if baseSlot>=0 then return window.appendTriangleBatch(commands,baseSlot,lightmapSlot,worldPoint(va.position),va.baseUV,va.lightmapUV,vertexLight(va),worldPoint(vb.position),vb.baseUV,vb.lightmapUV,vertexLight(vb),worldPoint(vc.position),vc.baseUV,vc.lightmapUV,vertexLight(vc),va.color[0],va.color[1],va.color[2]) end if
-  return window.appendSingleTextureTriangle(commands,lightmapSlot,worldPoint(va.position),va.lightmapUV,vertexLight(va),worldPoint(vb.position),vb.lightmapUV,vertexLight(vb),worldPoint(vc.position),vc.lightmapUV,vertexLight(vc),va.color[0],va.color[1],va.color[2])
+  colorA=va.color;colorB=vb.color;colorC=vc.color;if lightmapSlot>=0 then colorA=[255,255,255,255];colorB=colorA;colorC=colorA end if
+  if baseSlot>=0 then return window.appendTriangleBatchColored(commands,baseSlot,lightmapSlot,worldPoint(va.position),va.baseUV,va.lightmapUV,1.0,colorA,worldPoint(vb.position),vb.baseUV,vb.lightmapUV,1.0,colorB,worldPoint(vc.position),vc.baseUV,vc.lightmapUV,1.0,colorC,255,255,255) end if
+  return window.appendSingleTextureTriangleColored(commands,lightmapSlot,worldPoint(va.position),va.lightmapUV,1.0,colorA,worldPoint(vb.position),vb.lightmapUV,1.0,colorB,worldPoint(vc.position),vc.lightmapUV,1.0,colorC,255,255,255)
 end function
 
 // Compatibility builder: byte layout and single submission remain unchanged.

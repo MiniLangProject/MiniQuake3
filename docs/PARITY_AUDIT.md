@@ -57,7 +57,9 @@ Der spielbare Renderer transportiert inzwischen unabhängige RGBA-Farben je
 Dreiecksvertex bis in den nativen Batch und interpoliert sie perspektivisch
 korrekt. MiniLang wertet dafür `rgbGen vertex`, `exactVertex`,
 `oneMinusVertex`, `const` und `wave` sowie die entsprechenden `alphaGen`-Modi
-pro Frame aus. Die Abnahme umfasst 50 Material-, 15 Batch-Layout- und 37
+pro Frame aus. Lightmapped BSP-Flächen werden nur noch mit der originalen
+Lightmap moduliert; unlightmapped Flächen behalten ihre getrennten RGB-Vertexfarben.
+Die Abnahme umfasst 50 Material-, 15 Batch-Layout- und 38
 World-Batch-Verträge sowie einen nativen Pixelvergleich unter `/W4 /WX`.
 
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |

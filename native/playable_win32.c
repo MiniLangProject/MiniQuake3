@@ -50,6 +50,7 @@ static double rasterDepthRangeNear = 1.0;
 static __declspec(thread) int rasterClipMinimumY;
 static __declspec(thread) int rasterClipMaximumY = INT_MAX;
 static __declspec(thread) int rasterVertexColorEnabled;
+static __declspec(thread) int rasterVertexColorUniform;
 static __declspec(thread) unsigned char rasterVertexColor[3][4];
 
 /* Compact little-endian command consumed by the batch entry point. */
@@ -448,13 +449,38 @@ static void useBatchVertexColor(const playableTriangleBatchRecord *command) {
     int vertex;
     int channel;
     rasterVertexColorEnabled = 0;
+    rasterVertexColorUniform = 1;
     for (vertex = 0; vertex < 3; ++vertex) {
         for (channel = 0; channel < 4; ++channel) {
             unsigned char value = command->vertexColor[vertex][channel];
             rasterVertexColor[vertex][channel] = value;
             if (value != 255u) rasterVertexColorEnabled = 1;
+            if (vertex > 0 && value != rasterVertexColor[0][channel]) rasterVertexColorUniform = 0;
         }
     }
+    if (!rasterVertexColorEnabled) rasterVertexColorUniform = 0;
+}
+
+static uint32_t modulateBatchVertexColor(uint32_t color,
+        double b0, double b1, double b2,
+        double inverseDepth0, double inverseDepth1, double inverseDepth2,
+        double depth) {
+    double redFactor;
+    double greenFactor;
+    double blueFactor;
+    double alphaFactor;
+    if (rasterVertexColorUniform) {
+        redFactor = (double)rasterVertexColor[0][0] / 255.0;
+        greenFactor = (double)rasterVertexColor[0][1] / 255.0;
+        blueFactor = (double)rasterVertexColor[0][2] / 255.0;
+        alphaFactor = (double)rasterVertexColor[0][3] / 255.0;
+    } else {
+        redFactor = (b0 * (double)rasterVertexColor[0][0] * inverseDepth0 + b1 * (double)rasterVertexColor[1][0] * inverseDepth1 + b2 * (double)rasterVertexColor[2][0] * inverseDepth2) * depth / 255.0;
+        greenFactor = (b0 * (double)rasterVertexColor[0][1] * inverseDepth0 + b1 * (double)rasterVertexColor[1][1] * inverseDepth1 + b2 * (double)rasterVertexColor[2][1] * inverseDepth2) * depth / 255.0;
+        blueFactor = (b0 * (double)rasterVertexColor[0][2] * inverseDepth0 + b1 * (double)rasterVertexColor[1][2] * inverseDepth1 + b2 * (double)rasterVertexColor[2][2] * inverseDepth2) * depth / 255.0;
+        alphaFactor = (b0 * (double)rasterVertexColor[0][3] * inverseDepth0 + b1 * (double)rasterVertexColor[1][3] * inverseDepth1 + b2 * (double)rasterVertexColor[2][3] * inverseDepth2) * depth / 255.0;
+    }
+    return modulateColorRgba(color, redFactor, greenFactor, blueFactor, alphaFactor);
 }
 
 static uint32_t blendColor(uint32_t source, uint32_t destination) {
@@ -740,11 +766,8 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
             }
             if (!unitLight) color = modulateColor(color, light);
             if (rasterVertexColorEnabled) {
-                double redFactor = (b0 * (double)rasterVertexColor[0][0] * inverseDepth0 + b1 * (double)rasterVertexColor[1][0] * inverseDepth1 + b2 * (double)rasterVertexColor[2][0] * inverseDepth2) * depth / 255.0;
-                double greenFactor = (b0 * (double)rasterVertexColor[0][1] * inverseDepth0 + b1 * (double)rasterVertexColor[1][1] * inverseDepth1 + b2 * (double)rasterVertexColor[2][1] * inverseDepth2) * depth / 255.0;
-                double blueFactor = (b0 * (double)rasterVertexColor[0][2] * inverseDepth0 + b1 * (double)rasterVertexColor[1][2] * inverseDepth1 + b2 * (double)rasterVertexColor[2][2] * inverseDepth2) * depth / 255.0;
-                double alphaFactor = (b0 * (double)rasterVertexColor[0][3] * inverseDepth0 + b1 * (double)rasterVertexColor[1][3] * inverseDepth1 + b2 * (double)rasterVertexColor[2][3] * inverseDepth2) * depth / 255.0;
-                color = modulateColorRgba(color, redFactor, greenFactor, blueFactor, alphaFactor);
+                color = modulateBatchVertexColor(color, b0, b1, b2,
+                    inverseDepth0, inverseDepth1, inverseDepth2, depth);
             }
             if (!alphaTestPasses(color) || (color >> 24) == 0u) continue;
             if (rasterBlendMode == 4) pixels[offset] = destinationAlphaColor(color, pixels[offset]);
@@ -961,11 +984,8 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
             }
             color = modulateColor(color, light);
             if (rasterVertexColorEnabled) {
-                double redFactor = (b0 * (double)rasterVertexColor[0][0] * inverseDepth0 + b1 * (double)rasterVertexColor[1][0] * inverseDepth1 + b2 * (double)rasterVertexColor[2][0] * inverseDepth2) * depth / 255.0;
-                double greenFactor = (b0 * (double)rasterVertexColor[0][1] * inverseDepth0 + b1 * (double)rasterVertexColor[1][1] * inverseDepth1 + b2 * (double)rasterVertexColor[2][1] * inverseDepth2) * depth / 255.0;
-                double blueFactor = (b0 * (double)rasterVertexColor[0][2] * inverseDepth0 + b1 * (double)rasterVertexColor[1][2] * inverseDepth1 + b2 * (double)rasterVertexColor[2][2] * inverseDepth2) * depth / 255.0;
-                double alphaFactor = (b0 * (double)rasterVertexColor[0][3] * inverseDepth0 + b1 * (double)rasterVertexColor[1][3] * inverseDepth1 + b2 * (double)rasterVertexColor[2][3] * inverseDepth2) * depth / 255.0;
-                color = modulateColorRgba(color, redFactor, greenFactor, blueFactor, alphaFactor);
+                color = modulateBatchVertexColor(color, b0, b1, b2,
+                    inverseDepth0, inverseDepth1, inverseDepth2, depth);
             }
             if (!alphaTestPasses(color) || (color >> 24) == 0u) continue;
             if (rasterDepthEqual) {

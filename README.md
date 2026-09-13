@@ -40,8 +40,9 @@ Double-click `Play-MiniQuake3.cmd`, or run:
 ```
 
 The current preview opens a native Windows window and renders `q3dm1` with a
-MiniLang-driven software rasterizer, depth buffering, BSP lightmaps and vertex
-lighting. BSP PVS, frustum and backface selection now draw relevant surfaces
+MiniLang-driven software rasterizer, depth buffering, BSP lightmaps and full
+RGB vertex lighting. Lightmapped surfaces use their decoded retail lightmap once,
+without the former extra grayscale vertex modulation. BSP PVS, frustum and backface selection now draw relevant surfaces
 from the complete tessellated map instead of a fixed first-1,000 prefix. Press
 Enter in the Baseq3 artwork menu, use WASD and the mouse to move/look,
 and Space to jump. Quake-style gravity, friction, ground/air acceleration,

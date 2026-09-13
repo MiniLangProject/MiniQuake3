@@ -25,7 +25,10 @@ Controls:
 The preview extracts bounded planar, triangle-soup and curved patch geometry from BSP46 and
 draws it through a native CPU rasterizer. It currently supports a depth buffer,
 screen clipping, perspective-correct UV, light and per-vertex RGBA interpolation,
-alpha and up to 64 uploaded 128x128 BSP lightmaps and 256 world-material texture slots within a 512-slot native registry. A bounded material resolver
+alpha and up to 64 uploaded 128x128 BSP lightmaps and 256 world-material texture slots within a 512-slot native registry. Unlightmapped BSP geometry preserves
+its independent RGB vertex lighting; lightmapped geometry applies the retail
+lightmap exactly once instead of multiplying it by an additional grayscale
+vertex-light approximation. A bounded material resolver
 reads all `scripts/*.shader` files, follows `map`, `clampMap` and up to eight
 `animMap` frames, resolves Quake's TGA/JPEG extension fallback, decodes both image formats,
 uses edge-clamped native sampling for `clampMap` while ordinary maps repeat,
@@ -169,7 +172,7 @@ Validation:
 - `python scripts/test_playable_materials.py`: 50 BSP/shader/image/generator contracts.
 - `playable_triangle_batch_contracts.exe`: 15 record-layout, default-colour and
   independent per-vertex RGBA contracts.
-- `python scripts/test_playable_world_batch.py`: 37 retained-command, material-stage,
+- `python scripts/test_playable_world_batch.py`: 38 retained-command, material-stage,
   sky-filtering and one-call submission contracts; the native lifecycle also
   compares framebuffer pixels and depth bit-for-bit with the scalar path.
 - `python scripts/test_playable_movement.py`: 27 gravity/jump/slide/idle contracts.
