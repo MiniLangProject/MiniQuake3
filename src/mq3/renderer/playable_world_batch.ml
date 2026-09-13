@@ -191,7 +191,7 @@ function updatePassView(pass,viewOrigin,nowMilliseconds)
       position=deformedPosition(pass.sourcePositions[triangleIndex][vertex],pass.sourceNormals[triangleIndex][vertex],pass.sourceDeformUvs[triangleIndex][vertex],pass.deforms,nowMilliseconds);positionOffset=offset+20+vertex*32;window.writeBatchF32(pass.commands.data,positionOffset,position[0]);window.writeBatchF32(pass.commands.data,positionOffset+4,position[1]);window.writeBatchF32(pass.commands.data,positionOffset+8,position[2])
       sourceUv=pass.sourceUvs[triangleIndex][vertex];if pass.stage.tcGen=="environment" then sourceUv=materials.environmentUV(position,pass.sourceNormals[triangleIndex][vertex],viewOrigin) end if
       uv=[0.0,0.0];if turbulent then uv=materials.transformUVAt(pass.stage,sourceUv,position,nowMilliseconds) else uv=applyAffine(transform,sourceUv) end if;uvOffset=offset+32+vertex*32;window.writeBatchF32(pass.commands.data,uvOffset,uv[0]);window.writeBatchF32(pass.commands.data,uvOffset+4,uv[1])
-      window.writeBatchF32(pass.commands.data,offset+48+vertex*32,1.0);window.writeBatchColor(pass.commands.data,offset+116+vertex*4,materials.stageColor(pass.stage,pass.sourceColors[triangleIndex][vertex],nowMilliseconds))
+      window.writeBatchF32(pass.commands.data,offset+48+vertex*32,1.0);window.writeBatchColor(pass.commands.data,offset+116+vertex*4,materials.stageColorAt(pass.stage,pass.sourceColors[triangleIndex][vertex],position,viewOrigin,nowMilliseconds))
     end for
   end for
   return slot

@@ -29,7 +29,7 @@ const ALPHA_TEST_GE128=3
 
 struct Image width height pixels end struct
 struct UvMod kind a b c d wave end struct
-struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest tcGen rgbGen rgbWave alphaGen alphaWave constantColor bspLightmap clampTexture depthWrite depthEqual end struct
+struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest tcGen rgbGen rgbWave alphaGen alphaWave constantColor bspLightmap clampTexture depthWrite depthEqual portalRange end struct
 struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps end struct
 struct Catalog materials scripts attempted loaded textureCount animatedStageCount effectStageCount end struct
 
@@ -171,17 +171,17 @@ function loadRuntimeStage(archive,stage,nextSlot,endSlot)
     if loaded!=void then names=names+[loaded[0]];images=images+[loaded[1]];slots=slots+[nextSlot];nextSlot=nextSlot+1 end if
   end for
   if len(images)==0 then return void end if
-  return [RuntimeStage(names,images,slots,stage.animationSpeed,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),stageTcGen(stage),stage.rgbGen,stage.rgbWave,stage.alphaGen,stage.alphaWave,stage.constantColor,false,stageClamp(stage),stage.depthWrite,stage.depthFunc==shaderParser.GLS_DEPTHFUNC_EQUAL),nextSlot]
+  return [RuntimeStage(names,images,slots,stage.animationSpeed,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),stageTcGen(stage),stage.rgbGen,stage.rgbWave,stage.alphaGen,stage.alphaWave,stage.constantColor,false,stageClamp(stage),stage.depthWrite,stage.depthFunc==shaderParser.GLS_DEPTHFUNC_EQUAL,stage.portalRange),nextSlot]
 end function
 
 function lightmapRuntimeStage(stage)
-  return RuntimeStage([],[],[],0.0,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),"lightmap",stage.rgbGen,stage.rgbWave,stage.alphaGen,stage.alphaWave,stage.constantColor,true,false,stage.depthWrite,stage.depthFunc==shaderParser.GLS_DEPTHFUNC_EQUAL)
+  return RuntimeStage([],[],[],0.0,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),"lightmap",stage.rgbGen,stage.rgbWave,stage.alphaGen,stage.alphaWave,stage.constantColor,true,false,stage.depthWrite,stage.depthFunc==shaderParser.GLS_DEPTHFUNC_EQUAL,stage.portalRange)
 end function
 
 function directRuntimeStage(archive,name,nextSlot,endSlot)
   if nextSlot>=endSlot then return void end if
   loaded=loadImage(archive,name);if loaded==void then return void end if
-  return [RuntimeStage([loaded[0]],[loaded[1]],[nextSlot],0.0,[],BLEND_OPAQUE,ALPHA_TEST_NONE,"texture","identitylighting",shaderParser.blankWave(),"identity",shaderParser.blankWave(),[255,255,255,255],false,false,true,false),nextSlot+1]
+  return [RuntimeStage([loaded[0]],[loaded[1]],[nextSlot],0.0,[],BLEND_OPAQUE,ALPHA_TEST_NONE,"texture","identitylighting",shaderParser.blankWave(),"identity",shaderParser.blankWave(),[255,255,255,255],false,false,true,false,256.0),nextSlot+1]
 end function
 
 function resolvedShaderSort(shader)
@@ -270,6 +270,20 @@ function stageColor(stage,vertexColor,nowMilliseconds)
   else if stage.alphaGen=="oneminusvertex" then result[3]=255-vertexColor[3]
   else if stage.alphaGen=="wave" then result[3]=colorByte(255.0*waveValue(stage.alphaWave,nowMilliseconds))
   else if stage.alphaGen=="const" then result[3]=colorByte(stage.constantColor[3])
+  end if
+  return result
+end function
+
+// AGEN_PORTAL from tr_shade.c fades each deformed vertex according to its
+// camera distance.  This is deliberately evaluated after stageColor so the
+// portal generator replaces only alpha, exactly like the original renderer.
+function stageColorAt(stage,vertexColor,position,viewOrigin,nowMilliseconds)
+  result=stageColor(stage,vertexColor,nowMilliseconds)
+  if stage.alphaGen=="portal" then
+    range=stage.portalRange;if range<=0.0 then range=256.0 end if
+    dx=position[0]-viewOrigin[0];dy=position[1]-viewOrigin[1];dz=position[2]-viewOrigin[2]
+    distance=n.fsqrt(dx*dx+dy*dy+dz*dz)
+    result[3]=colorByte(255.0*distance/range)
   end if
   return result
 end function
