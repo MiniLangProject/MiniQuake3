@@ -719,12 +719,13 @@ und Spielermaterialien teilen denselben Shaderindex und halbieren damit ungefäh
 die gemessene Asset-Smoke-Zeit. Vollständige Shaderstufen, exakte cgame-
 Animationsmischung, QVM-Entities und die Matchschleife folgen. Gegnerbewegung
 wird inzwischen mit Spielerhülle, Wall-Slide, 18-Unit-Step und Bodenbindung
-gegen das BSP aufgelöst. Angriffe erzeugen 420 Units/s schnelle Plasma-Projektile
-mit BSP-/Spielertreffer, einmaligem Schaden, Trail, Glow, Einschlag und originalen
-Sounds. Die Projektilquelle folgt dabei dem animierten `tag_flash` der echten
-Gegnerwaffe und stimmt mit Mündungsmodell und dynamischem Licht überein.
-Bewegung, Projektilsimulation und Darstellung bestehen weitere 22, 27
-und 35 Verträge sowie eine q3dm1-Kollisionsprobe.
+gegen das BSP aufgelöst. Angriffe verwenden nun den originalen 100-ms-Takt und
+7 Schaden der sichtbaren Machinegun. Ein erneuter BSP-Trace nach der Bewegung
+schirmt den Spieler hinter Wänden ab und liefert Tracer, Bullet-Mark sowie den
+originalen Ricochet-Sound. Der Hitscan beginnt am animierten `tag_flash` und
+stimmt mit Mündungsmodell und dynamischem Licht überein. Bewegung, Hitscan und
+Darstellung bestehen weitere 22, 12 und 35 Verträge sowie eine
+q3dm1-Kollisionsprobe.
 
 Der äußere [Client-Frame](CLIENT_MAIN_FRAME.md) ist ebenfalls vorhanden:
 Timeout, Userinfo, Menüs, AVI-Zeit und die SendCmd-/Resend-/Cgame-/Screen-/

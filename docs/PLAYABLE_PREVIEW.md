@@ -83,7 +83,8 @@ and view weapon through the shared scene-light list.
 
 Five local combat targets are created from the remaining q3dm1 deathmatch
 spawns. BSP point traces drive their line of sight. They patrol, chase, strafe
-and attack for 7 damage with a 700 ms cooldown inside a 900-unit range. They
+and attack for 7 damage with the stock 100 ms Machinegun interval inside a
+900-unit engagement range. They
 take 34 damage from the nearest unobstructed hitscan intersection, die after
 three hits, award a frag and respawn after three seconds. The player now has
 armor absorption, pain/death feedback, a death counter, spawn cycling, a short
@@ -115,13 +116,13 @@ mark to the hit plane and fades it by height exactly as `CG_PlayerShadow`.
 A bounded pose cache reuses quantized MD3 interpolation results;
 world and player materials also share the same 27-script shader index.
 Enemy movement is resolved through a player-sized BSP hull with wall sliding,
-18-unit steps and ground binding. Their attacks now launch 420-unit-per-second
-plasma projectiles. Each flight is traced against the BSP and the player bounds;
-walls win exact collision ties and therefore shield the player. Trails, glows,
-retail impact marks and original plasma fire/impact sounds expose the complete
-path. A shot starts at the animated retail Machinegun's transformed `tag_flash`,
-the same point used by its flash geometry and dynamic light; the chest-height
-origin remains a fallback when retail model data is unavailable. The
+18-unit steps and ground binding. Their Machinegun attack is now an
+instantaneous 7-damage hitscan with the stock 100 ms weapon interval. A final
+post-movement BSP trace prevents damage through walls and supplies the endpoint
+and normal for the tracer, bullet mark and original Machinegun ricochet sound.
+A shot starts at the animated retail Machinegun's transformed `tag_flash`, the
+same point used by its flash geometry and dynamic light; the chest-height origin
+remains a fallback when retail model data is unavailable. The
 first-person view switches to the current original textured weapon MD3.
 Its bob, landing motion and idle drift follow `CG_CalculateWeaponPosition`; the
 visible model is attached through the complete animated `tag_weapon` transform
@@ -322,6 +323,8 @@ Validation:
   contracts plus a retail q3dm1 probe.
 - `python scripts/test_playable_enemy_projectiles.py`: 27 spawn, retail-muzzle, flight, BSP,
   player-hit and lifetime contracts.
+- `python scripts/test_playable_enemy_hitscan.py`: 12 retail-muzzle Machinegun,
+  post-movement BSP shielding, damage-payload and fallback contracts.
 - `python scripts/test_playable_player_projectiles.py`: 32 Rocket, Plasma,
   Grenade and BFG flight, grenade bounce/settling, BSP/target, direct/splash
   damage and lifetime contracts.

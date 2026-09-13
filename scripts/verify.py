@@ -84,6 +84,7 @@ def main():
     scripts.append(("test_playable_enemy_animation.py",[]))
     scripts.append(("test_playable_enemy_movement.py",[]))
     scripts.append(("test_playable_enemy_projectiles.py",[]))
+    scripts.append(("test_playable_enemy_hitscan.py",[]))
     scripts.append(("test_playable_player_projectiles.py",[]))
     scripts.append(("test_playable_projectile_view.py",[]))
     scripts.append(("test_playable_projectile_fx.py",[]))

@@ -128,11 +128,12 @@ base batch and submits the visible animated and blended material passes alongsid
 it; indexed MD3 surfaces transform each shared
 vertex once while preserving per-frame pickup bobbing and rotation.
 Enemy movement uses a player-sized BSP collision hull with wall slide, steps and ground
-binding. Attacks launch traced plasma projectiles with trails, glows, impacts,
-world occlusion and original fire/impact sounds. Their origin now comes from
-the animated retail Machinegun's `tag_flash`, shared with its muzzle model and
-dynamic light, with the former chest-height point retained only as an asset
-fallback. See
+binding. Attacks now use the stock 100 ms Machinegun interval and instantaneous
+7-damage hitscan. A final BSP trace shields the player behind walls and drives
+the original Machinegun fire, ricochet, tracer and bullet-mark presentation.
+Each trace starts at the animated Retail-Machinegun's `tag_flash`, shared with
+its muzzle model and dynamic light, with the former chest-height point retained
+only as an asset fallback. See
 [`docs/PLAYABLE_PREVIEW.md`](docs/PLAYABLE_PREVIEW.md).
 
 Ein vorhandener eingefrorener Compiler liegt unter `artifacts/toolchain/`.

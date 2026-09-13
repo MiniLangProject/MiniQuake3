@@ -18,7 +18,7 @@ import mq3.client.playable_player as playablePlayer
 import mq3.client.playable_enemy_ai as enemyAi
 import mq3.client.playable_enemy_events as enemyEvents
 import mq3.client.playable_enemy_movement as enemyMovement
-import mq3.client.playable_enemy_projectiles as enemyProjectiles
+import mq3.client.playable_enemy_hitscan as enemyHitscan
 import mq3.client.playable_player_projectiles as playerProjectiles
 import mq3.client.playable_projectile_view as projectileView
 import mq3.client.playable_projectile_models as projectileModels
@@ -718,7 +718,7 @@ function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemC
   return void
 end function
 
-function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fogCatalog,dlightCatalog,markCatalog,markState,explosionCatalog,worldCache,worldConfig,selectedFaceIndexes,materialSlots,skyTextureFlags,dlightReceiveFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound)
+function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fogCatalog,dlightCatalog,markCatalog,markState,explosionCatalog,worldCache,worldConfig,selectedFaceIndexes,materialSlots,skyTextureFlags,dlightReceiveFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound)
   previous=window.milliseconds();frames=0;menuOpen=maxFrames<0;lastEnter=false;lastEscape=false;lastPreviousWeapon=false;lastNextWeapon=false;lastDigitWeapon=0;shotEffects=[];projectileEffects=[];pickupTriangles=[];updateMilliseconds=0;renderMilliseconds=0;matchView=void;lastMatchMessage="";matchCenter=void
   if maxFrames>=0 then started=playableMatch.start(matchState,previous);if started is error then return started end if;hudSelection=syncHudWeaponSelection(baseHudState,inventoryState,previous);if hudSelection is error then return hudSelection end if end if
   while not window.shouldClose() and (maxFrames<0 or frames<maxFrames)
@@ -765,7 +765,7 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fog
         combatState.weaponName=pickupName(playerState.weapon)
         hudSelection=syncHudWeaponSelection(baseHudState,inventoryState,current);if hudSelection is error then return hudSelection end if
       end if
-      shot=void;enemyState.events=[]
+      shot=void;enemyShots=[];enemyState.events=[]
       if playerState.alive and matchView.phase!=playableMatch.PHASE_INTERMISSION then
         forward=0;if window.keyDown(window.VK_W) then forward=forward+1 end if;if window.keyDown(window.VK_S) then forward=forward-1 end if
         right=0;if window.keyDown(window.VK_D) then right=right+1 end if;if window.keyDown(window.VK_A) then right=right-1 end if
@@ -799,8 +799,8 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fog
         attacks=enemyAi.step(controller.motion.context,enemyState,targetState,camera.position,current,elapsed);if attacks is error then return attacks end if
         collided=collideEnemyPositions(controller.motion.context,targetState,previousTargets);if collided is error then return collided end if
         enemyMuzzles=enemyAttackMuzzles(camera,targetState,modelAssets,itemCatalog,enemyState);if enemyMuzzles is error then return enemyMuzzles end if
-        spawned=enemyProjectiles.spawnAttacksFromMuzzles(projectileState,enemyState,targetState,camera.position,enemyMuzzles,current);if spawned is error then return spawned end if
-        if len(spawned)>0 and enemyFireSound!=void then ignored=try(audio.play(enemyFireSound)) end if
+        enemyShots=enemyHitscan.fire(controller.motion.context,enemyState,targetState,camera.position,enemyMuzzles,current);if enemyShots is error then return enemyShots end if
+        if len(enemyShots)>0 and enemyFireSound!=void then ignored=try(audio.play(enemyFireSound)) end if
         attackDown=window.keyDown(window.VK_LBUTTON)
         if attackDown and weaponState.classname=="weapon_gauntlet" then attackDown=gauntletHasTarget(weaponState,camera,targetState);if attackDown is error then return attackDown end if end if
         shot=playableWeapon.step(weaponState,camera,attackDown,elapsed)
@@ -854,21 +854,21 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fog
         end if
       end if
       if shot==void then syncRenderTargets(targetState,renderTargets,void,current) end if
-      projectileDamage=enemyProjectiles.update(controller.motion.context,projectileState,camera.position,current);if projectileDamage is error then return projectileDamage end if
-      for each projectileImpact in projectileState.impacts
-        if projectileImpact.kind=="player" and playerState.alive then
-          damage=playablePlayer.applyNormalDamage(playerState,projectileImpact.damage,current);if damage is error then return damage end if
+      for each enemyShot in enemyShots
+        if enemyShot.worldHit then shotEffects=shotEffects+[effects.weaponShot(current*8+enemyShot.attacker,"weapon_machinegun",enemyShot.start,enemyShot.endPoint,enemyShot.normal,true,current)]
+        else shotEffects=shotEffects+[effects.defaultShot(enemyShot.start,enemyShot.endPoint,current)] end if
+        if enemyShot.playerHit and playerState.alive then
+          damage=playablePlayer.applyNormalDamage(playerState,enemyShot.damage,current);if damage is error then return damage end if
           if not damage.ignored and damage.taken>0 then
-            combatView.takeDamage(combatState,current,damage.taken,projectileImpact.side)
+            combatView.takeDamage(combatState,current,damage.taken,enemyShot.side)
             if damage.killed then
               combatView.registerDeath(combatState)
               if deathSound!=void then ignored=try(audio.play(deathSound)) end if
             else if painSound!=void then ignored=try(audio.play(painSound)) end if
           end if
         end if
-        if projectileImpact.kind!="expired" and enemyImpactSound!=void then ignored=try(audio.play(enemyImpactSound)) end if
+        if enemyShot.worldHit and enemyImpactSound!=void then ignored=try(audio.play(enemyImpactSound)) end if
       end for
-      projectileEffects=projectileSnapshots(projectileEffects,projectileState,current)
       playerProjectileDamage=playerProjectiles.update(controller.motion.context,playerProjectileState,targetState,current);if playerProjectileDamage is error then return playerProjectileDamage end if
       for each playerImpact in playerProjectileState.impacts
         for each dealt in playerImpact.damages
@@ -880,7 +880,7 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fog
           if selectedImpactSound!=void then ignored=try(audio.play(selectedImpactSound)) end if
         end if
       end for
-      projectileEffects=projectileEffects+playerProjectileSnapshots(projectileEffects,playerProjectileState,current)
+      projectileEffects=playerProjectileSnapshots(projectileEffects,playerProjectileState,current)
       trailCount=projectileFx.update(projectileFxState,projectileEffects,current);if trailCount is error then return trailCount end if
       markCount=playableMarks.update(markState,projectileEffects,shotEffects,current);if markCount is error then return markCount end if
       itemState.stats.health=playerState.health;itemState.stats.armor=playerState.armor
@@ -957,7 +957,6 @@ function runLimited(map,maxFrames,sound,archive)
   targetState=playableTargets.load(map,playerState.spawnIndex);if targetState is error then return targetState end if
   enemyState=enemyAi.state(targetState,0);if enemyState is error then return enemyState end if
   eventState=enemyEvents.state(targetState,0);if eventState is error then return eventState end if
-  projectileState=enemyProjectiles.createAabb(0);if projectileState is error then return projectileState end if
   playerProjectileState=playerProjectiles.create(0);if playerProjectileState is error then return playerProjectileState end if
   projectileFxState=projectileFx.create()
   markState=playableMarks.create()
@@ -1075,8 +1074,8 @@ function runLimited(map,maxFrames,sound,archive)
   weaponSoundCatalog=void
   if archive!=void then loadedWeaponSounds=try(weaponSounds.load(archive));if not (loadedWeaponSounds is error) then weaponSoundCatalog=loadedWeaponSounds end if end if
   fireSound=archiveSound(archive,"sound/weapons/machinegun/machgf1b.wav")
-  enemyFireSound=archiveSound(archive,"sound/weapons/plasma/hyprbf1a.wav")
-  enemyImpactSound=archiveSound(archive,"sound/weapons/plasma/plasmx1a.wav")
+  enemyFireSound=archiveSound(archive,"sound/weapons/machinegun/machgf1b.wav")
+  enemyImpactSound=archiveSound(archive,"sound/weapons/machinegun/ric1.wav")
   pickupSound=archiveSound(archive,"sound/misc/w_pkup.wav")
   jumpSound=archiveSound(archive,"sound/player/sarge/jump1.wav")
   painSound=archiveSound(archive,"sound/player/sarge/pain100_1.wav")
@@ -1195,7 +1194,7 @@ function runLimited(map,maxFrames,sound,archive)
   explosionTextureCount=0;if explosionCatalog!=void then explosionTextureCount=explosionCatalog.textureCount end if;print "Retail explosion textures: "+str(explosionTextureCount)
   lightGridPoints=0;if lightGrid.valid then lightGridPoints=lightGrid.bounds[0]*lightGrid.bounds[1]*lightGrid.bounds[2] end if;print "BSP light-grid points: "+str(lightGridPoints)
   viewmodelTracker=viewmodel.tracker();viewmodelSettings=viewmodel.softwareRendererSettings();viewmodelAnimation=viewmodel.weaponAnimation(weaponState.classname);barrelState=weaponBarrel.state()
-  result=try(frameLoop(camera,geometry,triangles,worldBatchState,catalog,fogCatalog,dlightCatalog,markCatalog,markState,explosionCatalog,worldCache,worldConfig,preparedWorld.selection.faceIndexes,materialSlots,skyTextureFlags,dlightReceiveFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound))
+  result=try(frameLoop(camera,geometry,triangles,worldBatchState,catalog,fogCatalog,dlightCatalog,markCatalog,markState,explosionCatalog,worldCache,worldConfig,preparedWorld.selection.faceIndexes,materialSlots,skyTextureFlags,dlightReceiveFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound))
   for index=0 to lightmapCount-1 window.releaseTexture(index) end for
   if catalog!=void then playableWorldBatch.releaseMaterials(catalog) end if
   if modelAssets!=void then for each texture in modelAssets.textures window.releaseTexture(texture.slot) end for end if
@@ -1215,7 +1214,7 @@ function runLimited(map,maxFrames,sound,archive)
   if not (audioReady is error) then audio.shutdown() end if
   if result is error then return result end if
   print "Preview frames: "+str(result)
-  print "Enemy projectiles spawned: "+str(projectileState.nextId)
+  print "Enemy weapon: Machinegun hitscan"
   print "Player projectiles spawned: "+str(playerProjectileState.nextProjectileId)
   return 0
 end function
