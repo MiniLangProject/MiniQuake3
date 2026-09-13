@@ -39,7 +39,7 @@ end function
 function draw(batch,projection) if batch==void or batch.commands==void then return fail("missing batch") end if;return window.submitWorldTriangleBatch(batch.commands,projection) end function
 
 function materialFor(catalog,textureIndex) if catalog==void then return void end if;for each material in catalog.materials if material.textureIndex==textureIndex then return material end if end for;return void end function
-function dynamicStage(stage) return stage.bspLightmap or stage.clampTexture or len(stage.slots)>1 or len(stage.uvMods)>0 or stage.blend!=materials.BLEND_OPAQUE or stage.alphaTest!=materials.ALPHA_TEST_NONE or stage.tcGen=="environment" or (stage.rgbGen!="identity" and stage.rgbGen!="identitylighting") or stage.alphaGen!="identity" end function
+function dynamicStage(stage) return stage.bspLightmap or stage.clampTexture or not stage.depthWrite or stage.depthEqual or len(stage.slots)>1 or len(stage.uvMods)>0 or stage.blend!=materials.BLEND_OPAQUE or stage.alphaTest!=materials.ALPHA_TEST_NONE or stage.tcGen=="environment" or (stage.rgbGen!="identity" and stage.rgbGen!="identitylighting") or stage.alphaGen!="identity" end function
 function dynamicMaterialStage(material,stage) return len(material.deforms)>0 or dynamicStage(stage) end function
 function materialUsesBspLightmap(material) for each stage in material.stages if stage.bspLightmap then return true end if end for;return false end function
 function contains(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
@@ -125,10 +125,10 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
   end for
   passes=[];animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;stretchCount=0;environmentCount=0;filterCount=0;destinationAlphaCount=0;clampedCount=0;deformedCount=0;emitted=base.count
   for each material in sortedMaterials(catalog.materials)
-    primaryWrites=false;if len(material.stages)>0 then primaryWrites=material.stages[0].blend==materials.BLEND_OPAQUE end if
+    primaryWrites=false;if len(material.stages)>0 then primaryWrites=material.stages[0].depthWrite end if
     for stageIndex=0 to len(material.stages)-1
       stage=material.stages[stageIndex];if not dynamicMaterialStage(material,stage) then continue end if
-      pass=buildStagePass(renderData,material,stage,stageIndex==0 and not materialUsesBspLightmap(material),stageIndex>0 and primaryWrites,skyTextureFlags);if pass is error then return pass end if
+      pass=buildStagePass(renderData,material,stage,stageIndex==0 and not materialUsesBspLightmap(material),stage.depthEqual or (stageIndex>0 and primaryWrites),skyTextureFlags);if pass is error then return pass end if
       if pass!=void then
         passes=passes+[pass];emitted=emitted+pass.commands.count
         if len(stage.slots)>1 then animated=animated+1 end if;if len(stage.uvMods)>0 then modified=modified+1 end if;if stage.blend!=materials.BLEND_OPAQUE then blended=blended+1 end if
@@ -194,7 +194,7 @@ function drawMaterials(batch,projection,nowMilliseconds)
   drawn=0;multitexture.setState(multitexture.BLEND_OPAQUE,false,true);multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);multitexture.setTextureClamp(false)
   if batch.base.count>0 then value=window.submitWorldTriangleBatch(batch.base,projection);if value is error then return value end if;drawn=drawn+value end if
   for each pass in batch.passes
-    updatePassView(pass,projection.position,nowMilliseconds);depthWrite=pass.primary and pass.stage.blend==materials.BLEND_OPAQUE;multitexture.setState(pass.stage.blend,pass.depthEqual,depthWrite);multitexture.setAlphaTest(pass.stage.alphaTest);multitexture.setTextureClamp(pass.stage.clampTexture)
+    updatePassView(pass,projection.position,nowMilliseconds);multitexture.setState(pass.stage.blend,pass.depthEqual,pass.stage.depthWrite);multitexture.setAlphaTest(pass.stage.alphaTest);multitexture.setTextureClamp(pass.stage.clampTexture)
     value=window.submitWorldTriangleBatch(pass.commands,projection);if value is error then return value end if;drawn=drawn+value
   end for
   multitexture.setState(multitexture.BLEND_OPAQUE,false,true);multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);multitexture.setTextureClamp(false);return drawn

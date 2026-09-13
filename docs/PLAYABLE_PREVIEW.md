@@ -139,6 +139,10 @@ probe finds seven animated passes, 13 UV-modified passes, 38 blended passes and 
 wave-deformed passes. The 55 retained q3dm1 passes are stably ordered by Quake's
 explicit shader `sort` value or its opaque, decal, see-through and blended
 fallback inference; q3dm1 contributes 84 opaque and three later-sorted materials.
+Every retained stage now carries its own parsed depth-write flag and explicit
+`depthFunc equal` state into the native rasterizer. q3dm1 contains 84
+depth-writing stages and one explicit equal-depth stage; later passes use equal
+depth only when the material's first stage actually wrote the surface depth.
 Retained stages evaluate `rgbGen vertex`, `exactVertex`,
 `oneMinusVertex`, `const` and `wave`, plus the corresponding `alphaGen` modes.
 The native batch transports an independent RGBA value for every triangle vertex
@@ -172,11 +176,11 @@ Validation:
   near-plane-polygon contracts.
 - `python scripts/test_bsp_preview.py`: 34 BSP geometry contracts.
 - `python scripts/test_bsp_render_data.py`: 56 triangle/lightmap/patch contracts.
-- `python scripts/test_playable_materials.py`: 53 BSP/shader/image/generator and
-  explicit/inferred shader-sort contracts.
+- `python scripts/test_playable_materials.py`: 54 BSP/shader/image/generator,
+  shader-sort and retained depth-state contracts.
 - `playable_triangle_batch_contracts.exe`: 15 record-layout, default-colour and
   independent per-vertex RGBA contracts.
-- `python scripts/test_playable_world_batch.py`: 39 retained-command, material-stage,
+- `python scripts/test_playable_world_batch.py`: 41 retained-command, material-stage,
   sky-filtering and one-call submission contracts; the native lifecycle also
   compares framebuffer pixels and depth bit-for-bit with the scalar path.
 - `python scripts/test_playable_movement.py`: 27 gravity/jump/slide/idle contracts.

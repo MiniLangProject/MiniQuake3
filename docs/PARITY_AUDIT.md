@@ -61,7 +61,9 @@ pro Frame aus. Lightmapped BSP-Flächen werden nur noch mit der originalen
 Lightmap moduliert; unlightmapped Flächen behalten ihre getrennten RGB-Vertexfarben.
 Explizite und aus Blend-/Depth-Write-/PolygonOffset-Zuständen abgeleitete
 Shader-Sortwerte ordnen die World-Passes stabil wie in Baseq3. Die Abnahme
-umfasst 53 Material-, 15 Batch-Layout- und 39 World-Batch-Verträge sowie einen
+Geparste `depthWrite`- und `depthFunc equal`-Zustände werden pro Stage bis an den
+nativen Rasterzustand weitergegeben. Die Abnahme umfasst 54 Material-, 15
+Batch-Layout- und 41 World-Batch-Verträge sowie einen
 nativen Pixelvergleich unter `/W4 /WX`.
 
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
