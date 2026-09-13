@@ -561,6 +561,19 @@ function targetMuzzleLights(camera,renderTargets,modelAssets,itemCatalog,eventSt
   return result
 end function
 
+function enemyAttackMuzzles(camera,targetState,modelAssets,itemCatalog,enemyState)
+  result=array(len(targetState.targets),void);if modelAssets==void or itemCatalog==void then return result end if
+  lower=playerAnimation.sampleAnimation(modelAssets.animation,enemyEvents.LEGS_IDLE,0);if lower is error then return lower end if
+  upper=playerAnimation.sampleAnimation(modelAssets.animation,enemyEvents.TORSO_ATTACK,0);if upper is error then return upper end if
+  for each attack in enemyState.events
+    if attack.attacker<0 or attack.attacker>=len(targetState.targets) then return error(749,"enemy muzzle attacker outside targets") end if
+    gun=targetWeaponTransform(modelAssets,lower,upper,targetTransform(targetState.targets[attack.attacker],camera));if gun is error then return gun end if
+    muzzle=muzzleFlash.muzzleTransform(itemCatalog,"weapon_machinegun",gun);if muzzle is error then return muzzle end if
+    if muzzle!=void then result[attack.attacker]=muzzle.origin end if
+  end for
+  return result
+end function
+
 function renderTargetModels(camera,projection,renderTargets,modelAssets,itemCatalog,eventState,enemyState,now,lightGrid)
   if modelAssets==void or eventState==void then return void end if
   reset=playerCache.beginFrame(modelAssets.cache);if reset is error then return reset end if
@@ -785,7 +798,8 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fog
         end if
         attacks=enemyAi.step(controller.motion.context,enemyState,targetState,camera.position,current,elapsed);if attacks is error then return attacks end if
         collided=collideEnemyPositions(controller.motion.context,targetState,previousTargets);if collided is error then return collided end if
-        spawned=enemyProjectiles.spawnAttacks(projectileState,enemyState,targetState,camera.position,current);if spawned is error then return spawned end if
+        enemyMuzzles=enemyAttackMuzzles(camera,targetState,modelAssets,itemCatalog,enemyState);if enemyMuzzles is error then return enemyMuzzles end if
+        spawned=enemyProjectiles.spawnAttacksFromMuzzles(projectileState,enemyState,targetState,camera.position,enemyMuzzles,current);if spawned is error then return spawned end if
         if len(spawned)>0 and enemyFireSound!=void then ignored=try(audio.play(enemyFireSound)) end if
         attackDown=window.keyDown(window.VK_LBUTTON)
         if attackDown and weaponState.classname=="weapon_gauntlet" then attackDown=gauntletHasTarget(weaponState,camera,targetState);if attackDown is error then return attackDown end if end if

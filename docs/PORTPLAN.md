@@ -721,7 +721,9 @@ Animationsmischung, QVM-Entities und die Matchschleife folgen. Gegnerbewegung
 wird inzwischen mit Spielerhülle, Wall-Slide, 18-Unit-Step und Bodenbindung
 gegen das BSP aufgelöst. Angriffe erzeugen 420 Units/s schnelle Plasma-Projektile
 mit BSP-/Spielertreffer, einmaligem Schaden, Trail, Glow, Einschlag und originalen
-Sounds. Bewegung, Projektilsimulation und Darstellung bestehen weitere 22, 25
+Sounds. Die Projektilquelle folgt dabei dem animierten `tag_flash` der echten
+Gegnerwaffe und stimmt mit Mündungsmodell und dynamischem Licht überein.
+Bewegung, Projektilsimulation und Darstellung bestehen weitere 22, 27
 und 35 Verträge sowie eine q3dm1-Kollisionsprobe.
 
 Der äußere [Client-Frame](CLIENT_MAIN_FRAME.md) ist ebenfalls vorhanden:

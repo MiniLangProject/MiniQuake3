@@ -55,8 +55,9 @@ end function
 
 // Consume one AI event batch once. Repeating this call at the same timestamp is
 // idempotent, which prevents duplicate shots if rendering samples a frame twice.
-function spawnAttacks(state,ai,targetState,playerPosition,now)
+function spawnAttacksFromMuzzles(state,ai,targetState,playerPosition,muzzleOrigins,now)
   if state==void or ai==void or targetState==void or not validVector(playerPosition) then return fail("state, AI, targets and player position are required") end if
+  if muzzleOrigins!=void and len(muzzleOrigins)!=len(targetState.targets) then return fail("muzzle and target counts differ") end if
   if now<state.lastTime then return fail("spawn time moved backwards") end if
   if now==state.lastSpawnTime then return [] end if
   spawned=[]
@@ -66,11 +67,19 @@ function spawnAttacks(state,ai,targetState,playerPosition,now)
     target=targetState.targets[event.attacker]
     if target.alive then
       muzzle=[target.origin[0],target.origin[1],target.origin[2]+20.0]
+      if muzzleOrigins!=void and muzzleOrigins[event.attacker]!=void then
+        if not validVector(muzzleOrigins[event.attacker]) then return fail("projectile muzzle is invalid") end if
+        muzzle=muzzleOrigins[event.attacker]
+      end if
       spawned=spawned+[spawnOne(state,event.attacker,muzzle,playerPosition,event.damage,event.side,now)]
     end if
   end for
   state.lastSpawnTime=now
   return spawned
+end function
+
+function spawnAttacks(state,ai,targetState,playerPosition,now)
+  return spawnAttacksFromMuzzles(state,ai,targetState,playerPosition,void,now)
 end function
 
 // Slab intersection against player-local bounds expanded by projectile radius.

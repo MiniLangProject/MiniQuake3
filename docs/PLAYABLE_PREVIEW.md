@@ -119,7 +119,10 @@ Enemy movement is resolved through a player-sized BSP hull with wall sliding,
 plasma projectiles. Each flight is traced against the BSP and the player bounds;
 walls win exact collision ties and therefore shield the player. Trails, glows,
 retail impact marks and original plasma fire/impact sounds expose the complete
-path. The first-person view switches to the current original textured weapon MD3.
+path. A shot starts at the animated retail Machinegun's transformed `tag_flash`,
+the same point used by its flash geometry and dynamic light; the chest-height
+origin remains a fallback when retail model data is unavailable. The
+first-person view switches to the current original textured weapon MD3.
 Its bob, landing motion and idle drift follow `CG_CalculateWeaponPosition`; the
 visible model is attached through the complete animated `tag_weapon` transform
 loaded from the retail tag-only `_hand.md3`. Viewmodel polygons crossing the
@@ -317,7 +320,7 @@ Validation:
   one-shot animation contracts.
 - `python scripts/test_playable_enemy_movement.py`: 22 collision/step/ground
   contracts plus a retail q3dm1 probe.
-- `python scripts/test_playable_enemy_projectiles.py`: 25 spawn, flight, BSP,
+- `python scripts/test_playable_enemy_projectiles.py`: 27 spawn, retail-muzzle, flight, BSP,
   player-hit and lifetime contracts.
 - `python scripts/test_playable_player_projectiles.py`: 32 Rocket, Plasma,
   Grenade and BFG flight, grenade bounce/settling, BSP/target, direct/splash

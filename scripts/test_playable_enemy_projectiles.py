@@ -20,7 +20,7 @@ def main():
         ROOT / "build",
         log=output / "contracts.log",
     ).strip()
-    expected = "PASS: 25 playable enemy-projectile contracts"
+    expected = "PASS: 27 playable enemy-projectile contracts"
     if value != expected:
         raise RuntimeError(value)
     files = [
@@ -29,8 +29,8 @@ def main():
     ]
     report = {
         "passed": True,
-        "contracts": 25,
-        "scope": "Deterministic multi-projectile spawning from enemy AI attacks, timed flight, BSP point traces, player AABB/sphere sweeps, one-shot damage, trails and impacts.",
+        "contracts": 27,
+        "scope": "Deterministic multi-projectile spawning from enemy AI attacks and supplied retail muzzle origins, timed flight, BSP point traces, player AABB/sphere sweeps, one-shot damage, trails and impacts.",
         "sources": {
             str(path.relative_to(ROOT)).replace("\\", "/"): sha(path)
             for path in files

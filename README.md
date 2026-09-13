@@ -129,7 +129,10 @@ it; indexed MD3 surfaces transform each shared
 vertex once while preserving per-frame pickup bobbing and rotation.
 Enemy movement uses a player-sized BSP collision hull with wall slide, steps and ground
 binding. Attacks launch traced plasma projectiles with trails, glows, impacts,
-world occlusion and original fire/impact sounds. See
+world occlusion and original fire/impact sounds. Their origin now comes from
+the animated retail Machinegun's `tag_flash`, shared with its muzzle model and
+dynamic light, with the former chest-height point retained only as an asset
+fallback. See
 [`docs/PLAYABLE_PREVIEW.md`](docs/PLAYABLE_PREVIEW.md).
 
 Ein vorhandener eingefrorener Compiler liegt unter `artifacts/toolchain/`.

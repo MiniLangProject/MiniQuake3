@@ -86,11 +86,18 @@ function attachTransform(parent,attachment)
   return itemModels.transform(origin,multiplyAxis(attachment.axis,parent.axis),parent.scale)
 end function
 
-function dynamicLight(catalog,weaponClass,gunTransform,lastFire,now,triggerHeld)
-  def=definition(weaponClass);if def==void or not visible(def,lastFire,now,triggerHeld) or catalog==void or gunTransform==void then return void end if
+// Resolve the weapon's retail tag_flash independently of flash visibility so
+// projectile simulation and rendering can share the exact muzzle origin.
+function muzzleTransform(catalog,weaponClass,gunTransform)
+  if catalog==void or gunTransform==void then return void end if
   gun=itemModels.find(catalog,weaponClass);if gun==void then return void end if
   flashTag=tag(gun.model,"tag_flash");if flashTag==void then return void end if
-  placed=attachTransform(gunTransform,flashTag);if placed is error then return placed end if
+  return attachTransform(gunTransform,flashTag)
+end function
+
+function dynamicLight(catalog,weaponClass,gunTransform,lastFire,now,triggerHeld)
+  def=definition(weaponClass);if def==void or not visible(def,lastFire,now,triggerHeld) or catalog==void or gunTransform==void then return void end if
+  placed=muzzleTransform(catalog,weaponClass,gunTransform);if placed is error then return placed end if;if placed==void then return void end if
   return dynamicLights.Light(placed.origin,lightRadius(now),lightColor(def),false)
 end function
 
@@ -98,10 +105,8 @@ function render(catalog,weaponClass,gunTransform,lastFire,now,triggerHeld,maxTri
   if maxTriangles<0 then return fail("negative triangle budget") end if
   def=definition(weaponClass);if def==void or not visible(def,lastFire,now,triggerHeld) then return Rendered([],255,255,255) end if
   if catalog==void then return Rendered([],def.red,def.green,def.blue) end if
-  gun=itemModels.find(catalog,weaponClass);flash=itemModels.find(catalog,def.flashClass)
-  if gun==void or flash==void then return Rendered([],def.red,def.green,def.blue) end if
-  flashTag=tag(gun.model,"tag_flash");if flashTag==void then return Rendered([],def.red,def.green,def.blue) end if
-  placed=attachTransform(gunTransform,flashTag);if placed is error then return placed end if
+  flash=itemModels.find(catalog,def.flashClass);if flash==void then return Rendered([],def.red,def.green,def.blue) end if
+  placed=muzzleTransform(catalog,weaponClass,gunTransform);if placed is error then return placed end if;if placed==void then return Rendered([],def.red,def.green,def.blue) end if
   triangles=itemModels.renderAsset(flash,placed,maxTriangles);if triangles is error then return triangles end if
   return Rendered(triangles,def.red,def.green,def.blue)
 end function

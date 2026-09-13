@@ -60,9 +60,14 @@ function main(args)
   shots.updateWithTrace(fakeTrace,TraceContext([1.0],0),deterministicA,[999.0,999.0,999.0],37)
   shots.updateWithTrace(fakeTrace,TraceContext([1.0],0),deterministicB,[999.0,999.0,999.0],37)
   count=count+require(deterministicA.projectiles[0].origin==deterministicB.projectiles[0].origin and deterministicA.trails[0].endPoint==deterministicB.trails[0].endPoint,"same inputs produce identical flight")
+  tagged=shots.createAabb(0);taggedAi=enemy.state(combat,0);taggedAi.events=[enemy.Event(7,1,1)]
+  taggedMuzzles=[[-1.0,-1.0,-1.0],[123.0,45.0,67.0]]
+  taggedSpawn=shots.spawnAttacksFromMuzzles(tagged,taggedAi,combat,[0.0,0.0,20.0],taggedMuzzles,0)
+  count=count+require(len(taggedSpawn)==1 and taggedSpawn[0].origin==taggedMuzzles[1],"retail tag muzzle overrides chest fallback")
   count=count+require(try(shots.create(-1,1.0,1,0.0,shots.PLAYER_AABB,[0.0,0.0,0.0],[1.0,1.0,1.0],1.0)) is error,"invalid creation rejected")
   count=count+require(try(shots.create(0,1.0,1,0.0,99,[0.0,0.0,0.0],[1.0,1.0,1.0],1.0)) is error,"unknown shape rejected")
   count=count+require(try(shots.spawnAttacks(state,ai,combat,[0.0,0.0],500)) is error,"invalid aim rejected")
+  count=count+require(try(shots.spawnAttacksFromMuzzles(tagged,taggedAi,combat,[0.0,0.0,20.0],[[0.0,0.0,0.0]],1)) is error,"muzzle count mismatch rejected")
   count=count+require(try(shots.updateWithTrace(fakeTrace,TraceContext([],0),state,[0.0,0.0,0.0],50)) is error,"backwards update rejected")
   print("PASS: "+str(count)+" playable enemy-projectile contracts");return 0
 end function
