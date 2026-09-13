@@ -29,6 +29,7 @@ RASTER_EXPORTS = (
     "playable_window_set_polygon_offset",
     "playable_window_draw_triangle_batch",
     "playable_window_draw_world_triangle_batch",
+    "playable_window_draw_world_triangle_batch_viewport",
     "playable_window_jpeg_info",
     "playable_window_decode_jpeg",
 )

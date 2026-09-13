@@ -24,6 +24,7 @@ extern function triangleNative(textureSlot as i32,x0 as double,y0 as double,dept
 extern function triangleColoredNative(textureSlot as i32,x0 as double,y0 as double,depth0 as double,u0 as double,v0 as double,x1 as double,y1 as double,depth1 as double,u1 as double,v1 as double,x2 as double,y2 as double,depth2 as double,u2 as double,v2 as double,red0 as i32,green0 as i32,blue0 as i32,alpha0 as i32,red1 as i32,green1 as i32,blue1 as i32,alpha1 as i32,red2 as i32,green2 as i32,blue2 as i32,alpha2 as i32,red as i32,green as i32,blue as i32) from "playable_window.dll" symbol "playable_window_draw_triangle_colored" returns void
 extern function triangleBatchNative(records as ptr,byteCount as i32,triangleCount as i32) from "playable_window.dll" symbol "playable_window_draw_triangle_batch" returns i32
 extern function worldTriangleBatchNative(records as ptr,byteCount as i32,triangleCount as i32,positionX as double,positionY as double,positionZ as double,rightX as double,rightY as double,rightZ as double,upX as double,upY as double,upZ as double,forwardX as double,forwardY as double,forwardZ as double,halfWidth as double,halfHeight as double,focal as double,nearDistance as double) from "playable_window.dll" symbol "playable_window_draw_world_triangle_batch" returns i32
+extern function worldTriangleBatchViewportNative(records as ptr,byteCount as i32,triangleCount as i32,viewportX as i32,viewportY as i32,viewportWidth as i32,viewportHeight as i32,positionX as double,positionY as double,positionZ as double,rightX as double,rightY as double,rightZ as double,upX as double,upY as double,upZ as double,forwardX as double,forwardY as double,forwardZ as double,focal as double,nearDistance as double) from "playable_window.dll" symbol "playable_window_draw_world_triangle_batch_viewport" returns i32
 
 const VK_ESCAPE=27
 const VK_LBUTTON=1
@@ -51,6 +52,7 @@ const TRIANGLE_BATCH_RECORD_BYTES=128
 const TRIANGLE_BATCH_MAX_COUNT=65536
 
 struct TriangleBatch data capacity count end struct
+struct Viewport x y width height end struct
 
 function open(width,height)
   if width<160 or height<120 then return error(7480,"preview window is too small") end if
@@ -141,5 +143,17 @@ function submitWorldTriangleBatch(batch,projection)
   if projection==void or projection.position==void or projection.right==void or projection.up==void or projection.forward==void then return error(7488,"invalid world triangle projection") end if
   rendered=worldTriangleBatchNative(nativeBytesPtr(batch.data),batch.count*TRIANGLE_BATCH_RECORD_BYTES,batch.count,projection.position[0],projection.position[1],projection.position[2],projection.right[0],projection.right[1],projection.right[2],projection.up[0],projection.up[1],projection.up[2],projection.forward[0],projection.forward[1],projection.forward[2],projection.halfWidth,projection.halfHeight,projection.focal,projection.nearDistance)
   if rendered!=batch.count then return error(7488,"native world triangle batch was rejected") end if
+  return rendered
+end function
+function viewport(x,y,width,height)
+  if x<0 or y<0 or width<1 or height<1 then return error(7490,"invalid world triangle viewport") end if
+  return Viewport(x,y,width,height)
+end function
+function submitWorldTriangleBatchViewport(batch,projection,area)
+  if area==void or area.x<0 or area.y<0 or area.width<1 or area.height<1 then return error(7490,"invalid world triangle viewport") end if
+  if projection==void or projection.position==void or projection.right==void or projection.up==void or projection.forward==void then return error(7488,"invalid world triangle projection") end if
+  if batch.count==0 then return 0 end if
+  rendered=worldTriangleBatchViewportNative(nativeBytesPtr(batch.data),batch.count*TRIANGLE_BATCH_RECORD_BYTES,batch.count,area.x,area.y,area.width,area.height,projection.position[0],projection.position[1],projection.position[2],projection.right[0],projection.right[1],projection.right[2],projection.up[0],projection.up[1],projection.up[2],projection.forward[0],projection.forward[1],projection.forward[2],projection.focal,projection.nearDistance)
+  if rendered!=batch.count then return error(7488,"native viewport world triangle batch was rejected") end if
   return rendered
 end function

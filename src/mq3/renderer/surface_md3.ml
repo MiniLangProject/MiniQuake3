@@ -58,6 +58,14 @@ function decodeNormal(packed)
   lat=((bits>>8)&255)*4;lng=(bits&255)*4
   return [numeric.fmul(tableValue(lat+256),tableValue(lng)),numeric.fmul(tableValue(lat),tableValue(lng)),tableValue(lng+256)]
 end function
+function normalTable()
+  result=array(FUNCTABLE_SIZE,0.0);for index=0 to FUNCTABLE_SIZE-1 result[index]=tableValue(index) end for;return result
+end function
+function decodeNormalCached(packed,table)
+  if table==void or len(table)!=FUNCTABLE_SIZE then return decodeNormal(packed) end if
+  bits=packed&0xffff;lat=((bits>>8)&255)*4;lng=(bits&255)*4
+  return [numeric.fmul(table[(lat+256)&FUNCTABLE_MASK],table[lng&FUNCTABLE_MASK]),numeric.fmul(table[lat&FUNCTABLE_MASK],table[lng&FUNCTABLE_MASK]),table[(lng+256)&FUNCTABLE_MASK]]
+end function
 
 function normalizeFast(value)
   inverse=qmath.Q_rsqrt(qmath.DotProduct(value,value))
@@ -66,18 +74,17 @@ end function
 
 // LerpMeshVertexes selects the new frame directly when backlerp is zero. With
 // interpolation it blends decoded normals and applies Quake's Q_rsqrt pass.
-function lerpVertexes(value,frame,oldFrame,backlerp)
-  valid=validate(value);if valid is error then return valid end if
+function lerpVertexesCached(value,frame,oldFrame,backlerp,table)
   if frame<0 or frame>=value.numFrames or oldFrame<0 or oldFrame>=value.numFrames then return error(7359,"MD3 frame index out of range") end if
   backlerp=numeric.f32(backlerp)
   if backlerp<0.0 or backlerp>1.0 then return error(7360,"MD3 backlerp outside zero to one") end if
-  xyz=[];normals=[]
+  xyz=array(value.numVerts,void);normals=array(value.numVerts,void)
   newScale=numeric.fmul(MD3_XYZ_SCALE,numeric.fsub(1.0,backlerp))
   if backlerp==0.0 then
     for i=0 to value.numVerts-1
       current=value.frames[frame][i]
-      xyz=xyz+[[numeric.fmul(current.xyz[0],newScale),numeric.fmul(current.xyz[1],newScale),numeric.fmul(current.xyz[2],newScale)]]
-      normals=normals+[decodeNormal(current.packedNormal)]
+      xyz[i]=[numeric.fmul(current.xyz[0],newScale),numeric.fmul(current.xyz[1],newScale),numeric.fmul(current.xyz[2],newScale)]
+      normals[i]=decodeNormalCached(current.packedNormal,table)
     end for
     return [xyz,normals]
   end if
@@ -85,15 +92,20 @@ function lerpVertexes(value,frame,oldFrame,backlerp)
   oldNormalScale=backlerp;newNormalScale=numeric.fsub(1.0,backlerp)
   for i=0 to value.numVerts-1
     fresh=value.frames[frame][i];old=value.frames[oldFrame][i]
-    xyz=xyz+[[
+    xyz[i]=[
       numeric.fadd(numeric.fmul(old.xyz[0],oldScale),numeric.fmul(fresh.xyz[0],newScale)),
       numeric.fadd(numeric.fmul(old.xyz[1],oldScale),numeric.fmul(fresh.xyz[1],newScale)),
-      numeric.fadd(numeric.fmul(old.xyz[2],oldScale),numeric.fmul(fresh.xyz[2],newScale))]]
-    a=decodeNormal(old.packedNormal);b=decodeNormal(fresh.packedNormal)
+      numeric.fadd(numeric.fmul(old.xyz[2],oldScale),numeric.fmul(fresh.xyz[2],newScale))]
+    a=decodeNormalCached(old.packedNormal,table);b=decodeNormalCached(fresh.packedNormal,table)
     blended=[numeric.fadd(numeric.fmul(a[0],oldNormalScale),numeric.fmul(b[0],newNormalScale)),numeric.fadd(numeric.fmul(a[1],oldNormalScale),numeric.fmul(b[1],newNormalScale)),numeric.fadd(numeric.fmul(a[2],oldNormalScale),numeric.fmul(b[2],newNormalScale))]
-    normals=normals+[normalizeFast(blended)]
+    normals[i]=normalizeFast(blended)
   end for
   return [xyz,normals]
+end function
+function lerpVertexesTrusted(value,frame,oldFrame,backlerp) return lerpVertexesCached(value,frame,oldFrame,backlerp,void) end function
+function lerpVertexes(value,frame,oldFrame,backlerp)
+  valid=validate(value);if valid is error then return valid end if
+  return lerpVertexesTrusted(value,frame,oldFrame,backlerp)
 end function
 
 // RB_CHECKOVERFLOW ends the current tessellation before this surface when the

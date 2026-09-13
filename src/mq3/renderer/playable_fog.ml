@@ -130,8 +130,10 @@ function update(batch,catalog,viewOrigin,forward)
   return batch.commands.count
 end function
 
-function draw(batch,catalog,projection)
+function drawTarget(batch,catalog,projection,area)
   if batch==void or batch.commands.count==0 then return 0 end if
   if catalog==void or catalog.textureSlot<0 then return fail("fog texture is unavailable") end if
-  update(batch,catalog,projection.position,projection.forward);multitexture.setState(multitexture.BLEND_ALPHA,true,false);multitexture.setTextureClamp(true);result=window.submitWorldTriangleBatch(batch.commands,projection);multitexture.setTextureClamp(false);multitexture.setState(multitexture.BLEND_OPAQUE,false,true);return result
+  result=0;update(batch,catalog,projection.position,projection.forward);multitexture.setState(multitexture.BLEND_ALPHA,true,false);multitexture.setTextureClamp(true);if area==void then result=window.submitWorldTriangleBatch(batch.commands,projection) else result=window.submitWorldTriangleBatchViewport(batch.commands,projection,area) end if;multitexture.setTextureClamp(false);multitexture.setState(multitexture.BLEND_OPAQUE,false,true);return result
 end function
+function draw(batch,catalog,projection) return drawTarget(batch,catalog,projection,void) end function
+function drawViewport(batch,catalog,projection,area) return drawTarget(batch,catalog,projection,area) end function

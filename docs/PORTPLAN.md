@@ -192,14 +192,23 @@ Add-ons, Konfigurationen und Player-Verzeichnisse; das aktive Original-Hauptmen�
 liefert 207 zusätzliche 2D-Befehle. Die gemeinsame
 QVM-libc-Grenze enthält Speicher-, Trigonometrie-, Matrix- und Vektorhelfer. Der
 Pfad ist über `--qvm-match` und `scripts/test_retail_qvm_match.py`
-reproduzierbar. `--play-qvm` wählt den größten QVM-View, übernimmt Kamera und FOV
-aus dessen `refdef_t` und zeichnet BSP sowie QVM-Mehrpassbatch gemeinsam in das
-native Fenster; ein Ein-Frame-Retail-Smoke prüft Upload und Draw-Aufrufe. Noch
-offen sind der fortlaufende QVM-Input-/Framezyklus, die beiden kleineren
-Modell-Viewports, die 2D-Queue, Mixerwiedergabe der
-Soundaktionen, `MarkFragments`, vollständige
-Font-/Cinematic-/Parser-Traps für alternative UIs und die Ausgabe dieser Queues
-im interaktiven Fenster.
+reproduzierbar. `--play-qvm` führt inzwischen einen fortlaufenden 20-Hz-QVM-
+Spielzyklus aus. WASD, Maus, Sprung und Angriff werden als Original-`usercmd_t`
+an qagame übergeben; bei langsamen Bildern holt die Simulation feste Ticks nach.
+Alle drei `refdef_t`-Ansichten werden mit ihren eigenen skalierten Viewports,
+Kameras, FOVs und Scissor-Grenzen gezeichnet. Der native 1280x720-Pfad verbindet
+PVS-/Frustum-ausgewählte BSP-Geometrie, Lightmaps, QVM-MD3/Polygone,
+Skin-/Shader-Mehrpässe, dynamische Lichter und BSP-Lichtgitterbeleuchtung. Die
+QVM-2D-Queue liefert das echte cgame-HUD; 28 Verträge und eine Retail-Probe mit
+36 cgame- sowie 174 UI-Quads prüfen Auflösung, NoMip-Regeln und 420 native
+Dreiecke. 123 registrierte QVM-Sounds werden aus `pak0.pk3` aufgelöst und als
+räumlicher 16-Bit-Stereo-Stream wiedergegeben; 31 Mixer-/Kommandoregeln und ein
+echter qagame/cgame-Lauf sind grün. Acht weitere Verträge sowie native Rastertests
+decken die Viewportgrenzen ab. Normalentabellen, feste Ausgabearrays,
+Materialbindungen und Weltflächenauswahl reduzieren die gemessenen laufenden
+Kosten deutlich. Offen bleiben `MarkFragments`, vollständige Font-,
+Cinematic- und Parser-Traps für alternative UIs, RoQ-Wiedergabe und weitere
+Performancearbeit bis zu einer flüssigen Bildrate.
 
 ## 5. BSP-Kollision und gemeinsame Spielphysik exakt übertragen
 
@@ -791,7 +800,9 @@ werden zusätzlich unabhängig vom GPU-Bild verglichen. Voraussetzungen: 5–7.
 Der erste [Audiokern](AUDIO.md) überträgt 24.8-Mixwerte exakt in Mono-/Stereo-
 DMA-Ringpuffer mit 8/16 Bit. Sieben direkte C-Datensätze und 20 Verträge sind
 grün. Das Kanalpainting aus 16-Bit-Quellen ergänzt sieben direkte C-Datensätze
-und 32 Verträge; Streaming und das Windows-Audiogerät folgen.
+und 32 Verträge. Der interaktive Original-QVM-Pfad löst Soundhandles in Retail-
+WAVs auf, mischt räumliche Stimmen, Loops und Musik und streamt sie gepuffert an
+WinMM. Die vollständige DMA-/Raw-Streaming-Integration und RoQ-Audio bleiben offen.
 
 **Quellen:** `code/botlib/`, `code/game/ai_*.c`, `code/q3_ui/`,
 `code/client/snd_*.c`, `code/client/cl_cin.c` und die Eingabe-/Soundteile der Plattformschicht.

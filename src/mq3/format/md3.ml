@@ -141,21 +141,23 @@ function load(data)
 end function
 
 // Produces renderer-neutral animated triangles for the playable preview.
-function renderTriangles(model,surfaceIndex,frame,oldFrame,backlerp,maxTriangles)
+function renderTrianglesCached(model,surfaceIndex,frame,oldFrame,backlerp,maxTriangles,normalTable)
   if model==void or surfaceIndex<0 or surfaceIndex>=len(model.surfaces) then return fail("surface index outside model") end if
   if maxTriangles<0 then return fail("negative triangle limit") end if
   if maxTriangles==0 then return [] end if
   surface=model.surfaces[surfaceIndex];if surface.mesh.numTriangles==0 then return [] end if
-  lerped=md3Mesh.lerpVertexes(surface.mesh,frame,oldFrame,backlerp);if lerped is error then return lerped end if
-  result=[];limit=surface.mesh.numTriangles;if limit>maxTriangles then limit=maxTriangles end if
+  lerped=md3Mesh.lerpVertexesCached(surface.mesh,frame,oldFrame,backlerp,normalTable);if lerped is error then return lerped end if
+  limit=surface.mesh.numTriangles;if limit>maxTriangles then limit=maxTriangles end if
+  result=array(limit,void)
   if limit==0 then return result end if
   shaderName="";if len(surface.shaders)>0 then shaderName=surface.shaders[0] end if
   for triangleIndex=0 to limit-1
-    positions=[];coords=[];normals=[]
+    positions=array(3,void);coords=array(3,void);normals=array(3,void)
     for corner=0 to 2
-      index=surface.mesh.triangles[triangleIndex*3+corner];positions=positions+[lerped[0][index]];coords=coords+[surface.mesh.texCoords[index]];normals=normals+[lerped[1][index]]
+      index=surface.mesh.triangles[triangleIndex*3+corner];positions[corner]=lerped[0][index];coords[corner]=surface.mesh.texCoords[index];normals[corner]=lerped[1][index]
     end for
-    result=result+[RenderTriangle(positions,coords,normals,surfaceIndex,shaderName)]
+    result[triangleIndex]=RenderTriangle(positions,coords,normals,surfaceIndex,shaderName)
   end for
   return result
 end function
+function renderTriangles(model,surfaceIndex,frame,oldFrame,backlerp,maxTriangles) return renderTrianglesCached(model,surfaceIndex,frame,oldFrame,backlerp,maxTriangles,void) end function

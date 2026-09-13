@@ -55,6 +55,8 @@ static int rasterClampTexture;
 static int rasterPolygonOffset;
 static double rasterDepthRangeScale = 1.0;
 static double rasterDepthRangeNear = 1.0;
+static __declspec(thread) int rasterClipMinimumX;
+static __declspec(thread) int rasterClipMaximumX = INT_MAX;
 static __declspec(thread) int rasterClipMinimumY;
 static __declspec(thread) int rasterClipMaximumY = INT_MAX;
 static __declspec(thread) int rasterVertexColorEnabled;
@@ -870,6 +872,8 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
     if (minimumY < 0) minimumY = 0;
     if (maximumX >= surfaceWidth) maximumX = surfaceWidth - 1;
     if (maximumY >= surfaceHeight) maximumY = surfaceHeight - 1;
+    if (minimumX < rasterClipMinimumX) minimumX = rasterClipMinimumX;
+    if (maximumX > rasterClipMaximumX) maximumX = rasterClipMaximumX;
     if (minimumY < rasterClipMinimumY) minimumY = rasterClipMinimumY;
     if (maximumY > rasterClipMaximumY) maximumY = rasterClipMaximumY;
     if (minimumX > maximumX || minimumY > maximumY) return;
@@ -1102,6 +1106,8 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
     if (minimumY < 0) minimumY = 0;
     if (maximumX >= surfaceWidth) maximumX = surfaceWidth - 1;
     if (maximumY >= surfaceHeight) maximumY = surfaceHeight - 1;
+    if (minimumX < rasterClipMinimumX) minimumX = rasterClipMinimumX;
+    if (maximumX > rasterClipMaximumX) maximumX = rasterClipMaximumX;
     if (minimumY < rasterClipMinimumY) minimumY = rasterClipMinimumY;
     if (maximumY > rasterClipMaximumY) maximumY = rasterClipMaximumY;
     if (minimumX > maximumX || minimumY > maximumY) return;
@@ -1451,6 +1457,45 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *
     }
     rasterVertexColorEnabled = 0;
     return triangleCount;
+}
+
+/* Render one refdef_t into its own window rectangle.  The projection center
+ * follows glViewport placement and the raster clip emulates glScissor, so a
+ * small model or menu view cannot draw outside its assigned rectangle. */
+PLAYABLE_API int playable_window_draw_world_triangle_batch_viewport(const unsigned char *records,
+        int byteCount, int triangleCount,
+        int viewportX, int viewportY, int viewportWidth, int viewportHeight,
+        double positionX, double positionY, double positionZ,
+        double rightX, double rightY, double rightZ,
+        double upX, double upY, double upZ,
+        double forwardX, double forwardY, double forwardZ,
+        double focal, double nearDistance) {
+    int previousMinimumX = rasterClipMinimumX;
+    int previousMaximumX = rasterClipMaximumX;
+    int previousMinimumY = rasterClipMinimumY;
+    int previousMaximumY = rasterClipMaximumY;
+    int result;
+    if (viewportX < 0 || viewportY < 0 || viewportWidth < 1 || viewportHeight < 1 ||
+            viewportWidth > surfaceWidth || viewportHeight > surfaceHeight ||
+            viewportX > surfaceWidth - viewportWidth ||
+            viewportY > surfaceHeight - viewportHeight) return 0;
+    rasterClipMinimumX = viewportX;
+    rasterClipMaximumX = viewportX + viewportWidth - 1;
+    rasterClipMinimumY = viewportY;
+    rasterClipMaximumY = viewportY + viewportHeight - 1;
+    result = playable_window_draw_world_triangle_batch(records, byteCount, triangleCount,
+        positionX, positionY, positionZ,
+        rightX, rightY, rightZ,
+        upX, upY, upZ,
+        forwardX, forwardY, forwardZ,
+        (double)viewportX + (double)viewportWidth * 0.5,
+        (double)viewportY + (double)viewportHeight * 0.5,
+        focal, nearDistance);
+    rasterClipMinimumX = previousMinimumX;
+    rasterClipMaximumX = previousMaximumX;
+    rasterClipMinimumY = previousMinimumY;
+    rasterClipMaximumY = previousMaximumY;
+    return result;
 }
 
 typedef HRESULT (WINAPI *playableCoInitializeExFn)(LPVOID, DWORD);

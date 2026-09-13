@@ -117,6 +117,47 @@ int main(void) {
             halfWidth, halfHeight, focal, 1.0) != 256) return 5;
     if (memcmp(expectedPixels, pixels, sizeof(expectedPixels)) != 0 ||
             memcmp(expectedDepth, depthPixels, sizeof(expectedDepth)) != 0) return 6;
+
+    /* A refdef viewport shifts the projection center and scissors both axes.
+     * This deliberately oversized triangle must touch pixels only inside the
+     * 16x12 rectangle at (40,20). */
+    command.baseTextureSlot = -1;
+    command.lightmapTextureSlot = -1;
+    command.fallbackRed = 255;
+    command.fallbackGreen = 255;
+    command.fallbackBlue = 255;
+    command.vertex[0][0] = 10.0f; command.vertex[0][1] = -30.0f; command.vertex[0][2] = -30.0f;
+    command.vertex[1][0] = 10.0f; command.vertex[1][1] = 30.0f; command.vertex[1][2] = -30.0f;
+    command.vertex[2][0] = 10.0f; command.vertex[2][1] = 0.0f; command.vertex[2][2] = 30.0f;
+    command.vertex[0][7] = 1.0f; command.vertex[1][7] = 1.0f; command.vertex[2][7] = 1.0f;
+    playable_window_begin_frame(7, 10, 16);
+    if (playable_window_draw_world_triangle_batch_viewport((const unsigned char *)&command,
+            (int)sizeof(command), 1, 40, 20, 16, 12,
+            0.0, 0.0, 0.0,
+            0.0, 1.0, 0.0,
+            0.0, 0.0, 1.0,
+            1.0, 0.0, 0.0,
+            8.0, 1.0) != 1) return 9;
+    if (pixels[26 * 128 + 48] != UINT32_C(0xffffffff)) {
+        fprintf(stderr, "viewport center pixel: actual=%08x\n", pixels[26 * 128 + 48]);
+        return 10;
+    }
+    if (pixels[26 * 128 + 39] != UINT32_C(0xff070a10) ||
+            pixels[26 * 128 + 56] != UINT32_C(0xff070a10) ||
+            pixels[19 * 128 + 48] != UINT32_C(0xff070a10) ||
+            pixels[32 * 128 + 48] != UINT32_C(0xff070a10)) {
+        fprintf(stderr, "viewport outside pixels: %08x %08x %08x %08x\n",
+            pixels[26 * 128 + 39], pixels[26 * 128 + 56],
+            pixels[19 * 128 + 48], pixels[32 * 128 + 48]);
+        return 11;
+    }
+    if (playable_window_draw_world_triangle_batch_viewport((const unsigned char *)&command,
+            (int)sizeof(command), 1, 120, 120, 16, 12,
+            0.0, 0.0, 0.0,
+            0.0, 1.0, 0.0,
+            0.0, 0.0, 1.0,
+            1.0, 0.0, 0.0,
+            8.0, 1.0) != 0) return 12;
     playable_window_shutdown();
     puts("playable world batch native parity: PASS");
     return 0;

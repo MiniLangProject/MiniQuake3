@@ -170,12 +170,20 @@ sound actions. This path uses only QVM-created gameplay entities;
 the five deterministic opponents remain confined to the older graphical preview
 until its window backend consumes the new scene queue directly.
 
-`--play-qvm` opens the first direct native presentation of this path. It selects
-the largest cgame view, uses the original `refdef_t` camera and FOV, renders the
-BSP and the fully textured QVM MD3/poly batch into one depth buffer, and reports
-smoothed FPS in the window title. Escape closes it. This is currently a static
-frame inspection entry: QVM-driven input/frame refresh, the two smaller model
-viewports, 2D commands and sound-queue playback remain the next integration work.
+`--play-qvm` now runs this path continuously at the original 20 Hz game tick.
+WASD, mouse look, Space and the left mouse button become original `usercmd_t`
+records for the unchanged qagame QVM; slow render frames catch up simulation
+ticks instead of slowing the match clock. All three cgame `refdef_t` submissions
+retain their own camera, FOV, viewport and scissor rectangle. The world view uses
+BSP PVS/frustum selection and lightmaps, while MD3 entities use interpolated
+frames, skin-resolved multi-pass materials, dynamic lights and BSP light-grid
+vertex lighting. The cgame 2D stream draws the original textured HUD after 3D.
+Its registered start, local, entity, listener, loop and music sound commands are
+resolved to retail WAV files, spatially mixed into 16-bit stereo PCM and fed to
+the queued WinMM output. The native window matches the advertised 1280x720
+glconfig, reports smoothed FPS in its title and closes with Escape. The retail
+smoke validates a complete dynamic frame with three views, thousands of textured
+QVM triangles, HUD quads and more than 120 decoded sounds.
 
 Ein vorhandener eingefrorener Compiler liegt unter `artifacts/toolchain/`.
 `inventory.py` nur ausführen, wenn dieser Stand bewusst neu festgelegt werden soll.

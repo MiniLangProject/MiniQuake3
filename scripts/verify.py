@@ -51,6 +51,9 @@ def main():
     scripts.append(("test_vm_syscall_ui_media.py",[]))
     scripts.append(("test_scene_queue.py",[]))
     scripts.append(("test_qvm_scene_geometry.py",[]))
+    scripts.append(("test_qvm_viewport.py",[]))
+    scripts.append(("test_qvm_2d_batch.py",[]))
+    scripts.append(("test_qvm_audio.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_draw_surfs.py",[]))
     scripts.append(("test_audio_mixer_transfer.py",[]))
     scripts.append(("test_audio_channel_paint.py",[]))
@@ -107,6 +110,7 @@ def main():
     scripts.append(("playable_ambient_build_test.py",[]))
     if args.data_root:
         scripts.append(("test_retail_qvm_match.py",["--data-root",str(args.data_root)]))
+        scripts.append(("test_qvm_2d_retail.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")]))
         scripts.append(("test_qvm_preview.py",["--data-root",str(args.data_root)]))
         scripts.append(("test_maps.py",[str(args.data_root)]))
         scripts.append(("test_runtime_trace.py",[str(args.data_root)]))

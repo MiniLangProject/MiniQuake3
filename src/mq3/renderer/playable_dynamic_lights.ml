@@ -57,12 +57,14 @@ function update(batch,catalog,light)
   return batch.commands.count
 end function
 
-function draw(batch,catalog,lights,projection)
+function drawTarget(batch,catalog,lights,projection,area)
   if batch==void or catalog==void or lights==void then return fail("dynamic-light draw inputs are required") end if
-  drawn=0;multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);multitexture.setPolygonOffset(false);multitexture.setTextureClamp(true)
+  drawn=0;value=0;multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);multitexture.setPolygonOffset(false);multitexture.setTextureClamp(true)
   for each light in lights
     count=update(batch,catalog,light);if count is error then return count end if
-    if count>0 then blend=multitexture.BLEND_DYNAMIC_LIGHT;if light.additive then blend=multitexture.BLEND_ADD end if;multitexture.setState(blend,true,false);value=window.submitWorldTriangleBatch(batch.commands,projection);if value is error then return value end if;drawn=drawn+value end if
+    if count>0 then blend=multitexture.BLEND_DYNAMIC_LIGHT;if light.additive then blend=multitexture.BLEND_ADD end if;multitexture.setState(blend,true,false);if area==void then value=window.submitWorldTriangleBatch(batch.commands,projection) else value=window.submitWorldTriangleBatchViewport(batch.commands,projection,area) end if;if value is error then return value end if;drawn=drawn+value end if
   end for
   multitexture.setTextureClamp(false);multitexture.setState(multitexture.BLEND_OPAQUE,false,true);return drawn
 end function
+function draw(batch,catalog,lights,projection) return drawTarget(batch,catalog,lights,projection,void) end function
+function drawViewport(batch,catalog,lights,projection,area) return drawTarget(batch,catalog,lights,projection,area) end function

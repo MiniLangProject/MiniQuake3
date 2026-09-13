@@ -112,24 +112,24 @@ function createVertexCache(sourceIndexes)
 end function
 function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
   count=countStageTriangles(renderData,material.textureIndex,flags);if count<1 then return void end if
-  commands=window.createTriangleBatch(count);sourceUvs=[];sourceDeformUvs=[];sourcePositions=[];sourceIndexes=[];sourceNormals=[];sourceLights=[];sourceColors=[]
+  commands=window.createTriangleBatch(count);sourceUvs=array(count,void);sourceDeformUvs=array(count,void);sourcePositions=array(count,void);sourceIndexes=array(count,void);sourceNormals=array(count,void);sourceLights=array(count,void);sourceColors=array(count,void);outputIndex=0
   for each triangle in renderData.triangles
     if triangle.textureIndex==material.textureIndex and not isSky(triangle,flags) then
       if stage.bspLightmap then
         va=triangle.vertices[0];vb=triangle.vertices[1];vc=triangle.vertices[2]
         commands=window.appendSingleTextureTriangle(commands,resolvedLightmapSlot(triangle),worldPoint(va.position),va.lightmapUV,vertexLight(va),worldPoint(vb.position),vb.lightmapUV,vertexLight(vb),worldPoint(vc.position),vc.lightmapUV,vertexLight(vc),va.color[0],va.color[1],va.color[2])
-        sourceUvs=sourceUvs+[[va.lightmapUV,vb.lightmapUV,vc.lightmapUV]]
+        sourceUvs[outputIndex]=[va.lightmapUV,vb.lightmapUV,vc.lightmapUV]
       else
         commands=appendResolved(commands,triangle,stage.slots[0],primary)
-        sourceUvs=sourceUvs+[[triangle.vertices[0].baseUV,triangle.vertices[1].baseUV,triangle.vertices[2].baseUV]]
+        sourceUvs[outputIndex]=[triangle.vertices[0].baseUV,triangle.vertices[1].baseUV,triangle.vertices[2].baseUV]
       end if
       if commands is error then return commands end if
-      sourcePositions=sourcePositions+[[triangle.vertices[0].position,triangle.vertices[1].position,triangle.vertices[2].position]]
-      sourceIndexes=sourceIndexes+[[triangle.vertices[0].sourceIndex,triangle.vertices[1].sourceIndex,triangle.vertices[2].sourceIndex]]
-      sourceDeformUvs=sourceDeformUvs+[[triangle.vertices[0].baseUV,triangle.vertices[1].baseUV,triangle.vertices[2].baseUV]]
-      sourceNormals=sourceNormals+[[triangle.vertices[0].normal,triangle.vertices[1].normal,triangle.vertices[2].normal]]
-      sourceLights=sourceLights+[[vertexLight(triangle.vertices[0]),vertexLight(triangle.vertices[1]),vertexLight(triangle.vertices[2])]]
-      sourceColors=sourceColors+[[triangle.vertices[0].color,triangle.vertices[1].color,triangle.vertices[2].color]]
+      sourcePositions[outputIndex]=[triangle.vertices[0].position,triangle.vertices[1].position,triangle.vertices[2].position]
+      sourceIndexes[outputIndex]=[triangle.vertices[0].sourceIndex,triangle.vertices[1].sourceIndex,triangle.vertices[2].sourceIndex]
+      sourceDeformUvs[outputIndex]=[triangle.vertices[0].baseUV,triangle.vertices[1].baseUV,triangle.vertices[2].baseUV]
+      sourceNormals[outputIndex]=[triangle.vertices[0].normal,triangle.vertices[1].normal,triangle.vertices[2].normal]
+      sourceLights[outputIndex]=[vertexLight(triangle.vertices[0]),vertexLight(triangle.vertices[1]),vertexLight(triangle.vertices[2])]
+      sourceColors[outputIndex]=[triangle.vertices[0].color,triangle.vertices[1].color,triangle.vertices[2].color];outputIndex=outputIndex+1
     end if
   end for
   normalNoise=void;if (stage.tcGen=="environment" or stage.alphaGen=="lightingspecular") and hasDeform(material.deforms,"normal") then normalNoise=rendererNoise.create() end if
@@ -332,18 +332,21 @@ function updatePassAxes(pass,viewOrigin,leftDir,upDir,nowMilliseconds)
 end function
 function updatePassView(pass,viewOrigin,nowMilliseconds) return updatePassAxes(pass,viewOrigin,[0.0,1.0,0.0],[0.0,0.0,1.0],nowMilliseconds) end function
 function updatePass(pass,nowMilliseconds) return updatePassView(pass,[0.0,0.0,0.0],nowMilliseconds) end function
-function drawMaterialsLit(batch,projection,nowMilliseconds,lights)
+function drawMaterialsLitTarget(batch,projection,nowMilliseconds,lights,area)
   if batch==void or batch.base==void or batch.passes==void or nowMilliseconds<0 then return fail("invalid material draw") end if
-  drawn=0;multitexture.setState(multitexture.BLEND_OPAQUE,false,true);multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);multitexture.setTextureClamp(false);multitexture.setPolygonOffset(false)
-  if batch.base.count>0 then value=window.submitWorldTriangleBatch(batch.base,projection);if value is error then return value end if;drawn=drawn+value end if
+  drawn=0;value=0;multitexture.setState(multitexture.BLEND_OPAQUE,false,true);multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);multitexture.setTextureClamp(false);multitexture.setPolygonOffset(false)
+  if batch.base.count>0 then if area==void then value=window.submitWorldTriangleBatch(batch.base,projection) else value=window.submitWorldTriangleBatchViewport(batch.base,projection,area) end if;if value is error then return value end if;drawn=drawn+value end if
   lightsDrawn=false
   for each pass in batch.passes
-    if not lightsDrawn and pass.sort>3.0 then if batch.dlightBatch!=void and lights!=void and len(lights)>0 then value=dynamicLights.draw(batch.dlightBatch,batch.dlightCatalog,lights,projection);if value is error then return value end if;drawn=drawn+value end if;lightsDrawn=true end if
+    if not lightsDrawn and pass.sort>3.0 then if batch.dlightBatch!=void and lights!=void and len(lights)>0 then if area==void then value=dynamicLights.draw(batch.dlightBatch,batch.dlightCatalog,lights,projection) else value=dynamicLights.drawViewport(batch.dlightBatch,batch.dlightCatalog,lights,projection,area) end if;if value is error then return value end if;drawn=drawn+value end if;lightsDrawn=true end if
     updatePassAxes(pass,projection.position,[0.0-projection.right[0],0.0-projection.right[1],0.0-projection.right[2]],projection.up,nowMilliseconds);multitexture.setState(pass.stage.blend,pass.depthEqual,pass.stage.depthWrite);multitexture.setAlphaTest(pass.stage.alphaTest);multitexture.setTextureClamp(pass.stage.clampTexture);multitexture.setPolygonOffset(pass.polygonOffset)
-    value=window.submitWorldTriangleBatch(pass.commands,projection);if value is error then return value end if;drawn=drawn+value
+    if area==void then value=window.submitWorldTriangleBatch(pass.commands,projection) else value=window.submitWorldTriangleBatchViewport(pass.commands,projection,area) end if;if value is error then return value end if;drawn=drawn+value
   end for
-  if not lightsDrawn and batch.dlightBatch!=void and lights!=void and len(lights)>0 then value=dynamicLights.draw(batch.dlightBatch,batch.dlightCatalog,lights,projection);if value is error then return value end if;drawn=drawn+value end if
-  if batch.fogBatch!=void then value=playableFog.draw(batch.fogBatch,batch.fogCatalog,projection);if value is error then return value end if;drawn=drawn+value end if
+  if not lightsDrawn and batch.dlightBatch!=void and lights!=void and len(lights)>0 then if area==void then value=dynamicLights.draw(batch.dlightBatch,batch.dlightCatalog,lights,projection) else value=dynamicLights.drawViewport(batch.dlightBatch,batch.dlightCatalog,lights,projection,area) end if;if value is error then return value end if;drawn=drawn+value end if
+  if batch.fogBatch!=void then if area==void then value=playableFog.draw(batch.fogBatch,batch.fogCatalog,projection) else value=playableFog.drawViewport(batch.fogBatch,batch.fogCatalog,projection,area) end if;if value is error then return value end if;drawn=drawn+value end if
   multitexture.setState(multitexture.BLEND_OPAQUE,false,true);multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);multitexture.setTextureClamp(false);multitexture.setPolygonOffset(false);return drawn
 end function
-function drawMaterials(batch,projection,nowMilliseconds) return drawMaterialsLit(batch,projection,nowMilliseconds,[]) end function
+function drawMaterialsLit(batch,projection,nowMilliseconds,lights) return drawMaterialsLitTarget(batch,projection,nowMilliseconds,lights,void) end function
+function drawMaterials(batch,projection,nowMilliseconds) return drawMaterialsLitTarget(batch,projection,nowMilliseconds,[],void) end function
+function drawMaterialsLitViewport(batch,projection,nowMilliseconds,lights,area) return drawMaterialsLitTarget(batch,projection,nowMilliseconds,lights,area) end function
+function drawMaterialsViewport(batch,projection,nowMilliseconds,area) return drawMaterialsLitTarget(batch,projection,nowMilliseconds,[],area) end function

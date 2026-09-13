@@ -13,11 +13,11 @@ function convertedVertex(triangle,corner,sourceIndex)
 end function
 function convert(catalog)
   if catalog==void or catalog.triangles==void then return fail("material catalog is required") end if
-  triangles=[];triangleIndex=0
+  triangles=array(len(catalog.triangles),void);triangleIndex=0
   for each resolved in catalog.triangles
     source=resolved.triangle;base=triangleIndex*3
     vertices=[convertedVertex(source,0,base),convertedVertex(source,1,base+1),convertedVertex(source,2,base+2)]
-    triangles=triangles+[renderData.RenderTriangle(vertices,resolved.materialIndex,-1,-1,-1,triangleIndex)];triangleIndex=triangleIndex+1
+    triangles[triangleIndex]=renderData.RenderTriangle(vertices,resolved.materialIndex,-1,-1,-1,triangleIndex);triangleIndex=triangleIndex+1
   end for
   return renderData.RenderData(triangles,0,len(triangles),0,false,0)
 end function
@@ -31,4 +31,8 @@ function release(catalog) return worldBatch.releaseMaterials(catalog) end functi
 function draw(prepared,projection,nowMilliseconds)
   if prepared==void or prepared.batch==void then return fail("prepared batch is required") end if
   return worldBatch.drawMaterials(prepared.batch,projection,nowMilliseconds)
+end function
+function drawViewport(prepared,projection,area,nowMilliseconds)
+  if prepared==void or prepared.batch==void then return fail("prepared batch is required") end if
+  return worldBatch.drawMaterialsViewport(prepared.batch,projection,nowMilliseconds,area)
 end function
