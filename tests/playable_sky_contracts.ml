@@ -37,6 +37,6 @@ function main(args)
   catalog=sky.Catalog([firstLayer,secondLayer],4,2)
   batch=sky.buildBatch(catalog,camera,640,480,1000)
   count=count+require(batch.count==384 and batch.capacity==384,"two layers share one native batch")
-  count=count+require(len(batch.data)==384*116,"fixed batch allocation")
+  count=count+require(len(batch.data)==384*128,"fixed batch allocation")
   print("PASS: "+str(count)+" playable sky contracts");return 0
 end function

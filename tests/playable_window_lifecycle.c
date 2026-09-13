@@ -46,7 +46,7 @@ int main(void) {
     static const unsigned char invalidJpeg[4] = { 0xff, 0xd8, 0xff, 0xd9 };
     unsigned char jpegMetadata[8] = { 0 };
     unsigned char jpegPixel[4] = { 0 };
-    unsigned char batch[116] = { 0 };
+    unsigned char batch[128] = { 0 };
     int before = playable_window_milliseconds();
     /* Every API must be safe before create and after shutdown. */
     playable_window_poll();
@@ -83,22 +83,22 @@ int main(void) {
             playable_window_set_depth_range(0.3, 0.0) ||
             !playable_window_set_depth_range(0.3, 1.0) ||
             !playable_window_set_depth_range(1.0, 1.0)) return 12;
-    if (playable_window_draw_triangle_batch(0, 116, 1) ||
+    if (playable_window_draw_triangle_batch(0, 128, 1) ||
         playable_window_draw_triangle_batch(batch, 115, 1) ||
-        playable_window_draw_triangle_batch(batch, 116, -1) ||
-        playable_window_draw_triangle_batch(batch, 116, 65537) ||
+        playable_window_draw_triangle_batch(batch, 128, -1) ||
+        playable_window_draw_triangle_batch(batch, 128, 65537) ||
         playable_window_draw_triangle_batch(batch, 0, 0)) return 8;
-    if (playable_window_draw_triangle_batch(batch, 116, 1) != 1) return 9;
-    if (playable_window_draw_world_triangle_batch(0, 116, 1,
+    if (playable_window_draw_triangle_batch(batch, 128, 1) != 1) return 9;
+    if (playable_window_draw_world_triangle_batch(0, 128, 1,
             0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0,
             1.0, 0.0, 0.0, 160.0, 100.0, 160.0, 1.0) ||
         playable_window_draw_world_triangle_batch(batch, 115, 1,
             0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0,
             1.0, 0.0, 0.0, 160.0, 100.0, 160.0, 1.0) ||
-        playable_window_draw_world_triangle_batch(batch, 116, 1,
+        playable_window_draw_world_triangle_batch(batch, 128, 1,
             0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0,
             1.0, 0.0, 0.0, 160.0, 100.0, 160.0, 0.0)) return 11;
-    if (playable_window_draw_world_triangle_batch(batch, 116, 1,
+    if (playable_window_draw_world_triangle_batch(batch, 128, 1,
             0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0,
             1.0, 0.0, 0.0, 160.0, 100.0, 160.0, 1.0) != 1) return 12;
     if (playable_window_jpeg_info(invalidJpeg, 4, jpegMetadata) ||

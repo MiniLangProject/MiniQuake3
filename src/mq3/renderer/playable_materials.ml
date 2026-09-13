@@ -29,7 +29,7 @@ const ALPHA_TEST_GE128=3
 
 struct Image width height pixels end struct
 struct UvMod kind a b c d wave end struct
-struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest tcGen rgbGen rgbWave bspLightmap clampTexture end struct
+struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest tcGen rgbGen rgbWave alphaGen alphaWave constantColor bspLightmap clampTexture end struct
 struct Material textureIndex shaderName imageName image slot stages deforms twoSided end struct
 struct Catalog materials scripts attempted loaded textureCount animatedStageCount effectStageCount end struct
 
@@ -171,17 +171,17 @@ function loadRuntimeStage(archive,stage,nextSlot,endSlot)
     if loaded!=void then names=names+[loaded[0]];images=images+[loaded[1]];slots=slots+[nextSlot];nextSlot=nextSlot+1 end if
   end for
   if len(images)==0 then return void end if
-  return [RuntimeStage(names,images,slots,stage.animationSpeed,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),stageTcGen(stage),stage.rgbGen,stage.rgbWave,false,stageClamp(stage)),nextSlot]
+  return [RuntimeStage(names,images,slots,stage.animationSpeed,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),stageTcGen(stage),stage.rgbGen,stage.rgbWave,stage.alphaGen,stage.alphaWave,stage.constantColor,false,stageClamp(stage)),nextSlot]
 end function
 
 function lightmapRuntimeStage(stage)
-  return RuntimeStage([],[],[],0.0,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),"lightmap",stage.rgbGen,stage.rgbWave,true,false)
+  return RuntimeStage([],[],[],0.0,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),"lightmap",stage.rgbGen,stage.rgbWave,stage.alphaGen,stage.alphaWave,stage.constantColor,true,false)
 end function
 
 function directRuntimeStage(archive,name,nextSlot,endSlot)
   if nextSlot>=endSlot then return void end if
   loaded=loadImage(archive,name);if loaded==void then return void end if
-  return [RuntimeStage([loaded[0]],[loaded[1]],[nextSlot],0.0,[],BLEND_OPAQUE,ALPHA_TEST_NONE,"texture","identitylighting",shaderParser.blankWave(),false,false),nextSlot+1]
+  return [RuntimeStage([loaded[0]],[loaded[1]],[nextSlot],0.0,[],BLEND_OPAQUE,ALPHA_TEST_NONE,"texture","identitylighting",shaderParser.blankWave(),"identity",shaderParser.blankWave(),[255,255,255,255],false,false),nextSlot+1]
 end function
 
 function runtimeStages(archive,index,name,nextSlot,endSlot)
@@ -246,6 +246,24 @@ function stageLight(stage,vertexLight,nowMilliseconds)
   if stage.rgbGen=="identity" then return 1.0 end if
   if stage.rgbGen=="oneminusvertex" then return 1.0-vertexLight end if
   return vertexLight
+end function
+
+function colorByte(value)
+  if value<0.0 then return 0 end if;if value>255.0 then return 255 end if;return n.trunc32(value)
+end function
+function stageColor(stage,vertexColor,nowMilliseconds)
+  result=[255,255,255,255]
+  if stage.rgbGen=="vertex" or stage.rgbGen=="exactvertex" or stage.rgbGen=="lightingdiffuse" then result[0]=vertexColor[0];result[1]=vertexColor[1];result[2]=vertexColor[2]
+  else if stage.rgbGen=="oneminusvertex" then result[0]=255-vertexColor[0];result[1]=255-vertexColor[1];result[2]=255-vertexColor[2]
+  else if stage.rgbGen=="wave" then value=colorByte(255.0*waveValue(stage.rgbWave,nowMilliseconds));result[0]=value;result[1]=value;result[2]=value
+  else if stage.rgbGen=="const" then result[0]=colorByte(stage.constantColor[0]);result[1]=colorByte(stage.constantColor[1]);result[2]=colorByte(stage.constantColor[2])
+  end if
+  if stage.alphaGen=="vertex" then result[3]=vertexColor[3]
+  else if stage.alphaGen=="oneminusvertex" then result[3]=255-vertexColor[3]
+  else if stage.alphaGen=="wave" then result[3]=colorByte(255.0*waveValue(stage.alphaWave,nowMilliseconds))
+  else if stage.alphaGen=="const" then result[3]=colorByte(stage.constantColor[3])
+  end if
+  return result
 end function
 
 function turbulentOffset(coordinate,mod,nowMilliseconds)

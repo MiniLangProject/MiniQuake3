@@ -52,9 +52,11 @@ the BSP lightmap. Enter also plays an original WAV loaded from `pak0.pk3`;
 Escape returns to the menu and a second Escape quits. The moving `tim_hell`
 sky now uses both original q3dm1 retail layers. The retained world renderer now
 executes q3dm1's animated, scrolling, rotating, alpha and additive material
-passes. Retained effect passes also evaluate q3dm1's `rgbGen wave` intensity
-with the original 1,024-entry phase lookup and byte quantization. Other shader
-generators/deforms and the complete QVM match loop
+passes. Retained effect passes carry perspective-correct RGBA vertex colours
+into the native rasterizer and evaluate `rgbGen vertex`, `exactVertex`,
+`oneMinusVertex`, `const` and `wave` together with the corresponding `alphaGen`
+modes. Wave generators use the original 1,024-entry phase lookup and byte
+quantization. Remaining shader generators/deforms and the complete QVM match loop
 remain in work. The preview now loads
 18 item entities from q3dm1, simulates pickup/respawn, updates a Baseq3-style
 HUD from the original number, icon, portrait, crosshair and medal artwork, and fires

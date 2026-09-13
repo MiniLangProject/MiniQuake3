@@ -1,6 +1,6 @@
 # MiniQuake3: überprüfter Stand
 
-Stand: 2026-09-10. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist spielbar**.
+Stand: 2026-09-13. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon portierten MiniLang-Engine.
 
@@ -52,6 +52,13 @@ verwenden ebenfalls dieselben Karten und Eingaben: 55 Ausgaben bleiben identisch
 113 ändern sich durch die sechs neuen Klassen und die nun beobachteten
 Originaldiagnosen. Die verbleibenden Mover-Aufrufzahlen sind unverändert.
 Der Original-Checkout ist sauber und auf derselben festgeschriebenen Revision.
+
+Der spielbare Renderer transportiert inzwischen unabhängige RGBA-Farben je
+Dreiecksvertex bis in den nativen Batch und interpoliert sie perspektivisch
+korrekt. MiniLang wertet dafür `rgbGen vertex`, `exactVertex`,
+`oneMinusVertex`, `const` und `wave` sowie die entsprechenden `alphaGen`-Modi
+pro Frame aus. Die Abnahme umfasst 50 Material-, 15 Batch-Layout- und 37
+World-Batch-Verträge sowie einen nativen Pixelvergleich unter `/W4 /WX`.
 
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
 | --- | --- | --- |

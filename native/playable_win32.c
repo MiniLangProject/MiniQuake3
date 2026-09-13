@@ -49,9 +49,11 @@ static double rasterDepthRangeScale = 1.0;
 static double rasterDepthRangeNear = 1.0;
 static __declspec(thread) int rasterClipMinimumY;
 static __declspec(thread) int rasterClipMaximumY = INT_MAX;
+static __declspec(thread) int rasterVertexColorEnabled;
+static __declspec(thread) unsigned char rasterVertexColor[3][4];
 
 /* Compact little-endian command consumed by the batch entry point. */
-#define PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES 116
+#define PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES 128
 #define PLAYABLE_TRIANGLE_BATCH_MAX_COUNT 65536
 
 typedef struct playableTriangleBatchRecord_s {
@@ -61,9 +63,10 @@ typedef struct playableTriangleBatchRecord_s {
     int32_t fallbackGreen;
     int32_t fallbackBlue;
     float vertex[3][8]; /* x, y, depth, base uv, lightmap uv, light */
+    unsigned char vertexColor[3][4]; /* perspective-correct RGBA modulation */
 } playableTriangleBatchRecord;
 
-typedef char playableTriangleBatchRecordSizeMustBe116[
+typedef char playableTriangleBatchRecordSizeMustBe128[
     sizeof(playableTriangleBatchRecord) == PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES ? 1 : -1];
 
 static void ensureTimer(void) {
@@ -423,6 +426,37 @@ static uint32_t modulateColor(uint32_t color, double light) {
     return makeColor(red, green, blue) | (color & 0xff000000u);
 }
 
+static uint32_t modulateColorRgba(uint32_t color, double redFactor,
+        double greenFactor, double blueFactor, double alphaFactor) {
+    int red;
+    int green;
+    int blue;
+    int alpha;
+    if (redFactor < 0.0) redFactor = 0.0;if (redFactor > 1.0) redFactor = 1.0;
+    if (greenFactor < 0.0) greenFactor = 0.0;if (greenFactor > 1.0) greenFactor = 1.0;
+    if (blueFactor < 0.0) blueFactor = 0.0;if (blueFactor > 1.0) blueFactor = 1.0;
+    if (alphaFactor < 0.0) alphaFactor = 0.0;if (alphaFactor > 1.0) alphaFactor = 1.0;
+    red = (int)((double)((color >> 16) & 255u) * redFactor + 0.5);
+    green = (int)((double)((color >> 8) & 255u) * greenFactor + 0.5);
+    blue = (int)((double)(color & 255u) * blueFactor + 0.5);
+    alpha = (int)((double)(color >> 24) * alphaFactor + 0.5);
+    return ((uint32_t)alpha << 24) | ((uint32_t)red << 16) |
+        ((uint32_t)green << 8) | (uint32_t)blue;
+}
+
+static void useBatchVertexColor(const playableTriangleBatchRecord *command) {
+    int vertex;
+    int channel;
+    rasterVertexColorEnabled = 0;
+    for (vertex = 0; vertex < 3; ++vertex) {
+        for (channel = 0; channel < 4; ++channel) {
+            unsigned char value = command->vertexColor[vertex][channel];
+            rasterVertexColor[vertex][channel] = value;
+            if (value != 255u) rasterVertexColorEnabled = 1;
+        }
+    }
+}
+
 static uint32_t blendColor(uint32_t source, uint32_t destination) {
     uint32_t alpha = source >> 24;
     uint32_t destinationAlpha = destination >> 24;
@@ -705,6 +739,13 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
                 color = sampleTexture(texture, u, v);
             }
             if (!unitLight) color = modulateColor(color, light);
+            if (rasterVertexColorEnabled) {
+                double redFactor = (b0 * (double)rasterVertexColor[0][0] * inverseDepth0 + b1 * (double)rasterVertexColor[1][0] * inverseDepth1 + b2 * (double)rasterVertexColor[2][0] * inverseDepth2) * depth / 255.0;
+                double greenFactor = (b0 * (double)rasterVertexColor[0][1] * inverseDepth0 + b1 * (double)rasterVertexColor[1][1] * inverseDepth1 + b2 * (double)rasterVertexColor[2][1] * inverseDepth2) * depth / 255.0;
+                double blueFactor = (b0 * (double)rasterVertexColor[0][2] * inverseDepth0 + b1 * (double)rasterVertexColor[1][2] * inverseDepth1 + b2 * (double)rasterVertexColor[2][2] * inverseDepth2) * depth / 255.0;
+                double alphaFactor = (b0 * (double)rasterVertexColor[0][3] * inverseDepth0 + b1 * (double)rasterVertexColor[1][3] * inverseDepth1 + b2 * (double)rasterVertexColor[2][3] * inverseDepth2) * depth / 255.0;
+                color = modulateColorRgba(color, redFactor, greenFactor, blueFactor, alphaFactor);
+            }
             if (!alphaTestPasses(color) || (color >> 24) == 0u) continue;
             if (rasterBlendMode == 4) pixels[offset] = destinationAlphaColor(color, pixels[offset]);
             else if (rasterBlendMode == 3) pixels[offset] = filterColor(color, pixels[offset]);
@@ -919,6 +960,13 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
                 color = multiplyTextures(color, sampleTexture(lightmapTexture, u, v));
             }
             color = modulateColor(color, light);
+            if (rasterVertexColorEnabled) {
+                double redFactor = (b0 * (double)rasterVertexColor[0][0] * inverseDepth0 + b1 * (double)rasterVertexColor[1][0] * inverseDepth1 + b2 * (double)rasterVertexColor[2][0] * inverseDepth2) * depth / 255.0;
+                double greenFactor = (b0 * (double)rasterVertexColor[0][1] * inverseDepth0 + b1 * (double)rasterVertexColor[1][1] * inverseDepth1 + b2 * (double)rasterVertexColor[2][1] * inverseDepth2) * depth / 255.0;
+                double blueFactor = (b0 * (double)rasterVertexColor[0][2] * inverseDepth0 + b1 * (double)rasterVertexColor[1][2] * inverseDepth1 + b2 * (double)rasterVertexColor[2][2] * inverseDepth2) * depth / 255.0;
+                double alphaFactor = (b0 * (double)rasterVertexColor[0][3] * inverseDepth0 + b1 * (double)rasterVertexColor[1][3] * inverseDepth1 + b2 * (double)rasterVertexColor[2][3] * inverseDepth2) * depth / 255.0;
+                color = modulateColorRgba(color, redFactor, greenFactor, blueFactor, alphaFactor);
+            }
             if (!alphaTestPasses(color) || (color >> 24) == 0u) continue;
             if (rasterDepthEqual) {
                 double difference = comparisonDepth - (double)depthPixels[offset];
@@ -955,6 +1003,7 @@ PLAYABLE_API int playable_window_draw_triangle_batch(const unsigned char *record
         playableTriangleBatchRecord command;
         const unsigned char *source = records + (SIZE_T)index * PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
         memcpy(&command, source, sizeof(command));
+        useBatchVertexColor(&command);
         if (command.lightmapTextureSlot >= 0) {
             playable_window_draw_triangle_multitexture(
                 command.baseTextureSlot, command.lightmapTextureSlot,
@@ -970,6 +1019,7 @@ PLAYABLE_API int playable_window_draw_triangle_batch(const unsigned char *record
                 command.fallbackRed, command.fallbackGreen, command.fallbackBlue);
         }
     }
+    rasterVertexColorEnabled = 0;
     return triangleCount;
 }
 
@@ -1104,6 +1154,7 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *
             projected[vertex][2] = depth;
         }
         if (!visible) continue;
+        useBatchVertexColor(&command);
         if (command.lightmapTextureSlot >= 0) {
             playable_window_draw_triangle_multitexture(
                 command.baseTextureSlot, command.lightmapTextureSlot,
@@ -1119,6 +1170,7 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *
                 command.fallbackRed, command.fallbackGreen, command.fallbackBlue);
         }
     }
+    rasterVertexColorEnabled = 0;
     return triangleCount;
 }
 

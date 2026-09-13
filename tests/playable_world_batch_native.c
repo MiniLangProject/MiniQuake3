@@ -26,6 +26,7 @@ int main(void) {
     int vertex;
 
     ZeroMemory(&command, sizeof(command));
+    memset(command.vertexColor, 255, sizeof(command.vertexColor));
     command.baseTextureSlot = 0;
     command.lightmapTextureSlot = 1;
     command.fallbackRed = 255;
@@ -69,6 +70,24 @@ int main(void) {
             halfWidth, halfHeight, focal, 1.0) != 1) return 2;
     if (memcmp(expectedPixels, pixels, sizeof(expectedPixels)) != 0 ||
             memcmp(expectedDepth, depthPixels, sizeof(expectedDepth)) != 0) return 3;
+
+    memset(command.vertexColor, 128, sizeof(command.vertexColor));
+    playable_window_begin_frame(7, 10, 16);
+    if (playable_window_draw_world_triangle_batch((const unsigned char *)&command,
+            (int)sizeof(command), 1,
+            0.0, 0.0, 0.0,
+            0.0, 1.0, 0.0,
+            0.0, 0.0, 1.0,
+            1.0, 0.0, 0.0,
+            halfWidth, halfHeight, focal, 1.0) != 1) return 7;
+    if (pixels[32 * 128 + 32] != modulateColorRgba(expectedPixels[32 * 128 + 32],
+            128.0 / 255.0, 128.0 / 255.0, 128.0 / 255.0, 128.0 / 255.0)) {
+        fprintf(stderr, "vertex color pixel: actual=%08x expected=%08x base=%08x\n",
+            pixels[32 * 128 + 32], modulateColorRgba(expectedPixels[32 * 128 + 32],
+            128.0 / 255.0, 128.0 / 255.0, 128.0 / 255.0, 128.0 / 255.0), expectedPixels[32 * 128 + 32]);
+        return 8;
+    }
+    memset(command.vertexColor, 255, sizeof(command.vertexColor));
 
     for (vertex = 0; vertex < 256; ++vertex) {
         parallelCommands[vertex] = command;

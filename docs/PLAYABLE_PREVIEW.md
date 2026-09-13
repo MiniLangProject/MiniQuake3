@@ -24,8 +24,8 @@ Controls:
 
 The preview extracts bounded planar, triangle-soup and curved patch geometry from BSP46 and
 draws it through a native CPU rasterizer. It currently supports a depth buffer,
-screen clipping, perspective-correct UV and light interpolation, alpha, vertex
-colour and up to 64 uploaded 128x128 BSP lightmaps and 256 world-material texture slots within a 512-slot native registry. A bounded material resolver
+screen clipping, perspective-correct UV, light and per-vertex RGBA interpolation,
+alpha and up to 64 uploaded 128x128 BSP lightmaps and 256 world-material texture slots within a 512-slot native registry. A bounded material resolver
 reads all `scripts/*.shader` files, follows `map`, `clampMap` and up to eight
 `animMap` frames, resolves Quake's TGA/JPEG extension fallback, decodes both image formats,
 uses edge-clamped native sampling for `clampMap` while ordinary maps repeat,
@@ -133,9 +133,13 @@ whole visible surfaces. Materials declared with `cull disable` remain selectable
 side; q3dm1 contains seven such loaded materials. In the current smoke this selects 1,698 triangles
 from 321 surfaces across the full face-index range. The full-map q3dm1 material
 probe finds seven animated passes, 13 UV-modified passes, 38 blended passes and three
-wave-deformed passes. Eleven retained passes use `rgbGen wave`; each frame evaluates the original
-1,024-entry waveform phase and quantizes its grayscale intensity to the vertex
-color byte before rasterization. Other shader generators and deformation types, exact lower/upper animation-state
+wave-deformed passes. Retained stages evaluate `rgbGen vertex`, `exactVertex`,
+`oneMinusVertex`, `const` and `wave`, plus the corresponding `alphaGen` modes.
+The native batch transports an independent RGBA value for every triangle vertex
+and interpolates it perspective-correctly before blending and alpha testing.
+Eleven q3dm1 passes use `rgbGen wave`; their original 1,024-entry waveform phase
+is quantized to colour bytes before rasterization. Remaining shader generators
+and deformation types, exact lower/upper animation-state
 blending and the complete cgame/qagame match loop remain in work.
 This is a real local gameplay integration slice, rather than a complete Quake
 III match.
@@ -162,7 +166,9 @@ Validation:
   near-plane-polygon contracts.
 - `python scripts/test_bsp_preview.py`: 34 BSP geometry contracts.
 - `python scripts/test_bsp_render_data.py`: 56 triangle/lightmap/patch contracts.
-- `python scripts/test_playable_materials.py`: 46 BSP/shader/image/generator contracts.
+- `python scripts/test_playable_materials.py`: 50 BSP/shader/image/generator contracts.
+- `playable_triangle_batch_contracts.exe`: 15 record-layout, default-colour and
+  independent per-vertex RGBA contracts.
 - `python scripts/test_playable_world_batch.py`: 37 retained-command, material-stage,
   sky-filtering and one-call submission contracts; the native lifecycle also
   compares framebuffer pixels and depth bit-for-bit with the scalar path.

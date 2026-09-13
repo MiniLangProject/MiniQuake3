@@ -9,7 +9,7 @@ import mq3.compat.transcendental as trans
 
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
-struct StagePass commands sourceUvs sourcePositions sourceNormals sourceLights stage deforms primary depthEqual end struct
+struct StagePass commands sourceUvs sourcePositions sourceNormals sourceLights sourceColors stage deforms primary depthEqual end struct
 struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
@@ -38,7 +38,7 @@ end function
 function draw(batch,projection) if batch==void or batch.commands==void then return fail("missing batch") end if;return window.submitWorldTriangleBatch(batch.commands,projection) end function
 
 function materialFor(catalog,textureIndex) if catalog==void then return void end if;for each material in catalog.materials if material.textureIndex==textureIndex then return material end if end for;return void end function
-function dynamicStage(stage) return stage.bspLightmap or stage.clampTexture or len(stage.slots)>1 or len(stage.uvMods)>0 or stage.blend!=materials.BLEND_OPAQUE or stage.alphaTest!=materials.ALPHA_TEST_NONE or stage.tcGen=="environment" or stage.rgbGen=="wave" end function
+function dynamicStage(stage) return stage.bspLightmap or stage.clampTexture or len(stage.slots)>1 or len(stage.uvMods)>0 or stage.blend!=materials.BLEND_OPAQUE or stage.alphaTest!=materials.ALPHA_TEST_NONE or stage.tcGen=="environment" or (stage.rgbGen!="identity" and stage.rgbGen!="identitylighting") or stage.alphaGen!="identity" end function
 function dynamicMaterialStage(material,stage) return len(material.deforms)>0 or dynamicStage(stage) end function
 function materialUsesBspLightmap(material) for each stage in material.stages if stage.bspLightmap then return true end if end for;return false end function
 function contains(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
@@ -76,7 +76,7 @@ end function
 function countStageTriangles(renderData,textureIndex,flags) count=0;for each triangle in renderData.triangles if triangle.textureIndex==textureIndex and not isSky(triangle,flags) then count=count+1 end if end for;return count end function
 function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
   count=countStageTriangles(renderData,material.textureIndex,flags);if count<1 then return void end if
-  commands=window.createTriangleBatch(count);sourceUvs=[];sourcePositions=[];sourceNormals=[];sourceLights=[]
+  commands=window.createTriangleBatch(count);sourceUvs=[];sourcePositions=[];sourceNormals=[];sourceLights=[];sourceColors=[]
   for each triangle in renderData.triangles
     if triangle.textureIndex==material.textureIndex and not isSky(triangle,flags) then
       if stage.bspLightmap then
@@ -91,9 +91,10 @@ function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
       sourcePositions=sourcePositions+[[triangle.vertices[0].position,triangle.vertices[1].position,triangle.vertices[2].position]]
       sourceNormals=sourceNormals+[[triangle.vertices[0].normal,triangle.vertices[1].normal,triangle.vertices[2].normal]]
       sourceLights=sourceLights+[[vertexLight(triangle.vertices[0]),vertexLight(triangle.vertices[1]),vertexLight(triangle.vertices[2])]]
+      sourceColors=sourceColors+[[triangle.vertices[0].color,triangle.vertices[1].color,triangle.vertices[2].color]]
     end if
   end for
-  return StagePass(commands,sourceUvs,sourcePositions,sourceNormals,sourceLights,stage,material.deforms,primary,depthEqual)
+  return StagePass(commands,sourceUvs,sourcePositions,sourceNormals,sourceLights,sourceColors,stage,material.deforms,primary,depthEqual)
 end function
 
 // Static opaque primaries stay in the bit-identical base stream. Dynamic and
@@ -169,7 +170,7 @@ function updatePassView(pass,viewOrigin,nowMilliseconds)
       position=deformedPosition(pass.sourcePositions[triangleIndex][vertex],pass.sourceNormals[triangleIndex][vertex],pass.deforms,nowMilliseconds);positionOffset=offset+20+vertex*32;window.writeBatchF32(pass.commands.data,positionOffset,position[0]);window.writeBatchF32(pass.commands.data,positionOffset+4,position[1]);window.writeBatchF32(pass.commands.data,positionOffset+8,position[2])
       sourceUv=pass.sourceUvs[triangleIndex][vertex];if pass.stage.tcGen=="environment" then sourceUv=materials.environmentUV(position,pass.sourceNormals[triangleIndex][vertex],viewOrigin) end if
       uv=[0.0,0.0];if turbulent then uv=materials.transformUVAt(pass.stage,sourceUv,position,nowMilliseconds) else uv=applyAffine(transform,sourceUv) end if;uvOffset=offset+32+vertex*32;window.writeBatchF32(pass.commands.data,uvOffset,uv[0]);window.writeBatchF32(pass.commands.data,uvOffset+4,uv[1])
-      window.writeBatchF32(pass.commands.data,offset+48+vertex*32,materials.stageLight(pass.stage,pass.sourceLights[triangleIndex][vertex],nowMilliseconds))
+      window.writeBatchF32(pass.commands.data,offset+48+vertex*32,1.0);window.writeBatchColor(pass.commands.data,offset+116+vertex*4,materials.stageColor(pass.stage,pass.sourceColors[triangleIndex][vertex],nowMilliseconds))
     end for
   end for
   return slot
