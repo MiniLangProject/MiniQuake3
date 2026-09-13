@@ -145,6 +145,11 @@ function parseDeform(state)
     if width=="" or height=="" or speed=="" then return error(7147,"incomplete deformVertexes bulge") end if
     return Deform("bulge",0.0,blankWave(),[0.0,0.0,0.0],number(width),number(height),number(speed))
   end if
+  if kind=="normal" then
+    amplitude=parser.parseExt(state,false);frequency=parser.parseExt(state,false)
+    if amplitude=="" or frequency=="" then return error(7148,"incomplete deformVertexes normal") end if
+    return Deform("normal",0.0,Wave(1,0.0,number(amplitude),0.0,number(frequency)),[0.0,0.0,0.0],0.0,0.0,0.0)
+  end if
   restOfLine(state);return Deform(kind,0.0,blankWave(),[0.0,0.0,0.0],0.0,0.0,0.0)
 end function
 

@@ -18,6 +18,8 @@ function main(args)
   moving=shaders.parseText("{ deformVertexes move 1 -2 3 sawtooth 0 2 .25 .5 deformVertexes bulge 4 5 6 { map x } }","moving")
   count=count+require(len(moving.deforms)==2 and moving.deforms[0].kind=="move" and moving.deforms[0].vector==[1.0,-2.0,3.0] and moving.deforms[0].wave.func==4,"move deformation vector and waveform retained")
   count=count+require(moving.deforms[1].kind=="bulge" and moving.deforms[1].bulgeWidth==4.0 and moving.deforms[1].bulgeHeight==5.0 and moving.deforms[1].bulgeSpeed==6.0,"bulge deformation parameters retained")
+  normal=shaders.parseText("{ deformVertexes normal .3 .2 { map x } }","normal")
+  count=count+require(normal.deforms[0].kind=="normal" and normal.deforms[0].wave.amplitude>0.299 and normal.deforms[0].wave.amplitude<0.301 and normal.deforms[0].wave.frequency>0.199 and normal.deforms[0].wave.frequency<0.201,"normal deformation amplitude and frequency retained")
   first=shader.stages[0]
   count=count+require(first.mapMode=="clamp" and first.images[0]=="textures/demo/a.tga","clamp map")
   count=count+require(first.blendSrc==shaders.GLS_SRCBLEND_SRC_ALPHA and first.blendDst==shaders.GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA,"explicit blend")

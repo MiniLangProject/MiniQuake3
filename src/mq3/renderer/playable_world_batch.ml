@@ -7,10 +7,13 @@ import mq3.client.playable_viewer as viewer
 import mq3.renderer.playable_materials as materials
 import mq3.compat.transcendental as trans
 import mq3.compat.numeric as numeric
+import mq3.renderer.shader_parser as shaderParser
+import mq3.renderer.noise as rendererNoise
+import mq3.shared.math as qmath
 
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
-struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceLights sourceColors stage deforms primary depthEqual sort polygonOffset end struct
+struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceLights sourceColors stage deforms normalNoise primary depthEqual sort polygonOffset end struct
 struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses polygonOffsetPasses end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
@@ -110,7 +113,8 @@ function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
       sourceColors=sourceColors+[[triangle.vertices[0].color,triangle.vertices[1].color,triangle.vertices[2].color]]
     end if
   end for
-  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceLights,sourceColors,stage,material.deforms,primary,depthEqual,material.sort,material.polygonOffset)
+  normalNoise=void;if stage.tcGen=="environment" and hasDeform(material.deforms,"normal") then normalNoise=rendererNoise.create() end if
+  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceLights,sourceColors,stage,material.deforms,normalNoise,primary,depthEqual,material.sort,material.polygonOffset)
 end function
 
 // Static opaque primaries stay in the bit-identical base stream. Dynamic and
@@ -246,6 +250,20 @@ function deformedPosition(position,normal,uv,deforms,nowMilliseconds)
   end for
   return result
 end function
+function deformedNormal(position,normal,deforms,nowMilliseconds,noise)
+  result=[normal[0],normal[1],normal[2]]
+  if noise==void then return result end if
+  for each deform in deforms
+    if deform.kind=="normal" then
+      x=numeric.fmul(position[0],0.98);y=numeric.fmul(position[1],0.98);z=numeric.fmul(position[2],0.98);time=numeric.fmul(numeric.fmul(numeric.f32(nowMilliseconds),0.001),deform.wave.frequency);amplitude=deform.wave.amplitude
+      result[0]=numeric.fadd(result[0],numeric.fmul(amplitude,rendererNoise.get4f(noise,x,y,z,time)))
+      result[1]=numeric.fadd(result[1],numeric.fmul(amplitude,rendererNoise.get4f(noise,numeric.fadd(100.0,x),y,z,time)))
+      result[2]=numeric.fadd(result[2],numeric.fmul(amplitude,rendererNoise.get4f(noise,numeric.fadd(200.0,x),y,z,time)))
+      inverse=qmath.Q_rsqrt(qmath.DotProduct(result,result));result=[numeric.fmul(result[0],inverse),numeric.fmul(result[1],inverse),numeric.fmul(result[2],inverse)]
+    end if
+  end for
+  return result
+end function
 function updatePassAxes(pass,viewOrigin,leftDir,upDir,nowMilliseconds)
   slot=materials.slotAt(pass.stage,nowMilliseconds);transform=affineFor(pass.stage,nowMilliseconds);turbulent=hasTurbulence(pass.stage);autosprite=hasDeform(pass.deforms,"autosprite");autosprite2=hasDeform(pass.deforms,"autosprite2");quad=void;quad2=void
   forward=[leftDir[1]*upDir[2]-leftDir[2]*upDir[1],leftDir[2]*upDir[0]-leftDir[0]*upDir[2],leftDir[0]*upDir[1]-leftDir[1]*upDir[0]];spriteNormal=[0.0-forward[0],0.0-forward[1],0.0-forward[2]]
@@ -257,7 +275,7 @@ function updatePassAxes(pass,viewOrigin,leftDir,upDir,nowMilliseconds)
       if autosprite and quad!=void then sourcePosition=quad[autospriteCorner(triangleIndex,vertex)];sourceUv=autospriteUV(triangleIndex,vertex);sourceNormal=spriteNormal;vertexColor=pass.sourceColors[triangleIndex-triangleIndex%2][0] end if
       if autosprite2 and quad2!=void then sourcePosition=quad2[1][pass.sourceIndexes[triangleIndex][vertex]-quad2[0]] end if
       position=deformedPosition(sourcePosition,sourceNormal,pass.sourceDeformUvs[triangleIndex][vertex],pass.deforms,nowMilliseconds);positionOffset=offset+20+vertex*32;window.writeBatchF32(pass.commands.data,positionOffset,position[0]);window.writeBatchF32(pass.commands.data,positionOffset+4,position[1]);window.writeBatchF32(pass.commands.data,positionOffset+8,position[2])
-      if pass.stage.tcGen=="environment" then sourceUv=materials.environmentUV(position,sourceNormal,viewOrigin) else if pass.stage.tcGen=="vector" then sourceUv=materials.vectorUV(pass.stage,position) end if
+      if pass.stage.tcGen=="environment" then sourceNormal=deformedNormal(position,sourceNormal,pass.deforms,nowMilliseconds,pass.normalNoise);sourceUv=materials.environmentUV(position,sourceNormal,viewOrigin) else if pass.stage.tcGen=="vector" then sourceUv=materials.vectorUV(pass.stage,position) end if
       uv=[0.0,0.0];if turbulent then uv=materials.transformUVAt(pass.stage,sourceUv,position,nowMilliseconds) else uv=applyAffine(transform,sourceUv) end if;uvOffset=offset+32+vertex*32;window.writeBatchF32(pass.commands.data,uvOffset,uv[0]);window.writeBatchF32(pass.commands.data,uvOffset+4,uv[1])
       window.writeBatchF32(pass.commands.data,offset+48+vertex*32,1.0);window.writeBatchColor(pass.commands.data,offset+116+vertex*4,materials.stageColorAt(pass.stage,vertexColor,position,viewOrigin,nowMilliseconds))
     end for
