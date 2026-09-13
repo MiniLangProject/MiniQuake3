@@ -26,6 +26,7 @@ __declspec(dllimport) void playable_window_draw_triangle_multitexture(int, int,
     double, double, double, double, double, double, double, double,
     int, int, int);
 __declspec(dllimport) int playable_window_set_raster_state(int, int, int);
+__declspec(dllimport) int playable_window_set_polygon_offset(int);
 __declspec(dllimport) int playable_window_set_alpha_test(int);
 __declspec(dllimport) int playable_window_set_texture_clamp(int);
 __declspec(dllimport) int playable_window_draw_triangle_batch(const unsigned char *, int, int);
@@ -73,7 +74,11 @@ int main(void) {
         playable_window_set_raster_state(0, 2, 1) ||
         playable_window_set_raster_state(0, 0, 2) ||
             !playable_window_set_raster_state(4, 1, 0) ||
-            !playable_window_set_raster_state(0, 0, 1)) return 10;
+            !playable_window_set_raster_state(0, 0, 1) ||
+            playable_window_set_polygon_offset(-1) ||
+            playable_window_set_polygon_offset(2) ||
+            !playable_window_set_polygon_offset(1) ||
+            !playable_window_set_polygon_offset(0)) return 10;
     if (playable_window_set_alpha_test(-1) || playable_window_set_alpha_test(4) ||
             !playable_window_set_alpha_test(3) || !playable_window_set_alpha_test(0)) return 13;
     if (playable_window_set_texture_clamp(-1) || playable_window_set_texture_clamp(2) ||

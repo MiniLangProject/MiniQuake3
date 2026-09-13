@@ -132,6 +132,19 @@ int main(void) {
     if (pixels[sample] != UINT32_C(0xff00ff00)) return 29;
     if (playable_window_set_texture_clamp(2)) return 30;
 
+    /* Baseq3 polygon offset brings a coplanar decal forward. The first blue
+     * draw is rejected by strict depth; the biased draw replaces the red. */
+    playable_window_begin_frame(0, 0, 0);
+    if (!playable_window_set_texture_clamp(0) ||
+            !playable_window_set_raster_state(0, 0, 1)) return 31;
+    drawUiTriangle(0);
+    drawUiTriangle(1);
+    if (pixels[sample] != UINT32_C(0x80ff0000)) return 32;
+    if (!playable_window_set_polygon_offset(1)) return 33;
+    drawUiTriangle(1);
+    if (pixels[sample] != UINT32_C(0x800000ff) || depthPixels[sample] <= 0.5f) return 34;
+    if (!playable_window_set_polygon_offset(0) || playable_window_set_polygon_offset(2)) return 35;
+
     playable_window_shutdown();
     puts("playable window raster-state regression: PASS");
     return 0;

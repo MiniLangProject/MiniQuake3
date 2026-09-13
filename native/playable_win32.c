@@ -45,6 +45,7 @@ static int rasterDepthEqual;
 static int rasterDepthWrite = 1;
 static int rasterAlphaTest;
 static int rasterClampTexture;
+static int rasterPolygonOffset;
 static double rasterDepthRangeScale = 1.0;
 static double rasterDepthRangeNear = 1.0;
 static __declspec(thread) int rasterClipMinimumY;
@@ -289,6 +290,17 @@ static double depthRangeInverse(double inverseDepth) {
         rasterDepthRangeScale * inverseDepth;
 }
 
+/* Baseq3 defaults r_offsetFactor to -1 and r_offsetUnits to -2. OpenGL adds
+ * factor * max(|dz/dx|,|dz/dy|) + units * r to its conventional depth. This
+ * rasterizer stores reciprocal depth with the opposite comparison direction,
+ * so both terms become positive. A 24-bit depth unit matches the minimum
+ * resolution of the depth buffer used by the original renderer. */
+static double polygonOffsetInverse(double stepInverseDepthX, double stepInverseDepthY) {
+    double slope = fabs(stepInverseDepthX);
+    if (fabs(stepInverseDepthY) > slope) slope = fabs(stepInverseDepthY);
+    return rasterDepthRangeScale * slope + 2.0 / 16777216.0;
+}
+
 static void clearDepth(double depth) {
     SIZE_T count = (SIZE_T)surfaceWidth * (SIZE_T)surfaceHeight;
     SIZE_T i;
@@ -309,6 +321,7 @@ PLAYABLE_API void playable_window_begin_frame(int red, int green, int blue) {
     rasterDepthWrite = 1;
     rasterAlphaTest = 0;
     rasterClampTexture = 0;
+    rasterPolygonOffset = 0;
     rasterDepthRangeScale = 1.0;
     rasterDepthRangeNear = 1.0;
 }
@@ -557,6 +570,12 @@ PLAYABLE_API int playable_window_set_texture_clamp(int enabled) {
     return 1;
 }
 
+PLAYABLE_API int playable_window_set_polygon_offset(int enabled) {
+    if (enabled != 0 && enabled != 1) return 0;
+    rasterPolygonOffset = enabled;
+    return 1;
+}
+
 static int alphaTestPasses(uint32_t color) {
     uint32_t alpha = color >> 24;
     if (rasterAlphaTest == 1) return alpha > 0u;
@@ -750,6 +769,8 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
             if (b0 < 0.0 || b1 < 0.0 || b2 < 0.0) continue;
             if (inverseDepth <= 0.0) continue;
             comparisonDepth = depthRangeInverse(inverseDepth);
+            if (rasterPolygonOffset) comparisonDepth +=
+                polygonOffsetInverse(stepInverseDepthX, stepInverseDepthY);
             offset = (SIZE_T)y * (SIZE_T)surfaceWidth + (SIZE_T)x;
             if (rasterDepthEqual) {
                 double difference = comparisonDepth - (double)depthPixels[offset];
@@ -964,6 +985,8 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
             if (b0 < 0.0 || b1 < 0.0 || b2 < 0.0) continue;
             if (inverseDepth <= 0.0) continue;
             comparisonDepth = depthRangeInverse(inverseDepth);
+            if (rasterPolygonOffset) comparisonDepth +=
+                polygonOffsetInverse(stepInverseDepthX, stepInverseDepthY);
             offset = (SIZE_T)y * (SIZE_T)surfaceWidth + (SIZE_T)x;
             if (rasterDepthEqual) {
                 double difference = comparisonDepth - (double)depthPixels[offset];

@@ -9,8 +9,8 @@ import mq3.compat.transcendental as trans
 
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
-struct StagePass commands sourceUvs sourcePositions sourceNormals sourceLights sourceColors stage deforms primary depthEqual sort end struct
-struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses end struct
+struct StagePass commands sourceUvs sourcePositions sourceNormals sourceLights sourceColors stage deforms primary depthEqual sort polygonOffset end struct
+struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses polygonOffsetPasses end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
 function vertexLight(vertex) return (vertex.color[0]+vertex.color[1]+vertex.color[2])/(255.0*3.0) end function
@@ -40,7 +40,7 @@ function draw(batch,projection) if batch==void or batch.commands==void then retu
 
 function materialFor(catalog,textureIndex) if catalog==void then return void end if;for each material in catalog.materials if material.textureIndex==textureIndex then return material end if end for;return void end function
 function dynamicStage(stage) return stage.bspLightmap or stage.clampTexture or not stage.depthWrite or stage.depthEqual or len(stage.slots)>1 or len(stage.uvMods)>0 or stage.blend!=materials.BLEND_OPAQUE or stage.alphaTest!=materials.ALPHA_TEST_NONE or stage.tcGen=="environment" or (stage.rgbGen!="identity" and stage.rgbGen!="identitylighting") or stage.alphaGen!="identity" end function
-function dynamicMaterialStage(material,stage) return len(material.deforms)>0 or dynamicStage(stage) end function
+function dynamicMaterialStage(material,stage) return material.polygonOffset or len(material.deforms)>0 or dynamicStage(stage) end function
 function materialUsesBspLightmap(material) for each stage in material.stages if stage.bspLightmap then return true end if end for;return false end function
 function contains(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
 function sortedMaterials(values)
@@ -107,7 +107,7 @@ function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
       sourceColors=sourceColors+[[triangle.vertices[0].color,triangle.vertices[1].color,triangle.vertices[2].color]]
     end if
   end for
-  return StagePass(commands,sourceUvs,sourcePositions,sourceNormals,sourceLights,sourceColors,stage,material.deforms,primary,depthEqual,material.sort)
+  return StagePass(commands,sourceUvs,sourcePositions,sourceNormals,sourceLights,sourceColors,stage,material.deforms,primary,depthEqual,material.sort,material.polygonOffset)
 end function
 
 // Static opaque primaries stay in the bit-identical base stream. Dynamic and
@@ -123,7 +123,7 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
     else if not dynamicMaterialStage(material,material.stages[0]) then base=appendResolved(base,triangle,material.stages[0].slots[0],not materialUsesBspLightmap(material)) end if
     if base is error then return base end if
   end for
-  passes=[];animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;stretchCount=0;environmentCount=0;filterCount=0;destinationAlphaCount=0;clampedCount=0;deformedCount=0;emitted=base.count
+  passes=[];animated=0;modified=0;blended=0;generated=0;alphaTested=0;turbulentCount=0;stretchCount=0;environmentCount=0;filterCount=0;destinationAlphaCount=0;clampedCount=0;deformedCount=0;polygonOffsetCount=0;emitted=base.count
   for each material in sortedMaterials(catalog.materials)
     primaryWrites=false;if len(material.stages)>0 then primaryWrites=material.stages[0].depthWrite end if
     for stageIndex=0 to len(material.stages)-1
@@ -139,12 +139,13 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
         if stage.blend==materials.BLEND_DST_COLOR_ONE_MINUS_DST_ALPHA then destinationAlphaCount=destinationAlphaCount+1 end if
         if stage.clampTexture then clampedCount=clampedCount+1 end if
         if len(material.deforms)>0 then deformedCount=deformedCount+1 end if
+        if material.polygonOffset then polygonOffsetCount=polygonOffsetCount+1 end if
         for each mod in stage.uvMods if mod.kind=="turb" then turbulentCount=turbulentCount+1;break end if end for
         for each mod in stage.uvMods if mod.kind=="stretch" then stretchCount=stretchCount+1;break end if end for
       end if
     end for
   end for
-  return MaterialBatch(base,passes,len(renderData.triangles),drawable,emitted,skippedSky,animated,modified,blended,generated,alphaTested,turbulentCount,stretchCount,environmentCount,filterCount,destinationAlphaCount,clampedCount,deformedCount)
+  return MaterialBatch(base,passes,len(renderData.triangles),drawable,emitted,skippedSky,animated,modified,blended,generated,alphaTested,turbulentCount,stretchCount,environmentCount,filterCount,destinationAlphaCount,clampedCount,deformedCount,polygonOffsetCount)
 end function
 
 function identityAffine() return UvAffine(1.0,0.0,0.0,1.0,0.0,0.0) end function
@@ -191,11 +192,11 @@ end function
 function updatePass(pass,nowMilliseconds) return updatePassView(pass,[0.0,0.0,0.0],nowMilliseconds) end function
 function drawMaterials(batch,projection,nowMilliseconds)
   if batch==void or batch.base==void or batch.passes==void or nowMilliseconds<0 then return fail("invalid material draw") end if
-  drawn=0;multitexture.setState(multitexture.BLEND_OPAQUE,false,true);multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);multitexture.setTextureClamp(false)
+  drawn=0;multitexture.setState(multitexture.BLEND_OPAQUE,false,true);multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);multitexture.setTextureClamp(false);multitexture.setPolygonOffset(false)
   if batch.base.count>0 then value=window.submitWorldTriangleBatch(batch.base,projection);if value is error then return value end if;drawn=drawn+value end if
   for each pass in batch.passes
-    updatePassView(pass,projection.position,nowMilliseconds);multitexture.setState(pass.stage.blend,pass.depthEqual,pass.stage.depthWrite);multitexture.setAlphaTest(pass.stage.alphaTest);multitexture.setTextureClamp(pass.stage.clampTexture)
+    updatePassView(pass,projection.position,nowMilliseconds);multitexture.setState(pass.stage.blend,pass.depthEqual,pass.stage.depthWrite);multitexture.setAlphaTest(pass.stage.alphaTest);multitexture.setTextureClamp(pass.stage.clampTexture);multitexture.setPolygonOffset(pass.polygonOffset)
     value=window.submitWorldTriangleBatch(pass.commands,projection);if value is error then return value end if;drawn=drawn+value
   end for
-  multitexture.setState(multitexture.BLEND_OPAQUE,false,true);multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);multitexture.setTextureClamp(false);return drawn
+  multitexture.setState(multitexture.BLEND_OPAQUE,false,true);multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);multitexture.setTextureClamp(false);multitexture.setPolygonOffset(false);return drawn
 end function

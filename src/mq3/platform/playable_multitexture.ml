@@ -6,6 +6,7 @@ extern function drawNative(baseSlot as i32,lightmapSlot as i32,x0 as double,y0 a
 extern function setStateNative(blendMode as i32,depthEqual as i32,depthWrite as i32) from "playable_window.dll" symbol "playable_window_set_raster_state" returns i32
 extern function setAlphaTestNative(mode as i32) from "playable_window.dll" symbol "playable_window_set_alpha_test" returns i32
 extern function setTextureClampNative(enabled as i32) from "playable_window.dll" symbol "playable_window_set_texture_clamp" returns i32
+extern function setPolygonOffsetNative(enabled as i32) from "playable_window.dll" symbol "playable_window_set_polygon_offset" returns i32
 
 const BLEND_OPAQUE=0
 const BLEND_ALPHA=1
@@ -32,6 +33,12 @@ end function
 function setTextureClamp(enabled)
   value=0;if enabled then value=1 end if
   if setTextureClampNative(value)==0 then return error(7488,"invalid preview texture clamp state") end if
+  return void
+end function
+
+function setPolygonOffset(enabled)
+  value=0;if enabled then value=1 end if
+  if setPolygonOffsetNative(value)==0 then return error(7488,"invalid preview polygon-offset state") end if
   return void
 end function
 

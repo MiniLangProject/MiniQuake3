@@ -62,8 +62,9 @@ Lightmap moduliert; unlightmapped Flächen behalten ihre getrennten RGB-Vertexfa
 Explizite und aus Blend-/Depth-Write-/PolygonOffset-Zuständen abgeleitete
 Shader-Sortwerte ordnen die World-Passes stabil wie in Baseq3. Die Abnahme
 Geparste `depthWrite`- und `depthFunc equal`-Zustände werden pro Stage bis an den
-nativen Rasterzustand weitergegeben. Die Abnahme umfasst 54 Material-, 15
-Batch-Layout- und 41 World-Batch-Verträge sowie einen
+nativen Rasterzustand weitergegeben. `polygonOffset` nutzt zusätzlich Baseq3s
+steigungsabhängigen Decal-Tiefenbias im inversen Tiefenpuffer. Die Abnahme umfasst
+54 Material-, 15 Batch-Layout- und 42 World-Batch-Verträge sowie einen
 nativen Pixelvergleich unter `/W4 /WX`.
 
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |

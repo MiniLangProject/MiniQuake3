@@ -143,6 +143,10 @@ Every retained stage now carries its own parsed depth-write flag and explicit
 `depthFunc equal` state into the native rasterizer. q3dm1 contains 84
 depth-writing stages and one explicit equal-depth stage; later passes use equal
 depth only when the material's first stage actually wrote the surface depth.
+Shader-level `polygonOffset` is retained as an isolated material pass and uses
+Baseq3's default slope factor -1 and unit factor -2, converted for the native
+inverse-depth buffer. This keeps coplanar decals in front without a fixed
+world-space displacement.
 Retained stages evaluate `rgbGen vertex`, `exactVertex`,
 `oneMinusVertex`, `const` and `wave`, plus the corresponding `alphaGen` modes.
 The native batch transports an independent RGBA value for every triangle vertex
@@ -180,7 +184,7 @@ Validation:
   shader-sort and retained depth-state contracts.
 - `playable_triangle_batch_contracts.exe`: 15 record-layout, default-colour and
   independent per-vertex RGBA contracts.
-- `python scripts/test_playable_world_batch.py`: 41 retained-command, material-stage,
+- `python scripts/test_playable_world_batch.py`: 42 retained-command, material-stage,
   sky-filtering and one-call submission contracts; the native lifecycle also
   compares framebuffer pixels and depth bit-for-bit with the scalar path.
 - `python scripts/test_playable_movement.py`: 27 gravity/jump/slide/idle contracts.

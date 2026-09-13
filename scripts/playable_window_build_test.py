@@ -24,6 +24,7 @@ RASTER_EXPORTS = (
     "playable_window_draw_triangle_multitexture",
     "playable_window_set_raster_state",
     "playable_window_set_alpha_test",
+    "playable_window_set_polygon_offset",
     "playable_window_draw_triangle_batch",
     "playable_window_draw_world_triangle_batch",
     "playable_window_jpeg_info",
