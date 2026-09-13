@@ -195,6 +195,7 @@ function affineFor(stage,nowMilliseconds)
       m00=cosine*result.m00-sine*result.m10;m01=cosine*result.m01-sine*result.m11;m10=sine*result.m00+cosine*result.m10;m11=sine*result.m01+cosine*result.m11
       tx=cosine*(result.tx-0.5)-sine*(result.ty-0.5)+0.5;ty=sine*(result.tx-0.5)+cosine*(result.ty-0.5)+0.5;result=UvAffine(m00,m01,m10,m11,tx,ty)
     else if mod.kind=="stretch" then p=1.0/materials.waveSample(mod.wave,nowMilliseconds);offset=0.5-0.5*p;result=UvAffine(result.m00*p,result.m01*p,result.m10*p,result.m11*p,result.tx*p+offset,result.ty*p+offset)
+    else if mod.kind=="transform" then result=UvAffine(mod.a*result.m00+mod.c*result.m10,mod.a*result.m01+mod.c*result.m11,mod.b*result.m00+mod.d*result.m10,mod.b*result.m01+mod.d*result.m11,mod.a*result.tx+mod.c*result.ty+mod.e,mod.b*result.tx+mod.d*result.ty+mod.f)
     end if
   end for
   return result

@@ -153,6 +153,9 @@ wave-deformed passes. `deformVertexes move` applies a shared waveform displaceme
 `bulge` indexes Quake's sine table from base U and time before moving along the
 normal. Sampling and deformation UVs stay separate for lightmap stages. Retail
 checks exercise one bulge material on q3dm4 and 18 move deformations on q3dm16.
+The complete six-value `tcMod transform` matrix composes in declaration order
+with scale, scroll and the other UV operations. A q3dm2 retail probe exercises
+both transformed `calm_poollight` layers instead of discarding their matrices.
 The 55 retained q3dm1 passes are stably ordered by Quake's
 explicit shader `sort` value or its opaque, decal, see-through and blended
 fallback inference; q3dm1 contributes 84 opaque and three later-sorted materials.
@@ -243,11 +246,11 @@ Validation:
   near-plane-polygon contracts.
 - `python scripts/test_bsp_preview.py`: 34 BSP geometry contracts.
 - `python scripts/test_bsp_render_data.py`: 56 triangle/lightmap/patch contracts.
-- `python scripts/test_playable_materials.py`: 54 BSP/shader/image/generator,
+- `python scripts/test_playable_materials.py`: 58 BSP/shader/image/generator,
   shader-sort and retained depth-state contracts.
 - `playable_triangle_batch_contracts.exe`: 15 record-layout, default-colour and
   independent per-vertex RGBA contracts.
-- `python scripts/test_playable_world_batch.py`: 44 retained-command, material-stage,
+- `python scripts/test_playable_world_batch.py`: 52 retained-command, material-stage,
   sky-filtering and one-call submission contracts; the native lifecycle also
   compares framebuffer pixels and depth bit-for-bit with the scalar path.
 - `python scripts/test_playable_movement.py`: 27 gravity/jump/slide/idle contracts.

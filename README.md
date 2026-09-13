@@ -68,8 +68,10 @@ into the native rasterizer and evaluate `rgbGen vertex`, `exactVertex`,
 `oneMinusVertex`, `const` and `wave` together with the corresponding `alphaGen`
 modes. Wave generators use the original 1,024-entry phase lookup and byte
 quantization. `deformVertexes wave`, `move` and `bulge` animate retained BSP
-vertices using Quake's waveform, base-UV and normal rules. Remaining shader generators/deforms and the complete QVM match loop
-remain in work. The preview now loads
+vertices using Quake's waveform, base-UV and normal rules. Ordered `tcMod transform`
+matrices now preserve the scaled and translated water layers used by
+the retail maps. Remaining shader generators/deforms and the complete QVM match
+loop remain in work. The preview now loads
 18 item entities from q3dm1, simulates pickup/respawn, updates a Baseq3-style
 HUD from the original number, icon, portrait, crosshair and medal artwork, and fires
 the currently held weapon with the left mouse button. Q/E cycles through owned

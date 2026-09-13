@@ -28,7 +28,7 @@ const ALPHA_TEST_LT128=2
 const ALPHA_TEST_GE128=3
 
 struct Image width height pixels end struct
-struct UvMod kind a b c d wave end struct
+struct UvMod kind a b c d e f wave end struct
 struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest tcGen rgbGen rgbWave alphaGen alphaWave constantColor bspLightmap clampTexture depthWrite depthEqual portalRange tcGenVectors end struct
 struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps end struct
 struct Catalog materials scripts attempted loaded textureCount animatedStageCount effectStageCount end struct
@@ -153,11 +153,12 @@ end function
 function stageMods(stage)
   result=[]
   for each mod in stage.texMods
-    if mod.kind=="scroll" and len(mod.values)>=2 then result=result+[UvMod("scroll",mod.values[0],mod.values[1],0.0,0.0,shaderParser.blankWave())]
-    else if mod.kind=="scale" and len(mod.values)>=2 then result=result+[UvMod("scale",mod.values[0],mod.values[1],0.0,0.0,shaderParser.blankWave())]
-    else if mod.kind=="rotate" and len(mod.values)>=1 then result=result+[UvMod("rotate",mod.values[0],0.0,0.0,0.0,shaderParser.blankWave())]
-    else if mod.kind=="turb" and len(mod.values)>=4 then result=result+[UvMod("turb",mod.values[0],mod.values[1],mod.values[2],mod.values[3],shaderParser.blankWave())]
-    else if mod.kind=="stretch" then result=result+[UvMod("stretch",0.0,0.0,0.0,0.0,mod.wave)]
+    if mod.kind=="scroll" and len(mod.values)>=2 then result=result+[UvMod("scroll",mod.values[0],mod.values[1],0.0,0.0,0.0,0.0,shaderParser.blankWave())]
+    else if mod.kind=="scale" and len(mod.values)>=2 then result=result+[UvMod("scale",mod.values[0],mod.values[1],0.0,0.0,0.0,0.0,shaderParser.blankWave())]
+    else if mod.kind=="rotate" and len(mod.values)>=1 then result=result+[UvMod("rotate",mod.values[0],0.0,0.0,0.0,0.0,0.0,shaderParser.blankWave())]
+    else if mod.kind=="turb" and len(mod.values)>=4 then result=result+[UvMod("turb",mod.values[0],mod.values[1],mod.values[2],mod.values[3],0.0,0.0,shaderParser.blankWave())]
+    else if mod.kind=="stretch" then result=result+[UvMod("stretch",0.0,0.0,0.0,0.0,0.0,0.0,mod.wave)]
+    else if mod.kind=="transform" and len(mod.values)>=6 then result=result+[UvMod("transform",mod.values[0],mod.values[1],mod.values[2],mod.values[3],mod.values[4],mod.values[5],shaderParser.blankWave())]
     end if
   end for
   return result
@@ -321,6 +322,7 @@ function transformUVAt(stage,uv,position,nowMilliseconds)
       result=[x*cosine-y*sine+0.5,x*sine+y*cosine+0.5]
     else if mod.kind=="turb" then result=[result[0]+turbulentOffset(position[0]+position[2],mod,nowMilliseconds),result[1]+turbulentOffset(position[1],mod,nowMilliseconds)]
     else if mod.kind=="stretch" then p=1.0/waveSample(mod.wave,nowMilliseconds);offset=0.5-0.5*p;result=[result[0]*p+offset,result[1]*p+offset]
+    else if mod.kind=="transform" then s=result[0];t=result[1];result=[s*mod.a+t*mod.c+mod.e,s*mod.b+t*mod.d+mod.f]
     end if
   end for
   return result
