@@ -66,6 +66,7 @@ import mq3.client.ui_vm as clientUiVm
 import mq3.client.cgame_time as clientCgameTime
 import mq3.client.playable_viewer as playableViewer
 import mq3.client.playable_app as playableApp
+import mq3.client.qvm_preview_app as qvmPreviewApp
 import mq3.engine.local_qvm_match as localQvmMatch
 import mq3.audio.wav as wav
 import mq3.platform.playable_audio as playableAudio
@@ -115,6 +116,12 @@ function printTrace(result)
 end function
 
 function main(args)
+  if len(args)==4 and args[0]=="--play-qvm" then
+    archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmPreviewApp.run(archive,map,args[3])
+  end if
+  if len(args)==5 and args[0]=="--play-qvm-smoke" then
+    archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmPreviewApp.runLimited(archive,map,args[3],toNumber(args[4]))
+  end if
   if len(args)==5 and args[0]=="--qvm-match" then
     archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));frames=toNumber(args[3])
     if frames<=0 then return error(7650,"--qvm-match requires a positive frame count") end if
@@ -238,6 +245,8 @@ function main(args)
   print "Reference: Quake III Arena 1.32b / protocol 68"
   print "Playable lightmapped preview available; full game port remains in progress."
   print "--play <archive.pk3> <maps/name.bsp>"
+  print "--play-qvm <archive.pk3> <maps/name.bsp> <1.32b-qvm-directory>"
+  print "--play-qvm-smoke <archive.pk3> <maps/name.bsp> <1.32b-qvm-directory> <frames>"
   print "--play-bsp <map.bsp>"
   print "--play-smoke-bsp <map.bsp> <frames>"
   print "--play-smoke <archive.pk3> <maps/name.bsp> <frames>"

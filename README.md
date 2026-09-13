@@ -29,6 +29,7 @@ python scripts/inventory.py
 .\build\MiniQuake3.exe --inspect-map D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp
 python scripts/build_qvms.py
 .\build\MiniQuake3.exe --qvm-match D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp 20 build/reference/qvms
+.\build\MiniQuake3.exe --play-qvm D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp build/reference/qvms
 python scripts/verify.py --data-root D:/Quake3
 python scripts/verify.py --data-root D:/Quake3 --extended
 ```
@@ -168,6 +169,13 @@ test also observes 58 cgame 2D commands, another 207 UI commands and 26 decoded
 sound actions. This path uses only QVM-created gameplay entities;
 the five deterministic opponents remain confined to the older graphical preview
 until its window backend consumes the new scene queue directly.
+
+`--play-qvm` opens the first direct native presentation of this path. It selects
+the largest cgame view, uses the original `refdef_t` camera and FOV, renders the
+BSP and the fully textured QVM MD3/poly batch into one depth buffer, and reports
+smoothed FPS in the window title. Escape closes it. This is currently a static
+frame inspection entry: QVM-driven input/frame refresh, the two smaller model
+viewports, 2D commands and sound-queue playback remain the next integration work.
 
 Ein vorhandener eingefrorener Compiler liegt unter `artifacts/toolchain/`.
 `inventory.py` nur ausführen, wenn dieser Stand bewusst neu festgelegt werden soll.

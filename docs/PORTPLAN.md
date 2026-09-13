@@ -192,8 +192,11 @@ Add-ons, Konfigurationen und Player-Verzeichnisse; das aktive Original-Hauptmen�
 liefert 207 zusätzliche 2D-Befehle. Die gemeinsame
 QVM-libc-Grenze enthält Speicher-, Trigonometrie-, Matrix- und Vektorhelfer. Der
 Pfad ist über `--qvm-match` und `scripts/test_retail_qvm_match.py`
-reproduzierbar. Noch offen sind die Viewport-/BSP-Komposition und tatsächliche
-Fensterausgabe der vorbereiteten QVM-Batches, die 2D-Queue, Mixerwiedergabe der
+reproduzierbar. `--play-qvm` wählt den größten QVM-View, übernimmt Kamera und FOV
+aus dessen `refdef_t` und zeichnet BSP sowie QVM-Mehrpassbatch gemeinsam in das
+native Fenster; ein Ein-Frame-Retail-Smoke prüft Upload und Draw-Aufrufe. Noch
+offen sind der fortlaufende QVM-Input-/Framezyklus, die beiden kleineren
+Modell-Viewports, die 2D-Queue, Mixerwiedergabe der
 Soundaktionen, `MarkFragments`, vollständige
 Font-/Cinematic-/Parser-Traps für alternative UIs und die Ausgabe dieser Queues
 im interaktiven Fenster.
