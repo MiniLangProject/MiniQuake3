@@ -150,7 +150,7 @@ end function
 function dispatch(host,vm,base)
   if host==void or host.shared==void then return error(3423,"UI syscall: invalid dispatcher context") end if
   op=common.argument(vm,base,0)
-  if op>=0 and op<=16 or op==50 or op==51 then return common.dispatch(common.ABI_UI,host.shared,vm,base) end if
+  if op>=0 and op<=16 or op==50 or op==51 or op>=100 and op<=113 then return common.dispatch(common.ABI_UI,host.shared,vm,base) end if
   return dispatchSpecific(vm,base,host,op)
 end function
 

@@ -157,6 +157,20 @@ sind grün. Weitere 16 Medien-/Spezialtraps decken Sound, Musik, `qtime_t`,
 Cinematics, Shader-Remap, CD-Key, FS-Seek und PB-Kompatibilität mit fünf
 ABI-Datensätzen und 42 Verträgen ab.
 
+**Integrationsmeilenstein 2026-09-13:** Die unverändert aus dem festgehaltenen
+1.32b-Quellstand gebauten Module laufen erstmals gemeinsam in MiniLang. `qagame.qvm` besteht
+`GAME_INIT`, `GAME_CLIENT_CONNECT`, `GAME_CLIENT_BEGIN` und fortlaufende
+`GAME_RUN_FRAME`-Aufrufe. Die über `trap_LocateGameData` veröffentlichten
+Player-/Entity-Speicher werden in einen Snapshot übertragen; `cgame.qvm` liest
+ihn und reicht seine echten Asset-, 3D-Szenen-, Licht-, 2D- und Soundbefehle an
+MiniLang-Queues weiter. Der Retail-Smoke beobachtet derzeit 28 Snapshot-Entities,
+354 Assetregistrierungen, 37 Szenen-Entities, 54 2D-Befehle und 193
+Soundbefehle. Die gemeinsame QVM-libc-Grenze enthält Speicher-, Trigonometrie-,
+Matrix- und Vektorhelfer. Der Pfad ist über `--qvm-match` und
+`scripts/test_retail_qvm_match.py` reproduzierbar. Noch offen sind BSP-basierte
+Serververlinkung/PVS statt des vorläufigen Link-Sets, vollständige Dekodierung
+aller 3D-/Soundbefehle und die Ausgabe dieser Queue im interaktiven Fenster.
+
 ## 5. BSP-Kollision und gemeinsame Spielphysik exakt übertragen
 
 **Geprüfter Zwischenstand 2026-09-05:** BSP-/Kurvenkollision, transformierte Modelle,

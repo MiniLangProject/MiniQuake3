@@ -3,6 +3,8 @@
 // Shared, memory-safe QVM syscall boundary for qagame, cgame and UI.
 package mq3.vm.syscall_common
 import mq3.compat.numeric as n
+import mq3.compat.transcendental as trans
+import mq3.shared.math as qmath
 import mq3.qcommon.cvar as cvar
 import mq3.qcommon.command_buffer as command
 
@@ -11,6 +13,10 @@ const ABI_CGAME = 1
 const ABI_UI = 2
 const MAX_VM_STRING = 8192
 const VM_CVAR_SIZE = 272
+
+extern function floor(value as double) from "ucrtbase.dll" returns double
+extern function ceil(value as double) from "ucrtbase.dll" returns double
+extern function acos(value as double) from "ucrtbase.dll" returns double
 
 struct Services
   cvars
@@ -145,10 +151,15 @@ end function
 
 function fsOpen(vm,base,host)
   if host.openFn==void then return fail("file open service unavailable") end if
-  target=argument(vm,base,2);pointer(vm,target,4,"file handle output")
+  target=argument(vm,base,2);if target!=0 then pointer(vm,target,4,"file handle output") end if
   result=host.openFn(host.context,readString(vm,argument(vm,base,1)),argument(vm,base,3))
   if result==void then result=OpenResult(0,-1) end if
-  n.writeU32(vm.data,target & vm.mask,result.handle);return result.length
+  if target!=0 then
+    n.writeU32(vm.data,target & vm.mask,result.handle)
+  else
+    if result.handle!=0 and host.closeFn!=void then host.closeFn(host.context,result.handle) end if
+  end if
+  return result.length
 end function
 
 function fsRead(vm,base,host)
@@ -178,6 +189,89 @@ end function
 function executeConsole(vm,base,host)
   if host.consoleFn==void then return fail("console command service unavailable") end if
   host.consoleFn(host.context,argument(vm,base,1),readString(vm,argument(vm,base,2)));return 0
+end function
+
+function libcMemset(vm,base)
+  destination=argument(vm,base,1);value=argument(vm,base,2)&255;count=argument(vm,base,3)
+  at=pointer(vm,destination,count,"memset destination")
+  if count>0 then for index=0 to count-1 vm.data[at+index]=value end for end if
+  return destination
+end function
+
+function libcMemcpy(vm,base)
+  destination=argument(vm,base,1);source=argument(vm,base,2);count=argument(vm,base,3)
+  target=pointer(vm,destination,count,"memcpy destination");sourceAt=pointer(vm,source,count,"memcpy source")
+  // Keep the host boundary deterministic even when a module passes overlapping spans.
+  temporary=slice(vm.data,sourceAt,count)
+  if count>0 then copyBytes(vm.data,target,temporary,0,count) end if
+  return destination
+end function
+
+function libcStrncpy(vm,base)
+  destination=argument(vm,base,1);source=argument(vm,base,2);count=argument(vm,base,3)
+  target=pointer(vm,destination,count,"strncpy destination");sourceAt=pointer(vm,source,1,"strncpy source")
+  terminated=false
+  if count>0 then for index=0 to count-1
+    value=0
+    if not terminated then
+      if sourceAt+index>=len(vm.data) then return fail("strncpy source outside VM memory") end if
+      value=vm.data[sourceAt+index];if value==0 then terminated=true end if
+    end if
+    vm.data[target+index]=value
+  end for end if
+  return destination
+end function
+
+function floatResult(value) return n.i32(n.floatBits(value)) end function
+
+function readFloatVector(vm,address,count,label)
+  at=pointer(vm,address,count*4,label);result=[]
+  for index=0 to count-1 result=result+[n.bitsFloat(n.readU32(vm.data,at+index*4))] end for;return result
+end function
+function writeFloatVector(vm,address,values,label)
+  if address==0 then return void end if
+  at=pointer(vm,address,len(values)*4,label);for index=0 to len(values)-1 n.writeU32(vm.data,at+index*4,n.floatBits(values[index])) end for;return void
+end function
+
+function matrixMultiply(vm,base)
+  left=readFloatVector(vm,argument(vm,base,1),9,"matrix left");right=readFloatVector(vm,argument(vm,base,2),9,"matrix right");values=[]
+  for row=0 to 2 for column=0 to 2
+    values=values+[left[row*3]*right[column]+left[row*3+1]*right[3+column]+left[row*3+2]*right[6+column]]
+  end for end for
+  writeFloatVector(vm,argument(vm,base,3),values,"matrix output");return 0
+end function
+function angleVectors(vm,base)
+  vectors=qmath.AngleVectors(readFloatVector(vm,argument(vm,base,1),3,"angles"))
+  writeFloatVector(vm,argument(vm,base,2),vectors[0],"forward");writeFloatVector(vm,argument(vm,base,3),vectors[1],"right");writeFloatVector(vm,argument(vm,base,4),vectors[2],"up");return 0
+end function
+function perpendicularVector(vm,base)
+  source=readFloatVector(vm,argument(vm,base,2),3,"perpendicular source");axis=0
+  if source[1]*source[1]<source[axis]*source[axis] then axis=1 end if;if source[2]*source[2]<source[axis]*source[axis] then axis=2 end if
+  seed=[0.0,0.0,0.0];seed[axis]=1.0;dot=seed[0]*source[0]+seed[1]*source[1]+seed[2]*source[2]
+  values=[seed[0]-dot*source[0],seed[1]-dot*source[1],seed[2]-dot*source[2]];length=trans.sqrt(values[0]*values[0]+values[1]*values[1]+values[2]*values[2])
+  if length!=0.0 then values=[values[0]/length,values[1]/length,values[2]/length] end if;writeFloatVector(vm,argument(vm,base,1),values,"perpendicular output");return 0
+end function
+
+function dispatchLibc(abi,vm,base,op)
+  switch op
+    case 100 return libcMemset(vm,base) end case
+    case 101 return libcMemcpy(vm,base) end case
+    case 102 return libcStrncpy(vm,base) end case
+    case 103 return floatResult(trans.sin(n.bitsFloat(argument(vm,base,1)))) end case
+    case 104 return floatResult(trans.cos(n.bitsFloat(argument(vm,base,1)))) end case
+    case 105 return floatResult(trans.atan2(n.bitsFloat(argument(vm,base,1)),n.bitsFloat(argument(vm,base,2)))) end case
+    case 106 return floatResult(trans.sqrt(n.bitsFloat(argument(vm,base,1)))) end case
+  end switch
+  if abi==ABI_QAGAME then
+    if op==107 then return matrixMultiply(vm,base) end if;if op==108 then return angleVectors(vm,base) end if;if op==109 then return perpendicularVector(vm,base) end if
+    if op==110 then return floatResult(floor(n.bitsFloat(argument(vm,base,1)))) end if;if op==111 then return floatResult(ceil(n.bitsFloat(argument(vm,base,1)))) end if
+    if op==112 or op==113 then return 0 end if
+  else
+    if op==107 then return floatResult(floor(n.bitsFloat(argument(vm,base,1)))) end if;if op==108 then return floatResult(ceil(n.bitsFloat(argument(vm,base,1)))) end if
+    if op==109 or op==110 then return 0 end if
+    if op==111 and abi==ABI_CGAME then return floatResult(acos(n.bitsFloat(argument(vm,base,1)))) end if
+  end if
+  return fail("unsupported VM libc trap "+str(op))
 end function
 
 function dispatchQagame(vm,base,host,op)
@@ -241,6 +335,7 @@ end function
 function dispatch(abi,host,vm,base)
   if host==void or vm==void or typeof(vm.data)!="bytes" then return fail("invalid dispatcher context") end if
   op=argument(vm,base,0)
+  if op>=100 and op<=113 then return dispatchLibc(abi,vm,base,op) end if
   if abi==ABI_QAGAME then return dispatchQagame(vm,base,host,op) end if
   if abi==ABI_CGAME then return dispatchCgame(vm,base,host,op) end if
   if abi==ABI_UI then return dispatchUi(vm,base,host,op) end if

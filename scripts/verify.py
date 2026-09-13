@@ -105,6 +105,7 @@ def main():
     scripts.append(("playable_audio_build_test.py",[]))
     scripts.append(("playable_ambient_build_test.py",[]))
     if args.data_root:
+        scripts.append(("test_retail_qvm_match.py",["--data-root",str(args.data_root)]))
         scripts.append(("test_maps.py",[str(args.data_root)]))
         scripts.append(("test_runtime_trace.py",[str(args.data_root)]))
         scripts.append(("test_runtime_pmove.py",[str(args.data_root)]))

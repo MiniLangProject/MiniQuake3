@@ -5,6 +5,7 @@ package mq3.vm.syscall_qagame
 import mq3.vm.syscall_common as common
 import mq3.vm.syscall_qagame_world as world
 import mq3.compat.numeric as n
+import mq3.shared.math as qmath
 
 struct TokenResult found text end struct
 
@@ -29,10 +30,11 @@ struct Services
   botFreeClientFn
   entityTokenFn
   worldServices
+  extendedFn
 end struct
 
 function services(shared,context)
-  return Services(shared,context,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
+  return Services(shared,context,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
 end function
 
 function unavailable(name) return error(3421,"qagame syscall: "+name+" service unavailable") end function
@@ -135,14 +137,19 @@ function dispatchSpecific(vm,base,host,op)
     case 34 if host.botAllocateClientFn==void then return unavailable("bot allocation") end if;return host.botAllocateClientFn(host.context) end case
     case 35 if host.botFreeClientFn==void then return unavailable("bot free") end if;host.botFreeClientFn(host.context,arg(vm,base,1));return 0 end case
     case 37 return entityToken(vm,base,host) end case
+    case 42
+      address=arg(vm,base,1);value=vector(vm,address,"snap vector");qmath.SnapVector(value);at=common.pointer(vm,address,12,"snap vector")
+      for axis=0 to 2 n.writeU32(vm.data,at+axis*4,n.floatBits(value[axis])) end for;return 0
+    end case
   end switch
+  if host.extendedFn!=void then return host.extendedFn(host.context,vm,base,op) end if
   return error(3421,"qagame syscall: unsupported server trap "+str(op))
 end function
 
 function dispatch(host,vm,base)
   if host==void or host.shared==void then return error(3421,"qagame syscall: invalid dispatcher context") end if
   op=common.argument(vm,base,0)
-  if op>=0 and op<=14 then return common.dispatch(common.ABI_QAGAME,host.shared,vm,base) end if
+  if op>=0 and op<=14 or op>=100 and op<=113 then return common.dispatch(common.ABI_QAGAME,host.shared,vm,base) end if
   return dispatchSpecific(vm,base,host,op)
 end function
 

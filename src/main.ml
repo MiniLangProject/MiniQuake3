@@ -65,6 +65,7 @@ import mq3.client.ui_vm as clientUiVm
 import mq3.client.cgame_time as clientCgameTime
 import mq3.client.playable_viewer as playableViewer
 import mq3.client.playable_app as playableApp
+import mq3.engine.local_qvm_match as localQvmMatch
 import mq3.audio.wav as wav
 import mq3.platform.playable_audio as playableAudio
 import mq3.renderer.shader_index as rendererShaderIndex
@@ -110,6 +111,21 @@ function printTrace(result)
 end function
 
 function main(args)
+  if len(args)==5 and args[0]=="--qvm-match" then
+    archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));frames=toNumber(args[3])
+    if frames<=0 then return error(7650,"--qvm-match requires a positive frame count") end if
+    state=localQvmMatch.bootWithQvms(archive,map,1000,args[4]);if state is error then return state end if
+    if len(state.context.errors)>0 then return error(7651,state.context.errors[0]) end if
+    joined=localQvmMatch.connectLocal(state,0);if joined is error then return joined end if;clientStarted=false
+    for frame=1 to frames
+      serverTime=1000+frame*50;advanced=localQvmMatch.runFrame(state,serverTime);if advanced is error then return advanced end if;snapshot=localQvmMatch.snapshot(state,0);if snapshot is error then return snapshot end if
+      if not clientStarted then client=localQvmMatch.bootCgame(state);if client is error then return client end if;clientStarted=true end if
+      drawn=localQvmMatch.drawCgame(state,serverTime);if drawn is error then return drawn end if
+      if len(state.context.errors)>0 then return error(7651,state.context.errors[0]) end if
+    end for
+    print "Retail QVM local match: frames="+str(frames)+" entities="+str(len(state.context.latestSnapshot.entities))+" assets="+str(len(state.context.assets))+" render="+str(len(state.context.renderCommands))+" sound="+str(len(state.context.soundCommands))
+    localQvmMatch.shutdown(state);return 0
+  end if
   if len(args)==3 and args[0]=="--play" then
     archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));sound=void
     soundBytes=try(pk3.read(archive,"sound/feedback/fight.wav"))
@@ -209,6 +225,7 @@ function main(args)
   print "--play-bsp <map.bsp>"
   print "--play-smoke-bsp <map.bsp> <frames>"
   print "--play-smoke <archive.pk3> <maps/name.bsp> <frames>"
+  print "--qvm-match <archive.pk3> <maps/name.bsp> <frames> <1.32b-qvm-directory>"
   print "--inspect-pk3 <archive.pk3>"
   print "--inspect-map <archive.pk3> <maps/name.bsp>"
   print "--vm-probe <module.qvm> <command> (without engine syscalls)"

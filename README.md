@@ -27,6 +27,8 @@ Aufbau den benachbarten MiniLang-Compiler einfrieren, anschließend bauen:
 python scripts/inventory.py
 .\build.ps1
 .\build\MiniQuake3.exe --inspect-map D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp
+python scripts/build_qvms.py
+.\build\MiniQuake3.exe --qvm-match D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp 20 build/reference/qvms
 python scripts/verify.py --data-root D:/Quake3
 python scripts/verify.py --data-root D:/Quake3 --extended
 ```
@@ -135,6 +137,17 @@ Each trace starts at the animated Retail-Machinegun's `tag_flash`, shared with
 its muzzle model and dynamic light, with the former chest-height point retained
 only as an asset fallback. See
 [`docs/PLAYABLE_PREVIEW.md`](docs/PLAYABLE_PREVIEW.md).
+
+## Retail-QVM match path
+
+`--qvm-match` now runs the unmodified, source-rebuilt 1.32b `qagame.qvm` through
+`GAME_INIT`, local client connect/begin and fixed 20 Hz frames. The engine reads
+the module-owned `playerState_t` and linked `entityState_t` memory into a real
+snapshot, which the corresponding `cgame.qvm` consumes. Its asset registrations,
+scene entities, dynamic lights, 2D drawing and sound submissions enter the
+MiniLang renderer/sound queues. This path uses only QVM-created gameplay entities;
+the five deterministic opponents remain confined to the older graphical preview
+until its window backend consumes the new scene queue directly.
 
 Ein vorhandener eingefrorener Compiler liegt unter `artifacts/toolchain/`.
 `inventory.py` nur ausführen, wenn dieser Stand bewusst neu festgelegt werden soll.

@@ -15,13 +15,13 @@ def main():
     if native!=mini:raise RuntimeError('public QVM ABI mismatch\nC:\n'+native+'MiniLang:\n'+mini)
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/vm_syscall_common_contracts.ml','--output','vm_syscall_common_contracts.exe'],cwd=ROOT,check=True)
     value=run([ROOT/'build/vm_syscall_common_contracts.exe'],ROOT/'build',log=out/'contracts.log').strip()
-    if value!='PASS: 32 common QVM syscall contracts':raise RuntimeError(value)
+    if value!='PASS: 44 common QVM syscall contracts':raise RuntimeError(value)
     files=[harness,ROOT/'tests/vm_syscall_common_oracle.ml',ROOT/'src/mq3/vm/syscall_common.ml',ROOT/'tests/vm_syscall_common_contracts.ml']
-    report={'passed':True,'records':4,'contracts':32,
-      'scope':'Shared productive qagame/cgame/UI print, error, milliseconds, cvar, argv, console-command and file-handle traps with vmCvar_t serialization.',
+    report={'passed':True,'records':4,'contracts':44,
+      'scope':'Shared productive qagame/cgame/UI print, error, milliseconds, cvar, argv, console-command, file-handle and QVM libc traps with vmCvar_t serialization.',
       'oracle':'Original Baseq3 public headers compiled directly to freeze all covered trap ordinals and the native vmCvar_t layout.',
       'safety':'NULL, argument-vector, masked pointer span, unterminated string, output capacity, negative length, short read, invalid handle and unsupported trap checks.',
-      'remaining':'Renderer, collision, sound, snapshot, LAN and botlib traps remain ABI-specific follow-up dispatchers.',
+      'remaining':'Rare renderer, collision, sound, LAN and botlib traps remain ABI-specific follow-up dispatchers.',
       'sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
     (out/'result.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(f"PASS: {report['records']} exact Baseq3 public-ABI records + {report['contracts']} common QVM syscall contracts")

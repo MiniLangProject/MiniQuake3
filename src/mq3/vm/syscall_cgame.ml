@@ -35,10 +35,11 @@ struct Services
   getUserCmdFn
   setUserCmdValueFn
   memoryRemainingFn
+  extendedFn
 end struct
 
 function services(shared,context)
-  return Services(shared,context,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
+  return Services(shared,context,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
 end function
 
 function unavailable(name) return error(3422,"cgame syscall: "+name+" service unavailable") end function
@@ -116,13 +117,14 @@ function dispatchSpecific(vm,base,host,op)
     case 58 if host.memoryRemainingFn==void then return unavailable("memory remaining") end if;return host.memoryRemainingFn(host.context) end case
     case 72 return stringEvent(vm,base,host,host.removeCommandFn,"remove command") end case
   end switch
+  if host.extendedFn!=void then return host.extendedFn(host.context,vm,base,op) end if
   return error(3422,"cgame syscall: unsupported client trap "+str(op))
 end function
 
 function dispatch(host,vm,base)
   if host==void or host.shared==void then return error(3422,"cgame syscall: invalid dispatcher context") end if
   op=common.argument(vm,base,0)
-  if op>=0 and op<=14 then return common.dispatch(common.ABI_CGAME,host.shared,vm,base) end if
+  if op>=0 and op<=14 or op>=100 and op<=113 then return common.dispatch(common.ABI_CGAME,host.shared,vm,base) end if
   return dispatchSpecific(vm,base,host,op)
 end function
 
