@@ -6,6 +6,7 @@ import mq3.platform.playable_multitexture as multitexture
 import mq3.client.playable_viewer as viewer
 import mq3.renderer.playable_materials as materials
 import mq3.compat.transcendental as trans
+import mq3.compat.numeric as numeric
 
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
@@ -39,7 +40,7 @@ end function
 function draw(batch,projection) if batch==void or batch.commands==void then return fail("missing batch") end if;return window.submitWorldTriangleBatch(batch.commands,projection) end function
 
 function materialFor(catalog,textureIndex) if catalog==void then return void end if;for each material in catalog.materials if material.textureIndex==textureIndex then return material end if end for;return void end function
-function dynamicStage(stage) return stage.bspLightmap or stage.clampTexture or not stage.depthWrite or stage.depthEqual or len(stage.slots)>1 or len(stage.uvMods)>0 or stage.blend!=materials.BLEND_OPAQUE or stage.alphaTest!=materials.ALPHA_TEST_NONE or stage.tcGen=="environment" or (stage.rgbGen!="identity" and stage.rgbGen!="identitylighting") or stage.alphaGen!="identity" end function
+function dynamicStage(stage) return stage.bspLightmap or stage.clampTexture or not stage.depthWrite or stage.depthEqual or len(stage.slots)>1 or len(stage.uvMods)>0 or stage.blend!=materials.BLEND_OPAQUE or stage.alphaTest!=materials.ALPHA_TEST_NONE or stage.tcGen=="environment" or stage.tcGen=="vector" or (stage.rgbGen!="identity" and stage.rgbGen!="identitylighting") or stage.alphaGen!="identity" end function
 function dynamicMaterialStage(material,stage) return material.polygonOffset or len(material.deforms)>0 or dynamicStage(stage) end function
 function materialUsesBspLightmap(material) for each stage in material.stages if stage.bspLightmap then return true end if end for;return false end function
 function contains(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
@@ -167,6 +168,29 @@ function affineFor(stage,nowMilliseconds)
 end function
 function applyAffine(transform,uv) return [uv[0]*transform.m00+uv[1]*transform.m01+transform.tx,uv[0]*transform.m10+uv[1]*transform.m11+transform.ty] end function
 function hasTurbulence(stage) for each mod in stage.uvMods if mod.kind=="turb" then return true end if end for;return false end function
+function hasDeform(deforms,kind) for each deform in deforms if deform.kind==kind then return true end if end for;return false end function
+function containsPosition(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
+
+// AutospriteDeform rebuilds each independent pair of triangles as one square
+// whose left/up axes follow the view. BSP extraction expands indexes, so the
+// four original corners are recovered from each consecutive triangle pair.
+function autospriteQuad(pass,triangleIndex,leftDir,upDir)
+  first=triangleIndex-triangleIndex%2;if first+1>=pass.commands.count then return void end if
+  unique=[]
+  for each positions in [pass.sourcePositions[first],pass.sourcePositions[first+1]]
+    for each position in positions if not containsPosition(unique,position) then unique=unique+[position] end if end for
+  end for
+  if len(unique)!=4 then return void end if
+  mid=[0.0,0.0,0.0];for each position in unique for axis=0 to 2 mid[axis]=mid[axis]+position[axis]*0.25 end for end for
+  dx=unique[0][0]-mid[0];dy=unique[0][1]-mid[1];dz=unique[0][2]-mid[2];radius=numeric.fsqrt(dx*dx+dy*dy+dz*dz)*0.707
+  left=[leftDir[0]*radius,leftDir[1]*radius,leftDir[2]*radius];up=[upDir[0]*radius,upDir[1]*radius,upDir[2]*radius]
+  return [[mid[0]+left[0]+up[0],mid[1]+left[1]+up[1],mid[2]+left[2]+up[2]],[mid[0]-left[0]+up[0],mid[1]-left[1]+up[1],mid[2]-left[2]+up[2]],[mid[0]-left[0]-up[0],mid[1]-left[1]-up[1],mid[2]-left[2]-up[2]],[mid[0]+left[0]-up[0],mid[1]+left[1]-up[1],mid[2]+left[2]-up[2]]]
+end function
+function autospriteCorner(triangleIndex,vertex)
+  if triangleIndex%2==0 then if vertex==0 then return 0 else if vertex==1 then return 1 else return 3 end if end if
+  if vertex==0 then return 3 else if vertex==1 then return 1 else return 2 end if
+end function
+function autospriteUV(triangleIndex,vertex) if triangleIndex%2==0 then return [[0.0,0.0],[1.0,0.0],[0.0,1.0]][vertex] end if;return [[0.0,1.0],[1.0,0.0],[1.0,1.0]][vertex] end function
 function deformedPosition(position,normal,uv,deforms,nowMilliseconds)
   result=[position[0],position[1],position[2]]
   for each deform in deforms
@@ -183,26 +207,31 @@ function deformedPosition(position,normal,uv,deforms,nowMilliseconds)
   end for
   return result
 end function
-function updatePassView(pass,viewOrigin,nowMilliseconds)
-  slot=materials.slotAt(pass.stage,nowMilliseconds);transform=affineFor(pass.stage,nowMilliseconds);turbulent=hasTurbulence(pass.stage)
+function updatePassAxes(pass,viewOrigin,leftDir,upDir,nowMilliseconds)
+  slot=materials.slotAt(pass.stage,nowMilliseconds);transform=affineFor(pass.stage,nowMilliseconds);turbulent=hasTurbulence(pass.stage);autosprite=hasDeform(pass.deforms,"autosprite");quad=void
+  spriteNormal=[0.0-(leftDir[1]*upDir[2]-leftDir[2]*upDir[1]),0.0-(leftDir[2]*upDir[0]-leftDir[0]*upDir[2]),0.0-(leftDir[0]*upDir[1]-leftDir[1]*upDir[0])]
   for triangleIndex=0 to pass.commands.count-1
     offset=triangleIndex*window.TRIANGLE_BATCH_RECORD_BYTES;if not pass.stage.bspLightmap then window.writeBatchI32(pass.commands.data,offset,slot) end if
+    if autosprite and triangleIndex%2==0 then quad=autospriteQuad(pass,triangleIndex,leftDir,upDir) end if
     for vertex=0 to 2
-      position=deformedPosition(pass.sourcePositions[triangleIndex][vertex],pass.sourceNormals[triangleIndex][vertex],pass.sourceDeformUvs[triangleIndex][vertex],pass.deforms,nowMilliseconds);positionOffset=offset+20+vertex*32;window.writeBatchF32(pass.commands.data,positionOffset,position[0]);window.writeBatchF32(pass.commands.data,positionOffset+4,position[1]);window.writeBatchF32(pass.commands.data,positionOffset+8,position[2])
-      sourceUv=pass.sourceUvs[triangleIndex][vertex];if pass.stage.tcGen=="environment" then sourceUv=materials.environmentUV(position,pass.sourceNormals[triangleIndex][vertex],viewOrigin) end if
+      sourcePosition=pass.sourcePositions[triangleIndex][vertex];sourceUv=pass.sourceUvs[triangleIndex][vertex];sourceNormal=pass.sourceNormals[triangleIndex][vertex];vertexColor=pass.sourceColors[triangleIndex][vertex]
+      if autosprite and quad!=void then sourcePosition=quad[autospriteCorner(triangleIndex,vertex)];sourceUv=autospriteUV(triangleIndex,vertex);sourceNormal=spriteNormal;vertexColor=pass.sourceColors[triangleIndex-triangleIndex%2][0] end if
+      position=deformedPosition(sourcePosition,sourceNormal,pass.sourceDeformUvs[triangleIndex][vertex],pass.deforms,nowMilliseconds);positionOffset=offset+20+vertex*32;window.writeBatchF32(pass.commands.data,positionOffset,position[0]);window.writeBatchF32(pass.commands.data,positionOffset+4,position[1]);window.writeBatchF32(pass.commands.data,positionOffset+8,position[2])
+      if pass.stage.tcGen=="environment" then sourceUv=materials.environmentUV(position,sourceNormal,viewOrigin) else if pass.stage.tcGen=="vector" then sourceUv=materials.vectorUV(pass.stage,position) end if
       uv=[0.0,0.0];if turbulent then uv=materials.transformUVAt(pass.stage,sourceUv,position,nowMilliseconds) else uv=applyAffine(transform,sourceUv) end if;uvOffset=offset+32+vertex*32;window.writeBatchF32(pass.commands.data,uvOffset,uv[0]);window.writeBatchF32(pass.commands.data,uvOffset+4,uv[1])
-      window.writeBatchF32(pass.commands.data,offset+48+vertex*32,1.0);window.writeBatchColor(pass.commands.data,offset+116+vertex*4,materials.stageColorAt(pass.stage,pass.sourceColors[triangleIndex][vertex],position,viewOrigin,nowMilliseconds))
+      window.writeBatchF32(pass.commands.data,offset+48+vertex*32,1.0);window.writeBatchColor(pass.commands.data,offset+116+vertex*4,materials.stageColorAt(pass.stage,vertexColor,position,viewOrigin,nowMilliseconds))
     end for
   end for
   return slot
 end function
+function updatePassView(pass,viewOrigin,nowMilliseconds) return updatePassAxes(pass,viewOrigin,[0.0,1.0,0.0],[0.0,0.0,1.0],nowMilliseconds) end function
 function updatePass(pass,nowMilliseconds) return updatePassView(pass,[0.0,0.0,0.0],nowMilliseconds) end function
 function drawMaterials(batch,projection,nowMilliseconds)
   if batch==void or batch.base==void or batch.passes==void or nowMilliseconds<0 then return fail("invalid material draw") end if
   drawn=0;multitexture.setState(multitexture.BLEND_OPAQUE,false,true);multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);multitexture.setTextureClamp(false);multitexture.setPolygonOffset(false)
   if batch.base.count>0 then value=window.submitWorldTriangleBatch(batch.base,projection);if value is error then return value end if;drawn=drawn+value end if
   for each pass in batch.passes
-    updatePassView(pass,projection.position,nowMilliseconds);multitexture.setState(pass.stage.blend,pass.depthEqual,pass.stage.depthWrite);multitexture.setAlphaTest(pass.stage.alphaTest);multitexture.setTextureClamp(pass.stage.clampTexture);multitexture.setPolygonOffset(pass.polygonOffset)
+    updatePassAxes(pass,projection.position,[0.0-projection.right[0],0.0-projection.right[1],0.0-projection.right[2]],projection.up,nowMilliseconds);multitexture.setState(pass.stage.blend,pass.depthEqual,pass.stage.depthWrite);multitexture.setAlphaTest(pass.stage.alphaTest);multitexture.setTextureClamp(pass.stage.clampTexture);multitexture.setPolygonOffset(pass.polygonOffset)
     value=window.submitWorldTriangleBatch(pass.commands,projection);if value is error then return value end if;drawn=drawn+value
   end for
   multitexture.setState(multitexture.BLEND_OPAQUE,false,true);multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);multitexture.setTextureClamp(false);multitexture.setPolygonOffset(false);return drawn
