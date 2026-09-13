@@ -131,7 +131,7 @@ function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
       sourceColors=sourceColors+[[triangle.vertices[0].color,triangle.vertices[1].color,triangle.vertices[2].color]]
     end if
   end for
-  normalNoise=void;if stage.tcGen=="environment" and hasDeform(material.deforms,"normal") then normalNoise=rendererNoise.create() end if
+  normalNoise=void;if (stage.tcGen=="environment" or stage.alphaGen=="lightingspecular") and hasDeform(material.deforms,"normal") then normalNoise=rendererNoise.create() end if
   vertexCache=void;if not hasDeform(material.deforms,"autosprite") and not hasDeform(material.deforms,"autosprite2") then vertexCache=createVertexCache(sourceIndexes) end if
   return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceLights,sourceColors,stage,material.deforms,normalNoise,vertexCache,0,primary,depthEqual,material.sort,material.polygonOffset)
 end function
@@ -287,6 +287,14 @@ function deformedNormal(position,normal,deforms,nowMilliseconds,noise)
   end for
   return result
 end function
+// RB_CalcSpecularAlpha keeps this hard-coded light origin in the original
+// renderer and raises the reflected view coefficient to the fourth power.
+function specularAlpha(position,normal,viewOrigin)
+  light=[numeric.fsub(-960.0,position[0]),numeric.fsub(1980.0,position[1]),numeric.fsub(96.0,position[2])];lightScale=qmath.Q_rsqrt(qmath.DotProduct(light,light));light=[numeric.fmul(light[0],lightScale),numeric.fmul(light[1],lightScale),numeric.fmul(light[2],lightScale)]
+  dot=qmath.DotProduct(normal,light);reflected=[numeric.fsub(numeric.fmul(numeric.fmul(normal[0],2.0),dot),light[0]),numeric.fsub(numeric.fmul(numeric.fmul(normal[1],2.0),dot),light[1]),numeric.fsub(numeric.fmul(numeric.fmul(normal[2],2.0),dot),light[2])]
+  viewer=[numeric.fsub(viewOrigin[0],position[0]),numeric.fsub(viewOrigin[1],position[1]),numeric.fsub(viewOrigin[2],position[2])];viewScale=qmath.Q_rsqrt(qmath.DotProduct(viewer,viewer));value=numeric.fmul(qmath.DotProduct(reflected,viewer),viewScale)
+  if value<0.0 then return 0 end if;value=numeric.fmul(value,value);value=numeric.fmul(value,value);result=numeric.trunc32(numeric.fmul(value,255.0));if result>255 then result=255 end if;return result
+end function
 function updatePassAxes(pass,viewOrigin,leftDir,upDir,nowMilliseconds)
   slot=materials.slotAt(pass.stage,nowMilliseconds);transform=affineFor(pass.stage,nowMilliseconds);turbulent=hasTurbulence(pass.stage);autosprite=hasDeform(pass.deforms,"autosprite");autosprite2=hasDeform(pass.deforms,"autosprite2");quad=void;quad2=void
   cacheEpoch=0;if pass.vertexCache!=void then pass.cacheSerial=pass.cacheSerial+1;cacheEpoch=pass.cacheSerial end if
@@ -302,10 +310,11 @@ function updatePassAxes(pass,viewOrigin,leftDir,upDir,nowMilliseconds)
       if cacheSlot>=0 and pass.vertexCache.frames[cacheSlot]==cacheEpoch then position=pass.vertexCache.positions[cacheSlot];sourceNormal=pass.vertexCache.normals[cacheSlot];uv=pass.vertexCache.uvs[cacheSlot];stageColor=pass.vertexCache.colors[cacheSlot]
       else
         position=deformedPosition(sourcePosition,sourceNormal,pass.sourceDeformUvs[triangleIndex][vertex],pass.deforms,nowMilliseconds)
-        if pass.stage.tcGen=="environment" then sourceNormal=deformedNormal(position,sourceNormal,pass.deforms,nowMilliseconds,pass.normalNoise) end if
+        if pass.stage.tcGen=="environment" or pass.stage.alphaGen=="lightingspecular" then sourceNormal=deformedNormal(position,sourceNormal,pass.deforms,nowMilliseconds,pass.normalNoise) end if
         if pass.stage.tcGen=="environment" then sourceUv=materials.environmentUV(position,sourceNormal,viewOrigin) else if pass.stage.tcGen=="vector" then sourceUv=materials.vectorUV(pass.stage,position) end if
         if turbulent then uv=materials.transformUVAt(pass.stage,sourceUv,position,nowMilliseconds) else uv=applyAffine(transform,sourceUv) end if
         stageColor=materials.stageColorAt(pass.stage,vertexColor,position,viewOrigin,nowMilliseconds)
+        if pass.stage.alphaGen=="lightingspecular" then stageColor[3]=specularAlpha(position,sourceNormal,viewOrigin) end if
         if cacheSlot>=0 then pass.vertexCache.frames[cacheSlot]=cacheEpoch;pass.vertexCache.positions[cacheSlot]=position;pass.vertexCache.normals[cacheSlot]=sourceNormal;pass.vertexCache.uvs[cacheSlot]=uv;pass.vertexCache.colors[cacheSlot]=stageColor end if
       end if
       positionOffset=offset+20+vertex*32;window.writeBatchF32(pass.commands.data,positionOffset,position[0]);window.writeBatchF32(pass.commands.data,positionOffset+4,position[1]);window.writeBatchF32(pass.commands.data,positionOffset+8,position[2])

@@ -173,6 +173,10 @@ Retained stages evaluate `rgbGen vertex`, `exactVertex`,
 `oneMinusVertex`, `const` and `wave`, plus the corresponding `alphaGen` modes.
 The native batch transports an independent RGBA value for every triangle vertex
 and interpolates it perspective-correctly before blending and alpha testing.
+`alphaGen lightingSpecular` now follows Baseq3's fixed
+`[-960, 1980, 96]` light origin, fast vector normalization, reflected view
+direction and fourth-power highlight. Seven such material stages are active on
+q3ctf1, restoring its view-dependent metal and trim highlights.
 Eleven q3dm1 passes use `rgbGen wave`; their original 1,024-entry waveform phase
 is quantized to colour bytes before rasterization. Remaining shader generators
 and deformation types, exact lower/upper animation-state
