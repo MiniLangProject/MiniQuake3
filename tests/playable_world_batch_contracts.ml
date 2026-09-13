@@ -4,12 +4,12 @@ import mq3.compat.numeric as numeric
 import mq3.renderer.playable_materials as materials
 import mq3.renderer.shader_parser as shaderParser
 
-struct Vertex position baseUV lightmapUV normal color end struct
+struct Vertex position baseUV lightmapUV normal color sourceIndex end struct
 struct Triangle vertices textureIndex lightmapIndex end struct
 struct RenderData triangles end struct
 
 function require(condition,message) if not condition then return error(7491,message) end if;return 1 end function
-function v(x,y,z,u,v,lu,lv,r,g,b) return Vertex([x,y,z],[u,v],[lu,lv],[0.0,1.0,0.0],[r,g,b,255]) end function
+function v(x,y,z,u,v,lu,lv,r,g,b) return Vertex([x,y,z],[u,v],[lu,lv],[0.0,1.0,0.0],[r,g,b,255],-1) end function
 
 function main(args)
   a=v(10.0,-2.0,1.0,0.0,0.25,0.5,0.75,255,128,32)
@@ -101,6 +101,11 @@ function main(args)
   spriteBatch=worldBatch.buildMaterials(RenderData([Triangle([q0,q1,q3],1,-1),Triangle([q3,q1,q2],1,-1)]),materials.Catalog([spriteMaterial],0,1,1,1,0,0),[false,false,false]);spritePass=spriteBatch.passes[0];worldBatch.updatePassAxes(spritePass,[0.0,0.0,0.0],[1.0,0.0,0.0],[0.0,0.0,1.0],0)
   spriteX=numeric.bitsFloat(numeric.readU32(spritePass.commands.data,20));spriteY=numeric.bitsFloat(numeric.readU32(spritePass.commands.data,24));spriteZ=numeric.bitsFloat(numeric.readU32(spritePass.commands.data,28));secondZ=numeric.bitsFloat(numeric.readU32(spritePass.commands.data,220))
   count=count+require(spriteX>11.999 and spriteX<12.001 and spriteY==0.0 and spriteZ>1.999 and spriteZ<2.001 and secondZ>-2.001 and secondZ<-1.999 and numeric.bitsFloat(numeric.readU32(spritePass.commands.data,32))==0.0 and numeric.bitsFloat(numeric.readU32(spritePass.commands.data,36))==0.0,"autosprite rebuilds a triangle pair with view-aligned Quake quad corners")
+  r0=v(10.0,1.0,-3.0,1.0,1.0,0.0,0.0,255,255,255);r1=v(10.0,-1.0,3.0,0.0,0.0,0.0,0.0,255,255,255);r2=v(10.0,1.0,3.0,1.0,0.0,0.0,0.0,255,255,255);r3=v(10.0,-1.0,-3.0,0.0,1.0,0.0,0.0,255,255,255);r0.sourceIndex=20;r1.sourceIndex=21;r2.sourceIndex=22;r3.sourceIndex=23
+  autosprite2=shaderParser.Deform("autosprite2",0.0,shaderParser.blankWave(),[0.0,0.0,0.0],0.0,0.0,0.0);sprite2Material=materials.Material(1,"sprite2","base",image,81,[staticStage],[autosprite2],true,3.0,false,false)
+  sprite2Batch=worldBatch.buildMaterials(RenderData([Triangle([r2,r0,r1],1,-1),Triangle([r1,r0,r3],1,-1)]),materials.Catalog([sprite2Material],0,1,1,1,0,0),[false,false,false]);sprite2Pass=sprite2Batch.passes[0];worldBatch.updatePassAxes(sprite2Pass,[0.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0],0)
+  sprite2FirstY=numeric.bitsFloat(numeric.readU32(sprite2Pass.commands.data,24));sprite2SecondY=numeric.bitsFloat(numeric.readU32(sprite2Pass.commands.data,56));sprite2Top=numeric.bitsFloat(numeric.readU32(sprite2Pass.commands.data,28));sprite2U=numeric.bitsFloat(numeric.readU32(sprite2Pass.commands.data,32))
+  count=count+require(sprite2FirstY==-1.0 and sprite2SecondY==-1.0 and sprite2Top==3.0 and sprite2U==1.0,"autosprite2 preserves its long axis and directed UV edge while pivoting the short axis")
   count=count+require(worldBatch.hasTurbulence(turbStage) and turbPass.sourcePositions[0][0]==a.position,"turbulent pass retains world positions")
   worldBatch.updatePass(turbPass,0);expectedTurb=materials.transformUVAt(turbStage,a.baseUV,a.position,0);actualTurb=numeric.bitsFloat(numeric.readU32(turbPass.commands.data,32))
   count=count+require(actualTurb>expectedTurb[0]-0.000001 and actualTurb<expectedTurb[0]+0.000001,"turbulent pass writes position-dependent UV")

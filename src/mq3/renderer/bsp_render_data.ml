@@ -15,7 +15,7 @@ const LIGHTMAP_WIDTH = 128
 const LIGHTMAP_HEIGHT = 128
 const LIGHTMAP_RGB_SIZE = 49152
 
-struct RenderVertex position baseUV lightmapUV normal color end struct
+struct RenderVertex position baseUV lightmapUV normal color sourceIndex end struct
 struct RenderTriangle vertices textureIndex lightmapIndex faceIndex triangleIndex end struct
 struct RenderData triangles surfaceCount triangleCount skippedSurfaceCount truncated patchSurfaceCount end struct
 
@@ -37,7 +37,7 @@ function f32(map,offset)
 end function
 function vertex(map,index)
   offset=recordRange(map,10,index,VERTEX_STRIDE);if offset is error then return offset end if
-  return RenderVertex([f32(map,offset),f32(map,offset+4),f32(map,offset+8)],[f32(map,offset+12),f32(map,offset+16)],[f32(map,offset+20),f32(map,offset+24)],[f32(map,offset+28),f32(map,offset+32),f32(map,offset+36)],[map.data[offset+40],map.data[offset+41],map.data[offset+42],map.data[offset+43]])
+  return RenderVertex([f32(map,offset),f32(map,offset+4),f32(map,offset+8)],[f32(map,offset+12),f32(map,offset+16)],[f32(map,offset+20),f32(map,offset+24)],[f32(map,offset+28),f32(map,offset+32),f32(map,offset+36)],[map.data[offset+40],map.data[offset+41],map.data[offset+42],map.data[offset+43]],index)
 end function
 function contains(values,wanted)
   for each value in values if value==wanted then return true end if end for
@@ -58,7 +58,7 @@ end function
 function bezierVertex(a,b,c,t)
   color=bezierArray(a.color,b.color,c.color,t)
   for index=0 to 3 color[index]=n.trunc32(color[index]+0.5);if color[index]<0 then color[index]=0 end if;if color[index]>255 then color[index]=255 end if end for
-  return RenderVertex(bezierArray(a.position,b.position,c.position,t),bezierArray(a.baseUV,b.baseUV,c.baseUV,t),bezierArray(a.lightmapUV,b.lightmapUV,c.lightmapUV,t),normalized(bezierArray(a.normal,b.normal,c.normal,t)),color)
+  return RenderVertex(bezierArray(a.position,b.position,c.position,t),bezierArray(a.baseUV,b.baseUV,c.baseUV,t),bezierArray(a.lightmapUV,b.lightmapUV,c.lightmapUV,t),normalized(bezierArray(a.normal,b.normal,c.normal,t)),color,-1)
 end function
 function curveError(a,b,c)
   sum=0.0

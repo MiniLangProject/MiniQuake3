@@ -10,7 +10,7 @@ import mq3.compat.numeric as numeric
 
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
-struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceNormals sourceLights sourceColors stage deforms primary depthEqual sort polygonOffset end struct
+struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceLights sourceColors stage deforms primary depthEqual sort polygonOffset end struct
 struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses polygonOffsetPasses end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
@@ -90,7 +90,7 @@ end function
 function countStageTriangles(renderData,textureIndex,flags) count=0;for each triangle in renderData.triangles if triangle.textureIndex==textureIndex and not isSky(triangle,flags) then count=count+1 end if end for;return count end function
 function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
   count=countStageTriangles(renderData,material.textureIndex,flags);if count<1 then return void end if
-  commands=window.createTriangleBatch(count);sourceUvs=[];sourceDeformUvs=[];sourcePositions=[];sourceNormals=[];sourceLights=[];sourceColors=[]
+  commands=window.createTriangleBatch(count);sourceUvs=[];sourceDeformUvs=[];sourcePositions=[];sourceIndexes=[];sourceNormals=[];sourceLights=[];sourceColors=[]
   for each triangle in renderData.triangles
     if triangle.textureIndex==material.textureIndex and not isSky(triangle,flags) then
       if stage.bspLightmap then
@@ -103,13 +103,14 @@ function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
       end if
       if commands is error then return commands end if
       sourcePositions=sourcePositions+[[triangle.vertices[0].position,triangle.vertices[1].position,triangle.vertices[2].position]]
+      sourceIndexes=sourceIndexes+[[triangle.vertices[0].sourceIndex,triangle.vertices[1].sourceIndex,triangle.vertices[2].sourceIndex]]
       sourceDeformUvs=sourceDeformUvs+[[triangle.vertices[0].baseUV,triangle.vertices[1].baseUV,triangle.vertices[2].baseUV]]
       sourceNormals=sourceNormals+[[triangle.vertices[0].normal,triangle.vertices[1].normal,triangle.vertices[2].normal]]
       sourceLights=sourceLights+[[vertexLight(triangle.vertices[0]),vertexLight(triangle.vertices[1]),vertexLight(triangle.vertices[2])]]
       sourceColors=sourceColors+[[triangle.vertices[0].color,triangle.vertices[1].color,triangle.vertices[2].color]]
     end if
   end for
-  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceNormals,sourceLights,sourceColors,stage,material.deforms,primary,depthEqual,material.sort,material.polygonOffset)
+  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceLights,sourceColors,stage,material.deforms,primary,depthEqual,material.sort,material.polygonOffset)
 end function
 
 // Static opaque primaries stay in the bit-identical base stream. Dynamic and
@@ -191,6 +192,44 @@ function autospriteCorner(triangleIndex,vertex)
   if vertex==0 then return 3 else if vertex==1 then return 1 else return 2 end if
 end function
 function autospriteUV(triangleIndex,vertex) if triangleIndex%2==0 then return [[0.0,0.0],[1.0,0.0],[0.0,1.0]][vertex] end if;return [[0.0,1.0],[1.0,0.0],[1.0,1.0]][vertex] end function
+function edgeVertices(index)
+  if index==0 then return [0,1] else if index==1 then return [0,2] else if index==2 then return [0,3] else if index==3 then return [1,2] else if index==4 then return [1,3] else return [2,3] end if
+end function
+
+// Autosprite2Deform keeps the long axis fixed and rotates only the two short
+// edges toward the view. Source indexes preserve Quake's directed-edge test.
+function autosprite2Quad(pass,triangleIndex,forward)
+  first=triangleIndex-triangleIndex%2;if first+1>=pass.commands.count then return void end if
+  sequence=pass.sourceIndexes[first]+pass.sourceIndexes[first+1];base=sequence[0]
+  for each index in sequence if index<base then base=index end if end for
+  positions=[void,void,void,void]
+  for localTriangle=0 to 1
+    for vertex=0 to 2
+      local=pass.sourceIndexes[first+localTriangle][vertex]-base
+      if local<0 or local>3 then return void end if;positions[local]=pass.sourcePositions[first+localTriangle][vertex]
+    end for
+  end for
+  for each position in positions if position==void then return void end if end for
+  lengths=[999999.0,999999.0];nums=[0,0]
+  for edgeIndex=0 to 5
+    edge=edgeVertices(edgeIndex);a=positions[edge[0]];b=positions[edge[1]];dx=a[0]-b[0];dy=a[1]-b[1];dz=a[2]-b[2];length=dx*dx+dy*dy+dz*dz
+    if length<lengths[0] then lengths[1]=lengths[0];nums[1]=nums[0];lengths[0]=length;nums[0]=edgeIndex else if length<lengths[1] then lengths[1]=length;nums[1]=edgeIndex end if
+  end for
+  mids=[]
+  for selected=0 to 1 edge=edgeVertices(nums[selected]);a=positions[edge[0]];b=positions[edge[1]];mids=mids+[[0.5*(a[0]+b[0]),0.5*(a[1]+b[1]),0.5*(a[2]+b[2])]] end for
+  major=[mids[1][0]-mids[0][0],mids[1][1]-mids[0][1],mids[1][2]-mids[0][2]]
+  minor=[major[1]*forward[2]-major[2]*forward[1],major[2]*forward[0]-major[0]*forward[2],major[0]*forward[1]-major[1]*forward[0]]
+  minorLength=numeric.fsqrt(minor[0]*minor[0]+minor[1]*minor[1]+minor[2]*minor[2]);if minorLength<=0.0 then return void end if;minor=[minor[0]/minorLength,minor[1]/minorLength,minor[2]/minorLength]
+  result=[positions[0],positions[1],positions[2],positions[3]]
+  for selected=0 to 1
+    edge=edgeVertices(nums[selected]);half=0.5*numeric.fsqrt(lengths[selected]);directed=false
+    for cursor=0 to 4 if sequence[cursor]==base+edge[0] and sequence[cursor+1]==base+edge[1] then directed=true;break end if end for
+    sign=1.0;if directed then sign=0.0-1.0 end if
+    result[edge[0]]=[mids[selected][0]+sign*half*minor[0],mids[selected][1]+sign*half*minor[1],mids[selected][2]+sign*half*minor[2]]
+    result[edge[1]]=[mids[selected][0]-sign*half*minor[0],mids[selected][1]-sign*half*minor[1],mids[selected][2]-sign*half*minor[2]]
+  end for
+  return [base,result]
+end function
 function deformedPosition(position,normal,uv,deforms,nowMilliseconds)
   result=[position[0],position[1],position[2]]
   for each deform in deforms
@@ -208,14 +247,15 @@ function deformedPosition(position,normal,uv,deforms,nowMilliseconds)
   return result
 end function
 function updatePassAxes(pass,viewOrigin,leftDir,upDir,nowMilliseconds)
-  slot=materials.slotAt(pass.stage,nowMilliseconds);transform=affineFor(pass.stage,nowMilliseconds);turbulent=hasTurbulence(pass.stage);autosprite=hasDeform(pass.deforms,"autosprite");quad=void
-  spriteNormal=[0.0-(leftDir[1]*upDir[2]-leftDir[2]*upDir[1]),0.0-(leftDir[2]*upDir[0]-leftDir[0]*upDir[2]),0.0-(leftDir[0]*upDir[1]-leftDir[1]*upDir[0])]
+  slot=materials.slotAt(pass.stage,nowMilliseconds);transform=affineFor(pass.stage,nowMilliseconds);turbulent=hasTurbulence(pass.stage);autosprite=hasDeform(pass.deforms,"autosprite");autosprite2=hasDeform(pass.deforms,"autosprite2");quad=void;quad2=void
+  forward=[leftDir[1]*upDir[2]-leftDir[2]*upDir[1],leftDir[2]*upDir[0]-leftDir[0]*upDir[2],leftDir[0]*upDir[1]-leftDir[1]*upDir[0]];spriteNormal=[0.0-forward[0],0.0-forward[1],0.0-forward[2]]
   for triangleIndex=0 to pass.commands.count-1
     offset=triangleIndex*window.TRIANGLE_BATCH_RECORD_BYTES;if not pass.stage.bspLightmap then window.writeBatchI32(pass.commands.data,offset,slot) end if
-    if autosprite and triangleIndex%2==0 then quad=autospriteQuad(pass,triangleIndex,leftDir,upDir) end if
+    if triangleIndex%2==0 then if autosprite then quad=autospriteQuad(pass,triangleIndex,leftDir,upDir) else if autosprite2 then quad2=autosprite2Quad(pass,triangleIndex,forward) end if end if
     for vertex=0 to 2
       sourcePosition=pass.sourcePositions[triangleIndex][vertex];sourceUv=pass.sourceUvs[triangleIndex][vertex];sourceNormal=pass.sourceNormals[triangleIndex][vertex];vertexColor=pass.sourceColors[triangleIndex][vertex]
       if autosprite and quad!=void then sourcePosition=quad[autospriteCorner(triangleIndex,vertex)];sourceUv=autospriteUV(triangleIndex,vertex);sourceNormal=spriteNormal;vertexColor=pass.sourceColors[triangleIndex-triangleIndex%2][0] end if
+      if autosprite2 and quad2!=void then sourcePosition=quad2[1][pass.sourceIndexes[triangleIndex][vertex]-quad2[0]] end if
       position=deformedPosition(sourcePosition,sourceNormal,pass.sourceDeformUvs[triangleIndex][vertex],pass.deforms,nowMilliseconds);positionOffset=offset+20+vertex*32;window.writeBatchF32(pass.commands.data,positionOffset,position[0]);window.writeBatchF32(pass.commands.data,positionOffset+4,position[1]);window.writeBatchF32(pass.commands.data,positionOffset+8,position[2])
       if pass.stage.tcGen=="environment" then sourceUv=materials.environmentUV(position,sourceNormal,viewOrigin) else if pass.stage.tcGen=="vector" then sourceUv=materials.vectorUV(pass.stage,position) end if
       uv=[0.0,0.0];if turbulent then uv=materials.transformUVAt(pass.stage,sourceUv,position,nowMilliseconds) else uv=applyAffine(transform,sourceUv) end if;uvOffset=offset+32+vertex*32;window.writeBatchF32(pass.commands.data,uvOffset,uv[0]);window.writeBatchF32(pass.commands.data,uvOffset+4,uv[1])
