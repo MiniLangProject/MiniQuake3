@@ -1,4 +1,5 @@
 import mq3.renderer.scene_queue as scene
+import mq3.compat.numeric as n
 struct Context text end struct
 function diag(c,text) c.text=c.text+text+",";return void end function
 function req(value,label) if not value then return error(3479,"scene queue contract: "+label) end if;return 1 end function
@@ -33,5 +34,21 @@ function main(args)
   scene.toggleFrame(e);count=count+req(len(e.entities)==0 and len(e.dlights)==0 and len(e.polys)==0 and e.numPolyVerts==0,"frame reset")
   count=count+req(try(scene.addLight(e,[1,2],1,1,1,1)) is error or not e.registered,"vector validation boundary")
   count=count+req(try(scene.create(-1,0)) is error,"capacity validation")
+  payload=bytes(140,0);n.writeU32(payload,4,9);n.writeU32(payload,8,17)
+  values=[1.0,2.0,3.0,4.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,10.0,20.0,30.0,11.0,12.0,13.0]
+  offsets=[12,16,20,24,28,32,36,40,44,48,52,56,60,68,72,76,84,88,92]
+  for index=0 to len(values)-1 n.writeU32(payload,offsets[index],n.floatBits(values[index])) end for
+  n.writeU32(payload,64,1);n.writeU32(payload,80,5);n.writeU32(payload,96,4);n.writeU32(payload,100,n.floatBits(0.25));n.writeU32(payload,104,6);n.writeU32(payload,108,7);n.writeU32(payload,112,8)
+  payload[116]=10;payload[117]=20;payload[118]=30;payload[119]=40;n.writeU32(payload,120,n.floatBits(0.5));n.writeU32(payload,124,n.floatBits(0.75));n.writeU32(payload,128,n.floatBits(1.5));n.writeU32(payload,132,n.floatBits(16.0));n.writeU32(payload,136,n.floatBits(45.0))
+  decoded=scene.decodeEntity(scene.RefEntity(0,payload,false))
+  count=count+req(decoded.reType==0 and decoded.renderfx==9 and decoded.hModel==17,"decoded header")
+  count=count+req(decoded.lightingOrigin==[1.0,2.0,3.0] and decoded.shadowPlane==4.0,"decoded lighting")
+  count=count+req(decoded.axis==[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]] and decoded.nonNormalizedAxes,"decoded axes")
+  count=count+req(decoded.origin==[10.0,20.0,30.0] and decoded.oldorigin==[11.0,12.0,13.0],"decoded origins")
+  count=count+req(decoded.frame==5 and decoded.oldframe==4 and decoded.backlerp==0.25,"decoded animation")
+  count=count+req(decoded.skinNum==6 and decoded.customSkin==7 and decoded.customShader==8,"decoded materials")
+  count=count+req(decoded.shaderRGBA==[10,20,30,40] and decoded.shaderTexCoord==[0.5,0.75],"decoded shader values")
+  count=count+req(decoded.shaderTime==1.5 and decoded.radius==16.0 and decoded.rotation==45.0,"decoded sprite values")
+  count=count+req(try(scene.decodeEntity(scene.RefEntity(0,bytes(139,0),false))) is error,"short refEntity rejected")
   print "PASS: "+str(count)+" scene queue contracts";return 0
 end function

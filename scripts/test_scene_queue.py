@@ -11,10 +11,10 @@ def main():
     if native!=mini:raise RuntimeError('scene ABI mismatch\nC:\n'+native+'MiniLang:\n'+mini)
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/scene_queue_contracts.ml','--output','scene_queue_contracts.exe'],cwd=ROOT,check=True)
     value=run([ROOT/'build/scene_queue_contracts.exe'],ROOT/'build',log=out/'contracts.log').strip()
-    if value!='PASS: 24 scene queue contracts':raise RuntimeError(value)
+    if value!='PASS: 33 scene queue contracts':raise RuntimeError(value)
     source=original/'renderer/tr_scene.c';text=source.read_text(encoding='utf-8',errors='replace')
     for name in ['RE_ClearScene','RE_AddPolyToScene','RE_AddRefEntityToScene','RE_AddDynamicLightToScene']:
       if name not in text:raise RuntimeError('missing original function '+name)
-    files=[source,harness,ROOT/'src/mq3/renderer/scene_queue.ml',ROOT/'tests/scene_queue_contracts.ml'];report={'passed':True,'records':6,'contracts':24,'scope':'Scene marks, polygons/fog, reference entities and dynamic/additive lights.','oracle':'Original q_shared.h and tr_types.h limits plus required unchanged tr_scene.c functions.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
-    (out/'result.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n');print('PASS: 6 exact Baseq3 scene constants + 24 scene queue contracts')
+    files=[source,harness,ROOT/'src/mq3/renderer/scene_queue.ml',ROOT/'tests/scene_queue_contracts.ml'];report={'passed':True,'records':6,'contracts':33,'scope':'Scene marks, polygons/fog, reference entities, fixed 140-byte refEntity decoding, and dynamic/additive lights.','oracle':'Original q_shared.h and tr_types.h limits plus required unchanged tr_scene.c functions.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
+    (out/'result.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n');print('PASS: 6 exact Baseq3 scene constants + 33 scene queue contracts')
 if __name__=='__main__':main()

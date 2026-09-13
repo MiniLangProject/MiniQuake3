@@ -148,7 +148,15 @@ the corresponding `cgame.qvm`. A 64-command input ring drives unchanged
 `GAME_CLIENT_THINK`; cgame consumes the same commands for local prediction and
 uses real point, box, transformed and capsule world-query traps. Its asset
 registrations, scene entities, dynamic lights, 2D drawing and sound submissions
-enter the MiniLang renderer/sound queues. This path uses only QVM-created gameplay entities;
+enter the MiniLang renderer/sound queues. Asset handles are deduplicated by
+registry type; `refdef_t`, `refEntity_t`, polygons, light-grid queries and
+listener/position/loop/music sound commands now have concrete decoded records
+for the native backends. The third runtime slot now boots the original `ui.qvm`,
+reads the built-in arena/bot data, lists add-ons, configs and player assets from
+the PK3, keeps its key catcher,
+and submits the stock main menu into the same 2D queue. The retail integration
+test observes 19 cgame model entities, 58 cgame 2D commands and another 207 UI
+commands. This path uses only QVM-created gameplay entities;
 the five deterministic opponents remain confined to the older graphical preview
 until its window backend consumes the new scene queue directly.
 

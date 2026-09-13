@@ -152,7 +152,7 @@ mit fünf ABI-Datensätzen und 37 Verträgen. Der UI-Modulstart verhandelt die
 API-Versionen 4/6, erzwingt Pure-QVMs und bildet alle zehn Exports sowie Shutdown
 ab; 14 direkte Headerwerte und 22 Verträge sind grün. Der UI-Dispatcher ergänzt
 39 Traps für 2D-Rendering, Tasten/Bindings, Clipboard, GL-/Clientzustand,
-Configstrings und den LAN-Serverbrowser; sieben ABI-Datensätze und 58 Verträge
+Configstrings, PK3-Dateilisten und den LAN-Serverbrowser; sieben ABI-Datensätze und 61 Verträge
 sind grün. Weitere 16 Medien-/Spezialtraps decken Sound, Musik, `qtime_t`,
 Cinematics, Shader-Remap, CD-Key, FS-Seek und PB-Kompatibilität mit fünf
 ABI-Datensätzen und 42 Verträgen ab.
@@ -172,12 +172,22 @@ treibt `GAME_CLIENT_THINK` und anschließend die lokale cgame-Prediction; deren
 Point-, Box-, transformierte und Capsule-Kollision läuft ebenfalls gegen die
 MiniLang-Kollisionswelt. Der Retail-Smoke beobachtet 28 räumlich verlinkte
 Entities, davon 13 im Sichtbarkeitssnapshot, einen bis CommandTime 1400 bewegten
-Originalspieler, neun Prediction-Traces, 354 Assetregistrierungen, 19
-Szenen-Entities, 58 2D-Befehle und 175 Soundbefehle. Die gemeinsame
+Originalspieler und neun Prediction-Traces. Typgetreue Deduplizierung erzeugt
+301 cgame-Assethandles; der 368-Byte-`refdef_t`, alle 140-Byte-`refEntity_t`-Daten,
+Polygone und Lightgrid-Ausgaben sowie 25 konkrete Start-/Loop-/Listener-/Musik-
+Soundaktionen werden dekodiert. Der geprüfte Frame enthält 19 Modell-Entities
+und 58 2D-Befehle. Echte MD3-Registrierung prüft die PK3-Datei, liest Frames,
+Bounds und Tags und beantwortet sieben `R_LerpTag`-Anfragen aus diesem Frame.
+Im dritten VM-Slot initialisiert sich zusätzlich die unveränderte `ui.qvm` mit
+API 4. Sie liest die eingebauten Arena-/Botdaten und ihre PK3-Dateilisten finden
+Add-ons, Konfigurationen und Player-Verzeichnisse; das aktive Original-Hauptmenü registriert weitere 15 Medien und
+liefert 207 zusätzliche 2D-Befehle. Die gemeinsame
 QVM-libc-Grenze enthält Speicher-, Trigonometrie-, Matrix- und Vektorhelfer. Der
 Pfad ist über `--qvm-match` und `scripts/test_retail_qvm_match.py`
-reproduzierbar. Noch offen sind vollständige Dekodierung und Wiedergabe aller
-3D-/Soundbefehle sowie die Ausgabe dieser Queue im interaktiven Fenster.
+reproduzierbar. Noch offen sind die native MD3-/BSP-Ausgabe aus den dekodierten
+QVM-Entities, Mixerwiedergabe der Soundaktionen, `MarkFragments`, vollständige
+Font-/Cinematic-/Parser-Traps für alternative UIs und die Ausgabe dieser Queues
+im interaktiven Fenster.
 
 ## 5. BSP-Kollision und gemeinsame Spielphysik exakt übertragen
 

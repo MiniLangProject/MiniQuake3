@@ -37,6 +37,7 @@ function glconfig(c) return bytes(ui.GLCONFIG_SIZE,42) end function
 function clientState(c) return bytes(ui.CLIENT_STATE_SIZE,43) end function
 function configString(c,index) if index==5 then return "sv_hostname\\Test" end if;return void end function
 function memory(c) return 765432 end function
+function fileList(c,path,extension) if path=="scripts" and extension==".arena" then return ["q3dm1.arena","q3dm2.arena"] end if;return [] end function
 
 function loadServers(c) emit(c,["load"]) end function
 function saveServers(c) emit(c,["save"]) end function
@@ -69,7 +70,7 @@ function fixture()
   host.keys.getOverstrikeFn=getOverstrike;host.keys.setOverstrikeFn=uiHostSetOverstrike;host.keys.clearFn=uiHostClearKeys
   host.keys.getCatcherFn=getCatcher;host.keys.setCatcherFn=uiHostSetCatcher
   host.client.clipboardFn=clipboard;host.client.glconfigFn=glconfig;host.client.clientStateFn=clientState;host.client.configStringFn=configString
-  host.memoryRemainingFn=memory
+  host.fileListFn=fileList;host.memoryRemainingFn=memory
   host.lan.loadFn=loadServers;host.lan.saveFn=saveServers;host.lan.addFn=addServer;host.lan.removeFn=removeServer
   host.lan.pingQueueCountFn=pingCount;host.lan.clearPingFn=clearPing;host.lan.getPingFn=hostGetPing;host.lan.getPingInfoFn=pingInfo
   host.lan.serverCountFn=serverCount;host.lan.serverAddressFn=serverAddress;host.lan.serverInfoFn=serverInfo;host.lan.serverPingFn=serverPing
@@ -81,6 +82,8 @@ end function
 function main(args)
   f=fixture();vm=f[0];host=f[1];c=f[2];base=65300;count=0
   count=count+req(invoke(host,vm,base,[2])==321,"common delegation")
+  put(vm,40,"scripts");put(vm,60,".arena");count=count+req(invoke(host,vm,base,[17,40,60,80,32])==2,"file list count")
+  count=count+req(textAt(vm,80)=="q3dm1.arena" and textAt(vm,92)=="q3dm2.arena","file list packed output")
   put(vm,100,"models/mapobjects/teleporter/teleporter.md3");count=count+req(invoke(host,vm,base,[18,100])==11,"model registration")
   put(vm,180,"models/players/sarge/default.skin");count=count+req(invoke(host,vm,base,[19,180])==12,"skin registration")
   put(vm,240,"menu/art/back_0");count=count+req(invoke(host,vm,base,[20,240])==13,"shader registration")
@@ -135,6 +138,7 @@ function main(args)
   count=count+req(try(invoke(host,vm,base,[43,60000])) is error,"glconfig output span")
   count=count+req(try(invoke(host,vm,base,[44,64000])) is error,"client state output span")
   count=count+req(try(invoke(host,vm,base,[45,5,0,24])) is error,"NULL config output")
+  count=count+req(try(invoke(host,vm,base,[17,40,60,80,-1])) is error,"negative file list capacity")
   count=count+req(try(invoke(host,vm,base,[48,2,18000,32,0])) is error,"NULL ping time")
   count=count+req(try(invoke(host,vm,base,[66,1,2,65530,20])) is error,"server address span")
   count=count+req(try(invoke(host,vm,base,[26,65530])) is error,"color input span")

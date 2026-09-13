@@ -125,7 +125,11 @@ function main(args)
       drawn=localQvmMatch.drawCgame(state,serverTime);if drawn is error then return drawn end if
       if len(state.context.errors)>0 then return error(7651,state.context.errors[0]) end if
     end for
-    print "Retail QVM local match: frames="+str(frames)+" entities="+str(len(state.context.latestSnapshot.entities))+" assets="+str(len(state.context.assets))+" render="+str(len(state.context.renderCommands))+" sound="+str(len(state.context.soundCommands))
+    ui=localQvmMatch.bootUi(state);if ui is error then return ui end if
+    activated=localQvmMatch.setUiMenu(state,1);if activated is error then return activated end if
+    refreshed=localQvmMatch.refreshUi(state,1000+frames*50);if refreshed is error then return refreshed end if
+    if len(state.context.errors)>0 then return error(7651,state.context.errors[0]) end if
+    print "Retail QVM local match: frames="+str(frames)+" entities="+str(len(state.context.latestSnapshot.entities))+" assets="+str(len(state.context.assets))+" scene="+str(len(state.context.scene.entities))+" draw2D="+str(len(state.context.renderQueue.commands))+" sound="+str(len(state.context.soundCommands))+" ui="+str(state.ui.uiStarted)
     localQvmMatch.shutdown(state);return 0
   end if
   if len(args)==3 and args[0]=="--play" then

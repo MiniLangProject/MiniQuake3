@@ -1,5 +1,6 @@
 import mq3.engine.local_qvm_match as match
 import mq3.vm.syscall_qagame_world as qworld
+import mq3.renderer.scene_queue as sceneQueue
 import mq3.format.pk3 as pk3
 import mq3.format.bsp as bsp
 
@@ -27,9 +28,30 @@ function main(args)
   match.drawCgame(state,1450)
   if len(state.context.errors)!=0 then print("Retail VM error: "+state.context.errors[0]);return error(7642,"retail VM emitted an engine error") end if
   if state.context.cgameCollisionQueries==0 then return error(7642,"retail cgame prediction did not query collision") end if
+  if state.context.cgameTagQueries==0 then return error(7642,"retail cgame did not interpolate registered MD3 tags") end if
+  if state.context.latestRefdef==void or state.context.latestRefdef.width<=0 or state.context.latestRefdef.height<=0 or len(state.context.latestRefdef.viewaxis)!=3 then return error(7642,"retail cgame render-scene view was not decoded") end if
   if len(state.context.scene.entities)==0 or len(state.context.renderQueue.commands)==0 or len(state.context.soundCommands)==0 then return error(7642,"retail cgame did not submit scene, 2D or sound commands") end if
+  models=0;sprites=0
+  for each value in state.context.scene.entities
+    decoded=sceneQueue.decodeEntity(value);if decoded is error then return decoded end if
+    if decoded.reType==0 then models=models+1;if decoded.hModel<=0 or decoded.hModel>len(state.context.assets) then return error(7642,"retail refEntity model handle is not registered") end if
+    else if decoded.reType==2 then sprites=sprites+1 end if
+  end for
+  listener=false;for each sound in state.context.soundCommands if sound.kind=="listener" then listener=true end if end for
+  if not listener then return error(7642,"retail cgame did not submit a decoded listener") end if
   linked=0;for each ent in state.context.spatialScene.entities if ent.linked then linked=linked+1 end if end for
   if linked<len(snapshot.entities) or len(snapshot.entities)==0 then return error(7642,"PVS snapshot contains an invalid linked-entity selection") end if
-  print("PASS: retail QVM match entities="+str(state.context.entityCount)+" stride="+str(state.context.entityStride)+" frames="+str(state.context.frames)+" snapshotEntities="+str(len(snapshot.entities))+" spatialLinked="+str(linked)+" worldFraction="+str(worldHit.fraction)+" commandTime="+str(snapshot.playerState.commandTime)+" predictionTraces="+str(state.context.cgameCollisionQueries)+" health="+str(snapshot.playerState.stats[0])+" assets="+str(len(state.context.assets))+" sceneEntities="+str(len(state.context.scene.entities))+" lights="+str(len(state.context.scene.dlights))+" draw2D="+str(len(state.context.renderQueue.commands))+" sounds="+str(len(state.context.soundCommands)))
+  arenaFiles=match.uiFileList(state.context,"scripts",".arena");botFiles=match.uiFileList(state.context,"scripts",".bot");cfgFiles=match.uiFileList(state.context,"","cfg");playerDirs=match.uiFileList(state.context,"models/players","/")
+  if len(cfgFiles)==0 or len(playerDirs)==0 then return error(7642,"retail UI PK3 file lists are incomplete") end if
+  cgameAssets=len(state.context.assets);cgameDraw2D=len(state.context.renderQueue.commands);cgameSceneEntities=len(state.context.scene.entities);cgameViewWidth=state.context.latestRefdef.width;cgameViewHeight=state.context.latestRefdef.height
+  ui=match.bootUi(state);if ui is error then return ui end if
+  if not state.ui.uiStarted or state.ui.apiVersion!=4 then return error(7642,"retail q3_ui did not expose its pinned API") end if
+  if len(state.context.errors)!=0 then print("Retail VM error after UI init: "+state.context.errors[0]);return error(7642,"retail UI init error") end if
+  activated=match.setUiMenu(state,1);if activated is error then return activated end if
+  refreshed=match.refreshUi(state,1500);if refreshed is error then return refreshed end if
+  if len(state.context.errors)!=0 then print("Retail VM error after UI refresh: "+state.context.errors[0]);return error(7642,"retail UI refresh error") end if
+  if state.context.uiFrames!=1 or (state.context.uiKeyCatcher&2)==0 then return error(7642,"retail UI did not own and refresh the menu") end if
+  if len(state.context.assets)<=cgameAssets or len(state.context.renderQueue.commands)<=cgameDraw2D then return error(7642,"retail UI did not register media and draw the main menu") end if
+  print("PASS: retail QVM match entities="+str(state.context.entityCount)+" stride="+str(state.context.entityStride)+" frames="+str(state.context.frames)+" snapshotEntities="+str(len(snapshot.entities))+" spatialLinked="+str(linked)+" worldFraction="+str(worldHit.fraction)+" commandTime="+str(snapshot.playerState.commandTime)+" predictionTraces="+str(state.context.cgameCollisionQueries)+" tagQueries="+str(state.context.cgameTagQueries)+" health="+str(snapshot.playerState.stats[0])+" cgameAssets="+str(cgameAssets)+" uiAssets="+str(len(state.context.assets)-cgameAssets)+" addonArenas="+str(len(arenaFiles))+" addonBots="+str(len(botFiles))+" configs="+str(len(cfgFiles))+" playerDirs="+str(len(playerDirs))+" cgameSceneEntities="+str(cgameSceneEntities)+" models="+str(models)+" sprites="+str(sprites)+" cgameView="+str(cgameViewWidth)+"x"+str(cgameViewHeight)+" lights="+str(len(state.context.scene.dlights))+" cgameDraw2D="+str(cgameDraw2D)+" uiDraw2D="+str(len(state.context.renderQueue.commands)-cgameDraw2D)+" sounds="+str(len(state.context.soundCommands)))
   match.shutdown(state);return 0
 end function

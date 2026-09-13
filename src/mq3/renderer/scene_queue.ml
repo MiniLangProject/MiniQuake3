@@ -3,6 +3,7 @@
 // RE_ClearScene and scene submission primitives from tr_scene.c.
 package mq3.renderer.scene_queue
 import std.array as arrays
+import mq3.compat.numeric as n
 
 const MAX_DLIGHTS=32
 const ENTITYNUM_WORLD=1022
@@ -14,6 +15,7 @@ const GLHW_PERMEDIA2=4
 struct PolyVert xyz st modulate end struct
 struct Poly hShader verts fogIndex end struct
 struct RefEntity reType payload lightingCalculated end struct
+struct DecodedRefEntity reType renderfx hModel lightingOrigin shadowPlane axis nonNormalizedAxes origin frame oldorigin oldframe backlerp skinNum customSkin customShader shaderRGBA shaderTexCoord shaderTime radius rotation end struct
 struct DLight origin radius color additive end struct
 struct State registered hardwareType worldLoaded fogBounds maxPolys maxPolyVerts entities dlights polys numPolyVerts firstSceneEntity firstSceneDlight firstScenePoly diagnosticFn context end struct
 
@@ -66,6 +68,17 @@ function addEntity(state,reType,payload)
   if len(state.entities)>=ENTITYNUM_WORLD then return false end if
   if reType<0 or reType>=RT_MAX_REF_ENTITY_TYPE then return error(3471,"scene queue: bad reType "+str(reType)) end if
   state.entities=state.entities+[RefEntity(reType,payload,false)];return true
+end function
+
+// QVM refEntity_t is a fixed 140-byte 32-bit ABI record from tr_types.h.
+function payloadVector(payload,offset)
+  return [n.bitsFloat(n.readI32(payload,offset)),n.bitsFloat(n.readI32(payload,offset+4)),n.bitsFloat(n.readI32(payload,offset+8))]
+end function
+function decodeEntity(value)
+  if value==void or typeof(value.payload)!="bytes" or len(value.payload)!=140 then return error(3471,"scene queue: invalid refEntity payload") end if
+  data=value.payload;axes=[]
+  for row=0 to 2 axes=axes+[payloadVector(data,28+row*12)] end for
+  return DecodedRefEntity(value.reType,n.readI32(data,4),n.readI32(data,8),payloadVector(data,12),n.bitsFloat(n.readI32(data,24)),axes,n.readI32(data,64)!=0,payloadVector(data,68),n.readI32(data,80),payloadVector(data,84),n.readI32(data,96),n.bitsFloat(n.readI32(data,100)),n.readI32(data,104),n.readI32(data,108),n.readI32(data,112),[data[116],data[117],data[118],data[119]],[n.bitsFloat(n.readI32(data,120)),n.bitsFloat(n.readI32(data,124))],n.bitsFloat(n.readI32(data,128)),n.bitsFloat(n.readI32(data,132)),n.bitsFloat(n.readI32(data,136)))
 end function
 
 function addDynamicLight(state,origin,intensity,r,g,b,additive)

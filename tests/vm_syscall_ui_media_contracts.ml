@@ -80,7 +80,7 @@ function main(args)
   count=count+req(try(invoke(host,vm,base,[53,65525,17])) is error,"CD-key output span")
   host.platform.getCdKeyFn=hostShortKey;count=count+req(try(invoke(host,vm,base,[53,600,17])) is error,"short CD-key service value");host.platform.getCdKeyFn=hostGetKey
   count=count+req(try(invoke(host,vm,base,[54,65530])) is error,"CD-key input span")
-  count=count+req(try(invoke(host,vm,base,[81,0,780])) is error,"NULL verification key")
+  count=count+req(invoke(host,vm,base,[81,0,780])==0 and c.events[15]==["verify","","bad"],"nullable verification key")
   empty=media.services(c);count=count+req(try(invoke(empty,vm,base,[31,100,0])) is error,"missing sound service")
   count=count+req(try(invoke(empty,vm,base,[75,400,0,0,0,0,0])) is error,"missing cinematic service")
   count=count+req(try(invoke(empty,vm,base,[86,1,0,0])) is error,"missing seek service")

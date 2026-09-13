@@ -13,13 +13,13 @@ struct ClientServices clipboardFn glconfigFn clientStateFn configStringFn end st
 struct KeyServices keyNameFn bindingFn setBindingFn isDownFn getOverstrikeFn setOverstrikeFn clearFn getCatcherFn setCatcherFn end struct
 struct RendererServices registerModelFn registerSkinFn registerShaderNoMipFn clearSceneFn setColorFn drawStretchPicFn updateScreenFn end struct
 struct LanServices loadFn saveFn addFn removeFn pingQueueCountFn clearPingFn getPingFn getPingInfoFn serverCountFn serverAddressFn serverInfoFn serverPingFn markVisibleFn isVisibleFn updatePingsFn resetPingsFn serverStatusFn compareFn end struct
-struct Services shared context client keys renderer lan memoryRemainingFn mediaServices end struct
+struct Services shared context client keys renderer lan fileListFn memoryRemainingFn mediaServices extendedFn end struct
 
 function clientServices() return ClientServices(void,void,void,void) end function
 function keyServices() return KeyServices(void,void,void,void,void,void,void,void,void) end function
 function rendererServices() return RendererServices(void,void,void,void,void,void,void) end function
 function lanServices() return LanServices(void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void) end function
-function services(shared,context) return Services(shared,context,clientServices(),keyServices(),rendererServices(),lanServices(),void,void) end function
+function services(shared,context) return Services(shared,context,clientServices(),keyServices(),rendererServices(),lanServices(),void,void,void,void) end function
 function unavailable(name) return error(3423,"UI syscall: "+name+" service unavailable") end function
 function arg(vm,base,index) return common.argument(vm,base,index) end function
 
@@ -84,6 +84,21 @@ function getPing(vm,base,host)
   at=common.pointer(vm,arg(vm,base,4),4,"ping time output");n.writeU32(vm.data,at,value[1]);return 0
 end function
 
+function getFileList(vm,base,host)
+  if host.fileListFn==void then return unavailable("file list") end if
+  capacity=arg(vm,base,4);if capacity<0 then return error(3423,"UI syscall: negative file-list capacity") end if
+  path="";extension="";pathAt=arg(vm,base,1);extensionAt=arg(vm,base,2)
+  if pathAt!=0 then path=common.readString(vm,pathAt) end if;if extensionAt!=0 then extension=common.readString(vm,extensionAt) end if
+  entries=host.fileListFn(host.context,path,extension)
+  if entries==void then entries=[] end if;data=bytes(capacity,0);cursor=0;count=0
+  for each name in entries
+    encoded=bytes(name);if cursor+len(encoded)+1>capacity then break end if
+    copyBytes(data,cursor,encoded,0,len(encoded));cursor=cursor+len(encoded)+1;count=count+1
+  end for
+  if capacity>0 then common.writeRaw(vm,arg(vm,base,3),data,capacity,"file list output") end if
+  return count
+end function
+
 function lanString(vm,base,host,callback,name)
   if callback==void then return unavailable(name) end if
   value=callback(host.context,arg(vm,base,1),arg(vm,base,2))
@@ -104,6 +119,7 @@ function dispatchSpecific(vm,base,host,op)
     return media.dispatch(host.mediaServices,vm,base)
   end if
   switch op
+    case 17 return getFileList(vm,base,host) end case
     case 18 return registerAsset(vm,base,host,host.renderer.registerModelFn,"register model") end case
     case 19 return registerAsset(vm,base,host,host.renderer.registerSkinFn,"register skin") end case
     case 20 return registerAsset(vm,base,host,host.renderer.registerShaderNoMipFn,"register shader no mip") end case
@@ -144,6 +160,7 @@ function dispatchSpecific(vm,base,host,op)
     case 84 if host.lan.isVisibleFn==void then return unavailable("server visibility") end if;if host.lan.isVisibleFn(host.context,arg(vm,base,1),arg(vm,base,2)) then return 1 end if;return 0 end case
     case 85 if host.lan.compareFn==void then return unavailable("compare servers") end if;return host.lan.compareFn(host.context,arg(vm,base,1),arg(vm,base,2),arg(vm,base,3),arg(vm,base,4),arg(vm,base,5)) end case
   end switch
+  if host.extendedFn!=void then return host.extendedFn(host.context,vm,base,op) end if
   return error(3423,"UI syscall: unsupported client trap "+str(op))
 end function
 

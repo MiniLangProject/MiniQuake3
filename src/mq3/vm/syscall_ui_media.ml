@@ -74,7 +74,9 @@ end function
 
 function verifyCdKey(vm,base,host)
   if host.platform.verifyCdKeyFn==void then return unavailable("verify CD key") end if
-  if host.platform.verifyCdKeyFn(host.context,common.readString(vm,arg(vm,base,1)),common.readString(vm,arg(vm,base,2))) then return 1 end if
+  key="";keyAt=arg(vm,base,1);if keyAt!=0 then key=common.readString(vm,keyAt) end if
+  checksum="";checksumAt=arg(vm,base,2);if checksumAt!=0 then checksum=common.readString(vm,checksumAt) end if
+  if host.platform.verifyCdKeyFn(host.context,key,checksum) then return 1 end if
   return 0
 end function
 

@@ -17,6 +17,9 @@ import mq3.game.entitystate as entitystate
 import mq3.game.playerstate as playerstate
 import mq3.vm.syscall_cgame as cgameSyscall
 import mq3.client.cgame_vm as cgameVm
+import mq3.client.ui_vm as uiVm
+import mq3.vm.syscall_ui as uiSyscall
+import mq3.vm.syscall_ui_media as uiMedia
 import mq3.compat.numeric as n
 import mq3.renderer.scene_queue as sceneQueue
 import mq3.renderer.command_queue as renderQueue
@@ -24,7 +27,11 @@ import mq3.collision.world as collision
 import mq3.collision.visibility as visibility
 import mq3.server.world as serverWorld
 import mq3.server.snapshot_build as snapshotBuild
+import mq3.renderer.playable_light_grid as lightGrid
+import mq3.renderer.model_tags as modelTags
+import mq3.format.md3 as md3
 import std.fs as fs
+import std.string as strings
 
 const MAX_CONFIGSTRINGS=1024
 const MAX_CLIENTS=8
@@ -46,8 +53,10 @@ const R_CURRENTANGLES=500
 const R_OWNERNUM=512
 
 struct FileCursor data offset end struct
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets renderCommands soundCommands latestSnapshot snapshotNumber scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries end struct
-struct Boot game runtime context cgame end struct
+struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
+struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
+struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames end struct
+struct Boot game runtime context cgame ui end struct
 struct Snapshot serverTime playerState entities end struct
 
 function fail(message) return error(7640,"local QVM match: "+message) end function
@@ -211,7 +220,8 @@ function bootWithQvms(archive,map,now,qvmRoot)
   collisionWorld=collision.load(map.data);if collisionWorld is error then return collisionWorld end if
   spatialScene=serverWorld.create(collisionWorld)
   initialCommand=qworld.userCommand(now,[0,0,0],0,2,0,0,0)
-  context=Context(archive,parser.create(entityBytes),registry,commands.create(),array(MAX_CONFIGSTRINGS,""),array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],void,0,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,array(64,void),0)
+  grid=lightGrid.load(map);if grid is error then return grid end if
+  context=Context(archive,parser.create(entityBytes),registry,commands.create(),array(MAX_CONFIGSTRINGS,""),array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,array(64,void),0,0,grid,0,0)
   runtimeHost=runtime.services();runtimeHost.context=context;runtimeHost.loadFn=imageLoader
   machineRuntime=runtime.create(runtimeHost);if machineRuntime is error then return machineRuntime end if;context.machineRuntime=machineRuntime
   shared=common.services(registry,context.commandState,context);shared.printFn=emitPrint;shared.errorFn=emitError;shared.millisecondsFn=milliseconds;shared.consoleFn=consoleCommand
@@ -225,7 +235,7 @@ function bootWithQvms(archive,map,now,qvmRoot)
   host=gameVm.services(machineRuntime,qagame.callback(gameSyscalls),loadVm,callVm,restartVm,freeVm);host.context=context;host.millisecondsFn=milliseconds;host.entityStringFn=entityString;host.clearClientEntityFn=clearClient;host.botEnableFn=botEnable
   game=gameVm.create(host);if game is error then return game end if
   gameVm.initialize(game,now,MAX_CLIENTS)
-  return Boot(game,machineRuntime,context,void)
+  return Boot(game,machineRuntime,context,void,void)
 end function
 
 function boot(archive,map,now) return bootWithQvms(archive,map,now,"") end function
@@ -308,7 +318,32 @@ function currentSnapshot(context)
   serverTime=context.now;if context.latestSnapshot!=void then serverTime=context.latestSnapshot.serverTime end if
   return cgameSyscall.SnapshotNumber(context.snapshotNumber,serverTime)
 end function
-function registerAsset(context,name) context.assets=context.assets+[name];return len(context.assets) end function
+function registerTypedAsset(context,kind,name)
+  index=0
+  while index<len(context.assets)
+    if context.assetKinds[index]==kind and context.assets[index]==name then return index+1 end if
+    index=index+1
+  end while
+  context.assets=context.assets+[name];context.assetKinds=context.assetKinds+[kind];return len(context.assets)
+end function
+function typedAssetHandle(context,kind,name)
+  index=0;while index<len(context.assets) if context.assetKinds[index]==kind and context.assets[index]==name then return index+1 end if;index=index+1 end while;return 0
+end function
+function registerAsset(context,name) return registerTypedAsset(context,"asset",name) end function
+function registerModel(context,name)
+  existing=typedAssetHandle(context,"model",name);if existing!=0 then return existing end if
+  loaded=void
+  if len(name)>1 and name[0]=="*" then
+    index=toNumber(decode(slice(bytes(name),1,len(bytes(name))-1)));checked=try(collision.inlineModel(context.collisionWorld,index));if checked is error then return 0 end if;loaded=name
+  else
+    if not strings.endsWith(strings.toLowerAscii(name),".md3") then return 0 end if
+    data=try(pk3.read(context.archive,name));if data is error then return 0 end if;parsed=try(md3.load(data));if parsed is error then return 0 end if;loaded=parsed
+  end if
+  handle=registerTypedAsset(context,"model",name);while len(context.modelAssets)<len(context.assets) context.modelAssets=context.modelAssets+[void] end while;context.modelAssets[handle-1]=loaded;return handle
+end function
+function registerSkin(context,name) return registerTypedAsset(context,"skin",name) end function
+function registerShader(context,name) return registerTypedAsset(context,"shader",name) end function
+function registerShaderNoMip(context,name) return registerTypedAsset(context,"shaderNoMip",name) end function
 function addCommand(context,name) context.console=context.console+[[0,"add "+name]];return void end function
 function removeCommand(context,name) return void end function
 function sendClientCommand(context,name) context.console=context.console+[[0,"client "+name]];return void end function
@@ -348,11 +383,50 @@ function cgameBoxTrace(context,vm,base,capsule,transformed)
   else result=collision.boxTrace(context.collisionWorld,start,finish,mins,maxs,model,mask,capsule) end if
   return qworld.writeTrace(vm,output,cgameTraceResult(result))
 end function
+function decodeRefdef(vm,address)
+  at=common.pointer(vm,address,368,"refdef");axis=[]
+  for row=0 to 2 axis=axis+[readVector(vm.data,at+36+row*12)] end for
+  return Refdef(n.readI32(vm.data,at),n.readI32(vm.data,at+4),n.readI32(vm.data,at+8),n.readI32(vm.data,at+12),n.bitsFloat(n.readI32(vm.data,at+16)),n.bitsFloat(n.readI32(vm.data,at+20)),readVector(vm.data,at+24),axis,n.readI32(vm.data,at+72),n.readI32(vm.data,at+76),slice(vm.data,at+80,32))
+end function
+function soundVector(vm,address,label) if address==0 then return void end if;return common.readFloatVector(vm,address,3,label) end function
+function soundEvent(kind,entity,channel,handle,origin,velocity,axis,flag,text,text2) return SoundCommand(kind,entity,channel,handle,origin,velocity,axis,flag,text,text2) end function
+function addCgamePolys(context,vm,base,multiple)
+  shader=common.argument(vm,base,1);numVerts=common.argument(vm,base,2);numPolys=1;if multiple then numPolys=common.argument(vm,base,4) end if
+  if numVerts<=0 or numPolys<0 then return fail("invalid cgame polygon counts") end if
+  total=numVerts*numPolys;at=common.pointer(vm,common.argument(vm,base,3),total*24,"polyVert array");vertices=[]
+  for index=0 to total-1
+    offset=at+index*24;vertices=vertices+[sceneQueue.PolyVert(readVector(vm.data,offset),[n.bitsFloat(n.readI32(vm.data,offset+12)),n.bitsFloat(n.readI32(vm.data,offset+16))],[vm.data[offset+20],vm.data[offset+21],vm.data[offset+22],vm.data[offset+23]])]
+  end for
+  sceneQueue.addPolys(context.scene,shader,numVerts,vertices,numPolys);return 0
+end function
+function rendererModel(context,handle)
+  if handle<=0 or handle>len(context.assets) or context.assetKinds[handle-1]!="model" or handle>len(context.modelAssets) then return void end if
+  return context.modelAssets[handle-1]
+end function
+function rendererModelBounds(context,handle)
+  model=rendererModel(context,handle);if model==void then return [[0.0,0.0,0.0],[0.0,0.0,0.0]] end if
+  if typeof(model)=="string" then index=toNumber(decode(slice(bytes(model),1,len(bytes(model))-1)));return collision.modelBounds(context.collisionWorld,collision.inlineModel(context.collisionWorld,index)) end if
+  return [[model.bounds[0][0],model.bounds[0][1],model.bounds[0][2]],[model.bounds[1][0],model.bounds[1][1],model.bounds[1][2]]]
+end function
+function lerpModelTag(context,vm,base)
+  context.cgameTagQueries=context.cgameTagQueries+1;output=common.pointer(vm,common.argument(vm,base,1),48,"orientation output")
+  model=rendererModel(context,common.argument(vm,base,2));orientation=modelTags.missingOrientation()
+  if model!=void and typeof(model)!="string" then
+    tagModel=modelTags.md3(model.tags,model.bounds[0],model.bounds[1]);orientation=modelTags.lerpTag(modelTags.model(void,tagModel),common.argument(vm,base,3),common.argument(vm,base,4),n.bitsFloat(common.argument(vm,base,5)),common.readString(vm,common.argument(vm,base,6)))
+    if orientation is error then return orientation end if
+  end if
+  writeVector(vm.data,output,orientation.origin);for row=0 to 2 writeVector(vm.data,output+12+row*12,orientation.axis[row]) end for
+  if orientation.found then return 1 end if;return 0
+end function
+function lightForPoint(context,vm,base)
+  if context.lightGrid==void or not context.lightGrid.valid then return 0 end if
+  lightGrid.setDynamicLights(context.lightGrid,sceneQueue.sceneLights(context.scene));sample=lightGrid.entitySample(context.lightGrid,cgameVector(vm,base,1,"light point"))
+  common.writeFloatVector(vm,common.argument(vm,base,2),sample.ambient,"ambient light");common.writeFloatVector(vm,common.argument(vm,base,3),sample.directed,"directed light");common.writeFloatVector(vm,common.argument(vm,base,4),sample.direction,"light direction");return 1
+end function
 
 function extendedCgame(context,vm,base,op)
   // Capture every retail sound/renderer submission. Structured decoding is
   // added per trap while the original module remains the sole scene producer.
-  if op>=28 and op<=35 or op==69 or op==80 or op==81 then context.soundCommands=context.soundCommands+[[op,context.now]] end if
   if op>=41 and op<=48 or op==59 or op==73 or op==79 or op==85 or op==87 or op==88 then context.renderCommands=context.renderCommands+[[op,context.now]] end if
   if op==18 then checksumAt=common.argument(vm,base,2);if checksumAt!=0 then n.writeU32(vm.data,checksumAt&vm.mask,0) end if;return 0 end if
   if op==19 then return len(context.collisionWorld.models) end if
@@ -364,14 +438,28 @@ function extendedCgame(context,vm,base,op)
   if op==25 or op==83 then return cgameBoxTrace(context,vm,base,op==83,false) end if
   if op==26 or op==84 then return cgameBoxTrace(context,vm,base,op==84,true) end if
   if op==27 then return 0 end if
-  if op==34 then return registerAsset(context,common.readString(vm,common.argument(vm,base,1))) end if
+  if op==28 then context.soundCommands=context.soundCommands+[soundEvent("start",common.argument(vm,base,2),common.argument(vm,base,3),common.argument(vm,base,4),soundVector(vm,common.argument(vm,base,1),"sound origin"),void,void,false,"","")];return 0 end if
+  if op==29 then context.soundCommands=context.soundCommands+[soundEvent("local",-1,common.argument(vm,base,2),common.argument(vm,base,1),void,void,void,false,"","")];return 0 end if
+  if op==30 then context.soundCommands=context.soundCommands+[soundEvent("clearLoops",-1,0,0,void,void,void,common.argument(vm,base,1)!=0,"","")];return 0 end if
+  if op==31 or op==80 then context.soundCommands=context.soundCommands+[soundEvent("loop",common.argument(vm,base,1),0,common.argument(vm,base,4),soundVector(vm,common.argument(vm,base,2),"loop origin"),soundVector(vm,common.argument(vm,base,3),"loop velocity"),void,op==80,"","")];return 0 end if
+  if op==32 then context.soundCommands=context.soundCommands+[soundEvent("position",common.argument(vm,base,1),0,0,soundVector(vm,common.argument(vm,base,2),"entity sound origin"),void,void,false,"","")];return 0 end if
+  if op==33 then
+    axes=[];axisAt=common.argument(vm,base,3);if axisAt!=0 then for row=0 to 2 axes=axes+[common.readFloatVector(vm,axisAt+row*12,3,"listener axis")] end for end if
+    context.soundCommands=context.soundCommands+[soundEvent("listener",common.argument(vm,base,1),0,0,soundVector(vm,common.argument(vm,base,2),"listener origin"),void,axes,common.argument(vm,base,4)!=0,"","")];return 0
+  end if
+  if op==34 then return registerTypedAsset(context,"sound",common.readString(vm,common.argument(vm,base,1))) end if
+  if op==35 then context.soundCommands=context.soundCommands+[soundEvent("music",-1,0,0,void,void,void,false,common.readString(vm,common.argument(vm,base,1)),common.readString(vm,common.argument(vm,base,2)))];return 0 end if
+  if op==69 then context.soundCommands=context.soundCommands+[soundEvent("stopMusic",-1,0,0,void,void,void,false,"","")];return 0 end if
+  if op==81 then context.soundCommands=context.soundCommands+[soundEvent("stopLoop",common.argument(vm,base,1),0,0,void,void,void,false,"","")];return 0 end if
   if op==41 then
     at=common.pointer(vm,common.argument(vm,base,1),4,"refEntity");sceneQueue.addEntity(context.scene,n.readI32(vm.data,at),slice(vm.data,at,140));return 0
   end if
+  if op==42 then return addCgamePolys(context,vm,base,false) end if
   if op==43 or op==85 then
     origin=common.readFloatVector(vm,common.argument(vm,base,1),3,"light origin");intensity=n.bitsFloat(common.argument(vm,base,2));red=n.bitsFloat(common.argument(vm,base,3));green=n.bitsFloat(common.argument(vm,base,4));blue=n.bitsFloat(common.argument(vm,base,5))
     sceneQueue.addDynamicLight(context.scene,origin,intensity,red,green,blue,op==85);return 0
   end if
+  if op==44 then context.latestRefdef=decodeRefdef(vm,common.argument(vm,base,1));return 0 end if
   if op==45 then
     address=common.argument(vm,base,1);color=void;if address!=0 then color=common.readFloatVector(vm,address,4,"render color") end if;renderQueue.setColor(context.renderQueue,color);return 0
   end if
@@ -381,8 +469,11 @@ function extendedCgame(context,vm,base,op)
   end if
   if op==47 then
     mins=common.pointer(vm,common.argument(vm,base,2),12,"model mins");maxs=common.pointer(vm,common.argument(vm,base,3),12,"model maxs")
-    for axis=0 to 2 n.writeU32(vm.data,mins+axis*4,n.floatBits(-16.0));n.writeU32(vm.data,maxs+axis*4,n.floatBits(16.0)) end for;return 0
+    bounds=rendererModelBounds(context,common.argument(vm,base,1));writeVector(vm.data,mins,bounds[0]);writeVector(vm.data,maxs,bounds[1]);return 0
   end if
+  if op==48 then return lerpModelTag(context,vm,base) end if
+  if op==73 then return lightForPoint(context,vm,base) end if
+  if op==87 then return addCgamePolys(context,vm,base,true) end if
   if op==89 then if inPvs(context,cgameVector(vm,base,1,"PVS point 1"),cgameVector(vm,base,2,"PVS point 2"),false) then return 1 end if;return 0 end if
   if op>=18 and op<=35 or op>=41 and op<=48 or op>=59 and op<=71 or op>=73 and op<=89 then return 0 end if
   return error(7643,"local QVM match: unsupported retail cgame trap "+str(op))
@@ -394,7 +485,7 @@ function bootCgame(value)
   shared.printFn=emitPrint;shared.errorFn=emitError;shared.millisecondsFn=milliseconds;shared.consoleFn=consoleCommand
   shared.openFn=openFile;shared.readFn=readFile;shared.writeFn=writeFile;shared.closeFn=closeFile
   syscalls=cgameSyscall.services(shared,context);syscalls.addCommandFn=addCommand;syscalls.removeCommandFn=removeCommand;syscalls.sendClientCommandFn=sendClientCommand;syscalls.updateScreenFn=updateScreen
-  syscalls.loadWorldFn=loadWorld;syscalls.registerModelFn=registerAsset;syscalls.registerSkinFn=registerAsset;syscalls.registerShaderFn=registerAsset;syscalls.registerShaderNoMipFn=registerAsset;syscalls.clearSceneFn=clearScene
+  syscalls.loadWorldFn=loadWorld;syscalls.registerModelFn=registerModel;syscalls.registerSkinFn=registerSkin;syscalls.registerShaderFn=registerShader;syscalls.registerShaderNoMipFn=registerShaderNoMip;syscalls.clearSceneFn=clearScene
   syscalls.getGlconfigFn=glconfigBytes;syscalls.getGameStateFn=gameStateBytes;syscalls.getCurrentSnapshotNumberFn=currentSnapshot;syscalls.getSnapshotFn=snapshotBytes;syscalls.getServerCommandFn=noServerCommand
   syscalls.getCurrentCmdNumberFn=currentCmdNumber;syscalls.getUserCmdFn=clientUsercmd;syscalls.setUserCmdValueFn=setUsercmdValue;syscalls.memoryRemainingFn=memoryRemaining;syscalls.extendedFn=extendedCgame
   host=cgameVm.services(value.runtime,cgameSyscall.callback(syscalls),loadClientVm,callVm,freeVm);host.context=context;host.millisecondsFn=milliseconds;host.serverInfoFn=getServerinfo
@@ -406,4 +497,110 @@ function drawCgame(value,serverTime)
   value.context.now=serverTime;return cgameVm.drawActiveFrame(value.cgame,serverTime,0,false)
 end function
 
-function shutdown(value) if value!=void then if value.cgame!=void then cgameVm.shutdown(value.cgame) end if;return gameVm.shutdown(value.game) end if;return void end function
+function uiClipboard(context) return "" end function
+function uiClientState(context) return bytes(uiSyscall.CLIENT_STATE_SIZE,0) end function
+function uiConfigString(context,index) if index<0 or index>=len(context.configstrings) then return void end if;return context.configstrings[index] end function
+function uiKeyName(context,key) return "" end function
+function uiBinding(context,key) return "" end function
+function uiSetBinding(context,key,text) return void end function
+function uiKeyDown(context,key) return false end function
+function uiFalse(context) return false end function
+function uiSetBool(context,value) return void end function
+function uiClearKeys(context) return void end function
+function uiGetCatcher(context) return context.uiKeyCatcher end function
+function uiSetCatcher(context,value) context.uiKeyCatcher=value;return void end function
+function uiUnique(values,value)
+  for each current in values if strings.toLowerAscii(current)==strings.toLowerAscii(value) then return values end if end for
+  return values+[value]
+end function
+function uiFileList(context,path,extension)
+  if path=="$modlist" then return [] end if
+  prefix=path;if prefix!="" and not strings.endsWith(prefix,"/") then prefix=prefix+"/" end if
+  lowerPrefix=strings.toLowerAscii(prefix);wanted=strings.toLowerAscii(extension);directories=wanted=="/"
+  if wanted!="" and not directories and wanted[0]!="." then wanted="."+wanted end if
+  result=[]
+  for each entry in context.archive.entries
+    lowerName=strings.toLowerAscii(entry.name)
+    if strings.startsWith(lowerName,lowerPrefix) and len(entry.name)>len(prefix) then
+      relative=decode(slice(bytes(entry.name),len(bytes(prefix)),len(bytes(entry.name))-len(bytes(prefix))))
+      parts=strings.split(relative,"/")
+      if directories then
+        if len(parts)>1 and parts[0]!="" then result=uiUnique(result,parts[0]) end if
+      else if len(parts)==1 and (wanted=="" or strings.endsWith(lowerName,wanted)) then
+        result=result+[relative]
+      end if
+    end if
+  end for
+  return result
+end function
+function uiSetColor(context,color) return renderQueue.setColor(context.renderQueue,color) end function
+function uiStretchPic(context,values,shader) return renderQueue.stretchPic(context.renderQueue,values[0],values[1],values[2],values[3],values[4],values[5],values[6],values[7],shader) end function
+function uiLanNoop(context) return void end function
+function uiLanNoop3(context,a,b,c) return void end function
+function uiLanNoop2(context,a,b) return void end function
+function uiLanZero0(context) return 0 end function
+function uiLanZero(context,a) return 0 end function
+function uiLanZero2(context,a,b) return 0 end function
+function uiLanZero3(context,a,b,c) return 0 end function
+function uiLanZero5(context,a,b,c,d,e) return 0 end function
+function uiLanFalse(context,a) return false end function
+function uiLanFalse2(context,a,b) return false end function
+function uiLanEmpty1(context,a) return "" end function
+function uiLanEmpty(context,a,b) return "" end function
+function uiLanPing(context,index) return ["",0] end function
+function uiRegisterSound(context,name,compressed) return registerTypedAsset(context,"sound",name) end function
+function uiLocalSound(context,handle,channel) context.soundCommands=context.soundCommands+[soundEvent("local",-1,channel,handle,void,void,void,false,"","")];return void end function
+function uiStopMusic(context) context.soundCommands=context.soundCommands+[soundEvent("stopMusic",-1,0,0,void,void,void,false,"","")];return void end function
+function uiStartMusic(context,intro,trackLoop) context.soundCommands=context.soundCommands+[soundEvent("music",-1,0,0,void,void,void,false,intro,trackLoop)];return void end function
+function uiRealTime(context) return [n.quotient(context.now,1000),bytes(uiMedia.QTIME_SIZE,0)] end function
+function uiRemap(context,oldName,newName,timeOffset) return void end function
+function uiCdKey(context) return "0000000000000000" end function
+function uiSetCdKey(context,key) return void end function
+function uiVerifyCdKey(context,key,checksum) return true end function
+function uiSeek(context,handle,offset,origin) return -1 end function
+function uiPb(context,status) return void end function
+function uiPlayCinematic(context,name,x,y,w,h,bits) return -1 end function
+function uiCinematicStop(context,handle) return 0 end function
+function uiCinematicRun(context,handle) return 0 end function
+function uiCinematicDraw(context,handle) return void end function
+function uiCinematicExtents(context,handle,x,y,w,h) return void end function
+
+function extendedUi(context,vm,base,op)
+  if op==22 then at=common.pointer(vm,common.argument(vm,base,1),140,"UI refEntity");sceneQueue.addEntity(context.scene,n.readI32(vm.data,at),slice(vm.data,at,140));return 0 end if
+  if op==23 then return addCgamePolys(context,vm,base,false) end if
+  if op==24 then
+    origin=common.readFloatVector(vm,common.argument(vm,base,1),3,"UI light origin")
+    sceneQueue.addDynamicLight(context.scene,origin,n.bitsFloat(common.argument(vm,base,2)),n.bitsFloat(common.argument(vm,base,3)),n.bitsFloat(common.argument(vm,base,4)),n.bitsFloat(common.argument(vm,base,5)),false);return 0
+  end if
+  if op==25 then context.latestRefdef=decodeRefdef(vm,common.argument(vm,base,1));return 0 end if
+  if op==29 then return lerpModelTag(context,vm,base) end if
+  if op==30 then return 0 end if
+  if op==55 then return 0 end if
+  if op==56 then
+    mins=common.pointer(vm,common.argument(vm,base,2),12,"UI model mins");maxs=common.pointer(vm,common.argument(vm,base,3),12,"UI model maxs")
+    bounds=rendererModelBounds(context,common.argument(vm,base,1));writeVector(vm.data,mins,bounds[0]);writeVector(vm.data,maxs,bounds[1]);return 0
+  end if
+  // The Baseq3 q3_ui module does not use the Team Arena parser imports. Keep
+  // their failure semantics explicit for compatible UI modules.
+  if op>=57 and op<=61 then return 0 end if
+  return error(7643,"local QVM match: unsupported retail UI trap "+str(op))
+end function
+
+function bootUi(value)
+  if value==void then return fail("match is required before UI initialization") end if
+  context=value.context;shared=common.services(context.cvars,context.commandState,context);shared.printFn=emitPrint;shared.errorFn=emitError;shared.millisecondsFn=milliseconds;shared.consoleFn=consoleCommand
+  shared.openFn=openFile;shared.readFn=readFile;shared.writeFn=writeFile;shared.closeFn=closeFile
+  syscalls=uiSyscall.services(shared,context);syscalls.client.clipboardFn=uiClipboard;syscalls.client.glconfigFn=glconfigBytes;syscalls.client.clientStateFn=uiClientState;syscalls.client.configStringFn=uiConfigString
+  syscalls.keys.keyNameFn=uiKeyName;syscalls.keys.bindingFn=uiBinding;syscalls.keys.setBindingFn=uiSetBinding;syscalls.keys.isDownFn=uiKeyDown;syscalls.keys.getOverstrikeFn=uiFalse;syscalls.keys.setOverstrikeFn=uiSetBool;syscalls.keys.clearFn=uiClearKeys;syscalls.keys.getCatcherFn=uiGetCatcher;syscalls.keys.setCatcherFn=uiSetCatcher
+  syscalls.renderer.registerModelFn=registerModel;syscalls.renderer.registerSkinFn=registerSkin;syscalls.renderer.registerShaderNoMipFn=registerShaderNoMip;syscalls.renderer.clearSceneFn=clearScene;syscalls.renderer.setColorFn=uiSetColor;syscalls.renderer.drawStretchPicFn=uiStretchPic;syscalls.renderer.updateScreenFn=updateScreen
+  syscalls.lan.loadFn=uiLanNoop;syscalls.lan.saveFn=uiLanNoop;syscalls.lan.addFn=uiLanZero3;syscalls.lan.removeFn=uiLanNoop2;syscalls.lan.pingQueueCountFn=uiLanZero0;syscalls.lan.clearPingFn=uiLanZero;syscalls.lan.getPingFn=uiLanPing;syscalls.lan.getPingInfoFn=uiLanEmpty1;syscalls.lan.serverCountFn=uiLanZero;syscalls.lan.serverAddressFn=uiLanEmpty;syscalls.lan.serverInfoFn=uiLanEmpty;syscalls.lan.serverPingFn=uiLanZero2;syscalls.lan.markVisibleFn=uiLanNoop3;syscalls.lan.isVisibleFn=uiLanFalse2;syscalls.lan.updatePingsFn=uiLanFalse;syscalls.lan.resetPingsFn=uiLanZero;syscalls.lan.serverStatusFn=uiKeyName;syscalls.lan.compareFn=uiLanZero5
+  syscalls.fileListFn=uiFileList;syscalls.memoryRemainingFn=memoryRemaining;syscalls.extendedFn=extendedUi;media=uiMedia.services(context);media.sound.registerFn=uiRegisterSound;media.sound.startLocalFn=uiLocalSound;media.sound.stopBackgroundFn=uiStopMusic;media.sound.startBackgroundFn=uiStartMusic
+  media.cinematic.playFn=uiPlayCinematic;media.cinematic.stopFn=uiCinematicStop;media.cinematic.runFn=uiCinematicRun;media.cinematic.drawFn=uiCinematicDraw;media.cinematic.setExtentsFn=uiCinematicExtents
+  media.platform.realTimeFn=uiRealTime;media.platform.remapShaderFn=uiRemap;media.platform.getCdKeyFn=uiCdKey;media.platform.setCdKeyFn=uiSetCdKey;media.platform.verifyCdKeyFn=uiVerifyCdKey;media.platform.seekFn=uiSeek;media.platform.pbStatusFn=uiPb;syscalls.mediaServices=media
+  host=uiVm.services(value.runtime,uiSyscall.callback(syscalls),loadClientVm,callVm,freeVm);ui=uiVm.create(host);if ui is error then return ui end if
+  initialized=uiVm.initialize(ui,uiVm.CA_ACTIVE,0,1);if initialized is error then return initialized end if;value.ui=ui;return ui
+end function
+function refreshUi(value,time) if value==void or value.ui==void then return fail("UI is not active") end if;value.context.now=time;result=uiVm.refresh(value.ui,time);if not (result is error) then value.context.uiFrames=value.context.uiFrames+1 end if;return result end function
+function setUiMenu(value,menu) if value==void or value.ui==void then return fail("UI is not active") end if;return uiVm.setActiveMenu(value.ui,menu) end function
+
+function shutdown(value) if value!=void then if value.ui!=void then uiVm.shutdown(value.ui) end if;if value.cgame!=void then cgameVm.shutdown(value.cgame) end if;return gameVm.shutdown(value.game) end if;return void end function
