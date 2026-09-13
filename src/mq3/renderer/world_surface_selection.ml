@@ -15,7 +15,7 @@ const DEFAULT_NEAR_DISTANCE=1.0
 const DEFAULT_FAR_DISTANCE=8192.0
 const DEFAULT_TRIANGLE_BUDGET=12000
 
-struct SelectionConfig width height horizontalFov nearDistance farDistance triangleBudget backfaceCull patchError lightGrid end struct
+struct SelectionConfig width height horizontalFov nearDistance farDistance triangleBudget backfaceCull patchError runtime end struct
 struct Candidate faceIndex triangleCount distanceSquared importance end struct
 struct Selection faceIndexes candidateCount selectedSurfaceCount estimatedTriangleCount pvsUsed cameraLeaf cameraCluster rejectedPvs rejectedFrustum rejectedBackface rejectedDistance rejectedBudget end struct
 struct PreparedWorld selection renderData end struct

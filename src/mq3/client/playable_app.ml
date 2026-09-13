@@ -24,6 +24,7 @@ import mq3.client.playable_projectile_view as projectileView
 import mq3.client.playable_projectile_models as projectileModels
 import mq3.client.playable_projectile_fx as projectileFx
 import mq3.client.playable_marks as playableMarks
+import mq3.client.playable_player_shadows as playerShadows
 import mq3.client.playable_explosions as playableExplosions
 import mq3.client.playable_sky as playableSky
 import mq3.client.playable_muzzle_flash as muzzleFlash
@@ -89,6 +90,7 @@ const MAX_TRIANGLES_PER_PROJECTILE=256
 struct PlayerTexture part surface imageName image slot end struct
 struct PlayerSkinSet lower upper head end struct
 struct PlayerModelAssets models animation textures cache end struct
+struct RenderRuntime lightGrid collisionWorld shadowCatalog end struct
 
 function captureEnemyPositions(targetState)
   result=[]
@@ -588,7 +590,15 @@ function reservePlayerSpawn(targetState,playerState,spawnIndex)
   return void
 end function
 
-function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatalog,explosionCatalog,lightGrid,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,now,menuOpen)
+function renderTargetShadows(projection,targets,eventState,enemyState,now,runtime)
+  if runtime==void or runtime.shadowCatalog==void or runtime.collisionWorld==void then return 0 end if
+  values=[]
+  for index=0 to len(targets)-1 target=targets[index];input=enemyEvents.input(eventState,index);if input is error then return input end if;show=enemyState.brains[index].visible;if input.action=="death" and input.elapsedMilliseconds<1200 then show=true end if;if show then shadow=playerShadows.trace(runtime.collisionWorld,target.origin,0.0);if shadow is error then return shadow end if;if shadow!=void then values=values+[shadow] end if end if end for
+  return playerShadows.draw(values,runtime.shadowCatalog,projection)
+end function
+
+function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatalog,explosionCatalog,runtime,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,now,menuOpen)
+  lightGrid=runtime.lightGrid
   window.beginFrame(7,10,16)
   if menuOpen then
     menuDraw=menu.drawRetailState(menuCatalog,menuState,WIDTH,HEIGHT,now);if menuDraw is error then return menuDraw end if
@@ -612,6 +622,7 @@ function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemC
     if menuCatalog==void then hud.drawText("SPACE JUMP  MOUSE1 FIRE",WIDTH/2-138,HEIGHT/2+112,2,150,205,215) end if
   else
     itemDraw=drawItemTriangles(projection,pickupTriangles,lightGrid);if itemDraw is error then return itemDraw end if
+    shadowDraw=renderTargetShadows(projection,renderTargets,eventState,enemyState,now,runtime);if shadowDraw is error then return shadowDraw end if
     targetDraw=renderTargetModels(camera,projection,renderTargets,modelAssets,eventState,enemyState,now,lightGrid);if targetDraw is error then return targetDraw end if
     trailCommands=projectileFx.frameCommands(projectileFxState,camera,projectileEffects,now,WIDTH,HEIGHT,HORIZONTAL_FOV,1.0)
     projectileFx.drawPuffs(trailCommands)
@@ -853,7 +864,7 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fog
     visibleTargets=renderTargets
     if not menuOpen then visibleTargets=visibleTargetViews(enemyState,renderTargets,current) end if
     renderStarted=window.milliseconds();updateMilliseconds=updateMilliseconds+(renderStarted-current)
-    rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatalog,explosionCatalog,worldConfig.lightGrid,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,current,menuOpen);if rendered is error then return rendered end if;renderMilliseconds=renderMilliseconds+(window.milliseconds()-renderStarted);frames=frames+1
+    rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatalog,explosionCatalog,worldConfig.runtime,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,current,menuOpen);if rendered is error then return rendered end if;renderMilliseconds=renderMilliseconds+(window.milliseconds()-renderStarted);frames=frames+1
     caption=fpsTitle.frame(fpsState,window.milliseconds());if caption is error then return caption end if
     if caption!=void and not window.setTitle(caption) then return error(7489,"could not update preview window title") end if
     lastEnter=enterDown;lastEscape=escapeDown;lastPreviousWeapon=window.keyDown(window.VK_Q);lastNextWeapon=window.keyDown(window.VK_E);lastDigitWeapon=digitWeaponDown()
@@ -870,7 +881,7 @@ function runLimited(map,maxFrames,sound,archive)
   playerState=playablePlayer.load(map);if playerState is error then return playerState end if
   camera=viewer.camera(playerState.position,playerState.yaw,0.0,320.0,0.12);if camera is error then return camera end if
   worldConfig=worldSelection.defaults(WIDTH,HEIGHT);if worldConfig is error then return worldConfig end if
-  worldConfig.lightGrid=lightGrid
+  worldConfig.runtime=RenderRuntime(lightGrid,world,void)
   worldConfig.horizontalFov=HORIZONTAL_FOV
   worldConfig.triangleBudget=20000
   worldCache=worldSelection.buildCache(map,worldConfig.patchError);if worldCache is error then return worldCache end if
@@ -941,9 +952,15 @@ function runLimited(map,maxFrames,sound,archive)
     markTextureSlot=64;if catalog!=void then markTextureSlot=64+catalog.textureCount end if;if projectileCatalog!=void then markTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if;if skyCatalog!=void then markTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if;if fogCatalog!=void then markTextureSlot=fogCatalog.textureSlot+1 end if;if dlightCatalog!=void then markTextureSlot=dlightCatalog.textureSlot+1 end if
     if markTextureSlot+4<=PLAYER_TEXTURE_FIRST_SLOT then loadedMarks=try(playableMarks.load(archive,markTextureSlot,4));if not (loadedMarks is error) then markCatalog=loadedMarks end if end if
   end if
+  shadowCatalog=void
+  if archive!=void then
+    shadowTextureSlot=64;if catalog!=void then shadowTextureSlot=64+catalog.textureCount end if;if projectileCatalog!=void then shadowTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if;if skyCatalog!=void then shadowTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if;if fogCatalog!=void then shadowTextureSlot=fogCatalog.textureSlot+1 end if;if dlightCatalog!=void then shadowTextureSlot=dlightCatalog.textureSlot+1 end if;if markCatalog!=void then shadowTextureSlot=markCatalog.firstTextureSlot+markCatalog.textureCount end if
+    if shadowTextureSlot<PLAYER_TEXTURE_FIRST_SLOT then loadedShadow=try(playerShadows.load(archive,shadowTextureSlot));if not (loadedShadow is error) then shadowCatalog=loadedShadow end if end if
+  end if
+  worldConfig.runtime.shadowCatalog=shadowCatalog
   explosionCatalog=void
   if archive!=void then
-    explosionTextureSlot=64;if catalog!=void then explosionTextureSlot=64+catalog.textureCount end if;if projectileCatalog!=void then explosionTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if;if skyCatalog!=void then explosionTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if;if fogCatalog!=void then explosionTextureSlot=fogCatalog.textureSlot+1 end if;if dlightCatalog!=void then explosionTextureSlot=dlightCatalog.textureSlot+1 end if;if markCatalog!=void then explosionTextureSlot=markCatalog.firstTextureSlot+markCatalog.textureCount end if
+    explosionTextureSlot=64;if catalog!=void then explosionTextureSlot=64+catalog.textureCount end if;if projectileCatalog!=void then explosionTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if;if skyCatalog!=void then explosionTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if;if fogCatalog!=void then explosionTextureSlot=fogCatalog.textureSlot+1 end if;if dlightCatalog!=void then explosionTextureSlot=dlightCatalog.textureSlot+1 end if;if markCatalog!=void then explosionTextureSlot=markCatalog.firstTextureSlot+markCatalog.textureCount end if;if shadowCatalog!=void then explosionTextureSlot=shadowCatalog.textureSlot+1 end if
     if explosionTextureSlot+playableExplosions.MAX_TEXTURES<=PLAYER_TEXTURE_FIRST_SLOT then loadedExplosions=try(playableExplosions.load(archive,explosionTextureSlot,playableExplosions.MAX_TEXTURES));if not (loadedExplosions is error) then explosionCatalog=loadedExplosions end if end if
   end if
   modelAssets=void;if shaderScripts!=void then modelAssets=archivePlayerAssets(archive,shaderScripts[0]) end if
@@ -968,6 +985,7 @@ function runLimited(map,maxFrames,sound,archive)
     if fogCatalog!=void then hudTextureFirst=fogCatalog.textureSlot+1 end if
     if dlightCatalog!=void then hudTextureFirst=dlightCatalog.textureSlot+1 end if
     if markCatalog!=void then hudTextureFirst=markCatalog.firstTextureSlot+markCatalog.textureCount end if
+    if shadowCatalog!=void then hudTextureFirst=shadowCatalog.textureSlot+1 end if
     if explosionCatalog!=void then hudTextureFirst=explosionCatalog.firstTextureSlot+explosionCatalog.textureCount end if
     hudTextureCount=PLAYER_TEXTURE_FIRST_SLOT-hudTextureFirst
     loadedHud=try(baseHud.load(archive,hudTextureFirst,hudTextureCount));if not (loadedHud is error) then baseHudCatalog=loadedHud end if
@@ -1030,6 +1048,7 @@ function runLimited(map,maxFrames,sound,archive)
     if fogCatalog!=void then uploadedFog=playableFog.upload(fogCatalog);if uploadedFog is error then window.shutdown();return uploadedFog end if end if
     if dlightCatalog!=void then uploadedDlights=dynamicLights.upload(dlightCatalog);if uploadedDlights is error then window.shutdown();return uploadedDlights end if end if
     if markCatalog!=void then uploadedMarks=playableMarks.upload(markCatalog);if uploadedMarks is error then window.shutdown();return uploadedMarks end if end if
+    if shadowCatalog!=void then uploadedShadow=playerShadows.upload(shadowCatalog);if not uploadedShadow then window.shutdown();return error(7488,"could not upload player-shadow texture") end if end if
     if explosionCatalog!=void then uploadedExplosions=playableExplosions.upload(explosionCatalog);if uploadedExplosions is error then window.shutdown();return uploadedExplosions end if end if
     if modelAssets!=void then
       uploaded=[]
@@ -1111,6 +1130,7 @@ function runLimited(map,maxFrames,sound,archive)
   fogVolumeCount=0;if fogCatalog!=void then fogVolumeCount=len(fogCatalog.fogs)-1 end if;fogTriangleCount=0;if catalog!=void and worldBatchState.fogBatch!=void then fogTriangleCount=worldBatchState.fogBatch.commands.count end if;print "Retail fog volumes: "+str(fogVolumeCount)+" visible triangles: "+str(fogTriangleCount)
   dlightReceiverCount=0;if catalog!=void and worldBatchState.dlightBatch!=void then dlightReceiverCount=len(worldBatchState.dlightBatch.triangles) end if;print "Projected dlight receivers: "+str(dlightReceiverCount)
   markTextureCount=0;if markCatalog!=void then markTextureCount=markCatalog.textureCount end if;print "Retail impact-mark textures: "+str(markTextureCount)
+  shadowTextureCount=0;if shadowCatalog!=void then shadowTextureCount=1 end if;print "Retail player-shadow textures: "+str(shadowTextureCount)
   explosionTextureCount=0;if explosionCatalog!=void then explosionTextureCount=explosionCatalog.textureCount end if;print "Retail explosion textures: "+str(explosionTextureCount)
   lightGridPoints=0;if lightGrid.valid then lightGridPoints=lightGrid.bounds[0]*lightGrid.bounds[1]*lightGrid.bounds[2] end if;print "BSP light-grid points: "+str(lightGridPoints)
   viewmodelTracker=viewmodel.tracker();viewmodelSettings=viewmodel.softwareRendererSettings();viewmodelAnimation=viewmodel.weaponAnimation(weaponState.classname);barrelState=weaponBarrel.state()
@@ -1124,6 +1144,7 @@ function runLimited(map,maxFrames,sound,archive)
   if fogCatalog!=void then playableFog.release(fogCatalog) end if
   if dlightCatalog!=void then dynamicLights.release(dlightCatalog) end if
   if markCatalog!=void then playableMarks.release(markCatalog) end if
+  if shadowCatalog!=void then playerShadows.release(shadowCatalog) end if
   if explosionCatalog!=void then playableExplosions.release(explosionCatalog) end if
   if baseHudCatalog!=void then baseHud.release(baseHudCatalog) end if
   if menuCatalog!=void then menu.release(menuCatalog) end if

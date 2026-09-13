@@ -99,7 +99,8 @@ tagged spinning/coasting retail barrels and real rotating/bobbing pickup MD3s,
 stock weapon fire timing and damage, recoil, hit/kill feedback and 21 decoded
 retail weapon sounds make those actions visible and audible. Enemy models now switch between idle, walk, run,
 attack, pain, death and respawn animation inputs. Near players use the complete
-795-triangle Sarge model with skin-resolved, RGB BSP light-grid vertex lighting; distance LODs
+795-triangle Sarge model with skin-resolved RGB BSP light-grid vertex lighting
+and the original height-faded `markShadow` blob; distance LODs
 retain every surface. A quantized MD3 cache shares interpolated poses, and the
 world/player material paths share one shader index. The Baseq3 HUD now shows the
 owned-weapon strip for 1.4 seconds after a switch, enlarges the selected retail

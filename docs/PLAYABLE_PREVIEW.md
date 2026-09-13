@@ -99,7 +99,10 @@ pickups, projectiles and the first-person weapon share this lighting path. The
 result remains separate RGB vertex color through perspective-correct native
 rasterization instead of collapsing the map's colored light to grayscale. Each
 entity samples once per pose, so the added fidelity does not multiply the work
-by every MD3 vertex. A bounded pose cache reuses quantized MD3 interpolation results;
+by every MD3 vertex. Visible players also cast Baseq3's original `markShadow`
+blob: a player-sized box trace searches 128 units downward, aligns the 24-unit
+mark to the hit plane and fades it by height exactly as `CG_PlayerShadow`.
+A bounded pose cache reuses quantized MD3 interpolation results;
 world and player materials also share the same 27-script shader index.
 Enemy movement is resolved through a player-sized BSP hull with wall sliding,
 18-unit steps and ground binding. Their attacks now launch 420-unit-per-second
@@ -280,6 +283,9 @@ Validation:
 - `python scripts/test_playable_light_grid.py --pak D:/Quake3/baseq3/pak0.pk3`:
   13 grid-layout, overbright, trilinear interpolation, wall-sample, RGB diffuse,
   direction and minimum-light contracts plus all 8,514 q3dm1 grid points.
+- `python scripts/test_playable_player_shadows.py --pak D:/Quake3/baseq3/pak0.pk3`:
+  nine Baseq3 trace-bounds, distance, fade, orientation and plane contracts plus
+  the retail 32x32 `markShadow` texture and ground hits for all five q3dm1 targets.
 - `python scripts/test_playable_item_models.py`: 44 pickup-model, material,
   transform and budget contracts plus a retail q3dm1 probe.
 - `python scripts/benchmark_playable_item_models.py`: indexed MD3 transform
