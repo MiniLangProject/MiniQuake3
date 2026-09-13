@@ -252,7 +252,7 @@ function parse(state,name)
       stage=parseStage(state);shader.stages=shader.stages+[stage];if stage.portalRange>0.0 then shader.portalRange=stage.portalRange end if
     else
       command=lower(token)
-      if strings.startsWith(command,"qer") or strings.startsWith(command,"q3map") or command=="tesssize" then skipLine(state)
+      if strings.startsWith(command,"qer") or strings.startsWith(command,"q3map") or command=="tesssize" or command=="skyparms" or command=="cloudparms" or command=="lightning" then skipLine(state)
       else if command=="surfaceparm" then value=parser.parseExt(state,false);if value!="" then shader.surfaceParms=shader.surfaceParms+[lower(value)] end if
       else if command=="nomipmaps" then shader.noMipMaps=true;shader.noPicMip=true
       else if command=="nopicmip" then shader.noPicMip=true

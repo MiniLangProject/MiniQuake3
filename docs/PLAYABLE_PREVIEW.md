@@ -71,8 +71,10 @@ no longer cut each other off. Looped-on `target_speaker` entities are extracted
 from the BSP. q3dm1's eight fire speakers share one phase-continuous retail WAV
 source, but retain individual origins for Baseq3 distance attenuation and
 listener-relative stereo panning through a triple-buffered WinMM stream.
-The q3dm1 `tim_hell` sky is camera-anchored and renders both original scrolling
-retail layers. Every selectable weapon loads its stock `_flash.md3`; impulse
+The camera-anchored sky follows each BSP's `surfaceparm sky` material. q3dm1
+`tim_hell`, q3ctf1 `toxicskytim_blue` and q3dm4 `xtoxicsky_dm9` render their
+original two scrolling retail layers with ordered scale/scroll transforms.
+Every selectable weapon loads its stock `_flash.md3`; impulse
 weapons show it for the source-anchored 20 ms interval, while Gauntlet and
 Lightning keep it visible during continuous fire.
 
@@ -275,8 +277,8 @@ Validation:
 - `python scripts/test_spatial_ambient.py --pak D:/Quake3/baseq3/pak0.pk3`:
   42 spatial mixing, resampling, limiting, phase and runtime contracts plus all
   eight audible q3dm1 fire sources.
-- `python scripts/test_playable_sky.py --pak D:/Quake3/baseq3/pak0.pk3`: 16
-  contracts plus both 256x256 q3dm1 retail sky layers.
+- `python scripts/test_playable_sky.py --pak D:/Quake3/baseq3/pak0.pk3`: 18
+  contracts plus six retail cloud layers across q3dm1, q3ctf1 and q3dm4.
 - `python scripts/test_playable_match.py`: 25 countdown, announcer, clock, limit and
   intermission contracts.
 - `python scripts/test_baseq3_match_display.py --pak D:/Quake3/baseq3/pak0.pk3`:

@@ -888,8 +888,8 @@ function runLimited(map,maxFrames,sound,archive)
     skyFirst=64;if catalog!=void then skyFirst=64+catalog.textureCount end if
     if projectileCatalog!=void then skyFirst=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if
     skySlots=PLAYER_TEXTURE_FIRST_SLOT-skyFirst
-    if skySlots>=playableSky.REQUIRED_TEXTURES then
-      loadedSky=try(playableSky.load(archive,skyFirst,skySlots));if not (loadedSky is error) then skyCatalog=loadedSky end if
+    if skySlots>=playableSky.REQUIRED_TEXTURES and shaderScripts!=void then
+      loadedSky=try(playableSky.loadMap(archive,map,shaderScripts[0],skyFirst,skySlots));if not (loadedSky is error) then skyCatalog=loadedSky end if
     end if
   end if
   modelAssets=void;if shaderScripts!=void then modelAssets=archivePlayerAssets(archive,shaderScripts[0]) end if
@@ -992,7 +992,7 @@ function runLimited(map,maxFrames,sound,archive)
   skyTextureFlags=array(map.counts[1],false)
   for textureIndex=0 to map.counts[1]-1
     mapShader=materials.shaderName(map,textureIndex);if mapShader is error then window.shutdown();return mapShader end if
-    skyTextureFlags[textureIndex]=playableSky.isSkyShader(mapShader)
+    if shaderScripts!=void then skyTextureFlags[textureIndex]=playableSky.isSkyShaderIndexed(shaderScripts[0],mapShader) else skyTextureFlags[textureIndex]=playableSky.isSkyShader(mapShader) end if
   end for
   if catalog!=void then for each material in catalog.materials materialSlots[material.textureIndex]=material.slot end for end if
   worldBatchState=void
@@ -1035,7 +1035,8 @@ function runLimited(map,maxFrames,sound,archive)
   if projectileCatalog!=void then projectileAssetCount=len(projectileCatalog.assets);projectileTextureCount=len(projectileCatalog.textures) end if
   print "Retail projectile assets: "+str(projectileAssetCount)+" textures: "+str(projectileTextureCount)
   skyTextureCount=0;if skyCatalog!=void then skyTextureCount=skyCatalog.textureCount end if
-  print "Retail q3dm1 sky textures: "+str(skyTextureCount)
+  skyShader="none";if skyCatalog!=void then skyShader=skyCatalog.shaderName end if
+  print "Retail sky shader: "+skyShader+" textures: "+str(skyTextureCount)
   print "Gameplay sounds loaded: "+str(soundCount)
   print "Spatial map ambience: "+str(ambientSoundCount)
   materialCount=0;if catalog!=void then materialCount=len(catalog.materials) end if

@@ -1,6 +1,7 @@
 import mq3.client.playable_sky as sky
 import mq3.client.playable_viewer as viewer
 import mq3.renderer.playable_materials as materials
+import mq3.renderer.shader_index as shaderIndex
 
 function require(ok,text) if not ok then return error(7611,text) end if;return 1 end function
 function near(a,b) d=a-b;if d<0 then d=0-d end if;return d<0.002 end function
@@ -10,6 +11,9 @@ function main(args)
   count=count+require(sky.isSkyShader("textures/skies/tim_hell"),"q3dm1 sky recognized")
   count=count+require(sky.isSkyShader("TEXTURES/SKIES/TIM_HELL"),"sky recognition case insensitive")
   count=count+require(not sky.isSkyShader("textures/skies/blacksky"),"other shader retained")
+  index=shaderIndex.build("textures/skies/cloudy {\n surfaceparm sky\n skyparms - 512 -\n cloudparms 512 full\n lightning\n {\n map textures/skies/cloud\n tcMod scale 2 3\n tcMod scroll .1 .2\n }\n}\ntextures/wall {\n {\n map textures/wall\n }\n}\n")
+  count=count+require(sky.isSkyShaderIndexed(index,"textures/skies/cloudy"),"surfaceparm sky recognized from shader index")
+  count=count+require(not sky.isSkyShaderIndexed(index,"textures/wall"),"ordinary indexed material is not a sky")
   source=materials.Image(1,1,bytes([20,40,30,255]))
   firstLayer=sky.Layer("first",source,4,2.0,2.0,0.05,0.10,false)
   secondLayer=sky.Layer("second",source,5,3.0,2.0,0.05,0.06,true)
@@ -34,7 +38,7 @@ function main(args)
   count=count+require(near(value.uv[0],0.05) and near(value.uv[1],1.10),"tim_hell scale and scroll")
   count=count+require(value.point.depth==sky.SKY_DEPTH,"sky stays behind world")
   count=count+require(sky.GRID_COLUMNS*sky.GRID_ROWS*2==192,"bounded layer triangle count")
-  catalog=sky.Catalog([firstLayer,secondLayer],4,2)
+  catalog=sky.Catalog([firstLayer,secondLayer],4,2,"textures/skies/test")
   batch=sky.buildBatch(catalog,camera,640,480,1000)
   count=count+require(batch.count==384 and batch.capacity==384,"two layers share one native batch")
   count=count+require(len(batch.data)==384*128,"fixed batch allocation")

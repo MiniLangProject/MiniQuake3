@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// q3dm1's retail tim_hell cloud sky for the software playable preview.
+// Retail cloud skies resolved from each BSP shader for the software preview.
 package mq3.client.playable_sky
 
 import mq3.client.playable_viewer as viewer
@@ -7,22 +7,30 @@ import mq3.renderer.playable_materials as materials
 import mq3.platform.playable_window as window
 import mq3.shared.math as qmath
 import mq3.compat.transcendental as trans
+import mq3.renderer.shader_parser as shaderParser
 import std.string as strings
 
 const SHADER_NAME="textures/skies/tim_hell"
-const FIRST_IMAGE="textures/skies/killsky_1"
-const SECOND_IMAGE="textures/skies/killsky_2"
 const REQUIRED_TEXTURES=2
 const GRID_COLUMNS=12
 const GRID_ROWS=8
 const SKY_DEPTH=1000000.0
 
 struct Layer imageName image slot scaleU scaleV scrollU scrollV additive end struct
-struct Catalog layers firstTextureSlot textureCount end struct
+struct Catalog layers firstTextureSlot textureCount shaderName end struct
 struct Vertex point uv end struct
 
 function fail(message) return error(7610,"playable sky: "+message) end function
 function isSkyShader(name) return name!=void and strings.toLowerAscii(name)==SHADER_NAME end function
+function hasSurfaceParm(shader,wanted)
+  if shader==void then return false end if
+  for each value in shader.surfaceParms if strings.toLowerAscii(value)==wanted then return true end if end for
+  return false
+end function
+function isSkyShaderIndexed(index,name)
+  parsed=try(shaderParser.parseIndexed(index,name));if parsed is error or parsed==void then return false end if
+  return hasSurfaceParm(parsed,"sky")
+end function
 
 function additiveImage(source)
   pixels=bytes(len(source.pixels),0);offset=0
@@ -34,13 +42,48 @@ function additiveImage(source)
   return materials.Image(source.width,source.height,pixels)
 end function
 
+function layerFromStage(archive,stage,slot)
+  if stage==void or stage.isLightmap or len(stage.images)==0 then return void end if
+  imageName=strings.toLowerAscii(stage.images[0]);if imageName=="$lightmap" or imageName=="$whiteimage" then return void end if
+  loaded=materials.loadImage(archive,stage.images[0]);if loaded==void then return void end if
+  scaleU=1.0;scaleV=1.0;scrollU=0.0;scrollV=0.0;supported=true
+  for each mod in stage.texMods
+    if mod.kind=="scale" and len(mod.values)>=2 then scrollU=scrollU*mod.values[0];scrollV=scrollV*mod.values[1];scaleU=scaleU*mod.values[0];scaleV=scaleV*mod.values[1]
+    else if mod.kind=="scroll" and len(mod.values)>=2 then scrollU=scrollU+mod.values[0];scrollV=scrollV+mod.values[1]
+    else supported=false
+    end if
+  end for
+  if not supported then return void end if
+  additive=stage.blendSrc==shaderParser.GLS_SRCBLEND_ONE and stage.blendDst==shaderParser.GLS_DSTBLEND_ONE
+  image=loaded[1];if additive then image=additiveImage(image) end if
+  return Layer(loaded[0],image,slot,scaleU,scaleV,scrollU,scrollV,additive)
+end function
+
+function loadIndexed(archive,index,shaderName,firstTextureSlot,maxTextureSlots)
+  if archive==void or index==void then return fail("PK3 archive and shader index are required") end if
+  if firstTextureSlot<0 or firstTextureSlot>=512 or maxTextureSlots<1 then return fail("insufficient native texture slots") end if
+  parsed=shaderParser.parseIndexed(index,shaderName);if parsed is error then return parsed end if
+  if parsed==void or not hasSurfaceParm(parsed,"sky") then return fail("shader is not a retail sky: "+shaderName) end if
+  layers=[]
+  for each stage in parsed.stages
+    if len(layers)>=maxTextureSlots or firstTextureSlot+len(layers)>=512 then break end if
+    layer=layerFromStage(archive,stage,firstTextureSlot+len(layers));if layer!=void then layers=layers+[layer] end if
+  end for
+  if len(layers)==0 then return fail("sky has no supported retail cloud stages: "+shaderName) end if
+  return Catalog(layers,firstTextureSlot,len(layers),strings.toLowerAscii(shaderName))
+end function
+
+function loadMap(archive,map,index,firstTextureSlot,maxTextureSlots)
+  for textureIndex=0 to map.counts[1]-1
+    name=materials.shaderName(map,textureIndex);if name is error then return name end if
+    if isSkyShaderIndexed(index,name) then return loadIndexed(archive,index,name,firstTextureSlot,maxTextureSlots) end if
+  end for
+  return void
+end function
+
 function load(archive,firstTextureSlot,maxTextureSlots)
-  if archive==void then return fail("PK3 archive is required") end if
-  if firstTextureSlot<0 or firstTextureSlot+REQUIRED_TEXTURES>512 or maxTextureSlots<REQUIRED_TEXTURES then return fail("insufficient native texture slots") end if
-  first=materials.loadImage(archive,FIRST_IMAGE);if first==void then return fail("missing retail image "+FIRST_IMAGE) end if
-  second=materials.loadImage(archive,SECOND_IMAGE);if second==void then return fail("missing retail image "+SECOND_IMAGE) end if
-  layers=[Layer(first[0],first[1],firstTextureSlot,2.0,2.0,0.05,0.10,false),Layer(second[0],additiveImage(second[1]),firstTextureSlot+1,3.0,2.0,0.05,0.06,true)]
-  return Catalog(layers,firstTextureSlot,len(layers))
+  scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if
+  return loadIndexed(archive,scripts[0],SHADER_NAME,firstTextureSlot,maxTextureSlots)
 end function
 
 function upload(catalog)

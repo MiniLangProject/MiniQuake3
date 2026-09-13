@@ -50,8 +50,9 @@ sliding and 18-unit stair steps use the real BSP brush and patch collision world
 The renderer tessellates curved BSP patches, resolves BSP shader names,
 reads shader scripts, decodes TGA/JPEG assets and multiplies the base image with
 the BSP lightmap. Enter also plays an original WAV loaded from `pak0.pk3`;
-Escape returns to the menu and a second Escape quits. The moving `tim_hell`
-sky now uses both original q3dm1 retail layers. The retained world renderer now
+Escape returns to the menu and a second Escape quits. Map skies are selected
+from `surfaceparm sky`; q3dm1, q3ctf1 and q3dm4 use their own original two-layer
+cloud shaders, images and ordered texture transforms. The retained world renderer now
 executes q3dm1's animated, scrolling, rotating, alpha and additive material
 passes in Quake's explicit and inferred shader-sort order. Each retained stage
 also applies its parsed `depthWrite` and `depthFunc equal` state. Materials with

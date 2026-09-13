@@ -9,7 +9,8 @@ function main(args)
   if len(args)!=2 then return error(7492,"usage: playable_world_material_retail_probe <pak0.pk3> <map>") end if
   archive=pk3.open(args[0]);if archive is error then return archive end if
   map=bsp.load(pk3.read(archive,args[1]));if map is error then return map end if
-  catalog=materials.load(archive,map,256,64);if catalog is error then return catalog end if
+  scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if
+  catalog=materials.loadIndexed(archive,map,256,64,scripts[0],scripts[1]);if catalog is error then return catalog end if
   twoSided=0;polygonOffset=0;noMipMaps=0;rgbVertex=0;rgbEntity=0;alphaPortal=0;invalidPortalRange=0;alphaEntity=0;tcVector=0;deformWave=0;deformMove=0;deformBulge=0;deformNormal=0;deformAutosprite=0;deformAutosprite2=0;deformOther=0;opaqueSort=0;transparentSort=0;depthWriteStages=0;depthEqualStages=0
   for each material in catalog.materials
     if material.twoSided then twoSided=twoSided+1 end if;if material.polygonOffset then polygonOffset=polygonOffset+1 end if;if material.noMipMaps then noMipMaps=noMipMaps+1 end if
@@ -26,7 +27,7 @@ function main(args)
   end for
   data=renderData.all(map,20000);if data is error then return data end if
   flags=array(map.counts[1],false)
-  for index=0 to map.counts[1]-1 name=materials.shaderName(map,index);if name is error then return name end if;flags[index]=sky.isSkyShader(name) end for
+  for index=0 to map.counts[1]-1 name=materials.shaderName(map,index);if name is error then return name end if;flags[index]=sky.isSkyShaderIndexed(scripts[0],name) end for
   batch=worldBatch.buildMaterials(data,catalog,flags);if batch is error then return batch end if
   autospritePasses=0;autospriteQuads=0;autosprite2Passes=0;autosprite2Quads=0;invalidAutospritePairs=0
   for each pass in batch.passes
