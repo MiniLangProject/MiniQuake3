@@ -708,7 +708,7 @@ Upper und Head über `tag_torso` und `tag_head` zusammengesetzt, aus seiner
 `animation.cfg` interpoliert und mit den beiden Default-Skinbildern texturiert.
 Der Nahbereich zeichnet alle 795 Sarge-Dreiecke mit aufgelösten Skins und
 Normalenlicht; mittlere und weite LODs behalten alle Modellflächen. 37 MD3-,
-27 Animations-, 32 Assembly- und 25 Skin-Verträge sowie Retail-Assetproben
+27 Animations-, 34 Assembly- und 25 Skin-Verträge sowie Retail-Assetproben
 sichern den Pfad. Pro Ziel wählen Gameplay-Ereignisse nun Idle, Walk, Run,
 Attack, Pain, Death und Respawn; 22 Ereignis- und 29 Zustandsverträge prüfen die
 Übergänge. Ein quantisierter Pose-/LOD-Cache besteht 25 weitere Verträge. Die

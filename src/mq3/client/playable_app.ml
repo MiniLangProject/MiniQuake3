@@ -75,8 +75,8 @@ const PLAYER_TRIANGLES_PER_SURFACE=8192
 const MAX_DETAILED_PLAYER_MODELS=5
 const MAX_TARGET_WEAPON_TRIANGLES=512
 const MAX_NATIVE_TEXTURE_SLOTS=512
-const MAX_ITEM_MODELS=24
-const MAX_ITEM_TEXTURES=48
+const MAX_ITEM_MODELS=48
+const MAX_ITEM_TEXTURES=64
 const MAX_VISIBLE_ITEMS=24
 const MAX_ITEM_TRIANGLES=5000
 const MAX_TRIANGLES_PER_ITEM=512
@@ -538,7 +538,27 @@ function drawTargetWeapon(projection,itemCatalog,modelAssets,index,input,lower,u
   while index>=len(modelAssets.barrelStates) modelAssets.barrelStates=modelAssets.barrelStates+[weaponBarrel.state()] end while
   barrelAngle=weaponBarrel.advance(modelAssets.barrelStates[index],now,input.action=="attack");if barrelAngle is error then return barrelAngle end if
   barrel=weaponBarrel.render(itemCatalog,"weapon_machinegun",transform,barrelAngle,MAX_TARGET_WEAPON_TRIANGLES);if barrel is error then return barrel end if
-  return drawItemTriangles(projection,triangles+barrel,lightGrid)
+  drawn=drawItemTriangles(projection,triangles+barrel,lightGrid)
+  if input.action=="attack" then
+    lastFire=now-input.elapsedMilliseconds;flash=muzzleFlash.render(itemCatalog,"weapon_machinegun",transform,lastFire,now,false,MAX_TARGET_WEAPON_TRIANGLES);if flash is error then return flash end if
+    if len(flash.triangles)>0 then flashState=multitexture.setState(multitexture.BLEND_ADD,false,false);if flashState is error then return flashState end if;flashDrawn=drawTintedItemTriangles(projection,flash.triangles,flash.red,flash.green,flash.blue);if flashDrawn is error then return flashDrawn end if;drawn=drawn+flashDrawn;restore=multitexture.setState(multitexture.BLEND_OPAQUE,false,true);if restore is error then return restore end if end if
+  end if
+  return drawn
+end function
+
+function targetMuzzleLights(camera,renderTargets,modelAssets,itemCatalog,eventState,enemyState,now)
+  result=[];if modelAssets==void or itemCatalog==void or eventState==void or enemyState==void then return result end if
+  for index=0 to len(renderTargets)-1
+    input=enemyEvents.input(eventState,index);if input is error then return input end if
+    if input.action=="attack" and input.elapsedMilliseconds<=muzzleFlash.MUZZLE_FLASH_TIME and enemyState.brains[index].visible then
+      lower=playerAnimation.sampleAnimation(modelAssets.animation,input.lowerAnimation,input.elapsedMilliseconds);upper=playerAnimation.sampleAnimation(modelAssets.animation,input.upperAnimation,input.elapsedMilliseconds)
+      if not (lower is error) and not (upper is error) then
+        transform=targetWeaponTransform(modelAssets,lower,upper,targetTransform(renderTargets[index],camera));if transform is error then return transform end if
+        light=muzzleFlash.dynamicLight(itemCatalog,"weapon_machinegun",transform,now-input.elapsedMilliseconds,now,false);if light is error then return light end if;if light!=void then result=result+[light] end if
+      end if
+    end if
+  end for
+  return result
 end function
 
 function renderTargetModels(camera,projection,renderTargets,modelAssets,itemCatalog,eventState,enemyState,now,lightGrid)
@@ -631,6 +651,7 @@ function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemC
   if skyCatalog!=void then skyDraw=playableSky.draw(skyCatalog,camera,WIDTH,HEIGHT,now);if skyDraw is error then return skyDraw end if end if
   projection=viewer.prepareProjection(camera,WIDTH,HEIGHT,HORIZONTAL_FOV,1.0);if projection is error then return projection end if
   sceneLights=projectileFx.worldLights(projectileEffects,now)
+  enemyLights=targetMuzzleLights(camera,renderTargets,modelAssets,itemCatalog,eventState,enemyState,now);if enemyLights is error then return enemyLights end if;sceneLights=sceneLights+enemyLights
   if not viewmodelSwitching then muzzleLight=muzzleFlash.dynamicLight(itemCatalog,viewmodelClassname,viewmodelTransform,combatState.lastFire,now,weaponState.triggerHeld);if muzzleLight is error then return muzzleLight end if;if muzzleLight!=void then sceneLights=sceneLights+[muzzleLight] end if end if
   playableLightGrid.setDynamicLights(lightGrid,sceneLights)
   worldDrawn=0

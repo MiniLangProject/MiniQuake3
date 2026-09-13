@@ -97,7 +97,9 @@ patrol, chase, strafe, attack, take damage, die and respawn. Their animated,
 skinned model geometry is assembled from the real Sarge `lower.md3`, `upper.md3`
 and `head.md3` through `tag_torso` and `tag_head`. Each visible Sarge now carries
 the retail Machinegun and separate animated barrel on its interpolated
-`tag_weapon`. Armor absorption, player death,
+`tag_weapon`. During its attack event the attached retail `_flash.md3` appears
+at the barrel and casts the original yellow 300..331-unit dynamic light.
+Armor absorption, player death,
 spawn cycling and protection, score/KD, a textured retail first-person
 weapon model selected from the current pickup and attached through its original
 tag-only `_hand.md3`, including interpolated attack and weapon-change frames,

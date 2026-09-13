@@ -94,7 +94,10 @@ frames are interpolated and both default skin images are decoded from the PK3.
 The upper-body pose also interpolates `tag_weapon`; the real 171-triangle
 Machinegun and its separate 72-triangle barrel follow that transform and share
 the player's RGB light-grid and dynamic-light sampling. The barrel keeps an
-independent per-target spin/coast state driven by attack events.
+independent per-target spin/coast state driven by attack events. The first
+20 ms of each enemy shot also render the attached 24-triangle retail
+`flash.md3` and add its yellow 300..331-unit light to the shared scene-light
+list.
 Per-target gameplay events select idle, walk, run, attack, pain, death and
 respawn inputs. Near targets use all 795 triangles; medium and far LODs retain
 398 and 200 triangles while preserving every model surface. Interpolated MD3
@@ -287,7 +290,8 @@ Validation:
   contracts plus a retail Sarge probe.
 - `python scripts/test_player_model_assembly.py`: 34 tag hierarchy, transform
   and upper-weapon attachment contracts plus a retail Sarge probe that renders
-  the attached 171-triangle Machinegun and 72-triangle barrel.
+  the attached 171-triangle Machinegun, 72-triangle barrel and 24-triangle
+  muzzle flash, including its dynamic light.
 - `python scripts/test_player_skins.py`: 25 skin parser/resolver contracts plus
   decoding of both unique default Sarge textures.
 - `python scripts/test_playable_enemy_events.py`: 22 per-target gameplay event
