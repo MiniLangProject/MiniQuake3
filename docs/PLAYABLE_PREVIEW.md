@@ -190,6 +190,15 @@ darkening; energy marks use alpha blending, the original three-second colour
 decay and final one-second alpha fade. Native polygon offset keeps coplanar
 marks visible without writing depth, and hits on player models do not leave
 marks on the world.
+Projectile impacts now also render their retail Baseq3 explosions. Rocket
+sprites cross-fade eight `rlboom` frames at 8 Hz for one second; Grenade and
+BFG sprites cross-fade their three source frames at 5 Hz for 600 ms. Their
+camera-facing quads use `CG_AddSpriteExplosion`'s source time skew, rotation,
+16-unit normal offset and 30-to-72-unit growth. Plasma retains the original
+`ring02.md3` geometry with `plasmaboom`, normal-aligned orientation, shader
+stretch, 999-degree-per-second UV rotation, inverse-sawtooth intensity and
+additive blending. Matching impact snapshots remain alive for the source
+600/1000 ms intervals, so explosion light and imagery share one clock.
 Eleven q3dm1 passes use `rgbGen wave`; their original 1,024-entry waveform phase
 is quantized to colour bytes before rasterization. Remaining shader generators
 and deformation types, exact lower/upper animation-state
@@ -275,10 +284,13 @@ Validation:
 - `python scripts/test_playable_player_projectiles.py`: 32 Rocket, Plasma,
   Grenade and BFG flight, grenade bounce/settling, BSP/target, direct/splash
   damage and lifetime contracts.
-- `python scripts/test_playable_projectile_view.py`: 35 projected trail, glow,
+- `python scripts/test_playable_projectile_view.py`: 36 projected trail, glow,
   impact and fade contracts.
-- `python scripts/test_playable_projectile_fx.py`: 31 smoke, particle and light
+- `python scripts/test_playable_projectile_fx.py`: 34 smoke, particle and light
   contracts plus ten direct anchors in Baseq3 `cg_weapons.c`.
+- `python scripts/test_playable_explosions.py --pak D:/Quake3/baseq3/pak0.pk3`:
+  13 timing, animation, orientation, growth and shader-transform contracts plus
+  15 retail explosion textures and the original one-surface plasma ring model.
 - `python scripts/test_playable_projectile_models.py --pak D:/Quake3/baseq3/pak0.pk3`:
   34 catalog/orientation/budget contracts plus four retail projectile assets,
   eight textures and a 140-triangle render probe.

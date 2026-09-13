@@ -49,6 +49,13 @@ function defaultImpact(entityId,style,position,normal,eventAt)
   return impact(entityId,style,position,normal,eventAt,DEFAULT_IMPACT_MILLISECONDS)
 end function
 
+// CG_MissileHitWall keeps rocket explosions for 1000 ms and the remaining
+// Baseq3 projectile explosions for the default 600 ms.
+function retailImpact(entityId,style,position,normal,eventAt)
+  duration=600;if style==STYLE_ROCKET then duration=1000 end if
+  return impact(entityId,style,position,normal,eventAt,duration)
+end function
+
 function alive(value,nowMilliseconds)
   if value==void or nowMilliseconds<value.eventAt then return false end if
   return value.state==STATE_FLYING or nowMilliseconds<value.expiresAt

@@ -119,13 +119,14 @@ function projectedRadius(worldRadius,depth,width)
 end function
 
 function command(kind,center,radius,red,green,blue) return Command(kind,center,radius,red,green,blue) end function
+function impactStart(snapshot) return snapshot.eventAt-(numeric.i32(snapshot.entityId*97+snapshot.eventAt*17) & 63) end function
 
 function worldLights(snapshots,now)
   result=[]
   for each snapshot in snapshots
     p=profile(snapshot.style);radius=0.0;fade=1.0
     if snapshot.state==projectileView.STATE_FLYING then radius=p.flyingLight
-    else if snapshot.state==projectileView.STATE_IMPACT and now<snapshot.eventAt+p.impactLifetime then radius=p.impactLight;elapsed=now-snapshot.eventAt;if elapsed*2>p.impactLifetime then fade=1.0-(elapsed*2-p.impactLifetime)/p.impactLifetime end if end if
+    else if snapshot.state==projectileView.STATE_IMPACT and now<impactStart(snapshot)+p.impactLifetime then radius=p.impactLight;elapsed=now-impactStart(snapshot);if elapsed*2>p.impactLifetime then fade=1.0-(elapsed*2-p.impactLifetime)/p.impactLifetime end if end if
     if radius>0.0 and fade>0.0 then result=result+[dynamicLights.Light(copy3(snapshot.position),radius,[p.red*fade/255.0,p.green*fade/255.0,p.blue*fade/255.0],false)] end if
   end for
   return result
@@ -145,8 +146,8 @@ function frameCommands(state,camera,snapshots,now,width,height,horizontalFovDegr
   for each snapshot in snapshots
     p=profile(snapshot.style);worldRadius=0.0;fade=1.0
     if snapshot.state==projectileView.STATE_FLYING then worldRadius=p.flyingLight
-    else if snapshot.state==projectileView.STATE_IMPACT and now<snapshot.eventAt+p.impactLifetime then
-      worldRadius=p.impactLight;elapsed=now-snapshot.eventAt
+    else if snapshot.state==projectileView.STATE_IMPACT and now<impactStart(snapshot)+p.impactLifetime then
+      worldRadius=p.impactLight;elapsed=now-impactStart(snapshot)
       if elapsed*2>p.impactLifetime then fade=1.0-(elapsed*2-p.impactLifetime)/p.impactLifetime end if
     end if
     if worldRadius>0.0 and fade>0.0 then

@@ -22,7 +22,7 @@ def main() -> int:
         ROOT / "build",
         log=out / "contracts.log",
     ).strip()
-    expected = "PASS: 35 playable-projectile-view contracts"
+    expected = "PASS: 36 playable-projectile-view contracts"
     if contracts != expected:
         raise RuntimeError(contracts)
     files = [
@@ -31,7 +31,7 @@ def main() -> int:
     ]
     result = {
         "passed": True,
-        "contracts": 35,
+        "contracts": 36,
         "scope": (
             "Snapshot-driven enemy projectile trails, screen-space glows and "
             "fading impact crosses for the playable Win32 line renderer."
