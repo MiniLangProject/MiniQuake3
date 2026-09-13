@@ -163,13 +163,21 @@ ABI-Datensätzen und 42 Verträgen ab.
 `GAME_RUN_FRAME`-Aufrufe. Die über `trap_LocateGameData` veröffentlichten
 Player-/Entity-Speicher werden in einen Snapshot übertragen; `cgame.qvm` liest
 ihn und reicht seine echten Asset-, 3D-Szenen-, Licht-, 2D- und Soundbefehle an
-MiniLang-Queues weiter. Der Retail-Smoke beobachtet derzeit 28 Snapshot-Entities,
-354 Assetregistrierungen, 37 Szenen-Entities, 54 2D-Befehle und 193
-Soundbefehle. Die gemeinsame QVM-libc-Grenze enthält Speicher-, Trigonometrie-,
-Matrix- und Vektorhelfer. Der Pfad ist über `--qvm-match` und
-`scripts/test_retail_qvm_match.py` reproduzierbar. Noch offen sind BSP-basierte
-Serververlinkung/PVS statt des vorläufigen Link-Sets, vollständige Dekodierung
-aller 3D-/Soundbefehle und die Ausgabe dieser Queue im interaktiven Fenster.
+MiniLang-Queues weiter. Der zweite Integrationsschnitt liest das originale
+808-Byte-`gentity_t`-Layout, synchronisiert `entityShared_t` bei Link/Unlink und
+Brushmodel-Änderungen mit der dynamischen BSP-Serverwelt und beantwortet Trace,
+PointContents, EntitiesInBox, EntityContact, PVS und Areaportal-Traps daraus.
+Snapshots werden nun nach Area/PVS und `svFlags` gefiltert. Ein 64er-Usercmd-Ring
+treibt `GAME_CLIENT_THINK` und anschließend die lokale cgame-Prediction; deren
+Point-, Box-, transformierte und Capsule-Kollision läuft ebenfalls gegen die
+MiniLang-Kollisionswelt. Der Retail-Smoke beobachtet 28 räumlich verlinkte
+Entities, davon 13 im Sichtbarkeitssnapshot, einen bis CommandTime 1400 bewegten
+Originalspieler, neun Prediction-Traces, 354 Assetregistrierungen, 19
+Szenen-Entities, 58 2D-Befehle und 175 Soundbefehle. Die gemeinsame
+QVM-libc-Grenze enthält Speicher-, Trigonometrie-, Matrix- und Vektorhelfer. Der
+Pfad ist über `--qvm-match` und `scripts/test_retail_qvm_match.py`
+reproduzierbar. Noch offen sind vollständige Dekodierung und Wiedergabe aller
+3D-/Soundbefehle sowie die Ausgabe dieser Queue im interaktiven Fenster.
 
 ## 5. BSP-Kollision und gemeinsame Spielphysik exakt übertragen
 

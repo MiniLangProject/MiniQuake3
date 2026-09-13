@@ -142,10 +142,13 @@ only as an asset fallback. See
 
 `--qvm-match` now runs the unmodified, source-rebuilt 1.32b `qagame.qvm` through
 `GAME_INIT`, local client connect/begin and fixed 20 Hz frames. The engine reads
-the module-owned `playerState_t` and linked `entityState_t` memory into a real
-snapshot, which the corresponding `cgame.qvm` consumes. Its asset registrations,
-scene entities, dynamic lights, 2D drawing and sound submissions enter the
-MiniLang renderer/sound queues. This path uses only QVM-created gameplay entities;
+the module-owned `playerState_t` and `entityShared_t` memory, links it into the
+MiniLang BSP/entity collision world and builds area/PVS-filtered snapshots for
+the corresponding `cgame.qvm`. A 64-command input ring drives unchanged
+`GAME_CLIENT_THINK`; cgame consumes the same commands for local prediction and
+uses real point, box, transformed and capsule world-query traps. Its asset
+registrations, scene entities, dynamic lights, 2D drawing and sound submissions
+enter the MiniLang renderer/sound queues. This path uses only QVM-created gameplay entities;
 the five deterministic opponents remain confined to the older graphical preview
 until its window backend consumes the new scene queue directly.
 

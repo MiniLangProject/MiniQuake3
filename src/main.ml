@@ -9,6 +9,7 @@ import mq3.vm.interpreter as vm
 import mq3.vm.runtime as vmRuntime
 import mq3.vm.syscall_common as vmSyscallCommon
 import mq3.vm.syscall_qagame as vmSyscallQagame
+import mq3.vm.syscall_qagame_world as vmSyscallQagameWorld
 import mq3.vm.syscall_cgame as vmSyscallCgame
 import mq3.vm.syscall_ui as vmSyscallUi
 import mq3.vm.syscall_ui_media as vmSyscallUiMedia
@@ -118,7 +119,8 @@ function main(args)
     if len(state.context.errors)>0 then return error(7651,state.context.errors[0]) end if
     joined=localQvmMatch.connectLocal(state,0);if joined is error then return joined end if;clientStarted=false
     for frame=1 to frames
-      serverTime=1000+frame*50;advanced=localQvmMatch.runFrame(state,serverTime);if advanced is error then return advanced end if;snapshot=localQvmMatch.snapshot(state,0);if snapshot is error then return snapshot end if
+      serverTime=1000+frame*50;command=vmSyscallQagameWorld.userCommand(serverTime,[0,0,0],0,2,0,0,0);thought=localQvmMatch.submitUsercmd(state,0,command);if thought is error then return thought end if
+      advanced=localQvmMatch.runFrame(state,serverTime);if advanced is error then return advanced end if;snapshot=localQvmMatch.snapshot(state,0);if snapshot is error then return snapshot end if
       if not clientStarted then client=localQvmMatch.bootCgame(state);if client is error then return client end if;clientStarted=true end if
       drawn=localQvmMatch.drawCgame(state,serverTime);if drawn is error then return drawn end if
       if len(state.context.errors)>0 then return error(7651,state.context.errors[0]) end if
