@@ -9,7 +9,7 @@ import mq3.compat.transcendental as trans
 
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
-struct StagePass commands sourceUvs sourcePositions sourceNormals sourceLights sourceColors stage deforms primary depthEqual sort polygonOffset end struct
+struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceNormals sourceLights sourceColors stage deforms primary depthEqual sort polygonOffset end struct
 struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses polygonOffsetPasses end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
@@ -89,7 +89,7 @@ end function
 function countStageTriangles(renderData,textureIndex,flags) count=0;for each triangle in renderData.triangles if triangle.textureIndex==textureIndex and not isSky(triangle,flags) then count=count+1 end if end for;return count end function
 function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
   count=countStageTriangles(renderData,material.textureIndex,flags);if count<1 then return void end if
-  commands=window.createTriangleBatch(count);sourceUvs=[];sourcePositions=[];sourceNormals=[];sourceLights=[];sourceColors=[]
+  commands=window.createTriangleBatch(count);sourceUvs=[];sourceDeformUvs=[];sourcePositions=[];sourceNormals=[];sourceLights=[];sourceColors=[]
   for each triangle in renderData.triangles
     if triangle.textureIndex==material.textureIndex and not isSky(triangle,flags) then
       if stage.bspLightmap then
@@ -102,12 +102,13 @@ function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
       end if
       if commands is error then return commands end if
       sourcePositions=sourcePositions+[[triangle.vertices[0].position,triangle.vertices[1].position,triangle.vertices[2].position]]
+      sourceDeformUvs=sourceDeformUvs+[[triangle.vertices[0].baseUV,triangle.vertices[1].baseUV,triangle.vertices[2].baseUV]]
       sourceNormals=sourceNormals+[[triangle.vertices[0].normal,triangle.vertices[1].normal,triangle.vertices[2].normal]]
       sourceLights=sourceLights+[[vertexLight(triangle.vertices[0]),vertexLight(triangle.vertices[1]),vertexLight(triangle.vertices[2])]]
       sourceColors=sourceColors+[[triangle.vertices[0].color,triangle.vertices[1].color,triangle.vertices[2].color]]
     end if
   end for
-  return StagePass(commands,sourceUvs,sourcePositions,sourceNormals,sourceLights,sourceColors,stage,material.deforms,primary,depthEqual,material.sort,material.polygonOffset)
+  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceNormals,sourceLights,sourceColors,stage,material.deforms,primary,depthEqual,material.sort,material.polygonOffset)
 end function
 
 // Static opaque primaries stay in the bit-identical base stream. Dynamic and
@@ -166,11 +167,17 @@ function affineFor(stage,nowMilliseconds)
 end function
 function applyAffine(transform,uv) return [uv[0]*transform.m00+uv[1]*transform.m01+transform.tx,uv[0]*transform.m10+uv[1]*transform.m11+transform.ty] end function
 function hasTurbulence(stage) for each mod in stage.uvMods if mod.kind=="turb" then return true end if end for;return false end function
-function deformedPosition(position,normal,deforms,nowMilliseconds)
+function deformedPosition(position,normal,uv,deforms,nowMilliseconds)
   result=[position[0],position[1],position[2]]
   for each deform in deforms
     if deform.kind=="wave" then
       phaseOffset=0.0;if deform.wave.frequency!=0.0 then phaseOffset=(result[0]+result[1]+result[2])*deform.spread end if;scale=materials.waveSampleOffset(deform.wave,nowMilliseconds,phaseOffset)
+      result=[result[0]+normal[0]*scale,result[1]+normal[1]*scale,result[2]+normal[2]*scale]
+    else if deform.kind=="move" then
+      scale=materials.waveSample(deform.wave,nowMilliseconds);result=[result[0]+deform.vector[0]*scale,result[1]+deform.vector[1]*scale,result[2]+deform.vector[2]*scale]
+    else if deform.kind=="bulge" then
+      phase=(uv[0]*deform.bulgeWidth+nowMilliseconds*0.001*deform.bulgeSpeed)/(2.0*3.14159265358979323846)
+      scale=materials.waveSampleOffset(shaderParser.Wave(1,0.0,deform.bulgeHeight,0.0,0.0),0,phase)
       result=[result[0]+normal[0]*scale,result[1]+normal[1]*scale,result[2]+normal[2]*scale]
     end if
   end for
@@ -181,7 +188,7 @@ function updatePassView(pass,viewOrigin,nowMilliseconds)
   for triangleIndex=0 to pass.commands.count-1
     offset=triangleIndex*window.TRIANGLE_BATCH_RECORD_BYTES;if not pass.stage.bspLightmap then window.writeBatchI32(pass.commands.data,offset,slot) end if
     for vertex=0 to 2
-      position=deformedPosition(pass.sourcePositions[triangleIndex][vertex],pass.sourceNormals[triangleIndex][vertex],pass.deforms,nowMilliseconds);positionOffset=offset+20+vertex*32;window.writeBatchF32(pass.commands.data,positionOffset,position[0]);window.writeBatchF32(pass.commands.data,positionOffset+4,position[1]);window.writeBatchF32(pass.commands.data,positionOffset+8,position[2])
+      position=deformedPosition(pass.sourcePositions[triangleIndex][vertex],pass.sourceNormals[triangleIndex][vertex],pass.sourceDeformUvs[triangleIndex][vertex],pass.deforms,nowMilliseconds);positionOffset=offset+20+vertex*32;window.writeBatchF32(pass.commands.data,positionOffset,position[0]);window.writeBatchF32(pass.commands.data,positionOffset+4,position[1]);window.writeBatchF32(pass.commands.data,positionOffset+8,position[2])
       sourceUv=pass.sourceUvs[triangleIndex][vertex];if pass.stage.tcGen=="environment" then sourceUv=materials.environmentUV(position,pass.sourceNormals[triangleIndex][vertex],viewOrigin) end if
       uv=[0.0,0.0];if turbulent then uv=materials.transformUVAt(pass.stage,sourceUv,position,nowMilliseconds) else uv=applyAffine(transform,sourceUv) end if;uvOffset=offset+32+vertex*32;window.writeBatchF32(pass.commands.data,uvOffset,uv[0]);window.writeBatchF32(pass.commands.data,uvOffset+4,uv[1])
       window.writeBatchF32(pass.commands.data,offset+48+vertex*32,1.0);window.writeBatchColor(pass.commands.data,offset+116+vertex*4,materials.stageColor(pass.stage,pass.sourceColors[triangleIndex][vertex],nowMilliseconds))

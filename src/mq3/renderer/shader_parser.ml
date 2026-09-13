@@ -36,7 +36,7 @@ const MAX_IMAGE_ANIMATIONS=8
 
 struct Wave func base amplitude phase frequency end struct
 struct TexMod kind values wave end struct
-struct Deform kind spread wave end struct
+struct Deform kind spread wave vector bulgeWidth bulgeHeight bulgeSpeed end struct
 struct Stage active mapMode images animationSpeed isLightmap blendSrc blendDst rgbGen alphaGen rgbWave alphaWave constantColor portalRange tcGen tcGenVectors texMods depthWrite depthExplicit alphaFunc depthFunc detail stateBits end struct
 struct Shader name stages sort cull surfaceParms noMipMaps noPicMip polygonOffset entityMergable portalRange clampTime deforms warnings end struct
 
@@ -134,9 +134,18 @@ function parseDeform(state)
   if kind=="wave" then
     divisor=parser.parseExt(state,false);if divisor=="" then return error(7145,"missing deformVertexes spread") end if
     value=number(divisor);spread=100.0;if value!=0.0 then spread=1.0/value end if
-    return Deform("wave",spread,parseWave(state))
+    return Deform("wave",spread,parseWave(state),[0.0,0.0,0.0],0.0,0.0,0.0)
   end if
-  restOfLine(state);return Deform(kind,0.0,blankWave())
+  if kind=="move" then
+    vector=[];for index=0 to 2 token=parser.parseExt(state,false);if token=="" then return error(7146,"incomplete deformVertexes move vector") end if;vector=vector+[number(token)] end for
+    return Deform("move",0.0,parseWave(state),vector,0.0,0.0,0.0)
+  end if
+  if kind=="bulge" then
+    width=parser.parseExt(state,false);height=parser.parseExt(state,false);speed=parser.parseExt(state,false)
+    if width=="" or height=="" or speed=="" then return error(7147,"incomplete deformVertexes bulge") end if
+    return Deform("bulge",0.0,blankWave(),[0.0,0.0,0.0],number(width),number(height),number(speed))
+  end if
+  restOfLine(state);return Deform(kind,0.0,blankWave(),[0.0,0.0,0.0],0.0,0.0,0.0)
 end function
 
 function parseTexMod(tokens)
