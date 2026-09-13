@@ -10,12 +10,13 @@ import mq3.compat.numeric as numeric
 import mq3.renderer.shader_parser as shaderParser
 import mq3.renderer.noise as rendererNoise
 import mq3.shared.math as qmath
+import mq3.renderer.playable_fog as playableFog
 
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
 struct VertexCache slots frames positions normals uvs colors end struct
 struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceLights sourceColors stage deforms normalNoise vertexCache cacheSerial primary depthEqual sort polygonOffset end struct
-struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses polygonOffsetPasses end struct
+struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses polygonOffsetPasses fogBatch fogCatalog end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
 function vertexLight(vertex) return (vertex.color[0]+vertex.color[1]+vertex.color[2])/(255.0*3.0) end function
@@ -170,7 +171,11 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
       end if
     end for
   end for
-  return MaterialBatch(base,passes,len(renderData.triangles),drawable,emitted,skippedSky,animated,modified,blended,generated,alphaTested,turbulentCount,stretchCount,environmentCount,filterCount,destinationAlphaCount,clampedCount,deformedCount,polygonOffsetCount)
+  return MaterialBatch(base,passes,len(renderData.triangles),drawable,emitted,skippedSky,animated,modified,blended,generated,alphaTested,turbulentCount,stretchCount,environmentCount,filterCount,destinationAlphaCount,clampedCount,deformedCount,polygonOffsetCount,void,void)
+end function
+function attachFog(batch,renderData,catalog)
+  if batch==void or renderData==void or catalog==void then return fail("fog attachment requires batch, render data and catalog") end if
+  fogBatch=playableFog.build(renderData,catalog);if fogBatch is error then return fogBatch end if;batch.fogBatch=fogBatch;batch.fogCatalog=catalog;return fogBatch.commands.count
 end function
 
 function identityAffine() return UvAffine(1.0,0.0,0.0,1.0,0.0,0.0) end function
@@ -320,5 +325,6 @@ function drawMaterials(batch,projection,nowMilliseconds)
     updatePassAxes(pass,projection.position,[0.0-projection.right[0],0.0-projection.right[1],0.0-projection.right[2]],projection.up,nowMilliseconds);multitexture.setState(pass.stage.blend,pass.depthEqual,pass.stage.depthWrite);multitexture.setAlphaTest(pass.stage.alphaTest);multitexture.setTextureClamp(pass.stage.clampTexture);multitexture.setPolygonOffset(pass.polygonOffset)
     value=window.submitWorldTriangleBatch(pass.commands,projection);if value is error then return value end if;drawn=drawn+value
   end for
+  if batch.fogBatch!=void then value=playableFog.draw(batch.fogBatch,batch.fogCatalog,projection);if value is error then return value end if;drawn=drawn+value end if
   multitexture.setState(multitexture.BLEND_OPAQUE,false,true);multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);multitexture.setTextureClamp(false);multitexture.setPolygonOffset(false);return drawn
 end function

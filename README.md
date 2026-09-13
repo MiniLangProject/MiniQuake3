@@ -54,7 +54,9 @@ Escape returns to the menu and a second Escape quits. Map skies are selected
 from `surfaceparm sky`; q3dm1, q3ctf1 and q3dm4 use their own original two-layer
 cloud shaders, images and ordered texture transforms. The retained world renderer now
 executes q3dm1's animated, scrolling, rotating, alpha and additive material
-passes in Quake's explicit and inferred shader-sort order. Each retained stage
+passes in Quake's explicit and inferred shader-sort order. BSP fog brushes add
+their original colour, opaque depth and clipped density over attributed surfaces.
+Each retained stage
 also applies its parsed `depthWrite` and `depthFunc equal` state. Materials with
 `polygonOffset` use Quake's slope-scaled decal depth bias. Retained effect
 passes and lightmaps use bilinear texture filtering with Quake-style repeat or

@@ -153,6 +153,11 @@ Shader-level `polygonOffset` is retained as an isolated material pass and uses
 Baseq3's default slope factor -1 and unit factor -2, converted for the native
 inverse-depth buffer. This keeps coplanar decals in front without a fixed
 world-space displacement.
+Fog shaders may contain no ordinary image stage. Their `fogParms` colour and
+opaque depth are retained, while BSP fog brushes provide bounds and the visible
+clipping plane. A final depth-equal alpha pass applies Quake's quantized
+square-root density to each attributed world vertex. The q3ctf1 retail check
+finds one depth-464 volume and 172 fog-attributed triangles in the full map.
 Base textures, shader stages and lightmaps use bilinear sampling around OpenGL
 texel centers. Repeating textures interpolate across their wrap boundary;
 `clampMap` stages hold the nearest edge texel instead.
@@ -279,6 +284,8 @@ Validation:
   eight audible q3dm1 fire sources.
 - `python scripts/test_playable_sky.py --pak D:/Quake3/baseq3/pak0.pk3`: 18
   contracts plus six retail cloud layers across q3dm1, q3ctf1 and q3dm4.
+- `python scripts/test_playable_fog.py --pak D:/Quake3/baseq3/pak0.pk3`: seven
+  fog-density/overlay contracts plus the q3ctf1 retail fog volume and surfaces.
 - `python scripts/test_playable_match.py`: 25 countdown, announcer, clock, limit and
   intermission contracts.
 - `python scripts/test_baseq3_match_display.py --pak D:/Quake3/baseq3/pak0.pk3`:

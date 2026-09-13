@@ -16,7 +16,7 @@ const LIGHTMAP_HEIGHT = 128
 const LIGHTMAP_RGB_SIZE = 49152
 
 struct RenderVertex position baseUV lightmapUV normal color sourceIndex end struct
-struct RenderTriangle vertices textureIndex lightmapIndex faceIndex triangleIndex end struct
+struct RenderTriangle vertices textureIndex lightmapIndex fogIndex faceIndex triangleIndex end struct
 struct RenderData triangles surfaceCount triangleCount skippedSurfaceCount truncated patchSurfaceCount end struct
 
 function fail(text) return error(7410,"BSP render data: "+text) end function
@@ -92,7 +92,7 @@ function patchPoint(control,width,blockX,blockY,u,v)
   end for
   return bezierVertex(rows[0],rows[1],rows[2],v)
 end function
-function appendPatch(triangles,control,width,height,textureIndex,lightmapIndex,faceIndex,maxTriangles,errorLimit)
+function appendPatch(triangles,control,width,height,textureIndex,lightmapIndex,fogIndex,faceIndex,maxTriangles,errorLimit)
   uSegments=patchAxisSegments(control,width,height,true,errorLimit);vSegments=patchAxisSegments(control,width,height,false,errorLimit)
   count=0;truncated=false
   for blockY=0 to n.quotient(height-1,2)-1
@@ -108,7 +108,7 @@ function appendPatch(triangles,control,width,height,textureIndex,lightmapIndex,f
           pair=[[grid[a],grid[b],grid[c]],[grid[c],grid[b],grid[d]]]
           for local=0 to 1
             triangleIndex=count;count=count+1
-            if len(triangles)<maxTriangles then triangles=triangles+[RenderTriangle(pair[local],textureIndex,lightmapIndex,faceIndex,triangleIndex)] else truncated=true end if
+            if len(triangles)<maxTriangles then triangles=triangles+[RenderTriangle(pair[local],textureIndex,lightmapIndex,fogIndex,faceIndex,triangleIndex)] else truncated=true end if
           end for
         end for
       end for
@@ -131,8 +131,9 @@ function extractWithPatchError(map,faceIndexes,maxTriangles,patchError)
     if not contains(seen,faceIndex) then
       seen=seen+[faceIndex]
       faceOffset=recordRange(map,13,faceIndex,FACE_STRIDE);if faceOffset is error then return faceOffset end if
-      textureIndex=i32(map,faceOffset);kind=i32(map,faceOffset+8);firstVert=i32(map,faceOffset+12);numVerts=i32(map,faceOffset+16);firstMesh=i32(map,faceOffset+20);numMesh=i32(map,faceOffset+24);lightmapIndex=i32(map,faceOffset+28)
-      if textureIndex is error or kind is error or firstVert is error or numVerts is error or firstMesh is error or numMesh is error or lightmapIndex is error then return fail("truncated face") end if
+      textureIndex=i32(map,faceOffset);rawFogIndex=i32(map,faceOffset+4);kind=i32(map,faceOffset+8);firstVert=i32(map,faceOffset+12);numVerts=i32(map,faceOffset+16);firstMesh=i32(map,faceOffset+20);numMesh=i32(map,faceOffset+24);lightmapIndex=i32(map,faceOffset+28)
+      if textureIndex is error or rawFogIndex is error or kind is error or firstVert is error or numVerts is error or firstMesh is error or numMesh is error or lightmapIndex is error then return fail("truncated face") end if
+      fogIndex=rawFogIndex+1
       if kind==MST_PLANAR or kind==MST_TRIANGLE_SOUP or kind==MST_PATCH then
         if textureIndex<0 or textureIndex>=map.counts[1] then return fail("face texture index outside shader lump") end if
         if lightmapIndex < -1 or lightmapIndex>=map.counts[14] then return fail("face lightmap index outside lump") end if
@@ -143,7 +144,7 @@ function extractWithPatchError(map,faceIndexes,maxTriangles,patchError)
           width=i32(map,faceOffset+96);height=i32(map,faceOffset+100)
           if width is error or height is error or width<3 or height<3 or width>129 or height>129 or width%2==0 or height%2==0 or width*height!=numVerts then return fail("invalid patch control grid") end if
           control=[];for controlIndex=0 to numVerts-1 value=vertex(map,firstVert+controlIndex);if value is error then return value end if;control=control+[value] end for
-          patch=appendPatch(triangles,control,width,height,textureIndex,lightmapIndex,faceIndex,maxTriangles,patchError)
+          patch=appendPatch(triangles,control,width,height,textureIndex,lightmapIndex,fogIndex,faceIndex,maxTriangles,patchError)
           triangles=patch[0];triangleCount=triangleCount+patch[1];if patch[2] then truncated=true end if
         else
           if firstMesh<0 or numMesh<0 or firstMesh+numMesh>map.counts[11] or numMesh%3!=0 then return fail("face meshvert range is invalid") end if
@@ -157,7 +158,7 @@ function extractWithPatchError(map,faceIndexes,maxTriangles,patchError)
               verts=verts+[value]
             end for
             triangleCount=triangleCount+1
-            if len(triangles)<maxTriangles then triangles=triangles+[RenderTriangle(verts,textureIndex,lightmapIndex,faceIndex,triangleIndex)] else truncated=true end if
+            if len(triangles)<maxTriangles then triangles=triangles+[RenderTriangle(verts,textureIndex,lightmapIndex,fogIndex,faceIndex,triangleIndex)] else truncated=true end if
           end for
         end if
       else skipped=skipped+1

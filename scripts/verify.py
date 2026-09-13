@@ -88,6 +88,7 @@ def main():
     scripts.append(("test_playable_projectile_view.py",[]))
     scripts.append(("test_playable_projectile_fx.py",[]))
     scripts.append(("test_playable_sky.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
+    scripts.append(("test_playable_fog.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_playable_projectile_models.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_playable_weapon_sounds.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_playable_ambient_sounds.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))

@@ -41,6 +41,7 @@ import mq3.platform.playable_multitexture as multitexture
 import mq3.renderer.bsp_preview as preview
 import mq3.renderer.bsp_render_data as renderData
 import mq3.renderer.world_surface_selection as worldSelection
+import mq3.renderer.playable_fog as playableFog
 import mq3.renderer.playable_world_batch as playableWorldBatch
 import mq3.renderer.playable_materials as materials
 import mq3.renderer.player_model_assembly as playerAssembly
@@ -627,7 +628,7 @@ function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemC
   return void
 end function
 
-function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,worldCache,worldConfig,selectedFaceIndexes,materialSlots,skyTextureFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound)
+function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fogCatalog,worldCache,worldConfig,selectedFaceIndexes,materialSlots,skyTextureFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound)
   previous=window.milliseconds();frames=0;menuOpen=maxFrames<0;lastEnter=false;lastEscape=false;lastPreviousWeapon=false;lastNextWeapon=false;lastDigitWeapon=0;shotEffects=[];projectileEffects=[];pickupTriangles=[];updateMilliseconds=0;renderMilliseconds=0;matchView=void;lastMatchMessage="";matchCenter=void
   if maxFrames>=0 then started=playableMatch.start(matchState,previous);if started is error then return started end if;hudSelection=syncHudWeaponSelection(baseHudState,inventoryState,previous);if hudSelection is error then return hudSelection end if end if
   while not window.shouldClose() and (maxFrames<0 or frames<maxFrames)
@@ -802,6 +803,7 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,wor
           if materialCatalog!=void then worldBatchState=playableWorldBatch.buildMaterials(triangles,materialCatalog,skyTextureFlags)
           else worldBatchState=playableWorldBatch.build(triangles,materialSlots,skyTextureFlags) end if
           if worldBatchState is error then return worldBatchState end if
+          if materialCatalog!=void and fogCatalog!=void then fogged=playableWorldBatch.attachFog(worldBatchState,triangles,fogCatalog);if fogged is error then return fogged end if end if
           selectedFaceIndexes=prepared.selection.faceIndexes
         end if
       end if
@@ -863,6 +865,8 @@ function runLimited(map,maxFrames,sound,archive)
   matchState=playableMatch.create(10,5,3000);if matchState is error then return matchState end if
   shaderScripts=void
   if archive!=void then loadedScripts=try(materials.buildScriptIndex(archive));if not (loadedScripts is error) then shaderScripts=loadedScripts end if end if
+  fogCatalog=void
+  if shaderScripts!=void and map.counts[12]>0 then loadedFog=try(playableFog.load(map,shaderScripts[0]));if not (loadedFog is error) then fogCatalog=loadedFog end if end if
   catalog=void
   if archive!=void and shaderScripts!=void then
     loadedCatalog=try(materials.loadIndexed(archive,map,256,64,shaderScripts[0],shaderScripts[1]))
@@ -999,6 +1003,7 @@ function runLimited(map,maxFrames,sound,archive)
   if catalog!=void then worldBatchState=playableWorldBatch.buildMaterials(triangles,catalog,skyTextureFlags)
   else worldBatchState=playableWorldBatch.build(triangles,materialSlots,skyTextureFlags) end if
   if worldBatchState is error then window.shutdown();return worldBatchState end if
+  if catalog!=void and fogCatalog!=void then fogged=playableWorldBatch.attachFog(worldBatchState,triangles,fogCatalog);if fogged is error then window.shutdown();return fogged end if end if
   lightmapCount=map.counts[14];if lightmapCount>64 then lightmapCount=64 end if
   for index=0 to lightmapCount-1
     pixels=renderData.lightmapRgba(map,index);if pixels is error then window.shutdown();return pixels end if
@@ -1042,8 +1047,9 @@ function runLimited(map,maxFrames,sound,archive)
   materialCount=0;if catalog!=void then materialCount=len(catalog.materials) end if
   print "Render triangles: "+str(len(triangles.triangles))+" base textures: "+str(materialCount)+" lightmaps: "+str(lightmapCount)
   print "World cache: "+str(worldCache.totalTriangleCount)+" triangles; visible surfaces: "+str(preparedWorld.selection.selectedSurfaceCount)
+  fogVolumeCount=0;if fogCatalog!=void then fogVolumeCount=len(fogCatalog.fogs)-1 end if;fogTriangleCount=0;if catalog!=void and worldBatchState.fogBatch!=void then fogTriangleCount=worldBatchState.fogBatch.commands.count end if;print "Retail fog volumes: "+str(fogVolumeCount)+" visible triangles: "+str(fogTriangleCount)
   viewmodelTracker=viewmodel.tracker();viewmodelSettings=viewmodel.softwareRendererSettings();viewmodelAnimation=viewmodel.weaponAnimation(weaponState.classname);barrelState=weaponBarrel.state()
-  result=try(frameLoop(camera,geometry,triangles,worldBatchState,catalog,worldCache,worldConfig,preparedWorld.selection.faceIndexes,materialSlots,skyTextureFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound))
+  result=try(frameLoop(camera,geometry,triangles,worldBatchState,catalog,fogCatalog,worldCache,worldConfig,preparedWorld.selection.faceIndexes,materialSlots,skyTextureFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,projectileState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound))
   for index=0 to lightmapCount-1 window.releaseTexture(index) end for
   if catalog!=void then playableWorldBatch.releaseMaterials(catalog) end if
   if modelAssets!=void then for each texture in modelAssets.textures window.releaseTexture(texture.slot) end for end if
