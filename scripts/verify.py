@@ -50,6 +50,7 @@ def main():
     scripts.append(("test_renderer_commands.py",[]))
     scripts.append(("test_vm_syscall_ui_media.py",[]))
     scripts.append(("test_scene_queue.py",[]))
+    scripts.append(("test_qvm_scene_geometry.py",[]))
     scripts.append(("test_draw_surfs.py",[]))
     scripts.append(("test_audio_mixer_transfer.py",[]))
     scripts.append(("test_audio_channel_paint.py",[]))

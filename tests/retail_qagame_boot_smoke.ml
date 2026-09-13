@@ -1,6 +1,9 @@
 import mq3.engine.local_qvm_match as match
 import mq3.vm.syscall_qagame_world as qworld
 import mq3.renderer.scene_queue as sceneQueue
+import mq3.renderer.qvm_scene_geometry as qvmSceneGeometry
+import mq3.renderer.qvm_scene_materials as qvmSceneMaterials
+import mq3.renderer.qvm_scene_batch as qvmSceneBatch
 import mq3.format.pk3 as pk3
 import mq3.format.bsp as bsp
 
@@ -39,6 +42,16 @@ function main(args)
   end for
   listener=false;for each sound in state.context.soundCommands if sound.kind=="listener" then listener=true end if end for
   if not listener then return error(7642,"retail cgame did not submit a decoded listener") end if
+  renderViewCount=len(state.context.renderViews);geometryTriangles=0;geometryModels=0;geometryInline=0;geometryUnsupported=0;expanded=[]
+  for each view in state.context.renderViews
+    geometry=qvmSceneGeometry.buildRecords(view.scene.entities,view.scene.polys,state.context.assetKinds,state.context.modelAssets,view.refdef,8192);if geometry is error then return geometry end if
+    geometryTriangles=geometryTriangles+len(geometry.triangles);geometryModels=geometryModels+geometry.modelEntities;geometryInline=geometryInline+geometry.skippedInline;geometryUnsupported=geometryUnsupported+geometry.skippedUnsupported;expanded=expanded+geometry.triangles
+  end for
+  if renderViewCount==0 or geometryModels==0 or geometryTriangles==0 then return error(7642,"retail cgame views did not expand to MD3 geometry") end if
+  materialCatalog=qvmSceneMaterials.build(archive,expanded,state.context.assets,state.context.assetKinds,512,512);if materialCatalog is error then return materialCatalog end if
+  if materialCatalog.resolvedTriangles==0 or len(materialCatalog.textures)==0 then return error(7642,"retail cgame geometry did not resolve decoded textures") end if
+  prepared=qvmSceneBatch.build(materialCatalog);if prepared is error then return prepared end if
+  if prepared.batch.sourceTriangles!=geometryTriangles or prepared.batch.drawableTriangles!=geometryTriangles or prepared.batch.emittedTriangles<geometryTriangles then return error(7642,"retail QVM geometry did not build a complete native batch") end if
   linked=0;for each ent in state.context.spatialScene.entities if ent.linked then linked=linked+1 end if end for
   if linked<len(snapshot.entities) or len(snapshot.entities)==0 then return error(7642,"PVS snapshot contains an invalid linked-entity selection") end if
   arenaFiles=match.uiFileList(state.context,"scripts",".arena");botFiles=match.uiFileList(state.context,"scripts",".bot");cfgFiles=match.uiFileList(state.context,"","cfg");playerDirs=match.uiFileList(state.context,"models/players","/")
@@ -52,6 +65,14 @@ function main(args)
   if len(state.context.errors)!=0 then print("Retail VM error after UI refresh: "+state.context.errors[0]);return error(7642,"retail UI refresh error") end if
   if state.context.uiFrames!=1 or (state.context.uiKeyCatcher&2)==0 then return error(7642,"retail UI did not own and refresh the menu") end if
   if len(state.context.assets)<=cgameAssets or len(state.context.renderQueue.commands)<=cgameDraw2D then return error(7642,"retail UI did not register media and draw the main menu") end if
-  print("PASS: retail QVM match entities="+str(state.context.entityCount)+" stride="+str(state.context.entityStride)+" frames="+str(state.context.frames)+" snapshotEntities="+str(len(snapshot.entities))+" spatialLinked="+str(linked)+" worldFraction="+str(worldHit.fraction)+" commandTime="+str(snapshot.playerState.commandTime)+" predictionTraces="+str(state.context.cgameCollisionQueries)+" tagQueries="+str(state.context.cgameTagQueries)+" health="+str(snapshot.playerState.stats[0])+" cgameAssets="+str(cgameAssets)+" uiAssets="+str(len(state.context.assets)-cgameAssets)+" addonArenas="+str(len(arenaFiles))+" addonBots="+str(len(botFiles))+" configs="+str(len(cfgFiles))+" playerDirs="+str(len(playerDirs))+" cgameSceneEntities="+str(cgameSceneEntities)+" models="+str(models)+" sprites="+str(sprites)+" cgameView="+str(cgameViewWidth)+"x"+str(cgameViewHeight)+" lights="+str(len(state.context.scene.dlights))+" cgameDraw2D="+str(cgameDraw2D)+" uiDraw2D="+str(len(state.context.renderQueue.commands)-cgameDraw2D)+" sounds="+str(len(state.context.soundCommands)))
+  report="PASS: retail QVM match entities="+str(state.context.entityCount)+" stride="+str(state.context.entityStride)+" frames="+str(state.context.frames)
+  report=report+" snapshotEntities="+str(len(snapshot.entities))+" spatialLinked="+str(linked)+" worldFraction="+str(worldHit.fraction)+" commandTime="+str(snapshot.playerState.commandTime)
+  report=report+" predictionTraces="+str(state.context.cgameCollisionQueries)+" tagQueries="+str(state.context.cgameTagQueries)+" health="+str(snapshot.playerState.stats[0])
+  report=report+" cgameAssets="+str(cgameAssets)+" uiAssets="+str(len(state.context.assets)-cgameAssets)+" addonArenas="+str(len(arenaFiles))+" addonBots="+str(len(botFiles))+" configs="+str(len(cfgFiles))+" playerDirs="+str(len(playerDirs))
+  report=report+" cgameSceneEntities="+str(cgameSceneEntities)+" models="+str(models)+" sprites="+str(sprites)+" renderViews="+str(renderViewCount)+" geometryModels="+str(geometryModels)
+  report=report+" inlineModels="+str(geometryInline)+" unsupportedEntities="+str(geometryUnsupported)+" triangles="+str(geometryTriangles)+" materials="+str(len(materialCatalog.materials))+" textures="+str(len(materialCatalog.textures))
+  report=report+" texturedTriangles="+str(materialCatalog.resolvedTriangles)+" untexturedTriangles="+str(materialCatalog.unresolvedTriangles)+" emittedTriangles="+str(prepared.batch.emittedTriangles)+" renderPasses="+str(len(prepared.batch.passes))+" skins="+str(len(materialCatalog.loadedSkins))
+  report=report+" cgameView="+str(cgameViewWidth)+"x"+str(cgameViewHeight)+" lights="+str(len(state.context.scene.dlights))+" cgameDraw2D="+str(cgameDraw2D)
+  report=report+" uiDraw2D="+str(len(state.context.renderQueue.commands)-cgameDraw2D)+" sounds="+str(len(state.context.soundCommands));print(report)
   match.shutdown(state);return 0
 end function

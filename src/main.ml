@@ -84,6 +84,9 @@ import mq3.renderer.texture_state as rendererTextureState
 import mq3.renderer.surface_grid as rendererSurfaceGrid
 import mq3.renderer.command_queue as rendererCommandQueue
 import mq3.renderer.scene_queue as rendererSceneQueue
+import mq3.renderer.qvm_scene_geometry as qvmSceneGeometry
+import mq3.renderer.qvm_scene_materials as qvmSceneMaterials
+import mq3.renderer.qvm_scene_batch as qvmSceneBatch
 import mq3.renderer.draw_surfs as rendererDrawSurfs
 import mq3.renderer.bsp_preview as rendererBspPreview
 import mq3.platform.playable_window as playableWindow
@@ -125,11 +128,18 @@ function main(args)
       drawn=localQvmMatch.drawCgame(state,serverTime);if drawn is error then return drawn end if
       if len(state.context.errors)>0 then return error(7651,state.context.errors[0]) end if
     end for
+    triangleCount=0;geometryModels=0;cgameViewCount=len(state.context.renderViews);expanded=[]
+    for each view in state.context.renderViews
+      geometry=qvmSceneGeometry.buildRecords(view.scene.entities,view.scene.polys,state.context.assetKinds,state.context.modelAssets,view.refdef,8192);if geometry is error then return geometry end if
+      triangleCount=triangleCount+len(geometry.triangles);geometryModels=geometryModels+geometry.modelEntities;expanded=expanded+geometry.triangles
+    end for
+    materialCatalog=qvmSceneMaterials.build(archive,expanded,state.context.assets,state.context.assetKinds,512,512);if materialCatalog is error then return materialCatalog end if
+    prepared=qvmSceneBatch.build(materialCatalog);if prepared is error then return prepared end if
     ui=localQvmMatch.bootUi(state);if ui is error then return ui end if
     activated=localQvmMatch.setUiMenu(state,1);if activated is error then return activated end if
     refreshed=localQvmMatch.refreshUi(state,1000+frames*50);if refreshed is error then return refreshed end if
     if len(state.context.errors)>0 then return error(7651,state.context.errors[0]) end if
-    print "Retail QVM local match: frames="+str(frames)+" entities="+str(len(state.context.latestSnapshot.entities))+" assets="+str(len(state.context.assets))+" scene="+str(len(state.context.scene.entities))+" draw2D="+str(len(state.context.renderQueue.commands))+" sound="+str(len(state.context.soundCommands))+" ui="+str(state.ui.uiStarted)
+    print "Retail QVM local match: frames="+str(frames)+" entities="+str(len(state.context.latestSnapshot.entities))+" assets="+str(len(state.context.assets))+" views="+str(cgameViewCount)+" geometryModels="+str(geometryModels)+" triangles="+str(triangleCount)+" materials="+str(len(materialCatalog.materials))+" textures="+str(len(materialCatalog.textures))+" texturedTriangles="+str(materialCatalog.resolvedTriangles)+" emittedTriangles="+str(prepared.batch.emittedTriangles)+" renderPasses="+str(len(prepared.batch.passes))+" draw2D="+str(len(state.context.renderQueue.commands))+" sound="+str(len(state.context.soundCommands))+" ui="+str(state.ui.uiStarted)
     localQvmMatch.shutdown(state);return 0
   end if
   if len(args)==3 and args[0]=="--play" then

@@ -151,12 +151,21 @@ registrations, scene entities, dynamic lights, 2D drawing and sound submissions
 enter the MiniLang renderer/sound queues. Asset handles are deduplicated by
 registry type; `refdef_t`, `refEntity_t`, polygons, light-grid queries and
 listener/position/loop/music sound commands now have concrete decoded records
-for the native backends. The third runtime slot now boots the original `ui.qvm`,
+for the native backends. Every `R_RenderScene` call is retained as its own view,
+so HUD model views no longer overwrite or leak into the main world view. The
+current retail frame contains three views and 19 MD3 entities. Their exact
+frame/old-frame interpolation, entity axes, per-vertex colours, UVs and normals
+expand to 3,381 triangles. Three QVM-registered player skins and Quake's
+extension-stripping shader lookup resolve all of them to 16 shader materials and
+21 decoded retail textures. The existing native multi-pass raster path then
+builds 3,871 draw triangles in 16 retained passes, including environment maps,
+blending and texture animation; the retail smoke rejects any untextured triangle.
+The third runtime slot now boots the original `ui.qvm`,
 reads the built-in arena/bot data, lists add-ons, configs and player assets from
 the PK3, keeps its key catcher,
 and submits the stock main menu into the same 2D queue. The retail integration
-test observes 19 cgame model entities, 58 cgame 2D commands and another 207 UI
-commands. This path uses only QVM-created gameplay entities;
+test also observes 58 cgame 2D commands, another 207 UI commands and 26 decoded
+sound actions. This path uses only QVM-created gameplay entities;
 the five deterministic opponents remain confined to the older graphical preview
 until its window backend consumes the new scene queue directly.
 

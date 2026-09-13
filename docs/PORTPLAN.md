@@ -174,18 +174,27 @@ MiniLang-Kollisionswelt. Der Retail-Smoke beobachtet 28 räumlich verlinkte
 Entities, davon 13 im Sichtbarkeitssnapshot, einen bis CommandTime 1400 bewegten
 Originalspieler und neun Prediction-Traces. Typgetreue Deduplizierung erzeugt
 301 cgame-Assethandles; der 368-Byte-`refdef_t`, alle 140-Byte-`refEntity_t`-Daten,
-Polygone und Lightgrid-Ausgaben sowie 25 konkrete Start-/Loop-/Listener-/Musik-
-Soundaktionen werden dekodiert. Der geprüfte Frame enthält 19 Modell-Entities
-und 58 2D-Befehle. Echte MD3-Registrierung prüft die PK3-Datei, liest Frames,
+Polygone und Lightgrid-Ausgaben sowie 26 konkrete Start-/Loop-/Listener-/Musik-
+Soundaktionen werden dekodiert. Jeder `R_RenderScene`-Aufruf besitzt nun seine
+eigenen Entity-/Licht-/Polygon-Grenzen. Der geprüfte Frame enthält drei Views,
+19 Modell-Entities und 58 2D-Befehle. Echte MD3-Registrierung prüft die PK3-Datei, liest Frames,
 Bounds und Tags und beantwortet sieben `R_LerpTag`-Anfragen aus diesem Frame.
+Die neuen QVM-Szenenbrücken interpolieren Frame und Oldframe, wenden Entity-Achsen
+an und erhalten UVs, Normalen sowie RGBA pro Vertex. Alle 19 Entities expandieren
+zu 3.381 Dreiecken. Drei registrierte `.skin`-Dateien und das originale
+`R_FindShader`-Verhalten mit entfernter Dateiendung lösen sämtliche Dreiecke in
+16 Shader-Materialien und 21 echte TGA-/JPEG-Texturen aus `pak0.pk3` auf. Der
+vorhandene native Mehrpasspfad erzeugt daraus 3.871 Draw-Dreiecke in 16 Pässen;
+der Retail-Smoke verlangt null untexturierte Dreiecke.
 Im dritten VM-Slot initialisiert sich zusätzlich die unveränderte `ui.qvm` mit
 API 4. Sie liest die eingebauten Arena-/Botdaten und ihre PK3-Dateilisten finden
 Add-ons, Konfigurationen und Player-Verzeichnisse; das aktive Original-Hauptmenü registriert weitere 15 Medien und
 liefert 207 zusätzliche 2D-Befehle. Die gemeinsame
 QVM-libc-Grenze enthält Speicher-, Trigonometrie-, Matrix- und Vektorhelfer. Der
 Pfad ist über `--qvm-match` und `scripts/test_retail_qvm_match.py`
-reproduzierbar. Noch offen sind die native MD3-/BSP-Ausgabe aus den dekodierten
-QVM-Entities, Mixerwiedergabe der Soundaktionen, `MarkFragments`, vollständige
+reproduzierbar. Noch offen sind die Viewport-/BSP-Komposition und tatsächliche
+Fensterausgabe der vorbereiteten QVM-Batches, die 2D-Queue, Mixerwiedergabe der
+Soundaktionen, `MarkFragments`, vollständige
 Font-/Cinematic-/Parser-Traps für alternative UIs und die Ausgabe dieser Queues
 im interaktiven Fenster.
 

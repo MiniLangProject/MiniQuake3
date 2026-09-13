@@ -55,7 +55,8 @@ const R_OWNERNUM=512
 struct FileCursor data offset end struct
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames end struct
+struct RenderView refdef scene end struct
+struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews end struct
 struct Boot game runtime context cgame ui end struct
 struct Snapshot serverTime playerState entities end struct
 
@@ -221,7 +222,7 @@ function bootWithQvms(archive,map,now,qvmRoot)
   spatialScene=serverWorld.create(collisionWorld)
   initialCommand=qworld.userCommand(now,[0,0,0],0,2,0,0,0)
   grid=lightGrid.load(map);if grid is error then return grid end if
-  context=Context(archive,parser.create(entityBytes),registry,commands.create(),array(MAX_CONFIGSTRINGS,""),array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,array(64,void),0,0,grid,0,0)
+  context=Context(archive,parser.create(entityBytes),registry,commands.create(),array(MAX_CONFIGSTRINGS,""),array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,array(64,void),0,0,grid,0,0,[])
   runtimeHost=runtime.services();runtimeHost.context=context;runtimeHost.loadFn=imageLoader
   machineRuntime=runtime.create(runtimeHost);if machineRuntime is error then return machineRuntime end if;context.machineRuntime=machineRuntime
   shared=common.services(registry,context.commandState,context);shared.printFn=emitPrint;shared.errorFn=emitError;shared.millisecondsFn=milliseconds;shared.consoleFn=consoleCommand
@@ -423,6 +424,9 @@ function lightForPoint(context,vm,base)
   lightGrid.setDynamicLights(context.lightGrid,sceneQueue.sceneLights(context.scene));sample=lightGrid.entitySample(context.lightGrid,cgameVector(vm,base,1,"light point"))
   common.writeFloatVector(vm,common.argument(vm,base,2),sample.ambient,"ambient light");common.writeFloatVector(vm,common.argument(vm,base,3),sample.directed,"directed light");common.writeFloatVector(vm,common.argument(vm,base,4),sample.direction,"light direction");return 1
 end function
+function captureRenderView(context,vm,address)
+  refdef=decodeRefdef(vm,address);context.latestRefdef=refdef;view=sceneQueue.finishScene(context.scene);context.renderViews=context.renderViews+[RenderView(refdef,view)];return 0
+end function
 
 function extendedCgame(context,vm,base,op)
   // Capture every retail sound/renderer submission. Structured decoding is
@@ -459,7 +463,7 @@ function extendedCgame(context,vm,base,op)
     origin=common.readFloatVector(vm,common.argument(vm,base,1),3,"light origin");intensity=n.bitsFloat(common.argument(vm,base,2));red=n.bitsFloat(common.argument(vm,base,3));green=n.bitsFloat(common.argument(vm,base,4));blue=n.bitsFloat(common.argument(vm,base,5))
     sceneQueue.addDynamicLight(context.scene,origin,intensity,red,green,blue,op==85);return 0
   end if
-  if op==44 then context.latestRefdef=decodeRefdef(vm,common.argument(vm,base,1));return 0 end if
+  if op==44 then return captureRenderView(context,vm,common.argument(vm,base,1)) end if
   if op==45 then
     address=common.argument(vm,base,1);color=void;if address!=0 then color=common.readFloatVector(vm,address,4,"render color") end if;renderQueue.setColor(context.renderQueue,color);return 0
   end if
@@ -494,7 +498,7 @@ end function
 
 function drawCgame(value,serverTime)
   if value==void or value.cgame==void then return fail("cgame is not active") end if
-  value.context.now=serverTime;return cgameVm.drawActiveFrame(value.cgame,serverTime,0,false)
+  value.context.now=serverTime;value.context.renderViews=[];return cgameVm.drawActiveFrame(value.cgame,serverTime,0,false)
 end function
 
 function uiClipboard(context) return "" end function
@@ -572,7 +576,7 @@ function extendedUi(context,vm,base,op)
     origin=common.readFloatVector(vm,common.argument(vm,base,1),3,"UI light origin")
     sceneQueue.addDynamicLight(context.scene,origin,n.bitsFloat(common.argument(vm,base,2)),n.bitsFloat(common.argument(vm,base,3)),n.bitsFloat(common.argument(vm,base,4)),n.bitsFloat(common.argument(vm,base,5)),false);return 0
   end if
-  if op==25 then context.latestRefdef=decodeRefdef(vm,common.argument(vm,base,1));return 0 end if
+  if op==25 then return captureRenderView(context,vm,common.argument(vm,base,1)) end if
   if op==29 then return lerpModelTag(context,vm,base) end if
   if op==30 then return 0 end if
   if op==55 then return 0 end if

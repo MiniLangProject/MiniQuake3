@@ -17,6 +17,7 @@ struct Poly hShader verts fogIndex end struct
 struct RefEntity reType payload lightingCalculated end struct
 struct DecodedRefEntity reType renderfx hModel lightingOrigin shadowPlane axis nonNormalizedAxes origin frame oldorigin oldframe backlerp skinNum customSkin customShader shaderRGBA shaderTexCoord shaderTime radius rotation end struct
 struct DLight origin radius color additive end struct
+struct View entities dlights polys end struct
 struct State registered hardwareType worldLoaded fogBounds maxPolys maxPolyVerts entities dlights polys numPolyVerts firstSceneEntity firstSceneDlight firstScenePoly diagnosticFn context end struct
 
 function create(maxPolys,maxPolyVerts)
@@ -92,3 +93,7 @@ function addAdditiveLight(state,origin,intensity,r,g,b) return addDynamicLight(s
 function sceneEntities(state) return arrays.slice(state.entities,state.firstSceneEntity,len(state.entities)-state.firstSceneEntity) end function
 function sceneLights(state) return arrays.slice(state.dlights,state.firstSceneDlight,len(state.dlights)-state.firstSceneDlight) end function
 function scenePolys(state) return arrays.slice(state.polys,state.firstScenePoly,len(state.polys)-state.firstScenePoly) end function
+function finishScene(state)
+  value=View(sceneEntities(state),sceneLights(state),scenePolys(state))
+  state.firstSceneEntity=len(state.entities);state.firstSceneDlight=len(state.dlights);state.firstScenePoly=len(state.polys);return value
+end function
