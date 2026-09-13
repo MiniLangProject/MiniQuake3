@@ -36,7 +36,7 @@ def main() -> int:
         "playable_materials_contracts.exe",
     ], cwd=ROOT, check=True)
     output = run([ROOT / "build/playable_materials_contracts.exe"], ROOT / "build").strip()
-    expected = "PASS: 56 playable material contracts"
+    expected = "PASS: 57 playable material contracts"
     if output != expected:
         raise RuntimeError(output)
     print(expected)

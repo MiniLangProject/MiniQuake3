@@ -37,6 +37,7 @@ int main(void) {
     static const unsigned char halfBlue[4] = { 0, 0, 255, 128 };
     static const unsigned char lowGreen[4] = { 0, 255, 0, 127 };
     static const unsigned char filterGray[4] = { 128, 64, 255, 255 };
+    static const unsigned char baseGray[4] = { 64, 128, 32, 255 };
     static const unsigned char edgeColors[8] = { 255, 0, 0, 255, 0, 255, 0, 255 };
     static const unsigned char bilinearColors[16] = {
         255, 0, 0, 255, 0, 255, 0, 255,
@@ -51,7 +52,8 @@ int main(void) {
             !playable_window_upload_texture(2, lowGreen, 1, 1) ||
             !playable_window_upload_texture(3, filterGray, 1, 1) ||
             !playable_window_upload_texture(4, edgeColors, 2, 1) ||
-            !playable_window_upload_texture(5, bilinearColors, 2, 2)) return 1;
+            !playable_window_upload_texture(5, bilinearColors, 2, 2) ||
+            !playable_window_upload_texture(6, baseGray, 1, 1)) return 1;
 
     playable_window_begin_frame(0, 0, 0);
     clearedDepth = depthPixels[sample];
@@ -134,7 +136,7 @@ int main(void) {
     if (!playable_window_set_raster_state(4, 1, 0)) return 24;
     drawUiTriangle(3);
     if (pixels[sample] != UINT32_C(0xc0ff0000) || depthPixels[sample] != 0.5f) return 25;
-    if (playable_window_set_raster_state(5, 0, 0)) return 26;
+    if (playable_window_set_raster_state(6, 0, 0)) return 26;
 
     playable_window_begin_frame(0, 0, 0);
     drawUiTriangleUv(4, 1.25);
@@ -183,6 +185,14 @@ int main(void) {
     if (playable_window_upload_texture_mipmapped(5, bilinearColors, 2, 2, 2) ||
             !playable_window_upload_texture_mipmapped(5, bilinearColors, 2, 2, 0) ||
             textures[5].mipLevelCount != 1 || textures[5].mipPixels[0] != 0) return 41;
+
+    /* ProjectDlightTexture uses DST_COLOR/ONE: each light channel scales the
+     * existing framebuffer channel and adds it back with saturation. */
+    playable_window_begin_frame(0, 0, 0);
+    drawUiTriangle(6);
+    if (!playable_window_set_raster_state(5, 1, 0)) return 42;
+    drawUiTriangle(3);
+    if (pixels[sample] != UINT32_C(0xff60a040) || depthPixels[sample] != 0.5f) return 43;
 
     playable_window_shutdown();
     puts("playable window raster-state regression: PASS");

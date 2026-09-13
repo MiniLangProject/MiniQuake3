@@ -73,10 +73,10 @@ int main(void) {
         0.0, 1.0, 2.0, 0.0, 1.0, 0.0, 1.0, 1.0,
         255, 255, 255);
     if (playable_window_set_raster_state(-1, 0, 1) ||
-        playable_window_set_raster_state(5, 0, 1) ||
+        playable_window_set_raster_state(6, 0, 1) ||
         playable_window_set_raster_state(0, 2, 1) ||
         playable_window_set_raster_state(0, 0, 2) ||
-            !playable_window_set_raster_state(4, 1, 0) ||
+            !playable_window_set_raster_state(5, 1, 0) ||
             !playable_window_set_raster_state(0, 0, 1) ||
             playable_window_set_polygon_offset(-1) ||
             playable_window_set_polygon_offset(2) ||

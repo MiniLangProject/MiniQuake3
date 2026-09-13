@@ -63,7 +63,7 @@ the eye. Projectile paths collide with BSP geometry before targets and produce
 original textured Rocket, Grenade and BFG MD3s plus the original camera-facing
 Plasma sprite. Rocket and grenade flights emit Baseq3-sized smoke at the stock
 50 ms cadence; Plasma emits short-lived particles. Rocket flight and
-rocket/grenade impacts add source-anchored light overlays. Impacts and bounded
+rocket/grenade impacts add source-anchored projected lights. Impacts and bounded
 fallbacks use weapon-colored glows and crosses. Start, jump, pickup, pain, death,
 weapon fire and weapon impact actions use original WAV assets from `pak0.pk3`.
 The WinMM boundary mixes up to 16 concurrent voices, so fast shots and impacts
@@ -177,6 +177,11 @@ and interpolates it perspective-correctly before blending and alpha testing.
 `[-960, 1980, 96]` light origin, fast vector normalization, reflected view
 direction and fourth-power highlight. Seven such material stages are active on
 q3ctf1, restoring its view-dependent metal and trim highlights.
+Rocket flight and rocket/grenade impacts now use Baseq3's generated 16x16
+inverse-square dlight texture. The retained BSP pass projects world XYZ into
+the light, rejects triangles with shared clip bits, applies the original Z
+attenuation and blends at equal depth with `GL_DST_COLOR GL_ONE`. Sky,
+translucent and `SURF_NODLIGHT` materials do not receive the extra pass.
 Eleven q3dm1 passes use `rgbGen wave`; their original 1,024-entry waveform phase
 is quantized to colour bytes before rasterization. Remaining shader generators
 and deformation types, exact lower/upper animation-state

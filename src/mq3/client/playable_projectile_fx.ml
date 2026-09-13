@@ -7,6 +7,7 @@ import mq3.client.playable_viewer as viewer
 import mq3.platform.playable_window as window
 import mq3.compat.numeric as numeric
 import std.array as arrays
+import mq3.renderer.playable_dynamic_lights as dynamicLights
 
 const TRAIL_STEP_MILLISECONDS=50
 const ROCKET_TRAIL_MILLISECONDS=2000
@@ -119,6 +120,17 @@ end function
 
 function command(kind,center,radius,red,green,blue) return Command(kind,center,radius,red,green,blue) end function
 
+function worldLights(snapshots,now)
+  result=[]
+  for each snapshot in snapshots
+    p=profile(snapshot.style);radius=0.0;fade=1.0
+    if snapshot.state==projectileView.STATE_FLYING then radius=p.flyingLight
+    else if snapshot.state==projectileView.STATE_IMPACT and now<snapshot.eventAt+p.impactLifetime then radius=p.impactLight;elapsed=now-snapshot.eventAt;if elapsed*2>p.impactLifetime then fade=1.0-(elapsed*2-p.impactLifetime)/p.impactLifetime end if end if
+    if radius>0.0 and fade>0.0 then result=result+[dynamicLights.Light(copy3(snapshot.position),radius,[p.red*fade/255.0,p.green*fade/255.0,p.blue*fade/255.0],false)] end if
+  end for
+  return result
+end function
+
 function frameCommands(state,camera,snapshots,now,width,height,horizontalFovDegrees,nearDistance)
   if state==void or camera==void then return [] end if
   result=[]
@@ -167,4 +179,7 @@ function draw(commands)
     end if
   end for
   return lines
+end function
+function drawPuffs(commands)
+  lines=0;for each entry in commands if entry.kind==COMMAND_PUFF then diamond(entry.center,entry.radius,entry.red,entry.green,entry.blue);lines=lines+4 end if end for;return lines
 end function

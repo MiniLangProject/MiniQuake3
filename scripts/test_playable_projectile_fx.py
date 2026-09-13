@@ -18,7 +18,7 @@ def main() -> int:
     )
     contracts = run([ROOT / "build/playable_projectile_fx_contracts.exe"],
                     ROOT / "build", log=out / "contracts.log").strip()
-    expected = "PASS: 31 playable projectile-fx contracts"
+    expected = "PASS: 34 playable projectile-fx contracts"
     if contracts != expected:
         raise RuntimeError(contracts)
 
@@ -37,8 +37,8 @@ def main() -> int:
     files = [ROOT / "src/mq3/client/playable_projectile_fx.ml",
              ROOT / "tests/playable_projectile_fx_contracts.ml"]
     result = {
-        "passed": True, "contracts": 31, "baseq3_anchors": len(anchors),
-        "scope": "50 ms rocket/grenade smoke, plasma motes, rocket missile light and rocket/grenade explosion-light overlays.",
+        "passed": True, "contracts": 34, "baseq3_anchors": len(anchors),
+        "scope": "50 ms rocket/grenade smoke, plasma motes, and projected rocket/grenade dynamic lights.",
         "sources": {str(p.relative_to(ROOT)).replace("\\", "/"): sha(p) for p in files},
     }
     (out / "result.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8", newline="\n")

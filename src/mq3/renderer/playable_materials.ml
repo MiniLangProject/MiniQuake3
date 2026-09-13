@@ -44,6 +44,11 @@ function shaderName(map,index)
   length=0;while length<SHADER_NAME_BYTES and map.data[offset+length]!=0 length=length+1 end while
   return decode(slice(map.data,offset,length))
 end function
+function shaderSurfaceFlags(map,index)
+  if not validMap(map) or index<0 or index>=map.counts[1] then return fail("shader index outside BSP") end if
+  offset=map.offsets[1]+index*SHADER_STRIDE;if offset<0 or offset+SHADER_STRIDE>len(map.data) then return fail("truncated BSP shader") end if
+  return n.readI32(map.data,offset+68)
+end function
 
 function endsIgnoreCase(value,suffix)
   return strings.endsWith(strings.toLowerAscii(value),strings.toLowerAscii(suffix))
