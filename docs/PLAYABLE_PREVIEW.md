@@ -156,7 +156,9 @@ world-space displacement.
 Fog shaders may contain no ordinary image stage. Their `fogParms` colour and
 opaque depth are retained, while BSP fog brushes provide bounds and the visible
 clipping plane. A final depth-equal alpha pass applies Quake's quantized
-square-root density to each attributed world vertex. The q3ctf1 retail check
+square-root density through the original 256x32 lookup texture. View-dependent
+fog coordinates are interpolated across each attributed triangle and sampled
+per pixel with bilinear filtering and clamped edges. The q3ctf1 retail check
 finds one depth-464 volume and 172 fog-attributed triangles in the full map.
 Base textures, shader stages and lightmaps use bilinear sampling around OpenGL
 texel centers. Repeating textures interpolate across their wrap boundary;

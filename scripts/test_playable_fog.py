@@ -8,7 +8,7 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('--pak',type=Path);args=parser.parse_args()
     build('tests/playable_fog_contracts.ml','playable_fog_contracts.exe')
     value=run([ROOT/'build/playable_fog_contracts.exe'],ROOT/'build').strip()
-    if value!='PASS: 7 playable fog contracts': raise RuntimeError(value)
+    if value!='PASS: 12 playable fog contracts': raise RuntimeError(value)
     print(value)
     if args.pak:
         build('tests/playable_fog_retail_probe.ml','playable_fog_retail_probe.exe')

@@ -896,6 +896,12 @@ function runLimited(map,maxFrames,sound,archive)
       loadedSky=try(playableSky.loadMap(archive,map,shaderScripts[0],skyFirst,skySlots));if not (loadedSky is error) then skyCatalog=loadedSky end if
     end if
   end if
+  if fogCatalog!=void then
+    fogTextureSlot=64;if catalog!=void then fogTextureSlot=64+catalog.textureCount end if
+    if projectileCatalog!=void then fogTextureSlot=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if
+    if skyCatalog!=void then fogTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if
+    if fogTextureSlot<PLAYER_TEXTURE_FIRST_SLOT then assignedFog=playableFog.assignTexture(fogCatalog,fogTextureSlot);if assignedFog is error then fogCatalog=void end if else fogCatalog=void end if
+  end if
   modelAssets=void;if shaderScripts!=void then modelAssets=archivePlayerAssets(archive,shaderScripts[0]) end if
   itemCatalog=void
   viewmodelCatalog=void
@@ -915,6 +921,7 @@ function runLimited(map,maxFrames,sound,archive)
     hudTextureFirst=64;if catalog!=void then hudTextureFirst=64+catalog.textureCount end if
     if projectileCatalog!=void then hudTextureFirst=projectileCatalog.firstTextureSlot+len(projectileCatalog.textures) end if
     if skyCatalog!=void then hudTextureFirst=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if
+    if fogCatalog!=void then hudTextureFirst=fogCatalog.textureSlot+1 end if
     hudTextureCount=PLAYER_TEXTURE_FIRST_SLOT-hudTextureFirst
     loadedHud=try(baseHud.load(archive,hudTextureFirst,hudTextureCount));if not (loadedHud is error) then baseHudCatalog=loadedHud end if
   end if
@@ -973,6 +980,7 @@ function runLimited(map,maxFrames,sound,archive)
     end if
     if projectileCatalog!=void then for each texture in projectileCatalog.textures if not window.uploadTexture(texture.slot,texture.image.pixels,texture.image.width,texture.image.height) then window.shutdown();return error(7488,"could not upload projectile texture") end if end for end if
     if skyCatalog!=void then uploadedSky=playableSky.upload(skyCatalog);if uploadedSky is error then window.shutdown();return uploadedSky end if end if
+    if fogCatalog!=void then uploadedFog=playableFog.upload(fogCatalog);if uploadedFog is error then window.shutdown();return uploadedFog end if end if
     if modelAssets!=void then
       uploaded=[]
       for each texture in modelAssets.textures
@@ -1056,6 +1064,7 @@ function runLimited(map,maxFrames,sound,archive)
   if itemCatalog!=void then for each texture in itemCatalog.textures window.releaseTexture(texture.slot) end for end if
   if projectileCatalog!=void then for each texture in projectileCatalog.textures window.releaseTexture(texture.slot) end for end if
   if skyCatalog!=void then playableSky.release(skyCatalog) end if
+  if fogCatalog!=void then playableFog.release(fogCatalog) end if
   if baseHudCatalog!=void then baseHud.release(baseHudCatalog) end if
   if menuCatalog!=void then menu.release(menuCatalog) end if
   if matchMedia!=void then baseMatchDisplay.release(matchMedia) end if

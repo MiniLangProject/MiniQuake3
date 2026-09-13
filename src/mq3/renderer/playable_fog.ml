@@ -14,9 +14,11 @@ const FOG_STRIDE=72
 const BRUSH_STRIDE=12
 const BRUSH_SIDE_STRIDE=8
 const PLANE_STRIDE=16
+const FOG_TEXTURE_WIDTH=256
+const FOG_TEXTURE_HEIGHT=32
 
 struct Fog shaderName color depth tcScale bounds surface hasSurface end struct
-struct Catalog fogs end struct
+struct Catalog fogs textureSlot texture end struct
 struct FogBatch commands sourcePositions fogIndexes end struct
 
 function fail(message) return error(7620,"playable fog: "+message) end function
@@ -48,7 +50,7 @@ function load(map,index)
     depth=parsed.fogDepth;if depth<1.0 then depth=1.0 end if
     fogs=fogs+[Fog(name,parsed.fogColor,depth,1.0/(depth*8.0),bounds,surface,hasSurface)]
   end for
-  return Catalog(fogs)
+  return Catalog(fogs,-1,textureImage())
 end function
 
 function fogFactor(s,t)
@@ -59,7 +61,31 @@ function fogFactor(s,t)
   return trans.sqrt(index/255.0)
 end function
 
-function density(fog,position,viewOrigin,forward)
+function textureImage()
+  pixels=bytes(FOG_TEXTURE_WIDTH*FOG_TEXTURE_HEIGHT*4,255)
+  for y=0 to FOG_TEXTURE_HEIGHT-1
+    t=(y+0.5)/FOG_TEXTURE_HEIGHT
+    for x=0 to FOG_TEXTURE_WIDTH-1
+      s=(x+0.5)/FOG_TEXTURE_WIDTH;pixels[(y*FOG_TEXTURE_WIDTH+x)*4+3]=n.trunc32(255.0*fogFactor(s,t))
+    end for
+  end for
+  return materials.Image(FOG_TEXTURE_WIDTH,FOG_TEXTURE_HEIGHT,pixels)
+end function
+
+function assignTexture(catalog,slot)
+  if catalog==void or slot<0 or slot>=512 then return fail("invalid fog texture slot") end if
+  catalog.textureSlot=slot;return 1
+end function
+
+function upload(catalog)
+  if catalog==void or catalog.textureSlot<0 then return fail("fog texture slot is not assigned") end if
+  if not window.uploadTextureNoMip(catalog.textureSlot,catalog.texture.pixels,catalog.texture.width,catalog.texture.height) then return fail("could not upload fog lookup texture") end if
+  return 1
+end function
+
+function release(catalog) if catalog!=void and catalog.textureSlot>=0 then window.releaseTexture(catalog.textureSlot) end if;return void end function
+
+function coordinates(fog,position,viewOrigin,forward)
   dx=position[0]-viewOrigin[0];dy=position[1]-viewOrigin[1];dz=position[2]-viewOrigin[2]
   s=(dx*forward[0]+dy*forward[1]+dz*forward[2])*fog.tcScale+1.0/512.0
   t=31.0/32.0
@@ -72,8 +98,10 @@ function density(fog,position,viewOrigin,forward)
       if pointT<0.0 then t=1.0/32.0 else t=31.0/32.0 end if
     end if
   end if
-  return fogFactor(s,t)
+  return [s,t]
 end function
+
+function density(fog,position,viewOrigin,forward) uv=coordinates(fog,position,viewOrigin,forward);return fogFactor(uv[0],uv[1]) end function
 
 function build(renderData,catalog)
   if renderData==void or catalog==void then return fail("render data and fog catalog are required") end if
@@ -93,12 +121,17 @@ function update(batch,catalog,viewOrigin,forward)
   for triangleIndex=0 to batch.commands.count-1
     fog=catalog.fogs[batch.fogIndexes[triangleIndex]];offset=triangleIndex*window.TRIANGLE_BATCH_RECORD_BYTES
     red=n.trunc32(fog.color[0]*255.0);green=n.trunc32(fog.color[1]*255.0);blue=n.trunc32(fog.color[2]*255.0)
-    for vertex=0 to 2 alpha=n.trunc32(density(fog,batch.sourcePositions[triangleIndex][vertex],viewOrigin,forward)*255.0);window.writeBatchColor(batch.commands.data,offset+116+vertex*4,[red,green,blue,alpha]) end for
+    window.writeBatchI32(batch.commands.data,offset,catalog.textureSlot)
+    for vertex=0 to 2
+      uv=coordinates(fog,batch.sourcePositions[triangleIndex][vertex],viewOrigin,forward);uvOffset=offset+32+vertex*32
+      window.writeBatchF32(batch.commands.data,uvOffset,uv[0]);window.writeBatchF32(batch.commands.data,uvOffset+4,uv[1]);window.writeBatchColor(batch.commands.data,offset+116+vertex*4,[red,green,blue,255])
+    end for
   end for
   return batch.commands.count
 end function
 
 function draw(batch,catalog,projection)
   if batch==void or batch.commands.count==0 then return 0 end if
-  update(batch,catalog,projection.position,projection.forward);multitexture.setState(multitexture.BLEND_ALPHA,true,false);result=window.submitWorldTriangleBatch(batch.commands,projection);multitexture.setState(multitexture.BLEND_OPAQUE,false,true);return result
+  if catalog==void or catalog.textureSlot<0 then return fail("fog texture is unavailable") end if
+  update(batch,catalog,projection.position,projection.forward);multitexture.setState(multitexture.BLEND_ALPHA,true,false);multitexture.setTextureClamp(true);result=window.submitWorldTriangleBatch(batch.commands,projection);multitexture.setTextureClamp(false);multitexture.setState(multitexture.BLEND_OPAQUE,false,true);return result
 end function
