@@ -15,8 +15,11 @@ const OP_CHOOSE_LTG_ITEM=535
 const OP_CHOOSE_NBG_ITEM=536
 const OP_ITEM_GOAL_IN_VIS_BUT_NOT_VISIBLE=538
 const OP_GET_LEVEL_ITEM_GOAL=539
-// Baseq3 g_public.h assigns SAVE_GOAL_FUZZY_LOGIC to 545 and INTERBREED to 565.
+const OP_SAVE_GOAL_FUZZY_LOGIC=545
+const OP_GENETIC_PARENTS_AND_CHILD_SELECTION=564
+// Baseq3 g_public.h assigns INTERBREED to 565 and MUTATE to 566.
 const OP_INTERBREED_GOAL_FUZZY_LOGIC=565
+const OP_MUTATE_GOAL_FUZZY_LOGIC=566
 const GFL_ITEM=1
 const GFL_ROAM=2
 const GFL_DROPPED=4
@@ -28,11 +31,18 @@ const TRAVELTIME_SCALE=0.01
 const DEFAULT_DROPPED_WEIGHT=1000.0
 
 struct Services context reachabilityAreaFn areaReachabilityFn travelTimeFn traceFn entityInfoFn end struct
-struct Runtime levelItems goals services droppedWeight end struct
+struct Runtime levelItems goals services droppedWeight randomSeed end struct
 
 function services(context) return Services(context,void,void,void,void,void) end function
-function create(items,goals,host) return Runtime(items,goals,host,DEFAULT_DROPPED_WEIGHT) end function
+function create(items,goals,host) return Runtime(items,goals,host,DEFAULT_DROPPED_WEIGHT,1) end function
 function setDroppedWeight(runtime,value) if runtime!=void then runtime.droppedWeight=goalSelectNumeric.f32(value) end if;return value end function
+function setRandomSeed(runtime,value) if runtime!=void then runtime.randomSeed=goalSelectNumeric.i32(value) end if;return value end function
+function randomFloat(runtime)
+  // Baseq3's native botlib uses the process rand(), whose Windows sequence is
+  // the same 214013/2531011 LCG used by the original Windows executable.
+  runtime.randomSeed=goalSelectNumeric.add32(goalSelectNumeric.mul32(runtime.randomSeed,214013),2531011)
+  return goalSelectNumeric.fdiv((goalSelectNumeric.u32(runtime.randomSeed)>>16)&32767,32767.0)
+end function
 function copyVector(value) return [value[0],value[1],value[2]] end function
 function fail(message) return error(7594,"AI goal selection: "+message) end function
 
@@ -138,4 +148,45 @@ function interbreedGoalFuzzyLogic(runtime,parent1,parent2,child)
   a=one.itemWeightConfig;b=two.itemWeightConfig;c=offspring.itemWeightConfig;if len(a.weights)!=len(b.weights) or len(a.weights)!=len(c.weights) then goalRuntime.emitPrint(runtime.goals,goalRuntime.PRT_ERROR,"cannot interbreed weight configs, unequal numweights\n");return 0 end if
   for index=0 to len(a.weights)-1 if not interbreedSeparators(runtime,a.weights[index].separators,b.weights[index].separators,c.weights[index].separators) then return 0 end if end for;return 0
 end function
-function supportsTrap(op) return op==OP_CHOOSE_LTG_ITEM or op==OP_CHOOSE_NBG_ITEM or op==OP_ITEM_GOAL_IN_VIS_BUT_NOT_VISIBLE or op==OP_GET_LEVEL_ITEM_GOAL or op==OP_INTERBREED_GOAL_FUZZY_LOGIC end function
+
+function saveGoalFuzzyLogic(runtime,handle,filename)
+  // WriteWeightConfig is commented out in the released be_ai_goal.c. The
+  // handle lookup remains observable through its fatal diagnostic only.
+  if runtime==void then return 0 end if;goalResources.goalState(runtime.goals.pools,handle);return 0
+end function
+function mutateSeparators(runtime,separators)
+  if separators==void then return void end if
+  for each separator in separators
+    if separator.child!=void then mutateSeparators(runtime,separator.child)
+    else if separator.type==itemWeights.WT_BALANCE then
+      width=goalSelectNumeric.fsub(separator.maxWeight,separator.minWeight);leap=randomFloat(runtime)<0.01;centered=2.0*(randomFloat(runtime)-0.5)
+      if leap then separator.weight=goalSelectNumeric.f32(separator.weight+centered*width) else separator.weight=goalSelectNumeric.f32(separator.weight+centered*width*0.5) end if
+      if separator.weight<separator.minWeight then separator.minWeight=separator.weight else if separator.weight>separator.maxWeight then separator.maxWeight=separator.weight end if
+    end if
+  end for;return void
+end function
+function mutateGoalFuzzyLogic(runtime,handle,range)
+  if runtime==void then return 0 end if;goal=goalResources.goalState(runtime.goals.pools,handle);if goal==void or goal.itemWeightConfig==void then return 0 end if
+  // The range argument is unused by released Baseq3.
+  for each weight in goal.itemWeightConfig.weights mutateSeparators(runtime,weight.separators) end for;return 0
+end function
+function geneticSelection(runtime,numRanks,rankings)
+  sum=0.0;for index=0 to numRanks-1 if rankings[index]>=0.0 then sum=goalSelectNumeric.fadd(sum,rankings[index]) end if end for
+  if sum>0.0 then
+    select=goalSelectNumeric.fmul(randomFloat(runtime),sum)
+    for index=0 to numRanks-1 if rankings[index]>=0.0 then sum=goalSelectNumeric.fsub(sum,rankings[index]);if sum<=0.0 then return index end if end if end for
+  end if
+  index=goalSelectNumeric.trunc32(goalSelectNumeric.fmul(randomFloat(runtime),numRanks));if index>=numRanks then index=0 end if
+  for count=0 to numRanks-1 if rankings[index]>=0.0 then return index end if;index=(index+1)%numRanks end for;return 0
+end function
+function geneticParentsAndChildSelection(runtime,numRanks,ranks)
+  if runtime==void or numRanks>256 or numRanks<0 or len(ranks)<numRanks then return [0,0,0,0] end if
+  valid=0;for index=0 to numRanks-1 if ranks[index]>=0.0 then valid=valid+1 end if end for;if valid<3 then return [0,0,0,0] end if
+  rankings=[];for index=0 to numRanks-1 rankings=rankings+[goalSelectNumeric.f32(ranks[index])] end for
+  parent1=geneticSelection(runtime,numRanks,rankings);rankings[parent1]=-1.0
+  parent2=geneticSelection(runtime,numRanks,rankings);rankings[parent2]=-1.0
+  maximum=0.0;for index=0 to numRanks-1 if rankings[index]>=0.0 and rankings[index]>maximum then maximum=rankings[index] end if end for
+  for index=0 to numRanks-1 if rankings[index]>=0.0 then rankings[index]=goalSelectNumeric.fsub(maximum,rankings[index]) end if end for
+  child=geneticSelection(runtime,numRanks,rankings);return [1,parent1,parent2,child]
+end function
+function supportsTrap(op) return op==OP_CHOOSE_LTG_ITEM or op==OP_CHOOSE_NBG_ITEM or op==OP_ITEM_GOAL_IN_VIS_BUT_NOT_VISIBLE or op==OP_GET_LEVEL_ITEM_GOAL or op==OP_SAVE_GOAL_FUZZY_LOGIC or op==OP_GENETIC_PARENTS_AND_CHILD_SELECTION or op==OP_INTERBREED_GOAL_FUZZY_LOGIC or op==OP_MUTATE_GOAL_FUZZY_LOGIC end function

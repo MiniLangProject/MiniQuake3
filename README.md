@@ -24,10 +24,11 @@ Der aktuelle [AAS-/Botlib-Stand](docs/AAS_RUNTIME.md) lädt alle 30
 Navigationsdateien aus `pak0.pk3`, beantwortet erste echte 300er AAS-Traps und
 führt die Retail-`qagame.qvm` durch Setup, MapLoad und Botlib-Frames. Die
 statischen und dynamischen Level-Items, Goal-Stacks, Avoid-Zustände,
-LTG-/NBG-Itemwahl, Waffenwahl, Retail-Synonyme und Chat-Match-Templates laufen bereits im
-Originalbot-Pfad. Sarge durchläuft auf q3dm1 64 originale Bot-Frames ohne
-Trapfehler und reicht einen echten Bewegungs-Usercmd an den Server weiter. Die
-übrigen Traveltypen sowie die restlichen Chat-Zustandsmaschinen sind noch in Arbeit.
+LTG-/NBG-Itemwahl, Kartenorte, Waffenwahl, Fuzzy-Evolution, Retail-Synonyme und
+vollständige Initial-/Reply-Chatdaten laufen bereits im Originalbot-Pfad. Sarge
+durchläuft auf q3dm1 256 originale Bot-Frames ohne Trapfehler und reicht einen
+echten Bewegungs-Usercmd an den Server weiter. Die übrigen speziellen Traveltypen
+und die exakten Cluster-/Portal-Routing-Caches sind noch in Arbeit.
 
 ## Bauen und prüfen
 
@@ -444,6 +445,11 @@ Bot-/Arena-Registry, Spawnqueue und Bot-Connect/-Disconnect sind ebenfalls porti
 und in Lifecycle, Anmeldung, Abmeldung und Frameablauf eingebunden.
 Die [Bot-Navigation](docs/BOT_AI_FRAME.md) umfasst nun auch die zusammenhängende
 Luft-, Nahziel-, Zielabschluss- und Item-Langzeitzielroute aus `ai_dmnet.c`.
+Der originale Sarge-QVM-Pfad läuft 256 Frames bis zur echten Usercmd-Übergabe.
+Seine Botlib-Seite enthält gewichtete Walk-, Crouch-, Barrier-Jump-, Jump-,
+Ladder- und Walk-off-Ledge-Routen,
+Sichtpositionsvorhersage, Fuzzy-Evolution sowie Initial-/Reply-Chat aus den
+Retail-Dateien `rnd.c`, `rchat.c`, `syn.c` und `match.c`.
 [Team-/Zuschauerwechsel und `ClientDisconnect`](docs/TEAM_CHANGES.md) verbinden
 den `team`-Befehl mit Tod, Leichenverwaltung, Item-/Flaggenabgabe, Teamleitern,
 Userinfo, erneutem Spawn und Ranglisten. Die Zuschauerfreigabe beim Disconnect

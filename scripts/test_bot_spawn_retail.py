@@ -21,7 +21,7 @@ def main():
         ROOT,
         timeout=240,
     ).strip()
-    expected = "PASS: 15 retail original-bot spawn contracts setup=complete frames=64 running=BOTLIB_USER_COMMAND command=54,114,0 weapon=1 goal=1 chat=1 move=1"
+    expected = "PASS: 18 retail original-bot spawn contracts setup=complete frames=256 running=BOTLIB_USER_COMMAND command=86,15,0 weapon=8 goal=1 chat=1 move=1"
     if value != expected:
         raise RuntimeError(value)
     print(value)

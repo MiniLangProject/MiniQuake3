@@ -31,14 +31,14 @@ def main() -> int:
         out / "oracle-build.log",
     )
     observed = run([native], out).strip()
-    expected = "PASS: 6 native Baseq3 goal-selection scenarios / 27 exact observations"
+    expected = "PASS: 8 native Baseq3 goal-selection scenarios / 35 exact observations"
     if observed != expected:
         raise RuntimeError(observed)
     mini = run(
         [build("tests/ai_goal_selection_contracts.ml", "ai_goal_selection_contracts.exe")],
         ROOT / "build",
     ).strip()
-    expected_mini = "PASS: 22 AI goal-selection contracts opcodes=535,536,538,539,565"
+    expected_mini = "PASS: 29 AI goal-selection contracts opcodes=535,536,538,539,545,564-566"
     if mini != expected_mini:
         raise RuntimeError(mini)
     print(observed)

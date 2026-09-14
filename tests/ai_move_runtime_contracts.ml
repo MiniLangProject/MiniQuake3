@@ -8,7 +8,7 @@ import mq3.botlib.elementary_actions as ea
 import mq3.compat.numeric as n
 import std.fs as fs
 
-struct Harness groundEntity walks end struct
+struct Harness groundEntity walks jumpStart gravity ballistic end struct
 struct Machine data mask end struct
 function require(ok,label) if not ok then return error(7548,"AI move-runtime contract: "+label) end if;return 1 end function
 function moveGround(context,start,mins,maxs,finish,client,contents) return movement.GroundTrace(false,0.5,context.groundEntity,finish) end function
@@ -16,6 +16,10 @@ function moveEntityModel(context,entity) return 9 end function
 function moveModelType(context,model) return movement.MODELTYPE_FUNC_PLAT end function
 function moveModelReachability(context,model) return 2 end function
 function moveWalkDirection(context,state,direction,speed,type) context.walks=context.walks+[[direction,speed,type]];return true end function
+function moveJumpRunStart(context,state,reach) return context.jumpStart end function
+function moveGravity(context) return context.gravity end function
+function moveHorizontalVelocity(context,zVelocity,start,finish) return context.ballistic end function
+function closeEnough(a,b) difference=a-b;if difference<0 then difference=0-difference end if;return difference<0.01 end function
 function setMoveArg(vm,base,index,value) n.writeU32(vm.data,base+index*4,value);return void end function
 function putMoveVector(data,address,value) for axis=0 to 2 n.writeU32(data,address+axis*4,n.floatBits(value[axis])) end for;return void end function
 function putMoveGoal(vm,address,value)
@@ -27,7 +31,7 @@ end function
 
 function main(args)
   if len(args)!=1 then return 2 end if;map=aas.load(fs.readAllBytes(args[0]));if map is error then return map end if;aasState=aasRuntime.create(map);router=aasRouting.create(aasState);if router is error then return router end if
-  count=0;pools=resources.create();handle=resources.allocMoveState(pools);host=Harness(movement.ENTITYNUM_WORLD,[]);service=movement.services(host);service.elementaryActions=ea.create(8,void,void);runtime=movement.create(pools,aasState,router,service);state=resources.moveState(pools,handle)
+  count=0;pools=resources.create();handle=resources.allocMoveState(pools);host=Harness(movement.ENTITYNUM_WORLD,[],[-40.0,5.0,0.0],600.0,[true,222.0]);service=movement.services(host);service.elementaryActions=ea.create(8,void,void);runtime=movement.create(pools,aasState,router,service);state=resources.moveState(pools,handle)
   state.moveFlags=movement.MFL_ONGROUND|movement.MFL_WATERJUMP|movement.MFL_TELEPORTED|movement.MFL_GRAPPLEPULL|movement.MFL_WALK|1|4|128
   init=movement.InitMove([1.0,2.0,3.0],[4.0,5.0,6.0],[7.0,8.0,9.0],17,5,0.05,aasRuntime.PRESENCE_NORMAL,[10.0,20.0,30.0],movement.MFL_ONGROUND|movement.MFL_WALK)
   count=count+require(movement.initMoveState(runtime,handle,init)==0 and state.origin==[1.0,2.0,3.0] and state.velocity==[4.0,5.0,6.0] and state.viewOffset==[7.0,8.0,9.0],"InitMoveState copies three input vectors")
@@ -51,9 +55,52 @@ function main(args)
   count=count+require(input.dir==[1.0,0.0,0.0] and input.speed==400.0 and state.lastReachNum==1 and state.reachabilityTime==15.0,"walk path emits EA_Move and stores five-second reach timeout")
   direct=resources.Goal([6.0,0.0,0.0],1,[-1.0,-1.0,-1.0],[1.0,1.0,1.0],0,10,0,0);ea.resetInput(service.elementaryActions,state.client);moved=movement.moveToGoal(runtime,handle,direct,aasRouting.TFL_DEFAULT);input=ea.getInput(service.elementaryActions,state.client,0.05)
   count=count+require(not moved.failure and moved.travelType==aasRouting.TRAVEL_WALK and input.speed==20.0 and state.lastReachNum==0,"goal-area movement scales speed by remaining distance")
-  router.reaches[1].travelType=aasRouting.TRAVEL_CROUCH;state.lastReachNum=0;state.lastGoalAreaNum=0;moved=movement.moveToGoal(runtime,handle,goal,aasRouting.TFL_DEFAULT)
-  count=count+require(moved.failure and moved.type==aasRouting.TRAVEL_CROUCH and moved.travelType==aasRouting.TRAVEL_CROUCH,"unsupported travel type produces explicit failure")
-  router.reaches[1].travelType=aasRouting.TRAVEL_WALK;service.walkDirectionFn=moveWalkDirection
+  router.reaches[1].travelType=aasRouting.TRAVEL_CROUCH;state.origin=[1.0,0.0,0.0];state.moveFlags=movement.MFL_ONGROUND;state.lastReachNum=0;state.lastGoalAreaNum=0;ea.resetInput(service.elementaryActions,state.client);moved=movement.moveToGoal(runtime,handle,goal,aasRouting.TFL_DEFAULT);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and moved.travelType==aasRouting.TRAVEL_CROUCH and moved.moveDir==[1.0,0.0,0.0] and input.speed==400.0 and (input.actionflags&ea.ACTION_CROUCH)!=0,"Crouch uses EA_Crouch and moves at original speed 400")
+  state.moveFlags=0;ea.resetInput(service.elementaryActions,state.client);moved=movement.moveToGoal(runtime,handle,goal,aasRouting.TFL_DEFAULT);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and moved.travelType==aasRouting.TRAVEL_CROUCH and input.speed==0.0 and input.actionflags==0,"airborne Crouch reach performs the original no-op finish path")
+
+  router.reaches[1].travelType=aasRouting.TRAVEL_JUMP;state.origin=[1.0,0.0,0.0];state.moveFlags=movement.MFL_ONGROUND;state.lastReachNum=0;state.lastGoalAreaNum=0;ea.resetInput(service.elementaryActions,state.client);moved=movement.moveToGoal(runtime,handle,goal,aasRouting.TFL_DEFAULT);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and moved.travelType==aasRouting.TRAVEL_JUMP and input.speed==400.0 and (input.actionflags&ea.ACTION_JUMP)!=0 and state.jumpReach==1,"Jump crosses the start with EA_Jump, requests speed 600 (EA clamps 400) and remembers its reach")
+  state.origin=[5.0,0.0,0.0];state.moveFlags=0;ea.resetInput(service.elementaryActions,state.client);moved=movement.moveToGoal(runtime,handle,goal,aasRouting.TFL_DEFAULT);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and moved.travelType==aasRouting.TRAVEL_JUMP and moved.moveDir==[1.0,0.0,0.0] and input.speed==400.0,"airborne Jump finish requests speed 800 and EA applies its original 400 clamp")
+  state.origin=[20.0,0.0,0.0];ea.resetInput(service.elementaryActions,state.client);moved=movement.finishTravelJump(runtime,state,router.reaches[1]);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and moved.moveDir==[0.0,0.0,0.0] and input.speed==0.0,"Jump finish stops within 24 units after passing the landing")
+
+  state.origin=[-28.0,0.0,0.0];state.reachAreaNum=0;state.lastReachNum=1;state.jumpReach=0;ea.resetInput(service.elementaryActions,state.client);moved=movement.travelJump(runtime,state,router.reaches[1]);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and input.speed==400.0 and (input.actionflags&ea.ACTION_DELAYEDJUMP)!=0 and (input.actionflags&ea.ACTION_JUMP)==0,"Jump uses EA_DelayedJump from 24 through 31 units")
+  state.origin=[-100.0,0.0,0.0];state.reachAreaNum=0;state.jumpReach=0;ea.resetInput(service.elementaryActions,state.client);moved=movement.travelJump(runtime,state,router.reaches[1]);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and input.speed==100.0 and input.dir==[1.0,0.0,0.0] and input.actionflags==0,"Jump run-up speed is five times distance to the predicted start")
+  service.jumpRunStartFn=moveJumpRunStart;count=count+require(movement.jumpReachRunStart(runtime,state,router.reaches[1])==host.jumpStart,"Jump run-start delegates collision-accurate client prediction to the host");service.jumpRunStartFn=void
+
+  router.reaches[1].travelType=aasRouting.TRAVEL_LADDER;router.reaches[1].finish=[10.0,0.0,10.0];state.origin=[0.0,0.0,0.0];ea.resetInput(service.elementaryActions,state.client);moved=movement.travelLadder(runtime,state,router.reaches[1]);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and (moved.flags&movement.MOVERESULT_MOVEMENTVIEW)!=0 and closeEnough(moved.moveDir[0],0.7071) and closeEnough(moved.moveDir[2],0.7071),"Ladder preserves normalized three-dimensional reach direction")
+  count=count+require(closeEnough(moved.idealViewAngles[0],-71.565) and closeEnough(moved.idealViewAngles[1],0.0) and input.speed==0.0 and input.dir==[0.0,0.0,0.0] and (input.actionflags&ea.ACTION_MOVEFORWARD)!=0,"Ladder faces weighted vertical direction and emits zero-speed Move plus MoveForward")
+  router.reaches[1].finish=[10.0,0.0,0.0];state.origin=[1.0,0.0,0.0];state.moveFlags=movement.MFL_ONGROUND;state.lastReachNum=0;state.lastGoalAreaNum=0;ea.resetInput(service.elementaryActions,state.client);moved=movement.moveToGoal(runtime,handle,goal,aasRouting.TFL_DEFAULT);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and moved.travelType==aasRouting.TRAVEL_LADDER and (moved.flags&movement.MOVERESULT_MOVEMENTVIEW)!=0 and (input.actionflags&ea.ACTION_MOVEFORWARD)!=0 and state.reachabilityTime==16.0,"MoveToGoal dispatches Ladder and applies its six-second reach timeout")
+  router.reaches[1].travelType=aasRouting.TRAVEL_BARRIERJUMP;state.origin=[1.0,0.0,0.0];state.moveFlags=movement.MFL_ONGROUND;state.lastReachNum=0;state.lastGoalAreaNum=0;ea.resetInput(service.elementaryActions,state.client);moved=movement.moveToGoal(runtime,handle,goal,aasRouting.TFL_DEFAULT);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and moved.travelType==aasRouting.TRAVEL_BARRIERJUMP and moved.moveDir==[-1.0,0.0,0.0] and (input.actionflags&ea.ACTION_JUMP)!=0 and input.speed==0.0,"BarrierJump jumps inside the original nine-unit threshold")
+  state.origin=[-10.0,0.0,0.0];ea.resetInput(service.elementaryActions,state.client);moved=movement.travelBarrierJump(runtime,state,router.reaches[1]);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and moved.moveDir==[1.0,0.0,0.0] and input.speed==60.0 and (input.actionflags&ea.ACTION_JUMP)==0,"BarrierJump approaches at six times the capped start distance")
+  state.origin=[5.0,0.0,5.0];state.velocity=[0.0,0.0,300.0];ea.resetInput(service.elementaryActions,state.client);moved=movement.finishTravelBarrierJump(runtime,state,router.reaches[1]);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and moved.moveDir==[0.0,0.0,0.0] and input.speed==0.0,"BarrierJump finish does nothing while vertical velocity is at least 250")
+  state.velocity=[0.0,0.0,200.0];moved=movement.finishTravelBarrierJump(runtime,state,router.reaches[1]);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and moved.moveDir==[1.0,0.0,0.0] and input.speed==400.0,"BarrierJump finish steers to the end near the apex and while descending")
+
+  router.reaches[1].travelType=aasRouting.TRAVEL_WALKOFFLEDGE;state.origin=[1.0,0.0,0.0];state.velocity=[0.0,0.0,0.0];state.moveFlags=movement.MFL_ONGROUND;state.lastReachNum=0;state.lastGoalAreaNum=0;ea.resetInput(service.elementaryActions,state.client);moved=movement.moveToGoal(runtime,handle,goal,aasRouting.TFL_DEFAULT);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and moved.travelType==aasRouting.TRAVEL_WALKOFFLEDGE and moved.moveDir==[1.0,0.0,0.0] and input.speed==100.0,"WalkOffLedge uses careful speed 100 for a near vertical drop")
+  state.origin=[5.0,0.0,10.0];state.velocity=[0.0,0.0,-100.0];state.moveFlags=0;ea.resetInput(service.elementaryActions,state.client);moved=movement.moveToGoal(runtime,handle,goal,aasRouting.TFL_DEFAULT);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and moved.travelType==aasRouting.TRAVEL_WALKOFFLEDGE and moved.moveDir==[1.0,0.0,0.0] and input.speed==65.0,"WalkOffLedge airborne finish applies original gravity air control")
+  state.origin=[-100.0,0.0,0.0];ea.resetInput(service.elementaryActions,state.client);moved=movement.travelWalkOffLedge(runtime,state,router.reaches[1]);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and input.speed==400.0 and moved.moveDir==[1.0,0.0,0.0],"far vertical WalkOffLedge approach caps its distance-derived speed at 400")
+  router.reaches[1].finish=[40.0,0.0,-20.0];state.origin=[-5.0,0.0,0.0];ea.resetInput(service.elementaryActions,state.client);moved=movement.travelWalkOffLedge(runtime,state,router.reaches[1]);input=ea.getInput(service.elementaryActions,state.client,0.05)
+  count=count+require(not moved.failure and closeEnough(input.speed,178.885) and moved.moveDir==[1.0,0.0,0.0],"wide WalkOffLedge uses AAS ballistic horizontal velocity")
+  service.gravityFn=moveGravity;count=count+require(movement.gravity(runtime)==600.0,"air control reads live sv_gravity through the host service");service.gravityFn=void
+  service.horizontalVelocityForJumpFn=moveHorizontalVelocity;count=count+require(movement.horizontalVelocityForJump(runtime,0.0,router.reaches[1].start,router.reaches[1].finish)==host.ballistic,"WalkOffLedge delegates live AAS physics settings through its ballistic callback");service.horizontalVelocityForJumpFn=void
+  router.reaches[1].finish=[10.0,0.0,0.0];router.reaches[1].travelType=aasRouting.TRAVEL_SWIM;state.origin=[1.0,0.0,0.0];state.moveFlags=movement.MFL_ONGROUND;state.lastReachNum=0;state.lastGoalAreaNum=0;moved=movement.moveToGoal(runtime,handle,goal,aasRouting.TFL_DEFAULT)
+  count=count+require(moved.failure and moved.type==aasRouting.TRAVEL_SWIM and moved.travelType==aasRouting.TRAVEL_SWIM,"remaining unsupported travel type produces explicit failure")
+  router.reaches[1].travelType=aasRouting.TRAVEL_WALK
+  service.walkDirectionFn=moveWalkDirection
   count=count+require(movement.moveInDirection(runtime,handle,[3.0,4.0,0.0],250.0,movement.MOVE_WALK) and len(host.walks)==1 and host.walks[0][0]==[3.0,4.0,0.0],"MoveInDirection delegates grounded safety prediction without normalizing input")
 
   vm=Machine(bytes(4096,0),4095);base=3800;initAddress=100;putInitMove(vm,initAddress,init);state.moveFlags=movement.MFL_TELEPORTED|4;setMoveArg(vm,base,1,handle);setMoveArg(vm,base,2,initAddress)

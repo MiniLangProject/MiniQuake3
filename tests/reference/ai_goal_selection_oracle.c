@@ -2,6 +2,7 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  * Focused extraction of be_ai_goal.c / be_ai_weight.c released semantics. */
 #include <stddef.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -65,6 +66,56 @@ static int interbreed(fuzzy_t *one, fuzzy_t *two, fuzzy_t *result) {
     return 1;
 }
 
+static uint32_t random_seed;
+static float baseq3_random(void) {
+    random_seed = random_seed * 214013u + 2531011u;
+    return (float)((random_seed >> 16) & 0x7fffu) / (float)0x7fff;
+}
+
+static void evolve(fuzzy_t *fs) {
+    if (fs->child) evolve(fs->child);
+    else if (fs->type == WT_BALANCE) {
+        if (baseq3_random() < 0.01) fs->weight = (float)(fs->weight + (2.0 * (baseq3_random() - 0.5)) * (fs->maxweight - fs->minweight));
+        else fs->weight = (float)(fs->weight + (2.0 * (baseq3_random() - 0.5)) * (fs->maxweight - fs->minweight) * 0.5);
+        if (fs->weight < fs->minweight) fs->minweight = fs->weight;
+        else if (fs->weight > fs->maxweight) fs->maxweight = fs->weight;
+    }
+    if (fs->next) evolve(fs->next);
+}
+
+static int genetic_selection(int numranks, float *rankings) {
+    float sum = 0.0f, select;
+    int i, index;
+    for (i = 0; i < numranks; ++i) if (rankings[i] >= 0.0f) sum += rankings[i];
+    if (sum > 0.0f) {
+        select = baseq3_random() * sum;
+        (void)select;
+        for (i = 0; i < numranks; ++i) if (rankings[i] >= 0.0f) {
+            sum -= rankings[i]; if (sum <= 0.0f) return i;
+        }
+    }
+    index = (int)(baseq3_random() * numranks);
+    for (i = 0; i < numranks; ++i) {
+        if (rankings[index] >= 0.0f) return index;
+        index = (index + 1) % numranks;
+    }
+    return 0;
+}
+
+static int genetic_family(int numranks, const float *ranks, int *p1, int *p2, int *child) {
+    float rankings[256], max;
+    int i, valid = 0;
+    if (numranks > 256) { *p1 = *p2 = *child = 0; return 0; }
+    for (i = 0; i < numranks; ++i) if (ranks[i] >= 0.0f) ++valid;
+    if (valid < 3) { *p1 = *p2 = *child = 0; return 0; }
+    memcpy(rankings,ranks,sizeof(float)*(size_t)numranks);
+    *p1=genetic_selection(numranks,rankings);rankings[*p1]=-1.0f;
+    *p2=genetic_selection(numranks,rankings);rankings[*p2]=-1.0f;
+    max=0.0f;for(i=0;i<numranks;++i)if(rankings[i]>=0.0f&&rankings[i]>max)max=rankings[i];
+    for(i=0;i<numranks;++i)if(rankings[i]>=0.0f)rankings[i]=max-rankings[i];
+    *child=genetic_selection(numranks,rankings);return 1;
+}
+
 static int ascii_case_equal(const char *a, const char *b) {
     while (*a && *b) {
         char ca = *a++, cb = *b++;
@@ -88,6 +139,10 @@ int main(void) {
     fuzzy_t one_top = {0,1,0,0.0f,0.0f,0.0f,&one_child,&one_leaf};
     fuzzy_t two_top = {0,1,0,0.0f,0.0f,0.0f,&two_child,&two_leaf};
     fuzzy_t out_top = {0,1,0,0.0f,0.0f,0.0f,&out_child,&out_leaf};
+    fuzzy_t mutation = {0,1,WT_BALANCE,10.0f,0.0f,20.0f,NULL,NULL};
+    float ranks[4] = {1.0f,2.0f,3.0f,4.0f};
+    int parent1, parent2, child;
+    union { float f; uint32_t u; } mutation_bits;
 
     CHECK(sizeof(bot_goal_t) == 56u);
     CHECK(offsetof(bot_goal_t, areanum) == 12u);
@@ -123,6 +178,16 @@ int main(void) {
     CHECK(out_leaf.weight == 4.0f);
     CHECK(out_leaf.minweight == 4.0f && out_leaf.maxweight == 4.0f);
 
-    printf("PASS: 6 native Baseq3 goal-selection scenarios / %d exact observations\n", observations);
+    random_seed=1;evolve(&mutation);mutation_bits.f=mutation.weight;
+    CHECK(mutation_bits.u == 0x4148b1d2u);
+    CHECK(mutation.minweight == 0.0f && mutation.maxweight == 20.0f);
+    random_seed=1;CHECK(genetic_family(4,ranks,&parent1,&parent2,&child));
+    CHECK(parent1 == 3 && parent2 == 2 && child == 0);
+    CHECK(!genetic_family(2,ranks,&parent1,&parent2,&child));
+    CHECK(parent1 == 0 && parent2 == 0 && child == 0);
+    parent1=9;parent2=9;child=9;CHECK(!genetic_family(257,ranks,&parent1,&parent2,&child));
+    CHECK(parent1 == 0 && parent2 == 0 && child == 0);
+
+    printf("PASS: 8 native Baseq3 goal-selection scenarios / %d exact observations\n", observations);
     return 0;
 }

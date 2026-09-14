@@ -87,10 +87,21 @@ function main(args)
   count=count+require(outChild[0].weight==30.0,"released child-recursion bug uses parent two twice")
   count=count+require(outTop[1].weight==4.0 and outTop[1].minWeight==4.0 and outTop[1].maxWeight==4.0,"balance average preserves released min/max comparisons")
 
+  selection.setRandomSeed(runtime,1);mutating=weights.Separator(0,1,weights.WT_BALANCE,10.0,0.0,20.0,void);resources.goalState(pools,first).itemWeightConfig=weights.WeightConfig("mutate",[weights.Weight("x",[mutating])])
+  count=count+require(selection.mutateGoalFuzzyLogic(runtime,first,99.0)==0 and n.floatBits(mutating.weight)==0x4148b1d2,"mutation follows native rand and ignores range")
+  count=count+require(mutating.minWeight==0.0 and mutating.maxWeight==20.0,"mutation retains bounds when evolved weight remains inside")
+  selection.setRandomSeed(runtime,1);family=selection.geneticParentsAndChildSelection(runtime,4,[1.0,2.0,3.0,4.0])
+  count=count+require(family==[1,3,2,0],"released genetic selection consumes random values but selects from descending residual sum")
+  count=count+require(selection.geneticParentsAndChildSelection(runtime,2,[1.0,2.0])==[0,0,0,0],"genetic selection rejects fewer than three valid bots")
+
   vm=Machine(bytes(4096,0),4095);base=3500;putSelectionString(vm,3000,"Armor");putSelectionGoal(vm,3100,makeSelectionGoal(0,0,0,0));setSelectionVmArg(vm,base,1,-1);setSelectionVmArg(vm,base,2,3000);setSelectionVmArg(vm,base,3,3100)
   count=count+require(selectionTraps.dispatch(runtime,vm,base,selection.OP_GET_LEVEL_ITEM_GOAL)==202 and n.readI32(vm.data,3144)==202 and n.readI32(vm.data,3148)==(selection.GFL_ITEM|selection.GFL_DROPPED),"GetLevelItemGoal syscall uses exact bot_goal_t ABI")
   setSelectionVmArg(vm,base,1,first);setSelectionVmArg(vm,base,2,second);setSelectionVmArg(vm,base,3,child);count=count+require(selectionTraps.dispatch(runtime,vm,base,selection.OP_INTERBREED_GOAL_FUZZY_LOGIC)==0,"interbreed syscall dispatches canonical opcode 565")
-  count=count+require(selection.supportsTrap(535) and selection.supportsTrap(539) and selection.supportsTrap(565) and not selection.supportsTrap(545),"selection trap coverage keeps save and interbreed opcodes distinct")
-  count=count+require((try(selectionTraps.dispatch(runtime,vm,base,545))) is error,"unimplemented fuzzy-save trap remains explicit")
-  print("PASS: "+str(count)+" AI goal-selection contracts opcodes=535,536,538,539,565");return 0
+  putSelectionString(vm,3000,"ignored.w");setSelectionVmArg(vm,base,1,first);setSelectionVmArg(vm,base,2,3000);count=count+require(selectionTraps.dispatch(runtime,vm,base,selection.OP_SAVE_GOAL_FUZZY_LOGIC)==0,"released fuzzy-save trap remains an exact no-op")
+  for index=0 to 3 n.writeU32(vm.data,2800+index*4,n.floatBits(index+1.0)) end for;setSelectionVmArg(vm,base,1,4);setSelectionVmArg(vm,base,2,2800);setSelectionVmArg(vm,base,3,2850);setSelectionVmArg(vm,base,4,2854);setSelectionVmArg(vm,base,5,2858);selection.setRandomSeed(runtime,1)
+  count=count+require(selectionTraps.dispatch(runtime,vm,base,selection.OP_GENETIC_PARENTS_AND_CHILD_SELECTION)==1 and n.readI32(vm.data,2850)==3 and n.readI32(vm.data,2854)==2 and n.readI32(vm.data,2858)==0,"genetic syscall marshals float ranks and three output pointers")
+  setSelectionVmArg(vm,base,1,257);setSelectionVmArg(vm,base,2,0);count=count+require(selectionTraps.dispatch(runtime,vm,base,selection.OP_GENETIC_PARENTS_AND_CHILD_SELECTION)==0 and n.readI32(vm.data,2850)==0 and n.readI32(vm.data,2854)==0 and n.readI32(vm.data,2858)==0,"oversized genetic syscall writes zero outputs without reading ranks")
+  setSelectionVmArg(vm,base,1,first);setSelectionVmArg(vm,base,2,n.floatBits(0.01));count=count+require(selectionTraps.dispatch(runtime,vm,base,selection.OP_MUTATE_GOAL_FUZZY_LOGIC)==0,"mutation syscall decodes PASSFLOAT range")
+  count=count+require(selection.supportsTrap(535) and selection.supportsTrap(539) and selection.supportsTrap(545) and selection.supportsTrap(564) and selection.supportsTrap(565) and selection.supportsTrap(566),"selection trap coverage includes the complete fuzzy evolution block")
+  print("PASS: "+str(count)+" AI goal-selection contracts opcodes=535,536,538,539,545,564-566");return 0
 end function

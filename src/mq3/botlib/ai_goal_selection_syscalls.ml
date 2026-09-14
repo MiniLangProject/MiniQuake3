@@ -10,6 +10,10 @@ const INVENTORY_COUNT=256
 function readInventory(vm,address)
   at=common.pointer(vm,address,INVENTORY_COUNT*4,"bot inventory input");if at is error then return at end if;result=[];for index=0 to INVENTORY_COUNT-1 result=result+[n.readI32(vm.data,at+index*4)] end for;return result
 end function
+function readRanks(vm,address,count)
+  if count<0 or count>256 then return error(7595,"invalid genetic rank count "+str(count)) end if
+  at=common.pointer(vm,address,count*4,"genetic ranks");if at is error then return at end if;result=[];for index=0 to count-1 result=result+[n.bitsFloat(n.readU32(vm.data,at+index*4))] end for;return result
+end function
 function dispatch(runtime,vm,base,op)
   if op==goalSelection.OP_CHOOSE_LTG_ITEM or op==goalSelection.OP_CHOOSE_NBG_ITEM then
     origin=common.readFloatVector(vm,common.argument(vm,base,2),3,"goal choice origin");if origin is error then return origin end if;inventory=readInventory(vm,common.argument(vm,base,3));if inventory is error then return inventory end if
@@ -24,6 +28,12 @@ function dispatch(runtime,vm,base,op)
   if op==goalSelection.OP_GET_LEVEL_ITEM_GOAL then
     name=common.readString(vm,common.argument(vm,base,2));if name is error then return name end if;goal=goalAbi.readGoal(vm,common.argument(vm,base,3));if goal is error then return goal end if;result=goalSelection.getLevelItemGoal(runtime,common.argument(vm,base,1),name,goal);if result<0 then return result end if;written=goalAbi.writeGoal(vm,common.argument(vm,base,3),goal);if written is error then return written end if;return result
   end if
+  if op==goalSelection.OP_SAVE_GOAL_FUZZY_LOGIC then filename=common.readString(vm,common.argument(vm,base,2));if filename is error then return filename end if;return goalSelection.saveGoalFuzzyLogic(runtime,common.argument(vm,base,1),filename) end if
+  if op==goalSelection.OP_GENETIC_PARENTS_AND_CHILD_SELECTION then
+    count=common.argument(vm,base,1);ranks=[];if count>=0 and count<=256 then ranks=readRanks(vm,common.argument(vm,base,2),count);if ranks is error then return ranks end if end if;result=goalSelection.geneticParentsAndChildSelection(runtime,count,ranks)
+    for index=0 to 2 address=common.pointer(vm,common.argument(vm,base,index+3),4,"genetic result");if address is error then return address end if;n.writeU32(vm.data,address,result[index+1]) end for;return result[0]
+  end if
   if op==goalSelection.OP_INTERBREED_GOAL_FUZZY_LOGIC then return goalSelection.interbreedGoalFuzzyLogic(runtime,common.argument(vm,base,1),common.argument(vm,base,2),common.argument(vm,base,3)) end if
+  if op==goalSelection.OP_MUTATE_GOAL_FUZZY_LOGIC then return goalSelection.mutateGoalFuzzyLogic(runtime,common.argument(vm,base,1),n.bitsFloat(common.argument(vm,base,2))) end if
   return error(7595,"unsupported AI goal-selection trap "+str(op))
 end function

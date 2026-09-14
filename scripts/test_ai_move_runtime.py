@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run native and MiniLang contracts for movement-AI traps 553/554/557."""
+"""Run native and MiniLang contracts for op549 travel and movement-AI traps."""
 import subprocess
 import sys
 from pathlib import Path
@@ -34,14 +34,14 @@ def main() -> int:
         out / "oracle-build.log",
     )
     observed = run([native], out).strip()
-    expected = "PASS: 8 native Baseq3 move-runtime scenarios / 34 exact observations"
+    expected = "PASS: 20 native Baseq3 move-runtime scenarios / 53 exact observations"
     if observed != expected:
         raise RuntimeError(observed)
     mini = run(
         [build("tests/ai_move_runtime_contracts.ml", "ai_move_runtime_contracts.exe"), data],
         ROOT / "build",
     ).strip()
-    expected_mini = "PASS: 22 AI move-runtime contracts opcodes=549,550,553,554,557"
+    expected_mini = "PASS: 43 AI move-runtime contracts opcodes=549,550,553,554,557"
     if mini != expected_mini:
         raise RuntimeError(mini)
     print(observed)

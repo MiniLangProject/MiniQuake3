@@ -58,10 +58,16 @@ import mq3.botlib.ai_chat_strings as aiChatStrings
 import mq3.botlib.ai_chat_string_syscalls as aiChatStringSyscalls
 import mq3.botlib.ai_chat_matches as aiChatMatches
 import mq3.botlib.ai_chat_match_syscalls as aiChatMatchSyscalls
+import mq3.botlib.ai_chat_output as aiChatOutput
+import mq3.botlib.ai_chat_output_syscalls as aiChatOutputSyscalls
 import mq3.botlib.ai_chat_goal_tail as aiChatGoalTail
 import mq3.botlib.ai_chat_goal_tail_syscalls as aiChatGoalTailSyscalls
 import mq3.botlib.ai_move_runtime as aiMoveRuntime
 import mq3.botlib.ai_move_syscalls as aiMoveSyscalls
+import mq3.botlib.ai_predict_visible_position as aiPredictVisible
+import mq3.botlib.ai_predict_visible_position_syscalls as aiPredictVisibleSyscalls
+import mq3.botlib.ai_map_goals as aiMapGoals
+import mq3.botlib.ai_map_goal_syscalls as aiMapGoalSyscalls
 import mq3.botlib.ai_weapon_weights as aiWeaponWeights
 import mq3.botlib.ai_weapon_weight_syscalls as aiWeaponWeightSyscalls
 import mq3.botlib.ai_weapon_combat as aiWeaponCombat
@@ -109,7 +115,7 @@ struct FileCursor data offset end struct
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
 struct RenderView refdef scene end struct
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime end struct
+struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals end struct
 struct Boot game runtime context cgame ui end struct
 struct Snapshot serverTime playerState entities end struct
 
@@ -279,13 +285,14 @@ end function
 function botlibLoadMap(context,vm,base)
   name=common.readString(vm,common.argument(vm,base,1));if name is error then return name end if
   result=botlibRuntime.loadMap(context.botlib,name);if result!=botlibRuntime.BLERR_NOERROR then return result end if
-  context.aas=void;context.aasRouter=void
+  context.aas=void;context.aasRouter=void;context.aiVisiblePosition.router=void
   data=try(pk3.read(context.archive,"maps/"+name+".aas"));if data is error then context.aas=void;return 3 end if
   map=aasFormat.load(data);if map is error then context.aas=void;return 7 end if
   context.aas=aasRuntime.create(map);if context.aas is error then context.aas=void;return 7 end if
   context.aasRouter=aasRouting.create(context.aas);if context.aasRouter is error then context.aas=void;context.aasRouter=void;return 7 end if
-  context.aiMoveRuntime.aas=context.aas;context.aiMoveRuntime.router=context.aasRouter
+  context.aiMoveRuntime.aas=context.aas;context.aiMoveRuntime.router=context.aasRouter;context.aiVisiblePosition.router=context.aasRouter
   gameType=botlibRuntime.integerVariable(context.botlib,"g_gametype",0);aiLevelItems.bind(context.aiLevelItems,context.aasEntities,context.aas,context.botBspEntities,gameType,context,levelItemPlace)
+  aiMapGoals.initialize(context.aiMapGoals,context.aas,context.botBspEntities)
   aiGoalSelection.setDroppedWeight(context.aiGoalSelection,botlibFloat(context,"droppedweight",1000.0))
   initialized=aiLevelItems.initialize(context.aiLevelItems);if initialized is error then return initialized end if
   return botlibRuntime.BLERR_NOERROR
@@ -356,6 +363,7 @@ function goalStateTime(context) return aasRuntime.getTime(context.aas) end funct
 function goalStateName(context,number) return aiLevelItems.goalName(context.aiLevelItems,number) end function
 function goalStateLog(context,text) emitPrint(context,text);return void end function
 function goalStatePrint(context,level,text) emitPrint(context,text);return void end function
+function chatOutputRandom(context) return aiGoalSelection.randomFloat(context.aiGoalSelection) end function
 function goalSelectionTravelTime(context,area,origin,goalArea,travelFlags)
   if context.aasRouter==void then return 0 end if;return aasRouting.areaTravelTimeToGoalArea(context.aasRouter,area,origin,goalArea,travelFlags)
 end function
@@ -369,11 +377,32 @@ function moveSwimming(context,origin) return aasMovementQueries.swimming(context
 function moveClientTrace(context,start,finish,presence,passEntity)
   result=aasMovementTrace(context,start,finish,presence,passEntity);if result is error then return result end if;return aiMoveRuntime.GroundTrace(result.startsolid,result.fraction,result.ent,result.endpos)
 end function
+function moveOnGround(context,origin,presence,passEntity) return aasClientMovement.onGround(context.aasMovement,origin,presence,passEntity,context.aasMovement.settings.maxsteepness) end function
+function moveBlockTrace(context,state,direction,checkBottom)
+  bounds=aasRuntime.presenceTypeBoundingBox(state.presenceType);if bounds is error then return bounds end if;mins=[bounds[0][0],bounds[0][1],bounds[0][2]];maxs=[bounds[1][0],bounds[1][1],bounds[1][2]]
+  vertical=direction[2];if vertical<0.0 then vertical=0.0-vertical end if;if vertical<0.7 then mins[2]=mins[2]+context.aasMovement.settings.maxstep;maxs[2]=maxs[2]-10.0 end if
+  finish=[state.origin[0]+3.0*direction[0],state.origin[1]+3.0*direction[1],state.origin[2]+3.0*direction[2]];result=serverWorld.trace(context.spatialScene,state.origin,finish,mins,maxs,state.entityNum,0x02010001,false)
+  return aiMoveRuntime.GroundTrace(result.trace.startsolid,result.trace.fraction,result.entityNum,result.endpos)
+end function
+function moveJumpRunStart(context,state,reach)
+  direction=[reach.start[0]-reach.finish[0],reach.start[1]-reach.finish[1],0.0];direction=aiMoveRuntime.normalize(direction)[1];start=[reach.start[0],reach.start[1],reach.start[2]+1.0];command=[direction[0]*400.0,direction[1]*400.0,0.0]
+  predicted=aasClientMovement.predict(context.aasMovement,-1,start,aasRuntime.PRESENCE_NORMAL,true,[0.0,0.0,0.0],command,1,2,0.1,124,0,false);if predicted is error then return predicted end if
+  if (predicted.stopevent&(aasClientMovement.SE_ENTERSLIME|aasClientMovement.SE_ENTERLAVA|aasClientMovement.SE_HITGROUNDDAMAGE))!=0 then return start end if;return predicted.endpos
+end function
+function moveGravity(context) return context.aasMovement.settings.gravity end function
+function moveHorizontalVelocityForJump(context,zVelocity,start,finish)
+  gravity=context.aasMovement.settings.gravity;maxVelocity=botlibFloat(context,"phys_maxvelocity",320.0);ratio=n.fdiv(zVelocity,gravity);maxJump=n.fmul(n.fmul(0.5,gravity),n.fmul(ratio,ratio));height=n.fsub(n.fadd(start[2],maxJump),finish[2])
+  if height<0.0 then return [false,maxVelocity] end if;time=n.fsqrt(n.fdiv(height,n.fmul(0.5,gravity)));denominator=n.fadd(time,ratio);if denominator==0.0 then return [false,maxVelocity] end if
+  dx=n.fsub(finish[0],start[0]);dy=n.fsub(finish[1],start[1]);speed=n.fdiv(n.fsqrt(n.fadd(n.fmul(dx,dx),n.fmul(dy,dy))),denominator);if speed>maxVelocity then return [false,maxVelocity] end if;return [true,speed]
+end function
+function predictVisibleTrace(context,start,finish,passEntity,contents)
+  zero=[0.0,0.0,0.0];return serverWorld.trace(context.spatialScene,start,finish,zero,zero,passEntity,contents,false).trace.fraction
+end function
 function extendedQagame(context,vm,base,op)
   if op==38 then return qagameFileList(context,vm,base) end if
   if op>=200 and op<600 then context.lastBotTrap=op end if
-  if op==200 then context.aas=void;context.aasRouter=void;context.aiMoveRuntime.aas=void;context.aiMoveRuntime.router=void;aiLevelItems.shutdown(context.aiLevelItems);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);result=botlibRuntime.setup(context.botlib);if result==0 then context.aasEntities=aasEntities.create(context.botlib.maxentities);configureAasMovement(context) end if;return result end if
-  if op==201 then context.aas=void;context.aasRouter=void;aiCharacters.shutdown(context.aiCharacters);aiChatProfiles.clearCache(context.aiChat);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);aiConsoleMessages.shutdown(context.aiConsole);aiResourcePools.shutdown(context.aiResources);aiLevelItems.shutdown(context.aiLevelItems);aiItemWeights.shutdown(context.aiItemWeights);aiWeaponWeights.shutdown(context.aiWeaponWeights);result=botlibRuntime.shutdown(context.botlib);if result==0 then context.aasEntities=aasEntities.create(1024);pcParser.clearDefines(context.pcRegistry) end if;return result end if
+  if op==200 then context.aas=void;context.aasRouter=void;context.aiMoveRuntime.aas=void;context.aiMoveRuntime.router=void;context.aiVisiblePosition.router=void;aiLevelItems.shutdown(context.aiLevelItems);aiMapGoals.clear(context.aiMapGoals);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);aiChatOutput.clear(context.aiChatOutput);result=botlibRuntime.setup(context.botlib);if result==0 then context.aasEntities=aasEntities.create(context.botlib.maxentities);configureAasMovement(context);noChat=botlibRuntime.integerVariable(context.botlib,"nochat",0)!=0;loaded=aiChatOutput.setup(context.aiChatOutput,noChat);if loaded is error then return loaded end if end if;return result end if
+  if op==201 then context.aas=void;context.aasRouter=void;context.aiVisiblePosition.router=void;aiCharacters.shutdown(context.aiCharacters);aiChatProfiles.clearCache(context.aiChat);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);aiChatOutput.shutdown(context.aiChatOutput);aiMapGoals.clear(context.aiMapGoals);aiConsoleMessages.shutdown(context.aiConsole);aiResourcePools.shutdown(context.aiResources);aiLevelItems.shutdown(context.aiLevelItems);aiItemWeights.shutdown(context.aiItemWeights);aiWeaponWeights.shutdown(context.aiWeaponWeights);result=botlibRuntime.shutdown(context.botlib);if result==0 then context.aasEntities=aasEntities.create(1024);pcParser.clearDefines(context.pcRegistry) end if;return result end if
   if op==202 then return botlibVarSet(context,vm,base) end if
   if op==203 then return botlibVarGet(context,vm,base) end if
   if op==204 then return pcAddDefine(context,vm,base) end if
@@ -391,6 +420,7 @@ function extendedQagame(context,vm,base,op)
   if op>=400 and op<=423 then return elementaryActionSyscalls.dispatch(context.elementaryActions,vm,base,op) end if
   if op>=500 and op<=506 then return aiCharacterSyscalls.dispatch(context.aiCharacters,vm,base,op) end if
   if op>=aiConsoleMessages.OP_QUEUE_CONSOLE_MESSAGE and op<=aiConsoleMessages.OP_NUM_CONSOLE_MESSAGE then return aiConsoleMessages.dispatch(context.aiConsole,vm,base,op) end if
+  if aiChatOutput.supportsTrap(op) then return aiChatOutputSyscalls.dispatch(context.aiChatOutput,vm,base,op) end if
   if op>=aiChatMatches.OP_STRING_CONTAINS and op<=aiChatMatches.OP_MATCH_VARIABLE then return aiChatMatchSyscalls.dispatch(context.aiChatMatches,vm,base,op) end if
   if op>=aiChatStrings.OP_UNIFY_WHITE_SPACES and op<=aiChatProfiles.OP_SET_CHAT_NAME then return aiChatStringSyscalls.dispatch(context.aiChatStrings,context.aiChat,vm,base,op) end if
   if op==aiItemWeights.OP_LOAD_ITEM_WEIGHTS or op==aiItemWeights.OP_FREE_ITEM_WEIGHTS then return aiItemWeightSyscalls.dispatch(context.aiItemWeights,context.aiResources,vm,base,op) end if
@@ -400,8 +430,10 @@ function extendedQagame(context,vm,base,op)
   if aiGoalState.supportsTrap(op) then return aiGoalStateSyscalls.dispatch(context.aiGoalState,vm,base,op) end if
   if aiGoalSelection.supportsTrap(op) then return aiGoalSelectionSyscalls.dispatch(context.aiGoalSelection,vm,base,op) end if
   if aiChatGoalTail.supportsTrap(op) then return aiChatGoalTailSyscalls.dispatch(context.aiChatGoalTail,vm,base,op) end if
+  if aiMapGoals.supportsTrap(op) then return aiMapGoalSyscalls.dispatch(context.aiMapGoals,vm,base,op) end if
   if aiMoveRuntime.supportsTrap(op) then return aiMoveSyscalls.dispatch(context.aiMoveRuntime,vm,base,op) end if
-  if op==aiLevelItems.OP_INIT_LEVEL_ITEMS then initialized=aiLevelItems.initialize(context.aiLevelItems);if initialized is error then return initialized end if;return 0 end if
+  if op==aiPredictVisible.OP_PREDICT_VISIBLE_POSITION then return aiPredictVisibleSyscalls.dispatch(context.aiVisiblePosition,vm,base,op) end if
+  if op==aiLevelItems.OP_INIT_LEVEL_ITEMS then initialized=aiLevelItems.initialize(context.aiLevelItems);if initialized is error then return initialized end if;mapped=aiMapGoals.initialize(context.aiMapGoals,context.aas,context.botBspEntities);if mapped is error then return mapped end if;return 0 end if
   if op==aiLevelItems.OP_UPDATE_ENTITY_ITEMS then updated=aiLevelItems.update(context.aiLevelItems);if updated is error then return updated end if;return 0 end if
   if aasRouteExtras.supportsTrap(op) then return aasRouteExtraSyscalls.dispatch(context.aas,context.aasRouter,vm,base,op) end if
   if op==aiResourcePools.OP_FREE_CHAT_STATE then aiConsoleMessages.clearChat(context.aiConsole,common.argument(vm,base,1));return aiResourceSyscalls.dispatch(context.aiResources,vm,base,op) end if
@@ -444,7 +476,7 @@ function bootConfigured(archive,map,now,qvmRoot,botsEnabled)
   initialCommand=qworld.userCommand(now,[0,0,0],0,2,0,0,0)
   grid=lightGrid.load(map);if grid is error then return grid end if
   botBspEntities=bsp.entities(map);if botBspEntities is error then return botBspEntities end if
-  context=Context(archive,parser.create(entityBytes),registry,commands.create(),array(MAX_CONFIGSTRINGS,""),array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,array(64,void),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void)
+  context=Context(archive,parser.create(entityBytes),registry,commands.create(),array(MAX_CONFIGSTRINGS,""),array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,array(64,void),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void)
   context.aasMovement=aasClientMovement.services(context);context.aasMovement.traceFn=aasMovementTrace;context.aasMovement.pointContentsFn=aasPointContents;context.aasMovement.pointAreaFn=aasMovementPointArea;context.aasMovement.pointPresenceFn=aasMovementPointPresence;context.aasMovement.areaContentsFn=aasMovementAreaContents;context.aasMovement.traceAreasFn=aasMovementTraceAreas
   context.elementaryActions=elementaryActions.create(MAX_CLIENTS,botClientCommand,context)
   context.aiCharacters=aiCharacters.create(MAX_CLIENTS,context,botCharacterRead)
@@ -453,12 +485,16 @@ function bootConfigured(archive,map,now,qvmRoot,botsEnabled)
   context.aiGoalState=aiGoalState.create(context.aiResources,context,goalStateTime,goalStateName,goalStateLog,goalStatePrint)
   goalServices=aiGoalSelection.services(context);goalServices.travelTimeFn=goalSelectionTravelTime;goalServices.traceFn=goalSelectionTrace
   context.aiGoalSelection=aiGoalSelection.create(context.aiLevelItems,context.aiGoalState,goalServices)
+  aiGoalSelection.setRandomSeed(context.aiGoalSelection,now)
   context.aiChatStrings=aiChatStrings.create(context,botCharacterRead)
   context.aiChatMatches=aiChatMatches.create(context,botCharacterRead)
   context.aiChat=aiChatProfiles.create(context.aiResources,context,botCharacterRead)
+  context.aiChatOutput=aiChatOutput.create(context.aiChat,context.aiChatStrings,context.elementaryActions,context,botCharacterRead,goalStateTime,chatOutputRandom)
   context.aiChatGoalTail=aiChatGoalTail.create(context.aiChat,context.aiGoalState,context.aiLevelItems)
-  moveServices=aiMoveRuntime.services(context);moveServices.groundTraceFn=moveGroundTrace;moveServices.swimmingFn=moveSwimming;moveServices.clientTraceFn=moveClientTrace;moveServices.elementaryActions=context.elementaryActions
+  moveServices=aiMoveRuntime.services(context);moveServices.groundTraceFn=moveGroundTrace;moveServices.swimmingFn=moveSwimming;moveServices.clientTraceFn=moveClientTrace;moveServices.elementaryActions=context.elementaryActions;moveServices.onGroundFn=moveOnGround;moveServices.blockTraceFn=moveBlockTrace;moveServices.jumpRunStartFn=moveJumpRunStart;moveServices.gravityFn=moveGravity;moveServices.horizontalVelocityForJumpFn=moveHorizontalVelocityForJump
   context.aiMoveRuntime=aiMoveRuntime.create(context.aiResources,void,void,moveServices)
+  context.aiVisiblePosition=aiPredictVisible.create(void,context,predictVisibleTrace)
+  context.aiMapGoals=aiMapGoals.create()
   context.aiWeaponWeights=aiWeaponWeights.create(context,botCharacterRead,context.aiItemWeights)
   context.botServer=botServerBridge.create(MAX_CLIENTS);botServerBridge.setTime(context.botServer,now)
   context.aiConsole=aiConsoleMessages.create(context.aiResources)

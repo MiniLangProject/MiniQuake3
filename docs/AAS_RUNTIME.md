@@ -32,15 +32,18 @@ Die Servergrenze verwaltet acht echte Bot-Client-Slots sowie Snapshot-Entities,
 Usercmds und Bot-Konsolennachrichten. Ein Retail-Aufruf von `addbot Sarge 3`
 läuft durch `GAME_CONSOLE_COMMAND`, liest Sarge aus `bots.txt`, setzt Userinfo und
 `SVF_BOT`, belegt Slot 0 und schließt `BotAISetupClient` mit echten Goal-, Weapon-,
-Chat- und Move-State-Handles ab. Danach laufen 64 vollständige Bot-Frames ohne
+Chat- und Move-State-Handles ab. Danach laufen 256 vollständige Bot-Frames ohne
 unportierten Trap bis zur regulären Übergabe über `BOTLIB_USER_COMMAND`.
 Avoid-Spots, Chat-Whitespace, die 175 Gruppen aus der Retail-`syn.c` und alle
-138 Templates aus `match.c` werden dabei bereits verarbeitet. Alternative
+138 Templates aus `match.c` werden dabei bereits verarbeitet. Initial- und
+Antwortchat laden außerdem alle 244 Zufallsgruppen aus `rnd.c` und 456 Regeln
+aus `rchat.c`; Chatlänge und ALL-/TEAM-/TELL-Zustellung laufen über die echten
+Elementary Actions. Alternative
 Routenziele, Routenvorhersage, Reachability-Area-Indizes und der 68-Byte-
 `bot_initmove_t`-Zustand sind ebenfalls live. `BOTLIB_AI_MOVE_TO_GOAL` wählt
 gewichtete Reachabilities, beachtet Travel- und Avoid-Zustände und schreibt das
 originale 52-Byte-`bot_moveresult_t`. Der q3dm1-Lauf endet mit einem echten
-Bot-Usercmd (`forward=54`, `right=114`, `up=0`, Waffe 1).
+Bot-Usercmd (`forward=86`, `right=15`, `up=0`, Waffe 8).
 
 Die Elementary Actions 400–423 sind portiert: Aktionsbits, Blick, Richtung,
 Geschwindigkeit, Waffe, Jump-Latch und das 40-Byte-`bot_input_t`-Marshalling
@@ -53,6 +56,13 @@ Goal-Stack, Avoid-Zeiten, TouchingGoal, Level-Item-Abfragen sowie LTG-/NBG-
 Itemwahl sind über die originalen 56-Byte-`bot_goal_t`-Strukturen angebunden.
 Die Auswahl berücksichtigt Spielmodus-, `notbot`-, Dropped- und Roam-Flags,
 Fuzzy-Gewichte, AAS-Reisezeiten und Rückwege zum Langzeitziel.
+Die Fuzzy-Evolutionsfallen 545 und 564–566 bewahren dabei auch die veröffentlichten
+Eigenheiten: Save bleibt ein No-op, `range` wird bei Mutation ignoriert und die
+genetische Auswahl berechnet ihren Zufallswert, ohne ihn anschließend zu benutzen.
+`BotPredictVisiblePosition` verfolgt gewichtete Reachabilities über bis zu 20
+Hops und prüft Start und Ende jedes Abschnitts gegen die reale BSP-Kollision.
+Die Kartenzielfallen bauen aus den BSP-Entities zwölf `target_location`-Ziele
+für q3dm1 auf; die Karte enthält keine `info_camp`-Spots.
 Waffenwahl und `weaponinfo_t` verwenden das Retail-Inventar, die geladenen
 Weapon-Weights und das vollständige 552-Byte-ABI samt 208-Byte-Projektilinfo.
 
@@ -75,9 +85,13 @@ geprüft.
 
 Die vollständige Parität der ursprünglichen Cluster-/Portal-Routing-Caches und
 der verbleibenden Move-, Weapon- und Chat-State-Maschinen bleibt offen. Walk,
-direkte Zielbereichsbewegung, Schwimmen und Luftbewegung sind live; Crouch,
-Jump, Ladder, Teleport, Elevator, Weapon-Jump und Jumppad liefern noch bewusst
-Failure, bis ihre originalen Reisepfade portiert sind. Die
+direkte Zielbereichsbewegung, Schwimmen, Luftbewegung, Crouch, Barrier-Jump,
+Jump, Ladder und Walk-off-Ledge
+sind live; Teleport, Elevator, Weapon-Jump und Jumppad liefern noch bewusst
+Failure, bis ihre originalen Reisepfade portiert sind. Crouch setzt Blockprüfung,
+EA_Crouch und Originaltempo um; Jump enthält Gapscan, Anlauf, Jump/DelayedJump,
+Luftphase und Lande-Overshoot; Ladder setzt Blickrichtung und MoveForward;
+Walk-off-Ledge berechnet Ballistik und Luftsteuerung. Die
 Movement-Prediction benutzt für Kollisionen derzeit die Server-BSP-Grenze;
 Presence-Sperren, Playerclip und die exakten AAS-Trace-Felder müssen noch auf den
 originalen AAS-Node-Trace umgestellt werden. Die Best-Reachable-Area-Suche nutzt
@@ -97,6 +111,9 @@ python scripts/test_aas_routing.py --pak D:/Quake3/baseq3/pak0.pk3
 python scripts/test_aas_route_extras.py
 python scripts/test_aas_client_movement.py
 python scripts/test_ai_move_runtime.py
+python scripts/test_ai_goal_selection.py
+python scripts/test_ai_chat_output.py --pak D:/Quake3/baseq3/pak0.pk3
+python scripts/test_ai_predict_visible_position.py
 python scripts/test_botlib_lifecycle_runtime.py
 python scripts/test_botlib_aas_syscalls.py
 python scripts/test_botlib_retail_qagame.py --data-root D:/Quake3 --qvm-root build/reference/qvms

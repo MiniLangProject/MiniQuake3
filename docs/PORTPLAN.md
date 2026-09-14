@@ -863,15 +863,22 @@ Clientbewegung voraus. Setup, MapLoad, StartFrame, Entityupdates und Shutdown
 laufen über die originale `qagame.qvm`. Die 400er Elementary Actions sowie die
 Character-, Item-/Weapon-Weight-, Chat- und Handle-Grundlage der 500er Traps
 sind gegen native Referenzen geprüft. `addbot Sarge 3` schließt dadurch den
-originalen `BotAISetupClient` ab und durchläuft 64 Bot-Frames ohne Trapfehler. Statische und
+originalen `BotAISetupClient` ab und durchläuft 256 Bot-Frames ohne Trapfehler. Statische und
 gedroppte Level-Items, Goal-Stacks, LTG-/NBG-Auswahl, Avoid-Spots und die
 Retail-Synonyme sowie 138 Match-Templates sind inzwischen live integriert.
+Initial-/Reply-Chat verarbeitet zusätzlich die 244 `rnd.c`-Gruppen und 456
+`rchat.c`-Regeln und sendet ALL, TEAM und TELL über Elementary Actions.
 `q3dm1` initialisiert 18 Botlib-Level-Items; auch die erweiterten AAS-Routen-
 Traps 575–577 sowie Move-State-Initialisierung, Reachability-Area, ViewTarget
-und der gewichtete Walk-Pfad von `BOTLIB_AI_MOVE_TO_GOAL` sind live. Der
+und die gewichteten Walk-, Crouch-, Barrier-Jump-, Jump-, Ladder- und
+Walk-off-Ledge-Pfade von
+`BOTLIB_AI_MOVE_TO_GOAL` sind live. Fuzzy Save/Mutation/Interbreed und genetische
+Eltern-/Kindwahl bewahren die veröffentlichten Baseq3-Eigenheiten; die
+Sichtpositionsvorhersage folgt bis zu 20 gewichteten Routenabschnitten. Zwölf
+q3dm1-Kartenorte sind über `target_location` verfügbar. Der
 deterministische q3dm1-Lauf reicht bis zum regulären `BOTLIB_USER_COMMAND` und
 liefert einen echten Bewegungsbefehl. Es folgen die übrigen Traveltypen und
-Chat-State-Maschinen sowie die exakten
+die exakten
 Cluster-/Portal-Routing-Caches, bis ein Originalbot den Matchablauf selbst steuert.
 
 **Ergebnis:** `src/mq3/botlib/`, `src/mq3/audio/`, Client-/VM-UI, Cinematic-Modul und vollständig
