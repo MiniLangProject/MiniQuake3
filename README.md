@@ -4,6 +4,8 @@ Projekt für einen möglichst originalgetreuen Port von Quake III Arena nach Min
 Status: Implementierung läuft. Ein nativer MiniLang-Build mit Zahlenkompatibilität,
 Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter, BSP-/Kurvenkollision,
 transformierten Modellen, temporären Boxen, PVS-/Areaportal-Verwaltung,
+dynamischem Retail-AAS-Reader, gewichteten AAS-Routen und einem opt-in
+Botlib-QVM-Lifecycle,
 dynamischer Entity-Kollision, Bewegungsbahnen, Sprungpad-Reaktionen und
 dem vollständigen baseq3-Pmove-Befehlszyklus, serverseitigen Item-Pickups,
 CTF-Flaggenabläufen, Tournament-/Warmup-Steuerung, Vote-Aufrufen/Stimmabgabe/Auflösung, Teamoverlay,
@@ -17,6 +19,12 @@ Logformatierung sowie allen 48 Kartenklassen einschließlich Türen, Plattformen
 Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-Vertical-Slice ist verfügbar; der vollständige Port ist noch in Arbeit.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
 [geprüfte Stand mit offenen Abnahmen](docs/PARITY_AUDIT.md).
+
+Der aktuelle [AAS-/Botlib-Stand](docs/AAS_RUNTIME.md) lädt alle 30
+Navigationsdateien aus `pak0.pk3`, beantwortet erste echte 300er AAS-Traps und
+führt die Retail-`qagame.qvm` durch Setup, MapLoad und Botlib-Frames. Die
+vollständigen AI-Zustandsmaschinen und ein selbstständig spielender Originalbot
+sind noch in Arbeit.
 
 ## Bauen und prüfen
 

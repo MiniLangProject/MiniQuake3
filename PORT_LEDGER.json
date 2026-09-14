@@ -47,10 +47,25 @@
       "sha256": "5ff45e7c4458e633f4d45073cbf3fb633634abade948d451c9da0d7d74b9fb28",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/format/aas.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "AAS header, 14 lump layouts, v4/v5 decoding and all runtime record accessors; writer/tool-side structures remain outside the game runtime."
+        }
+      ],
+      "target": [
+        "src/mq3/format/aas.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_aas_format.py",
+        "tests/aas_format_contracts.ml",
+        "tests/aas_retail_probe.ml"
+      ]
     },
     {
       "source": "code/botlib/be_aas_bsp.h",
@@ -89,10 +104,26 @@
         "AAS_inPVS",
         "PrintContents"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Original-indexed BSP entity iteration and string/vector/float/int epair queries are implemented with exact QVM output handling; BSP linking, traces and PVS/PHS exports remain partial."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/aas_syscalls.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_botlib_aas_syscalls.py",
+        "scripts/test_botlib_retail_qagame.py"
+      ]
     },
     {
       "source": "code/botlib/be_aas_cluster.c",
@@ -217,10 +248,25 @@
         "AAS_UnlinkInvalidEntities",
         "AAS_UpdateEntity"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Entity-state history, validity, times, origins and BSP bounds plus QVM ABI are implemented; link heaps and collision links remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/aas_entities.ml",
+        "src/mq3/botlib/aas_query_syscalls.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_aas_entity_queries.py"
+      ]
     },
     {
       "source": "code/botlib/be_aas_entity.h",
@@ -246,10 +292,25 @@
         "AAS_WriteAASFile",
         "AAS_WriteAASLump"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/format/aas.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "AAS4/AAS5 load, header XOR, bounds and topology validation for all 30 retail files; save and reachability generation remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/format/aas.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_aas_format.py",
+        "tests/aas_format_contracts.ml",
+        "tests/aas_retail_probe.ml"
+      ]
     },
     {
       "source": "code/botlib/be_aas_file.h",
@@ -294,10 +355,29 @@
         "AAS_Time",
         "AAS_UpdateStringIndexes"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/lifecycle_runtime.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "AAS setup, retail map loading, initialized/time state, StartFrame and shutdown are implemented; incremental initialization and string/model indexes remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/lifecycle_runtime.ml",
+        "src/mq3/botlib/aas_runtime.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_botlib_lifecycle_runtime.py",
+        "scripts/test_aas_runtime.py",
+        "scripts/test_botlib_retail_qagame.py"
+      ]
     },
     {
       "source": "code/botlib/be_aas_main.h",
@@ -334,10 +414,28 @@
         "AAS_TestMovementPrediction",
         "AAS_WeaponJumpZVelocity"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "AAS swimming and the 84-byte AAS_PredictClientMovement ABI are implemented with five native reference scenarios and MiniLang contracts; the remaining movement helpers are partial."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/aas_client_movement.ml",
+        "src/mq3/botlib/aas_client_movement_syscalls.ml",
+        "src/mq3/botlib/aas_movement_queries.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_aas_client_movement.py",
+        "scripts/test_aas_entity_queries.py"
+      ]
     },
     {
       "source": "code/botlib/be_aas_move.h",
@@ -437,10 +535,23 @@
         "VectorDistance",
         "VectorMiddle"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/aas_runtime.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "AreaReachability and reachability records/iteration are live; reachability generation and optimization remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/aas_runtime.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_aas_runtime.py"
+      ]
     },
     {
       "source": "code/botlib/be_aas_reach.h",
@@ -509,10 +620,26 @@
         "AAS_WriteRouteCache",
         "DistancePointToLine"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/aas_routing.ml",
+            "src/mq3/botlib/aas_runtime.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Weighted retail reachability routing, travel flags/contents and disabled areas are implemented; cluster/portal cache parity and LRU remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/aas_routing.ml",
+        "src/mq3/botlib/aas_runtime.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_aas_routing.py",
+        "scripts/test_aas_runtime.py"
+      ]
     },
     {
       "source": "code/botlib/be_aas_route.h",
@@ -583,10 +710,26 @@
         "AAS_TraceEndFace",
         "AAS_UnlinkFromAreas"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_trace_areas.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "PointAreaNum, presence bounds/type, BBoxAreas and TraceAreas run on retail q3dm1; full client bbox tracing remains open."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/aas_runtime.ml",
+        "src/mq3/botlib/aas_trace_areas.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_aas_runtime.py",
+        "scripts/test_aas_trace_areas.py"
+      ]
     },
     {
       "source": "code/botlib/be_aas_sample.h",
@@ -623,10 +766,26 @@
         "Characteristic_String",
         "CheckCharacteristicIndex"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Character load/cache/free, default inheritance, skill interpolation and typed characteristics for traps 500-506 are implemented on retail Sarge."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/ai_characters.ml",
+        "src/mq3/botlib/ai_character_syscalls.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_ai_characters.py",
+        "tests/reference/ai_character_oracle.c"
+      ]
     },
     {
       "source": "code/botlib/be_ai_chat.c",
@@ -694,10 +853,34 @@
         "StringsMatch",
         "UnifyWhiteSpaces"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_resource_syscalls.ml",
+            "src/mq3/botlib/ai_chat_profiles.ml",
+            "src/mq3/botlib/ai_chat_syscalls.ml",
+            "src/mq3/botlib/ai_console_messages.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Chat state pools, console-message FIFO/ABI and retail chat profile parsing with includes, chat types and messages are implemented; message construction, matching and replies remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/ai_resource_pools.ml",
+        "src/mq3/botlib/ai_resource_syscalls.ml",
+        "src/mq3/botlib/ai_chat_profiles.ml",
+        "src/mq3/botlib/ai_chat_syscalls.ml",
+        "src/mq3/botlib/ai_console_messages.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_ai_resource_pools.py",
+        "scripts/test_ai_chat_profiles.py",
+        "scripts/test_ai_console_messages.py",
+        "scripts/test_bot_spawn_retail.py"
+      ]
     },
     {
       "source": "code/botlib/be_ai_gen.c",
@@ -761,10 +944,31 @@
         "LoadItemConfig",
         "RemoveLevelItemFromList"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_resource_syscalls.ml",
+            "src/mq3/botlib/ai_item_weights.ml",
+            "src/mq3/botlib/ai_item_weight_syscalls.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Goal state allocation/reset/free and retail item-weight loading are implemented and reached by addbot; level items, avoid goals, fuzzy mutation and goal stack selection remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/ai_resource_pools.ml",
+        "src/mq3/botlib/ai_resource_syscalls.ml",
+        "src/mq3/botlib/ai_item_weights.ml",
+        "src/mq3/botlib/ai_item_weight_syscalls.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_ai_resource_pools.py",
+        "scripts/test_ai_item_weights.py",
+        "scripts/test_bot_spawn_retail.py"
+      ]
     },
     {
       "source": "code/botlib/be_ai_move.c",
@@ -839,10 +1043,25 @@
         "MoverDown",
         "VectorDistanceSquared"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_resource_syscalls.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Move state allocation/reset/free and avoid-reach resets are implemented; movement execution and prediction remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/ai_resource_pools.ml",
+        "src/mq3/botlib/ai_resource_syscalls.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_ai_resource_pools.py"
+      ]
     },
     {
       "source": "code/botlib/be_ai_weap.c",
@@ -864,10 +1083,31 @@
         "LoadWeaponConfig",
         "WeaponWeightIndex"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_resource_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Weapon state allocation/reset/free, retail weapon configuration, projectile references and bot weapon-weight loading are implemented; runtime weapon choice and weapon-info traps remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/ai_resource_pools.ml",
+        "src/mq3/botlib/ai_resource_syscalls.ml",
+        "src/mq3/botlib/ai_weapon_weights.ml",
+        "src/mq3/botlib/ai_weapon_weight_syscalls.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_ai_resource_pools.py",
+        "scripts/test_ai_weapon_weights.py",
+        "scripts/test_bot_spawn_retail.py"
+      ]
     },
     {
       "source": "code/botlib/be_ai_weight.c",
@@ -899,10 +1139,26 @@
         "WriteFuzzyWeight",
         "WriteWeightConfig"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/ai_item_weights.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The fuzzy-weight parser needed by retail item and weapon profiles is implemented and reference-tested; evolution, interbreeding, mutation and serialization remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/ai_item_weights.ml",
+        "src/mq3/botlib/ai_weapon_weights.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_ai_item_weights.py",
+        "scripts/test_ai_weapon_weights.py"
+      ]
     },
     {
       "source": "code/botlib/be_ai_weight.h",
@@ -952,10 +1208,26 @@
         "EA_View",
         "EA_Walk"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml",
+            "src/mq3/botlib/elementary_action_syscalls.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All Elementary Actions and bot_input_t marshalling for traps 400-423 are implemented and compared with native Baseq3."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/elementary_actions.ml",
+        "src/mq3/botlib/elementary_action_syscalls.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_elementary_actions.py",
+        "tests/reference/elementary_actions_oracle.c"
+      ]
     },
     {
       "source": "code/botlib/be_interface.c",
@@ -979,10 +1251,30 @@
         "ValidClientNumber",
         "ValidEntityNumber"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/lifecycle_runtime.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Retail qagame drives BotLib setup/shutdown/libvars/frame/map/entity lifecycle and implemented AAS exports; remaining botlib exports are explicit unsupported boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/lifecycle_runtime.ml",
+        "src/mq3/botlib/aas_syscalls.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_botlib_lifecycle_runtime.py",
+        "scripts/test_botlib_retail_qagame.py",
+        "scripts/test_bot_spawn_retail.py",
+        "scripts/test_botlib_aas_syscalls.py"
+      ]
     },
     {
       "source": "code/botlib/be_interface.h",
@@ -1213,14 +1505,27 @@
       "symbol_mapping": [
         {
           "original": "PC_AddGlobalDefine / PC_LoadSourceHandle / PC_FreeSourceHandle / PC_ReadTokenHandle / PC_SourceFileAndLine",
-          "target_files": ["src/mq3/vm/pc_parser.ml", "src/mq3/engine/local_qvm_match.ml"],
+          "target_files": [
+            "src/mq3/vm/pc_parser.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
           "status": "tested_subset",
           "scope": "Handles 1..63, includes, global/object/function defines, nested conditional directives, C-precedence integer expressions, recursive expansion, stringification and token pasting plus cgame/UI trap marshalling pass 47 contracts. Builtin macros, line continuations and angle-bracket includes remain open."
         }
       ],
-      "target": ["src/mq3/vm/pc_parser.ml", "src/mq3/engine/local_qvm_match.ml"],
+      "target": [
+        "src/mq3/vm/pc_parser.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
       "status": "partial",
-      "tests": ["scripts/test_pc_parser.py", "tests/pc_parser_contracts.ml", "scripts/test_pc_preprocessor.py", "tests/pc_preprocessor_contracts.ml", "scripts/test_pc_macros.py", "tests/pc_macro_contracts.ml"]
+      "tests": [
+        "scripts/test_pc_parser.py",
+        "tests/pc_parser_contracts.ml",
+        "scripts/test_pc_preprocessor.py",
+        "tests/pc_preprocessor_contracts.ml",
+        "scripts/test_pc_macros.py",
+        "tests/pc_macro_contracts.ml"
+      ]
     },
     {
       "source": "code/botlib/l_precomp.h",
@@ -1280,14 +1585,23 @@
       "symbol_mapping": [
         {
           "original": "PS_ReadToken lexical subset used by PC_* UI parsers",
-          "target_files": ["src/mq3/vm/pc_parser.ml", "src/mq3/engine/local_qvm_match.ml"],
+          "target_files": [
+            "src/mq3/vm/pc_parser.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
           "status": "tested_subset",
           "scope": "Strings, literals, decimal/octal/hex/float numbers, comments, line tracking and original punctuation subtypes are encoded into the 1040-byte pc_token_t ABI."
         }
       ],
-      "target": ["src/mq3/vm/pc_parser.ml", "src/mq3/engine/local_qvm_match.ml"],
+      "target": [
+        "src/mq3/vm/pc_parser.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
       "status": "partial",
-      "tests": ["scripts/test_pc_parser.py", "tests/pc_parser_contracts.ml"]
+      "tests": [
+        "scripts/test_pc_parser.py",
+        "tests/pc_parser_contracts.ml"
+      ]
     },
     {
       "source": "code/botlib/l_script.h",
@@ -3963,45 +4277,30 @@
       ],
       "symbol_mapping": [
         {
-          "original": "CL_InitCGame / CL_GameCommand / CL_CGameRendering / CL_ShutdownCGame",
+          "original": "implemented runtime subset",
           "target_files": [
-            "src/mq3/client/cgame_vm.ml"
+            "src/mq3/client/cgame_vm.ml",
+            "src/mq3/vm/syscall_cgame.ml",
+            "src/mq3/client/cgame_time.ml",
+            "src/mq3/engine/local_qvm_match.ml"
           ],
           "status": "tested_subset",
-          "scope": "Serverinfo map path, pure-QVM mode, loading/primed transition, CG_INIT, all nine cgame exports, renderer/memory finalization and shutdown key-catcher cleanup. Twelve exact ABI values and 20 contracts pass."
-        },
-        {
-          "original": "CL_CgameSystemCalls",
-          "target_files": [
-            "src/mq3/vm/syscall_common.ml",
-            "src/mq3/vm/syscall_cgame.ml"
-          ],
-          "status": "tested_subset",
-          "scope": "Nineteen cgame traps for commands, renderer registration, GLConfig, gamestate, snapshots, server commands and usercmds. Four exact Baseq3 x86 layout records and 37 contracts pass."
-        },
-        {
-          "original": "CL_AdjustTimeDelta / CL_FirstSnapshot / CL_SetCGameTime",
-          "target_files": [
-            "src/mq3/client/cgame_time.ml"
-          ],
-          "status": "tested_subset",
-          "scope": "Snapshot clock drift, primed-to-active transition, pause, timeNudge, monotonic time, demo freeze/skip/catchup and timedemo stepping. Four exact header constants and 26 contracts pass."
+          "scope": "Lifecycle plus reachable renderer traps now include correct cinematic opcodes, shader remap, R_InPVS and FS_SEEK; remaining client/platform paths are partial."
         }
       ],
       "target": [
         "src/mq3/client/cgame_vm.ml",
         "src/mq3/vm/syscall_cgame.ml",
-        "src/mq3/client/cgame_time.ml"
+        "src/mq3/client/cgame_time.ml",
+        "src/mq3/engine/local_qvm_match.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_cgame_vm_lifecycle.py",
-        "tests/reference/cgame_vm_lifecycle_oracle.c",
-        "tests/cgame_vm_lifecycle_contracts.ml",
         "scripts/test_vm_syscall_cgame.py",
-        "tests/vm_syscall_cgame_contracts.ml",
         "scripts/test_cgame_time.py",
-        "tests/cgame_time_contracts.ml"
+        "scripts/test_cgame_renderer_extended.py",
+        "scripts/test_qvm_renderer_traps.py"
       ]
     },
     {
@@ -4051,14 +4350,33 @@
       "symbol_mapping": [
         {
           "original": "CIN_PlayCinematic / CIN_StopCinematic / CIN_RunCinematic / CIN_DrawCinematic / CIN_SetExtents and RoQ VQ/DPCM decoding",
-          "target_files": ["src/mq3/format/roq.ml", "src/mq3/video/roq_video.ml", "src/mq3/client/cinematic_runtime.ml", "src/mq3/client/qvm_preview_app.ml", "src/mq3/engine/local_qvm_match.ml"],
+          "target_files": [
+            "src/mq3/format/roq.ml",
+            "src/mq3/video/roq_video.ml",
+            "src/mq3/client/cinematic_runtime.ml",
+            "src/mq3/client/qvm_preview_app.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
           "status": "tested_subset",
           "scope": "Bounded RoQ parsing, YUV codebooks, 2/4/8-pixel VQ, skip/subdivide/motion, timing, native RGBA presentation and stereo PCM output. Retail idlogo reaches exact EOF after all 210 frames; shader videoMap stages bind silent looping 256x256 scratch textures. JPEG and packet chunks remain open."
         }
       ],
-      "target": ["src/mq3/format/roq.ml", "src/mq3/video/roq_video.ml", "src/mq3/client/cinematic_runtime.ml", "src/mq3/renderer/qvm_video_materials.ml", "src/mq3/client/qvm_preview_app.ml", "src/mq3/engine/local_qvm_match.ml"],
+      "target": [
+        "src/mq3/format/roq.ml",
+        "src/mq3/video/roq_video.ml",
+        "src/mq3/client/cinematic_runtime.ml",
+        "src/mq3/renderer/qvm_video_materials.ml",
+        "src/mq3/client/qvm_preview_app.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
       "status": "partial",
-      "tests": ["scripts/test_roq_cinematics.py", "tests/roq_contracts.ml", "tests/cinematic_runtime_retail_probe.ml", "scripts/test_qvm_video_materials.py", "tests/qvm_video_materials_retail_probe.ml"]
+      "tests": [
+        "scripts/test_roq_cinematics.py",
+        "tests/roq_contracts.ml",
+        "tests/cinematic_runtime_retail_probe.ml",
+        "scripts/test_qvm_video_materials.py",
+        "tests/qvm_video_materials_retail_probe.ml"
+      ]
     },
     {
       "source": "code/client/cl_console.c",
@@ -4312,20 +4630,20 @@
           "status": "tested_exact",
           "scope": "Protocol-68 demo record framing, filename formatting and playback sequence/time/EOF/truncation transitions. Twelve exact records execute the three unchanged C function bodies; 27 MiniLang contracts cover framing, limits, state, filenames and the initial gamestate."
         },
-      {
-        "original": "CL_CheckForResend, CL_DisconnectPacket and CL_ConnectionlessPacket",
+        {
+          "original": "CL_CheckForResend, CL_DisconnectPacket and CL_ConnectionlessPacket",
           "target_files": [
             "src/mq3/client/connectionless.ml"
           ],
           "status": "tested_exact",
-        "scope": "Client resend timing/state/demo gates, LAN/WAN authorization and exact quoted connect userinfo; challenge/connect response state and address validation, netchan setup, info/status/print/echo dispatch and spoof-resistant disconnect. Seventeen unchanged-C records and 27 MiniLang contracts pass."
-      },
+          "scope": "Client resend timing/state/demo gates, LAN/WAN authorization and exact quoted connect userinfo; challenge/connect response state and address validation, netchan setup, info/status/print/echo dispatch and spoof-resistant disconnect. Seventeen unchanged-C records and 27 MiniLang contracts pass."
+        },
         {
           "original": "CL_PacketEvent",
-        "target_files": [
-          "src/mq3/client/packet_event.ml"
-        ],
-        "status": "tested_exact",
+          "target_files": [
+            "src/mq3/client/packet_event.ml"
+          ],
+          "status": "tested_exact",
           "scope": "OOB routing, connection/address/runt rejection, client Netchan processing, server message sequence, parser dispatch and post-parse demo recording order. Nine unchanged-C records and 23 MiniLang contracts pass. The production network_ingress adapter adds 21 real-localhost contracts through CL_ParseServerMessage."
         },
         {
@@ -4335,11 +4653,11 @@
           ],
           "status": "tested_exact",
           "scope": "Running/menu/CD gates, AVI fixed time, realtime, userinfo forwarding, timeout grace and SendCmd/resend/Cgame/screen/sound/cinematic/console ordering. Thirteen unchanged-C records and 28 MiniLang contracts pass."
-      }
+        }
       ],
       "target": [
-      "src/mq3/client/demo.ml",
-      "src/mq3/client/connectionless.ml",
+        "src/mq3/client/demo.ml",
+        "src/mq3/client/connectionless.ml",
         "src/mq3/client/packet_event.ml",
         "src/mq3/client/network_ingress.ml",
         "src/mq3/client/frame.ml"
@@ -4349,11 +4667,11 @@
         "scripts/test_demo.py",
         "scripts/test_client_connectionless.py",
         "tests/reference/client_connectionless_oracle.c",
-      "tests/client_connectionless_oracle.ml",
-      "tests/client_connectionless_contracts.ml",
-      "scripts/test_packet_event.py",
-      "tests/reference/packet_event_oracle.c",
-      "tests/packet_event_oracle.ml",
+        "tests/client_connectionless_oracle.ml",
+        "tests/client_connectionless_contracts.ml",
+        "scripts/test_packet_event.py",
+        "tests/reference/packet_event_oracle.c",
+        "tests/packet_event_oracle.ml",
         "tests/packet_event_contracts.ml",
         "scripts/test_client_network_ingress.py",
         "tests/client_network_ingress_contracts.ml",
@@ -4775,7 +5093,9 @@
       "symbol_mapping": [
         {
           "original": "S_WriteLinearBlastStereo16 / S_TransferStereo16 / S_TransferPaintBuffer",
-          "target_files": ["src/mq3/audio/mixer_transfer.ml"],
+          "target_files": [
+            "src/mq3/audio/mixer_transfer.ml"
+          ],
           "status": "tested_exact",
           "scope": "24.8 paint conversion, signed-16 clipping, unsigned-8 bias, mono/stereo selection and DMA ring wrap. Seven exact C records and 20 contracts pass."
         },
@@ -4788,9 +5108,19 @@
           "scope": "Stereo paint accumulation, 1024-sample chunk/ring transitions, oldDopplerScale offsets and Doppler interval resampling. Seven exact C records and 32 contracts pass."
         }
       ],
-      "target": ["src/mq3/audio/mixer_transfer.ml", "src/mq3/audio/channel_paint.ml"],
+      "target": [
+        "src/mq3/audio/mixer_transfer.ml",
+        "src/mq3/audio/channel_paint.ml"
+      ],
       "status": "partial",
-      "tests": ["scripts/test_audio_mixer_transfer.py", "tests/reference/audio_mixer_transfer_oracle.c", "tests/audio_mixer_transfer_contracts.ml", "scripts/test_audio_channel_paint.py", "tests/reference/audio_channel_paint_oracle.c", "tests/audio_channel_paint_contracts.ml"]
+      "tests": [
+        "scripts/test_audio_mixer_transfer.py",
+        "tests/reference/audio_mixer_transfer_oracle.c",
+        "tests/audio_mixer_transfer_contracts.ml",
+        "scripts/test_audio_channel_paint.py",
+        "tests/reference/audio_channel_paint_oracle.c",
+        "tests/audio_channel_paint_contracts.ml"
+      ]
     },
     {
       "source": "code/client/snd_public.h",
@@ -15742,20 +16072,20 @@
         "permanent"
       ],
       "symbol_mapping": [
-      {
-        "original": "Com_ParseCommandLine, Com_SafeMode, Com_StartupVariable and Com_AddStartupCommands",
+        {
+          "original": "Com_ParseCommandLine, Com_SafeMode, Com_StartupVariable and Com_AddStartupCommands",
           "target_files": [
             "src/mq3/qcommon/startup_commands.ml"
           ],
           "status": "tested_subset",
-        "scope": "Startup command splitting, 32-line truncation, safe-mode consumption, early set variables and command-buffer append behavior match 10 direct unchanged-C records plus 16 MiniLang contracts through explicit Cvar services."
-      },
+          "scope": "Startup command splitting, 32-line truncation, safe-mode consumption, early set variables and command-buffer append behavior match 10 direct unchanged-C records plus 16 MiniLang contracts through explicit Cvar services."
+        },
         {
           "original": "Com_EventLoop network packet draining",
-        "target_files": [
-          "src/mq3/qcommon/network_pump.ml"
-        ],
-        "status": "tested_subset",
+          "target_files": [
+            "src/mq3/qcommon/network_pump.ml"
+          ],
+          "status": "tested_subset",
           "scope": "Bounded nonblocking client/server UDP draining with alternating preference, FIFO delivery and injected packet-event callbacks. Twenty live two-socket contracts pass; journaling remains open."
         },
         {
@@ -15766,21 +16096,21 @@
           ],
           "status": "tested_subset",
           "scope": "Sys-style input FIFO is drained with a fixed budget before the ported SV_Frame and CL_Frame callbacks. Fifteen integration contracts cover ordering, remainder, time and frame accounting; journaling remains open."
-      }
+        }
       ],
       "target": [
-      "src/mq3/qcommon/startup_commands.ml",
-      "src/mq3/qcommon/network_pump.ml",
-      "src/mq3/platform/input_events.ml",
-      "src/mq3/platform/engine_loop.ml"
+        "src/mq3/qcommon/startup_commands.ml",
+        "src/mq3/qcommon/network_pump.ml",
+        "src/mq3/platform/input_events.ml",
+        "src/mq3/platform/engine_loop.ml"
       ],
       "status": "partial",
       "tests": [
-      "scripts/test_startup_commands.py",
-      "scripts/test_network_pump.py",
-      "tests/network_pump_contracts.ml",
-      "scripts/test_engine_loop.py",
-      "tests/engine_loop_contracts.ml"
+        "scripts/test_startup_commands.py",
+        "scripts/test_network_pump.py",
+        "tests/network_pump_contracts.ml",
+        "scripts/test_engine_loop.py",
+        "tests/engine_loop_contracts.ml"
       ]
     },
     {
@@ -16615,31 +16945,31 @@
           "target_files": [
             "src/mq3/qcommon/netchan.ml"
           ],
-        "status": "tested_subset",
-        "scope": "Protocol-68 qport and sequence headers, transmit fragmentation including exact-multiple zero terminators, duplicate/drop decisions, retry/state preservation and ordered receive reassembly match 29 direct Baseq3 records with complete packet bytes plus 29 MiniLang contracts and a message.ml integration path. Receive capacity safely includes the reconstructed four-byte sequence header."
-      },
-      {
-        "original": "NET_SendPacket, NET_OutOfBandPrint and NET_OutOfBandData",
-        "target_files": [
-          "src/mq3/qcommon/net_transport.ml",
-          "src/mq3/platform/udp.ml"
-        ],
-        "status": "tested_subset",
-        "scope": "Windows IPv4 UDP send/receive, Netchan send callback, address conversion, four-byte OOB marker and adaptive connect compression at offset 12. Fifteen live two-socket transport contracts pass; the packet codec is covered by the unchanged-C Huffman differential gate. Loopback queues, broadcast and string-to-address remain open."
-      }
+          "status": "tested_subset",
+          "scope": "Protocol-68 qport and sequence headers, transmit fragmentation including exact-multiple zero terminators, duplicate/drop decisions, retry/state preservation and ordered receive reassembly match 29 direct Baseq3 records with complete packet bytes plus 29 MiniLang contracts and a message.ml integration path. Receive capacity safely includes the reconstructed four-byte sequence header."
+        },
+        {
+          "original": "NET_SendPacket, NET_OutOfBandPrint and NET_OutOfBandData",
+          "target_files": [
+            "src/mq3/qcommon/net_transport.ml",
+            "src/mq3/platform/udp.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Windows IPv4 UDP send/receive, Netchan send callback, address conversion, four-byte OOB marker and adaptive connect compression at offset 12. Fifteen live two-socket transport contracts pass; the packet codec is covered by the unchanged-C Huffman differential gate. Loopback queues, broadcast and string-to-address remain open."
+        }
       ],
       "target": [
-      "src/mq3/qcommon/netchan.ml",
-      "src/mq3/server/pipeline.ml",
-      "src/mq3/qcommon/net_transport.ml",
-      "src/mq3/platform/udp.ml"
+        "src/mq3/qcommon/netchan.ml",
+        "src/mq3/server/pipeline.ml",
+        "src/mq3/qcommon/net_transport.ml",
+        "src/mq3/platform/udp.ml"
       ],
       "status": "partial",
       "tests": [
-      "scripts/test_netchan.py",
-      "scripts/test_server_pipeline.py",
-      "scripts/test_net_transport.py",
-      "tests/net_transport_contracts.ml"
+        "scripts/test_netchan.py",
+        "scripts/test_server_pipeline.py",
+        "scripts/test_net_transport.py",
+        "tests/net_transport_contracts.ml"
       ]
     },
     {
@@ -17080,7 +17410,11 @@
         },
         {
           "original": "RE_UploadCinematic",
-          "target_files": ["src/mq3/client/cinematic_runtime.ml", "src/mq3/renderer/qvm_video_materials.ml", "src/mq3/client/qvm_preview_app.ml"],
+          "target_files": [
+            "src/mq3/client/cinematic_runtime.ml",
+            "src/mq3/renderer/qvm_video_materials.ml",
+            "src/mq3/client/qvm_preview_app.ml"
+          ],
           "status": "tested_subset",
           "scope": "Explicit cinematics and shader videoMap stages upload per-handle RGBA scratch textures; a retail RoQ probe verifies the silent looping 256x256 material path."
         }
@@ -17235,14 +17569,23 @@
       "symbol_mapping": [
         {
           "original": "RE_RegisterFont pre-rendered fontInfo_t path",
-          "target_files": ["src/mq3/vm/font_abi.ml", "src/mq3/engine/local_qvm_match.ml"],
+          "target_files": [
+            "src/mq3/vm/font_abi.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
           "status": "tested_subset",
           "scope": "Loads byte-exact 20548-byte fontInfo_t data, rebinds glyph shaders, caches by point size and exposes the cgame/UI traps. Runtime FreeType glyph construction remains outside this subset. Ten ABI contracts pass."
         }
       ],
-      "target": ["src/mq3/vm/font_abi.ml", "src/mq3/engine/local_qvm_match.ml"],
+      "target": [
+        "src/mq3/vm/font_abi.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
       "status": "partial",
-      "tests": ["scripts/test_font_abi.py", "tests/font_abi_contracts.ml"]
+      "tests": [
+        "scripts/test_font_abi.py",
+        "tests/font_abi_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_image.c",
@@ -17511,22 +17854,24 @@
       ],
       "symbol_mapping": [
         {
-          "original": "R_GetTag / R_LerpTag / R_ModelBounds",
+          "original": "implemented runtime subset",
           "target_files": [
-            "src/mq3/renderer/model_tags.ml"
+            "src/mq3/renderer/model_tags.ml",
+            "src/mq3/renderer/model_bounds.ml"
           ],
-          "status": "tested_exact",
-          "scope": "MD3 tag lookup and frame clamping, binary32 origin/axis interpolation, per-axis normalization, missing-model identity and brush/MD3 bounds. Seven exact C records and 26 contracts pass."
+          "status": "tested_subset",
+          "scope": "Model tags plus R_ModelBounds frame-zero behavior are implemented; other model registration/render paths remain partial."
         }
       ],
       "target": [
-        "src/mq3/renderer/model_tags.ml"
+        "src/mq3/renderer/model_tags.ml",
+        "src/mq3/renderer/model_bounds.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_model_tags.py",
-        "tests/reference/model_tags_oracle.c",
-        "tests/model_tags_contracts.ml"
+        "scripts/test_qvm_model_bounds.py",
+        "scripts/test_qvm_renderer_traps.py"
       ]
     },
     {
@@ -17571,14 +17916,22 @@
       "symbol_mapping": [
         {
           "original": "RE_ClearScene / RE_AddPolyToScene / RE_AddRefEntityToScene / RE_AddDynamicLightToScene",
-          "target_files": ["src/mq3/renderer/scene_queue.ml"],
+          "target_files": [
+            "src/mq3/renderer/scene_queue.ml"
+          ],
           "status": "tested_subset",
           "scope": "Scene marks, polygon capacity/copy/fog, reference entities and normal/additive lights with hardware restrictions. Six exact header constants and 24 contracts pass."
         }
       ],
-      "target": ["src/mq3/renderer/scene_queue.ml"],
+      "target": [
+        "src/mq3/renderer/scene_queue.ml"
+      ],
       "status": "partial",
-      "tests": ["scripts/test_scene_queue.py", "tests/reference/scene_queue_oracle.c", "tests/scene_queue_contracts.ml"]
+      "tests": [
+        "scripts/test_scene_queue.py",
+        "tests/reference/scene_queue_oracle.c",
+        "tests/scene_queue_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_shade.c",
@@ -17963,10 +18316,27 @@
         "SV_BotLibSetup",
         "SV_BotLibShutdown"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "implemented runtime subset",
+          "target_files": [
+            "src/mq3/botlib/server_bridge.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Bot client allocation/free, snapshot entity lookup, console-message delivery, usercmd service and bot frames are connected to the retail qagame path; debug drawing and remaining import callbacks are partial."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/server_bridge.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_bot_server_bridge.py",
+        "scripts/test_bot_spawn_retail.py",
+        "scripts/test_botlib_retail_qagame.py"
+      ]
     },
     {
       "source": "code/server/sv_ccmds.c",
@@ -18032,20 +18402,20 @@
           "status": "tested_exact",
           "scope": "Eight-slot 2048-byte block window, rate-derived per-snapshot budget, block-zero size, EOF block and close, ordered acknowledgements, broken-ack drop, one-second retransmit, id-p/disabled/missing failures and bounded message overflow. Twelve unchanged-C records and 19 MiniLang contracts pass."
         },
-      {
-        "original": "SV_GetChallenge and SV_DirectConnect",
+        {
+          "original": "SV_GetChallenge and SV_DirectConnect",
           "target_files": [
             "src/mq3/server/oob_connect.ml"
           ],
           "status": "tested_subset",
-        "scope": "Challenge-ring allocation/reuse, LAN/authorization-timeout policy, protocol/challenge/ping/reconnect validation, public/private/reused/local-bot slot selection and accepted-client timing state. Thirteen records execute both unchanged Baseq3 bodies; 26 contracts cover additional boundaries. OOB transport, authorize server and VM admission are explicit services."
-      },
-      {
-        "original": "SV_ExecuteClientMessage",
-        "target_files": [
-          "src/mq3/server/client_message.ml"
-        ],
-        "status": "tested_exact",
+          "scope": "Challenge-ring allocation/reuse, LAN/authorization-timeout policy, protocol/challenge/ping/reconnect validation, public/private/reused/local-bot slot selection and accepted-client timing state. Thirteen records execute both unchanged Baseq3 bodies; 26 contracts cover additional boundaries. OOB transport, authorize server and VM admission are explicit services."
+        },
+        {
+          "original": "SV_ExecuteClientMessage",
+          "target_files": [
+            "src/mq3/server/client_message.ml"
+          ],
+          "status": "tested_exact",
           "scope": "Message and reliable acknowledgements, stale repair, server-id/restart/download/nextdl policy, repeated client commands, zombie/flood exits, move/no-delta dispatch, EOF and bad opcodes. Thirteen unchanged-C records and 15 MiniLang contracts pass; concrete payload callbacks are supplied by client_input.ml."
         },
         {
@@ -18072,12 +18442,12 @@
           ],
           "status": "tested_exact",
           "scope": "Keyed delta usercmd batches, frame acknowledgement, pure/CP policy, enter-world, duplicate filtering and game think callback. Twelve unchanged-C records, 30 MiniLang contracts and 14 payload-integration contracts pass."
-      }
+        }
       ],
       "target": [
         "src/mq3/server/download.ml",
-      "src/mq3/server/pipeline.ml",
-      "src/mq3/server/oob_connect.ml",
+        "src/mq3/server/pipeline.ml",
+        "src/mq3/server/oob_connect.ml",
         "src/mq3/server/client_message.ml",
         "src/mq3/server/client_command_dispatch.ml",
         "src/mq3/server/client_command.ml",
@@ -18089,10 +18459,10 @@
       "tests": [
         "scripts/test_server_download.py",
         "scripts/test_server_pipeline.py",
-      "scripts/test_oob_connect.py",
-      "scripts/test_server_client_message.py",
-      "tests/reference/server_client_message_oracle.c",
-      "tests/server_client_message_oracle.ml",
+        "scripts/test_oob_connect.py",
+        "scripts/test_server_client_message.py",
+        "tests/reference/server_client_message_oracle.c",
+        "tests/server_client_message_oracle.ml",
         "tests/server_client_message_contracts.ml",
         "scripts/test_client_command_dispatch.py",
         "scripts/test_server_client_command.py",
@@ -18177,6 +18547,15 @@
           ],
           "status": "tested_subset",
           "scope": "qagame load, GAME_INIT, restart, shutdown and every gameExport_t wrapper. Eleven exact ABI values and 22 lifecycle contracts pass."
+        },
+        {
+          "original": "SV_GameSystemCalls bot bridge subset",
+          "target_files": [
+            "src/mq3/botlib/server_bridge.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Snapshot entity, bot console message and exact 24-byte usercmd services are connected to the retail qagame bot path."
         }
       ],
       "target": [
@@ -18184,7 +18563,9 @@
         "src/mq3/game/spawn_functions.ml",
         "src/mq3/vm/syscall_qagame.ml",
         "src/mq3/vm/syscall_qagame_world.ml",
-        "src/mq3/server/game_vm.ml"
+        "src/mq3/server/game_vm.ml",
+        "src/mq3/botlib/server_bridge.ml",
+        "src/mq3/engine/local_qvm_match.ml"
       ],
       "status": "partial",
       "tests": [
@@ -18194,7 +18575,9 @@
         "scripts/test_team_status.py",
         "scripts/test_vm_syscall_qagame.py",
         "scripts/test_vm_syscall_qagame_world.py",
-        "scripts/test_game_vm_lifecycle.py"
+        "scripts/test_game_vm_lifecycle.py",
+        "scripts/test_bot_server_bridge.py",
+        "scripts/test_bot_spawn_retail.py"
       ]
     },
     {
@@ -18259,20 +18642,20 @@
         "SV_SendServerCommand"
       ],
       "symbol_mapping": [
-      {
-        "original": "SV_ConnectionlessPacket",
+        {
+          "original": "SV_ConnectionlessPacket",
           "target_files": [
             "src/mq3/server/connectionless.ml"
           ],
           "status": "tested_subset",
-        "scope": "OOB marker validation, command tokenization and case-insensitive dispatch are ported. getchallenge and connect call the ported OOB core; getstatus, getinfo, rcon, ipAuthorize, connect decompression, diagnostics and UDP receive remain explicit host services. Eight unchanged-C dispatch records and 18 MiniLang contracts cover the routing behavior."
-      },
+          "scope": "OOB marker validation, command tokenization and case-insensitive dispatch are ported. getchallenge and connect call the ported OOB core; getstatus, getinfo, rcon, ipAuthorize, connect decompression, diagnostics and UDP receive remain explicit host services. Eight unchanged-C dispatch records and 18 MiniLang contracts cover the routing behavior."
+        },
         {
           "original": "SV_PacketEvent",
-        "target_files": [
-          "src/mq3/server/packet_event.ml"
-        ],
-        "status": "tested_exact",
+          "target_files": [
+            "src/mq3/server/packet_event.ml"
+          ],
+          "status": "tested_exact",
           "scope": "OOB routing, runt/address/qport filtering, client lookup, translated-port repair, server Netchan processing, zombie rule, time updates and client-message callback. Ten unchanged-C records and 28 MiniLang contracts pass."
         },
         {
@@ -18322,10 +18705,10 @@
           ],
           "status": "tested_exact",
           "scope": "Kill/running/pause gates, FPS residual and sleep, wrap/restart policy, info configstrings, ping, bot/game frame loop, timeout, snapshot scheduling and heartbeat in original order. Nine unchanged-C records and 28 MiniLang contracts pass."
-      }
+        }
       ],
       "target": [
-      "src/mq3/server/connectionless.ml",
+        "src/mq3/server/connectionless.ml",
         "src/mq3/server/packet_event.ml",
         "src/mq3/server/client_pings.ml",
         "src/mq3/platform/desktop_frame_host.ml",
@@ -18339,12 +18722,12 @@
         "scripts/test_connectionless.py",
         "tests/reference/connectionless_oracle.c",
         "tests/connectionless_oracle.ml",
-      "tests/connectionless_contracts.ml",
-      "scripts/test_server_packet_event.py",
-      "tests/reference/server_packet_event_oracle.c",
-      "tests/server_packet_event_oracle.ml",
-      "tests/server_packet_event_contracts.ml",
-      "scripts/test_localhost_handshake.py",
+        "tests/connectionless_contracts.ml",
+        "scripts/test_server_packet_event.py",
+        "tests/reference/server_packet_event_oracle.c",
+        "tests/server_packet_event_oracle.ml",
+        "tests/server_packet_event_contracts.ml",
+        "scripts/test_localhost_handshake.py",
         "tests/localhost_handshake_contracts.ml",
         "scripts/test_server_client_pings.py",
         "tests/reference/server_client_pings_oracle.c",

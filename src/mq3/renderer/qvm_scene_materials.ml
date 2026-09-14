@@ -83,8 +83,26 @@ function cachedBinding(output,triangle)
   return -2
 end function
 
+function bindingMatchesRegistry(output,index,triangle,assets,kinds)
+  direct=typedName(assets,kinds,triangle.shaderHandle,"shader","shaderNoMip")
+  if direct=="" then return true end if
+  if index<0 or index>=len(output.materials) then return false end if
+  return stringEqualsIgnoreCaseAscii(output.materials[index].shaderName,strippedName(direct))
+end function
+
+function storeBinding(output,triangle,index)
+  for each binding in output.bindings
+    if sameBinding(binding,triangle) then binding.materialIndex=index;output.recentBinding=binding;return binding end if
+  end for
+  binding=Binding(triangle.shaderHandle,triangle.customSkin,textKey(triangle.shaderName),textKey(triangle.surfaceName),index);output.bindings=output.bindings+[binding];output.recentBinding=binding;return binding
+end function
+
 function bindTriangle(output,triangle,outputIndex,archive,assets,kinds,endSlot)
   index=cachedBinding(output,triangle)
+  // R_RemapShader preserves handles while changing the shader object they
+  // resolve to. Reject a cached binding when that stable handle's registry
+  // name changed so the replacement material is decoded on this refresh.
+  if index!= -2 and not bindingMatchesRegistry(output,index,triangle,assets,kinds) then index= -2 end if
   if index== -2 then
     named=resolveShaderName(triangle,archive,assets,kinds,output.loadedSkins);shaderName=strippedName(named[0]);output.loadedSkins=named[1];index=-1
     if shaderName!="" then
@@ -98,7 +116,7 @@ function bindTriangle(output,triangle,outputIndex,archive,assets,kinds,endSlot)
         index=len(output.materials)-1;output.textures=addTextures(output.textures,stages)
       end if
     end if
-    binding=Binding(triangle.shaderHandle,triangle.customSkin,textKey(triangle.shaderName),textKey(triangle.surfaceName),index);output.bindings=output.bindings+[binding];output.recentBinding=binding
+    storeBinding(output,triangle,index)
   end if
   if index>=0 and hasImage(output.materials[index].stages) then output.resolvedTriangles=output.resolvedTriangles+1 else output.unresolvedTriangles=output.unresolvedTriangles+1 end if
   output.triangles[outputIndex]=ResolvedTriangle(triangle,index);return void

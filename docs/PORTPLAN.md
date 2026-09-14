@@ -854,7 +854,18 @@ Audio-/Video-Timing portieren. Menüs, Serverbrowser, Key-Bindings, Konsole,
 Profile, Spielstart und Auflösungseinstellungen mit der Laufzeit verbinden.
 Bot-Singleplayer einschließlich Arenafortschritt und Ergebnismenüs abdecken.
 
-**Ergebnis:** `src/botlib/`, `src/audio/`, `src/ui/`, Cinematic-Modul und vollständig
+Der [AAS-/Botlib-Laufzeitblock](AAS_RUNTIME.md) liest alle 30 Retail-AAS-Dateien,
+traversiert den AAS-BSP-Baum, routet gewichtet über Reachabilities und sagt
+Clientbewegung voraus. Setup, MapLoad, StartFrame, Entityupdates und Shutdown
+laufen über die originale `qagame.qvm`. Die 400er Elementary Actions sowie die
+Character-, Item-/Weapon-Weight-, Chat- und Handle-Grundlage der 500er Traps
+sind gegen native Referenzen geprüft. `addbot Sarge 3` schließt dadurch den
+originalen `BotAISetupClient` ab und durchläuft drei Bot-Frames. Die nächste
+konkrete Grenze ist Trap 574 `BOTLIB_AI_ADD_AVOID_SPOT`; danach folgen die
+restlichen Goal-, Move-, Weapon- und Chat-State-Maschinen sowie die exakten
+Cluster-/Portal-Routing-Caches, bis ein Originalbot den Matchablauf selbst steuert.
+
+**Ergebnis:** `src/mq3/botlib/`, `src/mq3/audio/`, Client-/VM-UI, Cinematic-Modul und vollständig
 bedienbare baseq3-Laufzeit.
 
 **Abnahme:** Bei gleichem Seed und Framebudget stimmen Bot-Entscheidungs- und

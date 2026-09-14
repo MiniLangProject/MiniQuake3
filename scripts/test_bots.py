@@ -8,7 +8,7 @@ from toolchain import ROOT
 def main():
     scripts = sorted(
         path for path in (ROOT / "scripts").glob("test_bot_*.py")
-        if path.name != "test_bots.py"
+        if path.name not in {"test_bots.py", "test_bot_spawn_retail.py"}
     )
     if not scripts:
         raise RuntimeError("No bot parity suites found")

@@ -190,6 +190,7 @@ function addDefine(registry,text)
   source=Source("<global define>",bytes(text),0,1,0);values=[];while true token=raw(source);if token==void then break end if;if token is error then return 0 end if;values=values+[token] end while
   value=try(definition(values));if value is error then return 0 end if;index=defineIndex(registry,value.name);if index<0 then registry.defines=registry.defines+[value] else registry.defines[index]=value end if;return 1
 end function
+function clearDefines(registry) if registry!=void then registry.defines=[] end if;return void end function
 function load(registry,name)
   if registry==void or registry.loadFn==void or name=="" then return 0 end if
   slot=1;while slot<MAX_SOURCEFILES and registry.sources[slot]!=0 slot=slot+1 end while;if slot>=MAX_SOURCEFILES then return 0 end if

@@ -13,5 +13,10 @@ function main(args)
   catalog.bindings=[];count=count+require(qvmMaterials.cachedBinding(catalog,triangle)==9,"recent binding avoids the full binding table")
   unknown=Triangle(3,0,"models/missing","tag");count=count+require(qvmMaterials.cachedBinding(catalog,unknown)== -2,"unknown binding retains miss sentinel")
   triangle.shaderName="models/SECOND";count=count+require(qvmMaterials.cachedBinding(catalog,triangle)== -2,"binding keys remain byte-exact after initial shader resolution")
+  remapBinding=qvmMaterials.Binding(1,0,"models/first","body",0);remapCatalog=qvmMaterials.Catalog([],[qvmMaterials.Material(0,"textures/old","",void,-1,[],[],false,3.0,false,false)],[],void,0,[],[remapBinding],0,0,64,remapBinding)
+  remapTriangle=Triangle(1,0,"models/first","body");assets=["textures/old"];kinds=["shader"]
+  count=count+require(qvmMaterials.bindingMatchesRegistry(remapCatalog,0,remapTriangle,assets,kinds),"cached binding matches original registered shader")
+  assets[0]="textures/new";count=count+require(not qvmMaterials.bindingMatchesRegistry(remapCatalog,0,remapTriangle,assets,kinds),"shader remap invalidates material binding")
+  qvmMaterials.storeBinding(remapCatalog,remapTriangle,7);count=count+require(len(remapCatalog.bindings)==1 and remapCatalog.bindings[0].materialIndex==7,"remapped binding updates without cache growth")
   print("PASS: "+str(count)+" QVM scene material contracts");return 0
 end function

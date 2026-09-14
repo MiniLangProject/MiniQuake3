@@ -1,0 +1,127 @@
+// Copyright (C) 1999-2005 Id Software, Inc.
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Checked AAS4/AAS5 reader matching code/botlib/aasfile.h and be_aas_file.c.
+package mq3.format.aas
+
+import mq3.compat.numeric as n
+
+const AAS_ID=0x53414145
+const AAS_VERSION_OLD=4
+const AAS_VERSION=5
+const HEADER_SIZE=124
+const LUMP_COUNT=14
+const LUMP_BBOXES=0
+const LUMP_VERTEXES=1
+const LUMP_PLANES=2
+const LUMP_EDGES=3
+const LUMP_EDGEINDEX=4
+const LUMP_FACES=5
+const LUMP_FACEINDEX=6
+const LUMP_AREAS=7
+const LUMP_AREASETTINGS=8
+const LUMP_REACHABILITY=9
+const LUMP_NODES=10
+const LUMP_PORTALS=11
+const LUMP_PORTALINDEX=12
+const LUMP_CLUSTERS=13
+
+const BBOX_SIZE=32
+const VERTEX_SIZE=12
+const PLANE_SIZE=20
+const EDGE_SIZE=8
+const INDEX_SIZE=4
+const FACE_SIZE=24
+const AREA_SIZE=48
+const AREA_SETTINGS_SIZE=28
+const REACHABILITY_SIZE=44
+const NODE_SIZE=12
+const PORTAL_SIZE=20
+const CLUSTER_SIZE=16
+
+struct AAS data version bspChecksum offsets lengths counts sequential end struct
+struct BBox presenceType flags mins maxs end struct
+struct Plane normal dist type end struct
+struct Face planeNum flags numEdges firstEdge frontArea backArea end struct
+struct Area areaNum numFaces firstFace mins maxs center end struct
+struct AreaSettings contents flags presenceType cluster clusterAreaNum numReachableAreas firstReachableArea end struct
+struct Reachability areaNum faceNum edgeNum start finish travelType travelTime end struct
+struct Node planeNum children end struct
+struct Portal areaNum frontCluster backCluster clusterAreaNums end struct
+struct Cluster numAreas numReachabilityAreas numPortals firstPortal end struct
+
+function fail(message) return error(7510,"AAS: "+message) end function
+function strides() return [BBOX_SIZE,VERTEX_SIZE,PLANE_SIZE,EDGE_SIZE,INDEX_SIZE,FACE_SIZE,INDEX_SIZE,AREA_SIZE,AREA_SETTINGS_SIZE,REACHABILITY_SIZE,NODE_SIZE,PORTAL_SIZE,INDEX_SIZE,CLUSTER_SIZE] end function
+function lumpNames() return ["bboxes","vertexes","planes","edges","edgeindex","faces","faceindex","areas","areasettings","reachability","nodes","portals","portalindex","clusters"] end function
+function span(offset,size,limit,label)
+  if offset<0 or size<0 or offset>limit or size>limit-offset then return fail(label+" outside file") end if;return true
+end function
+function i32(data,offset,label) value=n.readI32(data,offset);if value is error then return fail("truncated "+label) end if;return value end function
+function u16(data,offset,label) if offset<0 or offset+2>len(data) then return fail("truncated "+label) end if;return data[offset]|(data[offset+1]<<8) end function
+function f32(data,offset,label) value=n.readU32(data,offset);if value is error then return fail("truncated "+label) end if;return n.bitsFloat(value) end function
+function vec3(data,offset,label) return [f32(data,offset,label),f32(data,offset+4,label),f32(data,offset+8,label)] end function
+function recordOffset(map,lump,index)
+  if map==void then return fail("AAS map is void") end if
+  if lump<0 or lump>=LUMP_COUNT then return fail("AAS lump index outside header") end if
+  if index<0 or index>=map.counts[lump] then return fail("record index outside "+lumpNames()[lump]) end if
+  return map.offsets[lump]+index*strides()[lump]
+end function
+function indexedRange(first,count,limit,label)
+  if first<0 or count<0 or first>limit or count>limit-first then return fail("invalid "+label+" range") end if;return true
+end function
+function signedReference(value,count,label)
+  if value<=0-count or value>=count then return fail("invalid signed "+label+" reference") end if;return true
+end function
+function decodedHeader(data,version)
+  header=slice(data,0,HEADER_SIZE)
+  if version==AAS_VERSION then for index=0 to HEADER_SIZE-9 header[8+index]=header[8+index]^((index*119)&255) end for end if
+  return header
+end function
+
+function vertex(map,index) at=recordOffset(map,LUMP_VERTEXES,index);if at is error then return at end if;return vec3(map.data,at,"vertex") end function
+function bbox(map,index) at=recordOffset(map,LUMP_BBOXES,index);if at is error then return at end if;return BBox(i32(map.data,at,"bbox presence"),i32(map.data,at+4,"bbox flags"),vec3(map.data,at+8,"bbox mins"),vec3(map.data,at+20,"bbox maxs")) end function
+function plane(map,index) at=recordOffset(map,LUMP_PLANES,index);if at is error then return at end if;return Plane(vec3(map.data,at,"plane normal"),f32(map.data,at+12,"plane distance"),i32(map.data,at+16,"plane type")) end function
+function edge(map,index) at=recordOffset(map,LUMP_EDGES,index);if at is error then return at end if;return [i32(map.data,at,"edge vertex 0"),i32(map.data,at+4,"edge vertex 1")] end function
+function edgeIndex(map,index) at=recordOffset(map,LUMP_EDGEINDEX,index);if at is error then return at end if;return i32(map.data,at,"edge index") end function
+function face(map,index) at=recordOffset(map,LUMP_FACES,index);if at is error then return at end if;return Face(i32(map.data,at,"face plane"),i32(map.data,at+4,"face flags"),i32(map.data,at+8,"face edge count"),i32(map.data,at+12,"face first edge"),i32(map.data,at+16,"face front area"),i32(map.data,at+20,"face back area")) end function
+function faceIndex(map,index) at=recordOffset(map,LUMP_FACEINDEX,index);if at is error then return at end if;return i32(map.data,at,"face index") end function
+function area(map,index) at=recordOffset(map,LUMP_AREAS,index);if at is error then return at end if;return Area(i32(map.data,at,"area number"),i32(map.data,at+4,"area face count"),i32(map.data,at+8,"area first face"),vec3(map.data,at+12,"area mins"),vec3(map.data,at+24,"area maxs"),vec3(map.data,at+36,"area center")) end function
+function areaSettings(map,index) at=recordOffset(map,LUMP_AREASETTINGS,index);if at is error then return at end if;return AreaSettings(i32(map.data,at,"area contents"),i32(map.data,at+4,"area flags"),i32(map.data,at+8,"area presence"),i32(map.data,at+12,"area cluster"),i32(map.data,at+16,"cluster area"),i32(map.data,at+20,"reachable count"),i32(map.data,at+24,"first reachable")) end function
+function reachability(map,index) at=recordOffset(map,LUMP_REACHABILITY,index);if at is error then return at end if;return Reachability(i32(map.data,at,"reachable area"),i32(map.data,at+4,"reachable face"),i32(map.data,at+8,"reachable edge"),vec3(map.data,at+12,"reach start"),vec3(map.data,at+24,"reach end"),i32(map.data,at+36,"travel type"),u16(map.data,at+40,"travel time")) end function
+function node(map,index) at=recordOffset(map,LUMP_NODES,index);if at is error then return at end if;return Node(i32(map.data,at,"node plane"),[i32(map.data,at+4,"node child 0"),i32(map.data,at+8,"node child 1")]) end function
+function portal(map,index) at=recordOffset(map,LUMP_PORTALS,index);if at is error then return at end if;return Portal(i32(map.data,at,"portal area"),i32(map.data,at+4,"front cluster"),i32(map.data,at+8,"back cluster"),[i32(map.data,at+12,"front cluster area"),i32(map.data,at+16,"back cluster area")]) end function
+function portalIndex(map,index) at=recordOffset(map,LUMP_PORTALINDEX,index);if at is error then return at end if;return i32(map.data,at,"portal index") end function
+function cluster(map,index) at=recordOffset(map,LUMP_CLUSTERS,index);if at is error then return at end if;return Cluster(i32(map.data,at,"cluster area count"),i32(map.data,at+4,"cluster reachability count"),i32(map.data,at+8,"cluster portal count"),i32(map.data,at+12,"cluster first portal")) end function
+
+function validateTopology(map)
+  if map.counts[LUMP_AREAS]!=map.counts[LUMP_AREASETTINGS] then return fail("area/settings count mismatch") end if
+  if map.counts[LUMP_EDGES]>0 then for index=0 to map.counts[LUMP_EDGES]-1 value=edge(map,index);if value[0]<0 or value[0]>=map.counts[LUMP_VERTEXES] or value[1]<0 or value[1]>=map.counts[LUMP_VERTEXES] then return fail("edge vertex outside vertex lump") end if end for end if
+  if map.counts[LUMP_EDGEINDEX]>0 then for index=0 to map.counts[LUMP_EDGEINDEX]-1 check=signedReference(edgeIndex(map,index),map.counts[LUMP_EDGES],"edge");if check is error then return check end if end for end if
+  if map.counts[LUMP_FACES]>0 then for index=0 to map.counts[LUMP_FACES]-1 value=face(map,index);if value.planeNum<0 or value.planeNum>=map.counts[LUMP_PLANES] then return fail("face plane outside plane lump") end if;check=indexedRange(value.firstEdge,value.numEdges,map.counts[LUMP_EDGEINDEX],"face edge");if check is error then return check end if;if value.frontArea<0 or value.frontArea>=map.counts[LUMP_AREAS] or value.backArea<0 or value.backArea>=map.counts[LUMP_AREAS] then return fail("face area outside area lump") end if end for end if
+  if map.counts[LUMP_FACEINDEX]>0 then for index=0 to map.counts[LUMP_FACEINDEX]-1 check=signedReference(faceIndex(map,index),map.counts[LUMP_FACES],"face");if check is error then return check end if end for end if
+  if map.counts[LUMP_AREAS]>0 then for index=0 to map.counts[LUMP_AREAS]-1 value=area(map,index);if value.areaNum!=index then return fail("area number/index mismatch") end if;check=indexedRange(value.firstFace,value.numFaces,map.counts[LUMP_FACEINDEX],"area face");if check is error then return check end if;settings=areaSettings(map,index);check=indexedRange(settings.firstReachableArea,settings.numReachableAreas,map.counts[LUMP_REACHABILITY],"area reachability");if check is error then return check end if end for end if
+  // facenum/edgenum are deliberately not range checked: special travel types
+  // reuse these fields for mover, jump-pad and teleport metadata in Baseq3.
+  if map.counts[LUMP_REACHABILITY]>0 then for index=0 to map.counts[LUMP_REACHABILITY]-1 value=reachability(map,index);if value.areaNum<0 or value.areaNum>=map.counts[LUMP_AREAS] then return fail("reachability area outside area lump") end if end for end if
+  if map.counts[LUMP_NODES]>0 then for index=0 to map.counts[LUMP_NODES]-1 value=node(map,index);if value.planeNum<0 or value.planeNum>=map.counts[LUMP_PLANES] then return fail("node plane outside plane lump") end if;for side=0 to 1 child=value.children[side];if child>0 and child>=map.counts[LUMP_NODES] then return fail("node child outside node lump") else if child<0 and 0-child>=map.counts[LUMP_AREAS] then return fail("node area outside area lump") end if end for end for end if
+  if map.counts[LUMP_PORTALS]>0 then for index=0 to map.counts[LUMP_PORTALS]-1 value=portal(map,index);if value.areaNum<0 or value.areaNum>=map.counts[LUMP_AREAS] then return fail("portal area outside area lump") end if;if value.frontCluster<0 or value.frontCluster>=map.counts[LUMP_CLUSTERS] or value.backCluster<0 or value.backCluster>=map.counts[LUMP_CLUSTERS] then return fail("portal cluster outside cluster lump") end if end for end if
+  if map.counts[LUMP_PORTALINDEX]>0 then for index=0 to map.counts[LUMP_PORTALINDEX]-1 value=portalIndex(map,index);if value<0 or value>=map.counts[LUMP_PORTALS] then return fail("portal index outside portal lump") end if end for end if
+  if map.counts[LUMP_CLUSTERS]>0 then for index=0 to map.counts[LUMP_CLUSTERS]-1 value=cluster(map,index);check=indexedRange(value.firstPortal,value.numPortals,map.counts[LUMP_PORTALINDEX],"cluster portal");if check is error then return check end if end for end if
+  return true
+end function
+
+function load(data)
+  if data==void or typeof(data)!="bytes" or len(data)<HEADER_SIZE then return fail("truncated header") end if
+  ident=i32(data,0,"identity");if ident!=AAS_ID then return fail("invalid identity") end if
+  version=i32(data,4,"version");if version!=AAS_VERSION_OLD and version!=AAS_VERSION then return fail("unsupported version "+str(version)) end if
+  header=decodedHeader(data,version);checksum=i32(header,8,"BSP checksum");offsets=array(LUMP_COUNT,0);lengths=array(LUMP_COUNT,0);counts=array(LUMP_COUNT,0);sizes=strides();names=lumpNames();sequential=true;last=HEADER_SIZE
+  for lump=0 to LUMP_COUNT-1
+    offset=i32(header,12+lump*8,names[lump]+" offset");length=i32(header,16+lump*8,names[lump]+" length")
+    check=span(offset,length,len(data),names[lump]);if check is error then return check end if
+    if length>0 and offset<HEADER_SIZE then return fail(names[lump]+" overlaps header") end if
+    if length%sizes[lump]!=0 then return fail(names[lump]+" record size mismatch") end if
+    if offset!=last then sequential=false end if;last=offset+length;offsets[lump]=offset;lengths[lump]=length;counts[lump]=length/sizes[lump]
+  end for
+  for left=0 to LUMP_COUNT-1 if lengths[left]>0 and left<LUMP_COUNT-1 then for right=left+1 to LUMP_COUNT-1 if lengths[right]>0 and offsets[left]<offsets[right]+lengths[right] and offsets[right]<offsets[left]+lengths[left] then return fail("overlapping lumps") end if end for end if end for
+  map=AAS(data,version,checksum,offsets,lengths,counts,sequential);check=validateTopology(map);if check is error then return check end if;return map
+end function
+function checkBspChecksum(map,expected) if map==void or map.bspChecksum!=expected then return fail("BSP checksum mismatch") end if;return true end function
