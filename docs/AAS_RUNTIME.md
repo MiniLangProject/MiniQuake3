@@ -32,7 +32,7 @@ Die Servergrenze verwaltet acht echte Bot-Client-Slots sowie Snapshot-Entities,
 Usercmds und Bot-Konsolennachrichten. Ein Retail-Aufruf von `addbot Sarge 3`
 läuft durch `GAME_CONSOLE_COMMAND`, liest Sarge aus `bots.txt`, setzt Userinfo und
 `SVF_BOT`, belegt Slot 0 und schließt `BotAISetupClient` mit echten Goal-, Weapon-,
-Chat- und Move-State-Handles ab. Danach laufen 256 vollständige Bot-Frames ohne
+Chat- und Move-State-Handles ab. Danach laufen 512 vollständige Bot-Frames ohne
 unportierten Trap bis zur regulären Übergabe über `BOTLIB_USER_COMMAND`.
 Avoid-Spots, Chat-Whitespace, die 175 Gruppen aus der Retail-`syn.c` und alle
 138 Templates aus `match.c` werden dabei bereits verarbeitet. Initial- und
@@ -43,7 +43,8 @@ Routenziele, Routenvorhersage, Reachability-Area-Indizes und der 68-Byte-
 `bot_initmove_t`-Zustand sind ebenfalls live. `BOTLIB_AI_MOVE_TO_GOAL` wählt
 gewichtete Reachabilities, beachtet Travel- und Avoid-Zustände und schreibt das
 originale 52-Byte-`bot_moveresult_t`. Der q3dm1-Lauf endet mit einem echten
-Bot-Usercmd (`forward=86`, `right=15`, `up=0`, Waffe 8).
+Bot-Usercmd (`forward=123`, `right=-31`, `up=0`, Waffe 8); der Goal-Stack
+entwickelt sich dabei von einem auf zwei aktive Ziele weiter.
 
 Die Elementary Actions 400–423 sind portiert: Aktionsbits, Blick, Richtung,
 Geschwindigkeit, Waffe, Jump-Latch und das 40-Byte-`bot_input_t`-Marshalling
@@ -83,15 +84,15 @@ Area zugeordnet. Bounding-Box-Traversierung, Reachability-Iteration, AreaInfo,
 Presence-Bounds, Zeit, Routing-Sperren und echte Routensuchen sind zusätzlich
 geprüft.
 
-Die vollständige Parität der ursprünglichen Cluster-/Portal-Routing-Caches und
-der verbleibenden Move-, Weapon- und Chat-State-Maschinen bleibt offen. Walk,
-direkte Zielbereichsbewegung, Schwimmen, Luftbewegung, Crouch, Barrier-Jump,
-Jump, Ladder und Walk-off-Ledge
-sind live; Teleport, Elevator, Weapon-Jump und Jumppad liefern noch bewusst
-Failure, bis ihre originalen Reisepfade portiert sind. Crouch setzt Blockprüfung,
-EA_Crouch und Originaltempo um; Jump enthält Gapscan, Anlauf, Jump/DelayedJump,
-Luftphase und Lande-Overshoot; Ladder setzt Blickrichtung und MoveForward;
-Walk-off-Ledge berechnet Ballistik und Luftsteuerung. Die
+Alle 15 im Baseq3-Release geschalteten Travelhandler sind live: Walk, Crouch,
+Barrier-Jump, Jump, Ladder, Walk-off-Ledge, Swim, Waterjump, Teleport, Elevator,
+Rocket-/BFG-Jump, Grapple, Jumppad und FuncBobbing. Die Hostgrenze liefert dafür
+reale BSP-Kollision, Flüssigkeitsinhalte, Moverpositionen, Barriereprüfung,
+Grapple-Zustände und Botlib-Libvars. Reverse-Reachabilities, Area-Reisezeitmatrizen
+und Portal-Maximalzeiten werden beim Laden erzeugt; ein begrenzter LRU-Cache
+invalidiert mit den Routing-Sperren. Offen bleiben die dynamische
+`AAS_UpdateAreaRoutingCache`-/`AAS_UpdatePortalRoutingCache`-Propagation, die
+kompakten Reachability-Bytes und `.rcd`-Persistenz. Die
 Movement-Prediction benutzt für Kollisionen derzeit die Server-BSP-Grenze;
 Presence-Sperren, Playerclip und die exakten AAS-Trace-Felder müssen noch auf den
 originalen AAS-Node-Trace umgestellt werden. Die Best-Reachable-Area-Suche nutzt
@@ -108,6 +109,8 @@ Ausführen:
 python scripts/test_aas_format.py --pak D:/Quake3/baseq3/pak0.pk3
 python scripts/test_aas_runtime.py --data-root D:/Quake3
 python scripts/test_aas_routing.py --pak D:/Quake3/baseq3/pak0.pk3
+python scripts/test_aas_routing_cache.py --pak D:/Quake3/baseq3/pak0.pk3
+python scripts/test_aas_routing_tables.py --pak D:/Quake3/baseq3/pak0.pk3
 python scripts/test_aas_route_extras.py
 python scripts/test_aas_client_movement.py
 python scripts/test_ai_move_runtime.py

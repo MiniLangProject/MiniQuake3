@@ -15,6 +15,13 @@ function main(args)
   profileConfig=fuzzy.weightConfig(fuzzyRuntime,"test_w.c");mapping=weapons.weaponWeightIndex(profileConfig,config);checks=checks+require(len(mapping)==32 and mapping[5]==0 and mapping[0]==-1,"weapon name to fuzzy index")
   state=pools.create();handle=pools.allocWeaponState(state);checks=checks+require(weapons.loadWeaponWeights(runtime,state,handle,"test_w.c")==0,"load profile")
   bound=pools.weaponState(state,handle);checks=checks+require(bound.weaponWeightConfig!=void and bound.weaponWeightIndex[5]==0,"weapon state binding")
+  second=pools.allocWeaponState(state);reads=fuzzyRuntime.fileReads;checks=checks+require(weapons.loadWeaponWeights(runtime,state,second,"test_w.c")==0 and fuzzyRuntime.fileReads==reads,"weapon states reuse default fuzzy cache")
+  fuzzy.setReloadCharacters(fuzzyRuntime,1);freshA=pools.allocWeaponState(state);freshB=pools.allocWeaponState(state);reloadReads=fuzzyRuntime.fileReads
+  checks=checks+require(weapons.loadWeaponWeights(runtime,state,freshA,"test_w.c")==0 and weapons.loadWeaponWeights(runtime,state,freshB,"test_w.c")==0 and fuzzyRuntime.fileReads>reloadReads,"weapon reload reparses each fuzzy profile")
+  profileA=pools.weaponState(state,freshA).weaponWeightConfig;profileB=pools.weaponState(state,freshB).weaponWeightConfig;profileA.weights[0].separators[0].weight=77.0
+  checks=checks+require(profileB.weights[0].separators[0].weight==0.0 and bound.weaponWeightConfig.weights[0].separators[0].weight==0.0,"weapon reload profiles mutate independently")
+  checks=checks+require(len(fuzzyRuntime.configs)==1,"weapon reload bypasses shared cache")
+  fuzzy.setReloadCharacters(fuzzyRuntime,0)
   configBefore=bound.weaponWeightConfig;indexBefore=bound.weaponWeightIndex;pools.resetWeaponState(state,handle);checks=checks+require(bound.weaponWeightConfig==configBefore and bound.weaponWeightIndex==indexBefore,"released reset preserves bindings")
   checks=checks+require(weapons.loadWeaponWeights(runtime,state,0,"test_w.c")==weapons.BLERR_CANNOTLOADWEAPONWEIGHTS,"invalid handle error")
   weapons.freeWeaponWeights(runtime,state,handle);checks=checks+require(bound.weaponWeightConfig==void and bound.weaponWeightIndex==void,"free releases bindings")

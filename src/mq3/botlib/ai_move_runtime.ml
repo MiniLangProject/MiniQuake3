@@ -16,6 +16,7 @@ const OP_MOVE_IN_DIRECTION=550
 const OP_REACHABILITY_AREA=553
 const OP_MOVEMENT_VIEW_TARGET=554
 const OP_INIT_MOVE_STATE=557
+const MFL_BARRIERJUMP=1
 const MFL_ONGROUND=2
 const MFL_SWIMMING=4
 const MFL_AGAINSTLADDER=8
@@ -31,25 +32,41 @@ const MODELTYPE_FUNC_BOB=2
 const ENTITYNUM_WORLD=1022
 const ENTITYNUM_NONE=1023
 const CONTENTS_SOLID_PLAYERCLIP=0x10001
+const CONTENTS_LAVA=8
+const CONTENTS_SLIME=16
+const CONTENTS_WATER=32
 const MOVE_WALK=1
 const MOVE_CROUCH=2
 const MOVE_JUMP=4
 const MOVERESULT_MOVEMENTVIEW=1
 const MOVERESULT_SWIMVIEW=2
+const MOVERESULT_WAITING=4
+const MOVERESULT_MOVEMENTVIEWSET=8
+const MOVERESULT_MOVEMENTWEAPON=16
 const MOVERESULT_ONTOPOFOBSTACLE=32
 const MOVERESULT_BLOCKEDBYAVOIDSPOT=256
+const RESULTTYPE_ELEVATORUP=1
+const RESULTTYPE_WAITFORFUNCBOBBING=2
+const RESULTTYPE_BADGRAPPLEPATH=4
 const RESULTTYPE_INSOLIDAREA=8
 const AVOID_ALWAYS=1
 const AVOIDREACH_TRIES=4
 
 struct InitMove origin velocity viewOffset entityNum client thinkTime presenceType viewAngles orMoveFlags end struct
-struct Services context groundTraceFn entityModelFn modelTypeFn modelReachabilityFn swimmingFn clientTraceFn nextReachabilityFn elementaryActions onGroundFn againstLadderFn gapDistanceFn blockTraceFn walkDirectionFn jumpRunStartFn gravityFn horizontalVelocityForJumpFn end struct
+const WEAPON_ROCKET_LAUNCHER=5
+const WEAPON_BFG=9
+const WEAPON_GRAPPLE=10
+
+struct Services context groundTraceFn entityModelFn modelTypeFn modelReachabilityFn swimmingFn clientTraceFn nextReachabilityFn elementaryActions onGroundFn againstLadderFn gapDistanceFn blockTraceFn walkDirectionFn jumpRunStartFn gravityFn horizontalVelocityForJumpFn elevatorStateFn barrierJumpFn routeReachabilityFn randomFn pointContentsFn funcBobStateFn grappleConfigFn grappleStateFn grappleTraceFn end struct
 struct Runtime pools aas router services end struct
 struct GroundTrace startSolid fraction entity endPos end struct
+struct ElevatorState onMover down bottomCenter maxBarrier end struct
+struct FuncBobState onMover start finish origin bottomCenter maxBarrier end struct
+struct GrappleConfig offhand weaponIndex onCommand offCommand end struct
 struct ViewTargetResult found target end struct
 struct MoveResult failure type blocked blockEntity travelType flags weapon moveDir idealViewAngles end struct
 
-function services(context) return Services(context,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void) end function
+function services(context) return Services(context,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void) end function
 function create(pools,aas,router,host) return Runtime(pools,aas,router,host) end function
 function copyVector(value) return [value[0],value[1],value[2]] end function
 function distance(a,b) x=n.fsub(b[0],a[0]);y=n.fsub(b[1],a[1]);z=n.fsub(b[2],a[2]);return n.fsqrt(n.fadd(n.fadd(n.fmul(x,x),n.fmul(y,y)),n.fmul(z,z))) end function
@@ -106,6 +123,7 @@ function addToTarget(start,finish,maxDistance,travelled,target)
 end function
 function nextReachability(runtime,state,origin,areaNum,goal,travelFlags,lastAreaNum)
   if runtime.services!=void and runtime.services.nextReachabilityFn!=void then return runtime.services.nextReachabilityFn(runtime.services.context,origin,areaNum,state.lastGoalAreaNum,lastAreaNum,state.avoidReach,state.avoidReachTimes,state.avoidReachTries,goal,travelFlags) end if
+  if runtime.services!=void and runtime.services.routeReachabilityFn!=void then return runtime.services.routeReachabilityFn(runtime.services.context,areaNum,origin,goal.areaNum,travelFlags) end if
   if runtime.router==void then return 0 end if;return moveRouting.areaReachabilityToGoalArea(runtime.router,areaNum,origin,goal.areaNum,travelFlags)
 end function
 function movementViewTarget(runtime,handle,goal,travelFlags,lookAhead,target)
@@ -133,6 +151,11 @@ function emitCrouch(runtime,state) if runtime.services==void or runtime.services
 function emitJump(runtime,state) if runtime.services==void or runtime.services.elementaryActions==void then return false end if;result=moveEa.jump(runtime.services.elementaryActions,state.client);return not (result is error) end function
 function emitDelayedJump(runtime,state) if runtime.services==void or runtime.services.elementaryActions==void then return false end if;result=moveEa.delayedJump(runtime.services.elementaryActions,state.client);return not (result is error) end function
 function emitMoveForward(runtime,state) if runtime.services==void or runtime.services.elementaryActions==void then return false end if;result=moveEa.moveForward(runtime.services.elementaryActions,state.client);return not (result is error) end function
+function emitAttack(runtime,state) if runtime.services==void or runtime.services.elementaryActions==void then return false end if;result=moveEa.attack(runtime.services.elementaryActions,state.client);return not (result is error) end function
+function emitView(runtime,state,angles) if runtime.services==void or runtime.services.elementaryActions==void then return false end if;result=moveEa.view(runtime.services.elementaryActions,state.client,angles);return not (result is error) end function
+function emitSelectWeapon(runtime,state,weapon) if runtime.services==void or runtime.services.elementaryActions==void then return false end if;result=moveEa.selectWeapon(runtime.services.elementaryActions,state.client,weapon);return not (result is error) end function
+function emitMoveUp(runtime,state) if runtime.services==void or runtime.services.elementaryActions==void then return false end if;result=moveEa.moveUp(runtime.services.elementaryActions,state.client);return not (result is error) end function
+function emitCommand(runtime,state,text) if runtime.services==void or runtime.services.elementaryActions==void then return false end if;result=moveEa.command(runtime.services.elementaryActions,state.client,text);return not (result is error) end function
 function onGround(runtime,state)
   if runtime.services!=void and runtime.services.onGroundFn!=void then return runtime.services.onGroundFn(runtime.services.context,state.origin,state.presenceType,state.entityNum) end if;return (state.moveFlags&MFL_ONGROUND)!=0
 end function
@@ -299,6 +322,181 @@ function finishTravelWalkOffLedge(runtime,state,reach)
   if not controlled[0] then direction=[fullDirection[0],fullDirection[1],0.0];direction=normalize(direction)[1];speed=400.0 end if
   if not emitMovement(runtime,state,direction,speed) then result.failure=true;return result end if;result.moveDir=copyVector(direction);return result
 end function
+function angleDiff(first,second)
+  difference=n.fsub(first,second)
+  if first>second then if difference>180.0 then difference=n.fsub(difference,360.0) end if
+  else if difference<-180.0 then difference=n.fadd(difference,360.0) end if
+  return difference
+end function
+function elevatorState(runtime,state,reach)
+  if runtime.services==void or runtime.services.elevatorStateFn==void then return void end if;value=runtime.services.elevatorStateFn(runtime.services.context,state,reach)
+  if value==void or value is error or value.bottomCenter==void or len(value.bottomCenter)!=3 then return void end if;return value
+end function
+// BotCheckBarrierJump's callback reports only collision geometry. The runtime
+// owns the original EA side effects and MFL_BARRIERJUMP state transition.
+function checkBarrierJump(runtime,state,direction,speed)
+  if runtime.services==void or runtime.services.barrierJumpFn==void then return [false,true] end if;hit=runtime.services.barrierJumpFn(runtime.services.context,state,direction,speed);if hit is error then return [false,false] end if;if not hit then return [false,true] end if
+  horizontal=normalize([direction[0],direction[1],0.0])[1];if not emitJump(runtime,state) then return [true,false] end if;if not emitMovement(runtime,state,horizontal,speed) then return [true,false] end if;state.moveFlags=state.moveFlags|MFL_BARRIERJUMP;return [true,true]
+end function
+// BotTravel_Teleport. The airborne finish case is an intentional no-op in
+// BotMoveToGoal and is handled in the dispatcher below.
+function travelTeleport(runtime,state,reach)
+  result=emptyMoveResult();if (state.moveFlags&MFL_TELEPORTED)!=0 then return result end if
+  direction=[n.fsub(reach.start[0],state.origin[0]),n.fsub(reach.start[1],state.origin[1]),n.fsub(reach.start[2],state.origin[2])];if (state.moveFlags&MFL_SWIMMING)==0 then direction[2]=0.0 end if;normal=normalize(direction);dist=normal[0];direction=normal[1];result=checkBlocked(runtime,state,direction,true,result);speed=400.0;if dist<30.0 then speed=200.0 end if
+  if not emitMovement(runtime,state,direction,speed) then result.failure=true;return result end if;if (state.moveFlags&MFL_SWIMMING)!=0 then result.flags=result.flags|MOVERESULT_SWIMVIEW end if;result.moveDir=copyVector(direction);return result
+end function
+// BotTravel_Elevator depends on live mover bounds/origin and entity tracing.
+// Missing mover state is an explicit failure instead of guessed success.
+function travelElevator(runtime,state,reach)
+  result=emptyMoveResult();mover=elevatorState(runtime,state,reach);if mover==void then result.failure=true;result.type=moveRouting.TRAVEL_ELEVATOR;return result end if
+  swimming=(state.moveFlags&MFL_SWIMMING)!=0
+  if mover.onMover then
+    vertical=n.fsub(state.origin[2],reach.finish[2]);if vertical<0.0 then vertical=0.0-vertical end if
+    if vertical<mover.maxBarrier then
+      direction=[n.fsub(reach.finish[0],state.origin[0]),n.fsub(reach.finish[1],state.origin[1]),0.0];direction=normalize(direction)[1];barrier=checkBarrierJump(runtime,state,direction,100.0);if not barrier[1] then result.failure=true;return result end if;if not barrier[0] and not emitMovement(runtime,state,direction,400.0) then result.failure=true;return result end if;result.moveDir=copyVector(direction)
+    else
+      direction=[n.fsub(mover.bottomCenter[0],state.origin[0]),n.fsub(mover.bottomCenter[1],state.origin[1]),0.0];normal=normalize(direction);dist=normal[0];direction=normal[1]
+      if dist>10.0 then if dist>100.0 then dist=100.0 end if;if not emitMovement(runtime,state,direction,n.fmul(4.0,dist)) then result.failure=true;return result end if;result.moveDir=copyVector(direction) end if
+    end if;return result
+  end if
+  direction=[n.fsub(reach.finish[0],state.origin[0]),n.fsub(reach.finish[1],state.origin[1]),n.fsub(reach.finish[2],state.origin[2])];dist=normalize(direction)[0]
+  if dist<64.0 then
+    if dist>60.0 then dist=60.0 end if;speed=n.fmul(6.0,dist);barrier=[false,true];if not swimming then barrier=checkBarrierJump(runtime,state,direction,50.0) end if
+    if not barrier[1] then result.failure=true;return result end if;if (swimming or not barrier[0]) and speed>5.0 then if not emitMovement(runtime,state,direction,speed) then result.failure=true;return result end if end if
+    result.moveDir=copyVector(direction);if swimming then result.flags=result.flags|MOVERESULT_SWIMVIEW end if;state.reachabilityTime=0.0;return result
+  end if
+  directionToStart=[n.fsub(reach.start[0],state.origin[0]),n.fsub(reach.start[1],state.origin[1]),n.fsub(reach.start[2],state.origin[2])];if not swimming then directionToStart[2]=0.0 end if;normal=normalize(directionToStart);distanceToStart=normal[0];directionToStart=normal[1]
+  if not mover.down then
+    direction=copyVector(directionToStart);result=checkBlocked(runtime,state,direction,false,result);if distanceToStart>60.0 then distanceToStart=60.0 end if;speed=n.fmul(6.0,distanceToStart)
+    if not swimming then barrier=checkBarrierJump(runtime,state,direction,50.0);if not barrier[1] then result.failure=true;return result end if;if not barrier[0] and speed>5.0 then if not emitMovement(runtime,state,direction,speed) then result.failure=true;return result end if end if end if
+    result.moveDir=copyVector(direction);if swimming then result.flags=result.flags|MOVERESULT_SWIMVIEW end if;result.type=RESULTTYPE_ELEVATORUP;result.flags=result.flags|MOVERESULT_WAITING;return result
+  end if
+  directionToCenter=[n.fsub(mover.bottomCenter[0],state.origin[0]),n.fsub(mover.bottomCenter[1],state.origin[1]),n.fsub(mover.bottomCenter[2],state.origin[2])];if not swimming then directionToCenter[2]=0.0 end if;normal=normalize(directionToCenter);distanceToCenter=normal[0];directionToCenter=normal[1]
+  direction=copyVector(directionToStart);dist=distanceToStart;if distanceToStart<20.0 or distanceToCenter<distanceToStart or dot(directionToStart,directionToCenter)<0.0 then direction=copyVector(directionToCenter);dist=distanceToCenter end if
+  result=checkBlocked(runtime,state,direction,false,result);if dist>60.0 then dist=60.0 end if;speed=n.fmul(6.0,dist)
+  if not swimming then barrier=checkBarrierJump(runtime,state,direction,50.0);if not barrier[1] then result.failure=true;return result end if;if not barrier[0] then if not emitMovement(runtime,state,direction,speed) then result.failure=true;return result end if end if end if
+  result.moveDir=copyVector(direction);if swimming then result.flags=result.flags|MOVERESULT_SWIMVIEW end if;return result
+end function
+function finishTravelElevator(runtime,state,reach)
+  result=emptyMoveResult();direction=[0.0,0.0,0.0];mover=elevatorState(runtime,state,reach);if mover==void then result.failure=true;result.type=moveRouting.TRAVEL_ELEVATOR;return result end if
+  bottomDirection=[n.fsub(mover.bottomCenter[0],state.origin[0]),n.fsub(mover.bottomCenter[1],state.origin[1]),n.fsub(mover.bottomCenter[2],state.origin[2])];topDirection=[n.fsub(reach.finish[0],state.origin[0]),n.fsub(reach.finish[1],state.origin[1]),n.fsub(reach.finish[2],state.origin[2])]
+  bottomHeight=bottomDirection[2];if bottomHeight<0.0 then bottomHeight=0.0-bottomHeight end if;topHeight=topDirection[2];if topHeight<0.0 then topHeight=0.0-topHeight end if;if bottomHeight<topHeight then direction=normalize(bottomDirection)[1] else direction=normalize(topDirection)[1] end if
+  if not emitMovement(runtime,state,direction,300.0) then result.failure=true end if;return result
+end function
+// Shared source body for BotTravel_RocketJump and BotTravel_BFGJump.
+function travelWeaponJump(runtime,state,reach,weapon)
+  result=emptyMoveResult();direction=[n.fsub(reach.start[0],state.origin[0]),n.fsub(reach.start[1],state.origin[1]),0.0];normal=normalize(direction);dist=normal[0];direction=normal[1]
+  // RocketJump initializes this view before the alignment test. The pinned
+  // BFGJump source reads the uncleared result vector; MiniLang's deterministic
+  // zero result preserves the source branch without propagating C stack data.
+  initialAngles=[0.0,0.0,0.0];if weapon==WEAPON_ROCKET_LAUNCHER then initialAngles=moveQMath.vectoangles(direction);initialAngles[0]=90.0 end if
+  aligned=absFloat(angleDiff(initialAngles[0],state.viewAngles[0]))<5.0 and absFloat(angleDiff(initialAngles[1],state.viewAngles[1]))<5.0
+  if dist<5.0 and aligned then
+    direction=[n.fsub(reach.finish[0],state.origin[0]),n.fsub(reach.finish[1],state.origin[1]),0.0];direction=normalize(direction)[1]
+    if not emitJump(runtime,state) or not emitAttack(runtime,state) or not emitMovement(runtime,state,direction,800.0) then result.failure=true;return result end if;state.jumpReach=state.lastReachNum
+  else
+    if dist>80.0 then dist=80.0 end if;if not emitMovement(runtime,state,direction,n.fmul(5.0,dist)) then result.failure=true;return result end if
+  end if
+  result.idealViewAngles=moveQMath.vectoangles(direction);result.idealViewAngles[0]=90.0;if not emitView(runtime,state,result.idealViewAngles) then result.failure=true;return result end if;result.flags=result.flags|MOVERESULT_MOVEMENTVIEWSET
+  if not emitSelectWeapon(runtime,state,weapon) then result.failure=true;return result end if;result.weapon=weapon;result.flags=result.flags|MOVERESULT_MOVEMENTWEAPON;result.moveDir=copyVector(direction);return result
+end function
+function finishTravelWeaponJump(runtime,state,reach)
+  result=emptyMoveResult();if state.jumpReach==0 then return result end if;controlled=airControl(runtime,state.origin,state.velocity,reach.finish);direction=controlled[1];speed=controlled[2]
+  if not controlled[0] then direction=[n.fsub(reach.finish[0],state.origin[0]),n.fsub(reach.finish[1],state.origin[1]),0.0];direction=normalize(direction)[1];speed=400.0 end if
+  if not emitMovement(runtime,state,direction,speed) then result.failure=true;return result end if;result.moveDir=copyVector(direction);return result
+end function
+function travelJumpPad(runtime,state,reach)
+  result=emptyMoveResult();direction=[n.fsub(reach.start[0],state.origin[0]),n.fsub(reach.start[1],state.origin[1]),0.0];direction=normalize(direction)[1];result=checkBlocked(runtime,state,direction,true,result)
+  if not emitMovement(runtime,state,direction,400.0) then result.failure=true;return result end if;result.moveDir=copyVector(direction);return result
+end function
+function finishTravelJumpPad(runtime,state,reach)
+  result=emptyMoveResult();controlled=airControl(runtime,state.origin,state.velocity,reach.finish);direction=controlled[1];speed=controlled[2]
+  if not controlled[0] then direction=[n.fsub(reach.finish[0],state.origin[0]),n.fsub(reach.finish[1],state.origin[1]),0.0];direction=normalize(direction)[1];speed=400.0 end if;result=checkBlocked(runtime,state,direction,true,result)
+  if not emitMovement(runtime,state,direction,speed) then result.failure=true;return result end if;result.moveDir=copyVector(direction);return result
+end function
+function signedRandom(runtime) if runtime.services!=void and runtime.services.randomFn!=void then return runtime.services.randomFn(runtime.services.context) end if;return 0.0 end function
+function pointContents(runtime,point) if runtime.services!=void and runtime.services.pointContentsFn!=void then return runtime.services.pointContentsFn(runtime.services.context,point) end if;return 0 end function
+// BotTravel_Swim is shared by the grounded and airborne switches.
+function travelSwim(runtime,state,reach)
+  result=emptyMoveResult();direction=[n.fsub(reach.start[0],state.origin[0]),n.fsub(reach.start[1],state.origin[1]),n.fsub(reach.start[2],state.origin[2])];direction=normalize(direction)[1];result=checkBlocked(runtime,state,direction,true,result)
+  if not emitMovement(runtime,state,direction,400.0) then result.failure=true;return result end if;result.moveDir=copyVector(direction);result.idealViewAngles=moveQMath.vectoangles(direction);result.flags=result.flags|MOVERESULT_SWIMVIEW;return result
+end function
+function travelWaterJump(runtime,state,reach)
+  result=emptyMoveResult();direction=[n.fsub(reach.finish[0],state.origin[0]),n.fsub(reach.finish[1],state.origin[1]),n.fsub(reach.finish[2],state.origin[2])];horizontal=[direction[0],direction[1],0.0];horizontalDistance=normalize(horizontal)[0];direction[2]=n.fadd(direction[2],n.fadd(15.0,n.fmul(signedRandom(runtime),40.0)));direction=normalize(direction)[1]
+  if not emitMoveForward(runtime,state) then result.failure=true;return result end if;if horizontalDistance<40.0 and not emitMoveUp(runtime,state) then result.failure=true;return result end if
+  result.idealViewAngles=moveQMath.vectoangles(direction);result.flags=result.flags|MOVERESULT_MOVEMENTVIEW;result.moveDir=copyVector(direction);return result
+end function
+function finishTravelWaterJump(runtime,state,reach)
+  result=emptyMoveResult();if (state.moveFlags&MFL_WATERJUMP)!=0 then return result end if;test=copyVector(state.origin);test[2]=n.fsub(test[2],32.0);if (pointContents(runtime,test)&(CONTENTS_LAVA|CONTENTS_SLIME|CONTENTS_WATER))==0 then return result end if
+  direction=[n.fadd(n.fsub(reach.finish[0],state.origin[0]),n.fmul(signedRandom(runtime),10.0)),n.fadd(n.fsub(reach.finish[1],state.origin[1]),n.fmul(signedRandom(runtime),10.0)),n.fadd(n.fsub(reach.finish[2],state.origin[2]),n.fadd(70.0,n.fmul(signedRandom(runtime),10.0)))];direction=normalize(direction)[1]
+  if not emitMovement(runtime,state,direction,400.0) then result.failure=true;return result end if;result.idealViewAngles=moveQMath.vectoangles(direction);result.flags=result.flags|MOVERESULT_MOVEMENTVIEW;result.moveDir=copyVector(direction);return result
+end function
+function funcBobState(runtime,state,reach)
+  if runtime.services==void or runtime.services.funcBobStateFn==void then return void end if;value=runtime.services.funcBobStateFn(runtime.services.context,state,reach)
+  if value==void or value is error or value.start==void or value.finish==void or value.origin==void or value.bottomCenter==void or len(value.start)!=3 or len(value.finish)!=3 or len(value.origin)!=3 or len(value.bottomCenter)!=3 then return void end if;return value
+end function
+function travelFuncBob(runtime,state,reach)
+  result=emptyMoveResult();bob=funcBobState(runtime,state,reach);if bob==void then result.failure=true;result.type=moveRouting.TRAVEL_FUNCBOB;return result end if;swimming=(state.moveFlags&MFL_SWIMMING)!=0
+  bobToEnd=[n.fsub(bob.origin[0],bob.finish[0]),n.fsub(bob.origin[1],bob.finish[1]),n.fsub(bob.origin[2],bob.finish[2])]
+  if bob.onMover then
+    if normalize(bobToEnd)[0]<24.0 then direction=[n.fsub(reach.finish[0],state.origin[0]),n.fsub(reach.finish[1],state.origin[1]),0.0];direction=normalize(direction)[1];barrier=checkBarrierJump(runtime,state,direction,100.0);if not barrier[1] then result.failure=true;return result end if;if not barrier[0] and not emitMovement(runtime,state,direction,400.0) then result.failure=true;return result end if;result.moveDir=copyVector(direction)
+    else direction=[n.fsub(bob.bottomCenter[0],state.origin[0]),n.fsub(bob.bottomCenter[1],state.origin[1]),0.0];normal=normalize(direction);dist=normal[0];direction=normal[1];if dist>10.0 then if dist>100.0 then dist=100.0 end if;if not emitMovement(runtime,state,direction,n.fmul(4.0,dist)) then result.failure=true;return result end if;result.moveDir=copyVector(direction) end if end if;return result
+  end if
+  direction=[n.fsub(reach.finish[0],state.origin[0]),n.fsub(reach.finish[1],state.origin[1]),n.fsub(reach.finish[2],state.origin[2])];dist=normalize(direction)[0]
+  if dist<64.0 then if dist>60.0 then dist=60.0 end if;speed=n.fmul(6.0,dist);barrier=[false,true];if not swimming then barrier=checkBarrierJump(runtime,state,direction,50.0) end if;if not barrier[1] then result.failure=true;return result end if;if (swimming or not barrier[0]) and speed>5.0 then if not emitMovement(runtime,state,direction,speed) then result.failure=true;return result end if end if;result.moveDir=copyVector(direction);if swimming then result.flags=result.flags|MOVERESULT_SWIMVIEW end if;state.reachabilityTime=0.0;return result end if
+  directionToStart=[n.fsub(reach.start[0],state.origin[0]),n.fsub(reach.start[1],state.origin[1]),n.fsub(reach.start[2],state.origin[2])];if not swimming then directionToStart[2]=0.0 end if;normal=normalize(directionToStart);distanceToStart=normal[0];directionToStart=normal[1]
+  if normalize([n.fsub(bob.origin[0],bob.start[0]),n.fsub(bob.origin[1],bob.start[1]),n.fsub(bob.origin[2],bob.start[2])])[0]>16.0 then
+    direction=copyVector(directionToStart);result=checkBlocked(runtime,state,direction,false,result);if distanceToStart>60.0 then distanceToStart=60.0 end if;speed=n.fmul(6.0,distanceToStart)
+    if not swimming then barrier=checkBarrierJump(runtime,state,direction,50.0);if not barrier[1] then result.failure=true;return result end if;if not barrier[0] and speed>5.0 then if not emitMovement(runtime,state,direction,speed) then result.failure=true;return result end if end if end if
+    result.moveDir=copyVector(direction);if swimming then result.flags=result.flags|MOVERESULT_SWIMVIEW end if;result.type=RESULTTYPE_WAITFORFUNCBOBBING;result.flags=result.flags|MOVERESULT_WAITING;return result
+  end if
+  directionToCenter=[n.fsub(bob.bottomCenter[0],state.origin[0]),n.fsub(bob.bottomCenter[1],state.origin[1]),n.fsub(bob.bottomCenter[2],state.origin[2])];if not swimming then directionToCenter[2]=0.0 end if;normal=normalize(directionToCenter);distanceToCenter=normal[0];directionToCenter=normal[1]
+  direction=copyVector(directionToStart);dist=distanceToStart;if distanceToStart<20.0 or distanceToCenter<distanceToStart or dot(directionToStart,directionToCenter)<0.0 then direction=copyVector(directionToCenter);dist=distanceToCenter end if;result=checkBlocked(runtime,state,direction,false,result);if dist>60.0 then dist=60.0 end if;speed=n.fmul(6.0,dist)
+  if not swimming then barrier=checkBarrierJump(runtime,state,direction,50.0);if not barrier[1] then result.failure=true;return result end if;if not barrier[0] and not emitMovement(runtime,state,direction,speed) then result.failure=true;return result end if end if;result.moveDir=copyVector(direction);if swimming then result.flags=result.flags|MOVERESULT_SWIMVIEW end if;return result
+end function
+function finishTravelFuncBob(runtime,state,reach)
+  result=emptyMoveResult();bob=funcBobState(runtime,state,reach);if bob==void then result.failure=true;result.type=moveRouting.TRAVEL_FUNCBOB;return result end if;swimming=(state.moveFlags&MFL_SWIMMING)!=0
+  bobDirection=[n.fsub(bob.origin[0],bob.finish[0]),n.fsub(bob.origin[1],bob.finish[1]),n.fsub(bob.origin[2],bob.finish[2])];bobDistance=normalize(bobDirection)[0]
+  if bobDistance<16.0 then
+    horizontal=[n.fsub(reach.finish[0],state.origin[0]),n.fsub(reach.finish[1],state.origin[1]),n.fsub(reach.finish[2],state.origin[2])];if not swimming then horizontal[2]=0.0 end if;normal=normalize(horizontal);dist=normal[0];if dist>60.0 then dist=60.0 end if;speed=n.fmul(6.0,dist)
+    // Pinned Baseq3 passes bob_origin-bob_end here, not the computed hordir.
+    if speed>5.0 and not emitMovement(runtime,state,bobDirection,speed) then result.failure=true;return result end if;result.moveDir=copyVector(bobDirection);if swimming then result.flags=result.flags|MOVERESULT_SWIMVIEW end if;return result
+  end if
+  direction=[n.fsub(bob.bottomCenter[0],state.origin[0]),n.fsub(bob.bottomCenter[1],state.origin[1]),n.fsub(bob.bottomCenter[2],state.origin[2])];if not swimming then direction[2]=0.0 end if;normal=normalize(direction);dist=normal[0];direction=normal[1]
+  if dist>5.0 then if dist>100.0 then dist=100.0 end if;if not emitMovement(runtime,state,direction,n.fmul(4.0,dist)) then result.failure=true;return result end if;result.moveDir=copyVector(direction) end if;return result
+end function
+function grappleConfig(runtime)
+  if runtime.services!=void and runtime.services.grappleConfigFn!=void then value=runtime.services.grappleConfigFn(runtime.services.context);if value!=void and not (value is error) then return value end if end if;return GrappleConfig(false,WEAPON_GRAPPLE,"grappleon","grappleoff")
+end function
+function grappleState(runtime,state,reach)
+  if (state.moveFlags&MFL_GRAPPLEPULL)!=0 then return 2 end if;if runtime.services!=void and runtime.services.grappleStateFn!=void then return runtime.services.grappleStateFn(runtime.services.context,state,reach) end if;return 0
+end function
+function resetGrapple(runtime,state)
+  kind=0;if runtime.router!=void and state.lastReachNum>0 and state.lastReachNum<len(runtime.router.reaches) then kind=runtime.router.reaches[state.lastReachNum].travelType&moveRouting.TRAVELTYPE_MASK end if
+  if kind!=moveRouting.TRAVEL_GRAPPLEHOOK and ((state.moveFlags&MFL_ACTIVEGRAPPLE)!=0 or state.grappleVisibleTime!=0.0) then config=grappleConfig(runtime);if config.offhand and not emitCommand(runtime,state,config.offCommand) then return false end if;state.moveFlags=state.moveFlags&(~MFL_ACTIVEGRAPPLE);state.grappleVisibleTime=0.0 end if;return true
+end function
+function stopGrapple(runtime,state,config)
+  if config.offhand and not emitCommand(runtime,state,config.offCommand) then return false end if;state.moveFlags=(state.moveFlags&(~MFL_ACTIVEGRAPPLE))|MFL_GRAPPLERESET;state.reachabilityTime=0.0;return true
+end function
+function travelGrapple(runtime,state,reach)
+  result=emptyMoveResult();config=grappleConfig(runtime)
+  if (state.moveFlags&MFL_GRAPPLERESET)!=0 then if config.offhand and not emitCommand(runtime,state,config.offCommand) then result.failure=true;return result end if;state.moveFlags=state.moveFlags&(~MFL_ACTIVEGRAPPLE);return result end if
+  if not config.offhand then result.weapon=config.weaponIndex;result.flags=result.flags|MOVERESULT_MOVEMENTWEAPON end if
+  if (state.moveFlags&MFL_ACTIVEGRAPPLE)!=0 then
+    hookState=grappleState(runtime,state,reach);delta=[n.fsub(reach.finish[0],state.origin[0]),n.fsub(reach.finish[1],state.origin[1]),0.0];dist=distance([0.0,0.0,0.0],delta)
+    if hookState!=0 and dist<48.0 then if n.fsub(state.lastGrappleDist,dist)<1.0 then if not stopGrapple(runtime,state,config) then result.failure=true end if;return result end if
+    else if hookState==0 or (hookState==2 and dist>n.fsub(state.lastGrappleDist,2.0)) then if state.grappleVisibleTime<n.fsub(moveAas.getTime(runtime.aas),0.4) then if not stopGrapple(runtime,state,config) then result.failure=true end if;return result end if
+    else state.grappleVisibleTime=moveAas.getTime(runtime.aas) end if
+    if not config.offhand and not emitAttack(runtime,state) then result.failure=true;return result end if;state.lastGrappleDist=dist;return result
+  end if
+  state.grappleVisibleTime=moveAas.getTime(runtime.aas);direction=[n.fsub(reach.start[0],state.origin[0]),n.fsub(reach.start[1],state.origin[1]),n.fsub(reach.start[2],state.origin[2])];if (state.moveFlags&MFL_SWIMMING)==0 then direction[2]=0.0 end if;normal=normalize(direction);dist=normal[0];direction=normal[1]
+  eye=[n.fadd(state.origin[0],state.viewOffset[0]),n.fadd(state.origin[1],state.viewOffset[1]),n.fadd(state.origin[2],state.viewOffset[2])];viewDirection=[n.fsub(reach.finish[0],eye[0]),n.fsub(reach.finish[1],eye[1]),n.fsub(reach.finish[2],eye[2])];result.idealViewAngles=moveQMath.vectoangles(viewDirection);result.flags=result.flags|MOVERESULT_MOVEMENTVIEW
+  if dist<5.0 and absFloat(angleDiff(result.idealViewAngles[0],state.viewAngles[0]))<2.0 and absFloat(angleDiff(result.idealViewAngles[1],state.viewAngles[1]))<2.0 then
+    if runtime.services==void or runtime.services.grappleTraceFn==void then result.failure=true;return result end if;traceEnd=runtime.services.grappleTraceFn(runtime.services.context,eye,reach.finish,state.entityNum);if traceEnd is error or traceEnd==void or len(traceEnd)!=3 or distance(traceEnd,reach.finish)>16.0 then result.failure=true;return result end if
+    if config.offhand then if not emitCommand(runtime,state,config.onCommand) then result.failure=true;return result end if else if not emitAttack(runtime,state) then result.failure=true;return result end if;state.moveFlags=state.moveFlags|MFL_ACTIVEGRAPPLE;state.lastGrappleDist=999999.0
+  else speed=400.0;if dist<70.0 then speed=n.fmul(4.0,dist) end if;result=checkBlocked(runtime,state,direction,true,result);if not emitMovement(runtime,state,direction,speed) then result.failure=true;return result end if;result.moveDir=copyVector(direction) end if
+  areaNum=moveAas.pointAreaNum(runtime.aas,state.origin);if areaNum!=0 and areaNum!=state.reachAreaNum then state.reachabilityTime=0.0 end if;return result
+end function
 function moveInGoalArea(runtime,state,goal)
   result=emptyMoveResult();direction=[n.fsub(goal.origin[0],state.origin[0]),n.fsub(goal.origin[1],state.origin[1]),0.0];normal=normalize(direction);dist=normal[0];direction=normal[1];if dist>100.0 then dist=100.0 end if;speed=n.fmul(4.0,dist);if speed<10.0 then speed=0.0 end if;result=checkBlocked(runtime,state,direction,true,result)
   if not emitMovement(runtime,state,direction,speed) then result.failure=true else result.moveDir=copyVector(direction) end if;result.travelType=moveRouting.TRAVEL_WALK;state.lastReachNum=0;state.lastAreaNum=0;state.lastGoalAreaNum=goal.areaNum;state.lastOrigin=copyVector(state.origin);return result
@@ -308,11 +506,19 @@ function unsupportedTravel(reach)
 end function
 function moveToGoal(runtime,handle,goal,travelFlags)
   result=emptyMoveResult();if runtime==void or runtime.router==void then result.failure=true;return result end if;state=resources.moveState(runtime.pools,handle);if state==void or goal==void then result.failure=true;return result end if
+  if not resetGrapple(runtime,state) then result.failure=true;return result end if
   state.moveFlags=state.moveFlags&(~(MFL_SWIMMING|MFL_AGAINSTLADDER));if onGround(runtime,state) then state.moveFlags=state.moveFlags|MFL_ONGROUND end if;if isSwimming(runtime,state) then state.moveFlags=state.moveFlags|MFL_SWIMMING end if;if runtime.services.againstLadderFn!=void and runtime.services.againstLadderFn(runtime.services.context,state.origin) then state.moveFlags=state.moveFlags|MFL_AGAINSTLADDER end if
   active=(state.moveFlags&(MFL_ONGROUND|MFL_SWIMMING|MFL_AGAINSTLADDER))!=0
   if active then
     state.areaNum=fuzzyPointReachabilityArea(runtime,state.origin);if state.areaNum==0 then result.failure=true;result.blocked=true;result.type=RESULTTYPE_INSOLIDAREA;return result end if;if state.areaNum==goal.areaNum then return moveInGoalArea(runtime,state,goal) end if
-    reachNum=state.lastReachNum;if reachNum>0 then reach=runtime.router.reaches[reachNum];if (moveRouting.travelFlagForType(reach.travelType)&travelFlags)==0 or state.lastGoalAreaNum!=goal.areaNum or state.reachabilityTime<moveAas.getTime(runtime.aas) or state.lastAreaNum!=state.areaNum then reachNum=0 end if end if
+    reachNum=state.lastReachNum
+    if reachNum>0 then
+      reach=runtime.router.reaches[reachNum];kind=reach.travelType&moveRouting.TRAVELTYPE_MASK
+      if (moveRouting.travelFlagForType(reach.travelType)&travelFlags)==0 then reachNum=0
+      else if kind==moveRouting.TRAVEL_GRAPPLEHOOK then if state.reachabilityTime<moveAas.getTime(runtime.aas) or (state.moveFlags&MFL_GRAPPLERESET)!=0 then reachNum=0 end if
+      else if kind==moveRouting.TRAVEL_ELEVATOR or kind==moveRouting.TRAVEL_FUNCBOB then if state.areaNum==reach.areaNum or state.reachabilityTime<moveAas.getTime(runtime.aas) then reachNum=0 end if
+      else if state.lastGoalAreaNum!=goal.areaNum or state.reachabilityTime<moveAas.getTime(runtime.aas) or state.lastAreaNum!=state.areaNum then reachNum=0 end if
+    end if
     resultFlags=0;if reachNum==0 then selected=bestReachability(runtime,state,goal,travelFlags);reachNum=selected[0];resultFlags=selected[1];state.reachAreaNum=state.areaNum;state.jumpReach=0;state.moveFlags=state.moveFlags&(~MFL_GRAPPLERESET);if reachNum>0 then state.reachabilityTime=n.fadd(moveAas.getTime(runtime.aas),reachabilityTime(runtime.router.reaches[reachNum])) end if end if
     state.lastReachNum=reachNum;state.lastGoalAreaNum=goal.areaNum;state.lastAreaNum=state.areaNum;if reachNum==0 then result.failure=true;result.flags=resultFlags;state.lastOrigin=copyVector(state.origin);return result end if;reach=runtime.router.reaches[reachNum]
     kind=reach.travelType&moveRouting.TRAVELTYPE_MASK
@@ -322,6 +528,15 @@ function moveToGoal(runtime,handle,goal,travelFlags)
     else if kind==moveRouting.TRAVEL_JUMP then result=travelJump(runtime,state,reach)
     else if kind==moveRouting.TRAVEL_LADDER then result=travelLadder(runtime,state,reach)
     else if kind==moveRouting.TRAVEL_WALKOFFLEDGE then result=travelWalkOffLedge(runtime,state,reach)
+    else if kind==moveRouting.TRAVEL_SWIM then result=travelSwim(runtime,state,reach)
+    else if kind==moveRouting.TRAVEL_WATERJUMP then result=travelWaterJump(runtime,state,reach)
+    else if kind==moveRouting.TRAVEL_TELEPORT then result=travelTeleport(runtime,state,reach)
+    else if kind==moveRouting.TRAVEL_ELEVATOR then result=travelElevator(runtime,state,reach)
+    else if kind==moveRouting.TRAVEL_ROCKETJUMP then result=travelWeaponJump(runtime,state,reach,WEAPON_ROCKET_LAUNCHER)
+    else if kind==moveRouting.TRAVEL_BFGJUMP then result=travelWeaponJump(runtime,state,reach,WEAPON_BFG)
+    else if kind==moveRouting.TRAVEL_JUMPPAD then result=travelJumpPad(runtime,state,reach)
+    else if kind==moveRouting.TRAVEL_GRAPPLEHOOK then result=travelGrapple(runtime,state,reach)
+    else if kind==moveRouting.TRAVEL_FUNCBOB then result=travelFuncBob(runtime,state,reach)
     else result=unsupportedTravel(reach) end if;result.travelType=reach.travelType;result.flags=result.flags|resultFlags
   else if state.lastReachNum>0 and state.lastReachNum<len(runtime.router.reaches) then
     reach=runtime.router.reaches[state.lastReachNum];kind=reach.travelType&moveRouting.TRAVELTYPE_MASK
@@ -331,6 +546,14 @@ function moveToGoal(runtime,handle,goal,travelFlags)
     else if kind==moveRouting.TRAVEL_JUMP then result=finishTravelJump(runtime,state,reach)
     else if kind==moveRouting.TRAVEL_LADDER then result=travelLadder(runtime,state,reach)
     else if kind==moveRouting.TRAVEL_WALKOFFLEDGE then result=finishTravelWalkOffLedge(runtime,state,reach)
+    else if kind==moveRouting.TRAVEL_SWIM then result=travelSwim(runtime,state,reach)
+    else if kind==moveRouting.TRAVEL_WATERJUMP then result=finishTravelWaterJump(runtime,state,reach)
+    else if kind==moveRouting.TRAVEL_TELEPORT then result=emptyMoveResult()
+    else if kind==moveRouting.TRAVEL_ELEVATOR then result=finishTravelElevator(runtime,state,reach)
+    else if kind==moveRouting.TRAVEL_ROCKETJUMP or kind==moveRouting.TRAVEL_BFGJUMP then result=finishTravelWeaponJump(runtime,state,reach)
+    else if kind==moveRouting.TRAVEL_JUMPPAD then result=finishTravelJumpPad(runtime,state,reach)
+    else if kind==moveRouting.TRAVEL_GRAPPLEHOOK then result=travelGrapple(runtime,state,reach)
+    else if kind==moveRouting.TRAVEL_FUNCBOB then result=finishTravelFuncBob(runtime,state,reach)
     else result=unsupportedTravel(reach) end if;result.travelType=reach.travelType
   else result.failure=true end if
   if result.blocked then state.reachabilityTime=n.fsub(state.reachabilityTime,n.fmul(10.0,state.thinkTime)) end if;state.lastOrigin=copyVector(state.origin);return result

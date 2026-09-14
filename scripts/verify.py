@@ -56,6 +56,8 @@ def main():
     scripts.append(("test_pc_macros.py",[]))
     scripts.append(("test_aas_format.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_aas_routing.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
+    scripts.append(("test_aas_routing_cache.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
+    scripts.append(("test_aas_routing_tables.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_aas_route_extras.py",[]))
     scripts.append(("test_botlib_lifecycle_runtime.py",[]))
     scripts.append(("test_botlib_aas_syscalls.py",[]))

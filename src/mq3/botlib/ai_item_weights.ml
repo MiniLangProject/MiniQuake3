@@ -24,10 +24,14 @@ struct Weight name separators end struct
 struct WeightConfig filename weights end struct
 struct Reader registry handle end struct
 struct Eval tokens position valid end struct
-struct Runtime context readFn items configs fileReads end struct
+struct Runtime context readFn items configs fileReads reloadCharacters end struct
 
 function fail(message) return error(7570,"AI item weights: "+message) end function
-function create(context,readFn) return Runtime(context,readFn,void,[],0) end function
+function create(context,readFn) return Runtime(context,readFn,void,[],0,false) end function
+// ReadWeightConfig and FreeWeightConfig use the global bot_reloadcharacters
+// libvar in the released botlib. Keep that policy on the shared fuzzy-weight
+// runtime so item and weapon profiles observe the same ownership mode.
+function setReloadCharacters(runtime,value) if runtime!=void then runtime.reloadCharacters=value!=0 end if;return 0 end function
 function botPath(name)
   value=name;while strings.startsWith(value,"/") value=decode(slice(bytes(value),1,len(bytes(value))-1)) end while
   if strings.startsWith(strings.toLowerAscii(value),"botfiles/") then return value end if;return "botfiles/"+value
@@ -198,8 +202,13 @@ function findWeight(config,name) if config==void then return -1 end if;for index
 function itemWeightIndex(config,items) result=[];for each item in items result=result+[findWeight(config,item.classname)] end for;return result end function
 function cached(runtime,filename) for each config in runtime.configs if config.filename==filename then return config end if end for;return void end function
 function weightConfig(runtime,filename)
-  existing=cached(runtime,filename);if existing!=void then return existing end if;if len(runtime.configs)>=MAX_WEIGHT_FILES then return fail("weight cache full") end if
-  config=parseWeightConfig(runtime,filename);if config is error then return config end if;runtime.configs=runtime.configs+[config];return config
+  if not runtime.reloadCharacters then
+    existing=cached(runtime,filename);if existing!=void then return existing end if;if len(runtime.configs)>=MAX_WEIGHT_FILES then return fail("weight cache full") end if
+  end if
+  config=parseWeightConfig(runtime,filename);if config is error then return config end if
+  // With bot_reloadcharacters enabled the original deliberately does not put
+  // the mutable config in weightFileList; FreeWeightConfig owns that instance.
+  if not runtime.reloadCharacters then runtime.configs=runtime.configs+[config] end if;return config
 end function
 function ensureItems(runtime) if runtime.items==void then runtime.items=parseItems(runtime,"items.c") end if;return runtime.items end function
 function loadItemWeights(runtime,statePools,handle,filename)

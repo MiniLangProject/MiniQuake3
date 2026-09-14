@@ -7,6 +7,7 @@ struct Context paths texts reads end struct
 struct Machine data mask end struct
 function require(ok,label) if not ok then return error(7579,"item-weight contract: "+label) end if;return 1 end function
 function readFile(context,path) context.reads=context.reads+1;for index=0 to len(context.paths)-1 if context.paths[index]==path then return context.texts[index] end if end for;return void end function
+function readAny(context,path) context.reads=context.reads+1;return context.texts[0] end function
 function putString(vm,at,text) value=bytes(text);copyBytes(vm.data,at,value,0,len(value));vm.data[at+len(value)]=0 end function
 function invoke(runtime,state,vm,base,op,a,b) n.writeU32(vm.data,base,op);n.writeU32(vm.data,base+4,a);n.writeU32(vm.data,base+8,b);return traps.dispatch(runtime,state,vm,base,op) end function
 
@@ -27,12 +28,24 @@ function main(args)
   state=pools.create();goal=pools.allocGoalState(state,4);checks=checks+require(weights.loadItemWeights(runtime,state,goal,"bots/test_i.c")==0,"load binds profile")
   bound=pools.goalState(state,goal);checks=checks+require(bound.itemWeightConfig!=void and bound.itemWeightIndex==[0,1],"goal state owns config and item index")
   reads=runtime.fileReads;checks=checks+require(weights.loadItemWeights(runtime,state,goal,"bots/test_i.c")==0 and runtime.fileReads==reads,"weight and item caches reused")
+  cachedGoal=pools.allocGoalState(state,5);checks=checks+require(weights.loadItemWeights(runtime,state,cachedGoal,"bots/test_i.c")==0 and pools.goalState(state,cachedGoal).itemWeightConfig==bound.itemWeightConfig,"default mode shares cached mutable config")
+  weights.setReloadCharacters(runtime,1);reloadGoalA=pools.allocGoalState(state,6);reloadGoalB=pools.allocGoalState(state,7);reloadReads=runtime.fileReads
+  checks=checks+require(weights.loadItemWeights(runtime,state,reloadGoalA,"bots/test_i.c")==0 and weights.loadItemWeights(runtime,state,reloadGoalB,"bots/test_i.c")==0 and runtime.fileReads>reloadReads,"reload mode reparses every profile")
+  reloadA=pools.goalState(state,reloadGoalA).itemWeightConfig;reloadB=pools.goalState(state,reloadGoalB).itemWeightConfig;reloadA.weights[0].separators[0].weight=73.0
+  checks=checks+require(reloadB.weights[0].separators[0].weight==20.0 and bound.itemWeightConfig.weights[0].separators[0].weight==20.0,"reload profiles have independent mutation ownership")
+  checks=checks+require(len(runtime.configs)==1,"reload profiles bypass fixed cache")
+  weights.setReloadCharacters(runtime,0);reads=runtime.fileReads;checks=checks+require(weights.loadItemWeights(runtime,state,reloadGoalA,"bots/test_i.c")==0 and runtime.fileReads==reads and pools.goalState(state,reloadGoalA).itemWeightConfig==bound.itemWeightConfig,"disabling reload resumes original cached profile")
   checks=checks+require(weights.loadItemWeights(runtime,state,0,"bots/test_i.c")==weights.BLERR_CANNOTLOADITEMWEIGHTS,"invalid goal returns original error")
   vm=Machine(bytes(256,0),255);putString(vm,32,"bots/test_i.c");checks=checks+require(invoke(runtime,state,vm,192,weights.OP_LOAD_ITEM_WEIGHTS,goal,32)==0,"load trap ABI")
   checks=checks+require(invoke(runtime,state,vm,192,weights.OP_FREE_ITEM_WEIGHTS,goal,0)==0 and bound.itemWeightConfig==void and bound.itemWeightIndex==void,"free trap releases goal bindings")
   checks=checks+require((try(traps.dispatch(runtime,state,vm,192,545))) is error,"dispatcher boundary")
   badContext=Context(["botfiles/bad.c"],["weight \"x\" { switch(2) { case 1 return 3; } }"],0);bad=weights.create(badContext,readFile)
   checks=checks+require((try(weights.parseWeightConfig(bad,"bad.c"))) is error,"malformed fuzzy grammar rejected")
+  any=Context([],["weight \"x\" { return 1; }"],0);capacity=weights.create(any,readAny);filled=true
+  for fileNum=0 to weights.MAX_WEIGHT_FILES-1 loaded=weights.weightConfig(capacity,"profile"+str(fileNum)+".c");if loaded is error then filled=false end if end for
+  checks=checks+require(filled and len(capacity.configs)==weights.MAX_WEIGHT_FILES,"default cache retains exactly 128 profiles")
+  checks=checks+require((try(weights.weightConfig(capacity,"overflow.c"))) is error,"default cache rejects profile 129")
+  weights.setReloadCharacters(capacity,1);checks=checks+require(not (weights.weightConfig(capacity,"overflow.c") is error) and len(capacity.configs)==weights.MAX_WEIGHT_FILES,"reload mode bypasses a full cache")
   weights.shutdown(runtime);checks=checks+require(runtime.items==void and len(runtime.configs)==0,"shutdown clears caches")
   print("PASS: "+str(checks)+" AI item-weight contracts");return 0
 end function

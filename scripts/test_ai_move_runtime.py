@@ -34,14 +34,14 @@ def main() -> int:
         out / "oracle-build.log",
     )
     observed = run([native], out).strip()
-    expected = "PASS: 20 native Baseq3 move-runtime scenarios / 53 exact observations"
+    expected = "PASS: 40 native Baseq3 move-runtime scenarios / 73 exact observations"
     if observed != expected:
         raise RuntimeError(observed)
     mini = run(
         [build("tests/ai_move_runtime_contracts.ml", "ai_move_runtime_contracts.exe"), data],
         ROOT / "build",
     ).strip()
-    expected_mini = "PASS: 43 AI move-runtime contracts opcodes=549,550,553,554,557"
+    expected_mini = "PASS: 73 AI move-runtime contracts opcodes=549,550,553,554,557"
     if mini != expected_mini:
         raise RuntimeError(mini)
     print(observed)

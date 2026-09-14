@@ -1,5 +1,6 @@
 import mq3.botlib.ai_resource_pools as pools
 import mq3.botlib.ai_console_messages as messages
+import mq3.botlib.lifecycle_runtime as botlib
 import mq3.compat.numeric as n
 
 struct Machine data mask end struct
@@ -8,6 +9,7 @@ function putString(vm,at,text) data=bytes(text);copyBytes(vm.data,at,data,0,len(
 function invoke(state,vm,base,values) for index=0 to len(values)-1 n.writeU32(vm.data,base+index*4,values[index]) end for;return messages.dispatch(state,vm,base,values[0]) end function
 function main(args)
   checks=0;resources=pools.create();chat=pools.allocChatState(resources);state=messages.create(resources);messages.setTime(state,12.5)
+  checks=checks+require(state.capacity==1024 and len(state.freeSlots)==1024,"max_messages defaults to released value 1024")
   first=messages.queue(state,chat,0,"alpha");second=messages.queue(state,chat,1,"bravo")
   checks=checks+require(first==1 and second==2 and messages.count(state,chat)==2,"FIFO queue and per-state handles")
   peek=messages.next(state,chat);checks=checks+require(peek.handle==1 and peek.time==12.5 and peek.type==0 and messages.messageText(peek)=="alpha" and messages.count(state,chat)==2,"next peeks without removal")
@@ -15,7 +17,7 @@ function main(args)
   messages.remove(state,chat,999);checks=checks+require(messages.count(state,chat)==1,"unknown handle leaves queue")
   long="";for index=0 to 299 long=long+"x" end for;third=messages.queue(state,chat,7,long);checks=checks+require(third==3 and len(bytes(messages.messageText(messages.next(state,chat))))==5,"existing FIFO remains first")
   messages.remove(state,chat,2);checks=checks+require(len(bytes(messages.messageText(messages.next(state,chat))))==256,"strncpy-compatible 256-byte payload")
-  for index=0 to 254 messages.queue(state,chat,index,"m") end for;checks=checks+require(messages.count(state,chat)==256 and messages.queue(state,chat,9,"full")==0,"global 256-node heap exhaustion")
+  for index=0 to 1022 messages.queue(state,chat,index,"m") end for;checks=checks+require(messages.count(state,chat)==1024 and messages.queue(state,chat,9,"full")==0,"global default heap exhausts at exactly 1024 nodes")
   secondChat=pools.allocChatState(resources);messages.remove(state,chat,3);checks=checks+require(messages.queue(state,secondChat,2,"reuse")==1 and messages.count(state,secondChat)==1,"freed node reused across chat states")
   messages.remove(state,chat,4)
   vm=Machine(bytes(2048,0),2047);base=1900;putString(vm,100,"console text");invoke(state,vm,base,[messages.OP_QUEUE_CONSOLE_MESSAGE,secondChat,4,100]);checks=checks+require(invoke(state,vm,base,[messages.OP_NUM_CONSOLE_MESSAGE,secondChat])==2,"queue and count trap ABI")
@@ -25,6 +27,16 @@ function main(args)
   checks=checks+require(messages.count(state,99)==0 and messages.next(state,99)==void and messages.queue(state,99,0,"x")==0,"invalid chat handle semantics")
   checks=checks+require((try(invoke(state,vm,base,[messages.OP_NEXT_CONSOLE_MESSAGE,secondChat,1900]))) is error and (try(messages.dispatch(state,vm,base,513))) is error,"output span and opcode guards")
   messages.clearChat(state,secondChat);checks=checks+require(messages.count(state,secondChat)==0 and len(state.freeSlots)==2,"chat clear returns its remaining node")
-  messages.shutdown(state);checks=checks+require(len(state.freeSlots)==256,"shutdown restores complete heap")
+  messages.shutdown(state);checks=checks+require(len(state.freeSlots)==1024,"shutdown restores configured heap")
+  configuredPools=pools.create();configuredChat=pools.allocChatState(configuredPools);configured=messages.createWithCapacity(configuredPools,3)
+  checks=checks+require(not (configured is error) and configured.capacity==3 and len(configured.freeSlots)==3,"explicit max_messages capacity")
+  checks=checks+require(messages.queue(configured,configuredChat,1,"a")==1 and messages.queue(configured,configuredChat,1,"b")==2 and messages.queue(configured,configuredChat,1,"c")==3 and messages.queue(configured,configuredChat,1,"full")==0,"custom heap exact exhaustion")
+  checks=checks+require(messages.configure(configured,1)==1 and messages.count(configured,configuredChat)==0 and len(configured.freeSlots)==1,"reconfigure clears queues and rebuilds heap")
+  checks=checks+require(messages.queue(configured,configuredChat,2,"one")==4 and messages.queue(configured,configuredChat,2,"full")==0,"one-node boundary remains usable and preserves chat handle sequence")
+  checks=checks+require((try(messages.configure(configured,0))) is error and configured.capacity==1 and messages.count(configured,configuredChat)==1,"invalid capacity leaves live heap unchanged")
+  messages.shutdown(configured);checks=checks+require(messages.count(configured,configuredChat)==0 and len(configured.freeSlots)==1,"custom-capacity shutdown lifecycle")
+  variables=botlib.create();libvarPools=pools.create();libvarHeap=messages.createWithCapacity(libvarPools,2)
+  checks=checks+require(messages.configureFromBotlib(libvarHeap,variables)==1024 and libvarHeap.capacity==1024,"missing max_messages uses original libvar default")
+  botlib.varSet(variables,"max_messages","3.9");checks=checks+require(messages.configureFromBotlib(libvarHeap,variables)==3 and libvarHeap.capacity==3,"max_messages libvar uses original integer conversion")
   print("PASS: "+str(checks)+" AI console message contracts");return 0
 end function

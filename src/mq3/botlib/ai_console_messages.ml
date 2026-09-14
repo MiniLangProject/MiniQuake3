@@ -4,6 +4,7 @@
 package mq3.botlib.ai_console_messages
 
 import mq3.botlib.ai_resource_pools as resources
+import mq3.botlib.lifecycle_runtime as botlibRuntime
 import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 
@@ -11,15 +12,22 @@ const OP_QUEUE_CONSOLE_MESSAGE=509
 const OP_REMOVE_CONSOLE_MESSAGE=510
 const OP_NEXT_CONSOLE_MESSAGE=511
 const OP_NUM_CONSOLE_MESSAGE=512
-const MAX_CONSOLE_MESSAGES=256
+// be_ai_chat.c obtains this from LibVarValue("max_messages", "1024").
+const DEFAULT_MAX_MESSAGES=1024
+// Compatibility name for callers that used the old fixed-capacity constant.
+const MAX_CONSOLE_MESSAGES=DEFAULT_MAX_MESSAGES
 const MAX_MESSAGE_SIZE=256
 const CONSOLE_MESSAGE_SIZE=276
 
 struct Message slot handle time type data end struct
-struct State pools nodes freeSlots time end struct
+struct State pools nodes freeSlots time capacity end struct
 
-function initialFreeSlots() values=[];for index=0 to MAX_CONSOLE_MESSAGES-1 values=values+[index] end for;return values end function
-function create(pools) return State(pools,array(MAX_CONSOLE_MESSAGES,void),initialFreeSlots(),0.0) end function
+function initialFreeSlots(capacity) values=[];for index=0 to capacity-1 values=values+[index] end for;return values end function
+function createWithCapacity(pools,capacity)
+  if capacity<=0 then return error(7591,"AI console message heap capacity must be positive") end if
+  return State(pools,array(capacity,void),initialFreeSlots(capacity),0.0,capacity)
+end function
+function create(pools) return createWithCapacity(pools,DEFAULT_MAX_MESSAGES) end function
 function setTime(state,time) if state!=void then state.time=time end if;return 0 end function
 function popFree(state)
   if state==void or len(state.freeSlots)==0 then return -1 end if;slot=state.freeSlots[0]
@@ -37,7 +45,7 @@ function queue(state,chatHandle,type,text)
   message=Message(slot,chat.handle,state.time,type,messageData(text));state.nodes[slot]=message;chat.consoleMessages=chat.consoleMessages+[slot];chat.numConsoleMessages=chat.numConsoleMessages+1;return message.handle
 end function
 function freeSlot(state,slot)
-  if slot<0 or slot>=MAX_CONSOLE_MESSAGES or state.nodes[slot]==void then return 0 end if;state.nodes[slot]=void;state.freeSlots=[slot]+state.freeSlots;return 1
+  if slot<0 or slot>=state.capacity or state.nodes[slot]==void then return 0 end if;state.nodes[slot]=void;state.freeSlots=[slot]+state.freeSlots;return 1
 end function
 function remove(state,chatHandle,messageHandle)
   chat=resources.chatState(state.pools,chatHandle);if chat==void then return 0 end if;remaining=[];removed=false
@@ -53,8 +61,20 @@ function count(state,chatHandle) chat=resources.chatState(state.pools,chatHandle
 function clearChat(state,chatHandle)
   chat=resources.chatState(state.pools,chatHandle);if chat==void then return 0 end if;for each slot in chat.consoleMessages freeSlot(state,slot) end for;chat.consoleMessages=[];chat.numConsoleMessages=0;return 0
 end function
+// Mirrors InitConsoleMessageHeap: discard the previous heap and rebuild the
+// free list at the max_messages capacity. Chat queues are cleared first so no
+// state retains a slot from the discarded heap.
+function configure(state,capacity)
+  if state==void then return error(7591,"AI console message heap state missing") end if
+  if capacity<=0 then return error(7591,"AI console message heap capacity must be positive") end if
+  for handle=1 to resources.MAX_CLIENTS clearChat(state,handle) end for
+  state.capacity=capacity;state.nodes=array(capacity,void);state.freeSlots=initialFreeSlots(capacity);return capacity
+end function
+function configureFromBotlib(state,botlib)
+  return configure(state,botlibRuntime.integerVariable(botlib,"max_messages",DEFAULT_MAX_MESSAGES))
+end function
 function shutdown(state)
-  if state==void then return 0 end if;for handle=1 to resources.MAX_CLIENTS clearChat(state,handle) end for;state.nodes=array(MAX_CONSOLE_MESSAGES,void);state.freeSlots=initialFreeSlots();return 0
+  if state==void then return 0 end if;for handle=1 to resources.MAX_CLIENTS clearChat(state,handle) end for;state.nodes=array(state.capacity,void);state.freeSlots=initialFreeSlots(state.capacity);return 0
 end function
 function writeMessage(vm,address,message)
   at=common.pointer(vm,address,CONSOLE_MESSAGE_SIZE,"bot_consolemessage_t output");n.writeU32(vm.data,at,message.handle);n.writeU32(vm.data,at+4,n.floatBits(message.time));n.writeU32(vm.data,at+8,message.type);copyBytes(vm.data,at+12,message.data,0,MAX_MESSAGE_SIZE);n.writeU32(vm.data,at+268,0);n.writeU32(vm.data,at+272,0);return message.handle

@@ -7,17 +7,33 @@
 #include <string.h>
 
 #define MFL_ONGROUND 2
+#define MFL_SWIMMING 4
 #define MFL_WATERJUMP 16
 #define MFL_TELEPORTED 32
 #define MFL_GRAPPLEPULL 64
 #define MFL_WALK 512
+#define MFL_ACTIVEGRAPPLE 128
+#define MFL_GRAPPLERESET 256
 #define TRAVEL_TELEPORT 10
 #define TRAVEL_ROCKETJUMP 12
 #define TRAVEL_BFGJUMP 13
 #define ACTION_NONE 0
 #define ACTION_JUMP 1
 #define ACTION_DELAYEDJUMP 2
+#define ACTION_ATTACK 4
+#define ACTION_MOVEUP 8
+#define ACTION_MOVEFORWARD 16
 #define MOVERESULT_MOVEMENTVIEW 1
+#define MOVERESULT_SWIMVIEW 2
+#define MOVERESULT_WAITING 4
+#define MOVERESULT_MOVEMENTVIEWSET 8
+#define MOVERESULT_MOVEMENTWEAPON 16
+#define RESULTTYPE_ELEVATORUP 1
+#define RESULTTYPE_WAITFORFUNCBOBBING 2
+#define CONTENTS_WATER 32
+#define WEAPON_ROCKET_LAUNCHER 5
+#define WEAPON_BFG 9
+#define WEAPON_GRAPPLE 10
 
 typedef float vec3_t[3];
 typedef struct {
@@ -221,6 +237,135 @@ static void finish_walk_off_ledge(const vec3_t origin,const vec3_t velocity,cons
         movedir[0]=full[0]; movedir[1]=full[1]; movedir[2]=0.0f; (void)normalize(movedir); *speed=400.0f;
     }
 }
+static void teleport_move(const vec3_t origin,const vec3_t start,int moveflags,
+                          bot_moveresult_t *result,float *speed) {
+    float dist;
+    memset(result,0,sizeof(*result)); *speed=0.0f;
+    if ((moveflags&MFL_TELEPORTED)!=0) return;
+    result->movedir[0]=start[0]-origin[0]; result->movedir[1]=start[1]-origin[1]; result->movedir[2]=start[2]-origin[2];
+    if ((moveflags&MFL_SWIMMING)==0) result->movedir[2]=0.0f;
+    dist=normalize(result->movedir); *speed=dist<30.0f ? 200.0f : 400.0f;
+    if ((moveflags&MFL_SWIMMING)!=0) result->flags|=MOVERESULT_SWIMVIEW;
+}
+static void elevator_move(int on_mover,int down,const vec3_t bottom,float maxbarrier,
+                          const vec3_t origin,const vec3_t start,const vec3_t end,
+                          bot_moveresult_t *result,float *speed) {
+    vec3_t first,second; float dist1,dist2,vertical;
+    memset(result,0,sizeof(*result)); *speed=0.0f;
+    if (on_mover) {
+        vertical=fabsf(origin[2]-end[2]);
+        if (vertical<maxbarrier) {
+            result->movedir[0]=end[0]-origin[0]; result->movedir[1]=end[1]-origin[1]; result->movedir[2]=0.0f;
+            (void)normalize(result->movedir); *speed=400.0f;
+        } else {
+            result->movedir[0]=bottom[0]-origin[0]; result->movedir[1]=bottom[1]-origin[1]; result->movedir[2]=0.0f;
+            dist1=normalize(result->movedir); if (dist1>10.0f) { if (dist1>100.0f) dist1=100.0f; *speed=4.0f*dist1; }
+        }
+        return;
+    }
+    result->movedir[0]=end[0]-origin[0]; result->movedir[1]=end[1]-origin[1]; result->movedir[2]=end[2]-origin[2];
+    dist1=sqrtf(result->movedir[0]*result->movedir[0]+result->movedir[1]*result->movedir[1]+result->movedir[2]*result->movedir[2]);
+    if (dist1<64.0f) { if (dist1>60.0f) dist1=60.0f; *speed=6.0f*dist1; return; }
+    first[0]=start[0]-origin[0]; first[1]=start[1]-origin[1]; first[2]=0.0f; dist1=normalize(first);
+    if (!down) {
+        memcpy(result->movedir,first,sizeof(vec3_t)); if (dist1>60.0f) dist1=60.0f; *speed=6.0f*dist1;
+        result->type=RESULTTYPE_ELEVATORUP; result->flags|=MOVERESULT_WAITING; return;
+    }
+    second[0]=bottom[0]-origin[0]; second[1]=bottom[1]-origin[1]; second[2]=0.0f; dist2=normalize(second);
+    if (dist1<20.0f || dist2<dist1 || dot(first,second)<0.0f) { memcpy(result->movedir,second,sizeof(vec3_t)); dist1=dist2; }
+    else memcpy(result->movedir,first,sizeof(vec3_t));
+    if (dist1>60.0f) dist1=60.0f; *speed=6.0f*dist1;
+}
+static void finish_elevator(const vec3_t origin,const vec3_t bottom,const vec3_t end,
+                            vec3_t command_dir,float *speed) {
+    vec3_t bottomdir={bottom[0]-origin[0],bottom[1]-origin[1],bottom[2]-origin[2]};
+    vec3_t topdir={end[0]-origin[0],end[1]-origin[1],end[2]-origin[2]};
+    if (fabsf(bottomdir[2])<fabsf(topdir[2])) memcpy(command_dir,bottomdir,sizeof(vec3_t));
+    else memcpy(command_dir,topdir,sizeof(vec3_t));
+    (void)normalize(command_dir); *speed=300.0f;
+}
+static float angle_diff(float first,float second) {
+    float difference=first-second;
+    if (first>second) { if (difference>180.0f) difference-=360.0f; }
+    else if (difference<-180.0f) difference+=360.0f;
+    return difference;
+}
+static void weapon_jump(const vec3_t origin,const vec3_t start,const vec3_t end,
+                        const vec3_t viewangles,int weapon,bot_moveresult_t *result,
+                        float *speed,int *action) {
+    float dist; vec3_t initial={0,0,0}; int aligned;
+    memset(result,0,sizeof(*result)); *action=ACTION_NONE;
+    result->movedir[0]=start[0]-origin[0]; result->movedir[1]=start[1]-origin[1]; result->movedir[2]=0.0f;
+    dist=normalize(result->movedir);
+    if (weapon==WEAPON_ROCKET_LAUNCHER) { vector_to_angles(result->movedir,initial); initial[0]=90.0f; }
+    aligned=fabsf(angle_diff(initial[0],viewangles[0]))<5.0f && fabsf(angle_diff(initial[1],viewangles[1]))<5.0f;
+    if (dist<5.0f && aligned) {
+        result->movedir[0]=end[0]-origin[0]; result->movedir[1]=end[1]-origin[1]; result->movedir[2]=0.0f;
+        (void)normalize(result->movedir); *action=ACTION_JUMP|ACTION_ATTACK; *speed=800.0f;
+    } else { if (dist>80.0f) dist=80.0f; *speed=5.0f*dist; }
+    vector_to_angles(result->movedir,result->ideal_viewangles); result->ideal_viewangles[0]=90.0f;
+    result->flags|=MOVERESULT_MOVEMENTVIEWSET|MOVERESULT_MOVEMENTWEAPON; result->weapon=weapon;
+}
+static void finish_weapon_jump(const vec3_t origin,const vec3_t velocity,const vec3_t end,
+                               int jump_reach,vec3_t movedir,float *speed) {
+    if (!jump_reach) { memset(movedir,0,sizeof(vec3_t)); *speed=0.0f; return; }
+    if (!air_control(origin,velocity,end,movedir,speed)) {
+        movedir[0]=end[0]-origin[0]; movedir[1]=end[1]-origin[1]; movedir[2]=0.0f; (void)normalize(movedir); *speed=400.0f;
+    }
+}
+static void jump_pad(const vec3_t origin,const vec3_t start,vec3_t movedir,float *speed) {
+    movedir[0]=start[0]-origin[0]; movedir[1]=start[1]-origin[1]; movedir[2]=0.0f; (void)normalize(movedir); *speed=400.0f;
+}
+static void finish_jump_pad(const vec3_t origin,const vec3_t velocity,const vec3_t end,
+                            vec3_t movedir,float *speed) {
+    if (!air_control(origin,velocity,end,movedir,speed)) {
+        movedir[0]=end[0]-origin[0]; movedir[1]=end[1]-origin[1]; movedir[2]=0.0f; (void)normalize(movedir); *speed=400.0f;
+    }
+}
+static void swim_move(const vec3_t origin,const vec3_t start,bot_moveresult_t *result,float *speed) {
+    memset(result,0,sizeof(*result)); result->movedir[0]=start[0]-origin[0];result->movedir[1]=start[1]-origin[1];result->movedir[2]=start[2]-origin[2];
+    (void)normalize(result->movedir); vector_to_angles(result->movedir,result->ideal_viewangles);result->flags|=MOVERESULT_SWIMVIEW;*speed=400.0f;
+}
+static void water_jump(const vec3_t origin,const vec3_t end,float random_value,
+                       bot_moveresult_t *result,int *action) {
+    vec3_t horizontal;float horizontal_distance;
+    memset(result,0,sizeof(*result));result->movedir[0]=end[0]-origin[0];result->movedir[1]=end[1]-origin[1];result->movedir[2]=end[2]-origin[2];
+    horizontal[0]=result->movedir[0];horizontal[1]=result->movedir[1];horizontal[2]=0.0f;horizontal_distance=normalize(horizontal);
+    result->movedir[2]+=15.0f+random_value*40.0f;(void)normalize(result->movedir);vector_to_angles(result->movedir,result->ideal_viewangles);result->flags|=MOVERESULT_MOVEMENTVIEW;
+    *action=ACTION_MOVEFORWARD;if(horizontal_distance<40.0f)*action|=ACTION_MOVEUP;
+}
+static void finish_water_jump(const vec3_t origin,const vec3_t end,int moveflags,int contents,
+                              float random_value,bot_moveresult_t *result,float *speed) {
+    memset(result,0,sizeof(*result));*speed=0.0f;if((moveflags&MFL_WATERJUMP)!=0||contents==0)return;
+    result->movedir[0]=end[0]-origin[0]+random_value*10.0f;result->movedir[1]=end[1]-origin[1]+random_value*10.0f;result->movedir[2]=end[2]-origin[2]+70.0f+random_value*10.0f;
+    (void)normalize(result->movedir);vector_to_angles(result->movedir,result->ideal_viewangles);result->flags|=MOVERESULT_MOVEMENTVIEW;*speed=400.0f;
+}
+static void funcbob_wait(const vec3_t origin,const vec3_t reach_start,bot_moveresult_t *result,float *speed) {
+    float dist;memset(result,0,sizeof(*result));result->movedir[0]=reach_start[0]-origin[0];result->movedir[1]=reach_start[1]-origin[1];result->movedir[2]=0.0f;dist=normalize(result->movedir);if(dist>60.0f)dist=60.0f;*speed=6.0f*dist;result->type=RESULTTYPE_WAITFORFUNCBOBBING;result->flags|=MOVERESULT_WAITING;
+}
+static void finish_funcbob_at_end(const vec3_t bob_origin,const vec3_t bob_end,
+                                  const vec3_t origin,const vec3_t reach_end,
+                                  bot_moveresult_t *result,float *speed) {
+    vec3_t horizontal;float dist;memset(result,0,sizeof(*result));result->movedir[0]=bob_origin[0]-bob_end[0];result->movedir[1]=bob_origin[1]-bob_end[1];result->movedir[2]=bob_origin[2]-bob_end[2];
+    horizontal[0]=reach_end[0]-origin[0];horizontal[1]=reach_end[1]-origin[1];horizontal[2]=0.0f;dist=normalize(horizontal);if(dist>60.0f)dist=60.0f;*speed=6.0f*dist;
+}
+typedef struct {int moveflags;float visible_time,last_distance,reachability_time;} grapple_move_t;
+static void grapple_activate(grapple_move_t *state,const vec3_t origin,const vec3_t start,
+                             const vec3_t end,const vec3_t viewangles,const vec3_t trace_end,
+                             bot_moveresult_t *result,float *speed,int *action) {
+    vec3_t viewdir;float dist;memset(result,0,sizeof(*result));*speed=0.0f;*action=ACTION_NONE;result->weapon=WEAPON_GRAPPLE;result->flags|=MOVERESULT_MOVEMENTWEAPON;
+    result->movedir[0]=start[0]-origin[0];result->movedir[1]=start[1]-origin[1];result->movedir[2]=0.0f;dist=normalize(result->movedir);
+    viewdir[0]=end[0]-origin[0];viewdir[1]=end[1]-origin[1];viewdir[2]=end[2]-origin[2];vector_to_angles(viewdir,result->ideal_viewangles);result->flags|=MOVERESULT_MOVEMENTVIEW;state->visible_time=10.0f;
+    if(dist<5.0f&&fabsf(angle_diff(result->ideal_viewangles[0],viewangles[0]))<2.0f&&fabsf(angle_diff(result->ideal_viewangles[1],viewangles[1]))<2.0f) {
+        vec3_t miss={end[0]-trace_end[0],end[1]-trace_end[1],end[2]-trace_end[2]};if(normalize(miss)<=16.0f){*action=ACTION_ATTACK;state->moveflags|=MFL_ACTIVEGRAPPLE;state->last_distance=999999.0f;}
+    } else {*speed=dist<70.0f?4.0f*dist:400.0f;}
+}
+static int grapple_active_step(grapple_move_t *state,int hook_state,const vec3_t origin,const vec3_t end,float now) {
+    vec3_t delta={end[0]-origin[0],end[1]-origin[1],0.0f};float dist=sqrtf(delta[0]*delta[0]+delta[1]*delta[1]);
+    if(hook_state&&dist<48.0f){if(state->last_distance-dist<1.0f){state->moveflags=(state->moveflags&~MFL_ACTIVEGRAPPLE)|MFL_GRAPPLERESET;state->reachability_time=0.0f;return 0;}}
+    else if(!hook_state||(hook_state==2&&dist>state->last_distance-2.0f)){if(state->visible_time<now-0.4f){state->moveflags=(state->moveflags&~MFL_ACTIVEGRAPPLE)|MFL_GRAPPLERESET;state->reachability_time=0.0f;return 0;}}
+    else state->visible_time=now;state->last_distance=dist;return 1;
+}
 
 int main(void) {
     bot_initmove_t value={{1,2,3},{4,5,6},{7,8,9},17,5,0.05f,2,{10,20,30},MFL_ONGROUND|MFL_WALK};
@@ -317,6 +462,51 @@ int main(void) {
     { vec3_t velocity={0,0,-100}; finish_walk_off_ledge(jump_origin,velocity,jump_end,movedir,&speed); }
     CHECK(speed==65.0f && movedir[0]==1.0f && movedir[2]==0.0f);
 
-    printf("PASS: 20 native Baseq3 move-runtime scenarios / %d exact observations\n",observations);
+    jump_start[0]=0.0f; jump_start[2]=0.0f; jump_origin[0]=1.0f; jump_origin[2]=0.0f;
+    teleport_move(jump_origin,jump_start,MFL_ONGROUND,&move_result,&speed);
+    CHECK(speed==200.0f && move_result.movedir[0]==-1.0f && move_result.flags==0);
+    teleport_move(jump_origin,jump_start,MFL_TELEPORTED,&move_result,&speed);
+    CHECK(speed==0.0f && move_result.movedir[0]==0.0f);
+    jump_origin[0]=0.0f; jump_origin[2]=-10.0f; teleport_move(jump_origin,jump_start,MFL_SWIMMING,&move_result,&speed);
+    CHECK(speed==200.0f && move_result.movedir[2]==1.0f && (move_result.flags&MOVERESULT_SWIMVIEW)!=0);
+
+    { vec3_t bottom={20,0,0}; jump_origin[0]=5.0f; jump_origin[2]=0.0f; jump_end[0]=10.0f; jump_end[2]=0.0f;
+      elevator_move(1,1,bottom,33.0f,jump_origin,jump_start,jump_end,&move_result,&speed);
+      CHECK(speed==400.0f && move_result.movedir[0]==1.0f);
+      jump_origin[0]=0.0f; jump_start[0]=10.0f; jump_end[0]=100.0f;
+      elevator_move(0,0,bottom,33.0f,jump_origin,jump_start,jump_end,&move_result,&speed);
+      CHECK(speed==60.0f && move_result.type==RESULTTYPE_ELEVATORUP && (move_result.flags&MOVERESULT_WAITING)!=0);
+      jump_origin[2]=20.0f; jump_end[2]=100.0f; bottom[0]=0.0f;
+      finish_elevator(jump_origin,bottom,jump_end,movedir,&speed);
+      CHECK(speed==300.0f && movedir[0]==0.0f && movedir[2]==-1.0f); }
+
+    jump_start[0]=0.0f; jump_end[0]=10.0f; jump_end[2]=0.0f; jump_origin[0]=-10.0f; jump_origin[2]=0.0f;
+    { vec3_t view={0,0,0}; weapon_jump(jump_origin,jump_start,jump_end,view,WEAPON_ROCKET_LAUNCHER,&move_result,&speed,&action); }
+    CHECK(speed==50.0f && move_result.weapon==WEAPON_ROCKET_LAUNCHER && move_result.ideal_viewangles[0]==90.0f && move_result.flags==24);
+    jump_origin[0]=-1.0f;
+    { vec3_t view={90,0,0}; weapon_jump(jump_origin,jump_start,jump_end,view,WEAPON_ROCKET_LAUNCHER,&move_result,&speed,&action); }
+    CHECK(speed==800.0f && action==(ACTION_JUMP|ACTION_ATTACK) && move_result.movedir[0]==1.0f);
+    { vec3_t view={0,0,0}; weapon_jump(jump_origin,jump_start,jump_end,view,WEAPON_BFG,&move_result,&speed,&action); }
+    CHECK(speed==800.0f && action==(ACTION_JUMP|ACTION_ATTACK) && move_result.weapon==WEAPON_BFG);
+    jump_origin[0]=5.0f; jump_origin[2]=10.0f;
+    { vec3_t velocity={0,0,-100}; finish_weapon_jump(jump_origin,velocity,jump_end,1,movedir,&speed); }
+    CHECK(speed==65.0f && movedir[0]==1.0f);
+
+    jump_origin[0]=-10.0f; jump_origin[2]=0.0f; jump_start[0]=0.0f;
+    jump_pad(jump_origin,jump_start,movedir,&speed);CHECK(speed==400.0f && movedir[0]==1.0f);
+    jump_origin[0]=5.0f; jump_origin[2]=10.0f;
+    { vec3_t velocity={0,0,-100}; finish_jump_pad(jump_origin,velocity,jump_end,movedir,&speed); }
+    CHECK(speed==65.0f && movedir[0]==1.0f);
+
+    jump_origin[0]=0.0f;jump_origin[2]=0.0f;jump_start[0]=0.0f;jump_start[2]=10.0f;
+    swim_move(jump_origin,jump_start,&move_result,&speed);CHECK(speed==400.0f&&move_result.movedir[2]==1.0f&&move_result.ideal_viewangles[0]==-90.0f&&(move_result.flags&MOVERESULT_SWIMVIEW)!=0);
+    jump_end[0]=10.0f;jump_end[2]=0.0f;water_jump(jump_origin,jump_end,0.0f,&move_result,&action);CHECK(action==(ACTION_MOVEFORWARD|ACTION_MOVEUP)&&fabsf(move_result.movedir[0]-0.5547002f)<0.00001f&&fabsf(move_result.movedir[2]-0.8320503f)<0.00001f);
+    finish_water_jump(jump_origin,jump_end,MFL_WATERJUMP,CONTENTS_WATER,0.0f,&move_result,&speed);CHECK(speed==0.0f&&move_result.flags==0);
+    finish_water_jump(jump_origin,jump_end,0,CONTENTS_WATER,0.0f,&move_result,&speed);CHECK(speed==400.0f&&fabsf(move_result.movedir[2]-0.9899495f)<0.00001f);
+    jump_start[0]=10.0f;jump_start[2]=0.0f;funcbob_wait(jump_origin,jump_start,&move_result,&speed);CHECK(speed==60.0f&&move_result.type==RESULTTYPE_WAITFORFUNCBOBBING&&(move_result.flags&MOVERESULT_WAITING)!=0);
+    {vec3_t zero={0,0,0};finish_funcbob_at_end(zero,zero,jump_origin,jump_end,&move_result,&speed);CHECK(speed==60.0f&&move_result.movedir[0]==0.0f&&move_result.movedir[2]==0.0f);}
+    {grapple_move_t grapple={0,0,0,5};vec3_t grapple_origin={-1,0,0},grapple_start={0,0,0},grapple_end={10,0,0},view={0,0,0};grapple_activate(&grapple,grapple_origin,grapple_start,grapple_end,view,grapple_end,&move_result,&speed,&action);CHECK(action==ACTION_ATTACK&&(grapple.moveflags&MFL_ACTIVEGRAPPLE)!=0&&grapple.last_distance==999999.0f&&move_result.flags==17);grapple.last_distance=10.5f;grapple_origin[0]=0.0f;CHECK(!grapple_active_step(&grapple,1,grapple_origin,grapple_end,10.0f)&&(grapple.moveflags&MFL_GRAPPLERESET)!=0&&grapple.reachability_time==0.0f);}
+
+    printf("PASS: 40 native Baseq3 move-runtime scenarios / %d exact observations\n",observations);
     return 0;
 }

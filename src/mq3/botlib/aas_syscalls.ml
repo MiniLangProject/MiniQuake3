@@ -5,6 +5,7 @@ package mq3.botlib.aas_syscalls
 
 import mq3.botlib.aas_runtime as aasRuntime
 import mq3.botlib.aas_routing as aasRouting
+import mq3.botlib.aas_routing_cache as aasRoutingCache
 import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textNumbers
@@ -78,7 +79,7 @@ function bspInt(entities,vm,base)
   output=common.pointer(vm,common.argument(vm,base,3),4,"AAS BSP int output");if output is error then return output end if;n.writeU32(vm.data,output,textNumbers.atoi(pair[1]));return 1
 end function
 
-function dispatch(runtime,router,entities,vm,base,op)
+function dispatchCached(runtime,router,routeCache,entities,vm,base,op)
   if op==300 then return aasRuntime.enableRoutingArea(runtime,common.argument(vm,base,1),common.argument(vm,base,2)) end if
   if op==301 then return bboxAreas(runtime,vm,common.argument(vm,base,1),common.argument(vm,base,2),common.argument(vm,base,3),common.argument(vm,base,4)) end if
   if op==302 then return areaInfo(runtime,vm,common.argument(vm,base,1),common.argument(vm,base,2)) end if
@@ -92,6 +93,7 @@ function dispatch(runtime,router,entities,vm,base,op)
   if op==313 then return bspFloat(entities,vm,base) end if
   if op==314 then return bspInt(entities,vm,base) end if
   if op==315 then return aasRuntime.areaReachability(runtime,common.argument(vm,base,1)) end if
-  if op==316 then origin=common.readFloatVector(vm,common.argument(vm,base,2),3,"AAS route origin");if origin is error then return origin end if;return aasRouting.areaTravelTimeToGoalArea(router,common.argument(vm,base,1),origin,common.argument(vm,base,3),common.argument(vm,base,4)) end if
+  if op==316 then origin=common.readFloatVector(vm,common.argument(vm,base,2),3,"AAS route origin");if origin is error then return origin end if;if routeCache!=void then return aasRoutingCache.areaTravelTimeToGoalArea(routeCache,common.argument(vm,base,1),origin,common.argument(vm,base,3),common.argument(vm,base,4)) end if;return aasRouting.areaTravelTimeToGoalArea(router,common.argument(vm,base,1),origin,common.argument(vm,base,3),common.argument(vm,base,4)) end if
   return error(7521,"unsupported Baseq3 AAS trap "+str(op))
 end function
+function dispatch(runtime,router,entities,vm,base,op) return dispatchCached(runtime,router,void,entities,vm,base,op) end function
