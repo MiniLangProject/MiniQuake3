@@ -156,6 +156,9 @@ Configstrings, PK3-Dateilisten und den LAN-Serverbrowser; sieben ABI-Datensätze
 sind grün. Weitere 16 Medien-/Spezialtraps decken Sound, Musik, `qtime_t`,
 Cinematics, Shader-Remap, CD-Key, FS-Seek und PB-Kompatibilität mit fünf
 ABI-Datensätzen und 42 Verträgen ab.
+`CG_REAL_TIME`, `CG_SNAPVECTOR` und der separate Renderer-Entitytoken-Parser
+sind zusätzlich mit 17 Helfer-/ABI- und zwölf direkten Dispatcher-Verträgen
+abgenommen.
 
 **Integrationsmeilenstein 2026-09-13:** Die unverändert aus dem festgehaltenen
 1.32b-Quellstand gebauten Module laufen erstmals gemeinsam in MiniLang. `qagame.qvm` besteht
@@ -860,9 +863,15 @@ Clientbewegung voraus. Setup, MapLoad, StartFrame, Entityupdates und Shutdown
 laufen über die originale `qagame.qvm`. Die 400er Elementary Actions sowie die
 Character-, Item-/Weapon-Weight-, Chat- und Handle-Grundlage der 500er Traps
 sind gegen native Referenzen geprüft. `addbot Sarge 3` schließt dadurch den
-originalen `BotAISetupClient` ab und durchläuft drei Bot-Frames. Die nächste
-konkrete Grenze ist Trap 574 `BOTLIB_AI_ADD_AVOID_SPOT`; danach folgen die
-restlichen Goal-, Move-, Weapon- und Chat-State-Maschinen sowie die exakten
+originalen `BotAISetupClient` ab und durchläuft 64 Bot-Frames ohne Trapfehler. Statische und
+gedroppte Level-Items, Goal-Stacks, LTG-/NBG-Auswahl, Avoid-Spots und die
+Retail-Synonyme sowie 138 Match-Templates sind inzwischen live integriert.
+`q3dm1` initialisiert 18 Botlib-Level-Items; auch die erweiterten AAS-Routen-
+Traps 575–577 sowie Move-State-Initialisierung, Reachability-Area, ViewTarget
+und der gewichtete Walk-Pfad von `BOTLIB_AI_MOVE_TO_GOAL` sind live. Der
+deterministische q3dm1-Lauf reicht bis zum regulären `BOTLIB_USER_COMMAND` und
+liefert einen echten Bewegungsbefehl. Es folgen die übrigen Traveltypen und
+Chat-State-Maschinen sowie die exakten
 Cluster-/Portal-Routing-Caches, bis ein Originalbot den Matchablauf selbst steuert.
 
 **Ergebnis:** `src/mq3/botlib/`, `src/mq3/audio/`, Client-/VM-UI, Cinematic-Modul und vollständig

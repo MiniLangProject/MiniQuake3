@@ -28,12 +28,13 @@ function main(args)
   weapon=resourcePools.weaponState(state.context.aiResources,1);chat=resourcePools.chatState(state.context.aiResources,1);move=resourcePools.moveState(state.context.aiResources,1)
   count=count+require(weapon!=void and weapon.weaponWeightConfig!=void and len(weapon.weaponWeightIndex)==32,"retail setup bound Sarge weapon weights to weapon handle one")
   count=count+require(chat!=void and chat.chat!=void and chat.chat.chatName=="sarge" and chat.gender==2 and move!=void,"retail setup initialized chat and move handles")
-  frameResult=0;for frame=1 to 8 if frameResult is error then break end if;frameResult=try(match.runFrame(state,1000+frame*100)) end for
-  count=count+require(frameResult is error and state.context.lastBotTrap==574 and state.context.frames==3 and state.context.botServer.clients[0].lastPacketTime>=1100 and chat.numConsoleMessages>0,"console lifecycle advances bot through three frames to avoid-spot boundary")
+  frameResult=0;for frame=1 to 64 if frameResult is error then break end if;frameResult=try(match.runFrame(state,1000+frame*100)) end for
+  command=state.context.usercmds[0]
+  count=count+require(not (frameResult is error) and state.context.lastBotTrap==211 and state.context.frames==64 and state.context.botServer.clients[0].lastPacketTime>=7400 and command.forwardmove==54 and command.rightmove==114 and command.upmove==0 and command.weapon==1 and chat.numConsoleMessages==0 and move.numAvoidSpots==0 and len(state.context.aiChatMatches.templates)==138 and len(state.context.aiChatStrings.groups)==175,"initialized Sarge runs 64 bot frames and submits a real movement command")
   slots=[];for unused=1 to 7 slots=slots+[match.allocateBot(state.context)] end for
   count=count+require(slots==[1,2,3,4,5,6,7] and match.allocateBot(state.context)==-1,"eight-slot server capacity")
   match.freeBot(state.context,3);replacement=match.allocateBot(state.context)
   count=count+require(replacement==3 and state.context.botAllocations==9 and state.context.botFrees==1,"freed slot is reset and reused")
   stopped=try(match.shutdown(state));count=count+require(not (stopped is error) and resourcePools.goalState(state.context.aiResources,1)==void and resourcePools.weaponState(state.context.aiResources,1)==void and resourcePools.chatState(state.context.aiResources,1)==void and resourcePools.moveState(state.context.aiResources,1)==void,"match shutdown frees allocated AI resource handles")
-  print("PASS: "+str(count)+" retail original-bot spawn contracts setup=complete frames=3 boundary=BOTLIB_AI_ADD_AVOID_SPOT goal=1 weapon=1 chat=1 move=1");return 0
+  print("PASS: "+str(count)+" retail original-bot spawn contracts setup=complete frames=64 running=BOTLIB_USER_COMMAND command=54,114,0 weapon=1 goal=1 chat=1 move=1");return 0
 end function

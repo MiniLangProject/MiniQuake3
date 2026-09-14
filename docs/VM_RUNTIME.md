@@ -67,3 +67,11 @@ The UI media extension adds 16 traps for sound and background music, exact
 36-byte `qtime_t`, cinematics, shader remapping, 16-byte CD keys, file seeking
 and the PunkBuster compatibility no-op. Five direct ABI records and 42 contracts
 pass, and the main UI dispatcher delegates their original opcodes to it.
+
+The cgame host now also implements `CG_REAL_TIME`, `CG_SNAPVECTOR` and
+`CG_GET_ENTITY_TOKEN`. The first writes the 36-byte `qtime_t` ABI and returns
+Unix seconds, the second uses Win32 ties-to-even rounding in place, and the
+third owns an independent renderer entity parser which resets on world load.
+Seventeen helper/ABI contracts and twelve direct dispatcher contracts pass;
+`tm_isdst` is written as the C-defined unknown value `-1` because MiniLang's
+portable time API does not expose the daylight-saving flag.

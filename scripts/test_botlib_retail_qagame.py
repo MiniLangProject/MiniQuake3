@@ -21,7 +21,7 @@ def main():
         ROOT,
         timeout=240,
     ).strip()
-    if not value.startswith("PASS: 11 retail qagame botlib lifecycle contracts"):
+    if not value.startswith("PASS: 12 retail qagame botlib lifecycle contracts"):
         raise RuntimeError(value)
     print(value)
 

@@ -17,12 +17,13 @@ function main(args)
   count=count+require(runtime.mapName=="q3dm1" and runtime.mapLoads==1,"retail BotAILoadMap called BOTLIB_LOAD_MAP")
   count=count+require(len(runtime.variables)>=5,"retail BotInitLibrary populated libvars")
   count=count+require(botlibRuntime.varGet(runtime,"maxclients")=="8" and botlibRuntime.varGet(runtime,"g_gametype")=="0","retail libvar values retained")
+  count=count+require(state.context.aiLevelItems.initialized and state.context.aiLevelItems.numLevelItems>0 and len(state.context.aiLevelItems.levelItems)==state.context.aiLevelItems.numLevelItems,"retail BSP populated the live BotInitLevelItems heap")
   count=count+require(len(state.context.errors)==0,"retail qagame initialized without host errors")
   gameVm.botStartFrame(state.game,1100);gameVm.botStartFrame(state.game,1150);gameVm.botStartFrame(state.game,1200)
   count=count+require(runtime.frames==2 and runtime.time>1.199 and runtime.time<1.201,"BOTAI_START_FRAME drives second-based BotLib frames")
   count=count+require(runtime.entityUpdates>0,"initialized AAS accepts the retail entity feed")
   count=count+require(len(state.context.errors)==0,"retail bot frames emitted no host errors")
-  match.shutdown(state)
+  levelItemCount=state.context.aiLevelItems.numLevelItems;match.shutdown(state)
   count=count+require(not runtime.setup and len(runtime.variables)==0,"retail shutdown releases botlib")
-  print("PASS: "+str(count)+" retail qagame botlib lifecycle contracts frames=2 map=q3dm1");return 0
+  print("PASS: "+str(count)+" retail qagame botlib lifecycle contracts frames=2 map=q3dm1 items="+str(levelItemCount));return 0
 end function

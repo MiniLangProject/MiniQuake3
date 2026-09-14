@@ -23,8 +23,11 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 Der aktuelle [AAS-/Botlib-Stand](docs/AAS_RUNTIME.md) lädt alle 30
 Navigationsdateien aus `pak0.pk3`, beantwortet erste echte 300er AAS-Traps und
 führt die Retail-`qagame.qvm` durch Setup, MapLoad und Botlib-Frames. Die
-vollständigen AI-Zustandsmaschinen und ein selbstständig spielender Originalbot
-sind noch in Arbeit.
+statischen und dynamischen Level-Items, Goal-Stacks, Avoid-Zustände,
+LTG-/NBG-Itemwahl, Waffenwahl, Retail-Synonyme und Chat-Match-Templates laufen bereits im
+Originalbot-Pfad. Sarge durchläuft auf q3dm1 64 originale Bot-Frames ohne
+Trapfehler und reicht einen echten Bewegungs-Usercmd an den Server weiter. Die
+übrigen Traveltypen sowie die restlichen Chat-Zustandsmaschinen sind noch in Arbeit.
 
 ## Bauen und prüfen
 
