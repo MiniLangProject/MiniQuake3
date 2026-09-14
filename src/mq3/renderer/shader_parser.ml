@@ -188,6 +188,11 @@ function parseStage(state)
       image=parser.parseExt(state,false);if image=="" then return error(7127,"missing stage map") end if
       stage.mapMode="repeat";if command=="clampmap" then stage.mapMode="clamp" end if
       stage.images=[image];if lower(image)=="$lightmap" then stage.isLightmap=true end if
+    else if command=="videomap" then
+      image=parser.parseExt(state,false);if image=="" then return error(7127,"missing videoMap cinematic") end if
+      // tr_shader.c keeps the filename on a texture bundle and replaces its
+      // first image with the handle's scratch image after CIN_PlayCinematic.
+      stage.mapMode="video";stage.images=[image]
     else if command=="animmap" then
       speed=parser.parseExt(state,false);if speed=="" then return error(7128,"missing animMap frequency") end if
       stage.animationSpeed=number(speed);images=restOfLine(state)

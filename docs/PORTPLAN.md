@@ -220,19 +220,33 @@ lineare Dreiecksscans. Große native Weltbatches werden in bis zu vier unabhäng
 Viewport-Scanline-Bänder geteilt; 16-fache Farb-/Tiefenpuffer-Parität ist grün und
 der isolierte 1280x720-Rasterbenchmark sank im Median dreier abschließender Läufe
 von 82,15 auf 37,76 ms pro Frame (Faktor 2,16).
-Der integrierte q3dm1-Retail-Lauf misst 40,65 ms Renderzeit pro Frame.
+Der integrierte q3dm1-Retail-Lauf misst aktuell 37,2 ms Renderzeit pro Frame.
+Ein persistenter Transformcache und wiederverwendete Geometrie-/Materialbatches
+senken die vollständige Geometriephase weiter auf 46,5 ms, davon 29 ms
+Expansion und 8,9 ms Scene-Batch-Aufbereitung. Sechs Rasterbänder reduzieren
+große isolierte 1280x720-Batches gegenüber vier Bändern um 37 Prozent bei
+identischem Farb-/Tiefenhash; der integrierte Renderwert liegt bei 37,2 ms.
+Der gemessene Gesamtpfad liegt damit bei rund 103,5 ms pro Frame statt zuvor
+rund 119 ms.
 
 `RegisterFont` lädt das originale bytegenaue `fontInfo_t`-/`glyphInfo_t`-Format,
 und die UI-/cgame-`PC_*`-Traps bieten 63 Parserhandles, Includes, Kommentare,
-Zahlen, Punctuation und Objektmakros. Der RoQ-Pfad parst die Retail-Container,
+Zahlen, Punctuation und Objektmakros. Der Präprozessor wertet außerdem
+verschachtelte `#if/#ifdef/#ifndef/#elif/#else/#endif`-Zweige, `defined`,
+`#undef` und C-artige Ganzzahlausdrücke aus. Funktionsmakros unterstützen
+verschachtelte Argumente, rekursive Ersetzung, `#`-Stringification und
+`##`-Token-Pasting. 24 zusätzliche Verträge sowie die Original-UI- und
+Retail-QVM-Läufe sind grün. Der RoQ-Pfad parst die Retail-Container,
 dekodiert YUV-VQ-Videoframes samt Bewegungskompensation und Baseq3-DPCM-Audio und
 implementiert Play/Run/Draw/Stop/SetExtents mit Loop-, Hold-, Silent- und
 Shader-Flag-Timing. Cinematic-Frames gelangen als RGBA-Texturen in die native
 Präsentation, PCM-Blöcke in die gepufferte Audioausgabe. `video/idlogo.RoQ` läuft
-mit 512x256 Pixeln über alle 210 Frames bis zum exakten EOF. Für vollständige
-1:1-Abnahme bleiben insbesondere Botlib/AAS, komplette Netzwerk-/Dedicated-
-Server-Replays, shadergebundene Cinematic-Texturen, alle Renderer-Sonderpfade und
-eine flüssige Gesamtbildrate offen.
+mit 512x256 Pixeln über alle 210 Frames bis zum exakten EOF. `videoMap`-Shaderstufen
+starten denselben Decoder mit `CIN_LOOP|CIN_SILENT|CIN_SHADER`, binden den
+zugehörigen 256x256-Scratch-Slot und aktualisieren Welt-, Modell- und HUD-Materialien
+ohne ein zusätzliches 2D-Quad. Für vollständige 1:1-Abnahme bleiben insbesondere
+Botlib/AAS, komplette Netzwerk-/Dedicated-Server-Replays, alle Renderer-Sonderpfade
+und eine flüssige Gesamtbildrate offen.
 
 ## 5. BSP-Kollision und gemeinsame Spielphysik exakt übertragen
 

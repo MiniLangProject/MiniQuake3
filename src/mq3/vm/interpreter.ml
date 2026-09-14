@@ -8,6 +8,8 @@ struct VM
   code
   addresses
   starts
+  widths
+  needs
   data
   mask
   programStack
@@ -25,6 +27,12 @@ end function
 function immediateSize(op)
   if op == 3 or op == 4 or op == 8 or op == 9 or (op >= 11 and op <= 26) or op == 34 then return 4 end if
   if op == 33 then return 1 end if
+  return 0
+end function
+
+function stackNeed(op)
+  if op == 5 or op == 7 or op == 10 or (op >= 27 and op <= 29) or op == 33 or (op >= 35 and op <= 37) or op == 49 or op == 53 or op == 58 or op == 59 then return 1 end if
+  if (op >= 11 and op <= 26) or (op >= 30 and op <= 32) or op == 34 or (op >= 38 and op <= 48) or (op >= 50 and op <= 52) or (op >= 54 and op <= 57) then return 2 end if
   return 0
 end function
 
@@ -51,6 +59,8 @@ function load(image, callback)
   code = array(codeLength, 0)
   addresses = array(count, 0)
   starts = bytes(codeLength, 0)
+  widths = bytes(codeLength, 0)
+  needs = bytes(codeLength, 0)
   pc = 0
   for index = 0 to count - 1
     if pc >= codeLength then return fail("truncated instruction") end if
@@ -59,6 +69,8 @@ function load(image, callback)
     width = immediateSize(op)
     if pc + 1 + width > codeLength then return fail("truncated operand") end if
     starts[pc] = 1
+    widths[pc] = width
+    needs[pc] = stackNeed(op)
     addresses[index] = pc
     code[pc] = op
     pc = pc + 1
@@ -82,7 +94,7 @@ function load(image, callback)
   end for
   data = bytes(size, 0)
   copyBytes(data, 0, image, dataOffset, dataLength + litLength)
-  return VM(code, addresses, starts, data, size - 1, size, size - 65536, callback, 0, 10000000, 0)
+  return VM(code, addresses, starts, widths, needs, data, size - 1, size, size - 65536, callback, 0, 10000000, 0)
 end function
 
 function targetAddress(vm, target)
@@ -128,14 +140,12 @@ function call(vm, args)
     if pc < 0 or pc >= len(vm.code) or vm.starts[pc] == 0 then return fail("pc outside instructions") end if
     if ps <= vm.stackBottom or ps + 4 > len(vm.data) or (ps & 3) != 0 then return fail("program stack outside memory") end if
     op = vm.code[pc]
+    width = vm.widths[pc]
+    need = vm.needs[pc]
     pc = pc + 1
     operand = 0
-    width = immediateSize(op)
     if width != 0 then operand = vm.code[pc] end if
     pc = pc + width
-    need = 0
-    if op == 5 or op == 7 or op == 10 or (op >= 27 and op <= 29) or op == 33 or (op >= 35 and op <= 37) or op == 49 or op == 53 or op == 58 or op == 59 then need = 1 end if
-    if (op >= 11 and op <= 26) or (op >= 30 and op <= 32) or op == 34 or (op >= 38 and op <= 48) or (op >= 50 and op <= 52) or (op >= 54 and op <= 57) then need = 2 end if
     if top < need then return fail("operand stack underflow") end if
     a = stack[top]
     b = 0

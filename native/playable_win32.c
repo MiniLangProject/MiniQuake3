@@ -66,6 +66,9 @@ static __declspec(thread) unsigned char rasterVertexColor[3][4];
 /* Compact little-endian command consumed by the batch entry point. */
 #define PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES 128
 #define PLAYABLE_TRIANGLE_BATCH_MAX_COUNT 65536
+#ifndef PLAYABLE_RASTER_MAX_BANDS
+#define PLAYABLE_RASTER_MAX_BANDS 6
+#endif
 
 typedef struct playableTriangleBatchRecord_s {
     int32_t baseTextureSlot;
@@ -1344,13 +1347,16 @@ PLAYABLE_API int playable_window_draw_triangle_batch(const unsigned char *record
     if (required > (SIZE_T)INT_MAX || (SIZE_T)byteCount < required) return 0;
     if (rasterClipMaximumY == INT_MAX && triangleCount >= 256 && surfaceHeight >= 128) {
         SYSTEM_INFO systemInfo;
-        playableTriangleBatchWork work[4];
-        PTP_WORK handles[4] = {0, 0, 0, 0};
+        playableTriangleBatchWork work[PLAYABLE_RASTER_MAX_BANDS];
+        PTP_WORK handles[PLAYABLE_RASTER_MAX_BANDS] = {0};
         int bandCount;
+        int maximumBands = PLAYABLE_RASTER_MAX_BANDS;
         int band;
+        /* Small submissions do not amortize two extra projections/work items. */
+        if ((triangleCount < 1024 || surfaceHeight < 360) && maximumBands > 4) maximumBands = 4;
         GetSystemInfo(&systemInfo);
         bandCount = (int)systemInfo.dwNumberOfProcessors;
-        if (bandCount > 4) bandCount = 4;
+        if (bandCount > maximumBands) bandCount = maximumBands;
         if (bandCount > surfaceHeight) bandCount = surfaceHeight;
         if (bandCount > 1) {
             for (band = 0; band < bandCount; ++band) {
@@ -1465,15 +1471,17 @@ static int drawWorldBatchParallel(const unsigned char *records,
         double halfWidth, double halfHeight, double focal, double nearDistance,
         int minimumX, int maximumX, int minimumY, int maximumY) {
     SYSTEM_INFO systemInfo;
-    playableWorldBatchWork work[4];
-    PTP_WORK handles[4] = {0, 0, 0, 0};
+    playableWorldBatchWork work[PLAYABLE_RASTER_MAX_BANDS];
+    PTP_WORK handles[PLAYABLE_RASTER_MAX_BANDS] = {0};
     int height = maximumY - minimumY + 1;
     int bandCount;
+    int maximumBands = PLAYABLE_RASTER_MAX_BANDS;
     int band;
     if (triangleCount < 256 || height < 128) return 0;
+    if ((triangleCount < 1024 || height < 360) && maximumBands > 4) maximumBands = 4;
     GetSystemInfo(&systemInfo);
     bandCount = (int)systemInfo.dwNumberOfProcessors;
-    if (bandCount > 4) bandCount = 4;
+    if (bandCount > maximumBands) bandCount = maximumBands;
     if (bandCount > height) bandCount = height;
     if (bandCount <= 1) return 0;
     for (band = 0; band < bandCount; ++band) {

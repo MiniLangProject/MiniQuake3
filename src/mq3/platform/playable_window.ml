@@ -110,6 +110,11 @@ function writeBatchVertex(data,offset,point,baseUV,lightmapUV,light)
   writeBatchF32(data,offset+12,baseUV[0]);writeBatchF32(data,offset+16,baseUV[1]);writeBatchF32(data,offset+20,lightmapUV[0]);writeBatchF32(data,offset+24,lightmapUV[1]);writeBatchF32(data,offset+28,light)
   return void
 end function
+function writeBatchPositionVertex(data,offset,position,baseUV,lightmapUV,light)
+  writeBatchF32(data,offset,position[0]);writeBatchF32(data,offset+4,position[1]);writeBatchF32(data,offset+8,position[2])
+  writeBatchF32(data,offset+12,baseUV[0]);writeBatchF32(data,offset+16,baseUV[1]);writeBatchF32(data,offset+20,lightmapUV[0]);writeBatchF32(data,offset+24,lightmapUV[1]);writeBatchF32(data,offset+28,light)
+  return void
+end function
 function writeBatchColor(data,offset,color)
   for channel=0 to 3 value=color[channel];if value<0 then value=0 end if;if value>255 then value=255 end if;data[offset+channel]=value end for;return void
 end function
@@ -122,11 +127,25 @@ function appendTriangleBatchColored(batch,baseSlot,lightmapSlot,a,baseA,lightmap
   batch.count=batch.count+1
   return batch
 end function
+function appendTriangleBatchPositionColored(batch,baseSlot,lightmapSlot,a,baseA,lightmapA,lightA,colorA,b,baseB,lightmapB,lightB,colorB,c,baseC,lightmapC,lightC,colorC,red,green,blue)
+  if batch.count>=batch.capacity then return error(7487,"triangle batch is full") end if
+  offset=batch.count*TRIANGLE_BATCH_RECORD_BYTES
+  writeBatchI32(batch.data,offset,baseSlot);writeBatchI32(batch.data,offset+4,lightmapSlot);writeBatchI32(batch.data,offset+8,red);writeBatchI32(batch.data,offset+12,green);writeBatchI32(batch.data,offset+16,blue)
+  writeBatchPositionVertex(batch.data,offset+20,a,baseA,lightmapA,lightA);writeBatchPositionVertex(batch.data,offset+52,b,baseB,lightmapB,lightB);writeBatchPositionVertex(batch.data,offset+84,c,baseC,lightmapC,lightC)
+  writeBatchColor(batch.data,offset+116,colorA);writeBatchColor(batch.data,offset+120,colorB);writeBatchColor(batch.data,offset+124,colorC)
+  batch.count=batch.count+1;return batch
+end function
 function appendTriangleBatch(batch,baseSlot,lightmapSlot,a,baseA,lightmapA,lightA,b,baseB,lightmapB,lightB,c,baseC,lightmapC,lightC,red,green,blue)
   white=[255,255,255,255];return appendTriangleBatchColored(batch,baseSlot,lightmapSlot,a,baseA,lightmapA,lightA,white,b,baseB,lightmapB,lightB,white,c,baseC,lightmapC,lightC,white,red,green,blue)
 end function
 function appendSingleTextureTriangleColored(batch,textureSlot,a,uvA,lightA,colorA,b,uvB,lightB,colorB,c,uvC,lightC,colorC,red,green,blue)
   zero=[0.0,0.0];return appendTriangleBatchColored(batch,textureSlot,-1,a,uvA,zero,lightA,colorA,b,uvB,zero,lightB,colorB,c,uvC,zero,lightC,colorC,red,green,blue)
+end function
+function appendSingleTextureTrianglePositionColored(batch,textureSlot,a,uvA,lightA,colorA,b,uvB,lightB,colorB,c,uvC,lightC,colorC,red,green,blue)
+  zero=[0.0,0.0];return appendTriangleBatchPositionColored(batch,textureSlot,-1,a,uvA,zero,lightA,colorA,b,uvB,zero,lightB,colorB,c,uvC,zero,lightC,colorC,red,green,blue)
+end function
+function appendSingleTextureTrianglePosition(batch,textureSlot,a,uvA,lightA,b,uvB,lightB,c,uvC,lightC,red,green,blue)
+  white=[255,255,255,255];return appendSingleTextureTrianglePositionColored(batch,textureSlot,a,uvA,lightA,white,b,uvB,lightB,white,c,uvC,lightC,white,red,green,blue)
 end function
 function appendSingleTextureTriangle(batch,textureSlot,a,uvA,lightA,b,uvB,lightB,c,uvC,lightC,red,green,blue)
   zero=[0.0,0.0]

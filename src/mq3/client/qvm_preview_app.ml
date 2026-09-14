@@ -12,6 +12,7 @@ import mq3.renderer.qvm_scene_materials as sceneMaterials
 import mq3.renderer.qvm_scene_batch as sceneBatch
 import mq3.renderer.qvm_viewport as qvmViewport
 import mq3.renderer.qvm_2d_batch as qvm2d
+import mq3.renderer.qvm_video_materials as qvmVideo
 import mq3.renderer.bsp_render_data as renderData
 import mq3.renderer.world_surface_selection as worldSelection
 import mq3.renderer.playable_light_grid as lightGrid
@@ -58,19 +59,22 @@ end function
 function selectionCamera(view)
   angles=qmath.vectoangles(view.refdef.viewaxis[0]);return viewer.camera(view.refdef.vieworg,angles[1],angles[0],0.0,0.0)
 end function
-function prepareViews(views,catalog,archive,assets,kinds,frameCache,grid,profile)
-  result=[]
+function prepareViews(views,catalog,archive,assets,kinds,frameCache,grid,videoManager,previousViews,profile)
+  result=[];viewIndex=0
   for each view in views
     started=0;if profile!=void then started=window.milliseconds() end if
     if grid!=void then ignored=lightGrid.setDynamicLights(grid,view.scene.dlights) end if
-    expanded=sceneGeometry.buildRecordsWithFrameCache(view.scene.entities,view.scene.polys,kinds,assets,view.refdef,8192,frameCache,grid);if expanded is error then return expanded end if
+    previousGeometry=void;if previousViews!=void and viewIndex<len(previousViews) then previousGeometry=previousViews[viewIndex].geometry end if
+    expanded=sceneGeometry.buildRecordsWithFrameCacheReuse(view.scene.entities,view.scene.polys,kinds,assets,view.refdef,8192,frameCache,grid,previousGeometry);if expanded is error then return expanded end if
     afterExpansion=0;if profile!=void then afterExpansion=window.milliseconds();profile.expansion=profile.expansion+afterExpansion-started end if
     refreshed=sceneMaterials.refresh(catalog,archive,expanded.triangles,assets,kinds,QVM_TEXTURE_FIRST_SLOT+MAX_QVM_TEXTURE_SLOTS);if refreshed is error then return refreshed end if
+    boundVideo=qvmVideo.bindCatalog(videoManager,catalog,view.refdef.time);if boundVideo is error then return boundVideo end if
     afterMaterial=0;if profile!=void then afterMaterial=window.milliseconds();profile.material=profile.material+afterMaterial-afterExpansion end if
-    batch=sceneBatch.build(catalog);if batch is error then return batch end if
+    previous=void;if previousViews!=void and viewIndex<len(previousViews) then previous=previousViews[viewIndex].batch end if;batch=void
+    if previous==void then batch=sceneBatch.build(catalog) else batch=sceneBatch.refresh(previous,catalog) end if;if batch is error then return batch end if
     if profile!=void then profile.batch=profile.batch+window.milliseconds()-afterMaterial end if
     target=qvmViewport.prepare(view.refdef,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT);if target is error then return target end if
-    result=result+[PreparedView(view,expanded,batch,target)]
+    result=result+[PreparedView(view,expanded,batch,target)];viewIndex=viewIndex+1
   end for
   return result
 end function
@@ -155,16 +159,19 @@ function runLimited(archive,map,qvmRoot,maxFrames)
   if archive==void or map==void or maxFrames==0 or maxFrames< -1 then return fail("invalid launch input") end if
   state=bootFrame(archive,map,qvmRoot);if state is error then return state end if
   bootedUi=match.bootUi(state);if bootedUi is error then match.shutdown(state);return bootedUi end if
+  videoManager=qvmVideo.create(state.context.cinematics,CINEMATIC_TEXTURE_FIRST_SLOT,cinematics.MAX_HANDLES);if videoManager is error then match.shutdown(state);return videoManager end if
   frameCache=sceneGeometry.createFrameCache(void,256);if frameCache is error then match.shutdown(state);return frameCache end if
   view=largestView(state.context.renderViews);if view==void then match.shutdown(state);return fail("cgame submitted no render view") end if
   qvmCatalog=sceneMaterials.build(archive,[],state.context.assets,state.context.assetKinds,QVM_TEXTURE_FIRST_SLOT,MAX_QVM_TEXTURE_SLOTS);if qvmCatalog is error then match.shutdown(state);return qvmCatalog end if
-  preparedViews=prepareViews(state.context.renderViews,qvmCatalog,archive,state.context.modelAssets,state.context.assetKinds,frameCache,state.context.lightGrid,void);if preparedViews is error then match.shutdown(state);return preparedViews end if
+  preparedViews=prepareViews(state.context.renderViews,qvmCatalog,archive,state.context.modelAssets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,void,void);if preparedViews is error then match.shutdown(state);return preparedViews end if
   hudCatalog=qvm2d.build(archive,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,QVM_2D_TEXTURE_FIRST_SLOT,MAX_QVM_2D_TEXTURE_SLOTS,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT);if hudCatalog is error then match.shutdown(state);return hudCatalog end if
+  boundVideo=qvmVideo.bindCatalog(videoManager,hudCatalog,state.context.now);if boundVideo is error then match.shutdown(state);return boundVideo end if
   soundCatalog=qvmSoundAssets.load(archive,state.context.assets,state.context.assetKinds);if soundCatalog is error then match.shutdown(state);return soundCatalog end if
   audio=qvmPlayback.create(soundCatalog,22050,4096);if audio is error then match.shutdown(state);return audio end if
   applied=qvmPlayback.apply(audio,state.context.soundCommands);if applied is error then match.shutdown(state);return applied end if
   scripts=materials.buildScriptIndex(archive);if scripts is error then match.shutdown(state);return scripts end if
   worldCatalog=materials.loadIndexed(archive,map,256,64,scripts[0],scripts[1]);if worldCatalog is error then match.shutdown(state);return worldCatalog end if
+  boundVideo=qvmVideo.bindCatalog(videoManager,worldCatalog,state.context.now);if boundVideo is error then match.shutdown(state);return boundVideo end if
   nextWorldTextureSlot=64+worldCatalog.textureCount
   skyCatalog=void;availableWorldTextureSlots=QVM_TEXTURE_FIRST_SLOT-nextWorldTextureSlot
   if availableWorldTextureSlots>=playableSky.REQUIRED_TEXTURES then loadedSky=try(playableSky.loadMap(archive,map,scripts[0],nextWorldTextureSlot,availableWorldTextureSlots));if not (loadedSky is error) and loadedSky!=void then skyCatalog=loadedSky;nextWorldTextureSlot=skyCatalog.firstTextureSlot+skyCatalog.textureCount end if end if
@@ -192,7 +199,7 @@ function runLimited(archive,map,qvmRoot,maxFrames)
   uploaded=uploadLightmaps(map);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   audioStarted=audioOutput.init(22050);if audioStarted is error then window.shutdown();match.shutdown(state);return audioStarted end if
   titleState=fpsTitle.create("Original QVM q3dm1",window.milliseconds());window.setTitle(fpsTitle.initialTitle(titleState))
-  frames=0;yaw=state.context.latestSnapshot.playerState.viewangles[1];pitch=state.context.latestSnapshot.playerState.viewangles[0];uploadedQvmTextures=len(qvmCatalog.textures);cinematicAudio=[];simulationMs=0;geometryMs=0;batchMs=0;renderMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
+  frames=0;yaw=state.context.latestSnapshot.playerState.viewangles[1];pitch=state.context.latestSnapshot.playerState.viewangles[0];uploadedQvmTextures=len(qvmCatalog.textures);cinematicAudio=[];simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
   while not window.shouldClose() and (maxFrames<0 or frames<maxFrames)
     window.poll();nativeInput.mouse=window.mouseDelta();menuActive=uiSession.active(ui)
     if not menuActive then yaw=yaw+nativeInput.mouse[0]*0.12;pitch=pitch-nativeInput.mouse[1]*0.12;if pitch>89.0 then pitch=89.0 end if;if pitch< -89.0 then pitch=-89.0 end if end if
@@ -200,17 +207,22 @@ function runLimited(archive,map,qvmRoot,maxFrames)
     if not menuActive then forward=movementAxis(window.keyDown(window.VK_W),window.keyDown(window.VK_S));right=movementAxis(window.keyDown(window.VK_D),window.keyDown(window.VK_A));if window.keyDown(window.VK_SPACE) then up=127 end if;attack=window.keyDown(window.VK_LBUTTON) end if
     startedAt=window.milliseconds();serverTime=simulationStart+startedAt-realStart;steps=0
     while simulationTime+50<=serverTime and steps<8 simulationTime=simulationTime+50;advanced=advanceGameTick(state,simulationTime,yaw,pitch,forward,right,up,attack);if advanced is error then window.shutdown();match.shutdown(state);return advanced end if;steps=steps+1;simulationTicks=simulationTicks+1 end while
+    afterGame=window.milliseconds();gameMs=gameMs+afterGame-startedAt
     drawnFrame=drawFrame(state,serverTime);if drawnFrame is error then window.shutdown();match.shutdown(state);return drawnFrame end if
+    afterCgame=window.milliseconds();cgameMs=cgameMs+afterCgame-afterGame
     uiFrame=uiSession.frame(ui,serverTime);if uiFrame is error then window.shutdown();match.shutdown(state);return uiFrame end if
     cinematicAudio=collectCinematicAudio(state,cinematicAudio)
-    afterSimulation=window.milliseconds();simulationMs=simulationMs+afterSimulation-startedAt
+    afterSimulation=window.milliseconds();uiMs=uiMs+afterSimulation-afterCgame;simulationMs=simulationMs+afterSimulation-startedAt
     view=largestView(state.context.renderViews);if view==void then window.shutdown();match.shutdown(state);return fail("cgame stopped submitting its main view") end if
-    preparedViews=prepareViews(state.context.renderViews,qvmCatalog,archive,state.context.modelAssets,state.context.assetKinds,frameCache,state.context.lightGrid,pipelineProfile);if preparedViews is error then window.shutdown();match.shutdown(state);return preparedViews end if
+    preparedViews=prepareViews(state.context.renderViews,qvmCatalog,archive,state.context.modelAssets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,preparedViews,pipelineProfile);if preparedViews is error then window.shutdown();match.shutdown(state);return preparedViews end if
     if frames%4==0 then worldConfig.horizontalFov=view.refdef.fovX;nextWorld=worldSelection.prepareCached(worldCache,selectionCamera(view),worldConfig);if nextWorld is error then window.shutdown();match.shutdown(state);return nextWorld end if;if not worldSelection.sameFaces(selectedFaces,nextWorld.selection.faceIndexes) then worldPrepared=worldBatch.buildMaterials(nextWorld.renderData,worldCatalog,skyFlags);if worldPrepared is error then window.shutdown();match.shutdown(state);return worldPrepared end if;attached=attachWorldEffects(worldPrepared,nextWorld.renderData,fogCatalog,dlightCatalog,dlightReceiveFlags);if attached is error then window.shutdown();match.shutdown(state);return attached end if;selectedFaces=nextWorld.selection.faceIndexes end if end if
     afterGeometry=window.milliseconds();geometryMs=geometryMs+afterGeometry-afterSimulation
     refreshedHud=qvm2d.refresh(hudCatalog,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT);if refreshedHud is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return refreshedHud end if
+    boundVideo=qvmVideo.bindCatalog(videoManager,hudCatalog,serverTime);if boundVideo is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return boundVideo end if
     applied=qvmPlayback.apply(audio,state.context.soundCommands);if applied is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return applied end if
     if len(qvmCatalog.textures)>uploadedQvmTextures then uploaded=sceneBatch.upload(qvmCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if;uploadedQvmTextures=len(qvmCatalog.textures) end if
+    videoUploads=qvmVideo.update(videoManager,serverTime);if videoUploads is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return videoUploads end if
+    for each videoUpload in videoUploads if not window.uploadTextureNoMip(videoUpload.slot,videoUpload.pixels,videoUpload.width,videoUpload.height) then audioOutput.shutdown();window.shutdown();match.shutdown(state);return fail("could not upload shader cinematic frame") end if end for
     afterBatch=window.milliseconds();batchMs=batchMs+afterBatch-afterGeometry
     window.beginFrame(0,0,0)
     for each preparedView in preparedViews
@@ -234,11 +246,11 @@ function runLimited(archive,map,qvmRoot,maxFrames)
     nextTitle=fpsTitle.frame(titleState,window.milliseconds());if nextTitle is error then window.shutdown();match.shutdown(state);return nextTitle end if;if nextTitle!=void then window.setTitle(nextTitle) end if
     time.sleep(1)
   end while
-  audioOutput.shutdown();releaseCinematics();qvm2d.release(hudCatalog);sceneBatch.release(qvmCatalog);worldBatch.releaseMaterials(worldCatalog);playableSky.release(skyCatalog);playableFog.release(fogCatalog);dynamicLights.release(dlightCatalog);window.shutdown();match.shutdown(state)
+  audioOutput.shutdown();qvmVideo.close(videoManager);releaseCinematics();qvm2d.release(hudCatalog);sceneBatch.release(qvmCatalog);worldBatch.releaseMaterials(worldCatalog);playableSky.release(skyCatalog);playableFog.release(fogCatalog);dynamicLights.release(dlightCatalog);window.shutdown();match.shutdown(state)
   modelCount=0;triangleCount=0;for each preparedView in preparedViews modelCount=modelCount+preparedView.geometry.modelEntities;triangleCount=triangleCount+len(preparedView.geometry.triangles) end for
   worldEffects=0;if skyCatalog!=void then worldEffects=worldEffects+1 end if;if fogCatalog!=void then worldEffects=worldEffects+1 end if;if dlightCatalog!=void then worldEffects=worldEffects+1 end if
   print "QVM preview: views="+str(len(state.context.renderViews))+" selected="+str(view.refdef.width)+"x"+str(view.refdef.height)+" models="+str(modelCount)+" triangles="+str(triangleCount)+" textures="+str(len(qvmCatalog.textures))+" hudQuads="+str(hudCatalog.sourceQuads)+" sounds="+str(len(soundCatalog.clips))+" frames="+str(frames)+" worldEffects="+str(worldEffects)
-  if frames>0 then print "QVM frame profile: simulation="+str(simulationMs/frames)+"ms geometry="+str(geometryMs/frames)+"ms (expand="+str(pipelineProfile.expansion/frames)+" material="+str(pipelineProfile.material/frames)+" sceneBatch="+str(pipelineProfile.batch/frames)+") batch="+str(batchMs/frames)+"ms render="+str(renderMs/frames)+"ms ticks="+str(simulationTicks) end if
+  if frames>0 then print "QVM frame profile: simulation="+str(simulationMs/frames)+"ms (game="+str(gameMs/frames)+" cgame="+str(cgameMs/frames)+" ui="+str(uiMs/frames)+") geometry="+str(geometryMs/frames)+"ms (expand="+str(pipelineProfile.expansion/frames)+" material="+str(pipelineProfile.material/frames)+" sceneBatch="+str(pipelineProfile.batch/frames)+") batch="+str(batchMs/frames)+"ms render="+str(renderMs/frames)+"ms ticks="+str(simulationTicks) end if
   return 0
 end function
 function run(archive,map,qvmRoot) return runLimited(archive,map,qvmRoot,-1) end function

@@ -3,7 +3,6 @@
 package mq3.renderer.playable_world_batch
 import mq3.platform.playable_window as window
 import mq3.platform.playable_multitexture as multitexture
-import mq3.client.playable_viewer as viewer
 import mq3.renderer.playable_materials as materials
 import mq3.compat.transcendental as trans
 import mq3.compat.numeric as numeric
@@ -16,19 +15,18 @@ import mq3.renderer.playable_dynamic_lights as dynamicLights
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
 struct VertexCache slots frames positions normals uvs colors end struct
-struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceLights sourceColors stage deforms normalNoise vertexCache cacheSerial primary depthEqual sort polygonOffset end struct
+struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceLights sourceColors stage textureIndex deforms normalNoise vertexCache cacheSerial primary depthEqual sort polygonOffset end struct
 struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses polygonOffsetPasses fogBatch fogCatalog dlightBatch dlightCatalog end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
 function vertexLight(vertex) return (vertex.color[0]+vertex.color[1]+vertex.color[2])/(255.0*3.0) end function
-function worldPoint(position) return viewer.ScreenPoint(position[0],position[1],position[2]) end function
 function isSky(triangle,flags) return triangle.textureIndex>=0 and triangle.textureIndex<len(flags) and flags[triangle.textureIndex] end function
 function resolvedLightmapSlot(triangle) slot=triangle.lightmapIndex;if slot<0 or slot>=64 then return -1 end if;return slot end function
 function appendResolved(commands,triangle,baseSlot,useLightmap)
   va=triangle.vertices[0];vb=triangle.vertices[1];vc=triangle.vertices[2];lightmapSlot=-1;if useLightmap then lightmapSlot=resolvedLightmapSlot(triangle) end if
   colorA=va.color;colorB=vb.color;colorC=vc.color;if lightmapSlot>=0 then colorA=[255,255,255,255];colorB=colorA;colorC=colorA end if
-  if baseSlot>=0 then return window.appendTriangleBatchColored(commands,baseSlot,lightmapSlot,worldPoint(va.position),va.baseUV,va.lightmapUV,1.0,colorA,worldPoint(vb.position),vb.baseUV,vb.lightmapUV,1.0,colorB,worldPoint(vc.position),vc.baseUV,vc.lightmapUV,1.0,colorC,255,255,255) end if
-  return window.appendSingleTextureTriangleColored(commands,lightmapSlot,worldPoint(va.position),va.lightmapUV,1.0,colorA,worldPoint(vb.position),vb.lightmapUV,1.0,colorB,worldPoint(vc.position),vc.lightmapUV,1.0,colorC,255,255,255)
+  if baseSlot>=0 then return window.appendTriangleBatchPositionColored(commands,baseSlot,lightmapSlot,va.position,va.baseUV,va.lightmapUV,1.0,colorA,vb.position,vb.baseUV,vb.lightmapUV,1.0,colorB,vc.position,vc.baseUV,vc.lightmapUV,1.0,colorC,255,255,255) end if
+  return window.appendSingleTextureTrianglePositionColored(commands,lightmapSlot,va.position,va.lightmapUV,1.0,colorA,vb.position,vb.lightmapUV,1.0,colorB,vc.position,vc.lightmapUV,1.0,colorC,255,255,255)
 end function
 
 // Compatibility builder: byte layout and single submission remain unchanged.
@@ -129,7 +127,7 @@ function buildStagePassTriangles(triangles,material,stage,primary,depthEqual)
   for each triangle in triangles
       if stage.bspLightmap then
         va=triangle.vertices[0];vb=triangle.vertices[1];vc=triangle.vertices[2]
-        commands=window.appendSingleTextureTriangle(commands,resolvedLightmapSlot(triangle),worldPoint(va.position),va.lightmapUV,vertexLight(va),worldPoint(vb.position),vb.lightmapUV,vertexLight(vb),worldPoint(vc.position),vc.lightmapUV,vertexLight(vc),va.color[0],va.color[1],va.color[2])
+        commands=window.appendSingleTextureTrianglePosition(commands,resolvedLightmapSlot(triangle),va.position,va.lightmapUV,vertexLight(va),vb.position,vb.lightmapUV,vertexLight(vb),vc.position,vc.lightmapUV,vertexLight(vc),va.color[0],va.color[1],va.color[2])
         sourceUvs[outputIndex]=[va.lightmapUV,vb.lightmapUV,vc.lightmapUV]
       else
         commands=appendResolved(commands,triangle,stage.slots[0],primary)
@@ -145,7 +143,7 @@ function buildStagePassTriangles(triangles,material,stage,primary,depthEqual)
   end for
   normalNoise=void;if (stage.tcGen=="environment" or stage.alphaGen=="lightingspecular") and hasDeform(material.deforms,"normal") then normalNoise=rendererNoise.create() end if
   vertexCache=void;if not hasDeform(material.deforms,"autosprite") and not hasDeform(material.deforms,"autosprite2") then vertexCache=createVertexCache(sourceIndexes) end if
-  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceLights,sourceColors,stage,material.deforms,normalNoise,vertexCache,0,primary,depthEqual,material.sort,material.polygonOffset)
+  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceLights,sourceColors,stage,material.textureIndex,material.deforms,normalNoise,vertexCache,0,primary,depthEqual,material.sort,material.polygonOffset)
 end function
 function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
   triangles=[];for each triangle in renderData.triangles if triangle.textureIndex==material.textureIndex and not isSky(triangle,flags) then triangles=triangles+[triangle] end if end for
@@ -190,6 +188,57 @@ function buildMaterials(renderData,catalog,skyTextureFlags)
     end for
   end for
   return MaterialBatch(base,passes,len(renderData.triangles),drawable,emitted,skippedSky,animated,modified,blended,generated,alphaTested,turbulentCount,stretchCount,environmentCount,filterCount,destinationAlphaCount,clampedCount,deformedCount,polygonOffsetCount,void,void,void,void)
+end function
+
+// Refreshes a retained material batch when triangle/material topology is
+// unchanged.  The byte buffers and nested source arrays keep their storage;
+// callers fall back to buildMaterials when this returns false.
+function refreshStagePass(pass,renderData)
+  expected=len(pass.sourcePositions);pass.commands=window.resetTriangleBatch(pass.commands);outputIndex=0
+  for each triangle in renderData.triangles
+    if triangle.textureIndex!=pass.textureIndex then continue end if
+    if outputIndex>=expected then return false end if
+    if pass.stage.bspLightmap then
+      va=triangle.vertices[0];vb=triangle.vertices[1];vc=triangle.vertices[2]
+      pass.commands=window.appendSingleTextureTrianglePosition(pass.commands,resolvedLightmapSlot(triangle),va.position,va.lightmapUV,vertexLight(va),vb.position,vb.lightmapUV,vertexLight(vb),vc.position,vc.lightmapUV,vertexLight(vc),va.color[0],va.color[1],va.color[2])
+      pass.sourceUvs[outputIndex][0]=va.lightmapUV;pass.sourceUvs[outputIndex][1]=vb.lightmapUV;pass.sourceUvs[outputIndex][2]=vc.lightmapUV
+    else
+      pass.commands=appendResolved(pass.commands,triangle,pass.stage.slots[0],pass.primary)
+      for corner=0 to 2 pass.sourceUvs[outputIndex][corner]=triangle.vertices[corner].baseUV end for
+    end if
+    if pass.commands is error then return pass.commands end if
+    for corner=0 to 2
+      vertex=triangle.vertices[corner];pass.sourcePositions[outputIndex][corner]=vertex.position;pass.sourceIndexes[outputIndex][corner]=vertex.sourceIndex;pass.sourceDeformUvs[outputIndex][corner]=vertex.baseUV;pass.sourceNormals[outputIndex][corner]=vertex.normal;pass.sourceLights[outputIndex][corner]=vertexLight(vertex);pass.sourceColors[outputIndex][corner]=vertex.color
+    end for
+    outputIndex=outputIndex+1
+  end for
+  return outputIndex==expected
+end function
+function refreshMaterials(batch,renderData,catalog,skyTextureFlags)
+  if batch==void or batch.base==void or batch.passes==void or renderData==void or renderData.triangles==void or catalog==void or catalog.materials==void or skyTextureFlags==void then return fail("missing retained material batch inputs") end if
+  if len(renderData.triangles)>batch.base.capacity then return false end if
+  lookup=materialTable(renderData,catalog);counts=array(len(lookup),0)
+  for each triangle in renderData.triangles if triangle.textureIndex>=0 and triangle.textureIndex<len(counts) and not isSky(triangle,skyTextureFlags) then counts[triangle.textureIndex]=counts[triangle.textureIndex]+1 end if end for
+  expectedPasses=0
+  for each material in catalog.materials
+    if material.textureIndex>=0 and material.textureIndex<len(counts) and counts[material.textureIndex]>0 then for each stage in material.stages if dynamicMaterialStage(material,stage) then expectedPasses=expectedPasses+1 end if end for end if
+  end for
+  if expectedPasses!=len(batch.passes) then return false end if
+  oldBaseCount=batch.base.count;batch.base=window.resetTriangleBatch(batch.base);skippedSky=0;drawable=0
+  for each triangle in renderData.triangles
+    if isSky(triangle,skyTextureFlags) then skippedSky=skippedSky+1;continue end if
+    drawable=drawable+1;material=void;if triangle.textureIndex>=0 and triangle.textureIndex<len(lookup) then material=lookup[triangle.textureIndex] end if
+    if material==void or len(material.stages)==0 then batch.base=appendResolved(batch.base,triangle,-1,true)
+    else if not dynamicMaterialStage(material,material.stages[0]) then batch.base=appendResolved(batch.base,triangle,material.stages[0].slots[0],not materialUsesBspLightmap(material)) end if
+    if batch.base is error then return batch.base end if
+  end for
+  if batch.base.count!=oldBaseCount then return false end if
+  emitted=batch.base.count
+  for each pass in batch.passes
+    if pass.textureIndex<0 or pass.textureIndex>=len(counts) or counts[pass.textureIndex]!=len(pass.sourcePositions) then return false end if
+    refreshed=refreshStagePass(pass,renderData);if refreshed is error then return refreshed end if;if not refreshed then return false end if;emitted=emitted+pass.commands.count
+  end for
+  batch.sourceTriangles=len(renderData.triangles);batch.drawableTriangles=drawable;batch.emittedTriangles=emitted;batch.skippedSky=skippedSky;return batch
 end function
 function attachFog(batch,renderData,catalog)
   if batch==void or renderData==void or catalog==void then return fail("fog attachment requires batch, render data and catalog") end if

@@ -20,6 +20,7 @@ const MAX_HANDLES=16
 
 struct Extents x y width height end struct
 struct Draw handle frame extents dirty shader end struct
+struct Upload handle frame dirty shader end struct
 struct Presentation pixels sourceWidth sourceHeight x y width height dirty end struct
 struct Clip handle path movie decoder chunkIndex status startTime lastTime extents looping hold silent shader dirty audioQueue end struct
 struct State archive handles drawQueue end struct
@@ -79,6 +80,14 @@ end function
 function draw(state,handle)
   if not validHandle(state,handle) then return void end if;clip=state.handles[handle];if clip.status==FMV_EOF or clip.decoder.latest==void then return void end if
   result=Draw(handle,clip.decoder.latest,clip.extents,clip.dirty,clip.shader);clip.dirty=false;state.drawQueue=state.drawQueue+[result];return result
+end function
+// CIN_UploadCinematic consumes the same decoded buffer as CIN_DrawCinematic,
+// but it must not enqueue a screen quad.  Shader stages call run() first and
+// then consume this upload record for their stable scratch texture.
+function upload(state,handle)
+  if not validHandle(state,handle) then return void end if;clip=state.handles[handle]
+  if clip.status==FMV_EOF or clip.decoder.latest==void then return void end if
+  result=Upload(handle,clip.decoder.latest,clip.dirty,clip.shader);clip.dirty=false;return result
 end function
 function presentation(draw,virtualWidth,virtualHeight,targetWidth,targetHeight)
   if draw==void or virtualWidth<=0 or virtualHeight<=0 or targetWidth<=0 or targetHeight<=0 then return fail("invalid presentation dimensions") end if

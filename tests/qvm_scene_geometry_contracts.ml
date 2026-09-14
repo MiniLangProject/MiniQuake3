@@ -1,6 +1,7 @@
 import mq3.renderer.qvm_scene_geometry as geometry
 import mq3.renderer.scene_queue as scene
 import mq3.renderer.surface_md3 as mesh
+import mq3.renderer.playable_light_grid as lightGrid
 import mq3.format.md3 as md3
 import mq3.compat.numeric as n
 
@@ -43,8 +44,17 @@ function main(args)
   count=count+req(len(cached.triangles)==2 and cached.triangles[0].positions[0]==[2.0,2.0,3.0] and cached.triangles[1].positions[0]==[5.0,5.0,6.0],"cached geometry remains entity-local")
   count=count+req(cache.misses==1 and cache.hits==1,"equal model frames share interpolation")
   count=count+req(cached.sourceVertices==6 and cached.vertexTransforms==6,"unique surface vertices transformed once per entity")
+  count=count+req(cache.transformMisses==2 and cache.transformHits==0,"different entity transforms receive distinct cache entries")
   repeated=geometry.buildRecordsWithFrameCache(scene.sceneEntities(cachedState),scene.scenePolys(cachedState),["model"],[fixtureModel()],refdef,8,cache,void);if repeated is error then return repeated end if
   same=len(repeated.triangles)==len(cached.triangles) and repeated.triangles[0].positions==cached.triangles[0].positions and repeated.triangles[0].normals==cached.triangles[0].normals and repeated.triangles[1].positions==cached.triangles[1].positions and repeated.triangles[1].texCoords==cached.triangles[1].texCoords
   count=count+req(cache.misses==1 and cache.hits==3 and same,"persistent cache is bit-identical")
+  count=count+req(cache.transformMisses==2 and cache.transformHits==2,"persistent transform cache reuses both entities")
+  reused=geometry.buildRecordsWithFrameCacheReuse(scene.sceneEntities(cachedState),scene.scenePolys(cachedState),["model"],[fixtureModel()],refdef,8,cache,void,repeated);if reused is error then return reused end if
+  count=count+req(reused==repeated and reused.triangles[0].positions[0]==[2.0,2.0,3.0] and reused.triangles[1].positions[0]==[5.0,5.0,6.0],"retained geometry storage preserves exact model output")
+  transform=geometry.TransformEntry(1,0,0,0,0.0,[0.0,0.0,0.0],refdef.viewaxis,[[0.0,0.0,0.0]],[[1.0,0.0,0.0]],void,void,void,-1,void)
+  sampleA=lightGrid.Sample([10.0,20.0,30.0],[100.0,0.0,0.0],[1.0,0.0,0.0],1.0);colorsA=geometry.cachedVertexColors(transform,sampleA,200);colorsAgain=geometry.cachedVertexColors(transform,sampleA,200)
+  count=count+req(colorsA==[[110,20,30,200]] and colorsAgain==colorsA,"identical entity lighting reuses byte-identical vertex colors")
+  sampleB=lightGrid.Sample([20.0,20.0,30.0],[0.0,0.0,0.0],[1.0,0.0,0.0],1.0);colorsB=geometry.cachedVertexColors(transform,sampleB,201)
+  count=count+req(colorsB==[[20,20,30,201]] and colorsA==[[110,20,30,200]],"changed lighting creates new colors without mutating an older view")
   print "PASS: "+str(count)+" QVM scene geometry contracts";return 0
 end function

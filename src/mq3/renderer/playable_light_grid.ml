@@ -92,3 +92,10 @@ function vertexColor(value,normal)
   for channel=0 to 2 component=numeric.trunc32(value.ambient[channel]+incoming*value.directed[channel]);if component<0 then component=0 end if;if component>255 then component=255 end if;color=color+[component] end for
   return color+[255]
 end function
+function vertexColorInto(value,normal,color)
+  if color==void or len(color)!=4 then return vertexColor(value,normal) end if
+  if value==void or normal==void then color[0]=255;color[1]=255;color[2]=255;color[3]=255;return color end if
+  incoming=qmath.DotProduct(normal,value.direction);if incoming<0.0 then incoming=0.0 end if
+  for channel=0 to 2 component=numeric.trunc32(value.ambient[channel]+incoming*value.directed[channel]);if component<0 then component=0 end if;if component>255 then component=255 end if;color[channel]=component end for
+  color[3]=255;return color
+end function

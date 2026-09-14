@@ -2,6 +2,7 @@ import mq3.renderer.qvm_scene_geometry as geometry
 import mq3.renderer.scene_queue as scene
 import mq3.renderer.surface_md3 as mesh
 import mq3.renderer.view_math as viewMath
+import mq3.renderer.playable_light_grid as lightGrid
 import mq3.format.md3 as md3
 import mq3.compat.numeric as numeric
 import mq3.platform.playable_window as window
@@ -36,6 +37,11 @@ function optimizedPass(state,value,refdef,cache)
   checksum=0.0;for each triangle in built.triangles for corner=0 to 2 checksum=checksum+triangle.positions[corner][0]+triangle.normals[corner][0] end for end for
   return [checksum,built]
 end function
+function retainedPass(state,value,refdef,cache,grid,previous)
+  built=geometry.buildRecordsWithFrameCacheReuse(scene.sceneEntities(state),scene.scenePolys(state),["model"],[value],refdef,8192,cache,grid,previous);if built is error then return built end if
+  checksum=0.0;for each triangle in built.triangles for corner=0 to 2 checksum=checksum+triangle.positions[corner][0]+triangle.normals[corner][0] end for end for
+  return [checksum,built]
+end function
 function main(args)
   value=model();state=scene.create(ENTITIES,0);state.registered=true;state.worldLoaded=true;for index=0 to ENTITIES-1 scene.addEntity(state,0,payload(index*3.0)) end for
   refdef=Refdef([[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]],1);normalTable=geometry.createNormalTable();cache=geometry.createFrameCache(normalTable,16)
@@ -43,7 +49,14 @@ function main(args)
   delta=legacy-optimized[0];if delta<0.0 then delta=0.0-delta end if;if delta>0.001 then return error(7678,"optimized geometry changed output") end if
   started=window.milliseconds();for frame=0 to FRAMES-1 legacy=legacyPass(state,value,normalTable) end for;legacyMs=window.milliseconds()-started
   started=window.milliseconds();for frame=0 to FRAMES-1 optimized=optimizedPass(state,value,refdef,cache) end for;optimizedMs=window.milliseconds()-started
+  retained=optimized;started=window.milliseconds();for frame=0 to FRAMES-1 retained=retainedPass(state,value,refdef,cache,void,retained[1]) end for;retainedMs=window.milliseconds()-started
+  delta=legacy-retained[0];if delta<0.0 then delta=0.0-delta end if;if delta>0.001 then return error(7678,"retained geometry changed output") end if
+  gridData=bytes(64,0);for cell=0 to 7 at=cell*8;gridData[at]=32;gridData[at+1]=48;gridData[at+2]=64;gridData[at+3]=96;gridData[at+4]=80;gridData[at+5]=64 end for
+  grid=lightGrid.Grid(gridData,0,64,[0.0,0.0,0.0],[64.0,64.0,128.0],[0.015625,0.015625,0.0078125],[2,2,2],true,[]);litRefdef=Refdef(refdef.viewaxis,0)
+  litFresh=void;started=window.milliseconds();for frame=0 to FRAMES-1 litFresh=geometry.buildRecordsWithFrameCache(scene.sceneEntities(state),scene.scenePolys(state),["model"],[value],litRefdef,8192,cache,grid) end for;litFreshMs=window.milliseconds()-started
+  litRetained=[0.0,litFresh];started=window.milliseconds();for frame=0 to FRAMES-1 litRetained=retainedPass(state,value,litRefdef,cache,grid,litRetained[1]) end for;litRetainedMs=window.milliseconds()-started
+  if litRetained[1].triangles[0].colors!=litFresh.triangles[0].colors or litRetained[1].triangles[len(litRetained[1].triangles)-1].colors!=litFresh.triangles[len(litFresh.triangles)-1].colors then return error(7678,"retained lit colors changed output") end if
   triangleCount=(SIDE-1)*(SIDE-1)*2*ENTITIES;legacyTransforms=triangleCount*3;optimizedTransforms=SIDE*SIDE*ENTITIES
   if optimized[1].vertexTransforms!=optimizedTransforms or cache.misses!=1 then return error(7678,"optimized work counters changed") end if
-  print("QVM geometry benchmark: triangles="+str(triangleCount)+" frames="+str(FRAMES)+" legacy_ms="+str(legacyMs)+" optimized_ms="+str(optimizedMs)+" legacy_vertex_transforms="+str(legacyTransforms)+" optimized_vertex_transforms="+str(optimizedTransforms)+" cache_hits="+str(cache.hits)+" cache_misses="+str(cache.misses));return 0
+  print("QVM geometry benchmark: triangles="+str(triangleCount)+" frames="+str(FRAMES)+" legacy_ms="+str(legacyMs)+" optimized_ms="+str(optimizedMs)+" retained_ms="+str(retainedMs)+" lit_fresh_ms="+str(litFreshMs)+" lit_retained_ms="+str(litRetainedMs)+" legacy_vertex_transforms="+str(legacyTransforms)+" optimized_vertex_transforms="+str(optimizedTransforms)+" cache_hits="+str(cache.hits)+" cache_misses="+str(cache.misses)+" transform_hits="+str(cache.transformHits)+" transform_misses="+str(cache.transformMisses));return 0
 end function

@@ -21,10 +21,33 @@ function convert(catalog)
   end for
   return renderData.RenderData(triangles,0,len(triangles),0,false,0)
 end function
+function updateConvertedVertex(target,triangle,corner,sourceIndex)
+  target.position=triangle.positions[corner];target.baseUV=triangle.texCoords[corner];target.normal=triangle.normals[corner];target.color=triangle.colors[corner];target.sourceIndex=sourceIndex;return target
+end function
+function refreshGeometry(geometry,catalog)
+  if geometry==void or geometry.triangles==void or len(geometry.triangles)!=len(catalog.triangles) then return false end if
+  triangleIndex=0
+  for each resolved in catalog.triangles
+    target=geometry.triangles[triangleIndex];source=resolved.triangle
+    if target==void or target.vertices==void or len(target.vertices)!=3 then return false end if
+    base=triangleIndex*3
+    for corner=0 to 2 target.vertices[corner]=updateConvertedVertex(target.vertices[corner],source,corner,base+corner) end for
+    target.textureIndex=resolved.materialIndex;target.lightmapIndex= -1;target.fogIndex= -1;target.faceIndex= -1;target.triangleIndex=triangleIndex;triangleIndex=triangleIndex+1
+  end for
+  geometry.triangleCount=len(geometry.triangles);return geometry
+end function
 function build(catalog)
   geometry=convert(catalog);if geometry is error then return geometry end if
   skyFlags=array(len(catalog.materials),false);batch=worldBatch.buildMaterials(geometry,catalog,skyFlags);if batch is error then return batch end if
   return Prepared(geometry,batch)
+end function
+function refresh(prepared,catalog)
+  if prepared==void or catalog==void or catalog.triangles==void then return fail("prepared batch and material catalog are required") end if
+  geometry=refreshGeometry(prepared.geometry,catalog);if geometry is error then return geometry end if
+  if geometry==false then return build(catalog) end if
+  skyFlags=array(len(catalog.materials),false);batch=worldBatch.refreshMaterials(prepared.batch,geometry,catalog,skyFlags);if batch is error then return batch end if
+  if batch==false then return build(catalog) end if
+  prepared.geometry=geometry;prepared.batch=batch;return prepared
 end function
 function upload(catalog) return worldBatch.uploadMaterials(catalog) end function
 function release(catalog) return worldBatch.releaseMaterials(catalog) end function

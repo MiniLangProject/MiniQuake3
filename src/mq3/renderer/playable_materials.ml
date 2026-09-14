@@ -141,7 +141,8 @@ function stageBlend(stage)
   return BLEND_OPAQUE
 end function
 function stageTcGen(stage) if stage.tcGen=="bad" then return "texture" end if;return stage.tcGen end function
-function stageClamp(stage) return stage.mapMode=="clamp" end function
+// RE_UploadCinematic configures scratch images with GL_CLAMP too.
+function stageClamp(stage) return stage.mapMode=="clamp" or stage.mapMode=="video" end function
 
 function stageAlphaTest(stage)
   if stage.alphaFunc==shaderParser.GLS_ATEST_GT_0 then return ALPHA_TEST_GT0 end if
@@ -170,6 +171,13 @@ function usableStage(stage)
 end function
 
 function loadRuntimeStage(archive,stage,nextSlot,endSlot)
+  if stage.mapMode=="video" then
+    if nextSlot>=endSlot or len(stage.images)==0 then return void end if
+    // The real renderer installs tr.scratchImage[videoMapHandle] here.  Keep a
+    // harmless seed texture until qvm_video_materials binds that stable slot.
+    seed=Image(1,1,bytes([0,0,0,255]))
+    return [RuntimeStage(["$video:"+stage.images[0]],[seed],[nextSlot],0.0,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),stageTcGen(stage),stage.rgbGen,stage.rgbWave,stage.alphaGen,stage.alphaWave,stage.constantColor,false,true,stage.depthWrite,stage.depthFunc==shaderParser.GLS_DEPTHFUNC_EQUAL,stage.portalRange,stage.tcGenVectors),nextSlot+1]
+  end if
   names=[];images=[];slots=[];limit=len(stage.images);if limit>MAX_ANIMATION_FRAMES then limit=MAX_ANIMATION_FRAMES end if
   for index=0 to limit-1
     if nextSlot>=endSlot then break end if
@@ -179,6 +187,13 @@ function loadRuntimeStage(archive,stage,nextSlot,endSlot)
   if len(images)==0 then return void end if
   return [RuntimeStage(names,images,slots,stage.animationSpeed,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),stageTcGen(stage),stage.rgbGen,stage.rgbWave,stage.alphaGen,stage.alphaWave,stage.constantColor,false,stageClamp(stage),stage.depthWrite,stage.depthFunc==shaderParser.GLS_DEPTHFUNC_EQUAL,stage.portalRange,stage.tcGenVectors),nextSlot]
 end function
+
+function videoName(stage)
+  if stage==void or len(stage.imageNames)==0 then return "" end if
+  name=stage.imageNames[0];if not strings.startsWith(name,"$video:") then return "" end if
+  data=bytes(name);return decode(slice(data,7,len(data)-7))
+end function
+function isVideoStage(stage) return videoName(stage)!="" end function
 
 function lightmapRuntimeStage(stage)
   return RuntimeStage([],[],[],0.0,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),"lightmap",stage.rgbGen,stage.rgbWave,stage.alphaGen,stage.alphaWave,stage.constantColor,true,false,stage.depthWrite,stage.depthFunc==shaderParser.GLS_DEPTHFUNC_EQUAL,stage.portalRange,stage.tcGenVectors)
