@@ -42,6 +42,24 @@ QVM-Match bestanden mit neun Prediction-Traces, 2.345 texturierten Dreiecken,
 301 Cgame-Assets und 26 Sounds. Die vollständige 283-Gate-Auswahl wurde für
 diesen inkrementellen Block nicht erneut ausgeführt.
 
+Der anschließende Block schließt fünf weitere Originaldateien. `cg_weapons.c`
+deckt Registrierung, Auswahl, View-/Player-Weapon, Mündungsfeuer, Trails,
+Hülsen, Treffer, Tracer und das Shotgun-Muster ab; die produktiv dekodierten
+Retail-Ereignisse speisen diesen nativen, nicht doppelt dispatchenden Spiegel.
+`cg_view.c` führt für jeden Retail-Snapshot die originale Kamera-, Bobbing-,
+Damage-, FOV-, Zoom-, Audio- und `CG_DrawActiveFrame`-Reihenfolge aus.
+`cg_drawtools.c` enthält die 640x480-Skalierung, Quake-Farbcodes, Bilder,
+Rahmen, Kachelung sowie feste und proportionale Fonts. `tr_animation.c`
+implementiert vollständige MD4-Oberflächenabgabe, 3x4-Bonematrix-Interpolation
+und gewichtetes Skinning; `ui_credits.c` liefert das komplette Credits-Menü.
+35 Datensätze aus unveränderten C-Funktionen und 141 native Verträge bestehen.
+Der danach frisch gebaute Hauptstand hat SHA-256
+`4c33d861d9b88458d1ea83e997806f77ed1e6058ae73f5839d2d8ac85c5af640`;
+das Retail-QVM-Match bleibt mit neun Prediction-Traces, 2.345 texturierten
+Dreiecken, 301 Cgame-Assets und 26 Sounds grün. Das Inventar zählt nun 26
+vollständig portierte Originaldateien, 118 partielle und 191 noch nicht
+begonnene Dateien im Runtime-/Plattformumfang.
+
 Dieser Vollstand enthält auch die produktive
 `AAS_BestReachableFromJumpPadArea`-Platzierung: benannte Map-Boots laden die
 passende Retail-AAS, `trigger_push`-Ballistik wird 30 Frames gegen die Item-BBox

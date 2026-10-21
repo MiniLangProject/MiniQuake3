@@ -49,7 +49,7 @@ Vollstand hatte SHA-256
 `46e3c7a61bab2830c5a315c234e2c166f10ee7624d6314a060bb7f2f0969ea12`;
 der anschließend mit den unten genannten nativen Cgame-Ports frisch gebaute
 `build/MiniQuake3.exe` hat SHA-256
-`2a33d57910931ebba72ded6de08d3f2837e651bbf4e78c4b2a24c5915e21f09b`.
+`4c33d861d9b88458d1ea83e997806f77ed1e6058ae73f5839d2d8ac85c5af640`.
 Seit diesem Gesamtlauf bestehen zusätzlich die neuen `cg_event.c`-,
 `cg_playerstate.c`- und `cg_predict.c`-Differentialgates mit 29 unveränderten
 C-Datensätzen und 139 nativen Verträgen. Jetzt sind auch `cg_effects.c`,
@@ -60,6 +60,14 @@ und den Singleplayer-Arenastart. Der Retail-Match führt die neuen Cgame-Pfade
 als nicht doppelt ausgebenden Observer produktiv mit. Das Retail-QVM-Gate bleibt mit
 neun produktiven Prediction-Traces, 2.345 texturierten Dreiecken und 26 Sounds
 grün; alle neuen Fokustests sind bereits in `scripts/verify.py` aufgenommen.
+Der nächste native Block portiert zusätzlich `cg_weapons.c`, `cg_view.c`,
+`cg_drawtools.c`, `tr_animation.c` und `ui_credits.c` vollständig. Waffenwahl,
+Treffer, Trails, Hülsen und Shotgun-Muster werden aus den produktiv dekodierten
+Cgame-Ereignissen gespiegelt; jeder Retail-Snapshot durchläuft außerdem die
+vollständige native Kamera-/FOV-/Frame-Reihenfolge. Zeichen-, Bild- und
+Farbhilfen, MD4-Bonematrix-Skinning und das Credits-Menü sind mit 35
+unveränderten C-Differenzdatensätzen und 141 MiniLang-Verträgen belegt. Der
+Quellabgleich weist damit 26 vollständige native Originaldateien aus.
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 

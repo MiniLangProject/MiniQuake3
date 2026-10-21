@@ -3954,10 +3954,244 @@
         "UI_ProportionalSizeScale",
         "UI_ProportionalStringWidth"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_AdjustFrom640",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.adjustFrom640",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_ColorForHealth",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.colorForHealth",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_DrawBigString",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawBigString",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_DrawBigStringColor",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawBigStringColor",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_DrawChar",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawChar",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_DrawPic",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawPic",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_DrawRect",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawRect",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_DrawSides",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawSides",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_DrawSmallString",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawSmallString",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_DrawSmallStringColor",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawSmallStringColor",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_DrawStringExt",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawStringExt",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_DrawStrlen",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawStrlen",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_DrawTopBottom",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawTopBottom",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_FadeColor",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.fadeColor",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_FillRect",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.fillRect",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_GetColorForHealth",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.getColorForHealth",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_TeamColor",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.teamColor",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_TileClear",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.tileClear",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "CG_TileClearBox",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.tileClearBox",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "UI_DrawBannerString",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawBannerString",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "UI_DrawBannerString2",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawBannerString2",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "UI_DrawProportionalString",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawProportionalString",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "UI_DrawProportionalString2",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.drawProportionalString2",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "UI_ProportionalSizeScale",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.proportionalSizeScale",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        },
+        {
+          "original": "UI_ProportionalStringWidth",
+          "target_files": [
+            "src/mq3/client/cgame_drawtools.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_drawtools.proportionalStringWidth",
+          "status": "tested_exact",
+          "scope": "Complete 640x480 scaling, pictures, borders, tiled clears, fades, Quake color codes, fixed/proportional fonts and team/health colors. Fifteen unchanged-C records and 35 native contracts pass; draw boundaries suppress duplicate retail-QVM dispatch."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_drawtools.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_drawtools.py",
+        "tests/reference/cgame_drawtools_oracle.c",
+        "tests/cgame_drawtools_oracle.ml",
+        "tests/cgame_drawtools_contracts.ml"
+      ]
     },
     {
       "source": "code/cgame/cg_effects.c",
@@ -5579,10 +5813,200 @@
         "CG_ZoomDown_f",
         "CG_ZoomUp_f"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_AddBufferedSound",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.addBufferedSound",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_AddTestModel",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.addTestModel",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_CalcFov",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.calcFov",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_CalcViewValues",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.calcViewValues",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_CalcVrect",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.calcVrect",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_DamageBlendBlob",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.damageBlendBlob",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_DrawActiveFrame",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.drawActiveFrame",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_OffsetFirstPersonView",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.offsetFirstPersonView",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_OffsetThirdPersonView",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.offsetThirdPersonView",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_PlayBufferedSounds",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.playBufferedSounds",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_PowerupTimerSounds",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.powerupTimerSounds",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_StepOffset",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.stepOffset",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_TestGun_f",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.testGun",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_TestModelNextFrame_f",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.testModelNextFrame",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_TestModelNextSkin_f",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.testModelNextSkin",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_TestModelPrevFrame_f",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.testModelPrevFrame",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_TestModelPrevSkin_f",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.testModelPrevSkin",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_TestModel_f",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.testModel",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_ZoomDown_f",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.zoomDown",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        },
+        {
+          "original": "CG_ZoomUp_f",
+          "target_files": [
+            "src/mq3/client/cgame_view.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_view.zoomUp",
+          "status": "tested_exact",
+          "scope": "Complete camera, bobbing, damage kick, third-person collision, FOV/zoom, model tests, powerup/buffered sound and active-frame ordering. Seven unchanged-C records and 41 native contracts pass; every retail snapshot runs through the non-dispatching native view observer."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_view.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_view.py",
+        "tests/reference/cgame_view_oracle.c",
+        "tests/cgame_view_oracle.ml",
+        "tests/cgame_view_contracts.ml",
+        "scripts/test_retail_qvm_match.py"
+      ]
     },
     {
       "source": "code/cgame/cg_weapons.c",
@@ -5625,10 +6049,335 @@
         "strike",
         "weapon"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_AddViewWeapon",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.addViewWeapon",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_AddWeaponWithPowerups",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.addWeaponWithPowerups",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_Bullet",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.bullet",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_CalcMuzzlePoint",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.calcMuzzlePoint",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_CalculateWeaponPosition",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.calculateWeaponPosition",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_DrawWeaponSelect",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.drawWeaponSelect",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_FireWeapon",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.fireWeapon",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_GrappleTrail",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.grappleTrail",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_GrenadeTrail",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.grenadeTrail",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_LightningBolt",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.lightningBolt",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_MachineGunEjectBrass",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.machineGunEjectBrass",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_MachinegunSpinAngle",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.machinegunSpinAngle",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_MapTorsoToWeaponFrame",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.mapTorsoToWeaponFrame",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_MissileHitPlayer",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.missileHitPlayer",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_MissileHitWall",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.missileHitWall",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_NailTrail",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.nailTrail",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_NailgunEjectBrass",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.nailgunEjectBrass",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_NextWeapon_f",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.nextWeapon",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_OutOfAmmoChange",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.outOfAmmoChange",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_PlasmaTrail",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.plasmaTrail",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_PrevWeapon_f",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.prevWeapon",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_RailTrail",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.railTrail",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_RegisterItemVisuals",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.registerItemVisuals",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_RegisterWeapon",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.registerWeapon",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_RocketTrail",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.rocketTrail",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_ShotgunEjectBrass",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.shotgunEjectBrass",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_ShotgunFire",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.shotgunFire",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_ShotgunPattern",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.shotgunPattern",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_ShotgunPellet",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.shotgunPellet",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_SpawnRailTrail",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.spawnRailTrail",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_Tracer",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.tracer",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_WeaponSelectable",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.weaponSelectable",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "CG_Weapon_f",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.selectWeapon",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "strike",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.strike",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        },
+        {
+          "original": "weapon",
+          "target_files": [
+            "src/mq3/client/cgame_weapons.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_weapons.weapon",
+          "status": "tested_exact",
+          "scope": "Complete registration, weapon selection, trails, brass, muzzle effects, view/player weapons, hits, shotgun pattern, tracer and powerups. Nine unchanged-C records and 51 native contracts pass; decoded retail events run through suppressible native weapon boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_weapons.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_weapons.py",
+        "tests/reference/cgame_weapons_oracle.c",
+        "tests/cgame_weapons_oracle.ml",
+        "tests/cgame_weapons_contracts.ml",
+        "scripts/test_retail_qvm_match.py"
+      ]
     },
     {
       "source": "code/cgame/cgame.bat",
@@ -16353,10 +17102,45 @@
         "UI_CreditMenu_Draw",
         "UI_CreditMenu_Key"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_CreditMenu",
+          "target_files": [
+            "src/mq3/client/ui_credits.ml"
+          ],
+          "target_symbol": "mq3.client.ui_credits.open",
+          "status": "tested_exact",
+          "scope": "Complete fullscreen credits menu, exact twenty-line layout and integer y progression, character filtering and appended quit command. Three unchanged-C records and seven native contracts pass."
+        },
+        {
+          "original": "UI_CreditMenu_Draw",
+          "target_files": [
+            "src/mq3/client/ui_credits.ml"
+          ],
+          "target_symbol": "mq3.client.ui_credits.draw",
+          "status": "tested_exact",
+          "scope": "Complete fullscreen credits menu, exact twenty-line layout and integer y progression, character filtering and appended quit command. Three unchanged-C records and seven native contracts pass."
+        },
+        {
+          "original": "UI_CreditMenu_Key",
+          "target_files": [
+            "src/mq3/client/ui_credits.ml"
+          ],
+          "target_symbol": "mq3.client.ui_credits.key",
+          "status": "tested_exact",
+          "scope": "Complete fullscreen credits menu, exact twenty-line layout and integer y progression, character filtering and appended quit command. Three unchanged-C records and seven native contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_credits.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_credits.py",
+        "tests/reference/ui_credits_oracle.c",
+        "tests/ui_credits_oracle.ml",
+        "tests/ui_credits_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_demo2.c",
@@ -19415,10 +20199,36 @@
         "RB_SurfaceAnim",
         "R_AddAnimSurfaces"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "R_AddAnimSurfaces",
+          "target_files": [
+            "src/mq3/renderer/md4_animation.ml"
+          ],
+          "target_symbol": "mq3.renderer.md4_animation.addAnimSurfaces",
+          "status": "tested_exact",
+          "scope": "Submits every MD4 surface with its shader, fog zero and no dlight map."
+        },
+        {
+          "original": "RB_SurfaceAnim",
+          "target_files": [
+            "src/mq3/renderer/md4_animation.ml"
+          ],
+          "target_symbol": "mq3.renderer.md4_animation.surfaceAnim",
+          "status": "tested_exact",
+          "scope": "Exact 3x4 bone-matrix interpolation, weighted position/normal skinning, texture coordinates and tessellation-index rebasing. One unchanged-C record and seven native contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/md4_animation.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_md4_animation.py",
+        "tests/reference/md4_animation_oracle.c",
+        "tests/md4_animation_oracle.ml",
+        "tests/md4_animation_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_backend.c",
