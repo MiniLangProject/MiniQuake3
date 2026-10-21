@@ -46,14 +46,16 @@ Offen bleibt die noch kompaktere interne Reachability-Ablage.
 Der aktuelle Retail-Gesamtlauf vom 21. Oktober 2026 besteht alle **270 Gates**
 von `python scripts/verify.py --data-root D:/Quake3`. Der geprüfte
 `build/MiniQuake3.exe` hat SHA-256
-`94776ff4203c8c5b9e97033d27a142c1b368791b0d33ee5eb37dfd1a8afd202d`;
+`a295d5df3e294abb32e7f25dd4d15599adf4b7ad98f89c2788e94327b674496d`;
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 
-Der lokale Original-QVM-Pfad teilt inzwischen den 256-Tasten-Zustand, Catcher
-und Bindings zwischen `ui.qvm` und `cgame.qvm`. Die vier Baseq3-Cgame-Traps
-`KEY_ISDOWN`, `KEY_GETCATCHER`, `KEY_SETCATCHER` und `KEY_GETKEY` laufen damit
-über denselben Zustand, den die native UI-Eingabe aktualisiert.
+Der lokale Original-QVM-Pfad teilt inzwischen den 256-Tasten-Zustand, Catcher,
+Bindings, Overstrike-Zustand sowie Baseq3s vollständige Tastennamen und deren
+Rückübersetzung zwischen `ui.qvm` und `cgame.qvm`. Das originale
+Steuerungsmenü zeigt damit echte Tastenbezeichnungen. Die nativen Win32-
+Ereignisse erreichen den Zustand über einen zeitgestempelten, threadsicheren
+256-Eintragsring und werden im passenden Simulationstick angewendet.
 `CG_SETUSERCMDVALUE` steuert im produktiven QVM-Spielpfad außerdem das
 Usercmd-Waffenbyte und die Cgame-Mausempfindlichkeit. MD3-Entityframes werden
 vor der Interpolation wie in Baseq3 gewrappt oder repariert. Registrierte

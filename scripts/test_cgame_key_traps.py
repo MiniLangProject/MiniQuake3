@@ -20,7 +20,10 @@ def main():
             "case CG_KEY_SETCATCHER:", "Key_SetCatcher( args[1] );",
             "case CG_KEY_GETKEY:", "return Key_GetKey( VMA(1) );",
         ),
-        keys_source: ("qboolean Key_IsDown( int keynum )", "int Key_GetKey(const char *binding)"),
+        keys_source: ("qboolean Key_IsDown( int keynum )", "int Key_GetKey(const char *binding)",
+                      "char *Key_KeynumToString( int keynum )", "int Key_StringToKeynum( char *str )",
+                      "qboolean Key_GetOverstrikeMode( void )", "void Key_SetOverstrikeMode( qboolean state )",
+                      "void Key_ClearStates (void)"),
         ui_source: ("int Key_GetCatcher( void )", "void Key_SetCatcher( int catcher )"),
     }
     for path, values in anchors.items():
@@ -40,7 +43,7 @@ def main():
 
     harness = ROOT / "tests/reference/cgame_key_traps_oracle.c"
     oracle = out / "oracle.exe"
-    includes = [f"/I{original / name}" for name in ("game", "cgame", "qcommon", "renderer")]
+    includes = [f"/I{original / name}" for name in ("game", "cgame", "qcommon", "renderer", "ui")]
     run(["cl", "/nologo", "/Od", "/MT", "/DWIN32", *includes, harness,
          f"/Fe:{oracle}", "/link", "/Brepro"], out, msvc_env("x86"), out / "oracle-build.log")
     native = run([oracle], out, log=out / "oracle.log")
@@ -58,7 +61,7 @@ def main():
                    cwd=ROOT, check=True)
     contracts = run([ROOT / "build/cgame_key_traps_contracts.exe"], ROOT / "build",
                     log=out / "contracts.log").strip()
-    if contracts != "PASS: 25 cgame key-trap contracts":
+    if contracts != "PASS: 37 cgame key-trap contracts":
         raise RuntimeError(contracts)
 
     files = [source, keys_source, ui_source, original / "cgame/cg_public.h", harness,
@@ -66,11 +69,11 @@ def main():
              ROOT / "src/mq3/engine/local_qvm_match.ml", ROOT / "src/mq3/engine/local_qvm_ui.ml",
              ROOT / "tests/cgame_key_traps_contracts.ml"]
     report = {
-        "passed": True, "records": 4, "contracts": 25,
-        "scope": "CG_KEY_ISDOWN, CG_KEY_GETCATCHER, CG_KEY_SETCATCHER and CG_KEY_GETKEY with shared 256-key state, catcher ownership and case-insensitive first-binding lookup.",
+        "passed": True, "records": 266, "contracts": 37,
+        "scope": "CG_KEY_ISDOWN, CG_KEY_GETCATCHER, CG_KEY_SETCATCHER and CG_KEY_GETKEY plus the exact 256-key Key_KeynumToString/Key_StringToKeynum vocabulary, shared down state, overstrike mode, catcher ownership and case-insensitive first-binding lookup.",
         "oracle": "Baseq3 cg_public.h supplies exact trap ordinals; a C oracle exercises the state transitions and the original source anchors require all four unchanged CL_CgameSystemCalls routes.",
         "safety": "VM argument vectors, masked strings, NUL termination, callback availability and key-number bounds are validated.",
-        "remaining": "The QVM preview feeds native UI key transitions into this shared state; a future full client input loop still needs binding-command and console-catcher ownership beyond that preview path.",
+        "remaining": "The QVM preview feeds native UI key transitions into this shared state; a future full client input loop still needs console editing and bind command ownership beyond that preview path.",
         "sources": {str(path.relative_to(ROOT)).replace("\\", "/"): sha(path) for path in files},
     }
     (out / "result.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8", newline="\n")

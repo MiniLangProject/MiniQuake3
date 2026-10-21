@@ -60,6 +60,10 @@ function accumulateMouse(state,dx,dy)
   if state==void or typeof(dx)!="int" or typeof(dy)!="int" then return error(7700,"input command: invalid mouse delta") end if
   state.mouseDx[state.mouseIndex]=state.mouseDx[state.mouseIndex]+dx;state.mouseDy[state.mouseIndex]=state.mouseDy[state.mouseIndex]+dy;return void
 end function
+function clearMouse(state)
+  if state==void then return error(7700,"input command: missing mouse state") end if
+  state.mouseDx[0]=0;state.mouseDx[1]=0;state.mouseDy[0]=0;state.mouseDy[1]=0;return void
+end function
 function joystickEvent(state,axis,value)
   if state==void or axis<0 or axis>=MAX_JOYSTICK_AXIS or value< -127 or value>127 then return error(7700,"input command: invalid joystick axis") end if
   state.joystickAxis[axis]=value;return void

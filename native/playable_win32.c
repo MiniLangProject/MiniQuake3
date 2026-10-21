@@ -37,6 +37,16 @@ static SRWLOCK presentationLock = SRWLOCK_INIT;
 static LARGE_INTEGER timerFrequency;
 static LARGE_INTEGER timerStart;
 
+#define PLAYABLE_INPUT_EVENTS 256
+#define PLAYABLE_INPUT_KEY 1
+#define PLAYABLE_INPUT_MOUSE 3
+typedef struct playableInputEvent_s { int time, type, value, value2; } playableInputEvent;
+static playableInputEvent inputEvents[PLAYABLE_INPUT_EVENTS];
+static unsigned int inputEventHead;
+static unsigned int inputEventTail;
+static unsigned char inputKeyState[256];
+static SRWLOCK inputLock = SRWLOCK_INIT;
+
 #define PLAYABLE_TEXTURE_SLOTS 512
 #define PLAYABLE_MAX_TEXTURE_SIZE 4096
 #define PLAYABLE_MAX_MIP_LEVELS 13
@@ -95,6 +105,44 @@ static void ensureTimer(void) {
         QueryPerformanceFrequency(&timerFrequency);
         QueryPerformanceCounter(&timerStart);
     }
+}
+
+static int currentMilliseconds(void) {
+    LARGE_INTEGER now;
+    int64_t ticks;
+    ensureTimer();
+    QueryPerformanceCounter(&now);
+    ticks = now.QuadPart - timerStart.QuadPart;
+    return (int)((ticks * 1000) / timerFrequency.QuadPart);
+}
+
+/* Sys_QueEvent's 256-entry overwrite-oldest ownership rule, specialized to
+ * native input. The UI thread is the producer and MiniLang is the consumer. */
+static void queueInputEvent(int time, int type, int value, int value2) {
+    unsigned int index;
+    AcquireSRWLockExclusive(&inputLock);
+    if (inputEventHead - inputEventTail >= PLAYABLE_INPUT_EVENTS) ++inputEventTail;
+    index = inputEventHead & (PLAYABLE_INPUT_EVENTS - 1u);
+    inputEvents[index].time = time;
+    inputEvents[index].type = type;
+    inputEvents[index].value = value;
+    inputEvents[index].value2 = value2;
+    ++inputEventHead;
+    ReleaseSRWLockExclusive(&inputLock);
+}
+
+static void queueKeyTransition(int virtualKey, int down, int time) {
+    if ((unsigned)virtualKey > 255u || inputKeyState[virtualKey] == (unsigned char)(down != 0)) return;
+    inputKeyState[virtualKey] = (unsigned char)(down != 0);
+    queueInputEvent(time, PLAYABLE_INPUT_KEY, virtualKey, down != 0);
+}
+
+static void resetInputEvents(void) {
+    AcquireSRWLockExclusive(&inputLock);
+    inputEventHead = inputEventTail = 0;
+    ZeroMemory(inputEvents, sizeof(inputEvents));
+    ZeroMemory(inputKeyState, sizeof(inputKeyState));
+    ReleaseSRWLockExclusive(&inputLock);
 }
 
 static void releaseSurface(void) {
@@ -165,15 +213,39 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
             PostQuitMessage(0);
             return 0;
         case WM_KILLFOCUS:
+            {
+                int key;
+                int now = currentMilliseconds();
+                for (key = 0; key < 256; ++key) if (inputKeyState[key]) queueKeyTransition(key, 0, now);
+            }
             haveMousePosition = 0;
+            return 0;
+        case WM_KEYDOWN:
+        case WM_SYSKEYDOWN:
+            queueKeyTransition((int)wParam, 1, currentMilliseconds());
+            return 0;
+        case WM_KEYUP:
+        case WM_SYSKEYUP:
+            queueKeyTransition((int)wParam, 0, currentMilliseconds());
+            return 0;
+        case WM_LBUTTONDOWN:
+            SetCapture(hwnd);
+            queueKeyTransition(VK_LBUTTON, 1, currentMilliseconds());
+            return 0;
+        case WM_LBUTTONUP:
+            ReleaseCapture();
+            queueKeyTransition(VK_LBUTTON, 0, currentMilliseconds());
             return 0;
         case WM_MOUSEMOVE:
             if (!rawMouseEnabled) {
                 int x = (int)(short)LOWORD(lParam);
                 int y = (int)(short)HIWORD(lParam);
                 if (haveMousePosition) {
-                    InterlockedExchangeAdd(&mouseDX, x - lastMouseX);
-                    InterlockedExchangeAdd(&mouseDY, y - lastMouseY);
+                    int dx = x - lastMouseX;
+                    int dy = y - lastMouseY;
+                    InterlockedExchangeAdd(&mouseDX, dx);
+                    InterlockedExchangeAdd(&mouseDY, dy);
+                    if (dx || dy) queueInputEvent(currentMilliseconds(), PLAYABLE_INPUT_MOUSE, dx, dy);
                 }
                 lastMouseX = x;
                 lastMouseY = y;
@@ -187,6 +259,9 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
                     sizeof(RAWINPUTHEADER)) == size && input.header.dwType == RIM_TYPEMOUSE) {
                 InterlockedExchangeAdd(&mouseDX, input.data.mouse.lLastX);
                 InterlockedExchangeAdd(&mouseDY, input.data.mouse.lLastY);
+                if (input.data.mouse.lLastX || input.data.mouse.lLastY)
+                    queueInputEvent(currentMilliseconds(), PLAYABLE_INPUT_MOUSE,
+                        input.data.mouse.lLastX, input.data.mouse.lLastY);
             }
             return 0;
         }
@@ -237,6 +312,7 @@ static DWORD WINAPI playableWindowThread(void *parameter) {
     rectangle.left = 0; rectangle.top = 0; rectangle.right = width; rectangle.bottom = height;
     AdjustWindowRect(&rectangle, WS_OVERLAPPEDWINDOW, FALSE);
     mouseDX = mouseDY = 0;
+    resetInputEvents();
     windowHandle = CreateWindowExW(0, L"MiniQuake3PlayableWindow", L"MiniQuake3 - playable preview",
         WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
         rectangle.right - rectangle.left, rectangle.bottom - rectangle.top,
@@ -331,6 +407,21 @@ PLAYABLE_API int playable_window_key_down(int virtualKey) {
     return (GetAsyncKeyState(virtualKey) & 0x8000) != 0;
 }
 
+PLAYABLE_API int playable_window_next_input_event(unsigned char *output, int capacity) {
+    playableInputEvent event;
+    if (!output || capacity < (int)sizeof(event)) return 0;
+    AcquireSRWLockExclusive(&inputLock);
+    if (inputEventHead == inputEventTail) {
+        ReleaseSRWLockExclusive(&inputLock);
+        return 0;
+    }
+    event = inputEvents[inputEventTail & (PLAYABLE_INPUT_EVENTS - 1u)];
+    ++inputEventTail;
+    ReleaseSRWLockExclusive(&inputLock);
+    CopyMemory(output, &event, sizeof(event));
+    return 1;
+}
+
 PLAYABLE_API int playable_window_consume_mouse_dx(void) {
     return (int)InterlockedExchange(&mouseDX, 0);
 }
@@ -340,12 +431,7 @@ PLAYABLE_API int playable_window_consume_mouse_dy(void) {
 }
 
 PLAYABLE_API int playable_window_milliseconds(void) {
-    LARGE_INTEGER now;
-    int64_t ticks;
-    ensureTimer();
-    QueryPerformanceCounter(&now);
-    ticks = now.QuadPart - timerStart.QuadPart;
-    return (int)((ticks * 1000) / timerFrequency.QuadPart);
+    return currentMilliseconds();
 }
 
 static unsigned char colorByte(int value) {
@@ -1904,6 +1990,7 @@ PLAYABLE_API void playable_window_shutdown(void) {
     }
     InterlockedExchange(&closeRequested, 1);
     rawMouseEnabled = 0;
+    resetInputEvents();
     releaseSurface();
     for (slot = 0; slot < PLAYABLE_TEXTURE_SLOTS; ++slot) playable_window_release_texture(slot);
 }

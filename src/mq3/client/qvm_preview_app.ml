@@ -8,6 +8,7 @@ import mq3.client.original_ui_session as uiSession
 import mq3.client.cinematic_runtime as cinematics
 import mq3.client.cgame_clock as cgameClock
 import mq3.client.input_command as inputCommand
+import mq3.client.input_command_events as timestampedInput
 import mq3.vm.syscall_qagame_world as qworld
 import mq3.renderer.qvm_scene_geometry as sceneGeometry
 import mq3.renderer.qvm_scene_materials as sceneMaterials
@@ -100,6 +101,10 @@ function movementAxis(positive,negative)
 end function
 function nativeKeyDown(input,key) return window.keyDown(key) end function
 function nativeMouseDelta(input) return input.mouse end function
+function applyInputEvent(state,event)
+  return timestampedInput.apply(state,event.time,event.type,event.value,event.value2)
+end function
+function releaseGameInput(state,time) return timestampedInput.release(state,time) end function
 function advanceGameTick(state,clientClock,serverTime,input)
   delta=[0,0,0];if state.context.latestSnapshot!=void then delta=state.context.latestSnapshot.playerState.delta_angles end if
   command=qworld.userCommand(serverTime,[angleCommand(input.viewangles[0],delta[0]),angleCommand(input.viewangles[1],delta[1]),angleCommand(input.viewangles[2],delta[2])],input.buttons,input.weapon,input.forwardmove,input.rightmove,input.upmove)
@@ -241,16 +246,24 @@ function runLimited(archive,map,qvmRoot,maxFrames)
   uploaded=uploadLightmaps(map);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   audioStarted=audioOutput.init(22050);if audioStarted is error then window.shutdown();match.shutdown(state);return audioStarted end if
   titleState=fpsTitle.create("Original QVM q3dm1",window.milliseconds());window.setTitle(fpsTitle.initialTitle(titleState))
-  frames=0;yaw=state.context.latestSnapshot.playerState.viewangles[1];pitch=state.context.latestSnapshot.playerState.viewangles[0];inputState=inputCommand.create(pitch,yaw,0.0);inputConfig=inputCommand.defaults();uploadedQvmTextures=len(qvmCatalog.textures);uploadedHudTextures=len(hudCatalog.textures);simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
+  frames=0;yaw=state.context.latestSnapshot.playerState.viewangles[1];pitch=state.context.latestSnapshot.playerState.viewangles[0];inputState=inputCommand.create(pitch,yaw,0.0);inputConfig=inputCommand.defaults();pendingInputEvents=[];wasMenuActive=false;uploadedQvmTextures=len(qvmCatalog.textures);uploadedHudTextures=len(hudCatalog.textures);simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
   while not window.shouldClose() and (maxFrames<0 or frames<maxFrames)
     startedAt=window.milliseconds();serverTime=simulationStart+startedAt-realStart;steps=0
-    window.poll();nativeInput.mouse=window.mouseDelta();menuActive=uiSession.active(ui);inputTime=simulationTime
-    forwardDown=not menuActive and window.keyDown(window.VK_W);backDown=not menuActive and window.keyDown(window.VK_S);rightDown=not menuActive and window.keyDown(window.VK_D);leftDown=not menuActive and window.keyDown(window.VK_A);upDown=not menuActive and window.keyDown(window.VK_SPACE);attackDown=not menuActive and window.keyDown(window.VK_LBUTTON);anyInput=forwardDown or backDown or rightDown or leftDown or upDown or attackDown
-    inputCommand.setPolled(inputState.forward,forwardDown,inputTime,50);inputCommand.setPolled(inputState.back,backDown,inputTime,50)
-    inputCommand.setPolled(inputState.moveright,rightDown,inputTime,50);inputCommand.setPolled(inputState.moveleft,leftDown,inputTime,50)
-    inputCommand.setPolled(inputState.up,upDown,inputTime,50);inputCommand.setPolled(inputState.buttons[0],attackDown,inputTime,50)
-    if not menuActive then accumulated=inputCommand.accumulateMouse(inputState,nativeInput.mouse[0],nativeInput.mouse[1]);if accumulated is error then window.shutdown();match.shutdown(state);return accumulated end if end if
-    while simulationTime+50<=serverTime and steps<8 simulationTime=simulationTime+50;created=inputCommand.createCommand(inputState,inputConfig,simulationTime,50,simulationTime,match.cgameUserCmdValue(state),match.cgameSensitivity(state),0,anyInput);if created is error then window.shutdown();match.shutdown(state);return created end if;yaw=created.viewangles[1];pitch=created.viewangles[0];advanced=advanceGameTick(state,clientClock,simulationTime,created);if advanced is error then window.shutdown();match.shutdown(state);return advanced end if;steps=steps+1;simulationTicks=simulationTicks+1 end while
+    window.poll();nativeInput.mouse=window.mouseDelta();menuActive=uiSession.active(ui);nativeEvents=window.inputEvents(256);if nativeEvents is error then window.shutdown();match.shutdown(state);return nativeEvents end if
+    if menuActive then pendingInputEvents=[];released=releaseGameInput(inputState,simulationTime);if released is error then window.shutdown();match.shutdown(state);return released end if
+    else
+      for each event in nativeEvents event.time=simulationStart+event.time-realStart;pendingInputEvents=pendingInputEvents+[event] end for
+      if wasMenuActive then
+        for each key in [window.VK_W,window.VK_S,window.VK_D,window.VK_A,window.VK_SPACE,window.VK_LBUTTON] if window.keyDown(key) then pendingInputEvents=pendingInputEvents+[window.InputEvent(simulationTime,window.INPUT_KEY,key,1)] end if end for
+      end if
+    end if
+    wasMenuActive=menuActive
+    while simulationTime+50<=serverTime and steps<8
+      simulationTime=simulationTime+50
+      while len(pendingInputEvents)>0 and pendingInputEvents[0].time<=simulationTime applied=applyInputEvent(inputState,pendingInputEvents[0]);if applied is error then window.shutdown();match.shutdown(state);return applied end if;pendingInputEvents=slice(pendingInputEvents,1,len(pendingInputEvents)) end while
+      anyInput=timestampedInput.anyDown(inputState)
+      created=inputCommand.createCommand(inputState,inputConfig,simulationTime,50,simulationTime,match.cgameUserCmdValue(state),match.cgameSensitivity(state),0,anyInput);if created is error then window.shutdown();match.shutdown(state);return created end if;yaw=created.viewangles[1];pitch=created.viewangles[0];advanced=advanceGameTick(state,clientClock,simulationTime,created);if advanced is error then window.shutdown();match.shutdown(state);return advanced end if;steps=steps+1;simulationTicks=simulationTicks+1
+    end while
     afterGame=window.milliseconds();gameMs=gameMs+afterGame-startedAt
     drawnFrame=drawFrame(state,clientClock,serverTime);if drawnFrame is error then window.shutdown();match.shutdown(state);return drawnFrame end if
     afterCgame=window.milliseconds();cgameMs=cgameMs+afterCgame-afterGame

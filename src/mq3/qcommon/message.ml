@@ -50,6 +50,16 @@ function beginReadingOob(msg)
   return void
 end function
 
+// MSG_Copy preserves all source cursor/state fields and installs independent
+// storage containing the bytes written so far.  Baseq3 deliberately retains
+// src->maxsize; length is only the destination-capacity guard.
+function copy(source,length)
+  if source==void or length<source.cursize then return error(6810,"message.copy: destination is smaller than source") end if
+  data=bytes(length,0)
+  if source.cursize>0 then for index=0 to source.cursize-1 data[index]=source.data[index] end for end if
+  return Message(source.allowoverflow,source.overflowed,source.oob,data,source.maxsize,source.cursize,source.readcount,source.bit,source.codec)
+end function
+
 function writeBits(msg,value,bits)
   if msg.maxsize-msg.cursize < 4 then
     msg.overflowed = true; return false
@@ -98,6 +108,9 @@ function writeChar(msg,value) return writeBits(msg,value,8) end function
 function writeByte(msg,value) return writeBits(msg,value,8) end function
 function writeShort(msg,value) return writeBits(msg,value,16) end function
 function writeLong(msg,value) return writeBits(msg,value,32) end function
+function writeFloat(msg,value) return writeBits(msg,n.i32(n.floatBits(value)),32) end function
+function writeAngle(msg,value) return writeByte(msg,n.trunc32(n.fdiv(n.fmul(value,256.0),360.0))&255) end function
+function writeAngle16(msg,value) return writeShort(msg,n.trunc32(n.fdiv(n.fmul(value,65536.0),360.0))&65535) end function
 
 function writeData(msg,data)
   for each value in data writeByte(msg,value) end for
@@ -203,6 +216,14 @@ function readI32(msg)
   if msg.readcount > msg.cursize then return -1 end if
   return value
 end function
+
+function readFloat(msg)
+  value=readBits(msg,32)
+  if msg.readcount>msg.cursize then return n.f32(-1.0) end if
+  return n.bitsFloat(value)
+end function
+
+function readAngle16(msg) return n.fmul(readI16(msg),360.0/65536.0) end function
 
 function readText(msg,lineOnly)
   result = ""; count = 0

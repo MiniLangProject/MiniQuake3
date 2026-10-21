@@ -8,6 +8,7 @@ extern function pollNative() from "playable_window.dll" symbol "playable_window_
 extern function shouldCloseNative() from "playable_window.dll" symbol "playable_window_should_close" returns i32
 extern function setTitleNative(title as ptr,length as i32) from "playable_window.dll" symbol "playable_window_set_title_utf8" returns i32
 extern function keyDownNative(key as i32) from "playable_window.dll" symbol "playable_window_key_down" returns i32
+extern function nextInputEventNative(output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_window_next_input_event" returns i32
 extern function mouseXNative() from "playable_window.dll" symbol "playable_window_consume_mouse_dx" returns i32
 extern function mouseYNative() from "playable_window.dll" symbol "playable_window_consume_mouse_dy" returns i32
 extern function millisecondsNative() from "playable_window.dll" symbol "playable_window_milliseconds" returns i32
@@ -49,12 +50,15 @@ const VK_6=54
 const VK_7=55
 const VK_8=56
 const VK_9=57
+const INPUT_KEY=1
+const INPUT_MOUSE=3
 const TRIANGLE_BATCH_RECORD_BYTES=128
 const TRIANGLE_BATCH_MAX_COUNT=65536
 
 struct TriangleBatch data capacity count end struct
 struct Viewport x y width height end struct
 struct LoadingPoint x y end struct
+struct InputEvent time type value value2 end struct
 
 function open(width,height)
   if width<160 or height<120 then return error(7480,"preview window is too small") end if
@@ -96,6 +100,17 @@ function showLoading(progress,status)
   present();poll();return true
 end function
 function keyDown(key) return keyDownNative(key)!=0 end function
+function decodeInputEvent(data)
+  if typeof(data)!="bytes" or len(data)<16 then return error(7492,"native input event is truncated") end if
+  return InputEvent(numeric.readI32(data,0),numeric.readI32(data,4),numeric.readI32(data,8),numeric.readI32(data,12))
+end function
+function nextInputEvent()
+  data=bytes(16,0);if nextInputEventNative(data,16)==0 then return void end if;return decodeInputEvent(data)
+end function
+function inputEvents(maxEvents)
+  if typeof(maxEvents)!="int" or maxEvents<0 or maxEvents>256 then return error(7492,"invalid native input event budget") end if
+  result=[];while len(result)<maxEvents event=nextInputEvent();if event==void then break end if;result=result+[event] end while;return result
+end function
 function mouseDelta() return [mouseXNative(),mouseYNative()] end function
 function milliseconds() return millisecondsNative() end function
 function beginFrame(red,green,blue) beginNative(red,green,blue);return void end function

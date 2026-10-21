@@ -1046,13 +1046,13 @@ end function
 function uiClipboard(context) return "" end function
 function uiClientState(context) return uiHost.encodeClientState(context.uiClient) end function
 function uiConfigString(context,index) if index<0 or index>=len(context.configstrings) then return void end if;return context.configstrings[index] end function
-function uiKeyName(context,key) return "" end function
+function uiKeyName(context,key) return cgameKeys.keynumToString(key) end function
 function uiBinding(context,key) return cgameKeys.getBinding(context.cgameKeys,key) end function
 function uiSetBinding(context,key,text) cgameKeys.setBinding(context.cgameKeys,key,text);return void end function
 function uiKeyDown(context,key) return cgameKeys.isDown(context.cgameKeys,key) end function
-function uiFalse(context) return false end function
-function uiSetBool(context,value) return void end function
-function uiClearKeys(context) for key=0 to cgameKeys.MAX_KEYS-1 cgameKeys.setDown(context.cgameKeys,key,false) end for;return void end function
+function uiGetOverstrike(context) return cgameKeys.getOverstrike(context.cgameKeys) end function
+function uiSetOverstrike(context,value) return cgameKeys.setOverstrike(context.cgameKeys,value) end function
+function uiClearKeys(context) return cgameKeys.clearStates(context.cgameKeys) end function
 function uiGetCatcher(context) return cgameKeys.getCatcher(context.cgameKeys) end function
 function uiSetCatcher(context,value) context.uiKeyCatcher=value;cgameKeys.setCatcher(context.cgameKeys,value);return void end function
 function setKeyDown(value,key,down) if value==void or value.context==void then return false end if;return cgameKeys.setDown(value.context.cgameKeys,key,down) end function
@@ -1154,7 +1154,7 @@ function bootUi(value)
   shared=common.services(context.cvars,context.commandState,context);shared.printFn=emitPrint;shared.errorFn=emitError;shared.millisecondsFn=milliseconds;shared.consoleFn=consoleCommand
   shared.openFn=openFile;shared.readFn=readFile;shared.writeFn=writeFile;shared.closeFn=closeFile
   syscalls=uiSyscall.services(shared,context);syscalls.client.clipboardFn=uiClipboard;syscalls.client.glconfigFn=glconfigBytes;syscalls.client.clientStateFn=uiClientState;syscalls.client.configStringFn=uiConfigString
-  syscalls.keys.keyNameFn=uiKeyName;syscalls.keys.bindingFn=uiBinding;syscalls.keys.setBindingFn=uiSetBinding;syscalls.keys.isDownFn=uiKeyDown;syscalls.keys.getOverstrikeFn=uiFalse;syscalls.keys.setOverstrikeFn=uiSetBool;syscalls.keys.clearFn=uiClearKeys;syscalls.keys.getCatcherFn=uiGetCatcher;syscalls.keys.setCatcherFn=uiSetCatcher
+  syscalls.keys.keyNameFn=uiKeyName;syscalls.keys.bindingFn=uiBinding;syscalls.keys.setBindingFn=uiSetBinding;syscalls.keys.isDownFn=uiKeyDown;syscalls.keys.getOverstrikeFn=uiGetOverstrike;syscalls.keys.setOverstrikeFn=uiSetOverstrike;syscalls.keys.clearFn=uiClearKeys;syscalls.keys.getCatcherFn=uiGetCatcher;syscalls.keys.setCatcherFn=uiSetCatcher
   syscalls.renderer.registerModelFn=registerModel;syscalls.renderer.registerSkinFn=registerSkin;syscalls.renderer.registerShaderNoMipFn=registerShaderNoMip;syscalls.renderer.clearSceneFn=clearScene;syscalls.renderer.setColorFn=uiSetColor;syscalls.renderer.drawStretchPicFn=uiStretchPic;syscalls.renderer.updateScreenFn=updateScreen
   syscalls.lan.loadFn=uiLanLoad;syscalls.lan.saveFn=uiLanSave;syscalls.lan.addFn=uiLanAdd;syscalls.lan.removeFn=uiLanRemove;syscalls.lan.pingQueueCountFn=uiLanPingCount;syscalls.lan.clearPingFn=uiLanClearPing;syscalls.lan.getPingFn=uiLanPing;syscalls.lan.getPingInfoFn=uiLanPingInfo;syscalls.lan.serverCountFn=uiLanServerCount;syscalls.lan.serverAddressFn=uiLanServerAddress;syscalls.lan.serverInfoFn=uiLanServerInfo;syscalls.lan.serverPingFn=uiLanServerPing;syscalls.lan.markVisibleFn=uiLanMarkVisible;syscalls.lan.isVisibleFn=uiLanIsVisible;syscalls.lan.updatePingsFn=uiLanUpdatePings;syscalls.lan.resetPingsFn=uiLanResetPings;syscalls.lan.serverStatusFn=uiLanServerStatus;syscalls.lan.compareFn=uiLanCompare
   syscalls.fileListFn=uiFileList;syscalls.memoryRemainingFn=memoryRemaining;syscalls.extendedFn=extendedUi;media=uiMedia.services(context);media.sound.registerFn=uiRegisterSound;media.sound.startLocalFn=uiLocalSound;media.sound.stopBackgroundFn=uiStopMusic;media.sound.startBackgroundFn=uiStartMusic

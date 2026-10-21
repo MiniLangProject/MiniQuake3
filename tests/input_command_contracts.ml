@@ -1,4 +1,5 @@
 import mq3.client.input_command as input
+import mq3.client.input_command_events as events
 import mq3.compat.numeric as n
 
 function req(value,label) if not value then return error(7701,"input command contract: "+label) end if;return 1 end function
@@ -56,5 +57,15 @@ function main(args)
   count=count+req(near(command.viewangles[0],210.0),"pitch delta clamped to ninety")
   count=count+req(command.angles[0]==input.angleShort(210.0),"final short angles")
   count=count+req(try(input.accumulateMouse(void,1,1)) is error and try(input.createCommand(void,input.defaults(),1,1,1,1,1.0,0,false)) is error,"state validation")
+  state=input.create(0.0,0.0,0.0);events.apply(state,110,events.INPUT_KEY,events.VK_W,1);events.apply(state,135,events.INPUT_KEY,events.VK_W,0);command=input.createCommand(state,input.defaults(),150,50,1,0,1.0,0,false)
+  count=count+req(command.forwardmove==63,"timestamped key fraction")
+  state=input.create(0.0,0.0,0.0);events.apply(state,100,events.INPUT_KEY,events.VK_LBUTTON,1);events.apply(state,105,events.INPUT_KEY,events.VK_LBUTTON,0);command=input.createCommand(state,input.defaults(),150,50,1,0,1.0,0,false)
+  count=count+req((command.buttons&input.BUTTON_ATTACK)!=0,"timestamped click retained")
+  state=input.create(0.0,0.0,0.0);events.apply(state,100,events.INPUT_MOUSE,4,-6);command=input.createCommand(state,input.defaults(),150,50,1,0,1.0,0,false)
+  count=count+req(near(command.viewangles[1],-0.44) and near(command.viewangles[0],-0.66),"timestamped mouse routed")
+  state=input.create(0.0,0.0,0.0);events.apply(state,100,events.INPUT_KEY,events.VK_A,1);count=count+req(events.anyDown(state),"event active state")
+  released=events.release(state,125);count=count+req(not events.anyDown(state) and not (released is error),"event release")
+  count=count+req(events.apply(state,130,events.INPUT_KEY,999,1)==void,"unbound key ignored")
+  count=count+req(try(events.apply(void,1,events.INPUT_KEY,events.VK_W,1)) is error and try(events.release(state,-1)) is error,"event validation")
   print "PASS: "+str(count)+" client input-command contracts";return 0
 end function

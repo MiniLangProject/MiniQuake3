@@ -14,8 +14,10 @@ SOURCE = ROOT / "native" / "playable_win32.c"
 TEST = ROOT / "tests" / "playable_window_lifecycle.c"
 WORLD_BATCH_TEST = ROOT / "tests" / "playable_world_batch_native.c"
 RASTER_STATE_TEST = ROOT / "tests" / "playable_window_raster_state_native.c"
+INPUT_EVENTS_TEST = ROOT / "tests" / "playable_window_input_events_native.c"
 RASTER_EXPORTS = (
     "playable_window_set_title_utf8",
+    "playable_window_next_input_event",
     "playable_window_clear_depth",
     "playable_window_sample_depth",
     "playable_window_set_depth_range",
@@ -55,6 +57,7 @@ def main() -> int:
     exe = OUT / "playable_window_lifecycle.exe"
     world_batch_exe = OUT / "playable_world_batch_native.exe"
     raster_state_exe = OUT / "playable_window_raster_state_native.exe"
+    input_events_exe = OUT / "playable_window_input_events_native.exe"
     run([compiler, "/nologo", "/W4", "/WX", "/O2", "/LD", str(SOURCE),
          "/link", "user32.lib", "gdi32.lib", f"/OUT:{dll}", f"/IMPLIB:{lib}"], env)
     dumpbin = shutil.which("dumpbin.exe", path=env.get("PATH"))
@@ -74,6 +77,9 @@ def main() -> int:
     run([compiler, "/nologo", "/W4", "/WX", "/O2", str(RASTER_STATE_TEST),
          "user32.lib", "gdi32.lib", f"/Fe:{raster_state_exe}"], env)
     run([str(raster_state_exe)], env)
+    run([compiler, "/nologo", "/W4", "/WX", "/O2", str(INPUT_EVENTS_TEST),
+         "user32.lib", "gdi32.lib", f"/Fe:{input_events_exe}"], env)
+    run([str(input_events_exe)], env)
     print(f"playable window build: PASS ({dll})")
     return 0
 

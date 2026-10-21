@@ -14,5 +14,7 @@ function main(args)
   print "binding|"+str(call(host,vm,base,[63,64]))+"|"+str(call(host,vm,base,[63,80]))
   keys.setBinding(state,15,"+attack");print "first|"+str(call(host,vm,base,[63,64]))
   put(vm,96,"");keys.setBinding(state,200,"");print "empty|"+str(call(host,vm,base,[63,96]))
+  for key=-2 to 256 name=keys.keynumToString(key);print "name|"+str(key)+"|"+name+"|"+str(keys.stringToKeynum(name)) end for
+  print "parse|"+str(keys.stringToKeynum("mouse5"))+"|"+str(keys.stringToKeynum("0x9d"))+"|"+str(keys.stringToKeynum("0xZZ"))+"|"+str(keys.stringToKeynum(""))
   return 0
 end function

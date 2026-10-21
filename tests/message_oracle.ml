@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 import mq3.qcommon.message as message
+import mq3.compat.numeric as n
 
 function encodeHex(data,count)
   digits = bytes("0123456789abcdef"); result = ""
@@ -14,6 +15,12 @@ end function
 function flag(value)
   if value then return 1 end if
   return 0
+end function
+
+function bitsHex(value)
+  digits=bytes("0123456789abcdef");result="";value=n.u32(value)
+  shift=28;while shift>=0 result=result+decode(bytes([digits[(value>>shift)&15]]));shift=shift-4 end while
+  return result
 end function
 
 function state(name,msg)
@@ -40,6 +47,14 @@ function main(args)
   print "W|data|"+encodeHex(msg.data,msg.cursize)+"|"+str(msg.cursize)+"|"+str(msg.bit)
   message.beginReadingOob(msg); print "R|data|"+encodeHex(message.readData(msg,7),7)+"|"+str(msg.readcount)
 
+  msg=message.initOob(32);message.writeFloat(msg,-13.25);message.writeAngle(msg,359.9);message.writeAngle16(msg,-90.0)
+  print "W|float_angle|"+encodeHex(msg.data,msg.cursize)+"|"+str(msg.cursize)+"|"+str(msg.bit)
+  message.beginReadingOob(msg);f=message.readFloat(msg);a=message.readU8(msg);g=message.readAngle16(msg)
+  print "R|float_angle|"+bitsHex(n.floatBits(f))+"|"+str(a)+"|"+bitsHex(n.floatBits(g))+"|"+str(msg.readcount)+"|"+str(msg.bit)
+
+  msg=message.initOob(16);message.writeByte(msg,1);message.writeByte(msg,2);message.writeByte(msg,3);msg.allowoverflow=true;msg.readcount=2
+  copied=message.copy(msg,32);msg.data[0]=9;state("copy",copied);print "C|payload|"+encodeHex(copied.data,copied.cursize)+"|1"
+
   msg = message.initOob(32); message.writeString(msg,decode(bytes([65,37,128,255,90])))
   print "W|string|"+encodeHex(msg.data,msg.cursize)+"|"+str(msg.cursize)
   message.beginReadingOob(msg); print "R|string|"+encodeHex(bytes(message.readCString(msg)),4)+"|"+str(msg.readcount)
@@ -48,6 +63,10 @@ function main(args)
   print "W|null|"+encodeHex(msg.data,msg.cursize)+"|"+str(msg.cursize)
   msg = message.initOob(8); message.writeString(msg,decode(bytes([65,0,66])))
   print "W|embedded_null|"+encodeHex(msg.data,msg.cursize)+"|"+str(msg.cursize)
+  msg=message.initOob(32);message.writeBigString(msg,decode(bytes([65,200,37,66])))
+  print "W|big_string|"+encodeHex(msg.data,msg.cursize)+"|"+str(msg.cursize)
+  msg.data[0]=65;msg.data[1]=200;msg.data[2]=37;msg.data[3]=0;msg.cursize=4;message.beginReadingOob(msg);value=message.readBigCString(msg)
+  print "R|big_string|"+encodeHex(bytes(value),len(bytes(value)))+"|"+str(msg.readcount)
   msg = message.initOob(1032); message.writeString(msg,decode(bytes(1024,120)))
   print "W|string_limit|"+encodeHex(msg.data,msg.cursize)+"|"+str(msg.cursize)
 

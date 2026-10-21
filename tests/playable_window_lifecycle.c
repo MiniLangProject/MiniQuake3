@@ -7,6 +7,7 @@ __declspec(dllimport) void playable_window_poll(void);
 __declspec(dllimport) int playable_window_should_close(void);
 __declspec(dllimport) int playable_window_set_title_utf8(const unsigned char *, int);
 __declspec(dllimport) int playable_window_key_down(int);
+__declspec(dllimport) int playable_window_next_input_event(unsigned char *, int);
 __declspec(dllimport) int playable_window_consume_mouse_dx(void);
 __declspec(dllimport) int playable_window_consume_mouse_dy(void);
 __declspec(dllimport) int playable_window_milliseconds(void);
@@ -50,9 +51,11 @@ int main(void) {
     unsigned char jpegMetadata[8] = { 0 };
     unsigned char jpegPixel[4] = { 0 };
     unsigned char batch[128] = { 0 };
+    unsigned char inputEvent[16] = { 0 };
     int before = playable_window_milliseconds();
     /* Every API must be safe before create and after shutdown. */
     playable_window_poll();
+    if (playable_window_next_input_event(inputEvent, sizeof(inputEvent))) return 16;
     if (playable_window_set_title_utf8((const unsigned char *)"before create", 13)) return 8;
     playable_window_begin_frame(0, 0, 0);
     playable_window_clear_depth(1000.0);
@@ -121,7 +124,8 @@ int main(void) {
     if (!playable_window_should_close() || playable_window_key_down('W') ||
         playable_window_consume_mouse_dx() || playable_window_consume_mouse_dy()) return 2;
     playable_window_shutdown();
-    if (!playable_window_should_close() || playable_window_milliseconds() < before) return 3;
+    if (!playable_window_should_close() || playable_window_milliseconds() < before ||
+            playable_window_next_input_event(inputEvent, sizeof(inputEvent))) return 3;
     if (GetEnvironmentVariableA("MQ3_WINDOW_SMOKE_GUI", 0, 0)) {
         if (!playable_window_create(320, 200)) return 4;
         playable_window_poll();

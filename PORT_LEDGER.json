@@ -4593,10 +4593,13 @@
           "original": "CL_KeyState / CL_AdjustAngles / CL_KeyMove / CL_MouseMove / CL_JoystickMove / CL_CmdButtons / CL_FinishMove",
           "target_files": [
             "src/mq3/client/input_command.ml",
+            "src/mq3/client/input_command_events.ml",
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
             "src/mq3/client/qvm_preview_app.ml"
           ],
           "status": "tested_subset",
-          "scope": "The productive retail-QVM path uses Baseq3 dual-source button timing, fractional key states, walk/run movement, keyboard angles, filtered and accelerated mouse input, cgame sensitivity, joystick axes, transient button bits, pitch-delta clamp and final command fields. Five unchanged-C records plus 31 MiniLang contracts pass; timestamped platform event routing, configurable bindings and outer command-ring cadence remain host work."
+          "scope": "The productive retail-QVM path uses Baseq3 dual-source button timing, fractional key states, walk/run movement, keyboard angles, filtered and accelerated mouse input, cgame sensitivity, joystick axes, transient button bits, pitch-delta clamp and final command fields. The Win32 UI thread queues timestamped key, mouse-button and mouse-motion transitions in a thread-safe 256-entry overwrite-oldest ring and the client applies them at the matching simulation tick. Five unchanged-C records plus 38 MiniLang contracts and native lifecycle/FIFO/overflow tests pass; configurable bindings and outer command-ring cadence remain host work."
         },
         {
           "original": "CL_CreateNewCommands / CL_ReadyToSendPacket / CL_WritePacket / CL_SendCmd",
@@ -4616,7 +4619,10 @@
         "src/mq3/engine/local_qvm_match.ml",
         "src/mq3/client/send_cmd.ml",
         "src/mq3/client/frame.ml",
-        "src/mq3/client/network_match_loop.ml"
+        "src/mq3/client/network_match_loop.ml",
+        "src/mq3/client/input_command_events.ml",
+        "native/playable_win32.c",
+        "src/mq3/platform/playable_window.ml"
       ],
       "status": "partial",
       "tests": [
@@ -4628,7 +4634,9 @@
         "scripts/test_client_send_cmd.py",
         "tests/client_send_cmd_contracts.ml",
         "scripts/test_network_match_loop.py",
-        "tests/network_match_loop_contracts.ml"
+        "tests/network_match_loop_contracts.ml",
+        "tests/playable_window_input_events_native.c",
+        "scripts/playable_window_build_test.py"
       ]
     },
     {
@@ -4661,18 +4669,18 @@
         "Key_Unbindall_f",
         "Key_WriteBindings",
         "Message_Key",
-        "string"
+        "Key_KeynumToString"
       ],
       "symbol_mapping": [
         {
-          "original": "Key_IsDown / Key_GetBinding / Key_SetBinding / Key_GetKey / catcher state bridge",
+          "original": "Key_IsDown / Key_GetBinding / Key_SetBinding / Key_GetKey / Key_KeynumToString / Key_StringToKeynum / Key_GetOverstrikeMode / Key_SetOverstrikeMode / Key_ClearStates / catcher state bridge",
           "target_files": [
             "src/mq3/vm/cgame_key_traps.ml",
             "src/mq3/engine/local_qvm_match.ml",
             "src/mq3/engine/local_qvm_ui.ml"
           ],
           "status": "tested_subset",
-          "scope": "A shared 256-key state provides bounds-checked down state, bindings, case-insensitive first-binding lookup and catcher ownership to UI and cgame. Native QVM-preview transitions feed the state; four exact cgame ABI records and 25 contracts pass. Console editing and full bind command ownership remain open."
+          "scope": "A shared 256-key state provides bounds-checked down state, bindings, exact Baseq3 textual key names and reverse parsing, overstrike state, clear-state behavior, case-insensitive first-binding lookup and catcher ownership to UI and cgame. The productive Original-UI controls menu receives real key labels instead of empty strings. All 259 key-number edge/value records, four cgame ABI records and 37 contracts pass. Console editing and full bind command ownership remain open."
         }
       ],
       "target": [
@@ -4684,7 +4692,8 @@
       "tests": [
         "scripts/test_cgame_key_traps.py",
         "tests/cgame_key_traps_contracts.ml",
-        "tests/reference/cgame_key_traps_oracle.c"
+        "tests/reference/cgame_key_traps_oracle.c",
+        "tests/cgame_key_traps_oracle.ml"
       ]
     },
     {
@@ -5134,7 +5143,7 @@
             "src/mq3/client/ui_lan_udp.ml"
           ],
           "status": "tested_subset",
-          "scope": "Thirty-nine UI traps for renderer registration/2D draw, keys/bindings, clipboard, exact GL/client state, configstrings, memory and LAN browsing. The productive LAN backend provides stateful catalogs, exact Baseq3-x86 servercache.dat disk persistence, ping/status/visibility and Baseq3 sorting; connectionless info/status/master-list ingress updates it with protocol, deduplication and pending-request checks. A transport-neutral outbound engine covers repeated local getinfo broadcasts, master getservers, visible/manual pings and getstatus resend. Seven exact ABI records, 61 syscall contracts, four exact ingress records, 661520 exact cache bytes and 107 backend/query contracts pass. Productive Windows IPv4 DNS, dual nonblocking sockets, broadcast sends and bounded response pumping are attached to the local-QVM UI lifecycle; 18 live contracts pass."
+          "scope": "Thirty-nine UI traps for renderer registration/2D draw, keys/bindings, clipboard, exact GL/client state, configstrings, memory and LAN browsing. The productive key-name boundary now uses the exact 256-key cl_keys.c vocabulary with reverse parsing and shared overstrike/down/catcher state, so the Original-UI controls menu displays real bindings. The productive LAN backend provides stateful catalogs, exact Baseq3-x86 servercache.dat disk persistence, ping/status/visibility and Baseq3 sorting; connectionless info/status/master-list ingress updates it with protocol, deduplication and pending-request checks. Seven exact ABI records, 61 syscall contracts, 263 exact key records plus 37 key-state contracts, four exact ingress records, 661520 exact cache bytes and 107 backend/query contracts pass. Productive Windows IPv4 DNS, dual nonblocking sockets, broadcast sends and bounded response pumping are attached to the local-QVM UI lifecycle; 18 live contracts pass."
         },
         {
           "original": "CL_UISystemCalls media and compatibility traps",
@@ -5166,7 +5175,8 @@
         "src/mq3/client/ui_lan_queries.ml",
         "src/mq3/client/ui_lan_udp.ml",
         "src/mq3/client/ui_host_lifecycle.ml",
-        "src/mq3/engine/local_qvm_ui.ml"
+        "src/mq3/engine/local_qvm_ui.ml",
+        "src/mq3/vm/cgame_key_traps.ml"
       ],
       "status": "partial",
       "tests": [
@@ -5192,7 +5202,11 @@
         "scripts/test_ui_host_lifecycle.py",
         "tests/reference/ui_host_lifecycle_oracle.c",
         "tests/ui_host_lifecycle_oracle.ml",
-        "tests/ui_host_lifecycle_contracts.ml"
+        "tests/ui_host_lifecycle_contracts.ml",
+        "scripts/test_cgame_key_traps.py",
+        "tests/cgame_key_traps_oracle.ml",
+        "tests/cgame_key_traps_contracts.ml",
+        "tests/reference/cgame_key_traps_oracle.c"
       ]
     },
     {
@@ -17077,7 +17091,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_InitOOB",
@@ -17085,7 +17099,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_Clear",
@@ -17093,7 +17107,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_Bitstream",
@@ -17101,7 +17115,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_BeginReading",
@@ -17109,7 +17123,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_BeginReadingOOB",
@@ -17117,7 +17131,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_WriteBits",
@@ -17126,7 +17140,7 @@
             "src/mq3/qcommon/huffman.ml"
           ],
           "status": "tested_subset",
-          "scope": "Compressed protocol-68 MSG bitstream using the exact Baseq3 pretrained Huffman tree, raw remainder bits and Huffman full bytes for widths 1..32, including signed byte/short reads, bit/read/cursize cursors and the four-byte overflow reserve. Delta codecs and float/angle helpers remain open."
+          "scope": "Compressed protocol-68 MSG bitstream using the exact Baseq3 pretrained Huffman tree, raw remainder bits and Huffman full bytes for widths 1..32, including signed byte/short reads, bit/read/cursize cursors and the four-byte overflow reserve. Float/angle helpers are covered by the OOB primitive mapping; delta codecs are covered separately."
         },
         {
           "original": "MSG_WriteChar",
@@ -17134,7 +17148,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_WriteByte",
@@ -17142,7 +17156,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_WriteData",
@@ -17150,7 +17164,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_WriteShort",
@@ -17158,7 +17172,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_WriteLong",
@@ -17166,7 +17180,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_WriteString",
@@ -17174,7 +17188,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_ReadBits",
@@ -17183,7 +17197,7 @@
             "src/mq3/qcommon/huffman.ml"
           ],
           "status": "tested_subset",
-          "scope": "Compressed protocol-68 MSG bitstream using the exact Baseq3 pretrained Huffman tree, raw remainder bits and Huffman full bytes for widths 1..32, including signed byte/short reads, bit/read/cursize cursors and the four-byte overflow reserve. Delta codecs and float/angle helpers remain open."
+          "scope": "Compressed protocol-68 MSG bitstream using the exact Baseq3 pretrained Huffman tree, raw remainder bits and Huffman full bytes for widths 1..32, including signed byte/short reads, bit/read/cursize cursors and the four-byte overflow reserve. Float/angle helpers are covered by the OOB primitive mapping; delta codecs are covered separately."
         },
         {
           "original": "MSG_ReadChar",
@@ -17191,7 +17205,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_ReadByte",
@@ -17199,7 +17213,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_ReadShort",
@@ -17207,7 +17221,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_ReadLong",
@@ -17215,7 +17229,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_ReadString",
@@ -17223,7 +17237,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_ReadStringLine",
@@ -17231,7 +17245,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_ReadData",
@@ -17239,7 +17253,7 @@
             "src/mq3/qcommon/message.ml"
           ],
           "status": "tested_subset",
-          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams, float/angle, delta codecs and netchan remain open."
+          "scope": "Byte-aligned OOB msg_t state and primitive byte/char/short/long/data/C-string reads and writes, including little-endian, signed, write-overflow reserve, safe physical/read OOB boundaries, embedded-NUL C strlen behavior and string limits. Huffman bitstreams and delta codecs are covered by separate mappings; netchan remains separate."
         },
         {
           "original": "MSG_initHuffman",
@@ -17376,6 +17390,14 @@
           ],
           "status": "tested_subset",
           "scope": "PlayerState baseline reconstruction, four masked 16-slot arrays, signed short/long values, untransmitted-field preservation and guarded lc bounds."
+        },
+        {
+          "original": "MSG_Copy / MSG_WriteFloat / MSG_ReadFloat / MSG_WriteAngle / MSG_WriteAngle16 / MSG_ReadAngle16 / MSG_WriteBigString / MSG_ReadBigString",
+          "target_files": [
+            "src/mq3/qcommon/message.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Baseq3 msg_t state copy with independent destination bytes, exact Binary32 payloads including negative zero and NaN bits, 8-/16-bit angle quantization, and BIG_INFO_STRING sanitization/limits pass 23 unchanged-C records plus 37 contracts. The inert changeVectors diagnostic and commented MSG_NUinitHuffman generator are not runtime protocol paths."
         }
       ],
       "target": [
@@ -18766,6 +18788,14 @@
       ],
       "symbol_mapping": [
         {
+          "original": "RB_CalcSpecularAlpha",
+          "target_files": [
+            "src/mq3/renderer/playable_world_batch.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "The retained world/QVM stage path evaluates lightingSpecular from the deformed vertex position and normal, using Baseq3's fixed light origin, Q_rsqrt normalization, reflected viewer coefficient, fourth-power falloff and byte clamp. Six unchanged-C coefficient records, the unchanged ComputeColors dispatch record, fourteen focused color contracts and sixty retained-world contracts pass; the q3dm1 Retail material probe also passes."
+        },
+        {
           "original": "RB_CalcColorFromEntity / RB_CalcColorFromOneMinusEntity / RB_CalcAlphaFromEntity / RB_CalcAlphaFromOneMinusEntity",
           "target_files": [
             "src/mq3/renderer/playable_materials.ml",
@@ -18810,6 +18840,10 @@
       ],
       "status": "partial",
       "tests": [
+        "scripts/test_shader_compute_colors.py",
+        "tests/reference/shader_compute_colors_oracle.c",
+        "tests/shader_compute_colors_oracle.ml",
+        "tests/shader_compute_colors_contracts.ml",
         "scripts/test_shader_entity_color.py",
         "tests/reference/shader_entity_color_oracle.c",
         "tests/shader_entity_color_oracle.ml",
@@ -22198,10 +22232,33 @@
         "MidiInProc",
         "MidiInfo_f"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "IN_MouseEvent / IN_MouseMove timestamped Sys_QueEvent delivery",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/client/input_command_events.ml",
+            "src/mq3/client/qvm_preview_app.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Timestamped Win32 key, mouse-button and raw/fallback mouse-motion transitions feed the productive retail-QVM command builder through a thread-safe 256-entry ring. Focus loss releases held inputs, repeats are deduplicated and menu capture clears game input. DirectInput, MIDI, joystick discovery and the remaining activation policy are open."
+        }
+      ],
+      "target": [
+        "native/playable_win32.c",
+        "src/mq3/platform/playable_window.ml",
+        "src/mq3/client/input_command_events.ml",
+        "src/mq3/client/qvm_preview_app.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/playable_window_build_test.py",
+        "tests/playable_window_lifecycle.c",
+        "tests/playable_window_input_events_native.c",
+        "scripts/test_input_command.py",
+        "tests/input_command_contracts.ml"
+      ]
     },
     {
       "source": "code/win32/win_local.h",
@@ -22261,16 +22318,31 @@
           ],
           "status": "tested_exact",
           "scope": "256-entry FIFO, oldest-event overflow, zero-time clock substitution and key/char/mouse/wheel/joystick producers and dispatch. Two unchanged-C records and 26 MiniLang contracts pass."
+        },
+        {
+          "original": "Sys_QueEvent productive Win32 input ring",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/client/input_command_events.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The playable Win32 UI thread uses a thread-safe 256-entry timestamped key/mouse FIFO with the original overwrite-oldest rule. Native lifecycle, FIFO, transition-deduplication and overflow tests pass; console, packet and character events remain in the general input_events host queue."
         }
       ],
       "target": [
-        "src/mq3/platform/input_events.ml"
+        "src/mq3/platform/input_events.ml",
+        "native/playable_win32.c",
+        "src/mq3/platform/playable_window.ml",
+        "src/mq3/client/input_command_events.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_input_event_queue.py",
         "tests/reference/input_event_queue_oracle.c",
-        "tests/input_event_queue_contracts.ml"
+        "tests/input_event_queue_contracts.ml",
+        "scripts/playable_window_build_test.py",
+        "tests/playable_window_input_events_native.c"
       ]
     },
     {

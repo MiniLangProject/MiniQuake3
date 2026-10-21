@@ -26,8 +26,8 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 0 | 0 | 12 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
-| `win32` | 13 | 0 | 4 | 9 | 0 |
-| **Gesamt** | **335** | **2** | **116** | **217** | **0** |
+| `win32` | 13 | 0 | 5 | 8 | 0 |
+| **Gesamt** | **335** | **2** | **117** | **216** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -120,7 +120,7 @@ Teil dieser Tabelle.
 | `code/client/cl_cin.c` | `client` | `partial` | 38 | 5 | 33 |
 | `code/client/cl_console.c` | `client` | `not_started` | 22 | 0 | 22 |
 | `code/client/cl_input.c` | `client` | `partial` | 78 | 11 | 67 |
-| `code/client/cl_keys.c` | `client` | `partial` | 26 | 4 | 22 |
+| `code/client/cl_keys.c` | `client` | `partial` | 26 | 9 | 17 |
 | `code/client/cl_main.c` | `client` | `partial` | 78 | 16 | 62 |
 | `code/client/cl_net_chan.c` | `client` | `ported` | 5 | 0 | 5 |
 | `code/client/cl_parse.c` | `client` | `partial` | 9 | 8 | 1 |
@@ -277,7 +277,7 @@ Teil dieser Tabelle.
 | `code/qcommon/files.c` | `qcommon` | `partial` | 75 | 13 | 62 |
 | `code/qcommon/huffman.c` | `qcommon` | `ported` | 18 | 18 | 0 |
 | `code/qcommon/md4.c` | `qcommon` | `partial` | 8 | 6 | 2 |
-| `code/qcommon/msg.c` | `qcommon` | `partial` | 48 | 38 | 10 |
+| `code/qcommon/msg.c` | `qcommon` | `partial` | 48 | 46 | 2 |
 | `code/qcommon/net_chan.c` | `qcommon` | `partial` | 17 | 7 | 10 |
 | `code/qcommon/qcommon.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
 | `code/qcommon/qfiles.h` | `qcommon` | `partial` | 0 | 0 | 0 |
@@ -310,7 +310,7 @@ Teil dieser Tabelle.
 | `code/renderer/tr_public.h` | `renderer` | `not_started` | 0 | 0 | 0 |
 | `code/renderer/tr_scene.c` | `renderer` | `partial` | 9 | 4 | 5 |
 | `code/renderer/tr_shade.c` | `renderer` | `partial` | 17 | 3 | 14 |
-| `code/renderer/tr_shade_calc.c` | `renderer` | `partial` | 32 | 8 | 24 |
+| `code/renderer/tr_shade_calc.c` | `renderer` | `partial` | 32 | 9 | 23 |
 | `code/renderer/tr_shader.c` | `renderer` | `partial` | 34 | 5 | 29 |
 | `code/renderer/tr_shadows.c` | `renderer` | `partial` | 5 | 1 | 4 |
 | `code/renderer/tr_sky.c` | `renderer` | `not_started` | 13 | 0 | 13 |
@@ -364,7 +364,7 @@ Teil dieser Tabelle.
 | `code/win32/resource.h` | `win32` | `not_started` | 0 | 0 | 0 |
 | `code/win32/win_gamma.c` | `win32` | `not_started` | 4 | 0 | 4 |
 | `code/win32/win_glimp.c` | `win32` | `partial` | 21 | 3 | 18 |
-| `code/win32/win_input.c` | `win32` | `not_started` | 31 | 0 | 31 |
+| `code/win32/win_input.c` | `win32` | `partial` | 31 | 2 | 29 |
 | `code/win32/win_local.h` | `win32` | `not_started` | 0 | 0 | 0 |
 | `code/win32/win_main.c` | `win32` | `partial` | 34 | 1 | 33 |
 | `code/win32/win_net.c` | `win32` | `partial` | 21 | 5 | 16 |
@@ -462,7 +462,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/client/cl_cin.c` (partial): `CIN_CloseAllVideos`, `CIN_HandleForVideo`, `CIN_SetLooping`, `CIN_UploadCinematic`, `CL_PlayCinematic_f`, `ROQ_GenYUVTables`, `RllDecodeMonoToMono`, `RllDecodeMonoToStereo`, `RllDecodeStereoToMono`, `RllDecodeStereoToStereo`, `RllSetupTable`, `RoQFetchInterlaced`, `RoQInterrupt`, `RoQPrepMcomp`, `RoQReset`, `RoQShutdown`, `RoQ_init`, `SCR_DrawCinematic`, `SCR_RunCinematic`, `SCR_StopCinematic`, `blit2_32`, `blit4_32`, `blit8_32`, `blitVQQuad32fs`, `decodeCodeBook`, `initRoQ`, `move4_32`, `move8_32`, `readQuadInfo`, `recurseQuad`, `setupQuad`, `yuv_to_rgb`, `yuv_to_rgb24`
 - `code/client/cl_console.c` (not_started): `CL_ConsolePrint`, `Con_Bottom`, `Con_CheckResize`, `Con_ClearNotify`, `Con_Clear_f`, `Con_Close`, `Con_DrawConsole`, `Con_DrawInput`, `Con_DrawNotify`, `Con_DrawSolidConsole`, `Con_Dump_f`, `Con_Init`, `Con_Linefeed`, `Con_MessageMode2_f`, `Con_MessageMode3_f`, `Con_MessageMode4_f`, `Con_MessageMode_f`, `Con_PageDown`, `Con_PageUp`, `Con_RunConsole`, `Con_ToggleConsole_f`, `Con_Top`
 - `code/client/cl_input.c` (partial): `CL_CreateCmd`, `CL_InitInput`, `CL_JoystickEvent`, `CL_MouseEvent`, `IN_BackDown`, `IN_BackUp`, `IN_Button0Down`, `IN_Button0Up`, `IN_Button10Down`, `IN_Button10Up`, `IN_Button11Down`, `IN_Button11Up`, `IN_Button12Down`, `IN_Button12Up`, `IN_Button13Down`, `IN_Button13Up`, `IN_Button14Down`, `IN_Button14Up`, `IN_Button15Down`, `IN_Button15Up`, `IN_Button1Down`, `IN_Button1Up`, `IN_Button2Down`, `IN_Button2Up`, `IN_Button3Down`, `IN_Button3Up`, `IN_Button4Down`, `IN_Button4Up`, `IN_Button5Down`, `IN_Button5Up`, `IN_Button6Down`, `IN_Button6Up`, `IN_Button7Down`, `IN_Button7Up`, `IN_Button8Down`, `IN_Button8Up`, `IN_Button9Down`, `IN_Button9Up`, `IN_ButtonDown`, `IN_ButtonUp`, `IN_CenterView`, `IN_DownDown`, `IN_DownUp`, `IN_ForwardDown`, `IN_ForwardUp`, `IN_KeyDown`, `IN_KeyUp`, `IN_LeftDown`, `IN_LeftUp`, `IN_LookdownDown`, `IN_LookdownUp`, `IN_LookupDown`, `IN_LookupUp`, `IN_MLookDown`, `IN_MLookUp`, `IN_MoveleftDown`, `IN_MoveleftUp`, `IN_MoverightDown`, `IN_MoverightUp`, `IN_RightDown`, `IN_RightUp`, `IN_SpeedDown`, `IN_SpeedUp`, `IN_StrafeDown`, `IN_StrafeUp`, `IN_UpDown`, `IN_UpUp`
-- `code/client/cl_keys.c` (partial): `CL_AddKeyUpCommands`, `CL_CharEvent`, `CL_InitKeyCommands`, `CL_KeyEvent`, `Console_Key`, `Field_BigDraw`, `Field_CharEvent`, `Field_Draw`, `Field_KeyDownEvent`, `Field_Paste`, `Field_VariableSizeDraw`, `Key_Bind_f`, `Key_Bindlist_f`, `Key_ClearStates`, `Key_GetOverstrikeMode`, `Key_SetOverstrikeMode`, `Key_StringToKeynum`, `Key_Unbind_f`, `Key_Unbindall_f`, `Key_WriteBindings`, `Message_Key`, `string`
+- `code/client/cl_keys.c` (partial): `CL_AddKeyUpCommands`, `CL_CharEvent`, `CL_InitKeyCommands`, `CL_KeyEvent`, `Console_Key`, `Field_BigDraw`, `Field_CharEvent`, `Field_Draw`, `Field_KeyDownEvent`, `Field_Paste`, `Field_VariableSizeDraw`, `Key_Bind_f`, `Key_Bindlist_f`, `Key_Unbind_f`, `Key_Unbindall_f`, `Key_WriteBindings`, `Message_Key`
 - `code/client/cl_main.c` (partial): `CL_AddReliableCommand`, `CL_BeginDownload`, `CL_CDDialog`, `CL_CDKeyValidate`, `CL_ChangeReliableCommand`, `CL_ClearPing`, `CL_ClearState`, `CL_Clientinfo_f`, `CL_Configstrings_f`, `CL_Connect_f`, `CL_DemoCompleted`, `CL_Disconnect_f`, `CL_DownloadsComplete`, `CL_FlushMemory`, `CL_ForwardCommandToServer`, `CL_ForwardToServer_f`, `CL_GetFreePing`, `CL_GetPing`, `CL_GetPingInfo`, `CL_GetPingQueueCount`, `CL_GetServerStatus`, `CL_Init`, `CL_InitDownloads`, `CL_InitRef`, `CL_InitRenderer`, `CL_InitServerInfo`, `CL_MapLoading`, `CL_MotdPacket`, `CL_NextDemo`, `CL_NextDownload`, `CL_OpenedPK3List_f`, `CL_PlayDemo_f`, `CL_Rcon_f`, `CL_Reconnect_f`, `CL_Record_f`, `CL_RefMalloc`, `CL_RefPrintf`, `CL_ReferencedPK3List_f`, `CL_RequestMotd`, `CL_ResetPureClientAtServer`, `CL_ScaledMilliseconds`, `CL_SendPureChecksums`, `CL_ServerInfoPacket`, `CL_ServerStatusResponse`, `CL_ServerStatus_f`, `CL_ServersResponsePacket`, `CL_SetModel_f`, `CL_SetServerInfo`, `CL_SetServerInfoByAddress`, `CL_Setenv_f`, `CL_ShowIP_f`, `CL_Shutdown`, `CL_ShutdownAll`, `CL_ShutdownRef`, `CL_Snd_Restart_f`, `CL_StartDemoLoop`, `CL_StartHunkUsers`, `CL_StopRecord_f`, `CL_UpdateServerInfo`, `CL_Vid_Restart_f`, `CL_WalkDemoExt`, `packets`
 - `code/client/cl_net_chan.c` (ported): `CL_Netchan_Decode`, `CL_Netchan_Encode`, `CL_Netchan_Process`, `CL_Netchan_Transmit`, `CL_Netchan_TransmitNextFragment`
 - `code/client/cl_parse.c` (partial): `SHOWNET`
@@ -618,7 +618,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/qcommon/cvar.c` (partial): `Cvar_CommandCompletion`, `Cvar_FindVar`, `Cvar_InfoString`, `Cvar_InfoStringBuffer`, `Cvar_InfoString_Big`, `Cvar_SetLatched`, `Cvar_SetValue`, `Cvar_ValidateString`, `Cvar_VariableIntegerValue`, `Cvar_VariableString`, `Cvar_VariableStringBuffer`, `Cvar_VariableValue`, `generateHashValue`
 - `code/qcommon/files.c` (partial): `FS_AddFileToList`, `FS_BuildOSPath`, `FS_ConditionalRestart`, `FS_ConvertPath`, `FS_CopyFile`, `FS_CreatePath`, `FS_Dir_f`, `FS_FOpenFileAppend`, `FS_FOpenFileByMode`, `FS_FOpenFileWrite`, `FS_FTell`, `FS_FileForHandle`, `FS_FileIsInPAK`, `FS_FilenameCompare`, `FS_Flush`, `FS_ForceFlush`, `FS_FreeFile`, `FS_FreeFileList`, `FS_GamePureChecksum`, `FS_GetFileList`, `FS_GetModList`, `FS_HandleForFile`, `FS_HashFileName`, `FS_InitFilesystem`, `FS_Initialized`, `FS_ListFilteredFiles`, `FS_LoadStack`, `FS_LoadedPakChecksums`, `FS_LoadedPakNames`, `FS_LoadedPakPureChecksums`, `FS_NewDir_f`, `FS_PathCmp`, `FS_Path_f`, `FS_Printf`, `FS_Read`, `FS_Read2`, `FS_ReadFile`, `FS_Remove`, `FS_Rename`, `FS_ReplaceSeparators`, `FS_Restart`, `FS_ReturnPath`, `FS_SV_FOpenFileRead`, `FS_SV_FOpenFileWrite`, `FS_SV_FileExists`, `FS_SV_Rename`, `FS_Seek`, `FS_SetRestrictions`, `FS_ShiftedStrStr`, `FS_Shutdown`, `FS_SortFileList`, `FS_Startup`, `FS_TouchFile_f`, `FS_Write`, `FS_WriteFile`, `Sys_ConcatenateFileLists`, `Sys_CountFileList`, `cvars`, `fclose`, `paksort`, `readable`, `write`
 - `code/qcommon/md4.c` (partial): `Decode`, `Encode`
-- `code/qcommon/msg.c` (partial): `MSG_Copy`, `MSG_NUinitHuffman`, `MSG_ReadAngle16`, `MSG_ReadBigString`, `MSG_ReadFloat`, `MSG_ReportChangeVectors_f`, `MSG_WriteAngle`, `MSG_WriteAngle16`, `MSG_WriteBigString`, `MSG_WriteFloat`
+- `code/qcommon/msg.c` (partial): `MSG_NUinitHuffman`, `MSG_ReportChangeVectors_f`
 - `code/qcommon/net_chan.c` (partial): `NET_AdrToString`, `NET_CompareAdr`, `NET_CompareBaseAdr`, `NET_GetLoopPacket`, `NET_IsLocalAddress`, `NET_SendLoopPacket`, `NET_StringToAdr`, `Netchan_ScramblePacket`, `Netchan_UnScramblePacket`, `datagram`
 - `code/qcommon/qcommon.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/qfiles.h` (partial): *(Symbolinventar ergänzen)*
@@ -651,7 +651,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/renderer/tr_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_scene.c` (partial): `RE_AddAdditiveLightToScene`, `RE_AddLightToScene`, `RE_RenderScene`, `R_AddPolygonSurfaces`, `R_ToggleSmpFrame`
 - `code/renderer/tr_shade.c` (partial): `ComputeTexCoords`, `DrawMultitextured`, `DrawNormals`, `DrawTris`, `ProjectDlightTexture`, `RB_EndSurface`, `RB_FogPass`, `RB_IterateStagesGeneric`, `RB_StageIteratorGeneric`, `RB_StageIteratorLightmappedMultitexture`, `RB_StageIteratorVertexLitTexture`, `R_ArrayElementDiscrete`, `R_DrawElements`, `R_DrawStripElements`
-- `code/renderer/tr_shade_calc.c` (partial): `Autosprite2Deform`, `AutospriteDeform`, `DeformText`, `EvalWaveForm`, `EvalWaveFormClamped`, `GlobalVectorToLocal`, `RB_CalcBulgeVertexes`, `RB_CalcDeformNormals`, `RB_CalcDeformVertexes`, `RB_CalcDiffuseColor`, `RB_CalcEnvironmentTexCoords`, `RB_CalcFogTexCoords`, `RB_CalcMoveVertexes`, `RB_CalcRotateTexCoords`, `RB_CalcScaleTexCoords`, `RB_CalcSpecularAlpha`, `RB_CalcStretchTexCoords`, `RB_CalcTransformTexCoords`, `RB_CalcTurbulentTexCoords`, `RB_CalcWaveAlpha`, `RB_CalcWaveColor`, `RB_DeformTessGeometry`, `TableForFunc`, `myftol`
+- `code/renderer/tr_shade_calc.c` (partial): `Autosprite2Deform`, `AutospriteDeform`, `DeformText`, `EvalWaveForm`, `EvalWaveFormClamped`, `GlobalVectorToLocal`, `RB_CalcBulgeVertexes`, `RB_CalcDeformNormals`, `RB_CalcDeformVertexes`, `RB_CalcDiffuseColor`, `RB_CalcEnvironmentTexCoords`, `RB_CalcFogTexCoords`, `RB_CalcMoveVertexes`, `RB_CalcRotateTexCoords`, `RB_CalcScaleTexCoords`, `RB_CalcStretchTexCoords`, `RB_CalcTransformTexCoords`, `RB_CalcTurbulentTexCoords`, `RB_CalcWaveAlpha`, `RB_CalcWaveColor`, `RB_DeformTessGeometry`, `TableForFunc`, `myftol`
 - `code/renderer/tr_shader.c` (partial): `CollapseMultitexture`, `ComputeStageIteratorFunc`, `CreateExternalShaders`, `CreateInternalShaders`, `FixRenderCommandList`, `GeneratePermanentShader`, `NameToAFunc`, `NameToDstBlendMode`, `NameToGenFunc`, `NameToSrcBlendMode`, `ParseDeform`, `ParseSkyParms`, `ParseSort`, `ParseSurfaceParm`, `ParseTexMod`, `ParseVector`, `ParseWaveForm`, `RE_RegisterShaderFromImage`, `RE_RegisterShaderNoMip`, `R_FindShader`, `R_FindShaderByName`, `R_InitShaders`, `R_RemapShader`, `R_ShaderList_f`, `ScanAndLoadShaderFiles`, `SortNewShader`, `VertexLightingCollapse`, `modes`, `valid`
 - `code/renderer/tr_shadows.c` (partial): `RB_ShadowFinish`, `RB_ShadowTessEnd`, `R_AddEdgeDef`, `R_RenderShadowEdges`
 - `code/renderer/tr_sky.c` (not_started): `AddSkyPolygon`, `ClearSkyBox`, `ClipSkyPolygon`, `DrawSkyBox`, `DrawSkySide`, `FillCloudBox`, `FillCloudySkySide`, `MakeSkyVec`, `RB_ClipSkyPolygons`, `RB_DrawSun`, `RB_StageIteratorSky`, `R_BuildCloudData`, `R_InitSkyTexCoords`
@@ -705,7 +705,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/win32/resource.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/win32/win_gamma.c` (not_started): `GLimp_SetGamma`, `WG_CheckHardwareGamma`, `WG_RestoreGamma`, `mapGammaMax`
 - `code/win32/win_glimp.c` (partial): `GLW_CheckOSVersion`, `GLW_ChoosePFD`, `GLW_CreatePFD`, `GLW_InitDriver`, `GLW_InitExtensions`, `GLW_LoadOpenGL`, `GLW_MakeContext`, `GLW_SetMode`, `GLW_StartDriverAndSetMode`, `GLW_StartOpenGL`, `GLimp_FrontEndSleep`, `GLimp_Init`, `GLimp_LogComment`, `GLimp_RenderThreadWrapper`, `GLimp_RendererSleep`, `GLimp_SpawnRenderThread`, `GLimp_WakeRenderer`, `PrintCDSError`
-- `code/win32/win_input.c` (not_started): `IN_Activate`, `IN_ActivateDIMouse`, `IN_ActivateMouse`, `IN_ActivateWin32Mouse`, `IN_ClearStates`, `IN_DIMouse`, `IN_DeactivateDIMouse`, `IN_DeactivateMouse`, `IN_DeactivateWin32Mouse`, `IN_Frame`, `IN_Init`, `IN_InitDIMouse`, `IN_InitWin32Mouse`, `IN_JoyMove`, `IN_MouseEvent`, `IN_MouseMove`, `IN_Shutdown`, `IN_ShutdownDIMouse`, `IN_ShutdownMIDI`, `IN_ShutdownWin32Mouse`, `IN_Startup`, `IN_StartupJoystick`, `IN_StartupMIDI`, `IN_StartupMouse`, `IN_Win32Mouse`, `JoyToF`, `JoyToI`, `MIDI_NoteOff`, `MIDI_NoteOn`, `MidiInProc`, `MidiInfo_f`
+- `code/win32/win_input.c` (partial): `IN_Activate`, `IN_ActivateDIMouse`, `IN_ActivateMouse`, `IN_ActivateWin32Mouse`, `IN_ClearStates`, `IN_DIMouse`, `IN_DeactivateDIMouse`, `IN_DeactivateMouse`, `IN_DeactivateWin32Mouse`, `IN_Frame`, `IN_Init`, `IN_InitDIMouse`, `IN_InitWin32Mouse`, `IN_JoyMove`, `IN_Shutdown`, `IN_ShutdownDIMouse`, `IN_ShutdownMIDI`, `IN_ShutdownWin32Mouse`, `IN_Startup`, `IN_StartupJoystick`, `IN_StartupMIDI`, `IN_StartupMouse`, `IN_Win32Mouse`, `JoyToF`, `JoyToI`, `MIDI_NoteOff`, `MIDI_NoteOn`, `MidiInProc`, `MidiInfo_f`
 - `code/win32/win_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/win32/win_main.c` (partial): `Spk_Close`, `Spk_Open`, `Spk_Printf`, `Sys_BeginProfiling`, `Sys_BeginStreamedFile`, `Sys_CheckCD`, `Sys_Cwd`, `Sys_DefaultBasePath`, `Sys_DefaultCDPath`, `Sys_EndStreamedFile`, `Sys_Error`, `Sys_FreeFileList`, `Sys_GetClipboardData`, `Sys_GetEvent`, `Sys_In_Restart_f`, `Sys_InitStreamThread`, `Sys_ListFiles`, `Sys_ListFilteredFiles`, `Sys_LoadDll`, `Sys_LowPhysicalMemory`, `Sys_Mkdir`, `Sys_Net_Restart_f`, `Sys_Print`, `Sys_Quit`, `Sys_ScanForCD`, `Sys_ShutdownStreamThread`, `Sys_StreamSeek`, `Sys_StreamThread`, `Sys_StreamedRead`, `Sys_UnloadDll`, `WinMain`, `strgtr`, `systems`
 - `code/win32/win_net.c` (partial): `NET_Config`, `NET_ErrorString`, `NET_GetCvars`, `NET_GetLocalAddress`, `NET_IPXSocket`, `NET_OpenIP`, `NET_OpenIPX`, `NET_OpenSocks`, `NET_Restart`, `NET_Sleep`, `NetadrToSockadr`, `SockadrToNetadr`, `Sys_IsLANAddress`, `Sys_ShowIP`, `Sys_StringToAdr`, `Sys_StringToSockaddr`

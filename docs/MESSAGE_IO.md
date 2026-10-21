@@ -1,10 +1,11 @@
 # Baseq3-Nachrichtenpuffer und Huffman-Codec
 
 `src/mq3/qcommon/message.ml` bildet `msg_t`, Initialisierung, Leeren,
-Leseanfang und Byte-, Char-, Short-, Long-, Daten- und C-String-Operationen ab.
-Mehrbytewerte liegen im OOB-Zweig Little Endian vor. Byte-Lesen bleibt
-vorzeichenlos, Char und Short werden mit Vorzeichen erweitert, Long wird auf
-32 Bit normalisiert.
+Leseanfang, Zustandskopie und Byte-, Char-, Short-, Long-, Binary32-, Winkel-,
+Daten- und C-String-Operationen ab. Mehrbytewerte liegen im OOB-Zweig Little
+Endian vor. Byte-Lesen bleibt vorzeichenlos, Char und Short werden mit
+Vorzeichen erweitert, Long wird auf 32 Bit normalisiert. `MSG_Copy` bewahrt
+alle Cursor und Flags, kopiert die Nutzdaten aber in einen unabhängigen Puffer.
 
 `src/mq3/qcommon/huffman.ml` portiert den adaptiven Baum aus
 `qcommon/huffman.c`: NYT-Erweiterung, Gewichtsblöcke, Rangtausch, LSB-erste
@@ -22,10 +23,11 @@ jedem primitiven Schreibvorgang vier freie Bytes und setzt andernfalls
 liefert in den typisierten OOB-Helfern `-1`, nachdem Lese- und Bitcursor wie im
 Original fortgeschritten sind. Normale Strings sind auf
 `MAX_STRING_CHARS - 1` Zeichen begrenzt; eingebettetes NUL beendet sie wie
-C-`strlen`.
+C-`strlen`. Der Big-String-Pfad verwendet die originale 8.192-Byte-Grenze und
+behält beim Lesen hohe Bytes bei, während Prozentzeichen entschärft werden.
 
-`python scripts/test_message.py` vergleicht 17 OOB-Ausgabezeilen aus 21
-unveränderten `msg.c`-Funktionskörpern und prüft 24 zusätzliche Verträge.
+`python scripts/test_message.py` vergleicht 23 OOB-Ausgabezeilen aus 29
+unveränderten `msg.c`-Funktionskörpern und prüft 37 zusätzliche Verträge.
 `python scripts/test_huffman_message.py` kompiliert die unveränderten
 Originalkörper aus `huffman.c` zusammen mit `MSG_initHuffman`, `MSG_WriteBits`
 und `MSG_ReadBits`. Acht vollständige Datensätze vergleichen adaptiven
@@ -152,6 +154,6 @@ Snapshot-Ringzähler, Downloadblock und vollständiges Fragment-Leeren; die
 einzelnen Bytepfade behalten ihre direkten unveränderten C-Oracles.
 
 Offen bleiben die eigenständigen Ganzpuffer-Helfer `Huff_Compress` und
-`Huff_Decompress` sowie die primitiven Float-/Winkel-Helfer. Die MiniLang-Namen `readU8`, `readI8`, `readI16`,
+`Huff_Decompress`. Die MiniLang-Namen `readU8`, `readI8`, `readI16`,
 `readI32`, `readCString` und `readCStringLine` vermeiden Kollisionen mit
 eingebauten MiniLang-Funktionen.
