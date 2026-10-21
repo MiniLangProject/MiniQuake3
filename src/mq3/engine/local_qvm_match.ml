@@ -98,6 +98,7 @@ import mq3.vm.font_abi as fontAbi
 import mq3.vm.pc_parser as pcParser
 import mq3.client.cinematic_runtime as cinematics
 import mq3.client.cgame_usercmd as cgameUsercmd
+import mq3.client.command_ring as matchCommandRing
 import mq3.client.ui_lan_browser as uiLan
 import mq3.client.ui_lan_cache as uiLanCache
 import mq3.client.ui_lan_ingress as uiLanIngress
@@ -625,7 +626,7 @@ function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
   botBspEntities=bsp.entities(map);if botBspEntities is error then return botBspEntities end if
   commandState=commands.create();configstrings=array(MAX_CONFIGSTRINGS,"");cgameServerCommands=serverCommandStream.create(commandState,configstrings)
   uiClient=uiHost.createClientState(uiHost.CA_DISCONNECTED,0,-1,"localhost","","");if uiClient is error then return uiClient end if
-  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,array(64,void),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient)
+  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient)
   commands.initCommands(context.commandState);installed=cvarCommands.install(registry,context.commandState);if installed is error then return installed end if
   context.aasMovement=aasClientMovement.services(context);context.aasMovement.traceFn=aasMovementTrace;context.aasMovement.pointContentsFn=aasPointContents;context.aasMovement.pointAreaFn=aasMovementPointArea;context.aasMovement.pointPresenceFn=aasMovementPointPresence;context.aasMovement.areaContentsFn=aasMovementAreaContents;context.aasMovement.traceAreasFn=aasMovementTraceAreas
   context.elementaryActions=elementaryActions.create(MAX_CLIENTS,botClientCommand,context)
@@ -685,10 +686,34 @@ function executeGameConsole(value,text)
   commands.tokenizeString(value.context.commandState,text);return gameVm.consoleCommand(value.game)
 end function
 
+// qcommon/Cmd_ExecuteString callback chain.  These callbacks deliberately use
+// the already-tokenized shared command state, which is also what trap_Argv and
+// trap_Args read while the QVM export is running.
+function clientGameCommand(commandState)
+  value=commandState.context;if value==void or value.cgame==void then return false end if
+  result=cgameVm.consoleCommand(value.cgame);if result is error then return result end if;return result!=0
+end function
+function serverGameCommand(commandState)
+  value=commandState.context;if value==void or value.game==void then return false end if
+  result=gameVm.consoleCommand(value.game);if result is error then return result end if;return result!=0
+end function
+function uiGameCommand(commandState)
+  value=commandState.context;if value==void or value.ui==void then return false end if
+  result=uiVm.consoleCommand(value.ui,value.context.now);if result is error then return result end if;return result!=0
+end function
+function forwardClientCommand(commandState,text)
+  value=commandState.context;if value==void then return false end if
+  sendClientCommand(value.context,text);return true
+end function
+function executeClientConsole(value,text)
+  if value==void or typeof(text)!="string" then return fail("match and console text are required") end if
+  return commands.executeText(value.context.commandState,commands.EXEC_NOW,text)
+end function
+
 function submitUsercmd(value,clientNum,command)
   if value==void or clientNum<0 or clientNum>=MAX_CLIENTS or command==void then return fail("valid match, client and usercmd are required") end if
-  value.context.usercmds[clientNum]=command;value.context.now=command.serverTime;value.context.commandNumber=value.context.commandNumber+1
-  value.context.usercmdHistory[value.context.commandNumber&63]=command
+  value.context.usercmds[clientNum]=command;value.context.now=command.serverTime;value.context.commandNumber=n.i32(value.context.commandNumber+1)
+  stored=matchCommandRing.store(value.context.usercmdHistory,value.context.commandNumber,command);if stored is error then return stored end if
   return gameVm.clientThink(value.game,clientNum)
 end function
 
@@ -697,7 +722,7 @@ function runFrame(value,serverTime)
   commands.execute(value.context.commandState)
   if value.game.botEnable!=0 then botFrame=gameVm.botStartFrame(value.game,serverTime);if botFrame is error then return botFrame end if end if
   for each pending in botServerBridge.takePending(value.context.botServer)
-    clientNum=pending[0];value.context.usercmds[clientNum]=pending[1];value.context.commandNumber=value.context.commandNumber+1;value.context.usercmdHistory[value.context.commandNumber&63]=pending[1]
+    clientNum=pending[0];value.context.usercmds[clientNum]=pending[1];value.context.commandNumber=n.i32(value.context.commandNumber+1);stored=matchCommandRing.store(value.context.usercmdHistory,value.context.commandNumber,pending[1]);if stored is error then return stored end if
     thought=gameVm.clientThink(value.game,clientNum);if thought is error then return thought end if
   end for
   result=gameVm.runFrame(value.game,serverTime);if result is error then return result end if
@@ -797,8 +822,14 @@ function registerShaderKind(context,kind,name)
 end function
 function registerShader(context,name) return registerShaderKind(context,"shader",name) end function
 function registerShaderNoMip(context,name) return registerShaderKind(context,"shaderNoMip",name) end function
-function addCommand(context,name) context.console=context.console+[[0,"add "+name]];return void end function
-function removeCommand(context,name) return void end function
+function addCommand(context,name)
+  // CG_InitConsoleCommands registers completion-only commands.  Keeping them
+  // in the real Cmd registry is what lets Cmd_ExecuteString fall through to
+  // CG_CONSOLE_COMMAND, exactly like a NULL xcommand_t in Baseq3.
+  commands.addCommand(context.commandState,name,void)
+  context.console=context.console+[[0,"add "+name]];return void
+end function
+function removeCommand(context,name) commands.removeCommand(context.commandState,name);return void end function
 function sendClientCommand(context,name) context.console=context.console+[[0,"client "+name]];return void end function
 function updateScreen(context) return void end function
 function loadWorld(context,name)
@@ -809,7 +840,7 @@ end function
 function clearScene(context) context.renderCommands=[];sceneQueue.clearScene(context.scene);return void end function
 function commandConfigstring(context,index,value) if index>=0 and index<len(context.configstrings) then context.configstrings[index]=value end if;return void end function
 function commandClearNotify(context) context.prints=[];return void end function
-function commandClearUsercmds(context) context.usercmdHistory=array(64,void);return void end function
+function commandClearUsercmds(context) return matchCommandRing.clear(context.usercmdHistory) end function
 function commandCloseConsole(context) context.uiKeyCatcher=context.uiKeyCatcher&~1;return void end function
 function commandQueueConsole(context,text) return commands.addText(context.commandState,text) end function
 function cgameServerCommand(context,number)
@@ -818,8 +849,8 @@ function cgameServerCommand(context,number)
 end function
 function currentCmdNumber(context) return context.commandNumber end function
 function clientUsercmd(context,number)
-  if number<1 or number>context.commandNumber or number<=context.commandNumber-64 then return cgameSyscall.BytesResult(false,bytes(0,0)) end if
-  command=context.usercmdHistory[number&63];if command==void then return cgameSyscall.BytesResult(false,bytes(0,0)) end if
+  command=matchCommandRing.get(context.usercmdHistory,context.commandNumber,number);if command is error then return command end if
+  if command==void then return cgameSyscall.BytesResult(false,bytes(0,0)) end if
   output=bytes(cgameSyscall.USERCMD_SIZE,0);n.writeU32(output,0,command.serverTime)
   for axis=0 to 2 n.writeU32(output,4+axis*4,command.angles[axis]) end for
   n.writeU32(output,16,command.buttons);output[20]=command.weapon&255;output[21]=command.forwardmove&255;output[22]=command.rightmove&255;output[23]=command.upmove&255
@@ -1034,8 +1065,13 @@ function bootCgame(value)
   syscalls.pcServices=cgamePc.registryServices(context.pcRegistry)
   host=cgameVm.services(value.runtime,cgameSyscall.callback(syscalls),loadClientVm,callVm,freeVm);host.context=context;host.millisecondsFn=milliseconds;host.serverInfoFn=getServerinfo
   client=cgameVm.create(host);if client is error then return client end if
+  // Cmd_ExecuteString owns the original dispatch order.  Install the live
+  // QVM callbacks before CG_INIT so its completion-only registrations are
+  // immediately usable by the same command state.
+  value.cgame=client;context.commandState.context=value;context.commandState.clientRunning=true;context.commandState.serverRunning=true
+  context.commandState.clientGameCommandFn=clientGameCommand;context.commandState.serverGameCommandFn=serverGameCommand;context.commandState.uiGameCommandFn=uiGameCommand;context.commandState.forwardCommandFn=forwardClientCommand
   processedSnapshot=context.snapshotNumber-1;if processedSnapshot<0 then processedSnapshot=0 end if
-  cgameVm.initialize(client,processedSnapshot,context.cgameServerCommands.lastExecuted,0,0,0);value.cgame=client;return client
+  cgameVm.initialize(client,processedSnapshot,context.cgameServerCommands.lastExecuted,0,0,0);return client
 end function
 
 function drawCgame(value,serverTime)

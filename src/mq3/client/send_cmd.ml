@@ -4,6 +4,7 @@
 package mq3.client.send_cmd
 
 import mq3.client.netchan as clientNetchan
+import mq3.client.command_ring as sendCommandRing
 import mq3.compat.numeric as n
 import mq3.qcommon.message as message
 import mq3.qcommon.message_delta as usercmdDelta
@@ -43,7 +44,7 @@ function commandCopy(value)
 end function
 function create()
   reliable=array(MAX_RELIABLE_COMMANDS,"");server=array(MAX_RELIABLE_COMMANDS,"")
-  commands=array(CMD_BACKUP,void);for index=0 to CMD_BACKUP-1 commands[index]=zeroCommand() end for
+  commands=sendCommandRing.create();for index=0 to CMD_BACKUP-1 commands[index]=zeroCommand() end for
   packets=array(PACKET_BACKUP,void);for index=0 to PACKET_BACKUP-1 packets[index]=OutPacket(0,0,0) end for
   return State(1,0,0,0,0,false,false,"",0,false,30,1,false,false,false,false,0,0,0,0,0,reliable,server,0,false,0,1,0,commands,packets)
 end function
@@ -62,12 +63,12 @@ end function
 function diagnose(host,text) if host.diagnosticFn!=void then host.diagnosticFn(host,text) end if;return void end function
 
 function createNewCommand(state,frameTime,host)
-  if state.connectionState<CA_PRIMED then return false end if
-  state.frameMsec=n.i32(frameTime-state.oldFrameTime);if state.frameMsec>200 then state.frameMsec=200 end if
-  state.oldFrameTime=frameTime;state.cmdNumber=n.i32(state.cmdNumber+1);slot=state.cmdNumber&CMD_MASK
+  advanced=sendCommandRing.advance(state.connectionState,frameTime,state.oldFrameTime,state.cmdNumber)
+  if not advanced.created then return false end if
+  state.frameMsec=advanced.frameMsec;state.oldFrameTime=advanced.oldFrameTime;state.cmdNumber=advanced.commandNumber;slot=advanced.slot
   command=void;if host.createCommandFn!=void then command=host.createCommandFn(host,state,state.frameMsec,frameTime) end if
   if command==void then command=zeroCommand();command.serverTime=frameTime end if
-  state.commands[slot]=commandCopy(command);return true
+  sendCommandRing.store(state.commands,state.cmdNumber,commandCopy(command));return true
 end function
 
 function ready(state,host)
@@ -103,7 +104,7 @@ function writePacket(state,host)
     commandText=state.serverCommands[state.serverCommandSequence&(MAX_RELIABLE_COMMANDS-1)]
     key=n.i32(state.checksumFeed^state.serverMessageSequence^hashKey(commandText,32))
     for index=0 to count-1
-      slot=(state.cmdNumber-count+index+1)&CMD_MASK;command=state.commands[slot]
+      slot=(state.cmdNumber-count+index+1)&CMD_MASK;command=sendCommandRing.get(state.commands,state.cmdNumber,state.cmdNumber-count+index+1)
       usercmdDelta.writeDeltaUsercmdKey(msg,key,oldCommand,command);oldCommand=command
     end for
   end if

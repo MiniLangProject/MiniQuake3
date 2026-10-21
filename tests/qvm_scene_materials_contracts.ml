@@ -2,6 +2,7 @@ import mq3.renderer.qvm_scene_materials as qvmMaterials
 import mq3.renderer.shader_remap as shaderRemap
 
 struct Triangle shaderHandle customSkin shaderName surfaceName end struct
+struct ShadowTriangle shaderHandle customSkin shaderName surfaceName fogIndex entityIndex surfaceIndex end struct
 function require(value,message) if not value then return error(7684,"QVM scene materials: "+message) end if;return 1 end function
 
 function main(args)
@@ -32,5 +33,10 @@ function main(args)
   count=count+require(shadowIndex==0 and shadowCatalog.materials[0].shaderName==qvmMaterials.BUILTIN_PROJECTION_SHADOW,"built-in projection shadow material created")
   count=count+require(shadowCatalog.materials[0].sort==4.0 and shadowCatalog.materials[0].polygonOffset and shadowCatalog.materials[0].twoSided,"projection shadow uses decal ordering and polygon offset")
   count=count+require(shadowCatalog.materials[0].stages[0].blend==1 and shadowCatalog.materials[0].stages[0].rgbGen=="vertex" and shadowCatalog.materials[0].stages[0].alphaGen=="vertex","projection shadow blends submitted black alpha")
+  opaque=qvmMaterials.Material(0,"opaque","",void,-1,[],[],false,3.0,false,false,0.0,0.0);source=ShadowTriangle(0,0,"opaque","body",-1,7,2);shadow=ShadowTriangle(0,0,qvmMaterials.BUILTIN_PROJECTION_SHADOW,"",-1,7,2)
+  policy=qvmMaterials.Catalog(array(2,void),[opaque],[],void,0,[],[],0,0,110,void,void);policy.triangles[0]=qvmMaterials.ResolvedTriangle(source,0)
+  count=count+require(qvmMaterials.projectionShadowEligible(policy,shadow,1),"opaque unfogged MD3 source admits projection shadow")
+  policy.materials[0].sort=9.0;count=count+require(not qvmMaterials.projectionShadowEligible(policy,shadow,1),"blended MD3 source rejects projection shadow like R_AddMD3Surfaces")
+  qvmMaterials.bindTriangle(policy,shadow,1,void,[],[],112);count=count+require(policy.triangles[1].materialIndex== -1 and len(policy.materials)==1,"rejected projection shadow cannot enter the productive material batch")
   print("PASS: "+str(count)+" QVM scene material contracts");return 0
 end function

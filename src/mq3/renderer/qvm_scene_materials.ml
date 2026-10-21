@@ -123,7 +123,22 @@ function storeBinding(output,triangle,index)
   binding=Binding(triangle.shaderHandle,triangle.customSkin,textKey(triangle.shaderName),textKey(triangle.surfaceName),index);output.bindings=output.bindings+[binding];output.recentBinding=binding;return binding
 end function
 
+// R_AddMD3Surfaces only submits a projection-shadow draw surface when the
+// source surface resolves to SS_OPAQUE and lies outside fog. Geometry expansion
+// keeps every projected triangle directly after its source triangle, allowing
+// the material bridge to apply the original shader policy after skin/custom
+// shader resolution without duplicating the shader registry here.
+function projectionShadowEligible(output,triangle,outputIndex)
+  if triangle.fogIndex>0 or outputIndex<=0 then return false end if
+  source=output.triangles[outputIndex-1]
+  if source==void or source.triangle.entityIndex!=triangle.entityIndex or source.triangle.surfaceIndex!=triangle.surfaceIndex then return false end if
+  index=source.materialIndex
+  if index<0 then return true end if
+  return index<len(output.materials) and output.materials[index].sort==3.0
+end function
+
 function bindTriangle(output,triangle,outputIndex,archive,assets,kinds,endSlot)
+  if triangle.shaderName==BUILTIN_PROJECTION_SHADOW and not projectionShadowEligible(output,triangle,outputIndex) then output.unresolvedTriangles=output.unresolvedTriangles+1;output.triangles[outputIndex]=ResolvedTriangle(triangle,-1);return void end if
   index=cachedBinding(output,triangle)
   // R_RemapShader preserves handles while changing the shader object they
   // resolve to. Reject a cached binding when that stable handle's registry

@@ -59,10 +59,17 @@ function main(args)
   count=count+req(wrappedGeometry.triangles[0].positions[0]==[12.0,20.0,30.0],"RF_WRAP_FRAMES reaches wrapped animation pose")
   projected=geometry.projectionShadowPoint([2.0,1.0,4.0],1.0,[0.0,0.0,1.0]);count=count+req(projected==[2.0,1.0,1.0],"projection shadow reaches the submitted plane")
   shallow=geometry.projectionShadowPoint([2.0,1.0,4.0],1.0,[1.0,0.0,0.1]);count=count+req(shallow==[-4.0,1.0,1.0],"projection shadow clamps shallow light directions like RB_ProjectionShadowDeform")
+  oriented=geometry.projectionShadowPointOriented([2.0,1.0,4.0],25.0,[0.2,0.3,0.9327379],[10.0,20.0,30.0],[[0.0,1.0,0.0],[-1.0,0.0,0.0],[0.0,0.0,1.0]])
+  count=count+req(oriented[2]==25.0 and oriented[0]<8.0 and oriented[1]<20.0,"projection shadow preserves original entity-local deformation for rotated axes")
+  count=count+req(try(geometry.projectionShadowPointOriented([0.0,0.0,0.0],0.0,[0.0,0.0,1.0],[0.0,0.0,0.0],[[1.0,0.0,0.0]])) is error,"projection shadow rejects incomplete entity axes")
   shadowState=scene.create(1,0);shadowState.registered=true;shadowPayload=basePayload([10.0,20.0,30.0]);n.writeU32(shadowPayload,4,256);wf(shadowPayload,24,25.0);scene.addEntity(shadowState,0,shadowPayload)
   shadowGeometry=geometry.build(shadowState,["model"],[fixtureModel()],refdef,8);if shadowGeometry is error then return shadowGeometry end if
   count=count+req(len(shadowGeometry.triangles)==2 and shadowGeometry.triangles[1].shaderName==geometry.PROJECTION_SHADOW_SHADER,"RF_SHADOW_PLANE emits a productive projected draw surface")
   count=count+req(shadowGeometry.triangles[1].positions[0][2]==25.0 and shadowGeometry.triangles[1].colors[0]==[0,0,0,102],"projected QVM shadow uses the original plane and translucent black")
+  tiltedState=scene.create(1,0);tiltedState.registered=true;tiltedPayload=basePayload([10.0,20.0,30.0]);n.writeU32(tiltedPayload,4,256);wf(tiltedPayload,24,25.0);wf(tiltedPayload,28,1.0);wf(tiltedPayload,32,0.0);wf(tiltedPayload,36,0.0);wf(tiltedPayload,40,0.0);wf(tiltedPayload,44,0.70710677);wf(tiltedPayload,48,0.70710677);wf(tiltedPayload,52,0.0);wf(tiltedPayload,56,-0.70710677);wf(tiltedPayload,60,0.70710677);scene.addEntity(tiltedState,0,tiltedPayload)
+  tiltedGeometry=geometry.build(tiltedState,["model"],[fixtureModel()],refdef,8);if tiltedGeometry is error then return tiltedGeometry end if;tiltedExpected=geometry.projectionShadowPointOriented([1.0,0.0,0.0],25.0,[0.4285714286,0.2857142857,0.8571428571],[10.0,20.0,30.0],[[1.0,0.0,0.0],[0.0,0.70710677,0.70710677],[0.0,-0.70710677,0.70710677]])
+  tiltedActual=tiltedGeometry.triangles[1].positions[0];tiltedDelta=0.0;for axisIndex=0 to 2 difference=tiltedActual[axisIndex]-tiltedExpected[axisIndex];tiltedDelta=tiltedDelta+difference*difference end for
+  count=count+req(tiltedDelta<0.00000001 and tiltedActual[2]>24.999 and tiltedActual[2]<25.001,"productive RF_SHADOW_PLANE path deforms animated MD3 vertices in entity-local coordinates")
   effects=scene.create(4,0);effects.registered=true
   railPayload=basePayload([64.0,0.0,0.0]);wf(railPayload,84,0.0);wf(railPayload,88,0.0);wf(railPayload,92,0.0);n.writeU32(railPayload,112,21);scene.addEntity(effects,4,railPayload)
   ringsPayload=basePayload([128.0,0.0,0.0]);wf(ringsPayload,84,0.0);wf(ringsPayload,88,0.0);wf(ringsPayload,92,0.0);n.writeU32(ringsPayload,112,22);scene.addEntity(effects,5,ringsPayload)

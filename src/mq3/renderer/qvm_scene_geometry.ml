@@ -40,13 +40,25 @@ function normal() return [0.0,0.0,1.0] end function
 // entity's horizontal shadow plane along its sampled light direction.  The
 // original clamps shallow light directions so projected shadows cannot become
 // unbounded; retain that rule before dividing by the vertical component.
-function projectionShadowPoint(position,shadowPlane,lightDirection)
-  if position==void or len(position)!=3 or lightDirection==void or len(lightDirection)!=3 then return fail("projection shadow needs a point and light direction") end if
-  light=[lightDirection[0],lightDirection[1],lightDirection[2]];d=light[2]
-  if d<0.5 then light[2]=light[2]+0.5-d;d=light[2] end if
+function projectionShadowPointOriented(position,shadowPlane,lightDirection,origin,axis)
+  if position==void or len(position)!=3 or lightDirection==void or len(lightDirection)!=3 or origin==void or len(origin)!=3 or axis==void or len(axis)!=3 then return fail("projection shadow needs a point, light, origin and axes") end if
+  for each direction in axis if direction==void or len(direction)!=3 then return fail("projection shadow axis needs three directions") end if end for
+  // R_SetupEntityLighting stores the normalized world light in entity-local
+  // coordinates. RB_ProjectionShadowDeform then describes the world-Z plane
+  // in those same coordinates. Keeping those two transforms is observable for
+  // rotated and RF_NON_NORMALIZED_AXES entities; projecting world positions
+  // directly only matches the identity-axis case.
+  ground=[axis[0][2],axis[1][2],axis[2][2]]
+  light=[lightDirection[0]*axis[0][0]+lightDirection[1]*axis[0][1]+lightDirection[2]*axis[0][2],lightDirection[0]*axis[1][0]+lightDirection[1]*axis[1][1]+lightDirection[2]*axis[1][2],lightDirection[0]*axis[2][0]+lightDirection[1]*axis[2][1]+lightDirection[2]*axis[2][2]]
+  d=light[0]*ground[0]+light[1]*ground[1]+light[2]*ground[2]
+  if d<0.5 then amount=0.5-d;for component=0 to 2 light[component]=light[component]+amount*ground[component] end for;d=light[0]*ground[0]+light[1]*ground[1]+light[2]*ground[2] end if
   if d==0.0 then return fail("projection shadow light is parallel to plane") end if
-  h=position[2]-shadowPlane;scale=h/d
-  return [position[0]-light[0]*scale,position[1]-light[1]*scale,position[2]-light[2]*scale]
+  h=position[0]*ground[0]+position[1]*ground[1]+position[2]*ground[2]+origin[2]-shadowPlane
+  local=[position[0]-light[0]*h/d,position[1]-light[1]*h/d,position[2]-light[2]*h/d]
+  return [origin[0]+local[0]*axis[0][0]+local[1]*axis[1][0]+local[2]*axis[2][0],origin[1]+local[0]*axis[0][1]+local[1]*axis[1][1]+local[2]*axis[2][1],origin[2]+local[0]*axis[0][2]+local[1]*axis[1][2]+local[2]*axis[2][2]]
+end function
+function projectionShadowPoint(position,shadowPlane,lightDirection)
+  return projectionShadowPointOriented(position,shadowPlane,lightDirection,[0.0,0.0,0.0],[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]])
 end function
 function triangle(positions,coords,normals,colors,entityColor,entityTexCoord,shaderTime,modelHandle,customSkin,shaderHandle,shaderName,surfaceName,entityIndex,surfaceIndex,renderfx)
   return Triangle(positions,coords,normals,colors,entityColor,entityTexCoord,shaderTime,modelHandle,customSkin,shaderHandle,shaderName,surfaceName,entityIndex,surfaceIndex,renderfx,[[0.0,0.0],[0.0,0.0],[0.0,0.0]],-1,-1,false,void,void,void)
@@ -212,7 +224,7 @@ function addModelOptimized(output,decoded,model,entityIndex,maxTrianglesPerSurfa
     frameData=cachedFrame(cache,decoded.hModel,model,surfaceIndex,decoded.frame,decoded.oldframe,decoded.backlerp,normalTable);if frameData is error then return frameData end if
     transformed=cachedTransform(cache,decoded,surfaceIndex,frameData);if transformed is error then return transformed end if;worldPositions=transformed.positions;worldNormals=transformed.normals;vertexColors=void
     if lighting!=void then vertexColors=cachedVertexColors(transformed,lighting,decoded.shaderRGBA[3]) end if
-    shadowDirection=[0.45,0.3,0.9];if lighting!=void then shadowDirection=lighting.direction end if
+    shadowDirection=[0.4285714286,0.2857142857,0.8571428571];if lighting!=void then shadowDirection=lighting.direction end if
     output.sourceVertices=output.sourceVertices+surface.mesh.numVerts;output.vertexTransforms=output.vertexTransforms+surface.mesh.numVerts
     shaderName="";if len(surface.shaders)>0 then shaderName=surface.shaders[0] end if
     for triangleIndex=0 to limit-1
@@ -220,7 +232,7 @@ function addModelOptimized(output,decoded,model,entityIndex,maxTrianglesPerSurfa
       stored=appendIndexedModelTriangle(output,worldPositions,surface.mesh.texCoords,worldNormals,vertexColors,decoded.shaderRGBA,decoded.shaderTexCoord,decoded.shaderTime,a,b,c,decoded.hModel,decoded.customSkin,decoded.customShader,shaderName,surface.name,entityIndex,surfaceIndex,decoded.renderfx);if stored is error then return stored end if
       if (decoded.renderfx&RF_SHADOW_PLANE)!=0 then
         shadowPositions=[]
-        for each vertexIndex in [a,b,c] point=projectionShadowPoint(worldPositions[vertexIndex],decoded.shadowPlane,shadowDirection);if point is error then return point end if;shadowPositions=shadowPositions+[point] end for
+        for each vertexIndex in [a,b,c] point=projectionShadowPointOriented(frameData.xyz[vertexIndex],decoded.shadowPlane,shadowDirection,decoded.origin,decoded.axis);if point is error then return point end if;shadowPositions=shadowPositions+[point] end for
         shadowColor=[0,0,0,102];stored=appendTriangle(output,triangle(shadowPositions,[[0.0,0.0],[0.0,0.0],[0.0,0.0]],[normal(),normal(),normal()],[shadowColor,shadowColor,shadowColor],shadowColor,[0.0,0.0],0.0,0,0,0,PROJECTION_SHADOW_SHADER,"",entityIndex,surfaceIndex,0));if stored is error then return stored end if
       end if
     end for

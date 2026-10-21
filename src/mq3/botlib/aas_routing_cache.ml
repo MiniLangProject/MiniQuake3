@@ -7,6 +7,7 @@ import mq3.botlib.aas_routing as routing
 import mq3.botlib.aas_routing_tables as routingTables
 import mq3.format.aas as aas
 import mq3.compat.numeric as n
+import mq3.botlib.crc16 as crc16
 import std.fs as fs
 
 const CACHE_AREA=1
@@ -207,12 +208,7 @@ function clear(cache) if cache!=void then cache.entries=[];cache.areaCaches=[];c
 // payload embeds native pointers, so MiniQuake3 follows that header with a
 // versioned pointer-free representation of the same routing arrays.
 function crc16Span(data,offset,count)
-  crc=65535
-  if count>0 then for index=0 to count-1
-    crc=crc^((data[offset+index]&255)<<8)
-    for bit=0 to 7 if (crc&0x8000)!=0 then crc=((crc<<1)^0x1021)&0xffff else crc=(crc<<1)&0xffff end if end for
-  end for end if
-  return crc
+  return crc16.processSpan(data,offset,count)
 end function
 function mapCrc(cache,lump)
   if cache==void or cache.router==void or cache.router.runtime==void or cache.router.runtime.map==void then return -1 end if

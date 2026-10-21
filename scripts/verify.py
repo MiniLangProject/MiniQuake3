@@ -16,7 +16,7 @@ def main():
     parser.add_argument("--extended",action="store_true",help="Include all CD collision/patch/movement differential gates")
     args=parser.parse_args()
     if args.extended and not args.data_root: parser.error("--extended requires --data-root")
-    scripts=[("build.py",[]),("test_numeric.py",[]),("test_math.py",[]),("test_core.py",[]),("test_cvar_config.py",[]),("test_cvar_commands.py",[]),("test_cvar_restart.py",[]),("test_message.py",[]),("test_huffman_message.py",[]),("test_message_delta.py",[]),("test_message_state_delta.py",[]),("test_snapshot_build.py",[]),("test_snapshot_runtime.py",["--data-root",str(args.data_root)] if args.data_root else []),("test_snapshot_delta.py",[]),("test_reliable_commands.py",[]),("test_snapshot_send.py",[]),("test_server_download.py",[]),("test_server_pipeline.py",[]),("test_snapshot_parse.py",[]),("test_snapshot_command.py",[]),("test_server_message.py",[]),("test_server_command_stream.py",[]),("test_gamestate.py",[]),("test_system_info.py",[]),("test_download.py",[]),("test_protocol_runtime.py",[]),("test_netchan.py",[]),("test_server_netchan.py",[]),("test_client_netchan.py",[]),("test_client_send_cmd.py",[]),("test_network_match_loop.py",[]),("test_network_match_multi.py",[]),("test_udp_platform.py",[]),("test_net_transport.py",[]),("test_network_pump.py",[]),("test_input_event_queue.py",[]),("test_oob_connect.py",[]),("test_connectionless.py",[]),("test_server_packet_event.py",[]),("test_client_connectionless.py",[]),("test_packet_event.py",[]),("test_localhost_handshake.py",[]),("test_server_client_message.py",[]),("test_client_command_dispatch.py",[]),("test_server_client_command.py",[]),("test_server_user_move.py",[]),("test_server_client_input.py",[]),("test_server_network_ingress.py",[]),("test_client_network_ingress.py",[]),("test_desktop_frame_host.py",[]),("test_server_client_pings.py",[]),("test_server_timeouts.py",[]),("test_server_pause.py",[]),("test_snapshot_schedule.py",[]),("test_server_frame.py",[]),("test_demo.py",[]),("test_shader_index.py",[]),
+    scripts=[("build.py",[]),("test_numeric.py",[]),("test_math.py",[]),("test_core.py",[]),("test_cvar_config.py",[]),("test_cvar_commands.py",[]),("test_cvar_restart.py",[]),("test_message.py",[]),("test_huffman_message.py",[]),("test_message_delta.py",[]),("test_message_state_delta.py",[]),("test_snapshot_build.py",[]),("test_snapshot_runtime.py",["--data-root",str(args.data_root)] if args.data_root else []),("test_snapshot_delta.py",[]),("test_reliable_commands.py",[]),("test_snapshot_send.py",[]),("test_server_download.py",[]),("test_server_pipeline.py",[]),("test_snapshot_parse.py",[]),("test_snapshot_command.py",[]),("test_server_message.py",[]),("test_server_command_stream.py",[]),("test_gamestate.py",[]),("test_system_info.py",[]),("test_download.py",[]),("test_protocol_runtime.py",[]),("test_netchan.py",[]),("test_server_netchan.py",[]),("test_client_netchan.py",[]),("test_client_send_cmd.py",[]),("test_client_command_ring.py",[]),("test_network_match_loop.py",[]),("test_network_match_multi.py",[]),("test_udp_platform.py",[]),("test_net_transport.py",[]),("test_network_pump.py",[]),("test_input_event_queue.py",[]),("test_oob_connect.py",[]),("test_connectionless.py",[]),("test_server_packet_event.py",[]),("test_client_connectionless.py",[]),("test_packet_event.py",[]),("test_localhost_handshake.py",[]),("test_server_client_message.py",[]),("test_client_command_dispatch.py",[]),("test_server_client_command.py",[]),("test_server_user_move.py",[]),("test_server_client_input.py",[]),("test_server_network_ingress.py",[]),("test_client_network_ingress.py",[]),("test_desktop_frame_host.py",[]),("test_server_client_pings.py",[]),("test_server_timeouts.py",[]),("test_server_pause.py",[]),("test_snapshot_schedule.py",[]),("test_server_frame.py",[]),("test_demo.py",[]),("test_shader_index.py",[]),
              ("test_vm.py",[]),("test_vm_runtime.py",[]),("test_archives.py",["--data-root",str(args.data_root)] if args.data_root else []),
              ("test_rejections.py",[]),("test_brush.py",[]),("test_shared_game.py",[]),("test_entitystate.py",[]),("test_spawn_values.py",[]),("test_game_memory.py",[]),("test_initialization.py",[]),("test_game_logging.py",[]),("test_game_lifecycle.py",[]),("test_bots.py",[]),("test_map_objects.py",[]),("test_targets.py",["--reuse-build"]),
              ("test_combat.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else [])),
@@ -77,6 +77,7 @@ def main():
     scripts.append(("test_aas_routing_tables.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_aas_route_extras.py",[]))
     scripts.append(("test_botlib_lifecycle_runtime.py",[]))
+    scripts.append(("test_botlib_base.py",[]))
     scripts.append(("test_botlib_aas_syscalls.py",[]))
     scripts.append(("test_elementary_actions.py",[]))
     scripts.append(("test_ai_characters.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
@@ -104,6 +105,7 @@ def main():
     scripts.append(("test_roq_cinematics.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_scene_queue.py",[]))
     scripts.append(("test_qvm_scene_geometry.py",[]))
+    scripts.append(("test_projection_shadow.py",[]))
     scripts.append(("test_surface_beam.py",[]))
     scripts.append(("test_portal_view.py",[]))
     scripts.append(("test_portal_render_pass.py",[]))
@@ -184,6 +186,7 @@ def main():
     scripts.append(("playable_ambient_build_test.py",[]))
     if args.data_root:
         scripts.append(("test_retail_qvm_match.py",["--data-root",str(args.data_root)]))
+        scripts.append(("test_cgame_console_commands.py",["--data-root",str(args.data_root),"--qvms",str(ROOT / "build/reference/qvms")]))
         scripts.append(("test_local_qvm_ui.py",["--pak",str(args.data_root / "baseq3/pak0.pk3"),"--qvms",str(ROOT / "build/reference/qvms")]))
         scripts.append(("test_qvm_2d_retail.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")]))
         scripts.append(("test_qvm_video_materials.py",["--data-root",str(args.data_root)]))

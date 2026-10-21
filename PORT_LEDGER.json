@@ -1331,20 +1331,74 @@
         "CRC_ProcessString",
         "CRC_Value"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "source": "CRC_Init",
+          "target": "botlib.crc16.init",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "CRC_ProcessByte",
+          "target": "botlib.crc16.processByte",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "CRC_Value",
+          "target": "botlib.crc16.value",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "CRC_ProcessString",
+          "target": "botlib.crc16.processSpan",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "CRC_ContinueProcessString",
+          "target": "botlib.crc16.continueSpan",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/crc16.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_botlib_base.py",
+        "tests/reference/botlib_base_oracle.c",
+        "tests/botlib_base_oracle.ml",
+        "tests/botlib_base_contracts.ml"
+      ]
     },
     {
       "source": "code/botlib/l_crc.h",
       "sha256": "31e08146bbcd90c4a5f4df63b000d438a6f0c45f478c31121b395e2630a052ef",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "API declarations and constants",
+          "target_files": [
+            "src/mq3/botlib/crc16.ml"
+          ],
+          "status": "ported",
+          "scope": "The complete released interface is represented by the managed MiniLang module and differential gate."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/crc16.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_botlib_base.py",
+        "tests/reference/botlib_base_oracle.c",
+        "tests/botlib_base_oracle.ml",
+        "tests/botlib_base_contracts.ml"
+      ]
     },
     {
       "source": "code/botlib/l_libvar.c",
@@ -1365,20 +1419,122 @@
         "LibVarStringValue",
         "LibVarValue"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "source": "LibVarStringValue",
+          "target": "botlib.lib_variables.stringValue",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "LibVarAlloc",
+          "target": "botlib.lib_variables.alloc",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "LibVarDeAlloc",
+          "target": "botlib.lib_variables.deAlloc",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "LibVarDeAllocAll",
+          "target": "botlib.lib_variables.deAllocAll",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "LibVarGet",
+          "target": "botlib.lib_variables.get",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "LibVarGetString",
+          "target": "botlib.lib_variables.getString",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "LibVarGetValue",
+          "target": "botlib.lib_variables.getValue",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "LibVar",
+          "target": "botlib.lib_variables.variable",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "LibVarString",
+          "target": "botlib.lib_variables.variableString",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "LibVarValue",
+          "target": "botlib.lib_variables.variableValue",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "LibVarSet",
+          "target": "botlib.lib_variables.set",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "LibVarChanged",
+          "target": "botlib.lib_variables.changed",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        },
+        {
+          "source": "LibVarSetNotModified",
+          "target": "botlib.lib_variables.setNotModified",
+          "status": "ported",
+          "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/lib_variables.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_botlib_base.py",
+        "tests/reference/botlib_base_oracle.c",
+        "tests/botlib_base_oracle.ml",
+        "tests/botlib_base_contracts.ml"
+      ]
     },
     {
       "source": "code/botlib/l_libvar.h",
       "sha256": "1c4bb2d957ef7516b4a6e5f62da2db3f2b553e880e70bae933b4b0d59c593603",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "API declarations and constants",
+          "target_files": [
+            "src/mq3/botlib/lib_variables.ml"
+          ],
+          "status": "ported",
+          "scope": "The complete released interface is represented by the managed MiniLang module and differential gate."
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/lib_variables.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_botlib_base.py",
+        "tests/reference/botlib_base_oracle.c",
+        "tests/botlib_base_oracle.ml",
+        "tests/botlib_base_contracts.ml"
+      ]
     },
     {
       "source": "code/botlib/l_log.c",
@@ -3361,10 +3517,29 @@
         "CG_spWin_f",
         "Cmd_Argv"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_InitConsoleCommands / CG_ConsoleCommand",
+          "target_files": [
+            "src/mq3/qcommon/command_buffer.ml",
+            "src/mq3/client/cgame_vm.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "The productive command registry now preserves Cgame completion-only registrations and dispatches its shared token state through CG_CONSOLE_COMMAND before server-game, UI and connected-server forwarding. Nine records from the unchanged CG_ConsoleCommand body match the retail QVM, and the Retail pak0/QVM probe verifies 63 registered commands, sizeup side effects and unknown-command forwarding. Individual command bodies remain owned by the unchanged retail Cgame QVM rather than native MiniLang functions."
+        }
+      ],
+      "target": [
+        "src/mq3/qcommon/command_buffer.ml",
+        "src/mq3/client/cgame_vm.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_cgame_console_commands.py",
+        "tests/reference/cgame_console_command_oracle.c",
+        "tests/cgame_console_command_retail_probe.ml"
+      ]
     },
     {
       "source": "code/cgame/cg_draw.c",
@@ -4348,6 +4523,15 @@
           ],
           "status": "tested_exact",
           "scope": "The unchanged-C timing core is now attached to every productive retail-cgame preview frame: snapshot publication activates CA_PRIMED, applies drift correction, cl_timeNudge clamping, pause gates and monotonic server time before CG_DRAW_ACTIVE_FRAME. Four exact timing records, 26 core contracts and 19 productive clock contracts pass."
+        },
+        {
+          "original": "CL_GetCurrentCmdNumber / CL_GetUserCmd",
+          "target_files": [
+            "src/mq3/client/command_ring.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "The productive cgame traps use the shared 64-entry command ring with exact current-number, masked lookup, oldest-retained boundary, stale miss and future-command error semantics. Nine unchanged-C records shared with CL_CreateNewCommands plus 11 contracts pass."
         }
       ],
       "target": [
@@ -4360,7 +4544,9 @@
         "src/mq3/client/cgame_usercmd.ml",
         "src/mq3/client/server_command_stream.ml",
         "src/mq3/client/cgame_clock.ml",
-        "src/mq3/client/qvm_preview_app.ml"
+        "src/mq3/client/qvm_preview_app.ml",
+        "src/mq3/client/command_ring.ml",
+        "src/mq3/client/send_cmd.ml"
       ],
       "status": "partial",
       "tests": [
@@ -4381,7 +4567,11 @@
         "scripts/test_server_command_stream.py",
         "tests/server_command_stream_contracts.ml",
         "scripts/test_cgame_clock.py",
-        "tests/cgame_clock_contracts.ml"
+        "tests/cgame_clock_contracts.ml",
+        "scripts/test_client_command_ring.py",
+        "tests/reference/client_command_ring_oracle.c",
+        "tests/client_command_ring_oracle.ml",
+        "tests/client_command_ring_contracts.ml"
       ]
     },
     {
@@ -4604,12 +4794,14 @@
         {
           "original": "CL_CreateNewCommands / CL_ReadyToSendPacket / CL_WritePacket / CL_SendCmd",
           "target_files": [
+            "src/mq3/client/command_ring.ml",
             "src/mq3/client/send_cmd.ml",
+            "src/mq3/engine/local_qvm_match.ml",
             "src/mq3/client/frame.ml",
             "src/mq3/client/network_match_loop.ml"
           ],
           "status": "tested_subset",
-          "scope": "Hitch clamping, packet pacing, download/LAN/loopback rules, cl_maxpackets/cl_packetdup clamps, reliable replay, move/noDelta selection, 32-usercmd cap, checksum key, keyed delta commands, outPacket bookkeeping, fragment draining and live client-netchan transmission are bound to CL_Frame. Eight source anchors and 39 contracts pass."
+          "scope": "CL_CreateNewCommands now shares its signed frame delta, 200 ms hitch clamp, increment and masked 64-slot storage with the productive packet sender and retail-cgame trap host. Nine exact unchanged-C command-ring records plus 11 ring contracts pass. Packet pacing, reliable replay, cl_packetdup/cl_maxpackets clamps, move/noDelta selection, 32-usercmd cap, checksum key, keyed deltas, outPacket bookkeeping and live netchan transmission retain eight anchors plus 39 contracts."
         }
       ],
       "target": [
@@ -4622,7 +4814,8 @@
         "src/mq3/client/network_match_loop.ml",
         "src/mq3/client/input_command_events.ml",
         "native/playable_win32.c",
-        "src/mq3/platform/playable_window.ml"
+        "src/mq3/platform/playable_window.ml",
+        "src/mq3/client/command_ring.ml"
       ],
       "status": "partial",
       "tests": [
@@ -4636,7 +4829,11 @@
         "scripts/test_network_match_loop.py",
         "tests/network_match_loop_contracts.ml",
         "tests/playable_window_input_events_native.c",
-        "scripts/playable_window_build_test.py"
+        "scripts/playable_window_build_test.py",
+        "scripts/test_client_command_ring.py",
+        "tests/reference/client_command_ring_oracle.c",
+        "tests/client_command_ring_oracle.ml",
+        "tests/client_command_ring_contracts.ml"
       ]
     },
     {
@@ -18964,20 +19161,33 @@
       ],
       "symbol_mapping": [
         {
-          "original": "RB_ProjectionShadowDeform",
-          "minilang": "qvm_scene_geometry.projectionShadowPoint",
-          "scope": "RF_SHADOW_PLANE MD3 vertices project along entity lighting onto refEntity.shadowPlane with the original shallow-light clamp; a retained built-in decal material supplies translucent black vertex color, decal sorting and polygon offset."
+          "original": "RB_ProjectionShadowDeform and R_AddMD3Surfaces projection policy",
+          "minilang": "qvm_scene_geometry.projectionShadowPointOriented, qvm_scene_materials.projectionShadowEligible, qvm_scene_batch.renderable",
+          "status": "tested_exact",
+          "scope": "Entity-local projection uses the original ground vector, ground distance, shallow-light clamp and world transform for rotated/non-normalized axes. Material resolution admits only unfogged SS_OPAQUE sources and rejected projection triangles cannot render as fallback geometry. Five unchanged-C deformation records plus 45 geometry, 22 material and 16 batch contracts pass."
+        },
+        {
+          "original": "R_AddEdgeDef, R_RenderShadowEdges, RB_ShadowTessEnd and RB_ShadowFinish",
+          "status": "not_started",
+          "scope": "Stencil silhouette volumes, front/back stencil accounting, fullscreen 0.6 darkening and the stencil-only RF_NOSHADOW/RF_DEPTHHACK/fog policy remain absent."
         }
       ],
       "target": [
         "src/mq3/renderer/qvm_scene_geometry.ml",
-        "src/mq3/renderer/qvm_scene_materials.ml"
+        "src/mq3/renderer/qvm_scene_materials.ml",
+        "src/mq3/renderer/qvm_scene_batch.ml"
       ],
       "status": "partial",
       "tests": [
+        "scripts/test_projection_shadow.py",
+        "tests/reference/projection_shadow_oracle.c",
+        "tests/projection_shadow_oracle.ml",
         "scripts/test_qvm_scene_geometry.py",
+        "tests/qvm_scene_geometry_contracts.ml",
         "scripts/test_qvm_scene_materials.py",
-        "scripts/test_qvm_scene_batch.py"
+        "tests/qvm_scene_materials_contracts.ml",
+        "scripts/test_qvm_scene_batch.py",
+        "tests/qvm_scene_batch_contracts.ml"
       ]
     },
     {

@@ -57,6 +57,9 @@ function main(args)
   depthRefreshed=sceneBatch.refresh(depthPrepared,depthCatalog);if depthRefreshed is error then return depthRefreshed end if
   count=count+require(depthRefreshed.geometry.triangles[0].vertices[0].position[0]==13.0 and depthRefreshed.depthHackGeometry.triangles[0].vertices[0].position[0]==12.0,"refresh follows renderfx changes without mixing depth ranges")
 
+  rejectedShadow=sourceTriangle(14.0,white,white,0);rejectedShadow.shaderName=sceneBatch.PROJECTION_SHADOW_SHADER;shadowPolicy=catalogFor([sourceTriangle(13.0,white,white,0),rejectedShadow],[]);shadowPrepared=sceneBatch.build(shadowPolicy);if shadowPrepared is error then return shadowPrepared end if
+  count=count+require(shadowPrepared.geometry.triangleCount==1 and shadowPrepared.geometry.triangles[0].vertices[0].position[0]==13.0,"material-rejected projection shadow is omitted instead of rendered as fallback geometry")
+
   larger=catalogFor([sourceTriangle(3.0,white,white,0),sourceTriangle(4.0,white,white,0)],[]);rebuilt=sceneBatch.refresh(refreshed,larger);if rebuilt is error then return rebuilt end if
   count=count+require(rebuilt.batch.base.capacity==2 and rebuilt.batch.base.count==2,"topology growth falls back to a full build")
   print("PASS: "+str(count)+" QVM scene batch contracts");return 0

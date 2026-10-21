@@ -3,31 +3,31 @@
 package mq3.botlib.lifecycle_runtime
 
 import mq3.compat.numeric as n
+import mq3.botlib.lib_variables as libvars
 
 const BLERR_NOERROR=0
 const BLERR_LIBRARYNOTSETUP=1
 const BLERR_INVALIDENTITYNUMBER=2
 
-struct Variable name value modified end struct
 struct State variables setup maxclients maxentities mapName mapLoads frames time entityUpdates removedEntities end struct
 
 function create() return State([],false,128,1024,"",0,0,0.0,0,0) end function
 function variableIndex(state,name)
-  if state==void or name==void then return -1 end if
-  if len(state.variables)==0 then return -1 end if
-  for index=0 to len(state.variables)-1 if stringEqualsIgnoreCaseAscii(state.variables[index].name,name) then return index end if end for
-  return -1
+  return libvars.indexOf(state,name)
 end function
 function varSet(state,name,value)
-  if state==void or name==void or value==void then return BLERR_NOERROR end if
-  index=variableIndex(state,name)
-  if index<0 then state.variables=state.variables+[Variable(name,value,true)]
-  else state.variables[index].value=value;state.variables[index].modified=true end if
+  libvars.set(state,name,value)
   return BLERR_NOERROR
 end function
 function varGet(state,name)
-  index=variableIndex(state,name);if index<0 then return "" end if;return state.variables[index].value
+  return libvars.getString(state,name)
 end function
+function varGetValue(state,name) return libvars.getValue(state,name) end function
+function varDefault(state,name,value) return libvars.variable(state,name,value) end function
+function varString(state,name,value) return libvars.variableString(state,name,value) end function
+function varValue(state,name,value) return libvars.variableValue(state,name,value) end function
+function varChanged(state,name) return libvars.changed(state,name) end function
+function varSetNotModified(state,name) return libvars.setNotModified(state,name) end function
 function integerVariable(state,name,fallback)
   value=varGet(state,name);if value=="" then return fallback end if
   return n.trunc32(toNumber(value))
@@ -44,7 +44,7 @@ function setup(state)
 end function
 function shutdown(state)
   if state==void or not state.setup then return BLERR_LIBRARYNOTSETUP end if
-  state.setup=false;state.variables=[];state.mapName="";return BLERR_NOERROR
+  state.setup=false;libvars.deAllocAll(state);state.mapName="";return BLERR_NOERROR
 end function
 function startFrame(state,time)
   if state==void or not state.setup then return BLERR_LIBRARYNOTSETUP end if

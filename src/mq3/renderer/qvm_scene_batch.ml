@@ -7,6 +7,7 @@ import mq3.renderer.playable_world_batch as worldBatch
 import mq3.platform.playable_window as window
 
 const RF_DEPTHHACK=8
+const PROJECTION_SHADOW_SHADER="$mq3/projectionShadow"
 
 struct Prepared geometry batch depthHackGeometry depthHackBatch dynamicGeometry end struct
 
@@ -15,8 +16,9 @@ function convertedVertex(triangle,corner,sourceIndex)
   return renderData.RenderVertex(triangle.positions[corner],triangle.texCoords[corner],triangle.lightmapCoords[corner],triangle.normals[corner],triangle.colors[corner],triangle.entityColor,triangle.entityTexCoord,triangle.shaderTime,sourceIndex)
 end function
 function depthHack(triangle) return (triangle.renderfx&RF_DEPTHHACK)!=0 end function
+function renderable(resolved) return resolved.materialIndex>=0 or resolved.triangle.shaderName!=PROJECTION_SHADOW_SHADER end function
 function selectedCount(catalog,wantDepthHack)
-  count=0;for each resolved in catalog.triangles if depthHack(resolved.triangle)==wantDepthHack then count=count+1 end if end for;return count
+  count=0;for each resolved in catalog.triangles if renderable(resolved) and depthHack(resolved.triangle)==wantDepthHack then count=count+1 end if end for;return count
 end function
 function dynamicSelected(catalog,resolved)
   index=resolved.materialIndex;return resolved.triangle.dynamicLight and not depthHack(resolved.triangle) and index>=0 and index<len(catalog.materials) and catalog.materials[index].sort<=3.0
@@ -26,7 +28,7 @@ function convertMode(catalog,wantDepthHack)
   if catalog==void or catalog.triangles==void then return fail("material catalog is required") end if
   triangles=array(selectedCount(catalog,wantDepthHack),void);triangleIndex=0
   for each resolved in catalog.triangles
-    if depthHack(resolved.triangle)!=wantDepthHack then continue end if
+    if not renderable(resolved) or depthHack(resolved.triangle)!=wantDepthHack then continue end if
     source=resolved.triangle;base=triangleIndex*3
     vertices=[convertedVertex(source,0,base),convertedVertex(source,1,base+1),convertedVertex(source,2,base+2)]
     triangles[triangleIndex]=renderData.RenderTriangle(vertices,resolved.materialIndex,source.lightmapIndex,source.fogIndex,-1,triangleIndex);triangleIndex=triangleIndex+1
@@ -50,7 +52,7 @@ function refreshGeometryMode(geometry,catalog,wantDepthHack)
   if geometry==void or geometry.triangles==void or len(geometry.triangles)!=selectedCount(catalog,wantDepthHack) then return false end if
   triangleIndex=0
   for each resolved in catalog.triangles
-    if depthHack(resolved.triangle)!=wantDepthHack then continue end if
+    if not renderable(resolved) or depthHack(resolved.triangle)!=wantDepthHack then continue end if
     target=geometry.triangles[triangleIndex];source=resolved.triangle
     if target==void or target.vertices==void or len(target.vertices)!=3 then return false end if
     base=triangleIndex*3
