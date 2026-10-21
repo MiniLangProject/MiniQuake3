@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Retail Baseq3 match text: bigchars atlas, warmup, timer and center print.
 package mq3.client.baseq3_match_display
+import mq3.client.cgame_scoreboard as oldScoreboard
 
 import mq3.format.pk3 as pk3
 import mq3.renderer.playable_materials as materials
@@ -187,19 +188,16 @@ function drawScoreboard(media,width,height,playerScore,enemyScore,playerDeaths)
   if media==void or width<320 or height<240 then return fail("media and a 320x240 surface are required") end if
   rows=scoreRows(playerScore,enemyScore,playerDeaths);if rows is error then return rows end if
   scaleX=width/VIRTUAL_WIDTH;scaleY=height/VIRTUAL_HEIGHT
-  drawString(media,"SCOREBOARD",240,204,16,16,scaleX,scaleY,255,255,255,true)
-  drawString(media,"NAME",96,236,12,16,scaleX,scaleY,255,220,96,true)
-  drawString(media,"SCORE",384,236,12,16,scaleX,scaleY,255,220,96,true)
-  drawString(media,"DEATHS",504,236,12,16,scaleX,scaleY,255,220,96,true)
-  y=266
-  for each row in rows
-    name=row.name;if row.localPlayer then name="^2"+name end if
-    drawString(media,name,96,y,16,20,scaleX,scaleY,row.red,row.green,row.blue,true)
-    drawString(media,str(row.score),420,y,16,20,scaleX,scaleY,row.red,row.green,row.blue,true)
-    drawString(media,str(row.deaths),548,y,16,20,scaleX,scaleY,row.red,row.green,row.blue,true)
-    y=y+34
+  state=oldScoreboard.state();state.showScores=true;state.pmType=oldScoreboard.PM_INTERMISSION;state.clientNum=0;state.playerTeam=oldScoreboard.TEAM_FREE;state.playerScore=playerScore;state.rank=0
+  you=oldScoreboard.client("YOU",oldScoreboard.TEAM_FREE);you.score=playerScore;enemy=oldScoreboard.client("SARGE BOTS",oldScoreboard.TEAM_FREE);enemy.score=enemyScore
+  state.clients=[you,enemy];state.scores=[oldScoreboard.score(0,playerScore,0,0),oldScoreboard.score(1,enemyScore,0,0)];state.numScores=2
+  generated=oldScoreboard.drawOldScoreboard(state)
+  for each command in generated.commands
+    if command.kind=="big" then drawString(media,command.text,command.x,command.y,16,16,scaleX,scaleY,255,255,255,true)
+    else if command.kind=="small" then drawString(media,command.text,command.x,command.y,8,16,scaleX,scaleY,255,255,255,true)
+    else if command.kind=="giant" then drawString(media,command.text,command.x,command.y,32,48,scaleX,scaleY,255,255,255,true) end if
   end for
-  return len(rows)
+  return len(state.scores)
 end function
 
 // Integration entry point. The caller owns timing and can pass void for center.

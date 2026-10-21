@@ -76,7 +76,7 @@ function prepareViews(views,catalog,archive,assets,kinds,frameCache,grid,videoMa
     started=0;if profile!=void then started=window.milliseconds() end if
     if grid!=void then ignored=lightGrid.setDynamicLights(grid,view.scene.dlights) end if
     previousGeometry=void;if previousViews!=void and viewIndex<len(previousViews) then previousGeometry=previousViews[viewIndex].geometry end if
-    expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadows(view.scene.entities,view.scene.polys,kinds,assets,view.refdef,8192,frameCache,grid,previousGeometry,shadowMode);if expanded is error then return expanded end if
+    expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadowsFog(view.scene.entities,view.scene.polys,kinds,assets,view.refdef,8192,frameCache,grid,previousGeometry,shadowMode,fogCatalog);if expanded is error then return expanded end if
     afterExpansion=0;if profile!=void then afterExpansion=window.milliseconds();profile.expansion=profile.expansion+afterExpansion-started end if
     refreshed=sceneMaterials.refresh(catalog,archive,expanded.triangles,assets,kinds,QVM_TEXTURE_FIRST_SLOT+MAX_QVM_TEXTURE_SLOTS);if refreshed is error then return refreshed end if
     boundVideo=qvmVideo.bindCatalog(videoManager,catalog,view.refdef.time);if boundVideo is error then return boundVideo end if
@@ -150,7 +150,7 @@ end function
 function preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,assets,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode)
   plan=portalPass.prepare(selectedWorld,worldCatalog,source.geometry,source.source.refdef,false);if plan is error or plan==void then return plan end if
   if grid!=void then ignored=lightGrid.setDynamicLights(grid,source.source.scene.dlights) end if
-  geometry=sceneGeometry.buildPortalRecordsCulledShadows(source.source.scene.entities,source.source.scene.polys,kinds,assets,plan.refdef,8192,frameCache,frameCache.normalTable,grid,shadowMode);if geometry is error then return geometry end if
+  geometry=sceneGeometry.buildPortalRecordsCulledShadowsFog(source.source.scene.entities,source.source.scene.polys,kinds,assets,plan.refdef,8192,frameCache,frameCache.normalTable,grid,shadowMode,fogCatalog);if geometry is error then return geometry end if
   geometry=portalClip.clipScene(geometry,plan.view.planeNormal,plan.view.planeDist);if geometry is error then return geometry end if
   refreshed=sceneMaterials.refresh(qvmCatalog,archive,geometry.triangles,assets,kinds,QVM_TEXTURE_FIRST_SLOT+MAX_QVM_TEXTURE_SLOTS);if refreshed is error then return refreshed end if
   boundVideo=qvmVideo.bindCatalog(videoManager,qvmCatalog,plan.refdef.time);if boundVideo is error then return boundVideo end if

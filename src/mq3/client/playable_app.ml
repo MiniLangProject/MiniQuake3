@@ -38,6 +38,7 @@ import mq3.client.playable_viewmodel as viewmodel
 import mq3.client.playable_fps_title as fpsTitle
 import mq3.client.baseq3_hud as baseHud
 import mq3.client.baseq3_match_display as baseMatchDisplay
+import mq3.client.cgame_info as cgameInfo
 import mq3.platform.playable_window as window
 import mq3.platform.playable_audio as audio
 import mq3.platform.playable_multitexture as multitexture
@@ -935,12 +936,17 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fog
   return frames
 end function
 
+function showNativeLoading(state,progress,text)
+  cgameInfo.loadingString(state,text);return window.showLoading(progress,state.infoScreenText)
+end function
+
 function runLimited(map,maxFrames,sound,archive)
   opened=window.open(WIDTH,HEIGHT);if opened is error then return opened end if
-  loading=window.showLoading(15,"Preparing map");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
+  nativeLoading=cgameInfo.create()
+  loading=showNativeLoading(nativeLoading,15,"Preparing map");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   geometry=preview.wireframe(map,[],MAX_LINES);if geometry is error then window.shutdown();return geometry end if
   world=collision.load(map.data);if world is error then window.shutdown();return world end if
-  loading=window.showLoading(16,"Loading collision and lighting");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
+  loading=showNativeLoading(nativeLoading,16,"Loading collision and lighting");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   lightGrid=playableLightGrid.load(map);if lightGrid is error then window.shutdown();return lightGrid end if
   playerState=playablePlayer.load(map);if playerState is error then window.shutdown();return playerState end if
   camera=viewer.camera(playerState.position,playerState.yaw,0.0,320.0,0.12);if camera is error then window.shutdown();return camera end if
@@ -949,7 +955,7 @@ function runLimited(map,maxFrames,sound,archive)
   worldConfig.horizontalFov=HORIZONTAL_FOV
   worldConfig.triangleBudget=20000
   worldCache=worldSelection.buildCache(map,worldConfig.patchError);if worldCache is error then window.shutdown();return worldCache end if
-  loading=window.showLoading(17,"Building visibility cache");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
+  loading=showNativeLoading(nativeLoading,17,"Building visibility cache");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   preparedWorld=worldSelection.prepareCached(worldCache,camera,worldConfig);if preparedWorld is error then window.shutdown();return preparedWorld end if
   triangles=preparedWorld.renderData
   controller=playableMovement.create(world,camera.position);if controller is error then window.shutdown();return controller end if
@@ -967,10 +973,10 @@ function runLimited(map,maxFrames,sound,archive)
   renderTargets=createRenderTargets(targetState)
   combatState=combatView.state(pickupName(playerState.weapon))
   matchState=playableMatch.create(10,5,3000);if matchState is error then window.shutdown();return matchState end if
-  loading=window.showLoading(18,"Preparing arena");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
+  loading=showNativeLoading(nativeLoading,18,"Preparing arena");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   shaderScripts=void
   if archive!=void then loadedScripts=try(materials.buildScriptIndex(archive));if not (loadedScripts is error) then shaderScripts=loadedScripts end if end if
-  loading=window.showLoading(27,"Indexing shaders");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
+  loading=showNativeLoading(nativeLoading,27,"Indexing shaders");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   fogCatalog=void
   if shaderScripts!=void and map.counts[12]>0 then loadedFog=try(playableFog.load(map,shaderScripts[0]));if not (loadedFog is error) then fogCatalog=loadedFog end if end if
   catalog=void
@@ -978,7 +984,7 @@ function runLimited(map,maxFrames,sound,archive)
     loadedCatalog=try(materials.loadIndexed(archive,map,256,64,shaderScripts[0],shaderScripts[1]))
     if not (loadedCatalog is error) then catalog=loadedCatalog end if
   end if
-  loading=window.showLoading(42,"Loading world textures");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
+  loading=showNativeLoading(nativeLoading,42,"Loading world textures");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   if catalog!=void then
     twoSidedTextures=array(map.counts[1],false);for each material in catalog.materials twoSidedTextures[material.textureIndex]=material.twoSided end for
     configuredCache=worldSelection.setTwoSidedTextures(worldCache,twoSidedTextures);if configuredCache is error then window.shutdown();return configuredCache end if
@@ -994,7 +1000,7 @@ function runLimited(map,maxFrames,sound,archive)
       if not (loadedProjectiles is error) then projectileCatalog=loadedProjectiles end if
     end if
   end if
-  loading=window.showLoading(54,"Loading effects and sky");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
+  loading=showNativeLoading(nativeLoading,54,"Loading effects and sky");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   skyCatalog=void
   if archive!=void then
     skyFirst=64;if catalog!=void then skyFirst=64+catalog.textureCount end if
@@ -1032,7 +1038,7 @@ function runLimited(map,maxFrames,sound,archive)
     if explosionTextureSlot+playableExplosions.MAX_TEXTURES<=PLAYER_TEXTURE_FIRST_SLOT then loadedExplosions=try(playableExplosions.load(archive,explosionTextureSlot,playableExplosions.MAX_TEXTURES));if not (loadedExplosions is error) then explosionCatalog=loadedExplosions end if end if
   end if
   modelAssets=void;if shaderScripts!=void then modelAssets=archivePlayerAssets(archive,shaderScripts[0]) end if
-  loading=window.showLoading(65,"Loading player and item models");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
+  loading=showNativeLoading(nativeLoading,65,"Loading player and item models");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   itemCatalog=void
   viewmodelCatalog=void
   if archive!=void then
@@ -1044,7 +1050,7 @@ function runLimited(map,maxFrames,sound,archive)
       if not (loadedItems is error) then itemCatalog=loadedItems end if
     end if
   end if
-  loading=window.showLoading(76,"Loading HUD and menus");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
+  loading=showNativeLoading(nativeLoading,76,"Loading HUD and menus");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   playableItems.setStats(itemState,playerState.health,playerState.armor,playerState.ammo,playerState.weapon)
   hudState=hud.state(playerState.health,playerState.armor,playerState.ammo,"READY","WASD MOVE  MOUSE1 FIRE  SPACE JUMP")
   baseHudCatalog=void;baseHudState=baseHud.state(playerState.health,playerState.armor,playerState.ammo,playerState.weapon,0,0,0)
@@ -1076,7 +1082,7 @@ function runLimited(map,maxFrames,sound,archive)
   if archive!=void then loadedAmbient=try(ambientSounds.load(map,archive));if not (loadedAmbient is error) then ambientCatalog=loadedAmbient end if end if
   spatialRuntime=void
   if ambientCatalog!=void then loadedSpatial=try(spatialAmbient.create(ambientCatalog));if not (loadedSpatial is error) then spatialRuntime=loadedSpatial end if end if
-  loading=window.showLoading(86,"Starting audio");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
+  loading=showNativeLoading(nativeLoading,86,"Starting audio");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   audioReady=try(audio.init())
   if spatialRuntime!=void then spatialStarted=try(spatialAmbient.start(spatialRuntime));if spatialStarted is error then spatialRuntime=void end if end if
   weaponSoundCatalog=void
@@ -1139,7 +1145,7 @@ function runLimited(map,maxFrames,sound,archive)
     if menuCatalog!=void then uploadedMenu=menu.upload(menuCatalog);if uploadedMenu is error then window.shutdown();return uploadedMenu end if end if
     if matchMedia!=void then uploadedMatch=baseMatchDisplay.upload(matchMedia);if uploadedMatch is error then window.shutdown();return uploadedMatch end if end if
   end if
-  loading=window.showLoading(94,"Uploading renderer assets");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
+  loading=showNativeLoading(nativeLoading,94,"Uploading renderer assets");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   materialSlots=array(map.counts[1],-1)
   skyTextureFlags=array(map.counts[1],false)
   dlightReceiveFlags=array(map.counts[1],false)
@@ -1155,14 +1161,14 @@ function runLimited(map,maxFrames,sound,archive)
   if worldBatchState is error then window.shutdown();return worldBatchState end if
   if catalog!=void and fogCatalog!=void then fogged=playableWorldBatch.attachFog(worldBatchState,triangles,fogCatalog);if fogged is error then window.shutdown();return fogged end if end if
   if catalog!=void and dlightCatalog!=void then lit=playableWorldBatch.attachDynamicLights(worldBatchState,triangles,dlightReceiveFlags,dlightCatalog);if lit is error then window.shutdown();return lit end if end if
-  loading=window.showLoading(97,"Building world geometry");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
+  loading=showNativeLoading(nativeLoading,97,"Building world geometry");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   lightmapCount=map.counts[14];if lightmapCount>64 then lightmapCount=64 end if
   for index=0 to lightmapCount-1
     window.poll()
     pixels=renderData.lightmapRgba(map,index);if pixels is error then window.shutdown();return pixels end if
     if not window.uploadTexture(index,pixels,128,128) then window.shutdown();return error(7484,"could not upload BSP lightmap") end if
   end for
-  loading=window.showLoading(100,"Entering arena");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
+  loading=showNativeLoading(nativeLoading,100,"Entering arena");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   fpsState=fpsTitle.create("q3dm1",window.milliseconds());if fpsState is error then window.shutdown();return fpsState end if
   if not window.setTitle(fpsTitle.initialTitle(fpsState)) then window.shutdown();return error(7489,"could not set preview window title") end if
   print "MiniQuake3 playable preview"

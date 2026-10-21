@@ -78,3 +78,23 @@ function computeLod(numLods,mins,maxs,origin,viewOrigin,viewForward,projection,l
   if lod<0 then lod=0 end if
   return lod
 end function
+
+// R_ComputeFogNum from tr_mesh.c.  Fog zero is the renderer's no-fog slot;
+// real BSP fogs start at one.  The original deliberately uses only the
+// selected frame's sphere and entity origin (not the entity axes), and treats
+// a sphere that merely touches a fog bound as outside that fog.
+function computeFogNum(fogs,origin,frame,noWorldModel)
+  if noWorldModel then return 0 end if
+  if fogs==void then return 0 end if
+  if not valid3(origin) or frame==void or not valid3(frame.localOrigin) or frame.radius<0.0 then return fail("invalid fog sphere") end if
+  localOrigin=[];for axis=0 to 2 localOrigin=localOrigin+[numeric.fadd(origin[axis],frame.localOrigin[axis])] end for
+  for fogIndex=1 to len(fogs)-1
+    fog=fogs[fogIndex];if fog==void or fog.bounds==void or len(fog.bounds)!=2 or not valid3(fog.bounds[0]) or not valid3(fog.bounds[1]) then return fail("invalid fog bounds") end if
+    intersects=true
+    for axis=0 to 2
+      if numeric.fsub(localOrigin[axis],frame.radius)>=fog.bounds[1][axis] or numeric.fadd(localOrigin[axis],frame.radius)<=fog.bounds[0][axis] then intersects=false;break end if
+    end for
+    if intersects then return fogIndex end if
+  end for
+  return 0
+end function

@@ -4,13 +4,13 @@ Stand: 2026-10-21. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
-Die zuletzt vollständig ausgeführte Retail-Prüfauswahl umfasste **276 Gates**
+Die zuletzt vollständig ausgeführte Retail-Prüfauswahl umfasste **281 Gates**
 (`python scripts/verify.py --data-root D:/Quake3`) und bestand vollständig am
 21. Oktober 2026 mit dem eingebundenen Retail-`pak0.pk3`. Der dabei frisch
 gebaute `MiniQuake3.exe`-Build hat SHA-256
-`c300ee74dfe2468982b20522c4973843f79127b24aecede4fcc5bd94dc50937e`,
+`3f3026b53789d36ded7dba81d3f2191ab5cb651f92d1d45dd7dfba51101c5505`,
 das zugehörige `build/verification.json` SHA-256
-`0ed4925ed9fe5f9274a1315bae688dd8880fc3a096cf808092cd7a5be4f1e2e5`.
+`300fbad186adf6b1f3a28feebb610af06dba547d0feafc6f053b092a2e48d439`.
 Der Lauf enthält den zusammenhängenden Retail-qagame/cgame/ui-Boot mit neun
 Prediction-Traces, 2.345 vollständig texturierten Szenendreiecken, 17
 Renderpässen, 26 Soundbefehlen und interaktiver Original-UI sowie den
@@ -101,6 +101,12 @@ negatives Wrapping und die produktiven Bild-, Farb-, Geometrie- und UV-Ausgaben.
 Zwei zusätzliche Regressionen belegen, dass ein Remap auf denselben Shader mit
 geändertem `timeOffset` auch ohne Batch-Neuaufbau den bereits gehaltenen
 QVM-Szenenpass und dessen gemeinsame Shaderuhr aktualisiert.
+Die vierdimensionale Renderer-Rauschfunktion aus `tr_noise.c` ist jetzt als
+vollständiger nativer Dateiport belegt. Der produktive Normal-Deformationspfad
+verwendet dieselbe mit 1001 initialisierte MSVC-Zufallsfolge, 256 Einträge,
+maskierte Permutationsindizes sowie räumliche und zeitliche Interpolation wie
+Baseq3. Acht Datensätze aus den drei unverändert extrahierten C-Funktionen
+decken positive, negative und über 256 umlaufende Koordinaten ab.
 Der QVM-2D-Pfad übernimmt dasselbe Zeitmodell nun für HUD und Original-UI:
 `DrawStretchPic`-Materialien werden bei einem laufenden Shader-Remap neu aus dem
 PK3 dekodiert und hochgeladen; `timeOffset` und `clampTime` steuern ihre
@@ -1514,8 +1520,19 @@ sind nun produktiv: Der native Pfad übersetzt Windows-Tasten in
 Quake-Keynummern, liest denselben von `ui.qvm` änderbaren Binding-Zustand und
 erweitert `+`/`-`- sowie Semikolon-Befehle mit Keynummer und Zeitstempel. Sechs
 unveränderte `CL_KeyEvent`-/`CL_AddKeyUpCommands`-Datensätze und 14 Verträge
-bestehen. Konsolen- und Chat-Zeilenbearbeitung sowie das Laden der Bindings aus
-`config.cfg` bleiben offen.
+bestehen. `src/mq3/client/console_input.ml` ergänzt den vollständigen
+256-Byte-Field-Editor mit Einfügen/Überschreiben, Cursor, horizontalem Scrollen,
+Zwischenablage, 32er History, Console-Scrollsteuerung sowie `Console_Key`- und
+`Message_Key`-Semantik für Befehle, Say/Team-Say und Tell. Der Zustand gehört
+dem produktiven Local-QVM-Host und kann über dessen Key-/Char-Eingang bedient
+werden. `src/mq3/client/key_bindings_config.ml` registriert `bind`, `unbind`,
+`unbindall` und `bindlist` im echten Command-Registry, lädt cfg-Text durch den
+Command-Buffer und serialisiert die 256 Bindings im originalen
+`Key_WriteBindings`-Format für `config_persistence`. Sieben Datensätze führen
+`Field_CharEvent`, `Field_KeyDownEvent` und `Key_WriteBindings` unverändert aus;
+22 Integrationsverträge bestehen. Das reale 38-Byte-`q3config.cfg` unter
+`D:/Quake3/baseq3` wird vom Retail-Probe vollständig eingelesen. Die sichtbare Konsolenfläche und native
+WM_CHAR-Erzeugung bleiben als Präsentations-/Plattformarbeit offen.
 
 ### OOB-Challenge und Direct Connect
 
@@ -1667,9 +1684,20 @@ Opaque-/Fog-Policy, normale und gespiegelte Passrichtung und Finish-Farbe.
 Die Retail-Probe expandiert `models/players/sarge/lower.md3` mit 336 Dreiecken
 aus `D:/Quake3/baseq3/pak0.pk3` zu 208 echten Silhouettenseiten und bestätigt
 die 512-Einheiten-Extrusion ohne Platzhaltergeometrie.
-`R_ComputeFogNum` für MD3-Entities bleibt als eigener `tr_mesh.c`-Baustein
-offen; bis dahin können MD3s in volumetrischen Kartenfogs noch Schatten werfen,
-wenn ihr Geometrieeintrag keinen Fogindex trägt.
+
+`R_ComputeFogNum` aus `tr_mesh.c` ist jetzt ebenfalls im produktiven MD3-Pfad
+verdrahtet. Wie im Original prüft der Port die Kugel des ausgewählten,
+normalisierten Animationsframes um `origin + localOrigin` in Reihenfolge gegen
+die BSP-Fog-AABBs, überspringt Slot null, behandelt eine reine Berührung mit
+`>= max` beziehungsweise `<= min` als außerhalb und liefert für
+`RDF_NOWORLDMODEL` immer null. Haupt- und Portalansicht reichen den ermittelten
+Fogindex bis in den vorhandenen Fog-Batch weiter. Fogged MD3s erzeugen gemäß
+`R_AddMD3Surfaces` weder Projektions- noch Stencil-Schatten; die vorab
+berechneten Geometrie- und Schattenkapazitäten folgen derselben Entscheidung.
+Sechs Läufe der unveränderten C-Funktion, 51 Geometrieverträge und ein
+Retail-Test mit `maps/q3ctf1.bsp` plus `models/players/sarge/lower.md3`
+bestätigen 336 gefoggte Originaldreiecke ohne Schatten gegenüber 672 klaren
+Original-/Projektionsdreiecken und 416 Stencil-Seitendreiecken.
 
 ### QVM-Inline-Brushmodelle
 
@@ -1775,3 +1803,19 @@ prüfen Konstanten, Bytewerte, Richtung, dynamisches Licht und die tatsächliche
 MD3-Vertexfarben. Map-spezifische `q3map_sun`-Richtungen und die Laufzeitbindung
 frei konfigurierbarer Overbright-Cvars bleiben als Teil der vollständigen
 Renderer-Parität offen.
+
+Der vollständige alte Baseq3-Scoreboardpfad aus `cg_scoreboard.c` liegt nun als
+nativer MiniLang-Dateiport vor: Clientzeilen, Teamfilter/-reihenfolge,
+Normal-/Interleave-Layout, lokales Highlight, Ready-Markierung, Fade-/Pause-/Warmup-
+Regeln, verzögertes Player-Laden sowie das große Tournament-Scoreboard. Der
+spielbare Intermission-Pfad verwendet diese Layoutquelle produktiv. Drei Aufrufe
+der unveränderten C-Zentrierungsfunktion, 21 Zustands-/Layoutverträge und die
+vier Retail-Headergrafiken aus `pak0.pk3` bilden die Abnahme.
+
+Auch `cg_info.c` ist vollständig als nativer Dateiport erfasst. Spieler- und
+Item-Iconlimits, Fallback-Pfade, bereinigte Ansagenamen, Einzelspieler-Ansagen,
+Levelshot-Fallback, Detail-Layer und alle Server-/Map-/Cheat-/Gametype-/Limitzeilen
+folgen der Originalreihenfolge. Der produktive Windows-Ladevorgang führt seine
+13 Phasen nun durch denselben `CG_LoadingString`-Zustand. 16 Aufrufe des
+unveränderten C-Iconlayouts, 24 Zustandsverträge und drei echte Retail-Assets
+prüfen den Port.

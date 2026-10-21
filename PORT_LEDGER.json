@@ -4016,10 +4016,65 @@
         "CG_LoadingItem",
         "CG_LoadingString"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_DrawInformation",
+          "target_files": [
+            "src/mq3/client/cgame_info.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested",
+          "scope": "Native loading-state/layout port. The playable staged loader now advances through CG_LoadingString semantics; unchanged-C icon layout, state contracts, and retail asset probes cover the file."
+        },
+        {
+          "original": "CG_DrawLoadingIcons",
+          "target_files": [
+            "src/mq3/client/cgame_info.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Native loading-state/layout port. The playable staged loader now advances through CG_LoadingString semantics; unchanged-C icon layout, state contracts, and retail asset probes cover the file."
+        },
+        {
+          "original": "CG_LoadingClient",
+          "target_files": [
+            "src/mq3/client/cgame_info.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested",
+          "scope": "Native loading-state/layout port. The playable staged loader now advances through CG_LoadingString semantics; unchanged-C icon layout, state contracts, and retail asset probes cover the file."
+        },
+        {
+          "original": "CG_LoadingItem",
+          "target_files": [
+            "src/mq3/client/cgame_info.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested",
+          "scope": "Native loading-state/layout port. The playable staged loader now advances through CG_LoadingString semantics; unchanged-C icon layout, state contracts, and retail asset probes cover the file."
+        },
+        {
+          "original": "CG_LoadingString",
+          "target_files": [
+            "src/mq3/client/cgame_info.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested",
+          "scope": "Native loading-state/layout port. The playable staged loader now advances through CG_LoadingString semantics; unchanged-C icon layout, state contracts, and retail asset probes cover the file."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_info.ml",
+        "src/mq3/client/playable_app.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_info.py",
+        "tests/reference/cgame_info_oracle.c",
+        "tests/cgame_info_oracle.ml",
+        "tests/cgame_info_contracts.ml",
+        "scripts/test_playable_loading.py"
+      ]
     },
     {
       "source": "code/cgame/cg_local.h",
@@ -4395,10 +4450,65 @@
         "CG_DrawOldTourneyScoreboard",
         "CG_TeamScoreboard"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_CenterGiantLine",
+          "target_files": [
+            "src/mq3/client/cgame_scoreboard.ml",
+            "src/mq3/client/baseq3_match_display.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Native old-scoreboard layout/state port; productive playable intermission integration. Unchanged-C centering oracle plus layout/state contracts and retail header assets."
+        },
+        {
+          "original": "CG_DrawClientScore",
+          "target_files": [
+            "src/mq3/client/cgame_scoreboard.ml",
+            "src/mq3/client/baseq3_match_display.ml"
+          ],
+          "status": "tested",
+          "scope": "Native old-scoreboard layout/state port; productive playable intermission integration. Unchanged-C centering oracle plus layout/state contracts and retail header assets."
+        },
+        {
+          "original": "CG_DrawOldScoreboard",
+          "target_files": [
+            "src/mq3/client/cgame_scoreboard.ml",
+            "src/mq3/client/baseq3_match_display.ml"
+          ],
+          "status": "tested",
+          "scope": "Native old-scoreboard layout/state port; productive playable intermission integration. Unchanged-C centering oracle plus layout/state contracts and retail header assets."
+        },
+        {
+          "original": "CG_DrawOldTourneyScoreboard",
+          "target_files": [
+            "src/mq3/client/cgame_scoreboard.ml",
+            "src/mq3/client/baseq3_match_display.ml"
+          ],
+          "status": "tested",
+          "scope": "Native old-scoreboard layout/state port; productive playable intermission integration. Unchanged-C centering oracle plus layout/state contracts and retail header assets."
+        },
+        {
+          "original": "CG_TeamScoreboard",
+          "target_files": [
+            "src/mq3/client/cgame_scoreboard.ml",
+            "src/mq3/client/baseq3_match_display.ml"
+          ],
+          "status": "tested",
+          "scope": "Native old-scoreboard layout/state port; productive playable intermission integration. Unchanged-C centering oracle plus layout/state contracts and retail header assets."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_scoreboard.ml",
+        "src/mq3/client/baseq3_match_display.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_scoreboard.py",
+        "tests/reference/cgame_scoreboard_oracle.c",
+        "tests/cgame_scoreboard_oracle.ml",
+        "tests/cgame_scoreboard_contracts.ml",
+        "scripts/test_baseq3_match_display.py"
+      ]
     },
     {
       "source": "code/cgame/cg_servercmds.c",
@@ -5183,7 +5293,18 @@
             "src/mq3/vm/cgame_key_traps.ml"
           ],
           "status": "tested_subset",
-          "scope": "The productive retail-QVM path reads the binding table shared with ui.qvm, translates native virtual keys to Quake key numbers, expands timestamped +/- and semicolon compound commands with Baseq3 release behavior, and applies every movement, mlook, attack and button target to CL_CreateCmd state. Six unchanged-C records and 14 integration contracts pass. Console/message catcher editing and config.cfg binding loading remain open."
+          "scope": "The productive retail-QVM path reads the binding table shared with ui.qvm, translates native virtual keys to Quake key numbers, expands timestamped +/- and semicolon compound commands with Baseq3 release behavior, and applies every movement, mlook, attack and button target to CL_CreateCmd state. Six unchanged-C records and 14 integration contracts pass."
+        },
+        {
+          "original": "Field_CharEvent / Field_KeyDownEvent / Console_Key / Message_Key / Key_Bind_f / Key_Unbind_f / Key_Unbindall_f / Key_Bindlist_f / Key_WriteBindings",
+          "target_files": [
+            "src/mq3/client/console_input.ml",
+            "src/mq3/client/key_bindings_config.ml",
+            "src/mq3/engine/local_qvm_match.ml",
+            "src/mq3/qcommon/config_persistence.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The productive Local-QVM host owns a 256-byte console/message field editor with overstrike, paste, cursor, scroll, 32-line history, command/chat/tell submission and catcher synchronization. Its real command registry owns bind, unbind, unbindall and bindlist; cfg text loads through the command buffer and serializes in exact Key_WriteBindings order for configuration persistence. Seven unchanged-C records and 22 integration contracts pass. Visible console rendering and native WM_CHAR generation remain open."
         }
       ],
       "target": [
@@ -5192,7 +5313,9 @@
         "src/mq3/engine/local_qvm_ui.ml",
         "src/mq3/client/key_binding_dispatch.ml",
         "src/mq3/client/input_command_events.ml",
-        "src/mq3/client/qvm_preview_app.ml"
+        "src/mq3/client/qvm_preview_app.ml",
+        "src/mq3/client/console_input.ml",
+        "src/mq3/client/key_bindings_config.ml"
       ],
       "status": "partial",
       "tests": [
@@ -5203,7 +5326,12 @@
         "scripts/test_key_binding_dispatch.py",
         "tests/reference/key_binding_dispatch_oracle.c",
         "tests/key_binding_dispatch_oracle.ml",
-        "tests/key_binding_dispatch_contracts.ml"
+        "tests/key_binding_dispatch_contracts.ml",
+        "scripts/test_console_input.py",
+        "tests/reference/console_input_oracle.c",
+        "tests/console_input_oracle.ml",
+        "tests/console_input_contracts.ml",
+        "tests/console_input_retail_probe.ml"
       ]
     },
     {
@@ -19067,12 +19195,23 @@
             "src/mq3/renderer/qvm_scene_geometry.ml"
           ],
           "status": "tested_exact",
-          "scope": "Projected-radius LOD selection, bounds radius, RF_WRAP_FRAMES and invalid frame-pair repair are ported; productive QVM MD3 interpolation consumes normalized frames. Six exact records and 24 contracts pass; fog selection and complete culling/surface submission remain open."
+          "scope": "Projected-radius LOD selection, bounds radius, RF_WRAP_FRAMES and invalid frame-pair repair are ported; productive QVM MD3 interpolation consumes normalized frames. Six exact records and 24 contracts pass; complete culling/surface submission remains open."
+        },
+        {
+          "original": "R_ComputeFogNum and R_AddMD3Surfaces fog/shadow policy",
+          "target_files": [
+            "src/mq3/renderer/md3_entity.ml",
+            "src/mq3/renderer/qvm_scene_geometry.ml",
+            "src/mq3/client/qvm_preview_app.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "The selected MD3 frame sphere is tested against ordered BSP fog bounds exactly, including RDF_NOWORLDMODEL and touch-only exclusion. Productive primary and portal QVM scenes retain the fog index; fogged MD3s skip projected and stencil shadows. Six unchanged-C records, 51 geometry contracts and a q3ctf1/Sarge retail probe pass."
         }
       ],
       "target": [
         "src/mq3/renderer/md3_entity.ml",
-        "src/mq3/renderer/qvm_scene_geometry.ml"
+        "src/mq3/renderer/qvm_scene_geometry.ml",
+        "src/mq3/client/qvm_preview_app.ml"
       ],
       "status": "partial",
       "tests": [
@@ -19081,7 +19220,11 @@
         "tests/md3_entity_oracle.ml",
         "tests/md3_entity_contracts.ml",
         "scripts/test_qvm_scene_geometry.py",
-        "tests/qvm_scene_geometry_contracts.ml"
+        "tests/qvm_scene_geometry_contracts.ml",
+        "scripts/test_md3_fog.py",
+        "tests/reference/md3_fog_oracle.c",
+        "tests/md3_fog_oracle.ml",
+        "tests/md3_fog_retail_probe.ml"
       ]
     },
     {
@@ -19132,10 +19275,44 @@
         "R_NoiseGet4f",
         "R_NoiseInit"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "GetNoiseValue",
+          "target_files": [
+            "src/mq3/renderer/noise.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Direct permutation-table lookup from the deterministic Baseq3 noise state."
+        },
+        {
+          "original": "R_NoiseInit",
+          "target_files": [
+            "src/mq3/renderer/noise.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Exact MSVC 15-bit rand sequence seeded with 1001 initializes the 256-entry value and permutation tables."
+        },
+        {
+          "original": "R_NoiseGet4f",
+          "target_files": [
+            "src/mq3/renderer/noise.ml",
+            "src/mq3/renderer/playable_world_batch.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Four-dimensional floor, masked permutation lookup and trilinear/time interpolation drive productive normal deformations. Eight unchanged-C records include negative and wrapped coordinates."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/noise.ml",
+        "src/mq3/renderer/playable_world_batch.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_renderer_noise.py",
+        "tests/reference/renderer_noise_oracle.c",
+        "tests/renderer_noise_oracle.ml",
+        "tests/playable_world_batch_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_public.h",

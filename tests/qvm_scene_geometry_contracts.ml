@@ -9,6 +9,9 @@ import mq3.compat.numeric as n
 struct Refdef viewaxis vieworg time end struct
 struct LitRefdef viewaxis vieworg time flags end struct
 struct CullRefdef viewaxis vieworg time fovX fovY end struct
+struct FogRefdef viewaxis vieworg time fovX fovY flags end struct
+struct Fog bounds end struct
+struct FogCatalog fogs end struct
 function req(value,label) if not value then return error(7679,"QVM scene geometry contract: "+label) end if;return 1 end function
 function wf(data,at,value) n.writeU32(data,at,n.floatBits(value));return void end function
 function basePayload(origin)
@@ -59,6 +62,14 @@ function main(args)
   count=count+req(noShadowGeometry.shadowTriangleCount==0,"RF_NOSHADOW and RF_DEPTHHACK suppress stencil shadow volumes")
   disabledStencil=geometry.buildRecordsWithFrameCacheReuseCulledShadows(scene.sceneEntities(stencilState),scene.scenePolys(stencilState),["model"],[fixtureModel()],cullRefdef,8,stencilCache,void,stencilGeometry,1);if disabledStencil is error then return disabledStencil end if
   count=count+req(disabledStencil.shadowTriangleCount==0 and len(disabledStencil.shadowTriangles)==0,"cg_shadows values other than 2 keep stencil volume storage disabled")
+  fogRefdef=FogRefdef(cullRefdef.viewaxis,cullRefdef.vieworg,cullRefdef.time,cullRefdef.fovX,cullRefdef.fovY,0);fogCatalog=FogCatalog([void,Fog([[9.0,-1.0,-1.0],[11.0,1.0,1.0]])])
+  fogPayload=basePayload([10.0,0.0,0.0]);n.writeU32(fogPayload,4,256);fogState=scene.create(1,0);fogState.registered=true;scene.addEntity(fogState,0,fogPayload)
+  fogGeometry=geometry.buildRecordsWithFrameCacheReuseCulledShadowsFog(scene.sceneEntities(fogState),scene.scenePolys(fogState),["model"],[fixtureModel()],fogRefdef,8,stencilCache,void,void,2,fogCatalog);if fogGeometry is error then return fogGeometry end if
+  count=count+req(fogGeometry.triangleCount==1 and fogGeometry.triangles[0].fogIndex==1 and fogGeometry.shadowTriangleCount==0,"R_ComputeFogNum attributes fogged MD3 geometry and suppresses both shadow modes")
+  clearPayload=basePayload([30.0,0.0,0.0]);n.writeU32(clearPayload,4,256);clearState=scene.create(1,0);clearState.registered=true;scene.addEntity(clearState,0,clearPayload);clearGeometry=geometry.buildRecordsWithFrameCacheReuseCulledShadowsFog(scene.sceneEntities(clearState),scene.scenePolys(clearState),["model"],[fixtureModel()],fogRefdef,8,stencilCache,void,void,2,fogCatalog);if clearGeometry is error then return clearGeometry end if
+  count=count+req(clearGeometry.triangleCount==2 and clearGeometry.triangles[0].fogIndex==0 and clearGeometry.triangles[1].shaderName==geometry.PROJECTION_SHADOW_SHADER and clearGeometry.shadowTriangleCount==6,"clear MD3 retains projected and stencil shadows with exact output capacity")
+  menuRefdefFog=FogRefdef(cullRefdef.viewaxis,cullRefdef.vieworg,cullRefdef.time,cullRefdef.fovX,cullRefdef.fovY,1);menuFogGeometry=geometry.buildRecordsWithFrameCacheReuseCulledShadowsFog(scene.sceneEntities(fogState),scene.scenePolys(fogState),["model"],[fixtureModel()],menuRefdefFog,8,stencilCache,void,void,2,fogCatalog);if menuFogGeometry is error then return menuFogGeometry end if
+  count=count+req(menuFogGeometry.triangles[0].fogIndex==0 and menuFogGeometry.triangleCount==2,"RDF_NOWORLDMODEL disables MD3 fog selection")
   bad=scene.create(1,0);bad.registered=true;n.writeU32(modelPayload,80,2);scene.addEntity(bad,0,modelPayload)
   repaired=geometry.build(bad,["model"],[fixtureModel()],refdef,8);if repaired is error then return repaired end if
   count=count+req(repaired.triangles[0].positions[0]==[11.0,20.0,30.0],"invalid animation repairs both frames to zero")
