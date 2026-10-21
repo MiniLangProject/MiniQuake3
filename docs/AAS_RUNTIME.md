@@ -117,11 +117,15 @@ Startsolid werden aus der Retail-AAS gewonnen. Die AAS-Presence-Areas bilden
 damit auch statisches Playerclip ab; bei nichtnegativer Pass-Entity wird wie im
 Original zusätzlich gegen verlinkte Server-Entities geprüft. Acht synthetische
 Grenzverträge und der 512-Frame-Retail-Sarge-Lauf sichern diesen produktiven
-Pfad. Die Best-Reachable-Area-Suche nutzt
-bereits die originale Fünf-mal-fünf-Fudge-Suche, den 50-Unit-Crouch-Drop und
-Bounding-Box-Areas; der Sonderweg für frei schwebende Items, die ausschließlich
-von einem Jumppad erreichbar sind, braucht noch die vollständige
-JumpPad-Movement-Simulation. Erst wenn diese Pfade einen vollständigen Bot-Match
+Pfad. Die Best-Reachable-Area-Suche nutzt die originale
+Fünf-mal-fünf-Fudge-Suche, den 50-Unit-Crouch-Drop und Bounding-Box-Areas. Der
+Sonderweg für frei schwebende Items berechnet jetzt `trigger_push`-Start,
+Zielballistik, Crouch-Linkbereiche und Item-BBox-Treffer über 30
+Movement-Frames. Die exakte AAS-Flächenvolumenrechnung wählt wie
+`AAS_BestReachableFromJumpPadArea` bei mehreren Startbereichen den größten.
+Ein benannter Retail-Boot lädt dafür die zur BSP passende AAS statt implizit
+`q3dm1`; auf `q3dm17` besitzen damit alle acht schwebenden Items einen
+Jumppad-erreichbaren Zielbereich. Erst wenn diese Pfade einen vollständigen Bot-Match
 durchlaufen und mit dem C-Referenzlauf übereinstimmen, ist Schritt 9 des
 Portplans abgenommen.
 
@@ -130,6 +134,7 @@ Ausführen:
 ```powershell
 python scripts/test_aas_format.py --pak D:/Quake3/baseq3/pak0.pk3
 python scripts/test_aas_runtime.py --data-root D:/Quake3
+python scripts/test_jump_pad_items_retail.py --data-root D:/Quake3
 python scripts/test_aas_routing.py --pak D:/Quake3/baseq3/pak0.pk3
 python scripts/test_aas_routing_cache.py --pak D:/Quake3/baseq3/pak0.pk3
 python scripts/test_aas_routing_tables.py --pak D:/Quake3/baseq3/pak0.pk3

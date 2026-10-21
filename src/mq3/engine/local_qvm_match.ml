@@ -197,7 +197,7 @@ function setConfigstring(context,index,text) if index>=0 and index<MAX_CONFIGSTR
 function getConfigstring(context,index) if index<0 or index>=MAX_CONFIGSTRINGS then return "" end if;return context.configstrings[index] end function
 function getUserinfo(context,index) if index<0 or index>=len(context.userinfos) then return "" end if;return context.userinfos[index] end function
 function setUserinfo(context,index,text) if index>=0 and index<len(context.userinfos) then context.userinfos[index]=text end if;return void end function
-function getServerinfo(context) return "\\sv_hostname\\MiniQuake3\\mapname\\q3dm1\\sv_maxclients\\8\\g_gametype\\0" end function
+function getServerinfo(context) mapName=cvar.get(context.cvars,"mapname","q3dm1",cvar.SERVERINFO|cvar.ROM).string;return "\\sv_hostname\\MiniQuake3\\mapname\\"+mapName+"\\sv_maxclients\\8\\g_gametype\\0" end function
 function entityIndex(context,entity)
   if context.entityStride<=0 or entity<context.gameEntities then return -1 end if
   delta=entity-context.gameEntities;if delta%context.entityStride!=0 then return -1 end if
@@ -364,8 +364,46 @@ function configureAasMovement(context)
   cfg.walkaccelerate=botlibFloat(context,"phys_walkaccelerate",10.0);cfg.airaccelerate=botlibFloat(context,"phys_airaccelerate",1.0);cfg.swimaccelerate=botlibFloat(context,"phys_swimaccelerate",4.0)
   cfg.maxstep=botlibFloat(context,"phys_maxstep",19.0);cfg.maxsteepness=botlibFloat(context,"phys_maxsteepness",0.7);cfg.maxbarrier=botlibFloat(context,"phys_maxbarrier",33.0);cfg.jumpvel=botlibFloat(context,"phys_jumpvel",270.0);return void
 end function
+function jumpPadTarget(context,name)
+  if name=="" then return void end if
+  for entityNum=1 to len(context.botBspEntities)-1
+    entity=context.botBspEntities[entityNum];targetName=aiMapGoals.epair(entity,"targetname")
+    if targetName[0] and targetName[1]==name then return aiMapGoals.vectorValue(entity,"origin") end if
+  end for
+  return void
+end function
+function bestReachableJumpPadArea(context,itemOrigin,itemMins,itemMaxs)
+  bboxMins=[itemOrigin[0]+itemMins[0],itemOrigin[1]+itemMins[1],itemOrigin[2]+itemMins[2]];bboxMaxs=[itemOrigin[0]+itemMaxs[0],itemOrigin[1]+itemMaxs[1],itemOrigin[2]+itemMaxs[2]]
+  for entityNum=1 to len(context.botBspEntities)-1
+    entity=context.botBspEntities[entityNum];classname=aiMapGoals.epair(entity,"classname");if not classname[0] or classname[1]!="trigger_push" then continue end if
+    modelPair=aiMapGoals.epair(entity,"model");if not modelPair[0] or len(modelPair[1])<2 or modelPair[1][0]!="*" then continue end if
+    modelIndex=toNumber(decode(slice(bytes(modelPair[1]),1,len(bytes(modelPair[1]))-1)));handle=collision.inlineModel(context.collisionWorld,modelIndex);if handle is error then continue end if
+    bounds=collision.modelBounds(context.collisionWorld,handle);if bounds is error then continue end if;absMins=bounds[0];absMaxs=bounds[1]
+    origin=[(absMins[0]+absMaxs[0])*0.5,(absMins[1]+absMaxs[1])*0.5,(absMins[2]+absMaxs[2])*0.5]
+    areaStart=origin;testStart=[origin[0],origin[1],origin[2]+64.0];startTrace=aasMovementTrace(context,testStart,origin,aasRuntime.PRESENCE_CROUCH,-1);if not (startTrace is error) and not startTrace.startsolid then areaStart=startTrace.endpos end if;areaStart=[areaStart[0],areaStart[1],areaStart[2]+0.125]
+    crouchBounds=aasRuntime.presenceTypeBoundingBox(aasRuntime.PRESENCE_CROUCH);linkMins=[absMins[0]-crouchBounds[1][0],absMins[1]-crouchBounds[1][1],absMins[2]-crouchBounds[1][2]];linkMaxs=[absMaxs[0]-crouchBounds[0][0],absMaxs[1]-crouchBounds[0][1],absMaxs[2]-crouchBounds[0][2]]
+    areas=aasRuntime.bboxAreas(context.aas,linkMins,linkMaxs,context.aas.map.counts[aasFormat.LUMP_AREAS]);hasJumpPad=false
+    for each linkedArea in areas info=aasRuntime.areaInfo(context.aas,linkedArea);if not (info is error) and (info.contents&aiLevelItems.AREACONTENTS_JUMPPAD)!=0 then hasJumpPad=true;break end if end for
+    if not hasJumpPad then continue end if
+    targetPair=aiMapGoals.epair(entity,"target");if not targetPair[0] then continue end if;target=jumpPadTarget(context,targetPair[1]);if target==void then continue end if
+    height=target[2]-origin[2];gravity=context.aasMovement.settings.gravity;if height<=0.0 or gravity<=0.0 then continue end if;time=n.fsqrt(height/(0.5*gravity));if time==0.0 then continue end if
+    direction=[target[0]-origin[0],target[1]-origin[1],target[2]-origin[2]];length=n.fsqrt(direction[0]*direction[0]+direction[1]*direction[1]+direction[2]*direction[2]);if length==0.0 then continue end if
+    forward=length/time*1.1;velocity=[direction[0]/length*forward,direction[1]/length*forward,time*gravity]
+    move=aasClientMovement.predictWithBBox(context.aasMovement,-1,areaStart,aasRuntime.PRESENCE_NORMAL,false,velocity,[0.0,0.0,0.0],0,30,0.1,aasClientMovement.SE_HITBOUNDINGBOX,0,bboxMins,bboxMaxs,false)
+    if not (move is error) and move.frames<30 then
+      bestArea=0;bestVolume=0.0
+      for each linkedArea in areas info=aasRuntime.areaInfo(context.aas,linkedArea);if info is error or (info.contents&aiLevelItems.AREACONTENTS_JUMPPAD)==0 then continue end if;volume=aasRuntime.areaVolume(context.aas,linkedArea);if volume>=bestVolume then bestArea=linkedArea;bestVolume=volume end if end for
+      return bestArea
+    end if
+  end for
+  return 0
+end function
 function levelItemPlace(context,origin,mins,maxs,floating)
   settled=[origin[0],origin[1],origin[2]]
+  if floating and (pointContents(context,origin,-1)&aasClientMovement.CONTENTS_WATER)==0 then
+    nearby=[origin[0],origin[1],origin[2]-32.0];ground=serverWorld.trace(context.spatialScene,origin,nearby,mins,maxs,0,0x10001,false)
+    if not ground.trace.startsolid and ground.trace.fraction>=1.0 then jumpArea=bestReachableJumpPadArea(context,origin,mins,maxs);if jumpArea==0 then return [0,settled] end if;return [jumpArea,settled] end if
+  end if
   if not floating then
     finish=[origin[0],origin[1],origin[2]-100.0];result=serverWorld.trace(context.spatialScene,origin,finish,mins,maxs,0,aasClientMovement.CONTENTS_SOLID,false)
     if not result.trace.startsolid then settled=[result.endpos[0],result.endpos[1],result.endpos[2]] end if
@@ -575,9 +613,9 @@ function qagameRealTime(context)
 end function
 function qagameSeek(context,handle,offset,origin) return memoryFileSeek.seek(context.files,handle,offset,origin) end function
 
-function bootConfigured(archive,map,now,qvmRoot,botsEnabled)
+function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
   if archive==void or map==void or now<0 then return fail("archive, map and non-negative time are required") end if
-  entityBytes=slice(map.data,map.offsets[0],map.lengths[0]);registry=cvar.create();seedCvars(registry)
+  entityBytes=slice(map.data,map.offsets[0],map.lengths[0]);registry=cvar.create();seedCvars(registry);cvar.set2(registry,"mapname",mapName,true)
   if botsEnabled then cvar.set2(registry,"bot_enable","1",true) end if
   scene=sceneQueue.create(4096,65536);scene.registered=true;scene.worldLoaded=true
   collisionWorld=collision.load(map.data);if collisionWorld is error then return collisionWorld end if
@@ -627,9 +665,11 @@ function bootConfigured(archive,map,now,qvmRoot,botsEnabled)
   gameVm.initialize(game,now,MAX_CLIENTS)
   return Boot(game,machineRuntime,context,void,void)
 end function
+function bootConfigured(archive,map,now,qvmRoot,botsEnabled) return bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,"q3dm1") end function
 
 function bootWithQvms(archive,map,now,qvmRoot) return bootConfigured(archive,map,now,qvmRoot,false) end function
 function bootWithBots(archive,map,now,qvmRoot) return bootConfigured(archive,map,now,qvmRoot,true) end function
+function bootWithBotsNamed(archive,map,mapName,now,qvmRoot) return bootConfiguredNamed(archive,map,now,qvmRoot,true,mapName) end function
 function boot(archive,map,now) return bootConfigured(archive,map,now,"",false) end function
 
 function connectLocal(value,clientNum)

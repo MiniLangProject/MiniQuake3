@@ -543,14 +543,25 @@
           ],
           "status": "tested_subset",
           "scope": "AreaReachability and reachability records/iteration are live; reachability generation and optimization remain open."
+        },
+        {
+          "original": "AAS_AreaVolume, AAS_GetJumpPadInfo and AAS_BestReachableFromJumpPadArea",
+          "target_files": [
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Retail runtime placement of suspended items: exact area volume, trigger_push target ballistics, crouch-expanded area linking and 30-frame bbox-hit prediction; reachability generation remains open."
         }
       ],
       "target": [
-        "src/mq3/botlib/aas_runtime.ml"
+        "src/mq3/botlib/aas_runtime.ml",
+        "src/mq3/engine/local_qvm_match.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_aas_runtime.py"
+        "scripts/test_aas_runtime.py",
+        "scripts/test_jump_pad_items_retail.py"
       ]
     },
     {

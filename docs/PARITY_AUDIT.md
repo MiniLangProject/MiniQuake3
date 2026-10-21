@@ -4,7 +4,7 @@ Stand: 2026-10-21. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
-Die aktuelle Retail-Prüfauswahl umfasst **266 Gates**
+Die zuletzt vollständig ausgeführte Retail-Prüfauswahl umfasste **266 Gates**
 (`python scripts/verify.py --data-root D:/Quake3`) und bestand vollständig am
 21. Oktober 2026 mit dem eingebundenen Retail-`pak0.pk3`. Der dabei frisch
 gebaute `MiniQuake3.exe`-Build hat SHA-256
@@ -15,6 +15,14 @@ Der Lauf enthält den zusammenhängenden Retail-qagame/cgame/ui-Boot mit neun
 Prediction-Traces, 2.345 vollständig texturierten Szenendreiecken, 17
 Renderpässen, 26 Soundbefehlen und interaktiver Original-UI sowie den
 512-Frame-Bot-Spawn, alle 31 BSP-Karten und die produktiven Windows-Grenzen.
+
+Nach diesem Vollstand ergänzt der produktive Botlib-Pfad die vollständige
+`AAS_BestReachableFromJumpPadArea`-Platzierung: benannte Map-Boots laden die
+passende Retail-AAS, `trigger_push`-Ballistik wird 30 Frames gegen die Item-BBox
+simuliert und die größte überlappende Jumppad-Area über das originale
+Flächenvolumen gewählt. Der gezielte `q3dm17`-Probe bestätigt alle acht
+schwebenden Items mit erreichbaren Zielbereichen. Dieser neue Gate ist separat
+bestanden; die oben genannten 266 Gates bleiben der jüngste vollständige Lauf.
 
 Der bestätigte Stand erzeugt sein ansprechbares
 Win32-Fenster vor dem PK3-/BSP-Laden und zeigt Ladephasen. Außerdem sind der

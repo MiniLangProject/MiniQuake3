@@ -4,6 +4,7 @@
 package mq3.botlib.aas_runtime
 
 import mq3.format.aas as aas
+import mq3.compat.numeric as n
 import std.array as arrays
 
 const PRESENCE_NORMAL=2
@@ -52,6 +53,39 @@ function areaInfo(runtime,areaNum)
 end function
 function areaReachability(runtime,areaNum)
   if not validArea(runtime,areaNum) then return 0 end if;settings=aas.areaSettings(runtime.map,areaNum);if settings is error then return 0 end if;return settings.numReachableAreas
+end function
+function vectorSubtract(a,b) return [a[0]-b[0],a[1]-b[1],a[2]-b[2]] end function
+function vectorCross(a,b) return [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]] end function
+function vectorLength(value) return n.fsqrt(value[0]*value[0]+value[1]*value[1]+value[2]*value[2]) end function
+function faceArea(runtime,faceNum)
+  if runtime==void or runtime.map==void then return 0.0 end if;if faceNum<0 then faceNum=0-faceNum end if
+  face=aas.face(runtime.map,faceNum);if face is error or face.numEdges<3 then return 0.0 end if
+  edgeNum=aas.edgeIndex(runtime.map,face.firstEdge);if edgeNum is error then return 0.0 end if;firstSide=0;if edgeNum<0 then edgeNum=0-edgeNum;firstSide=1 end if
+  edge=aas.edge(runtime.map,edgeNum);if edge is error then return 0.0 end if;corner=aas.vertex(runtime.map,edge[firstSide]);if corner is error then return 0.0 end if
+  total=0.0
+  for index=1 to face.numEdges-2
+    signedEdge=aas.edgeIndex(runtime.map,face.firstEdge+index);if signedEdge is error then continue end if;side=0;if signedEdge<0 then signedEdge=0-signedEdge;side=1 end if
+    current=aas.edge(runtime.map,signedEdge);if current is error then continue end if
+    first=aas.vertex(runtime.map,current[side]);second=aas.vertex(runtime.map,current[1-side]);if first is error or second is error then continue end if
+    total=total+0.5*vectorLength(vectorCross(vectorSubtract(first,corner),vectorSubtract(second,corner)))
+  end for
+  return total
+end function
+function areaVolume(runtime,areaNum)
+  if not validArea(runtime,areaNum) then return 0.0 end if;area=aas.area(runtime.map,areaNum);if area is error or area.numFaces<1 then return 0.0 end if
+  firstFace=aas.faceIndex(runtime.map,area.firstFace);if firstFace is error then return 0.0 end if;if firstFace<0 then firstFace=0-firstFace end if
+  face=aas.face(runtime.map,firstFace);if face is error or face.numEdges<1 then return 0.0 end if
+  firstEdge=aas.edgeIndex(runtime.map,face.firstEdge);if firstEdge is error then return 0.0 end if;if firstEdge<0 then firstEdge=0-firstEdge end if
+  edge=aas.edge(runtime.map,firstEdge);if edge is error then return 0.0 end if;corner=aas.vertex(runtime.map,edge[0]);if corner is error then return 0.0 end if
+  volume=0.0
+  for index=0 to area.numFaces-1
+    faceNum=aas.faceIndex(runtime.map,area.firstFace+index);if faceNum is error then continue end if;if faceNum<0 then faceNum=0-faceNum end if
+    current=aas.face(runtime.map,faceNum);if current is error then continue end if;side=0;if current.backArea!=areaNum then side=1 end if
+    plane=aas.plane(runtime.map,current.planeNum^side);if plane is error then continue end if
+    distance=0.0-(corner[0]*plane.normal[0]+corner[1]*plane.normal[1]+corner[2]*plane.normal[2]-plane.dist)
+    volume=volume+distance*faceArea(runtime,faceNum)
+  end for
+  return volume/3.0
 end function
 function nextAreaReachability(runtime,areaNum,reachNum)
   if not validArea(runtime,areaNum) then return 0 end if;settings=aas.areaSettings(runtime.map,areaNum);if settings is error then return 0 end if

@@ -13,7 +13,7 @@ than missing dispatcher cases.
 | 509-512 | console-message heap | Implemented | The live host propagates `max_messages`; the released default is 1024. |
 | 513-524 | initial/reply chat, matching, synonyms, profiles | Implemented | Invalid-handle diagnostics are softened. |
 | 525-540 | goal stack, selection, visibility, avoid times | Implemented | Reachability quality follows the host AAS callbacks. |
-| 541-542 | static/dynamic level items | Implemented | Floating-item/jumppad placement does not yet reproduce the full `AAS_BestReachableFromJumpPadArea` path. |
+| 541-542 | static/dynamic level items | Implemented | Static suspended items use the full trigger-push ballistic/BBox path; dynamic dropped items retain the released 30-unit association tolerance. |
 | 543-547 | item weights and goal-state lifecycle | Implemented | Weight reload/cache ownership follows the live `bot_reloadcharacters` libvar. |
 | 548-557 | movement state and movement | Implemented | All 15 travel handlers used by the released Baseq3 switch are routed through live host collision, mover, liquid and grapple services. |
 | 558-566 | weapon choice/config and genetic fuzzy logic | Implemented | Weight reload/cache ownership is now shared with item weights and exact in the runtime API. Opcode 563 is intentionally a no-op in released Baseq3. |
