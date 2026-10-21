@@ -7,6 +7,7 @@ import mq3.engine.local_qvm_ui as localQvmUi
 import mq3.client.original_ui_session as uiSession
 import mq3.client.cinematic_runtime as cinematics
 import mq3.client.cgame_clock as cgameClock
+import mq3.client.input_command as inputCommand
 import mq3.vm.syscall_qagame_world as qworld
 import mq3.renderer.qvm_scene_geometry as sceneGeometry
 import mq3.renderer.qvm_scene_materials as sceneMaterials
@@ -99,10 +100,9 @@ function movementAxis(positive,negative)
 end function
 function nativeKeyDown(input,key) return window.keyDown(key) end function
 function nativeMouseDelta(input) return input.mouse end function
-function advanceGameTick(state,clientClock,serverTime,yaw,pitch,forward,right,up,attack)
+function advanceGameTick(state,clientClock,serverTime,input)
   delta=[0,0,0];if state.context.latestSnapshot!=void then delta=state.context.latestSnapshot.playerState.delta_angles end if
-  buttons=0;if attack then buttons=1 end if
-  command=qworld.userCommand(serverTime,[angleCommand(pitch,delta[0]),angleCommand(yaw,delta[1]),angleCommand(0.0,delta[2])],buttons,match.cgameUserCmdValue(state),forward,right,up)
+  command=qworld.userCommand(serverTime,[angleCommand(input.viewangles[0],delta[0]),angleCommand(input.viewangles[1],delta[1]),angleCommand(input.viewangles[2],delta[2])],input.buttons,input.weapon,input.forwardmove,input.rightmove,input.upmove)
   submitted=match.submitUsercmd(state,0,command);if submitted is error then return submitted end if
   advanced=match.runFrame(state,serverTime);if advanced is error then return advanced end if
   snapshot=match.snapshot(state,0);if snapshot is error then return snapshot end if
@@ -241,14 +241,16 @@ function runLimited(archive,map,qvmRoot,maxFrames)
   uploaded=uploadLightmaps(map);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   audioStarted=audioOutput.init(22050);if audioStarted is error then window.shutdown();match.shutdown(state);return audioStarted end if
   titleState=fpsTitle.create("Original QVM q3dm1",window.milliseconds());window.setTitle(fpsTitle.initialTitle(titleState))
-  frames=0;yaw=state.context.latestSnapshot.playerState.viewangles[1];pitch=state.context.latestSnapshot.playerState.viewangles[0];uploadedQvmTextures=len(qvmCatalog.textures);uploadedHudTextures=len(hudCatalog.textures);simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
+  frames=0;yaw=state.context.latestSnapshot.playerState.viewangles[1];pitch=state.context.latestSnapshot.playerState.viewangles[0];inputState=inputCommand.create(pitch,yaw,0.0);inputConfig=inputCommand.defaults();uploadedQvmTextures=len(qvmCatalog.textures);uploadedHudTextures=len(hudCatalog.textures);simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
   while not window.shouldClose() and (maxFrames<0 or frames<maxFrames)
-    window.poll();nativeInput.mouse=window.mouseDelta();menuActive=uiSession.active(ui)
-    if not menuActive then sensitivity=match.cgameSensitivity(state);yaw=yaw+nativeInput.mouse[0]*0.12*sensitivity;pitch=pitch-nativeInput.mouse[1]*0.12*sensitivity;if pitch>89.0 then pitch=89.0 end if;if pitch< -89.0 then pitch=-89.0 end if end if
-    forward=0;right=0;up=0;attack=false
-    if not menuActive then forward=movementAxis(window.keyDown(window.VK_W),window.keyDown(window.VK_S));right=movementAxis(window.keyDown(window.VK_D),window.keyDown(window.VK_A));if window.keyDown(window.VK_SPACE) then up=127 end if;attack=window.keyDown(window.VK_LBUTTON) end if
     startedAt=window.milliseconds();serverTime=simulationStart+startedAt-realStart;steps=0
-    while simulationTime+50<=serverTime and steps<8 simulationTime=simulationTime+50;advanced=advanceGameTick(state,clientClock,simulationTime,yaw,pitch,forward,right,up,attack);if advanced is error then window.shutdown();match.shutdown(state);return advanced end if;steps=steps+1;simulationTicks=simulationTicks+1 end while
+    window.poll();nativeInput.mouse=window.mouseDelta();menuActive=uiSession.active(ui);inputTime=simulationTime
+    forwardDown=not menuActive and window.keyDown(window.VK_W);backDown=not menuActive and window.keyDown(window.VK_S);rightDown=not menuActive and window.keyDown(window.VK_D);leftDown=not menuActive and window.keyDown(window.VK_A);upDown=not menuActive and window.keyDown(window.VK_SPACE);attackDown=not menuActive and window.keyDown(window.VK_LBUTTON);anyInput=forwardDown or backDown or rightDown or leftDown or upDown or attackDown
+    inputCommand.setPolled(inputState.forward,forwardDown,inputTime,50);inputCommand.setPolled(inputState.back,backDown,inputTime,50)
+    inputCommand.setPolled(inputState.moveright,rightDown,inputTime,50);inputCommand.setPolled(inputState.moveleft,leftDown,inputTime,50)
+    inputCommand.setPolled(inputState.up,upDown,inputTime,50);inputCommand.setPolled(inputState.buttons[0],attackDown,inputTime,50)
+    if not menuActive then accumulated=inputCommand.accumulateMouse(inputState,nativeInput.mouse[0],nativeInput.mouse[1]);if accumulated is error then window.shutdown();match.shutdown(state);return accumulated end if end if
+    while simulationTime+50<=serverTime and steps<8 simulationTime=simulationTime+50;created=inputCommand.createCommand(inputState,inputConfig,simulationTime,50,simulationTime,match.cgameUserCmdValue(state),match.cgameSensitivity(state),0,anyInput);if created is error then window.shutdown();match.shutdown(state);return created end if;yaw=created.viewangles[1];pitch=created.viewangles[0];advanced=advanceGameTick(state,clientClock,simulationTime,created);if advanced is error then window.shutdown();match.shutdown(state);return advanced end if;steps=steps+1;simulationTicks=simulationTicks+1 end while
     afterGame=window.milliseconds();gameMs=gameMs+afterGame-startedAt
     drawnFrame=drawFrame(state,clientClock,serverTime);if drawnFrame is error then window.shutdown();match.shutdown(state);return drawnFrame end if
     afterCgame=window.milliseconds();cgameMs=cgameMs+afterCgame-afterGame
@@ -279,7 +281,7 @@ function runLimited(archive,map,qvmRoot,maxFrames)
           drawn=worldBatch.drawMaterialsLitViewport(preparedPortal.world,preparedPortal.target.projection,preparedPortal.plan.refdef.time,preparedPortal.source.scene.dlights,preparedPortal.target.area);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
         end if
         drawn=sceneBatch.drawLitViewport(preparedPortal.batch,preparedPortal.target.projection,preparedPortal.target.area,preparedPortal.plan.refdef.time,preparedPortal.source.scene.dlights);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
-        drawn=flares.drawViewport(flareCatalog,fogCatalog,preparedPortal.target.projection,preparedPortal.target.area,preparedPortal.plan.refdef.time,preparedViewIndex*2);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
+        drawn=flares.drawViewport(flareCatalog,fogCatalog,preparedPortal.source.scene.dlights,preparedPortal.target.projection,preparedPortal.target.area,preparedPortal.plan.refdef.time,preparedViewIndex*2);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
         // Match RB_BeginDrawingView: retain portal color, reset depth, then
         // let the main portal surface mask the recursive image.
         window.clearDepth(0.0)
@@ -293,7 +295,7 @@ function runLimited(archive,map,qvmRoot,maxFrames)
         if preparedPortal!=void and skyCatalog!=void then drawn=playableSky.drawViewport(skyCatalog,preparedView.source.refdef.viewaxis,preparedView.target.area,preparedView.source.refdef.time);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if end if
       end if
       drawn=sceneBatch.drawLitViewport(preparedView.batch,preparedView.target.projection,preparedView.target.area,preparedView.source.refdef.time,preparedView.source.scene.dlights);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
-      drawn=flares.drawViewport(flareCatalog,fogCatalog,preparedView.target.projection,preparedView.target.area,preparedView.source.refdef.time,preparedViewIndex*2+1);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
+      drawn=flares.drawViewport(flareCatalog,fogCatalog,preparedView.source.scene.dlights,preparedView.target.projection,preparedView.target.area,preparedView.source.refdef.time,preparedViewIndex*2+1);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
       preparedViewIndex=preparedViewIndex+1
     end for
     cinematicDraws=drawCinematics(state);if cinematicDraws is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return cinematicDraws end if

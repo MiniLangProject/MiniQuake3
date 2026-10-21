@@ -19,7 +19,7 @@ const MAX_VIEW_STATES=16
 
 struct Flare faceIndex textureIndex fogIndex origin color normal end struct
 struct State visible fadeTime drawIntensity end struct
-struct Catalog flares states textureSlot image enabled end struct
+struct Catalog flares states dynamicStates textureSlot image enabled end struct
 struct Point x y depth end struct
 
 function fail(message) return error(7696,"playable flares: "+message) end function
@@ -59,11 +59,11 @@ function load(archive,map,scripts,textureSlot,enabled)
   flares=parse(map);if flares is error then return flares end if
   if textureSlot<0 or textureSlot>=512 then return fail("invalid texture slot") end if
   image=void
-  if len(flares)>0 then
+  if enabled or len(flares)>0 then
     name=materials.mappedImageName(scripts,"flareShader");if name==void then name="gfx/misc/flare" end if
     loaded=materials.loadImage(archive,name);if loaded!=void then image=loaded[1] end if
   end if
-  return Catalog(flares,[],textureSlot,image,enabled and image!=void)
+  return Catalog(flares,[],[],textureSlot,image,enabled and image!=void)
 end function
 function upload(catalog)
   if catalog==void then return fail("missing catalog") end if
@@ -96,6 +96,29 @@ function facing(origin,point,normal)
 end function
 function colorByte(value) if value<0.0 then return 0 end if;if value>255.0 then return 255 end if;return n.trunc32(value) end function
 
+// RB_AddDlightFlares assigns each submitted light to the first fog whose
+// axial brush bounds contain its origin.  Fog zero is the outside fallback.
+function fogIndexAt(fogCatalog,origin)
+  if fogCatalog==void or origin==void or len(origin)!=3 then return 0 end if
+  for fogIndex=1 to len(fogCatalog.fogs)-1
+    fog=fogCatalog.fogs[fogIndex]
+    if fog!=void and origin[0]>=fog.bounds[0][0] and origin[0]<=fog.bounds[1][0] and origin[1]>=fog.bounds[0][1] and origin[1]<=fog.bounds[1][1] and origin[2]>=fog.bounds[0][2] and origin[2]<=fog.bounds[1][2] then return fogIndex end if
+  end for
+  return 0
+end function
+
+function ensureDynamicView(catalog,viewIndex,count)
+  if viewIndex<0 or viewIndex>=MAX_VIEW_STATES then return fail("view index outside flare state range") end if
+  while len(catalog.dynamicStates)<=viewIndex catalog.dynamicStates=catalog.dynamicStates+[[]] end while
+  states=catalog.dynamicStates[viewIndex];while len(states)<count states=states+[State(false,0,0.0)] end while;catalog.dynamicStates[viewIndex]=states;return states
+end function
+
+// RB_RenderFlares frees active entries that were not submitted this frame.
+// Slot identity matches the stable refdef dlight-array address used by Baseq3.
+function retireDynamicStates(states,submittedCount,nowMilliseconds)
+  for index=submittedCount to len(states)-1 states[index].visible=false;states[index].fadeTime=nowMilliseconds-2000;states[index].drawIntensity=0.0 end for;return states
+end function
+
 // RB_RenderFlare begins flareShader with the retained fog number. Its additive
 // blend selects ACFF_MODULATE_RGB in FinishShader, so fog attenuates RGB only.
 function foggedColor(flare,color,fogCatalog,viewOrigin,forward)
@@ -104,31 +127,43 @@ function foggedColor(flare,color,fogCatalog,viewOrigin,forward)
   return materials.modulateForFog(color,density,"rgb")
 end function
 
-function drawViewport(catalog,fogCatalog,projection,area,nowMilliseconds,viewIndex)
+function drawOne(catalog,fogCatalog,flare,state,projection,area,nowMilliseconds,applyFacing)
+  screen=viewer.projectPrepared(projection,flare.origin);onscreen=screen!=void and not (screen is error)
+  if onscreen then onscreen=screen.x>=area.x and screen.x<area.x+area.width and screen.y>=area.y and screen.y<area.y+area.height end if
+  visible=false
+  if onscreen then sampled=window.sampleDepth(screen.x,screen.y);visible=visibleAtDepth(screen.depth,sampled) end if
+  intensity=updateState(state,visible,nowMilliseconds,DEFAULT_FADE);if intensity is error then return intensity end if
+  if not onscreen or intensity<=0.0 then return 0 end if
+  direction=1.0;if applyFacing then direction=facing(projection.position,flare.origin,flare.normal);if direction<0.0 then direction=0.0 end if end if
+  red=colorByte(flare.color[0]*direction*intensity*255.0);green=colorByte(flare.color[1]*direction*intensity*255.0);blue=colorByte(flare.color[2]*direction*intensity*255.0)
+  color=foggedColor(flare,[red,green,blue,255],fogCatalog,projection.position,projection.forward);red=color[0];green=color[1];blue=color[2]
+  size=flareSize(area.width,screen.depth,DEFAULT_SIZE)
+  if size<=0.0 or (red<=0 and green<=0 and blue<=0) then return 0 end if
+  depth=0.001;a=Point(screen.x-size,screen.y-size,depth);b=Point(screen.x-size,screen.y+size,depth);c=Point(screen.x+size,screen.y+size,depth);d=Point(screen.x+size,screen.y-size,depth)
+  window.drawTriangleColored(catalog.textureSlot,a,[0.0,0.0],color,b,[0.0,1.0],color,c,[1.0,1.0],color,255,255,255)
+  window.drawTriangleColored(catalog.textureSlot,a,[0.0,0.0],color,c,[1.0,1.0],color,d,[1.0,0.0],color,255,255,255);return 1
+end function
+
+function drawViewport(catalog,fogCatalog,lights,projection,area,nowMilliseconds,viewIndex)
   if catalog==void then return 0 end if
   if projection==void or area==void then return fail("projection and viewport are required") end if
-  if not catalog.enabled or len(catalog.flares)==0 then return 0 end if
+  if not catalog.enabled then return 0 end if
   states=ensureView(catalog,viewIndex);if states is error then return states end if
+  dynamicCount=0;if lights!=void then dynamicCount=len(lights) end if
+  dynamicStates=ensureDynamicView(catalog,viewIndex,dynamicCount);if dynamicStates is error then return dynamicStates end if
   drawn=0
   stateValue=multitexture.setState(multitexture.BLEND_ADD,false,false);if stateValue is error then return stateValue end if
   stateValue=multitexture.setTextureClamp(true);if stateValue is error then return stateValue end if
   for index=0 to len(catalog.flares)-1
-    flare=catalog.flares[index];screen=viewer.projectPrepared(projection,flare.origin);onscreen=screen!=void and not (screen is error)
-    if onscreen then onscreen=screen.x>=area.x and screen.x<area.x+area.width and screen.y>=area.y and screen.y<area.y+area.height end if
-    visible=false
-    if onscreen then sampled=window.sampleDepth(screen.x,screen.y);visible=visibleAtDepth(screen.depth,sampled) end if
-    intensity=updateState(states[index],visible,nowMilliseconds,DEFAULT_FADE);if intensity is error then return intensity end if
-    if onscreen and intensity>0.0 then
-      direction=facing(projection.position,flare.origin,flare.normal);if direction<0.0 then direction=0.0 end if
-      red=colorByte(flare.color[0]*direction*intensity*255.0);green=colorByte(flare.color[1]*direction*intensity*255.0);blue=colorByte(flare.color[2]*direction*intensity*255.0)
-      color=foggedColor(flare,[red,green,blue,255],fogCatalog,projection.position,projection.forward);red=color[0];green=color[1];blue=color[2]
-      size=flareSize(area.width,screen.depth,DEFAULT_SIZE)
-      if size>0.0 and (red>0 or green>0 or blue>0) then
-        depth=0.001;a=Point(screen.x-size,screen.y-size,depth);b=Point(screen.x-size,screen.y+size,depth);c=Point(screen.x+size,screen.y+size,depth);d=Point(screen.x+size,screen.y-size,depth)
-        window.drawTriangleColored(catalog.textureSlot,a,[0.0,0.0],color,b,[0.0,1.0],color,c,[1.0,1.0],color,255,255,255)
-        window.drawTriangleColored(catalog.textureSlot,a,[0.0,0.0],color,c,[1.0,1.0],color,d,[1.0,0.0],color,255,255,255);drawn=drawn+1
-      end if
-    end if
+    added=drawOne(catalog,fogCatalog,catalog.flares[index],states[index],projection,area,nowMilliseconds,true);if added is error then return added end if;drawn=drawn+added
   end for
+  // RB_AddDlightFlares passes a null normal, so dynamic-light color does not
+  // receive BSP-surface facing attenuation.  It otherwise shares depth,
+  // fade, size, flareShader and fog behavior with retained BSP flares.
+  for index=0 to dynamicCount-1
+    light=lights[index];flare=Flare(-1,-1,fogIndexAt(fogCatalog,light.origin),light.origin,light.color,void)
+    added=drawOne(catalog,fogCatalog,flare,dynamicStates[index],projection,area,nowMilliseconds,false);if added is error then return added end if;drawn=drawn+added
+  end for
+  retireDynamicStates(dynamicStates,dynamicCount,nowMilliseconds)
   multitexture.setTextureClamp(false);multitexture.setState(multitexture.BLEND_OPAQUE,false,true);return drawn
 end function

@@ -26,6 +26,7 @@ def main():
              ("test_client_spawn.py",[]),("test_client_begin.py",[]),("test_client_info.py",[]),("test_client_connect.py",[]),("test_ip_filters.py",[]),("test_team_changes.py",[]),("test_follow_tournament.py",[]),("test_intermission.py",[]),("test_client_commands.py",[]),("test_server_commands.py",[]),("test_weapons.py",[]),("test_client_frame.py",[]),("test_client_main_frame.py",[]),("test_client_think.py",[]),
              ("test_tournament.py",[]),("test_votes.py",[]),("test_vote_commands.py",[]),("test_team_status.py",[]),("test_game_cvars.py",[]),("test_full_frame.py",[])]
     scripts.append(("test_engine_loop.py",[]))
+    scripts.append(("test_parity_inventory.py",[]))
     scripts.append(("test_tga.py",[]))
     scripts.append(("test_shader_parser.py",[]))
     scripts.append(("test_shader_entity_color.py",[]))
@@ -43,6 +44,7 @@ def main():
     scripts.append(("test_cgame_key_traps.py",[]))
     scripts.append(("test_cgame_pc_traps.py",[]))
     scripts.append(("test_cgame_usercmd.py",[]))
+    scripts.append(("test_input_command.py",[]))
     scripts.append(("test_image_registry.py",[]))
     scripts.append(("test_vm_syscall_qagame_world.py",[]))
     scripts.append(("test_ui_vm_lifecycle.py",[]))

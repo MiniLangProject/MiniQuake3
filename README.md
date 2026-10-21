@@ -23,7 +23,10 @@ Spielarena, Item-/Teaminitialisierung, `G_InitGame`/`G_ShutdownGame` und
 Logformatierung sowie allen 48 Kartenklassen einschließlich Türen, Plattformen,
 Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-Vertical-Slice ist verfügbar; der vollständige Port ist noch in Arbeit.** Maßgeblich sind der
 [Portplan in zehn Schritten](docs/PORTPLAN.md) und der
-[geprüfte Stand mit offenen Abnahmen](docs/PARITY_AUDIT.md).
+[geprüfte Stand mit offenen Abnahmen](docs/PARITY_AUDIT.md). Der
+[vollständige Original-/Port-Abgleich](docs/ORIGINAL_PARITY_REPORT.md) wird
+direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
+mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
 Der aktuelle Stand ist im [AAS-/Botlib-Bericht](docs/AAS_RUNTIME.md) und im
 [vollständigen AI-Trap-Audit 500–577](docs/BOTLIB_AI_TRAP_AUDIT.md) dokumentiert.
@@ -40,10 +43,10 @@ sind vorhanden. Der produktive Botlib-Pfad lädt und speichert nun validierte `.
 Routingcaches mit Originalidentität, Area-/Cluster-CRC und zeigerfreiem Nutzinhalt.
 Offen bleibt die noch kompaktere interne Reachability-Ablage.
 
-Der aktuelle Retail-Gesamtlauf vom 21. Oktober 2026 besteht alle **266 Gates**
+Der aktuelle Retail-Gesamtlauf vom 21. Oktober 2026 besteht alle **270 Gates**
 von `python scripts/verify.py --data-root D:/Quake3`. Der geprüfte
 `build/MiniQuake3.exe` hat SHA-256
-`e3a167d14509c9493a15c4566b3e62932d712091a56e732181d454c584dfa6ea`;
+`94776ff4203c8c5b9e97033d27a142c1b368791b0d33ee5eb37dfd1a8afd202d`;
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 

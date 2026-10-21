@@ -1534,7 +1534,7 @@
             "src/mq3/engine/local_qvm_match.ml"
           ],
           "status": "tested_subset",
-          "scope": "Handles 1..63, includes, global/object/function defines, nested conditional directives, C-precedence integer expressions, recursive expansion, stringification and token pasting plus cgame/UI trap marshalling pass 47 contracts. Builtin macros, line continuations and angle-bracket includes remain open."
+          "scope": "Handles 1..63, quoted and angle-bracket includes, global/object/function defines, nested conditional directives, C-precedence integer expressions, recursive expansion, stringification, token pasting, PC_ReadLine-style backslash continuation and the fixed __LINE__/__FILE__/__DATE__/__TIME__ macros pass 58 contracts. Cgame/UI trap marshalling reaches the same productive registry and the unchanged retail qagame/cgame/ui match passes with D:/Quake3. Include-path configuration and less-used diagnostic/precompiler APIs remain open."
         }
       ],
       "target": [
@@ -4587,7 +4587,16 @@
             "src/mq3/engine/local_qvm_match.ml"
           ],
           "status": "tested_subset",
-          "scope": "The productive original-QVM preview consumes the weapon and sensitivity written by CG_SETUSERCMDVALUE instead of fixed host values. Five original anchors and 12 state contracts pass; key timing, acceleration/filtering, joystick and command-ring input timing remain open."
+          "scope": "The productive original-QVM preview consumes the weapon and sensitivity written by CG_SETUSERCMDVALUE instead of fixed host values. Five original anchors and 12 state contracts pass; the complete command-building input core is tracked by the following mapping."
+        },
+        {
+          "original": "CL_KeyState / CL_AdjustAngles / CL_KeyMove / CL_MouseMove / CL_JoystickMove / CL_CmdButtons / CL_FinishMove",
+          "target_files": [
+            "src/mq3/client/input_command.ml",
+            "src/mq3/client/qvm_preview_app.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The productive retail-QVM path uses Baseq3 dual-source button timing, fractional key states, walk/run movement, keyboard angles, filtered and accelerated mouse input, cgame sensitivity, joystick axes, transient button bits, pitch-delta clamp and final command fields. Five unchanged-C records plus 31 MiniLang contracts pass; timestamped platform event routing, configurable bindings and outer command-ring cadence remain host work."
         },
         {
           "original": "CL_CreateNewCommands / CL_ReadyToSendPacket / CL_WritePacket / CL_SendCmd",
@@ -4602,6 +4611,7 @@
       ],
       "target": [
         "src/mq3/client/cgame_usercmd.ml",
+        "src/mq3/client/input_command.ml",
         "src/mq3/client/qvm_preview_app.ml",
         "src/mq3/engine/local_qvm_match.ml",
         "src/mq3/client/send_cmd.ml",
@@ -4612,6 +4622,9 @@
       "tests": [
         "scripts/test_cgame_usercmd.py",
         "tests/cgame_usercmd_contracts.ml",
+        "scripts/test_input_command.py",
+        "tests/input_command_oracle.ml",
+        "tests/input_command_contracts.ml",
         "scripts/test_client_send_cmd.py",
         "tests/client_send_cmd_contracts.ml",
         "scripts/test_network_match_loop.py",
@@ -18119,6 +18132,11 @@
         "R_ClearFlares"
       ],
       "symbol_mapping": [
+        {
+          "original": "RB_AddDlightFlares",
+          "minilang": "playable_flares.fogIndexAt/drawViewport",
+          "scope": "Assigns every submitted Cgame dynamic light to the first containing axial BSP fog volume (or fog zero), then renders it without surface-normal attenuation through independent per-view depth-tested fade state and the common flareShader path; slots not resubmitted in the current view are retired like RB_RenderFlares."
+        },
         {
           "original": "RB_AddFlare",
           "minilang": "playable_flares.facing",

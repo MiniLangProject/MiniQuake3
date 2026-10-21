@@ -3,6 +3,7 @@
 package mq3.vm.pc_parser
 
 import mq3.compat.numeric as n
+import std.time as time
 
 const MAX_SOURCEFILES=64
 const MAX_TOKENLENGTH=1024
@@ -86,6 +87,24 @@ function raw(source)
   return fail("unrecognized token at "+source.name+":"+str(source.line))
 end function
 function defineIndex(registry,name) if len(registry.defines)==0 then return -1 end if;for index=0 to len(registry.defines)-1 if registry.defines[index].name==name then return index end if end for;return -1 end function
+function isBuiltin(name) return name=="__LINE__" or name=="__FILE__" or name=="__DATE__" or name=="__TIME__" end function
+function definedName(registry,name) return isBuiltin(name) or defineIndex(registry,name)>=0 end function
+function twoDigits(value) if value<10 then return "0"+str(value) end if;return str(value) end function
+function monthName(value) return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][value-1] end function
+function builtinToken(entry,token)
+  text=""
+  if token.text=="__LINE__" then text=str(token.line);return Token(TT_NUMBER,TT_DECIMAL|TT_INTEGER,token.line,n.f32(token.line),text,token.line,token.leadingSpace) end if
+  source=entry[1][len(entry[1])-1]
+  if token.text=="__FILE__" then return Token(TT_NAME,len(bytes(source.name)),0,0.0,source.name,token.line,token.leadingSpace) end if
+  local=time.datetime.nowLocal();if local==void or not time.datetime.isValid(local) then return fail("wall clock unavailable for "+token.text) end if
+  if token.text=="__DATE__" then
+    // l_precomp.c copies ctime's seven-byte month/day field and four-byte year,
+    // preserving the leading blank before one-digit days and the quote bytes.
+    day=str(local.date.day);if local.date.day<10 then day=" "+day end if
+    text="\""+monthName(local.date.month)+" "+day+" "+str(local.date.year)+"\""
+  else text="\""+twoDigits(local.time.hour)+":"+twoDigits(local.time.minute)+":"+twoDigits(local.time.second)+"\"" end if
+  return Token(TT_NAME,len(bytes(text)),0,0.0,text,token.line,token.leadingSpace)
+end function
 function tokenListAppend(list,token) if list==0 or list==void then return [token] end if;return list+[token] end function
 function parameterIndex(definition,name)
   if definition.parameters==0 then return -1 end if;for index=0 to len(definition.parameters)-1 if definition.parameters[index]==name then return index end if end for;return -1
@@ -188,7 +207,7 @@ function sourceMacroExpansion(entry,value,line)
 end function
 function addDefine(registry,text)
   source=Source("<global define>",bytes(text),0,1,0);values=[];while true token=raw(source);if token==void then break end if;if token is error then return 0 end if;values=values+[token] end while
-  value=try(definition(values));if value is error then return 0 end if;index=defineIndex(registry,value.name);if index<0 then registry.defines=registry.defines+[value] else registry.defines[index]=value end if;return 1
+  value=try(definition(values));if value is error or isBuiltin(value.name) then return 0 end if;index=defineIndex(registry,value.name);if index<0 then registry.defines=registry.defines+[value] else registry.defines[index]=value end if;return 1
 end function
 function clearDefines(registry) if registry!=void then registry.defines=[] end if;return void end function
 function load(registry,name)
@@ -238,9 +257,17 @@ function take(entry)
 end function
 function lineTokens(entry,line)
   tokens=[]
+  activeLine=line;continued=false
   while true
     token=pcNextRaw(entry);if token==void or token is error then return tokens end if
-    if token.line!=line then unread(entry,token);return tokens end if
+    if token.line!=activeLine then
+      if not continued then unread(entry,token);return tokens end if
+      activeLine=token.line;continued=false
+    end if
+    // PC_ReadLine discards every backslash and permits the next token to cross
+    // one physical line. A second backslash can continue another line.
+    if token.text=="\\" then continued=true;continue end if
+    continued=false
     tokens=tokens+[token]
   end while
 end function
@@ -269,6 +296,7 @@ function expandExpression(registry,tokens,depth)
         result=result+[tokens[index]];index=index+1;if index<len(tokens) then result=result+[tokens[index]];index=index+1 end if;if index<len(tokens) and tokens[index].text==")" then result=result+[tokens[index]];index=index+1 end if
       else if index<len(tokens) then result=result+[tokens[index]];index=index+1 end if
     else if token.type==TT_NAME then
+      if token.text=="__LINE__" then result=result+[Token(TT_NUMBER,TT_DECIMAL|TT_INTEGER,token.line,n.f32(token.line),str(token.line),token.line,token.leadingSpace)];index=index+1;continue end if
       found=defineIndex(registry,token.text)
       if found>=0 then
         value=registry.defines[found]
@@ -298,7 +326,7 @@ function parsePrimary(state)
   if token.type==TT_LITERAL then return token.subtype end if
   if token.text=="(" then value=parseConditionalExpression(state);if not expressionMatch(state,")") then state.valid=false end if;return value end if
   if token.type==TT_NAME and token.text=="defined" then
-    paren=expressionMatch(state,"(");name=expressionTake(state);if name==void or name.type!=TT_NAME then state.valid=false;return 0 end if;value=0;if defineIndex(state.registry,name.text)>=0 then value=1 end if;if paren and not expressionMatch(state,")") then state.valid=false end if;return value
+    paren=expressionMatch(state,"(");name=expressionTake(state);if name==void or name.type!=TT_NAME then state.valid=false;return 0 end if;value=0;if definedName(state.registry,name.text) then value=1 end if;if paren and not expressionMatch(state,")") then state.valid=false end if;return value
   end if
   state.valid=false;return 0
 end function
@@ -345,7 +373,7 @@ function conditionalDirective(registry,entry,directive,line)
   if directive=="if" then result=[true,0];if parent then result=evaluateExpression(registry,tokens) end if;if not result[0] then return fail("invalid #if expression") end if;pushConditional(entry,parent,parent and result[1]!=0);return 1 end if
   if directive=="ifdef" or directive=="ifndef" then
     valid=tokens!=void and len(tokens)==1 and tokens[0].type==TT_NAME;if not valid then return fail("invalid #"+directive) end if
-    selected=defineIndex(registry,tokens[0].text)>=0;if directive=="ifndef" then selected=not selected end if;pushConditional(entry,parent,parent and selected);return 1
+    selected=definedName(registry,tokens[0].text);if directive=="ifndef" then selected=not selected end if;pushConditional(entry,parent,parent and selected);return 1
   end if
   if entry[3]==0 then return fail("#"+directive+" without #if at line "+str(line)) end if
   frame=entry[3][len(entry[3])-1]
@@ -370,17 +398,22 @@ function read(registry,sourceHandle)
       name=directive.text
       if name=="if" or name=="ifdef" or name=="ifndef" or name=="elif" or name=="else" or name=="endif" then result=conditionalDirective(registry,entry,name,directive.line);if result is error then return result end if
       else if not conditionalActive(entry) then lineTokens(entry,directive.line)
-      else if name=="include" then values=lineTokens(entry,directive.line);if values==void or len(values)!=1 or values[0].type!=TT_STRING or not pushInclude(registry,entry,values[0].text) then return fail("invalid #include") end if
+    else if name=="include" then
+      values=lineTokens(entry,directive.line);includeName=""
+      if values!=void and len(values)==1 and values[0].type==TT_STRING then includeName=values[0].text
+      else if values!=void and len(values)>=3 and values[0].text=="<" and values[len(values)-1].text==">" then for index=1 to len(values)-2 includeName=includeName+values[index].text end for end if
+      if includeName=="" or not pushInclude(registry,entry,includeName) then return fail("invalid #include") end if
       else if name=="define" then
         values=lineTokens(entry,directive.line);if values==void or values[0].type!=TT_NAME then return fail("invalid #define") end if
-        parsed=definition(values);if parsed is error then return parsed end if;index=defineIndex(registry,parsed.name);if index<0 then registry.defines=registry.defines+[parsed] else registry.defines[index]=parsed end if
+        parsed=definition(values);if parsed is error then return parsed end if;if isBuiltin(parsed.name) then return fail("can't redefine "+parsed.name) end if;index=defineIndex(registry,parsed.name);if index<0 then registry.defines=registry.defines+[parsed] else registry.defines[index]=parsed end if
       else if name=="undef" then
-        values=lineTokens(entry,directive.line);if values==void or len(values)!=1 or values[0].type!=TT_NAME then return fail("invalid #undef") end if;index=defineIndex(registry,values[0].text);if index>=0 then registry.defines[index]=Define("",0,0,false) end if
+        values=lineTokens(entry,directive.line);if values==void or len(values)!=1 or values[0].type!=TT_NAME then return fail("invalid #undef") end if;if not isBuiltin(values[0].text) then index=defineIndex(registry,values[0].text);if index>=0 then registry.defines[index]=Define("",0,0,false) end if end if
       else return fail("unknown #"+name) end if
       continue
     end if
     if not conditionalActive(entry) then continue end if
     if token.type==TT_NAME then
+      if isBuiltin(token.text) then return builtinToken(entry,token) end if
       index=defineIndex(registry,token.text)
       if index>=0 then
         expansion=sourceMacroExpansion(entry,registry.defines[index],token.line);if expansion is error then return expansion end if;if not expansion.valid then return fail("invalid invocation of "+token.text) end if;if not expansion.invoked then return token end if
