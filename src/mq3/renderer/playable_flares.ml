@@ -8,6 +8,7 @@ import mq3.client.playable_viewer as viewer
 import mq3.platform.playable_window as window
 import mq3.platform.playable_multitexture as multitexture
 import mq3.renderer.playable_materials as materials
+import mq3.renderer.playable_fog as playableFog
 
 const MST_FLARE=4
 const FACE_STRIDE=104
@@ -95,7 +96,15 @@ function facing(origin,point,normal)
 end function
 function colorByte(value) if value<0.0 then return 0 end if;if value>255.0 then return 255 end if;return n.trunc32(value) end function
 
-function drawViewport(catalog,projection,area,nowMilliseconds,viewIndex)
+// RB_RenderFlare begins flareShader with the retained fog number. Its additive
+// blend selects ACFF_MODULATE_RGB in FinishShader, so fog attenuates RGB only.
+function foggedColor(flare,color,fogCatalog,viewOrigin,forward)
+  if fogCatalog==void or flare.fogIndex<=0 or flare.fogIndex>=len(fogCatalog.fogs) then return color end if
+  density=playableFog.density(fogCatalog.fogs[flare.fogIndex],flare.origin,viewOrigin,forward)
+  return materials.modulateForFog(color,density,"rgb")
+end function
+
+function drawViewport(catalog,fogCatalog,projection,area,nowMilliseconds,viewIndex)
   if catalog==void then return 0 end if
   if projection==void or area==void then return fail("projection and viewport are required") end if
   if not catalog.enabled or len(catalog.flares)==0 then return 0 end if
@@ -112,9 +121,10 @@ function drawViewport(catalog,projection,area,nowMilliseconds,viewIndex)
     if onscreen and intensity>0.0 then
       direction=facing(projection.position,flare.origin,flare.normal);if direction<0.0 then direction=0.0 end if
       red=colorByte(flare.color[0]*direction*intensity*255.0);green=colorByte(flare.color[1]*direction*intensity*255.0);blue=colorByte(flare.color[2]*direction*intensity*255.0)
+      color=foggedColor(flare,[red,green,blue,255],fogCatalog,projection.position,projection.forward);red=color[0];green=color[1];blue=color[2]
       size=flareSize(area.width,screen.depth,DEFAULT_SIZE)
       if size>0.0 and (red>0 or green>0 or blue>0) then
-        depth=0.001;a=Point(screen.x-size,screen.y-size,depth);b=Point(screen.x-size,screen.y+size,depth);c=Point(screen.x+size,screen.y+size,depth);d=Point(screen.x+size,screen.y-size,depth);color=[red,green,blue,255]
+        depth=0.001;a=Point(screen.x-size,screen.y-size,depth);b=Point(screen.x-size,screen.y+size,depth);c=Point(screen.x+size,screen.y+size,depth);d=Point(screen.x+size,screen.y-size,depth)
         window.drawTriangleColored(catalog.textureSlot,a,[0.0,0.0],color,b,[0.0,1.0],color,c,[1.0,1.0],color,255,255,255)
         window.drawTriangleColored(catalog.textureSlot,a,[0.0,0.0],color,c,[1.0,1.0],color,d,[1.0,0.0],color,255,255,255);drawn=drawn+1
       end if

@@ -279,7 +279,7 @@ function runLimited(archive,map,qvmRoot,maxFrames)
           drawn=worldBatch.drawMaterialsLitViewport(preparedPortal.world,preparedPortal.target.projection,preparedPortal.plan.refdef.time,preparedPortal.source.scene.dlights,preparedPortal.target.area);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
         end if
         drawn=sceneBatch.drawLitViewport(preparedPortal.batch,preparedPortal.target.projection,preparedPortal.target.area,preparedPortal.plan.refdef.time,preparedPortal.source.scene.dlights);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
-        drawn=flares.drawViewport(flareCatalog,preparedPortal.target.projection,preparedPortal.target.area,preparedPortal.plan.refdef.time,preparedViewIndex*2);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
+        drawn=flares.drawViewport(flareCatalog,fogCatalog,preparedPortal.target.projection,preparedPortal.target.area,preparedPortal.plan.refdef.time,preparedViewIndex*2);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
         // Match RB_BeginDrawingView: retain portal color, reset depth, then
         // let the main portal surface mask the recursive image.
         window.clearDepth(0.0)
@@ -293,7 +293,7 @@ function runLimited(archive,map,qvmRoot,maxFrames)
         if preparedPortal!=void and skyCatalog!=void then drawn=playableSky.drawViewport(skyCatalog,preparedView.source.refdef.viewaxis,preparedView.target.area,preparedView.source.refdef.time);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if end if
       end if
       drawn=sceneBatch.drawLitViewport(preparedView.batch,preparedView.target.projection,preparedView.target.area,preparedView.source.refdef.time,preparedView.source.scene.dlights);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
-      drawn=flares.drawViewport(flareCatalog,preparedView.target.projection,preparedView.target.area,preparedView.source.refdef.time,preparedViewIndex*2+1);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
+      drawn=flares.drawViewport(flareCatalog,fogCatalog,preparedView.target.projection,preparedView.target.area,preparedView.source.refdef.time,preparedViewIndex*2+1);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
       preparedViewIndex=preparedViewIndex+1
     end for
     cinematicDraws=drawCinematics(state);if cinematicDraws is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return cinematicDraws end if

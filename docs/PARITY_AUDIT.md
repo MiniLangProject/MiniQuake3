@@ -1625,11 +1625,14 @@ Portalansichten. Sichtbare Flares verwenden Baseq3s
 `viewportWidth * (r_flareSize/640 + 8/-eyeZ)`-Größe, Normalenausrichtung,
 additives Blending und das echte `flareShader`-Bild aus dem Retail-PK3. Fehlt
 dieses Bild, wird kein Ersatz gezeichnet. Der archivierte `r_flares`-Cvar behält
-den Originalstandard `0`; der Pass wird erst bei gesetztem Cvar aktiv. 15
-Verträge prüfen Parsing, Fogoffset, Tieftoleranz, Ein-/Ausblenden, Größe und
-Normalenfaktor. Der native `/W4 /WX`-Lifecycle-Test prüft zusätzlich gelöschte,
-gesetzte und außerhalb liegende Depth-Samples. Dynamische-Licht-Flares,
-Fog-Modulation der Flarefarbe und ein sichtbarer Retail-Lauf bleiben offen.
+den Originalstandard `0`; der Pass wird erst bei gesetztem Cvar aktiv. Wie
+`RB_RenderFlare` reicht der Port den behaltenen Fogindex an den additiven
+Flare-Shaderpfad weiter: die Baseq3-Fogdichte moduliert dabei RGB, während Alpha
+unverändert bleibt. 17 Verträge prüfen Parsing, Fogoffset, Tieftoleranz,
+Ein-/Ausblenden, Größe, Normalenfaktor und Fogmodulation. Der native `/W4 /WX`-
+Lifecycle-Test prüft zusätzlich gelöschte, gesetzte und außerhalb liegende
+Depth-Samples. Dynamische-Licht-Flares und ein explizit mit `r_flares 1`
+abgenommener sichtbarer Retail-Lauf bleiben offen.
 
 ### Adaptive BSP-Patchgitter
 

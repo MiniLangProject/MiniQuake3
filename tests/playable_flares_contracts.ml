@@ -1,6 +1,7 @@
 import mq3.compat.numeric as n
 import mq3.format.bsp as bsp
 import mq3.renderer.playable_flares as flares
+import mq3.renderer.playable_fog as fog
 
 function require(ok,text) if not ok then return error(7697,text) end if;return 1 end function
 function near(a,b) difference=a-b;if difference<0.0 then difference=0.0-difference end if;return difference<0.0001 end function
@@ -32,6 +33,10 @@ function main(args)
   count=count+require(flares.visibleAtDepth(100.0,76.01) and not flares.visibleAtDepth(100.0,76.0),"RB_TestFlare uses strict 24-unit depth tolerance")
   count=count+require(near(flares.flareSize(1280,128.0,40.0),160.0),"RB_RenderFlare screen size formula")
   count=count+require(near(flares.facing([0.0,10.0,0.0],[0.0,0.0,0.0],[0.0,1.0,0.0]),1.0),"RB_AddFlare normal facing attenuation")
+  fogVolume=fog.Fog("textures/fog",[0.5,0.5,0.5,1.0],1.0,0.125,[[-2.0,-2.0,-2.0],[2.0,2.0,2.0]],[0.0,0.0,0.0,0.0],false)
+  fogCatalog=fog.Catalog([void,fogVolume],-1,void);fogFlare=flares.Flare(0,0,1,[1.0,0.0,0.0],[1.0,1.0,1.0],[1.0,0.0,0.0])
+  count=count+require(flares.foggedColor(fogFlare,[192,128,64,255],fogCatalog,[0.0,0.0,0.0],[1.0,0.0,0.0])==[0,0,0,255],"RB_RenderFlare applies additive shader RGB fog modulation")
+  clearFlare=flares.Flare(0,0,0,[1.0,0.0,0.0],[1.0,1.0,1.0],[1.0,0.0,0.0]);count=count+require(flares.foggedColor(clearFlare,[192,128,64,255],fogCatalog,[0.0,0.0,0.0],[1.0,0.0,0.0])==[192,128,64,255],"fog zero leaves flare color unchanged")
   bad=fixture();putI(bad.data,72,1);count=count+require(try(flares.parse(bad)) is error,"flare shader index is bounds checked")
   count=count+require(try(flares.parse(void)) is error,"invalid BSP is rejected")
   count=count+require(try(flares.updateState(state,true,1,-1.0)) is error,"negative fade rate is rejected")

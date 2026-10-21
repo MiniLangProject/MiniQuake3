@@ -18131,8 +18131,8 @@
         },
         {
           "original": "RB_RenderFlare",
-          "minilang": "playable_flares.flareSize/drawViewport",
-          "scope": "Uses the original viewport-scaled size formula, real retail flareShader image, additive clamp-textured screen quads and no depth writes."
+          "minilang": "playable_flares.flareSize/foggedColor/drawViewport",
+          "scope": "Uses the original viewport-scaled size formula, real retail flareShader image, additive clamp-textured screen quads and no depth writes. The retained fog number selects the BSP fog volume and applies Baseq3's additive-shader ACFF_MODULATE_RGB attenuation."
         },
         {
           "original": "RB_RenderFlares",
@@ -18142,6 +18142,7 @@
       ],
       "target": [
         "src/mq3/renderer/playable_flares.ml",
+        "src/mq3/renderer/playable_fog.ml",
         "src/mq3/platform/playable_window.ml",
         "native/playable_win32.c",
         "src/mq3/client/qvm_preview_app.ml"
