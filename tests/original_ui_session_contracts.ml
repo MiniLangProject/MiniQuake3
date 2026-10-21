@@ -61,5 +61,7 @@ function main(args)
   count=count+req(session.K_CHAR_FLAG==1024 and session.K_MOUSE1==178 and session.K_UPARROW==132,"Baseq3 key constants pinned")
   observedDown=false;for each event in context.observed if event==[session.K_DOWNARROW,true] then observedDown=true end if end for
   count=count+req(observedDown,"active navigation also updates shared physical state")
+  session.openMain(state);context.catcher=context.catcher|session.KEYCATCH_CONSOLE;beforeEvents=len(context.events);context.down[session.VK_DOWN]=true;context.mouse=[2,3];frame=session.frame(state,18)
+  count=count+req(frame.active and frame.refreshed and frame.keyEvents==0 and frame.mouseEvents==0 and len(context.events)==beforeEvents+1,"console catcher suppresses UI input but keeps refresh")
   print("PASS: "+str(count)+" original UI session contracts");return 0
 end function

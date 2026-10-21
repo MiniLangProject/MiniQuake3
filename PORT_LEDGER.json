@@ -4557,10 +4557,83 @@
         "CG_TransitionSnapshot",
         "yet"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_ResetEntity",
+          "target_files": [
+            "src/mq3/client/cgame_snapshot.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Native snapshot observer at productive engine/QVM boundary; mirrors entity validity/interpolation, teleport/restart detection, command order and dropped-packet accounting without replaying QVM game events."
+        },
+        {
+          "original": "CG_TransitionEntity",
+          "target_files": [
+            "src/mq3/client/cgame_snapshot.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Native snapshot observer at productive engine/QVM boundary; mirrors entity validity/interpolation, teleport/restart detection, command order and dropped-packet accounting without replaying QVM game events."
+        },
+        {
+          "original": "CG_SetInitialSnapshot",
+          "target_files": [
+            "src/mq3/client/cgame_snapshot.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested",
+          "scope": "Native snapshot observer at productive engine/QVM boundary; mirrors entity validity/interpolation, teleport/restart detection, command order and dropped-packet accounting without replaying QVM game events."
+        },
+        {
+          "original": "CG_TransitionSnapshot",
+          "target_files": [
+            "src/mq3/client/cgame_snapshot.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested",
+          "scope": "Native snapshot observer at productive engine/QVM boundary; mirrors entity validity/interpolation, teleport/restart detection, command order and dropped-packet accounting without replaying QVM game events."
+        },
+        {
+          "original": "CG_SetNextSnap",
+          "target_files": [
+            "src/mq3/client/cgame_snapshot.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested",
+          "scope": "Native snapshot observer at productive engine/QVM boundary; mirrors entity validity/interpolation, teleport/restart detection, command order and dropped-packet accounting without replaying QVM game events."
+        },
+        {
+          "original": "CG_ReadNextSnapshot",
+          "target_files": [
+            "src/mq3/client/cgame_snapshot.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested",
+          "scope": "Native snapshot observer at productive engine/QVM boundary; mirrors entity validity/interpolation, teleport/restart detection, command order and dropped-packet accounting without replaying QVM game events."
+        },
+        {
+          "original": "yet / CG_ProcessSnapshots",
+          "target_files": [
+            "src/mq3/client/cgame_snapshot.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested",
+          "scope": "Inventory token `yet` comes from prose; the actual seventh file function CG_ProcessSnapshots is fully ported and contract tested."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_snapshot.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_snapshot.py",
+        "tests/reference/cgame_snapshot_oracle.c",
+        "tests/cgame_snapshot_oracle.ml",
+        "tests/cgame_snapshot_contracts.ml",
+        "scripts/test_retail_qvm_match.py"
+      ]
     },
     {
       "source": "code/cgame/cg_syscalls.asm",
@@ -5083,10 +5156,30 @@
         "Con_ToggleConsole_f",
         "Con_Top"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Con_ToggleConsole_f / Con_MessageMode_f / Con_MessageMode2_f / Con_DrawInput field presentation",
+          "target_files": [
+            "src/mq3/client/console_input.ml",
+            "src/mq3/client/console_input_display.ml",
+            "src/mq3/client/qvm_preview_app.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "ported",
+          "scope": "The productive Windows QVM path hard-toggles the console catcher, owns messagemode/messagemode2 commands and draws console, say, team-say and tell fields with the retail bigchars atlas, horizontal field scrolling and blinking cursor. Full transcript storage, notify lines and animated console fraction remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/client/console_input.ml",
+        "src/mq3/client/console_input_display.ml",
+        "src/mq3/client/qvm_preview_app.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_console_input.py",
+        "tests/console_input_display_contracts.ml"
+      ]
     },
     {
       "source": "code/client/cl_input.c",
@@ -5303,8 +5396,8 @@
             "src/mq3/engine/local_qvm_match.ml",
             "src/mq3/qcommon/config_persistence.ml"
           ],
-          "status": "tested_subset",
-          "scope": "The productive Local-QVM host owns a 256-byte console/message field editor with overstrike, paste, cursor, scroll, 32-line history, command/chat/tell submission and catcher synchronization. Its real command registry owns bind, unbind, unbindall and bindlist; cfg text loads through the command buffer and serializes in exact Key_WriteBindings order for configuration persistence. Seven unchanged-C records and 22 integration contracts pass. Visible console rendering and native WM_CHAR generation remain open."
+          "status": "ported",
+          "scope": "The productive Local-QVM host owns a 256-byte console/message field editor with overstrike, paste, cursor, scroll, 32-line history, command/chat/tell submission and catcher synchronization. Its real command registry owns bind, unbind, unbindall and bindlist; cfg text loads through the command buffer and serializes in exact Key_WriteBindings order for configuration persistence. Win32 layout-resolved character events, hardcoded console toggling and retail-font console/chat/tell field presentation are wired into the QVM window. Seven unchanged-C records and 30 integration/display contracts pass."
         }
       ],
       "target": [
@@ -5331,7 +5424,8 @@
         "tests/reference/console_input_oracle.c",
         "tests/console_input_oracle.ml",
         "tests/console_input_contracts.ml",
-        "tests/console_input_retail_probe.ml"
+        "tests/console_input_retail_probe.ml",
+        "tests/console_input_display_contracts.ml"
       ]
     },
     {
@@ -19171,10 +19265,53 @@
         "R_ChopPolyBehindPlane",
         "R_MarkFragments"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "R_ChopPolyBehindPlane",
+          "target_files": [
+            "src/mq3/renderer/mark_fragments.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Baseq3 polygon clipping and fragment packing are ported and compared bit-for-bit with the unchanged C function across front, back and split-plane cases."
+        },
+        {
+          "original": "R_AddMarkFragments",
+          "target_files": [
+            "src/mq3/renderer/mark_fragments.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Baseq3 fragment offsets, point ordering and capacity limits are ported and compared bit-for-bit with unchanged C."
+        },
+        {
+          "original": "R_BoxSurfaces_r",
+          "target_files": [
+            "src/mq3/renderer/mark_fragments.ml"
+          ],
+          "status": "tested",
+          "scope": "BSP traversal, bounds rejection and face/grid candidate collection are covered by native contracts and the q3dm1 Retail probe."
+        },
+        {
+          "original": "R_MarkFragments",
+          "target_files": [
+            "src/mq3/renderer/mark_fragments.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested",
+          "scope": "The complete mark projection path, surface filtering and CG_R_MARKFRAGMENTS trap ABI are integrated and exercised with Retail q3dm1 geometry."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/mark_fragments.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_mark_fragments.py",
+        "tests/reference/mark_fragments_oracle.c",
+        "tests/mark_fragments_oracle.ml",
+        "tests/mark_fragments_contracts.ml",
+        "tests/mark_fragments_retail_probe.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_mesh.c",
@@ -19195,7 +19332,7 @@
             "src/mq3/renderer/qvm_scene_geometry.ml"
           ],
           "status": "tested_exact",
-          "scope": "Projected-radius LOD selection, bounds radius, RF_WRAP_FRAMES and invalid frame-pair repair are ported; productive QVM MD3 interpolation consumes normalized frames. Six exact records and 24 contracts pass; complete culling/surface submission remains open."
+          "scope": "Projected-radius LOD selection, bounds radius, RF_WRAP_FRAMES and invalid frame-pair repair are ported; productive QVM MD3 interpolation consumes normalized frames. Six exact records and 24 contracts pass."
         },
         {
           "original": "R_ComputeFogNum and R_AddMD3Surfaces fog/shadow policy",
@@ -19205,15 +19342,27 @@
             "src/mq3/client/qvm_preview_app.ml"
           ],
           "status": "tested_exact",
-          "scope": "The selected MD3 frame sphere is tested against ordered BSP fog bounds exactly, including RDF_NOWORLDMODEL and touch-only exclusion. Productive primary and portal QVM scenes retain the fog index; fogged MD3s skip projected and stencil shadows. Six unchanged-C records, 51 geometry contracts and a q3ctf1/Sarge retail probe pass."
+          "scope": "The selected MD3 frame sphere is tested against ordered BSP fog bounds exactly, including RDF_NOWORLDMODEL and touch-only exclusion. Productive primary and portal QVM scenes retain the fog index; fogged MD3s skip projected and stencil shadows. Six unchanged-C records, 55 geometry contracts and a q3ctf1/Sarge retail probe pass."
+        },
+        {
+          "original": "R_CullModel and R_AddMD3Surfaces LOD/cull/surface selection",
+          "target_files": [
+            "src/mq3/renderer/md3_entity.ml",
+            "src/mq3/renderer/qvm_scene_geometry.ml",
+            "src/mq3/engine/local_qvm_match.ml",
+            "src/mq3/client/qvm_preview_app.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "The productive model registry loads contiguous _1/_2 MD3 siblings, chooses LOD from the original projected-radius formula plus r_lodscale/r_lodbias, culls the selected LOD using frame spheres and the merged-frame local box fallback, and selects skinNum modulo each surface shader table. Shadow modes 2 and 3 now dispatch stencil and projection geometry separately as R_AddMD3Surfaces does. Six unchanged-C cull records, 55 scene-geometry contracts and a q3ctf1/Sarge retail probe with 336/202/126 LOD triangles pass."
         }
       ],
       "target": [
         "src/mq3/renderer/md3_entity.ml",
         "src/mq3/renderer/qvm_scene_geometry.ml",
+        "src/mq3/engine/local_qvm_match.ml",
         "src/mq3/client/qvm_preview_app.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_md3_entity.py",
         "tests/reference/md3_entity_oracle.c",
@@ -19224,7 +19373,11 @@
         "scripts/test_md3_fog.py",
         "tests/reference/md3_fog_oracle.c",
         "tests/md3_fog_oracle.ml",
-        "tests/md3_fog_retail_probe.ml"
+        "tests/md3_fog_retail_probe.ml",
+        "scripts/test_md3_cull_lod.py",
+        "tests/reference/md3_cull_oracle.c",
+        "tests/md3_cull_oracle.ml",
+        "tests/md3_cull_lod_retail_probe.ml"
       ]
     },
     {
@@ -23544,10 +23697,29 @@
         "WIN_DisableAltTab",
         "WIN_EnableAltTab"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "MainWndProc WM_KEYDOWN / WM_KEYUP / WM_CHAR Sys_QueEvent translation",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/client/qvm_preview_app.ml"
+          ],
+          "status": "ported",
+          "scope": "The native window queues deduplicated physical keys and separate WM_CHAR values in the shared 256-entry overwrite-oldest FIFO. TranslateMessage resolves keyboard layout, Shift and Caps Lock before characters reach Console_Key/Message_Key state. Native lifecycle, FIFO, overflow and direct WM_CHAR WndProc tests compile with /W4 /WX. MapKey scan-code edge cases, Alt-Tab control and application activation remain open."
+        }
+      ],
+      "target": [
+        "native/playable_win32.c",
+        "src/mq3/platform/playable_window.ml",
+        "src/mq3/client/qvm_preview_app.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/playable_window_build_test.py",
+        "tests/playable_window_input_events_native.c",
+        "scripts/test_console_input.py"
+      ]
     },
     {
       "source": "code/win32/winquake.rc",

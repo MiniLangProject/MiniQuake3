@@ -5,6 +5,9 @@ package mq3.renderer.md3_entity
 
 import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
+import mq3.renderer.view_math as viewMath
+
+extern function tan(value as double) from "ucrtbase.dll" returns double
 
 const RF_WRAP_FRAMES=512
 
@@ -97,4 +100,48 @@ function computeFogNum(fogs,origin,frame,noWorldModel)
     if intersects then return fogIndex end if
   end for
   return 0
+end function
+
+// Control-flow core of R_CullModel.  The sphere tests can produce an early
+// definitive answer only for normalized axes; clipped or disagreeing frame
+// spheres fall through to the merged-frame box exactly like Baseq3.
+function cullModelDecision(sameFrame,nonNormalizedAxes,newSphere,oldSphere,boxCull)
+  if not nonNormalizedAxes then
+    if sameFrame then
+      if newSphere==viewMath.CULL_OUT or newSphere==viewMath.CULL_IN then return newSphere end if
+    else
+      if newSphere==oldSphere and (newSphere==viewMath.CULL_OUT or newSphere==viewMath.CULL_IN) then return newSphere end if
+    end if
+  end if
+  return boxCull
+end function
+
+function cullModel(frames,frame,oldFrame,origin,axis,nonNormalizedAxes,frustum,noCull)
+  if frames==void or frame<0 or oldFrame<0 or frame>=len(frames) or oldFrame>=len(frames) then return fail("cull frame outside model") end if
+  if frustum==void then return viewMath.CULL_CLIP end if
+  orientation=viewMath.orientation(origin,axis);newValue=frames[frame];oldValue=frames[oldFrame]
+  newSphere=viewMath.CULL_CLIP;oldSphere=viewMath.CULL_CLIP
+  if not nonNormalizedAxes then
+    newSphere=viewMath.cullLocalPointAndRadius(newValue.localOrigin,newValue.radius,orientation,frustum,noCull);if newSphere is error then return newSphere end if
+    oldSphere=newSphere
+    if frame!=oldFrame then oldSphere=viewMath.cullLocalPointAndRadius(oldValue.localOrigin,oldValue.radius,orientation,frustum,noCull);if oldSphere is error then return oldSphere end if end if
+    if (frame==oldFrame and (newSphere==viewMath.CULL_OUT or newSphere==viewMath.CULL_IN)) or (frame!=oldFrame and newSphere==oldSphere and (newSphere==viewMath.CULL_OUT or newSphere==viewMath.CULL_IN)) then return newSphere end if
+  end if
+  bounds=[[],[]]
+  for axisIndex=0 to 2
+    minimum=oldValue.mins[axisIndex];if newValue.mins[axisIndex]<minimum then minimum=newValue.mins[axisIndex] end if
+    maximum=oldValue.maxs[axisIndex];if newValue.maxs[axisIndex]>maximum then maximum=newValue.maxs[axisIndex] end if
+    bounds[0]=bounds[0]+[minimum];bounds[1]=bounds[1]+[maximum]
+  end for
+  boxCull=viewMath.cullLocalBox(bounds,orientation,frustum,noCull);if boxCull is error then return boxCull end if
+  return cullModelDecision(frame==oldFrame,nonNormalizedAxes,newSphere,oldSphere,boxCull)
+end function
+
+// R_SetupProjection fields used by ProjectRadius.  This keeps the original
+// float stores around tan() and matrix construction; all unused fields stay
+// zero except projection[11], which supplies clip W = distance.
+function lodProjection(fovY,zNear)
+  if fovY<=0.0 or fovY>=180.0 or zNear<=0.0 then return fail("invalid LOD projection") end if
+  ymax=numeric.f32(numeric.fmul(zNear,tan(fovY*3.14159265358979323846/360.0)));ymin=numeric.fneg(ymax);height=numeric.fsub(ymax,ymin)
+  projection=array(16,0.0);projection[5]=numeric.fdiv(numeric.fmul(2.0,zNear),height);projection[11]= -1.0;return projection
 end function

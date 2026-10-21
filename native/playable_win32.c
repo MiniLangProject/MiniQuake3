@@ -40,6 +40,7 @@ static LARGE_INTEGER timerStart;
 
 #define PLAYABLE_INPUT_EVENTS 256
 #define PLAYABLE_INPUT_KEY 1
+#define PLAYABLE_INPUT_CHAR 2
 #define PLAYABLE_INPUT_MOUSE 3
 typedef struct playableInputEvent_s { int time, type, value, value2; } playableInputEvent;
 static playableInputEvent inputEvents[PLAYABLE_INPUT_EVENTS];
@@ -244,6 +245,12 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
         case WM_KEYUP:
         case WM_SYSKEYUP:
             queueKeyTransition((int)wParam, 0, currentMilliseconds());
+            return 0;
+        /* win_wndproc.c queues WM_CHAR separately from the physical key so
+         * TranslateMessage has already applied layout, Shift and Caps Lock. */
+        case WM_CHAR:
+            if ((unsigned int)wParam <= 255u)
+                queueInputEvent(currentMilliseconds(), PLAYABLE_INPUT_CHAR, (int)wParam, 0);
             return 0;
         case WM_LBUTTONDOWN:
             SetCapture(hwnd);

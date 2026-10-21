@@ -4,13 +4,13 @@ Stand: 2026-10-21. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
-Die zuletzt vollständig ausgeführte Retail-Prüfauswahl umfasste **281 Gates**
+Die zuletzt vollständig ausgeführte Retail-Prüfauswahl umfasste **283 Gates**
 (`python scripts/verify.py --data-root D:/Quake3`) und bestand vollständig am
 21. Oktober 2026 mit dem eingebundenen Retail-`pak0.pk3`. Der dabei frisch
 gebaute `MiniQuake3.exe`-Build hat SHA-256
-`3f3026b53789d36ded7dba81d3f2191ab5cb651f92d1d45dd7dfba51101c5505`,
+`46e3c7a61bab2830c5a315c234e2c166f10ee7624d6314a060bb7f2f0969ea12`,
 das zugehörige `build/verification.json` SHA-256
-`300fbad186adf6b1f3a28feebb610af06dba547d0feafc6f053b092a2e48d439`.
+`0289c4288549e120bdd3ff4b4139a5b516ab79bdecf78dec504d5a3e7e9f18fc`.
 Der Lauf enthält den zusammenhängenden Retail-qagame/cgame/ui-Boot mit neun
 Prediction-Traces, 2.345 vollständig texturierten Szenendreiecken, 17
 Renderpässen, 26 Soundbefehlen und interaktiver Original-UI sowie den
@@ -1531,8 +1531,18 @@ Command-Buffer und serialisiert die 256 Bindings im originalen
 `Key_WriteBindings`-Format für `config_persistence`. Sieben Datensätze führen
 `Field_CharEvent`, `Field_KeyDownEvent` und `Key_WriteBindings` unverändert aus;
 22 Integrationsverträge bestehen. Das reale 38-Byte-`q3config.cfg` unter
-`D:/Quake3/baseq3` wird vom Retail-Probe vollständig eingelesen. Die sichtbare Konsolenfläche und native
-WM_CHAR-Erzeugung bleiben als Präsentations-/Plattformarbeit offen.
+`D:/Quake3/baseq3` wird vom Retail-Probe vollständig eingelesen. Der produktive
+Windows-Pfad erzeugt jetzt wie `win_wndproc.c` aus `WM_CHAR` ein separates,
+bereits durch Tastaturlayout, Shift und Caps Lock aufgelöstes Zeichenereignis.
+Physische Key- und Char-Ereignisse erreichen getrennt den hosteigenen Editor;
+Gravis/Tilde schaltet den Console-Catcher hartkodiert um, Escape beendet Chat,
+und `messagemode`/`messagemode2` sind echte Engine-Kommandos. Aktive Console-,
+Say-, Team-Say- und Tell-Zeilen werden mit `gfx/2d/bigchars` aus `pak0.pk3`,
+Scrollfenster und blinkendem Cursor über dem Retail-QVM-Bild dargestellt.
+Sieben unveränderte C-Datensätze, 30 Editor-/Anzeigeverträge und der native
+`/W4 /WX`-Queue-/Lifecycle-Test bestehen. Vollständiger Console-Transcript,
+Notify-Zeilen und animiertes Herunterfahren der Console bleiben im separaten
+`cl_console.c`-Umfang offen.
 
 ### OOB-Challenge und Direct Connect
 
@@ -1699,6 +1709,23 @@ Retail-Test mit `maps/q3ctf1.bsp` plus `models/players/sarge/lower.md3`
 bestätigen 336 gefoggte Originaldreiecke ohne Schatten gegenüber 672 klaren
 Original-/Projektionsdreiecken und 416 Stencil-Seitendreiecken.
 
+Die übrige produktive Entscheidung aus `R_CullModel` und
+`R_AddMD3Surfaces` ist nun ebenfalls angebunden. Die Modellregistrierung lädt
+zusammenhängende `_1.md3`- und `_2.md3`-Geschwister, und Haupt- sowie
+Portalansicht wählen daraus mit `ProjectRadius`, `r_lodscale` und
+`r_lodbias` denselben LOD wie Baseq3. Der Cull-Pfad verwendet bei normalisierten
+Achsen zuerst die Kugeln des aktuellen und alten Frames; widersprechen sie sich
+oder schneiden sie den Frustum, entscheidet die vereinigte lokale Frame-Box.
+Nicht normalisierte Achsen überspringen wie im Original die Kugelabkürzung.
+Vollständig verworfene Modelle reservieren und erzeugen keine Geometrie. Die
+Surface-Auswahl nutzt `skinNum % numShaders`, trennt `cg_shadows 2` (Stencil)
+von `cg_shadows 3` (Projektion) und hält den Transform-Cache zwischen den LODs
+getrennt. Sechs Ergebnisse aus der unveränderten C-Funktion stimmen exakt; 55
+Geometrieverträge prüfen LOD, Frustum-Cull und Surface-Shader. Die Retail-Probe
+lädt `maps/q3ctf1.bsp` sowie Sarges drei echte Unterkörper-LODs und bestätigt
+336, 202 beziehungsweise 126 Dreiecke sowie null Dreiecke hinter dem
+Betrachter.
+
 ### QVM-Inline-Brushmodelle
 
 `R_LoadSubmodels`/`R_AddBrushModelSurfaces` besitzen nun einen produktiven
@@ -1819,3 +1846,22 @@ folgen der Originalreihenfolge. Der produktive Windows-Ladevorgang führt seine
 13 Phasen nun durch denselben `CG_LoadingString`-Zustand. 16 Aufrufe des
 unveränderten C-Iconlayouts, 24 Zustandsverträge und drei echte Retail-Assets
 prüfen den Port.
+
+`cg_snapshot.c` ist als vollständige native Snapshot-Zustandsmaschine vorhanden.
+Sie spiegelt Initialsnapshot, Entity-Reset/-Transition, Current-/Next-State,
+Interpolation, Teleport-/Follow-/Servercount-Wechsel, Reliable-Command-Reihenfolge,
+verlorene Snapshots, inaktive Frames und Zeitklemmen. Der produktive Matchhost
+füttert sie an derselben Snapshotgrenze wie die Retail-Cgame; Ereignisse und
+Prediction verbleiben im QVM und werden daher nicht doppelt ausgeführt. Vier
+Aufrufe der unveränderten C-Entityfunktionen und 18 Zustandsverträge bestehen.
+Das Retail-QVM-Gate mit `D:/Quake3` besteht über acht Frames: 13 Snapshot-
+Entities durchlaufen den produktiven Matchpfad; zugleich bleiben 2.345
+texturierte Welt-/Modell-Dreiecke, 19 Scene-Entities, 26 Sounds sowie Cgame- und
+UI-2D-Ausgabe aktiv.
+
+`tr_marks.c` ist jetzt als vollständiger nativer Dateipfad erfasst. Die
+MiniLang-Implementierung übernimmt BSP-Bounds-Traversierung, Face-/Grid-Filter,
+Polygon-Clipping, Fragmentgrenzen und die produktive `CG_R_MARKFRAGMENTS`-
+Trap-Anbindung. Fünf Datensätze vergleichen Punktreihenfolge, Offsets und
+Float-Bitmuster direkt mit den unveränderten C-Funktionen; 17 Verträge und eine
+Retail-Projektion auf `q3dm1` prüfen den vollständigen Weltgeometriepfad.

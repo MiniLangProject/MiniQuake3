@@ -35,6 +35,7 @@ struct ShadowTriangle positions entityIndex surfaceIndex end struct
 struct ShadowEdge i2 facing end struct
 struct Geometry triangles triangleCount modelEntities spriteEntities polySurfaces skippedInline skippedUnsupported sourceVertices vertexTransforms portals culledInline shadowTriangles shadowTriangleCount end struct
 struct InlineModel index renderData shaderNames bounds dynamicLightFlags end struct
+struct Md3Selection model lod frames cull end struct
 struct FrameEntry modelHandle surfaceIndex frame oldFrame backlerp xyz normals end struct
 struct TransformEntry modelHandle surfaceIndex frame oldFrame backlerp origin axis positions normals lightAmbient lightDirected lightDirection lightAlpha colors end struct
 struct FrameCache normalTable entries maxEntries hits misses transforms transformHits transformMisses end struct
@@ -119,6 +120,9 @@ function loadInlineModel(map,index,maxTriangles)
   return [InlineModel(index,data,names,bounds,dynamicLightFlags)]
 end function
 function isInlineModel(model) return model!=void and typeof(model)=="array" and len(model)==1 end function
+function md3Lods(levels) return ["$mq3/md3Lods",levels] end function
+function isLodModel(model) return model!=void and typeof(model)=="array" and len(model)==2 and typeof(model[0])=="string" and model[0]=="$mq3/md3Lods" end function
+function primaryMd3(model) if isLodModel(model) then if len(model[1])==0 then return void end if;return model[1][0] end if;return model end function
 function modelAt(assetKinds,modelAssets,handle)
   if handle<=0 or handle>len(assetKinds) or assetKinds[handle-1]!="model" or handle>len(modelAssets) then return void end if
   return modelAssets[handle-1]
@@ -156,6 +160,20 @@ function modelFogNum(decoded,model,fogCatalog,noWorldModel)
   fogs=void;if fogCatalog!=void then fogs=fogCatalog.fogs end if
   return md3Entity.computeFogNum(fogs,decoded.origin,model.frames[frames.frame],noWorldModel)
 end function
+function selectMd3(decoded,asset,refdef,frustum,lodScale,lodBias)
+  levels=[asset];if isLodModel(asset) then levels=asset[1] end if
+  if len(levels)==0 or levels[0]==void then return fail("MD3 has no base LOD") end if
+  primary=levels[0];frames=md3Entity.normalizeFrames(primary.numFrames,decoded.frame,decoded.oldframe,decoded.renderfx);if frames is error then return frames end if
+  lod=0
+  if len(levels)>1 then
+    if refdef==void then return fail("MD3 LOD needs a refdef") end if
+    projection=md3Entity.lodProjection(refdef.fovY,4.0);if projection is error then return projection end if
+    frame=primary.frames[frames.frame];lod=md3Entity.computeLod(len(levels),frame.mins,frame.maxs,decoded.origin,refdef.vieworg,refdef.viewaxis[0],projection,lodScale,lodBias);if lod is error then return lod end if
+  end if
+  model=levels[lod];if frames.frame>=model.numFrames or frames.oldFrame>=model.numFrames then return fail("selected MD3 LOD lacks animation frame") end if
+  cull=md3Entity.cullModel(model.frames,frames.frame,frames.oldFrame,decoded.origin,decoded.axis,decoded.nonNormalizedAxes,frustum,false);if cull is error then return cull end if
+  return Md3Selection(model,lod,frames,cull)
+end function
 function expectedTriangles(entities,polys,assetKinds,modelAssets,maxTrianglesPerSurface)
   count=0
   for each value in entities
@@ -179,11 +197,18 @@ function inlineCulled(decoded,model,frustum)
   if frustum==void then return false end if
   orientation=viewMath.orientation(decoded.origin,decoded.axis);result=viewMath.cullLocalBox(model[0].bounds,orientation,frustum,false);if result is error then return result end if;return result==viewMath.CULL_OUT
 end function
-function expectedDecodedTrianglesModeFog(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,fogCatalog,noWorldModel)
+function expectedDecodedTrianglesModeFogLod(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,fogCatalog,noWorldModel,refdef,lodScale,lodBias,shadowMode)
   count=0
   for each decoded in decodedEntities
     if not entityPolicy.visible(decoded.reType,decoded.renderfx,isPortal) then continue end if
-    if decoded.reType==RT_MODEL then model=modelAt(assetKinds,modelAssets,decoded.hModel);if model!=void and typeof(model)!="string" then culled=false;if isInlineModel(model) then culled=inlineCulled(decoded,model,frustum);if culled is error then return culled end if end if;if not culled then amount=modelTriangleCount(model,maxTrianglesPerSurface);count=count+amount;if not isInlineModel(model) and (decoded.renderfx&RF_SHADOW_PLANE)!=0 then fogNum=modelFogNum(decoded,model,fogCatalog,noWorldModel);if fogNum is error then return fogNum end if;if fogNum==0 then count=count+amount end if end if end if end if
+    if decoded.reType==RT_MODEL then
+      asset=modelAt(assetKinds,modelAssets,decoded.hModel)
+      if asset!=void and typeof(asset)!="string" then
+        model=asset;culled=false
+        if isInlineModel(asset) then culled=inlineCulled(decoded,asset,frustum);if culled is error then return culled end if
+        else selection=selectMd3(decoded,asset,refdef,frustum,lodScale,lodBias);if selection is error then return selection end if;model=selection.model;culled=selection.cull==viewMath.CULL_OUT end if
+        if not culled then amount=modelTriangleCount(model,maxTrianglesPerSurface);count=count+amount;if not isInlineModel(asset) and shadowMode==3 and (decoded.renderfx&RF_SHADOW_PLANE)!=0 then fogNum=modelFogNum(decoded,model,fogCatalog,noWorldModel);if fogNum is error then return fogNum end if;if fogNum==0 then count=count+amount end if end if end if
+      end if
     else if decoded.reType==RT_SPRITE or decoded.reType==RT_RAIL_CORE then count=count+2
     else if decoded.reType==RT_BEAM then if decoded.origin!=decoded.oldorigin then count=count+12 end if
     else if decoded.reType==RT_LIGHTNING then count=count+8
@@ -192,6 +217,7 @@ function expectedDecodedTrianglesModeFog(decodedEntities,polys,assetKinds,modelA
   for each poly in polys if len(poly.verts)>=3 then count=count+len(poly.verts)-2 end if end for
   return count
 end function
+function expectedDecodedTrianglesModeFog(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,fogCatalog,noWorldModel) return expectedDecodedTrianglesModeFogLod(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,fogCatalog,noWorldModel,void,5.0,0,0) end function
 function expectedDecodedTrianglesMode(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum) return expectedDecodedTrianglesModeFog(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,void,false) end function
 function expectedDecodedTriangles(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface) return expectedDecodedTrianglesMode(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,false,void) end function
 function transformTriangle(source,orientation,color,modelHandle,customSkin,shaderHandle,surfaceName,entityIndex,lighting,renderfx)
@@ -226,10 +252,10 @@ function cachedFrame(cache,modelHandle,model,surfaceIndex,frame,oldFrame,backler
   end if
   return entry
 end function
-function cachedTransform(cache,decoded,surfaceIndex,frameData)
+function cachedTransform(cache,decoded,modelCacheKey,surfaceIndex,frameData)
   if cache!=void then
     for each entry in cache.transforms
-      if entry.modelHandle==decoded.hModel and entry.surfaceIndex==surfaceIndex and entry.frame==decoded.frame and entry.oldFrame==decoded.oldframe and entry.backlerp==decoded.backlerp and entry.origin==decoded.origin and entry.axis==decoded.axis then cache.transformHits=cache.transformHits+1;return entry end if
+      if entry.modelHandle==modelCacheKey and entry.surfaceIndex==surfaceIndex and entry.frame==decoded.frame and entry.oldFrame==decoded.oldframe and entry.backlerp==decoded.backlerp and entry.origin==decoded.origin and entry.axis==decoded.axis then cache.transformHits=cache.transformHits+1;return entry end if
     end for
   end if
   orientation=viewMath.orientation(decoded.origin,decoded.axis);count=len(frameData.xyz);worldPositions=array(count,void);worldNormals=array(count,void)
@@ -238,7 +264,7 @@ function cachedTransform(cache,decoded,surfaceIndex,frameData)
     direction=viewMath.localNormalToWorld(frameData.normals[vertexIndex],orientation);if direction is error then return direction end if
     worldPositions[vertexIndex]=point;worldNormals[vertexIndex]=direction
   end for
-  result=TransformEntry(decoded.hModel,surfaceIndex,decoded.frame,decoded.oldframe,decoded.backlerp,decoded.origin,decoded.axis,worldPositions,worldNormals,void,void,void,-1,void)
+  result=TransformEntry(modelCacheKey,surfaceIndex,decoded.frame,decoded.oldframe,decoded.backlerp,decoded.origin,decoded.axis,worldPositions,worldNormals,void,void,void,-1,void)
   if cache!=void then
     if len(cache.transforms)>=cache.maxEntries then cache.transforms=arrays.slice(cache.transforms,1,len(cache.transforms)-1) end if
     cache.transforms=cache.transforms+[result];cache.transformMisses=cache.transformMisses+1
@@ -251,8 +277,8 @@ function cachedVertexColors(entry,lighting,alpha)
   for vertexIndex=0 to len(entry.normals)-1 color=lightGrid.vertexColor(lighting,entry.normals[vertexIndex]);color[3]=alpha;colors[vertexIndex]=color end for
   entry.lightAmbient=lighting.ambient;entry.lightDirected=lighting.directed;entry.lightDirection=lighting.direction;entry.lightAlpha=alpha;entry.colors=colors;return colors
 end function
-function addModelOptimized(output,decoded,model,entityIndex,maxTrianglesPerSurface,cache,normalTable,grid,refdef,shadowMode,fogCatalog,noWorldModel)
-  frames=md3Entity.normalizeFrames(model.numFrames,decoded.frame,decoded.oldframe,decoded.renderfx);if frames is error then return frames end if
+function addModelOptimized(output,decoded,selection,entityIndex,maxTrianglesPerSurface,cache,normalTable,grid,refdef,shadowMode,fogCatalog,noWorldModel)
+  model=selection.model;frames=selection.frames;modelCacheKey=decoded.hModel*4+selection.lod
   // R_AddMD3Surfaces repairs the submitted refEntity_t in place before the
   // surfaces reach the back end. Do the same before cache lookup and lighting.
   decoded.frame=frames.frame;decoded.oldframe=frames.oldFrame
@@ -263,16 +289,16 @@ function addModelOptimized(output,decoded,model,entityIndex,maxTrianglesPerSurfa
   for surfaceIndex=0 to len(model.surfaces)-1
     surface=model.surfaces[surfaceIndex];limit=surface.mesh.numTriangles;if limit>maxTrianglesPerSurface then limit=maxTrianglesPerSurface end if
     if limit==0 then continue end if
-    frameData=cachedFrame(cache,decoded.hModel,model,surfaceIndex,decoded.frame,decoded.oldframe,decoded.backlerp,normalTable);if frameData is error then return frameData end if
-    transformed=cachedTransform(cache,decoded,surfaceIndex,frameData);if transformed is error then return transformed end if;worldPositions=transformed.positions;worldNormals=transformed.normals;vertexColors=void
+    frameData=cachedFrame(cache,modelCacheKey,model,surfaceIndex,decoded.frame,decoded.oldframe,decoded.backlerp,normalTable);if frameData is error then return frameData end if
+    transformed=cachedTransform(cache,decoded,modelCacheKey,surfaceIndex,frameData);if transformed is error then return transformed end if;worldPositions=transformed.positions;worldNormals=transformed.normals;vertexColors=void
     if lighting!=void then vertexColors=cachedVertexColors(transformed,lighting,decoded.shaderRGBA[3]) end if
     shadowDirection=[0.4285714286,0.2857142857,0.8571428571];if lighting!=void then shadowDirection=lighting.direction end if
     output.sourceVertices=output.sourceVertices+surface.mesh.numVerts;output.vertexTransforms=output.vertexTransforms+surface.mesh.numVerts
-    shaderName="";if len(surface.shaders)>0 then shaderName=surface.shaders[0] end if
+    shaderName="";if len(surface.shaders)>0 then shaderIndex=decoded.skinNum%len(surface.shaders);if shaderIndex<0 then shaderIndex=0 end if;shaderName=surface.shaders[shaderIndex] end if
     for triangleIndex=0 to limit-1
       base=triangleIndex*3;a=surface.mesh.triangles[base];b=surface.mesh.triangles[base+1];c=surface.mesh.triangles[base+2]
       stored=appendIndexedModelTriangle(output,worldPositions,surface.mesh.texCoords,worldNormals,vertexColors,decoded.shaderRGBA,decoded.shaderTexCoord,decoded.shaderTime,a,b,c,decoded.hModel,decoded.customSkin,decoded.customShader,shaderName,surface.name,entityIndex,surfaceIndex,decoded.renderfx,fogNum);if stored is error then return stored end if
-      if fogNum==0 and (decoded.renderfx&RF_SHADOW_PLANE)!=0 then
+      if fogNum==0 and shadowMode==3 and (decoded.renderfx&RF_SHADOW_PLANE)!=0 then
         shadowPositions=[]
         for each vertexIndex in [a,b,c] point=projectionShadowPointOriented(frameData.xyz[vertexIndex],decoded.shadowPlane,shadowDirection,decoded.origin,decoded.axis);if point is error then return point end if;shadowPositions=shadowPositions+[point] end for
         shadowColor=[0,0,0,102];stored=appendTriangle(output,triangle(shadowPositions,[[0.0,0.0],[0.0,0.0],[0.0,0.0]],[normal(),normal(),normal()],[shadowColor,shadowColor,shadowColor],shadowColor,[0.0,0.0],0.0,0,0,0,PROJECTION_SHADOW_SHADER,"",entityIndex,surfaceIndex,0));if stored is error then return stored end if
@@ -355,21 +381,22 @@ function addPolys(output,polys)
   end for
   return void
 end function
-function stencilShadowCapacity(decodedEntities,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,shadowMode,fogCatalog,noWorldModel)
+function stencilShadowCapacity(decodedEntities,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,shadowMode,fogCatalog,noWorldModel,refdef,lodScale,lodBias)
   if shadowMode!=2 then return 0 end if;count=0
   for each decoded in decodedEntities
     if decoded.reType!=RT_MODEL or not entityPolicy.visible(decoded.reType,decoded.renderfx,isPortal) or (decoded.renderfx&(RF_NOSHADOW|RF_DEPTHHACK))!=0 then continue end if
-    model=modelAt(assetKinds,modelAssets,decoded.hModel);if model==void or typeof(model)=="string" or isInlineModel(model) then continue end if
+    asset=modelAt(assetKinds,modelAssets,decoded.hModel);if asset==void or typeof(asset)=="string" or isInlineModel(asset) then continue end if
+    selection=selectMd3(decoded,asset,refdef,frustum,lodScale,lodBias);if selection is error then return selection end if;if selection.cull==viewMath.CULL_OUT then continue end if;model=selection.model
     fogNum=modelFogNum(decoded,model,fogCatalog,noWorldModel);if fogNum is error then return fogNum end if;if fogNum!=0 then continue end if
     count=count+modelTriangleCount(model,maxTrianglesPerSurface)*6
   end for
   return count
 end function
-function buildRecordsFrameCachedLitReuseModeShadowFog(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,isPortal,frustum,shadowMode,fogCatalog,noWorldModel)
+function buildRecordsFrameCachedLitReuseModeShadowFogLod(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,isPortal,frustum,shadowMode,fogCatalog,noWorldModel,lodScale,lodBias)
   if entities==void or polys==void or assetKinds==void or modelAssets==void or maxTrianglesPerSurface<0 then return fail("invalid build input") end if
   decodedEntities=decodeEntities(entities);if decodedEntities is error then return decodedEntities end if
-  capacity=expectedDecodedTrianglesModeFog(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,fogCatalog,noWorldModel);if capacity is error then return capacity end if
-  shadowCapacity=stencilShadowCapacity(decodedEntities,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,shadowMode,fogCatalog,noWorldModel);if shadowCapacity is error then return shadowCapacity end if
+  capacity=expectedDecodedTrianglesModeFogLod(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,fogCatalog,noWorldModel,refdef,lodScale,lodBias,shadowMode);if capacity is error then return capacity end if
+  shadowCapacity=stencilShadowCapacity(decodedEntities,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,shadowMode,fogCatalog,noWorldModel,refdef,lodScale,lodBias);if shadowCapacity is error then return shadowCapacity end if
   output=void
   if previous!=void and previous.triangles!=void and len(previous.triangles)==capacity and previous.shadowTriangles!=void and len(previous.shadowTriangles)==shadowCapacity then output=previous;output.triangleCount=0;output.modelEntities=0;output.spriteEntities=0;output.polySurfaces=0;output.skippedInline=0;output.skippedUnsupported=0;output.sourceVertices=0;output.vertexTransforms=0;output.portals=[];output.culledInline=0;output.shadowTriangleCount=0
   else output=Geometry(array(capacity,void),0,0,0,0,0,0,0,0,[],0,array(shadowCapacity,void),0) end if
@@ -378,11 +405,11 @@ function buildRecordsFrameCachedLitReuseModeShadowFog(entities,polys,assetKinds,
     if entityPolicy.isPortalMarker(decoded.reType) then output.portals=output.portals+[decoded]
     else if not entityPolicy.visible(decoded.reType,decoded.renderfx,isPortal) then entityIndex=entityIndex+1;continue
     else if decoded.reType==RT_MODEL then
-      model=modelAt(assetKinds,modelAssets,decoded.hModel)
-      if model==void then output.skippedUnsupported=output.skippedUnsupported+1
-      else if typeof(model)=="string" then output.skippedInline=output.skippedInline+1
-      else if isInlineModel(model) then culled=inlineCulled(decoded,model,frustum);if culled is error then return culled end if;if culled then output.culledInline=output.culledInline+1 else added=addInlineModel(output,decoded,model,entityIndex);if added is error then return added end if end if
-      else added=addModelOptimized(output,decoded,model,entityIndex,maxTrianglesPerSurface,cache,normalTable,grid,refdef,shadowMode,fogCatalog,noWorldModel);if added is error then return added end if
+      asset=modelAt(assetKinds,modelAssets,decoded.hModel)
+      if asset==void then output.skippedUnsupported=output.skippedUnsupported+1
+      else if typeof(asset)=="string" then output.skippedInline=output.skippedInline+1
+      else if isInlineModel(asset) then culled=inlineCulled(decoded,asset,frustum);if culled is error then return culled end if;if culled then output.culledInline=output.culledInline+1 else added=addInlineModel(output,decoded,asset,entityIndex);if added is error then return added end if end if
+      else selection=selectMd3(decoded,asset,refdef,frustum,lodScale,lodBias);if selection is error then return selection end if;if selection.cull!=viewMath.CULL_OUT then added=addModelOptimized(output,decoded,selection,entityIndex,maxTrianglesPerSurface,cache,normalTable,grid,refdef,shadowMode,fogCatalog,noWorldModel);if added is error then return added end if end if
       end if
     else if decoded.reType==RT_SPRITE then added=addSprite(output,decoded,refdef,entityIndex);if added is error then return added end if
     else if decoded.reType==RT_BEAM then added=addBeam(output,decoded,entityIndex);if added is error then return added end if
@@ -394,6 +421,7 @@ function buildRecordsFrameCachedLitReuseModeShadowFog(entities,polys,assetKinds,
   addedPolys=addPolys(output,polys);if addedPolys is error then return addedPolys end if
   return output
 end function
+function buildRecordsFrameCachedLitReuseModeShadowFog(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,isPortal,frustum,shadowMode,fogCatalog,noWorldModel) return buildRecordsFrameCachedLitReuseModeShadowFogLod(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,isPortal,frustum,shadowMode,fogCatalog,noWorldModel,5.0,0) end function
 function buildRecordsFrameCachedLitReuseModeShadow(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,isPortal,frustum,shadowMode) return buildRecordsFrameCachedLitReuseModeShadowFog(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,isPortal,frustum,shadowMode,void,false) end function
 function buildRecordsFrameCachedLitReuseMode(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,isPortal,frustum) return buildRecordsFrameCachedLitReuseModeShadow(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,isPortal,frustum,0) end function
 function buildRecordsFrameCachedLitReuse(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous) return buildRecordsFrameCachedLitReuseMode(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,false,void) end function
@@ -414,6 +442,10 @@ function buildRecordsWithFrameCacheReuseCulledShadowsFog(entities,polys,assetKin
   if cache==void then return fail("frame cache is required") end if;frustum=refdefFrustum(refdef);if frustum is error then return frustum end if
   return buildRecordsFrameCachedLitReuseModeShadowFog(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,cache.normalTable,grid,previous,false,frustum,shadowMode,fogCatalog,(refdef.flags&1)!=0)
 end function
+function buildRecordsWithFrameCacheReuseCulledShadowsFogLod(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,grid,previous,shadowMode,fogCatalog,lodScale,lodBias)
+  if cache==void then return fail("frame cache is required") end if;frustum=refdefFrustum(refdef);if frustum is error then return frustum end if
+  return buildRecordsFrameCachedLitReuseModeShadowFogLod(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,cache.normalTable,grid,previous,false,frustum,shadowMode,fogCatalog,(refdef.flags&1)!=0,lodScale,lodBias)
+end function
 function buildPortalRecordsCulled(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid)
   frustum=refdefFrustum(refdef);if frustum is error then return frustum end if
   return buildRecordsFrameCachedLitReuseMode(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,void,true,frustum)
@@ -425,6 +457,10 @@ end function
 function buildPortalRecordsCulledShadowsFog(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,shadowMode,fogCatalog)
   frustum=refdefFrustum(refdef);if frustum is error then return frustum end if
   return buildRecordsFrameCachedLitReuseModeShadowFog(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,void,true,frustum,shadowMode,fogCatalog,(refdef.flags&1)!=0)
+end function
+function buildPortalRecordsCulledShadowsFogLod(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,shadowMode,fogCatalog,lodScale,lodBias)
+  frustum=refdefFrustum(refdef);if frustum is error then return frustum end if
+  return buildRecordsFrameCachedLitReuseModeShadowFogLod(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,void,true,frustum,shadowMode,fogCatalog,(refdef.flags&1)!=0,lodScale,lodBias)
 end function
 function buildRecordsFrameCachedLit(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid) return buildRecordsFrameCachedLitReuse(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,void) end function
 function buildRecordsCachedLit(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,normalTable,grid) return buildRecordsFrameCachedLit(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,void,normalTable,grid) end function

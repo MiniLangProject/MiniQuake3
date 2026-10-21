@@ -3,6 +3,7 @@
 package mq3.client.original_ui_session
 
 const KEYCATCH_UI=2
+const KEYCATCH_CONSOLE=1
 const K_CHAR_FLAG=1024
 const K_BACKSPACE=127
 const K_UPARROW=132
@@ -79,6 +80,7 @@ function create(serviceSet,inputContext,keyDownFn,mouseDeltaFn)
 end function
 function keyCatcher(state) return state.services.catcherFn(state.services.context) end function
 function active(state) return (keyCatcher(state)&KEYCATCH_UI)!=0 end function
+function acceptsInput(state) return active(state) and (keyCatcher(state)&KEYCATCH_CONSOLE)==0 end function
 function setMenu(state,menu)
   if state==void or menu<UIMENU_NONE or menu>UIMENU_POSTGAME then return fail("invalid active menu") end if
   return state.services.menuFn(state.services.context,menu)
@@ -100,7 +102,7 @@ function dispatchKey(state,key,down,character,shifted)
   if key==27 and down and not active(state) then
     opened=openIngame(state);if opened is error then return opened end if;result[2]=1;return result
   end if
-  if not active(state) then return result end if
+  if not acceptsInput(state) then return result end if
   sent=state.services.keyEventFn(state.services.context,key,down);if sent is error then return sent end if;result[0]=1
   if down and character>0 then
     value=character;if shifted then value=shifted end if
@@ -123,7 +125,7 @@ function frame(state,now)
   end for
   mouseEvents=0;delta=state.mouseDeltaFn(state.inputContext)
   if delta==void or len(delta)!=2 then return fail("mouse callback must return two components") end if
-  if active(state) and (delta[0]!=0 or delta[1]!=0) then sent=state.services.mouseEventFn(state.services.context,delta[0],delta[1]);if sent is error then return sent end if;mouseEvents=1 end if
+  if acceptsInput(state) and (delta[0]!=0 or delta[1]!=0) then sent=state.services.mouseEventFn(state.services.context,delta[0],delta[1]);if sent is error then return sent end if;mouseEvents=1 end if
   refreshed=false;commandStart=state.services.commandCountFn(state.services.context)
   if active(state) then
     value=state.services.refreshFn(state.services.context,now);if value is error then return value end if;refreshed=true;state.frameCount=state.frameCount+1

@@ -55,6 +55,7 @@ def main():
     scripts.append(("test_surface_md3.py",[]))
     scripts.append(("test_md3_entity.py",[]))
     scripts.append(("test_md3_fog.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
+    scripts.append(("test_md3_cull_lod.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("test_surface_trails.py",[]))
     scripts.append(("test_model_tags.py",[]))
     scripts.append(("test_renderer_view_math.py",[]))
@@ -194,6 +195,7 @@ def main():
     if args.data_root:
         scripts.append(("test_retail_qvm_match.py",["--data-root",str(args.data_root)]))
         scripts.append(("test_cgame_console_commands.py",["--data-root",str(args.data_root),"--qvms",str(ROOT / "build/reference/qvms")]))
+        scripts.append(("test_cgame_snapshot.py",["--data-root",str(args.data_root)]))
         scripts.append(("test_local_qvm_ui.py",["--pak",str(args.data_root / "baseq3/pak0.pk3"),"--qvms",str(ROOT / "build/reference/qvms")]))
         scripts.append(("test_qvm_2d_retail.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")]))
         scripts.append(("test_qvm_video_materials.py",["--data-root",str(args.data_root)]))

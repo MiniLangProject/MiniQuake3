@@ -20,6 +20,11 @@ int main(void) {
     if (!playable_window_next_input_event((unsigned char *)&event, sizeof(event)) || event.time != 20 || event.value2 != 1) return 5;
     if (!playable_window_next_input_event((unsigned char *)&event, sizeof(event)) || event.time != 24 || event.value2 != 0) return 6;
     if (playable_window_next_input_event((unsigned char *)&event, sizeof(event)) != 0) return 7;
+    playableWindowProc(0, WM_CHAR, 'x', 0);
+    if (!playable_window_next_input_event((unsigned char *)&event, sizeof(event)) ||
+            event.type != PLAYABLE_INPUT_CHAR || event.value != 'x' || event.value2 != 0) return 11;
+    playableWindowProc(0, WM_CHAR, 0x20ac, 0);
+    if (playable_window_next_input_event((unsigned char *)&event, sizeof(event)) != 0) return 12;
     resetInputEvents();
     for (index = 0; index < 258; ++index) queueInputEvent(1000 + index, PLAYABLE_INPUT_KEY, index, index & 1);
     if (!playable_window_next_input_event((unsigned char *)&event, sizeof(event)) || event.time != 1002 || event.value != 2) return 8;

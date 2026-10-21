@@ -43,10 +43,10 @@ sind vorhanden. Der produktive Botlib-Pfad lädt und speichert nun validierte `.
 Routingcaches mit Originalidentität, Area-/Cluster-CRC und zeigerfreiem Nutzinhalt.
 Offen bleibt die noch kompaktere interne Reachability-Ablage.
 
-Der aktuelle Retail-Gesamtlauf vom 21. Oktober 2026 besteht alle **281 Gates**
+Der aktuelle Retail-Gesamtlauf vom 21. Oktober 2026 besteht alle **283 Gates**
 von `python scripts/verify.py --data-root D:/Quake3`. Der geprüfte
 `build/MiniQuake3.exe` hat SHA-256
-`3f3026b53789d36ded7dba81d3f2191ab5cb651f92d1d45dd7dfba51101c5505`;
+`46e3c7a61bab2830c5a315c234e2c166f10ee7624d6314a060bb7f2f0969ea12`;
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 

@@ -16,6 +16,8 @@ const K_UPARROW=132
 const K_DOWNARROW=133
 const K_LEFTARROW=134
 const K_RIGHTARROW=135
+const K_CTRL=137
+const K_SHIFT=138
 const K_INS=139
 const K_DEL=140
 const K_PGDN=141
@@ -38,6 +40,16 @@ function services(context) return Services(context,void,void,void,void,void,void
 function create(width,host)
   history=[];for index=0 to COMMAND_HISTORY-1 history=history+[field(width)] end for
   return State(field(width),field(30),history,0,0,false,0,0,false,-1,host)
+end function
+function toggleConsole(state)
+  if state==void then return false end if
+  clear(state.console);state.catcher=state.catcher^KEYCATCH_CONSOLE;return true
+end function
+function beginMessage(state,team,playerNum)
+  if state==void then return false end if
+  state.chatTeam=team;state.chatPlayerNum=playerNum;clear(state.chat)
+  if team then state.chat.widthInChars=25 else state.chat.widthInChars=30 end if
+  state.catcher=state.catcher^KEYCATCH_MESSAGE;return true
 end function
 function cloneField(value) return Field(value.cursor,value.scroll,value.widthInChars,value.text) end function
 function clear(value) value.cursor=0;value.scroll=0;value.text="";return void end function

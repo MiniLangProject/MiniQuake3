@@ -14,20 +14,20 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | Bereich | Dateien | Portiert | Teilweise | Nicht begonnen | Original behalten |
 |---|---:|---:|---:|---:|---:|
 | `botlib` | 53 | 4 | 19 | 30 | 0 |
-| `cgame` | 25 | 2 | 2 | 21 | 0 |
-| `client` | 19 | 1 | 13 | 5 | 0 |
+| `cgame` | 25 | 3 | 2 | 20 | 0 |
+| `client` | 19 | 1 | 14 | 4 | 0 |
 | `game` | 65 | 0 | 33 | 32 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 0 | 2 | 45 | 0 |
 | `qcommon` | 27 | 1 | 17 | 9 | 0 |
-| `renderer` | 27 | 2 | 17 | 8 | 0 |
+| `renderer` | 27 | 4 | 16 | 7 | 0 |
 | `server` | 11 | 0 | 9 | 2 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 0 | 0 | 12 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
-| `win32` | 13 | 0 | 5 | 8 | 0 |
-| **Gesamt** | **335** | **10** | **117** | **208** | **0** |
+| `win32` | 13 | 0 | 6 | 7 | 0 |
+| **Gesamt** | **335** | **13** | **118** | **204** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -110,7 +110,7 @@ Teil dieser Tabelle.
 | `code/cgame/cg_public.h` | `cgame` | `not_started` | 0 | 0 | 0 |
 | `code/cgame/cg_scoreboard.c` | `cgame` | `ported` | 5 | 5 | 0 |
 | `code/cgame/cg_servercmds.c` | `cgame` | `not_started` | 23 | 0 | 23 |
-| `code/cgame/cg_snapshot.c` | `cgame` | `not_started` | 7 | 0 | 7 |
+| `code/cgame/cg_snapshot.c` | `cgame` | `ported` | 7 | 7 | 0 |
 | `code/cgame/cg_syscalls.asm` | `cgame` | `not_started` | 0 | 0 | 0 |
 | `code/cgame/cg_syscalls.c` | `cgame` | `not_started` | 96 | 0 | 96 |
 | `code/cgame/cg_view.c` | `cgame` | `not_started` | 20 | 0 | 20 |
@@ -118,7 +118,7 @@ Teil dieser Tabelle.
 | `code/cgame/tr_types.h` | `cgame` | `not_started` | 0 | 0 | 0 |
 | `code/client/cl_cgame.c` | `client` | `partial` | 22 | 7 | 15 |
 | `code/client/cl_cin.c` | `client` | `partial` | 38 | 5 | 33 |
-| `code/client/cl_console.c` | `client` | `not_started` | 22 | 0 | 22 |
+| `code/client/cl_console.c` | `client` | `partial` | 22 | 4 | 18 |
 | `code/client/cl_input.c` | `client` | `partial` | 78 | 11 | 67 |
 | `code/client/cl_keys.c` | `client` | `partial` | 26 | 20 | 6 |
 | `code/client/cl_main.c` | `client` | `partial` | 78 | 16 | 62 |
@@ -303,8 +303,8 @@ Teil dieser Tabelle.
 | `code/renderer/tr_light.c` | `renderer` | `partial` | 6 | 4 | 2 |
 | `code/renderer/tr_local.h` | `renderer` | `not_started` | 0 | 0 | 0 |
 | `code/renderer/tr_main.c` | `renderer` | `partial` | 32 | 15 | 17 |
-| `code/renderer/tr_marks.c` | `renderer` | `not_started` | 4 | 0 | 4 |
-| `code/renderer/tr_mesh.c` | `renderer` | `partial` | 5 | 4 | 1 |
+| `code/renderer/tr_marks.c` | `renderer` | `ported` | 4 | 4 | 0 |
+| `code/renderer/tr_mesh.c` | `renderer` | `ported` | 5 | 5 | 0 |
 | `code/renderer/tr_model.c` | `renderer` | `partial` | 11 | 0 | 11 |
 | `code/renderer/tr_noise.c` | `renderer` | `ported` | 3 | 3 | 0 |
 | `code/renderer/tr_public.h` | `renderer` | `not_started` | 0 | 0 | 0 |
@@ -372,7 +372,7 @@ Teil dieser Tabelle.
 | `code/win32/win_shared.c` | `win32` | `partial` | 12 | 1 | 11 |
 | `code/win32/win_snd.c` | `win32` | `not_started` | 8 | 0 | 8 |
 | `code/win32/win_syscon.c` | `win32` | `not_started` | 8 | 0 | 8 |
-| `code/win32/win_wndproc.c` | `win32` | `not_started` | 5 | 0 | 5 |
+| `code/win32/win_wndproc.c` | `win32` | `partial` | 5 | 1 | 4 |
 
 ## Offene Originalsymbole
 
@@ -448,7 +448,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/cgame/cg_predict.c` (not_started): `CG_BuildSolidList`, `CG_ClipMoveToEntities`, `CG_InterpolatePlayerState`, `CG_PointContents`, `CG_PredictPlayerState`, `CG_TouchItem`, `CG_TouchTriggerPrediction`, `CG_Trace`
 - `code/cgame/cg_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/cg_servercmds.c` (not_started): `CG_AddBufferedVoiceChat`, `CG_AddToTeamChat`, `CG_ConfigStringModified`, `CG_ExecuteNewServerCommands`, `CG_GetVoiceChat`, `CG_HeadModelVoiceChats`, `CG_LoadVoiceChats`, `CG_MapRestart`, `CG_ParseScores`, `CG_ParseServerinfo`, `CG_ParseTeamInfo`, `CG_ParseVoiceChats`, `CG_ParseWarmup`, `CG_PlayBufferedVoiceChats`, `CG_PlayVoiceChat`, `CG_RemoveChatEscapeChar`, `CG_SetConfigValues`, `CG_ShaderStateChanged`, `CG_ValidOrder`, `CG_VoiceChat`, `CG_VoiceChatListForClient`, `CG_VoiceChatLocal`, `Cmd_Argv`
-- `code/cgame/cg_snapshot.c` (not_started): `CG_ReadNextSnapshot`, `CG_ResetEntity`, `CG_SetInitialSnapshot`, `CG_SetNextSnap`, `CG_TransitionEntity`, `CG_TransitionSnapshot`, `yet`
 - `code/cgame/cg_syscalls.asm` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/cg_syscalls.c` (not_started): `PASSFLOAT`, `dllEntry`, `testPrintFloat`, `testPrintInt`, `trap_AddCommand`, `trap_Argc`, `trap_Args`, `trap_Argv`, `trap_CIN_DrawCinematic`, `trap_CIN_PlayCinematic`, `trap_CIN_RunCinematic`, `trap_CIN_SetExtents`, `trap_CIN_StopCinematic`, `trap_CM_BoxTrace`, `trap_CM_CapsuleTrace`, `trap_CM_InlineModel`, `trap_CM_LoadMap`, `trap_CM_MarkFragments`, `trap_CM_NumInlineModels`, `trap_CM_PointContents`, `trap_CM_TempBoxModel`, `trap_CM_TempCapsuleModel`, `trap_CM_TransformedBoxTrace`, `trap_CM_TransformedCapsuleTrace`, `trap_CM_TransformedPointContents`, `trap_Cvar_Register`, `trap_Cvar_Set`, `trap_Cvar_Update`, `trap_Cvar_VariableStringBuffer`, `trap_Error`, `trap_FS_FCloseFile`, `trap_FS_FOpenFile`, `trap_FS_Read`, `trap_FS_Seek`, `trap_FS_Write`, `trap_GetCurrentCmdNumber`, `trap_GetCurrentSnapshotNumber`, `trap_GetEntityToken`, `trap_GetGameState`, `trap_GetGlconfig`, `trap_GetServerCommand`, `trap_GetSnapshot`, `trap_GetUserCmd`, `trap_Key_GetCatcher`, `trap_Key_GetKey`, `trap_Key_IsDown`, `trap_Key_SetCatcher`, `trap_MemoryRemaining`, `trap_Milliseconds`, `trap_PC_AddGlobalDefine`, `trap_PC_FreeSource`, `trap_PC_LoadSource`, `trap_PC_ReadToken`, `trap_PC_SourceFileAndLine`, `trap_Print`, `trap_R_AddAdditiveLightToScene`, `trap_R_AddLightToScene`, `trap_R_AddPolyToScene`, `trap_R_AddPolysToScene`, `trap_R_AddRefEntityToScene`, `trap_R_ClearScene`, `trap_R_DrawStretchPic`, `trap_R_LerpTag`, `trap_R_LightForPoint`, `trap_R_LoadWorldMap`, `trap_R_ModelBounds`, `trap_R_RegisterFont`, `trap_R_RegisterModel`, `trap_R_RegisterShader`, `trap_R_RegisterShaderNoMip`, `trap_R_RegisterSkin`, `trap_R_RemapShader`, `trap_R_RenderScene`, `trap_R_SetColor`, `trap_R_inPVS`, `trap_RealTime`, `trap_RemoveCommand`, `trap_S_AddLoopingSound`, `trap_S_AddRealLoopingSound`, `trap_S_ClearLoopingSounds`, `trap_S_RegisterSound`, `trap_S_Respatialize`, `trap_S_StartBackgroundTrack`, `trap_S_StartLocalSound`, `trap_S_StartSound`, `trap_S_StopBackgroundTrack`, `trap_S_StopLoopingSound`, `trap_S_UpdateEntityPosition`, `trap_SendClientCommand`, `trap_SendConsoleCommand`, `trap_SetUserCmdValue`, `trap_SnapVector`, `trap_UpdateScreen`, `trap_getCameraInfo`, `trap_loadCamera`, `trap_startCamera`
 - `code/cgame/cg_view.c` (not_started): `CG_AddBufferedSound`, `CG_AddTestModel`, `CG_CalcFov`, `CG_CalcViewValues`, `CG_CalcVrect`, `CG_DamageBlendBlob`, `CG_DrawActiveFrame`, `CG_OffsetFirstPersonView`, `CG_OffsetThirdPersonView`, `CG_PlayBufferedSounds`, `CG_PowerupTimerSounds`, `CG_StepOffset`, `CG_TestGun_f`, `CG_TestModelNextFrame_f`, `CG_TestModelNextSkin_f`, `CG_TestModelPrevFrame_f`, `CG_TestModelPrevSkin_f`, `CG_TestModel_f`, `CG_ZoomDown_f`, `CG_ZoomUp_f`
@@ -456,7 +455,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/cgame/tr_types.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/cl_cgame.c` (partial): `CL_AddCgameCommand`, `CL_CGameRendering`, `CL_CM_LoadMap`, `CL_CgameError`, `CL_CgameSystemCalls`, `CL_GameCommand`, `CL_GetCurrentSnapshotNumber`, `CL_GetGameState`, `CL_GetGlconfig`, `CL_GetParseEntityState`, `CL_GetSnapshot`, `CL_InitCGame`, `CL_SetUserCmdValue`, `CL_ShutdownCGame`, `FloatAsInt`
 - `code/client/cl_cin.c` (partial): `CIN_CloseAllVideos`, `CIN_HandleForVideo`, `CIN_SetLooping`, `CIN_UploadCinematic`, `CL_PlayCinematic_f`, `ROQ_GenYUVTables`, `RllDecodeMonoToMono`, `RllDecodeMonoToStereo`, `RllDecodeStereoToMono`, `RllDecodeStereoToStereo`, `RllSetupTable`, `RoQFetchInterlaced`, `RoQInterrupt`, `RoQPrepMcomp`, `RoQReset`, `RoQShutdown`, `RoQ_init`, `SCR_DrawCinematic`, `SCR_RunCinematic`, `SCR_StopCinematic`, `blit2_32`, `blit4_32`, `blit8_32`, `blitVQQuad32fs`, `decodeCodeBook`, `initRoQ`, `move4_32`, `move8_32`, `readQuadInfo`, `recurseQuad`, `setupQuad`, `yuv_to_rgb`, `yuv_to_rgb24`
-- `code/client/cl_console.c` (not_started): `CL_ConsolePrint`, `Con_Bottom`, `Con_CheckResize`, `Con_ClearNotify`, `Con_Clear_f`, `Con_Close`, `Con_DrawConsole`, `Con_DrawInput`, `Con_DrawNotify`, `Con_DrawSolidConsole`, `Con_Dump_f`, `Con_Init`, `Con_Linefeed`, `Con_MessageMode2_f`, `Con_MessageMode3_f`, `Con_MessageMode4_f`, `Con_MessageMode_f`, `Con_PageDown`, `Con_PageUp`, `Con_RunConsole`, `Con_ToggleConsole_f`, `Con_Top`
+- `code/client/cl_console.c` (partial): `CL_ConsolePrint`, `Con_Bottom`, `Con_CheckResize`, `Con_ClearNotify`, `Con_Clear_f`, `Con_Close`, `Con_DrawConsole`, `Con_DrawNotify`, `Con_DrawSolidConsole`, `Con_Dump_f`, `Con_Init`, `Con_Linefeed`, `Con_MessageMode3_f`, `Con_MessageMode4_f`, `Con_PageDown`, `Con_PageUp`, `Con_RunConsole`, `Con_Top`
 - `code/client/cl_input.c` (partial): `CL_CreateCmd`, `CL_InitInput`, `CL_JoystickEvent`, `CL_MouseEvent`, `IN_BackDown`, `IN_BackUp`, `IN_Button0Down`, `IN_Button0Up`, `IN_Button10Down`, `IN_Button10Up`, `IN_Button11Down`, `IN_Button11Up`, `IN_Button12Down`, `IN_Button12Up`, `IN_Button13Down`, `IN_Button13Up`, `IN_Button14Down`, `IN_Button14Up`, `IN_Button15Down`, `IN_Button15Up`, `IN_Button1Down`, `IN_Button1Up`, `IN_Button2Down`, `IN_Button2Up`, `IN_Button3Down`, `IN_Button3Up`, `IN_Button4Down`, `IN_Button4Up`, `IN_Button5Down`, `IN_Button5Up`, `IN_Button6Down`, `IN_Button6Up`, `IN_Button7Down`, `IN_Button7Up`, `IN_Button8Down`, `IN_Button8Up`, `IN_Button9Down`, `IN_Button9Up`, `IN_ButtonDown`, `IN_ButtonUp`, `IN_CenterView`, `IN_DownDown`, `IN_DownUp`, `IN_ForwardDown`, `IN_ForwardUp`, `IN_KeyDown`, `IN_KeyUp`, `IN_LeftDown`, `IN_LeftUp`, `IN_LookdownDown`, `IN_LookdownUp`, `IN_LookupDown`, `IN_LookupUp`, `IN_MLookDown`, `IN_MLookUp`, `IN_MoveleftDown`, `IN_MoveleftUp`, `IN_MoverightDown`, `IN_MoverightUp`, `IN_RightDown`, `IN_RightUp`, `IN_SpeedDown`, `IN_SpeedUp`, `IN_StrafeDown`, `IN_StrafeUp`, `IN_UpDown`, `IN_UpUp`
 - `code/client/cl_keys.c` (partial): `CL_CharEvent`, `CL_InitKeyCommands`, `Field_BigDraw`, `Field_Draw`, `Field_Paste`, `Field_VariableSizeDraw`
 - `code/client/cl_main.c` (partial): `CL_AddReliableCommand`, `CL_BeginDownload`, `CL_CDDialog`, `CL_CDKeyValidate`, `CL_ChangeReliableCommand`, `CL_ClearPing`, `CL_ClearState`, `CL_Clientinfo_f`, `CL_Configstrings_f`, `CL_Connect_f`, `CL_DemoCompleted`, `CL_Disconnect_f`, `CL_DownloadsComplete`, `CL_FlushMemory`, `CL_ForwardCommandToServer`, `CL_ForwardToServer_f`, `CL_GetFreePing`, `CL_GetPing`, `CL_GetPingInfo`, `CL_GetPingQueueCount`, `CL_GetServerStatus`, `CL_Init`, `CL_InitDownloads`, `CL_InitRef`, `CL_InitRenderer`, `CL_InitServerInfo`, `CL_MapLoading`, `CL_MotdPacket`, `CL_NextDemo`, `CL_NextDownload`, `CL_OpenedPK3List_f`, `CL_PlayDemo_f`, `CL_Rcon_f`, `CL_Reconnect_f`, `CL_Record_f`, `CL_RefMalloc`, `CL_RefPrintf`, `CL_ReferencedPK3List_f`, `CL_RequestMotd`, `CL_ResetPureClientAtServer`, `CL_ScaledMilliseconds`, `CL_SendPureChecksums`, `CL_ServerInfoPacket`, `CL_ServerStatusResponse`, `CL_ServerStatus_f`, `CL_ServersResponsePacket`, `CL_SetModel_f`, `CL_SetServerInfo`, `CL_SetServerInfoByAddress`, `CL_Setenv_f`, `CL_ShowIP_f`, `CL_Shutdown`, `CL_ShutdownAll`, `CL_ShutdownRef`, `CL_Snd_Restart_f`, `CL_StartDemoLoop`, `CL_StartHunkUsers`, `CL_StopRecord_f`, `CL_UpdateServerInfo`, `CL_Vid_Restart_f`, `CL_WalkDemoExt`, `packets`
@@ -640,8 +639,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/renderer/tr_light.c` (partial): `LogLight`, `end`
 - `code/renderer/tr_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_main.c` (partial): `IsMirror`, `R_AddEntitySurfaces`, `R_DebugGraphics`, `R_DebugPolygon`, `R_GenerateDrawSurfs`, `R_MirrorViewBySurface`, `R_PlaneForSurface`, `R_RenderView`, `R_RotateForEntity`, `R_RotateForViewer`, `R_SetupProjection`, `R_SpriteFogNum`, `SetFarClip`, `SurfIsOffscreen`, `myGlMultMatrix`, `qsortFast`, `shortsort`
-- `code/renderer/tr_marks.c` (not_started): `R_AddMarkFragments`, `R_BoxSurfaces_r`, `R_ChopPolyBehindPlane`, `R_MarkFragments`
-- `code/renderer/tr_mesh.c` (partial): `R_CullModel`
 - `code/renderer/tr_model.c` (partial): `RE_BeginRegistration`, `RE_RegisterModel`, `R_AllocModel`, `R_GetModelByHandle`, `R_GetTag`, `R_LerpTag`, `R_LoadMD3`, `R_LoadMD4`, `R_ModelBounds`, `R_ModelInit`, `R_Modellist_f`
 - `code/renderer/tr_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_scene.c` (partial): `RE_AddAdditiveLightToScene`, `RE_AddLightToScene`, `RE_RenderScene`, `R_AddPolygonSurfaces`, `R_ToggleSmpFrame`
@@ -707,4 +704,4 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/win32/win_shared.c` (partial): `CPUID`, `Is3DNOW`, `IsKNI`, `IsMMX`, `IsPentium`, `Sys_DefaultHomePath`, `Sys_DefaultInstallPath`, `Sys_GetCurrentUser`, `Sys_GetProcessorId`, `Sys_Milliseconds`, `fastftol`
 - `code/win32/win_snd.c` (not_started): `DSoundError`, `SNDDMA_Activate`, `SNDDMA_BeginPainting`, `SNDDMA_Init`, `SNDDMA_InitDS`, `SNDDMA_Shutdown`, `SNDDMA_Submit`, `position`
 - `code/win32/win_syscon.c` (not_started): `ConWndProc`, `Conbuf_AppendText`, `InputLineWndProc`, `Sys_ConsoleInput`, `Sys_CreateConsole`, `Sys_DestroyConsole`, `Sys_SetErrorText`, `Sys_ShowConsole`
-- `code/win32/win_wndproc.c` (not_started): `MainWndProc`, `MapKey`, `VID_AppActivate`, `WIN_DisableAltTab`, `WIN_EnableAltTab`
+- `code/win32/win_wndproc.c` (partial): `MapKey`, `VID_AppActivate`, `WIN_DisableAltTab`, `WIN_EnableAltTab`
