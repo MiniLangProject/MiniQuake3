@@ -62,6 +62,27 @@ begonnene Dateien im Runtime-/Plattformumfang.
 
 Der neue Quellenblock schließt weitere fünf Originaldateien. `cg_draw.c` bildet den kompletten HUD-/2D-Pfad einschließlich Statusleiste, Scoreboard, Lagometer, Crosshair, Teamoverlay, Votes, Warmup und aktiver Stereo-Szene ab. `cg_particles.c` portiert den 8.192-Slot-Pool mit allen Spawn-, Update-, Recycling- und Renderpfaden. `cg_servercmds.c` verarbeitet Configstrings, Scores, Chat, Voicechat, Shader-Remaps und Map-Restarts. Die beiden Originalmenüs `ui_display.c` und `ui_sound.c` enthalten ihre vollständige Konstruktion, Cvar- und Restart-Semantik. Insgesamt bestehen 36 unveränderte C-Datensätze und 135 native Verträge. Serverbefehle, Partikel und Draw-State laufen aus dem produktiven Retail-QVM-Match als nicht doppelt ausgebende Beobachter. Der frische Hauptbuild hat SHA-256 `bae4743ee1d0f48ec9dcd5feb3514f7c0183ad63d6330c7523a1b742a37bfb1f`; das Retail-QVM-Match bleibt bei neun Prediction-Traces, 2.345 texturierten Dreiecken, 301 Cgame-Assets und 26 Sounds grün. Das Runtime-/Plattforminventar zählt jetzt 31 portierte, 118 partielle und 186 nicht begonnene Originaldateien.
 
+Der nächste Abgleich schließt `cg_main.c`, `cg_marks.c`, `ui_qmenu.c`,
+`ui_network.c` und `ui_options.c`. Der native Cgame-Hauptpfad bildet Lifecycle,
+VM-Dispatch, Cvars sowie Sound-, Grafik-, Client- und Menüregistrierung ab und
+läuft im produktiven Retail-Match als unterdrückbarer Begleiter der QVM.
+`cg_marks.c` enthält den vollständigen 256er Mark-Pool, Fragmentprojektion,
+Impact-Erzeugung, Lebenszeit, Farbe und Fade; produktive Trefferereignisse und
+Frames speisen diesen Zustand. Der QMenu-Port umfasst Menü- und Item-Lifecycle,
+Cursor/Fokus, Felder, Listen, Slider, Spin-/Radio-Controls und alle Drawpfade.
+Netzwerk- und Systemoptionen übernehmen die vollständige Cvar- und
+Menüsemantik. 27 Datensätze aus unveränderten C-Funktionen, 108 native
+Verhaltensverträge und 44 zusätzliche `cg_main`-Symbolverträge prüfen den
+Block. Der frisch gebaute Hauptstand hat SHA-256
+`04be50c8ffd913b86a638e54237cbcdba8e4605afd04f81869cad3c19bbd8031`;
+das Retail-QVM-Gate besteht über acht Frames weiterhin mit neun
+Prediction-Traces, 2.345 texturierten Dreiecken, 301 Cgame-Assets, 26 Sounds
+und aktivem nativen Cgame-Hauptzustand. Die neuen Fokustests, der Hauptbuild
+und das Retail-QVM-Gate wurden ausgeführt; die vollständige 283-Gate-Auswahl
+wurde für diesen inkrementellen Block nicht erneut ausgeführt. Das
+Runtime-/Plattforminventar zählt jetzt 36 portierte, 118 partielle und 181
+nicht begonnene Originaldateien.
+
 Dieser Vollstand enthält auch die produktive
 `AAS_BestReachableFromJumpPadArea`-Platzierung: benannte Map-Boots laden die
 passende Retail-AAS, `trigger_push`-Ballistik wird 30 Frames gegen die Item-BBox

@@ -69,6 +69,19 @@ Farbhilfen, MD4-Bonematrix-Skinning und das Credits-Menü sind mit 35
 unveränderten C-Differenzdatensätzen und 141 MiniLang-Verträgen belegt. Der
 Quellabgleich weist damit 26 vollständige native Originaldateien aus.
 Der aktuelle Folgeblock portiert `cg_draw.c`, `cg_particles.c`, `cg_servercmds.c`, `ui_display.c` und `ui_sound.c` vollständig. 36 unveränderte C-Datensätze und 135 native Verträge decken HUD, Scoreboard, Lagometer, Crosshair, Teamoverlay, Partikel-Lebenszyklen, Serverbefehle, Chat/Voice, Shader-Remaps sowie Display-/Soundoptionen ab. Die produktiven Retail-Snapshots und Servercommands speisen die nativen, unterdrückbaren Beobachter; der frische Build `bae4743ee1d0f48ec9dcd5feb3514f7c0183ad63d6330c7523a1b742a37bfb1f` besteht das Retail-QVM-Match weiterhin mit 2.345 texturierten Dreiecken und 26 Sounds. Der Quellabgleich steht damit bei 31 vollständig portierten Originaldateien.
+Nun sind außerdem `cg_main.c`, `cg_marks.c`, `ui_qmenu.c`, `ui_network.c`
+und `ui_options.c` vollständig nativ zugeordnet. Lifecycle und VM-Dispatch,
+Asset-/Clientregistrierung, der 256er Mark-Pool samt Fragmentprojektion, das
+gesamte QMenu-Framework sowie Netzwerk- und Systemoptionen werden durch 27
+unveränderte C-Datensätze, 108 Verhaltensverträge und 44 zusätzliche
+`cg_main`-Symbolverträge geprüft. Cgame-Hauptzustand und Marks laufen im
+produktiven Retail-Match als unterdrückbare QVM-Begleiter. Der frische Build
+`04be50c8ffd913b86a638e54237cbcdba8e4605afd04f81869cad3c19bbd8031`
+besteht das acht Frames lange Retail-QVM-Gate weiterhin mit neun
+Prediction-Traces, 2.345 texturierten Dreiecken, 301 Cgame-Assets und 26
+Sounds. Das Inventar steht bei 36 portierten, 118 partiellen und 181 noch
+nicht begonnenen Runtime-/Plattformdateien; die vollständige 283-Gate-Auswahl
+bleibt der zuletzt dokumentierte Gesamtlauf.
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 

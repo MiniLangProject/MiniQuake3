@@ -38,6 +38,8 @@ function main(args)
   if state.context.nativeDraw.suppressed==0 then return error(7642,"native cg_draw observer did not execute beside retail cgame") end if
   if not state.context.nativeParticles.retailActive or state.context.nativeParticles.capacity!=8192 then return error(7642,"native cg_particles observer is not attached to the retail match") end if
   if state.context.nativeServerCmds.serverCommandSequence==0 then return error(7642,"native cg_servercmds observer did not consume retail commands") end if
+  if not state.context.nativeMain.initialized or state.context.nativeMain.time!=1450 then return error(7642,"native cg_main lifecycle observer did not follow retail cgame") end if
+  if not state.context.nativeMarks.retailActive or state.context.nativeMarks.capacity!=256 or state.context.nativeMarks.time!=1400 then return error(7642,"native cg_marks observer is not attached to snapshots") end if
   models=0;sprites=0
   for each value in state.context.scene.entities
     decoded=sceneQueue.decodeEntity(value);if decoded is error then return decoded end if
@@ -78,6 +80,6 @@ function main(args)
   report=report+" inlineModels="+str(geometryInline)+" unsupportedEntities="+str(geometryUnsupported)+" triangles="+str(geometryTriangles)+" materials="+str(len(materialCatalog.materials))+" textures="+str(len(materialCatalog.textures))
   report=report+" texturedTriangles="+str(materialCatalog.resolvedTriangles)+" untexturedTriangles="+str(materialCatalog.unresolvedTriangles)+" emittedTriangles="+str(batchedEmitted)+" renderPasses="+str(len(prepared.batch.passes)+len(prepared.depthHackBatch.passes))+" skins="+str(len(materialCatalog.loadedSkins))
   report=report+" cgameView="+str(cgameViewWidth)+"x"+str(cgameViewHeight)+" lights="+str(len(state.context.scene.dlights))+" cgameDraw2D="+str(cgameDraw2D)
-  report=report+" uiDraw2D="+str(len(state.context.renderQueue.commands)-cgameDraw2D)+" sounds="+str(len(state.context.soundCommands))+" nativeDrawSuppressed="+str(state.context.nativeDraw.suppressed)+" nativeServerSequence="+str(state.context.nativeServerCmds.serverCommandSequence);print(report)
+  report=report+" uiDraw2D="+str(len(state.context.renderQueue.commands)-cgameDraw2D)+" sounds="+str(len(state.context.soundCommands))+" nativeDrawSuppressed="+str(state.context.nativeDraw.suppressed)+" nativeServerSequence="+str(state.context.nativeServerCmds.serverCommandSequence)+" nativeMain="+str(state.context.nativeMain.initialized);print(report)
   match.shutdown(state);return 0
 end function

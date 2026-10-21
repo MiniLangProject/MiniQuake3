@@ -14,12 +14,12 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | Bereich | Dateien | Portiert | Teilweise | Nicht begonnen | Original behalten |
 |---|---:|---:|---:|---:|---:|
 | `botlib` | 53 | 5 | 19 | 29 | 0 |
-| `cgame` | 25 | 15 | 2 | 8 | 0 |
+| `cgame` | 25 | 17 | 2 | 6 | 0 |
 | `client` | 19 | 1 | 14 | 4 | 0 |
 | `game` | 65 | 0 | 33 | 32 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
-| `q3_ui` | 47 | 4 | 2 | 41 | 0 |
+| `q3_ui` | 47 | 7 | 2 | 38 | 0 |
 | `qcommon` | 27 | 1 | 17 | 9 | 0 |
 | `renderer` | 27 | 5 | 16 | 6 | 0 |
 | `server` | 11 | 0 | 9 | 2 | 0 |
@@ -27,7 +27,7 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `ui` | 12 | 0 | 0 | 12 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 0 | 6 | 7 | 0 |
-| **Gesamt** | **335** | **31** | **118** | **186** | **0** |
+| **Gesamt** | **335** | **36** | **118** | **181** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -100,8 +100,8 @@ Teil dieser Tabelle.
 | `code/cgame/cg_info.c` | `cgame` | `ported` | 5 | 5 | 0 |
 | `code/cgame/cg_local.h` | `cgame` | `not_started` | 0 | 0 | 0 |
 | `code/cgame/cg_localents.c` | `cgame` | `ported` | 20 | 20 | 0 |
-| `code/cgame/cg_main.c` | `cgame` | `not_started` | 44 | 0 | 44 |
-| `code/cgame/cg_marks.c` | `cgame` | `not_started` | 28 | 0 | 28 |
+| `code/cgame/cg_main.c` | `cgame` | `ported` | 44 | 44 | 0 |
+| `code/cgame/cg_marks.c` | `cgame` | `ported` | 28 | 28 | 0 |
 | `code/cgame/cg_newdraw.c` | `cgame` | `not_started` | 72 | 0 | 72 |
 | `code/cgame/cg_particles.c` | `cgame` | `ported` | 23 | 23 | 0 |
 | `code/cgame/cg_players.c` | `cgame` | `partial` | 36 | 3 | 33 |
@@ -235,13 +235,13 @@ Teil dieser Tabelle.
 | `code/q3_ui/ui_menu.c` | `q3_ui` | `not_started` | 7 | 0 | 7 |
 | `code/q3_ui/ui_mfield.c` | `q3_ui` | `not_started` | 8 | 0 | 8 |
 | `code/q3_ui/ui_mods.c` | `q3_ui` | `not_started` | 7 | 0 | 7 |
-| `code/q3_ui/ui_network.c` | `q3_ui` | `not_started` | 4 | 0 | 4 |
-| `code/q3_ui/ui_options.c` | `q3_ui` | `not_started` | 4 | 0 | 4 |
+| `code/q3_ui/ui_network.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
+| `code/q3_ui/ui_options.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
 | `code/q3_ui/ui_playermodel.c` | `q3_ui` | `not_started` | 12 | 0 | 12 |
 | `code/q3_ui/ui_players.c` | `q3_ui` | `not_started` | 23 | 0 | 23 |
 | `code/q3_ui/ui_playersettings.c` | `q3_ui` | `not_started` | 11 | 0 | 11 |
 | `code/q3_ui/ui_preferences.c` | `q3_ui` | `not_started` | 6 | 0 | 6 |
-| `code/q3_ui/ui_qmenu.c` | `q3_ui` | `not_started` | 32 | 0 | 32 |
+| `code/q3_ui/ui_qmenu.c` | `q3_ui` | `ported` | 32 | 32 | 0 |
 | `code/q3_ui/ui_rankings.c` | `q3_ui` | `not_started` | 7 | 0 | 7 |
 | `code/q3_ui/ui_rankstatus.c` | `q3_ui` | `not_started` | 4 | 0 | 4 |
 | `code/q3_ui/ui_removebots.c` | `q3_ui` | `not_started` | 10 | 0 | 10 |
@@ -432,8 +432,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/botlib/l_utils.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/cg_consolecmds.c` (partial): `CG_Camera_f`, `CG_EditHud_f`, `CG_TeamMenu_f`, `Cmd_Argv`
 - `code/cgame/cg_local.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/cgame/cg_main.c` (not_started): `CG_Argv`, `CG_AssetCache`, `CG_Asset_Parse`, `CG_BuildSpectatorString`, `CG_ConfigString`, `CG_CrosshairPlayer`, `CG_Cvar_Get`, `CG_DrawCinematic`, `CG_Error`, `CG_EventHandling`, `CG_FeederCount`, `CG_FeederItemImage`, `CG_FeederItemText`, `CG_FeederSelection`, `CG_ForceModelChange`, `CG_GetMenuBuffer`, `CG_InfoFromScoreIndex`, `CG_Init`, `CG_KeyEvent`, `CG_LastAttacker`, `CG_LoadHudMenu`, `CG_LoadMenus`, `CG_Load_Menu`, `CG_MouseEvent`, `CG_OwnerDrawHandleKey`, `CG_OwnerDrawWidth`, `CG_ParseMenu`, `CG_PlayCinematic`, `CG_Printf`, `CG_RegisterClients`, `CG_RegisterCvars`, `CG_RegisterGraphics`, `CG_RegisterItemSounds`, `CG_RegisterSounds`, `CG_RunCinematicFrame`, `CG_SetScoreSelection`, `CG_Shutdown`, `CG_StartMusic`, `CG_StopCinematic`, `CG_Text_PaintWithCursor`, `CG_UpdateCvars`, `Com_Error`, `Com_Printf`, `vmMain`
-- `code/cgame/cg_marks.c` (not_started): `CG_AddMarks`, `CG_AddParticleShrapnel`, `CG_AddParticleToScene`, `CG_AddParticles`, `CG_AllocMark`, `CG_BloodPool`, `CG_ClearParticles`, `CG_FreeMarkPoly`, `CG_ImpactMark`, `CG_InitMarkPolys`, `CG_NewParticleArea`, `CG_OilSlickRemove`, `CG_ParticleBloodCloud`, `CG_ParticleBubble`, `CG_ParticleBulletDebris`, `CG_ParticleDust`, `CG_ParticleExplosion`, `CG_ParticleImpactSmokePuff`, `CG_ParticleMisc`, `CG_ParticleSmoke`, `CG_ParticleSnow`, `CG_ParticleSnowFlurry`, `CG_ParticleSparks`, `CG_Particle_Bleed`, `CG_Particle_OilParticle`, `CG_Particle_OilSlick`, `CG_SnowLink`, `ValidBloodPool`
 - `code/cgame/cg_newdraw.c` (not_started): `CG_CheckOrderPending`, `CG_ClientNumFromName`, `CG_Draw1stPlace`, `CG_Draw2ndPlace`, `CG_DrawAreaChat`, `CG_DrawAreaPowerUp`, `CG_DrawAreaSystemChat`, `CG_DrawAreaTeamChat`, `CG_DrawBlueFlagHead`, `CG_DrawBlueFlagName`, `CG_DrawBlueFlagStatus`, `CG_DrawBlueName`, `CG_DrawBlueScore`, `CG_DrawCTFPowerUp`, `CG_DrawCapFragLimit`, `CG_DrawGameStatus`, `CG_DrawGameType`, `CG_DrawKiller`, `CG_DrawMedal`, `CG_DrawNewTeamInfo`, `CG_DrawPlayerAmmoIcon`, `CG_DrawPlayerAmmoValue`, `CG_DrawPlayerArmorIcon`, `CG_DrawPlayerArmorValue`, `CG_DrawPlayerHasFlag`, `CG_DrawPlayerHead`, `CG_DrawPlayerHealth`, `CG_DrawPlayerItem`, `CG_DrawPlayerLocation`, `CG_DrawPlayerScore`, `CG_DrawPlayerStatus`, `CG_DrawRedFlagHead`, `CG_DrawRedFlagName`, `CG_DrawRedFlagStatus`, `CG_DrawRedName`, `CG_DrawRedScore`, `CG_DrawSelectedPlayerArmor`, `CG_DrawSelectedPlayerHead`, `CG_DrawSelectedPlayerHealth`, `CG_DrawSelectedPlayerLocation`, `CG_DrawSelectedPlayerName`, `CG_DrawSelectedPlayerPowerup`, `CG_DrawSelectedPlayerStatus`, `CG_DrawSelectedPlayerWeapon`, `CG_DrawTeamColor`, `CG_DrawTeamSpectators`, `CG_EventHandling`, `CG_GameTypeString`, `CG_GetGameStatusText`, `CG_GetKillerText`, `CG_GetSelectedPlayer`, `CG_GetTeamColor`, `CG_GetValue`, `CG_HarvesterSkulls`, `CG_HideTeamMenu`, `CG_InitTeamChat`, `CG_KeyEvent`, `CG_MouseEvent`, `CG_OneFlagStatus`, `CG_OtherTeamHasFlag`, `CG_OwnerDraw`, `CG_OwnerDrawVisible`, `CG_RunMenuScript`, `CG_SelectNextPlayer`, `CG_SelectPrevPlayer`, `CG_SetPrintString`, `CG_SetSelectedPlayerName`, `CG_ShowResponseHead`, `CG_ShowTeamMenu`, `CG_StatusHandle`, `CG_Text_Paint_Limit`, `CG_YourTeamHasFlag`
 - `code/cgame/cg_players.c` (partial): `CG_AddPainTwitch`, `CG_AddRefEntityWithPowerups`, `CG_BreathPuffs`, `CG_ColorFromString`, `CG_CopyClientInfoModel`, `CG_CustomSound`, `CG_DustTrail`, `CG_FileExists`, `CG_FindClientHeadFile`, `CG_FindClientModelFile`, `CG_HasteTrail`, `CG_LightVerts`, `CG_LoadClientInfo`, `CG_LoadDeferredPlayers`, `CG_NewClientInfo`, `CG_ParseAnimationFile`, `CG_Player`, `CG_PlayerAngles`, `CG_PlayerAnimation`, `CG_PlayerFlag`, `CG_PlayerFloatSprite`, `CG_PlayerPowerups`, `CG_PlayerShadow`, `CG_PlayerSplash`, `CG_PlayerSprites`, `CG_PlayerTokens`, `CG_RegisterClientModelname`, `CG_RegisterClientSkin`, `CG_ResetPlayerEntity`, `CG_ScanForExistingClientInfo`, `CG_SetDeferredClientInfo`, `CG_SwingAngles`, `CG_TrailItem`
 - `code/cgame/cg_public.h` (not_started): *(Symbolinventar ergänzen)*
@@ -557,13 +555,10 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/q3_ui/ui_menu.c` (not_started): `ErrorMessage_Key`, `MainMenu_Cache`, `MainMenu_ExitAction`, `Main_MenuDraw`, `Main_MenuEvent`, `UI_MainMenu`, `UI_TeamArenaExists`
 - `code/q3_ui/ui_mfield.c` (not_started): `MField_CharEvent`, `MField_Clear`, `MField_Draw`, `MField_KeyDownEvent`, `MField_Paste`, `MenuField_Draw`, `MenuField_Init`, `MenuField_Key`
 - `code/q3_ui/ui_mods.c` (not_started): `UI_ModsMenu`, `UI_ModsMenu_Cache`, `UI_Mods_LoadMods`, `UI_Mods_LoadModsFromFile`, `UI_Mods_MenuEvent`, `UI_Mods_MenuInit`, `UI_Mods_ParseInfos`
-- `code/q3_ui/ui_network.c` (not_started): `UI_NetworkOptionsMenu`, `UI_NetworkOptionsMenu_Cache`, `UI_NetworkOptionsMenu_Event`, `UI_NetworkOptionsMenu_Init`
-- `code/q3_ui/ui_options.c` (not_started): `Options_Event`, `Options_MenuInit`, `SystemConfig_Cache`, `UI_SystemConfigMenu`
 - `code/q3_ui/ui_playermodel.c` (not_started): `PlayerModel_BuildList`, `PlayerModel_Cache`, `PlayerModel_DrawPlayer`, `PlayerModel_MenuEvent`, `PlayerModel_MenuInit`, `PlayerModel_MenuKey`, `PlayerModel_PicEvent`, `PlayerModel_SaveChanges`, `PlayerModel_SetMenuItems`, `PlayerModel_UpdateGrid`, `PlayerModel_UpdateModel`, `UI_PlayerModelMenu`
 - `code/q3_ui/ui_players.c` (not_started): `UI_DrawPlayer`, `UI_ForceLegsAnim`, `UI_ForceTorsoAnim`, `UI_LegsSequencing`, `UI_MachinegunSpinAngle`, `UI_MovedirAdjustment`, `UI_ParseAnimationFile`, `UI_PlayerAngles`, `UI_PlayerAnimation`, `UI_PlayerFloatSprite`, `UI_PlayerInfo_SetInfo`, `UI_PlayerInfo_SetModel`, `UI_PlayerInfo_SetWeapon`, `UI_PositionEntityOnTag`, `UI_PositionRotatedEntityOnTag`, `UI_RegisterClientModelname`, `UI_RegisterClientSkin`, `UI_RunLerpFrame`, `UI_SetLegsAnim`, `UI_SetLerpFrameAnimation`, `UI_SetTorsoAnim`, `UI_SwingAngles`, `UI_TorsoSequencing`
 - `code/q3_ui/ui_playersettings.c` (not_started): `PlayerSettings_Cache`, `PlayerSettings_DrawEffects`, `PlayerSettings_DrawHandicap`, `PlayerSettings_DrawName`, `PlayerSettings_DrawPlayer`, `PlayerSettings_MenuEvent`, `PlayerSettings_MenuInit`, `PlayerSettings_MenuKey`, `PlayerSettings_SaveChanges`, `PlayerSettings_SetMenuItems`, `UI_PlayerSettingsMenu`
 - `code/q3_ui/ui_preferences.c` (not_started): `Crosshair_Draw`, `Preferences_Cache`, `Preferences_Event`, `Preferences_MenuInit`, `Preferences_SetMenuItems`, `UI_PreferencesMenu`
-- `code/q3_ui/ui_qmenu.c` (not_started): `Action_Draw`, `Action_Init`, `BText_Draw`, `BText_Init`, `Bitmap_Draw`, `Bitmap_Init`, `Menu_ActivateItem`, `Menu_AddItem`, `Menu_AdjustCursor`, `Menu_Cache`, `Menu_CursorMoved`, `Menu_DefaultKey`, `Menu_Draw`, `Menu_ItemAtCursor`, `Menu_SetCursor`, `Menu_SetCursorToItem`, `PText_Draw`, `PText_Init`, `RadioButton_Draw`, `RadioButton_Init`, `RadioButton_Key`, `ScrollList_Draw`, `ScrollList_Init`, `ScrollList_Key`, `Slider_Draw`, `Slider_Init`, `Slider_Key`, `SpinControl_Draw`, `SpinControl_Init`, `SpinControl_Key`, `Text_Draw`, `Text_Init`
 - `code/q3_ui/ui_rankings.c` (not_started): `Rankings_Cache`, `Rankings_DrawName`, `Rankings_DrawPassword`, `Rankings_DrawText`, `Rankings_MenuEvent`, `Rankings_MenuInit`, `UI_RankingsMenu`
 - `code/q3_ui/ui_rankstatus.c` (not_started): `RankStatus_Cache`, `RankStatus_MenuEvent`, `RankStatus_MenuInit`, `UI_RankStatusMenu`
 - `code/q3_ui/ui_removebots.c` (not_started): `UI_RemoveBotsMenu`, `UI_RemoveBotsMenu_BackEvent`, `UI_RemoveBotsMenu_BotEvent`, `UI_RemoveBotsMenu_DeleteEvent`, `UI_RemoveBotsMenu_DownEvent`, `UI_RemoveBotsMenu_GetBots`, `UI_RemoveBotsMenu_Init`, `UI_RemoveBotsMenu_SetBotNames`, `UI_RemoveBotsMenu_UpEvent`, `UI_RemoveBots_Cache`

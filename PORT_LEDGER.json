@@ -5475,10 +5475,416 @@
         "Com_Printf",
         "vmMain"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_Argv",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.argv",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_AssetCache",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.assetCache",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_Asset_Parse",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.assetParse",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_BuildSpectatorString",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.buildSpectatorString",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_ConfigString",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.configString",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_CrosshairPlayer",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.crosshairPlayer",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_Cvar_Get",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.cvarGet",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_DrawCinematic",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.drawCinematic",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_Error",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.errorMessage",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_EventHandling",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.eventHandling",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_FeederCount",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.feederCount",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_FeederItemImage",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.feederItemImage",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_FeederItemText",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.feederItemText",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_FeederSelection",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.feederSelection",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_ForceModelChange",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.forceModelChange",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_GetMenuBuffer",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.getMenuBuffer",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_InfoFromScoreIndex",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.infoFromScoreIndex",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_Init",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.init",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_KeyEvent",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.keyEvent",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_LastAttacker",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.lastAttacker",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_LoadHudMenu",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.loadHudMenu",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_LoadMenus",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.loadMenus",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_Load_Menu",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.loadMenu",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_MouseEvent",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.mouseEvent",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_OwnerDrawHandleKey",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.ownerDrawHandleKey",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_OwnerDrawWidth",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.ownerDrawWidth",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_ParseMenu",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.parseMenu",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_PlayCinematic",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.playCinematic",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_Printf",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.printMessage",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_RegisterClients",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.registerClients",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_RegisterCvars",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.registerCvars",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_RegisterGraphics",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.registerGraphics",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_RegisterItemSounds",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.registerItemSounds",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_RegisterSounds",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.registerSounds",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_RunCinematicFrame",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.runCinematicFrame",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_SetScoreSelection",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.setScoreSelection",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_Shutdown",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.shutdown",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_StartMusic",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.startMusic",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_StopCinematic",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.stopCinematic",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_Text_PaintWithCursor",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.textPaintWithCursor",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "CG_UpdateCvars",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.updateCvars",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "Com_Error",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.errorMessage",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "Com_Printf",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.printMessage",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        },
+        {
+          "original": "vmMain",
+          "target_files": [
+            "src/mq3/client/cgame_main.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_main.vmMain",
+          "status": "tested_exact",
+          "scope": "Complete cgame lifecycle, 90 cvars, static and dynamic media/client/item registration, HUD/menu/feeder/cinematic callbacks and vmMain; 4 unchanged-C decisions, 25 native contracts and all 44 symbol contracts pass. The productive retail lifecycle runs the suppressible native observer."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_main.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_main.py",
+        "tests/reference/cgame_main_oracle.c",
+        "tests/cgame_main_oracle.ml",
+        "tests/cgame_main_contracts.ml",
+        "scripts/test_retail_qvm_match.py"
+      ]
     },
     {
       "source": "code/cgame/cg_marks.c",
@@ -5514,10 +5920,272 @@
         "CG_SnowLink",
         "ValidBloodPool"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_AddMarks",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.addMarks",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_AddParticleShrapnel",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.addParticleShrapnel",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_AddParticleToScene",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.addParticleToScene",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_AddParticles",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.addParticles",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_AllocMark",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.allocMark",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_BloodPool",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.bloodPool",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_ClearParticles",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.clearParticles",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_FreeMarkPoly",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.freeMarkPoly",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_ImpactMark",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.impactMark",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_InitMarkPolys",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.initMarkPolys",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_NewParticleArea",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.newParticleArea",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_OilSlickRemove",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.oilSlickRemove",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_ParticleBloodCloud",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.particleBloodCloud",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_ParticleBubble",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.particleBubble",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_ParticleBulletDebris",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.particleBulletDebris",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_ParticleDust",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.particleDust",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_ParticleExplosion",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.particleExplosion",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_ParticleImpactSmokePuff",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.particleImpactSmokePuff",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_ParticleMisc",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.particleMisc",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_ParticleSmoke",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.particleSmoke",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_ParticleSnow",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.particleSnow",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_ParticleSnowFlurry",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.particleSnowFlurry",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_ParticleSparks",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.particleSparks",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_Particle_Bleed",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.particleBleed",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_Particle_OilParticle",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.particleOilParticle",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_Particle_OilSlick",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.particleOilSlick",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "CG_SnowLink",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.snowLink",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        },
+        {
+          "original": "ValidBloodPool",
+          "target_files": [
+            "src/mq3/client/cgame_marks.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_marks.validBloodPool",
+          "status": "tested_exact",
+          "scope": "Complete 256-entry mark pool, fragment projection, impact decals, fade/color lifecycle and the appended particle entry points; 5 unchanged-C records, 23 mark contracts and 29 delegated particle contracts pass. Productive impact events feed suppressible mark boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_marks.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_marks.py",
+        "tests/reference/cgame_marks_oracle.c",
+        "tests/cgame_marks_oracle.ml",
+        "tests/cgame_marks_contracts.ml",
+        "scripts/test_retail_qvm_match.py"
+      ]
     },
     {
       "source": "code/cgame/cg_newdraw.c",
@@ -18275,10 +18943,52 @@
         "UI_NetworkOptionsMenu_Event",
         "UI_NetworkOptionsMenu_Init"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_NetworkOptionsMenu",
+          "target_files": [
+            "src/mq3/client/ui_network_options.ml"
+          ],
+          "target_symbol": "mq3.client.ui_network_options.open",
+          "status": "tested_exact",
+          "scope": "Complete network-rate and system-configuration menu topology, shader cache, navigation, activated-event and connection/fullscreen semantics; 10 native contracts pass."
+        },
+        {
+          "original": "UI_NetworkOptionsMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_network_options.ml"
+          ],
+          "target_symbol": "mq3.client.ui_network_options.cache",
+          "status": "tested_exact",
+          "scope": "Complete network-rate and system-configuration menu topology, shader cache, navigation, activated-event and connection/fullscreen semantics; 10 native contracts pass."
+        },
+        {
+          "original": "UI_NetworkOptionsMenu_Event",
+          "target_files": [
+            "src/mq3/client/ui_network_options.ml"
+          ],
+          "target_symbol": "mq3.client.ui_network_options.event",
+          "status": "tested_exact",
+          "scope": "Complete network-rate and system-configuration menu topology, shader cache, navigation, activated-event and connection/fullscreen semantics; 10 native contracts pass."
+        },
+        {
+          "original": "UI_NetworkOptionsMenu_Init",
+          "target_files": [
+            "src/mq3/client/ui_network_options.ml"
+          ],
+          "target_symbol": "mq3.client.ui_network_options.init",
+          "status": "tested_exact",
+          "scope": "Complete network-rate and system-configuration menu topology, shader cache, navigation, activated-event and connection/fullscreen semantics; 10 native contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_network_options.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_network_options.py",
+        "tests/ui_network_options_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_options.c",
@@ -18290,10 +19000,52 @@
         "SystemConfig_Cache",
         "UI_SystemConfigMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Options_Event",
+          "target_files": [
+            "src/mq3/client/ui_system_config.ml"
+          ],
+          "target_symbol": "mq3.client.ui_system_config.event",
+          "status": "tested_exact",
+          "scope": "Complete network-rate and system-configuration menu topology, shader cache, navigation, activated-event and connection/fullscreen semantics; 10 native contracts pass."
+        },
+        {
+          "original": "Options_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_system_config.ml"
+          ],
+          "target_symbol": "mq3.client.ui_system_config.init",
+          "status": "tested_exact",
+          "scope": "Complete network-rate and system-configuration menu topology, shader cache, navigation, activated-event and connection/fullscreen semantics; 10 native contracts pass."
+        },
+        {
+          "original": "SystemConfig_Cache",
+          "target_files": [
+            "src/mq3/client/ui_system_config.ml"
+          ],
+          "target_symbol": "mq3.client.ui_system_config.cache",
+          "status": "tested_exact",
+          "scope": "Complete network-rate and system-configuration menu topology, shader cache, navigation, activated-event and connection/fullscreen semantics; 10 native contracts pass."
+        },
+        {
+          "original": "UI_SystemConfigMenu",
+          "target_files": [
+            "src/mq3/client/ui_system_config.ml"
+          ],
+          "target_symbol": "mq3.client.ui_system_config.open",
+          "status": "tested_exact",
+          "scope": "Complete network-rate and system-configuration menu topology, shader cache, navigation, activated-event and connection/fullscreen semantics; 10 native contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_system_config.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_network_options.py",
+        "tests/ui_network_options_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_playermodel.c",
@@ -18429,10 +19181,306 @@
         "Text_Draw",
         "Text_Init"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Action_Draw",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Action_Draw",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Action_Init",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Action_Init",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "BText_Draw",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.BText_Draw",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "BText_Init",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.BText_Init",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Bitmap_Draw",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Bitmap_Draw",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Bitmap_Init",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Bitmap_Init",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Menu_ActivateItem",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Menu_ActivateItem",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Menu_AddItem",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Menu_AddItem",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Menu_AdjustCursor",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Menu_AdjustCursor",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Menu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Menu_Cache",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Menu_CursorMoved",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Menu_CursorMoved",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Menu_DefaultKey",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Menu_DefaultKey",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Menu_Draw",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Menu_Draw",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Menu_ItemAtCursor",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Menu_ItemAtCursor",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Menu_SetCursor",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Menu_SetCursor",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Menu_SetCursorToItem",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Menu_SetCursorToItem",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "PText_Draw",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.PText_Draw",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "PText_Init",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.PText_Init",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "RadioButton_Draw",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.RadioButton_Draw",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "RadioButton_Init",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.RadioButton_Init",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "RadioButton_Key",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.RadioButton_Key",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "ScrollList_Draw",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.ScrollList_Draw",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "ScrollList_Init",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.ScrollList_Init",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "ScrollList_Key",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.ScrollList_Key",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Slider_Draw",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Slider_Draw",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Slider_Init",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Slider_Init",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Slider_Key",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Slider_Key",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "SpinControl_Draw",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.SpinControl_Draw",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "SpinControl_Init",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.SpinControl_Init",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "SpinControl_Key",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.SpinControl_Key",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Text_Draw",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Text_Draw",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        },
+        {
+          "original": "Text_Init",
+          "target_files": [
+            "src/mq3/client/ui_qmenu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_qmenu.Text_Init",
+          "status": "tested_exact",
+          "scope": "Complete UI menu framework including item lifecycle, cursor/focus, keys/mouse, fields, lists, sliders, spin/radio controls and every draw type; 18 unchanged-C records and 50 native contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_qmenu.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_qmenu.py",
+        "tests/reference/ui_qmenu_oracle.c",
+        "tests/ui_qmenu_oracle.ml",
+        "tests/ui_qmenu_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_rankings.c",
