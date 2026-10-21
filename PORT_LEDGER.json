@@ -3981,10 +3981,164 @@
         "CG_SmokePuff",
         "CG_SpawnEffect"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_BigExplode",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.bigExplode",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_Bleed",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.bleed",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_BubbleTrail",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.bubbleTrail",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_GibPlayer",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.gibPlayer",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_InvulnerabilityImpact",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.invulnerabilityImpact",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_InvulnerabilityJuiced",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.invulnerabilityJuiced",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_KamikazeEffect",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.kamikazeEffect",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_LaunchExplode",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.launchExplode",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_LaunchGib",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.launchGib",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_LightningBoltBeam",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.lightningBoltBeam",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_MakeExplosion",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.makeExplosion",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_ObeliskExplode",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.obeliskExplode",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_ObeliskPain",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.obeliskPain",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_ScorePlum",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.scorePlum",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_SmokePuff",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.smokePuff",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        },
+        {
+          "original": "CG_SpawnEffect",
+          "target_files": [
+            "src/mq3/client/cgame_effects.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_effects.spawnEffect",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral effect construction with original timings, trajectories, media names, random branches, light, mark and audio fields. Eight unchanged-C records and 36 native contracts pass; productive event mirroring suppresses duplicate dispatch beside retail cgame.qvm."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_effects.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_effects.py",
+        "tests/reference/cgame_effects_oracle.c",
+        "tests/cgame_effects_oracle.ml",
+        "tests/cgame_effects_contracts.ml",
+        "scripts/test_retail_qvm_match.py"
+      ]
     },
     {
       "source": "code/cgame/cg_ents.c",
@@ -4010,10 +4164,182 @@
         "CG_Speaker",
         "CG_TeamBase"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_AddCEntity",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.addCEntity",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_AddPacketEntities",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.addPacketEntities",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_AdjustPositionForMover",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.adjustPositionForMover",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_Beam",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.beam",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_CalcEntityLerpPositions",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.calcEntityLerpPositions",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_EntityEffects",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.entityEffects",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_General",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.general",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_Grapple",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.grapple",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_InterpolateEntityPosition",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.interpolateEntityPosition",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_Item",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.item",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_Missile",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.missile",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_Mover",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.mover",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_Portal",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.portal",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_PositionEntityOnTag",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.positionEntityOnTag",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_PositionRotatedEntityOnTag",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.positionRotatedEntityOnTag",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_SetEntitySoundPosition",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.setEntitySoundPosition",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_Speaker",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.speaker",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        },
+        {
+          "original": "CG_TeamBase",
+          "target_files": [
+            "src/mq3/client/cgame_ents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_ents.teamBase",
+          "status": "tested_exact",
+          "scope": "Complete renderer-neutral packet-entity observer including lerp/mover adjustment, tags, items, missiles, movers, portals, beams, speakers, team bases, loop sounds and constant lights. Nine unchanged-C records and 28 native contracts pass; the retail match feeds every snapshot through the non-dispatching mirror."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_ents.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_ents.py",
+        "tests/reference/cgame_ents_oracle.c",
+        "tests/cgame_ents_oracle.ml",
+        "tests/cgame_ents_contracts.ml",
+        "scripts/test_retail_qvm_match.py"
+      ]
     },
     {
       "source": "code/cgame/cg_event.c",
@@ -4219,10 +4545,200 @@
         "CG_ReflectVelocity",
         "way"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_AddExplosion",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.addExplosion",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_AddFadeRGB",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.addFadeRGB",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_AddFallScaleFade",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.addFallScaleFade",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_AddFragment",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.addFragment",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_AddInvulnerabilityImpact",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.addInvulnerabilityImpact",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_AddInvulnerabilityJuiced",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.addInvulnerabilityJuiced",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_AddKamikaze",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.addKamikaze",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_AddLocalEntities",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.addLocalEntities",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_AddMoveScaleFade",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.addMoveScaleFade",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_AddRefEntity",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.addRefEntity",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_AddScaleFade",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.addScaleFade",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_AddScorePlum",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.addScorePlum",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_AddSpriteExplosion",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.addSpriteExplosion",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_AllocLocalEntity",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.allocLocalEntity",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_FragmentBounceMark",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.fragmentBounceMark",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_FragmentBounceSound",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.fragmentBounceSound",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_FreeLocalEntity",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.freeLocalEntity",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_InitLocalEntities",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.initLocalEntities",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "CG_ReflectVelocity",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.reflectVelocity",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        },
+        {
+          "original": "way (parser artifact; actual function CG_BloodTrail)",
+          "target_files": [
+            "src/mq3/client/cgame_localents.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_localents.bloodTrail",
+          "status": "tested_exact",
+          "scope": "Complete 512-slot local-entity lifecycle, fragment traces/bounces/trails, fades, explosions, score plums and missionpack effects. Six unchanged-C records and 27 native contracts pass; rendering, audio and marks are typed boundaries and the retail lifecycle is ticked without duplicate dispatch."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_localents.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_localents.py",
+        "tests/reference/cgame_localents_oracle.c",
+        "tests/cgame_localents_oracle.ml",
+        "tests/cgame_localents_contracts.ml",
+        "scripts/test_retail_qvm_match.py"
+      ]
     },
     {
       "source": "code/cgame/cg_main.c",
@@ -16383,10 +16899,27 @@
       "symbol_candidates": [
         "UI_SPArena_Start"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_SPArena_Start",
+          "target_files": [
+            "src/mq3/client/ui_sp_arena.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_arena.start",
+          "status": "tested_exact",
+          "scope": "Exact sv_maxclients minimum, arena number parsing, training/final selection, tier lookup, ui_spSelection write, and appended spmap command. Four unchanged-C differential records and seven MiniLang contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_sp_arena.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_sp_arena.py",
+        "tests/reference/ui_sp_arena_oracle.c",
+        "tests/ui_sp_arena_oracle.ml",
+        "tests/ui_sp_arena_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_specifyleague.c",

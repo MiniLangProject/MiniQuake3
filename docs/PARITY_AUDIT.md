@@ -24,6 +24,24 @@ Default-Erzeugung, Zahlenwert und Modified-Zustand versorgt den produktiven
 Botlib-Lifecycle. 21 Datensätze aus unverändert extrahierten Originalfunktionen
 und 18 zusätzliche MiniLang-Verträge belegen diesen Block.
 
+Vier weitere zuvor unbegonnene Originaldateien sind vollständig nativ
+zugeordnet. `cg_ents.c` verarbeitet jeden produktiven Retail-Snapshot durch
+einen privaten Cent-/Snapshot-Observer mit allen Entitytypen, Interpolation,
+Moverkorrektur, Tags, Sounds und Lichtern. `cg_effects.c` erhält die neuen
+Ereignisse aus demselben Matchpfad und bildet Lebenszeiten, Trajektorien,
+Medien, Zufallszweige, Licht-, Mark- und Audiofelder nach. `cg_localents.c`
+stellt den 512er Pool samt Freelist, Fragmenten, Bounce, Trails, Fadevarianten,
+Explosionen, Score-Plums und Missionpack-Effekten bereit. Solange die Retail-
+`cgame.qvm` aktiv ist, markieren alle drei nativen Spiegel ihre sichtbaren und
+hörbaren Grenzen als unterdrückt, sodass kein Effekt doppelt ausgegeben wird.
+`ui_sparena.c` bildet zusätzlich Mindest-Clients, Training-/Finalauswahl,
+Tierzahl, `ui_spSelection` und den angehängten `spmap`-Befehl exakt ab. Die
+Fokustests bestehen mit 27 Datensätzen aus unveränderten C-Funktionen und 98
+MiniLang-Verträgen. Ein anschließender produktiver Hauptbuild und das Retail-
+QVM-Match bestanden mit neun Prediction-Traces, 2.345 texturierten Dreiecken,
+301 Cgame-Assets und 26 Sounds. Die vollständige 283-Gate-Auswahl wurde für
+diesen inkrementellen Block nicht erneut ausgeführt.
+
 Dieser Vollstand enthält auch die produktive
 `AAS_BestReachableFromJumpPadArea`-Platzierung: benannte Map-Boots laden die
 passende Retail-AAS, `trigger_push`-Ballistik wird 30 Frames gegen die Item-BBox

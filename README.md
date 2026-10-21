@@ -45,13 +45,21 @@ Offen bleibt die noch kompaktere interne Reachability-Ablage.
 
 Der aktuelle Retail-Gesamtlauf vom 21. Oktober 2026 besteht alle **283 Gates**
 von `python scripts/verify.py --data-root D:/Quake3`. Der geprüfte
+Vollstand hatte SHA-256
+`46e3c7a61bab2830c5a315c234e2c166f10ee7624d6314a060bb7f2f0969ea12`;
+der anschließend mit den unten genannten nativen Cgame-Ports frisch gebaute
 `build/MiniQuake3.exe` hat SHA-256
-`9fdf40e234045505e22cb677f59a6974be481856ac80c0b58ad293e54a7f4962`.
+`2a33d57910931ebba72ded6de08d3f2837e651bbf4e78c4b2a24c5915e21f09b`.
 Seit diesem Gesamtlauf bestehen zusätzlich die neuen `cg_event.c`-,
 `cg_playerstate.c`- und `cg_predict.c`-Differentialgates mit 29 unveränderten
-C-Datensätzen und 139 nativen Verträgen. Das Retail-QVM-Gate bleibt mit
+C-Datensätzen und 139 nativen Verträgen. Jetzt sind auch `cg_effects.c`,
+`cg_localents.c`, `cg_ents.c` und `ui_sparena.c` vollständig nativ zugeordnet:
+27 unveränderte C-Differenzdatensätze und 98 MiniLang-Verträge prüfen
+Effekterzeugung, den 512er Local-Entity-Pool, sämtliche Snapshot-Entitytypen
+und den Singleplayer-Arenastart. Der Retail-Match führt die neuen Cgame-Pfade
+als nicht doppelt ausgebenden Observer produktiv mit. Das Retail-QVM-Gate bleibt mit
 neun produktiven Prediction-Traces, 2.345 texturierten Dreiecken und 26 Sounds
-grün; die drei Gates sind bereits in `scripts/verify.py` aufgenommen.
+grün; alle neuen Fokustests sind bereits in `scripts/verify.py` aufgenommen.
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 

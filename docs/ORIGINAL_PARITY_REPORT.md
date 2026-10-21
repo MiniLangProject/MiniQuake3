@@ -14,12 +14,12 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | Bereich | Dateien | Portiert | Teilweise | Nicht begonnen | Original behalten |
 |---|---:|---:|---:|---:|---:|
 | `botlib` | 53 | 5 | 19 | 29 | 0 |
-| `cgame` | 25 | 6 | 2 | 17 | 0 |
+| `cgame` | 25 | 9 | 2 | 14 | 0 |
 | `client` | 19 | 1 | 14 | 4 | 0 |
 | `game` | 65 | 0 | 33 | 32 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
-| `q3_ui` | 47 | 0 | 2 | 45 | 0 |
+| `q3_ui` | 47 | 1 | 2 | 44 | 0 |
 | `qcommon` | 27 | 1 | 17 | 9 | 0 |
 | `renderer` | 27 | 4 | 16 | 7 | 0 |
 | `server` | 11 | 0 | 9 | 2 | 0 |
@@ -27,7 +27,7 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `ui` | 12 | 0 | 0 | 12 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 0 | 6 | 7 | 0 |
-| **Gesamt** | **335** | **17** | **118** | **200** | **0** |
+| **Gesamt** | **335** | **21** | **118** | **196** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -94,12 +94,12 @@ Teil dieser Tabelle.
 | `code/cgame/cg_consolecmds.c` | `cgame` | `partial` | 40 | 36 | 4 |
 | `code/cgame/cg_draw.c` | `cgame` | `not_started` | 49 | 0 | 49 |
 | `code/cgame/cg_drawtools.c` | `cgame` | `not_started` | 25 | 0 | 25 |
-| `code/cgame/cg_effects.c` | `cgame` | `not_started` | 16 | 0 | 16 |
-| `code/cgame/cg_ents.c` | `cgame` | `not_started` | 18 | 0 | 18 |
+| `code/cgame/cg_effects.c` | `cgame` | `ported` | 16 | 16 | 0 |
+| `code/cgame/cg_ents.c` | `cgame` | `ported` | 18 | 18 | 0 |
 | `code/cgame/cg_event.c` | `cgame` | `ported` | 7 | 7 | 0 |
 | `code/cgame/cg_info.c` | `cgame` | `ported` | 5 | 5 | 0 |
 | `code/cgame/cg_local.h` | `cgame` | `not_started` | 0 | 0 | 0 |
-| `code/cgame/cg_localents.c` | `cgame` | `not_started` | 20 | 0 | 20 |
+| `code/cgame/cg_localents.c` | `cgame` | `ported` | 20 | 20 | 0 |
 | `code/cgame/cg_main.c` | `cgame` | `not_started` | 44 | 0 | 44 |
 | `code/cgame/cg_marks.c` | `cgame` | `not_started` | 28 | 0 | 28 |
 | `code/cgame/cg_newdraw.c` | `cgame` | `not_started` | 72 | 0 | 72 |
@@ -251,7 +251,7 @@ Teil dieser Tabelle.
 | `code/q3_ui/ui_setup.c` | `q3_ui` | `not_started` | 6 | 0 | 6 |
 | `code/q3_ui/ui_signup.c` | `q3_ui` | `not_started` | 4 | 0 | 4 |
 | `code/q3_ui/ui_sound.c` | `q3_ui` | `not_started` | 4 | 0 | 4 |
-| `code/q3_ui/ui_sparena.c` | `q3_ui` | `not_started` | 1 | 0 | 1 |
+| `code/q3_ui/ui_sparena.c` | `q3_ui` | `ported` | 1 | 1 | 0 |
 | `code/q3_ui/ui_specifyleague.c` | `q3_ui` | `not_started` | 5 | 0 | 5 |
 | `code/q3_ui/ui_specifyserver.c` | `q3_ui` | `not_started` | 4 | 0 | 4 |
 | `code/q3_ui/ui_splevel.c` | `q3_ui` | `not_started` | 22 | 0 | 22 |
@@ -433,10 +433,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/cgame/cg_consolecmds.c` (partial): `CG_Camera_f`, `CG_EditHud_f`, `CG_TeamMenu_f`, `Cmd_Argv`
 - `code/cgame/cg_draw.c` (not_started): `CG_AddLagometerFrameInfo`, `CG_AddLagometerSnapshotInfo`, `CG_CenterPrint`, `CG_Draw2D`, `CG_Draw3DModel`, `CG_DrawActive`, `CG_DrawAmmoWarning`, `CG_DrawAttacker`, `CG_DrawCenterString`, `CG_DrawCrosshair`, `CG_DrawCrosshairNames`, `CG_DrawDisconnect`, `CG_DrawFPS`, `CG_DrawField`, `CG_DrawFlagModel`, `CG_DrawFollow`, `CG_DrawHead`, `CG_DrawHoldableItem`, `CG_DrawIntermission`, `CG_DrawLagometer`, `CG_DrawLowerLeft`, `CG_DrawLowerRight`, `CG_DrawPersistantPowerup`, `CG_DrawPickupItem`, `CG_DrawPowerups`, `CG_DrawProxWarning`, `CG_DrawReward`, `CG_DrawScoreboard`, `CG_DrawScores`, `CG_DrawSnapshot`, `CG_DrawSpectator`, `CG_DrawStatusBar`, `CG_DrawStatusBarFlag`, `CG_DrawStatusBarHead`, `CG_DrawTeamBackground`, `CG_DrawTeamInfo`, `CG_DrawTeamOverlay`, `CG_DrawTeamVote`, `CG_DrawTimedMenus`, `CG_DrawTimer`, `CG_DrawTourneyScoreboard`, `CG_DrawUpperRight`, `CG_DrawVote`, `CG_DrawWarmup`, `CG_ScanForCrosshairEntity`, `CG_Text_Height`, `CG_Text_Paint`, `CG_Text_PaintChar`, `CG_Text_Width`
 - `code/cgame/cg_drawtools.c` (not_started): `CG_AdjustFrom640`, `CG_ColorForHealth`, `CG_DrawBigString`, `CG_DrawBigStringColor`, `CG_DrawChar`, `CG_DrawPic`, `CG_DrawRect`, `CG_DrawSides`, `CG_DrawSmallString`, `CG_DrawSmallStringColor`, `CG_DrawStringExt`, `CG_DrawStrlen`, `CG_DrawTopBottom`, `CG_FadeColor`, `CG_FillRect`, `CG_GetColorForHealth`, `CG_TeamColor`, `CG_TileClear`, `CG_TileClearBox`, `UI_DrawBannerString`, `UI_DrawBannerString2`, `UI_DrawProportionalString`, `UI_DrawProportionalString2`, `UI_ProportionalSizeScale`, `UI_ProportionalStringWidth`
-- `code/cgame/cg_effects.c` (not_started): `CG_BigExplode`, `CG_Bleed`, `CG_BubbleTrail`, `CG_GibPlayer`, `CG_InvulnerabilityImpact`, `CG_InvulnerabilityJuiced`, `CG_KamikazeEffect`, `CG_LaunchExplode`, `CG_LaunchGib`, `CG_LightningBoltBeam`, `CG_MakeExplosion`, `CG_ObeliskExplode`, `CG_ObeliskPain`, `CG_ScorePlum`, `CG_SmokePuff`, `CG_SpawnEffect`
-- `code/cgame/cg_ents.c` (not_started): `CG_AddCEntity`, `CG_AddPacketEntities`, `CG_AdjustPositionForMover`, `CG_Beam`, `CG_CalcEntityLerpPositions`, `CG_EntityEffects`, `CG_General`, `CG_Grapple`, `CG_InterpolateEntityPosition`, `CG_Item`, `CG_Missile`, `CG_Mover`, `CG_Portal`, `CG_PositionEntityOnTag`, `CG_PositionRotatedEntityOnTag`, `CG_SetEntitySoundPosition`, `CG_Speaker`, `CG_TeamBase`
 - `code/cgame/cg_local.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/cgame/cg_localents.c` (not_started): `CG_AddExplosion`, `CG_AddFadeRGB`, `CG_AddFallScaleFade`, `CG_AddFragment`, `CG_AddInvulnerabilityImpact`, `CG_AddInvulnerabilityJuiced`, `CG_AddKamikaze`, `CG_AddLocalEntities`, `CG_AddMoveScaleFade`, `CG_AddRefEntity`, `CG_AddScaleFade`, `CG_AddScorePlum`, `CG_AddSpriteExplosion`, `CG_AllocLocalEntity`, `CG_FragmentBounceMark`, `CG_FragmentBounceSound`, `CG_FreeLocalEntity`, `CG_InitLocalEntities`, `CG_ReflectVelocity`, `way`
 - `code/cgame/cg_main.c` (not_started): `CG_Argv`, `CG_AssetCache`, `CG_Asset_Parse`, `CG_BuildSpectatorString`, `CG_ConfigString`, `CG_CrosshairPlayer`, `CG_Cvar_Get`, `CG_DrawCinematic`, `CG_Error`, `CG_EventHandling`, `CG_FeederCount`, `CG_FeederItemImage`, `CG_FeederItemText`, `CG_FeederSelection`, `CG_ForceModelChange`, `CG_GetMenuBuffer`, `CG_InfoFromScoreIndex`, `CG_Init`, `CG_KeyEvent`, `CG_LastAttacker`, `CG_LoadHudMenu`, `CG_LoadMenus`, `CG_Load_Menu`, `CG_MouseEvent`, `CG_OwnerDrawHandleKey`, `CG_OwnerDrawWidth`, `CG_ParseMenu`, `CG_PlayCinematic`, `CG_Printf`, `CG_RegisterClients`, `CG_RegisterCvars`, `CG_RegisterGraphics`, `CG_RegisterItemSounds`, `CG_RegisterSounds`, `CG_RunCinematicFrame`, `CG_SetScoreSelection`, `CG_Shutdown`, `CG_StartMusic`, `CG_StopCinematic`, `CG_Text_PaintWithCursor`, `CG_UpdateCvars`, `Com_Error`, `Com_Printf`, `vmMain`
 - `code/cgame/cg_marks.c` (not_started): `CG_AddMarks`, `CG_AddParticleShrapnel`, `CG_AddParticleToScene`, `CG_AddParticles`, `CG_AllocMark`, `CG_BloodPool`, `CG_ClearParticles`, `CG_FreeMarkPoly`, `CG_ImpactMark`, `CG_InitMarkPolys`, `CG_NewParticleArea`, `CG_OilSlickRemove`, `CG_ParticleBloodCloud`, `CG_ParticleBubble`, `CG_ParticleBulletDebris`, `CG_ParticleDust`, `CG_ParticleExplosion`, `CG_ParticleImpactSmokePuff`, `CG_ParticleMisc`, `CG_ParticleSmoke`, `CG_ParticleSnow`, `CG_ParticleSnowFlurry`, `CG_ParticleSparks`, `CG_Particle_Bleed`, `CG_Particle_OilParticle`, `CG_Particle_OilSlick`, `CG_SnowLink`, `ValidBloodPool`
 - `code/cgame/cg_newdraw.c` (not_started): `CG_CheckOrderPending`, `CG_ClientNumFromName`, `CG_Draw1stPlace`, `CG_Draw2ndPlace`, `CG_DrawAreaChat`, `CG_DrawAreaPowerUp`, `CG_DrawAreaSystemChat`, `CG_DrawAreaTeamChat`, `CG_DrawBlueFlagHead`, `CG_DrawBlueFlagName`, `CG_DrawBlueFlagStatus`, `CG_DrawBlueName`, `CG_DrawBlueScore`, `CG_DrawCTFPowerUp`, `CG_DrawCapFragLimit`, `CG_DrawGameStatus`, `CG_DrawGameType`, `CG_DrawKiller`, `CG_DrawMedal`, `CG_DrawNewTeamInfo`, `CG_DrawPlayerAmmoIcon`, `CG_DrawPlayerAmmoValue`, `CG_DrawPlayerArmorIcon`, `CG_DrawPlayerArmorValue`, `CG_DrawPlayerHasFlag`, `CG_DrawPlayerHead`, `CG_DrawPlayerHealth`, `CG_DrawPlayerItem`, `CG_DrawPlayerLocation`, `CG_DrawPlayerScore`, `CG_DrawPlayerStatus`, `CG_DrawRedFlagHead`, `CG_DrawRedFlagName`, `CG_DrawRedFlagStatus`, `CG_DrawRedName`, `CG_DrawRedScore`, `CG_DrawSelectedPlayerArmor`, `CG_DrawSelectedPlayerHead`, `CG_DrawSelectedPlayerHealth`, `CG_DrawSelectedPlayerLocation`, `CG_DrawSelectedPlayerName`, `CG_DrawSelectedPlayerPowerup`, `CG_DrawSelectedPlayerStatus`, `CG_DrawSelectedPlayerWeapon`, `CG_DrawTeamColor`, `CG_DrawTeamSpectators`, `CG_EventHandling`, `CG_GameTypeString`, `CG_GetGameStatusText`, `CG_GetKillerText`, `CG_GetSelectedPlayer`, `CG_GetTeamColor`, `CG_GetValue`, `CG_HarvesterSkulls`, `CG_HideTeamMenu`, `CG_InitTeamChat`, `CG_KeyEvent`, `CG_MouseEvent`, `CG_OneFlagStatus`, `CG_OtherTeamHasFlag`, `CG_OwnerDraw`, `CG_OwnerDrawVisible`, `CG_RunMenuScript`, `CG_SelectNextPlayer`, `CG_SelectPrevPlayer`, `CG_SetPrintString`, `CG_SetSelectedPlayerName`, `CG_ShowResponseHead`, `CG_ShowTeamMenu`, `CG_StatusHandle`, `CG_Text_Paint_Limit`, `CG_YourTeamHasFlag`
@@ -584,7 +581,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/q3_ui/ui_setup.c` (not_started): `Setup_ResetDefaults_Action`, `Setup_ResetDefaults_Draw`, `UI_SetupMenu`, `UI_SetupMenu_Cache`, `UI_SetupMenu_Event`, `UI_SetupMenu_Init`
 - `code/q3_ui/ui_signup.c` (not_started): `Signup_Cache`, `Signup_MenuEvent`, `Signup_MenuInit`, `UI_SignupMenu`
 - `code/q3_ui/ui_sound.c` (not_started): `UI_SoundOptionsMenu`, `UI_SoundOptionsMenu_Cache`, `UI_SoundOptionsMenu_Event`, `UI_SoundOptionsMenu_Init`
-- `code/q3_ui/ui_sparena.c` (not_started): `UI_SPArena_Start`
 - `code/q3_ui/ui_specifyleague.c` (not_started): `SpecifyLeague_Cache`, `SpecifyLeague_Event`, `SpecifyLeague_GetList`, `SpecifyLeague_MenuInit`, `UI_SpecifyLeagueMenu`
 - `code/q3_ui/ui_specifyserver.c` (not_started): `SpecifyServer_Cache`, `SpecifyServer_Event`, `SpecifyServer_MenuInit`, `UI_SpecifyServerMenu`
 - `code/q3_ui/ui_splevel.c` (not_started): `PlayerIcon`, `PlayerIconHandle`, `UI_SPLevelMenu`, `UI_SPLevelMenu_AwardEvent`, `UI_SPLevelMenu_BackEvent`, `UI_SPLevelMenu_Cache`, `UI_SPLevelMenu_CustomEvent`, `UI_SPLevelMenu_Init`, `UI_SPLevelMenu_LeftArrowEvent`, `UI_SPLevelMenu_LevelEvent`, `UI_SPLevelMenu_MenuDraw`, `UI_SPLevelMenu_NextEvent`, `UI_SPLevelMenu_PlayerEvent`, `UI_SPLevelMenu_ReInit`, `UI_SPLevelMenu_ResetAction`, `UI_SPLevelMenu_ResetDraw`, `UI_SPLevelMenu_ResetEvent`, `UI_SPLevelMenu_RightArrowEvent`, `UI_SPLevelMenu_SetBots`, `UI_SPLevelMenu_SetMenuArena`, `UI_SPLevelMenu_SetMenuItems`, `UI_SPLevelMenu_f`
