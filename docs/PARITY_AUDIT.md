@@ -60,6 +60,8 @@ Dreiecken, 301 Cgame-Assets und 26 Sounds grün. Das Inventar zählt nun 26
 vollständig portierte Originaldateien, 118 partielle und 191 noch nicht
 begonnene Dateien im Runtime-/Plattformumfang.
 
+Der neue Quellenblock schließt weitere fünf Originaldateien. `cg_draw.c` bildet den kompletten HUD-/2D-Pfad einschließlich Statusleiste, Scoreboard, Lagometer, Crosshair, Teamoverlay, Votes, Warmup und aktiver Stereo-Szene ab. `cg_particles.c` portiert den 8.192-Slot-Pool mit allen Spawn-, Update-, Recycling- und Renderpfaden. `cg_servercmds.c` verarbeitet Configstrings, Scores, Chat, Voicechat, Shader-Remaps und Map-Restarts. Die beiden Originalmenüs `ui_display.c` und `ui_sound.c` enthalten ihre vollständige Konstruktion, Cvar- und Restart-Semantik. Insgesamt bestehen 36 unveränderte C-Datensätze und 135 native Verträge. Serverbefehle, Partikel und Draw-State laufen aus dem produktiven Retail-QVM-Match als nicht doppelt ausgebende Beobachter. Der frische Hauptbuild hat SHA-256 `bae4743ee1d0f48ec9dcd5feb3514f7c0183ad63d6330c7523a1b742a37bfb1f`; das Retail-QVM-Match bleibt bei neun Prediction-Traces, 2.345 texturierten Dreiecken, 301 Cgame-Assets und 26 Sounds grün. Das Runtime-/Plattforminventar zählt jetzt 31 portierte, 118 partielle und 186 nicht begonnene Originaldateien.
+
 Dieser Vollstand enthält auch die produktive
 `AAS_BestReachableFromJumpPadArea`-Platzierung: benannte Map-Boots laden die
 passende Retail-AAS, `trigger_push`-Ballistik wird 30 Frames gegen die Item-BBox

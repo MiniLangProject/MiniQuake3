@@ -68,6 +68,7 @@ vollständige native Kamera-/FOV-/Frame-Reihenfolge. Zeichen-, Bild- und
 Farbhilfen, MD4-Bonematrix-Skinning und das Credits-Menü sind mit 35
 unveränderten C-Differenzdatensätzen und 141 MiniLang-Verträgen belegt. Der
 Quellabgleich weist damit 26 vollständige native Originaldateien aus.
+Der aktuelle Folgeblock portiert `cg_draw.c`, `cg_particles.c`, `cg_servercmds.c`, `ui_display.c` und `ui_sound.c` vollständig. 36 unveränderte C-Datensätze und 135 native Verträge decken HUD, Scoreboard, Lagometer, Crosshair, Teamoverlay, Partikel-Lebenszyklen, Serverbefehle, Chat/Voice, Shader-Remaps sowie Display-/Soundoptionen ab. Die produktiven Retail-Snapshots und Servercommands speisen die nativen, unterdrückbaren Beobachter; der frische Build `bae4743ee1d0f48ec9dcd5feb3514f7c0183ad63d6330c7523a1b742a37bfb1f` besteht das Retail-QVM-Match weiterhin mit 2.345 texturierten Dreiecken und 26 Sounds. Der Quellabgleich steht damit bei 31 vollständig portierten Originaldateien.
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 

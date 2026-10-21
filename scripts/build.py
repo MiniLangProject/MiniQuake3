@@ -82,7 +82,7 @@ def main():
             raise RuntimeError("Frozen compiler input changed: "+record["path"])
     run([compiler, ROOT / args.source, output / args.output, "-I", ROOT / "src", "-I", frozen,
          "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "64m"],
-         output, log=output / (args.output + ".compile.log"), timeout=240)
+         output, log=output / (args.output + ".compile.log"), timeout=480)
     print(f"Built {args.output}")
 
 if __name__ == "__main__":

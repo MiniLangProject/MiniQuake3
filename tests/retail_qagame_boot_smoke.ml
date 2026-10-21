@@ -27,6 +27,7 @@ function main(args)
   for each entity in snapshot.entities if entity.pos.trType<0 or entity.pos.trType>5 or entity.apos.trType<0 or entity.apos.trType>5 then print("Invalid snapshot trajectory entity="+str(entity.number)+" pos="+str(entity.pos.trType)+" apos="+str(entity.apos.trType));return error(7642,"invalid qagame entity trajectory") end if end for
   client=match.bootCgame(state);if client is error then return client end if
   if len(state.context.errors)!=0 then print("Retail VM error after cgame init: "+state.context.errors[0]);return error(7642,"retail cgame init error") end if
+  observedSnapshot=match.snapshot(state,0);if observedSnapshot is error then return observedSnapshot end if
   predicted=qworld.userCommand(1450,[0,0,0],0,2,127,0,0);thought=match.submitUsercmd(state,0,predicted);if thought is error then return thought end if
   match.drawCgame(state,1450)
   if len(state.context.errors)!=0 then print("Retail VM error: "+state.context.errors[0]);return error(7642,"retail VM emitted an engine error") end if
@@ -34,6 +35,9 @@ function main(args)
   if state.context.cgameTagQueries==0 then return error(7642,"retail cgame did not interpolate registered MD3 tags") end if
   if state.context.latestRefdef==void or state.context.latestRefdef.width<=0 or state.context.latestRefdef.height<=0 or len(state.context.latestRefdef.viewaxis)!=3 then return error(7642,"retail cgame render-scene view was not decoded") end if
   if len(state.context.scene.entities)==0 or len(state.context.renderQueue.commands)==0 or len(state.context.soundCommands)==0 then return error(7642,"retail cgame did not submit scene, 2D or sound commands") end if
+  if state.context.nativeDraw.suppressed==0 then return error(7642,"native cg_draw observer did not execute beside retail cgame") end if
+  if not state.context.nativeParticles.retailActive or state.context.nativeParticles.capacity!=8192 then return error(7642,"native cg_particles observer is not attached to the retail match") end if
+  if state.context.nativeServerCmds.serverCommandSequence==0 then return error(7642,"native cg_servercmds observer did not consume retail commands") end if
   models=0;sprites=0
   for each value in state.context.scene.entities
     decoded=sceneQueue.decodeEntity(value);if decoded is error then return decoded end if
@@ -74,6 +78,6 @@ function main(args)
   report=report+" inlineModels="+str(geometryInline)+" unsupportedEntities="+str(geometryUnsupported)+" triangles="+str(geometryTriangles)+" materials="+str(len(materialCatalog.materials))+" textures="+str(len(materialCatalog.textures))
   report=report+" texturedTriangles="+str(materialCatalog.resolvedTriangles)+" untexturedTriangles="+str(materialCatalog.unresolvedTriangles)+" emittedTriangles="+str(batchedEmitted)+" renderPasses="+str(len(prepared.batch.passes)+len(prepared.depthHackBatch.passes))+" skins="+str(len(materialCatalog.loadedSkins))
   report=report+" cgameView="+str(cgameViewWidth)+"x"+str(cgameViewHeight)+" lights="+str(len(state.context.scene.dlights))+" cgameDraw2D="+str(cgameDraw2D)
-  report=report+" uiDraw2D="+str(len(state.context.renderQueue.commands)-cgameDraw2D)+" sounds="+str(len(state.context.soundCommands));print(report)
+  report=report+" uiDraw2D="+str(len(state.context.renderQueue.commands)-cgameDraw2D)+" sounds="+str(len(state.context.soundCommands))+" nativeDrawSuppressed="+str(state.context.nativeDraw.suppressed)+" nativeServerSequence="+str(state.context.nativeServerCmds.serverCommandSequence);print(report)
   match.shutdown(state);return 0
 end function

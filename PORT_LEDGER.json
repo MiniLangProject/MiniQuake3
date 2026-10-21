@@ -3918,10 +3918,461 @@
         "CG_Text_PaintChar",
         "CG_Text_Width"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_AddLagometerFrameInfo",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.addLagometerFrameInfo",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_AddLagometerSnapshotInfo",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.addLagometerSnapshotInfo",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_CenterPrint",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.centerPrint",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_Draw2D",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.draw2DFrame",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_Draw3DModel",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.draw3DModel",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawActive",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawActive",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawAmmoWarning",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawAmmoWarning",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawAttacker",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawAttacker",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawCenterString",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawCenterString",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawCrosshair",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawCrosshair",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawCrosshairNames",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawCrosshairNames",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawDisconnect",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawDisconnect",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawFPS",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawFPS",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawField",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawField",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawFlagModel",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawFlagModel",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawFollow",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawFollow",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawHead",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawHead",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawHoldableItem",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawHoldableItem",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawIntermission",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawIntermission",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawLagometer",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawLagometer",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawLowerLeft",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawLowerLeft",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawLowerRight",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawLowerRight",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawPersistantPowerup",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawPersistantPowerup",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawPickupItem",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawPickupItem",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawPowerups",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawPowerups",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawProxWarning",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawProxWarning",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawReward",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawReward",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawScoreboard",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawScoreboard",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawScores",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawScores",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawSnapshot",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawSnapshot",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawSpectator",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawSpectator",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawStatusBar",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawStatusBar",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawStatusBarFlag",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawStatusBarFlag",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawStatusBarHead",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawStatusBarHead",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawTeamBackground",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawTeamBackground",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawTeamInfo",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawTeamInfo",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawTeamOverlay",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawTeamOverlay",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawTeamVote",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawTeamVote",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawTimedMenus",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawTimedMenus",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawTimer",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawTimer",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawTourneyScoreboard",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawTourneyScoreboard",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawUpperRight",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawUpperRight",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawVote",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawVote",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_DrawWarmup",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.drawWarmup",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_ScanForCrosshairEntity",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.scanForCrosshairEntity",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_Text_Height",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.textHeight",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_Text_Paint",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.textPaint",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_Text_PaintChar",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.textPaintChar",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        },
+        {
+          "original": "CG_Text_Width",
+          "target_files": [
+            "src/mq3/client/cgame_draw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_draw.textWidth",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 58 native contracts cover complete HUD, scoreboard, lagometer, crosshair, team overlay and active-frame drawing; the retail match executes suppressible native draw boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_draw.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_draw.py",
+        "tests/reference/cgame_draw_oracle.c",
+        "tests/cgame_draw_oracle.ml",
+        "tests/cgame_draw_contracts.ml",
+        "scripts/test_retail_qvm_match.py"
+      ]
     },
     {
       "source": "code/cgame/cg_drawtools.c",
@@ -5180,10 +5631,227 @@
         "CG_SnowLink",
         "ValidBloodPool"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_AddParticleShrapnel",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.addParticleShrapnel",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_AddParticleToScene",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.addParticleToScene",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_AddParticles",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.addParticles",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_BloodPool",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.bloodPool",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_ClearParticles",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.clearParticles",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_NewParticleArea",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.newParticleArea",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_OilSlickRemove",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.oilSlickRemove",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_ParticleBloodCloud",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.particleBloodCloud",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_ParticleBubble",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.particleBubble",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_ParticleBulletDebris",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.particleBulletDebris",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_ParticleDust",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.particleDust",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_ParticleExplosion",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.particleExplosion",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_ParticleImpactSmokePuff",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.particleImpactSmokePuff",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_ParticleMisc",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.particleMisc",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_ParticleSmoke",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.particleSmoke",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_ParticleSnow",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.particleSnow",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_ParticleSnowFlurry",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.particleSnowFlurry",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_ParticleSparks",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.particleSparks",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_Particle_Bleed",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.particleBleed",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_Particle_OilParticle",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.particleOilParticle",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_Particle_OilSlick",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.particleOilSlick",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "CG_SnowLink",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.snowLink",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        },
+        {
+          "original": "ValidBloodPool",
+          "target_files": [
+            "src/mq3/client/cgame_particles.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_particles.validBloodPool",
+          "status": "tested_exact",
+          "scope": "8 unchanged-C records and 29 native contracts cover the 8192-slot pool, every spawn/update/recycle/render path and original quirks; productive retail events feed the suppressible particle observer."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_particles.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_particles.py",
+        "tests/reference/cgame_particles_oracle.c",
+        "tests/cgame_particles_oracle.ml",
+        "tests/cgame_particles_contracts.ml",
+        "scripts/test_retail_qvm_match.py"
+      ]
     },
     {
       "source": "code/cgame/cg_players.c",
@@ -5574,10 +6242,227 @@
         "CG_VoiceChatLocal",
         "Cmd_Argv"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_AddBufferedVoiceChat",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.addBufferedVoiceChat",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_AddToTeamChat",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.addToTeamChat",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_ConfigStringModified",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.configStringModified",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_ExecuteNewServerCommands",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.executeNewServerCommands",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_GetVoiceChat",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.getVoiceChat",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_HeadModelVoiceChats",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.headModelVoiceChats",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_LoadVoiceChats",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.loadVoiceChats",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_MapRestart",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.mapRestart",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_ParseScores",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.parseScores",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_ParseServerinfo",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.parseServerinfo",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_ParseTeamInfo",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.parseTeamInfo",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_ParseVoiceChats",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.parseVoiceChats",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_ParseWarmup",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.parseWarmup",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_PlayBufferedVoiceChats",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.playBufferedVoiceChats",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_PlayVoiceChat",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.playVoiceChat",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_RemoveChatEscapeChar",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.removeChatEscapeChar",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_SetConfigValues",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.setConfigValues",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_ShaderStateChanged",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.shaderStateChanged",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_ValidOrder",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.validOrder",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_VoiceChat",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.voiceChat",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_VoiceChatListForClient",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.voiceChatListForClient",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "CG_VoiceChatLocal",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.voiceChatLocal",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        },
+        {
+          "original": "Cmd_Argv",
+          "target_files": [
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_servercmds.cmdArgv",
+          "status": "tested_exact",
+          "scope": "14 unchanged-C records and 35 native contracts cover configstrings, scores, chat, voice, shader remaps and map restart; every consumed retail server command runs through the suppressible native state machine."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_servercmds.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_servercmds.py",
+        "tests/reference/cgame_servercmds_oracle.c",
+        "tests/cgame_servercmds_oracle.ml",
+        "tests/cgame_servercmds_contracts.ml",
+        "scripts/test_retail_qvm_match.py"
+      ]
     },
     {
       "source": "code/cgame/cg_snapshot.c",
@@ -17168,10 +18053,52 @@
         "UI_DisplayOptionsMenu_Event",
         "UI_DisplayOptionsMenu_Init"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_DisplayOptionsMenu",
+          "target_files": [
+            "src/mq3/client/ui_display_options.ml"
+          ],
+          "target_symbol": "mq3.client.ui_display_options.open",
+          "status": "tested_exact",
+          "scope": "Complete menu construction, shader cache, cvar initialization, navigation and activated-item semantics; display gamma/viewsize and sound volume/quality restart behavior are covered by 13 native contracts."
+        },
+        {
+          "original": "UI_DisplayOptionsMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_display_options.ml"
+          ],
+          "target_symbol": "mq3.client.ui_display_options.cache",
+          "status": "tested_exact",
+          "scope": "Complete menu construction, shader cache, cvar initialization, navigation and activated-item semantics; display gamma/viewsize and sound volume/quality restart behavior are covered by 13 native contracts."
+        },
+        {
+          "original": "UI_DisplayOptionsMenu_Event",
+          "target_files": [
+            "src/mq3/client/ui_display_options.ml"
+          ],
+          "target_symbol": "mq3.client.ui_display_options.event",
+          "status": "tested_exact",
+          "scope": "Complete menu construction, shader cache, cvar initialization, navigation and activated-item semantics; display gamma/viewsize and sound volume/quality restart behavior are covered by 13 native contracts."
+        },
+        {
+          "original": "UI_DisplayOptionsMenu_Init",
+          "target_files": [
+            "src/mq3/client/ui_display_options.ml"
+          ],
+          "target_symbol": "mq3.client.ui_display_options.init",
+          "status": "tested_exact",
+          "scope": "Complete menu construction, shader cache, cvar initialization, navigation and activated-item semantics; display gamma/viewsize and sound volume/quality restart behavior are covered by 13 native contracts."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_display_options.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_system_options.py",
+        "tests/ui_system_options_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_gameinfo.c",
@@ -17671,10 +18598,52 @@
         "UI_SoundOptionsMenu_Event",
         "UI_SoundOptionsMenu_Init"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_SoundOptionsMenu",
+          "target_files": [
+            "src/mq3/client/ui_sound_options.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sound_options.open",
+          "status": "tested_exact",
+          "scope": "Complete menu construction, shader cache, cvar initialization, navigation and activated-item semantics; display gamma/viewsize and sound volume/quality restart behavior are covered by 13 native contracts."
+        },
+        {
+          "original": "UI_SoundOptionsMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_sound_options.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sound_options.cache",
+          "status": "tested_exact",
+          "scope": "Complete menu construction, shader cache, cvar initialization, navigation and activated-item semantics; display gamma/viewsize and sound volume/quality restart behavior are covered by 13 native contracts."
+        },
+        {
+          "original": "UI_SoundOptionsMenu_Event",
+          "target_files": [
+            "src/mq3/client/ui_sound_options.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sound_options.event",
+          "status": "tested_exact",
+          "scope": "Complete menu construction, shader cache, cvar initialization, navigation and activated-item semantics; display gamma/viewsize and sound volume/quality restart behavior are covered by 13 native contracts."
+        },
+        {
+          "original": "UI_SoundOptionsMenu_Init",
+          "target_files": [
+            "src/mq3/client/ui_sound_options.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sound_options.init",
+          "status": "tested_exact",
+          "scope": "Complete menu construction, shader cache, cvar initialization, navigation and activated-item semantics; display gamma/viewsize and sound volume/quality restart behavior are covered by 13 native contracts."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_sound_options.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_system_options.py",
+        "tests/ui_system_options_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_sparena.c",
