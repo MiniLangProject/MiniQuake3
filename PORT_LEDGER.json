@@ -6265,10 +6265,666 @@
         "CG_Text_Paint_Limit",
         "CG_YourTeamHasFlag"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_CheckOrderPending",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.checkOrderPending",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_ClientNumFromName",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.clientNumFromName",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_Draw1stPlace",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.draw1stPlace",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_Draw2ndPlace",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.draw2ndPlace",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawAreaChat",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawAreaChat",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawAreaPowerUp",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawAreaPowerUp",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawAreaSystemChat",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawAreaSystemChat",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawAreaTeamChat",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawAreaTeamChat",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawBlueFlagHead",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawBlueFlagHead",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawBlueFlagName",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawBlueFlagName",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawBlueFlagStatus",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawBlueFlagStatus",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawBlueName",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawBlueName",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawBlueScore",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawBlueScore",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawCTFPowerUp",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawCTFPowerUp",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawCapFragLimit",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawCapFragLimit",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawGameStatus",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawGameStatus",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawGameType",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawGameType",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawKiller",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawKiller",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawMedal",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawMedal",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawNewTeamInfo",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawNewTeamInfo",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawPlayerAmmoIcon",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawPlayerAmmoIcon",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawPlayerAmmoValue",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawPlayerAmmoValue",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawPlayerArmorIcon",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawPlayerArmorIcon",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawPlayerArmorValue",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawPlayerArmorValue",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawPlayerHasFlag",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawPlayerHasFlag",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawPlayerHead",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawPlayerHead",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawPlayerHealth",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawPlayerHealth",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawPlayerItem",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawPlayerItem",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawPlayerLocation",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawPlayerLocation",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawPlayerScore",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawPlayerScore",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawPlayerStatus",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawPlayerStatus",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawRedFlagHead",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawRedFlagHead",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawRedFlagName",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawRedFlagName",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawRedFlagStatus",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawRedFlagStatus",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawRedName",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawRedName",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawRedScore",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawRedScore",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawSelectedPlayerArmor",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawSelectedPlayerArmor",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawSelectedPlayerHead",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawSelectedPlayerHead",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawSelectedPlayerHealth",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawSelectedPlayerHealth",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawSelectedPlayerLocation",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawSelectedPlayerLocation",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawSelectedPlayerName",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawSelectedPlayerName",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawSelectedPlayerPowerup",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawSelectedPlayerPowerup",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawSelectedPlayerStatus",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawSelectedPlayerStatus",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawSelectedPlayerWeapon",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawSelectedPlayerWeapon",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawTeamColor",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawTeamColor",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_DrawTeamSpectators",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.drawTeamSpectators",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_EventHandling",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.eventHandling",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_GameTypeString",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.gameTypeString",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_GetGameStatusText",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.getGameStatusText",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_GetKillerText",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.getKillerText",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_GetSelectedPlayer",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.getSelectedPlayer",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_GetTeamColor",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.getTeamColor",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_GetValue",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.getValue",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_HarvesterSkulls",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.harvesterSkulls",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_HideTeamMenu",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.hideTeamMenu",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_InitTeamChat",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.initTeamChat",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_KeyEvent",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.keyEvent",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_MouseEvent",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.mouseEvent",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_OneFlagStatus",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.oneFlagStatus",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_OtherTeamHasFlag",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.otherTeamHasFlag",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_OwnerDraw",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.ownerDraw",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_OwnerDrawVisible",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.ownerDrawVisible",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_RunMenuScript",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.runMenuScript",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_SelectNextPlayer",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.selectNextPlayer",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_SelectPrevPlayer",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.selectPrevPlayer",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_SetPrintString",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.setPrintString",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_SetSelectedPlayerName",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.setSelectedPlayerName",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_ShowResponseHead",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.showResponseHead",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_ShowTeamMenu",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.showTeamMenu",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_StatusHandle",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.statusHandle",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_Text_Paint_Limit",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.textPaintLimit",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        },
+        {
+          "original": "CG_YourTeamHasFlag",
+          "target_files": [
+            "src/mq3/client/cgame_newdraw.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_newdraw.yourTeamHasFlag",
+          "status": "tested_exact",
+          "scope": "Complete owner-draw values, visibility and dispatch, player/team HUD, flags, powerups, medals, team lists, orders, voice, chat, input, menus and the intentionally empty original script body; 10 unchanged-C records and 45 native contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_newdraw.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_newdraw.py",
+        "tests/reference/cgame_newdraw_oracle.c",
+        "tests/cgame_newdraw_oracle.ml",
+        "tests/cgame_newdraw_contracts.ml"
+      ]
     },
     {
       "source": "code/cgame/cg_particles.c",
@@ -6565,23 +7221,341 @@
       ],
       "symbol_mapping": [
         {
-          "original": "CG_SetLerpFrameAnimation / CG_RunLerpFrame / CG_ClearLerpFrame",
+          "original": "CG_AddPainTwitch",
           "target_files": [
-            "src/mq3/format/player_animation.ml"
+            "src/mq3/client/cgame_players.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Stateful lower/upper frame timing implements initial lerp, animation toggle changes, loop, reverse, flipflop, speed scaling, 200 ms hitch clamps and float32 backlerp. Sixteen unchanged-C records plus ten contracts pass, and the productive preview enemy retains both lerp states."
+          "target_symbol": "mq3.client.cgame_players.addPainTwitch",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_AddRefEntityWithPowerups",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.addRefEntityWithPowerups",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_BreathPuffs",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.breathPuffs",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_ClearLerpFrame",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.clearLerpFrame",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_ColorFromString",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.colorFromString",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_CopyClientInfoModel",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.copyClientInfoModel",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_CustomSound",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.customSound",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_DustTrail",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.dustTrail",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_FileExists",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.fileExists",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_FindClientHeadFile",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.findClientHeadFile",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_FindClientModelFile",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.findClientModelFile",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_HasteTrail",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.hasteTrail",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_LightVerts",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.lightVerts",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_LoadClientInfo",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.loadClientInfo",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_LoadDeferredPlayers",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.loadDeferredPlayers",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_NewClientInfo",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.newClientInfo",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_ParseAnimationFile",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.parseAnimationFile",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_Player",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.player",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_PlayerAngles",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.playerAngles",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_PlayerAnimation",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.playerAnimation",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_PlayerFlag",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.playerFlag",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_PlayerFloatSprite",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.playerFloatSprite",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_PlayerPowerups",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.playerPowerups",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_PlayerShadow",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.playerShadow",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_PlayerSplash",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.playerSplash",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_PlayerSprites",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.playerSprites",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_PlayerTokens",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.playerTokens",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_RegisterClientModelname",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.registerClientModelname",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_RegisterClientSkin",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.registerClientSkin",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_ResetPlayerEntity",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.resetPlayerEntity",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_RunLerpFrame",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.runLerpFrame",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_ScanForExistingClientInfo",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.scanForExistingClientInfo",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_SetDeferredClientInfo",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.setDeferredClientInfo",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_SetLerpFrameAnimation",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.setLerpFrameAnimation",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_SwingAngles",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.swingAngles",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
+        },
+        {
+          "original": "CG_TrailItem",
+          "target_files": [
+            "src/mq3/client/cgame_players.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_players.trailItem",
+          "status": "tested_exact",
+          "scope": "Complete player client-info/model/skin/custom-sound loading, animation and lerp state, angles, tags, flags, tokens, powerups, sprites, shadows, splashes, vertex light and player assembly; unchanged-C decisions, 27 native contracts and all 36 symbols pass. Productive retail snapshots feed a suppressible native player observer."
         }
       ],
       "target": [
-        "src/mq3/format/player_animation.ml"
+        "src/mq3/client/cgame_players.ml",
+        "src/mq3/engine/local_qvm_match.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_cgame_player_lerp.py",
-        "tests/reference/cgame_player_lerp_oracle.c",
-        "tests/cgame_player_lerp_oracle.ml",
-        "tests/cgame_player_lerp_contracts.ml"
+        "scripts/test_cgame_players.py",
+        "tests/reference/cgame_players_oracle.c",
+        "tests/cgame_players_oracle.ml",
+        "tests/cgame_players_contracts.ml",
+        "scripts/test_retail_qvm_match.py"
       ]
     },
     {
@@ -18802,10 +19776,271 @@
         "UI_ShowTierVideo",
         "UI_TierCompleted"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_Alloc",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_Alloc",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_CanShowTierVideo",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_CanShowTierVideo",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_GetArenaInfoByMap",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_GetArenaInfoByMap",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_GetArenaInfoByNumber",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_GetArenaInfoByNumber",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_GetAwardLevel",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_GetAwardLevel",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_GetBestScore",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_GetBestScore",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_GetBotInfoByName",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_GetBotInfoByName",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_GetBotInfoByNumber",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_GetBotInfoByNumber",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_GetCurrentGame",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_GetCurrentGame",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_GetNumArenas",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_GetNumArenas",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_GetNumBots",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_GetNumBots",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_GetNumSPArenas",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_GetNumSPArenas",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_GetNumSPTiers",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_GetNumSPTiers",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_GetSpecialArenaInfo",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_GetSpecialArenaInfo",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_InitGameinfo",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_InitGameinfo",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_InitMemory",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_InitMemory",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_LoadArenas",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_LoadArenas",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_LoadArenasFromFile",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_LoadArenasFromFile",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_LoadBots",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_LoadBots",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_LoadBotsFromFile",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_LoadBotsFromFile",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_LogAwardData",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_LogAwardData",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_NewGame",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_NewGame",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_ParseInfos",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_ParseInfos",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_SPUnlockMedals_f",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_SPUnlockMedals_f",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_SPUnlock_f",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_SPUnlock_f",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_SetBestScore",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_SetBestScore",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_ShowTierVideo",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_ShowTierVideo",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        },
+        {
+          "original": "UI_TierCompleted",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo.UI_TierCompleted",
+          "status": "tested_exact",
+          "scope": "Complete arena/bot pools and parsing, numbering, gametype bits, lookups, scores, awards, tier/video progression, new-game unlocks and gameinfo initialization; 17 unchanged-C records, 42 native contracts and 7 retail contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_gameinfo.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_gameinfo.py",
+        "tests/reference/ui_gameinfo_oracle.c",
+        "tests/ui_gameinfo_oracle.ml",
+        "tests/ui_gameinfo_contracts.ml",
+        "tests/ui_gameinfo_retail_probe.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_ingame.c",
@@ -22723,10 +23958,207 @@
         "R_TakeScreenshot",
         "tga"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "AssertCvarRange",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.assertCvarRange",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "GL_CheckErrors",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.glCheckErrors",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "GL_SetDefaultState",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.glSetDefaultState",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "GetRefAPI",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.getRefAPI",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "GfxInfo_f",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.gfxInfo",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "InitOpenGL",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.initOpenGL",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "RB_TakeScreenshotCmd",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.takeScreenshotCmd",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "RB_TakeScreenshotJPEG",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.rbTakeScreenshotJpeg",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "RE_EndRegistration",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.endRegistration",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "RE_Shutdown",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.shutdown",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "R_GetModeInfo",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.getModeInfo",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "R_Init",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.init",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "R_LevelShot",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.levelShot",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "R_ModeList_f",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.modeList",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "R_Register",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.register",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "R_ScreenShotJPEG_f",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.screenShotJpeg",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "R_ScreenShot_f",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.screenShot",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "R_ScreenshotFilename",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.screenshotFilename",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "R_ScreenshotFilenameJPEG",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.screenshotFilenameJpeg",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "R_TakeScreenshot",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.takeScreenshot",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        },
+        {
+          "original": "tga",
+          "target_files": [
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_init.tga",
+          "status": "tested_exact",
+          "scope": "Complete renderer cvar/command registration, OpenGL initialization/default state, errors, modes, screenshots, levelshots, gfx info, lifecycle and 29-entry GetRefAPI table; unchanged-C decisions, 15 native contracts and all 21 symbols pass."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/tr_init.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_tr_init.py",
+        "tests/reference/tr_init_oracle.c",
+        "tests/tr_init_oracle.ml",
+        "tests/tr_init_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_light.c",
@@ -23507,10 +24939,136 @@
         "R_BuildCloudData",
         "R_InitSkyTexCoords"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "AddSkyPolygon",
+          "target_files": [
+            "src/mq3/renderer/tr_sky.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_sky.addSkyPolygon",
+          "status": "tested_exact",
+          "scope": "Complete six-plane sky clipping, face projection, subdivision grids, outer box, spherical cloud coordinates/data, sun quad and stage orchestration; 62 unchanged-C values and 15 native contracts pass alongside the productive retail sky path."
+        },
+        {
+          "original": "ClearSkyBox",
+          "target_files": [
+            "src/mq3/renderer/tr_sky.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_sky.clearSkyBox",
+          "status": "tested_exact",
+          "scope": "Complete six-plane sky clipping, face projection, subdivision grids, outer box, spherical cloud coordinates/data, sun quad and stage orchestration; 62 unchanged-C values and 15 native contracts pass alongside the productive retail sky path."
+        },
+        {
+          "original": "ClipSkyPolygon",
+          "target_files": [
+            "src/mq3/renderer/tr_sky.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_sky.clipSkyPolygon",
+          "status": "tested_exact",
+          "scope": "Complete six-plane sky clipping, face projection, subdivision grids, outer box, spherical cloud coordinates/data, sun quad and stage orchestration; 62 unchanged-C values and 15 native contracts pass alongside the productive retail sky path."
+        },
+        {
+          "original": "DrawSkyBox",
+          "target_files": [
+            "src/mq3/renderer/tr_sky.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_sky.drawSkyBox",
+          "status": "tested_exact",
+          "scope": "Complete six-plane sky clipping, face projection, subdivision grids, outer box, spherical cloud coordinates/data, sun quad and stage orchestration; 62 unchanged-C values and 15 native contracts pass alongside the productive retail sky path."
+        },
+        {
+          "original": "DrawSkySide",
+          "target_files": [
+            "src/mq3/renderer/tr_sky.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_sky.drawSkySide",
+          "status": "tested_exact",
+          "scope": "Complete six-plane sky clipping, face projection, subdivision grids, outer box, spherical cloud coordinates/data, sun quad and stage orchestration; 62 unchanged-C values and 15 native contracts pass alongside the productive retail sky path."
+        },
+        {
+          "original": "FillCloudBox",
+          "target_files": [
+            "src/mq3/renderer/tr_sky.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_sky.fillCloudBox",
+          "status": "tested_exact",
+          "scope": "Complete six-plane sky clipping, face projection, subdivision grids, outer box, spherical cloud coordinates/data, sun quad and stage orchestration; 62 unchanged-C values and 15 native contracts pass alongside the productive retail sky path."
+        },
+        {
+          "original": "FillCloudySkySide",
+          "target_files": [
+            "src/mq3/renderer/tr_sky.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_sky.fillCloudySkySide",
+          "status": "tested_exact",
+          "scope": "Complete six-plane sky clipping, face projection, subdivision grids, outer box, spherical cloud coordinates/data, sun quad and stage orchestration; 62 unchanged-C values and 15 native contracts pass alongside the productive retail sky path."
+        },
+        {
+          "original": "MakeSkyVec",
+          "target_files": [
+            "src/mq3/renderer/tr_sky.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_sky.makeSkyVec",
+          "status": "tested_exact",
+          "scope": "Complete six-plane sky clipping, face projection, subdivision grids, outer box, spherical cloud coordinates/data, sun quad and stage orchestration; 62 unchanged-C values and 15 native contracts pass alongside the productive retail sky path."
+        },
+        {
+          "original": "RB_ClipSkyPolygons",
+          "target_files": [
+            "src/mq3/renderer/tr_sky.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_sky.rbClipSkyPolygons",
+          "status": "tested_exact",
+          "scope": "Complete six-plane sky clipping, face projection, subdivision grids, outer box, spherical cloud coordinates/data, sun quad and stage orchestration; 62 unchanged-C values and 15 native contracts pass alongside the productive retail sky path."
+        },
+        {
+          "original": "RB_DrawSun",
+          "target_files": [
+            "src/mq3/renderer/tr_sky.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_sky.rbDrawSun",
+          "status": "tested_exact",
+          "scope": "Complete six-plane sky clipping, face projection, subdivision grids, outer box, spherical cloud coordinates/data, sun quad and stage orchestration; 62 unchanged-C values and 15 native contracts pass alongside the productive retail sky path."
+        },
+        {
+          "original": "RB_StageIteratorSky",
+          "target_files": [
+            "src/mq3/renderer/tr_sky.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_sky.rbStageIteratorSky",
+          "status": "tested_exact",
+          "scope": "Complete six-plane sky clipping, face projection, subdivision grids, outer box, spherical cloud coordinates/data, sun quad and stage orchestration; 62 unchanged-C values and 15 native contracts pass alongside the productive retail sky path."
+        },
+        {
+          "original": "R_BuildCloudData",
+          "target_files": [
+            "src/mq3/renderer/tr_sky.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_sky.rBuildCloudData",
+          "status": "tested_exact",
+          "scope": "Complete six-plane sky clipping, face projection, subdivision grids, outer box, spherical cloud coordinates/data, sun quad and stage orchestration; 62 unchanged-C values and 15 native contracts pass alongside the productive retail sky path."
+        },
+        {
+          "original": "R_InitSkyTexCoords",
+          "target_files": [
+            "src/mq3/renderer/tr_sky.ml"
+          ],
+          "target_symbol": "mq3.renderer.tr_sky.rInitSkyTexCoords",
+          "status": "tested_exact",
+          "scope": "Complete six-plane sky clipping, face projection, subdivision grids, outer box, spherical cloud coordinates/data, sun quad and stage orchestration; 62 unchanged-C values and 15 native contracts pass alongside the productive retail sky path."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/tr_sky.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_tr_sky.py",
+        "tests/reference/tr_sky_oracle.c",
+        "tests/tr_sky_oracle.ml",
+        "tests/tr_sky_contracts.ml",
+        "scripts/test_playable_sky.py"
+      ]
     },
     {
       "source": "code/renderer/tr_surface.c",

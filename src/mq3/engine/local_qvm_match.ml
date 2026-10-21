@@ -118,6 +118,7 @@ import mq3.client.cgame_particles as nativeCgameParticles
 import mq3.client.cgame_servercmds as nativeCgameServercmds
 import mq3.client.cgame_main as nativeCgameMain
 import mq3.client.cgame_marks as nativeCgameMarks
+import mq3.client.cgame_players as nativeCgamePlayers
 import mq3.client.key_bindings_config as bindingConfig
 import mq3.client.console_input as consoleInput
 import mq3.client.ui_lan_browser as uiLan
@@ -151,7 +152,7 @@ struct FileCursor data offset end struct
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
 struct RenderView refdef scene end struct
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks end struct
+struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks nativePlayers end struct
 struct Boot game runtime context cgame ui end struct
 struct Snapshot serverTime playerState entities end struct
 
@@ -655,7 +656,7 @@ function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
   uiClient=uiHost.createClientState(uiHost.CA_DISCONNECTED,0,-1,"localhost","","");if uiClient is error then return uiClient end if
   nativeServerCmds=nativeCgameServercmds.create();nativeServerCmds.configstrings=configstrings
   nativeMain=nativeCgameMain.create();nativeMain.configstrings=configstrings
-  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true))
+  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create())
   commands.initCommands(context.commandState);installed=cvarCommands.install(registry,context.commandState);if installed is error then return installed end if
   bindingState=bindingConfig.create(context.cgameKeys);bindingState.printFn=emitPrint;bindingState.printContext=context
   installed=bindingConfig.install(bindingState,context.commandState);if installed is error then return installed end if
@@ -887,6 +888,19 @@ function snapshot(value,clientNum)
   weaponObserved=observeNativeWeapons(context,eventRenderStart,retailActive,result.playerState);if weaponObserved is error then return weaponObserved end if
   entityObserver=context.nativeEntities;entityObserver.time=context.now;entityObserver.gametype=predictionGameType
   entitySnapshot=nativeCgameEnts.Snapshot(result.serverTime,result.playerState,result.entities);entityObserved=nativeCgameEnts.addPacketEntities(entityObserver,entitySnapshot,void,void,retailActive);if entityObserved is error then return entityObserved end if
+  playerObserver=context.nativePlayers;playerObserver.time=context.now;playerObserver.frameTime=50;playerObserver.gametype=predictionGameType;playerObserver.localClientNum=result.playerState.clientNum
+  for each playerState in result.entities
+    if playerState.eType==gameConstants.ET_PLAYER and playerState.clientNum>=0 and playerState.clientNum<nativeCgamePlayers.MAX_CLIENTS and playerObserver.clients[playerState.clientNum].infoValid then
+      player=nativeCgamePlayers.entity(playerState.number,playerState.clientNum);player.eFlags=playerState.eFlags;player.powerups=playerState.powerups;player.legsAnim=playerState.legsAnim;player.torsoAnim=playerState.torsoAnim;player.generic1=playerState.generic1;player.origin=[playerState.pos.trBase[0],playerState.pos.trBase[1],playerState.pos.trBase[2]];player.angles=[playerState.apos.trBase[0],playerState.angles2[1],playerState.apos.trBase[2]]
+      emptyTrace=nativeCgamePlayers.Trace(1.0,[0.0,0.0,0.0],[0.0,0.0,1.0],false,false,0);observed=nativeCgamePlayers.player(playerObserver,player,result.playerState.persistant[gameConstants.PERS_TEAM],emptyTrace,0,0,emptyTrace,retailActive);if observed is error then return observed end if
+    end if
+  end for
+  predictedState=result.playerState
+  if predictedState.clientNum>=0 and predictedState.clientNum<nativeCgamePlayers.MAX_CLIENTS and playerObserver.clients[predictedState.clientNum].infoValid then
+    predictedPlayer=nativeCgamePlayers.entity(predictedState.clientNum,predictedState.clientNum);predictedPlayer.eFlags=predictedState.eFlags;predictedPlayer.legsAnim=predictedState.legsAnim;predictedPlayer.torsoAnim=predictedState.torsoAnim;predictedPlayer.generic1=predictedState.generic1;predictedPlayer.origin=[predictedState.origin[0],predictedState.origin[1],predictedState.origin[2]];predictedPlayer.angles=[predictedState.viewangles[0],predictedState.movementDir,predictedState.viewangles[2]]
+    predictedPlayer.powerups=0;for powerupIndex=0 to len(predictedState.powerups)-1 if predictedState.powerups[powerupIndex]!=0 then predictedPlayer.powerups=predictedPlayer.powerups|(1<<powerupIndex) end if end for
+    predictedTrace=nativeCgamePlayers.Trace(1.0,[0.0,0.0,0.0],[0.0,0.0,1.0],false,false,0);predictedObserved=nativeCgamePlayers.player(playerObserver,predictedPlayer,predictedState.persistant[gameConstants.PERS_TEAM],predictedTrace,0,0,predictedTrace,retailActive);if predictedObserved is error then return predictedObserved end if
+  end if
   nativeCgameLocalents.addLocalEntities(context.nativeLocalEntities,context.now,0,result.playerState.origin)
   viewObserver=context.nativeView;viewObserver.predicted=playerstate.copy(result.playerState);viewObserver.snap=nativeCgameView.snapshot(playerstate.copy(result.playerState),0,[]);viewObserver.viewAngles=[result.playerState.viewangles[0],result.playerState.viewangles[1],result.playerState.viewangles[2]];viewObserver.weaponSelect=result.playerState.weapon
   viewObserved=nativeCgameView.drawActiveFrame(viewObserver,context.now,0,false,retailActive);if viewObserved is error then return viewObserved end if
@@ -1235,6 +1249,13 @@ function bootCgame(value)
   processedSnapshot=context.snapshotNumber-1;if processedSnapshot<0 then processedSnapshot=0 end if
   cgameVm.initialize(client,processedSnapshot,context.cgameServerCommands.lastExecuted,0,0,0)
   nativeInit=nativeCgameMain.init(context.nativeMain,processedSnapshot,context.cgameServerCommands.lastExecuted,0,context.configstrings[nativeCgameMain.CS_GAME_VERSION],640,480,[],true);if nativeInit is error then return nativeInit end if
+  for clientNum=0 to nativeCgamePlayers.MAX_CLIENTS-1
+    playerConfig=context.configstrings[nativeCgameMain.CS_PLAYERS+clientNum]
+    if playerConfig!="" then
+      nativeCgamePlayers.newClientInfo(context.nativePlayers,clientNum,playerConfig,"",true,true);clientInfo=context.nativePlayers.clients[clientNum]
+      if len(clientInfo.animations)==0 then for animationIndex=0 to nativeCgamePlayers.MAX_TOTALANIMATIONS-1 clientInfo.animations=clientInfo.animations+[nativeCgamePlayers.animation(0,1,1,100,100,false,false)] end for end if
+    end if
+  end for
   nativeCgameCommands.syncVmCvars(context.nativeCgameCommands,context.cvars);return client
 end function
 

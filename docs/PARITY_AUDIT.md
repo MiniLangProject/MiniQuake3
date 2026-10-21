@@ -83,6 +83,30 @@ wurde für diesen inkrementellen Block nicht erneut ausgeführt. Das
 Runtime-/Plattforminventar zählt jetzt 36 portierte, 118 partielle und 181
 nicht begonnene Originaldateien.
 
+Der folgende Fünferblock portiert `cg_players.c`, `cg_newdraw.c`,
+`ui_gameinfo.c`, `tr_sky.c` und `tr_init.c`. Spieler-Clientinfos, Modell-/Skin-
+Suche, Animationen, Lerpframes, Tags, Powerups, Flaggen, Schatten und die
+vollständige Spielerassembly liegen damit nativ vor; der produktive Retail-
+Snapshot führt diesen Pfad als unterdrückbaren Begleiter aus und erzeugt fünf
+beobachtete, nicht doppelt ausgegebene Player-Aktionen. Der Missionpack-
+OwnerDraw-Pfad deckt Werte, Sichtbarkeit, Team-/Player-HUD, Orders, Voice,
+Chat und Menüsteuerung ab. Die UI lädt und nummeriert Arenen und Bots aus den
+echten Retail-Dateien und verwaltet Scores, Awards, Tiers und Videos. Der
+Renderer enthält nun die vollständige Sky-Polygonprojektion, sechs Skybox-
+Seiten, Wolkenkoordinaten/-geometrie, Sonne und Stage-Reihenfolge sowie den
+Renderer-Lifecycle mit Cvars, Commands, GL-Defaultzustand, Screenshots,
+Levelshots und der kompletten `GetRefAPI`-Tabelle. 115 Werte und Datensätze aus
+unveränderten C-Funktionen, 144 native Verträge und sieben Retail-Verträge
+prüfen den Block; `pak0.pk3` liefert dabei 30 Arenen, 32 Bots, 24
+Einzelspielerarenen und sechs Tiers. Der frische Hauptbuild hat SHA-256
+`76edc5435dc6d79555b72bd71b5dc0ddc553d7cb67a64fa7d314549230d7f322`; das Retail-QVM-Gate bleibt über acht Frames mit neun
+Prediction-Traces, 2.345 texturierten Dreiecken, 301 Cgame-Assets, 26 Sounds
+und fünf nativen Player-Aktionen grün. Die neuen Fokustests, der Hauptbuild
+und das Retail-QVM-Gate wurden ausgeführt; die vollständige 283-Gate-Auswahl
+wurde für diesen inkrementellen Block nicht erneut ausgeführt. Das
+Runtime-/Plattforminventar zählt jetzt 41 portierte, 117 partielle und 177
+nicht begonnene Originaldateien.
+
 Dieser Vollstand enthält auch die produktive
 `AAS_BestReachableFromJumpPadArea`-Platzierung: benannte Map-Boots laden die
 passende Retail-AAS, `trigger_push`-Ballistik wird 30 Frames gegen die Item-BBox

@@ -14,20 +14,20 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | Bereich | Dateien | Portiert | Teilweise | Nicht begonnen | Original behalten |
 |---|---:|---:|---:|---:|---:|
 | `botlib` | 53 | 5 | 19 | 29 | 0 |
-| `cgame` | 25 | 17 | 2 | 6 | 0 |
+| `cgame` | 25 | 19 | 1 | 5 | 0 |
 | `client` | 19 | 1 | 14 | 4 | 0 |
 | `game` | 65 | 0 | 33 | 32 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
-| `q3_ui` | 47 | 7 | 2 | 38 | 0 |
+| `q3_ui` | 47 | 8 | 2 | 37 | 0 |
 | `qcommon` | 27 | 1 | 17 | 9 | 0 |
-| `renderer` | 27 | 5 | 16 | 6 | 0 |
+| `renderer` | 27 | 7 | 16 | 4 | 0 |
 | `server` | 11 | 0 | 9 | 2 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 0 | 0 | 12 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 0 | 6 | 7 | 0 |
-| **Gesamt** | **335** | **36** | **118** | **181** | **0** |
+| **Gesamt** | **335** | **41** | **117** | **177** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -102,9 +102,9 @@ Teil dieser Tabelle.
 | `code/cgame/cg_localents.c` | `cgame` | `ported` | 20 | 20 | 0 |
 | `code/cgame/cg_main.c` | `cgame` | `ported` | 44 | 44 | 0 |
 | `code/cgame/cg_marks.c` | `cgame` | `ported` | 28 | 28 | 0 |
-| `code/cgame/cg_newdraw.c` | `cgame` | `not_started` | 72 | 0 | 72 |
+| `code/cgame/cg_newdraw.c` | `cgame` | `ported` | 72 | 72 | 0 |
 | `code/cgame/cg_particles.c` | `cgame` | `ported` | 23 | 23 | 0 |
-| `code/cgame/cg_players.c` | `cgame` | `partial` | 36 | 3 | 33 |
+| `code/cgame/cg_players.c` | `cgame` | `ported` | 36 | 36 | 0 |
 | `code/cgame/cg_playerstate.c` | `cgame` | `ported` | 8 | 8 | 0 |
 | `code/cgame/cg_predict.c` | `cgame` | `ported` | 8 | 8 | 0 |
 | `code/cgame/cg_public.h` | `cgame` | `not_started` | 0 | 0 | 0 |
@@ -226,7 +226,7 @@ Teil dieser Tabelle.
 | `code/q3_ui/ui_credits.c` | `q3_ui` | `ported` | 3 | 3 | 0 |
 | `code/q3_ui/ui_demo2.c` | `q3_ui` | `not_started` | 5 | 0 | 5 |
 | `code/q3_ui/ui_display.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
-| `code/q3_ui/ui_gameinfo.c` | `q3_ui` | `not_started` | 28 | 0 | 28 |
+| `code/q3_ui/ui_gameinfo.c` | `q3_ui` | `ported` | 28 | 28 | 0 |
 | `code/q3_ui/ui_ingame.c` | `q3_ui` | `not_started` | 6 | 0 | 6 |
 | `code/q3_ui/ui_loadconfig.c` | `q3_ui` | `not_started` | 4 | 0 | 4 |
 | `code/q3_ui/ui_local.h` | `q3_ui` | `not_started` | 0 | 0 | 0 |
@@ -299,7 +299,7 @@ Teil dieser Tabelle.
 | `code/renderer/tr_flares.c` | `renderer` | `partial` | 6 | 5 | 1 |
 | `code/renderer/tr_font.c` | `renderer` | `partial` | 9 | 1 | 8 |
 | `code/renderer/tr_image.c` | `renderer` | `partial` | 38 | 8 | 30 |
-| `code/renderer/tr_init.c` | `renderer` | `not_started` | 21 | 0 | 21 |
+| `code/renderer/tr_init.c` | `renderer` | `ported` | 21 | 21 | 0 |
 | `code/renderer/tr_light.c` | `renderer` | `partial` | 6 | 4 | 2 |
 | `code/renderer/tr_local.h` | `renderer` | `not_started` | 0 | 0 | 0 |
 | `code/renderer/tr_main.c` | `renderer` | `partial` | 32 | 15 | 17 |
@@ -313,7 +313,7 @@ Teil dieser Tabelle.
 | `code/renderer/tr_shade_calc.c` | `renderer` | `partial` | 32 | 9 | 23 |
 | `code/renderer/tr_shader.c` | `renderer` | `partial` | 34 | 5 | 29 |
 | `code/renderer/tr_shadows.c` | `renderer` | `ported` | 5 | 5 | 0 |
-| `code/renderer/tr_sky.c` | `renderer` | `not_started` | 13 | 0 | 13 |
+| `code/renderer/tr_sky.c` | `renderer` | `ported` | 13 | 13 | 0 |
 | `code/renderer/tr_surface.c` | `renderer` | `partial` | 24 | 16 | 8 |
 | `code/renderer/tr_world.c` | `renderer` | `partial` | 15 | 1 | 14 |
 | `code/server/server.h` | `server` | `partial` | 0 | 0 | 0 |
@@ -432,8 +432,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/botlib/l_utils.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/cg_consolecmds.c` (partial): `CG_Camera_f`, `CG_EditHud_f`, `CG_TeamMenu_f`, `Cmd_Argv`
 - `code/cgame/cg_local.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/cgame/cg_newdraw.c` (not_started): `CG_CheckOrderPending`, `CG_ClientNumFromName`, `CG_Draw1stPlace`, `CG_Draw2ndPlace`, `CG_DrawAreaChat`, `CG_DrawAreaPowerUp`, `CG_DrawAreaSystemChat`, `CG_DrawAreaTeamChat`, `CG_DrawBlueFlagHead`, `CG_DrawBlueFlagName`, `CG_DrawBlueFlagStatus`, `CG_DrawBlueName`, `CG_DrawBlueScore`, `CG_DrawCTFPowerUp`, `CG_DrawCapFragLimit`, `CG_DrawGameStatus`, `CG_DrawGameType`, `CG_DrawKiller`, `CG_DrawMedal`, `CG_DrawNewTeamInfo`, `CG_DrawPlayerAmmoIcon`, `CG_DrawPlayerAmmoValue`, `CG_DrawPlayerArmorIcon`, `CG_DrawPlayerArmorValue`, `CG_DrawPlayerHasFlag`, `CG_DrawPlayerHead`, `CG_DrawPlayerHealth`, `CG_DrawPlayerItem`, `CG_DrawPlayerLocation`, `CG_DrawPlayerScore`, `CG_DrawPlayerStatus`, `CG_DrawRedFlagHead`, `CG_DrawRedFlagName`, `CG_DrawRedFlagStatus`, `CG_DrawRedName`, `CG_DrawRedScore`, `CG_DrawSelectedPlayerArmor`, `CG_DrawSelectedPlayerHead`, `CG_DrawSelectedPlayerHealth`, `CG_DrawSelectedPlayerLocation`, `CG_DrawSelectedPlayerName`, `CG_DrawSelectedPlayerPowerup`, `CG_DrawSelectedPlayerStatus`, `CG_DrawSelectedPlayerWeapon`, `CG_DrawTeamColor`, `CG_DrawTeamSpectators`, `CG_EventHandling`, `CG_GameTypeString`, `CG_GetGameStatusText`, `CG_GetKillerText`, `CG_GetSelectedPlayer`, `CG_GetTeamColor`, `CG_GetValue`, `CG_HarvesterSkulls`, `CG_HideTeamMenu`, `CG_InitTeamChat`, `CG_KeyEvent`, `CG_MouseEvent`, `CG_OneFlagStatus`, `CG_OtherTeamHasFlag`, `CG_OwnerDraw`, `CG_OwnerDrawVisible`, `CG_RunMenuScript`, `CG_SelectNextPlayer`, `CG_SelectPrevPlayer`, `CG_SetPrintString`, `CG_SetSelectedPlayerName`, `CG_ShowResponseHead`, `CG_ShowTeamMenu`, `CG_StatusHandle`, `CG_Text_Paint_Limit`, `CG_YourTeamHasFlag`
-- `code/cgame/cg_players.c` (partial): `CG_AddPainTwitch`, `CG_AddRefEntityWithPowerups`, `CG_BreathPuffs`, `CG_ColorFromString`, `CG_CopyClientInfoModel`, `CG_CustomSound`, `CG_DustTrail`, `CG_FileExists`, `CG_FindClientHeadFile`, `CG_FindClientModelFile`, `CG_HasteTrail`, `CG_LightVerts`, `CG_LoadClientInfo`, `CG_LoadDeferredPlayers`, `CG_NewClientInfo`, `CG_ParseAnimationFile`, `CG_Player`, `CG_PlayerAngles`, `CG_PlayerAnimation`, `CG_PlayerFlag`, `CG_PlayerFloatSprite`, `CG_PlayerPowerups`, `CG_PlayerShadow`, `CG_PlayerSplash`, `CG_PlayerSprites`, `CG_PlayerTokens`, `CG_RegisterClientModelname`, `CG_RegisterClientSkin`, `CG_ResetPlayerEntity`, `CG_ScanForExistingClientInfo`, `CG_SetDeferredClientInfo`, `CG_SwingAngles`, `CG_TrailItem`
 - `code/cgame/cg_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/cg_syscalls.asm` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/cg_syscalls.c` (not_started): `PASSFLOAT`, `dllEntry`, `testPrintFloat`, `testPrintInt`, `trap_AddCommand`, `trap_Argc`, `trap_Args`, `trap_Argv`, `trap_CIN_DrawCinematic`, `trap_CIN_PlayCinematic`, `trap_CIN_RunCinematic`, `trap_CIN_SetExtents`, `trap_CIN_StopCinematic`, `trap_CM_BoxTrace`, `trap_CM_CapsuleTrace`, `trap_CM_InlineModel`, `trap_CM_LoadMap`, `trap_CM_MarkFragments`, `trap_CM_NumInlineModels`, `trap_CM_PointContents`, `trap_CM_TempBoxModel`, `trap_CM_TempCapsuleModel`, `trap_CM_TransformedBoxTrace`, `trap_CM_TransformedCapsuleTrace`, `trap_CM_TransformedPointContents`, `trap_Cvar_Register`, `trap_Cvar_Set`, `trap_Cvar_Update`, `trap_Cvar_VariableStringBuffer`, `trap_Error`, `trap_FS_FCloseFile`, `trap_FS_FOpenFile`, `trap_FS_Read`, `trap_FS_Seek`, `trap_FS_Write`, `trap_GetCurrentCmdNumber`, `trap_GetCurrentSnapshotNumber`, `trap_GetEntityToken`, `trap_GetGameState`, `trap_GetGlconfig`, `trap_GetServerCommand`, `trap_GetSnapshot`, `trap_GetUserCmd`, `trap_Key_GetCatcher`, `trap_Key_GetKey`, `trap_Key_IsDown`, `trap_Key_SetCatcher`, `trap_MemoryRemaining`, `trap_Milliseconds`, `trap_PC_AddGlobalDefine`, `trap_PC_FreeSource`, `trap_PC_LoadSource`, `trap_PC_ReadToken`, `trap_PC_SourceFileAndLine`, `trap_Print`, `trap_R_AddAdditiveLightToScene`, `trap_R_AddLightToScene`, `trap_R_AddPolyToScene`, `trap_R_AddPolysToScene`, `trap_R_AddRefEntityToScene`, `trap_R_ClearScene`, `trap_R_DrawStretchPic`, `trap_R_LerpTag`, `trap_R_LightForPoint`, `trap_R_LoadWorldMap`, `trap_R_ModelBounds`, `trap_R_RegisterFont`, `trap_R_RegisterModel`, `trap_R_RegisterShader`, `trap_R_RegisterShaderNoMip`, `trap_R_RegisterSkin`, `trap_R_RemapShader`, `trap_R_RenderScene`, `trap_R_SetColor`, `trap_R_inPVS`, `trap_RealTime`, `trap_RemoveCommand`, `trap_S_AddLoopingSound`, `trap_S_AddRealLoopingSound`, `trap_S_ClearLoopingSounds`, `trap_S_RegisterSound`, `trap_S_Respatialize`, `trap_S_StartBackgroundTrack`, `trap_S_StartLocalSound`, `trap_S_StartSound`, `trap_S_StopBackgroundTrack`, `trap_S_StopLoopingSound`, `trap_S_UpdateEntityPosition`, `trap_SendClientCommand`, `trap_SendConsoleCommand`, `trap_SetUserCmdValue`, `trap_SnapVector`, `trap_UpdateScreen`, `trap_getCameraInfo`, `trap_loadCamera`, `trap_startCamera`
@@ -546,7 +544,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/q3_ui/ui_connect.c` (partial): `UI_DisplayDownloadInfo`, `UI_KeyConnect`, `UI_PrintTime`, `UI_ReadableSize`
 - `code/q3_ui/ui_controls2.c` (not_started): `Controls_ActionEvent`, `Controls_Cache`, `Controls_DrawKeyBinding`, `Controls_DrawPlayer`, `Controls_GetConfig`, `Controls_GetCvarDefault`, `Controls_GetCvarValue`, `Controls_GetKeyAssignment`, `Controls_InitCvars`, `Controls_InitModel`, `Controls_InitWeapons`, `Controls_MenuEvent`, `Controls_MenuInit`, `Controls_MenuKey`, `Controls_ResetDefaults_Action`, `Controls_ResetDefaults_Draw`, `Controls_SetConfig`, `Controls_SetDefaults`, `Controls_StatusBar`, `Controls_Update`, `Controls_UpdateModel`, `UI_ControlsMenu`
 - `code/q3_ui/ui_demo2.c` (not_started): `Demos_Cache`, `Demos_MenuEvent`, `Demos_MenuInit`, `UI_DemosMenu`, `UI_DemosMenu_Key`
-- `code/q3_ui/ui_gameinfo.c` (not_started): `UI_Alloc`, `UI_CanShowTierVideo`, `UI_GetArenaInfoByMap`, `UI_GetArenaInfoByNumber`, `UI_GetAwardLevel`, `UI_GetBestScore`, `UI_GetBotInfoByName`, `UI_GetBotInfoByNumber`, `UI_GetCurrentGame`, `UI_GetNumArenas`, `UI_GetNumBots`, `UI_GetNumSPArenas`, `UI_GetNumSPTiers`, `UI_GetSpecialArenaInfo`, `UI_InitGameinfo`, `UI_InitMemory`, `UI_LoadArenas`, `UI_LoadArenasFromFile`, `UI_LoadBots`, `UI_LoadBotsFromFile`, `UI_LogAwardData`, `UI_NewGame`, `UI_ParseInfos`, `UI_SPUnlockMedals_f`, `UI_SPUnlock_f`, `UI_SetBestScore`, `UI_ShowTierVideo`, `UI_TierCompleted`
 - `code/q3_ui/ui_ingame.c` (not_started): `InGame_Cache`, `InGame_Event`, `InGame_MenuInit`, `InGame_QuitAction`, `InGame_RestartAction`, `UI_InGameMenu`
 - `code/q3_ui/ui_loadconfig.c` (not_started): `LoadConfig_MenuEvent`, `LoadConfig_MenuInit`, `UI_LoadConfigMenu`, `UI_LoadConfig_Cache`
 - `code/q3_ui/ui_local.h` (not_started): *(Symbolinventar ergänzen)*
@@ -612,7 +609,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/renderer/tr_flares.c` (partial): `R_ClearFlares`
 - `code/renderer/tr_font.c` (partial): `RE_ConstructGlyphInfo`, `R_DoneFreeType`, `R_GetGlyphInfo`, `R_InitFreeType`, `R_RenderGlyph`, `WriteTGA`, `readFloat`, `readInt`
 - `code/renderer/tr_image.c` (partial): `CommaParse`, `GL_TextureMode`, `LoadBMP`, `LoadJPG`, `LoadPCX`, `LoadPCX32`, `RE_RegisterSkin`, `R_BlendOverTexture`, `R_CreateBuiltinImages`, `R_CreateDefaultImage`, `R_CreateDlightImage`, `R_CreateFogImage`, `R_DeleteTextures`, `R_FogFactor`, `R_GammaCorrect`, `R_GetSkinByHandle`, `R_ImageList_f`, `R_InitFogTable`, `R_InitImages`, `R_InitSkins`, `R_LoadImage`, `R_SetColorMappings`, `R_SkinList_f`, `R_SumOfUsedImages`, `SaveJPG`, `Upload32`, `empty_output_buffer`, `init_destination`, `jpegDest`, `term_destination`
-- `code/renderer/tr_init.c` (not_started): `AssertCvarRange`, `GL_CheckErrors`, `GL_SetDefaultState`, `GetRefAPI`, `GfxInfo_f`, `InitOpenGL`, `RB_TakeScreenshotCmd`, `RB_TakeScreenshotJPEG`, `RE_EndRegistration`, `RE_Shutdown`, `R_GetModeInfo`, `R_Init`, `R_LevelShot`, `R_ModeList_f`, `R_Register`, `R_ScreenShotJPEG_f`, `R_ScreenShot_f`, `R_ScreenshotFilename`, `R_ScreenshotFilenameJPEG`, `R_TakeScreenshot`, `tga`
 - `code/renderer/tr_light.c` (partial): `LogLight`, `end`
 - `code/renderer/tr_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_main.c` (partial): `IsMirror`, `R_AddEntitySurfaces`, `R_DebugGraphics`, `R_DebugPolygon`, `R_GenerateDrawSurfs`, `R_MirrorViewBySurface`, `R_PlaneForSurface`, `R_RenderView`, `R_RotateForEntity`, `R_RotateForViewer`, `R_SetupProjection`, `R_SpriteFogNum`, `SetFarClip`, `SurfIsOffscreen`, `myGlMultMatrix`, `qsortFast`, `shortsort`
@@ -622,7 +618,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/renderer/tr_shade.c` (partial): `ComputeTexCoords`, `DrawMultitextured`, `DrawNormals`, `DrawTris`, `ProjectDlightTexture`, `RB_EndSurface`, `RB_FogPass`, `RB_IterateStagesGeneric`, `RB_StageIteratorGeneric`, `RB_StageIteratorLightmappedMultitexture`, `RB_StageIteratorVertexLitTexture`, `R_ArrayElementDiscrete`, `R_DrawElements`, `R_DrawStripElements`
 - `code/renderer/tr_shade_calc.c` (partial): `Autosprite2Deform`, `AutospriteDeform`, `DeformText`, `EvalWaveForm`, `EvalWaveFormClamped`, `GlobalVectorToLocal`, `RB_CalcBulgeVertexes`, `RB_CalcDeformNormals`, `RB_CalcDeformVertexes`, `RB_CalcDiffuseColor`, `RB_CalcEnvironmentTexCoords`, `RB_CalcFogTexCoords`, `RB_CalcMoveVertexes`, `RB_CalcRotateTexCoords`, `RB_CalcScaleTexCoords`, `RB_CalcStretchTexCoords`, `RB_CalcTransformTexCoords`, `RB_CalcTurbulentTexCoords`, `RB_CalcWaveAlpha`, `RB_CalcWaveColor`, `RB_DeformTessGeometry`, `TableForFunc`, `myftol`
 - `code/renderer/tr_shader.c` (partial): `CollapseMultitexture`, `ComputeStageIteratorFunc`, `CreateExternalShaders`, `CreateInternalShaders`, `FixRenderCommandList`, `GeneratePermanentShader`, `NameToAFunc`, `NameToDstBlendMode`, `NameToGenFunc`, `NameToSrcBlendMode`, `ParseDeform`, `ParseSkyParms`, `ParseSort`, `ParseSurfaceParm`, `ParseTexMod`, `ParseVector`, `ParseWaveForm`, `RE_RegisterShaderFromImage`, `RE_RegisterShaderNoMip`, `R_FindShader`, `R_FindShaderByName`, `R_InitShaders`, `R_RemapShader`, `R_ShaderList_f`, `ScanAndLoadShaderFiles`, `SortNewShader`, `VertexLightingCollapse`, `modes`, `valid`
-- `code/renderer/tr_sky.c` (not_started): `AddSkyPolygon`, `ClearSkyBox`, `ClipSkyPolygon`, `DrawSkyBox`, `DrawSkySide`, `FillCloudBox`, `FillCloudySkySide`, `MakeSkyVec`, `RB_ClipSkyPolygons`, `RB_DrawSun`, `RB_StageIteratorSky`, `R_BuildCloudData`, `R_InitSkyTexCoords`
 - `code/renderer/tr_surface.c` (partial): `LodErrorForVolume`, `RB_CheckOverflow`, `RB_SurfaceAxis`, `RB_SurfaceBad`, `RB_SurfaceDisplayList`, `RB_SurfaceEntity`, `RB_SurfaceFlare`, `RB_SurfaceSkip`
 - `code/renderer/tr_world.c` (partial): `R_AddWorldSurface`, `R_AddWorldSurfaces`, `R_ClusterPVS`, `R_CullGrid`, `R_CullSurface`, `R_CullTriSurf`, `R_DlightFace`, `R_DlightGrid`, `R_DlightSurface`, `R_DlightTrisurf`, `R_MarkLeaves`, `R_PointInLeaf`, `R_RecursiveWorldNode`, `R_inPVS`
 - `code/server/server.h` (partial): *(Symbolinventar ergänzen)*

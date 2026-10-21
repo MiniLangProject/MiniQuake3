@@ -82,6 +82,17 @@ Prediction-Traces, 2.345 texturierten Dreiecken, 301 Cgame-Assets und 26
 Sounds. Das Inventar steht bei 36 portierten, 118 partiellen und 181 noch
 nicht begonnenen Runtime-/Plattformdateien; die vollständige 283-Gate-Auswahl
 bleibt der zuletzt dokumentierte Gesamtlauf.
+Der nächste Block schließt `cg_players.c`, `cg_newdraw.c`, `ui_gameinfo.c`,
+`tr_sky.c` und `tr_init.c`. Damit sind Spielerassembly und Animationen, das
+Missionpack-OwnerDraw-HUD, Retail-Arena-/Bot- und SP-Fortschrittsdaten, die
+originale Skybox-/Wolken-/Sonnengeometrie sowie der Renderer-Lifecycle nativ
+abgedeckt. 115 unveränderte C-Werte und -Datensätze, 144 native Verträge und
+sieben Retail-Verträge bestehen. Der produktive Retail-Match führt den neuen
+Player-Pfad unterdrückbar mit und weist fünf beobachtete Aktionen ohne doppelte
+Ausgabe nach. Der frische Build `76edc5435dc6d79555b72bd71b5dc0ddc553d7cb67a64fa7d314549230d7f322` besteht das Retail-QVM-Gate mit
+2.345 texturierten Dreiecken, 301 Cgame-Assets und 26 Sounds. Das Inventar
+steht bei 41 portierten, 117 partiellen und 177 noch nicht begonnenen
+Runtime-/Plattformdateien.
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 
