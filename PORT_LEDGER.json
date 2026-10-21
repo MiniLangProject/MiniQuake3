@@ -19426,10 +19426,124 @@
         "UI_AddBotsMenu_UpEvent",
         "UI_AddBots_Cache"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_AddBotsMenu",
+          "target_files": [
+            "src/mq3/client/ui_add_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_add_bots.addBotsMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_AddBotsMenu_BackEvent",
+          "target_files": [
+            "src/mq3/client/ui_add_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_add_bots.backEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_AddBotsMenu_BotEvent",
+          "target_files": [
+            "src/mq3/client/ui_add_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_add_bots.botEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_AddBotsMenu_DownEvent",
+          "target_files": [
+            "src/mq3/client/ui_add_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_add_bots.downEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_AddBotsMenu_Draw",
+          "target_files": [
+            "src/mq3/client/ui_add_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_add_bots.draw",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_AddBotsMenu_FightEvent",
+          "target_files": [
+            "src/mq3/client/ui_add_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_add_bots.fightEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_AddBotsMenu_GetSortedBotNums",
+          "target_files": [
+            "src/mq3/client/ui_add_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_add_bots.getSortedBotNums",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_AddBotsMenu_Init",
+          "target_files": [
+            "src/mq3/client/ui_add_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_add_bots.init",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_AddBotsMenu_SetBotNames",
+          "target_files": [
+            "src/mq3/client/ui_add_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_add_bots.setBotNames",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_AddBotsMenu_SortCompare",
+          "target_files": [
+            "src/mq3/client/ui_add_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_add_bots.sortCompare",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_AddBotsMenu_UpEvent",
+          "target_files": [
+            "src/mq3/client/ui_add_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_add_bots.upEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_AddBots_Cache",
+          "target_files": [
+            "src/mq3/client/ui_add_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_add_bots.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_add_bots.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_addbots.py",
+        "tests/ui_addbots_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_atoms.c",
@@ -20574,10 +20688,79 @@
         "UI_Mods_MenuInit",
         "UI_Mods_ParseInfos"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_ModsMenu",
+          "target_files": [
+            "src/mq3/client/ui_mods.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mods.open",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_ModsMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_mods.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mods.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_Mods_LoadMods",
+          "target_files": [
+            "src/mq3/client/ui_mods.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mods.loadMods",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_Mods_LoadModsFromFile",
+          "target_files": [
+            "src/mq3/client/ui_mods.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mods.loadModFromFile",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_Mods_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_mods.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mods.event",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_Mods_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_mods.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mods.init",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_Mods_ParseInfos",
+          "target_files": [
+            "src/mq3/client/ui_mods.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mods.parseInfo",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_mods.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_mods.py",
+        "tests/ui_mods_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_network.c",
@@ -21111,10 +21294,70 @@
         "Preferences_SetMenuItems",
         "UI_PreferencesMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Crosshair_Draw",
+          "target_files": [
+            "src/mq3/client/ui_preferences.ml"
+          ],
+          "target_symbol": "mq3.client.ui_preferences.drawCrosshair",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "Preferences_Cache",
+          "target_files": [
+            "src/mq3/client/ui_preferences.ml"
+          ],
+          "target_symbol": "mq3.client.ui_preferences.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "Preferences_Event",
+          "target_files": [
+            "src/mq3/client/ui_preferences.ml"
+          ],
+          "target_symbol": "mq3.client.ui_preferences.event",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "Preferences_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_preferences.ml"
+          ],
+          "target_symbol": "mq3.client.ui_preferences.init",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "Preferences_SetMenuItems",
+          "target_files": [
+            "src/mq3/client/ui_preferences.ml"
+          ],
+          "target_symbol": "mq3.client.ui_preferences.setMenuItems",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_PreferencesMenu",
+          "target_files": [
+            "src/mq3/client/ui_preferences.ml"
+          ],
+          "target_symbol": "mq3.client.ui_preferences.open",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_preferences.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_preferences.py",
+        "tests/ui_preferences_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_qmenu.c",
@@ -21504,10 +21747,106 @@
         "UI_RemoveBotsMenu_UpEvent",
         "UI_RemoveBots_Cache"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_RemoveBotsMenu",
+          "target_files": [
+            "src/mq3/client/ui_remove_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_remove_bots.removeBotsMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 15 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_RemoveBotsMenu_BackEvent",
+          "target_files": [
+            "src/mq3/client/ui_remove_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_remove_bots.backEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 15 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_RemoveBotsMenu_BotEvent",
+          "target_files": [
+            "src/mq3/client/ui_remove_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_remove_bots.botEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 15 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_RemoveBotsMenu_DeleteEvent",
+          "target_files": [
+            "src/mq3/client/ui_remove_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_remove_bots.deleteEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 15 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_RemoveBotsMenu_DownEvent",
+          "target_files": [
+            "src/mq3/client/ui_remove_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_remove_bots.downEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 15 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_RemoveBotsMenu_GetBots",
+          "target_files": [
+            "src/mq3/client/ui_remove_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_remove_bots.getBots",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 15 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_RemoveBotsMenu_Init",
+          "target_files": [
+            "src/mq3/client/ui_remove_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_remove_bots.init",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 15 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_RemoveBotsMenu_SetBotNames",
+          "target_files": [
+            "src/mq3/client/ui_remove_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_remove_bots.setBotNames",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 15 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_RemoveBotsMenu_UpEvent",
+          "target_files": [
+            "src/mq3/client/ui_remove_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_remove_bots.upEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 15 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_RemoveBots_Cache",
+          "target_files": [
+            "src/mq3/client/ui_remove_bots.ml"
+          ],
+          "target_symbol": "mq3.client.ui_remove_bots.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 15 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_remove_bots.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_removebots.py",
+        "tests/ui_removebots_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_saveconfig.c",
@@ -21538,10 +21877,70 @@
         "ServerInfo_MenuKey",
         "UI_ServerInfoMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Favorites_Add",
+          "target_files": [
+            "src/mq3/client/ui_serverinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_serverinfo.Favorites_Add",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ServerInfo_Cache",
+          "target_files": [
+            "src/mq3/client/ui_serverinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_serverinfo.ServerInfo_Cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ServerInfo_Event",
+          "target_files": [
+            "src/mq3/client/ui_serverinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_serverinfo.ServerInfo_Event",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ServerInfo_MenuDraw",
+          "target_files": [
+            "src/mq3/client/ui_serverinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_serverinfo.ServerInfo_MenuDraw",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ServerInfo_MenuKey",
+          "target_files": [
+            "src/mq3/client/ui_serverinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_serverinfo.ServerInfo_MenuKey",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_ServerInfoMenu",
+          "target_files": [
+            "src/mq3/client/ui_serverinfo.ml"
+          ],
+          "target_symbol": "mq3.client.ui_serverinfo.UI_ServerInfoMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 19 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_serverinfo.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_serverinfo.py",
+        "tests/ui_serverinfo_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_servers2.c",
@@ -21572,10 +21971,223 @@
         "Punkbuster_ConfirmEnable",
         "UI_ArenaServersMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "ArenaServers_Cache",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_Compare",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.compare",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_DoRefresh",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.doRefresh",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_Event",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.event",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_Go",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.go",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_Insert",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.insert",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_InsertFavorites",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.insertFavorites",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_LoadFavorites",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.loadFavorites",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_MaxPing",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.maxPing",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_MenuDraw",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.menuDraw",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.menuInit",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_MenuKey",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.menuKey",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_Remove",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.remove",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_SaveChanges",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.saveChanges",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_SetType",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.setType",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_Sort",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.sort",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_StartRefresh",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.startRefresh",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_StopRefresh",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.stopRefresh",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_UpdateMenu",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.updateMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "ArenaServers_UpdatePicture",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.updatePicture",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "Punkbuster_ConfirmDisable",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.confirmDisable",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "Punkbuster_ConfirmEnable",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.confirmEnable",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_ArenaServersMenu",
+          "target_files": [
+            "src/mq3/client/ui_servers2.ml"
+          ],
+          "target_symbol": "mq3.client.ui_servers2.uiArenaServersMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 31 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_servers2.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_servers2.py",
+        "tests/ui_servers2_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_setup.c",
@@ -22782,10 +23394,106 @@
         "UI_TeamOrdersMenu_SetList",
         "UI_TeamOrdersMenu_f"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_TeamOrdersMenu",
+          "target_files": [
+            "src/mq3/client/ui_teamorders.ml"
+          ],
+          "target_symbol": "mq3.client.ui_teamorders.UI_TeamOrdersMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 23 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_TeamOrdersMenu_BackEvent",
+          "target_files": [
+            "src/mq3/client/ui_teamorders.ml"
+          ],
+          "target_symbol": "mq3.client.ui_teamorders.UI_TeamOrdersMenu_BackEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 23 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_TeamOrdersMenu_BuildBotList",
+          "target_files": [
+            "src/mq3/client/ui_teamorders.ml"
+          ],
+          "target_symbol": "mq3.client.ui_teamorders.UI_TeamOrdersMenu_BuildBotList",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 23 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_TeamOrdersMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_teamorders.ml"
+          ],
+          "target_symbol": "mq3.client.ui_teamorders.UI_TeamOrdersMenu_Cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 23 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_TeamOrdersMenu_Init",
+          "target_files": [
+            "src/mq3/client/ui_teamorders.ml"
+          ],
+          "target_symbol": "mq3.client.ui_teamorders.UI_TeamOrdersMenu_Init",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 23 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_TeamOrdersMenu_Key",
+          "target_files": [
+            "src/mq3/client/ui_teamorders.ml"
+          ],
+          "target_symbol": "mq3.client.ui_teamorders.UI_TeamOrdersMenu_Key",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 23 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_TeamOrdersMenu_ListDraw",
+          "target_files": [
+            "src/mq3/client/ui_teamorders.ml"
+          ],
+          "target_symbol": "mq3.client.ui_teamorders.UI_TeamOrdersMenu_ListDraw",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 23 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_TeamOrdersMenu_ListEvent",
+          "target_files": [
+            "src/mq3/client/ui_teamorders.ml"
+          ],
+          "target_symbol": "mq3.client.ui_teamorders.UI_TeamOrdersMenu_ListEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 23 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_TeamOrdersMenu_SetList",
+          "target_files": [
+            "src/mq3/client/ui_teamorders.ml"
+          ],
+          "target_symbol": "mq3.client.ui_teamorders.UI_TeamOrdersMenu_SetList",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 23 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        },
+        {
+          "original": "UI_TeamOrdersMenu_f",
+          "target_files": [
+            "src/mq3/client/ui_teamorders.ml"
+          ],
+          "target_symbol": "mq3.client.ui_teamorders.UI_TeamOrdersMenu_f",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 23 focused contracts; typed host actions preserve original UI, renderer, LAN, cvar and command boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_teamorders.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_teamorders.py",
+        "tests/ui_teamorders_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_video.c",

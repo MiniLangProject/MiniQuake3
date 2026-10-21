@@ -151,6 +151,30 @@ vollständig wiederholt. Die nativen UI-Ausgaben bleiben typisierte,
 unterdrückbare Host-Aktionen; deren vollständiger produktiver Dispatcher ist
 weiter eine offene Integrationsgrenze.
 
+Der folgende UI-/Serverbrowser-Block schließt sieben weitere Originaldateien:
+`ui_servers2.c`, `ui_addbots.c`, `ui_removebots.c`, `ui_teamorders.c`,
+`ui_serverinfo.c`, `ui_preferences.c` und `ui_mods.c`. Der native Browser
+unterstützt nun Localhost, Internet, MPlayer und Favoriten samt fünf
+Sortierungen, Leer-/Voll-/Gametype-Filtern, Ping- und Refreshzuständen,
+Timeouts, Favoritenpersistenz, Auswahl, Connect/Specify/Create/Remove und
+PunkBuster-Dialogen. Die Bot-Menüs verwenden die 32 echten Retail-Bots,
+originale Sortierung, Paging, Teams, Skill/Delay und exakte `addbot`- bzw.
+`clientkick`-Befehle. Teamorders bildet Bot-/Spielerauswahl, CTF-/Teamtexte und
+Voicebefehle ab; Serverinfo erhält geordnete Info-Paare, Refresh und
+Favoritendeduplizierung. Spieloptionen und Modauswahl enthalten alle originalen
+Cvar-Regeln, Crosshairs, die 64er Modgrenze und den `fs_game`-/`vid_restart`-
+Ablauf. 20 Datensätze aus unverändert extrahierten C-Funktionen, zusätzliche
+Serverbrowser-C-Entscheidungsoracles und 129 native Verträge bestehen. Retail-
+Proben bestätigen 32 Bots und 24 verwendete Menü-/Browserassets; beim im
+Retail-Pak fehlenden `pblogo` bleibt der originale `unknownmap`-Fallback aktiv.
+Alle 74 Ledger-Symbole sind zugeordnet. Das Runtime-/Plattforminventar zählt
+jetzt 62 portierte, 117 partielle und 156 nicht begonnene Originaldateien. Die
+sieben neuen Gates sind in `scripts/verify.py` aufgenommen; der Gesamtlauf
+umfasst damit 329 Gates und wurde für diesen inkrementellen Block noch nicht
+vollständig wiederholt. Die produktive Original-UI bleibt aktiv, bis der native
+Hostdispatcher alle typisierten UI-, LAN-, Renderer-, Cvar- und
+Command-Aktionen vollständig ausführt.
+
 Dieser Vollstand enthält auch die produktive
 `AAS_BestReachableFromJumpPadArea`-Platzierung: benannte Map-Boots laden die
 passende Retail-AAS, `trigger_push`-Ballistik wird 30 Frames gegen die Item-BBox

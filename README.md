@@ -122,6 +122,19 @@ und 26 Sounds grün. Die acht Fokustests sind in `scripts/verify.py` aufgenommen
 der jetzt 322 Gates umfassende Gesamtlauf ist für diesen Block noch nicht
 vollständig erneut ausgeführt. Der produktive Dispatcher für die typisierten
 nativen UI-Aktionen bleibt offen.
+Der nächste UI-Block portiert `ui_servers2.c`, `ui_addbots.c`,
+`ui_removebots.c`, `ui_teamorders.c`, `ui_serverinfo.c`, `ui_preferences.c`
+und `ui_mods.c`. Damit liegen Serverbrowser und Favoriten, vollständige
+Ping-/Refresh-/Filterabläufe, Bot hinzufügen/entfernen, Teamorders, Serverinfo,
+Spieloptionen und Modauswahl nativ vor. 20 unveränderte C-Datensätze,
+zusätzliche Browser-Entscheidungsoracles und 129 Verträge bestehen; Retail-
+Proben bestätigen 32 Bots sowie 24 Menü-/Browserassets. Alle 74
+Originalsymbole sind zugeordnet. Das Inventar steht jetzt bei 62 portierten,
+117 partiellen und 156 noch nicht begonnenen Runtime-/Plattformdateien. Die
+sieben Gates sind in die Gesamtprüfung aufgenommen, die damit 329 Gates
+umfasst; der vollständige Lauf wurde nach diesem inkrementellen Block noch
+nicht wiederholt. Der native Hostdispatcher bleibt die nächste UI-
+Integrationsgrenze.
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 
