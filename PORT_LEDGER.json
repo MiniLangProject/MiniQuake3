@@ -21016,10 +21016,216 @@
         "UI_SPLevelMenu_SetMenuItems",
         "UI_SPLevelMenu_f"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "PlayerIcon",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.playerIcon",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "PlayerIconHandle",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.playerIconHandle",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.spLevelMenu",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_AwardEvent",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.awardEvent",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_BackEvent",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.backEvent",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.cache",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_CustomEvent",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.customEvent",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_Init",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.init",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_LeftArrowEvent",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.leftArrowEvent",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_LevelEvent",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.levelEvent",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_MenuDraw",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.menuDraw",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_NextEvent",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.nextEvent",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_PlayerEvent",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.playerEvent",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_ReInit",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.reInit",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_ResetAction",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.resetAction",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_ResetDraw",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.resetDraw",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_ResetEvent",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.resetEvent",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_RightArrowEvent",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.rightArrowEvent",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_SetBots",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.setBots",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_SetMenuArena",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.setMenuArena",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_SetMenuItems",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.setMenuItems",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        },
+        {
+          "original": "UI_SPLevelMenu_f",
+          "target_files": [
+            "src/mq3/client/ui_sp_level.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_level.spLevelMenuF",
+          "status": "tested_exact",
+          "scope": "Complete tier/training/final selection, arena locks, bot/player icons, levelshots, scores, medals, navigation, reset/confirm flow, cache and host actions; 7 unchanged-C records and 35 native contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_sp_level.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_sp_level.py",
+        "tests/reference/ui_sp_level_oracle.c",
+        "tests/ui_sp_level_oracle.ml",
+        "tests/ui_sp_level_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_sppostgame.c",
@@ -21039,10 +21245,126 @@
         "UI_SPPostgameMenu_NextEvent",
         "UI_SPPostgameMenu_f"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Prepname",
+          "target_files": [
+            "src/mq3/client/ui_sppostgame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sppostgame.Prepname",
+          "status": "tested_exact",
+          "scope": "Complete postgame argument, score and award persistence, phases, podium, scoreboard, sounds, cinematics and all next/replay/menu input routes; 9 unchanged-C records and 40 native contracts pass."
+        },
+        {
+          "original": "UI_SPPostgameMenu_AgainEvent",
+          "target_files": [
+            "src/mq3/client/ui_sppostgame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sppostgame.UI_SPPostgameMenu_AgainEvent",
+          "status": "tested_exact",
+          "scope": "Complete postgame argument, score and award persistence, phases, podium, scoreboard, sounds, cinematics and all next/replay/menu input routes; 9 unchanged-C records and 40 native contracts pass."
+        },
+        {
+          "original": "UI_SPPostgameMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_sppostgame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sppostgame.UI_SPPostgameMenu_Cache",
+          "status": "tested_exact",
+          "scope": "Complete postgame argument, score and award persistence, phases, podium, scoreboard, sounds, cinematics and all next/replay/menu input routes; 9 unchanged-C records and 40 native contracts pass."
+        },
+        {
+          "original": "UI_SPPostgameMenu_DrawAwardsMedals",
+          "target_files": [
+            "src/mq3/client/ui_sppostgame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sppostgame.UI_SPPostgameMenu_DrawAwardsMedals",
+          "status": "tested_exact",
+          "scope": "Complete postgame argument, score and award persistence, phases, podium, scoreboard, sounds, cinematics and all next/replay/menu input routes; 9 unchanged-C records and 40 native contracts pass."
+        },
+        {
+          "original": "UI_SPPostgameMenu_DrawAwardsPresentation",
+          "target_files": [
+            "src/mq3/client/ui_sppostgame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sppostgame.UI_SPPostgameMenu_DrawAwardsPresentation",
+          "status": "tested_exact",
+          "scope": "Complete postgame argument, score and award persistence, phases, podium, scoreboard, sounds, cinematics and all next/replay/menu input routes; 9 unchanged-C records and 40 native contracts pass."
+        },
+        {
+          "original": "UI_SPPostgameMenu_Init",
+          "target_files": [
+            "src/mq3/client/ui_sppostgame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sppostgame.UI_SPPostgameMenu_Init",
+          "status": "tested_exact",
+          "scope": "Complete postgame argument, score and award persistence, phases, podium, scoreboard, sounds, cinematics and all next/replay/menu input routes; 9 unchanged-C records and 40 native contracts pass."
+        },
+        {
+          "original": "UI_SPPostgameMenu_MenuDraw",
+          "target_files": [
+            "src/mq3/client/ui_sppostgame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sppostgame.UI_SPPostgameMenu_MenuDraw",
+          "status": "tested_exact",
+          "scope": "Complete postgame argument, score and award persistence, phases, podium, scoreboard, sounds, cinematics and all next/replay/menu input routes; 9 unchanged-C records and 40 native contracts pass."
+        },
+        {
+          "original": "UI_SPPostgameMenu_MenuDrawScoreLine",
+          "target_files": [
+            "src/mq3/client/ui_sppostgame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sppostgame.UI_SPPostgameMenu_MenuDrawScoreLine",
+          "status": "tested_exact",
+          "scope": "Complete postgame argument, score and award persistence, phases, podium, scoreboard, sounds, cinematics and all next/replay/menu input routes; 9 unchanged-C records and 40 native contracts pass."
+        },
+        {
+          "original": "UI_SPPostgameMenu_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_sppostgame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sppostgame.UI_SPPostgameMenu_MenuEvent",
+          "status": "tested_exact",
+          "scope": "Complete postgame argument, score and award persistence, phases, podium, scoreboard, sounds, cinematics and all next/replay/menu input routes; 9 unchanged-C records and 40 native contracts pass."
+        },
+        {
+          "original": "UI_SPPostgameMenu_MenuKey",
+          "target_files": [
+            "src/mq3/client/ui_sppostgame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sppostgame.UI_SPPostgameMenu_MenuKey",
+          "status": "tested_exact",
+          "scope": "Complete postgame argument, score and award persistence, phases, podium, scoreboard, sounds, cinematics and all next/replay/menu input routes; 9 unchanged-C records and 40 native contracts pass."
+        },
+        {
+          "original": "UI_SPPostgameMenu_NextEvent",
+          "target_files": [
+            "src/mq3/client/ui_sppostgame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sppostgame.UI_SPPostgameMenu_NextEvent",
+          "status": "tested_exact",
+          "scope": "Complete postgame argument, score and award persistence, phases, podium, scoreboard, sounds, cinematics and all next/replay/menu input routes; 9 unchanged-C records and 40 native contracts pass."
+        },
+        {
+          "original": "UI_SPPostgameMenu_f",
+          "target_files": [
+            "src/mq3/client/ui_sppostgame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sppostgame.UI_SPPostgameMenu_f",
+          "status": "tested_exact",
+          "scope": "Complete postgame argument, score and award persistence, phases, podium, scoreboard, sounds, cinematics and all next/replay/menu input routes; 9 unchanged-C records and 40 native contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_sppostgame.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_sppostgame.py",
+        "tests/reference/ui_sppostgame_oracle.c",
+        "tests/ui_sppostgame_oracle.ml",
+        "tests/ui_sppostgame_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_spreset.c",
@@ -21055,10 +21377,63 @@
         "Reset_MenuKey",
         "UI_ResetMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Reset_Cache",
+          "target_files": [
+            "src/mq3/client/ui_spreset.ml"
+          ],
+          "target_symbol": "mq3.client.ui_spreset.Reset_Cache",
+          "status": "tested_exact",
+          "scope": "Complete reset layout, overlay mode, focus, shortcuts, activation, progress clearing and level-menu restart; 7 unchanged-C records and 16 native contracts pass."
+        },
+        {
+          "original": "Reset_MenuDraw",
+          "target_files": [
+            "src/mq3/client/ui_spreset.ml"
+          ],
+          "target_symbol": "mq3.client.ui_spreset.Reset_MenuDraw",
+          "status": "tested_exact",
+          "scope": "Complete reset layout, overlay mode, focus, shortcuts, activation, progress clearing and level-menu restart; 7 unchanged-C records and 16 native contracts pass."
+        },
+        {
+          "original": "Reset_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_spreset.ml"
+          ],
+          "target_symbol": "mq3.client.ui_spreset.Reset_MenuEvent",
+          "status": "tested_exact",
+          "scope": "Complete reset layout, overlay mode, focus, shortcuts, activation, progress clearing and level-menu restart; 7 unchanged-C records and 16 native contracts pass."
+        },
+        {
+          "original": "Reset_MenuKey",
+          "target_files": [
+            "src/mq3/client/ui_spreset.ml"
+          ],
+          "target_symbol": "mq3.client.ui_spreset.Reset_MenuKey",
+          "status": "tested_exact",
+          "scope": "Complete reset layout, overlay mode, focus, shortcuts, activation, progress clearing and level-menu restart; 7 unchanged-C records and 16 native contracts pass."
+        },
+        {
+          "original": "UI_ResetMenu",
+          "target_files": [
+            "src/mq3/client/ui_spreset.ml"
+          ],
+          "target_symbol": "mq3.client.ui_spreset.UI_ResetMenu",
+          "status": "tested_exact",
+          "scope": "Complete reset layout, overlay mode, focus, shortcuts, activation, progress clearing and level-menu restart; 7 unchanged-C records and 16 native contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_spreset.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_spreset.py",
+        "tests/reference/ui_spreset_oracle.c",
+        "tests/ui_spreset_oracle.ml",
+        "tests/ui_spreset_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_spskill.c",
@@ -21074,10 +21449,88 @@
         "UI_SPSkillMenu_Key",
         "UI_SPSkillMenu_SkillEvent"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "SetSkillColor",
+          "target_files": [
+            "src/mq3/client/ui_sp_skill.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_skill.setSkillColor",
+          "status": "tested_exact",
+          "scope": "Complete difficulty menu topology, clamped skill state, selected colors and pictures, cvar writes, announcer sounds, default-key/back behavior and SP arena start; 10 native contracts pass."
+        },
+        {
+          "original": "UI_SPSkillMenu",
+          "target_files": [
+            "src/mq3/client/ui_sp_skill.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_skill.open",
+          "status": "tested_exact",
+          "scope": "Complete difficulty menu topology, clamped skill state, selected colors and pictures, cvar writes, announcer sounds, default-key/back behavior and SP arena start; 10 native contracts pass."
+        },
+        {
+          "original": "UI_SPSkillMenu_BackEvent",
+          "target_files": [
+            "src/mq3/client/ui_sp_skill.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_skill.backEvent",
+          "status": "tested_exact",
+          "scope": "Complete difficulty menu topology, clamped skill state, selected colors and pictures, cvar writes, announcer sounds, default-key/back behavior and SP arena start; 10 native contracts pass."
+        },
+        {
+          "original": "UI_SPSkillMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_sp_skill.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_skill.cache",
+          "status": "tested_exact",
+          "scope": "Complete difficulty menu topology, clamped skill state, selected colors and pictures, cvar writes, announcer sounds, default-key/back behavior and SP arena start; 10 native contracts pass."
+        },
+        {
+          "original": "UI_SPSkillMenu_FightEvent",
+          "target_files": [
+            "src/mq3/client/ui_sp_skill.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_skill.fightEvent",
+          "status": "tested_exact",
+          "scope": "Complete difficulty menu topology, clamped skill state, selected colors and pictures, cvar writes, announcer sounds, default-key/back behavior and SP arena start; 10 native contracts pass."
+        },
+        {
+          "original": "UI_SPSkillMenu_Init",
+          "target_files": [
+            "src/mq3/client/ui_sp_skill.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_skill.init",
+          "status": "tested_exact",
+          "scope": "Complete difficulty menu topology, clamped skill state, selected colors and pictures, cvar writes, announcer sounds, default-key/back behavior and SP arena start; 10 native contracts pass."
+        },
+        {
+          "original": "UI_SPSkillMenu_Key",
+          "target_files": [
+            "src/mq3/client/ui_sp_skill.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_skill.key",
+          "status": "tested_exact",
+          "scope": "Complete difficulty menu topology, clamped skill state, selected colors and pictures, cvar writes, announcer sounds, default-key/back behavior and SP arena start; 10 native contracts pass."
+        },
+        {
+          "original": "UI_SPSkillMenu_SkillEvent",
+          "target_files": [
+            "src/mq3/client/ui_sp_skill.ml"
+          ],
+          "target_symbol": "mq3.client.ui_sp_skill.skillEvent",
+          "status": "tested_exact",
+          "scope": "Complete difficulty menu topology, clamped skill state, selected colors and pictures, cvar writes, announcer sounds, default-key/back behavior and SP arena start; 10 native contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_sp_skill.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_sp_skill.py",
+        "tests/ui_sp_skill_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_startserver.c",
@@ -21121,10 +21574,342 @@
         "UI_ServerOptionsMenu",
         "UI_StartServerMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "BotAlreadySelected",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.botAlreadySelected",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "GametypeBits",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.gametypeBits",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "PlayerName_Draw",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.playerNameDraw",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "ServerOptions_Cache",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.serverOptionsCache",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "ServerOptions_Event",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.serverOptionsEvent",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "ServerOptions_InitBotNames",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.serverOptionsInitBotNames",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "ServerOptions_InitPlayerItems",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.serverOptionsInitPlayerItems",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "ServerOptions_LevelshotDraw",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.serverOptionsLevelshotDraw",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "ServerOptions_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.serverOptionsMenuInit",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "ServerOptions_PlayerNameEvent",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.serverOptionsPlayerNameEvent",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "ServerOptions_SetMenuItems",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.serverOptionsSetMenuItems",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "ServerOptions_SetPlayerItems",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.serverOptionsSetPlayerItems",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "ServerOptions_Start",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.serverOptionsStart",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "ServerOptions_StatusBar",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.serverOptionsStatusBar",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "ServerPlayerIcon",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.serverPlayerIcon",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "StartServer_Cache",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.startServerCache",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "StartServer_GametypeEvent",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.startServerGametypeEvent",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "StartServer_LevelshotDraw",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.startServerLevelshotDraw",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "StartServer_MapEvent",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.startServerMapEvent",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "StartServer_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.startServerMenuEvent",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "StartServer_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.startServerMenuInit",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "StartServer_Update",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.startServerUpdate",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "UI_BotSelectMenu",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.uiBotSelectMenu",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "UI_BotSelectMenu_BackEvent",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.botSelectBackEvent",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "UI_BotSelectMenu_BotEvent",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.botSelectBotEvent",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "UI_BotSelectMenu_BuildList",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.botSelectBuildList",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "UI_BotSelectMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.botSelectCache",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "UI_BotSelectMenu_Default",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.botSelectDefault",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "UI_BotSelectMenu_Init",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.botSelectInit",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "UI_BotSelectMenu_LeftEvent",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.botSelectLeftEvent",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "UI_BotSelectMenu_RightEvent",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.botSelectRightEvent",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "UI_BotSelectMenu_SelectEvent",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.botSelectSelectEvent",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "UI_BotSelectMenu_SortCompare",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.botSortCompare",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "UI_BotSelectMenu_UpdateGrid",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.botSelectUpdateGrid",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "UI_ServerOptionsMenu",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.uiServerOptionsMenu",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        },
+        {
+          "original": "UI_StartServerMenu",
+          "target_files": [
+            "src/mq3/client/ui_start_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_start_server.uiStartServerMenu",
+          "status": "tested_exact",
+          "scope": "All map/gametype filtering, server/bot/team slots, cvar persistence, server start commands, bot sorting/paging/selection, icon fallback and suppressible host actions; 3 unchanged-C decision oracles and 17 native contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_start_server.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_start_server.py",
+        "tests/reference/ui_start_server_oracle.c",
+        "tests/ui_start_server_oracle.ml",
+        "tests/ui_start_server_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_team.c",
@@ -21136,10 +21921,52 @@
         "TeamMain_MenuInit",
         "UI_TeamMainMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "TeamMain_Cache",
+          "target_files": [
+            "src/mq3/client/ui_team.ml"
+          ],
+          "target_symbol": "mq3.client.ui_team.cache",
+          "status": "tested_exact",
+          "scope": "Complete team menu topology, gametype-dependent disabled states, red/blue/free/spectator command dispatch, force-menu-off behavior and shader cache; 9 native contracts pass."
+        },
+        {
+          "original": "TeamMain_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_team.ml"
+          ],
+          "target_symbol": "mq3.client.ui_team.event",
+          "status": "tested_exact",
+          "scope": "Complete team menu topology, gametype-dependent disabled states, red/blue/free/spectator command dispatch, force-menu-off behavior and shader cache; 9 native contracts pass."
+        },
+        {
+          "original": "TeamMain_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_team.ml"
+          ],
+          "target_symbol": "mq3.client.ui_team.init",
+          "status": "tested_exact",
+          "scope": "Complete team menu topology, gametype-dependent disabled states, red/blue/free/spectator command dispatch, force-menu-off behavior and shader cache; 9 native contracts pass."
+        },
+        {
+          "original": "UI_TeamMainMenu",
+          "target_files": [
+            "src/mq3/client/ui_team.ml"
+          ],
+          "target_symbol": "mq3.client.ui_team.open",
+          "status": "tested_exact",
+          "scope": "Complete team menu topology, gametype-dependent disabled states, red/blue/free/spectator command dispatch, force-menu-off behavior and shader cache; 9 native contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_team.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_team.py",
+        "tests/ui_team_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_teamorders.c",

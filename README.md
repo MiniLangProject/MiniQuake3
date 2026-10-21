@@ -43,13 +43,12 @@ sind vorhanden. Der produktive Botlib-Pfad lädt und speichert nun validierte `.
 Routingcaches mit Originalidentität, Area-/Cluster-CRC und zeigerfreiem Nutzinhalt.
 Offen bleibt die noch kompaktere interne Reachability-Ablage.
 
-Der aktuelle Retail-Gesamtlauf vom 21. Oktober 2026 besteht alle **283 Gates**
-von `python scripts/verify.py --data-root D:/Quake3`. Der geprüfte
-Vollstand hatte SHA-256
-`46e3c7a61bab2830c5a315c234e2c166f10ee7624d6314a060bb7f2f0969ea12`;
-der anschließend mit den unten genannten nativen Cgame-Ports frisch gebaute
-`build/MiniQuake3.exe` hat SHA-256
-`4c33d861d9b88458d1ea83e997806f77ed1e6058ae73f5839d2d8ac85c5af640`.
+Der aktuelle Retail-Gesamtlauf vom 22. Oktober 2026 besteht alle **314 Gates**
+von `python scripts/verify.py --data-root D:/Quake3`. Der dabei frisch gebaute
+`build/MiniQuake3.exe`-Vollstand hat SHA-256
+`76edc5435dc6d79555b72bd71b5dc0ddc553d7cb67a64fa7d314549230d7f322`;
+das zugehörige `build/verification.json` hat SHA-256
+`d74e92a4c2a45bdd51b3c300125f29c373554bb781e58a4f4ba1ede0abefcd3d`.
 Seit diesem Gesamtlauf bestehen zusätzlich die neuen `cg_event.c`-,
 `cg_playerstate.c`- und `cg_predict.c`-Differentialgates mit 29 unveränderten
 C-Datensätzen und 139 nativen Verträgen. Jetzt sind auch `cg_effects.c`,
@@ -93,6 +92,20 @@ Ausgabe nach. Der frische Build `76edc5435dc6d79555b72bd71b5dc0ddc553d7cb67a64fa
 2.345 texturierten Dreiecken, 301 Cgame-Assets und 26 Sounds. Das Inventar
 steht bei 41 portierten, 117 partiellen und 177 noch nicht begonnenen
 Runtime-/Plattformdateien.
+Der aktuelle UI-Block schließt sechs weitere Originaldateien:
+`ui_startserver.c`, `ui_splevel.c`, `ui_sppostgame.c`, `ui_spreset.c`,
+`ui_spskill.c` und `ui_team.c`. Damit sind Map-/Gametype- und Serveroptionen,
+Bot-Auswahl, die komplette Einzelspieler-Level-, Schwierigkeits-, Reset- und
+Postgame-Folge sowie der Teamwechsel nativ abgebildet. 37 Datensätze aus
+unverändert extrahiertem C und 127 native Verhaltensverträge bestehen; alle
+87 Originalfunktionen sind im Ledger zugeordnet. Die produktive Retail-QVM
+bleibt über acht Frames mit 2.345 texturierten Dreiecken, 301 Cgame-Assets und
+26 Sounds grün. Die nativen UI-Module liefern typisierte, unterdrückbare Host-
+Aktionen; deren vollständiger Dispatcher ist die nächste Integrationsgrenze.
+Das Runtime-/Plattforminventar steht nun bei 47 portierten, 117 partiellen und
+171 noch nicht begonnenen Originaldateien. Die sechs Fokustests sind in die
+Gesamtprüfung aufgenommen; der vollständige Retail-Gesamtlauf mit jetzt 314
+Gates besteht.
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 

@@ -1,16 +1,16 @@
 # MiniQuake3: überprüfter Stand
 
-Stand: 2026-10-21. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist spielbar**.
+Stand: 2026-10-22. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
-Die zuletzt vollständig ausgeführte Retail-Prüfauswahl umfasste **283 Gates**
+Die zuletzt vollständig ausgeführte Retail-Prüfauswahl umfasste **314 Gates**
 (`python scripts/verify.py --data-root D:/Quake3`) und bestand vollständig am
-21. Oktober 2026 mit dem eingebundenen Retail-`pak0.pk3`. Der dabei frisch
+22. Oktober 2026 mit dem eingebundenen Retail-`pak0.pk3`. Der dabei frisch
 gebaute `MiniQuake3.exe`-Build hat SHA-256
-`46e3c7a61bab2830c5a315c234e2c166f10ee7624d6314a060bb7f2f0969ea12`,
+`76edc5435dc6d79555b72bd71b5dc0ddc553d7cb67a64fa7d314549230d7f322`,
 das zugehörige `build/verification.json` SHA-256
-`0289c4288549e120bdd3ff4b4139a5b516ab79bdecf78dec504d5a3e7e9f18fc`.
+`d74e92a4c2a45bdd51b3c300125f29c373554bb781e58a4f4ba1ede0abefcd3d`.
 Der Lauf enthält den zusammenhängenden Retail-qagame/cgame/ui-Boot mit neun
 Prediction-Traces, 2.345 vollständig texturierten Szenendreiecken, 17
 Renderpässen, 26 Soundbefehlen und interaktiver Original-UI sowie den
@@ -105,6 +105,26 @@ und fünf nativen Player-Aktionen grün. Die neuen Fokustests, der Hauptbuild
 und das Retail-QVM-Gate wurden ausgeführt; die vollständige 283-Gate-Auswahl
 wurde für diesen inkrementellen Block nicht erneut ausgeführt. Das
 Runtime-/Plattforminventar zählt jetzt 41 portierte, 117 partielle und 177
+nicht begonnene Originaldateien.
+
+Der folgende native UI-Block schließt `ui_startserver.c`, `ui_splevel.c`,
+`ui_sppostgame.c`, `ui_spreset.c`, `ui_spskill.c` und `ui_team.c` vollständig.
+Map- und Gametype-Filter, Server- und Botoptionen, Spieler-/Teamslots,
+Bot-Sortierung und Paging, Level-/Tierauswahl, Training und Finale, Scores,
+Medaillen, Podium und Postgame-Phasen, Reset, Schwierigkeitswahl und
+Teamwechsel sind damit als MiniLang-Zustandsmaschinen vorhanden. 37
+Datensätze aus unverändert extrahierten C-Funktionen und 127 native Verträge
+bestehen; alle 87 Ledger-Symbole sind zugeordnet. Der Hauptbuild bleibt bei
+SHA-256 `76edc5435dc6d79555b72bd71b5dc0ddc553d7cb67a64fa7d314549230d7f322`;
+das Retail-QVM-Match besteht weiterhin mit neun Prediction-Traces, 2.345
+texturierten Dreiecken, 301 Cgame-Assets und 26 Sounds. Die nativen Module
+geben Renderer-, Audio-, Cvar-, Command- und Menüoperationen als typisierte,
+unterdrückbare Host-Aktionen aus. Deren vollständige produktive Ausführung ist
+weiter offen; bei aktiver Retail-UI entstehen keine doppelten Ausgaben. Die
+sechs Fokustests sind in `scripts/verify.py` aufgenommen. Der vollständige
+Retail-Gesamtlauf mit jetzt 314 Gates besteht einschließlich Retail-QVM,
+512-Frame-Botlauf, aller 31 Karten sowie Windows-Grafik- und Audiogrenzen. Das
+Runtime-/Plattforminventar zählt jetzt 47 portierte, 117 partielle und 171
 nicht begonnene Originaldateien.
 
 Dieser Vollstand enthält auch die produktive

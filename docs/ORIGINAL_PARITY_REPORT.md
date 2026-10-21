@@ -19,7 +19,7 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `game` | 65 | 0 | 33 | 32 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
-| `q3_ui` | 47 | 8 | 2 | 37 | 0 |
+| `q3_ui` | 47 | 14 | 2 | 31 | 0 |
 | `qcommon` | 27 | 1 | 17 | 9 | 0 |
 | `renderer` | 27 | 7 | 16 | 4 | 0 |
 | `server` | 11 | 0 | 9 | 2 | 0 |
@@ -27,7 +27,7 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `ui` | 12 | 0 | 0 | 12 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 0 | 6 | 7 | 0 |
-| **Gesamt** | **335** | **41** | **117** | **177** | **0** |
+| **Gesamt** | **335** | **47** | **117** | **171** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -254,12 +254,12 @@ Teil dieser Tabelle.
 | `code/q3_ui/ui_sparena.c` | `q3_ui` | `ported` | 1 | 1 | 0 |
 | `code/q3_ui/ui_specifyleague.c` | `q3_ui` | `not_started` | 5 | 0 | 5 |
 | `code/q3_ui/ui_specifyserver.c` | `q3_ui` | `not_started` | 4 | 0 | 4 |
-| `code/q3_ui/ui_splevel.c` | `q3_ui` | `not_started` | 22 | 0 | 22 |
-| `code/q3_ui/ui_sppostgame.c` | `q3_ui` | `not_started` | 12 | 0 | 12 |
-| `code/q3_ui/ui_spreset.c` | `q3_ui` | `not_started` | 5 | 0 | 5 |
-| `code/q3_ui/ui_spskill.c` | `q3_ui` | `not_started` | 8 | 0 | 8 |
-| `code/q3_ui/ui_startserver.c` | `q3_ui` | `not_started` | 36 | 0 | 36 |
-| `code/q3_ui/ui_team.c` | `q3_ui` | `not_started` | 4 | 0 | 4 |
+| `code/q3_ui/ui_splevel.c` | `q3_ui` | `ported` | 22 | 22 | 0 |
+| `code/q3_ui/ui_sppostgame.c` | `q3_ui` | `ported` | 12 | 12 | 0 |
+| `code/q3_ui/ui_spreset.c` | `q3_ui` | `ported` | 5 | 5 | 0 |
+| `code/q3_ui/ui_spskill.c` | `q3_ui` | `ported` | 8 | 8 | 0 |
+| `code/q3_ui/ui_startserver.c` | `q3_ui` | `ported` | 36 | 36 | 0 |
+| `code/q3_ui/ui_team.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
 | `code/q3_ui/ui_teamorders.c` | `q3_ui` | `not_started` | 10 | 0 | 10 |
 | `code/q3_ui/ui_video.c` | `q3_ui` | `not_started` | 15 | 0 | 15 |
 | `code/qcommon/cm_load.c` | `qcommon` | `partial` | 28 | 18 | 10 |
@@ -566,12 +566,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/q3_ui/ui_signup.c` (not_started): `Signup_Cache`, `Signup_MenuEvent`, `Signup_MenuInit`, `UI_SignupMenu`
 - `code/q3_ui/ui_specifyleague.c` (not_started): `SpecifyLeague_Cache`, `SpecifyLeague_Event`, `SpecifyLeague_GetList`, `SpecifyLeague_MenuInit`, `UI_SpecifyLeagueMenu`
 - `code/q3_ui/ui_specifyserver.c` (not_started): `SpecifyServer_Cache`, `SpecifyServer_Event`, `SpecifyServer_MenuInit`, `UI_SpecifyServerMenu`
-- `code/q3_ui/ui_splevel.c` (not_started): `PlayerIcon`, `PlayerIconHandle`, `UI_SPLevelMenu`, `UI_SPLevelMenu_AwardEvent`, `UI_SPLevelMenu_BackEvent`, `UI_SPLevelMenu_Cache`, `UI_SPLevelMenu_CustomEvent`, `UI_SPLevelMenu_Init`, `UI_SPLevelMenu_LeftArrowEvent`, `UI_SPLevelMenu_LevelEvent`, `UI_SPLevelMenu_MenuDraw`, `UI_SPLevelMenu_NextEvent`, `UI_SPLevelMenu_PlayerEvent`, `UI_SPLevelMenu_ReInit`, `UI_SPLevelMenu_ResetAction`, `UI_SPLevelMenu_ResetDraw`, `UI_SPLevelMenu_ResetEvent`, `UI_SPLevelMenu_RightArrowEvent`, `UI_SPLevelMenu_SetBots`, `UI_SPLevelMenu_SetMenuArena`, `UI_SPLevelMenu_SetMenuItems`, `UI_SPLevelMenu_f`
-- `code/q3_ui/ui_sppostgame.c` (not_started): `Prepname`, `UI_SPPostgameMenu_AgainEvent`, `UI_SPPostgameMenu_Cache`, `UI_SPPostgameMenu_DrawAwardsMedals`, `UI_SPPostgameMenu_DrawAwardsPresentation`, `UI_SPPostgameMenu_Init`, `UI_SPPostgameMenu_MenuDraw`, `UI_SPPostgameMenu_MenuDrawScoreLine`, `UI_SPPostgameMenu_MenuEvent`, `UI_SPPostgameMenu_MenuKey`, `UI_SPPostgameMenu_NextEvent`, `UI_SPPostgameMenu_f`
-- `code/q3_ui/ui_spreset.c` (not_started): `Reset_Cache`, `Reset_MenuDraw`, `Reset_MenuEvent`, `Reset_MenuKey`, `UI_ResetMenu`
-- `code/q3_ui/ui_spskill.c` (not_started): `SetSkillColor`, `UI_SPSkillMenu`, `UI_SPSkillMenu_BackEvent`, `UI_SPSkillMenu_Cache`, `UI_SPSkillMenu_FightEvent`, `UI_SPSkillMenu_Init`, `UI_SPSkillMenu_Key`, `UI_SPSkillMenu_SkillEvent`
-- `code/q3_ui/ui_startserver.c` (not_started): `BotAlreadySelected`, `GametypeBits`, `PlayerName_Draw`, `ServerOptions_Cache`, `ServerOptions_Event`, `ServerOptions_InitBotNames`, `ServerOptions_InitPlayerItems`, `ServerOptions_LevelshotDraw`, `ServerOptions_MenuInit`, `ServerOptions_PlayerNameEvent`, `ServerOptions_SetMenuItems`, `ServerOptions_SetPlayerItems`, `ServerOptions_Start`, `ServerOptions_StatusBar`, `ServerPlayerIcon`, `StartServer_Cache`, `StartServer_GametypeEvent`, `StartServer_LevelshotDraw`, `StartServer_MapEvent`, `StartServer_MenuEvent`, `StartServer_MenuInit`, `StartServer_Update`, `UI_BotSelectMenu`, `UI_BotSelectMenu_BackEvent`, `UI_BotSelectMenu_BotEvent`, `UI_BotSelectMenu_BuildList`, `UI_BotSelectMenu_Cache`, `UI_BotSelectMenu_Default`, `UI_BotSelectMenu_Init`, `UI_BotSelectMenu_LeftEvent`, `UI_BotSelectMenu_RightEvent`, `UI_BotSelectMenu_SelectEvent`, `UI_BotSelectMenu_SortCompare`, `UI_BotSelectMenu_UpdateGrid`, `UI_ServerOptionsMenu`, `UI_StartServerMenu`
-- `code/q3_ui/ui_team.c` (not_started): `TeamMain_Cache`, `TeamMain_MenuEvent`, `TeamMain_MenuInit`, `UI_TeamMainMenu`
 - `code/q3_ui/ui_teamorders.c` (not_started): `UI_TeamOrdersMenu`, `UI_TeamOrdersMenu_BackEvent`, `UI_TeamOrdersMenu_BuildBotList`, `UI_TeamOrdersMenu_Cache`, `UI_TeamOrdersMenu_Init`, `UI_TeamOrdersMenu_Key`, `UI_TeamOrdersMenu_ListDraw`, `UI_TeamOrdersMenu_ListEvent`, `UI_TeamOrdersMenu_SetList`, `UI_TeamOrdersMenu_f`
 - `code/q3_ui/ui_video.c` (not_started): `DriverInfo_Cache`, `DriverInfo_Event`, `DriverInfo_MenuDraw`, `GraphicsOptions_ApplyChanges`, `GraphicsOptions_Cache`, `GraphicsOptions_CheckConfig`, `GraphicsOptions_Event`, `GraphicsOptions_GetInitialVideo`, `GraphicsOptions_MenuDraw`, `GraphicsOptions_MenuInit`, `GraphicsOptions_SetMenuItems`, `GraphicsOptions_TQEvent`, `GraphicsOptions_UpdateMenuItems`, `UI_DriverInfo_Menu`, `UI_GraphicsOptionsMenu`
 - `code/qcommon/cm_load.c` (partial): `CM_Checksum`, `CM_ClearMap`, `CM_EntityString`, `CM_LoadMap`, `CM_LumpChecksum`, `CMod_LoadEntityString`, `CMod_LoadLeafBrushes`, `CMod_LoadLeafSurfaces`, `CMod_LoadShaders`, `SetPlaneSignbits`
