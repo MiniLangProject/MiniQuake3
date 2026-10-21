@@ -5,11 +5,13 @@ package mq3.renderer.qvm_scene_batch
 import mq3.renderer.bsp_render_data as renderData
 import mq3.renderer.playable_world_batch as worldBatch
 import mq3.platform.playable_window as window
+import mq3.platform.playable_multitexture as multitexture
 
 const RF_DEPTHHACK=8
 const PROJECTION_SHADOW_SHADER="$mq3/projectionShadow"
 
-struct Prepared geometry batch depthHackGeometry depthHackBatch dynamicGeometry end struct
+struct Prepared geometry batch depthHackGeometry depthHackBatch dynamicGeometry shadowBatch shadowCount end struct
+struct ShadowPolicy entityIndex surfaceIndex opaque end struct
 
 function fail(message) return error(7681,"QVM scene batch: "+message) end function
 function convertedVertex(triangle,corner,sourceIndex)
@@ -24,6 +26,36 @@ function dynamicSelected(catalog,resolved)
   index=resolved.materialIndex;return resolved.triangle.dynamicLight and not depthHack(resolved.triangle) and index>=0 and index<len(catalog.materials) and catalog.materials[index].sort<=3.0
 end function
 function dynamicCount(catalog) count=0;for each resolved in catalog.triangles if dynamicSelected(catalog,resolved) then count=count+1 end if end for;return count end function
+// RB_ShadowTessEnd only receives opaque surfaces (SS_OPAQUE) outside fog.
+// Cache that decision once per material-resolved MD3 surface rather than once
+// per generated volume triangle. An unresolved shader is Baseq3's default
+// opaque shader.
+function shadowPolicies(catalog)
+  result=[]
+  for each resolved in catalog.triangles
+    source=resolved.triangle;if source.shaderName==PROJECTION_SHADOW_SHADER then continue end if
+    known=false;for each policy in result if policy.entityIndex==source.entityIndex and policy.surfaceIndex==source.surfaceIndex then known=true;break end if end for;if known then continue end if
+    opaque=source.fogIndex<=0
+    if resolved.materialIndex>=0 then opaque=opaque and resolved.materialIndex<len(catalog.materials) and catalog.materials[resolved.materialIndex].sort==3.0 end if
+    result=result+[ShadowPolicy(source.entityIndex,source.surfaceIndex,opaque)]
+  end for
+  return result
+end function
+function policyOpaque(policies,entityIndex,surfaceIndex)
+  for each policy in policies if policy.entityIndex==entityIndex and policy.surfaceIndex==surfaceIndex then return policy.opaque end if end for;return false
+end function
+function buildShadowBatch(catalog,sceneGeometry,existing)
+  if sceneGeometry==void or sceneGeometry.shadowTriangles==void or sceneGeometry.shadowTriangleCount==0 then return void end if
+  policies=shadowPolicies(catalog);count=0;for index=0 to sceneGeometry.shadowTriangleCount-1 shadow=sceneGeometry.shadowTriangles[index];if policyOpaque(policies,shadow.entityIndex,shadow.surfaceIndex) then count=count+1 end if end for
+  if count==0 then return void end if
+  batch=existing;if batch==void or batch.capacity<count then batch=window.createTriangleBatch(count);if batch is error then return batch end if else batch=window.resetTriangleBatch(batch) end if
+  zero=[0.0,0.0]
+  for index=0 to sceneGeometry.shadowTriangleCount-1
+    shadow=sceneGeometry.shadowTriangles[index];if not policyOpaque(policies,shadow.entityIndex,shadow.surfaceIndex) then continue end if
+    points=shadow.positions;batch=window.appendSingleTextureTrianglePosition(batch,-1,points[0],zero,1.0,points[1],zero,1.0,points[2],zero,1.0,255,255,255);if batch is error then return batch end if
+  end for
+  return batch
+end function
 function convertMode(catalog,wantDepthHack)
   if catalog==void or catalog.triangles==void then return fail("material catalog is required") end if
   triangles=array(selectedCount(catalog,wantDepthHack),void);triangleIndex=0
@@ -73,27 +105,31 @@ function refreshDynamicGeometry(geometry,catalog)
   end for
   geometry.triangleCount=len(geometry.triangles);return geometry
 end function
-function build(catalog)
+function buildWithGeometry(catalog,sceneGeometry)
   geometry=convertMode(catalog,false);if geometry is error then return geometry end if
   depthGeometry=convertMode(catalog,true);if depthGeometry is error then return depthGeometry end if
   dynamicGeometry=convertDynamic(catalog);if dynamicGeometry is error then return dynamicGeometry end if
   skyFlags=array(len(catalog.materials),false);batch=worldBatch.buildMaterials(geometry,catalog,skyFlags);if batch is error then return batch end if
   depthBatch=worldBatch.buildMaterials(depthGeometry,catalog,skyFlags);if depthBatch is error then return depthBatch end if
-  return Prepared(geometry,batch,depthGeometry,depthBatch,dynamicGeometry)
+  shadowBatch=buildShadowBatch(catalog,sceneGeometry,void);if shadowBatch is error then return shadowBatch end if;shadowCount=0;if shadowBatch!=void then shadowCount=shadowBatch.count end if
+  return Prepared(geometry,batch,depthGeometry,depthBatch,dynamicGeometry,shadowBatch,shadowCount)
 end function
-function refresh(prepared,catalog)
+function build(catalog) return buildWithGeometry(catalog,void) end function
+function refreshWithGeometry(prepared,catalog,sceneGeometry)
   if prepared==void or catalog==void or catalog.triangles==void then return fail("prepared batch and material catalog are required") end if
   geometry=refreshGeometry(prepared.geometry,catalog);if geometry is error then return geometry end if
-  if geometry==false then return build(catalog) end if
+  if geometry==false then return buildWithGeometry(catalog,sceneGeometry) end if
   skyFlags=array(len(catalog.materials),false);batch=worldBatch.refreshMaterials(prepared.batch,geometry,catalog,skyFlags);if batch is error then return batch end if
-  if batch==false then return build(catalog) end if
+  if batch==false then return buildWithGeometry(catalog,sceneGeometry) end if
   depthGeometry=refreshGeometryMode(prepared.depthHackGeometry,catalog,true);if depthGeometry is error then return depthGeometry end if
-  if depthGeometry==false then return build(catalog) end if
+  if depthGeometry==false then return buildWithGeometry(catalog,sceneGeometry) end if
   depthBatch=worldBatch.refreshMaterials(prepared.depthHackBatch,depthGeometry,catalog,skyFlags);if depthBatch is error then return depthBatch end if
-  if depthBatch==false then return build(catalog) end if
-  dynamicGeometry=refreshDynamicGeometry(prepared.dynamicGeometry,catalog);if dynamicGeometry is error then return dynamicGeometry end if;if dynamicGeometry==false then return build(catalog) end if
-  prepared.geometry=geometry;prepared.batch=batch;prepared.depthHackGeometry=depthGeometry;prepared.depthHackBatch=depthBatch;prepared.dynamicGeometry=dynamicGeometry;return prepared
+  if depthBatch==false then return buildWithGeometry(catalog,sceneGeometry) end if
+  dynamicGeometry=refreshDynamicGeometry(prepared.dynamicGeometry,catalog);if dynamicGeometry is error then return dynamicGeometry end if;if dynamicGeometry==false then return buildWithGeometry(catalog,sceneGeometry) end if
+  shadowBatch=buildShadowBatch(catalog,sceneGeometry,prepared.shadowBatch);if shadowBatch is error then return shadowBatch end if;shadowCount=0;if shadowBatch!=void then shadowCount=shadowBatch.count end if
+  prepared.geometry=geometry;prepared.batch=batch;prepared.depthHackGeometry=depthGeometry;prepared.depthHackBatch=depthBatch;prepared.dynamicGeometry=dynamicGeometry;prepared.shadowBatch=shadowBatch;prepared.shadowCount=shadowCount;return prepared
 end function
+function refresh(prepared,catalog) return refreshWithGeometry(prepared,catalog,void) end function
 function attachFog(prepared,catalog)
   if prepared==void or prepared.batch==void or prepared.geometry==void then return fail("prepared batch is required") end if
   if catalog==void then return 0 end if
@@ -141,4 +177,27 @@ function drawLitViewport(prepared,projection,area,nowMilliseconds,lights)
   if not window.setDepthRange(0.3,projection.nearDistance) then return fail("could not enable RF_DEPTHHACK depth range") end if
   depthDrawn=worldBatch.drawMaterialsViewport(prepared.depthHackBatch,projection,nowMilliseconds,area);restored=window.setDepthRange(1.0,projection.nearDistance)
   if depthDrawn is error then return depthDrawn end if;if not restored then return fail("could not restore world depth range") end if;return drawn+depthDrawn
+end function
+// RB_ShadowTessEnd increments front-facing volume sides and decrements back
+// sides; mirrored portal views reverse those cull passes. RB_ShadowFinish then
+// overlays 60% black wherever the resulting stencil value is non-zero.
+function drawStencilShadows(prepared,projection,area,mirror)
+  if prepared.shadowBatch==void or prepared.shadowCount==0 then return 0 end if
+  stateValue=multitexture.setState(multitexture.BLEND_OPAQUE,false,false);if stateValue is error then return stateValue end if
+  stateValue=multitexture.setAlphaTest(multitexture.ALPHA_TEST_NONE);if stateValue is error then return stateValue end if
+  stateValue=multitexture.setPolygonOffset(false);if stateValue is error then return stateValue end if
+  if not window.clearStencil(area) then return fail("could not clear stencil shadow viewport") end if
+  first=1;second=2;if mirror then first=3;second=4 end if
+  if not window.setStencilPass(first) then return fail("could not enable front stencil shadow pass") end if
+  front=window.submitWorldTriangleBatchViewport(prepared.shadowBatch,projection,area)
+  if front is error then window.setStencilPass(0);return front end if
+  if not window.setStencilPass(second) then window.setStencilPass(0);return fail("could not enable back stencil shadow pass") end if
+  back=window.submitWorldTriangleBatchViewport(prepared.shadowBatch,projection,area);restored=window.setStencilPass(0)
+  if back is error then return back end if;if not restored then return fail("could not restore normal raster pass") end if
+  finished=window.finishStencilShadow(area);if finished<0 then return fail("could not finish stencil shadows") end if
+  return front+back
+end function
+function drawLitViewportShadows(prepared,projection,area,nowMilliseconds,lights,mirror)
+  drawn=drawLitViewport(prepared,projection,area,nowMilliseconds,lights);if drawn is error then return drawn end if
+  shadows=drawStencilShadows(prepared,projection,area,mirror);if shadows is error then return shadows end if;return drawn+shadows
 end function

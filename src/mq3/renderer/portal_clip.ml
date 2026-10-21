@@ -51,5 +51,9 @@ function clipScene(source,normal,dist)
   if source==void or source.triangles==void or normal==void or len(normal)!=3 then return fail("scene geometry and plane are required") end if
   triangles=[]
   for each triangle in source.triangles polygon=clipSceneVertices([sceneVertex(triangle,0),sceneVertex(triangle,1),sceneVertex(triangle,2)],normal,dist);if len(polygon)>=3 then for corner=1 to len(polygon)-2 triangles=triangles+[sceneTriangle(triangle,polygon[0],polygon[corner],polygon[corner+1])] end for end if end for
-  return sceneGeometry.Geometry(triangles,len(triangles),source.modelEntities,source.spriteEntities,source.polySurfaces,source.skippedInline,source.skippedUnsupported,source.sourceVertices,source.vertexTransforms,source.portals,source.culledInline)
+  // Stencil volumes are depth-tested against the already clipped portal
+  // scene and constrained again by its viewport. Preserve their closed side
+  // topology here: clipping individual volume sides would open the volume and
+  // corrupt the increment/decrement stencil count.
+  return sceneGeometry.Geometry(triangles,len(triangles),source.modelEntities,source.spriteEntities,source.polySurfaces,source.skippedInline,source.skippedUnsupported,source.sourceVertices,source.vertexTransforms,source.portals,source.culledInline,source.shadowTriangles,source.shadowTriangleCount)
 end function

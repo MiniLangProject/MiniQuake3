@@ -21,13 +21,13 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 0 | 2 | 45 | 0 |
 | `qcommon` | 27 | 1 | 17 | 9 | 0 |
-| `renderer` | 27 | 0 | 18 | 9 | 0 |
+| `renderer` | 27 | 1 | 17 | 9 | 0 |
 | `server` | 11 | 0 | 9 | 2 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 0 | 0 | 12 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 0 | 5 | 8 | 0 |
-| **Gesamt** | **335** | **6** | **118** | **211** | **0** |
+| **Gesamt** | **335** | **7** | **117** | **211** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -91,7 +91,7 @@ Teil dieser Tabelle.
 | `code/botlib/l_struct.c` | `botlib` | `not_started` | 9 | 0 | 9 |
 | `code/botlib/l_struct.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/l_utils.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/cgame/cg_consolecmds.c` | `cgame` | `partial` | 40 | 1 | 39 |
+| `code/cgame/cg_consolecmds.c` | `cgame` | `partial` | 40 | 36 | 4 |
 | `code/cgame/cg_draw.c` | `cgame` | `not_started` | 49 | 0 | 49 |
 | `code/cgame/cg_drawtools.c` | `cgame` | `not_started` | 25 | 0 | 25 |
 | `code/cgame/cg_effects.c` | `cgame` | `not_started` | 16 | 0 | 16 |
@@ -120,7 +120,7 @@ Teil dieser Tabelle.
 | `code/client/cl_cin.c` | `client` | `partial` | 38 | 5 | 33 |
 | `code/client/cl_console.c` | `client` | `not_started` | 22 | 0 | 22 |
 | `code/client/cl_input.c` | `client` | `partial` | 78 | 11 | 67 |
-| `code/client/cl_keys.c` | `client` | `partial` | 26 | 9 | 17 |
+| `code/client/cl_keys.c` | `client` | `partial` | 26 | 11 | 15 |
 | `code/client/cl_main.c` | `client` | `partial` | 78 | 16 | 62 |
 | `code/client/cl_net_chan.c` | `client` | `ported` | 5 | 0 | 5 |
 | `code/client/cl_parse.c` | `client` | `partial` | 9 | 8 | 1 |
@@ -312,7 +312,7 @@ Teil dieser Tabelle.
 | `code/renderer/tr_shade.c` | `renderer` | `partial` | 17 | 3 | 14 |
 | `code/renderer/tr_shade_calc.c` | `renderer` | `partial` | 32 | 9 | 23 |
 | `code/renderer/tr_shader.c` | `renderer` | `partial` | 34 | 5 | 29 |
-| `code/renderer/tr_shadows.c` | `renderer` | `partial` | 5 | 5 | 0 |
+| `code/renderer/tr_shadows.c` | `renderer` | `ported` | 5 | 5 | 0 |
 | `code/renderer/tr_sky.c` | `renderer` | `not_started` | 13 | 0 | 13 |
 | `code/renderer/tr_surface.c` | `renderer` | `partial` | 24 | 16 | 8 |
 | `code/renderer/tr_world.c` | `renderer` | `partial` | 15 | 1 | 14 |
@@ -431,7 +431,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/botlib/l_struct.c` (not_started): `FindField`, `ReadChar`, `ReadNumber`, `ReadString`, `ReadStructure`, `WriteFloat`, `WriteIndent`, `WriteStructWithIndent`, `WriteStructure`
 - `code/botlib/l_struct.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_utils.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/cgame/cg_consolecmds.c` (partial): `CG_Camera_f`, `CG_ConfirmOrder_f`, `CG_DenyOrder_f`, `CG_EditHud_f`, `CG_LoadHud_f`, `CG_NextOrder_f`, `CG_NextTeamMember_f`, `CG_PrevTeamMember_f`, `CG_ScoresDown_f`, `CG_ScoresUp_f`, `CG_SizeDown_f`, `CG_SizeUp_f`, `CG_StartOrbit_f`, `CG_TargetCommand_f`, `CG_TaskCamp_f`, `CG_TaskDefense_f`, `CG_TaskEscort_f`, `CG_TaskFollow_f`, `CG_TaskOffense_f`, `CG_TaskOwnFlag_f`, `CG_TaskPatrol_f`, `CG_TaskRetrieve_f`, `CG_TaskSuicide_f`, `CG_TauntDeathInsult_f`, `CG_TauntGauntlet_f`, `CG_TauntKillInsult_f`, `CG_TauntPraise_f`, `CG_TauntTaunt_f`, `CG_TeamMenu_f`, `CG_TellAttacker_f`, `CG_TellTarget_f`, `CG_Viewpos_f`, `CG_VoiceTellAttacker_f`, `CG_VoiceTellTarget_f`, `CG_scrollScoresDown_f`, `CG_scrollScoresUp_f`, `CG_spLose_f`, `CG_spWin_f`, `Cmd_Argv`
+- `code/cgame/cg_consolecmds.c` (partial): `CG_Camera_f`, `CG_EditHud_f`, `CG_TeamMenu_f`, `Cmd_Argv`
 - `code/cgame/cg_draw.c` (not_started): `CG_AddLagometerFrameInfo`, `CG_AddLagometerSnapshotInfo`, `CG_CenterPrint`, `CG_Draw2D`, `CG_Draw3DModel`, `CG_DrawActive`, `CG_DrawAmmoWarning`, `CG_DrawAttacker`, `CG_DrawCenterString`, `CG_DrawCrosshair`, `CG_DrawCrosshairNames`, `CG_DrawDisconnect`, `CG_DrawFPS`, `CG_DrawField`, `CG_DrawFlagModel`, `CG_DrawFollow`, `CG_DrawHead`, `CG_DrawHoldableItem`, `CG_DrawIntermission`, `CG_DrawLagometer`, `CG_DrawLowerLeft`, `CG_DrawLowerRight`, `CG_DrawPersistantPowerup`, `CG_DrawPickupItem`, `CG_DrawPowerups`, `CG_DrawProxWarning`, `CG_DrawReward`, `CG_DrawScoreboard`, `CG_DrawScores`, `CG_DrawSnapshot`, `CG_DrawSpectator`, `CG_DrawStatusBar`, `CG_DrawStatusBarFlag`, `CG_DrawStatusBarHead`, `CG_DrawTeamBackground`, `CG_DrawTeamInfo`, `CG_DrawTeamOverlay`, `CG_DrawTeamVote`, `CG_DrawTimedMenus`, `CG_DrawTimer`, `CG_DrawTourneyScoreboard`, `CG_DrawUpperRight`, `CG_DrawVote`, `CG_DrawWarmup`, `CG_ScanForCrosshairEntity`, `CG_Text_Height`, `CG_Text_Paint`, `CG_Text_PaintChar`, `CG_Text_Width`
 - `code/cgame/cg_drawtools.c` (not_started): `CG_AdjustFrom640`, `CG_ColorForHealth`, `CG_DrawBigString`, `CG_DrawBigStringColor`, `CG_DrawChar`, `CG_DrawPic`, `CG_DrawRect`, `CG_DrawSides`, `CG_DrawSmallString`, `CG_DrawSmallStringColor`, `CG_DrawStringExt`, `CG_DrawStrlen`, `CG_DrawTopBottom`, `CG_FadeColor`, `CG_FillRect`, `CG_GetColorForHealth`, `CG_TeamColor`, `CG_TileClear`, `CG_TileClearBox`, `UI_DrawBannerString`, `UI_DrawBannerString2`, `UI_DrawProportionalString`, `UI_DrawProportionalString2`, `UI_ProportionalSizeScale`, `UI_ProportionalStringWidth`
 - `code/cgame/cg_effects.c` (not_started): `CG_BigExplode`, `CG_Bleed`, `CG_BubbleTrail`, `CG_GibPlayer`, `CG_InvulnerabilityImpact`, `CG_InvulnerabilityJuiced`, `CG_KamikazeEffect`, `CG_LaunchExplode`, `CG_LaunchGib`, `CG_LightningBoltBeam`, `CG_MakeExplosion`, `CG_ObeliskExplode`, `CG_ObeliskPain`, `CG_ScorePlum`, `CG_SmokePuff`, `CG_SpawnEffect`
@@ -460,7 +460,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/client/cl_cin.c` (partial): `CIN_CloseAllVideos`, `CIN_HandleForVideo`, `CIN_SetLooping`, `CIN_UploadCinematic`, `CL_PlayCinematic_f`, `ROQ_GenYUVTables`, `RllDecodeMonoToMono`, `RllDecodeMonoToStereo`, `RllDecodeStereoToMono`, `RllDecodeStereoToStereo`, `RllSetupTable`, `RoQFetchInterlaced`, `RoQInterrupt`, `RoQPrepMcomp`, `RoQReset`, `RoQShutdown`, `RoQ_init`, `SCR_DrawCinematic`, `SCR_RunCinematic`, `SCR_StopCinematic`, `blit2_32`, `blit4_32`, `blit8_32`, `blitVQQuad32fs`, `decodeCodeBook`, `initRoQ`, `move4_32`, `move8_32`, `readQuadInfo`, `recurseQuad`, `setupQuad`, `yuv_to_rgb`, `yuv_to_rgb24`
 - `code/client/cl_console.c` (not_started): `CL_ConsolePrint`, `Con_Bottom`, `Con_CheckResize`, `Con_ClearNotify`, `Con_Clear_f`, `Con_Close`, `Con_DrawConsole`, `Con_DrawInput`, `Con_DrawNotify`, `Con_DrawSolidConsole`, `Con_Dump_f`, `Con_Init`, `Con_Linefeed`, `Con_MessageMode2_f`, `Con_MessageMode3_f`, `Con_MessageMode4_f`, `Con_MessageMode_f`, `Con_PageDown`, `Con_PageUp`, `Con_RunConsole`, `Con_ToggleConsole_f`, `Con_Top`
 - `code/client/cl_input.c` (partial): `CL_CreateCmd`, `CL_InitInput`, `CL_JoystickEvent`, `CL_MouseEvent`, `IN_BackDown`, `IN_BackUp`, `IN_Button0Down`, `IN_Button0Up`, `IN_Button10Down`, `IN_Button10Up`, `IN_Button11Down`, `IN_Button11Up`, `IN_Button12Down`, `IN_Button12Up`, `IN_Button13Down`, `IN_Button13Up`, `IN_Button14Down`, `IN_Button14Up`, `IN_Button15Down`, `IN_Button15Up`, `IN_Button1Down`, `IN_Button1Up`, `IN_Button2Down`, `IN_Button2Up`, `IN_Button3Down`, `IN_Button3Up`, `IN_Button4Down`, `IN_Button4Up`, `IN_Button5Down`, `IN_Button5Up`, `IN_Button6Down`, `IN_Button6Up`, `IN_Button7Down`, `IN_Button7Up`, `IN_Button8Down`, `IN_Button8Up`, `IN_Button9Down`, `IN_Button9Up`, `IN_ButtonDown`, `IN_ButtonUp`, `IN_CenterView`, `IN_DownDown`, `IN_DownUp`, `IN_ForwardDown`, `IN_ForwardUp`, `IN_KeyDown`, `IN_KeyUp`, `IN_LeftDown`, `IN_LeftUp`, `IN_LookdownDown`, `IN_LookdownUp`, `IN_LookupDown`, `IN_LookupUp`, `IN_MLookDown`, `IN_MLookUp`, `IN_MoveleftDown`, `IN_MoveleftUp`, `IN_MoverightDown`, `IN_MoverightUp`, `IN_RightDown`, `IN_RightUp`, `IN_SpeedDown`, `IN_SpeedUp`, `IN_StrafeDown`, `IN_StrafeUp`, `IN_UpDown`, `IN_UpUp`
-- `code/client/cl_keys.c` (partial): `CL_AddKeyUpCommands`, `CL_CharEvent`, `CL_InitKeyCommands`, `CL_KeyEvent`, `Console_Key`, `Field_BigDraw`, `Field_CharEvent`, `Field_Draw`, `Field_KeyDownEvent`, `Field_Paste`, `Field_VariableSizeDraw`, `Key_Bind_f`, `Key_Bindlist_f`, `Key_Unbind_f`, `Key_Unbindall_f`, `Key_WriteBindings`, `Message_Key`
+- `code/client/cl_keys.c` (partial): `CL_CharEvent`, `CL_InitKeyCommands`, `Console_Key`, `Field_BigDraw`, `Field_CharEvent`, `Field_Draw`, `Field_KeyDownEvent`, `Field_Paste`, `Field_VariableSizeDraw`, `Key_Bind_f`, `Key_Bindlist_f`, `Key_Unbind_f`, `Key_Unbindall_f`, `Key_WriteBindings`, `Message_Key`
 - `code/client/cl_main.c` (partial): `CL_AddReliableCommand`, `CL_BeginDownload`, `CL_CDDialog`, `CL_CDKeyValidate`, `CL_ChangeReliableCommand`, `CL_ClearPing`, `CL_ClearState`, `CL_Clientinfo_f`, `CL_Configstrings_f`, `CL_Connect_f`, `CL_DemoCompleted`, `CL_Disconnect_f`, `CL_DownloadsComplete`, `CL_FlushMemory`, `CL_ForwardCommandToServer`, `CL_ForwardToServer_f`, `CL_GetFreePing`, `CL_GetPing`, `CL_GetPingInfo`, `CL_GetPingQueueCount`, `CL_GetServerStatus`, `CL_Init`, `CL_InitDownloads`, `CL_InitRef`, `CL_InitRenderer`, `CL_InitServerInfo`, `CL_MapLoading`, `CL_MotdPacket`, `CL_NextDemo`, `CL_NextDownload`, `CL_OpenedPK3List_f`, `CL_PlayDemo_f`, `CL_Rcon_f`, `CL_Reconnect_f`, `CL_Record_f`, `CL_RefMalloc`, `CL_RefPrintf`, `CL_ReferencedPK3List_f`, `CL_RequestMotd`, `CL_ResetPureClientAtServer`, `CL_ScaledMilliseconds`, `CL_SendPureChecksums`, `CL_ServerInfoPacket`, `CL_ServerStatusResponse`, `CL_ServerStatus_f`, `CL_ServersResponsePacket`, `CL_SetModel_f`, `CL_SetServerInfo`, `CL_SetServerInfoByAddress`, `CL_Setenv_f`, `CL_ShowIP_f`, `CL_Shutdown`, `CL_ShutdownAll`, `CL_ShutdownRef`, `CL_Snd_Restart_f`, `CL_StartDemoLoop`, `CL_StartHunkUsers`, `CL_StopRecord_f`, `CL_UpdateServerInfo`, `CL_Vid_Restart_f`, `CL_WalkDemoExt`, `packets`
 - `code/client/cl_net_chan.c` (ported): `CL_Netchan_Decode`, `CL_Netchan_Encode`, `CL_Netchan_Process`, `CL_Netchan_Transmit`, `CL_Netchan_TransmitNextFragment`
 - `code/client/cl_parse.c` (partial): `SHOWNET`
@@ -651,7 +651,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/renderer/tr_shade.c` (partial): `ComputeTexCoords`, `DrawMultitextured`, `DrawNormals`, `DrawTris`, `ProjectDlightTexture`, `RB_EndSurface`, `RB_FogPass`, `RB_IterateStagesGeneric`, `RB_StageIteratorGeneric`, `RB_StageIteratorLightmappedMultitexture`, `RB_StageIteratorVertexLitTexture`, `R_ArrayElementDiscrete`, `R_DrawElements`, `R_DrawStripElements`
 - `code/renderer/tr_shade_calc.c` (partial): `Autosprite2Deform`, `AutospriteDeform`, `DeformText`, `EvalWaveForm`, `EvalWaveFormClamped`, `GlobalVectorToLocal`, `RB_CalcBulgeVertexes`, `RB_CalcDeformNormals`, `RB_CalcDeformVertexes`, `RB_CalcDiffuseColor`, `RB_CalcEnvironmentTexCoords`, `RB_CalcFogTexCoords`, `RB_CalcMoveVertexes`, `RB_CalcRotateTexCoords`, `RB_CalcScaleTexCoords`, `RB_CalcStretchTexCoords`, `RB_CalcTransformTexCoords`, `RB_CalcTurbulentTexCoords`, `RB_CalcWaveAlpha`, `RB_CalcWaveColor`, `RB_DeformTessGeometry`, `TableForFunc`, `myftol`
 - `code/renderer/tr_shader.c` (partial): `CollapseMultitexture`, `ComputeStageIteratorFunc`, `CreateExternalShaders`, `CreateInternalShaders`, `FixRenderCommandList`, `GeneratePermanentShader`, `NameToAFunc`, `NameToDstBlendMode`, `NameToGenFunc`, `NameToSrcBlendMode`, `ParseDeform`, `ParseSkyParms`, `ParseSort`, `ParseSurfaceParm`, `ParseTexMod`, `ParseVector`, `ParseWaveForm`, `RE_RegisterShaderFromImage`, `RE_RegisterShaderNoMip`, `R_FindShader`, `R_FindShaderByName`, `R_InitShaders`, `R_RemapShader`, `R_ShaderList_f`, `ScanAndLoadShaderFiles`, `SortNewShader`, `VertexLightingCollapse`, `modes`, `valid`
-- `code/renderer/tr_shadows.c` (partial): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_sky.c` (not_started): `AddSkyPolygon`, `ClearSkyBox`, `ClipSkyPolygon`, `DrawSkyBox`, `DrawSkySide`, `FillCloudBox`, `FillCloudySkySide`, `MakeSkyVec`, `RB_ClipSkyPolygons`, `RB_DrawSun`, `RB_StageIteratorSky`, `R_BuildCloudData`, `R_InitSkyTexCoords`
 - `code/renderer/tr_surface.c` (partial): `LodErrorForVolume`, `RB_CheckOverflow`, `RB_SurfaceAxis`, `RB_SurfaceBad`, `RB_SurfaceDisplayList`, `RB_SurfaceEntity`, `RB_SurfaceFlare`, `RB_SurfaceSkip`
 - `code/renderer/tr_world.c` (partial): `R_AddWorldSurface`, `R_AddWorldSurfaces`, `R_ClusterPVS`, `R_CullGrid`, `R_CullSurface`, `R_CullTriSurf`, `R_DlightFace`, `R_DlightGrid`, `R_DlightSurface`, `R_DlightTrisurf`, `R_MarkLeaves`, `R_PointInLeaf`, `R_RecursiveWorldNode`, `R_inPVS`

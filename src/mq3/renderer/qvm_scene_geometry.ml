@@ -24,11 +24,16 @@ const RT_BEAM=3
 const RT_RAIL_CORE=4
 const RT_RAIL_RINGS=5
 const RT_LIGHTNING=6
+const RF_DEPTHHACK=8
+const RF_NOSHADOW=64
 const RF_SHADOW_PLANE=256
 const PROJECTION_SHADOW_SHADER="$mq3/projectionShadow"
+const MAX_SHADOW_EDGE_DEFS=32
 
 struct Triangle positions texCoords normals colors entityColor entityTexCoord shaderTime modelHandle customSkin shaderHandle shaderName surfaceName entityIndex surfaceIndex renderfx lightmapCoords lightmapIndex fogIndex dynamicLight dynamicLightOrigin dynamicLightAxis dynamicLightBounds end struct
-struct Geometry triangles triangleCount modelEntities spriteEntities polySurfaces skippedInline skippedUnsupported sourceVertices vertexTransforms portals culledInline end struct
+struct ShadowTriangle positions entityIndex surfaceIndex end struct
+struct ShadowEdge i2 facing end struct
+struct Geometry triangles triangleCount modelEntities spriteEntities polySurfaces skippedInline skippedUnsupported sourceVertices vertexTransforms portals culledInline shadowTriangles shadowTriangleCount end struct
 struct InlineModel index renderData shaderNames bounds dynamicLightFlags end struct
 struct FrameEntry modelHandle surfaceIndex frame oldFrame backlerp xyz normals end struct
 struct TransformEntry modelHandle surfaceIndex frame oldFrame backlerp origin axis positions normals lightAmbient lightDirected lightDirection lightAlpha colors end struct
@@ -59,6 +64,36 @@ function projectionShadowPointOriented(position,shadowPlane,lightDirection,origi
 end function
 function projectionShadowPoint(position,shadowPlane,lightDirection)
   return projectionShadowPointOriented(position,shadowPlane,lightDirection,[0.0,0.0,0.0],[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]])
+end function
+function localLightDirection(lightDirection,axis)
+  return [lightDirection[0]*axis[0][0]+lightDirection[1]*axis[0][1]+lightDirection[2]*axis[0][2],lightDirection[0]*axis[1][0]+lightDirection[1]*axis[1][1]+lightDirection[2]*axis[1][2],lightDirection[0]*axis[2][0]+lightDirection[1]*axis[2][1]+lightDirection[2]*axis[2][2]]
+end function
+// R_AddEdgeDef/R_RenderShadowEdges/RB_ShadowTessEnd. Every returned item is
+// the four vertices of one GL_TRIANGLE_STRIP silhouette side. The original
+// 32-edge-per-start-vertex overflow rule is retained for malformed meshes.
+function shadowVolumeSides(positions,indexes,numTriangles,lightDirection)
+  if positions==void or indexes==void or lightDirection==void or len(lightDirection)!=3 or numTriangles<0 or numTriangles*3>len(indexes) then return fail("invalid stencil shadow mesh") end if
+  edges=array(len(positions),void);for vertexIndex=0 to len(positions)-1 edges[vertexIndex]=[] end for;facing=array(numTriangles,false)
+  for triangleIndex=0 to numTriangles-1
+    base=triangleIndex*3;i1=indexes[base];i2=indexes[base+1];i3=indexes[base+2]
+    if i1<0 or i2<0 or i3<0 or i1>=len(positions) or i2>=len(positions) or i3>=len(positions) then return fail("stencil shadow index outside vertices") end if
+    v1=positions[i1];v2=positions[i2];v3=positions[i3];d1=[v2[0]-v1[0],v2[1]-v1[1],v2[2]-v1[2]];d2=[v3[0]-v1[0],v3[1]-v1[1],v3[2]-v1[2]];normalValue=[d1[1]*d2[2]-d1[2]*d2[1],d1[2]*d2[0]-d1[0]*d2[2],d1[0]*d2[1]-d1[1]*d2[0]];front=normalValue[0]*lightDirection[0]+normalValue[1]*lightDirection[1]+normalValue[2]*lightDirection[2]>0.0;facing[triangleIndex]=front
+    for each pair in [[i1,i2],[i2,i3],[i3,i1]] if len(edges[pair[0]])<MAX_SHADOW_EDGE_DEFS then edges[pair[0]]=edges[pair[0]]+[ShadowEdge(pair[1],front)] end if end for
+  end for
+  extruded=array(len(positions),void);for vertexIndex=0 to len(positions)-1 point=positions[vertexIndex];extruded[vertexIndex]=[point[0]-512.0*lightDirection[0],point[1]-512.0*lightDirection[1],point[2]-512.0*lightDirection[2]] end for
+  result=[]
+  for i1=0 to len(positions)-1
+    for each edge in edges[i1]
+      if not edge.facing then continue end if
+      reverseFront=0;for each reverse in edges[edge.i2] if reverse.i2==i1 and reverse.facing then reverseFront=reverseFront+1 end if end for
+      if reverseFront==0 then result=result+[[positions[i1],extruded[i1],positions[edge.i2],extruded[edge.i2]]] end if
+    end for
+  end for
+  return result
+end function
+function appendShadowTriangle(output,positions,entityIndex,surfaceIndex)
+  if output.shadowTriangleCount>=len(output.shadowTriangles) then return fail("stencil shadow triangle capacity exceeded") end if
+  output.shadowTriangles[output.shadowTriangleCount]=ShadowTriangle(positions,entityIndex,surfaceIndex);output.shadowTriangleCount=output.shadowTriangleCount+1;return void
 end function
 function triangle(positions,coords,normals,colors,entityColor,entityTexCoord,shaderTime,modelHandle,customSkin,shaderHandle,shaderName,surfaceName,entityIndex,surfaceIndex,renderfx)
   return Triangle(positions,coords,normals,colors,entityColor,entityTexCoord,shaderTime,modelHandle,customSkin,shaderHandle,shaderName,surfaceName,entityIndex,surfaceIndex,renderfx,[[0.0,0.0],[0.0,0.0],[0.0,0.0]],-1,-1,false,void,void,void)
@@ -210,7 +245,7 @@ function cachedVertexColors(entry,lighting,alpha)
   for vertexIndex=0 to len(entry.normals)-1 color=lightGrid.vertexColor(lighting,entry.normals[vertexIndex]);color[3]=alpha;colors[vertexIndex]=color end for
   entry.lightAmbient=lighting.ambient;entry.lightDirected=lighting.directed;entry.lightDirection=lighting.direction;entry.lightAlpha=alpha;entry.colors=colors;return colors
 end function
-function addModelOptimized(output,decoded,model,entityIndex,maxTrianglesPerSurface,cache,normalTable,grid,refdef)
+function addModelOptimized(output,decoded,model,entityIndex,maxTrianglesPerSurface,cache,normalTable,grid,refdef,shadowMode)
   frames=md3Entity.normalizeFrames(model.numFrames,decoded.frame,decoded.oldframe,decoded.renderfx);if frames is error then return frames end if
   // R_AddMD3Surfaces repairs the submitted refEntity_t in place before the
   // surfaces reach the back end. Do the same before cache lookup and lighting.
@@ -236,6 +271,14 @@ function addModelOptimized(output,decoded,model,entityIndex,maxTrianglesPerSurfa
         shadowColor=[0,0,0,102];stored=appendTriangle(output,triangle(shadowPositions,[[0.0,0.0],[0.0,0.0],[0.0,0.0]],[normal(),normal(),normal()],[shadowColor,shadowColor,shadowColor],shadowColor,[0.0,0.0],0.0,0,0,0,PROJECTION_SHADOW_SHADER,"",entityIndex,surfaceIndex,0));if stored is error then return stored end if
       end if
     end for
+    if shadowMode==2 and (decoded.renderfx&(RF_NOSHADOW|RF_DEPTHHACK))==0 then
+      localLight=localLightDirection(shadowDirection,decoded.axis);sides=shadowVolumeSides(frameData.xyz,surface.mesh.triangles,limit,localLight);if sides is error then return sides end if;orientation=viewMath.orientation(decoded.origin,decoded.axis)
+      for each side in sides
+        worldSide=[];for each point in side worldPoint=viewMath.localPointToWorld(point,orientation);if worldPoint is error then return worldPoint end if;worldSide=worldSide+[worldPoint] end for
+        stored=appendShadowTriangle(output,[worldSide[0],worldSide[1],worldSide[2]],entityIndex,surfaceIndex);if stored is error then return stored end if
+        stored=appendShadowTriangle(output,[worldSide[2],worldSide[1],worldSide[3]],entityIndex,surfaceIndex);if stored is error then return stored end if
+      end for
+    end if
   end for
   output.modelEntities=output.modelEntities+1;return void
 end function
@@ -305,13 +348,23 @@ function addPolys(output,polys)
   end for
   return void
 end function
-function buildRecordsFrameCachedLitReuseMode(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,isPortal,frustum)
+function stencilShadowCapacity(decodedEntities,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,shadowMode)
+  if shadowMode!=2 then return 0 end if;count=0
+  for each decoded in decodedEntities
+    if decoded.reType!=RT_MODEL or not entityPolicy.visible(decoded.reType,decoded.renderfx,isPortal) or (decoded.renderfx&(RF_NOSHADOW|RF_DEPTHHACK))!=0 then continue end if
+    model=modelAt(assetKinds,modelAssets,decoded.hModel);if model==void or typeof(model)=="string" or isInlineModel(model) then continue end if
+    count=count+modelTriangleCount(model,maxTrianglesPerSurface)*6
+  end for
+  return count
+end function
+function buildRecordsFrameCachedLitReuseModeShadow(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,isPortal,frustum,shadowMode)
   if entities==void or polys==void or assetKinds==void or modelAssets==void or maxTrianglesPerSurface<0 then return fail("invalid build input") end if
   decodedEntities=decodeEntities(entities);if decodedEntities is error then return decodedEntities end if
   capacity=expectedDecodedTrianglesMode(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum)
+  shadowCapacity=stencilShadowCapacity(decodedEntities,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,shadowMode)
   output=void
-  if previous!=void and previous.triangles!=void and len(previous.triangles)==capacity then output=previous;output.triangleCount=0;output.modelEntities=0;output.spriteEntities=0;output.polySurfaces=0;output.skippedInline=0;output.skippedUnsupported=0;output.sourceVertices=0;output.vertexTransforms=0;output.portals=[];output.culledInline=0
-  else output=Geometry(array(capacity,void),0,0,0,0,0,0,0,0,[],0) end if
+  if previous!=void and previous.triangles!=void and len(previous.triangles)==capacity and previous.shadowTriangles!=void and len(previous.shadowTriangles)==shadowCapacity then output=previous;output.triangleCount=0;output.modelEntities=0;output.spriteEntities=0;output.polySurfaces=0;output.skippedInline=0;output.skippedUnsupported=0;output.sourceVertices=0;output.vertexTransforms=0;output.portals=[];output.culledInline=0;output.shadowTriangleCount=0
+  else output=Geometry(array(capacity,void),0,0,0,0,0,0,0,0,[],0,array(shadowCapacity,void),0) end if
   entityIndex=0
   for each decoded in decodedEntities
     if entityPolicy.isPortalMarker(decoded.reType) then output.portals=output.portals+[decoded]
@@ -321,7 +374,7 @@ function buildRecordsFrameCachedLitReuseMode(entities,polys,assetKinds,modelAsse
       if model==void then output.skippedUnsupported=output.skippedUnsupported+1
       else if typeof(model)=="string" then output.skippedInline=output.skippedInline+1
       else if isInlineModel(model) then culled=inlineCulled(decoded,model,frustum);if culled is error then return culled end if;if culled then output.culledInline=output.culledInline+1 else added=addInlineModel(output,decoded,model,entityIndex);if added is error then return added end if end if
-      else added=addModelOptimized(output,decoded,model,entityIndex,maxTrianglesPerSurface,cache,normalTable,grid,refdef);if added is error then return added end if
+      else added=addModelOptimized(output,decoded,model,entityIndex,maxTrianglesPerSurface,cache,normalTable,grid,refdef,shadowMode);if added is error then return added end if
       end if
     else if decoded.reType==RT_SPRITE then added=addSprite(output,decoded,refdef,entityIndex);if added is error then return added end if
     else if decoded.reType==RT_BEAM then added=addBeam(output,decoded,entityIndex);if added is error then return added end if
@@ -333,6 +386,7 @@ function buildRecordsFrameCachedLitReuseMode(entities,polys,assetKinds,modelAsse
   addedPolys=addPolys(output,polys);if addedPolys is error then return addedPolys end if
   return output
 end function
+function buildRecordsFrameCachedLitReuseMode(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,isPortal,frustum) return buildRecordsFrameCachedLitReuseModeShadow(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,isPortal,frustum,0) end function
 function buildRecordsFrameCachedLitReuse(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous) return buildRecordsFrameCachedLitReuseMode(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,false,void) end function
 function buildPortalRecords(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid) return buildRecordsFrameCachedLitReuseMode(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,void,true,void) end function
 function refdefFrustum(refdef)
@@ -343,9 +397,17 @@ function buildRecordsWithFrameCacheReuseCulled(entities,polys,assetKinds,modelAs
   if cache==void then return fail("frame cache is required") end if;frustum=refdefFrustum(refdef);if frustum is error then return frustum end if
   return buildRecordsFrameCachedLitReuseMode(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,cache.normalTable,grid,previous,false,frustum)
 end function
+function buildRecordsWithFrameCacheReuseCulledShadows(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,grid,previous,shadowMode)
+  if cache==void then return fail("frame cache is required") end if;frustum=refdefFrustum(refdef);if frustum is error then return frustum end if
+  return buildRecordsFrameCachedLitReuseModeShadow(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,cache.normalTable,grid,previous,false,frustum,shadowMode)
+end function
 function buildPortalRecordsCulled(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid)
   frustum=refdefFrustum(refdef);if frustum is error then return frustum end if
   return buildRecordsFrameCachedLitReuseMode(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,void,true,frustum)
+end function
+function buildPortalRecordsCulledShadows(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,shadowMode)
+  frustum=refdefFrustum(refdef);if frustum is error then return frustum end if
+  return buildRecordsFrameCachedLitReuseModeShadow(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,void,true,frustum,shadowMode)
 end function
 function buildRecordsFrameCachedLit(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid) return buildRecordsFrameCachedLitReuse(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,void) end function
 function buildRecordsCachedLit(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,normalTable,grid) return buildRecordsFrameCachedLit(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,void,normalTable,grid) end function

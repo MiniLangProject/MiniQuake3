@@ -19,6 +19,9 @@ extern function shutdownNative() from "playable_window.dll" symbol "playable_win
 extern function clearDepthNative(depth as double) from "playable_window.dll" symbol "playable_window_clear_depth" returns void
 extern function sampleDepthNative(x as i32,y as i32) from "playable_window.dll" symbol "playable_window_sample_depth" returns double
 extern function setDepthRangeNative(scale as double,nearDistance as double) from "playable_window.dll" symbol "playable_window_set_depth_range" returns i32
+extern function clearStencilNative(x as i32,y as i32,width as i32,height as i32) from "playable_window.dll" symbol "playable_window_clear_stencil" returns i32
+extern function setStencilPassNative(pass as i32) from "playable_window.dll" symbol "playable_window_set_stencil_pass" returns i32
+extern function finishStencilShadowNative(x as i32,y as i32,width as i32,height as i32) from "playable_window.dll" symbol "playable_window_finish_stencil_shadow" returns i32
 extern function uploadTextureNative(slot as i32,rgba as ptr,width as i32,height as i32) from "playable_window.dll" symbol "playable_window_upload_texture" returns i32
 extern function uploadTextureMipmappedNative(slot as i32,rgba as ptr,width as i32,height as i32,mipmapped as i32) from "playable_window.dll" symbol "playable_window_upload_texture_mipmapped" returns i32
 extern function releaseTextureNative(slot as i32) from "playable_window.dll" symbol "playable_window_release_texture" returns void
@@ -122,6 +125,9 @@ function shutdown() shutdownNative();return void end function
 function clearDepth(depth) clearDepthNative(depth);return void end function
 function sampleDepth(x,y) return sampleDepthNative(numeric.trunc32(x),numeric.trunc32(y)) end function
 function setDepthRange(scale,nearDistance) return setDepthRangeNative(scale,nearDistance)!=0 end function
+function clearStencil(area) return clearStencilNative(area.x,area.y,area.width,area.height)!=0 end function
+function setStencilPass(pass) return setStencilPassNative(pass)!=0 end function
+function finishStencilShadow(area) return finishStencilShadowNative(area.x,area.y,area.width,area.height) end function
 function uploadTexture(slot,rgba,width,height)
   if typeof(rgba)!="bytes" then return error(7483,"preview texture must be RGBA bytes") end if
   return uploadTextureNative(slot,nativeBytesPtr(rgba),width,height)!=0

@@ -19,6 +19,7 @@ static BITMAPINFO bitmapInfo;
 static uint32_t *pixels;
 static uint32_t *presentedPixels;
 static float *depthPixels;
+static int32_t *stencilPixels;
 static int surfaceWidth;
 static int surfaceHeight;
 static volatile LONG closeRequested = 1;
@@ -70,6 +71,8 @@ static int rasterDepthWrite = 1;
 static int rasterAlphaTest;
 static int rasterClampTexture;
 static int rasterPolygonOffset;
+/* 1=increment front, 2=decrement back, 3=increment back, 4=decrement front. */
+static int rasterStencilPass;
 static double rasterDepthRangeScale = 1.0;
 static double rasterDepthRangeNear = 1.0;
 static __declspec(thread) int rasterClipMinimumX;
@@ -158,6 +161,10 @@ static void releaseSurface(void) {
         VirtualFree(depthPixels, 0, MEM_RELEASE);
         depthPixels = 0;
     }
+    if (stencilPixels) {
+        VirtualFree(stencilPixels, 0, MEM_RELEASE);
+        stencilPixels = 0;
+    }
     surfaceWidth = 0;
     surfaceHeight = 0;
 }
@@ -182,6 +189,16 @@ static int allocateSurface(int width, int height) {
         VirtualFree(presentedPixels, 0, MEM_RELEASE);
         pixels = 0;
         presentedPixels = 0;
+        return 0;
+    }
+    stencilPixels = (int32_t *)VirtualAlloc(0, byteCount, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
+    if (!stencilPixels) {
+        VirtualFree(pixels, 0, MEM_RELEASE);
+        VirtualFree(presentedPixels, 0, MEM_RELEASE);
+        VirtualFree(depthPixels, 0, MEM_RELEASE);
+        pixels = 0;
+        presentedPixels = 0;
+        depthPixels = 0;
         return 0;
     }
     surfaceWidth = width;
@@ -486,8 +503,51 @@ PLAYABLE_API void playable_window_begin_frame(int red, int green, int blue) {
     rasterAlphaTest = 0;
     rasterClampTexture = 0;
     rasterPolygonOffset = 0;
+    rasterStencilPass = 0;
     rasterDepthRangeScale = 1.0;
     rasterDepthRangeNear = 1.0;
+}
+
+PLAYABLE_API int playable_window_clear_stencil(int x, int y, int width, int height) {
+    int row;
+    if (!stencilPixels || x < 0 || y < 0 || width < 1 || height < 1 ||
+            x > surfaceWidth - width || y > surfaceHeight - height) return 0;
+    for (row = y; row < y + height; ++row) {
+        ZeroMemory(stencilPixels + (SIZE_T)row * (SIZE_T)surfaceWidth + (SIZE_T)x,
+            (SIZE_T)width * sizeof(*stencilPixels));
+    }
+    return 1;
+}
+
+PLAYABLE_API int playable_window_set_stencil_pass(int pass) {
+    if (pass < 0 || pass > 4) return 0;
+    rasterStencilPass = pass;
+    return 1;
+}
+
+PLAYABLE_API int playable_window_finish_stencil_shadow(int x, int y, int width, int height) {
+    int row;
+    int column;
+    int darkened = 0;
+    if (!pixels || !stencilPixels || x < 0 || y < 0 || width < 1 || height < 1 ||
+            x > surfaceWidth - width || y > surfaceHeight - height) return -1;
+    for (row = y; row < y + height; ++row) {
+        SIZE_T offset = (SIZE_T)row * (SIZE_T)surfaceWidth + (SIZE_T)x;
+        for (column = 0; column < width; ++column, ++offset) {
+            uint32_t color;
+            uint32_t red;
+            uint32_t green;
+            uint32_t blue;
+            if (stencilPixels[offset] == 0) continue;
+            color = pixels[offset];
+            red = (((color >> 16) & 255u) * 153u + 127u) / 255u;
+            green = (((color >> 8) & 255u) * 153u + 127u) / 255u;
+            blue = ((color & 255u) * 153u + 127u) / 255u;
+            pixels[offset] = (color & 0xff000000u) | (red << 16) | (green << 8) | blue;
+            ++darkened;
+        }
+    }
+    return darkened;
 }
 
 PLAYABLE_API void playable_window_clear_depth(double depth) {
@@ -1065,6 +1125,8 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
             !_finite(y2) || !_finite(depth2) || depth0 <= 0.0 || depth1 <= 0.0 || depth2 <= 0.0) return;
     area = edgeValue(x0, y0, x1, y1, x2, y2);
     if (!_finite(area) || area == 0.0) return;
+    if ((rasterStencilPass == 1 || rasterStencilPass == 4) && area < 0.0) return;
+    if ((rasterStencilPass == 2 || rasterStencilPass == 3) && area > 0.0) return;
     inverseArea = 1.0 / area;
     inverseDepth0 = 1.0 / depth0;
     inverseDepth1 = 1.0 / depth1;
@@ -1182,6 +1244,14 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
                 double tolerance = fabs(comparisonDepth) * 0.00001 + 0.0000001;
                 if (difference < -tolerance || difference > tolerance) continue;
             } else if (comparisonDepth <= (double)depthPixels[offset]) continue;
+            if (rasterStencilPass != 0) {
+                if (rasterStencilPass == 1 || rasterStencilPass == 3) {
+                    /* GL_INCR/GL_DECR saturate at the unsigned stencil range;
+                     * they do not wrap and DECR at a cleared pixel stays 0. */
+                    if (stencilPixels[offset] < 255) ++stencilPixels[offset];
+                } else if (stencilPixels[offset] > 0) --stencilPixels[offset];
+                continue;
+            }
             depth = constantDepth ? constantDepthScale : 1.0 / inverseDepth;
             light = unitLight ? 1.0 : lightOverDepth * depth;
             color = fallback;

@@ -70,19 +70,19 @@ end function
 function refdefCamera(refdef)
   angles=qmath.vectoangles(refdef.viewaxis[0]);return viewer.camera(refdef.vieworg,angles[1],angles[0],0.0,0.0)
 end function
-function prepareViews(views,catalog,archive,assets,kinds,frameCache,grid,videoManager,previousViews,profile,fogCatalog,dlightCatalog)
+function prepareViews(views,catalog,archive,assets,kinds,frameCache,grid,videoManager,previousViews,profile,fogCatalog,dlightCatalog,shadowMode)
   result=[];viewIndex=0
   for each view in views
     started=0;if profile!=void then started=window.milliseconds() end if
     if grid!=void then ignored=lightGrid.setDynamicLights(grid,view.scene.dlights) end if
     previousGeometry=void;if previousViews!=void and viewIndex<len(previousViews) then previousGeometry=previousViews[viewIndex].geometry end if
-    expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulled(view.scene.entities,view.scene.polys,kinds,assets,view.refdef,8192,frameCache,grid,previousGeometry);if expanded is error then return expanded end if
+    expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadows(view.scene.entities,view.scene.polys,kinds,assets,view.refdef,8192,frameCache,grid,previousGeometry,shadowMode);if expanded is error then return expanded end if
     afterExpansion=0;if profile!=void then afterExpansion=window.milliseconds();profile.expansion=profile.expansion+afterExpansion-started end if
     refreshed=sceneMaterials.refresh(catalog,archive,expanded.triangles,assets,kinds,QVM_TEXTURE_FIRST_SLOT+MAX_QVM_TEXTURE_SLOTS);if refreshed is error then return refreshed end if
     boundVideo=qvmVideo.bindCatalog(videoManager,catalog,view.refdef.time);if boundVideo is error then return boundVideo end if
     afterMaterial=0;if profile!=void then afterMaterial=window.milliseconds();profile.material=profile.material+afterMaterial-afterExpansion end if
     previous=void;if previousViews!=void and viewIndex<len(previousViews) then previous=previousViews[viewIndex].batch end if;batch=void
-    if previous==void then batch=sceneBatch.build(catalog) else batch=sceneBatch.refresh(previous,catalog) end if;if batch is error then return batch end if
+    if previous==void then batch=sceneBatch.buildWithGeometry(catalog,expanded) else batch=sceneBatch.refreshWithGeometry(previous,catalog,expanded) end if;if batch is error then return batch end if
     attached=sceneBatch.attachFog(batch,fogCatalog);if attached is error then return attached end if
     attached=sceneBatch.attachDynamicLights(batch,catalog,dlightCatalog);if attached is error then return attached end if
     if profile!=void then profile.batch=profile.batch+window.milliseconds()-afterMaterial end if
@@ -101,10 +101,22 @@ function movementAxis(positive,negative)
 end function
 function nativeKeyDown(input,key) return window.keyDown(key) end function
 function nativeMouseDelta(input) return input.mouse end function
-function applyInputEvent(state,event)
-  return timestampedInput.apply(state,event.time,event.type,event.value,event.value2)
+function applyInputEvent(state,matchState,event)
+  if event.type==window.INPUT_KEY then
+    key=timestampedInput.quakeKey(event.value);match.setKeyDown(matchState,key,event.value2!=0)
+    expanded=timestampedInput.applyBound(state,event.time,event.type,event.value,event.value2,match.keyBinding(matchState,key));if expanded is error then return expanded end if
+    for each command in expanded if not command.button then match.queueInputCommand(matchState,command.text) end if end for
+    return expanded
+  end if
+  return timestampedInput.applyBound(state,event.time,event.type,event.value,event.value2,"")
 end function
 function releaseGameInput(state,time) return timestampedInput.release(state,time) end function
+function ensurePlayableBindings(state)
+  for each pair in [[119,"+forward"],[115,"+back"],[100,"+moveright"],[97,"+moveleft"],[32,"+moveup"],[178,"+attack"]]
+    if match.keyBinding(state,pair[0])=="" then match.setKeyBinding(state,pair[0],pair[1]) end if
+  end for
+  return void
+end function
 function advanceGameTick(state,clientClock,serverTime,input)
   delta=[0,0,0];if state.context.latestSnapshot!=void then delta=state.context.latestSnapshot.playerState.delta_angles end if
   command=qworld.userCommand(serverTime,[angleCommand(input.viewangles[0],delta[0]),angleCommand(input.viewangles[1],delta[1]),angleCommand(input.viewangles[2],delta[2])],input.buttons,input.weapon,input.forwardmove,input.rightmove,input.upmove)
@@ -135,14 +147,14 @@ function attachWorldEffects(batch,triangles,fogCatalog,dlightCatalog,dlightRecei
   if dlightCatalog!=void then attached=worldBatch.attachDynamicLights(batch,triangles,dlightReceiveFlags,dlightCatalog);if attached is error then return attached end if end if
   return batch
 end function
-function preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,assets,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags)
+function preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,assets,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode)
   plan=portalPass.prepare(selectedWorld,worldCatalog,source.geometry,source.source.refdef,false);if plan is error or plan==void then return plan end if
   if grid!=void then ignored=lightGrid.setDynamicLights(grid,source.source.scene.dlights) end if
-  geometry=sceneGeometry.buildPortalRecordsCulled(source.source.scene.entities,source.source.scene.polys,kinds,assets,plan.refdef,8192,frameCache,frameCache.normalTable,grid);if geometry is error then return geometry end if
+  geometry=sceneGeometry.buildPortalRecordsCulledShadows(source.source.scene.entities,source.source.scene.polys,kinds,assets,plan.refdef,8192,frameCache,frameCache.normalTable,grid,shadowMode);if geometry is error then return geometry end if
   geometry=portalClip.clipScene(geometry,plan.view.planeNormal,plan.view.planeDist);if geometry is error then return geometry end if
   refreshed=sceneMaterials.refresh(qvmCatalog,archive,geometry.triangles,assets,kinds,QVM_TEXTURE_FIRST_SLOT+MAX_QVM_TEXTURE_SLOTS);if refreshed is error then return refreshed end if
   boundVideo=qvmVideo.bindCatalog(videoManager,qvmCatalog,plan.refdef.time);if boundVideo is error then return boundVideo end if
-  batch=sceneBatch.build(qvmCatalog);if batch is error then return batch end if
+  batch=sceneBatch.buildWithGeometry(qvmCatalog,geometry);if batch is error then return batch end if
   attached=sceneBatch.attachFog(batch,fogCatalog);if attached is error then return attached end if
   attached=sceneBatch.attachDynamicLights(batch,qvmCatalog,dlightCatalog);if attached is error then return attached end if
   portalConfig=worldSelection.config(worldConfig.width,worldConfig.height,plan.refdef.fovX,worldConfig.nearDistance,worldConfig.farDistance,worldConfig.triangleBudget,worldConfig.backfaceCull,worldConfig.patchError);if portalConfig is error then return portalConfig end if
@@ -153,8 +165,8 @@ function preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,asse
   target=qvmViewport.prepare(plan.refdef,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT);if target is error then return target end if
   return PreparedPortal(plan,world,batch,target,source.source)
 end function
-function preparePortals(preparedViews,selectedWorld,worldCatalog,qvmCatalog,archive,assets,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags)
-  result=[];for each source in preparedViews portal=preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,assets,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags);if portal is error then return portal end if;result=result+[portal] end for;return result
+function preparePortals(preparedViews,selectedWorld,worldCatalog,qvmCatalog,archive,assets,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode)
+  result=[];for each source in preparedViews portal=preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,assets,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode);if portal is error then return portal end if;result=result+[portal] end for;return result
 end function
 function drawCinematics(state)
   draws=cinematics.takeDraws(state.context.cinematics);drawn=0
@@ -201,13 +213,15 @@ end function
 function runLimited(archive,map,qvmRoot,maxFrames)
   if archive==void or map==void or maxFrames==0 or maxFrames< -1 then return fail("invalid launch input") end if
   state=bootFrame(archive,map,qvmRoot);if state is error then return state end if
+  ensurePlayableBindings(state)
   clientClock=cgameClock.create(state.context.now,state.context.snapshotNumber,state.context.latestSnapshot.serverTime);if clientClock is error then match.shutdown(state);return clientClock end if
   bootedUi=match.bootUi(state);if bootedUi is error then match.shutdown(state);return bootedUi end if
   videoManager=qvmVideo.create(state.context.cinematics,CINEMATIC_TEXTURE_FIRST_SLOT,cinematics.MAX_HANDLES);if videoManager is error then match.shutdown(state);return videoManager end if
   frameCache=sceneGeometry.createFrameCache(void,256);if frameCache is error then match.shutdown(state);return frameCache end if
   view=largestView(state.context.renderViews);if view==void then match.shutdown(state);return fail("cgame submitted no render view") end if
   qvmCatalog=sceneMaterials.build(archive,[],state.context.assets,state.context.assetKinds,QVM_TEXTURE_FIRST_SLOT,MAX_QVM_TEXTURE_SLOTS,state.context.shaderRemaps);if qvmCatalog is error then match.shutdown(state);return qvmCatalog end if
-  preparedViews=prepareViews(state.context.renderViews,qvmCatalog,archive,state.context.modelAssets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,void,void,void,void);if preparedViews is error then match.shutdown(state);return preparedViews end if
+  shadowVariable=cvar.get(state.context.cvars,"cg_shadows","1",cvar.ARCHIVE)
+  preparedViews=prepareViews(state.context.renderViews,qvmCatalog,archive,state.context.modelAssets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,void,void,void,void,shadowVariable.integer);if preparedViews is error then match.shutdown(state);return preparedViews end if
   hudCatalog=qvm2d.build(archive,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,QVM_2D_TEXTURE_FIRST_SLOT,MAX_QVM_2D_TEXTURE_SLOTS,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT,state.context.shaderRemaps);if hudCatalog is error then match.shutdown(state);return hudCatalog end if
   boundVideo=qvmVideo.bindCatalog(videoManager,hudCatalog,state.context.now);if boundVideo is error then match.shutdown(state);return boundVideo end if
   soundCatalog=qvmSoundAssets.load(archive,state.context.assets,state.context.assetKinds);if soundCatalog is error then match.shutdown(state);return soundCatalog end if
@@ -246,7 +260,8 @@ function runLimited(archive,map,qvmRoot,maxFrames)
   uploaded=uploadLightmaps(map);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   audioStarted=audioOutput.init(22050);if audioStarted is error then window.shutdown();match.shutdown(state);return audioStarted end if
   titleState=fpsTitle.create("Original QVM q3dm1",window.milliseconds());window.setTitle(fpsTitle.initialTitle(titleState))
-  frames=0;yaw=state.context.latestSnapshot.playerState.viewangles[1];pitch=state.context.latestSnapshot.playerState.viewangles[0];inputState=inputCommand.create(pitch,yaw,0.0);inputConfig=inputCommand.defaults();pendingInputEvents=[];wasMenuActive=false;uploadedQvmTextures=len(qvmCatalog.textures);uploadedHudTextures=len(hudCatalog.textures);simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
+  frames=0;yaw=state.context.latestSnapshot.playerState.viewangles[1];pitch=state.context.latestSnapshot.playerState.viewangles[0];inputState=inputCommand.create(pitch,yaw,0.0);inputConfig=inputCommand.defaults()
+  pendingInputEvents=[];wasMenuActive=false;uploadedQvmTextures=len(qvmCatalog.textures);uploadedHudTextures=len(hudCatalog.textures);simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
   while not window.shouldClose() and (maxFrames<0 or frames<maxFrames)
     startedAt=window.milliseconds();serverTime=simulationStart+startedAt-realStart;steps=0
     window.poll();nativeInput.mouse=window.mouseDelta();menuActive=uiSession.active(ui);nativeEvents=window.inputEvents(256);if nativeEvents is error then window.shutdown();match.shutdown(state);return nativeEvents end if
@@ -260,7 +275,7 @@ function runLimited(archive,map,qvmRoot,maxFrames)
     wasMenuActive=menuActive
     while simulationTime+50<=serverTime and steps<8
       simulationTime=simulationTime+50
-      while len(pendingInputEvents)>0 and pendingInputEvents[0].time<=simulationTime applied=applyInputEvent(inputState,pendingInputEvents[0]);if applied is error then window.shutdown();match.shutdown(state);return applied end if;pendingInputEvents=slice(pendingInputEvents,1,len(pendingInputEvents)) end while
+      while len(pendingInputEvents)>0 and pendingInputEvents[0].time<=simulationTime applied=applyInputEvent(inputState,state,pendingInputEvents[0]);if applied is error then window.shutdown();match.shutdown(state);return applied end if;pendingInputEvents=slice(pendingInputEvents,1,len(pendingInputEvents)) end while
       anyInput=timestampedInput.anyDown(inputState)
       created=inputCommand.createCommand(inputState,inputConfig,simulationTime,50,simulationTime,match.cgameUserCmdValue(state),match.cgameSensitivity(state),0,anyInput);if created is error then window.shutdown();match.shutdown(state);return created end if;yaw=created.viewangles[1];pitch=created.viewangles[0];advanced=advanceGameTick(state,clientClock,simulationTime,created);if advanced is error then window.shutdown();match.shutdown(state);return advanced end if;steps=steps+1;simulationTicks=simulationTicks+1
     end while
@@ -271,9 +286,9 @@ function runLimited(archive,map,qvmRoot,maxFrames)
     cinematicSamples=collectCinematicAudio(state,audio);if cinematicSamples is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return cinematicSamples end if
     afterSimulation=window.milliseconds();uiMs=uiMs+afterSimulation-afterCgame;simulationMs=simulationMs+afterSimulation-startedAt
     view=largestView(state.context.renderViews);if view==void then window.shutdown();match.shutdown(state);return fail("cgame stopped submitting its main view") end if
-    preparedViews=prepareViews(state.context.renderViews,qvmCatalog,archive,state.context.modelAssets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,preparedViews,pipelineProfile,fogCatalog,dlightCatalog);if preparedViews is error then window.shutdown();match.shutdown(state);return preparedViews end if
+    preparedViews=prepareViews(state.context.renderViews,qvmCatalog,archive,state.context.modelAssets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,preparedViews,pipelineProfile,fogCatalog,dlightCatalog,shadowVariable.integer);if preparedViews is error then window.shutdown();match.shutdown(state);return preparedViews end if
     if frames%4==0 then worldConfig.horizontalFov=view.refdef.fovX;nextWorld=worldSelection.prepareCached(worldCache,selectionCamera(view),worldConfig);if nextWorld is error then window.shutdown();match.shutdown(state);return nextWorld end if;if not worldSelection.sameFaces(selectedFaces,nextWorld.selection.faceIndexes) then worldPrepared=worldBatch.buildMaterials(nextWorld.renderData,worldCatalog,skyFlags);if worldPrepared is error then window.shutdown();match.shutdown(state);return worldPrepared end if;attached=attachWorldEffects(worldPrepared,nextWorld.renderData,fogCatalog,dlightCatalog,dlightReceiveFlags);if attached is error then window.shutdown();match.shutdown(state);return attached end if;selectedFaces=nextWorld.selection.faceIndexes end if;selected=nextWorld end if
-    preparedPortals=preparePortals(preparedViews,selected.renderData,worldCatalog,qvmCatalog,archive,state.context.modelAssets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags);if preparedPortals is error then window.shutdown();match.shutdown(state);return preparedPortals end if
+    preparedPortals=preparePortals(preparedViews,selected.renderData,worldCatalog,qvmCatalog,archive,state.context.modelAssets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowVariable.integer);if preparedPortals is error then window.shutdown();match.shutdown(state);return preparedPortals end if
     afterGeometry=window.milliseconds();geometryMs=geometryMs+afterGeometry-afterSimulation
     refreshedHud=qvm2d.refresh(hudCatalog,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT);if refreshedHud is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return refreshedHud end if
     if len(hudCatalog.textures)>uploadedHudTextures then uploaded=qvm2d.upload(hudCatalog);if uploaded is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return uploaded end if;uploadedHudTextures=len(hudCatalog.textures) end if
@@ -293,7 +308,7 @@ function runLimited(archive,map,qvmRoot,maxFrames)
           if skyCatalog!=void then drawn=playableSky.drawViewport(skyCatalog,preparedPortal.plan.refdef.viewaxis,preparedPortal.target.area,preparedPortal.plan.refdef.time);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if end if
           drawn=worldBatch.drawMaterialsLitViewport(preparedPortal.world,preparedPortal.target.projection,preparedPortal.plan.refdef.time,preparedPortal.source.scene.dlights,preparedPortal.target.area);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
         end if
-        drawn=sceneBatch.drawLitViewport(preparedPortal.batch,preparedPortal.target.projection,preparedPortal.target.area,preparedPortal.plan.refdef.time,preparedPortal.source.scene.dlights);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
+        drawn=sceneBatch.drawLitViewportShadows(preparedPortal.batch,preparedPortal.target.projection,preparedPortal.target.area,preparedPortal.plan.refdef.time,preparedPortal.source.scene.dlights,preparedPortal.plan.view.mirror);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
         drawn=flares.drawViewport(flareCatalog,fogCatalog,preparedPortal.source.scene.dlights,preparedPortal.target.projection,preparedPortal.target.area,preparedPortal.plan.refdef.time,preparedViewIndex*2);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
         // Match RB_BeginDrawingView: retain portal color, reset depth, then
         // let the main portal surface mask the recursive image.
@@ -307,7 +322,7 @@ function runLimited(archive,map,qvmRoot,maxFrames)
         drawn=worldBatch.drawMaterialsLitViewport(worldPrepared,preparedView.target.projection,preparedView.source.refdef.time,preparedView.source.scene.dlights,preparedView.target.area);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
         if preparedPortal!=void and skyCatalog!=void then drawn=playableSky.drawViewport(skyCatalog,preparedView.source.refdef.viewaxis,preparedView.target.area,preparedView.source.refdef.time);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if end if
       end if
-      drawn=sceneBatch.drawLitViewport(preparedView.batch,preparedView.target.projection,preparedView.target.area,preparedView.source.refdef.time,preparedView.source.scene.dlights);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
+      drawn=sceneBatch.drawLitViewportShadows(preparedView.batch,preparedView.target.projection,preparedView.target.area,preparedView.source.refdef.time,preparedView.source.scene.dlights,false);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
       drawn=flares.drawViewport(flareCatalog,fogCatalog,preparedView.source.scene.dlights,preparedView.target.projection,preparedView.target.area,preparedView.source.refdef.time,preparedViewIndex*2+1);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
       preparedViewIndex=preparedViewIndex+1
     end for

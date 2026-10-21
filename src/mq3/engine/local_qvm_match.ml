@@ -99,6 +99,7 @@ import mq3.vm.pc_parser as pcParser
 import mq3.client.cinematic_runtime as cinematics
 import mq3.client.cgame_usercmd as cgameUsercmd
 import mq3.client.command_ring as matchCommandRing
+import mq3.client.cgame_console_commands as nativeCgameCommands
 import mq3.client.ui_lan_browser as uiLan
 import mq3.client.ui_lan_cache as uiLanCache
 import mq3.client.ui_lan_ingress as uiLanIngress
@@ -130,7 +131,7 @@ struct FileCursor data offset end struct
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
 struct RenderView refdef scene end struct
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient end struct
+struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands end struct
 struct Boot game runtime context cgame ui end struct
 struct Snapshot serverTime playerState entities end struct
 
@@ -626,7 +627,7 @@ function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
   botBspEntities=bsp.entities(map);if botBspEntities is error then return botBspEntities end if
   commandState=commands.create();configstrings=array(MAX_CONFIGSTRINGS,"");cgameServerCommands=serverCommandStream.create(commandState,configstrings)
   uiClient=uiHost.createClientState(uiHost.CA_DISCONNECTED,0,-1,"localhost","","");if uiClient is error then return uiClient end if
-  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient)
+  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create())
   commands.initCommands(context.commandState);installed=cvarCommands.install(registry,context.commandState);if installed is error then return installed end if
   context.aasMovement=aasClientMovement.services(context);context.aasMovement.traceFn=aasMovementTrace;context.aasMovement.pointContentsFn=aasPointContents;context.aasMovement.pointAreaFn=aasMovementPointArea;context.aasMovement.pointPresenceFn=aasMovementPointPresence;context.aasMovement.areaContentsFn=aasMovementAreaContents;context.aasMovement.traceAreasFn=aasMovementTraceAreas
   context.elementaryActions=elementaryActions.create(MAX_CLIENTS,botClientCommand,context)
@@ -691,6 +692,18 @@ end function
 // trap_Args read while the QVM export is running.
 function clientGameCommand(commandState)
   value=commandState.context;if value==void or value.cgame==void then return false end if
+  name=commands.argv(commandState,0)
+  if nativeCgameCommands.isNativeBaseCommand(name) then
+    target=-1;attacker=-1
+    if commands.sameInsensitive(name,"tcmd") or commands.sameInsensitive(name,"tell_target") or commands.sameInsensitive(name,"vtell_target") then target=cgameVm.crosshairPlayer(value.cgame);if target is error then return target end if end if
+    if commands.sameInsensitive(name,"tell_attacker") or commands.sameInsensitive(name,"vtell_attacker") then attacker=cgameVm.lastAttacker(value.cgame);if attacker is error then return attacker end if end if
+    native=nativeCgameCommands.dispatchBase(value.context.cvars,commandState,target,attacker,value.context.nativeCgameCommands)
+    for each pair in native.cvarSets cvar.set2(value.context.cvars,pair[0],pair[1],false) end for
+    for each text in native.consoleCommands commands.executeText(value.context.commandState,commands.EXEC_APPEND,text) end for
+    for each text in native.clientCommands sendClientCommand(value.context,text) end for
+    for each text in native.prints emitPrint(value.context,text) end for
+    return true
+  end if
   result=cgameVm.consoleCommand(value.cgame);if result is error then return result end if;return result!=0
 end function
 function serverGameCommand(commandState)
@@ -1071,12 +1084,12 @@ function bootCgame(value)
   value.cgame=client;context.commandState.context=value;context.commandState.clientRunning=true;context.commandState.serverRunning=true
   context.commandState.clientGameCommandFn=clientGameCommand;context.commandState.serverGameCommandFn=serverGameCommand;context.commandState.uiGameCommandFn=uiGameCommand;context.commandState.forwardCommandFn=forwardClientCommand
   processedSnapshot=context.snapshotNumber-1;if processedSnapshot<0 then processedSnapshot=0 end if
-  cgameVm.initialize(client,processedSnapshot,context.cgameServerCommands.lastExecuted,0,0,0);return client
+  cgameVm.initialize(client,processedSnapshot,context.cgameServerCommands.lastExecuted,0,0,0);nativeCgameCommands.syncVmCvars(context.nativeCgameCommands,context.cvars);return client
 end function
 
 function drawCgame(value,serverTime)
   if value==void or value.cgame==void then return fail("cgame is not active") end if
-  value.context.now=serverTime;value.context.renderViews=[];return cgameVm.drawActiveFrame(value.cgame,serverTime,0,false)
+  value.context.now=serverTime;value.context.renderViews=[];drawn=cgameVm.drawActiveFrame(value.cgame,serverTime,0,false);if drawn is error then return drawn end if;nativeCgameCommands.syncVmCvars(value.context.nativeCgameCommands,value.context.cvars);return drawn
 end function
 
 function uiClipboard(context) return "" end function
@@ -1092,6 +1105,9 @@ function uiClearKeys(context) return cgameKeys.clearStates(context.cgameKeys) en
 function uiGetCatcher(context) return cgameKeys.getCatcher(context.cgameKeys) end function
 function uiSetCatcher(context,value) context.uiKeyCatcher=value;cgameKeys.setCatcher(context.cgameKeys,value);return void end function
 function setKeyDown(value,key,down) if value==void or value.context==void then return false end if;return cgameKeys.setDown(value.context.cgameKeys,key,down) end function
+function keyBinding(value,key) if value==void or value.context==void then return "" end if;return cgameKeys.getBinding(value.context.cgameKeys,key) end function
+function setKeyBinding(value,key,text) if value==void or value.context==void then return false end if;return cgameKeys.setBinding(value.context.cgameKeys,key,text) end function
+function queueInputCommand(value,text) if value==void or value.context==void then return false end if;commands.addText(value.context.commandState,text);return true end function
 function keyCatcher(value) if value==void or value.context==void then return 0 end if;return cgameKeys.getCatcher(value.context.cgameKeys) end function
 function uiUnique(values,value)
   for each current in values if strings.toLowerAscii(current)==strings.toLowerAscii(value) then return values end if end for

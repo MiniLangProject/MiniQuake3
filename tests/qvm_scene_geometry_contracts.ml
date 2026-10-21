@@ -51,6 +51,14 @@ function main(args)
   culledGeometry=geometry.buildRecordsWithFrameCacheReuseCulled(scene.sceneEntities(culledState),scene.scenePolys(culledState),["model"],[inlineModel],cullRefdef,8,cullCache,void,void);if culledGeometry is error then return culledGeometry end if
   count=count+req(len(culledGeometry.triangles)==1 and culledGeometry.modelEntities==1 and culledGeometry.culledInline==1,"R_AddBrushModelSurfaces frustum culls only the rear inline model")
   count=count+req(culledGeometry.triangles[0].positions[0]==[11.0,0.0,0.0],"visible inline model retains exact transformed geometry after culling")
+  stencilState=scene.create(1,0);stencilState.registered=true;scene.addEntity(stencilState,0,basePayload([10.0,0.0,0.0]));stencilCache=geometry.createFrameCache(void,4)
+  stencilGeometry=geometry.buildRecordsWithFrameCacheReuseCulledShadows(scene.sceneEntities(stencilState),scene.scenePolys(stencilState),["model"],[fixtureModel()],cullRefdef,8,stencilCache,void,void,2);if stencilGeometry is error then return stencilGeometry end if
+  count=count+req(stencilGeometry.shadowTriangleCount==6 and stencilGeometry.shadowTriangles[0].entityIndex==0 and stencilGeometry.shadowTriangles[0].surfaceIndex==0,"cg_shadows 2 retains six stencil side triangles for an unpaired MD3 triangle")
+  noShadowState=scene.create(2,0);noShadowState.registered=true;noShadowPayload=basePayload([10.0,0.0,0.0]);n.writeU32(noShadowPayload,4,64);scene.addEntity(noShadowState,0,noShadowPayload);depthHackPayload=basePayload([10.0,0.0,0.0]);n.writeU32(depthHackPayload,4,8);scene.addEntity(noShadowState,0,depthHackPayload)
+  noShadowGeometry=geometry.buildRecordsWithFrameCacheReuseCulledShadows(scene.sceneEntities(noShadowState),scene.scenePolys(noShadowState),["model"],[fixtureModel()],cullRefdef,8,stencilCache,void,void,2);if noShadowGeometry is error then return noShadowGeometry end if
+  count=count+req(noShadowGeometry.shadowTriangleCount==0,"RF_NOSHADOW and RF_DEPTHHACK suppress stencil shadow volumes")
+  disabledStencil=geometry.buildRecordsWithFrameCacheReuseCulledShadows(scene.sceneEntities(stencilState),scene.scenePolys(stencilState),["model"],[fixtureModel()],cullRefdef,8,stencilCache,void,stencilGeometry,1);if disabledStencil is error then return disabledStencil end if
+  count=count+req(disabledStencil.shadowTriangleCount==0 and len(disabledStencil.shadowTriangles)==0,"cg_shadows values other than 2 keep stencil volume storage disabled")
   bad=scene.create(1,0);bad.registered=true;n.writeU32(modelPayload,80,2);scene.addEntity(bad,0,modelPayload)
   repaired=geometry.build(bad,["model"],[fixtureModel()],refdef,8);if repaired is error then return repaired end if
   count=count+req(repaired.triangles[0].positions[0]==[11.0,20.0,30.0],"invalid animation repairs both frames to zero")

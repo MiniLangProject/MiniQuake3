@@ -16,6 +16,17 @@ static void drawUiTriangle(int textureSlot) {
         255, 255, 255);
 }
 
+static void drawStencilTriangle(int frontFacing) {
+    if (frontFacing) {
+        playable_window_draw_triangle(-1,
+            1.0, 1.0, 2.0, 0.0, 0.0, 1.0,
+            1.0, 7.0, 2.0, 0.0, 0.0, 1.0,
+            7.0, 1.0, 2.0, 0.0, 0.0, 1.0, 255, 255, 255);
+    } else {
+        drawUiTriangle(-1);
+    }
+}
+
 static void drawUiTriangleUv(int textureSlot, double u) {
     playable_window_draw_triangle(textureSlot,
         1.0, 1.0, 2.0, u, 0.0, 1.0,
@@ -45,6 +56,7 @@ int main(void) {
     };
     const SIZE_T sample = 2u * 8u + 2u;
     float clearedDepth;
+    int stencilIteration;
 
     if (!allocateSurface(8, 8) ||
             !playable_window_upload_texture(0, halfRed, 1, 1) ||
@@ -226,6 +238,44 @@ int main(void) {
     playable_window_begin_frame(0, 0, 0);
     drawUiTriangle(-1);
     if (pixels[sample] != UINT32_C(0xffffffff)) return 49;
+
+    /* RB_ShadowTessEnd uses separate front/back stencil passes and reverses
+     * their culling for mirrors. RB_ShadowFinish multiplies every non-zero
+     * stencil pixel by 0.6 exactly once. */
+    playable_window_begin_frame(100, 150, 200);
+    if (!playable_window_clear_stencil(0, 0, 8, 8) ||
+            playable_window_clear_stencil(-1, 0, 8, 8) ||
+            playable_window_set_stencil_pass(5)) return 53;
+    if (!playable_window_set_stencil_pass(1)) return 54;
+    for (stencilIteration = 0; stencilIteration < 300; ++stencilIteration) drawStencilTriangle(1);
+    if (stencilPixels[sample] != 255 ||
+            !playable_window_clear_stencil(0, 0, 8, 8)) return 70;
+    drawStencilTriangle(1);
+    if (stencilPixels[sample] != 1) return 55;
+    if (!playable_window_clear_stencil(0, 0, 8, 8) ||
+            !playable_window_set_stencil_pass(2)) return 67;
+    drawStencilTriangle(0);
+    if (stencilPixels[sample] != 0) return 68;
+    if (!playable_window_set_stencil_pass(1)) return 69;
+    drawStencilTriangle(1);
+    if (!playable_window_set_stencil_pass(2)) return 56;
+    drawStencilTriangle(1);
+    if (stencilPixels[sample] != 1) return 57;
+    drawStencilTriangle(0);
+    if (stencilPixels[sample] != 0) return 58;
+    if (!playable_window_set_stencil_pass(3)) return 59;
+    drawStencilTriangle(0);
+    if (stencilPixels[sample] != 1) return 60;
+    if (!playable_window_set_stencil_pass(4)) return 61;
+    drawStencilTriangle(1);
+    if (stencilPixels[sample] != 0) return 62;
+    if (!playable_window_clear_stencil(0, 0, 8, 8) ||
+            !playable_window_set_stencil_pass(1)) return 63;
+    drawStencilTriangle(1);
+    if (!playable_window_set_stencil_pass(0)) return 64;
+    if (playable_window_finish_stencil_shadow(0, 0, 8, 8) <= 0 ||
+            pixels[sample] != UINT32_C(0xff3c5a78)) return 65;
+    if (playable_window_finish_stencil_shadow(-1, 0, 8, 8) != -1) return 66;
 
     playable_window_shutdown();
     puts("playable window raster-state regression: PASS");

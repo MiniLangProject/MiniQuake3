@@ -60,6 +60,14 @@ function main(args)
   rejectedShadow=sourceTriangle(14.0,white,white,0);rejectedShadow.shaderName=sceneBatch.PROJECTION_SHADOW_SHADER;shadowPolicy=catalogFor([sourceTriangle(13.0,white,white,0),rejectedShadow],[]);shadowPrepared=sceneBatch.build(shadowPolicy);if shadowPrepared is error then return shadowPrepared end if
   count=count+require(shadowPrepared.geometry.triangleCount==1 and shadowPrepared.geometry.triangles[0].vertices[0].position[0]==13.0,"material-rejected projection shadow is omitted instead of rendered as fallback geometry")
 
+  opaqueSource=sourceTriangle(15.0,white,white,1);opaqueSource.fogIndex= -1;shadowSide=sceneGeometry.ShadowTriangle([[15.0,0.0,0.0],[15.0,0.0,-512.0],[15.0,1.0,0.0]],0,0);shadowScene=sceneGeometry.Geometry([],0,1,0,0,0,0,3,3,[],0,[shadowSide],1)
+  opaqueCatalog=catalogFor([opaqueSource],[material]);stencilPrepared=sceneBatch.buildWithGeometry(opaqueCatalog,shadowScene);if stencilPrepared is error then return stencilPrepared end if
+  count=count+require(stencilPrepared.shadowCount==1 and stencilPrepared.shadowBatch.count==1,"opaque unfogged MD3 surfaces reach the retained stencil batch")
+  opaqueCatalog.materials[0].sort=9.0;stencilRefreshed=sceneBatch.refreshWithGeometry(stencilPrepared,opaqueCatalog,shadowScene);if stencilRefreshed is error then return stencilRefreshed end if
+  count=count+require(stencilRefreshed.shadowCount==0 and stencilRefreshed.shadowBatch==void,"blended MD3 surfaces reject stencil shadows like R_AddMD3Surfaces")
+  foggedSource=sourceTriangle(16.0,white,white,1);foggedCatalog=catalogFor([foggedSource],[material]);foggedPrepared=sceneBatch.buildWithGeometry(foggedCatalog,shadowScene);if foggedPrepared is error then return foggedPrepared end if
+  count=count+require(foggedPrepared.shadowCount==0,"fogged MD3 surfaces do not enter the stencil volume batch")
+
   larger=catalogFor([sourceTriangle(3.0,white,white,0),sourceTriangle(4.0,white,white,0)],[]);rebuilt=sceneBatch.refresh(refreshed,larger);if rebuilt is error then return rebuilt end if
   count=count+require(rebuilt.batch.base.capacity==2 and rebuilt.batch.base.count==2,"topology growth falls back to a full build")
   print("PASS: "+str(count)+" QVM scene batch contracts");return 0

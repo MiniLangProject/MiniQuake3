@@ -3527,18 +3527,312 @@
           ],
           "status": "tested_exact",
           "scope": "The productive command registry now preserves Cgame completion-only registrations and dispatches its shared token state through CG_CONSOLE_COMMAND before server-game, UI and connected-server forwarding. Nine records from the unchanged CG_ConsoleCommand body match the retail QVM, and the Retail pak0/QVM probe verifies 63 registered commands, sizeup side effects and unknown-command forwarding. Individual command bodies remain owned by the unchanged retail Cgame QVM rather than native MiniLang functions."
+        },
+        {
+          "original": "CG_TargetCommand_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
+        },
+        {
+          "original": "CG_SizeUp_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
+        },
+        {
+          "original": "CG_SizeDown_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
+        },
+        {
+          "original": "CG_Viewpos_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
+        },
+        {
+          "original": "CG_ScoresDown_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
+        },
+        {
+          "original": "CG_ScoresUp_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
+        },
+        {
+          "original": "CG_TellTarget_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
+        },
+        {
+          "original": "CG_TellAttacker_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
+        },
+        {
+          "original": "CG_VoiceTellTarget_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
+        },
+        {
+          "original": "CG_VoiceTellAttacker_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
+        },
+        {
+          "original": "CG_StartOrbit_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
+        },
+        {
+          "original": "CG_LoadHud_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_scrollScoresDown_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_scrollScoresUp_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_spWin_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_spLose_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_NextTeamMember_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_PrevTeamMember_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_NextOrder_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_ConfirmOrder_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_DenyOrder_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_TaskOffense_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_TaskDefense_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_TaskPatrol_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_TaskCamp_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_TaskFollow_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_TaskRetrieve_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_TaskEscort_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_TaskOwnFlag_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_TaskSuicide_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_TauntKillInsult_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_TauntPraise_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_TauntTaunt_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_TauntDeathInsult_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+        },
+        {
+          "original": "CG_TauntGauntlet_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "status": "ported",
+          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
         }
       ],
       "target": [
-        "src/mq3/qcommon/command_buffer.ml",
+        "src/mq3/client/cgame_console_commands.ml",
         "src/mq3/client/cgame_vm.ml",
-        "src/mq3/engine/local_qvm_match.ml"
+        "src/mq3/engine/local_qvm_match.ml",
+        "src/mq3/qcommon/command_buffer.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_cgame_console_commands.py",
-        "tests/reference/cgame_console_command_oracle.c",
-        "tests/cgame_console_command_retail_probe.ml"
+        "tests/cgame_console_bodies_oracle.ml",
+        "tests/cgame_console_command_retail_probe.ml",
+        "tests/reference/cgame_console_bodies_oracle.c",
+        "tests/reference/cgame_console_command_oracle.c"
       ]
     },
     {
@@ -4789,7 +5083,7 @@
             "src/mq3/client/qvm_preview_app.ml"
           ],
           "status": "tested_subset",
-          "scope": "The productive retail-QVM path uses Baseq3 dual-source button timing, fractional key states, walk/run movement, keyboard angles, filtered and accelerated mouse input, cgame sensitivity, joystick axes, transient button bits, pitch-delta clamp and final command fields. The Win32 UI thread queues timestamped key, mouse-button and mouse-motion transitions in a thread-safe 256-entry overwrite-oldest ring and the client applies them at the matching simulation tick. Five unchanged-C records plus 38 MiniLang contracts and native lifecycle/FIFO/overflow tests pass; configurable bindings and outer command-ring cadence remain host work."
+          "scope": "The productive retail-QVM path uses Baseq3 dual-source button timing, fractional key states, walk/run movement, keyboard angles, filtered and accelerated mouse input, cgame sensitivity, joystick axes, transient button bits, pitch-delta clamp and final command fields. The Win32 UI thread queues timestamped key, mouse-button and mouse-motion transitions in a thread-safe 256-entry overwrite-oldest ring and the client applies them at the matching simulation tick. Five unchanged-C records plus 38 MiniLang contracts and native lifecycle/FIFO/overflow tests pass; gameplay bindings now come from the shared ui.qvm-writable key table; console catcher editing remains separate host work."
         },
         {
           "original": "CL_CreateNewCommands / CL_ReadyToSendPacket / CL_WritePacket / CL_SendCmd",
@@ -4878,19 +5172,38 @@
           ],
           "status": "tested_subset",
           "scope": "A shared 256-key state provides bounds-checked down state, bindings, exact Baseq3 textual key names and reverse parsing, overstrike state, clear-state behavior, case-insensitive first-binding lookup and catcher ownership to UI and cgame. The productive Original-UI controls menu receives real key labels instead of empty strings. All 259 key-number edge/value records, four cgame ABI records and 37 contracts pass. Console editing and full bind command ownership remain open."
+        },
+        {
+          "original": "CL_KeyEvent / CL_AddKeyUpCommands gameplay binding dispatch",
+          "target_files": [
+            "src/mq3/client/key_binding_dispatch.ml",
+            "src/mq3/client/input_command_events.ml",
+            "src/mq3/client/qvm_preview_app.ml",
+            "src/mq3/engine/local_qvm_match.ml",
+            "src/mq3/vm/cgame_key_traps.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The productive retail-QVM path reads the binding table shared with ui.qvm, translates native virtual keys to Quake key numbers, expands timestamped +/- and semicolon compound commands with Baseq3 release behavior, and applies every movement, mlook, attack and button target to CL_CreateCmd state. Six unchanged-C records and 14 integration contracts pass. Console/message catcher editing and config.cfg binding loading remain open."
         }
       ],
       "target": [
         "src/mq3/vm/cgame_key_traps.ml",
         "src/mq3/engine/local_qvm_match.ml",
-        "src/mq3/engine/local_qvm_ui.ml"
+        "src/mq3/engine/local_qvm_ui.ml",
+        "src/mq3/client/key_binding_dispatch.ml",
+        "src/mq3/client/input_command_events.ml",
+        "src/mq3/client/qvm_preview_app.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_cgame_key_traps.py",
         "tests/cgame_key_traps_contracts.ml",
         "tests/reference/cgame_key_traps_oracle.c",
-        "tests/cgame_key_traps_oracle.ml"
+        "tests/cgame_key_traps_oracle.ml",
+        "scripts/test_key_binding_dispatch.py",
+        "tests/reference/key_binding_dispatch_oracle.c",
+        "tests/key_binding_dispatch_oracle.ml",
+        "tests/key_binding_dispatch_contracts.ml"
       ]
     },
     {
@@ -19164,24 +19477,34 @@
           "original": "RB_ProjectionShadowDeform and R_AddMD3Surfaces projection policy",
           "minilang": "qvm_scene_geometry.projectionShadowPointOriented, qvm_scene_materials.projectionShadowEligible, qvm_scene_batch.renderable",
           "status": "tested_exact",
-          "scope": "Entity-local projection uses the original ground vector, ground distance, shallow-light clamp and world transform for rotated/non-normalized axes. Material resolution admits only unfogged SS_OPAQUE sources and rejected projection triangles cannot render as fallback geometry. Five unchanged-C deformation records plus 45 geometry, 22 material and 16 batch contracts pass."
+          "scope": "Entity-local projection uses the original ground vector, ground distance, shallow-light clamp and world transform for rotated/non-normalized axes. Material resolution admits only unfogged SS_OPAQUE sources and rejected projection triangles cannot render as fallback geometry. Five unchanged-C deformation records plus 48 geometry, 22 material and 19 batch contracts pass."
         },
         {
           "original": "R_AddEdgeDef, R_RenderShadowEdges, RB_ShadowTessEnd and RB_ShadowFinish",
-          "status": "not_started",
-          "scope": "Stencil silhouette volumes, front/back stencil accounting, fullscreen 0.6 darkening and the stencil-only RF_NOSHADOW/RF_DEPTHHACK/fog policy remain absent."
+          "minilang": "qvm_scene_geometry.shadowVolumeSides, qvm_scene_batch.buildShadowBatch/drawStencilShadows, playable_window stencil raster API",
+          "status": "tested_exact",
+          "scope": "cg_shadows 2 builds the original directed-edge silhouette sides, extrudes them 512 units in entity-local light direction, excludes RF_NOSHADOW/RF_DEPTHHACK and non-opaque or fogged sources, performs normal and mirror-reversed saturating increment/decrement passes, then applies the single 0.6 framebuffer multiply from RB_ShadowFinish. Three unchanged-C records, 48 geometry contracts, 19 batch contracts, a 336-triangle Retail-MD3 probe and the native /W4 /WX stencil raster regression pass. R_ComputeFogNum itself remains tracked in tr_mesh.c."
         }
       ],
       "target": [
         "src/mq3/renderer/qvm_scene_geometry.ml",
         "src/mq3/renderer/qvm_scene_materials.ml",
-        "src/mq3/renderer/qvm_scene_batch.ml"
+        "src/mq3/renderer/qvm_scene_batch.ml",
+        "src/mq3/platform/playable_window.ml",
+        "native/playable_win32.c",
+        "src/mq3/client/qvm_preview_app.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_projection_shadow.py",
         "tests/reference/projection_shadow_oracle.c",
         "tests/projection_shadow_oracle.ml",
+        "scripts/test_stencil_shadows.py",
+        "tests/reference/stencil_shadow_oracle.c",
+        "tests/stencil_shadow_oracle.ml",
+        "tests/stencil_shadow_retail_probe.ml",
+        "scripts/playable_window_build_test.py",
+        "tests/playable_window_raster_state_native.c",
         "scripts/test_qvm_scene_geometry.py",
         "tests/qvm_scene_geometry_contracts.ml",
         "scripts/test_qvm_scene_materials.py",

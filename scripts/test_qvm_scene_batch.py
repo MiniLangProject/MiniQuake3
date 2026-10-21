@@ -12,7 +12,7 @@ def main():
         check=True,
     )
     value = run([ROOT / "build/qvm_scene_batch_contracts.exe"], ROOT / "build").strip()
-    if value != "PASS: 16 QVM scene batch contracts":
+    if value != "PASS: 19 QVM scene batch contracts":
         raise RuntimeError(value)
     print(value)
 

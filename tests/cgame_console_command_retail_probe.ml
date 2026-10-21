@@ -40,7 +40,7 @@ function main(args)
   before=cvar.get(state.context.cvars,"cg_viewsize","100",0).integer
   executed=match.executeClientConsole(state,"sizeup");if executed is error then return executed end if
   after=cvar.find(state.context.cvars,"cg_viewsize").integer
-  if after==before or after!=110 then return error(7698,"sizeup did not execute through Cmd_ExecuteString and CG_CONSOLE_COMMAND") end if
+  if after==before or after!=110 then return error(7698,"sizeup did not execute through Cmd_ExecuteString and CG_CONSOLE_COMMAND before="+str(before)+" after="+str(after)) end if
   consoleStart=len(state.context.console);executed=match.executeClientConsole(state,"unhandled_console_probe alpha");if executed is error then return executed end if
   if len(state.context.console)!=consoleStart+1 or state.context.console[len(state.context.console)-1][1]!="client unhandled_console_probe alpha" then return error(7698,"unknown command was not forwarded to the server") end if
   if len(state.context.errors)>0 then return error(7698,state.context.errors[0]) end if
