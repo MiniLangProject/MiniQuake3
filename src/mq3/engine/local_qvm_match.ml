@@ -82,6 +82,7 @@ import mq3.botlib.ai_avoid_spots as aiAvoidSpots
 import mq3.botlib.ai_avoid_spot_syscalls as aiAvoidSpotSyscalls
 import mq3.botlib.server_bridge as botServerBridge
 import mq3.botlib.aas_client_movement as aasClientMovement
+import mq3.botlib.aas_client_trace as aasClientTrace
 import mq3.botlib.aas_client_movement_syscalls as aasClientMovementSyscalls
 import mq3.botlib.aas_trace_areas as aasTraceAreas
 import mq3.renderer.playable_light_grid as lightGrid
@@ -339,9 +340,14 @@ function aasPointContents(context,point) return pointContents(context,point,-1) 
 function aasMovementTrace(context,start,finish,presence,passEntity)
   bounds=aasRuntime.presenceTypeBoundingBox(presence);if bounds is error then return bounds end if
   ignored=passEntity;if ignored<0 then ignored=1023 end if
-  result=serverWorld.trace(context.spatialScene,start,finish,bounds[0],bounds[1],ignored,aasClientMovement.CONTENTS_SOLID,false);trace=result.trace
-  area=aasRuntime.pointAreaNum(context.aas,result.endpos)
-  return aasClientMovement.Trace(trace.startsolid,trace.fraction,result.endpos,result.entityNum,area,0,trace.planeMetadata,trace.normal)
+  staticTrace=aasClientTrace.trace(context.aas,start,finish,presence);if staticTrace is error then return staticTrace end if
+  // AAS areas encode static solid/playerclip presence. Keep the server-world
+  // trace only for linked entities, matching AAS_AreaEntityCollision.
+  dynamic=void;if passEntity>=0 then dynamic=serverWorld.trace(context.spatialScene,start,finish,bounds[0],bounds[1],ignored,0x10001,false) end if
+  if dynamic!=void and dynamic.entityNum!=1022 and dynamic.entityNum!=1023 and (dynamic.trace.startsolid or dynamic.trace.fraction<staticTrace.fraction) then
+    return aasClientMovement.Trace(dynamic.trace.startsolid,dynamic.trace.fraction,dynamic.endpos,dynamic.entityNum,0,0,dynamic.trace.planeMetadata,dynamic.trace.normal)
+  end if
+  return aasClientMovement.Trace(staticTrace.startsolid,staticTrace.fraction,staticTrace.endpos,staticTrace.ent,staticTrace.lastarea,staticTrace.area,staticTrace.planenum,staticTrace.normal)
 end function
 function aasMovementPointArea(context,point) return aasRuntime.pointAreaNum(context.aas,point) end function
 function aasMovementPointPresence(context,point) return aasRuntime.pointPresenceType(context.aas,point) end function

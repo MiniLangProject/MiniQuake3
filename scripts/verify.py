@@ -98,6 +98,7 @@ def main():
     scripts.append(("test_ai_console_messages.py",[]))
     scripts.append(("test_aas_entity_queries.py",[]))
     scripts.append(("test_aas_client_movement.py",[]))
+    scripts.append(("test_aas_client_trace.py",[]))
     scripts.append(("test_roq_cinematics.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_scene_queue.py",[]))
     scripts.append(("test_qvm_scene_geometry.py",[]))

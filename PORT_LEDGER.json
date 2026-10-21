@@ -724,20 +724,24 @@
           "original": "implemented runtime subset",
           "target_files": [
             "src/mq3/botlib/aas_runtime.ml",
-            "src/mq3/botlib/aas_trace_areas.ml"
+            "src/mq3/botlib/aas_trace_areas.ml",
+            "src/mq3/botlib/aas_client_trace.ml"
           ],
           "status": "tested_subset",
-          "scope": "PointAreaNum, presence bounds/type, BBoxAreas and TraceAreas run on retail q3dm1; full client bbox tracing remains open."
+          "scope": "PointAreaNum, presence bounds/type, BBoxAreas, TraceAreas and the static AAS_TraceClientBBox traversal run in the retail bot path; area-link heap management and face helpers remain open."
         }
       ],
       "target": [
         "src/mq3/botlib/aas_runtime.ml",
-        "src/mq3/botlib/aas_trace_areas.ml"
+        "src/mq3/botlib/aas_trace_areas.ml",
+        "src/mq3/botlib/aas_client_trace.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_aas_runtime.py",
-        "scripts/test_aas_trace_areas.py"
+        "scripts/test_aas_trace_areas.py",
+        "scripts/test_aas_client_trace.py",
+        "scripts/test_bot_spawn_retail.py"
       ]
     },
     {

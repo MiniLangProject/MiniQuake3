@@ -110,9 +110,14 @@ keine spätere, um fünf Zeiteinheiten teurere Reachability festhält; die gepr�
 Walk-Route bleibt dadurch bei Reisezeit 118 und Reachability 1.235, die
 Rocket-Route bei 302 und 1.234. Offen bleibt die noch kompaktere interne
 Reachability-Ablage. Die
-Movement-Prediction benutzt für Kollisionen derzeit die Server-BSP-Grenze;
-Presence-Sperren, Playerclip und die exakten AAS-Trace-Felder müssen noch auf den
-originalen AAS-Node-Trace umgestellt werden. Die Best-Reachable-Area-Suche nutzt
+Movement-Prediction läuft nun durch den originalen iterativen
+`AAS_TraceClientBBox`-Knotenpfad: Solid-Leaves, Presence-Sperren, die
+0,125-Unit-Plane-Epsilon, `lastarea`, Treffer-Area, Plane-Ausrichtung und
+Startsolid werden aus der Retail-AAS gewonnen. Die AAS-Presence-Areas bilden
+damit auch statisches Playerclip ab; bei nichtnegativer Pass-Entity wird wie im
+Original zusätzlich gegen verlinkte Server-Entities geprüft. Acht synthetische
+Grenzverträge und der 512-Frame-Retail-Sarge-Lauf sichern diesen produktiven
+Pfad. Die Best-Reachable-Area-Suche nutzt
 bereits die originale Fünf-mal-fünf-Fudge-Suche, den 50-Unit-Crouch-Drop und
 Bounding-Box-Areas; der Sonderweg für frei schwebende Items, die ausschließlich
 von einem Jumppad erreichbar sind, braucht noch die vollständige
@@ -140,6 +145,7 @@ python scripts/test_botlib_retail_qagame.py --data-root D:/Quake3 --qvm-root bui
 python scripts/test_elementary_actions.py
 python scripts/test_aas_entity_queries.py
 python scripts/test_aas_trace_areas.py --pak D:/Quake3/baseq3/pak0.pk3
+python scripts/test_aas_client_trace.py
 python scripts/test_ai_characters.py --pak D:/Quake3/baseq3/pak0.pk3
 python scripts/test_ai_resource_pools.py
 python scripts/test_ai_goal_state.py
