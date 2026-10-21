@@ -101,6 +101,11 @@ import mq3.client.cgame_usercmd as cgameUsercmd
 import mq3.client.command_ring as matchCommandRing
 import mq3.client.cgame_console_commands as nativeCgameCommands
 import mq3.client.cgame_snapshot as nativeCgameSnapshot
+import mq3.client.cgame_predict as nativeCgamePredict
+import mq3.game.movement as nativeMovement
+import mq3.game.trajectory as gameTrajectory
+import mq3.client.cgame_event as nativeCgameEvent
+import mq3.client.cgame_playerstate as nativeCgamePlayerstate
 import mq3.client.key_bindings_config as bindingConfig
 import mq3.client.console_input as consoleInput
 import mq3.client.ui_lan_browser as uiLan
@@ -134,7 +139,7 @@ struct FileCursor data offset end struct
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
 struct RenderView refdef scene end struct
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots end struct
+struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents end struct
 struct Boot game runtime context cgame ui end struct
 struct Snapshot serverTime playerState entities end struct
 
@@ -636,7 +641,7 @@ function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
   botBspEntities=bsp.entities(map);if botBspEntities is error then return botBspEntities end if
   commandState=commands.create();configstrings=array(MAX_CONFIGSTRINGS,"");cgameServerCommands=serverCommandStream.create(commandState,configstrings)
   uiClient=uiHost.createClientState(uiHost.CA_DISCONNECTED,0,-1,"localhost","","");if uiClient is error then return uiClient end if
-  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024))
+  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024))
   commands.initCommands(context.commandState);installed=cvarCommands.install(registry,context.commandState);if installed is error then return installed end if
   bindingState=bindingConfig.create(context.cgameKeys);bindingState.printFn=emitPrint;bindingState.printContext=context
   installed=bindingConfig.install(bindingState,context.commandState);if installed is error then return installed end if
@@ -765,6 +770,29 @@ function snapshotWriteAreaBits(host,bits,area) return visibility.writeAreaBits(h
 function snapshotClusterPvs(host,cluster) return visibility.clusterPVS(host.context.collisionWorld.visibility,cluster) end function
 function snapshotAreasConnected(host,first,second) return visibility.areasConnected(host.context.collisionWorld.visibility,first,second) end function
 
+function nativePredictionResult(result,entityNum) return nativeMovement.Collision(result.trace,result.endpos,entityNum) end function
+function nativePredictionWorldTrace(host,start,mins,maxs,finish,mask)
+  value=collision.boxTrace(host.context.collisionWorld,start,finish,mins,maxs,0,mask,false);if value is error then return value end if;entityNum=1023;if value.trace.fraction!=1.0 then entityNum=1022 end if;return nativePredictionResult(value,entityNum)
+end function
+function nativePredictionEntityTrace(host,value,start,mins,maxs,finish,mask)
+  ent=value.state;model=0;origin=value.lerpOrigin;angles=[0.0,0.0,0.0]
+  if ent.solid==nativeCgamePredict.SOLID_BMODEL then model=ent.modelindex;angles=value.lerpAngles;origin=gameTrajectory.evaluate(ent.pos,host.context.nativeSnapshots.prediction.physicsTime);if origin is error then return origin end if
+  else x=ent.solid&255;down=(ent.solid>>8)&255;up=((ent.solid>>16)&255)-32;model=collision.tempBoxModel(host.context.collisionWorld,[-x*1.0,-x*1.0,-down*1.0],[x*1.0,x*1.0,up*1.0],false);if model is error then return model end if end if
+  result=collision.transformedTrace(host.context.collisionWorld,start,finish,mins,maxs,model,mask,origin,angles,false,host.context.collisionWorld.patchesReady);if result is error then return result end if;return nativePredictionResult(result,ent.number)
+end function
+function nativePredictionWorldPoint(host,point) return collision.pointContents(host.context.collisionWorld,point,0) end function
+function nativePredictionEntityPoint(host,value,point) ent=value.state;return collision.transformedPointContents(host.context.collisionWorld,point,ent.modelindex,ent.origin,ent.angles) end function
+function nativePredictionTriggerTouch(host,value,origin,mins,maxs)
+  result=collision.boxTrace(host.context.collisionWorld,origin,origin,mins,maxs,value.state.modelindex,-1,false);if result is error then return result end if;return result.trace.startsolid
+end function
+function nativePredictionMover(host,origin,ground,fromTime,toTime) return [origin[0],origin[1],origin[2]] end function
+function nativePredictionServices(context)
+  host=nativeCgamePredict.services(context);host.worldTraceFn=nativePredictionWorldTrace;host.entityTraceFn=nativePredictionEntityTrace;host.worldPointFn=nativePredictionWorldPoint;host.entityPointFn=nativePredictionEntityPoint;host.triggerTouchFn=nativePredictionTriggerTouch;host.moverAdjustFn=nativePredictionMover;return host
+end function
+function nativePredictionCommands(context)
+  result=[];first=context.commandNumber-63;for number=first to context.commandNumber command=matchCommandRing.get(context.usercmdHistory,context.commandNumber,number);if command is error then return command end if;if command!=void then result=result+[command] end if end for;return result
+end function
+
 function snapshot(value,clientNum)
   if value==void or clientNum<0 or clientNum>=MAX_CLIENTS then return fail("valid match and client are required") end if
   context=value.context;machine=value.game.slot.machine
@@ -781,7 +809,21 @@ function snapshot(value,clientNum)
   entities=[]
   if frame.numEntities>0 then for index=0 to frame.numEntities-1 entities=entities+[buildWorld.ring[(frame.firstEntity+index)%buildWorld.ringCapacity]] end for end if
   result=Snapshot(context.now,ps,entities);context.latestSnapshot=result;context.snapshotNumber=context.snapshotNumber+1
+  initial=context.nativeSnapshots.snap==void;transitionStart=len(context.nativeSnapshots.playerStateTransitions)
   observed=nativeCgameSnapshot.publish(context.nativeSnapshots,context.snapshotNumber,result,0,context.cgameServerCommands.commandSequence,context.now);if observed is error then return observed end if
+  // Validate the same snapshot/usercmd boundary as cgame.qvm on copied state.
+  // This observer shares native Pmove/collision without dispatching effects.
+  if context.nativeSnapshots.prediction==void then context.nativeSnapshots.prediction=nativeCgamePredict.create() end if
+  commandList=nativePredictionCommands(context);if commandList is error then return commandList end if;predictionGameType=0;predictionSetting=cvar.find(context.cvars,"g_gametype");if predictionSetting!=void then predictionGameType=predictionSetting.integer end if;predictionFixed=false;predictionSetting=cvar.find(context.cvars,"pmove_fixed");if predictionSetting!=void then predictionFixed=predictionSetting.integer!=0 end if;predictionMsec=8;predictionSetting=cvar.find(context.cvars,"pmove_msec");if predictionSetting!=void then predictionMsec=predictionSetting.integer end if
+  predicted=nativeCgamePredict.predict(context.nativeSnapshots.prediction,context.nativeSnapshots.snap,context.nativeSnapshots.nextSnap,context.now,context.now,commandList,false,false,false,context.nativeSnapshots.nextFrameTeleport,context.nativeSnapshots.thisFrameTeleport,predictionGameType,true,predictionFixed,predictionMsec,nativePredictionServices(context));if predicted is error then return predicted end if
+  // The native mirror reaches the same semantic audio/render/HUD boundaries.
+  // While the retail cgame is active it decodes but suppresses every action,
+  // preventing duplicate sounds and effects beside cgame.qvm.
+  eventObserved=nativeCgameEvent.observeSnapshot(context.nativeEvents,result,value.cgame!=void);if eventObserved is error then return eventObserved end if
+  observer=context.nativePlayerState;observer.time=context.now;observer.serverTime=result.serverTime
+  setting=cvar.find(context.cvars,"g_gametype");if setting!=void then observer.gametype=setting.integer end if;setting=cvar.find(context.cvars,"timelimit");if setting!=void then observer.timelimit=setting.integer end if;setting=cvar.find(context.cvars,"fraglimit");if setting!=void then observer.fraglimit=setting.integer end if
+  if initial then nativeCgamePlayerstate.respawn(observer,result.playerState) end if
+  if transitionStart<len(context.nativeSnapshots.playerStateTransitions) then for transitionIndex=transitionStart to len(context.nativeSnapshots.playerStateTransitions)-1 pair=context.nativeSnapshots.playerStateTransitions[transitionIndex];nativeCgamePlayerstate.transitionPlayerState(observer,pair[0],pair[1]) end for end if
   botServerBridge.publishSnapshot(context.botServer,clientNum,entities);return result
 end function
 

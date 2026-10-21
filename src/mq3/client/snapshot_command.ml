@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // CL_ParseSnapshot state transition from client/cl_parse.c.
 package mq3.client.snapshot_command
-import mq3.client.snapshot_parse as entities
+import mq3.client.snapshot_parse as snapshotEntities
 import mq3.qcommon.message as message
 import mq3.qcommon.message_state_delta as delta
 import mq3.game.playerstate as playerstate
@@ -66,7 +66,7 @@ end function
 function create()
   shots=array(PACKET_BACKUP,void);packets=array(PACKET_BACKUP,void)
   for index=0 to PACKET_BACKUP-1 shots[index]=emptySnapshot();packets[index]=OutPacket(0,0) end for
-  return State(entities.createState(),shots,emptySnapshot(),packets,0,0,0,0,true,false)
+  return State(snapshotEntities.createState(),shots,emptySnapshot(),packets,0,0,0,0,true,false)
 end function
 
 function oldFrameFor(state,newSnapshot)
@@ -102,7 +102,7 @@ function parseSnapshot(state,msg)
   if areaLength>0 then for index=0 to areaLength-1 fresh.areaMask[index]=areaData[index] end for end if
   if msg.readcount>msg.cursize then return error(6872,"snapshot command: truncated area mask") end if
   if old==void then fresh.playerState=delta.readDeltaPlayerstate(msg,void) else fresh.playerState=delta.readDeltaPlayerstate(msg,old.playerState) end if
-  entities.parsePacketEntities(state.entityState,msg,old,fresh)
+  snapshotEntities.parsePacketEntities(state.entityState,msg,old,fresh)
   if not fresh.valid then return fresh end if
   oldMessageNum=state.snap.messageNum+1
   if fresh.messageNum-oldMessageNum>=PACKET_BACKUP then oldMessageNum=fresh.messageNum-(PACKET_BACKUP-1) end if

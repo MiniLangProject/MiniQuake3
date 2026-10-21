@@ -3,7 +3,7 @@
 package mq3.client.playable_player_projectiles
 
 import mq3.collision.world as collision
-import mq3.client.playable_targets as targets
+import mq3.client.playable_targets as projectileTargets
 import mq3.client.playable_projectile_view as view
 import mq3.shared.math as qmath
 import mq3.compat.numeric as numeric
@@ -73,7 +73,7 @@ function targetFraction(targetState,startPoint,endPoint)
     for index=0 to len(targetState.targets)-1
       target=targetState.targets[index]
       if target.alive then
-        candidate=targets.segmentFraction(startPoint,endPoint,target,targetState.radius,targetState.minZ,targetState.maxZ)
+        candidate=projectileTargets.segmentFraction(startPoint,endPoint,target,targetState.radius,targetState.minZ,targetState.maxZ)
         if candidate>=0.0 and candidate<fraction then best=index;fraction=candidate end if
       end if
     end for

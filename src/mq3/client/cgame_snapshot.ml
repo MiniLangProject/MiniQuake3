@@ -12,9 +12,9 @@ const SNAPFLAG_NOT_ACTIVE=1
 const SNAPFLAG_SERVERCOUNT=4
 struct Snapshot number serverTime snapFlags serverCommandSequence playerState entities end struct
 struct Cent currentState nextState currentValid interpolate previousEvent trailTime lerpOrigin lerpAngles snapShotTime playerResets events end struct
-struct State time latestSnapshotNum latestSnapshotTime processedSnapshotNum snap nextSnap snapshots entities thisFrameTeleport nextFrameTeleport solidBuilds respawns executedSequences lagometer errors playerStateTransitions demoPlayback noPredict synchronousClients end struct
+struct State time latestSnapshotNum latestSnapshotTime processedSnapshotNum snap nextSnap snapshots entities thisFrameTeleport nextFrameTeleport solidBuilds respawns executedSequences lagometer errors playerStateTransitions demoPlayback noPredict synchronousClients prediction end struct
 function cent() return Cent(entitystate.create(),entitystate.create(),false,false,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],0,0,0) end function
-function create(maxEntities) return State(0,0,0,0,void,void,[],array(maxEntities,void),false,false,0,0,[],[],[],[],false,false,false) end function
+function create(maxEntities) return State(0,0,0,0,void,void,[],array(maxEntities,void),false,false,0,0,[],[],[],[],false,false,false,void) end function
 function wrap(number,source,snapFlags,commandSequence) return Snapshot(number,source.serverTime,snapFlags,commandSequence,source.playerState,source.entities) end function
 function ensureEntity(state,number)
   if number<0 or number>=len(state.entities) then return error(7701,"snapshot entity number out of range") end if

@@ -9,6 +9,7 @@ import mq3.botlib.ai_level_items as levelItems
 import mq3.botlib.ai_item_weights as itemWeights
 import mq3.botlib.aas_runtime as aasRuntime
 import mq3.botlib.aas_entities as aasEntities
+import mq3.botlib.ai_genetic as genetic
 import mq3.compat.numeric as goalSelectNumeric
 
 const OP_CHOOSE_LTG_ITEM=535
@@ -171,22 +172,9 @@ function mutateGoalFuzzyLogic(runtime,handle,range)
   for each weight in goal.itemWeightConfig.weights mutateSeparators(runtime,weight.separators) end for;return 0
 end function
 function geneticSelection(runtime,numRanks,rankings)
-  sum=0.0;for index=0 to numRanks-1 if rankings[index]>=0.0 then sum=goalSelectNumeric.fadd(sum,rankings[index]) end if end for
-  if sum>0.0 then
-    select=goalSelectNumeric.fmul(randomFloat(runtime),sum)
-    for index=0 to numRanks-1 if rankings[index]>=0.0 then sum=goalSelectNumeric.fsub(sum,rankings[index]);if sum<=0.0 then return index end if end if end for
-  end if
-  index=goalSelectNumeric.trunc32(goalSelectNumeric.fmul(randomFloat(runtime),numRanks));if index>=numRanks then index=0 end if
-  for count=0 to numRanks-1 if rankings[index]>=0.0 then return index end if;index=(index+1)%numRanks end for;return 0
+  return genetic.selection(runtime,numRanks,rankings)
 end function
 function geneticParentsAndChildSelection(runtime,numRanks,ranks)
-  if runtime==void or numRanks>256 or numRanks<0 or len(ranks)<numRanks then return [0,0,0,0] end if
-  valid=0;for index=0 to numRanks-1 if ranks[index]>=0.0 then valid=valid+1 end if end for;if valid<3 then return [0,0,0,0] end if
-  rankings=[];for index=0 to numRanks-1 rankings=rankings+[goalSelectNumeric.f32(ranks[index])] end for
-  parent1=geneticSelection(runtime,numRanks,rankings);rankings[parent1]=-1.0
-  parent2=geneticSelection(runtime,numRanks,rankings);rankings[parent2]=-1.0
-  maximum=0.0;for index=0 to numRanks-1 if rankings[index]>=0.0 and rankings[index]>maximum then maximum=rankings[index] end if end for
-  for index=0 to numRanks-1 if rankings[index]>=0.0 then rankings[index]=goalSelectNumeric.fsub(maximum,rankings[index]) end if end for
-  child=geneticSelection(runtime,numRanks,rankings);return [1,parent1,parent2,child]
+  return genetic.parentsAndChild(runtime,numRanks,ranks)
 end function
 function supportsTrap(op) return op==OP_CHOOSE_LTG_ITEM or op==OP_CHOOSE_NBG_ITEM or op==OP_ITEM_GOAL_IN_VIS_BUT_NOT_VISIBLE or op==OP_GET_LEVEL_ITEM_GOAL or op==OP_SAVE_GOAL_FUZZY_LOGIC or op==OP_GENETIC_PARENTS_AND_CHILD_SELECTION or op==OP_INTERBREED_GOAL_FUZZY_LOGIC or op==OP_MUTATE_GOAL_FUZZY_LOGIC end function

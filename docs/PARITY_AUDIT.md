@@ -1851,9 +1851,23 @@ prüfen den Port.
 Sie spiegelt Initialsnapshot, Entity-Reset/-Transition, Current-/Next-State,
 Interpolation, Teleport-/Follow-/Servercount-Wechsel, Reliable-Command-Reihenfolge,
 verlorene Snapshots, inaktive Frames und Zeitklemmen. Der produktive Matchhost
-füttert sie an derselben Snapshotgrenze wie die Retail-Cgame; Ereignisse und
-Prediction verbleiben im QVM und werden daher nicht doppelt ausgeführt. Vier
-Aufrufe der unveränderten C-Entityfunktionen und 18 Zustandsverträge bestehen.
+füttert sie an derselben Snapshotgrenze wie die Retail-Cgame. Vier Aufrufe der
+unveränderten C-Entityfunktionen und 18 Zustandsverträge bestehen.
+
+An dieser Grenze laufen jetzt auch die vollständigen nativen Dateipfade für
+`cg_event.c`, `cg_playerstate.c` und `cg_predict.c`. Der Eventpfad decodiert die
+gesamte Baseq3-Ereignistabelle, Eventbits und Event-only-Entities; 16
+unveränderte C-Datensätze und 105 Verträge prüfen Audio-, Render-, HUD-,
+Treffer-, Todes- und Powerup-Grenzen. Der Playerstate-Zustandsautomat deckt
+Ammo-Warnungen, Damage-Feedback, Respawn, korrigierte vorhergesagte Events,
+Reward-Stack und lokale Ansagen in sieben C-Datensätzen plus 23 Verträgen ab.
+Der schreibgeschützte Prediction-Beobachter klassifiziert Solids und Trigger,
+mischt Entity-Kollisionen, interpoliert Snapshots und spielt Usercmds durch den
+geteilten Pmove-/Collision-Pfad; sechs C-Datensätze und elf Verträge bestehen.
+Bei aktiver Retail-Cgame protokollieren Event- und Playerstate-Pfade ihre
+Grenzaktionen, führen sie aber nicht nochmals aus. Der Retail-Lauf meldet neun
+native Prediction-Traces ohne doppelte QVM-Effekte.
+
 Das Retail-QVM-Gate mit `D:/Quake3` besteht über acht Frames: 13 Snapshot-
 Entities durchlaufen den produktiven Matchpfad; zugleich bleiben 2.345
 texturierte Welt-/Modell-Dreiecke, 19 Scene-Entities, 26 Sounds sowie Cgame- und

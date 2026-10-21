@@ -3,7 +3,7 @@
 package mq3.client.playable_shotgun
 
 import mq3.collision.world as collision
-import mq3.client.playable_targets as targets
+import mq3.client.playable_targets as shotgunTargets
 import mq3.shared.math as qmath
 import mq3.shared.directions as directions
 import mq3.compat.numeric as numeric
@@ -65,7 +65,7 @@ function fireWithTrace(traceFn,context,targetState,origin,origin2,seed,now)
   pellets=tracePellets(traceFn,context,origin,pattern[0]);if pellets is error then return pellets end if
   hits=[];totalDamage=0;kills=0;awardedScore=0;accuracyHit=false
   for each pellet in pellets
-    targetHit=targets.applyShot(targetState,pellet,DEFAULT_SHOTGUN_DAMAGE,now);if targetHit is error then return targetHit end if
+    targetHit=shotgunTargets.applyShot(targetState,pellet,DEFAULT_SHOTGUN_DAMAGE,now);if targetHit is error then return targetHit end if
     if targetHit!=void then
       pellet.targetIndex=targetHit.targetIndex;pellet.damage=targetHit.damage;pellet.killed=targetHit.killed
       hits=hits+[targetHit];totalDamage=totalDamage+targetHit.damage;awardedScore=awardedScore+targetHit.awardedScore

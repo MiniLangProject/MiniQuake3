@@ -46,7 +46,12 @@ Offen bleibt die noch kompaktere interne Reachability-Ablage.
 Der aktuelle Retail-Gesamtlauf vom 21. Oktober 2026 besteht alle **283 Gates**
 von `python scripts/verify.py --data-root D:/Quake3`. Der geprüfte
 `build/MiniQuake3.exe` hat SHA-256
-`46e3c7a61bab2830c5a315c234e2c166f10ee7624d6314a060bb7f2f0969ea12`;
+`9fdf40e234045505e22cb677f59a6974be481856ac80c0b58ad293e54a7f4962`.
+Seit diesem Gesamtlauf bestehen zusätzlich die neuen `cg_event.c`-,
+`cg_playerstate.c`- und `cg_predict.c`-Differentialgates mit 29 unveränderten
+C-Datensätzen und 139 nativen Verträgen. Das Retail-QVM-Gate bleibt mit
+neun produktiven Prediction-Traces, 2.345 texturierten Dreiecken und 26 Sounds
+grün; die drei Gates sind bereits in `scripts/verify.py` aufgenommen.
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 

@@ -914,10 +914,38 @@
         "GeneticParentsAndChildSelection",
         "GeneticSelection"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "status": "ported",
+          "scope": "Exact Baseq3 rank filtering, Windows random sequence, released descending-residual selection quirk, distinct-parent masking, inverted child ranking, 256-rank limit and zeroed failure outputs; exercised through the productive QVM genetic-selection trap.",
+          "original": "GeneticSelection",
+          "target_files": [
+            "src/mq3/botlib/ai_genetic.ml",
+            "src/mq3/botlib/ai_goal_selection.ml"
+          ],
+          "target_symbol": "botlib.ai_genetic.selection"
+        },
+        {
+          "status": "ported",
+          "scope": "Exact Baseq3 rank filtering, Windows random sequence, released descending-residual selection quirk, distinct-parent masking, inverted child ranking, 256-rank limit and zeroed failure outputs; exercised through the productive QVM genetic-selection trap.",
+          "original": "GeneticParentsAndChildSelection",
+          "target_files": [
+            "src/mq3/botlib/ai_genetic.ml",
+            "src/mq3/botlib/ai_goal_selection.ml"
+          ],
+          "target_symbol": "botlib.ai_genetic.parentsAndChild"
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/ai_genetic.ml",
+        "src/mq3/botlib/ai_goal_selection.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ai_goal_selection.py",
+        "tests/reference/ai_goal_selection_oracle.c",
+        "tests/ai_goal_selection_contracts.ml"
+      ]
     },
     {
       "source": "code/botlib/be_ai_goal.c",
@@ -4000,10 +4028,89 @@
         "CG_PlaceString",
         "CG_UseItem"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "status": "ported",
+          "scope": "Exact event bits, event-only entities, player-event redirection, duplicate suppression and the complete Baseq3 movement/audio/render/HUD/death/powerup event table; the productive snapshot observer suppresses boundary effects while retail cgame.qvm owns presentation.",
+          "original": "CG_CheckEvents",
+          "target_files": [
+            "src/mq3/client/cgame_event.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_event.checkEvent / observeSnapshot"
+        },
+        {
+          "status": "ported",
+          "scope": "Exact event bits, event-only entities, player-event redirection, duplicate suppression and the complete Baseq3 movement/audio/render/HUD/death/powerup event table; the productive snapshot observer suppresses boundary effects while retail cgame.qvm owns presentation.",
+          "original": "CG_EntityEvent",
+          "target_files": [
+            "src/mq3/client/cgame_event.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_event.entityEvent"
+        },
+        {
+          "status": "ported",
+          "scope": "Exact event bits, event-only entities, player-event redirection, duplicate suppression and the complete Baseq3 movement/audio/render/HUD/death/powerup event table; the productive snapshot observer suppresses boundary effects while retail cgame.qvm owns presentation.",
+          "original": "CG_ItemPickup",
+          "target_files": [
+            "src/mq3/client/cgame_event.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_event.itemPickup"
+        },
+        {
+          "status": "ported",
+          "scope": "Exact event bits, event-only entities, player-event redirection, duplicate suppression and the complete Baseq3 movement/audio/render/HUD/death/powerup event table; the productive snapshot observer suppresses boundary effects while retail cgame.qvm owns presentation.",
+          "original": "CG_Obituary",
+          "target_files": [
+            "src/mq3/client/cgame_event.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_event.obituary"
+        },
+        {
+          "status": "ported",
+          "scope": "Exact event bits, event-only entities, player-event redirection, duplicate suppression and the complete Baseq3 movement/audio/render/HUD/death/powerup event table; the productive snapshot observer suppresses boundary effects while retail cgame.qvm owns presentation.",
+          "original": "CG_PainEvent",
+          "target_files": [
+            "src/mq3/client/cgame_event.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_event.painEvent"
+        },
+        {
+          "status": "ported",
+          "scope": "Exact event bits, event-only entities, player-event redirection, duplicate suppression and the complete Baseq3 movement/audio/render/HUD/death/powerup event table; the productive snapshot observer suppresses boundary effects while retail cgame.qvm owns presentation.",
+          "original": "CG_PlaceString",
+          "target_files": [
+            "src/mq3/client/cgame_event.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_event.placeString"
+        },
+        {
+          "status": "ported",
+          "scope": "Exact event bits, event-only entities, player-event redirection, duplicate suppression and the complete Baseq3 movement/audio/render/HUD/death/powerup event table; the productive snapshot observer suppresses boundary effects while retail cgame.qvm owns presentation.",
+          "original": "CG_UseItem",
+          "target_files": [
+            "src/mq3/client/cgame_event.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_event.useItem"
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_event.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_event.py",
+        "tests/reference/cgame_event_oracle.c",
+        "tests/cgame_event_oracle.ml",
+        "tests/cgame_event_contracts.ml"
+      ]
     },
     {
       "source": "code/cgame/cg_info.c",
@@ -4405,10 +4512,99 @@
         "CG_TransitionPlayerState",
         "pushReward"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "status": "ported",
+          "scope": "Exact ammo warnings, damage feedback, respawn, predictable-event correction, reward queue, local sounds and full player-state transitions; the productive snapshot observer records boundaries without duplicating retail QVM effects.",
+          "original": "CG_CheckAmmo",
+          "target_files": [
+            "src/mq3/client/cgame_playerstate.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_playerstate.checkAmmo"
+        },
+        {
+          "status": "ported",
+          "scope": "Exact ammo warnings, damage feedback, respawn, predictable-event correction, reward queue, local sounds and full player-state transitions; the productive snapshot observer records boundaries without duplicating retail QVM effects.",
+          "original": "CG_CheckChangedPredictableEvents",
+          "target_files": [
+            "src/mq3/client/cgame_playerstate.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_playerstate.checkChangedPredictableEvents"
+        },
+        {
+          "status": "ported",
+          "scope": "Exact ammo warnings, damage feedback, respawn, predictable-event correction, reward queue, local sounds and full player-state transitions; the productive snapshot observer records boundaries without duplicating retail QVM effects.",
+          "original": "CG_CheckLocalSounds",
+          "target_files": [
+            "src/mq3/client/cgame_playerstate.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_playerstate.checkLocalSounds"
+        },
+        {
+          "status": "ported",
+          "scope": "Exact ammo warnings, damage feedback, respawn, predictable-event correction, reward queue, local sounds and full player-state transitions; the productive snapshot observer records boundaries without duplicating retail QVM effects.",
+          "original": "CG_CheckPlayerstateEvents",
+          "target_files": [
+            "src/mq3/client/cgame_playerstate.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_playerstate.checkPlayerstateEvents"
+        },
+        {
+          "status": "ported",
+          "scope": "Exact ammo warnings, damage feedback, respawn, predictable-event correction, reward queue, local sounds and full player-state transitions; the productive snapshot observer records boundaries without duplicating retail QVM effects.",
+          "original": "CG_DamageFeedback",
+          "target_files": [
+            "src/mq3/client/cgame_playerstate.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_playerstate.damageFeedback"
+        },
+        {
+          "status": "ported",
+          "scope": "Exact ammo warnings, damage feedback, respawn, predictable-event correction, reward queue, local sounds and full player-state transitions; the productive snapshot observer records boundaries without duplicating retail QVM effects.",
+          "original": "CG_Respawn",
+          "target_files": [
+            "src/mq3/client/cgame_playerstate.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_playerstate.respawn"
+        },
+        {
+          "status": "ported",
+          "scope": "Exact ammo warnings, damage feedback, respawn, predictable-event correction, reward queue, local sounds and full player-state transitions; the productive snapshot observer records boundaries without duplicating retail QVM effects.",
+          "original": "CG_TransitionPlayerState",
+          "target_files": [
+            "src/mq3/client/cgame_playerstate.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_playerstate.transitionPlayerState"
+        },
+        {
+          "status": "ported",
+          "scope": "Exact ammo warnings, damage feedback, respawn, predictable-event correction, reward queue, local sounds and full player-state transitions; the productive snapshot observer records boundaries without duplicating retail QVM effects.",
+          "original": "pushReward",
+          "target_files": [
+            "src/mq3/client/cgame_playerstate.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_playerstate.pushReward"
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_playerstate.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_playerstate.py",
+        "tests/reference/cgame_playerstate_oracle.c",
+        "tests/cgame_playerstate_oracle.ml",
+        "tests/cgame_playerstate_contracts.ml"
+      ]
     },
     {
       "source": "code/cgame/cg_predict.c",
@@ -4424,10 +4620,99 @@
         "CG_TouchTriggerPrediction",
         "CG_Trace"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "status": "ported",
+          "scope": "Native read-only prediction observer with snapshot solid/trigger classification, entity collision merge, point contents, interpolation, item and trigger prediction, usercmd replay through shared Pmove, mover adjustment and prediction error accounting.",
+          "original": "CG_BuildSolidList",
+          "target_files": [
+            "src/mq3/client/cgame_predict.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_predict.buildSolidList"
+        },
+        {
+          "status": "ported",
+          "scope": "Native read-only prediction observer with snapshot solid/trigger classification, entity collision merge, point contents, interpolation, item and trigger prediction, usercmd replay through shared Pmove, mover adjustment and prediction error accounting.",
+          "original": "CG_ClipMoveToEntities",
+          "target_files": [
+            "src/mq3/client/cgame_predict.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_predict.trace"
+        },
+        {
+          "status": "ported",
+          "scope": "Native read-only prediction observer with snapshot solid/trigger classification, entity collision merge, point contents, interpolation, item and trigger prediction, usercmd replay through shared Pmove, mover adjustment and prediction error accounting.",
+          "original": "CG_InterpolatePlayerState",
+          "target_files": [
+            "src/mq3/client/cgame_predict.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_predict.interpolatePlayerState"
+        },
+        {
+          "status": "ported",
+          "scope": "Native read-only prediction observer with snapshot solid/trigger classification, entity collision merge, point contents, interpolation, item and trigger prediction, usercmd replay through shared Pmove, mover adjustment and prediction error accounting.",
+          "original": "CG_PointContents",
+          "target_files": [
+            "src/mq3/client/cgame_predict.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_predict.pointContents"
+        },
+        {
+          "status": "ported",
+          "scope": "Native read-only prediction observer with snapshot solid/trigger classification, entity collision merge, point contents, interpolation, item and trigger prediction, usercmd replay through shared Pmove, mover adjustment and prediction error accounting.",
+          "original": "CG_PredictPlayerState",
+          "target_files": [
+            "src/mq3/client/cgame_predict.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_predict.predict"
+        },
+        {
+          "status": "ported",
+          "scope": "Native read-only prediction observer with snapshot solid/trigger classification, entity collision merge, point contents, interpolation, item and trigger prediction, usercmd replay through shared Pmove, mover adjustment and prediction error accounting.",
+          "original": "CG_TouchItem",
+          "target_files": [
+            "src/mq3/client/cgame_predict.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_predict.touchItem"
+        },
+        {
+          "status": "ported",
+          "scope": "Native read-only prediction observer with snapshot solid/trigger classification, entity collision merge, point contents, interpolation, item and trigger prediction, usercmd replay through shared Pmove, mover adjustment and prediction error accounting.",
+          "original": "CG_TouchTriggerPrediction",
+          "target_files": [
+            "src/mq3/client/cgame_predict.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_predict.touchTriggerPrediction"
+        },
+        {
+          "status": "ported",
+          "scope": "Native read-only prediction observer with snapshot solid/trigger classification, entity collision merge, point contents, interpolation, item and trigger prediction, usercmd replay through shared Pmove, mover adjustment and prediction error accounting.",
+          "original": "CG_Trace",
+          "target_files": [
+            "src/mq3/client/cgame_predict.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "client.cgame_predict.trace"
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_predict.ml",
+        "src/mq3/engine/local_qvm_match.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_predict.py",
+        "tests/reference/cgame_predict_oracle.c",
+        "tests/cgame_predict_oracle.ml",
+        "tests/cgame_predict_contracts.ml"
+      ]
     },
     {
       "source": "code/cgame/cg_public.h",

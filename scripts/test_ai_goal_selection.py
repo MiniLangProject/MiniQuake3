@@ -38,7 +38,7 @@ def main() -> int:
         [build("tests/ai_goal_selection_contracts.ml", "ai_goal_selection_contracts.exe")],
         ROOT / "build",
     ).strip()
-    expected_mini = "PASS: 29 AI goal-selection contracts opcodes=535,536,538,539,545,564-566"
+    expected_mini = "PASS: 32 AI goal-selection contracts opcodes=535,536,538,539,545,564-566"
     if mini != expected_mini:
         raise RuntimeError(mini)
     print(observed)

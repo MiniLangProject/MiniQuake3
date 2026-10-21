@@ -7,7 +7,7 @@ import mq3.game.entities as game
 import mq3.game.events as events
 import mq3.game.movement as movement
 import mq3.game.trajectory as trajectory
-import mq3.game.combat as combat
+import mq3.game.combat as itemCombat
 import mq3.game.spawn_tables as tables
 import mq3.game.spawn_values as values
 import mq3.game.snapshot as snapshot
@@ -149,7 +149,7 @@ function pickupPowerup(level,ent,other)
     length = q.VectorNormalize(delta)
     if length > 192 then continue end if
     if q.DotProduct(delta,q.AngleVectors(client.ps.viewangles)[0]) < 0.4 then continue end if
-    hit = combat.shotTrace(level,client.ps.origin,ent.s.pos.trBase,void,void,1023,1)
+    hit = itemCombat.shotTrace(level,client.ps.origin,ent.s.pos.trBase,void,void,1023,1)
     if hit.trace.fraction != 1.0 then continue end if
     client.ps.persistant[c.PERS_PLAYEREVENTS] = client.ps.persistant[c.PERS_PLAYEREVENTS] ^ 1
   end for
@@ -389,7 +389,7 @@ function finishSpawning(level,ent)
   if (ent.spawnflags & 1) != 0 then game.setOrigin(ent,ent.s.origin)
   else
     destination = [ent.s.origin[0],ent.s.origin[1],n.fsub(ent.s.origin[2],4096.0)]
-    hit = combat.shotTrace(level,ent.s.origin,destination,ent.r.mins,ent.r.maxs,ent.s.number,1)
+    hit = itemCombat.shotTrace(level,ent.s.origin,destination,ent.r.mins,ent.r.maxs,ent.s.number,1)
     if hit.trace.startsolid then
       location = game.vtos(level,ent.s.origin)
       if level.gamePrintFn != void then
@@ -526,7 +526,7 @@ function run(level,ent)
   if ent.s.pos.trType == c.TR_STATIONARY then return game.runThink(level,ent) end if
   origin = trajectory.evaluate(ent.s.pos,level.time); mask = ent.clipmask
   if mask == 0 then mask = 0x10001 end if
-  hit = combat.shotTrace(level,ent.r.currentOrigin,origin,ent.r.mins,ent.r.maxs,ent.r.ownerNum,mask)
+  hit = itemCombat.shotTrace(level,ent.r.currentOrigin,origin,ent.r.mins,ent.r.maxs,ent.r.ownerNum,mask)
   ent.r.currentOrigin = movement.copy(hit.endpos)
   if hit.trace.startsolid then hit.trace.fraction = 0.0 end if
   game.link(level,ent); game.runThink(level,ent)
