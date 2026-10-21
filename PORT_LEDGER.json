@@ -19547,10 +19547,88 @@
         "UI_ConfirmMenu_Style",
         "UI_Message"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "ConfirmMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_confirm.ml"
+          ],
+          "target_symbol": "mq3.client.ui_confirm.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 11 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "ConfirmMenu_Draw",
+          "target_files": [
+            "src/mq3/client/ui_confirm.ml"
+          ],
+          "target_symbol": "mq3.client.ui_confirm.draw",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 11 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "ConfirmMenu_Event",
+          "target_files": [
+            "src/mq3/client/ui_confirm.ml"
+          ],
+          "target_symbol": "mq3.client.ui_confirm.event",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 11 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "ConfirmMenu_Key",
+          "target_files": [
+            "src/mq3/client/ui_confirm.ml"
+          ],
+          "target_symbol": "mq3.client.ui_confirm.key",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 11 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "MessageMenu_Draw",
+          "target_files": [
+            "src/mq3/client/ui_confirm.ml"
+          ],
+          "target_symbol": "mq3.client.ui_confirm.drawMessage",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 11 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_ConfirmMenu",
+          "target_files": [
+            "src/mq3/client/ui_confirm.ml"
+          ],
+          "target_symbol": "mq3.client.ui_confirm.open",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 11 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_ConfirmMenu_Style",
+          "target_files": [
+            "src/mq3/client/ui_confirm.ml"
+          ],
+          "target_symbol": "mq3.client.ui_confirm.openStyle",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 11 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_Message",
+          "target_files": [
+            "src/mq3/client/ui_confirm.ml"
+          ],
+          "target_symbol": "mq3.client.ui_confirm.message",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 11 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_confirm.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_confirm.py",
+        "tests/ui_confirm_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_connect.c",
@@ -19615,10 +19693,214 @@
         "Controls_UpdateModel",
         "UI_ControlsMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Controls_ActionEvent",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.actionEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_Cache",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_DrawKeyBinding",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.drawKeyBinding",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_DrawPlayer",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.drawPlayer",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_GetConfig",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.getConfig",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_GetCvarDefault",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.getCvarDefault",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_GetCvarValue",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.getCvarValue",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_GetKeyAssignment",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.getKeyAssignment",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_InitCvars",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.initCvars",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_InitModel",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.initModel",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_InitWeapons",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.initWeapons",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.menuEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.menuInit",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_MenuKey",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.menuKey",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_ResetDefaults_Action",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.resetDefaults_Action",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_ResetDefaults_Draw",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.resetDefaults_Draw",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_SetConfig",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.setConfig",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_SetDefaults",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.setDefaults",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_StatusBar",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.statusBar",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_Update",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.update",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Controls_UpdateModel",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.updateModel",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_ControlsMenu",
+          "target_files": [
+            "src/mq3/client/ui_controls.ml"
+          ],
+          "target_symbol": "mq3.client.ui_controls.uiControlsMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 43 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_controls.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_controls.py",
+        "tests/ui_controls_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_credits.c",
@@ -20054,10 +20336,70 @@
         "InGame_RestartAction",
         "UI_InGameMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "InGame_Cache",
+          "target_files": [
+            "src/mq3/client/ui_ingame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_ingame.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 14 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "InGame_Event",
+          "target_files": [
+            "src/mq3/client/ui_ingame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_ingame.event",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 14 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "InGame_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_ingame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_ingame.init",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 14 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "InGame_QuitAction",
+          "target_files": [
+            "src/mq3/client/ui_ingame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_ingame.quitAction",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 14 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "InGame_RestartAction",
+          "target_files": [
+            "src/mq3/client/ui_ingame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_ingame.restartAction",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 14 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_InGameMenu",
+          "target_files": [
+            "src/mq3/client/ui_ingame.ml"
+          ],
+          "target_symbol": "mq3.client.ui_ingame.open",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 14 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_ingame.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_ingame.py",
+        "tests/ui_ingame_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_loadconfig.c",
@@ -20126,10 +20468,79 @@
         "UI_MainMenu",
         "UI_TeamArenaExists"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "ErrorMessage_Key",
+          "target_files": [
+            "src/mq3/client/ui_main_menu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_menu.errorMessageKey",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 15 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "MainMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_main_menu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_menu.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 15 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "MainMenu_ExitAction",
+          "target_files": [
+            "src/mq3/client/ui_main_menu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_menu.exitAction",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 15 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Main_MenuDraw",
+          "target_files": [
+            "src/mq3/client/ui_main_menu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_menu.draw",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 15 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Main_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_main_menu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_menu.event",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 15 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_MainMenu",
+          "target_files": [
+            "src/mq3/client/ui_main_menu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_menu.open",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 15 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_TeamArenaExists",
+          "target_files": [
+            "src/mq3/client/ui_main_menu.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_menu.teamArenaExists",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 15 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_main_menu.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_main_menu.py",
+        "tests/ui_main_menu_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_mfield.c",
@@ -20300,10 +20711,124 @@
         "PlayerModel_UpdateModel",
         "UI_PlayerModelMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "PlayerModel_BuildList",
+          "target_files": [
+            "src/mq3/client/ui_playermodel.ml"
+          ],
+          "target_symbol": "mq3.client.ui_playermodel.PlayerModel_BuildList",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 17 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "PlayerModel_Cache",
+          "target_files": [
+            "src/mq3/client/ui_playermodel.ml"
+          ],
+          "target_symbol": "mq3.client.ui_playermodel.PlayerModel_Cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 17 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "PlayerModel_DrawPlayer",
+          "target_files": [
+            "src/mq3/client/ui_playermodel.ml"
+          ],
+          "target_symbol": "mq3.client.ui_playermodel.PlayerModel_DrawPlayer",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 17 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "PlayerModel_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_playermodel.ml"
+          ],
+          "target_symbol": "mq3.client.ui_playermodel.PlayerModel_MenuEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 17 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "PlayerModel_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_playermodel.ml"
+          ],
+          "target_symbol": "mq3.client.ui_playermodel.PlayerModel_MenuInit",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 17 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "PlayerModel_MenuKey",
+          "target_files": [
+            "src/mq3/client/ui_playermodel.ml"
+          ],
+          "target_symbol": "mq3.client.ui_playermodel.PlayerModel_MenuKey",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 17 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "PlayerModel_PicEvent",
+          "target_files": [
+            "src/mq3/client/ui_playermodel.ml"
+          ],
+          "target_symbol": "mq3.client.ui_playermodel.PlayerModel_PicEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 17 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "PlayerModel_SaveChanges",
+          "target_files": [
+            "src/mq3/client/ui_playermodel.ml"
+          ],
+          "target_symbol": "mq3.client.ui_playermodel.PlayerModel_SaveChanges",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 17 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "PlayerModel_SetMenuItems",
+          "target_files": [
+            "src/mq3/client/ui_playermodel.ml"
+          ],
+          "target_symbol": "mq3.client.ui_playermodel.PlayerModel_SetMenuItems",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 17 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "PlayerModel_UpdateGrid",
+          "target_files": [
+            "src/mq3/client/ui_playermodel.ml"
+          ],
+          "target_symbol": "mq3.client.ui_playermodel.PlayerModel_UpdateGrid",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 17 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "PlayerModel_UpdateModel",
+          "target_files": [
+            "src/mq3/client/ui_playermodel.ml"
+          ],
+          "target_symbol": "mq3.client.ui_playermodel.PlayerModel_UpdateModel",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 17 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_PlayerModelMenu",
+          "target_files": [
+            "src/mq3/client/ui_playermodel.ml"
+          ],
+          "target_symbol": "mq3.client.ui_playermodel.UI_PlayerModelMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 17 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_playermodel.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_playermodel.py",
+        "tests/ui_playermodel_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_players.c",
@@ -20334,10 +20859,223 @@
         "UI_SwingAngles",
         "UI_TorsoSequencing"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_DrawPlayer",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_DrawPlayer",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_ForceLegsAnim",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_ForceLegsAnim",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_ForceTorsoAnim",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_ForceTorsoAnim",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_LegsSequencing",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_LegsSequencing",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_MachinegunSpinAngle",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_MachinegunSpinAngle",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_MovedirAdjustment",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_MovedirAdjustment",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_ParseAnimationFile",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_ParseAnimationFile",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_PlayerAngles",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_PlayerAngles",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_PlayerAnimation",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_PlayerAnimation",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_PlayerFloatSprite",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_PlayerFloatSprite",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_PlayerInfo_SetInfo",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_PlayerInfo_SetInfo",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_PlayerInfo_SetModel",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_PlayerInfo_SetModel",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_PlayerInfo_SetWeapon",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_PlayerInfo_SetWeapon",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_PositionEntityOnTag",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_PositionEntityOnTag",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_PositionRotatedEntityOnTag",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_PositionRotatedEntityOnTag",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_RegisterClientModelname",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_RegisterClientModelname",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_RegisterClientSkin",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_RegisterClientSkin",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_RunLerpFrame",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_RunLerpFrame",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_SetLegsAnim",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_SetLegsAnim",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_SetLerpFrameAnimation",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_SetLerpFrameAnimation",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_SetTorsoAnim",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_SetTorsoAnim",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_SwingAngles",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_SwingAngles",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_TorsoSequencing",
+          "target_files": [
+            "src/mq3/client/ui_players.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players.UI_TorsoSequencing",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 26 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_players.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_players.py",
+        "tests/ui_players_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_playersettings.c",
@@ -20851,10 +21589,70 @@
         "UI_SetupMenu_Event",
         "UI_SetupMenu_Init"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Setup_ResetDefaults_Action",
+          "target_files": [
+            "src/mq3/client/ui_setup.ml"
+          ],
+          "target_symbol": "mq3.client.ui_setup.resetDefaultsAction",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 14 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "Setup_ResetDefaults_Draw",
+          "target_files": [
+            "src/mq3/client/ui_setup.ml"
+          ],
+          "target_symbol": "mq3.client.ui_setup.resetDefaultsDraw",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 14 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_SetupMenu",
+          "target_files": [
+            "src/mq3/client/ui_setup.ml"
+          ],
+          "target_symbol": "mq3.client.ui_setup.open",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 14 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_SetupMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_setup.ml"
+          ],
+          "target_symbol": "mq3.client.ui_setup.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 14 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_SetupMenu_Event",
+          "target_files": [
+            "src/mq3/client/ui_setup.ml"
+          ],
+          "target_symbol": "mq3.client.ui_setup.event",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 14 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_SetupMenu_Init",
+          "target_files": [
+            "src/mq3/client/ui_setup.ml"
+          ],
+          "target_symbol": "mq3.client.ui_setup.init",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 14 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_setup.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_setup.py",
+        "tests/ui_setup_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_signup.c",
@@ -22010,10 +22808,151 @@
         "UI_DriverInfo_Menu",
         "UI_GraphicsOptionsMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "DriverInfo_Cache",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.driverInfoCache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "DriverInfo_Event",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.driverInfoEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "DriverInfo_MenuDraw",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.driverInfoMenuDraw",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "GraphicsOptions_ApplyChanges",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.graphicsOptionsApplyChanges",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "GraphicsOptions_Cache",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.graphicsOptionsCache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "GraphicsOptions_CheckConfig",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.graphicsOptionsCheckConfig",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "GraphicsOptions_Event",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.graphicsOptionsEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "GraphicsOptions_GetInitialVideo",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.graphicsOptionsGetInitialVideo",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "GraphicsOptions_MenuDraw",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.graphicsOptionsMenuDraw",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "GraphicsOptions_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.graphicsOptionsMenuInit",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "GraphicsOptions_SetMenuItems",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.graphicsOptionsSetMenuItems",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "GraphicsOptions_TQEvent",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.graphicsOptionsTQEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "GraphicsOptions_UpdateMenuItems",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.graphicsOptionsUpdateMenuItems",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_DriverInfo_Menu",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.uiDriverInfoMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        },
+        {
+          "original": "UI_GraphicsOptionsMenu",
+          "target_files": [
+            "src/mq3/client/ui_video.ml"
+          ],
+          "target_symbol": "mq3.client.ui_video.uiGraphicsOptionsMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with every ledger symbol covered and 21 focused MiniLang contracts; typed host actions preserve renderer, audio, cvar, command and menu boundaries."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_video.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_video.py",
+        "tests/ui_video_contracts.ml"
+      ]
     },
     {
       "source": "code/qcommon/cm_load.c",

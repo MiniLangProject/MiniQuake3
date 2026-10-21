@@ -106,6 +106,22 @@ Das Runtime-/Plattforminventar steht nun bei 47 portierten, 117 partiellen und
 171 noch nicht begonnenen Originaldateien. Die sechs Fokustests sind in die
 Gesamtprüfung aufgenommen; der vollständige Retail-Gesamtlauf mit jetzt 314
 Gates besteht.
+Der anschließende UI-Abgleich schließt acht weitere Originaldateien:
+`ui_menu.c`, `ui_ingame.c`, `ui_confirm.c`, `ui_setup.c`, `ui_controls2.c`,
+`ui_video.c`, `ui_players.c` und `ui_playermodel.c`. Damit liegen Haupt- und
+Ingame-Menü, Dialoge, Setup, alle 34 Steuerungsbindungen, Grafikvorlagen und
+Renderer-Cvars sowie die vollständige Player-/Modelvorschau nativ vor. 23
+Datensätze aus unverändertem C, 161 MiniLang-Verträge und acht Retail-Verträge
+bestehen; die Assetprobe findet 89 Retail-Spielermodelle und alle 31
+Animationsslots. Alle 99 Originalsymbole sind im Ledger zugeordnet. Das
+Inventar steht nun bei 55 portierten, 117 partiellen und 163 noch nicht
+begonnenen Runtime-/Plattformdateien. Der frisch gebaute Hauptstand bleibt bei
+SHA-256 `76edc5435dc6d79555b72bd71b5dc0ddc553d7cb67a64fa7d314549230d7f322`;
+das Retail-QVM-Match bleibt mit 2.345 texturierten Dreiecken, 301 Cgame-Assets
+und 26 Sounds grün. Die acht Fokustests sind in `scripts/verify.py` aufgenommen;
+der jetzt 322 Gates umfassende Gesamtlauf ist für diesen Block noch nicht
+vollständig erneut ausgeführt. Der produktive Dispatcher für die typisierten
+nativen UI-Aktionen bleibt offen.
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 

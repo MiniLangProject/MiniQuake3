@@ -127,6 +127,30 @@ Retail-Gesamtlauf mit jetzt 314 Gates besteht einschließlich Retail-QVM,
 Runtime-/Plattforminventar zählt jetzt 47 portierte, 117 partielle und 171
 nicht begonnene Originaldateien.
 
+Der nächste parallele UI-Abgleich schließt acht weitere Originaldateien:
+`ui_menu.c`, `ui_ingame.c`, `ui_confirm.c`, `ui_setup.c`, `ui_controls2.c`,
+`ui_video.c`, `ui_players.c` und `ui_playermodel.c`. Haupt- und Ingame-Menü,
+Bestätigungs-/Meldungsdialoge und Setup-Navigation liegen damit vollständig als
+native Zustandsmaschinen vor. Das Controls-Menü enthält alle 34 Bindings,
+Zwei-Tasten-, Konflikt-, Capture-, Default- und Cvar-Regeln. Die Grafikoptionen
+bilden die fünf Qualitätsvorlagen, abhängige Auswahlzustände, vollständige
+Renderer-Cvar-Schreibfolge und `vid_restart` ab. Player-Vorschau und
+Modelauswahl lösen echte MD3-, Skin- und `animation.cfg`-Dateien auf, führen
+Lerpframes, Tags, Waffen und Winkelmathematik aus und zeigen das originale
+4x4-Modellraster. 23 Datensätze aus unverändert extrahierten C-Funktionen, 161
+native Verträge und acht Retail-Verträge bestehen; die Retail-Probe findet 89
+Spielermodelle und alle 31 Animationsslots. Alle 99 Ledger-Symbole der acht
+Dateien sind zugeordnet. Der frisch gebaute Hauptstand bleibt bei SHA-256
+`76edc5435dc6d79555b72bd71b5dc0ddc553d7cb67a64fa7d314549230d7f322`;
+das Retail-QVM-Match besteht mit neun Prediction-Traces, 2.345 texturierten
+Dreiecken, 301 Cgame-Assets und 26 Sounds. Das Runtime-/Plattforminventar zählt
+nun 55 portierte, 117 partielle und 163 nicht begonnene Originaldateien. Die
+acht neuen Gates sind in `scripts/verify.py` aufgenommen; der dadurch auf 322
+Gates angewachsene Gesamtlauf wurde für diesen inkrementellen Block noch nicht
+vollständig wiederholt. Die nativen UI-Ausgaben bleiben typisierte,
+unterdrückbare Host-Aktionen; deren vollständiger produktiver Dispatcher ist
+weiter eine offene Integrationsgrenze.
+
 Dieser Vollstand enthält auch die produktive
 `AAS_BestReachableFromJumpPadArea`-Platzierung: benannte Map-Boots laden die
 passende Retail-AAS, `trigger_push`-Ballistik wird 30 Frames gegen die Item-BBox

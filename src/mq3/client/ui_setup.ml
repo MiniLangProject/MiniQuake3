@@ -1,0 +1,41 @@
+// Copyright (C) 1999-2005 Id Software, Inc.
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Native semantic port of code/q3_ui/ui_setup.c.
+package mq3.client.ui_setup
+const QM_ACTIVATED=3
+const ID_CUSTOMIZEPLAYER=10
+const ID_CUSTOMIZECONTROLS=11
+const ID_SYSTEMCONFIG=12
+const ID_GAME=13
+const ID_CDKEY=14
+const ID_DEFAULTS=17
+const ID_BACK=18
+struct SetupItem id label y end struct
+struct SetupMenu wrapAround fullscreen items assets commands actions end struct
+// Setup_ResetDefaults_Action
+function resetDefaultsAction(menu,result) if result then menu.commands=menu.commands+["exec default.cfg\n","cvar_restart\n","vid_restart\n"] end if;return menu end function
+// Setup_ResetDefaults_Draw
+function resetDefaultsDraw() return ["text:320,356:WARNING: This will reset *ALL*","text:320,383:options to their default values."] end function
+// UI_SetupMenu_Event
+function event(menu,id,eventCode)
+  if eventCode!=QM_ACTIVATED then return menu end if
+  if id==ID_CUSTOMIZEPLAYER then menu.actions=menu.actions+["playerSettings"]
+  else if id==ID_CUSTOMIZECONTROLS then menu.actions=menu.actions+["controls"]
+  else if id==ID_SYSTEMCONFIG then menu.actions=menu.actions+["graphicsOptions"]
+  else if id==ID_GAME then menu.actions=menu.actions+["preferences"]
+  else if id==ID_CDKEY then menu.actions=menu.actions+["cdKey"]
+  else if id==ID_DEFAULTS then menu.actions=menu.actions+["confirm:SET TO DEFAULTS?:resetDefaultsDraw:resetDefaultsAction"]
+  else if id==ID_BACK then menu.actions=menu.actions+["pop"] end if
+  return menu
+end function
+// UI_SetupMenu_Cache
+function cache() return ["menu/art/back_0","menu/art/back_1","menu/art/frame2_l","menu/art/frame1_r"] end function
+// UI_SetupMenu_Init
+function init(paused)
+  items=[SetupItem(ID_CUSTOMIZEPLAYER,"PLAYER",134),SetupItem(ID_CUSTOMIZECONTROLS,"CONTROLS",168),SetupItem(ID_SYSTEMCONFIG,"SYSTEM",202),SetupItem(ID_GAME,"GAME OPTIONS",236),SetupItem(ID_CDKEY,"CD Key",270)]
+  if not paused then items=items+[SetupItem(ID_DEFAULTS,"DEFAULTS",304)] end if
+  items=items+[SetupItem(ID_BACK,"BACK",416)]
+  return SetupMenu(true,true,items,cache(),[],[])
+end function
+// UI_SetupMenu
+function open(paused) menu=init(paused);menu.actions=menu.actions+["push"];return menu end function

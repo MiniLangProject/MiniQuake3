@@ -1,0 +1,5 @@
+import mq3.client.ui_playermodel as m
+import mq3.client.ui_players as p
+import mq3.client.ui_qmenu as menu
+function ready(source) value=m.create(source);for i=0 to 15 value.pics=value.pics+[menu.item(menu.MTYPE_BITMAP,"",-1,0,0,0)];value.picbuttons=value.picbuttons+[menu.item(menu.MTYPE_BITMAP,"",i,0,0,0)] end for;value.left=menu.item(menu.MTYPE_BITMAP,"",m.ID_PREVPAGE,0,0,0);value.right=menu.item(menu.MTYPE_BITMAP,"",m.ID_NEXTPAGE,0,0,0);return value end function
+function main(args) source=p.assetSource([],[],false);v=ready(source);v.numpages=3;m.PlayerModel_MenuEvent(v,m.ID_PREVPAGE,1,false);print("ignore "+str(v.modelpage)+" 0");v=ready(source);v.numpages=3;v.modelpage=1;m.PlayerModel_MenuEvent(v,m.ID_PREVPAGE,menu.QM_ACTIVATED,false);print("prev "+str(v.modelpage)+" 1");v=ready(source);v.numpages=3;m.PlayerModel_MenuEvent(v,m.ID_NEXTPAGE,menu.QM_ACTIVATED,false);print("next "+str(v.modelpage)+" 1");v=ready(source);v.numpages=3;v.modelskin="sarge/default";m.PlayerModel_MenuEvent(v,m.ID_BACK,menu.QM_ACTIVATED,false);print("back "+str(len(v.cvarWrites))+" 1 "+v.cvarWrites[3][1]);return 0 end function
