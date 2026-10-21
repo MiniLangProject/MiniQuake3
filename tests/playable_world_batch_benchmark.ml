@@ -5,16 +5,16 @@ import mq3.platform.playable_window as window
 const TRIANGLES=1700
 const FRAMES=200
 
-struct Vertex position baseUV lightmapUV normal color end struct
+struct Vertex position baseUV lightmapUV normal color entityColor entityTexCoord shaderTime sourceIndex end struct
 struct Triangle vertices textureIndex lightmapIndex end struct
 struct RenderData triangles end struct
 
-function vertex(x,y,z) return Vertex([x,y,z],[0.0,0.0],[0.0,0.0],[0.0,0.0,1.0],[255,255,255,255]) end function
+function makeVertex(x,y,z) return Vertex([x,y,z],[0.0,0.0],[0.0,0.0],[0.0,0.0,1.0],[255,255,255,255],[255,255,255,255],[0.0,0.0],0.0,-1) end function
 function main(args)
   triangles=[]
   for index=0 to TRIANGLES-1
     // Degenerate geometry isolates MiniLang/native boundary and projection cost.
-    a=vertex(10.0,index%8,0.0);triangles=triangles+[Triangle([a,a,a],0,-1)]
+    a=makeVertex(10.0,index%8,0.0);triangles=triangles+[Triangle([a,a,a],0,-1)]
   end for
   batch=worldBatch.build(RenderData(triangles),[-1],[false]);if batch is error then return batch end if
   camera=viewer.camera([0.0,0.0,0.0],0.0,0.0,0.0,0.0)

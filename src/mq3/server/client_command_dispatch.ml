@@ -6,8 +6,8 @@ import mq3.qcommon.command_buffer as commandBuffer
 
 const SS_GAME=2
 
-struct Services builtinFn gameFn ignoredFn context end struct
-function services() return Services(void,void,void,void) end function
+struct Services builtinFn downloadFn gameFn ignoredFn context downloadContext end struct
+function services() return Services(void,void,void,void,void,void) end function
 
 function builtinNames() return ["userinfo","disconnect","cp","vdr","download","nextdl","stopdl","donedl"] end function
 
@@ -22,6 +22,9 @@ function execute(host,clientState,text,clientOk,serverState)
   parser=commandBuffer.create();commandBuffer.tokenizeString(parser,text);name=commandBuffer.argv(parser,0)
   index=builtinIndex(name)
   if index>=0 then
+    if index>=4 and host.downloadFn!=void then
+      host.downloadFn(host,clientState,name,parser);return "builtin"
+    end if
     if host.builtinFn==void then return error(6986,"client command dispatch: missing builtin service") end if
     host.builtinFn(host,clientState,name,parser);return "builtin"
   end if

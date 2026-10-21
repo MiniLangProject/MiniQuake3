@@ -29,6 +29,6 @@ for anchor in ("if op==79 then", "return remapRendererShader(context,oldName,new
 
 subprocess.run([sys.executable, ROOT / "scripts/build.py", "--source", "tests/cgame_renderer_extended_contracts.ml", "--output", "cgame_renderer_extended_contracts.exe"], cwd=ROOT, check=True)
 result = subprocess.run([ROOT / "build/cgame_renderer_extended_contracts.exe"], cwd=ROOT / "build", text=True, capture_output=True, check=True).stdout.strip()
-if result != "PASS: 18 cgame extended-renderer contracts":
+if result != "PASS: 20 cgame extended-renderer contracts":
     raise SystemExit(result)
 print(result + " + original ABI anchors")

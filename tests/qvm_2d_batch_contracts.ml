@@ -1,10 +1,15 @@
 import mq3.renderer.qvm_2d_batch as qvm2d
 import mq3.renderer.command_queue as commands
 import mq3.renderer.playable_materials as materials
+import mq3.renderer.shader_parser as shaderParser
+import mq3.renderer.shader_remap as shaderRemap
+import mq3.compat.numeric as numeric
+import mq3.format.pk3 as pk3
 
 function require(ok,message) if not ok then return error(7684,message) end if;return 1 end function
 
 function main(args)
+  if len(args)!=1 then return error(7684,"qvm 2D fixture PK3 is required") end if
   count=0;assets=["gfx/a","models/not-a-shader","gfx/b"];kinds=["shader","model","shaderNoMip"]
   q=commands.create(void,void);commands.setColor(q,[0.5,0.25,0.0,1.0]);commands.stretchPic(q,100.0,90.0,200.0,180.0,0.1,0.2,0.8,0.9,1);commands.drawBuffer(q,1029);commands.setColor(q,void);commands.stretchPic(q,0.0,0.0,1280.0,720.0,0.0,0.0,1.0,1.0,3)
   extracted=qvm2d.extract(q.commands,assets,kinds,1280.0,720.0,640.0,480.0)
@@ -38,14 +43,22 @@ function main(args)
   count=count+require(try(qvm2d.extract(bad,assets,kinds,1280,720,640,480)) is error,"malformed color command rejected")
   bad=[commands.Command(commands.RC_STRETCH_PIC,commands.STRETCH_PIC_BYTES,[1.0],1)]
   count=count+require(try(qvm2d.extract(bad,assets,kinds,1280,720,640,480)) is error,"malformed stretch command rejected")
-  cachedMaterial=qvm2d.Material(1,"gfx/a",[stage],false);cachedTexture=qvm2d.Texture("gfx/a.tga",white,7,false)
-  catalog=qvm2d.Catalog([cachedMaterial],[cachedTexture],[],void,0,0,0,0,0,8)
+  timed=qvm2d.directStage("gfx/a.tga",white,7);timed.imageNames=["gfx/a.tga","gfx/b.tga"];timed.images=[white,white];timed.slots=[7,8];timed.animationSpeed=2.0;timed.uvMods=[materials.UvMod("scroll",0.5,0.0,0.0,0.0,0.0,0.0,shaderParser.blankWave())]
+  remaps=shaderRemap.create();shaderRemap.apply(remaps,assets,kinds,"gfx/a","gfx/a","0.25")
+  cachedMaterial=qvm2d.Material(1,"gfx/a",[timed],false,0.0,0.75);cachedTexture=qvm2d.Texture("gfx/a.tga",white,7,false)
+  catalog=qvm2d.Catalog([cachedMaterial],[cachedTexture],[],void,void,0,0,0,0,0,8,9,remaps)
   live=commands.create(void,void);commands.setColor(live,[1.0,0.0,0.0,0.5]);commands.stretchPic(live,20.0,30.0,40.0,50.0,0.0,0.0,1.0,1.0,1)
   refreshed=qvm2d.refresh(catalog,live.commands,assets,kinds,640.0,480.0,640.0,480.0)
   count=count+require(refreshed==catalog and len(refreshed.materials)==1 and len(refreshed.textures)==1,"refresh preserves decoded catalog")
   count=count+require(refreshed.sourceQuads==1 and refreshed.resolvedQuads==1 and refreshed.emittedTriangles==2,"refresh rebuilds frame counters")
   count=count+require(len(refreshed.runs)==1 and refreshed.runs[0].passes[0].triangles[0].positions[1].x==20.0,"refresh rebuilds native run geometry")
+  timedPass=refreshed.runs[0].passes[0];qvm2d.updatePass(timedPass,500.0);count=count+require(numeric.readI32(timedPass.batch.data,0)==7 and numeric.bitsFloat(numeric.readU32(timedPass.batch.data,32))==0.125,"2D remap timeOffset drives animated frames and tcMods")
+  qvm2d.updatePass(timedPass,1500.0);count=count+require(numeric.readI32(timedPass.batch.data,0)==8 and numeric.bitsFloat(numeric.readU32(timedPass.batch.data,32))==0.375,"2D clampTime freezes animated frames and tcMods")
   unknown=commands.create(void,void);commands.stretchPic(unknown,0,0,1,1,0,0,1,1,3);qvm2d.refresh(catalog,unknown.commands,assets,kinds,640,480,640,480)
   count=count+require(catalog.sourceQuads==1 and catalog.resolvedQuads==0 and catalog.unresolvedQuads==1 and len(catalog.runs)==0,"refresh reports uncached shaders without decoding")
+  archive=pk3.open(args[0]);if archive is error then return archive end if;remappedAssets=["gfx/old"];remappedKinds=["shader"];runtimeRemaps=shaderRemap.create();remappedQueue=commands.create(void,void);commands.stretchPic(remappedQueue,0,0,32,32,0,0,1,1,1)
+  remappedCatalog=qvm2d.build(archive,remappedQueue.commands,remappedAssets,remappedKinds,20,10,640,480,640,480,runtimeRemaps);count=count+require(len(remappedCatalog.materials)==1 and len(remappedCatalog.textures)==1,"2D fixture starts with its original decoded shader")
+  shaderRemap.apply(runtimeRemaps,remappedAssets,remappedKinds,"gfx/old","gfx/new","0.5");qvm2d.refresh(remappedCatalog,remappedQueue.commands,remappedAssets,remappedKinds,640,480,640,480);remappedMaterial=remappedCatalog.materials[0];remappedPass=remappedCatalog.runs[0].passes[0];qvm2d.updatePass(remappedPass,2000.0)
+  count=count+require(remappedMaterial.shaderName=="gfx/new" and remappedMaterial.timeOffset==0.5 and remappedMaterial.clampTime==0.75 and len(remappedCatalog.textures)==3 and numeric.readI32(remappedPass.batch.data,0)==22,"runtime 2D remap decodes replacement stages and applies offset/clamp time")
   print("PASS: "+str(count)+" QVM 2D batch contracts");return 0
 end function

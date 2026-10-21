@@ -12,13 +12,25 @@ def fixture():
     lumps=[b'',b'',b'',b'',b'',b'',b'',areas,settings,reaches,b'',portals,portalindex,clusters];header=bytearray(124);struct.pack_into('<III',header,0,0x53414145,4,0);offset=124
     for i,blob in enumerate(lumps):assert len(blob)%STRIDES[i]==0;struct.pack_into('<II',header,12+i*8,offset,len(blob));offset+=len(blob)
     return bytes(header)+b''.join(lumps)
+def portal_chain_fixture():
+    areas=b''.join(struct.pack('<3i9f',i,0,0,0,0,0,0,0,0,0,0,0) for i in range(7))
+    rows=[(0,0,6,0,0,0,0),(0,0,6,1,0,1,1),(0,0,6,-1,0,1,2),(0,0,6,2,1,1,3),(0,0,6,-2,0,1,4),(0,0,6,3,1,1,5),(0,0,6,3,2,0,6)]
+    settings=b''.join(struct.pack('<7i',*row) for row in rows)
+    def reach(area,time):return struct.pack('<3i6fiH2x',area,0,0,0,0,0,0,0,0,2,time)
+    reaches=reach(0,0)+b''.join(reach(area,2) for area in range(2,7))
+    portals=struct.pack('<5i',0,0,0,0,0)+struct.pack('<5i',2,1,2,1,0)+struct.pack('<5i',4,2,3,2,0)
+    portalindex=struct.pack('<4i',1,1,2,2)
+    clusters=struct.pack('<4i',0,0,0,0)+struct.pack('<4i',2,2,1,0)+struct.pack('<4i',3,3,2,1)+struct.pack('<4i',3,3,1,3)
+    lumps=[b'',b'',b'',b'',b'',b'',b'',areas,settings,reaches,b'',portals,portalindex,clusters];header=bytearray(124);struct.pack_into('<III',header,0,0x53414145,4,0);offset=124
+    for i,blob in enumerate(lumps):assert len(blob)%STRIDES[i]==0;struct.pack_into('<II',header,12+i*8,offset,len(blob));offset+=len(blob)
+    return bytes(header)+b''.join(lumps)
 def build(source,output):subprocess.run([sys.executable,ROOT/'scripts/build.py','--source',source,'--output',output],cwd=ROOT,check=True);return ROOT/'build'/output
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--pak',type=Path);args=parser.parse_args();out=ROOT/'build/reference/aas_routing_cache';out.mkdir(parents=True,exist_ok=True);fixture_path=out/'cluster_portal.aas';fixture_path.write_bytes(fixture());native=out/'oracle.exe'
-    run(['cl','/nologo','/O2','/MT','/W4',ROOT/'tests/reference/aas_routing_cache_oracle.c',f'/Fe:{native}','/link','/Brepro'],out,msvc_env('x64'),out/'oracle-build.log');oracle=run([native],out).strip();expected='PASS: 4 native Baseq3 routing-cache scenarios / 6 exact observations'
+    parser=argparse.ArgumentParser();parser.add_argument('--pak',type=Path);args=parser.parse_args();out=ROOT/'build/reference/aas_routing_cache';out.mkdir(parents=True,exist_ok=True);fixture_path=out/'cluster_portal.aas';fixture_path.write_bytes(fixture());chain_path=out/'portal_chain.aas';chain_path.write_bytes(portal_chain_fixture());native=out/'oracle.exe'
+    run(['cl','/nologo','/O2','/MT','/W4',ROOT/'tests/reference/aas_routing_cache_oracle.c',f'/Fe:{native}','/link','/Brepro'],out,msvc_env('x64'),out/'oracle-build.log');oracle=run([native],out).strip();expected='PASS: 5 native Baseq3 routing-cache scenarios / 10 exact observations'
     if oracle!=expected:raise RuntimeError(oracle)
-    contracts=run([build('tests/aas_routing_cache_contracts.ml','aas_routing_cache_contracts.exe'),fixture_path],ROOT).strip()
-    if contracts!='PASS: 11 AAS cluster/portal cache contracts':raise RuntimeError(contracts)
+    contracts=run([build('tests/aas_routing_cache_contracts.ml','aas_routing_cache_contracts.exe'),fixture_path,chain_path],ROOT).strip()
+    if contracts!='PASS: 30 AAS cluster/portal cache contracts':raise RuntimeError(contracts)
     print(oracle);print(contracts)
     if args.pak:
       retail=run([build('tests/aas_routing_cache_retail_probe.ml','aas_routing_cache_retail_probe.exe'),args.pak],ROOT).strip()

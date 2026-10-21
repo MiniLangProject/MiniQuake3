@@ -1,6 +1,6 @@
 import mq3.client.original_ui_session as session
 
-struct Context catcher events resets commands down mouse end struct
+struct Context catcher events resets commands down mouse observed connects end struct
 function hostCatcher(c) return c.catcher end function
 function key(c,key,down)
   c.events=c.events+[["key",key,down]]
@@ -13,15 +13,19 @@ function menu(c,value) c.events=c.events+[["menu",value]];if value==session.UIME
 function commandCount(c) return c.commands end function
 function keyDown(c,key) return c.down[key] end function
 function mouseDelta(c) result=c.mouse;c.mouse=[0,0];return result end function
+function observe(c,key,down) c.observed=c.observed+[[key,down]];return void end function
+function connect(c,overlay) c.connects=c.connects+[overlay];return 0 end function
 function req(ok,message) if not ok then return error(7688,message) end if;return 1 end function
 
 function main(args)
-  count=0;context=Context(0,[],0,9,array(256,false),[0,0]);services=session.services(context,hostCatcher,key,mouse,refresh,menu,commandCount);state=session.create(services,context,keyDown,mouseDelta)
+  count=0;context=Context(0,[],0,9,array(256,false),[0,0],[],[]);services=session.services(context,hostCatcher,key,mouse,refresh,menu,commandCount);services.stateEventFn=observe;services.connectFn=connect;state=session.create(services,context,keyDown,mouseDelta)
   count=count+req(not (state is error) and len(state.bindings)==80,"complete native key map")
   count=count+req(not session.active(state),"UI catcher initially inactive")
   context.down[65]=true;frame=session.frame(state,10)
   count=count+req(frame.keyEvents==0 and frame.charEvents==0 and not frame.refreshed and context.commands==9,"game key ignored while UI inactive")
+  count=count+req(context.observed==[[97,true]],"inactive game key updates shared physical state")
   context.down[65]=false;session.frame(state,11)
+  count=count+req(context.observed[1]==[97,false],"inactive key release updates shared physical state")
   context.down[session.VK_ESCAPE]=true;frame=session.frame(state,12)
   count=count+req(frame.menuOpened and frame.active and frame.refreshed,"Escape opens and refreshes ingame menu")
   count=count+req(context.events[0]==["menu",session.UIMENU_INGAME] and context.events[1]==["refresh",12],"menu activation precedes refresh")
@@ -44,9 +48,18 @@ function main(args)
   count=count+req(frame.keyEvents==1 and not frame.active and not frame.refreshed,"active UI handles Escape and releases catcher")
   count=count+req(session.openMain(state)==0 and session.active(state),"main menu activation delegated")
   count=count+req(session.close(state)==0 and not session.active(state),"menu close delegated")
-  count=count+req(try(session.setMenu(state,3)) is error,"invalid menu rejected")
+  count=count+req(session.openNeedCd(state)==0 and context.events[len(context.events)-1]==["menu",session.UIMENU_NEED_CD],"need-CD menu delegated")
+  count=count+req(session.openBadCdKey(state)==0 and context.events[len(context.events)-1]==["menu",session.UIMENU_BAD_CD_KEY],"bad-CD-key menu delegated")
+  count=count+req(session.openTeam(state)==0 and context.events[len(context.events)-1]==["menu",session.UIMENU_TEAM],"team menu delegated")
+  count=count+req(session.openPostgame(state)==0 and context.events[len(context.events)-1]==["menu",session.UIMENU_POSTGAME],"postgame menu delegated")
+  count=count+req(try(session.setMenu(state,7)) is error,"invalid menu rejected")
+  count=count+req(session.drawConnectScreen(state,false)==0 and session.drawConnectScreen(state,true)==0 and context.connects==[false,true],"connect-screen overlay modes delegated")
+  missing=session.services(context,hostCatcher,key,mouse,refresh,menu,commandCount);missingState=session.create(missing,context,keyDown,mouseDelta)
+  count=count+req(try(session.drawConnectScreen(missingState,false)) is error,"missing connect-screen service rejected")
   count=count+req(try(session.frame(state,-1)) is error,"negative frame time rejected")
   count=count+req(try(session.create(session.services(context,void,key,mouse,refresh,menu,commandCount),context,keyDown,mouseDelta)) is error,"incomplete services rejected")
   count=count+req(session.K_CHAR_FLAG==1024 and session.K_MOUSE1==178 and session.K_UPARROW==132,"Baseq3 key constants pinned")
+  observedDown=false;for each event in context.observed if event==[session.K_DOWNARROW,true] then observedDown=true end if end for
+  count=count+req(observedDown,"active navigation also updates shared physical state")
   print("PASS: "+str(count)+" original UI session contracts");return 0
 end function

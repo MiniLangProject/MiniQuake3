@@ -10,7 +10,11 @@ import mq3.renderer.playable_materials as materials
 
 const DLIGHT_SIZE=16
 struct Catalog textureSlot image end struct
-struct Batch commands triangles end struct
+// origins/axes are parallel to triangles for moving brush models.  The
+// original R_DlightBmodel transforms each world-space light into the model's
+// local orientation before ProjectDlightTexture derives S/T and attenuation.
+// Static world batches keep both arrays void and retain the cheaper path.
+struct Batch commands triangles origins axes bounds end struct
 struct VertexResult uv color clip end struct
 struct Light origin radius color additive end struct
 
@@ -36,7 +40,18 @@ function build(renderData,receiveFlags)
   triangles=[]
   for each triangle in renderData.triangles if triangle.textureIndex>=0 and triangle.textureIndex<len(receiveFlags) and receiveFlags[triangle.textureIndex] then triangles=triangles+[triangle] end if end for
   capacity=len(triangles);if capacity<1 then capacity=1 end if;commands=window.createTriangleBatch(capacity);if commands is error then return commands end if
-  return Batch(commands,triangles)
+  return Batch(commands,triangles,void,void,void)
+end function
+
+function buildOriented(renderData,receiveFlags,origins,axes,bounds)
+  if renderData==void or receiveFlags==void or origins==void or axes==void or bounds==void or len(origins)!=len(renderData.triangles) or len(axes)!=len(renderData.triangles) or len(bounds)!=len(renderData.triangles) then return fail("oriented render data needs one origin, axis and bounds pair per triangle") end if
+  triangles=[];keptOrigins=[];keptAxes=[];keptBounds=[];sourceIndex=0
+  for each triangle in renderData.triangles
+    if triangle.textureIndex>=0 and triangle.textureIndex<len(receiveFlags) and receiveFlags[triangle.textureIndex] then triangles=triangles+[triangle];keptOrigins=keptOrigins+[origins[sourceIndex]];keptAxes=keptAxes+[axes[sourceIndex]];keptBounds=keptBounds+[bounds[sourceIndex]] end if
+    sourceIndex=sourceIndex+1
+  end for
+  capacity=len(triangles);if capacity<1 then capacity=1 end if;commands=window.createTriangleBatch(capacity);if commands is error then return commands end if
+  return Batch(commands,triangles,keptOrigins,keptAxes,keptBounds)
 end function
 
 function vertex(light,position)
@@ -46,11 +61,40 @@ function vertex(light,position)
   return VertexResult([u,v],[n.trunc32(light.color[0]*255.0*modulate),n.trunc32(light.color[1]*255.0*modulate),n.trunc32(light.color[2]*255.0*modulate),255],clip)
 end function
 
+function localPoint(point,origin,axis)
+  if point==void or origin==void or axis==void or len(point)!=3 or len(origin)!=3 or len(axis)!=3 then return fail("oriented projected light needs origin and three axes") end if
+  delta=[point[0]-origin[0],point[1]-origin[1],point[2]-origin[2]]
+  return [delta[0]*axis[0][0]+delta[1]*axis[0][1]+delta[2]*axis[0][2],delta[0]*axis[1][0]+delta[1]*axis[1][1]+delta[2]*axis[1][2],delta[0]*axis[2][0]+delta[1]*axis[2][1]+delta[2]*axis[2][2]]
+end function
+
+function orientedVertex(light,position,origin,axis)
+  localLight=localPoint(light.origin,origin,axis);if localLight is error then return localLight end if
+  localPosition=localPoint(position,origin,axis);if localPosition is error then return localPosition end if
+  return vertex(Light(localLight,light.radius,light.color,light.additive),localPosition)
+end function
+
+// Exact R_DlightBmodel point-to-expanded-bounds test after R_TransformDlights.
+// The renderer stores the same result as a bit mask on every bmodel surface;
+// the retained batch evaluates the equivalent predicate per light/model pair.
+function affectsBounds(light,origin,axis,bounds)
+  if light==void or light.radius<=0.0 or bounds==void or len(bounds)!=2 or len(bounds[0])!=3 or len(bounds[1])!=3 then return false end if
+  transformed=localPoint(light.origin,origin,axis);if transformed is error then return transformed end if
+  for component=0 to 2
+    if transformed[component]-bounds[1][component]>light.radius or bounds[0][component]-transformed[component]>light.radius then return false end if
+  end for
+  return true
+end function
+
 function update(batch,catalog,light)
   if batch==void or catalog==void or light==void or light.radius<=0.0 then return fail("invalid projected light") end if
   window.resetTriangleBatch(batch.commands)
+  triangleIndex=0
   for each triangle in batch.triangles
-    a=vertex(light,triangle.vertices[0].position);b=vertex(light,triangle.vertices[1].position);c=vertex(light,triangle.vertices[2].position)
+    a=void;b=void;c=void
+    if batch.origins==void then a=vertex(light,triangle.vertices[0].position);b=vertex(light,triangle.vertices[1].position);c=vertex(light,triangle.vertices[2].position)
+    else origin=batch.origins[triangleIndex];axis=batch.axes[triangleIndex];bounds=batch.bounds[triangleIndex];affected=affectsBounds(light,origin,axis,bounds);if affected is error then return affected end if;if not affected then triangleIndex=triangleIndex+1;continue end if;a=orientedVertex(light,triangle.vertices[0].position,origin,axis);b=orientedVertex(light,triangle.vertices[1].position,origin,axis);c=orientedVertex(light,triangle.vertices[2].position,origin,axis) end if
+    if a is error then return a end if;if b is error then return b end if;if c is error then return c end if
+    triangleIndex=triangleIndex+1
     if (a.clip & b.clip & c.clip)!=0 then continue end if
     commands=window.appendSingleTextureTriangleColored(batch.commands,catalog.textureSlot,viewer.ScreenPoint(triangle.vertices[0].position[0],triangle.vertices[0].position[1],triangle.vertices[0].position[2]),a.uv,1.0,a.color,viewer.ScreenPoint(triangle.vertices[1].position[0],triangle.vertices[1].position[1],triangle.vertices[1].position[2]),b.uv,1.0,b.color,viewer.ScreenPoint(triangle.vertices[2].position[0],triangle.vertices[2].position[1],triangle.vertices[2].position[2]),c.uv,1.0,c.color,255,255,255);if commands is error then return commands end if
   end for

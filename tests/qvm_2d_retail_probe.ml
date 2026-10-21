@@ -26,7 +26,7 @@ function main(args)
   refreshed=match.refreshUi(state,1500);if refreshed is error then return refreshed end if
   if len(state.context.errors)>0 then return error(7685,state.context.errors[0]) end if
   extracted=qvm2d.extract(state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,1280.0,720.0,640.0,480.0);if extracted is error then return extracted end if
-  catalog=qvm2d.build(archive,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,0,512,1280.0,720.0,640.0,480.0);if catalog is error then return catalog end if
+  catalog=qvm2d.build(archive,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,0,512,1280.0,720.0,640.0,480.0,state.context.shaderRemaps);if catalog is error then return catalog end if
   if len(extracted.quads)<=len(cgame.quads) then return error(7685,"retail UI submitted no additional 2D quads") end if
   if catalog.sourceQuads!=len(extracted.quads) or catalog.resolvedQuads!=catalog.sourceQuads or catalog.unresolvedQuads!=0 then return error(7685,"retail QVM 2D shader resolution incomplete") end if
   if len(catalog.materials)==0 or len(catalog.textures)==0 or len(catalog.runs)==0 or catalog.emittedTriangles<catalog.sourceQuads*2 then return error(7685,"retail QVM 2D native batches incomplete") end if

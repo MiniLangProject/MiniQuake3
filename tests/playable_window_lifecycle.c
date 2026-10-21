@@ -12,6 +12,7 @@ __declspec(dllimport) int playable_window_consume_mouse_dy(void);
 __declspec(dllimport) int playable_window_milliseconds(void);
 __declspec(dllimport) void playable_window_begin_frame(int, int, int);
 __declspec(dllimport) void playable_window_clear_depth(double);
+__declspec(dllimport) double playable_window_sample_depth(int, int);
 __declspec(dllimport) int playable_window_set_depth_range(double, double);
 __declspec(dllimport) int playable_window_upload_texture(int, const unsigned char *, int, int);
 __declspec(dllimport) int playable_window_upload_texture_mipmapped(int, const unsigned char *, int, int, int);
@@ -55,6 +56,7 @@ int main(void) {
     if (playable_window_set_title_utf8((const unsigned char *)"before create", 13)) return 8;
     playable_window_begin_frame(0, 0, 0);
     playable_window_clear_depth(1000.0);
+    if (playable_window_sample_depth(0, 0) != -1.0) return 15;
     if (playable_window_upload_texture(-1, texture, 2, 2) ||
         playable_window_upload_texture(512, texture, 2, 2) ||
         playable_window_upload_texture(0, 0, 2, 2) ||
@@ -73,7 +75,8 @@ int main(void) {
         0.0, 1.0, 2.0, 0.0, 1.0, 0.0, 1.0, 1.0,
         255, 255, 255);
     if (playable_window_set_raster_state(-1, 0, 1) ||
-        playable_window_set_raster_state(7, 0, 1) ||
+        !playable_window_set_raster_state(7, 0, 1) ||
+        playable_window_set_raster_state(8, 0, 1) ||
         playable_window_set_raster_state(0, 2, 1) ||
         playable_window_set_raster_state(0, 0, 2) ||
             !playable_window_set_raster_state(5, 1, 0) ||
@@ -133,6 +136,7 @@ int main(void) {
         if (!playable_window_upload_texture(1, texture, 2, 2)) return 5;
         playable_window_begin_frame(12, 24, 48);
         playable_window_clear_depth(10000.0);
+        if (playable_window_sample_depth(160, 100) < 9999.0) return 15;
         playable_window_draw_triangle(1,
             20.0, 20.0, 1.0, 0.0, 0.0, 1.0,
             300.0, 40.0, 4.0, 4.0, 0.0, 0.8,
@@ -149,6 +153,9 @@ int main(void) {
             240.0, 100.0, 0.5, 0.0, 0.0, 1.0,
             180.0, 170.0, 0.5, 0.0, 0.0, 1.0,
             255, 192, 32);
+        if (playable_window_sample_depth(180, 100) < 0.49 ||
+                playable_window_sample_depth(180, 100) > 0.51 ||
+                playable_window_sample_depth(-1, 0) != -1.0) return 15;
         playable_window_draw_line(0, 0, 319, 199, 255, 160, 32);
         playable_window_draw_line(319, 0, 0, 199, 32, 220, 255);
         playable_window_present();

@@ -2,6 +2,9 @@
  * Raw Windows UDP ABI only. Protocol and game policy stay in MiniLang.
  */
 #define WIN32_LEAN_AND_MEAN
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT 0x0600
+#endif
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <stdint.h>
@@ -20,6 +23,39 @@ API uintptr_t mq3_udp_socket(void) {
         closesocket(socketHandle); return (uintptr_t)INVALID_SOCKET;
     }
     return (uintptr_t)socketHandle;
+}
+API int mq3_udp_set_broadcast(uintptr_t raw, int enabled) {
+    BOOL value = enabled ? TRUE : FALSE;
+    if (setsockopt((SOCKET)raw, SOL_SOCKET, SO_BROADCAST,
+                   (const char *)&value, sizeof(value)) == SOCKET_ERROR) {
+        return WSAGetLastError();
+    }
+    return 0;
+}
+API int mq3_udp_resolve_ipv4(const wchar_t *name, uint32_t *address) {
+    ADDRINFOW hints;
+    PADDRINFOW result = NULL;
+    PADDRINFOW current;
+    int code;
+    if (name == NULL || name[0] == L'\0' || address == NULL) return WSAEINVAL;
+    ZeroMemory(&hints, sizeof(hints));
+    hints.ai_family = AF_INET;
+    hints.ai_socktype = SOCK_DGRAM;
+    hints.ai_protocol = IPPROTO_UDP;
+    code = GetAddrInfoW(name, NULL, &hints, &result);
+    if (code != 0) return code;
+    for (current = result; current != NULL; current = current->ai_next) {
+        if (current->ai_family == AF_INET &&
+            current->ai_addrlen >= (int)sizeof(struct sockaddr_in)) {
+            const struct sockaddr_in *resolved =
+                (const struct sockaddr_in *)current->ai_addr;
+            *address = ntohl(resolved->sin_addr.s_addr);
+            FreeAddrInfoW(result);
+            return 0;
+        }
+    }
+    FreeAddrInfoW(result);
+    return WSAHOST_NOT_FOUND;
 }
 API int mq3_udp_bind(uintptr_t raw, uint32_t address, uint32_t port) {
     struct sockaddr_in localAddress;

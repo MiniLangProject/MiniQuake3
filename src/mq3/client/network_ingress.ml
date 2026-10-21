@@ -27,6 +27,10 @@ end function
 function parse(packetHost,state,msg)
   runtime=packetHost.context
   if runtime==void or runtime.protocol==void then return error(6994,"client ingress: missing protocol runtime") end if
+  // CL_PacketEvent updates the physical server message sequence immediately
+  // before CL_ParseServerMessage. Snapshot promotion and delta lookup consume
+  // that same sequence through clc.serverMessageSequence.
+  runtime.protocol.dispatcher.snapshotState.serverMessageSequence=state.serverMessageSequence
   result=protocolRuntime.parse(runtime.protocol,msg)
   // CL_ParseCommandString writes cls.serverCommands.  The client netchan
   // encoder consumes the same ring for the next packet's XOR key.

@@ -19,5 +19,7 @@ function main(args)
   print("B|"+str(view.cullLocalBox([[-1.0,-1.0,-1.0],[1.0,1.0,1.0]],value,frustum,false))+"|"+str(view.cullLocalBox([[8.0,-1.0,-1.0],[12.0,1.0,1.0]],value,frustum,false))+"|"+str(view.cullLocalBox([[12.0,-1.0,-1.0],[14.0,1.0,1.0]],value,frustum,false)))
   print("L|"+str(view.cullLocalPointAndRadius([0.0,0.0,0.0],1.0,value,frustum,false)))
   print("X|"+str(view.cullPointAndRadius([0.0,0.0,0.0],1.0,frustum,true))+"|"+str(view.cullLocalBox([[12.0,-1.0,-1.0],[14.0,1.0,1.0]],value,frustum,true)))
+  generated=view.setupFrustum([1.0,2.0,3.0],[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]],90.0,60.0);if generated is error then return generated end if
+  for i=0 to 3 print("F"+str(i)+"|"+hex32(numeric.floatBits(generated[i].normal[0]))+"|"+hex32(numeric.floatBits(generated[i].normal[1]))+"|"+hex32(numeric.floatBits(generated[i].normal[2]))+"|"+hex32(numeric.floatBits(generated[i].dist))) end for
   return 0
 end function

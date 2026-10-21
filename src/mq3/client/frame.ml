@@ -3,6 +3,7 @@
 // Productive outer CL_Frame composition from client/cl_main.c.
 package mq3.client.frame
 import mq3.compat.numeric as numeric
+import mq3.client.send_cmd as sendCmd
 
 const CA_DISCONNECTED=1
 const CA_CHALLENGING=4
@@ -32,11 +33,17 @@ end function
 struct Services
   menuFn stopSoundsFn commandTextFn debugGraphFn infoStringFn reliableFn diagnosticFn disconnectFn
   sendCmdFn resendFn setCGameTimeFn screenFn soundFn cinematicFn consoleFn
-  networkRuntime protocolRuntime demoRuntime context
+  networkRuntime protocolRuntime demoRuntime sendRuntime sendServices context
 end struct
 
 function services()
-  return Services(void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
+  return Services(void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
+end function
+
+function liveSend(host) return sendCmd.send(host.sendRuntime,host.sendRuntime.realtime,host.sendServices) end function
+function attachSend(host,runtime,sendServices)
+  if host==void or runtime==void or sendServices==void then return error(7110,"client frame: missing send-command binding") end if
+  host.sendRuntime=runtime;host.sendServices=sendServices;host.sendCmdFn=liveSend;return host
 end function
 
 function call0(fn,host) if fn!=void then fn(host) end if;return void end function
@@ -93,6 +100,10 @@ function run(state,msec,host)
 
   checkUserinfo(state,host)
   checkTimeout(state,host)
+  if host.sendRuntime!=void then
+    host.sendRuntime.connectionState=state.state;host.sendRuntime.realtime=state.realtime
+    host.sendRuntime.serverRunning=state.serverRunning!=0;host.sendRuntime.serverPaused=state.serverPaused!=0;host.sendRuntime.clientPaused=state.paused!=0
+  end if
   call0(host.sendCmdFn,host)
   call0(host.resendFn,host)
   call0(host.setCGameTimeFn,host)

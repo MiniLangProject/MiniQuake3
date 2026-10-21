@@ -136,7 +136,7 @@ int main(void) {
     if (!playable_window_set_raster_state(4, 1, 0)) return 24;
     drawUiTriangle(3);
     if (pixels[sample] != UINT32_C(0xc0ff0000) || depthPixels[sample] != 0.5f) return 25;
-    if (playable_window_set_raster_state(7, 0, 0)) return 26;
+    if (playable_window_set_raster_state(8, 0, 0)) return 26;
 
     playable_window_begin_frame(0, 0, 0);
     drawUiTriangleUv(4, 1.25);
@@ -202,6 +202,15 @@ int main(void) {
     if (!playable_window_set_raster_state(6, 1, 0)) return 45;
     drawUiTriangle(3);
     if (pixels[sample] != UINT32_C(0x00206000) || depthPixels[sample] != 0.5f) return 46;
+
+    /* GL_ONE/GL_ONE_MINUS_SRC_ALPHA keeps the premultiplied source and fades
+     * every destination channel, including alpha, by inverse source alpha. */
+    playable_window_begin_frame(0, 0, 0);
+    if (!playable_window_set_raster_state(0, 0, 1)) return 50;
+    drawUiTriangle(6);
+    if (!playable_window_set_raster_state(7, 1, 0)) return 51;
+    drawUiTriangle(0);
+    if (pixels[sample] != UINT32_C(0xffff4010) || depthPixels[sample] != 0.5f) return 52;
 
     /* Entity light-grid RGB reaches the rasterizer as perspective-correct
      * vertex color, and the direct call restores state for legacy draws. */

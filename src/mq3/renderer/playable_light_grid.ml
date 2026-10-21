@@ -8,6 +8,7 @@ import mq3.compat.numeric as numeric
 import mq3.compat.textnumbers as textnumbers
 import mq3.compat.transcendental as trans
 import mq3.shared.math as qmath
+import mq3.renderer.bsp_render_data as renderData
 
 const DEFAULT_X=64.0
 const DEFAULT_Y=64.0
@@ -16,6 +17,8 @@ const PI=3.14159265358979323846
 const MINLIGHT=32.0
 const DLIGHT_AT_RADIUS=16.0
 const DLIGHT_MINIMUM_RADIUS=16.0
+const NOWORLD_AMBIENT=182.0
+const NOWORLD_DIRECTED=150.0
 
 struct Grid data offset length origin size inverse bounds valid dynamicLights end struct
 struct Sample ambient directed direction totalFactor end struct
@@ -40,9 +43,7 @@ function load(map)
 end function
 
 function shiftColor(red,green,blue)
-  r=red*2;g=green*2;b=blue*2
-  if (r | g | b)>255 then maximum=r;if g>maximum then maximum=g end if;if b>maximum then maximum=b end if;r=numeric.quotient(r*255,maximum);g=numeric.quotient(g*255,maximum);b=numeric.quotient(b*255,maximum) end if
-  return [r,g,b]
+  return renderData.colorShiftLighting(red,green,blue,2)
 end function
 function emptySample() return Sample([0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,1.0],0.0) end function
 
@@ -80,6 +81,14 @@ end function
 function setDynamicLights(grid,lights) if grid!=void then if lights==void then grid.dynamicLights=[] else grid.dynamicLights=lights end if end if;return grid end function
 function entitySample(grid,point)
   value=sample(grid,point);for channel=0 to 2 value.ambient[channel]=value.ambient[channel]+MINLIGHT;if value.ambient[channel]>255.0 then value.ambient[channel]=255.0 end if end for
+  if grid!=void then value=withDynamicLights(value,point,grid.dynamicLights) end if;return value
+end function
+// R_SetupEntityLighting uses identityLight*150 for both components when the
+// refdef has RDF_NOWORLDMODEL, then applies the renderer's unconditional
+// 32-unit minimum-light add. The software renderer uses identityLight 1.0.
+function noWorldEntitySample(grid,point)
+  direction=[0.45,0.3,0.9];qmath.VectorNormalize(direction)
+  value=Sample([NOWORLD_AMBIENT,NOWORLD_AMBIENT,NOWORLD_AMBIENT],[NOWORLD_DIRECTED,NOWORLD_DIRECTED,NOWORLD_DIRECTED],direction,1.0)
   if grid!=void then value=withDynamicLights(value,point,grid.dynamicLights) end if;return value
 end function
 function vertexLight(value,normal)

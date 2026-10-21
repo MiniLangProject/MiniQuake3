@@ -11,10 +11,13 @@ function encodeHex(data,count) digits=bytes("0123456789abcdef");t="";if count>0 
 function flag(v) if v then return "1" end if;return "0" end function
 function emit(name,a) m=message.init(10000);download.writeToClient(a[0],a[1],a[2],m);d=a[0];print name+"|"+str(m.cursize)+"|"+str(m.bit)+"|"+flag(m.overflowed)+"|"+str(d.count)+"|"+str(d.clientBlock)+"|"+str(d.currentBlock)+"|"+str(d.xmitBlock)+"|"+flag(d.eof)+"|"+encodeHex(m.data,m.cursize) end function
 function ack(name,a,block) download.acknowledge(a[0],a[1],a[2],block);d=a[0];first=0;if d.name!="" then first=bytes(d.name)[0] end if;print name+"|"+str(d.clientBlock)+"|"+str(d.sendTime)+"|"+str(first)+"|"+str(a[2].context.closed)+"|"+str(a[2].context.dropped) end function
+struct DoneContext count end struct
+function sent(runtime,client) runtime.context.count=runtime.context.count+1;return void end function
 function main(args)
  a=setup(3,0,50);emit("small0",a);ack("ack0",a,0);emit("small-eof",a);ack("ack-eof",a,1)
  a=setup(5000,250000,100);emit("rate",a)
  a=setup(17000,0,50);emit("window0",a);ack("window-ack",a,0);emit("window1",a)
  a=setup(3,0,50);emit("first",a);a[1].time=1500;emit("early",a);a[1].time=2501;emit("resend",a);ack("bad-ack",a,3)
+ a=setup(3,0,50);download.beginDownload(a[0],a[2],"maps/new.pk3");print "begin|"+a[0].name+"|0|"+str(a[2].context.closed);download.stopDownload(a[0],a[2]);print "stop|0|0|"+str(a[2].context.closed);ctx=DoneContext(0);runtime=download.commandRuntime(a[0],a[1],a[2],sent,ctx);download.doneDownload(runtime,void);print "done|"+str(ctx.count)
  return 0
 end function

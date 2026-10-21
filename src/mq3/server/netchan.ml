@@ -102,6 +102,21 @@ function transmit(runtime,clientState,msg)
   return net.transmit(runtime,clientState.channel,data)
 end function
 
+// Snapshot construction already appends svc_EOF before reaching the netchan
+// boundary. This entry point applies the server XOR and drains every fragment
+// without adding a second terminator.
+function transmitPayload(runtime,clientState,payload)
+  requireClient(clientState)
+  if runtime==void or payload==void then return error(6964,"server netchan: invalid payload transport") end if
+  msg=message.initStorage(slice(payload,0,len(payload)),len(payload),false);msg.cursize=len(payload);encode(clientState,msg)
+  first=net.transmit(runtime,clientState.channel,slice(msg.data,0,msg.cursize))
+  if first is error then return first end if
+  while clientState.channel.unsentFragments
+    next=net.transmitNextFragment(runtime,clientState.channel);if next is error then return next end if
+  end while
+  return first
+end function
+
 function transmitNextFragment(runtime,clientState)
   requireClient(clientState)
   first=net.transmitNextFragment(runtime,clientState.channel);packets=[first]

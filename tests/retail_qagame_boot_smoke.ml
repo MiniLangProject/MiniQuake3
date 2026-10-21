@@ -48,10 +48,11 @@ function main(args)
     geometryTriangles=geometryTriangles+len(geometry.triangles);geometryModels=geometryModels+geometry.modelEntities;geometryInline=geometryInline+geometry.skippedInline;geometryUnsupported=geometryUnsupported+geometry.skippedUnsupported;expanded=expanded+geometry.triangles
   end for
   if renderViewCount==0 or geometryModels==0 or geometryTriangles==0 then return error(7642,"retail cgame views did not expand to MD3 geometry") end if
-  materialCatalog=qvmSceneMaterials.build(archive,expanded,state.context.assets,state.context.assetKinds,512,512);if materialCatalog is error then return materialCatalog end if
+  materialCatalog=qvmSceneMaterials.build(archive,expanded,state.context.assets,state.context.assetKinds,512,512,state.context.shaderRemaps);if materialCatalog is error then return materialCatalog end if
   if materialCatalog.resolvedTriangles==0 or len(materialCatalog.textures)==0 then return error(7642,"retail cgame geometry did not resolve decoded textures") end if
   prepared=qvmSceneBatch.build(materialCatalog);if prepared is error then return prepared end if
-  if prepared.batch.sourceTriangles!=geometryTriangles or prepared.batch.drawableTriangles!=geometryTriangles or prepared.batch.emittedTriangles<geometryTriangles then return error(7642,"retail QVM geometry did not build a complete native batch") end if
+  batchedSource=prepared.batch.sourceTriangles+prepared.depthHackBatch.sourceTriangles;batchedDrawable=prepared.batch.drawableTriangles+prepared.depthHackBatch.drawableTriangles;batchedEmitted=prepared.batch.emittedTriangles+prepared.depthHackBatch.emittedTriangles
+  if batchedSource!=geometryTriangles or batchedDrawable!=geometryTriangles or batchedEmitted<geometryTriangles then return error(7642,"retail QVM geometry did not build complete world and depth-hack native batches") end if
   linked=0;for each ent in state.context.spatialScene.entities if ent.linked then linked=linked+1 end if end for
   if linked<len(snapshot.entities) or len(snapshot.entities)==0 then return error(7642,"PVS snapshot contains an invalid linked-entity selection") end if
   arenaFiles=match.uiFileList(state.context,"scripts",".arena");botFiles=match.uiFileList(state.context,"scripts",".bot");cfgFiles=match.uiFileList(state.context,"","cfg");playerDirs=match.uiFileList(state.context,"models/players","/")
@@ -71,7 +72,7 @@ function main(args)
   report=report+" cgameAssets="+str(cgameAssets)+" uiAssets="+str(len(state.context.assets)-cgameAssets)+" addonArenas="+str(len(arenaFiles))+" addonBots="+str(len(botFiles))+" configs="+str(len(cfgFiles))+" playerDirs="+str(len(playerDirs))
   report=report+" cgameSceneEntities="+str(cgameSceneEntities)+" models="+str(models)+" sprites="+str(sprites)+" renderViews="+str(renderViewCount)+" geometryModels="+str(geometryModels)
   report=report+" inlineModels="+str(geometryInline)+" unsupportedEntities="+str(geometryUnsupported)+" triangles="+str(geometryTriangles)+" materials="+str(len(materialCatalog.materials))+" textures="+str(len(materialCatalog.textures))
-  report=report+" texturedTriangles="+str(materialCatalog.resolvedTriangles)+" untexturedTriangles="+str(materialCatalog.unresolvedTriangles)+" emittedTriangles="+str(prepared.batch.emittedTriangles)+" renderPasses="+str(len(prepared.batch.passes))+" skins="+str(len(materialCatalog.loadedSkins))
+  report=report+" texturedTriangles="+str(materialCatalog.resolvedTriangles)+" untexturedTriangles="+str(materialCatalog.unresolvedTriangles)+" emittedTriangles="+str(batchedEmitted)+" renderPasses="+str(len(prepared.batch.passes)+len(prepared.depthHackBatch.passes))+" skins="+str(len(materialCatalog.loadedSkins))
   report=report+" cgameView="+str(cgameViewWidth)+"x"+str(cgameViewHeight)+" lights="+str(len(state.context.scene.dlights))+" cgameDraw2D="+str(cgameDraw2D)
   report=report+" uiDraw2D="+str(len(state.context.renderQueue.commands)-cgameDraw2D)+" sounds="+str(len(state.context.soundCommands));print(report)
   match.shutdown(state);return 0

@@ -3,11 +3,14 @@
 // Baseq3 server download window from SV_WriteDownloadToClient/SV_NextDownload_f.
 package mq3.server.download
 import mq3.qcommon.message as message
+import mq3.qcommon.command_buffer as commandBuffer
 import mq3.compat.numeric as numeric
+import mq3.compat.textnumbers as textnumbers
 
 const MAX_DOWNLOAD_WINDOW=8
 const MAX_DOWNLOAD_BLKSIZE=2048
 const SVC_DOWNLOAD=6
+const MAX_QPATH=64
 
 struct State name handle size count clientBlock currentBlock xmitBlock blocks blockSizes eof sendTime rate snapshotMsec end struct
 function create(name,rate,snapshotMsec)
@@ -18,11 +21,51 @@ function server(time,allowDownload,pure,maxRate) return Server(time,allowDownloa
 struct Services idPakFn openFn readFn closeFn dropFn context end struct
 function services(idPakFn,openFn,readFn,closeFn,dropFn,context) return Services(idPakFn,openFn,readFn,closeFn,dropFn,context) end function
 
+// Adapter for the four download builtins in SV_ExecuteClientCommand.  Keeping
+// it next to the window state makes the reliable command path and the snapshot
+// writer operate on the same live download cursor.
+struct CommandRuntime state serverState downloadHost sendGamestateFn context end struct
+function commandRuntime(state,serverState,downloadHost,sendGamestateFn,context)
+  return CommandRuntime(state,serverState,downloadHost,sendGamestateFn,context)
+end function
+
 function close(state,host)
   if state.handle!=void and host!=void and host.closeFn!=void then host.closeFn(host,state.handle) end if
   state.handle=void;state.name=""
   for index=0 to MAX_DOWNLOAD_WINDOW-1 state.blocks[index]=bytes(0,0);state.blockSizes[index]=0 end for
   return void
+end function
+
+function qpath(name)
+  data=bytes(name);count=len(data);if count>=MAX_QPATH then count=MAX_QPATH-1 end if
+  return decode(slice(data,0,count))
+end function
+
+function beginDownload(state,host,name)
+  if state==void or host==void then return error(6916,"download command: missing state or host") end if
+  close(state,host);state.name=qpath(name);return void
+end function
+
+function stopDownload(state,host)
+  if state==void or host==void then return error(6916,"download command: missing state or host") end if
+  close(state,host);return void
+end function
+
+function doneDownload(runtime,clientState)
+  if runtime==void then return error(6916,"download command: missing runtime") end if
+  if runtime.sendGamestateFn!=void then runtime.sendGamestateFn(runtime,clientState) end if
+  return void
+end function
+
+// Signature-compatible with client_command_dispatch.Services.downloadFn.
+function dispatchCommand(dispatchHost,clientState,name,parser)
+  if dispatchHost==void or not (dispatchHost.downloadContext is CommandRuntime) then return error(6916,"download command: missing binding") end if
+  runtime=dispatchHost.downloadContext
+  if name=="download" then return beginDownload(runtime.state,runtime.downloadHost,commandBuffer.argv(parser,1)) end if
+  if name=="nextdl" then return acknowledge(runtime.state,runtime.serverState,runtime.downloadHost,textnumbers.atoi(commandBuffer.argv(parser,1))) end if
+  if name=="stopdl" then return stopDownload(runtime.state,runtime.downloadHost) end if
+  if name=="donedl" then return doneDownload(runtime,clientState) end if
+  return error(6916,"download command: unsupported builtin "+name)
 end function
 
 function failureText(state,serverState,idPack,missionPack)

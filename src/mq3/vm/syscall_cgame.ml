@@ -3,6 +3,8 @@
 // Client-specific cgame traps from CL_CgameSystemCalls.
 package mq3.vm.syscall_cgame
 import mq3.vm.syscall_common as common
+import mq3.vm.cgame_key_traps as keyTraps
+import mq3.vm.cgame_pc_traps as pcTraps
 import mq3.compat.numeric as n
 
 const GAMESTATE_SIZE = 20100
@@ -35,11 +37,13 @@ struct Services
   getUserCmdFn
   setUserCmdValueFn
   memoryRemainingFn
+  keyServices
+  pcServices
   extendedFn
 end struct
 
 function services(shared,context)
-  return Services(shared,context,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
+  return Services(shared,context,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
 end function
 
 function unavailable(name) return error(3422,"cgame syscall: "+name+" service unavailable") end function
@@ -115,6 +119,15 @@ function dispatchSpecific(vm,base,host,op)
     case 56 return setUserCmdValue(vm,base,host) end case
     case 57 return registerAsset(vm,base,host,host.registerShaderNoMipFn,"register shader no mip") end case
     case 58 if host.memoryRemainingFn==void then return unavailable("memory remaining") end if;return host.memoryRemainingFn(host.context) end case
+    case 60 if host.keyServices!=void then return keyTraps.dispatch(host.keyServices,vm,base) end if end case
+    case 61 if host.keyServices!=void then return keyTraps.dispatch(host.keyServices,vm,base) end if end case
+    case 62 if host.keyServices!=void then return keyTraps.dispatch(host.keyServices,vm,base) end if end case
+    case 63 if host.keyServices!=void then return keyTraps.dispatch(host.keyServices,vm,base) end if end case
+    case 64 if host.pcServices!=void then return pcTraps.dispatch(host.pcServices,vm,base) end if end case
+    case 65 if host.pcServices!=void then return pcTraps.dispatch(host.pcServices,vm,base) end if end case
+    case 66 if host.pcServices!=void then return pcTraps.dispatch(host.pcServices,vm,base) end if end case
+    case 67 if host.pcServices!=void then return pcTraps.dispatch(host.pcServices,vm,base) end if end case
+    case 68 if host.pcServices!=void then return pcTraps.dispatch(host.pcServices,vm,base) end if end case
     case 72 return stringEvent(vm,base,host,host.removeCommandFn,"remove command") end case
   end switch
   if host.extendedFn!=void then return host.extendedFn(host.context,vm,base,op) end if

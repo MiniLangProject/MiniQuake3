@@ -140,7 +140,7 @@ function main(args)
       geometry=qvmSceneGeometry.buildRecords(view.scene.entities,view.scene.polys,state.context.assetKinds,state.context.modelAssets,view.refdef,8192);if geometry is error then return geometry end if
       triangleCount=triangleCount+len(geometry.triangles);geometryModels=geometryModels+geometry.modelEntities;expanded=expanded+geometry.triangles
     end for
-    materialCatalog=qvmSceneMaterials.build(archive,expanded,state.context.assets,state.context.assetKinds,512,512);if materialCatalog is error then return materialCatalog end if
+    materialCatalog=qvmSceneMaterials.build(archive,expanded,state.context.assets,state.context.assetKinds,512,512,state.context.shaderRemaps);if materialCatalog is error then return materialCatalog end if
     prepared=qvmSceneBatch.build(materialCatalog);if prepared is error then return prepared end if
     ui=localQvmMatch.bootUi(state);if ui is error then return ui end if
     activated=localQvmMatch.setUiMenu(state,1);if activated is error then return activated end if
@@ -150,12 +150,19 @@ function main(args)
     localQvmMatch.shutdown(state);return 0
   end if
   if len(args)==3 and args[0]=="--play" then
-    archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));sound=void
+    opened=playableWindow.open(640,480);if opened is error then return opened end if
+    loading=playableWindow.showLoading(2,"Opening retail archive");if loading is error then playableWindow.shutdown();return loading end if;if not loading then playableWindow.shutdown();return 0 end if
+    archive=try(pk3.open(args[1]));if archive is error then playableWindow.shutdown();return archive end if
+    loading=playableWindow.showLoading(7,"Reading "+args[2]);if loading is error then playableWindow.shutdown();return loading end if;if not loading then playableWindow.shutdown();return 0 end if
+    mapBytes=try(pk3.read(archive,args[2]));if mapBytes is error then playableWindow.shutdown();return mapBytes end if
+    loading=playableWindow.showLoading(11,"Parsing BSP map");if loading is error then playableWindow.shutdown();return loading end if;if not loading then playableWindow.shutdown();return 0 end if
+    map=try(bsp.load(mapBytes));if map is error then playableWindow.shutdown();return map end if;sound=void
+    loading=playableWindow.showLoading(14,"Loading game data");if loading is error then playableWindow.shutdown();return loading end if;if not loading then playableWindow.shutdown();return 0 end if
     soundBytes=try(pk3.read(archive,"sound/feedback/fight.wav"))
     if not (soundBytes is error) then
       parsedSound=try(wav.decode(soundBytes));if not (parsedSound is error) then sound=parsedSound end if
     end if
-    return playableApp.run(map,sound,archive)
+    result=try(playableApp.run(map,sound,archive));playableWindow.shutdown();if result is error then return result end if;return result
   end if
   if len(args)==2 and args[0]=="--play-bsp" then
     map=bsp.load(fs.readAllBytes(args[1]))

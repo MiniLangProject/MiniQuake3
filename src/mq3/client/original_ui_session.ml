@@ -25,6 +25,10 @@ const K_MOUSE3=180
 const UIMENU_NONE=0
 const UIMENU_MAIN=1
 const UIMENU_INGAME=2
+const UIMENU_NEED_CD=3
+const UIMENU_BAD_CD_KEY=4
+const UIMENU_TEAM=5
+const UIMENU_POSTGAME=6
 
 const VK_BACK=8
 const VK_TAB=9
@@ -50,13 +54,13 @@ const VK_RBUTTON=2
 const VK_MBUTTON=4
 
 struct Binding virtualKey quakeKey normalChar shiftedChar end struct
-struct Services context catcherFn keyEventFn mouseEventFn refreshFn menuFn commandCountFn end struct
+struct Services context catcherFn keyEventFn mouseEventFn refreshFn menuFn commandCountFn stateEventFn connectFn end struct
 struct State services inputContext keyDownFn mouseDeltaFn bindings down frameCount end struct
 struct Frame active refreshed menuOpened keyEvents charEvents mouseEvents commandStart uiCommands commandCount end struct
 
 function fail(message) return error(7686,"original UI session: "+message) end function
 function services(context,catcherFn,keyEventFn,mouseEventFn,refreshFn,menuFn,commandCountFn)
-  return Services(context,catcherFn,keyEventFn,mouseEventFn,refreshFn,menuFn,commandCountFn)
+  return Services(context,catcherFn,keyEventFn,mouseEventFn,refreshFn,menuFn,commandCountFn,void,void)
 end function
 function binding(virtualKey,quakeKey,normalChar,shiftedChar) return Binding(virtualKey,quakeKey,normalChar,shiftedChar) end function
 function bindings()
@@ -76,12 +80,20 @@ end function
 function keyCatcher(state) return state.services.catcherFn(state.services.context) end function
 function active(state) return (keyCatcher(state)&KEYCATCH_UI)!=0 end function
 function setMenu(state,menu)
-  if state==void or menu<UIMENU_NONE or menu>UIMENU_INGAME then return fail("invalid active menu") end if
+  if state==void or menu<UIMENU_NONE or menu>UIMENU_POSTGAME then return fail("invalid active menu") end if
   return state.services.menuFn(state.services.context,menu)
 end function
 function openMain(state) return setMenu(state,UIMENU_MAIN) end function
 function openIngame(state) return setMenu(state,UIMENU_INGAME) end function
+function openNeedCd(state) return setMenu(state,UIMENU_NEED_CD) end function
+function openBadCdKey(state) return setMenu(state,UIMENU_BAD_CD_KEY) end function
+function openTeam(state) return setMenu(state,UIMENU_TEAM) end function
+function openPostgame(state) return setMenu(state,UIMENU_POSTGAME) end function
 function close(state) return setMenu(state,UIMENU_NONE) end function
+function drawConnectScreen(state,overlay)
+  if state==void or state.services.connectFn==void then return fail("connect-screen service is required") end if
+  return state.services.connectFn(state.services.context,overlay)
+end function
 
 function dispatchKey(state,key,down,character,shifted)
   result=[0,0,0]
@@ -103,7 +115,9 @@ function frame(state,now)
   for index=0 to len(state.bindings)-1
     item=state.bindings[index];down=state.keyDownFn(state.inputContext,item.virtualKey)
     if down!=state.down[index] then
-      state.down[index]=down;sent=dispatchKey(state,item.quakeKey,down,item.normalChar,item.shiftedChar)
+      state.down[index]=down
+      if state.services.stateEventFn!=void then observed=state.services.stateEventFn(state.services.context,item.quakeKey,down);if observed is error then return observed end if end if
+      sent=dispatchKey(state,item.quakeKey,down,item.normalChar,item.shiftedChar)
       if sent is error then return sent end if;keyEvents=keyEvents+sent[0];charEvents=charEvents+sent[1];if sent[2]!=0 then menuOpened=true end if
     end if
   end for

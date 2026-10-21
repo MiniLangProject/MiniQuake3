@@ -12,5 +12,8 @@ int main(void) {
   printf("world|%d|%d|%d|%d|%d|%d|%d|%d|%d\n",
     G_IN_PVS,G_IN_PVS_IGNORE_PORTALS,G_ADJUST_AREA_PORTAL_STATE,G_AREAS_CONNECTED,
     G_LINKENTITY,G_UNLINKENTITY,G_BOT_ALLOCATE_CLIENT,G_BOT_FREE_CLIENT,G_GET_ENTITY_TOKEN);
+  printf("platform|%d|%d|%d|%d|%d|%d|%u\n", G_FS_GETFILELIST,
+    G_DEBUG_POLYGON_CREATE,G_DEBUG_POLYGON_DELETE,G_REAL_TIME,G_SNAPVECTOR,
+    G_FS_SEEK,(unsigned)sizeof(qtime_t));
   return 0;
 }

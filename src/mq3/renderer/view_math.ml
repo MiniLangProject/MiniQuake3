@@ -4,6 +4,7 @@
 package mq3.renderer.view_math
 
 import mq3.compat.numeric as numeric
+import mq3.compat.transcendental as trans
 import mq3.shared.math as qmath
 
 const CULL_IN=0
@@ -128,4 +129,21 @@ function cullLocalBox(bounds,value,frustum,noCull)
   end for
   if not anyBack then return CULL_IN end if
   return CULL_CLIP
+end function
+
+// R_SetupFrustum constructs the four side planes from the current refdef.
+// Quake's view axes are forward, left and up, so the signed cosine terms
+// intentionally follow the original renderer rather than a right-vector API.
+function setupFrustum(origin,axis,fovX,fovY)
+  value=orientation(origin,axis);valid=validateOrientation(value);if valid is error then return valid end if
+  if fovX<=0.0 or fovX>=180.0 or fovY<=0.0 or fovY>=180.0 then return error(7393,"renderer frustum needs valid fields of view") end if
+  angle=numeric.fmul(numeric.fdiv(fovX,180.0),3.14159265358979323846);angle=numeric.fmul(angle,0.5)
+  xs=numeric.f32(trans.sin(angle));xc=numeric.f32(trans.cos(angle))
+  left=[numeric.fadd(numeric.fmul(axis[0][0],xs),numeric.fmul(axis[1][0],xc)),numeric.fadd(numeric.fmul(axis[0][1],xs),numeric.fmul(axis[1][1],xc)),numeric.fadd(numeric.fmul(axis[0][2],xs),numeric.fmul(axis[1][2],xc))]
+  right=[numeric.fsub(numeric.fmul(axis[0][0],xs),numeric.fmul(axis[1][0],xc)),numeric.fsub(numeric.fmul(axis[0][1],xs),numeric.fmul(axis[1][1],xc)),numeric.fsub(numeric.fmul(axis[0][2],xs),numeric.fmul(axis[1][2],xc))]
+  angle=numeric.fmul(numeric.fdiv(fovY,180.0),3.14159265358979323846);angle=numeric.fmul(angle,0.5)
+  xs=numeric.f32(trans.sin(angle));xc=numeric.f32(trans.cos(angle))
+  top=[numeric.fadd(numeric.fmul(axis[0][0],xs),numeric.fmul(axis[2][0],xc)),numeric.fadd(numeric.fmul(axis[0][1],xs),numeric.fmul(axis[2][1],xc)),numeric.fadd(numeric.fmul(axis[0][2],xs),numeric.fmul(axis[2][2],xc))]
+  bottom=[numeric.fsub(numeric.fmul(axis[0][0],xs),numeric.fmul(axis[2][0],xc)),numeric.fsub(numeric.fmul(axis[0][1],xs),numeric.fmul(axis[2][1],xc)),numeric.fsub(numeric.fmul(axis[0][2],xs),numeric.fmul(axis[2][2],xc))]
+  result=[];for each normal in [left,right,top,bottom] result=result+[plane(normal,qmath.DotProduct(origin,normal))] end for;return result
 end function

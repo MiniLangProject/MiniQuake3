@@ -5,6 +5,12 @@ package mq3.audio.qvm_playback
 
 import mq3.audio.qvm_sound_assets as assets
 import mq3.audio.spatial_mixer as spatial
+import mq3.audio.snd_spatialize as sndSpatial
+import mq3.audio.snd_channels as sndChannels
+import mq3.audio.snd_loop_channels as sndLoops
+import mq3.audio.snd_loop_doppler as sndDoppler
+import mq3.audio.snd_paint_pipeline as sndPaint
+import mq3.audio.snd_raw_stream as sndRaw
 import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
 import std.array as arrays
@@ -14,9 +20,10 @@ const MAX_VOICES=96
 const MAX_LOOPS=1024
 
 struct Listener entity origin axis inWater end struct
-struct Voice id entity channel handle origin fixedOrigin localSound sound cursor active end struct
-struct LoopSource entity handle origin velocity realLoop sound cursor active end struct
-struct State outputRate chunkFrames catalog listener entityOrigins voices loops nextVoice music commandCursor end struct
+struct Voice id slot entity channel handle origin fixedOrigin localSound sound compressed cursor active end struct
+struct LoopSource entity handle origin velocity realLoop sound compressed cursor active doppler dopplerScale oldDopplerScale end struct
+struct Music introSound loopSound cursor inIntro active end struct
+struct State outputRate chunkFrames catalog listener entityOrigins voices loops nextVoice music commandCursor channels loopPaintedFrames rawStream end struct
 struct ApplyResult applied missing ignored end struct
 struct Chunk samples frames audibleVoices audibleLoops peak limiterGain end struct
 
@@ -27,7 +34,14 @@ function create(catalog,outputRate,chunkFrames)
   if catalog==void then return fail("sound catalog is required") end if
   if outputRate<4000 or outputRate>192000 then return fail("invalid output rate") end if
   if chunkFrames<1 or chunkFrames>4096 then return fail("invalid chunk size") end if
-  return State(outputRate,chunkFrames,catalog,Listener(0,[0.0,0.0,0.0],defaultAxis(),false),array(MAX_ENTITIES,void),[],[],1,void,0)
+  rawStream=sndRaw.create(outputRate);if rawStream is error then return rawStream end if
+  return State(outputRate,chunkFrames,catalog,Listener(0,[0.0,0.0,0.0],defaultAxis(),false),array(MAX_ENTITIES,void),[],[],1,void,0,sndChannels.create(),0,rawStream)
+end function
+
+function queueRaw(state,audio,volume)
+  if state==void or audio==void then return fail("state and raw audio are required") end if
+  synced=sndRaw.setSoundTime(state.rawStream,state.loopPaintedFrames);if synced is error then return synced end if
+  return sndRaw.enqueue(state.rawStream,audio.frames,audio.sampleRate,audio.bitsPerSample/8,audio.channels,audio.samples,volume)
 end function
 
 function validOrigin(origin) return origin!=void and len(origin)==3 end function
@@ -40,13 +54,12 @@ end function
 
 function addVoice(state,command,localSound)
   clip=assets.clipForHandle(state.catalog,command.handle);if clip==void then return false end if
-  if command.channel!=0 then
-    for each voice in state.voices if voice.entity==command.entity and voice.channel==command.channel then voice.active=false end if end for
-  end if
+  entity=command.entity;if localSound then entity=state.listener.entity end if
+  selected=sndChannels.start(state.channels,entity,command.handle,command.channel);if not selected.accepted then return true end if
+  if selected.replaced then for each voice in state.voices if voice.slot==selected.slot then voice.active=false end if end for end if
   fixed=validOrigin(command.origin);origin=command.origin;if not fixed then origin=entityOrigin(state,command.entity) end if
-  voice=Voice(state.nextVoice,command.entity,command.channel,command.handle,copyOrigin(origin),fixed,localSound,clip.sound,0.0,true);state.nextVoice=state.nextVoice+1
+  voice=Voice(state.nextVoice,selected.slot,entity,command.channel,command.handle,copyOrigin(origin),fixed,localSound,clip.sound,clip.compressed,0.0,true);state.nextVoice=state.nextVoice+1
   active=[];for each old in state.voices if old.active then active=active+[old] end if end for
-  while len(active)>=MAX_VOICES active[0].active=false;active=arrays.slice(active,1,len(active)-1) end while
   state.voices=active+[voice];return true
 end function
 
@@ -57,12 +70,14 @@ function addLoop(state,command)
   for each sourceLoop in state.loops if sourceLoop.entity==command.entity then existing=sourceLoop end if end for
   origin=command.origin;if not validOrigin(origin) then origin=entityOrigin(state,command.entity) end if
   velocity=command.velocity;if not validOrigin(velocity) then velocity=[0.0,0.0,0.0] end if
+  previousScale=1.0;consecutive=false;if existing!=void then previousScale=existing.dopplerScale;consecutive=existing.active end if
+  doppler=sndDoppler.update(state.listener.origin,origin,velocity,previousScale,consecutive,not command.flag);if doppler is error then return false end if
   if existing!=void then
     if existing.handle!=command.handle then existing.cursor=0.0 end if
-    existing.handle=command.handle;existing.origin=copyOrigin(origin);existing.velocity=copyOrigin(velocity);existing.realLoop=command.flag;existing.sound=clip.sound;existing.active=true
+    existing.handle=command.handle;existing.origin=copyOrigin(origin);existing.velocity=copyOrigin(velocity);existing.realLoop=command.flag;existing.sound=clip.sound;existing.compressed=clip.compressed;existing.active=true;existing.doppler=doppler.active;existing.dopplerScale=doppler.scale;existing.oldDopplerScale=doppler.oldScale
   else
     if len(state.loops)>=MAX_LOOPS then return false end if
-    state.loops=state.loops+[LoopSource(command.entity,command.handle,copyOrigin(origin),copyOrigin(velocity),command.flag,clip.sound,0.0,true)]
+    state.loops=state.loops+[LoopSource(command.entity,command.handle,copyOrigin(origin),copyOrigin(velocity),command.flag,clip.sound,clip.compressed,0.0,true,doppler.active,doppler.scale,doppler.oldScale)]
   end if
   return true
 end function
@@ -90,14 +105,18 @@ function setListener(state,command)
   if not validOrigin(command.origin) or command.axis==void or len(command.axis)!=3 then return false end if
   for each row in command.axis if not validOrigin(row) then return false end if end for
   rightLength=qmath.VectorLength(command.axis[1]);if rightLength<0.99 or rightLength>1.01 then return false end if
-  state.listener=Listener(command.entity,copyOrigin(command.origin),[copyOrigin(command.axis[0]),copyOrigin(command.axis[1]),copyOrigin(command.axis[2])],command.flag);return true
+  state.listener=Listener(command.entity,copyOrigin(command.origin),[copyOrigin(command.axis[0]),copyOrigin(command.axis[1]),copyOrigin(command.axis[2])],command.flag);sndChannels.setListener(state.channels,command.entity);return true
 end function
 
 function startMusic(state,intro,trackLoop)
+  // Baseq3 streams the intro once and only then starts the loop track.  An
+  // empty intro is a no-op in S_StartBackgroundTrack; stopping has its own
+  // syscall and must remain explicit.
+  if intro=="" then return true end if
+  introClip=try(assets.ensurePath(state.catalog,intro));if introClip is error then return false end if
   path=trackLoop;if path=="" then path=intro end if
-  if path=="" then state.music=void;return true end if
-  clip=try(assets.ensurePath(state.catalog,path));if clip is error then return false end if
-  state.music=LoopSource(-1,clip.handle,[0.0,0.0,0.0],[0.0,0.0,0.0],true,clip.sound,0.0,true);return true
+  loopClip=try(assets.ensurePath(state.catalog,path));if loopClip is error then return false end if
+  state.music=Music(introClip.sound,loopClip.sound,0.0,true,true);return true
 end function
 
 function apply(state,commands)
@@ -137,7 +156,19 @@ end function
 
 function sourceGains(state,entity,origin,localSound)
   if localSound or entity==state.listener.entity then return spatial.Spatial(1.0,1.0,0.0,1.0) end if
-  return spatial.spatialize(origin,state.listener.origin,state.listener.axis[1],1.0,false)
+  value=sndSpatial.gains(origin,state.listener.origin,state.listener.axis,127);if value is error then return value end if
+  return spatial.Spatial(value[0],value[1],value[2],value[3])
+end function
+
+function sourceVolumes(state,entity,origin,localSound)
+  if localSound or entity==state.listener.entity then return [127,127] end if
+  value=sndSpatial.spatialize(origin,state.listener.origin,state.listener.axis,127,2);if value is error then return value end if
+  return [value.left,value.right]
+end function
+
+function loopByEntity(state,entity)
+  for each sourceLoop in state.loops if sourceLoop.entity==entity then return sourceLoop end if end for
+  return void
 end function
 
 function mixSource(state,sound,cursor,looping,gains,leftMix,rightMix)
@@ -152,28 +183,106 @@ function mixSource(state,sound,cursor,looping,gains,leftMix,rightMix)
   return [phase,active]
 end function
 
-function render(state)
-  if state==void then return fail("state is required") end if
-  leftMix=array(state.chunkFrames,0.0);rightMix=array(state.chunkFrames,0.0);voiceCount=0;loopCount=0
-  for each voice in state.voices
-    if voice.active then
-      origin=voice.origin;if not voice.fixedOrigin then origin=entityOrigin(state,voice.entity) end if;gains=sourceGains(state,voice.entity,origin,voice.localSound)
-      if gains.left>0.0 or gains.right>0.0 then result=mixSource(state,voice.sound,voice.cursor,false,gains,leftMix,rightMix);voice.cursor=result[0];voice.active=result[1];voiceCount=voiceCount+1 end if
+function musicSample(sound,frame,channel)
+  frames=len(sound.samples)/sound.blockAlign;if frames<1 then return 0 end if
+  index=frame%frames;if index<0 then index=index+frames end if;offset=index*sound.blockAlign
+  if sound.bitsPerSample==8 then
+    if sound.channels==2 then offset=offset+channel end if
+    return (sound.samples[offset]-128)*256
+  end if
+  if sound.channels==2 then offset=offset+channel*2 end if
+  return spatial.signed16(sound.samples,offset)
+end function
+
+function mixMusic(state,music,leftMix,rightMix)
+  phase=music.cursor;inIntro=music.inIntro;active=music.active
+  for frame=0 to state.chunkFrames-1
+    if active then
+      sound=music.loopSound;if inIntro then sound=music.introSound end if
+      sourceFrames=len(sound.samples)/sound.blockAlign
+      if sourceFrames<1 then
+        active=false
+      else
+        sourceFrame=numeric.trunc32(phase)
+        leftMix[frame]=leftMix[frame]+musicSample(sound,sourceFrame,0)
+        rightChannel=0;if sound.channels==2 then rightChannel=1 end if
+        rightMix[frame]=rightMix[frame]+musicSample(sound,sourceFrame,rightChannel)
+        phase=phase+sound.sampleRate/state.outputRate
+        if phase>=sourceFrames then
+          overflowSeconds=(phase-sourceFrames)/sound.sampleRate
+          if inIntro then
+            inIntro=false;phase=overflowSeconds*music.loopSound.sampleRate
+            loopFrames=len(music.loopSound.samples)/music.loopSound.blockAlign
+            if loopFrames<1 then active=false else while phase>=loopFrames phase=phase-loopFrames end while end if
+          else
+            while phase>=sourceFrames phase=phase-sourceFrames end while
+          end if
+        end if
+      end if
     end if
   end for
-  for each sourceLoop in state.loops
-    if sourceLoop.active then gains=sourceGains(state,sourceLoop.entity,sourceLoop.origin,false);if gains.left>0.0 or gains.right>0.0 then result=mixSource(state,sourceLoop.sound,sourceLoop.cursor,true,gains,leftMix,rightMix);sourceLoop.cursor=result[0];loopCount=loopCount+1 end if end if
+  music.cursor=phase;music.inIntro=inIntro;music.active=active;return active
+end function
+
+function paintMusic(state,music,paint)
+  phase=music.cursor;inIntro=music.inIntro;active=music.active;left=[];right=[]
+  for frame=0 to state.chunkFrames-1
+    leftSample=0;rightSample=0
+    if active then
+      sound=music.loopSound;if inIntro then sound=music.introSound end if
+      sourceFrames=len(sound.samples)/sound.blockAlign
+      if sourceFrames<1 then active=false
+      else
+        sourceFrame=numeric.trunc32(phase);leftSample=musicSample(sound,sourceFrame,0);rightChannel=0;if sound.channels==2 then rightChannel=1 end if;rightSample=musicSample(sound,sourceFrame,rightChannel)
+        phase=phase+sound.sampleRate/state.outputRate
+        if phase>=sourceFrames then
+          overflowSeconds=(phase-sourceFrames)/sound.sampleRate
+          if inIntro then
+            inIntro=false;phase=overflowSeconds*music.loopSound.sampleRate;loopFrames=len(music.loopSound.samples)/music.loopSound.blockAlign
+            if loopFrames<1 then active=false else while phase>=loopFrames phase=phase-loopFrames end while end if
+          else while phase>=sourceFrames phase=phase-sourceFrames end while end if
+        end if
+      end if
+    end if
+    left=left+[leftSample];right=right+[rightSample]
   end for
-  if state.music!=void and state.music.active then
-    gains=spatial.Spatial(1.0,1.0,0.0,1.0);result=mixSource(state,state.music.sound,state.music.cursor,true,gains,leftMix,rightMix);state.music.cursor=result[0];loopCount=loopCount+1
-  end if
+  sndPaint.paintRaw(paint,left,right,0,state.chunkFrames,1.0)
+  music.cursor=phase;music.inIntro=inIntro;music.active=active;return active
+end function
+
+function render(state)
+  if state==void then return fail("state is required") end if
+  paint=array(state.chunkFrames*2,0);voiceCount=0;loopCount=0
+  rawFrames=sndRaw.paint(state.rawStream,paint,state.loopPaintedFrames,state.chunkFrames);if rawFrames is error then return rawFrames end if
+  if state.music!=void and state.music.active then if paintMusic(state,state.music,paint) then loopCount=loopCount+1 end if end if
+  for each voice in state.voices
+    if voice.active then
+      origin=voice.origin;if not voice.fixedOrigin then origin=entityOrigin(state,voice.entity) end if;volumes=sourceVolumes(state,voice.entity,origin,voice.localSound)
+      painted=sndPaint.paintSfxOneShot(paint,voice.sound,voice.compressed,numeric.trunc32(voice.cursor),state.chunkFrames,0,volumes[0],volumes[1],sndPaint.DEFAULT_SND_VOLUME);if painted is error then return painted end if
+      voice.cursor=voice.cursor+painted;sourceFrames=sndPaint.soundFrames(voice.sound,voice.compressed);if voice.cursor>=sourceFrames then voice.active=false end if
+      if painted>0 and (volumes[0]>0 or volumes[1]>0) then voiceCount=voiceCount+1 end if
+    end if
+  end for
+  loopEntries=[];for each sourceLoop in state.loops loopEntries=loopEntries+[sndLoops.Entry(sourceLoop.entity,sourceLoop.handle,sourceLoop.origin,sourceLoop.realLoop,sourceLoop.doppler,sourceLoop.dopplerScale,sourceLoop.oldDopplerScale,sourceLoop.active)] end for
+  loopGroups=sndLoops.build(loopEntries,state.listener.origin,state.listener.axis);if loopGroups is error then return loopGroups end if
+  for each group in loopGroups
+    sourceLoop=loopByEntity(state,group.primary)
+    if sourceLoop!=void then
+      painted=sndPaint.paintSfxLoopDoppler(paint,sourceLoop.sound,sourceLoop.compressed,state.loopPaintedFrames,state.chunkFrames,0,group.left,group.right,sndPaint.DEFAULT_SND_VOLUME,group.doppler,group.dopplerScale,group.oldDopplerScale);if painted is error then return painted end if
+      frames=sndPaint.soundFrames(sourceLoop.sound,sourceLoop.compressed);phase=0;if frames>0 then phase=(state.loopPaintedFrames+painted)%frames end if
+      for each entity in group.ids member=loopByEntity(state,entity);if member!=void then member.cursor=phase end if end for
+      loopCount=loopCount+1
+    end if
+  end for
+  state.loopPaintedFrames=state.loopPaintedFrames+state.chunkFrames
   peak=0.0
   for frame=0 to state.chunkFrames-1
-    left=leftMix[frame];if left<0.0 then left=0.0-left end if;if left>peak then peak=left end if
-    right=rightMix[frame];if right<0.0 then right=0.0-right end if;if right>peak then peak=right end if
+    left=paint[frame*2]/256.0;if left<0.0 then left=0.0-left end if;if left>peak then peak=left end if
+    right=paint[frame*2+1]/256.0;if right<0.0 then right=0.0-right end if;if right>peak then peak=right end if
   end for
   limiter=1.0;if peak>32767.0 then limiter=32767.0/peak end if
-  output=bytes(state.chunkFrames*4,0);for frame=0 to state.chunkFrames-1 spatial.write16(output,frame*4,leftMix[frame]*limiter);spatial.write16(output,frame*4+2,rightMix[frame]*limiter) end for
-  active=[];for each voice in state.voices if voice.active then active=active+[voice] end if end for;state.voices=active
+  output=sndPaint.transfer16(paint,state.chunkFrames);if output is error then return output end if
+  active=[];for each voice in state.voices if voice.active then active=active+[voice] else sndChannels.release(state.channels,voice.slot) end if end for;state.voices=active
+  elapsed=numeric.trunc32(state.chunkFrames*1000.0/state.outputRate);if elapsed<1 then elapsed=1 end if;sndChannels.advance(state.channels,elapsed)
   return Chunk(output,state.chunkFrames,voiceCount,loopCount,peak,limiter)
 end function

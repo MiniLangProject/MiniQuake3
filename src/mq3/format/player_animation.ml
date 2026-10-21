@@ -33,6 +33,7 @@ struct Animation firstFrame numFrames loopFrames frameLerp initialLerp reversed 
 struct Config animations footsteps headOffset gender fixedLegs fixedTorso end struct
 struct FrameSample oldFrame frame backlerp finished end struct
 struct PlayerSample lower upper end struct
+struct LerpFrame oldFrame oldFrameTime frame frameTime backlerp animationNumber animation animationTime end struct
 
 function fail(message) return error(7520,"animation.cfg: "+message) end function
 function animation(firstFrame,numFrames,loopFrames,frameLerp,reversed)
@@ -40,6 +41,48 @@ function animation(firstFrame,numFrames,loopFrames,frameLerp,reversed)
 end function
 function clone(value,reversed)
   return Animation(value.firstFrame,value.numFrames,value.loopFrames,value.frameLerp,value.initialLerp,reversed,value.flipflop)
+end function
+
+// Stateful CG_SetLerpFrameAnimation / CG_RunLerpFrame.  Unlike sample(), this
+// preserves the original initial-lerp, animation-toggle and hitch-clamp state
+// across rendered frames.
+function lerpFrame() return LerpFrame(0,0,0,0,0.0,-1,void,0) end function
+function setLerpFrameAnimation(config,state,newAnimation)
+  if config==void or state==void then return fail("lerp frame and config required") end if
+  state.animationNumber=newAnimation;index=newAnimation&(~128)
+  if index<0 or index>=MAX_TOTALANIMATIONS or index>=len(config.animations) then return fail("animation index outside table") end if
+  state.animation=config.animations[index];state.animationTime=state.frameTime+state.animation.initialLerp;return state
+end function
+function runLerpFrame(config,state,newAnimation,speedScale,now,enabled)
+  if config==void or state==void or now<0 or speedScale<0.0 then return fail("invalid lerp-frame inputs") end if
+  if not enabled then state.oldFrame=0;state.frame=0;state.backlerp=0.0;return FrameSample(0,0,0.0,false) end if
+  if newAnimation!=state.animationNumber or state.animation==void then selected=setLerpFrameAnimation(config,state,newAnimation);if selected is error then return selected end if end if
+  if now>=state.frameTime then
+    state.oldFrame=state.frame;state.oldFrameTime=state.frameTime;value=state.animation
+    if value.frameLerp==0 then return FrameSample(state.oldFrame,state.frame,state.backlerp,false) end if
+    if now<state.animationTime then state.frameTime=state.animationTime else state.frameTime=state.oldFrameTime+value.frameLerp end if
+    frame=n.quotient(state.frameTime-state.animationTime,value.frameLerp);frame=n.trunc32(frame*speedScale)
+    total=value.numFrames;if value.flipflop then total=total*2 end if;finished=false
+    if frame>=total then
+      frame=frame-total
+      if value.loopFrames!=0 then frame=frame%value.loopFrames;frame=frame+value.numFrames-value.loopFrames
+      else frame=total-1;state.frameTime=now;finished=true end if
+    end if
+    if value.reversed then state.frame=value.firstFrame+value.numFrames-1-frame
+    else if value.flipflop and frame>=value.numFrames then state.frame=value.firstFrame+value.numFrames-1-(frame%value.numFrames)
+    else state.frame=value.firstFrame+frame end if
+    if now>state.frameTime then state.frameTime=now end if
+  end if
+  if state.frameTime>now+200 then state.frameTime=now end if
+  if state.oldFrameTime>now then state.oldFrameTime=now end if
+  if state.frameTime==state.oldFrameTime then state.backlerp=0.0 else fraction=n.fdiv(n.f32(now-state.oldFrameTime),n.f32(state.frameTime-state.oldFrameTime));state.backlerp=n.fsub(1.0,fraction) end if
+  finished=state.animation.loopFrames==0 and state.frame==frameAt(state.animation,state.animation.numFrames-1) and state.frameTime==now
+  return FrameSample(state.oldFrame,state.frame,state.backlerp,finished)
+end function
+function clearLerpFrame(config,state,animationNumber,now)
+  if state==void or now<0 then return fail("invalid clear-lerp input") end if
+  state.frameTime=now;state.oldFrameTime=now;selected=setLerpFrameAnimation(config,state,animationNumber);if selected is error then return selected end if
+  state.oldFrame=state.animation.firstFrame;state.frame=state.animation.firstFrame;state.backlerp=0.0;return state
 end function
 function numberStarts(token)
   if token=="" then return false end if
@@ -148,7 +191,7 @@ end function
 
 // Standalone hostile-preview animation controller. One-shot sequences keep
 // their final frame in the returned sample and change state for the next call.
-struct EnemyAnimationState mode resumeMode startedAt deathVariant transitionCount end struct
+struct EnemyAnimationState mode resumeMode startedAt deathVariant transitionCount lowerLerp upperLerp end struct
 struct EnemyAnimationSelection lowerAnimation upperAnimation end struct
 struct EnemyAnimationSample mode nextMode lowerAnimation upperAnimation elapsed lower upper transitioned end struct
 
@@ -159,7 +202,7 @@ function enemyValidMode(mode) return enemyIsLocomotion(mode) or mode=="attack" o
 
 function enemyCreate(now)
   if now<0 then return enemyFail("non-negative time is required") end if
-  return EnemyAnimationState("idle","idle",now,0,0)
+  return EnemyAnimationState("idle","idle",now,0,0,lerpFrame(),lerpFrame())
 end function
 
 function enemyBegin(state,mode,now)
@@ -234,8 +277,10 @@ function enemySample(config,state,now)
   if config==void or state==void or now<state.startedAt then return enemyFail("config, state and monotonic time are required") end if
   selected=enemySelect(state);if selected is error then return selected end if
   elapsed=now-state.startedAt
-  lower=sampleAnimation(config,selected.lowerAnimation,elapsed);if lower is error then return lower end if
-  upper=sampleAnimation(config,selected.upperAnimation,elapsed);if upper is error then return upper end if
+  if state.lowerLerp.animation==void then initialized=clearLerpFrame(config,state.lowerLerp,selected.lowerAnimation,state.startedAt);if initialized is error then return initialized end if end if
+  if state.upperLerp.animation==void then initialized=clearLerpFrame(config,state.upperLerp,selected.upperAnimation,state.startedAt);if initialized is error then return initialized end if end if
+  lower=runLerpFrame(config,state.lowerLerp,selected.lowerAnimation,1.0,now,true);if lower is error then return lower end if
+  upper=runLerpFrame(config,state.upperLerp,selected.upperAnimation,1.0,now,true);if upper is error then return upper end if
   mode=state.mode;transitioned=enemyAdvanceFinished(state,now,lower,upper)
   return EnemyAnimationSample(mode,state.mode,selected.lowerAnimation,selected.upperAnimation,elapsed,lower,upper,transitioned)
 end function

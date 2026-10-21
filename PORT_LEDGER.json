@@ -622,23 +622,32 @@
       ],
       "symbol_mapping": [
         {
-          "original": "implemented runtime subset",
+          "original": "AAS_AreaRouteToGoalArea, AAS_UpdateAreaRoutingCache, AAS_UpdatePortalRoutingCache and routing table setup",
           "target_files": [
             "src/mq3/botlib/aas_routing.ml",
+            "src/mq3/botlib/aas_routing_tables.ml",
+            "src/mq3/botlib/aas_routing_cache.ml",
             "src/mq3/botlib/aas_runtime.ml"
           ],
           "status": "tested_subset",
-          "scope": "Weighted retail reachability routing, travel flags/contents and disabled areas are implemented; cluster/portal cache parity and LRU remain open."
+          "scope": "Weighted reachability routing, travel flags/contents, disabled areas, reverse links, area travel matrices, portal maxima, bounded invalidating LRU and original-style goal-centred area/portal propagation are implemented. RCD v2 identity, counts and original area/cluster CRC-16 validation wrap a deterministic pointer-free cache payload that loads and saves in the productive Botlib map lifecycle; five contracts cover roundtrip, reuse and corruption rejection. The current q3dm1 retail probe adds five cache checks (two hits, five misses) and verifies authoritative same-cluster weighted routes at walk 118/1235 and rocket 302/1234 when propagated tables diverge. Compact in-memory reachability storage remains open."
         }
       ],
       "target": [
         "src/mq3/botlib/aas_routing.ml",
-        "src/mq3/botlib/aas_runtime.ml"
+        "src/mq3/botlib/aas_routing_tables.ml",
+        "src/mq3/botlib/aas_routing_cache.ml",
+        "src/mq3/botlib/aas_runtime.ml",
+        "src/mq3/engine/local_qvm_match.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_aas_routing.py",
-        "scripts/test_aas_runtime.py"
+        "scripts/test_aas_runtime.py",
+        "scripts/test_aas_routing_cache.py",
+        "scripts/test_aas_routing_tables.py",
+        "tests/aas_routing_cache_contracts.ml",
+        "tests/aas_routing_tables_contracts.ml"
       ]
     },
     {
@@ -3822,10 +3831,26 @@
         "CG_SwingAngles",
         "CG_TrailItem"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CG_SetLerpFrameAnimation / CG_RunLerpFrame / CG_ClearLerpFrame",
+          "target_files": [
+            "src/mq3/format/player_animation.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Stateful lower/upper frame timing implements initial lerp, animation toggle changes, loop, reverse, flipflop, speed scaling, 200 ms hitch clamps and float32 backlerp. Sixteen unchanged-C records plus ten contracts pass, and the productive preview enemy retains both lerp states."
+        }
+      ],
+      "target": [
+        "src/mq3/format/player_animation.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_cgame_player_lerp.py",
+        "tests/reference/cgame_player_lerp_oracle.c",
+        "tests/cgame_player_lerp_oracle.ml",
+        "tests/cgame_player_lerp_contracts.ml"
+      ]
     },
     {
       "source": "code/cgame/cg_playerstate.c",
@@ -4282,17 +4307,45 @@
             "src/mq3/client/cgame_vm.ml",
             "src/mq3/vm/syscall_cgame.ml",
             "src/mq3/client/cgame_time.ml",
+            "src/mq3/engine/local_qvm_match.ml",
+            "src/mq3/vm/cgame_key_traps.ml",
+            "src/mq3/vm/cgame_pc_traps.ml",
+            "src/mq3/client/cgame_usercmd.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Lifecycle plus reachable renderer traps include correct cinematic opcodes, shader remap, R_InPVS and FS_SEEK. CG_KEY_ISDOWN/GETCATCHER/SETCATCHER/GETKEY use a shared stateful service in the productive local-QVM path; four exact records and 25 contracts pass. All five CG_PC_* traps are typed, preserve the exact 1040-byte pc_token_t ABI and are attached to the productive parser registry; three exact records and 29 contracts pass. CG_SETUSERCMDVALUE now persists weapon and sensitivity in the productive QVM preview; five original source anchors and 12 contracts pass. Remaining client/platform paths are partial."
+        },
+        {
+          "original": "CL_GetServerCommand / CL_ConfigstringModified reliable cgame stream",
+          "target_files": [
+            "src/mq3/client/server_command_stream.ml",
             "src/mq3/engine/local_qvm_match.ml"
           ],
           "status": "tested_subset",
-          "scope": "Lifecycle plus reachable renderer traps now include correct cinematic opcodes, shader remap, R_InPVS and FS_SEEK; remaining client/platform paths are partial."
+          "scope": "The productive local retail-cgame snapshot now carries the reliable sequence and CG_GETSERVERCOMMAND consumes the 64-slot ring, including bcs0/bcs1/bcs2 assembly, configstring updates, disconnect, map_restart and local clientLevelShot policy. Eight original anchors and 22 contracts pass; retail QVM acceptance awaits the mounted CD data."
+        },
+        {
+          "original": "CL_FirstSnapshot / CL_AdjustTimeDelta / CL_SetCGameTime productive clock",
+          "target_files": [
+            "src/mq3/client/cgame_time.ml",
+            "src/mq3/client/cgame_clock.ml",
+            "src/mq3/client/qvm_preview_app.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "The unchanged-C timing core is now attached to every productive retail-cgame preview frame: snapshot publication activates CA_PRIMED, applies drift correction, cl_timeNudge clamping, pause gates and monotonic server time before CG_DRAW_ACTIVE_FRAME. Four exact timing records, 26 core contracts and 19 productive clock contracts pass."
         }
       ],
       "target": [
         "src/mq3/client/cgame_vm.ml",
         "src/mq3/vm/syscall_cgame.ml",
         "src/mq3/client/cgame_time.ml",
-        "src/mq3/engine/local_qvm_match.ml"
+        "src/mq3/engine/local_qvm_match.ml",
+        "src/mq3/vm/cgame_key_traps.ml",
+        "src/mq3/vm/cgame_pc_traps.ml",
+        "src/mq3/client/cgame_usercmd.ml",
+        "src/mq3/client/server_command_stream.ml",
+        "src/mq3/client/cgame_clock.ml",
+        "src/mq3/client/qvm_preview_app.ml"
       ],
       "status": "partial",
       "tests": [
@@ -4300,7 +4353,20 @@
         "scripts/test_vm_syscall_cgame.py",
         "scripts/test_cgame_time.py",
         "scripts/test_cgame_renderer_extended.py",
-        "scripts/test_qvm_renderer_traps.py"
+        "scripts/test_qvm_renderer_traps.py",
+        "scripts/test_cgame_key_traps.py",
+        "tests/cgame_key_traps_contracts.ml",
+        "tests/reference/cgame_key_traps_oracle.c",
+        "scripts/test_cgame_pc_traps.py",
+        "tests/cgame_pc_traps_contracts.ml",
+        "tests/cgame_pc_traps_oracle.ml",
+        "tests/reference/cgame_pc_traps_oracle.c",
+        "scripts/test_cgame_usercmd.py",
+        "tests/cgame_usercmd_contracts.ml",
+        "scripts/test_server_command_stream.py",
+        "tests/server_command_stream_contracts.ml",
+        "scripts/test_cgame_clock.py",
+        "tests/cgame_clock_contracts.ml"
       ]
     },
     {
@@ -4367,7 +4433,9 @@
         "src/mq3/client/cinematic_runtime.ml",
         "src/mq3/renderer/qvm_video_materials.ml",
         "src/mq3/client/qvm_preview_app.ml",
-        "src/mq3/engine/local_qvm_match.ml"
+        "src/mq3/engine/local_qvm_match.ml",
+        "src/mq3/audio/snd_raw_stream.ml",
+        "src/mq3/audio/qvm_playback.ml"
       ],
       "status": "partial",
       "tests": [
@@ -4495,10 +4563,45 @@
         "IN_UpDown",
         "IN_UpUp"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "CL_FinishMove cgame value and CL_MouseMove cgame sensitivity inputs",
+          "target_files": [
+            "src/mq3/client/cgame_usercmd.ml",
+            "src/mq3/client/qvm_preview_app.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The productive original-QVM preview consumes the weapon and sensitivity written by CG_SETUSERCMDVALUE instead of fixed host values. Five original anchors and 12 state contracts pass; key timing, acceleration/filtering, joystick and command-ring input timing remain open."
+        },
+        {
+          "original": "CL_CreateNewCommands / CL_ReadyToSendPacket / CL_WritePacket / CL_SendCmd",
+          "target_files": [
+            "src/mq3/client/send_cmd.ml",
+            "src/mq3/client/frame.ml",
+            "src/mq3/client/network_match_loop.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Hitch clamping, packet pacing, download/LAN/loopback rules, cl_maxpackets/cl_packetdup clamps, reliable replay, move/noDelta selection, 32-usercmd cap, checksum key, keyed delta commands, outPacket bookkeeping, fragment draining and live client-netchan transmission are bound to CL_Frame. Eight source anchors and 39 contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_usercmd.ml",
+        "src/mq3/client/qvm_preview_app.ml",
+        "src/mq3/engine/local_qvm_match.ml",
+        "src/mq3/client/send_cmd.ml",
+        "src/mq3/client/frame.ml",
+        "src/mq3/client/network_match_loop.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_cgame_usercmd.py",
+        "tests/cgame_usercmd_contracts.ml",
+        "scripts/test_client_send_cmd.py",
+        "tests/client_send_cmd_contracts.ml",
+        "scripts/test_network_match_loop.py",
+        "tests/network_match_loop_contracts.ml"
+      ]
     },
     {
       "source": "code/client/cl_keys.c",
@@ -4532,10 +4635,29 @@
         "Message_Key",
         "string"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Key_IsDown / Key_GetBinding / Key_SetBinding / Key_GetKey / catcher state bridge",
+          "target_files": [
+            "src/mq3/vm/cgame_key_traps.ml",
+            "src/mq3/engine/local_qvm_match.ml",
+            "src/mq3/engine/local_qvm_ui.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "A shared 256-key state provides bounds-checked down state, bindings, case-insensitive first-binding lookup and catcher ownership to UI and cgame. Native QVM-preview transitions feed the state; four exact cgame ABI records and 25 contracts pass. Console editing and full bind command ownership remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/vm/cgame_key_traps.ml",
+        "src/mq3/engine/local_qvm_match.ml",
+        "src/mq3/engine/local_qvm_ui.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_cgame_key_traps.py",
+        "tests/cgame_key_traps_contracts.ml",
+        "tests/reference/cgame_key_traps_oracle.c"
+      ]
     },
     {
       "source": "code/client/cl_main.c",
@@ -4653,6 +4775,26 @@
           ],
           "status": "tested_exact",
           "scope": "Running/menu/CD gates, AVI fixed time, realtime, userinfo forwarding, timeout grace and SendCmd/resend/Cgame/screen/sound/cinematic/console ordering. Thirteen unchanged-C records and 28 MiniLang contracts pass."
+        },
+        {
+          "original": "CL_LocalServers_f / CL_GlobalServers_f / CL_Ping_f / CL_UpdateVisiblePings_f / CL_ServerStatus",
+          "target_files": [
+            "src/mq3/client/ui_lan_queries.ml",
+            "src/mq3/client/ui_lan_udp.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Transport-neutral outbound query scheduling reproduces two four-port IPv4 discovery passes, master getservers keywords/demo filtering, manual and visible getinfo pings with cl_maxPing timeout, and 750-ms getstatus resend. Five source anchors and 23 contracts pass; productive Windows DNS/UDP ownership, broadcast, query socket selection and response pumping are live in 18 contracts."
+        },
+        {
+          "original": "CL_Frame / CL_PacketEvent live connected loop",
+          "target_files": [
+            "src/mq3/client/frame.ml",
+            "src/mq3/client/network_match_loop.ml",
+            "src/mq3/client/network_ingress.ml",
+            "src/mq3/client/network_handshake.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Two real localhost clients complete getchallenge/challengeResponse and compressed connect/connectResponse before activation, validating source address, challenge, QPort and assigned server slot while preserving the initialized netchan. Eleven Baseq3 anchors plus 67 live contracts cover a 384-frame continuation with 768 exactly-once usercmds, client/snapshot loss recovery, duplicate rejection, retained deltas, reliable-ring wrap and CL_Frame/SV_Frame timeout synchronization; public-internet acceptance remains open."
         }
       ],
       "target": [
@@ -4660,7 +4802,11 @@
         "src/mq3/client/connectionless.ml",
         "src/mq3/client/packet_event.ml",
         "src/mq3/client/network_ingress.ml",
-        "src/mq3/client/frame.ml"
+        "src/mq3/client/frame.ml",
+        "src/mq3/client/ui_lan_queries.ml",
+        "src/mq3/client/ui_lan_udp.ml",
+        "src/mq3/client/network_match_loop.ml",
+        "src/mq3/client/network_handshake.ml"
       ],
       "status": "partial",
       "tests": [
@@ -4677,7 +4823,15 @@
         "tests/client_network_ingress_contracts.ml",
         "scripts/test_client_main_frame.py",
         "tests/reference/client_frame_oracle.c",
-        "tests/client_frame_contracts.ml"
+        "tests/client_frame_contracts.ml",
+        "scripts/test_ui_lan_queries.py",
+        "tests/ui_lan_queries_contracts.ml",
+        "scripts/test_ui_lan_udp.py",
+        "tests/ui_lan_udp_contracts.ml",
+        "scripts/test_network_match_loop.py",
+        "tests/network_match_loop_contracts.ml",
+        "scripts/test_network_match_multi.py",
+        "tests/network_match_multi_contracts.ml"
       ]
     },
     {
@@ -4866,10 +5020,28 @@
         "SCR_Strlen",
         "SCR_UpdateScreen"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "SCR_DrawScreenField",
+          "target_files": [
+            "src/mq3/client/ui_host_lifecycle.ml",
+            "src/mq3/engine/local_qvm_ui.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "The productive unchanged ui.qvm host reproduces the disconnected, connecting/challenging/connected, loading/primed, active and cinematic draw matrix, fullscreen suppression and KEYCATCH_UI overlay refresh. The exact client-state ABI plus 20 screen lifecycle contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_host_lifecycle.ml",
+        "src/mq3/engine/local_qvm_ui.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_ui_host_lifecycle.py",
+        "tests/reference/ui_host_lifecycle_oracle.c",
+        "tests/ui_host_lifecycle_oracle.ml",
+        "tests/ui_host_lifecycle_contracts.ml"
+      ]
     },
     {
       "source": "code/client/cl_ui.c",
@@ -4925,10 +5097,16 @@
           "original": "CL_UISystemCalls",
           "target_files": [
             "src/mq3/vm/syscall_common.ml",
-            "src/mq3/vm/syscall_ui.ml"
+            "src/mq3/vm/syscall_ui.ml",
+            "src/mq3/client/ui_lan_browser.ml",
+            "src/mq3/engine/local_qvm_match.ml",
+            "src/mq3/client/ui_lan_ingress.ml",
+            "src/mq3/client/ui_lan_cache.ml",
+            "src/mq3/client/ui_lan_queries.ml",
+            "src/mq3/client/ui_lan_udp.ml"
           ],
           "status": "tested_subset",
-          "scope": "Thirty-nine UI traps for renderer registration/2D draw, keys/bindings, clipboard, exact GL/client state, configstrings, memory and LAN server browsing. Seven exact ABI records and 58 contracts pass."
+          "scope": "Thirty-nine UI traps for renderer registration/2D draw, keys/bindings, clipboard, exact GL/client state, configstrings, memory and LAN browsing. The productive LAN backend provides stateful catalogs, exact Baseq3-x86 servercache.dat disk persistence, ping/status/visibility and Baseq3 sorting; connectionless info/status/master-list ingress updates it with protocol, deduplication and pending-request checks. A transport-neutral outbound engine covers repeated local getinfo broadcasts, master getservers, visible/manual pings and getstatus resend. Seven exact ABI records, 61 syscall contracts, four exact ingress records, 661520 exact cache bytes and 107 backend/query contracts pass. Productive Windows IPv4 DNS, dual nonblocking sockets, broadcast sends and bounded response pumping are attached to the local-QVM UI lifecycle; 18 live contracts pass."
         },
         {
           "original": "CL_UISystemCalls media and compatibility traps",
@@ -4937,12 +5115,30 @@
           ],
           "status": "tested_subset",
           "scope": "Sixteen traps for sound/music, qtime_t, cinematics, shader remap, CD keys, FS seek and PB compatibility. Five exact ABI records and 42 contracts pass."
+        },
+        {
+          "original": "GetClientState / CL_InitUI / CL_ShutdownUI host state",
+          "target_files": [
+            "src/mq3/client/ui_host_lifecycle.ml",
+            "src/mq3/engine/local_qvm_match.ml",
+            "src/mq3/engine/local_qvm_ui.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "UI_GETCLIENTSTATE now returns the exact 3084-byte uiClientState_t with real connection state, packet count, client number and bounded strings. UI_INIT receives the actual connection state and shutdown clears KEYCATCH_UI in the shared cgame/UI catcher. One exact ABI record and 20 lifecycle contracts pass; handshake-driven state updates remain open."
         }
       ],
       "target": [
         "src/mq3/client/ui_vm.ml",
         "src/mq3/vm/syscall_ui.ml",
-        "src/mq3/vm/syscall_ui_media.ml"
+        "src/mq3/vm/syscall_ui_media.ml",
+        "src/mq3/client/ui_lan_browser.ml",
+        "src/mq3/engine/local_qvm_match.ml",
+        "src/mq3/client/ui_lan_ingress.ml",
+        "src/mq3/client/ui_lan_cache.ml",
+        "src/mq3/client/ui_lan_queries.ml",
+        "src/mq3/client/ui_lan_udp.ml",
+        "src/mq3/client/ui_host_lifecycle.ml",
+        "src/mq3/engine/local_qvm_ui.ml"
       ],
       "status": "partial",
       "tests": [
@@ -4952,7 +5148,23 @@
         "scripts/test_vm_syscall_ui.py",
         "tests/vm_syscall_ui_contracts.ml",
         "scripts/test_vm_syscall_ui_media.py",
-        "tests/vm_syscall_ui_media_contracts.ml"
+        "tests/vm_syscall_ui_media_contracts.ml",
+        "scripts/test_ui_lan_browser.py",
+        "tests/ui_lan_browser_contracts.ml",
+        "tests/ui_lan_dispatch_contracts.ml",
+        "tests/ui_lan_ingress_contracts.ml",
+        "tests/ui_lan_ingress_oracle.ml",
+        "tests/reference/ui_lan_ingress_oracle.c",
+        "tests/ui_lan_cache_contracts.ml",
+        "tests/reference/ui_lan_cache_oracle.c",
+        "scripts/test_ui_lan_queries.py",
+        "tests/ui_lan_queries_contracts.ml",
+        "scripts/test_ui_lan_udp.py",
+        "tests/ui_lan_udp_contracts.ml",
+        "scripts/test_ui_host_lifecycle.py",
+        "tests/reference/ui_host_lifecycle_oracle.c",
+        "tests/ui_host_lifecycle_oracle.ml",
+        "tests/ui_host_lifecycle_contracts.ml"
       ]
     },
     {
@@ -4985,10 +5197,23 @@
         "S_AdpcmGetSamples",
         "memory"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "S_AdpcmDecode",
+          "target_files": [
+            "src/mq3/audio/snd_compressed_paint.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "IMA ADPCM block decoding is connected to the productive channel painter and covered by exact native differential records."
+        }
+      ],
+      "target": [
+        "src/mq3/audio/snd_compressed_paint.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_audio_snd_compressed_paint.py"
+      ]
     },
     {
       "source": "code/client/snd_dma.c",
@@ -5038,10 +5263,85 @@
         "S_Update_",
         "S_memoryLoad"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "S_StartBackgroundTrack, S_UpdateBackgroundTrack and S_StopBackgroundTrack",
+          "target_files": [
+            "src/mq3/audio/qvm_playback.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "QVM music commands preserve stereo, play a distinct intro once, continue with the separate looping track, keep resampled phase and stop only on the explicit stop command. Thirty-three playback contracts pass; the retail asset probe remains pending for this source change."
+        },
+        {
+          "original": "S_SpatializeOrigin",
+          "target_files": [
+            "src/mq3/audio/snd_spatialize.ml",
+            "src/mq3/audio/qvm_playback.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Binary32 axis rotation, the 80-unit full-volume radius, 0.0008 distance falloff, mono/stereo scaling and integer truncation match 12 exact Baseq3 records plus 19 contracts. QVM one-shots and loops use the productive path with the original left-pointing listener axis."
+        },
+        {
+          "original": "S_ChannelFree / S_ChannelMalloc / S_ChannelSetup / S_StartSound",
+          "target_files": [
+            "src/mq3/audio/snd_channels.ml",
+            "src/mq3/audio/qvm_playback.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "The productive QVM mixer uses the original 96-slot free list, playback-end reclamation, duplicate and same-sfx limits, same-entity/global oldest replacement, listener/announcer protection and shipped sparse scan behavior. Ten exact Baseq3 records and 18 contracts pass."
+        },
+        {
+          "original": "S_AddLoopSounds / loop-channel grouping",
+          "target_files": [
+            "src/mq3/audio/snd_loop_channels.ml",
+            "src/mq3/audio/qvm_playback.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Identical loop SFX share an original-style channel with 127 normal or 90 real-loop master volume, doppler-aware grouping, 255 clamps, inaudible rejection, 96-channel cap and a shared painted-time phase. Six exact Baseq3 records and 17 contracts pass; productive QVM playback has 40 contracts."
+        },
+        {
+          "original": "S_AddLoopingSound velocity Doppler",
+          "target_files": [
+            "src/mq3/audio/snd_loop_doppler.ml",
+            "src/mq3/audio/snd_loop_channels.ml",
+            "src/mq3/audio/snd_paint_pipeline.ml",
+            "src/mq3/audio/qvm_playback.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "The productive QVM loop path reproduces Baseq3 squared-distance Doppler scale, the greater-than-one activation threshold and old-scale reset behavior, then uses the existing interval paint path. Five unchanged-C records and six focused contracts pass; the integrated playback suite has 40 contracts."
+        }
+      ],
+      "target": [
+        "src/mq3/audio/qvm_playback.ml",
+        "src/mq3/audio/snd_spatialize.ml",
+        "src/mq3/audio/snd_channels.ml",
+        "src/mq3/audio/snd_loop_channels.ml",
+        "src/mq3/audio/snd_paint_pipeline.ml",
+        "src/mq3/audio/snd_loop_doppler.ml",
+        "src/mq3/audio/snd_raw_stream.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_qvm_audio.py",
+        "tests/qvm_playback_contracts.ml",
+        "scripts/test_audio_snd_spatialize.py",
+        "tests/reference/audio_snd_spatialize_oracle.c",
+        "tests/audio_snd_spatialize_oracle.ml",
+        "tests/audio_snd_spatialize_contracts.ml",
+        "scripts/test_audio_snd_channels.py",
+        "tests/reference/audio_snd_channels_oracle.c",
+        "tests/audio_snd_channels_oracle.ml",
+        "tests/audio_snd_channels_contracts.ml",
+        "scripts/test_audio_snd_loop_channels.py",
+        "tests/reference/audio_snd_loop_channels_oracle.c",
+        "tests/audio_snd_loop_channels_oracle.ml",
+        "tests/audio_snd_loop_channels_contracts.ml",
+        "scripts/test_audio_snd_paint_pipeline.py",
+        "scripts/test_audio_snd_loop_doppler.py",
+        "tests/reference/audio_snd_loop_doppler_oracle.c",
+        "tests/audio_snd_loop_doppler_oracle.ml",
+        "tests/audio_snd_loop_doppler_contracts.ml"
+      ]
     },
     {
       "source": "code/client/snd_local.h",
@@ -5071,10 +5371,28 @@
         "S_DisplayFreeMemory",
         "S_LoadSound"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "ResampleSfxRaw",
+          "target_files": [
+            "src/mq3/audio/snd_mem_resample.ml",
+            "src/mq3/audio/qvm_sound_assets.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Unchanged x86 Baseq3 fixed-point nearest-sample resampling for mono 8/16-bit registered effects is integrated at the 22050-Hz QVM sound-cache boundary. Eight exact records and 19 contracts pass; allocator diagnostics and other loader helpers remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/audio/snd_mem_resample.ml",
+        "src/mq3/audio/qvm_sound_assets.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_audio_snd_mem_resample.py",
+        "tests/reference/audio_snd_mem_resample_oracle.c",
+        "tests/audio_snd_mem_resample_oracle.ml",
+        "tests/audio_snd_mem_resample_contracts.ml"
+      ]
     },
     {
       "source": "code/client/snd_mix.c",
@@ -5106,11 +5424,36 @@
           ],
           "status": "tested_exact",
           "scope": "Stereo paint accumulation, 1024-sample chunk/ring transitions, oldDopplerScale offsets and Doppler interval resampling. Seven exact C records and 32 contracts pass."
+        },
+        {
+          "original": "S_PaintChannels / S_PaintChannelFrom16 productive QVM mix",
+          "target_files": [
+            "src/mq3/audio/snd_paint_pipeline.ml",
+            "src/mq3/audio/qvm_playback.ml",
+            "src/mq3/audio/channel_paint.ml",
+            "src/mq3/audio/mixer_transfer.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "The productive QVM output uses the Baseq3 24.8 integer paintbuffer: stereo/mono raw music is laid down first, one-shots and grouped loops accumulate through S_PaintChannelFrom16 semantics with painted-time wrap, s_volume 0.8 maps to snd_vol 204, and final signed-16 saturation uses the exact transfer path. Three exact pipeline records plus 18 contracts pass; QVM playback has 40 contracts."
+        },
+        {
+          "original": "S_PaintChannelFromADPCM / S_PaintChannelFromWavelet / S_PaintChannelFromMuLaw",
+          "target_files": [
+            "src/mq3/audio/snd_compressed_paint.ml",
+            "src/mq3/audio/snd_paint_pipeline.ml",
+            "src/mq3/audio/qvm_playback.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The productive 24.8 QVM paint path dispatches PCM, IMA ADPCM, Daubechies wavelet and MuLaw SFX through the original compression method. Five exact C records, fourteen decoder/paint contracts and 39 QVM playback contracts pass."
         }
       ],
       "target": [
         "src/mq3/audio/mixer_transfer.ml",
-        "src/mq3/audio/channel_paint.ml"
+        "src/mq3/audio/channel_paint.ml",
+        "src/mq3/audio/snd_paint_pipeline.ml",
+        "src/mq3/audio/qvm_playback.ml",
+        "src/mq3/audio/snd_compressed_paint.ml",
+        "src/mq3/audio/snd_raw_stream.ml"
       ],
       "status": "partial",
       "tests": [
@@ -5119,7 +5462,15 @@
         "tests/audio_mixer_transfer_contracts.ml",
         "scripts/test_audio_channel_paint.py",
         "tests/reference/audio_channel_paint_oracle.c",
-        "tests/audio_channel_paint_contracts.ml"
+        "tests/audio_channel_paint_contracts.ml",
+        "scripts/test_audio_snd_paint_pipeline.py",
+        "tests/reference/audio_snd_paint_pipeline_oracle.c",
+        "tests/audio_snd_paint_pipeline_oracle.ml",
+        "tests/audio_snd_paint_pipeline_contracts.ml",
+        "scripts/test_audio_snd_compressed_paint.py",
+        "tests/reference/audio_snd_compressed_paint_oracle.c",
+        "tests/audio_snd_compressed_paint_oracle.ml",
+        "tests/audio_snd_compressed_paint_contracts.ml"
       ]
     },
     {
@@ -5147,10 +5498,23 @@
         "encodeWavelet",
         "wt1"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "decodeWavelet / MuLawDecode",
+          "target_files": [
+            "src/mq3/audio/snd_compressed_paint.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Daubechies inverse-wavelet and MuLaw decoding are connected to the productive channel painter and covered by exact native differential records."
+        }
+      ],
+      "target": [
+        "src/mq3/audio/snd_compressed_paint.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_audio_snd_compressed_paint.py"
+      ]
     },
     {
       "source": "code/game.lnt",
@@ -14262,10 +14626,26 @@
         "UI_StartDemoLoop",
         "UI_UpdateScreen"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_SetActiveMenu",
+          "target_files": [
+            "src/mq3/client/original_ui_session.ml",
+            "src/mq3/engine/local_qvm_ui.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The productive unchanged ui.qvm adapter forwards all seven uiMenuCommand_t states (none, main, ingame, need-CD, bad-CD-key, team and postgame), shares physical key state with cgame, and validates 27 UI-session contracts."
+        }
+      ],
+      "target": [
+        "src/mq3/client/original_ui_session.ml",
+        "src/mq3/engine/local_qvm_ui.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_original_ui_session.py",
+        "tests/original_ui_session_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_cdkey.c",
@@ -14332,10 +14712,29 @@
         "UI_PrintTime",
         "UI_ReadableSize"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_DrawConnectScreen",
+          "target_files": [
+            "src/mq3/client/ui_vm.ml",
+            "src/mq3/client/original_ui_session.ml",
+            "src/mq3/engine/local_qvm_ui.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Both normal and overlay connection-screen exports are forwarded through the productive local QVM adapter; missing service wiring is rejected and covered by the 27 UI-session contracts."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_vm.ml",
+        "src/mq3/client/original_ui_session.ml",
+        "src/mq3/engine/local_qvm_ui.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_ui_vm_lifecycle.py",
+        "scripts/test_original_ui_session.py",
+        "tests/original_ui_session_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_controls2.c",
@@ -16092,17 +16491,21 @@
           "original": "Com_EventLoop input and outer frame composition",
           "target_files": [
             "src/mq3/platform/input_events.ml",
-            "src/mq3/platform/engine_loop.ml"
+            "src/mq3/platform/engine_loop.ml",
+            "src/mq3/platform/desktop_frame_host.ml",
+            "src/mq3/qcommon/config_persistence.ml"
           ],
           "status": "tested_subset",
-          "scope": "Sys-style input FIFO is drained with a fixed budget before the ported SV_Frame and CL_Frame callbacks. Fifteen integration contracts cover ordering, remainder, time and frame accounting; journaling remains open."
+          "scope": "Sys-style input FIFO is drained with a fixed budget before the ported SV_Frame and CL_Frame callbacks. Com_WriteConfiguration runs before platform events/network/simulation, and writeconfig is registered at completed common initialization. Twenty engine-loop contracts plus desktop-host live contracts cover ordering, remainder, time, frame accounting and persistence; journaling remains open."
         }
       ],
       "target": [
         "src/mq3/qcommon/startup_commands.ml",
         "src/mq3/qcommon/network_pump.ml",
         "src/mq3/platform/input_events.ml",
-        "src/mq3/platform/engine_loop.ml"
+        "src/mq3/platform/engine_loop.ml",
+        "src/mq3/platform/desktop_frame_host.ml",
+        "src/mq3/qcommon/config_persistence.ml"
       ],
       "status": "partial",
       "tests": [
@@ -16194,17 +16597,62 @@
           ],
           "status": "tested_subset",
           "scope": "Original VM handle/register/update order, no-op/null-string exits, forced registration and counter changes. The modification counter advances before an overlength Com_Error, while old string/value/integer survive; Mini copyGeneration advances only on successful buffer copies. Native hidden-byte fixtures distinguish copying with unchanged visible text/counter from counter-only changes. MiniLang diagnoses unsupported NUL/invalid-storage inputs explicitly; general QVM trap transport remains open."
+        },
+        {
+          "original": "Cvar_WriteVariables",
+          "target_files": [
+            "src/mq3/qcommon/cvar.ml",
+            "src/mq3/qcommon/config_persistence.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Archive selection/order, cl_cdkey exclusion, latched values and the native 1024-byte line bound pass three byte-exact original-C records. Com_WriteConfiguration gating, q3config payload/failure semantics and writeconfig filename handling pass 17 contracts; completed common initialization registers the command and the productive desktop/direct engine frame writes dirty archive cvars before events and simulation."
+        },
+        {
+          "original": "Cvar_Restart_f",
+          "target_files": [
+            "src/mq3/qcommon/cvar.ml",
+            "src/mq3/qcommon/cvar_commands.ml",
+            "src/mq3/platform/engine_loop.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "User-created removal, protected flags, forced reset/latch behavior and the shipped x86 pointer-sized clear match 13 exact Baseq3 records; 17 contracts cover stable VM handles and immediate/queued productive command-buffer execution."
+        },
+        {
+          "original": "Cvar_Command / Cvar_Toggle_f / Cvar_Set_f / Cvar_SetU_f / Cvar_SetS_f / Cvar_SetA_f / Cvar_Reset_f / Cvar_List_f",
+          "target_files": [
+            "src/mq3/qcommon/cvar_commands.ml",
+            "src/mq3/qcommon/command_buffer.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Direct cvar lookup/set, toggle, multi-token set, archive/user/server flags, reset, filtered listing and original diagnostics match 11 exact Baseq3 records plus 15 command-buffer contracts."
         }
       ],
       "target": [
-        "src/mq3/qcommon/cvar.ml"
+        "src/mq3/qcommon/cvar.ml",
+        "src/mq3/qcommon/config_persistence.ml",
+        "src/mq3/qcommon/cvar_commands.ml",
+        "src/mq3/platform/engine_loop.ml",
+        "src/mq3/engine/local_qvm_match.ml",
+        "src/mq3/qcommon/command_buffer.ml"
       ],
       "status": "partial",
       "tests": [
         "scripts/test_core.py",
         "scripts/test_game_cvars.py",
         "scripts/test_ip_filters.py",
-        "scripts/test_game_lifecycle.py"
+        "scripts/test_game_lifecycle.py",
+        "scripts/test_cvar_config.py",
+        "tests/cvar_config_contracts.ml",
+        "tests/reference/cvar_config_oracle.c",
+        "scripts/test_cvar_restart.py",
+        "tests/reference/cvar_restart_oracle.c",
+        "tests/cvar_restart_oracle.ml",
+        "tests/cvar_restart_contracts.ml",
+        "scripts/test_cvar_commands.py",
+        "tests/reference/cvar_commands_oracle.c",
+        "tests/cvar_commands_oracle.ml",
+        "tests/cvar_commands_contracts.ml"
       ]
     },
     {
@@ -17417,13 +17865,55 @@
           ],
           "status": "tested_subset",
           "scope": "Explicit cinematics and shader videoMap stages upload per-handle RGBA scratch textures; a retail RoQ probe verifies the silent looping 256x256 material path."
+        },
+        {
+          "original": "RB_StretchPic / RB_BeginSurface shader time",
+          "target_files": [
+            "src/mq3/renderer/qvm_2d_batch.ml",
+            "src/mq3/renderer/playable_materials.ml",
+            "src/mq3/renderer/shader_remap.ml",
+            "src/mq3/client/qvm_preview_app.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The productive original-QVM HUD/UI path rebuilds StretchPic runs, decodes and uploads replacement stages after runtime shader remaps, and applies remap timeOffset plus parsed clampTime to animated images, color waves and tcMods. Thirty-two contracts include a synthetic PK3 remap and retained native batch bytes."
+        },
+        {
+          "original": "RB_RenderDrawSurfList per-entity shader time",
+          "target_files": [
+            "src/mq3/renderer/playable_materials.ml",
+            "src/mq3/renderer/playable_world_batch.ml",
+            "src/mq3/renderer/qvm_scene_geometry.ml",
+            "src/mq3/renderer/qvm_scene_materials.ml",
+            "src/mq3/renderer/qvm_scene_batch.ml",
+            "src/mq3/renderer/shader_remap.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "The productive retained renderer subtracts refEntity shaderTime and remapped-shader timeOffset before animated image selection, color waves, vertex/normal deforms and every time-dependent tcMod, then applies parsed shader clampTime at the same boundary as RB_BeginSurface. Cached scene passes adopt same-handle timeOffset changes during geometry refresh without a rebuild. Thirteen exact animated-image/surface-time records and six retained-batch timing contracts pass."
+        },
+        {
+          "original": "RB_RenderDrawSurfList RF_DEPTHHACK depth range",
+          "target_files": [
+            "src/mq3/renderer/qvm_scene_geometry.ml",
+            "src/mq3/renderer/qvm_scene_batch.ml",
+            "src/mq3/renderer/portal_clip.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The productive original-QVM scene path preserves refEntity_t.renderfx, isolates RF_DEPTHHACK geometry in a retained batch, submits it with the Baseq3 0..0.3 depth range, restores normal depth, and preserves the flag through portal clipping. Nine batch contracts and 22 portal contracts pass."
         }
       ],
       "target": [
         "src/mq3/renderer/texture_state.ml",
         "src/mq3/client/cinematic_runtime.ml",
         "src/mq3/renderer/qvm_video_materials.ml",
-        "src/mq3/client/qvm_preview_app.ml"
+        "src/mq3/client/qvm_preview_app.ml",
+        "src/mq3/renderer/playable_materials.ml",
+        "src/mq3/renderer/playable_world_batch.ml",
+        "src/mq3/renderer/qvm_scene_materials.ml",
+        "src/mq3/renderer/qvm_2d_batch.ml",
+        "src/mq3/renderer/shader_remap.ml",
+        "src/mq3/renderer/qvm_scene_geometry.ml",
+        "src/mq3/renderer/qvm_scene_batch.ml",
+        "src/mq3/renderer/portal_clip.ml"
       ],
       "status": "partial",
       "tests": [
@@ -17431,7 +17921,19 @@
         "tests/reference/texture_state_oracle.c",
         "tests/texture_state_contracts.ml",
         "scripts/test_qvm_video_materials.py",
-        "tests/qvm_video_materials_retail_probe.ml"
+        "tests/qvm_video_materials_retail_probe.ml",
+        "scripts/test_shader_entity_translate.py",
+        "tests/reference/shader_entity_time_oracle.c",
+        "tests/shader_entity_time_oracle.ml",
+        "tests/playable_world_batch_contracts.ml",
+        "tests/qvm_scene_materials_contracts.ml",
+        "tests/cgame_renderer_extended_contracts.ml",
+        "scripts/test_qvm_2d_batch.py",
+        "tests/qvm_2d_batch_contracts.ml",
+        "scripts/test_qvm_scene_batch.py",
+        "tests/qvm_scene_batch_contracts.ml",
+        "scripts/test_portal_render_pass.py",
+        "tests/portal_render_pass_contracts.ml"
       ]
     },
     {
@@ -17470,10 +17972,44 @@
         "ShaderForShaderNum",
         "patch"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "R_ColorShiftLightingBytes",
+          "target_files": [
+            "src/mq3/renderer/bsp_render_data.ml",
+            "src/mq3/renderer/playable_light_grid.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Lightmap and light-grid RGB bytes use the exact Baseq3 bit shift and chromatic normalization. The dependency-free software renderer's default map-overbright two and renderer-overbright zero path passes seven unchanged C differential records plus 63 BSP and 23 light-grid contracts."
+        },
+        {
+          "original": "R_LoadSubmodels",
+          "minilang": "qvm_scene_geometry.loadInlineModel",
+          "scope": "Reads each BSP dmodel_t firstSurface/numSurfaces range and retains render triangles plus shader names in the cgame model registry."
+        },
+        {
+          "original": "ParseFlare",
+          "minilang": "playable_flares.parse",
+          "scope": "MST_FLARE surfaces copy dsurface_t shader/fog, lightmapOrigin, lightmapVecs[0] color and lightmapVecs[2] normal into a retained catalog; malformed shader indices are rejected."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/bsp_render_data.ml",
+        "src/mq3/renderer/playable_light_grid.ml",
+        "src/mq3/renderer/qvm_scene_geometry.ml",
+        "src/mq3/engine/local_qvm_match.ml",
+        "src/mq3/renderer/playable_flares.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_bsp_render_data.py",
+        "tests/reference/bsp_lighting_shift_oracle.c",
+        "tests/bsp_lighting_shift_oracle.ml",
+        "scripts/test_playable_light_grid.py",
+        "scripts/test_qvm_scene_geometry.py",
+        "tests/qvm_inline_model_map_probe.ml",
+        "scripts/test_playable_flares.py"
+      ]
     },
     {
       "source": "code/renderer/tr_cmds.c",
@@ -17529,10 +18065,31 @@
         "R_SubdividePatchToGrid",
         "Transpose"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "LerpDrawVert / Transpose / PutPointsOnCurve / MakeMeshNormals / R_SubdividePatchToGrid",
+          "target_files": [
+            "src/mq3/renderer/bsp_render_data.ml",
+            "src/mq3/renderer/world_surface_selection.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Productive BSP patches use Baseq3's perpendicular chord-error test, repeated de Casteljau half insertion, 65-point axis ceiling, two-axis transpose pass, on-curve midpoint adjustment, byte color averaging, collinear row/column removal and MakeMeshNormals' seam wrapping plus three-neighbour degenerate search. World-selection budgets use the resulting adaptive grid dimensions. Seventy-five unchanged-C normal records, 63 contracts and the retained q3dm1 probe cover 113 patch faces and 17,723 total triangles. LOD error tables/stitching, longest-strip orientation and R_GridInsertRow/Column remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/bsp_render_data.ml",
+        "src/mq3/renderer/world_surface_selection.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_bsp_render_data.py",
+        "tests/reference/bsp_patch_normals_oracle.c",
+        "tests/bsp_patch_normals_oracle.ml",
+        "tests/bsp_render_data_contracts.ml",
+        "tests/bsp_render_data_map_probe.ml",
+        "scripts/test_world_surface_selection.py",
+        "tests/world_surface_selection_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_flares.c",
@@ -17546,10 +18103,41 @@
         "RB_TestFlare",
         "R_ClearFlares"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "RB_AddFlare",
+          "minilang": "playable_flares.facing",
+          "scope": "Projects retained BSP flare points and applies the original normalized view-vector dot normal attenuation."
+        },
+        {
+          "original": "RB_TestFlare",
+          "minilang": "playable_flares.visibleAtDepth/updateState",
+          "scope": "Samples the productive software depth buffer in eye-space distance, uses the strict 24-unit tolerance, tracks visibility per view and applies the original r_flareFade linear transition."
+        },
+        {
+          "original": "RB_RenderFlare",
+          "minilang": "playable_flares.flareSize/drawViewport",
+          "scope": "Uses the original viewport-scaled size formula, real retail flareShader image, additive clamp-textured screen quads and no depth writes."
+        },
+        {
+          "original": "RB_RenderFlares",
+          "minilang": "qvm_preview_app.runLimited",
+          "scope": "Runs after world and cgame geometry for portal and main views. The archived r_flares cvar keeps the Baseq3 default disabled and enables the complete pass when set."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/playable_flares.ml",
+        "src/mq3/platform/playable_window.ml",
+        "native/playable_win32.c",
+        "src/mq3/client/qvm_preview_app.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_playable_flares.py",
+        "tests/playable_flares_contracts.ml",
+        "scripts/playable_window_build_test.py",
+        "tests/playable_window_lifecycle.c"
+      ]
     },
     {
       "source": "code/renderer/tr_font.c",
@@ -17719,10 +18307,55 @@
         "R_SetupEntityLightingGrid",
         "end"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "R_SetupEntityLightingGrid / R_LightForPoint",
+          "target_files": [
+            "src/mq3/renderer/playable_light_grid.ml",
+            "src/mq3/renderer/qvm_scene_geometry.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "BSP grid-size discovery, trilinear 8-cell sampling, black-cell renormalization, exact default software-renderer overbright colour shifting, RGB ambient/directed vertex lighting, RF_LIGHTING_ORIGIN selection and productive QVM MD3 consumption. Twenty-three light-grid and 42 QVM-geometry contracts pass; the retail q3dm1 probe remains the asset-backed acceptance."
+        },
+        {
+          "original": "R_SetupEntityLighting RDF_NOWORLDMODEL and dynamic lights",
+          "target_files": [
+            "src/mq3/renderer/playable_light_grid.ml",
+            "src/mq3/renderer/qvm_scene_geometry.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The productive QVM path uses the identityLight=1 fallback of 150 ambient plus 150 directed, the original unconditional 32 minimum-light add, normalized default sun direction, and accumulated scene dynamic lights for RDF_NOWORLDMODEL refdefs."
+        },
+        {
+          "original": "R_DlightBmodel",
+          "target_files": [
+            "src/mq3/renderer/qvm_scene_geometry.ml",
+            "src/mq3/renderer/qvm_scene_batch.ml",
+            "src/mq3/renderer/playable_dynamic_lights.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Productive QVM inline BSP surfaces retain SURF_NODLIGHT/SURF_SKY eligibility, refresh moving projected-light geometry and draw scene dynamic lights in main and portal views. Entity origin/axes drive the R_TransformDlights-equivalent local projection for rotated brush models, and the original radius-expanded local bmodel bounds predicate rejects unrelated lights before projection. Two unchanged C records and 13 direct contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/playable_light_grid.ml",
+        "src/mq3/renderer/qvm_scene_geometry.ml",
+        "src/mq3/renderer/qvm_scene_batch.ml",
+        "src/mq3/renderer/playable_dynamic_lights.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_playable_light_grid.py",
+        "scripts/test_playable_dynamic_lights.py",
+        "tests/playable_dynamic_lights_oracle.ml",
+        "tests/reference/playable_dynamic_lights_oracle.c",
+        "tests/playable_dynamic_lights_contracts.ml",
+        "scripts/test_qvm_scene_batch.py",
+        "tests/playable_light_grid_contracts.ml",
+        "tests/playable_light_grid_retail_probe.ml",
+        "scripts/test_qvm_scene_geometry.py",
+        "tests/qvm_scene_geometry_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_local.h",
@@ -17782,17 +18415,38 @@
           "scope": "Exact QSORT key layout, masked draw-surface ring, decomposition, capacity handling and stable ordering. Five exact C records and 34 contracts pass."
         },
         {
-          "original": "R_LocalNormalToWorld / R_LocalPointToWorld / R_WorldToLocal / R_TransformModelToClip / R_TransformClipToWindow / R_CullPointAndRadius / R_CullLocalPointAndRadius / R_CullLocalBox",
+          "original": "R_LocalNormalToWorld / R_LocalPointToWorld / R_WorldToLocal / R_TransformModelToClip / R_TransformClipToWindow / R_SetupFrustum / R_CullPointAndRadius / R_CullLocalPointAndRadius / R_CullLocalBox",
           "target_files": [
             "src/mq3/renderer/view_math.ml"
           ],
           "status": "tested_exact",
-          "scope": "Local/world/model/clip/window transforms and point, radius and local-box frustum culling. Eleven exact C records and 36 contracts pass."
+          "scope": "Local/world/model/clip/window transforms, productive FOV side-plane construction and point, radius and local-box frustum culling. Fifteen exact C records and 39 contracts pass."
+        },
+        {
+          "original": "R_MirrorPoint / R_MirrorVector / R_GetPortalOrientations and portal entity policy",
+          "target_files": [
+            "src/mq3/renderer/portal_view.ml",
+            "src/mq3/renderer/entity_surface_policy.ml",
+            "src/mq3/renderer/portal_render_pass.ml",
+            "src/mq3/renderer/portal_clip.ml",
+            "src/mq3/renderer/qvm_scene_geometry.ml",
+            "src/mq3/client/qvm_preview_app.ml",
+            "src/mq3/renderer/world_surface_selection.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "RT_PORTALSURFACE markers drive mirror or remote-camera origin/axes, PVS, rotation and clip-plane calculation; main/portal views apply RF_FIRST_PERSON and RF_THIRD_PERSON filtering. The productive software renderer builds the portal world and portal-visible Cgame entities from that camera, clips BSP/QVM triangles to the destination plane, composes portal then depth-clear then main view, and limits recursion to one level. Three exact records, 17 view contracts, 21 render-pass contracts and 32 geometry contracts pass; retail visual acceptance awaits mounted assets."
         }
       ],
       "target": [
         "src/mq3/renderer/draw_surfs.ml",
-        "src/mq3/renderer/view_math.ml"
+        "src/mq3/renderer/view_math.ml",
+        "src/mq3/renderer/portal_view.ml",
+        "src/mq3/renderer/entity_surface_policy.ml",
+        "src/mq3/renderer/qvm_scene_geometry.ml",
+        "src/mq3/renderer/portal_render_pass.ml",
+        "src/mq3/renderer/portal_clip.ml",
+        "src/mq3/client/qvm_preview_app.ml",
+        "src/mq3/renderer/world_surface_selection.ml"
       ],
       "status": "partial",
       "tests": [
@@ -17801,7 +18455,16 @@
         "tests/draw_surfs_contracts.ml",
         "scripts/test_renderer_view_math.py",
         "tests/reference/renderer_view_math_oracle.c",
-        "tests/renderer_view_math_contracts.ml"
+        "tests/renderer_view_math_contracts.ml",
+        "scripts/test_portal_view.py",
+        "tests/reference/portal_view_oracle.c",
+        "tests/portal_view_oracle.ml",
+        "tests/portal_view_contracts.ml",
+        "scripts/test_qvm_scene_geometry.py",
+        "scripts/test_portal_render_pass.py",
+        "tests/portal_render_pass_contracts.ml",
+        "scripts/test_world_surface_selection.py",
+        "tests/world_surface_selection_contracts.ml"
       ]
     },
     {
@@ -17830,10 +18493,30 @@
         "R_ComputeLOD",
         "R_CullModel"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "ProjectRadius / R_ComputeLOD and R_AddMD3Surfaces frame normalization",
+          "target_files": [
+            "src/mq3/renderer/md3_entity.ml",
+            "src/mq3/renderer/qvm_scene_geometry.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Projected-radius LOD selection, bounds radius, RF_WRAP_FRAMES and invalid frame-pair repair are ported; productive QVM MD3 interpolation consumes normalized frames. Six exact records and 24 contracts pass; fog selection and complete culling/surface submission remain open."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/md3_entity.ml",
+        "src/mq3/renderer/qvm_scene_geometry.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_md3_entity.py",
+        "tests/reference/md3_entity_oracle.c",
+        "tests/md3_entity_oracle.ml",
+        "tests/md3_entity_contracts.ml",
+        "scripts/test_qvm_scene_geometry.py",
+        "tests/qvm_scene_geometry_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_model.c",
@@ -17956,10 +18639,58 @@
         "R_DrawElements",
         "R_DrawStripElements"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "ComputeColors",
+          "target_files": [
+            "src/mq3/renderer/playable_materials.ml",
+            "src/mq3/renderer/playable_world_batch.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The productive retained renderer preserves Baseq3 rgbGen-before-alphaGen ordering, identityLight scaling, entity/constant/vertex alpha replacement, waveform, portal and specular dispatch. Fifteen records from the unchanged original function and twelve focused contracts pass; fog color adjustment and the remaining stage iterator are still open."
+        },
+        {
+          "original": "R_BindAnimatedImage",
+          "target_files": [
+            "src/mq3/renderer/playable_materials.ml",
+            "src/mq3/renderer/playable_world_batch.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Animated stage slots use the per-entity shader clock, truncate at Baseq3 frame boundaries, clamp negative time to frame zero and wrap by the animation count. Seven records from the unchanged original function and productive retained-batch contracts pass."
+        },
+        {
+          "original": "RB_BeginSurface shader timeOffset / clampTime",
+          "target_files": [
+            "src/mq3/renderer/playable_materials.ml",
+            "src/mq3/renderer/playable_world_batch.ml",
+            "src/mq3/renderer/qvm_scene_materials.ml",
+            "src/mq3/renderer/shader_remap.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "World and QVM retained materials apply parsed clampTime and runtime shader-remap timeOffset before every time consumer. A same-name remap updates both the stable QVM material and an already retained scene pass without requiring changed geometry or stage topology. Six records extracted from the unchanged RB_BeginSurface plus focused material, remap and retained-batch contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/playable_materials.ml",
+        "src/mq3/renderer/playable_world_batch.ml",
+        "src/mq3/renderer/qvm_scene_materials.ml",
+        "src/mq3/renderer/shader_remap.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_shader_compute_colors.py",
+        "tests/reference/shader_compute_colors_oracle.c",
+        "tests/shader_compute_colors_oracle.ml",
+        "tests/shader_compute_colors_contracts.ml",
+        "scripts/test_playable_materials.py",
+        "scripts/test_playable_world_batch.py",
+        "scripts/test_shader_entity_translate.py",
+        "tests/reference/shader_entity_time_oracle.c",
+        "tests/shader_entity_time_oracle.ml",
+        "tests/playable_world_batch_contracts.ml",
+        "tests/qvm_scene_materials_contracts.ml",
+        "tests/cgame_renderer_extended_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_shade_calc.c",
@@ -17999,10 +18730,72 @@
         "TableForFunc",
         "myftol"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "RB_CalcColorFromEntity / RB_CalcColorFromOneMinusEntity / RB_CalcAlphaFromEntity / RB_CalcAlphaFromOneMinusEntity",
+          "target_files": [
+            "src/mq3/renderer/playable_materials.ml",
+            "src/mq3/renderer/bsp_render_data.ml",
+            "src/mq3/renderer/qvm_scene_geometry.ml",
+            "src/mq3/renderer/qvm_scene_batch.ml",
+            "src/mq3/renderer/playable_world_batch.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "refEntity shaderRGBA remains separate from light-grid/vertex color through QVM geometry and retained stage passes. rgbGen entity/oneMinusEntity and alphaGen entity/oneMinusEntity match four unchanged-C records and eight focused contracts; 202 adjacent renderer contracts and the full Windows build pass."
+        },
+        {
+          "original": "RB_CalcModulateColorsByFog / RB_CalcModulateAlphasByFog / RB_CalcModulateRGBAsByFog",
+          "target_files": [
+            "src/mq3/renderer/playable_materials.ml",
+            "src/mq3/renderer/playable_world_batch.ml",
+            "src/mq3/renderer/playable_fog.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Blended-only retained stages use the per-vertex BSP fog density to attenuate RGB, alpha or RGBA before the final fog pass. Three unchanged-C records and eighteen focused/integration contracts pass."
+        },
+        {
+          "original": "RB_CalcScrollTexCoords via TMOD_ENTITY_TRANSLATE and per-entity tess.shaderTime",
+          "target_files": [
+            "src/mq3/renderer/playable_materials.ml",
+            "src/mq3/renderer/bsp_render_data.ml",
+            "src/mq3/renderer/qvm_scene_geometry.ml",
+            "src/mq3/renderer/qvm_scene_batch.ml",
+            "src/mq3/renderer/playable_world_batch.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "refEntity shaderTexCoord and shaderTime survive QVM geometry refresh, portal clipping and retained stage passes. Runtime remap timeOffset and parsed clampTime share that clock. Sixteen unchanged-C records plus 104 material, remap, QVM geometry, QVM batch and world-batch contracts cover animated frames, color waves, vertex/normal deforms, all time-based tcMods, positive and negative wrapped scrolling, clamping and productive outputs; two additional focused regressions cover same-handle offset changes through the QVM material and retained-pass caches."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/playable_materials.ml",
+        "src/mq3/renderer/bsp_render_data.ml",
+        "src/mq3/renderer/qvm_scene_geometry.ml",
+        "src/mq3/renderer/qvm_scene_batch.ml",
+        "src/mq3/renderer/playable_world_batch.ml",
+        "src/mq3/renderer/playable_fog.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_shader_entity_color.py",
+        "tests/reference/shader_entity_color_oracle.c",
+        "tests/shader_entity_color_oracle.ml",
+        "tests/shader_entity_color_contracts.ml",
+        "scripts/test_playable_materials.py",
+        "scripts/test_playable_world_batch.py",
+        "scripts/test_qvm_scene_batch.py",
+        "scripts/test_qvm_scene_geometry.py",
+        "scripts/test_shader_fog_color.py",
+        "tests/reference/shader_fog_color_oracle.c",
+        "tests/shader_fog_color_oracle.ml",
+        "tests/shader_fog_color_contracts.ml",
+        "tests/playable_fog_stage_contracts.ml",
+        "scripts/test_shader_entity_translate.py",
+        "tests/reference/shader_entity_translate_oracle.c",
+        "tests/shader_entity_translate_oracle.ml",
+        "tests/reference/shader_entity_time_oracle.c",
+        "tests/shader_entity_time_oracle.ml",
+        "tests/playable_world_batch_contracts.ml"
+      ]
     },
     {
       "source": "code/renderer/tr_shader.c",
@@ -18059,12 +18852,23 @@
             "src/mq3/renderer/shader_parser.ml"
           ],
           "status": "tested_exact",
-          "scope": "Map/animation, blend/depth, rgb/alpha generation, tcGen/texgen/tcMod, surface, sort, cull and material flags. Thirty unchanged-C records and 32 MiniLang contracts pass."
+          "scope": "Map/animation, blend/depth, rgb/alpha generation, tcGen/texgen/tcMod, surface, sort, cull and material flags. Thirty unchanged-C records and 36 MiniLang contracts pass; parameterless entityTranslate no longer enters an invalid empty-value loop."
+        },
+        {
+          "original": "FinishShader fog color adjustment classification",
+          "target_files": [
+            "src/mq3/renderer/playable_materials.ml",
+            "src/mq3/renderer/playable_world_batch.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "All four Baseq3 FinishShader fog policies are productive: additive and inverse-source-color marks attenuate RGB, strict alpha attenuates alpha, and GL_ONE/GL_ONE_MINUS_SRC_ALPHA attenuates RGBA. The native rasterizer implements the matching premultiplied-alpha blend."
         }
       ],
       "target": [
         "src/mq3/renderer/shader_index.ml",
-        "src/mq3/renderer/shader_parser.ml"
+        "src/mq3/renderer/shader_parser.ml",
+        "src/mq3/renderer/playable_materials.ml",
+        "src/mq3/renderer/playable_world_batch.ml"
       ],
       "status": "partial",
       "tests": [
@@ -18073,7 +18877,10 @@
         "tests/shader_index_contracts.ml",
         "scripts/test_shader_parser.py",
         "tests/reference/shader_parser_oracle.c",
-        "tests/shader_parser_contracts.ml"
+        "tests/shader_parser_contracts.ml",
+        "scripts/test_shader_fog_color.py",
+        "tests/shader_fog_color_contracts.ml",
+        "tests/playable_fog_stage_contracts.ml"
       ]
     },
     {
@@ -18087,10 +18894,23 @@
         "R_AddEdgeDef",
         "R_RenderShadowEdges"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "RB_ProjectionShadowDeform",
+          "minilang": "qvm_scene_geometry.projectionShadowPoint",
+          "scope": "RF_SHADOW_PLANE MD3 vertices project along entity lighting onto refEntity.shadowPlane with the original shallow-light clamp; a retained built-in decal material supplies translucent black vertex color, decal sorting and polygon offset."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/qvm_scene_geometry.ml",
+        "src/mq3/renderer/qvm_scene_materials.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_qvm_scene_geometry.py",
+        "scripts/test_qvm_scene_materials.py",
+        "scripts/test_qvm_scene_batch.py"
+      ]
     },
     {
       "source": "code/renderer/tr_sky.c",
@@ -18186,6 +19006,25 @@
           ],
           "status": "tested_exact",
           "scope": "Binary32 sprite rotation and mirroring, positions, normals, both UV sets, colors, index rebasing and strict overflow sentinel behavior. Six exact C records and 31 contracts pass."
+        },
+        {
+          "original": "DoRailCore / DoRailDiscs / RB_SurfaceRailCore / RB_SurfaceRailRings / RB_SurfaceLightningBolt",
+          "target_files": [
+            "src/mq3/renderer/surface_trails.ml",
+            "src/mq3/renderer/qvm_scene_geometry.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "View-facing rail cores, segmented crossed rail rings and four crossed lightning surfaces preserve Baseq3 widths, UVs, vertex colors and custom shaders in the productive QVM geometry path. Two exact records and 26 contracts pass."
+        },
+        {
+          "original": "RB_SurfaceBeam",
+          "target_files": [
+            "src/mq3/renderer/surface_beam.ml",
+            "src/mq3/renderer/qvm_scene_geometry.ml",
+            "src/mq3/renderer/qvm_scene_materials.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "QVM RT_BEAM entities expand to the original closed six-sided 14-vertex strip and 12 triangles, omit zero-length beams and use the original constant red through a productive additive vertex-color material. Two exact records and 13 contracts pass."
         }
       ],
       "target": [
@@ -18193,7 +19032,11 @@
         "src/mq3/renderer/surface_mesh.ml",
         "src/mq3/renderer/surface_md3.ml",
         "src/mq3/renderer/surface_grid.ml",
-        "src/mq3/renderer/surface_entities.ml"
+        "src/mq3/renderer/surface_entities.ml",
+        "src/mq3/renderer/surface_trails.ml",
+        "src/mq3/renderer/qvm_scene_geometry.ml",
+        "src/mq3/renderer/surface_beam.ml",
+        "src/mq3/renderer/qvm_scene_materials.ml"
       ],
       "status": "partial",
       "tests": [
@@ -18211,7 +19054,16 @@
         "tests/surface_grid_contracts.ml",
         "scripts/test_surface_entities.py",
         "tests/reference/surface_entities_oracle.c",
-        "tests/surface_entities_contracts.ml"
+        "tests/surface_entities_contracts.ml",
+        "scripts/test_surface_trails.py",
+        "tests/reference/surface_trails_oracle.c",
+        "tests/surface_trails_oracle.ml",
+        "tests/surface_trails_contracts.ml",
+        "scripts/test_qvm_scene_geometry.py",
+        "scripts/test_surface_beam.py",
+        "tests/reference/surface_beam_oracle.c",
+        "tests/surface_beam_oracle.ml",
+        "tests/surface_beam_contracts.ml"
       ]
     },
     {
@@ -18235,10 +19087,25 @@
         "R_RecursiveWorldNode",
         "R_inPVS"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "R_AddBrushModelSurfaces",
+          "minilang": "qvm_scene_geometry.addInlineModel",
+          "scope": "Productive QVM brush entities transform BSP submodel surfaces by refEntity origin/axis and retain shaders, vertex colours, base/lightmap UVs, lightmap index and fog index through the retained scene batch. The BSP fog index drives the final fog overlay and per-stage fog adjustment in main and portal views, rebuilt from refreshed world positions. Baseq3 FOV side planes and R_CullLocalBox reject transformed submodel bounds before expansion in both views. Eligible opaque brush surfaces reach the projected dynamic-light pass with local projection for translated and rotated entities."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/qvm_scene_geometry.ml",
+        "src/mq3/renderer/qvm_scene_batch.ml",
+        "src/mq3/renderer/portal_clip.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/test_qvm_scene_geometry.py",
+        "scripts/test_qvm_scene_batch.py",
+        "scripts/test_portal_render_pass.py",
+        "tests/qvm_inline_model_map_probe.ml"
+      ]
     },
     {
       "source": "code/run.bat",
@@ -18395,12 +19262,13 @@
       ],
       "symbol_mapping": [
         {
-          "original": "SV_CloseDownload, SV_NextDownload_f and SV_WriteDownloadToClient",
+          "original": "SV_CloseDownload, SV_StopDownload_f, SV_DoneDownload_f, SV_NextDownload_f, SV_BeginDownload_f and SV_WriteDownloadToClient",
           "target_files": [
-            "src/mq3/server/download.ml"
+            "src/mq3/server/download.ml",
+            "src/mq3/server/client_command_dispatch.ml"
           ],
           "status": "tested_exact",
-          "scope": "Eight-slot 2048-byte block window, rate-derived per-snapshot budget, block-zero size, EOF block and close, ordered acknowledgements, broken-ack drop, one-second retransmit, id-p/disabled/missing failures and bounded message overflow. Twelve unchanged-C records and 19 MiniLang contracts pass."
+          "scope": "Complete reliable download/nextdl/stopdl/donedl command lifecycle plus eight-slot 2048-byte block window, rate-derived per-snapshot budget, EOF/close, ordered acknowledgements, broken-ack drop, one-second retransmit, id-p/disabled/missing failures and bounded message overflow. Fifteen unchanged-C records and 27 MiniLang contracts pass."
         },
         {
           "original": "SV_GetChallenge and SV_DirectConnect",
@@ -18471,7 +19339,10 @@
         "scripts/test_server_network_ingress.py",
         "tests/reference/client_command_dispatch_oracle.c",
         "tests/reference/server_client_command_oracle.c",
-        "tests/reference/server_user_move_oracle.c"
+        "tests/reference/server_user_move_oracle.c",
+        "tests/server_download_oracle.ml",
+        "tests/server_download_contracts.ml",
+        "tests/reference/server_download_oracle.c"
       ]
     },
     {
@@ -18538,7 +19409,7 @@
             "src/mq3/vm/syscall_qagame_world.ml"
           ],
           "status": "tested_subset",
-          "scope": "Common traps plus 18 qagame server traps for game data, clients, configstrings, info, PVS/portals, entity linking, bot slots and entity tokens. Binary delegation adds trace/capsule, point contents, entity boxes/contacts and usercmds with exact trace_t/usercmd_t layouts. The layers pass eight exact ABI records and 69 contracts."
+          "scope": "Common traps plus 24 typed qagame server/platform traps for game data, clients, configstrings, info, PVS/portals, entity linking, bot slots, entity tokens, file lists, debug polygons, real time, SnapVector and FS_Seek. Binary delegation adds trace/capsule, point contents, entity boxes/contacts and usercmds with exact trace_t/usercmd_t layouts. The qagame layers pass nine exact ABI records and 84 contracts; productive PK3 handles now seek through the shared memory-file cursor, while debug drawing remains renderer-host work."
         },
         {
           "original": "SV_InitGameProgs / SV_InitGameVM / SV_RestartGameProgs / SV_ShutdownGameProgs",
@@ -18768,14 +19639,28 @@
           ],
           "status": "tested_exact",
           "scope": "Server XOR codec, svc_EOF, shared netchan transmission/process, fragment continuation and deferred unencoded FIFO queue. Twelve direct records execute all five unchanged server bodies together with unchanged MSG/Huffman/netchan code and compare complete packets and state; 26 contracts cover boundaries including 4/6-byte process headers."
+        },
+        {
+          "original": "SV_Netchan_Transmit productive snapshot payload and fragment drain",
+          "target_files": [
+            "src/mq3/server/netchan.ml",
+            "src/mq3/client/network_match_loop.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "Seven localhost UDP client frames cover packet loss, packetdup recovery, duplicate suppression, older delta bases and cl_nodelta recovery in 48 live contracts. A shared server ingress then drives two simultaneous clients with independent sockets, QPorts, netchan/reliable/usercmd/snapshot state and mutually parsed player entities in seven source anchors plus 33 live contracts; connection establishment and long-running internet acceptance remain open."
         }
       ],
       "target": [
-        "src/mq3/server/netchan.ml"
+        "src/mq3/server/netchan.ml",
+        "src/mq3/client/network_match_loop.ml"
       ],
       "status": "partial",
       "tests": [
-        "scripts/test_server_netchan.py"
+        "scripts/test_server_netchan.py",
+        "scripts/test_network_match_loop.py",
+        "tests/network_match_loop_contracts.ml",
+        "scripts/test_network_match_multi.py",
+        "tests/network_match_multi_contracts.ml"
       ]
     },
     {
@@ -21217,10 +22102,30 @@
         "GLimp_WakeRenderer",
         "PrintCDSError"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "GLW_CreateWindow, GLimp_EndFrame and GLimp_Shutdown lifecycle subset",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The software-renderer host creates its Win32 window before retail loading, pumps messages on a dedicated UI thread, uses a synchronized presented surface, shows loading progress and shuts down cleanly. OpenGL context and extension parity remain open."
+        }
+      ],
+      "target": [
+        "native/playable_win32.c",
+        "src/mq3/platform/playable_window.ml",
+        "src/mq3/client/playable_app.ml"
+      ],
+      "status": "partial",
+      "tests": [
+        "scripts/playable_window_build_test.py",
+        "scripts/test_playable_loading.py",
+        "tests/playable_window_lifecycle.c",
+        "tests/playable_loading_contracts.ml"
+      ]
     },
     {
       "source": "code/win32/win_input.c",

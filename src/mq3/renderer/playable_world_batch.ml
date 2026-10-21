@@ -15,7 +15,7 @@ import mq3.renderer.playable_dynamic_lights as dynamicLights
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
 struct VertexCache slots frames positions normals uvs colors end struct
-struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceLights sourceColors stage textureIndex deforms normalNoise vertexCache cacheSerial primary depthEqual sort polygonOffset end struct
+struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceLights sourceColors sourceEntityColors sourceEntityTexCoords sourceShaderTimes fogIndexes fogAdjustment stage textureIndex deforms normalNoise vertexCache cacheSerial primary depthEqual sort polygonOffset timeOffset clampTime end struct
 struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses polygonOffsetPasses fogBatch fogCatalog dlightBatch dlightCatalog end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
@@ -123,7 +123,7 @@ function createVertexCache(sourceIndexes)
 end function
 function buildStagePassTriangles(triangles,material,stage,primary,depthEqual)
   count=len(triangles);if count<1 then return void end if
-  commands=window.createTriangleBatch(count);sourceUvs=array(count,void);sourceDeformUvs=array(count,void);sourcePositions=array(count,void);sourceIndexes=array(count,void);sourceNormals=array(count,void);sourceLights=array(count,void);sourceColors=array(count,void);outputIndex=0
+  commands=window.createTriangleBatch(count);sourceUvs=array(count,void);sourceDeformUvs=array(count,void);sourcePositions=array(count,void);sourceIndexes=array(count,void);sourceNormals=array(count,void);sourceLights=array(count,void);sourceColors=array(count,void);sourceEntityColors=array(count,void);sourceEntityTexCoords=array(count,void);sourceShaderTimes=array(count,void);outputIndex=0
   for each triangle in triangles
       if stage.bspLightmap then
         va=triangle.vertices[0];vb=triangle.vertices[1];vc=triangle.vertices[2]
@@ -139,11 +139,15 @@ function buildStagePassTriangles(triangles,material,stage,primary,depthEqual)
       sourceDeformUvs[outputIndex]=[triangle.vertices[0].baseUV,triangle.vertices[1].baseUV,triangle.vertices[2].baseUV]
       sourceNormals[outputIndex]=[triangle.vertices[0].normal,triangle.vertices[1].normal,triangle.vertices[2].normal]
       sourceLights[outputIndex]=[vertexLight(triangle.vertices[0]),vertexLight(triangle.vertices[1]),vertexLight(triangle.vertices[2])]
-      sourceColors[outputIndex]=[triangle.vertices[0].color,triangle.vertices[1].color,triangle.vertices[2].color];outputIndex=outputIndex+1
+      sourceColors[outputIndex]=[triangle.vertices[0].color,triangle.vertices[1].color,triangle.vertices[2].color]
+      sourceEntityColors[outputIndex]=[triangle.vertices[0].entityColor,triangle.vertices[1].entityColor,triangle.vertices[2].entityColor]
+      sourceEntityTexCoords[outputIndex]=[triangle.vertices[0].entityTexCoord,triangle.vertices[1].entityTexCoord,triangle.vertices[2].entityTexCoord]
+      sourceShaderTimes[outputIndex]=[triangle.vertices[0].shaderTime,triangle.vertices[1].shaderTime,triangle.vertices[2].shaderTime];outputIndex=outputIndex+1
   end for
   normalNoise=void;if (stage.tcGen=="environment" or stage.alphaGen=="lightingspecular") and hasDeform(material.deforms,"normal") then normalNoise=rendererNoise.create() end if
   vertexCache=void;if not hasDeform(material.deforms,"autosprite") and not hasDeform(material.deforms,"autosprite2") then vertexCache=createVertexCache(sourceIndexes) end if
-  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceLights,sourceColors,stage,material.textureIndex,material.deforms,normalNoise,vertexCache,0,primary,depthEqual,material.sort,material.polygonOffset)
+  firstStage=void;if len(material.stages)>0 then firstStage=material.stages[0] end if
+  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceLights,sourceColors,sourceEntityColors,sourceEntityTexCoords,sourceShaderTimes,[],materials.fogAdjustment(firstStage,stage),stage,material.textureIndex,material.deforms,normalNoise,vertexCache,0,primary,depthEqual,material.sort,material.polygonOffset,material.timeOffset,material.clampTime)
 end function
 function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
   triangles=[];for each triangle in renderData.triangles if triangle.textureIndex==material.textureIndex and not isSky(triangle,flags) then triangles=triangles+[triangle] end if end for
@@ -208,7 +212,7 @@ function refreshStagePass(pass,renderData)
     end if
     if pass.commands is error then return pass.commands end if
     for corner=0 to 2
-      vertex=triangle.vertices[corner];pass.sourcePositions[outputIndex][corner]=vertex.position;pass.sourceIndexes[outputIndex][corner]=vertex.sourceIndex;pass.sourceDeformUvs[outputIndex][corner]=vertex.baseUV;pass.sourceNormals[outputIndex][corner]=vertex.normal;pass.sourceLights[outputIndex][corner]=vertexLight(vertex);pass.sourceColors[outputIndex][corner]=vertex.color
+      vertex=triangle.vertices[corner];pass.sourcePositions[outputIndex][corner]=vertex.position;pass.sourceIndexes[outputIndex][corner]=vertex.sourceIndex;pass.sourceDeformUvs[outputIndex][corner]=vertex.baseUV;pass.sourceNormals[outputIndex][corner]=vertex.normal;pass.sourceLights[outputIndex][corner]=vertexLight(vertex);pass.sourceColors[outputIndex][corner]=vertex.color;pass.sourceEntityColors[outputIndex][corner]=vertex.entityColor;pass.sourceEntityTexCoords[outputIndex][corner]=vertex.entityTexCoord;pass.sourceShaderTimes[outputIndex][corner]=vertex.shaderTime
     end for
     outputIndex=outputIndex+1
   end for
@@ -236,17 +240,30 @@ function refreshMaterials(batch,renderData,catalog,skyTextureFlags)
   emitted=batch.base.count
   for each pass in batch.passes
     if pass.textureIndex<0 or pass.textureIndex>=len(counts) or counts[pass.textureIndex]!=len(pass.sourcePositions) then return false end if
+    // A same-name R_RemapShader can leave the retained stage topology intact
+    // while changing only the shader object's timeOffset.  Keep that mutable
+    // RB_BeginSurface clock on the cached pass instead of requiring a rebuild.
+    material=lookup[pass.textureIndex];if material==void then return false end if;pass.timeOffset=material.timeOffset;pass.clampTime=material.clampTime
     refreshed=refreshStagePass(pass,renderData);if refreshed is error then return refreshed end if;if not refreshed then return false end if;emitted=emitted+pass.commands.count
   end for
   batch.sourceTriangles=len(renderData.triangles);batch.drawableTriangles=drawable;batch.emittedTriangles=emitted;batch.skippedSky=skippedSky;return batch
 end function
 function attachFog(batch,renderData,catalog)
   if batch==void or renderData==void or catalog==void then return fail("fog attachment requires batch, render data and catalog") end if
-  fogBatch=playableFog.build(renderData,catalog);if fogBatch is error then return fogBatch end if;batch.fogBatch=fogBatch;batch.fogCatalog=catalog;return fogBatch.commands.count
+  fogBatch=playableFog.build(renderData,catalog);if fogBatch is error then return fogBatch end if;batch.fogBatch=fogBatch;batch.fogCatalog=catalog
+  for each pass in batch.passes
+    pass.fogIndexes=[]
+    for each triangle in renderData.triangles if triangle.textureIndex==pass.textureIndex and len(pass.fogIndexes)<pass.commands.count then pass.fogIndexes=pass.fogIndexes+[triangle.fogIndex] end if end for
+  end for
+  return fogBatch.commands.count
 end function
 function attachDynamicLights(batch,renderData,receiveFlags,catalog)
   if batch==void or renderData==void or catalog==void then return fail("dynamic-light attachment requires batch, render data and catalog") end if
   lightBatch=dynamicLights.build(renderData,receiveFlags);if lightBatch is error then return lightBatch end if;batch.dlightBatch=lightBatch;batch.dlightCatalog=catalog;return len(lightBatch.triangles)
+end function
+function attachDynamicLightsOriented(batch,renderData,receiveFlags,catalog,origins,axes,bounds)
+  if batch==void or renderData==void or catalog==void then return fail("oriented dynamic-light attachment requires batch, render data and catalog") end if
+  lightBatch=dynamicLights.buildOriented(renderData,receiveFlags,origins,axes,bounds);if lightBatch is error then return lightBatch end if;batch.dlightBatch=lightBatch;batch.dlightCatalog=catalog;return len(lightBatch.triangles)
 end function
 
 function identityAffine() return UvAffine(1.0,0.0,0.0,1.0,0.0,0.0) end function
@@ -268,6 +285,7 @@ function affineFor(stage,nowMilliseconds)
 end function
 function applyAffine(transform,uv) return [uv[0]*transform.m00+uv[1]*transform.m01+transform.tx,uv[0]*transform.m10+uv[1]*transform.m11+transform.ty] end function
 function hasTurbulence(stage) for each mod in stage.uvMods if mod.kind=="turb" then return true end if end for;return false end function
+function hasEntityTranslate(stage) for each mod in stage.uvMods if mod.kind=="entitytranslate" then return true end if end for;return false end function
 function hasDeform(deforms,kind) for each deform in deforms if deform.kind==kind then return true end if end for;return false end function
 function containsPosition(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
 
@@ -367,27 +385,33 @@ function specularAlpha(position,normal,viewOrigin)
   viewer=[numeric.fsub(viewOrigin[0],position[0]),numeric.fsub(viewOrigin[1],position[1]),numeric.fsub(viewOrigin[2],position[2])];viewScale=qmath.Q_rsqrt(qmath.DotProduct(viewer,viewer));value=numeric.fmul(qmath.DotProduct(reflected,viewer),viewScale)
   if value<0.0 then return 0 end if;value=numeric.fmul(value,value);value=numeric.fmul(value,value);result=numeric.trunc32(numeric.fmul(value,255.0));if result>255 then result=255 end if;return result
 end function
-function updatePassAxes(pass,viewOrigin,leftDir,upDir,nowMilliseconds)
-  slot=materials.slotAt(pass.stage,nowMilliseconds);transform=affineFor(pass.stage,nowMilliseconds);turbulent=hasTurbulence(pass.stage);autosprite=hasDeform(pass.deforms,"autosprite");autosprite2=hasDeform(pass.deforms,"autosprite2");quad=void;quad2=void
+function updatePassAxesFog(pass,viewOrigin,leftDir,upDir,nowMilliseconds,fogCatalog)
+  slot=materials.slotAt(pass.stage,nowMilliseconds);transform=affineFor(pass.stage,nowMilliseconds);turbulent=hasTurbulence(pass.stage);entityTranslate=hasEntityTranslate(pass.stage);autosprite=hasDeform(pass.deforms,"autosprite");autosprite2=hasDeform(pass.deforms,"autosprite2");quad=void;quad2=void
   cacheEpoch=0;if pass.vertexCache!=void then pass.cacheSerial=pass.cacheSerial+1;cacheEpoch=pass.cacheSerial end if
   forward=[leftDir[1]*upDir[2]-leftDir[2]*upDir[1],leftDir[2]*upDir[0]-leftDir[0]*upDir[2],leftDir[0]*upDir[1]-leftDir[1]*upDir[0]];spriteNormal=[0.0-forward[0],0.0-forward[1],0.0-forward[2]]
   for triangleIndex=0 to pass.commands.count-1
+    triangleShaderTime=pass.sourceShaderTimes[triangleIndex][0];triangleNow=materials.shaderMilliseconds(nowMilliseconds,triangleShaderTime,pass.timeOffset,pass.clampTime);slot=materials.slotAt(pass.stage,triangleNow)
     offset=triangleIndex*window.TRIANGLE_BATCH_RECORD_BYTES;if not pass.stage.bspLightmap then window.writeBatchI32(pass.commands.data,offset,slot) end if
     if triangleIndex%2==0 then if autosprite then quad=autospriteQuad(pass,triangleIndex,leftDir,upDir) else if autosprite2 then quad2=autosprite2Quad(pass,triangleIndex,forward) end if end if
     for vertex=0 to 2
-      sourcePosition=pass.sourcePositions[triangleIndex][vertex];sourceUv=pass.sourceUvs[triangleIndex][vertex];sourceNormal=pass.sourceNormals[triangleIndex][vertex];vertexColor=pass.sourceColors[triangleIndex][vertex]
-      if autosprite and quad!=void then sourcePosition=quad[autospriteCorner(triangleIndex,vertex)];sourceUv=autospriteUV(triangleIndex,vertex);sourceNormal=spriteNormal;vertexColor=pass.sourceColors[triangleIndex-triangleIndex%2][0] end if
+      sourcePosition=pass.sourcePositions[triangleIndex][vertex];sourceUv=pass.sourceUvs[triangleIndex][vertex];sourceNormal=pass.sourceNormals[triangleIndex][vertex];vertexColor=pass.sourceColors[triangleIndex][vertex];entityColor=pass.sourceEntityColors[triangleIndex][vertex];entityTexCoord=pass.sourceEntityTexCoords[triangleIndex][vertex];shaderTime=pass.sourceShaderTimes[triangleIndex][vertex]
+      if autosprite and quad!=void then sourcePosition=quad[autospriteCorner(triangleIndex,vertex)];sourceUv=autospriteUV(triangleIndex,vertex);sourceNormal=spriteNormal;vertexColor=pass.sourceColors[triangleIndex-triangleIndex%2][0];entityColor=pass.sourceEntityColors[triangleIndex-triangleIndex%2][0];entityTexCoord=pass.sourceEntityTexCoords[triangleIndex-triangleIndex%2][0];shaderTime=pass.sourceShaderTimes[triangleIndex-triangleIndex%2][0] end if
       if autosprite2 and quad2!=void then sourcePosition=quad2[1][pass.sourceIndexes[triangleIndex][vertex]-quad2[0]] end if
       position=sourcePosition;uv=[0.0,0.0];stageColor=[255,255,255,255];cacheSlot=-1;if pass.vertexCache!=void then cacheSlot=pass.vertexCache.slots[triangleIndex][vertex] end if
       if cacheSlot>=0 and pass.vertexCache.frames[cacheSlot]==cacheEpoch then position=pass.vertexCache.positions[cacheSlot];sourceNormal=pass.vertexCache.normals[cacheSlot];uv=pass.vertexCache.uvs[cacheSlot];stageColor=pass.vertexCache.colors[cacheSlot]
       else
-        position=deformedPosition(sourcePosition,sourceNormal,pass.sourceDeformUvs[triangleIndex][vertex],pass.deforms,nowMilliseconds)
-        if pass.stage.tcGen=="environment" or pass.stage.alphaGen=="lightingspecular" then sourceNormal=deformedNormal(position,sourceNormal,pass.deforms,nowMilliseconds,pass.normalNoise) end if
+        entityNow=materials.shaderMilliseconds(nowMilliseconds,shaderTime,pass.timeOffset,pass.clampTime)
+        position=deformedPosition(sourcePosition,sourceNormal,pass.sourceDeformUvs[triangleIndex][vertex],pass.deforms,entityNow)
+        if pass.stage.tcGen=="environment" or pass.stage.alphaGen=="lightingspecular" then sourceNormal=deformedNormal(position,sourceNormal,pass.deforms,entityNow,pass.normalNoise) end if
         if pass.stage.tcGen=="environment" then sourceUv=materials.environmentUV(position,sourceNormal,viewOrigin) else if pass.stage.tcGen=="vector" then sourceUv=materials.vectorUV(pass.stage,position) end if
-        if turbulent then uv=materials.transformUVAt(pass.stage,sourceUv,position,nowMilliseconds) else uv=applyAffine(transform,sourceUv) end if
-        stageColor=materials.stageColorAt(pass.stage,vertexColor,position,viewOrigin,nowMilliseconds)
+        if turbulent or entityTranslate or shaderTime!=0.0 or pass.timeOffset!=0.0 or pass.clampTime!=0.0 then uv=materials.transformUVEntityAt(pass.stage,sourceUv,position,entityTexCoord,0.0,entityNow) else uv=applyAffine(transform,sourceUv) end if
+        stageColor=materials.stageColorAtEntity(pass.stage,vertexColor,entityColor,position,viewOrigin,entityNow)
         if pass.stage.alphaGen=="lightingspecular" then stageColor[3]=specularAlpha(position,sourceNormal,viewOrigin) end if
         if cacheSlot>=0 then pass.vertexCache.frames[cacheSlot]=cacheEpoch;pass.vertexCache.positions[cacheSlot]=position;pass.vertexCache.normals[cacheSlot]=sourceNormal;pass.vertexCache.uvs[cacheSlot]=uv;pass.vertexCache.colors[cacheSlot]=stageColor end if
+      end if
+      if pass.fogAdjustment!="none" and fogCatalog!=void and triangleIndex<len(pass.fogIndexes) then
+        fogIndex=pass.fogIndexes[triangleIndex]
+        if fogIndex>0 and fogIndex<len(fogCatalog.fogs) then stageColor=materials.modulateForFog(stageColor,playableFog.density(fogCatalog.fogs[fogIndex],position,viewOrigin,forward),pass.fogAdjustment) end if
       end if
       positionOffset=offset+20+vertex*32;window.writeBatchF32(pass.commands.data,positionOffset,position[0]);window.writeBatchF32(pass.commands.data,positionOffset+4,position[1]);window.writeBatchF32(pass.commands.data,positionOffset+8,position[2])
       uvOffset=offset+32+vertex*32;window.writeBatchF32(pass.commands.data,uvOffset,uv[0]);window.writeBatchF32(pass.commands.data,uvOffset+4,uv[1])
@@ -396,6 +420,7 @@ function updatePassAxes(pass,viewOrigin,leftDir,upDir,nowMilliseconds)
   end for
   return slot
 end function
+function updatePassAxes(pass,viewOrigin,leftDir,upDir,nowMilliseconds) return updatePassAxesFog(pass,viewOrigin,leftDir,upDir,nowMilliseconds,void) end function
 function updatePassView(pass,viewOrigin,nowMilliseconds) return updatePassAxes(pass,viewOrigin,[0.0,1.0,0.0],[0.0,0.0,1.0],nowMilliseconds) end function
 function updatePass(pass,nowMilliseconds) return updatePassView(pass,[0.0,0.0,0.0],nowMilliseconds) end function
 function drawMaterialsLitTarget(batch,projection,nowMilliseconds,lights,area)
@@ -405,7 +430,7 @@ function drawMaterialsLitTarget(batch,projection,nowMilliseconds,lights,area)
   lightsDrawn=false
   for each pass in batch.passes
     if not lightsDrawn and pass.sort>3.0 then if batch.dlightBatch!=void and lights!=void and len(lights)>0 then if area==void then value=dynamicLights.draw(batch.dlightBatch,batch.dlightCatalog,lights,projection) else value=dynamicLights.drawViewport(batch.dlightBatch,batch.dlightCatalog,lights,projection,area) end if;if value is error then return value end if;drawn=drawn+value end if;lightsDrawn=true end if
-    updatePassAxes(pass,projection.position,[0.0-projection.right[0],0.0-projection.right[1],0.0-projection.right[2]],projection.up,nowMilliseconds);multitexture.setState(pass.stage.blend,pass.depthEqual,pass.stage.depthWrite);multitexture.setAlphaTest(pass.stage.alphaTest);multitexture.setTextureClamp(pass.stage.clampTexture);multitexture.setPolygonOffset(pass.polygonOffset)
+    updatePassAxesFog(pass,projection.position,[0.0-projection.right[0],0.0-projection.right[1],0.0-projection.right[2]],projection.up,nowMilliseconds,batch.fogCatalog);multitexture.setState(pass.stage.blend,pass.depthEqual,pass.stage.depthWrite);multitexture.setAlphaTest(pass.stage.alphaTest);multitexture.setTextureClamp(pass.stage.clampTexture);multitexture.setPolygonOffset(pass.polygonOffset)
     if area==void then value=window.submitWorldTriangleBatch(pass.commands,projection) else value=window.submitWorldTriangleBatchViewport(pass.commands,projection,area) end if;if value is error then return value end if;drawn=drawn+value
   end for
   if not lightsDrawn and batch.dlightBatch!=void and lights!=void and len(lights)>0 then if area==void then value=dynamicLights.draw(batch.dlightBatch,batch.dlightCatalog,lights,projection) else value=dynamicLights.drawViewport(batch.dlightBatch,batch.dlightCatalog,lights,projection,area) end if;if value is error then return value end if;drawn=drawn+value end if

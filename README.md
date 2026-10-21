@@ -10,6 +10,11 @@ dynamischer Entity-Kollision, Bewegungsbahnen, Sprungpad-Reaktionen und
 dem vollständigen baseq3-Pmove-Befehlszyklus, serverseitigen Item-Pickups,
 CTF-Flaggenabläufen, Tournament-/Warmup-Steuerung, Vote-Aufrufen/Stimmabgabe/Auflösung, Teamoverlay,
 Passwortstatus, Engine-/Spielmodul-Cvar-Aktualisierung, Namen/Userinfo/Teamwahl,
+originalgetreuer `q3config.cfg`-Persistenz samt `writeconfig` im produktiven
+Engine-Frame und einem zustandsbehafteten UI-Serverbrowser mit
+Connectionless-Info-/Status-/Masterlisten-Ingress, exakter
+`servercache.dat`-Persistenz und ausgehendem Query-Zustandsautomaten mit
+produktiver Windows-DNS-/UDP-Anbindung,
 `ClientConnect` und Sitzungsdaten, Team-/Zuschauerwechsel, Follow-Befehlen, Duell-Warteschlange, `ClientDisconnect`, `ClientBegin`, `ClientSpawn`,
 `ClientThink`, `ClientEndFrame`, Intermission-/Levelende-Steuerung und vollständiger
 Baseq3-Client-Befehlsverteilung mit Chat/Voice/Cheats/Spielkommandos sowie
@@ -29,9 +34,53 @@ LTG-/NBG-Itemwahl, Kartenorte, Waffenwahl, Fuzzy-Evolution, Retail-Synonyme und
 vollständige Initial-/Reply-Chatdaten laufen bereits im Originalbot-Pfad. Sarge
 durchläuft auf q3dm1 512 originale Bot-Frames ohne Trapfehler und reicht einen
 echten Bewegungs-Usercmd an den Server weiter. Alle 15 im Release verwendeten
-Baseq3-Travelhandler sind portiert. Reverse-Reachabilities, Area-Reisezeitmatrizen
-und Portal-Maximalzeiten sind vorhanden; die dynamische Original-Cachepropagation
-ist noch in Arbeit.
+Baseq3-Travelhandler sind portiert. Zwei echte UDP-Clients absolvieren vor der gemeinsamen Match-Schleife den vollständigen Challenge-/Connect-Handshake. Reverse-Reachabilities, Area-Reisezeitmatrizen,
+Portal-Maximalzeiten sowie die zielzentrierte Area- und Portal-Cachepropagation
+sind vorhanden. Der produktive Botlib-Pfad lädt und speichert nun validierte `.rcd`-v2-
+Routingcaches mit Originalidentität, Area-/Cluster-CRC und zeigerfreiem Nutzinhalt.
+Offen bleibt die noch kompaktere interne Reachability-Ablage.
+
+Der aktuelle Retail-Gesamtlauf vom 21. Oktober 2026 besteht alle **266 Gates**
+von `python scripts/verify.py --data-root D:/Quake3`. Der geprüfte
+`build/MiniQuake3.exe` hat SHA-256
+`e3a167d14509c9493a15c4566b3e62932d712091a56e732181d454c584dfa6ea`;
+Details und verbleibende Paritätslücken stehen im
+[Prüfaudit](docs/PARITY_AUDIT.md).
+
+Der lokale Original-QVM-Pfad teilt inzwischen den 256-Tasten-Zustand, Catcher
+und Bindings zwischen `ui.qvm` und `cgame.qvm`. Die vier Baseq3-Cgame-Traps
+`KEY_ISDOWN`, `KEY_GETCATCHER`, `KEY_SETCATCHER` und `KEY_GETKEY` laufen damit
+über denselben Zustand, den die native UI-Eingabe aktualisiert.
+`CG_SETUSERCMDVALUE` steuert im produktiven QVM-Spielpfad außerdem das
+Usercmd-Waffenbyte und die Cgame-Mausempfindlichkeit. MD3-Entityframes werden
+vor der Interpolation wie in Baseq3 gewrappt oder repariert. Registrierte
+Mono-Soundeffekte verwenden Baseq3s exakten 22050-Hz-Resampler.
+Der produktive Client erzeugt und überträgt nun außerdem Baseq3-kompatible
+`CL_SendCmd`-Pakete. Sieben echte Localhost-UDP-Clientframes führen diese
+Pakete inzwischen durch `SV_UserMove`, Reliable Commands und Full-/Delta-Snapshots
+bis zur clientseitigen Snapshot-Promotion. Der Pfad erholt sich dabei von
+verlorenen und duplizierten Client- und Serverpaketen über `packetdup`, ältere
+Delta-Basen und `cl_nodelta`. Zwei gleichzeitige Clients teilen anschließend
+einen echten Server-Ingress, bewahren unabhängige Sequenzen und Acks und sehen
+die jeweils andere, clientseitig geparste Spielerentity. Ein 384-Frame-Lauf
+liefert 768 Usercmds trotz gezieltem Paketverlust genau einmal aus, rekonstruiert
+Delta-Snapshots über erhaltene Basen und führt die Reliable-Ringe mehrfach über
+ihre Grenze; `CL_Frame`- und `SV_Frame`-Timeoutentscheidungen bleiben dabei mit
+den UDP-Zuständen synchron. Snapshot-Sequenzen
+erreichen nun außerdem den
+produktiven `CG_GETSERVERCOMMAND`-Pfad der Retail-Cgame einschließlich großer
+Configstrings. Der QVM-Vorschaupfad führt jeden Frame über die originale
+Snapshot-/Drift-/`cl_timeNudge`-Zeitlogik. QVM-Rail-Cores, Rail-Ringe,
+Lightning und `RT_BEAM` verwenden echte Originalsemantik; Portalflächen rendern
+Spiegel- oder Remotekamera-Welt samt Cgame-Entities, Ziel-Clipplane und
+Portal-vor-Hauptansicht-Komposition. One-shots, gruppierte Loops, Musik und RoQ-Rohsamples
+laufen gemeinsam durch Baseq3s 24.8-Integer-Paintbuffer, räumliche
+Links-/Rechts-Abmischung, 96-Kanal-Auswahl, geschwindigkeitsabhängigen Loop-Doppler und signed-16-Sättigung. Der Videoton ersetzt dabei nicht länger ganze Mixerblöcke,
+sondern wird über den originalen 16.384-Frame-`S_RawSamples`-Ring zusammen mit
+Musik und Spieleffekten ausgegeben.
+Neben
+`cvar_restart` sind `toggle`, `set`, `sets`, `setu`, `seta`, `reset`, `cvarlist`
+und direkte Cvar-Abfragen/-Zuweisungen an den Engine-Commandpuffer gebunden.
 
 ## Bauen und prüfen
 
@@ -59,13 +108,29 @@ Double-click `Play-MiniQuake3.cmd`, or run:
 
 The current preview opens a native Windows window and renders `q3dm1` with a
 MiniLang-driven software rasterizer, depth buffering, BSP lightmaps and full
-RGB vertex lighting. Lightmapped surfaces use their decoded retail lightmap once,
-without the former extra grayscale vertex modulation. BSP PVS, frustum and backface selection now draw relevant surfaces
-from the complete tessellated map instead of a fixed first-1,000 prefix. Press
+RGB vertex lighting. Lightmaps and BSP light-grid samples pass through Baseq3's
+`R_ColorShiftLightingBytes` overbright conversion. Because the software renderer
+has no hardware gamma ramp, the default map shift is two bits; bright pixels use
+the original chromatic normalization instead of clipping to white. Lightmapped
+surfaces use their decoded retail lightmap once, without the former extra
+grayscale vertex modulation. BSP `MST_FLARE` lights now use the retail
+`flareShader` image, real depth-buffer visibility, original normal attenuation,
+screen-size formula and linear fade in portal and main views. Baseq3's archived
+`r_flares` default remains disabled, and no substitute image is drawn when the
+retail flare asset is unavailable. BSP PVS, frustum and backface selection now draw relevant surfaces
+from the complete tessellated map instead of a fixed first-1,000 prefix. The
+native window is created before the PK3 and BSP are parsed, shows named 2--100
+percent loading phases, and runs its Windows message loop on a dedicated UI
+thread. It therefore appears immediately and remains movable, repaintable and
+closable while MiniLang decodes the retail assets. A separate presented surface
+keeps asynchronous paint messages from racing the software rasterizer. Press
 Enter in the Baseq3 artwork menu, use WASD and the mouse to move/look,
 and Space to jump. Quake-style gravity, friction, ground/air acceleration,
 sliding and 18-unit stair steps use the real BSP brush and patch collision world.
-The renderer tessellates curved BSP patches, resolves BSP shader names,
+The renderer tessellates curved BSP patches with Baseq3's perpendicular-error
+test, repeated de Casteljau subdivision, 65-point axis limit, collinear-grid
+reduction and Baseq3's wrapped/degenerate-neighbour normal reconstruction; the
+visibility budget uses the same resulting triangle count. It resolves BSP shader names,
 reads shader scripts, decodes TGA/JPEG assets and multiplies the base image with
 the BSP lightmap. Enter also plays an original WAV loaded from `pak0.pk3`;
 Escape returns to the menu and a second Escape quits. Map skies are selected
@@ -83,12 +148,28 @@ and screen-space UV gradients select a level for minified triangles. Parsed
 `nomipmaps` shaders plus the HUD, menu and match font stay on level 0. Retained
 passes carry perspective-correct RGBA vertex colours
 into the native rasterizer and evaluate `rgbGen vertex`, `exactVertex`,
-`oneMinusVertex`, `const` and `wave` together with the corresponding `alphaGen`
-modes. Wave generators use the original 1,024-entry phase lookup and byte
+`oneMinusVertex`, `entity`, `oneMinusEntity`, `const` and `wave` together with the corresponding `alphaGen`
+modes. Their final RGB-to-alpha evaluation now follows Baseq3's complete
+`ComputeColors` ordering, including identity-light scaling and the special
+vertex-alpha preservation rule. Blended-only shaders now also apply Baseq3's
+per-vertex fog adjustment before the final fog pass: additive and impact-mark
+stages fade RGB, strict alpha stages fade alpha, and premultiplied-alpha stages
+fade RGBA. Wave generators use the original 1,024-entry phase lookup and byte
 quantization. `deformVertexes wave`, `move` and `bulge` animate retained BSP
 vertices using Quake's waveform, base-UV and normal rules. Ordered `tcMod transform`
-matrices now preserve the scaled and translated water layers used by
-the retail maps. Remaining shader generators/deforms and the complete QVM match
+matrices preserve the scaled and translated water layers used by
+the retail maps. Each QVM entity's `shaderTime` now shifts one shared retained
+renderer clock through geometry refresh and portal clipping. Animated image
+selection, RGB/alpha waves, vertex and normal deformations, ordinary time-based
+`tcMod` operations and `entityTranslate` therefore start at the entity's Baseq3
+phase; the latter also consumes `shaderTexCoord`. Runtime shader remaps now carry
+their `timeOffset` into already registered QVM materials, and parsed `clampTime`
+freezes animated images, waves, deformations, normals and UV transforms at the
+same boundary as `RB_BeginSurface`; changing only the offset of a stable shader
+handle also updates an already retained scene pass without rebuilding its
+geometry. The original QVM HUD/UI `DrawStretchPic`
+path uses that clock as well, including runtime remap replacement textures,
+animated frames, colour waves and UV transforms. Remaining shader generators/deforms and the complete QVM match
 loop remain in work. The preview now loads
 18 item entities from q3dm1, simulates pickup/respawn, updates a Baseq3-style
 HUD from the original number, icon, portrait, crosshair and medal artwork, and fires
@@ -108,7 +189,11 @@ original camera-facing sprite. Source-anchored Rocket/Grenade smoke, Plasma
 particles and projectile light overlays accompany them; these RGB lights
 illuminate players, pickups, projectiles and the first-person weapon. The audio
 boundary now mixes up to 16 effects while q3dm1's looped fire ambience streams with
-source-relative attenuation and stereo panning.
+source-relative attenuation and stereo panning. QVM background music preserves
+stereo channels, plays the requested intro once and then repeats the separate
+loop track as `S_StartBackgroundTrack` does. RoQ audio now enters the exact
+Baseq3 raw-sample conversion and resampling ring before the shared integer
+paint pass, so cinematics no longer mute queued game sounds for an output block.
 Five local targets
 come from the remaining q3dm1 deathmatch spawns; they trace BSP line of sight,
 patrol, chase, strafe, attack, take damage, die and respawn. Their animated,
@@ -145,6 +230,35 @@ in recent smokes with the two-layer sky and full muzzle asset catalog
 base batch and submits the visible animated and blended material passes alongside
 it; indexed MD3 surfaces transform each shared
 vertex once while preserving per-frame pickup bobbing and rotation.
+The original-QVM renderer now carries `refEntity_t.renderfx` through MD3,
+sprite, beam, rail and lightning expansion. `RF_DEPTHHACK` geometry is retained
+in its own native material batch and submitted with Baseq3's compressed 0..0.3
+depth range, so the cgame QVM's first-person weapon uses the same protected
+depth interval as the original renderer. QVM models carrying
+`RF_SHADOW_PLANE` now also follow `RB_ProjectionShadowDeform`: their animated
+vertices project along the sampled entity-light direction onto the submitted
+`shadowPlane`, including Baseq3's shallow-light clamp, and draw as a
+polygon-offset translucent decal.
+Registered `*N` BSP models are no longer discarded by the QVM renderer.
+Doors, platforms and other brush entities retain their exact submodel surface
+range, entity origin/axis transform, shader name, vertex colour, base UV and
+lightmap UV/index through the native retained batch. The preserved q3dm12 map
+currently exercises 63 inline models with 200 surfaces and 425 lightmapped
+triangles. Their BSP fog indexes now also feed the same final fog overlay and
+per-stage fog colour adjustment as static world geometry, including refreshed
+moving brush positions and portal views. Main and portal views construct
+Baseq3's four FOV side planes and reject transformed inline-model bounds that
+are completely outside them before any surface expansion or batching. Opaque
+brush surfaces without `SURF_NODLIGHT` or `SURF_SKY` now also enter the retained
+projected dynamic-light pass. Moving and rotated brush models preserve their
+entity origin and axes, so each world-space light is projected in the same local
+coordinate system as Baseq3's `R_DlightBmodel`. Its radius-expanded local model
+bounds reject unrelated lights before triangle projection; ordinary MD3 entity
+triangles remain on their separate light-grid path.
+For `RDF_NOWORLDMODEL` scenes, including menu/player-model views, QVM entities
+now receive Baseq3's 150-unit ambient and directed fallback, the unconditional
+32-unit minimum-light add, the normalized default sun direction and any active
+dynamic lights instead of appearing unlit or fullbright.
 Enemy movement uses a player-sized BSP collision hull with wall slide, steps and ground
 binding. Attacks now use the stock 100 ms Machinegun interval and instantaneous
 7-damage hitscan. A final BSP trace shields the player behind walls and drives
@@ -179,7 +293,7 @@ blending and texture animation; the retail smoke rejects any untextured triangle
 The third runtime slot now boots the original `ui.qvm`,
 reads the built-in arena/bot data, lists add-ons, configs and player assets from
 the PK3, keeps its key catcher,
-and submits the stock main menu into the same 2D queue. The retail integration
+and submits the stock main menu into the same 2D queue. Its host now supplies the exact 3,084-byte `uiClientState_t` and follows Baseq3 screen transitions for connect, challenge, loading, active and cinematic states. The retail integration
 test also observes 58 cgame 2D commands, another 207 UI commands and 26 decoded
 sound actions. This path uses only QVM-created gameplay entities;
 the five deterministic opponents remain confined to the older graphical preview
@@ -195,10 +309,13 @@ dynamic lights, while MD3 entities use interpolated
 frames, skin-resolved multi-pass materials, dynamic lights and BSP light-grid
 vertex lighting. The cgame 2D stream draws the original textured HUD after 3D.
 Its registered start, local, entity, listener, loop and music sound commands are
-resolved to retail WAV files, spatially mixed into 16-bit stereo PCM and fed to
+resolved to retail WAV files, spatialized with Baseq3's original listener-axis,
+full-volume and distance-falloff rules, mixed into 16-bit stereo PCM and fed to
 the queued WinMM output. Escape opens the interactive original ingame menu;
 native key transitions, characters and mouse motion are delivered through
-`KEYCATCH_UI`, and the UI's 2D commands share the cgame queue. Original
+`KEYCATCH_UI`, and the UI's 2D commands share the cgame queue. All Baseq3
+active-menu states (main, ingame, CD errors, team and postgame) and both
+connection-screen overlay modes are forwarded to the unchanged UI VM. Original
 `R_MarkFragments` calls project impact decals against planar BSP surfaces and
 patches. The native window matches the advertised 1280x720 glconfig and reports
 smoothed FPS in its title. Original `RegisterFont` data and the UI/cgame `PC_*`

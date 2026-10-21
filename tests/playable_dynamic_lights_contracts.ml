@@ -19,5 +19,11 @@ function main(args)
   batch=lights.build(RenderData([Triangle([a,b,c],1),Triangle([farA,farB,farC],1),Triangle([a,b,c],2)]),[false,true,false]);count=count+require(len(batch.triangles)==2,"receive flags exclude sky, translucent and nodlight surfaces")
   updated=lights.update(batch,catalog,light);count=count+require(updated==1 and n.readI32(batch.commands.data,0)==320,"shared clip bits reject fully outside triangles")
   count=count+require(near(n.bitsFloat(n.readU32(batch.commands.data,32)),0.5) and near(n.bitsFloat(n.readU32(batch.commands.data,36)),0.5) and batch.commands.data[116]==255 and batch.commands.data[117]==127,"retained command carries projected UV and light color")
+  axis=[[0.0,1.0,0.0],[-1.0,0.0,0.0],[0.0,0.0,1.0]];origin=[10.0,20.0,0.0]
+  local=lights.localPoint([7.0,22.0,0.0],origin,axis);count=count+require(local==[2.0,3.0,0.0],"R_DlightBmodel inverse orientation transforms world lights into brush coordinates")
+  bounds=[[-1.0,-1.0,-1.0],[1.0,1.0,1.0]];edgeLight=lights.Light([10.0,22.0,0.0],1.0,[1.0,1.0,1.0],false);count=count+require(lights.affectsBounds(edgeLight,origin,axis,bounds),"R_DlightBmodel includes a light exactly one radius beyond local bounds")
+  outsideLight=lights.Light([10.0,22.01,0.0],1.0,[1.0,1.0,1.0],false);count=count+require(not lights.affectsBounds(outsideLight,origin,axis,bounds),"R_DlightBmodel rejects a light beyond expanded local bounds")
+  orientedData=RenderData([Triangle([Vertex([10.0,20.0,0.0]),Vertex([10.0,21.0,0.0]),Vertex([9.0,20.0,0.0])],1)]);oriented=lights.buildOriented(orientedData,[false,true],[origin],[axis],[bounds]);if oriented is error then return oriented end if
+  orientedCount=lights.update(oriented,catalog,lights.Light([7.0,22.0,0.0],10.0,[1.0,1.0,1.0],false));ou=n.bitsFloat(n.readU32(oriented.commands.data,32));ov=n.bitsFloat(n.readU32(oriented.commands.data,36));count=count+require(orientedCount==1 and near(ou,0.7) and near(ov,0.8),"rotated brush dlight projection uses local S/T while retaining world vertices")
   print("PASS: "+str(count)+" playable dynamic-light contracts");return 0
 end function

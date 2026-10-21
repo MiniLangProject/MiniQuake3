@@ -6,6 +6,7 @@ import mq3.compat.numeric as n
 
 struct Machine data mask end struct
 struct Context events token end struct
+struct ClockSample epoch data end struct
 
 function req(value,label) if not value then return error(499,"qagame syscall: "+label) end if;return 1 end function
 function put(vm,at,text) data=bytes(text);copyBytes(vm.data,at,data,0,len(data));vm.data[at+len(data)]=0;return at end function
@@ -31,6 +32,11 @@ function alloc(c) event(c,"alloc");return 7 end function
 function free(c,client) event(c,"free:"+str(client)) end function
 function token(c) if c.token==0 then c.token=1;return game.TokenResult(true,"{\"classname\"\"worldspawn\"") end if;return game.TokenResult(false,"") end function
 function tick(c) return 99 end function
+function files(c,path,extension) event(c,"files:"+path+":"+extension);return ["a.arena","long.arena","z.arena"] end function
+function polygon(c,color,points) event(c,"poly:"+str(color)+":"+str(len(points))+":"+str(points[1][2]));return 73 end function
+function deletePolygon(c,id) event(c,"delpoly:"+str(id)) end function
+function wallClock(c) data=bytes(36,0);for index=0 to 8 n.writeU32(data,index*4,100+index) end for;return ClockSample(1700000000,data) end function
+function seek(c,handle,offset,origin) event(c,"seek:"+str(handle)+":"+str(offset)+":"+str(origin));return -2 end function
 
 function fixture()
   vm=Machine(bytes(4096,0),4095);context=Context([],0)
@@ -41,7 +47,8 @@ function fixture()
   host.setUserinfoFn=setUser;host.getServerinfoFn=getServer;host.setBrushModelFn=setBrush
   host.inPvsFn=pvs;host.adjustAreaPortalFn=portal;host.areasConnectedFn=areas
   host.linkEntityFn=hostLink;host.unlinkEntityFn=hostUnlink;host.botAllocateClientFn=alloc
-  host.botFreeClientFn=free;host.entityTokenFn=token
+  host.botFreeClientFn=free;host.entityTokenFn=token;host.fileListFn=files
+  host.debugPolygonCreateFn=polygon;host.debugPolygonDeleteFn=deletePolygon;host.realTimeFn=wallClock;host.seekFn=seek
   return [vm,host,context]
 end function
 
@@ -70,6 +77,19 @@ function main(args)
   invoke(host,vm,base,[35,7]);count=count+req(c.events[12]=="free:7","bot free")
   count=count+req(invoke(host,vm,base,[37,1100,64])==1 and textAt(vm,1100)=="{\"classname\"\"worldspawn\"","entity token")
   count=count+req(invoke(host,vm,base,[37,1100,64])==0 and textAt(vm,1100)=="","entity token EOF")
+  put(vm,1160,"scripts");put(vm,1180,".arena")
+  count=count+req(invoke(host,vm,base,[38,1160,1180,1200,20])==2,"bounded file-list count")
+  count=count+req(decode(slice(vm.data,1200,7))=="a.arena" and vm.data[1207]==0 and decode(slice(vm.data,1208,10))=="long.arena" and vm.data[1218]==0,"NUL-separated file-list output")
+  count=count+req(c.events[13]=="files:scripts:.arena","file-list service arguments")
+  for axis=0 to 5 n.writeU32(vm.data,1300+axis*4,n.floatBits(axis+0.25)) end for
+  count=count+req(invoke(host,vm,base,[39,0x11223344,2,1300])==73,"debug polygon handle")
+  count=count+req(c.events[14]=="poly:287454020:2:5.25","debug polygon vertices")
+  count=count+req(invoke(host,vm,base,[40,73])==0 and c.events[15]=="delpoly:73","debug polygon delete")
+  count=count+req(invoke(host,vm,base,[41,1400])==1700000000 and n.readI32(vm.data,1400)==100 and n.readI32(vm.data,1432)==108,"real time qtime layout")
+  count=count+req(invoke(host,vm,base,[41,0])==1700000000,"real time accepts NULL qtime")
+  n.writeU32(vm.data,1460,n.floatBits(1.6));n.writeU32(vm.data,1464,n.floatBits(-1.6));n.writeU32(vm.data,1468,n.floatBits(2.5))
+  count=count+req(invoke(host,vm,base,[42,1460])==0 and n.bitsFloat(n.readU32(vm.data,1460))==2.0 and n.bitsFloat(n.readU32(vm.data,1464))==-2.0 and n.bitsFloat(n.readU32(vm.data,1468))==2.0,"snap vector")
+  count=count+req(invoke(host,vm,base,[45,12,-50,2])==-2 and c.events[len(c.events)-1]=="seek:12:-50:2","file seek")
 
   count=count+req(try(invoke(host,vm,base,[15,100,-1,64,300,128])) is error,"negative entity count")
   count=count+req(try(invoke(host,vm,base,[15,4000,2,64,300,128])) is error,"entity array span")
@@ -78,6 +98,11 @@ function main(args)
   count=count+req(try(invoke(host,vm,base,[26,4090,1020])) is error,"vector span")
   count=count+req(try(invoke(host,vm,base,[19,5,4090,16])) is error,"output span")
   count=count+req(try(invoke(host,vm,base,[37,1100,-1])) is error,"negative token capacity")
+  count=count+req(try(invoke(host,vm,base,[38,1160,1180,1200,-1])) is error,"negative file-list capacity")
+  count=count+req(try(invoke(host,vm,base,[39,1,-1,1300])) is error,"negative debug-polygon count")
+  count=count+req(try(invoke(host,vm,base,[39,1,2,4090])) is error,"debug-polygon span")
+  count=count+req(try(invoke(host,vm,base,[41,4080])) is error,"qtime output span")
+  noSeek=game.services(host.shared,c);count=count+req(try(invoke(noSeek,vm,base,[45,1,0,0])) is error,"missing seek service")
   count=count+req(try(invoke(host,vm,base,[24])) is error,"unported trace explicit")
   count=count+req(try(invoke(host,vm,base,[36])) is error,"unported usercmd explicit")
   empty=game.services(host.shared,c);count=count+req(try(invoke(empty,vm,base,[16,1,500])) is error,"missing service")

@@ -5,9 +5,12 @@ package mq3.audio.qvm_sound_assets
 
 import mq3.format.pk3 as pk3
 import mq3.audio.wav as wav
+import mq3.audio.snd_mem_resample as sndmem
 import std.string as strings
 
-struct Clip handle path sound end struct
+const EFFECT_OUTPUT_RATE=22050
+
+struct Clip handle path sound compressed end struct
 struct Missing handle path reason end struct
 struct Catalog archive clips missing registered end struct
 
@@ -58,9 +61,18 @@ function decodePlayerPath(archive,handle,path,playerModel)
   if canonical=="" then return fail("empty sound path") end if
   data=try(pk3.read(archive,canonical));if data is error then return fail("missing retail asset "+canonical) end if
   sound=try(decodeRetailWav(data));if sound is error then return fail("invalid WAV "+canonical) end if
-  return Clip(handle,canonical,sound)
+  return Clip(handle,canonical,sound,void)
 end function
 function decodePath(archive,handle,path) return decodePlayerPath(archive,handle,path,"sarge") end function
+
+function normalizeEffect(sound) return sndmem.convert(sound,EFFECT_OUTPUT_RATE) end function
+
+function decodePlayerEffectPath(archive,handle,path,playerModel)
+  decoded=try(decodePlayerPath(archive,handle,path,playerModel));if decoded is error then return decoded end if
+  sound=try(normalizeEffect(decoded.sound));if sound is error then return fail("invalid effect WAV "+decoded.path+": "+str(sound)) end if
+  return Clip(decoded.handle,decoded.path,sound,void)
+end function
+function decodeEffectPath(archive,handle,path) return decodePlayerEffectPath(archive,handle,path,"sarge") end function
 
 function ensurePath(catalog,path)
   if catalog==void then return fail("catalog is void") end if
@@ -75,7 +87,7 @@ function loadForPlayer(archive,assetNames,kinds,playerModel)
   clips=[];missing=[];registered=0
   for index=0 to len(assetNames)-1
     if kinds[index]=="sound" then
-      registered=registered+1;path=canonicalPath(assetNames[index]);decoded=try(decodePlayerPath(archive,index+1,path,playerModel))
+      registered=registered+1;path=canonicalPath(assetNames[index]);decoded=try(decodePlayerEffectPath(archive,index+1,path,playerModel))
       if decoded is error then missing=missing+[Missing(index+1,path,str(decoded))] else clips=clips+[decoded] end if
     end if
   end for

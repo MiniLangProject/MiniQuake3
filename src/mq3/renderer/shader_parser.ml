@@ -170,7 +170,7 @@ function parseTexMod(tokens)
     wave=Wave(nameToGenFunc(tokens[1]),number(tokens[2]),number(tokens[3]),number(tokens[4]),number(tokens[5]))
     return TexMod(kind,[],wave)
   end if
-  values=[];for index=1 to expected-1 values=values+[number(tokens[index])] end for
+  values=[];if expected>1 then for index=1 to expected-1 values=values+[number(tokens[index])] end for end if
   return TexMod(kind,values,blankWave())
 end function
 

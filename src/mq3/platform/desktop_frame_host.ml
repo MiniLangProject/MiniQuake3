@@ -16,7 +16,7 @@ struct Services
   context
 end struct
 
-struct LiveContext ingress frameContext serverFrameFn clientFrameFn end struct
+struct LiveContext ingress frameContext commonFrameFn serverFrameFn clientFrameFn end struct
 struct Runtime
   config services clientSocket serverSocket clientEndpoint serverEndpoint pump
   time frameNumber packetCount active udpStarted
@@ -35,7 +35,12 @@ function liveCleanup(services) return udp.cleanup() end function
 function liveCreatePump(services,clientSocket,serverSocket,capacity)
   return networkIngress.createPump(services.context.ingress,clientSocket,serverSocket,capacity)
 end function
-function liveSetTime(services,time) return networkIngress.setTime(services.context.ingress,time) end function
+function liveSetTime(services,time)
+  // Com_Frame writes archived configuration before entering the platform
+  // event/network loop.  Keep that hook ahead of packet draining.
+  if services.context.commonFrameFn!=void then services.context.commonFrameFn(services.context.frameContext,time) end if
+  return networkIngress.setTime(services.context.ingress,time)
+end function
 function liveDrain(services,pump,budget) return networkPump.drain(pump,budget) end function
 function liveServerFrame(services,time,msec)
   if services.context.serverFrameFn!=void then return services.context.serverFrameFn(services.context.frameContext,time,msec) end if
@@ -48,7 +53,14 @@ end function
 
 function liveServices(ingress,frameContext,serverFrameFn,clientFrameFn)
   if ingress==void then return error(7000,"desktop frame host: missing ingress") end if
-  context=LiveContext(ingress,frameContext,serverFrameFn,clientFrameFn)
+  context=LiveContext(ingress,frameContext,void,serverFrameFn,clientFrameFn)
+  return Services(liveStartup,liveOpen,liveBind,liveClose,liveCleanup,
+    liveCreatePump,liveSetTime,liveDrain,liveServerFrame,liveClientFrame,context)
+end function
+
+function liveServicesWithCommon(ingress,frameContext,commonFrameFn,serverFrameFn,clientFrameFn)
+  if ingress==void or commonFrameFn==void then return error(7000,"desktop frame host: missing common frame") end if
+  context=LiveContext(ingress,frameContext,commonFrameFn,serverFrameFn,clientFrameFn)
   return Services(liveStartup,liveOpen,liveBind,liveClose,liveCleanup,
     liveCreatePump,liveSetTime,liveDrain,liveServerFrame,liveClientFrame,context)
 end function

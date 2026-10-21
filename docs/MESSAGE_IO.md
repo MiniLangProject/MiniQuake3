@@ -105,8 +105,9 @@ des dekodierten EOF bytegenau mit unveränderten Baseq3-Körpern überein. 25
 Verträge prüfen die Orchestrierungs- und Zeitgrenzen.
 
 Der anschließende [Server-Downloadpfad](SERVER_DOWNLOAD.md) verwaltet das
-acht Blöcke große Übertragungsfenster, EOF und Block-Acks. Zwölf direkte
-Originaldatensätze und 19 Verträge sind grün.
+acht Blöcke große Übertragungsfenster, EOF und Block-Acks sowie den vollständigen
+Reliable-Befehlspfad für `download`, `nextdl`, `stopdl` und `donedl`. 15 direkte
+Originaldatensätze und 27 Verträge sind grün.
 
 `src/mq3/client/snapshot_parse.ml` portiert den Gegenpfad aus `CL_DeltaEntity`
 und `CL_ParsePacketEntities`. Der 2048 Einträge große Ring übernimmt unveränderte

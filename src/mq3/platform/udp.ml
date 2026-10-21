@@ -6,6 +6,8 @@ import mq3.compat.numeric as n
 extern function mq3_udp_startup() from "miniquake3_udp.dll" returns i32
 extern function mq3_udp_cleanup() from "miniquake3_udp.dll" returns i32
 extern function mq3_udp_socket() from "miniquake3_udp.dll" returns ptr
+extern function mq3_udp_set_broadcast(socket as ptr,enabled as i32) from "miniquake3_udp.dll" returns i32
+extern function mq3_udp_resolve_ipv4(name as wstr,address as bytes) from "miniquake3_udp.dll" returns i32
 extern function mq3_udp_bind(socket as ptr,address as u32,port as u32) from "miniquake3_udp.dll" returns i32
 extern function mq3_udp_local_address(socket as ptr) from "miniquake3_udp.dll" returns u32
 extern function mq3_udp_local_port(socket as ptr) from "miniquake3_udp.dll" returns i32
@@ -29,6 +31,17 @@ function cleanup()
 end function
 function open()
   socket=mq3_udp_socket();if socket==-1 then return error(6963,"udp: socket failed") end if;return socket
+end function
+function setBroadcast(socket,enabled)
+  if socket==void then return error(6969,"udp: invalid broadcast socket") end if
+  value=0;if enabled then value=1 end if;code=mq3_udp_set_broadcast(socket,value)
+  if code!=0 then return error(6969,"udp: SO_BROADCAST failed "+str(code)) end if;return void
+end function
+function resolveIPv4(name)
+  if name==void or name=="" then return error(6969,"udp: invalid DNS name") end if
+  address=bytes(4,0);code=mq3_udp_resolve_ipv4(name,address)
+  if code!=0 then return error(6969,"udp: IPv4 resolution failed "+str(code)) end if
+  return n.readU32(address,0)
 end function
 function bind(socket,endpoint)
   if socket==void or endpoint==void or endpoint.port<0 or endpoint.port>65535 then return error(6964,"udp: invalid bind") end if

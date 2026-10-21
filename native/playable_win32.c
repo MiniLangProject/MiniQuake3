@@ -17,16 +17,23 @@ static HWND windowHandle;
 static HDC windowDC;
 static BITMAPINFO bitmapInfo;
 static uint32_t *pixels;
+static uint32_t *presentedPixels;
 static float *depthPixels;
 static int surfaceWidth;
 static int surfaceHeight;
-static int closeRequested = 1;
+static volatile LONG closeRequested = 1;
 static int rawMouseEnabled;
 static LONG mouseDX;
 static LONG mouseDY;
 static int haveMousePosition;
 static int lastMouseX;
 static int lastMouseY;
+static HANDLE windowThread;
+static HANDLE windowCreatedEvent;
+static int requestedWindowWidth;
+static int requestedWindowHeight;
+static int windowCreateSucceeded;
+static SRWLOCK presentationLock = SRWLOCK_INIT;
 static LARGE_INTEGER timerFrequency;
 static LARGE_INTEGER timerStart;
 
@@ -95,6 +102,10 @@ static void releaseSurface(void) {
         VirtualFree(pixels, 0, MEM_RELEASE);
         pixels = 0;
     }
+    if (presentedPixels) {
+        VirtualFree(presentedPixels, 0, MEM_RELEASE);
+        presentedPixels = 0;
+    }
     if (depthPixels) {
         VirtualFree(depthPixels, 0, MEM_RELEASE);
         depthPixels = 0;
@@ -111,10 +122,18 @@ static int allocateSurface(int width, int height) {
     if (byteCount / 4u != (SIZE_T)width * (SIZE_T)height) return 0;
     pixels = (uint32_t *)VirtualAlloc(0, byteCount, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
     if (!pixels) return 0;
+    presentedPixels = (uint32_t *)VirtualAlloc(0, byteCount, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
+    if (!presentedPixels) {
+        VirtualFree(pixels, 0, MEM_RELEASE);
+        pixels = 0;
+        return 0;
+    }
     depthPixels = (float *)VirtualAlloc(0, byteCount, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
     if (!depthPixels) {
         VirtualFree(pixels, 0, MEM_RELEASE);
+        VirtualFree(presentedPixels, 0, MEM_RELEASE);
         pixels = 0;
+        presentedPixels = 0;
         return 0;
     }
     surfaceWidth = width;
@@ -132,13 +151,16 @@ static int allocateSurface(int width, int height) {
 static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) {
     switch (message) {
         case WM_CLOSE:
-            closeRequested = 1;
+            InterlockedExchange(&closeRequested, 1);
+            ShowWindow(hwnd, SW_HIDE);
+            return 0;
+        case WM_APP + 1:
             DestroyWindow(hwnd);
             return 0;
         case WM_DESTROY:
             if (windowDC) ReleaseDC(hwnd, windowDC);
             windowDC = 0;
-            closeRequested = 1;
+            InterlockedExchange(&closeRequested, 1);
             windowHandle = 0;
             PostQuitMessage(0);
             return 0;
@@ -175,9 +197,11 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
             RECT client;
             HDC dc = BeginPaint(hwnd, &paint);
             GetClientRect(hwnd, &client);
-            if (pixels) StretchDIBits(dc, 0, 0, client.right, client.bottom,
-                0, 0, surfaceWidth, surfaceHeight, pixels, &bitmapInfo,
+            AcquireSRWLockShared(&presentationLock);
+            if (presentedPixels) StretchDIBits(dc, 0, 0, client.right, client.bottom,
+                0, 0, surfaceWidth, surfaceHeight, presentedPixels, &bitmapInfo,
                 DIB_RGB_COLORS, SRCCOPY);
+            ReleaseSRWLockShared(&presentationLock);
             EndPaint(hwnd, &paint);
             return 0;
         }
@@ -185,14 +209,16 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
     return DefWindowProcW(hwnd, message, wParam, lParam);
 }
 
-PLAYABLE_API int playable_window_create(int width, int height) {
+static DWORD WINAPI playableWindowThread(void *parameter) {
     static int classRegistered;
     WNDCLASSEXW wc;
     RECT rectangle;
     RAWINPUTDEVICE mouse;
+    MSG message;
     HINSTANCE instance = GetModuleHandleW(0);
-    if (windowHandle) return 1;
-    if (!allocateSurface(width, height)) return 0;
+    int width = requestedWindowWidth;
+    int height = requestedWindowHeight;
+    (void)parameter;
     if (!classRegistered) {
         ZeroMemory(&wc, sizeof(wc));
         wc.cbSize = sizeof(wc);
@@ -203,22 +229,20 @@ PLAYABLE_API int playable_window_create(int width, int height) {
         wc.hIcon = LoadIconW(0, MAKEINTRESOURCEW(32512));
         wc.lpszClassName = L"MiniQuake3PlayableWindow";
         if (!RegisterClassExW(&wc) && GetLastError() != ERROR_CLASS_ALREADY_EXISTS) {
-            releaseSurface();
+            SetEvent(windowCreatedEvent);
             return 0;
         }
         classRegistered = 1;
     }
     rectangle.left = 0; rectangle.top = 0; rectangle.right = width; rectangle.bottom = height;
     AdjustWindowRect(&rectangle, WS_OVERLAPPEDWINDOW, FALSE);
-    closeRequested = 0;
     mouseDX = mouseDY = 0;
     windowHandle = CreateWindowExW(0, L"MiniQuake3PlayableWindow", L"MiniQuake3 - playable preview",
         WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
         rectangle.right - rectangle.left, rectangle.bottom - rectangle.top,
         0, 0, instance, 0);
     if (!windowHandle) {
-        closeRequested = 1;
-        releaseSurface();
+        SetEvent(windowCreatedEvent);
         return 0;
     }
     windowDC = GetDC(windowHandle);
@@ -231,19 +255,61 @@ PLAYABLE_API int playable_window_create(int width, int height) {
     ShowWindow(windowHandle, SW_SHOW);
     UpdateWindow(windowHandle);
     SetFocus(windowHandle);
+    windowCreateSucceeded = 1;
+    SetEvent(windowCreatedEvent);
+    while (GetMessageW(&message, 0, 0, 0) > 0) {
+        TranslateMessage(&message);
+        DispatchMessageW(&message);
+    }
+    return 0;
+}
+
+PLAYABLE_API int playable_window_create(int width, int height) {
+    DWORD threadId;
+    if (windowHandle) return 1;
+    if (windowThread) {
+        if (WaitForSingleObject(windowThread, 0) == WAIT_TIMEOUT) return 0;
+        CloseHandle(windowThread);
+        windowThread = 0;
+    }
+    if (!allocateSurface(width, height)) return 0;
+    windowCreatedEvent = CreateEventW(0, TRUE, FALSE, 0);
+    if (!windowCreatedEvent) {
+        releaseSurface();
+        return 0;
+    }
+    requestedWindowWidth = width;
+    requestedWindowHeight = height;
+    windowCreateSucceeded = 0;
+    InterlockedExchange(&closeRequested, 0);
+    windowThread = CreateThread(0, 0, playableWindowThread, 0, 0, &threadId);
+    if (!windowThread) {
+        CloseHandle(windowCreatedEvent);
+        windowCreatedEvent = 0;
+        InterlockedExchange(&closeRequested, 1);
+        releaseSurface();
+        return 0;
+    }
+    WaitForSingleObject(windowCreatedEvent, INFINITE);
+    CloseHandle(windowCreatedEvent);
+    windowCreatedEvent = 0;
+    if (!windowCreateSucceeded) {
+        WaitForSingleObject(windowThread, INFINITE);
+        CloseHandle(windowThread);
+        windowThread = 0;
+        InterlockedExchange(&closeRequested, 1);
+        releaseSurface();
+        return 0;
+    }
     return 1;
 }
 
 PLAYABLE_API void playable_window_poll(void) {
-    MSG message;
-    while (PeekMessageW(&message, 0, 0, 0, PM_REMOVE)) {
-        if (message.message == WM_QUIT) closeRequested = 1;
-        TranslateMessage(&message);
-        DispatchMessageW(&message);
-    }
+    /* The dedicated UI thread keeps the native window responsive even while
+     * MiniLang is decoding a large retail asset on the caller thread. */
 }
 
-PLAYABLE_API int playable_window_should_close(void) { return closeRequested; }
+PLAYABLE_API int playable_window_should_close(void) { return InterlockedCompareExchange(&closeRequested, 0, 0) != 0; }
 
 PLAYABLE_API int playable_window_set_title_utf8(const unsigned char *title, int length) {
     WCHAR wideTitle[256];
@@ -342,6 +408,22 @@ PLAYABLE_API void playable_window_clear_depth(double depth) {
     float value = (float)depth;
     if (!_finite(depth) || depth <= 0.0 || value <= 0.0f) depth = FLT_MAX;
     clearDepth(depth);
+}
+
+/* Return the positive eye-space distance represented by the software depth
+ * buffer.  The renderer stores reciprocal depth so perspective-correct
+ * interpolation and the greater-is-closer comparison stay cheap.  Flares
+ * need the original distance for Baseq3's 24-unit visibility tolerance. */
+PLAYABLE_API double playable_window_sample_depth(int x, int y) {
+    float inverseDepth;
+    SIZE_T offset;
+    if (!depthPixels || x < 0 || y < 0 || x >= surfaceWidth || y >= surfaceHeight) {
+        return -1.0;
+    }
+    offset = (SIZE_T)y * (SIZE_T)surfaceWidth + (SIZE_T)x;
+    inverseDepth = depthPixels[offset];
+    if (!_finite(inverseDepth) || inverseDepth <= 0.0f) return (double)FLT_MAX;
+    return 1.0 / (double)inverseDepth;
 }
 
 static int uploadTexture(int slot, const unsigned char *rgba,
@@ -670,8 +752,24 @@ static uint32_t inverseSourceColor(uint32_t source, uint32_t destination) {
     return (alpha << 24) | (red << 16) | (green << 8) | blue;
 }
 
+/* GLS_SRCBLEND_ONE | GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA. Baseq3 applies this
+ * premultiplied-alpha policy to all four channels. */
+static uint32_t premultipliedAlphaColor(uint32_t source, uint32_t destination) {
+    uint32_t sourceAlpha = source >> 24;
+    uint32_t inverse = 255u - sourceAlpha;
+    uint32_t alpha = sourceAlpha + (((destination >> 24) * inverse + 127u) / 255u);
+    uint32_t red = ((source >> 16) & 255u) + ((((destination >> 16) & 255u) * inverse + 127u) / 255u);
+    uint32_t green = ((source >> 8) & 255u) + ((((destination >> 8) & 255u) * inverse + 127u) / 255u);
+    uint32_t blue = (source & 255u) + (((destination & 255u) * inverse + 127u) / 255u);
+    if (alpha > 255u) alpha = 255u;
+    if (red > 255u) red = 255u;
+    if (green > 255u) green = 255u;
+    if (blue > 255u) blue = 255u;
+    return (alpha << 24) | (red << 16) | (green << 8) | blue;
+}
+
 PLAYABLE_API int playable_window_set_raster_state(int blendMode, int depthEqual, int depthWrite) {
-    if (blendMode < 0 || blendMode > 6 || (depthEqual != 0 && depthEqual != 1) ||
+    if (blendMode < 0 || blendMode > 7 || (depthEqual != 0 && depthEqual != 1) ||
             (depthWrite != 0 && depthWrite != 1)) return 0;
     rasterBlendMode = blendMode;
     rasterDepthEqual = depthEqual;
@@ -1013,6 +1111,7 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
             }
             if (!alphaTestPasses(color) || (color >> 24) == 0u) continue;
             if (rasterBlendMode == 0) pixels[offset] = color;
+            else if (rasterBlendMode == 7) pixels[offset] = premultipliedAlphaColor(color, pixels[offset]);
             else if (rasterBlendMode == 6) pixels[offset] = inverseSourceColor(color, pixels[offset]);
             else if (rasterBlendMode == 5) pixels[offset] = dynamicLightColor(color, pixels[offset]);
             else if (rasterBlendMode == 4) pixels[offset] = destinationAlphaColor(color, pixels[offset]);
@@ -1288,6 +1387,7 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
                 if (difference < -0.00001 || difference > 0.00001) continue;
             }
             if (rasterBlendMode == 0) pixels[offset] = color;
+            else if (rasterBlendMode == 7) pixels[offset] = premultipliedAlphaColor(color, pixels[offset]);
             else if (rasterBlendMode == 6) pixels[offset] = inverseSourceColor(color, pixels[offset]);
             else if (rasterBlendMode == 5) pixels[offset] = dynamicLightColor(color, pixels[offset]);
             else if (rasterBlendMode == 4) pixels[offset] = destinationAlphaColor(color, pixels[offset]);
@@ -1784,20 +1884,25 @@ PLAYABLE_API void playable_window_draw_line(int x0, int y0, int x1, int y1,
 PLAYABLE_API void playable_window_present(void) {
     RECT client;
     if (!windowHandle || !windowDC || !pixels) return;
+    AcquireSRWLockExclusive(&presentationLock);
+    CopyMemory(presentedPixels, pixels, (SIZE_T)surfaceWidth * (SIZE_T)surfaceHeight * 4u);
     GetClientRect(windowHandle, &client);
     StretchDIBits(windowDC, 0, 0, client.right, client.bottom,
-        0, 0, surfaceWidth, surfaceHeight, pixels, &bitmapInfo,
+        0, 0, surfaceWidth, surfaceHeight, presentedPixels, &bitmapInfo,
         DIB_RGB_COLORS, SRCCOPY);
+    ReleaseSRWLockExclusive(&presentationLock);
 }
 
 PLAYABLE_API void playable_window_shutdown(void) {
     HWND oldWindow = windowHandle;
     int slot;
-    if (oldWindow && windowDC) ReleaseDC(oldWindow, windowDC);
-    windowDC = 0;
-    if (oldWindow) DestroyWindow(oldWindow);
-    windowHandle = 0;
-    closeRequested = 1;
+    if (oldWindow) PostMessageW(oldWindow, WM_APP + 1, 0, 0);
+    if (windowThread) {
+        WaitForSingleObject(windowThread, INFINITE);
+        CloseHandle(windowThread);
+        windowThread = 0;
+    }
+    InterlockedExchange(&closeRequested, 1);
     rawMouseEnabled = 0;
     releaseSurface();
     for (slot = 0; slot < PLAYABLE_TEXTURE_SLOTS; ++slot) playable_window_release_texture(slot);

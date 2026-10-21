@@ -13,6 +13,7 @@ def main():
       'G_GET_CONFIGSTRING','G_GET_USERINFO','G_SET_USERINFO','G_GET_SERVERINFO','G_SET_BRUSH_MODEL',
       'G_IN_PVS','G_IN_PVS_IGNORE_PORTALS','G_ADJUST_AREA_PORTAL_STATE','G_AREAS_CONNECTED',
       'G_LINKENTITY','G_UNLINKENTITY','G_BOT_ALLOCATE_CLIENT','G_BOT_FREE_CLIENT','G_GET_ENTITY_TOKEN']
+    covered_cases += ['G_FS_GETFILELIST','G_DEBUG_POLYGON_CREATE','G_DEBUG_POLYGON_DELETE','G_REAL_TIME','G_SNAPVECTOR','G_FS_SEEK']
     missing=[name for name in covered_cases if f'case {name}:' not in source_text]
     if missing:raise RuntimeError('covered SV_GameSystemCalls cases missing: '+', '.join(missing))
     run(['cl','/nologo','/Od','/MT','/DWIN32',f'/I{original/"game"}',harness,f'/Fe:{oracle}','/link','/Brepro'],out,msvc_env('x86'),out/'oracle-build.log')
@@ -22,13 +23,13 @@ def main():
     if native!=mini:raise RuntimeError('qagame public ABI mismatch\nC:\n'+native+'MiniLang:\n'+mini)
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/vm_syscall_qagame_contracts.ml','--output','vm_syscall_qagame_contracts.exe'],cwd=ROOT,check=True)
     value=run([ROOT/'build/vm_syscall_qagame_contracts.exe'],ROOT/'build',log=out/'contracts.log').strip()
-    if value!='PASS: 32 qagame-specific syscall contracts':raise RuntimeError(value)
+    if value!='PASS: 47 qagame-specific syscall contracts':raise RuntimeError(value)
     files=[server_source,harness,ROOT/'tests/vm_syscall_qagame_oracle.ml',ROOT/'src/mq3/vm/syscall_qagame.ml',ROOT/'tests/vm_syscall_qagame_contracts.ml']
-    report={'passed':True,'records':3,'contracts':32,
-      'scope':'qagame opcodes 15-23, 26-31, 34-35 and 37: game-data registration, client/control strings, server state, brush models, PVS/portals, entity links, bot slots and spawn tokens.',
-      'oracle':'Original Baseq3 g_public.h compiled directly to freeze GAME_API_VERSION, ABI scalar/vector widths and every covered server-specific trap ordinal; all 18 cases are also required in unchanged sv_game.c.',
+    report={'passed':True,'records':4,'contracts':47,
+      'scope':'qagame opcodes 15-23, 26-31, 34-42 and 45: game-data registration, client/control strings, server state, brush models, PVS/portals, entity links, bot slots, spawn tokens, file lists, debug polygons, real time, SnapVector and FS_Seek.',
+      'oracle':'Original Baseq3 g_public.h compiled directly to freeze GAME_API_VERSION, ABI scalar/vector/qtime widths and every covered server-specific trap ordinal; all 24 cases are also required in unchanged sv_game.c.',
       'safety':'Argument vectors, masked VM pointers, vectors, strings, output spans, game-data strides/counts, callback availability and unsupported binary-structure traps are checked.',
-      'remaining':'Trace, point contents, EntitiesInBox, EntityContact, GetUsercmd, filesystem extensions, realtime/snapvector, debug polygons and botlib require their binary structures or subsystem adapters.',
+      'remaining':'Trace, point contents, EntitiesInBox, EntityContact and GetUsercmd are handled by the separate binary-world bridge. Productive debug-polygon drawing and host file enumeration still depend on supplied subsystem adapters.',
       'sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
     (out/'result.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(f"PASS: {report['records']} exact Baseq3 qagame-ABI records + {report['contracts']} qagame-specific syscall contracts")

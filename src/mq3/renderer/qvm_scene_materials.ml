@@ -4,15 +4,20 @@ package mq3.renderer.qvm_scene_materials
 
 import mq3.renderer.playable_materials as materials
 import mq3.renderer.player_skins as playerSkins
+import mq3.renderer.shader_parser as shaderParser
+import mq3.renderer.shader_remap as shaderRemap
 
 struct LoadedSkin handle skin end struct
 struct Binding shaderHandle customSkin shaderName surfaceName materialIndex end struct
 struct Texture imageName image slot end struct
 // Field layout intentionally matches playable_materials.Material so the
 // existing multi-pass native batch path can consume QVM materials directly.
-struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps end struct
+struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps timeOffset clampTime end struct
 struct ResolvedTriangle triangle materialIndex end struct
-struct Catalog triangles materials textures scriptIndex scriptCount loadedSkins bindings resolvedTriangles unresolvedTriangles nextTextureSlot recentBinding end struct
+struct Catalog triangles materials textures scriptIndex scriptCount loadedSkins bindings resolvedTriangles unresolvedTriangles nextTextureSlot recentBinding shaderRemaps end struct
+
+const BUILTIN_BEAM="$mq3/beam"
+const BUILTIN_PROJECTION_SHADOW="$mq3/projectionShadow"
 
 function fail(message) return error(7680,"QVM scene materials: "+message) end function
 // R_FindShader strips the extension before consulting shader text.
@@ -57,6 +62,27 @@ function addTextures(textureList,stages)
     end for end if
   end for
   return result
+end function
+function whiteImage() return materials.Image(1,1,bytes(4,255)) end function
+function beamStage(image,slot)
+  return materials.RuntimeStage(["$whiteimage"],[image],[slot],0.0,[],materials.BLEND_ADD,materials.ALPHA_TEST_NONE,"texture","vertex",shaderParser.blankWave(),"vertex",shaderParser.blankWave(),[255,255,255,255],false,false,false,false,256.0,[])
+end function
+function addBeamMaterial(output,endSlot)
+  existing=materialIndex(output.materials,BUILTIN_BEAM);if existing>=0 then return existing end if
+  if output.nextTextureSlot>=endSlot then return -1 end if
+  image=whiteImage();slot=output.nextTextureSlot;stage=beamStage(image,slot);index=len(output.materials)
+  output.materials=output.materials+[Material(index,BUILTIN_BEAM,"$whiteimage",image,slot,[stage],[],true,9.0,false,true,0.0,0.0)]
+  output.textures=output.textures+[Texture("$whiteimage",image,slot)];output.nextTextureSlot=slot+1;return index
+end function
+function projectionShadowStage(image,slot)
+  return materials.RuntimeStage(["$whiteimage"],[image],[slot],0.0,[],materials.BLEND_ALPHA,materials.ALPHA_TEST_NONE,"texture","vertex",shaderParser.blankWave(),"vertex",shaderParser.blankWave(),[255,255,255,255],false,false,false,false,256.0,[])
+end function
+function addProjectionShadowMaterial(output,endSlot)
+  existing=materialIndex(output.materials,BUILTIN_PROJECTION_SHADOW);if existing>=0 then return existing end if
+  if output.nextTextureSlot>=endSlot then return -1 end if
+  image=whiteImage();slot=output.nextTextureSlot;stage=projectionShadowStage(image,slot);index=len(output.materials)
+  output.materials=output.materials+[Material(index,BUILTIN_PROJECTION_SHADOW,"$whiteimage",image,slot,[stage],[],true,4.0,true,true,0.0,0.0)]
+  output.textures=output.textures+[Texture("$whiteimage",image,slot)];output.nextTextureSlot=slot+1;return index
 end function
 function hasImage(stages)
   for each stage in stages if len(stage.images)>0 then return true end if end for
@@ -105,29 +131,32 @@ function bindTriangle(output,triangle,outputIndex,archive,assets,kinds,endSlot)
   if index!= -2 and not bindingMatchesRegistry(output,index,triangle,assets,kinds) then index= -2 end if
   if index== -2 then
     named=resolveShaderName(triangle,archive,assets,kinds,output.loadedSkins);shaderName=strippedName(named[0]);output.loadedSkins=named[1];index=-1
-    if shaderName!="" then
+    if shaderName==BUILTIN_BEAM then index=addBeamMaterial(output,endSlot)
+    else if shaderName==BUILTIN_PROJECTION_SHADOW then index=addProjectionShadowMaterial(output,endSlot)
+    else if shaderName!="" then
       index=materialIndex(output.materials,shaderName)
       if index<0 then
         runtime=materials.runtimeStages(archive,output.scriptIndex,shaderName,output.nextTextureSlot,endSlot)
         stages=runtime[0];output.nextTextureSlot=runtime[1]
         firstName="";firstImage=void;firstSlot=-1
         for each stage in stages if firstSlot<0 and len(stage.images)>0 then firstName=stage.imageNames[0];firstImage=stage.images[0];firstSlot=stage.slots[0] end if end for
-        output.materials=output.materials+[Material(len(output.materials),shaderName,firstName,firstImage,firstSlot,stages,runtime[2],runtime[3],runtime[4],runtime[5],runtime[6])]
+        output.materials=output.materials+[Material(len(output.materials),shaderName,firstName,firstImage,firstSlot,stages,runtime[2],runtime[3],runtime[4],runtime[5],runtime[6],0.0,runtime[7])]
         index=len(output.materials)-1;output.textures=addTextures(output.textures,stages)
       end if
     end if
     storeBinding(output,triangle,index)
   end if
+  offset=shaderRemap.timeOffsetForHandle(output.shaderRemaps,triangle.shaderHandle);if index>=0 and offset!=void then output.materials[index].timeOffset=offset end if
   if index>=0 and hasImage(output.materials[index].stages) then output.resolvedTriangles=output.resolvedTriangles+1 else output.unresolvedTriangles=output.unresolvedTriangles+1 end if
   output.triangles[outputIndex]=ResolvedTriangle(triangle,index);return void
 end function
 
-function build(archive,triangles,assets,kinds,firstTextureSlot,maxTextureSlots)
+function build(archive,triangles,assets,kinds,firstTextureSlot,maxTextureSlots,shaderRemaps)
   if archive==void or triangles==void or assets==void or kinds==void then return fail("archive, triangles and asset registry are required") end if
   if len(assets)!=len(kinds) then return fail("asset registry length mismatch") end if
   if firstTextureSlot<0 or maxTextureSlots<0 then return fail("invalid texture slot range") end if
   scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if
-  output=Catalog(array(len(triangles),void),[],[],scripts[0],scripts[1],[],[],0,0,firstTextureSlot,void);endSlot=firstTextureSlot+maxTextureSlots;triangleIndex=0
+  output=Catalog(array(len(triangles),void),[],[],scripts[0],scripts[1],[],[],0,0,firstTextureSlot,void,shaderRemaps);endSlot=firstTextureSlot+maxTextureSlots;triangleIndex=0
   for each triangle in triangles bindTriangle(output,triangle,triangleIndex,archive,assets,kinds,endSlot);triangleIndex=triangleIndex+1 end for
   return output
 end function

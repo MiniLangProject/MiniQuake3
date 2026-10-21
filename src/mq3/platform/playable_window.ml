@@ -16,6 +16,7 @@ extern function lineNative(x0 as i32,y0 as i32,x1 as i32,y1 as i32,red as i32,gr
 extern function presentNative() from "playable_window.dll" symbol "playable_window_present" returns void
 extern function shutdownNative() from "playable_window.dll" symbol "playable_window_shutdown" returns void
 extern function clearDepthNative(depth as double) from "playable_window.dll" symbol "playable_window_clear_depth" returns void
+extern function sampleDepthNative(x as i32,y as i32) from "playable_window.dll" symbol "playable_window_sample_depth" returns double
 extern function setDepthRangeNative(scale as double,nearDistance as double) from "playable_window.dll" symbol "playable_window_set_depth_range" returns i32
 extern function uploadTextureNative(slot as i32,rgba as ptr,width as i32,height as i32) from "playable_window.dll" symbol "playable_window_upload_texture" returns i32
 extern function uploadTextureMipmappedNative(slot as i32,rgba as ptr,width as i32,height as i32,mipmapped as i32) from "playable_window.dll" symbol "playable_window_upload_texture_mipmapped" returns i32
@@ -53,6 +54,7 @@ const TRIANGLE_BATCH_MAX_COUNT=65536
 
 struct TriangleBatch data capacity count end struct
 struct Viewport x y width height end struct
+struct LoadingPoint x y end struct
 
 function open(width,height)
   if width<160 or height<120 then return error(7480,"preview window is too small") end if
@@ -67,6 +69,32 @@ function setTitle(title)
   if len(data)<1 or len(data)>255 then return error(7489,"preview window title must contain 1 to 255 UTF-8 bytes") end if
   return setTitleNative(nativeBytesPtr(data),len(data))!=0
 end function
+function loadingTitle(progress,status)
+  if progress<0 or progress>100 then return error(7490,"loading progress must be between 0 and 100") end if
+  if typeof(status)!="string" or len(bytes(status))<1 then return error(7490,"loading status must be a non-empty string") end if
+  title="MiniQuake3 | Loading "+str(progress)+"% | "+status
+  if len(bytes(title))>255 then return error(7490,"loading title exceeds the Win32 UTF-8 limit") end if
+  return title
+end function
+function showLoading(progress,status)
+  title=loadingTitle(progress,status);if title is error then return title end if
+  if shouldClose() then return false end if
+  poll()
+  if not setTitle(title) then return error(7491,"could not update loading window title") end if
+  beginFrame(7,10,18)
+  // Keep the startup surface deliberately dependency-free: this is visible
+  // while retail textures and fonts are still being decoded.
+  left=80;right=560;top=334;bottom=354;filled=left+(right-left)*progress/100
+  for y=top to bottom
+    drawLine(LoadingPoint(left,y),LoadingPoint(right,y),20,28,44)
+    if filled>left then drawLine(LoadingPoint(left,y),LoadingPoint(filled,y),214,142,35) end if
+  end for
+  drawLine(LoadingPoint(left-1,top-1),LoadingPoint(right+1,top-1),112,124,150)
+  drawLine(LoadingPoint(left-1,bottom+1),LoadingPoint(right+1,bottom+1),112,124,150)
+  drawLine(LoadingPoint(left-1,top-1),LoadingPoint(left-1,bottom+1),112,124,150)
+  drawLine(LoadingPoint(right+1,top-1),LoadingPoint(right+1,bottom+1),112,124,150)
+  present();poll();return true
+end function
 function keyDown(key) return keyDownNative(key)!=0 end function
 function mouseDelta() return [mouseXNative(),mouseYNative()] end function
 function milliseconds() return millisecondsNative() end function
@@ -77,6 +105,7 @@ end function
 function present() presentNative();return void end function
 function shutdown() shutdownNative();return void end function
 function clearDepth(depth) clearDepthNative(depth);return void end function
+function sampleDepth(x,y) return sampleDepthNative(numeric.trunc32(x),numeric.trunc32(y)) end function
 function setDepthRange(scale,nearDistance) return setDepthRangeNative(scale,nearDistance)!=0 end function
 function uploadTexture(slot,rgba,width,height)
   if typeof(rgba)!="bytes" then return error(7483,"preview texture must be RGBA bytes") end if

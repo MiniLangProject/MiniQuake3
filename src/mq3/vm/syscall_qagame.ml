@@ -7,6 +7,8 @@ import mq3.vm.syscall_qagame_world as world
 import mq3.compat.numeric as n
 import mq3.shared.math as qmath
 
+const QTIME_SIZE=36
+
 struct TokenResult found text end struct
 
 struct Services
@@ -29,12 +31,17 @@ struct Services
   botAllocateClientFn
   botFreeClientFn
   entityTokenFn
+  fileListFn
+  debugPolygonCreateFn
+  debugPolygonDeleteFn
+  realTimeFn
+  seekFn
   worldServices
   extendedFn
 end struct
 
 function services(shared,context)
-  return Services(shared,context,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
+  return Services(shared,context,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
 end function
 
 function unavailable(name) return error(3421,"qagame syscall: "+name+" service unavailable") end function
@@ -113,11 +120,51 @@ function entityToken(vm,base,host)
   return 0
 end function
 
+function fileList(vm,base,host)
+  if host.fileListFn==void then return unavailable("file list") end if
+  capacity=arg(vm,base,4);if capacity<0 then return error(3421,"qagame syscall: negative file-list capacity") end if
+  path=common.readString(vm,arg(vm,base,1));extension=common.readString(vm,arg(vm,base,2))
+  entries=host.fileListFn(host.context,path,extension);if entries==void then entries=[] end if
+  data=bytes(capacity,0);cursor=0;count=0
+  for each name in entries
+    encoded=bytes(name);if cursor+len(encoded)+1>capacity then break end if
+    if len(encoded)>0 then copyBytes(data,cursor,encoded,0,len(encoded)) end if
+    cursor=cursor+len(encoded)+1;count=count+1
+  end for
+  if capacity>0 then common.writeRaw(vm,arg(vm,base,3),data,capacity,"file list output") end if
+  return count
+end function
+
+function debugPolygonCreate(vm,base,host)
+  if host.debugPolygonCreateFn==void then return unavailable("debug polygon create") end if
+  count=arg(vm,base,2);if count<0 then return error(3421,"qagame syscall: negative debug-polygon point count") end if
+  if count>(len(vm.data)/12) then return error(3421,"qagame syscall: debug-polygon point count overflow") end if
+  at=0;if count>0 then at=common.pointer(vm,arg(vm,base,3),count*12,"debug-polygon points") end if;points=[]
+  for index=0 to count-1
+    points=points+[[n.bitsFloat(n.readU32(vm.data,at+index*12)),n.bitsFloat(n.readU32(vm.data,at+index*12+4)),n.bitsFloat(n.readU32(vm.data,at+index*12+8))]]
+  end for
+  return host.debugPolygonCreateFn(host.context,arg(vm,base,1),points)
+end function
+
+function realTime(vm,base,host)
+  if host.realTimeFn==void then return unavailable("real time") end if
+  value=host.realTimeFn(host.context)
+  if value==void or typeof(value.data)!="bytes" or len(value.data)!=QTIME_SIZE then return error(3421,"qagame syscall: invalid qtime_t layout") end if
+  address=arg(vm,base,1);if address!=0 then common.writeRaw(vm,address,value.data,QTIME_SIZE,"qtime_t output") end if
+  return value.epoch
+end function
+
 function dispatchSpecific(vm,base,host,op)
   if op==24 or op==25 or op==32 or op==33 or op==36 or op==43 or op==44 then
     if host.worldServices==void then return unavailable("binary world") end if
     return world.dispatch(host.worldServices,vm,base,op)
   end if
+  // Hosts that already provide these optional engine services through their
+  // extended dispatcher keep working until they adopt the typed callbacks.
+  if op==38 and host.fileListFn!=void then return fileList(vm,base,host) end if
+  if op==39 and host.debugPolygonCreateFn!=void then return debugPolygonCreate(vm,base,host) end if
+  if op==40 and host.debugPolygonDeleteFn!=void then host.debugPolygonDeleteFn(host.context,arg(vm,base,1));return 0 end if
+  if op==41 and host.realTimeFn!=void then return realTime(vm,base,host) end if
   switch op
     case 15 return locateGameData(vm,base,host) end case
     case 16 return stringCall(vm,base,host,host.dropClientFn,"drop client",true) end case
@@ -141,6 +188,7 @@ function dispatchSpecific(vm,base,host,op)
       address=arg(vm,base,1);value=vector(vm,address,"snap vector");qmath.SnapVector(value);at=common.pointer(vm,address,12,"snap vector")
       for axis=0 to 2 n.writeU32(vm.data,at+axis*4,n.floatBits(value[axis])) end for;return 0
     end case
+    case 45 if host.seekFn==void then return unavailable("file seek") end if;return host.seekFn(host.context,arg(vm,base,1),arg(vm,base,2),arg(vm,base,3)) end case
   end switch
   if host.extendedFn!=void then return host.extendedFn(host.context,vm,base,op) end if
   return error(3421,"qagame syscall: unsupported server trap "+str(op))

@@ -22,6 +22,8 @@ struct State
   context
   functions
   cvarCommandFn
+  cvarContextCommandFn
+  cvarCommandContext
   clientGameCommandFn
   serverGameCommandFn
   uiGameCommandFn
@@ -36,10 +38,12 @@ end struct
 struct Command
   name
   callback
+  contextCallback
+  callbackContext
 end struct
 
 function create()
-  return State("",[],"",0,void,void,void,[],void,void,void,void,void,false,false,void,void,void)
+  return State("",[],"",0,void,void,void,[],void,void,void,void,void,void,void,false,false,void,void,void)
 end function
 
 function visibleBytes(text)
@@ -203,7 +207,19 @@ function addCommand(state,name,callback)
       return false
     end if
   end for
-  state.functions = [Command(name,callback)]+state.functions; return true
+  state.functions = [Command(name,callback,void,void)]+state.functions; return true
+end function
+
+// Context-bearing registrations keep subsystem state out of the global
+// command state while leaving the original Cmd_AddCommand surface unchanged.
+function addContextCommand(state,name,callback,context)
+  for each entry in state.functions
+    if entry.name == name then
+      if callback != void then emit(state,"Cmd_AddCommand: "+name+" already defined\n") end if
+      return false
+    end if
+  end for
+  state.functions = [Command(name,void,callback,context)]+state.functions; return true
 end function
 
 function removeCommand(state,name)
@@ -334,8 +350,10 @@ function executeString(state,text)
     for index = 0 to len(state.functions)-1 if index != found then remaining = remaining+[state.functions[index]] end if end for
     state.functions = [entry]+remaining
     if entry.callback != void then entry.callback(state); return void end if
+    if entry.contextCallback != void then entry.contextCallback(state,entry.callbackContext); return void end if
   end if
   if state.cvarCommandFn != void and state.cvarCommandFn(state) then return void end if
+  if state.cvarContextCommandFn != void and state.cvarContextCommandFn(state,state.cvarCommandContext) then return void end if
   if state.clientRunning and state.clientGameCommandFn != void and state.clientGameCommandFn(state) then return void end if
   if state.serverRunning and state.serverGameCommandFn != void and state.serverGameCommandFn(state) then return void end if
   if state.clientRunning and state.uiGameCommandFn != void and state.uiGameCommandFn(state) then return void end if

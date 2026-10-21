@@ -1,6 +1,6 @@
 # AAS- und Botlib-Laufzeit
 
-Stand: 14. September 2026. MiniQuake3 liest die Navigationsdateien der
+Stand: 21. Oktober 2026. MiniQuake3 liest die Navigationsdateien der
 Quake-III-CD direkt in MiniLang. `src/mq3/format/aas.ml` bildet den
 124-Byte-Header, alle 14 Lumps und die Record-Layouts aus `aasfile.h` ab. Der
 Reader akzeptiert die unverschlüsselte Version 4 und dekodiert den XOR-Header
@@ -90,9 +90,26 @@ Rocket-/BFG-Jump, Grapple, Jumppad und FuncBobbing. Die Hostgrenze liefert dafü
 reale BSP-Kollision, Flüssigkeitsinhalte, Moverpositionen, Barriereprüfung,
 Grapple-Zustände und Botlib-Libvars. Reverse-Reachabilities, Area-Reisezeitmatrizen
 und Portal-Maximalzeiten werden beim Laden erzeugt; ein begrenzter LRU-Cache
-invalidiert mit den Routing-Sperren. Offen bleiben die dynamische
-`AAS_UpdateAreaRoutingCache`-/`AAS_UpdatePortalRoutingCache`-Propagation, die
-kompakten Reachability-Bytes und `.rcd`-Persistenz. Die
+invalidiert mit den Routing-Sperren. Zielzentrierte Same-Cluster-Caches werden
+wie `AAS_UpdateAreaRoutingCache` rückwärts über eingehende Reachabilities
+propagiert und von Anfragen mit verschiedenen Ursprüngen gemeinsam verwendet.
+`AAS_UpdatePortalRoutingCache` setzt darauf auf, führt die Zielkosten durch
+benachbarte Cluster fort und berücksichtigt die vorberechneten maximalen
+Portalreisezeiten. Die synthetische Drei-Cluster-Differentialprobe bestätigt
+die Originalkosten 7, 14, 18 und 19 sowie Sperren, Invalidierung und LRU-
+Wiederverwendung. Die Laufzeit persistiert diese Zielcaches beim Mapwechsel und
+Botlib-Shutdown unter `maps/<map>.rcd`: Identität, Version, Area-/Clusterzahl und
+die originalen CRC-16-Prüfungen entsprechen dem RCD-v2-Header. Da die historische
+C-Nutzlast rohe Prozesszeiger enthält, folgt darauf eine deterministische,
+zeigerfreie MiniQuake3-Nutzlast; fünf zusätzliche Verträge decken Roundtrip,
+produktive Wiederverwendung sowie CRC- und Trunkierungsablehnung ab. Die
+Retail-Probe auf `q3dm1` bestätigt fünf Cache-Prüfungen mit zwei Hits und fünf
+Misses. Same-Cluster-Misses werden zusätzlich gegen die autoritative gewichtete
+Route abgeglichen, damit die rückwärts propagierte Tabelle auf dichten Graphen
+keine spätere, um fünf Zeiteinheiten teurere Reachability festhält; die geprüfte
+Walk-Route bleibt dadurch bei Reisezeit 118 und Reachability 1.235, die
+Rocket-Route bei 302 und 1.234. Offen bleibt die noch kompaktere interne
+Reachability-Ablage. Die
 Movement-Prediction benutzt für Kollisionen derzeit die Server-BSP-Grenze;
 Presence-Sperren, Playerclip und die exakten AAS-Trace-Felder müssen noch auf den
 originalen AAS-Node-Trace umgestellt werden. Die Best-Reachable-Area-Suche nutzt

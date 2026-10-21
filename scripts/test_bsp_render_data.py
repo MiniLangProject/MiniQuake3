@@ -1,14 +1,31 @@
 """Verify checked BSP46 triangle and lightmap extraction."""
 import json,subprocess,sys
 from inventory import sha
-from toolchain import ROOT,run
+from toolchain import ROOT,run,msvc_env
+from transition_oracle import extract
 
 def main():
     out=ROOT/'build/reference/bsp_render_data';out.mkdir(parents=True,exist_ok=True)
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/bsp_render_data_contracts.ml','--output','bsp_render_data_contracts.exe'],cwd=ROOT,check=True)
     value=run([ROOT/'build/bsp_render_data_contracts.exe'],ROOT/'build',log=out/'contracts.log').strip()
-    expected='PASS: 57 BSP render-data contracts'
+    expected='PASS: 63 BSP render-data contracts'
     if value!=expected:raise RuntimeError(value)
+    original_renderer=ROOT/'Quake-III-Arena-original-source/code/renderer/tr_bsp.c'
+    (out/'bsp_lighting_shift_under_test.inc').write_text(extract(original_renderer,['R_ColorShiftLightingBytes']),encoding='utf-8',newline='\n')
+    harness=ROOT/'tests/reference/bsp_lighting_shift_oracle.c';oracle=out/'oracle.exe'
+    run(['cl','/nologo','/Od','/MT','/W4','/WX','/wd4244',f'/I{out}',harness,f'/Fe:{oracle}','/link','/Brepro'],out,msvc_env('x86'),out/'oracle-build.log')
+    native=run([oracle],out,log=out/'oracle.log')
+    subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/bsp_lighting_shift_oracle.ml','--output','bsp_lighting_shift_oracle.exe'],cwd=ROOT,check=True)
+    mini=run([ROOT/'build/bsp_lighting_shift_oracle.exe'],ROOT/'build',log=out/'minilang.log')
+    if native!=mini:raise RuntimeError('BSP lighting shift mismatch\nC:\n'+native+'MiniLang:\n'+mini)
+    original_curve=ROOT/'Quake-III-Arena-original-source/code/renderer/tr_curve.c'
+    (out/'bsp_patch_normals_under_test.inc').write_text(extract(original_curve,['MakeMeshNormals']),encoding='utf-8',newline='\n')
+    normal_harness=ROOT/'tests/reference/bsp_patch_normals_oracle.c';normal_oracle=out/'normal-oracle.exe'
+    run(['cl','/nologo','/Od','/MT','/W4','/WX',f'/I{out}',normal_harness,f'/Fe:{normal_oracle}','/link','/Brepro'],out,msvc_env('x86'),out/'normal-oracle-build.log')
+    native_normals=run([normal_oracle],out,log=out/'normal-oracle.log')
+    subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/bsp_patch_normals_oracle.ml','--output','bsp_patch_normals_oracle.exe'],cwd=ROOT,check=True)
+    mini_normals=run([ROOT/'build/bsp_patch_normals_oracle.exe'],ROOT/'build',log=out/'normal-minilang.log')
+    if native_normals!=mini_normals:raise RuntimeError('BSP patch-normal mismatch\nC:\n'+native_normals+'MiniLang:\n'+mini_normals)
     original=ROOT/'Quake-III-Arena-original-source/code/qcommon/qfiles.h'
     source=original.read_text(encoding='utf-8',errors='replace')
     for token in ['drawVert_t','lightmapNum','firstVert','numVerts','firstIndex','numIndexes','patchWidth','patchHeight','MST_PLANAR','MST_PATCH','MST_TRIANGLE_SOUP','LIGHTMAP_WIDTH','LIGHTMAP_HEIGHT']:
@@ -19,8 +36,8 @@ def main():
         subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/bsp_render_data_map_probe.ml','--output','bsp_render_data_map_probe.exe'],cwd=ROOT,check=True)
         map_probe=run([ROOT/'build/bsp_render_data_map_probe.exe',retained],ROOT/'build',log=out/'q3dm1.log').strip()
         if not map_probe.startswith('PASS: BSP map rendered surfaces='):raise RuntimeError(map_probe)
-    files=[original,ROOT/'src/mq3/format/bsp.ml',ROOT/'src/mq3/renderer/bsp_render_data.ml',ROOT/'tests/bsp_render_data_contracts.ml',ROOT/'tests/bsp_render_data_map_probe.ml']
-    report={'passed':True,'contracts':57,'q3dm1':map_probe,'scope':'BSP46 planar, triangle-soup, and quadratic MST_PATCH extraction with curvature-driven tessellation; positions, source vertex identity, normalized patch normals, base/lightmap UVs, vertex colors, shader/lightmap indexes, stable face order, strict limits, complete validation, and RGB/RGBA lightmap decoding.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
+    files=[original,original_renderer,original_curve,harness,normal_harness,ROOT/'src/mq3/format/bsp.ml',ROOT/'src/mq3/renderer/bsp_render_data.ml',ROOT/'tests/bsp_lighting_shift_oracle.ml',ROOT/'tests/bsp_patch_normals_oracle.ml',ROOT/'tests/bsp_render_data_contracts.ml',ROOT/'tests/bsp_render_data_map_probe.ml']
+    report={'passed':True,'records':len(native.splitlines()),'normal_records':len(native_normals.splitlines()),'contracts':63,'functions':['R_ColorShiftLightingBytes','MakeMeshNormals'],'q3dm1':map_probe,'scope':'BSP46 planar, triangle-soup, quadratic MST_PATCH and inline brush-model extraction with Baseq3-style perpendicular-error subdivision, de Casteljau insertion, 65-point axis ceilings, collinear row/column removal and exact wrapped/degenerate-neighbour patch normal reconstruction; positions, source vertex identity, base/lightmap UVs, byte-averaged vertex colors, shader/lightmap indexes and names, stable face order, strict limits, complete validation, RGB/RGBA lightmap decoding, and exact Baseq3 overbright color shifting with chromatic normalization.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
     (out/'result.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
-    print(expected)
+    print(f"PASS: {report['records']} exact lighting-shift + {report['normal_records']} exact patch-normal records + 63 BSP render-data contracts")
 if __name__=='__main__':main()

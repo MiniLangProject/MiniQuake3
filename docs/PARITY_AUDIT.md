@@ -1,18 +1,76 @@
 # MiniQuake3: überprüfter Stand
 
-Stand: 2026-09-14. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist spielbar**.
+Stand: 2026-10-21. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
-Die aktuelle asset-freie Prüfauswahl umfasst **199 Gates** (`verify.py`). Die
-Retail-Auswahl mit `D:/Quake3` umfasst **213 Gates**. Sie wurde am
-14. September 2026 vollständig ausgeführt; nach zwei dabei gefundenen und
-behobenen Integrationsfehlern wurden die betroffenen Gates und der gesamte
-anschließende Retail-Abschnitt auf dem finalen Quellstand wiederholt. Die
-Auswahl enthält nun zusätzlich AAS-Format/Routing, Botlib-Lifecycle, Elementary
-Actions, AI-Profile/-Weights/-Pools, Serverbridge, Movement-Prediction und den
-originalen Sarge-Botsetup-Pfad. Der aktuelle MiniQuake3-Build hat SHA-256
-`67510224cc3624e0dfd09461e095ec7cac936bb3e5d5246debc8ab0a37033859`.
+Die aktuelle Retail-Prüfauswahl umfasst **266 Gates**
+(`python scripts/verify.py --data-root D:/Quake3`) und bestand vollständig am
+21. Oktober 2026 mit dem eingebundenen Retail-`pak0.pk3`. Der dabei frisch
+gebaute `MiniQuake3.exe`-Build hat SHA-256
+`e3a167d14509c9493a15c4566b3e62932d712091a56e732181d454c584dfa6ea`,
+das zugehörige `build/verification.json` SHA-256
+`1d8e96a528088fc16be2eb99ef0af8f18cf142a456a6e7001a8db9ab582aacb2`.
+Der Lauf enthält den zusammenhängenden Retail-qagame/cgame/ui-Boot mit neun
+Prediction-Traces, 2.345 vollständig texturierten Szenendreiecken, 17
+Renderpässen, 26 Soundbefehlen und interaktiver Original-UI sowie den
+512-Frame-Bot-Spawn, alle 31 BSP-Karten und die produktiven Windows-Grenzen.
+
+Der bestätigte Stand erzeugt sein ansprechbares
+Win32-Fenster vor dem PK3-/BSP-Laden und zeigt Ladephasen. Außerdem sind der
+vollständige serverseitige Reliable-Downloadbefehlspfad, Intro-zu-Loop-Musik mit
+Stereoerhalt, zielzentrierte Area- und Portal-AAS-Cachepropagation, originale
+Cvar-/`q3config.cfg`-Persistenz im produktiven Engine-Frame, vier weitere
+qagame-Plattformtraps, vier zustandsbehaftete Cgame-Tastaturtraps, alle fünf
+Cgame-PC-Parsertraps und ein UI-LAN-/Serverbrowser mit
+Connectionless-Antwortverarbeitung, exakter `servercache.dat`-Persistenz und
+einem vollständigen ausgehenden Query-Zustandsautomaten samt produktiver
+Windows-DNS-/UDP-Anbindung ergänzt. Hinzugekommen sind der echte Zwei-Client-Challenge-/Connect-Aufbau, die vollständigen Cgame-LerpFrame-Zustände, komprimierte ADPCM-/MuLaw-/Wavelet-SFX-Paintpfade und persistente, CRC-geprüfte AAS-Routingcaches. Physische Tastenübergänge aktualisieren den
+gemeinsamen Cgame-/UI-Zustand nun auch bei geschlossenem Menü. Alle sieben
+`uiMenuCommand_t`-Zustände und beide Overlay-Modi von `UI_DRAW_CONNECT_SCREEN`
+werden nun durch den produktiven Original-UI-Adapter weitergereicht. Das von Cgame
+gesetzte Usercmd-Waffenbyte und dessen Mausempfindlichkeit erreichen den
+produktiven QVM-Spielpfad. MD3-Frames werden wie im Original gewrappt oder
+repariert; registrierte 8-/16-Bit-Mono-Sounds durchlaufen Baseq3s exakten
+22050-Hz-Resampler. Zusätzlich laufen die vollständigen Cvar-Konsolenbefehle,
+der `CL_SendCmd`-Ausgangspfad samt sieben verlust- und duplikatgetesteten
+Client/Server-UDP-Frames, ein echter Zwei-Client-Serverpfad mit gegenseitig
+geparsten Spielerentities, der vollständige Cgame-Reliable-Command-Verbrauch
+und die originale Cgame-Framezeit, QVM-Rail-/Lightning-/Beam-Geometrie sowie
+Portal-Welt-/Entity-Komposition jetzt durch die produktiven Pfade. Baseq3s
+räumliche Links-/Rechts-Abmischung, 96-Kanal-Auswahl und gruppierte Loop-Kanäle
+werden gemeinsam im originalen 24.8-Integer-Paintbuffer gemischt. RoQ-DPCM-Ton
+durchläuft nun ebenfalls `S_RawSamples`: fünf unveränderte C-Differentialfälle
+und zehn Verträge prüfen Formatkonvertierung, Resampling, den 16.384-Frame-Ring
+und das gleichzeitige Mischen mit QVM-Musik und Spieleffekten.
+Die abschließende Shaderfarbberechnung folgt nun auch der originalen
+`ComputeColors`-Reihenfolge: 15 unveränderte C-Differentialfälle und zwölf
+Verträge decken Identity-Light-Skalierung sowie Entity-, Konstant- und
+Vertex-Alpha ab.
+Additive, strikte Alpha-, inverse Quellfarben- und vormultiplizierte
+Alpha-Stufen erhalten vor dem abschließenden Fog-Pass nun außerdem Baseq3s
+positionsabhängige RGB-, Alpha- oder RGBA-Dämpfung. Drei unveränderte
+C-Differentialdatensätze und 18 Verträge prüfen Modulation, vollständige
+`FinishShader`-Blendklassifikation und den produktiven Retained-Batch.
+`refEntity_t.shaderTime` transportiert nun gemeinsam mit `shaderTexCoord` den
+vollständigen Entity-Zeitversatz durch QVM-Geometrie, Portal-Clipping und den
+Retained-Batch. Animierte Bildstufen, Farb-Waves, Vertex-/Normal-Deformationen
+und alle zeitabhängigen `tcMod`-Operationen verwenden damit wie Baseq3 dieselbe
+pro Entity verschobene Uhr. Shader-Remaps reichen zusätzlich ihr `timeOffset`
+bis in bereits registrierte QVM-Materialien durch; das geparste `clampTime`
+friert Bildfolge, Waves, Deformationen, Normalen und UVs gemeinsam an Baseq3s
+`RB_BeginSurface`-Grenze ein. Sechzehn Datensätze aus den unveränderten
+`RB_CalcScrollTexCoords`-, `R_BindAnimatedImage`- und `RB_BeginSurface`-Funktionen
+plus 104 Verträge prüfen Frameauswahl, Entity-/Remap-Zeitversatz, Clamp,
+negatives Wrapping und die produktiven Bild-, Farb-, Geometrie- und UV-Ausgaben.
+Zwei zusätzliche Regressionen belegen, dass ein Remap auf denselben Shader mit
+geändertem `timeOffset` auch ohne Batch-Neuaufbau den bereits gehaltenen
+QVM-Szenenpass und dessen gemeinsame Shaderuhr aktualisiert.
+Der QVM-2D-Pfad übernimmt dasselbe Zeitmodell nun für HUD und Original-UI:
+`DrawStretchPic`-Materialien werden bei einem laufenden Shader-Remap neu aus dem
+PK3 dekodiert und hochgeladen; `timeOffset` und `clampTime` steuern ihre
+animierten Bilder, Farb-Waves und `tcMod`-UVs. 32 Verträge einschließlich eines
+synthetischen PK3-Wechsels prüfen diesen produktiven Pfad.
 
 Der letzte archivierte Lauf mit den CD-Daten bestand aus **46 regulären Prüfbereichen**
 (`verify.py --data-root D:/Quake3`), einschließlich Engine-/Spielmodul-Cvars, Teamstandorten/-overlay,
@@ -58,15 +116,19 @@ Der Original-Checkout ist sauber und auf derselben festgeschriebenen Revision.
 Der spielbare Renderer transportiert inzwischen unabhängige RGBA-Farben je
 Dreiecksvertex bis in den nativen Batch und interpoliert sie perspektivisch
 korrekt. MiniLang wertet dafür `rgbGen vertex`, `exactVertex`,
-`oneMinusVertex`, `const` und `wave` sowie die entsprechenden `alphaGen`-Modi
-pro Frame aus. Lightmapped BSP-Flächen werden nur noch mit der originalen
+`oneMinusVertex`, `entity`, `oneMinusEntity`, `const` und `wave` sowie die entsprechenden `alphaGen`-Modi
+pro Frame aus. Die endgültige RGB-/Alpha-Reihenfolge entspricht dabei
+`ComputeColors`, einschließlich Identity-Light-Skalierung und der besonderen
+Alpha-Erhaltung für `rgbGen vertex`. Blended-only Materialien dämpfen ihre
+RGB- oder Alpha-Beiträge außerdem pro Vertex anhand der Fog-Dichte, bevor der
+abschließende Fog-Pass die Nebelfarbe aufträgt. Lightmapped BSP-Flächen werden nur noch mit der originalen
 Lightmap moduliert; unlightmapped Flächen behalten ihre getrennten RGB-Vertexfarben.
 Explizite und aus Blend-/Depth-Write-/PolygonOffset-Zuständen abgeleitete
 Shader-Sortwerte ordnen die World-Passes stabil wie in Baseq3. Die Abnahme
 Geparste `depthWrite`- und `depthFunc equal`-Zustände werden pro Stage bis an den
 nativen Rasterzustand weitergegeben. `polygonOffset` nutzt zusätzlich Baseq3s
 steigungsabhängigen Decal-Tiefenbias im inversen Tiefenpuffer. Die Abnahme umfasst
-54 Material-, 15 Batch-Layout- und 44 World-Batch-Verträge sowie einen
+59 Material-, 15 Batch-Layout- und 44 World-Batch-Verträge sowie einen
 nativen Pixelvergleich unter `/W4 /WX`. Textur- und Lightmap-Abtastung arbeitet
 bilinear mit OpenGL-Texelzentren und getrenntem Repeat-/Clamp-Randverhalten.
 Vollständige Boxfilter-Mipketten und eine UV-Gradienten-basierte Levelwahl
@@ -78,14 +140,14 @@ Basis-U-Sinusphase; q3dm4 und q3dm16 dienen als Retail-Abnahme.
 | Schritt | Stand | Vorliegender Nachweis / noch fehlende Abnahme |
 | --- | --- | --- |
 | 1. Referenz | Grundabnahme bestanden | Originale x86-Engine, drei native Module, drei neu gebaute QVMs; MiniLang-Build; 1.409 Dateien inventarisiert; 120 Frames mit zwei Bots aufgezeichnet und zweimal bytegleich wiedergegeben |
-| 2. Zahlen/Plattform | In Arbeit | 101.445 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff, nichtblockierende UDP-Grenze, Desktop-Framehost und eine mit 2 C-Fällen plus 26 Verträgen geprüfte Eingabequeue sind vorhanden; Win32-DIB-Previewhost und WinMM-Audiogrenze bestehen ihre `/W4 /WX`-Lifecycle-Tests; produktives OpenGL bleibt offen |
-| 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, Engine-/VM-Cvar-Registrierung/-Aktualisierung und Spielmodul-Tabelle, 448 Parseraufrufe, Info-Schlüsselsuche/-Validierung, 28 bytegenaue `cmd.c`-Puffer-/Tokenizer-, 16 Registry-/Builtin- und 10 Startup-Differentialdatensätze plus 32 Verträge, 84 ZIP/DEFLATE-Vergleiche sowie 48 direkte C-Vergleiche der MD4-basierten Pak-Prüfsummen und 25 Suchpfad-/Pure-/Referenz-/Downloadvergleichsverträge bestanden; Downloadtransport, UTF-16-Dateinamen, Cvar-Neustart/Config-Persistenz und Engine-Schleife fehlen |
-| 4. QVM | In Arbeit | 404 Interpretervergleiche und 17 Runtime-Verträge; vorberechnete Instruktionsbreiten/Stackanforderungen laufen durch dieselben Differentialfälle; gemeinsame Traps 4/32; qagame-Servertraps 3/32 plus binäre Welttraps 5/37 und Lifecycle 11/22; cgame-Lifecycle 12/20 plus 19 Traps 4/37; UI-Lifecycle 14/22 plus 39 Kerntraps 7/61 und 16 Medien-/Spezialtraps 5/42; PC-Parser einschließlich Bedingungen und Funktionsmakros 47 Verträge; Botlib-Lifecycle 200–211, AAS 300–318, Elementary Actions 400–423 und die zum Retail-Botsetup benötigten 500er AI-Traps sind angeschlossen; weitere AI-, Renderer-3D- und seltene Plattformtraps fehlen |
+| 2. Zahlen/Plattform | In Arbeit | 101.445 binäre Float-Ergebnisse, 53.248 bisherige q_math-Ergebnisse, 65.536 AngleVectors-/SnapVector-Fälle und 26 Snap-Grenzfälle stimmen; Windows-Dateizugriff, nichtblockierende UDP-Grenze, Desktop-Framehost und eine mit 2 C-Fällen plus 26 Verträgen geprüfte Eingabequeue sind vorhanden; Win32-DIB-Previewhost und WinMM-Audiogrenze bestehen ihre `/W4 /WX`-Lifecycle-Tests; ein eigener UI-Thread hält das früh erzeugte Ladefenster mit 2--100-Prozent-Phasen ansprechbar; produktives OpenGL bleibt offen |
+| 3. Engine-Kern/VFS | In Arbeit | 513 Cvar-Operationen, Engine-/VM-Cvar-Registrierung/-Aktualisierung und Spielmodul-Tabelle, 3 bytegenaue `Cvar_WriteVariables`-Differentialdatensätze plus 17 Config-Persistenzverträge, 13 exakte `Cvar_Restart_f`-Datensätze plus 17 Verträge sowie 11 exakte Datensätze plus 15 Verträge für `toggle`, `set`, `sets`, `setu`, `seta`, `reset`, `cvarlist` und direkte Cvar-Befehle; 448 Parseraufrufe, Info-Schlüsselsuche/-Validierung, 28 bytegenaue `cmd.c`-Puffer-/Tokenizer-, 16 Registry-/Builtin- und 10 Startup-Differentialdatensätze plus 32 Verträge, 84 ZIP/DEFLATE-Vergleiche sowie 48 direkte C-Vergleiche der MD4-basierten Pak-Prüfsummen und 25 Suchpfad-/Pure-/Referenz-/Downloadvergleichsverträge bestanden; Config-Befehle und `writeconfig` laufen über den produktiven Command-Puffer, archivierte Cvars werden vor Events, Netzwerk und Simulation geschrieben; automatische Pak-Aushandlung, UTF-16-Dateinamen und die vollständige Engine-Schleife fehlen |
+| 4. QVM | In Arbeit | 404 Interpretervergleiche und 17 Runtime-Verträge; vorberechnete Instruktionsbreiten/Stackanforderungen laufen durch dieselben Differentialfälle; gemeinsame Traps 4/44; qagame-Servertraps 4/47 plus binäre Welttraps 5/37 und Lifecycle 11/22, einschließlich Dateilisten, Debug-Polygonen, 36-Byte-`qtime_t`, `G_SNAPVECTOR` und produktivem `G_FS_SEEK`; cgame-Lifecycle 12/20 plus 19 Kerntraps 4/37, vier Tastaturtraps 4/25 mit gemeinsamem UI-/Cgame-Zustand sowie alle fünf `CG_PC_*`-Traps mit drei exakten ABI-Datensätzen und 29 Verträgen; `CG_SETUSERCMDVALUE` speist nun Waffenwahl und Mausempfindlichkeit in den produktiven QVM-Spielpfad, belegt durch fünf Originalanker und 12 Verträge; die produktive Vorschau bindet `CL_FirstSnapshot`/`CL_AdjustTimeDelta`/`CL_SetCGameTime` mit vier exakten Datensätzen, 26 Kern- und 19 Integrationsverträgen vor `CG_DRAW_ACTIVE_FRAME` ein; Snapshot-Sequenzen und `CG_GETSERVERCOMMAND` liefern Reliable Commands, zusammengesetzte große Configstrings, Configstring-Updates und Restart-/Disconnect-Policy in acht Originalankern plus 22 Verträgen an die Retail-Cgame; UI-Lifecycle 14/22 plus 39 Kerntraps 7/61 und 16 Medien-/Spezialtraps 5/42; PC-Parser einschließlich Bedingungen und Funktionsmakros 47 Verträge; Botlib-Lifecycle 200–211, AAS 300–318, Elementary Actions 400–423 und die zum Retail-Botsetup benötigten 500er AI-Traps sind angeschlossen; weitere AI-, Renderer-3D- und seltene Plattformtraps fehlen |
 | 5. Kollision/Pmove | In Arbeit | BSP-/Kurvenkollision, räumliche Abfragen, dynamische Entities, Bewegungsbahnen, geometrische Trigger-Erkennung, Sprungpad-/Teleport-Replays, ClientBegin und G_RunFrame-Einbindung geprüft; der spielbare Pfad nutzt zusätzlich 800er Gravitation, Bodenprobe, Sprung, Quake-Reibung/-Beschleunigung, Collision-Slide und 18-Unit-Step in 26 Verträgen; Gegner verwenden ebenfalls Spielerhülle, Wall-Slide, Step und Bodenbindung, in 22 Verträgen plus q3dm1-Probe geprüft; komplette Match-Telefrag-Replays fehlen |
 | 6. Spiel/Server | In Arbeit | Entity-Verwaltung, Spawn-Regeln, Worldspawn, alle 48 Spawn-Klassen und 35 Item-Spawns, Mover-Zustände/Trigger/Züge samt aktiven Retail-Türen/Buttons und vollständigen Retail-Rider-Frames, Target-Ketten, `G_RunFrame`, Schaden, Waffen, Client-/Match-/CTF-Abläufe, Einzelspieler-Postgame/Podium, Bot-Lifecycle, Bot-/Arena-Registry, Spawnqueue, Minimum-Player, Bot-Erzeugung/-Entfernung und BotConnect/SetupClient/ShutdownClient, Serverkonsole, IP-Filter, Spielarena sowie G_InitGame/G_ShutdownGame vorhanden; der spielbare Slice lädt 18 q3dm1-Pickups und fünf Ziele mit Hitscan-Schaden, Tod, Fragwertung und Respawn; BSP-Sichtprüfung steuert Patrouille, Verfolgung, Strafe und Angriffe; Gegner feuern ihre sichtbare Machinegun im originalen 100-ms-Takt mit 7 Schaden, beginnend am animierten Retail-`tag_flash` und durch einen abschließenden BSP-Trace abgeschirmt; der neue Pfad besteht 12 Verträge; Armor, Spieler-Tod, Spawnwechsel, Schutz und Respawn sind integriert; Engine-VM-Neuladen und Netzwerkzustellung fehlen |
-| 7. Netzwerk/Client | In Arbeit | Message/OOB, Protokoll-68-Huffman, Deltas, Snapshots, Downloads, Demo-Framing, Netchan und Windows-UDP sind implementiert; echte Localhostpfade führen serverseitig bis ClientThink und clientseitig bis `CL_ParseServerMessage`; der äußere `CL_Frame` stimmt in 13 C-Datensätzen überein und besteht 28 Verträge; Snapshot-/cgame-Zeit einschließlich Drift, Pause, Demo und Timedemo besteht 4 Headerwerte plus 26 Verträge; die vollständige Match-Schleife fehlt |
-| 8. Renderer/Cgame | In Arbeit | Shader-Index 10/10, Shaderparser 36/36 und TGA 5/22; Bildverarbeitung 10/19 und Bildcache 8/29; Polychain 3/21, Triangle/Face 3/30, MD3-Mesh 3/31, MD3-Tags/Bounds 7/26, Sprite-Quads 6/31 und Grid 5/30; View-Transformation/Culling 11/36; Texturzustände 18/30; Commandqueue 7/29; Szene Polys/Entities/Lichter 6/24; interaktiver BSP-Vertical-Slice mit texturierten Bezier-Patches, originalem Baseq3-HUD, echten Pickup-Modellen, Projektilen und texturierten First-Person-Waffen; Retail-Shader mit `alphaFunc GT0`, `LT128` und `GE128` werden bis in den nativen Rasterizer übernommen, sodass etwa Banner und Gitter ihre ausgeschnittenen Konturen behalten; additive, Alpha- und multiplikative `filter`-Blends besitzen eigene Rasterpfade, explizite Lightmap-Stufen verwenden ihre BSP-Slots und UVs in Originalreihenfolge, einschließlich GL_DST_COLOR GL_ONE_MINUS_DST_ALPHA und fortgeschriebenem Framebuffer-Alpha; `clampMap` schaltet die native Texturabtastung auf Rand-Clamping, während normale Maps weiterhin wiederholen; `deformVertexes wave` und `bulge` bewegen Geometrie entlang der BSP-Normalen, `move` verschiebt ganze Flächen per Waveform; mehrere Deformationen laufen in Originalreihenfolge; sieben geladene q3dm1-Materialien mit `cull disable` umgehen die planare Rückseitenverwerfung des Sichtbarkeitscaches; `tcMod scroll`, `scale`, `rotate`, `stretch`, `transform` und die weltpositionsabhängige `turb`-Verzerrung laufen in Shader-Reihenfolge, einschließlich der Lava- und Bluteffekte von q3dm1 sowie der zweifach transformierten Wasserlagen von q3dm2; kameraabhängiges `tcGen environment` verwendet die originalgetreue Reflexion an den BSP-Vertexnormalen; Viewmodel-Dreiecke werden samt UV-/Lichtwerten an der Nah-Ebene geschnitten und über den originalen 0..0,3-Depthhack-Bereich gegen die Welt getestet; Retail-Hand-Tags animieren Angriff, Absenken und Anheben; Gauntlet, Machinegun und BFG besitzen angehängte, beschleunigende und auslaufende Retail-Läufe; der Retail-Sarge wird aus Lower/Upper/Head über Tags zusammengesetzt, interpoliert, mit zwei PK3-Skinbildern texturiert und im Nahbereich mit allen 795 Dreiecken gezeichnet; jeder sichtbare Gegner trägt zusätzlich die echte Machinegun samt separatem, zustandsbehaftetem Barrel am interpolierten `tag_weapon`; Idle/Walk/Run/Attack/Pain/Death/Respawn folgen Gameplay-Ereignissen; vorberechnete Projektion, direkte MD3-Transformation und paralleles scanline-begrenztes Rasterisieren liefern im aktuellen q3dm1-Smoke etwa 15–20 FPS; MD3-Frame-0-Modellgrenzen sowie korrekte cgame-Traps für Cinematics, Shader-Remap, R_InPVS und FS_SEEK sind ergänzt; vollständige Shaderstufen, exakte cgame-Animationsmischung und Cgame-Präsentation fehlen |
-| 9. Bots/Audio/UI | In Arbeit | Alle 30 Retail-AAS-Dateien werden direkt gelesen; Punktsuche, Area-/Entity-Abfragen, Trace-Areas, Reachability-Iteration, gewichtete Routen, Routing-Sperren, Client-Movement-Prediction und Sichtpositionsvorhersage sind vorhanden. Botlib-Lifecycle, Serverbridge und Elementary Actions führen `addbot Sarge 3` durch das vollständige originale `BotAISetupClient`; Character-, Item-/Weapon-Weight- und Chatprofile werden aus pak0 geladen, alle vier AI-State-Handles sind gebunden und 512 Bot-Frames laufen bis zur regulären `BOTLIB_USER_COMMAND`-Übergabe. Alle 15 Travelhandler des Baseq3-Release-Switches sind echte MoveToGoal-Pfade; Fuzzy-Evolution, zwölf q3dm1-Kartenorte und Chat-Ausgabe 513–516 sind implementiert. Ein invalidierbarer LRU, Reverse-Reachabilities, Area-Reisezeitmatrizen und Portal-Maximalzeiten bilden die statische Original-Routingstruktur nach. Retail-Chat lädt 175 Synonymgruppen, 138 Match-Templates, 244 Zufallsgruppen und 456 Reply-Regeln; der Nachrichtenheap folgt dem live gelesenen `max_messages` mit Originalstandard 1024. UI-Lifecycle und 55 UI-Traps einschließlich Sound/Cinematics/LAN sind vorhanden; Original-UI-Menüs, RoQ-Video/DPCM-Audio, WinMM-WAV- und Umgebungsklang laufen. Offen bleiben dynamische Original-Cachepropagation, `.rcd`-Persistenz sowie die vollständige Audio- und UI-Parität. |
+| 7. Netzwerk/Client | In Arbeit | Message/OOB, Protokoll-68-Huffman, Deltas, Snapshots, Downloads, Demo-Framing, Netchan und Windows-UDP sind implementiert; der äußere `CL_Frame` stimmt in 13 C-Datensätzen überein und besteht 28 Verträge; `CL_SendCmd` ist daran produktiv gebunden und deckt Command-Erzeugung, Paketpacing, Reliable-Replay, `cl_packetdup`, `cl_maxpackets`, Move/NoDelta, Checksum-Key, Delta-Usercmds, OutPacket-Buchhaltung und Netchan-Übertragung in acht Originalankern plus 39 Verträgen ab. Sieben echte Localhost-Winsock-Clientframes führen Clientbefehle über Server-Ingress und `SV_UserMove` zu Reliable Commands und Full-/Delta-Snapshots; neun Quellanker plus 48 Live-Verträge belegen verlorene und duplizierte Clientpakete, `packetdup`-Recovery ohne doppelte Spieleingabe, verlorene und duplizierte Server-Snapshots, Delta-Promotion über eine ältere Basis und vollständige `cl_nodelta`-Recovery. Ein geteilter Server-Ingress führt zusätzlich zwei gleichzeitige Clients mit unabhängigen Sockets, QPorts, Sequenzen, Usercmds, Reliable-Ringen und Snapshot-Acks. Davor durchlaufen beide echten Sockets jetzt den vollständigen `getchallenge`-/`challengeResponse`-/komprimierten `connect`-/`connectResponse`-Austausch; Challenge, QPort, Quelladresse und zugeordneter Server-Slot werden geprüft, und der anschließende Netchan behält seine Sequenzen. Elf Originalanker plus 67 Live-Verträge prüfen diesen Aufbau, gegenseitig geparste Spielerentities sowie unabhängiges Voranschreiten. Ein zusätzlicher 384-Frame-Lauf führt 768 Usercmds genau einmal aus, erholt 22 verlorene Clientpakete sowie 20 verlorene Snapshots, verwirft 29 Duplikate und hält die Reliable-Ringe über ihren Umlauf hinweg synchron; die UDP-Zustände werden dabei mit den produktiven CL_Frame-/SV_Frame-Timeoutmodellen abgeglichen. Snapshot-/cgame-Zeit einschließlich Drift, Pause, Demo und Timedemo besteht 4 Headerwerte plus 26 Verträge; der vollständige Reliable-Downloadbefehlspfad für `download`/`nextdl`/`stopdl`/`donedl` ist live; Internet-Mehrclient-Abnahme der vollständigen Match-Schleife fehlt |
+| 8. Renderer/Cgame | In Arbeit | Shader-Index 10/10, Shaderparser 36/36 und TGA 5/22; Bildverarbeitung 10/19 und Bildcache 8/29; Polychain 3/21, Triangle/Face 3/30, MD3-Mesh 3/31, MD3-Tags/Bounds 7/26, Sprite-Quads 6/31 und Grid 5/30; View-Transformation/Culling 11/36; Texturzustände 18/30; Commandqueue 7/29; Szene Polys/Entities/Lichter 6/24; interaktiver BSP-Vertical-Slice mit texturierten Bezier-Patches, originalem Baseq3-HUD, echten Pickup-Modellen, Projektilen und texturierten First-Person-Waffen; Retail-Shader mit `alphaFunc GT0`, `LT128` und `GE128` werden bis in den nativen Rasterizer übernommen, sodass etwa Banner und Gitter ihre ausgeschnittenen Konturen behalten; additive, Alpha- und multiplikative `filter`-Blends besitzen eigene Rasterpfade, explizite Lightmap-Stufen verwenden ihre BSP-Slots und UVs in Originalreihenfolge, einschließlich GL_DST_COLOR GL_ONE_MINUS_DST_ALPHA und fortgeschriebenem Framebuffer-Alpha; `clampMap` schaltet die native Texturabtastung auf Rand-Clamping, während normale Maps weiterhin wiederholen; `deformVertexes wave` und `bulge` bewegen Geometrie entlang der BSP-Normalen, `move` verschiebt ganze Flächen per Waveform; mehrere Deformationen laufen in Originalreihenfolge; sieben geladene q3dm1-Materialien mit `cull disable` umgehen die planare Rückseitenverwerfung des Sichtbarkeitscaches; `tcMod scroll`, `scale`, `rotate`, `stretch`, `transform`, `entityTranslate` und die weltpositionsabhängige `turb`-Verzerrung laufen in Shader-Reihenfolge; QVM-Entities behalten dabei `shaderTexCoord` und `shaderTime` bis zu den produktiven Bildframes, Farb-Waves, Deformationen, Normalen und UVs. Das schließt die Lava- und Bluteffekte von q3dm1 sowie die zweifach transformierten Wasserlagen von q3dm2 ein; kameraabhängiges `tcGen environment` verwendet die originalgetreue Reflexion an den BSP-Vertexnormalen; Viewmodel-Dreiecke werden samt UV-/Lichtwerten an der Nah-Ebene geschnitten und über den originalen 0..0,3-Depthhack-Bereich gegen die Welt getestet; Retail-Hand-Tags animieren Angriff, Absenken und Anheben; Gauntlet, Machinegun und BFG besitzen angehängte, beschleunigende und auslaufende Retail-Läufe; der Retail-Sarge wird aus Lower/Upper/Head über Tags zusammengesetzt, interpoliert, mit zwei PK3-Skinbildern texturiert und im Nahbereich mit allen 795 Dreiecken gezeichnet; jeder sichtbare Gegner trägt zusätzlich die echte Machinegun samt separatem, zustandsbehaftetem Barrel am interpolierten `tag_weapon`; Idle/Walk/Run/Attack/Pain/Death/Respawn folgen Gameplay-Ereignissen; vorberechnete Projektion, direkte MD3-Transformation und paralleles scanline-begrenztes Rasterisieren liefern im aktuellen q3dm1-Smoke etwa 15–20 FPS; Baseq3s MD3-Projektionsradius/LOD-Wahl sowie `RF_WRAP_FRAMES`- und Invalid-Frame-Reparatur bestehen sechs exakte Datensätze plus 24 Verträge und laufen vor der produktiven QVM-Interpolation; `RT_RAIL_CORE`, `RT_RAIL_RINGS` und `RT_LIGHTNING` erzeugen Baseq3s sichtbare QVM-Geometrie samt Shader, UVs und Vertexfarben, belegt durch zwei exakte Datensätze plus 26 Verträge. `RT_BEAM` erzeugt zusätzlich den originalen geschlossenen Sechsseiten-Strip mit 14 Vertices und 12 Dreiecken über ein echtes additives Vertex-Color-Material; zwei exakte Datensätze plus 13 Verträge prüfen Geometrie, Farbe und Null-Längen-Auslassung. `RT_PORTALSURFACE`-Marker liefern Spiegel-/Remote-Kamera, PVS, Rotation, Clipplane und First-/Third-Person-Entityfilter in drei exakten Datensätzen plus 17 Verträgen. Der produktive Software-Renderer baut Portalwelt und portalabhängige Cgame-Entities aus dieser Kamera, clippt BSP-/QVM-Dreiecke an der Zielebene und komponiert Portal, Tiefenlöschung und Hauptansicht in Originalreihenfolge; 21 weitere Verträge prüfen den auf eine Ebene begrenzten Pass. MD3-Frame-0-Modellgrenzen sowie korrekte cgame-Traps für Cinematics, Shader-Remap, R_InPVS und FS_SEEK sind ergänzt; CG_SetLerpFrameAnimation, CG_RunLerpFrame und CG_ClearLerpFrame laufen mit Initial-Lerp, Togglewechsel, Loop, Reverse, Flipflop, Speedscale, Hitch-Clamp und bitgenauem backlerp in 16 C-Differentialfällen plus 10 Verträgen; der produktive Preview-Gegner verwendet persistente Lower-/Upper-Zustände. `rgbGen entity`/`oneMinusEntity` und `alphaGen entity`/`oneMinusEntity` bewahren `shaderRGBA` getrennt von Lightgrid-/Vertexfarben und stimmen in vier C-Datensätzen plus acht Verträgen. Die abschließende `ComputeColors`-Reihenfolge einschließlich Identity-Light-Skalierung, Entity-, Konstant- und Vertex-Alpha stimmt in 15 unveränderten C-Datensätzen plus zwölf Verträgen. Additive, strikte Alpha-, inverse Quellfarben- und vormultiplizierte Alpha-Stufen werden im Nebel jetzt vor dem Fog-Pass pro Vertex gedämpft; drei unveränderte C-Datensätze plus 18 Verträge prüfen diesen produktiven Pfad. Vollständige Shaderstufen und Cgame-Präsentation fehlen |
+| 9. Bots/Audio/UI | In Arbeit | Alle 30 Retail-AAS-Dateien werden direkt gelesen; Punktsuche, Area-/Entity-Abfragen, Trace-Areas, Reachability-Iteration, gewichtete Routen, Routing-Sperren, Client-Movement-Prediction und Sichtpositionsvorhersage sind vorhanden. Botlib-Lifecycle, Serverbridge und Elementary Actions führen `addbot Sarge 3` durch das vollständige originale `BotAISetupClient`; Character-, Item-/Weapon-Weight- und Chatprofile werden aus pak0 geladen, alle vier AI-State-Handles sind gebunden und 512 Bot-Frames laufen bis zur regulären `BOTLIB_USER_COMMAND`-Übergabe. Alle 15 Travelhandler des Baseq3-Release-Switches sind echte MoveToGoal-Pfade; Fuzzy-Evolution, zwölf q3dm1-Kartenorte und Chat-Ausgabe 513–516 sind implementiert. Ein invalidierbarer LRU, Reverse-Reachabilities, Area-Reisezeitmatrizen und Portal-Maximalzeiten bilden die statische Original-Routingstruktur nach. Retail-Chat lädt 175 Synonymgruppen, 138 Match-Templates, 244 Zufallsgruppen und 456 Reply-Regeln; der Nachrichtenheap folgt dem live gelesenen `max_messages` mit Originalstandard 1024. UI-Lifecycle und 55 UI-Traps einschließlich Sound/Cinematics/LAN sind vorhanden; Original-UI-Menüs, RoQ-Video/DPCM-Audio, WinMM-WAV- und Umgebungsklang laufen. Alle sieben Baseq3-Menüzustände und beide Connect-Screen-Overlaymodi sind produktiv verdrahtet und in 27 Session-Verträgen geprüft. `UI_GETCLIENTSTATE` liefert das exakte 3.084-Byte-ABI mit realem Verbindungszustand; die originale Screen-Matrix für Connect, Challenge, Loading, Active, Cinematic, Fullscreen und Key-Catcher besteht einen ABI-Datensatz plus 20 Verträge. Die zielzentrierten `AAS_UpdateAreaRoutingCache`- und `AAS_UpdatePortalRoutingCache`-Pfade teilen Routen über Ursprünge und Cluster; der produktive Botlib-Pfad persistiert die Zielcaches nun mit dem originalen RCD-v2-Header, Area-/Cluster-CRC und einer deterministischen zeigerfreien Nutzlast; offen bleibt die noch kompaktere interne Reachability-Ablage. Der UI-LAN-Kern verwaltet Serverlisten, Sichtbarkeit, Pingqueue, Status und Originalsortierung; vier exakte Ingress-Datensätze plus 60 Verträge prüfen Protokoll-68-Info-/Status-/Masterlisten-Antworten, Pingabschluss und Deduplizierung. Die produktive UI liest und schreibt das exakte 661.520-Byte-Baseq3-x86-`servercache.dat`; 24 Verträge vergleichen den vollständigen Binärinhalt mit einer C-Referenz. Ein weiterer Zustandsautomat deckt in 23 Verträgen lokale Discovery, Master-Queries, manuelle und sichtbare Pings sowie Status-Resends ab. Windows-DNS, zwei nichtblockierende Sockets, IPv4-Broadcast und Antwort-Pump sind im produktiven UI-Lifecycle angeschlossen und bestehen 18 Live-Verträge. Hintergrundmusik bewahrt Stereo, spielt das Intro einmal und wechselt danach in den Retail-Loop. Registrierte Mono-Effekte laufen durch Baseq3s exakten 22050-Hz-Resampler mit acht C-Differentialdatensätzen und 19 Verträgen; `S_SpatializeOrigin` liefert über zwölf exakte Datensätze plus 19 Verträge die originale 80-Unit-Vollpegelzone, Distanzdämpfung und Links-/Rechts-Achssemantik. One-shots verwenden produktiv Baseq3s 96-Kanal-Free-list, 50-ms-Duplikatverhalten, identische-Sound-Limits, Entitäts-/Globalersetzung und Listener-/Announcer-Schutz; zehn exakte Datensätze plus 18 Verträge belegen den Pfad. Gleichartige Loops werden mit originalen Masterlautstärken, Doppler-Regeln, 255er-Klemme, 96-Kanal-Limit und gemeinsamer Painted-Time-Phase gruppiert; sechs exakte Datensätze plus 17 Verträge bestehen. Musik, One-shots und diese Loops laufen produktiv durch Baseq3s gemeinsamen 24.8-Paintbuffer, `S_PaintChannelFrom16`, `s_volume` 0,8 und exakte signed-16-Sättigung; drei exakte Pipeline-Datensätze plus 18 Verträge bestehen. Derselbe produktive Pfad decodiert jetzt außerdem IMA-ADPCM, MuLaw und Daubechies-Wavelets und malt sie mit den originalen 24.8-Routinen; fünf exakte C-Differentialfälle, 14 Kompressionsverträge und 40 QVM-Wiedergabeverträge bestehen. Geschwindigkeitsvektoren von QVM-Loops steuern über Baseq3s quadrierte Distanzformel den Doppler-Pitch; fünf weitere C-Differentialfälle und sechs Verträge belegen den Pfad. RoQ-Audio läuft nun über Baseq3s 16.384-Frame-S_RawSamples-Ring in denselben Paintbuffer; fünf C-Differentialdatensätze und zehn Verträge prüfen Formatkonvertierung, Resampling und gleichzeitige Spieleffekte. Die vollständige Audio- und UI-Parität bleibt offen. |
 | 10. Gesamtparität | Offen | Hängt von allen vorangehenden Abnahmen ab |
 
 115 zusätzliche Tests prüfen beschädigte Dateieingaben, VM-Limits, räumliche
@@ -1082,8 +1144,12 @@ standardmäßige Registry-Pfad läuft außerdem in `G_RunFrame`-Vergleichen ohne
 aktive Entities; der Native-Host begrenzt Match-/Vote-Pfade auf den inaktiven Zustand.
 
 Der Baseq3-Körper von `G_RemapTeamShaders` ist leer. Modulstart/-shutdown ist
-inzwischen separat integriert. Missionpack, Engine-VM-Neuladen, `cvar_restart`,
-QVM-Trap-Zustellung und Netzwerk sind weiterhin offen. Details und Build-Datumsprofil: [GAME_CVARS.md](GAME_CVARS.md).
+inzwischen separat integriert. `cvar_restart` sowie `toggle`, `set`, `sets`,
+`setu`, `seta`, `reset`, `cvarlist` und der direkte Cvar-Befehl laufen über den
+produktiven Engine-Commandpuffer. Elf exakte Originaldatensätze und 15 Verträge
+prüfen dabei Ausgabe, Flags, Mehrwortwerte, Filter, Reset und Latch-Anzeige.
+Missionpack, Engine-VM-Neuladen und weitere QVM-Trap-Zustellung bleiben offen.
+Details und Build-Datumsprofil: [GAME_CVARS.md](GAME_CVARS.md).
 
 ## ClientThink (Schritt 6)
 
@@ -1454,3 +1520,146 @@ gekappte Framezeit, Server-/Client-Reihenfolge, Rollback und Shutdown.
 `SV_RateMsec` drei und 19. Die äußere `SV_Frame`-Komposition stimmt in neun
 unveränderten C-Datensätzen überein und besteht 28 Verträge, einschließlich
 Kill/Restart, Residualzeit, Info-Config, Bot-/Game-Frames und Heartbeat.
+
+`src/mq3/client/network_match_loop.ml` schließt den laufenden sequenzierten Pfad
+in beiden Richtungen. Sieben echte Localhost-Winsock-Clientframes führen
+Usercmds über `CL_SendCmd`, Netchan, Server-Ingress und `SV_UserMove`; der Server
+antwortet mit Reliable Commands und Full-/Delta-Snapshots. Ein absichtlich
+verlorenes Clientpaket wird durch `cl_packetdup 1` im Folgetelegramm
+nachgeliefert, ohne dass ein später erneut eingespeistes Duplikat die Spieleingabe
+zweimal ausführt. Nach einem verlorenen Server-Snapshot akzeptiert der Client den
+nächsten Delta-Snapshot über die ältere, weiterhin gültige Basis; duplizierte
+Snapshots verwirft er. `cl_nodelta` erzwingt anschließend die vollständige
+Recovery. Neun Originalanker und 48 Live-Verträge prüfen Sequenzen,
+Dropped-Zähler, Reliable-Ringe, Checksum-Key, OutPacket/Ping, Snapshot-Acks,
+Command-Time und Rekonstruktionsbasen. Ein zweiter echter Client teilt denselben
+Server-Ingress, behält jedoch eigene Socket-, QPort-, Netchan-, Reliable-, Usercmd-
+und Snapshot-Zustände; beide Clients parsen die Entity des jeweils anderen.
+Vor der Aktivierung absolvieren beide Sockets `getchallenge`,
+`challengeResponse`, komprimiertes `connect` und `connectResponse`; Adresse,
+Challenge, QPort und Server-Slot werden geprüft. Elf Originalanker plus 67
+Live-Verträge prüfen den vollständigen Pfad. Ein anschließender 384-Frame-Lauf
+liefert 768 Usercmds genau einmal aus, kompensiert 22 verlorene Clientpakete und
+20 verlorene Snapshots, verwirft 16 Client- und 13 Snapshot-Duplikate und lässt
+die Reliable-Ringe mit 77 Client- sowie 65 Serverbefehlen mehrfach umlaufen.
+`network_match_loop` synchronisiert dabei die UDP-Verbindungszustände mit den
+produktiven `CL_Frame`-/`SV_Frame`-Timeoutentscheidungen. Die Abnahme über das
+öffentliche Internet bleibt offen.
+
+### QVM-Renderfx und First-Person-Tiefenbereich
+
+`src/mq3/renderer/qvm_scene_geometry.ml` bewahrt nun `refEntity_t.renderfx`
+durch die produktive MD3-, Sprite-, Beam-, Rail- und Lightning-Expansion sowie
+durch Portal-Clipping. `src/mq3/renderer/qvm_scene_batch.ml` trennt
+`RF_DEPTHHACK`-Dreiecke in einen eigenen retained Material-Batch und zeichnet
+ihn wie `RB_RenderDrawSurfList` mit dem Baseq3-Tiefenbereich 0..0.3; danach wird
+der normale Weltbereich auch auf Fehlerpfaden wiederhergestellt. Damit nutzt
+auch die unveränderte cgame-QVM für ihre First-Person-Waffen den vorgesehenen
+Tiefenbereich. Neun Batch-Verträge prüfen Trennung, Geometrieerhalt und einen
+Renderfx-Wechsel im Refresh-Pfad; 22 Portal-Verträge prüfen zusätzlich den
+Metadatenerhalt beim Clipping. Der Batch-Benchmark mit 1.728 Dreiecken und 20
+Refresh-Frames bleibt grün. `RF_SHADOW_PLANE` erzeugt jetzt zusätzlich für
+animierte QVM-MD3-Flächen die Projektion aus `RB_ProjectionShadowDeform`: die
+Vertices folgen der Entity-Lichtrichtung bis zur übergebenen horizontalen
+Schattenebene, flache Lichtvektoren werden wie im Original auf 0,5 begrenzt,
+und ein zweiseitiges, transparent-schwarzes Decal mit Polygon-Offset verhindert
+Z-Fighting. 37 Geometrie- und 19 Materialverträge prüfen Projektion, Clamp,
+produktive Draw-Surface sowie Blend-, Sortier- und Offsetzustand. Die
+Stencil-Shadow-Volumes aus `RB_ShadowTessEnd`/`RB_ShadowFinish` und die
+vollständige `RF_NOSHADOW`-Policy bleiben offen.
+
+### QVM-Inline-Brushmodelle
+
+`R_LoadSubmodels`/`R_AddBrushModelSurfaces` besitzen nun einen produktiven
+MiniLang-Pfad. Die Cgame-Registrierung von `*N` extrahiert exakt den im
+BSP-`dmodel_t` angegebenen Bereich aus `firstSurface` und `numSurfaces` statt
+nur einen String-Platzhalter abzulegen. Planare Flächen, Triangle-Soups und
+Patches behalten Shadernamen, Vertexfarben, Basis- und Lightmap-UVs,
+Lightmapindex sowie Fogindex. Beim QVM-Frame werden sie mit Origin und Achsen
+der `refEntity_t` in Weltkoordinaten überführt und durch denselben
+Mehrstufen-Materialbatch wie MD3-Entities gezeichnet. Der vorhandene
+q3dm12-Beleg umfasst 63 Inline-Modelle, 200 Flächen und 425 vollständig
+lightmapped Dreiecke. Ihr BSP-Fogindex speist jetzt außerdem im Haupt- und
+Portalblick denselben abschließenden Nebel-Overlay und die stufenabhängige
+Nebelabschwächung wie die statische Welt; der Retained-Refresh baut die
+Nebelkoordinaten nach jeder Bewegung aus den aktuellen Weltpositionen neu auf.
+`R_SetupFrustum` erzeugt aus `fov_x`, `fov_y`, Ursprung und Viewachsen die vier
+originalen Seitenebenen. `R_AddBrushModelSurfaces` prüft die aus dem BSP-Modell
+bewahrten Bounds mit `R_CullLocalBox` bereits vor der Transformation und lässt
+vollständig außerhalb liegende Brushmodelle sowohl im Haupt- als auch im
+Portalblick aus. Dadurch erreichen unsichtbare Türen und Plattformen weder
+Geometrieexpansion noch Materialbatch. Der produktive QVM-Pfad übernimmt zudem
+die BSP-`SURF_NODLIGHT`/`SURF_SKY`-Entscheidung und hängt nur deckende
+Brushflächen an den vorhandenen `ProjectDlightTexture`-Pass. Bewegte Flächen
+aktualisieren dabei ihre Projektionsgeometrie, Entity-Origin und Achsen pro Frame.
+Wie `R_TransformDlights` wird jedes Weltlicht vor der S/T-Projektion und
+Z-Abschwächung in das lokale Koordinatensystem auch gedrehter Brushmodelle
+transformiert; die gezeichneten Vertices bleiben in Weltkoordinaten. MD3-Modelle
+verbleiben auf ihrem eigenen Lightgrid-/Entity-Lichtpfad. Vor der Projektion
+bildet der Port außerdem die drei achsenweisen Vergleiche von `R_DlightBmodel`
+gegen die um den Lichtradius erweiterten lokalen Modellgrenzen nach. Dadurch
+erreichen entfernte Lichter die Brushflächen nicht. Zwei unveränderte
+C-Datensätze aus `R_TransformDlights`/`R_DlightBmodel`, 13 direkte
+Dynamic-Light-Verträge, 63 BSP-, 42 Geometrie-, 15 Batch-,
+15 unveränderte C-View-Math-Datensätze, 39 View-Math- und 23
+Portalverträge prüfen zusätzlich Parsing, Transformation, Retained-Refresh und
+Clipping der neuen Metadaten sowie sichtbare und rückwärtige Bounds.
+
+### BSP-Lichtflares
+
+`MST_FLARE`-Flächen werden jetzt wie `ParseFlare` aus Shader-/Fogindex,
+`lightmapOrigin`, `lightmapVecs[0]` als Farbe und `lightmapVecs[2]` als Normale
+in einen eigenen Katalog übernommen. Nach Welt und Cgame-Geometrie liest der
+produktive Win32-Rasterizer die tatsächliche Augenraumtiefe am Flare-Mittelpunkt,
+wendet die strikte 24-Einheiten-Sichtbarkeit aus `RB_TestFlare` an und führt den
+zustandsbehafteten linearen `r_flareFade`-Übergang getrennt für Haupt- und
+Portalansichten. Sichtbare Flares verwenden Baseq3s
+`viewportWidth * (r_flareSize/640 + 8/-eyeZ)`-Größe, Normalenausrichtung,
+additives Blending und das echte `flareShader`-Bild aus dem Retail-PK3. Fehlt
+dieses Bild, wird kein Ersatz gezeichnet. Der archivierte `r_flares`-Cvar behält
+den Originalstandard `0`; der Pass wird erst bei gesetztem Cvar aktiv. 15
+Verträge prüfen Parsing, Fogoffset, Tieftoleranz, Ein-/Ausblenden, Größe und
+Normalenfaktor. Der native `/W4 /WX`-Lifecycle-Test prüft zusätzlich gelöschte,
+gesetzte und außerhalb liegende Depth-Samples. Dynamische-Licht-Flares,
+Fog-Modulation der Flarefarbe und ein sichtbarer Retail-Lauf bleiben offen.
+
+### Adaptive BSP-Patchgitter
+
+Der produktive Weltpfad verwendet für `MST_PATCH` jetzt den Kern von
+`R_SubdividePatchToGrid`: den senkrechten Abstand des Bézier-Mittelpunkts von
+der Endpunktsehne, wiederholte de-Casteljau-Halbierung derselben Spanne, die
+originale 65-Punkte-Grenze je Achse, den transponierten zweiten Achsendurchlauf,
+`PutPointsOnCurve`, ganzzahlige Byte-Farbmittelung und das Entfernen kollinearer
+Kontrollzeilen und -spalten. `MakeMeshNormals` rekonstruiert anschließend jede
+Patchnormale aus bis zu acht Richtungen, sucht bis zu drei Punkte weit durch
+degenerierte Nachbarn und verbindet geschlossene Patchränder wie das Original.
+Die Auswahl sichtbarer Weltflächen berechnet ihr
+Dreiecksbudget aus demselben adaptiven Gitter und kann deshalb keine anders
+tessellierte Schätzung mehr verwenden. 63 BSP-Verträge prüfen unter anderem
+das 5x5-Gitter einer stark gekrümmten Fläche, den groben 3x3-Fall, die Reduktion
+einer ebenen 3x3-Fläche auf zwei Dreiecke und die Zwischenwerte. Der bewahrte
+`q3dm1`-Probe verarbeitet 2.097 Flächen, davon 113 Patches, zu 17.723
+Dreiecken. 75 auf sechs Dezimalstellen verglichene Datensätze aus der
+unveränderten C-Funktion prüfen zusätzlich ein gekrümmtes und ein geschlossenes
+5x5-Normalenfeld sowie eines mit degenerierten Nachbarn.
+LOD-Fehlertabellen und das Stitching benachbarter LOD-Gruppen, die
+Tristrip-Ausrichtungsoptimierung sowie `R_GridInsertRow/Column` bleiben offen.
+
+### QVM-Modelllicht ohne Weltmodell
+
+`playable_light_grid.noWorldEntitySample` bildet nun den Fallback aus
+`R_SetupEntityLighting` für `RDF_NOWORLDMODEL` nach: bei der im Softwarepfad
+verwendeten `identityLight` 1.0 sind dies 150 Einheiten Umgebungs- und
+gerichtetes Licht, der im Original bedingungslos aktive 32er Mindestlichtanteil
+und die normalisierte Standard-Sonnenrichtung `(0.45, 0.3, 0.9)`. Aktive
+dynamische Lichter werden wie im C-Pfad anschließend aufaddiert. Die produktive
+QVM-Geometrie wählt diesen Pfad für Menü- und modellfreie Refdefs. Der produktive
+Lightmap- und Light-Grid-Decoder verwendet außerdem die unveränderte
+`R_ColorShiftLightingBytes`-Rechnung: ohne Hardware-Gammaramp wird Baseq3s
+Standarddifferenz `r_mapOverBrightBits(2) - tr.overbrightBits(0)` angewandt und
+helle RGB-Werte werden proportional normalisiert statt weiß abgeschnitten. Sieben
+unveränderte C-Datensätze, 63 BSP-, 23 Light-Grid- und 42 QVM-Geometrieverträge
+prüfen Konstanten, Bytewerte, Richtung, dynamisches Licht und die tatsächlichen
+MD3-Vertexfarben. Map-spezifische `q3map_sun`-Richtungen und die Laufzeitbindung
+frei konfigurierbarer Overbright-Cvars bleiben als Teil der vollständigen
+Renderer-Parität offen.

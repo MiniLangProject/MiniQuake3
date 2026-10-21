@@ -165,3 +165,47 @@ function setCheatState(registry)
     end if
   end for
 end function
+
+// Cvar_Restart_f resets registered variables while preserving the stable
+// numeric handle table used by vmCvar_t. User-created entries disappear from
+// the linked-list view. The 1.32b source uses sizeof(var), where var is a
+// pointer, so its x86 memset clears only the leading name pointer. Preserve
+// that shipped behavior while avoiding access through the list.
+function restart(registry)
+  if registry==void then return error(3302,"Cvar_Restart NULL registry") end if
+  survivors=[]
+  for each variable in registry.variables
+    if (variable.flags & (ROM | INIT | NORESTART)) != 0 then
+      survivors=survivors+[variable]
+    else if (variable.flags & USER_CREATED) != 0 then
+      variable.name=void
+    else
+      // Cvar_Set is forced. Its early equal-string return deliberately leaves
+      // a pending latch intact, matching the slightly surprising C behavior.
+      set2(registry,variable.name,variable.resetString,true)
+      survivors=survivors+[variable]
+    end if
+  end for
+  registry.variables=survivors
+  return void
+end function
+
+// Cvar_WriteVariables.  Registry.variables is kept in the original linked-list
+// order (newest first), so this text is also byte ordered like q3config.cfg.
+// The native routine formats each line through a 1024-byte stack buffer.
+function configLine(name,value)
+  text="seta "+name+" \""+value+"\"\n"
+  data=bytes(text);if len(data)>1023 then return decode(slice(data,0,1023)) end if
+  return text
+end function
+
+function writeVariables(registry)
+  output=""
+  for each variable in registry.variables
+    if not stringEqualsIgnoreCaseAscii(variable.name,"cl_cdkey") and (variable.flags & ARCHIVE)!=0 then
+      value=variable.string;if variable.latchedString is not void then value=variable.latchedString end if
+      output=output+configLine(variable.name,value)
+    end if
+  end for
+  return output
+end function

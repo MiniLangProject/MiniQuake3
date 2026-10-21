@@ -16,8 +16,13 @@ struct Transport socket end struct
 struct Packet received address data end struct
 
 function addressToEndpoint(address)
-  if address==void or address.type!=NA_IP or len(address.ip)!=4 then return error(6970,"net transport: unsupported address") end if
+  if address==void or (address.type!=NA_IP and address.type!=NA_BROADCAST) or len(address.ip)!=4 then return error(6970,"net transport: unsupported address") end if
   return udp.Endpoint(udp.ipv4(address.ip[0],address.ip[1],address.ip[2],address.ip[3]),address.port)
+end function
+
+function resolveIPv4(name,port)
+  if port<1 or port>65535 then return error(6970,"net transport: invalid resolved port") end if
+  address=udp.resolveIPv4(name);return netchan.Address(NA_IP,udp.octets(address),port)
 end function
 
 function endpointToAddress(endpoint)

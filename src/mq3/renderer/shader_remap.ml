@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Mutable shader-handle remaps matching R_RemapShader's name semantics.
 package mq3.renderer.shader_remap
+import mq3.compat.textnumbers as numbers
 
 struct Entry oldName newName timeOffset handles end struct
 struct State entries revision end struct
@@ -32,6 +33,13 @@ end function
 
 function timeOffset(state,name)
   entry=find(state,name);if entry==void then return "" end if;return entry.timeOffset
+end function
+
+function timeOffsetForHandle(state,handle)
+  if state==void or handle<=0 then return void end if
+  index=handle-1
+  for each entry in state.entries if contains(entry.handles,index) then return numbers.atof32(entry.timeOffset) end if end for
+  return void
 end function
 
 function contains(values,value) for each current in values if current==value then return true end if end for;return false end function

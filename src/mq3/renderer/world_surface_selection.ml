@@ -73,8 +73,8 @@ function faceTriangleCount(map,faceOffset,patchError)
   firstVert=i32(map,faceOffset+12);numVerts=i32(map,faceOffset+16);width=i32(map,faceOffset+96);height=i32(map,faceOffset+100)
   if width<3 or height<3 or width%2==0 or height%2==0 or width*height!=numVerts then return fail("invalid patch control grid") end if
   control=[];for index=0 to numVerts-1 value=render.vertex(map,firstVert+index);if value is error then return value end if;control=control+[value] end for
-  u=render.patchAxisSegments(control,width,height,true,patchError);v=render.patchAxisSegments(control,width,height,false,patchError)
-  return n.quotient(width-1,2)*n.quotient(height-1,2)*u*v*2
+  grid=render.subdividePatch(control,width,height,patchError);if grid is error then return grid end if
+  return (grid[1]-1)*(grid[2]-1)*2
 end function
 
 function faceBounds(map,faceOffset)
@@ -133,11 +133,12 @@ function setTwoSidedTextures(cache,flags)
   cache.twoSidedTextureFlags=flags;return cache
 end function
 
-function chooseCore(map,camera,cfg,cache)
+function chooseCorePvs(map,camera,pvsOrigin,cfg,cache)
   if not validMap(map) then return fail("invalid BSP object") end if
   if camera==void or camera.position==void or len(camera.position)!=3 then return fail("invalid camera") end if
+  if pvsOrigin==void or len(pvsOrigin)!=3 then return fail("invalid PVS origin") end if
   if cfg==void then return fail("missing configuration") end if
-  leaf=pointLeaf(map,camera.position);if leaf is error then return leaf end if
+  leaf=pointLeaf(map,pvsOrigin);if leaf is error then return leaf end if
   cameraCluster=i32(map,map.offsets[4]+leaf*LEAF_STRIDE);if cameraCluster is error then return cameraCluster end if
   pvsUsed=map.lengths[16]>0 and cameraCluster>=0
   faces=[];seenFaces=array(map.counts[13],false);rejectedPvs=0
@@ -185,11 +186,17 @@ function chooseCore(map,camera,cfg,cache)
   return Selection(selected,len(candidates),len(selected),used,pvsUsed,leaf,cameraCluster,rejectedPvs,rejectedFrustum,rejectedBackface,rejectedDistance,rejectedBudget)
 end function
 
+function chooseCore(map,camera,cfg,cache) return chooseCorePvs(map,camera,camera.position,cfg,cache) end function
 function choose(map,camera,cfg) return chooseCore(map,camera,cfg,void) end function
 function chooseCached(cache,camera,cfg)
   if cache==void or cache.map==void then return fail("invalid world cache") end if
   if cfg.patchError!=cache.patchError then return fail("cache patch error differs from configuration") end if
   return chooseCore(cache.map,camera,cfg,cache)
+end function
+function choosePortalCached(cache,camera,pvsOrigin,cfg)
+  if cache==void or cache.map==void then return fail("invalid world cache") end if
+  if cfg.patchError!=cache.patchError then return fail("cache patch error differs from configuration") end if
+  return chooseCorePvs(cache.map,camera,pvsOrigin,cfg,cache)
 end function
 
 function cachedRenderData(cache,chosen)
@@ -204,6 +211,10 @@ end function
 
 function prepareCached(cache,camera,cfg)
   chosen=chooseCached(cache,camera,cfg);if chosen is error then return chosen end if
+  return PreparedWorld(chosen,cachedRenderData(cache,chosen))
+end function
+function preparePortalCached(cache,camera,pvsOrigin,cfg)
+  chosen=choosePortalCached(cache,camera,pvsOrigin,cfg);if chosen is error then return chosen end if
   return PreparedWorld(chosen,cachedRenderData(cache,chosen))
 end function
 

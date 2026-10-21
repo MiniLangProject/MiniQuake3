@@ -22,6 +22,8 @@ const BLEND_ALPHA=1
 const BLEND_ADD=2
 const BLEND_FILTER=3
 const BLEND_DST_COLOR_ONE_MINUS_DST_ALPHA=4
+const BLEND_MARK=6
+const BLEND_PREMULTIPLIED_ALPHA=7
 const ALPHA_TEST_NONE=0
 const ALPHA_TEST_GT0=1
 const ALPHA_TEST_LT128=2
@@ -30,7 +32,7 @@ const ALPHA_TEST_GE128=3
 struct Image width height pixels end struct
 struct UvMod kind a b c d e f wave end struct
 struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest tcGen rgbGen rgbWave alphaGen alphaWave constantColor bspLightmap clampTexture depthWrite depthEqual portalRange tcGenVectors end struct
-struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps end struct
+struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps timeOffset clampTime end struct
 struct Catalog materials scripts attempted loaded textureCount animatedStageCount effectStageCount end struct
 
 function fail(message) return error(7486,"preview materials: "+message) end function
@@ -138,6 +140,8 @@ function stageBlend(stage)
   if stage.blendSrc==shaderParser.GLS_SRCBLEND_DST_COLOR and stage.blendDst==shaderParser.GLS_DSTBLEND_ZERO then return BLEND_FILTER end if
   if stage.blendSrc==shaderParser.GLS_SRCBLEND_ZERO and stage.blendDst==shaderParser.GLS_DSTBLEND_SRC_COLOR then return BLEND_FILTER end if
   if stage.blendSrc==shaderParser.GLS_SRCBLEND_DST_COLOR and stage.blendDst==shaderParser.GLS_DSTBLEND_ONE_MINUS_DST_ALPHA then return BLEND_DST_COLOR_ONE_MINUS_DST_ALPHA end if
+  if stage.blendSrc==shaderParser.GLS_SRCBLEND_ZERO and stage.blendDst==shaderParser.GLS_DSTBLEND_ONE_MINUS_SRC_COLOR then return BLEND_MARK end if
+  if stage.blendSrc==shaderParser.GLS_SRCBLEND_ONE and stage.blendDst==shaderParser.GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA then return BLEND_PREMULTIPLIED_ALPHA end if
   return BLEND_OPAQUE
 end function
 function stageTcGen(stage) if stage.tcGen=="bad" then return "texture" end if;return stage.tcGen end function
@@ -160,6 +164,7 @@ function stageMods(stage)
     else if mod.kind=="turb" and len(mod.values)>=4 then result=result+[UvMod("turb",mod.values[0],mod.values[1],mod.values[2],mod.values[3],0.0,0.0,shaderParser.blankWave())]
     else if mod.kind=="stretch" then result=result+[UvMod("stretch",0.0,0.0,0.0,0.0,0.0,0.0,mod.wave)]
     else if mod.kind=="transform" and len(mod.values)>=6 then result=result+[UvMod("transform",mod.values[0],mod.values[1],mod.values[2],mod.values[3],mod.values[4],mod.values[5],shaderParser.blankWave())]
+    else if mod.kind=="entitytranslate" then result=result+[UvMod("entitytranslate",0.0,0.0,0.0,0.0,0.0,0.0,shaderParser.blankWave())]
     end if
   end for
   return result
@@ -214,9 +219,9 @@ function resolvedShaderSort(shader)
 end function
 
 function runtimeStages(archive,index,name,nextSlot,endSlot)
-  result=[];deforms=[];twoSided=false;sort=3.0;polygonOffset=false;noMipMaps=false;parsed=try(shaderParser.parseIndexed(index,name))
+  result=[];deforms=[];twoSided=false;sort=3.0;polygonOffset=false;noMipMaps=false;clampTime=0.0;parsed=try(shaderParser.parseIndexed(index,name))
   if not (parsed is error) and parsed!=void then
-    deforms=parsed.deforms;twoSided=parsed.cull=="twoSided";sort=resolvedShaderSort(parsed);polygonOffset=parsed.polygonOffset;noMipMaps=parsed.noMipMaps
+    deforms=parsed.deforms;twoSided=parsed.cull=="twoSided";sort=resolvedShaderSort(parsed);polygonOffset=parsed.polygonOffset;noMipMaps=parsed.noMipMaps;clampTime=parsed.clampTime
     for each parsedStage in parsed.stages
       if parsedStage.isLightmap and len(result)<MAX_RUNTIME_STAGES then result=result+[lightmapRuntimeStage(parsedStage)]
       else if usableStage(parsedStage) and len(result)<MAX_RUNTIME_STAGES then
@@ -233,7 +238,7 @@ function runtimeStages(archive,index,name,nextSlot,endSlot)
     if loaded==void and mapped!=name then loaded=directRuntimeStage(archive,name,nextSlot,endSlot) end if
     if loaded!=void then result=[loaded[0]];nextSlot=loaded[1] end if
   end if
-  return [result,nextSlot,deforms,twoSided,sort,polygonOffset,noMipMaps]
+  return [result,nextSlot,deforms,twoSided,sort,polygonOffset,noMipMaps,clampTime]
 end function
 
 function floorNumber(value) integer=n.trunc32(value);if value<integer then return integer-1 end if;return integer end function
@@ -243,6 +248,18 @@ function frameIndex(stage,nowMilliseconds)
   return frame%len(stage.slots)
 end function
 function slotAt(stage,nowMilliseconds) if stage==void or len(stage.slots)==0 then return -1 end if;return stage.slots[frameIndex(stage,nowMilliseconds)] end function
+// tr_backend.c subtracts refEntity_t.shaderTime before every shader-time
+// consumer runs. Keep that conversion in one place so animated images,
+// waves, deforms and tcMods all observe the same per-entity clock.
+function shaderSeconds(nowMilliseconds,entityShaderTime,timeOffset,clampTime)
+  value=n.fsub(n.fsub(n.f32(nowMilliseconds*0.001),n.f32(entityShaderTime)),n.f32(timeOffset))
+  if clampTime!=0.0 and value>=clampTime then return n.f32(clampTime) end if
+  return value
+end function
+function shaderMilliseconds(nowMilliseconds,entityShaderTime,timeOffset,clampTime) return n.fmul(shaderSeconds(nowMilliseconds,entityShaderTime,timeOffset,clampTime),1000.0) end function
+function entityMilliseconds(nowMilliseconds,shaderTime) return shaderMilliseconds(nowMilliseconds,shaderTime,0.0,0.0) end function
+function frameIndexEntity(stage,nowMilliseconds,shaderTime) return frameIndex(stage,entityMilliseconds(nowMilliseconds,shaderTime)) end function
+function slotAtEntity(stage,nowMilliseconds,shaderTime) if stage==void or len(stage.slots)==0 then return -1 end if;return stage.slots[frameIndexEntity(stage,nowMilliseconds,shaderTime)] end function
 
 function waveSignal(wave,nowMilliseconds)
   seconds=n.f32(nowMilliseconds*0.001)
@@ -280,26 +297,62 @@ end function
 function colorByte(value)
   if value<0.0 then return 0 end if;if value>255.0 then return 255 end if;return n.trunc32(value)
 end function
-function stageColor(stage,vertexColor,nowMilliseconds)
-  result=[255,255,255,255]
-  if stage.rgbGen=="vertex" or stage.rgbGen=="exactvertex" or stage.rgbGen=="lightingdiffuse" then result[0]=vertexColor[0];result[1]=vertexColor[1];result[2]=vertexColor[2]
-  else if stage.rgbGen=="oneminusvertex" then result[0]=255-vertexColor[0];result[1]=255-vertexColor[1];result[2]=255-vertexColor[2]
-  else if stage.rgbGen=="wave" then value=colorByte(255.0*waveValue(stage.rgbWave,nowMilliseconds));result[0]=value;result[1]=value;result[2]=value
-  else if stage.rgbGen=="const" then result[0]=colorByte(stage.constantColor[0]);result[1]=colorByte(stage.constantColor[1]);result[2]=colorByte(stage.constantColor[2])
+// FinishShader assigns fog modulation only when the shader's first stage is
+// blended. Additive and inverse-source-color stages fade RGB, strict alpha
+// stages fade alpha, and premultiplied-alpha stages fade RGBA. The final fog
+// pass can then converge on the fog colour without glowing or opaque blended
+// surfaces leaking through it.
+function fogAdjustment(firstStage,stage)
+  if firstStage==void or stage==void or firstStage.blend==BLEND_OPAQUE then return "none" end if
+  if stage.blend==BLEND_ADD or stage.blend==BLEND_MARK then return "rgb" end if
+  if stage.blend==BLEND_ALPHA then return "alpha" end if
+  if stage.blend==BLEND_PREMULTIPLIED_ALPHA then return "rgba" end if
+  return "none"
+end function
+function modulateForFog(color,density,adjustment)
+  factor=1.0-density;if factor<0.0 then factor=0.0 end if;if factor>1.0 then factor=1.0 end if
+  result=[color[0],color[1],color[2],color[3]]
+  if adjustment=="rgb" or adjustment=="rgba" then result[0]=colorByte(result[0]*factor);result[1]=colorByte(result[1]*factor);result[2]=colorByte(result[2]*factor) end if
+  if adjustment=="alpha" or adjustment=="rgba" then result[3]=colorByte(result[3]*factor) end if
+  return result
+end function
+// Complete ComputeColors ordering from tr_shade.c. RGB generation may seed
+// alpha, after which alphaGen either preserves or replaces it. identityLight
+// is explicit so differential tests can cover the original overbright path;
+// the software preview currently renders with identityLight 1.0.
+function stageColorEntityIdentity(stage,vertexColor,entityColor,nowMilliseconds,identityLight)
+  identityByte=colorByte(255.0*identityLight);result=[identityByte,identityByte,identityByte,identityByte]
+  if stage.rgbGen=="identity" then result=[255,255,255,255]
+  else if stage.rgbGen=="vertex" then
+    result=[vertexColor[0],vertexColor[1],vertexColor[2],vertexColor[3]]
+    if identityLight!=1.0 then result[0]=colorByte(vertexColor[0]*identityLight);result[1]=colorByte(vertexColor[1]*identityLight);result[2]=colorByte(vertexColor[2]*identityLight) end if
+  else if stage.rgbGen=="exactvertex" then result=[vertexColor[0],vertexColor[1],vertexColor[2],vertexColor[3]]
+  else if stage.rgbGen=="lightingdiffuse" then result=[vertexColor[0],vertexColor[1],vertexColor[2],255]
+  else if stage.rgbGen=="oneminusvertex" then result[0]=colorByte((255-vertexColor[0])*identityLight);result[1]=colorByte((255-vertexColor[1])*identityLight);result[2]=colorByte((255-vertexColor[2])*identityLight)
+  else if stage.rgbGen=="entity" then result=[entityColor[0],entityColor[1],entityColor[2],entityColor[3]]
+  else if stage.rgbGen=="oneminusentity" then result=[255-entityColor[0],255-entityColor[1],255-entityColor[2],255-entityColor[3]]
+  else if stage.rgbGen=="wave" then value=colorByte(255.0*waveValue(stage.rgbWave,nowMilliseconds)*identityLight);result=[value,value,value,255]
+  else if stage.rgbGen=="const" then result=[colorByte(stage.constantColor[0]),colorByte(stage.constantColor[1]),colorByte(stage.constantColor[2]),colorByte(stage.constantColor[3])]
   end if
-  if stage.alphaGen=="vertex" then result[3]=vertexColor[3]
+  if stage.alphaGen=="identity" then
+    if stage.rgbGen!="identity" and (stage.rgbGen!="vertex" or identityLight!=1.0) then result[3]=255 end if
+  else if stage.alphaGen=="vertex" then if stage.rgbGen!="vertex" then result[3]=vertexColor[3] end if
   else if stage.alphaGen=="oneminusvertex" then result[3]=255-vertexColor[3]
+  else if stage.alphaGen=="entity" then result[3]=entityColor[3]
+  else if stage.alphaGen=="oneminusentity" then result[3]=255-entityColor[3]
   else if stage.alphaGen=="wave" then result[3]=colorByte(255.0*waveValue(stage.alphaWave,nowMilliseconds))
-  else if stage.alphaGen=="const" then result[3]=colorByte(stage.constantColor[3])
+  else if stage.alphaGen=="const" then if stage.rgbGen!="const" then result[3]=colorByte(stage.constantColor[3]) end if
   end if
   return result
 end function
+function stageColorEntity(stage,vertexColor,entityColor,nowMilliseconds) return stageColorEntityIdentity(stage,vertexColor,entityColor,nowMilliseconds,1.0) end function
+function stageColor(stage,vertexColor,nowMilliseconds) return stageColorEntity(stage,vertexColor,vertexColor,nowMilliseconds) end function
 
 // AGEN_PORTAL from tr_shade.c fades each deformed vertex according to its
 // camera distance.  This is deliberately evaluated after stageColor so the
 // portal generator replaces only alpha, exactly like the original renderer.
-function stageColorAt(stage,vertexColor,position,viewOrigin,nowMilliseconds)
-  result=stageColor(stage,vertexColor,nowMilliseconds)
+function stageColorAtEntity(stage,vertexColor,entityColor,position,viewOrigin,nowMilliseconds)
+  result=stageColorEntity(stage,vertexColor,entityColor,nowMilliseconds)
   if stage.alphaGen=="portal" then
     range=stage.portalRange;if range<=0.0 then range=256.0 end if
     dx=position[0]-viewOrigin[0];dy=position[1]-viewOrigin[1];dz=position[2]-viewOrigin[2]
@@ -308,6 +361,7 @@ function stageColorAt(stage,vertexColor,position,viewOrigin,nowMilliseconds)
   end if
   return result
 end function
+function stageColorAt(stage,vertexColor,position,viewOrigin,nowMilliseconds) return stageColorAtEntity(stage,vertexColor,vertexColor,position,viewOrigin,nowMilliseconds) end function
 
 function vectorUV(stage,position)
   if stage==void or len(stage.tcGenVectors)!=2 or len(stage.tcGenVectors[0])!=3 or len(stage.tcGenVectors[1])!=3 then return fail("invalid vector tcGen") end if
@@ -324,9 +378,10 @@ end function
 
 // Baseq3 applies tcMods in declaration order. Turbulence additionally uses
 // the unmodified world position of each vertex.
-function transformUVAt(stage,uv,position,nowMilliseconds)
+function transformUVEntityAt(stage,uv,position,entityTexCoord,shaderTime,nowMilliseconds)
   if stage==void or uv==void or len(uv)!=2 or position==void or len(position)!=3 then return fail("stage, UV and world position are required") end if
-  result=[uv[0],uv[1]];seconds=nowMilliseconds*0.001
+  if entityTexCoord==void or len(entityTexCoord)!=2 then return fail("entity texture coordinate requires two components") end if
+  effectiveMilliseconds=entityMilliseconds(nowMilliseconds,shaderTime);result=[uv[0],uv[1]];seconds=effectiveMilliseconds*0.001
   for each mod in stage.uvMods
     if mod.kind=="scroll" then
       scrollS=mod.a*seconds;scrollS=scrollS-floorNumber(scrollS);scrollT=mod.b*seconds;scrollT=scrollT-floorNumber(scrollT)
@@ -335,12 +390,17 @@ function transformUVAt(stage,uv,position,nowMilliseconds)
     else if mod.kind=="rotate" then
       radians=0.0-mod.a*seconds*3.14159265358979323846/180.0;sine=trans.sin(radians);cosine=trans.cos(radians);x=result[0]-0.5;y=result[1]-0.5
       result=[x*cosine-y*sine+0.5,x*sine+y*cosine+0.5]
-    else if mod.kind=="turb" then result=[result[0]+turbulentOffset(position[0]+position[2],mod,nowMilliseconds),result[1]+turbulentOffset(position[1],mod,nowMilliseconds)]
-    else if mod.kind=="stretch" then p=1.0/waveSample(mod.wave,nowMilliseconds);offset=0.5-0.5*p;result=[result[0]*p+offset,result[1]*p+offset]
+    else if mod.kind=="turb" then result=[result[0]+turbulentOffset(position[0]+position[2],mod,effectiveMilliseconds),result[1]+turbulentOffset(position[1],mod,effectiveMilliseconds)]
+    else if mod.kind=="stretch" then p=1.0/waveSample(mod.wave,effectiveMilliseconds);offset=0.5-0.5*p;result=[result[0]*p+offset,result[1]*p+offset]
     else if mod.kind=="transform" then s=result[0];t=result[1];result=[s*mod.a+t*mod.c+mod.e,s*mod.b+t*mod.d+mod.f]
+    else if mod.kind=="entitytranslate" then scrollS=entityTexCoord[0]*seconds;scrollS=scrollS-floorNumber(scrollS);scrollT=entityTexCoord[1]*seconds;scrollT=scrollT-floorNumber(scrollT);result=[result[0]+scrollS,result[1]+scrollT]
     end if
   end for
   return result
+end function
+
+function transformUVAt(stage,uv,position,nowMilliseconds)
+  return transformUVEntityAt(stage,uv,position,[0.0,0.0],0.0,nowMilliseconds)
 end function
 
 function transformUV(stage,uv,nowMilliseconds)
@@ -372,7 +432,7 @@ function loadIndexed(archive,map,maxMaterials,firstSlot,index,scriptCount)
     if len(stages)>0 then
       firstImageName="";firstImage=void;firstImageSlot=-1
       for each stage in stages if firstImageSlot<0 and len(stage.slots)>0 then firstImageName=stage.imageNames[0];firstImage=stage.images[0];firstImageSlot=stage.slots[0] end if end for
-      materialList=materialList+[Material(textureIndex,name,firstImageName,firstImage,firstImageSlot,stages,resolved[2],resolved[3],resolved[4],resolved[5],resolved[6])]
+      materialList=materialList+[Material(textureIndex,name,firstImageName,firstImage,firstImageSlot,stages,resolved[2],resolved[3],resolved[4],resolved[5],resolved[6],0.0,resolved[7])]
       for each stage in stages
         if len(stage.slots)>1 then animated=animated+1 end if
         if stage.blend!=BLEND_OPAQUE or stage.alphaTest!=ALPHA_TEST_NONE or len(stage.uvMods)>0 then effects=effects+1 end if

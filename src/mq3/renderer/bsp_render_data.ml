@@ -8,14 +8,14 @@ const MST_PLANAR = 1
 const MST_PATCH = 2
 const MST_TRIANGLE_SOUP = 3
 const DEFAULT_PATCH_ERROR = 4.0
-const MAX_PATCH_SUBDIVISIONS = 16
+const MAX_GRID_SIZE = 65
 const VERTEX_STRIDE = 44
 const FACE_STRIDE = 104
 const LIGHTMAP_WIDTH = 128
 const LIGHTMAP_HEIGHT = 128
 const LIGHTMAP_RGB_SIZE = 49152
 
-struct RenderVertex position baseUV lightmapUV normal color sourceIndex end struct
+struct RenderVertex position baseUV lightmapUV normal color entityColor entityTexCoord shaderTime sourceIndex end struct
 struct RenderTriangle vertices textureIndex lightmapIndex fogIndex faceIndex triangleIndex end struct
 struct RenderData triangles surfaceCount triangleCount skippedSurfaceCount truncated patchSurfaceCount end struct
 
@@ -37,7 +37,8 @@ function f32(map,offset)
 end function
 function vertex(map,index)
   offset=recordRange(map,10,index,VERTEX_STRIDE);if offset is error then return offset end if
-  return RenderVertex([f32(map,offset),f32(map,offset+4),f32(map,offset+8)],[f32(map,offset+12),f32(map,offset+16)],[f32(map,offset+20),f32(map,offset+24)],[f32(map,offset+28),f32(map,offset+32),f32(map,offset+36)],[map.data[offset+40],map.data[offset+41],map.data[offset+42],map.data[offset+43]],index)
+  color=[map.data[offset+40],map.data[offset+41],map.data[offset+42],map.data[offset+43]]
+  return RenderVertex([f32(map,offset),f32(map,offset+4),f32(map,offset+8)],[f32(map,offset+12),f32(map,offset+16)],[f32(map,offset+20),f32(map,offset+24)],[f32(map,offset+28),f32(map,offset+32),f32(map,offset+36)],color,[255,255,255,255],[0.0,0.0],0.0,index)
 end function
 function contains(values,wanted)
   for each value in values if value==wanted then return true end if end for
@@ -58,60 +59,143 @@ end function
 function bezierVertex(a,b,c,t)
   color=bezierArray(a.color,b.color,c.color,t)
   for index=0 to 3 color[index]=n.trunc32(color[index]+0.5);if color[index]<0 then color[index]=0 end if;if color[index]>255 then color[index]=255 end if end for
-  return RenderVertex(bezierArray(a.position,b.position,c.position,t),bezierArray(a.baseUV,b.baseUV,c.baseUV,t),bezierArray(a.lightmapUV,b.lightmapUV,c.lightmapUV,t),normalized(bezierArray(a.normal,b.normal,c.normal,t)),color,-1)
+  entityColor=bezierArray(a.entityColor,b.entityColor,c.entityColor,t);for index=0 to 3 entityColor[index]=n.trunc32(entityColor[index]+0.5) end for
+  entityTexCoord=bezierArray(a.entityTexCoord,b.entityTexCoord,c.entityTexCoord,t);shaderTime=bezierScalar(a.shaderTime,b.shaderTime,c.shaderTime,t)
+  return RenderVertex(bezierArray(a.position,b.position,c.position,t),bezierArray(a.baseUV,b.baseUV,c.baseUV,t),bezierArray(a.lightmapUV,b.lightmapUV,c.lightmapUV,t),normalized(bezierArray(a.normal,b.normal,c.normal,t)),color,entityColor,entityTexCoord,shaderTime,-1)
 end function
-function curveError(a,b,c)
-  sum=0.0
-  for axis=0 to 2 delta=(a.position[axis]-2.0*b.position[axis]+c.position[axis])*0.25;sum=sum+delta*delta end for
-  return n.fsqrt(sum)
+function halfArray(a,b)
+  result=[];for index=0 to len(a)-1 result=result+[(a[index]+b[index])*0.5] end for;return result
 end function
-function patchAxisSegments(control,width,height,horizontal,errorLimit)
-  worst=0.0
-  if horizontal then
+function halfVertex(a,b)
+  color=[];entityColor=[]
+  for index=0 to 3 color=color+[n.quotient(a.color[index]+b.color[index],2)];entityColor=entityColor+[n.quotient(a.entityColor[index]+b.entityColor[index],2)] end for
+  return RenderVertex(halfArray(a.position,b.position),halfArray(a.baseUV,b.baseUV),halfArray(a.lightmapUV,b.lightmapUV),halfArray(a.normal,b.normal),color,entityColor,halfArray(a.entityTexCoord,b.entityTexCoord),(a.shaderTime+b.shaderTime)*0.5,-1)
+end function
+function curveLineError(a,b,c)
+  midpoint=bezierArray(a.position,b.position,c.position,0.5);offset=[];direction=[];lengthSquared=0.0
+  for axis=0 to 2 offset=offset+[midpoint[axis]-a.position[axis]];delta=c.position[axis]-a.position[axis];direction=direction+[delta];lengthSquared=lengthSquared+delta*delta end for
+  if lengthSquared>0.0 then length=n.fsqrt(lengthSquared);for axis=0 to 2 direction[axis]=direction[axis]/length end for end if
+  projected=offset[0]*direction[0]+offset[1]*direction[1]+offset[2]*direction[2];errorSquared=0.0
+  for axis=0 to 2 delta=offset[axis]-direction[axis]*projected;errorSquared=errorSquared+delta*delta end for
+  return n.fsqrt(errorSquared)
+end function
+function transposeGrid(control,width,height)
+  result=[]
+  for row=0 to width-1 for column=0 to height-1 result=result+[control[column*width+row]] end for end for
+  return result
+end function
+// Baseq3 R_SubdividePatchToGrid checks perpendicular distance to the chord,
+// inserts the two de Casteljau half points and rechecks the same span.  This
+// preserves its non-uniform grid and 65-point axis ceiling instead of applying
+// one worst-case subdivision count to every quadratic block.
+function subdivideHorizontal(control,width,height,errorLimit)
+  errors=array(MAX_GRID_SIZE,0.0);column=0
+  while column+2<width
+    maximum=0.0
     for row=0 to height-1
-      column=0;while column<=width-3
-        value=curveError(control[row*width+column],control[row*width+column+1],control[row*width+column+2]);if value>worst then worst=value end if;column=column+2
-      end while
+      value=curveLineError(control[row*width+column],control[row*width+column+1],control[row*width+column+2]);if value>maximum then maximum=value end if
     end for
-  else
-    for column=0 to width-1
-      row=0;while row<=height-3
-        value=curveError(control[row*width+column],control[(row+1)*width+column],control[(row+2)*width+column]);if value>worst then worst=value end if;row=row+2
-      end while
-    end for
-  end if
-  segments=1;scaled=worst
-  while scaled>errorLimit and segments<MAX_PATCH_SUBDIVISIONS segments=segments*2;scaled=scaled*0.25 end while
-  return segments
+    if maximum<0.1 then errors[column+1]=999.0;column=column+2
+    else if maximum<=errorLimit or width+2>MAX_GRID_SIZE then errors[column+1]=1.0/maximum;column=column+2
+    else
+      expanded=[]
+      for row=0 to height-1
+        start=row*width
+        for index=0 to column expanded=expanded+[control[start+index]] end for
+        previous=halfVertex(control[start+column],control[start+column+1]);following=halfVertex(control[start+column+1],control[start+column+2]);middle=halfVertex(previous,following)
+        expanded=expanded+[previous,middle,following]
+        for index=column+2 to width-1 expanded=expanded+[control[start+index]] end for
+      end for
+      control=expanded;width=width+2;errors[column+2]=1.0/maximum
+    end if
+  end while
+  return [control,width,height,errors]
 end function
-function patchPoint(control,width,blockX,blockY,u,v)
-  rows=[]
-  for row=0 to 2
-    offset=(blockY*2+row)*width+blockX*2
-    rows=rows+[bezierVertex(control[offset],control[offset+1],control[offset+2],u)]
+function putGridPointsOnCurve(control,width,height)
+  for column=0 to width-1
+    row=1;while row<height-1 previous=halfVertex(control[row*width+column],control[(row+1)*width+column]);following=halfVertex(control[row*width+column],control[(row-1)*width+column]);control[row*width+column]=halfVertex(previous,following);row=row+2 end while
   end for
-  return bezierVertex(rows[0],rows[1],rows[2],v)
+  for row=0 to height-1
+    column=1;while column<width-1 previous=halfVertex(control[row*width+column],control[row*width+column+1]);following=halfVertex(control[row*width+column],control[row*width+column-1]);control[row*width+column]=halfVertex(previous,following);column=column+2 end while
+  end for
+  return control
+end function
+function removeGridColumn(control,width,height,column)
+  result=[];for row=0 to height-1 for index=0 to width-1 if index!=column then result=result+[control[row*width+index]] end if end for end for;return result
+end function
+function removeGridRow(control,width,height,row)
+  result=[];for index=0 to height-1 if index!=row then for column=0 to width-1 result=result+[control[index*width+column]] end for end if end for;return result
+end function
+function normalDirection(target,base)
+  value=[];lengthSquared=0.0
+  for axis=0 to 2 delta=target[axis]-base[axis];value=value+[delta];lengthSquared=lengthSquared+delta*delta end for
+  if lengthSquared<=0.0 then return void end if
+  length=n.fsqrt(lengthSquared);for axis=0 to 2 value[axis]=value[axis]/length end for;return value
+end function
+function crossNormal(a,b)
+  value=[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]
+  length=n.fsqrt(value[0]*value[0]+value[1]*value[1]+value[2]*value[2]);if length<=0.0 then return void end if
+  return [value[0]/length,value[1]/length,value[2]/length]
+end function
+function vertexWithNormal(value,normal)
+  return RenderVertex(value.position,value.baseUV,value.lightmapUV,normal,value.color,value.entityColor,value.entityTexCoord,value.shaderTime,value.sourceIndex)
+end function
+// MakeMeshNormals, including Baseq3's seam wrapping and up-to-three-point
+// search through degenerate neighbours.  Positions stay immutable while every
+// normal is derived so replacing vertices cannot affect later samples.
+function makeGridNormals(control,width,height)
+  wrapWidth=true
+  for row=0 to height-1
+    delta=normalDirection(control[row*width].position,control[row*width+width-1].position)
+    if delta!=void then distanceSquared=0.0;for axis=0 to 2 difference=control[row*width].position[axis]-control[row*width+width-1].position[axis];distanceSquared=distanceSquared+difference*difference end for;if distanceSquared>1.0 then wrapWidth=false;break end if end if
+  end for
+  wrapHeight=true
+  for column=0 to width-1
+    distanceSquared=0.0;for axis=0 to 2 difference=control[column].position[axis]-control[(height-1)*width+column].position[axis];distanceSquared=distanceSquared+difference*difference end for
+    if distanceSquared>1.0 then wrapHeight=false;break end if
+  end for
+  neighbours=[[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1],[-1,0],[-1,1]];normals=array(width*height,void)
+  for column=0 to width-1
+    for row=0 to height-1
+      base=control[row*width+column].position;around=array(8,void)
+      for directionIndex=0 to 7
+        distance=1
+        while distance<=3
+          x=column+neighbours[directionIndex][0]*distance;y=row+neighbours[directionIndex][1]*distance
+          if wrapWidth then if x<0 then x=width-1+x else if x>=width then x=1+x-width end if end if
+          if wrapHeight then if y<0 then y=height-1+y else if y>=height then y=1+y-height end if end if
+          if x<0 or x>=width or y<0 or y>=height then break end if
+          candidate=normalDirection(control[y*width+x].position,base)
+          if candidate!=void then around[directionIndex]=candidate;break end if
+          distance=distance+1
+        end while
+      end for
+      sum=[0.0,0.0,0.0]
+      for directionIndex=0 to 7
+        next=(directionIndex+1)&7
+        if around[directionIndex]!=void and around[next]!=void then candidate=crossNormal(around[next],around[directionIndex]);if candidate!=void then for axis=0 to 2 sum[axis]=sum[axis]+candidate[axis] end for end if end if
+      end for
+      normal=normalDirection(sum,[0.0,0.0,0.0]);if normal==void then normal=[0.0,0.0,0.0] end if;normals[row*width+column]=normal
+    end for
+  end for
+  for index=0 to len(control)-1 control[index]=vertexWithNormal(control[index],normals[index]) end for
+  return control
+end function
+function subdividePatch(control,width,height,errorLimit)
+  first=subdivideHorizontal(control,width,height,errorLimit);control=transposeGrid(first[0],first[1],first[2]);width=first[2];height=first[1]
+  second=subdivideHorizontal(control,width,height,errorLimit);control=transposeGrid(second[0],second[1],second[2]);width=second[2];height=second[1]
+  control=putGridPointsOnCurve(control,width,height);widthErrors=first[3];heightErrors=second[3]
+  index=1;while index<width-1 if widthErrors[index]==999.0 then control=removeGridColumn(control,width,height,index);width=width-1 else index=index+1 end if end while
+  index=1;while index<height-1 if heightErrors[index]==999.0 then control=removeGridRow(control,width,height,index);height=height-1 else index=index+1 end if end while
+  control=makeGridNormals(control,width,height)
+  return [control,width,height]
 end function
 function appendPatch(triangles,control,width,height,textureIndex,lightmapIndex,fogIndex,faceIndex,maxTriangles,errorLimit)
-  uSegments=patchAxisSegments(control,width,height,true,errorLimit);vSegments=patchAxisSegments(control,width,height,false,errorLimit)
-  count=0;truncated=false
-  for blockY=0 to n.quotient(height-1,2)-1
-    for blockX=0 to n.quotient(width-1,2)-1
-      grid=[]
-      for row=0 to vSegments
-        v=row/vSegments
-        for column=0 to uSegments grid=grid+[patchPoint(control,width,blockX,blockY,column/uSegments,v)] end for
-      end for
-      for row=0 to vSegments-1
-        for column=0 to uSegments-1
-          a=row*(uSegments+1)+column;b=a+uSegments+1;c=a+1;d=b+1
-          pair=[[grid[a],grid[b],grid[c]],[grid[c],grid[b],grid[d]]]
-          for local=0 to 1
-            triangleIndex=count;count=count+1
-            if len(triangles)<maxTriangles then triangles=triangles+[RenderTriangle(pair[local],textureIndex,lightmapIndex,fogIndex,faceIndex,triangleIndex)] else truncated=true end if
-          end for
-        end for
-      end for
+  grid=subdividePatch(control,width,height,errorLimit);control=grid[0];width=grid[1];height=grid[2];count=0;truncated=false
+  for row=0 to height-2
+    for column=0 to width-2
+      a=row*width+column;b=a+width;c=a+1;d=b+1;pair=[[control[a],control[b],control[c]],[control[c],control[b],control[d]]]
+      for local=0 to 1 triangleIndex=count;count=count+1;if len(triangles)<maxTriangles then triangles=triangles+[RenderTriangle(pair[local],textureIndex,lightmapIndex,fogIndex,faceIndex,triangleIndex)] else truncated=true end if end for
     end for
   end for
   return [triangles,count,truncated]
@@ -182,11 +266,22 @@ function lightmapRgb(map,index)
   return slice(map.data,offset,LIGHTMAP_RGB_SIZE)
 end function
 
-function lightmapRgba(map,index)
+// R_ColorShiftLightingBytes. The dependency-free software renderer has no
+// hardware gamma ramp, so tr.overbrightBits is zero while Baseq3's default
+// r_mapOverBrightBits remains two.
+function colorShiftLighting(red,green,blue,shift)
+  if shift<0 or shift>8 then return fail("light overbright shift outside range") end if
+  r=red<<shift;g=green<<shift;b=blue<<shift
+  if (r|g|b)>255 then maximum=r;if g>maximum then maximum=g end if;if b>maximum then maximum=b end if;r=n.quotient(r*255,maximum);g=n.quotient(g*255,maximum);b=n.quotient(b*255,maximum) end if
+  return [r,g,b]
+end function
+function lightmapRgbaShift(map,index,mapOverbrightBits,rendererOverbrightBits)
   rgb=lightmapRgb(map,index);if rgb is error then return rgb end if
+  shift=mapOverbrightBits-rendererOverbrightBits;if shift<0 or shift>8 then return fail("invalid lightmap overbright configuration") end if
   rgba=bytes(LIGHTMAP_WIDTH*LIGHTMAP_HEIGHT*4,255)
   for pixel=0 to LIGHTMAP_WIDTH*LIGHTMAP_HEIGHT-1
-    rgba[pixel*4]=rgb[pixel*3];rgba[pixel*4+1]=rgb[pixel*3+1];rgba[pixel*4+2]=rgb[pixel*3+2]
+    shifted=colorShiftLighting(rgb[pixel*3],rgb[pixel*3+1],rgb[pixel*3+2],shift);rgba[pixel*4]=shifted[0];rgba[pixel*4+1]=shifted[1];rgba[pixel*4+2]=shifted[2]
   end for
   return rgba
 end function
+function lightmapRgba(map,index) return lightmapRgbaShift(map,index,2,0) end function

@@ -10,15 +10,15 @@ const FRAMES=20
 
 function sourceTriangle(index)
   x=(index%48)*3.0;y=(index/48)*2.0;color=[128+index%128,255,192,255]
-  return sceneGeometry.Triangle([[x,y,0.0],[x+2.0,y,0.0],[x,y+1.5,0.0]],[[0.0,0.0],[1.0,0.0],[0.0,1.0]],[[0.0,0.0,1.0],[0.0,0.0,1.0],[0.0,0.0,1.0]],[color,color,color],0,0,1,"fx","surface",index,0)
+  return sceneGeometry.Triangle([[x,y,0.0],[x+2.0,y,0.0],[x,y+1.5,0.0]],[[0.0,0.0],[1.0,0.0],[0.0,1.0]],[[0.0,0.0,1.0],[0.0,0.0,1.0],[0.0,0.0,1.0]],[color,color,color],color,[0.0,0.0],0.0,0,0,1,"fx","surface",index,0,0,[[0.0,0.0],[0.0,0.0],[0.0,0.0]],-1,-1,false,void,void,void)
 end function
 function main(args)
   image=materials.Image(1,1,bytes([255,255,255,255]))
   stage=materials.RuntimeStage(["fx"],[image],[336],0.0,[],materials.BLEND_ADD,materials.ALPHA_TEST_NONE,"texture","identitylighting",shaderParser.blankWave(),"identity",shaderParser.blankWave(),[255,255,255,255],false,false,false,false,256.0,[])
-  material=sceneMaterials.Material(0,"fx","fx",image,336,[stage],[],false,3.0,false,false)
+  material=sceneMaterials.Material(0,"fx","fx",image,336,[stage],[],false,3.0,false,false,0.0,0.0)
   resolved=array(TRIANGLES,void)
   for index=0 to TRIANGLES-1 resolved[index]=sceneMaterials.ResolvedTriangle(sourceTriangle(index),0) end for
-  catalog=sceneMaterials.Catalog(resolved,[material],[],void,0,[],[],TRIANGLES,0,337,void)
+  catalog=sceneMaterials.Catalog(resolved,[material],[],void,0,[],[],TRIANGLES,0,337,void,void)
   started=window.milliseconds();fresh=void
   for frame=0 to FRAMES-1 fresh=sceneBatch.build(catalog);if fresh is error then return fresh end if end for
   freshMs=window.milliseconds()-started
