@@ -3,6 +3,7 @@
 import mq3.game.lifecycle as gameLifecycle
 import map_object_contracts as mapContracts
 import mq3.game.map_targets as mapTargets
+import mq3.game.g_target as gTarget
 import mq3.game.portals as portals
 import mq3.game.items as mapItems
 import mq3.game.movers as movers
@@ -572,10 +573,10 @@ function mapObjectCallbackWords(check,ent)
   else if ent.think == mapItems.finishSpawning then think = 3 end if
   use = 99
   if ent.use is void then use = 0
-  else if ent.use == mapTargets.giveUse then use = 1
-  else if ent.use == mapTargets.removePowerupsUse then use = 2
-  else if ent.use == mapTargets.scoreUse then use = 3
-  else if ent.use == mapTargets.printUse then use = 4 end if
+  else if ent.use == mapTargets.giveUse or ent.use == gTarget.Use_Target_Give then use = 1
+  else if ent.use == mapTargets.removePowerupsUse or ent.use == gTarget.Use_target_remove_powerups then use = 2
+  else if ent.use == mapTargets.scoreUse or ent.use == gTarget.Use_Target_Score then use = 3
+  else if ent.use == mapTargets.printUse or ent.use == gTarget.Use_Target_Print then use = 4 end if
   touch = 99; if ent.touch is void then touch = 0 else if ent.touch == mapItems.touch then touch = 1 end if
   words(check,[think,use,touch]); return void
 end function

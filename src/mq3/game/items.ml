@@ -14,12 +14,14 @@ import mq3.game.snapshot as snapshot
 import mq3.game.team_bonuses as bonuses
 import mq3.game.scores as scores
 import mq3.game.targets as targets
+import mq3.game.g_utils as gUtils
 import mq3.server.world as sv
 import mq3.shared.math as q
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
 import mq3.qcommon.cvar as cv
 import std.string as strings
+import mq3.shared.info as infoStrings
 
 const FL_DROPPED_ITEM = 0x1000
 const FL_FORCE_GESTURE = 0x8000
@@ -47,6 +49,26 @@ end function
 function itemQuantity(index)
   requireItem(index); return c.itemQuantity(index)
 end function
+function missionpack(level)
+  return level != void and level.spawner != void and level.spawner.missionpack
+end function
+function requireModeItem(level,index)
+  limit = len(tables.items()); if missionpack(level) then limit = len(tables.missionpackItems()) end if
+  if typeof(index) != "int" or index <= 0 or index >= limit then return error(497,"Invalid game item") end if
+  return index
+end function
+function modeItemName(level,index)
+  requireModeItem(level,index); if missionpack(level) then return tables.missionpackItems()[index] end if; return tables.items()[index]
+end function
+function modeItemType(level,index)
+  requireModeItem(level,index); if missionpack(level) then return c.missionpackItemType(index) end if; return c.itemType(index)
+end function
+function modeItemTag(level,index)
+  requireModeItem(level,index); if missionpack(level) then return c.missionpackItemTag(index) end if; return c.itemTag(index)
+end function
+function modeItemQuantity(level,index)
+  requireModeItem(level,index); if missionpack(level) then return c.missionpackItemQuantity(index) end if; return c.itemQuantity(index)
+end function
 function centeredRandom(level)
   // random() divides as float; crandom() then promotes its operands to double.
   return 2.0*(n.fdiv(game.random(level),32767)-0.5)
@@ -60,7 +82,8 @@ function register(level,item)
   end if
   // RegisterItem only computes an array offset; unlike pickup/spawn it does
   // not dereference the item. Include the dummy and terminating descriptors.
-  if item < 0 or item > len(tables.items()) then return error(497,"RegisterItem requires an original item-array pointer") end if
+  limit = len(tables.items()); if missionpack(level) then limit = len(tables.missionpackItems()) end if
+  if item < 0 or item > limit then return error(497,"RegisterItem requires an original item-array pointer") end if
   level.itemRegistered[item] = 1; return void
 end function
 function clearRegistered(level)
@@ -68,15 +91,18 @@ function clearRegistered(level)
     level.itemRegistered[index] = 0
   end for
   // BG_FindItemForWeapon returns these two descriptors in the pinned table.
-  register(level,10); register(level,8); return void
+  register(level,10); register(level,8)
+  if missionpack(level) and level.spawner.gametype == 7 then register(level,47); register(level,48) end if
+  return void
 end function
 function itemInitializationPrint(level,text)
   if level.gamePrintFn == void then return error(497,"Item initialization requires game diagnostic delivery") end if
   level.gamePrintFn(level,text); return void
 end function
 function saveRegistered(level)
-  count = 0; bits = bytes(len(tables.items()),48)
-  for index = 0 to len(tables.items())-1
+  limit = len(tables.items()); if missionpack(level) then limit = len(tables.missionpackItems()) end if
+  count = 0; bits = bytes(limit,48)
+  for index = 0 to limit-1
     if level.itemRegistered[index] != 0 then bits[index] = 49; count = count+1 end if
   end for
   itemInitializationPrint(level,str(count)+" items registered\n")
@@ -105,6 +131,16 @@ function checkTeamItems(level)
     if level.itemRegistered[34] == 0 then itemInitializationPrint(level,"^3WARNING: No team_CTF_redflag in map") end if
     if level.itemRegistered[35] == 0 then itemInitializationPrint(level,"^3WARNING: No team_CTF_blueflag in map") end if
   end if
+  if missionpack(level) and level.spawner.gametype == 5 then
+    if level.itemRegistered[34] == 0 then itemInitializationPrint(level,"^3WARNING: No team_CTF_redflag in map") end if
+    if level.itemRegistered[35] == 0 then itemInitializationPrint(level,"^3WARNING: No team_CTF_blueflag in map") end if
+    if level.itemRegistered[46] == 0 then itemInitializationPrint(level,"^3WARNING: No team_CTF_neutralflag in map") end if
+  end if
+  if missionpack(level) and (level.spawner.gametype == 6 or level.spawner.gametype == 7) then
+    if findClass(level,void,"team_redobelisk") == void then itemInitializationPrint(level,"^3WARNING: No team_redobelisk in map") end if
+    if findClass(level,void,"team_blueobelisk") == void then itemInitializationPrint(level,"^3WARNING: No team_blueobelisk in map") end if
+    if level.spawner.gametype == 7 and findClass(level,void,"team_neutralobelisk") == void then itemInitializationPrint(level,"^3WARNING: No team_neutralobelisk in map") end if
+  end if
   return void
 end function
 function predictableEvent(level,ent,event,parm)
@@ -113,16 +149,36 @@ function predictableEvent(level,ent,event,parm)
   return void
 end function
 function canGrab(gametype,ent,state)
-  item = requireItem(ent.s.modelindex); type = itemType(item); tag = itemTag(item)
+  item = ent.s.modelindex; type = 0; tag = 0
+  if item >= len(tables.items()) then type = c.missionpackItemType(item); tag = c.missionpackItemTag(item) else item = requireItem(item); type = itemType(item); tag = itemTag(item) end if
   if type == c.IT_WEAPON then return true end if
   if type == c.IT_AMMO then return state.ammo[tag] < 200 end if
-  if type == c.IT_ARMOR then return state.stats[c.STAT_ARMOR] < n.mul32(state.stats[c.STAT_MAX_HEALTH],2) end if
+  persistentTag = 0; if state.stats[7] >= 36 then persistentTag = c.missionpackItemTag(state.stats[7]) end if
+  if type == c.IT_ARMOR then
+    if persistentTag == c.PW_SCOUT then return false end if
+    maximum = n.mul32(state.stats[c.STAT_MAX_HEALTH],2); if persistentTag == c.PW_GUARD then maximum = state.stats[c.STAT_MAX_HEALTH] end if
+    return state.stats[c.STAT_ARMOR] < maximum
+  end if
   if type == c.IT_HEALTH then
-    if itemQuantity(item) == 5 or itemQuantity(item) == 100 then return state.stats[c.STAT_HEALTH] < n.mul32(state.stats[c.STAT_MAX_HEALTH],2) end if
+    if persistentTag == c.PW_GUARD then return state.stats[c.STAT_HEALTH] < state.stats[c.STAT_MAX_HEALTH] end if
+    quantity = 0; if item >= len(tables.items()) then quantity = c.missionpackItemQuantity(item) else quantity = c.itemQuantity(item) end if
+    if quantity == 5 or quantity == 100 then return state.stats[c.STAT_HEALTH] < n.mul32(state.stats[c.STAT_MAX_HEALTH],2) end if
     return state.stats[c.STAT_HEALTH] < state.stats[c.STAT_MAX_HEALTH]
   end if
   if type == c.IT_POWERUP then return true end if
+  if type == c.IT_PERSISTANT_POWERUP then
+    if state.stats[7] != 0 then return false end if
+    if (ent.s.generic1 & 2) != 0 and state.persistant[c.PERS_TEAM] != c.TEAM_RED then return false end if
+    if (ent.s.generic1 & 4) != 0 and state.persistant[c.PERS_TEAM] != c.TEAM_BLUE then return false end if
+    return true
+  end if
   if type == c.IT_TEAM then
+    if gametype == 7 then return true end if
+    if gametype == 5 then
+      if tag == c.PW_NEUTRALFLAG then return true end if
+      if state.persistant[c.PERS_TEAM] == c.TEAM_RED and tag == c.PW_BLUEFLAG and state.powerups[c.PW_NEUTRALFLAG] != 0 then return true end if
+      if state.persistant[c.PERS_TEAM] == c.TEAM_BLUE and tag == c.PW_REDFLAG and state.powerups[c.PW_NEUTRALFLAG] != 0 then return true end if
+    end if
     if gametype != 4 then return false end if
     if state.persistant[c.PERS_TEAM] == c.TEAM_RED then
       return tag == c.PW_BLUEFLAG or (tag == c.PW_REDFLAG and ent.s.modelindex2 != 0) or (tag == c.PW_REDFLAG and state.powerups[c.PW_BLUEFLAG] != 0)
@@ -136,10 +192,33 @@ function canGrab(gametype,ent,state)
   if type == c.IT_BAD then return error(497,"BG_CanItemBeGrabbed: IT_BAD") end if
   return false
 end function
+function userHandicap(level,other)
+  handicap = 100
+  if level.userinfoFn != void then
+    text = infoStrings.value(infoStrings.copy(level.userinfoFn(level,other.s.number),1024),"handicap")
+    parsed = textnum.atoi(text); if parsed > 0 and parsed <= 100 then handicap = parsed end if
+  end if
+  return handicap
+end function
+function pickupPersistantPowerup(level,ent,other)
+  tag = modeItemTag(level,ent.item); handicap = userHandicap(level,other)
+  // Baseq3 has no persistent-stat slot. The port keeps the Team Arena pointer
+  // in unused base slot 7 while preserving every existing Baseq3 stat index.
+  other.client.ps.stats[7] = ent.item; other.client.persistantPowerup = ent
+  if tag == c.PW_GUARD then
+    maximum = n.mul32(2,handicap); other.health = maximum; other.client.ps.stats[c.STAT_HEALTH] = maximum
+    other.client.ps.stats[c.STAT_MAX_HEALTH] = maximum; other.client.ps.stats[c.STAT_ARMOR] = maximum; other.client.maxHealth = maximum
+  else
+    other.client.maxHealth = handicap
+    if tag == c.PW_SCOUT then other.client.ps.stats[c.STAT_ARMOR] = 0 end if
+    if tag == c.PW_AMMOREGEN then for index = 0 to 15 other.client.ammoTimes[index] = 0 end for end if
+  end if
+  return -1
+end function
 function pickupPowerup(level,ent,other)
-  state = other.client.ps; tag = itemTag(ent.item)
+  state = other.client.ps; tag = modeItemTag(level,ent.item)
   if state.powerups[tag] == 0 then state.powerups[tag] = n.add32(level.time,0-(level.time % 1000)) end if
-  quantity = itemQuantity(ent.item); if ent.count != 0 then quantity = ent.count end if
+  quantity = modeItemQuantity(level,ent.item); if ent.count != 0 then quantity = ent.count end if
   state.powerups[tag] = n.add32(state.powerups[tag],n.mul32(quantity,1000))
   for i = 0 to level.maxclients-1
     client = level.clients[i]
@@ -156,7 +235,9 @@ function pickupPowerup(level,ent,other)
   return 120
 end function
 function pickupHoldable(level,ent,other)
-  other.client.ps.stats[c.STAT_HOLDABLE_ITEM] = ent.item; return 60
+  other.client.ps.stats[c.STAT_HOLDABLE_ITEM] = ent.item
+  if missionpack(level) and modeItemTag(level,ent.item) == c.HI_KAMIKAZE then other.client.ps.eFlags = other.client.ps.eFlags | 0x200 end if
+  return 60
 end function
 function addAmmo(ent,weapon,count)
   ent.client.ps.ammo[weapon] = n.add32(ent.client.ps.ammo[weapon],count)
@@ -164,13 +245,13 @@ function addAmmo(ent,weapon,count)
   return void
 end function
 function pickupAmmo(level,ent,other)
-  quantity = itemQuantity(ent.item); if ent.count != 0 then quantity = ent.count end if
-  addAmmo(other,itemTag(ent.item),quantity); return 40
+  quantity = modeItemQuantity(level,ent.item); if ent.count != 0 then quantity = ent.count end if
+  addAmmo(other,modeItemTag(level,ent.item),quantity); return 40
 end function
 function pickupWeapon(level,ent,other)
-  tag = itemTag(ent.item); quantity = 0
+  tag = modeItemTag(level,ent.item); quantity = 0
   if ent.count >= 0 then
-    quantity = itemQuantity(ent.item); if ent.count != 0 then quantity = ent.count end if
+    quantity = modeItemQuantity(level,ent.item); if ent.count != 0 then quantity = ent.count end if
     if (ent.flags & FL_DROPPED_ITEM) == 0 and level.spawner.gametype != 3 then
       if other.client.ps.ammo[tag] < quantity then quantity = quantity-other.client.ps.ammo[tag] else quantity = 1 end if
     end if
@@ -182,16 +263,18 @@ function pickupWeapon(level,ent,other)
   return level.weaponRespawn
 end function
 function pickupHealth(level,ent,other)
-  quantity = itemQuantity(ent.item); max = other.client.ps.stats[c.STAT_MAX_HEALTH]
-  if quantity == 5 or quantity == 100 then max = n.mul32(max,2) end if
+  quantity = modeItemQuantity(level,ent.item); max = other.client.ps.stats[c.STAT_MAX_HEALTH]
+  guard = missionpack(level) and other.client.persistantPowerup != void and modeItemTag(level,other.client.persistantPowerup.item) == c.PW_GUARD
+  if not guard and (quantity == 5 or quantity == 100) then max = n.mul32(max,2) end if
   if ent.count != 0 then quantity = ent.count end if
   other.health = n.add32(other.health,quantity); if other.health > max then other.health = max end if
   other.client.ps.stats[c.STAT_HEALTH] = other.health
-  if itemQuantity(ent.item) == 100 then return 35 end if
+  if modeItemQuantity(level,ent.item) == 100 then return 35 end if
   return 35
 end function
 function pickupArmor(level,ent,other)
-  value = n.add32(other.client.ps.stats[c.STAT_ARMOR],itemQuantity(ent.item)); max = n.mul32(other.client.ps.stats[c.STAT_MAX_HEALTH],2)
+  value = n.add32(other.client.ps.stats[c.STAT_ARMOR],modeItemQuantity(level,ent.item)); max = n.mul32(other.client.ps.stats[c.STAT_MAX_HEALTH],2)
+  if missionpack(level) and other.client.persistantPowerup != void and modeItemTag(level,other.client.persistantPowerup.item) == c.PW_GUARD then max = other.client.ps.stats[c.STAT_MAX_HEALTH] end if
   if value > max then value = max end if
   other.client.ps.stats[c.STAT_ARMOR] = value; return 25
 end function
@@ -296,18 +379,19 @@ function touch(level,ent,other,trace)
   if other.client == void or other.health < 1 then return void end if
   if not canGrab(level.spawner.gametype,ent,other.client.ps) then return void end if
   if level.gameLogFn == void then return error(497,"Touch_Item requires a game log sink") end if
-  level.gameLogFn(level,"Item: "+str(other.s.number)+" "+itemName(ent.item)+"\n")
-  predict = other.client.predictItemPickup; type = itemType(ent.item); respawnTime = 0
+  level.gameLogFn(level,"Item: "+str(other.s.number)+" "+modeItemName(level,ent.item)+"\n")
+  predict = other.client.predictItemPickup; type = modeItemType(level,ent.item); respawnTime = 0
   if type == c.IT_WEAPON then respawnTime = pickupWeapon(level,ent,other)
   else if type == c.IT_AMMO then respawnTime = pickupAmmo(level,ent,other)
   else if type == c.IT_ARMOR then respawnTime = pickupArmor(level,ent,other)
   else if type == c.IT_HEALTH then respawnTime = pickupHealth(level,ent,other)
   else if type == c.IT_POWERUP then respawnTime = pickupPowerup(level,ent,other); predict = false
+  else if type == c.IT_PERSISTANT_POWERUP then respawnTime = pickupPersistantPowerup(level,ent,other)
   else if type == c.IT_TEAM then respawnTime = pickupTeam(level,ent,other)
   else if type == c.IT_HOLDABLE then respawnTime = pickupHoldable(level,ent,other)
   else return void end if
   if respawnTime == 0 then return void end if
-  if predict then predictableEvent(level,other,c.EV_ITEM_PICKUP,ent.s.modelindex) else events.add(level,other,c.EV_ITEM_PICKUP,ent.s.modelindex) end if
+  if predict then gUtils.G_AddPredictableEvent(level,other,c.EV_ITEM_PICKUP,ent.s.modelindex) else events.add(level,other,c.EV_ITEM_PICKUP,ent.s.modelindex) end if
   if type == c.IT_POWERUP or type == c.IT_TEAM then
     temp = game.tempEntity(level,ent.s.pos.trBase,c.EV_GLOBAL_ITEM_PICKUP); temp.s.eventParm = ent.s.modelindex
     if ent.speed == 0 then temp.r.svFlags = temp.r.svFlags | 32 else temp.r.svFlags = temp.r.svFlags | 256; temp.r.singleClient = other.s.number end if
@@ -347,14 +431,14 @@ function setFlagStatus(level,team,status)
   return void
 end function
 function checkDropped(level,dropped)
-  tag = itemTag(dropped.item)
+  tag = modeItemTag(level,dropped.item)
   if tag == c.PW_REDFLAG then setFlagStatus(level,c.TEAM_RED,FLAG_DROPPED)
   else if tag == c.PW_BLUEFLAG then setFlagStatus(level,c.TEAM_BLUE,FLAG_DROPPED)
   else if tag == c.PW_NEUTRALFLAG then setFlagStatus(level,c.TEAM_FREE,FLAG_DROPPED) end if
   return void
 end function
 function respawn(level,ent)
-  requireItem(ent.item)
+  requireModeItem(level,ent.item)
   if ent.team != void then
     if ent.teammaster == void then return error(497,"RespawnItem: bad teammaster") end if
     chain = []; current = ent.teammaster
@@ -365,15 +449,16 @@ function respawn(level,ent)
     end while
     if len(chain) == 0 then return error(497,"Empty item team chain") end if
     ent = chain[game.random(level) % len(chain)]
-    requireItem(ent.item)
+    requireModeItem(level,ent.item)
   end if
   ent.r.contents = 0x40000000; ent.s.eFlags = ent.s.eFlags & ~0x80; ent.r.svFlags = ent.r.svFlags & ~1
   game.link(level,ent)
-  if itemType(ent.item) == c.IT_POWERUP then
+  if modeItemType(level,ent.item) == c.IT_POWERUP or (modeItemType(level,ent.item) == c.IT_HOLDABLE and modeItemTag(level,ent.item) == c.HI_KAMIKAZE) then
     event = c.EV_GLOBAL_SOUND
     if ent.speed != 0 then event = c.EV_GENERAL_SOUND end if
     temp = game.tempEntity(level,ent.s.pos.trBase,event)
-    temp.s.eventParm = values.soundIndex(level.spawner,"sound/items/poweruprespawn.wav"); temp.r.svFlags = temp.r.svFlags | 32
+    soundName = "sound/items/poweruprespawn.wav"; if modeItemType(level,ent.item) == c.IT_HOLDABLE then soundName = "sound/items/kamikazerespawn.wav" end if
+    temp.s.eventParm = values.soundIndex(level.spawner,soundName); temp.r.svFlags = temp.r.svFlags | 32
   end if
   events.add(level,ent,c.EV_ITEM_RESPAWN,0); ent.nextthink = 0
   return void
@@ -382,7 +467,7 @@ function use(level,ent,other,activator)
   return respawn(level,ent)
 end function
 function finishSpawning(level,ent)
-  item = requireItem(ent.item)
+  item = requireModeItem(level,ent.item)
   ent.r.mins = [-15.0,-15.0,-15.0]; ent.r.maxs = [15.0,15.0,15.0]
   ent.s.eType = c.ET_ITEM; ent.s.modelindex = item; ent.s.modelindex2 = 0
   ent.r.contents = 0x40000000; ent.touch = touch; ent.use = use
@@ -404,7 +489,7 @@ function finishSpawning(level,ent)
   if (ent.flags & 0x400) != 0 or ent.targetname != void then
     ent.s.eFlags = ent.s.eFlags | 0x80; ent.r.contents = 0; return void
   end if
-  if itemType(item) == c.IT_POWERUP then
+  if modeItemType(level,item) == c.IT_POWERUP then
     respawnTime = 45.0+centeredRandom(level)*15.0
     ent.s.eFlags = ent.s.eFlags | 0x80; ent.r.contents = 0
     ent.nextthink = textnum.truncDouble32(level.time+respawnTime*1000.0); ent.think = respawn
@@ -413,16 +498,17 @@ function finishSpawning(level,ent)
   return game.link(level,ent)
 end function
 function spawnItem(level,ent,item)
-  item = requireItem(item)
+  item = requireModeItem(level,item)
   ent.random = values.getFloat(level.spawner,"random","0")[1]; ent.wait = values.getFloat(level.spawner,"wait","0")[1]
   register(level,item)
-  disabled = cv.find(level.spawner.cvars,"disable_"+itemName(item))
+  disabled = cv.find(level.spawner.cvars,"disable_"+modeItemName(level,item))
   if disabled != void and disabled.integer != 0 then return void end if
   ent.item = item; ent.nextthink = n.add32(level.time,200); ent.think = finishSpawning; ent.physicsBounce = 0.5
-  if itemType(item) == c.IT_POWERUP then
+  if modeItemType(level,item) == c.IT_POWERUP then
     values.soundIndex(level.spawner,"sound/items/poweruprespawn.wav")
     ent.speed = values.getFloat(level.spawner,"noglobalsound","0")[1]
   end if
+  if modeItemType(level,item) == c.IT_PERSISTANT_POWERUP then ent.s.generic1 = ent.spawnflags end if
   return void
 end function
 function findClass(level,after,name)
@@ -468,26 +554,26 @@ function returnFlag(level,team)
   return void
 end function
 function teamFree(level,ent)
-  tag = itemTag(ent.item)
+  tag = modeItemTag(level,ent.item)
   if tag == c.PW_REDFLAG then returnFlag(level,c.TEAM_RED)
   else if tag == c.PW_BLUEFLAG then returnFlag(level,c.TEAM_BLUE)
   else if tag == c.PW_NEUTRALFLAG then returnFlag(level,c.TEAM_FREE) end if
   return void
 end function
 function droppedFlagThink(level,ent)
-  team = c.TEAM_FREE; tag = itemTag(ent.item)
+  team = c.TEAM_FREE; tag = modeItemTag(level,ent.item)
   if tag == c.PW_REDFLAG then team = c.TEAM_RED
   else if tag == c.PW_BLUEFLAG then team = c.TEAM_BLUE end if
   return returnFlagSound(level,resetFlag(level,team),team)
 end function
 function launch(level,item,origin,velocity)
-  item = requireItem(item); dropped = game.spawn(level)
+  item = requireModeItem(level,item); dropped = game.spawn(level)
   dropped.s.eType = c.ET_ITEM; dropped.s.modelindex = item; dropped.s.modelindex2 = 1
-  dropped.classname = itemName(item); dropped.item = item
+  dropped.classname = modeItemName(level,item); dropped.item = item
   dropped.r.mins = [-15.0,-15.0,-15.0]; dropped.r.maxs = [15.0,15.0,15.0]; dropped.r.contents = 0x40000000
   dropped.touch = touch; game.setOrigin(dropped,origin); dropped.s.pos.trType = c.TR_GRAVITY; dropped.s.pos.trTime = level.time
   dropped.s.pos.trDelta = movement.copy(velocity); dropped.s.eFlags = dropped.s.eFlags | 0x20
-  if level.spawner != void and level.spawner.gametype == 4 and itemType(item) == c.IT_TEAM then
+  if level.spawner != void and (level.spawner.gametype == 4 or (missionpack(level) and level.spawner.gametype == 5)) and modeItemType(level,item) == c.IT_TEAM then
     dropped.think = droppedFlagThink; dropped.nextthink = n.add32(level.time,30000); checkDropped(level,dropped)
   else
     dropped.think = game.free; dropped.nextthink = n.add32(level.time,30000)
@@ -520,7 +606,7 @@ function bounce(level,ent,hit)
   return void
 end function
 function run(level,ent)
-  if ent.item != void then requireItem(ent.item)
+  if ent.item != void then requireModeItem(level,ent.item)
   else if not ent.physicsObject then return error(497,"G_RunItem requires an item or physics object") end if
   if ent.s.groundEntityNum == -1 and ent.s.pos.trType != c.TR_GRAVITY then ent.s.pos.trType = c.TR_GRAVITY; ent.s.pos.trTime = level.time end if
   if ent.s.pos.trType == c.TR_STATIONARY then return game.runThink(level,ent) end if
@@ -532,7 +618,7 @@ function run(level,ent)
   game.link(level,ent); game.runThink(level,ent)
   if hit.trace.fraction == 1 then return void end if
   if (sv.pointContents(level.scene,ent.r.currentOrigin,-1) & 0x80000000) != 0 then
-    if ent.item != void and itemType(ent.item) == c.IT_TEAM then return teamFree(level,ent) end if
+    if ent.item != void and modeItemType(level,ent.item) == c.IT_TEAM then return teamFree(level,ent) end if
     return game.free(level,ent)
   end if
   return bounce(level,ent,hit)

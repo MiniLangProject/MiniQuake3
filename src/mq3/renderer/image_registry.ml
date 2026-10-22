@@ -21,7 +21,7 @@ struct Source width height pixels end struct
 struct UploadConfig roundImagesDown picmip maxTextureSize textureBits textureCompression simpleMipMaps deviceSupportsGamma gammaTable intensityTable end struct
 struct UploadLevel width height pixels end struct
 struct UploadPlan uploadWidth uploadHeight internalFormat samples lightMap levels end struct
-struct Image texnum imgName width height uploadWidth uploadHeight mipmap allowPicmip wrapClampMode TMU internalFormat upload end struct
+struct Image texnum imgName width height uploadWidth uploadHeight mipmap allowPicmip wrapClampMode TMU internalFormat upload frameUsed end struct
 struct Services loadFn releaseFn submitFn diagnosticFn context end struct
 struct Registry images buckets config services activeTexture end struct
 
@@ -148,7 +148,7 @@ function createImage(registry,name,pixels,width,height,mipmap,allowPicmip,wrapCl
   lightMap=startsLightmap(name)
   upload=prepareUpload(pixels,width,height,mipmap,allowPicmip,lightMap,registry.config)
   tmu=0;if registry.activeTexture and lightMap then tmu=1 end if
-  image=Image(TEXNUM_BASE+len(registry.images),name,width,height,upload.uploadWidth,upload.uploadHeight,mipmap,allowPicmip,wrapClampMode,tmu,upload.internalFormat,upload)
+  image=Image(TEXNUM_BASE+len(registry.images),name,width,height,upload.uploadWidth,upload.uploadHeight,mipmap,allowPicmip,wrapClampMode,tmu,upload.internalFormat,upload,0)
   registry.images=registry.images+[image]
   hash=hashValue(name);if registry.buckets[hash]==void then registry.buckets[hash]=[] end if
   registry.buckets[hash]=[image]+registry.buckets[hash]

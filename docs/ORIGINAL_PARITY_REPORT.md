@@ -13,21 +13,21 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 
 | Bereich | Dateien | Portiert | Teilweise | Nicht begonnen | Original behalten |
 |---|---:|---:|---:|---:|---:|
-| `botlib` | 53 | 20 | 11 | 22 | 0 |
+| `botlib` | 53 | 21 | 10 | 22 | 0 |
 | `cgame` | 25 | 21 | 0 | 4 | 0 |
-| `client` | 19 | 4 | 11 | 4 | 0 |
-| `game` | 65 | 12 | 27 | 26 | 0 |
+| `client` | 19 | 5 | 10 | 4 | 0 |
+| `game` | 65 | 28 | 11 | 26 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
 | `qcommon` | 27 | 4 | 14 | 9 | 0 |
-| `renderer` | 27 | 8 | 15 | 4 | 0 |
+| `renderer` | 27 | 9 | 14 | 4 | 0 |
 | `server` | 11 | 2 | 9 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **125** | **93** | **117** | **0** |
+| **Gesamt** | **335** | **144** | **74** | **117** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -86,7 +86,7 @@ Teil dieser Tabelle.
 | `code/botlib/l_memory.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/l_precomp.c` | `botlib` | `ported` | 82 | 82 | 0 |
 | `code/botlib/l_precomp.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/l_script.c` | `botlib` | `partial` | 39 | 1 | 38 |
+| `code/botlib/l_script.c` | `botlib` | `ported` | 39 | 1 | 38 |
 | `code/botlib/l_script.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/l_struct.c` | `botlib` | `ported` | 9 | 9 | 0 |
 | `code/botlib/l_struct.h` | `botlib` | `not_started` | 0 | 0 | 0 |
@@ -117,7 +117,7 @@ Teil dieser Tabelle.
 | `code/cgame/cg_weapons.c` | `cgame` | `ported` | 35 | 35 | 0 |
 | `code/cgame/tr_types.h` | `cgame` | `not_started` | 0 | 0 | 0 |
 | `code/client/cl_cgame.c` | `client` | `partial` | 22 | 7 | 15 |
-| `code/client/cl_cin.c` | `client` | `partial` | 38 | 5 | 33 |
+| `code/client/cl_cin.c` | `client` | `ported` | 38 | 5 | 33 |
 | `code/client/cl_console.c` | `client` | `partial` | 22 | 4 | 18 |
 | `code/client/cl_input.c` | `client` | `ported` | 78 | 78 | 0 |
 | `code/client/cl_keys.c` | `client` | `partial` | 26 | 20 | 6 |
@@ -161,24 +161,24 @@ Teil dieser Tabelle.
 | `code/game/bg_lib.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/bg_local.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/bg_misc.c` | `game` | `partial` | 12 | 10 | 2 |
-| `code/game/bg_pmove.c` | `game` | `partial` | 42 | 39 | 3 |
+| `code/game/bg_pmove.c` | `game` | `ported` | 42 | 39 | 3 |
 | `code/game/bg_public.h` | `game` | `partial` | 0 | 0 | 0 |
 | `code/game/bg_slidemove.c` | `game` | `partial` | 2 | 2 | 0 |
 | `code/game/botlib.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/chars.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/g_active.c` | `game` | `partial` | 17 | 16 | 1 |
+| `code/game/g_active.c` | `game` | `ported` | 17 | 16 | 1 |
 | `code/game/g_arenas.c` | `game` | `partial` | 8 | 8 | 0 |
-| `code/game/g_bot.c` | `game` | `partial` | 24 | 22 | 2 |
-| `code/game/g_client.c` | `game` | `partial` | 25 | 23 | 2 |
-| `code/game/g_cmds.c` | `game` | `partial` | 37 | 37 | 0 |
-| `code/game/g_combat.c` | `game` | `partial` | 19 | 13 | 6 |
-| `code/game/g_items.c` | `game` | `partial` | 22 | 21 | 1 |
+| `code/game/g_bot.c` | `game` | `ported` | 24 | 22 | 2 |
+| `code/game/g_client.c` | `game` | `ported` | 25 | 23 | 2 |
+| `code/game/g_cmds.c` | `game` | `ported` | 37 | 37 | 0 |
+| `code/game/g_combat.c` | `game` | `ported` | 19 | 13 | 6 |
+| `code/game/g_items.c` | `game` | `ported` | 22 | 21 | 1 |
 | `code/game/g_local.h` | `game` | `partial` | 0 | 0 | 0 |
-| `code/game/g_main.c` | `game` | `partial` | 36 | 31 | 5 |
+| `code/game/g_main.c` | `game` | `ported` | 36 | 31 | 5 |
 | `code/game/g_mem.c` | `game` | `partial` | 3 | 3 | 0 |
-| `code/game/g_misc.c` | `game` | `partial` | 20 | 14 | 6 |
-| `code/game/g_missile.c` | `game` | `partial` | 17 | 9 | 8 |
-| `code/game/g_mover.c` | `game` | `partial` | 37 | 3 | 34 |
+| `code/game/g_misc.c` | `game` | `ported` | 20 | 14 | 6 |
+| `code/game/g_missile.c` | `game` | `ported` | 17 | 9 | 8 |
+| `code/game/g_mover.c` | `game` | `ported` | 37 | 3 | 34 |
 | `code/game/g_public.h` | `game` | `partial` | 0 | 0 | 0 |
 | `code/game/g_rankings.c` | `game` | `ported` | 17 | 17 | 0 |
 | `code/game/g_rankings.h` | `game` | `not_started` | 0 | 0 | 0 |
@@ -187,12 +187,12 @@ Teil dieser Tabelle.
 | `code/game/g_svcmds.c` | `game` | `partial` | 11 | 11 | 0 |
 | `code/game/g_syscalls.asm` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/g_syscalls.c` | `game` | `ported` | 185 | 185 | 0 |
-| `code/game/g_target.c` | `game` | `partial` | 28 | 28 | 0 |
-| `code/game/g_team.c` | `game` | `partial` | 45 | 32 | 13 |
+| `code/game/g_target.c` | `game` | `ported` | 28 | 28 | 0 |
+| `code/game/g_team.c` | `game` | `ported` | 45 | 32 | 13 |
 | `code/game/g_team.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/g_trigger.c` | `game` | `partial` | 20 | 19 | 1 |
-| `code/game/g_utils.c` | `game` | `partial` | 24 | 18 | 6 |
-| `code/game/g_weapon.c` | `game` | `partial` | 27 | 21 | 6 |
+| `code/game/g_trigger.c` | `game` | `ported` | 20 | 19 | 1 |
+| `code/game/g_utils.c` | `game` | `ported` | 24 | 18 | 6 |
+| `code/game/g_weapon.c` | `game` | `ported` | 27 | 21 | 6 |
 | `code/game/inv.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/match.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/q_math.c` | `game` | `ported` | 57 | 57 | 0 |
@@ -298,7 +298,7 @@ Teil dieser Tabelle.
 | `code/renderer/tr_curve.c` | `renderer` | `partial` | 11 | 5 | 6 |
 | `code/renderer/tr_flares.c` | `renderer` | `partial` | 6 | 5 | 1 |
 | `code/renderer/tr_font.c` | `renderer` | `partial` | 9 | 1 | 8 |
-| `code/renderer/tr_image.c` | `renderer` | `partial` | 38 | 8 | 30 |
+| `code/renderer/tr_image.c` | `renderer` | `ported` | 38 | 8 | 30 |
 | `code/renderer/tr_init.c` | `renderer` | `ported` | 21 | 21 | 0 |
 | `code/renderer/tr_light.c` | `renderer` | `partial` | 6 | 4 | 2 |
 | `code/renderer/tr_local.h` | `renderer` | `not_started` | 0 | 0 | 0 |
@@ -411,7 +411,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/botlib/l_log.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_memory.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_precomp.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/l_script.c` (partial): `EndOfScript`, `FileLength`, `FreeScript`, `GetScriptFlags`, `LoadScriptFile`, `LoadScriptMemory`, `NumLinesCrossed`, `NumberValue`, `PS_CheckTokenString`, `PS_CheckTokenType`, `PS_CreatePunctuationTable`, `PS_ExpectAnyToken`, `PS_ExpectTokenString`, `PS_ExpectTokenType`, `PS_NextWhiteSpaceChar`, `PS_ReadEscapeCharacter`, `PS_ReadLiteral`, `PS_ReadName`, `PS_ReadNumber`, `PS_ReadPrimitive`, `PS_ReadPunctuation`, `PS_ReadString`, `PS_ReadWhiteSpace`, `PS_SetBaseFolder`, `PS_SkipUntilString`, `PS_UnreadLastToken`, `PS_UnreadToken`, `PunctuationFromNum`, `ReadSignedFloat`, `ReadSignedInt`, `ResetScript`, `ScriptError`, `ScriptSkipTo`, `ScriptWarning`, `SetScriptFlags`, `SetScriptPunctuations`, `StripDoubleQuotes`, `StripSingleQuotes`
+- `code/botlib/l_script.c` (ported): `EndOfScript`, `FileLength`, `FreeScript`, `GetScriptFlags`, `LoadScriptFile`, `LoadScriptMemory`, `NumLinesCrossed`, `NumberValue`, `PS_CheckTokenString`, `PS_CheckTokenType`, `PS_CreatePunctuationTable`, `PS_ExpectAnyToken`, `PS_ExpectTokenString`, `PS_ExpectTokenType`, `PS_NextWhiteSpaceChar`, `PS_ReadEscapeCharacter`, `PS_ReadLiteral`, `PS_ReadName`, `PS_ReadNumber`, `PS_ReadPrimitive`, `PS_ReadPunctuation`, `PS_ReadString`, `PS_ReadWhiteSpace`, `PS_SetBaseFolder`, `PS_SkipUntilString`, `PS_UnreadLastToken`, `PS_UnreadToken`, `PunctuationFromNum`, `ReadSignedFloat`, `ReadSignedInt`, `ResetScript`, `ScriptError`, `ScriptSkipTo`, `ScriptWarning`, `SetScriptFlags`, `SetScriptPunctuations`, `StripDoubleQuotes`, `StripSingleQuotes`
 - `code/botlib/l_script.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_struct.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_utils.h` (not_started): *(Symbolinventar ergänzen)*
@@ -420,7 +420,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/cgame/cg_syscalls.asm` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/tr_types.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/cl_cgame.c` (partial): `CL_AddCgameCommand`, `CL_CGameRendering`, `CL_CM_LoadMap`, `CL_CgameError`, `CL_CgameSystemCalls`, `CL_GameCommand`, `CL_GetCurrentSnapshotNumber`, `CL_GetGameState`, `CL_GetGlconfig`, `CL_GetParseEntityState`, `CL_GetSnapshot`, `CL_InitCGame`, `CL_SetUserCmdValue`, `CL_ShutdownCGame`, `FloatAsInt`
-- `code/client/cl_cin.c` (partial): `CIN_CloseAllVideos`, `CIN_HandleForVideo`, `CIN_SetLooping`, `CIN_UploadCinematic`, `CL_PlayCinematic_f`, `ROQ_GenYUVTables`, `RllDecodeMonoToMono`, `RllDecodeMonoToStereo`, `RllDecodeStereoToMono`, `RllDecodeStereoToStereo`, `RllSetupTable`, `RoQFetchInterlaced`, `RoQInterrupt`, `RoQPrepMcomp`, `RoQReset`, `RoQShutdown`, `RoQ_init`, `SCR_DrawCinematic`, `SCR_RunCinematic`, `SCR_StopCinematic`, `blit2_32`, `blit4_32`, `blit8_32`, `blitVQQuad32fs`, `decodeCodeBook`, `initRoQ`, `move4_32`, `move8_32`, `readQuadInfo`, `recurseQuad`, `setupQuad`, `yuv_to_rgb`, `yuv_to_rgb24`
+- `code/client/cl_cin.c` (ported): `CIN_CloseAllVideos`, `CIN_HandleForVideo`, `CIN_SetLooping`, `CIN_UploadCinematic`, `CL_PlayCinematic_f`, `ROQ_GenYUVTables`, `RllDecodeMonoToMono`, `RllDecodeMonoToStereo`, `RllDecodeStereoToMono`, `RllDecodeStereoToStereo`, `RllSetupTable`, `RoQFetchInterlaced`, `RoQInterrupt`, `RoQPrepMcomp`, `RoQReset`, `RoQShutdown`, `RoQ_init`, `SCR_DrawCinematic`, `SCR_RunCinematic`, `SCR_StopCinematic`, `blit2_32`, `blit4_32`, `blit8_32`, `blitVQQuad32fs`, `decodeCodeBook`, `initRoQ`, `move4_32`, `move8_32`, `readQuadInfo`, `recurseQuad`, `setupQuad`, `yuv_to_rgb`, `yuv_to_rgb24`
 - `code/client/cl_console.c` (partial): `CL_ConsolePrint`, `Con_Bottom`, `Con_CheckResize`, `Con_ClearNotify`, `Con_Clear_f`, `Con_Close`, `Con_DrawConsole`, `Con_DrawNotify`, `Con_DrawSolidConsole`, `Con_Dump_f`, `Con_Init`, `Con_Linefeed`, `Con_MessageMode3_f`, `Con_MessageMode4_f`, `Con_PageDown`, `Con_PageUp`, `Con_RunConsole`, `Con_Top`
 - `code/client/cl_keys.c` (partial): `CL_CharEvent`, `CL_InitKeyCommands`, `Field_BigDraw`, `Field_Draw`, `Field_Paste`, `Field_VariableSizeDraw`
 - `code/client/cl_net_chan.c` (ported): `CL_Netchan_Decode`, `CL_Netchan_Encode`, `CL_Netchan_Process`, `CL_Netchan_Transmit`, `CL_Netchan_TransmitNextFragment`
@@ -453,36 +453,34 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/game/bg_lib.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/bg_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/bg_misc.c` (partial): `BG_FindItemForHoldable`, `BG_FindItemForPowerup`
-- `code/game/bg_pmove.c` (partial): `PM_CheckStuck`, `PM_InvulnerabilityMove`, `sqrt`
+- `code/game/bg_pmove.c` (ported): `PM_CheckStuck`, `PM_InvulnerabilityMove`, `sqrt`
 - `code/game/bg_public.h` (partial): *(Symbolinventar ergänzen)*
 - `code/game/bg_slidemove.c` (partial): *(Symbolinventar ergänzen)*
 - `code/game/botlib.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/chars.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/g_active.c` (partial): `StuckInOtherClient`
+- `code/game/g_active.c` (ported): `StuckInOtherClient`
 - `code/game/g_arenas.c` (partial): *(Symbolinventar ergänzen)*
-- `code/game/g_bot.c` (partial): `PlayerIntroSound`, `trap_Cvar_VariableValue`
-- `code/game/g_client.c` (partial): `skin`, `trap_DropClient`
-- `code/game/g_cmds.c` (partial): *(Symbolinventar ergänzen)*
-- `code/game/g_combat.c` (partial): `G_InvulnerabilityEffect`, `Kamikaze_DeathActivate`, `Kamikaze_DeathTimer`, `RaySphereIntersections`, `TossClientCubes`, `TossClientPersistantPowerups`
-- `code/game/g_items.c` (partial): `Pickup_PersistantPowerup`
+- `code/game/g_bot.c` (ported): `PlayerIntroSound`, `trap_Cvar_VariableValue`
+- `code/game/g_client.c` (ported): `skin`, `trap_DropClient`
+- `code/game/g_combat.c` (ported): `G_InvulnerabilityEffect`, `Kamikaze_DeathActivate`, `Kamikaze_DeathTimer`, `RaySphereIntersections`, `TossClientCubes`, `TossClientPersistantPowerups`
+- `code/game/g_items.c` (ported): `Pickup_PersistantPowerup`
 - `code/game/g_local.h` (partial): *(Symbolinventar ergänzen)*
-- `code/game/g_main.c` (partial): `Com_Error`, `Com_Printf`, `G_Error`, `G_Printf`, `vmMain`
+- `code/game/g_main.c` (ported): `Com_Error`, `Com_Printf`, `G_Error`, `G_Printf`, `vmMain`
 - `code/game/g_mem.c` (partial): *(Symbolinventar ergänzen)*
-- `code/game/g_misc.c` (partial): `DropPortalDestination`, `DropPortalSource`, `PortalDie`, `PortalEnable`, `PortalTouch`, `utilities`
-- `code/game/g_missile.c` (partial): `ProximityMine_Activate`, `ProximityMine_Die`, `ProximityMine_Explode`, `ProximityMine_ExplodeOnPlayer`, `ProximityMine_Player`, `ProximityMine_Trigger`, `fire_nail`, `fire_prox`
-- `code/game/g_mover.c` (partial): `Blocked_Door`, `G_CheckProxMinePosition`, `G_CreateRotationMatrix`, `G_MoverPush`, `G_MoverTeam`, `G_RotatePoint`, `G_TestEntityPosition`, `G_TransposeMatrix`, `G_TryPushingEntity`, `G_TryPushingProxMine`, `InitMover`, `MatchTeam`, `Reached_BinaryMover`, `Reached_Train`, `ReturnToPos1`, `SP_func_bobbing`, `SP_func_button`, `SP_func_pendulum`, `SP_func_plat`, `SP_func_rotating`, `SP_func_static`, `SP_func_train`, `SpawnPlatTrigger`, `Think_BeginMoving`, `Think_MatchTeam`, `Think_SetupTrainTargets`, `Think_SpawnNewDoorTrigger`, `Touch_Button`, `Touch_DoorTrigger`, `Touch_DoorTriggerSpectator`, `Touch_Plat`, `Touch_PlatCenterTrigger`, `Use_BinaryMover`, `triggered`
+- `code/game/g_misc.c` (ported): `DropPortalDestination`, `DropPortalSource`, `PortalDie`, `PortalEnable`, `PortalTouch`, `utilities`
+- `code/game/g_missile.c` (ported): `ProximityMine_Activate`, `ProximityMine_Die`, `ProximityMine_Explode`, `ProximityMine_ExplodeOnPlayer`, `ProximityMine_Player`, `ProximityMine_Trigger`, `fire_nail`, `fire_prox`
+- `code/game/g_mover.c` (ported): `Blocked_Door`, `G_CheckProxMinePosition`, `G_CreateRotationMatrix`, `G_MoverPush`, `G_MoverTeam`, `G_RotatePoint`, `G_TestEntityPosition`, `G_TransposeMatrix`, `G_TryPushingEntity`, `G_TryPushingProxMine`, `InitMover`, `MatchTeam`, `Reached_BinaryMover`, `Reached_Train`, `ReturnToPos1`, `SP_func_bobbing`, `SP_func_button`, `SP_func_pendulum`, `SP_func_plat`, `SP_func_rotating`, `SP_func_static`, `SP_func_train`, `SpawnPlatTrigger`, `Think_BeginMoving`, `Think_MatchTeam`, `Think_SetupTrainTargets`, `Think_SpawnNewDoorTrigger`, `Touch_Button`, `Touch_DoorTrigger`, `Touch_DoorTriggerSpectator`, `Touch_Plat`, `Touch_PlatCenterTrigger`, `Use_BinaryMover`, `triggered`
 - `code/game/g_public.h` (partial): *(Symbolinventar ergänzen)*
 - `code/game/g_rankings.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/g_session.c` (partial): *(Symbolinventar ergänzen)*
 - `code/game/g_spawn.c` (partial): *(Symbolinventar ergänzen)*
 - `code/game/g_svcmds.c` (partial): *(Symbolinventar ergänzen)*
 - `code/game/g_syscalls.asm` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/g_target.c` (partial): *(Symbolinventar ergänzen)*
-- `code/game/g_team.c` (partial): `CheckObeliskAttack`, `ObeliskDie`, `ObeliskPain`, `ObeliskRegen`, `ObeliskRespawn`, `ObeliskTouch`, `OtherTeamName`, `PrintMsg`, `SP_team_blueobelisk`, `SP_team_neutralobelisk`, `SP_team_redobelisk`, `SpawnObelisk`, `TeamColorString`
+- `code/game/g_team.c` (ported): `CheckObeliskAttack`, `ObeliskDie`, `ObeliskPain`, `ObeliskRegen`, `ObeliskRespawn`, `ObeliskTouch`, `OtherTeamName`, `PrintMsg`, `SP_team_blueobelisk`, `SP_team_neutralobelisk`, `SP_team_redobelisk`, `SpawnObelisk`, `TeamColorString`
 - `code/game/g_team.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/g_trigger.c` (partial): `between`
-- `code/game/g_utils.c` (partial): `DebugLine`, `angles`, `fieldofs`, `for`, `surface`, `tv`
-- `code/game/g_weapon.c` (partial): `G_StartKamikaze`, `KamikazeDamage`, `KamikazeRadiusDamage`, `KamikazeShockWave`, `Weapon_Nailgun_Fire`, `weapon_proxlauncher_fire`
+- `code/game/g_trigger.c` (ported): `between`
+- `code/game/g_utils.c` (ported): `DebugLine`, `angles`, `fieldofs`, `for`, `surface`, `tv`
+- `code/game/g_weapon.c` (ported): `G_StartKamikaze`, `KamikazeDamage`, `KamikazeRadiusDamage`, `KamikazeShockWave`, `Weapon_Nailgun_Fire`, `weapon_proxlauncher_fire`
 - `code/game/inv.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/match.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/q_shared.h` (partial): `BigFloat`, `BigLong`, `BigShort`, `Distance`, `DistanceSquared`, `LittleFloat`, `LittleLong`, `LittleShort`, `Q_fabs`, `Q_rsqrt`, `VectorCompare`, `VectorInverse`, `VectorLength`, `VectorLengthSquared`, `VectorNormalizeFast`, `__fctiw`, `__lhbrx`, `__lwbrx`
@@ -536,7 +534,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/renderer/tr_curve.c` (partial): `InvertCtrl`, `InvertErrorTable`, `R_CreateSurfaceGridMesh`, `R_FreeSurfaceGridMesh`, `R_GridInsertColumn`, `R_GridInsertRow`
 - `code/renderer/tr_flares.c` (partial): `R_ClearFlares`
 - `code/renderer/tr_font.c` (partial): `RE_ConstructGlyphInfo`, `R_DoneFreeType`, `R_GetGlyphInfo`, `R_InitFreeType`, `R_RenderGlyph`, `WriteTGA`, `readFloat`, `readInt`
-- `code/renderer/tr_image.c` (partial): `CommaParse`, `GL_TextureMode`, `LoadBMP`, `LoadJPG`, `LoadPCX`, `LoadPCX32`, `RE_RegisterSkin`, `R_BlendOverTexture`, `R_CreateBuiltinImages`, `R_CreateDefaultImage`, `R_CreateDlightImage`, `R_CreateFogImage`, `R_DeleteTextures`, `R_FogFactor`, `R_GammaCorrect`, `R_GetSkinByHandle`, `R_ImageList_f`, `R_InitFogTable`, `R_InitImages`, `R_InitSkins`, `R_LoadImage`, `R_SetColorMappings`, `R_SkinList_f`, `R_SumOfUsedImages`, `SaveJPG`, `Upload32`, `empty_output_buffer`, `init_destination`, `jpegDest`, `term_destination`
+- `code/renderer/tr_image.c` (ported): `CommaParse`, `GL_TextureMode`, `LoadBMP`, `LoadJPG`, `LoadPCX`, `LoadPCX32`, `RE_RegisterSkin`, `R_BlendOverTexture`, `R_CreateBuiltinImages`, `R_CreateDefaultImage`, `R_CreateDlightImage`, `R_CreateFogImage`, `R_DeleteTextures`, `R_FogFactor`, `R_GammaCorrect`, `R_GetSkinByHandle`, `R_ImageList_f`, `R_InitFogTable`, `R_InitImages`, `R_InitSkins`, `R_LoadImage`, `R_SetColorMappings`, `R_SkinList_f`, `R_SumOfUsedImages`, `SaveJPG`, `Upload32`, `empty_output_buffer`, `init_destination`, `jpegDest`, `term_destination`
 - `code/renderer/tr_light.c` (partial): `LogLight`, `end`
 - `code/renderer/tr_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_main.c` (partial): `IsMirror`, `R_AddEntitySurfaces`, `R_DebugGraphics`, `R_DebugPolygon`, `R_GenerateDrawSurfs`, `R_MirrorViewBySurface`, `R_PlaneForSurface`, `R_RenderView`, `R_RotateForEntity`, `R_RotateForViewer`, `R_SetupProjection`, `R_SpriteFogNum`, `SetFarClip`, `SurfIsOffscreen`, `myGlMultMatrix`, `qsortFast`, `shortsort`

@@ -9,11 +9,18 @@ struct State
   right
   up
   muzzle
+  kamikazeTime
+  kamikazeShockTime
+  kamikazeGeneration
+  kamikazeShockGeneration
 end struct
 
 function get(level)
   if level.weaponState == void then
-    level.weaponState = State(0.0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0])
+    // Team Arena stores these two cooldowns on gentity_t.  Keeping the
+    // per-entity values beside g_weapon.c's other file-static state avoids
+    // widening the shared Baseq3 entity ABI while preserving slot identity.
+    level.weaponState = State(0.0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],array(1024,0),array(1024,0),array(1024,0),array(1024,0))
   end if
   return level.weaponState
 end function

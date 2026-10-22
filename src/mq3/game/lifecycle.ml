@@ -10,15 +10,16 @@ import mq3.game.memory as memory
 import mq3.game.logging as logging
 import mq3.game.session as sessions
 import mq3.game.bodies as bodies
-import mq3.game.items as items
+import mq3.game.g_items as gItems
 import mq3.game.initialization as initialization
 import mq3.game.bot_lifecycle as bots
 import mq3.game.bot_registry as botRegistry
 import mq3.game.bot_clients as botClients
 import mq3.game.bot_client_resources as botClientResources
 import mq3.game.bot_population as botPopulation
+import mq3.game.g_bot as gBot
 import mq3.game.bot_ai_frame as botAiFrame
-import mq3.game.client_connect as clientConnect
+import mq3.game.g_client as gClient
 import mq3.game.server_commands as serverCommands
 import mq3.game.spawn as spawn
 import mq3.game.spawn_values as values
@@ -148,7 +149,7 @@ function populationSetUserinfo(level,slot,value)
   level.userinfoSetFn(level,slot,value); return void
 end function
 function populationConnect(level,slot,firstTime,isBot)
-  return clientConnect.connect(level,slot,firstTime,isBot)
+  return gClient.ClientConnect(level,slot,firstTime,isBot)
 end function
 function populationAllocate(level)
   callback = get(level).botAllocateClientFn
@@ -160,20 +161,18 @@ function populationAddCommand(level,argv)
   state.botEnable = integerValue(level,"bot_enable") != 0
   state.clRunning = integerValue(level,"cl_running") != 0
   skill = cv.find(level.spawner.cvars,"g_spSkill"); if skill != void then state.spSkill = skill.value end if
-  args = []; index = 1
-  while index < len(argv) args = args+[argv[index]]; index = index+1 end while
-  botPopulation.serviceAddBot(level,state,args); return void
+  gBot.Svcmd_AddBot_f(level,state,argv); return void
 end function
 function populationListCommand(level,argv)
-  botPopulation.botList(level,get(level).botPopulation); return void
+  gBot.Svcmd_BotList_f(level,get(level).botPopulation); return void
 end function
 function defaultInitBots(level,restart)
   state = get(level); registry = state.botRegistry
   botsFile = cv.createVm(); arenasFile = cv.createVm(); minimum = cv.createVm()
   cv.registerVm(level.spawner.cvars,botsFile,"g_botsFile","",cv.INIT | cv.ROM)
   cv.registerVm(level.spawner.cvars,arenasFile,"g_arenasFile","",cv.INIT | cv.ROM)
-  botRegistry.loadBots(registry,true,botsFile.string)
-  botRegistry.loadArenas(registry,arenasFile.string)
+  gBot.G_LoadBots(registry,true,botsFile.string)
+  gBot.G_LoadArenas(registry,arenasFile.string)
   cv.registerVm(level.spawner.cvars,minimum,"bot_minplayers","0",cv.SERVERINFO)
   population = state.botPopulation; population.minimumVm = minimum; population.minimumPlayers = minimum.integer
   skill = cv.find(level.spawner.cvars,"g_spSkill"); if skill != void then population.spSkill = skill.value end if
@@ -338,6 +337,7 @@ function attach(level,buildDate)
   state.botRegistry = botRegistry.create(void,void,registryPrint,level)
   state.botClients = botClients.create()
   state.botClients.userinfoFn = queuedBotUserinfo; state.botClients.clientBeginFn = queuedBotBegin
+  state.botClients.introSoundFn = gBot.PlayerIntroSound
   state.botClients.dropClientFn = queuedBotDrop; state.botClients.printFn = queuedBotPrint
   state.botClientResources = botClientResources.create(state.botState)
   state.botState.clientResources = state.botClientResources; state.botState.shutdownClientFn = resourceBotShutdown
@@ -398,10 +398,10 @@ function init(level,levelTime,randomSeed,restart,entityText)
   level.num_entities = 64
   if state.locateFn == void then return error(476,"Game lifecycle requires LocateGameData delivery") end if
   state.locateFn(level,level.num_entities)
-  bodies.initQueue(level); items.clearRegistered(level); spawn.load(level.spawner)
+  bodies.initQueue(level); gItems.ClearRegisteredItems(level); spawn.load(level.spawner)
   initialization.findTeams(level)
-  if level.spawner.gametype >= 3 then items.checkTeamItems(level) end if
-  items.saveRegistered(level); gamePrint(level,"-----------------------------------\n")
+  if level.spawner.gametype >= 3 then gItems.G_CheckTeamItems(level) end if
+  gItems.SaveRegisteredItems(level); gamePrint(level,"-----------------------------------\n")
   if level.spawner.gametype == 2 or integerValue(level,"com_buildScript") != 0 then
     values.modelIndex(level.spawner,"models/mapobjects/podium/podium4.md3")
     values.soundIndex(level.spawner,"sound/player/gurp1.wav"); values.soundIndex(level.spawner,"sound/player/gurp2.wav")

@@ -28,6 +28,18 @@ const CHAN_VOICE = 2
 const SPECTATOR_FREE = 1
 const SPECTATOR_FOLLOW = 2
 const SPECTATOR_SCOREBOARD = 3
+const STAT_PERSISTANT_POWERUP = 7
+
+function missionpack(level)
+  return level.spawner != void and level.spawner.missionpack
+end function
+
+function persistentTag(level,client)
+  if not missionpack(level) then return c.PW_NONE end if
+  index = client.ps.stats[STAT_PERSISTANT_POWERUP]
+  if index < 0 or index >= 52 then return c.PW_NONE end if
+  return c.missionpackItemTag(index)
+end function
 
 function damageFeedback(level,player)
   client = player.client
@@ -134,6 +146,14 @@ function endFrame(level,ent)
   for index = 0 to 15
     if client.ps.powerups[index] < level.time then client.ps.powerups[index] = 0 end if
   end for
+  if missionpack(level) then
+    tag = persistentTag(level,client)
+    if tag == c.PW_GUARD then client.ps.powerups[c.PW_GUARD] = level.time end if
+    if tag == c.PW_SCOUT then client.ps.powerups[c.PW_SCOUT] = level.time end if
+    if tag == c.PW_DOUBLER then client.ps.powerups[c.PW_DOUBLER] = level.time end if
+    if tag == c.PW_AMMOREGEN then client.ps.powerups[c.PW_AMMOREGEN] = level.time end if
+    if client.invulnerabilityTime > level.time then client.ps.powerups[c.PW_INVULNERABILITY] = level.time end if
+  end if
   if level.intermissiontime != 0 then return void end if
   worldEffects(level,ent); damageFeedback(level,ent)
   if n.i32(level.time-client.lastCmdTime) > 1000 then ent.s.eFlags = ent.s.eFlags | EF_CONNECTION

@@ -5,10 +5,10 @@ package mq3.game.frame
 import mq3.game.entities as game
 import mq3.game.spawn_functions as funcs
 import mq3.game.constants as c
-import mq3.game.missiles as missiles
+import mq3.game.g_missile as completeMissiles
 import mq3.game.bodies as bodies
-import mq3.game.items as items
-import mq3.game.movers as movers
+import mq3.game.g_items as gItems
+import mq3.game.g_mover as gMover
 import mq3.game.client_active as clientActive
 import mq3.game.client_frame as clientFrame
 import mq3.game.scores as scores
@@ -40,10 +40,10 @@ function runEntities(level)
     else if ent.s.eType == c.ET_MOVER then kind = 3
     else if slot < 64 then kind = 4 end if
     if kind != 0 then
-      if kind == 1 and level.runEntityFn == void then missiles.run(level,ent)
-      else if kind == 2 and ent.s.eType == c.ET_ITEM and level.runEntityFn == void then items.run(level,ent)
+      if kind == 1 and level.runEntityFn == void then completeMissiles.G_RunMissile(level,ent)
+      else if kind == 2 and ent.s.eType == c.ET_ITEM and level.runEntityFn == void then gItems.G_RunItem(level,ent)
       else if kind == 2 and ent.s.eType != c.ET_ITEM and ent.classname == "bodyque" and level.runEntityFn == void then bodies.run(level,ent)
-      else if kind == 3 and level.runEntityFn == void then movers.run(level,ent)
+      else if kind == 3 and level.runEntityFn == void then gMover.G_RunMover(level,ent)
       else if kind == 4 and level.runEntityFn == void then clientActive.runClient(level,ent)
       else
         if level.runEntityFn == void then return error(488,"Entity frame requires unported item/mover/client handler") end if

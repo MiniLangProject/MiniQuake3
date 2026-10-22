@@ -79,6 +79,10 @@ struct Client
   fireHeld
   switchTeamTime
   timeResidual
+  persistantPowerup
+  ammoTimes
+  invulnerabilityTime
+  portalID
 end struct
 struct Entity
   slot
@@ -290,10 +294,16 @@ struct Level
   podium2
   podium3
   botLifecycleState
+  neutralObelisk
+  obeliskHealth
+  obeliskRegenPeriod
+  obeliskRegenAmount
+  obeliskRespawnDelay
+  obeliskAttackFn
 end struct
 function createClient(state,team,cmdAngles)
   return Client(state,team,cmdAngles,false,0,0,0,[0.0,0.0,0.0],false,0,0,0.0,0,void,0,0,0,0,0,0,"",false,0,0,0,0,0,0.0,0,0,0,false,0,0,0,0.0,0.0,
-    false,false,false,0,0,0,0,0,false,0,0,false,0,0,0,0,0,0,0,0,0,[0.0,0.0,0.0],0,0,false,0,false,0,0)
+    false,false,false,0,0,0,0,0,false,0,0,false,0,0,0,0,0,0,0,0,0,[0.0,0.0,0.0],0,0,false,0,false,0,0,void,array(16,0),0,0)
 end function
 function resetClient(client)
   // Keep the persistent client object identity while zeroing every modeled field.
@@ -320,6 +330,8 @@ function resetClient(client)
   client.latched_buttons = fresh.latched_buttons; client.oldOrigin = fresh.oldOrigin; client.accurateCount = fresh.accurateCount
   client.inactivityTime = fresh.inactivityTime; client.inactivityWarning = fresh.inactivityWarning; client.airOutTime = fresh.airOutTime
   client.fireHeld = fresh.fireHeld; client.switchTeamTime = fresh.switchTeamTime; client.timeResidual = fresh.timeResidual
+  client.persistantPowerup = fresh.persistantPowerup; client.ammoTimes = fresh.ammoTimes; client.invulnerabilityTime = fresh.invulnerabilityTime
+  client.portalID = fresh.portalID
   return void
 end function
 function blank(slot,r)
@@ -327,7 +339,7 @@ function blank(slot,r)
 end function
 function create(world)
   scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void,false,void,0,1000.0,0,void,0,array(256,0),1,0,[],[0.0,0.0,0.0],[0.0,0.0,0.0],[],0,0,array(64,0),array(4,0),0,0,0,0,0,0,array(2,0),0,0,0,0,false,0,void,void,void,0,void,void,void,void,0,0,0,0,0,0.0,0,5,30,0,void,void,void,void,void,0,false,void,800,320,0,false,8,false,0,void,void,void,void,void,void,void,void,0,false,void,0,20,0,0,void,void,
-    "",0,0,0,0,array(2,""),array(2,0),array(2,0),array(2,0),void,0,cvarMaintenance.create(),void,void,"",0,false,0,0,void,void,void,void,0,void,void,void,void,void,void,0,0,void,0.0,void,void,void,void,0,0,void,0,void,void,void,void,void)
+    "",0,0,0,0,array(2,""),array(2,0),array(2,0),array(2,0),void,0,cvarMaintenance.create(),void,void,"",0,false,0,0,void,void,void,void,0,void,void,void,void,void,void,0,0,void,0.0,void,void,void,void,0,0,void,0,void,void,void,void,void,void,250,1,1,10,void)
   for i = 0 to 1023
     level.entities = level.entities+[blank(i,scene.entities[i])]
   end for

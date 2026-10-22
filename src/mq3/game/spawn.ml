@@ -8,7 +8,7 @@ import mq3.game.spawn_tables as tables
 import mq3.game.spawn_functions as functions
 import mq3.game.spawn_values as values
 import mq3.game.movement as movement
-import mq3.game.items as gameItems
+import mq3.game.g_items as gameItems
 import mq3.game.memory as memory
 import mq3.shared.parser as parser
 import mq3.qcommon.cvar as cv
@@ -32,9 +32,12 @@ struct State
   unportedFn
   effectFn
   context
+  missionpack
+  singlePlayer
+  portalSequence
 end struct
 function create(level,text)
-  state = State(level,parser.create(text),[],0,false,0,"",0,0,0,800.0,array(1024,""),cv.create(),void,void,void)
+  state = State(level,parser.create(text),[],0,false,0,"",0,0,0,800.0,array(1024,""),cv.create(),void,void,void,false,false,0)
   level.spawner = state
   level.damageFn = combat.damage
   return state
@@ -215,10 +218,10 @@ function spawnDiagnostic(state,text)
 end function
 function callSpawn(state,ent)
   if ent.classname == void then spawnDiagnostic(state,"G_CallSpawn: NULL classname\n"); return false end if
-  items = tables.items(); index = 1
+  items = tables.items(); if state.missionpack then items = tables.missionpackItems() end if; index = 1
   while index < len(items)
     if items[index] == ent.classname then
-      gameItems.spawnItem(state.level,ent,index); return true
+      gameItems.G_SpawnItem(state.level,ent,index); return true
     end if
     index = index+1
   end while

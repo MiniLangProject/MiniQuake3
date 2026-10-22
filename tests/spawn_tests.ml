@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 import mq3.game.map_targets as mapTargets
+import mq3.game.g_target as gTarget
+import mq3.game.g_trigger as gTrigger
 import mq3.game.portals as portals
 import mq3.game.spawn as spawn
 import mq3.game.spawn_functions as funcs
@@ -95,13 +97,16 @@ function checkSnapshot(check,ent)
   checkWords(check,[r.lastCluster,r.areanum,r.areanum2,r.sector])
   checkReal(check,ent.speed); checkReal(check,ent.wait); checkReal(check,ent.random); checkWords(check,[ent.count,ent.health,ent.damage,ent.flags]); checkVector(check,ent.movedir); checkWord(check,ent.nextthink)
   think = 0; touch = 0
-  if ent.think == funcs.aimAtTarget then think = 1 else if ent.think == portals.locateCamera then think = 3 else if ent.think != void then think = 2 end if
-  if ent.touch == triggers.pushTouch then touch = 1 else if ent.touch == triggers.teleporterTouch then touch = 2 else if ent.touch != void then touch = 3 end if
+  if ent.think == funcs.aimAtTarget or ent.think == gTrigger.AimAtTarget then think = 1 else if ent.think == portals.locateCamera then think = 3 else if ent.think != void then think = 2 end if
+  if ent.touch == triggers.pushTouch or ent.touch == gTrigger.trigger_push_touch then touch = 1 else if ent.touch == triggers.teleporterTouch or ent.touch == gTrigger.trigger_teleporter_touch then touch = 2 else if ent.touch != void then touch = 3 end if
   checkWords(check,[think,touch])
   activator = -1
   if ent.activator != void then activator = ent.activator.slot end if
   useId = boolean(ent.use != void)
-  if ent.use == mapTargets.giveUse then useId = 2 else if ent.use == mapTargets.removePowerupsUse then useId = 3 else if ent.use == mapTargets.scoreUse then useId = 4 else if ent.use == mapTargets.printUse then useId = 5 end if
+  if ent.use == mapTargets.giveUse or ent.use == gTarget.Use_Target_Give then useId = 2
+  else if ent.use == mapTargets.removePowerupsUse or ent.use == gTarget.Use_target_remove_powerups then useId = 3
+  else if ent.use == mapTargets.scoreUse or ent.use == gTarget.Use_Target_Score then useId = 4
+  else if ent.use == mapTargets.printUse or ent.use == gTarget.Use_Target_Print then useId = 5 end if
   checkWords(check,[useId,activator,boolean(ent.unlinkAfterEvent),boolean(ent.physicsObject)])
   checkWords(check,[ent.noise_index,ent.fly_sound_debounce_time,actionSlot(ent.nextTrain)])
   for each value in [ent.classname,ent.model,ent.model2,ent.target,ent.targetname,ent.message,ent.team,ent.targetShaderName,ent.targetShaderNewName]
@@ -327,7 +332,7 @@ function runTargetActions(level,input,check)
         ent = game.spawn(level); ent.targetname = names[a]; ent.use = actionUse
       end case
       case 12
-        targets.multiTouch(level,ent,other,void)
+        gTrigger.Touch_Multi(level,ent,other,void)
       end case
       case 13
         ent.targetShaderName = "shader/"+str(b); ent.targetShaderNewName = "shader/"+str(d)
@@ -1896,7 +1901,7 @@ function runDeathContracts(level)
   requireSpawnContract(cl.lastkilled_client == 0 and cl.respawnTime == 0 and cl.rewardTime == 0 and cl.lastKillTime == 0 and cl.cmdWeapon == 0,"death client fields initialize")
   requireSpawnContract(cl.lastfraggedcarrier == 0.0 and cl.fragcarrier == 0 and cl.carrierdefense == 0 and cl.basedefense == 0,"team bonus fields initialize")
   requireSpawnContract(level.deathAnimIndex == 0 and level.itemDropFn == void and level.flagReturnFn == void and level.teamMessageFn == void and level.clientSpawnFn == void,"death boundaries initialize explicitly")
-  requireSpawnContract(deaths.weaponItem(3) == 9 and deaths.weaponItem(4) == 11 and deaths.weaponItem(10) == 17 and deaths.powerupItem(1) == 28 and deaths.powerupItem(8) == 35,"baseq3 item mappings")
+  requireSpawnContract(deaths.weaponItem(3) == 9 and deaths.weaponItem(4) == 11 and deaths.weaponItem(10) == 17 and deaths.powerupItem(1) == 28 and deaths.powerupItem(8) == 35 and deaths.powerupItem(9) == -1,"baseq3 item mappings")
   ent = game.initEntity(level.entities[0]); game.bindClient(level,ent,cl); deaths.tossClientItems(level,ent)
   ent.s.weapon = 5; cl.ps.ammo[5] = 1; deaths.tossClientItems(level,ent); dropped = level.entities[64]
   requireSpawnContract(dropped.inuse and dropped.s.eType == 2 and dropped.item == 12 and dropped.classname == "weapon_rocketlauncher","weapon death drop creates an item entity")

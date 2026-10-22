@@ -4,6 +4,7 @@
 package mq3.game.combat
 import mq3.game.constants as c
 import mq3.game.events as events
+import mq3.game.entities as game
 import mq3.game.movement as movement
 import mq3.server.world as sv
 import mq3.shared.math as q
@@ -16,6 +17,49 @@ const DAMAGE_NO_KNOCKBACK = 4
 const DAMAGE_NO_PROTECTION = 8
 const FL_GODMODE = 0x10
 const FL_NO_KNOCKBACK = 0x800
+const MOD_PROXIMITY_MINE = 26
+const MOD_JUICED = 28
+const STAT_PERSISTANT_POWERUP = 7
+function missionpack(level)
+  return level.spawner != void and level.spawner.missionpack
+end function
+function raySphereIntersections(origin,radius,point,dir,intersections)
+  q.VectorNormalize(dir)
+  offset = [n.fsub(point[0],origin[0]),n.fsub(point[1],origin[1]),n.fsub(point[2],origin[2])]
+  b = n.fmul(2.0,q.DotProduct(dir,offset))
+  cc = n.fsub(q.DotProduct(offset,offset),n.fmul(radius,radius))
+  discriminant = n.fsub(n.fmul(b,b),n.fmul(4.0,cc))
+  if discriminant > 0 then
+    root = n.fsqrt(discriminant)
+    intersections[0] = q.VectorMA(point,n.fdiv(n.fadd(n.fneg(b),root),2.0),dir)
+    intersections[1] = q.VectorMA(point,n.fdiv(n.fsub(n.fneg(b),root),2.0),dir)
+    return 2
+  else if discriminant == 0 then
+    intersections[0] = q.VectorMA(point,n.fdiv(n.fneg(b),2.0),dir)
+    return 1
+  end if
+  return 0
+end function
+function invulnerabilityEffect(level,targ,dir,point,impactpoint,bouncedir)
+  if targ.client == void then return false end if
+  ray = [n.fneg(dir[0]),n.fneg(dir[1]),n.fneg(dir[2])]
+  intersections = [[0.0,0.0,0.0],[0.0,0.0,0.0]]
+  count = raySphereIntersections(targ.client.ps.origin,42.0,point,ray,intersections)
+  if count == 0 then return false end if
+  normal = [n.fsub(intersections[0][0],targ.client.ps.origin[0]),n.fsub(intersections[0][1],targ.client.ps.origin[1]),n.fsub(intersections[0][2],targ.client.ps.origin[2])]
+  impact = game.tempEntity(level,targ.client.ps.origin,c.EV_INVUL_IMPACT)
+  impact.s.angles = q.vectoangles(normal); impact.s.angles[0] = n.fadd(impact.s.angles[0],90.0)
+  if impact.s.angles[0] > 360.0 then impact.s.angles[0] = n.fsub(impact.s.angles[0],360.0) end if
+  if impactpoint != void then for axis = 0 to 2 impactpoint[axis] = intersections[0][axis] end for end if
+  if bouncedir != void then q.VectorNormalize(normal); for axis = 0 to 2 bouncedir[axis] = normal[axis] end for end if
+  return true
+end function
+function persistentTag(level,client)
+  if not missionpack(level) then return c.PW_NONE end if
+  index = client.ps.stats[STAT_PERSISTANT_POWERUP]
+  if index < 0 or index >= 52 then return c.PW_NONE end if
+  return c.missionpackItemTag(index)
+end function
 function gametype(level)
   if level.spawner == void then return 0 end if
   return level.spawner.gametype
@@ -99,13 +143,25 @@ function checkArmor(ent,amount,dflags)
 end function
 function damage(level,targ,inflictor,attacker,dir,point,amount,dflags,mod)
   if not targ.takedamage or level.intermissionQueued != 0 then return void end if
+  if missionpack(level) and targ.client != void and mod != MOD_JUICED and targ.client.invulnerabilityTime > level.time then
+    if dir != void and point != void then invulnerabilityEffect(level,targ,dir,point,void,void) end if
+    return void
+  end if
   if inflictor == void then inflictor = level.entities[1022] end if
   if attacker == void then attacker = level.entities[1022] end if
   if targ.s.eType == c.ET_MOVER then
     if targ.use != void and targ.moverState == 0 then targ.use(level,targ,inflictor,attacker) end if
     return void
   end if
-  if attacker.client != void and attacker != targ then amount = textnum.truncDouble32(n.mul32(amount,attacker.client.ps.stats[c.STAT_MAX_HEALTH])/100.0) end if
+  // MISSIONPACK G_Damage routes Overload obelisks through g_team.c before
+  // handicap and friendly-fire processing. The callback is installed by the
+  // obelisk spawn functions, avoiding a game-module import cycle.
+  if gametype(level) == 6 and level.obeliskAttackFn != void and level.obeliskAttackFn(level,targ,attacker) then return void end if
+  if attacker.client != void and attacker != targ then
+    maximum = attacker.client.ps.stats[c.STAT_MAX_HEALTH]
+    if persistentTag(level,attacker.client) == c.PW_GUARD then maximum = n.quotient(maximum,2) end if
+    amount = textnum.truncDouble32(n.mul32(amount,maximum)/100.0)
+  end if
   client = targ.client
   if client != void and client.noclip then return void end if
   if dir == void then dflags = dflags | DAMAGE_NO_KNOCKBACK else q.VectorNormalize(dir) end if
@@ -125,7 +181,14 @@ function damage(level,targ,inflictor,attacker,dir,point,amount,dflags,mod)
     end if
   end if
   if (dflags & DAMAGE_NO_PROTECTION) == 0 then
-    if targ != attacker and onSameTeam(level,targ,attacker) and level.friendlyFire == 0 then return void end if
+    // Team Arena's DAMAGE_NO_TEAM_PROTECTION is used by Kamikaze.  It skips
+    // only the team-protection gate; DAMAGE_NO_PROTECTION remains the broader
+    // armor/powerup/godmode bypass handled by its surrounding branch.
+    if mod != MOD_JUICED and targ != attacker and onSameTeam(level,targ,attacker) and level.friendlyFire == 0 and (dflags & 16) == 0 then return void end if
+    if missionpack(level) and mod == MOD_PROXIMITY_MINE then
+      if inflictor != void and inflictor.parent != void and onSameTeam(level,targ,inflictor.parent) then return void end if
+      if targ == attacker then return void end if
+    end if
     if (targ.flags & FL_GODMODE) != 0 then return void end if
   end if
   if client != void and client.ps.powerups[c.PW_BATTLESUIT] != 0 then
@@ -148,7 +211,7 @@ function damage(level,targ,inflictor,attacker,dir,point,amount,dflags,mod)
     if dir != void then client.damage_from = movement.copy(dir); client.damage_fromWorld = false
     else client.damage_from = movement.copy(targ.r.currentOrigin); client.damage_fromWorld = true end if
   end if
-  if gametype(level) == 4 then checkHurtCarrier(level,targ,attacker) end if
+  if gametype(level) == 4 or (missionpack(level) and gametype(level) == 5) then checkHurtCarrier(level,targ,attacker) end if
   if targ.client != void then targ.client.lasthurt_client = attacker.s.number; targ.client.lasthurt_mod = mod end if
   if take != 0 then
     targ.health = n.i32(targ.health-take)

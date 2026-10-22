@@ -6,6 +6,7 @@
 package mq3.botlib.l_precomp
 
 import mq3.vm.pc_parser as pc
+import mq3.botlib.l_script as lex
 import mq3.compat.numeric as n
 import std.string as strings
 
@@ -40,12 +41,12 @@ const P_COLON=42
 const P_QUESTIONMARK=43
 
 struct Action kind message file line dispatched end struct
-struct Host loadFn actionFn context end struct
+struct PrecompHost loadFn actionFn context end struct
 struct Runtime registry host baseFolder globalDefines actions retailActive tokenHeapInitialized end struct
 struct Source runtime handle includePath punctuations lastToken indents scripts end struct
 struct Indent type skip end struct
 
-function host() return Host(void,void,void) end function
+function host() return PrecompHost(void,void,void) end function
 function loadFile(runtime,name)
   path=PC_ConvertPath(name);candidate=path
   if runtime.baseFolder!="" and strings.indexOf(path,runtime.baseFolder,0)!=0 then candidate=runtime.baseFolder+path end if
@@ -63,6 +64,12 @@ function emit(runtime,kind,message,file,line)
 end function
 function sourceEntry(source) if source==void or source.handle<1 or source.handle>=pc.MAX_SOURCEFILES then return void end if;return source.runtime.registry.sources[source.handle] end function
 function sourceLocation(source) value=pc.location(source.runtime.registry,source.handle);if value==void then return ["",0] end if;return value end function
+// Expose the original l_script API over the active preprocessor input without
+// copying its cursor or line state. This is used by native botlib readers that
+// sit below l_precomp in the original engine.
+function PC_LexerView(source)
+  entry=sourceEntry(source);if entry==void or len(entry[1])==0 then return void end if;active=entry[1][len(entry[1])-1];return lex.WrapPCSource(lex.create(lex.host()),active)
+end function
 
 function SourceError(source,message) where=sourceLocation(source);emit(source.runtime,"error",message,where[0],where[1]);return error(7741,where[0]+":"+str(where[1])+": "+message) end function
 function SourceWarning(source,message) where=sourceLocation(source);emit(source.runtime,"warning",message,where[0],where[1]);return false end function

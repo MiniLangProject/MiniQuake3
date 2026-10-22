@@ -20,13 +20,14 @@ struct Command
   rightmove
   upmove
 end struct
-struct Pmove
+struct PmoveContext
   ps
   cmd
   k
   noFootsteps
   gauntletHit
   fixed
+  missionpack
   fixedMsec
   watertype
   xyspeed
@@ -50,7 +51,7 @@ end function
 
 function create(ps,traceFn,pointFn,context)
   k = kernel.create(kernelTrace,void)
-  p = Pmove(ps,Command(0,[0,0,0],0,0,0,0,0),k,false,false,false,8,0,0.0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,kernel.Collision(brush.emptyTrace(),[0.0,0.0,0.0],0),[0.0,0.0,0.0],[0.0,0.0,0.0],0,traceFn,pointFn,context)
+  p = PmoveContext(ps,Command(0,[0,0,0],0,0,0,0,0),k,false,false,false,false,8,0,0.0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,kernel.Collision(brush.emptyTrace(),[0.0,0.0,0.0],0),[0.0,0.0,0.0],[0.0,0.0,0.0],0,traceFn,pointFn,context)
   k.context = p
   return p
 end function
@@ -203,6 +204,12 @@ function waterMove(p)
     q.VectorNormalize(p.ps.velocity); p.ps.velocity = q.VectorScale(p.ps.velocity,speed)
   end if
   slide(p,false,false)
+  return void
+end function
+function invulnerabilityMove(p)
+  // Team Arena's invulnerability sphere suppresses every movement axis.
+  p.cmd.forwardmove = 0; p.cmd.rightmove = 0; p.cmd.upmove = 0
+  p.ps.velocity = [0.0,0.0,0.0]
   return void
 end function
 function flyMove(p)
@@ -363,6 +370,11 @@ function correctAllSolid(p)
   clearGround(p)
   return false
 end function
+function checkStuck(p)
+  // PM_CheckStuck is disabled at the original Pmove call site.  Keep the
+  // diagnostic available without changing baseq3 movement behaviour.
+  return p.traceFn(p,p.ps.origin,p.ps.origin).trace.allsolid
+end function
 function groundTraceMissed(p)
   if p.ps.groundEntityNum != 1023 then
     point = kernel.copy(p.ps.origin); point[2] = n.fsub(point[2],64.0)
@@ -506,6 +518,10 @@ function standTorso(p,continuing)
   if continuing then continueTorso(p,anim) else startTorso(p,anim) end if
   return void
 end function
+function torsoAnimation(p)
+  if p.ps.weaponstate == c.WEAPON_READY then standTorso(p,true) end if
+  return void
+end function
 function weapon(p)
   s = p.ps
   if (s.pm_flags & 512) != 0 or s.persistant[c.PERS_TEAM] == c.TEAM_SPECTATOR then return void end if
@@ -605,14 +621,15 @@ function single(p)
   checkDuck(p); groundTrace(p)
   if s.pm_type == c.PM_DEAD then deadMove(p) end if
   dropTimers(p)
-  if s.powerups[c.PW_FLIGHT] != 0 then flyMove(p)
+  if p.missionpack and s.powerups[c.PW_INVULNERABILITY] != 0 then invulnerabilityMove(p)
+  else if s.powerups[c.PW_FLIGHT] != 0 then flyMove(p)
   else if (s.pm_flags & 2048) != 0 then grappleMove(p); airMove(p)
   else if (s.pm_flags & 256) != 0 then waterJumpMove(p)
   else if k.waterlevel > 1 then waterMove(p)
   else if k.walking then walkMove(p)
   else airMove(p) end if
   animate(p); groundTrace(p); setWaterLevel(p); weapon(p)
-  if s.weaponstate == c.WEAPON_READY then standTorso(p,true) end if
+  torsoAnimation(p)
   footsteps(p); waterEvents(p); q.SnapVector(s.velocity)
   return void
 end function

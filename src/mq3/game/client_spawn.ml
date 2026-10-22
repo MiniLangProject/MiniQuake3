@@ -13,6 +13,7 @@ import mq3.game.client_frame as clientFrame
 import mq3.game.client_active as clientActive
 import mq3.game.bodies as bodies
 import mq3.game.targets as targets
+import mq3.game.g_utils as gUtils
 import mq3.game.scores as scores
 import mq3.game.intermission as spawnIntermission
 import mq3.game.movement as movement
@@ -129,7 +130,7 @@ function spawn(level,ent,dieFn)
   if level.usercmdFn == void then return error(496,"ClientSpawn requires user-command delivery") end if
   level.usercmdFn(level,ent.slot,client); teleport.setClientViewAngle(ent,spawnAngles)
   if client.team != c.TEAM_SPECTATOR then
-    teleport.killBox(level,ent); game.link(level,ent); client.ps.weapon = c.WP_MACHINEGUN; client.ps.weaponstate = c.WEAPON_READY
+    gUtils.G_KillBox(level,ent); game.link(level,ent); client.ps.weapon = c.WP_MACHINEGUN; client.ps.weaponstate = c.WEAPON_READY
   end if
   client.ps.pm_flags = client.ps.pm_flags | PMF_TIME_KNOCKBACK; client.ps.pm_time = 100
   client.respawnTime = level.time; client.inactivityTime = n.add32(level.time,n.mul32(level.inactivity,1000)); client.latched_buttons = 0
@@ -139,7 +140,7 @@ function spawn(level,ent,dieFn)
     if level.moveIntermissionFn != void then level.moveIntermissionFn(level,ent)
     else spawnIntermission.moveClient(level,ent) end if
   else
-    targets.useTargets(level,spawnPoint,ent); client.ps.weapon = c.WP_GAUNTLET; weapon = c.WP_NUM_WEAPONS-1
+    gUtils.G_UseTargets(level,spawnPoint,ent); client.ps.weapon = c.WP_GAUNTLET; weapon = c.WP_NUM_WEAPONS-1
     while weapon > 0
       if (client.ps.stats[c.STAT_WEAPONS] & (1 << weapon)) != 0 then client.ps.weapon = weapon; break end if
       weapon = weapon-1

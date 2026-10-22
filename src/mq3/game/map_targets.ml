@@ -8,6 +8,7 @@ import mq3.game.items as mapTargetItems
 import mq3.game.scores as mapTargetScores
 import mq3.game.movement as mapTargetMovement
 import mq3.collision.brush as mapTargetBrush
+import mq3.game.g_utils as gUtils
 
 function mapTargetsEntity(ent)
   if ent is void then return error(477,"Map target requires a native entity") end if
@@ -127,20 +128,9 @@ function mapTargetsCenterCommand(ent)
   return "cp \""+mapTargetsText(ent.message,31994)+"\""
 end function
 function mapTargetsTeamCommand(level,team,command)
-  index = 0; message = void
-  while index < mapTargetsClientLimit(level)
-    slot = index; index = index+1
-    // G_TeamCommand differs from PrintTeam: connecting/disconnected team
-    // members receive nothing. Conditions and the loop bound stay live.
-    if level.clients[slot].connected != 2 then continue end if
-    if level.clients[slot].team != team then continue end if
-    if message is void then message = mapTargetsText(command,31999) end if
-    // Native va("%s",cmd) reuses two static buffers. Multiple recipients can
-    // make sprintf input/output overlap (undefined C); preserve owned text
-    // here and report native observations separately from defined parity.
-    mapTargetScores.send(level,slot,message)
-  end while
-  return void
+  // G_TeamCommand does not inspect cmd when no client receives it.  Keep the
+  // conversion lazy so this helper has the same observable evaluation order.
+  return gUtils.G_TeamCommand(level,team,command)
 end function
 function printUse(level,ent,other,activator)
   mapTargetsEntity(activator); mapTargetsEntity(ent)

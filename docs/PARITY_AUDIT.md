@@ -4,13 +4,13 @@ Stand: 2026-10-22. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
-Die zuletzt vollständig ausgeführte Retail-Prüfauswahl umfasste **314 Gates**
+Die zuletzt vollständig ausgeführte Retail-Prüfauswahl umfasste **408 Gates**
 (`python scripts/verify.py --data-root D:/Quake3`) und bestand vollständig am
 22. Oktober 2026 mit dem eingebundenen Retail-`pak0.pk3`. Der dabei frisch
 gebaute `MiniQuake3.exe`-Build hat SHA-256
-`76edc5435dc6d79555b72bd71b5dc0ddc553d7cb67a64fa7d314549230d7f322`,
+`c53284b8d10e5d8aa811adb1efe241089185ee9359e35d8d3b8fbb696320192b`,
 das zugehörige `build/verification.json` SHA-256
-`d74e92a4c2a45bdd51b3c300125f29c373554bb781e58a4f4ba1ede0abefcd3d`.
+`52d4c214a166500abb36d2aa0eea775f2c521b12a54833c7296684d3ffab6218`.
 Der Lauf enthält den zusammenhängenden Retail-qagame/cgame/ui-Boot mit neun
 Prediction-Traces, 2.345 vollständig texturierten Szenendreiecken, 17
 Renderpässen, 26 Soundbefehlen und interaktiver Original-UI sowie den
@@ -2319,3 +2319,46 @@ Nachweise:
 
 Sichere Abstraktionsgrenzen bleiben dokumentiert: Dateisystem-/PK3-Zugriff läuft über typisierte Hosts, verwaltete Strings und Bytearrays ersetzen C-Zeigeraliasing, und das Audio-Gerät bleibt die Plattformgrenze. Diese Unterschiede verändern die geprüften Baseq3-Laufzeitpfade nicht. Die vollständige Verify-Auswahl wurde für dieses Paket nicht erneut am Stück ausgeführt; Fokusgates, abhängige Regressionen, Hauptbuild und Retail-QVM-Match sind die Abnahmekriterien dieses inkrementellen Blocks.
 Der frisch gebaute Hauptstand hat SHA-256 `109af343203c8eb540e2343c8fbcaf7700fc6e7f61666ba5da40c97e7cb34635`. Der anschließende Retail-QVM-Match besteht über acht Frames mit neun Prediction-Traces, 2.345 texturierten Dreiecken, 17 Renderpässen und 26 Soundbefehlen.
+
+## 2026-10-22: 19 offene Gameplay-, Botlib- und Medienquellen geschlossen
+
+Der vollständige Abgleich des letzten Reviews ist umgesetzt. Folgende
+Originaldateien stehen im Ledger auf `ported` und besitzen eigene native
+MiniLang-Adapter sowie fokussierte Regressionsgates:
+
+- Gameplay und Match: `bg_pmove.c`, `g_team.c`, `g_cmds.c`, `g_main.c`,
+  `g_mover.c`, `g_client.c`, `g_weapon.c`, `g_target.c`, `g_missile.c`,
+  `g_items.c`, `g_active.c`, `g_combat.c`, `g_utils.c`, `g_trigger.c` und
+  `g_misc.c`.
+- Bots und Skripte: `g_bot.c` und `l_script.c`.
+- Renderer und Medien: `tr_image.c` und `cl_cin.c`.
+
+Die Integration beseitigt außerdem drei dabei sichtbar gewordene
+Abweichungen: Entity-Slots gelten erst nach `G_FreeEntity` als frei,
+Team-Kommandos formatieren ihre Nachricht erst beim ersten tatsächlichen
+Empfänger, und Baseq3 wirft den neutralen Missionpack-Flag-Powerup nicht als
+Baseq3-Item ab. Die Botlib-Hosts für Skript und Präprozessor verwenden getrennte
+Typen, sodass die vollständige Cgame-Vertragsauswahl ohne Namenskollision baut.
+Das Image-Register führt die originale `frameUsed`-Buchhaltung pro Frame.
+
+Nachweis ist ein vollständiger Lauf von
+`python scripts/verify.py --data-root D:/Quake3`: **408/408 Gates bestanden**.
+`build/MiniQuake3.exe` hat SHA-256
+`c53284b8d10e5d8aa811adb1efe241089185ee9359e35d8d3b8fbb696320192b`;
+`build/verification.json` hat SHA-256
+`52d4c214a166500abb36d2aa0eea775f2c521b12a54833c7296684d3ffab6218`.
+Der Retail-QVM-Pfad läuft acht Frames mit 131 Entities, 13
+Snapshot-Entities, neun Prediction-Traces, 301 Cgame-Assets, 19
+Scene-Entities, 2.345 vollständig texturierten Dreiecken, 17 Renderpässen,
+26 Sounds und null nicht unterstützten Entities. Alle 31 BSP-Karten, der
+512-Frame-Botlauf und die produktiven Windows-Fenster-, Audio- und
+Renderergrenzen bestehen ebenfalls.
+
+Das generierte Inventar umfasst 335 Runtime-/Plattformdateien: **144 portiert,
+74 partiell und 117 noch nicht begonnen**. Der vollständige 1:1-Port bleibt
+damit offen. Die größten Restflächen liegen in weiteren Renderer-Backend-/GL-
+und Plattformdateien, Client-/Server-/Netzwerkoberflächen, Botlib/AAS sowie der
+grafischen Team-Arena-Abnahme. Die vorhandenen Retaildaten prüfen Baseq3 direkt.
+Da `D:/Quake3` keine `missionpack`-Assets enthält, sind Team-Arena-Zweige über
+unveränderte C-Differenzwerte und native Verträge belegt, aber noch nicht durch
+einen vollständigen Team-Arena-Retaillauf abgenommen.

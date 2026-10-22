@@ -8,9 +8,11 @@ import mq3.game.events as events
 import mq3.game.scores as scores
 import mq3.game.bodies as bodies
 import mq3.game.missiles as missiles
-import mq3.game.items as items
+import mq3.game.g_items as gItems
+import mq3.game.items as itemCore
 import mq3.game.team_bonuses as bonuses
 import mq3.game.client_spawn as clientSpawn
+import mq3.game.combat_missionpack as combatMissionpack
 import mq3.game.movement as movement
 import mq3.server.world as sv
 import mq3.shared.math as q
@@ -67,6 +69,7 @@ function weaponItem(weapon)
   if weapon == c.WP_MACHINEGUN then return 10 end if
   if weapon == c.WP_SHOTGUN then return 9 end if
   if weapon >= c.WP_GRENADE_LAUNCHER and weapon <= c.WP_GRAPPLING_HOOK then return weapon+7 end if
+  if weapon >= 11 and weapon <= 13 then return weapon+38 end if
   return -1
 end function
 function powerupItem(powerup)
@@ -75,9 +78,17 @@ function powerupItem(powerup)
   if powerup == c.PW_BLUEFLAG then return 35 end if
   return -1
 end function
+function modePowerupItem(level,powerup)
+  item = powerupItem(powerup)
+  if item >= 0 or level.spawner == void or not level.spawner.missionpack then return item end if
+  if powerup == c.PW_NEUTRALFLAG then return 46 end if
+  if powerup >= c.PW_SCOUT and powerup <= c.PW_AMMOREGEN then return powerup+32 end if
+  if powerup == c.PW_INVULNERABILITY then return 38 end if
+  return -1
+end function
 function dropItem(level,self,item,angle)
   if level.itemDropFn != void then return level.itemDropFn(level,self,item,angle) end if
-  return items.drop(level,self,item,angle)
+  return gItems.Drop_Item(level,self,item,angle)
 end function
 function tossClientItems(level,self)
   if self.client == void then return error(496,"TossClientItems requires a client") end if
@@ -95,7 +106,7 @@ function tossClientItems(level,self)
     angle = 45.0
     for powerup = 1 to c.PW_NUM_POWERUPS-1
       if self.client.ps.powerups[powerup] > level.time then
-        item = powerupItem(powerup)
+        item = modePowerupItem(level,powerup)
         if item >= 0 then
           drop = dropItem(level,self,item,angle); drop.count = n.quotient(n.i32(self.client.ps.powerups[powerup]-level.time),1000)
           if drop.count < 1 then drop.count = 1 end if
@@ -108,7 +119,7 @@ function tossClientItems(level,self)
 end function
 function returnFlag(level,team)
   if level.flagReturnFn != void then level.flagReturnFn(level,team); return void end if
-  return items.returnFlag(level,team)
+  return itemCore.returnFlag(level,team)
 end function
 function returnCarriedFlag(level,self,clear)
   ps = self.client.ps
@@ -117,8 +128,9 @@ function returnCarriedFlag(level,self,clear)
   else if ps.powerups[c.PW_BLUEFLAG] != 0 then returnFlag(level,c.TEAM_BLUE); if clear then ps.powerups[c.PW_BLUEFLAG] = 0 end if end if
   return void
 end function
-function modName(mod)
+function modName(level,mod)
   names = ["MOD_UNKNOWN","MOD_SHOTGUN","MOD_GAUNTLET","MOD_MACHINEGUN","MOD_GRENADE","MOD_GRENADE_SPLASH","MOD_ROCKET","MOD_ROCKET_SPLASH","MOD_PLASMA","MOD_PLASMA_SPLASH","MOD_RAILGUN","MOD_LIGHTNING","MOD_BFG","MOD_BFG_SPLASH","MOD_WATER","MOD_SLIME","MOD_LAVA","MOD_CRUSH","MOD_TELEFRAG","MOD_FALLING","MOD_SUICIDE","MOD_TARGET_LASER","MOD_TRIGGER_HURT","MOD_GRAPPLE"]
+  if level.spawner != void and level.spawner.missionpack then names = ["MOD_UNKNOWN","MOD_SHOTGUN","MOD_GAUNTLET","MOD_MACHINEGUN","MOD_GRENADE","MOD_GRENADE_SPLASH","MOD_ROCKET","MOD_ROCKET_SPLASH","MOD_PLASMA","MOD_PLASMA_SPLASH","MOD_RAILGUN","MOD_LIGHTNING","MOD_BFG","MOD_BFG_SPLASH","MOD_WATER","MOD_SLIME","MOD_LAVA","MOD_CRUSH","MOD_TELEFRAG","MOD_FALLING","MOD_SUICIDE","MOD_TARGET_LASER","MOD_TRIGGER_HURT","MOD_NAIL","MOD_CHAINGUN","MOD_PROXIMITY_MINE","MOD_KAMIKAZE","MOD_JUICED","MOD_GRAPPLE"] end if
   if mod < 0 or mod >= len(names) then return "<bad obituary>" end if
   return names[mod]
 end function
@@ -135,6 +147,7 @@ function playerDie(level,self,inflictor,attacker,damage,meansOfDeath)
   if self.client.ps.pm_type == c.PM_DEAD or level.intermissiontime != 0 then return void end if
   checkAlmostCapture(level,self,attacker); checkAlmostScored(level,self,attacker)
   if self.client.hook != void then missiles.hookFree(level,self.client.hook) end if
+  combatMissionpack.cleanupPlayerDie(level,self)
   self.client.ps.pm_type = c.PM_DEAD
   killer = 1022; killerName = "<world>"
   if attacker != void then
@@ -142,7 +155,7 @@ function playerDie(level,self,inflictor,attacker,damage,meansOfDeath)
     if attacker.client != void then killerName = attacker.client.netname else killerName = "<non-client>" end if
   end if
   if killer < 0 or killer >= 64 then killer = 1022; killerName = "<world>" end if
-  scores.logLine(level,"Kill: "+str(killer)+" "+str(self.s.number)+" "+str(meansOfDeath)+": "+killerName+" killed "+self.client.netname+" by "+modName(meansOfDeath)+"\n")
+  scores.logLine(level,"Kill: "+str(killer)+" "+str(self.s.number)+" "+str(meansOfDeath)+": "+killerName+" killed "+self.client.netname+" by "+modName(level,meansOfDeath)+"\n")
   obituary = game.tempEntity(level,self.r.currentOrigin,c.EV_OBITUARY); obituary.s.eventParm = meansOfDeath
   obituary.s.otherEntityNum = self.s.number; obituary.s.otherEntityNum2 = killer; obituary.r.svFlags = 32
   self.enemy = attacker; self.client.ps.persistant[c.PERS_KILLED] = n.add32(self.client.ps.persistant[c.PERS_KILLED],1)
@@ -167,6 +180,7 @@ function playerDie(level,self,inflictor,attacker,damage,meansOfDeath)
   if meansOfDeath == c.MOD_SUICIDE then returnCarriedFlag(level,self,true) end if
   contents = sv.pointContents(level.scene,self.r.currentOrigin,-1)
   if (contents & 0x80000000) == 0 then tossClientItems(level,self) else returnCarriedFlag(level,self,false) end if
+  combatMissionpack.dropPlayerDeathItems(level,self)
   scores.commandScore(level,self)
   if level.maxclients < 0 or level.maxclients > 64 then return error(496,"Invalid death client limit") end if
   // A zero client limit skips the C loop; MiniLang for would count backwards.
@@ -194,7 +208,7 @@ function playerDie(level,self,inflictor,attacker,damage,meansOfDeath)
     events.add(level,self,c.EV_DEATH1+level.deathAnimIndex,killer); self.die = bodies.die
     level.deathAnimIndex = (level.deathAnimIndex+1) % 3
   end if
-  return game.link(level,self)
+  game.link(level,self); combatMissionpack.afterPlayerDie(level,self); return void
 end function
 function respawn(level,ent)
   if level.playerDieFn == void then level.playerDieFn = playerDie end if

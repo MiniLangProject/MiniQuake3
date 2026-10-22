@@ -10,7 +10,11 @@ import mq3.game.map_targets as mapTargets
 import mq3.game.hazards as hazards
 import mq3.game.shooters as shooters
 import mq3.game.portals as portals
-import mq3.game.movers as movers
+import mq3.game.g_misc as gMisc
+import mq3.game.g_mover as gMover
+import mq3.game.g_target as gTarget
+import mq3.game.g_trigger as gTrigger
+import mq3.game.team_missionpack as teamMissionpack
 import mq3.game.constants as c
 import mq3.shared.math as q
 import mq3.shared.directions as dirs
@@ -100,7 +104,7 @@ function initShooter(level,ent,weapon)
   return game.link(level,ent)
 end function
 function dispatch(level,ent)
-  if movers.dispatch(level,ent) then return true end if
+  if gMover.dispatch(level,ent) then return true end if
   switch ent.classname
     case "info_player_start"
       ent.classname = "info_player_deathmatch"; playerDeathmatch(level,ent)
@@ -108,136 +112,113 @@ function dispatch(level,ent)
     case "info_player_deathmatch"
       playerDeathmatch(level,ent)
     end case
-    case "info_null","light","func_group","misc_model"
+    case "info_null"
+      gMisc.SP_info_null(level,ent)
+    end case
+    case "light"
+      gMisc.SP_light(level,ent)
+    end case
+    case "func_group"
       game.free(level,ent)
     end case
-    case "info_notnull","info_camp","target_position"
-      game.setOrigin(ent,ent.s.origin)
+    case "misc_model"
+      gMisc.SP_misc_model(level,ent)
+    end case
+    case "info_notnull"
+      gMisc.SP_info_notnull(level,ent)
+    end case
+    case "info_camp"
+      gMisc.SP_info_camp(level,ent)
+    end case
+    case "target_position"
+      gTarget.SP_target_position(level,ent)
     end case
     case "path_corner"
-      if ent.targetname == void then
-        game.diagnostic(level,"path_corner with no targetname at "+game.vtos(level,ent.s.origin)+"\n")
-        game.free(level,ent)
-      end if
+      gMover.SP_path_corner(level,ent)
     end case
-    case "info_player_intermission","misc_teleporter_dest","team_CTF_redplayer","team_CTF_blueplayer","team_CTF_redspawn","team_CTF_bluespawn","item_botroam"
+    case "misc_teleporter_dest"
+      gMisc.SP_misc_teleporter_dest(level,ent)
+    end case
+    case "info_player_intermission","team_CTF_redplayer","team_CTF_blueplayer","team_CTF_redspawn","team_CTF_bluespawn","item_botroam"
       // These original spawn functions have empty bodies.
     end case
-    case "trigger_push","trigger_teleport"
-      initTrigger(level,ent)
-      if ent.classname == "trigger_push" then
-        ent.r.svFlags = ent.r.svFlags & ~1; values.soundIndex(level.spawner,"sound/world/jumppad.wav")
-        ent.s.eType = c.ET_PUSH_TRIGGER; ent.touch = triggers.pushTouch; ent.think = aimAtTarget; ent.nextthink = n.add32(level.time,100)
-      else
-        if (ent.spawnflags & 1) != 0 then ent.r.svFlags = ent.r.svFlags | 1 else ent.r.svFlags = ent.r.svFlags & ~1 end if
-        values.soundIndex(level.spawner,"sound/world/jumppad.wav"); ent.s.eType = c.ET_TELEPORT_TRIGGER; ent.touch = triggers.teleporterTouch
-      end if
-      game.link(level,ent)
+    case "team_redobelisk"
+      teamMissionpack.SP_team_redobelisk(level,ent)
+    end case
+    case "team_blueobelisk"
+      teamMissionpack.SP_team_blueobelisk(level,ent)
+    end case
+    case "team_neutralobelisk"
+      teamMissionpack.SP_team_neutralobelisk(level,ent)
+    end case
+    case "trigger_push"
+      gTrigger.SP_trigger_push(level,ent)
+    end case
+    case "trigger_teleport"
+      gTrigger.SP_trigger_teleport(level,ent)
     end case
     case "target_delay"
-      value = values.getFloat(level.spawner,"delay","0"); ent.wait = value[1]
-      if not value[0] then ent.wait = values.getFloat(level.spawner,"wait","1")[1] end if
-      if ent.wait == 0 then ent.wait = 1.0 end if
-      ent.use = targets.delayUse
+      gTarget.SP_target_delay(level,ent)
     end case
     case "target_relay"
-      ent.use = targets.relayUse
+      gTarget.SP_target_relay(level,ent)
     end case
     case "target_give"
-      mapTargets.giveSpawn(level,ent)
+      gTarget.SP_target_give(level,ent)
     end case
     case "target_remove_powerups"
-      mapTargets.removePowerupsSpawn(level,ent)
+      gTarget.SP_target_remove_powerups(level,ent)
     end case
     case "target_score"
-      mapTargets.scoreSpawn(level,ent)
+      gTarget.SP_target_score(level,ent)
     end case
     case "target_print"
-      mapTargets.printSpawn(level,ent)
+      gTarget.SP_target_print(level,ent)
     end case
     case "misc_portal_surface"
-      portals.surface(level,ent)
+      gMisc.SP_misc_portal_surface(level,ent)
     end case
     case "misc_portal_camera"
-      portals.camera(level,ent)
+      gMisc.SP_misc_portal_camera(level,ent)
     end case
     case "target_teleporter"
-      if ent.targetname == void then
-        position = game.vtos(level,ent.s.origin)
-        game.diagnostic(level,"untargeted "+game.diagnosticArgument(ent.classname)+" at "+position+"\n")
-      end if
-      ent.use = targets.teleporterUse
+      gTarget.SP_target_teleporter(level,ent)
     end case
     case "trigger_multiple"
-      ent.wait = values.getFloat(level.spawner,"wait","0.5")[1]; ent.random = values.getFloat(level.spawner,"random","0")[1]
-      if ent.random >= ent.wait and ent.wait >= 0 then
-        ent.random = n.fsub(ent.wait,100); game.diagnostic(level,"trigger_multiple has random >= wait\n")
-      end if
-      ent.touch = targets.multiTouch; ent.use = targets.multiUse; initTrigger(level,ent); game.link(level,ent)
+      gTrigger.SP_trigger_multiple(level,ent)
     end case
     case "trigger_always"
-      ent.nextthink = n.add32(level.time,300); ent.think = targets.alwaysThink
+      gTrigger.SP_trigger_always(level,ent)
     end case
     case "target_speaker"
-      ent.wait = values.getFloat(level.spawner,"wait","0")[1]; ent.random = values.getFloat(level.spawner,"random","0")[1]
-      noise = values.getString(level.spawner,"noise","NOSOUND")
-      if not noise[0] then return error(489,"target_speaker without a noise key") end if
-      name = noise[1]
-      if len(name) > 0 and name[0] == "*" then ent.spawnflags = ent.spawnflags | 8 end if
-      if strings.indexOf(name,".wav",0) < 0 then name = name+".wav" end if
-      data = bytes(name)
-      if len(data) > 63 then name = decode(slice(data,0,63)) end if
-      ent.noise_index = values.soundIndex(level.spawner,name); ent.s.eType = c.ET_SPEAKER; ent.s.eventParm = ent.noise_index
-      ent.s.frame = n.trunc32(n.fmul(ent.wait,10)); ent.s.clientNum = n.trunc32(n.fmul(ent.random,10))
-      if (ent.spawnflags & 1) != 0 then ent.s.loopSound = ent.noise_index end if
-      ent.use = targets.speakerUse
-      if (ent.spawnflags & 4) != 0 then ent.r.svFlags = ent.r.svFlags | 32 end if
-      ent.s.pos.trBase = movement.copy(ent.s.origin); game.link(level,ent)
+      gTarget.SP_target_speaker(level,ent)
     end case
     case "target_push"
-      if ent.speed == 0 then ent.speed = 1000.0 end if
-      ent.s.origin2 = movedirVector(ent.s.angles); ent.s.angles = [0.0,0.0,0.0]; ent.s.origin2 = q.VectorScale(ent.s.origin2,ent.speed)
-      if (ent.spawnflags & 1) != 0 then ent.noise_index = values.soundIndex(level.spawner,"sound/world/jumppad.wav")
-      else ent.noise_index = values.soundIndex(level.spawner,"sound/misc/windfly.wav") end if
-      if ent.target != void then
-        ent.r.absmin = movement.copy(ent.s.origin); ent.r.absmax = movement.copy(ent.s.origin); ent.think = aimAtTarget; ent.nextthink = n.add32(level.time,100)
-      end if
-      ent.use = targets.pushUse
+      gTrigger.SP_target_push(level,ent)
     end case
     case "func_timer"
-      ent.random = values.getFloat(level.spawner,"random","1")[1]; ent.wait = values.getFloat(level.spawner,"wait","1")[1]
-      ent.use = targets.timerUse; ent.think = targets.timerThink
-      if ent.random >= ent.wait then
-        ent.random = n.fsub(ent.wait,100)
-        game.diagnostic(level,"func_timer at "+game.vtos(level,ent.s.origin)+" has random >= wait\n")
-      end if
-      if (ent.spawnflags & 1) != 0 then ent.nextthink = n.add32(level.time,100); ent.activator = ent end if
-      ent.r.svFlags = 1
+      gTrigger.SP_func_timer(level,ent)
     end case
     case "target_location"
-      ent.think = targets.locationLinkup; ent.nextthink = n.add32(level.time,200); game.setOrigin(ent,ent.s.origin)
+      gTarget.SP_target_location(level,ent)
     end case
     case "trigger_hurt"
-      initTrigger(level,ent); ent.noise_index = values.soundIndex(level.spawner,"sound/world/electro.wav"); ent.touch = hazards.hurtTouch
-      if ent.damage == 0 then ent.damage = 5 end if
-      ent.r.contents = 0x40000000
-      if (ent.spawnflags & 2) != 0 then ent.use = hazards.hurtUse end if
-      if (ent.spawnflags & 1) == 0 then game.link(level,ent) end if
+      gTrigger.SP_trigger_hurt(level,ent)
     end case
     case "target_kill"
-      ent.use = hazards.killUse
+      gTarget.SP_target_kill(level,ent)
     end case
     case "target_laser"
-      ent.think = laserStart; ent.nextthink = n.add32(level.time,100)
+      gTarget.SP_target_laser(level,ent)
     end case
     case "shooter_rocket"
-      initShooter(level,ent,5)
+      gMisc.SP_shooter_rocket(level,ent)
     end case
     case "shooter_grenade"
-      initShooter(level,ent,4)
+      gMisc.SP_shooter_grenade(level,ent)
     end case
     case "shooter_plasma"
-      initShooter(level,ent,8)
+      gMisc.SP_shooter_plasma(level,ent)
     end case
     case default
       return false

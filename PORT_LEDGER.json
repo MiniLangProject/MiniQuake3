@@ -5428,16 +5428,31 @@
           ],
           "status": "tested_subset",
           "scope": "Strings, literals, decimal/octal/hex/float numbers, comments, line tracking and original punctuation subtypes are encoded into the 1040-byte pc_token_t ABI."
+        },
+        {
+          "original": "Complete l_script.c lexer surface (39/39 symbols)",
+          "target_files": [
+            "src/mq3/botlib/l_script.ml",
+            "src/mq3/botlib/l_precomp.ml",
+            "src/mq3/vm/pc_parser.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Shared mutable pc.Source cursor, whitespace/comments, escapes, strings, literals, decimal/octal/hex/binary/floating numbers, primitive mode, custom punctuation, unread/expect/check helpers, diagnostics and script lifecycle; unchanged-C, native and Retail bot inputs are verified."
         }
       ],
       "target": [
-        "src/mq3/vm/pc_parser.ml",
-        "src/mq3/engine/local_qvm_match.ml"
+        "src/mq3/botlib/l_script.ml",
+        "src/mq3/botlib/l_precomp.ml",
+        "src/mq3/vm/pc_parser.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_pc_parser.py",
-        "tests/pc_parser_contracts.ml"
+        "tests/pc_parser_contracts.ml",
+        "scripts/test_l_script.py",
+        "tests/l_script_contracts.ml",
+        "tests/l_script_retail_probe.ml",
+        "tests/reference/l_script_oracle.c"
       ]
     },
     {
@@ -13831,25 +13846,40 @@
           ],
           "status": "tested_subset",
           "scope": "Bounded RoQ parsing, YUV codebooks, 2/4/8-pixel VQ, skip/subdivide/motion, timing, native RGBA presentation and stereo PCM output. Retail idlogo reaches exact EOF after all 210 frames; shader videoMap stages bind silent looping 256x256 scratch textures. JPEG and packet chunks remain open."
+        },
+        {
+          "original": "Complete cl_cin.c cinematic and RoQ surface (38/38 symbols)",
+          "target_files": [
+            "src/mq3/client/cl_cin_runtime.ml",
+            "src/mq3/client/cinematic_runtime.ml",
+            "src/mq3/format/roq.ml",
+            "src/mq3/video/roq_video.ml",
+            "src/mq3/renderer/qvm_video_materials.ml",
+            "src/mq3/audio/snd_raw_stream.ml",
+            "src/mq3/audio/qvm_playback.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Handle lifecycle, screen commands, RoQ parsing/VQ/motion/YUV decode, mono/stereo DPCM, extents, looping, draw and upload are connected to the productive cinematic, video-material and audio paths and verified with the Retail idlogo RoQ."
         }
       ],
       "target": [
+        "src/mq3/client/cl_cin_runtime.ml",
+        "src/mq3/client/cinematic_runtime.ml",
         "src/mq3/format/roq.ml",
         "src/mq3/video/roq_video.ml",
-        "src/mq3/client/cinematic_runtime.ml",
         "src/mq3/renderer/qvm_video_materials.ml",
-        "src/mq3/client/qvm_preview_app.ml",
-        "src/mq3/engine/local_qvm_match.ml",
         "src/mq3/audio/snd_raw_stream.ml",
         "src/mq3/audio/qvm_playback.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_roq_cinematics.py",
         "tests/roq_contracts.ml",
         "tests/cinematic_runtime_retail_probe.ml",
         "scripts/test_qvm_video_materials.py",
-        "tests/qvm_video_materials_retail_probe.ml"
+        "tests/qvm_video_materials_retail_probe.ml",
+        "scripts/test_cl_cin_complete.py",
+        "tests/cl_cin_runtime_contracts.ml"
       ]
     },
     {
@@ -20636,17 +20666,32 @@
             "src/mq3/game/pmove.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "Complete bg_pmove.c movement surface (42/42 symbols)",
+          "target_files": [
+            "src/mq3/game/bg_pmove_runtime.ml",
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/movement.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Productive Pmove/PmoveSingle, all movement modes, traces, ground/water/duck/jump, animation, footsteps/events, weapons/timers and Missionpack invulnerability are exposed through the original symbol surface and verified against unchanged C and Retail BSP/QVM paths."
         }
       ],
       "target": [
-        "src/mq3/game/movement.ml",
-        "src/mq3/game/pmove.ml"
+        "src/mq3/game/bg_pmove_runtime.ml",
+        "src/mq3/game/pmove.ml",
+        "src/mq3/game/movement.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_movement.py",
         "scripts/test_pmove.py",
-        "scripts/test_runtime_pmove.py"
+        "scripts/test_runtime_pmove.py",
+        "scripts/test_bg_pmove_complete.py",
+        "tests/bg_pmove_complete_contracts.ml",
+        "tests/bg_pmove_complete_oracle.ml",
+        "tests/reference/bg_pmove_complete_oracle.c"
       ]
     },
     {
@@ -20973,21 +21018,40 @@
           ],
           "status": "tested_subset",
           "scope": "Baseq3 end-of-frame state, environment and spectator logic are compared against the unchanged native function bodies. The isolated suite observes ClientBegin for invalid explicit spectator targets; the normal path binds the separately verified port."
+        },
+        {
+          "original": "Complete g_active.c active-client surface (17/17 symbols)",
+          "target_files": [
+            "src/mq3/game/g_active.ml",
+            "src/mq3/game/client_active.ml",
+            "src/mq3/game/client_frame.ml",
+            "src/mq3/game/active_portals.ml",
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/spawn.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "ClientThink/RunClient/EndFrame, impacts, triggers, inactivity/timers/events/world effects/damage feedback/spectators plus Team Arena Guard/Scout/Doubler/Ammo Regen, Invulnerability/Stuck, Harvester, Kamikaze and Portal paths are productive; unchanged-C and native/Retail contracts pass."
         }
       ],
       "target": [
-        "src/mq3/game/triggers.ml",
-        "src/mq3/game/client_frame.ml",
+        "src/mq3/game/g_active.ml",
         "src/mq3/game/client_active.ml",
-        "src/mq3/game/follow_commands.ml"
+        "src/mq3/game/client_frame.ml",
+        "src/mq3/game/active_portals.ml",
+        "src/mq3/game/entities.ml",
+        "src/mq3/game/spawn.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_transitions.py",
         "scripts/test_client_frame.py",
         "scripts/test_client_think.py",
         "scripts/test_follow_tournament.py",
-        "scripts/test_weapons.py"
+        "scripts/test_weapons.py",
+        "scripts/test_g_active_complete.py",
+        "tests/g_active_complete_contracts.ml",
+        "tests/g_active_complete_oracle.ml",
+        "tests/reference/g_active_complete_oracle.c"
       ]
     },
     {
@@ -21097,20 +21161,30 @@
           ],
           "status": "tested_subset",
           "scope": "Character, goal, weapon, chat and movement resources, partial-failure cleanup, gender, scheduling, session restart and shutdown ordering are ported. Eight native oracle scenarios, 22 MiniLang resource contracts and central lifecycle integration pass. Decision AI remains open."
+        },
+        {
+          "original": "Complete g_bot.c bot lifecycle surface (24/24 symbols)",
+          "target_files": [
+            "src/mq3/game/g_bot.ml",
+            "src/mq3/game/lifecycle.ml",
+            "src/mq3/game/bot_population.ml",
+            "src/mq3/game/bot_clients.ml",
+            "src/mq3/game/bot_client_resources.ml",
+            "src/mq3/game/server_commands.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Bot load/add/remove/list, spawn queue, minimum players, delayed begin, intro sound, connect/setup/shutdown, arena/map restart and console arguments are connected to productive lifecycle/server commands; unchanged-C, native and 512-frame Retail QVM/AAS/Sarge contracts pass."
         }
       ],
       "target": [
-        "src/mq3/game/bot_registry.ml",
+        "src/mq3/game/g_bot.ml",
+        "src/mq3/game/lifecycle.ml",
+        "src/mq3/game/bot_population.ml",
         "src/mq3/game/bot_clients.ml",
         "src/mq3/game/bot_client_resources.ml",
-        "src/mq3/game/bot_population.ml",
-        "src/mq3/game/bot_lifecycle.ml",
-        "src/mq3/game/lifecycle.ml",
-        "src/mq3/game/client_connect.ml",
-        "src/mq3/game/client_disconnect.ml",
-        "src/mq3/game/frame.ml"
+        "src/mq3/game/server_commands.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_bot_registry.py",
         "scripts/test_bot_clients.py",
@@ -21120,7 +21194,12 @@
         "tests/bot_client_contracts.ml",
         "tests/bot_client_resource_contracts.ml",
         "tests/bot_population_contracts.ml",
-        "tests/bot_integration_contracts.ml"
+        "tests/bot_integration_contracts.ml",
+        "scripts/test_g_bot_complete.py",
+        "tests/g_bot_complete_contracts.ml",
+        "tests/g_bot_complete_oracle.ml",
+        "tests/reference/g_bot_complete_oracle.c",
+        "scripts/test_botlib_retail_qagame.py"
       ]
     },
     {
@@ -21555,25 +21634,38 @@
           ],
           "status": "tested_subset",
           "scope": "Unchanged Baseq3 engine callback: queued bot removal before NULL-client guard, actual StopFollowing, teleport-out and item/flag drops, tournament winner update, unlink/config clearing and CalculateRanks, then bot shutdown. Every effect and action compares all 66 modeled client fields (including 117 playerState words) in all slots and all allocated entityStates with selected private/spatial fields. Bot begin queue/shutdown and engine delivery remain explicit required interfaces; this is not the engine trap_DropClient implementation."
+        },
+        {
+          "original": "Complete g_client.c client lifecycle surface (25/25 symbols)",
+          "target_files": [
+            "src/mq3/game/g_client.ml",
+            "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/client_connect.ml",
+            "src/mq3/game/client_info.ml",
+            "src/mq3/game/client_disconnect.ml",
+            "src/mq3/game/bodies.ml",
+            "src/mq3/game/deaths.ml",
+            "src/mq3/game/spawns.ml",
+            "src/mq3/game/lifecycle.ml",
+            "src/mq3/game/g_main.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Spawn selection, body queue, respawn/view angles, team selection, name/userinfo, connect/begin/spawn/disconnect and engine drop boundary are connected to vmMain and bot population; unchanged-C, native, QAGame lifecycle and Retail q3dm1 contracts pass."
         }
       ],
       "target": [
-        "src/mq3/game/teleport.ml",
-        "src/mq3/game/spawn_functions.ml",
+        "src/mq3/game/g_client.ml",
         "src/mq3/game/client_spawn.ml",
-        "src/mq3/game/tournament.ml",
-        "src/mq3/game/player_spawns.ml",
+        "src/mq3/game/client_connect.ml",
+        "src/mq3/game/client_info.ml",
+        "src/mq3/game/client_disconnect.ml",
         "src/mq3/game/bodies.ml",
         "src/mq3/game/deaths.ml",
-        "src/mq3/game/client_info.ml",
-        "src/mq3/shared/info.ml",
-        "src/mq3/game/client_connect.ml",
-        "src/mq3/game/session.ml",
-        "src/mq3/game/entities.ml",
-        "src/mq3/game/client_disconnect.ml",
-        "src/mq3/game/intermission.ml"
+        "src/mq3/game/spawns.ml",
+        "src/mq3/game/lifecycle.ml",
+        "src/mq3/game/g_main.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_entitystate.py",
         "scripts/test_transitions.py",
@@ -21588,7 +21680,10 @@
         "scripts/test_team_changes.py",
         "scripts/test_follow_tournament.py",
         "scripts/test_intermission.py",
-        "scripts/test_game_lifecycle.py"
+        "scripts/test_game_lifecycle.py",
+        "scripts/test_g_client_complete.py",
+        "tests/g_client_complete_contracts.ml",
+        "scripts/test_game_vm_lifecycle.py"
       ]
     },
     {
@@ -21946,20 +22041,34 @@
           ],
           "status": "tested_subset",
           "scope": "Complete Baseq3 ClientCommand routing and original chat, voice, taunt, cheat and utility handlers; already-tokenized argv uses native byte-copy/ConcatArgs bounds. All modeled clients, allocated entityStates and selected private/spatial state, votes, userinfo, configs and location chains are compared at every host effect and action. Real item pickup, death, teleport, intermission, follow/team and vote helpers are called. Com_sprintf diagnostics and userinfo writes are observed in order. Native undefined inputs are separate MiniLang rejection contracts. Engine tokenization/command buffering, network delivery, log-file writes, bot AI, Missionpack and whole-engine playability remain open."
+        },
+        {
+          "original": "Complete g_cmds.c command surface (37/37 symbols)",
+          "target_files": [
+            "src/mq3/game/g_cmds.ml",
+            "src/mq3/game/client_commands.ml",
+            "src/mq3/game/client_command_dispatch.ml",
+            "src/mq3/game/client_command_chat.ml",
+            "src/mq3/game/client_command_team.ml",
+            "src/mq3/game/client_command_inventory.ml",
+            "src/mq3/game/client_command_utility.ml",
+            "src/mq3/game/vote_commands.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Cheat/give/kill, team/follow, inventory, chat/tell/voice, scores, vote/team-vote, utility commands and ClientCommand use the shared command tokenizer and productive QAGame dispatch; unchanged-C, native, full differential and Retail world contracts pass."
         }
       ],
       "target": [
-        "src/mq3/game/scores.ml",
-        "src/mq3/game/vote_commands.ml",
-        "src/mq3/game/session.ml",
-        "src/mq3/game/team_changes.ml",
-        "src/mq3/game/follow_commands.ml",
+        "src/mq3/game/g_cmds.ml",
         "src/mq3/game/client_commands.ml",
-        "src/mq3/game/command_args.ml",
-        "src/mq3/game/chat_commands.ml",
-        "src/mq3/game/utility_commands.ml"
+        "src/mq3/game/client_command_dispatch.ml",
+        "src/mq3/game/client_command_chat.ml",
+        "src/mq3/game/client_command_team.ml",
+        "src/mq3/game/client_command_inventory.ml",
+        "src/mq3/game/client_command_utility.ml",
+        "src/mq3/game/vote_commands.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_scores.py",
         "scripts/test_deaths.py",
@@ -21968,7 +22077,9 @@
         "scripts/test_client_connect.py",
         "scripts/test_team_changes.py",
         "scripts/test_follow_tournament.py",
-        "scripts/test_client_commands.py"
+        "scripts/test_client_commands.py",
+        "scripts/test_g_cmds_complete.py",
+        "tests/g_cmds_complete_contracts.ml"
       ]
     },
     {
@@ -22157,24 +22268,39 @@
           ],
           "status": "tested_subset",
           "scope": "Baseq3 death lifecycle with actual score, body, hook, collision, PVS, Drop_Item and Team_ReturnFlag integration. PrintMsg delivery remains an observed callback. The legacy death suite observes ClientSpawn; the team-change suite executes real body/death/item/ClientBegin/Spawn/rank chains and verifies zero-limit spectator iteration. No Missionpack or complete client/server frame."
+        },
+        {
+          "original": "Complete g_combat.c damage/death surface (19/19 symbols)",
+          "target_files": [
+            "src/mq3/game/g_combat.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/combat_missionpack.ml",
+            "src/mq3/game/deaths.ml",
+            "src/mq3/game/entities.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Armor, scoring, death, radius/can-damage, knockback/team protection, awards and Team Arena Invulnerability/Guard/Prox/Cube/Persistent-Powerup/Kamikaze semantics are productive; unchanged-C Baseq3, bit-exact RaySphere and native/Retail contracts pass."
         }
       ],
       "target": [
+        "src/mq3/game/g_combat.ml",
         "src/mq3/game/combat.ml",
-        "src/mq3/game/bodies.ml",
-        "src/mq3/game/scores.ml",
+        "src/mq3/game/combat_missionpack.ml",
         "src/mq3/game/deaths.ml",
-        "src/mq3/game/team_changes.ml",
-        "src/mq3/game/client_disconnect.ml"
+        "src/mq3/game/entities.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_combat.py",
         "scripts/test_bodies.py",
         "scripts/test_scores.py",
         "scripts/test_deaths.py",
         "scripts/test_team_changes.py",
-        "scripts/test_weapons.py"
+        "scripts/test_weapons.py",
+        "scripts/test_g_combat_complete.py",
+        "tests/g_combat_complete_contracts.ml",
+        "tests/g_combat_complete_oracle.ml",
+        "tests/reference/g_combat_complete_oracle.c"
       ]
     },
     {
@@ -22407,20 +22533,44 @@
           ],
           "status": "tested_subset",
           "scope": "Original 256 qboolean registration slots (1,024 bytes), dummy and sentinel item descriptors, mandatory starting weapons, 36-character CS_ITEMS and exact print-before-publish order. CTF missing-flag checks call real team initialization. The one undefined native CTF initial status byte is explicitly normalized and archived separately; real G_InitGame calls these helpers in original order; client asset precaching, remaining spawn classes and engine map execution remain open."
+        },
+        {
+          "original": "Complete g_items.c item lifecycle surface (22/22 symbols)",
+          "target_files": [
+            "src/mq3/game/g_items.ml",
+            "src/mq3/game/items.ml",
+            "src/mq3/game/item_physics.ml",
+            "src/mq3/game/spawn_tables.ml",
+            "src/mq3/game/spawn.ml",
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/lifecycle.ml",
+            "src/mq3/game/deaths.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Pickup, ammo, weapons, health, armor, persistent powerups, holdables, respawn/touch/launch/drop/use/spawn/run, registration configstrings, team flags and the Team Arena item catalog are wired into productive spawn/frame/lifecycle paths; unchanged-C, native and Retail contracts pass."
         }
       ],
       "target": [
-        "src/mq3/game/shooters.ml",
-        "src/mq3/game/bodies.ml",
-        "src/mq3/game/items.ml"
+        "src/mq3/game/g_items.ml",
+        "src/mq3/game/items.ml",
+        "src/mq3/game/item_physics.ml",
+        "src/mq3/game/spawn_tables.ml",
+        "src/mq3/game/spawn.ml",
+        "src/mq3/game/frame.ml",
+        "src/mq3/game/lifecycle.ml",
+        "src/mq3/game/deaths.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_missiles.py",
         "scripts/test_bodies.py",
         "scripts/test_items.py",
         "scripts/test_client_commands.py",
-        "scripts/test_initialization.py"
+        "scripts/test_initialization.py",
+        "scripts/test_g_items_complete.py",
+        "tests/g_items_complete_contracts.ml",
+        "tests/g_items_complete_oracle.ml",
+        "tests/reference/g_items_complete_oracle.c"
       ]
     },
     {
@@ -23118,30 +23268,32 @@
           ],
           "status": "tested_subset",
           "scope": "Original index-one, in-use and non-slave grouping, case-sensitive team names, NULL versus empty strings, existing chain preservation, slave prepend and last non-NULL targetname transfer. Relevant state and original print order are compared; real G_InitGame now invokes this after entity spawning."
+        },
+        {
+          "original": "Complete g_main.c QAGame lifecycle surface (36/36 symbols)",
+          "target_files": [
+            "src/mq3/game/g_main.ml",
+            "src/mq3/game/game_lifecycle.ml",
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/match_flow.ml",
+            "src/mq3/game/game_cvars.ml",
+            "src/mq3/game/votes.ml",
+            "src/mq3/game/tournament.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "vmMain dispatch, init/shutdown, clients, frame, console, bot frame, cvars, ranks, scoring, exit/intermission, votes, tournament, entity execution, logging and diagnostics are connected to productive MiniLang systems and verified with unchanged C and Retail q3dm1."
         }
       ],
       "target": [
-        "src/mq3/game/spawn_functions.ml",
+        "src/mq3/game/g_main.ml",
+        "src/mq3/game/game_lifecycle.ml",
         "src/mq3/game/frame.ml",
-        "src/mq3/game/entities.ml",
-        "src/mq3/game/tournament.ml",
-        "src/mq3/game/player_spawns.ml",
-        "src/mq3/game/bodies.ml",
-        "src/mq3/game/scores.ml",
-        "src/mq3/game/rank_sort.ml",
-        "src/mq3/game/items.ml",
+        "src/mq3/game/match_flow.ml",
+        "src/mq3/game/game_cvars.ml",
         "src/mq3/game/votes.ml",
-        "src/mq3/game/cvar_maintenance.ml",
-        "src/mq3/game/cvars.ml",
-        "src/mq3/game/cvar_tables.ml",
-        "src/mq3/game/client_info.ml",
-        "src/mq3/game/client_connect.ml",
-        "src/mq3/game/intermission.ml",
-        "src/mq3/game/lifecycle.ml",
-        "src/mq3/game/logging.ml",
-        "src/mq3/game/initialization.ml"
+        "src/mq3/game/tournament.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_spawn_values.py",
         "scripts/test_spawn.py",
@@ -23165,7 +23317,11 @@
         "scripts/test_weapons.py",
         "scripts/test_game_lifecycle.py",
         "scripts/test_game_logging.py",
-        "scripts/test_initialization.py"
+        "scripts/test_initialization.py",
+        "scripts/test_g_main_complete.py",
+        "tests/g_main_complete_contracts.ml",
+        "tests/g_main_complete_oracle.ml",
+        "tests/reference/g_main_complete_oracle.c"
       ]
     },
     {
@@ -23392,20 +23548,37 @@
           ],
           "status": "tested_subset",
           "scope": "Original portal surface/camera spawn and delayed camera lookup, link-before-flags/type ordering, mirrored origin, owner/frame/rotation fields, actual capped target selection and CRT random consumption, normalized aim or angle-consuming G_SetMovedir fallback, and DirToByte. Roll retains the native double intermediate and signed truncation; undefined integer casts are rejected after the original link. Renderer/cgame portal display remains open."
+        },
+        {
+          "original": "Complete g_misc.c miscellaneous map-entity surface (all actual functions and ledger candidates)",
+          "target_files": [
+            "src/mq3/game/g_misc.ml",
+            "src/mq3/game/portals.ml",
+            "src/mq3/game/shooters.ml",
+            "src/mq3/game/spawn_functions.ml",
+            "src/mq3/game/client_active.ml",
+            "src/mq3/game/g_mover.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "info/light/model/teleporter/portal/shooter/static and Missionpack portal holdable functions are routed through productive spawn/client paths; exact unchanged-C portal/shooter differentials, native/Retail contracts and 31 Retail maps pass. Mover-owned train/path functions remain in g_mover."
         }
       ],
       "target": [
-        "src/mq3/game/teleport.ml",
-        "src/mq3/game/spawn_functions.ml",
+        "src/mq3/game/g_misc.ml",
+        "src/mq3/game/portals.ml",
         "src/mq3/game/shooters.ml",
-        "src/mq3/game/portals.ml"
+        "src/mq3/game/spawn_functions.ml",
+        "src/mq3/game/client_active.ml",
+        "src/mq3/game/g_mover.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_transitions.py",
         "scripts/test_spawn.py",
         "scripts/test_missiles.py",
-        "scripts/test_map_objects.py"
+        "scripts/test_map_objects.py",
+        "scripts/test_g_misc_complete.py",
+        "tests/g_misc_complete_contracts.ml"
       ]
     },
     {
@@ -23503,15 +23676,37 @@
           ],
           "status": "tested_subset",
           "scope": "Baseq3 native projectile rules and actual SV/CM. The weapons suite additionally connects real FireWeapon, quad scaling, ClientEvents/ClientThink and player_die. Missionpack and rendering remain open. Freed-projectile callback rejects invalid relinking instead of original server metadata aliasing."
+        },
+        {
+          "original": "Complete g_missile.c projectile surface (17/17 symbols)",
+          "target_files": [
+            "src/mq3/game/g_missile.ml",
+            "src/mq3/game/missiles.ml",
+            "src/mq3/game/missile.ml",
+            "src/mq3/game/g_weapon.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/entities.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Base projectiles, Nail/Prox launch, Prox stick/stack/trigger/explosion, impact/bounce/explode, Invulnerability reflection and productive frame dispatch are present; three unchanged-C cases and native/Retail q3dm1 contracts pass."
         }
       ],
       "target": [
-        "src/mq3/game/missiles.ml"
+        "src/mq3/game/g_missile.ml",
+        "src/mq3/game/missiles.ml",
+        "src/mq3/game/missile.ml",
+        "src/mq3/game/g_weapon.ml",
+        "src/mq3/game/combat.ml",
+        "src/mq3/game/frame.ml",
+        "src/mq3/game/entities.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_missiles.py",
-        "scripts/test_weapons.py"
+        "scripts/test_weapons.py",
+        "scripts/test_g_missile_complete.py",
+        "tests/g_missile_complete_contracts.ml"
       ]
     },
     {
@@ -23575,20 +23770,36 @@
           ],
           "status": "tested_subset",
           "scope": "All eight Baseq3 mover classes, binary state transitions, team rollback, touch/blocked callbacks, path-corner trains, linear and rotational pushing, client yaw carry and area-portal delivery are implemented. Spawn/frame contracts and lifecycle parity pass. Five direct scenarios against unchanged g_mover.c cover linear success, 90-degree client rotation, blocked rollback, EF_MOVER_STOP and two-part team rollback with 545 exact state words plus 30 native host observations. Retail BSP replays for q3ctf4, q3dm15 and q3dm0 cover eight mover masters, including an activated door team and button, with 77,073,336 exact words and 1,684 ordered effects. A linked player and physical item are carried through five complete q3ctf4 G_RunFrame frames with exact parity."
+        },
+        {
+          "original": "Complete g_mover.c mover surface (37/37 symbols)",
+          "target_files": [
+            "src/mq3/game/g_mover.ml",
+            "src/mq3/game/movers.ml",
+            "src/mq3/game/frame.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Pusher rollback, binary/rotating/button/trains, path corners, bobbing/doors, reached/blocked/use/touch/die and Missionpack Prox Mine handling are connected to productive spawn/frame paths; unchanged-C, native mover-push and Retail mover differentials pass."
         }
       ],
       "target": [
-        "src/mq3/game/spawn_functions.ml",
+        "src/mq3/game/g_mover.ml",
         "src/mq3/game/movers.ml",
-        "src/mq3/game/frame.ml"
+        "src/mq3/game/frame.ml",
+        "src/mq3/game/spawn_functions.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_spawn.py",
         "scripts/test_game_lifecycle.py",
         "scripts/test_full_frame.py",
         "scripts/test_mover_push.py",
-        "scripts/test_retail_movers.py"
+        "scripts/test_retail_movers.py",
+        "scripts/test_g_mover_complete.py",
+        "tests/g_mover_complete_contracts.ml",
+        "tests/g_mover_complete_oracle.ml",
+        "tests/reference/g_mover_complete_oracle.c"
       ]
     },
     {
@@ -26569,20 +26780,35 @@
           ],
           "status": "tested_subset",
           "scope": "Original four Baseq3 map targets, connected to real Touch_Item, flag return and AddScore. Live target iteration, refused-pickup cleanup, flag precedence and final powerup clear, score defaults, private/team/global print routing and ordered state/effects are compared. Native va buffer overlap in multi-recipient team broadcasts and NULL-string formatting are characterized separately from defined C parity; MiniLang preserves the message for all recipients and uses the observed MSVC (null) text. Native format overflows and invalid activators are separate contracts. Network delivery remains an engine interface."
+        },
+        {
+          "original": "Complete g_target.c target-entity surface (28/28 symbols)",
+          "target_files": [
+            "src/mq3/game/g_target.ml",
+            "src/mq3/game/targets.ml",
+            "src/mq3/game/map_targets.ml",
+            "src/mq3/game/hazards.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "All twelve Baseq3 target_* classes, their callbacks, target chains, speaker/location/laser/teleporter state and productive spawn dispatch are covered; native/Retail contracts and full unchanged-C target and map-object differentials pass."
         }
       ],
       "target": [
-        "src/mq3/game/spawn_functions.ml",
+        "src/mq3/game/g_target.ml",
         "src/mq3/game/targets.ml",
+        "src/mq3/game/map_targets.ml",
         "src/mq3/game/hazards.ml",
-        "src/mq3/game/map_targets.ml"
+        "src/mq3/game/spawn_functions.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_spawn.py",
         "scripts/test_targets.py",
         "scripts/test_combat.py",
-        "scripts/test_map_objects.py"
+        "scripts/test_map_objects.py",
+        "scripts/test_g_target_complete.py",
+        "tests/g_target_complete_contracts.ml"
       ]
     },
     {
@@ -27001,17 +27227,32 @@
           ],
           "status": "tested_subset",
           "scope": "All nine teamgame fields reset, Baseq3 CTF invalid-status setup, two status publications and original intermediate states. Original first publication reads ctfFlagStatusRemap[-1]; only that undefined byte is normalized to NUL with native raw bytes archived, not claimed as exact parity. Second publication and all defined state are compared exactly; Missionpack is excluded."
+        },
+        {
+          "original": "Complete g_team.c team-game surface (45/45 symbols)",
+          "target_files": [
+            "src/mq3/game/g_team.ml",
+            "src/mq3/game/team_missionpack.ml",
+            "src/mq3/game/team.ml",
+            "src/mq3/game/team_status.ml",
+            "src/mq3/game/items.ml",
+            "src/mq3/game/combat.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Baseq3 team and CTF behavior plus Missionpack One Flag, Overload and Harvester, obelisk lifecycle/combat protection and spawn integration are present; unchanged-C, native and Retail q3dm1 world contracts are verified."
         }
       ],
       "target": [
-        "src/mq3/game/spawn_functions.ml",
-        "src/mq3/game/combat.ml",
-        "src/mq3/game/player_spawns.ml",
-        "src/mq3/game/team_bonuses.ml",
+        "src/mq3/game/g_team.ml",
+        "src/mq3/game/team_missionpack.ml",
+        "src/mq3/game/team.ml",
+        "src/mq3/game/team_status.ml",
         "src/mq3/game/items.ml",
-        "src/mq3/game/team_status.ml"
+        "src/mq3/game/combat.ml",
+        "src/mq3/game/spawn_functions.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_spawn.py",
         "scripts/test_combat.py",
@@ -27023,7 +27264,11 @@
         "scripts/test_team_changes.py",
         "scripts/test_client_commands.py",
         "scripts/test_initialization.py",
-        "scripts/test_map_objects.py"
+        "scripts/test_map_objects.py",
+        "scripts/test_g_team_complete.py",
+        "tests/g_team_complete_contracts.ml",
+        "tests/g_team_complete_oracle.ml",
+        "tests/reference/g_team_complete_oracle.c"
       ]
     },
     {
@@ -27266,20 +27511,33 @@
             "src/mq3/game/hazards.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "Complete g_trigger.c trigger surface (all upstream functions and ledger candidates)",
+          "target_files": [
+            "src/mq3/game/g_trigger.ml",
+            "src/mq3/game/triggers.ml",
+            "src/mq3/game/spawn_functions.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Multiple/always/push/teleport/hurt/timer trigger classes, aim/use/touch/think callbacks and team/spectator/flight/PM/door rules are routed through the productive spawn facade; native/Retail and unchanged-C differentials pass."
         }
       ],
       "target": [
+        "src/mq3/game/g_trigger.ml",
         "src/mq3/game/triggers.ml",
-        "src/mq3/game/spawn_functions.ml",
-        "src/mq3/game/targets.ml",
-        "src/mq3/game/hazards.ml"
+        "src/mq3/game/spawn_functions.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_transitions.py",
         "scripts/test_spawn.py",
         "scripts/test_targets.py",
-        "scripts/test_combat.py"
+        "scripts/test_combat.py",
+        "scripts/test_g_trigger_complete.py",
+        "tests/g_trigger_complete_contracts.ml",
+        "scripts/test_triggers.py",
+        "scripts/test_map_objects.py"
       ]
     },
     {
@@ -27652,22 +27910,28 @@
           ],
           "status": "tested_subset",
           "scope": "Original slot-order team command delivery, connected-only filtering and live per-slot team reads. Defined native comparisons avoid overlapping nested va buffers; multi-recipient target_print broadcasts are separate MiniLang semantics and native implementation observations, with no ISO-C-defined parity claim. Engine command transport remains open."
+        },
+        {
+          "original": "Complete g_utils.c shared game utilities (24/24 symbols)",
+          "target_files": [
+            "src/mq3/game/g_utils.ml",
+            "src/mq3/game/entities.ml",
+            "src/mq3/game/client_spawn.ml",
+            "src/mq3/game/items.ml",
+            "src/mq3/game/map_targets.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Entity init/spawn/free/find/pick/use/team chaining, configstring/model/sound/shader indexing, events, origins, kill box, vector/format/remap and team commands are exposed and used by productive spawn/item/target/client paths; unchanged-C and native/Retail contracts pass."
         }
       ],
       "target": [
+        "src/mq3/game/g_utils.ml",
         "src/mq3/game/entities.ml",
-        "src/mq3/game/teleport.ml",
-        "src/mq3/game/spawn_values.ml",
-        "src/mq3/game/spawn_functions.ml",
-        "src/mq3/game/targets.ml",
-        "src/mq3/game/events.ml",
-        "src/mq3/compat/textnumbers.ml",
-        "src/mq3/game/bodies.ml",
+        "src/mq3/game/client_spawn.ml",
         "src/mq3/game/items.ml",
-        "src/mq3/game/map_targets.ml",
-        "src/mq3/shared/directions.ml"
+        "src/mq3/game/map_targets.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_transitions.py",
         "scripts/test_spawn_values.py",
@@ -27677,7 +27941,11 @@
         "scripts/test_items.py",
         "scripts/test_intermission.py",
         "scripts/test_client_commands.py",
-        "scripts/test_map_objects.py"
+        "scripts/test_map_objects.py",
+        "scripts/test_g_utils_complete.py",
+        "tests/g_utils_complete_contracts.ml",
+        "tests/g_utils_complete_oracle.ml",
+        "tests/reference/g_utils_complete_oracle.c"
       ]
     },
     {
@@ -27893,20 +28161,38 @@
           ],
           "status": "tested_subset",
           "scope": "Unchanged Baseq3 server firing: persistent shared basis/muzzle/quad state, exact CRT and Q_rand spread, point traces, all ten weapons, actual damage/death/items, ordered effects, rail penetration/relink/awards and projectile scaling. ClientEvents and ClientThink use ported defaults. Full modeled clients/entityStates, selected private/spatial projectile fields and shared weapon vectors are compared at each trace/host effect/action, with final CRT random consumption. Undefined native inputs use separate Mini contracts. Engine delivery, module restart state transfer, Missionpack, client presentation and whole-game playability remain open."
+        },
+        {
+          "original": "Complete g_weapon.c weapon firing surface (27/27 symbols)",
+          "target_files": [
+            "src/mq3/game/g_weapon.ml",
+            "src/mq3/game/weapons.ml",
+            "src/mq3/game/weapon_hitscan.ml",
+            "src/mq3/game/weapon_state.ml",
+            "src/mq3/game/missiles.ml",
+            "src/mq3/game/combat.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "All Baseq3 weapons plus Missionpack Nailgun, Prox Launcher, Chaingun/Doubler and Kamikaze lifecycle are exposed through the original C symbol surface; unchanged-C Baseq3, native Missionpack arithmetic and Retail q3dm1 contracts pass. Cross-file post-launch Prox behavior remains owned by g_missile.c."
         }
       ],
       "target": [
-        "src/mq3/game/combat.ml",
-        "src/mq3/game/missiles.ml",
+        "src/mq3/game/g_weapon.ml",
         "src/mq3/game/weapons.ml",
         "src/mq3/game/weapon_hitscan.ml",
-        "src/mq3/game/weapon_state.ml"
+        "src/mq3/game/weapon_state.ml",
+        "src/mq3/game/missiles.ml",
+        "src/mq3/game/combat.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_combat.py",
         "scripts/test_missiles.py",
-        "scripts/test_weapons.py"
+        "scripts/test_weapons.py",
+        "scripts/test_g_weapon_complete.py",
+        "tests/g_weapon_complete_contracts.ml",
+        "tests/g_weapon_complete_oracle.ml",
+        "tests/reference/g_weapon_complete_oracle.c"
       ]
     },
     {
@@ -40147,14 +40433,30 @@
           ],
           "status": "tested_subset",
           "scope": "Filename hash/cache, extension fallback, flags, lightmap TMU, texture numbering and CPU upload planning through an injected submission boundary. Eight exact C records and 29 contracts pass."
+        },
+        {
+          "original": "Complete tr_image.c image and skin surface (38/38 symbols)",
+          "target_files": [
+            "src/mq3/renderer/tr_image_runtime.ml",
+            "src/mq3/renderer/tga.ml",
+            "src/mq3/renderer/image_processing.ml",
+            "src/mq3/renderer/image_registry.ml",
+            "src/mq3/renderer/player_skins.ml",
+            "src/mq3/platform/playable_jpeg.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "TGA/JPEG/BMP/PCX loading, resampling/mipmaps/light scaling, upload plans, per-frame usage accounting, builtins, fog/gamma/intensity tables, texture mode, image registry, skins and typed JPEG/device host boundaries; unchanged-C and Retail material paths are verified."
         }
       ],
       "target": [
+        "src/mq3/renderer/tr_image_runtime.ml",
         "src/mq3/renderer/tga.ml",
         "src/mq3/renderer/image_processing.ml",
-        "src/mq3/renderer/image_registry.ml"
+        "src/mq3/renderer/image_registry.ml",
+        "src/mq3/renderer/player_skins.ml",
+        "src/mq3/platform/playable_jpeg.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_tga.py",
         "tests/reference/tga_oracle.c",
@@ -40164,7 +40466,9 @@
         "tests/image_processing_contracts.ml",
         "scripts/test_image_registry.py",
         "tests/reference/image_registry_oracle.c",
-        "tests/image_registry_contracts.ml"
+        "tests/image_registry_contracts.ml",
+        "scripts/test_tr_image_complete.py",
+        "tests/tr_image_runtime_contracts.ml"
       ]
     },
     {

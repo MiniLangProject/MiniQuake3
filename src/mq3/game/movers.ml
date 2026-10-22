@@ -12,6 +12,7 @@ import mq3.game.movement as movement
 import mq3.game.teleport as teleport
 import mq3.game.combat as combat
 import mq3.game.items as items
+import mq3.game.missiles as missiles
 import mq3.shared.math as q
 import mq3.shared.directions as dirs
 import mq3.compat.numeric as n
@@ -319,6 +320,14 @@ function spawnPendulum(level,ent)
   ent.s.apos.trBase = movement.copy(ent.s.angles); ent.s.apos.trDuration = duration; ent.s.apos.trTime = n.trunc32(n.fmul(duration,phase)); ent.s.apos.trType = c.TR_SINE; ent.s.apos.trDelta = [0.0,0.0,amplitude]; return void
 end function
 
+function spawnPathCorner(level,ent)
+  if ent.targetname == void then
+    game.diagnostic(level,"path_corner with no targetname at "+game.vtos(level,ent.s.origin)+"\n")
+    game.free(level,ent)
+  end if
+  return void
+end function
+
 function dispatch(level,ent)
   switch ent.classname
     case "func_door"
@@ -360,11 +369,58 @@ function overlaps(first,second)
 end function
 
 function positionBlocked(level,ent)
+  return testEntityPosition(level,ent) != void
+end function
+
+function testEntityPosition(level,ent)
   origin = ent.s.pos.trBase
   if ent.client != void then origin = ent.client.ps.origin end if
   mask = ent.clipmask
   if mask == 0 then mask = 1 end if
-  return sv.trace(level.scene,origin,origin,ent.r.mins,ent.r.maxs,ent.s.number,mask,false).trace.startsolid
+  hit = sv.trace(level.scene,origin,origin,ent.r.mins,ent.r.maxs,ent.s.number,mask,false)
+  if not hit.trace.startsolid then return void end if
+  if hit.entityNum < 0 or hit.entityNum >= len(level.entities) then return void end if
+  return level.entities[hit.entityNum]
+end function
+
+function createRotationMatrix(angles)
+  return cm.rotationMatrix(angles)
+end function
+
+function transposeMatrix(matrix)
+  return cm.transpose(matrix)
+end function
+
+function rotatePoint(point,matrix)
+  return cm.rotatePoint(point,matrix)
+end function
+
+function checkProxMinePosition(level,check)
+  start = q.VectorMA(check.s.pos.trBase,0.125,check.movedir)
+  finish = q.VectorMA(check.s.pos.trBase,2.0,check.movedir)
+  hit = sv.trace(level.scene,start,finish,void,void,check.s.number,1,false)
+  return not hit.trace.startsolid and hit.trace.fraction == 1.0
+end function
+
+function tryPushingProxMine(level,check,pusher,move,angleMove)
+  inverseAngles = [n.fneg(angleMove[0]),n.fneg(angleMove[1]),n.fneg(angleMove[2])]
+  axes = q.AngleVectors(inverseAngles)
+  for axis = 0 to 2
+    check.s.pos.trBase[axis] = n.fadd(check.s.pos.trBase[axis],move[axis])
+  end for
+  relative = [n.fsub(check.s.pos.trBase[0],pusher.r.currentOrigin[0]),n.fsub(check.s.pos.trBase[1],pusher.r.currentOrigin[1]),n.fsub(check.s.pos.trBase[2],pusher.r.currentOrigin[2])]
+  rotated = [q.DotProduct(relative,axes[0]),n.fneg(q.DotProduct(relative,axes[1])),q.DotProduct(relative,axes[2])]
+  for axis = 0 to 2
+    check.s.pos.trBase[axis] = n.fadd(check.s.pos.trBase[axis],n.fsub(rotated[axis],relative[axis]))
+  end for
+  if not checkProxMinePosition(level,check) then return false end if
+  check.r.currentOrigin = movement.copy(check.s.pos.trBase); game.link(level,check); return true
+end function
+
+function explodeProxMine(level,check)
+  check.s.loopSound = 0; events.add(level,check,c.EV_PROXIMITY_MINE_TRIGGER,0); missiles.explode(level,check)
+  if check.activator != void then game.free(level,check.activator); check.activator = void end if
+  return void
 end function
 
 function tryPush(level,check,pusher,move,angleMove)
@@ -433,6 +489,12 @@ function pushPart(level,pusher,move,angleMove,records)
   game.link(level,pusher)
   for each number in candidates
     check = level.entities[number]
+    if check.s.eType == c.ET_MISSILE and check.classname == "prox mine" then
+      if check.enemy == pusher then
+        if not tryPushingProxMine(level,check,pusher,move,angleMove) then explodeProxMine(level,check) end if
+      else if not checkProxMinePosition(level,check) then explodeProxMine(level,check) end if
+      continue
+    end if
     if check == pusher or (check.s.eType != c.ET_ITEM and check.s.eType != c.ET_PLAYER and not check.physicsObject) then continue end if
     rider = check.s.groundEntityNum == pusher.s.number
     if not rider and (check.r.absmin[0] >= destinationMaxs[0] or check.r.absmin[1] >= destinationMaxs[1] or check.r.absmin[2] >= destinationMaxs[2] or check.r.absmax[0] <= destinationMins[0] or check.r.absmax[1] <= destinationMins[1] or check.r.absmax[2] <= destinationMins[2]) then continue end if

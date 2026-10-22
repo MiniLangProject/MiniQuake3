@@ -43,12 +43,12 @@ sind vorhanden. Der produktive Botlib-Pfad lädt und speichert nun validierte `.
 Routingcaches mit Originalidentität, Area-/Cluster-CRC und zeigerfreiem Nutzinhalt.
 Offen bleibt die noch kompaktere interne Reachability-Ablage.
 
-Der aktuelle Retail-Gesamtlauf vom 22. Oktober 2026 besteht alle **378 Gates**
+Der aktuelle Retail-Gesamtlauf vom 22. Oktober 2026 besteht alle **408 Gates**
 von `python scripts/verify.py --data-root D:/Quake3`. Der dabei frisch gebaute
 `build/MiniQuake3.exe`-Vollstand hat SHA-256
-`fa3a1cb6a2748466176d56a9c3145775749397a03fd143e74d1c092f50577c7d`;
+`c53284b8d10e5d8aa811adb1efe241089185ee9359e35d8d3b8fbb696320192b`;
 das zugehörige `build/verification.json` hat SHA-256
-`3fab71da55d1687233f9f32e1e8b375c0a466af4794c31439e17c8bb96d46047`.
+`52d4c214a166500abb36d2aa0eea775f2c521b12a54833c7296684d3ffab6218`.
 Der neueste inkrementelle Quellenblock schließt zusätzlich vier bisher
 unbegonnene Originaldateien: `code/ui/ui_players.c`, `code/game/ai_vcmd.c`,
 `code/server/sv_ccmds.c` und `code/win32/win_snd.c`. Team-Arena-Spielermodelle,
@@ -952,3 +952,32 @@ Der aktuelle Quellenabgleich schließt vier zuvor partielle Originaldateien voll
 
 Die vier Fokustests bestehen mit 231/231 Adapter-Symbolen, 190 unveränderten C-Differenzdatensätzen, 136 neuen nativen Verträgen sowie Retail-Proben aus `pak0.pk3` und `cgame.qvm`. Die zugehörigen Parser-, Netzwerk-, Snapshot-, QVM-, Mixer- und Retail-Match-Regressionsprüfungen sind grün. Das generierte Runtime-/Plattforminventar zählt nun 125 vollständig portierte, 93 partielle und 117 noch nicht begonnene Originaldateien. Ein vollständiger Lauf aller Verify-Gates wurde für diesen inkrementellen Block nicht erneut ausgeführt.
 Der anschließend frisch gebaute `build/MiniQuake3.exe`-Stand hat SHA-256 `109af343203c8eb540e2343c8fbcaf7700fc6e7f61666ba5da40c97e7cb34635`; der Retail-QVM-Match besteht über acht Frames mit 2.345 texturierten Dreiecken, 17 Renderpässen und 26 Soundbefehlen.
+
+## Vollständiger Gameplay- und Medienblock vom 22. Oktober 2026
+
+Der Abgleich mit den Originalquellen schließt die 19 im letzten Review offenen
+Dateien vollständig: `bg_pmove.c`, `g_team.c`, `g_cmds.c`, `g_main.c`,
+`g_mover.c`, `g_client.c`, `g_weapon.c`, `g_target.c`, `g_missile.c`,
+`g_items.c`, `g_active.c`, `g_combat.c`, `g_utils.c`, `g_trigger.c`,
+`g_misc.c`, `g_bot.c`, `l_script.c`, `tr_image.c` und `cl_cin.c`. Die nativen
+MiniLang-Pfade umfassen damit die zugehörigen Gameplay-, Bot-, Skript-, Bild-
+und RoQ-Laufzeiten samt Baseq3- und den vorhandenen Missionpack-Zweigen. Alle
+19 neuen Dateigates sind Teil der normalen Verifikation.
+
+Der komplette Retail-Lauf besteht **408 Gates**. Das acht Frames lange
+Original-QVM-Match liefert 131 Entities, 13 Snapshot-Entities, neun
+Prediction-Traces, 301 Cgame-Assets, 19 Scene-Entities, 2.345 texturierte
+Dreiecke, 17 Renderpässe und 26 Sounds; nicht unterstützte Entities und
+untexturierte Dreiecke stehen auf null. Der originale Bot läuft 512 Frames und
+erzeugt einen echten Bewegungs-Usercmd. Alle 31 Retail-BSPs sowie Fenster-,
+Renderer-, Audio-, UI-, Netzwerk-, QVM- und AAS-Gates sind grün.
+
+Das erzeugte Runtime-/Plattforminventar zählt **144 portierte**, **74 partielle**
+und **117 noch nicht begonnene** Originaldateien von insgesamt 335. Der
+spielbare Baseq3-Retailpfad ist damit deutlich vollständiger, aber der Anspruch
+einer vollständigen 1:1-Portierung ist noch nicht erreicht. Offen sind vor
+allem weitere Renderer-Backend-, GL-, Plattform-, Client-/Server-/Netzwerk- und
+Botlib-/AAS-Dateien sowie eine grafische Team-Arena-Abnahme. `D:/Quake3`
+enthält keine legalen `missionpack`-Assets; Missionpack-Semantik wird deshalb
+mit unverändertem C und nativen Verträgen geprüft, nicht als vollständiger
+Team-Arena-Retaillauf.
