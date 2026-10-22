@@ -340,6 +340,10 @@ def main():
     scripts.append(("test_tr_light_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_tr_font_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_cl_cin_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_cl_cgame_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_cl_keys_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_cl_ui_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_snd_mem_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     if args.data_root:
         scripts.append(("test_retail_qvm_match.py",["--data-root",str(args.data_root)]))
         scripts.append(("test_cgame_console_commands.py",["--data-root",str(args.data_root),"--qvms",str(ROOT / "build/reference/qvms")]))

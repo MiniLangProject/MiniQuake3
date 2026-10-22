@@ -13748,6 +13748,14 @@
           ],
           "status": "tested_exact",
           "scope": "The productive cgame traps use the shared 64-entry command ring with exact current-number, masked lookup, oldest-retained boundary, stale miss and future-command error semantics. Nine unchanged-C records shared with CL_CreateNewCommands plus 11 contracts pass."
+        },
+        {
+          "original": "CL_AddCgameCommand / CL_AdjustTimeDelta / CL_CGameRendering / CL_CM_LoadMap / CL_CgameError / CL_CgameSystemCalls / CL_ConfigstringModified / CL_FirstSnapshot / CL_GameCommand / CL_GetCurrentCmdNumber / CL_GetCurrentSnapshotNumber / CL_GetGameState / CL_GetGlconfig / CL_GetParseEntityState / CL_GetServerCommand / CL_GetSnapshot / CL_GetUserCmd / CL_InitCGame / CL_SetCGameTime / CL_SetUserCmdValue / CL_ShutdownCGame / FloatAsInt",
+          "target_files": [
+            "src/mq3/client/cl_cgame_runtime.ml"
+          ],
+          "status": "ported",
+          "scope": "All 22 original symbols are exposed through a C-named facade over the productive VM lifecycle, cgame trap dispatcher, reliable command stream, usercmd/parse-entity/snapshot rings, packed ABI state and cgame clock. Five unchanged-C records, 40 native contracts and a real Retail cgame.qvm lifecycle pass."
         }
       ],
       "target": [
@@ -13762,9 +13770,10 @@
         "src/mq3/client/cgame_clock.ml",
         "src/mq3/client/qvm_preview_app.ml",
         "src/mq3/client/command_ring.ml",
-        "src/mq3/client/send_cmd.ml"
+        "src/mq3/client/send_cmd.ml",
+        "src/mq3/client/cl_cgame_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_cgame_vm_lifecycle.py",
         "scripts/test_vm_syscall_cgame.py",
@@ -13787,7 +13796,12 @@
         "scripts/test_client_command_ring.py",
         "tests/reference/client_command_ring_oracle.c",
         "tests/client_command_ring_oracle.ml",
-        "tests/client_command_ring_contracts.ml"
+        "tests/client_command_ring_contracts.ml",
+        "scripts/test_cl_cgame_complete.py",
+        "tests/reference/cl_cgame_complete_oracle.c",
+        "tests/cl_cgame_complete_oracle.ml",
+        "tests/cl_cgame_complete_contracts.ml",
+        "tests/cl_cgame_retail_probe.ml"
       ]
     },
     {
@@ -14804,6 +14818,14 @@
           ],
           "status": "ported",
           "scope": "The productive Local-QVM host owns a 256-byte console/message field editor with overstrike, paste, cursor, scroll, 32-line history, command/chat/tell submission and catcher synchronization. Its real command registry owns bind, unbind, unbindall and bindlist; cfg text loads through the command buffer and serializes in exact Key_WriteBindings order for configuration persistence. Win32 layout-resolved character events, hardcoded console toggling and retail-font console/chat/tell field presentation are wired into the QVM window. Seven unchanged-C records and 30 integration/display contracts pass."
+        },
+        {
+          "original": "CL_AddKeyUpCommands / CL_CharEvent / CL_InitKeyCommands / CL_KeyEvent / Console_Key / Field_BigDraw / Field_CharEvent / Field_Draw / Field_KeyDownEvent / Field_Paste / Field_VariableSizeDraw / Key_Bind_f / Key_Bindlist_f / Key_ClearStates / Key_GetBinding / Key_GetKey / Key_GetOverstrikeMode / Key_IsDown / Key_SetBinding / Key_SetOverstrikeMode / Key_StringToKeynum / Key_Unbind_f / Key_Unbindall_f / Key_WriteBindings / Message_Key / Key_KeynumToString",
+          "target_files": [
+            "src/mq3/client/cl_keys_runtime.ml"
+          ],
+          "status": "ported",
+          "scope": "All 26 original symbols are exposed through a C-named facade covering the exact key vocabulary and state, binding commands/config persistence, field editing/drawing/paste, console/message routing, catcher ownership and timestamped compound +/- dispatch. 279 unchanged-C records, 32 native contracts and Retail default.cfg with 50 bindings pass."
         }
       ],
       "target": [
@@ -14814,9 +14836,10 @@
         "src/mq3/client/input_command_events.ml",
         "src/mq3/client/qvm_preview_app.ml",
         "src/mq3/client/console_input.ml",
-        "src/mq3/client/key_bindings_config.ml"
+        "src/mq3/client/key_bindings_config.ml",
+        "src/mq3/client/cl_keys_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_cgame_key_traps.py",
         "tests/cgame_key_traps_contracts.ml",
@@ -14831,7 +14854,10 @@
         "tests/console_input_oracle.ml",
         "tests/console_input_contracts.ml",
         "tests/console_input_retail_probe.ml",
-        "tests/console_input_display_contracts.ml"
+        "tests/console_input_display_contracts.ml",
+        "scripts/test_cl_keys_complete.py",
+        "tests/cl_keys_complete_contracts.ml",
+        "tests/cl_keys_retail_probe.ml"
       ]
     },
     {
@@ -15931,6 +15957,15 @@
           ],
           "status": "tested_exact",
           "scope": "UI_GETCLIENTSTATE now returns the exact 3084-byte uiClientState_t with real connection state, packet count, client number and bounded strings. UI_INIT receives the actual connection state and shutdown clears KEYCATCH_UI in the shared cgame/UI catcher. One exact ABI record and 20 lifecycle contracts pass; handshake-driven state updates remain open."
+        },
+        {
+          "original": "CLUI_GetCDKey / CLUI_SetCDKey / CL_GetGlconfig / CL_InitUI / CL_ShutdownUI / CL_UISystemCalls / FloatAsInt / GetClientState / GetClipboardData / GetConfigString / Key_GetBindingBuf / Key_GetCatcher / Key_KeynumToStringBuf / Key_SetCatcher / LAN_AddServer / LAN_ClearPing / LAN_CompareServers / LAN_GetPing / LAN_GetPingInfo / LAN_GetPingQueueCount / LAN_GetServerAddressString / LAN_GetServerCount / LAN_GetServerInfo / LAN_GetServerPing / LAN_GetServerPtr / LAN_GetServerStatus / LAN_LoadCachedServers / LAN_MarkServerVisible / LAN_RemoveServer / LAN_ResetPings / LAN_SaveServersToCache / LAN_ServerIsVisible / LAN_UpdateVisiblePings / UI_GameCommand / UI_usesUniqueCDKey",
+          "target_files": [
+            "src/mq3/client/cl_ui_runtime.ml",
+            "src/mq3/client/ui_lan_cache.ml"
+          ],
+          "status": "ported",
+          "scope": "All 35 original symbols are exposed through a C-named facade over client state, glconfig, clipboard, keys, CD keys, configstrings, UI QVM lifecycle/syscalls and the complete LAN cache, catalog, ping, status and query services. Six unchanged-C records, 36 native contracts, seven Retail contracts and direct execution of the real Retail ui.qvm API export pass."
         }
       ],
       "target": [
@@ -15945,9 +15980,10 @@
         "src/mq3/client/ui_lan_udp.ml",
         "src/mq3/client/ui_host_lifecycle.ml",
         "src/mq3/engine/local_qvm_ui.ml",
-        "src/mq3/vm/cgame_key_traps.ml"
+        "src/mq3/vm/cgame_key_traps.ml",
+        "src/mq3/client/cl_ui_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_ui_vm_lifecycle.py",
         "tests/reference/ui_vm_lifecycle_oracle.c",
@@ -15975,7 +16011,12 @@
         "scripts/test_cgame_key_traps.py",
         "tests/cgame_key_traps_oracle.ml",
         "tests/cgame_key_traps_contracts.ml",
-        "tests/reference/cgame_key_traps_oracle.c"
+        "tests/reference/cgame_key_traps_oracle.c",
+        "scripts/test_cl_ui_complete.py",
+        "tests/reference/cl_ui_oracle.c",
+        "tests/cl_ui_oracle.ml",
+        "tests/cl_ui_complete_contracts.ml",
+        "tests/cl_ui_retail_probe.ml"
       ]
     },
     {
@@ -16222,18 +16263,31 @@
           ],
           "status": "tested_exact",
           "scope": "Unchanged x86 Baseq3 fixed-point nearest-sample resampling for mono 8/16-bit registered effects is integrated at the 22050-Hz QVM sound-cache boundary. Eight exact records and 19 contracts pass; allocator diagnostics and other loader helpers remain open."
+        },
+        {
+          "original": "FindChunk / FindNextChunk / GetLittleLong / GetLittleShort / GetWavinfo / ResampleSfx / ResampleSfxRaw / SND_free / SND_malloc / SND_setup / S_DisplayFreeMemory / S_LoadSound",
+          "target_files": [
+            "src/mq3/audio/snd_mem_runtime.ml",
+            "src/mq3/audio/snd_mem_resample.ml"
+          ],
+          "status": "ported",
+          "scope": "All 12 original symbols cover RIFF parsing, the fixed sound-buffer pool, Baseq3-exact resampling, linked PCM cache chunks, compressed encode callbacks, timestamps and file ownership. Eight unchanged-C records, 33 native contracts and three real Retail WAV loads pass."
         }
       ],
       "target": [
         "src/mq3/audio/snd_mem_resample.ml",
-        "src/mq3/audio/qvm_sound_assets.ml"
+        "src/mq3/audio/qvm_sound_assets.ml",
+        "src/mq3/audio/snd_mem_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_audio_snd_mem_resample.py",
         "tests/reference/audio_snd_mem_resample_oracle.c",
         "tests/audio_snd_mem_resample_oracle.ml",
-        "tests/audio_snd_mem_resample_contracts.ml"
+        "tests/audio_snd_mem_resample_contracts.ml",
+        "scripts/test_snd_mem_complete.py",
+        "tests/snd_mem_complete_contracts.ml",
+        "tests/snd_mem_retail_probe.ml"
       ]
     },
     {

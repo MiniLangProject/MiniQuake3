@@ -28,13 +28,13 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **168 sind
-vollständig portiert, 50 teilweise portiert und 117 noch nicht begonnen**.
-Zuletzt wurden die vollständigen Originaloberflächen von `tr_scene.c`,
-`tr_flares.c`, `tr_light.c` und `tr_font.c` geschlossen. Damit sind alle
-Renderer-`.c`-Laufzeitdateien vollständig zugeordnet; Scene-, Flare-, Licht-
-und Fontpfade sind über native, Retail- und unveränderte-C-Verträge
-abgesichert.
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **172 sind
+vollständig portiert, 46 teilweise portiert und 117 noch nicht begonnen**.
+Zuletzt wurden die vollständigen Originaloberflächen von `cl_cgame.c`,
+`cl_keys.c`, `cl_ui.c` und `snd_mem.c` geschlossen. Cgame- und UI-QVM-
+Lifecycle, sämtliche Client-Key-/Field-/Bindingpfade, LAN-/UI-Dienste sowie
+RIFF-, Cache- und Resamplingpfade sind über native, Retail- und unveränderte-C-
+Verträge abgesichert.
 
 Der aktuelle Stand ist im [AAS-/Botlib-Bericht](docs/AAS_RUNTIME.md) und im
 [vollständigen AI-Trap-Audit 500–577](docs/BOTLIB_AI_TRAP_AUDIT.md) dokumentiert.

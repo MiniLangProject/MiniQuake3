@@ -2568,3 +2568,44 @@ zusammengeführte Windows-Hauptbuild hat SHA-256
 Der kombinierte Retail-QVM-Match bleibt mit acht Frames, 131 Entities, 2.345
 texturierten Dreiecken, 17 Renderpässen, 26 Sounds und null nicht
 unterstützten Entities grün.
+
+## 2026-10-23: Zentrale Client- und Sound-Cache-Oberflächen geschlossen
+
+Vier bislang partielle Clientdateien sind vollständig zugeordnet. `cl_cgame.c`
+besitzt jetzt eine C-namensgleiche Fassade über VM-Lifecycle, Cgame-Traps,
+Serverkommandos, Configstrings, Usercmd-, Parse-Entity- und Snapshot-Ringe,
+ABI-Puffer und Zeitsteuerung. `cl_keys.c` schließt sämtliche Key-, Binding-,
+Field-, Konsole-, Chat-, Catcher- und timestamped `+/-`-Dispatchpfade.
+`cl_ui.c` bündelt UI-QVM, Clientstate, Glconfig, Clipboard, Keys, CD-Key,
+Configstrings sowie LAN-Katalog-, Cache-, Ping-, Status- und Querydienste.
+`snd_mem.c` ergänzt den RIFF-Parser, den festen Soundpuffer-Pool, PCM-
+Chunkketten, komprimierte Encode-Callbacks, Dateilebenszyklus und den bereits
+exakt abgeglichenen Resampler.
+
+Nachweise:
+
+- `cl_cgame.c`: 22/22 Symbole, fünf unveränderte-C-Datensätze, 40 native
+  Verträge und echter Retail-`cgame.qvm`-Lifecycle mit 29 Collision-Traps, 56
+  2D-Draw- und 18 Soundkommandos. Sieben abhängige Lifecycle-, Syscall-, Zeit-,
+  Ring-, Serverkommando- und Usercmd-Gates bestehen.
+- `cl_keys.c`: 26/26 Symbole, 279 unveränderte-C-Datensätze, 32 native
+  Verträge sowie echtes Retail-`default.cfg` mit 1.737 Bytes und 50 Bindings.
+  Key-Trap-, Binding-Dispatch- und Konsolenregressionen sind grün.
+- `cl_ui.c`: 35/35 Symbole, sechs unveränderte-C-Datensätze, 36 native und
+  sieben Retail-Verträge. Die echte Retail-`ui.qvm` wird geladen und ihr
+  `UI_GETAPIVERSION`-Export ausgeführt. Eine Null-Listen-Grenze im LAN-Cache
+  wurde dabei im produktiven Pfad behoben.
+- `snd_mem.c`: 12/12 Symbole, acht exakte unveränderte-C-Resamplingrecords,
+  33 native Verträge und Loads von drei echten Retail-WAVs im vollständigen Sound-Cache-Contract.
+
+Das Inventar zählt jetzt **172 portierte, 46 partielle und 117 nicht begonnene**
+Runtime-/Plattformdateien. Die vier Fokusgates sind in `scripts/verify.py`
+registriert. Alle vier Fokusgates, der Windows-Hauptbuild und der kombinierte
+Retail-QVM-Match wurden auf dem zusammengeführten Stand geprüft. Die
+vollständige Verify-Auswahl wurde für dieses inkrementelle Paket nicht erneut
+am Stück ausgeführt; der letzte vollständige Lauf bleibt bei 408/408 Gates
+grün. Der Hauptbuild hat SHA-256
+`f8c235741b5a609a2a6153110d8a2028f9fc0cd1260c785a6f6872d229e3eec4`.
+Der Retail-Match läuft acht Frames mit 131 Entities, 13 Snapshot-Entities,
+2.345 texturierten Dreiecken, 17 Renderpässen, 26 Sounds und null nicht
+unterstützten Entities.

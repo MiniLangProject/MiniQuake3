@@ -94,10 +94,10 @@ end function
 
 function writeList(data,offset,values,capacity)
   count=len(values);if count>capacity then count=capacity end if
-  for index=0 to count-1 writeServer(data,offset+index*SERVER_INFO_SIZE,values[index]) end for;return void
+  if count>0 then for index=0 to count-1 writeServer(data,offset+index*SERVER_INFO_SIZE,values[index]) end for end if;return void
 end function
 function readList(data,offset,count)
-  result=[];for index=0 to count-1 result=result+[readServer(data,offset+index*SERVER_INFO_SIZE)] end for;return result
+  result=[];if count>0 then for index=0 to count-1 result=result+[readServer(data,offset+index*SERVER_INFO_SIZE)] end for end if;return result
 end function
 function reset(state)
   state.globalServers=[];state.mplayer=[];state.favorites=[];return void

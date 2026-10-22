@@ -15,7 +15,7 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 |---|---:|---:|---:|---:|---:|
 | `botlib` | 53 | 21 | 10 | 22 | 0 |
 | `cgame` | 25 | 21 | 0 | 4 | 0 |
-| `client` | 19 | 8 | 7 | 4 | 0 |
+| `client` | 19 | 12 | 3 | 4 | 0 |
 | `game` | 65 | 35 | 4 | 26 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
@@ -27,7 +27,7 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **168** | **50** | **117** | **0** |
+| **Gesamt** | **335** | **172** | **46** | **117** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -116,22 +116,22 @@ Teil dieser Tabelle.
 | `code/cgame/cg_view.c` | `cgame` | `ported` | 20 | 20 | 0 |
 | `code/cgame/cg_weapons.c` | `cgame` | `ported` | 35 | 35 | 0 |
 | `code/cgame/tr_types.h` | `cgame` | `not_started` | 0 | 0 | 0 |
-| `code/client/cl_cgame.c` | `client` | `partial` | 22 | 7 | 15 |
+| `code/client/cl_cgame.c` | `client` | `ported` | 22 | 22 | 0 |
 | `code/client/cl_cin.c` | `client` | `ported` | 38 | 5 | 33 |
 | `code/client/cl_console.c` | `client` | `partial` | 22 | 4 | 18 |
 | `code/client/cl_input.c` | `client` | `ported` | 78 | 78 | 0 |
-| `code/client/cl_keys.c` | `client` | `partial` | 26 | 20 | 6 |
+| `code/client/cl_keys.c` | `client` | `ported` | 26 | 26 | 0 |
 | `code/client/cl_main.c` | `client` | `ported` | 78 | 78 | 0 |
 | `code/client/cl_net_chan.c` | `client` | `ported` | 5 | 0 | 5 |
 | `code/client/cl_parse.c` | `client` | `partial` | 9 | 8 | 1 |
 | `code/client/cl_scrn.c` | `client` | `partial` | 18 | 1 | 17 |
-| `code/client/cl_ui.c` | `client` | `partial` | 35 | 6 | 29 |
+| `code/client/cl_ui.c` | `client` | `ported` | 35 | 35 | 0 |
 | `code/client/client.h` | `client` | `not_started` | 0 | 0 | 0 |
 | `code/client/keys.h` | `client` | `not_started` | 0 | 0 | 0 |
 | `code/client/snd_adpcm.c` | `client` | `ported` | 4 | 0 | 4 |
 | `code/client/snd_dma.c` | `client` | `ported` | 42 | 42 | 0 |
 | `code/client/snd_local.h` | `client` | `not_started` | 0 | 0 | 0 |
-| `code/client/snd_mem.c` | `client` | `partial` | 12 | 2 | 10 |
+| `code/client/snd_mem.c` | `client` | `ported` | 12 | 12 | 0 |
 | `code/client/snd_mix.c` | `client` | `ported` | 8 | 8 | 0 |
 | `code/client/snd_public.h` | `client` | `not_started` | 0 | 0 | 0 |
 | `code/client/snd_wavelet.c` | `client` | `ported` | 9 | 2 | 7 |
@@ -419,19 +419,15 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/cgame/cg_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/cg_syscalls.asm` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/tr_types.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/client/cl_cgame.c` (partial): `CL_AddCgameCommand`, `CL_CGameRendering`, `CL_CM_LoadMap`, `CL_CgameError`, `CL_CgameSystemCalls`, `CL_GameCommand`, `CL_GetCurrentSnapshotNumber`, `CL_GetGameState`, `CL_GetGlconfig`, `CL_GetParseEntityState`, `CL_GetSnapshot`, `CL_InitCGame`, `CL_SetUserCmdValue`, `CL_ShutdownCGame`, `FloatAsInt`
 - `code/client/cl_cin.c` (ported): `CIN_CloseAllVideos`, `CIN_HandleForVideo`, `CIN_SetLooping`, `CIN_UploadCinematic`, `CL_PlayCinematic_f`, `ROQ_GenYUVTables`, `RllDecodeMonoToMono`, `RllDecodeMonoToStereo`, `RllDecodeStereoToMono`, `RllDecodeStereoToStereo`, `RllSetupTable`, `RoQFetchInterlaced`, `RoQInterrupt`, `RoQPrepMcomp`, `RoQReset`, `RoQShutdown`, `RoQ_init`, `SCR_DrawCinematic`, `SCR_RunCinematic`, `SCR_StopCinematic`, `blit2_32`, `blit4_32`, `blit8_32`, `blitVQQuad32fs`, `decodeCodeBook`, `initRoQ`, `move4_32`, `move8_32`, `readQuadInfo`, `recurseQuad`, `setupQuad`, `yuv_to_rgb`, `yuv_to_rgb24`
 - `code/client/cl_console.c` (partial): `CL_ConsolePrint`, `Con_Bottom`, `Con_CheckResize`, `Con_ClearNotify`, `Con_Clear_f`, `Con_Close`, `Con_DrawConsole`, `Con_DrawNotify`, `Con_DrawSolidConsole`, `Con_Dump_f`, `Con_Init`, `Con_Linefeed`, `Con_MessageMode3_f`, `Con_MessageMode4_f`, `Con_PageDown`, `Con_PageUp`, `Con_RunConsole`, `Con_Top`
-- `code/client/cl_keys.c` (partial): `CL_CharEvent`, `CL_InitKeyCommands`, `Field_BigDraw`, `Field_Draw`, `Field_Paste`, `Field_VariableSizeDraw`
 - `code/client/cl_net_chan.c` (ported): `CL_Netchan_Decode`, `CL_Netchan_Encode`, `CL_Netchan_Process`, `CL_Netchan_Transmit`, `CL_Netchan_TransmitNextFragment`
 - `code/client/cl_parse.c` (partial): `SHOWNET`
 - `code/client/cl_scrn.c` (partial): `SCR_AdjustFrom640`, `SCR_DebugGraph`, `SCR_DrawBigString`, `SCR_DrawBigStringColor`, `SCR_DrawChar`, `SCR_DrawDebugGraph`, `SCR_DrawDemoRecording`, `SCR_DrawNamedPic`, `SCR_DrawPic`, `SCR_DrawSmallChar`, `SCR_DrawSmallStringExt`, `SCR_DrawStringExt`, `SCR_FillRect`, `SCR_GetBigStringWidth`, `SCR_Init`, `SCR_Strlen`, `SCR_UpdateScreen`
-- `code/client/cl_ui.c` (partial): `CLUI_GetCDKey`, `CLUI_SetCDKey`, `CL_GetGlconfig`, `FloatAsInt`, `GetClipboardData`, `GetConfigString`, `Key_GetBindingBuf`, `Key_GetCatcher`, `Key_KeynumToStringBuf`, `Key_SetCatcher`, `LAN_AddServer`, `LAN_ClearPing`, `LAN_CompareServers`, `LAN_GetPing`, `LAN_GetPingInfo`, `LAN_GetPingQueueCount`, `LAN_GetServerAddressString`, `LAN_GetServerCount`, `LAN_GetServerInfo`, `LAN_GetServerPing`, `LAN_GetServerPtr`, `LAN_GetServerStatus`, `LAN_LoadCachedServers`, `LAN_MarkServerVisible`, `LAN_RemoveServer`, `LAN_ResetPings`, `LAN_SaveServersToCache`, `LAN_ServerIsVisible`, `LAN_UpdateVisiblePings`
 - `code/client/client.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/keys.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/snd_adpcm.c` (ported): `S_AdpcmEncode`, `S_AdpcmEncodeSound`, `S_AdpcmGetSamples`, `memory`
 - `code/client/snd_local.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/client/snd_mem.c` (partial): `FindChunk`, `FindNextChunk`, `GetLittleLong`, `GetLittleShort`, `GetWavinfo`, `SND_free`, `SND_malloc`, `SND_setup`, `S_DisplayFreeMemory`, `S_LoadSound`
 - `code/client/snd_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/snd_wavelet.c` (ported): `MuLawEncode`, `NXPutc`, `daub4`, `decodeMuLaw`, `encodeMuLaw`, `encodeWavelet`, `wt1`
 - `code/game/ai_chat.h` (not_started): *(Symbolinventar ergänzen)*
