@@ -945,3 +945,10 @@ Kommerzielle Spieldaten sind nicht enthalten. Für Originalkarten, Modelle,
 Texturen, Audio und Referenztests wird eine eigene Quake-III-Installation benötigt.
 Lokale Daten und erzeugte Prüfergebnisse gehören in die ignorierten Verzeichnisse
 `data/` beziehungsweise `artifacts/`.
+
+## Vollständige Adapter für Präprozessor, Shared-Runtime, Nachrichten und DMA-Audio (22. Oktober 2026)
+
+Der aktuelle Quellenabgleich schließt vier zuvor partielle Originaldateien vollständig: `code/botlib/l_precomp.c` (82/82 Symbole), `code/game/q_shared.c` (59/59), `code/qcommon/msg.c` (48/48) und `code/client/snd_dma.c` (42/42). Der Botlib-Präprozessor ist an die vorhandene PC-Registry und die produktiven CG_PC-QVM-Traps gebunden. Die Shared-Runtime deckt Endian-Konvertierung, Parser, Quake-Strings, Formatierung, Matrizen und Info-Strings ab. Der Message-Adapter vereinigt den vollständigen Protocol-68-Huffman-, Primitive-, Delta-, Usercmd-, Entity- und Playerstate-Pfad. Der DMA-Audioadapter besitzt Initialisierung, Registrierung, Kanal-/Loop-Steuerung, räumlichen Zustand, Roh-PCM, Musik, Clock und Shutdown und delegiert an die bereits gegen unveränderten C-Code geprüften Mixerkerne.
+
+Die vier Fokustests bestehen mit 231/231 Adapter-Symbolen, 190 unveränderten C-Differenzdatensätzen, 136 neuen nativen Verträgen sowie Retail-Proben aus `pak0.pk3` und `cgame.qvm`. Die zugehörigen Parser-, Netzwerk-, Snapshot-, QVM-, Mixer- und Retail-Match-Regressionsprüfungen sind grün. Das generierte Runtime-/Plattforminventar zählt nun 125 vollständig portierte, 93 partielle und 117 noch nicht begonnene Originaldateien. Ein vollständiger Lauf aller Verify-Gates wurde für diesen inkrementellen Block nicht erneut ausgeführt.
+Der anschließend frisch gebaute `build/MiniQuake3.exe`-Stand hat SHA-256 `109af343203c8eb540e2343c8fbcaf7700fc6e7f61666ba5da40c97e7cb34635`; der Retail-QVM-Match besteht über acht Frames mit 2.345 texturierten Dreiecken, 17 Renderpässen und 26 Soundbefehlen.

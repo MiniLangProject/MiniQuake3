@@ -5,6 +5,7 @@ package mq3.vm.cgame_pc_traps
 
 import mq3.vm.syscall_common as common
 import mq3.vm.pc_parser as pcParser
+import mq3.botlib.l_precomp as lPrecomp
 import mq3.compat.numeric as n
 
 const CG_PC_ADD_GLOBAL_DEFINE=64
@@ -24,6 +25,18 @@ function registryServices(registry)
   host=services(registry);host.addDefineFn=pcParser.addDefine;host.loadSourceFn=pcParser.load
   host.freeSourceFn=pcParser.free;host.readTokenFn=readRegistryToken;host.sourceLineFn=registryLocation
   return host
+end function
+// Full botlib l_precomp.c ownership adapter. This keeps the existing QVM ABI
+// while sharing the same pc_parser registry used by game/cgame/UI hosts.
+function readPrecompToken(runtime,handle)
+  token=lPrecomp.PC_ReadTokenHandle(runtime,handle);if token is error then return token end if
+  if token==void then return TokenResult(false,void) end if;return TokenResult(true,pcParser.encode(token))
+end function
+function precompLocation(runtime,handle)
+  value=lPrecomp.PC_SourceFileAndLine(runtime,handle);if value==void then return SourceLocation(false,"",0) end if;return SourceLocation(true,value[0],value[1])
+end function
+function precompServices(runtime)
+  host=services(runtime);host.addDefineFn=lPrecomp.PC_AddGlobalDefine;host.loadSourceFn=lPrecomp.PC_LoadSourceHandle;host.freeSourceFn=lPrecomp.PC_FreeSourceHandle;host.readTokenFn=readPrecompToken;host.sourceLineFn=precompLocation;return host
 end function
 function fail(message) return error(7490,"cgame PC traps: "+message) end function
 function unavailable(name) return fail(name+" service unavailable") end function

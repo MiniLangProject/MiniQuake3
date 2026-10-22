@@ -13,21 +13,21 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 
 | Bereich | Dateien | Portiert | Teilweise | Nicht begonnen | Original behalten |
 |---|---:|---:|---:|---:|---:|
-| `botlib` | 53 | 19 | 12 | 22 | 0 |
+| `botlib` | 53 | 20 | 11 | 22 | 0 |
 | `cgame` | 25 | 21 | 0 | 4 | 0 |
-| `client` | 19 | 3 | 12 | 4 | 0 |
-| `game` | 65 | 11 | 28 | 26 | 0 |
+| `client` | 19 | 4 | 11 | 4 | 0 |
+| `game` | 65 | 12 | 27 | 26 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
-| `qcommon` | 27 | 3 | 15 | 9 | 0 |
+| `qcommon` | 27 | 4 | 14 | 9 | 0 |
 | `renderer` | 27 | 8 | 15 | 4 | 0 |
 | `server` | 11 | 2 | 9 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **121** | **97** | **117** | **0** |
+| **Gesamt** | **335** | **125** | **93** | **117** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -84,7 +84,7 @@ Teil dieser Tabelle.
 | `code/botlib/l_log.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/l_memory.c` | `botlib` | `ported` | 9 | 9 | 0 |
 | `code/botlib/l_memory.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/l_precomp.c` | `botlib` | `partial` | 82 | 7 | 75 |
+| `code/botlib/l_precomp.c` | `botlib` | `ported` | 82 | 82 | 0 |
 | `code/botlib/l_precomp.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/l_script.c` | `botlib` | `partial` | 39 | 1 | 38 |
 | `code/botlib/l_script.h` | `botlib` | `not_started` | 0 | 0 | 0 |
@@ -129,7 +129,7 @@ Teil dieser Tabelle.
 | `code/client/client.h` | `client` | `not_started` | 0 | 0 | 0 |
 | `code/client/keys.h` | `client` | `not_started` | 0 | 0 | 0 |
 | `code/client/snd_adpcm.c` | `client` | `partial` | 4 | 0 | 4 |
-| `code/client/snd_dma.c` | `client` | `partial` | 42 | 11 | 31 |
+| `code/client/snd_dma.c` | `client` | `ported` | 42 | 42 | 0 |
 | `code/client/snd_local.h` | `client` | `not_started` | 0 | 0 | 0 |
 | `code/client/snd_mem.c` | `client` | `partial` | 12 | 2 | 10 |
 | `code/client/snd_mix.c` | `client` | `partial` | 8 | 8 | 0 |
@@ -196,7 +196,7 @@ Teil dieser Tabelle.
 | `code/game/inv.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/match.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/q_math.c` | `game` | `ported` | 57 | 57 | 0 |
-| `code/game/q_shared.c` | `game` | `partial` | 59 | 9 | 50 |
+| `code/game/q_shared.c` | `game` | `ported` | 59 | 59 | 0 |
 | `code/game/q_shared.h` | `game` | `partial` | 19 | 1 | 18 |
 | `code/game/surfaceflags.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/syn.h` | `game` | `not_started` | 0 | 0 | 0 |
@@ -277,7 +277,7 @@ Teil dieser Tabelle.
 | `code/qcommon/files.c` | `qcommon` | `ported` | 75 | 75 | 0 |
 | `code/qcommon/huffman.c` | `qcommon` | `ported` | 18 | 18 | 0 |
 | `code/qcommon/md4.c` | `qcommon` | `partial` | 8 | 6 | 2 |
-| `code/qcommon/msg.c` | `qcommon` | `partial` | 48 | 46 | 2 |
+| `code/qcommon/msg.c` | `qcommon` | `ported` | 48 | 48 | 0 |
 | `code/qcommon/net_chan.c` | `qcommon` | `partial` | 17 | 7 | 10 |
 | `code/qcommon/qcommon.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
 | `code/qcommon/qfiles.h` | `qcommon` | `partial` | 0 | 0 | 0 |
@@ -410,7 +410,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/botlib/l_libvar.c` (ported): `LibVar`, `LibVarAlloc`, `LibVarChanged`, `LibVarDeAlloc`, `LibVarDeAllocAll`, `LibVarGet`, `LibVarGetString`, `LibVarGetValue`, `LibVarSet`, `LibVarSetNotModified`, `LibVarString`, `LibVarStringValue`, `LibVarValue`
 - `code/botlib/l_log.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_memory.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/l_precomp.c` (partial): `BuiltinFunction`, `LoadSourceFile`, `LoadSourceMemory`, `PC_AddBuiltinDefines`, `PC_AddDefine`, `PC_AddDefineToHash`, `PC_AddGlobalDefinesToSource`, `PC_CheckOpenSourceHandles`, `PC_CheckTokenString`, `PC_CheckTokenType`, `PC_ClearTokenWhiteSpace`, `PC_ConvertPath`, `PC_CopyDefine`, `PC_CopyToken`, `PC_DefineFromString`, `PC_Directive_define`, `PC_Directive_elif`, `PC_Directive_else`, `PC_Directive_endif`, `PC_Directive_error`, `PC_Directive_eval`, `PC_Directive_evalfloat`, `PC_Directive_if`, `PC_Directive_if_def`, `PC_Directive_ifdef`, `PC_Directive_ifndef`, `PC_Directive_include`, `PC_Directive_line`, `PC_Directive_pragma`, `PC_Directive_undef`, `PC_DollarDirective_evalfloat`, `PC_DollarDirective_evalint`, `PC_DollarEvaluate`, `PC_Evaluate`, `PC_EvaluateTokens`, `PC_ExpandBuiltinDefine`, `PC_ExpandDefine`, `PC_ExpandDefineIntoSource`, `PC_ExpectAnyToken`, `PC_ExpectTokenString`, `PC_ExpectTokenType`, `PC_FindDefine`, `PC_FindDefineParm`, `PC_FindHashedDefine`, `PC_FreeDefine`, `PC_FreeToken`, `PC_InitTokenHeap`, `PC_MergeTokens`, `PC_NameHash`, `PC_OperatorPriority`, `PC_PopIndent`, `PC_PrintDefine`, `PC_PrintDefineHashTable`, `PC_PushIndent`, `PC_PushScript`, `PC_ReadDefineParms`, `PC_ReadDirective`, `PC_ReadDollarDirective`, `PC_ReadLine`, `PC_ReadSourceToken`, `PC_RemoveAllGlobalDefines`, `PC_RemoveGlobalDefine`, `PC_SetBaseFolder`, `PC_SetIncludePath`, `PC_SetPunctuations`, `PC_SkipUntilString`, `PC_StringizeTokens`, `PC_UnreadLastToken`, `PC_UnreadSourceToken`, `PC_UnreadToken`, `PC_WhiteSpaceBeforeToken`, `QuakeCMacro`, `SourceError`, `SourceWarning`, `UnreadSignToken`
 - `code/botlib/l_precomp.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_script.c` (partial): `EndOfScript`, `FileLength`, `FreeScript`, `GetScriptFlags`, `LoadScriptFile`, `LoadScriptMemory`, `NumLinesCrossed`, `NumberValue`, `PS_CheckTokenString`, `PS_CheckTokenType`, `PS_CreatePunctuationTable`, `PS_ExpectAnyToken`, `PS_ExpectTokenString`, `PS_ExpectTokenType`, `PS_NextWhiteSpaceChar`, `PS_ReadEscapeCharacter`, `PS_ReadLiteral`, `PS_ReadName`, `PS_ReadNumber`, `PS_ReadPrimitive`, `PS_ReadPunctuation`, `PS_ReadString`, `PS_ReadWhiteSpace`, `PS_SetBaseFolder`, `PS_SkipUntilString`, `PS_UnreadLastToken`, `PS_UnreadToken`, `PunctuationFromNum`, `ReadSignedFloat`, `ReadSignedInt`, `ResetScript`, `ScriptError`, `ScriptSkipTo`, `ScriptWarning`, `SetScriptFlags`, `SetScriptPunctuations`, `StripDoubleQuotes`, `StripSingleQuotes`
 - `code/botlib/l_script.h` (not_started): *(Symbolinventar ergänzen)*
@@ -431,7 +430,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/client/client.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/keys.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/snd_adpcm.c` (partial): `S_AdpcmEncode`, `S_AdpcmEncodeSound`, `S_AdpcmGetSamples`, `memory`
-- `code/client/snd_dma.c` (partial): `FGetLittleLong`, `FGetLittleShort`, `S_AddRealLoopingSound`, `S_BeginRegistration`, `S_ByteSwapRawSamples`, `S_ClearLoopingSounds`, `S_ClearSoundBuffer`, `S_DefaultSound`, `S_DisableSounds`, `S_FindName`, `S_FindWavChunk`, `S_FreeOldestSound`, `S_GetRawSamplePointer`, `S_GetSoundtime`, `S_HashSFXName`, `S_Init`, `S_Music_f`, `S_Play_f`, `S_RawSamples`, `S_RegisterSound`, `S_Respatialize`, `S_ScanChannelStarts`, `S_Shutdown`, `S_SoundInfo_f`, `S_SoundList_f`, `S_StartLocalSound`, `S_StopAllSounds`, `S_StopLoopingSound`, `S_UpdateEntityPosition`, `S_Update_`, `S_memoryLoad`
 - `code/client/snd_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/snd_mem.c` (partial): `FindChunk`, `FindNextChunk`, `GetLittleLong`, `GetLittleShort`, `GetWavinfo`, `SND_free`, `SND_malloc`, `SND_setup`, `S_DisplayFreeMemory`, `S_LoadSound`
 - `code/client/snd_mix.c` (partial): *(Symbolinventar ergänzen)*
@@ -487,7 +485,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/game/g_weapon.c` (partial): `G_StartKamikaze`, `KamikazeDamage`, `KamikazeRadiusDamage`, `KamikazeShockWave`, `Weapon_Nailgun_Fire`, `weapon_proxlauncher_fire`
 - `code/game/inv.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/match.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/q_shared.c` (partial): `BigFloat`, `BigLong`, `BigLong64`, `BigShort`, `COM_Compress`, `COM_DefaultExtension`, `COM_MatchToken`, `COM_ParseError`, `COM_ParseInfos`, `COM_ParseWarning`, `COM_SkipPath`, `COM_StripExtension`, `Com_Clamp`, `Com_sprintf`, `FloatNoSwap`, `FloatSwap`, `Info_NextPair`, `Info_RemoveKey_Big`, `Info_SetValueForKey_Big`, `LittleFloat`, `LittleLong`, `LittleLong64`, `LittleShort`, `Long64NoSwap`, `Long64Swap`, `LongNoSwap`, `LongSwap`, `Parse1DMatrix`, `Parse2DMatrix`, `Parse3DMatrix`, `Q_CleanStr`, `Q_PrintStrlen`, `Q_isalpha`, `Q_islower`, `Q_isprint`, `Q_isupper`, `Q_strcat`, `Q_stricmp`, `Q_stricmpn`, `Q_strlwr`, `Q_strncmp`, `Q_strncpyz`, `Q_strrchr`, `Q_strupr`, `ShortNoSwap`, `ShortSwap`, `SkipBracedSection`, `SkipRestOfLine`, `SkipWhitespace`, `Swap_Init`
 - `code/game/q_shared.h` (partial): `BigFloat`, `BigLong`, `BigShort`, `Distance`, `DistanceSquared`, `LittleFloat`, `LittleLong`, `LittleShort`, `Q_fabs`, `Q_rsqrt`, `VectorCompare`, `VectorInverse`, `VectorLength`, `VectorLengthSquared`, `VectorNormalizeFast`, `__fctiw`, `__lhbrx`, `__lwbrx`
 - `code/game/surfaceflags.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/syn.h` (not_started): *(Symbolinventar ergänzen)*
@@ -520,7 +517,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/qcommon/cmd.c` (partial): *(Symbolinventar ergänzen)*
 - `code/qcommon/cvar.c` (partial): `Cvar_CommandCompletion`, `Cvar_FindVar`, `Cvar_InfoString`, `Cvar_InfoStringBuffer`, `Cvar_InfoString_Big`, `Cvar_SetLatched`, `Cvar_SetValue`, `Cvar_ValidateString`, `Cvar_VariableIntegerValue`, `Cvar_VariableString`, `Cvar_VariableStringBuffer`, `Cvar_VariableValue`, `generateHashValue`
 - `code/qcommon/md4.c` (partial): `Decode`, `Encode`
-- `code/qcommon/msg.c` (partial): `MSG_NUinitHuffman`, `MSG_ReportChangeVectors_f`
 - `code/qcommon/net_chan.c` (partial): `NET_AdrToString`, `NET_CompareAdr`, `NET_CompareBaseAdr`, `NET_GetLoopPacket`, `NET_IsLocalAddress`, `NET_SendLoopPacket`, `NET_StringToAdr`, `Netchan_ScramblePacket`, `Netchan_UnScramblePacket`, `datagram`
 - `code/qcommon/qcommon.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/qfiles.h` (partial): *(Symbolinventar ergänzen)*

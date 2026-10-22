@@ -2304,3 +2304,18 @@ Retail-QVM-Match läuft acht Frames mit 13 Snapshot-Entities, 2.345 texturierten
 Dreiecken, 19 Scene-Entities, 26 Sounds und null nicht unterstützten Entities.
 Der erzeugte `build/MiniQuake3.exe`-Stand hat SHA-256
 `26b01d8d9c1191ef0ef045cf38c5e44e698a4bacde97d05b1df63e50491c395c`.
+
+## 2026-10-22: `l_precomp.c`, `q_shared.c`, `msg.c` und `snd_dma.c` vollständig zugeordnet
+
+Vier große partielle Originaldateien sind jetzt vollständige native MiniLang-Adapter. `l_precomp.c` deckt alle 82 Präprozessor-Einstiegspunkte ab und nutzt dieselbe Registry wie die produktiven CG_PC-QVM-Traps. `q_shared.c` stellt alle 59 Parser-, Endian-, Pfad-, String-, Matrix-, Format- und Info-String-Funktionen bereit. `msg.c` bildet alle 48 Protocol-68-Einstiegspunkte über die vorhandenen exakten Huffman- und Delta-Kerne ab. `snd_dma.c` liefert alle 42 Audio-Lifecycle- und Dispatch-Funktionen über die produktiven Kanal-, Spatial-, Loop-, Paint- und Raw-Stream-Module.
+
+Nachweise:
+
+- `test_l_precomp.py`: 82/82 Symbole, 25 unveränderte C-Beobachtungen, 49 native Verträge und sechs Retail-Proben mit echten pak0-Includes.
+- `test_q_shared_runtime.py`: 59/59 Symbole, 13 exakte Datensätze aus 24 unveränderten C-Funktionen, 39 native Verträge und acht Retail-Prüfungen über 30 Arenen und 32 Bots.
+- `test_msg_complete.py`: 48/48 Symbole, 152 unveränderte C-Differenzdatensätze, 223 Verträge und die Retail-cgame.qvm-Probe.
+- `test_snd_dma_runtime.py`: 42/42 Symbole und 25 Lifecycle-Verträge. Die delegierten Audioalgorithmen bestehen zusätzlich 33 exakte Baseq3-Datensätze und 64 Kanal-/Loop-/Raw-/Spatial-Verträge; Paint, Doppler und der 40-Verträge-QVM-Audiopfad bleiben grün.
+- `parity_inventory.py` und `test_parity_inventory.py`: 335 Runtime-/Plattformdateien, davon 125 portiert, 93 partiell und 117 nicht begonnen.
+
+Sichere Abstraktionsgrenzen bleiben dokumentiert: Dateisystem-/PK3-Zugriff läuft über typisierte Hosts, verwaltete Strings und Bytearrays ersetzen C-Zeigeraliasing, und das Audio-Gerät bleibt die Plattformgrenze. Diese Unterschiede verändern die geprüften Baseq3-Laufzeitpfade nicht. Die vollständige Verify-Auswahl wurde für dieses Paket nicht erneut am Stück ausgeführt; Fokusgates, abhängige Regressionen, Hauptbuild und Retail-QVM-Match sind die Abnahmekriterien dieses inkrementellen Blocks.
+Der frisch gebaute Hauptstand hat SHA-256 `109af343203c8eb540e2343c8fbcaf7700fc6e7f61666ba5da40c97e7cb34635`. Der anschließende Retail-QVM-Match besteht über acht Frames mit neun Prediction-Traces, 2.345 texturierten Dreiecken, 17 Renderpässen und 26 Soundbefehlen.

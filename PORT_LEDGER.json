@@ -5331,20 +5331,37 @@
           ],
           "status": "tested_subset",
           "scope": "Handles 1..63, quoted and angle-bracket includes, global/object/function defines, nested conditional directives, C-precedence integer expressions, recursive expansion, stringification, token pasting, PC_ReadLine-style backslash continuation and the fixed __LINE__/__FILE__/__DATE__/__TIME__ macros pass 58 contracts. Cgame/UI trap marshalling reaches the same productive registry and the unchanged retail qagame/cgame/ui match passes with D:/Quake3. Include-path configuration and less-used diagnostic/precompiler APIs remain open."
+        },
+        {
+          "original": "BuiltinFunction / FreeSource / LoadSourceFile / LoadSourceMemory / PC_AddBuiltinDefines / PC_AddDefine / PC_AddDefineToHash / PC_AddGlobalDefine / PC_AddGlobalDefinesToSource / PC_CheckOpenSourceHandles / PC_CheckTokenString / PC_CheckTokenType / PC_ClearTokenWhiteSpace / PC_ConvertPath / PC_CopyDefine / PC_CopyToken / PC_DefineFromString / PC_Directive_define / PC_Directive_elif / PC_Directive_else / PC_Directive_endif / PC_Directive_error / PC_Directive_eval / PC_Directive_evalfloat / PC_Directive_if / PC_Directive_if_def / PC_Directive_ifdef / PC_Directive_ifndef / PC_Directive_include / PC_Directive_line / PC_Directive_pragma / PC_Directive_undef / PC_DollarDirective_evalfloat / PC_DollarDirective_evalint / PC_DollarEvaluate / PC_Evaluate / PC_EvaluateTokens / PC_ExpandBuiltinDefine / PC_ExpandDefine / PC_ExpandDefineIntoSource / PC_ExpectAnyToken / PC_ExpectTokenString / PC_ExpectTokenType / PC_FindDefine / PC_FindDefineParm / PC_FindHashedDefine / PC_FreeDefine / PC_FreeSourceHandle / PC_FreeToken / PC_InitTokenHeap / PC_LoadSourceHandle / PC_MergeTokens / PC_NameHash / PC_OperatorPriority / PC_PopIndent / PC_PrintDefine / PC_PrintDefineHashTable / PC_PushIndent / PC_PushScript / PC_ReadDefineParms / PC_ReadDirective / PC_ReadDollarDirective / PC_ReadLine / PC_ReadSourceToken / PC_ReadToken / PC_ReadTokenHandle / PC_RemoveAllGlobalDefines / PC_RemoveGlobalDefine / PC_SetBaseFolder / PC_SetIncludePath / PC_SetPunctuations / PC_SkipUntilString / PC_SourceFileAndLine / PC_StringizeTokens / PC_UnreadLastToken / PC_UnreadSourceToken / PC_UnreadToken / PC_WhiteSpaceBeforeToken / QuakeCMacro / SourceError / SourceWarning / UnreadSignToken",
+          "target_files": [
+            "src/mq3/botlib/l_precomp.ml",
+            "src/mq3/vm/pc_parser.ml",
+            "src/mq3/vm/cgame_pc_traps.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete typed adapter for all 82 precompiler entry points, backed by the productive parser registry and CG_PC_* QVM bridge. Exact C observations, native lifecycle/directive/macro contracts and real pak0 include parsing cover the runtime surface."
         }
       ],
       "target": [
+        "src/mq3/botlib/l_precomp.ml",
         "src/mq3/vm/pc_parser.ml",
+        "src/mq3/vm/cgame_pc_traps.ml",
         "src/mq3/engine/local_qvm_match.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_pc_parser.py",
         "tests/pc_parser_contracts.ml",
         "scripts/test_pc_preprocessor.py",
         "tests/pc_preprocessor_contracts.ml",
         "scripts/test_pc_macros.py",
-        "tests/pc_macro_contracts.ml"
+        "tests/pc_macro_contracts.ml",
+        "scripts/test_l_precomp.py",
+        "tests/reference/l_precomp_oracle.c",
+        "tests/l_precomp_contracts.ml",
+        "tests/l_precomp_retail_probe.ml"
       ]
     },
     {
@@ -16073,9 +16090,25 @@
           ],
           "status": "tested_exact",
           "scope": "The productive QVM loop path reproduces Baseq3 squared-distance Doppler scale, the greater-than-one activation threshold and old-scale reset behavior, then uses the existing interval paint path. Five unchanged-C records and six focused contracts pass; the integrated playback suite has 40 contracts."
+        },
+        {
+          "original": "FGetLittleLong / FGetLittleShort / S_AddLoopSounds / S_AddLoopingSound / S_AddRealLoopingSound / S_BeginRegistration / S_ByteSwapRawSamples / S_ChannelFree / S_ChannelMalloc / S_ChannelSetup / S_ClearLoopingSounds / S_ClearSoundBuffer / S_DefaultSound / S_DisableSounds / S_FindName / S_FindWavChunk / S_FreeOldestSound / S_GetRawSamplePointer / S_GetSoundtime / S_HashSFXName / S_Init / S_Music_f / S_Play_f / S_RawSamples / S_RegisterSound / S_Respatialize / S_ScanChannelStarts / S_Shutdown / S_SoundInfo_f / S_SoundList_f / S_SpatializeOrigin / S_StartBackgroundTrack / S_StartLocalSound / S_StartSound / S_StopAllSounds / S_StopBackgroundTrack / S_StopLoopingSound / S_Update / S_UpdateBackgroundTrack / S_UpdateEntityPosition / S_Update_ / S_memoryLoad",
+          "target_files": [
+            "src/mq3/audio/snd_dma_runtime.ml",
+            "src/mq3/audio/qvm_playback.ml",
+            "src/mq3/audio/snd_spatialize.ml",
+            "src/mq3/audio/snd_channels.ml",
+            "src/mq3/audio/snd_loop_channels.ml",
+            "src/mq3/audio/snd_paint_pipeline.ml",
+            "src/mq3/audio/snd_loop_doppler.ml",
+            "src/mq3/audio/snd_raw_stream.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete stateful adapter for all 42 DMA sound entry points, delegating the unchanged-C-tested channel, spatial, loop, paint and raw-stream algorithms while owning initialization, registration, clocks, music and teardown."
         }
       ],
       "target": [
+        "src/mq3/audio/snd_dma_runtime.ml",
         "src/mq3/audio/qvm_playback.ml",
         "src/mq3/audio/snd_spatialize.ml",
         "src/mq3/audio/snd_channels.ml",
@@ -16084,7 +16117,7 @@
         "src/mq3/audio/snd_loop_doppler.ml",
         "src/mq3/audio/snd_raw_stream.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_qvm_audio.py",
         "tests/qvm_playback_contracts.ml",
@@ -16104,7 +16137,9 @@
         "scripts/test_audio_snd_loop_doppler.py",
         "tests/reference/audio_snd_loop_doppler_oracle.c",
         "tests/audio_snd_loop_doppler_oracle.ml",
-        "tests/audio_snd_loop_doppler_contracts.ml"
+        "tests/audio_snd_loop_doppler_contracts.ml",
+        "scripts/test_snd_dma_runtime.py",
+        "tests/snd_dma_runtime_contracts.ml"
       ]
     },
     {
@@ -28806,17 +28841,35 @@
           ],
           "status": "tested_subset",
           "scope": "Case-sensitive first-key removal and value insertion at the front with original invalid-character, removal, formatting and size-check order. Compared through Cmd_TeamTask_f userinfo writes and actual ClientUserinfoChanged. Exactly 1024 bytes would overrun the native terminator and are rejected separately. MiniLang owns result strings; C pointer aliasing is not claimed."
+        },
+        {
+          "original": "BigFloat / BigLong / BigLong64 / BigShort / COM_BeginParseSession / COM_Compress / COM_DefaultExtension / COM_GetCurrentParseLine / COM_MatchToken / COM_Parse / COM_ParseError / COM_ParseExt / COM_ParseInfos / COM_ParseWarning / COM_SkipPath / COM_StripExtension / Com_Clamp / Com_sprintf / FloatNoSwap / FloatSwap / Info_NextPair / Info_RemoveKey / Info_RemoveKey_Big / Info_SetValueForKey / Info_SetValueForKey_Big / Info_Validate / Info_ValueForKey / LittleFloat / LittleLong / LittleLong64 / LittleShort / Long64NoSwap / Long64Swap / LongNoSwap / LongSwap / Parse1DMatrix / Parse2DMatrix / Parse3DMatrix / Q_CleanStr / Q_PrintStrlen / Q_isalpha / Q_islower / Q_isprint / Q_isupper / Q_strcat / Q_stricmp / Q_stricmpn / Q_strlwr / Q_strncmp / Q_strncpyz / Q_strrchr / Q_strupr / ShortNoSwap / ShortSwap / SkipBracedSection / SkipRestOfLine / SkipWhitespace / Swap_Init / va",
+          "target_files": [
+            "src/mq3/shared/q_shared_runtime.ml",
+            "src/mq3/shared/parser.ml",
+            "src/mq3/shared/info.ml",
+            "src/mq3/compat/numeric.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete adapter for all 59 shared byte-order, parser, path, string, formatting, matrix and info-string entry points, with unchanged-C records, native safety contracts and retail arena/bot parsing."
         }
       ],
       "target": [
+        "src/mq3/shared/q_shared_runtime.ml",
         "src/mq3/shared/parser.ml",
-        "src/mq3/shared/info.ml"
+        "src/mq3/shared/info.ml",
+        "src/mq3/compat/numeric.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_core.py",
         "scripts/test_client_info.py",
-        "scripts/test_client_commands.py"
+        "scripts/test_client_commands.py",
+        "scripts/test_q_shared_runtime.py",
+        "tests/reference/q_shared_runtime_oracle.c",
+        "tests/q_shared_runtime_oracle.ml",
+        "tests/q_shared_runtime_contracts.ml",
+        "tests/q_shared_runtime_retail_probe.ml"
       ]
     },
     {
@@ -39149,20 +39202,38 @@
           ],
           "status": "tested_subset",
           "scope": "Baseq3 msg_t state copy with independent destination bytes, exact Binary32 payloads including negative zero and NaN bits, 8-/16-bit angle quantization, and BIG_INFO_STRING sanitization/limits pass 23 unchanged-C records plus 37 contracts. The inert changeVectors diagnostic and commented MSG_NUinitHuffman generator are not runtime protocol paths."
+        },
+        {
+          "original": "MSG_BeginReading / MSG_BeginReadingOOB / MSG_Bitstream / MSG_Clear / MSG_Copy / MSG_Init / MSG_InitOOB / MSG_NUinitHuffman / MSG_ReadAngle16 / MSG_ReadBigString / MSG_ReadBits / MSG_ReadByte / MSG_ReadChar / MSG_ReadData / MSG_ReadDelta / MSG_ReadDeltaEntity / MSG_ReadDeltaFloat / MSG_ReadDeltaKey / MSG_ReadDeltaKeyFloat / MSG_ReadDeltaPlayerstate / MSG_ReadDeltaUsercmd / MSG_ReadDeltaUsercmdKey / MSG_ReadFloat / MSG_ReadLong / MSG_ReadShort / MSG_ReadString / MSG_ReadStringLine / MSG_ReportChangeVectors_f / MSG_WriteAngle / MSG_WriteAngle16 / MSG_WriteBigString / MSG_WriteBits / MSG_WriteByte / MSG_WriteChar / MSG_WriteData / MSG_WriteDelta / MSG_WriteDeltaEntity / MSG_WriteDeltaFloat / MSG_WriteDeltaKey / MSG_WriteDeltaKeyFloat / MSG_WriteDeltaPlayerstate / MSG_WriteDeltaUsercmd / MSG_WriteDeltaUsercmdKey / MSG_WriteFloat / MSG_WriteLong / MSG_WriteShort / MSG_WriteString / MSG_initHuffman",
+          "target_files": [
+            "src/mq3/qcommon/msg.ml",
+            "src/mq3/qcommon/message.ml",
+            "src/mq3/qcommon/huffman.ml",
+            "src/mq3/qcommon/message_delta.ml",
+            "src/mq3/qcommon/message_state_delta.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete 48-entry protocol-68 message adapter over the exact Huffman, primitive, keyed delta, usercmd, entity and player-state codecs, validated against unchanged C, snapshot/network regressions and retail cgame.qvm."
         }
       ],
       "target": [
-        "src/mq3/qcommon/huffman.ml",
+        "src/mq3/qcommon/msg.ml",
         "src/mq3/qcommon/message.ml",
+        "src/mq3/qcommon/huffman.ml",
         "src/mq3/qcommon/message_delta.ml",
         "src/mq3/qcommon/message_state_delta.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_huffman_message.py",
         "scripts/test_message.py",
         "scripts/test_message_delta.py",
-        "scripts/test_message_state_delta.py"
+        "scripts/test_message_state_delta.py",
+        "scripts/test_msg_complete.py",
+        "tests/reference/msg_complete_oracle.c",
+        "tests/msg_complete_oracle.ml",
+        "tests/msg_complete_contracts.ml",
+        "tests/msg_retail_probe.ml"
       ]
     },
     {
