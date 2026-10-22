@@ -2257,3 +2257,50 @@ Frames bestehen. Der Build hat SHA-256
 `cfcff12bbb36b766ad02e93d974e3a06df0e65f0e65490b4fb9c43a7725a3b3b`.
 Der letzte vollständige Lauf aller 378 bisherigen Gates bleibt grün; die drei
 neuen Tests sind als Gates 379 bis 381 in `scripts/verify.py` eingetragen.
+
+### Vollständige Mathe-, Dateisystem- und Client-Hauptpfade
+
+Der Dateiabgleich vom 22. Oktober 2026 hebt `code/game/q_math.c`,
+`code/qcommon/files.c`, `code/client/cl_input.c` und `code/client/cl_main.c`
+auf `ported`. Alle 288 Ledger-Symbole sind nativen MiniLang-Modulen
+zugeordnet. 71 gezielte Beobachtungen aus unverändertem C, 173 neue native
+Verträge und die bestehenden 4.096 direkten C-Mathematikfälle prüfen das Paket.
+
+`math.ml` deckt jetzt sämtliche Vektor-, Winkel-, Ebenen-, Bounds-, gepackten
+Farb-, Byte-Normalen-, Rotations-, Normalisierungs- und Zufallsfunktionen ab.
+Neben dem vollständigen Symbol- und Vertragsgate bleiben die umfangreichen
+Shared-Game-, Missile- und Retail-Patchvergleiche grün.
+
+`files_runtime.ml` portiert Suchpfade, PK3-Zugriff, Pure-/Referenzprüfung und
+Pak-Reorder, 64 Handles mit Read, Read2, Write, Printf, Seek, Tell, Append,
+AppendSync und Flush, Loose-/Serverpfade, Listen und Mod-Puffer sowie Init,
+Startup, ConditionalRestart, Restart und Shutdown. 11 direkte C-Records,
+44 Runtime-Verträge, 48 C-MD4-Werte, 84 ZIP-/DEFLATE-Bytevergleiche und zehn
+Retail-Probes prüfen 31 BSPs, 27 Shaderdateien und drei Pak-Suchpfade. ZIP-
+Streams werden pro Handle als validierte Bytes materialisiert; OS-Schreib-,
+Rename- und Delete-Aktionen bleiben typisierte Hostgrenzen.
+
+`cl_input.ml` deckt alle 59 Originalkommandos, duales Key-Timing, MLook und
+CenterView, UI-/CGame-/Gameplay-Mausrouting, Joystick, Cmd-/Angle-/Weapon-/
+ServerTime-Erzeugung, Command-Ring sowie Ready/Write/Send über Reliable,
+Delta und Netchan ab. Sechs C-Differenzrecords, 31 Verträge und die echte
+Retail-Cgame-QVM bestehen. OS-Fensterereignisse, VM-Mousecalls, Debuggraph und
+UDP bleiben Hostcallbacks.
+
+`client_main.ml` portiert Lifecycle, Reliable-Ring, Connect/Resend/OOB/Packet,
+Demo, Downloads, Renderer/Sound/Hunk, Frame/Timeout/Userinfo, LAN/Ping/
+Serverstatus, Pure/PK3, MOTD/Rcon und CD-Key. Der produktive Byte-/Netchan-/
+QVM-Pfad ist über `attachNetworkIngress` und `CL_PacketEventLive` angebunden.
+18 C-Beobachtungen, 47 native Verträge und sieben Retail-Probes bestehen.
+UDP/DNS/Sockets, Dateihandles, Renderer-/Sound-Neustart, Speicherallokation und
+OS-Umgebungsvariablen bleiben typisierte Hostaktionen. Der Port liest keinen
+Retail-CD-Key; geprüft wird nur die originale lokale Syntax und Checksumme.
+
+Das erzeugte Inventar zählt jetzt **121 portierte, 97 partielle und 117 nicht
+begonnene** Runtime-/Plattformdateien. Die vier neuen Gates sind als Gates 382
+bis 385 in `scripts/verify.py` eingetragen. Der Windows-Hauptbuild und die
+fokussierten C-, Vertrags- und Retail-Prüfungen bestehen. Das kombinierte
+Retail-QVM-Match läuft acht Frames mit 13 Snapshot-Entities, 2.345 texturierten
+Dreiecken, 19 Scene-Entities, 26 Sounds und null nicht unterstützten Entities.
+Der erzeugte `build/MiniQuake3.exe`-Stand hat SHA-256
+`26b01d8d9c1191ef0ef045cf38c5e44e698a4bacde97d05b1df63e50491c395c`.

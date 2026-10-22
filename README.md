@@ -898,6 +898,41 @@ Der letzte vollständige Gesamtlauf bleibt der grüne 378-Gate-Nachweis; die dre
 neuen Gates sind in `scripts/verify.py` aufgenommen und erhöhen den nächsten
 Gesamtlauf auf 381 Gates.
 
+## Vollständige Mathe-, Dateisystem- und Client-Hauptpfade vom 22. Oktober 2026
+
+Vier weitere zentrale Originaldateien sind vollständig nativ portiert:
+`code/game/q_math.c`, `code/qcommon/files.c`, `code/client/cl_input.c` und
+`code/client/cl_main.c`. Die Module decken alle **288 Ledger-Symbole** ab.
+Die neue Abnahme umfasst **71 gezielte Beobachtungen aus unverändertem C**,
+**173 native Verträge** sowie die bereits vorhandenen 4.096 C-Mathematikfälle,
+Pure-Filesystem-, ZIP-/DEFLATE-, Input-, Usercmd-, Netchan-, Demo-, LAN- und
+Matchregressionen.
+
+Die Mathelaufzeit enthält jetzt die vollständigen Vektor-, Winkel-, Ebenen-,
+Bounds-, Farb-, Byte-Normalen-, Rotations-, Normalisierungs- und Zufallshelfer.
+Der Dateisystempfad umfasst Suchpfade, PK3-Zugriff, Pure-/Referenzprüfung,
+Pak-Reihenfolge, 64 Handles, Lesen, Schreiben, Seek, Listen und Mod-Overlay
+sowie Startup, Restart und Shutdown. ZIP-Inhalte werden pro Handle vollständig
+validiert und als Bytes materialisiert; Betriebssystemmutationen bleiben
+produktive typisierte Hostgrenzen.
+
+Der Client-Input-Pfad registriert die 59 Originalbefehle und portiert duales
+Key-Timing, Maus-/Joystick-Routing, Command-Erzeugung und den Reliable-/Delta-/
+Netchan-Sendepfad. Der Client-Hauptpfad ergänzt Lifecycle, Verbindungsaufbau,
+OOB-/Packet-Verarbeitung, Demos und Downloads, Frame und Timeouts, LAN/Ping/
+Status, Pure/PK3, MOTD, Rcon und lokale CD-Key-Prüfung. UDP/DNS, OS-Events,
+Dateihandles, Renderer-/Sound-Neustart und Speicherallokation bleiben typisierte,
+bei aktiver Retail-QVM unterdrückbare Hostaktionen.
+
+Das Runtime-/Plattforminventar zählt nun **121 portierte**, **97 partielle**
+und **117 noch nicht begonnene** Originaldateien. Die vier neuen Fokustests,
+der Windows-Hauptbuild und das acht Frames lange Retail-QVM-Match sind grün.
+Der frische Hauptstand hat SHA-256
+`26b01d8d9c1191ef0ef045cf38c5e44e698a4bacde97d05b1df63e50491c395c`.
+Die vier
+Gates sind in `scripts/verify.py` aufgenommen; zusammen mit dem vorherigen
+381-Gate-Stand umfasst der nächste Gesamtlauf 385 Gates.
+
 ## Originalquellen und Spieldaten
 
 Die Original-Lizenz und Hinweise bleiben unter

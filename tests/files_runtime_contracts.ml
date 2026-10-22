@@ -1,0 +1,54 @@
+import mq3.qcommon.files_runtime as runtime
+import mq3.qcommon.filesystem as paths
+import std.fs as fs
+
+struct Host commands end struct
+function mods(context,roots) return ["mymod","My Mod"] end function
+function require(ok,text) if not ok then return error(7668,text) end if;return 1 end function
+function main(args)
+  if len(args)!=1 then return 2 end if;root=args[0];checks=0;state=runtime.create(root,root,root,"baseq3",12345);state.context=Host([]);state.listModsFn=mods
+  checks=checks+require(not runtime.fs_Initialized(state) and runtime.fs_LoadStack(state)==0,"initial lifecycle")
+  checks=checks+require(runtime.fs_HashFileName("A/B.TGA",1024)==runtime.fs_HashFileName("a\\b.jpg",1024),"filename hash normalization")
+  checks=checks+require(not runtime.fs_FilenameCompare("Maps:A.BSP","maps/a.bsp") and runtime.fs_FilenameCompare("a","b"),"filename comparison")
+  checks=checks+require(runtime.fs_ConvertPath("a\\b:c")=="a/b/c" and runtime.fs_ReplaceSeparators("a/b") == "a\\b","separator conversion")
+  checks=checks+require(runtime.fs_PathCmp("B\\x","a/x")>0,"path ordering")
+  sorted=runtime.fs_SortFileList(["z","B","a"],3);checks=checks+require(sorted==["a","B","z"] and runtime.paksort("a","b")<0,"stable file sort")
+  checks=checks+require(runtime.fs_BuildOSPath(root,"baseq3","cfg/test.cfg")==root+"\\baseq3\\cfg\\test.cfg","OS path construction")
+  info=runtime.fs_ReturnPath("maps/q3dm1.bsp");checks=checks+require(info[1]=="maps" and info[2]==1,"return path and depth")
+  checks=checks+require(runtime.fs_ShiftedStrStr("xxcgame.qvmzz","\\`Zf^'jof",7)=="cgame.qvmzz","shifted substring")
+  checks=checks+require(runtime.fs_InitFilesystem(state) and runtime.fs_Initialized(state),"filesystem startup")
+  checks=checks+require(len(state.fs.paths)>=3 and runtime.fs_LoadedPakNames(state)=="pak1 pak0","host pak discovery and priority")
+  opened=runtime.fs_FOpenFileRead(state,"common.txt",false);checks=checks+require(opened.length==3 and opened.handle>0,"search path open")
+  checks=checks+require(decode(runtime.fs_Read(state,2,opened.handle))=="on" and runtime.fs_FTell(state,opened.handle)==2,"bounded handle read and tell")
+  runtime.fs_Seek(state,opened.handle,-1,1);checks=checks+require(decode(runtime.fs_Read2(state,2,opened.handle))=="ne","relative seek and read2")
+  checks=checks+require(runtime.fs_FCloseFile(state,opened.handle) and not runtime.readable(state,opened.handle),"handle close")
+  whole=runtime.fs_ReadFile(state,"common.txt");checks=checks+require(decode(whole)=="one" and runtime.fs_LoadStack(state)==0,"whole-file read load stack")
+  checks=checks+require(runtime.fs_FreeFile(state,whole)==0 and try(runtime.fs_FreeFile(state,void)) is error,"free-file contract")
+  pak=runtime.fs_FileIsInPAK(state,"maps/b.bsp");checks=checks+require(pak.found and pak.checksum!=0,"file-in-pak checksum")
+  maps=runtime.fs_ListFiles(state,"maps",".bsp");checks=checks+require(len(maps)==3 and maps[0]=="b.bsp","pak and loose listing")
+  filtered=runtime.fs_ListFilteredFiles(state,"maps",".bsp","loose");checks=checks+require(filtered==["loose.bsp"],"filtered listing")
+  list=runtime.fs_GetFileList(state,"maps",".bsp",64);checks=checks+require(list.count==3 and list.packed[5]==0,"packed file list")
+  modsList=runtime.fs_GetFileList(state,"$modlist","",64);checks=checks+require(modsList.count==2 and modsList.names[1]=="My Mod","typed mod listing")
+  checks=checks+require(runtime.sys_CountFileList(maps)==3 and runtime.sys_ConcatenateFileLists(["a"],["b"],["c"])==["a","b","c"],"system list helpers")
+  unique=runtime.fs_AddFileToList("A",["a"]);checks=checks+require(len(unique)==1,"case-insensitive list uniqueness")
+  checks=checks+require(runtime.fs_WriteFile(state,"cfg/generated.cfg",bytes("set x 1")),"write whole file")
+  append=runtime.fs_FOpenFileAppend(state,"cfg/generated.cfg");runtime.fs_Printf(state,append,"\nset y 2");checks=checks+require(runtime.fs_Flush(state,append) and runtime.fs_FCloseFile(state,append),"append and flush")
+  written=runtime.fs_FOpenFileRead(state,"cfg/generated.cfg",true);checks=checks+require(written.length==15 and decode(runtime.fs_Read(state,15,written.handle))=="set x 1\nset y 2","loose write returns through search path");runtime.fclose(state,written.handle)
+  sync=runtime.fs_FOpenFileByMode(state,"cfg/sync.cfg",runtime.FS_APPEND_SYNC);checks=checks+require(sync.handle>0 and runtime.write(state,sync.handle),"append-sync mode");runtime.fs_Write(state,bytes("sync"),sync.handle);runtime.fs_ForceFlush(state,sync.handle);runtime.fs_FCloseFile(state,sync.handle)
+  server=runtime.fs_SV_FOpenFileWrite(state,"server/out.dat");runtime.fs_Write(state,bytes("server"),server);runtime.fs_FCloseFile(state,server);serverRead=runtime.fs_SV_FOpenFileRead(state,"server/out.dat");checks=checks+require(serverRead.length==6 and runtime.fs_SV_FileExists(state,"server/out.dat"),"server file paths");runtime.fs_FCloseFile(state,serverRead.handle)
+  checks=checks+require(runtime.fs_Rename(state,"cfg/sync.cfg","cfg/moved.cfg"),"game rename");checks=checks+require(runtime.fs_SV_Rename(state,"server/out.dat","server/new.dat"),"server rename")
+  checks=checks+require(runtime.fs_Remove(runtime.fs_BuildOSPath(root,"baseq3","cfg/moved.cfg")),"remove")
+  loaded=runtime.fs_LoadedPakChecksums(state);pure=runtime.fs_LoadedPakPureChecksums(state);checks=checks+require(loaded!="" and pure!="","loaded pak metadata")
+  firstChecksum=state.fs.paths[0].pak.checksum;runtime.fs_PureServerSetLoadedPaks(state,str(firstChecksum),"baseq3/pak1");checks=checks+require(runtime.fs_PakIsPure(state,state.fs.paths[0].pak),"pure pak negotiation")
+  runtime.fs_ReadFile(state,"maps/b.bsp");checks=checks+require(runtime.fs_ReferencedPakChecksums(state)!="" and runtime.fs_ReferencedPakNames(state)=="baseq3/pak1","referenced pak metadata")
+  checks=checks+require(runtime.fs_ReferencedPakPureChecksums(state)!="" and runtime.fs_GamePureChecksum(state)=="","referenced pure proof and absent qagame")
+  runtime.fs_PureServerSetReferencedPaks(state,"1 2","mod/a mod/b");checks=checks+require(len(state.fs.serverReferencedPakChecksums)==2,"referenced server pak parse")
+  runtime.fs_ClearPakReferences(state,0);checks=checks+require(runtime.fs_ReferencedPakChecksums(state)=="","clear references")
+  checks=checks+require(runtime.fs_idPak("baseq3/pak8","baseq3") and not runtime.fs_idPak("baseq3/pak9","baseq3"),"official pak range")
+  checks=checks+require(runtime.fs_TouchFile_f(state,"common.txt")==3 and len(runtime.fs_Dir_f(state,"maps",".bsp"))==1,"console touch and dir under pure")
+  checks=checks+require(len(runtime.fs_Path_f(state))>=3 and len(runtime.fs_NewDir_f(state,"common"))>0,"console path and filtered dir")
+  checks=checks+require(not runtime.fs_ConditionalRestart(state,12345),"unchanged conditional restart")
+  checks=checks+require(runtime.fs_ConditionalRestart(state,54321) and state.fs.checksumFeed==54321,"checksum restart")
+  runtime.fs_Shutdown(state,false);checks=checks+require(not runtime.fs_Initialized(state) and len(state.fs.paths)==0,"shutdown")
+  print("PASS: "+str(checks)+" complete files.c runtime contracts");return 0
+end function

@@ -15,19 +15,19 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 |---|---:|---:|---:|---:|---:|
 | `botlib` | 53 | 19 | 12 | 22 | 0 |
 | `cgame` | 25 | 21 | 0 | 4 | 0 |
-| `client` | 19 | 1 | 14 | 4 | 0 |
-| `game` | 65 | 10 | 29 | 26 | 0 |
+| `client` | 19 | 3 | 12 | 4 | 0 |
+| `game` | 65 | 11 | 28 | 26 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
-| `qcommon` | 27 | 2 | 16 | 9 | 0 |
+| `qcommon` | 27 | 3 | 15 | 9 | 0 |
 | `renderer` | 27 | 8 | 15 | 4 | 0 |
 | `server` | 11 | 2 | 9 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **117** | **101** | **117** | **0** |
+| **Gesamt** | **335** | **121** | **97** | **117** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -119,9 +119,9 @@ Teil dieser Tabelle.
 | `code/client/cl_cgame.c` | `client` | `partial` | 22 | 7 | 15 |
 | `code/client/cl_cin.c` | `client` | `partial` | 38 | 5 | 33 |
 | `code/client/cl_console.c` | `client` | `partial` | 22 | 4 | 18 |
-| `code/client/cl_input.c` | `client` | `partial` | 78 | 11 | 67 |
+| `code/client/cl_input.c` | `client` | `ported` | 78 | 78 | 0 |
 | `code/client/cl_keys.c` | `client` | `partial` | 26 | 20 | 6 |
-| `code/client/cl_main.c` | `client` | `partial` | 78 | 16 | 62 |
+| `code/client/cl_main.c` | `client` | `ported` | 78 | 78 | 0 |
 | `code/client/cl_net_chan.c` | `client` | `ported` | 5 | 0 | 5 |
 | `code/client/cl_parse.c` | `client` | `partial` | 9 | 8 | 1 |
 | `code/client/cl_scrn.c` | `client` | `partial` | 18 | 1 | 17 |
@@ -195,7 +195,7 @@ Teil dieser Tabelle.
 | `code/game/g_weapon.c` | `game` | `partial` | 27 | 21 | 6 |
 | `code/game/inv.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/match.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/q_math.c` | `game` | `partial` | 57 | 16 | 41 |
+| `code/game/q_math.c` | `game` | `ported` | 57 | 57 | 0 |
 | `code/game/q_shared.c` | `game` | `partial` | 59 | 9 | 50 |
 | `code/game/q_shared.h` | `game` | `partial` | 19 | 1 | 18 |
 | `code/game/surfaceflags.h` | `game` | `not_started` | 0 | 0 | 0 |
@@ -274,7 +274,7 @@ Teil dieser Tabelle.
 | `code/qcommon/cmd.c` | `qcommon` | `partial` | 22 | 22 | 0 |
 | `code/qcommon/common.c` | `qcommon` | `ported` | 83 | 83 | 0 |
 | `code/qcommon/cvar.c` | `qcommon` | `partial` | 31 | 18 | 13 |
-| `code/qcommon/files.c` | `qcommon` | `partial` | 75 | 13 | 62 |
+| `code/qcommon/files.c` | `qcommon` | `ported` | 75 | 75 | 0 |
 | `code/qcommon/huffman.c` | `qcommon` | `ported` | 18 | 18 | 0 |
 | `code/qcommon/md4.c` | `qcommon` | `partial` | 8 | 6 | 2 |
 | `code/qcommon/msg.c` | `qcommon` | `partial` | 48 | 46 | 2 |
@@ -423,9 +423,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/client/cl_cgame.c` (partial): `CL_AddCgameCommand`, `CL_CGameRendering`, `CL_CM_LoadMap`, `CL_CgameError`, `CL_CgameSystemCalls`, `CL_GameCommand`, `CL_GetCurrentSnapshotNumber`, `CL_GetGameState`, `CL_GetGlconfig`, `CL_GetParseEntityState`, `CL_GetSnapshot`, `CL_InitCGame`, `CL_SetUserCmdValue`, `CL_ShutdownCGame`, `FloatAsInt`
 - `code/client/cl_cin.c` (partial): `CIN_CloseAllVideos`, `CIN_HandleForVideo`, `CIN_SetLooping`, `CIN_UploadCinematic`, `CL_PlayCinematic_f`, `ROQ_GenYUVTables`, `RllDecodeMonoToMono`, `RllDecodeMonoToStereo`, `RllDecodeStereoToMono`, `RllDecodeStereoToStereo`, `RllSetupTable`, `RoQFetchInterlaced`, `RoQInterrupt`, `RoQPrepMcomp`, `RoQReset`, `RoQShutdown`, `RoQ_init`, `SCR_DrawCinematic`, `SCR_RunCinematic`, `SCR_StopCinematic`, `blit2_32`, `blit4_32`, `blit8_32`, `blitVQQuad32fs`, `decodeCodeBook`, `initRoQ`, `move4_32`, `move8_32`, `readQuadInfo`, `recurseQuad`, `setupQuad`, `yuv_to_rgb`, `yuv_to_rgb24`
 - `code/client/cl_console.c` (partial): `CL_ConsolePrint`, `Con_Bottom`, `Con_CheckResize`, `Con_ClearNotify`, `Con_Clear_f`, `Con_Close`, `Con_DrawConsole`, `Con_DrawNotify`, `Con_DrawSolidConsole`, `Con_Dump_f`, `Con_Init`, `Con_Linefeed`, `Con_MessageMode3_f`, `Con_MessageMode4_f`, `Con_PageDown`, `Con_PageUp`, `Con_RunConsole`, `Con_Top`
-- `code/client/cl_input.c` (partial): `CL_CreateCmd`, `CL_InitInput`, `CL_JoystickEvent`, `CL_MouseEvent`, `IN_BackDown`, `IN_BackUp`, `IN_Button0Down`, `IN_Button0Up`, `IN_Button10Down`, `IN_Button10Up`, `IN_Button11Down`, `IN_Button11Up`, `IN_Button12Down`, `IN_Button12Up`, `IN_Button13Down`, `IN_Button13Up`, `IN_Button14Down`, `IN_Button14Up`, `IN_Button15Down`, `IN_Button15Up`, `IN_Button1Down`, `IN_Button1Up`, `IN_Button2Down`, `IN_Button2Up`, `IN_Button3Down`, `IN_Button3Up`, `IN_Button4Down`, `IN_Button4Up`, `IN_Button5Down`, `IN_Button5Up`, `IN_Button6Down`, `IN_Button6Up`, `IN_Button7Down`, `IN_Button7Up`, `IN_Button8Down`, `IN_Button8Up`, `IN_Button9Down`, `IN_Button9Up`, `IN_ButtonDown`, `IN_ButtonUp`, `IN_CenterView`, `IN_DownDown`, `IN_DownUp`, `IN_ForwardDown`, `IN_ForwardUp`, `IN_KeyDown`, `IN_KeyUp`, `IN_LeftDown`, `IN_LeftUp`, `IN_LookdownDown`, `IN_LookdownUp`, `IN_LookupDown`, `IN_LookupUp`, `IN_MLookDown`, `IN_MLookUp`, `IN_MoveleftDown`, `IN_MoveleftUp`, `IN_MoverightDown`, `IN_MoverightUp`, `IN_RightDown`, `IN_RightUp`, `IN_SpeedDown`, `IN_SpeedUp`, `IN_StrafeDown`, `IN_StrafeUp`, `IN_UpDown`, `IN_UpUp`
 - `code/client/cl_keys.c` (partial): `CL_CharEvent`, `CL_InitKeyCommands`, `Field_BigDraw`, `Field_Draw`, `Field_Paste`, `Field_VariableSizeDraw`
-- `code/client/cl_main.c` (partial): `CL_AddReliableCommand`, `CL_BeginDownload`, `CL_CDDialog`, `CL_CDKeyValidate`, `CL_ChangeReliableCommand`, `CL_ClearPing`, `CL_ClearState`, `CL_Clientinfo_f`, `CL_Configstrings_f`, `CL_Connect_f`, `CL_DemoCompleted`, `CL_Disconnect_f`, `CL_DownloadsComplete`, `CL_FlushMemory`, `CL_ForwardCommandToServer`, `CL_ForwardToServer_f`, `CL_GetFreePing`, `CL_GetPing`, `CL_GetPingInfo`, `CL_GetPingQueueCount`, `CL_GetServerStatus`, `CL_Init`, `CL_InitDownloads`, `CL_InitRef`, `CL_InitRenderer`, `CL_InitServerInfo`, `CL_MapLoading`, `CL_MotdPacket`, `CL_NextDemo`, `CL_NextDownload`, `CL_OpenedPK3List_f`, `CL_PlayDemo_f`, `CL_Rcon_f`, `CL_Reconnect_f`, `CL_Record_f`, `CL_RefMalloc`, `CL_RefPrintf`, `CL_ReferencedPK3List_f`, `CL_RequestMotd`, `CL_ResetPureClientAtServer`, `CL_ScaledMilliseconds`, `CL_SendPureChecksums`, `CL_ServerInfoPacket`, `CL_ServerStatusResponse`, `CL_ServerStatus_f`, `CL_ServersResponsePacket`, `CL_SetModel_f`, `CL_SetServerInfo`, `CL_SetServerInfoByAddress`, `CL_Setenv_f`, `CL_ShowIP_f`, `CL_Shutdown`, `CL_ShutdownAll`, `CL_ShutdownRef`, `CL_Snd_Restart_f`, `CL_StartDemoLoop`, `CL_StartHunkUsers`, `CL_StopRecord_f`, `CL_UpdateServerInfo`, `CL_Vid_Restart_f`, `CL_WalkDemoExt`, `packets`
 - `code/client/cl_net_chan.c` (ported): `CL_Netchan_Decode`, `CL_Netchan_Encode`, `CL_Netchan_Process`, `CL_Netchan_Transmit`, `CL_Netchan_TransmitNextFragment`
 - `code/client/cl_parse.c` (partial): `SHOWNET`
 - `code/client/cl_scrn.c` (partial): `SCR_AdjustFrom640`, `SCR_DebugGraph`, `SCR_DrawBigString`, `SCR_DrawBigStringColor`, `SCR_DrawChar`, `SCR_DrawDebugGraph`, `SCR_DrawDemoRecording`, `SCR_DrawNamedPic`, `SCR_DrawPic`, `SCR_DrawSmallChar`, `SCR_DrawSmallStringExt`, `SCR_DrawStringExt`, `SCR_FillRect`, `SCR_GetBigStringWidth`, `SCR_Init`, `SCR_Strlen`, `SCR_UpdateScreen`
@@ -489,7 +487,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/game/g_weapon.c` (partial): `G_StartKamikaze`, `KamikazeDamage`, `KamikazeRadiusDamage`, `KamikazeShockWave`, `Weapon_Nailgun_Fire`, `weapon_proxlauncher_fire`
 - `code/game/inv.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/match.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/q_math.c` (partial): `AddPointToBounds`, `AngleDelta`, `AngleMod`, `AngleSubtract`, `AnglesSubtract`, `AnglesToAxis`, `AxisClear`, `AxisCopy`, `BoxOnPlaneSide`, `BoxOnPlaneSide2`, `ByteToDir`, `ClampChar`, `ClampShort`, `ClearBounds`, `ColorBytes3`, `ColorBytes4`, `CrossProduct`, `Distance`, `DistanceSquared`, `MakeNormalVectors`, `MatrixMultiply`, `NormalizeColor`, `PlaneFromPoints`, `PlaneTypeForNormal`, `Q_log2`, `RadiusFromBounds`, `RotateAroundDirection`, `RotatePointAroundVector`, `SetPlaneSignbits`, `Vector4Scale`, `VectorCompare`, `VectorInverse`, `VectorLengthSquared`, `VectorNormalizeFast`, `VectorRotate`, `_DotProduct`, `_VectorAdd`, `_VectorCopy`, `_VectorMA`, `_VectorScale`, `_VectorSubtract`
 - `code/game/q_shared.c` (partial): `BigFloat`, `BigLong`, `BigLong64`, `BigShort`, `COM_Compress`, `COM_DefaultExtension`, `COM_MatchToken`, `COM_ParseError`, `COM_ParseInfos`, `COM_ParseWarning`, `COM_SkipPath`, `COM_StripExtension`, `Com_Clamp`, `Com_sprintf`, `FloatNoSwap`, `FloatSwap`, `Info_NextPair`, `Info_RemoveKey_Big`, `Info_SetValueForKey_Big`, `LittleFloat`, `LittleLong`, `LittleLong64`, `LittleShort`, `Long64NoSwap`, `Long64Swap`, `LongNoSwap`, `LongSwap`, `Parse1DMatrix`, `Parse2DMatrix`, `Parse3DMatrix`, `Q_CleanStr`, `Q_PrintStrlen`, `Q_isalpha`, `Q_islower`, `Q_isprint`, `Q_isupper`, `Q_strcat`, `Q_stricmp`, `Q_stricmpn`, `Q_strlwr`, `Q_strncmp`, `Q_strncpyz`, `Q_strrchr`, `Q_strupr`, `ShortNoSwap`, `ShortSwap`, `SkipBracedSection`, `SkipRestOfLine`, `SkipWhitespace`, `Swap_Init`
 - `code/game/q_shared.h` (partial): `BigFloat`, `BigLong`, `BigShort`, `Distance`, `DistanceSquared`, `LittleFloat`, `LittleLong`, `LittleShort`, `Q_fabs`, `Q_rsqrt`, `VectorCompare`, `VectorInverse`, `VectorLength`, `VectorLengthSquared`, `VectorNormalizeFast`, `__fctiw`, `__lhbrx`, `__lwbrx`
 - `code/game/surfaceflags.h` (not_started): *(Symbolinventar ergänzen)*
@@ -522,7 +519,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/qcommon/cm_trace.c` (partial): `CM_DistanceFromLineSquared`, `CM_ProjectPointOntoVector`, `CM_TestBoundingBoxInCapsule`, `CM_TestCapsuleInCapsule`, `CM_TraceBoundingBoxThroughCapsule`, `CM_TraceThroughSphere`, `CM_TraceThroughVerticalCylinder`, `CM_VectorDistanceSquared`, `SquareRootFloat`, `collision`
 - `code/qcommon/cmd.c` (partial): *(Symbolinventar ergänzen)*
 - `code/qcommon/cvar.c` (partial): `Cvar_CommandCompletion`, `Cvar_FindVar`, `Cvar_InfoString`, `Cvar_InfoStringBuffer`, `Cvar_InfoString_Big`, `Cvar_SetLatched`, `Cvar_SetValue`, `Cvar_ValidateString`, `Cvar_VariableIntegerValue`, `Cvar_VariableString`, `Cvar_VariableStringBuffer`, `Cvar_VariableValue`, `generateHashValue`
-- `code/qcommon/files.c` (partial): `FS_AddFileToList`, `FS_BuildOSPath`, `FS_ConditionalRestart`, `FS_ConvertPath`, `FS_CopyFile`, `FS_CreatePath`, `FS_Dir_f`, `FS_FOpenFileAppend`, `FS_FOpenFileByMode`, `FS_FOpenFileWrite`, `FS_FTell`, `FS_FileForHandle`, `FS_FileIsInPAK`, `FS_FilenameCompare`, `FS_Flush`, `FS_ForceFlush`, `FS_FreeFile`, `FS_FreeFileList`, `FS_GamePureChecksum`, `FS_GetFileList`, `FS_GetModList`, `FS_HandleForFile`, `FS_HashFileName`, `FS_InitFilesystem`, `FS_Initialized`, `FS_ListFilteredFiles`, `FS_LoadStack`, `FS_LoadedPakChecksums`, `FS_LoadedPakNames`, `FS_LoadedPakPureChecksums`, `FS_NewDir_f`, `FS_PathCmp`, `FS_Path_f`, `FS_Printf`, `FS_Read`, `FS_Read2`, `FS_ReadFile`, `FS_Remove`, `FS_Rename`, `FS_ReplaceSeparators`, `FS_Restart`, `FS_ReturnPath`, `FS_SV_FOpenFileRead`, `FS_SV_FOpenFileWrite`, `FS_SV_FileExists`, `FS_SV_Rename`, `FS_Seek`, `FS_SetRestrictions`, `FS_ShiftedStrStr`, `FS_Shutdown`, `FS_SortFileList`, `FS_Startup`, `FS_TouchFile_f`, `FS_Write`, `FS_WriteFile`, `Sys_ConcatenateFileLists`, `Sys_CountFileList`, `cvars`, `fclose`, `paksort`, `readable`, `write`
 - `code/qcommon/md4.c` (partial): `Decode`, `Encode`
 - `code/qcommon/msg.c` (partial): `MSG_NUinitHuffman`, `MSG_ReportChangeVectors_f`
 - `code/qcommon/net_chan.c` (partial): `NET_AdrToString`, `NET_CompareAdr`, `NET_CompareBaseAdr`, `NET_GetLoopPacket`, `NET_IsLocalAddress`, `NET_SendLoopPacket`, `NET_StringToAdr`, `Netchan_ScramblePacket`, `Netchan_UnScramblePacket`, `datagram`

@@ -13974,70 +13974,722 @@
       ],
       "symbol_mapping": [
         {
-          "original": "CL_FinishMove cgame value and CL_MouseMove cgame sensitivity inputs",
+          "original": "CL_AdjustAngles",
           "target_files": [
-            "src/mq3/client/cgame_usercmd.ml",
-            "src/mq3/client/qvm_preview_app.ml",
-            "src/mq3/engine/local_qvm_match.ml"
+            "src/mq3/client/cl_input.ml"
           ],
-          "status": "tested_subset",
-          "scope": "The productive original-QVM preview consumes the weapon and sensitivity written by CG_SETUSERCMDVALUE instead of fixed host values. Five original anchors and 12 state contracts pass; the complete command-building input core is tracked by the following mapping."
+          "target_symbol": "mq3.client.cl_input.CL_AdjustAngles",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
         },
         {
-          "original": "CL_KeyState / CL_AdjustAngles / CL_KeyMove / CL_MouseMove / CL_JoystickMove / CL_CmdButtons / CL_FinishMove",
+          "original": "CL_CmdButtons",
           "target_files": [
-            "src/mq3/client/input_command.ml",
-            "src/mq3/client/input_command_events.ml",
-            "native/playable_win32.c",
-            "src/mq3/platform/playable_window.ml",
-            "src/mq3/client/qvm_preview_app.ml"
+            "src/mq3/client/cl_input.ml"
           ],
-          "status": "tested_subset",
-          "scope": "The productive retail-QVM path uses Baseq3 dual-source button timing, fractional key states, walk/run movement, keyboard angles, filtered and accelerated mouse input, cgame sensitivity, joystick axes, transient button bits, pitch-delta clamp and final command fields. The Win32 UI thread queues timestamped key, mouse-button and mouse-motion transitions in a thread-safe 256-entry overwrite-oldest ring and the client applies them at the matching simulation tick. Five unchanged-C records plus 38 MiniLang contracts and native lifecycle/FIFO/overflow tests pass; gameplay bindings now come from the shared ui.qvm-writable key table; console catcher editing remains separate host work."
+          "target_symbol": "mq3.client.cl_input.CL_CmdButtons",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
         },
         {
-          "original": "CL_CreateNewCommands / CL_ReadyToSendPacket / CL_WritePacket / CL_SendCmd",
+          "original": "CL_CreateCmd",
           "target_files": [
-            "src/mq3/client/command_ring.ml",
-            "src/mq3/client/send_cmd.ml",
-            "src/mq3/engine/local_qvm_match.ml",
-            "src/mq3/client/frame.ml",
-            "src/mq3/client/network_match_loop.ml"
+            "src/mq3/client/cl_input.ml"
           ],
-          "status": "tested_subset",
-          "scope": "CL_CreateNewCommands now shares its signed frame delta, 200 ms hitch clamp, increment and masked 64-slot storage with the productive packet sender and retail-cgame trap host. Nine exact unchanged-C command-ring records plus 11 ring contracts pass. Packet pacing, reliable replay, cl_packetdup/cl_maxpackets clamps, move/noDelta selection, 32-usercmd cap, checksum key, keyed deltas, outPacket bookkeeping and live netchan transmission retain eight anchors plus 39 contracts."
+          "target_symbol": "mq3.client.cl_input.CL_CreateCmd",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "CL_CreateNewCommands",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.CL_CreateNewCommands",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "CL_FinishMove",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.CL_FinishMove",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "CL_InitInput",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.CL_InitInput",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "CL_JoystickEvent",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.CL_JoystickEvent",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "CL_JoystickMove",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.CL_JoystickMove",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "CL_KeyMove",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.CL_KeyMove",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "CL_KeyState",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.CL_KeyState",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "CL_MouseEvent",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.CL_MouseEvent",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "CL_MouseMove",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.CL_MouseMove",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "CL_ReadyToSendPacket",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.CL_ReadyToSendPacket",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "CL_SendCmd",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.CL_SendCmd",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "CL_WritePacket",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.CL_WritePacket",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_BackDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_BackDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_BackUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_BackUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button0Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button0Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button0Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button0Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button10Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button10Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button10Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button10Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button11Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button11Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button11Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button11Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button12Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button12Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button12Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button12Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button13Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button13Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button13Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button13Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button14Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button14Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button14Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button14Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button15Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button15Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button15Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button15Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button1Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button1Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button1Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button1Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button2Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button2Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button2Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button2Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button3Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button3Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button3Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button3Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button4Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button4Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button4Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button4Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button5Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button5Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button5Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button5Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button6Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button6Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button6Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button6Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button7Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button7Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button7Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button7Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button8Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button8Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button8Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button8Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button9Down",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button9Down",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_Button9Up",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_Button9Up",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_ButtonDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_ButtonDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_ButtonUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_ButtonUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_CenterView",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_CenterView",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_DownDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_DownDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_DownUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_DownUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_ForwardDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_ForwardDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_ForwardUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_ForwardUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_KeyDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_KeyDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_KeyUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_KeyUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_LeftDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_LeftDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_LeftUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_LeftUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_LookdownDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_LookdownDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_LookdownUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_LookdownUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_LookupDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_LookupDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_LookupUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_LookupUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_MLookDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_MLookDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_MLookUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_MLookUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_MoveleftDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_MoveleftDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_MoveleftUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_MoveleftUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_MoverightDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_MoverightDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_MoverightUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_MoverightUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_RightDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_RightDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_RightUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_RightUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_SpeedDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_SpeedDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_SpeedUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_SpeedUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_StrafeDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_StrafeDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_StrafeUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_StrafeUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_UpDown",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_UpDown",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
+        },
+        {
+          "original": "IN_UpUp",
+          "target_files": [
+            "src/mq3/client/cl_input.ml"
+          ],
+          "target_symbol": "mq3.client.cl_input.IN_UpUp",
+          "status": "tested_exact",
+          "scope": "Complete client input runtime: key/button timing, mouse/joystick routing, usercmd construction and reliable/delta/netchan send path; OS input and UDP remain typed hosts."
         }
       ],
       "target": [
-        "src/mq3/client/cgame_usercmd.ml",
-        "src/mq3/client/input_command.ml",
-        "src/mq3/client/qvm_preview_app.ml",
-        "src/mq3/engine/local_qvm_match.ml",
-        "src/mq3/client/send_cmd.ml",
-        "src/mq3/client/frame.ml",
-        "src/mq3/client/network_match_loop.ml",
-        "src/mq3/client/input_command_events.ml",
-        "native/playable_win32.c",
-        "src/mq3/platform/playable_window.ml",
-        "src/mq3/client/command_ring.ml"
+        "src/mq3/client/cl_input.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_cgame_usercmd.py",
-        "tests/cgame_usercmd_contracts.ml",
-        "scripts/test_input_command.py",
-        "tests/input_command_oracle.ml",
-        "tests/input_command_contracts.ml",
+        "scripts/test_cl_input_complete.py",
+        "tests/reference/cl_input_complete_oracle.c",
+        "tests/cl_input_complete_oracle.ml",
+        "tests/cl_input_complete_contracts.ml",
+        "tests/cl_input_retail_probe.ml",
+        "scripts/test_input.py",
         "scripts/test_client_send_cmd.py",
-        "tests/client_send_cmd_contracts.ml",
-        "scripts/test_network_match_loop.py",
-        "tests/network_match_loop_contracts.ml",
-        "tests/playable_window_input_events_native.c",
-        "scripts/playable_window_build_test.py",
-        "scripts/test_client_command_ring.py",
-        "tests/reference/client_command_ring_oracle.c",
-        "tests/client_command_ring_oracle.ml",
-        "tests/client_command_ring_contracts.ml"
+        "scripts/test_client_netchan.py",
+        "scripts/test_network_match_loop.py"
       ]
     },
     {
@@ -14221,93 +14873,724 @@
       ],
       "symbol_mapping": [
         {
-          "original": "CL_WriteDemoMessage, CL_DemoFilename and CL_ReadDemoMessage",
+          "original": "CL_AddReliableCommand",
           "target_files": [
-            "src/mq3/client/demo.ml"
+            "src/mq3/client/client_main.ml"
           ],
+          "target_symbol": "mq3.client.client_main.CL_AddReliableCommand",
           "status": "tested_exact",
-          "scope": "Protocol-68 demo record framing, filename formatting and playback sequence/time/EOF/truncation transitions. Twelve exact records execute the three unchanged C function bodies; 27 MiniLang contracts cover framing, limits, state, filenames and the initial gamestate."
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
         },
         {
-          "original": "CL_CheckForResend, CL_DisconnectPacket and CL_ConnectionlessPacket",
+          "original": "CL_BeginDownload",
           "target_files": [
-            "src/mq3/client/connectionless.ml"
+            "src/mq3/client/client_main.ml"
           ],
+          "target_symbol": "mq3.client.client_main.CL_BeginDownload",
           "status": "tested_exact",
-          "scope": "Client resend timing/state/demo gates, LAN/WAN authorization and exact quoted connect userinfo; challenge/connect response state and address validation, netchan setup, info/status/print/echo dispatch and spoof-resistant disconnect. Seventeen unchanged-C records and 27 MiniLang contracts pass."
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_CDDialog",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_CDDialog",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_CDKeyValidate",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_CDKeyValidate",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ChangeReliableCommand",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ChangeReliableCommand",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_CheckForResend",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_CheckForResend",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_CheckTimeout",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_CheckTimeout",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_CheckUserinfo",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_CheckUserinfo",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ClearPing",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ClearPing",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ClearState",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ClearState",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_Clientinfo_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_Clientinfo_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_Configstrings_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_Configstrings_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_Connect_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_Connect_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ConnectionlessPacket",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ConnectionlessPacket",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_DemoCompleted",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_DemoCompleted",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_DemoFilename",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_DemoFilename",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_Disconnect",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_Disconnect",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_DisconnectPacket",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_DisconnectPacket",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_Disconnect_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_Disconnect_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_DownloadsComplete",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_DownloadsComplete",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_FlushMemory",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_FlushMemory",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ForwardCommandToServer",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ForwardCommandToServer",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ForwardToServer_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ForwardToServer_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_Frame",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_Frame",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_GetFreePing",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_GetFreePing",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_GetPing",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_GetPing",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_GetPingInfo",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_GetPingInfo",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_GetPingQueueCount",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_GetPingQueueCount",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_GetServerStatus",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_GetServerStatus",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_GlobalServers_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_GlobalServers_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_Init",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_Init",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_InitDownloads",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_InitDownloads",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_InitRef",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_InitRef",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_InitRenderer",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_InitRenderer",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_InitServerInfo",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_InitServerInfo",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_LocalServers_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_LocalServers_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_MapLoading",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_MapLoading",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_MotdPacket",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_MotdPacket",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_NextDemo",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_NextDemo",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_NextDownload",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_NextDownload",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_OpenedPK3List_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_OpenedPK3List_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
         },
         {
           "original": "CL_PacketEvent",
           "target_files": [
-            "src/mq3/client/packet_event.ml"
+            "src/mq3/client/client_main.ml"
           ],
+          "target_symbol": "mq3.client.client_main.CL_PacketEvent",
           "status": "tested_exact",
-          "scope": "OOB routing, connection/address/runt rejection, client Netchan processing, server message sequence, parser dispatch and post-parse demo recording order. Nine unchanged-C records and 23 MiniLang contracts pass. The production network_ingress adapter adds 21 real-localhost contracts through CL_ParseServerMessage."
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
         },
         {
-          "original": "CL_CheckTimeout, CL_CheckUserinfo and CL_Frame",
+          "original": "CL_Ping_f",
           "target_files": [
-            "src/mq3/client/frame.ml"
+            "src/mq3/client/client_main.ml"
           ],
+          "target_symbol": "mq3.client.client_main.CL_Ping_f",
           "status": "tested_exact",
-          "scope": "Running/menu/CD gates, AVI fixed time, realtime, userinfo forwarding, timeout grace and SendCmd/resend/Cgame/screen/sound/cinematic/console ordering. Thirteen unchanged-C records and 28 MiniLang contracts pass."
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
         },
         {
-          "original": "CL_LocalServers_f / CL_GlobalServers_f / CL_Ping_f / CL_UpdateVisiblePings_f / CL_ServerStatus",
+          "original": "CL_PlayDemo_f",
           "target_files": [
-            "src/mq3/client/ui_lan_queries.ml",
-            "src/mq3/client/ui_lan_udp.ml"
+            "src/mq3/client/client_main.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Transport-neutral outbound query scheduling reproduces two four-port IPv4 discovery passes, master getservers keywords/demo filtering, manual and visible getinfo pings with cl_maxPing timeout, and 750-ms getstatus resend. Five source anchors and 23 contracts pass; productive Windows DNS/UDP ownership, broadcast, query socket selection and response pumping are live in 18 contracts."
+          "target_symbol": "mq3.client.client_main.CL_PlayDemo_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
         },
         {
-          "original": "CL_Frame / CL_PacketEvent live connected loop",
+          "original": "CL_Rcon_f",
           "target_files": [
-            "src/mq3/client/frame.ml",
-            "src/mq3/client/network_match_loop.ml",
-            "src/mq3/client/network_ingress.ml",
-            "src/mq3/client/network_handshake.ml"
+            "src/mq3/client/client_main.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Two real localhost clients complete getchallenge/challengeResponse and compressed connect/connectResponse before activation, validating source address, challenge, QPort and assigned server slot while preserving the initialized netchan. Eleven Baseq3 anchors plus 67 live contracts cover a 384-frame continuation with 768 exactly-once usercmds, client/snapshot loss recovery, duplicate rejection, retained deltas, reliable-ring wrap and CL_Frame/SV_Frame timeout synchronization; public-internet acceptance remains open."
+          "target_symbol": "mq3.client.client_main.CL_Rcon_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ReadDemoMessage",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ReadDemoMessage",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_Reconnect_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_Reconnect_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_Record_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_Record_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_RefMalloc",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_RefMalloc",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_RefPrintf",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_RefPrintf",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ReferencedPK3List_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ReferencedPK3List_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_RequestMotd",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_RequestMotd",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ResetPureClientAtServer",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ResetPureClientAtServer",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ScaledMilliseconds",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ScaledMilliseconds",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_SendPureChecksums",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_SendPureChecksums",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ServerInfoPacket",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ServerInfoPacket",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ServerStatus",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ServerStatus",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ServerStatusResponse",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ServerStatusResponse",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ServerStatus_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ServerStatus_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ServersResponsePacket",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ServersResponsePacket",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_SetModel_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_SetModel_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_SetServerInfo",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_SetServerInfo",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_SetServerInfoByAddress",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_SetServerInfoByAddress",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_Setenv_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_Setenv_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ShowIP_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ShowIP_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_Shutdown",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_Shutdown",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ShutdownAll",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ShutdownAll",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_ShutdownRef",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_ShutdownRef",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_Snd_Restart_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_Snd_Restart_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_StartDemoLoop",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_StartDemoLoop",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_StartHunkUsers",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_StartHunkUsers",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_StopRecord_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_StopRecord_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_UpdateServerInfo",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_UpdateServerInfo",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_UpdateVisiblePings_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_UpdateVisiblePings_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_Vid_Restart_f",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_Vid_Restart_f",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_WalkDemoExt",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_WalkDemoExt",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "CL_WriteDemoMessage",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.CL_WriteDemoMessage",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+        },
+        {
+          "original": "packets",
+          "target_files": [
+            "src/mq3/client/client_main.ml"
+          ],
+          "target_symbol": "mq3.client.client_main.packets",
+          "status": "tested_exact",
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
         }
       ],
       "target": [
-        "src/mq3/client/demo.ml",
-        "src/mq3/client/connectionless.ml",
-        "src/mq3/client/packet_event.ml",
-        "src/mq3/client/network_ingress.ml",
-        "src/mq3/client/frame.ml",
-        "src/mq3/client/ui_lan_queries.ml",
-        "src/mq3/client/ui_lan_udp.ml",
-        "src/mq3/client/network_match_loop.ml",
-        "src/mq3/client/network_handshake.ml"
+        "src/mq3/client/client_main.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_demo.py",
-        "scripts/test_client_connectionless.py",
-        "tests/reference/client_connectionless_oracle.c",
-        "tests/client_connectionless_oracle.ml",
-        "tests/client_connectionless_contracts.ml",
-        "scripts/test_packet_event.py",
-        "tests/reference/packet_event_oracle.c",
-        "tests/packet_event_oracle.ml",
-        "tests/packet_event_contracts.ml",
-        "scripts/test_client_network_ingress.py",
-        "tests/client_network_ingress_contracts.ml",
+        "scripts/test_client_main.py",
+        "tests/reference/client_main_oracle.c",
+        "tests/client_main_contracts.ml",
+        "tests/client_main_retail_probe.ml",
         "scripts/test_client_main_frame.py",
-        "tests/reference/client_frame_oracle.c",
-        "tests/client_frame_contracts.ml",
-        "scripts/test_ui_lan_queries.py",
-        "tests/ui_lan_queries_contracts.ml",
-        "scripts/test_ui_lan_udp.py",
-        "tests/ui_lan_udp_contracts.ml",
-        "scripts/test_network_match_loop.py",
-        "tests/network_match_loop_contracts.ml",
-        "scripts/test_network_match_multi.py",
-        "tests/network_match_multi_contracts.ml"
+        "scripts/test_client_connectionless.py",
+        "scripts/test_packet_event.py",
+        "scripts/test_client_network_ingress.py",
+        "scripts/test_protocol_runtime.py",
+        "scripts/test_demo.py",
+        "scripts/test_network_match_loop.py"
       ]
     },
     {
@@ -26756,172 +28039,650 @@
       ],
       "symbol_mapping": [
         {
-          "original": "Q_rand",
+          "original": "AddPointToBounds",
           "target_files": [
             "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
           ],
-          "status": "tested_subset"
+          "target_symbol": "mq3.shared.math.AddPointToBounds",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
         },
         {
-          "original": "Q_random",
+          "original": "AngleDelta",
           "target_files": [
             "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
           ],
-          "status": "tested_subset"
+          "target_symbol": "mq3.shared.math.AngleDelta",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
         },
         {
-          "original": "Q_crandom",
+          "original": "AngleMod",
           "target_files": [
             "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
           ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "Q_rsqrt",
-          "target_files": [
-            "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "Q_fabs",
-          "target_files": [
-            "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "LerpAngle",
-          "target_files": [
-            "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "VectorLength",
-          "target_files": [
-            "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "VectorNormalize",
-          "target_files": [
-            "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "VectorNormalize2",
-          "target_files": [
-            "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "AngleVectors",
-          "target_files": [
-            "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "vectoangles",
-          "target_files": [
-            "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "AngleNormalize360",
-          "target_files": [
-            "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
-          ],
-          "status": "tested_subset"
+          "target_symbol": "mq3.shared.math.AngleMod",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
         },
         {
           "original": "AngleNormalize180",
           "target_files": [
             "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
           ],
-          "status": "tested_subset"
+          "target_symbol": "mq3.shared.math.AngleNormalize180",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "AngleNormalize360",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.AngleNormalize360",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "AngleSubtract",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.AngleSubtract",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "AngleVectors",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.AngleVectors",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "AnglesSubtract",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.AnglesSubtract",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "AnglesToAxis",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.AnglesToAxis",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "AxisClear",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.AxisClear",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "AxisCopy",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.AxisCopy",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "BoxOnPlaneSide",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.BoxOnPlaneSide",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "BoxOnPlaneSide2",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.BoxOnPlaneSide2",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "ByteToDir",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.ByteToDir",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "ClampChar",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.ClampChar",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "ClampShort",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.ClampShort",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "ClearBounds",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.ClearBounds",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "ColorBytes3",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.ColorBytes3",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "ColorBytes4",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.ColorBytes4",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "CrossProduct",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.CrossProduct",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
         },
         {
           "original": "DirToByte",
           "target_files": [
             "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
           ],
-          "status": "tested_subset"
+          "target_symbol": "mq3.shared.math.DirToByte",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
         },
         {
-          "original": "ProjectPointOnPlane",
+          "original": "Distance",
           "target_files": [
             "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
           ],
-          "status": "tested_subset"
+          "target_symbol": "mq3.shared.math.Distance",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "DistanceSquared",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.DistanceSquared",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "LerpAngle",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.LerpAngle",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "MakeNormalVectors",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.MakeNormalVectors",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "MatrixMultiply",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.MatrixMultiply",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "NormalizeColor",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.NormalizeColor",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
         },
         {
           "original": "PerpendicularVector",
           "target_files": [
             "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
           ],
-          "status": "tested_subset"
+          "target_symbol": "mq3.shared.math.PerpendicularVector",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
         },
         {
-          "original": "bytedirs",
+          "original": "PlaneFromPoints",
           "target_files": [
             "src/mq3/shared/math.ml",
-            "src/mq3/shared/directions.ml",
-            "src/mq3/shared/bytedirs.ml"
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
           ],
-          "status": "tested_subset"
+          "target_symbol": "mq3.shared.math.PlaneFromPoints",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "PlaneTypeForNormal",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.PlaneTypeForNormal",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "ProjectPointOnPlane",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.ProjectPointOnPlane",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "Q_crandom",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.Q_crandom",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "Q_fabs",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.Q_fabs",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "Q_log2",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.Q_log2",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "Q_rand",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.Q_rand",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "Q_random",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.Q_random",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "Q_rsqrt",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.Q_rsqrt",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "RadiusFromBounds",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.RadiusFromBounds",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "RotateAroundDirection",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.RotateAroundDirection",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "RotatePointAroundVector",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.RotatePointAroundVector",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "SetPlaneSignbits",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.SetPlaneSignbits",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "Vector4Scale",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.Vector4Scale",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "VectorCompare",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.VectorCompare",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "VectorInverse",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.VectorInverse",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "VectorLength",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.VectorLength",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "VectorLengthSquared",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.VectorLengthSquared",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "VectorNormalize",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.VectorNormalize",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "VectorNormalize2",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.VectorNormalize2",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "VectorNormalizeFast",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.VectorNormalizeFast",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "VectorRotate",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.VectorRotate",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "_DotProduct",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math._DotProduct",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "_VectorAdd",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math._VectorAdd",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "_VectorCopy",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math._VectorCopy",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "_VectorMA",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math._VectorMA",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "_VectorScale",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math._VectorScale",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "_VectorSubtract",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math._VectorSubtract",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
+        },
+        {
+          "original": "vectoangles",
+          "target_files": [
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/bytedirs.ml",
+            "src/mq3/shared/directions.ml"
+          ],
+          "target_symbol": "mq3.shared.math.vectoangles",
+          "status": "tested_exact",
+          "scope": "Complete stateless Quake math runtime: vectors, angles, planes, bounds, packed colors, byte directions, rotations, normalization and deterministic random helpers."
         }
       ],
       "target": [
         "src/mq3/shared/math.ml",
-        "src/mq3/shared/directions.ml",
-        "src/mq3/shared/bytedirs.ml"
+        "src/mq3/shared/bytedirs.ml",
+        "src/mq3/shared/directions.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_math.py",
-        "scripts/test_patches.py",
-        "scripts/test_movement.py",
-        "scripts/test_pmove.py",
+        "tests/reference/math_oracle.c",
+        "tests/math_tests.ml",
+        "scripts/test_q_math_complete.py",
+        "tests/reference/q_math_complete_oracle.c",
+        "tests/q_math_complete_oracle.ml",
+        "tests/q_math_complete_contracts.ml",
         "scripts/test_shared_game.py",
-        "scripts/test_missiles.py"
+        "scripts/test_missiles.py",
+        "scripts/test_patches.py"
       ]
     },
     {
@@ -36119,43 +37880,694 @@
       ],
       "symbol_mapping": [
         {
-          "original": "FS_LoadZipFile / FS_AddGameDirectory / FS_FOpenFileRead",
+          "original": "FILE",
           "target_files": [
-            "src/mq3/qcommon/filesystem.ml"
+            "src/mq3/qcommon/files_runtime.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Windows game directories are enumerated automatically: top-level PK3 files are sorted and mounted with Baseq3 priority while loose files are indexed recursively. Non-ASCII host filenames still require a UTF-16 conversion bridge."
+          "target_symbol": "mq3.qcommon.files_runtime.FILE",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
         },
         {
-          "original": "FS_ListFiles / FS_PakIsPure / FS_PureServerSetLoadedPaks",
+          "original": "FS_AddFileToList",
           "target_files": [
-            "src/mq3/qcommon/filesystem.ml"
+            "src/mq3/qcommon/files_runtime.ml"
           ],
-          "status": "tested_subset"
+          "target_symbol": "mq3.qcommon.files_runtime.FS_AddFileToList",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
         },
         {
-          "original": "FS_ReferencedPakChecksums / FS_ReferencedPakPureChecksums / FS_ReferencedPakNames / FS_ClearPakReferences / FS_PureServerSetReferencedPaks",
+          "original": "FS_AddGameDirectory",
           "target_files": [
-            "src/mq3/qcommon/filesystem.ml"
+            "src/mq3/qcommon/files_runtime.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Pak reads track Baseq3 general, UI, CGame and QAGame reference flags. Loaded and referenced server lists remain separate; pure reference tokens preserve the original CGame/UI/@/general order and feed/count proof."
+          "target_symbol": "mq3.qcommon.files_runtime.FS_AddGameDirectory",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
         },
         {
-          "original": "FS_idPak / FS_ComparePaks",
+          "original": "FS_BuildOSPath",
           "target_files": [
-            "src/mq3/qcommon/filesystem.ml"
+            "src/mq3/qcommon/files_runtime.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Missing server paks are compared by checksum, official id paks are excluded from autodownload, local name collisions receive the original eight-digit checksum suffix, and both download and diagnostic strings honor the destination capacity. Twenty-five VFS/Pure contracts pass overall."
+          "target_symbol": "mq3.qcommon.files_runtime.FS_BuildOSPath",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_ClearPakReferences",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_ClearPakReferences",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_ConditionalRestart",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_ConditionalRestart",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_ConvertPath",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_ConvertPath",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_CopyFile",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_CopyFile",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_CreatePath",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_CreatePath",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_Dir_f",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_Dir_f",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_FOpenFileAppend",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_FOpenFileAppend",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_FOpenFileByMode",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_FOpenFileByMode",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_FOpenFileRead",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_FOpenFileRead",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_FOpenFileWrite",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_FOpenFileWrite",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_FTell",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_FTell",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_FileForHandle",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_FileForHandle",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_FileIsInPAK",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_FileIsInPAK",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_FilenameCompare",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_FilenameCompare",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_Flush",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_Flush",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_ForceFlush",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_ForceFlush",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_FreeFile",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_FreeFile",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_FreeFileList",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_FreeFileList",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_GamePureChecksum",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_GamePureChecksum",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_GetFileList",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_GetFileList",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_GetModList",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_GetModList",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_HandleForFile",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_HandleForFile",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_HashFileName",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_HashFileName",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_InitFilesystem",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_InitFilesystem",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_Initialized",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_Initialized",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_ListFiles",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_ListFiles",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_ListFilteredFiles",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_ListFilteredFiles",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_LoadStack",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_LoadStack",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_LoadZipFile",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_LoadZipFile",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_LoadedPakChecksums",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_LoadedPakChecksums",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_LoadedPakNames",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_LoadedPakNames",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_LoadedPakPureChecksums",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_LoadedPakPureChecksums",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_NewDir_f",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_NewDir_f",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_PakIsPure",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_PakIsPure",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_PathCmp",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_PathCmp",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_Path_f",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_Path_f",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_Printf",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_Printf",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_PureServerSetLoadedPaks",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_PureServerSetLoadedPaks",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_PureServerSetReferencedPaks",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_PureServerSetReferencedPaks",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_Read",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_Read",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_Read2",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_Read2",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_ReadFile",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_ReadFile",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_ReferencedPakChecksums",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_ReferencedPakChecksums",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_ReferencedPakNames",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_ReferencedPakNames",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_ReferencedPakPureChecksums",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_ReferencedPakPureChecksums",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_Remove",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_Remove",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_Rename",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_Rename",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_ReplaceSeparators",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_ReplaceSeparators",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_Restart",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_Restart",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_ReturnPath",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_ReturnPath",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_SV_FOpenFileRead",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_SV_FOpenFileRead",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_SV_FOpenFileWrite",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_SV_FOpenFileWrite",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_SV_FileExists",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_SV_FileExists",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_SV_Rename",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_SV_Rename",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_Seek",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_Seek",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_SetRestrictions",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_SetRestrictions",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_ShiftedStrStr",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_ShiftedStrStr",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_Shutdown",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_Shutdown",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_SortFileList",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_SortFileList",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_Startup",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_Startup",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_TouchFile_f",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_TouchFile_f",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_Write",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_Write",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_WriteFile",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_WriteFile",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "FS_idPak",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.FS_idPak",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "Sys_ConcatenateFileLists",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.Sys_ConcatenateFileLists",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "Sys_CountFileList",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.Sys_CountFileList",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "cvars",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.cvars",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "fclose",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.fclose",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "paksort",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.paksort",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "readable",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.readable",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+        },
+        {
+          "original": "write",
+          "target_files": [
+            "src/mq3/qcommon/files_runtime.ml"
+          ],
+          "target_symbol": "mq3.qcommon.files_runtime.write",
+          "status": "tested_exact",
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
         }
       ],
       "target": [
-        "src/mq3/qcommon/filesystem.ml"
+        "src/mq3/qcommon/files_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_pure_filesystem.py"
+        "scripts/test_files_runtime.py",
+        "tests/reference/files_runtime_oracle.c",
+        "tests/files_runtime_oracle.ml",
+        "tests/files_runtime_contracts.ml",
+        "tests/files_runtime_retail_probe.ml",
+        "scripts/test_pure_filesystem.py",
+        "scripts/test_archives.py",
+        "scripts/test_retail_qvm_match.py"
       ]
     },
     {
