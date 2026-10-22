@@ -21,13 +21,13 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
 | `qcommon` | 27 | 4 | 14 | 9 | 0 |
-| `renderer` | 27 | 19 | 4 | 4 | 0 |
+| `renderer` | 27 | 23 | 0 | 4 | 0 |
 | `server` | 11 | 2 | 9 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **164** | **54** | **117** | **0** |
+| **Gesamt** | **335** | **168** | **50** | **117** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -296,11 +296,11 @@ Teil dieser Tabelle.
 | `code/renderer/tr_bsp.c` | `renderer` | `ported` | 30 | 3 | 27 |
 | `code/renderer/tr_cmds.c` | `renderer` | `ported` | 11 | 3 | 8 |
 | `code/renderer/tr_curve.c` | `renderer` | `ported` | 11 | 5 | 6 |
-| `code/renderer/tr_flares.c` | `renderer` | `partial` | 6 | 5 | 1 |
-| `code/renderer/tr_font.c` | `renderer` | `partial` | 9 | 1 | 8 |
+| `code/renderer/tr_flares.c` | `renderer` | `ported` | 6 | 5 | 1 |
+| `code/renderer/tr_font.c` | `renderer` | `ported` | 9 | 1 | 8 |
 | `code/renderer/tr_image.c` | `renderer` | `ported` | 38 | 8 | 30 |
 | `code/renderer/tr_init.c` | `renderer` | `ported` | 21 | 21 | 0 |
-| `code/renderer/tr_light.c` | `renderer` | `partial` | 6 | 4 | 2 |
+| `code/renderer/tr_light.c` | `renderer` | `ported` | 6 | 4 | 2 |
 | `code/renderer/tr_local.h` | `renderer` | `not_started` | 0 | 0 | 0 |
 | `code/renderer/tr_main.c` | `renderer` | `ported` | 32 | 15 | 17 |
 | `code/renderer/tr_marks.c` | `renderer` | `ported` | 4 | 4 | 0 |
@@ -308,7 +308,7 @@ Teil dieser Tabelle.
 | `code/renderer/tr_model.c` | `renderer` | `ported` | 11 | 0 | 11 |
 | `code/renderer/tr_noise.c` | `renderer` | `ported` | 3 | 3 | 0 |
 | `code/renderer/tr_public.h` | `renderer` | `not_started` | 0 | 0 | 0 |
-| `code/renderer/tr_scene.c` | `renderer` | `partial` | 9 | 4 | 5 |
+| `code/renderer/tr_scene.c` | `renderer` | `ported` | 9 | 4 | 5 |
 | `code/renderer/tr_shade.c` | `renderer` | `ported` | 17 | 3 | 14 |
 | `code/renderer/tr_shade_calc.c` | `renderer` | `ported` | 32 | 9 | 23 |
 | `code/renderer/tr_shader.c` | `renderer` | `ported` | 34 | 34 | 0 |
@@ -525,15 +525,15 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/renderer/tr_bsp.c` (ported): `HSVtoRGB`, `ParseFace`, `ParseMesh`, `ParseTriSurf`, `RE_LoadWorldMap`, `RE_SetWorldVisData`, `R_FixSharedVertexLodError`, `R_FixSharedVertexLodError_r`, `R_GetEntityToken`, `R_LoadEntities`, `R_LoadFogs`, `R_LoadLightGrid`, `R_LoadLightmaps`, `R_LoadMarksurfaces`, `R_LoadNodesAndLeafs`, `R_LoadPlanes`, `R_LoadShaders`, `R_LoadSurfaces`, `R_LoadVisibility`, `R_MergedHeightPoints`, `R_MergedWidthPoints`, `R_MovePatchSurfacesToHunk`, `R_SetParent`, `R_StitchAllPatches`, `R_StitchPatches`, `ShaderForShaderNum`, `patch`
 - `code/renderer/tr_cmds.c` (ported): `RE_BeginFrame`, `RE_EndFrame`, `R_AddDrawSurfCmd`, `R_InitCommandBuffers`, `R_IssueRenderCommands`, `R_PerformanceCounters`, `R_ShutdownCommandBuffers`, `R_SyncRenderThread`
 - `code/renderer/tr_curve.c` (ported): `InvertCtrl`, `InvertErrorTable`, `R_CreateSurfaceGridMesh`, `R_FreeSurfaceGridMesh`, `R_GridInsertColumn`, `R_GridInsertRow`
-- `code/renderer/tr_flares.c` (partial): `R_ClearFlares`
-- `code/renderer/tr_font.c` (partial): `RE_ConstructGlyphInfo`, `R_DoneFreeType`, `R_GetGlyphInfo`, `R_InitFreeType`, `R_RenderGlyph`, `WriteTGA`, `readFloat`, `readInt`
+- `code/renderer/tr_flares.c` (ported): `R_ClearFlares`
+- `code/renderer/tr_font.c` (ported): `RE_ConstructGlyphInfo`, `R_DoneFreeType`, `R_GetGlyphInfo`, `R_InitFreeType`, `R_RenderGlyph`, `WriteTGA`, `readFloat`, `readInt`
 - `code/renderer/tr_image.c` (ported): `CommaParse`, `GL_TextureMode`, `LoadBMP`, `LoadJPG`, `LoadPCX`, `LoadPCX32`, `RE_RegisterSkin`, `R_BlendOverTexture`, `R_CreateBuiltinImages`, `R_CreateDefaultImage`, `R_CreateDlightImage`, `R_CreateFogImage`, `R_DeleteTextures`, `R_FogFactor`, `R_GammaCorrect`, `R_GetSkinByHandle`, `R_ImageList_f`, `R_InitFogTable`, `R_InitImages`, `R_InitSkins`, `R_LoadImage`, `R_SetColorMappings`, `R_SkinList_f`, `R_SumOfUsedImages`, `SaveJPG`, `Upload32`, `empty_output_buffer`, `init_destination`, `jpegDest`, `term_destination`
-- `code/renderer/tr_light.c` (partial): `LogLight`, `end`
+- `code/renderer/tr_light.c` (ported): `LogLight`, `R_TransformDlights`
 - `code/renderer/tr_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_main.c` (ported): `IsMirror`, `R_AddEntitySurfaces`, `R_DebugGraphics`, `R_DebugPolygon`, `R_GenerateDrawSurfs`, `R_MirrorViewBySurface`, `R_PlaneForSurface`, `R_RenderView`, `R_RotateForEntity`, `R_RotateForViewer`, `R_SetupProjection`, `R_SpriteFogNum`, `SetFarClip`, `SurfIsOffscreen`, `myGlMultMatrix`, `qsortFast`, `shortsort`
 - `code/renderer/tr_model.c` (ported): `RE_BeginRegistration`, `RE_RegisterModel`, `R_AllocModel`, `R_GetModelByHandle`, `R_GetTag`, `R_LerpTag`, `R_LoadMD3`, `R_LoadMD4`, `R_ModelBounds`, `R_ModelInit`, `R_Modellist_f`
 - `code/renderer/tr_public.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/renderer/tr_scene.c` (partial): `RE_AddAdditiveLightToScene`, `RE_AddLightToScene`, `RE_RenderScene`, `R_AddPolygonSurfaces`, `R_ToggleSmpFrame`
+- `code/renderer/tr_scene.c` (ported): `RE_AddAdditiveLightToScene`, `RE_AddLightToScene`, `RE_RenderScene`, `R_AddPolygonSurfaces`, `R_ToggleSmpFrame`
 - `code/renderer/tr_shade.c` (ported): `ComputeTexCoords`, `DrawMultitextured`, `DrawNormals`, `DrawTris`, `ProjectDlightTexture`, `RB_EndSurface`, `RB_FogPass`, `RB_IterateStagesGeneric`, `RB_StageIteratorGeneric`, `RB_StageIteratorLightmappedMultitexture`, `RB_StageIteratorVertexLitTexture`, `R_ArrayElementDiscrete`, `R_DrawElements`, `R_DrawStripElements`
 - `code/renderer/tr_shade_calc.c` (ported): `Autosprite2Deform`, `AutospriteDeform`, `DeformText`, `EvalWaveForm`, `EvalWaveFormClamped`, `GlobalVectorToLocal`, `RB_CalcBulgeVertexes`, `RB_CalcDeformNormals`, `RB_CalcDeformVertexes`, `RB_CalcDiffuseColor`, `RB_CalcEnvironmentTexCoords`, `RB_CalcFogTexCoords`, `RB_CalcMoveVertexes`, `RB_CalcRotateTexCoords`, `RB_CalcScaleTexCoords`, `RB_CalcStretchTexCoords`, `RB_CalcTransformTexCoords`, `RB_CalcTurbulentTexCoords`, `RB_CalcWaveAlpha`, `RB_CalcWaveColor`, `RB_DeformTessGeometry`, `TableForFunc`, `myftol`
 - `code/renderer/tr_surface.c` (ported): `LodErrorForVolume`, `RB_CheckOverflow`, `RB_SurfaceAxis`, `RB_SurfaceBad`, `RB_SurfaceDisplayList`, `RB_SurfaceEntity`, `RB_SurfaceFlare`, `RB_SurfaceSkip`

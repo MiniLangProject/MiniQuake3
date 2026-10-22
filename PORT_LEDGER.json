@@ -40479,6 +40479,14 @@
           "original": "RB_RenderFlares",
           "minilang": "qvm_preview_app.runLimited",
           "scope": "Runs after world and cgame geometry for portal and main views. The archived r_flares cvar keeps the Baseq3 default disabled and enables the complete pass when set."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/renderer/tr_flares_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "All six tr_flares.c symbols: exact 128-slot pool lifecycle, scene/portal identity and reuse, projection/clipping/facing, fog selection, depth testing, linear fade, fogged flare quads and stale retirement."
         }
       ],
       "target": [
@@ -40486,14 +40494,20 @@
         "src/mq3/renderer/playable_fog.ml",
         "src/mq3/platform/playable_window.ml",
         "native/playable_win32.c",
-        "src/mq3/client/qvm_preview_app.ml"
+        "src/mq3/client/qvm_preview_app.ml",
+        "src/mq3/renderer/tr_flares_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_playable_flares.py",
         "tests/playable_flares_contracts.ml",
         "scripts/playable_window_build_test.py",
-        "tests/playable_window_lifecycle.c"
+        "tests/playable_window_lifecycle.c",
+        "scripts/test_tr_flares_complete.py",
+        "tests/tr_flares_complete_contracts.ml",
+        "tests/tr_flares_complete_oracle.ml",
+        "tests/reference/tr_flares_complete_oracle.c",
+        "tests/tr_flares_retail_probe.ml"
       ]
     },
     {
@@ -40520,16 +40534,30 @@
           ],
           "status": "tested_subset",
           "scope": "Loads byte-exact 20548-byte fontInfo_t data, rebinds glyph shaders, caches by point size and exposes the cgame/UI traps. Runtime FreeType glyph construction remains outside this subset. Ten ABI contracts pass."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/renderer/tr_font_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "All nine tr_font.c symbols: little-endian helpers, 26.6 glyph metrics, gray/mono atlas packing, TGA output, six-slot lifecycle/cache, exact pre-rendered fontInfo_t loading and backend-driven FreeType raster generation."
         }
       ],
       "target": [
         "src/mq3/vm/font_abi.ml",
-        "src/mq3/engine/local_qvm_match.ml"
+        "src/mq3/engine/local_qvm_match.ml",
+        "src/mq3/renderer/tr_font_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_font_abi.py",
-        "tests/font_abi_contracts.ml"
+        "tests/font_abi_contracts.ml",
+        "scripts/test_tr_font_complete.py",
+        "tests/tr_font_complete_contracts.ml",
+        "tests/tr_font_oracle.ml",
+        "tests/reference/tr_font_oracle.c",
+        "tests/tr_font_retail_probe.ml"
       ]
     },
     {
@@ -40877,7 +40905,7 @@
         "R_LightForPoint",
         "R_SetupEntityLighting",
         "R_SetupEntityLightingGrid",
-        "end"
+        "R_TransformDlights"
       ],
       "symbol_mapping": [
         {
@@ -40907,15 +40935,24 @@
           ],
           "status": "tested_subset",
           "scope": "Productive QVM inline BSP surfaces retain SURF_NODLIGHT/SURF_SKY eligibility, refresh moving projected-light geometry and draw scene dynamic lights in main and portal views. Entity origin/axes drive the R_TransformDlights-equivalent local projection for rotated brush models, and the original radius-expanded local bmodel bounds predicate rejects unrelated lights before projection. Two unchanged C records and 13 direct contracts pass."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/renderer/tr_light_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "All six actual tr_light.c functions: dynamic-light transforms and brush masks, lightgrid setup, logarithmic light encoding, entity lighting/cache/minlight/dynamic accumulation, point lighting and packed ambient RGBA."
         }
       ],
       "target": [
         "src/mq3/renderer/playable_light_grid.ml",
         "src/mq3/renderer/qvm_scene_geometry.ml",
         "src/mq3/renderer/qvm_scene_batch.ml",
-        "src/mq3/renderer/playable_dynamic_lights.ml"
+        "src/mq3/renderer/playable_dynamic_lights.ml",
+        "src/mq3/renderer/tr_light_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_playable_light_grid.py",
         "scripts/test_playable_dynamic_lights.py",
@@ -40926,7 +40963,12 @@
         "tests/playable_light_grid_contracts.ml",
         "tests/playable_light_grid_retail_probe.ml",
         "scripts/test_qvm_scene_geometry.py",
-        "tests/qvm_scene_geometry_contracts.ml"
+        "tests/qvm_scene_geometry_contracts.ml",
+        "scripts/test_tr_light_complete.py",
+        "tests/tr_light_complete_contracts.ml",
+        "tests/tr_light_log_oracle.ml",
+        "tests/reference/tr_light_log_oracle.c",
+        "tests/tr_light_retail_probe.ml"
       ]
     },
     {
@@ -41309,16 +41351,27 @@
           ],
           "status": "tested_subset",
           "scope": "Scene marks, polygon capacity/copy/fog, reference entities and normal/additive lights with hardware restrictions. Six exact header constants and 24 contracts pass."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/renderer/tr_scene_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "All nine tr_scene.c symbols: SMP-frame reset, scene marks, polygon/entity/light submission, world polygon draw-surfaces, refdef/areamask/view construction, multi-scene isolation, dynamic-light policy and productive retained-QVM view dispatch."
         }
       ],
       "target": [
-        "src/mq3/renderer/scene_queue.ml"
+        "src/mq3/renderer/scene_queue.ml",
+        "src/mq3/renderer/tr_scene_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_scene_queue.py",
         "tests/reference/scene_queue_oracle.c",
-        "tests/scene_queue_contracts.ml"
+        "tests/scene_queue_contracts.ml",
+        "scripts/test_tr_scene_complete.py",
+        "tests/tr_scene_complete_contracts.ml"
       ]
     },
     {

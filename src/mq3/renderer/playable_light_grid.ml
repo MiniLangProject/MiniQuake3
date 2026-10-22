@@ -50,7 +50,10 @@ function emptySample() return Sample([0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,1.0],0
 function sample(grid,point)
   if grid==void or not grid.valid or point==void or len(point)!=3 then return emptySample() end if
   pos=[];frac=[]
-  for axis=0 to 2 value=(point[axis]-grid.origin[axis])*grid.inverse[axis];cell=floorNumber(value);part=value-cell;if cell<0 then cell=0;part=0.0 else if cell>=grid.bounds[axis]-1 then cell=grid.bounds[axis]-1;part=0.0 end if;pos=pos+[cell];frac=frac+[part] end for
+  // tr_light.c clamps the cell coordinate but deliberately retains the
+  // fraction computed from the unclamped coordinate.  This matters for
+  // R_LightForPoint calls just outside a map's light-grid bounds.
+  for axis=0 to 2 value=(point[axis]-grid.origin[axis])*grid.inverse[axis];cell=floorNumber(value);part=value-cell;if cell<0 then cell=0 else if cell>=grid.bounds[axis]-1 then cell=grid.bounds[axis]-1 end if;pos=pos+[cell];frac=frac+[part] end for
   ambient=[0.0,0.0,0.0];directed=[0.0,0.0,0.0];direction=[0.0,0.0,0.0];total=0.0;steps=[8,8*grid.bounds[0],8*grid.bounds[0]*grid.bounds[1]]
   for corner=0 to 7 factor=1.0;at=grid.offset+pos[0]*steps[0]+pos[1]*steps[1]+pos[2]*steps[2]
     for axis=0 to 2 if (corner & (1 << axis))!=0 then factor=factor*frac[axis];at=at+steps[axis] else factor=factor*(1.0-frac[axis]) end if end for

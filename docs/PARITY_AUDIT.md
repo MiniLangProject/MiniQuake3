@@ -2528,3 +2528,43 @@ Paket nicht erneut am Stück ausgeführt; der letzte vollständige Lauf bleibt b
 Der kombinierte Retail-QVM-Match bleibt mit acht Frames, 131 Entities, 2.345
 texturierten Dreiecken, 17 Renderpässen, 26 Sounds und null nicht
 unterstützten Entities grün.
+
+## 2026-10-23: Renderer-C-Laufzeit vollständig zugeordnet
+
+Die letzten vier partiellen Renderer-C-Dateien sind geschlossen. `tr_scene.c`
+bildet den vollständigen Multi-Scene-Lifecycle von SMP-Frame-Reset über
+Polygon-, Entity- und Lichtaufnahme bis zur Refdef-/Viewport-Erzeugung ab.
+`tr_flares.c` besitzt Poolverwaltung, Projektion, Visibility-Test, Fade und
+fogged Quad-Ausgabe. `tr_light.c` deckt Brush- und Entity-Licht, dynamische
+Lichter, Lightgrid und Punktabfragen ab. `tr_font.c` implementiert den
+vorgerenderten Font-ABI-Pfad sowie die backendgestützte FreeType-Erzeugung mit
+Atlaspacking und TGA-/DAT-Ausgabe.
+
+Nachweise:
+
+- `tr_scene.c`: 9/9 Symbole, sechs exakte ABI-Datensätze, 32 native Verträge,
+  55 QVM-Geometrie-, 19 Scene-Batch- und 20 erweiterte Cgame-Renderer-
+  Verträge sowie der Retail-QVM-Renderer-Trap-Probe.
+- `tr_flares.c`: 6/6 Symbole, vier unveränderte-C-Datensätze, 26 native
+  Verträge und 31 Retail-BSPs. `q3dm0` belegt 128 Flare-Surfaces, 128
+  Poolaufnahmen und 128 gerenderte Quads.
+- `tr_light.c`: 6/6 reale Originalfunktionen, sechs unveränderte-C-Datensätze,
+  19 native Verträge und ein Retail-`q3dm1`-Lightgrid mit 8.514 Punkten. Eine
+  echte Abweichung beim Clamp-Interpolationsanteil wurde im produktiven
+  Lightgrid korrigiert.
+- `tr_font.c`: 9/9 Symbole, fünf unveränderte-C-Datensätze und 32 native
+  Verträge. Retail `pak0.pk3` bestätigt den ausgelieferten Missing-Font-Pfad;
+  der produktive Raster-Backend-Vertrag prüft deterministisch die
+  FreeType-Erzeugung, da Baseq3 weder TTF noch `fontImage_*.dat` ausliefert.
+
+Das Inventar zählt jetzt **168 portierte, 50 partielle und 117 nicht begonnene**
+Runtime-/Plattformdateien. Im Renderer stehen damit **23 portierte C-Dateien,
+null partielle C-Dateien und vier nicht portierte Header-/Projektdateien**.
+Die vier Fokusgates sind in `scripts/verify.py` registriert. Die vollständige
+Verify-Auswahl wurde für dieses inkrementelle Paket nicht erneut am Stück
+ausgeführt; der letzte vollständige Lauf bleibt bei 408/408 Gates grün. Der
+zusammengeführte Windows-Hauptbuild hat SHA-256
+`ee562f15de525fcf4a878b4d585bfa02b6d1ffcd58547b348019a2ddf9a3b959`.
+Der kombinierte Retail-QVM-Match bleibt mit acht Frames, 131 Entities, 2.345
+texturierten Dreiecken, 17 Renderpässen, 26 Sounds und null nicht
+unterstützten Entities grün.

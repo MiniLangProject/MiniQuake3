@@ -335,6 +335,10 @@ def main():
     scripts.append(("test_tr_model_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_tr_world_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_tr_curve_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_tr_scene_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_tr_flares_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_tr_light_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_tr_font_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_cl_cin_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     if args.data_root:
         scripts.append(("test_retail_qvm_match.py",["--data-root",str(args.data_root)]))
