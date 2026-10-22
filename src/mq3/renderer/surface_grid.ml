@@ -40,9 +40,13 @@ end function
 // column when its subdivision error is within the current volume LOD error.
 function selectAxis(size,lodErrors,lodError)
   selected=[0]
-  for i=1 to size-2
-    if lodErrors[i]<=lodError then selected=selected+[i] end if
-  end for
+  // MiniLang's inclusive descending range would visit entries for a two-point
+  // axis.  Baseq3's C loop executes zero times when size == 2.
+  if size>2 then
+    for i=1 to size-2
+      if lodErrors[i]<=lodError then selected=selected+[i] end if
+    end for
+  end if
   return selected+[size-1]
 end function
 

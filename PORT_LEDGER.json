@@ -16359,14 +16359,27 @@
           ],
           "status": "tested_subset",
           "scope": "Daubechies inverse-wavelet and MuLaw decoding are connected to the productive channel painter and covered by exact native differential records."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/audio/snd_wavelet_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "All nine snd_wavelet.c symbols: exact MuLaw encode/decode, Daubechies-4 forward/inverse transforms, managed NX output, chunked codec state and productive compressed-channel painting, including safe final-block padding."
         }
       ],
       "target": [
-        "src/mq3/audio/snd_compressed_paint.ml"
+        "src/mq3/audio/snd_compressed_paint.ml",
+        "src/mq3/audio/snd_wavelet_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_audio_snd_compressed_paint.py"
+        "scripts/test_audio_snd_compressed_paint.py",
+        "scripts/test_snd_wavelet_complete.py",
+        "tests/snd_wavelet_complete_contracts.ml",
+        "tests/snd_wavelet_complete_oracle.ml",
+        "tests/reference/snd_wavelet_complete_oracle.c"
       ]
     },
     {
@@ -40184,6 +40197,14 @@
           ],
           "status": "tested_subset",
           "scope": "The productive original-QVM scene path preserves refEntity_t.renderfx, isolates RF_DEPTHHACK geometry in a retained batch, submits it with the Baseq3 0..0.3 depth range, restores normal depth, and preserves the flag through portal clipping. Nine batch contracts and 22 portal contracts pass."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/renderer/tr_backend_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "All 21 tr_backend.c symbols: two-TMU GL state, view/portal/hyperspace setup, sorted entity and depth batching, 2D/3D commands, cinematic upload/stretch, diagnostics, swap/overdraw and render-thread lifecycle."
         }
       ],
       "target": [
@@ -40198,9 +40219,10 @@
         "src/mq3/renderer/shader_remap.ml",
         "src/mq3/renderer/qvm_scene_geometry.ml",
         "src/mq3/renderer/qvm_scene_batch.ml",
-        "src/mq3/renderer/portal_clip.ml"
+        "src/mq3/renderer/portal_clip.ml",
+        "src/mq3/renderer/tr_backend_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_texture_state.py",
         "tests/reference/texture_state_oracle.c",
@@ -40218,7 +40240,12 @@
         "scripts/test_qvm_scene_batch.py",
         "tests/qvm_scene_batch_contracts.ml",
         "scripts/test_portal_render_pass.py",
-        "tests/portal_render_pass_contracts.ml"
+        "tests/portal_render_pass_contracts.ml",
+        "scripts/test_tr_backend_complete.py",
+        "tests/tr_backend_complete_contracts.ml",
+        "tests/tr_backend_complete_oracle.ml",
+        "tests/tr_backend_retail_probe.ml",
+        "tests/reference/tr_backend_complete_oracle.c"
       ]
     },
     {
@@ -41309,15 +41336,24 @@
           ],
           "status": "tested_exact",
           "scope": "World and QVM retained materials apply parsed clampTime and runtime shader-remap timeOffset before every time consumer. A same-name remap updates both the stable QVM material and an already retained scene pass without requiring changed geometry or stage topology. Six records extracted from the unchanged RB_BeginSurface plus focused material, remap and retained-batch contracts pass."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/renderer/tr_shade_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "All 17 tr_shade.c symbols: element and strip drawing, animated images, surface lifecycle, color/texture generation, multitexture stages, projected dynamic lights, fog and optimized stage iterators."
         }
       ],
       "target": [
         "src/mq3/renderer/playable_materials.ml",
         "src/mq3/renderer/playable_world_batch.ml",
         "src/mq3/renderer/qvm_scene_materials.ml",
-        "src/mq3/renderer/shader_remap.ml"
+        "src/mq3/renderer/shader_remap.ml",
+        "src/mq3/renderer/tr_shade_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_shader_compute_colors.py",
         "tests/reference/shader_compute_colors_oracle.c",
@@ -41330,7 +41366,11 @@
         "tests/shader_entity_time_oracle.ml",
         "tests/playable_world_batch_contracts.ml",
         "tests/qvm_scene_materials_contracts.ml",
-        "tests/cgame_renderer_extended_contracts.ml"
+        "tests/cgame_renderer_extended_contracts.ml",
+        "scripts/test_tr_shade_complete.py",
+        "tests/tr_shade_complete_contracts.ml",
+        "tests/tr_shade_strip_oracle.ml",
+        "tests/reference/tr_shade_strip_oracle.c"
       ]
     },
     {
@@ -42110,6 +42150,14 @@
           ],
           "status": "tested_exact",
           "scope": "QVM RT_BEAM entities expand to the original closed six-sided 14-vertex strip and 12 triangles, omit zero-length beams and use the original constant red through a productive additive vertex-color material. Two exact records and 13 contracts pass."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/renderer/tr_surface_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "All 24 tr_surface.c symbols: exact LOD-volume math and productive planar, triangle-soup, patch, polygon, MD3, sprite, beam, rail and lightning tessellation plus original diagnostic and dispatch paths."
         }
       ],
       "target": [
@@ -42121,9 +42169,10 @@
         "src/mq3/renderer/surface_trails.ml",
         "src/mq3/renderer/qvm_scene_geometry.ml",
         "src/mq3/renderer/surface_beam.ml",
-        "src/mq3/renderer/qvm_scene_materials.ml"
+        "src/mq3/renderer/qvm_scene_materials.ml",
+        "src/mq3/renderer/tr_surface_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_surface_polychain.py",
         "tests/reference/surface_polychain_oracle.c",
@@ -42148,7 +42197,11 @@
         "scripts/test_surface_beam.py",
         "tests/reference/surface_beam_oracle.c",
         "tests/surface_beam_oracle.ml",
-        "tests/surface_beam_contracts.ml"
+        "tests/surface_beam_contracts.ml",
+        "scripts/test_tr_surface_complete.py",
+        "tests/tr_surface_complete_contracts.ml",
+        "tests/tr_surface_complete_oracle.ml",
+        "tests/reference/tr_surface_complete_oracle.c"
       ]
     },
     {

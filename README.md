@@ -28,12 +28,12 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **156 sind
-vollständig portiert, 62 teilweise portiert und 117 noch nicht begonnen**.
-Zuletzt wurden die vollständigen Originaloberflächen von `tr_main.c`,
-`tr_shade_calc.c`, `tr_bsp.c`, `snd_mix.c` und `snd_adpcm.c` geschlossen. Der
-Produktivpfad besitzt damit vollständige native Front-End-, BSP-Welt-,
-Shaderberechnungs- und Kernmixer-Fassaden, abgesichert über native, Retail- und
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **160 sind
+vollständig portiert, 58 teilweise portiert und 117 noch nicht begonnen**.
+Zuletzt wurden die vollständigen Originaloberflächen von `tr_surface.c`,
+`tr_backend.c`, `tr_shade.c` und `snd_wavelet.c` geschlossen. Der
+Produktivpfad besitzt damit vollständige native Surface-, Renderer-Backend-,
+Shader-Stage- und Wavelet-/MuLaw-Fassaden, abgesichert über native, Retail- und
 unveränderte-C-Verträge.
 
 Der aktuelle Stand ist im [AAS-/Botlib-Bericht](docs/AAS_RUNTIME.md) und im

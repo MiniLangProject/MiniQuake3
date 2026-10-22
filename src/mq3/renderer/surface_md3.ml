@@ -114,8 +114,8 @@ function submit(value,frame,oldFrame,backlerp,currentVertexes,currentIndexes,max
   valid=validate(value);if valid is error then return valid end if
   if currentVertexes<0 or currentIndexes<0 or maxVertexes<1 or maxIndexes<1 then return error(7361,"invalid tessellation counts") end if
   neededIndexes=value.numTriangles*3
-  if value.numVerts>maxVertexes or neededIndexes>maxIndexes then return error(7362,"MD3 surface exceeds tessellation capacity") end if
-  flushed=currentVertexes+value.numVerts>maxVertexes or currentIndexes+neededIndexes>maxIndexes
+  if value.numVerts>=maxVertexes or neededIndexes>=maxIndexes then return error(7362,"MD3 surface exceeds tessellation capacity") end if
+  flushed=currentVertexes+value.numVerts>=maxVertexes or currentIndexes+neededIndexes>=maxIndexes
   baseVertex=currentVertexes;baseIndex=currentIndexes
   if flushed then baseVertex=0;baseIndex=0 end if
   effectiveBacklerp=backlerp

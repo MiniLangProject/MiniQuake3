@@ -2454,3 +2454,39 @@ Der Retail-Match läuft acht Frames mit 131 Entities, 13 Snapshot-Entities,
 unterstützten Entities. Die vollständige Verify-Auswahl wurde für diesen
 inkrementellen Block nicht erneut am Stück ausgeführt; der letzte vollständige
 Lauf bleibt bei 408/408 Gates grün.
+
+## 2026-10-22: Renderer-Backend, Surface-/Shade-Stufen und Wavelet-Codec geschlossen
+
+Vier weitere partielle Originaldateien sind vollständig zugeordnet. Die neue
+`tr_surface.c`-Fassade deckt alle World-, Patch-, Polygon-, MD3-, Sprite-,
+Beam-, Rail- und Lightning-Surfaces einschließlich LOD- und Dispatchpfaden ab.
+`tr_backend.c` besitzt alle GL-/TMU-Zustände, View-, Portal-, Sortier-, 2D-,
+Cinematic-, Swap- und Renderthread-Einstiege. `tr_shade.c` schließt Element-
+und Strip-Zeichnung, Surface-Lifecycle, Stage-Iterators, Dynamic Lights und Fog.
+`snd_wavelet.c` ergänzt Encoder und Decoder für MuLaw und Daubechies-Wavelets
+einschließlich der zustandsbehafteten Chunk-Verarbeitung im produktiven
+komprimierten Audiopfad.
+
+Nachweise:
+
+- `tr_surface.c`: 24/24 Symbole, fünf unveränderte-C-LOD-Datensätze, 28 native
+  Verträge und ein Retail-`q3dm1`-Probe mit 2.097 Surfaces, 113 Patches und
+  17.723 Quelldreiecken. Acht abhängige Surface-/QVM-Gates bestehen.
+- `tr_backend.c`: 21/21 Symbole, sieben unveränderte-C-Datensätze, 38 native
+  Verträge, 31 erkannte Retail-BSPs sowie ein produktiver `q3dm1`-Probe mit
+  94 Shadern und 64 Submissions. Sechs Renderer-Abhängigkeiten bestehen.
+- `tr_shade.c`: 17/17 Symbole, 28 native Verträge, fünf eigene unveränderte-C-
+  Strip-Datensätze und 39 bestehende C-Differenzdatensätze für Farben,
+  Shaderzeit und Dynamic Lights. Material-, QVM-, World-Batch- und Retail-
+  Proben auf fünf Karten sind grün.
+- `snd_wavelet.c`: 9/9 Symbole, neun exakte C-MuLaw-Datensätze, zwölf native
+  Codec-Verträge und die bestehende produktive Compressed-Paint-Regression.
+
+Das Inventar zählt jetzt **160 portierte, 58 partielle und 117 nicht begonnene**
+Runtime-/Plattformdateien. Die vier Fokusgates sind in `scripts/verify.py`
+registriert. Alle vier Fokusgates sowie der Windows-Hauptbuild und der
+kombinierte Retail-QVM-Match wurden auf dem zusammengeführten Stand erneut
+geprüft. Die vollständige Verify-Auswahl wurde für dieses inkrementelle Paket
+nicht erneut am Stück ausgeführt; der letzte vollständige Lauf bleibt bei
+408/408 Gates grün. Der Hauptbuild hat SHA-256
+`6538d101f95ecc2fac936b773accf37bf71106c13878eeb3f296927b292eba66`.

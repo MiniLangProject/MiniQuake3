@@ -327,6 +327,10 @@ def main():
     scripts.append(("test_tr_bsp_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_snd_mix_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_snd_adpcm_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_tr_surface_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_tr_backend_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_tr_shade_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_snd_wavelet_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_cl_cin_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     if args.data_root:
         scripts.append(("test_retail_qvm_match.py",["--data-root",str(args.data_root)]))

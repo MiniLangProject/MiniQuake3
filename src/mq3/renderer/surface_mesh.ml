@@ -31,8 +31,10 @@ function checkIndexes(indexes,count)
 end function
 function checkCapacity(vertexCount,indexCount,currentVertexes,currentIndexes,maxVertexes,maxIndexes)
   if currentVertexes<0 or currentIndexes<0 or maxVertexes<1 or maxIndexes<1 then return error(7384,"invalid tessellation counts") end if
-  if vertexCount>maxVertexes or indexCount>maxIndexes then return error(7385,"surface exceeds tessellation capacity") end if
-  return currentVertexes+vertexCount>maxVertexes or currentIndexes+indexCount>maxIndexes
+  // RB_CheckOverflow uses strict '< SHADER_MAX_*' fit checks and rejects an
+  // individual request at or beyond either sentinel after flushing.
+  if vertexCount>=maxVertexes or indexCount>=maxIndexes then return error(7385,"surface exceeds tessellation capacity") end if
+  return currentVertexes+vertexCount>=maxVertexes or currentIndexes+indexCount>=maxIndexes
 end function
 function build(verts,indexes,normalOverride,needsNormal,dlightBits,baseVertex,baseIndex,flushed,aggregateDlights)
   xyz=[];normals=[];texCoords=[];colors=[];vertexLights=[];rebased=[]
