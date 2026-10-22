@@ -19625,10 +19625,79 @@
         "UI_CDKeyMenu_PreValidateKey",
         "UI_CDKeyMenu_f"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_CDKeyMenu",
+          "target_files": [
+            "src/mq3/client/ui_cdkey.ml"
+          ],
+          "target_symbol": "mq3.client.ui_cdkey.cdKeyMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 18 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_CDKeyMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_cdkey.ml"
+          ],
+          "target_symbol": "mq3.client.ui_cdkey.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 18 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_CDKeyMenu_DrawKey",
+          "target_files": [
+            "src/mq3/client/ui_cdkey.ml"
+          ],
+          "target_symbol": "mq3.client.ui_cdkey.drawKey",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 18 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_CDKeyMenu_Event",
+          "target_files": [
+            "src/mq3/client/ui_cdkey.ml"
+          ],
+          "target_symbol": "mq3.client.ui_cdkey.event",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 18 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_CDKeyMenu_Init",
+          "target_files": [
+            "src/mq3/client/ui_cdkey.ml"
+          ],
+          "target_symbol": "mq3.client.ui_cdkey.init",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 18 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_CDKeyMenu_PreValidateKey",
+          "target_files": [
+            "src/mq3/client/ui_cdkey.ml"
+          ],
+          "target_symbol": "mq3.client.ui_cdkey.preValidateKey",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 18 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_CDKeyMenu_f",
+          "target_files": [
+            "src/mq3/client/ui_cdkey.ml"
+          ],
+          "target_symbol": "mq3.client.ui_cdkey.cdKeyMenuF",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 18 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_cdkey.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_cdkey.py",
+        "tests/ui_cdkey_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_cinematics.c",
@@ -19642,10 +19711,70 @@
         "UI_CinematicsMenu_Init",
         "UI_CinematicsMenu_f"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_CinematicsMenu",
+          "target_files": [
+            "src/mq3/client/ui_cinematics.ml"
+          ],
+          "target_symbol": "mq3.client.ui_cinematics.cinematicsMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 18 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_CinematicsMenu_BackEvent",
+          "target_files": [
+            "src/mq3/client/ui_cinematics.ml"
+          ],
+          "target_symbol": "mq3.client.ui_cinematics.backEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 18 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_CinematicsMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_cinematics.ml"
+          ],
+          "target_symbol": "mq3.client.ui_cinematics.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 18 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_CinematicsMenu_Event",
+          "target_files": [
+            "src/mq3/client/ui_cinematics.ml"
+          ],
+          "target_symbol": "mq3.client.ui_cinematics.event",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 18 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_CinematicsMenu_Init",
+          "target_files": [
+            "src/mq3/client/ui_cinematics.ml"
+          ],
+          "target_symbol": "mq3.client.ui_cinematics.init",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 18 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_CinematicsMenu_f",
+          "target_files": [
+            "src/mq3/client/ui_cinematics.ml"
+          ],
+          "target_symbol": "mq3.client.ui_cinematics.cinematicsMenuF",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 18 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_cinematics.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_cinematics.py",
+        "tests/ui_cinematics_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_confirm.c",
@@ -20076,10 +20205,61 @@
         "UI_DemosMenu",
         "UI_DemosMenu_Key"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Demos_Cache",
+          "target_files": [
+            "src/mq3/client/ui_demos.ml"
+          ],
+          "target_symbol": "mq3.client.ui_demos.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 20 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "Demos_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_demos.ml"
+          ],
+          "target_symbol": "mq3.client.ui_demos.menuEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 20 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "Demos_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_demos.ml"
+          ],
+          "target_symbol": "mq3.client.ui_demos.menuInit",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 20 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_DemosMenu",
+          "target_files": [
+            "src/mq3/client/ui_demos.ml"
+          ],
+          "target_symbol": "mq3.client.ui_demos.demosMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 20 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_DemosMenu_Key",
+          "target_files": [
+            "src/mq3/client/ui_demos.ml"
+          ],
+          "target_symbol": "mq3.client.ui_demos.menuKey",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 20 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_demos.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_demos.py",
+        "tests/ui_demos_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_display.c",
@@ -20525,10 +20705,52 @@
         "UI_LoadConfigMenu",
         "UI_LoadConfig_Cache"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "LoadConfig_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_load_config.ml"
+          ],
+          "target_symbol": "mq3.client.ui_load_config.event",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 8 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "LoadConfig_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_load_config.ml"
+          ],
+          "target_symbol": "mq3.client.ui_load_config.init",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 8 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_LoadConfigMenu",
+          "target_files": [
+            "src/mq3/client/ui_load_config.ml"
+          ],
+          "target_symbol": "mq3.client.ui_load_config.open",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 8 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_LoadConfig_Cache",
+          "target_files": [
+            "src/mq3/client/ui_load_config.ml"
+          ],
+          "target_symbol": "mq3.client.ui_load_config.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 8 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_load_config.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_load_config.py",
+        "tests/ui_load_config_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_local.h",
@@ -20550,10 +20772,52 @@
         "Login_MenuInit",
         "UI_LoginMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Login_Cache",
+          "target_files": [
+            "src/mq3/client/ui_login.ml"
+          ],
+          "target_symbol": "mq3.client.ui_login.Login_Cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "Login_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_login.ml"
+          ],
+          "target_symbol": "mq3.client.ui_login.Login_MenuEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "Login_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_login.ml"
+          ],
+          "target_symbol": "mq3.client.ui_login.Login_MenuInit",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_LoginMenu",
+          "target_files": [
+            "src/mq3/client/ui_login.ml"
+          ],
+          "target_symbol": "mq3.client.ui_login.UI_LoginMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_login.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_login.py",
+        "tests/ui_login_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_main.c",
@@ -20564,10 +20828,44 @@
         "UI_UpdateCvars",
         "vmMain"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_RegisterCvars",
+          "target_files": [
+            "src/mq3/client/ui_main.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main.UI_RegisterCvars",
+          "status": "tested_exact",
+          "scope": "Complete q3_ui VM entrypoint: 47 original cvars, register/update lifecycle and every vmMain export command with exact return semantics; unchanged-C dispatch oracle and 21 native contracts pass."
+        },
+        {
+          "original": "UI_UpdateCvars",
+          "target_files": [
+            "src/mq3/client/ui_main.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main.UI_UpdateCvars",
+          "status": "tested_exact",
+          "scope": "Complete q3_ui VM entrypoint: 47 original cvars, register/update lifecycle and every vmMain export command with exact return semantics; unchanged-C dispatch oracle and 21 native contracts pass."
+        },
+        {
+          "original": "vmMain",
+          "target_files": [
+            "src/mq3/client/ui_main.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main.vmMain",
+          "status": "tested_exact",
+          "scope": "Complete q3_ui VM entrypoint: 47 original cvars, register/update lifecycle and every vmMain export command with exact return semantics; unchanged-C dispatch oracle and 21 native contracts pass."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_main.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_main.py",
+        "tests/ui_main_oracle.ml",
+        "tests/ui_main_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_menu.c",
@@ -20670,10 +20968,88 @@
         "MenuField_Init",
         "MenuField_Key"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "MField_CharEvent",
+          "target_files": [
+            "src/mq3/client/ui_mfield.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mfield.MField_CharEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "MField_Clear",
+          "target_files": [
+            "src/mq3/client/ui_mfield.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mfield.MField_Clear",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "MField_Draw",
+          "target_files": [
+            "src/mq3/client/ui_mfield.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mfield.MField_Draw",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "MField_KeyDownEvent",
+          "target_files": [
+            "src/mq3/client/ui_mfield.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mfield.MField_KeyDownEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "MField_Paste",
+          "target_files": [
+            "src/mq3/client/ui_mfield.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mfield.MField_Paste",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "MenuField_Draw",
+          "target_files": [
+            "src/mq3/client/ui_mfield.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mfield.MenuField_Draw",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "MenuField_Init",
+          "target_files": [
+            "src/mq3/client/ui_mfield.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mfield.MenuField_Init",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "MenuField_Key",
+          "target_files": [
+            "src/mq3/client/ui_mfield.ml"
+          ],
+          "target_symbol": "mq3.client.ui_mfield.MenuField_Key",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_mfield.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_mfield.py",
+        "tests/ui_mfield_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_mods.c",
@@ -21277,10 +21653,115 @@
         "PlayerSettings_SetMenuItems",
         "UI_PlayerSettingsMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "PlayerSettings_Cache",
+          "target_files": [
+            "src/mq3/client/ui_player_settings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_player_settings.PlayerSettings_Cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "PlayerSettings_DrawEffects",
+          "target_files": [
+            "src/mq3/client/ui_player_settings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_player_settings.PlayerSettings_DrawEffects",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "PlayerSettings_DrawHandicap",
+          "target_files": [
+            "src/mq3/client/ui_player_settings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_player_settings.PlayerSettings_DrawHandicap",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "PlayerSettings_DrawName",
+          "target_files": [
+            "src/mq3/client/ui_player_settings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_player_settings.PlayerSettings_DrawName",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "PlayerSettings_DrawPlayer",
+          "target_files": [
+            "src/mq3/client/ui_player_settings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_player_settings.PlayerSettings_DrawPlayer",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "PlayerSettings_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_player_settings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_player_settings.PlayerSettings_MenuEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "PlayerSettings_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_player_settings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_player_settings.PlayerSettings_MenuInit",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "PlayerSettings_MenuKey",
+          "target_files": [
+            "src/mq3/client/ui_player_settings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_player_settings.PlayerSettings_MenuKey",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "PlayerSettings_SaveChanges",
+          "target_files": [
+            "src/mq3/client/ui_player_settings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_player_settings.PlayerSettings_SaveChanges",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "PlayerSettings_SetMenuItems",
+          "target_files": [
+            "src/mq3/client/ui_player_settings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_player_settings.PlayerSettings_SetMenuItems",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_PlayerSettingsMenu",
+          "target_files": [
+            "src/mq3/client/ui_player_settings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_player_settings.UI_PlayerSettingsMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_player_settings.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_player_settings.py",
+        "tests/ui_player_settings_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_preferences.c",
@@ -21711,10 +22192,79 @@
         "Rankings_MenuInit",
         "UI_RankingsMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Rankings_Cache",
+          "target_files": [
+            "src/mq3/client/ui_rankings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_rankings.Rankings_Cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "Rankings_DrawName",
+          "target_files": [
+            "src/mq3/client/ui_rankings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_rankings.Rankings_DrawName",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "Rankings_DrawPassword",
+          "target_files": [
+            "src/mq3/client/ui_rankings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_rankings.Rankings_DrawPassword",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "Rankings_DrawText",
+          "target_files": [
+            "src/mq3/client/ui_rankings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_rankings.Rankings_DrawText",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "Rankings_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_rankings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_rankings.Rankings_MenuEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "Rankings_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_rankings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_rankings.Rankings_MenuInit",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_RankingsMenu",
+          "target_files": [
+            "src/mq3/client/ui_rankings.ml"
+          ],
+          "target_symbol": "mq3.client.ui_rankings.UI_RankingsMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_rankings.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_rankings.py",
+        "tests/ui_rankings_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_rankstatus.c",
@@ -21726,10 +22276,52 @@
         "RankStatus_MenuInit",
         "UI_RankStatusMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "RankStatus_Cache",
+          "target_files": [
+            "src/mq3/client/ui_rankstatus.ml"
+          ],
+          "target_symbol": "mq3.client.ui_rankstatus.RankStatus_Cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "RankStatus_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_rankstatus.ml"
+          ],
+          "target_symbol": "mq3.client.ui_rankstatus.RankStatus_MenuEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "RankStatus_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_rankstatus.ml"
+          ],
+          "target_symbol": "mq3.client.ui_rankstatus.RankStatus_MenuInit",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_RankStatusMenu",
+          "target_files": [
+            "src/mq3/client/ui_rankstatus.ml"
+          ],
+          "target_symbol": "mq3.client.ui_rankstatus.UI_RankStatusMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 10 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_rankstatus.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_rankstatus.py",
+        "tests/ui_rankstatus_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_removebots.c",
@@ -21860,10 +22452,70 @@
         "UI_SaveConfigMenu_SaveEvent",
         "UI_SaveConfigMenu_SavenameDraw"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_SaveConfigMenu",
+          "target_files": [
+            "src/mq3/client/ui_save_config.ml"
+          ],
+          "target_symbol": "mq3.client.ui_save_config.open",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 8 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_SaveConfigMenu_BackEvent",
+          "target_files": [
+            "src/mq3/client/ui_save_config.ml"
+          ],
+          "target_symbol": "mq3.client.ui_save_config.backEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 8 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_SaveConfigMenu_Cache",
+          "target_files": [
+            "src/mq3/client/ui_save_config.ml"
+          ],
+          "target_symbol": "mq3.client.ui_save_config.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 8 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_SaveConfigMenu_Init",
+          "target_files": [
+            "src/mq3/client/ui_save_config.ml"
+          ],
+          "target_symbol": "mq3.client.ui_save_config.init",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 8 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_SaveConfigMenu_SaveEvent",
+          "target_files": [
+            "src/mq3/client/ui_save_config.ml"
+          ],
+          "target_symbol": "mq3.client.ui_save_config.saveEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 8 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_SaveConfigMenu_SavenameDraw",
+          "target_files": [
+            "src/mq3/client/ui_save_config.ml"
+          ],
+          "target_symbol": "mq3.client.ui_save_config.drawName",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 8 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_save_config.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_save_config.py",
+        "tests/ui_save_config_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_serverinfo.c",
@@ -22276,10 +22928,52 @@
         "Signup_MenuInit",
         "UI_SignupMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Signup_Cache",
+          "target_files": [
+            "src/mq3/client/ui_signup.ml"
+          ],
+          "target_symbol": "mq3.client.ui_signup.Signup_Cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "Signup_MenuEvent",
+          "target_files": [
+            "src/mq3/client/ui_signup.ml"
+          ],
+          "target_symbol": "mq3.client.ui_signup.Signup_MenuEvent",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "Signup_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_signup.ml"
+          ],
+          "target_symbol": "mq3.client.ui_signup.Signup_MenuInit",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_SignupMenu",
+          "target_files": [
+            "src/mq3/client/ui_signup.ml"
+          ],
+          "target_symbol": "mq3.client.ui_signup.UI_SignupMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 9 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_signup.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_signup.py",
+        "tests/ui_signup_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_sound.c",
@@ -22378,10 +23072,61 @@
         "SpecifyLeague_MenuInit",
         "UI_SpecifyLeagueMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "SpecifyLeague_Cache",
+          "target_files": [
+            "src/mq3/client/ui_specifyleague.ml"
+          ],
+          "target_symbol": "mq3.client.ui_specifyleague.SpecifyLeague_Cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "SpecifyLeague_Event",
+          "target_files": [
+            "src/mq3/client/ui_specifyleague.ml"
+          ],
+          "target_symbol": "mq3.client.ui_specifyleague.SpecifyLeague_Event",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "SpecifyLeague_GetList",
+          "target_files": [
+            "src/mq3/client/ui_specifyleague.ml"
+          ],
+          "target_symbol": "mq3.client.ui_specifyleague.SpecifyLeague_GetList",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "SpecifyLeague_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_specifyleague.ml"
+          ],
+          "target_symbol": "mq3.client.ui_specifyleague.SpecifyLeague_MenuInit",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_SpecifyLeagueMenu",
+          "target_files": [
+            "src/mq3/client/ui_specifyleague.ml"
+          ],
+          "target_symbol": "mq3.client.ui_specifyleague.UI_SpecifyLeagueMenu",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 12 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_specifyleague.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_specifyleague.py",
+        "tests/ui_specifyleague_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_specifyserver.c",
@@ -22393,10 +23138,52 @@
         "SpecifyServer_MenuInit",
         "UI_SpecifyServerMenu"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "SpecifyServer_Cache",
+          "target_files": [
+            "src/mq3/client/ui_specify_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_specify_server.cache",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 8 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "SpecifyServer_Event",
+          "target_files": [
+            "src/mq3/client/ui_specify_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_specify_server.event",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 8 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "SpecifyServer_MenuInit",
+          "target_files": [
+            "src/mq3/client/ui_specify_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_specify_server.init",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 8 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        },
+        {
+          "original": "UI_SpecifyServerMenu",
+          "target_files": [
+            "src/mq3/client/ui_specify_server.ml"
+          ],
+          "target_symbol": "mq3.client.ui_specify_server.open",
+          "status": "tested_exact",
+          "scope": "Complete native semantic port with all ledger symbols covered and 8 focused contracts; original UI, renderer, filesystem, cvar and command effects remain typed host actions."
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_specify_server.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_specify_server.py",
+        "tests/ui_specify_server_contracts.ml"
+      ]
     },
     {
       "source": "code/q3_ui/ui_splevel.c",

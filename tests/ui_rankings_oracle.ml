@@ -1,0 +1,4 @@
+import mq3.client.ui_rankings as r
+import mq3.client.ui_qmenu as q
+function run(id,event) s=r.create(false);r.Rankings_MenuEvent(s,id,event);login=0;logout=0;signup=0;setup=0;forced=0;cmd="";for each a in s.actions if a.name=="login" then login=login+1 else if a.kind=="logout" then logout=logout+1 else if a.name=="signup" then signup=signup+1 else if a.name=="setup" then setup=setup+1 else if a.kind=="force-menu-off" then forced=forced+1 else if a.boundary=="command" then cmd=a.text end if end for;print(str(id)+" "+str(login)+" "+str(logout)+" "+str(signup)+" "+str(setup)+" "+str(forced)+" "+cmd);return void end function
+function main(args) run(r.ID_LOGIN,1);run(r.ID_LOGIN,q.QM_ACTIVATED);run(r.ID_LOGOUT,q.QM_ACTIVATED);run(r.ID_CREATE,q.QM_ACTIVATED);run(r.ID_SPECTATE,q.QM_ACTIVATED);run(r.ID_SETUP,q.QM_ACTIVATED);run(r.ID_LEAVE,q.QM_ACTIVATED);return 0 end function

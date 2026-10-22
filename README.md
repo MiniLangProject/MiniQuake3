@@ -135,6 +135,18 @@ sieben Gates sind in die Gesamtprüfung aufgenommen, die damit 329 Gates
 umfasst; der vollständige Lauf wurde nach diesem inkrementellen Block noch
 nicht wiederholt. Der native Hostdispatcher bleibt die nächste UI-
 Integrationsgrenze.
+Der folgende Abgleich portiert vierzehn weitere UI-Dateien: vollständige
+MField-Eingabe, Player-Settings, CD-Key, Cinematics, Demos, Config laden und
+speichern, direkten Server-Connect sowie Login, Signup, Rankings, Rankstatus
+und Leagueauswahl sowie den UI-VM-Einstieg mit allen 47 Original-Cvars und
+Exportkommandos. 40 unveränderte C-Datensätze, zusätzliche C-
+Entscheidungsoracles und 172 MiniLang-Verträge bestehen. Retail-Proben
+bestätigen 32 Menüassets, elf RoQ-Videos und beide Originaldemos. Alle 78
+Originalsymbole sind zugeordnet. Das Inventar steht bei 76 portierten, 117
+partiellen und 142 noch nicht begonnenen Runtime-/Plattformdateien; `q3_ui`
+steht bei 43 von 47 vollständig portierten Dateien. Die Gesamtprüfung umfasst
+nun 343 Gates, wurde nach diesem inkrementellen Block aber noch nicht komplett
+wiederholt.
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 

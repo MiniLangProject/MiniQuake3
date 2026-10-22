@@ -175,6 +175,30 @@ vollständig wiederholt. Die produktive Original-UI bleibt aktiv, bis der native
 Hostdispatcher alle typisierten UI-, LAN-, Renderer-, Cvar- und
 Command-Aktionen vollständig ausführt.
 
+Der nächste UI-Abgleich schließt vierzehn weitere Originaldateien:
+`ui_mfield.c`, `ui_playersettings.c`, `ui_cdkey.c`, `ui_cinematics.c`,
+`ui_demo2.c`, `ui_loadconfig.c`, `ui_saveconfig.c`, `ui_specifyserver.c`,
+`ui_rankings.c`, `ui_rankstatus.c`, `ui_login.c`, `ui_signup.c` und
+`ui_specifyleague.c` und `ui_main.c`. Editierfelder unterstützen Cursor/Scroll,
+Insert/Overstrike, Löschen, Home/End, Emacs-Kürzel und Clipboard-Paste. Die
+Spielereinstellungen speichern Name, Handicap, Farbe und Modellvorschau. CD-
+Key-Lesen/-Prüfen/-Schreiben, alle freigeschalteten Cinematics, Retail-Demos,
+Konfigurationsladen/-speichern und direkter Server-Connect sind vollständig
+abgebildet. Login, Signup, Rankings, Rankstatus und Leagueauswahl enthalten
+ihre originalen Status-, Feld-, Filter-, Poll- und Navigationsabläufe. 40
+Datensätze aus unverändert extrahierten C-Funktionen, zusätzliche MField- und
+PlayerSettings-C-Entscheidungsoracles sowie 172 native Verträge bestehen. Der
+UI-VM-Einstieg enthält außerdem alle 47 Original-Cvars und dispatcht sämtliche
+Exporte 0 bis 10 mit unverändert abgeglichener Rückgabesemantik.
+Retail-Proben bestätigen 32 Menüassets, alle elf erwarteten RoQ-Dateien und
+beide Retail-Demos. Alle 78 Ledger-Symbole sind zugeordnet. Das Runtime-/
+Plattforminventar zählt nun 76 portierte, 117 partielle und 142 nicht begonnene
+Originaldateien; im `q3_ui`-Bereich sind 43 von 47 Dateien vollständig
+portiert. Die vierzehn Gates sind in `scripts/verify.py` aufgenommen und
+erhöhen den Gesamtlauf auf 343 Gates; er wurde für diesen inkrementellen Block
+noch nicht vollständig wiederholt. Die typisierten nativen UI-Aktionen bleiben
+bis zur Dispatcher-Integration neben der produktiven Retail-UI unterdrückt.
+
 Dieser Vollstand enthält auch die produktive
 `AAS_BestReachableFromJumpPadArea`-Platzierung: benannte Map-Boots laden die
 passende Retail-AAS, `trigger_push`-Ballistik wird 30 Frames gegen die Item-BBox

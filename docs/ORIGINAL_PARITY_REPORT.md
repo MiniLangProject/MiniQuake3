@@ -19,7 +19,7 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `game` | 65 | 0 | 33 | 32 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
-| `q3_ui` | 47 | 29 | 2 | 16 | 0 |
+| `q3_ui` | 47 | 43 | 2 | 2 | 0 |
 | `qcommon` | 27 | 1 | 17 | 9 | 0 |
 | `renderer` | 27 | 7 | 16 | 4 | 0 |
 | `server` | 11 | 0 | 9 | 2 | 0 |
@@ -27,7 +27,7 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `ui` | 12 | 0 | 0 | 12 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 0 | 6 | 7 | 0 |
-| **Gesamt** | **335** | **62** | **117** | **156** | **0** |
+| **Gesamt** | **335** | **76** | **117** | **142** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -218,42 +218,42 @@ Teil dieser Tabelle.
 | `code/q3_ui/keycodes.h` | `q3_ui` | `not_started` | 0 | 0 | 0 |
 | `code/q3_ui/ui_addbots.c` | `q3_ui` | `ported` | 12 | 12 | 0 |
 | `code/q3_ui/ui_atoms.c` | `q3_ui` | `partial` | 40 | 1 | 39 |
-| `code/q3_ui/ui_cdkey.c` | `q3_ui` | `not_started` | 7 | 0 | 7 |
-| `code/q3_ui/ui_cinematics.c` | `q3_ui` | `not_started` | 6 | 0 | 6 |
+| `code/q3_ui/ui_cdkey.c` | `q3_ui` | `ported` | 7 | 7 | 0 |
+| `code/q3_ui/ui_cinematics.c` | `q3_ui` | `ported` | 6 | 6 | 0 |
 | `code/q3_ui/ui_confirm.c` | `q3_ui` | `ported` | 8 | 8 | 0 |
 | `code/q3_ui/ui_connect.c` | `q3_ui` | `partial` | 5 | 1 | 4 |
 | `code/q3_ui/ui_controls2.c` | `q3_ui` | `ported` | 22 | 22 | 0 |
 | `code/q3_ui/ui_credits.c` | `q3_ui` | `ported` | 3 | 3 | 0 |
-| `code/q3_ui/ui_demo2.c` | `q3_ui` | `not_started` | 5 | 0 | 5 |
+| `code/q3_ui/ui_demo2.c` | `q3_ui` | `ported` | 5 | 5 | 0 |
 | `code/q3_ui/ui_display.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
 | `code/q3_ui/ui_gameinfo.c` | `q3_ui` | `ported` | 28 | 28 | 0 |
 | `code/q3_ui/ui_ingame.c` | `q3_ui` | `ported` | 6 | 6 | 0 |
-| `code/q3_ui/ui_loadconfig.c` | `q3_ui` | `not_started` | 4 | 0 | 4 |
+| `code/q3_ui/ui_loadconfig.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
 | `code/q3_ui/ui_local.h` | `q3_ui` | `not_started` | 0 | 0 | 0 |
-| `code/q3_ui/ui_login.c` | `q3_ui` | `not_started` | 4 | 0 | 4 |
-| `code/q3_ui/ui_main.c` | `q3_ui` | `not_started` | 3 | 0 | 3 |
+| `code/q3_ui/ui_login.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
+| `code/q3_ui/ui_main.c` | `q3_ui` | `ported` | 3 | 3 | 0 |
 | `code/q3_ui/ui_menu.c` | `q3_ui` | `ported` | 7 | 7 | 0 |
-| `code/q3_ui/ui_mfield.c` | `q3_ui` | `not_started` | 8 | 0 | 8 |
+| `code/q3_ui/ui_mfield.c` | `q3_ui` | `ported` | 8 | 8 | 0 |
 | `code/q3_ui/ui_mods.c` | `q3_ui` | `ported` | 7 | 7 | 0 |
 | `code/q3_ui/ui_network.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
 | `code/q3_ui/ui_options.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
 | `code/q3_ui/ui_playermodel.c` | `q3_ui` | `ported` | 12 | 12 | 0 |
 | `code/q3_ui/ui_players.c` | `q3_ui` | `ported` | 23 | 23 | 0 |
-| `code/q3_ui/ui_playersettings.c` | `q3_ui` | `not_started` | 11 | 0 | 11 |
+| `code/q3_ui/ui_playersettings.c` | `q3_ui` | `ported` | 11 | 11 | 0 |
 | `code/q3_ui/ui_preferences.c` | `q3_ui` | `ported` | 6 | 6 | 0 |
 | `code/q3_ui/ui_qmenu.c` | `q3_ui` | `ported` | 32 | 32 | 0 |
-| `code/q3_ui/ui_rankings.c` | `q3_ui` | `not_started` | 7 | 0 | 7 |
-| `code/q3_ui/ui_rankstatus.c` | `q3_ui` | `not_started` | 4 | 0 | 4 |
+| `code/q3_ui/ui_rankings.c` | `q3_ui` | `ported` | 7 | 7 | 0 |
+| `code/q3_ui/ui_rankstatus.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
 | `code/q3_ui/ui_removebots.c` | `q3_ui` | `ported` | 10 | 10 | 0 |
-| `code/q3_ui/ui_saveconfig.c` | `q3_ui` | `not_started` | 6 | 0 | 6 |
+| `code/q3_ui/ui_saveconfig.c` | `q3_ui` | `ported` | 6 | 6 | 0 |
 | `code/q3_ui/ui_serverinfo.c` | `q3_ui` | `ported` | 6 | 6 | 0 |
 | `code/q3_ui/ui_servers2.c` | `q3_ui` | `ported` | 23 | 23 | 0 |
 | `code/q3_ui/ui_setup.c` | `q3_ui` | `ported` | 6 | 6 | 0 |
-| `code/q3_ui/ui_signup.c` | `q3_ui` | `not_started` | 4 | 0 | 4 |
+| `code/q3_ui/ui_signup.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
 | `code/q3_ui/ui_sound.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
 | `code/q3_ui/ui_sparena.c` | `q3_ui` | `ported` | 1 | 1 | 0 |
-| `code/q3_ui/ui_specifyleague.c` | `q3_ui` | `not_started` | 5 | 0 | 5 |
-| `code/q3_ui/ui_specifyserver.c` | `q3_ui` | `not_started` | 4 | 0 | 4 |
+| `code/q3_ui/ui_specifyleague.c` | `q3_ui` | `ported` | 5 | 5 | 0 |
+| `code/q3_ui/ui_specifyserver.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
 | `code/q3_ui/ui_splevel.c` | `q3_ui` | `ported` | 22 | 22 | 0 |
 | `code/q3_ui/ui_sppostgame.c` | `q3_ui` | `ported` | 12 | 12 | 0 |
 | `code/q3_ui/ui_spreset.c` | `q3_ui` | `ported` | 5 | 5 | 0 |
@@ -537,22 +537,8 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/null/null_snddma.c` (not_started): `SNDDMA_BeginPainting`, `SNDDMA_GetDMAPos`, `SNDDMA_Init`, `SNDDMA_Shutdown`, `SNDDMA_Submit`, `S_ClearSoundBuffer`, `S_RegisterSound`, `S_StartLocalSound`
 - `code/q3_ui/keycodes.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/q3_ui/ui_atoms.c` (partial): `Com_Error`, `Com_Printf`, `NeedCDAction`, `NeedCDKeyAction`, `UI_AdjustFrom640`, `UI_Argv`, `UI_Cache_f`, `UI_ClampCvar`, `UI_ConsoleCommand`, `UI_CursorInRect`, `UI_Cvar_VariableString`, `UI_DrawBannerString`, `UI_DrawBannerString2`, `UI_DrawChar`, `UI_DrawHandlePic`, `UI_DrawNamedPic`, `UI_DrawProportionalString`, `UI_DrawProportionalString2`, `UI_DrawProportionalString_AutoWrapped`, `UI_DrawRect`, `UI_DrawString`, `UI_DrawString2`, `UI_DrawTextBox`, `UI_FillRect`, `UI_ForceMenuOff`, `UI_Init`, `UI_IsFullscreen`, `UI_KeyEvent`, `UI_LerpColor`, `UI_MouseEvent`, `UI_PopMenu`, `UI_ProportionalSizeScale`, `UI_ProportionalStringWidth`, `UI_PushMenu`, `UI_Refresh`, `UI_SetColor`, `UI_Shutdown`, `UI_StartDemoLoop`, `UI_UpdateScreen`
-- `code/q3_ui/ui_cdkey.c` (not_started): `UI_CDKeyMenu`, `UI_CDKeyMenu_Cache`, `UI_CDKeyMenu_DrawKey`, `UI_CDKeyMenu_Event`, `UI_CDKeyMenu_Init`, `UI_CDKeyMenu_PreValidateKey`, `UI_CDKeyMenu_f`
-- `code/q3_ui/ui_cinematics.c` (not_started): `UI_CinematicsMenu`, `UI_CinematicsMenu_BackEvent`, `UI_CinematicsMenu_Cache`, `UI_CinematicsMenu_Event`, `UI_CinematicsMenu_Init`, `UI_CinematicsMenu_f`
 - `code/q3_ui/ui_connect.c` (partial): `UI_DisplayDownloadInfo`, `UI_KeyConnect`, `UI_PrintTime`, `UI_ReadableSize`
-- `code/q3_ui/ui_demo2.c` (not_started): `Demos_Cache`, `Demos_MenuEvent`, `Demos_MenuInit`, `UI_DemosMenu`, `UI_DemosMenu_Key`
-- `code/q3_ui/ui_loadconfig.c` (not_started): `LoadConfig_MenuEvent`, `LoadConfig_MenuInit`, `UI_LoadConfigMenu`, `UI_LoadConfig_Cache`
 - `code/q3_ui/ui_local.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/q3_ui/ui_login.c` (not_started): `Login_Cache`, `Login_MenuEvent`, `Login_MenuInit`, `UI_LoginMenu`
-- `code/q3_ui/ui_main.c` (not_started): `UI_RegisterCvars`, `UI_UpdateCvars`, `vmMain`
-- `code/q3_ui/ui_mfield.c` (not_started): `MField_CharEvent`, `MField_Clear`, `MField_Draw`, `MField_KeyDownEvent`, `MField_Paste`, `MenuField_Draw`, `MenuField_Init`, `MenuField_Key`
-- `code/q3_ui/ui_playersettings.c` (not_started): `PlayerSettings_Cache`, `PlayerSettings_DrawEffects`, `PlayerSettings_DrawHandicap`, `PlayerSettings_DrawName`, `PlayerSettings_DrawPlayer`, `PlayerSettings_MenuEvent`, `PlayerSettings_MenuInit`, `PlayerSettings_MenuKey`, `PlayerSettings_SaveChanges`, `PlayerSettings_SetMenuItems`, `UI_PlayerSettingsMenu`
-- `code/q3_ui/ui_rankings.c` (not_started): `Rankings_Cache`, `Rankings_DrawName`, `Rankings_DrawPassword`, `Rankings_DrawText`, `Rankings_MenuEvent`, `Rankings_MenuInit`, `UI_RankingsMenu`
-- `code/q3_ui/ui_rankstatus.c` (not_started): `RankStatus_Cache`, `RankStatus_MenuEvent`, `RankStatus_MenuInit`, `UI_RankStatusMenu`
-- `code/q3_ui/ui_saveconfig.c` (not_started): `UI_SaveConfigMenu`, `UI_SaveConfigMenu_BackEvent`, `UI_SaveConfigMenu_Cache`, `UI_SaveConfigMenu_Init`, `UI_SaveConfigMenu_SaveEvent`, `UI_SaveConfigMenu_SavenameDraw`
-- `code/q3_ui/ui_signup.c` (not_started): `Signup_Cache`, `Signup_MenuEvent`, `Signup_MenuInit`, `UI_SignupMenu`
-- `code/q3_ui/ui_specifyleague.c` (not_started): `SpecifyLeague_Cache`, `SpecifyLeague_Event`, `SpecifyLeague_GetList`, `SpecifyLeague_MenuInit`, `UI_SpecifyLeagueMenu`
-- `code/q3_ui/ui_specifyserver.c` (not_started): `SpecifyServer_Cache`, `SpecifyServer_Event`, `SpecifyServer_MenuInit`, `UI_SpecifyServerMenu`
 - `code/qcommon/cm_load.c` (partial): `CM_Checksum`, `CM_ClearMap`, `CM_EntityString`, `CM_LoadMap`, `CM_LumpChecksum`, `CMod_LoadEntityString`, `CMod_LoadLeafBrushes`, `CMod_LoadLeafSurfaces`, `CMod_LoadShaders`, `SetPlaneSignbits`
 - `code/qcommon/cm_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/cm_patch.c` (partial): `CM_ClearLevelPatches`, `CM_ComparePoints`, `CM_DrawDebugSurface`, `CM_EdgePlaneNum`, `CM_GridPlane`, `CM_NeedsSubdivision`, `CM_PlaneEqual`, `CM_PlaneFromPoints`, `CM_PointOnPlaneSide`, `CM_SetGridWrapWidth`, `CM_SignbitsForNormal`, `CM_SnapVector`
