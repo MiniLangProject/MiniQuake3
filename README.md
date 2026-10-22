@@ -49,6 +49,18 @@ von `python scripts/verify.py --data-root D:/Quake3`. Der dabei frisch gebaute
 `76edc5435dc6d79555b72bd71b5dc0ddc553d7cb67a64fa7d314549230d7f322`;
 das zugehörige `build/verification.json` hat SHA-256
 `d74e92a4c2a45bdd51b3c300125f29c373554bb781e58a4f4ba1ede0abefcd3d`.
+Der neueste inkrementelle Quellenblock schließt zusätzlich vier bisher
+unbegonnene Originaldateien: `code/ui/ui_players.c`, `code/game/ai_vcmd.c`,
+`code/server/sv_ccmds.c` und `code/win32/win_snd.c`. Team-Arena-Spielermodelle,
+Bot-Voicecommands, sämtliche Server-Operatorbefehle und der DirectSound-DMA-
+Lifecycle sind damit vollständig nativ zugeordnet. Die vier Fokustests bestehen
+mit 46 unveränderten C-Datensätzen, 91 nativen Verträgen und 23 Retail-Probes
+beziehungsweise kompilierten Retail-IDs. Das Inventar zählt nun 94 portierte,
+114 partielle und 127 noch nicht begonnene Runtime-/Plattformdateien. Die
+vollständige Gesamtauswahl wurde seit der Erweiterung noch nicht erneut am Stück
+ausgeführt. Der frisch gebaute Hauptstand mit SHA-256
+`6203ea60375f534ec4172c8dca77926e8fb2ce4d6d5f5ee862f1e939f65cdf45`
+und das Retail-QVM-Match über acht Frames bestehen separat.
 Seit diesem Gesamtlauf bestehen zusätzlich die neuen `cg_event.c`-,
 `cg_playerstate.c`- und `cg_predict.c`-Differentialgates mit 29 unveränderten
 C-Datensätzen und 139 nativen Verträgen. Jetzt sind auch `cg_effects.c`,

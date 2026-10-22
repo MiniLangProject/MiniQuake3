@@ -12519,10 +12519,162 @@
         "BotVoiceChat_WantOnOffense",
         "BotVoiceChat_WhoIsLeader"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "BotVoiceChatCommand",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.voiceChatCommand",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_Camp",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.camp",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_Defend",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.defend",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_DefendFlag",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.defendFlag",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_Dummy",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.dummy",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_FollowFlagCarrier",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.followFlagCarrier",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_FollowMe",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.followMe",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_GetFlag",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.getFlag",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_Offense",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.offense",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_Patrol",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.patrol",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_ReturnFlag",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.returnFlag",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_StartLeader",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.startLeader",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_StopLeader",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.stopLeader",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_WantOnDefense",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.wantOnDefense",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_WantOnOffense",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.wantOnOffense",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        },
+        {
+          "original": "BotVoiceChat_WhoIsLeader",
+          "target_files": [
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "target_symbol": "mq3.game.bot_voice_commands.whoIsLeader",
+          "status": "tested_exact",
+          "scope": "baseq3 and missionpack bot voice-command behavior"
+        }
+      ],
+      "target": [
+        "src/mq3/game/bot_voice_commands.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_bot_voice_commands.py",
+        "tests/reference/bot_voice_commands_oracle.c",
+        "tests/bot_voice_commands_oracle.ml",
+        "tests/bot_voice_commands_contracts.ml"
+      ]
     },
     {
       "source": "code/game/ai_vcmd.h",
@@ -32168,10 +32320,163 @@
         "SV_Status_f",
         "SV_Systeminfo_f"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Cmd_Argv",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.Cmd_Argv",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_AddOperatorCommands",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_AddOperatorCommands",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_BanNum_f",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_BanNum_f",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_Ban_f",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_Ban_f",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_ConSay_f",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_ConSay_f",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_DumpUser_f",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_DumpUser_f",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_Heartbeat_f",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_Heartbeat_f",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_KickNum_f",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_KickNum_f",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_Kick_f",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_Kick_f",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_KillServer_f",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_KillServer_f",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_MapRestart_f",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_MapRestart_f",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_Map_f",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_Map_f",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_RemoveOperatorCommands",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_RemoveOperatorCommands",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_Serverinfo_f",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_Serverinfo_f",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_Status_f",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_Status_f",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "SV_Systeminfo_f",
+          "target_files": [
+            "src/mq3/server/operator_commands.ml"
+          ],
+          "target_symbol": "mq3.server.operator_commands.SV_Systeminfo_f",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        }
+      ],
+      "target": [
+        "src/mq3/server/operator_commands.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_server_operator_commands.py",
+        "tests/reference/server_operator_commands_oracle.c",
+        "tests/server_operator_commands_oracle.ml",
+        "tests/server_operator_commands_contracts.ml",
+        "tests/server_operator_commands_retail_probe.ml"
+      ]
     },
     {
       "source": "code/server/sv_client.c",
@@ -33871,10 +34176,244 @@
         "UI_SwingAngles",
         "UI_TorsoSequencing"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_DrawPlayer",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_DrawPlayer",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_FileExists",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_FileExists",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_FindClientHeadFile",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_FindClientHeadFile",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_ForceLegsAnim",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_ForceLegsAnim",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_ForceTorsoAnim",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_ForceTorsoAnim",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_LegsSequencing",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_LegsSequencing",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_MachinegunSpinAngle",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_MachinegunSpinAngle",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_MovedirAdjustment",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_MovedirAdjustment",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_ParseAnimationFile",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_ParseAnimationFile",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_PlayerAngles",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_PlayerAngles",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_PlayerAnimation",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_PlayerAnimation",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_PlayerFloatSprite",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_PlayerFloatSprite",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_PlayerInfo_SetInfo",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_PlayerInfo_SetInfo",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_PlayerInfo_SetModel",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_PlayerInfo_SetModel",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_PlayerInfo_SetWeapon",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_PlayerInfo_SetWeapon",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_PositionEntityOnTag",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_PositionEntityOnTag",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_PositionRotatedEntityOnTag",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_PositionRotatedEntityOnTag",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_RegisterClientModelname",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_RegisterClientModelname",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_RegisterClientSkin",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_RegisterClientSkin",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_RunLerpFrame",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_RunLerpFrame",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_SetLegsAnim",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_SetLegsAnim",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_SetLerpFrameAnimation",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_SetLerpFrameAnimation",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_SetTorsoAnim",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_SetTorsoAnim",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_SwingAngles",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_SwingAngles",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        },
+        {
+          "original": "UI_TorsoSequencing",
+          "target_files": [
+            "src/mq3/client/ui_players_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_players_missionpack.UI_TorsoSequencing",
+          "status": "tested_exact",
+          "scope": "complete original-file behavioral port"
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_players_missionpack.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_players_missionpack.py",
+        "tests/reference/ui_players_missionpack_oracle.c",
+        "tests/ui_players_missionpack_oracle.ml",
+        "tests/ui_players_missionpack_contracts.ml",
+        "tests/ui_players_missionpack_retail_probe.ml"
+      ]
     },
     {
       "source": "code/ui/ui_public.h",
@@ -36859,10 +37398,90 @@
         "SNDDMA_Submit",
         "position"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "DSoundError",
+          "target_files": [
+            "src/mq3/platform/win_snd.ml"
+          ],
+          "target_symbol": "mq3.platform.win_snd.DSoundError",
+          "status": "tested_exact",
+          "scope": "DirectSound DMA lifecycle and platform boundary"
+        },
+        {
+          "original": "SNDDMA_Activate",
+          "target_files": [
+            "src/mq3/platform/win_snd.ml"
+          ],
+          "target_symbol": "mq3.platform.win_snd.SNDDMA_Activate",
+          "status": "tested_exact",
+          "scope": "DirectSound DMA lifecycle and platform boundary"
+        },
+        {
+          "original": "SNDDMA_BeginPainting",
+          "target_files": [
+            "src/mq3/platform/win_snd.ml"
+          ],
+          "target_symbol": "mq3.platform.win_snd.SNDDMA_BeginPainting",
+          "status": "tested_exact",
+          "scope": "DirectSound DMA lifecycle and platform boundary"
+        },
+        {
+          "original": "SNDDMA_Init",
+          "target_files": [
+            "src/mq3/platform/win_snd.ml"
+          ],
+          "target_symbol": "mq3.platform.win_snd.SNDDMA_Init",
+          "status": "tested_exact",
+          "scope": "DirectSound DMA lifecycle and platform boundary"
+        },
+        {
+          "original": "SNDDMA_InitDS",
+          "target_files": [
+            "src/mq3/platform/win_snd.ml"
+          ],
+          "target_symbol": "mq3.platform.win_snd.SNDDMA_InitDS",
+          "status": "tested_exact",
+          "scope": "DirectSound DMA lifecycle and platform boundary"
+        },
+        {
+          "original": "SNDDMA_Shutdown",
+          "target_files": [
+            "src/mq3/platform/win_snd.ml"
+          ],
+          "target_symbol": "mq3.platform.win_snd.SNDDMA_Shutdown",
+          "status": "tested_exact",
+          "scope": "DirectSound DMA lifecycle and platform boundary"
+        },
+        {
+          "original": "SNDDMA_Submit",
+          "target_files": [
+            "src/mq3/platform/win_snd.ml"
+          ],
+          "target_symbol": "mq3.platform.win_snd.SNDDMA_Submit",
+          "status": "tested_exact",
+          "scope": "DirectSound DMA lifecycle and platform boundary"
+        },
+        {
+          "original": "position",
+          "target_files": [
+            "src/mq3/platform/win_snd.ml"
+          ],
+          "target_symbol": "mq3.platform.win_snd.SNDDMA_GetDMAPos",
+          "status": "tested_exact",
+          "scope": "DirectSound DMA lifecycle and platform boundary"
+        }
+      ],
+      "target": [
+        "src/mq3/platform/win_snd.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_win_snd.py",
+        "tests/reference/win_snd_oracle.c",
+        "tests/win_snd_oracle.ml",
+        "tests/win_snd_contracts.ml"
+      ]
     },
     {
       "source": "code/win32/win_syscon.c",

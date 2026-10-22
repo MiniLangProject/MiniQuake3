@@ -2109,3 +2109,31 @@ Polygon-Clipping, Fragmentgrenzen und die produktive `CG_R_MARKFRAGMENTS`-
 Trap-Anbindung. Fünf Datensätze vergleichen Punktreihenfolge, Offsets und
 Float-Bitmuster direkt mit den unveränderten C-Funktionen; 17 Verträge und eine
 Retail-Projektion auf `q3dm1` prüfen den vollständigen Weltgeometriepfad.
+
+### Team-Arena-Spieler, Bot-Voicecommands, Serveroperator und DirectSound
+
+Vier weitere zuvor unbegonnene Originaldateien sind vollständig nativ
+zugeordnet. `code/ui/ui_players.c` bildet getrennte Body-/Head-Modelle,
+Team-Skins, die originale Head-Dateisuche, 31-Slot-Team-Arena-Animationen,
+Lerp, Winkel, Tags, Waffen und Renderaktionen ab. Die vorhandenen Baseq3-
+Retaildaten enthalten nur das ältere 25-Slot-Animationsformat; der Probe weist
+die originale Ablehnung dieses Formats im Team-Arena-Pfad nach. Eine visuelle
+Team-Arena-Abnahme benötigt weiterhin legale `missionpack`-Daten.
+
+`code/game/ai_vcmd.c` deckt alle 16 Sprachbefehle, Zielkopien, Zeitfolge,
+Leader- und Teamtask-Zustände für Baseq3 und Missionpack ab. `code/server/sv_ccmds.c`
+enthält Kartenwechsel und -restart, Kick/Ban, Status- und Infoausgabe,
+Konsolenchat, Heartbeat und Shutdown einschließlich des upstream absichtlich
+wirkungslosen Remove-Pfads. `code/win32/win_snd.c` portiert DirectSound-8-/
+Legacy-Auswahl, Hardware-/Softwarepuffer, Ringcursor, Lock/Restore/Retry,
+Submit, Aktivierung und vollständiges Shutdown. Die Hostaktionen sind bei
+aktiver Retail-QVM unterdrückbar, damit Ton und Servereffekte nicht doppelt
+ausgegeben werden.
+
+Die vier Fokustests bestehen mit 46 Datensätzen aus unverändertem C, 91
+MiniLang-Verträgen und 23 Retail-Probes beziehungsweise kompilierten Retail-IDs.
+Das erzeugte Inventar zählt nun 94 portierte, 114 partielle und 127 noch nicht
+begonnene Runtime-/Plattformdateien. Der frisch gebaute Hauptstand mit SHA-256
+`6203ea60375f534ec4172c8dca77926e8fb2ce4d6d5f5ee862f1e939f65cdf45`
+und das Retail-QVM-Match über acht Frames bestehen; ein neuer vollständiger Lauf
+aller Gates ist noch nicht als Gesamtnachweis dokumentiert.
