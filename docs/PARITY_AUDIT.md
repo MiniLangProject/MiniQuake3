@@ -2217,3 +2217,43 @@ Release-AAS verwendet durch BSPC vorberechnete Reachabilities; ein erzwungener
 nativer Neubau ist implementiert. RCD-v2 persistiert deterministisch ohne C-
 Pointer. Die zehn upstream mit `#if 0` deaktivierten `bg_lib.c`-Funktionen sind
 vollständig aufrufbar portiert, bleiben aber außerhalb des aktiven Q3_VM-Pfads.
+
+### Vollständige Common-, Shader- und Bot-Zustandslaufzeit
+
+Der Dateiabgleich vom 22. Oktober 2026 hebt `code/qcommon/common.c`,
+`code/renderer/tr_shader.c` und `code/game/ai_dmnet.c` auf `ported`. Alle 152
+Ledger-Symbole sind einem nativen MiniLang-Pfad zugeordnet. 60 Beobachtungen
+aus unverändertem C und 102 native Verträge prüfen die neuen Dateipfade; die
+bereits vorhandenen Shader-Parser-, Material- und Bot-Navigationstests bleiben
+zusätzlich aktiv.
+
+`common.ml` bildet Redirect und Ausgabe, Fehler und Quit, Filter und Hashing,
+Zeitfassade, Journaling und Events, Startparameter, Initialisierung, Frame und
+Shutdown, Konfiguration und CD-Key sowie Zone/Hunk und Bytefunktionen ab.
+OS-Zeit und Kalender, Dateien, Prozessende, Systemevents und
+Subsystem-Lebenszyklen sind typisierte Hostdienste. Verwaltete Allokationen
+ersetzen rohe Pointer- und Assemblerlayouts; kontrollierte `CommonError`-Werte
+ersetzen `setjmp`/`longjmp` und absichtliche Prozessabstürze.
+
+`shader_runtime.ml` portiert die Parserfassaden, Sky-/Surface-/Sort-Auswertung,
+`FinishShader`, Vertex-Light- und Multitexture-Kollaps, Iteratorwahl, stabile
+Handles, sortierte Einfügung, Registrierung, Remap und Liste. Der Retail-Probe
+liest 27 Shaderdateien mit 1.404 Definitionen und findet 28 explizite q3dm1-
+Treffer. GPU-Upload, TMU-/Lightmap-Arrayzugriff und Backend-Commandbuffer-
+Reparatur bleiben typisierte Hostgrenzen.
+
+`ai_dmnet.ml` umfasst alle Baseq3- und Missionpack-Knoten, Node-Historie und
+Überlauf, Aktivierungswaffen einschließlich Chaingun und Nailgun,
+`BotClearPath` für Kamikaze und Prox-Minen, Führungsdispatch sowie One-Flag-
+CTF-, Obelisk- und Harvesterzweige. Die Baseq3-Retaildaten liefern fünf direkte
+Probes. Da `D:/Quake3` keine Team-Arena-Daten enthält, werden Missionpack-
+Semantik und Grenzwerte durch Original-C- und native Verträge geprüft.
+Dynamische Entity-/Trace-/EA-Aktionen bleiben typisierte Hostdienste.
+
+Das erzeugte Inventar zählt jetzt **117 portierte, 101 partielle und 117 nicht
+begonnene** Runtime-/Plattformdateien. Die drei Fokustests, die komplette
+31-teilige Bot-Paritätssuite, der Hauptbuild und das Retail-QVM-Match über acht
+Frames bestehen. Der Build hat SHA-256
+`cfcff12bbb36b766ad02e93d974e3a06df0e65f0e65490b4fb9c43a7725a3b3b`.
+Der letzte vollständige Lauf aller 378 bisherigen Gates bleibt grün; die drei
+neuen Tests sind als Gates 379 bis 381 in `scripts/verify.py` eingetragen.

@@ -863,6 +863,41 @@ Reachabilities; der native Erzeugungspfad ist für erzwungene Neubauten vorhande
 Routingcaches verwenden das deterministische, zeigerfreie RCD-v2-Format statt
 historischer C-Pointer-Dumps.
 
+## Vollständige Common-, Shader- und Bot-Zustandslaufzeit vom 22. Oktober 2026
+
+Der aktuelle Abgleich schließt drei weitere zentrale Originaldateien vollständig:
+`code/qcommon/common.c`, `code/renderer/tr_shader.c` und
+`code/game/ai_dmnet.c`. Die neuen nativen MiniLang-Module umfassen alle **152
+Ledger-Symbole**. Die Abnahme enthält **60 Beobachtungen aus unverändertem C**
+und **102 native Verträge** sowie die bereits vorhandenen Shader-Parser-,
+Material- und Bot-Navigationstests.
+
+Der Common-Pfad deckt Redirect, Ausgabe und Fehler, Filter und Hashing,
+Journaling und Events, Start, Initialisierung, Frame und Shutdown, Konfiguration,
+CD-Key, Zone/Hunk und Byteoperationen ab. Betriebssystemzeit, Dateien,
+Prozessende und Subsystem-Lebenszyklen bleiben explizite typisierte
+Hostschnittstellen. Der Shader-Pfad enthält Parserfassaden, Sky-/Surface-/Sort-
+Behandlung, `FinishShader`, Vertex-Light- und Multitexture-Kollaps,
+Iteratorwahl, stabile Handles, sortierte Einfügung, Registrierung, Remap und
+Liste. GPU-Upload, TMU-/Lightmap-Zugriff und Backend-Commandbuffer bleiben
+typisierte Renderergrenzen.
+
+Der vollständige `ai_dmnet.c`-Zustandsautomat bildet Baseq3 und die im
+Originalquellcode vorhandenen Missionpack-Zweige ab: Node-Historie,
+Aktivierungswaffen, Hindernisbeseitigung für Kamikaze und Prox-Minen,
+Führungsdispatch sowie CTF-, One-Flag-, Obelisk- und Harvesterzustände. Die
+vorhandenen Retail-Daten prüfen Baseq3 direkt; Team-Arena-Verhalten ist mangels
+legaler `missionpack`-Assets durch Original-C- und native Verträge abgedeckt.
+
+Das Runtime-/Plattforminventar zählt nun **117 portierte**, **101 partielle**
+und **117 noch nicht begonnene** Originaldateien. Alle drei neuen Fokustests,
+die vollständige **31-teilige Bot-Paritätssuite**, der Hauptbuild und das echte
+Retail-QVM-Match über acht Frames bestehen. Der frische Hauptstand hat SHA-256
+`cfcff12bbb36b766ad02e93d974e3a06df0e65f0e65490b4fb9c43a7725a3b3b`.
+Der letzte vollständige Gesamtlauf bleibt der grüne 378-Gate-Nachweis; die drei
+neuen Gates sind in `scripts/verify.py` aufgenommen und erhöhen den nächsten
+Gesamtlauf auf 381 Gates.
+
 ## Originalquellen und Spieldaten
 
 Die Original-Lizenz und Hinweise bleiben unter

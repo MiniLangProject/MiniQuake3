@@ -15769,158 +15769,438 @@
       ],
       "symbol_mapping": [
         {
-          "source": "AIEnter_Battle_Fight",
-          "target": "mq3.game.bot_fight_state.enterFight"
+          "original": "AIEnter_Battle_Chase",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AIEnter_Battle_Chase",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AIEnter_Battle_SuicidalFight",
-          "target": "mq3.game.bot_fight_state.enterSuicidalFight"
+          "original": "AIEnter_Battle_Fight",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AIEnter_Battle_Fight",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AIEnter_Battle_Chase",
-          "target": "mq3.game.bot_fight_state.enterChase"
+          "original": "AIEnter_Battle_NBG",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AIEnter_Battle_NBG",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AINode_Battle_Fight",
-          "target": "mq3.game.bot_fight_state.fightNode"
+          "original": "AIEnter_Battle_Retreat",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AIEnter_Battle_Retreat",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AIEnter_Battle_Retreat",
-          "target": "mq3.game.bot_fight_state.enterRetreat"
+          "original": "AIEnter_Battle_SuicidalFight",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AIEnter_Battle_SuicidalFight",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AIEnter_Battle_NBG",
-          "target": "mq3.game.bot_fight_state.enterNbg"
+          "original": "AIEnter_Intermission",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AIEnter_Intermission",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AINode_Battle_Chase",
-          "target": "mq3.game.bot_fight_state.chaseNode"
+          "original": "AIEnter_Observer",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AIEnter_Observer",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AINode_Battle_Retreat",
-          "target": "mq3.game.bot_fight_state.retreatNode"
+          "original": "AIEnter_Respawn",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AIEnter_Respawn",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AINode_Battle_NBG",
-          "target": "mq3.game.bot_fight_state.nbgNode"
+          "original": "AIEnter_Seek_ActivateEntity",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AIEnter_Seek_ActivateEntity",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "BotGetLongTermGoal",
-          "target": "mq3.game.bot_navigation.getLongTermGoal"
+          "original": "AIEnter_Seek_LTG",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AIEnter_Seek_LTG",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "BotLongTermGoal",
-          "target": "mq3.game.bot_navigation.longTermGoal"
+          "original": "AIEnter_Seek_NBG",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AIEnter_Seek_NBG",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AIEnter_Seek_LTG",
-          "target": "mq3.game.bot_seek_state.enterSeek"
+          "original": "AIEnter_Stand",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AIEnter_Stand",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AINode_Seek_LTG",
-          "target": "mq3.game.bot_seek_state.seekNode"
+          "original": "AINode_Battle_Chase",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AINode_Battle_Chase",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AIEnter_Seek_NBG",
-          "target": "mq3.game.bot_seek_state.enterSeekNbg",
-          "status": "tested_subset",
-          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+          "original": "AINode_Battle_Fight",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AINode_Battle_Fight",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AINode_Seek_NBG",
-          "target": "mq3.game.bot_seek_state.seekNbgNode",
-          "status": "tested_subset",
-          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+          "original": "AINode_Battle_NBG",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AINode_Battle_NBG",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AIEnter_Seek_ActivateEntity",
-          "target": "mq3.game.bot_seek_state.enterActivate",
-          "status": "tested_subset",
-          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+          "original": "AINode_Battle_Retreat",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AINode_Battle_Retreat",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AINode_Seek_ActivateEntity",
-          "target": "mq3.game.bot_seek_state.activateNode",
-          "status": "tested_subset",
-          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+          "original": "AINode_Intermission",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AINode_Intermission",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AIEnter_Stand",
-          "target": "mq3.game.bot_seek_state.enterStand",
-          "status": "tested_subset",
-          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+          "original": "AINode_Observer",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AINode_Observer",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AINode_Stand",
-          "target": "mq3.game.bot_seek_state.standNode",
-          "status": "tested_subset",
-          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+          "original": "AINode_Respawn",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AINode_Respawn",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AIEnter_Respawn",
-          "target": "mq3.game.bot_seek_state.enterRespawn",
-          "status": "tested_subset",
-          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+          "original": "AINode_Seek_ActivateEntity",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AINode_Seek_ActivateEntity",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AINode_Respawn",
-          "target": "mq3.game.bot_seek_state.respawnNode",
-          "status": "tested_subset",
-          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+          "original": "AINode_Seek_LTG",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AINode_Seek_LTG",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AIEnter_Observer",
-          "target": "mq3.game.bot_seek_state.enterObserver",
-          "status": "tested_subset",
-          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+          "original": "AINode_Seek_NBG",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AINode_Seek_NBG",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AINode_Observer",
-          "target": "mq3.game.bot_seek_state.observerNode",
-          "status": "tested_subset",
-          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+          "original": "AINode_Stand",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.AINode_Stand",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AIEnter_Intermission",
-          "target": "mq3.game.bot_seek_state.enterIntermission",
-          "status": "tested_subset",
-          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+          "original": "BotClearPath",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.BotClearPath",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         },
         {
-          "source": "AINode_Intermission",
-          "target": "mq3.game.bot_seek_state.intermissionNode",
-          "status": "tested_subset",
-          "scope": "43 unchanged-C scenarios / 101 exact observations and 38 MiniLang contracts cover coupled seek, activation-stack, idle, respawn, observer and intermission transitions including frame dispatch. Missionpack nodes remain open."
+          "original": "BotDumpNodeSwitches",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.BotDumpNodeSwitches",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
+        },
+        {
+          "original": "BotGetAirGoal",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.BotGetAirGoal",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
+        },
+        {
+          "original": "BotGetItemLongTermGoal",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.BotGetItemLongTermGoal",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
+        },
+        {
+          "original": "BotGetLongTermGoal",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.BotGetLongTermGoal",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
+        },
+        {
+          "original": "BotGoForAir",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.BotGoForAir",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
+        },
+        {
+          "original": "BotLongTermGoal",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.BotLongTermGoal",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
+        },
+        {
+          "original": "BotNearbyGoal",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.BotNearbyGoal",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
+        },
+        {
+          "original": "BotReachedGoal",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.BotReachedGoal",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
+        },
+        {
+          "original": "BotRecordNodeSwitch",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.BotRecordNodeSwitch",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
+        },
+        {
+          "original": "BotResetNodeSwitches",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.BotResetNodeSwitches",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
+        },
+        {
+          "original": "BotSelectActivateWeapon",
+          "target_files": [
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_fight_state.ml",
+            "src/mq3/game/bot_seek_state.ml",
+            "src/mq3/game/bot_lifecycle.ml"
+          ],
+          "target_symbol": "mq3.game.ai_dmnet.BotSelectActivateWeapon",
+          "status": "tested_exact",
+          "scope": "Complete Baseq3/Missionpack bot state machine, path clearing, goals and node transitions; Retail Baseq3 plus source/native Missionpack contracts."
         }
       ],
       "target": [
-        "src/mq3/game/bot_ai_commands.ml",
-        "src/mq3/game/bot_ai_frame.ml",
+        "src/mq3/game/ai_dmnet.ml",
         "src/mq3/game/bot_fight_state.ml",
-        "src/mq3/game/bot_lifecycle.ml",
-        "src/mq3/game/bot_navigation.ml",
-        "src/mq3/game/bot_seek_state.ml"
+        "src/mq3/game/bot_seek_state.ml",
+        "src/mq3/game/bot_lifecycle.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_bot_battle_states.py",
-        "scripts/test_bot_fight_state.py",
-        "scripts/test_bot_navigation.py",
-        "scripts/test_bot_seek_state.py",
-        "tests/bot_battle_states_contracts.ml",
-        "tests/bot_fight_state_contracts.ml",
-        "tests/bot_long_term_goal_contracts.ml",
-        "tests/bot_seek_state_contracts.ml",
-        "tests/reference/bot_activate_node_oracle.c",
-        "tests/reference/bot_activate_node_original.inc",
-        "tests/reference/bot_battle_states_oracle.c",
-        "tests/reference/bot_fight_state_oracle.c",
-        "tests/reference/bot_idle_nodes_oracle.c",
-        "tests/reference/bot_idle_nodes_original.inc",
-        "tests/reference/bot_long_term_oracle.c",
-        "tests/reference/bot_long_term_original.inc",
-        "tests/reference/bot_seek_ltg_original.inc",
-        "tests/reference/bot_seek_state_oracle.c"
+        "scripts/test_ai_dmnet.py",
+        "tests/reference/ai_dmnet_oracle.c",
+        "tests/ai_dmnet_contracts.ml",
+        "tests/ai_dmnet_retail_probe.ml"
       ]
     },
     {
@@ -34859,48 +35139,762 @@
       ],
       "symbol_mapping": [
         {
-          "original": "Com_ParseCommandLine, Com_SafeMode, Com_StartupVariable and Com_AddStartupCommands",
+          "original": "Com_AddStartupCommands",
           "target_files": [
-            "src/mq3/qcommon/startup_commands.ml"
+            "src/mq3/qcommon/common.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Startup command splitting, 32-line truncation, safe-mode consumption, early set variables and command-buffer append behavior match 10 direct unchanged-C records plus 16 MiniLang contracts through explicit Cvar services."
+          "target_symbol": "mq3.qcommon.common.Com_AddStartupCommands",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
         },
         {
-          "original": "Com_EventLoop network packet draining",
+          "original": "Com_AppendCDKey",
           "target_files": [
-            "src/mq3/qcommon/network_pump.ml"
+            "src/mq3/qcommon/common.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Bounded nonblocking client/server UDP draining with alternating preference, FIFO delivery and injected packet-event callbacks. Twenty live two-socket contracts pass; journaling remains open."
+          "target_symbol": "mq3.qcommon.common.Com_AppendCDKey",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
         },
         {
-          "original": "Com_EventLoop input and outer frame composition",
+          "original": "Com_BeginRedirect",
           "target_files": [
-            "src/mq3/platform/input_events.ml",
-            "src/mq3/platform/engine_loop.ml",
-            "src/mq3/platform/desktop_frame_host.ml",
-            "src/mq3/qcommon/config_persistence.ml"
+            "src/mq3/qcommon/common.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Sys-style input FIFO is drained with a fixed budget before the ported SV_Frame and CL_Frame callbacks. Com_WriteConfiguration runs before platform events/network/simulation, and writeconfig is registered at completed common initialization. Twenty engine-loop contracts plus desktop-host live contracts cover ordering, remainder, time, frame accounting and persistence; journaling remains open."
+          "target_symbol": "mq3.qcommon.common.Com_BeginRedirect",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Crash_f",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Crash_f",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_DPrintf",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_DPrintf",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_EndRedirect",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_EndRedirect",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Error",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Error",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Error_f",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Error_f",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_EventLoop",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_EventLoop",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Filter",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Filter",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_FilterPath",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_FilterPath",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Frame",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Frame",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Freeze_f",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Freeze_f",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_GetEvent",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_GetEvent",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_GetRealEvent",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_GetRealEvent",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_HashKey",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_HashKey",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Init",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Init",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_InitHunkMemory",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_InitHunkMemory",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_InitJournaling",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_InitJournaling",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_InitPushEvent",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_InitPushEvent",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_InitSmallZoneMemory",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_InitSmallZoneMemory",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_InitZoneMemory",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_InitZoneMemory",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Memcmp",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Memcmp",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Memcpy",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Memcpy",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Meminfo_f",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Meminfo_f",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Memset",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Memset",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Milliseconds",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Milliseconds",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_ModifyMsec",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_ModifyMsec",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_ParseCommandLine",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_ParseCommandLine",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Prefetch",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Prefetch",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Printf",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Printf",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_PushEvent",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_PushEvent",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Quit_f",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Quit_f",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_ReadCDKey",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_ReadCDKey",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_RealTime",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_RealTime",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_RunAndTimeServerPacket",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_RunAndTimeServerPacket",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_SafeMode",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_SafeMode",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_Shutdown",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_Shutdown",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_StartupVariable",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_StartupVariable",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_StringContains",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_StringContains",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_TouchMemory",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_TouchMemory",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_WriteCDKey",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_WriteCDKey",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_WriteConfigToFile",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_WriteConfigToFile",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_WriteConfig_f",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_WriteConfig_f",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Com_WriteConfiguration",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Com_WriteConfiguration",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "ConcatRemaining",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.ConcatRemaining",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "CopyString",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.CopyString",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Field_Clear",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Field_Clear",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Field_CompleteCommand",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Field_CompleteCommand",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "FindMatches",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.FindMatches",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Hunk_Alloc",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Hunk_Alloc",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Hunk_AllocateTempMemory",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Hunk_AllocateTempMemory",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Hunk_CheckMark",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Hunk_CheckMark",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Hunk_Clear",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Hunk_Clear",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Hunk_ClearTempMemory",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Hunk_ClearTempMemory",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Hunk_ClearToMark",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Hunk_ClearToMark",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Hunk_FreeTempMemory",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Hunk_FreeTempMemory",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Hunk_Log",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Hunk_Log",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Hunk_MemoryRemaining",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Hunk_MemoryRemaining",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Hunk_SetMark",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Hunk_SetMark",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Hunk_SmallLog",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Hunk_SmallLog",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Hunk_SwapBanks",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Hunk_SwapBanks",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Hunk_Trash",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Hunk_Trash",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Info_Print",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Info_Print",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "PrintMatches",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.PrintMatches",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Q_acos",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Q_acos",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "S_Malloc",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.S_Malloc",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "S_MallocDebug",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.S_MallocDebug",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Z_AvailableMemory",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Z_AvailableMemory",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Z_AvailableZoneMemory",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Z_AvailableZoneMemory",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Z_CheckHeap",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Z_CheckHeap",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Z_ClearZone",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Z_ClearZone",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Z_Free",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Z_Free",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Z_FreeTags",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Z_FreeTags",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Z_LogHeap",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Z_LogHeap",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Z_LogZoneHeap",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Z_LogZoneHeap",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Z_Malloc",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Z_Malloc",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Z_MallocDebug",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Z_MallocDebug",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Z_TagMalloc",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Z_TagMalloc",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "Z_TagMallocDebug",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.Z_TagMallocDebug",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "_copyDWord",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common._copyDWord",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "keyConcatArgs",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.keyConcatArgs",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
+        },
+        {
+          "original": "permanent",
+          "target_files": [
+            "src/mq3/qcommon/common.ml"
+          ],
+          "target_symbol": "mq3.qcommon.common.permanent",
+          "status": "tested_exact",
+          "scope": "Complete common runtime adapter: redirect/error/filter/hash, journal/events, startup/init/frame/shutdown, config/CD-key, zone/hunk and byte utilities; OS/process/filesystem remain typed hosts."
         }
       ],
       "target": [
-        "src/mq3/qcommon/startup_commands.ml",
-        "src/mq3/qcommon/network_pump.ml",
-        "src/mq3/platform/input_events.ml",
-        "src/mq3/platform/engine_loop.ml",
-        "src/mq3/platform/desktop_frame_host.ml",
-        "src/mq3/qcommon/config_persistence.ml"
+        "src/mq3/qcommon/common.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_startup_commands.py",
-        "scripts/test_network_pump.py",
-        "tests/network_pump_contracts.ml",
-        "scripts/test_engine_loop.py",
-        "tests/engine_loop_contracts.ml"
+        "scripts/test_common_complete.py",
+        "tests/reference/common_complete_oracle.c",
+        "tests/common_complete_oracle.ml",
+        "tests/common_complete_contracts.ml"
       ]
     },
     {
@@ -37583,48 +38577,320 @@
       ],
       "symbol_mapping": [
         {
-          "original": "generateHashValue and FindShaderInShaderText",
+          "original": "CollapseMultitexture",
           "target_files": [
-            "src/mq3/renderer/shader_index.ml"
+            "src/mq3/renderer/shader_runtime.ml"
           ],
+          "target_symbol": "mq3.renderer.shader_runtime.CollapseMultitexture",
           "status": "tested_exact",
-          "scope": "ASCII case/slash/extension-normalized hash, 2048-bucket shader text index, first duplicate and nested-brace lookup. Ten unchanged-C records and ten MiniLang contracts pass."
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
         },
         {
-          "original": "ParseShader, ParseStage and shader directive helpers",
+          "original": "ComputeStageIteratorFunc",
           "target_files": [
-            "src/mq3/renderer/shader_parser.ml"
+            "src/mq3/renderer/shader_runtime.ml"
           ],
+          "target_symbol": "mq3.renderer.shader_runtime.ComputeStageIteratorFunc",
           "status": "tested_exact",
-          "scope": "Map/animation, blend/depth, rgb/alpha generation, tcGen/texgen/tcMod, surface, sort, cull and material flags. Thirty unchanged-C records and 36 MiniLang contracts pass; parameterless entityTranslate no longer enters an invalid empty-value loop."
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
         },
         {
-          "original": "FinishShader fog color adjustment classification",
+          "original": "CreateExternalShaders",
           "target_files": [
-            "src/mq3/renderer/playable_materials.ml",
-            "src/mq3/renderer/playable_world_batch.ml"
+            "src/mq3/renderer/shader_runtime.ml"
           ],
-          "status": "tested_subset",
-          "scope": "All four Baseq3 FinishShader fog policies are productive: additive and inverse-source-color marks attenuate RGB, strict alpha attenuates alpha, and GL_ONE/GL_ONE_MINUS_SRC_ALPHA attenuates RGBA. The native rasterizer implements the matching premultiplied-alpha blend."
+          "target_symbol": "mq3.renderer.shader_runtime.CreateExternalShaders",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "CreateInternalShaders",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.CreateInternalShaders",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "FindShaderInShaderText",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.FindShaderInShaderText",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "FinishShader",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.FinishShader",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "FixRenderCommandList",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.FixRenderCommandList",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "GeneratePermanentShader",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.GeneratePermanentShader",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "NameToAFunc",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.NameToAFunc",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "NameToDstBlendMode",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.NameToDstBlendMode",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "NameToGenFunc",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.NameToGenFunc",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "NameToSrcBlendMode",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.NameToSrcBlendMode",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "ParseDeform",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.ParseDeform",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "ParseShader",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.ParseShader",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "ParseSkyParms",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.ParseSkyParms",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "ParseSort",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.ParseSort",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "ParseStage",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.ParseStage",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "ParseSurfaceParm",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.ParseSurfaceParm",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "ParseTexMod",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.ParseTexMod",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "ParseVector",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.ParseVector",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "ParseWaveForm",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.ParseWaveForm",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "RE_RegisterShaderFromImage",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.RE_RegisterShaderFromImage",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "RE_RegisterShaderNoMip",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.RE_RegisterShaderNoMip",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "R_FindShader",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.R_FindShader",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "R_FindShaderByName",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.R_FindShaderByName",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "R_InitShaders",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.R_InitShaders",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "R_RemapShader",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.R_RemapShader",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "R_ShaderList_f",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.R_ShaderList_f",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "ScanAndLoadShaderFiles",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.ScanAndLoadShaderFiles",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "SortNewShader",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.SortNewShader",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "VertexLightingCollapse",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.VertexLightingCollapse",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "generateHashValue",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.generateHashValue",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "modes",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.modes",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
+        },
+        {
+          "original": "valid",
+          "target_files": [
+            "src/mq3/renderer/shader_runtime.ml"
+          ],
+          "target_symbol": "mq3.renderer.shader_runtime.valid",
+          "status": "tested_exact",
+          "scope": "Complete shader registration/parser/material runtime; GPU/TMU/backend repair remain typed hosts."
         }
       ],
       "target": [
-        "src/mq3/renderer/shader_index.ml",
-        "src/mq3/renderer/shader_parser.ml",
-        "src/mq3/renderer/playable_materials.ml",
-        "src/mq3/renderer/playable_world_batch.ml"
+        "src/mq3/renderer/shader_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_shader_index.py",
-        "tests/reference/shader_index_oracle.c",
-        "tests/shader_index_contracts.ml",
-        "scripts/test_shader_parser.py",
-        "tests/reference/shader_parser_oracle.c",
-        "tests/shader_parser_contracts.ml",
-        "scripts/test_shader_fog_color.py",
-        "tests/shader_fog_color_contracts.ml",
-        "tests/playable_fog_stage_contracts.ml"
+        "scripts/test_shader_runtime.py",
+        "tests/shader_runtime_contracts.ml",
+        "tests/shader_runtime_retail_probe.ml"
       ]
     },
     {

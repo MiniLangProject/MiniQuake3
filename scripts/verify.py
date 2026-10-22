@@ -27,6 +27,9 @@ def main():
              ("test_tournament.py",[]),("test_votes.py",[]),("test_vote_commands.py",[]),("test_team_status.py",[]),("test_game_cvars.py",[]),("test_full_frame.py",[])]
     scripts.append(("test_engine_loop.py",[]))
     scripts.append(("test_parity_inventory.py",[]))
+    scripts.append(("test_common_complete.py",[]))
+    scripts.append(("test_shader_runtime.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_ai_dmnet.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_tga.py",[]))
     scripts.append(("test_shader_parser.py",[]))
     scripts.append(("test_shader_entity_color.py",[]))

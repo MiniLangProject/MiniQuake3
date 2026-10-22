@@ -58,10 +58,13 @@ struct Services
   teamGoalsFn
   longTermGoalFn
   movementViewTargetFn
+  missionEnemyTargetFn
+  missionNearbyRangeFn
+  dmnetServices
   context
 end struct
 function create(combatServices)
-  return Services(combatServices,void,void,void,void,void,void,void,void,void,void,void,void,void,false,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
+  return Services(combatServices,void,void,void,void,void,void,void,void,void,void,void,void,void,false,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
 end function
 function transition(services,bot,node,reason)
   bot.aiNode=node;if services.enterNodeFn!=void then services.enterNodeFn(services,bot,node,reason) end if;return void
@@ -112,7 +115,7 @@ function fightNode(services,bot)
     end if
   else if cs.entityDeadFn(cs,ent) then bot.enemyDeathTime=fightCombat.now(cs) end if
   if fightCombat.entityIsInvisible(ent) and not fightCombat.entityIsShooting(ent) and cs.randomFn(cs)<0.2 then transition(services,bot,NODE_SEEK,"battle fight: invisible");return false end if
-  target=[ent.origin[0],ent.origin[1],ent.origin[2]];area=services.pointAreaFn(services,target)
+  target=[ent.origin[0],ent.origin[1],ent.origin[2]];if services.missionEnemyTargetFn!=void then target=services.missionEnemyTargetFn(services,bot,target) end if;area=services.pointAreaFn(services,target)
   if area!=0 and services.areaReachableFn(services,area) then bot.lastEnemyOrigin=target;bot.lastEnemyAreaNum=area end if
   services.updateBattleFn(services,bot,bot.enemy)
   if bot.lastframeHealth>bot.inventory[fightCombat.INVENTORY_HEALTH] and services.chatHitNoDeathFn(services,bot) then bot.standTime=fightCombat.now(cs)+services.chatTimeFn(services,bot);transition(services,bot,NODE_STAND,"battle fight: chat health decreased");return false end if
@@ -168,12 +171,12 @@ function retreatNode(services,bot)
   if fightCombat.inLavaOrSlime(cs,bot) then bot.tfl=bot.tfl|TFL_LAVA|TFL_SLIME end if
   services.mapScriptsFn(services,bot);services.updateBattleFn(services,bot,bot.enemy)
   if fightCombat.wantsToChase(cs,bot) then services.emptyGoalStackFn(services,bot.gs);enterChase(services,bot,"battle retreat: wants to chase");return false end if
-  if cs.visibleFn(cs,bot.entitynum,bot.eye,bot.viewangles,360.0,bot.enemy)>0 then bot.enemyVisibleTime=time;target=[ent.origin[0],ent.origin[1],ent.origin[2]];area=services.pointAreaFn(services,target);if area!=0 and services.areaReachableFn(services,area) then bot.lastEnemyOrigin=target;bot.lastEnemyAreaNum=area end if end if
+  if cs.visibleFn(cs,bot.entitynum,bot.eye,bot.viewangles,360.0,bot.enemy)>0 then bot.enemyVisibleTime=time;target=[ent.origin[0],ent.origin[1],ent.origin[2]];if services.missionEnemyTargetFn!=void then target=services.missionEnemyTargetFn(services,bot,target) end if;area=services.pointAreaFn(services,target);if area!=0 and services.areaReachableFn(services,area) then bot.lastEnemyOrigin=target;bot.lastEnemyAreaNum=area end if end if
   if bot.enemyVisibleTime<n.fsub(time,4.0) then transition(services,bot,NODE_SEEK,"battle retreat: lost enemy");return false
   else if bot.enemyVisibleTime<time and fightCombat.findEnemy(cs,bot,-1) then enterFight(services,bot,"battle retreat: another enemy");return false end if
   services.teamGoalsFn(services,bot,true);services.battleUseItemsFn(services,bot);goal=fightCombat.CombatGoal(0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0])
   if not services.longTermGoalFn(services,bot,bot.tfl,true,goal) then enterSuicidalFight(services,bot,"battle retreat: no way out");return false end if
-  if bot.checkTime<time then range=150.0;if cs.gametype==fightCombat.GT_CTF and fightCombat.ctfCarryingFlag(cs,bot)!=0 then range=50.0 end if;bot.checkTime=n.fadd(time,1.0);if services.nearbyGoalFn(services,bot,bot.tfl,goal,range) then services.resetLastAvoidFn(services,bot.ms);bot.nbgTime=n.fadd(time,n.fadd(n.fdiv(range,100.0),1.0));enterNbg(services,bot,"battle retreat: nbg");return false end if end if
+  if bot.checkTime<time then range=150.0;if cs.gametype==fightCombat.GT_CTF and fightCombat.ctfCarryingFlag(cs,bot)!=0 then range=50.0 end if;if services.missionNearbyRangeFn!=void then range=services.missionNearbyRangeFn(services,bot,range) end if;bot.checkTime=n.fadd(time,1.0);if services.nearbyGoalFn(services,bot,bot.tfl,goal,range) then services.resetLastAvoidFn(services,bot.ms);bot.nbgTime=n.fadd(time,n.fadd(n.fdiv(range,100.0),1.0));enterNbg(services,bot,"battle retreat: nbg");return false end if end if
   cs.setupMovementFn(cs,bot);movement=cs.moveToGoalFn(cs,bot.ms,goal,bot.tfl);if movement.failure then services.resetAvoidFn(services,bot.ms);bot.ltgTime=0.0 end if
   services.blockedFn(services,bot,movement,false);services.chooseWeaponFn(services,bot)
   skill=cs.characteristicFloatFn(cs,bot.character,fightCombat.CHARACTERISTIC_ATTACK_SKILL,0.0,1.0);setMovementView(services,bot,movement,goal,skill>0.3,false,false);fightCombat.checkAttack(cs,bot);return true
@@ -187,7 +190,7 @@ function nbgNode(services,bot)
   if bot.enemy<0 then transition(services,bot,NODE_SEEK_NBG,"battle nbg: no enemy");return false end if
   ent=cs.entityInfoFn(cs,bot.enemy);if cs.entityDeadFn(cs,ent) then transition(services,bot,NODE_SEEK_NBG,"battle nbg: enemy dead");return false end if
   bot.tfl=TFL_DEFAULT;if services.grapple then bot.tfl=bot.tfl|TFL_GRAPPLEHOOK end if;if fightCombat.inLavaOrSlime(cs,bot) then bot.tfl=bot.tfl|TFL_LAVA|TFL_SLIME end if;if fightCombat.canAndWantsToRocketJump(cs,bot) then bot.tfl=bot.tfl|TFL_ROCKETJUMP end if;services.mapScriptsFn(services,bot)
-  if cs.visibleFn(cs,bot.entitynum,bot.eye,bot.viewangles,360.0,bot.enemy)>0 then bot.enemyVisibleTime=time;target=[ent.origin[0],ent.origin[1],ent.origin[2]];area=services.pointAreaFn(services,target);if area!=0 and services.areaReachableFn(services,area) then bot.lastEnemyOrigin=target;bot.lastEnemyAreaNum=area end if end if
+  if cs.visibleFn(cs,bot.entitynum,bot.eye,bot.viewangles,360.0,bot.enemy)>0 then bot.enemyVisibleTime=time;target=[ent.origin[0],ent.origin[1],ent.origin[2]];if services.missionEnemyTargetFn!=void then target=services.missionEnemyTargetFn(services,bot,target) end if;area=services.pointAreaFn(services,target);if area!=0 and services.areaReachableFn(services,area) then bot.lastEnemyOrigin=target;bot.lastEnemyAreaNum=area end if end if
   pair=services.topGoalFn(services,bot.gs);hasGoal=pair[0];goal=pair[1];if not hasGoal or services.reachedGoalFn(services,bot,goal) then bot.nbgTime=0.0 end if
   if bot.nbgTime<time then services.popGoalFn(services,bot.gs);pair=services.topGoalFn(services,bot.gs);if pair[0] then enterRetreat(services,bot,"battle nbg: time out") else enterFight(services,bot,"battle nbg: time out") end if;return false end if
   cs.setupMovementFn(cs,bot);movement=cs.moveToGoalFn(cs,bot.ms,goal,bot.tfl);if movement.failure then services.resetAvoidFn(services,bot.ms);bot.nbgTime=0.0 end if

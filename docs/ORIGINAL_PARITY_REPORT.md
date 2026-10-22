@@ -16,18 +16,18 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `botlib` | 53 | 19 | 12 | 22 | 0 |
 | `cgame` | 25 | 21 | 0 | 4 | 0 |
 | `client` | 19 | 1 | 14 | 4 | 0 |
-| `game` | 65 | 9 | 30 | 26 | 0 |
+| `game` | 65 | 10 | 29 | 26 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
-| `qcommon` | 27 | 1 | 17 | 9 | 0 |
-| `renderer` | 27 | 7 | 16 | 4 | 0 |
+| `qcommon` | 27 | 2 | 16 | 9 | 0 |
+| `renderer` | 27 | 8 | 15 | 4 | 0 |
 | `server` | 11 | 2 | 9 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **114** | **104** | **117** | **0** |
+| **Gesamt** | **335** | **117** | **101** | **117** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -139,7 +139,7 @@ Teil dieser Tabelle.
 | `code/game/ai_chat.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/ai_cmd.c` | `game` | `ported` | 41 | 41 | 0 |
 | `code/game/ai_cmd.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/ai_dmnet.c` | `game` | `partial` | 35 | 0 | 35 |
+| `code/game/ai_dmnet.c` | `game` | `ported` | 35 | 35 | 0 |
 | `code/game/ai_dmnet.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/ai_dmq3.c` | `game` | `ported` | 114 | 114 | 0 |
 | `code/game/ai_dmq3.h` | `game` | `not_started` | 0 | 0 | 0 |
@@ -272,7 +272,7 @@ Teil dieser Tabelle.
 | `code/qcommon/cm_test.c` | `qcommon` | `partial` | 15 | 15 | 0 |
 | `code/qcommon/cm_trace.c` | `qcommon` | `partial` | 23 | 13 | 10 |
 | `code/qcommon/cmd.c` | `qcommon` | `partial` | 22 | 22 | 0 |
-| `code/qcommon/common.c` | `qcommon` | `partial` | 83 | 5 | 78 |
+| `code/qcommon/common.c` | `qcommon` | `ported` | 83 | 83 | 0 |
 | `code/qcommon/cvar.c` | `qcommon` | `partial` | 31 | 18 | 13 |
 | `code/qcommon/files.c` | `qcommon` | `partial` | 75 | 13 | 62 |
 | `code/qcommon/huffman.c` | `qcommon` | `ported` | 18 | 18 | 0 |
@@ -311,7 +311,7 @@ Teil dieser Tabelle.
 | `code/renderer/tr_scene.c` | `renderer` | `partial` | 9 | 4 | 5 |
 | `code/renderer/tr_shade.c` | `renderer` | `partial` | 17 | 3 | 14 |
 | `code/renderer/tr_shade_calc.c` | `renderer` | `partial` | 32 | 9 | 23 |
-| `code/renderer/tr_shader.c` | `renderer` | `partial` | 34 | 5 | 29 |
+| `code/renderer/tr_shader.c` | `renderer` | `ported` | 34 | 34 | 0 |
 | `code/renderer/tr_shadows.c` | `renderer` | `ported` | 5 | 5 | 0 |
 | `code/renderer/tr_sky.c` | `renderer` | `ported` | 13 | 13 | 0 |
 | `code/renderer/tr_surface.c` | `renderer` | `partial` | 24 | 16 | 8 |
@@ -441,7 +441,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/client/snd_wavelet.c` (partial): `MuLawEncode`, `NXPutc`, `daub4`, `decodeMuLaw`, `encodeMuLaw`, `encodeWavelet`, `wt1`
 - `code/game/ai_chat.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/ai_cmd.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/ai_dmnet.c` (partial): `AIEnter_Battle_Chase`, `AIEnter_Battle_Fight`, `AIEnter_Battle_NBG`, `AIEnter_Battle_Retreat`, `AIEnter_Battle_SuicidalFight`, `AIEnter_Intermission`, `AIEnter_Observer`, `AIEnter_Respawn`, `AIEnter_Seek_ActivateEntity`, `AIEnter_Seek_LTG`, `AIEnter_Seek_NBG`, `AIEnter_Stand`, `AINode_Battle_Chase`, `AINode_Battle_Fight`, `AINode_Battle_NBG`, `AINode_Battle_Retreat`, `AINode_Intermission`, `AINode_Observer`, `AINode_Respawn`, `AINode_Seek_ActivateEntity`, `AINode_Seek_LTG`, `AINode_Seek_NBG`, `AINode_Stand`, `BotClearPath`, `BotDumpNodeSwitches`, `BotGetAirGoal`, `BotGetItemLongTermGoal`, `BotGetLongTermGoal`, `BotGoForAir`, `BotLongTermGoal`, `BotNearbyGoal`, `BotReachedGoal`, `BotRecordNodeSwitch`, `BotResetNodeSwitches`, `BotSelectActivateWeapon`
 - `code/game/ai_dmnet.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/ai_dmq3.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/ai_main.h` (not_started): *(Symbolinventar ergänzen)*
@@ -522,7 +521,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/qcommon/cm_test.c` (partial): *(Symbolinventar ergänzen)*
 - `code/qcommon/cm_trace.c` (partial): `CM_DistanceFromLineSquared`, `CM_ProjectPointOntoVector`, `CM_TestBoundingBoxInCapsule`, `CM_TestCapsuleInCapsule`, `CM_TraceBoundingBoxThroughCapsule`, `CM_TraceThroughSphere`, `CM_TraceThroughVerticalCylinder`, `CM_VectorDistanceSquared`, `SquareRootFloat`, `collision`
 - `code/qcommon/cmd.c` (partial): *(Symbolinventar ergänzen)*
-- `code/qcommon/common.c` (partial): `Com_AppendCDKey`, `Com_BeginRedirect`, `Com_Crash_f`, `Com_DPrintf`, `Com_EndRedirect`, `Com_Error`, `Com_Error_f`, `Com_Filter`, `Com_FilterPath`, `Com_Frame`, `Com_Freeze_f`, `Com_GetEvent`, `Com_GetRealEvent`, `Com_HashKey`, `Com_Init`, `Com_InitHunkMemory`, `Com_InitJournaling`, `Com_InitPushEvent`, `Com_InitSmallZoneMemory`, `Com_InitZoneMemory`, `Com_Memcmp`, `Com_Memcpy`, `Com_Meminfo_f`, `Com_Memset`, `Com_Milliseconds`, `Com_ModifyMsec`, `Com_Prefetch`, `Com_Printf`, `Com_PushEvent`, `Com_Quit_f`, `Com_ReadCDKey`, `Com_RealTime`, `Com_RunAndTimeServerPacket`, `Com_Shutdown`, `Com_StringContains`, `Com_TouchMemory`, `Com_WriteCDKey`, `Com_WriteConfigToFile`, `Com_WriteConfig_f`, `Com_WriteConfiguration`, `ConcatRemaining`, `CopyString`, `Field_Clear`, `Field_CompleteCommand`, `FindMatches`, `Hunk_Alloc`, `Hunk_AllocateTempMemory`, `Hunk_CheckMark`, `Hunk_Clear`, `Hunk_ClearTempMemory`, `Hunk_ClearToMark`, `Hunk_FreeTempMemory`, `Hunk_Log`, `Hunk_MemoryRemaining`, `Hunk_SetMark`, `Hunk_SmallLog`, `Hunk_SwapBanks`, `Hunk_Trash`, `Info_Print`, `PrintMatches`, `Q_acos`, `S_Malloc`, `S_MallocDebug`, `Z_AvailableMemory`, `Z_AvailableZoneMemory`, `Z_CheckHeap`, `Z_ClearZone`, `Z_Free`, `Z_FreeTags`, `Z_LogHeap`, `Z_LogZoneHeap`, `Z_Malloc`, `Z_MallocDebug`, `Z_TagMalloc`, `Z_TagMallocDebug`, `_copyDWord`, `keyConcatArgs`, `permanent`
 - `code/qcommon/cvar.c` (partial): `Cvar_CommandCompletion`, `Cvar_FindVar`, `Cvar_InfoString`, `Cvar_InfoStringBuffer`, `Cvar_InfoString_Big`, `Cvar_SetLatched`, `Cvar_SetValue`, `Cvar_ValidateString`, `Cvar_VariableIntegerValue`, `Cvar_VariableString`, `Cvar_VariableStringBuffer`, `Cvar_VariableValue`, `generateHashValue`
 - `code/qcommon/files.c` (partial): `FS_AddFileToList`, `FS_BuildOSPath`, `FS_ConditionalRestart`, `FS_ConvertPath`, `FS_CopyFile`, `FS_CreatePath`, `FS_Dir_f`, `FS_FOpenFileAppend`, `FS_FOpenFileByMode`, `FS_FOpenFileWrite`, `FS_FTell`, `FS_FileForHandle`, `FS_FileIsInPAK`, `FS_FilenameCompare`, `FS_Flush`, `FS_ForceFlush`, `FS_FreeFile`, `FS_FreeFileList`, `FS_GamePureChecksum`, `FS_GetFileList`, `FS_GetModList`, `FS_HandleForFile`, `FS_HashFileName`, `FS_InitFilesystem`, `FS_Initialized`, `FS_ListFilteredFiles`, `FS_LoadStack`, `FS_LoadedPakChecksums`, `FS_LoadedPakNames`, `FS_LoadedPakPureChecksums`, `FS_NewDir_f`, `FS_PathCmp`, `FS_Path_f`, `FS_Printf`, `FS_Read`, `FS_Read2`, `FS_ReadFile`, `FS_Remove`, `FS_Rename`, `FS_ReplaceSeparators`, `FS_Restart`, `FS_ReturnPath`, `FS_SV_FOpenFileRead`, `FS_SV_FOpenFileWrite`, `FS_SV_FileExists`, `FS_SV_Rename`, `FS_Seek`, `FS_SetRestrictions`, `FS_ShiftedStrStr`, `FS_Shutdown`, `FS_SortFileList`, `FS_Startup`, `FS_TouchFile_f`, `FS_Write`, `FS_WriteFile`, `Sys_ConcatenateFileLists`, `Sys_CountFileList`, `cvars`, `fclose`, `paksort`, `readable`, `write`
 - `code/qcommon/md4.c` (partial): `Decode`, `Encode`
@@ -555,7 +553,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/renderer/tr_scene.c` (partial): `RE_AddAdditiveLightToScene`, `RE_AddLightToScene`, `RE_RenderScene`, `R_AddPolygonSurfaces`, `R_ToggleSmpFrame`
 - `code/renderer/tr_shade.c` (partial): `ComputeTexCoords`, `DrawMultitextured`, `DrawNormals`, `DrawTris`, `ProjectDlightTexture`, `RB_EndSurface`, `RB_FogPass`, `RB_IterateStagesGeneric`, `RB_StageIteratorGeneric`, `RB_StageIteratorLightmappedMultitexture`, `RB_StageIteratorVertexLitTexture`, `R_ArrayElementDiscrete`, `R_DrawElements`, `R_DrawStripElements`
 - `code/renderer/tr_shade_calc.c` (partial): `Autosprite2Deform`, `AutospriteDeform`, `DeformText`, `EvalWaveForm`, `EvalWaveFormClamped`, `GlobalVectorToLocal`, `RB_CalcBulgeVertexes`, `RB_CalcDeformNormals`, `RB_CalcDeformVertexes`, `RB_CalcDiffuseColor`, `RB_CalcEnvironmentTexCoords`, `RB_CalcFogTexCoords`, `RB_CalcMoveVertexes`, `RB_CalcRotateTexCoords`, `RB_CalcScaleTexCoords`, `RB_CalcStretchTexCoords`, `RB_CalcTransformTexCoords`, `RB_CalcTurbulentTexCoords`, `RB_CalcWaveAlpha`, `RB_CalcWaveColor`, `RB_DeformTessGeometry`, `TableForFunc`, `myftol`
-- `code/renderer/tr_shader.c` (partial): `CollapseMultitexture`, `ComputeStageIteratorFunc`, `CreateExternalShaders`, `CreateInternalShaders`, `FixRenderCommandList`, `GeneratePermanentShader`, `NameToAFunc`, `NameToDstBlendMode`, `NameToGenFunc`, `NameToSrcBlendMode`, `ParseDeform`, `ParseSkyParms`, `ParseSort`, `ParseSurfaceParm`, `ParseTexMod`, `ParseVector`, `ParseWaveForm`, `RE_RegisterShaderFromImage`, `RE_RegisterShaderNoMip`, `R_FindShader`, `R_FindShaderByName`, `R_InitShaders`, `R_RemapShader`, `R_ShaderList_f`, `ScanAndLoadShaderFiles`, `SortNewShader`, `VertexLightingCollapse`, `modes`, `valid`
 - `code/renderer/tr_surface.c` (partial): `LodErrorForVolume`, `RB_CheckOverflow`, `RB_SurfaceAxis`, `RB_SurfaceBad`, `RB_SurfaceDisplayList`, `RB_SurfaceEntity`, `RB_SurfaceFlare`, `RB_SurfaceSkip`
 - `code/renderer/tr_world.c` (partial): `R_AddWorldSurface`, `R_AddWorldSurfaces`, `R_ClusterPVS`, `R_CullGrid`, `R_CullSurface`, `R_CullTriSurf`, `R_DlightFace`, `R_DlightGrid`, `R_DlightSurface`, `R_DlightTrisurf`, `R_MarkLeaves`, `R_PointInLeaf`, `R_RecursiveWorldNode`, `R_inPVS`
 - `code/server/server.h` (partial): *(Symbolinventar ergänzen)*

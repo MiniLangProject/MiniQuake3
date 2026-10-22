@@ -115,6 +115,11 @@ struct BotState
   respawnChatTime
   respawnWait
   chatto
+  attackawayTime
+  harvestawayTime
+  kamikazeBody
+  blockedByAvoidSpotTime
+  proxMines
 end struct
 
 struct State
@@ -165,7 +170,7 @@ function create(registry)
 end function
 
 function createBot(client)
-  return BotState(true,client,client,void,void,0,0,0,0,0,0.0,0.0,0,void,void,0,0,void,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],-1,"",0,0,0,0,array(204,0),0,0,0.0,[0.0,0.0,0.0],0,0.0,0,0,0.0,void,0.0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,0.0,false,0.0,0.0,0.0,0.0,0,0,0.0,0,0.0,0.0,0.0,void,-1,[0.0,0.0,0.0],[0.0,0.0,0.0],0.0,0,-1,0,0,0.0,void,0.0,0.0,0.0,false,0.0,0,-1,0.0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0,0.0,void,0,0,0,0.0,0.0,0,0.0,void,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,false,0)
+  return BotState(true,client,client,void,void,0,0,0,0,0,0.0,0.0,0,void,void,0,0,void,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],-1,"",0,0,0,0,array(204,0),0,0,0.0,[0.0,0.0,0.0],0,0.0,0,0,0.0,void,0.0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,0.0,false,0.0,0.0,0.0,0.0,0,0,0.0,0,0.0,0.0,0.0,void,-1,[0.0,0.0,0.0],[0.0,0.0,0.0],0.0,0,-1,0,0,0.0,void,0.0,0.0,0.0,false,0.0,0,-1,0.0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0,0.0,void,0,0,0,0.0,0.0,0,0.0,void,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,false,0,0.0,0.0,0,0.0,[])
 end function
 
 function cvarEffect(state,kind,key,value)

@@ -78,11 +78,13 @@ struct Services
   activateOriginFn
   attackFn
   selectActivateWeaponFn
+  missionNearbyRangeFn
+  dmnetServices
   context
 end struct
 
 function create(fightServices,navigationServices)
-  return Services(fightServices,navigationServices,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,false,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
+  return Services(fightServices,navigationServices,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,false,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
 end function
 function transition(services,bot,node,reason)
   bot.aiNode=node;if services.enterNodeFn!=void then services.enterNodeFn(services,bot,node,reason) end if;return void
@@ -251,7 +253,7 @@ function seekNode(services,bot)
   if not longTermGoal(services,bot,goal) then return true end if
   if bot.checkTime<time then
     bot.checkTime=n.fadd(time,0.5);services.wantsCampFn(services,bot);range=150.0;if bot.ltgtype==LTG_DEFENDKEYAREA then range=400.0 end if
-    if cs.gametype==seekCombat.GT_CTF and seekCombat.ctfCarryingFlag(cs,bot)!=0 then range=50.0 end if
+    if cs.gametype==seekCombat.GT_CTF and seekCombat.ctfCarryingFlag(cs,bot)!=0 then range=50.0 end if;if services.missionNearbyRangeFn!=void then range=services.missionNearbyRangeFn(services,bot,range) end if
     if services.nearbyGoalFn(services,bot,bot.tfl,goal,range) then services.resetLastAvoidFn(services,bot.ms);bot.nbgTime=n.fadd(time,n.fadd(4.0,n.fmul(range,0.01)));services.enterSeekNbgFn(services,bot,"ltg seek: nbg");return false end if
   end if
   if predictObstacles(services,bot,goal) then return false end if
