@@ -1,0 +1,16 @@
+import mq3.server.rankings as r
+import std.string as strings
+function req(ok,label) if not ok then return error(7461,"server rankings: "+label) end if;return 1 end function
+function main(args)
+  count=0;s=r.create(3);s.enabled=false;r.SV_RankBegin(s,r.GR_GAMEKEY);count=count+req(not s.active and s.contexts==0,"disabled begin")
+  s=r.create(3);s.gametype=4;r.SV_RankBegin(s,r.GR_GAMEKEY);count=count+req(s.gameKey=="Q3 Capture the Flag" and s.contexts==1 and s.requests[0].kind=="new-game","official key and async begin")
+  r.SV_RankNewGameCBF(s,r.GR_STATUS_OK,1234);count=count+req(s.active and s.serverMatch==100 and s.players[0].status==r.QGR_STATUS_NEW,"new game callback");count=count+req(strings.contains(s.configstring,"rankingsGameID"),"ranking configstring")
+  encoded=r.SV_RankAsciiEncode([0,1,2,3,254,255]);count=count+req(r.SV_RankAsciiDecode(encoded)==[0,1,2,3,254,255],"codec roundtrip");id=r.SV_RankEncodeGameID(1234,12);count=count+req(r.SV_RankDecodePlayerID(id)==1234,"game id roundtrip");count=count+req(r.SV_RankAsciiDecode("!")==[],"invalid alphabet")
+  r.SV_RankUserLogin(s,0,"Hero","secret");count=count+req(s.players[0].status==r.QGR_STATUS_PENDING and s.contexts==2,"login pending");r.SV_RankUserCBF(s,0,r.GR_STATUS_BADPASSWORD);count=count+req(s.players[0].finalStatus==r.QGR_STATUS_BAD_PASSWORD and s.requests[len(s.requests)-1].kind=="cleanup","login failure cleanup");r.SV_RankCleanupCBF(s,0,r.GR_STATUS_OK);count=count+req(s.players[0].status==r.QGR_STATUS_BAD_PASSWORD and s.players[0].context==0,"cleanup terminal status");r.SV_RankUserReset(s,0);count=count+req(s.players[0].status==r.QGR_STATUS_NEW,"user reset")
+  r.SV_RankUserCreate(s,0,"Hero","secret","h@example.org");r.SV_RankUserCBF(s,0,r.GR_STATUS_OK);count=count+req(s.requests[len(s.requests)-1].kind=="join-game","create joins game");r.SV_RankJoinGameCBF(s,0,r.GR_STATUS_OK,11,[1,2,3],42);count=count+req(s.players[0].status==r.QGR_STATUS_ACTIVE and s.players[0].rank==42 and r.SV_RankUserGrank(s,0)==42,"join active");s.players[0].name="Hero"
+  r.SV_RankUserCreate(s,1,"Hero2","x","x@y");s.players[1].name="Hero";count=count+req(not r.SV_RankUserValidate(s,1,r.SV_RankAsciiEncode([12,0,0,0,0,0,0,0]),r.SV_RankAsciiEncode([9,8]),2,3,"Hero") and s.players[1].status==r.QGR_STATUS_NO_USER,"duplicate login")
+  s.players[1].status=r.QGR_STATUS_ACTIVE;s.players[1].playerId=22;s.players[1].context=77;s.players[1].match=88;s.players[0].playerId=11;s.players[0].match=66;count=count+req(r.SV_RankReportInt(s,0,1,123,4,true) and len(s.reports)==2,"two-context int report");count=count+req(r.SV_RankReportStr(s,-1,0,456,"arena") and len(s.reports)==4,"two-context string report")
+  s.players[2].status=r.QGR_STATUS_NEW;count=count+req(not r.SV_RankReportInt(s,2,-1,1,1,true),"inactive report rejected");r.SV_RankUserSpectate(s,2);count=count+req(s.players[2].status==r.QGR_STATUS_SPECTATOR,"spectate")
+  count=count+req(r.SV_RankStatusString(r.GR_STATUS_TIMEOUT)=="GR_STATUS_TIMEOUT" and r.SV_RankStatusString(99)=="(UNKNOWN)","status strings");r.SV_RankError(s,"network gone");count=count+req(not s.active and len(s.errors)==1,"error deactivates")
+  s.active=true;r.SV_RankEnd(s);count=count+req(not s.active and s.requests[len(s.requests)-1].kind=="send-reports","end sends reports");print("PASS: "+str(count)+" server ranking contracts");return 0
+end function

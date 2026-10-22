@@ -13,21 +13,21 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 
 | Bereich | Dateien | Portiert | Teilweise | Nicht begonnen | Original behalten |
 |---|---:|---:|---:|---:|---:|
-| `botlib` | 53 | 11 | 19 | 23 | 0 |
+| `botlib` | 53 | 19 | 12 | 22 | 0 |
 | `cgame` | 25 | 21 | 0 | 4 | 0 |
 | `client` | 19 | 1 | 14 | 4 | 0 |
-| `game` | 65 | 3 | 33 | 29 | 0 |
+| `game` | 65 | 9 | 30 | 26 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
 | `qcommon` | 27 | 1 | 17 | 9 | 0 |
 | `renderer` | 27 | 7 | 16 | 4 | 0 |
-| `server` | 11 | 1 | 9 | 1 | 0 |
+| `server` | 11 | 2 | 9 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **99** | **114** | **122** | **0** |
+| **Gesamt** | **335** | **114** | **104** | **117** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -41,7 +41,7 @@ Teil dieser Tabelle.
 | `code/botlib/aasfile.h` | `botlib` | `partial` | 0 | 0 | 0 |
 | `code/botlib/be_aas_bsp.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/be_aas_bspq3.c` | `botlib` | `partial` | 21 | 0 | 21 |
-| `code/botlib/be_aas_cluster.c` | `botlib` | `not_started` | 31 | 0 | 31 |
+| `code/botlib/be_aas_cluster.c` | `botlib` | `ported` | 31 | 31 | 0 |
 | `code/botlib/be_aas_cluster.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/be_aas_debug.c` | `botlib` | `ported` | 19 | 19 | 0 |
 | `code/botlib/be_aas_debug.h` | `botlib` | `not_started` | 0 | 0 | 0 |
@@ -57,21 +57,21 @@ Teil dieser Tabelle.
 | `code/botlib/be_aas_move.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/be_aas_optimize.c` | `botlib` | `ported` | 8 | 8 | 0 |
 | `code/botlib/be_aas_optimize.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/be_aas_reach.c` | `botlib` | `partial` | 53 | 3 | 50 |
+| `code/botlib/be_aas_reach.c` | `botlib` | `ported` | 53 | 53 | 0 |
 | `code/botlib/be_aas_reach.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/be_aas_route.c` | `botlib` | `partial` | 51 | 3 | 48 |
+| `code/botlib/be_aas_route.c` | `botlib` | `ported` | 51 | 51 | 0 |
 | `code/botlib/be_aas_route.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/be_aas_routealt.c` | `botlib` | `ported` | 4 | 4 | 0 |
 | `code/botlib/be_aas_routealt.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/be_aas_sample.c` | `botlib` | `partial` | 28 | 0 | 28 |
+| `code/botlib/be_aas_sample.c` | `botlib` | `ported` | 28 | 28 | 0 |
 | `code/botlib/be_aas_sample.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/be_ai_char.c` | `botlib` | `partial` | 19 | 0 | 19 |
-| `code/botlib/be_ai_chat.c` | `botlib` | `partial` | 60 | 0 | 60 |
+| `code/botlib/be_ai_chat.c` | `botlib` | `ported` | 60 | 60 | 0 |
 | `code/botlib/be_ai_gen.c` | `botlib` | `ported` | 2 | 2 | 0 |
-| `code/botlib/be_ai_goal.c` | `botlib` | `partial` | 43 | 0 | 43 |
-| `code/botlib/be_ai_move.c` | `botlib` | `partial` | 67 | 0 | 67 |
+| `code/botlib/be_ai_goal.c` | `botlib` | `ported` | 43 | 43 | 0 |
+| `code/botlib/be_ai_move.c` | `botlib` | `ported` | 67 | 67 | 0 |
 | `code/botlib/be_ai_weap.c` | `botlib` | `partial` | 14 | 0 | 14 |
-| `code/botlib/be_ai_weight.c` | `botlib` | `partial` | 24 | 0 | 24 |
+| `code/botlib/be_ai_weight.c` | `botlib` | `ported` | 24 | 24 | 0 |
 | `code/botlib/be_ai_weight.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/be_ea.c` | `botlib` | `partial` | 32 | 0 | 32 |
 | `code/botlib/be_interface.c` | `botlib` | `partial` | 16 | 0 | 16 |
@@ -135,17 +135,17 @@ Teil dieser Tabelle.
 | `code/client/snd_mix.c` | `client` | `partial` | 8 | 8 | 0 |
 | `code/client/snd_public.h` | `client` | `not_started` | 0 | 0 | 0 |
 | `code/client/snd_wavelet.c` | `client` | `partial` | 9 | 2 | 7 |
-| `code/game/ai_chat.c` | `game` | `not_started` | 24 | 0 | 24 |
+| `code/game/ai_chat.c` | `game` | `ported` | 24 | 24 | 0 |
 | `code/game/ai_chat.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/ai_cmd.c` | `game` | `ported` | 41 | 41 | 0 |
 | `code/game/ai_cmd.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/ai_dmnet.c` | `game` | `partial` | 35 | 0 | 35 |
 | `code/game/ai_dmnet.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/ai_dmq3.c` | `game` | `partial` | 114 | 48 | 66 |
+| `code/game/ai_dmq3.c` | `game` | `ported` | 114 | 114 | 0 |
 | `code/game/ai_dmq3.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/ai_main.c` | `game` | `partial` | 37 | 24 | 13 |
+| `code/game/ai_main.c` | `game` | `ported` | 37 | 37 | 0 |
 | `code/game/ai_main.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/ai_team.c` | `game` | `partial` | 28 | 17 | 11 |
+| `code/game/ai_team.c` | `game` | `ported` | 28 | 28 | 0 |
 | `code/game/ai_team.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/ai_vcmd.c` | `game` | `ported` | 16 | 16 | 0 |
 | `code/game/ai_vcmd.h` | `game` | `not_started` | 0 | 0 | 0 |
@@ -157,7 +157,7 @@ Teil dieser Tabelle.
 | `code/game/be_ai_move.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/be_ai_weap.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/be_ea.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/bg_lib.c` | `game` | `not_started` | 33 | 0 | 33 |
+| `code/game/bg_lib.c` | `game` | `ported` | 33 | 33 | 0 |
 | `code/game/bg_lib.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/bg_local.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/bg_misc.c` | `game` | `partial` | 12 | 10 | 2 |
@@ -180,7 +180,7 @@ Teil dieser Tabelle.
 | `code/game/g_missile.c` | `game` | `partial` | 17 | 9 | 8 |
 | `code/game/g_mover.c` | `game` | `partial` | 37 | 3 | 34 |
 | `code/game/g_public.h` | `game` | `partial` | 0 | 0 | 0 |
-| `code/game/g_rankings.c` | `game` | `not_started` | 17 | 0 | 17 |
+| `code/game/g_rankings.c` | `game` | `ported` | 17 | 17 | 0 |
 | `code/game/g_rankings.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/g_session.c` | `game` | `partial` | 5 | 5 | 0 |
 | `code/game/g_spawn.c` | `game` | `partial` | 13 | 13 | 0 |
@@ -324,7 +324,7 @@ Teil dieser Tabelle.
 | `code/server/sv_init.c` | `server` | `partial` | 14 | 1 | 13 |
 | `code/server/sv_main.c` | `server` | `partial` | 16 | 6 | 10 |
 | `code/server/sv_net_chan.c` | `server` | `partial` | 5 | 4 | 1 |
-| `code/server/sv_rankings.c` | `server` | `not_started` | 28 | 0 | 28 |
+| `code/server/sv_rankings.c` | `server` | `ported` | 28 | 28 | 0 |
 | `code/server/sv_snapshot.c` | `server` | `partial` | 11 | 10 | 1 |
 | `code/server/sv_world.c` | `server` | `partial` | 12 | 11 | 1 |
 | `code/splines/math_angles.h` | `splines` | `not_started` | 4 | 0 | 4 |
@@ -383,7 +383,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/botlib/aasfile.h` (partial): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_bsp.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_bspq3.c` (partial): `AAS_BSPEntityInRange`, `AAS_BSPLinkEntity`, `AAS_BSPModelMinsMaxsOrigin`, `AAS_BSPTraceLight`, `AAS_BoxEntities`, `AAS_DumpBSPData`, `AAS_EntityCollision`, `AAS_FloatForBSPEpairKey`, `AAS_FreeBSPEntities`, `AAS_IntForBSPEpairKey`, `AAS_LoadBSPFile`, `AAS_NextBSPEntity`, `AAS_ParseBSPEntities`, `AAS_PointContents`, `AAS_Trace`, `AAS_UnlinkFromBSPLeaves`, `AAS_ValueForBSPEpairKey`, `AAS_VectorForBSPEpairKey`, `AAS_inPHS`, `AAS_inPVS`, `PrintContents`
-- `code/botlib/be_aas_cluster.c` (not_started): `AAS_AddTeleporterPortals`, `AAS_CanMergeAreas`, `AAS_CanMergeFaces`, `AAS_CheckAreaForPossiblePortals`, `AAS_ClearCluster`, `AAS_ConnectedAreas`, `AAS_ConnectedAreas_r`, `AAS_CountForcedClusterPortals`, `AAS_CreatePortals`, `AAS_CreateViewPortals`, `AAS_FindClusters`, `AAS_FindPossiblePortals`, `AAS_FloodClusterAreasUsingReachabilities`, `AAS_FloodClusterAreas_r`, `AAS_FloodClusterReachabilities`, `AAS_FloodCluster_r`, `AAS_GetAdjacentAreasWithLessPresenceTypes_r`, `AAS_InitClustering`, `AAS_MapContainsTeleporters`, `AAS_NonConvexEdges`, `AAS_NonConvexFaces`, `AAS_NumberClusterAreas`, `AAS_NumberClusterPortals`, `AAS_RemoveAllPortals`, `AAS_RemoveClusterAreas`, `AAS_RemoveNotClusterClosingPortals`, `AAS_RemovePortalsClusterReference`, `AAS_RemoveTeleporterPortals`, `AAS_SetViewPortalsAsClusterPortals`, `AAS_TestPortals`, `AAS_UpdatePortal`
 - `code/botlib/be_aas_cluster.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_debug.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_def.h` (not_started): *(Symbolinventar ergänzen)*
@@ -397,19 +396,12 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/botlib/be_aas_move.c` (partial): `AAS_Accelerate`, `AAS_AgainstLadder`, `AAS_AirControl`, `AAS_ApplyFriction`, `AAS_BFGJumpZVelocity`, `AAS_ClientMovementHitBBox`, `AAS_ClientMovementPrediction`, `AAS_ClipToBBox`, `AAS_DropToFloor`, `AAS_HorizontalVelocityForJump`, `AAS_InitSettings`, `AAS_JumpReachRunStart`, `AAS_OnGround`, `AAS_PredictClientMovement`, `AAS_RocketJumpZVelocity`, `AAS_SetMovedir`, `AAS_Swimming`, `AAS_TestMovementPrediction`, `AAS_WeaponJumpZVelocity`
 - `code/botlib/be_aas_move.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_optimize.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_reach.c` (partial): `AAS_AllocReachability`, `AAS_AreaClusterPortal`, `AAS_AreaCrouch`, `AAS_AreaDoNotEnter`, `AAS_AreaGroundFaceArea`, `AAS_AreaGrounded`, `AAS_AreaJumpPad`, `AAS_AreaLadder`, `AAS_AreaLava`, `AAS_AreaLiquid`, `AAS_AreaReachability`, `AAS_AreaSlime`, `AAS_AreaSwim`, `AAS_AreaTeleporter`, `AAS_BarrierJumpTravelTime`, `AAS_BestReachableArea`, `AAS_BestReachableLinkArea`, `AAS_ClosestEdgePoints`, `AAS_ContinueInitReachability`, `AAS_FaceArea`, `AAS_FaceCenter`, `AAS_FallDamageDistance`, `AAS_FallDelta`, `AAS_FindFaceReachabilities`, `AAS_FreeReachability`, `AAS_InitReachability`, `AAS_MaxJumpDistance`, `AAS_MaxJumpHeight`, `AAS_NearbySolidOrGap`, `AAS_ReachabilityExists`, `AAS_Reachability_Elevator`, `AAS_Reachability_EqualFloorHeight`, `AAS_Reachability_FuncBobbing`, `AAS_Reachability_Grapple`, `AAS_Reachability_Jump`, `AAS_Reachability_JumpPad`, `AAS_Reachability_Ladder`, `AAS_Reachability_Step_Barrier_WaterJump_WalkOffLedge`, `AAS_Reachability_Swim`, `AAS_Reachability_Teleport`, `AAS_Reachability_WalkOffLedge`, `AAS_Reachability_WeaponJump`, `AAS_SetWeaponJumpAreaFlags`, `AAS_SetupReachabilityHeap`, `AAS_ShutDownReachabilityHeap`, `AAS_StoreReachability`, `AAS_TravelFlagsForTeam`, `VectorBetweenVectors`, `VectorDistance`, `VectorMiddle`
 - `code/botlib/be_aas_reach.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_route.c` (partial): `AAS_AllocRoutingCache`, `AAS_AreaContentsTravelFlags`, `AAS_AreaContentsTravelFlags_inline`, `AAS_AreaReachabilityToGoalArea`, `AAS_AreaTravelTime`, `AAS_AreaTravelTimeToGoalArea`, `AAS_AreaVisible`, `AAS_BridgeWalkable`, `AAS_CalculateAreaTravelTimes`, `AAS_ClusterAreaNum`, `AAS_CreateAllRoutingCache`, `AAS_CreateReversedReachability`, `AAS_EnableRoutingArea`, `AAS_FreeAllClusterAreaCache`, `AAS_FreeAllPortalCache`, `AAS_FreeOldestCache`, `AAS_FreeRoutingCache`, `AAS_FreeRoutingCaches`, `AAS_GetAreaContentsTravelFlags`, `AAS_GetAreaRoutingCache`, `AAS_GetPortalRoutingCache`, `AAS_InitAreaContentsTravelFlags`, `AAS_InitClusterAreaCache`, `AAS_InitPortalCache`, `AAS_InitPortalMaxTravelTimes`, `AAS_InitReachabilityAreas`, `AAS_InitRouting`, `AAS_InitRoutingUpdate`, `AAS_InitTravelFlagFromType`, `AAS_LinkCache`, `AAS_NearestHideArea`, `AAS_NextAreaReachability`, `AAS_NextModelReachability`, `AAS_PortalMaxTravelTime`, `AAS_PredictRoute`, `AAS_RandomGoalArea`, `AAS_ReachabilityFromNum`, `AAS_ReadCache`, `AAS_ReadRouteCache`, `AAS_RemoveRoutingCacheInCluster`, `AAS_RemoveRoutingCacheUsingArea`, `AAS_RoutingInfo`, `AAS_RoutingTime`, `AAS_TravelFlagForType`, `AAS_TravelFlagForType_inline`, `AAS_UnlinkCache`, `AAS_WriteRouteCache`, `DistancePointToLine`
 - `code/botlib/be_aas_route.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_routealt.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_sample.c` (partial): `AAS_AASLinkEntity`, `AAS_AllocAASLink`, `AAS_AreaCluster`, `AAS_AreaEntityCollision`, `AAS_AreaGroundFace`, `AAS_AreaInfo`, `AAS_AreaPresenceType`, `AAS_BBoxAreas`, `AAS_BoxOnPlaneSide2`, `AAS_BoxOriginDistanceFromPlane`, `AAS_DeAllocAASLink`, `AAS_FacePlane`, `AAS_FreeAASLinkHeap`, `AAS_FreeAASLinkedEntities`, `AAS_InitAASLinkHeap`, `AAS_InitAASLinkedEntities`, `AAS_InsideFace`, `AAS_LinkEntityClientBBox`, `AAS_PlaneFromNum`, `AAS_PointAreaNum`, `AAS_PointInsideFace`, `AAS_PointPresenceType`, `AAS_PointReachabilityAreaIndex`, `AAS_PresenceTypeBoundingBox`, `AAS_TraceAreas`, `AAS_TraceClientBBox`, `AAS_TraceEndFace`, `AAS_UnlinkFromAreas`
 - `code/botlib/be_aas_sample.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_ai_char.c` (partial): `BotCharacterFromHandle`, `BotDefaultCharacteristics`, `BotDumpCharacter`, `BotFindCachedCharacter`, `BotFreeCharacter`, `BotFreeCharacter2`, `BotFreeCharacterStrings`, `BotInterpolateCharacters`, `BotLoadCachedCharacter`, `BotLoadCharacter`, `BotLoadCharacterFromFile`, `BotLoadCharacterSkill`, `BotShutdownCharacters`, `Characteristic_BFloat`, `Characteristic_BInteger`, `Characteristic_Float`, `Characteristic_Integer`, `Characteristic_String`, `CheckCharacteristicIndex`
-- `code/botlib/be_ai_chat.c` (partial): `AllocConsoleMessage`, `BotAllocChatState`, `BotChatLength`, `BotChatStateFromHandle`, `BotCheckChatMessageIntegrety`, `BotCheckInitialChatIntegrety`, `BotCheckReplyChatIntegrety`, `BotCheckValidReplyChatKeySet`, `BotChooseInitialChatMessage`, `BotConstructChatMessage`, `BotDumpInitialChat`, `BotDumpMatchTemplates`, `BotDumpRandomStringList`, `BotDumpReplyChat`, `BotDumpSynonymList`, `BotEnterChat`, `BotExpandChatMessage`, `BotFindMatch`, `BotFindStringInList`, `BotFreeChatFile`, `BotFreeChatState`, `BotFreeMatchPieces`, `BotFreeMatchTemplates`, `BotFreeReplyChat`, `BotGetChatMessage`, `BotInitialChat`, `BotLoadChatFile`, `BotLoadChatMessage`, `BotLoadInitialChat`, `BotLoadMatchPieces`, `BotLoadMatchTemplates`, `BotLoadRandomStrings`, `BotLoadReplyChat`, `BotLoadSynonyms`, `BotMatchVariable`, `BotNextConsoleMessage`, `BotNumConsoleMessages`, `BotNumInitialChats`, `BotPrintReplyChatKeys`, `BotQueueConsoleMessage`, `BotRemoveConsoleMessage`, `BotRemoveTildes`, `BotReplaceReplySynonyms`, `BotReplaceSynonyms`, `BotReplaceWeightedSynonyms`, `BotReplyChat`, `BotResetChatAI`, `BotSetChatGender`, `BotSetChatName`, `BotSetupChatAI`, `BotShutdownChatAI`, `FreeConsoleMessage`, `InitConsoleMessageHeap`, `IsWhiteSpace`, `RandomString`, `StringContains`, `StringContainsWord`, `StringReplaceWords`, `StringsMatch`, `UnifyWhiteSpaces`
-- `code/botlib/be_ai_goal.c` (partial): `AddLevelItemToList`, `AllocLevelItem`, `BotAddToAvoidGoals`, `BotAllocGoalState`, `BotAvoidGoalTime`, `BotChooseLTGItem`, `BotChooseNBGItem`, `BotDumpAvoidGoals`, `BotDumpGoalStack`, `BotEmptyGoalStack`, `BotFindEntityForLevelItem`, `BotFreeGoalState`, `BotFreeInfoEntities`, `BotFreeItemWeights`, `BotGetLevelItemGoal`, `BotGetMapLocationGoal`, `BotGetNextCampSpotGoal`, `BotGetSecondGoal`, `BotGetTopGoal`, `BotGoalName`, `BotGoalStateFromHandle`, `BotInitInfoEntities`, `BotInitLevelItems`, `BotInterbreedGoalFuzzyLogic`, `BotItemGoalInVisButNotVisible`, `BotLoadItemWeights`, `BotMutateGoalFuzzyLogic`, `BotPopGoal`, `BotPushGoal`, `BotRemoveFromAvoidGoals`, `BotResetAvoidGoals`, `BotResetGoalState`, `BotSaveGoalFuzzyLogic`, `BotSetAvoidGoalTime`, `BotSetupGoalAI`, `BotShutdownGoalAI`, `BotTouchingGoal`, `BotUpdateEntityItems`, `FreeLevelItem`, `InitLevelItemHeap`, `ItemWeightIndex`, `LoadItemConfig`, `RemoveLevelItemFromList`
-- `code/botlib/be_ai_move.c` (partial): `AngleDiff`, `BotAddAvoidSpot`, `BotAddToAvoidReach`, `BotAddToTarget`, `BotAirControl`, `BotAllocMoveState`, `BotAvoidSpots`, `BotCheckBarrierJump`, `BotCheckBlocked`, `BotClearMoveResult`, `BotFinishTravel_BarrierJump`, `BotFinishTravel_Elevator`, `BotFinishTravel_FuncBobbing`, `BotFinishTravel_Jump`, `BotFinishTravel_JumpPad`, `BotFinishTravel_Walk`, `BotFinishTravel_WalkOffLedge`, `BotFinishTravel_WaterJump`, `BotFinishTravel_WeaponJump`, `BotFreeMoveState`, `BotFuncBobStartEnd`, `BotFuzzyPointReachabilityArea`, `BotGapDistance`, `BotGetReachabilityToGoal`, `BotInitMoveState`, `BotMoveInDirection`, `BotMoveInGoalArea`, `BotMoveStateFromHandle`, `BotMoveToGoal`, `BotMovementViewTarget`, `BotOnMover`, `BotOnTopOfEntity`, `BotPredictVisiblePosition`, `BotReachabilityArea`, `BotReachabilityTime`, `BotResetAvoidReach`, `BotResetGrapple`, `BotResetLastAvoidReach`, `BotResetMoveState`, `BotSetBrushModelTypes`, `BotSetupMoveAI`, `BotShutdownMoveAI`, `BotSwimInDirection`, `BotTravel_BFGJump`, `BotTravel_BarrierJump`, `BotTravel_Crouch`, `BotTravel_Elevator`, `BotTravel_FuncBobbing`, `BotTravel_Grapple`, `BotTravel_Jump`, `BotTravel_JumpPad`, `BotTravel_Ladder`, `BotTravel_RocketJump`, `BotTravel_Swim`, `BotTravel_Teleport`, `BotTravel_Walk`, `BotTravel_WalkOffLedge`, `BotTravel_WaterJump`, `BotValidTravel`, `BotVisible`, `BotWalkInDirection`, `DistanceFromLineSquared`, `GrappleState`, `Intersection`, `MoverBottomCenter`, `MoverDown`, `VectorDistanceSquared`
 - `code/botlib/be_ai_weap.c` (partial): `BotAllocWeaponState`, `BotChooseBestFightWeapon`, `BotFreeWeaponState`, `BotFreeWeaponWeights`, `BotGetWeaponInfo`, `BotLoadWeaponWeights`, `BotResetWeaponState`, `BotSetupWeaponAI`, `BotShutdownWeaponAI`, `BotValidWeaponNumber`, `BotWeaponStateFromHandle`, `DumpWeaponConfig`, `LoadWeaponConfig`, `WeaponWeightIndex`
-- `code/botlib/be_ai_weight.c` (partial): `BotShutdownWeights`, `EvolveFuzzySeperator_r`, `EvolveWeightConfig`, `FindFuzzyWeight`, `FreeFuzzySeperators_r`, `FreeWeightConfig`, `FreeWeightConfig2`, `FuzzyWeight`, `FuzzyWeightUndecided`, `FuzzyWeightUndecided_r`, `FuzzyWeight_r`, `InterbreedFuzzySeperator_r`, `InterbreedWeightConfigs`, `ReadFuzzySeperators_r`, `ReadFuzzyWeight`, `ReadValue`, `ReadWeightConfig`, `ScaleFuzzyBalanceRange`, `ScaleFuzzySeperatorBalanceRange_r`, `ScaleFuzzySeperator_r`, `ScaleWeight`, `WriteFuzzySeperators_r`, `WriteFuzzyWeight`, `WriteWeightConfig`
 - `code/botlib/be_ai_weight.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_ea.c` (partial): `EA_Action`, `EA_Attack`, `EA_Command`, `EA_Crouch`, `EA_DelayedJump`, `EA_DropInv`, `EA_DropItem`, `EA_EndRegular`, `EA_Gesture`, `EA_GetInput`, `EA_Jump`, `EA_Move`, `EA_MoveBack`, `EA_MoveDown`, `EA_MoveForward`, `EA_MoveLeft`, `EA_MoveRight`, `EA_MoveUp`, `EA_ResetInput`, `EA_Respawn`, `EA_Say`, `EA_SayTeam`, `EA_SelectWeapon`, `EA_Setup`, `EA_Shutdown`, `EA_Talk`, `EA_Tell`, `EA_Use`, `EA_UseInv`, `EA_UseItem`, `EA_View`, `EA_Walk`
 - `code/botlib/be_interface.c` (partial): `BotExportTest`, `BotLibSetup`, `Export_BotLibLoadMap`, `Export_BotLibSetup`, `Export_BotLibShutdown`, `Export_BotLibStartFrame`, `Export_BotLibUpdateEntity`, `Export_BotLibVarGet`, `Export_BotLibVarSet`, `GetBotLibAPI`, `Init_AAS_Export`, `Init_AI_Export`, `Init_EA_Export`, `Sys_MilliSeconds`, `ValidClientNumber`, `ValidEntityNumber`
@@ -447,16 +439,12 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/client/snd_mix.c` (partial): *(Symbolinventar ergänzen)*
 - `code/client/snd_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/snd_wavelet.c` (partial): `MuLawEncode`, `NXPutc`, `daub4`, `decodeMuLaw`, `encodeMuLaw`, `encodeWavelet`, `wt1`
-- `code/game/ai_chat.c` (not_started): `BotChatTest`, `BotChatTime`, `BotChat_Death`, `BotChat_EndLevel`, `BotChat_EnemySuicide`, `BotChat_EnterGame`, `BotChat_ExitGame`, `BotChat_HitNoDeath`, `BotChat_HitNoKill`, `BotChat_HitTalking`, `BotChat_Kill`, `BotChat_Random`, `BotChat_StartLevel`, `BotFirstClientInRankings`, `BotIsFirstInRankings`, `BotIsLastInRankings`, `BotLastClientInRankings`, `BotMapTitle`, `BotNumActivePlayers`, `BotRandomOpponentName`, `BotRandomWeaponName`, `BotValidChatPosition`, `BotVisibleEnemies`, `BotWeaponNameForMeansOfDeath`
 - `code/game/ai_chat.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/ai_cmd.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/ai_dmnet.c` (partial): `AIEnter_Battle_Chase`, `AIEnter_Battle_Fight`, `AIEnter_Battle_NBG`, `AIEnter_Battle_Retreat`, `AIEnter_Battle_SuicidalFight`, `AIEnter_Intermission`, `AIEnter_Observer`, `AIEnter_Respawn`, `AIEnter_Seek_ActivateEntity`, `AIEnter_Seek_LTG`, `AIEnter_Seek_NBG`, `AIEnter_Stand`, `AINode_Battle_Chase`, `AINode_Battle_Fight`, `AINode_Battle_NBG`, `AINode_Battle_Retreat`, `AINode_Intermission`, `AINode_Observer`, `AINode_Respawn`, `AINode_Seek_ActivateEntity`, `AINode_Seek_LTG`, `AINode_Seek_NBG`, `AINode_Stand`, `BotClearPath`, `BotDumpNodeSwitches`, `BotGetAirGoal`, `BotGetItemLongTermGoal`, `BotGetLongTermGoal`, `BotGoForAir`, `BotLongTermGoal`, `BotNearbyGoal`, `BotReachedGoal`, `BotRecordNodeSwitch`, `BotResetNodeSwitches`, `BotSelectActivateWeapon`
 - `code/game/ai_dmnet.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/ai_dmq3.c` (partial): `Bot1FCTFCarryingFlag`, `Bot1FCTFRetreatGoals`, `Bot1FCTFSeekGoals`, `BotAIBlocked`, `BotBattleUseItems`, `BotCTFRetreatGoals`, `BotCTFSeekGoals`, `BotCheckAir`, `BotCheckConsoleMessages`, `BotCheckEvents`, `BotCheckForGrenades`, `BotCheckForKamikazeBody`, `BotCheckForProxMines`, `BotCheckItemPickup`, `BotCheckSnapshot`, `BotCreateWayPoint`, `BotEnemyCubeCarrierVisible`, `BotEnemyFlag`, `BotEnemyFlagCarrierVisible`, `BotEntityVisible`, `BotFindWayPoint`, `BotFreeWaypoints`, `BotFuncButtonActivateGoal`, `BotFuncDoorActivateGoal`, `BotGoHarvest`, `BotGoalForBSPEntity`, `BotHarvesterCarryingCubes`, `BotHarvesterRetreatGoals`, `BotHarvesterSeekGoals`, `BotHasPersistantPowerupAndWeapon`, `BotInitWaypoints`, `BotIsObserver`, `BotMapScripts`, `BotModelMinsMaxs`, `BotObeliskRetreatGoals`, `BotObeliskSeekGoals`, `BotPointAreaNum`, `BotPrintActivateGoalInfo`, `BotRefuseOrder`, `BotRememberLastOrderedTask`, `BotRoamGoal`, `BotSetEntityNumForGoal`, `BotSetEntityNumForGoalWithModel`, `BotSetLastOrderedTask`, `BotSetTeamStatus`, `BotSetUserInfo`, `BotSetupAlternativeRouteGoals`, `BotSetupDeathmatchAI`, `BotShutdownDeathmatchAI`, `BotSynonymContext`, `BotTeamCubeCarrierVisible`, `BotTeamFlag`, `BotTeamFlagCarrier`, `BotTeamFlagCarrierVisible`, `BotTeamGoals`, `BotTriggerMultipleActivateGoal`, `BotUseInvulnerability`, `BotUseKamikaze`, `BotVisibleTeamMatesAndEnemies`, `BotWantsToHelp`, `ClientName`, `ClientSkin`, `EasyClientName`, `EntityCarriesCubes`, `EntityHasKamikaze`, `stristr`
 - `code/game/ai_dmq3.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/ai_main.c` (partial): `BotAISetupClient`, `BotAIShutdownClient`, `BotAI_BotInitialChat`, `BotAI_Print`, `BotAI_Trace`, `BotEntityInfo`, `BotInterbreeding`, `BotReadSessionData`, `BotScheduleBotThink`, `BotTeamLeader`, `BotTestAAS`, `BotWriteSessionData`, `NumBots`
 - `code/game/ai_main.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/ai_team.c` (partial): `Bot1FCTFOrders`, `Bot1FCTFOrders_EnemyDroppedFlag`, `Bot1FCTFOrders_EnemyHasFlag`, `Bot1FCTFOrders_FlagAtCenter`, `Bot1FCTFOrders_TeamHasFlag`, `BotClientTravelTimeToGoal`, `BotHarvesterOrders`, `BotObeliskOrders`, `BotSortTeamMatesByBaseTravelTime`, `BotTeamAI`, `BotTeamOrders`
 - `code/game/ai_team.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/ai_vcmd.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/be_aas.h` (not_started): *(Symbolinventar ergänzen)*
@@ -467,7 +455,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/game/be_ai_move.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/be_ai_weap.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/be_ea.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/bg_lib.c` (not_started): `AddFloat`, `AddInt`, `AddString`, `_atof`, `_atoi`, `abs`, `acos`, `atan2`, `atof`, `atoi`, `cos`, `create_acostable`, `fabs`, `floor`, `memcpy`, `memmove`, `memset`, `rand`, `sin`, `sqrt`, `srand`, `sscanf`, `strcat`, `strchr`, `strcmp`, `strcpy`, `strlen`, `strncpy`, `strstr`, `tan`, `tolower`, `toupper`, `vsprintf`
 - `code/game/bg_lib.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/bg_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/bg_misc.c` (partial): `BG_FindItemForHoldable`, `BG_FindItemForPowerup`
@@ -490,7 +477,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/game/g_missile.c` (partial): `ProximityMine_Activate`, `ProximityMine_Die`, `ProximityMine_Explode`, `ProximityMine_ExplodeOnPlayer`, `ProximityMine_Player`, `ProximityMine_Trigger`, `fire_nail`, `fire_prox`
 - `code/game/g_mover.c` (partial): `Blocked_Door`, `G_CheckProxMinePosition`, `G_CreateRotationMatrix`, `G_MoverPush`, `G_MoverTeam`, `G_RotatePoint`, `G_TestEntityPosition`, `G_TransposeMatrix`, `G_TryPushingEntity`, `G_TryPushingProxMine`, `InitMover`, `MatchTeam`, `Reached_BinaryMover`, `Reached_Train`, `ReturnToPos1`, `SP_func_bobbing`, `SP_func_button`, `SP_func_pendulum`, `SP_func_plat`, `SP_func_rotating`, `SP_func_static`, `SP_func_train`, `SpawnPlatTrigger`, `Think_BeginMoving`, `Think_MatchTeam`, `Think_SetupTrainTargets`, `Think_SpawnNewDoorTrigger`, `Touch_Button`, `Touch_DoorTrigger`, `Touch_DoorTriggerSpectator`, `Touch_Plat`, `Touch_PlatCenterTrigger`, `Use_BinaryMover`, `triggered`
 - `code/game/g_public.h` (partial): *(Symbolinventar ergänzen)*
-- `code/game/g_rankings.c` (not_started): `G_RankCapture`, `G_RankClientDisconnect`, `G_RankDamage`, `G_RankFireWeapon`, `G_RankGameOver`, `G_RankPickupAmmo`, `G_RankPickupArmor`, `G_RankPickupHealth`, `G_RankPickupHoldable`, `G_RankPickupPowerup`, `G_RankPickupWeapon`, `G_RankPlayerDie`, `G_RankReward`, `G_RankRunFrame`, `G_RankUseHoldable`, `G_RankUserTeamName`, `G_RankWeaponTime`
 - `code/game/g_rankings.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/g_session.c` (partial): *(Symbolinventar ergänzen)*
 - `code/game/g_spawn.c` (partial): *(Symbolinventar ergänzen)*
@@ -579,7 +565,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/server/sv_init.c` (partial): `SV_BoundMaxClients`, `SV_ChangeMaxClients`, `SV_ClearServer`, `SV_CreateBaseline`, `SV_FinalMessage`, `SV_GetConfigstring`, `SV_GetUserinfo`, `SV_Init`, `SV_SetUserinfo`, `SV_Shutdown`, `SV_SpawnServer`, `SV_Startup`, `SV_TouchCGame`
 - `code/server/sv_main.c` (partial): `SVC_Info`, `SVC_RemoteCommand`, `SVC_Status`, `SV_AddServerCommand`, `SV_ExpandNewlines`, `SV_FlushRedirect`, `SV_MasterHeartbeat`, `SV_MasterShutdown`, `SV_ReplacePendingServerCommands`, `SV_SendServerCommand`
 - `code/server/sv_net_chan.c` (partial): `fragments`
-- `code/server/sv_rankings.c` (not_started): `SV_RankActive`, `SV_RankBegin`, `SV_RankCheckInit`, `SV_RankCleanupCBF`, `SV_RankCloseContext`, `SV_RankDecodePlayerID`, `SV_RankDecodePlayerKey`, `SV_RankEncodeGameID`, `SV_RankEnd`, `SV_RankError`, `SV_RankJoinGameCBF`, `SV_RankNewGameCBF`, `SV_RankPoll`, `SV_RankQuit`, `SV_RankReportInt`, `SV_RankReportStr`, `SV_RankSendReportsCBF`, `SV_RankStatusString`, `SV_RankUserCBF`, `SV_RankUserCreate`, `SV_RankUserGrank`, `SV_RankUserLogin`, `SV_RankUserLogout`, `SV_RankUserReset`, `SV_RankUserSpectate`, `SV_RankUserStatus`, `SV_RankUserValidate`, `least`
 - `code/server/sv_snapshot.c` (partial): `SV_SendClientMessages`
 - `code/server/sv_world.c` (partial): `SV_SectorList_f`
 - `code/splines/math_angles.h` (not_started): `Zero`, `angles_t`, `set`, `vec3_p`

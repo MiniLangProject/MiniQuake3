@@ -498,8 +498,11 @@ function travelGrapple(runtime,state,reach)
   areaNum=moveAas.pointAreaNum(runtime.aas,state.origin);if areaNum!=0 and areaNum!=state.reachAreaNum then state.reachabilityTime=0.0 end if;return result
 end function
 function moveInGoalArea(runtime,state,goal)
-  result=emptyMoveResult();direction=[n.fsub(goal.origin[0],state.origin[0]),n.fsub(goal.origin[1],state.origin[1]),0.0];normal=normalize(direction);dist=normal[0];direction=normal[1];if dist>100.0 then dist=100.0 end if;speed=n.fmul(4.0,dist);if speed<10.0 then speed=0.0 end if;result=checkBlocked(runtime,state,direction,true,result)
-  if not emitMovement(runtime,state,direction,speed) then result.failure=true else result.moveDir=copyVector(direction) end if;result.travelType=moveRouting.TRAVEL_WALK;state.lastReachNum=0;state.lastAreaNum=0;state.lastGoalAreaNum=goal.areaNum;state.lastOrigin=copyVector(state.origin);return result
+  swimming=(state.moveFlags&MFL_SWIMMING)!=0;z=0.0;if swimming then z=n.fsub(goal.origin[2],state.origin[2]) end if
+  result=emptyMoveResult();direction=[n.fsub(goal.origin[0],state.origin[0]),n.fsub(goal.origin[1],state.origin[1]),z];normal=normalize(direction);dist=normal[0];direction=normal[1];if dist>100.0 then dist=100.0 end if;speed=n.fmul(4.0,dist);if speed<10.0 then speed=0.0 end if;result=checkBlocked(runtime,state,direction,true,result)
+  if not emitMovement(runtime,state,direction,speed) then result.failure=true else result.moveDir=copyVector(direction) end if
+  if swimming then result.travelType=moveRouting.TRAVEL_SWIM;result.idealViewAngles=moveQMath.vectoangles(direction);result.flags=result.flags|MOVERESULT_SWIMVIEW else result.travelType=moveRouting.TRAVEL_WALK end if
+  state.lastReachNum=0;state.lastAreaNum=0;state.lastGoalAreaNum=goal.areaNum;state.lastOrigin=copyVector(state.origin);return result
 end function
 function unsupportedTravel(reach)
   result=emptyMoveResult();result.failure=true;result.type=reach.travelType&moveRouting.TRAVELTYPE_MASK;result.travelType=reach.travelType;return result

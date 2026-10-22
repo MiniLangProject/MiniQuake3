@@ -18,7 +18,7 @@ def main():
     if args.extended and not args.data_root: parser.error("--extended requires --data-root")
     scripts=[("build.py",[]),("test_numeric.py",[]),("test_math.py",[]),("test_core.py",[]),("test_cvar_config.py",[]),("test_cvar_commands.py",[]),("test_cvar_restart.py",[]),("test_message.py",[]),("test_huffman_message.py",[]),("test_message_delta.py",[]),("test_message_state_delta.py",[]),("test_snapshot_build.py",[]),("test_snapshot_runtime.py",["--data-root",str(args.data_root)] if args.data_root else []),("test_snapshot_delta.py",[]),("test_reliable_commands.py",[]),("test_snapshot_send.py",[]),("test_server_download.py",[]),("test_server_pipeline.py",[]),("test_snapshot_parse.py",[]),("test_snapshot_command.py",[]),("test_server_message.py",[]),("test_server_command_stream.py",[]),("test_gamestate.py",[]),("test_system_info.py",[]),("test_download.py",[]),("test_protocol_runtime.py",[]),("test_netchan.py",[]),("test_server_netchan.py",[]),("test_client_netchan.py",[]),("test_client_send_cmd.py",[]),("test_client_command_ring.py",[]),("test_network_match_loop.py",[]),("test_network_match_multi.py",[]),("test_udp_platform.py",[]),("test_net_transport.py",[]),("test_network_pump.py",[]),("test_input_event_queue.py",[]),("test_oob_connect.py",[]),("test_connectionless.py",[]),("test_server_packet_event.py",[]),("test_client_connectionless.py",[]),("test_packet_event.py",[]),("test_localhost_handshake.py",[]),("test_server_client_message.py",[]),("test_client_command_dispatch.py",[]),("test_server_client_command.py",[]),("test_server_user_move.py",[]),("test_server_client_input.py",[]),("test_server_network_ingress.py",[]),("test_client_network_ingress.py",[]),("test_desktop_frame_host.py",[]),("test_server_client_pings.py",[]),("test_server_timeouts.py",[]),("test_server_pause.py",[]),("test_snapshot_schedule.py",[]),("test_server_frame.py",[]),("test_demo.py",[]),("test_shader_index.py",[]),
              ("test_vm.py",[]),("test_vm_runtime.py",[]),("test_archives.py",["--data-root",str(args.data_root)] if args.data_root else []),
-             ("test_rejections.py",[]),("test_brush.py",[]),("test_shared_game.py",[]),("test_entitystate.py",[]),("test_spawn_values.py",[]),("test_game_memory.py",[]),("test_initialization.py",[]),("test_game_logging.py",[]),("test_game_lifecycle.py",[]),("test_bots.py",[]),("test_map_objects.py",[]),("test_targets.py",["--reuse-build"]),
+             ("test_rejections.py",[]),("test_brush.py",[]),("test_shared_game.py",[]),("test_entitystate.py",[]),("test_spawn_values.py",[]),("test_game_memory.py",[]),("test_initialization.py",[]),("test_game_logging.py",[]),("test_game_lifecycle.py",[]),("test_bots.py",["--data-root",str(args.data_root)] if args.data_root else []),("test_map_objects.py",[]),("test_targets.py",["--reuse-build"]),
              ("test_combat.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else [])),
              ("test_missiles.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else [])),
              ("test_bodies.py",["--reuse-build"]+(["--data-root",str(args.data_root)] if args.data_root else [])),
@@ -143,6 +143,20 @@ def main():
     scripts.append(("test_win_gamma.py",[]))
     scripts.append(("test_win_snd.py",[]))
     scripts.append(("test_win_syscon.py",[]))
+    scripts.append(("test_aas_clustering.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_bot_chat.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_bot_deathmatch_full.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_ai_team_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_ai_main.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_ai_chat_runtime.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_be_ai_move_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_aas_reachability.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_ai_goal_runtime.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_aas_sample.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_be_aas_route_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_ai_weight_runtime.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_rankings_subsystem.py",[]))
+    scripts.append(("test_bg_lib.py",[]))
     scripts.append(("test_server_operator_commands.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_vm_syscall_ui_media.py",[]))
     scripts.append(("test_font_abi.py",[]))

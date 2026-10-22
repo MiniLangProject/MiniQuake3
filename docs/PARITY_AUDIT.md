@@ -2177,3 +2177,43 @@ und das Retail-QVM-Match über acht Frames bestehen. Der Retail-Lauf verarbeitet
 13 Snapshot-Entities, 2.345 texturierte Dreiecke, 19 Scene-Entities und 26
 Sounds. Ein neuer vollständiger Lauf aller Gates wurde für dieses Paket nicht
 nochmals als einzelne Gesamtausführung gestartet.
+
+### Vollständiger Bot-, AAS-, Gameplay-Chat- und Rankingblock
+
+Der Abgleich vom 22. Oktober 2026 hebt 15 weitere Originaldateien auf den
+Status `ported`: `be_aas_cluster.c`, `ai_chat.c`, `sv_rankings.c`,
+`g_rankings.c`, `bg_lib.c`, `ai_dmq3.c`, `ai_team.c`, `ai_main.c`,
+`be_ai_chat.c`, `be_ai_move.c`, `be_aas_reach.c`, `be_ai_goal.c`,
+`be_aas_sample.c`, `be_aas_route.c` und `be_ai_weight.c`. Die Module decken
+alle 638 im Ledger erfassten Symbole sowie `qsort` ab. 132 Datensätze,
+Funktionen oder Beobachtungen aus unverändertem C prüfen die definierten
+Originalentscheidungen; 404 native Verträge prüfen Lebenszyklen, Fehlerfälle,
+Kapazitätsgrenzen, Zustandsübergänge und typisierte Hostaktionen.
+
+Die Retail-Probes lesen die echten Daten unter `D:/Quake3`: alle 30 AAS-
+Dateien mit 96.758 Areas und 125.731 Reachabilities, 32 Chatdateien,
+175 Synonymgruppen, 138 Matchvorlagen, 244 Zufallsgruppen und 456 Reply-
+Einträge. Der q3dm7-Clusteringpfad bildet 3.761 Areas, 62 Portale und 13
+Cluster ab. q3dm1- und q3dm17-Probes prüfen Routing, Sampling, Mapziele,
+Item-/Weapon-Weights und schwebende Jumppad-Items. Das Inventar zählt nun
+**114 portierte, 104 partielle und 117 nicht begonnene** Runtime-/
+Plattformdateien.
+
+Der vollständige Befehl
+`python scripts/verify.py --data-root D:/Quake3` besteht alle **378 Gates**.
+Der frisch erzeugte `build/MiniQuake3.exe`-Stand hat SHA-256
+`fa3a1cb6a2748466176d56a9c3145775749397a03fd143e74d1c092f50577c7d`;
+`build/verification.json` hat SHA-256
+`3fab71da55d1687233f9f32e1e8b375c0a466af4794c31439e17c8bb96d46047`.
+
+Die verbleibenden Grenzen sind Teil der Abnahme und werden nicht als Parität
+gezählt. Der historische proprietäre GRank-Backenddienst fehlt; der Port bildet
+Anfragen, Antworten und Fehler deshalb als typisierte asynchrone
+Hostschnittstelle ab. Legale Team-Arena-Assets fehlen, weshalb deren optische
+Abnahme offen bleibt, obwohl Missionpack-Zustände durch C- und native Verträge
+geprüft sind. Dynamische Engine-Entity-Kollision, Point-Contents und einzelne
+Traces sind injizierte Hostdienste; die statischen AAS-/BSP-Pfade laufen nativ.
+Release-AAS verwendet durch BSPC vorberechnete Reachabilities; ein erzwungener
+nativer Neubau ist implementiert. RCD-v2 persistiert deterministisch ohne C-
+Pointer. Die zehn upstream mit `#if 0` deaktivierten `bg_lib.c`-Funktionen sind
+vollständig aufrufbar portiert, bleiben aber außerhalb des aktiven Q3_VM-Pfads.

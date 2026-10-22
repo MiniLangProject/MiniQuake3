@@ -43,12 +43,12 @@ sind vorhanden. Der produktive Botlib-Pfad lädt und speichert nun validierte `.
 Routingcaches mit Originalidentität, Area-/Cluster-CRC und zeigerfreiem Nutzinhalt.
 Offen bleibt die noch kompaktere interne Reachability-Ablage.
 
-Der aktuelle Retail-Gesamtlauf vom 22. Oktober 2026 besteht alle **314 Gates**
+Der aktuelle Retail-Gesamtlauf vom 22. Oktober 2026 besteht alle **378 Gates**
 von `python scripts/verify.py --data-root D:/Quake3`. Der dabei frisch gebaute
 `build/MiniQuake3.exe`-Vollstand hat SHA-256
-`76edc5435dc6d79555b72bd71b5dc0ddc553d7cb67a64fa7d314549230d7f322`;
+`fa3a1cb6a2748466176d56a9c3145775749397a03fd143e74d1c092f50577c7d`;
 das zugehörige `build/verification.json` hat SHA-256
-`d74e92a4c2a45bdd51b3c300125f29c373554bb781e58a4f4ba1ede0abefcd3d`.
+`3fab71da55d1687233f9f32e1e8b375c0a466af4794c31439e17c8bb96d46047`.
 Der neueste inkrementelle Quellenblock schließt zusätzlich vier bisher
 unbegonnene Originaldateien: `code/ui/ui_players.c`, `code/game/ai_vcmd.c`,
 `code/server/sv_ccmds.c` und `code/win32/win_snd.c`. Team-Arena-Spielermodelle,
@@ -835,6 +835,33 @@ möglich; jede Ausnahme wird dokumentiert. Linux x64 folgt nach der Referenzabna
 Quake III Arena (`baseq3`) ist die erste vollständige Abnahme; die im Quellcode
 vorhandenen Team-Arena-Pfade werden separat erfasst. Editor und Asset-Werkzeuge
 bleiben als Originalquellen erhalten und sind kein Teil der ersten Laufzeit-Portierung.
+
+## Vollständiger Bot-/AAS-Dateiblock vom 22. Oktober 2026
+
+Der jüngste Originalabgleich schließt weitere 15 Runtime-Dateien vollständig:
+`be_aas_cluster.c`, `ai_chat.c`, `sv_rankings.c`, `g_rankings.c`, `bg_lib.c`,
+`ai_dmq3.c`, `ai_team.c`, `ai_main.c`, `be_ai_chat.c`, `be_ai_move.c`,
+`be_aas_reach.c`, `be_ai_goal.c`, `be_aas_sample.c`, `be_aas_route.c` und
+`be_ai_weight.c`. Damit sind Clustering, Reachability-Erzeugung, Routing,
+Sampling, Bewegungs-, Ziel-, Chat- und Gewichtslaufzeit sowie die vollständigen
+Baseq3-Botentscheidungen, Teamstrategie, Gameplay-Chat und Rankingzustände als
+native MiniLang-Module vorhanden. Alle **638 Ledger-Symbole** plus `qsort`
+werden durch **132 Beobachtungen aus unverändertem C** und **404 native
+Verträge** abgedeckt. Retail-Probes prüfen unter anderem 30 AAS-Dateien,
+96.758 Areas, 125.731 Reachabilities, 32 Chatdateien, 175 Synonymgruppen,
+138 Matchvorlagen, 244 Zufallsgruppen und 456 Reply-Regeln.
+
+Das erzeugte Runtime-/Plattforminventar zählt jetzt **114 portierte**, **104
+partielle** und **117 noch nicht begonnene** Originaldateien. Der vollständige
+Retail-Gesamtlauf besteht alle **378 Gates**. Bekannte Grenzen bleiben klar
+abgegrenzt: der historische proprietäre GRank-Dienst steht nicht zur Verfügung;
+Ranking wird daher als typisierte asynchrone Hostschnittstelle abgebildet.
+Team-Arena-Optik benötigt weiterhin legale `missionpack`-Daten. Dynamische
+Engine-Entity-Traces und Point-Contents bleiben typisierte Hostdienste, während
+statische AAS-/BSP-Pfade nativ laufen. Release-AAS enthält vorberechnete
+Reachabilities; der native Erzeugungspfad ist für erzwungene Neubauten vorhanden.
+Routingcaches verwenden das deterministische, zeigerfreie RCD-v2-Format statt
+historischer C-Pointer-Dumps.
 
 ## Originalquellen und Spieldaten
 
