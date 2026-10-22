@@ -28,12 +28,38 @@ const MAX_REACHABILITY_PASS_AREAS=32
 
 struct AlternativeRouteGoal origin areaNum startTravelTime goalTravelTime extraTravelTime end struct
 struct PredictRoute endPos endArea stopEvent endContents endTravelFlags numAreas time end struct
+struct AlternativeRoutingState valid clusterAreas numClusterAreas initialized end struct
 
 function copyVector(value) return [value[0],value[1],value[2]] end function
 function u16(value) return value&65535 end function
 function absInt(value) if value<0 then return 0-value end if;return value end function
 function validRouter(router) return router!=void and router.runtime!=void and router.runtime.initialized end function
 function routeTime(router,area,origin,goalArea,travelFlags) return routeExtraRouting.areaTravelTimeToGoalArea(router,area,origin,goalArea,travelFlags) end function
+
+// The released botlib keeps these two work arrays as process globals.  The
+// port keeps them in an explicit owner so map restarts retain the same
+// allocation/lifetime boundary without leaking state between botlib worlds.
+function initAlternativeRouting(router)
+  areaCount=0;if validRouter(router) then areaCount=len(router.settings) end if
+  return AlternativeRoutingState(array(areaCount,false),array(areaCount,0),0,true)
+end function
+function shutdownAlternativeRouting(state)
+  if state==void then return void end if
+  state.valid=[];state.clusterAreas=[];state.numClusterAreas=0;state.initialized=false;return void
+end function
+
+function altRoutingFloodCluster(router,state,areaNum)
+  if state==void or not state.initialized or not validRouter(router) or areaNum<=0 or areaNum>=len(state.valid) or not state.valid[areaNum] then return void end if
+  state.clusterAreas[state.numClusterAreas]=areaNum;state.numClusterAreas=state.numClusterAreas+1;state.valid[areaNum]=false
+  area=routeExtraAas.area(router.runtime.map,areaNum);if area is error then return void end if
+  if area.numFaces>0 then for faceOffset=0 to area.numFaces-1
+    faceNumber=routeExtraAas.faceIndex(router.runtime.map,area.firstFace+faceOffset);if faceNumber is error then continue end if
+    faceNumber=absInt(faceNumber);face=routeExtraAas.face(router.runtime.map,faceNumber);if face is error then continue end if
+    other=face.frontArea;if other==areaNum then other=face.backArea end if
+    if other>0 and other<len(state.valid) and state.valid[other] then altRoutingFloodCluster(router,state,other) end if
+  end for end if
+  return void
+end function
 
 function passedAreas(router,reach)
   kind=reach.travelType&routeExtraRouting.TRAVELTYPE_MASK;start=reach.start;finish=reach.finish;shouldTrace=false
@@ -72,16 +98,8 @@ function predictRoute(router,route,areaNum,origin,goalAreaNum,travelFlags,maxAre
 end function
 
 function connectedMidrange(router,first,valid)
-  result=[];stack=[first]
-  while len(stack)>0
-    last=len(stack)-1;areaNum=stack[last];stack=routeExtraArrays.slice(stack,0,last)
-    if areaNum<=0 or areaNum>=len(valid) or not valid[areaNum] then continue end if
-    valid[areaNum]=false;result=result+[areaNum];area=routeExtraAas.area(router.runtime.map,areaNum);if area is error then continue end if
-    if area.numFaces>0 then for faceOffset=0 to area.numFaces-1
-      faceNumber=routeExtraAas.faceIndex(router.runtime.map,area.firstFace+faceOffset);if faceNumber is error then continue end if;faceNumber=absInt(faceNumber);face=routeExtraAas.face(router.runtime.map,faceNumber);if face is error then continue end if
-      other=face.frontArea;if other==areaNum then other=face.backArea end if;if other>0 and other<len(valid) and valid[other] then stack=stack+[other] end if
-    end for end if
-  end while;return result
+  state=AlternativeRoutingState(valid,array(len(valid),0),0,true);altRoutingFloodCluster(router,state,first)
+  return routeExtraArrays.slice(state.clusterAreas,0,state.numClusterAreas)
 end function
 function distanceSquared(a,b) x=n.fsub(a[0],b[0]);y=n.fsub(a[1],b[1]);z=n.fsub(a[2],b[2]);return n.fadd(n.fadd(n.fmul(x,x),n.fmul(y,y)),n.fmul(z,z)) end function
 

@@ -147,6 +147,20 @@ partiellen und 142 noch nicht begonnenen Runtime-/Plattformdateien; `q3_ui`
 steht bei 43 von 47 vollständig portierten Dateien. Die Gesamtprüfung umfasst
 nun 343 Gates, wurde nach diesem inkrementellen Block aber noch nicht komplett
 wiederholt.
+
+Der nächste vollständige Datei-Abgleich schließt neun weitere Originalpfade:
+`q3_ui/ui_atoms.c`, `q3_ui/ui_connect.c`, `cgame/cg_consolecmds.c`,
+`botlib/be_aas_routealt.c`, `botlib/be_aas_optimize.c`, `botlib/l_log.c`,
+`botlib/l_memory.c`, `botlib/l_struct.c` und Missionpacks `ui/ui_gameinfo.c`.
+Damit sind 131 weitere Originalsymbole mit unveränderten C-Oracles und zusammen
+198 nativen Verträgen belegt. Die produktive Retail-QVM-Abnahme bleibt über
+acht Frames mit 2.345 texturierten Dreiecken, 19 Scene-Entities und 26 Sounds
+grün; zusätzliche Retail-Proben erfassen 30 AAS-Dateien, 30 Arenen, 32 Bots
+sowie die echten UI-Schriften, Cursor- und Verbindungsassets. Das vollständige
+Runtime-/Plattforminventar steht nun bei 85 portierten, 114 partiellen und 136
+nicht begonnenen Dateien; `q3_ui` erreicht 45 von 47, wobei die zwei offenen
+Einträge Header ohne Funktionskörper sind. Die sieben neuen Gates erhöhen die
+Gesamtprüfung auf 350.
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 

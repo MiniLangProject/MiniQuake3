@@ -461,10 +461,90 @@
         "AAS_OptimizeFace",
         "AAS_OptimizeStore"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "AAS_KeepEdge",
+          "target_files": [
+            "src/mq3/botlib/aas_optimizer.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_optimizer.keepEdge",
+          "status": "tested_exact",
+          "scope": "Baseq3 AAS edge, face, area and reachability optimization"
+        },
+        {
+          "original": "AAS_KeepFace",
+          "target_files": [
+            "src/mq3/botlib/aas_optimizer.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_optimizer.keepFace",
+          "status": "tested_exact",
+          "scope": "Baseq3 AAS edge, face, area and reachability optimization"
+        },
+        {
+          "original": "AAS_Optimize",
+          "target_files": [
+            "src/mq3/botlib/aas_optimizer.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_optimizer.optimize",
+          "status": "tested_exact",
+          "scope": "Baseq3 AAS edge, face, area and reachability optimization"
+        },
+        {
+          "original": "AAS_OptimizeAlloc",
+          "target_files": [
+            "src/mq3/botlib/aas_optimizer.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_optimizer.optimizeAlloc",
+          "status": "tested_exact",
+          "scope": "Baseq3 AAS edge, face, area and reachability optimization"
+        },
+        {
+          "original": "AAS_OptimizeArea",
+          "target_files": [
+            "src/mq3/botlib/aas_optimizer.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_optimizer.optimizeArea",
+          "status": "tested_exact",
+          "scope": "Baseq3 AAS edge, face, area and reachability optimization"
+        },
+        {
+          "original": "AAS_OptimizeEdge",
+          "target_files": [
+            "src/mq3/botlib/aas_optimizer.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_optimizer.optimizeEdge",
+          "status": "tested_exact",
+          "scope": "Baseq3 AAS edge, face, area and reachability optimization"
+        },
+        {
+          "original": "AAS_OptimizeFace",
+          "target_files": [
+            "src/mq3/botlib/aas_optimizer.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_optimizer.optimizeFace",
+          "status": "tested_exact",
+          "scope": "Baseq3 AAS edge, face, area and reachability optimization"
+        },
+        {
+          "original": "AAS_OptimizeStore",
+          "target_files": [
+            "src/mq3/botlib/aas_optimizer.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_optimizer.optimizeStore",
+          "status": "tested_exact",
+          "scope": "Baseq3 AAS edge, face, area and reachability optimization"
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/aas_optimizer.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_botlib_aas_optimize.py",
+        "tests/botlib_aas_optimize_contracts.ml",
+        "tests/botlib_aas_optimize_oracle.ml",
+        "tests/reference/botlib_aas_optimize_oracle.c"
+      ]
     },
     {
       "source": "code/botlib/be_aas_optimize.h",
@@ -681,10 +761,53 @@
         "AAS_InitAlternativeRouting",
         "AAS_ShutdownAlternativeRouting"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "AAS_AltRoutingFloodCluster_r",
+          "target_files": [
+            "src/mq3/botlib/aas_route_extras.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_route_extras.altRoutingFloodCluster",
+          "status": "tested_exact",
+          "scope": "Baseq3 alternative-route cluster flood"
+        },
+        {
+          "original": "AAS_AlternativeRouteGoals",
+          "target_files": [
+            "src/mq3/botlib/aas_route_extras.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_route_extras.alternativeRouteGoals",
+          "status": "tested_exact",
+          "scope": "Baseq3 alternative-route goal selection"
+        },
+        {
+          "original": "AAS_InitAlternativeRouting",
+          "target_files": [
+            "src/mq3/botlib/aas_route_extras.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_route_extras.initAlternativeRouting",
+          "status": "tested_exact",
+          "scope": "Baseq3 alternative-route work-array lifecycle"
+        },
+        {
+          "original": "AAS_ShutdownAlternativeRouting",
+          "target_files": [
+            "src/mq3/botlib/aas_route_extras.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_route_extras.shutdownAlternativeRouting",
+          "status": "tested_exact",
+          "scope": "Baseq3 alternative-route work-array lifecycle"
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/aas_route_extras.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_aas_route_extras.py",
+        "tests/aas_route_extra_contracts.ml",
+        "tests/reference/aas_route_extra_oracle.c"
+      ]
     },
     {
       "source": "code/botlib/be_aas_routealt.h",
@@ -1577,10 +1700,81 @@
         "Log_Write",
         "Log_WriteTimeStamped"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Log_Close",
+          "target_files": [
+            "src/mq3/botlib/log.ml"
+          ],
+          "target_symbol": "mq3.botlib.log.close",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib log lifecycle, formatting, timestamps and host I/O boundary"
+        },
+        {
+          "original": "Log_FilePointer",
+          "target_files": [
+            "src/mq3/botlib/log.ml"
+          ],
+          "target_symbol": "mq3.botlib.log.filePointer",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib log lifecycle, formatting, timestamps and host I/O boundary"
+        },
+        {
+          "original": "Log_Flush",
+          "target_files": [
+            "src/mq3/botlib/log.ml"
+          ],
+          "target_symbol": "mq3.botlib.log.logFlush",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib log lifecycle, formatting, timestamps and host I/O boundary"
+        },
+        {
+          "original": "Log_Open",
+          "target_files": [
+            "src/mq3/botlib/log.ml"
+          ],
+          "target_symbol": "mq3.botlib.log.open",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib log lifecycle, formatting, timestamps and host I/O boundary"
+        },
+        {
+          "original": "Log_Shutdown",
+          "target_files": [
+            "src/mq3/botlib/log.ml"
+          ],
+          "target_symbol": "mq3.botlib.log.shutdown",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib log lifecycle, formatting, timestamps and host I/O boundary"
+        },
+        {
+          "original": "Log_Write",
+          "target_files": [
+            "src/mq3/botlib/log.ml"
+          ],
+          "target_symbol": "mq3.botlib.log.write",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib log lifecycle, formatting, timestamps and host I/O boundary"
+        },
+        {
+          "original": "Log_WriteTimeStamped",
+          "target_files": [
+            "src/mq3/botlib/log.ml"
+          ],
+          "target_symbol": "mq3.botlib.log.writeTimeStamped",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib log lifecycle, formatting, timestamps and host I/O boundary"
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/log.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_botlib_log.py",
+        "tests/botlib_log_contracts.ml",
+        "tests/botlib_log_oracle.ml",
+        "tests/reference/botlib_log_oracle.c"
+      ]
     },
     {
       "source": "code/botlib/l_log.h",
@@ -1607,10 +1801,99 @@
         "PrintUsedMemorySize",
         "UnlinkMemoryBlock"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "AvailableMemory",
+          "target_files": [
+            "src/mq3/botlib/l_memory.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_memory.AvailableMemory",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib heap/hunk allocation, lifetime, diagnostics and statistics"
+        },
+        {
+          "original": "BlockFromPointer",
+          "target_files": [
+            "src/mq3/botlib/l_memory.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_memory.BlockFromPointer",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib heap/hunk allocation, lifetime, diagnostics and statistics"
+        },
+        {
+          "original": "DumpMemory",
+          "target_files": [
+            "src/mq3/botlib/l_memory.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_memory.DumpMemory",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib heap/hunk allocation, lifetime, diagnostics and statistics"
+        },
+        {
+          "original": "FreeMemory",
+          "target_files": [
+            "src/mq3/botlib/l_memory.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_memory.FreeMemory",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib heap/hunk allocation, lifetime, diagnostics and statistics"
+        },
+        {
+          "original": "LinkMemoryBlock",
+          "target_files": [
+            "src/mq3/botlib/l_memory.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_memory.LinkMemoryBlock",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib heap/hunk allocation, lifetime, diagnostics and statistics"
+        },
+        {
+          "original": "MemoryByteSize",
+          "target_files": [
+            "src/mq3/botlib/l_memory.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_memory.MemoryByteSize",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib heap/hunk allocation, lifetime, diagnostics and statistics"
+        },
+        {
+          "original": "PrintMemoryLabels",
+          "target_files": [
+            "src/mq3/botlib/l_memory.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_memory.PrintMemoryLabels",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib heap/hunk allocation, lifetime, diagnostics and statistics"
+        },
+        {
+          "original": "PrintUsedMemorySize",
+          "target_files": [
+            "src/mq3/botlib/l_memory.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_memory.PrintUsedMemorySize",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib heap/hunk allocation, lifetime, diagnostics and statistics"
+        },
+        {
+          "original": "UnlinkMemoryBlock",
+          "target_files": [
+            "src/mq3/botlib/l_memory.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_memory.UnlinkMemoryBlock",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib heap/hunk allocation, lifetime, diagnostics and statistics"
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/l_memory.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_l_memory.py",
+        "tests/l_memory_contracts.ml",
+        "tests/l_memory_oracle.ml",
+        "tests/reference/l_memory_oracle.c"
+      ]
     },
     {
       "source": "code/botlib/l_memory.h",
@@ -1836,10 +2119,99 @@
         "WriteStructWithIndent",
         "WriteStructure"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "FindField",
+          "target_files": [
+            "src/mq3/botlib/l_struct.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_struct.FindField",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib field/structure reader and writer semantics"
+        },
+        {
+          "original": "ReadChar",
+          "target_files": [
+            "src/mq3/botlib/l_struct.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_struct.ReadChar",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib field/structure reader and writer semantics"
+        },
+        {
+          "original": "ReadNumber",
+          "target_files": [
+            "src/mq3/botlib/l_struct.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_struct.ReadNumber",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib field/structure reader and writer semantics"
+        },
+        {
+          "original": "ReadString",
+          "target_files": [
+            "src/mq3/botlib/l_struct.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_struct.ReadString",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib field/structure reader and writer semantics"
+        },
+        {
+          "original": "ReadStructure",
+          "target_files": [
+            "src/mq3/botlib/l_struct.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_struct.ReadStructure",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib field/structure reader and writer semantics"
+        },
+        {
+          "original": "WriteFloat",
+          "target_files": [
+            "src/mq3/botlib/l_struct.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_struct.WriteFloat",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib field/structure reader and writer semantics"
+        },
+        {
+          "original": "WriteIndent",
+          "target_files": [
+            "src/mq3/botlib/l_struct.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_struct.WriteIndent",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib field/structure reader and writer semantics"
+        },
+        {
+          "original": "WriteStructWithIndent",
+          "target_files": [
+            "src/mq3/botlib/l_struct.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_struct.WriteStructWithIndent",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib field/structure reader and writer semantics"
+        },
+        {
+          "original": "WriteStructure",
+          "target_files": [
+            "src/mq3/botlib/l_struct.ml"
+          ],
+          "target_symbol": "mq3.botlib.l_struct.WriteStructure",
+          "status": "tested_exact",
+          "scope": "Baseq3 botlib field/structure reader and writer semantics"
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/l_struct.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_l_struct.py",
+        "tests/l_struct_contracts.ml",
+        "tests/l_struct_oracle.ml",
+        "tests/reference/l_struct_oracle.c"
+      ]
     },
     {
       "source": "code/botlib/l_struct.h",
@@ -3547,320 +3919,376 @@
       ],
       "symbol_mapping": [
         {
-          "original": "CG_InitConsoleCommands / CG_ConsoleCommand",
-          "target_files": [
-            "src/mq3/qcommon/command_buffer.ml",
-            "src/mq3/client/cgame_vm.ml",
-            "src/mq3/engine/local_qvm_match.ml"
-          ],
-          "status": "tested_exact",
-          "scope": "The productive command registry now preserves Cgame completion-only registrations and dispatches its shared token state through CG_CONSOLE_COMMAND before server-game, UI and connected-server forwarding. Nine records from the unchanged CG_ConsoleCommand body match the retail QVM, and the Retail pak0/QVM probe verifies 63 registered commands, sizeup side effects and unknown-command forwarding. Individual command bodies remain owned by the unchanged retail Cgame QVM rather than native MiniLang functions."
-        },
-        {
-          "original": "CG_TargetCommand_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml",
-            "src/mq3/engine/local_qvm_match.ml"
-          ],
-          "status": "tested_exact",
-          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
-        },
-        {
-          "original": "CG_SizeUp_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml",
-            "src/mq3/engine/local_qvm_match.ml"
-          ],
-          "status": "tested_exact",
-          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
-        },
-        {
-          "original": "CG_SizeDown_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml",
-            "src/mq3/engine/local_qvm_match.ml"
-          ],
-          "status": "tested_exact",
-          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
-        },
-        {
-          "original": "CG_Viewpos_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml",
-            "src/mq3/engine/local_qvm_match.ml"
-          ],
-          "status": "tested_exact",
-          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
-        },
-        {
-          "original": "CG_ScoresDown_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml",
-            "src/mq3/engine/local_qvm_match.ml"
-          ],
-          "status": "tested_exact",
-          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
-        },
-        {
-          "original": "CG_ScoresUp_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml",
-            "src/mq3/engine/local_qvm_match.ml"
-          ],
-          "status": "tested_exact",
-          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
-        },
-        {
-          "original": "CG_TellTarget_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml",
-            "src/mq3/engine/local_qvm_match.ml"
-          ],
-          "status": "tested_exact",
-          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
-        },
-        {
-          "original": "CG_TellAttacker_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml",
-            "src/mq3/engine/local_qvm_match.ml"
-          ],
-          "status": "tested_exact",
-          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
-        },
-        {
-          "original": "CG_VoiceTellTarget_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml",
-            "src/mq3/engine/local_qvm_match.ml"
-          ],
-          "status": "tested_exact",
-          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
-        },
-        {
-          "original": "CG_VoiceTellAttacker_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml",
-            "src/mq3/engine/local_qvm_match.ml"
-          ],
-          "status": "tested_exact",
-          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
-        },
-        {
-          "original": "CG_StartOrbit_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml",
-            "src/mq3/engine/local_qvm_match.ml"
-          ],
-          "status": "tested_exact",
-          "scope": "Unchanged Baseq3 body differential; safe external-effect commands use the productive native Cmd path while QVM-owned view/score state stays with the retail VM."
-        },
-        {
-          "original": "CG_LoadHud_f",
+          "original": "CG_Camera_f",
           "target_files": [
             "src/mq3/client/cgame_console_commands.ml"
           ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
-        },
-        {
-          "original": "CG_scrollScoresDown_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml"
-          ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
-        },
-        {
-          "original": "CG_scrollScoresUp_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml"
-          ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
-        },
-        {
-          "original": "CG_spWin_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml"
-          ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
-        },
-        {
-          "original": "CG_spLose_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml"
-          ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
-        },
-        {
-          "original": "CG_NextTeamMember_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml"
-          ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
-        },
-        {
-          "original": "CG_PrevTeamMember_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml"
-          ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
-        },
-        {
-          "original": "CG_NextOrder_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml"
-          ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+          "target_symbol": "mq3.client.cgame_console_commands.CG_Camera_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
         },
         {
           "original": "CG_ConfirmOrder_f",
           "target_files": [
             "src/mq3/client/cgame_console_commands.ml"
           ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+          "target_symbol": "mq3.client.cgame_console_commands.CG_ConfirmOrder_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
         },
         {
           "original": "CG_DenyOrder_f",
           "target_files": [
             "src/mq3/client/cgame_console_commands.ml"
           ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+          "target_symbol": "mq3.client.cgame_console_commands.CG_DenyOrder_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
         },
         {
-          "original": "CG_TaskOffense_f",
+          "original": "CG_EditHud_f",
           "target_files": [
             "src/mq3/client/cgame_console_commands.ml"
           ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+          "target_symbol": "mq3.client.cgame_console_commands.CG_EditHud_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
         },
         {
-          "original": "CG_TaskDefense_f",
+          "original": "CG_InitConsoleCommands",
           "target_files": [
             "src/mq3/client/cgame_console_commands.ml"
           ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+          "target_symbol": "mq3.client.cgame_console_commands.CG_InitConsoleCommands",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
         },
         {
-          "original": "CG_TaskPatrol_f",
+          "original": "CG_LoadHud_f",
           "target_files": [
             "src/mq3/client/cgame_console_commands.ml"
           ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+          "target_symbol": "mq3.client.cgame_console_commands.CG_LoadHud_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_NextOrder_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_NextOrder_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_NextTeamMember_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_NextTeamMember_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_PrevTeamMember_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_PrevTeamMember_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_ScoresDown_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_ScoresDown_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_ScoresUp_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_ScoresUp_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_SizeDown_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_SizeDown_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_SizeUp_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_SizeUp_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_StartOrbit_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_StartOrbit_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_TargetCommand_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TargetCommand_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
         },
         {
           "original": "CG_TaskCamp_f",
           "target_files": [
             "src/mq3/client/cgame_console_commands.ml"
           ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TaskCamp_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
         },
         {
-          "original": "CG_TaskFollow_f",
+          "original": "CG_TaskDefense_f",
           "target_files": [
             "src/mq3/client/cgame_console_commands.ml"
           ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
-        },
-        {
-          "original": "CG_TaskRetrieve_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml"
-          ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TaskDefense_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
         },
         {
           "original": "CG_TaskEscort_f",
           "target_files": [
             "src/mq3/client/cgame_console_commands.ml"
           ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TaskEscort_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_TaskFollow_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TaskFollow_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_TaskOffense_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TaskOffense_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
         },
         {
           "original": "CG_TaskOwnFlag_f",
           "target_files": [
             "src/mq3/client/cgame_console_commands.ml"
           ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TaskOwnFlag_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_TaskPatrol_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TaskPatrol_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_TaskRetrieve_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TaskRetrieve_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
         },
         {
           "original": "CG_TaskSuicide_f",
           "target_files": [
             "src/mq3/client/cgame_console_commands.ml"
           ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
-        },
-        {
-          "original": "CG_TauntKillInsult_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml"
-          ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
-        },
-        {
-          "original": "CG_TauntPraise_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml"
-          ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
-        },
-        {
-          "original": "CG_TauntTaunt_f",
-          "target_files": [
-            "src/mq3/client/cgame_console_commands.ml"
-          ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TaskSuicide_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
         },
         {
           "original": "CG_TauntDeathInsult_f",
           "target_files": [
             "src/mq3/client/cgame_console_commands.ml"
           ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TauntDeathInsult_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
         },
         {
           "original": "CG_TauntGauntlet_f",
           "target_files": [
             "src/mq3/client/cgame_console_commands.ml"
           ],
-          "status": "ported",
-          "scope": "Native Team Arena/MISSIONPACK state transition retained for a future missionpack host; Baseq3 correctly does not register this command."
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TauntGauntlet_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_TauntKillInsult_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TauntKillInsult_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_TauntPraise_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TauntPraise_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_TauntTaunt_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TauntTaunt_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_TeamMenu_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TeamMenu_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_TellAttacker_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TellAttacker_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_TellTarget_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_TellTarget_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_Viewpos_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_Viewpos_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_VoiceTellAttacker_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_VoiceTellAttacker_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_VoiceTellTarget_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_VoiceTellTarget_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_scrollScoresDown_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_scrollScoresDown_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_scrollScoresUp_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_scrollScoresUp_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_spLose_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_spLose_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "CG_spWin_f",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.CG_spWin_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
+        },
+        {
+          "original": "Cmd_Argv",
+          "target_files": [
+            "src/mq3/client/cgame_console_commands.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_console_commands.Cmd_Argv",
+          "status": "tested_exact",
+          "scope": "Baseq3 and missionpack console registration, dispatch, token state and typed host actions"
         }
       ],
       "target": [
-        "src/mq3/client/cgame_console_commands.ml",
-        "src/mq3/client/cgame_vm.ml",
-        "src/mq3/engine/local_qvm_match.ml",
-        "src/mq3/qcommon/command_buffer.ml"
+        "src/mq3/client/cgame_console_commands.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_cgame_console_commands.py",
-        "tests/cgame_console_bodies_oracle.ml",
-        "tests/cgame_console_command_retail_probe.ml",
+        "tests/cgame_console_commands_contracts.ml",
+        "tests/cgame_console_missionpack_oracle.ml",
         "tests/reference/cgame_console_bodies_oracle.c",
-        "tests/reference/cgame_console_command_oracle.c"
+        "tests/reference/cgame_console_missionpack_oracle.c"
       ]
     },
     {
@@ -19593,23 +20021,375 @@
       ],
       "symbol_mapping": [
         {
+          "original": "Com_Error",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.Com_Error",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "Com_Printf",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.Com_Printf",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "NeedCDAction",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.NeedCDAction",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "NeedCDKeyAction",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.NeedCDKeyAction",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_AdjustFrom640",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_AdjustFrom640",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_Argv",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_Argv",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_Cache_f",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_Cache_f",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_ClampCvar",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_ClampCvar",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_ConsoleCommand",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_ConsoleCommand",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_CursorInRect",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_CursorInRect",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_Cvar_VariableString",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_Cvar_VariableString",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_DrawBannerString",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_DrawBannerString",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_DrawBannerString2",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_DrawBannerString2",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_DrawChar",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_DrawChar",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_DrawHandlePic",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_DrawHandlePic",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_DrawNamedPic",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_DrawNamedPic",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_DrawProportionalString",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_DrawProportionalString",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_DrawProportionalString2",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_DrawProportionalString2",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_DrawProportionalString_AutoWrapped",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_DrawProportionalString_AutoWrapped",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_DrawRect",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_DrawRect",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_DrawString",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_DrawString",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_DrawString2",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_DrawString2",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_DrawTextBox",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_DrawTextBox",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_FillRect",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_FillRect",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_ForceMenuOff",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_ForceMenuOff",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_Init",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_Init",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_IsFullscreen",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_IsFullscreen",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_KeyEvent",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_KeyEvent",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_LerpColor",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_LerpColor",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_MouseEvent",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_MouseEvent",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_PopMenu",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_PopMenu",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_ProportionalSizeScale",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_ProportionalSizeScale",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_ProportionalStringWidth",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_ProportionalStringWidth",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_PushMenu",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_PushMenu",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_Refresh",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_Refresh",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
           "original": "UI_SetActiveMenu",
           "target_files": [
-            "src/mq3/client/original_ui_session.ml",
-            "src/mq3/engine/local_qvm_ui.ml"
+            "src/mq3/client/ui_atoms.ml"
           ],
-          "status": "tested_subset",
-          "scope": "The productive unchanged ui.qvm adapter forwards all seven uiMenuCommand_t states (none, main, ingame, need-CD, bad-CD-key, team and postgame), shares physical key state with cgame, and validates 27 UI-session contracts."
+          "target_symbol": "mq3.client.ui_atoms.UI_SetActiveMenu",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_SetColor",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_SetColor",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_Shutdown",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_Shutdown",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_StartDemoLoop",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_StartDemoLoop",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
+        },
+        {
+          "original": "UI_UpdateScreen",
+          "target_files": [
+            "src/mq3/client/ui_atoms.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms.UI_UpdateScreen",
+          "status": "tested_exact",
+          "scope": "Baseq3 UI atoms render, text, menu, lifecycle and command semantics"
         }
       ],
       "target": [
-        "src/mq3/client/original_ui_session.ml",
-        "src/mq3/engine/local_qvm_ui.ml"
+        "src/mq3/client/ui_atoms.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_original_ui_session.py",
-        "tests/original_ui_session_contracts.ml"
+        "scripts/test_ui_atoms.py",
+        "tests/ui_atoms_contracts.ml",
+        "tests/ui_atoms_oracle.ml",
+        "tests/reference/ui_atoms_oracle.c"
       ]
     },
     {
@@ -19886,26 +20666,60 @@
       ],
       "symbol_mapping": [
         {
+          "original": "UI_DisplayDownloadInfo",
+          "target_files": [
+            "src/mq3/client/ui_connect.ml"
+          ],
+          "target_symbol": "mq3.client.ui_connect.displayDownloadInfo",
+          "status": "tested_exact",
+          "scope": "Baseq3 connection/download UI semantics and typed host actions"
+        },
+        {
           "original": "UI_DrawConnectScreen",
           "target_files": [
-            "src/mq3/client/ui_vm.ml",
-            "src/mq3/client/original_ui_session.ml",
-            "src/mq3/engine/local_qvm_ui.ml"
+            "src/mq3/client/ui_connect.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Both normal and overlay connection-screen exports are forwarded through the productive local QVM adapter; missing service wiring is rejected and covered by the 27 UI-session contracts."
+          "target_symbol": "mq3.client.ui_connect.drawConnectScreen",
+          "status": "tested_exact",
+          "scope": "Baseq3 connection/download UI semantics and typed host actions"
+        },
+        {
+          "original": "UI_KeyConnect",
+          "target_files": [
+            "src/mq3/client/ui_connect.ml"
+          ],
+          "target_symbol": "mq3.client.ui_connect.keyConnect",
+          "status": "tested_exact",
+          "scope": "Baseq3 connection/download UI semantics and typed host actions"
+        },
+        {
+          "original": "UI_PrintTime",
+          "target_files": [
+            "src/mq3/client/ui_connect.ml"
+          ],
+          "target_symbol": "mq3.client.ui_connect.printTime",
+          "status": "tested_exact",
+          "scope": "Baseq3 connection/download UI semantics and typed host actions"
+        },
+        {
+          "original": "UI_ReadableSize",
+          "target_files": [
+            "src/mq3/client/ui_connect.ml"
+          ],
+          "target_symbol": "mq3.client.ui_connect.readableSize",
+          "status": "tested_exact",
+          "scope": "Baseq3 connection/download UI semantics and typed host actions"
         }
       ],
       "target": [
-        "src/mq3/client/ui_vm.ml",
-        "src/mq3/client/original_ui_session.ml",
-        "src/mq3/engine/local_qvm_ui.ml"
+        "src/mq3/client/ui_connect.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_ui_vm_lifecycle.py",
-        "scripts/test_original_ui_session.py",
-        "tests/original_ui_session_contracts.ml"
+        "scripts/test_ui_connect.py",
+        "tests/ui_connect_contracts.ml",
+        "tests/ui_connect_oracle.ml",
+        "tests/reference/ui_connect_oracle.c"
       ]
     },
     {
@@ -29772,10 +30586,100 @@
         "UI_LoadBotsFromFile",
         "UI_ParseInfos"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "UI_GetBotInfoByName",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo_missionpack.UI_GetBotInfoByName",
+          "status": "tested_exact",
+          "scope": "Missionpack arena and bot parsing, loading, lookup and game-type counts"
+        },
+        {
+          "original": "UI_GetBotInfoByNumber",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo_missionpack.UI_GetBotInfoByNumber",
+          "status": "tested_exact",
+          "scope": "Missionpack arena and bot parsing, loading, lookup and game-type counts"
+        },
+        {
+          "original": "UI_GetBotNameByNumber",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo_missionpack.UI_GetBotNameByNumber",
+          "status": "tested_exact",
+          "scope": "Missionpack arena and bot parsing, loading, lookup and game-type counts"
+        },
+        {
+          "original": "UI_GetNumBots",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo_missionpack.UI_GetNumBots",
+          "status": "tested_exact",
+          "scope": "Missionpack arena and bot parsing, loading, lookup and game-type counts"
+        },
+        {
+          "original": "UI_LoadArenas",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo_missionpack.UI_LoadArenas",
+          "status": "tested_exact",
+          "scope": "Missionpack arena and bot parsing, loading, lookup and game-type counts"
+        },
+        {
+          "original": "UI_LoadArenasFromFile",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo_missionpack.UI_LoadArenasFromFile",
+          "status": "tested_exact",
+          "scope": "Missionpack arena and bot parsing, loading, lookup and game-type counts"
+        },
+        {
+          "original": "UI_LoadBots",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo_missionpack.UI_LoadBots",
+          "status": "tested_exact",
+          "scope": "Missionpack arena and bot parsing, loading, lookup and game-type counts"
+        },
+        {
+          "original": "UI_LoadBotsFromFile",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo_missionpack.UI_LoadBotsFromFile",
+          "status": "tested_exact",
+          "scope": "Missionpack arena and bot parsing, loading, lookup and game-type counts"
+        },
+        {
+          "original": "UI_ParseInfos",
+          "target_files": [
+            "src/mq3/client/ui_gameinfo_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_gameinfo_missionpack.UI_ParseInfos",
+          "status": "tested_exact",
+          "scope": "Missionpack arena and bot parsing, loading, lookup and game-type counts"
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_gameinfo_missionpack.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_gameinfo_missionpack.py",
+        "tests/ui_gameinfo_missionpack_contracts.ml",
+        "tests/ui_gameinfo_missionpack_oracle.ml",
+        "tests/ui_gameinfo_missionpack_retail_probe.ml",
+        "tests/reference/ui_gameinfo_missionpack_oracle.c"
+      ]
     },
     {
       "source": "code/ui/ui_local.h",

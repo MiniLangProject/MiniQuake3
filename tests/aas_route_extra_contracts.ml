@@ -29,6 +29,11 @@ function main(args)
   count=count+require(len(alternatives)==1 and alternatives[0].areaNum==3 and alternatives[0].origin==[30.0,0.0,0.0],"alternative routing selects middle-range cluster center")
   count=count+require(alternatives[0].startTravelTime==33 and alternatives[0].goalTravelTime==31 and alternatives[0].extraTravelTime==0,"alternative travel times use unsigned-short ABI values")
   count=count+require(len(extras.alternativeRouteGoals(router,origin,1,[30.0,0.0,0.0],4,routing.TFL_DEFAULT,4,extras.ALTROUTEGOAL_CLUSTERPORTALS))==0,"alternative type filters non-portal areas")
+  altState=extras.initAlternativeRouting(router);count=count+require(altState.initialized and len(altState.valid)==6 and len(altState.clusterAreas)==6 and altState.numClusterAreas==0,"alternative routing allocates one work slot per AAS area")
+  altState.valid[3]=true;extras.altRoutingFloodCluster(router,altState,3);count=count+require(altState.numClusterAreas==1 and altState.clusterAreas[0]==3 and not altState.valid[3],"alternative cluster flood records and consumes the starting area")
+  extras.altRoutingFloodCluster(router,altState,3);count=count+require(altState.numClusterAreas==1,"alternative cluster flood ignores consumed areas")
+  extras.shutdownAlternativeRouting(altState);count=count+require(not altState.initialized and len(altState.valid)==0 and len(altState.clusterAreas)==0 and altState.numClusterAreas==0,"alternative routing shutdown releases both work arrays")
+  emptyState=extras.initAlternativeRouting(void);count=count+require(emptyState.initialized and len(emptyState.valid)==0,"alternative routing tolerates initialization before a map is loaded")
   count=count+require(extras.pointReachabilityAreaIndex(state,void)==30,"null reachability point returns total cluster reachability count")
   count=count+require(extras.pointReachabilityAreaIndex(state,origin)==12 and extras.pointReachabilityAreaIndex(state,[-1.0,0.0,0.0])==0,"point index combines preceding clusters and cluster-area index")
 
@@ -40,5 +45,5 @@ function main(args)
   setRouteArg(vm,base,1,0);count=count+require(traps.dispatch(state,router,vm,base,extras.OP_POINT_REACHABILITY_AREA_INDEX)==30,"PointReachabilityAreaIndex accepts canonical null pointer")
   setRouteArg(vm,base,1,originAddress);count=count+require(traps.dispatch(state,router,vm,base,extras.OP_POINT_REACHABILITY_AREA_INDEX)==12,"PointReachabilityAreaIndex syscall decodes vec3")
   count=count+require(extras.supportsTrap(575) and extras.supportsTrap(577) and not extras.supportsTrap(574),"extended route trap coverage is explicit")
-  print("PASS: "+str(count)+" AAS route-extra contracts opcodes=575-577");return 0
+  print("PASS: "+str(count)+" AAS route-extra contracts opcodes=575-577 lifecycle=4");return 0
 end function

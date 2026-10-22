@@ -13,21 +13,21 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 
 | Bereich | Dateien | Portiert | Teilweise | Nicht begonnen | Original behalten |
 |---|---:|---:|---:|---:|---:|
-| `botlib` | 53 | 5 | 19 | 29 | 0 |
-| `cgame` | 25 | 19 | 1 | 5 | 0 |
+| `botlib` | 53 | 10 | 19 | 24 | 0 |
+| `cgame` | 25 | 20 | 0 | 5 | 0 |
 | `client` | 19 | 1 | 14 | 4 | 0 |
 | `game` | 65 | 0 | 33 | 32 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
-| `q3_ui` | 47 | 43 | 2 | 2 | 0 |
+| `q3_ui` | 47 | 45 | 0 | 2 | 0 |
 | `qcommon` | 27 | 1 | 17 | 9 | 0 |
 | `renderer` | 27 | 7 | 16 | 4 | 0 |
 | `server` | 11 | 0 | 9 | 2 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
-| `ui` | 12 | 0 | 0 | 12 | 0 |
+| `ui` | 12 | 1 | 0 | 11 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 0 | 6 | 7 | 0 |
-| **Gesamt** | **335** | **76** | **117** | **142** | **0** |
+| **Gesamt** | **335** | **85** | **114** | **136** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -55,13 +55,13 @@ Teil dieser Tabelle.
 | `code/botlib/be_aas_main.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/be_aas_move.c` | `botlib` | `partial` | 19 | 0 | 19 |
 | `code/botlib/be_aas_move.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/be_aas_optimize.c` | `botlib` | `not_started` | 8 | 0 | 8 |
+| `code/botlib/be_aas_optimize.c` | `botlib` | `ported` | 8 | 8 | 0 |
 | `code/botlib/be_aas_optimize.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/be_aas_reach.c` | `botlib` | `partial` | 53 | 3 | 50 |
 | `code/botlib/be_aas_reach.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/be_aas_route.c` | `botlib` | `partial` | 51 | 3 | 48 |
 | `code/botlib/be_aas_route.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/be_aas_routealt.c` | `botlib` | `not_started` | 4 | 0 | 4 |
+| `code/botlib/be_aas_routealt.c` | `botlib` | `ported` | 4 | 4 | 0 |
 | `code/botlib/be_aas_routealt.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/be_aas_sample.c` | `botlib` | `partial` | 28 | 0 | 28 |
 | `code/botlib/be_aas_sample.h` | `botlib` | `not_started` | 0 | 0 | 0 |
@@ -80,18 +80,18 @@ Teil dieser Tabelle.
 | `code/botlib/l_crc.h` | `botlib` | `ported` | 0 | 0 | 0 |
 | `code/botlib/l_libvar.c` | `botlib` | `ported` | 13 | 0 | 13 |
 | `code/botlib/l_libvar.h` | `botlib` | `ported` | 0 | 0 | 0 |
-| `code/botlib/l_log.c` | `botlib` | `not_started` | 7 | 0 | 7 |
+| `code/botlib/l_log.c` | `botlib` | `ported` | 7 | 7 | 0 |
 | `code/botlib/l_log.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/l_memory.c` | `botlib` | `not_started` | 9 | 0 | 9 |
+| `code/botlib/l_memory.c` | `botlib` | `ported` | 9 | 9 | 0 |
 | `code/botlib/l_memory.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/l_precomp.c` | `botlib` | `partial` | 82 | 7 | 75 |
 | `code/botlib/l_precomp.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/l_script.c` | `botlib` | `partial` | 39 | 1 | 38 |
 | `code/botlib/l_script.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/l_struct.c` | `botlib` | `not_started` | 9 | 0 | 9 |
+| `code/botlib/l_struct.c` | `botlib` | `ported` | 9 | 9 | 0 |
 | `code/botlib/l_struct.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/l_utils.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/cgame/cg_consolecmds.c` | `cgame` | `partial` | 40 | 36 | 4 |
+| `code/cgame/cg_consolecmds.c` | `cgame` | `ported` | 40 | 40 | 0 |
 | `code/cgame/cg_draw.c` | `cgame` | `ported` | 49 | 49 | 0 |
 | `code/cgame/cg_drawtools.c` | `cgame` | `ported` | 25 | 25 | 0 |
 | `code/cgame/cg_effects.c` | `cgame` | `ported` | 16 | 16 | 0 |
@@ -217,11 +217,11 @@ Teil dieser Tabelle.
 | `code/null/null_snddma.c` | `null` | `not_started` | 8 | 0 | 8 |
 | `code/q3_ui/keycodes.h` | `q3_ui` | `not_started` | 0 | 0 | 0 |
 | `code/q3_ui/ui_addbots.c` | `q3_ui` | `ported` | 12 | 12 | 0 |
-| `code/q3_ui/ui_atoms.c` | `q3_ui` | `partial` | 40 | 1 | 39 |
+| `code/q3_ui/ui_atoms.c` | `q3_ui` | `ported` | 40 | 40 | 0 |
 | `code/q3_ui/ui_cdkey.c` | `q3_ui` | `ported` | 7 | 7 | 0 |
 | `code/q3_ui/ui_cinematics.c` | `q3_ui` | `ported` | 6 | 6 | 0 |
 | `code/q3_ui/ui_confirm.c` | `q3_ui` | `ported` | 8 | 8 | 0 |
-| `code/q3_ui/ui_connect.c` | `q3_ui` | `partial` | 5 | 1 | 4 |
+| `code/q3_ui/ui_connect.c` | `q3_ui` | `ported` | 5 | 5 | 0 |
 | `code/q3_ui/ui_controls2.c` | `q3_ui` | `ported` | 22 | 22 | 0 |
 | `code/q3_ui/ui_credits.c` | `q3_ui` | `ported` | 3 | 3 | 0 |
 | `code/q3_ui/ui_demo2.c` | `q3_ui` | `ported` | 5 | 5 | 0 |
@@ -337,7 +337,7 @@ Teil dieser Tabelle.
 | `code/splines/util_str.h` | `splines` | `not_started` | 4 | 0 | 4 |
 | `code/ui/keycodes.h` | `ui` | `not_started` | 0 | 0 | 0 |
 | `code/ui/ui_atoms.c` | `ui` | `not_started` | 26 | 0 | 26 |
-| `code/ui/ui_gameinfo.c` | `ui` | `not_started` | 9 | 0 | 9 |
+| `code/ui/ui_gameinfo.c` | `ui` | `ported` | 9 | 9 | 0 |
 | `code/ui/ui_local.h` | `ui` | `not_started` | 0 | 0 | 0 |
 | `code/ui/ui_main.c` | `ui` | `not_started` | 163 | 0 | 163 |
 | `code/ui/ui_players.c` | `ui` | `not_started` | 25 | 0 | 25 |
@@ -397,13 +397,11 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/botlib/be_aas_main.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_move.c` (partial): `AAS_Accelerate`, `AAS_AgainstLadder`, `AAS_AirControl`, `AAS_ApplyFriction`, `AAS_BFGJumpZVelocity`, `AAS_ClientMovementHitBBox`, `AAS_ClientMovementPrediction`, `AAS_ClipToBBox`, `AAS_DropToFloor`, `AAS_HorizontalVelocityForJump`, `AAS_InitSettings`, `AAS_JumpReachRunStart`, `AAS_OnGround`, `AAS_PredictClientMovement`, `AAS_RocketJumpZVelocity`, `AAS_SetMovedir`, `AAS_Swimming`, `AAS_TestMovementPrediction`, `AAS_WeaponJumpZVelocity`
 - `code/botlib/be_aas_move.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_optimize.c` (not_started): `AAS_KeepEdge`, `AAS_KeepFace`, `AAS_Optimize`, `AAS_OptimizeAlloc`, `AAS_OptimizeArea`, `AAS_OptimizeEdge`, `AAS_OptimizeFace`, `AAS_OptimizeStore`
 - `code/botlib/be_aas_optimize.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_reach.c` (partial): `AAS_AllocReachability`, `AAS_AreaClusterPortal`, `AAS_AreaCrouch`, `AAS_AreaDoNotEnter`, `AAS_AreaGroundFaceArea`, `AAS_AreaGrounded`, `AAS_AreaJumpPad`, `AAS_AreaLadder`, `AAS_AreaLava`, `AAS_AreaLiquid`, `AAS_AreaReachability`, `AAS_AreaSlime`, `AAS_AreaSwim`, `AAS_AreaTeleporter`, `AAS_BarrierJumpTravelTime`, `AAS_BestReachableArea`, `AAS_BestReachableLinkArea`, `AAS_ClosestEdgePoints`, `AAS_ContinueInitReachability`, `AAS_FaceArea`, `AAS_FaceCenter`, `AAS_FallDamageDistance`, `AAS_FallDelta`, `AAS_FindFaceReachabilities`, `AAS_FreeReachability`, `AAS_InitReachability`, `AAS_MaxJumpDistance`, `AAS_MaxJumpHeight`, `AAS_NearbySolidOrGap`, `AAS_ReachabilityExists`, `AAS_Reachability_Elevator`, `AAS_Reachability_EqualFloorHeight`, `AAS_Reachability_FuncBobbing`, `AAS_Reachability_Grapple`, `AAS_Reachability_Jump`, `AAS_Reachability_JumpPad`, `AAS_Reachability_Ladder`, `AAS_Reachability_Step_Barrier_WaterJump_WalkOffLedge`, `AAS_Reachability_Swim`, `AAS_Reachability_Teleport`, `AAS_Reachability_WalkOffLedge`, `AAS_Reachability_WeaponJump`, `AAS_SetWeaponJumpAreaFlags`, `AAS_SetupReachabilityHeap`, `AAS_ShutDownReachabilityHeap`, `AAS_StoreReachability`, `AAS_TravelFlagsForTeam`, `VectorBetweenVectors`, `VectorDistance`, `VectorMiddle`
 - `code/botlib/be_aas_reach.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_route.c` (partial): `AAS_AllocRoutingCache`, `AAS_AreaContentsTravelFlags`, `AAS_AreaContentsTravelFlags_inline`, `AAS_AreaReachabilityToGoalArea`, `AAS_AreaTravelTime`, `AAS_AreaTravelTimeToGoalArea`, `AAS_AreaVisible`, `AAS_BridgeWalkable`, `AAS_CalculateAreaTravelTimes`, `AAS_ClusterAreaNum`, `AAS_CreateAllRoutingCache`, `AAS_CreateReversedReachability`, `AAS_EnableRoutingArea`, `AAS_FreeAllClusterAreaCache`, `AAS_FreeAllPortalCache`, `AAS_FreeOldestCache`, `AAS_FreeRoutingCache`, `AAS_FreeRoutingCaches`, `AAS_GetAreaContentsTravelFlags`, `AAS_GetAreaRoutingCache`, `AAS_GetPortalRoutingCache`, `AAS_InitAreaContentsTravelFlags`, `AAS_InitClusterAreaCache`, `AAS_InitPortalCache`, `AAS_InitPortalMaxTravelTimes`, `AAS_InitReachabilityAreas`, `AAS_InitRouting`, `AAS_InitRoutingUpdate`, `AAS_InitTravelFlagFromType`, `AAS_LinkCache`, `AAS_NearestHideArea`, `AAS_NextAreaReachability`, `AAS_NextModelReachability`, `AAS_PortalMaxTravelTime`, `AAS_PredictRoute`, `AAS_RandomGoalArea`, `AAS_ReachabilityFromNum`, `AAS_ReadCache`, `AAS_ReadRouteCache`, `AAS_RemoveRoutingCacheInCluster`, `AAS_RemoveRoutingCacheUsingArea`, `AAS_RoutingInfo`, `AAS_RoutingTime`, `AAS_TravelFlagForType`, `AAS_TravelFlagForType_inline`, `AAS_UnlinkCache`, `AAS_WriteRouteCache`, `DistancePointToLine`
 - `code/botlib/be_aas_route.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_routealt.c` (not_started): `AAS_AltRoutingFloodCluster_r`, `AAS_AlternativeRouteGoals`, `AAS_InitAlternativeRouting`, `AAS_ShutdownAlternativeRouting`
 - `code/botlib/be_aas_routealt.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_sample.c` (partial): `AAS_AASLinkEntity`, `AAS_AllocAASLink`, `AAS_AreaCluster`, `AAS_AreaEntityCollision`, `AAS_AreaGroundFace`, `AAS_AreaInfo`, `AAS_AreaPresenceType`, `AAS_BBoxAreas`, `AAS_BoxOnPlaneSide2`, `AAS_BoxOriginDistanceFromPlane`, `AAS_DeAllocAASLink`, `AAS_FacePlane`, `AAS_FreeAASLinkHeap`, `AAS_FreeAASLinkedEntities`, `AAS_InitAASLinkHeap`, `AAS_InitAASLinkedEntities`, `AAS_InsideFace`, `AAS_LinkEntityClientBBox`, `AAS_PlaneFromNum`, `AAS_PointAreaNum`, `AAS_PointInsideFace`, `AAS_PointPresenceType`, `AAS_PointReachabilityAreaIndex`, `AAS_PresenceTypeBoundingBox`, `AAS_TraceAreas`, `AAS_TraceClientBBox`, `AAS_TraceEndFace`, `AAS_UnlinkFromAreas`
 - `code/botlib/be_aas_sample.h` (not_started): *(Symbolinventar ergänzen)*
@@ -419,18 +417,14 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/botlib/be_interface.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_crc.c` (ported): `CRC_ContinueProcessString`, `CRC_Init`, `CRC_ProcessByte`, `CRC_ProcessString`, `CRC_Value`
 - `code/botlib/l_libvar.c` (ported): `LibVar`, `LibVarAlloc`, `LibVarChanged`, `LibVarDeAlloc`, `LibVarDeAllocAll`, `LibVarGet`, `LibVarGetString`, `LibVarGetValue`, `LibVarSet`, `LibVarSetNotModified`, `LibVarString`, `LibVarStringValue`, `LibVarValue`
-- `code/botlib/l_log.c` (not_started): `Log_Close`, `Log_FilePointer`, `Log_Flush`, `Log_Open`, `Log_Shutdown`, `Log_Write`, `Log_WriteTimeStamped`
 - `code/botlib/l_log.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/l_memory.c` (not_started): `AvailableMemory`, `BlockFromPointer`, `DumpMemory`, `FreeMemory`, `LinkMemoryBlock`, `MemoryByteSize`, `PrintMemoryLabels`, `PrintUsedMemorySize`, `UnlinkMemoryBlock`
 - `code/botlib/l_memory.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_precomp.c` (partial): `BuiltinFunction`, `LoadSourceFile`, `LoadSourceMemory`, `PC_AddBuiltinDefines`, `PC_AddDefine`, `PC_AddDefineToHash`, `PC_AddGlobalDefinesToSource`, `PC_CheckOpenSourceHandles`, `PC_CheckTokenString`, `PC_CheckTokenType`, `PC_ClearTokenWhiteSpace`, `PC_ConvertPath`, `PC_CopyDefine`, `PC_CopyToken`, `PC_DefineFromString`, `PC_Directive_define`, `PC_Directive_elif`, `PC_Directive_else`, `PC_Directive_endif`, `PC_Directive_error`, `PC_Directive_eval`, `PC_Directive_evalfloat`, `PC_Directive_if`, `PC_Directive_if_def`, `PC_Directive_ifdef`, `PC_Directive_ifndef`, `PC_Directive_include`, `PC_Directive_line`, `PC_Directive_pragma`, `PC_Directive_undef`, `PC_DollarDirective_evalfloat`, `PC_DollarDirective_evalint`, `PC_DollarEvaluate`, `PC_Evaluate`, `PC_EvaluateTokens`, `PC_ExpandBuiltinDefine`, `PC_ExpandDefine`, `PC_ExpandDefineIntoSource`, `PC_ExpectAnyToken`, `PC_ExpectTokenString`, `PC_ExpectTokenType`, `PC_FindDefine`, `PC_FindDefineParm`, `PC_FindHashedDefine`, `PC_FreeDefine`, `PC_FreeToken`, `PC_InitTokenHeap`, `PC_MergeTokens`, `PC_NameHash`, `PC_OperatorPriority`, `PC_PopIndent`, `PC_PrintDefine`, `PC_PrintDefineHashTable`, `PC_PushIndent`, `PC_PushScript`, `PC_ReadDefineParms`, `PC_ReadDirective`, `PC_ReadDollarDirective`, `PC_ReadLine`, `PC_ReadSourceToken`, `PC_RemoveAllGlobalDefines`, `PC_RemoveGlobalDefine`, `PC_SetBaseFolder`, `PC_SetIncludePath`, `PC_SetPunctuations`, `PC_SkipUntilString`, `PC_StringizeTokens`, `PC_UnreadLastToken`, `PC_UnreadSourceToken`, `PC_UnreadToken`, `PC_WhiteSpaceBeforeToken`, `QuakeCMacro`, `SourceError`, `SourceWarning`, `UnreadSignToken`
 - `code/botlib/l_precomp.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_script.c` (partial): `EndOfScript`, `FileLength`, `FreeScript`, `GetScriptFlags`, `LoadScriptFile`, `LoadScriptMemory`, `NumLinesCrossed`, `NumberValue`, `PS_CheckTokenString`, `PS_CheckTokenType`, `PS_CreatePunctuationTable`, `PS_ExpectAnyToken`, `PS_ExpectTokenString`, `PS_ExpectTokenType`, `PS_NextWhiteSpaceChar`, `PS_ReadEscapeCharacter`, `PS_ReadLiteral`, `PS_ReadName`, `PS_ReadNumber`, `PS_ReadPrimitive`, `PS_ReadPunctuation`, `PS_ReadString`, `PS_ReadWhiteSpace`, `PS_SetBaseFolder`, `PS_SkipUntilString`, `PS_UnreadLastToken`, `PS_UnreadToken`, `PunctuationFromNum`, `ReadSignedFloat`, `ReadSignedInt`, `ResetScript`, `ScriptError`, `ScriptSkipTo`, `ScriptWarning`, `SetScriptFlags`, `SetScriptPunctuations`, `StripDoubleQuotes`, `StripSingleQuotes`
 - `code/botlib/l_script.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/l_struct.c` (not_started): `FindField`, `ReadChar`, `ReadNumber`, `ReadString`, `ReadStructure`, `WriteFloat`, `WriteIndent`, `WriteStructWithIndent`, `WriteStructure`
 - `code/botlib/l_struct.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_utils.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/cgame/cg_consolecmds.c` (partial): `CG_Camera_f`, `CG_EditHud_f`, `CG_TeamMenu_f`, `Cmd_Argv`
 - `code/cgame/cg_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/cg_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/cg_syscalls.asm` (not_started): *(Symbolinventar ergänzen)*
@@ -536,8 +530,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/null/null_net.c` (not_started): `NET_StringToAdr`, `Sys_GetPacket`, `Sys_SendPacket`
 - `code/null/null_snddma.c` (not_started): `SNDDMA_BeginPainting`, `SNDDMA_GetDMAPos`, `SNDDMA_Init`, `SNDDMA_Shutdown`, `SNDDMA_Submit`, `S_ClearSoundBuffer`, `S_RegisterSound`, `S_StartLocalSound`
 - `code/q3_ui/keycodes.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/q3_ui/ui_atoms.c` (partial): `Com_Error`, `Com_Printf`, `NeedCDAction`, `NeedCDKeyAction`, `UI_AdjustFrom640`, `UI_Argv`, `UI_Cache_f`, `UI_ClampCvar`, `UI_ConsoleCommand`, `UI_CursorInRect`, `UI_Cvar_VariableString`, `UI_DrawBannerString`, `UI_DrawBannerString2`, `UI_DrawChar`, `UI_DrawHandlePic`, `UI_DrawNamedPic`, `UI_DrawProportionalString`, `UI_DrawProportionalString2`, `UI_DrawProportionalString_AutoWrapped`, `UI_DrawRect`, `UI_DrawString`, `UI_DrawString2`, `UI_DrawTextBox`, `UI_FillRect`, `UI_ForceMenuOff`, `UI_Init`, `UI_IsFullscreen`, `UI_KeyEvent`, `UI_LerpColor`, `UI_MouseEvent`, `UI_PopMenu`, `UI_ProportionalSizeScale`, `UI_ProportionalStringWidth`, `UI_PushMenu`, `UI_Refresh`, `UI_SetColor`, `UI_Shutdown`, `UI_StartDemoLoop`, `UI_UpdateScreen`
-- `code/q3_ui/ui_connect.c` (partial): `UI_DisplayDownloadInfo`, `UI_KeyConnect`, `UI_PrintTime`, `UI_ReadableSize`
 - `code/q3_ui/ui_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/cm_load.c` (partial): `CM_Checksum`, `CM_ClearMap`, `CM_EntityString`, `CM_LoadMap`, `CM_LumpChecksum`, `CMod_LoadEntityString`, `CMod_LoadLeafBrushes`, `CMod_LoadLeafSurfaces`, `CMod_LoadShaders`, `SetPlaneSignbits`
 - `code/qcommon/cm_local.h` (not_started): *(Symbolinventar ergänzen)*
@@ -606,7 +598,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/splines/util_str.h` (not_started): `append`, `idStr`, `tolower`, `toupper`
 - `code/ui/keycodes.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/ui/ui_atoms.c` (not_started): `Com_Error`, `Com_Printf`, `NeedCDAction`, `NeedCDKeyAction`, `UI_AdjustFrom640`, `UI_Argv`, `UI_Cache_f`, `UI_CalcPostGameStats`, `UI_ClampCvar`, `UI_ClearScores`, `UI_ConsoleCommand`, `UI_CursorInRect`, `UI_Cvar_VariableString`, `UI_DrawHandlePic`, `UI_DrawNamedPic`, `UI_DrawRect`, `UI_DrawSides`, `UI_DrawTextBox`, `UI_DrawTopBottom`, `UI_FillRect`, `UI_LoadBestScores`, `UI_SetBestScores`, `UI_SetColor`, `UI_Shutdown`, `UI_StartDemoLoop`, `UI_UpdateScreen`
-- `code/ui/ui_gameinfo.c` (not_started): `UI_GetBotInfoByName`, `UI_GetBotInfoByNumber`, `UI_GetBotNameByNumber`, `UI_GetNumBots`, `UI_LoadArenas`, `UI_LoadArenasFromFile`, `UI_LoadBots`, `UI_LoadBotsFromFile`, `UI_ParseInfos`
 - `code/ui/ui_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/ui/ui_main.c` (not_started): `Alias_Parse`, `ArenaServers_MaxPing`, `AssetCache`, `Asset_Parse`, `Character_Parse`, `Font_Report`, `GameType_Parse`, `GetMenuBuffer`, `Load_Menu`, `MapList_Parse`, `Team_Parse`, `Text_Height`, `Text_Paint`, `Text_PaintCenter`, `Text_PaintCenter_AutoWrapped`, `Text_PaintChar`, `Text_PaintWithCursor`, `Text_Paint_Limit`, `Text_Width`, `UI_AIFromName`, `UI_AIIndex`, `UI_AIIndexFromName`, `UI_BinaryServerInsertion`, `UI_BotName_HandleKey`, `UI_BotSkill_HandleKey`, `UI_BuildFindPlayerList`, `UI_BuildPlayerList`, `UI_BuildQ3Model_List`, `UI_BuildServerDisplayList`, `UI_BuildServerStatus`, `UI_ClanName_HandleKey`, `UI_Crosshair_HandleKey`, `UI_DisplayDownloadInfo`, `UI_DoServerRefresh`, `UI_DrawAllMapsSelection`, `UI_DrawBotName`, `UI_DrawBotSkill`, `UI_DrawCenteredPic`, `UI_DrawCinematic`, `UI_DrawClanCinematic`, `UI_DrawClanLogo`, `UI_DrawClanName`, `UI_DrawConnectScreen`, `UI_DrawCrosshair`, `UI_DrawEffects`, `UI_DrawGLInfo`, `UI_DrawGameType`, `UI_DrawHandicap`, `UI_DrawJoinGameType`, `UI_DrawKeyBindStatus`, `UI_DrawMapCinematic`, `UI_DrawMapPreview`, `UI_DrawMapTimeToBeat`, `UI_DrawNetFilter`, `UI_DrawNetGameType`, `UI_DrawNetMapCinematic`, `UI_DrawNetMapPreview`, `UI_DrawNetSource`, `UI_DrawOpponent`, `UI_DrawOpponentLogo`, `UI_DrawOpponentLogoMetal`, `UI_DrawOpponentLogoName`, `UI_DrawOpponentName`, `UI_DrawPlayerLogo`, `UI_DrawPlayerLogoMetal`, `UI_DrawPlayerLogoName`, `UI_DrawPlayerModel`, `UI_DrawPreviewCinematic`, `UI_DrawRedBlue`, `UI_DrawSelectedPlayer`, `UI_DrawServerMOTD`, `UI_DrawServerRefreshDate`, `UI_DrawSkill`, `UI_DrawTeamMember`, `UI_DrawTeamName`, `UI_DrawTier`, `UI_DrawTierGameType`, `UI_DrawTierMap`, `UI_DrawTierMapName`, `UI_Effects_HandleKey`, `UI_EnglishMapName`, `UI_FeederCount`, `UI_FeederItemImage`, `UI_FeederItemText`, `UI_FeederSelection`, `UI_GameType_HandleKey`, `UI_GetIndexFromSelection`, `UI_GetServerStatusInfo`, `UI_GetTeamColor`, `UI_GetValue`, `UI_Handicap_HandleKey`, `UI_HeadCountByTeam`, `UI_InsertServerIntoDisplayList`, `UI_JoinGameType_HandleKey`, `UI_Load`, `UI_LoadDemos`, `UI_LoadMenus`, `UI_LoadMods`, `UI_LoadMovies`, `UI_LoadNonIngame`, `UI_LoadTeams`, `UI_MapCountByGameType`, `UI_NetFilter_HandleKey`, `UI_NetGameType_HandleKey`, `UI_NetSource_HandleKey`, `UI_NextOpponent`, `UI_OpponentLeaderHead`, `UI_OpponentLeaderModel`, `UI_OpponentLeaderName`, `UI_OpponentName_HandleKey`, `UI_OwnerDraw`, `UI_OwnerDrawHandleKey`, `UI_OwnerDrawVisible`, `UI_OwnerDrawWidth`, `UI_OwnerDraw_Width`, `UI_ParseGameInfo`, `UI_ParseMenu`, `UI_ParseTeamInfo`, `UI_Pause`, `UI_PlayCinematic`, `UI_PrintTime`, `UI_PriorOpponent`, `UI_ReadableSize`, `UI_RedBlue_HandleKey`, `UI_RegisterCvars`, `UI_RemoveServerFromDisplayList`, `UI_Report`, `UI_RunCinematicFrame`, `UI_RunMenuScript`, `UI_SelectedHead`, `UI_SelectedMap`, `UI_SelectedPlayer_HandleKey`, `UI_ServersQsortCompare`, `UI_ServersSort`, `UI_SetCapFragLimits`, `UI_SetNextMap`, `UI_ShowPostGame`, `UI_Skill_HandleKey`, `UI_SortServerStatusInfo`, `UI_StartServerRefresh`, `UI_StartSinglePlayer`, `UI_StartSkirmish`, `UI_StopCinematic`, `UI_StopServerRefresh`, `UI_TeamIndexFromName`, `UI_TeamMember_HandleKey`, `UI_TeamName_HandleKey`, `UI_Update`, `UI_UpdateCvars`, `UI_UpdatePendingPings`, `UI_hasSkinForBase`, `_UI_DrawRect`, `_UI_DrawSides`, `_UI_DrawTopBottom`, `_UI_Init`, `_UI_IsFullscreen`, `_UI_KeyEvent`, `_UI_MouseEvent`, `_UI_Refresh`, `_UI_SetActiveMenu`, `_UI_Shutdown`, `stristr`, `vmMain`
 - `code/ui/ui_players.c` (not_started): `UI_DrawPlayer`, `UI_FileExists`, `UI_FindClientHeadFile`, `UI_ForceLegsAnim`, `UI_ForceTorsoAnim`, `UI_LegsSequencing`, `UI_MachinegunSpinAngle`, `UI_MovedirAdjustment`, `UI_ParseAnimationFile`, `UI_PlayerAngles`, `UI_PlayerAnimation`, `UI_PlayerFloatSprite`, `UI_PlayerInfo_SetInfo`, `UI_PlayerInfo_SetModel`, `UI_PlayerInfo_SetWeapon`, `UI_PositionEntityOnTag`, `UI_PositionRotatedEntityOnTag`, `UI_RegisterClientModelname`, `UI_RegisterClientSkin`, `UI_RunLerpFrame`, `UI_SetLegsAnim`, `UI_SetLerpFrameAnimation`, `UI_SetTorsoAnim`, `UI_SwingAngles`, `UI_TorsoSequencing`

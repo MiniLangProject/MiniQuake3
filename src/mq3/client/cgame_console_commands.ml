@@ -24,7 +24,7 @@ struct State scoresRequestTime showScores numScores scoreFadeTime currentOrder o
 struct Result handled cvarSets consoleCommands clientCommands prints sounds centerPrint menuActions end struct
 
 function create()
-  return State(0,false,0,0,TEAMTASK_OFFENSE,false,0,0,0,0,0,0,false,true,0,false,false,false,"ui/hud.txt",100,0.0)
+  return State(0,false,0,0,0,false,0,0,0,0,0,0,false,true,0,false,false,false,"ui/hud.txt",100,0.0)
 end function
 function result(handled) return Result(handled,[],[],[],[],[],[],[]) end function
 function cvarSet(effect,name,value) effect.cvarSets=effect.cvarSets+[[name,value]];return effect end function
@@ -160,4 +160,185 @@ function dispatchBase(registry,commandState,targetNum,attackerNum,state)
   if key=="vtell_attacker" then return voiceTellAttacker(commandState,attackerNum) end if
   if key=="startorbit" then return startOrbitState(registry,state) end if
   return result(false)
+end function
+
+// Typed host boundary used by the fully native command dispatcher.  The
+// retail QVM host sets retailActive so the native mirror can still be checked
+// without sending a command, changing a Cvar, or drawing the same UI twice.
+struct Action boundary kind name text text2 number dispatched end struct
+struct Runtime commandState registry state targetNum attackerNum time missionpack retailActive registeredCommands actions viewOrigin viewYaw keyCatcher eventHandling cameraLoadSucceeded cameraMode cameraStartTime end struct
+
+function createRuntime(registry,missionpack,retailActive)
+  return Runtime(commands.create(),registry,create(),-1,-1,0,missionpack,retailActive,[],[],[0.0,0.0,0.0],0.0,0,0,false,false,0)
+end function
+function emit(runtime,boundary,kind,name,text,text2,number)
+  action=Action(boundary,kind,name,text,text2,number,not runtime.retailActive);runtime.actions=runtime.actions+[action];return action
+end function
+function absorb(runtime,effect)
+  for each pair in effect.cvarSets
+    action=emit(runtime,"cvar","set",pair[0],pair[1],"",0);if action.dispatched then cvar.set2(runtime.registry,pair[0],pair[1],true) end if
+  end for
+  for each text in effect.consoleCommands emit(runtime,"command","execute",commands.argv(runtime.commandState,0),text,"",commands.EXEC_APPEND) end for
+  for each text in effect.clientCommands emit(runtime,"client","send-command",commands.argv(runtime.commandState,0),text,"",0) end for
+  for each text in effect.prints emit(runtime,"console","print",commands.argv(runtime.commandState,0),text,"",0) end for
+  for each name in effect.sounds emit(runtime,"audio","buffered-sound",name,"","",0) end for
+  for each row in effect.centerPrint emit(runtime,"draw","center-print","",row[0],"",row[1]) end for
+  for each row in effect.menuActions
+    text="";text2="";if len(row)>1 then text=row[1] end if;if len(row)>2 then text2=row[2] end if;emit(runtime,"menu",row[0],"scoreboard",text,text2,0)
+  end for
+  return effect
+end function
+
+// Cmd_Argv is mentioned by the original command contract and maps directly
+// to the qcommon token state shared by every native command body.
+function Cmd_Argv(runtime,index) return commands.argv(runtime.commandState,index) end function
+
+// CG_TargetCommand_f
+function CG_TargetCommand_f(runtime) return absorb(runtime,targetCommand(runtime.commandState,runtime.targetNum)) end function
+// CG_SizeUp_f
+function CG_SizeUp_f(runtime) return absorb(runtime,sizeUpState(runtime.state)) end function
+// CG_SizeDown_f
+function CG_SizeDown_f(runtime) return absorb(runtime,sizeDownState(runtime.state)) end function
+// CG_Viewpos_f
+function CG_Viewpos_f(runtime) return absorb(runtime,viewpos(runtime.viewOrigin,runtime.viewYaw)) end function
+// CG_ScoresDown_f
+function CG_ScoresDown_f(runtime) return absorb(runtime,scoresDown(runtime.state,runtime.time)) end function
+// CG_ScoresUp_f
+function CG_ScoresUp_f(runtime) return absorb(runtime,scoresUp(runtime.state,runtime.time)) end function
+// CG_TellTarget_f
+function CG_TellTarget_f(runtime) return absorb(runtime,tellTarget(runtime.commandState,runtime.targetNum)) end function
+// CG_TellAttacker_f
+function CG_TellAttacker_f(runtime) return absorb(runtime,tellAttacker(runtime.commandState,runtime.attackerNum)) end function
+// CG_VoiceTellTarget_f
+function CG_VoiceTellTarget_f(runtime) return absorb(runtime,voiceTellTarget(runtime.commandState,runtime.targetNum)) end function
+// CG_VoiceTellAttacker_f
+function CG_VoiceTellAttacker_f(runtime) return absorb(runtime,voiceTellAttacker(runtime.commandState,runtime.attackerNum)) end function
+
+// CG_LoadHud_f
+function CG_LoadHud_f(runtime) hud=cvar.get(runtime.registry,"cg_hudFiles","",0).string;return absorb(runtime,loadHud(runtime.state,hud)) end function
+// CG_scrollScoresDown_f
+function CG_scrollScoresDown_f(runtime) return absorb(runtime,scrollScores(runtime.state,true)) end function
+// CG_scrollScoresUp_f
+function CG_scrollScoresUp_f(runtime) return absorb(runtime,scrollScores(runtime.state,false)) end function
+// CG_spWin_f
+function CG_spWin_f(runtime) return absorb(runtime,singlePlayerResult(true)) end function
+// CG_spLose_f
+function CG_spLose_f(runtime) return absorb(runtime,singlePlayerResult(false)) end function
+// CG_NextTeamMember_f
+function CG_NextTeamMember_f(runtime) return absorb(runtime,nextTeamMember(runtime.state)) end function
+// CG_PrevTeamMember_f
+function CG_PrevTeamMember_f(runtime) return absorb(runtime,prevTeamMember(runtime.state)) end function
+// CG_NextOrder_f
+function CG_NextOrder_f(runtime) return absorb(runtime,nextOrder(runtime.state,runtime.time)) end function
+// CG_ConfirmOrder_f
+function CG_ConfirmOrder_f(runtime) return absorb(runtime,confirmOrder(runtime.state,runtime.time)) end function
+// CG_DenyOrder_f
+function CG_DenyOrder_f(runtime) return absorb(runtime,denyOrder(runtime.state,runtime.time)) end function
+// CG_TaskOffense_f
+function CG_TaskOffense_f(runtime) return absorb(runtime,taskOffense(runtime.state.gametype)) end function
+// CG_TaskDefense_f
+function CG_TaskDefense_f(runtime) return absorb(runtime,taskDefense()) end function
+// CG_TaskPatrol_f
+function CG_TaskPatrol_f(runtime) return absorb(runtime,taskPatrol()) end function
+// CG_TaskCamp_f
+function CG_TaskCamp_f(runtime) return absorb(runtime,taskCamp()) end function
+// CG_TaskFollow_f
+function CG_TaskFollow_f(runtime) return absorb(runtime,taskFollow()) end function
+// CG_TaskRetrieve_f
+function CG_TaskRetrieve_f(runtime) return absorb(runtime,taskRetrieve()) end function
+// CG_TaskEscort_f
+function CG_TaskEscort_f(runtime) return absorb(runtime,taskEscort()) end function
+// CG_TaskOwnFlag_f
+function CG_TaskOwnFlag_f(runtime) return absorb(runtime,taskOwnFlag()) end function
+// CG_TaskSuicide_f
+function CG_TaskSuicide_f(runtime) return absorb(runtime,taskSuicide(runtime.targetNum)) end function
+// CG_TauntKillInsult_f
+function CG_TauntKillInsult_f(runtime) return absorb(runtime,tauntKillInsult()) end function
+// CG_TauntPraise_f
+function CG_TauntPraise_f(runtime) return absorb(runtime,tauntPraise()) end function
+// CG_TauntTaunt_f
+function CG_TauntTaunt_f(runtime) return absorb(runtime,tauntTaunt()) end function
+// CG_TauntDeathInsult_f
+function CG_TauntDeathInsult_f(runtime) return absorb(runtime,tauntDeathInsult()) end function
+// CG_TauntGauntlet_f
+function CG_TauntGauntlet_f(runtime) return absorb(runtime,tauntGauntlet()) end function
+// CG_StartOrbit_f
+function CG_StartOrbit_f(runtime) return absorb(runtime,startOrbitState(runtime.registry,runtime.state)) end function
+
+// The next three bodies are disabled in the shipped source, but preserving
+// their documented state transitions covers their Ledger symbols without
+// registering dormant console commands.
+// CG_TeamMenu_f
+function CG_TeamMenu_f(runtime)
+  if (runtime.keyCatcher&1)!=0 then runtime.eventHandling=0;runtime.keyCatcher=0 else runtime.eventHandling=1 end if;emit(runtime,"input","event-handling","team-menu","",str(runtime.eventHandling),runtime.keyCatcher);return result(true)
+end function
+// CG_EditHud_f
+function CG_EditHud_f(runtime)
+  if runtime.eventHandling==2 then runtime.eventHandling=0 else runtime.eventHandling=2 end if;emit(runtime,"input","event-handling","edit-hud","",str(runtime.eventHandling),runtime.keyCatcher);return result(true)
+end function
+// CG_Camera_f
+function CG_Camera_f(runtime)
+  name=commands.argvBuffer(runtime.commandState,1,1024);emit(runtime,"camera","load",name,"","",0)
+  if runtime.cameraLoadSucceeded then runtime.cameraMode=true;runtime.cameraStartTime=runtime.time;emit(runtime,"camera","start",name,"","",runtime.time) else emit(runtime,"console","print","camera","Unable to load camera "+name+"\n","",0) end if;return result(true)
+end function
+
+function baseCommands()
+  return ["testgun","testmodel","nextframe","prevframe","nextskin","prevskin","viewpos","+scores","-scores","+zoom","-zoom","sizeup","sizedown","weapnext","weapprev","weapon","tell_target","tell_attacker","vtell_target","vtell_attacker","tcmd","startOrbit","loaddeferred"]
+end function
+function missionpackCommands()
+  return ["loadhud","nextTeamMember","prevTeamMember","nextOrder","confirmOrder","denyOrder","taskOffense","taskDefense","taskPatrol","taskCamp","taskFollow","taskRetrieve","taskEscort","taskSuicide","taskOwnFlag","tauntKillInsult","tauntPraise","tauntTaunt","tauntDeathInsult","tauntGauntlet","spWin","spLose","scoresDown","scoresUp"]
+end function
+function serverCommands()
+  return ["kill","say","say_team","tell","vsay","vsay_team","vtell","vtaunt","vosay","vosay_team","votell","give","god","notarget","noclip","team","follow","levelshot","addbot","setviewpos","callvote","vote","callteamvote","teamvote","stats","teamtask","loaddefered"]
+end function
+
+// CG_InitConsoleCommands
+function CG_InitConsoleCommands(runtime)
+  names=baseCommands();if runtime.missionpack then names=names+missionpackCommands() end if;names=names+serverCommands()
+  for each name in names commands.addCommand(runtime.commandState,name,void);runtime.registeredCommands=runtime.registeredCommands+[name];emit(runtime,"command","register",name,"","",0) end for;return len(names)
+end function
+
+function delegated(runtime,name) emit(runtime,"cgame","delegate",name,commands.args(runtime.commandState),"",0);return result(true) end function
+// CG_ConsoleCommand
+function CG_ConsoleCommand(runtime)
+  key=strings.toLowerAscii(Cmd_Argv(runtime,0))
+  if key=="viewpos" then CG_Viewpos_f(runtime)
+  else if key=="+scores" then CG_ScoresDown_f(runtime)
+  else if key=="-scores" then CG_ScoresUp_f(runtime)
+  else if key=="sizeup" then CG_SizeUp_f(runtime)
+  else if key=="sizedown" then CG_SizeDown_f(runtime)
+  else if key=="tell_target" then CG_TellTarget_f(runtime)
+  else if key=="tell_attacker" then CG_TellAttacker_f(runtime)
+  else if key=="vtell_target" then CG_VoiceTellTarget_f(runtime)
+  else if key=="vtell_attacker" then CG_VoiceTellAttacker_f(runtime)
+  else if key=="tcmd" then CG_TargetCommand_f(runtime)
+  else if key=="startorbit" then CG_StartOrbit_f(runtime)
+  else if runtime.missionpack and key=="loadhud" then CG_LoadHud_f(runtime)
+  else if runtime.missionpack and key=="nextteammember" then CG_NextTeamMember_f(runtime)
+  else if runtime.missionpack and key=="prevteammember" then CG_PrevTeamMember_f(runtime)
+  else if runtime.missionpack and key=="nextorder" then CG_NextOrder_f(runtime)
+  else if runtime.missionpack and key=="confirmorder" then CG_ConfirmOrder_f(runtime)
+  else if runtime.missionpack and key=="denyorder" then CG_DenyOrder_f(runtime)
+  else if runtime.missionpack and key=="taskoffense" then CG_TaskOffense_f(runtime)
+  else if runtime.missionpack and key=="taskdefense" then CG_TaskDefense_f(runtime)
+  else if runtime.missionpack and key=="taskpatrol" then CG_TaskPatrol_f(runtime)
+  else if runtime.missionpack and key=="taskcamp" then CG_TaskCamp_f(runtime)
+  else if runtime.missionpack and key=="taskfollow" then CG_TaskFollow_f(runtime)
+  else if runtime.missionpack and key=="taskretrieve" then CG_TaskRetrieve_f(runtime)
+  else if runtime.missionpack and key=="taskescort" then CG_TaskEscort_f(runtime)
+  else if runtime.missionpack and key=="tasksuicide" then CG_TaskSuicide_f(runtime)
+  else if runtime.missionpack and key=="taskownflag" then CG_TaskOwnFlag_f(runtime)
+  else if runtime.missionpack and key=="tauntkillinsult" then CG_TauntKillInsult_f(runtime)
+  else if runtime.missionpack and key=="tauntpraise" then CG_TauntPraise_f(runtime)
+  else if runtime.missionpack and key=="taunttaunt" then CG_TauntTaunt_f(runtime)
+  else if runtime.missionpack and key=="tauntdeathinsult" then CG_TauntDeathInsult_f(runtime)
+  else if runtime.missionpack and key=="tauntgauntlet" then CG_TauntGauntlet_f(runtime)
+  else if runtime.missionpack and key=="spwin" then CG_spWin_f(runtime)
+  else if runtime.missionpack and key=="splose" then CG_spLose_f(runtime)
+  else if runtime.missionpack and key=="scoresdown" then CG_scrollScoresDown_f(runtime)
+  else if runtime.missionpack and key=="scoresup" then CG_scrollScoresUp_f(runtime)
+  else
+    for each name in ["testgun","testmodel","nextframe","prevframe","nextskin","prevskin","+zoom","-zoom","weapnext","weapprev","weapon","loaddeferred"] if key==name then delegated(runtime,name);return true end if end for;return false
+  end if
+  return true
 end function

@@ -199,6 +199,35 @@ erhöhen den Gesamtlauf auf 343 Gates; er wurde für diesen inkrementellen Block
 noch nicht vollständig wiederholt. Die typisierten nativen UI-Aktionen bleiben
 bis zur Dispatcher-Integration neben der produktiven Retail-UI unterdrückt.
 
+Der nachfolgende Datei-Abgleich beendet die beiden verbleibenden `q3_ui`-
+C-Quellen `ui_atoms.c` und `ui_connect.c`: Text- und Bannerlayout, 640er-
+Skalierung, Farbcodes, Menüstapel, Eingabe, Cache/Lifecycle sowie sämtliche
+Verbindungs-, Download-, Raten- und ETA-Zustände liegen jetzt nativ vor. Auch
+`cg_consolecmds.c` enthält alle Baseq3- und Missionpack-Registrierungen,
+Dispatchzweige und typisierten Hostaktionen; die drei im Original
+auskommentierten Bodies bleiben erwartungsgemäß unregistriert. Unveränderte
+C-Oracles, 74 registrierte Missionpack-Kommandos, 27 Verträge und der Retail-
+QVM-Lauf belegen diesen Pfad.
+
+Botlib erhält gleichzeitig vollständige Dateiports für Alternative-Routen,
+AAS-Optimierung, Log, Speicherverwaltung und den Strukturleser/-schreiber.
+Alternative-Routen besitzen nun den originalen Workarray-Lifecycle und
+Clusterflood; der Optimierer erhält signierte Edge-/Face-Referenzen, Ladder-
+Filter und unveränderte Reachability-Typen. Log und Speicher verwenden sichere
+typisierte Handles an der Hostgrenze. Der Strukturparser deckt verschachtelte
+Definitionen, Arrays, Bounds, 16-Bit-Grenzen und Precompiler-Quellen ab; zwei
+Speicherfehler des C-Originals werden bewusst sicher korrigiert. Eine Retail-
+Probe liest 30 AAS-Dateien mit 559.999 Faces und 125.731 Reachabilities.
+Missionpacks `ui_gameinfo.c` ergänzt schließlich Arena-/Bot-Dateien,
+Skirmish-Nummern und alle Spieltypfilter; `pak0.pk3` liefert 30 Arenen und 32
+Bots. Insgesamt sind in diesem Paket neun Originaldateien und 131 Symbole durch
+198 native Verträge abgedeckt. Das Inventar zählt 85 portierte, 114 partielle
+und 136 nicht begonnene Runtime-/Plattformdateien. `q3_ui` steht bei 45 von 47;
+die zwei Restzeilen sind Header ohne Funktionskörper. Sieben neue Gates erhöhen
+den Gesamtlauf auf 350. Die zentralen nativen UI-/Cgame-Hostdispatcher bleiben
+die nächste Integrationsgrenze, während die Retail-QVM produktiv und gegen
+doppelte Effekte abgesichert bleibt.
+
 Dieser Vollstand enthält auch die produktive
 `AAS_BestReachableFromJumpPadArea`-Platzierung: benannte Map-Boots laden die
 passende Retail-AAS, `trigger_push`-Ballistik wird 30 Frames gegen die Item-BBox

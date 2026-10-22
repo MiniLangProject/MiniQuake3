@@ -86,7 +86,7 @@ def main() -> int:
         [build("tests/aas_route_extra_contracts.ml", "aas_route_extra_contracts.exe"), data],
         ROOT / "build",
     ).strip()
-    expected_mini = "PASS: 18 AAS route-extra contracts opcodes=575-577"
+    expected_mini = "PASS: 23 AAS route-extra contracts opcodes=575-577 lifecycle=4"
     if mini != expected_mini:
         raise RuntimeError(mini)
     print(observed)
