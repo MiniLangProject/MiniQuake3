@@ -228,6 +228,32 @@ den Gesamtlauf auf 350. Die zentralen nativen UI-/Cgame-Hostdispatcher bleiben
 die nächste Integrationsgrenze, während die Retail-QVM produktiv und gegen
 doppelte Effekte abgesichert bleibt.
 
+Die drei großen Syscall-Wrapperdateien sind nun vollständig nativ abgebildet:
+`cg_syscalls.c` mit 96 Symbolen, `g_syscalls.c` mit 185 Symbolen und
+Missionpacks `ui_syscalls.c` mit 89 Symbolen. Zusammen führen 357 echte
+Trap-Wrapper sämtliche Originalordinals, Argumentwörter, opaque 32-Bit-Pointer,
+`PASSFLOAT`-Bitmuster und Float-Rückgaben fort. Cgame schreibt seine Wörter in
+den bestehenden `syscall_cgame.dispatch`; qagame nutzt den vorhandenen Common-,
+Server-, World-, Botlib-, AAS-, EA-, AI- und Parserhost. Die Missionpack-UI
+deckt Renderer, Sound, FS, Cvars, LAN, Eingabe, Cinematics, CD-Key und Parser
+ab. Die x86-Oracles kompilieren die unveränderten Originalwrapper und prüfen
+alle Symbol-/Opcodezuordnungen. Retail-Proben beobachten echte Cgame-Traps,
+zwölf qagame-Lifecycle-Verträge sowie zwölf UI-Verträge. PunkBuster bleibt als
+ABI-Aktion erhalten, weil der veröffentlichte GPL-Quellcode keinen PB-Client
+enthält; die drei auskommentierten Cgame-Kamerawrapper benötigen bei einer
+Aktivierung noch einen Hostadapter.
+
+Missionpacks `ui_atoms.c` ergänzt 26 native Symbole für Postgame-Scores,
+versionierte Demos, ConsoleCommands und den Displaycontext. Win32s
+`win_gamma.c` bildet Hardwareerkennung, 3Dfx-/Desktop-Rampen, den Windows-2000-
+Clamp, monotone Rampen und Crash-Restaurierung mit einer unterdrückbaren
+Hostgrenze ab. Sieben unveränderte Win32-Datensätze und 17 Verträge bestehen;
+die tatsächliche Betriebssystem-Gammarampenwirkung bleibt beim Plattformhost.
+Insgesamt fügt dieser Block fünf vollständig portierte Originaldateien, 400
+Symbole und 196 native Verträge hinzu. Das Inventar zählt jetzt 90 portierte,
+114 partielle und 131 nicht begonnene Runtime-/Plattformdateien; die fünf Gates
+erhöhen den Gesamtlauf auf 355.
+
 Dieser Vollstand enthält auch die produktive
 `AAS_BestReachableFromJumpPadArea`-Platzierung: benannte Map-Boots laden die
 passende Retail-AAS, `trigger_push`-Ballistik wird 30 Frames gegen die Item-BBox

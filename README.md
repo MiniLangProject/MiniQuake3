@@ -161,6 +161,19 @@ Runtime-/Plattforminventar steht nun bei 85 portierten, 114 partiellen und 136
 nicht begonnenen Dateien; `q3_ui` erreicht 45 von 47, wobei die zwei offenen
 Einträge Header ohne Funktionskörper sind. Die sieben neuen Gates erhöhen die
 Gesamtprüfung auf 350.
+
+Der anschließende ABI-Abgleich portiert die vollständigen Wrapperdateien
+`cgame/cg_syscalls.c`, `game/g_syscalls.c` und Missionpacks
+`ui/ui_syscalls.c`, außerdem Missionpacks `ui/ui_atoms.c` und Win32s
+`win_gamma.c`. Alle 400 Ledger-Symbole sind jetzt nativ vorhanden; 357
+zugehörige Trap-Wrapper bewahren Opcode, Argumentreihenfolge, 32-Bit-Pointer
+und Float-Bitmuster. Unveränderte x86-C-Oracles sowie 196 MiniLang-Verträge
+bestehen. Retail-Proben führen echte Cgame-, qagame- und UI-QVM-Aufrufe durch
+die vorhandenen Hostdispatcher und prüfen zusätzlich Originalassets. Das
+Inventar steht damit bei 90 portierten, 114 partiellen und 131 nicht
+begonnenen Runtime-/Plattformdateien. Die fünf neuen Gates erhöhen die
+Gesamtprüfung auf 355.
+
 Details und verbleibende Paritätslücken stehen im
 [Prüfaudit](docs/PARITY_AUDIT.md).
 

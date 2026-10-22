@@ -8737,10 +8737,883 @@
         "trap_loadCamera",
         "trap_startCamera"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "PASSFLOAT",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.PASSFLOAT",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "dllEntry",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.dllEntry",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "testPrintFloat",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.testPrintFloat",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "testPrintInt",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.testPrintInt",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_AddCommand",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_AddCommand",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_Argc",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_Argc",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_Args",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_Args",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_Argv",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_Argv",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CIN_DrawCinematic",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CIN_DrawCinematic",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CIN_PlayCinematic",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CIN_PlayCinematic",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CIN_RunCinematic",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CIN_RunCinematic",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CIN_SetExtents",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CIN_SetExtents",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CIN_StopCinematic",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CIN_StopCinematic",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CM_BoxTrace",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CM_BoxTrace",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CM_CapsuleTrace",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CM_CapsuleTrace",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CM_InlineModel",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CM_InlineModel",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CM_LoadMap",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CM_LoadMap",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CM_MarkFragments",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CM_MarkFragments",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CM_NumInlineModels",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CM_NumInlineModels",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CM_PointContents",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CM_PointContents",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CM_TempBoxModel",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CM_TempBoxModel",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CM_TempCapsuleModel",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CM_TempCapsuleModel",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CM_TransformedBoxTrace",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CM_TransformedBoxTrace",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CM_TransformedCapsuleTrace",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CM_TransformedCapsuleTrace",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_CM_TransformedPointContents",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_CM_TransformedPointContents",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_Cvar_Register",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_Cvar_Register",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_Cvar_Set",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_Cvar_Set",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_Cvar_Update",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_Cvar_Update",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_Cvar_VariableStringBuffer",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_Cvar_VariableStringBuffer",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_Error",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_Error",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_FS_FCloseFile",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_FS_FCloseFile",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_FS_FOpenFile",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_FS_FOpenFile",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_FS_Read",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_FS_Read",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_FS_Seek",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_FS_Seek",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_FS_Write",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_FS_Write",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_GetCurrentCmdNumber",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_GetCurrentCmdNumber",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_GetCurrentSnapshotNumber",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_GetCurrentSnapshotNumber",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_GetEntityToken",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_GetEntityToken",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_GetGameState",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_GetGameState",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_GetGlconfig",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_GetGlconfig",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_GetServerCommand",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_GetServerCommand",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_GetSnapshot",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_GetSnapshot",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_GetUserCmd",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_GetUserCmd",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_Key_GetCatcher",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_Key_GetCatcher",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_Key_GetKey",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_Key_GetKey",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_Key_IsDown",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_Key_IsDown",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_Key_SetCatcher",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_Key_SetCatcher",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_MemoryRemaining",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_MemoryRemaining",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_Milliseconds",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_Milliseconds",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_PC_AddGlobalDefine",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_PC_AddGlobalDefine",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_PC_FreeSource",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_PC_FreeSource",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_PC_LoadSource",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_PC_LoadSource",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_PC_ReadToken",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_PC_ReadToken",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_PC_SourceFileAndLine",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_PC_SourceFileAndLine",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_Print",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_Print",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_AddAdditiveLightToScene",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_AddAdditiveLightToScene",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_AddLightToScene",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_AddLightToScene",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_AddPolyToScene",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_AddPolyToScene",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_AddPolysToScene",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_AddPolysToScene",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_AddRefEntityToScene",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_AddRefEntityToScene",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_ClearScene",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_ClearScene",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_DrawStretchPic",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_DrawStretchPic",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_LerpTag",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_LerpTag",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_LightForPoint",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_LightForPoint",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_LoadWorldMap",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_LoadWorldMap",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_ModelBounds",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_ModelBounds",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_RegisterFont",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_RegisterFont",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_RegisterModel",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_RegisterModel",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_RegisterShader",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_RegisterShader",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_RegisterShaderNoMip",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_RegisterShaderNoMip",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_RegisterSkin",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_RegisterSkin",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_RemapShader",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_RemapShader",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_RenderScene",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_RenderScene",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_SetColor",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_SetColor",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_R_inPVS",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_R_inPVS",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_RealTime",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_RealTime",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_RemoveCommand",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_RemoveCommand",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_S_AddLoopingSound",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_S_AddLoopingSound",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_S_AddRealLoopingSound",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_S_AddRealLoopingSound",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_S_ClearLoopingSounds",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_S_ClearLoopingSounds",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_S_RegisterSound",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_S_RegisterSound",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_S_Respatialize",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_S_Respatialize",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_S_StartBackgroundTrack",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_S_StartBackgroundTrack",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_S_StartLocalSound",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_S_StartLocalSound",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_S_StartSound",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_S_StartSound",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_S_StopBackgroundTrack",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_S_StopBackgroundTrack",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_S_StopLoopingSound",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_S_StopLoopingSound",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_S_UpdateEntityPosition",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_S_UpdateEntityPosition",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_SendClientCommand",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_SendClientCommand",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_SendConsoleCommand",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_SendConsoleCommand",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_SetUserCmdValue",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_SetUserCmdValue",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_SnapVector",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_SnapVector",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_UpdateScreen",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_UpdateScreen",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_getCameraInfo",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_getCameraInfo",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_loadCamera",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_loadCamera",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        },
+        {
+          "original": "trap_startCamera",
+          "target_files": [
+            "src/mq3/client/cgame_syscalls.ml"
+          ],
+          "target_symbol": "mq3.client.cgame_syscalls.trap_startCamera",
+          "status": "tested_exact",
+          "scope": "Cgame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with existing host dispatcher"
+        }
+      ],
+      "target": [
+        "src/mq3/client/cgame_syscalls.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cgame_syscalls.py",
+        "tests/cgame_syscalls_contracts.ml",
+        "tests/cgame_syscalls_oracle.ml",
+        "tests/cgame_syscalls_retail_probe.ml",
+        "tests/reference/cgame_syscalls_oracle.c"
+      ]
     },
     {
       "source": "code/cgame/cg_view.c",
@@ -15988,10 +16861,1869 @@
         "trap_UnifyWhiteSpaces",
         "trap_UnlinkEntity"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "PASSFLOAT",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.PASSFLOAT",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "dllEntry",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.dllEntry",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_AlternativeRouteGoals",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_AlternativeRouteGoals",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_AreaInfo",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_AreaInfo",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_AreaReachability",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_AreaReachability",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_AreaTravelTimeToGoalArea",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_AreaTravelTimeToGoalArea",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_BBoxAreas",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_BBoxAreas",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_EnableRoutingArea",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_EnableRoutingArea",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_EntityInfo",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_EntityInfo",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_FloatForBSPEpairKey",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_FloatForBSPEpairKey",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_Initialized",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_Initialized",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_IntForBSPEpairKey",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_IntForBSPEpairKey",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_NextBSPEntity",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_NextBSPEntity",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_PointAreaNum",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_PointAreaNum",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_PointContents",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_PointContents",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_PointReachabilityAreaIndex",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_PointReachabilityAreaIndex",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_PredictClientMovement",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_PredictClientMovement",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_PredictRoute",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_PredictRoute",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_PresenceTypeBoundingBox",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_PresenceTypeBoundingBox",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_Swimming",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_Swimming",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_Time",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_Time",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_TraceAreas",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_TraceAreas",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_ValueForBSPEpairKey",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_ValueForBSPEpairKey",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AAS_VectorForBSPEpairKey",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AAS_VectorForBSPEpairKey",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AdjustAreaPortalState",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AdjustAreaPortalState",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_AreasConnected",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_AreasConnected",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Argc",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Argc",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Argv",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Argv",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotAddAvoidSpot",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotAddAvoidSpot",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotAllocChatState",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotAllocChatState",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotAllocGoalState",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotAllocGoalState",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotAllocMoveState",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotAllocMoveState",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotAllocWeaponState",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotAllocWeaponState",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotAllocateClient",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotAllocateClient",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotAvoidGoalTime",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotAvoidGoalTime",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotChatLength",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotChatLength",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotChooseBestFightWeapon",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotChooseBestFightWeapon",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotChooseLTGItem",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotChooseLTGItem",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotChooseNBGItem",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotChooseNBGItem",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotDumpAvoidGoals",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotDumpAvoidGoals",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotDumpGoalStack",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotDumpGoalStack",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotEmptyGoalStack",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotEmptyGoalStack",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotEnterChat",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotEnterChat",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotFindMatch",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotFindMatch",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotFreeCharacter",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotFreeCharacter",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotFreeChatState",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotFreeChatState",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotFreeClient",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotFreeClient",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotFreeGoalState",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotFreeGoalState",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotFreeItemWeights",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotFreeItemWeights",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotFreeMoveState",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotFreeMoveState",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotFreeWeaponState",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotFreeWeaponState",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotGetChatMessage",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotGetChatMessage",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotGetLevelItemGoal",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotGetLevelItemGoal",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotGetMapLocationGoal",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotGetMapLocationGoal",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotGetNextCampSpotGoal",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotGetNextCampSpotGoal",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotGetSecondGoal",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotGetSecondGoal",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotGetServerCommand",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotGetServerCommand",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotGetSnapshotEntity",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotGetSnapshotEntity",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotGetTopGoal",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotGetTopGoal",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotGetWeaponInfo",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotGetWeaponInfo",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotGoalName",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotGoalName",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotInitLevelItems",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotInitLevelItems",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotInitMoveState",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotInitMoveState",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotInitialChat",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotInitialChat",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotInterbreedGoalFuzzyLogic",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotInterbreedGoalFuzzyLogic",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotItemGoalInVisButNotVisible",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotItemGoalInVisButNotVisible",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotLibDefine",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotLibDefine",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotLibLoadMap",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotLibLoadMap",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotLibSetup",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotLibSetup",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotLibShutdown",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotLibShutdown",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotLibStartFrame",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotLibStartFrame",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotLibTest",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotLibTest",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotLibUpdateEntity",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotLibUpdateEntity",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotLibVarGet",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotLibVarGet",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotLibVarSet",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotLibVarSet",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotLoadCharacter",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotLoadCharacter",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotLoadChatFile",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotLoadChatFile",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotLoadItemWeights",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotLoadItemWeights",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotLoadWeaponWeights",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotLoadWeaponWeights",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotMatchVariable",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotMatchVariable",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotMoveInDirection",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotMoveInDirection",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotMoveToGoal",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotMoveToGoal",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotMovementViewTarget",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotMovementViewTarget",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotMutateGoalFuzzyLogic",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotMutateGoalFuzzyLogic",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotNextConsoleMessage",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotNextConsoleMessage",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotNumConsoleMessages",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotNumConsoleMessages",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotNumInitialChats",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotNumInitialChats",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotPopGoal",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotPopGoal",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotPredictVisiblePosition",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotPredictVisiblePosition",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotPushGoal",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotPushGoal",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotQueueConsoleMessage",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotQueueConsoleMessage",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotReachabilityArea",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotReachabilityArea",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotRemoveConsoleMessage",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotRemoveConsoleMessage",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotRemoveFromAvoidGoals",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotRemoveFromAvoidGoals",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotReplaceSynonyms",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotReplaceSynonyms",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotReplyChat",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotReplyChat",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotResetAvoidGoals",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotResetAvoidGoals",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotResetAvoidReach",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotResetAvoidReach",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotResetGoalState",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotResetGoalState",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotResetLastAvoidReach",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotResetLastAvoidReach",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotResetMoveState",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotResetMoveState",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotResetWeaponState",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotResetWeaponState",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotSaveGoalFuzzyLogic",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotSaveGoalFuzzyLogic",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotSetAvoidGoalTime",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotSetAvoidGoalTime",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotSetChatGender",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotSetChatGender",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotSetChatName",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotSetChatName",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotTouchingGoal",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotTouchingGoal",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotUpdateEntityItems",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotUpdateEntityItems",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_BotUserCommand",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_BotUserCommand",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Characteristic_BFloat",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Characteristic_BFloat",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Characteristic_BInteger",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Characteristic_BInteger",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Characteristic_Float",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Characteristic_Float",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Characteristic_Integer",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Characteristic_Integer",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Characteristic_String",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Characteristic_String",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Cvar_Register",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Cvar_Register",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Cvar_Set",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Cvar_Set",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Cvar_Update",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Cvar_Update",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Cvar_VariableIntegerValue",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Cvar_VariableIntegerValue",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Cvar_VariableStringBuffer",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Cvar_VariableStringBuffer",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_DebugPolygonCreate",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_DebugPolygonCreate",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_DebugPolygonDelete",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_DebugPolygonDelete",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_DropClient",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_DropClient",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_Action",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_Action",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_Attack",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_Attack",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_Command",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_Command",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_Crouch",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_Crouch",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_DelayedJump",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_DelayedJump",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_EndRegular",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_EndRegular",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_Gesture",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_Gesture",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_GetInput",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_GetInput",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_Jump",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_Jump",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_Move",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_Move",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_MoveBack",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_MoveBack",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_MoveDown",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_MoveDown",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_MoveForward",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_MoveForward",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_MoveLeft",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_MoveLeft",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_MoveRight",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_MoveRight",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_MoveUp",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_MoveUp",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_ResetInput",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_ResetInput",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_Respawn",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_Respawn",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_Say",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_Say",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_SayTeam",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_SayTeam",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_SelectWeapon",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_SelectWeapon",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_Talk",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_Talk",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_Use",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_Use",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EA_View",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EA_View",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EntitiesInBox",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EntitiesInBox",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EntityContact",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EntityContact",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_EntityContactCapsule",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_EntityContactCapsule",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Error",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Error",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_FS_FCloseFile",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_FS_FCloseFile",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_FS_FOpenFile",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_FS_FOpenFile",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_FS_GetFileList",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_FS_GetFileList",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_FS_Read",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_FS_Read",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_FS_Seek",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_FS_Seek",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_FS_Write",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_FS_Write",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_GeneticParentsAndChildSelection",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_GeneticParentsAndChildSelection",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_GetConfigstring",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_GetConfigstring",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_GetEntityToken",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_GetEntityToken",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_GetServerinfo",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_GetServerinfo",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_GetUsercmd",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_GetUsercmd",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_GetUserinfo",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_GetUserinfo",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_InPVS",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_InPVS",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_InPVSIgnorePortals",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_InPVSIgnorePortals",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_LinkEntity",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_LinkEntity",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_LocateGameData",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_LocateGameData",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Milliseconds",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Milliseconds",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_PC_FreeSource",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_PC_FreeSource",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_PC_LoadSource",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_PC_LoadSource",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_PC_ReadToken",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_PC_ReadToken",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_PC_SourceFileAndLine",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_PC_SourceFileAndLine",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_PointContents",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_PointContents",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Printf",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Printf",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_RealTime",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_RealTime",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_SendConsoleCommand",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_SendConsoleCommand",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_SendServerCommand",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_SendServerCommand",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_SetBrushModel",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_SetBrushModel",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_SetConfigstring",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_SetConfigstring",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_SetUserinfo",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_SetUserinfo",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_SnapVector",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_SnapVector",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_StringContains",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_StringContains",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_Trace",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_Trace",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_TraceCapsule",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_TraceCapsule",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_UnifyWhiteSpaces",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_UnifyWhiteSpaces",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        },
+        {
+          "original": "trap_UnlinkEntity",
+          "target_files": [
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/game/syscall_qagame_host.ml"
+          ],
+          "target_symbol": "mq3.game.syscalls.trap_UnlinkEntity",
+          "status": "tested_exact",
+          "scope": "Qagame syscall wrapper opcode, x86 ABI, pointer and float-bit semantics with QVM host adapter"
+        }
+      ],
+      "target": [
+        "src/mq3/game/syscalls.ml",
+        "src/mq3/game/syscall_qagame_host.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_game_syscalls.py",
+        "tests/game_syscalls_contracts.ml",
+        "tests/game_syscalls_oracle.ml",
+        "tests/reference/game_syscalls_oracle.c"
+      ]
     },
     {
       "source": "code/game/g_target.c",
@@ -30566,10 +33298,253 @@
         "UI_StartDemoLoop",
         "UI_UpdateScreen"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Com_Error",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.Com_Error",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "Com_Printf",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.Com_Printf",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "NeedCDAction",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.NeedCDAction",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "NeedCDKeyAction",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.NeedCDKeyAction",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_AdjustFrom640",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_AdjustFrom640",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_Argv",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_Argv",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_Cache_f",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_Cache_f",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_CalcPostGameStats",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_CalcPostGameStats",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_ClampCvar",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_ClampCvar",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_ClearScores",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_ClearScores",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_ConsoleCommand",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_ConsoleCommand",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_CursorInRect",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_CursorInRect",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_Cvar_VariableString",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_Cvar_VariableString",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_DrawHandlePic",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_DrawHandlePic",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_DrawNamedPic",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_DrawNamedPic",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_DrawRect",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_DrawRect",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_DrawSides",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_DrawSides",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_DrawTextBox",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_DrawTextBox",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_DrawTopBottom",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_DrawTopBottom",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_FillRect",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_FillRect",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_LoadBestScores",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_LoadBestScores",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_SetBestScores",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_SetBestScores",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_SetColor",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_SetColor",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_Shutdown",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_Shutdown",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_StartDemoLoop",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_StartDemoLoop",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        },
+        {
+          "original": "UI_UpdateScreen",
+          "target_files": [
+            "src/mq3/client/ui_atoms_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_atoms_missionpack.UI_UpdateScreen",
+          "status": "tested_exact",
+          "scope": "Missionpack UI atoms postgame, demo, display-context, command, cvar, FS and renderer semantics"
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_atoms_missionpack.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_atoms_missionpack.py",
+        "tests/ui_atoms_missionpack_contracts.ml",
+        "tests/ui_atoms_missionpack_oracle.ml",
+        "tests/ui_atoms_missionpack_retail_probe.ml",
+        "tests/reference/ui_atoms_missionpack_oracle.c"
+      ]
     },
     {
       "source": "code/ui/ui_gameinfo.c",
@@ -31293,10 +34268,820 @@
         "trap_UpdateScreen",
         "trap_VerifyCDKey"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "PASSFLOAT",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.PASSFLOAT",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "dllEntry",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.dllEntry",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Argc",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Argc",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Argv",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Argv",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_CIN_DrawCinematic",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_CIN_DrawCinematic",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_CIN_PlayCinematic",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_CIN_PlayCinematic",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_CIN_RunCinematic",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_CIN_RunCinematic",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_CIN_SetExtents",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_CIN_SetExtents",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_CIN_StopCinematic",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_CIN_StopCinematic",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_CM_LerpTag",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_CM_LerpTag",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Cmd_ExecuteText",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Cmd_ExecuteText",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Cvar_Create",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Cvar_Create",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Cvar_InfoStringBuffer",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Cvar_InfoStringBuffer",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Cvar_Register",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Cvar_Register",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Cvar_Reset",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Cvar_Reset",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Cvar_Set",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Cvar_Set",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Cvar_SetValue",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Cvar_SetValue",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Cvar_Update",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Cvar_Update",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Cvar_VariableStringBuffer",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Cvar_VariableStringBuffer",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Cvar_VariableValue",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Cvar_VariableValue",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Error",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Error",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_FS_FCloseFile",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_FS_FCloseFile",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_FS_FOpenFile",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_FS_FOpenFile",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_FS_GetFileList",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_FS_GetFileList",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_FS_Read",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_FS_Read",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_FS_Seek",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_FS_Seek",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_FS_Write",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_FS_Write",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_GetCDKey",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_GetCDKey",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_GetClientState",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_GetClientState",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_GetClipboardData",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_GetClipboardData",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_GetConfigString",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_GetConfigString",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_GetGlconfig",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_GetGlconfig",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Key_ClearStates",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Key_ClearStates",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Key_GetBindingBuf",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Key_GetBindingBuf",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Key_GetCatcher",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Key_GetCatcher",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Key_GetOverstrikeMode",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Key_GetOverstrikeMode",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Key_IsDown",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Key_IsDown",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Key_KeynumToStringBuf",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Key_KeynumToStringBuf",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Key_SetBinding",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Key_SetBinding",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Key_SetCatcher",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Key_SetCatcher",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Key_SetOverstrikeMode",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Key_SetOverstrikeMode",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_AddServer",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_AddServer",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_ClearPing",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_ClearPing",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_CompareServers",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_CompareServers",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_GetPing",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_GetPing",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_GetPingInfo",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_GetPingInfo",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_GetPingQueueCount",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_GetPingQueueCount",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_GetServerAddressString",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_GetServerAddressString",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_GetServerCount",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_GetServerCount",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_GetServerInfo",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_GetServerInfo",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_GetServerPing",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_GetServerPing",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_LoadCachedServers",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_LoadCachedServers",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_MarkServerVisible",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_MarkServerVisible",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_RemoveServer",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_RemoveServer",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_ResetPings",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_ResetPings",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_SaveCachedServers",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_SaveCachedServers",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_ServerIsVisible",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_ServerIsVisible",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_ServerStatus",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_ServerStatus",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_LAN_UpdateVisiblePings",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_LAN_UpdateVisiblePings",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_MemoryRemaining",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_MemoryRemaining",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Milliseconds",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Milliseconds",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_PC_AddGlobalDefine",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_PC_AddGlobalDefine",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_PC_FreeSource",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_PC_FreeSource",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_PC_LoadSource",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_PC_LoadSource",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_PC_ReadToken",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_PC_ReadToken",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_PC_SourceFileAndLine",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_PC_SourceFileAndLine",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_Print",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_Print",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_R_AddLightToScene",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_R_AddLightToScene",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_R_AddPolyToScene",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_R_AddPolyToScene",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_R_AddRefEntityToScene",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_R_AddRefEntityToScene",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_R_ClearScene",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_R_ClearScene",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_R_DrawStretchPic",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_R_DrawStretchPic",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_R_ModelBounds",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_R_ModelBounds",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_R_RegisterFont",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_R_RegisterFont",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_R_RegisterModel",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_R_RegisterModel",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_R_RegisterShaderNoMip",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_R_RegisterShaderNoMip",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_R_RegisterSkin",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_R_RegisterSkin",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_R_RemapShader",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_R_RemapShader",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_R_RenderScene",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_R_RenderScene",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_R_SetColor",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_R_SetColor",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_RealTime",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_RealTime",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_S_RegisterSound",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_S_RegisterSound",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_S_StartBackgroundTrack",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_S_StartBackgroundTrack",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_S_StartLocalSound",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_S_StartLocalSound",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_S_StopBackgroundTrack",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_S_StopBackgroundTrack",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_SetCDKey",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_SetCDKey",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_SetPbClStatus",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_SetPbClStatus",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_UpdateScreen",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_UpdateScreen",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        },
+        {
+          "original": "trap_VerifyCDKey",
+          "target_files": [
+            "src/mq3/client/ui_syscalls_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_syscalls_missionpack.trap_VerifyCDKey",
+          "status": "tested_exact",
+          "scope": "Missionpack UI syscall wrapper opcode, ABI, pointer and float-bit semantics"
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_syscalls_missionpack.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_syscalls_missionpack.py",
+        "tests/ui_syscalls_missionpack_contracts.ml",
+        "tests/ui_syscalls_missionpack_oracle.ml",
+        "tests/ui_syscalls_missionpack_retail_probe.ml",
+        "tests/reference/ui_syscalls_missionpack_oracle.c"
+      ]
     },
     {
       "source": "code/ui/ui_util.c",
@@ -32369,10 +36154,54 @@
         "WG_RestoreGamma",
         "mapGammaMax"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "GLimp_SetGamma",
+          "target_files": [
+            "src/mq3/platform/win_gamma.ml"
+          ],
+          "target_symbol": "mq3.platform.win_gamma.GLimp_SetGamma",
+          "status": "tested_exact",
+          "scope": "Win32 gamma capability, ramp conversion/clamping, restore and dormant diagnostic semantics"
+        },
+        {
+          "original": "WG_CheckHardwareGamma",
+          "target_files": [
+            "src/mq3/platform/win_gamma.ml"
+          ],
+          "target_symbol": "mq3.platform.win_gamma.WG_CheckHardwareGamma",
+          "status": "tested_exact",
+          "scope": "Win32 gamma capability, ramp conversion/clamping, restore and dormant diagnostic semantics"
+        },
+        {
+          "original": "WG_RestoreGamma",
+          "target_files": [
+            "src/mq3/platform/win_gamma.ml"
+          ],
+          "target_symbol": "mq3.platform.win_gamma.WG_RestoreGamma",
+          "status": "tested_exact",
+          "scope": "Win32 gamma capability, ramp conversion/clamping, restore and dormant diagnostic semantics"
+        },
+        {
+          "original": "mapGammaMax",
+          "target_files": [
+            "src/mq3/platform/win_gamma.ml"
+          ],
+          "target_symbol": "mq3.platform.win_gamma.mapGammaMax",
+          "status": "tested_exact",
+          "scope": "Win32 gamma capability, ramp conversion/clamping, restore and dormant diagnostic semantics"
+        }
+      ],
+      "target": [
+        "src/mq3/platform/win_gamma.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_win_gamma.py",
+        "tests/win_gamma_contracts.ml",
+        "tests/win_gamma_oracle.ml",
+        "tests/reference/win_gamma_oracle.c"
+      ]
     },
     {
       "source": "code/win32/win_glimp.c",
