@@ -28,13 +28,13 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **160 sind
-vollständig portiert, 58 teilweise portiert und 117 noch nicht begonnen**.
-Zuletzt wurden die vollständigen Originaloberflächen von `tr_surface.c`,
-`tr_backend.c`, `tr_shade.c` und `snd_wavelet.c` geschlossen. Der
-Produktivpfad besitzt damit vollständige native Surface-, Renderer-Backend-,
-Shader-Stage- und Wavelet-/MuLaw-Fassaden, abgesichert über native, Retail- und
-unveränderte-C-Verträge.
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **164 sind
+vollständig portiert, 54 teilweise portiert und 117 noch nicht begonnen**.
+Zuletzt wurden die vollständigen Originaloberflächen von `tr_cmds.c`,
+`tr_model.c`, `tr_world.c` und `tr_curve.c` geschlossen. Der Produktivpfad
+besitzt damit vollständige native Command-, Modell-, World-/PVS- und
+Patch-Grid-Fassaden, abgesichert über native, Retail- und unveränderte-C-
+Verträge.
 
 Der aktuelle Stand ist im [AAS-/Botlib-Bericht](docs/AAS_RUNTIME.md) und im
 [vollständigen AI-Trap-Audit 500–577](docs/BOTLIB_AI_TRAP_AUDIT.md) dokumentiert.

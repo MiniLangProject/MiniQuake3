@@ -21,13 +21,13 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
 | `qcommon` | 27 | 4 | 14 | 9 | 0 |
-| `renderer` | 27 | 15 | 8 | 4 | 0 |
+| `renderer` | 27 | 19 | 4 | 4 | 0 |
 | `server` | 11 | 2 | 9 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **160** | **58** | **117** | **0** |
+| **Gesamt** | **335** | **164** | **54** | **117** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -294,8 +294,8 @@ Teil dieser Tabelle.
 | `code/renderer/tr_animation.c` | `renderer` | `ported` | 2 | 2 | 0 |
 | `code/renderer/tr_backend.c` | `renderer` | `ported` | 21 | 6 | 15 |
 | `code/renderer/tr_bsp.c` | `renderer` | `ported` | 30 | 3 | 27 |
-| `code/renderer/tr_cmds.c` | `renderer` | `partial` | 11 | 3 | 8 |
-| `code/renderer/tr_curve.c` | `renderer` | `partial` | 11 | 5 | 6 |
+| `code/renderer/tr_cmds.c` | `renderer` | `ported` | 11 | 3 | 8 |
+| `code/renderer/tr_curve.c` | `renderer` | `ported` | 11 | 5 | 6 |
 | `code/renderer/tr_flares.c` | `renderer` | `partial` | 6 | 5 | 1 |
 | `code/renderer/tr_font.c` | `renderer` | `partial` | 9 | 1 | 8 |
 | `code/renderer/tr_image.c` | `renderer` | `ported` | 38 | 8 | 30 |
@@ -305,7 +305,7 @@ Teil dieser Tabelle.
 | `code/renderer/tr_main.c` | `renderer` | `ported` | 32 | 15 | 17 |
 | `code/renderer/tr_marks.c` | `renderer` | `ported` | 4 | 4 | 0 |
 | `code/renderer/tr_mesh.c` | `renderer` | `ported` | 5 | 5 | 0 |
-| `code/renderer/tr_model.c` | `renderer` | `partial` | 11 | 0 | 11 |
+| `code/renderer/tr_model.c` | `renderer` | `ported` | 11 | 0 | 11 |
 | `code/renderer/tr_noise.c` | `renderer` | `ported` | 3 | 3 | 0 |
 | `code/renderer/tr_public.h` | `renderer` | `not_started` | 0 | 0 | 0 |
 | `code/renderer/tr_scene.c` | `renderer` | `partial` | 9 | 4 | 5 |
@@ -315,7 +315,7 @@ Teil dieser Tabelle.
 | `code/renderer/tr_shadows.c` | `renderer` | `ported` | 5 | 5 | 0 |
 | `code/renderer/tr_sky.c` | `renderer` | `ported` | 13 | 13 | 0 |
 | `code/renderer/tr_surface.c` | `renderer` | `ported` | 24 | 16 | 8 |
-| `code/renderer/tr_world.c` | `renderer` | `partial` | 15 | 1 | 14 |
+| `code/renderer/tr_world.c` | `renderer` | `ported` | 15 | 1 | 14 |
 | `code/server/server.h` | `server` | `partial` | 0 | 0 | 0 |
 | `code/server/sv_bot.c` | `server` | `partial` | 28 | 0 | 28 |
 | `code/server/sv_ccmds.c` | `server` | `ported` | 16 | 16 | 0 |
@@ -523,21 +523,21 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/renderer/qgl_linked.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_backend.c` (ported): `GL_Cull`, `GL_State`, `GL_TexEnv`, `RB_BeginDrawingView`, `RB_DrawBuffer`, `RB_DrawSurfs`, `RB_ExecuteRenderCommands`, `RB_Hyperspace`, `RB_RenderThread`, `RB_SetColor`, `RB_SetGL2D`, `RB_ShowImages`, `RB_SwapBuffers`, `RE_StretchRaw`, `SetViewportAndScissor`
 - `code/renderer/tr_bsp.c` (ported): `HSVtoRGB`, `ParseFace`, `ParseMesh`, `ParseTriSurf`, `RE_LoadWorldMap`, `RE_SetWorldVisData`, `R_FixSharedVertexLodError`, `R_FixSharedVertexLodError_r`, `R_GetEntityToken`, `R_LoadEntities`, `R_LoadFogs`, `R_LoadLightGrid`, `R_LoadLightmaps`, `R_LoadMarksurfaces`, `R_LoadNodesAndLeafs`, `R_LoadPlanes`, `R_LoadShaders`, `R_LoadSurfaces`, `R_LoadVisibility`, `R_MergedHeightPoints`, `R_MergedWidthPoints`, `R_MovePatchSurfacesToHunk`, `R_SetParent`, `R_StitchAllPatches`, `R_StitchPatches`, `ShaderForShaderNum`, `patch`
-- `code/renderer/tr_cmds.c` (partial): `RE_BeginFrame`, `RE_EndFrame`, `R_AddDrawSurfCmd`, `R_InitCommandBuffers`, `R_IssueRenderCommands`, `R_PerformanceCounters`, `R_ShutdownCommandBuffers`, `R_SyncRenderThread`
-- `code/renderer/tr_curve.c` (partial): `InvertCtrl`, `InvertErrorTable`, `R_CreateSurfaceGridMesh`, `R_FreeSurfaceGridMesh`, `R_GridInsertColumn`, `R_GridInsertRow`
+- `code/renderer/tr_cmds.c` (ported): `RE_BeginFrame`, `RE_EndFrame`, `R_AddDrawSurfCmd`, `R_InitCommandBuffers`, `R_IssueRenderCommands`, `R_PerformanceCounters`, `R_ShutdownCommandBuffers`, `R_SyncRenderThread`
+- `code/renderer/tr_curve.c` (ported): `InvertCtrl`, `InvertErrorTable`, `R_CreateSurfaceGridMesh`, `R_FreeSurfaceGridMesh`, `R_GridInsertColumn`, `R_GridInsertRow`
 - `code/renderer/tr_flares.c` (partial): `R_ClearFlares`
 - `code/renderer/tr_font.c` (partial): `RE_ConstructGlyphInfo`, `R_DoneFreeType`, `R_GetGlyphInfo`, `R_InitFreeType`, `R_RenderGlyph`, `WriteTGA`, `readFloat`, `readInt`
 - `code/renderer/tr_image.c` (ported): `CommaParse`, `GL_TextureMode`, `LoadBMP`, `LoadJPG`, `LoadPCX`, `LoadPCX32`, `RE_RegisterSkin`, `R_BlendOverTexture`, `R_CreateBuiltinImages`, `R_CreateDefaultImage`, `R_CreateDlightImage`, `R_CreateFogImage`, `R_DeleteTextures`, `R_FogFactor`, `R_GammaCorrect`, `R_GetSkinByHandle`, `R_ImageList_f`, `R_InitFogTable`, `R_InitImages`, `R_InitSkins`, `R_LoadImage`, `R_SetColorMappings`, `R_SkinList_f`, `R_SumOfUsedImages`, `SaveJPG`, `Upload32`, `empty_output_buffer`, `init_destination`, `jpegDest`, `term_destination`
 - `code/renderer/tr_light.c` (partial): `LogLight`, `end`
 - `code/renderer/tr_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_main.c` (ported): `IsMirror`, `R_AddEntitySurfaces`, `R_DebugGraphics`, `R_DebugPolygon`, `R_GenerateDrawSurfs`, `R_MirrorViewBySurface`, `R_PlaneForSurface`, `R_RenderView`, `R_RotateForEntity`, `R_RotateForViewer`, `R_SetupProjection`, `R_SpriteFogNum`, `SetFarClip`, `SurfIsOffscreen`, `myGlMultMatrix`, `qsortFast`, `shortsort`
-- `code/renderer/tr_model.c` (partial): `RE_BeginRegistration`, `RE_RegisterModel`, `R_AllocModel`, `R_GetModelByHandle`, `R_GetTag`, `R_LerpTag`, `R_LoadMD3`, `R_LoadMD4`, `R_ModelBounds`, `R_ModelInit`, `R_Modellist_f`
+- `code/renderer/tr_model.c` (ported): `RE_BeginRegistration`, `RE_RegisterModel`, `R_AllocModel`, `R_GetModelByHandle`, `R_GetTag`, `R_LerpTag`, `R_LoadMD3`, `R_LoadMD4`, `R_ModelBounds`, `R_ModelInit`, `R_Modellist_f`
 - `code/renderer/tr_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_scene.c` (partial): `RE_AddAdditiveLightToScene`, `RE_AddLightToScene`, `RE_RenderScene`, `R_AddPolygonSurfaces`, `R_ToggleSmpFrame`
 - `code/renderer/tr_shade.c` (ported): `ComputeTexCoords`, `DrawMultitextured`, `DrawNormals`, `DrawTris`, `ProjectDlightTexture`, `RB_EndSurface`, `RB_FogPass`, `RB_IterateStagesGeneric`, `RB_StageIteratorGeneric`, `RB_StageIteratorLightmappedMultitexture`, `RB_StageIteratorVertexLitTexture`, `R_ArrayElementDiscrete`, `R_DrawElements`, `R_DrawStripElements`
 - `code/renderer/tr_shade_calc.c` (ported): `Autosprite2Deform`, `AutospriteDeform`, `DeformText`, `EvalWaveForm`, `EvalWaveFormClamped`, `GlobalVectorToLocal`, `RB_CalcBulgeVertexes`, `RB_CalcDeformNormals`, `RB_CalcDeformVertexes`, `RB_CalcDiffuseColor`, `RB_CalcEnvironmentTexCoords`, `RB_CalcFogTexCoords`, `RB_CalcMoveVertexes`, `RB_CalcRotateTexCoords`, `RB_CalcScaleTexCoords`, `RB_CalcStretchTexCoords`, `RB_CalcTransformTexCoords`, `RB_CalcTurbulentTexCoords`, `RB_CalcWaveAlpha`, `RB_CalcWaveColor`, `RB_DeformTessGeometry`, `TableForFunc`, `myftol`
 - `code/renderer/tr_surface.c` (ported): `LodErrorForVolume`, `RB_CheckOverflow`, `RB_SurfaceAxis`, `RB_SurfaceBad`, `RB_SurfaceDisplayList`, `RB_SurfaceEntity`, `RB_SurfaceFlare`, `RB_SurfaceSkip`
-- `code/renderer/tr_world.c` (partial): `R_AddWorldSurface`, `R_AddWorldSurfaces`, `R_ClusterPVS`, `R_CullGrid`, `R_CullSurface`, `R_CullTriSurf`, `R_DlightFace`, `R_DlightGrid`, `R_DlightSurface`, `R_DlightTrisurf`, `R_MarkLeaves`, `R_PointInLeaf`, `R_RecursiveWorldNode`, `R_inPVS`
+- `code/renderer/tr_world.c` (ported): `R_AddWorldSurface`, `R_AddWorldSurfaces`, `R_ClusterPVS`, `R_CullGrid`, `R_CullSurface`, `R_CullTriSurf`, `R_DlightFace`, `R_DlightGrid`, `R_DlightSurface`, `R_DlightTrisurf`, `R_MarkLeaves`, `R_PointInLeaf`, `R_RecursiveWorldNode`, `R_inPVS`
 - `code/server/server.h` (partial): *(Symbolinventar ergänzen)*
 - `code/server/sv_bot.c` (partial): `BotClientCommand`, `BotDrawDebugPolygons`, `BotImport_BSPEntityData`, `BotImport_BSPModelMinsMaxsOrigin`, `BotImport_DebugLineCreate`, `BotImport_DebugLineDelete`, `BotImport_DebugLineShow`, `BotImport_DebugPolygonCreate`, `BotImport_DebugPolygonDelete`, `BotImport_DebugPolygonShow`, `BotImport_EntityTrace`, `BotImport_FreeMemory`, `BotImport_GetMemory`, `BotImport_HunkAlloc`, `BotImport_PointContents`, `BotImport_Print`, `BotImport_Trace`, `BotImport_inPVS`, `EntityInPVS`, `SV_BotAllocateClient`, `SV_BotFrame`, `SV_BotFreeClient`, `SV_BotGetConsoleMessage`, `SV_BotGetSnapshotEntity`, `SV_BotInitBotLib`, `SV_BotInitCvars`, `SV_BotLibSetup`, `SV_BotLibShutdown`
 - `code/server/sv_client.c` (partial): `SV_AuthorizeIpPacket`, `SV_ClientEnterWorld`, `SV_Disconnect_f`, `SV_FinalMessage`, `SV_ResetPureClient_f`, `SV_SendClientGameState`, `SV_UpdateUserinfo_f`, `SV_UserinfoChanged`, `SV_VerifyPaks_f`

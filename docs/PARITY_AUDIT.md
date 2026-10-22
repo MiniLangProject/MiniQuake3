@@ -2490,3 +2490,41 @@ geprüft. Die vollständige Verify-Auswahl wurde für dieses inkrementelle Paket
 nicht erneut am Stück ausgeführt; der letzte vollständige Lauf bleibt bei
 408/408 Gates grün. Der Hauptbuild hat SHA-256
 `6538d101f95ecc2fac936b773accf37bf71106c13878eeb3f296927b292eba66`.
+
+## 2026-10-22: Renderer-Kommandos, Modelle, Welt und Kurven geschlossen
+
+Vier weitere Rendererdateien sind vollständig zugeordnet. `tr_cmds.c` besitzt
+den gesamten Front-End-Command-Lifecycle mit Kapazitätsgrenzen,
+Frame-/Stereo-Steuerung, Zustandswechseln, Leistungszählern und synchroner wie
+SMP-gestützter Übergabe. `tr_model.c` schließt Modellregistrierung, Handles,
+MD3-LODs, MD4-Validierung, Tags und Bounds. `tr_world.c` bildet Frustum-,
+Backface- und Dynamic-Light-Culling, Brushmodels, BSP-Rekursion und PVS-/
+Areamask-Markierung ab. `tr_curve.c` liefert den vollständigen Patchpfad mit
+Unterteilung, Normalen, LOD-Fehlertabellen und Grid-Stitching.
+
+Nachweise:
+
+- `tr_cmds.c`: 11/11 Symbole, sieben unveränderte-C-Datensätze, 37 native
+  Lifecycle-Verträge und 32 QVM-2D-Verträge. Der Retail-QVM-Probe zeichnet 36
+  Cgame- und 174 UI-Quads über 20 Batches und 16 echte Materialien.
+- `tr_model.c`: 11/11 Symbole, sieben unveränderte-C-Datensätze, 23 native
+  Verträge und vier echte Retail-Modelle mit zusammen 346 Frames, sechs
+  Surfaces und 966 Dreiecken. MD3-, MD4-, Tag-, Bounds- und QVM-Renderer-
+  Regressionen bestehen.
+- `tr_world.c`: 15/15 Symbole, vier unveränderte-C-Dlight-Datensätze und 29
+  native Verträge. World-Selection, QVM-Geometrie, Dynamic Lights und Retail-
+  Proben auf `q3dm1`, `q3dm2`, `q3dm4`, `q3dm16` und `q3ctf1` sind grün.
+- `tr_curve.c`: 11/11 Symbole, fünf unveränderte-C-Datensätze, 26 native
+  Verträge und 31 erkannte Retail-BSPs. `q3dm1` umfasst 113 Patches mit 6.652
+  Grid-Vertices und 9.744 Dreiecken; BSP-, World-Selection- und Surface-Grid-
+  Regressionen bestehen.
+
+Das Inventar zählt jetzt **164 portierte, 54 partielle und 117 nicht begonnene**
+Runtime-/Plattformdateien. Die vier Fokusgates sind in `scripts/verify.py`
+registriert. Die vollständige Verify-Auswahl wurde für dieses inkrementelle
+Paket nicht erneut am Stück ausgeführt; der letzte vollständige Lauf bleibt bei
+408/408 Gates grün. Der zusammengeführte Windows-Hauptbuild hat SHA-256
+`6538d101f95ecc2fac936b773accf37bf71106c13878eeb3f296927b292eba66`.
+Der kombinierte Retail-QVM-Match bleibt mit acht Frames, 131 Entities, 2.345
+texturierten Dreiecken, 17 Renderpässen, 26 Sounds und null nicht
+unterstützten Entities grün.
