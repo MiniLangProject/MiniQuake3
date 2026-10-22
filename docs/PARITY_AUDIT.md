@@ -2405,3 +2405,52 @@ Der erneut gebaute Windows-Hauptstand hat SHA-256
 Der kombinierte Retail-QVM-Match läuft weiterhin acht Frames mit 131 Entities,
 13 Snapshot-Entities, 2.345 texturierten Dreiecken, 17 Renderpässen, 26 Sounds
 und null nicht unterstützten Entities.
+
+## 2026-10-22: Renderer-Front-End, BSP-Welt und Audiomixer geschlossen
+
+Fünf weitere große partielle Originaldateien sind vollständig zugeordnet.
+`tr_main.c` stellt alle 32 Front-End-Funktionen für View-, Entity-, Portal-,
+Projektions-, Fog-, Surface- und Renderreihenfolge bereit. `tr_shade_calc.c`
+deckt alle 32 Wave-, Farb-, Fog-, Licht-, `tcGen`-, `tcMod`- und
+Deformationspfade ab. `tr_bsp.c` lädt über 30 C-namensgleiche Einstiege die
+vollständige BSP46-Welt mit Shadern, Lightmaps, PVS, Nodes/Leafs, vier
+Surfacetypen, Fogs, Submodels und Lightgrid; Patch-LOD-Abgleich und
+Crack-Stitching sind ebenfalls implementiert.
+
+Der Audiopfad besitzt nun die vollständigen acht `snd_mix.c`-Einstiege für PCM,
+ADPCM, Wavelet, MuLaw, Kanalakkumulation und DMA-Transfer. `snd_adpcm.c` deckt
+Encoder, Decoder, Blockverkettung, Speicherberechnung und Samplezugriff ab.
+
+Nachweise:
+
+- `tr_main.c`: 32/32 Symbole, drei unveränderte-C-Datensätze, 24 native
+  Verträge und alle 31 Retail-BSPs; die abhängigen View-, DrawSurf-, Portal-,
+  QVM-Geometrie- und World-Selection-Prüfungen bestehen.
+- `tr_shade_calc.c`: 32/32 Symbole, 27 native Verträge, 28 unveränderte-C-
+  Farb-/Fog-/Specular-Differenzen, 60 World-Batch-Verträge, acht exakte
+  C-Noise-Datensätze sowie Retail-Proben auf fünf Karten.
+- `tr_bsp.c`: 30/30 Symbole, 19 unveränderte-C-Differenzdatensätze, 25 native
+  Verträge und ein vollständiger Retail-Weltload auf `q3dm1`; BSP-, Lightgrid-,
+  Fog-, Flare-, World-Selection- und QVM-Geometrie-Regressionen bestehen.
+- `snd_mix.c`: 8/8 Symbole, zehn neue native Verträge und vier bestehende
+  unveränderte-C-Regressionsgruppen für Transfer, PCM- und komprimierte Kanäle
+  sowie den vollständigen Paint-Zyklus.
+- `snd_adpcm.c`: vollständige Encoder-/Decoder-Oberfläche, drei exakte
+  unveränderte-C-Encoderrecords, zehn native Verträge und die bestehende
+  unveränderte-C-Decoderregression.
+
+Das Inventar zählt jetzt **156 portierte, 62 partielle und 117 nicht begonnene**
+Runtime-/Plattformdateien. Die fünf neuen Einzelgates sind in
+`scripts/verify.py` registriert. Der vollständige 1:1-Port bleibt offen; die
+größten nativen Restflächen liegen im Renderer-Backend und den übrigen
+Surface-/Shade-Dateien, in Client-/Server-/Netzwerkoberflächen, Botlib/AAS und
+den Plattformdateien.
+
+Alle fünf Fokusgates, ihre gezielten Abhängigkeiten, der Windows-Hauptbuild und
+der kombinierte Retail-QVM-Match sind grün. Der Hauptbuild hat SHA-256
+`c53284b8d10e5d8aa811adb1efe241089185ee9359e35d8d3b8fbb696320192b`.
+Der Retail-Match läuft acht Frames mit 131 Entities, 13 Snapshot-Entities,
+2.345 texturierten Dreiecken, 17 Renderpässen, 26 Sounds und null nicht
+unterstützten Entities. Die vollständige Verify-Auswahl wurde für diesen
+inkrementellen Block nicht erneut am Stück ausgeführt; der letzte vollständige
+Lauf bleibt bei 408/408 Gates grün.

@@ -15,19 +15,19 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 |---|---:|---:|---:|---:|---:|
 | `botlib` | 53 | 21 | 10 | 22 | 0 |
 | `cgame` | 25 | 21 | 0 | 4 | 0 |
-| `client` | 19 | 5 | 10 | 4 | 0 |
+| `client` | 19 | 7 | 8 | 4 | 0 |
 | `game` | 65 | 35 | 4 | 26 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
 | `qcommon` | 27 | 4 | 14 | 9 | 0 |
-| `renderer` | 27 | 9 | 14 | 4 | 0 |
+| `renderer` | 27 | 12 | 11 | 4 | 0 |
 | `server` | 11 | 2 | 9 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **151** | **67** | **117** | **0** |
+| **Gesamt** | **335** | **156** | **62** | **117** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -128,11 +128,11 @@ Teil dieser Tabelle.
 | `code/client/cl_ui.c` | `client` | `partial` | 35 | 6 | 29 |
 | `code/client/client.h` | `client` | `not_started` | 0 | 0 | 0 |
 | `code/client/keys.h` | `client` | `not_started` | 0 | 0 | 0 |
-| `code/client/snd_adpcm.c` | `client` | `partial` | 4 | 0 | 4 |
+| `code/client/snd_adpcm.c` | `client` | `ported` | 4 | 0 | 4 |
 | `code/client/snd_dma.c` | `client` | `ported` | 42 | 42 | 0 |
 | `code/client/snd_local.h` | `client` | `not_started` | 0 | 0 | 0 |
 | `code/client/snd_mem.c` | `client` | `partial` | 12 | 2 | 10 |
-| `code/client/snd_mix.c` | `client` | `partial` | 8 | 8 | 0 |
+| `code/client/snd_mix.c` | `client` | `ported` | 8 | 8 | 0 |
 | `code/client/snd_public.h` | `client` | `not_started` | 0 | 0 | 0 |
 | `code/client/snd_wavelet.c` | `client` | `partial` | 9 | 2 | 7 |
 | `code/game/ai_chat.c` | `game` | `ported` | 24 | 24 | 0 |
@@ -293,7 +293,7 @@ Teil dieser Tabelle.
 | `code/renderer/qgl_linked.h` | `renderer` | `not_started` | 0 | 0 | 0 |
 | `code/renderer/tr_animation.c` | `renderer` | `ported` | 2 | 2 | 0 |
 | `code/renderer/tr_backend.c` | `renderer` | `partial` | 21 | 6 | 15 |
-| `code/renderer/tr_bsp.c` | `renderer` | `partial` | 30 | 3 | 27 |
+| `code/renderer/tr_bsp.c` | `renderer` | `ported` | 30 | 3 | 27 |
 | `code/renderer/tr_cmds.c` | `renderer` | `partial` | 11 | 3 | 8 |
 | `code/renderer/tr_curve.c` | `renderer` | `partial` | 11 | 5 | 6 |
 | `code/renderer/tr_flares.c` | `renderer` | `partial` | 6 | 5 | 1 |
@@ -302,7 +302,7 @@ Teil dieser Tabelle.
 | `code/renderer/tr_init.c` | `renderer` | `ported` | 21 | 21 | 0 |
 | `code/renderer/tr_light.c` | `renderer` | `partial` | 6 | 4 | 2 |
 | `code/renderer/tr_local.h` | `renderer` | `not_started` | 0 | 0 | 0 |
-| `code/renderer/tr_main.c` | `renderer` | `partial` | 32 | 15 | 17 |
+| `code/renderer/tr_main.c` | `renderer` | `ported` | 32 | 15 | 17 |
 | `code/renderer/tr_marks.c` | `renderer` | `ported` | 4 | 4 | 0 |
 | `code/renderer/tr_mesh.c` | `renderer` | `ported` | 5 | 5 | 0 |
 | `code/renderer/tr_model.c` | `renderer` | `partial` | 11 | 0 | 11 |
@@ -310,7 +310,7 @@ Teil dieser Tabelle.
 | `code/renderer/tr_public.h` | `renderer` | `not_started` | 0 | 0 | 0 |
 | `code/renderer/tr_scene.c` | `renderer` | `partial` | 9 | 4 | 5 |
 | `code/renderer/tr_shade.c` | `renderer` | `partial` | 17 | 3 | 14 |
-| `code/renderer/tr_shade_calc.c` | `renderer` | `partial` | 32 | 9 | 23 |
+| `code/renderer/tr_shade_calc.c` | `renderer` | `ported` | 32 | 9 | 23 |
 | `code/renderer/tr_shader.c` | `renderer` | `ported` | 34 | 34 | 0 |
 | `code/renderer/tr_shadows.c` | `renderer` | `ported` | 5 | 5 | 0 |
 | `code/renderer/tr_sky.c` | `renderer` | `ported` | 13 | 13 | 0 |
@@ -429,10 +429,9 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/client/cl_ui.c` (partial): `CLUI_GetCDKey`, `CLUI_SetCDKey`, `CL_GetGlconfig`, `FloatAsInt`, `GetClipboardData`, `GetConfigString`, `Key_GetBindingBuf`, `Key_GetCatcher`, `Key_KeynumToStringBuf`, `Key_SetCatcher`, `LAN_AddServer`, `LAN_ClearPing`, `LAN_CompareServers`, `LAN_GetPing`, `LAN_GetPingInfo`, `LAN_GetPingQueueCount`, `LAN_GetServerAddressString`, `LAN_GetServerCount`, `LAN_GetServerInfo`, `LAN_GetServerPing`, `LAN_GetServerPtr`, `LAN_GetServerStatus`, `LAN_LoadCachedServers`, `LAN_MarkServerVisible`, `LAN_RemoveServer`, `LAN_ResetPings`, `LAN_SaveServersToCache`, `LAN_ServerIsVisible`, `LAN_UpdateVisiblePings`
 - `code/client/client.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/keys.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/client/snd_adpcm.c` (partial): `S_AdpcmEncode`, `S_AdpcmEncodeSound`, `S_AdpcmGetSamples`, `memory`
+- `code/client/snd_adpcm.c` (ported): `S_AdpcmEncode`, `S_AdpcmEncodeSound`, `S_AdpcmGetSamples`, `memory`
 - `code/client/snd_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/snd_mem.c` (partial): `FindChunk`, `FindNextChunk`, `GetLittleLong`, `GetLittleShort`, `GetWavinfo`, `SND_free`, `SND_malloc`, `SND_setup`, `S_DisplayFreeMemory`, `S_LoadSound`
-- `code/client/snd_mix.c` (partial): *(Symbolinventar ergänzen)*
 - `code/client/snd_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/snd_wavelet.c` (partial): `MuLawEncode`, `NXPutc`, `daub4`, `decodeMuLaw`, `encodeMuLaw`, `encodeWavelet`, `wt1`
 - `code/game/ai_chat.h` (not_started): *(Symbolinventar ergänzen)*
@@ -523,7 +522,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/renderer/qgl.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/qgl_linked.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_backend.c` (partial): `GL_Cull`, `GL_State`, `GL_TexEnv`, `RB_BeginDrawingView`, `RB_DrawBuffer`, `RB_DrawSurfs`, `RB_ExecuteRenderCommands`, `RB_Hyperspace`, `RB_RenderThread`, `RB_SetColor`, `RB_SetGL2D`, `RB_ShowImages`, `RB_SwapBuffers`, `RE_StretchRaw`, `SetViewportAndScissor`
-- `code/renderer/tr_bsp.c` (partial): `HSVtoRGB`, `ParseFace`, `ParseMesh`, `ParseTriSurf`, `RE_LoadWorldMap`, `RE_SetWorldVisData`, `R_FixSharedVertexLodError`, `R_FixSharedVertexLodError_r`, `R_GetEntityToken`, `R_LoadEntities`, `R_LoadFogs`, `R_LoadLightGrid`, `R_LoadLightmaps`, `R_LoadMarksurfaces`, `R_LoadNodesAndLeafs`, `R_LoadPlanes`, `R_LoadShaders`, `R_LoadSurfaces`, `R_LoadVisibility`, `R_MergedHeightPoints`, `R_MergedWidthPoints`, `R_MovePatchSurfacesToHunk`, `R_SetParent`, `R_StitchAllPatches`, `R_StitchPatches`, `ShaderForShaderNum`, `patch`
+- `code/renderer/tr_bsp.c` (ported): `HSVtoRGB`, `ParseFace`, `ParseMesh`, `ParseTriSurf`, `RE_LoadWorldMap`, `RE_SetWorldVisData`, `R_FixSharedVertexLodError`, `R_FixSharedVertexLodError_r`, `R_GetEntityToken`, `R_LoadEntities`, `R_LoadFogs`, `R_LoadLightGrid`, `R_LoadLightmaps`, `R_LoadMarksurfaces`, `R_LoadNodesAndLeafs`, `R_LoadPlanes`, `R_LoadShaders`, `R_LoadSurfaces`, `R_LoadVisibility`, `R_MergedHeightPoints`, `R_MergedWidthPoints`, `R_MovePatchSurfacesToHunk`, `R_SetParent`, `R_StitchAllPatches`, `R_StitchPatches`, `ShaderForShaderNum`, `patch`
 - `code/renderer/tr_cmds.c` (partial): `RE_BeginFrame`, `RE_EndFrame`, `R_AddDrawSurfCmd`, `R_InitCommandBuffers`, `R_IssueRenderCommands`, `R_PerformanceCounters`, `R_ShutdownCommandBuffers`, `R_SyncRenderThread`
 - `code/renderer/tr_curve.c` (partial): `InvertCtrl`, `InvertErrorTable`, `R_CreateSurfaceGridMesh`, `R_FreeSurfaceGridMesh`, `R_GridInsertColumn`, `R_GridInsertRow`
 - `code/renderer/tr_flares.c` (partial): `R_ClearFlares`
@@ -531,12 +530,12 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/renderer/tr_image.c` (ported): `CommaParse`, `GL_TextureMode`, `LoadBMP`, `LoadJPG`, `LoadPCX`, `LoadPCX32`, `RE_RegisterSkin`, `R_BlendOverTexture`, `R_CreateBuiltinImages`, `R_CreateDefaultImage`, `R_CreateDlightImage`, `R_CreateFogImage`, `R_DeleteTextures`, `R_FogFactor`, `R_GammaCorrect`, `R_GetSkinByHandle`, `R_ImageList_f`, `R_InitFogTable`, `R_InitImages`, `R_InitSkins`, `R_LoadImage`, `R_SetColorMappings`, `R_SkinList_f`, `R_SumOfUsedImages`, `SaveJPG`, `Upload32`, `empty_output_buffer`, `init_destination`, `jpegDest`, `term_destination`
 - `code/renderer/tr_light.c` (partial): `LogLight`, `end`
 - `code/renderer/tr_local.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/renderer/tr_main.c` (partial): `IsMirror`, `R_AddEntitySurfaces`, `R_DebugGraphics`, `R_DebugPolygon`, `R_GenerateDrawSurfs`, `R_MirrorViewBySurface`, `R_PlaneForSurface`, `R_RenderView`, `R_RotateForEntity`, `R_RotateForViewer`, `R_SetupProjection`, `R_SpriteFogNum`, `SetFarClip`, `SurfIsOffscreen`, `myGlMultMatrix`, `qsortFast`, `shortsort`
+- `code/renderer/tr_main.c` (ported): `IsMirror`, `R_AddEntitySurfaces`, `R_DebugGraphics`, `R_DebugPolygon`, `R_GenerateDrawSurfs`, `R_MirrorViewBySurface`, `R_PlaneForSurface`, `R_RenderView`, `R_RotateForEntity`, `R_RotateForViewer`, `R_SetupProjection`, `R_SpriteFogNum`, `SetFarClip`, `SurfIsOffscreen`, `myGlMultMatrix`, `qsortFast`, `shortsort`
 - `code/renderer/tr_model.c` (partial): `RE_BeginRegistration`, `RE_RegisterModel`, `R_AllocModel`, `R_GetModelByHandle`, `R_GetTag`, `R_LerpTag`, `R_LoadMD3`, `R_LoadMD4`, `R_ModelBounds`, `R_ModelInit`, `R_Modellist_f`
 - `code/renderer/tr_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_scene.c` (partial): `RE_AddAdditiveLightToScene`, `RE_AddLightToScene`, `RE_RenderScene`, `R_AddPolygonSurfaces`, `R_ToggleSmpFrame`
 - `code/renderer/tr_shade.c` (partial): `ComputeTexCoords`, `DrawMultitextured`, `DrawNormals`, `DrawTris`, `ProjectDlightTexture`, `RB_EndSurface`, `RB_FogPass`, `RB_IterateStagesGeneric`, `RB_StageIteratorGeneric`, `RB_StageIteratorLightmappedMultitexture`, `RB_StageIteratorVertexLitTexture`, `R_ArrayElementDiscrete`, `R_DrawElements`, `R_DrawStripElements`
-- `code/renderer/tr_shade_calc.c` (partial): `Autosprite2Deform`, `AutospriteDeform`, `DeformText`, `EvalWaveForm`, `EvalWaveFormClamped`, `GlobalVectorToLocal`, `RB_CalcBulgeVertexes`, `RB_CalcDeformNormals`, `RB_CalcDeformVertexes`, `RB_CalcDiffuseColor`, `RB_CalcEnvironmentTexCoords`, `RB_CalcFogTexCoords`, `RB_CalcMoveVertexes`, `RB_CalcRotateTexCoords`, `RB_CalcScaleTexCoords`, `RB_CalcStretchTexCoords`, `RB_CalcTransformTexCoords`, `RB_CalcTurbulentTexCoords`, `RB_CalcWaveAlpha`, `RB_CalcWaveColor`, `RB_DeformTessGeometry`, `TableForFunc`, `myftol`
+- `code/renderer/tr_shade_calc.c` (ported): `Autosprite2Deform`, `AutospriteDeform`, `DeformText`, `EvalWaveForm`, `EvalWaveFormClamped`, `GlobalVectorToLocal`, `RB_CalcBulgeVertexes`, `RB_CalcDeformNormals`, `RB_CalcDeformVertexes`, `RB_CalcDiffuseColor`, `RB_CalcEnvironmentTexCoords`, `RB_CalcFogTexCoords`, `RB_CalcMoveVertexes`, `RB_CalcRotateTexCoords`, `RB_CalcScaleTexCoords`, `RB_CalcStretchTexCoords`, `RB_CalcTransformTexCoords`, `RB_CalcTurbulentTexCoords`, `RB_CalcWaveAlpha`, `RB_CalcWaveColor`, `RB_DeformTessGeometry`, `TableForFunc`, `myftol`
 - `code/renderer/tr_surface.c` (partial): `LodErrorForVolume`, `RB_CheckOverflow`, `RB_SurfaceAxis`, `RB_SurfaceBad`, `RB_SurfaceDisplayList`, `RB_SurfaceEntity`, `RB_SurfaceFlare`, `RB_SurfaceSkip`
 - `code/renderer/tr_world.c` (partial): `R_AddWorldSurface`, `R_AddWorldSurfaces`, `R_ClusterPVS`, `R_CullGrid`, `R_CullSurface`, `R_CullTriSurf`, `R_DlightFace`, `R_DlightGrid`, `R_DlightSurface`, `R_DlightTrisurf`, `R_MarkLeaves`, `R_PointInLeaf`, `R_RecursiveWorldNode`, `R_inPVS`
 - `code/server/server.h` (partial): *(Symbolinventar ergänzen)*

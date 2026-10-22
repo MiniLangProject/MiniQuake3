@@ -322,6 +322,11 @@ def main():
     scripts.append(("test_g_bot_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_l_script.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_tr_image_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_tr_main_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_tr_shade_calc_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_tr_bsp_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_snd_mix_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_snd_adpcm_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_cl_cin_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     if args.data_root:
         scripts.append(("test_retail_qvm_match.py",["--data-root",str(args.data_root)]))

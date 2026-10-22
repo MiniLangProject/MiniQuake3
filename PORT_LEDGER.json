@@ -16016,14 +16016,27 @@
           ],
           "status": "tested_subset",
           "scope": "IMA ADPCM block decoding is connected to the productive channel painter and covered by exact native differential records."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/audio/snd_adpcm_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete ADPCM encode, decode, block, memory and sample surfaces with exact unchanged-C encoder and decoder evidence."
         }
       ],
       "target": [
+        "src/mq3/audio/snd_adpcm_runtime.ml",
         "src/mq3/audio/snd_compressed_paint.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_audio_snd_compressed_paint.py"
+        "scripts/test_audio_snd_compressed_paint.py",
+        "scripts/test_snd_adpcm_complete.py",
+        "tests/snd_adpcm_complete_contracts.ml",
+        "tests/snd_adpcm_complete_oracle.ml",
+        "tests/reference/snd_adpcm_complete_oracle.c"
       ]
     },
     {
@@ -16274,9 +16287,18 @@
           ],
           "status": "tested_subset",
           "scope": "The productive 24.8 QVM paint path dispatches PCM, IMA ADPCM, Daubechies wavelet and MuLaw SFX through the original compression method. Five exact C records, fourteen decoder/paint contracts and 39 QVM playback contracts pass."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/audio/snd_mix_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete 8/8 PCM, ADPCM, wavelet, MuLaw, multi-channel paint and DMA transfer symbols over the productive integer mixer."
         }
       ],
       "target": [
+        "src/mq3/audio/snd_mix_runtime.ml",
         "src/mq3/audio/mixer_transfer.ml",
         "src/mq3/audio/channel_paint.ml",
         "src/mq3/audio/snd_paint_pipeline.ml",
@@ -16284,7 +16306,7 @@
         "src/mq3/audio/snd_compressed_paint.ml",
         "src/mq3/audio/snd_raw_stream.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_audio_mixer_transfer.py",
         "tests/reference/audio_mixer_transfer_oracle.c",
@@ -16299,7 +16321,9 @@
         "scripts/test_audio_snd_compressed_paint.py",
         "tests/reference/audio_snd_compressed_paint_oracle.c",
         "tests/audio_snd_compressed_paint_oracle.ml",
-        "tests/audio_snd_compressed_paint_contracts.ml"
+        "tests/audio_snd_compressed_paint_contracts.ml",
+        "scripts/test_snd_mix_complete.py",
+        "tests/snd_mix_complete_contracts.ml"
       ]
     },
     {
@@ -40252,16 +40276,25 @@
           "original": "ParseFlare",
           "minilang": "playable_flares.parse",
           "scope": "MST_FLARE surfaces copy dsurface_t shader/fog, lightmapOrigin, lightmapVecs[0] color and lightmapVecs[2] normal into a retained catalog; malformed shader indices are rejected."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/renderer/tr_bsp_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete 30/30 BSP46 world-load symbols including lightmaps, visibility, nodes, surfaces, fog, lightgrid, patch LOD and crack stitching."
         }
       ],
       "target": [
+        "src/mq3/renderer/tr_bsp_runtime.ml",
         "src/mq3/renderer/bsp_render_data.ml",
         "src/mq3/renderer/playable_light_grid.ml",
         "src/mq3/renderer/qvm_scene_geometry.ml",
         "src/mq3/engine/local_qvm_match.ml",
         "src/mq3/renderer/playable_flares.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_bsp_render_data.py",
         "tests/reference/bsp_lighting_shift_oracle.c",
@@ -40269,7 +40302,12 @@
         "scripts/test_playable_light_grid.py",
         "scripts/test_qvm_scene_geometry.py",
         "tests/qvm_inline_model_map_probe.ml",
-        "scripts/test_playable_flares.py"
+        "scripts/test_playable_flares.py",
+        "scripts/test_tr_bsp_complete.py",
+        "tests/tr_bsp_complete_contracts.ml",
+        "tests/tr_bsp_complete_oracle.ml",
+        "tests/reference/tr_bsp_complete_oracle.c",
+        "tests/tr_bsp_retail_probe.ml"
       ]
     },
     {
@@ -40917,9 +40955,18 @@
           ],
           "status": "tested_exact",
           "scope": "RT_PORTALSURFACE markers drive mirror or remote-camera origin/axes, PVS, rotation and clip-plane calculation; main/portal views apply RF_FIRST_PERSON and RF_THIRD_PERSON filtering. The productive software renderer builds the portal world and portal-visible Cgame entities from that camera, clips BSP/QVM triangles to the destination plane, composes portal then depth-clear then main view, and limits recursion to one level. Three exact records, 17 view contracts, 21 render-pass contracts and 32 geometry contracts pass; retail visual acceptance awaits mounted assets."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/renderer/tr_main_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete 32/32 front-end view, entity, portal, projection, fog, surface and render-order symbols with exact-C, native and all-Retail-BSP evidence."
         }
       ],
       "target": [
+        "src/mq3/renderer/tr_main_runtime.ml",
         "src/mq3/renderer/draw_surfs.ml",
         "src/mq3/renderer/view_math.ml",
         "src/mq3/renderer/portal_view.ml",
@@ -40930,7 +40977,7 @@
         "src/mq3/client/qvm_preview_app.ml",
         "src/mq3/renderer/world_surface_selection.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_draw_surfs.py",
         "tests/reference/draw_surfs_oracle.c",
@@ -40946,7 +40993,11 @@
         "scripts/test_portal_render_pass.py",
         "tests/portal_render_pass_contracts.ml",
         "scripts/test_world_surface_selection.py",
-        "tests/world_surface_selection_contracts.ml"
+        "tests/world_surface_selection_contracts.ml",
+        "scripts/test_tr_main_complete.py",
+        "tests/tr_main_complete_contracts.ml",
+        "tests/tr_main_complete_oracle.ml",
+        "tests/reference/tr_main_complete_oracle.c"
       ]
     },
     {
@@ -41362,9 +41413,18 @@
           ],
           "status": "tested_exact",
           "scope": "refEntity shaderTexCoord and shaderTime survive QVM geometry refresh, portal clipping and retained stage passes. Runtime remap timeOffset and parsed clampTime share that clock. Sixteen unchanged-C records plus 104 material, remap, QVM geometry, QVM batch and world-batch contracts cover animated frames, color waves, vertex/normal deforms, all time-based tcMods, positive and negative wrapped scrolling, clamping and productive outputs; two additional focused regressions cover same-handle offset changes through the QVM material and retained-pass caches."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/renderer/tr_shade_calc_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete 32/32 waveform, color, fog, lighting, tcGen/tcMod and deformation symbols with exact-C and Retail world evidence."
         }
       ],
       "target": [
+        "src/mq3/renderer/tr_shade_calc_runtime.ml",
         "src/mq3/renderer/playable_materials.ml",
         "src/mq3/renderer/bsp_render_data.ml",
         "src/mq3/renderer/qvm_scene_geometry.ml",
@@ -41372,7 +41432,7 @@
         "src/mq3/renderer/playable_world_batch.ml",
         "src/mq3/renderer/playable_fog.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_shader_compute_colors.py",
         "tests/reference/shader_compute_colors_oracle.c",
@@ -41396,7 +41456,9 @@
         "tests/shader_entity_translate_oracle.ml",
         "tests/reference/shader_entity_time_oracle.c",
         "tests/shader_entity_time_oracle.ml",
-        "tests/playable_world_batch_contracts.ml"
+        "tests/playable_world_batch_contracts.ml",
+        "scripts/test_tr_shade_calc_complete.py",
+        "tests/tr_shade_calc_complete_contracts.ml"
       ]
     },
     {
