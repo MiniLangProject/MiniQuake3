@@ -83,4 +83,3 @@ function S_Play_f(state,names) if names==void then return 0 end if;played=0;for 
 function S_Music_f(state,intro,trackLoop) return S_StartBackgroundTrack(state,intro,trackLoop) end function
 function S_SoundInfo_f(state) if state==void then return void end if;return [state.started,state.muted,state.outputRate,state.soundTime,state.paintedTime,state.backgroundActive] end function
 function S_SoundList_f(state) if state==void then return [] end if;result=[];for each sound in state.knownSfx result=result+[[sound.handle,sound.soundLength,sound.inMemory,sound.soundName]] end for;return result end function
-
