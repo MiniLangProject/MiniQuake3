@@ -20273,9 +20273,18 @@
           ],
           "status": "tested_subset",
           "scope": "All 35 Baseq3 item pickup names, original order and ASCII case-insensitive matching, compared through give with real spawn/finish/touch/free. Missionpack items are excluded."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/game/bg_misc_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete 12/12 bg_misc shared-game symbols, including Baseq3/Missionpack lookup tables and productive trajectory, pickup, snapshot and jumppad adapters."
         }
       ],
       "target": [
+        "src/mq3/game/bg_misc_runtime.ml",
         "src/mq3/game/movement.ml",
         "src/mq3/game/constants.ml",
         "src/mq3/game/pmove.ml",
@@ -20286,7 +20295,7 @@
         "src/mq3/game/items.ml",
         "src/mq3/game/utility_commands.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_movement.py",
         "scripts/test_pmove.py",
@@ -20295,7 +20304,9 @@
         "scripts/test_entitystate.py",
         "scripts/test_missiles.py",
         "scripts/test_items.py",
-        "scripts/test_client_commands.py"
+        "scripts/test_client_commands.py",
+        "scripts/test_bg_misc_complete.py",
+        "tests/bg_misc_complete_contracts.ml"
       ]
     },
     {
@@ -20838,14 +20849,25 @@
             "src/mq3/game/movement.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/game/bg_slidemove_runtime.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete 2/2 slide-movement symbols through the productive exact movement kernels."
         }
       ],
       "target": [
+        "src/mq3/game/bg_slidemove_runtime.ml",
         "src/mq3/game/movement.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_movement.py"
+        "scripts/test_movement.py",
+        "scripts/test_bg_slidemove_complete.py",
+        "tests/bg_slidemove_complete_contracts.ml"
       ]
     },
     {
@@ -21078,18 +21100,29 @@
           ],
           "status": "tested_subset",
           "scope": "All Baseq3 single-player postgame and victory-podium paths are implemented as real defaults, including postgame payloads, model placement, celebration timing and podium abort. Twenty-two runtime contracts pass, and five direct scenarios against unchanged g_arenas.c compare 1,343 exact words. Missionpack and renderer presentation remain open."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/game/g_arenas.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete 8/8 arena symbols including Baseq3 and Missionpack postgame semantics."
         }
       ],
       "target": [
+        "src/mq3/game/g_arenas.ml",
         "src/mq3/game/arenas.ml",
         "src/mq3/game/intermission.ml",
         "src/mq3/game/server_commands.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "tests/arena_tests.ml",
         "scripts/test_arenas.py",
-        "scripts/test_intermission.py"
+        "scripts/test_intermission.py",
+        "scripts/test_g_arenas_complete.py",
+        "tests/g_arenas_complete_contracts.ml"
       ]
     },
     {
@@ -23357,15 +23390,26 @@
           ],
           "status": "tested_subset",
           "scope": "Original 256 KiB arena, 32-byte alignment, zero-size allocation pointers, diagnostic-before-mutation/drop ordering, retained bytes and block aliases across rewind. Compared allocation cases use nonnegative sizes up to 2147483616 with allocPoint + size within INT_MAX. Sizes outside this conservative domain are separate MiniLang contracts, including larger requests that native C can reject before alignment when debugging is disabled. State is preserved and rewound by direct repeated G_InitGame calls; startup/shutdown integration is compared separately. Actual engine VM-image recreation remains open."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/game/g_mem.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete 3/3 memory symbols with unchanged-C, native and Retail contracts."
         }
       ],
       "target": [
+        "src/mq3/game/g_mem.ml",
         "src/mq3/game/memory.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_game_memory.py",
-        "scripts/test_server_commands.py"
+        "scripts/test_server_commands.py",
+        "scripts/test_g_mem_complete.py",
+        "tests/g_mem_complete_contracts.ml"
       ]
     },
     {
@@ -24087,15 +24131,26 @@
           ],
           "status": "tested_subset",
           "scope": "All five unchanged Baseq3 session functions: seven-field serialization and native CRT %i scan, noncanonical leader integers, initial team/capacity rules, sticky newSession and connected-only shutdown writes. Actual team selection, broadcasts and ClientConnect callers are compared. MiniLang reads its real engine registry and uses registered Cvar set delivery; the native host models session Cvar storage. Level-reconstruction fixtures retain registry data. Incomplete scans are rejected before mutation because original C reads uninitialized locals; full engine/module restart and disk persistence are open."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/game/g_session.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete 5/5 session symbols with unchanged-C, native and Retail contracts."
         }
       ],
       "target": [
+        "src/mq3/game/g_session.ml",
         "src/mq3/game/session.ml",
         "src/mq3/compat/textnumbers.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_client_connect.py"
+        "scripts/test_client_connect.py",
+        "scripts/test_g_session_complete.py",
+        "tests/g_session_complete_contracts.ml"
       ]
     },
     {
@@ -24285,9 +24340,18 @@
             "src/mq3/game/memory.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/game/g_spawn.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete 13/13 callable spawn symbols plus original fields/spawns tables, Baseq3/Missionpack filters and productive lifecycle entry."
         }
       ],
       "target": [
+        "src/mq3/game/g_spawn.ml",
         "src/mq3/game/spawn.ml",
         "src/mq3/game/spawn_tables.ml",
         "src/mq3/game/spawn_values.ml",
@@ -24295,13 +24359,15 @@
         "src/mq3/game/items.ml",
         "src/mq3/game/memory.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_spawn_values.py",
         "scripts/test_spawn.py",
         "scripts/test_items.py",
         "scripts/test_game_lifecycle.py",
-        "scripts/test_game_memory.py"
+        "scripts/test_game_memory.py",
+        "scripts/test_g_spawn_complete.py",
+        "tests/g_spawn_complete_contracts.ml"
       ]
     },
     {
@@ -24409,16 +24475,27 @@
           ],
           "status": "tested_subset",
           "scope": "Original Baseq3 server command dispatch, exact EntityList print fragments, numeric-first/literal-name client lookup, real SetTeam/death/spawn/rank integration, dedicated chat/fallback, IP administration and arena status. State and ordered effects are compared through unchanged native bodies. The isolated server fixture observes ClientThink/ClientEndFrame after real ClientSpawn; their actual default ports are tested separately. Overlong G_Printf output is a separate MiniLang contract. Bot creation/listing and podium abort require explicit callbacks; engine argv tokenization, console buffering and command/network transport remain open. Game startup/shutdown orchestration is compared separately through real defaults and explicit engine/bot interfaces."
+        },
+        {
+          "original": "Complete original source surface",
+          "target_files": [
+            "src/mq3/game/g_svcmds.ml"
+          ],
+          "status": "tested_complete",
+          "scope": "Complete 11/11 server-console symbols with unchanged-C, native and Retail contracts."
         }
       ],
       "target": [
+        "src/mq3/game/g_svcmds.ml",
         "src/mq3/game/ip_filters.ml",
         "src/mq3/game/server_commands.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_ip_filters.py",
-        "scripts/test_server_commands.py"
+        "scripts/test_server_commands.py",
+        "scripts/test_g_svcmds_complete.py",
+        "tests/g_svcmds_complete_contracts.ml"
       ]
     },
     {

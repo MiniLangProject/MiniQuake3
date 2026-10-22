@@ -42,16 +42,40 @@ function updateTournamentInfo(level)
   if player.client == void then return error(498,"Single-player postgame player has no client") end if
   scores.calculateRanks(level)
   client = level.clients[slot]; message = ""
+  missionpack = level.spawner != void and level.spawner.missionpack
   if client.team == c.TEAM_SPECTATOR then
-    message = "postgame "+str(level.numNonSpectatorClients)+" "+str(slot)+" 0 0 0 0 0 0"
+    if missionpack then message = "postgame "+str(level.numNonSpectatorClients)+" "+str(slot)+" 0 0 0 0 0 0 0 0 0 0 0"
+    else message = "postgame "+str(level.numNonSpectatorClients)+" "+str(slot)+" 0 0 0 0 0 0" end if
   else
     accuracy = 0
     if player.client.accuracy_shots != 0 then accuracy = scores.integerDivide(n.mul32(player.client.accuracy_hits,100),player.client.accuracy_shots) end if
     perfect = 0
-    if client.ps.persistant[c.PERS_RANK] == 0 and player.client.ps.persistant[c.PERS_KILLED] == 0 then perfect = 1 end if
-    message = "postgame "+str(level.numNonSpectatorClients)+" "+str(slot)+" "+str(accuracy)+" "+
-      str(player.client.ps.persistant[c.PERS_IMPRESSIVE_COUNT])+" "+str(player.client.ps.persistant[c.PERS_EXCELLENT_COUNT])+" "+
-      str(player.client.ps.persistant[c.PERS_GAUNTLET_FRAG_COUNT])+" "+str(player.client.ps.persistant[c.PERS_SCORE])+" "+str(perfect)
+    if missionpack then
+      won = false; score1 = 0; score2 = 0
+      if level.spawner.gametype >= 4 then
+        score1 = level.teamScores[c.TEAM_RED]; score2 = level.teamScores[c.TEAM_BLUE]
+        if client.team == c.TEAM_RED then won = score1 > score2
+        else won = score2 > score1 end if
+      else
+        first = level.sortedClients[0]; second = level.sortedClients[1]
+        if slot == first then
+          won = true; score1 = level.clients[first].ps.persistant[c.PERS_SCORE]; score2 = level.clients[second].ps.persistant[c.PERS_SCORE]
+        else
+          score2 = level.clients[first].ps.persistant[c.PERS_SCORE]; score1 = level.clients[second].ps.persistant[c.PERS_SCORE]
+        end if
+      end if
+      if won and player.client.ps.persistant[c.PERS_KILLED] == 0 then perfect = 1 end if
+      message = "postgame "+str(level.numNonSpectatorClients)+" "+str(slot)+" "+str(accuracy)+" "+
+        str(player.client.ps.persistant[c.PERS_IMPRESSIVE_COUNT])+" "+str(player.client.ps.persistant[c.PERS_EXCELLENT_COUNT])+" "+
+        str(player.client.ps.persistant[c.PERS_DEFEND_COUNT])+" "+str(player.client.ps.persistant[c.PERS_ASSIST_COUNT])+" "+
+        str(player.client.ps.persistant[c.PERS_GAUNTLET_FRAG_COUNT])+" "+str(player.client.ps.persistant[c.PERS_SCORE])+" "+str(perfect)+" "+
+        str(score1)+" "+str(score2)+" "+str(level.time)+" "+str(player.client.ps.persistant[c.PERS_CAPTURES])
+    else
+      if client.ps.persistant[c.PERS_RANK] == 0 and player.client.ps.persistant[c.PERS_KILLED] == 0 then perfect = 1 end if
+      message = "postgame "+str(level.numNonSpectatorClients)+" "+str(slot)+" "+str(accuracy)+" "+
+        str(player.client.ps.persistant[c.PERS_IMPRESSIVE_COUNT])+" "+str(player.client.ps.persistant[c.PERS_EXCELLENT_COUNT])+" "+
+        str(player.client.ps.persistant[c.PERS_GAUNTLET_FRAG_COUNT])+" "+str(player.client.ps.persistant[c.PERS_SCORE])+" "+str(perfect)
+    end if
   end if
   msglen = len(bytes(message)); index = 0
   while index < level.numNonSpectatorClients

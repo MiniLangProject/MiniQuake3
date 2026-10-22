@@ -2362,3 +2362,46 @@ grafischen Team-Arena-Abnahme. Die vorhandenen Retaildaten prüfen Baseq3 direkt
 Da `D:/Quake3` keine `missionpack`-Assets enthält, sind Team-Arena-Zweige über
 unveränderte C-Differenzwerte und native Verträge belegt, aber noch nicht durch
 einen vollständigen Team-Arena-Retaillauf abgenommen.
+
+## 2026-10-22: Sieben weitere partielle Gameplay-Dateien vollständig geschlossen
+
+Die produktiven MiniLang-Pfade besitzen jetzt C-namensgleiche Komplettfassaden
+für `bg_misc.c`, `bg_slidemove.c`, `g_spawn.c`, `g_session.c`, `g_mem.c`,
+`g_arenas.c` und `g_svcmds.c`. Damit sind sämtliche in diesen sieben Dateien
+erkannten Originalsymbole im Ledger zugeordnet. Die Spawnintegration trennt die
+48 Baseq3- von den 51 Missionpack-Klassen, wendet `notq3a` beziehungsweise
+`notta` korrekt an und führt den produktiven Mapstart über die vollständige
+`G_SpawnEntitiesFromString`-Fassade. Die Arena-Logik enthält nun auch die
+Missionpack-Postgame-Felder und deren Team-/Duell-Auswertung.
+
+Die fokussierte Abnahme umfasst:
+
+- `bg_misc.c`: 12/12 Symbole und 15 native Verträge sowie die abhängigen
+  Shared-Game-, Entitystate-, Item- und Retail-QVM-Regressionen.
+- `bg_slidemove.c`: 2/2 Symbole und fünf native Verträge sowie die exakten
+  unveränderten-C-Bewegungsvergleiche.
+- `g_spawn.c`: 13 Funktionen, zwei Originaltabellen, 23 native/Retail-Verträge,
+  512 unveränderte-C-Fälle, fünf `q3dm7`-Replays und 31 Retail-Karten. Der
+  abhängige Lifecycle besteht 95 Szenarien, 378.562.214 exakte Wörter und 113
+  Verträge.
+- `g_mem.c`: 3/3 Symbole, 53 unveränderte-C-Szenarien, 1.566 Aktionen,
+  125.480 exakte Wörter sowie je acht native und Retail-Verträge.
+- `g_session.c`: 5/5 Symbole, sechs unveränderte-C-Fälle, 14 Aktionen,
+  746.756 exakte Wörter sowie je neun native und Retail-Verträge.
+- `g_arenas.c`: 8/8 Symbole, je sieben native und Retail-Verträge sowie fünf
+  unveränderte-C-Szenarien mit 1.343 exakten Wörtern.
+- `g_svcmds.c`: 11/11 Symbole, je zehn native und Retail-Verträge sowie 182
+  unveränderte-C-Szenarien mit 315 Aktionen, 51.110.232 exakten Wörtern und
+  1.543 geordneten Effekten.
+
+Das Inventar zählt damit **151 portierte, 67 partielle und 117 nicht begonnene**
+Runtime-/Plattformdateien. Die sieben Fokusgates sind in `scripts/verify.py`
+eingetragen. Dieses inkrementelle Paket wurde mit seinen Fokusgates, den
+abhängigen Regressionen, dem Windows-Hauptbuild und dem kombinierten
+Retail-QVM-Match abgenommen; die vollständige Verify-Auswahl des unmittelbar
+vorherigen Pakets bleibt bei 408/408 Gates grün.
+Der erneut gebaute Windows-Hauptstand hat SHA-256
+`c53284b8d10e5d8aa811adb1efe241089185ee9359e35d8d3b8fbb696320192b`.
+Der kombinierte Retail-QVM-Match läuft weiterhin acht Frames mit 131 Entities,
+13 Snapshot-Entities, 2.345 texturierten Dreiecken, 17 Renderpässen, 26 Sounds
+und null nicht unterstützten Entities.

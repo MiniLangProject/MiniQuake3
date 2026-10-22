@@ -21,7 +21,7 @@ import mq3.game.g_bot as gBot
 import mq3.game.bot_ai_frame as botAiFrame
 import mq3.game.g_client as gClient
 import mq3.game.server_commands as serverCommands
-import mq3.game.spawn as spawn
+import mq3.game.g_spawn as gSpawn
 import mq3.game.spawn_values as values
 import mq3.server.world as sv
 import mq3.qcommon.cvar as cv
@@ -398,7 +398,7 @@ function init(level,levelTime,randomSeed,restart,entityText)
   level.num_entities = 64
   if state.locateFn == void then return error(476,"Game lifecycle requires LocateGameData delivery") end if
   state.locateFn(level,level.num_entities)
-  bodies.initQueue(level); gItems.ClearRegisteredItems(level); spawn.load(level.spawner)
+  bodies.initQueue(level); gItems.ClearRegisteredItems(level); gSpawn.G_SpawnEntitiesFromString(level.spawner)
   initialization.findTeams(level)
   if level.spawner.gametype >= 3 then gItems.G_CheckTeamItems(level) end if
   gItems.SaveRegisteredItems(level); gamePrint(level,"-----------------------------------\n")

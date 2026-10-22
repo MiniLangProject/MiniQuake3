@@ -225,7 +225,7 @@ function callSpawn(state,ent)
     end if
     index = index+1
   end while
-  classes = tables.classes(); index = 0
+  classes = tables.classes(); if state.missionpack then classes = tables.missionpackClasses() end if; index = 0
   for each name in classes
     if name == ent.classname then
       if not functions.dispatch(state.level,ent) then
@@ -246,7 +246,8 @@ function fromVars(state)
   if state.gametype == 2 and getInt(state,"notsingle","0")[1] != 0 then game.free(state.level,ent); return void end if
   key = "notfree"
   if state.gametype >= 3 then key = "notteam" end if
-  if getInt(state,key,"0")[1] != 0 or getInt(state,"notq3a","0")[1] != 0 then game.free(state.level,ent); return void end if
+  editionKey = "notq3a"; if state.missionpack then editionKey = "notta" end if
+  if getInt(state,key,"0")[1] != 0 or getInt(state,editionKey,"0")[1] != 0 then game.free(state.level,ent); return void end if
   types = getString(state,"gametype",void)
   if types[0] and state.gametype >= 0 and state.gametype < 8 then
     names = ["ffa","tournament","single","team","ctf","oneflag","obelisk","harvester","teamtournament"]

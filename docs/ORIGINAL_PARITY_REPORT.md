@@ -16,7 +16,7 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `botlib` | 53 | 21 | 10 | 22 | 0 |
 | `cgame` | 25 | 21 | 0 | 4 | 0 |
 | `client` | 19 | 5 | 10 | 4 | 0 |
-| `game` | 65 | 28 | 11 | 26 | 0 |
+| `game` | 65 | 35 | 4 | 26 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
@@ -27,7 +27,7 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **144** | **74** | **117** | **0** |
+| **Gesamt** | **335** | **151** | **67** | **117** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -160,14 +160,14 @@ Teil dieser Tabelle.
 | `code/game/bg_lib.c` | `game` | `ported` | 33 | 33 | 0 |
 | `code/game/bg_lib.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/bg_local.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/bg_misc.c` | `game` | `partial` | 12 | 10 | 2 |
+| `code/game/bg_misc.c` | `game` | `ported` | 12 | 10 | 2 |
 | `code/game/bg_pmove.c` | `game` | `ported` | 42 | 39 | 3 |
 | `code/game/bg_public.h` | `game` | `partial` | 0 | 0 | 0 |
-| `code/game/bg_slidemove.c` | `game` | `partial` | 2 | 2 | 0 |
+| `code/game/bg_slidemove.c` | `game` | `ported` | 2 | 2 | 0 |
 | `code/game/botlib.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/chars.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/g_active.c` | `game` | `ported` | 17 | 16 | 1 |
-| `code/game/g_arenas.c` | `game` | `partial` | 8 | 8 | 0 |
+| `code/game/g_arenas.c` | `game` | `ported` | 8 | 8 | 0 |
 | `code/game/g_bot.c` | `game` | `ported` | 24 | 22 | 2 |
 | `code/game/g_client.c` | `game` | `ported` | 25 | 23 | 2 |
 | `code/game/g_cmds.c` | `game` | `ported` | 37 | 37 | 0 |
@@ -175,16 +175,16 @@ Teil dieser Tabelle.
 | `code/game/g_items.c` | `game` | `ported` | 22 | 21 | 1 |
 | `code/game/g_local.h` | `game` | `partial` | 0 | 0 | 0 |
 | `code/game/g_main.c` | `game` | `ported` | 36 | 31 | 5 |
-| `code/game/g_mem.c` | `game` | `partial` | 3 | 3 | 0 |
+| `code/game/g_mem.c` | `game` | `ported` | 3 | 3 | 0 |
 | `code/game/g_misc.c` | `game` | `ported` | 20 | 14 | 6 |
 | `code/game/g_missile.c` | `game` | `ported` | 17 | 9 | 8 |
 | `code/game/g_mover.c` | `game` | `ported` | 37 | 3 | 34 |
 | `code/game/g_public.h` | `game` | `partial` | 0 | 0 | 0 |
 | `code/game/g_rankings.c` | `game` | `ported` | 17 | 17 | 0 |
 | `code/game/g_rankings.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/g_session.c` | `game` | `partial` | 5 | 5 | 0 |
-| `code/game/g_spawn.c` | `game` | `partial` | 13 | 13 | 0 |
-| `code/game/g_svcmds.c` | `game` | `partial` | 11 | 11 | 0 |
+| `code/game/g_session.c` | `game` | `ported` | 5 | 5 | 0 |
+| `code/game/g_spawn.c` | `game` | `ported` | 13 | 13 | 0 |
+| `code/game/g_svcmds.c` | `game` | `ported` | 11 | 11 | 0 |
 | `code/game/g_syscalls.asm` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/g_syscalls.c` | `game` | `ported` | 185 | 185 | 0 |
 | `code/game/g_target.c` | `game` | `ported` | 28 | 28 | 0 |
@@ -452,29 +452,23 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/game/be_ea.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/bg_lib.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/bg_local.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/bg_misc.c` (partial): `BG_FindItemForHoldable`, `BG_FindItemForPowerup`
+- `code/game/bg_misc.c` (ported): `BG_FindItemForHoldable`, `BG_FindItemForPowerup`
 - `code/game/bg_pmove.c` (ported): `PM_CheckStuck`, `PM_InvulnerabilityMove`, `sqrt`
 - `code/game/bg_public.h` (partial): *(Symbolinventar ergänzen)*
-- `code/game/bg_slidemove.c` (partial): *(Symbolinventar ergänzen)*
 - `code/game/botlib.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/chars.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/g_active.c` (ported): `StuckInOtherClient`
-- `code/game/g_arenas.c` (partial): *(Symbolinventar ergänzen)*
 - `code/game/g_bot.c` (ported): `PlayerIntroSound`, `trap_Cvar_VariableValue`
 - `code/game/g_client.c` (ported): `skin`, `trap_DropClient`
 - `code/game/g_combat.c` (ported): `G_InvulnerabilityEffect`, `Kamikaze_DeathActivate`, `Kamikaze_DeathTimer`, `RaySphereIntersections`, `TossClientCubes`, `TossClientPersistantPowerups`
 - `code/game/g_items.c` (ported): `Pickup_PersistantPowerup`
 - `code/game/g_local.h` (partial): *(Symbolinventar ergänzen)*
 - `code/game/g_main.c` (ported): `Com_Error`, `Com_Printf`, `G_Error`, `G_Printf`, `vmMain`
-- `code/game/g_mem.c` (partial): *(Symbolinventar ergänzen)*
 - `code/game/g_misc.c` (ported): `DropPortalDestination`, `DropPortalSource`, `PortalDie`, `PortalEnable`, `PortalTouch`, `utilities`
 - `code/game/g_missile.c` (ported): `ProximityMine_Activate`, `ProximityMine_Die`, `ProximityMine_Explode`, `ProximityMine_ExplodeOnPlayer`, `ProximityMine_Player`, `ProximityMine_Trigger`, `fire_nail`, `fire_prox`
 - `code/game/g_mover.c` (ported): `Blocked_Door`, `G_CheckProxMinePosition`, `G_CreateRotationMatrix`, `G_MoverPush`, `G_MoverTeam`, `G_RotatePoint`, `G_TestEntityPosition`, `G_TransposeMatrix`, `G_TryPushingEntity`, `G_TryPushingProxMine`, `InitMover`, `MatchTeam`, `Reached_BinaryMover`, `Reached_Train`, `ReturnToPos1`, `SP_func_bobbing`, `SP_func_button`, `SP_func_pendulum`, `SP_func_plat`, `SP_func_rotating`, `SP_func_static`, `SP_func_train`, `SpawnPlatTrigger`, `Think_BeginMoving`, `Think_MatchTeam`, `Think_SetupTrainTargets`, `Think_SpawnNewDoorTrigger`, `Touch_Button`, `Touch_DoorTrigger`, `Touch_DoorTriggerSpectator`, `Touch_Plat`, `Touch_PlatCenterTrigger`, `Use_BinaryMover`, `triggered`
 - `code/game/g_public.h` (partial): *(Symbolinventar ergänzen)*
 - `code/game/g_rankings.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/g_session.c` (partial): *(Symbolinventar ergänzen)*
-- `code/game/g_spawn.c` (partial): *(Symbolinventar ergänzen)*
-- `code/game/g_svcmds.c` (partial): *(Symbolinventar ergänzen)*
 - `code/game/g_syscalls.asm` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/g_team.c` (ported): `CheckObeliskAttack`, `ObeliskDie`, `ObeliskPain`, `ObeliskRegen`, `ObeliskRespawn`, `ObeliskTouch`, `OtherTeamName`, `PrintMsg`, `SP_team_blueobelisk`, `SP_team_neutralobelisk`, `SP_team_redobelisk`, `SpawnObelisk`, `TeamColorString`
 - `code/game/g_team.h` (not_started): *(Symbolinventar ergänzen)*
