@@ -1,0 +1,26 @@
+import mq3.platform.win_syscon as console
+function require(ok,label) if not ok then return error(7994,"win syscon contract: "+label) end if;return 1 end function
+function main(args)
+ count=0;state=console.create(false);count=count+require(console.Sys_CreateConsole(state,true,true) and state.created and state.visLevel==1 and state.hasInput,"create console")
+ count=count+require(console.Sys_ShowConsole(state,2,true) and state.visLevel==2 and state.quitOnClose and state.actions[len(state.actions)-1].kind=="minimize-console","minimize and close policy")
+ count=count+require(console.Sys_ShowConsole(state,0,false) and state.actions[len(state.actions)-1].kind=="hide-console","hide")
+ state.consoleText="status\nmap q3dm1\n";count=count+require(console.Sys_ConsoleInput(state)=="status\nmap q3dm1\n" and state.consoleText=="","console input drains atomically")
+ count=count+require(console.Sys_ConsoleInput(state)==void,"empty console input is null")
+ console.InputLineWndProc(state,"char",13,"say hello");count=count+require(state.consoleText=="say hello\n" and state.actions[len(state.actions)-1].text=="]say hello\n","enter queues and echoes input")
+ state.consoleText="";long="";for i=0 to 600 long=long+"x" end for;console.InputLineWndProc(state,"char",13,long);count=count+require(len(bytes(state.consoleText))==508 and bytes(state.consoleText)[507]==10,"input queue preserves released reserve")
+ count=count+require(console.InputLineWndProc(state,"killfocus",0,"error")==0 and state.actions[len(state.actions)-1].kind=="focus-input","focus is retained inside console")
+ normalized=console.Conbuf_AppendText(state,"^1red\nblue\ryellow\n\rgreen");count=count+require(normalized=="red\r\nblue\r\nyellow\r\ngreen","line endings and Quake colors")
+ state.totalChars=32760;state.displayText="old";console.Conbuf_AppendText(state,"overflow text");count=count+require(state.displayText=="overflow text" and state.totalChars==13,"edit control rollover replaces selection")
+ first=console.Sys_SetErrorText(state,"fatal problem");count=count+require(first=="fatal problem" and state.hasError and not state.hasInput,"error box replaces input")
+ actions=len(state.actions);console.Sys_SetErrorText(state,"second");count=count+require(state.errorString=="second" and len(state.actions)==actions,"existing error box is not recreated")
+ state.dedicated=true;console.ConWndProc(state,"close",0,false);count=count+require(state.actions[len(state.actions)-1].kind=="console" and state.actions[len(state.actions)-1].text=="quit","dedicated close queues quit")
+ state.dedicated=false;state.quitOnClose=true;console.ConWndProc(state,"quit",0,false);count=count+require(state.actions[len(state.actions)-1].kind=="post-quit","quit button obeys close policy")
+ state.quitOnClose=false;state.created=true;state.visLevel=1;state.viewlog=1;console.ConWndProc(state,"activate",1,true);count=count+require(state.viewlog==2,"minimized viewlog cvar")
+ console.ConWndProc(state,"activate",1,false);count=count+require(state.viewlog==1,"restored viewlog cvar")
+ state.displayText="abc";console.ConWndProc(state,"copy",0,false);console.ConWndProc(state,"clear",0,false);count=count+require(state.displayText=="" and state.actions[len(state.actions)-2].kind=="copy-console","copy and clear commands")
+ state.hasError=true;console.ConWndProc(state,"timer",1,false);count=count+require(state.timePolarity and state.actions[len(state.actions)-1].kind=="invalidate-error","error blink timer")
+ console.Sys_DestroyConsole(state);count=count+require(not state.created and not state.hasInput,"destroy console")
+ missing=console.create(false);count=count+require(not console.Sys_CreateConsole(missing,false,true) and not missing.created,"class registration failure")
+ mirror=console.create(true);console.Sys_CreateConsole(mirror,true,true);console.Conbuf_AppendText(mirror,"hello");ok=true;for each action in mirror.actions if action.dispatched then ok=false end if end for;count=count+require(ok,"Retail mirror suppresses host actions")
+ print("PASS: "+str(count)+" Win32 console contracts / 8 symbols");return 0
+end function

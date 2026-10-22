@@ -1,0 +1,476 @@
+// Copyright (C) 1999-2005 Id Software, Inc.
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Safe native port of code/ui/ui_shared.c.  Engine callbacks are represented by
+// typed Action values; retail QVM ownership can suppress their dispatch.
+package mq3.client.ui_shared
+
+import mq3.compat.numeric as numeric
+import mq3.compat.textnumbers as numbers
+import mq3.compat.transcendental as crt
+import mq3.shared.parser as parser
+import std.string as strings
+
+const WINDOW_VISIBLE=4
+const WINDOW_MOUSEOVER=1
+const WINDOW_HASFOCUS=2
+const WINDOW_DECORATION=16
+const WINDOW_FADINGOUT=32
+const WINDOW_FADINGIN=64
+const WINDOW_MOUSEOVERTEXT=128
+const WINDOW_INTRANSITION=256
+const WINDOW_FORECOLORSET=512
+const WINDOW_HORIZONTAL=1024
+const WINDOW_ORBITING=65536
+const ITEM_TYPE_TEXT=0
+const ITEM_TYPE_BUTTON=1
+const ITEM_TYPE_RADIOBUTTON=2
+const ITEM_TYPE_CHECKBOX=3
+const ITEM_TYPE_EDITFIELD=4
+const ITEM_TYPE_COMBO=5
+const ITEM_TYPE_LISTBOX=6
+const ITEM_TYPE_MODEL=7
+const ITEM_TYPE_OWNERDRAW=8
+const ITEM_TYPE_NUMERICFIELD=9
+const ITEM_TYPE_SLIDER=10
+const ITEM_TYPE_YESNO=11
+const ITEM_TYPE_MULTI=12
+const ITEM_TYPE_BIND=13
+const ITEM_ALIGN_LEFT=0
+const ITEM_ALIGN_CENTER=1
+const ITEM_ALIGN_RIGHT=2
+const CURSOR_NONE=1
+const CURSOR_ARROW=2
+const CURSOR_SIZER=4
+const K_TAB=9
+const K_ENTER=13
+const K_ESCAPE=27
+const K_SPACE=32
+const K_BACKSPACE=127
+const K_UPARROW=132
+const K_DOWNARROW=133
+const K_LEFTARROW=134
+const K_RIGHTARROW=135
+const K_ALT=136
+const K_CTRL=137
+const K_SHIFT=138
+const K_DEL=140
+const K_PGDN=141
+const K_END=144
+const K_F1=145
+const K_F2=146
+const K_F3=147
+const K_F4=148
+const K_F5=149
+const K_KP_PGUP=162
+const K_KP_PGDN=168
+const K_MOUSE1=178
+const K_MOUSE2=179
+const K_MOUSE3=180
+const K_MOUSE4=181
+const MAX_EDITFIELD=256
+const MAX_MENUITEMS=96
+const MAX_MENUS=64
+const SCROLLBAR_SIZE=16.0
+
+struct Action boundary kind name detail number vector dispatched end struct
+struct Rect x y w h end struct
+struct Color r g b a end struct
+struct Source scan name warnings errors end struct
+struct Memory capacity used strings outOfMemory end struct
+struct Window name group rect rectClient rectEffects rectEffects2 style border borderSize flags foreColor backColor borderColor outlineColor background cinematic offsetTime nextTime alpha end struct
+struct TypeData startPos endPos cursorPos maxChars maxPaintChars minVal maxVal defVal feeder elementWidth elementHeight horizontal columns settings values stringValues modelOrigin modelFovX modelFovY modelRotation modelAngle doubleClick notselectable end struct
+struct Item window parent text textRect type alignment textalignment textalignx textaligny textscale textStyle action cvar cvarTest enableCvar cvarFlags typeData special ownerDraw ownerDrawFlags focusSound onFocus leaveFocus mouseEnter mouseExit mouseEnterText mouseExitText properties colorRanges end struct
+struct Menu window items cursorItem font fullScreen onOpen onClose onESC soundLoop focusColor disableColor fadeClamp fadeAmount fadeCycle ownerDraw ownerDrawFlags popup outOfBounds properties end struct
+struct Display menus focus capture cursorx cursory scaleX scaleY bias realtime frameTime keyBindPending actions cvars bindings assets memory retailActive end struct
+
+function rect(x,y,w,h) return Rect(x,y,w,h) end function
+function color(r,g,b,a) return Color(r,g,b,a) end function
+function window() return Window("","",rect(0.0,0.0,0.0,0.0),rect(0.0,0.0,0.0,0.0),rect(0.0,0.0,0.0,0.0),rect(0.0,0.0,0.0,0.0),0,0,0.0,0,color(1.0,1.0,1.0,1.0),color(0.0,0.0,0.0,0.0),color(0.0,0.0,0.0,0.0),color(0.0,0.0,0.0,0.0),"",-1,0,0,1.0) end function
+function typeData() return TypeData(0,0,0,0,0,0.0,1.0,0.0,0.0,0.0,0.0,false,[],[],[],[],[0.0,0.0,0.0],0.0,0.0,0,0.0,"",false) end function
+function item() return Item(window(),void,"",rect(0.0,0.0,0.0,0.0),ITEM_TYPE_TEXT,ITEM_ALIGN_LEFT,ITEM_ALIGN_LEFT,0.0,0.0,0.55,0,"","","","",0,typeData(),0.0,0,0,"","","","","","","",[],[]) end function
+function menu() return Menu(window(),[],-1,"",false,"","","","",color(1.0,1.0,1.0,1.0),color(0.5,0.5,0.5,1.0),1.0,0.0,0,0,0,false,false,[]) end function
+function source(text,name) return Source(parser.create(text),name,[],[]) end function
+function memory(capacity) return Memory(capacity,0,[],false) end function
+function display(retailActive) return Display([],void,void,0.0,0.0,1.0,1.0,0.0,0,0,false,[],[],[],[],memory(1024*1024),retailActive) end function
+function emit(dc,boundary,kind,name,detail,number,vector) dc.actions=dc.actions+[Action(boundary,kind,name,detail,number,vector,not dc.retailActive)];return dc.actions[len(dc.actions)-1] end function
+function same(a,b) return strings.equalsIgnoreCaseAscii(a,b) end function
+function abs(value) if value<0 then return 0-value end if;return value end function
+function clamp(value,low,high) if value<low then return low end if;if value>high then return high end if;return value end function
+function pairGet(pairs,key,otherwise) for each pair in pairs if same(pair[0],key) then return pair[1] end if end for;return otherwise end function
+function pairSet(pairs,key,value) result=[];found=false;for each pair in pairs if same(pair[0],key) then result=result+[[key,value]];found=true else result=result+[pair] end if end for;if not found then result=result+[[key,value]] end if;return result end function
+function next(source) return parser.parseExt(source.scan,true) end function
+
+// UI memory and interned strings.
+function UI_Alloc(state,size) if state.used+size>state.capacity then state.outOfMemory=true;return void end if;offset=state.used;state.used=state.used+((size+15)&(~15));return offset end function
+function UI_InitMemory(state) state.used=0;state.strings=[];state.outOfMemory=false;return state end function
+function UI_OutOfMemory(state) return state.outOfMemory end function
+function hashForString(value) hash=0;for i=0 to len(bytes(value))-1 c=bytes(value)[i];if c>=65 and c<=90 then c=c+32 end if;hash=hash+(c*(119+i)) end for;return hash&2047 end function
+function String_Alloc(state,value) if value=="" then return "" end if;for each old in state.memory.strings if old==value then return old end if end for;if UI_Alloc(state.memory,len(bytes(value))+1) is void then return "" end if;state.memory.strings=state.memory.strings+[value];return value end function
+function String_Report(state) return [len(state.memory.strings),state.memory.used,state.memory.capacity-state.memory.used] end function
+function String_Init(state) UI_InitMemory(state.memory);state.memory.strings=[];return state end function
+function structure(name,size,fields) return [name,size,fields] end function
+
+// Text and PC parser boundaries.
+function Float_Parse(source) token=next(source);if token=="" then return void end if;return numbers.atof(token) end function
+function Int_Parse(source) token=next(source);if token=="" then return void end if;return numbers.atoi(token) end function
+function Color_Parse(source) values=[];for i=0 to 3 token=next(source);if token=="" then return void end if;values=values+[numbers.atof(token)] end for;return color(values[0],values[1],values[2],values[3]) end function
+function Rect_Parse(source) values=[];for i=0 to 3 token=next(source);if token=="" then return void end if;values=values+[numbers.atof(token)] end for;return rect(values[0],values[1],values[2],values[3]) end function
+function String_Parse(source) token=next(source);if token=="" then return void end if;return token end function
+function PC_Float_Parse(handle) return Float_Parse(handle) end function
+function PC_Int_Parse(handle) return Int_Parse(handle) end function
+function PC_Color_Parse(handle) return Color_Parse(handle) end function
+function PC_Rect_Parse(handle) return Rect_Parse(handle) end function
+function PC_String_Parse(handle) return String_Parse(handle) end function
+function PC_Script_Parse(handle) open=next(handle);if open!="{" then return void end if;text="";depth=1;while depth>0 token=next(handle);if token=="" then return void end if;if token=="{" then depth=depth+1 end if;if token=="}" then depth=depth-1 end if;if depth>0 then if text!="" then text=text+" " end if;text=text+token end if end while;return text end function
+function PC_SourceWarning(handle,message) handle.warnings=handle.warnings+[handle.name+": "+message];return false end function
+function PC_SourceError(handle,message) handle.errors=handle.errors+[handle.name+": "+message];return false end function
+
+// Display context and geometry.
+function Init_Display(dc) dc.menus=[];dc.focus=void;dc.capture=void;dc.cursorx=0.0;dc.cursory=0.0;dc.actions=[];dc.keyBindPending=false;return dc end function
+function Display_GetContext(dc) return dc end function
+function Rect_ContainsPoint(value,x,y) return x>value.x and x<value.x+value.w and y>value.y and y<value.y+value.h end function
+function IsVisible(flags) return (flags&WINDOW_VISIBLE)!=0 and (flags&WINDOW_FADINGOUT)==0 end function
+function ToWindowCoords(point,window) return [point[0]+window.rect.x,point[1]+window.rect.y] end function
+function Rect_ToWindowCoords(value,window) value.x=value.x+window.rect.x;value.y=value.y+window.rect.y;return value end function
+function AdjustFrom640(dc,value) return [value[0]*dc.scaleX+dc.bias,value[1]*dc.scaleY,value[2]*dc.scaleX,value[3]*dc.scaleY] end function
+function LerpColor(a,b,t) r=clamp(a.r+t*(b.r-a.r),0.0,1.0);g=clamp(a.g+t*(b.g-a.g),0.0,1.0);blue=clamp(a.b+t*(b.b-a.b),0.0,1.0);alpha=clamp(a.a+t*(b.a-a.a),0.0,1.0);return color(r,g,blue,alpha) end function
+function Fade(flags,alpha,clampValue,nextTime,offsetTime,bFlags,fadeAmount,realtime)
+  if (flags&(WINDOW_FADINGOUT|WINDOW_FADINGIN))==0 or realtime<=nextTime then return [flags,alpha,nextTime] end if
+  nextTime=realtime+offsetTime
+  if (flags&WINDOW_FADINGOUT)!=0 then
+    alpha=alpha-fadeAmount
+    if bFlags and alpha<=0.0 then flags=flags&(~(WINDOW_FADINGOUT|WINDOW_VISIBLE)) end if
+  else
+    alpha=alpha+fadeAmount
+    if alpha>=clampValue then
+      alpha=clampValue
+      if bFlags then flags=flags&(~WINDOW_FADINGIN) end if
+    end if
+  end if
+  return [flags,alpha,nextTime]
+end function
+function GradientBar_Paint(dc,value,tint) emit(dc,"renderer","gradient-bar","",str(tint.r)+","+str(tint.g)+","+str(tint.b)+","+str(tint.a),0,[value.x,value.y,value.w,value.h]);return true end function
+function Window_Paint(dc,w,fadeAmount,fadeClamp,fadeCycle) if (w.flags&(WINDOW_FADINGIN|WINDOW_FADINGOUT))!=0 then faded=Fade(w.flags,w.alpha,fadeClamp,w.nextTime,fadeCycle,(w.flags&WINDOW_FADINGIN)!=0,fadeAmount,dc.realtime);w.flags=faded[0];w.alpha=faded[1];w.nextTime=faded[2] end if;if w.background!="" then emit(dc,"renderer","draw-handle-pic",w.background,"window",w.style,[w.rect.x,w.rect.y,w.rect.w,w.rect.h]) else emit(dc,"renderer","fill-rect","","window",w.style,[w.rect.x,w.rect.y,w.rect.w,w.rect.h]) end if;if w.border!=0 then emit(dc,"renderer","draw-border","","window",w.borderSize,[w.rect.x,w.rect.y,w.rect.w,w.rect.h]) end if;return true end function
+function Window_CloseCinematic(dc,w) if w.cinematic>=0 then emit(dc,"cinematic","stop",str(w.cinematic),"",0,void);w.cinematic=-1 end if;return true end function
+function Window_CacheContents(dc,w) if w.background!="" then dc.assets=dc.assets+[w.background];emit(dc,"renderer","register-shader",w.background,"",0,void) end if;return true end function
+
+// Item/menu initialization and coordinates.
+function Item_Init(value) fresh=item();value.window=fresh.window;value.textRect=fresh.textRect;value.typeData=fresh.typeData;value.properties=[];value.colorRanges=[];return value end function
+function Menu_Init(value) fresh=menu();value.window=fresh.window;value.items=[];value.cursorItem=-1;value.properties=[];return value end function
+function Item_InitControls(value) if value.typeData is void then value.typeData=typeData() end if;return value end function
+function Item_ValidateTypeData(value) if value.typeData is void then value.typeData=typeData() end if;value.typeData.maxChars=clamp(value.typeData.maxChars,0,MAX_EDITFIELD);value.typeData.cursorPos=clamp(value.typeData.cursorPos,0,len(value.text));return value end function
+function Item_SetScreenCoords(value,x,y) value.window.rect.x=x+value.window.rectClient.x;value.window.rect.y=y+value.window.rectClient.y;value.window.rect.w=value.window.rectClient.w;value.window.rect.h=value.window.rectClient.h;return value end function
+function Item_UpdatePosition(value) if value.parent is not void then Item_SetScreenCoords(value,value.parent.window.rect.x,value.parent.window.rect.y) end if;return value end function
+function Menu_UpdatePosition(value) for each child in value.items child.parent=value;Item_UpdatePosition(child) end for;return value end function
+function Menu_PostParse(value) Menu_UpdatePosition(value);if value.fullScreen then value.window.rect=rect(0.0,0.0,640.0,480.0) end if;return value end function
+function Item_CorrectedTextRect(value) result=rect(value.textRect.x,value.textRect.y,value.textRect.w,value.textRect.h);if result.w<0 then result.w=0 end if;if result.h<0 then result.h=0 end if;return result end function
+function Item_SetTextExtents(value,text) width=len(bytes(text))*8.0*value.textscale;height=16.0*value.textscale;value.textRect.w=width;value.textRect.h=height;return [numeric.trunc32(width),numeric.trunc32(height)] end function
+
+// Menu/item lookup, visibility and focus.
+function Menu_ItemsMatchingGroup(value,name) count=0;for each child in value.items if same(child.window.name,name) or same(child.window.group,name) then count=count+1 end if end for;return count end function
+function Menu_GetMatchingItemByNumber(value,index,name) found=0;for each child in value.items if same(child.window.name,name) or same(child.window.group,name) then if found==index then return child end if;found=found+1 end if end for;return void end function
+function Menu_FindItemByName(value,name) for each child in value.items if same(child.window.name,name) then return child end if end for;return void end function
+function Menus_FindByName(dc,name) for each value in dc.menus if same(value.window.name,name) then return value end if end for;return void end function
+function Menu_ClearFocus(value) old=void;for each child in value.items if (child.window.flags&WINDOW_HASFOCUS)!=0 then old=child;child.window.flags=child.window.flags&(~WINDOW_HASFOCUS) end if end for;value.cursorItem=-1;return old end function
+function Item_SetFocus(dc,value,x,y) if (value.window.flags&(WINDOW_VISIBLE|WINDOW_DECORATION))!=WINDOW_VISIBLE then return false end if;if value.parent is not void then Menu_ClearFocus(value.parent) end if;value.window.flags=value.window.flags|WINDOW_HASFOCUS;if value.parent is not void then for i=0 to len(value.parent.items)-1 if value.parent.items[i]==value then value.parent.cursorItem=i end if end for end if;if value.onFocus!="" then Item_RunScript(dc,value,value.onFocus) end if;if value.focusSound!="" then emit(dc,"audio","play-local",value.focusSound,"focus",0,void) end if;return true end function
+function Item_SetMouseOver(value,focus) if focus then value.window.flags=value.window.flags|WINDOW_MOUSEOVER else value.window.flags=value.window.flags&(~WINDOW_MOUSEOVER) end if;return value end function
+function Item_MouseEnter(dc,value,x,y) Item_SetMouseOver(value,true);if value.mouseEnter!="" then Item_RunScript(dc,value,value.mouseEnter) end if;return true end function
+function Item_MouseLeave(dc,value) Item_SetMouseOver(value,false);value.window.flags=value.window.flags&(~WINDOW_MOUSEOVERTEXT);if value.mouseExit!="" then Item_RunScript(dc,value,value.mouseExit) end if;return true end function
+function Menu_HitTest(value,x,y) i=len(value.items)-1;while i>=0 child=value.items[i];if IsVisible(child.window.flags) and Rect_ContainsPoint(child.window.rect,x,y) then return child end if;i=i-1 end while;return void end function
+function Menu_OverActiveItem(value,x,y) return Menu_HitTest(value,x,y) is not void end function
+function Menu_GetFocusedItem(value) if value.cursorItem>=0 and value.cursorItem<len(value.items) then return value.items[value.cursorItem] end if;for each child in value.items if (child.window.flags&WINDOW_HASFOCUS)!=0 then return child end if end for;return void end function
+function Menu_GetFocused(dc) for each value in dc.menus if (value.window.flags&WINDOW_HASFOCUS)!=0 then return value end if end for;return void end function
+
+// Scripts.  Tokenization and command dispatch mirror the original command table.
+function scriptArgs(text) return source("{ "+text+" }","script") end function
+function scriptValue(args) return String_Parse(args) end function
+function Script_SetColor(dc,value,args) target=scriptValue(args);c=Color_Parse(args);if c is void then return false end if;if same(target,"backcolor") then value.window.backColor=c else if same(target,"forecolor") then value.window.foreColor=c;value.window.flags=value.window.flags|WINDOW_FORECOLORSET else if same(target,"bordercolor") then value.window.borderColor=c end if;return true end function
+function Script_SetAsset(dc,value,args) path=scriptValue(args);if path is void then return false end if;value.window.background=path;emit(dc,"renderer","register-shader",path,"script",0,void);return true end function
+function Script_SetBackground(dc,value,args) return Script_SetAsset(dc,value,args) end function
+function Script_SetTeamColor(dc,value,args) value.window.backColor=pairGet(dc.cvars,"ui_teamColor",color(1.0,1.0,1.0,1.0));return true end function
+function Script_SetItemColor(dc,value,args) name=scriptValue(args);target=Menu_FindItemByName(value.parent,name);if target is void then return false end if;return Script_SetColor(dc,target,args) end function
+function Menu_ShowItemByName(value,name,show) for each child in value.items if same(child.window.name,name) or same(child.window.group,name) then if show then child.window.flags=child.window.flags|WINDOW_VISIBLE else child.window.flags=child.window.flags&(~WINDOW_VISIBLE) end if end if end for;return true end function
+function Menu_FadeItemByName(value,name,fadeOut) for each child in value.items if same(child.window.name,name) or same(child.window.group,name) then if fadeOut then child.window.flags=(child.window.flags|WINDOW_FADINGOUT)&(~WINDOW_FADINGIN) else child.window.flags=(child.window.flags|WINDOW_FADINGIN|WINDOW_VISIBLE)&(~WINDOW_FADINGOUT) end if end if end for;return true end function
+function Script_Show(dc,value,args) return Menu_ShowItemByName(value.parent,scriptValue(args),true) end function
+function Script_Hide(dc,value,args) return Menu_ShowItemByName(value.parent,scriptValue(args),false) end function
+function Script_FadeIn(dc,value,args) return Menu_FadeItemByName(value.parent,scriptValue(args),false) end function
+function Script_FadeOut(dc,value,args) return Menu_FadeItemByName(value.parent,scriptValue(args),true) end function
+function Script_Open(dc,value,args) Menus_OpenByName(dc,scriptValue(args));return true end function
+function Script_ConditionalOpen(dc,value,args) cvar=scriptValue(args);test=scriptValue(args);yes=scriptValue(args);no=scriptValue(args);if same(str(pairGet(dc.cvars,cvar,"")),test) then Menus_OpenByName(dc,yes) else if no is not void then Menus_OpenByName(dc,no) end if;return true end function
+function Script_Close(dc,value,args) Menus_CloseByName(dc,scriptValue(args));return true end function
+function Menu_TransitionItemByName(value,name,fromRect,toRect,time,amount) if amount==0 then amount=1 end if;for each child in value.items if same(child.window.name,name) or same(child.window.group,name) then child.window.rectClient=rect(fromRect.x,fromRect.y,fromRect.w,fromRect.h);child.window.rectEffects=rect(toRect.x,toRect.y,toRect.w,toRect.h);child.window.rectEffects2=rect(abs(toRect.x-fromRect.x)/amount,abs(toRect.y-fromRect.y)/amount,abs(toRect.w-fromRect.w)/amount,abs(toRect.h-fromRect.h)/amount);child.window.offsetTime=time;child.window.flags=child.window.flags|WINDOW_INTRANSITION|WINDOW_VISIBLE;Item_UpdatePosition(child) end if end for;return true end function
+function Script_Transition(dc,value,args) name=scriptValue(args);fromRect=Rect_Parse(args);toRect=Rect_Parse(args);time=Int_Parse(args);amount=Float_Parse(args);if fromRect is void or toRect is void or time is void or amount is void then return false end if;return Menu_TransitionItemByName(value.parent,name,fromRect,toRect,time,amount) end function
+function Menu_OrbitItemByName(value,name,x,y,cx,cy,time) for each child in value.items if same(child.window.name,name) or same(child.window.group,name) then child.window.rectClient.x=x;child.window.rectClient.y=y;child.window.rectEffects.x=cx;child.window.rectEffects.y=cy;child.window.offsetTime=time;child.window.flags=child.window.flags|WINDOW_ORBITING|WINDOW_VISIBLE;Item_UpdatePosition(child) end if end for;return true end function
+function Script_Orbit(dc,value,args) name=scriptValue(args);x=Float_Parse(args);y=Float_Parse(args);cx=Float_Parse(args);cy=Float_Parse(args);time=Int_Parse(args);if time is void then return false end if;return Menu_OrbitItemByName(value.parent,name,x,y,cx,cy,time) end function
+function Script_SetFocus(dc,value,args) target=Menu_FindItemByName(value.parent,scriptValue(args));if target is void then return false end if;return Item_SetFocus(dc,target,dc.cursorx,dc.cursory) end function
+function Script_SetPlayerModel(dc,value,args) model=scriptValue(args);dc.cvars=pairSet(dc.cvars,"ui_team_model",model);dc.cvars=pairSet(dc.cvars,"model",model);return true end function
+function Script_SetPlayerHead(dc,value,args) head=scriptValue(args);dc.cvars=pairSet(dc.cvars,"ui_team_headmodel",head);dc.cvars=pairSet(dc.cvars,"headmodel",head);return true end function
+function Script_SetCvar(dc,value,args) name=scriptValue(args);setting=scriptValue(args);if name is void or setting is void then return false end if;dc.cvars=pairSet(dc.cvars,name,setting);emit(dc,"cvar","set",name,setting,0,void);return true end function
+function Script_Exec(dc,value,args) command=scriptValue(args);emit(dc,"command","execute",command,"append",0,void);return true end function
+function Script_Play(dc,value,args) sound=scriptValue(args);emit(dc,"audio","play-local",sound,"",0,void);return true end function
+function Script_playLooped(dc,value,args) sound=scriptValue(args);emit(dc,"audio","stop-background","","",0,void);emit(dc,"audio","start-background",sound,"loop",0,void);return true end function
+function commandHandler(name) names=["setcolor","setasset","setbackground","setteamcolor","setitemcolor","show","hide","fadein","fadeout","open","conditionalopen","close","transition","orbit","setfocus","setplayermodel","setplayerhead","setcvar","exec","play","playlooped"];for i=0 to len(names)-1 if same(name,names[i]) then return i end if end for;return -1 end function
+function Item_RunScript(dc,value,text) src=scriptArgs(text);if next(src)!="{" then return false end if;while true command=next(src);if command=="" or command=="}" then break end if;id=commandHandler(command);if id==0 then Script_SetColor(dc,value,src) else if id==1 then Script_SetAsset(dc,value,src) else if id==2 then Script_SetBackground(dc,value,src) else if id==3 then Script_SetTeamColor(dc,value,src) else if id==4 then Script_SetItemColor(dc,value,src) else if id==5 then Script_Show(dc,value,src) else if id==6 then Script_Hide(dc,value,src) else if id==7 then Script_FadeIn(dc,value,src) else if id==8 then Script_FadeOut(dc,value,src) else if id==9 then Script_Open(dc,value,src) else if id==10 then Script_ConditionalOpen(dc,value,src) else if id==11 then Script_Close(dc,value,src) else if id==12 then Script_Transition(dc,value,src) else if id==13 then Script_Orbit(dc,value,src) else if id==14 then Script_SetFocus(dc,value,src) else if id==15 then Script_SetPlayerModel(dc,value,src) else if id==16 then Script_SetPlayerHead(dc,value,src) else if id==17 then Script_SetCvar(dc,value,src) else if id==18 then Script_Exec(dc,value,src) else if id==19 then Script_Play(dc,value,src) else if id==20 then Script_playLooped(dc,value,src) else emit(dc,"ui-script","unknown",command,"",0,void) end if end while;return true end function
+
+// Menu lifecycle.
+function Menus_ShowByName(dc,name) value=Menus_FindByName(dc,name);if value is void then return false end if;value.window.flags=value.window.flags|WINDOW_VISIBLE;return true end function
+function Menus_OpenByName(dc,name) return Menus_ActivateByName(dc,name) is not void end function
+function Menu_RunCloseScript(dc,value) if value.onClose!="" then dummy=item();dummy.parent=value;Item_RunScript(dc,dummy,value.onClose) end if;return true end function
+function Menus_CloseByName(dc,name) value=Menus_FindByName(dc,name);if value is void then return false end if;Menu_RunCloseScript(dc,value);value.window.flags=value.window.flags&(~(WINDOW_VISIBLE|WINDOW_HASFOCUS));Menu_CloseCinematics(dc,value);if dc.focus==value then dc.focus=void end if;return true end function
+function Menus_CloseAll(dc) for each value in dc.menus if IsVisible(value.window.flags) then Menu_RunCloseScript(dc,value) end if;value.window.flags=value.window.flags&(~(WINDOW_VISIBLE|WINDOW_HASFOCUS));Menu_CloseCinematics(dc,value) end for;dc.focus=void;return true end function
+function Menus_Activate(dc,value) for each other in dc.menus other.window.flags=other.window.flags&(~WINDOW_HASFOCUS) end for;value.window.flags=value.window.flags|WINDOW_VISIBLE|WINDOW_HASFOCUS;dc.focus=value;if value.onOpen!="" then dummy=item();dummy.parent=value;Item_RunScript(dc,dummy,value.onOpen) end if;if value.soundLoop!="" then emit(dc,"audio","start-background",value.soundLoop,"loop",0,void) end if;return value end function
+function Menus_ActivateByName(dc,name) value=Menus_FindByName(dc,name);if value is void then return void end if;return Menus_Activate(dc,value) end function
+function Menus_AnyFullScreenVisible(dc) for each value in dc.menus if value.fullScreen and IsVisible(value.window.flags) then return true end if end for;return false end function
+function Menu_Count(dc) return len(dc.menus) end function
+function Menu_Reset(dc) dc.menus=[];dc.focus=void;dc.capture=void;return dc end function
+function Menu_CloseCinematics(dc,value) Window_CloseCinematic(dc,value.window);for each child in value.items Window_CloseCinematic(dc,child.window) end for;return true end function
+function Display_CloseCinematics(dc) for each value in dc.menus Menu_CloseCinematics(dc,value) end for;return true end function
+
+// Cvar gating and item controls.
+function Item_EnableShowViaCvar(dc,value,flag) if value.cvarTest=="" or value.enableCvar=="" then return true end if;setting=str(pairGet(dc.cvars,value.cvarTest,""));matched=false;for each candidate in strings.split(value.enableCvar,";") if same(strings.trim(candidate),setting) then matched=true end if end for;if (flag&1)!=0 then return matched end if;return not matched end function
+function Item_Action(dc,value) if value.action!="" then return Item_RunScript(dc,value,value.action) end if;return false end function
+function Item_YesNo_HandleKey(dc,value,key) if key!=K_MOUSE1 and key!=K_ENTER and key!=K_LEFTARROW and key!=K_RIGHTARROW then return false end if;current=numbers.atoi(str(pairGet(dc.cvars,value.cvar,"0")));if current==0 then current=1 else current=0 end if;dc.cvars=pairSet(dc.cvars,value.cvar,str(current));emit(dc,"cvar","set",value.cvar,str(current),0,void);return true end function
+function Item_Multi_CountSettings(value) return len(value.typeData.settings) end function
+function Item_Multi_FindCvarByValue(dc,value) current=str(pairGet(dc.cvars,value.cvar,""));for i=0 to len(value.typeData.values)-1 if same(str(value.typeData.values[i]),current) then return i end if end for;return 0 end function
+function Item_Multi_Setting(dc,value) count=Item_Multi_CountSettings(value);if count==0 then return "" end if;index=Item_Multi_FindCvarByValue(dc,value);return value.typeData.settings[clamp(index,0,count-1)] end function
+function Item_Multi_HandleKey(dc,value,key) if key!=K_MOUSE1 and key!=K_ENTER and key!=K_LEFTARROW and key!=K_RIGHTARROW then return false end if;count=Item_Multi_CountSettings(value);if count==0 then return false end if;index=Item_Multi_FindCvarByValue(dc,value);if key==K_LEFTARROW then index=index-1 else index=index+1 end if;if index<0 then index=count-1 end if;if index>=count then index=0 end if;setting=str(value.typeData.values[index]);dc.cvars=pairSet(dc.cvars,value.cvar,setting);emit(dc,"cvar","set",value.cvar,setting,0,void);return true end function
+function Item_Slider_ThumbPosition(dc,value) current=numbers.atof(str(pairGet(dc.cvars,value.cvar,str(value.typeData.defVal))));range=value.typeData.maxVal-value.typeData.minVal;if range<=0 then return value.window.rect.x end if;return value.window.rect.x+clamp((current-value.typeData.minVal)/range,0.0,1.0)*(value.window.rect.w-SCROLLBAR_SIZE) end function
+function Item_Slider_OverSlider(dc,value,x,y) thumb=Item_Slider_ThumbPosition(dc,value);return x>=thumb and x<=thumb+SCROLLBAR_SIZE and y>=value.window.rect.y and y<=value.window.rect.y+value.window.rect.h end function
+function Item_Slider_HandleKey(dc,value,key,down) if not down then return false end if;current=numbers.atof(str(pairGet(dc.cvars,value.cvar,str(value.typeData.defVal))));step=(value.typeData.maxVal-value.typeData.minVal)/20.0;if key==K_LEFTARROW then current=current-step else if key==K_RIGHTARROW then current=current+step else if key==K_MOUSE1 then current=value.typeData.minVal+clamp((dc.cursorx-value.window.rect.x)/(value.window.rect.w-SCROLLBAR_SIZE),0.0,1.0)*(value.typeData.maxVal-value.typeData.minVal) else return false end if;current=clamp(current,value.typeData.minVal,value.typeData.maxVal);dc.cvars=pairSet(dc.cvars,value.cvar,str(current));emit(dc,"cvar","set",value.cvar,str(current),0,void);return true end function
+function Item_ListBox_MaxScroll(dc,value) count=numeric.trunc32(pairGet(dc.cvars,"feederCount:"+str(value.special),0));visible=1;if value.typeData.elementHeight>0 then visible=numeric.trunc32(value.window.rect.h/value.typeData.elementHeight) end if;return clamp(count-visible,0,count) end function
+function Item_ListBox_ThumbPosition(dc,value) max=Item_ListBox_MaxScroll(dc,value);if max<=0 then return numeric.trunc32(value.window.rect.y+SCROLLBAR_SIZE) end if;track=value.window.rect.h-3.0*SCROLLBAR_SIZE;return numeric.trunc32(value.window.rect.y+SCROLLBAR_SIZE+(value.typeData.startPos/max)*track) end function
+function Item_ListBox_ThumbDrawPosition(dc,value) return Item_ListBox_ThumbPosition(dc,value) end function
+function Item_ListBox_OverLB(dc,value,x,y)
+  if not Rect_ContainsPoint(value.window.rect,x,y) then return 0 end if
+  if value.typeData.horizontal then
+    if x<value.window.rect.x+SCROLLBAR_SIZE then return 1 end if
+    if x>value.window.rect.x+value.window.rect.w-SCROLLBAR_SIZE then return 2 end if
+  else
+    if y<value.window.rect.y+SCROLLBAR_SIZE then return 1 end if
+    if y>value.window.rect.y+value.window.rect.h-SCROLLBAR_SIZE then return 2 end if
+  end if
+  return 3
+end function
+function Item_ListBox_MouseEnter(dc,value,x,y) offset=y-value.window.rect.y;step=value.typeData.elementHeight;if value.typeData.horizontal then offset=x-value.window.rect.x;step=value.typeData.elementWidth end if;if step<=0 then return value.typeData.cursorPos end if;index=numeric.trunc32(offset/step)+value.typeData.startPos;value.typeData.cursorPos=clamp(index,0,Item_ListBox_MaxScroll(dc,value)+1);return value.typeData.cursorPos end function
+function Item_ListBox_HandleKey(dc,value,key,down,force) if not down then return false end if;max=Item_ListBox_MaxScroll(dc,value);if key==K_UPARROW or key==K_LEFTARROW then value.typeData.cursorPos=clamp(value.typeData.cursorPos-1,0,max);value.typeData.startPos=clamp(value.typeData.startPos-1,0,max) else if key==K_DOWNARROW or key==K_RIGHTARROW then value.typeData.cursorPos=clamp(value.typeData.cursorPos+1,0,max);value.typeData.startPos=clamp(value.typeData.startPos+1,0,max) else if key==K_MOUSE1 then Item_ListBox_MouseEnter(dc,value,dc.cursorx,dc.cursory) else return false end if;emit(dc,"feeder","selection",str(value.special),str(value.typeData.cursorPos),value.typeData.cursorPos,void);return true end function
+function textPart(text,start,count) if count<=0 then return "" end if;return strings.substr(text,start,count) end function
+function keyText(key) data=bytes(1,0);data[0]=key;return decode(data) end function
+function Item_TextField_HandleKey(dc,value,key) text=str(pairGet(dc.cvars,value.cvar,""));cursor=clamp(value.typeData.cursorPos,0,len(text));if key==K_BACKSPACE then if cursor>0 then text=textPart(text,0,cursor-1)+textPart(text,cursor,len(text)-cursor);cursor=cursor-1 end if else if key==K_LEFTARROW then cursor=clamp(cursor-1,0,len(text)) else if key==K_RIGHTARROW then cursor=clamp(cursor+1,0,len(text)) else if key>=32 and key<127 and len(text)<value.typeData.maxChars then text=textPart(text,0,cursor)+keyText(key)+textPart(text,cursor,len(text)-cursor);cursor=cursor+1 else return false end if;value.typeData.cursorPos=cursor;dc.cvars=pairSet(dc.cvars,value.cvar,text);emit(dc,"cvar","set",value.cvar,text,0,void);return true end function
+function Item_OwnerDraw_HandleKey(dc,value,key) emit(dc,"ownerdraw","handle-key",str(value.ownerDraw),str(key),key,void);return true end function
+function Item_Bind_HandleKey(dc,value,key,down) if not down then return false end if;if not dc.keyBindPending then dc.keyBindPending=true;dc.capture=value;return true end if;if key==K_ESCAPE then dc.keyBindPending=false;dc.capture=void;return true end if;dc.bindings=pairSet(dc.bindings,value.cvar,[key,-1]);emit(dc,"binding","set",value.cvar,str(key),key,void);dc.keyBindPending=false;dc.capture=void;return true end function
+function Item_HandleKey(dc,value,key,down) if value.type==ITEM_TYPE_LISTBOX then return Item_ListBox_HandleKey(dc,value,key,down,false) end if;if value.type==ITEM_TYPE_SLIDER then return Item_Slider_HandleKey(dc,value,key,down) end if;if value.type==ITEM_TYPE_YESNO then return Item_YesNo_HandleKey(dc,value,key) end if;if value.type==ITEM_TYPE_MULTI then return Item_Multi_HandleKey(dc,value,key) end if;if value.type==ITEM_TYPE_EDITFIELD or value.type==ITEM_TYPE_NUMERICFIELD then return Item_TextField_HandleKey(dc,value,key) end if;if value.type==ITEM_TYPE_BIND then return Item_Bind_HandleKey(dc,value,key,down) end if;if value.type==ITEM_TYPE_OWNERDRAW then return Item_OwnerDraw_HandleKey(dc,value,key) end if;if down and (key==K_ENTER or key==K_MOUSE1) then return Item_Action(dc,value) end if;return false end function
+function Item_StartCapture(dc,value,key) dc.capture=value;if value.type==ITEM_TYPE_LISTBOX then Item_ListBox_HandleKey(dc,value,key,true,true) else if value.type==ITEM_TYPE_SLIDER then Item_Slider_HandleKey(dc,value,key,true) end if;return true end function
+function Item_StopCapture(dc,value) dc.capture=void;return true end function
+function Scroll_ListBox_AutoFunc(dc,value) return Item_ListBox_HandleKey(dc,value,K_DOWNARROW,true,true) end function
+function Scroll_ListBox_ThumbFunc(dc,value) value.typeData.startPos=clamp(numeric.trunc32((dc.cursory-value.window.rect.y)/value.window.rect.h*Item_ListBox_MaxScroll(dc,value)),0,Item_ListBox_MaxScroll(dc,value));return true end function
+function Scroll_Slider_ThumbFunc(dc,value) return Item_Slider_HandleKey(dc,value,K_MOUSE1,true) end function
+
+// Painting uses typed renderer/feeder/ownerdraw actions.
+function Item_TextColor(dc,value) result=value.window.foreColor;if (value.window.flags&WINDOW_HASFOCUS)!=0 and value.parent is not void then result=value.parent.focusColor end if;if not Item_EnableShowViaCvar(dc,value,1) and value.parent is not void then result=value.parent.disableColor end if;result.a=result.a*value.window.alpha;return result end function
+function paintText(dc,value,text,kind) tint=Item_TextColor(dc,value);Item_SetTextExtents(value,text);emit(dc,"renderer",kind,text,str(tint.r)+","+str(tint.g)+","+str(tint.b)+","+str(tint.a),value.textStyle,[value.window.rect.x+value.textalignx,value.window.rect.y+value.textaligny,value.textscale]);return true end function
+function Item_Text_Paint(dc,value) return paintText(dc,value,value.text,"draw-text") end function
+function Item_Text_Wrapped_Paint(dc,value) return paintText(dc,value,value.text,"draw-wrapped-text") end function
+function Item_Text_AutoWrapped_Paint(dc,value) return paintText(dc,value,value.text,"draw-auto-wrapped-text") end function
+function Item_TextField_Paint(dc,value) return paintText(dc,value,str(pairGet(dc.cvars,value.cvar,"")),"draw-editfield") end function
+function Item_YesNo_Paint(dc,value) text="No";if numbers.atoi(str(pairGet(dc.cvars,value.cvar,"0")))!=0 then text="Yes" end if;return paintText(dc,value,text,"draw-yesno") end function
+function Item_Multi_Paint(dc,value) return paintText(dc,value,Item_Multi_Setting(dc,value),"draw-multi") end function
+function Item_Slider_Paint(dc,value) emit(dc,"renderer","draw-slider",value.cvar,str(Item_Slider_ThumbPosition(dc,value)),0,[value.window.rect.x,value.window.rect.y,value.window.rect.w,value.window.rect.h]);return true end function
+function Item_Bind_Paint(dc,value) return paintText(dc,value,BindingFromName(dc,value.cvar),"draw-bind") end function
+function Item_Model_Paint(dc,value) model=pairGet(value.properties,"asset_model",value.window.background);emit(dc,"renderer","draw-model",model,str(value.typeData.modelAngle),value.typeData.modelRotation,[value.window.rect.x,value.window.rect.y,value.window.rect.w,value.window.rect.h]);return true end function
+function Item_Image_Paint(dc,value) emit(dc,"renderer","draw-handle-pic",value.window.background,"item",0,[value.window.rect.x,value.window.rect.y,value.window.rect.w,value.window.rect.h]);return true end function
+function Item_ListBox_Paint(dc,value) emit(dc,"feeder","paint",str(value.special),str(value.typeData.startPos),value.typeData.cursorPos,[value.window.rect.x,value.window.rect.y,value.window.rect.w,value.window.rect.h]);return true end function
+function Item_OwnerDraw_Paint(dc,value) emit(dc,"ownerdraw","paint",str(value.ownerDraw),value.text,value.ownerDrawFlags,[value.window.rect.x,value.window.rect.y,value.window.rect.w,value.window.rect.h]);return true end function
+function moveComponent(current,target,step) if current==target then return [current,1] end if;if current<target then current=current+step;if current>=target then return [target,1] end if else current=current-step;if current<=target then return [target,1] end if end if;return [current,0] end function
+function Item_UpdateEffects(dc,value)
+  w=value.window
+  if (w.flags&WINDOW_ORBITING)!=0 and dc.realtime>w.nextTime then
+    w.nextTime=dc.realtime+w.offsetTime;halfW=w.rectClient.w/2.0;halfH=w.rectClient.h/2.0;rx=w.rectClient.x+halfW-w.rectEffects.x;ry=w.rectClient.y+halfH-w.rectEffects.y;angle=3.0*3.14159265358979323846/180.0;c=crt.cos(angle);s=crt.sin(angle);w.rectClient.x=(rx*c-ry*s)+w.rectEffects.x-halfW;w.rectClient.y=(rx*s+ry*c)+w.rectEffects.y-halfH;Item_UpdatePosition(value)
+  end if
+  if (w.flags&WINDOW_INTRANSITION)!=0 and dc.realtime>w.nextTime then
+    w.nextTime=dc.realtime+w.offsetTime;done=0;moved=moveComponent(w.rectClient.x,w.rectEffects.x,w.rectEffects2.x);w.rectClient.x=moved[0];done=done+moved[1];moved=moveComponent(w.rectClient.y,w.rectEffects.y,w.rectEffects2.y);w.rectClient.y=moved[0];done=done+moved[1];moved=moveComponent(w.rectClient.w,w.rectEffects.w,w.rectEffects2.w);w.rectClient.w=moved[0];done=done+moved[1];moved=moveComponent(w.rectClient.h,w.rectEffects.h,w.rectEffects2.h);w.rectClient.h=moved[0];done=done+moved[1];Item_UpdatePosition(value);if done==4 then w.flags=w.flags&(~WINDOW_INTRANSITION) end if
+  end if
+  return true
+end function
+function Item_Paint(dc,value) Item_UpdateEffects(dc,value);if not IsVisible(value.window.flags) or not Item_EnableShowViaCvar(dc,value,1) then return false end if;fadeAmount=0.0;fadeClamp=1.0;fadeCycle=0;if value.parent is not void then fadeAmount=value.parent.fadeAmount;fadeClamp=value.parent.fadeClamp;fadeCycle=value.parent.fadeCycle end if;Window_Paint(dc,value.window,fadeAmount,fadeClamp,fadeCycle);if value.type==ITEM_TYPE_TEXT or value.type==ITEM_TYPE_BUTTON then return Item_Text_Paint(dc,value) end if;if value.type==ITEM_TYPE_EDITFIELD or value.type==ITEM_TYPE_NUMERICFIELD then return Item_TextField_Paint(dc,value) end if;if value.type==ITEM_TYPE_YESNO then return Item_YesNo_Paint(dc,value) end if;if value.type==ITEM_TYPE_MULTI then return Item_Multi_Paint(dc,value) end if;if value.type==ITEM_TYPE_SLIDER then return Item_Slider_Paint(dc,value) end if;if value.type==ITEM_TYPE_BIND then return Item_Bind_Paint(dc,value) end if;if value.type==ITEM_TYPE_MODEL then return Item_Model_Paint(dc,value) end if;if value.type==ITEM_TYPE_LISTBOX then return Item_ListBox_Paint(dc,value) end if;if value.type==ITEM_TYPE_OWNERDRAW then return Item_OwnerDraw_Paint(dc,value) end if;return Item_Image_Paint(dc,value) end function
+function Menu_Paint(dc,value,forcePaint) if not forcePaint and not IsVisible(value.window.flags) then return false end if;Window_Paint(dc,value.window,value.fadeAmount,value.fadeClamp,value.fadeCycle);for each child in value.items Item_Paint(dc,child) end for;return true end function
+function Menu_PaintAll(dc) for each value in dc.menus Menu_Paint(dc,value,false) end for;return true end function
+function Menu_CacheContents(dc,value) Window_CacheContents(dc,value.window);for each child in value.items Item_CacheContents(dc,child) end for;return true end function
+function Item_CacheContents(dc,value) Window_CacheContents(dc,value.window);if value.focusSound!="" then emit(dc,"audio","register-sound",value.focusSound,"",0,void) end if;return true end function
+function Display_CacheAll(dc) for each value in dc.menus Menu_CacheContents(dc,value) end for;return true end function
+
+// Bindings and defaults.
+function bindingTable() return [["+scores",K_TAB],["+button2",K_ENTER],["+speed",K_SHIFT],["+forward",K_UPARROW],["+back",K_DOWNARROW],["+moveleft",44],["+moveright",46],["+moveup",K_SPACE],["+movedown",99],["+left",K_LEFTARROW],["+right",K_RIGHTARROW],["+strafe",K_ALT],["+lookup",K_PGDN],["+lookdown",K_DEL],["+mlook",47],["centerview",K_END],["+zoom",-1],["weapon 1",49],["weapon 2",50],["weapon 3",51],["weapon 4",52],["weapon 5",53],["weapon 6",54],["weapon 7",55],["weapon 8",56],["weapon 9",57],["weapon 10",48],["weapon 11",-1],["weapon 12",-1],["weapon 13",-1],["+attack",K_CTRL],["weapprev",91],["weapnext",93],["+button3",K_MOUSE3],["+button4",K_MOUSE4],["prevTeamMember",119],["nextTeamMember",114],["nextOrder",116],["confirmOrder",121],["denyOrder",110],["taskOffense",111],["taskDefense",100],["taskPatrol",112],["taskCamp",99],["taskFollow",102],["taskRetrieve",118],["taskEscort",101],["taskOwnFlag",105],["taskSuicide",107],["tauntKillInsult",K_F1],["tauntPraise",K_F2],["tauntTaunt",K_F3],["tauntDeathInsult",K_F4],["tauntGauntlet",K_F5],["scoresUp",K_KP_PGUP],["scoresDown",K_KP_PGDN],["messagemode",-1],["messagemode2",-1],["messagemode3",-1],["messagemode4",-1]] end function
+function BindingIDFromName(name) table=bindingTable();for i=0 to len(table)-1 if same(table[i][0],name) then return i end if end for;return -1 end function
+function BindingFromName(dc,name) key=pairGet(dc.bindings,name,-1);if typeof(key)=="array" then if len(key)==0 or key[0]<0 then return "???" end if;text="KEY"+str(key[0]);if len(key)>1 and key[1]>=0 then text=text+" or KEY"+str(key[1]) end if;return text end if;if key<0 then return "???" end if;return "KEY"+str(key) end function
+function Controls_GetKeyAssignment(dc,name) key=pairGet(dc.bindings,name,-1);if typeof(key)=="array" then return key end if;return [key,-1] end function
+function Controls_GetConfig(dc) return dc.bindings end function
+function Controls_SetDefaults(dc) dc.bindings=[];for each row in bindingTable() dc.bindings=pairSet(dc.bindings,row[0],[row[1],-1]) end for;return dc.bindings end function
+function Controls_SetConfig(dc,restart) for each row in dc.bindings keys=row[1];if typeof(keys)!="array" then keys=[keys,-1] end if;for each key in keys if key>=0 then emit(dc,"binding","set",row[0],str(key),key,void) end if end for end for;if restart then emit(dc,"command","execute","in_restart","append",0,void) end if;return true end function
+function Display_KeyBindPending(dc) return dc.keyBindPending end function
+
+// Keyboard, mouse and display capture.
+function Menu_SetPrevCursorItem(value) if len(value.items)==0 then return void end if;start=value.cursorItem;for count=0 to len(value.items)-1 value.cursorItem=value.cursorItem-1;if value.cursorItem<0 then value.cursorItem=len(value.items)-1 end if;candidate=value.items[value.cursorItem];if IsVisible(candidate.window.flags) and (candidate.window.flags&WINDOW_DECORATION)==0 then return candidate end if end for;value.cursorItem=start;return void end function
+function Menu_SetNextCursorItem(value) if len(value.items)==0 then return void end if;start=value.cursorItem;for count=0 to len(value.items)-1 value.cursorItem=value.cursorItem+1;if value.cursorItem>=len(value.items) then value.cursorItem=0 end if;candidate=value.items[value.cursorItem];if IsVisible(candidate.window.flags) and (candidate.window.flags&WINDOW_DECORATION)==0 then return candidate end if end for;value.cursorItem=start;return void end function
+function Menu_HandleKey(dc,value,key,down) if not down then return false end if;focused=Menu_GetFocusedItem(value);if focused is not void and Item_HandleKey(dc,focused,key,down) then return true end if;if key==K_TAB or key==K_DOWNARROW then nextItem=Menu_SetNextCursorItem(value);if nextItem is not void then Item_SetFocus(dc,nextItem,dc.cursorx,dc.cursory) end if;return true end if;if key==K_UPARROW then nextItem=Menu_SetPrevCursorItem(value);if nextItem is not void then Item_SetFocus(dc,nextItem,dc.cursorx,dc.cursory) end if;return true end if;if key==K_ESCAPE then if value.onESC!="" then dummy=item();dummy.parent=value;Item_RunScript(dc,dummy,value.onESC) else Menus_CloseByName(dc,value.window.name) end if;return true end if;return false end function
+function Menu_HandleMouseMove(dc,value,x,y)
+  hit=Menu_HitTest(value,x,y)
+  for each child in value.items
+    if child==hit then
+      if (child.window.flags&WINDOW_MOUSEOVER)==0 then Item_MouseEnter(dc,child,x,y) end if
+    else
+      if (child.window.flags&WINDOW_MOUSEOVER)!=0 then Item_MouseLeave(dc,child) end if
+    end if
+  end for
+  if hit is not void then Item_SetFocus(dc,hit,x,y) end if
+  return hit is not void
+end function
+function Menus_HandleOOBClick(dc,value,key,down) if value.outOfBounds and down then Menus_CloseByName(dc,value.window.name);return true end if;return false end function
+function Display_VisibleMenuCount(dc) count=0;for each value in dc.menus if IsVisible(value.window.flags) then count=count+1 end if end for;return count end function
+function Display_CaptureItem(dc,x,y) i=len(dc.menus)-1;while i>=0 value=dc.menus[i];if IsVisible(value.window.flags) then hit=Menu_HitTest(value,x,y);if hit is not void then return hit end if end if;i=i-1 end while;return void end function
+function Display_MouseMove(dc,p,x,y) dc.cursorx=x;dc.cursory=y;if dc.capture is not void then if dc.capture.type==ITEM_TYPE_SLIDER then Scroll_Slider_ThumbFunc(dc,dc.capture) else if dc.capture.type==ITEM_TYPE_LISTBOX then Scroll_ListBox_ThumbFunc(dc,dc.capture) end if;return true end if;focused=Menu_GetFocused(dc);if focused is not void then return Menu_HandleMouseMove(dc,focused,x,y) end if;return false end function
+function Display_CursorType(dc,x,y) hit=Display_CaptureItem(dc,x,y);if hit is void then return CURSOR_ARROW end if;if hit.type==ITEM_TYPE_SLIDER or hit.type==ITEM_TYPE_LISTBOX then return CURSOR_SIZER end if;return CURSOR_ARROW end function
+function Display_HandleKey(dc,key,down,x,y) dc.cursorx=x;dc.cursory=y;focused=Menu_GetFocused(dc);if focused is void then return false end if;if not Rect_ContainsPoint(focused.window.rect,x,y) and Menus_HandleOOBClick(dc,focused,key,down) then return true end if;return Menu_HandleKey(dc,focused,key,down) end function
+function Menu_ScrollFeeder(dc,value,feeder,down) key=K_UPARROW;if down then key=K_DOWNARROW end if;for each child in value.items if child.type==ITEM_TYPE_LISTBOX and child.special==feeder then return Item_ListBox_HandleKey(dc,child,key,true,true) end if end for;return false end function
+function Menu_SetFeederSelection(dc,value,feeder,index,name) for each child in value.items if child.type==ITEM_TYPE_LISTBOX and child.special==feeder and (name=="" or same(child.window.name,name)) then child.typeData.cursorPos=index;emit(dc,"feeder","selection",str(feeder),str(index),index,void);return true end if end for;return false end function
+
+// Keyword hash and declarative parsers.
+function KeywordHash_Key(keyword) hash=0;for i=0 to len(bytes(keyword))-1 c=bytes(keyword)[i];if c>=65 and c<=90 then c=c+32 end if;hash=hash+c*(119+i) end for;return (hash^(hash>>10)^(hash>>20))&511 end function
+function KeywordHash_Add(table,key) return pairSet(table,key[0],key[1]) end function
+function KeywordHash_Find(table,keyword) return pairGet(table,keyword,void) end function
+function Item_SetupKeywordHash() return itemKeywords() end function
+function Menu_SetupKeywordHash() return menuKeywords() end function
+function putItem(value,key,data) value.properties=pairSet(value.properties,key,data);if key=="name" then value.window.name=data else if key=="group" then value.window.group=data else if key=="text" then value.text=data else if key=="type" then value.type=data else if key=="style" then value.window.style=data else if key=="border" then value.window.border=data else if key=="bordersize" then value.window.borderSize=data else if key=="visible" and data!=0 then value.window.flags=value.window.flags|WINDOW_VISIBLE else if key=="decoration" then value.window.flags=value.window.flags|WINDOW_DECORATION else if key=="ownerdraw" then value.ownerDraw=data else if key=="ownerdrawflag" then value.ownerDrawFlags=value.ownerDrawFlags|data else if key=="align" then value.alignment=data else if key=="textalign" then value.textalignment=data else if key=="textalignx" then value.textalignx=data else if key=="textaligny" then value.textaligny=data else if key=="textscale" then value.textscale=data else if key=="textstyle" then value.textStyle=data else if key=="special" then value.special=data else if key=="cvar" then value.cvar=data else if key=="cvartest" then value.cvarTest=data else if key=="enablecvar" then value.enableCvar=data else if key=="action" then value.action=data else if key=="onfocus" then value.onFocus=data else if key=="leavefocus" then value.leaveFocus=data else if key=="mouseenter" then value.mouseEnter=data else if key=="mouseexit" then value.mouseExit=data else if key=="mouseentertext" then value.mouseEnterText=data else if key=="mouseexittext" then value.mouseExitText=data else if key=="focussound" then value.focusSound=data else if key=="background" then value.window.background=data end if;return true end function
+function itemParseKind(value,handle,key,kind)
+  if kind=="flag" then return putItem(value,key,1) end if
+  if kind=="asset-model" then return ItemParse_asset_model(value,handle) end if
+  if kind=="model-origin" then return ItemParse_model_origin(value,handle) end if
+  if kind=="model-fovx" then return ItemParse_model_fovx(value,handle) end if
+  if kind=="model-fovy" then return ItemParse_model_fovy(value,handle) end if
+  if kind=="model-rotation" then return ItemParse_model_rotation(value,handle) end if
+  if kind=="model-angle" then return ItemParse_model_angle(value,handle) end if
+  if kind=="horizontal" then return ItemParse_horizontalscroll(value,handle) end if
+  if kind=="element-width" then return ItemParse_elementwidth(value,handle) end if
+  if kind=="element-height" then return ItemParse_elementheight(value,handle) end if
+  if kind=="feeder" then return ItemParse_feeder(value,handle) end if
+  if kind=="columns" then return ItemParse_columns(value,handle) end if
+  if kind=="double-click" then return ItemParse_doubleClick(value,handle) end if
+  if kind=="max-chars" then return ItemParse_maxChars(value,handle) end if
+  if kind=="max-paint-chars" then return ItemParse_maxPaintChars(value,handle) end if
+  if kind=="cvar-float" then return ItemParse_cvarFloat(value,handle) end if
+  if kind=="cvar-str-list" then return ItemParse_cvarStrList(value,handle) end if
+  if kind=="cvar-float-list" then return ItemParse_cvarFloatList(value,handle) end if
+  if kind=="color-range" then return ItemParse_addColorRange(value,handle) end if
+  if kind=="ownerdraw-flag" then return ItemParse_ownerdrawFlag(value,handle) end if
+  if kind=="enable-cvar" then return ItemParse_enableCvar(value,handle) end if
+  if kind=="disable-cvar" then return ItemParse_disableCvar(value,handle) end if
+  if kind=="show-cvar" then return ItemParse_showCvar(value,handle) end if
+  if kind=="hide-cvar" then return ItemParse_hideCvar(value,handle) end if
+  data=void;if kind=="float" then data=PC_Float_Parse(handle) else if kind=="int" then data=PC_Int_Parse(handle) else if kind=="string" then data=PC_String_Parse(handle) else if kind=="script" then data=PC_Script_Parse(handle) else if kind=="rect" then data=PC_Rect_Parse(handle) else if kind=="color" then data=PC_Color_Parse(handle) else data=PC_String_Parse(handle) end if
+  if data is void then return PC_SourceError(handle,"expected "+kind+" for "+key) end if
+  if key=="rect" then value.window.rectClient=data;value.window.rect=data else if key=="backcolor" then value.window.backColor=data else if key=="forecolor" then value.window.foreColor=data;value.window.flags=value.window.flags|WINDOW_FORECOLORSET else if key=="bordercolor" then value.window.borderColor=data else if key=="outlinecolor" then value.window.outlineColor=data else putItem(value,key,data) end if;return true
+end function
+function itemKeywords() return [["name","string"],["text","string"],["group","string"],["focusSound","string"],["asset_model","asset-model"],["asset_shader","string"],["model_origin","model-origin"],["model_fovx","model-fovx"],["model_fovy","model-fovy"],["model_rotation","model-rotation"],["model_angle","model-angle"],["rect","rect"],["style","int"],["decoration","flag"],["notselectable","flag"],["wrapped","flag"],["autowrapped","flag"],["horizontalscroll","horizontal"],["type","int"],["elementwidth","element-width"],["elementheight","element-height"],["feeder","feeder"],["elementtype","int"],["columns","columns"],["border","int"],["bordersize","float"],["visible","int"],["ownerdraw","int"],["align","int"],["textalign","int"],["textalignx","float"],["textaligny","float"],["textscale","float"],["textstyle","int"],["backcolor","color"],["forecolor","color"],["bordercolor","color"],["outlinecolor","color"],["background","string"],["cinematic","string"],["doubleClick","double-click"],["onFocus","script"],["leaveFocus","script"],["mouseEnter","script"],["mouseExit","script"],["mouseEnterText","script"],["mouseExitText","script"],["action","script"],["special","float"],["cvarTest","string"],["cvar","string"],["maxChars","max-chars"],["maxPaintChars","max-paint-chars"],["cvarFloat","cvar-float"],["cvarStrList","cvar-str-list"],["cvarFloatList","cvar-float-list"],["addColorRange","color-range"],["ownerdrawFlag","ownerdraw-flag"],["enableCvar","enable-cvar"],["disableCvar","disable-cvar"],["showCvar","show-cvar"],["hideCvar","hide-cvar"]] end function
+function Item_Parse(handle,value) if next(handle)!="{" then return PC_SourceError(handle,"expected { after itemDef") end if;keywords=itemKeywords();while true keyword=next(handle);if keyword=="" then return PC_SourceError(handle,"unexpected EOF in itemDef") end if;if keyword=="}" then Item_ValidateTypeData(value);return true end if;kind=KeywordHash_Find(keywords,keyword);if kind is void then PC_SourceWarning(handle,"unknown item keyword "+keyword) else if not itemParseKind(value,handle,strings.toLowerAscii(keyword),kind) then return false end if end while end function
+function putMenu(value,key,data) value.properties=pairSet(value.properties,key,data);if key=="name" then value.window.name=data else if key=="fullscreen" then value.fullScreen=data!=0 else if key=="style" then value.window.style=data else if key=="visible" and data!=0 then value.window.flags=value.window.flags|WINDOW_VISIBLE else if key=="onopen" then value.onOpen=data else if key=="onclose" then value.onClose=data else if key=="onesc" then value.onESC=data else if key=="soundloop" then value.soundLoop=data else if key=="fadeclamp" then value.fadeClamp=data else if key=="fadeamount" then value.fadeAmount=data else if key=="fadecycle" then value.fadeCycle=data else if key=="ownerdraw" then value.ownerDraw=data else if key=="ownerdrawflag" then value.ownerDrawFlags=value.ownerDrawFlags|data else if key=="popup" then value.popup=true else if key=="outofbounds" then value.outOfBounds=true else if key=="background" then value.window.background=data else if key=="font" then value.font=data end if;return true end function
+function menuParseKind(value,handle,key,kind) if kind=="flag" then return putMenu(value,key,1) end if;data=void;if kind=="float" then data=PC_Float_Parse(handle) else if kind=="int" then data=PC_Int_Parse(handle) else if kind=="string" then data=PC_String_Parse(handle) else if kind=="script" then data=PC_Script_Parse(handle) else if kind=="rect" then data=PC_Rect_Parse(handle) else if kind=="color" then data=PC_Color_Parse(handle) else data=PC_String_Parse(handle) end if;if data is void then return PC_SourceError(handle,"expected "+kind+" for "+key) end if;if key=="rect" then value.window.rect=data else if key=="backcolor" then value.window.backColor=data else if key=="forecolor" then value.window.foreColor=data else if key=="bordercolor" then value.window.borderColor=data else if key=="focuscolor" then value.focusColor=data else if key=="disablecolor" then value.disableColor=data else if key=="outlinecolor" then value.window.outlineColor=data else if key=="border" then value.window.border=data else if key=="bordersize" then value.window.borderSize=data else putMenu(value,key,data) end if;return true end function
+function menuKeywords() return [["font","string"],["name","string"],["fullscreen","int"],["rect","rect"],["style","int"],["visible","int"],["onOpen","script"],["onClose","script"],["onESC","script"],["border","int"],["borderSize","float"],["backcolor","color"],["forecolor","color"],["bordercolor","color"],["focuscolor","color"],["disablecolor","color"],["outlinecolor","color"],["background","string"],["cinematic","string"],["ownerdrawFlag","int"],["ownerdraw","int"],["popup","flag"],["outOfBounds","flag"],["soundLoop","string"],["fadeClamp","float"],["fadeAmount","float"],["fadeCycle","int"]] end function
+function Menu_Parse(handle,value) if next(handle)!="{" then return PC_SourceError(handle,"expected { after menuDef") end if;keywords=menuKeywords();while true keyword=next(handle);if keyword=="" then return PC_SourceError(handle,"unexpected EOF in menuDef") end if;if keyword=="}" then Menu_PostParse(value);return true end if;if same(keyword,"itemDef") then child=item();child.parent=value;if not Item_Parse(handle,child) then return false end if;if len(value.items)<MAX_MENUITEMS then value.items=value.items+[child] end if else kind=KeywordHash_Find(keywords,keyword);if kind is void then PC_SourceWarning(handle,"unknown menu keyword "+keyword) else if not menuParseKind(value,handle,strings.toLowerAscii(keyword),kind) then return false end if end if end while end function
+function Menu_New(dc,handle) if len(dc.menus)>=MAX_MENUS then return false end if;value=menu();if not Menu_Parse(handle,value) then return false end if;dc.menus=dc.menus+[value];return true end function
+
+// Parse-entry wrappers retain the original public symbol surface.
+function parseItem(value,handle,key,kind) return itemParseKind(value,handle,key,kind) end function
+function parseMenu(value,handle,key,kind) return menuParseKind(value,handle,key,kind) end function
+
+function ItemParse_name(value,handle) return parseItem(value,handle,"name","string") end function
+function ItemParse_focusSound(value,handle) return parseItem(value,handle,"focussound","string") end function
+function ItemParse_text(value,handle) return parseItem(value,handle,"text","string") end function
+function ItemParse_group(value,handle) return parseItem(value,handle,"group","string") end function
+function ItemParse_asset_model(value,handle) path=PC_String_Parse(handle);if path is void then return false end if;return putItem(value,"asset_model",path) end function
+function ItemParse_asset_shader(value,handle) return parseItem(value,handle,"background","string") end function
+function ItemParse_model_origin(value,handle) origin=[];for i=0 to 2 component=PC_Float_Parse(handle);if component is void then return false end if;origin=origin+[component] end for;value.typeData.modelOrigin=origin;return true end function
+function ItemParse_model_fovx(value,handle) result=PC_Float_Parse(handle);if result is void then return false end if;value.typeData.modelFovX=result;return true end function
+function ItemParse_model_fovy(value,handle) result=PC_Float_Parse(handle);if result is void then return false end if;value.typeData.modelFovY=result;return true end function
+function ItemParse_model_rotation(value,handle) result=PC_Int_Parse(handle);if result is void then return false end if;value.typeData.modelRotation=result;return true end function
+function ItemParse_model_angle(value,handle) result=PC_Float_Parse(handle);if result is void then return false end if;value.typeData.modelAngle=result;return true end function
+function ItemParse_rect(value,handle) return parseItem(value,handle,"rect","rect") end function
+function ItemParse_style(value,handle) return parseItem(value,handle,"style","int") end function
+function ItemParse_decoration(value,handle) return parseItem(value,handle,"decoration","flag") end function
+function ItemParse_notselectable(value,handle) value.typeData.notselectable=true;return putItem(value,"notselectable",1) end function
+function ItemParse_wrapped(value,handle) return putItem(value,"wrapped",1) end function
+function ItemParse_autowrapped(value,handle) return putItem(value,"autowrapped",1) end function
+function ItemParse_horizontalscroll(value,handle) value.typeData.horizontal=true;value.window.flags=value.window.flags|WINDOW_HORIZONTAL;return true end function
+function ItemParse_type(value,handle) return parseItem(value,handle,"type","int") end function
+function ItemParse_elementwidth(value,handle) result=PC_Float_Parse(handle);if result is void then return false end if;value.typeData.elementWidth=result;return true end function
+function ItemParse_elementheight(value,handle) result=PC_Float_Parse(handle);if result is void then return false end if;value.typeData.elementHeight=result;return true end function
+function ItemParse_feeder(value,handle) result=PC_Float_Parse(handle);if result is void then return false end if;value.typeData.feeder=result;value.special=result;return true end function
+function ItemParse_elementtype(value,handle) return parseItem(value,handle,"elementtype","int") end function
+function ItemParse_columns(value,handle) count=PC_Int_Parse(handle);if count is void then return false end if;value.typeData.columns=[];for i=0 to count-1 position=PC_Int_Parse(handle);width=PC_Int_Parse(handle);maxChars=PC_Int_Parse(handle);if position is void or width is void or maxChars is void then return false end if;value.typeData.columns=value.typeData.columns+[[position,width,maxChars]] end for;return true end function
+function ItemParse_border(value,handle) return parseItem(value,handle,"border","int") end function
+function ItemParse_bordersize(value,handle) return parseItem(value,handle,"bordersize","float") end function
+function ItemParse_visible(value,handle) return parseItem(value,handle,"visible","int") end function
+function ItemParse_ownerdraw(value,handle) return parseItem(value,handle,"ownerdraw","int") end function
+function ItemParse_align(value,handle) return parseItem(value,handle,"align","int") end function
+function ItemParse_textalign(value,handle) return parseItem(value,handle,"textalign","int") end function
+function ItemParse_textalignx(value,handle) return parseItem(value,handle,"textalignx","float") end function
+function ItemParse_textaligny(value,handle) return parseItem(value,handle,"textaligny","float") end function
+function ItemParse_textscale(value,handle) return parseItem(value,handle,"textscale","float") end function
+function ItemParse_textstyle(value,handle) return parseItem(value,handle,"textstyle","int") end function
+function ItemParse_backcolor(value,handle) return parseItem(value,handle,"backcolor","color") end function
+function ItemParse_forecolor(value,handle) return parseItem(value,handle,"forecolor","color") end function
+function ItemParse_bordercolor(value,handle) return parseItem(value,handle,"bordercolor","color") end function
+function ItemParse_outlinecolor(value,handle) return parseItem(value,handle,"outlinecolor","color") end function
+function ItemParse_background(value,handle) return parseItem(value,handle,"background","string") end function
+function ItemParse_cinematic(value,handle) return parseItem(value,handle,"cinematic","string") end function
+function ItemParse_doubleClick(value,handle) result=PC_Script_Parse(handle);if result is void then return false end if;value.typeData.doubleClick=result;return true end function
+function ItemParse_onFocus(value,handle) return parseItem(value,handle,"onfocus","script") end function
+function ItemParse_leaveFocus(value,handle) return parseItem(value,handle,"leavefocus","script") end function
+function ItemParse_mouseEnter(value,handle) return parseItem(value,handle,"mouseenter","script") end function
+function ItemParse_mouseExit(value,handle) return parseItem(value,handle,"mouseexit","script") end function
+function ItemParse_mouseEnterText(value,handle) return parseItem(value,handle,"mouseentertext","script") end function
+function ItemParse_mouseExitText(value,handle) return parseItem(value,handle,"mouseexittext","script") end function
+function ItemParse_action(value,handle) return parseItem(value,handle,"action","script") end function
+function ItemParse_special(value,handle) return parseItem(value,handle,"special","float") end function
+function ItemParse_cvarTest(value,handle) return parseItem(value,handle,"cvartest","string") end function
+function ItemParse_cvar(value,handle) return parseItem(value,handle,"cvar","string") end function
+function ItemParse_maxChars(value,handle) result=PC_Int_Parse(handle);if result is void then return false end if;value.typeData.maxChars=clamp(result,0,MAX_EDITFIELD);return true end function
+function ItemParse_maxPaintChars(value,handle) result=PC_Int_Parse(handle);if result is void then return false end if;value.typeData.maxPaintChars=clamp(result,0,MAX_EDITFIELD);return true end function
+function ItemParse_cvarFloat(value,handle) value.cvar=PC_String_Parse(handle);value.typeData.defVal=PC_Float_Parse(handle);value.typeData.minVal=PC_Float_Parse(handle);value.typeData.maxVal=PC_Float_Parse(handle);return value.cvar is not void and value.typeData.defVal is not void and value.typeData.minVal is not void and value.typeData.maxVal is not void end function
+function parseList(value,handle,floatValues) if next(handle)!="{" then return false end if;value.typeData.settings=[];value.typeData.values=[];while true label=next(handle);if label=="" then return false end if;if label=="}" then return true end if;raw=next(handle);if raw=="" then return false end if;value.typeData.settings=value.typeData.settings+[label];if floatValues then value.typeData.values=value.typeData.values+[numbers.atof(raw)] else value.typeData.values=value.typeData.values+[raw] end if end while end function
+function ItemParse_cvarStrList(value,handle) return parseList(value,handle,false) end function
+function ItemParse_cvarFloatList(value,handle) return parseList(value,handle,true) end function
+function ItemParse_addColorRange(value,handle) low=PC_Float_Parse(handle);high=PC_Float_Parse(handle);tint=PC_Color_Parse(handle);if low is void or high is void or tint is void then return false end if;value.colorRanges=value.colorRanges+[[low,high,tint]];return true end function
+function ItemParse_ownerdrawFlag(value,handle) parsed=PC_Int_Parse(handle);if parsed is void then return false end if;value.ownerDrawFlags=value.ownerDrawFlags|parsed;return true end function
+function parseCvarGate(value,handle,key,flag) text=PC_Script_Parse(handle);if text is void then return false end if;value.enableCvar=text;value.cvarFlags=value.cvarFlags|flag;return putItem(value,key,text) end function
+function ItemParse_enableCvar(value,handle) return parseCvarGate(value,handle,"enablecvar",1) end function
+function ItemParse_disableCvar(value,handle) return parseCvarGate(value,handle,"disablecvar",2) end function
+function ItemParse_showCvar(value,handle) return parseCvarGate(value,handle,"showcvar",4) end function
+function ItemParse_hideCvar(value,handle) return parseCvarGate(value,handle,"hidecvar",8) end function
+
+function MenuParse_font(value,handle) return parseMenu(value,handle,"font","string") end function
+function MenuParse_name(value,handle) return parseMenu(value,handle,"name","string") end function
+function MenuParse_fullscreen(value,handle) return parseMenu(value,handle,"fullscreen","int") end function
+function MenuParse_rect(value,handle) return parseMenu(value,handle,"rect","rect") end function
+function MenuParse_style(value,handle) return parseMenu(value,handle,"style","int") end function
+function MenuParse_visible(value,handle) return parseMenu(value,handle,"visible","int") end function
+function MenuParse_onOpen(value,handle) return parseMenu(value,handle,"onopen","script") end function
+function MenuParse_onClose(value,handle) return parseMenu(value,handle,"onclose","script") end function
+function MenuParse_onESC(value,handle) return parseMenu(value,handle,"onesc","script") end function
+function MenuParse_border(value,handle) return parseMenu(value,handle,"border","int") end function
+function MenuParse_borderSize(value,handle) return parseMenu(value,handle,"bordersize","float") end function
+function MenuParse_backcolor(value,handle) return parseMenu(value,handle,"backcolor","color") end function
+function MenuParse_forecolor(value,handle) return parseMenu(value,handle,"forecolor","color") end function
+function MenuParse_bordercolor(value,handle) return parseMenu(value,handle,"bordercolor","color") end function
+function MenuParse_focuscolor(value,handle) return parseMenu(value,handle,"focuscolor","color") end function
+function MenuParse_disablecolor(value,handle) return parseMenu(value,handle,"disablecolor","color") end function
+function MenuParse_outlinecolor(value,handle) return parseMenu(value,handle,"outlinecolor","color") end function
+function MenuParse_background(value,handle) return parseMenu(value,handle,"background","string") end function
+function MenuParse_cinematic(value,handle) return parseMenu(value,handle,"cinematic","string") end function
+function MenuParse_ownerdrawFlag(value,handle) parsed=PC_Int_Parse(handle);if parsed is void then return false end if;value.ownerDrawFlags=value.ownerDrawFlags|parsed;return true end function
+function MenuParse_ownerdraw(value,handle) return parseMenu(value,handle,"ownerdraw","int") end function
+function MenuParse_popup(value,handle) return parseMenu(value,handle,"popup","flag") end function
+function MenuParse_outOfBounds(value,handle) return parseMenu(value,handle,"outofbounds","flag") end function
+function MenuParse_soundLoop(value,handle) return parseMenu(value,handle,"soundloop","string") end function
+function MenuParse_fadeClamp(value,handle) return parseMenu(value,handle,"fadeclamp","float") end function
+function MenuParse_fadeAmount(value,handle) return parseMenu(value,handle,"fadeamount","float") end function
+function MenuParse_fadeCycle(value,handle) return parseMenu(value,handle,"fadecycle","int") end function
+function MenuParse_itemDef(value,handle) child=item();child.parent=value;if not Item_Parse(handle,child) then return false end if;if len(value.items)>=MAX_MENUITEMS then return false end if;value.items=value.items+[child];return true end function

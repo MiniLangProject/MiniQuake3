@@ -202,10 +202,189 @@
         "AAS_ShowReachability",
         "AAS_ShowReachableAreas"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "AAS_ClearShownDebugLines",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_ClearShownDebugLines",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_ClearShownPolygons",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_ClearShownPolygons",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_DebugLine",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_DebugLine",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_DrawArrow",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_DrawArrow",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_DrawCross",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_DrawCross",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_DrawPermanentCross",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_DrawPermanentCross",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_DrawPlaneCross",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_DrawPlaneCross",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_FloodAreas",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_FloodAreas",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_FloodAreas_r",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_FloodAreas_r",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_PermanentLine",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_PermanentLine",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_PrintTravelType",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_PrintTravelType",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_ShowArea",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_ShowArea",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_ShowAreaPolygons",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_ShowAreaPolygons",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_ShowBoundingBox",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_ShowBoundingBox",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_ShowFace",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_ShowFace",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_ShowFacePolygon",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_ShowFacePolygon",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_ShowPolygon",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_ShowPolygon",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_ShowReachability",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_ShowReachability",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        },
+        {
+          "original": "AAS_ShowReachableAreas",
+          "target_files": [
+            "src/mq3/botlib/aas_debug.ml"
+          ],
+          "target_symbol": "mq3.botlib.aas_debug.AAS_ShowReachableAreas",
+          "status": "tested_exact",
+          "scope": "debug pools, geometry, AAS topology visualization and flood"
+        }
+      ],
+      "target": [
+        "src/mq3/botlib/aas_debug.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_aas_debug.py",
+        "tests/reference/aas_debug_oracle.c",
+        "tests/aas_debug_oracle.ml",
+        "tests/aas_debug_contracts.ml"
+      ]
     },
     {
       "source": "code/botlib/be_aas_debug.h",
@@ -11780,10 +11959,388 @@
         "FindEnemyByName",
         "NumPlayersOnSameTeam"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "BotAddressedToBot",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotAddressedToBot",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotGPSToPosition",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotGPSToPosition",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotGetItemTeamGoal",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotGetItemTeamGoal",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotGetMessageTeamGoal",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotGetMessageTeamGoal",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotGetPatrolWaypoints",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotGetPatrolWaypoints",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotGetTime",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotGetTime",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatchMessage",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatchMessage",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_AttackEnemyBase",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_AttackEnemyBase",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_CTF",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_CTF",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_Camp",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_Camp",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_CheckPoint",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_CheckPoint",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_DefendKeyArea",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_DefendKeyArea",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_Dismiss",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_Dismiss",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_EnterGame",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_EnterGame",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_FormationSpace",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_FormationSpace",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_GetFlag",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_GetFlag",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_GetItem",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_GetItem",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_Harvest",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_Harvest",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_HelpAccompany",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_HelpAccompany",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_JoinSubteam",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_JoinSubteam",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_Kill",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_Kill",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_LeadTheWay",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_LeadTheWay",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_LeaveSubteam",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_LeaveSubteam",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_NewLeader",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_NewLeader",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_Patrol",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_Patrol",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_ReturnFlag",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_ReturnFlag",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_RushBase",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_RushBase",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_StartTeamLeaderShip",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_StartTeamLeaderShip",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_StopTeamLeaderShip",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_StopTeamLeaderShip",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_Suicide",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_Suicide",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_TaskPreference",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_TaskPreference",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_WhatAreYouDoing",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_WhatAreYouDoing",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_WhatIsMyCommand",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_WhatIsMyCommand",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_WhereAreYou",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_WhereAreYou",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_WhichTeam",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_WhichTeam",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotMatch_WhoIsTeamLeader",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotMatch_WhoIsTeamLeader",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotNearestVisibleItem",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotNearestVisibleItem",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "BotPrintTeamGoal",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.BotPrintTeamGoal",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "FindClientByName",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.FindClientByName",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "FindEnemyByName",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.FindEnemyByName",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        },
+        {
+          "original": "NumPlayersOnSameTeam",
+          "target_files": [
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "target_symbol": "mq3.game.bot_command_matches.NumPlayersOnSameTeam",
+          "status": "tested_exact",
+          "scope": "bot command matching, team orders and objective state"
+        }
+      ],
+      "target": [
+        "src/mq3/game/bot_command_matches.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_bot_command_matches.py",
+        "tests/reference/bot_command_matches_oracle.c",
+        "tests/bot_command_matches_oracle.ml",
+        "tests/bot_command_matches_contracts.ml",
+        "tests/bot_command_matches_retail_probe.ml"
+      ]
     },
     {
       "source": "code/game/ai_cmd.h",
@@ -34140,10 +34697,1485 @@
         "stristr",
         "vmMain"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "Alias_Parse",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.Alias_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "ArenaServers_MaxPing",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.ArenaServers_MaxPing",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "AssetCache",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.AssetCache",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "Asset_Parse",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.Asset_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "Character_Parse",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.Character_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "Font_Report",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.Font_Report",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "GameType_Parse",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.GameType_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "GetMenuBuffer",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.GetMenuBuffer",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "Load_Menu",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.Load_Menu",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "MapList_Parse",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.MapList_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "Team_Parse",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.Team_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "Text_Height",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.Text_Height",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "Text_Paint",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.Text_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "Text_PaintCenter",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.Text_PaintCenter",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "Text_PaintCenter_AutoWrapped",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.Text_PaintCenter_AutoWrapped",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "Text_PaintChar",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.Text_PaintChar",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "Text_PaintWithCursor",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.Text_PaintWithCursor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "Text_Paint_Limit",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.Text_Paint_Limit",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "Text_Width",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.Text_Width",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_AIFromName",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_AIFromName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_AIIndex",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_AIIndex",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_AIIndexFromName",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_AIIndexFromName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_BinaryServerInsertion",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_BinaryServerInsertion",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_BotName_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_BotName_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_BotSkill_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_BotSkill_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_BuildFindPlayerList",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_BuildFindPlayerList",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_BuildPlayerList",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_BuildPlayerList",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_BuildQ3Model_List",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_BuildQ3Model_List",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_BuildServerDisplayList",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_BuildServerDisplayList",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_BuildServerStatus",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_BuildServerStatus",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_ClanName_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_ClanName_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_Crosshair_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_Crosshair_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DisplayDownloadInfo",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DisplayDownloadInfo",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DoServerRefresh",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DoServerRefresh",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawAllMapsSelection",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawAllMapsSelection",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawBotName",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawBotName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawBotSkill",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawBotSkill",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawCenteredPic",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawCenteredPic",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawCinematic",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawCinematic",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawClanCinematic",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawClanCinematic",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawClanLogo",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawClanLogo",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawClanName",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawClanName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawConnectScreen",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawConnectScreen",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawCrosshair",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawCrosshair",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawEffects",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawEffects",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawGLInfo",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawGLInfo",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawGameType",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawGameType",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawHandicap",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawHandicap",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawJoinGameType",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawJoinGameType",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawKeyBindStatus",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawKeyBindStatus",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawMapCinematic",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawMapCinematic",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawMapPreview",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawMapPreview",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawMapTimeToBeat",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawMapTimeToBeat",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawNetFilter",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawNetFilter",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawNetGameType",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawNetGameType",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawNetMapCinematic",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawNetMapCinematic",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawNetMapPreview",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawNetMapPreview",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawNetSource",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawNetSource",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawOpponent",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawOpponent",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawOpponentLogo",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawOpponentLogo",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawOpponentLogoMetal",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawOpponentLogoMetal",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawOpponentLogoName",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawOpponentLogoName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawOpponentName",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawOpponentName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawPlayerLogo",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawPlayerLogo",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawPlayerLogoMetal",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawPlayerLogoMetal",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawPlayerLogoName",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawPlayerLogoName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawPlayerModel",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawPlayerModel",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawPreviewCinematic",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawPreviewCinematic",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawRedBlue",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawRedBlue",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawSelectedPlayer",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawSelectedPlayer",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawServerMOTD",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawServerMOTD",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawServerRefreshDate",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawServerRefreshDate",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawSkill",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawSkill",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawTeamMember",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawTeamMember",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawTeamName",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawTeamName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawTier",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawTier",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawTierGameType",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawTierGameType",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawTierMap",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawTierMap",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_DrawTierMapName",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_DrawTierMapName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_Effects_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_Effects_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_EnglishMapName",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_EnglishMapName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_FeederCount",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_FeederCount",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_FeederItemImage",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_FeederItemImage",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_FeederItemText",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_FeederItemText",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_FeederSelection",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_FeederSelection",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_GameType_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_GameType_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_GetIndexFromSelection",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_GetIndexFromSelection",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_GetServerStatusInfo",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_GetServerStatusInfo",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_GetTeamColor",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_GetTeamColor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_GetValue",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_GetValue",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_Handicap_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_Handicap_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_HeadCountByTeam",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_HeadCountByTeam",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_InsertServerIntoDisplayList",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_InsertServerIntoDisplayList",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_JoinGameType_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_JoinGameType_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_Load",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_Load",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_LoadDemos",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_LoadDemos",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_LoadMenus",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_LoadMenus",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_LoadMods",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_LoadMods",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_LoadMovies",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_LoadMovies",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_LoadNonIngame",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_LoadNonIngame",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_LoadTeams",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_LoadTeams",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_MapCountByGameType",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_MapCountByGameType",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_NetFilter_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_NetFilter_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_NetGameType_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_NetGameType_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_NetSource_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_NetSource_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_NextOpponent",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_NextOpponent",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_OpponentLeaderHead",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_OpponentLeaderHead",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_OpponentLeaderModel",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_OpponentLeaderModel",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_OpponentLeaderName",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_OpponentLeaderName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_OpponentName_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_OpponentName_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_OwnerDraw",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_OwnerDraw",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_OwnerDrawHandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_OwnerDrawHandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_OwnerDrawVisible",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_OwnerDrawVisible",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_OwnerDrawWidth",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_OwnerDrawWidth",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_OwnerDraw_Width",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_OwnerDraw_Width",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_ParseGameInfo",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_ParseGameInfo",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_ParseMenu",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_ParseMenu",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_ParseTeamInfo",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_ParseTeamInfo",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_Pause",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_Pause",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_PlayCinematic",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_PlayCinematic",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_PrintTime",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_PrintTime",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_PriorOpponent",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_PriorOpponent",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_ReadableSize",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_ReadableSize",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_RedBlue_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_RedBlue_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_RegisterCvars",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_RegisterCvars",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_RemoveServerFromDisplayList",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_RemoveServerFromDisplayList",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_Report",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_Report",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_RunCinematicFrame",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_RunCinematicFrame",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_RunMenuScript",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_RunMenuScript",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_SelectedHead",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_SelectedHead",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_SelectedMap",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_SelectedMap",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_SelectedPlayer_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_SelectedPlayer_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_ServersQsortCompare",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_ServersQsortCompare",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_ServersSort",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_ServersSort",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_SetCapFragLimits",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_SetCapFragLimits",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_SetNextMap",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_SetNextMap",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_ShowPostGame",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_ShowPostGame",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_Skill_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_Skill_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_SortServerStatusInfo",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_SortServerStatusInfo",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_StartServerRefresh",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_StartServerRefresh",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_StartSinglePlayer",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_StartSinglePlayer",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_StartSkirmish",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_StartSkirmish",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_StopCinematic",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_StopCinematic",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_StopServerRefresh",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_StopServerRefresh",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_TeamIndexFromName",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_TeamIndexFromName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_TeamMember_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_TeamMember_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_TeamName_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_TeamName_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_Update",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_Update",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_UpdateCvars",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_UpdateCvars",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_UpdatePendingPings",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_UpdatePendingPings",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "UI_hasSkinForBase",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.UI_hasSkinForBase",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "_UI_DrawRect",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack._UI_DrawRect",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "_UI_DrawSides",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack._UI_DrawSides",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "_UI_DrawTopBottom",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack._UI_DrawTopBottom",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "_UI_Init",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack._UI_Init",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "_UI_IsFullscreen",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack._UI_IsFullscreen",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "_UI_KeyEvent",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack._UI_KeyEvent",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "_UI_MouseEvent",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack._UI_MouseEvent",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "_UI_Refresh",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack._UI_Refresh",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "_UI_SetActiveMenu",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack._UI_SetActiveMenu",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "_UI_Shutdown",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack._UI_Shutdown",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "stristr",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.stristr",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        },
+        {
+          "original": "vmMain",
+          "target_files": [
+            "src/mq3/client/ui_main_missionpack.ml"
+          ],
+          "target_symbol": "mq3.client.ui_main_missionpack.vmMain",
+          "status": "tested_exact",
+          "scope": "complete Missionpack UI lifecycle, data, ownerdraw, feeders and menu scripts"
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_main_missionpack.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_main_missionpack.py",
+        "tests/reference/ui_main_missionpack_oracle.c",
+        "tests/ui_main_missionpack_oracle.ml",
+        "tests/ui_main_missionpack_contracts.ml"
+      ]
     },
     {
       "source": "code/ui/ui_players.c",
@@ -34687,10 +36719,2323 @@
         "hashForString",
         "structure"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "AdjustFrom640",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.AdjustFrom640",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "BindingFromName",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.BindingFromName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "BindingIDFromName",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.BindingIDFromName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Color_Parse",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Color_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Controls_GetConfig",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Controls_GetConfig",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Controls_GetKeyAssignment",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Controls_GetKeyAssignment",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Controls_SetConfig",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Controls_SetConfig",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Controls_SetDefaults",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Controls_SetDefaults",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Display_CacheAll",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Display_CacheAll",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Display_CaptureItem",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Display_CaptureItem",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Display_CloseCinematics",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Display_CloseCinematics",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Display_CursorType",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Display_CursorType",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Display_GetContext",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Display_GetContext",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Display_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Display_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Display_KeyBindPending",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Display_KeyBindPending",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Display_MouseMove",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Display_MouseMove",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Display_VisibleMenuCount",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Display_VisibleMenuCount",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Fade",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Fade",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Float_Parse",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Float_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "GradientBar_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.GradientBar_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Init_Display",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Init_Display",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Int_Parse",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Int_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "IsVisible",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.IsVisible",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_action",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_action",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_addColorRange",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_addColorRange",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_align",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_align",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_asset_model",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_asset_model",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_asset_shader",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_asset_shader",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_autowrapped",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_autowrapped",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_backcolor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_backcolor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_background",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_background",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_border",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_border",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_bordercolor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_bordercolor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_bordersize",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_bordersize",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_cinematic",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_cinematic",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_columns",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_columns",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_cvar",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_cvar",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_cvarFloat",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_cvarFloat",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_cvarFloatList",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_cvarFloatList",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_cvarStrList",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_cvarStrList",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_cvarTest",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_cvarTest",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_decoration",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_decoration",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_disableCvar",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_disableCvar",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_doubleClick",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_doubleClick",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_elementheight",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_elementheight",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_elementtype",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_elementtype",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_elementwidth",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_elementwidth",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_enableCvar",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_enableCvar",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_feeder",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_feeder",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_focusSound",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_focusSound",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_forecolor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_forecolor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_group",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_group",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_hideCvar",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_hideCvar",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_horizontalscroll",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_horizontalscroll",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_leaveFocus",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_leaveFocus",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_maxChars",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_maxChars",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_maxPaintChars",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_maxPaintChars",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_model_angle",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_model_angle",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_model_fovx",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_model_fovx",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_model_fovy",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_model_fovy",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_model_origin",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_model_origin",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_model_rotation",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_model_rotation",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_mouseEnter",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_mouseEnter",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_mouseEnterText",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_mouseEnterText",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_mouseExit",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_mouseExit",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_mouseExitText",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_mouseExitText",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_name",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_name",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_notselectable",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_notselectable",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_onFocus",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_onFocus",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_outlinecolor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_outlinecolor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_ownerdraw",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_ownerdraw",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_ownerdrawFlag",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_ownerdrawFlag",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_rect",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_rect",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_showCvar",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_showCvar",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_special",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_special",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_style",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_style",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_text",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_text",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_textalign",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_textalign",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_textalignx",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_textalignx",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_textaligny",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_textaligny",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_textscale",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_textscale",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_textstyle",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_textstyle",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_type",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_type",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_visible",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_visible",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ItemParse_wrapped",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ItemParse_wrapped",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Action",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Action",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Bind_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Bind_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Bind_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Bind_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_CacheContents",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_CacheContents",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_CorrectedTextRect",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_CorrectedTextRect",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_EnableShowViaCvar",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_EnableShowViaCvar",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Image_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Image_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Init",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Init",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_InitControls",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_InitControls",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_ListBox_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_ListBox_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_ListBox_MaxScroll",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_ListBox_MaxScroll",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_ListBox_MouseEnter",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_ListBox_MouseEnter",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_ListBox_OverLB",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_ListBox_OverLB",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_ListBox_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_ListBox_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_ListBox_ThumbDrawPosition",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_ListBox_ThumbDrawPosition",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_ListBox_ThumbPosition",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_ListBox_ThumbPosition",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Model_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Model_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_MouseEnter",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_MouseEnter",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_MouseLeave",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_MouseLeave",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Multi_CountSettings",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Multi_CountSettings",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Multi_FindCvarByValue",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Multi_FindCvarByValue",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Multi_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Multi_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Multi_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Multi_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Multi_Setting",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Multi_Setting",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_OwnerDraw_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_OwnerDraw_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_OwnerDraw_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_OwnerDraw_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Parse",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_RunScript",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_RunScript",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_SetFocus",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_SetFocus",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_SetMouseOver",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_SetMouseOver",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_SetScreenCoords",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_SetScreenCoords",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_SetTextExtents",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_SetTextExtents",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_SetupKeywordHash",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_SetupKeywordHash",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Slider_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Slider_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Slider_OverSlider",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Slider_OverSlider",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Slider_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Slider_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Slider_ThumbPosition",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Slider_ThumbPosition",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_StartCapture",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_StartCapture",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_StopCapture",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_StopCapture",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_TextColor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_TextColor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_TextField_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_TextField_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_TextField_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_TextField_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Text_AutoWrapped_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Text_AutoWrapped_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Text_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Text_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_Text_Wrapped_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_Text_Wrapped_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_UpdatePosition",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_UpdatePosition",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_ValidateTypeData",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_ValidateTypeData",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_YesNo_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_YesNo_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Item_YesNo_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Item_YesNo_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "KeywordHash_Add",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.KeywordHash_Add",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "KeywordHash_Find",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.KeywordHash_Find",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "KeywordHash_Key",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.KeywordHash_Key",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "LerpColor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.LerpColor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_backcolor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_backcolor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_background",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_background",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_border",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_border",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_borderSize",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_borderSize",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_bordercolor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_bordercolor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_cinematic",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_cinematic",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_disablecolor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_disablecolor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_fadeAmount",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_fadeAmount",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_fadeClamp",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_fadeClamp",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_fadeCycle",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_fadeCycle",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_focuscolor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_focuscolor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_font",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_font",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_forecolor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_forecolor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_fullscreen",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_fullscreen",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_itemDef",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_itemDef",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_name",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_name",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_onClose",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_onClose",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_onESC",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_onESC",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_onOpen",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_onOpen",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_outOfBounds",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_outOfBounds",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_outlinecolor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_outlinecolor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_ownerdraw",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_ownerdraw",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_ownerdrawFlag",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_ownerdrawFlag",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_popup",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_popup",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_rect",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_rect",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_soundLoop",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_soundLoop",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_style",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_style",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "MenuParse_visible",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.MenuParse_visible",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_CacheContents",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_CacheContents",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_ClearFocus",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_ClearFocus",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_CloseCinematics",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_CloseCinematics",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_Count",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_Count",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_FadeItemByName",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_FadeItemByName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_FindItemByName",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_FindItemByName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_GetFocused",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_GetFocused",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_GetFocusedItem",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_GetFocusedItem",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_GetMatchingItemByNumber",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_GetMatchingItemByNumber",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_HandleKey",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_HandleKey",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_HandleMouseMove",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_HandleMouseMove",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_HitTest",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_HitTest",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_Init",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_Init",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_ItemsMatchingGroup",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_ItemsMatchingGroup",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_New",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_New",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_OrbitItemByName",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_OrbitItemByName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_OverActiveItem",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_OverActiveItem",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_PaintAll",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_PaintAll",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_Parse",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_PostParse",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_PostParse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_Reset",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_Reset",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_RunCloseScript",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_RunCloseScript",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_ScrollFeeder",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_ScrollFeeder",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_SetFeederSelection",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_SetFeederSelection",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_SetNextCursorItem",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_SetNextCursorItem",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_SetPrevCursorItem",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_SetPrevCursorItem",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_SetupKeywordHash",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_SetupKeywordHash",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_ShowItemByName",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_ShowItemByName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_TransitionItemByName",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_TransitionItemByName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menu_UpdatePosition",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menu_UpdatePosition",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menus_Activate",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menus_Activate",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menus_ActivateByName",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menus_ActivateByName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menus_AnyFullScreenVisible",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menus_AnyFullScreenVisible",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menus_CloseAll",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menus_CloseAll",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menus_CloseByName",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menus_CloseByName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menus_FindByName",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menus_FindByName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menus_HandleOOBClick",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menus_HandleOOBClick",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menus_OpenByName",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menus_OpenByName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Menus_ShowByName",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Menus_ShowByName",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "PC_Color_Parse",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.PC_Color_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "PC_Float_Parse",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.PC_Float_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "PC_Int_Parse",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.PC_Int_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "PC_Rect_Parse",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.PC_Rect_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "PC_Script_Parse",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.PC_Script_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "PC_SourceError",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.PC_SourceError",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "PC_SourceWarning",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.PC_SourceWarning",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "PC_String_Parse",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.PC_String_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Rect_ContainsPoint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Rect_ContainsPoint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Rect_Parse",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Rect_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Rect_ToWindowCoords",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Rect_ToWindowCoords",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_Close",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_Close",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_ConditionalOpen",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_ConditionalOpen",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_Exec",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_Exec",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_FadeIn",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_FadeIn",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_FadeOut",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_FadeOut",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_Hide",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_Hide",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_Open",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_Open",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_Orbit",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_Orbit",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_Play",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_Play",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_SetAsset",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_SetAsset",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_SetBackground",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_SetBackground",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_SetColor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_SetColor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_SetCvar",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_SetCvar",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_SetFocus",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_SetFocus",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_SetItemColor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_SetItemColor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_SetPlayerHead",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_SetPlayerHead",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_SetPlayerModel",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_SetPlayerModel",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_SetTeamColor",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_SetTeamColor",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_Show",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_Show",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_Transition",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_Transition",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Script_playLooped",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Script_playLooped",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Scroll_ListBox_AutoFunc",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Scroll_ListBox_AutoFunc",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Scroll_ListBox_ThumbFunc",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Scroll_ListBox_ThumbFunc",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Scroll_Slider_ThumbFunc",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Scroll_Slider_ThumbFunc",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "String_Alloc",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.String_Alloc",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "String_Init",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.String_Init",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "String_Parse",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.String_Parse",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "String_Report",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.String_Report",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "ToWindowCoords",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.ToWindowCoords",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "UI_Alloc",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.UI_Alloc",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "UI_InitMemory",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.UI_InitMemory",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "UI_OutOfMemory",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.UI_OutOfMemory",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Window_CacheContents",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Window_CacheContents",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Window_CloseCinematic",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Window_CloseCinematic",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "Window_Paint",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.Window_Paint",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "hashForString",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.hashForString",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        },
+        {
+          "original": "structure",
+          "target_files": [
+            "src/mq3/client/ui_shared.ml"
+          ],
+          "target_symbol": "mq3.client.ui_shared.structure",
+          "status": "tested_exact",
+          "scope": "complete Missionpack shared UI parser, menu, item, input, script and paint behavior"
+        }
+      ],
+      "target": [
+        "src/mq3/client/ui_shared.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_ui_shared.py",
+        "tests/reference/ui_shared_oracle.c",
+        "tests/ui_shared_oracle.ml",
+        "tests/ui_shared_contracts.ml",
+        "tests/ui_shared_retail_probe.ml"
+      ]
     },
     {
       "source": "code/ui/ui_shared.h",
@@ -37497,10 +41842,90 @@
         "Sys_SetErrorText",
         "Sys_ShowConsole"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "ConWndProc",
+          "target_files": [
+            "src/mq3/platform/win_syscon.ml"
+          ],
+          "target_symbol": "mq3.platform.win_syscon.ConWndProc",
+          "status": "tested_exact",
+          "scope": "Win32 console lifecycle, input, text normalization, visibility and error UI"
+        },
+        {
+          "original": "Conbuf_AppendText",
+          "target_files": [
+            "src/mq3/platform/win_syscon.ml"
+          ],
+          "target_symbol": "mq3.platform.win_syscon.Conbuf_AppendText",
+          "status": "tested_exact",
+          "scope": "Win32 console lifecycle, input, text normalization, visibility and error UI"
+        },
+        {
+          "original": "InputLineWndProc",
+          "target_files": [
+            "src/mq3/platform/win_syscon.ml"
+          ],
+          "target_symbol": "mq3.platform.win_syscon.InputLineWndProc",
+          "status": "tested_exact",
+          "scope": "Win32 console lifecycle, input, text normalization, visibility and error UI"
+        },
+        {
+          "original": "Sys_ConsoleInput",
+          "target_files": [
+            "src/mq3/platform/win_syscon.ml"
+          ],
+          "target_symbol": "mq3.platform.win_syscon.Sys_ConsoleInput",
+          "status": "tested_exact",
+          "scope": "Win32 console lifecycle, input, text normalization, visibility and error UI"
+        },
+        {
+          "original": "Sys_CreateConsole",
+          "target_files": [
+            "src/mq3/platform/win_syscon.ml"
+          ],
+          "target_symbol": "mq3.platform.win_syscon.Sys_CreateConsole",
+          "status": "tested_exact",
+          "scope": "Win32 console lifecycle, input, text normalization, visibility and error UI"
+        },
+        {
+          "original": "Sys_DestroyConsole",
+          "target_files": [
+            "src/mq3/platform/win_syscon.ml"
+          ],
+          "target_symbol": "mq3.platform.win_syscon.Sys_DestroyConsole",
+          "status": "tested_exact",
+          "scope": "Win32 console lifecycle, input, text normalization, visibility and error UI"
+        },
+        {
+          "original": "Sys_SetErrorText",
+          "target_files": [
+            "src/mq3/platform/win_syscon.ml"
+          ],
+          "target_symbol": "mq3.platform.win_syscon.Sys_SetErrorText",
+          "status": "tested_exact",
+          "scope": "Win32 console lifecycle, input, text normalization, visibility and error UI"
+        },
+        {
+          "original": "Sys_ShowConsole",
+          "target_files": [
+            "src/mq3/platform/win_syscon.ml"
+          ],
+          "target_symbol": "mq3.platform.win_syscon.Sys_ShowConsole",
+          "status": "tested_exact",
+          "scope": "Win32 console lifecycle, input, text normalization, visibility and error UI"
+        }
+      ],
+      "target": [
+        "src/mq3/platform/win_syscon.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_win_syscon.py",
+        "tests/reference/win_syscon_oracle.c",
+        "tests/win_syscon_oracle.ml",
+        "tests/win_syscon_contracts.ml"
+      ]
     },
     {
       "source": "code/win32/win_wndproc.c",

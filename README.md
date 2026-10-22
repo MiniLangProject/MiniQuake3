@@ -61,6 +61,22 @@ vollständige Gesamtauswahl wurde seit der Erweiterung noch nicht erneut am Stü
 ausgeführt. Der frisch gebaute Hauptstand mit SHA-256
 `6203ea60375f534ec4172c8dca77926e8fb2ce4d6d5f5ee862f1e939f65cdf45`
 und das Retail-QVM-Match über acht Frames bestehen separat.
+Der folgende Agentenblock schließt fünf weitere vollständige Originaldateien.
+Die beiden größten verbleibenden Team-Arena-UI-Dateien `ui_shared.c` und
+`ui_main.c` liefern zusammen 419 native Symbole für Parser, Menü-/Item-
+Lifecycle, Input, Scripts, OwnerDraw, Feeder, Serverbrowser, Arena-/Botdaten,
+Cvars und den UI-VM-Dispatch. `ai_cmd.c` ergänzt alle 41 textgesteuerten
+Bot-Teamaufträge, `be_aas_debug.c` die 19 Debuggeometrie-, Reachability- und
+Cluster-Flood-Pfade und `win_syscon.c` die acht Windows-Konsolenpfade. 55
+unveränderte C-Datensätze beziehungsweise -Funktionen und 139 native Verträge
+bestehen; Retail-Probes prüfen 3.539 echte UI-Assets, 138 Chat-Templates und
+alle 30 AAS-Dateien. Das Inventar steht nun bei 99 portierten, 114 partiellen
+und 122 noch nicht begonnenen Runtime-/Plattformdateien.
+Die fünf neuen Fokustests, der Hauptbuild mit SHA-256
+`6203ea60375f534ec4172c8dca77926e8fb2ce4d6d5f5ee862f1e939f65cdf45`
+und das acht Frames lange Retail-QVM-Match bestehen. Ein neuer vollständiger
+Lauf aller Gates wurde für dieses Paket nicht nochmals als einzelne
+Gesamtausführung gestartet.
 Seit diesem Gesamtlauf bestehen zusätzlich die neuen `cg_event.c`-,
 `cg_playerstate.c`- und `cg_predict.c`-Differentialgates mit 29 unveränderten
 C-Datensätzen und 139 nativen Verträgen. Jetzt sind auch `cg_effects.c`,

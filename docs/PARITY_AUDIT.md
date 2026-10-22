@@ -2137,3 +2137,43 @@ begonnene Runtime-/Plattformdateien. Der frisch gebaute Hauptstand mit SHA-256
 `6203ea60375f534ec4172c8dca77926e8fb2ce4d6d5f5ee862f1e939f65cdf45`
 und das Retail-QVM-Match über acht Frames bestehen; ein neuer vollständiger Lauf
 aller Gates ist noch nicht als Gesamtnachweis dokumentiert.
+
+### Gemeinsame UI, Missionpack-Hauptmenü, Botbefehle und Plattform-Debug
+
+Fünf weitere zuvor unbegonnene Originaldateien sind vollständig als native
+MiniLang-Dateipfade zugeordnet. `code/ui/ui_shared.c` umfasst Stringpool und
+Parser, den vollständigen Display-/Menu-/Item-Lebenszyklus, Skripte und
+Cvar-Gates, Bindings und Fokus, Capture, Listbox, Slider, Edit, Multi und
+Yes/No sowie Ownerdraw, Feeder, Text, Modell, Bild, Transition, Orbit und
+Cache/Paint. `code/ui/ui_main.c` umfasst Lifecycle und `vmMain`, Asset- und
+Menüladen, Ownerdraw und Tastaturbehandlung, Arena-/Botparser, Serverbrowser,
+Serverstatus, Spielersuche, Feeder, Skirmish-/Serverstart, alle 49
+`UI_RunMenuScript`-Kommandos sowie Cinematic-, Connect- und Downloadzustände.
+Die Hostgrenzen sind typisiert und bei aktiver Retail-QVM unterdrückbar.
+
+`code/game/ai_cmd.c` deckt alle Match-Kontexte und Variablen, Adressaten-,
+Client- und Gegnerauflösung, Zeitangaben, Patrouillen, Checkpoints, Formation,
+Führung und Präferenzen sowie die LTG-Zuweisungen für CTF, One-Flag CTF,
+Obelisk und Harvester ab. `code/botlib/be_aas_debug.c` portiert die Debuglinien-
+und Polygonpools, Pfeile, Ebenenkreuze und Bounding-Boxen, Face-/Area-Polygone,
+erreichbare Areas, Reachability-Darstellung und Cluster-Flood. Der Port von
+`code/win32/win_syscon.c` enthält Erzeugung, Anzeige und Zerstörung der
+Windows-Konsole, Eingabepuffer, Farbcodes und Zeilenumbrüche, Rollover,
+Fehlerdialog sowie Aktivierungs-, Close-, Copy-, Clear- und Timersemantik.
+
+Die fünf Fokustests bestehen mit allen 487 Originalsymbolen, 55 Datensätzen
+beziehungsweise Funktionen aus unverändertem C und 139 nativen Verträgen. Die
+Retail-Probes prüfen 3.539 echte UI-Assets, 138 Matchvorlagen sowie 30 AAS-
+Dateien mit zusammen 559.999 Faces, 96.758 Areas und 125.731 Reachabilities.
+Baseq3 enthält keine Team-Arena-`.menu`-Definitionen oder `missionpack.pk3`;
+deren grafische Endabnahme bleibt deshalb weiterhin offen, während Parser- und
+Zustandssemantik durch die C- und nativen Verträge abgedeckt ist. Das erzeugte
+Inventar zählt nun 99 portierte, 114 partielle und 122 noch nicht begonnene
+Runtime-/Plattformdateien.
+
+Die fünf neuen Fokustests, der Hauptbuild mit SHA-256
+`6203ea60375f534ec4172c8dca77926e8fb2ce4d6d5f5ee862f1e939f65cdf45`
+und das Retail-QVM-Match über acht Frames bestehen. Der Retail-Lauf verarbeitet
+13 Snapshot-Entities, 2.345 texturierte Dreiecke, 19 Scene-Entities und 26
+Sounds. Ein neuer vollständiger Lauf aller Gates wurde für dieses Paket nicht
+nochmals als einzelne Gesamtausführung gestartet.
