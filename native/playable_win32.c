@@ -115,6 +115,12 @@ static unsigned char inputKeyState[256];
 static SRWLOCK inputLock = SRWLOCK_INIT;
 static volatile LONG inputAppActive;
 static volatile LONG inputMouseActive;
+static volatile LONG windowMinimized;
+static volatile LONG windowPositionX;
+static volatile LONG windowPositionY;
+static volatile LONG videoRestartRequested;
+static volatile LONG soundActivationSerial;
+static volatile LONG altTabDisabled;
 static int inputCursorHidden;
 static int inputJoystickEnabled;
 static int inputJoystickAvailable;
@@ -311,6 +317,50 @@ static int translateVirtualKey(WPARAM key, LPARAM flags) {
         case VK_OEM_7: return '\'';
     }
     return (int)key;
+}
+
+/* Baseq3 translates physical keys from the scan code stored in lParam.  The
+ * virtual-key fallback keeps synthetic host events useful when no scan code
+ * is present, while real window messages take the exact original path. */
+static int mapScanKey(WPARAM virtualKey, LPARAM flags) {
+    static const unsigned char scanToKey[128] = {
+        0,27,'1','2','3','4','5','6','7','8','9','0','-','=',127,9,
+        'q','w','e','r','t','y','u','i','o','p','[',']',13,137,'a','s',
+        'd','f','g','h','j','k','l',';','\'', '`',138,'\\','z','x','c','v',
+        'b','n','m',',','.','/',138,'*',136,' ',129,145,146,147,148,149,
+        150,151,152,153,154,131,0,143,132,142,173,134,164,135,174,144,
+        133,141,139,140,0,0,0,155,156,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    };
+    int modified = ((int)flags >> 16) & 255;
+    int extended = (flags & (1L << 24)) != 0;
+    int result;
+    if (!modified) return translateVirtualKey(virtualKey, flags);
+    if (modified > 127) return 0;
+    result = scanToKey[modified];
+    if (!extended) {
+        switch (result) {
+            case 143: return 160; case 132: return 161; case 142: return 162;
+            case 134: return 163; case 135: return 165; case 144: return 166;
+            case 133: return 167; case 141: return 168; case 139: return 170;
+            case 140: return 171; default: return result;
+        }
+    }
+    if (result == 131) return 175;
+    if (result == 13) return 169;
+    if (result == '/') return 172;
+    if (result == 175) return 174;
+    return result;
+}
+
+static void setAltTabDisabled(HWND hwnd, int disabled) {
+    if (disabled) {
+        if (!InterlockedExchange(&altTabDisabled, 1) && hwnd)
+            RegisterHotKey(hwnd, 0, MOD_ALT, VK_TAB);
+    } else if (InterlockedExchange(&altTabDisabled, 0) && hwnd) {
+        UnregisterHotKey(hwnd, 0);
+    }
 }
 
 static void releaseInputKeys(int time) {
@@ -684,6 +734,9 @@ static int allocateSurface(int width, int height) {
 
 static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam) {
     switch (message) {
+        case WM_CREATE:
+            setAltTabDisabled(hwnd, requestedFullscreen);
+            return 0;
         case WM_CLOSE:
             InterlockedExchange(&closeRequested, 1);
             ShowWindow(hwnd, SW_HIDE);
@@ -696,12 +749,23 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
             if (wParam) activateMouseOnWindow(hwnd); else deactivateMouseOnWindow();
             return 0;
         case WM_DESTROY:
+            setAltTabDisabled(hwnd, 0);
             if (windowDC) ReleaseDC(hwnd, windowDC);
             windowDC = 0;
             InterlockedExchange(&closeRequested, 1);
             windowHandle = 0;
             PostQuitMessage(0);
             return 0;
+        case WM_ACTIVATE: {
+            int minimized = HIWORD(wParam) != 0;
+            int active = LOWORD(wParam) != WA_INACTIVE && !minimized;
+            InterlockedExchange(&windowMinimized, minimized);
+            InterlockedExchange(&inputAppActive, active);
+            InterlockedIncrement(&soundActivationSerial);
+            if (active) activateMouseOnWindow(hwnd);
+            else { deactivateMouseOnWindow(); releaseInputKeys(currentMilliseconds()); }
+            return 0;
+        }
         case WM_KILLFOCUS:
             InterlockedExchange(&inputAppActive, 0);
             deactivateMouseOnWindow();
@@ -717,13 +781,38 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
             if (wParam) activateMouseOnWindow(hwnd);
             else { deactivateMouseOnWindow(); releaseInputKeys(currentMilliseconds()); }
             return 0;
+        case WM_MOVE:
+            if (!requestedFullscreen) {
+                int x = (int)(short)LOWORD(lParam);
+                int y = (int)(short)HIWORD(lParam);
+                if (hwnd) {
+                    RECT adjustment = { 0, 0, 1, 1 };
+                    DWORD style = (DWORD)GetWindowLongW(hwnd, GWL_STYLE);
+                    if (AdjustWindowRect(&adjustment, style, FALSE)) {
+                        x += adjustment.left; y += adjustment.top;
+                    }
+                }
+                InterlockedExchange(&windowPositionX, x);
+                InterlockedExchange(&windowPositionY, y);
+            }
+            return 0;
+        case WM_SYSCOMMAND:
+            if ((wParam & 0xfff0u) == SC_SCREENSAVE) return 0;
+            break;
         case WM_KEYDOWN:
+            queueKeyboardEvent(mapScanKey(wParam, lParam), 1, currentMilliseconds());
+            return 0;
         case WM_SYSKEYDOWN:
-            queueKeyboardEvent(translateVirtualKey(wParam, lParam), 1, currentMilliseconds());
+            if (wParam == VK_RETURN) {
+                requestedFullscreen = !requestedFullscreen;
+                InterlockedExchange(&videoRestartRequested, 1);
+                return 0;
+            }
+            queueKeyboardEvent(mapScanKey(wParam, lParam), 1, currentMilliseconds());
             return 0;
         case WM_KEYUP:
         case WM_SYSKEYUP:
-            queueKeyboardEvent(translateVirtualKey(wParam, lParam), 0, currentMilliseconds());
+            queueKeyboardEvent(mapScanKey(wParam, lParam), 0, currentMilliseconds());
             return 0;
         /* win_wndproc.c queues WM_CHAR separately from the physical key so
          * TranslateMessage has already applied layout, Shift and Caps Lock. */
@@ -925,6 +1014,12 @@ PLAYABLE_API int playable_window_create(int width, int height) {
     }
     requestedWindowWidth = width;
     requestedWindowHeight = height;
+    InterlockedExchange(&windowMinimized, 0);
+    InterlockedExchange(&windowPositionX, 0);
+    InterlockedExchange(&windowPositionY, 0);
+    InterlockedExchange(&videoRestartRequested, 0);
+    InterlockedExchange(&soundActivationSerial, 0);
+    InterlockedExchange(&altTabDisabled, 0);
     windowCreateSucceeded = 0;
     InterlockedExchange(&closeRequested, 0);
     windowThread = CreateThread(0, 0, playableWindowThread, 0, 0, &threadId);
@@ -1102,6 +1197,62 @@ PLAYABLE_API int playable_window_consume_mouse_dy(void) {
 
 PLAYABLE_API int playable_window_milliseconds(void) {
     return currentMilliseconds();
+}
+
+static int copyWideUtf8(const wchar_t *source, unsigned char *output, int capacity) {
+    int count;
+    if (!source || !output || capacity < 1) return 0;
+    count = WideCharToMultiByte(CP_UTF8, WC_ERR_INVALID_CHARS, source, -1,
+        (char *)output, capacity, 0, 0);
+    if (count < 1) { output[0] = 0; return 0; }
+    return count - 1;
+}
+
+PLAYABLE_API int playable_system_current_user(unsigned char *output, int capacity) {
+    wchar_t user[1024];
+    DWORD count;
+    if (!output || capacity < 1) return 0;
+    count = GetEnvironmentVariableW(L"USERNAME", user,
+        (DWORD)(sizeof(user) / sizeof(user[0])));
+    if (!count || count >= sizeof(user) / sizeof(user[0]) || !user[0])
+        lstrcpyW(user, L"player");
+    return copyWideUtf8(user, output, capacity);
+}
+
+PLAYABLE_API int playable_system_current_directory(unsigned char *output, int capacity) {
+    wchar_t path[MAX_PATH];
+    DWORD count;
+    if (!output || capacity < 1) return 0;
+    count = GetCurrentDirectoryW(MAX_PATH, path);
+    if (!count || count >= MAX_PATH) { output[0] = 0; return 0; }
+    return copyWideUtf8(path, output, capacity);
+}
+
+PLAYABLE_API int playable_system_processor_id(void) {
+#if defined(_M_IX86)
+    if (!IsProcessorFeaturePresent(PF_MMX_INSTRUCTIONS_AVAILABLE)) return 0x21;
+    if (IsProcessorFeaturePresent(PF_3DNOW_INSTRUCTIONS_AVAILABLE)) return 0x30;
+    if (IsProcessorFeaturePresent(PF_XMMI_INSTRUCTIONS_AVAILABLE)) return 0x23;
+    return 0x22;
+#else
+    return 0;
+#endif
+}
+
+PLAYABLE_API int playable_window_take_video_restart(void) {
+    return (int)InterlockedExchange(&videoRestartRequested, 0);
+}
+
+PLAYABLE_API int playable_window_window_state(int *output, int capacity) {
+    if (!output || capacity < 7) return 0;
+    output[0] = (int)InterlockedCompareExchange(&inputAppActive, 0, 0);
+    output[1] = (int)InterlockedCompareExchange(&windowMinimized, 0, 0);
+    output[2] = (int)InterlockedCompareExchange(&windowPositionX, 0, 0);
+    output[3] = (int)InterlockedCompareExchange(&windowPositionY, 0, 0);
+    output[4] = requestedFullscreen != 0;
+    output[5] = (int)InterlockedCompareExchange(&altTabDisabled, 0, 0);
+    output[6] = (int)InterlockedCompareExchange(&soundActivationSerial, 0, 0);
+    return 1;
 }
 
 PLAYABLE_API int playable_window_input_init(void) {

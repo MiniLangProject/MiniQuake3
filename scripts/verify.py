@@ -30,6 +30,7 @@ def main():
     scripts.append(("test_common_complete.py",[]))
     scripts.append(("test_cmd_complete.py",[]))
     scripts.append(("test_q_shared_runtime.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_q_shared_header_complete.py",[]))
     scripts.append(("test_msg_complete.py",[]))
     scripts.append(("test_md4_complete.py",[]))
     scripts.append(("test_files_runtime.py",["--data-root",str(args.data_root)] if args.data_root else []))
@@ -359,6 +360,10 @@ def main():
     scripts.append(("test_cl_keys_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_cl_ui_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_snd_mem_complete.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_win_main_complete.py",[]))
+    scripts.append(("test_win_net_complete.py",[]))
+    scripts.append(("test_win_shared_complete.py",[]))
+    scripts.append(("test_win_wndproc_complete.py",[]))
     if args.data_root:
         scripts.append(("test_cm_trace_complete.py",[str(args.data_root)]))
         scripts.append(("test_cm_patch_complete.py",[str(args.data_root)]))

@@ -15,6 +15,8 @@ TEST = ROOT / "tests" / "playable_window_lifecycle.c"
 WORLD_BATCH_TEST = ROOT / "tests" / "playable_world_batch_native.c"
 RASTER_STATE_TEST = ROOT / "tests" / "playable_window_raster_state_native.c"
 INPUT_EVENTS_TEST = ROOT / "tests" / "playable_window_input_events_native.c"
+WNDPROC_TEST = ROOT / "tests" / "playable_window_wndproc_native.c"
+WIN_SHARED_TEST = ROOT / "tests" / "playable_window_win_shared_native.c"
 GL_TEST = ROOT / "tests" / "playable_window_gl_native.c"
 RASTER_EXPORTS = (
     "playable_window_set_title_utf8",
@@ -27,6 +29,11 @@ RASTER_EXPORTS = (
     "playable_window_input_configure_midi",
     "playable_window_input_joystick_available",
     "playable_window_input_midi_device_count",
+    "playable_window_take_video_restart",
+    "playable_window_window_state",
+    "playable_system_current_user",
+    "playable_system_current_directory",
+    "playable_system_processor_id",
     "playable_window_gl_configure",
     "playable_window_gl_available",
     "playable_window_gl_pixel_format",
@@ -86,6 +93,8 @@ def main() -> int:
     world_batch_exe = OUT / "playable_world_batch_native.exe"
     raster_state_exe = OUT / "playable_window_raster_state_native.exe"
     input_events_exe = OUT / "playable_window_input_events_native.exe"
+    wndproc_exe = OUT / "playable_window_wndproc_native.exe"
+    win_shared_exe = OUT / "playable_window_win_shared_native.exe"
     gl_exe = OUT / "playable_window_gl_native.exe"
     run([compiler, "/nologo", "/W4", "/WX", "/O2", "/LD", str(SOURCE),
          "/link", "user32.lib", "gdi32.lib", "winmm.lib", f"/OUT:{dll}", f"/IMPLIB:{lib}"], env)
@@ -109,6 +118,12 @@ def main() -> int:
     run([compiler, "/nologo", "/W4", "/WX", "/O2", str(INPUT_EVENTS_TEST),
          "user32.lib", "gdi32.lib", "winmm.lib", f"/Fe:{input_events_exe}"], env)
     run([str(input_events_exe)], env)
+    run([compiler, "/nologo", "/W4", "/WX", "/O2", str(WNDPROC_TEST),
+         "user32.lib", "gdi32.lib", "winmm.lib", f"/Fe:{wndproc_exe}"], env)
+    run([str(wndproc_exe)], env)
+    run([compiler, "/nologo", "/W4", "/WX", "/O2", str(WIN_SHARED_TEST),
+         "user32.lib", "gdi32.lib", "winmm.lib", f"/Fe:{win_shared_exe}"], env)
+    run([str(win_shared_exe)], env)
     run([compiler, "/nologo", "/W4", "/WX", "/O2", str(GL_TEST), str(lib),
          "user32.lib", "gdi32.lib", f"/Fe:{gl_exe}"], env)
     run([str(gl_exe)], env)

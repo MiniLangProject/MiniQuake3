@@ -16,7 +16,7 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `botlib` | 53 | 22 | 9 | 22 | 0 |
 | `cgame` | 25 | 21 | 0 | 4 | 0 |
 | `client` | 19 | 16 | 0 | 3 | 0 |
-| `game` | 65 | 35 | 4 | 26 | 0 |
+| `game` | 65 | 36 | 3 | 26 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
@@ -26,8 +26,8 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
-| `win32` | 13 | 5 | 4 | 4 | 0 |
-| **Gesamt** | **335** | **200** | **19** | **116** | **0** |
+| `win32` | 13 | 9 | 0 | 4 | 0 |
+| **Gesamt** | **335** | **205** | **14** | **116** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -197,7 +197,7 @@ Teil dieser Tabelle.
 | `code/game/match.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/q_math.c` | `game` | `ported` | 57 | 57 | 0 |
 | `code/game/q_shared.c` | `game` | `ported` | 59 | 59 | 0 |
-| `code/game/q_shared.h` | `game` | `partial` | 19 | 1 | 18 |
+| `code/game/q_shared.h` | `game` | `ported` | 19 | 19 | 0 |
 | `code/game/surfaceflags.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/syn.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/macosx/CGMouseDeltaFix.h` | `macosx` | `not_started` | 0 | 0 | 0 |
@@ -366,13 +366,13 @@ Teil dieser Tabelle.
 | `code/win32/win_glimp.c` | `win32` | `ported` | 21 | 21 | 0 |
 | `code/win32/win_input.c` | `win32` | `ported` | 31 | 0 | 31 |
 | `code/win32/win_local.h` | `win32` | `not_started` | 0 | 0 | 0 |
-| `code/win32/win_main.c` | `win32` | `partial` | 34 | 1 | 33 |
-| `code/win32/win_net.c` | `win32` | `partial` | 21 | 5 | 16 |
+| `code/win32/win_main.c` | `win32` | `ported` | 33 | 33 | 0 |
+| `code/win32/win_net.c` | `win32` | `ported` | 21 | 21 | 0 |
 | `code/win32/win_qgl.c` | `win32` | `not_started` | 346 | 0 | 346 |
-| `code/win32/win_shared.c` | `win32` | `partial` | 12 | 1 | 11 |
+| `code/win32/win_shared.c` | `win32` | `ported` | 12 | 12 | 0 |
 | `code/win32/win_snd.c` | `win32` | `ported` | 8 | 8 | 0 |
 | `code/win32/win_syscon.c` | `win32` | `ported` | 8 | 8 | 0 |
-| `code/win32/win_wndproc.c` | `win32` | `partial` | 5 | 1 | 4 |
+| `code/win32/win_wndproc.c` | `win32` | `ported` | 5 | 5 | 0 |
 
 ## Offene Originalsymbole
 
@@ -464,7 +464,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/game/g_weapon.c` (ported): `G_StartKamikaze`, `KamikazeDamage`, `KamikazeRadiusDamage`, `KamikazeShockWave`, `Weapon_Nailgun_Fire`, `weapon_proxlauncher_fire`
 - `code/game/inv.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/match.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/q_shared.h` (partial): `BigFloat`, `BigLong`, `BigShort`, `Distance`, `DistanceSquared`, `LittleFloat`, `LittleLong`, `LittleShort`, `Q_fabs`, `Q_rsqrt`, `VectorCompare`, `VectorInverse`, `VectorLength`, `VectorLengthSquared`, `VectorNormalizeFast`, `__fctiw`, `__lhbrx`, `__lwbrx`
 - `code/game/surfaceflags.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/syn.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/macosx/CGMouseDeltaFix.h` (not_started): *(Symbolinventar ergänzen)*
@@ -553,8 +552,4 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/win32/resource.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/win32/win_input.c` (ported): `IN_Activate`, `IN_ActivateDIMouse`, `IN_ActivateMouse`, `IN_ActivateWin32Mouse`, `IN_ClearStates`, `IN_DIMouse`, `IN_DeactivateDIMouse`, `IN_DeactivateMouse`, `IN_DeactivateWin32Mouse`, `IN_Frame`, `IN_Init`, `IN_InitDIMouse`, `IN_InitWin32Mouse`, `IN_JoyMove`, `IN_MouseEvent`, `IN_MouseMove`, `IN_Shutdown`, `IN_ShutdownDIMouse`, `IN_ShutdownMIDI`, `IN_ShutdownWin32Mouse`, `IN_Startup`, `IN_StartupJoystick`, `IN_StartupMIDI`, `IN_StartupMouse`, `IN_Win32Mouse`, `JoyToF`, `JoyToI`, `MIDI_NoteOff`, `MIDI_NoteOn`, `MidiInProc`, `MidiInfo_f`
 - `code/win32/win_local.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/win32/win_main.c` (partial): `Spk_Close`, `Spk_Open`, `Spk_Printf`, `Sys_BeginProfiling`, `Sys_BeginStreamedFile`, `Sys_CheckCD`, `Sys_Cwd`, `Sys_DefaultBasePath`, `Sys_DefaultCDPath`, `Sys_EndStreamedFile`, `Sys_Error`, `Sys_FreeFileList`, `Sys_GetClipboardData`, `Sys_GetEvent`, `Sys_In_Restart_f`, `Sys_InitStreamThread`, `Sys_ListFiles`, `Sys_ListFilteredFiles`, `Sys_LoadDll`, `Sys_LowPhysicalMemory`, `Sys_Mkdir`, `Sys_Net_Restart_f`, `Sys_Print`, `Sys_Quit`, `Sys_ScanForCD`, `Sys_ShutdownStreamThread`, `Sys_StreamSeek`, `Sys_StreamThread`, `Sys_StreamedRead`, `Sys_UnloadDll`, `WinMain`, `strgtr`, `systems`
-- `code/win32/win_net.c` (partial): `NET_Config`, `NET_ErrorString`, `NET_GetCvars`, `NET_GetLocalAddress`, `NET_IPXSocket`, `NET_OpenIP`, `NET_OpenIPX`, `NET_OpenSocks`, `NET_Restart`, `NET_Sleep`, `NetadrToSockadr`, `SockadrToNetadr`, `Sys_IsLANAddress`, `Sys_ShowIP`, `Sys_StringToAdr`, `Sys_StringToSockaddr`
 - `code/win32/win_qgl.c` (not_started): `BlendToName`, `BooleanToString`, `CapToString`, `FuncToString`, `GlideIsValid`, `PrimToString`, `QGL_EnableLogging`, `QGL_Init`, `QGL_Shutdown`, `TypeToString`, `logAccum`, `logAlphaFunc`, `logAreTexturesResident`, `logArrayElement`, `logBegin`, `logBindTexture`, `logBitmap`, `logBlendFunc`, `logCallList`, `logCallLists`, `logClear`, `logClearAccum`, `logClearColor`, `logClearDepth`, `logClearIndex`, `logClearStencil`, `logClipPlane`, `logColor3b`, `logColor3bv`, `logColor3d`, `logColor3dv`, `logColor3f`, `logColor3fv`, `logColor3i`, `logColor3iv`, `logColor3s`, `logColor3sv`, `logColor3ub`, `logColor3ubv`, `logColor3ui`, `logColor3uiv`, `logColor3us`, `logColor3usv`, `logColor4b`, `logColor4bv`, `logColor4d`, `logColor4dv`, `logColor4f`, `logColor4fv`, `logColor4i`, `logColor4iv`, `logColor4s`, `logColor4sv`, `logColor4ub`, `logColor4ubv`, `logColor4ui`, `logColor4uiv`, `logColor4us`, `logColor4usv`, `logColorMask`, `logColorMaterial`, `logColorPointer`, `logCopyPixels`, `logCopyTexImage1D`, `logCopyTexImage2D`, `logCopyTexSubImage1D`, `logCopyTexSubImage2D`, `logCullFace`, `logDeleteLists`, `logDeleteTextures`, `logDepthFunc`, `logDepthMask`, `logDepthRange`, `logDisable`, `logDisableClientState`, `logDrawArrays`, `logDrawBuffer`, `logDrawElements`, `logDrawPixels`, `logEdgeFlag`, `logEdgeFlagPointer`, `logEdgeFlagv`, `logEnable`, `logEnableClientState`, `logEnd`, `logEndList`, `logEvalCoord1d`, `logEvalCoord1dv`, `logEvalCoord1f`, `logEvalCoord1fv`, `logEvalCoord2d`, `logEvalCoord2dv`, `logEvalCoord2f`, `logEvalCoord2fv`, `logEvalMesh1`, `logEvalMesh2`, `logEvalPoint1`, `logEvalPoint2`, `logFeedbackBuffer`, `logFinish`, `logFlush`, `logFogf`, `logFogfv`, `logFogi`, `logFogiv`, `logFrontFace`, `logFrustum`, `logGenLists`, `logGenTextures`, `logGetBooleanv`, `logGetClipPlane`, `logGetDoublev`, `logGetError`, `logGetFloatv`, `logGetIntegerv`, `logGetLightfv`, `logGetLightiv`, `logGetMapdv`, `logGetMapfv`, `logGetMapiv`, `logGetMaterialfv`, `logGetMaterialiv`, `logGetPixelMapfv`, `logGetPixelMapuiv`, `logGetPixelMapusv`, `logGetPointerv`, `logGetPolygonStipple`, `logGetString`, `logGetTexEnvfv`, `logGetTexEnviv`, `logGetTexGendv`, `logGetTexGenfv`, `logGetTexGeniv`, `logGetTexImage`, `logGetTexLevelParameterfv`, `logGetTexLevelParameteriv`, `logGetTexParameterfv`, `logGetTexParameteriv`, `logHint`, `logIndexMask`, `logIndexPointer`, `logIndexd`, `logIndexdv`, `logIndexf`, `logIndexfv`, `logIndexi`, `logIndexiv`, `logIndexs`, `logIndexsv`, `logIndexub`, `logIndexubv`, `logInitNames`, `logInterleavedArrays`, `logIsEnabled`, `logIsList`, `logIsTexture`, `logLightModelf`, `logLightModelfv`, `logLightModeli`, `logLightModeliv`, `logLightf`, `logLightfv`, `logLighti`, `logLightiv`, `logLineStipple`, `logLineWidth`, `logListBase`, `logLoadIdentity`, `logLoadMatrixd`, `logLoadMatrixf`, `logLoadName`, `logLogicOp`, `logMap1d`, `logMap1f`, `logMap2d`, `logMap2f`, `logMapGrid1d`, `logMapGrid1f`, `logMapGrid2d`, `logMapGrid2f`, `logMaterialf`, `logMaterialfv`, `logMateriali`, `logMaterialiv`, `logMatrixMode`, `logMultMatrixd`, `logMultMatrixf`, `logNewList`, `logNormal3b`, `logNormal3bv`, `logNormal3d`, `logNormal3dv`, `logNormal3f`, `logNormal3fv`, `logNormal3i`, `logNormal3iv`, `logNormal3s`, `logNormal3sv`, `logNormalPointer`, `logOrtho`, `logPassThrough`, `logPixelMapfv`, `logPixelMapuiv`, `logPixelMapusv`, `logPixelStoref`, `logPixelStorei`, `logPixelTransferf`, `logPixelTransferi`, `logPixelZoom`, `logPointSize`, `logPolygonMode`, `logPolygonOffset`, `logPolygonStipple`, `logPopAttrib`, `logPopClientAttrib`, `logPopMatrix`, `logPopName`, `logPrioritizeTextures`, `logPushAttrib`, `logPushClientAttrib`, `logPushMatrix`, `logPushName`, `logRasterPos2d`, `logRasterPos2dv`, `logRasterPos2f`, `logRasterPos2fv`, `logRasterPos2i`, `logRasterPos2iv`, `logRasterPos2s`, `logRasterPos2sv`, `logRasterPos3d`, `logRasterPos3dv`, `logRasterPos3f`, `logRasterPos3fv`, `logRasterPos3i`, `logRasterPos3iv`, `logRasterPos3s`, `logRasterPos3sv`, `logRasterPos4d`, `logRasterPos4dv`, `logRasterPos4f`, `logRasterPos4fv`, `logRasterPos4i`, `logRasterPos4iv`, `logRasterPos4s`, `logRasterPos4sv`, `logReadBuffer`, `logReadPixels`, `logRectd`, `logRectdv`, `logRectf`, `logRectfv`, `logRecti`, `logRectiv`, `logRects`, `logRectsv`, `logRenderMode`, `logRotated`, `logRotatef`, `logScaled`, `logScalef`, `logScissor`, `logSelectBuffer`, `logShadeModel`, `logStencilFunc`, `logStencilMask`, `logStencilOp`, `logTexCoord1d`, `logTexCoord1dv`, `logTexCoord1f`, `logTexCoord1fv`, `logTexCoord1i`, `logTexCoord1iv`, `logTexCoord1s`, `logTexCoord1sv`, `logTexCoord2d`, `logTexCoord2dv`, `logTexCoord2f`, `logTexCoord2fv`, `logTexCoord2i`, `logTexCoord2iv`, `logTexCoord2s`, `logTexCoord2sv`, `logTexCoord3d`, `logTexCoord3dv`, `logTexCoord3f`, `logTexCoord3fv`, `logTexCoord3i`, `logTexCoord3iv`, `logTexCoord3s`, `logTexCoord3sv`, `logTexCoord4d`, `logTexCoord4dv`, `logTexCoord4f`, `logTexCoord4fv`, `logTexCoord4i`, `logTexCoord4iv`, `logTexCoord4s`, `logTexCoord4sv`, `logTexCoordPointer`, `logTexEnvf`, `logTexEnvfv`, `logTexEnvi`, `logTexEnviv`, `logTexGend`, `logTexGendv`, `logTexGenf`, `logTexGenfv`, `logTexGeni`, `logTexGeniv`, `logTexImage1D`, `logTexImage2D`, `logTexParameterf`, `logTexParameterfv`, `logTexParameteri`, `logTexParameteriv`, `logTexSubImage1D`, `logTexSubImage2D`, `logTranslated`, `logTranslatef`, `logVertex2d`, `logVertex2dv`, `logVertex2f`, `logVertex2fv`, `logVertex2i`, `logVertex2iv`, `logVertex2s`, `logVertex2sv`, `logVertex3d`, `logVertex3dv`, `logVertex3f`, `logVertex3fv`, `logVertex3i`, `logVertex3iv`, `logVertex3s`, `logVertex3sv`, `logVertex4d`, `logVertex4dv`, `logVertex4f`, `logVertex4fv`, `logVertex4i`, `logVertex4iv`, `logVertex4s`, `logVertex4sv`, `logVertexPointer`, `logViewport`
-- `code/win32/win_shared.c` (partial): `CPUID`, `Is3DNOW`, `IsKNI`, `IsMMX`, `IsPentium`, `Sys_DefaultHomePath`, `Sys_DefaultInstallPath`, `Sys_GetCurrentUser`, `Sys_GetProcessorId`, `Sys_Milliseconds`, `fastftol`
-- `code/win32/win_wndproc.c` (partial): `MapKey`, `VID_AppActivate`, `WIN_DisableAltTab`, `WIN_EnableAltTab`

@@ -28,8 +28,8 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **200 sind
-vollständig portiert, 19 teilweise portiert und 116 noch nicht begonnen**.
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **205 sind
+vollständig portiert, 14 teilweise portiert und 116 noch nicht begonnen**.
 Der aktuelle Integrationsblock schließt `cvar.c`, `net_chan.c`, `cm_polylib.c`
 und `be_interface.c`. Damit sind vollständige Cvar- und QVM-Trap-Semantik,
 Netchan samt Loopback/Fragmentierung/Adresspfaden, alle Winding-Operationen und
@@ -43,6 +43,19 @@ und WinMM-Audiogrenzen bestehen. Der dabei erzeugte `build/MiniQuake3.exe`-Stand
 hat SHA-256 `089d21030259d9b15cb28dd6b6051260de550391bda78c76ccbc884d5c865004`. Die letzte vollständige Gesamtauswahl bleibt der
 dokumentierte 449-Gate-Lauf; die vier neuen Gates sind nun in `verify.py`
 registriert.
+
+Ein neuer Integrationsblock schließt `q_shared.h`, `win_main.c`, `win_net.c`,
+`win_shared.c` und `win_wndproc.c`. Damit sind die gemeinsame Spiel-/Engine-ABI
+samt Endian-, Vektor- und portablen PowerPC-Helfern sowie der vollständige
+produktive Windows-Host für Lifecycle, Dateien/DLLs/Streams, Zwischenablage,
+Eventqueue, Winsock/UDP/SOCKS, Zeit/CPU/Pfade und Fensterereignisse nativ
+zugeordnet. Die fünf Vollständigkeitsgates prüfen 90 echte Funktionskandidaten,
+18 ABI-Typen, 16 Protokollkonstanten, 31 unveränderte C-Datensätze, 96
+MiniLang-Verträge und die nativen Grenzen unter `/W4 /WX`. Hauptbuild,
+Input-, UDP-, Handshake-, Netzwerk- und spielbare Matchregressionen sowie der
+acht Frames lange Retail-QVM-Match bestehen. Der geprüfte
+`build/MiniQuake3.exe`-Stand hat SHA-256
+`fe2130bfa759a1bd141c27cce7d596dbd55ecc204f0292adc874ceca45c4380a`.
 
 Der nächste Integrationsblock schließt zusätzlich `vm.c`, `cm_load.c`,
 `win_input.c` und `keys.h`. Die VM besitzt nun ihren vollständigen Lifecycle,

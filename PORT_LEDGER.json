@@ -29428,128 +29428,271 @@
       ],
       "symbol_mapping": [
         {
-          "original": "DotProduct",
+          "original": "BigFloat",
           "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
             "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
             "src/mq3/game/playerstate.ml",
-            "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml",
-            "src/mq3/qcommon/cvar.ml"
+            "src/mq3/vm/syscall_qagame_world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
+        },
+        {
+          "original": "BigLong",
+          "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/vm/syscall_qagame_world.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
+        },
+        {
+          "original": "BigShort",
+          "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/vm/syscall_qagame_world.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
         },
         {
           "original": "CrossProduct",
           "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
             "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
             "src/mq3/game/playerstate.ml",
-            "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml",
-            "src/mq3/qcommon/cvar.ml"
+            "src/mq3/vm/syscall_qagame_world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
         },
         {
-          "original": "VectorMA",
+          "original": "Distance",
           "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
             "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
             "src/mq3/game/playerstate.ml",
-            "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml",
-            "src/mq3/qcommon/cvar.ml"
+            "src/mq3/vm/syscall_qagame_world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
         },
         {
-          "original": "playerState_t",
+          "original": "DistanceSquared",
           "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
             "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
             "src/mq3/game/playerstate.ml",
-            "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml",
-            "src/mq3/qcommon/cvar.ml"
+            "src/mq3/vm/syscall_qagame_world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
         },
         {
-          "original": "usercmd_t",
+          "original": "LittleFloat",
           "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
             "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
             "src/mq3/game/playerstate.ml",
-            "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml",
-            "src/mq3/qcommon/cvar.ml"
+            "src/mq3/vm/syscall_qagame_world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
         },
         {
-          "original": "entityState_t",
+          "original": "LittleLong",
           "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
             "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
             "src/mq3/game/playerstate.ml",
-            "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml",
-            "src/mq3/qcommon/cvar.ml"
+            "src/mq3/vm/syscall_qagame_world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
         },
         {
-          "original": "trajectory_t",
+          "original": "LittleShort",
           "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
             "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
             "src/mq3/game/playerstate.ml",
-            "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml",
-            "src/mq3/qcommon/cvar.ml"
+            "src/mq3/vm/syscall_qagame_world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
         },
         {
-          "original": "ANGLE2SHORT",
+          "original": "Q_fabs",
           "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
             "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
             "src/mq3/game/playerstate.ml",
-            "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml",
-            "src/mq3/qcommon/cvar.ml"
+            "src/mq3/vm/syscall_qagame_world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
         },
         {
-          "original": "vmCvar_t",
+          "original": "Q_rsqrt",
           "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
             "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
             "src/mq3/game/playerstate.ml",
-            "src/mq3/game/pmove.ml",
             "src/mq3/game/entitystate.ml",
-            "src/mq3/game/snapshot.ml",
-            "src/mq3/qcommon/cvar.ml"
+            "src/mq3/vm/syscall_qagame_world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
+        },
+        {
+          "original": "VectorCompare",
+          "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/vm/syscall_qagame_world.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
+        },
+        {
+          "original": "VectorInverse",
+          "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/vm/syscall_qagame_world.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
+        },
+        {
+          "original": "VectorLength",
+          "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/vm/syscall_qagame_world.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
+        },
+        {
+          "original": "VectorLengthSquared",
+          "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/vm/syscall_qagame_world.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
+        },
+        {
+          "original": "VectorNormalizeFast",
+          "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/vm/syscall_qagame_world.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
+        },
+        {
+          "original": "__fctiw",
+          "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/vm/syscall_qagame_world.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
+        },
+        {
+          "original": "__lhbrx",
+          "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/vm/syscall_qagame_world.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
+        },
+        {
+          "original": "__lwbrx",
+          "target_files": [
+            "src/mq3/shared/q_shared_header.ml",
+            "src/mq3/shared/math.ml",
+            "src/mq3/shared/q_shared_runtime.ml",
+            "src/mq3/game/playerstate.ml",
+            "src/mq3/game/entitystate.ml",
+            "src/mq3/vm/syscall_qagame_world.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 function candidates are represented with exact endian, vector and PowerPC-intrinsic-compatible behavior. The gate also checks 18 ABI types, 16 protocol constants, four unchanged-C records and twelve managed contracts; Win32 uses the native endian path while portable equivalents retain the PowerPC surface."
         }
       ],
       "target": [
+        "src/mq3/shared/q_shared_header.ml",
         "src/mq3/shared/math.ml",
+        "src/mq3/shared/q_shared_runtime.ml",
         "src/mq3/game/playerstate.ml",
-        "src/mq3/game/pmove.ml",
         "src/mq3/game/entitystate.ml",
-        "src/mq3/game/snapshot.ml",
-        "src/mq3/qcommon/cvar.ml"
+        "src/mq3/vm/syscall_qagame_world.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_q_shared_header_complete.py",
+        "tests/reference/q_shared_header_oracle.c",
+        "tests/q_shared_header_oracle.ml",
+        "tests/q_shared_header_contracts.ml",
         "scripts/test_math.py",
-        "scripts/test_pmove.py",
+        "scripts/test_q_shared_runtime.py",
         "scripts/test_entitystate.py",
-        "scripts/test_game_cvars.py"
+        "scripts/test_pmove.py"
       ]
     },
     {
@@ -51692,42 +51835,389 @@
         "Sys_StreamedRead",
         "Sys_UnloadDll",
         "WinMain",
-        "strgtr",
-        "systems"
+        "strgtr"
       ],
       "symbol_mapping": [
         {
-          "original": "Sys_QueEvent",
+          "original": "Spk_Close",
           "target_files": [
-            "src/mq3/platform/input_events.ml"
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
           ],
           "status": "tested_exact",
-          "scope": "256-entry FIFO, oldest-event overflow, zero-time clock substitution and key/char/mouse/wheel/joystick producers and dispatch. Two unchanged-C records and 26 MiniLang contracts pass."
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
         },
         {
-          "original": "Sys_QueEvent productive Win32 input ring",
+          "original": "Spk_Open",
           "target_files": [
-            "native/playable_win32.c",
-            "src/mq3/platform/playable_window.ml",
-            "src/mq3/client/input_command_events.ml"
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
           ],
-          "status": "tested_subset",
-          "scope": "The playable Win32 UI thread uses a thread-safe 256-entry timestamped key/mouse FIFO with the original overwrite-oldest rule. Native lifecycle, FIFO, transition-deduplication and overflow tests pass; console, packet and character events remain in the general input_events host queue."
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Spk_Printf",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_BeginProfiling",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_BeginStreamedFile",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_CheckCD",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_Cwd",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_DefaultBasePath",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_DefaultCDPath",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_EndStreamedFile",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_Error",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_FreeFileList",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_GetClipboardData",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_GetEvent",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_In_Restart_f",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_InitStreamThread",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_ListFiles",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_ListFilteredFiles",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_LoadDll",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_LowPhysicalMemory",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_Mkdir",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_Net_Restart_f",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_Print",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_QueEvent",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_Quit",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_ScanForCD",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_ShutdownStreamThread",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_StreamSeek",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_StreamThread",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_StreamedRead",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "Sys_UnloadDll",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "WinMain",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
+        },
+        {
+          "original": "strgtr",
+          "target_files": [
+            "src/mq3/platform/win_main_runtime.ml",
+            "src/mq3/platform/input_events.ml",
+            "native/win_main_win32.c",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 33 real functions are mapped across managed host policy and the native Win32 boundary. Eight unchanged-C records, 22 managed contracts and 12 /W4 /WX native contracts cover event FIFO, files, DLLs, streams, paths, clipboard, lifecycle and WinMain integration."
         }
       ],
       "target": [
+        "src/mq3/platform/win_main_runtime.ml",
         "src/mq3/platform/input_events.ml",
-        "native/playable_win32.c",
-        "src/mq3/platform/playable_window.ml",
-        "src/mq3/client/input_command_events.ml"
+        "native/win_main_win32.c",
+        "native/playable_win32.c"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_win_main_complete.py",
+        "tests/reference/win_main_complete_oracle.c",
+        "tests/win_main_complete_oracle.ml",
+        "tests/win_main_complete_contracts.ml",
+        "tests/win_main_native_contracts.c",
         "scripts/test_input_event_queue.py",
-        "tests/reference/input_event_queue_oracle.c",
-        "tests/input_event_queue_contracts.ml",
-        "scripts/playable_window_build_test.py",
-        "tests/playable_window_input_events_native.c"
+        "scripts/test_input_command.py",
+        "scripts/test_playable_match.py"
       ]
     },
     {
@@ -51759,23 +52249,230 @@
       ],
       "symbol_mapping": [
         {
-          "original": "NET_Init, NET_IPSocket, Sys_SendPacket, Sys_GetPacket and NET_Shutdown",
+          "original": "NET_Config",
           "target_files": [
-            "native/udp_win64.c",
-            "src/mq3/platform/udp.ml"
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
           ],
-          "status": "tested_subset",
-          "scope": "Windows-x64 Winsock 2.2 startup/cleanup, nonblocking IPv4 UDP socket creation, bind/getsockname, raw sendto/recvfrom and close. Thirteen MiniLang integration contracts use two localhost sockets and compare exact binary payloads, no-data behavior and address/port roundtrips. Quake address selection, SOCKS/IPX, cvars, LAN classification and live engine-loop wiring remain open."
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "NET_ErrorString",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "NET_GetCvars",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "NET_GetLocalAddress",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "NET_IPSocket",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "NET_IPXSocket",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "NET_Init",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "NET_OpenIP",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "NET_OpenIPX",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "NET_OpenSocks",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "NET_Restart",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "NET_Shutdown",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "NET_Sleep",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "NetadrToSockadr",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "SockadrToNetadr",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "Sys_GetPacket",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "Sys_IsLANAddress",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "Sys_SendPacket",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "Sys_ShowIP",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "Sys_StringToAdr",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
+        },
+        {
+          "original": "Sys_StringToSockaddr",
+          "target_files": [
+            "src/mq3/platform/win_net_runtime.ml",
+            "src/mq3/platform/udp.ml",
+            "native/udp_win64.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 functions are covered: Winsock 2.2 lifecycle, IPv4 conversion and DNS, UDP/broadcast/select, local interfaces, cvars/port scanning, LAN detection, errors and SOCKS5 authentication plus UDP relay. AF_IPX is deterministically unavailable on current Windows, matching the platform capability."
         }
       ],
       "target": [
-        "native/udp_win64.c",
-        "src/mq3/platform/udp.ml"
+        "src/mq3/platform/win_net_runtime.ml",
+        "src/mq3/platform/udp.ml",
+        "native/udp_win64.c"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_win_net_complete.py",
+        "tests/reference/win_net_complete_oracle.c",
+        "tests/win_net_complete_oracle.ml",
+        "tests/win_net_complete_contracts.ml",
         "scripts/test_udp_platform.py",
-        "tests/udp_platform_contracts.ml"
+        "scripts/test_localhost_handshake.py",
+        "scripts/test_network_match_loop.py"
       ]
     },
     {
@@ -52155,18 +52852,138 @@
       ],
       "symbol_mapping": [
         {
+          "original": "CPUID",
+          "target_files": [
+            "src/mq3/platform/win_shared_runtime.ml",
+            "src/mq3/shared/math.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 12 functions are covered for timing, paths, user identity, processor feature classification, float conversion and vector snapping. Six unchanged-C records, 14 managed contracts and /W4 /WX native host contracts pass."
+        },
+        {
+          "original": "Is3DNOW",
+          "target_files": [
+            "src/mq3/platform/win_shared_runtime.ml",
+            "src/mq3/shared/math.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 12 functions are covered for timing, paths, user identity, processor feature classification, float conversion and vector snapping. Six unchanged-C records, 14 managed contracts and /W4 /WX native host contracts pass."
+        },
+        {
+          "original": "IsKNI",
+          "target_files": [
+            "src/mq3/platform/win_shared_runtime.ml",
+            "src/mq3/shared/math.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 12 functions are covered for timing, paths, user identity, processor feature classification, float conversion and vector snapping. Six unchanged-C records, 14 managed contracts and /W4 /WX native host contracts pass."
+        },
+        {
+          "original": "IsMMX",
+          "target_files": [
+            "src/mq3/platform/win_shared_runtime.ml",
+            "src/mq3/shared/math.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 12 functions are covered for timing, paths, user identity, processor feature classification, float conversion and vector snapping. Six unchanged-C records, 14 managed contracts and /W4 /WX native host contracts pass."
+        },
+        {
+          "original": "IsPentium",
+          "target_files": [
+            "src/mq3/platform/win_shared_runtime.ml",
+            "src/mq3/shared/math.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 12 functions are covered for timing, paths, user identity, processor feature classification, float conversion and vector snapping. Six unchanged-C records, 14 managed contracts and /W4 /WX native host contracts pass."
+        },
+        {
+          "original": "Sys_DefaultHomePath",
+          "target_files": [
+            "src/mq3/platform/win_shared_runtime.ml",
+            "src/mq3/shared/math.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 12 functions are covered for timing, paths, user identity, processor feature classification, float conversion and vector snapping. Six unchanged-C records, 14 managed contracts and /W4 /WX native host contracts pass."
+        },
+        {
+          "original": "Sys_DefaultInstallPath",
+          "target_files": [
+            "src/mq3/platform/win_shared_runtime.ml",
+            "src/mq3/shared/math.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 12 functions are covered for timing, paths, user identity, processor feature classification, float conversion and vector snapping. Six unchanged-C records, 14 managed contracts and /W4 /WX native host contracts pass."
+        },
+        {
+          "original": "Sys_GetCurrentUser",
+          "target_files": [
+            "src/mq3/platform/win_shared_runtime.ml",
+            "src/mq3/shared/math.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 12 functions are covered for timing, paths, user identity, processor feature classification, float conversion and vector snapping. Six unchanged-C records, 14 managed contracts and /W4 /WX native host contracts pass."
+        },
+        {
+          "original": "Sys_GetProcessorId",
+          "target_files": [
+            "src/mq3/platform/win_shared_runtime.ml",
+            "src/mq3/shared/math.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 12 functions are covered for timing, paths, user identity, processor feature classification, float conversion and vector snapping. Six unchanged-C records, 14 managed contracts and /W4 /WX native host contracts pass."
+        },
+        {
+          "original": "Sys_Milliseconds",
+          "target_files": [
+            "src/mq3/platform/win_shared_runtime.ml",
+            "src/mq3/shared/math.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 12 functions are covered for timing, paths, user identity, processor feature classification, float conversion and vector snapping. Six unchanged-C records, 14 managed contracts and /W4 /WX native host contracts pass."
+        },
+        {
           "original": "Sys_SnapVector",
           "target_files": [
-            "src/mq3/shared/math.ml"
+            "src/mq3/platform/win_shared_runtime.ml",
+            "src/mq3/shared/math.ml",
+            "native/playable_win32.c"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All 12 functions are covered for timing, paths, user identity, processor feature classification, float conversion and vector snapping. Six unchanged-C records, 14 managed contracts and /W4 /WX native host contracts pass."
+        },
+        {
+          "original": "fastftol",
+          "target_files": [
+            "src/mq3/platform/win_shared_runtime.ml",
+            "src/mq3/shared/math.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All 12 functions are covered for timing, paths, user identity, processor feature classification, float conversion and vector snapping. Six unchanged-C records, 14 managed contracts and /W4 /WX native host contracts pass."
         }
       ],
       "target": [
-        "src/mq3/shared/math.ml"
+        "src/mq3/platform/win_shared_runtime.ml",
+        "src/mq3/shared/math.ml",
+        "native/playable_win32.c"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_win_shared_complete.py",
+        "tests/reference/win_shared_complete_oracle.c",
+        "tests/win_shared_complete_oracle.ml",
+        "tests/win_shared_complete_contracts.ml",
+        "tests/playable_window_win_shared_native.c",
         "scripts/test_pmove.py"
       ]
     },
@@ -52381,26 +53198,70 @@
       ],
       "symbol_mapping": [
         {
-          "original": "MainWndProc WM_KEYDOWN / WM_KEYUP / WM_CHAR Sys_QueEvent translation",
+          "original": "MainWndProc",
           "target_files": [
-            "native/playable_win32.c",
+            "src/mq3/platform/win_wndproc_runtime.ml",
             "src/mq3/platform/playable_window.ml",
-            "src/mq3/client/qvm_preview_app.ml"
+            "native/playable_win32.c"
           ],
-          "status": "ported",
-          "scope": "The native window queues deduplicated physical keys and separate WM_CHAR values in the shared 256-entry overwrite-oldest FIFO. TranslateMessage resolves keyboard layout, Shift and Caps Lock before characters reach Console_Key/Message_Key state. Native lifecycle, FIFO, overflow and direct WM_CHAR WndProc tests compile with /W4 /WX. MapKey scan-code edge cases, Alt-Tab control and application activation remain open."
+          "status": "tested_exact",
+          "scope": "All five functions are covered for scan-code mapping, application activation, Alt-Tab control and MainWndProc event translation. Nine unchanged-C MapKey records, 14 managed contracts and /W4 /WX native window contracts pass."
+        },
+        {
+          "original": "MapKey",
+          "target_files": [
+            "src/mq3/platform/win_wndproc_runtime.ml",
+            "src/mq3/platform/playable_window.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All five functions are covered for scan-code mapping, application activation, Alt-Tab control and MainWndProc event translation. Nine unchanged-C MapKey records, 14 managed contracts and /W4 /WX native window contracts pass."
+        },
+        {
+          "original": "VID_AppActivate",
+          "target_files": [
+            "src/mq3/platform/win_wndproc_runtime.ml",
+            "src/mq3/platform/playable_window.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All five functions are covered for scan-code mapping, application activation, Alt-Tab control and MainWndProc event translation. Nine unchanged-C MapKey records, 14 managed contracts and /W4 /WX native window contracts pass."
+        },
+        {
+          "original": "WIN_DisableAltTab",
+          "target_files": [
+            "src/mq3/platform/win_wndproc_runtime.ml",
+            "src/mq3/platform/playable_window.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All five functions are covered for scan-code mapping, application activation, Alt-Tab control and MainWndProc event translation. Nine unchanged-C MapKey records, 14 managed contracts and /W4 /WX native window contracts pass."
+        },
+        {
+          "original": "WIN_EnableAltTab",
+          "target_files": [
+            "src/mq3/platform/win_wndproc_runtime.ml",
+            "src/mq3/platform/playable_window.ml",
+            "native/playable_win32.c"
+          ],
+          "status": "tested_exact",
+          "scope": "All five functions are covered for scan-code mapping, application activation, Alt-Tab control and MainWndProc event translation. Nine unchanged-C MapKey records, 14 managed contracts and /W4 /WX native window contracts pass."
         }
       ],
       "target": [
-        "native/playable_win32.c",
+        "src/mq3/platform/win_wndproc_runtime.ml",
         "src/mq3/platform/playable_window.ml",
-        "src/mq3/client/qvm_preview_app.ml"
+        "native/playable_win32.c"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_win_wndproc_complete.py",
+        "tests/reference/win_wndproc_complete_oracle.c",
+        "tests/win_wndproc_complete_oracle.ml",
+        "tests/win_wndproc_complete_contracts.ml",
+        "tests/playable_window_wndproc_native.c",
         "scripts/playable_window_build_test.py",
-        "tests/playable_window_input_events_native.c",
-        "scripts/test_console_input.py"
+        "scripts/test_input_command.py"
       ]
     },
     {

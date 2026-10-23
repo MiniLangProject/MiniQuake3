@@ -28,6 +28,11 @@ extern function nextInputEventNative(output as bytes,capacity as i32) from "play
 extern function mouseXNative() from "playable_window.dll" symbol "playable_window_consume_mouse_dx" returns i32
 extern function mouseYNative() from "playable_window.dll" symbol "playable_window_consume_mouse_dy" returns i32
 extern function millisecondsNative() from "playable_window.dll" symbol "playable_window_milliseconds" returns i32
+extern function takeVideoRestartNative() from "playable_window.dll" symbol "playable_window_take_video_restart" returns i32
+extern function windowStateNative(output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_window_window_state" returns i32
+extern function currentUserNative(output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_system_current_user" returns i32
+extern function currentDirectoryNative(output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_system_current_directory" returns i32
+extern function processorIdNative() from "playable_window.dll" symbol "playable_system_processor_id" returns i32
 extern function inputInitNative() from "playable_window.dll" symbol "playable_window_input_init" returns i32
 extern function inputActivateNative(active as i32) from "playable_window.dll" symbol "playable_window_input_activate" returns void
 extern function inputFrameNative() from "playable_window.dll" symbol "playable_window_input_frame" returns void
@@ -98,6 +103,7 @@ struct TriangleBatch data capacity count end struct
 struct Viewport x y width height end struct
 struct LoadingPoint x y end struct
 struct InputEvent time type value value2 end struct
+struct WindowState active minimized x y fullscreen altTabDisabled soundActivationSerial end struct
 
 function open(width,height)
   if width<160 or height<120 then return error(7480,"preview window is too small") end if
@@ -197,6 +203,14 @@ function configureMidi(enabled,device,channel)
 end function
 function midiDeviceCount() return midiDeviceCountNative() end function
 function milliseconds() return millisecondsNative() end function
+function takeVideoRestart() return takeVideoRestartNative()!=0 end function
+function windowState()
+  data=bytes(28,0);if windowStateNative(data,7)==0 then return error(7495,"could not read native window state") end if
+  return WindowState(numeric.readI32(data,0)!=0,numeric.readI32(data,4)!=0,numeric.readI32(data,8),numeric.readI32(data,12),numeric.readI32(data,16)!=0,numeric.readI32(data,20)!=0,numeric.readI32(data,24))
+end function
+function currentUser() data=bytes(4096,0);count=currentUserNative(data,len(data));if count<1 then return "player" end if;return decode(slice(data,0,count)) end function
+function currentDirectory() data=bytes(4096,0);count=currentDirectoryNative(data,len(data));if count<1 then return "" end if;return decode(slice(data,0,count)) end function
+function processorId() return processorIdNative() end function
 function beginFrame(red,green,blue) beginNative(red,green,blue);return void end function
 function drawLine(a,b,red,green,blue)
   lineNative(numeric.trunc32(a.x),numeric.trunc32(a.y),numeric.trunc32(b.x),numeric.trunc32(b.y),red,green,blue);return void

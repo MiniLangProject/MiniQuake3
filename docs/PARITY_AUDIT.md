@@ -2884,3 +2884,41 @@ registriert.
 
 Das Inventar zählt jetzt **200 portierte, 19 teilweise portierte und 116 noch
 nicht begonnene** Dateien von insgesamt 335.
+
+## 2026-10-23: Gemeinsame ABI und vollständiger Windows-Host geschlossen
+
+Fünf weitere partielle Originaldateien sind vollständig nativ zugeordnet:
+
+- `code/game/q_shared.h`: alle 19 Funktionskandidaten, 18 ABI-Typen und 16
+  Protokollkonstanten. Vier unveränderte-C-Datensätze und zwölf Verträge prüfen
+  Endian-, Vektor- und portable PowerPC-Intrinsic-Semantik sowie die Größen von
+  `playerState_t`, `entityState_t` und `usercmd_t`.
+- `code/win32/win_main.c`: alle 33 echten Funktionen für Eventqueue,
+  Verzeichnisse, Dateilisten, DLLs, Streamthread, Zwischenablage, Fehler-/Quit-
+  Lifecycle und `WinMain`. Acht unveränderte-C-Datensätze, 22 MiniLang- und
+  zwölf native `/W4 /WX`-Verträge bestehen. Der frühere Kandidat `systems` war
+  nur ein Kommentarwort und wurde aus dem Inventar entfernt.
+- `code/win32/win_net.c`: alle 21 Funktionen für Winsock 2.2, IPv4/DNS, UDP,
+  Broadcast, Select, lokale Interfaces, Portsuche, LAN-Erkennung und SOCKS5
+  einschließlich UDP-Relay. Vier unveränderte-C-, 34 vollständige und 13 echte
+  UDP-Verträge bestehen; AF_IPX meldet auf aktuellem Windows deterministisch
+  nicht verfügbar.
+- `code/win32/win_shared.c`: alle zwölf Funktionen für Timer, Pfade, Benutzer,
+  CPU-Featureklassifikation, `fastftol` und `Sys_SnapVector`. Sechs
+  unveränderte-C-Datensätze, 14 MiniLang- und native Hostverträge bestehen.
+- `code/win32/win_wndproc.c`: alle fünf Funktionen für `MapKey`, Aktivierung,
+  Alt-Tab und `MainWndProc`. Neun unveränderte-C-Datensätze, 14 MiniLang- und
+  native Fensterverträge bestehen.
+
+Der frische Windows-Hauptbuild, die fünf neuen Vollständigkeitsgates sowie
+Input-, UDP-, Localhost-Handshake-, Netzwerk-Match- und spielbare
+Matchregressionen sind grün. Der gekoppelte Retail-QVM-Match läuft acht Frames
+mit 131 Entities, 13 Snapshot-Entities, 2.345 vollständig texturierten
+Dreiecken, 17 Renderpässen, 26 Sounds und null nicht unterstützten Entities.
+`build/MiniQuake3.exe` hat SHA-256
+`fe2130bfa759a1bd141c27cce7d596dbd55ecc204f0292adc874ceca45c4380a`. Die
+letzte vollständige Gesamtauswahl bleibt der dokumentierte 449-Gate-Lauf; die
+fünf neuen Gates sind zusätzlich in `scripts/verify.py` registriert.
+
+Das Inventar zählt jetzt **205 portierte, 14 teilweise portierte und 116 noch
+nicht begonnene** Dateien von insgesamt 335.

@@ -38,6 +38,17 @@ def main():
         run(["cl", "/nologo", "/LD", "/O2", "/MT", ROOT / "native/udp_win64.c", "ws2_32.lib",
              "/link", "/Brepro", f"/out:{udp}"], output, env, output / "udp-abi-build.log")
         udp_stamp.write_text(json.dumps({"inputs":udp_inputs,"binary":sha(udp)},indent=2)+"\n")
+    winmain=output / "miniquake3_winmain.dll"
+    winmain_stamp=output / "winmain-abi-inputs.json"
+    winmain_inputs={"source":sha(ROOT / "native/win_main_win32.c"),"compiler":inputs["compiler"],
+                    "flags":"/LD /O2 /W4 /WX /MT /Brepro user32.lib winmm.lib"}
+    winmain_previous=json.loads(winmain_stamp.read_text()) if winmain_stamp.exists() else {}
+    if not winmain.exists() or winmain_previous.get("inputs")!=winmain_inputs or winmain_previous.get("binary")!=sha(winmain):
+        if not compiler_path: raise RuntimeError("MSVC cl.exe is required to rebuild miniquake3_winmain.dll")
+        run(["cl", "/nologo", "/LD", "/O2", "/W4", "/WX", "/MT", ROOT / "native/win_main_win32.c",
+             "/link", "/Brepro", "user32.lib", "winmm.lib", f"/out:{winmain}"],
+            output, env, output / "winmain-abi-build.log")
+        winmain_stamp.write_text(json.dumps({"inputs":winmain_inputs,"binary":sha(winmain)},indent=2)+"\n")
     playable=output / "playable_window.dll"
     playable_stamp=output / "playable-window-inputs.json"
     playable_inputs={"source":sha(ROOT / "native/playable_win32.c"),"compiler":inputs["compiler"],
