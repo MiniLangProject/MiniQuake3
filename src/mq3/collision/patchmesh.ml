@@ -39,8 +39,14 @@ function signbits(normal)
   end for
   return result
 end function
+function CM_SignbitsForNormal(normal) return signbits(normal) end function
 function plane(normal,distance)
-  return Plane(normal,distance,signbits(normal))
+  return Plane(normal,distance,CM_SignbitsForNormal(normal))
+end function
+function CM_PlaneFromPoints(a,b,c)
+  normal=q.CrossProduct(w.subtract(c,a),w.subtract(b,a))
+  if q.VectorNormalize(normal)==0 then return void end if
+  return plane(normal,q.DotProduct(a,normal))
 end function
 function inverted(p, subtractZero)
   normal = w.negate(p.normal)
@@ -54,6 +60,7 @@ function closePoints(a,b)
   end for
   return true
 end function
+function CM_ComparePoints(a,b) return closePoints(a,b) end function
 function needsSubdivision(a,b,c)
   delta = array(3,0.0)
   for axis = 0 to 2
@@ -63,7 +70,13 @@ function needsSubdivision(a,b,c)
   end for
   return q.VectorLength(delta) >= 16
 end function
-function subdivideColumns(grid)
+function CM_NeedsSubdivision(a,b,c) return needsSubdivision(a,b,c) end function
+function CM_Subdivide(a,b,c)
+  first=array(3,0.0);middle=array(3,0.0);last=array(3,0.0)
+  for axis=0 to 2 first[axis]=n.f32(0.5*n.fadd(a[axis],b[axis]));last[axis]=n.f32(0.5*n.fadd(b[axis],c[axis]));middle[axis]=n.f32(0.5*n.fadd(first[axis],last[axis])) end for
+  return [first,middle,last]
+end function
+function CM_SetGridWrapWidth(grid)
   columns = grid.columns
   height = len(columns[0])
   grid.wrapWidth = true
@@ -72,6 +85,10 @@ function subdivideColumns(grid)
     if not closePoints(columns[0][j],columns[len(columns)-1][j]) then grid.wrapWidth = false;break end if
     j = j+1
   end while
+  return void
+end function
+function CM_SubdivideGridColumns(grid)
+  columns=grid.columns;height=len(columns[0])
   i = 0
   while i < len(columns)-2
     needed = false;j = 0
@@ -87,13 +104,15 @@ function subdivideColumns(grid)
     first = array(height,void);middle = array(height,void);last = array(height,void)
     j = 0
     while j < height
-      first[j] = q.VectorScale(w.add(columns[i][j],columns[i+1][j]),0.5)
-      last[j] = q.VectorScale(w.add(columns[i+1][j],columns[i+2][j]),0.5)
-      middle[j] = q.VectorScale(w.add(first[j],last[j]),0.5)
+      divided=CM_Subdivide(columns[i][j],columns[i+1][j],columns[i+2][j]);first[j]=divided[0];middle[j]=divided[1];last[j]=divided[2]
       j = j+1
     end while
     columns = arrays.slice(columns,0,i+1)+[first,middle,last]+arrays.slice(columns,i+2,len(columns)-i-2)
   end while
+  grid.columns=columns;return void
+end function
+function CM_RemoveDegenerateColumns(grid)
+  columns=grid.columns;height=len(columns[0])
   i = 0
   while i < len(columns)-1
     identical = true;j = 0
@@ -110,7 +129,10 @@ function subdivideColumns(grid)
   grid.columns = columns
   return void
 end function
-function transpose(grid)
+function subdivideColumns(grid)
+  CM_SetGridWrapWidth(grid);CM_SubdivideGridColumns(grid);CM_RemoveDegenerateColumns(grid);return void
+end function
+function CM_TransposeGrid(grid)
   width = len(grid.columns);height = len(grid.columns[0])
   columns = array(height,void)
   j = 0
@@ -125,6 +147,7 @@ function transpose(grid)
   previous = grid.wrapWidth;grid.wrapWidth = grid.wrapHeight;grid.wrapHeight = previous
   return void
 end function
+function transpose(grid) return CM_TransposeGrid(grid) end function
 function appendPlane(patch, p)
   if len(patch.planes) >= 2048 then return fail("plane limit exceeded") end if
   patch.planes = patch.planes+[p]
@@ -142,6 +165,7 @@ function equalPlane(a,b)
   end for
   return -1
 end function
+function CM_PlaneEqual(a,b) return equalPlane(a,b) end function
 function findPlane2(patch,p)
   index = 0
   while index < len(patch.planes)
@@ -151,10 +175,9 @@ function findPlane2(patch,p)
   end while
   return [appendPlane(patch,p),0]
 end function
+function CM_FindPlane2(patch,p) return findPlane2(patch,p) end function
 function findPlane(patch,a,b,c)
-  normal = q.CrossProduct(w.subtract(c,a),w.subtract(b,a))
-  if q.VectorNormalize(normal) == 0 then return -1 end if
-  candidate = plane(normal,q.DotProduct(a,normal))
+  candidate=CM_PlaneFromPoints(a,b,c);if candidate==void then return -1 end if;normal=candidate.normal
   index = 0
   while index < len(patch.planes)
     p = patch.planes[index]
@@ -169,11 +192,13 @@ function findPlane(patch,a,b,c)
   end while
   return appendPlane(patch,candidate)
 end function
+function CM_FindPlane(patch,a,b,c) return findPlane(patch,a,b,c) end function
 function gridPlane(gridPlanes,i,j,tri)
   index = gridPlanes[i][j][tri]
   if index == -1 then index = gridPlanes[i][j][tri^1] end if
   return index
 end function
+function CM_GridPlane(gridPlanes,i,j,tri) return gridPlane(gridPlanes,i,j,tri) end function
 function edgePlane(patch,grid,gridPlanes,i,j,k)
   points = grid.columns
   a = void;b = void;p = -1;reverse = false
@@ -204,16 +229,15 @@ function edgePlane(patch,grid,gridPlanes,i,j,k)
   if reverse then return findPlane(patch,b,a,up) end if
   return findPlane(patch,a,b,up)
 end function
+function CM_EdgePlaneNum(patch,grid,gridPlanes,i,j,k) return edgePlane(patch,grid,gridPlanes,i,j,k) end function
 function setInward(patch,facet,points)
   k = 0
   while k < len(facet.borders)
     front = false;back = false;index = facet.borders[k]
     if index >= 0 then
-      p = patch.planes[index]
       for each point in points
-        distance = n.fsub(q.DotProduct(point,p.normal),p.distance)
-        if distance > 0.1 then front = true end if
-        if distance < -0.1 then back = true end if
+        side=CM_PointOnPlaneSide(patch,point,index)
+        if side==0 then front=true end if;if side==1 then back=true end if
       end for
     end if
     if front and not back then facet.inward[k] = 1 end if
@@ -222,6 +246,7 @@ function setInward(patch,facet,points)
   end while
   return void
 end function
+function CM_SetBorderInward(patch,facet,points) return setInward(patch,facet,points) end function
 function facetWinding(patch,facet,skipSurface)
   if facet.surface < 0 then return [] end if
   p = patch.planes[facet.surface]
@@ -238,6 +263,7 @@ function facetWinding(patch,facet,skipSurface)
   end while
   return points
 end function
+function CM_ValidateFacet(patch,facet) return validFacet(patch,facet) end function
 function validFacet(patch,facet)
   points = facetWinding(patch,facet,false)
   if len(points) == 0 then return false end if
@@ -248,9 +274,9 @@ function validFacet(patch,facet)
   return true
 end function
 function hasPlane(patch,facet,p)
-  if equalPlane(patch.planes[facet.surface],p) >= 0 then return true end if
+  if CM_PlaneEqual(patch.planes[facet.surface],p) >= 0 then return true end if
   for each index in facet.borders
-    if equalPlane(patch.planes[index],p) >= 0 then return true end if
+    if CM_PlaneEqual(patch.planes[index],p) >= 0 then return true end if
   end for
   return false
 end function
@@ -271,6 +297,7 @@ function snap(normal)
   end for
   return normal
 end function
+function CM_SnapVector(normal) return snap(normal) end function
 function addBevels(patch,facet)
   points = facetWinding(patch,facet,true)
   if len(points) == 0 then return void end if
@@ -282,7 +309,7 @@ function addBevels(patch,facet)
       if direction == -1 then distance = n.fneg(bounds[0][axis]) end if
       p = plane(normal,distance)
       if not hasPlane(patch,facet,p) then
-        found = findPlane2(patch,p);addBorder(facet,found[0],found[1],0)
+        found = CM_FindPlane2(patch,p);addBorder(facet,found[0],found[1],0)
       end if
     end for
   end for
@@ -290,7 +317,7 @@ function addBevels(patch,facet)
   while j < len(points)
     vector = w.subtract(points[j],points[(j+1)%len(points)])
     if q.VectorNormalize(vector) < 0.5 then j = j+1;continue end if
-    vector = snap(vector)
+    vector = CM_SnapVector(vector)
     axial = false
     for axis = 0 to 2
       if vector[axis] == -1 or vector[axis] == 1 then axial = true end if
@@ -307,7 +334,7 @@ function addBevels(patch,facet)
           if n.fsub(q.DotProduct(point,normal),p.distance) > 0.1 then valid = false;break end if
         end for
         if not valid or hasPlane(patch,facet,p) then continue end if
-        found = findPlane2(patch,p)
+        found = CM_FindPlane2(patch,p)
         candidate = patch.planes[found[0]]
         if found[1] == 0 then candidate = inverted(candidate,false) end if
         if len(w.chop(points,candidate.normal,candidate.distance)) == 0 then continue end if
@@ -319,12 +346,13 @@ function addBevels(patch,facet)
   addBorder(facet,facet.surface,1,0)
   return void
 end function
+function CM_AddFacetBevels(patch,facet) return addBevels(patch,facet) end function
 function addFacet(patch,surface,borders,noAdjust,points)
   if len(patch.facets) >= 1024 then return fail("facet limit exceeded") end if
   facet = Facet(surface,borders,array(len(borders),0),noAdjust)
-  setInward(patch,facet,points)
-  if validFacet(patch,facet) then
-    addBevels(patch,facet)
+  CM_SetBorderInward(patch,facet,points)
+  if CM_ValidateFacet(patch,facet) then
+    CM_AddFacetBevels(patch,facet)
     patch.facets = patch.facets+[facet]
   end if
   return void
@@ -343,8 +371,8 @@ function fromGrid(grid,patch)
   while i < width-1
     j = 0
     while j < height-1
-      gridPlanes[i][j][0] = findPlane(patch,columns[i][j],columns[i+1][j],columns[i+1][j+1])
-      gridPlanes[i][j][1] = findPlane(patch,columns[i+1][j+1],columns[i][j+1],columns[i][j])
+      gridPlanes[i][j][0] = CM_FindPlane(patch,columns[i][j],columns[i+1][j],columns[i+1][j+1])
+      gridPlanes[i][j][1] = CM_FindPlane(patch,columns[i+1][j+1],columns[i][j+1],columns[i][j])
       j = j+1
     end while
     i = i+1
@@ -363,7 +391,7 @@ function fromGrid(grid,patch)
         tri = 0
         if side == 2 or side == 3 then tri = 1 end if
         if borders[side] == pair[tri] then noAdjust[side] = 1 end if
-        if borders[side] == -1 or noAdjust[side] != 0 then borders[side] = edgePlane(patch,grid,gridPlanes,i,j,side) end if
+        if borders[side] == -1 or noAdjust[side] != 0 then borders[side] = CM_EdgePlaneNum(patch,grid,gridPlanes,i,j,side) end if
       end for
       a = columns[i][j];b = columns[i+1][j];c = columns[i+1][j+1];d = columns[i][j+1]
       if pair[0] == pair[1] then
@@ -372,13 +400,13 @@ function fromGrid(grid,patch)
         diagonal = pair[1]
         if diagonal == -1 then
           diagonal = borders[2]
-          if diagonal == -1 then diagonal = edgePlane(patch,grid,gridPlanes,i,j,4) end if
+          if diagonal == -1 then diagonal = CM_EdgePlaneNum(patch,grid,gridPlanes,i,j,4) end if
         end if
         addFacet(patch,pair[0],[borders[0],borders[1],diagonal],[noAdjust[0],noAdjust[1],0],[a,b,c])
         diagonal = pair[0]
         if diagonal == -1 then
           diagonal = borders[0]
-          if diagonal == -1 then diagonal = edgePlane(patch,grid,gridPlanes,i,j,5) end if
+          if diagonal == -1 then diagonal = CM_EdgePlaneNum(patch,grid,gridPlanes,i,j,5) end if
         end if
         addFacet(patch,pair[1],[borders[2],borders[3],diagonal],[noAdjust[2],noAdjust[3],0],[c,d,a])
       end if
@@ -387,6 +415,12 @@ function fromGrid(grid,patch)
     i = i+1
   end while
   return void
+end function
+function CM_PatchCollideFromGrid(grid,patch) return fromGrid(grid,patch) end function
+function CM_PointOnPlaneSide(patch,point,index)
+  if index==-1 then return 2 end if
+  p=patch.planes[index];distance=n.fsub(q.DotProduct(point,p.normal),p.distance)
+  if distance>0.1 then return 0 end if;if distance< -0.1 then return 1 end if;return 2
 end function
 function generate(width,height,points)
   if width <= 2 or height <= 2 or width > 129 or height > 129 or (width & 1) == 0 or (height & 1) == 0 or len(points) != width*height then return fail("invalid quadratic grid dimensions") end if
@@ -399,16 +433,19 @@ function generate(width,height,points)
     i = i+1
   end while
   grid = Grid(columns,false,false)
-  subdivideColumns(grid);transpose(grid);subdivideColumns(grid)
+  CM_SetGridWrapWidth(grid);CM_SubdivideGridColumns(grid);CM_RemoveDegenerateColumns(grid)
+  CM_TransposeGrid(grid)
+  CM_SetGridWrapWidth(grid);CM_SubdivideGridColumns(grid);CM_RemoveDegenerateColumns(grid)
   allPoints = []
   for each column in grid.columns
     allPoints = allPoints+column
   end for
   patch = Patch([],[],w.bounds(allPoints))
-  fromGrid(grid,patch)
+  CM_PatchCollideFromGrid(grid,patch)
   for axis = 0 to 2
     patch.bounds[0][axis] = n.fsub(patch.bounds[0][axis],1.0)
     patch.bounds[1][axis] = n.fadd(patch.bounds[1][axis],1.0)
   end for
   return patch
 end function
+function CM_GeneratePatchCollide(width,height,points) return generate(width,height,points) end function

@@ -4,6 +4,22 @@ package mq3.platform.playable_window
 import mq3.compat.numeric as numeric
 
 extern function create(width as i32,height as i32) from "playable_window.dll" symbol "playable_window_create" returns i32
+extern function glConfigureNative(driver as ptr,driverLength as i32,colorBits as i32,depthBits as i32,stencilBits as i32,stereo as i32,fullscreen as i32,frequency as i32,swapInterval as i32) from "playable_window.dll" symbol "playable_window_gl_configure" returns i32
+extern function glAvailableNative() from "playable_window.dll" symbol "playable_window_gl_available" returns i32
+extern function glPixelFormatNative() from "playable_window.dll" symbol "playable_window_gl_pixel_format" returns i32
+extern function glColorBitsNative() from "playable_window.dll" symbol "playable_window_gl_color_bits" returns i32
+extern function glDepthBitsNative() from "playable_window.dll" symbol "playable_window_gl_depth_bits" returns i32
+extern function glStencilBitsNative() from "playable_window.dll" symbol "playable_window_gl_stencil_bits" returns i32
+extern function glStereoNative() from "playable_window.dll" symbol "playable_window_gl_stereo" returns i32
+extern function glFullscreenNative() from "playable_window.dll" symbol "playable_window_gl_fullscreen" returns i32
+extern function glInfoNative(which as i32,output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_window_gl_info" returns i32
+extern function glHasExtensionNative(name as ptr,length as i32) from "playable_window.dll" symbol "playable_window_gl_has_extension" returns i32
+extern function glSwapIntervalNative(interval as i32) from "playable_window.dll" symbol "playable_window_gl_set_swap_interval" returns i32
+extern function glSetGammaNative(red as ptr,green as ptr,blue as ptr,count as i32) from "playable_window.dll" symbol "playable_window_gl_set_gamma" returns i32
+extern function glRestoreGammaNative() from "playable_window.dll" symbol "playable_window_gl_restore_gamma" returns void
+extern function glActivateNative(active as i32) from "playable_window.dll" symbol "playable_window_gl_activate" returns void
+extern function glEndFrameNative() from "playable_window.dll" symbol "playable_window_gl_end_frame" returns void
+extern function glLogCommentNative(comment as ptr,length as i32) from "playable_window.dll" symbol "playable_window_gl_log_comment" returns void
 extern function pollNative() from "playable_window.dll" symbol "playable_window_poll" returns void
 extern function shouldCloseNative() from "playable_window.dll" symbol "playable_window_should_close" returns i32
 extern function setTitleNative(title as ptr,length as i32) from "playable_window.dll" symbol "playable_window_set_title_utf8" returns i32
@@ -85,11 +101,39 @@ struct InputEvent time type value value2 end struct
 
 function open(width,height)
   if width<160 or height<120 then return error(7480,"preview window is too small") end if
+  driver=bytes("opengl32.dll")
+  if glConfigureNative(nativeBytesPtr(driver),len(driver),24,24,8,0,0,0,0)==0 then return error(7481,"could not configure Win32 OpenGL") end if
   if create(width,height)==0 then return error(7481,"could not create preview window") end if
+  if glAvailableNative()==0 then shutdownNative();return error(7481,"could not initialize Win32 OpenGL") end if
   if inputInitNative()==0 then shutdownNative();return error(7481,"could not initialize native input") end if
   inputActivateNative(1)
   return true
 end function
+function openConfigured(width,height,driverName,colorBits,depthBits,stencilBits,stereo,fullscreen,frequency,swapInterval)
+  if width<160 or height<120 or typeof(driverName)!="string" then return error(7480,"invalid configured preview mode") end if
+  driver=bytes(driverName);if len(driver)<1 or len(driver)>=260 then return error(7480,"invalid OpenGL driver name") end if
+  stereoValue=0;if stereo then stereoValue=1 end if;fullscreenValue=0;if fullscreen then fullscreenValue=1 end if
+  configured=glConfigureNative(nativeBytesPtr(driver),len(driver),colorBits,depthBits,stencilBits,stereoValue,fullscreenValue,frequency,swapInterval)
+  if configured==0 or create(width,height)==0 then return error(7481,"could not create configured Win32 OpenGL window") end if
+  if glAvailableNative()==0 then shutdownNative();return error(7481,"could not initialize configured Win32 OpenGL") end if
+  if inputInitNative()==0 then shutdownNative();return error(7481,"could not initialize native input") end if
+  inputActivateNative(1);return true
+end function
+function glAvailable() return glAvailableNative()!=0 end function
+function glConfiguration() return [glPixelFormatNative(),glColorBitsNative(),glDepthBitsNative(),glStencilBitsNative(),glStereoNative()!=0,glFullscreenNative()!=0] end function
+function glInfo(which)
+  data=bytes(4096,0);length=glInfoNative(which,data,len(data));if length<0 then return error(7493,"invalid OpenGL information selector") end if
+  return decode(slice(data,0,length))
+end function
+function glHasExtension(name) data=bytes(name);if len(data)<1 then return false end if;return glHasExtensionNative(nativeBytesPtr(data),len(data))!=0 end function
+function glSetSwapInterval(interval) return glSwapIntervalNative(interval)!=0 end function
+function glSetGamma(red,green,blue)
+  if typeof(red)!="bytes" or typeof(green)!="bytes" or typeof(blue)!="bytes" or len(red)<256 or len(green)<256 or len(blue)<256 then return error(7494,"gamma ramps must contain 256 bytes per channel") end if
+  return glSetGammaNative(nativeBytesPtr(red),nativeBytesPtr(green),nativeBytesPtr(blue),256)!=0
+end function
+function glRestoreGamma() glRestoreGammaNative();return void end function
+function glActivate(active) value=0;if active then value=1 end if;glActivateNative(value);return void end function
+function glLogComment(comment) data=bytes(comment);if len(data)>0 then glLogCommentNative(nativeBytesPtr(data),len(data)) end if;return void end function
 function poll() pollNative();inputFrameNative();return void end function
 function shouldClose() return shouldCloseNative()!=0 end function
 function setTitle(title)
@@ -158,6 +202,7 @@ function drawLine(a,b,red,green,blue)
   lineNative(numeric.trunc32(a.x),numeric.trunc32(a.y),numeric.trunc32(b.x),numeric.trunc32(b.y),red,green,blue);return void
 end function
 function present() presentNative();return void end function
+function endFrame() glEndFrameNative();return void end function
 function shutdown() shutdownNative();return void end function
 function clearDepth(depth) clearDepthNative(depth);return void end function
 function sampleDepth(x,y) return sampleDepthNative(numeric.trunc32(x),numeric.trunc32(y)) end function

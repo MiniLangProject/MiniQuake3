@@ -2849,3 +2849,38 @@ null nicht unterstützte Entities. `build/MiniQuake3.exe` hat SHA-256
 
 Das Inventar zählt jetzt **196 portierte, 23 teilweise portierte und 116 noch
 nicht begonnene** Dateien von insgesamt 335.
+
+## 2026-10-23: Patch-/Trace-Kollision, VM-ABI und Windows-WGL geschlossen
+
+Vier weitere partielle Originaldateien sind vollständig nativ zugeordnet:
+
+- `code/qcommon/cm_patch.c`: 27/27 Funktionen für Subdivision, Transpose,
+  Degeneratenentfernung, Plane-/Facet-/Bevel-Erzeugung sowie Point-, Box- und
+  Position-Traces. 12 unveränderte C-Kernel-Datensätze, 25 Verträge und 351
+  Retail-Patches auf q3dm1, q3dm17 und q3tourney2 stimmen exakt.
+- `code/qcommon/cm_trace.c`: alle 22 echten Funktionen für Capsule-, Box-,
+  Brush-, Leaf-, Patch-, Sphere-, Cylinder-, Tree- und Transform-Traces. Der
+  frühere Inventarkandidat `collision` war nur ein Kommentarwort. 4.096
+  unveränderte C-Fälle mit 40.960 exakten Feldern und die produktiven
+  Retail-Capsule-Verträge bestehen.
+- `code/qcommon/vm_local.h`: alle 60 Opcode-Ordinalen, beide
+  assemblerrelevanten Offsets, Symbol-/VM-Zustand und sämtliche internen
+  Deklarationen sind zugeordnet. Drei x86-ABI-Datensätze und 64 Verträge
+  bestehen.
+- `code/win32/win_glimp.c`: 21/21 Symbole für Treiber-/PFD-/WGL-Kontext,
+  Extensions, Swap, Gamma, Fullscreen, Aktivierung und Shutdown. Fünf
+  unveränderte `GLW_CreatePFD`-Datensätze, 31 Verträge und der native
+  `/W4 /WX`-WGL-Lifecycle bestehen.
+
+Auf dem zusammengeführten Stand bestehen außerdem der Windows-Hauptbuild, 20
+CGame-Renderer-Verträge, 25 spielbare Matchverträge, der q3dm1-Kollisionstest,
+der produktive Runtime-Trace und der gekoppelte acht Frames lange
+Retail-QVM-Match. Dieser meldet 131 Entities, 2.345 texturierte Dreiecke, 17
+Renderpässe, 26 Sounds und null nicht unterstützte Entities. Der Hauptbuild
+hat SHA-256 `a12ebd354db1d62f006d80a70ef9d6c453eef44bc191d46a0d6ddcbddf183697`.
+Die letzte vollständige Gesamtauswahl bleibt der dokumentierte 449-Gate-Lauf;
+die vier neuen Vollständigkeitsgates sind zusätzlich in `scripts/verify.py`
+registriert.
+
+Das Inventar zählt jetzt **200 portierte, 19 teilweise portierte und 116 noch
+nicht begonnene** Dateien von insgesamt 335.

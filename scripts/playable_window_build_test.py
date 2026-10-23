@@ -15,6 +15,7 @@ TEST = ROOT / "tests" / "playable_window_lifecycle.c"
 WORLD_BATCH_TEST = ROOT / "tests" / "playable_world_batch_native.c"
 RASTER_STATE_TEST = ROOT / "tests" / "playable_window_raster_state_native.c"
 INPUT_EVENTS_TEST = ROOT / "tests" / "playable_window_input_events_native.c"
+GL_TEST = ROOT / "tests" / "playable_window_gl_native.c"
 RASTER_EXPORTS = (
     "playable_window_set_title_utf8",
     "playable_window_next_input_event",
@@ -26,6 +27,22 @@ RASTER_EXPORTS = (
     "playable_window_input_configure_midi",
     "playable_window_input_joystick_available",
     "playable_window_input_midi_device_count",
+    "playable_window_gl_configure",
+    "playable_window_gl_available",
+    "playable_window_gl_pixel_format",
+    "playable_window_gl_color_bits",
+    "playable_window_gl_depth_bits",
+    "playable_window_gl_stencil_bits",
+    "playable_window_gl_stereo",
+    "playable_window_gl_fullscreen",
+    "playable_window_gl_info",
+    "playable_window_gl_has_extension",
+    "playable_window_gl_set_swap_interval",
+    "playable_window_gl_set_gamma",
+    "playable_window_gl_restore_gamma",
+    "playable_window_gl_activate",
+    "playable_window_gl_end_frame",
+    "playable_window_gl_log_comment",
     "playable_window_clear_depth",
     "playable_window_sample_depth",
     "playable_window_set_depth_range",
@@ -69,6 +86,7 @@ def main() -> int:
     world_batch_exe = OUT / "playable_world_batch_native.exe"
     raster_state_exe = OUT / "playable_window_raster_state_native.exe"
     input_events_exe = OUT / "playable_window_input_events_native.exe"
+    gl_exe = OUT / "playable_window_gl_native.exe"
     run([compiler, "/nologo", "/W4", "/WX", "/O2", "/LD", str(SOURCE),
          "/link", "user32.lib", "gdi32.lib", "winmm.lib", f"/OUT:{dll}", f"/IMPLIB:{lib}"], env)
     dumpbin = shutil.which("dumpbin.exe", path=env.get("PATH"))
@@ -91,6 +109,9 @@ def main() -> int:
     run([compiler, "/nologo", "/W4", "/WX", "/O2", str(INPUT_EVENTS_TEST),
          "user32.lib", "gdi32.lib", "winmm.lib", f"/Fe:{input_events_exe}"], env)
     run([str(input_events_exe)], env)
+    run([compiler, "/nologo", "/W4", "/WX", "/O2", str(GL_TEST), str(lib),
+         "user32.lib", "gdi32.lib", f"/Fe:{gl_exe}"], env)
+    run([str(gl_exe)], env)
     print(f"playable window build: PASS ({dll})")
     return 0
 

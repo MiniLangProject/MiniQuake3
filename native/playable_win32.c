@@ -1,18 +1,24 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <mmsystem.h>
+#include <GL/gl.h>
 #include <objbase.h>
 #include <wincodec.h>
 #include <stdint.h>
 #include <limits.h>
 #include <float.h>
 #include <math.h>
+#ifndef GL_BGRA_EXT
+#define GL_BGRA_EXT 0x80E1
+#endif
 
 #if defined(_MSC_VER)
 #define PLAYABLE_API __declspec(dllexport)
 #else
 #define PLAYABLE_API __attribute__((dllexport))
 #endif
+
+PLAYABLE_API void playable_window_input_activate(int active);
 
 static HWND windowHandle;
 static HDC windowDC;
@@ -38,6 +44,59 @@ static int windowCreateSucceeded;
 static SRWLOCK presentationLock = SRWLOCK_INIT;
 static LARGE_INTEGER timerFrequency;
 static LARGE_INTEGER timerStart;
+static HMODULE openGLModule;
+static HGLRC openGLContext;
+static int openGLActive;
+static int openGLPixelFormat;
+static int openGLColorBits;
+static int openGLDepthBits;
+static int openGLStencilBits;
+static int openGLStereo;
+static int openGLSwapInterval;
+static int requestedFullscreen;
+static int requestedDisplayFrequency;
+static int displayModeChanged;
+static wchar_t requestedOpenGLDriver[MAX_PATH];
+static int gammaRampAvailable;
+static int gammaRampChanged;
+static WORD originalGammaRamp[3][256];
+static char openGLExtensions[4096];
+static char openGLVendor[256];
+static char openGLRenderer[256];
+static char openGLVersion[256];
+
+typedef HGLRC (WINAPI *playableWglCreateContextProc)(HDC);
+typedef BOOL (WINAPI *playableWglDeleteContextProc)(HGLRC);
+typedef BOOL (WINAPI *playableWglMakeCurrentProc)(HDC,HGLRC);
+typedef PROC (WINAPI *playableWglGetProcAddressProc)(LPCSTR);
+typedef const GLubyte *(APIENTRY *playableGlGetStringProc)(GLenum);
+typedef void (APIENTRY *playableGlViewportProc)(GLint,GLint,GLsizei,GLsizei);
+typedef void (APIENTRY *playableGlMatrixModeProc)(GLenum);
+typedef void (APIENTRY *playableGlLoadIdentityProc)(void);
+typedef void (APIENTRY *playableGlOrthoProc)(GLdouble,GLdouble,GLdouble,GLdouble,GLdouble,GLdouble);
+typedef void (APIENTRY *playableGlRasterPos2iProc)(GLint,GLint);
+typedef void (APIENTRY *playableGlPixelZoomProc)(GLfloat,GLfloat);
+typedef void (APIENTRY *playableGlPixelStoreiProc)(GLenum,GLint);
+typedef void (APIENTRY *playableGlDrawPixelsProc)(GLsizei,GLsizei,GLenum,GLenum,const GLvoid *);
+typedef void (APIENTRY *playableGlClearColorProc)(GLclampf,GLclampf,GLclampf,GLclampf);
+typedef void (APIENTRY *playableGlClearProc)(GLbitfield);
+typedef BOOL (WINAPI *playableWglSwapIntervalProc)(int);
+static playableWglCreateContextProc playableWglCreateContext;
+static playableWglDeleteContextProc playableWglDeleteContext;
+static playableWglMakeCurrentProc playableWglMakeCurrent;
+static playableWglGetProcAddressProc playableWglGetProcAddress;
+static playableGlGetStringProc playableGlGetString;
+static playableGlViewportProc playableGlViewport;
+static playableGlMatrixModeProc playableGlMatrixMode;
+static playableGlLoadIdentityProc playableGlLoadIdentity;
+static playableGlOrthoProc playableGlOrtho;
+static playableGlRasterPos2iProc playableGlRasterPos2i;
+static playableGlPixelZoomProc playableGlPixelZoom;
+static playableGlPixelStoreiProc playableGlPixelStorei;
+static playableGlDrawPixelsProc playableGlDrawPixels;
+static playableGlClearColorProc playableGlClearColor;
+static playableGlClearProc playableGlClear;
+static playableWglSwapIntervalProc playableWglSwapInterval;
 
 #define PLAYABLE_INPUT_EVENTS 256
 #define PLAYABLE_INPUT_KEY 1
@@ -446,6 +505,118 @@ static void pollJoystick(int time) {
     }
 }
 
+static void copyGLString(char *destination, size_t capacity, const GLubyte *source) {
+    size_t length;
+    if (!destination || !capacity) return;
+    destination[0] = '\0';
+    if (!source) return;
+    length = strlen((const char *)source);
+    if (length >= capacity) length = capacity - 1;
+    CopyMemory(destination, source, length);
+    destination[length] = '\0';
+}
+
+static void shutdownOpenGL(void) {
+    if (gammaRampChanged && windowDC) SetDeviceGammaRamp(windowDC, originalGammaRamp);
+    gammaRampChanged = 0;
+    if (playableWglMakeCurrent) playableWglMakeCurrent(0, 0);
+    if (openGLContext && playableWglDeleteContext) playableWglDeleteContext(openGLContext);
+    openGLContext = 0;
+    openGLActive = 0;
+    openGLPixelFormat = 0;
+    gammaRampAvailable = 0;
+    playableWglSwapInterval = 0;
+    playableWglCreateContext = 0; playableWglDeleteContext = 0;
+    playableWglMakeCurrent = 0; playableWglGetProcAddress = 0;
+    playableGlGetString = 0; playableGlViewport = 0; playableGlMatrixMode = 0;
+    playableGlLoadIdentity = 0; playableGlOrtho = 0; playableGlRasterPos2i = 0;
+    playableGlPixelZoom = 0; playableGlPixelStorei = 0; playableGlDrawPixels = 0;
+    playableGlClearColor = 0; playableGlClear = 0;
+    if (openGLModule) FreeLibrary(openGLModule);
+    openGLModule = 0;
+    openGLExtensions[0] = openGLVendor[0] = openGLRenderer[0] = openGLVersion[0] = '\0';
+}
+
+static int initializeOpenGL(const wchar_t *driverName) {
+    PIXELFORMATDESCRIPTOR requested;
+    PIXELFORMATDESCRIPTOR selected;
+    const char *swapExtensions[] = { "wglSwapIntervalEXT" };
+    PROC swapProc;
+    (void)swapExtensions;
+    if (openGLActive) return 1;
+    shutdownOpenGL();
+    if (!windowHandle || !windowDC) return 0;
+    openGLModule = LoadLibraryW(driverName && driverName[0] ? driverName : L"opengl32.dll");
+    if (!openGLModule) return 0;
+#pragma warning(push)
+#pragma warning(disable:4191)
+    playableWglCreateContext = (playableWglCreateContextProc)GetProcAddress(openGLModule,"wglCreateContext");
+    playableWglDeleteContext = (playableWglDeleteContextProc)GetProcAddress(openGLModule,"wglDeleteContext");
+    playableWglMakeCurrent = (playableWglMakeCurrentProc)GetProcAddress(openGLModule,"wglMakeCurrent");
+    playableWglGetProcAddress = (playableWglGetProcAddressProc)GetProcAddress(openGLModule,"wglGetProcAddress");
+    playableGlGetString = (playableGlGetStringProc)GetProcAddress(openGLModule,"glGetString");
+    playableGlViewport = (playableGlViewportProc)GetProcAddress(openGLModule,"glViewport");
+    playableGlMatrixMode = (playableGlMatrixModeProc)GetProcAddress(openGLModule,"glMatrixMode");
+    playableGlLoadIdentity = (playableGlLoadIdentityProc)GetProcAddress(openGLModule,"glLoadIdentity");
+    playableGlOrtho = (playableGlOrthoProc)GetProcAddress(openGLModule,"glOrtho");
+    playableGlRasterPos2i = (playableGlRasterPos2iProc)GetProcAddress(openGLModule,"glRasterPos2i");
+    playableGlPixelZoom = (playableGlPixelZoomProc)GetProcAddress(openGLModule,"glPixelZoom");
+    playableGlPixelStorei = (playableGlPixelStoreiProc)GetProcAddress(openGLModule,"glPixelStorei");
+    playableGlDrawPixels = (playableGlDrawPixelsProc)GetProcAddress(openGLModule,"glDrawPixels");
+    playableGlClearColor = (playableGlClearColorProc)GetProcAddress(openGLModule,"glClearColor");
+    playableGlClear = (playableGlClearProc)GetProcAddress(openGLModule,"glClear");
+#pragma warning(pop)
+    if (!playableWglCreateContext || !playableWglDeleteContext || !playableWglMakeCurrent ||
+            !playableWglGetProcAddress || !playableGlGetString || !playableGlViewport ||
+            !playableGlMatrixMode || !playableGlLoadIdentity || !playableGlOrtho ||
+            !playableGlRasterPos2i || !playableGlPixelZoom || !playableGlPixelStorei ||
+            !playableGlDrawPixels || !playableGlClearColor || !playableGlClear) {
+        shutdownOpenGL(); return 0;
+    }
+    ZeroMemory(&requested, sizeof(requested));
+    requested.nSize = sizeof(requested); requested.nVersion = 1;
+    requested.dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
+    if (openGLStereo) requested.dwFlags |= PFD_STEREO;
+    requested.iPixelType = PFD_TYPE_RGBA;
+    requested.cColorBits = (BYTE)(openGLColorBits ? openGLColorBits : 24);
+    requested.cDepthBits = (BYTE)(openGLDepthBits ? openGLDepthBits : 24);
+    requested.cStencilBits = (BYTE)(openGLStencilBits ? openGLStencilBits : 8);
+    requested.iLayerType = PFD_MAIN_PLANE;
+    openGLPixelFormat = ChoosePixelFormat(windowDC, &requested);
+    if (!openGLPixelFormat || !DescribePixelFormat(windowDC, openGLPixelFormat,
+            sizeof(selected), &selected) || !SetPixelFormat(windowDC, openGLPixelFormat, &selected)) {
+        shutdownOpenGL(); return 0;
+    }
+    openGLContext = playableWglCreateContext(windowDC);
+    if (!openGLContext || !playableWglMakeCurrent(windowDC, openGLContext)) {
+        shutdownOpenGL(); return 0;
+    }
+    openGLColorBits = selected.cColorBits;
+    openGLDepthBits = selected.cDepthBits;
+    openGLStencilBits = selected.cStencilBits;
+    openGLStereo = (selected.dwFlags & PFD_STEREO) != 0;
+    copyGLString(openGLVendor,sizeof(openGLVendor),playableGlGetString(GL_VENDOR));
+    copyGLString(openGLRenderer,sizeof(openGLRenderer),playableGlGetString(GL_RENDERER));
+    copyGLString(openGLVersion,sizeof(openGLVersion),playableGlGetString(GL_VERSION));
+    copyGLString(openGLExtensions,sizeof(openGLExtensions),playableGlGetString(GL_EXTENSIONS));
+#pragma warning(push)
+#pragma warning(disable:4191)
+    swapProc = playableWglGetProcAddress("wglSwapIntervalEXT");
+    if (swapProc && swapProc != (PROC)1 && swapProc != (PROC)2 &&
+            swapProc != (PROC)3 && swapProc != (PROC)-1)
+        playableWglSwapInterval = (playableWglSwapIntervalProc)swapProc;
+#pragma warning(pop)
+    if (playableWglSwapInterval) playableWglSwapInterval(openGLSwapInterval);
+    gammaRampAvailable = GetDeviceGammaRamp(windowDC, originalGammaRamp) != FALSE;
+    openGLActive = 1;
+    return 1;
+}
+
+static void restoreDisplayMode(void) {
+    if (displayModeChanged) ChangeDisplaySettingsW(0, 0);
+    displayModeChanged = 0;
+}
+
 static void releaseSurface(void) {
     if (pixels) {
         VirtualFree(pixels, 0, MEM_RELEASE);
@@ -648,7 +819,7 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
             HDC dc = BeginPaint(hwnd, &paint);
             GetClientRect(hwnd, &client);
             AcquireSRWLockShared(&presentationLock);
-            if (presentedPixels) StretchDIBits(dc, 0, 0, client.right, client.bottom,
+            if (presentedPixels && !openGLActive) StretchDIBits(dc, 0, 0, client.right, client.bottom,
                 0, 0, surfaceWidth, surfaceHeight, presentedPixels, &bitmapInfo,
                 DIB_RGB_COLORS, SRCCOPY);
             ReleaseSRWLockShared(&presentationLock);
@@ -668,6 +839,7 @@ static DWORD WINAPI playableWindowThread(void *parameter) {
     HINSTANCE instance = GetModuleHandleW(0);
     int width = requestedWindowWidth;
     int height = requestedWindowHeight;
+    DWORD style = WS_OVERLAPPEDWINDOW;
     (void)parameter;
     if (!classRegistered) {
         ZeroMemory(&wc, sizeof(wc));
@@ -684,17 +856,33 @@ static DWORD WINAPI playableWindowThread(void *parameter) {
         }
         classRegistered = 1;
     }
+    if (requestedFullscreen) {
+        DEVMODEW mode;
+        ZeroMemory(&mode, sizeof(mode)); mode.dmSize = sizeof(mode);
+        mode.dmPelsWidth = (DWORD)width; mode.dmPelsHeight = (DWORD)height;
+        mode.dmBitsPerPel = (DWORD)(openGLColorBits ? openGLColorBits : 32);
+        mode.dmFields = DM_PELSWIDTH | DM_PELSHEIGHT | DM_BITSPERPEL;
+        if (requestedDisplayFrequency > 0) {
+            mode.dmDisplayFrequency = (DWORD)requestedDisplayFrequency;
+            mode.dmFields |= DM_DISPLAYFREQUENCY;
+        }
+        if (ChangeDisplaySettingsW(&mode, CDS_FULLSCREEN) == DISP_CHANGE_SUCCESSFUL) {
+            displayModeChanged = 1;
+            style = WS_POPUP;
+        } else requestedFullscreen = 0;
+    }
     rectangle.left = 0; rectangle.top = 0; rectangle.right = width; rectangle.bottom = height;
-    AdjustWindowRect(&rectangle, WS_OVERLAPPEDWINDOW, FALSE);
+    if (!requestedFullscreen) AdjustWindowRect(&rectangle, style, FALSE);
     mouseDX = mouseDY = 0;
     InterlockedExchange(&inputAppActive, 0);
     InterlockedExchange(&inputMouseActive, 0);
     resetInputEvents();
     windowHandle = CreateWindowExW(0, L"MiniQuake3PlayableWindow", L"MiniQuake3 - playable preview",
-        WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
+        style, requestedFullscreen ? 0 : CW_USEDEFAULT, requestedFullscreen ? 0 : CW_USEDEFAULT,
         rectangle.right - rectangle.left, rectangle.bottom - rectangle.top,
         0, 0, instance, 0);
     if (!windowHandle) {
+        restoreDisplayMode();
         SetEvent(windowCreatedEvent);
         return 0;
     }
@@ -758,7 +946,108 @@ PLAYABLE_API int playable_window_create(int width, int height) {
         releaseSurface();
         return 0;
     }
+    if (!openGLColorBits) openGLColorBits = 24;
+    if (!openGLDepthBits) openGLDepthBits = 24;
+    if (!openGLStencilBits) openGLStencilBits = 8;
+    initializeOpenGL(requestedOpenGLDriver[0] ? requestedOpenGLDriver : L"opengl32.dll");
     return 1;
+}
+
+PLAYABLE_API int playable_window_gl_configure(const unsigned char *driver, int driverLength,
+        int colorBits, int depthBits, int stencilBits, int stereo, int fullscreen,
+        int displayFrequency, int swapInterval) {
+    int converted;
+    if (windowHandle || driverLength < 0 || driverLength >= MAX_PATH || colorBits < 0 ||
+            depthBits < 0 || stencilBits < 0 || displayFrequency < 0) return 0;
+    requestedOpenGLDriver[0] = L'\0';
+    if (driverLength) {
+        if (!driver) return 0;
+        converted = MultiByteToWideChar(CP_UTF8, MB_ERR_INVALID_CHARS,
+            (const char *)driver, driverLength, requestedOpenGLDriver, MAX_PATH - 1);
+        if (converted < 1) return 0;
+        requestedOpenGLDriver[converted] = L'\0';
+    }
+    openGLColorBits = colorBits ? colorBits : 24;
+    openGLDepthBits = depthBits ? depthBits : 24;
+    openGLStencilBits = stencilBits;
+    openGLStereo = stereo != 0;
+    requestedFullscreen = fullscreen != 0;
+    requestedDisplayFrequency = displayFrequency;
+    openGLSwapInterval = swapInterval;
+    return 1;
+}
+
+PLAYABLE_API int playable_window_gl_available(void) { return openGLActive; }
+PLAYABLE_API int playable_window_gl_pixel_format(void) { return openGLPixelFormat; }
+PLAYABLE_API int playable_window_gl_color_bits(void) { return openGLColorBits; }
+PLAYABLE_API int playable_window_gl_depth_bits(void) { return openGLDepthBits; }
+PLAYABLE_API int playable_window_gl_stencil_bits(void) { return openGLStencilBits; }
+PLAYABLE_API int playable_window_gl_stereo(void) { return openGLStereo; }
+PLAYABLE_API int playable_window_gl_fullscreen(void) { return requestedFullscreen && displayModeChanged; }
+
+PLAYABLE_API int playable_window_gl_info(int which, unsigned char *output, int capacity) {
+    const char *source = "";
+    size_t length;
+    if (!output || capacity < 1) return -1;
+    if (which == 0) source = openGLVendor;
+    else if (which == 1) source = openGLRenderer;
+    else if (which == 2) source = openGLVersion;
+    else if (which == 3) source = openGLExtensions;
+    else return -1;
+    length = strlen(source);
+    if (length >= (size_t)capacity) length = (size_t)capacity - 1;
+    CopyMemory(output, source, length); output[length] = 0;
+    return (int)length;
+}
+
+PLAYABLE_API int playable_window_gl_has_extension(const unsigned char *name, int length) {
+    const char *at;
+    char terminated[256];
+    if (!name || length < 1 || length > 255 || !openGLActive) return 0;
+    CopyMemory(terminated, name, (size_t)length); terminated[length] = '\0';
+    at = openGLExtensions;
+    while ((at = strstr(at, terminated)) != 0) {
+        if ((at == openGLExtensions || at[-1] == ' ') &&
+                (at[length] == '\0' || at[length] == ' ') &&
+                strncmp(at, (const char *)name, (size_t)length) == 0) return 1;
+        ++at;
+    }
+    return 0;
+}
+
+PLAYABLE_API int playable_window_gl_set_swap_interval(int interval) {
+    openGLSwapInterval = interval;
+    return playableWglSwapInterval ? playableWglSwapInterval(interval) != FALSE : interval == 0;
+}
+
+PLAYABLE_API int playable_window_gl_set_gamma(const unsigned char *red,
+        const unsigned char *green, const unsigned char *blue, int count) {
+    WORD ramp[3][256];
+    int index;
+    if (!gammaRampAvailable || !windowDC || !red || !green || !blue || count < 256) return 0;
+    for (index = 0; index < 256; ++index) {
+        ramp[0][index] = (WORD)((red[index] << 8) | red[index]);
+        ramp[1][index] = (WORD)((green[index] << 8) | green[index]);
+        ramp[2][index] = (WORD)((blue[index] << 8) | blue[index]);
+    }
+    if (!SetDeviceGammaRamp(windowDC, ramp)) return 0;
+    gammaRampChanged = 1;
+    return 1;
+}
+
+PLAYABLE_API void playable_window_gl_restore_gamma(void) {
+    if (gammaRampChanged && windowDC) SetDeviceGammaRamp(windowDC, originalGammaRamp);
+    gammaRampChanged = 0;
+}
+
+PLAYABLE_API void playable_window_gl_activate(int active) {
+    if (!windowHandle) return;
+    if (active) {
+        ShowWindow(windowHandle, SW_RESTORE);
+        SetForegroundWindow(windowHandle);
+        SetFocus(windowHandle);
+    } else ShowWindow(windowHandle, SW_MINIMIZE);
+    playable_window_input_activate(active);
 }
 
 PLAYABLE_API void playable_window_poll(void) {
@@ -2460,10 +2749,37 @@ PLAYABLE_API void playable_window_present(void) {
     AcquireSRWLockExclusive(&presentationLock);
     CopyMemory(presentedPixels, pixels, (SIZE_T)surfaceWidth * (SIZE_T)surfaceHeight * 4u);
     GetClientRect(windowHandle, &client);
-    StretchDIBits(windowDC, 0, 0, client.right, client.bottom,
-        0, 0, surfaceWidth, surfaceHeight, presentedPixels, &bitmapInfo,
-        DIB_RGB_COLORS, SRCCOPY);
+    if (openGLActive && playableWglMakeCurrent(windowDC, openGLContext)) {
+        int width = client.right > 0 ? client.right : surfaceWidth;
+        int height = client.bottom > 0 ? client.bottom : surfaceHeight;
+        playableGlViewport(0, 0, width, height);
+        playableGlMatrixMode(GL_PROJECTION); playableGlLoadIdentity();
+        playableGlOrtho(0.0, (GLdouble)width, 0.0, (GLdouble)height, -1.0, 1.0);
+        playableGlMatrixMode(GL_MODELVIEW); playableGlLoadIdentity();
+        playableGlClearColor(0.0f, 0.0f, 0.0f, 1.0f); playableGlClear(GL_COLOR_BUFFER_BIT);
+        playableGlPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+        playableGlRasterPos2i(0, height);
+        playableGlPixelZoom((GLfloat)width / (GLfloat)surfaceWidth,
+            -(GLfloat)height / (GLfloat)surfaceHeight);
+        playableGlDrawPixels(surfaceWidth, surfaceHeight, GL_BGRA_EXT,
+            GL_UNSIGNED_BYTE, presentedPixels);
+        SwapBuffers(windowDC);
+    } else {
+        StretchDIBits(windowDC, 0, 0, client.right, client.bottom,
+            0, 0, surfaceWidth, surfaceHeight, presentedPixels, &bitmapInfo,
+            DIB_RGB_COLORS, SRCCOPY);
+    }
     ReleaseSRWLockExclusive(&presentationLock);
+}
+
+PLAYABLE_API void playable_window_gl_end_frame(void) { playable_window_present(); }
+
+PLAYABLE_API void playable_window_gl_log_comment(const unsigned char *comment, int length) {
+    char text[1024];
+    if (!comment || length < 1) return;
+    if (length > (int)sizeof(text) - 1) length = (int)sizeof(text) - 1;
+    CopyMemory(text, comment, (size_t)length); text[length] = '\0';
+    OutputDebugStringA(text);
 }
 
 PLAYABLE_API void playable_window_shutdown(void) {
@@ -2471,6 +2787,7 @@ PLAYABLE_API void playable_window_shutdown(void) {
     int slot;
     shutdownMidi();
     playable_window_input_activate(0);
+    shutdownOpenGL();
     if (oldWindow) PostMessageW(oldWindow, WM_APP + 1, 0, 0);
     if (windowThread) {
         WaitForSingleObject(windowThread, INFINITE);
@@ -2482,6 +2799,7 @@ PLAYABLE_API void playable_window_shutdown(void) {
     inputJoystickEnabled = 0;
     inputJoystickAvailable = 0;
     ZeroMemory(&inputJoystickCaps, sizeof(inputJoystickCaps));
+    restoreDisplayMode();
     resetInputEvents();
     releaseSurface();
     for (slot = 0; slot < PLAYABLE_TEXTURE_SLOTS; ++slot) playable_window_release_texture(slot);

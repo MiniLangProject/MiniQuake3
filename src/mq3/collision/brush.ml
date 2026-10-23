@@ -26,6 +26,50 @@ function emptyTrace()
   return Trace(n.f32(1), [0.0,0.0,0.0], 0.0, 0, 0, false, false,0)
 end function
 
+// BASIC MATH from cm_trace.c.  These stay here beside the brush kernel so
+// capsule primitives and their differential tests share the exact binary32
+// operation ordering of the original C translation unit.
+function projectPointOntoVector(point, start, direction)
+  delta = [n.fsub(point[0],start[0]),n.fsub(point[1],start[1]),n.fsub(point[2],start[2])]
+  scale = q.DotProduct(delta,direction)
+  return q.VectorMA(start,scale,direction)
+end function
+
+function vectorDistanceSquared(a,b)
+  delta = [n.fsub(b[0],a[0]),n.fsub(b[1],a[1]),n.fsub(b[2],a[2])]
+  return q.DotProduct(delta,delta)
+end function
+
+function distanceFromLineSquared(point,lineStart,lineEnd,direction)
+  projected = projectPointOntoVector(point,lineStart,direction)
+  outside = -1
+  for axis = 0 to 2
+    if (projected[axis] > lineStart[axis] and projected[axis] > lineEnd[axis]) or (projected[axis] < lineStart[axis] and projected[axis] < lineEnd[axis]) then outside=axis;break end if
+  end for
+  endpoint = projected
+  if outside >= 0 then
+    if q.Q_fabs(n.fsub(projected[outside],lineStart[outside])) < q.Q_fabs(n.fsub(projected[outside],lineEnd[outside])) then endpoint=lineStart else endpoint=lineEnd end if
+  end if
+  delta = [n.fsub(point[0],endpoint[0]),n.fsub(point[1],endpoint[1]),n.fsub(point[2],endpoint[2])]
+  return q.DotProduct(delta,delta)
+end function
+
+function squareRootFloat(number)
+  x = n.fmul(number,0.5)
+  y = n.f32(number)
+  bits = n.i32(n.floatBits(y))
+  bits = n.i32(0x5f3759df - (bits >> 1))
+  y = n.bitsFloat(bits)
+  y = n.fmul(y,n.fsub(1.5,n.fmul(n.fmul(x,y),y)))
+  y = n.fmul(y,n.fsub(1.5,n.fmul(n.fmul(x,y),y)))
+  return n.fmul(number,y)
+end function
+
+function CM_ProjectPointOntoVector(point,start,direction) return projectPointOntoVector(point,start,direction) end function
+function CM_DistanceFromLineSquared(point,lineStart,lineEnd,direction) return distanceFromLineSquared(point,lineStart,lineEnd,direction) end function
+function CM_VectorDistanceSquared(a,b) return vectorDistanceSquared(a,b) end function
+function SquareRootFloat(number) return squareRootFloat(number) end function
+
 function traceThroughBrush(trace, planes, contents, start, finish, mins, maxs, capsule, radius, capsuleOffset)
   if len(planes) == 0 then return trace end if
   enterFraction = n.f32(-1)
@@ -98,4 +142,8 @@ function traceThroughBrush(trace, planes, contents, start, finish, mins, maxs, c
     trace.planeMetadata = kind | (signbits << 8)
   end if
   return trace
+end function
+
+function CM_TraceThroughBrush(trace,planes,contents,start,finish,mins,maxs,capsule,radius,capsuleOffset)
+  return traceThroughBrush(trace,planes,contents,start,finish,mins,maxs,capsule,radius,capsuleOffset)
 end function

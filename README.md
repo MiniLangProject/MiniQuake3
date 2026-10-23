@@ -28,8 +28,8 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **196 sind
-vollständig portiert, 23 teilweise portiert und 116 noch nicht begonnen**.
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **200 sind
+vollständig portiert, 19 teilweise portiert und 116 noch nicht begonnen**.
 Der aktuelle Integrationsblock schließt `cvar.c`, `net_chan.c`, `cm_polylib.c`
 und `be_interface.c`. Damit sind vollständige Cvar- und QVM-Trap-Semantik,
 Netchan samt Loopback/Fragmentierung/Adresspfaden, alle Winding-Operationen und
@@ -53,6 +53,18 @@ Capture/Fokus, Tastatur, fünf Maustasten, Wheel, Joystick/POV/Trackball und MID
 Die öffentliche Tasten-/Binding-/Console-/Chat-ABI aus `keys.h` ist ebenfalls
 vollständig zugeordnet. Hauptbuild und Fokusgates sowie der acht Frames lange
 Retail-Match bestehen; `build/MiniQuake3.exe` hat SHA-256 `5c46402ee19d38d5cebdb76e0862e006984e6b020230c3cce5eca0546638035c`.
+
+Ein weiterer Integrationsblock schließt `cm_patch.c`, `cm_trace.c`,
+`vm_local.h` und `win_glimp.c`. Damit sind die vollständige Patchkonstruktion
+und -kollision, Box-/Capsule-/Brush-/Tree-/Transform-Traces, die interne VM-ABI
+mit allen 60 Opcode-Ordinalen sowie der produktive Windows-WGL-Lifecycle
+abgedeckt. Die neuen Gates bestehen 12 exakte Patch-Kernel-Datensätze, 351
+Retail-Patches auf drei Maps, 4.096 unveränderte C-Trace-Fälle mit 40.960
+Feldern, drei VM-ABI-Datensätze, 64 VM-Verträge, fünf PFD-Datensätze und 31
+WGL-Verträge. Hauptbuild, erweitertes CGame-Rendering, spielbarer Match und der
+acht Frames lange Retail-QVM-Match sind auf dem zusammengeführten Stand grün.
+`build/MiniQuake3.exe` hat SHA-256
+`a12ebd354db1d62f006d80a70ef9d6c453eef44bc191d46a0d6ddcbddf183697`.
 
 Der aktuelle Stand ist im [AAS-/Botlib-Bericht](docs/AAS_RUNTIME.md) und im
 [vollständigen AI-Trap-Audit 500–577](docs/BOTLIB_AI_TRAP_AUDIT.md) dokumentiert.

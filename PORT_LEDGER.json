@@ -36679,127 +36679,262 @@
       ],
       "symbol_mapping": [
         {
-          "original": "CM_GeneratePatchCollide",
-          "target_files": [
-            "src/mq3/collision/patchmesh.ml",
-            "src/mq3/collision/patchtrace.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_SubdivideGridColumns",
-          "target_files": [
-            "src/mq3/collision/patchmesh.ml",
-            "src/mq3/collision/patchtrace.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_TransposeGrid",
-          "target_files": [
-            "src/mq3/collision/patchmesh.ml",
-            "src/mq3/collision/patchtrace.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_RemoveDegenerateColumns",
-          "target_files": [
-            "src/mq3/collision/patchmesh.ml",
-            "src/mq3/collision/patchtrace.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_PatchCollideFromGrid",
-          "target_files": [
-            "src/mq3/collision/patchmesh.ml",
-            "src/mq3/collision/patchtrace.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
           "original": "CM_AddFacetBevels",
           "target_files": [
             "src/mq3/collision/patchmesh.ml",
-            "src/mq3/collision/patchtrace.ml"
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_ValidateFacet",
-          "target_files": [
-            "src/mq3/collision/patchmesh.ml",
-            "src/mq3/collision/patchtrace.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_FindPlane",
-          "target_files": [
-            "src/mq3/collision/patchmesh.ml",
-            "src/mq3/collision/patchtrace.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_FindPlane2",
-          "target_files": [
-            "src/mq3/collision/patchmesh.ml",
-            "src/mq3/collision/patchtrace.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_SetBorderInward",
-          "target_files": [
-            "src/mq3/collision/patchmesh.ml",
-            "src/mq3/collision/patchtrace.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_TracePointThroughPatchCollide",
-          "target_files": [
-            "src/mq3/collision/patchmesh.ml",
-            "src/mq3/collision/patchtrace.ml"
-          ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All 27 cm_patch functions are present and productively wired: grid subdivision/transposition, plane/facet/bevel construction, point/box/position tracing, level lifecycle and debug surface traversal. The unchanged C kernel oracle, 25 contracts and 351 Retail patches on three maps pass exactly."
         },
         {
           "original": "CM_CheckFacetPlane",
           "target_files": [
             "src/mq3/collision/patchmesh.ml",
-            "src/mq3/collision/patchtrace.ml"
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact"
         },
         {
-          "original": "CM_TraceThroughPatchCollide",
+          "original": "CM_ClearLevelPatches",
           "target_files": [
             "src/mq3/collision/patchmesh.ml",
-            "src/mq3/collision/patchtrace.ml"
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_ComparePoints",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_DrawDebugSurface",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_EdgePlaneNum",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_FindPlane",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_FindPlane2",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_GeneratePatchCollide",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_GridPlane",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_NeedsSubdivision",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_PatchCollideFromGrid",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_PlaneEqual",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_PlaneFromPoints",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_PointOnPlaneSide",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
         },
         {
           "original": "CM_PositionTestInPatchCollide",
           "target_files": [
             "src/mq3/collision/patchmesh.ml",
-            "src/mq3/collision/patchtrace.ml"
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_RemoveDegenerateColumns",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_SetBorderInward",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_SetGridWrapWidth",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_SignbitsForNormal",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_SnapVector",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_Subdivide",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_SubdivideGridColumns",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_TracePointThroughPatchCollide",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_TraceThroughPatchCollide",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_TransposeGrid",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_ValidateFacet",
+          "target_files": [
+            "src/mq3/collision/patchmesh.ml",
+            "src/mq3/collision/patchtrace.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
         }
       ],
       "target": [
         "src/mq3/collision/patchmesh.ml",
-        "src/mq3/collision/patchtrace.ml"
+        "src/mq3/collision/patchtrace.ml",
+        "src/mq3/collision/world.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_cm_patch_complete.py",
         "scripts/test_patches.py",
         "scripts/test_collision.py",
-        "scripts/test_movement.py"
+        "scripts/test_movement.py",
+        "scripts/test_retail_qvm_match.py"
       ]
     },
     {
@@ -37071,33 +37206,25 @@
         "CreateRotationMatrix",
         "RotatePoint",
         "SquareRootFloat",
-        "TransposeMatrix",
-        "collision"
+        "TransposeMatrix"
       ],
       "symbol_mapping": [
         {
-          "original": "CM_TraceThroughBrush",
+          "original": "CM_BoxTrace",
           "target_files": [
             "src/mq3/collision/brush.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All 22 real functions are present and productively wired for box/capsule position and sweep traces through brushes, leaves, patches, spheres, vertical cylinders, BSP trees and transformed inline models. The former candidate `collision` was a comment-only inventory token, not a C symbol."
         },
         {
-          "original": "CM_TestBoxInBrush",
+          "original": "CM_DistanceFromLineSquared",
           "target_files": [
             "src/mq3/collision/brush.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_TestInLeaf",
-          "target_files": [
-            "src/mq3/collision/brush.ml",
-            "src/mq3/collision/world.ml"
-          ],
-          "status": "tested_subset"
+          "status": "tested_exact"
         },
         {
           "original": "CM_PositionTest",
@@ -37105,31 +37232,47 @@
             "src/mq3/collision/brush.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact"
         },
         {
-          "original": "CM_TraceThroughTree",
+          "original": "CM_ProjectPointOntoVector",
           "target_files": [
             "src/mq3/collision/brush.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact"
         },
         {
-          "original": "CM_TraceThroughLeaf",
+          "original": "CM_TestBoundingBoxInCapsule",
           "target_files": [
             "src/mq3/collision/brush.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact"
         },
         {
-          "original": "CM_TraceThroughPatch",
+          "original": "CM_TestBoxInBrush",
           "target_files": [
             "src/mq3/collision/brush.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_TestCapsuleInCapsule",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_TestInLeaf",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
         },
         {
           "original": "CM_Trace",
@@ -37137,15 +37280,63 @@
             "src/mq3/collision/brush.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact"
         },
         {
-          "original": "CM_BoxTrace",
+          "original": "CM_TraceBoundingBoxThroughCapsule",
           "target_files": [
             "src/mq3/collision/brush.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_TraceThroughBrush",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_TraceThroughLeaf",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_TraceThroughPatch",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_TraceThroughSphere",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_TraceThroughTree",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_TraceThroughVerticalCylinder",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
         },
         {
           "original": "CM_TransformedBoxTrace",
@@ -37153,7 +37344,15 @@
             "src/mq3/collision/brush.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact"
+        },
+        {
+          "original": "CM_VectorDistanceSquared",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
         },
         {
           "original": "CreateRotationMatrix",
@@ -37161,7 +37360,7 @@
             "src/mq3/collision/brush.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact"
         },
         {
           "original": "RotatePoint",
@@ -37169,7 +37368,15 @@
             "src/mq3/collision/brush.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact"
+        },
+        {
+          "original": "SquareRootFloat",
+          "target_files": [
+            "src/mq3/collision/brush.ml",
+            "src/mq3/collision/world.ml"
+          ],
+          "status": "tested_exact"
         },
         {
           "original": "TransposeMatrix",
@@ -37177,20 +37384,21 @@
             "src/mq3/collision/brush.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact"
         }
       ],
       "target": [
         "src/mq3/collision/brush.ml",
         "src/mq3/collision/world.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_cm_trace_complete.py",
         "scripts/test_brush.py",
         "scripts/test_collision.py",
-        "scripts/test_movement.py",
         "scripts/test_spatial.py",
-        "scripts/test_runtime_spatial.py"
+        "scripts/test_movement.py",
+        "scripts/test_runtime_trace.py"
       ]
     },
     {
@@ -39898,26 +40106,91 @@
       "symbol_candidates": [],
       "symbol_mapping": [
         {
-          "original": "opcode_t",
+          "original": "opcode_t (60 exact ordinals)",
           "target_files": [
-            "src/mq3/vm/interpreter.ml"
+            "src/mq3/vm/abi.ml",
+            "src/mq3/vm/interpreter.ml",
+            "src/mq3/vm/runtime.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Complete internal VM ABI ownership: 60 opcode ordinals, assembler-visible offsets, symbol/state representations and declared compile/interpreter/symbol/logging entry points. Pointer-heavy C storage is represented by managed MiniLang state while runtime behavior remains in interpreter.ml and runtime.ml."
         },
         {
-          "original": "vm_s",
+          "original": "VM_OFFSET_PROGRAM_STACK / VM_OFFSET_SYSTEM_CALL",
           "target_files": [
-            "src/mq3/vm/interpreter.ml"
+            "src/mq3/vm/abi.ml",
+            "src/mq3/vm/interpreter.ml",
+            "src/mq3/vm/runtime.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact"
+        },
+        {
+          "original": "vmSymbol_t",
+          "target_files": [
+            "src/mq3/vm/abi.ml",
+            "src/mq3/vm/interpreter.ml",
+            "src/mq3/vm/runtime.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "vm_s managed state",
+          "target_files": [
+            "src/mq3/vm/abi.ml",
+            "src/mq3/vm/interpreter.ml",
+            "src/mq3/vm/runtime.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "VM_Compile / VM_CallCompiled",
+          "target_files": [
+            "src/mq3/vm/abi.ml",
+            "src/mq3/vm/interpreter.ml",
+            "src/mq3/vm/runtime.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "VM_PrepareInterpreter / VM_CallInterpreted",
+          "target_files": [
+            "src/mq3/vm/abi.ml",
+            "src/mq3/vm/interpreter.ml",
+            "src/mq3/vm/runtime.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "VM_ValueToFunctionSymbol / VM_SymbolToValue / VM_ValueToSymbol",
+          "target_files": [
+            "src/mq3/vm/abi.ml",
+            "src/mq3/vm/interpreter.ml",
+            "src/mq3/vm/runtime.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "VM_LogSyscalls",
+          "target_files": [
+            "src/mq3/vm/abi.ml",
+            "src/mq3/vm/interpreter.ml",
+            "src/mq3/vm/runtime.ml"
+          ],
+          "status": "tested_exact"
         }
       ],
       "target": [
-        "src/mq3/vm/interpreter.ml"
+        "src/mq3/vm/abi.ml",
+        "src/mq3/vm/interpreter.ml",
+        "src/mq3/vm/runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_vm.py"
+        "scripts/test_vm_local_header.py",
+        "scripts/test_vm.py",
+        "scripts/test_vm_complete.py",
+        "scripts/test_vm_interpreted_complete.py",
+        "scripts/test_vm_runtime.py"
       ]
     },
     {
@@ -51074,27 +51347,231 @@
       ],
       "symbol_mapping": [
         {
-          "original": "GLW_CreateWindow, GLimp_EndFrame and GLimp_Shutdown lifecycle subset",
+          "original": "GLW_CheckOSVersion",
           "target_files": [
             "native/playable_win32.c",
             "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
             "src/mq3/client/playable_app.ml"
           ],
-          "status": "tested_subset",
-          "scope": "The software-renderer host creates its Win32 window before retail loading, pumps messages on a dedicated UI thread, uses a synchronized presented surface, shows loading progress and shuts down cleanly. OpenGL context and extension parity remain open."
+          "status": "tested_exact",
+          "scope": "All 21 win_glimp symbols are mapped to the native Windows WGL host and MiniLang runtime facade: driver/PFD/context creation, extension discovery, swap interval and frame presentation, fullscreen mode restoration, gamma restoration, activation and shutdown. Render-thread entry points retain the original single-thread fallback contract."
+        },
+        {
+          "original": "GLW_ChoosePFD",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLW_CreatePFD",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLW_CreateWindow",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLW_InitDriver",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLW_InitExtensions",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLW_LoadOpenGL",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLW_MakeContext",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLW_SetMode",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLW_StartDriverAndSetMode",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLW_StartOpenGL",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLimp_EndFrame",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLimp_FrontEndSleep",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLimp_Init",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLimp_LogComment",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLimp_RenderThreadWrapper",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLimp_RendererSleep",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLimp_Shutdown",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLimp_SpawnRenderThread",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "GLimp_WakeRenderer",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
+        },
+        {
+          "original": "PrintCDSError",
+          "target_files": [
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/client/playable_app.ml"
+          ],
+          "status": "tested_exact"
         }
       ],
       "target": [
         "native/playable_win32.c",
         "src/mq3/platform/playable_window.ml",
+        "src/mq3/platform/win_glimp_runtime.ml",
         "src/mq3/client/playable_app.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_win_glimp_complete.py",
         "scripts/playable_window_build_test.py",
+        "tests/playable_window_gl_native.c",
         "scripts/test_playable_loading.py",
-        "tests/playable_window_lifecycle.c",
-        "tests/playable_loading_contracts.ml"
+        "scripts/test_playable_match.py",
+        "scripts/test_retail_qvm_match.py"
       ]
     },
     {

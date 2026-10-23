@@ -17,6 +17,24 @@ struct Clip
   leave
   hit
 end struct
+struct DebugState
+  patch
+  facet
+end struct
+
+function CM_ClearLevelPatches() return DebugState(void,-1) end function
+function CM_DrawDebugSurface(state)
+  if state==void or state.patch==void then return [] end if
+  result=[];index=0
+  while index<len(state.patch.facets)
+    if state.facet<0 or state.facet==index then
+      points=mesh.facetWinding(state.patch,state.patch.facets[index],true)
+      if len(points)>0 then result=result+[points] end if
+    end if
+    index=index+1
+  end while
+  return result
+end function
 
 function corner(work,signbits)
   result = array(3,0.0)
@@ -62,6 +80,7 @@ function checkPlane(adjusted,clip)
   end if
   return true
 end function
+function CM_CheckFacetPlane(adjusted,clip) return checkPlane(adjusted,clip) end function
 
 function tracePoint(work,patch,playerCurveClip)
   if not playerCurveClip or not work.isPoint then return void end if
@@ -107,19 +126,20 @@ function tracePoint(work,patch,playerCurveClip)
   end for
   return void
 end function
+function CM_TracePointThroughPatchCollide(work,patch,playerCurveClip) return tracePoint(work,patch,playerCurveClip) end function
 
 function trace(work,patch,playerCurveClip)
-  if work.isPoint then return tracePoint(work,patch,playerCurveClip) end if
+  if work.isPoint then return CM_TracePointThroughPatchCollide(work,patch,playerCurveClip) end if
   for each facet in patch.facets
     clip = Clip(n.f32(-1),n.f32(1),false)
     hitnum = -1;best = void
     candidate = adjusted(work,patch.planes[facet.surface],false,false)
-    if not checkPlane(candidate,clip) then continue end if
+    if not CM_CheckFacetPlane(candidate,clip) then continue end if
     if clip.hit then best = candidate.plane end if
     j = 0;valid = true
     while j < len(facet.borders)
       candidate = adjusted(work,patch.planes[facet.borders[j]],facet.inward[j]!=0,true)
-      if not checkPlane(candidate,clip) then valid = false;break end if
+      if not CM_CheckFacetPlane(candidate,clip) then valid = false;break end if
       if clip.hit then hitnum = j;best = candidate.plane end if
       j = j+1
     end while
@@ -130,6 +150,7 @@ function trace(work,patch,playerCurveClip)
   end for
   return void
 end function
+function CM_TraceThroughPatchCollide(work,patch,playerCurveClip) return trace(work,patch,playerCurveClip) end function
 
 function positionTest(work,patch)
   if work.isPoint then return false end if
@@ -146,3 +167,4 @@ function positionTest(work,patch)
   end for
   return false
 end function
+function CM_PositionTestInPatchCollide(work,patch) return positionTest(work,patch) end function

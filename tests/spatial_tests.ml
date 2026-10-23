@@ -56,9 +56,9 @@ function main(args)
   handle = cm.tempBoxModel(world,[-15.0,-15.0,-24.0],[15.0,15.0,32.0],true)
   if handle != 254 then return 1 end if
   if len(world.models) <= 254 then
-    caught = try(cm.trace(world,[0.0,0.0,0.0],[0.0,0.0,0.0],[-15.0,-15.0,-24.0],[15.0,15.0,32.0],handle,-1,true,world.patchesReady))
-    if caught is not error then return 1 end if
+    capsuleResult = cm.trace(world,[0.0,0.0,0.0],[0.0,0.0,0.0],[-15.0,-15.0,-24.0],[15.0,15.0,32.0],handle,-1,true,world.patchesReady)
+    if not capsuleResult.trace.startsolid or not capsuleResult.trace.allsolid or capsuleResult.trace.fraction != 0.0 then return 1 end if
   end if
-  print "PASS: "+str(count)+" transformed/temporary collision cases and original capsule-handle rejection"
+  print "PASS: "+str(count)+" transformed/temporary collision cases and productive capsule handle"
   return 0
 end function
