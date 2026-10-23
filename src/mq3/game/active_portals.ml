@@ -5,6 +5,7 @@
 // the decision between destination and source and therefore needs a complete
 // productive implementation rather than an observed callback.
 package mq3.game.active_portals
+import mq3.game.game_headers as headers
 import mq3.game.constants as c
 import mq3.game.entities as game
 import mq3.game.g_items as gItems
@@ -15,8 +16,8 @@ import mq3.game.spawn_values as values
 import mq3.game.movement as movement
 import mq3.compat.numeric as n
 
-const CONTENTS_CORPSE = 0x04000000
-const CONTENTS_TRIGGER = 0x40000000
+const CONTENTS_CORPSE=headers.CONTENTS_CORPSE
+const CONTENTS_TRIGGER=headers.CONTENTS_TRIGGER
 const DAMAGE_NO_PROTECTION = 8
 
 function PortalDie(level,self,inflictor,attacker,damage,mod)

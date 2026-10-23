@@ -28,22 +28,28 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **218 sind
-vollständig portiert, eine ist teilweise portiert und 116 sind noch nicht
-begonnen**.
-Der aktuelle Integrationsblock schließt `cvar.c`, `net_chan.c`, `cm_polylib.c`
-und `be_interface.c`. Damit sind vollständige Cvar- und QVM-Trap-Semantik,
-Netchan samt Loopback/Fragmentierung/Adresspfaden, alle Winding-Operationen und
-die komplette Botlib-API-v2-Tabelle produktiv in MiniLang vorhanden.
-Unveränderte C-Orakel, native Verträge, alle 31 BSP-Patch-Differentialläufe und
-ein Retail-`qagame.qvm`-Botliblauf auf q3dm1 sichern diese Pfade ab.
-Der zusammengeführte Hauptbuild, die vier neuen Vollständigkeitsgates, die
-betroffenen VM-/Netzwerkregressionen, der 512-Frame-Retail-Bot-Spawn, das
-gekoppelte acht Frames lange Retail-QVM-Match sowie die nativen Windows-Fenster-
-und WinMM-Audiogrenzen bestehen. Der dabei erzeugte `build/MiniQuake3.exe`-Stand
-hat SHA-256 `089d21030259d9b15cb28dd6b6051260de550391bda78c76ccbc884d5c865004`. Die letzte vollständige Gesamtauswahl bleibt der
-dokumentierte 449-Gate-Lauf; die vier neuen Gates sind nun in `verify.py`
-registriert.
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **229 sind
+vollständig portiert, keine ist teilweise portiert und 106 sind noch nicht
+begonnen**. Der jüngste Integrationsblock schließt die öffentlichen CGame- und
+Renderer-ABIs `cg_public.h` und `tr_types.h`, die Q3UI-ABIs `keycodes.h` und
+`ui_local.h`, die vollständige lokale Spiel-ABI `g_local.h` sowie sechs
+Gameplay-Header (`surfaceflags.h`, `inv.h`, `chars.h`, `syn.h`, `match.h` und
+`g_team.h`). 687 Konstanten und Enumwerte, 40 Typen, 650 Funktions- und
+Globaldeklarationen sowie die vollständigen produktiven Headerfassaden werden
+gegen unveränderte 32-Bit-C-Orakel und MiniLang-Verträge geprüft. Die
+zentralisierten Bot-Charakterindizes beheben dabei vier zuvor falsche
+Originalindizes für Angriff, Springen, Ducken und Weapon-Jumping sowie zwei
+falsche Sichtparameterindizes.
+
+Alle sechs neuen Vollständigkeitsgates, der Windows-Hauptbuild, die komplette
+Bodies-/Lifecycle-/Initialisierungsabnahme und das gekoppelte acht Frames lange
+Retail-QVM-Match sind grün. Der Matchpfad liefert 2.345 vollständig texturierte
+Dreiecke, 17 Renderpässe, 26 Sounds und null nicht unterstützte Entities. Der
+frische `build/MiniQuake3.exe`-Stand hat SHA-256
+`09fae7e3b6520315f73e533e7f92d2eac96b8f828ff6f0cf404fe2134d91e040`.
+Die letzte vollständig am Stück ausgeführte Gesamtauswahl bleibt der
+dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 483 normale
+Gates einschließlich dieser sechs neuen Prüfungen.
 
 Ein neuer Integrationsblock schließt `q_shared.h`, `win_main.c`, `win_net.c`,
 `win_shared.c` und `win_wndproc.c`. Damit sind die gemeinsame Spiel-/Engine-ABI

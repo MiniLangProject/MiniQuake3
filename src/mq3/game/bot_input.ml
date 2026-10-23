@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // ai_main.c view smoothing and elementary-action input conversion.
 package mq3.game.bot_input
+import mq3.game.game_headers as headers
 import mq3.compat.numeric as n
 import mq3.shared.math as q
 
@@ -36,8 +37,8 @@ const BUTTON_GETFLAG=128
 const BUTTON_GUARDBASE=256
 const BUTTON_PATROL=512
 const BUTTON_FOLLOWME=1024
-const CHARACTERISTIC_VIEW_FACTOR=13
-const CHARACTERISTIC_VIEW_MAXCHANGE=14
+const CHARACTERISTIC_VIEW_FACTOR=headers.CHARACTERISTIC_VIEW_FACTOR
+const CHARACTERISTIC_VIEW_MAXCHANGE=headers.CHARACTERISTIC_VIEW_MAXCHANGE
 
 struct BotInput
   thinktime

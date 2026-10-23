@@ -4,6 +4,7 @@
 // remains in missiles.ml; this layer supplies every MISSIONPACK branch and is
 // the productive entity-frame entry point.
 package mq3.game.g_missile
+import mq3.game.game_headers as headers
 import mq3.game.constants as c
 import mq3.game.entities as game
 import mq3.game.missiles as missileBase
@@ -27,7 +28,7 @@ const EF_BOUNCE_HALF = 0x00000020
 const EF_NODRAW = 0x00000080
 const SVF_NOCLIENT = 0x00000001
 const SVF_USE_CURRENT_ORIGIN = 0x00000080
-const CONTENTS_TRIGGER = 0x40000000
+const CONTENTS_TRIGGER=headers.CONTENTS_TRIGGER
 const MASK_SHOT = 0x06000001
 const ENTITYNUM_NONE = 1023
 const DAMAGE_NO_KNOCKBACK = 4

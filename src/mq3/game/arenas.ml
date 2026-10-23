@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Baseq3 single-player postgame reporting and victory podium from g_arenas.c.
 package mq3.game.arenas
+import mq3.game.game_headers as headers
 import mq3.game.entities as game
 import mq3.game.entitystate as entityState
 import mq3.game.constants as c
@@ -12,9 +13,9 @@ import mq3.shared.math as q
 import mq3.qcommon.cvar as cv
 import mq3.compat.numeric as n
 
-const CONTENTS_SOLID = 1
-const CONTENTS_PLAYERCLIP = 0x00010000
-const CONTENTS_BODY = 0x02000000
+const CONTENTS_SOLID=headers.CONTENTS_SOLID
+const CONTENTS_PLAYERCLIP=headers.CONTENTS_PLAYERCLIP
+const CONTENTS_BODY=headers.CONTENTS_BODY
 const ENTITYNUM_WORLD = 1022
 const ANIM_TOGGLEBIT = 128
 const TIMER_GESTURE = 2294

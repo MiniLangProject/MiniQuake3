@@ -3,6 +3,7 @@
 // Native translation of code/game/ai_chat.c. Host observations and chat
 // submission are typed so a retail QVM owner can suppress duplicate effects.
 package mq3.game.bot_chat
+import mq3.game.game_headers as headers
 import mq3.compat.numeric as numeric
 
 const MAX_CLIENTS=64
@@ -15,8 +16,8 @@ const ENTITYNUM_WORLD=1022
 const LTG_TEAMHELP=1
 const LTG_TEAMACCOMPANY=2
 const LTG_RUSHBASE=5
-const CONTENTS_LAVA=8
-const CONTENTS_SLIME=16
+const CONTENTS_LAVA=headers.CONTENTS_LAVA
+const CONTENTS_SLIME=headers.CONTENTS_SLIME
 const MASK_WATER=56
 
 const MOD_UNKNOWN=0
@@ -51,11 +52,11 @@ const MOD_KAMIKAZE=26
 const MOD_JUICED=27
 const MOD_MISSIONPACK_GRAPPLE=28
 
-const INVENTORY_QUAD=35
-const INVENTORY_HASTE=37
-const INVENTORY_INVISIBILITY=38
-const INVENTORY_REGEN=39
-const INVENTORY_FLIGHT=40
+const INVENTORY_QUAD=headers.INVENTORY_QUAD
+const INVENTORY_HASTE=headers.INVENTORY_HASTE
+const INVENTORY_INVISIBILITY=headers.INVENTORY_INVISIBILITY
+const INVENTORY_REGEN=headers.INVENTORY_REGEN
+const INVENTORY_FLIGHT=headers.INVENTORY_FLIGHT
 
 struct Player active name team score end struct
 struct Entity valid number dead invisible shooting visible end struct

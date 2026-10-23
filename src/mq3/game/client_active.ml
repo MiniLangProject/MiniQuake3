@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Baseq3 ClientThink, G_RunClient and their closed helpers from g_active.c.
 package mq3.game.client_active
+import mq3.game.game_headers as headers
 import mq3.game.constants as c
 import mq3.game.entities as game
 import mq3.game.pmove as pmove
@@ -33,8 +34,8 @@ const EF_TALK = 0x00001000
 const AWARD_MASK = 0x00038848
 const FL_FORCE_GESTURE = 0x00008000
 const SVF_BOT = 0x00000008
-const CONTENTS_BODY = 0x02000000
-const CONTENTS_BOTCLIP = 0x00400000
+const CONTENTS_BODY=headers.CONTENTS_BODY
+const CONTENTS_BOTCLIP=headers.CONTENTS_BOTCLIP
 const MASK_PLAYERSOLID = 0x02010001
 const DF_NO_FALLING = 8
 const DF_NO_FOOTSTEPS = 32

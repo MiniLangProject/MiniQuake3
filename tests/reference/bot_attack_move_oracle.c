@@ -4,9 +4,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
-#define CHARACTERISTIC_ATTACK_SKILL 5
-#define CHARACTERISTIC_JUMPER 21
-#define CHARACTERISTIC_CROUCHER 22
+#define CHARACTERISTIC_ATTACK_SKILL 2
+#define CHARACTERISTIC_JUMPER 37
+#define CHARACTERISTIC_CROUCHER 36
 #define WP_GAUNTLET 1
 #define IDEAL_ATTACKDIST 140
 #define MOVE_WALK 1
@@ -50,15 +50,15 @@ static int obs;
 static void reset(bot_state_t*b){memset(b,0,sizeof(*b));memset(characteristics,0,sizeof(characteristics));memset(randoms,0,sizeof(randoms));memset(moveanswers,0,sizeof(moveanswers));randomindex=setupcalls=movecalls=goalcalls=0;now=10;b->enemy=2;b->lastenemyareanum=6;b->lastenemyorigin[0]=20;b->lastenemyorigin[1]=30;b->lastenemyorigin[2]=40;b->thinktime=.1f;enemyinfo.number=2;enemyinfo.origin[0]=200;enemyinfo.origin[1]=enemyinfo.origin[2]=0;}
 int main(void){bot_state_t b;bot_moveresult_t r;
  reset(&b);b.attackchase_time=11;r=BotAttackMove(&b,77);OBS(r.failure);OBS(setupcalls==1&&goalcalls==1);OBS(lastgoal.entitynum==2&&lastgoal.areanum==6&&lastgoal.origin[2]==40);
- reset(&b);characteristics[5]=.19f;BotAttackMove(&b,0);OBS(setupcalls==0);OBS(movecalls==0);
- reset(&b);characteristics[5]=.39f;randoms[0]=randoms[1]=.5f;moveanswers[0]=1;BotAttackMove(&b,0);OBS(movecalls==1);OBS(lastdir[0]>.99f&&lastmovetype==MOVE_WALK);
- reset(&b);characteristics[5]=.39f;b.origin[0]=101;randoms[0]=randoms[1]=.5f;moveanswers[0]=1;BotAttackMove(&b,0);OBS(lastdir[0]<-.99f);
- reset(&b);characteristics[5]=.39f;b.origin[0]=60;randoms[0]=randoms[1]=.5f;BotAttackMove(&b,0);OBS(movecalls==0);
- reset(&b);characteristics[5]=.39f;characteristics[21]=1;moveanswers[0]=1;BotAttackMove(&b,0);OBS(lastmovetype==MOVE_JUMP);OBS(b.attackjump_time==11);
- reset(&b);characteristics[5]=.39f;characteristics[21]=1;b.attackjump_time=11;moveanswers[0]=1;BotAttackMove(&b,0);OBS(lastmovetype==MOVE_WALK);
- reset(&b);characteristics[5]=.39f;characteristics[22]=1;randoms[0]=.5f;moveanswers[0]=1;BotAttackMove(&b,0);OBS(lastmovetype==MOVE_CROUCH);OBS(b.attackcrouch_time==15);
- reset(&b);characteristics[5]=.6f;randoms[0]=randoms[1]=.5f;moveanswers[0]=1;BotAttackMove(&b,0);OBS(lastdir[1]<-.99f);OBS(lastdir[0]>.99f);
- reset(&b);characteristics[5]=.6f;randoms[0]=randoms[1]=.5f;BotAttackMove(&b,0);OBS(movecalls==2);OBS((b.flags&BFL_STRAFERIGHT)==0);OBS(b.attackstrafe_time==0);
- reset(&b);characteristics[5]=.8f;randoms[0]=randoms[1]=.5f;randoms[2]=0;randoms[3]=1;moveanswers[0]=1;b.attackstrafe_time=1;BotAttackMove(&b,0);OBS((b.flags&BFL_STRAFERIGHT)!=0);
- reset(&b);characteristics[5]=.4f;b.cur_ps.weapon=WP_GAUNTLET;randoms[0]=randoms[1]=.5f;moveanswers[0]=1;BotAttackMove(&b,0);OBS(lastdir[0]>.99f);
+ reset(&b);characteristics[CHARACTERISTIC_ATTACK_SKILL]=.19f;BotAttackMove(&b,0);OBS(setupcalls==0);OBS(movecalls==0);
+ reset(&b);characteristics[CHARACTERISTIC_ATTACK_SKILL]=.39f;randoms[0]=randoms[1]=.5f;moveanswers[0]=1;BotAttackMove(&b,0);OBS(movecalls==1);OBS(lastdir[0]>.99f&&lastmovetype==MOVE_WALK);
+ reset(&b);characteristics[CHARACTERISTIC_ATTACK_SKILL]=.39f;b.origin[0]=101;randoms[0]=randoms[1]=.5f;moveanswers[0]=1;BotAttackMove(&b,0);OBS(lastdir[0]<-.99f);
+ reset(&b);characteristics[CHARACTERISTIC_ATTACK_SKILL]=.39f;b.origin[0]=60;randoms[0]=randoms[1]=.5f;BotAttackMove(&b,0);OBS(movecalls==0);
+ reset(&b);characteristics[CHARACTERISTIC_ATTACK_SKILL]=.39f;characteristics[CHARACTERISTIC_JUMPER]=1;moveanswers[0]=1;BotAttackMove(&b,0);OBS(lastmovetype==MOVE_JUMP);OBS(b.attackjump_time==11);
+ reset(&b);characteristics[CHARACTERISTIC_ATTACK_SKILL]=.39f;characteristics[CHARACTERISTIC_JUMPER]=1;b.attackjump_time=11;moveanswers[0]=1;BotAttackMove(&b,0);OBS(lastmovetype==MOVE_WALK);
+ reset(&b);characteristics[CHARACTERISTIC_ATTACK_SKILL]=.39f;characteristics[CHARACTERISTIC_CROUCHER]=1;randoms[0]=.5f;moveanswers[0]=1;BotAttackMove(&b,0);OBS(lastmovetype==MOVE_CROUCH);OBS(b.attackcrouch_time==15);
+ reset(&b);characteristics[CHARACTERISTIC_ATTACK_SKILL]=.6f;randoms[0]=randoms[1]=.5f;moveanswers[0]=1;BotAttackMove(&b,0);OBS(lastdir[1]<-.99f);OBS(lastdir[0]>.99f);
+ reset(&b);characteristics[CHARACTERISTIC_ATTACK_SKILL]=.6f;randoms[0]=randoms[1]=.5f;BotAttackMove(&b,0);OBS(movecalls==2);OBS((b.flags&BFL_STRAFERIGHT)==0);OBS(b.attackstrafe_time==0);
+ reset(&b);characteristics[CHARACTERISTIC_ATTACK_SKILL]=.8f;randoms[0]=randoms[1]=.5f;randoms[2]=0;randoms[3]=1;moveanswers[0]=1;b.attackstrafe_time=1;BotAttackMove(&b,0);OBS((b.flags&BFL_STRAFERIGHT)!=0);
+ reset(&b);characteristics[CHARACTERISTIC_ATTACK_SKILL]=.4f;b.cur_ps.weapon=WP_GAUNTLET;randoms[0]=randoms[1]=.5f;moveanswers[0]=1;BotAttackMove(&b,0);OBS(lastdir[0]>.99f);
  if(obs!=21){fprintf(stderr,"count %d\n",obs);return 1;}printf("PASS: 12 native Baseq3 BotAttackMove scenarios / 21 exact observations\n");return 0;}

@@ -3,6 +3,7 @@
 // Baseq3 ClientSpawn orchestration. ClientThink and engine
 // user-command/userinfo delivery remain explicit host boundaries.
 package mq3.game.client_spawn
+import mq3.game.game_headers as headers
 import mq3.game.constants as c
 import mq3.game.entities as game
 import mq3.game.playerstate as playerstate
@@ -31,7 +32,7 @@ const PMF_RESPAWNED = 512
 const FL_NO_BOTS = 0x00002000
 const FL_NO_HUMANS = 0x00004000
 const SVF_BOT = 0x00000008
-const CONTENTS_BODY = 0x02000000
+const CONTENTS_BODY=headers.CONTENTS_BODY
 const MASK_PLAYERSOLID = 0x02010001
 
 function infoValue(info,key)

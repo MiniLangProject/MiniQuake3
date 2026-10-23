@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Team Arena-only helpers owned by g_combat.c.
 package mq3.game.combat_missionpack
+import mq3.game.game_headers as headers
 import mq3.game.constants as c
 import mq3.game.entities as game
 import mq3.game.g_items as combatItems
@@ -12,7 +13,7 @@ import mq3.compat.numeric as n
 const SVF_NOCLIENT = 1
 const EF_NODRAW = 0x80
 const EF_KAMIKAZE = 0x200
-const CONTENTS_TRIGGER = 0x40000000
+const CONTENTS_TRIGGER=headers.CONTENTS_TRIGGER
 const STAT_PERSISTANT_POWERUP = 7
 const GT_HARVESTER = 7
 

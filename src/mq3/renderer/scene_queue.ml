@@ -4,13 +4,14 @@
 package mq3.renderer.scene_queue
 import std.array as arrays
 import mq3.compat.numeric as n
+import mq3.renderer.tr_types as trtypes
 
-const MAX_DLIGHTS=32
+const MAX_DLIGHTS=trtypes.MAX_DLIGHTS
 const ENTITYNUM_WORLD=1022
-const RT_MAX_REF_ENTITY_TYPE=8
-const GLHW_RIVA128=2
-const GLHW_RAGEPRO=3
-const GLHW_PERMEDIA2=4
+const RT_MAX_REF_ENTITY_TYPE=trtypes.RT_MAX_REF_ENTITY_TYPE
+const GLHW_RIVA128=trtypes.GLHW_RIVA128
+const GLHW_RAGEPRO=trtypes.GLHW_RAGEPRO
+const GLHW_PERMEDIA2=trtypes.GLHW_PERMEDIA2
 
 struct PolyVert xyz st modulate end struct
 struct Poly hShader verts fogIndex end struct
@@ -67,7 +68,7 @@ end function
 function addEntity(state,reType,payload)
   if not state.registered then return false end if
   if len(state.entities)>=ENTITYNUM_WORLD then return false end if
-  if reType<0 or reType>=RT_MAX_REF_ENTITY_TYPE then return error(3471,"scene queue: bad reType "+str(reType)) end if
+  if not trtypes.validRefEntityType(reType) then return error(3471,"scene queue: bad reType "+str(reType)) end if
   state.entities=state.entities+[RefEntity(reType,payload,false)];return true
 end function
 

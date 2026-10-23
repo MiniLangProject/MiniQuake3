@@ -3,16 +3,17 @@
 // CL_InitCGame, CL_ShutdownCGame and cgame export calls.
 package mq3.client.cgame_vm
 import mq3.shared.info as info
+import mq3.client.cgame_public as public
 
-const CG_INIT=0
-const CG_SHUTDOWN=1
-const CG_CONSOLE_COMMAND=2
-const CG_DRAW_ACTIVE_FRAME=3
-const CG_CROSSHAIR_PLAYER=4
-const CG_LAST_ATTACKER=5
-const CG_KEY_EVENT=6
-const CG_MOUSE_EVENT=7
-const CG_EVENT_HANDLING=8
+const CG_INIT=public.CG_INIT
+const CG_SHUTDOWN=public.CG_SHUTDOWN
+const CG_CONSOLE_COMMAND=public.CG_CONSOLE_COMMAND
+const CG_DRAW_ACTIVE_FRAME=public.CG_DRAW_ACTIVE_FRAME
+const CG_CROSSHAIR_PLAYER=public.CG_CROSSHAIR_PLAYER
+const CG_LAST_ATTACKER=public.CG_LAST_ATTACKER
+const CG_KEY_EVENT=public.CG_KEY_EVENT
+const CG_MOUSE_EVENT=public.CG_MOUSE_EVENT
+const CG_EVENT_HANDLING=public.CG_EVENT_HANDLING
 const CA_LOADING=6
 const CA_PRIMED=7
 const KEYCATCH_CGAME=8

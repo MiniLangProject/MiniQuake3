@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Complete productive facade for code/game/g_trigger.c.
 package mq3.game.g_trigger
+import mq3.game.game_headers as headers
 import mq3.game.entities as game
 import mq3.game.constants as c
 import mq3.game.spawn_values as values
@@ -18,7 +19,7 @@ import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
 import mq3.compat.transcendental as crt
 
-const CONTENTS_TRIGGER = 0x40000000
+const CONTENTS_TRIGGER=headers.CONTENTS_TRIGGER
 const SVF_NOCLIENT = 1
 const FRAMETIME = 100
 

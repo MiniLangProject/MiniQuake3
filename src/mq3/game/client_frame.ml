@@ -3,6 +3,7 @@
 // Baseq3 ClientEndFrame and its damage, environment, spectator and
 // predictable-event helpers from code/game/g_active.c.
 package mq3.game.client_frame
+import mq3.game.game_headers as headers
 import mq3.game.constants as c
 import mq3.game.entities as game
 import mq3.game.playerstate as playerstate
@@ -20,8 +21,8 @@ const EF_CONNECTION = 0x00002000
 const EF_VOTED = 0x00004000
 const EF_TEAMVOTED = 0x00080000
 const FL_GODMODE = 0x00000010
-const CONTENTS_LAVA = 0x00000008
-const CONTENTS_SLIME = 0x00000010
+const CONTENTS_LAVA=headers.CONTENTS_LAVA
+const CONTENTS_SLIME=headers.CONTENTS_SLIME
 const SVF_NOTSINGLECLIENT = 0x00000800
 const DAMAGE_NO_ARMOR = 0x00000002
 const CHAN_VOICE = 2

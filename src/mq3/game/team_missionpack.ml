@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // MISSIONPACK half of g_team.c: One Flag, Overload and Harvester obelisks.
 package mq3.game.team_missionpack
+import mq3.game.game_headers as headers
 import mq3.game.constants as c
 import mq3.game.entities as game
 import mq3.game.events as events
@@ -14,16 +15,16 @@ const GT_TEAM = 3
 const GT_1FCTF = 5
 const GT_OBELISK = 6
 const GT_HARVESTER = 7
-const CONTENTS_SOLID = 1
-const CONTENTS_TRIGGER = 0x40000000
+const CONTENTS_SOLID=headers.CONTENTS_SOLID
+const CONTENTS_TRIGGER=headers.CONTENTS_TRIGGER
 const MASK_SOLID = 1
 const ENTITYNUM_NONE = 1023
 const FL_NO_KNOCKBACK = 0x800
 const SVF_BROADCAST = 32
 const AWARD_MASK = 0x38848
-const CTF_CAPTURE_BONUS = 5
+const CTF_CAPTURE_BONUS=headers.CTF_CAPTURE_BONUS
 const REWARD_SPRITE_TIME = 2000
-const OVERLOAD_ATTACK_BASE_SOUND_TIME = 20000
+const OVERLOAD_ATTACK_BASE_SOUND_TIME=headers.OVERLOAD_ATTACK_BASE_SOUND_TIME
 
 function gametype(level)
   if level.spawner == void then return 0 end if

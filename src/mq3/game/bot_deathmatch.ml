@@ -4,6 +4,7 @@
 // navigation and team ports remain the single implementation for their
 // functions; this module supplies the remaining game-policy/lifecycle layer.
 package mq3.game.bot_deathmatch
+import mq3.game.game_headers as headers
 import mq3.game.bot_combat_ai as combat
 import mq3.game.bot_inventory_ai as inventory
 import mq3.game.bot_navigation as navigation
@@ -24,27 +25,27 @@ const GT_OBELISK=6
 const GT_HARVESTER=7
 const TEAM_RED=1
 const TEAM_BLUE=2
-const INVENTORY_HEALTH=29
-const INVENTORY_TELEPORTER=30
-const INVENTORY_MEDKIT=31
-const INVENTORY_KAMIKAZE=32
-const INVENTORY_INVULNERABILITY=34
-const INVENTORY_ENVIRONMENTSUIT=36
-const INVENTORY_NEUTRALFLAG=47
-const INVENTORY_REDCUBE=48
-const INVENTORY_BLUECUBE=49
-const INVENTORY_SCOUT=41
-const INVENTORY_GUARD=42
-const INVENTORY_DOUBLER=43
-const INVENTORY_AMMOREGEN=44
+const INVENTORY_HEALTH=headers.INVENTORY_HEALTH
+const INVENTORY_TELEPORTER=headers.INVENTORY_TELEPORTER
+const INVENTORY_MEDKIT=headers.INVENTORY_MEDKIT
+const INVENTORY_KAMIKAZE=headers.INVENTORY_KAMIKAZE
+const INVENTORY_INVULNERABILITY=headers.INVENTORY_INVULNERABILITY
+const INVENTORY_ENVIRONMENTSUIT=headers.INVENTORY_ENVIRONMENTSUIT
+const INVENTORY_NEUTRALFLAG=headers.INVENTORY_NEUTRALFLAG
+const INVENTORY_REDCUBE=headers.INVENTORY_REDCUBE
+const INVENTORY_BLUECUBE=headers.INVENTORY_BLUECUBE
+const INVENTORY_SCOUT=headers.INVENTORY_SCOUT
+const INVENTORY_GUARD=headers.INVENTORY_GUARD
+const INVENTORY_DOUBLER=headers.INVENTORY_DOUBLER
+const INVENTORY_AMMOREGEN=headers.INVENTORY_AMMOREGEN
 const ET_MISSILE=3
 const WP_GRENADE_LAUNCHER=4
 const WP_PROX_LAUNCHER=11
 const EF_DEAD=1
 const EF_KAMIKAZE=0x100000
-const CONTENTS_WATER=32
-const CONTENTS_SLIME=16
-const CONTENTS_LAVA=8
+const CONTENTS_WATER=headers.CONTENTS_WATER
+const CONTENTS_SLIME=headers.CONTENTS_SLIME
+const CONTENTS_LAVA=headers.CONTENTS_LAVA
 
 struct Goal number entitynum areanum origin mins maxs end struct
 struct Entity number valid eType weapon flags powerups generic1 origin mins maxs contents modelindex classname event eventParm otherEntityNum otherEntityNum2 eventTime end struct

@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // g_spawn.c, baseq3. Unported class/item callbacks are explicit boundaries.
 package mq3.game.spawn
+import mq3.game.g_local as local
 import mq3.game.entities as game
 import mq3.game.combat as combat
 import mq3.game.spawn_tables as tables
@@ -166,7 +167,7 @@ function token(state)
 end function
 function addToken(state,value)
   next = state.chars+len(bytes(value))+1
-  if next > 4096 then return error(485,"G_AddSpawnVarToken: MAX_SPAWN_CHARS") end if
+  if next > local.MAX_SPAWN_VARS_CHARS then return error(485,"G_AddSpawnVarToken: MAX_SPAWN_CHARS") end if
   state.chars = next
   return value
 end function
@@ -181,7 +182,7 @@ function parseVars(state)
     value = token(state)
     if not value[0] then return error(485,"G_ParseSpawnVars: EOF without closing brace") end if
     if len(value[1]) > 0 and value[1][0] == "}" then return error(485,"G_ParseSpawnVars: closing brace without data") end if
-    if len(state.vars) == 64 then return error(485,"G_ParseSpawnVars: MAX_SPAWN_VARS") end if
+    if len(state.vars) == local.MAX_SPAWN_VARS then return error(485,"G_ParseSpawnVars: MAX_SPAWN_VARS") end if
     storedKey = addToken(state,key[1]); storedValue = addToken(state,value[1])
     state.vars = state.vars+[[storedKey,storedValue]]
   end while

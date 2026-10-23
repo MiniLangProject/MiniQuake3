@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Baseq3 g_weapon.c bullets, shotgun patterns, railgun and lightning.
 package mq3.game.weapon_hitscan
+import mq3.game.game_headers as headers
 import mq3.game.weapon_state as state
 import mq3.game.entities as game
 import mq3.game.combat as combat
@@ -15,7 +16,7 @@ import mq3.compat.numeric as n
 import mq3.compat.transcendental as crt
 
 const MASK_SHOT = 0x06000001
-const SURF_NOIMPACT = 0x10
+const SURF_NOIMPACT=headers.SURF_NOIMPACT
 const AWARD_MASK = 0x38848
 
 function hitscanClient(ent)

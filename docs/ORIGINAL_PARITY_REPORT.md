@@ -14,12 +14,12 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | Bereich | Dateien | Portiert | Teilweise | Nicht begonnen | Original behalten |
 |---|---:|---:|---:|---:|---:|
 | `botlib` | 53 | 31 | 0 | 22 | 0 |
-| `cgame` | 25 | 21 | 0 | 4 | 0 |
+| `cgame` | 25 | 23 | 0 | 2 | 0 |
 | `client` | 19 | 16 | 0 | 3 | 0 |
-| `game` | 65 | 38 | 1 | 26 | 0 |
+| `game` | 65 | 45 | 0 | 20 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
-| `q3_ui` | 47 | 45 | 0 | 2 | 0 |
+| `q3_ui` | 47 | 47 | 0 | 0 | 0 |
 | `qcommon` | 27 | 18 | 0 | 9 | 0 |
 | `renderer` | 27 | 23 | 0 | 4 | 0 |
 | `server` | 11 | 11 | 0 | 0 | 0 |
@@ -27,7 +27,7 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 9 | 0 | 4 | 0 |
-| **Gesamt** | **335** | **218** | **1** | **116** | **0** |
+| **Gesamt** | **335** | **229** | **0** | **106** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -107,7 +107,7 @@ Teil dieser Tabelle.
 | `code/cgame/cg_players.c` | `cgame` | `ported` | 36 | 36 | 0 |
 | `code/cgame/cg_playerstate.c` | `cgame` | `ported` | 8 | 8 | 0 |
 | `code/cgame/cg_predict.c` | `cgame` | `ported` | 8 | 8 | 0 |
-| `code/cgame/cg_public.h` | `cgame` | `not_started` | 0 | 0 | 0 |
+| `code/cgame/cg_public.h` | `cgame` | `ported` | 0 | 0 | 0 |
 | `code/cgame/cg_scoreboard.c` | `cgame` | `ported` | 5 | 5 | 0 |
 | `code/cgame/cg_servercmds.c` | `cgame` | `ported` | 23 | 23 | 0 |
 | `code/cgame/cg_snapshot.c` | `cgame` | `ported` | 7 | 7 | 0 |
@@ -115,7 +115,7 @@ Teil dieser Tabelle.
 | `code/cgame/cg_syscalls.c` | `cgame` | `ported` | 96 | 96 | 0 |
 | `code/cgame/cg_view.c` | `cgame` | `ported` | 20 | 20 | 0 |
 | `code/cgame/cg_weapons.c` | `cgame` | `ported` | 35 | 35 | 0 |
-| `code/cgame/tr_types.h` | `cgame` | `not_started` | 0 | 0 | 0 |
+| `code/cgame/tr_types.h` | `cgame` | `ported` | 0 | 0 | 0 |
 | `code/client/cl_cgame.c` | `client` | `ported` | 22 | 22 | 0 |
 | `code/client/cl_cin.c` | `client` | `ported` | 38 | 38 | 0 |
 | `code/client/cl_console.c` | `client` | `ported` | 22 | 22 | 0 |
@@ -165,7 +165,7 @@ Teil dieser Tabelle.
 | `code/game/bg_public.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/bg_slidemove.c` | `game` | `ported` | 2 | 2 | 0 |
 | `code/game/botlib.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/chars.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/chars.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/g_active.c` | `game` | `ported` | 17 | 16 | 1 |
 | `code/game/g_arenas.c` | `game` | `ported` | 8 | 8 | 0 |
 | `code/game/g_bot.c` | `game` | `ported` | 24 | 22 | 2 |
@@ -173,7 +173,7 @@ Teil dieser Tabelle.
 | `code/game/g_cmds.c` | `game` | `ported` | 37 | 37 | 0 |
 | `code/game/g_combat.c` | `game` | `ported` | 19 | 13 | 6 |
 | `code/game/g_items.c` | `game` | `ported` | 22 | 21 | 1 |
-| `code/game/g_local.h` | `game` | `partial` | 0 | 0 | 0 |
+| `code/game/g_local.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/g_main.c` | `game` | `ported` | 36 | 31 | 5 |
 | `code/game/g_mem.c` | `game` | `ported` | 3 | 3 | 0 |
 | `code/game/g_misc.c` | `game` | `ported` | 20 | 14 | 6 |
@@ -189,17 +189,17 @@ Teil dieser Tabelle.
 | `code/game/g_syscalls.c` | `game` | `ported` | 185 | 185 | 0 |
 | `code/game/g_target.c` | `game` | `ported` | 28 | 28 | 0 |
 | `code/game/g_team.c` | `game` | `ported` | 45 | 32 | 13 |
-| `code/game/g_team.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/g_team.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/g_trigger.c` | `game` | `ported` | 20 | 19 | 1 |
 | `code/game/g_utils.c` | `game` | `ported` | 24 | 18 | 6 |
 | `code/game/g_weapon.c` | `game` | `ported` | 27 | 21 | 6 |
-| `code/game/inv.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/match.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/inv.h` | `game` | `ported` | 0 | 0 | 0 |
+| `code/game/match.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/q_math.c` | `game` | `ported` | 57 | 57 | 0 |
 | `code/game/q_shared.c` | `game` | `ported` | 59 | 59 | 0 |
 | `code/game/q_shared.h` | `game` | `ported` | 19 | 19 | 0 |
-| `code/game/surfaceflags.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/syn.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/surfaceflags.h` | `game` | `ported` | 0 | 0 | 0 |
+| `code/game/syn.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/macosx/CGMouseDeltaFix.h` | `macosx` | `not_started` | 0 | 0 | 0 |
 | `code/macosx/CGPrivateAPI.h` | `macosx` | `not_started` | 0 | 0 | 0 |
 | `code/macosx/Q3Controller.h` | `macosx` | `not_started` | 0 | 0 | 0 |
@@ -215,7 +215,7 @@ Teil dieser Tabelle.
 | `code/null/null_main.c` | `null` | `not_started` | 18 | 0 | 18 |
 | `code/null/null_net.c` | `null` | `not_started` | 3 | 0 | 3 |
 | `code/null/null_snddma.c` | `null` | `not_started` | 8 | 0 | 8 |
-| `code/q3_ui/keycodes.h` | `q3_ui` | `not_started` | 0 | 0 | 0 |
+| `code/q3_ui/keycodes.h` | `q3_ui` | `ported` | 0 | 0 | 0 |
 | `code/q3_ui/ui_addbots.c` | `q3_ui` | `ported` | 12 | 12 | 0 |
 | `code/q3_ui/ui_atoms.c` | `q3_ui` | `ported` | 40 | 40 | 0 |
 | `code/q3_ui/ui_cdkey.c` | `q3_ui` | `ported` | 7 | 7 | 0 |
@@ -229,7 +229,7 @@ Teil dieser Tabelle.
 | `code/q3_ui/ui_gameinfo.c` | `q3_ui` | `ported` | 28 | 28 | 0 |
 | `code/q3_ui/ui_ingame.c` | `q3_ui` | `ported` | 6 | 6 | 0 |
 | `code/q3_ui/ui_loadconfig.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
-| `code/q3_ui/ui_local.h` | `q3_ui` | `not_started` | 0 | 0 | 0 |
+| `code/q3_ui/ui_local.h` | `q3_ui` | `ported` | 0 | 0 | 0 |
 | `code/q3_ui/ui_login.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
 | `code/q3_ui/ui_main.c` | `q3_ui` | `ported` | 3 | 3 | 0 |
 | `code/q3_ui/ui_menu.c` | `q3_ui` | `ported` | 7 | 7 | 0 |
@@ -407,9 +407,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/botlib/l_struct.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_utils.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/cg_local.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/cgame/cg_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/cg_syscalls.asm` (not_started): *(Symbolinventar ergänzen)*
-- `code/cgame/tr_types.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/client.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/snd_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/snd_public.h` (not_started): *(Symbolinventar ergänzen)*
@@ -433,13 +431,11 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/game/bg_misc.c` (ported): `BG_FindItemForHoldable`, `BG_FindItemForPowerup`
 - `code/game/bg_pmove.c` (ported): `PM_CheckStuck`, `PM_InvulnerabilityMove`, `sqrt`
 - `code/game/botlib.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/chars.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/g_active.c` (ported): `StuckInOtherClient`
 - `code/game/g_bot.c` (ported): `PlayerIntroSound`, `trap_Cvar_VariableValue`
 - `code/game/g_client.c` (ported): `skin`, `trap_DropClient`
 - `code/game/g_combat.c` (ported): `G_InvulnerabilityEffect`, `Kamikaze_DeathActivate`, `Kamikaze_DeathTimer`, `RaySphereIntersections`, `TossClientCubes`, `TossClientPersistantPowerups`
 - `code/game/g_items.c` (ported): `Pickup_PersistantPowerup`
-- `code/game/g_local.h` (partial): *(Symbolinventar ergänzen)*
 - `code/game/g_main.c` (ported): `Com_Error`, `Com_Printf`, `G_Error`, `G_Printf`, `vmMain`
 - `code/game/g_misc.c` (ported): `DropPortalDestination`, `DropPortalSource`, `PortalDie`, `PortalEnable`, `PortalTouch`, `utilities`
 - `code/game/g_missile.c` (ported): `ProximityMine_Activate`, `ProximityMine_Die`, `ProximityMine_Explode`, `ProximityMine_ExplodeOnPlayer`, `ProximityMine_Player`, `ProximityMine_Trigger`, `fire_nail`, `fire_prox`
@@ -447,14 +443,9 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/game/g_rankings.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/g_syscalls.asm` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/g_team.c` (ported): `CheckObeliskAttack`, `ObeliskDie`, `ObeliskPain`, `ObeliskRegen`, `ObeliskRespawn`, `ObeliskTouch`, `OtherTeamName`, `PrintMsg`, `SP_team_blueobelisk`, `SP_team_neutralobelisk`, `SP_team_redobelisk`, `SpawnObelisk`, `TeamColorString`
-- `code/game/g_team.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/g_trigger.c` (ported): `between`
 - `code/game/g_utils.c` (ported): `DebugLine`, `angles`, `fieldofs`, `for`, `surface`, `tv`
 - `code/game/g_weapon.c` (ported): `G_StartKamikaze`, `KamikazeDamage`, `KamikazeRadiusDamage`, `KamikazeShockWave`, `Weapon_Nailgun_Fire`, `weapon_proxlauncher_fire`
-- `code/game/inv.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/match.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/surfaceflags.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/syn.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/macosx/CGMouseDeltaFix.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/macosx/CGPrivateAPI.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/macosx/Q3Controller.h` (not_started): *(Symbolinventar ergänzen)*
@@ -470,8 +461,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/null/null_main.c` (not_started): `Sys_BeginStreamedFile`, `Sys_EarlyOutput`, `Sys_EndStreamedFile`, `Sys_Error`, `Sys_FindClose`, `Sys_FindFirst`, `Sys_FindNext`, `Sys_GetClipboardData`, `Sys_GetGameAPI`, `Sys_Init`, `Sys_Milliseconds`, `Sys_Mkdir`, `Sys_Quit`, `Sys_StreamSeek`, `Sys_StreamedRead`, `Sys_UnloadGame`, `Sys_mkdir`, `main`
 - `code/null/null_net.c` (not_started): `NET_StringToAdr`, `Sys_GetPacket`, `Sys_SendPacket`
 - `code/null/null_snddma.c` (not_started): `SNDDMA_BeginPainting`, `SNDDMA_GetDMAPos`, `SNDDMA_Init`, `SNDDMA_Shutdown`, `SNDDMA_Submit`, `S_ClearSoundBuffer`, `S_RegisterSound`, `S_StartLocalSound`
-- `code/q3_ui/keycodes.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/q3_ui/ui_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/cm_load.c` (ported): `CM_BoundBrush`, `CM_Checksum`, `CM_ClearMap`, `CM_ClipHandleToModel`, `CM_EntityString`, `CM_InitBoxHull`, `CM_InlineModel`, `CM_LeafArea`, `CM_LeafCluster`, `CM_LoadMap`, `CM_LumpChecksum`, `CM_ModelBounds`, `CM_NumClusters`, `CM_NumInlineModels`, `CM_TempBoxModel`, `CMod_LoadBrushSides`, `CMod_LoadBrushes`, `CMod_LoadEntityString`, `CMod_LoadLeafBrushes`, `CMod_LoadLeafSurfaces`, `CMod_LoadLeafs`, `CMod_LoadNodes`, `CMod_LoadPatches`, `CMod_LoadPlanes`, `CMod_LoadShaders`, `CMod_LoadSubmodels`, `CMod_LoadVisibility`, `SetPlaneSignbits`
 - `code/qcommon/cm_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/cm_patch.h` (not_started): *(Symbolinventar ergänzen)*

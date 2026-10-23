@@ -2995,3 +2995,45 @@ neun neuen Gates sind in `scripts/verify.py` registriert.
 Das Inventar zählt jetzt **218 portierte, eine teilweise portierte und 116 noch
 nicht begonnene** Dateien von insgesamt 335. Die einzige verbleibende partielle
 Datei ist `code/game/g_local.h`.
+
+## 2026-10-23: Spiel-, CGame-, Renderer- und Q3UI-Header geschlossen
+
+Elf weitere Originalheader sind vollständig nativ zugeordnet:
+
+- `code/game/g_local.h`: 43 Konstanten und Enumwerte, elf Typen, 328
+  Deklarationen und 152 Recordfelder. `gentity_t`, `gclient_t`,
+  `level_locals_t`, Session-, Team- und Botzustände sowie alle lokalen Spiel-
+  und Trapdeklarationen besitzen eine produktive Fassade. Bodyqueue- und
+  Spawnlimits verwenden sie im laufenden Spielpfad.
+- `code/cgame/cg_public.h` und `code/cgame/tr_types.h`: 157 Konstanten und
+  Enumwerte sowie 13 ABI-Typen für Snapshot, CGame-Import/-Export, Szene,
+  Renderer, Modelle, Polys, Fonts, Refdefs und GL-Konfiguration. CGame-VM und
+  Scene-Queue verwenden die zentralen Definitionen.
+- `code/q3_ui/keycodes.h` und `code/q3_ui/ui_local.h`: 155 Defines und
+  Keycodes, 16 Typen, 226 Funktionen und 79 Globals. QMenu und die produktive
+  Retail-UI-Eingabesitzung verwenden die gemeinsame UI-ABI. Die echte
+  `ui.qvm`-Probe besteht Start, Navigation, Ingame-Menü sowie Key-, Char- und
+  Mausereignisse.
+- `code/game/surfaceflags.h`, `inv.h`, `chars.h`, `syn.h`, `match.h` und
+  `g_team.h`: 332 numerische Makros, das Match-Escapezeichen und 17 öffentliche
+  Teamfunktionen. Die kanonischen Definitionen sind in 19 produktive
+  Gameplay-, Bot-, Bewegungs-, Treffer-, Trigger- und Teamdateien eingebunden.
+  Dabei wurden sechs falsche Bot-Charakterindizes korrigiert: Angriff,
+  Springen, Ducken, Weapon-Jumping, View-Faktor und maximale Sichtänderung.
+
+Die sechs gebündelten Vollständigkeitsgates bestehen unveränderte 32-Bit-C-
+Orakel, Layout-/Offsetprüfungen und 68 neue Verträge. Zusätzlich sind der
+Windows-Hauptbuild, der vollständige Retail-Bodies-Sweep über alle Karten, 95
+Lifecycle-Szenarien mit 378.562.214 exakten Wörtern, 71
+Initialisierungsszenarien und der acht Frames lange Retail-QVM-Match grün. Der
+Match meldet 131 Entities, 13 Snapshot-Entities, 2.345 vollständig texturierte
+Dreiecke, 17 Renderpässe, 26 Sounds und null nicht unterstützte Entities.
+`build/MiniQuake3.exe` hat SHA-256
+`09fae7e3b6520315f73e533e7f92d2eac96b8f828ff6f0cf404fe2134d91e040`.
+Die letzte vollständige Gesamtauswahl bleibt der dokumentierte 449-Gate-Lauf;
+die normale Retail-Auswahl in `scripts/verify.py` umfasst inzwischen 483 Gates.
+
+Das generierte Inventar zählt nun **229 portierte, keine teilweise portierte
+und 106 noch nicht begonnene** Dateien von insgesamt 335. Die verbleibenden
+Quellportlücken liegen vor allem in Botlib-/AAS-Interna, Renderer-Backends,
+Client-/QCommon-Resten sowie Unix-, macOS-, Null- und weiteren Plattformpfaden.

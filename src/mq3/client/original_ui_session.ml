@@ -2,27 +2,29 @@
 // Interactive input/frame ownership for the unchanged Baseq3 ui.qvm.
 package mq3.client.original_ui_session
 
+import mq3.client.keycodes as q3keys
+
 const KEYCATCH_UI=2
 const KEYCATCH_CONSOLE=1
-const K_CHAR_FLAG=1024
-const K_BACKSPACE=127
-const K_UPARROW=132
-const K_DOWNARROW=133
-const K_LEFTARROW=134
-const K_RIGHTARROW=135
-const K_ALT=136
-const K_CTRL=137
-const K_SHIFT=138
-const K_INS=139
-const K_DEL=140
-const K_PGDN=141
-const K_PGUP=142
-const K_HOME=143
-const K_END=144
-const K_F1=145
-const K_MOUSE1=178
-const K_MOUSE2=179
-const K_MOUSE3=180
+const K_CHAR_FLAG=q3keys.K_CHAR_FLAG
+const K_BACKSPACE=q3keys.K_BACKSPACE
+const K_UPARROW=q3keys.K_UPARROW
+const K_DOWNARROW=q3keys.K_DOWNARROW
+const K_LEFTARROW=q3keys.K_LEFTARROW
+const K_RIGHTARROW=q3keys.K_RIGHTARROW
+const K_ALT=q3keys.K_ALT
+const K_CTRL=q3keys.K_CTRL
+const K_SHIFT=q3keys.K_SHIFT
+const K_INS=q3keys.K_INS
+const K_DEL=q3keys.K_DEL
+const K_PGDN=q3keys.K_PGDN
+const K_PGUP=q3keys.K_PGUP
+const K_HOME=q3keys.K_HOME
+const K_END=q3keys.K_END
+const K_F1=q3keys.K_F1
+const K_MOUSE1=q3keys.K_MOUSE1
+const K_MOUSE2=q3keys.K_MOUSE2
+const K_MOUSE3=q3keys.K_MOUSE3
 const UIMENU_NONE=0
 const UIMENU_MAIN=1
 const UIMENU_INGAME=2

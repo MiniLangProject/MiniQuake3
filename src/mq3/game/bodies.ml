@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Body queue/death helpers; G_RunItem's non-item corpse physics path.
 package mq3.game.bodies
+import mq3.game.g_local as local
 import mq3.game.entities as game
 import mq3.game.entitystate as es
 import mq3.game.constants as c
@@ -54,9 +55,9 @@ function initQueue(level)
   level.bodyQueIndex = 0
   // Standalone levels start without a queue; a live module owns eight fixed
   // pointer slots. Preserve each old pointer until its G_Spawn has completed.
-  if len(level.bodyQue) == 0 then level.bodyQue = array(8,void) end if
-  if len(level.bodyQue) != 8 then return error(494,"Body queue requires eight slots") end if
-  for i = 0 to 7
+  if len(level.bodyQue) == 0 then level.bodyQue = array(local.BODY_QUEUE_SIZE,void) end if
+  if len(level.bodyQue) != local.BODY_QUEUE_SIZE then return error(494,"Body queue requires eight slots") end if
+  for i = 0 to local.BODY_QUEUE_SIZE-1
     ent = game.spawn(level); ent.classname = "bodyque"; ent.neverFree = true
     level.bodyQue[i] = ent
   end for
@@ -70,8 +71,8 @@ end function
 function copyToQueue(level,ent)
   game.unlink(level,ent)
   if (sv.pointContents(level.scene,ent.s.origin,-1) & 0x80000000) != 0 then return void end if
-  if len(level.bodyQue) != 8 or level.bodyQueIndex < 0 or level.bodyQueIndex >= 8 then return error(494,"Body queue is not initialized") end if
-  body = level.bodyQue[level.bodyQueIndex]; level.bodyQueIndex = (level.bodyQueIndex+1) % 8
+  if len(level.bodyQue) != local.BODY_QUEUE_SIZE or level.bodyQueIndex < 0 or level.bodyQueIndex >= local.BODY_QUEUE_SIZE then return error(494,"Body queue is not initialized") end if
+  body = level.bodyQue[level.bodyQueIndex]; level.bodyQueIndex = local.nextBodyQueueSlot(level.bodyQueIndex)
   game.unlink(level,body)
   body.s = es.copy(ent.s); body.s.eFlags = 1; body.s.powerups = 0; body.s.loopSound = 0; body.s.number = body.slot
   body.timestamp = level.time; body.physicsObject = true; body.physicsBounce = 0.0
