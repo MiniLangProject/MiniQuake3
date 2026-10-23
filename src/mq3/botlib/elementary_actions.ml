@@ -80,6 +80,11 @@ end function
 function say(state,client,text) return emit(state,client,"say "+text) end function
 function sayTeam(state,client,text) return emit(state,client,"say_team "+text) end function
 function command(state,client,text) return emit(state,client,text) end function
+function tell(state,client,clientTo,text) return emit(state,client,"tell "+str(clientTo)+", "+text) end function
+function useItem(state,client,item) return emit(state,client,"use "+item) end function
+function dropItem(state,client,item) return emit(state,client,"drop "+item) end function
+function useInv(state,client,inventory) return emit(state,client,"invuse "+inventory) end function
+function dropInv(state,client,inventory) return emit(state,client,"invdrop "+inventory) end function
 
 function action(state,client,bits) value=inputAt(state,client);if value is error then return value end if;value.actionflags=value.actionflags|bits;return 0 end function
 function gesture(state,client) return action(state,client,ACTION_GESTURE) end function
@@ -133,3 +138,43 @@ function writeInput(data,offset,value)
   n.writeU32(data,offset+16,n.floatBits(value.speed));for axis=0 to 2 n.writeU32(data,offset+20+axis*4,n.floatBits(value.viewangles[axis])) end for
   n.writeU32(data,offset+32,value.actionflags);n.writeU32(data,offset+36,value.weapon);return 0
 end function
+
+// Complete code/botlib/be_ea.c surface.  The explicit state argument replaces
+// the original process-global botinputs pointer while retaining every original
+// transition and command string exactly.
+function EA_Setup(maxClients)
+  if maxClients<0 then return fail("negative client count") end if
+  values=array(maxClients,void);if maxClients>0 then for client=0 to maxClients-1 values[client]=emptyInput() end for end if
+  return State(true,maxClients,values,void,void,0)
+end function
+function EA_Shutdown(state) return shutdown(state) end function
+function EA_Say(state,client,text) return say(state,client,text) end function
+function EA_SayTeam(state,client,text) return sayTeam(state,client,text) end function
+function EA_Tell(state,client,clientTo,text) return tell(state,client,clientTo,text) end function
+function EA_UseItem(state,client,item) return useItem(state,client,item) end function
+function EA_DropItem(state,client,item) return dropItem(state,client,item) end function
+function EA_UseInv(state,client,inventory) return useInv(state,client,inventory) end function
+function EA_DropInv(state,client,inventory) return dropInv(state,client,inventory) end function
+function EA_Gesture(state,client) return gesture(state,client) end function
+function EA_Command(state,client,text) return command(state,client,text) end function
+function EA_SelectWeapon(state,client,weapon) return selectWeapon(state,client,weapon) end function
+function EA_Attack(state,client) return attack(state,client) end function
+function EA_Talk(state,client) return talk(state,client) end function
+function EA_Use(state,client) return useAction(state,client) end function
+function EA_Respawn(state,client) return respawn(state,client) end function
+function EA_Jump(state,client) return jump(state,client) end function
+function EA_DelayedJump(state,client) return delayedJump(state,client) end function
+function EA_Crouch(state,client) return crouch(state,client) end function
+function EA_Walk(state,client) return walk(state,client) end function
+function EA_Action(state,client,bits) return action(state,client,bits) end function
+function EA_MoveUp(state,client) return moveUp(state,client) end function
+function EA_MoveDown(state,client) return moveDown(state,client) end function
+function EA_MoveForward(state,client) return moveForward(state,client) end function
+function EA_MoveBack(state,client) return moveBack(state,client) end function
+function EA_MoveLeft(state,client) return moveLeft(state,client) end function
+function EA_MoveRight(state,client) return moveRight(state,client) end function
+function EA_Move(state,client,direction,speed) return move(state,client,direction,speed) end function
+function EA_View(state,client,angles) return view(state,client,angles) end function
+function EA_EndRegular(state,client,thinktime) return endRegular(state,client,thinktime) end function
+function EA_GetInput(state,client,thinktime) return getInput(state,client,thinktime) end function
+function EA_ResetInput(state,client) return resetInput(state,client) end function

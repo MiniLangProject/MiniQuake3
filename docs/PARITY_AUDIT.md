@@ -2922,3 +2922,41 @@ fünf neuen Gates sind zusätzlich in `scripts/verify.py` registriert.
 
 Das Inventar zählt jetzt **205 portierte, 14 teilweise portierte und 116 noch
 nicht begonnene** Dateien von insgesamt 335.
+
+## 2026-10-23: Archive, Botaktionen und AAS-Bewegung geschlossen
+
+Vier weitere partielle Originaldateien sind vollständig nativ zugeordnet:
+
+- `code/qcommon/unzip.c`: 48/48 Inventarkandidaten. 41 gehören zum aktiven
+  Minizip-/DEFLATE-Pfad; sieben stammen aus Kommentaren oder deaktiviertem
+  zlib-Code und besitzen ebenfalls kompatible Fassaden. Stateful Navigation,
+  Metadaten, Kommentare, Extra-Felder, SFX-Präfixe, Chunk-Lesen, Cursor,
+  Reopen, Headerkohärenz und der begrenzte RFC1951-Decoder laufen. Vier
+  unveränderte-C-Datensätze, 23 Verträge und 84 Retail-Archivfälle bestehen.
+- `code/botlib/be_ea.c`: alle 32 Elementaraktionen einschließlich Setup,
+  Shutdown, Chat-, Item-/Inventarbefehlen, Eingabelatches, Sicht, Bewegung,
+  Waffenwahl und Reset. 17 unveränderte-C-Datensätze, elf Verträge und zwölf
+  Retail-`qagame.qvm`-Botlib-Verträge bestehen.
+- `code/botlib/be_aas_bspq3.c`: alle 21 BSP-/AAS-Brückensymbole mit
+  originalgetreuen, einsbasierten BSP-Entitäten, `worldspawn=1`, Epair-Abfragen,
+  Modellgrenzen und Point-Contents. Sieben unveränderte-C-Datensätze, 17
+  Verträge und eine q3dm1-Probe mit 161 Entitäten und sechs Deathmatch-Spawns
+  bestehen.
+- `code/botlib/be_aas_move.c`: alle 19 Symbole für Einstellungen, Boden-,
+  Wasser- und Leiterabfragen, Bounding-Box-Kollision, Reibung/Beschleunigung,
+  Waffen-/Sprungbahnen und vollständige Client-Bewegungsvorhersage. Fünf
+  unveränderte-C-Szenarien mit 17 exakten Beobachtungen, 16 neue sowie zwölf
+  bestehende Bewegungskontrakte bestehen.
+
+Der sequentielle Windows-Hauptbuild, Archiv-/Filesystem-, Elementary-Action-,
+AAS-Syscall- und Bewegungsregressionen sind grün. Der gekoppelte Retail-QVM-Match
+läuft acht Frames mit 131 Entities, 13 Snapshot-Entities, 2.345 vollständig
+texturierten Dreiecken, 17 Renderpässen, 26 Sounds und null nicht unterstützten
+Entities. `build/MiniQuake3.exe` hat SHA-256
+`93b20aad754c6f7e16cdcad74c1a98238534e549b5f7ed884bb367c334b6d49b`. Die
+letzte vollständige Gesamtauswahl bleibt der dokumentierte 449-Gate-Lauf; die
+vier neuen Vollständigkeitsgates sind zusätzlich in `scripts/verify.py`
+registriert.
+
+Das Inventar zählt jetzt **209 portierte, 10 teilweise portierte und 116 noch
+nicht begonnene** Dateien von insgesamt 335.

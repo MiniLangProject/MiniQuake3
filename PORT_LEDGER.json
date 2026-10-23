@@ -106,23 +106,230 @@
       ],
       "symbol_mapping": [
         {
-          "original": "implemented runtime subset",
+          "original": "AAS_BSPEntityInRange",
           "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
             "src/mq3/botlib/aas_syscalls.ml",
             "src/mq3/engine/local_qvm_match.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Original-indexed BSP entity iteration and string/vector/float/int epair queries are implemented with exact QVM output handling; BSP linking, traces and PVS/PHS exports remain partial."
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_BSPLinkEntity",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_BSPModelMinsMaxsOrigin",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_BSPTraceLight",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_BoxEntities",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_DumpBSPData",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_EntityCollision",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_FloatForBSPEpairKey",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_FreeBSPEntities",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_IntForBSPEpairKey",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_LoadBSPFile",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_NextBSPEntity",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_ParseBSPEntities",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_PointContents",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_Trace",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_UnlinkFromBSPLeaves",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_ValueForBSPEpairKey",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_VectorForBSPEpairKey",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_inPHS",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "AAS_inPVS",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
+        },
+        {
+          "original": "PrintContents",
+          "target_files": [
+            "src/mq3/botlib/aas_bspq3.ml",
+            "src/mq3/botlib/aas_syscalls.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 BSP/AAS bridge symbols are productively mapped with one-based BSP entities, worldspawn identity, epair typed lookups, model bounds and point contents. Seven unchanged-C records, seventeen contracts and q3dm1 Retail entity-lump probes pass."
         }
       ],
       "target": [
+        "src/mq3/botlib/aas_bspq3.ml",
         "src/mq3/botlib/aas_syscalls.ml",
         "src/mq3/engine/local_qvm_match.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_be_aas_bspq3_complete.py",
+        "tests/reference/be_aas_bspq3_complete_oracle.c",
+        "tests/be_aas_bspq3_complete_oracle.ml",
+        "tests/be_aas_bspq3_complete_contracts.ml",
+        "tests/be_aas_bspq3_complete_retail_probe.ml",
         "scripts/test_botlib_aas_syscalls.py",
-        "scripts/test_botlib_retail_qagame.py"
+        "scripts/test_retail_qvm_match.py"
       ]
     },
     {
@@ -883,25 +1090,229 @@
       ],
       "symbol_mapping": [
         {
-          "original": "implemented runtime subset",
+          "original": "AAS_Accelerate",
           "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
             "src/mq3/botlib/aas_client_movement.ml",
             "src/mq3/botlib/aas_client_movement_syscalls.ml",
             "src/mq3/botlib/aas_movement_queries.ml"
           ],
-          "status": "tested_subset",
-          "scope": "AAS swimming and the 84-byte AAS_PredictClientMovement ABI are implemented with five native reference scenarios and MiniLang contracts; the remaining movement helpers are partial."
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_AgainstLadder",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_AirControl",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_ApplyFriction",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_BFGJumpZVelocity",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_ClientMovementHitBBox",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_ClientMovementPrediction",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_ClipToBBox",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_DropToFloor",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_HorizontalVelocityForJump",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_InitSettings",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_JumpReachRunStart",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_OnGround",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_PredictClientMovement",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_RocketJumpZVelocity",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_SetMovedir",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_Swimming",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_TestMovementPrediction",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
+        },
+        {
+          "original": "AAS_WeaponJumpZVelocity",
+          "target_files": [
+            "src/mq3/botlib/be_aas_move.ml",
+            "src/mq3/botlib/aas_client_movement.ml",
+            "src/mq3/botlib/aas_client_movement_syscalls.ml",
+            "src/mq3/botlib/aas_movement_queries.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 19 movement symbols are mapped across the complete facade and productive client-movement runtime: settings, ground/water/ladder queries, bbox collision, friction/acceleration, weapon jumps, run starts, ballistic speed and prediction wrappers. Five unchanged-C scenarios with seventeen exact observations plus sixteen completion and twelve established movement contracts pass."
         }
       ],
       "target": [
+        "src/mq3/botlib/be_aas_move.ml",
         "src/mq3/botlib/aas_client_movement.ml",
         "src/mq3/botlib/aas_client_movement_syscalls.ml",
         "src/mq3/botlib/aas_movement_queries.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_be_aas_move_complete.py",
+        "tests/reference/aas_client_movement_oracle.c",
+        "tests/be_aas_move_complete_contracts.ml",
         "scripts/test_aas_client_movement.py",
-        "scripts/test_aas_entity_queries.py"
+        "scripts/test_aas_runtime.py",
+        "scripts/test_bot_spawn_retail.py"
       ]
     },
     {
@@ -4714,23 +5125,273 @@
       ],
       "symbol_mapping": [
         {
-          "original": "implemented runtime subset",
+          "original": "EA_Action",
           "target_files": [
-            "src/mq3/botlib/elementary_actions.ml",
-            "src/mq3/botlib/elementary_action_syscalls.ml"
+            "src/mq3/botlib/elementary_actions.ml"
           ],
-          "status": "tested_subset",
-          "scope": "All Elementary Actions and bot_input_t marshalling for traps 400-423 are implemented and compared with native Baseq3."
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_Attack",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_Command",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_Crouch",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_DelayedJump",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_DropInv",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_DropItem",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_EndRegular",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_Gesture",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_GetInput",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_Jump",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_Move",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_MoveBack",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_MoveDown",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_MoveForward",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_MoveLeft",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_MoveRight",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_MoveUp",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_ResetInput",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_Respawn",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_Say",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_SayTeam",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_SelectWeapon",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_Setup",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_Shutdown",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_Talk",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_Tell",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_Use",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_UseInv",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_UseItem",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_View",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
+        },
+        {
+          "original": "EA_Walk",
+          "target_files": [
+            "src/mq3/botlib/elementary_actions.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 elementary-action symbols are productively mapped, including setup/shutdown, chat/item/inventory commands, input latches, view, movement, weapon selection and reset semantics. Seventeen unchanged-C records, eleven completion contracts and the Retail qagame botlib lifecycle pass."
         }
       ],
       "target": [
-        "src/mq3/botlib/elementary_actions.ml",
-        "src/mq3/botlib/elementary_action_syscalls.ml"
+        "src/mq3/botlib/elementary_actions.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_be_ea_complete.py",
+        "tests/reference/be_ea_complete_oracle.c",
+        "tests/be_ea_complete_oracle.ml",
+        "tests/be_ea_complete_contracts.ml",
         "scripts/test_elementary_actions.py",
-        "tests/reference/elementary_actions_oracle.c"
+        "scripts/test_botlib_retail_qagame.py"
       ]
     },
     {
@@ -40113,14 +40774,451 @@
         "zcalloc",
         "zcfree"
       ],
-      "symbol_mapping": [],
-      "target": [
-        "src/mq3/format/pk3.ml",
-        "src/mq3/format/deflate.ml"
+      "symbol_mapping": [
+        {
+          "original": "adler32",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflate",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflateEnd",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflateInit2_",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflateInit_",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflateReset",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflateSetDictionary",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflateSync",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflateSyncPoint",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflate_blocks",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflate_blocks_free",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflate_blocks_new",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflate_blocks_reset",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflate_blocks_sync_point",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflate_codes",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflate_codes_free",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflate_codes_new",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflate_fast",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflate_flush",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "inflate_set_dictionary",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "strcmpcasenosensitive_internal",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzClose",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzCloseCurrentFile",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzGetCurrentFileInfo",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzGetCurrentFileInfoPosition",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzGetGlobalComment",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzGetGlobalInfo",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzGetLocalExtrafield",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzGoToFirstFile",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzGoToNextFile",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzLocateFile",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzOpen",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzOpenCurrentFile",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzReOpen",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzReadCurrentFile",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzSetCurrentFileInfoPosition",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzStringFileNameCompare",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzeof",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzlocal_CheckCurrentFileCoherencyHeader",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzlocal_DosDateToTmuDate",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzlocal_GetCurrentFileInfoInternal",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzlocal_SearchCentralDir",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzlocal_getByte",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzlocal_getLong",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unzlocal_getShort",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "unztell",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "zcalloc",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        },
+        {
+          "original": "zcfree",
+          "target_files": [
+            "src/mq3/format/unzip.ml",
+            "src/mq3/format/pk3.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+        }
       ],
-      "status": "partial",
+      "target": [
+        "src/mq3/format/unzip.ml",
+        "src/mq3/format/pk3.ml"
+      ],
+      "status": "ported",
       "tests": [
-        "scripts/test_archives.py"
+        "scripts/test_unzip_complete.py",
+        "tests/reference/unzip_complete_oracle.c",
+        "tests/unzip_complete_oracle.ml",
+        "tests/unzip_complete_contracts.ml",
+        "scripts/test_pure_filesystem.py"
       ]
     },
     {

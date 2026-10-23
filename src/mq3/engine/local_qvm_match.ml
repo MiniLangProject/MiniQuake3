@@ -44,6 +44,7 @@ import mq3.botlib.aas_routing_cache as aasRoutingCache
 import mq3.botlib.aas_route_extras as aasRouteExtras
 import mq3.botlib.aas_route_extra_syscalls as aasRouteExtraSyscalls
 import mq3.botlib.aas_syscalls as aasSyscalls
+import mq3.botlib.aas_bspq3 as aasBspq3
 import mq3.botlib.aas_entities as aasEntities
 import mq3.botlib.aas_query_syscalls as aasQuerySyscalls
 import mq3.botlib.aas_movement_queries as aasMovementQueries
@@ -619,7 +620,7 @@ function extendedQagame(context,vm,base,op)
   if op==207 then return updateAasEntity(context,vm,base) end if
   if op==208 then return botInterface.BotExportTest(common.argument(vm,base,1),common.argument(vm,base,2),common.argument(vm,base,3),common.argument(vm,base,4)) end if
   if op>=botServerBridge.OP_GET_SNAPSHOT_ENTITY and op<=botServerBridge.OP_USER_COMMAND then return botServerImports.SV_BotDispatch(context.botServer,vm,base,op) end if
-  if op==309 then point=common.readFloatVector(vm,common.argument(vm,base,1),3,"AAS point contents");if point is error then return point end if;return pointContents(context,point,-1) end if
+  if op==309 then point=common.readFloatVector(vm,common.argument(vm,base,1),3,"AAS point contents");if point is error then return point end if;host=botServerImports.services(context);host.pointContentsFn=pointContents;return aasBspq3.AAS_PointContents(host,point) end if
   if op==303 then return aasQuerySyscalls.entityInfo(context.aasEntities,vm,common.argument(vm,base,1),common.argument(vm,base,2)) end if
   if op==308 then return aasQuerySyscalls.trace(context.aas,vm,base) end if
   if op==317 then origin=common.readFloatVector(vm,common.argument(vm,base,1),3,"AAS swimming origin");if origin is error then return origin end if;if aasMovementQueries.swimming(context,aasPointContents,origin) then return 1 end if;return 0 end if
@@ -688,7 +689,8 @@ function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
   spatialScene=serverWorld.create(collisionWorld)
   initialCommand=qworld.userCommand(now,[0,0,0],0,2,0,0,0)
   grid=lightGrid.load(map);if grid is error then return grid end if
-  botBspEntities=bsp.entities(map);if botBspEntities is error then return botBspEntities end if
+  bspWorld=aasBspq3.create();loadedBsp=aasBspq3.AAS_LoadBSPFile(bspWorld,decode(entityBytes));if loadedBsp is error then return loadedBsp end if
+  botBspEntities=bspWorld.entities
   commandState=commands.create();abiServer=serverAbi.server();serverLifecycle.sv.configstrings=abiServer.configstrings;configstrings=serverLifecycle.sv.configstrings;cgameServerCommands=serverCommandStream.create(commandState,configstrings)
   uiClient=uiHost.createClientState(uiHost.CA_DISCONNECTED,0,-1,"localhost","","");if uiClient is error then return uiClient end if
   nativeServerCmds=nativeCgameServercmds.create();nativeServerCmds.configstrings=configstrings

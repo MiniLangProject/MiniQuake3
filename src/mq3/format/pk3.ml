@@ -9,18 +9,31 @@ import std.checksum.crc32 as crc
 
 struct Entry
   name
+  version
+  versionNeeded
   flags
   method
+  dosDate
   checksum
   compressedSize
   size
   localOffset
+  centralOffset
+  centralExtra
+  comment
+  diskStart
+  internalAttributes
+  externalAttributes
 end struct
 
 struct Archive
   path
   entries
   directoryOffset
+  directorySize
+  endOffset
+  comment
+  byteBeforeZip
 end struct
 
 function fail(message)
@@ -53,8 +66,12 @@ function open(path)
   if count != u16(tail, endOffset + 8) then return fail("inconsistent directory count") end if
   directorySize = n.readU32(tail, endOffset + 12)
   directoryOffset = n.readU32(tail, endOffset + 16)
-  if directoryOffset + directorySize > size - tailSize + endOffset then return fail("directory outside archive") end if
-  directory = file.readRange(path, directoryOffset, directorySize)
+  absoluteEnd = size - tailSize + endOffset
+  if directoryOffset + directorySize > absoluteEnd then return fail("directory outside archive") end if
+  byteBeforeZip = absoluteEnd - directoryOffset - directorySize
+  if byteBeforeZip < 0 then return fail("invalid self-extracting prefix") end if
+  absoluteDirectoryOffset = byteBeforeZip + directoryOffset
+  directory = file.readRange(path, absoluteDirectoryOffset, directorySize)
   entries = array(count, void)
   pos = 0
   index = 0
@@ -66,27 +83,41 @@ function open(path)
     nextPos = pos + 46 + nameLength + extraLength + commentLength
     if nextPos > directorySize then return fail("truncated filename") end if
     if u16(directory, pos + 34) != 0 then return fail("entry on another disk") end if
-    entries[index] = Entry(decode(slice(directory, pos + 46, nameLength)), u16(directory, pos + 8), u16(directory, pos + 10), n.readU32(directory, pos + 16), n.readU32(directory, pos + 20), n.readU32(directory, pos + 24), n.readU32(directory, pos + 42))
+    name = decode(slice(directory, pos + 46, nameLength))
+    centralExtra = slice(directory, pos + 46 + nameLength, extraLength)
+    entryComment = decode(slice(directory, pos + 46 + nameLength + extraLength, commentLength))
+    entries[index] = Entry(name, u16(directory,pos+4), u16(directory,pos+6), u16(directory,pos+8), u16(directory,pos+10), n.readU32(directory,pos+12), n.readU32(directory,pos+16), n.readU32(directory,pos+20), n.readU32(directory,pos+24), byteBeforeZip+n.readU32(directory,pos+42), absoluteDirectoryOffset+pos, centralExtra, entryComment, u16(directory,pos+34), u16(directory,pos+36), n.readU32(directory,pos+38))
     pos = nextPos
     index = index + 1
   end while
   if pos != directorySize then return fail("directory length mismatch") end if
-  return Archive(path, entries, directoryOffset)
+  archiveComment = decode(slice(tail,endOffset+22,u16(tail,endOffset+20)))
+  return Archive(path, entries, absoluteDirectoryOffset, directorySize, absoluteEnd, archiveComment, byteBeforeZip)
+end function
+
+function localInfo(archive,entry)
+  if entry.localOffset + 30 > archive.directoryOffset then return fail("local header outside archive") end if
+  header=file.readRange(archive.path,entry.localOffset,30)
+  if n.readU32(header,0)!=0x04034b50 then return fail("invalid local header") end if
+  flags=u16(header,6);method=u16(header,8);nameLength=u16(header,26);extraLength=u16(header,28)
+  if flags!=entry.flags or method!=entry.method then return fail("local header disagreement") end if
+  if method!=0 and method!=8 then return fail("unsupported compression method") end if
+  if (flags&8)==0 and (n.readU32(header,14)!=entry.checksum or n.readU32(header,18)!=entry.compressedSize or n.readU32(header,22)!=entry.size) then return fail("local size or CRC disagreement") end if
+  if nameLength!=len(bytes(entry.name)) then return fail("local filename length disagreement") end if
+  variableEnd=entry.localOffset+30+nameLength+extraLength
+  if variableEnd>archive.directoryOffset then return fail("local fields outside archive") end if
+  localName=decode(file.readRange(archive.path,entry.localOffset+30,nameLength))
+  if localName!=entry.name then return fail("local filename disagreement") end if
+  return [variableEnd,file.readRange(archive.path,entry.localOffset+30+nameLength,extraLength)]
 end function
 
 function readEntry(archive, entry)
   if (entry.flags & 1) != 0 then return fail("encrypted entry") end if
   if entry.method != 0 and entry.method != 8 then return fail("unsupported compression method") end if
-  if entry.localOffset + 30 > archive.directoryOffset then return fail("local header outside archive") end if
-  header = file.readRange(archive.path, entry.localOffset, 30)
-  if n.readU32(header, 0) != 0x04034b50 then return fail("invalid local header") end if
-  if u16(header, 6) != entry.flags or u16(header, 8) != entry.method then return fail("local header disagreement") end if
-  nameLength = u16(header, 26)
-  extraLength = u16(header, 28)
-  dataOffset = entry.localOffset + 30 + nameLength + extraLength
+  local=localInfo(archive,entry)
+  if local is error then return local end if
+  dataOffset=local[0]
   if dataOffset + entry.compressedSize > archive.directoryOffset then return fail("compressed data outside archive") end if
-  localName = decode(file.readRange(archive.path, entry.localOffset + 30, nameLength))
-  if localName != entry.name then return fail("local filename disagreement") end if
   data = file.readRange(archive.path, dataOffset, entry.compressedSize)
   if entry.method == 8 then data = deflate.inflate(data, entry.size) end if
   if len(data) != entry.size then return fail("entry size mismatch") end if

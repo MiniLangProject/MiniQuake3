@@ -13,21 +13,21 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 
 | Bereich | Dateien | Portiert | Teilweise | Nicht begonnen | Original behalten |
 |---|---:|---:|---:|---:|---:|
-| `botlib` | 53 | 22 | 9 | 22 | 0 |
+| `botlib` | 53 | 25 | 6 | 22 | 0 |
 | `cgame` | 25 | 21 | 0 | 4 | 0 |
 | `client` | 19 | 16 | 0 | 3 | 0 |
 | `game` | 65 | 36 | 3 | 26 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
-| `qcommon` | 27 | 16 | 2 | 9 | 0 |
+| `qcommon` | 27 | 17 | 1 | 9 | 0 |
 | `renderer` | 27 | 23 | 0 | 4 | 0 |
 | `server` | 11 | 11 | 0 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 9 | 0 | 4 | 0 |
-| **Gesamt** | **335** | **205** | **14** | **116** | **0** |
+| **Gesamt** | **335** | **209** | **10** | **116** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -40,7 +40,7 @@ Teil dieser Tabelle.
 |---|---|---|---:|---:|---:|
 | `code/botlib/aasfile.h` | `botlib` | `partial` | 0 | 0 | 0 |
 | `code/botlib/be_aas_bsp.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/be_aas_bspq3.c` | `botlib` | `partial` | 21 | 0 | 21 |
+| `code/botlib/be_aas_bspq3.c` | `botlib` | `ported` | 21 | 21 | 0 |
 | `code/botlib/be_aas_cluster.c` | `botlib` | `ported` | 31 | 31 | 0 |
 | `code/botlib/be_aas_cluster.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/be_aas_debug.c` | `botlib` | `ported` | 19 | 19 | 0 |
@@ -53,7 +53,7 @@ Teil dieser Tabelle.
 | `code/botlib/be_aas_funcs.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/be_aas_main.c` | `botlib` | `partial` | 17 | 0 | 17 |
 | `code/botlib/be_aas_main.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/be_aas_move.c` | `botlib` | `partial` | 19 | 0 | 19 |
+| `code/botlib/be_aas_move.c` | `botlib` | `ported` | 19 | 19 | 0 |
 | `code/botlib/be_aas_move.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/be_aas_optimize.c` | `botlib` | `ported` | 8 | 8 | 0 |
 | `code/botlib/be_aas_optimize.h` | `botlib` | `not_started` | 0 | 0 | 0 |
@@ -73,7 +73,7 @@ Teil dieser Tabelle.
 | `code/botlib/be_ai_weap.c` | `botlib` | `partial` | 14 | 0 | 14 |
 | `code/botlib/be_ai_weight.c` | `botlib` | `ported` | 24 | 24 | 0 |
 | `code/botlib/be_ai_weight.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/be_ea.c` | `botlib` | `partial` | 32 | 0 | 32 |
+| `code/botlib/be_ea.c` | `botlib` | `ported` | 32 | 32 | 0 |
 | `code/botlib/be_interface.c` | `botlib` | `ported` | 16 | 0 | 16 |
 | `code/botlib/be_interface.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/l_crc.c` | `botlib` | `ported` | 5 | 0 | 5 |
@@ -281,7 +281,7 @@ Teil dieser Tabelle.
 | `code/qcommon/net_chan.c` | `qcommon` | `ported` | 17 | 1 | 16 |
 | `code/qcommon/qcommon.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
 | `code/qcommon/qfiles.h` | `qcommon` | `partial` | 0 | 0 | 0 |
-| `code/qcommon/unzip.c` | `qcommon` | `partial` | 48 | 0 | 48 |
+| `code/qcommon/unzip.c` | `qcommon` | `ported` | 48 | 48 | 0 |
 | `code/qcommon/unzip.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
 | `code/qcommon/vm.c` | `qcommon` | `ported` | 23 | 0 | 23 |
 | `code/qcommon/vm_interpreted.c` | `qcommon` | `ported` | 4 | 4 | 0 |
@@ -382,7 +382,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 
 - `code/botlib/aasfile.h` (partial): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_bsp.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_bspq3.c` (partial): `AAS_BSPEntityInRange`, `AAS_BSPLinkEntity`, `AAS_BSPModelMinsMaxsOrigin`, `AAS_BSPTraceLight`, `AAS_BoxEntities`, `AAS_DumpBSPData`, `AAS_EntityCollision`, `AAS_FloatForBSPEpairKey`, `AAS_FreeBSPEntities`, `AAS_IntForBSPEpairKey`, `AAS_LoadBSPFile`, `AAS_NextBSPEntity`, `AAS_ParseBSPEntities`, `AAS_PointContents`, `AAS_Trace`, `AAS_UnlinkFromBSPLeaves`, `AAS_ValueForBSPEpairKey`, `AAS_VectorForBSPEpairKey`, `AAS_inPHS`, `AAS_inPVS`, `PrintContents`
 - `code/botlib/be_aas_cluster.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_debug.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_def.h` (not_started): *(Symbolinventar ergänzen)*
@@ -393,7 +392,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/botlib/be_aas_funcs.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_main.c` (partial): `AAS_ContinueInit`, `AAS_Error`, `AAS_IndexFromModel`, `AAS_IndexFromString`, `AAS_Initialized`, `AAS_LoadFiles`, `AAS_LoadMap`, `AAS_Loaded`, `AAS_ModelFromIndex`, `AAS_ProjectPointOntoVector`, `AAS_SetInitialized`, `AAS_Setup`, `AAS_Shutdown`, `AAS_StartFrame`, `AAS_StringFromIndex`, `AAS_Time`, `AAS_UpdateStringIndexes`
 - `code/botlib/be_aas_main.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_move.c` (partial): `AAS_Accelerate`, `AAS_AgainstLadder`, `AAS_AirControl`, `AAS_ApplyFriction`, `AAS_BFGJumpZVelocity`, `AAS_ClientMovementHitBBox`, `AAS_ClientMovementPrediction`, `AAS_ClipToBBox`, `AAS_DropToFloor`, `AAS_HorizontalVelocityForJump`, `AAS_InitSettings`, `AAS_JumpReachRunStart`, `AAS_OnGround`, `AAS_PredictClientMovement`, `AAS_RocketJumpZVelocity`, `AAS_SetMovedir`, `AAS_Swimming`, `AAS_TestMovementPrediction`, `AAS_WeaponJumpZVelocity`
 - `code/botlib/be_aas_move.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_optimize.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_aas_reach.h` (not_started): *(Symbolinventar ergänzen)*
@@ -403,7 +401,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/botlib/be_ai_char.c` (partial): `BotCharacterFromHandle`, `BotDefaultCharacteristics`, `BotDumpCharacter`, `BotFindCachedCharacter`, `BotFreeCharacter`, `BotFreeCharacter2`, `BotFreeCharacterStrings`, `BotInterpolateCharacters`, `BotLoadCachedCharacter`, `BotLoadCharacter`, `BotLoadCharacterFromFile`, `BotLoadCharacterSkill`, `BotShutdownCharacters`, `Characteristic_BFloat`, `Characteristic_BInteger`, `Characteristic_Float`, `Characteristic_Integer`, `Characteristic_String`, `CheckCharacteristicIndex`
 - `code/botlib/be_ai_weap.c` (partial): `BotAllocWeaponState`, `BotChooseBestFightWeapon`, `BotFreeWeaponState`, `BotFreeWeaponWeights`, `BotGetWeaponInfo`, `BotLoadWeaponWeights`, `BotResetWeaponState`, `BotSetupWeaponAI`, `BotShutdownWeaponAI`, `BotValidWeaponNumber`, `BotWeaponStateFromHandle`, `DumpWeaponConfig`, `LoadWeaponConfig`, `WeaponWeightIndex`
 - `code/botlib/be_ai_weight.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_ea.c` (partial): `EA_Action`, `EA_Attack`, `EA_Command`, `EA_Crouch`, `EA_DelayedJump`, `EA_DropInv`, `EA_DropItem`, `EA_EndRegular`, `EA_Gesture`, `EA_GetInput`, `EA_Jump`, `EA_Move`, `EA_MoveBack`, `EA_MoveDown`, `EA_MoveForward`, `EA_MoveLeft`, `EA_MoveRight`, `EA_MoveUp`, `EA_ResetInput`, `EA_Respawn`, `EA_Say`, `EA_SayTeam`, `EA_SelectWeapon`, `EA_Setup`, `EA_Shutdown`, `EA_Talk`, `EA_Tell`, `EA_Use`, `EA_UseInv`, `EA_UseItem`, `EA_View`, `EA_Walk`
 - `code/botlib/be_interface.c` (ported): `BotExportTest`, `BotLibSetup`, `Export_BotLibLoadMap`, `Export_BotLibSetup`, `Export_BotLibShutdown`, `Export_BotLibStartFrame`, `Export_BotLibUpdateEntity`, `Export_BotLibVarGet`, `Export_BotLibVarSet`, `GetBotLibAPI`, `Init_AAS_Export`, `Init_AI_Export`, `Init_EA_Export`, `Sys_MilliSeconds`, `ValidClientNumber`, `ValidEntityNumber`
 - `code/botlib/be_interface.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_crc.c` (ported): `CRC_ContinueProcessString`, `CRC_Init`, `CRC_ProcessByte`, `CRC_ProcessString`, `CRC_Value`
@@ -493,7 +490,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/qcommon/net_chan.c` (ported): `NET_AdrToString`, `NET_CompareAdr`, `NET_CompareBaseAdr`, `NET_GetLoopPacket`, `NET_IsLocalAddress`, `NET_OutOfBandPrint`, `NET_SendLoopPacket`, `NET_SendPacket`, `NET_StringToAdr`, `Netchan_Init`, `Netchan_Process`, `Netchan_ScramblePacket`, `Netchan_Setup`, `Netchan_Transmit`, `Netchan_TransmitNextFragment`, `Netchan_UnScramblePacket`
 - `code/qcommon/qcommon.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/qfiles.h` (partial): *(Symbolinventar ergänzen)*
-- `code/qcommon/unzip.c` (partial): `adler32`, `inflate`, `inflateEnd`, `inflateInit2_`, `inflateInit_`, `inflateReset`, `inflateSetDictionary`, `inflateSync`, `inflateSyncPoint`, `inflate_blocks`, `inflate_blocks_free`, `inflate_blocks_new`, `inflate_blocks_reset`, `inflate_blocks_sync_point`, `inflate_codes`, `inflate_codes_free`, `inflate_codes_new`, `inflate_fast`, `inflate_flush`, `inflate_set_dictionary`, `strcmpcasenosensitive_internal`, `unzClose`, `unzCloseCurrentFile`, `unzGetCurrentFileInfo`, `unzGetCurrentFileInfoPosition`, `unzGetGlobalComment`, `unzGetGlobalInfo`, `unzGetLocalExtrafield`, `unzGoToFirstFile`, `unzGoToNextFile`, `unzLocateFile`, `unzOpen`, `unzOpenCurrentFile`, `unzReOpen`, `unzReadCurrentFile`, `unzSetCurrentFileInfoPosition`, `unzStringFileNameCompare`, `unzeof`, `unzlocal_CheckCurrentFileCoherencyHeader`, `unzlocal_DosDateToTmuDate`, `unzlocal_GetCurrentFileInfoInternal`, `unzlocal_SearchCentralDir`, `unzlocal_getByte`, `unzlocal_getLong`, `unzlocal_getShort`, `unztell`, `zcalloc`, `zcfree`
 - `code/qcommon/unzip.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/vm.c` (ported): `ParseHex`, `VM_ArgPtr`, `VM_Call`, `VM_CallCompiled`, `VM_Clear`, `VM_Compile`, `VM_Create`, `VM_Debug`, `VM_DllSyscall`, `VM_ExplicitArgPtr`, `VM_Free`, `VM_Init`, `VM_LoadSymbols`, `VM_LogSyscalls`, `VM_ProfileSort`, `VM_Restart`, `VM_SymbolForCompiledPointer`, `VM_SymbolToValue`, `VM_VM2C`, `VM_ValueToFunctionSymbol`, `VM_ValueToSymbol`, `VM_VmInfo_f`, `VM_VmProfile_f`
 - `code/qcommon/vm_ppc.c` (not_started): `AsmCall`, `Constant1`, `Constant4`, `Emit4`, `Inst`, `Inst4`, `InstImm`, `InstImmU`, `VM_CallCompiled`, `VM_Compile`, `fltop`, `fltopandsecond`, `ltop`, `ltopandsecond`

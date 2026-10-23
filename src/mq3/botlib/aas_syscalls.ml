@@ -4,6 +4,7 @@
 package mq3.botlib.aas_syscalls
 
 import mq3.botlib.aas_runtime as aasRuntime
+import mq3.botlib.aas_bspq3 as bspq3
 import mq3.botlib.aas_routing as aasRouting
 import mq3.botlib.aas_routing_cache as aasRoutingCache
 import mq3.vm.syscall_common as common
@@ -50,14 +51,10 @@ function pointAreaNum(runtime,vm,address)
   return aasRuntime.pointAreaNum(runtime,point)
 end function
 
-function nextBspEntity(entities,current)
-  // Entity zero is worldspawn and is not returned by AAS_NextBSPEntity.
-  next=current+1;if next<1 or next>=len(entities) then return 0 end if;return next
-end function
+function entityState(entities) return bspq3.State(true,0,"",len(entities),entities) end function
+function nextBspEntity(entities,current) return bspq3.AAS_NextBSPEntity(entityState(entities),current) end function
 function bspValue(entities,entity,key)
-  if entity<1 or entity>=len(entities) then return [false,""] end if
-  for each pair in entities[entity] if pair[0]==key then return [true,pair[1]] end if end for
-  return [false,""]
+  return bspq3.AAS_ValueForBSPEpairKey(entityState(entities),entity,key)
 end function
 function bspString(entities,vm,base)
   entity=common.argument(vm,base,1);key=common.readString(vm,common.argument(vm,base,2));if key is error then return key end if

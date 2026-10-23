@@ -28,8 +28,8 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **205 sind
-vollständig portiert, 14 teilweise portiert und 116 noch nicht begonnen**.
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **209 sind
+vollständig portiert, 10 teilweise portiert und 116 noch nicht begonnen**.
 Der aktuelle Integrationsblock schließt `cvar.c`, `net_chan.c`, `cm_polylib.c`
 und `be_interface.c`. Damit sind vollständige Cvar- und QVM-Trap-Semantik,
 Netchan samt Loopback/Fragmentierung/Adresspfaden, alle Winding-Operationen und
@@ -56,6 +56,17 @@ Input-, UDP-, Handshake-, Netzwerk- und spielbare Matchregressionen sowie der
 acht Frames lange Retail-QVM-Match bestehen. Der geprüfte
 `build/MiniQuake3.exe`-Stand hat SHA-256
 `fe2130bfa759a1bd141c27cce7d596dbd55ecc204f0292adc874ceca45c4380a`.
+
+Der jüngste Integrationsblock schließt `unzip.c`, `be_ea.c`,
+`be_aas_bspq3.c` und `be_aas_move.c`. Damit sind die vollständige
+Minizip-/DEFLATE-Oberfläche, alle Bot-Elementaraktionen, die BSP-/AAS-Brücke
+und sämtliche AAS-Bewegungsprimitiven nativ zugeordnet und im Retail-Pfad
+verdrahtet. Die vier Gates decken 120 Symbolkandidaten mit 33
+unveränderten-C-Szenarien beziehungsweise Datensätzen, 67 neuen Verträgen,
+84 Retail-Archivfällen sowie echten q3dm1- und Retail-`qagame.qvm`-Proben ab.
+Der frische Hauptbuild und der gekoppelte acht Frames lange Retail-QVM-Match
+bestehen; `build/MiniQuake3.exe` hat SHA-256
+`93b20aad754c6f7e16cdcad74c1a98238534e549b5f7ed884bb367c334b6d49b`.
 
 Der nächste Integrationsblock schließt zusätzlich `vm.c`, `cm_load.c`,
 `win_input.c` und `keys.h`. Die VM besitzt nun ihren vollständigen Lifecycle,
