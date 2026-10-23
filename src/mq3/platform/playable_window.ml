@@ -12,6 +12,14 @@ extern function nextInputEventNative(output as bytes,capacity as i32) from "play
 extern function mouseXNative() from "playable_window.dll" symbol "playable_window_consume_mouse_dx" returns i32
 extern function mouseYNative() from "playable_window.dll" symbol "playable_window_consume_mouse_dy" returns i32
 extern function millisecondsNative() from "playable_window.dll" symbol "playable_window_milliseconds" returns i32
+extern function inputInitNative() from "playable_window.dll" symbol "playable_window_input_init" returns i32
+extern function inputActivateNative(active as i32) from "playable_window.dll" symbol "playable_window_input_activate" returns void
+extern function inputFrameNative() from "playable_window.dll" symbol "playable_window_input_frame" returns void
+extern function inputClearNative() from "playable_window.dll" symbol "playable_window_input_clear_states" returns void
+extern function joystickConfigureNative(enabled as i32,threshold as double,ballScale as double) from "playable_window.dll" symbol "playable_window_input_configure_joystick" returns i32
+extern function midiConfigureNative(enabled as i32,device as i32,channel as i32) from "playable_window.dll" symbol "playable_window_input_configure_midi" returns i32
+extern function joystickAvailableNative() from "playable_window.dll" symbol "playable_window_input_joystick_available" returns i32
+extern function midiDeviceCountNative() from "playable_window.dll" symbol "playable_window_input_midi_device_count" returns i32
 extern function beginNative(red as i32,green as i32,blue as i32) from "playable_window.dll" symbol "playable_window_begin_frame" returns void
 extern function lineNative(x0 as i32,y0 as i32,x1 as i32,y1 as i32,red as i32,green as i32,blue as i32) from "playable_window.dll" symbol "playable_window_draw_line" returns void
 extern function presentNative() from "playable_window.dll" symbol "playable_window_present" returns void
@@ -33,6 +41,17 @@ extern function worldTriangleBatchViewportNative(records as ptr,byteCount as i32
 
 const VK_ESCAPE=27
 const VK_LBUTTON=1
+const VK_RBUTTON=2
+const VK_MBUTTON=4
+const VK_XBUTTON1=5
+const VK_XBUTTON2=6
+const K_MOUSE1=178
+const K_MOUSE2=179
+const K_MOUSE3=180
+const K_MOUSE4=181
+const K_MOUSE5=182
+const K_MWHEELDOWN=183
+const K_MWHEELUP=184
 const VK_RETURN=13
 const VK_SPACE=32
 const VK_UP=38
@@ -67,9 +86,11 @@ struct InputEvent time type value value2 end struct
 function open(width,height)
   if width<160 or height<120 then return error(7480,"preview window is too small") end if
   if create(width,height)==0 then return error(7481,"could not create preview window") end if
+  if inputInitNative()==0 then shutdownNative();return error(7481,"could not initialize native input") end if
+  inputActivateNative(1)
   return true
 end function
-function poll() pollNative();return void end function
+function poll() pollNative();inputFrameNative();return void end function
 function shouldClose() return shouldCloseNative()!=0 end function
 function setTitle(title)
   if typeof(title)!="string" then return error(7489,"preview window title must be a string") end if
@@ -116,6 +137,21 @@ function inputEvents(maxEvents)
   result=[];while len(result)<maxEvents event=nextInputEvent();if event==void then break end if;result=result+[event] end while;return result
 end function
 function mouseDelta() return [mouseXNative(),mouseYNative()] end function
+function inputActivate(active) value=0;if active then value=1 end if;inputActivateNative(value);return void end function
+function inputClear() inputClearNative();return void end function
+function configureJoystick(enabled,threshold,ballScale)
+  if typeof(threshold)!="double" and typeof(threshold)!="int" then return error(7491,"joystick threshold must be numeric") end if
+  if threshold<0 or threshold>1 then return error(7491,"joystick threshold must be between zero and one") end if
+  value=0;if enabled then value=1 end if
+  return joystickConfigureNative(value,threshold,ballScale)!=0
+end function
+function joystickAvailable() return joystickAvailableNative()!=0 end function
+function configureMidi(enabled,device,channel)
+  if device<0 or channel<1 or channel>16 then return error(7492,"MIDI device or channel is invalid") end if
+  value=0;if enabled then value=1 end if
+  return midiConfigureNative(value,device,channel)!=0
+end function
+function midiDeviceCount() return midiDeviceCountNative() end function
 function milliseconds() return millisecondsNative() end function
 function beginFrame(red,green,blue) beginNative(red,green,blue);return void end function
 function drawLine(a,b,red,green,blue)

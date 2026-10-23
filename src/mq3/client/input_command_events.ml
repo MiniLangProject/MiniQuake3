@@ -8,6 +8,10 @@ import mq3.client.key_binding_dispatch as eventBindingDispatch
 const INPUT_KEY=1
 const INPUT_MOUSE=3
 const VK_LBUTTON=1
+const VK_RBUTTON=2
+const VK_MBUTTON=4
+const VK_XBUTTON1=5
+const VK_XBUTTON2=6
 const VK_SPACE=32
 const VK_A=65
 const VK_D=68
@@ -17,6 +21,27 @@ const VK_W=87
 function quakeKey(virtualKey)
   if virtualKey>=65 and virtualKey<=90 then return virtualKey+32 end if
   if virtualKey==VK_LBUTTON then return 178 end if
+  if virtualKey==VK_RBUTTON then return 179 end if
+  if virtualKey==VK_MBUTTON then return 180 end if
+  if virtualKey==VK_XBUTTON1 then return 181 end if
+  if virtualKey==VK_XBUTTON2 then return 182 end if
+  if virtualKey==8 then return 127 end if
+  if virtualKey==20 then return 129 end if
+  if virtualKey==19 then return 131 end if
+  if virtualKey==38 then return 132 end if
+  if virtualKey==40 then return 133 end if
+  if virtualKey==37 then return 134 end if
+  if virtualKey==39 then return 135 end if
+  if virtualKey==18 then return 136 end if
+  if virtualKey==17 then return 137 end if
+  if virtualKey==16 then return 138 end if
+  if virtualKey==45 then return 139 end if
+  if virtualKey==46 then return 140 end if
+  if virtualKey==34 then return 141 end if
+  if virtualKey==33 then return 142 end if
+  if virtualKey==36 then return 143 end if
+  if virtualKey==35 then return 144 end if
+  if virtualKey>=112 and virtualKey<=126 then return 145+virtualKey-112 end if
   return virtualKey
 end function
 function defaultBinding(key)

@@ -1,5 +1,6 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#include <mmsystem.h>
 #include <objbase.h>
 #include <wincodec.h>
 #include <stdint.h>
@@ -42,12 +43,32 @@ static LARGE_INTEGER timerStart;
 #define PLAYABLE_INPUT_KEY 1
 #define PLAYABLE_INPUT_CHAR 2
 #define PLAYABLE_INPUT_MOUSE 3
+#define PLAYABLE_K_MOUSE1 178
+#define PLAYABLE_K_MWHEELDOWN 183
+#define PLAYABLE_K_MWHEELUP 184
+#define PLAYABLE_K_JOY1 185
+#define PLAYABLE_K_AUX1 217
 typedef struct playableInputEvent_s { int time, type, value, value2; } playableInputEvent;
 static playableInputEvent inputEvents[PLAYABLE_INPUT_EVENTS];
 static unsigned int inputEventHead;
 static unsigned int inputEventTail;
 static unsigned char inputKeyState[256];
 static SRWLOCK inputLock = SRWLOCK_INIT;
+static volatile LONG inputAppActive;
+static volatile LONG inputMouseActive;
+static int inputCursorHidden;
+static int inputJoystickEnabled;
+static int inputJoystickAvailable;
+static UINT inputJoystickId;
+static JOYCAPSW inputJoystickCaps;
+static DWORD inputJoystickOldButtons;
+static DWORD inputJoystickOldDirections;
+static double inputJoystickThreshold = 0.15;
+static double inputJoystickBallScale = 0.02;
+static HMIDIIN inputMidiHandle;
+static int inputMidiEnabled;
+static int inputMidiDevice;
+static int inputMidiChannel = 1;
 
 #define PLAYABLE_TEXTURE_SLOTS 512
 #define PLAYABLE_MAX_TEXTURE_SIZE 4096
@@ -136,9 +157,38 @@ static void queueInputEvent(int time, int type, int value, int value2) {
 }
 
 static void queueKeyTransition(int virtualKey, int down, int time) {
-    if ((unsigned)virtualKey > 255u || inputKeyState[virtualKey] == (unsigned char)(down != 0)) return;
-    inputKeyState[virtualKey] = (unsigned char)(down != 0);
-    queueInputEvent(time, PLAYABLE_INPUT_KEY, virtualKey, down != 0);
+    unsigned int index;
+    unsigned char state = (unsigned char)(down != 0);
+    if ((unsigned)virtualKey > 255u) return;
+    AcquireSRWLockExclusive(&inputLock);
+    if (inputKeyState[virtualKey] == state) {
+        ReleaseSRWLockExclusive(&inputLock);
+        return;
+    }
+    inputKeyState[virtualKey] = state;
+    if (inputEventHead - inputEventTail >= PLAYABLE_INPUT_EVENTS) ++inputEventTail;
+    index = inputEventHead & (PLAYABLE_INPUT_EVENTS - 1u);
+    inputEvents[index].time = time;
+    inputEvents[index].type = PLAYABLE_INPUT_KEY;
+    inputEvents[index].value = virtualKey;
+    inputEvents[index].value2 = down != 0;
+    ++inputEventHead;
+    ReleaseSRWLockExclusive(&inputLock);
+}
+
+static void queueKeyboardEvent(int key, int down, int time) {
+    unsigned int index;
+    if ((unsigned)key > 255u) return;
+    AcquireSRWLockExclusive(&inputLock);
+    inputKeyState[key] = (unsigned char)(down != 0);
+    if (inputEventHead - inputEventTail >= PLAYABLE_INPUT_EVENTS) ++inputEventTail;
+    index = inputEventHead & (PLAYABLE_INPUT_EVENTS - 1u);
+    inputEvents[index].time = time;
+    inputEvents[index].type = PLAYABLE_INPUT_KEY;
+    inputEvents[index].value = key;
+    inputEvents[index].value2 = down != 0;
+    ++inputEventHead;
+    ReleaseSRWLockExclusive(&inputLock);
 }
 
 static void resetInputEvents(void) {
@@ -147,6 +197,253 @@ static void resetInputEvents(void) {
     ZeroMemory(inputEvents, sizeof(inputEvents));
     ZeroMemory(inputKeyState, sizeof(inputKeyState));
     ReleaseSRWLockExclusive(&inputLock);
+}
+
+static int translateVirtualKey(WPARAM key, LPARAM flags) {
+    int extended = (flags & (1L << 24)) != 0;
+    if (key >= 'A' && key <= 'Z') return (int)key + ('a' - 'A');
+    if (key >= VK_F1 && key <= VK_F15) return 145 + (int)(key - VK_F1);
+    switch (key) {
+        case VK_BACK: return 127;
+        case VK_LWIN: case VK_RWIN: return 128;
+        case VK_CAPITAL: return 129;
+        case VK_SLEEP: return 130;
+        case VK_PAUSE: return 131;
+        case VK_UP: return extended ? 132 : 161;
+        case VK_DOWN: return extended ? 133 : 167;
+        case VK_LEFT: return extended ? 134 : 163;
+        case VK_RIGHT: return extended ? 135 : 165;
+        case VK_MENU: return 136;
+        case VK_CONTROL: return 137;
+        case VK_SHIFT: return 138;
+        case VK_INSERT: return extended ? 139 : 170;
+        case VK_DELETE: return extended ? 140 : 171;
+        case VK_NEXT: return extended ? 141 : 168;
+        case VK_PRIOR: return extended ? 142 : 162;
+        case VK_HOME: return extended ? 143 : 160;
+        case VK_END: return extended ? 144 : 166;
+        case VK_RETURN: return extended ? 169 : 13;
+        case VK_NUMPAD7: return 160;
+        case VK_NUMPAD8: return 161;
+        case VK_NUMPAD9: return 162;
+        case VK_NUMPAD4: return 163;
+        case VK_NUMPAD5: return 164;
+        case VK_NUMPAD6: return 165;
+        case VK_NUMPAD1: return 166;
+        case VK_NUMPAD2: return 167;
+        case VK_NUMPAD3: return 168;
+        case VK_NUMPAD0: return 170;
+        case VK_DECIMAL: return 171;
+        case VK_DIVIDE: return 172;
+        case VK_SUBTRACT: return 173;
+        case VK_ADD: return 174;
+        case VK_NUMLOCK: return 175;
+        case VK_MULTIPLY: return 176;
+        case VK_OEM_1: return ';';
+        case VK_OEM_PLUS: return '=';
+        case VK_OEM_COMMA: return ',';
+        case VK_OEM_MINUS: return '-';
+        case VK_OEM_PERIOD: return '.';
+        case VK_OEM_2: return '/';
+        case VK_OEM_3: return '`';
+        case VK_OEM_4: return '[';
+        case VK_OEM_5: return '\\';
+        case VK_OEM_6: return ']';
+        case VK_OEM_7: return '\'';
+    }
+    return (int)key;
+}
+
+static void releaseInputKeys(int time) {
+    int key;
+    for (key = 0; key < 256; ++key) if (inputKeyState[key]) queueKeyTransition(key, 0, time);
+    inputJoystickOldButtons = 0;
+    inputJoystickOldDirections = 0;
+}
+
+/* Raw Input is the modern buffered equivalent of the original DirectInput
+ * mouse path. Capture and clipping retain the Win32 fallback's focus rules. */
+static void activateMouseOnWindow(HWND hwnd) {
+    RECT clip;
+    POINT topLeft;
+    POINT bottomRight;
+    if (!hwnd || !InterlockedCompareExchange(&inputAppActive, 0, 0) ||
+            InterlockedExchange(&inputMouseActive, 1)) return;
+    SetCapture(hwnd);
+    if (GetClientRect(hwnd, &clip)) {
+        topLeft.x = clip.left; topLeft.y = clip.top;
+        bottomRight.x = clip.right; bottomRight.y = clip.bottom;
+        ClientToScreen(hwnd, &topLeft);
+        ClientToScreen(hwnd, &bottomRight);
+        clip.left = topLeft.x; clip.top = topLeft.y;
+        clip.right = bottomRight.x; clip.bottom = bottomRight.y;
+        ClipCursor(&clip);
+        SetCursorPos((clip.left + clip.right) / 2, (clip.top + clip.bottom) / 2);
+    }
+    while (ShowCursor(FALSE) >= 0) inputCursorHidden = 1;
+    haveMousePosition = 0;
+}
+
+static void deactivateMouseOnWindow(void) {
+    if (!InterlockedExchange(&inputMouseActive, 0)) return;
+    ClipCursor(0);
+    if (GetCapture() == windowHandle) ReleaseCapture();
+    if (inputCursorHidden) {
+        while (ShowCursor(TRUE) < 0) { }
+        inputCursorHidden = 0;
+    }
+    haveMousePosition = 0;
+}
+
+static double joystickAxis(int value) {
+    double result = ((double)value - 32768.0) / 32768.0;
+    if (result < -1.0) result = -1.0;
+    if (result > 1.0) result = 1.0;
+    return result;
+}
+
+static int joystickCentered(int value) { return value - 32768; }
+
+static const int joystickDirectionKeys[16] = {
+    134, 135, 132, 133,
+    PLAYABLE_K_JOY1 + 15, PLAYABLE_K_JOY1 + 16,
+    PLAYABLE_K_JOY1 + 17, PLAYABLE_K_JOY1 + 18,
+    PLAYABLE_K_JOY1 + 19, PLAYABLE_K_JOY1 + 20,
+    PLAYABLE_K_JOY1 + 21, PLAYABLE_K_JOY1 + 22,
+    PLAYABLE_K_JOY1 + 23, PLAYABLE_K_JOY1 + 24,
+    PLAYABLE_K_JOY1 + 25, PLAYABLE_K_JOY1 + 26
+};
+
+static void queueMidiNote(int note, int down, int time) {
+    unsigned int index;
+    int key = note - 60 + PLAYABLE_K_AUX1;
+    if (key < PLAYABLE_K_AUX1 || key > 255) return;
+    AcquireSRWLockExclusive(&inputLock);
+    inputKeyState[key] = (unsigned char)(down != 0);
+    if (inputEventHead - inputEventTail >= PLAYABLE_INPUT_EVENTS) ++inputEventTail;
+    index = inputEventHead & (PLAYABLE_INPUT_EVENTS - 1u);
+    inputEvents[index].time = time;
+    inputEvents[index].type = PLAYABLE_INPUT_KEY;
+    inputEvents[index].value = key;
+    inputEvents[index].value2 = down != 0;
+    ++inputEventHead;
+    ReleaseSRWLockExclusive(&inputLock);
+}
+
+static void CALLBACK playableMidiCallback(HMIDIIN handle, UINT message,
+        DWORD_PTR instance, DWORD_PTR parameter1, DWORD_PTR parameter2) {
+    unsigned int packed;
+    int status;
+    int channel;
+    int note;
+    int velocity;
+    (void)handle; (void)instance; (void)parameter2;
+    if (message != MIM_DATA || !inputMidiEnabled) return;
+    packed = (unsigned int)parameter1;
+    status = packed & 0xff;
+    channel = (status & 0x0f) + 1;
+    if (channel != inputMidiChannel) return;
+    note = (packed >> 8) & 0xff;
+    velocity = (packed >> 16) & 0xff;
+    if ((status & 0xf0) == 0x90) {
+        if (!velocity) queueMidiNote(note, 0, currentMilliseconds());
+        /* Preserve the original win_input.c zero-velocity NoteOn quirk. */
+        queueMidiNote(note, 1, currentMilliseconds());
+    } else if ((status & 0xf0) == 0x80) {
+        queueMidiNote(note, 0, currentMilliseconds());
+    }
+}
+
+static void shutdownMidi(void) {
+    HMIDIIN handle = inputMidiHandle;
+    inputMidiHandle = 0;
+    if (handle) {
+        midiInStop(handle);
+        midiInReset(handle);
+        midiInClose(handle);
+    }
+}
+
+static int startupMidi(void) {
+    UINT count;
+    shutdownMidi();
+    if (!inputMidiEnabled) return 1;
+    count = midiInGetNumDevs();
+    if (inputMidiDevice < 0 || (UINT)inputMidiDevice >= count) return 0;
+    if (midiInOpen(&inputMidiHandle, (UINT)inputMidiDevice,
+            (DWORD_PTR)playableMidiCallback, 0, CALLBACK_FUNCTION) != MMSYSERR_NOERROR) {
+        inputMidiHandle = 0;
+        return 0;
+    }
+    if (midiInStart(inputMidiHandle) != MMSYSERR_NOERROR) {
+        shutdownMidi();
+        return 0;
+    }
+    return 1;
+}
+
+static int startupJoystick(void) {
+    UINT count;
+    MMRESULT result = MMSYSERR_ERROR;
+    ZeroMemory(&inputJoystickCaps, sizeof(inputJoystickCaps));
+    inputJoystickAvailable = 0;
+    inputJoystickOldButtons = inputJoystickOldDirections = 0;
+    if (!inputJoystickEnabled) return 1;
+    count = joyGetNumDevs();
+    for (inputJoystickId = 0; inputJoystickId < count; ++inputJoystickId) {
+        JOYINFOEX info;
+        ZeroMemory(&info, sizeof(info));
+        info.dwSize = sizeof(info); info.dwFlags = JOY_RETURNCENTERED;
+        result = joyGetPosEx(inputJoystickId, &info);
+        if (result == JOYERR_NOERROR) break;
+    }
+    if (result != JOYERR_NOERROR || inputJoystickId >= count) return 0;
+    inputJoystickAvailable = joyGetDevCapsW(inputJoystickId, &inputJoystickCaps,
+        sizeof(inputJoystickCaps)) == JOYERR_NOERROR;
+    return inputJoystickAvailable;
+}
+
+static void pollJoystick(int time) {
+    JOYINFOEX info;
+    DWORD buttons;
+    DWORD directions = 0;
+    DWORD axis[4];
+    unsigned int index;
+    if (!inputJoystickEnabled || !inputJoystickAvailable) return;
+    ZeroMemory(&info, sizeof(info));
+    info.dwSize = sizeof(info); info.dwFlags = JOY_RETURNALL;
+    if (joyGetPosEx(inputJoystickId, &info) != JOYERR_NOERROR) return;
+    buttons = info.dwButtons;
+    for (index = 0; index < inputJoystickCaps.wNumButtons && index < 32; ++index) {
+        DWORD mask = 1u << index;
+        if ((buttons ^ inputJoystickOldButtons) & mask)
+            queueKeyTransition(PLAYABLE_K_JOY1 + (int)index, (buttons & mask) != 0, time);
+    }
+    inputJoystickOldButtons = buttons;
+    axis[0] = info.dwXpos; axis[1] = info.dwYpos;
+    axis[2] = info.dwZpos; axis[3] = info.dwRpos;
+    for (index = 0; index < inputJoystickCaps.wNumAxes && index < 4; ++index) {
+        double value = joystickAxis((int)axis[index]);
+        if (value < -inputJoystickThreshold) directions |= 1u << (index * 2);
+        else if (value > inputJoystickThreshold) directions |= 1u << (index * 2 + 1);
+    }
+    if ((inputJoystickCaps.wCaps & JOYCAPS_HASPOV) && info.dwPOV != JOY_POVCENTERED) {
+        if (info.dwPOV == JOY_POVFORWARD) directions |= 1u << 12;
+        if (info.dwPOV == JOY_POVBACKWARD) directions |= 1u << 13;
+        if (info.dwPOV == JOY_POVRIGHT) directions |= 1u << 14;
+        if (info.dwPOV == JOY_POVLEFT) directions |= 1u << 15;
+    }
+    for (index = 0; index < 16; ++index) {
+        DWORD mask = 1u << index;
+        if ((directions ^ inputJoystickOldDirections) & mask)
+            queueKeyTransition(joystickDirectionKeys[index], (directions & mask) != 0, time);
+    }
+    inputJoystickOldDirections = directions;
+    if (inputJoystickCaps.wNumAxes >= 6) {
+        int x = (int)(joystickCentered((int)info.dwUpos) * inputJoystickBallScale);
+        int y = (int)(joystickCentered((int)info.dwVpos) * inputJoystickBallScale);
+        if (x || y) queueInputEvent(time, PLAYABLE_INPUT_MOUSE, x, y);
+    }
 }
 
 static void releaseSurface(void) {
@@ -221,7 +518,11 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
             ShowWindow(hwnd, SW_HIDE);
             return 0;
         case WM_APP + 1:
+            deactivateMouseOnWindow();
             DestroyWindow(hwnd);
+            return 0;
+        case WM_APP + 2:
+            if (wParam) activateMouseOnWindow(hwnd); else deactivateMouseOnWindow();
             return 0;
         case WM_DESTROY:
             if (windowDC) ReleaseDC(hwnd, windowDC);
@@ -231,20 +532,27 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
             PostQuitMessage(0);
             return 0;
         case WM_KILLFOCUS:
-            {
-                int key;
-                int now = currentMilliseconds();
-                for (key = 0; key < 256; ++key) if (inputKeyState[key]) queueKeyTransition(key, 0, now);
-            }
+            InterlockedExchange(&inputAppActive, 0);
+            deactivateMouseOnWindow();
+            releaseInputKeys(currentMilliseconds());
             haveMousePosition = 0;
+            return 0;
+        case WM_SETFOCUS:
+            InterlockedExchange(&inputAppActive, 1);
+            activateMouseOnWindow(hwnd);
+            return 0;
+        case WM_ACTIVATEAPP:
+            InterlockedExchange(&inputAppActive, wParam != 0);
+            if (wParam) activateMouseOnWindow(hwnd);
+            else { deactivateMouseOnWindow(); releaseInputKeys(currentMilliseconds()); }
             return 0;
         case WM_KEYDOWN:
         case WM_SYSKEYDOWN:
-            queueKeyTransition((int)wParam, 1, currentMilliseconds());
+            queueKeyboardEvent(translateVirtualKey(wParam, lParam), 1, currentMilliseconds());
             return 0;
         case WM_KEYUP:
         case WM_SYSKEYUP:
-            queueKeyTransition((int)wParam, 0, currentMilliseconds());
+            queueKeyboardEvent(translateVirtualKey(wParam, lParam), 0, currentMilliseconds());
             return 0;
         /* win_wndproc.c queues WM_CHAR separately from the physical key so
          * TranslateMessage has already applied layout, Shift and Caps Lock. */
@@ -253,18 +561,61 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
                 queueInputEvent(currentMilliseconds(), PLAYABLE_INPUT_CHAR, (int)wParam, 0);
             return 0;
         case WM_LBUTTONDOWN:
-            SetCapture(hwnd);
-            queueKeyTransition(VK_LBUTTON, 1, currentMilliseconds());
+            queueKeyTransition(PLAYABLE_K_MOUSE1, 1, currentMilliseconds());
             return 0;
         case WM_LBUTTONUP:
-            ReleaseCapture();
-            queueKeyTransition(VK_LBUTTON, 0, currentMilliseconds());
+            queueKeyTransition(PLAYABLE_K_MOUSE1, 0, currentMilliseconds());
             return 0;
+        case WM_RBUTTONDOWN:
+            queueKeyTransition(PLAYABLE_K_MOUSE1 + 1, 1, currentMilliseconds());
+            return 0;
+        case WM_RBUTTONUP:
+            queueKeyTransition(PLAYABLE_K_MOUSE1 + 1, 0, currentMilliseconds());
+            return 0;
+        case WM_MBUTTONDOWN:
+            queueKeyTransition(PLAYABLE_K_MOUSE1 + 2, 1, currentMilliseconds());
+            return 0;
+        case WM_MBUTTONUP:
+            queueKeyTransition(PLAYABLE_K_MOUSE1 + 2, 0, currentMilliseconds());
+            return 0;
+        case WM_XBUTTONDOWN:
+            queueKeyTransition(PLAYABLE_K_MOUSE1 + (GET_XBUTTON_WPARAM(wParam) == XBUTTON1 ? 3 : 4),
+                1, currentMilliseconds());
+            return TRUE;
+        case WM_XBUTTONUP:
+            queueKeyTransition(PLAYABLE_K_MOUSE1 + (GET_XBUTTON_WPARAM(wParam) == XBUTTON1 ? 3 : 4),
+                0, currentMilliseconds());
+            return TRUE;
+        case WM_MOUSEWHEEL: {
+            int delta = GET_WHEEL_DELTA_WPARAM(wParam);
+            int key = delta > 0 ? PLAYABLE_K_MWHEELUP : PLAYABLE_K_MWHEELDOWN;
+            int steps = delta < 0 ? -delta : delta;
+            int now = currentMilliseconds();
+            while (steps >= WHEEL_DELTA) {
+                queueInputEvent(now, PLAYABLE_INPUT_KEY, key, 1);
+                queueInputEvent(now, PLAYABLE_INPUT_KEY, key, 0);
+                steps -= WHEEL_DELTA;
+            }
+            return 0;
+        }
         case WM_MOUSEMOVE:
-            if (!rawMouseEnabled) {
+            if (!rawMouseEnabled && InterlockedCompareExchange(&inputMouseActive, 0, 0)) {
                 int x = (int)(short)LOWORD(lParam);
                 int y = (int)(short)HIWORD(lParam);
-                if (haveMousePosition) {
+                RECT client;
+                if (hwnd && GetClientRect(hwnd, &client)) {
+                    POINT center;
+                    int centerX = (client.right - client.left) / 2;
+                    int centerY = (client.bottom - client.top) / 2;
+                    int dx = x - centerX;
+                    int dy = y - centerY;
+                    InterlockedExchangeAdd(&mouseDX, dx);
+                    InterlockedExchangeAdd(&mouseDY, dy);
+                    if (dx || dy) queueInputEvent(currentMilliseconds(), PLAYABLE_INPUT_MOUSE, dx, dy);
+                    center.x = centerX; center.y = centerY;
+                    ClientToScreen(hwnd, &center);
+                    if (dx || dy) SetCursorPos(center.x, center.y);
+                } else if (haveMousePosition) {
                     int dx = x - lastMouseX;
                     int dy = y - lastMouseY;
                     InterlockedExchangeAdd(&mouseDX, dx);
@@ -336,6 +687,8 @@ static DWORD WINAPI playableWindowThread(void *parameter) {
     rectangle.left = 0; rectangle.top = 0; rectangle.right = width; rectangle.bottom = height;
     AdjustWindowRect(&rectangle, WS_OVERLAPPEDWINDOW, FALSE);
     mouseDX = mouseDY = 0;
+    InterlockedExchange(&inputAppActive, 0);
+    InterlockedExchange(&inputMouseActive, 0);
     resetInputEvents();
     windowHandle = CreateWindowExW(0, L"MiniQuake3PlayableWindow", L"MiniQuake3 - playable preview",
         WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
@@ -361,6 +714,10 @@ static DWORD WINAPI playableWindowThread(void *parameter) {
         TranslateMessage(&message);
         DispatchMessageW(&message);
     }
+    mouse.dwFlags = RIDEV_REMOVE;
+    mouse.hwndTarget = 0;
+    RegisterRawInputDevices(&mouse, 1, sizeof(mouse));
+    rawMouseEnabled = 0;
     return 0;
 }
 
@@ -456,6 +813,59 @@ PLAYABLE_API int playable_window_consume_mouse_dy(void) {
 
 PLAYABLE_API int playable_window_milliseconds(void) {
     return currentMilliseconds();
+}
+
+PLAYABLE_API int playable_window_input_init(void) {
+    resetInputEvents();
+    InterlockedExchange(&mouseDX, 0);
+    InterlockedExchange(&mouseDY, 0);
+    startupJoystick();
+    return startupMidi();
+}
+
+PLAYABLE_API void playable_window_input_activate(int active) {
+    InterlockedExchange(&inputAppActive, active != 0);
+    if (windowHandle) PostMessageW(windowHandle, WM_APP + 2, active != 0, 0);
+    if (!active) releaseInputKeys(currentMilliseconds());
+}
+
+PLAYABLE_API void playable_window_input_frame(void) {
+    pollJoystick(currentMilliseconds());
+    if (!InterlockedCompareExchange(&inputAppActive, 0, 0) &&
+            InterlockedCompareExchange(&inputMouseActive, 0, 0) && windowHandle)
+        PostMessageW(windowHandle, WM_APP + 2, 0, 0);
+}
+
+PLAYABLE_API void playable_window_input_clear_states(void) {
+    releaseInputKeys(currentMilliseconds());
+    InterlockedExchange(&mouseDX, 0);
+    InterlockedExchange(&mouseDY, 0);
+    haveMousePosition = 0;
+}
+
+PLAYABLE_API int playable_window_input_configure_joystick(int enabled,
+        double threshold, double ballScale) {
+    inputJoystickEnabled = enabled != 0;
+    if (threshold < 0.0) threshold = 0.0;
+    if (threshold > 1.0) threshold = 1.0;
+    inputJoystickThreshold = threshold;
+    inputJoystickBallScale = ballScale;
+    return startupJoystick();
+}
+
+PLAYABLE_API int playable_window_input_configure_midi(int enabled, int device, int channel) {
+    inputMidiEnabled = enabled != 0;
+    inputMidiDevice = device;
+    inputMidiChannel = channel < 1 ? 1 : (channel > 16 ? 16 : channel);
+    return startupMidi();
+}
+
+PLAYABLE_API int playable_window_input_joystick_available(void) {
+    return inputJoystickEnabled && inputJoystickAvailable;
+}
+
+PLAYABLE_API int playable_window_input_midi_device_count(void) {
+    return (int)midiInGetNumDevs();
 }
 
 static unsigned char colorByte(int value) {
@@ -2059,6 +2469,8 @@ PLAYABLE_API void playable_window_present(void) {
 PLAYABLE_API void playable_window_shutdown(void) {
     HWND oldWindow = windowHandle;
     int slot;
+    shutdownMidi();
+    playable_window_input_activate(0);
     if (oldWindow) PostMessageW(oldWindow, WM_APP + 1, 0, 0);
     if (windowThread) {
         WaitForSingleObject(windowThread, INFINITE);
@@ -2067,6 +2479,9 @@ PLAYABLE_API void playable_window_shutdown(void) {
     }
     InterlockedExchange(&closeRequested, 1);
     rawMouseEnabled = 0;
+    inputJoystickEnabled = 0;
+    inputJoystickAvailable = 0;
+    ZeroMemory(&inputJoystickCaps, sizeof(inputJoystickCaps));
     resetInputEvents();
     releaseSurface();
     for (slot = 0; slot < PLAYABLE_TEXTURE_SLOTS; ++slot) playable_window_release_texture(slot);

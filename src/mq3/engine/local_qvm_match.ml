@@ -174,7 +174,22 @@ function loadVm(machineRuntime,name,syscall) return runtime.load(machineRuntime,
 function callVm(machineRuntime,slot,args) return runtime.call(machineRuntime,slot,args) end function
 function restartVm(machineRuntime,slot) return runtime.restart(machineRuntime,slot) end function
 function freeVm(machineRuntime,slot) return runtime.free(machineRuntime,slot) end function
-function loadClientVm(machineRuntime,name,syscall,interpret) return runtime.load(machineRuntime,name,syscall) end function
+function loadClientVm(machineRuntime,name,syscall,interpret) return runtime.loadMode(machineRuntime,name,syscall,interpret) end function
+function vmRuntimeRegister(host,name,value,flags) cvar.get(host.context.cvars,name,value,flags);return void end function
+function vmRuntimeDeveloper(host) return cvar.variableIntegerValue(host.context.cvars,"developer")!=0 end function
+function vmProfileCommand(commandState,machineRuntime)
+  report=runtime.profile(machineRuntime);if len(report)==0 then return void end if
+  for each row in report[0] commands.emit(commandState,str(row[0])+"% "+str(row[1])+" "+row[2]+"\n") end for
+  commands.emit(commandState,str(report[1])+" total\n");return void
+end function
+function vmInfoCommand(commandState,machineRuntime)
+  commands.emit(commandState,"Registered virtual machines:\n")
+  for each row in runtime.info(machineRuntime) commands.emit(commandState,row[0]+" : "+row[1]+"\n") end for;return void
+end function
+function vmRuntimeAddCommand(host,name,machineRuntime)
+  if name=="vmprofile" then return commands.addContextCommand(host.context.commandState,name,vmProfileCommand,machineRuntime) end if
+  return commands.addContextCommand(host.context.commandState,name,vmInfoCommand,machineRuntime)
+end function
 function milliseconds(context) return context.now end function
 function emitPrint(context,text) context.prints=context.prints+[text];if context.clientTextInput!=void and context.clientTextInput.consoleRuntime!=void then context.clientTextInput.consoleRuntime.realtime=context.now;clientConsole.CL_ConsolePrint(context.clientTextInput.consoleRuntime,text,640) end if;return void end function
 function emitError(context,text) context.errors=context.errors+[text];return void end function
@@ -669,7 +684,7 @@ function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
   entityBytes=slice(map.data,map.offsets[0],map.lengths[0]);serverLifecycle=serverInit.runtime();serverInit.SV_Init(serverLifecycle,void);registry=serverLifecycle.registry;seedCvars(registry);cvar.set2(registry,"mapname",mapName,true)
   if botsEnabled then cvar.set2(registry,"bot_enable","1",true) end if
   scene=sceneQueue.create(4096,65536);scene.registered=true;scene.worldLoaded=true
-  collisionWorld=collision.load(map.data);if collisionWorld is error then return collisionWorld end if
+  collisionLoad=collision.CM_LoadMap(collision.mapState(true),"maps/"+mapName+".bsp",map.data,false);if collisionLoad is error then return collisionLoad end if;collisionWorld=collisionLoad.world
   spatialScene=serverWorld.create(collisionWorld)
   initialCommand=qworld.userCommand(now,[0,0,0],0,2,0,0,0)
   grid=lightGrid.load(map);if grid is error then return grid end if
@@ -715,8 +730,8 @@ function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
   context.botServer=botServerBridge.create(MAX_CLIENTS);botServerBridge.setTime(context.botServer,now)
   context.aiConsole=aiConsoleMessages.create(context.aiResources)
   context.pcRegistry=pcParser.create(context,pcLoad)
-  runtimeHost=runtime.services();runtimeHost.context=context;runtimeHost.loadFn=imageLoader
-  machineRuntime=runtime.create(runtimeHost);if machineRuntime is error then return machineRuntime end if;context.machineRuntime=machineRuntime
+  runtimeHost=runtime.services();runtimeHost.context=context;runtimeHost.loadFn=imageLoader;runtimeHost.symbolFn=imageLoader;runtimeHost.developerFn=vmRuntimeDeveloper;runtimeHost.registerCvarFn=vmRuntimeRegister;runtimeHost.addCommandFn=vmRuntimeAddCommand
+  machineRuntime=runtime.create(runtimeHost);if machineRuntime is error then return machineRuntime end if;context.machineRuntime=machineRuntime;runtime.init(machineRuntime)
   shared=common.services(registry,context.commandState,context);shared.printFn=emitPrint;shared.errorFn=emitError;shared.millisecondsFn=milliseconds;shared.consoleFn=consoleCommand
   shared.openFn=openFile;shared.readFn=readFile;shared.writeFn=writeFile;shared.closeFn=closeFile
   gameSyscalls=qagame.services(shared,context);gameSyscalls.locateGameDataFn=locateGameData;gameSyscalls.dropClientFn=dropClient;gameSyscalls.sendServerCommandFn=sendServerCommand

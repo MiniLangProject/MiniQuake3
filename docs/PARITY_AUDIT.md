@@ -2816,3 +2816,36 @@ Der geprüfte Hauptbuild hat SHA-256 `089d21030259d9b15cb28dd6b6051260de550391bd
 Entities, 2.345 vollständig texturierte Dreiecke, 17 Renderpässe und 26
 Soundbefehle. Der 512-Frame-Retail-Bot-Spawn endet mit einem echten
 Bewegungs-Usercmd; die nativen Fenster-, Raster-, Input- und WinMM-Gates bestehen.
+## 2026-10-23: VM, BSP-Lader, Windows-Input und Tasten-ABI geschlossen
+
+Vier weitere Originaldateien sind vollständig nativ zugeordnet:
+
+- `code/qcommon/vm.c`: 23/23 Symbole, 13 unveränderte-C-Datensätze und 31
+  native/produktive Verträge. Init/Create/Restart/Free/Clear, drei VM-Slots,
+  VMI-Modi mit Compiled-Fallback, Aufruf-/Syscallkontext, Pointerübersetzung,
+  Profil/Info/Debug/Logging sowie Symbole einschließlich Developer-`.map` laufen.
+  Die 404 Interpreter-Differentialfälle bleiben grün.
+- `code/qcommon/cm_load.c`: 28/28 Symbole. 42 exakte unveränderte-x86-C-Records
+  auf q3dm1, q3dm17 und q3tourney2 sowie 20 native Verträge prüfen die komplette
+  BSP-/Lump-Pipeline, MD4-Prüfsummen, Modelle, Visibility, Entitystring,
+  Null-Lumps, Cache/Clear und Abfragen. Der produktive Matchboot nutzt `CM_LoadMap`.
+- `code/win32/win_input.c`: 31/31 Symbole, 19 unveränderte-C-Records, 21 native
+  Verträge und 15 produktive Win32-Anker. Tastaturmapping, Wiederholungen,
+  Fokus/Capture/Clip, Raw Input, Mausfallback, fünf Tasten/Wheel, Joystick, POV,
+  Trackball und MIDI laufen im echten Fensterpfad; alle nativen Ziele linken
+  `winmm.lib` und bestehen unter `/W4 /WX`.
+- `code/client/keys.h`: beide Konstanten, `qkey_t`, acht Globals und zwölf
+  Deklarationen sind auf den produktiven Key-/Binding-/Console-/Chatpfad
+  abgebildet. Der gemeinsame Gate besteht 279 unveränderte-C-Records, 32 native
+  Verträge und die echten Retail-`default.cfg`-Bindings.
+
+Der zusammengeführte Hauptbuild, die neuen Vollständigkeitsgates, 404
+Interpreterfälle, 38 Inputverträge, 25 spielbare Matchverträge und der
+gekoppelte acht Frames lange Retail-QVM-Match bestehen. Das Match meldet 131
+Entities, 2.345 vollständig texturierte Dreiecke, 17 Renderpässe, 26 Sounds und
+null nicht unterstützte Entities. `build/MiniQuake3.exe` hat SHA-256
+`5c46402ee19d38d5cebdb76e0862e006984e6b020230c3cce5eca0546638035c`. Die vollständige Gesamtauswahl bleibt der zuletzt dokumentierte
+449-Gate-Lauf; die seitdem ergänzten Gates sind in `scripts/verify.py` registriert.
+
+Das Inventar zählt jetzt **196 portierte, 23 teilweise portierte und 116 noch
+nicht begonnene** Dateien von insgesamt 335.

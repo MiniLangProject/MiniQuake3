@@ -10,8 +10,10 @@ import mq3.collision.brush as brush
 import mq3.collision.patchmesh as mesh
 import mq3.collision.patchtrace as patches
 import mq3.collision.visibility as vis
+import mq3.qcommon.md4 as md4
 import std.array as arrays
 
+struct Shader name surfaceFlags contentFlags end struct
 struct Brush
   planes
   contents
@@ -43,7 +45,14 @@ struct World
   bounds
   temporary
   visibility
+  entityString
+  shaders
+  checksum
+  name
 end struct
+struct Submodels models bounds end struct
+struct MapState world name checksum lastChecksum curves end struct
+struct LoadResult world checksum cached end struct
 struct Temporary
   bounds
   brush
@@ -114,6 +123,76 @@ function planeMetadata(normal)
   return result
 end function
 
+// BSPC's local SetPlaneSignbits and the qcommon loader use the same bit order.
+function SetPlaneSignbits(normal)
+  bits=0;for axis=0 to 2 if normal[axis]<0.0 then bits=bits|(1<<axis) end if end for;return bits
+end function
+function shaderName(data,offset)
+  count=0;while count<64 and data[offset+count]!=0 count=count+1 end while;return decode(slice(data,offset,count))
+end function
+function CMod_LoadShaders(map)
+  if map.counts[1]<1 then return fail("map has no shaders") end if
+  values=array(map.counts[1],void);for index=0 to len(values)-1 off=map.offsets[1]+index*72;values[index]=Shader(shaderName(map.data,off),n.readI32(map.data,off+64),n.readI32(map.data,off+68)) end for;return values
+end function
+function CMod_LoadPlanes(map)
+  if map.counts[2]<1 then return fail("map has no planes") end if
+  values=array(map.counts[2],void);for index=0 to len(values)-1 off=map.offsets[2]+index*16;normal=[real(map.data,off),real(map.data,off+4),real(map.data,off+8)];values[index]=brush.Plane(normal,real(map.data,off+12),SetPlaneSignbits(normal)) end for;return values
+end function
+function CMod_LoadBrushSides(map,planes,shaders)
+  values=array(map.counts[9],void);index=0;while index<len(values) off=map.offsets[9]+index*8;planeNumber=n.readI32(map.data,off);shaderNumber=n.readI32(map.data,off+4);if planeNumber<0 or planeNumber>=len(planes) or shaderNumber<0 or shaderNumber>=len(shaders) then return fail("invalid brush side reference") end if;plane=planes[planeNumber];values[index]=brush.Plane(plane.normal,plane.distance,shaders[shaderNumber].surfaceFlags);index=index+1 end while;return values
+end function
+function CM_BoundBrush(sides)
+  if sides==void or len(sides)<6 then return fail("brush lacks six axial bounding planes") end if
+  return [[0.0-sides[0].distance,0.0-sides[2].distance,0.0-sides[4].distance],[sides[1].distance,sides[3].distance,sides[5].distance]]
+end function
+function CMod_LoadBrushes(map,sides,shaders)
+  values=array(map.counts[8],void);index=0;while index<len(values) off=map.offsets[8]+index*12;first=n.readI32(map.data,off);count=n.readI32(map.data,off+4);shaderNumber=n.readI32(map.data,off+8);if count<6 or first<0 or first+count>len(sides) or shaderNumber<0 or shaderNumber>=len(shaders) then return fail("invalid brush record") end if;selected=arrays.slice(sides,first,count);bounds=CM_BoundBrush(selected);values[index]=Brush(selected,shaders[shaderNumber].contentFlags,bounds[0],bounds[1]);index=index+1 end while;return values
+end function
+function CMod_LoadLeafBrushes(map)
+  values=array(map.counts[6],0);index=0;while index<len(values) values[index]=n.readI32(map.data,map.offsets[6]+index*4);index=index+1 end while;return values
+end function
+function CMod_LoadLeafSurfaces(map)
+  values=array(map.counts[5],0);index=0;while index<len(values) values[index]=n.readI32(map.data,map.offsets[5]+index*4);index=index+1 end while;return values
+end function
+function CMod_LoadLeafs(map,leafBrushes,leafSurfaces)
+  if map.counts[4]<1 then return fail("map has no leaves") end if
+  values=array(map.counts[4],void);for index=0 to len(values)-1 off=map.offsets[4]+index*48;firstSurface=n.readI32(map.data,off+32);surfaceCount=n.readI32(map.data,off+36);firstBrush=n.readI32(map.data,off+40);brushCount=n.readI32(map.data,off+44);if firstSurface<0 or surfaceCount<0 or firstSurface+surfaceCount>len(leafSurfaces) or firstBrush<0 or brushCount<0 or firstBrush+brushCount>len(leafBrushes) then return fail("invalid leaf range") end if;values[index]=Leaf(arrays.slice(leafBrushes,firstBrush,brushCount),arrays.slice(leafSurfaces,firstSurface,surfaceCount)) end for;return values
+end function
+function CMod_LoadNodes(map,planes)
+  if map.counts[3]<1 then return fail("map has no nodes") end if
+  values=array(map.counts[3],void);for index=0 to len(values)-1 off=map.offsets[3]+index*36;planeNumber=n.readI32(map.data,off);if planeNumber<0 or planeNumber>=len(planes) then return fail("invalid node plane") end if;plane=planes[planeNumber];values[index]=Node(plane,planeType(plane.normal),[n.readI32(map.data,off+4),n.readI32(map.data,off+8)]) end for;return values
+end function
+function CMod_LoadSubmodels(map)
+  if map.counts[7]<1 then return fail("map has no models") end if;if map.counts[7]>256 then return fail("MAX_SUBMODELS exceeded") end if
+  models=array(map.counts[7],void);bounds=array(map.counts[7],void)
+  for index=0 to len(models)-1
+    off=map.offsets[7]+index*40;lower=[];upper=[]
+    for axis=0 to 2 lower=lower+[n.fsub(real(map.data,off+axis*4),1.0)];upper=upper+[n.fadd(real(map.data,off+12+axis*4),1.0)] end for
+    for axis=0 to 2 if lower[axis]>upper[axis] then return fail("inverted model bounds") end if end for
+    // The original leaves the world model's synthetic leaf empty. World
+    // collision reaches its real leaves through the BSP node tree.
+    brushes=[];surfaces=[]
+    if index!=0 then
+      firstSurface=n.readI32(map.data,off+24);surfaceCount=n.readI32(map.data,off+28);firstBrush=n.readI32(map.data,off+32);brushCount=n.readI32(map.data,off+36)
+      if firstSurface<0 or surfaceCount<0 or firstSurface+surfaceCount>map.counts[13] or firstBrush<0 or brushCount<0 or firstBrush+brushCount>map.counts[8] then return fail("invalid submodel range") end if
+      cursor=0;while cursor<brushCount brushes=brushes+[firstBrush+cursor];cursor=cursor+1 end while
+      cursor=0;while cursor<surfaceCount surfaces=surfaces+[firstSurface+cursor];cursor=cursor+1 end while
+    end if
+    models[index]=Leaf(brushes,surfaces);bounds[index]=[lower,upper]
+  end for
+  return Submodels(models,bounds)
+end function
+function CMod_LoadEntityString(map) return decode(slice(map.data,map.offsets[0],map.lengths[0])) end function
+function CMod_LoadVisibility(map) return vis.load(map) end function
+function CMod_LoadPatches(map,shaders,curves)
+  surfaces=array(map.counts[13],void);if not curves then return surfaces end if
+  index=0;while index<len(surfaces) off=map.offsets[13]+index*104;if n.readI32(map.data,off+8)==2 then width=n.readI32(map.data,off+96);height=n.readI32(map.data,off+100);count=width*height;first=n.readI32(map.data,off+12);shaderNumber=n.readI32(map.data,off);if width<3 or height<3 or width>129 or height>129 or count>1024 or count>n.readI32(map.data,off+16) or first<0 or first+count>map.counts[10] or shaderNumber<0 or shaderNumber>=len(shaders) then return fail("invalid BSP patch") end if;points=[];cursor=0;while cursor<count location=map.offsets[10]+(first+cursor)*44;points=points+[[real(map.data,location),real(map.data,location+4),real(map.data,location+8)]];cursor=cursor+1 end while;surfaces[index]=Surface(mesh.generate(width,height,points),shaders[shaderNumber].contentFlags,shaders[shaderNumber].surfaceFlags) end if;index=index+1 end while;return surfaces
+end function
+function CM_LumpChecksum(map,lump) if lump<0 or lump>=17 then return fail("invalid checksum lump") end if;return md4.blockChecksum(slice(map.data,map.offsets[lump],map.lengths[lump])) end function
+function CM_Checksum(map)
+  order=[1,4,6,5,2,9,8,7,3,13,10];data=bytes(44,0);for index=0 to 10 n.writeU32(data,index*4,CM_LumpChecksum(map,order[index])) end for;return md4.blockChecksum(data)
+end function
+
 function checkTree(nodes)
   // Iterative DFS prevents malformed cycles from reaching trace/point walkers.
   colors = array(len(nodes), 0)
@@ -147,126 +226,15 @@ end function
 
 function loadWorld(data,curves)
   map = bsp.load(data)
-  if map.counts[3] == 0 then return fail("world has no nodes") end if
-  // The original permits 256 models, overlapping its special handles 254/255.
-  // Reject that ambiguous range until its capsule-model path has a separate profile.
-  if map.counts[7] > 254 then return fail("models overlap reserved collision handles") end if
-  visibility = vis.load(map)
-  planes = array(map.counts[2], void)
-  index = 0
-  while index < len(planes)
-    off = map.offsets[2] + index * 16
-    planes[index] = brush.Plane([real(data,off),real(data,off+4),real(data,off+8)],real(data,off+12),0)
-    index = index + 1
-  end while
-  sides = array(map.counts[9], void)
-  index = 0
-  while index < len(sides)
-    off = map.offsets[9] + index * 8
-    plane = planes[n.readI32(data,off)]
-    shader = n.readI32(data,off+4)
-    sides[index] = brush.Plane(plane.normal,plane.distance,n.readI32(data,map.offsets[1]+shader*72+64))
-    index = index + 1
-  end while
-  brushes = array(map.counts[8], void)
-  index = 0
-  while index < len(brushes)
-    off = map.offsets[8] + index * 12
-    first = n.readI32(data,off)
-    count = n.readI32(data,off+4)
-    if count < 6 then return fail("brush lacks six axial bounding planes") end if
-    shader = n.readI32(data,off+8)
-    mins = array(3,0.0)
-    maxs = array(3,0.0)
-    for axis = 0 to 2
-      mins[axis] = -sides[first+axis*2].distance
-      maxs[axis] = sides[first+axis*2+1].distance
-    end for
-    brushes[index] = Brush(arrays.slice(sides,first,count),n.readI32(data,map.offsets[1]+shader*72+68),mins,maxs)
-    index = index + 1
-  end while
-  nodes = array(map.counts[3],void)
-  index = 0
-  while index < len(nodes)
-    off = map.offsets[3]+index*36
-    plane = planes[n.readI32(data,off)]
-    nodes[index] = Node(plane,planeType(plane.normal),[n.readI32(data,off+4),n.readI32(data,off+8)])
-    index = index + 1
-  end while
+  shaders=CMod_LoadShaders(map);planes=CMod_LoadPlanes(map);sides=CMod_LoadBrushSides(map,planes,shaders);brushes=CMod_LoadBrushes(map,sides,shaders)
+  nodes=CMod_LoadNodes(map,planes)
   checkTree(nodes)
-  leaves = array(map.counts[4],void)
-  index = 0
-  while index < len(leaves)
-    off = map.offsets[4]+index*48
-    first = n.readI32(data,off+40)
-    count = n.readI32(data,off+44)
-    entries = array(count,0)
-    k = 0
-    while k < count
-      entries[k] = n.readI32(data,map.offsets[6]+(first+k)*4)
-      k = k + 1
-    end while
-    firstSurface = n.readI32(data,off+32)
-    surfaceCount = n.readI32(data,off+36)
-    surfaceEntries = array(surfaceCount,0);k = 0
-    while k < surfaceCount
-      surfaceEntries[k] = n.readI32(data,map.offsets[5]+(firstSurface+k)*4)
-      k = k+1
-    end while
-    leaves[index] = Leaf(entries,surfaceEntries)
-    index = index + 1
-  end while
-  models = array(map.counts[7],void)
-  modelBounds = array(map.counts[7],void)
-  index = 0
-  while index < len(models)
-    off = map.offsets[7]+index*40
-    lower = array(3,0.0); upper = array(3,0.0)
-    for axis = 0 to 2
-      lower[axis] = n.fsub(real(data,off+axis*4),1.0)
-      upper[axis] = n.fadd(real(data,off+12+axis*4),1.0)
-      if lower[axis] > upper[axis] then return fail("inverted model bounds") end if
-    end for
-    modelBounds[index] = [lower,upper]
-    first = n.readI32(data,off+32)
-    count = n.readI32(data,off+36)
-    entries = array(count,0)
-    k = 0
-    while k < count
-      entries[k] = first+k
-      k = k+1
-    end while
-    firstSurface = n.readI32(data,off+24)
-    surfaceCount = n.readI32(data,off+28)
-    surfaceEntries = array(surfaceCount,0);k = 0
-    while k < surfaceCount
-      surfaceEntries[k] = firstSurface+k;k = k+1
-    end while
-    models[index] = Leaf(entries,surfaceEntries)
-    index = index + 1
-  end while
-  surfaces = array(map.counts[13],void)
-  if curves then
-    index = 0
-    while index < len(surfaces)
-      off = map.offsets[13]+index*104
-      if n.readI32(data,off+8) == 2 then
-        width = n.readI32(data,off+96);height = n.readI32(data,off+100)
-        count = width*height
-        if width < 3 or height < 3 or width > 129 or height > 129 or count > 1024 or count > n.readI32(data,off+16) then return fail("invalid BSP patch control grid") end if
-        first = n.readI32(data,off+12);points = array(count,void);k = 0
-        while k < count
-          location = map.offsets[10]+(first+k)*44
-          points[k] = [real(data,location),real(data,location+4),real(data,location+8)];k = k+1
-        end while
-        shader = n.readI32(data,off)
-        surfaces[index] = Surface(mesh.generate(width,height,points),n.readI32(data,map.offsets[1]+shader*72+68),n.readI32(data,map.offsets[1]+shader*72+64))
-      end if
-      index = index+1
-    end while
-  end if
+  leafBrushes=CMod_LoadLeafBrushes(map);leafSurfaces=CMod_LoadLeafSurfaces(map);leaves=CMod_LoadLeafs(map,leafBrushes,leafSurfaces)
+  submodels=CMod_LoadSubmodels(map);models=submodels.models;modelBounds=submodels.bounds
+  surfaces=CMod_LoadPatches(map,shaders,curves);visibility=CMod_LoadVisibility(map);entityText=CMod_LoadEntityString(map);checksum=md4.blockChecksum(data)
   zero = [0.0,0.0,0.0]
-  return World(brushes,nodes,leaves,models,surfaces,curves,true,modelBounds,Temporary([zero,zero],makeBox(zero,zero)),visibility)
+  world=World(brushes,nodes,leaves,models,surfaces,curves,true,modelBounds,Temporary([zero,zero],makeBox(zero,zero)),visibility,entityText,shaders,checksum,"")
+  CM_InitBoxHull(world);return world
 end function
 
 function makeBox(mins,maxs)
@@ -293,6 +261,11 @@ function tempBoxModel(world,mins,maxs,capsule)
   return 255
 end function
 
+function CM_InitBoxHull(world)
+  if world==void then return fail("box hull requires a loaded map") end if;zero=[0.0,0.0,0.0];world.temporary=Temporary([zero,zero],makeBox(zero,zero));return void
+end function
+function CM_TempBoxModel(world,mins,maxs,capsule) return tempBoxModel(world,mins,maxs,capsule) end function
+
 function checkModel(world,model)
   if model >= 0 and (model < len(world.models) or model == 255) then return true end if
   return fail("invalid model handle")
@@ -305,9 +278,35 @@ function modelBounds(world,model)
   return [arrays.slice(bounds[0],0,3),arrays.slice(bounds[1],0,3)]
 end function
 
+function CM_ClipHandleToModel(world,handle)
+  if world==void or handle<0 then return fail("bad clip handle") end if
+  if handle<len(world.models) then return world.models[handle] end if
+  if handle==255 then return world.temporary end if
+  return fail("bad clip handle")
+end function
+function CM_ModelBounds(world,model) return modelBounds(world,model) end function
+
 function inlineModel(world,index)
   if index < 0 or index >= len(world.models) then return fail("invalid inline model") end if
   return index
+end function
+function CM_InlineModel(world,index) return inlineModel(world,index) end function
+function CM_NumClusters(world) if world==void then return 0 end if;return world.visibility.numClusters end function
+function CM_NumInlineModels(world) if world==void then return 0 end if;return len(world.models) end function
+function CM_EntityString(world) if world==void then return "" end if;return world.entityString end function
+function CM_LeafCluster(world,leaf) if world==void then return fail("leaf cluster requires a loaded map") end if;return vis.leafCluster(world.visibility,leaf) end function
+function CM_LeafArea(world,leaf) if world==void then return fail("leaf area requires a loaded map") end if;return vis.leafArea(world.visibility,leaf) end function
+
+function mapState(curves) return MapState(void,"",0,0,curves) end function
+function CM_ClearMap(state) if state!=void then state.world=void;state.name="";state.checksum=0 end if;return void end function
+function CM_LoadMap(state,name,data,clientload)
+  if state==void then return fail("map state required") end if
+  if name==void or name=="" then return fail("NULL map name") end if
+  if state.world!=void and state.name==name and clientload then return LoadResult(state.world,state.lastChecksum,true) end if
+  CM_ClearMap(state);if data==void or typeof(data)!="bytes" then return fail("map data missing") end if
+  world=loadWorld(data,state.curves);if world is error then return world end if;checksum=md4.blockChecksum(data);world.checksum=checksum
+  if not clientload then state.name=name;world.name=name end if
+  state.world=world;state.checksum=checksum;state.lastChecksum=checksum;return LoadResult(world,checksum,false)
 end function
 
 function loadBrushWorld(data)

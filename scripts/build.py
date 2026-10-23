@@ -41,12 +41,12 @@ def main():
     playable=output / "playable_window.dll"
     playable_stamp=output / "playable-window-inputs.json"
     playable_inputs={"source":sha(ROOT / "native/playable_win32.c"),"compiler":inputs["compiler"],
-                     "flags":"/LD /O2 /W4 /WX /MT /Brepro user32.lib gdi32.lib"}
+                     "flags":"/LD /O2 /W4 /WX /MT /Brepro user32.lib gdi32.lib winmm.lib"}
     playable_previous=json.loads(playable_stamp.read_text()) if playable_stamp.exists() else {}
     if not playable.exists() or playable_previous.get("inputs")!=playable_inputs or playable_previous.get("binary")!=sha(playable):
         if not compiler_path: raise RuntimeError("MSVC cl.exe is required to rebuild playable_window.dll")
         run(["cl", "/nologo", "/LD", "/O2", "/W4", "/WX", "/MT", ROOT / "native/playable_win32.c",
-             "/link", "/Brepro", "user32.lib", "gdi32.lib", f"/out:{playable}"],
+             "/link", "/Brepro", "user32.lib", "gdi32.lib", "winmm.lib", f"/out:{playable}"],
             output, env, output / "playable-window-build.log")
         playable_stamp.write_text(json.dumps({"inputs":playable_inputs,"binary":sha(playable)},indent=2)+"\n")
     audio=output / "playable_audio.dll"

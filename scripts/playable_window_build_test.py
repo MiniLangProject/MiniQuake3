@@ -18,6 +18,14 @@ INPUT_EVENTS_TEST = ROOT / "tests" / "playable_window_input_events_native.c"
 RASTER_EXPORTS = (
     "playable_window_set_title_utf8",
     "playable_window_next_input_event",
+    "playable_window_input_init",
+    "playable_window_input_activate",
+    "playable_window_input_frame",
+    "playable_window_input_clear_states",
+    "playable_window_input_configure_joystick",
+    "playable_window_input_configure_midi",
+    "playable_window_input_joystick_available",
+    "playable_window_input_midi_device_count",
     "playable_window_clear_depth",
     "playable_window_sample_depth",
     "playable_window_set_depth_range",
@@ -62,7 +70,7 @@ def main() -> int:
     raster_state_exe = OUT / "playable_window_raster_state_native.exe"
     input_events_exe = OUT / "playable_window_input_events_native.exe"
     run([compiler, "/nologo", "/W4", "/WX", "/O2", "/LD", str(SOURCE),
-         "/link", "user32.lib", "gdi32.lib", f"/OUT:{dll}", f"/IMPLIB:{lib}"], env)
+         "/link", "user32.lib", "gdi32.lib", "winmm.lib", f"/OUT:{dll}", f"/IMPLIB:{lib}"], env)
     dumpbin = shutil.which("dumpbin.exe", path=env.get("PATH"))
     if not dumpbin:
         raise RuntimeError("vcvars initialized, but dumpbin.exe is not on PATH")
@@ -75,13 +83,13 @@ def main() -> int:
          f"/Fe:{exe}"], env)
     run([str(exe)], env)
     run([compiler, "/nologo", "/W4", "/WX", "/O2", str(WORLD_BATCH_TEST),
-         "user32.lib", "gdi32.lib", f"/Fe:{world_batch_exe}"], env)
+         "user32.lib", "gdi32.lib", "winmm.lib", f"/Fe:{world_batch_exe}"], env)
     run([str(world_batch_exe)], env)
     run([compiler, "/nologo", "/W4", "/WX", "/O2", str(RASTER_STATE_TEST),
-         "user32.lib", "gdi32.lib", f"/Fe:{raster_state_exe}"], env)
+         "user32.lib", "gdi32.lib", "winmm.lib", f"/Fe:{raster_state_exe}"], env)
     run([str(raster_state_exe)], env)
     run([compiler, "/nologo", "/W4", "/WX", "/O2", str(INPUT_EVENTS_TEST),
-         "user32.lib", "gdi32.lib", f"/Fe:{input_events_exe}"], env)
+         "user32.lib", "gdi32.lib", "winmm.lib", f"/Fe:{input_events_exe}"], env)
     run([str(input_events_exe)], env)
     print(f"playable window build: PASS ({dll})")
     return 0

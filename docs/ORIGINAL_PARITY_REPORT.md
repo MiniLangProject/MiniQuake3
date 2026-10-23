@@ -15,19 +15,19 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 |---|---:|---:|---:|---:|---:|
 | `botlib` | 53 | 22 | 9 | 22 | 0 |
 | `cgame` | 25 | 21 | 0 | 4 | 0 |
-| `client` | 19 | 15 | 0 | 4 | 0 |
+| `client` | 19 | 16 | 0 | 3 | 0 |
 | `game` | 65 | 35 | 4 | 26 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
-| `qcommon` | 27 | 11 | 7 | 9 | 0 |
+| `qcommon` | 27 | 13 | 5 | 9 | 0 |
 | `renderer` | 27 | 23 | 0 | 4 | 0 |
 | `server` | 11 | 11 | 0 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
-| `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **192** | **26** | **117** | **0** |
+| `win32` | 13 | 4 | 5 | 4 | 0 |
+| **Gesamt** | **335** | **196** | **23** | **116** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -127,7 +127,7 @@ Teil dieser Tabelle.
 | `code/client/cl_scrn.c` | `client` | `ported` | 18 | 18 | 0 |
 | `code/client/cl_ui.c` | `client` | `ported` | 35 | 35 | 0 |
 | `code/client/client.h` | `client` | `not_started` | 0 | 0 | 0 |
-| `code/client/keys.h` | `client` | `not_started` | 0 | 0 | 0 |
+| `code/client/keys.h` | `client` | `ported` | 0 | 0 | 0 |
 | `code/client/snd_adpcm.c` | `client` | `ported` | 4 | 4 | 0 |
 | `code/client/snd_dma.c` | `client` | `ported` | 42 | 42 | 0 |
 | `code/client/snd_local.h` | `client` | `not_started` | 0 | 0 | 0 |
@@ -262,7 +262,7 @@ Teil dieser Tabelle.
 | `code/q3_ui/ui_team.c` | `q3_ui` | `ported` | 4 | 4 | 0 |
 | `code/q3_ui/ui_teamorders.c` | `q3_ui` | `ported` | 10 | 10 | 0 |
 | `code/q3_ui/ui_video.c` | `q3_ui` | `ported` | 15 | 15 | 0 |
-| `code/qcommon/cm_load.c` | `qcommon` | `partial` | 28 | 18 | 10 |
+| `code/qcommon/cm_load.c` | `qcommon` | `ported` | 28 | 0 | 28 |
 | `code/qcommon/cm_local.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
 | `code/qcommon/cm_patch.c` | `qcommon` | `partial` | 27 | 15 | 12 |
 | `code/qcommon/cm_patch.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
@@ -283,7 +283,7 @@ Teil dieser Tabelle.
 | `code/qcommon/qfiles.h` | `qcommon` | `partial` | 0 | 0 | 0 |
 | `code/qcommon/unzip.c` | `qcommon` | `partial` | 48 | 0 | 48 |
 | `code/qcommon/unzip.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
-| `code/qcommon/vm.c` | `qcommon` | `partial` | 23 | 1 | 22 |
+| `code/qcommon/vm.c` | `qcommon` | `ported` | 23 | 0 | 23 |
 | `code/qcommon/vm_interpreted.c` | `qcommon` | `ported` | 4 | 4 | 0 |
 | `code/qcommon/vm_local.h` | `qcommon` | `partial` | 0 | 0 | 0 |
 | `code/qcommon/vm_ppc.c` | `qcommon` | `not_started` | 14 | 0 | 14 |
@@ -364,7 +364,7 @@ Teil dieser Tabelle.
 | `code/win32/resource.h` | `win32` | `not_started` | 0 | 0 | 0 |
 | `code/win32/win_gamma.c` | `win32` | `ported` | 4 | 4 | 0 |
 | `code/win32/win_glimp.c` | `win32` | `partial` | 21 | 3 | 18 |
-| `code/win32/win_input.c` | `win32` | `partial` | 31 | 2 | 29 |
+| `code/win32/win_input.c` | `win32` | `ported` | 31 | 0 | 31 |
 | `code/win32/win_local.h` | `win32` | `not_started` | 0 | 0 | 0 |
 | `code/win32/win_main.c` | `win32` | `partial` | 34 | 1 | 33 |
 | `code/win32/win_net.c` | `win32` | `partial` | 21 | 5 | 16 |
@@ -420,7 +420,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/cgame/cg_syscalls.asm` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/tr_types.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/client.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/client/keys.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/snd_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/client/snd_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/ai_chat.h` (not_started): *(Symbolinventar ergänzen)*
@@ -485,7 +484,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/null/null_snddma.c` (not_started): `SNDDMA_BeginPainting`, `SNDDMA_GetDMAPos`, `SNDDMA_Init`, `SNDDMA_Shutdown`, `SNDDMA_Submit`, `S_ClearSoundBuffer`, `S_RegisterSound`, `S_StartLocalSound`
 - `code/q3_ui/keycodes.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/q3_ui/ui_local.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/qcommon/cm_load.c` (partial): `CM_Checksum`, `CM_ClearMap`, `CM_EntityString`, `CM_LoadMap`, `CM_LumpChecksum`, `CMod_LoadEntityString`, `CMod_LoadLeafBrushes`, `CMod_LoadLeafSurfaces`, `CMod_LoadShaders`, `SetPlaneSignbits`
+- `code/qcommon/cm_load.c` (ported): `CM_BoundBrush`, `CM_Checksum`, `CM_ClearMap`, `CM_ClipHandleToModel`, `CM_EntityString`, `CM_InitBoxHull`, `CM_InlineModel`, `CM_LeafArea`, `CM_LeafCluster`, `CM_LoadMap`, `CM_LumpChecksum`, `CM_ModelBounds`, `CM_NumClusters`, `CM_NumInlineModels`, `CM_TempBoxModel`, `CMod_LoadBrushSides`, `CMod_LoadBrushes`, `CMod_LoadEntityString`, `CMod_LoadLeafBrushes`, `CMod_LoadLeafSurfaces`, `CMod_LoadLeafs`, `CMod_LoadNodes`, `CMod_LoadPatches`, `CMod_LoadPlanes`, `CMod_LoadShaders`, `CMod_LoadSubmodels`, `CMod_LoadVisibility`, `SetPlaneSignbits`
 - `code/qcommon/cm_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/cm_patch.c` (partial): `CM_ClearLevelPatches`, `CM_ComparePoints`, `CM_DrawDebugSurface`, `CM_EdgePlaneNum`, `CM_GridPlane`, `CM_NeedsSubdivision`, `CM_PlaneEqual`, `CM_PlaneFromPoints`, `CM_PointOnPlaneSide`, `CM_SetGridWrapWidth`, `CM_SignbitsForNormal`, `CM_SnapVector`
 - `code/qcommon/cm_patch.h` (not_started): *(Symbolinventar ergänzen)*
@@ -499,7 +498,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/qcommon/qfiles.h` (partial): *(Symbolinventar ergänzen)*
 - `code/qcommon/unzip.c` (partial): `adler32`, `inflate`, `inflateEnd`, `inflateInit2_`, `inflateInit_`, `inflateReset`, `inflateSetDictionary`, `inflateSync`, `inflateSyncPoint`, `inflate_blocks`, `inflate_blocks_free`, `inflate_blocks_new`, `inflate_blocks_reset`, `inflate_blocks_sync_point`, `inflate_codes`, `inflate_codes_free`, `inflate_codes_new`, `inflate_fast`, `inflate_flush`, `inflate_set_dictionary`, `strcmpcasenosensitive_internal`, `unzClose`, `unzCloseCurrentFile`, `unzGetCurrentFileInfo`, `unzGetCurrentFileInfoPosition`, `unzGetGlobalComment`, `unzGetGlobalInfo`, `unzGetLocalExtrafield`, `unzGoToFirstFile`, `unzGoToNextFile`, `unzLocateFile`, `unzOpen`, `unzOpenCurrentFile`, `unzReOpen`, `unzReadCurrentFile`, `unzSetCurrentFileInfoPosition`, `unzStringFileNameCompare`, `unzeof`, `unzlocal_CheckCurrentFileCoherencyHeader`, `unzlocal_DosDateToTmuDate`, `unzlocal_GetCurrentFileInfoInternal`, `unzlocal_SearchCentralDir`, `unzlocal_getByte`, `unzlocal_getLong`, `unzlocal_getShort`, `unztell`, `zcalloc`, `zcfree`
 - `code/qcommon/unzip.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/qcommon/vm.c` (partial): `ParseHex`, `VM_ArgPtr`, `VM_Call`, `VM_CallCompiled`, `VM_Clear`, `VM_Compile`, `VM_Debug`, `VM_DllSyscall`, `VM_ExplicitArgPtr`, `VM_Free`, `VM_Init`, `VM_LoadSymbols`, `VM_LogSyscalls`, `VM_ProfileSort`, `VM_Restart`, `VM_SymbolForCompiledPointer`, `VM_SymbolToValue`, `VM_VM2C`, `VM_ValueToFunctionSymbol`, `VM_ValueToSymbol`, `VM_VmInfo_f`, `VM_VmProfile_f`
+- `code/qcommon/vm.c` (ported): `ParseHex`, `VM_ArgPtr`, `VM_Call`, `VM_CallCompiled`, `VM_Clear`, `VM_Compile`, `VM_Create`, `VM_Debug`, `VM_DllSyscall`, `VM_ExplicitArgPtr`, `VM_Free`, `VM_Init`, `VM_LoadSymbols`, `VM_LogSyscalls`, `VM_ProfileSort`, `VM_Restart`, `VM_SymbolForCompiledPointer`, `VM_SymbolToValue`, `VM_VM2C`, `VM_ValueToFunctionSymbol`, `VM_ValueToSymbol`, `VM_VmInfo_f`, `VM_VmProfile_f`
 - `code/qcommon/vm_local.h` (partial): *(Symbolinventar ergänzen)*
 - `code/qcommon/vm_ppc.c` (not_started): `AsmCall`, `Constant1`, `Constant4`, `Emit4`, `Inst`, `Inst4`, `InstImm`, `InstImmU`, `VM_CallCompiled`, `VM_Compile`, `fltop`, `fltopandsecond`, `ltop`, `ltopandsecond`
 - `code/qcommon/vm_ppc_new.c` (not_started): `AsmCall`, `Constant1`, `Constant4`, `Emit4`, `Inst`, `Inst4`, `InstImm`, `InstImmU`, `VM_CallCompiled`, `VM_Compile`, `fltop`, `fltopandsecond`, `loadOpStack`, `ltop`, `ltopandsecond`, `makeFloat`, `makeInteger`, `spillOpStack`
@@ -556,7 +555,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/win32/glw_win.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/win32/resource.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/win32/win_glimp.c` (partial): `GLW_CheckOSVersion`, `GLW_ChoosePFD`, `GLW_CreatePFD`, `GLW_InitDriver`, `GLW_InitExtensions`, `GLW_LoadOpenGL`, `GLW_MakeContext`, `GLW_SetMode`, `GLW_StartDriverAndSetMode`, `GLW_StartOpenGL`, `GLimp_FrontEndSleep`, `GLimp_Init`, `GLimp_LogComment`, `GLimp_RenderThreadWrapper`, `GLimp_RendererSleep`, `GLimp_SpawnRenderThread`, `GLimp_WakeRenderer`, `PrintCDSError`
-- `code/win32/win_input.c` (partial): `IN_Activate`, `IN_ActivateDIMouse`, `IN_ActivateMouse`, `IN_ActivateWin32Mouse`, `IN_ClearStates`, `IN_DIMouse`, `IN_DeactivateDIMouse`, `IN_DeactivateMouse`, `IN_DeactivateWin32Mouse`, `IN_Frame`, `IN_Init`, `IN_InitDIMouse`, `IN_InitWin32Mouse`, `IN_JoyMove`, `IN_Shutdown`, `IN_ShutdownDIMouse`, `IN_ShutdownMIDI`, `IN_ShutdownWin32Mouse`, `IN_Startup`, `IN_StartupJoystick`, `IN_StartupMIDI`, `IN_StartupMouse`, `IN_Win32Mouse`, `JoyToF`, `JoyToI`, `MIDI_NoteOff`, `MIDI_NoteOn`, `MidiInProc`, `MidiInfo_f`
+- `code/win32/win_input.c` (ported): `IN_Activate`, `IN_ActivateDIMouse`, `IN_ActivateMouse`, `IN_ActivateWin32Mouse`, `IN_ClearStates`, `IN_DIMouse`, `IN_DeactivateDIMouse`, `IN_DeactivateMouse`, `IN_DeactivateWin32Mouse`, `IN_Frame`, `IN_Init`, `IN_InitDIMouse`, `IN_InitWin32Mouse`, `IN_JoyMove`, `IN_MouseEvent`, `IN_MouseMove`, `IN_Shutdown`, `IN_ShutdownDIMouse`, `IN_ShutdownMIDI`, `IN_ShutdownWin32Mouse`, `IN_Startup`, `IN_StartupJoystick`, `IN_StartupMIDI`, `IN_StartupMouse`, `IN_Win32Mouse`, `JoyToF`, `JoyToI`, `MIDI_NoteOff`, `MIDI_NoteOn`, `MidiInProc`, `MidiInfo_f`
 - `code/win32/win_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/win32/win_main.c` (partial): `Spk_Close`, `Spk_Open`, `Spk_Printf`, `Sys_BeginProfiling`, `Sys_BeginStreamedFile`, `Sys_CheckCD`, `Sys_Cwd`, `Sys_DefaultBasePath`, `Sys_DefaultCDPath`, `Sys_EndStreamedFile`, `Sys_Error`, `Sys_FreeFileList`, `Sys_GetClipboardData`, `Sys_GetEvent`, `Sys_In_Restart_f`, `Sys_InitStreamThread`, `Sys_ListFiles`, `Sys_ListFilteredFiles`, `Sys_LoadDll`, `Sys_LowPhysicalMemory`, `Sys_Mkdir`, `Sys_Net_Restart_f`, `Sys_Print`, `Sys_Quit`, `Sys_ScanForCD`, `Sys_ShutdownStreamThread`, `Sys_StreamSeek`, `Sys_StreamThread`, `Sys_StreamedRead`, `Sys_UnloadDll`, `WinMain`, `strgtr`, `systems`
 - `code/win32/win_net.c` (partial): `NET_Config`, `NET_ErrorString`, `NET_GetCvars`, `NET_GetLocalAddress`, `NET_IPXSocket`, `NET_OpenIP`, `NET_OpenIPX`, `NET_OpenSocks`, `NET_Restart`, `NET_Sleep`, `NetadrToSockadr`, `SockadrToNetadr`, `Sys_IsLANAddress`, `Sys_ShowIP`, `Sys_StringToAdr`, `Sys_StringToSockaddr`

@@ -20,7 +20,7 @@ def build_and_run(compiler: str, env: dict[str, str], bands: int) -> tuple[str, 
     subprocess.run(
         [compiler, "/nologo", "/W4", "/WX", "/O2",
          f"/DPLAYABLE_RASTER_MAX_BANDS={bands}", str(SOURCE),
-         "user32.lib", "gdi32.lib", f"/Fe:{executable}"],
+         "user32.lib", "gdi32.lib", "winmm.lib", f"/Fe:{executable}"],
         cwd=ROOT, env=env, check=True,
     )
     output = subprocess.run(

@@ -24,7 +24,7 @@ def main() -> int:
         raise RuntimeError("vcvars initialized, but cl.exe is not on PATH")
     subprocess.run(
         [compiler, "/nologo", "/W4", "/WX", "/O2", str(SOURCE),
-         "user32.lib", "gdi32.lib", f"/Fe:{OUTPUT}"],
+         "user32.lib", "gdi32.lib", "winmm.lib", f"/Fe:{OUTPUT}"],
         cwd=ROOT, env=env, check=True,
     )
     subprocess.run([OUTPUT], cwd=ROOT / "build", env=env, check=True)

@@ -16083,10 +16083,36 @@
       "sha256": "7f5f8d75158a0234e7e1571cc778d9db87a8f48734cfab0cd3a3c16169964a9c",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "MAX_KEYS, COMMAND_HISTORY, qkey_t, eight globals and twelve declared functions",
+          "target_files": [
+            "src/mq3/client/cl_keys_runtime.ml",
+            "src/mq3/client/console_input.ml",
+            "src/mq3/vm/cgame_key_traps.ml",
+            "src/mq3/client/key_binding_dispatch.ml",
+            "src/mq3/client/key_bindings_config.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete managed qkey state, overstrike/history/console/chat globals, field editing/drawing, bindings, key state and clearing. The shared cl_keys gate checks the header declaration surface, 279 unchanged-C records, 32 native contracts and Retail default.cfg."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cl_keys_runtime.ml",
+        "src/mq3/client/console_input.ml",
+        "src/mq3/vm/cgame_key_traps.ml",
+        "src/mq3/client/key_binding_dispatch.ml",
+        "src/mq3/client/key_bindings_config.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cl_keys_complete.py",
+        "tests/cl_keys_complete_contracts.ml",
+        "tests/cl_keys_retail_probe.ml",
+        "scripts/test_cgame_key_traps.py",
+        "scripts/test_key_binding_dispatch.py",
+        "scripts/test_console_input.py"
+      ]
     },
     {
       "source": "code/client/snd_adpcm.c",
@@ -36580,161 +36606,32 @@
       ],
       "symbol_mapping": [
         {
-          "original": "CMod_LoadPlanes",
+          "original": "all 28 cm_load symbols",
           "target_files": [
             "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
+            "src/mq3/collision/visibility.ml",
+            "src/mq3/engine/local_qvm_match.ml"
           ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CMod_LoadBrushSides",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CMod_LoadBrushes",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_BoundBrush",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CMod_LoadNodes",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CMod_LoadLeafs",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CMod_LoadSubmodels",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CMod_LoadPatches",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CMod_LoadVisibility",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_ClipHandleToModel",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_InitBoxHull",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_TempBoxModel",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_ModelBounds",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_InlineModel",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_NumInlineModels",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_NumClusters",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_LeafCluster",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "CM_LeafArea",
-          "target_files": [
-            "src/mq3/collision/world.ml",
-            "src/mq3/collision/visibility.ml"
-          ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Complete BSP/map lifecycle, full and lump MD4 checksums, validated planes/shaders/brushes/sides/nodes/leafs/leafbrushes/leafsurfaces/submodels/patches/entities/visibility loading, box hulls, map caching and model/cluster/area queries. Forty-two exact unchanged-x86-C records across q3dm1, q3dm17 and q3tourney2 plus 20 native contracts pass; productive Retail match boot now uses CM_LoadMap."
         }
       ],
       "target": [
         "src/mq3/collision/world.ml",
-        "src/mq3/collision/visibility.ml"
+        "src/mq3/collision/visibility.ml",
+        "src/mq3/engine/local_qvm_match.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_collision.py",
         "scripts/test_patches.py",
         "scripts/test_rejections.py",
         "scripts/test_spatial.py",
-        "scripts/test_visibility.py"
+        "scripts/test_visibility.py",
+        "scripts/test_cm_load_complete.py",
+        "tests/cm_load_complete_oracle.ml",
+        "tests/cm_load_complete_contracts.ml",
+        "tests/reference/cm_load_complete_oracle.c"
       ]
     },
     {
@@ -39916,29 +39813,35 @@
       ],
       "symbol_mapping": [
         {
-          "original": "VM_Create",
+          "original": "all 23 vm.c symbols",
           "target_files": [
-            "src/mq3/vm/interpreter.ml",
             "src/mq3/vm/runtime.ml",
-            "src/mq3/vm/syscall_common.ml"
+            "src/mq3/vm/interpreter.ml",
+            "src/mq3/vm/syscall_common.ml",
+            "src/mq3/engine/local_qvm_match.ml"
           ],
-          "status": "tested_subset",
-          "scope": "QVM validation/interpreter plus three named case-insensitive lifecycle slots, reuse, restart, call context, free and generation tracking. The common qagame/cgame/UI syscall boundary covers print/error/time, Cvars, arguments, console commands and file I/O with the exact 272-byte vmCvar ABI. The interpreter has 404 exact C cases; lifecycle adds 17 contracts; common syscalls add 4 exact C records and 32 contracts. Module-specific engine traps remain open."
+          "status": "tested_exact",
+          "scope": "Complete VM init/create/restart/free/clear lifecycle, three slots and VMI modes, compiled fallback, calls/syscall context, pointer translation, profiling/info/debug/logging, symbols and developer .map loading. Thirteen exact unchanged-C records, 31 native/productive contracts, 404 interpreter differentials and Retail qagame/cgame/ui match paths pass."
         }
       ],
       "target": [
-        "src/mq3/vm/interpreter.ml",
         "src/mq3/vm/runtime.ml",
-        "src/mq3/vm/syscall_common.ml"
+        "src/mq3/vm/interpreter.ml",
+        "src/mq3/vm/syscall_common.ml",
+        "src/mq3/engine/local_qvm_match.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_vm.py",
         "scripts/test_rejections.py",
         "scripts/test_vm_runtime.py",
         "tests/vm_runtime_contracts.ml",
         "scripts/test_vm_syscall_common.py",
-        "tests/vm_syscall_common_contracts.ml"
+        "tests/vm_syscall_common_contracts.ml",
+        "scripts/test_vm_complete.py",
+        "tests/vm_complete_oracle.ml",
+        "tests/vm_complete_contracts.ml",
+        "tests/reference/vm_complete_oracle.c"
       ]
     },
     {
@@ -51233,30 +51136,36 @@
       ],
       "symbol_mapping": [
         {
-          "original": "IN_MouseEvent / IN_MouseMove timestamped Sys_QueEvent delivery",
+          "original": "all 31 win_input symbols",
           "target_files": [
             "native/playable_win32.c",
+            "src/mq3/platform/win_input_runtime.ml",
             "src/mq3/platform/playable_window.ml",
-            "src/mq3/client/input_command_events.ml",
-            "src/mq3/client/qvm_preview_app.ml"
+            "src/mq3/client/input_command_events.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Timestamped Win32 key, mouse-button and raw/fallback mouse-motion transitions feed the productive retail-QVM command builder through a thread-safe 256-entry ring. Focus loss releases held inputs, repeats are deduplicated and menu capture clears game input. DirectInput, MIDI, joystick discovery and the remaining activation policy are open."
+          "status": "tested_exact",
+          "scope": "Complete keyboard mapping and repeats, focus/capture/clip lifecycle, Raw Input and Win32 mouse fallback, five buttons and wheel, WinMM joystick axes/buttons/POV/trackball, MIDI discovery/channel/note handling and shutdown. Nineteen unchanged-C records, 21 contracts, 15 productive anchors and strict /W4 /WX native build gates pass."
         }
       ],
       "target": [
         "native/playable_win32.c",
+        "src/mq3/platform/win_input_runtime.ml",
         "src/mq3/platform/playable_window.ml",
-        "src/mq3/client/input_command_events.ml",
-        "src/mq3/client/qvm_preview_app.ml"
+        "src/mq3/client/input_command_events.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/playable_window_build_test.py",
         "tests/playable_window_lifecycle.c",
         "tests/playable_window_input_events_native.c",
         "scripts/test_input_command.py",
-        "tests/input_command_contracts.ml"
+        "tests/input_command_contracts.ml",
+        "scripts/test_win_input_complete.py",
+        "tests/win_input_complete_oracle.ml",
+        "tests/win_input_complete_contracts.ml",
+        "tests/reference/win_input_complete_oracle.c",
+        "scripts/test_cl_input_complete.py",
+        "scripts/test_playable_match.py"
       ]
     },
     {

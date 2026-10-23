@@ -28,8 +28,8 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **192 sind
-vollständig portiert, 26 teilweise portiert und 117 noch nicht begonnen**.
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **196 sind
+vollständig portiert, 23 teilweise portiert und 116 noch nicht begonnen**.
 Der aktuelle Integrationsblock schließt `cvar.c`, `net_chan.c`, `cm_polylib.c`
 und `be_interface.c`. Damit sind vollständige Cvar- und QVM-Trap-Semantik,
 Netchan samt Loopback/Fragmentierung/Adresspfaden, alle Winding-Operationen und
@@ -43,6 +43,16 @@ und WinMM-Audiogrenzen bestehen. Der dabei erzeugte `build/MiniQuake3.exe`-Stand
 hat SHA-256 `089d21030259d9b15cb28dd6b6051260de550391bda78c76ccbc884d5c865004`. Die letzte vollständige Gesamtauswahl bleibt der
 dokumentierte 449-Gate-Lauf; die vier neuen Gates sind nun in `verify.py`
 registriert.
+
+Der nächste Integrationsblock schließt zusätzlich `vm.c`, `cm_load.c`,
+`win_input.c` und `keys.h`. Die VM besitzt nun ihren vollständigen Lifecycle,
+Modus-/Fallback-, Symbol-, Profil- und Pointerpfad. Der BSP-Lader verarbeitet
+alle Lumps, Checksummen, Modelle und Cachezustände produktiv; der Retail-Match
+startet über `CM_LoadMap`. Windows-Eingabe umfasst Raw Input, Win32-Fallback,
+Capture/Fokus, Tastatur, fünf Maustasten, Wheel, Joystick/POV/Trackball und MIDI.
+Die öffentliche Tasten-/Binding-/Console-/Chat-ABI aus `keys.h` ist ebenfalls
+vollständig zugeordnet. Hauptbuild und Fokusgates sowie der acht Frames lange
+Retail-Match bestehen; `build/MiniQuake3.exe` hat SHA-256 `5c46402ee19d38d5cebdb76e0862e006984e6b020230c3cce5eca0546638035c`.
 
 Der aktuelle Stand ist im [AAS-/Botlib-Bericht](docs/AAS_RUNTIME.md) und im
 [vollständigen AI-Trap-Audit 500–577](docs/BOTLIB_AI_TRAP_AUDIT.md) dokumentiert.
