@@ -2693,3 +2693,42 @@ Lauf bleibt bei 408/408 Gates grün. Der frische Windows-Hauptbuild hat SHA-256
 Der kombinierte Retail-QVM-Match läuft weiterhin acht Frames mit 131 Entities,
 13 Snapshot-Entities, 2.345 texturierten Dreiecken, 17 Renderpässen, 26 Sounds
 und null nicht unterstützten Entities.
+
+## 2026-10-23: Client-, Game- und Main-Serverpfade vollständig geschlossen
+
+Vier weitere partielle Originaldateien sind vollständig nativ zugeordnet.
+`sv_client.c` deckt nun auch Autorisierung, Drop-Reihenfolge, Gamestate-
+Übertragung, Enter-World, Disconnect, Pure-Prüfung/-Reset und Userinfo ab. Ein
+Inventarfehler wurde dabei korrigiert: `SV_FinalMessage` ist in dieser Datei
+nur eine Kommentarreferenz; die übersehene echte Definition ist
+`SV_DropClient`. `sv_game.c` besitzt sämtliche qagame-seitigen Enginegrenzen
+einschließlich Entity-/Clientadressierung, Serverbefehlen, Usercmds, PVS und
+Areaportalen. `sv_main.c` schließt zuverlässige Serverbefehle, Masterverkehr,
+Info/Status, Redirect und Rcon. `vm_interpreted.c` ergänzt die zwei originalen
+Diagnosepfade für Einrückung und den begrenzten QVM-Stacktrace.
+
+Nachweise:
+
+- `sv_client.c`: 22/22 tatsächlich definierte Funktionen, sechs unveränderte-
+  C-Datensätze und 29 native/produktive Verträge. Die Gamestate-Nachricht wird
+  mit den produktiven Reliable-/Delta-Modulen erzeugt und vom echten
+  Clientparser gelesen.
+- `sv_game.c`: 24/24 Symbole; der neue Rest besteht sieben unveränderte-C-
+  Transkripte und 33 native/produktive Verträge über reale qagame-Dispatcher.
+- `sv_main.c`: 16/16 Symbole, 74 unveränderte-C-Datensätze, 166 native und acht
+  produktive localhost-Winsock-UDP-Verträge bis durch PacketEvent und den
+  Connectionless-Dispatcher.
+- `vm_interpreted.c`: 4/4 Symbole, sieben unveränderte-C-Ausgaben, acht native
+  Diagnoseverträge und weiterhin 404 Interpreter-Differentialfälle.
+
+Das Inventar zählt jetzt **183 portierte, 35 partielle und 117 nicht begonnene**
+Runtime-/Plattformdateien. Der Serverbereich steht bei **acht portierten und
+drei partiellen Dateien**; offen sind dort nur noch `server.h`, `sv_bot.c` und
+`sv_init.c`. Alle vier neuen Fokusgates sind in `scripts/verify.py`
+registriert. Die vollständige Verify-Auswahl wurde für dieses inkrementelle
+Paket nicht erneut am Stück ausgeführt; der letzte vollständige Lauf bleibt
+bei 408/408 Gates grün. Der frische Windows-Hauptbuild hat SHA-256
+`e787b5a14d296b9c111c0baad7126685a6e9df6f62ee37375b77018517acaca7`.
+Der kombinierte Retail-QVM-Match läuft weiterhin acht Frames mit 131 Entities,
+13 Snapshot-Entities, 2.345 texturierten Dreiecken, 17 Renderpässen, 26 Sounds
+und null nicht unterstützten Entities.

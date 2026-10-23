@@ -28,15 +28,15 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **179 sind
-vollständig portiert, 39 teilweise portiert und 117 noch nicht begonnen**.
-Zuletzt wurden `md4.c`, `sv_net_chan.c`, `sv_snapshot.c` und `sv_world.c`
-geschlossen. Der Serverbereich enthält damit fünf vollständig portierte und
-sechs teilweise portierte C-Dateien; dort ist keine C-Datei mehr unbegonnen.
-Der MD4-Datei- und Prüfsummenpfad, fragmentierte Serverkanäle, Snapshot-
-Versandplanung sowie World-Sektoren und `sectorlist` laufen über produktive
-MiniLang-Pfade und sind durch unveränderte C-Orakel sowie native und Retail-
-Verträge abgesichert.
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **183 sind
+vollständig portiert, 35 teilweise portiert und 117 noch nicht begonnen**.
+Zuletzt wurden `vm_interpreted.c`, `sv_client.c`, `sv_game.c` und `sv_main.c`
+geschlossen. Der Serverbereich enthält damit acht vollständig portierte und
+drei teilweise portierte Dateien; keine Server-C-Datei ist mehr unbegonnen.
+Client-Lifecycle und Gamestate, Pure-Prüfung, qagame-Enginegrenzen, zuverlässige
+Serverbefehle, Master-/Info-/Status-/Rcon-Verkehr und QVM-Diagnostik laufen über
+native MiniLang-Pfade. Unveränderte C-Orakel sowie native, produktive UDP- und
+Retail-Verträge sichern diese Pfade ab.
 
 Der aktuelle Stand ist im [AAS-/Botlib-Bericht](docs/AAS_RUNTIME.md) und im
 [vollständigen AI-Trap-Audit 500–577](docs/BOTLIB_AI_TRAP_AUDIT.md) dokumentiert.

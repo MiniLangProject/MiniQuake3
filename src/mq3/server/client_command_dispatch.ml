@@ -3,11 +3,12 @@
 // SV_ExecuteClientCommand routing from server/sv_client.c.
 package mq3.server.client_command_dispatch
 import mq3.qcommon.command_buffer as commandBuffer
+import mq3.server.client_lifecycle as lifecycle
 
 const SS_GAME=2
 
-struct Services builtinFn downloadFn gameFn ignoredFn context downloadContext end struct
-function services() return Services(void,void,void,void,void,void) end function
+struct Services builtinFn downloadFn gameFn ignoredFn context downloadContext lifecycleRuntime end struct
+function services() return Services(void,void,void,void,void,void,void) end function
 
 function builtinNames() return ["userinfo","disconnect","cp","vdr","download","nextdl","stopdl","donedl"] end function
 
@@ -25,8 +26,9 @@ function execute(host,clientState,text,clientOk,serverState)
     if index>=4 and host.downloadFn!=void then
       host.downloadFn(host,clientState,name,parser);return "builtin"
     end if
-    if host.builtinFn==void then return error(6986,"client command dispatch: missing builtin service") end if
-    host.builtinFn(host,clientState,name,parser);return "builtin"
+    if host.builtinFn!=void then host.builtinFn(host,clientState,name,parser);return "builtin" end if
+    if host.lifecycleRuntime!=void then lifecycle.dispatchBuiltin(host.lifecycleRuntime,clientState,name,parser);return "builtin" end if
+    return error(6986,"client command dispatch: missing builtin service")
   end if
   if clientOk then
     if serverState==SS_GAME then

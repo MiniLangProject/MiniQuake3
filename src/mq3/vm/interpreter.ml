@@ -24,6 +24,37 @@ function fail(message)
   return error(3400, "QVM: " + message)
 end function
 
+// Debug helpers from vm_interpreted.c.  The C implementation returns a
+// pointer into a static forty-space string; MiniLang returns the equivalent
+// immutable suffix.  Stack traces retain the original frame layout:
+// [return pc, previous program stack] at offsets 0 and 4.
+function VM_Indent(callLevel)
+  value = "                                        "
+  if callLevel > 20 then return value end if
+  if callLevel < 0 then return fail("negative call level") end if
+  offset = 2 * (20 - callLevel)
+  return decode(slice(bytes(value), offset, 40 - offset))
+end function
+
+function VM_StackTrace(data, programCounter, programStack, symbolFn, context)
+  if typeof(data) != "bytes" then return fail("stack trace data missing") end if
+  lines = []
+  count = 0
+  while true
+    line = ""
+    if symbolFn == void then line = str(programCounter) else line = symbolFn(context, programCounter) end if
+    lines = lines + [line]
+    if programStack < 0 or programStack + 8 > len(data) then return fail("stack trace frame outside data") end if
+    programStack = n.readI32(data, programStack + 4)
+    if programStack < 0 or programStack + 4 > len(data) then return fail("stack trace parent outside data") end if
+    programCounter = n.readI32(data, programStack)
+    if programCounter == -1 then break end if
+    count = count + 1
+    if count >= 32 then break end if
+  end while
+  return lines
+end function
+
 function immediateSize(op)
   if op == 3 or op == 4 or op == 8 or op == 9 or (op >= 11 and op <= 26) or op == 34 then return 4 end if
   if op == 33 then return 1 end if

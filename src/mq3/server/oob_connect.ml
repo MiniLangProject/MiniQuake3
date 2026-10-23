@@ -4,6 +4,7 @@
 package mq3.server.oob_connect
 import mq3.shared.info as info
 import mq3.compat.numeric as numeric
+import std.string as strings
 
 const MAX_CHALLENGES=1024
 const AUTHORIZE_TIMEOUT=5000
@@ -23,12 +24,12 @@ struct Client state address qport lastConnectTime reliableAcknowledge reliableSe
 function emptyClient() return Client(CS_FREE,void,0,0,0,0,0,"",0,0,0,false) end function
 struct Config singlePlayer reconnectLimit minPing maxPing privateClients privatePassword end struct
 function config() return Config(false,3,0,0,0,"") end function
-struct Runtime time challenges clients config randFn lanFn localFn sendFn authorizeFn gameConnectFn dropFn heartbeatFn context end struct
+struct Runtime time challenges clients config randFn lanFn localFn sendFn authorizeFn gameConnectFn dropFn heartbeatFn context authorizeAddress diagnosticFn end struct
 function create(maxClients,settings)
   if maxClients<=0 then return error(6920,"oob connect: invalid maxclients") end if
   challenges=array(MAX_CHALLENGES,void);for index=0 to MAX_CHALLENGES-1 challenges[index]=emptyChallenge() end for
   clients=array(maxClients,void);for index=0 to maxClients-1 clients[index]=emptyClient() end for
-  return Runtime(0,challenges,clients,settings,void,void,void,void,void,void,void,void,void)
+  return Runtime(0,challenges,clients,settings,void,void,void,void,void,void,void,void,void,void,void)
 end function
 struct Result accepted reason slot challengeIndex userinfo end struct
 function result(ok,reason,slot,index,userinfo) return Result(ok,reason,slot,index,userinfo) end function
@@ -54,6 +55,27 @@ function getChallenge(runtime,sourceAddress)
   if runtime.authorizeFn!=void then runtime.authorizeFn(runtime,c.challenge,sourceAddress) end if
   return c
 end function
+
+function authorizeDiagnostic(runtime,text) if runtime.diagnosticFn!=void then runtime.diagnosticFn(runtime,text) end if;return void end function
+function authorizeIpPacket(runtime,sourceAddress,args,fsRestrict)
+  if runtime.authorizeAddress==void or not sameBase(sourceAddress,runtime.authorizeAddress) then authorizeDiagnostic(runtime,"SV_AuthorizeIpPacket: not from authorize server\n");return "wrongServer" end if
+  wanted=0;if len(args)>1 then wanted=atoi(args[1]) end if;found=-1
+  for index=0 to MAX_CHALLENGES-1 if runtime.challenges[index].challenge==wanted then found=index;break end if end for
+  if found<0 then authorizeDiagnostic(runtime,"SV_AuthorizeIpPacket: challenge not found\n");return "notFound" end if
+  challenge=runtime.challenges[found];challenge.pingTime=runtime.time;status="";reason="";if len(args)>2 then status=args[2] end if;if len(args)>3 then reason=args[3] end if
+  if strings.equalsIgnoreCaseAscii(status,"demo") then
+    if fsRestrict!=0 then send(runtime,challenge.address,"challengeResponse "+str(challenge.challenge));return "acceptedDemo" end if
+    send(runtime,challenge.address,"print\nServer is not a demo server\n");runtime.challenges[found]=emptyChallenge();return "rejectedDemo"
+  end if
+  if strings.equalsIgnoreCaseAscii(status,"accept") then send(runtime,challenge.address,"challengeResponse "+str(challenge.challenge));return "accepted" end if
+  if strings.equalsIgnoreCaseAscii(status,"unknown") then
+    // Cmd_Argv returns a stable empty string for a missing argument.  The
+    // original tests !r (the pointer), so an omitted reason is sent empty.
+    send(runtime,challenge.address,"print\n"+reason+"\n");runtime.challenges[found]=emptyChallenge();return "unknown"
+  end if
+  send(runtime,challenge.address,"print\n"+reason+"\n");runtime.challenges[found]=emptyChallenge();return "denied"
+end function
+function SV_AuthorizeIpPacket(runtime,sourceAddress,args,fsRestrict) return authorizeIpPacket(runtime,sourceAddress,args,fsRestrict) end function
 
 function atoi(text) value=0;sign=1;index=0;if len(text)>0 and bytes(text)[0]==45 then sign=-1;index=1 end if;raw=bytes(text);while index<len(raw) and raw[index]>=48 and raw[index]<=57 value=value*10+raw[index]-48;index=index+1 end while;return value*sign end function
 function matchingClient(client,sourceAddress,qport) return client.state!=CS_FREE and sameBase(sourceAddress,client.address) and (client.qport==qport or sourceAddress.port==client.address.port) end function

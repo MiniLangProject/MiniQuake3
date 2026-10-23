@@ -39998,15 +39998,27 @@
             "src/mq3/vm/interpreter.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "VM_Indent / VM_StackTrace",
+          "target_files": [
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Exact debug indentation and original frame-chain traversal with the 32-frame cap, checked against seven outputs from the unchanged C bodies and eight native safety/boundary contracts."
         }
       ],
       "target": [
         "src/mq3/vm/interpreter.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_vm.py",
-        "scripts/test_retail_vm.py"
+        "scripts/test_retail_vm.py",
+        "scripts/test_vm_interpreted_complete.py",
+        "tests/reference/vm_interpreted_debug_oracle.c",
+        "tests/vm_interpreted_debug_oracle.ml",
+        "tests/vm_interpreted_debug_contracts.ml"
       ]
     },
     {
@@ -42750,9 +42762,9 @@
         "SV_DirectConnect",
         "SV_Disconnect_f",
         "SV_DoneDownload_f",
+        "SV_DropClient",
         "SV_ExecuteClientCommand",
         "SV_ExecuteClientMessage",
-        "SV_FinalMessage",
         "SV_GetChallenge",
         "SV_NextDownload_f",
         "SV_ResetPureClient_f",
@@ -42814,6 +42826,16 @@
           ],
           "status": "tested_exact",
           "scope": "Keyed delta usercmd batches, frame acknowledgement, pure/CP policy, enter-world, duplicate filtering and game think callback. Twelve unchanged-C records, 30 MiniLang contracts and 14 payload-integration contracts pass."
+        },
+        {
+          "original": "SV_AuthorizeIpPacket / SV_DropClient / SV_SendClientGameState / SV_ClientEnterWorld / SV_Disconnect_f / SV_VerifyPaks_f / SV_ResetPureClient_f / SV_UserinfoChanged / SV_UpdateUserinfo_f",
+          "target_files": [
+            "src/mq3/server/client_lifecycle.ml",
+            "src/mq3/server/client_command_dispatch.ml",
+            "src/mq3/server/oob_connect.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All remaining client lifecycle, authorization, gamestate, enter-world, disconnect, pure validation/reset and userinfo paths. Six unchanged-C userinfo records and 29 native/productive contracts pass; gamestate bytes traverse the real client parser and builtin commands use the production dispatcher. The former inventory candidate SV_FinalMessage was a comment reference and is corrected to the actual SV_DropClient definition."
         }
       ],
       "target": [
@@ -42825,9 +42847,10 @@
         "src/mq3/server/client_command.ml",
         "src/mq3/server/user_move.ml",
         "src/mq3/server/client_input.ml",
-        "src/mq3/server/network_ingress.ml"
+        "src/mq3/server/network_ingress.ml",
+        "src/mq3/server/client_lifecycle.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_server_download.py",
         "scripts/test_server_pipeline.py",
@@ -42846,7 +42869,11 @@
         "tests/reference/server_user_move_oracle.c",
         "tests/server_download_oracle.ml",
         "tests/server_download_contracts.ml",
-        "tests/reference/server_download_oracle.c"
+        "tests/reference/server_download_oracle.c",
+        "scripts/test_sv_client_complete.py",
+        "tests/reference/sv_client_userinfo_oracle.c",
+        "tests/sv_client_userinfo_oracle.ml",
+        "tests/sv_client_complete_contracts.ml"
       ]
     },
     {
@@ -42931,6 +42958,16 @@
           ],
           "status": "tested_subset",
           "scope": "Snapshot entity, bot console message and exact 24-byte usercmd services are connected to the retail qagame bot path."
+        },
+        {
+          "original": "FloatAsInt / SV_AdjustAreaPortalState / SV_GEntityForSvEntity / SV_GameClientNum / SV_GameCommand / SV_GameDropClient / SV_GameError / SV_GamePrint / SV_GameSendServerCommand / SV_GentityNum / SV_GetServerinfo / SV_GetUsercmd / SV_LocateGameData / SV_NumForGentity / SV_SvEntityForGentity / SV_inPVSIgnorePortals",
+          "target_files": [
+            "src/mq3/server/game_interface.ml",
+            "src/mq3/vm/syscall_qagame.ml",
+            "src/mq3/vm/syscall_qagame_world.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete engine-facing qagame interface: diagnostics, entity/client stride conversion, bounds, server commands/drop, game-data location, usercmds, serverinfo, portal state, PVS without portals, float ABI and console-command dispatch. Seven unchanged-C transcripts and 33 native/productive contracts pass."
         }
       ],
       "target": [
@@ -42940,9 +42977,10 @@
         "src/mq3/vm/syscall_qagame_world.ml",
         "src/mq3/server/game_vm.ml",
         "src/mq3/botlib/server_bridge.ml",
-        "src/mq3/engine/local_qvm_match.ml"
+        "src/mq3/engine/local_qvm_match.ml",
+        "src/mq3/server/game_interface.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_transitions.py",
         "scripts/test_spawn.py",
@@ -42952,7 +42990,11 @@
         "scripts/test_vm_syscall_qagame_world.py",
         "scripts/test_game_vm_lifecycle.py",
         "scripts/test_bot_server_bridge.py",
-        "scripts/test_bot_spawn_retail.py"
+        "scripts/test_bot_spawn_retail.py",
+        "scripts/test_sv_game_complete.py",
+        "tests/reference/sv_game_interface_oracle.c",
+        "tests/sv_game_interface_oracle.ml",
+        "tests/sv_game_interface_contracts.ml"
       ]
     },
     {
@@ -43080,6 +43122,16 @@
           ],
           "status": "tested_exact",
           "scope": "Kill/running/pause gates, FPS residual and sleep, wrap/restart policy, info configstrings, ping, bot/game frame loop, timeout, snapshot scheduling and heartbeat in original order. Nine unchanged-C records and 28 MiniLang contracts pass."
+        },
+        {
+          "original": "SV_ExpandNewlines / SV_ReplacePendingServerCommands / SV_AddServerCommand / SV_SendServerCommand / SV_MasterHeartbeat / SV_MasterShutdown / SVC_Status / SVC_Info / SV_FlushRedirect / SVC_RemoteCommand",
+          "target_files": [
+            "src/mq3/server/main_runtime.ml",
+            "src/mq3/server/connectionless.ml",
+            "src/mq3/server/network_ingress.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Reliable command replacement/broadcast, master heartbeats/shutdown, info/status replies, redirect and rcon. Together with the six established runtime functions this covers 16/16 symbols using 74 unchanged-C records, 166 native contracts and eight productive localhost Winsock UDP contracts."
         }
       ],
       "target": [
@@ -43090,9 +43142,11 @@
         "src/mq3/server/timeouts.ml",
         "src/mq3/server/pause.ml",
         "src/mq3/server/snapshot_schedule.ml",
-        "src/mq3/server/frame.ml"
+        "src/mq3/server/frame.ml",
+        "src/mq3/server/main_runtime.ml",
+        "src/mq3/server/network_ingress.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_connectionless.py",
         "tests/reference/connectionless_oracle.c",
@@ -43121,7 +43175,12 @@
         "tests/snapshot_schedule_contracts.ml",
         "scripts/test_server_frame.py",
         "tests/reference/server_frame_oracle.c",
-        "tests/server_frame_contracts.ml"
+        "tests/server_frame_contracts.ml",
+        "scripts/test_sv_main_complete.py",
+        "tests/reference/sv_main_complete_oracle.c",
+        "tests/sv_main_complete_oracle.ml",
+        "tests/sv_main_complete_contracts.ml",
+        "tests/sv_main_productive_probe.ml"
       ]
     },
     {

@@ -20,14 +20,14 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
-| `qcommon` | 27 | 5 | 13 | 9 | 0 |
+| `qcommon` | 27 | 6 | 12 | 9 | 0 |
 | `renderer` | 27 | 23 | 0 | 4 | 0 |
-| `server` | 11 | 5 | 6 | 0 | 0 |
+| `server` | 11 | 8 | 3 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **179** | **39** | **117** | **0** |
+| **Gesamt** | **335** | **183** | **35** | **117** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -284,7 +284,7 @@ Teil dieser Tabelle.
 | `code/qcommon/unzip.c` | `qcommon` | `partial` | 48 | 0 | 48 |
 | `code/qcommon/unzip.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
 | `code/qcommon/vm.c` | `qcommon` | `partial` | 23 | 1 | 22 |
-| `code/qcommon/vm_interpreted.c` | `qcommon` | `partial` | 4 | 2 | 2 |
+| `code/qcommon/vm_interpreted.c` | `qcommon` | `ported` | 4 | 4 | 0 |
 | `code/qcommon/vm_local.h` | `qcommon` | `partial` | 0 | 0 | 0 |
 | `code/qcommon/vm_ppc.c` | `qcommon` | `not_started` | 14 | 0 | 14 |
 | `code/qcommon/vm_ppc_new.c` | `qcommon` | `not_started` | 18 | 0 | 18 |
@@ -319,10 +319,10 @@ Teil dieser Tabelle.
 | `code/server/server.h` | `server` | `partial` | 0 | 0 | 0 |
 | `code/server/sv_bot.c` | `server` | `partial` | 28 | 0 | 28 |
 | `code/server/sv_ccmds.c` | `server` | `ported` | 16 | 16 | 0 |
-| `code/server/sv_client.c` | `server` | `partial` | 22 | 13 | 9 |
-| `code/server/sv_game.c` | `server` | `partial` | 24 | 8 | 16 |
+| `code/server/sv_client.c` | `server` | `ported` | 22 | 22 | 0 |
+| `code/server/sv_game.c` | `server` | `ported` | 24 | 24 | 0 |
 | `code/server/sv_init.c` | `server` | `partial` | 14 | 1 | 13 |
-| `code/server/sv_main.c` | `server` | `partial` | 16 | 6 | 10 |
+| `code/server/sv_main.c` | `server` | `ported` | 16 | 16 | 0 |
 | `code/server/sv_net_chan.c` | `server` | `ported` | 5 | 5 | 0 |
 | `code/server/sv_rankings.c` | `server` | `ported` | 28 | 28 | 0 |
 | `code/server/sv_snapshot.c` | `server` | `ported` | 11 | 11 | 0 |
@@ -502,7 +502,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/qcommon/unzip.c` (partial): `adler32`, `inflate`, `inflateEnd`, `inflateInit2_`, `inflateInit_`, `inflateReset`, `inflateSetDictionary`, `inflateSync`, `inflateSyncPoint`, `inflate_blocks`, `inflate_blocks_free`, `inflate_blocks_new`, `inflate_blocks_reset`, `inflate_blocks_sync_point`, `inflate_codes`, `inflate_codes_free`, `inflate_codes_new`, `inflate_fast`, `inflate_flush`, `inflate_set_dictionary`, `strcmpcasenosensitive_internal`, `unzClose`, `unzCloseCurrentFile`, `unzGetCurrentFileInfo`, `unzGetCurrentFileInfoPosition`, `unzGetGlobalComment`, `unzGetGlobalInfo`, `unzGetLocalExtrafield`, `unzGoToFirstFile`, `unzGoToNextFile`, `unzLocateFile`, `unzOpen`, `unzOpenCurrentFile`, `unzReOpen`, `unzReadCurrentFile`, `unzSetCurrentFileInfoPosition`, `unzStringFileNameCompare`, `unzeof`, `unzlocal_CheckCurrentFileCoherencyHeader`, `unzlocal_DosDateToTmuDate`, `unzlocal_GetCurrentFileInfoInternal`, `unzlocal_SearchCentralDir`, `unzlocal_getByte`, `unzlocal_getLong`, `unzlocal_getShort`, `unztell`, `zcalloc`, `zcfree`
 - `code/qcommon/unzip.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/vm.c` (partial): `ParseHex`, `VM_ArgPtr`, `VM_Call`, `VM_CallCompiled`, `VM_Clear`, `VM_Compile`, `VM_Debug`, `VM_DllSyscall`, `VM_ExplicitArgPtr`, `VM_Free`, `VM_Init`, `VM_LoadSymbols`, `VM_LogSyscalls`, `VM_ProfileSort`, `VM_Restart`, `VM_SymbolForCompiledPointer`, `VM_SymbolToValue`, `VM_VM2C`, `VM_ValueToFunctionSymbol`, `VM_ValueToSymbol`, `VM_VmInfo_f`, `VM_VmProfile_f`
-- `code/qcommon/vm_interpreted.c` (partial): `VM_Indent`, `VM_StackTrace`
 - `code/qcommon/vm_local.h` (partial): *(Symbolinventar ergänzen)*
 - `code/qcommon/vm_ppc.c` (not_started): `AsmCall`, `Constant1`, `Constant4`, `Emit4`, `Inst`, `Inst4`, `InstImm`, `InstImmU`, `VM_CallCompiled`, `VM_Compile`, `fltop`, `fltopandsecond`, `ltop`, `ltopandsecond`
 - `code/qcommon/vm_ppc_new.c` (not_started): `AsmCall`, `Constant1`, `Constant4`, `Emit4`, `Inst`, `Inst4`, `InstImm`, `InstImmU`, `VM_CallCompiled`, `VM_Compile`, `fltop`, `fltopandsecond`, `loadOpStack`, `ltop`, `ltopandsecond`, `makeFloat`, `makeInteger`, `spillOpStack`
@@ -528,10 +527,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/renderer/tr_world.c` (ported): `R_AddWorldSurface`, `R_AddWorldSurfaces`, `R_ClusterPVS`, `R_CullGrid`, `R_CullSurface`, `R_CullTriSurf`, `R_DlightFace`, `R_DlightGrid`, `R_DlightSurface`, `R_DlightTrisurf`, `R_MarkLeaves`, `R_PointInLeaf`, `R_RecursiveWorldNode`, `R_inPVS`
 - `code/server/server.h` (partial): *(Symbolinventar ergänzen)*
 - `code/server/sv_bot.c` (partial): `BotClientCommand`, `BotDrawDebugPolygons`, `BotImport_BSPEntityData`, `BotImport_BSPModelMinsMaxsOrigin`, `BotImport_DebugLineCreate`, `BotImport_DebugLineDelete`, `BotImport_DebugLineShow`, `BotImport_DebugPolygonCreate`, `BotImport_DebugPolygonDelete`, `BotImport_DebugPolygonShow`, `BotImport_EntityTrace`, `BotImport_FreeMemory`, `BotImport_GetMemory`, `BotImport_HunkAlloc`, `BotImport_PointContents`, `BotImport_Print`, `BotImport_Trace`, `BotImport_inPVS`, `EntityInPVS`, `SV_BotAllocateClient`, `SV_BotFrame`, `SV_BotFreeClient`, `SV_BotGetConsoleMessage`, `SV_BotGetSnapshotEntity`, `SV_BotInitBotLib`, `SV_BotInitCvars`, `SV_BotLibSetup`, `SV_BotLibShutdown`
-- `code/server/sv_client.c` (partial): `SV_AuthorizeIpPacket`, `SV_ClientEnterWorld`, `SV_Disconnect_f`, `SV_FinalMessage`, `SV_ResetPureClient_f`, `SV_SendClientGameState`, `SV_UpdateUserinfo_f`, `SV_UserinfoChanged`, `SV_VerifyPaks_f`
-- `code/server/sv_game.c` (partial): `FloatAsInt`, `SV_AdjustAreaPortalState`, `SV_GEntityForSvEntity`, `SV_GameClientNum`, `SV_GameCommand`, `SV_GameDropClient`, `SV_GameError`, `SV_GamePrint`, `SV_GameSendServerCommand`, `SV_GentityNum`, `SV_GetServerinfo`, `SV_GetUsercmd`, `SV_LocateGameData`, `SV_NumForGentity`, `SV_SvEntityForGentity`, `SV_inPVSIgnorePortals`
 - `code/server/sv_init.c` (partial): `SV_BoundMaxClients`, `SV_ChangeMaxClients`, `SV_ClearServer`, `SV_CreateBaseline`, `SV_FinalMessage`, `SV_GetConfigstring`, `SV_GetUserinfo`, `SV_Init`, `SV_SetUserinfo`, `SV_Shutdown`, `SV_SpawnServer`, `SV_Startup`, `SV_TouchCGame`
-- `code/server/sv_main.c` (partial): `SVC_Info`, `SVC_RemoteCommand`, `SVC_Status`, `SV_AddServerCommand`, `SV_ExpandNewlines`, `SV_FlushRedirect`, `SV_MasterHeartbeat`, `SV_MasterShutdown`, `SV_ReplacePendingServerCommands`, `SV_SendServerCommand`
 - `code/splines/math_angles.h` (not_started): `Zero`, `angles_t`, `set`, `vec3_p`
 - `code/splines/math_matrix.h` (not_started): `Identity`, `InverseMultiply`, `OrthoNormalize`, `SkewSymmetric`, `mat3_t`
 - `code/splines/math_quaternion.h` (not_started): `Length`, `Normalize`, `quat_t`, `set`, `vec4`
