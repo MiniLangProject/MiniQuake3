@@ -2656,3 +2656,40 @@ grün. Der Hauptbuild hat SHA-256
 Der Retail-Match läuft acht Frames mit 131 Entities, 13 Snapshot-Entities,
 2.345 texturierten Dreiecken, 17 Renderpässen, 26 Sounds und null nicht
 unterstützten Entities.
+
+## 2026-10-23: MD4 und drei Server-Laufzeitdateien geschlossen
+
+Vier zuvor partielle Originaldateien sind nun vollständig nativ zugeordnet.
+`md4.c` besitzt zusätzlich zu den produktiven Block-, Update- und
+Dateiprüfsummenpfaden die originalen Little-Endian-Grenzen `Encode` und
+`Decode`. `sv_net_chan.c` deckt Initialisierung, Transmit, Fragmentversand und
+Fragmentempfang ab. `sv_snapshot.c` ordnet nun auch den produktiven
+`SV_SendClientMessages`-Scheduler zu. `sv_world.c` ergänzt die originale
+`SV_SectorList_f`-Auswertung und bindet den Konsolenbefehl `sectorlist` an die
+laufende World-Sektorstruktur.
+
+Nachweise:
+
+- `md4.c`: 8/8 Symbole, drei unveränderte-C-Datensätze, neun native Verträge,
+  24 direkte C-Prüfsummenfälle mit jeweils beiden Originalwerten sowie 25
+  produktive Dateisystemverträge.
+- `sv_net_chan.c`: 5/5 Funktionen, zwölf unveränderte-C-Datensätze, 26 native
+  Verträge und 67 produktive localhost-UDP-/Match-Verträge.
+- `sv_snapshot.c`: 11/11 Symbole, drei unveränderte-C-Datensätze und 25 native
+  Verträge einschließlich produktiver Frame-, Snapshot- und Fragmentplanung.
+- `sv_world.c`: 12/12 Symbole, 64 unveränderte-C-Sektordatensätze, acht native
+  Verträge und ein Retail-`sectorlist`-Probe. Der bestehende vollständige
+  q3dm1-World-Abgleich bleibt bei 2.250 Operationen und 116.243 exakten
+  Ergebniswörtern grün.
+
+Das Inventar zählt jetzt **179 portierte, 39 partielle und 117 nicht begonnene**
+Runtime-/Plattformdateien. Der Serverbereich steht bei **fünf portierten,
+sechs partiellen und null nicht begonnenen C-Dateien**. Alle vier Fokusgates
+sind in `scripts/verify.py` registriert und bestehen auf dem
+zusammengeführten Stand. Die vollständige Verify-Auswahl wurde für dieses
+inkrementelle Paket nicht erneut am Stück ausgeführt; der letzte vollständige
+Lauf bleibt bei 408/408 Gates grün. Der frische Windows-Hauptbuild hat SHA-256
+`3df435c2772c3b9ac4ac211759f3e877315c0d8f65aa38134ba81ea2807cf474`.
+Der kombinierte Retail-QVM-Match läuft weiterhin acht Frames mit 131 Entities,
+13 Snapshot-Entities, 2.345 texturierten Dreiecken, 17 Renderpässen, 26 Sounds
+und null nicht unterstützten Entities.

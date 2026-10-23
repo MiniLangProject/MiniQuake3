@@ -28,15 +28,15 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **175 sind
-vollständig portiert, 43 teilweise portiert und 117 noch nicht begonnen**.
-Zuletzt wurden `cl_console.c`, `cl_parse.c` und `cl_scrn.c` geschlossen. Damit
-sind sämtliche 15 Client-`.c`-Laufzeitdateien vollständig nativ zugeordnet;
-offen sind dort nur noch vier Header. Konsole und Netzwerkparser sind in den
-produktiven Spielpfad eingebunden. Die native `cl_scrn.c`-Fassade ist durch
-unveränderte-C-, Retail- und native Verträge gegen dieselben produktiven
-Renderer- und UI-Bausteine abgesichert; der Windows-Frame setzt diese Bausteine
-weiterhin direkt zusammen.
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **179 sind
+vollständig portiert, 39 teilweise portiert und 117 noch nicht begonnen**.
+Zuletzt wurden `md4.c`, `sv_net_chan.c`, `sv_snapshot.c` und `sv_world.c`
+geschlossen. Der Serverbereich enthält damit fünf vollständig portierte und
+sechs teilweise portierte C-Dateien; dort ist keine C-Datei mehr unbegonnen.
+Der MD4-Datei- und Prüfsummenpfad, fragmentierte Serverkanäle, Snapshot-
+Versandplanung sowie World-Sektoren und `sectorlist` laufen über produktive
+MiniLang-Pfade und sind durch unveränderte C-Orakel sowie native und Retail-
+Verträge abgesichert.
 
 Der aktuelle Stand ist im [AAS-/Botlib-Bericht](docs/AAS_RUNTIME.md) und im
 [vollständigen AI-Trap-Audit 500–577](docs/BOTLIB_AI_TRAP_AUDIT.md) dokumentiert.

@@ -88,6 +88,30 @@ function create(world)
   bounds = cm.modelBounds(world,0); createSector(scene,0,bounds[0],bounds[1])
   return scene
 end function
+// SV_SectorList_f is a diagnostic command, but it deliberately walks the
+// same intrusive sector chains used by collision queries.  Baseq3 prints all
+// 64 statically allocated slots; only the first 31 belong to the depth-four
+// tree and the remaining slots consequently report zero entities.
+function sectorList(scene)
+  lines = []
+  for index = 0 to 63
+    count = 0
+    if index < len(scene.sectors) then
+      scan = scene.sectors[index].head
+      while scan != -1
+        count = count+1
+        scan = scene.entities[scan].nextEntity
+      end while
+    end if
+    lines = lines+["sector "+str(index)+": "+str(count)+" entities\n"]
+  end for
+  return lines
+end function
+function SV_SectorList_f(scene,printFn,context)
+  lines = sectorList(scene)
+  if printFn != void then for each line in lines printFn(context,line) end for end if
+  return len(lines)
+end function
 function unlinkEntity(scene,number)
   ent = getEntity(scene,number); ent.linked = false
   if ent.sector == -1 then return void end if

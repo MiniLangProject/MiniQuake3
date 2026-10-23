@@ -16,13 +16,13 @@ def main():
     if native!=mini:raise RuntimeError('SV_SendClientMessages mismatch\nC:\n'+native+'MiniLang:\n'+mini)
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/snapshot_schedule_contracts.ml','--output','snapshot_schedule_contracts.exe'],cwd=ROOT,check=True)
     value=run([ROOT/'build/snapshot_schedule_contracts.exe'],ROOT/'build',log=out/'contracts.log').strip()
-    if value!='PASS: 19 snapshot-schedule contracts':raise RuntimeError(value)
-    files=[source,harness,ROOT/'tests/snapshot_schedule_oracle.ml',ROOT/'src/mq3/server/snapshot_schedule.ml',ROOT/'tests/snapshot_schedule_contracts.ml']
-    report={'passed':True,'records':len(native.splitlines()),'contracts':19,'function':'SV_SendClientMessages',
-      'scope':'Complete outer client-send scheduler: disconnected and not-yet-due filtering, exact-deadline dispatch, pending-fragment priority, remaining-fragment rate timing, max-rate policy, client iteration and snapshot callback boundary.',
+    if value!='PASS: 25 snapshot-schedule contracts':raise RuntimeError(value)
+    files=[source,harness,ROOT/'tests/snapshot_schedule_oracle.ml',ROOT/'src/mq3/server/snapshot_schedule.ml',ROOT/'src/mq3/server/frame.ml',ROOT/'tests/snapshot_schedule_contracts.ml']
+    report={'passed':True,'records':len(native.splitlines()),'contracts':25,'function':'SV_SendClientMessages',
+      'scope':'Complete outer client-send scheduler: disconnected and not-yet-due filtering, exact-deadline dispatch, pending-fragment priority, remaining-fragment rate timing, max-rate policy, client iteration and snapshot callback boundary. Productive server.frame composition drives due snapshots and pending fragments through this scheduler.',
       'oracle':'Unchanged extracted SV_RateMsec and SV_SendClientMessages bodies from pinned Baseq3 with deterministic client/channel storage and send callbacks.',
-      'remaining':'Snapshot construction is implemented by snapshot_send; binding these callbacks into the top-level server frame host remains integration work.',
+      'remaining':'Snapshot construction and netchan transmission are owned by their separately verified snapshot_send and server.netchan modules.',
       'sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
     (out/'result.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
-    print(f"PASS: {report['records']} exact Baseq3 snapshot-schedule records + 19 contracts")
+    print(f"PASS: {report['records']} exact Baseq3 snapshot-schedule records + 25 contracts")
 if __name__=='__main__':main()

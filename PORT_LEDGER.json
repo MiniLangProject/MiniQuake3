@@ -39321,14 +39321,26 @@
             "src/mq3/qcommon/md4.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "Decode / Encode",
+          "target_files": [
+            "src/mq3/qcommon/md4.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Exact little-endian word/byte conversion, including zero-length and bounds/alignment validation. Three unchanged-C records and nine native contracts pass."
         }
       ],
       "target": [
         "src/mq3/qcommon/md4.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_pure_filesystem.py"
+        "scripts/test_pure_filesystem.py",
+        "scripts/test_md4_complete.py",
+        "tests/reference/md4_complete_oracle.c",
+        "tests/md4_complete_oracle.ml",
+        "tests/md4_complete_contracts.ml"
       ]
     },
     {
@@ -43125,34 +43137,29 @@
       ],
       "symbol_mapping": [
         {
-          "original": "SV_Netchan_Encode, SV_Netchan_Decode, SV_Netchan_Process, SV_Netchan_Transmit and SV_Netchan_TransmitNextFragment",
-          "target_files": [
-            "src/mq3/server/netchan.ml"
-          ],
-          "status": "tested_exact",
-          "scope": "Server XOR codec, svc_EOF, shared netchan transmission/process, fragment continuation and deferred unencoded FIFO queue. Twelve direct records execute all five unchanged server bodies together with unchanged MSG/Huffman/netchan code and compare complete packets and state; 26 contracts cover boundaries including 4/6-byte process headers."
-        },
-        {
-          "original": "SV_Netchan_Transmit productive snapshot payload and fragment drain",
+          "original": "SV_Netchan_Decode / SV_Netchan_Encode / SV_Netchan_Process / SV_Netchan_Transmit / SV_Netchan_TransmitNextFragment / fragments",
           "target_files": [
             "src/mq3/server/netchan.ml",
+            "src/mq3/server/network_ingress.ml",
             "src/mq3/client/network_match_loop.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Seven localhost UDP client frames cover packet loss, packetdup recovery, duplicate suppression, older delta bases and cl_nodelta recovery in 48 live contracts. A shared server ingress then drives two simultaneous clients with independent sockets, QPorts, netchan/reliable/usercmd/snapshot state and mutually parsed player entities in seven source anchors plus 33 live contracts; connection establishment and long-running internet acceptance remain open."
+          "status": "tested_exact",
+          "scope": "All five original functions are native: server XOR encode/decode, process admission, svc_EOF transmit, fragment continuation and deferred unencoded FIFO queue. Twelve records execute the unchanged C bodies and compare complete state/packet transcripts; 26 native contracts and 67 productive localhost UDP ingress/match-loop contracts pass. The inventory candidate `fragments` is a comment-derived alias covered by SV_Netchan_Transmit and SV_Netchan_TransmitNextFragment."
         }
       ],
       "target": [
         "src/mq3/server/netchan.ml",
+        "src/mq3/server/network_ingress.ml",
         "src/mq3/client/network_match_loop.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_server_netchan.py",
-        "scripts/test_network_match_loop.py",
-        "tests/network_match_loop_contracts.ml",
-        "scripts/test_network_match_multi.py",
-        "tests/network_match_multi_contracts.ml"
+        "tests/reference/server_netchan_oracle.c",
+        "tests/server_netchan_oracle.ml",
+        "tests/server_netchan_contracts.ml",
+        "tests/server_network_ingress_contracts.ml",
+        "tests/network_match_loop_contracts.ml"
       ]
     },
     {
@@ -43514,6 +43521,15 @@
           ],
           "status": "tested_subset",
           "scope": "Complete MiniLang orchestration for build callback, bot send skip, last-client-command header, reliable/snapshot/download ordering, overflow clear, frame send metadata, EOF, Netchan callback and rate/snapshot/inactive/local/LAN scheduling. Message bytes are covered by six exact unchanged-C streams and scheduling by 25 contracts; real Netchan queue/encoding remains separate."
+        },
+        {
+          "original": "SV_SendClientMessages",
+          "target_files": [
+            "src/mq3/server/snapshot_schedule.ml",
+            "src/mq3/server/frame.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete per-client outer scheduler with disconnected/future filtering, exact deadlines, fragment priority, capped remaining-fragment rate timing and snapshot dispatch. Three unchanged-C differential records match exactly, 25 MiniLang contracts cover boundaries, and productive server.frame composition executes both snapshot and fragment paths."
         }
       ],
       "target": [
@@ -43521,9 +43537,11 @@
         "src/mq3/server/snapshot_runtime.ml",
         "src/mq3/server/snapshot_delta.ml",
         "src/mq3/server/reliable_commands.ml",
-        "src/mq3/server/snapshot_send.ml"
+        "src/mq3/server/snapshot_send.ml",
+        "src/mq3/server/snapshot_schedule.ml",
+        "src/mq3/server/frame.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_snapshot_build.py",
         "scripts/test_snapshot_runtime.py",
@@ -43531,6 +43549,7 @@
         "scripts/test_snapshot_parse.py",
         "scripts/test_reliable_commands.py",
         "scripts/test_snapshot_send.py",
+        "scripts/test_snapshot_schedule.py",
         "scripts/test_server_pipeline.py"
       ]
     },
@@ -43629,14 +43648,26 @@
             "src/mq3/server/world.ml"
           ],
           "status": "tested_subset"
+        },
+        {
+          "original": "SV_SectorList_f",
+          "target_files": [
+            "src/mq3/server/world.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "mq3.server.world.SV_SectorList_f",
+          "scope": "Exact 64-slot Baseq3 sector-chain diagnostic, registered as a productive local-QVM console command and emitted into the live console transcript.",
+          "status": "ported"
         }
       ],
       "target": [
-        "src/mq3/server/world.ml"
+        "src/mq3/server/world.ml",
+        "src/mq3/engine/local_qvm_match.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_server_world.py",
+        "scripts/test_sv_world_complete.py",
         "scripts/test_combat.py",
         "scripts/test_missiles.py"
       ]

@@ -3,6 +3,23 @@
 package mq3.qcommon.md4
 import mq3.compat.numeric as n
 
+// C-named little-endian conversion helpers.  The original functions accept
+// output pointers; the native facade returns the produced buffer/word array so
+// callers cannot observe partially initialized storage.
+function Encode(input,length)
+  if input==void or length<0 or (length&3)!=0 or length>len(input)*4 then return error(7820,"MD4 Encode: invalid length") end if
+  output=bytes(length,0)
+  if length>0 then for index=0 to length/4-1 n.writeU32(output,index*4,input[index]) end for end if
+  return output
+end function
+
+function Decode(input,length)
+  if input==void or typeof(input)!="bytes" or length<0 or (length&3)!=0 or length>len(input) then return error(7821,"MD4 Decode: invalid length") end if
+  output=array(length/4,0)
+  if length>0 then for index=0 to len(output)-1 output[index]=n.readI32(input,index*4) end for end if
+  return output
+end function
+
 function rol(value, amount)
   value = n.u32(value)
   return n.i32((value << amount) | (value >> (32-amount)))
@@ -24,10 +41,7 @@ function step(work,target,word,rotation,round)
 end function
 
 function transform(state,block,offset)
-  words = array(16,0)
-  for index = 0 to 15
-    words[index] = n.readI32(block,offset+index*4)
-  end for
+  words = Decode(slice(block,offset,64),64)
   work = [state[0],state[1],state[2],state[3]]
   r1 = [3,7,11,19]; r2 = [3,5,9,13]; r3 = [3,9,11,15]
   for index = 0 to 15

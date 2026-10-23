@@ -20,14 +20,14 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
-| `qcommon` | 27 | 4 | 14 | 9 | 0 |
+| `qcommon` | 27 | 5 | 13 | 9 | 0 |
 | `renderer` | 27 | 23 | 0 | 4 | 0 |
-| `server` | 11 | 2 | 9 | 0 | 0 |
+| `server` | 11 | 5 | 6 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **175** | **43** | **117** | **0** |
+| **Gesamt** | **335** | **179** | **39** | **117** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -276,7 +276,7 @@ Teil dieser Tabelle.
 | `code/qcommon/cvar.c` | `qcommon` | `partial` | 31 | 18 | 13 |
 | `code/qcommon/files.c` | `qcommon` | `ported` | 75 | 75 | 0 |
 | `code/qcommon/huffman.c` | `qcommon` | `ported` | 18 | 18 | 0 |
-| `code/qcommon/md4.c` | `qcommon` | `partial` | 8 | 6 | 2 |
+| `code/qcommon/md4.c` | `qcommon` | `ported` | 8 | 8 | 0 |
 | `code/qcommon/msg.c` | `qcommon` | `ported` | 48 | 48 | 0 |
 | `code/qcommon/net_chan.c` | `qcommon` | `partial` | 17 | 7 | 10 |
 | `code/qcommon/qcommon.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
@@ -323,10 +323,10 @@ Teil dieser Tabelle.
 | `code/server/sv_game.c` | `server` | `partial` | 24 | 8 | 16 |
 | `code/server/sv_init.c` | `server` | `partial` | 14 | 1 | 13 |
 | `code/server/sv_main.c` | `server` | `partial` | 16 | 6 | 10 |
-| `code/server/sv_net_chan.c` | `server` | `partial` | 5 | 4 | 1 |
+| `code/server/sv_net_chan.c` | `server` | `ported` | 5 | 5 | 0 |
 | `code/server/sv_rankings.c` | `server` | `ported` | 28 | 28 | 0 |
-| `code/server/sv_snapshot.c` | `server` | `partial` | 11 | 10 | 1 |
-| `code/server/sv_world.c` | `server` | `partial` | 12 | 11 | 1 |
+| `code/server/sv_snapshot.c` | `server` | `ported` | 11 | 11 | 0 |
+| `code/server/sv_world.c` | `server` | `ported` | 12 | 12 | 0 |
 | `code/splines/math_angles.h` | `splines` | `not_started` | 4 | 0 | 4 |
 | `code/splines/math_matrix.h` | `splines` | `not_started` | 5 | 0 | 5 |
 | `code/splines/math_quaternion.h` | `splines` | `not_started` | 5 | 0 | 5 |
@@ -496,7 +496,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/qcommon/cm_trace.c` (partial): `CM_DistanceFromLineSquared`, `CM_ProjectPointOntoVector`, `CM_TestBoundingBoxInCapsule`, `CM_TestCapsuleInCapsule`, `CM_TraceBoundingBoxThroughCapsule`, `CM_TraceThroughSphere`, `CM_TraceThroughVerticalCylinder`, `CM_VectorDistanceSquared`, `SquareRootFloat`, `collision`
 - `code/qcommon/cmd.c` (partial): *(Symbolinventar ergänzen)*
 - `code/qcommon/cvar.c` (partial): `Cvar_CommandCompletion`, `Cvar_FindVar`, `Cvar_InfoString`, `Cvar_InfoStringBuffer`, `Cvar_InfoString_Big`, `Cvar_SetLatched`, `Cvar_SetValue`, `Cvar_ValidateString`, `Cvar_VariableIntegerValue`, `Cvar_VariableString`, `Cvar_VariableStringBuffer`, `Cvar_VariableValue`, `generateHashValue`
-- `code/qcommon/md4.c` (partial): `Decode`, `Encode`
 - `code/qcommon/net_chan.c` (partial): `NET_AdrToString`, `NET_CompareAdr`, `NET_CompareBaseAdr`, `NET_GetLoopPacket`, `NET_IsLocalAddress`, `NET_SendLoopPacket`, `NET_StringToAdr`, `Netchan_ScramblePacket`, `Netchan_UnScramblePacket`, `datagram`
 - `code/qcommon/qcommon.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/qfiles.h` (partial): *(Symbolinventar ergänzen)*
@@ -533,9 +532,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/server/sv_game.c` (partial): `FloatAsInt`, `SV_AdjustAreaPortalState`, `SV_GEntityForSvEntity`, `SV_GameClientNum`, `SV_GameCommand`, `SV_GameDropClient`, `SV_GameError`, `SV_GamePrint`, `SV_GameSendServerCommand`, `SV_GentityNum`, `SV_GetServerinfo`, `SV_GetUsercmd`, `SV_LocateGameData`, `SV_NumForGentity`, `SV_SvEntityForGentity`, `SV_inPVSIgnorePortals`
 - `code/server/sv_init.c` (partial): `SV_BoundMaxClients`, `SV_ChangeMaxClients`, `SV_ClearServer`, `SV_CreateBaseline`, `SV_FinalMessage`, `SV_GetConfigstring`, `SV_GetUserinfo`, `SV_Init`, `SV_SetUserinfo`, `SV_Shutdown`, `SV_SpawnServer`, `SV_Startup`, `SV_TouchCGame`
 - `code/server/sv_main.c` (partial): `SVC_Info`, `SVC_RemoteCommand`, `SVC_Status`, `SV_AddServerCommand`, `SV_ExpandNewlines`, `SV_FlushRedirect`, `SV_MasterHeartbeat`, `SV_MasterShutdown`, `SV_ReplacePendingServerCommands`, `SV_SendServerCommand`
-- `code/server/sv_net_chan.c` (partial): `fragments`
-- `code/server/sv_snapshot.c` (partial): `SV_SendClientMessages`
-- `code/server/sv_world.c` (partial): `SV_SectorList_f`
 - `code/splines/math_angles.h` (not_started): `Zero`, `angles_t`, `set`, `vec3_p`
 - `code/splines/math_matrix.h` (not_started): `Identity`, `InverseMultiply`, `OrthoNormalize`, `SkewSymmetric`, `mat3_t`
 - `code/splines/math_quaternion.h` (not_started): `Length`, `Normalize`, `quat_t`, `set`, `vec4`

@@ -206,6 +206,7 @@ function messageMode3Command(commandState,context) runtime=syncConsoleRuntime(co
 function messageMode4Command(commandState,context) runtime=syncConsoleRuntime(context);if runtime==void then return false end if;result=clientConsole.Con_MessageMode4_f(runtime);syncConsoleInputCatcher(context);return result end function
 function clearConsoleCommand(commandState,context) runtime=syncConsoleRuntime(context);if runtime==void then return false end if;return clientConsole.Con_Clear_f(runtime) end function
 function dumpConsoleCommand(commandState,context) runtime=syncConsoleRuntime(context);if runtime==void or commands.argc(commandState)!=2 then return false end if;result=clientConsole.Con_Dump_f(runtime,commands.argv(commandState,1));return not (result is error) end function
+function sectorListCommand(commandState,context) return serverWorld.SV_SectorList_f(context.spatialScene,emitPrint,context)==64 end function
 function consoleCrosshairPlayer(context) return nativeCgameMain.crosshairPlayer(context.nativeMain) end function
 function consoleLastAttacker(context) return nativeCgameMain.lastAttacker(context.nativeMain) end function
 
@@ -687,6 +688,7 @@ function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
   if not commands.addContextCommand(context.commandState,"messagemode4",messageMode4Command,context) then return fail("messagemode4 command already registered") end if
   if not commands.addContextCommand(context.commandState,"clear",clearConsoleCommand,context) then return fail("clear command already registered") end if
   if not commands.addContextCommand(context.commandState,"condump",dumpConsoleCommand,context) then return fail("condump command already registered") end if
+  if not commands.addContextCommand(context.commandState,"sectorlist",sectorListCommand,context) then return fail("sectorlist command already registered") end if
   context.aasMovement=aasClientMovement.services(context);context.aasMovement.traceFn=aasMovementTrace;context.aasMovement.pointContentsFn=aasPointContents;context.aasMovement.pointAreaFn=aasMovementPointArea;context.aasMovement.pointPresenceFn=aasMovementPointPresence;context.aasMovement.areaContentsFn=aasMovementAreaContents;context.aasMovement.traceAreasFn=aasMovementTraceAreas
   context.elementaryActions=elementaryActions.create(MAX_CLIENTS,botClientCommand,context)
   context.aiCharacters=aiCharacters.create(MAX_CLIENTS,context,botCharacterRead)

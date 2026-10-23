@@ -58,8 +58,21 @@ def main():
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/server_netchan_contracts.ml','--output','server_netchan_contracts.exe'],cwd=ROOT,check=True)
     contracts=run([ROOT/'build/server_netchan_contracts.exe'],ROOT/'build',log=out/'contracts.log').strip()
     if contracts!='PASS: 26 server-netchan contracts':raise RuntimeError(contracts)
-    sources=[hsrc,msrc,nsrc,ssrc,harness,ROOT/'src/mq3/server/netchan.ml',ROOT/'tests/server_netchan_oracle.ml',ROOT/'tests/server_netchan_contracts.ml']
-    report={'passed':True,'records':len(native.splitlines()),'contracts':26,'functions':SERVER,'scope':'Exact server encode/decode bytes, netchan packet bytes, svc_EOF, fragment drain and deferred unencoded FIFO messages.','remaining':'NET_SendPacket remains the UDP host boundary.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in sources}}
+    # Verify both productive UDP boundaries use this same native module. Client
+    # packets enter via ServerPacketEvent/ServerClientMessage; snapshots leave
+    # through the live match loop and its server netchan adapter.
+    productive = [
+        ('tests/server_network_ingress_contracts.ml', 'server_network_ingress_contracts.exe',
+         'PASS: 19 server network-ingress contracts'),
+        ('tests/network_match_loop_contracts.ml', 'network_match_loop_contracts.exe',
+         'PASS: 48 live network match-loop contracts'),
+    ]
+    for source, executable, expected in productive:
+        subprocess.run([sys.executable,ROOT/'scripts/build.py','--source',source,'--output',executable],cwd=ROOT,check=True)
+        value=run([ROOT/'build'/executable],ROOT/'build',log=out/(executable+'.log')).strip()
+        if value!=expected:raise RuntimeError(value)
+    sources=[hsrc,msrc,nsrc,ssrc,harness,ROOT/'src/mq3/server/netchan.ml',ROOT/'tests/server_netchan_oracle.ml',ROOT/'tests/server_netchan_contracts.ml',ROOT/'src/mq3/server/network_ingress.ml',ROOT/'src/mq3/client/network_match_loop.ml',ROOT/'tests/server_network_ingress_contracts.ml',ROOT/'tests/network_match_loop_contracts.ml']
+    report={'passed':True,'unchanged_c_records':len(native.splitlines()),'native_contracts':26,'productive_contracts':67,'functions':SERVER,'scope':'All five sv_net_chan.c functions: exact server encode/decode bytes, netchan packet bytes, svc_EOF, fragment drain and deferred unencoded FIFO messages; productive localhost UDP ingress and outbound snapshot loops use the same native server netchan.','remaining':'NET_SendPacket intentionally remains the platform UDP host boundary.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in sources}}
     (out/'result.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
-    print(f'PASS: {report["records"]} exact Baseq3 server-netchan records + 26 contracts')
+    print(f'PASS: 5/5 sv_net_chan functions, {report["unchanged_c_records"]} unchanged-C records + 26 native + 67 productive contracts')
 if __name__=='__main__':main()
