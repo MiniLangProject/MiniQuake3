@@ -33,13 +33,13 @@ const K_MWHEELUP=184
 
 struct Field cursor scroll widthInChars text end struct
 struct Services context commandFn reliableFn printFn completeFn clipboardFn scrollFn end struct
-struct State console chat history nextHistoryLine historyLine overstrike catcher connectionState chatTeam chatPlayerNum services end struct
+struct State console chat history nextHistoryLine historyLine overstrike catcher connectionState chatTeam chatPlayerNum services consoleRuntime end struct
 
 function field(width) return Field(0,0,width,"") end function
 function services(context) return Services(context,void,void,void,void,void,void) end function
 function create(width,host)
   history=[];for index=0 to COMMAND_HISTORY-1 history=history+[field(width)] end for
-  return State(field(width),field(30),history,0,0,false,0,0,false,-1,host)
+  return State(field(width),field(30),history,0,0,false,0,0,false,-1,host,void)
 end function
 function toggleConsole(state)
   if state==void then return false end if

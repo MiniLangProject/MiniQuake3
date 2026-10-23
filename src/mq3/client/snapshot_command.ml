@@ -42,6 +42,8 @@ struct State
   realtime
   demoWaiting
   newSnapshots
+  shownetLevel
+  shownetLines
 end struct
 
 function emptySnapshot()
@@ -66,11 +68,17 @@ end function
 function create()
   shots=array(PACKET_BACKUP,void);packets=array(PACKET_BACKUP,void)
   for index=0 to PACKET_BACKUP-1 shots[index]=emptySnapshot();packets[index]=OutPacket(0,0) end for
-  return State(snapshotEntities.createState(),shots,emptySnapshot(),packets,0,0,0,0,true,false)
+  return State(snapshotEntities.createState(),shots,emptySnapshot(),packets,0,0,0,0,true,false,0,[])
+end function
+
+function pad3(value) text=str(value);while len(bytes(text))<3 text=" "+text end while;return text end function
+function shownet(state,msg,text)
+  if state.shownetLevel>=2 then state.shownetLines=state.shownetLines+[pad3(msg.readcount-1)+":"+text] end if
+  return void
 end function
 
 function oldFrameFor(state,newSnapshot)
-  if newSnapshot.deltaNum<=0 then newSnapshot.valid=true;state.demoWaiting=false;return void end if
+  if newSnapshot.deltaNum<=0 then newSnapshot.valid=true;return void end if
   old=state.snapshots[newSnapshot.deltaNum&PACKET_MASK]
   if old.valid and old.messageNum==newSnapshot.deltaNum and state.entityState.parseEntitiesNum-old.parseEntitiesNum<=MAX_PARSE_ENTITIES-128 then newSnapshot.valid=true end if
   return old
@@ -83,6 +91,23 @@ function calculatePing(state,snapshot)
     if snapshot.playerState.commandTime>=packet.serverTime then snapshot.ping=state.realtime-packet.realtime;return void end if
     index=index+1
   end while
+  return void
+end function
+
+// Parse packet entities against an isolated copy.  A malformed packet must not
+// advance or overwrite the live parse-entity ring before its error reaches the
+// outer CL_ParseServerMessage dispatcher.
+function copyEntityState(source)
+  result=snapshotEntities.createState();result.parseEntitiesNum=source.parseEntitiesNum
+  result.shownetLevel=source.shownetLevel;result.shownetLines=source.shownetLines
+  for index=0 to snapshotEntities.MAX_PARSE_ENTITIES-1 result.parseEntities[index]=source.parseEntities[index] end for
+  for index=0 to snapshotEntities.MAX_GENTITIES-1 result.entityBaselines[index]=source.entityBaselines[index] end for
+  return result
+end function
+
+function commitEntityState(target,source)
+  target.parseEntities=source.parseEntities;target.parseEntitiesNum=source.parseEntitiesNum
+  target.shownetLevel=source.shownetLevel;target.shownetLines=source.shownetLines
   return void
 end function
 
@@ -101,8 +126,17 @@ function parseSnapshot(state,msg)
   areaData=message.readData(msg,areaLength);fresh.areaMask=bytes(MAX_MAP_AREA_BYTES,0)
   if areaLength>0 then for index=0 to areaLength-1 fresh.areaMask[index]=areaData[index] end for end if
   if msg.readcount>msg.cursize then return error(6872,"snapshot command: truncated area mask") end if
-  if old==void then fresh.playerState=delta.readDeltaPlayerstate(msg,void) else fresh.playerState=delta.readDeltaPlayerstate(msg,old.playerState) end if
-  snapshotEntities.parsePacketEntities(state.entityState,msg,old,fresh)
+  shownet(state,msg,"playerstate")
+  if old==void then fresh.playerState=try(delta.readDeltaPlayerstate(msg,void)) else fresh.playerState=try(delta.readDeltaPlayerstate(msg,old.playerState)) end if
+  if fresh.playerState is error then return fresh.playerState end if
+  if msg.readcount>msg.cursize then return error(6873,"snapshot command: truncated playerstate") end if
+  shownet(state,msg,"packet entities")
+  entityWork=copyEntityState(state.entityState);entityWork.shownetLevel=state.shownetLevel;entityWork.shownetLines=[]
+  parsedEntities=try(snapshotEntities.parsePacketEntities(entityWork,msg,old,fresh))
+  if parsedEntities is error then return parsedEntities end if
+  commitEntityState(state.entityState,entityWork)
+  for each line in entityWork.shownetLines state.shownetLines=state.shownetLines+[line] end for
+  if fresh.deltaNum<=0 then state.demoWaiting=false end if
   if not fresh.valid then return fresh end if
   oldMessageNum=state.snap.messageNum+1
   if fresh.messageNum-oldMessageNum>=PACKET_BACKUP then oldMessageNum=fresh.messageNum-(PACKET_BACKUP-1) end if

@@ -23,11 +23,47 @@ struct State
   gamestateFn
   downloadFn
   context
+  shownetLevel
+  shownetLines
+  shownetFn
+  shownetContext
 end struct
 
 function create(snapshotState)
   if snapshotState==void then snapshotState=snapshotCommand.create() end if
-  return State(snapshotState,0,0,0,array(MAX_RELIABLE_COMMANDS,""),void,void,void)
+  return State(snapshotState,0,0,0,array(MAX_RELIABLE_COMMANDS,""),void,void,void,0,[],void,void)
+end function
+
+function pad3(value)
+  text=str(value)
+  while len(bytes(text))<3 text=" "+text end while
+  return text
+end function
+
+function shownet(state,msg,text)
+  if state.shownetLevel<2 then return false end if
+  line=pad3(msg.readcount-1)+":"+text
+  state.shownetLines=state.shownetLines+[line]
+  if state.shownetFn!=void then state.shownetFn(state.shownetContext,line) end if
+  return true
+end function
+
+function emitShownet(state,line)
+  state.shownetLines=state.shownetLines+[line]
+  if state.shownetFn!=void then state.shownetFn(state.shownetContext,line) end if
+  return void
+end function
+
+function serviceName(command)
+  if command==SVC_BAD then return "svc_bad" end if
+  if command==SVC_NOP then return "svc_nop" end if
+  if command==SVC_GAMESTATE then return "svc_gamestate" end if
+  if command==3 then return "svc_configstring" end if
+  if command==4 then return "svc_baseline" end if
+  if command==SVC_SERVER_COMMAND then return "svc_serverCommand" end if
+  if command==SVC_DOWNLOAD then return "svc_download" end if
+  if command==SVC_SNAPSHOT then return "svc_snapshot" end if
+  return "BAD CMD "+str(command)
 end function
 
 function parseCommandString(state,msg)
@@ -40,20 +76,33 @@ end function
 
 function parseServerMessage(state,msg)
   if state==void or msg==void then return error(6891,"server message: missing state") end if
+  if state.shownetLevel==1 then
+    line=str(msg.cursize);state.shownetLines=state.shownetLines+[line]
+    if state.shownetFn!=void then state.shownetFn(state.shownetContext,line) end if
+  else if state.shownetLevel>=2 then
+    state.shownetLines=state.shownetLines+["------------------"]
+    if state.shownetFn!=void then state.shownetFn(state.shownetContext,"------------------") end if
+  end if
   message.bitstream(msg);state.reliableAcknowledge=message.readI32(msg)
   if state.reliableAcknowledge<state.reliableSequence-MAX_RELIABLE_COMMANDS then state.reliableAcknowledge=state.reliableSequence end if
   commands=0;snapshots=0
   while true
     if msg.readcount>msg.cursize then return error(6892,"server message: read past end") end if
     command=message.readU8(msg)
-    if command==SVC_EOF then break end if
+    if command==SVC_EOF then shownet(state,msg,"END OF MESSAGE");break end if
+    if state.shownetLevel>=2 then shownet(state,msg,serviceName(command)) end if
     if command==SVC_NOP then
       commands=commands
     else if command==SVC_SERVER_COMMAND then
       if parseCommandString(state,msg) then commands=commands+1 end if
     else if command==SVC_SNAPSHOT then
       state.snapshotState.serverCommandSequence=state.serverCommandSequence
-      snapshotCommand.parseSnapshot(state.snapshotState,msg);snapshots=snapshots+1
+      state.snapshotState.shownetLevel=state.shownetLevel;state.snapshotState.shownetLines=[]
+      parsed=try(snapshotCommand.parseSnapshot(state.snapshotState,msg))
+      if parsed is error then return parsed end if
+      snapshots=snapshots+1
+      for each line in state.snapshotState.shownetLines emitShownet(state,line) end for
+      if state.shownetLevel==3 and parsed.valid then emitShownet(state,"   snapshot:"+str(parsed.messageNum)+"  delta:"+str(parsed.deltaNum)+"  ping:"+str(parsed.ping)) end if
     else if command==SVC_GAMESTATE and state.gamestateFn!=void then
       state.gamestateFn(state,msg)
     else if command==SVC_DOWNLOAD and state.downloadFn!=void then

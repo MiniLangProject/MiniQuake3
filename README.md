@@ -28,13 +28,15 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **172 sind
-vollständig portiert, 46 teilweise portiert und 117 noch nicht begonnen**.
-Zuletzt wurden die vollständigen Originaloberflächen von `cl_cgame.c`,
-`cl_keys.c`, `cl_ui.c` und `snd_mem.c` geschlossen. Cgame- und UI-QVM-
-Lifecycle, sämtliche Client-Key-/Field-/Bindingpfade, LAN-/UI-Dienste sowie
-RIFF-, Cache- und Resamplingpfade sind über native, Retail- und unveränderte-C-
-Verträge abgesichert.
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **175 sind
+vollständig portiert, 43 teilweise portiert und 117 noch nicht begonnen**.
+Zuletzt wurden `cl_console.c`, `cl_parse.c` und `cl_scrn.c` geschlossen. Damit
+sind sämtliche 15 Client-`.c`-Laufzeitdateien vollständig nativ zugeordnet;
+offen sind dort nur noch vier Header. Konsole und Netzwerkparser sind in den
+produktiven Spielpfad eingebunden. Die native `cl_scrn.c`-Fassade ist durch
+unveränderte-C-, Retail- und native Verträge gegen dieselben produktiven
+Renderer- und UI-Bausteine abgesichert; der Windows-Frame setzt diese Bausteine
+weiterhin direkt zusammen.
 
 Der aktuelle Stand ist im [AAS-/Botlib-Bericht](docs/AAS_RUNTIME.md) und im
 [vollständigen AI-Trap-Audit 500–577](docs/BOTLIB_AI_TRAP_AUDIT.md) dokumentiert.

@@ -13862,7 +13862,7 @@
           "scope": "Bounded RoQ parsing, YUV codebooks, 2/4/8-pixel VQ, skip/subdivide/motion, timing, native RGBA presentation and stereo PCM output. Retail idlogo reaches exact EOF after all 210 frames; shader videoMap stages bind silent looping 256x256 scratch textures. JPEG and packet chunks remain open."
         },
         {
-          "original": "Complete cl_cin.c cinematic and RoQ surface (38/38 symbols)",
+          "original": "CIN_CloseAllVideos / CIN_DrawCinematic / CIN_HandleForVideo / CIN_PlayCinematic / CIN_RunCinematic / CIN_SetExtents / CIN_SetLooping / CIN_StopCinematic / CIN_UploadCinematic / CL_PlayCinematic_f / ROQ_GenYUVTables / RllDecodeMonoToMono / RllDecodeMonoToStereo / RllDecodeStereoToMono / RllDecodeStereoToStereo / RllSetupTable / RoQFetchInterlaced / RoQInterrupt / RoQPrepMcomp / RoQReset / RoQShutdown / RoQ_init / SCR_DrawCinematic / SCR_RunCinematic / SCR_StopCinematic / blit2_32 / blit4_32 / blit8_32 / blitVQQuad32fs / decodeCodeBook / initRoQ / move4_32 / move8_32 / readQuadInfo / recurseQuad / setupQuad / yuv_to_rgb / yuv_to_rgb24",
           "target_files": [
             "src/mq3/client/cl_cin_runtime.ml",
             "src/mq3/client/cinematic_runtime.ml",
@@ -13935,18 +13935,33 @@
           ],
           "status": "ported",
           "scope": "The productive Windows QVM path hard-toggles the console catcher, owns messagemode/messagemode2 commands and draws console, say, team-say and tell fields with the retail bigchars atlas, horizontal field scrolling and blinking cursor. Full transcript storage, notify lines and animated console fraction remain open."
+        },
+        {
+          "original": "CL_ConsolePrint / Con_Bottom / Con_CheckResize / Con_ClearNotify / Con_Clear_f / Con_Close / Con_DrawConsole / Con_DrawInput / Con_DrawNotify / Con_DrawSolidConsole / Con_Dump_f / Con_Init / Con_Linefeed / Con_MessageMode2_f / Con_MessageMode3_f / Con_MessageMode4_f / Con_MessageMode_f / Con_PageDown / Con_PageUp / Con_RunConsole / Con_ToggleConsole_f / Con_Top",
+          "target_files": [
+            "src/mq3/client/cl_console.ml"
+          ],
+          "status": "ported",
+          "scope": "All 22 original symbols implement the colored circular transcript, wrapping and resize preservation, notify expiry/suppression, dump and scrolling, animated solid console and all four message modes. Six unchanged-C records, 33 native contracts, nine productive wiring contracts and a productive Retail-QVM console probe using the real two-stage Retail console shader pass."
         }
       ],
       "target": [
         "src/mq3/client/console_input.ml",
         "src/mq3/client/console_input_display.ml",
         "src/mq3/client/qvm_preview_app.ml",
-        "src/mq3/engine/local_qvm_match.ml"
+        "src/mq3/engine/local_qvm_match.ml",
+        "src/mq3/client/cl_console.ml",
+        "src/mq3/client/baseq3_console_background.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_console_input.py",
-        "tests/console_input_display_contracts.ml"
+        "tests/console_input_display_contracts.ml",
+        "scripts/test_cl_console_complete.py",
+        "tests/reference/cl_console_complete_oracle.c",
+        "tests/cl_console_complete_oracle.ml",
+        "tests/cl_console_complete_contracts.ml",
+        "tests/cl_console_retail_probe.ml"
       ]
     },
     {
@@ -15679,31 +15694,31 @@
       ],
       "symbol_mapping": [
         {
-          "source": "CL_Netchan_Encode",
+          "original": "CL_Netchan_Encode",
           "target": "client.netchan.encode",
           "status": "ported",
           "scope": "Protocol-68 XOR encoding from the three client header longs and acknowledged 64-slot server-command ring; msg read state restored."
         },
         {
-          "source": "CL_Netchan_Decode",
+          "original": "CL_Netchan_Decode",
           "target": "client.netchan.decode",
           "status": "ported",
           "scope": "Protocol-68 XOR decoding from reliable acknowledgement, packet sequence, challenge and acknowledged client-command ring."
         },
         {
-          "source": "CL_Netchan_Transmit",
+          "original": "CL_Netchan_Transmit",
           "target": "client.netchan.transmit",
           "status": "ported",
           "scope": "Appends clc_EOF, encodes, and delegates complete bytes to qcommon.netchan."
         },
         {
-          "source": "CL_Netchan_TransmitNextFragment",
+          "original": "CL_Netchan_TransmitNextFragment",
           "target": "client.netchan.transmitNextFragment",
           "status": "ported",
           "scope": "Delegates pending fragment transmission to the verified qcommon channel."
         },
         {
-          "source": "CL_Netchan_Process",
+          "original": "CL_Netchan_Process",
           "target": "client.netchan.process",
           "status": "ported",
           "scope": "Processes through qcommon.netchan, decodes accepted messages and accounts decoded cursize."
@@ -15803,6 +15818,14 @@
           ],
           "status": "tested_exact",
           "scope": "Server ID, demo gate, cheat-state reset, loaded/referenced pure pak lists, ordered system cvar propagation, case-insensitive fs_game handling and Cvar_VariableValue pure-state conversion. Five exact transitions execute the unchanged Baseq3 body plus unchanged Info helpers; 22 MiniLang contracts pass."
+        },
+        {
+          "original": "CL_DeltaEntity / CL_ParseCommandString / CL_ParseDownload / CL_ParseGamestate / CL_ParsePacketEntities / CL_ParseServerMessage / CL_ParseSnapshot / CL_SystemInfoChanged / SHOWNET",
+          "target_files": [
+            "src/mq3/client/cl_parse_runtime.ml"
+          ],
+          "status": "ported",
+          "scope": "All nine original symbols are exposed over the productive snapshot, server-message, gamestate, download and systeminfo paths. SHOWNET levels 1/2/3 execute in the live dispatcher. Eighteen unchanged-C records, 20 native contracts, 21 productive UDP contracts and a Retail gamestate probe pass."
         }
       ],
       "target": [
@@ -15812,9 +15835,10 @@
         "src/mq3/client/download.ml",
         "src/mq3/client/gamestate.ml",
         "src/mq3/client/protocol_runtime.ml",
-        "src/mq3/client/system_info.ml"
+        "src/mq3/client/system_info.ml",
+        "src/mq3/client/cl_parse_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_snapshot_parse.py",
         "scripts/test_snapshot_command.py",
@@ -15825,7 +15849,12 @@
         "scripts/test_system_info.py",
         "tests/reference/system_info_oracle.c",
         "tests/system_info_oracle.ml",
-        "tests/system_info_contracts.ml"
+        "tests/system_info_contracts.ml",
+        "scripts/test_cl_parse_complete.py",
+        "tests/reference/cl_parse_shownet_oracle.c",
+        "tests/cl_parse_shownet_oracle.ml",
+        "tests/cl_parse_complete_contracts.ml",
+        "tests/cl_parse_retail_probe.ml"
       ]
     },
     {
@@ -15861,18 +15890,32 @@
           ],
           "status": "tested_exact",
           "scope": "The productive unchanged ui.qvm host reproduces the disconnected, connecting/challenging/connected, loading/primed, active and cinematic draw matrix, fullscreen suppression and KEYCATCH_UI overlay refresh. The exact client-state ABI plus 20 screen lifecycle contracts pass."
+        },
+        {
+          "original": "SCR_AdjustFrom640 / SCR_DebugGraph / SCR_DrawBigString / SCR_DrawBigStringColor / SCR_DrawChar / SCR_DrawDebugGraph / SCR_DrawDemoRecording / SCR_DrawNamedPic / SCR_DrawPic / SCR_DrawScreenField / SCR_DrawSmallChar / SCR_DrawSmallStringExt / SCR_DrawStringExt / SCR_FillRect / SCR_GetBigStringWidth / SCR_Init / SCR_Strlen / SCR_UpdateScreen",
+          "target_files": [
+            "src/mq3/client/cl_scrn_runtime.ml"
+          ],
+          "status": "ported",
+          "scope": "All 18 original symbols are implemented in a native facade over the renderer command queue and original-UI lifecycle: independent 640 scaling, named pictures and fills, atlas strings and colors, demo recording, the circular debug graph, complete connection-state screen composition, widescreen clear, console ordering, stereo frames and recursion protection. Eight unchanged-C records, 35 native contracts and seven Retail contracts producing 60 quads from three real textures pass. The Windows top-level frame currently composes the same productive renderer and UI components directly instead of calling this facade as its dispatcher."
         }
       ],
       "target": [
         "src/mq3/client/ui_host_lifecycle.ml",
-        "src/mq3/engine/local_qvm_ui.ml"
+        "src/mq3/engine/local_qvm_ui.ml",
+        "src/mq3/client/cl_scrn_runtime.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_ui_host_lifecycle.py",
         "tests/reference/ui_host_lifecycle_oracle.c",
         "tests/ui_host_lifecycle_oracle.ml",
-        "tests/ui_host_lifecycle_contracts.ml"
+        "tests/ui_host_lifecycle_contracts.ml",
+        "scripts/test_cl_scrn_complete.py",
+        "tests/reference/cl_scrn_oracle.c",
+        "tests/cl_scrn_oracle.ml",
+        "tests/cl_scrn_complete_contracts.ml",
+        "tests/cl_scrn_retail_probe.ml"
       ]
     },
     {
@@ -16059,7 +16102,7 @@
           "scope": "IMA ADPCM block decoding is connected to the productive channel painter and covered by exact native differential records."
         },
         {
-          "original": "Complete original source surface",
+          "original": "S_AdpcmEncode / S_AdpcmEncodeSound / S_AdpcmGetSamples / memory",
           "target_files": [
             "src/mq3/audio/snd_adpcm_runtime.ml"
           ],
@@ -16415,7 +16458,7 @@
           "scope": "Daubechies inverse-wavelet and MuLaw decoding are connected to the productive channel painter and covered by exact native differential records."
         },
         {
-          "original": "Complete original source surface",
+          "original": "MuLawDecode / MuLawEncode / NXPutc / daub4 / decodeMuLaw / decodeWavelet / encodeMuLaw / encodeWavelet / wt1",
           "target_files": [
             "src/mq3/audio/snd_wavelet_runtime.ml"
           ],

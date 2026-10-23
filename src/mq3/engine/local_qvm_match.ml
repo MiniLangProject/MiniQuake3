@@ -121,6 +121,7 @@ import mq3.client.cgame_marks as nativeCgameMarks
 import mq3.client.cgame_players as nativeCgamePlayers
 import mq3.client.key_bindings_config as bindingConfig
 import mq3.client.console_input as consoleInput
+import mq3.client.cl_console as clientConsole
 import mq3.client.ui_lan_browser as uiLan
 import mq3.client.ui_lan_cache as uiLanCache
 import mq3.client.ui_lan_ingress as uiLanIngress
@@ -171,7 +172,7 @@ function restartVm(machineRuntime,slot) return runtime.restart(machineRuntime,sl
 function freeVm(machineRuntime,slot) return runtime.free(machineRuntime,slot) end function
 function loadClientVm(machineRuntime,name,syscall,interpret) return runtime.load(machineRuntime,name,syscall) end function
 function milliseconds(context) return context.now end function
-function emitPrint(context,text) context.prints=context.prints+[text];return void end function
+function emitPrint(context,text) context.prints=context.prints+[text];if context.clientTextInput!=void and context.clientTextInput.consoleRuntime!=void then context.clientTextInput.consoleRuntime.realtime=context.now;clientConsole.CL_ConsolePrint(context.clientTextInput.consoleRuntime,text,640) end if;return void end function
 function emitError(context,text) context.errors=context.errors+[text];return void end function
 function consoleCommand(context,when,text)
   context.console=context.console+[[when,text]]
@@ -188,9 +189,25 @@ end function
 function consoleInputCommand(context,text) return commands.addText(context.commandState,text) end function
 function consoleInputReliable(context,text) sendClientCommand(context,text);return void end function
 function syncConsoleInputCatcher(context) context.uiKeyCatcher=context.clientTextInput.catcher;cgameKeys.setCatcher(context.cgameKeys,context.clientTextInput.catcher);return void end function
-function toggleConsoleCommand(commandState,context) consoleInput.toggleConsole(context.clientTextInput);syncConsoleInputCatcher(context);return true end function
-function messageModeCommand(commandState,context) consoleInput.beginMessage(context.clientTextInput,false,-1);syncConsoleInputCatcher(context);return true end function
-function messageMode2Command(commandState,context) consoleInput.beginMessage(context.clientTextInput,true,-1);syncConsoleInputCatcher(context);return true end function
+function syncConsoleRuntime(context) runtime=context.clientTextInput.consoleRuntime;if runtime!=void then runtime.realtime=context.now;context.clientTextInput.connectionState=context.uiClient.connState;runtime.connectionState=context.clientTextInput.connectionState;runtime.keyCatchers=context.clientTextInput.catcher;runtime.uiOrCgameCatcher=runtime.keyCatchers&(clientConsole.KEYCATCH_UI|clientConsole.KEYCATCH_CGAME);runtime.consoleInput.catcher=runtime.keyCatchers end if;return runtime end function
+function consoleScroll(context,operation,count)
+  runtime=syncConsoleRuntime(context);if runtime==void then return false end if;if count<1 then count=1 end if
+  if operation=="pageup" then for index=1 to count clientConsole.Con_PageUp(runtime) end for;return true end if
+  if operation=="pagedown" then for index=1 to count clientConsole.Con_PageDown(runtime) end for;return true end if
+  if operation=="top" then clientConsole.Con_Top(runtime);return true end if
+  if operation=="bottom" then clientConsole.Con_Bottom(runtime);return true end if
+  return false
+end function
+function consoleStartDemoLoop(context) return commands.executeText(context.commandState,commands.EXEC_APPEND,"d1\n") end function
+function toggleConsoleCommand(commandState,context) runtime=syncConsoleRuntime(context);if runtime==void then consoleInput.toggleConsole(context.clientTextInput) else clientConsole.Con_ToggleConsole_f(runtime) end if;syncConsoleInputCatcher(context);return true end function
+function messageModeCommand(commandState,context) runtime=syncConsoleRuntime(context);if runtime==void then consoleInput.beginMessage(context.clientTextInput,false,-1) else clientConsole.Con_MessageMode_f(runtime) end if;syncConsoleInputCatcher(context);return true end function
+function messageMode2Command(commandState,context) runtime=syncConsoleRuntime(context);if runtime==void then consoleInput.beginMessage(context.clientTextInput,true,-1) else clientConsole.Con_MessageMode2_f(runtime) end if;syncConsoleInputCatcher(context);return true end function
+function messageMode3Command(commandState,context) runtime=syncConsoleRuntime(context);if runtime==void then return false end if;result=clientConsole.Con_MessageMode3_f(runtime);syncConsoleInputCatcher(context);return result end function
+function messageMode4Command(commandState,context) runtime=syncConsoleRuntime(context);if runtime==void then return false end if;result=clientConsole.Con_MessageMode4_f(runtime);syncConsoleInputCatcher(context);return result end function
+function clearConsoleCommand(commandState,context) runtime=syncConsoleRuntime(context);if runtime==void then return false end if;return clientConsole.Con_Clear_f(runtime) end function
+function dumpConsoleCommand(commandState,context) runtime=syncConsoleRuntime(context);if runtime==void or commands.argc(commandState)!=2 then return false end if;result=clientConsole.Con_Dump_f(runtime,commands.argv(commandState,1));return not (result is error) end function
+function consoleCrosshairPlayer(context) return nativeCgameMain.crosshairPlayer(context.nativeMain) end function
+function consoleLastAttacker(context) return nativeCgameMain.lastAttacker(context.nativeMain) end function
 
 function openFile(context,name,mode)
   // The initial local match is read-only. Baseq3 treats a failed optional log
@@ -660,11 +677,16 @@ function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
   commands.initCommands(context.commandState);installed=cvarCommands.install(registry,context.commandState);if installed is error then return installed end if
   bindingState=bindingConfig.create(context.cgameKeys);bindingState.printFn=emitPrint;bindingState.printContext=context
   installed=bindingConfig.install(bindingState,context.commandState);if installed is error then return installed end if
-  textServices=consoleInput.services(context);textServices.commandFn=consoleInputCommand;textServices.reliableFn=consoleInputReliable;textServices.printFn=emitPrint
+  textServices=consoleInput.services(context);textServices.commandFn=consoleInputCommand;textServices.reliableFn=consoleInputReliable;textServices.printFn=emitPrint;textServices.scrollFn=consoleScroll
   context.clientTextInput=consoleInput.create(78,textServices)
+  consoleServices=clientConsole.services(context);consoleServices.startDemoLoopFn=consoleStartDemoLoop;consoleServices.crosshairPlayerFn=consoleCrosshairPlayer;consoleServices.lastAttackerFn=consoleLastAttacker;clientConsole.Con_Init(clientConsole.create(context.clientTextInput,consoleServices),640)
   if not commands.addContextCommand(context.commandState,"toggleconsole",toggleConsoleCommand,context) then return fail("toggleconsole command already registered") end if
   if not commands.addContextCommand(context.commandState,"messagemode",messageModeCommand,context) then return fail("messagemode command already registered") end if
   if not commands.addContextCommand(context.commandState,"messagemode2",messageMode2Command,context) then return fail("messagemode2 command already registered") end if
+  if not commands.addContextCommand(context.commandState,"messagemode3",messageMode3Command,context) then return fail("messagemode3 command already registered") end if
+  if not commands.addContextCommand(context.commandState,"messagemode4",messageMode4Command,context) then return fail("messagemode4 command already registered") end if
+  if not commands.addContextCommand(context.commandState,"clear",clearConsoleCommand,context) then return fail("clear command already registered") end if
+  if not commands.addContextCommand(context.commandState,"condump",dumpConsoleCommand,context) then return fail("condump command already registered") end if
   context.aasMovement=aasClientMovement.services(context);context.aasMovement.traceFn=aasMovementTrace;context.aasMovement.pointContentsFn=aasPointContents;context.aasMovement.pointAreaFn=aasMovementPointArea;context.aasMovement.pointPresenceFn=aasMovementPointPresence;context.aasMovement.areaContentsFn=aasMovementAreaContents;context.aasMovement.traceAreasFn=aasMovementTraceAreas
   context.elementaryActions=elementaryActions.create(MAX_CLIENTS,botClientCommand,context)
   context.aiCharacters=aiCharacters.create(MAX_CLIENTS,context,botCharacterRead)
@@ -1298,6 +1320,13 @@ function clientTextChar(value,ch)
   handled=consoleInput.caughtChar(value.context.clientTextInput,ch);cgameKeys.setCatcher(value.context.cgameKeys,value.context.clientTextInput.catcher);return handled
 end function
 function clientTextState(value) if value==void or value.context==void then return void end if;return value.context.clientTextInput end function
+function clientConsoleState(value) if value==void or value.context==void or value.context.clientTextInput==void then return void end if;return value.context.clientTextInput.consoleRuntime end function
+function updateClientConsole(value,now,frameMsec)
+  runtime=clientConsoleState(value);if runtime==void then return false end if;runtime.realtime=now;runtime.realFrametime=frameMsec;value.context.clientTextInput.connectionState=value.context.uiClient.connState;runtime.connectionState=value.context.clientTextInput.connectionState;runtime.keyCatchers=value.context.clientTextInput.catcher;runtime.uiOrCgameCatcher=runtime.keyCatchers&(clientConsole.KEYCATCH_UI|clientConsole.KEYCATCH_CGAME);clientConsole.Con_RunConsole(runtime);return true
+end function
+function clientConsoleView(value,now,frameMsec,version)
+  if not updateClientConsole(value,now,frameMsec) then return void end if;return clientConsole.Con_DrawConsole(clientConsoleState(value),640,640,480,version)
+end function
 function toggleClientConsole(value) if value==void or value.context==void then return false end if;return toggleConsoleCommand(value.context.commandState,value.context) end function
 function beginClientMessage(value,team,playerNum) if value==void or value.context==void then return false end if;consoleInput.beginMessage(value.context.clientTextInput,team,playerNum);syncConsoleInputCatcher(value.context);return true end function
 function uiUnique(values,value)

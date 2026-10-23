@@ -2609,3 +2609,50 @@ grün. Der Hauptbuild hat SHA-256
 Der Retail-Match läuft acht Frames mit 131 Entities, 13 Snapshot-Entities,
 2.345 texturierten Dreiecken, 17 Renderpässen, 26 Sounds und null nicht
 unterstützten Entities.
+
+## 2026-10-23: Sämtliche Client-C-Laufzeitdateien geschlossen
+
+Die drei letzten partiellen Client-C-Dateien sind vollständig zugeordnet.
+`cl_console.c` besitzt nun den farbigen Ringpuffer für Transcript und Notify,
+Zeilenumbruch und Resize-Erhalt, Scroll-/Dump-Befehle, animierte
+Konsolendarstellung und sämtliche Message-Modi. Retail-VM-Ausgaben laufen im
+produktiven Local-QVM-Pfad in diesen Puffer; der Windows-Frame zeichnet daraus
+Transcript und Notify-Glyphen. `cl_parse.c` bündelt sämtliche Snapshot-,
+Servermessage-, Gamestate-, Download- und Systeminfo-Pfade; `SHOWNET` Level
+1–3 ist im produktiven Dispatcher einschließlich Snapshot- und Entity-
+Zusammenfassungen aktiv. `cl_scrn.c` schließt 640-Skalierung, Bilder, Fills,
+Atlas-Schriften, Demoanzeige, Debuggraph, alle Verbindungszustände,
+Widescreen-Clear, Konsole, Stereo-Frames und Rekursionsschutz. Diese
+`cl_scrn.c`-Oberfläche ist eine native Fassade über die produktiven Renderer-
+und UI-Bausteine; der Windows-Hauptframe ruft die zugrunde liegenden Bausteine
+weiterhin direkt auf und verwendet `SCR_UpdateScreen` noch nicht als obersten
+Frame-Dispatcher.
+
+Nachweise:
+
+- `cl_console.c`: 22/22 Symbole, sechs unveränderte-C-Datensätze und 33
+  native Verträge sowie neun produktive Verdrahtungsverträge. Der Retail-Probe
+  prüft zusätzlich einmalige 1280×720-Skalierung, Scroll-/Catcher-/Demo-Loop-
+  Pfade und den echten zweistufigen `console`-Shader aus `console01.tga` und
+  `console02.jpg`.
+- `cl_parse.c`: 9/9 Symbole, 18 unveränderte-C-Datensätze, 20 native und 21
+  produktive localhost-UDP-Verträge. Ein Retail-Gamestate bewahrt 3.321 Bytes
+  aus `pak0.pk3` exakt.
+- `cl_scrn.c`: 18/18 Symbole, acht unveränderte-C-Datensätze und 35 native
+  Verträge. Der Retail-Probe erzeugt aus drei echten Texturen 60 Quads und 120
+  native Dreiecke aus dem Befehlsstrom der Fassade; die separat produktiv
+  verwendeten Renderer-, UI-Lifecycle- und QVM-2D-Abhängigkeiten sind grün.
+
+Das Inventar zählt jetzt **175 portierte, 43 partielle und 117 nicht begonnene**
+Runtime-/Plattformdateien. Im Client stehen damit **15 portierte C-Dateien,
+null partielle C-Dateien und vier nicht portierte Headerdateien**. Die drei
+Fokusgates sind in `scripts/verify.py` registriert. Alle Fokusgates, ihre
+produktiven Abhängigkeiten, der Windows-Hauptbuild und der kombinierte
+Retail-QVM-Match wurden auf dem zusammengeführten Stand geprüft. Die
+vollständige Verify-Auswahl wurde für dieses inkrementelle Paket nicht erneut
+am Stück ausgeführt; der letzte vollständige Lauf bleibt bei 408/408 Gates
+grün. Der Hauptbuild hat SHA-256
+`bfbb5d270af3983ecb9688a1d2f9e7f325cb562df1277ad73f571790e880918c`.
+Der Retail-Match läuft acht Frames mit 131 Entities, 13 Snapshot-Entities,
+2.345 texturierten Dreiecken, 17 Renderpässen, 26 Sounds und null nicht
+unterstützten Entities.

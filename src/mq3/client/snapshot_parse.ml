@@ -20,12 +20,20 @@ struct State
   parseEntities
   parseEntitiesNum
   entityBaselines
+  shownetLevel
+  shownetLines
 end struct
 
 function createFrame() return Frame(0,0) end function
 
 function createState()
-  return State(array(MAX_PARSE_ENTITIES,void),0,array(MAX_GENTITIES,void))
+  return State(array(MAX_PARSE_ENTITIES,void),0,array(MAX_GENTITIES,void),0,[])
+end function
+
+function pad3(value) text=str(value);while len(bytes(text))<3 text=" "+text end while;return text end function
+function trace(state,msg,text)
+  if state.shownetLevel==3 then state.shownetLines=state.shownetLines+[pad3(msg.readcount)+":  "+text] end if
+  return void
 end function
 
 function baseline(state,number)
@@ -72,17 +80,21 @@ function parsePacketEntities(state,msg,oldframe,newframe)
     if newnum<=lastnew then return error(6856,"snapshot parse: unsorted entity number") end if
     lastnew=newnum
     while oldnum<newnum
+      trace(state,msg,"unchanged: "+str(oldnum))
       deltaEntity(state,msg,newframe,oldnum,oldstate,true)
       oldindex=oldindex+1;pair=nextOld(state,oldframe,oldindex);oldnum=pair[0];oldstate=pair[1]
     end while
     if oldnum==newnum then
+      trace(state,msg,"delta: "+str(newnum))
       deltaEntity(state,msg,newframe,newnum,oldstate,false)
       oldindex=oldindex+1;pair=nextOld(state,oldframe,oldindex);oldnum=pair[0];oldstate=pair[1]
     else
+      trace(state,msg,"baseline: "+str(newnum))
       deltaEntity(state,msg,newframe,newnum,baseline(state,newnum),false)
     end if
   end while
   while oldnum!=99999
+    trace(state,msg,"unchanged: "+str(oldnum))
     deltaEntity(state,msg,newframe,oldnum,oldstate,true)
     oldindex=oldindex+1;pair=nextOld(state,oldframe,oldindex);oldnum=pair[0];oldstate=pair[1]
   end while

@@ -11,7 +11,9 @@ import mq3.client.input_command as inputCommand
 import mq3.client.input_command_events as timestampedInput
 import mq3.client.console_input as consoleInput
 import mq3.client.console_input_display as consoleDisplay
+import mq3.client.cl_console as clientConsole
 import mq3.client.baseq3_match_display as baseMatchDisplay
+import mq3.client.baseq3_console_background as consoleBackground
 import mq3.vm.syscall_qagame_world as qworld
 import mq3.renderer.qvm_scene_geometry as sceneGeometry
 import mq3.renderer.qvm_scene_materials as sceneMaterials
@@ -48,8 +50,9 @@ const HEIGHT=720
 const QVM_TEXTURE_FIRST_SLOT=336
 const MAX_QVM_TEXTURE_SLOTS=64
 const QVM_2D_TEXTURE_FIRST_SLOT=400
-const MAX_QVM_2D_TEXTURE_SLOTS=95
-const CONSOLE_TEXTURE_SLOT=495
+const MAX_QVM_2D_TEXTURE_SLOTS=93
+const CONSOLE_BACKGROUND_TEXTURE_SLOT=493
+const CONSOLE_FONT_TEXTURE_SLOT=495
 const CINEMATIC_TEXTURE_FIRST_SLOT=496
 const MAX_WORLD_TRIANGLES=20000
 const SOURCE_WIDTH=1280
@@ -124,6 +127,28 @@ function applyInputEvent(state,matchState,event)
   return timestampedInput.applyBound(state,event.time,event.type,event.value,event.value2,"")
 end function
 function releaseGameInput(state,time) return timestampedInput.release(state,time) end function
+function consoleColor(index)
+  if index==0 then return [0,0,0] end if;if index==1 then return [255,0,0] end if;if index==2 then return [0,255,0] end if;if index==3 then return [255,255,0] end if
+  if index==4 then return [0,0,255] end if;if index==5 then return [0,255,255] end if;if index==6 then return [255,0,255] end if;return [255,255,255]
+end function
+function drawConsoleGlyph(media,glyph,scaleX,scaleY)
+  color=consoleColor(glyph.color);return baseMatchDisplay.drawString(media,decode(bytes(1,glyph.ch)),glyph.x,glyph.y,8,16,scaleX,scaleY,color[0],color[1],color[2],false)
+end function
+function drawConsoleField(media,field,scaleX,scaleY)
+  if field==void or not field.active then return true end if;return baseMatchDisplay.drawString(media,field.text,field.x,field.y,8,16,scaleX,scaleY,255,255,255,false)
+end function
+function drawProductiveConsole(media,background,matchState,width,height,now)
+  runtime=match.clientConsoleState(matchState);if runtime==void then return consoleDisplay.draw(media,match.clientTextState(matchState),width,height,now) end if
+  view=match.clientConsoleView(matchState,now,16,"MiniQuake3");scaleX=width/640.0;scaleY=height/480.0
+  if view.mode=="solid" then
+    bottom=numeric.trunc32(view.solid.scanlines*scaleY)-1;if bottom>=0 then painted=consoleBackground.draw(background,width,bottom+1,now);if painted is error then return painted end if end if
+    separator=bottom+1;if separator<height then window.drawLine(window.LoadingPoint(0,separator),window.LoadingPoint(width-1,separator),255,0,0);if separator+1<height then window.drawLine(window.LoadingPoint(0,separator+1),window.LoadingPoint(width-1,separator+1),255,0,0) end if end if
+    for each glyph in view.solid.glyphs drawn=drawConsoleGlyph(media,glyph,scaleX,scaleY);if drawn is error then return drawn end if end for;return drawConsoleField(media,view.solid.input,scaleX,scaleY)
+  else if view.mode=="notify" then
+    for each line in view.notify.lines for each glyph in line.glyphs drawn=drawConsoleGlyph(media,glyph,scaleX,scaleY);if drawn is error then return drawn end if end for end for;return drawConsoleField(media,view.notify.chat,scaleX,scaleY)
+  end if
+  return true
+end function
 function ensurePlayableBindings(state)
   for each pair in [[119,"+forward"],[115,"+back"],[100,"+moveright"],[97,"+moveleft"],[32,"+moveup"],[178,"+attack"]]
     if match.keyBinding(state,pair[0])=="" then match.setKeyBinding(state,pair[0],pair[1]) end if
@@ -236,7 +261,8 @@ function runLimited(archive,map,qvmRoot,maxFrames)
   shadowVariable=cvar.get(state.context.cvars,"cg_shadows","1",cvar.ARCHIVE);lodScaleVariable=cvar.get(state.context.cvars,"r_lodscale","5",cvar.CHEAT);lodBiasVariable=cvar.get(state.context.cvars,"r_lodbias","0",cvar.ARCHIVE)
   preparedViews=prepareViews(state.context.renderViews,qvmCatalog,archive,state.context.modelAssets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,void,void,void,void,shadowVariable.integer,lodScaleVariable.value,lodBiasVariable.integer);if preparedViews is error then match.shutdown(state);return preparedViews end if
   hudCatalog=qvm2d.build(archive,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,QVM_2D_TEXTURE_FIRST_SLOT,MAX_QVM_2D_TEXTURE_SLOTS,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT,state.context.shaderRemaps);if hudCatalog is error then match.shutdown(state);return hudCatalog end if
-  consoleMedia=baseMatchDisplay.load(archive,CONSOLE_TEXTURE_SLOT);if consoleMedia is error then match.shutdown(state);return consoleMedia end if
+  consoleBackgroundMedia=consoleBackground.load(archive,CONSOLE_BACKGROUND_TEXTURE_SLOT);if consoleBackgroundMedia is error then match.shutdown(state);return consoleBackgroundMedia end if
+  consoleMedia=baseMatchDisplay.load(archive,CONSOLE_FONT_TEXTURE_SLOT);if consoleMedia is error then match.shutdown(state);return consoleMedia end if
   boundVideo=qvmVideo.bindCatalog(videoManager,hudCatalog,state.context.now);if boundVideo is error then match.shutdown(state);return boundVideo end if
   soundCatalog=qvmSoundAssets.load(archive,state.context.assets,state.context.assetKinds);if soundCatalog is error then match.shutdown(state);return soundCatalog end if
   audio=qvmPlayback.create(soundCatalog,22050,4096);if audio is error then match.shutdown(state);return audio end if
@@ -267,6 +293,7 @@ function runLimited(archive,map,qvmRoot,maxFrames)
   uploaded=worldBatch.uploadMaterials(worldCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   uploaded=sceneBatch.upload(qvmCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   uploaded=qvm2d.upload(hudCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
+  uploaded=consoleBackground.upload(consoleBackgroundMedia);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   uploaded=baseMatchDisplay.upload(consoleMedia);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   if skyCatalog!=void then uploaded=playableSky.upload(skyCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if end if
   if fogCatalog!=void then uploaded=playableFog.upload(fogCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if end if
@@ -343,7 +370,7 @@ function runLimited(archive,map,qvmRoot,maxFrames)
     end for
     cinematicDraws=drawCinematics(state);if cinematicDraws is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return cinematicDraws end if
     drawn=qvm2d.draw(hudCatalog,view.refdef.time);if drawn is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return drawn end if
-    drawn=consoleDisplay.draw(consoleMedia,match.clientTextState(state),WIDTH,HEIGHT,serverTime);if drawn is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return drawn end if
+    drawn=drawProductiveConsole(consoleMedia,consoleBackgroundMedia,state,WIDTH,HEIGHT,serverTime);if drawn is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return drawn end if
     window.present();renderMs=renderMs+window.milliseconds()-afterBatch;frames=frames+1
     audioChunks=0
     while audioChunks<3 and audioOutput.canSubmit()
@@ -353,7 +380,7 @@ function runLimited(archive,map,qvmRoot,maxFrames)
     nextTitle=fpsTitle.frame(titleState,window.milliseconds());if nextTitle is error then window.shutdown();match.shutdown(state);return nextTitle end if;if nextTitle!=void then window.setTitle(nextTitle) end if
     time.sleep(1)
   end while
-  audioOutput.shutdown();qvmVideo.close(videoManager);releaseCinematics();baseMatchDisplay.release(consoleMedia);qvm2d.release(hudCatalog);sceneBatch.release(qvmCatalog);worldBatch.releaseMaterials(worldCatalog);playableSky.release(skyCatalog);playableFog.release(fogCatalog);dynamicLights.release(dlightCatalog);flares.release(flareCatalog);window.shutdown();match.shutdown(state)
+  audioOutput.shutdown();qvmVideo.close(videoManager);releaseCinematics();consoleBackground.release(consoleBackgroundMedia);baseMatchDisplay.release(consoleMedia);qvm2d.release(hudCatalog);sceneBatch.release(qvmCatalog);worldBatch.releaseMaterials(worldCatalog);playableSky.release(skyCatalog);playableFog.release(fogCatalog);dynamicLights.release(dlightCatalog);flares.release(flareCatalog);window.shutdown();match.shutdown(state)
   modelCount=0;triangleCount=0;for each preparedView in preparedViews modelCount=modelCount+preparedView.geometry.modelEntities;triangleCount=triangleCount+len(preparedView.geometry.triangles) end for
   worldEffects=0;if skyCatalog!=void then worldEffects=worldEffects+1 end if;if fogCatalog!=void then worldEffects=worldEffects+1 end if;if dlightCatalog!=void then worldEffects=worldEffects+1 end if;if flareCatalog!=void and flareCatalog.enabled then worldEffects=worldEffects+1 end if
   print "QVM preview: views="+str(len(state.context.renderViews))+" selected="+str(view.refdef.width)+"x"+str(view.refdef.height)+" models="+str(modelCount)+" triangles="+str(triangleCount)+" textures="+str(len(qvmCatalog.textures))+" hudQuads="+str(hudCatalog.sourceQuads)+" sounds="+str(len(soundCatalog.clips))+" frames="+str(frames)+" worldEffects="+str(worldEffects)
