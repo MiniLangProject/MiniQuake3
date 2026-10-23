@@ -49,6 +49,7 @@ import mq3.botlib.aas_entities as aasEntities
 import mq3.botlib.aas_query_syscalls as aasQuerySyscalls
 import mq3.botlib.aas_movement_queries as aasMovementQueries
 import mq3.format.aas as aasFormat
+import mq3.botlib.be_aas_file as aasFile
 import mq3.botlib.elementary_actions as elementaryActions
 import mq3.botlib.elementary_action_syscalls as elementaryActionSyscalls
 import mq3.botlib.ai_characters as aiCharacters
@@ -375,14 +376,16 @@ function qagameFileList(context,vm,base)
   if capacity>0 then written=common.writeRaw(vm,common.argument(vm,base,3),data,capacity,"qagame file list output");if written is error then return written end if end if
   return count
 end function
+function readLoadedAas(host,name) return host[0] end function
 function botlibLoadMap(context,vm,base)
   name=common.readString(vm,common.argument(vm,base,1));if name is error then return name end if
   result=botInterface.Export_BotLibLoadMap(context.botlib,name,botInterface.services(context));if result!=botInterface.BLERR_NOERROR then return result end if
   if context.aasRouteCache!=void and context.aasCachePath!="" then aasRoutingCache.saveRcd(context.aasRouteCache,context.aasCachePath) end if
   context.aas=void;context.aasRouter=void;context.aasRouteCache=void;context.aiVisiblePosition.router=void
   data=try(pk3.read(context.archive,"maps/"+name+".aas"));if data is error then context.aas=void;return 3 end if
-  map=aasFormat.load(data);if map is error then context.aas=void;return 7 end if
+  aasHost=aasFile.services([data]);aasHost.readFileFn=readLoadedAas;aasState=aasFile.create(aasHost);loaded=aasFile.AAS_LoadAASFile(aasState,"maps/"+name+".aas",void);if loaded!=aasFile.BLERR_NOERROR then context.aas=void;return loaded end if;map=aasState.map
   context.aas=aasRuntime.create(map);if context.aas is error then context.aas=void;return 7 end if
+  aasEntities.bindRuntime(context.aasEntities,context.aas)
   context.aasRouter=aasRouting.create(context.aas);if context.aasRouter is error then context.aas=void;context.aasRouter=void;return 7 end if
   context.aasRouteCache=aasRoutingCache.create(context.aasRouter,4096)
   context.aasCachePath="";if context.qvmRoot!="" then context.aasCachePath=context.qvmRoot+"/maps/"+name+".rcd";aasRoutingCache.loadRcd(context.aasRouteCache,context.aasCachePath) end if
@@ -397,11 +400,11 @@ function updateAasEntity(context,vm,base)
   number=common.argument(vm,base,1);address=common.argument(vm,base,2)
   result=botInterface.Export_BotLibUpdateEntity(context.botlib,number,address!=0,botInterface.services(context));if result!=botInterface.BLERR_NOERROR then return result end if
   if context.aasEntities==void then return result end if
-  if address==0 then return aasEntities.update(context.aasEntities,number,void,void) end if
+  if address==0 then return aasEntities.AAS_UpdateEntity(context.aasEntities,number,void,void) end if
   state=aasQuerySyscalls.readEntityState(vm,address);if state is error then return state end if
   bounds=void
   if state.solid==aasEntities.SOLID_BSP then model=try(collision.inlineModel(context.collisionWorld,state.modelindex));if not (model is error) then bounds=collision.modelBounds(context.collisionWorld,model) end if end if
-  return aasEntities.update(context.aasEntities,number,state,bounds)
+  return aasEntities.AAS_UpdateEntity(context.aasEntities,number,state,bounds)
 end function
 function aasPointContents(context,point) return pointContents(context,point,-1) end function
 function aasMovementTrace(context,start,finish,presence,passEntity)

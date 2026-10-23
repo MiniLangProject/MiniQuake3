@@ -4,6 +4,7 @@
 package mq3.format.bsp
 import mq3.compat.numeric as n
 import mq3.shared.parser as parser
+import mq3.format.qfiles as qfiles
 
 struct BSP
   data
@@ -22,12 +23,12 @@ function range(first, count, limit)
 end function
 
 function load(data)
-  if len(data) < 144 or n.readU32(data, 0) != 0x50534249 or n.readU32(data, 4) != 46 then return fail("invalid header") end if
+  if len(data) < 8+qfiles.HEADER_LUMPS*8 or n.readU32(data, 0) != qfiles.BSP_IDENT or n.readU32(data, 4) != qfiles.BSP_VERSION then return fail("invalid header") end if
   strides = [1,72,16,36,48,4,4,40,12,8,44,4,72,104,49152,8,1]
-  offsets = array(17, 0)
-  lengths = array(17, 0)
-  counts = array(17, 0)
-  for index = 0 to 16
+  offsets = array(qfiles.HEADER_LUMPS, 0)
+  lengths = array(qfiles.HEADER_LUMPS, 0)
+  counts = array(qfiles.HEADER_LUMPS, 0)
+  for index = 0 to qfiles.HEADER_LUMPS-1
     offset = n.readI32(data, 8 + index * 8)
     length = n.readI32(data, 12 + index * 8)
     if offset < 0 or length < 0 or offset + length > len(data) then return fail("lump outside file") end if

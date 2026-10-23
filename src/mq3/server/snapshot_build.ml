@@ -2,18 +2,19 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Server snapshot visibility and ring construction from server/sv_snapshot.c.
 package mq3.server.snapshot_build
+import mq3.game.g_public as gpublic
 import mq3.game.entitystate as entitystate
 import mq3.game.playerstate as playerstate
 
 const MAX_SNAPSHOT_ENTITIES=1024
 const MAX_MAP_AREA_BYTES=32
 const MAX_GENTITIES=1024
-const SVF_NOCLIENT=0x00000001
-const SVF_CLIENTMASK=0x00000002
-const SVF_BROADCAST=0x00000020
-const SVF_PORTAL=0x00000040
-const SVF_SINGLECLIENT=0x00000100
-const SVF_NOTSINGLECLIENT=0x00000800
+const SVF_NOCLIENT=gpublic.SVF_NOCLIENT
+const SVF_CLIENTMASK=gpublic.SVF_CLIENTMASK
+const SVF_BROADCAST=gpublic.SVF_BROADCAST
+const SVF_PORTAL=gpublic.SVF_PORTAL
+const SVF_SINGLECLIENT=gpublic.SVF_SINGLECLIENT
+const SVF_NOTSINGLECLIENT=gpublic.SVF_NOTSINGLECLIENT
 
 struct Services pointLeafFn leafAreaFn leafClusterFn writeAreaBitsFn clusterPvsFn areasConnectedFn context end struct
 struct SnapshotEntity state linked svFlags singleClient clusters lastCluster areaNum areaNum2 snapshotCounter end struct

@@ -28,8 +28,9 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **209 sind
-vollständig portiert, 10 teilweise portiert und 116 noch nicht begonnen**.
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **218 sind
+vollständig portiert, eine ist teilweise portiert und 116 sind noch nicht
+begonnen**.
 Der aktuelle Integrationsblock schließt `cvar.c`, `net_chan.c`, `cm_polylib.c`
 und `be_interface.c`. Damit sind vollständige Cvar- und QVM-Trap-Semantik,
 Netchan samt Loopback/Fragmentierung/Adresspfaden, alle Winding-Operationen und
@@ -67,6 +68,17 @@ unveränderten-C-Szenarien beziehungsweise Datensätzen, 67 neuen Verträgen,
 Der frische Hauptbuild und der gekoppelte acht Frames lange Retail-QVM-Match
 bestehen; `build/MiniQuake3.exe` hat SHA-256
 `93b20aad754c6f7e16cdcad74c1a98238534e549b5f7ed884bb367c334b6d49b`.
+
+Der neueste Integrationsblock schließt neun weitere Header- und Botlib-Dateien:
+`qfiles.h`, `g_public.h`, `bg_public.h`, `aasfile.h`, `be_aas_file.c`,
+`be_aas_entity.c`, `be_aas_main.c`, `be_ai_char.c` und `be_ai_weap.c`. Damit
+sind die BSP-/QVM-Dateiformate, beide öffentlichen Spiel-ABIs, sämtliche
+AAS-v5-Dateilayouts samt verlustfreiem Retail-Roundtrip, AAS-Entity- und
+World-Lifecycle sowie Bot-Charakter- und Waffenkonfiguration vollständig
+zugeordnet und in produktive Pfade eingebunden. Die neun neuen Gates, alle 31
+Retail-BSPs, alle 30 Retail-AAS-Dateien, der komplette Spielübergangslauf und
+der gekoppelte Retail-QVM-Match bestehen. Der frische Hauptbuild hat SHA-256
+`fbdeed15fe92ec2fc5292ad20c2f9009974c9de52632b7b2caa625a4e53f133a`.
 
 Der nächste Integrationsblock schließt zusätzlich `vm.c`, `cm_load.c`,
 `win_input.c` und `keys.h`. Die VM besitzt nun ihren vollständigen Lifecycle,

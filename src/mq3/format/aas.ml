@@ -24,6 +24,80 @@ const LUMP_NODES=10
 const LUMP_PORTALS=11
 const LUMP_PORTALINDEX=12
 const LUMP_CLUSTERS=13
+const AASID=AAS_ID
+const AASVERSION_OLD=AAS_VERSION_OLD
+const AASVERSION=AAS_VERSION
+const AAS_LUMPS=LUMP_COUNT
+const AASLUMP_BBOXES=LUMP_BBOXES
+const AASLUMP_VERTEXES=LUMP_VERTEXES
+const AASLUMP_PLANES=LUMP_PLANES
+const AASLUMP_EDGES=LUMP_EDGES
+const AASLUMP_EDGEINDEX=LUMP_EDGEINDEX
+const AASLUMP_FACES=LUMP_FACES
+const AASLUMP_FACEINDEX=LUMP_FACEINDEX
+const AASLUMP_AREAS=LUMP_AREAS
+const AASLUMP_AREASETTINGS=LUMP_AREASETTINGS
+const AASLUMP_REACHABILITY=LUMP_REACHABILITY
+const AASLUMP_NODES=LUMP_NODES
+const AASLUMP_PORTALS=LUMP_PORTALS
+const AASLUMP_PORTALINDEX=LUMP_PORTALINDEX
+const AASLUMP_CLUSTERS=LUMP_CLUSTERS
+
+// Complete code/botlib/aasfile.h public ABI.
+const PRESENCE_NONE=1
+const PRESENCE_NORMAL=2
+const PRESENCE_CROUCH=4
+const MAX_TRAVELTYPES=32
+const TRAVEL_INVALID=1
+const TRAVEL_WALK=2
+const TRAVEL_CROUCH=3
+const TRAVEL_BARRIERJUMP=4
+const TRAVEL_JUMP=5
+const TRAVEL_LADDER=6
+const TRAVEL_WALKOFFLEDGE=7
+const TRAVEL_SWIM=8
+const TRAVEL_WATERJUMP=9
+const TRAVEL_TELEPORT=10
+const TRAVEL_ELEVATOR=11
+const TRAVEL_ROCKETJUMP=12
+const TRAVEL_BFGJUMP=13
+const TRAVEL_GRAPPLEHOOK=14
+const TRAVEL_DOUBLEJUMP=15
+const TRAVEL_RAMPJUMP=16
+const TRAVEL_STRAFEJUMP=17
+const TRAVEL_JUMPPAD=18
+const TRAVEL_FUNCBOB=19
+const TRAVELTYPE_MASK=0xffffff
+const TRAVELFLAG_NOTTEAM1=0x01000000
+const TRAVELFLAG_NOTTEAM2=0x02000000
+const FACE_SOLID=1
+const FACE_LADDER=2
+const FACE_GROUND=4
+const FACE_GAP=8
+const FACE_LIQUID=16
+const FACE_LIQUIDSURFACE=32
+const FACE_BRIDGE=64
+const AREACONTENTS_WATER=1
+const AREACONTENTS_LAVA=2
+const AREACONTENTS_SLIME=4
+const AREACONTENTS_CLUSTERPORTAL=8
+const AREACONTENTS_TELEPORTAL=16
+const AREACONTENTS_ROUTEPORTAL=32
+const AREACONTENTS_TELEPORTER=64
+const AREACONTENTS_JUMPPAD=128
+const AREACONTENTS_DONOTENTER=256
+const AREACONTENTS_VIEWPORTAL=512
+const AREACONTENTS_MOVER=1024
+const AREACONTENTS_NOTTEAM1=2048
+const AREACONTENTS_NOTTEAM2=4096
+const AREACONTENTS_MODELNUMSHIFT=24
+const AREACONTENTS_MAXMODELNUM=0xff
+const AREACONTENTS_MODELNUM=0xff000000
+const AREA_GROUNDED=1
+const AREA_LADDER=2
+const AREA_LIQUID=4
+const AREA_DISABLED=8
+const AREA_BRIDGE=16
 
 const BBOX_SIZE=32
 const VERTEX_SIZE=12
@@ -48,6 +122,8 @@ struct Reachability areaNum faceNum edgeNum start finish travelType travelTime e
 struct Node planeNum children end struct
 struct Portal areaNum frontCluster backCluster clusterAreaNums end struct
 struct Cluster numAreas numReachabilityAreas numPortals firstPortal end struct
+struct Lump fileOffset fileLength end struct
+struct Header ident version bspChecksum lumps end struct
 
 function fail(message) return error(7510,"AAS: "+message) end function
 function strides() return [BBOX_SIZE,VERTEX_SIZE,PLANE_SIZE,EDGE_SIZE,INDEX_SIZE,FACE_SIZE,INDEX_SIZE,AREA_SIZE,AREA_SETTINGS_SIZE,REACHABILITY_SIZE,NODE_SIZE,PORTAL_SIZE,INDEX_SIZE,CLUSTER_SIZE] end function
@@ -125,3 +201,28 @@ function load(data)
   map=AAS(data,version,checksum,offsets,lengths,counts,sequential);check=validateTopology(map);if check is error then return check end if;return map
 end function
 function checkBspChecksum(map,expected) if map==void or map.bspChecksum!=expected then return fail("BSP checksum mismatch") end if;return true end function
+
+function header(map)
+  if map==void then return fail("AAS map is void") end if;lumps=[]
+  for index=0 to LUMP_COUNT-1 lumps=lumps+[Lump(map.offsets[index],map.lengths[index])] end for
+  return Header(AAS_ID,map.version,map.bspChecksum,lumps)
+end function
+function lumpData(map,lump)
+  if map==void then return fail("AAS map is void") end if
+  if lump<0 or lump>=LUMP_COUNT then return fail("AAS lump index outside header") end if
+  return slice(map.data,map.offsets[lump],map.lengths[lump])
+end function
+function ddata(data)
+  if data==void or typeof(data)!="bytes" then return fail("DData requires bytes") end if;result=slice(data,0,len(data))
+  if len(result)>0 then for index=0 to len(result)-1 result[index]=result[index]^((index*119)&255) end for end if
+  return result
+end function
+function encode(map)
+  if map==void then return fail("AAS map is void") end if;check=validateTopology(map);if check is error then return check end if
+  output=bytes(HEADER_SIZE,0);n.writeU32(output,0,AAS_ID);n.writeU32(output,4,AAS_VERSION);n.writeU32(output,8,map.bspChecksum);offset=HEADER_SIZE
+  for lump=0 to LUMP_COUNT-1
+    chunk=lumpData(map,lump);if chunk is error then return chunk end if
+    n.writeU32(output,12+lump*8,offset);n.writeU32(output,16+lump*8,len(chunk));output=output+chunk;offset=offset+len(chunk)
+  end for
+  coded=ddata(slice(output,8,HEADER_SIZE-8));copyBytes(output,8,coded,0,len(coded));return output
+end function

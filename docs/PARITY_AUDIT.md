@@ -2960,3 +2960,38 @@ registriert.
 
 Das Inventar zählt jetzt **209 portierte, 10 teilweise portierte und 116 noch
 nicht begonnene** Dateien von insgesamt 335.
+
+## 2026-10-23: Öffentliche Spiel-ABI und AAS-/Botlib-Kern geschlossen
+
+Neun weitere partielle Originaldateien sind vollständig nativ zugeordnet:
+
+- `code/qcommon/qfiles.h`, `code/game/g_public.h` und
+  `code/game/bg_public.h`: 32 Dateiformattypen und 54 Konstanten, 194
+  Game-Import-/Export-Ordinalen mit elf Serverflags sowie 405 gemeinsame
+  Spielkonstanten, 20 Typen und zehn öffentliche BG-Funktionen. Die produktiven
+  BSP-, QVM-, Server-, Snapshot-, Pmove- und Entitystate-Pfade verwenden diese
+  gemeinsamen Definitionen.
+- `code/botlib/aasfile.h` und `code/botlib/be_aas_file.c`: 72 Konstanten,
+  16 ABI-Layouts und alle acht Dateifunktionen. Alle 30 Retail-AAS-Dateien
+  durchlaufen einen verlustfreien v5-Roundtrip mit 59.580.980 Bytes und
+  6.235.985 Datensätzen.
+- `code/botlib/be_aas_entity.c` und `code/botlib/be_aas_main.c`: alle 15
+  Entity- und 17 Lifecycle-/Indexsymbole. Die q3dm1-Retailprobe umfasst 1.933
+  Areas und 2.029 Reachabilities; der Retail-`qagame.qvm`-Lifecycle besteht.
+- `code/botlib/be_ai_char.c` und `code/botlib/be_ai_weap.c`: alle 19
+  Charakter- und 14 Waffensymbole. Unveränderte C-Orakel, Retail-Sarge-
+  Charakterwerte, Waffenweights, Projektilzuordnung und das 552-Byte-
+  `weaponinfo_t`-ABI stimmen mit dem Original überein.
+
+Die neun Vollständigkeitsgates, 404 QVM-Interpreterfälle, der vollständige
+Retail-Spielübergangslauf, der Windows-Hauptbuild und der gekoppelte acht Frames
+lange Retail-QVM-Match sind grün. Das Match meldet 131 Entities, 13
+Snapshot-Entities, 2.345 vollständig texturierte Dreiecke, 17 Renderpässe, 26
+Sounds und null nicht unterstützte Entities. `build/MiniQuake3.exe` hat SHA-256
+`fbdeed15fe92ec2fc5292ad20c2f9009974c9de52632b7b2caa625a4e53f133a`. Die
+letzte vollständige Gesamtauswahl bleibt der dokumentierte 449-Gate-Lauf; die
+neun neuen Gates sind in `scripts/verify.py` registriert.
+
+Das Inventar zählt jetzt **218 portierte, eine teilweise portierte und 116 noch
+nicht begonnene** Dateien von insgesamt 335. Die einzige verbleibende partielle
+Datei ist `code/game/g_local.h`.

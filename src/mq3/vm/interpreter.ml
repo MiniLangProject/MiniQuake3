@@ -3,6 +3,7 @@
 // Adaptation of qcommon/vm.c, vm_local.h and vm_interpreted.c.
 package mq3.vm.interpreter
 import mq3.compat.numeric as n
+import mq3.format.qfiles as qfiles
 
 struct VM
   code
@@ -69,7 +70,7 @@ end function
 
 function load(image, callback)
   if typeof(image) != "bytes" or len(image) < 32 then return fail("truncated header") end if
-  if n.readU32(image, 0) != 0x12721444 then return fail("unsupported magic") end if
+  if n.readU32(image, 0) != qfiles.VM_MAGIC then return fail("unsupported magic") end if
   count = n.readI32(image, 4)
   codeOffset = n.readI32(image, 8)
   codeLength = n.readI32(image, 12)

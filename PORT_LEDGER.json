@@ -49,22 +49,25 @@
       "symbol_candidates": [],
       "symbol_mapping": [
         {
-          "original": "implemented runtime subset",
+          "original": "complete aasfile.h ABI",
           "target_files": [
             "src/mq3/format/aas.ml"
           ],
-          "status": "tested_subset",
-          "scope": "AAS header, 14 lump layouts, v4/v5 decoding and all runtime record accessors; writer/tool-side structures remain outside the game runtime."
+          "status": "tested_exact",
+          "scope": "All 72 public constants, 16 binary layouts, 14 lump strides, AAS4/AAS5 header decoding, record access, topology validation and lossless AAS5 serialization."
         }
       ],
       "target": [
         "src/mq3/format/aas.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_aas_format.py",
-        "tests/aas_format_contracts.ml",
-        "tests/aas_retail_probe.ml"
+        "scripts/test_be_aas_file_complete.py",
+        "tests/reference/be_aas_file_complete_oracle.c",
+        "tests/be_aas_file_complete_oracle.ml",
+        "tests/be_aas_file_complete_contracts.ml",
+        "tests/be_aas_file_complete_retail_probe.ml",
+        "scripts/test_aas_format.py"
       ]
     },
     {
@@ -924,22 +927,154 @@
       ],
       "symbol_mapping": [
         {
-          "original": "implemented runtime subset",
+          "original": "AAS_BestReachableEntityArea",
           "target_files": [
             "src/mq3/botlib/aas_entities.ml",
             "src/mq3/botlib/aas_query_syscalls.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Entity-state history, validity, times, origins and BSP bounds plus QVM ABI are implemented; link heaps and collision links remain open."
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_EntityBSPData",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_EntityInfo",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_EntityModelNum",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_EntityModelindex",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_EntityOrigin",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_EntitySize",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_EntityType",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_InvalidateEntities",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_NearestEntity",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_NextEntity",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_OriginOfMoverWithModelNum",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_ResetEntityLinks",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_UnlinkInvalidEntities",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_UpdateEntity",
+          "target_files": [
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/botlib/aas_query_syscalls.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 15 entity symbols are productively mapped: state history, frame invalidation, null removal, model/mover queries, BSP bounds, nearest/next traversal and Retail AAS area links. Twelve unchanged-C records, fourteen completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
         }
       ],
       "target": [
         "src/mq3/botlib/aas_entities.ml",
         "src/mq3/botlib/aas_query_syscalls.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_aas_entity_queries.py"
+        "scripts/test_be_aas_entity_complete.py",
+        "tests/reference/be_aas_entity_complete_oracle.c",
+        "tests/be_aas_entity_complete_oracle.ml",
+        "tests/be_aas_entity_complete_contracts.ml",
+        "tests/be_aas_entity_main_retail_probe.ml",
+        "scripts/test_aas_entity_queries.py",
+        "scripts/test_botlib_retail_qagame.py"
       ]
     },
     {
@@ -968,22 +1103,108 @@
       ],
       "symbol_mapping": [
         {
-          "original": "implemented runtime subset",
+          "original": "AAS_DData",
           "target_files": [
-            "src/mq3/format/aas.ml"
+            "src/mq3/botlib/be_aas_file.ml",
+            "src/mq3/format/aas.ml",
+            "src/mq3/engine/local_qvm_match.ml"
           ],
-          "status": "tested_subset",
-          "scope": "AAS4/AAS5 load, header XOR, bounds and topology validation for all 30 retail files; save and reachability generation remain open."
+          "target_symbol": "mq3.botlib.be_aas_file.AAS_DData",
+          "status": "tested_exact",
+          "scope": "Complete load/dump/info/lump/XOR/write facade; product botlib map loading uses the facade and Retail AAS payloads round-trip losslessly."
+        },
+        {
+          "original": "AAS_DumpAASData",
+          "target_files": [
+            "src/mq3/botlib/be_aas_file.ml",
+            "src/mq3/format/aas.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_aas_file.AAS_DumpAASData",
+          "status": "tested_exact",
+          "scope": "Complete load/dump/info/lump/XOR/write facade; product botlib map loading uses the facade and Retail AAS payloads round-trip losslessly."
+        },
+        {
+          "original": "AAS_FileInfo",
+          "target_files": [
+            "src/mq3/botlib/be_aas_file.ml",
+            "src/mq3/format/aas.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_aas_file.AAS_FileInfo",
+          "status": "tested_exact",
+          "scope": "Complete load/dump/info/lump/XOR/write facade; product botlib map loading uses the facade and Retail AAS payloads round-trip losslessly."
+        },
+        {
+          "original": "AAS_LoadAASFile",
+          "target_files": [
+            "src/mq3/botlib/be_aas_file.ml",
+            "src/mq3/format/aas.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_aas_file.AAS_LoadAASFile",
+          "status": "tested_exact",
+          "scope": "Complete load/dump/info/lump/XOR/write facade; product botlib map loading uses the facade and Retail AAS payloads round-trip losslessly."
+        },
+        {
+          "original": "AAS_LoadAASLump",
+          "target_files": [
+            "src/mq3/botlib/be_aas_file.ml",
+            "src/mq3/format/aas.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_aas_file.AAS_LoadAASLump",
+          "status": "tested_exact",
+          "scope": "Complete load/dump/info/lump/XOR/write facade; product botlib map loading uses the facade and Retail AAS payloads round-trip losslessly."
+        },
+        {
+          "original": "AAS_SwapAASData",
+          "target_files": [
+            "src/mq3/botlib/be_aas_file.ml",
+            "src/mq3/format/aas.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_aas_file.AAS_SwapAASData",
+          "status": "tested_exact",
+          "scope": "Complete load/dump/info/lump/XOR/write facade; product botlib map loading uses the facade and Retail AAS payloads round-trip losslessly."
+        },
+        {
+          "original": "AAS_WriteAASFile",
+          "target_files": [
+            "src/mq3/botlib/be_aas_file.ml",
+            "src/mq3/format/aas.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_aas_file.AAS_WriteAASFile",
+          "status": "tested_exact",
+          "scope": "Complete load/dump/info/lump/XOR/write facade; product botlib map loading uses the facade and Retail AAS payloads round-trip losslessly."
+        },
+        {
+          "original": "AAS_WriteAASLump",
+          "target_files": [
+            "src/mq3/botlib/be_aas_file.ml",
+            "src/mq3/format/aas.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_aas_file.AAS_WriteAASLump",
+          "status": "tested_exact",
+          "scope": "Complete load/dump/info/lump/XOR/write facade; product botlib map loading uses the facade and Retail AAS payloads round-trip losslessly."
         }
       ],
       "target": [
-        "src/mq3/format/aas.ml"
+        "src/mq3/botlib/be_aas_file.ml",
+        "src/mq3/format/aas.ml",
+        "src/mq3/engine/local_qvm_match.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_be_aas_file_complete.py",
+        "tests/reference/be_aas_file_complete_oracle.c",
+        "tests/be_aas_file_complete_oracle.ml",
+        "tests/be_aas_file_complete_contracts.ml",
+        "tests/be_aas_file_complete_retail_probe.ml",
         "scripts/test_aas_format.py",
-        "tests/aas_format_contracts.ml",
-        "tests/aas_retail_probe.ml"
+        "scripts/test_retail_qvm_match.py"
       ]
     },
     {
@@ -1031,23 +1252,206 @@
       ],
       "symbol_mapping": [
         {
-          "original": "implemented runtime subset",
+          "original": "AAS_ContinueInit",
           "target_files": [
-            "src/mq3/botlib/lifecycle_runtime.ml",
+            "src/mq3/botlib/aas_main.ml",
             "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
             "src/mq3/engine/local_qvm_match.ml"
           ],
-          "status": "tested_subset",
-          "scope": "AAS setup, retail map loading, initialized/time state, StartFrame and shutdown are implemented; incremental initialization and string/model indexes remain open."
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_Error",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_IndexFromModel",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_IndexFromString",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_Initialized",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_LoadFiles",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_LoadMap",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_Loaded",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_ModelFromIndex",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_ProjectPointOntoVector",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_SetInitialized",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_Setup",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_Shutdown",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_StartFrame",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_StringFromIndex",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_Time",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
+        },
+        {
+          "original": "AAS_UpdateStringIndexes",
+          "target_files": [
+            "src/mq3/botlib/aas_main.ml",
+            "src/mq3/botlib/aas_runtime.ml",
+            "src/mq3/botlib/aas_entities.ml",
+            "src/mq3/engine/local_qvm_match.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 17 AAS lifecycle/index symbols are mapped: setup/shutdown, Retail map binding, incremental initialization, StartFrame entity ordering, time, string/model indexes and vector projection. Five unchanged-C records, ten completion contracts, eight q3dm1 Retail checks and twelve Retail qagame lifecycle contracts pass."
         }
       ],
       "target": [
-        "src/mq3/botlib/lifecycle_runtime.ml",
+        "src/mq3/botlib/aas_main.ml",
         "src/mq3/botlib/aas_runtime.ml",
+        "src/mq3/botlib/aas_entities.ml",
         "src/mq3/engine/local_qvm_match.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_be_aas_main_complete.py",
+        "tests/reference/be_aas_main_complete_oracle.c",
+        "tests/be_aas_main_complete_oracle.ml",
+        "tests/be_aas_main_complete_contracts.ml",
+        "tests/be_aas_entity_main_retail_probe.ml",
         "scripts/test_botlib_lifecycle_runtime.py",
         "scripts/test_aas_runtime.py",
         "scripts/test_botlib_retail_qagame.py"
@@ -2939,23 +3343,228 @@
       ],
       "symbol_mapping": [
         {
-          "original": "implemented runtime subset",
+          "original": "BotCharacterFromHandle",
           "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
             "src/mq3/botlib/ai_characters.ml",
             "src/mq3/botlib/ai_character_syscalls.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Character load/cache/free, default inheritance, skill interpolation and typed characteristics for traps 500-506 are implemented on retail Sarge."
+          "target_symbol": "mq3.botlib.be_ai_char.BotCharacterFromHandle",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotDefaultCharacteristics",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.BotDefaultCharacteristics",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotDumpCharacter",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.BotDumpCharacter",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotFindCachedCharacter",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.BotFindCachedCharacter",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotFreeCharacter",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.BotFreeCharacter",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotFreeCharacter2",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.BotFreeCharacter2",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotFreeCharacterStrings",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.BotFreeCharacterStrings",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotInterpolateCharacters",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.BotInterpolateCharacters",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotLoadCachedCharacter",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.BotLoadCachedCharacter",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotLoadCharacter",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.BotLoadCharacter",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotLoadCharacterFromFile",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.BotLoadCharacterFromFile",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotLoadCharacterSkill",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.BotLoadCharacterSkill",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotShutdownCharacters",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.BotShutdownCharacters",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "Characteristic_BFloat",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.Characteristic_BFloat",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "Characteristic_BInteger",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.Characteristic_BInteger",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "Characteristic_Float",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.Characteristic_Float",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "Characteristic_Integer",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.Characteristic_Integer",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "Characteristic_String",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.Characteristic_String",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "CheckCharacteristicIndex",
+          "target_files": [
+            "src/mq3/botlib/be_ai_char.ml",
+            "src/mq3/botlib/ai_characters.ml",
+            "src/mq3/botlib/ai_character_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_char.CheckCharacteristicIndex",
+          "status": "tested_exact",
+          "scope": "All 19 character symbols map to the productive loader/cache/interpolation/query runtime; 15 unchanged original functions, 15 managed contracts, Retail Sarge and qagame lifecycle pass."
         }
       ],
       "target": [
+        "src/mq3/botlib/be_ai_char.ml",
         "src/mq3/botlib/ai_characters.ml",
         "src/mq3/botlib/ai_character_syscalls.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_ai_characters.py",
-        "tests/reference/ai_character_oracle.c"
+        "scripts/test_be_ai_char_complete.py",
+        "tests/reference/be_ai_char_complete_oracle.c",
+        "tests/be_ai_char_complete_oracle.ml",
+        "tests/be_ai_char_complete_contracts.ml",
+        "tests/ai_character_retail_probe.ml",
+        "scripts/test_botlib_retail_qagame.py"
       ]
     },
     {
@@ -4790,28 +5399,219 @@
       ],
       "symbol_mapping": [
         {
-          "original": "implemented runtime subset",
+          "original": "BotAllocWeaponState",
           "target_files": [
-            "src/mq3/botlib/ai_resource_pools.ml",
-            "src/mq3/botlib/ai_resource_syscalls.ml",
+            "src/mq3/botlib/be_ai_weap.ml",
             "src/mq3/botlib/ai_weapon_weights.ml",
-            "src/mq3/botlib/ai_weapon_weight_syscalls.ml"
+            "src/mq3/botlib/ai_weapon_combat.ml",
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Weapon state allocation/reset/free, retail weapon configuration, projectile references and bot weapon-weight loading are implemented; runtime weapon choice and weapon-info traps remain open."
+          "target_symbol": "mq3.botlib.be_ai_weap.BotAllocWeaponState",
+          "status": "tested_exact",
+          "scope": "All 14 weapon-AI symbols map to productive config, fuzzy-weight, selection, weaponinfo ABI and state lifecycle paths; ten unchanged original functions, 13 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotChooseBestFightWeapon",
+          "target_files": [
+            "src/mq3/botlib/be_ai_weap.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml",
+            "src/mq3/botlib/ai_weapon_combat.ml",
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_weap.BotChooseBestFightWeapon",
+          "status": "tested_exact",
+          "scope": "All 14 weapon-AI symbols map to productive config, fuzzy-weight, selection, weaponinfo ABI and state lifecycle paths; ten unchanged original functions, 13 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotFreeWeaponState",
+          "target_files": [
+            "src/mq3/botlib/be_ai_weap.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml",
+            "src/mq3/botlib/ai_weapon_combat.ml",
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_weap.BotFreeWeaponState",
+          "status": "tested_exact",
+          "scope": "All 14 weapon-AI symbols map to productive config, fuzzy-weight, selection, weaponinfo ABI and state lifecycle paths; ten unchanged original functions, 13 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotFreeWeaponWeights",
+          "target_files": [
+            "src/mq3/botlib/be_ai_weap.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml",
+            "src/mq3/botlib/ai_weapon_combat.ml",
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_weap.BotFreeWeaponWeights",
+          "status": "tested_exact",
+          "scope": "All 14 weapon-AI symbols map to productive config, fuzzy-weight, selection, weaponinfo ABI and state lifecycle paths; ten unchanged original functions, 13 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotGetWeaponInfo",
+          "target_files": [
+            "src/mq3/botlib/be_ai_weap.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml",
+            "src/mq3/botlib/ai_weapon_combat.ml",
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_weap.BotGetWeaponInfo",
+          "status": "tested_exact",
+          "scope": "All 14 weapon-AI symbols map to productive config, fuzzy-weight, selection, weaponinfo ABI and state lifecycle paths; ten unchanged original functions, 13 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotLoadWeaponWeights",
+          "target_files": [
+            "src/mq3/botlib/be_ai_weap.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml",
+            "src/mq3/botlib/ai_weapon_combat.ml",
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_weap.BotLoadWeaponWeights",
+          "status": "tested_exact",
+          "scope": "All 14 weapon-AI symbols map to productive config, fuzzy-weight, selection, weaponinfo ABI and state lifecycle paths; ten unchanged original functions, 13 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotResetWeaponState",
+          "target_files": [
+            "src/mq3/botlib/be_ai_weap.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml",
+            "src/mq3/botlib/ai_weapon_combat.ml",
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_weap.BotResetWeaponState",
+          "status": "tested_exact",
+          "scope": "All 14 weapon-AI symbols map to productive config, fuzzy-weight, selection, weaponinfo ABI and state lifecycle paths; ten unchanged original functions, 13 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotSetupWeaponAI",
+          "target_files": [
+            "src/mq3/botlib/be_ai_weap.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml",
+            "src/mq3/botlib/ai_weapon_combat.ml",
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_weap.BotSetupWeaponAI",
+          "status": "tested_exact",
+          "scope": "All 14 weapon-AI symbols map to productive config, fuzzy-weight, selection, weaponinfo ABI and state lifecycle paths; ten unchanged original functions, 13 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotShutdownWeaponAI",
+          "target_files": [
+            "src/mq3/botlib/be_ai_weap.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml",
+            "src/mq3/botlib/ai_weapon_combat.ml",
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_weap.BotShutdownWeaponAI",
+          "status": "tested_exact",
+          "scope": "All 14 weapon-AI symbols map to productive config, fuzzy-weight, selection, weaponinfo ABI and state lifecycle paths; ten unchanged original functions, 13 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotValidWeaponNumber",
+          "target_files": [
+            "src/mq3/botlib/be_ai_weap.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml",
+            "src/mq3/botlib/ai_weapon_combat.ml",
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_weap.BotValidWeaponNumber",
+          "status": "tested_exact",
+          "scope": "All 14 weapon-AI symbols map to productive config, fuzzy-weight, selection, weaponinfo ABI and state lifecycle paths; ten unchanged original functions, 13 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "BotWeaponStateFromHandle",
+          "target_files": [
+            "src/mq3/botlib/be_ai_weap.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml",
+            "src/mq3/botlib/ai_weapon_combat.ml",
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_weap.BotWeaponStateFromHandle",
+          "status": "tested_exact",
+          "scope": "All 14 weapon-AI symbols map to productive config, fuzzy-weight, selection, weaponinfo ABI and state lifecycle paths; ten unchanged original functions, 13 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "DumpWeaponConfig",
+          "target_files": [
+            "src/mq3/botlib/be_ai_weap.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml",
+            "src/mq3/botlib/ai_weapon_combat.ml",
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_weap.DumpWeaponConfig",
+          "status": "tested_exact",
+          "scope": "All 14 weapon-AI symbols map to productive config, fuzzy-weight, selection, weaponinfo ABI and state lifecycle paths; ten unchanged original functions, 13 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "LoadWeaponConfig",
+          "target_files": [
+            "src/mq3/botlib/be_ai_weap.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml",
+            "src/mq3/botlib/ai_weapon_combat.ml",
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_weap.LoadWeaponConfig",
+          "status": "tested_exact",
+          "scope": "All 14 weapon-AI symbols map to productive config, fuzzy-weight, selection, weaponinfo ABI and state lifecycle paths; ten unchanged original functions, 13 managed contracts, Retail Sarge and qagame lifecycle pass."
+        },
+        {
+          "original": "WeaponWeightIndex",
+          "target_files": [
+            "src/mq3/botlib/be_ai_weap.ml",
+            "src/mq3/botlib/ai_weapon_weights.ml",
+            "src/mq3/botlib/ai_weapon_combat.ml",
+            "src/mq3/botlib/ai_resource_pools.ml",
+            "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+            "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
+          ],
+          "target_symbol": "mq3.botlib.be_ai_weap.WeaponWeightIndex",
+          "status": "tested_exact",
+          "scope": "All 14 weapon-AI symbols map to productive config, fuzzy-weight, selection, weaponinfo ABI and state lifecycle paths; ten unchanged original functions, 13 managed contracts, Retail Sarge and qagame lifecycle pass."
         }
       ],
       "target": [
-        "src/mq3/botlib/ai_resource_pools.ml",
-        "src/mq3/botlib/ai_resource_syscalls.ml",
+        "src/mq3/botlib/be_ai_weap.ml",
         "src/mq3/botlib/ai_weapon_weights.ml",
-        "src/mq3/botlib/ai_weapon_weight_syscalls.ml"
+        "src/mq3/botlib/ai_weapon_combat.ml",
+        "src/mq3/botlib/ai_resource_pools.ml",
+        "src/mq3/botlib/ai_weapon_weight_syscalls.ml",
+        "src/mq3/botlib/ai_weapon_combat_syscalls.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_ai_resource_pools.py",
-        "scripts/test_ai_weapon_weights.py",
-        "scripts/test_bot_spawn_retail.py"
+        "scripts/test_be_ai_weap_complete.py",
+        "tests/reference/be_ai_weap_complete_oracle.c",
+        "tests/be_ai_weap_complete_oracle.ml",
+        "tests/be_ai_weap_complete_contracts.ml",
+        "tests/ai_weapon_weight_retail_probe.ml",
+        "tests/ai_weapon_combat_retail_probe.ml",
+        "scripts/test_botlib_retail_qagame.py"
       ]
     },
     {
@@ -21541,114 +22341,210 @@
         {
           "original": "pmove_t",
           "target_files": [
+            "src/mq3/game/bg_public.ml",
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested"
+        },
+        {
+          "original": "animation_t",
+          "target_files": [
+            "src/mq3/game/bg_public.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested"
+        },
+        {
+          "original": "gitem_t",
+          "target_files": [
+            "src/mq3/game/bg_public.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested"
+        },
+        {
+          "original": "gametype_t",
+          "target_files": [
+            "src/mq3/game/bg_public.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested"
+        },
+        {
+          "original": "gender_t",
+          "target_files": [
+            "src/mq3/game/bg_public.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested"
         },
         {
           "original": "pmtype_t",
           "target_files": [
+            "src/mq3/game/bg_public.ml",
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested"
         },
         {
           "original": "weaponstate_t",
           "target_files": [
+            "src/mq3/game/bg_public.ml",
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested"
         },
         {
           "original": "statIndex_t",
           "target_files": [
+            "src/mq3/game/bg_public.ml",
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested"
         },
         {
           "original": "persEnum_t",
           "target_files": [
+            "src/mq3/game/bg_public.ml",
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested"
         },
         {
           "original": "powerup_t",
           "target_files": [
+            "src/mq3/game/bg_public.ml",
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested"
         },
         {
           "original": "holdable_t",
           "target_files": [
+            "src/mq3/game/bg_public.ml",
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested"
         },
         {
           "original": "weapon_t",
           "target_files": [
+            "src/mq3/game/bg_public.ml",
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested"
         },
         {
           "original": "entity_event_t",
           "target_files": [
+            "src/mq3/game/bg_public.ml",
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested"
+        },
+        {
+          "original": "global_team_sound_t",
+          "target_files": [
+            "src/mq3/game/bg_public.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested"
         },
         {
           "original": "animNumber_t",
           "target_files": [
+            "src/mq3/game/bg_public.ml",
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested"
         },
         {
           "original": "team_t",
           "target_files": [
+            "src/mq3/game/bg_public.ml",
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested"
         },
         {
-          "original": "entityType_t",
+          "original": "teamtask_t",
           "target_files": [
+            "src/mq3/game/bg_public.ml",
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested"
         },
         {
           "original": "meansOfDeath_t",
           "target_files": [
+            "src/mq3/game/bg_public.ml",
             "src/mq3/game/constants.ml",
             "src/mq3/game/pmove.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested"
+        },
+        {
+          "original": "itemType_t",
+          "target_files": [
+            "src/mq3/game/bg_public.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested"
+        },
+        {
+          "original": "entityType_t",
+          "target_files": [
+            "src/mq3/game/bg_public.ml",
+            "src/mq3/game/constants.ml",
+            "src/mq3/game/pmove.ml"
+          ],
+          "status": "tested"
+        },
+        {
+          "original": "405 constants and enum members",
+          "target_files": [
+            "src/mq3/game/bg_public.ml",
+            "src/mq3/game/constants.ml"
+          ],
+          "status": "tested"
+        },
+        {
+          "original": "BG_* shared-game public functions",
+          "target_files": [
+            "src/mq3/game/bg_public.ml",
+            "src/mq3/game/pmove.ml",
+            "src/mq3/game/entitystate.ml"
+          ],
+          "status": "tested"
         }
       ],
       "target": [
+        "src/mq3/game/bg_public.ml",
         "src/mq3/game/constants.ml",
-        "src/mq3/game/pmove.ml"
+        "src/mq3/game/pmove.ml",
+        "src/mq3/game/entitystate.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_bg_public_header_complete.py",
         "scripts/test_pmove.py",
         "scripts/test_entitystate.py",
         "scripts/test_transitions.py"
@@ -24682,25 +25578,80 @@
         {
           "original": "entityShared_t",
           "target_files": [
-            "src/mq3/server/world.ml"
+            "src/mq3/game/g_public.ml",
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/server/game_vm.ml",
+            "src/mq3/server/world.ml",
+            "src/mq3/server/snapshot_build.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "The complete public game/server ABI is mapped: 194 import/export opcodes, eleven API/server flags and both shared entity layouts. Five unchanged-C records, ten contracts, lifecycle and snapshot regressions pass."
         },
         {
           "original": "sharedEntity_t",
           "target_files": [
-            "src/mq3/server/world.ml"
+            "src/mq3/game/g_public.ml",
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/server/game_vm.ml",
+            "src/mq3/server/world.ml",
+            "src/mq3/server/snapshot_build.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "The complete public game/server ABI is mapped: 194 import/export opcodes, eleven API/server flags and both shared entity layouts. Five unchanged-C records, ten contracts, lifecycle and snapshot regressions pass."
+        },
+        {
+          "original": "gameImport_t",
+          "target_files": [
+            "src/mq3/game/g_public.ml",
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/server/game_vm.ml",
+            "src/mq3/server/world.ml",
+            "src/mq3/server/snapshot_build.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "The complete public game/server ABI is mapped: 194 import/export opcodes, eleven API/server flags and both shared entity layouts. Five unchanged-C records, ten contracts, lifecycle and snapshot regressions pass."
+        },
+        {
+          "original": "gameExport_t",
+          "target_files": [
+            "src/mq3/game/g_public.ml",
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/server/game_vm.ml",
+            "src/mq3/server/world.ml",
+            "src/mq3/server/snapshot_build.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "The complete public game/server ABI is mapped: 194 import/export opcodes, eleven API/server flags and both shared entity layouts. Five unchanged-C records, ten contracts, lifecycle and snapshot regressions pass."
+        },
+        {
+          "original": "GAME_API_VERSION and SVF flags",
+          "target_files": [
+            "src/mq3/game/g_public.ml",
+            "src/mq3/game/syscalls.ml",
+            "src/mq3/server/game_vm.ml",
+            "src/mq3/server/world.ml",
+            "src/mq3/server/snapshot_build.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "The complete public game/server ABI is mapped: 194 import/export opcodes, eleven API/server flags and both shared entity layouts. Five unchanged-C records, ten contracts, lifecycle and snapshot regressions pass."
         }
       ],
       "target": [
-        "src/mq3/server/world.ml"
+        "src/mq3/game/g_public.ml",
+        "src/mq3/game/syscalls.ml",
+        "src/mq3/server/game_vm.ml",
+        "src/mq3/server/world.ml",
+        "src/mq3/server/snapshot_build.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_server_world.py",
-        "scripts/test_scores.py"
+        "scripts/test_g_public_header_complete.py",
+        "tests/reference/g_public_header_oracle.c",
+        "tests/g_public_header_oracle.ml",
+        "tests/g_public_header_contracts.ml",
+        "scripts/test_game_vm_lifecycle.py",
+        "scripts/test_snapshot_build.py",
+        "scripts/test_snapshot_runtime.py"
       ]
     },
     {
@@ -40694,28 +41645,347 @@
       "symbol_candidates": [],
       "symbol_mapping": [
         {
-          "original": "dheader_t",
-          "target_files": [
-            "src/mq3/format/bsp.ml",
-            "src/mq3/vm/interpreter.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
           "original": "vmHeader_t",
           "target_files": [
+            "src/mq3/format/qfiles.ml",
             "src/mq3/format/bsp.ml",
             "src/mq3/vm/interpreter.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "pcx_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "TargaHeader",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md3Frame_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md3Tag_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md3Surface_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md3Shader_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md3Triangle_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md3St_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md3XyzNormal_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md3Header_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md4Weight_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md4Vertex_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md4Triangle_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md4Surface_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md4Bone_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md4Frame_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md4LOD_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "md4Header_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "lump_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "dheader_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "dmodel_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "dshader_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "dplane_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "dnode_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "dleaf_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "dbrushside_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "dbrush_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "dfog_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "drawVert_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "mapSurfaceType_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "dsurface_t",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
+        },
+        {
+          "original": "qfiles.h format constants",
+          "target_files": [
+            "src/mq3/format/qfiles.ml",
+            "src/mq3/format/bsp.ml",
+            "src/mq3/vm/interpreter.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 32 public file-format ABI types and 54 constants are mapped; eight unchanged-C layout/value records, fifteen managed contracts, all 31 Retail BSP files and 404 original QVM differential cases pass."
         }
       ],
       "target": [
+        "src/mq3/format/qfiles.ml",
         "src/mq3/format/bsp.ml",
         "src/mq3/vm/interpreter.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
+        "scripts/test_qfiles_header_complete.py",
+        "tests/reference/qfiles_header_oracle.c",
+        "tests/qfiles_header_oracle.ml",
+        "tests/qfiles_header_contracts.ml",
         "scripts/test_maps.py",
         "scripts/test_vm.py"
       ]

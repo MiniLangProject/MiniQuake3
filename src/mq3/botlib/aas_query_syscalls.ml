@@ -21,7 +21,7 @@ end function
 
 function entityInfo(state,vm,number,address)
   output=common.pointer(vm,address,AAS_ENTITYINFO_SIZE,"aas_entityinfo_t output");if output is error then return output end if
-  info=aasEntities.info(state,number);valid=0;if info.valid then valid=1 end if
+  info=aasEntities.AAS_EntityInfo(state,number);valid=0;if info.valid then valid=1 end if
   n.writeU32(vm.data,output,valid);n.writeU32(vm.data,output+4,info.type);n.writeU32(vm.data,output+8,info.flags);n.writeU32(vm.data,output+12,n.floatBits(info.ltime));n.writeU32(vm.data,output+16,n.floatBits(info.updateTime));n.writeU32(vm.data,output+20,info.number)
   writeVector(vm.data,output+24,info.origin);writeVector(vm.data,output+36,info.angles);writeVector(vm.data,output+48,info.oldOrigin);writeVector(vm.data,output+60,info.lastVisOrigin);writeVector(vm.data,output+72,info.mins);writeVector(vm.data,output+84,info.maxs)
   n.writeU32(vm.data,output+96,info.groundent);n.writeU32(vm.data,output+100,info.solid);n.writeU32(vm.data,output+104,info.modelindex);n.writeU32(vm.data,output+108,info.modelindex2);n.writeU32(vm.data,output+112,info.frame);n.writeU32(vm.data,output+116,info.event);n.writeU32(vm.data,output+120,info.eventParm);n.writeU32(vm.data,output+124,info.powerups);n.writeU32(vm.data,output+128,info.weapon);n.writeU32(vm.data,output+132,info.legsAnim);n.writeU32(vm.data,output+136,info.torsoAnim)
