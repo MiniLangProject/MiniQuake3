@@ -11,6 +11,7 @@ import mq3.audio.snd_loop_channels as sndLoops
 import mq3.audio.snd_loop_doppler as sndDoppler
 import mq3.audio.snd_paint_pipeline as sndPaint
 import mq3.audio.snd_raw_stream as sndRaw
+import mq3.audio.snd_public as sndPublic
 import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
 import std.array as arrays
@@ -45,6 +46,7 @@ function queueRaw(state,audio,volume)
 end function
 
 function validOrigin(origin) return origin!=void and len(origin)==3 end function
+function validSoundEntity(entity) return sndPublic.validEntity(entity) end function
 function copyOrigin(origin) return [origin[0],origin[1],origin[2]] end function
 
 function entityOrigin(state,entity)

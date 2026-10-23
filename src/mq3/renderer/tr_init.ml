@@ -4,8 +4,9 @@
 // OpenGL and filesystem work is exposed as typed, retail-suppressible actions.
 package mq3.renderer.tr_init
 import mq3.compat.numeric as n
+import mq3.renderer.tr_public as trPublic
 
-const REF_API_VERSION=8
+const REF_API_VERSION=trPublic.REF_API_VERSION
 struct Action boundary kind name value number dispatched end struct
 struct Cvar name value integer flags end struct
 struct Mode description width height pixelAspect end struct
@@ -67,4 +68,4 @@ function endRegistration(state,lowMemory,retailActive) action(state,"renderer","
 function rendererPrint(state,text,retailActive) return action(state,"system","print","renderer",text,0,retailActive) end function
 function rendererError(state,text,retailActive) return action(state,"system","fatal-error","renderer",text,0,retailActive) end function
 // GetRefAPI
-function getRefAPI(state,apiVersion,retailActive) if apiVersion!=REF_API_VERSION then rendererPrint(state,"Mismatched REF_API_VERSION: expected "+str(REF_API_VERSION)+", got "+str(apiVersion)+"\n",retailActive);return void end if;state.apiExports=["Shutdown","BeginRegistration","RegisterModel","RegisterSkin","RegisterShader","RegisterShaderNoMip","LoadWorld","SetWorldVisData","EndRegistration","BeginFrame","EndFrame","MarkFragments","LerpTag","ModelBounds","ClearScene","AddRefEntityToScene","AddPolyToScene","LightForPoint","AddLightToScene","AddAdditiveLightToScene","RenderScene","SetColor","DrawStretchPic","DrawStretchRaw","UploadCinematic","RegisterFont","RemapShader","GetEntityToken","inPVS"];return state.apiExports end function
+function getRefAPI(state,apiVersion,retailActive) if not trPublic.compatible(apiVersion) then rendererPrint(state,"Mismatched REF_API_VERSION: expected "+str(REF_API_VERSION)+", got "+str(apiVersion)+"\n",retailActive);return void end if;state.apiExports=trPublic.exportNames();return state.apiExports end function

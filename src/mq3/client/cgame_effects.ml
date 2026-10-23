@@ -4,32 +4,33 @@
 // allocate local entities; this module describes the same render/audio
 // boundary actions.  retailActive suppresses dispatch beside cgame.qvm.
 package mq3.client.cgame_effects
+import mq3.client.cg_local as cgabi
 
 import mq3.compat.numeric as n
 import mq3.shared.math as qmath
 
-const LE_MOVE_SCALE_FADE=4
-const LE_FADE_RGB=5
-const LE_EXPLOSION=6
-const LE_SPRITE_EXPLOSION=7
-const LE_FRAGMENT=8
-const LE_SCOREPLUM=9
-const LE_SHOWREFENTITY=10
-const LE_KAMIKAZE=11
-const LE_INVULIMPACT=12
-const LE_INVULJUICED=13
-const LEF_PUFF_DONT_SCALE=1
+const LE_MOVE_SCALE_FADE=cgabi.LE_MOVE_SCALE_FADE
+const LE_FADE_RGB=cgabi.LE_FADE_RGB
+const LE_EXPLOSION=cgabi.LE_EXPLOSION
+const LE_SPRITE_EXPLOSION=cgabi.LE_SPRITE_EXPLOSION
+const LE_FRAGMENT=cgabi.LE_FRAGMENT
+const LE_SCOREPLUM=cgabi.LE_SCOREPLUM
+const LE_SHOWREFENTITY=cgabi.LE_SHOWREFENTITY
+const LE_KAMIKAZE=cgabi.LE_KAMIKAZE
+const LE_INVULIMPACT=cgabi.LE_INVULIMPACT
+const LE_INVULJUICED=cgabi.LE_INVULJUICED
+const LEF_PUFF_DONT_SCALE=cgabi.LEF_PUFF_DONT_SCALE
 const TR_LINEAR=2
 const TR_GRAVITY=5
 const RT_MODEL=1
 const RT_SPRITE=2
 const RT_LIGHTNING=5
 const RF_THIRD_PERSON=2
-const LEBS_NONE=0
-const LEBS_BLOOD=1
-const LEBS_BRASS=2
-const LEMT_NONE=0
-const LEMT_BLOOD=1
+const LEBS_NONE=cgabi.LEBS_NONE
+const LEBS_BLOOD=cgabi.LEBS_BLOOD
+const LEBS_BRASS=cgabi.LEBS_BRASS
+const LEMT_NONE=cgabi.LEMT_NONE
+const LEMT_BLOOD=cgabi.LEMT_BLOOD
 const ENTITYNUM_NONE=1023
 const CHAN_BODY=4
 

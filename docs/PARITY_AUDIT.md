@@ -3037,3 +3037,43 @@ Das generierte Inventar zählt nun **229 portierte, keine teilweise portierte
 und 106 noch nicht begonnene** Dateien von insgesamt 335. Die verbleibenden
 Quellportlücken liegen vor allem in Botlib-/AAS-Interna, Renderer-Backends,
 Client-/QCommon-Resten sowie Unix-, macOS-, Null- und weiteren Plattformpfaden.
+
+## 2026-10-23: Lokale CGame-, Client-, Sound-, Renderer- und Spiel-AI-Header geschlossen
+
+Fünfzehn weitere Originalheader sind vollständig nativ zugeordnet:
+
+- `code/cgame/cg_local.h`: 47 Defines, 37 Enumwerte, 21 Typen mit 600
+  Feldern, 243 Funktionen und 114 Globals. 47 unveränderte x86-ABI-Datensätze
+  und 15 Verträge bestehen. Neun produktive CGame-Module verwenden die
+  Fassade. Dabei wurden die Local-Entity-Ordinalwerte, `LAND_DEFLECT_TIME`
+  und das originale Mark-Polygonlimit korrigiert.
+- `code/client/client.h`, `snd_local.h` und `snd_public.h`: 17 Typen, 135
+  Deklarationen und 62 Externs. 166 unveränderte Win32-x86-ABI-Datensätze, 20
+  Verträge und 575 Retail-Sounds bestehen. Client-Retransmit, Soundkanäle und
+  QVM-Audiowiedergabe verwenden die gemeinsamen Definitionen.
+- `code/renderer/tr_public.h`, `tr_local.h`, `qgl.h` und `qgl_linked.h`: 377
+  GL-/WGL-/GLX-/fxMesa-Einstiegspunkte, 334 QGL-Aliase, 73 Makros, 111
+  Enumwerte, 61 lokale Typen, 159 Funktionen und 98 Globals. Das x86-C-Orakel,
+  24 Verträge, Retail-QVM-/BSP-Proben sowie die `tr_init`-, Backend- und
+  WinGL-Regressionen bestehen.
+- `code/game/ai_chat.h`, `ai_cmd.h`, `ai_dmnet.h`, `ai_dmq3.h`, `ai_main.h`,
+  `ai_team.h` und `ai_vcmd.h`: 55 Konstanten, drei Typen, 135 Deklarationen,
+  16 Globals und 163 Recordfelder. Das unveränderte C-Orakel und 16 Verträge
+  bestehen. Die produktiven Kampf-, Navigation- und Team-Module verwenden die
+  Originalwerte; falsche Werte für `BFL_STRAFERIGHT`, `PATROL_BACK`,
+  `TEAMTP_DEFENDER` und `TEAMTP_ATTACKER` wurden behoben.
+
+Alle vier neuen Vollständigkeitsgates sowie die zugehörigen CGame-, Client-,
+Audio-, Renderer-, Botkommando-, Botnavigation-, Botkampf- und Retail-
+Botspawnregressionen sind grün. Der sequentielle Windows-Hauptbuild besteht.
+Der gekoppelte acht Frames lange Retail-QVM-Match meldet 131 Entities, 13
+Snapshot-Entities, 2.345 vollständig texturierte Dreiecke, 17 Renderpässe, 26
+Sounds und null nicht unterstützte Entities. `build/MiniQuake3.exe` hat
+SHA-256 `0d8bd3f87329040466737976a342c08c74950093c904ada5904efb03f6489df0`.
+Die letzte vollständige Gesamtauswahl bleibt der dokumentierte 449-Gate-Lauf;
+die normale Retail-Auswahl in `scripts/verify.py` umfasst inzwischen 487 Gates.
+
+Das generierte Inventar zählt nun **244 portierte, keine teilweise portierte
+und 91 noch nicht begonnene** Dateien von insgesamt 335. Die verbleibenden
+Quellportlücken liegen vor allem in Botlib-/AAS-Interna, QCommon-Resten,
+Plattformpfaden sowie sechs UI- und einem CGame-Build-/Syscall-Header.

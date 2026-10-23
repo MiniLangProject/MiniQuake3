@@ -8,10 +8,10 @@ typedef float vec3_t[3];
 #define qfalse 0
 #define GLHW_RAGEPRO 1
 #define LE_MOVE_SCALE_FADE 4
-#define LE_FADE_RGB 5
-#define LE_EXPLOSION 6
-#define LE_SPRITE_EXPLOSION 7
-#define LE_FRAGMENT 8
+#define LE_FADE_RGB 6
+#define LE_EXPLOSION 1
+#define LE_SPRITE_EXPLOSION 2
+#define LE_FRAGMENT 3
 #define LEF_PUFF_DONT_SCALE 1
 #define TR_LINEAR 2
 #define TR_GRAVITY 5

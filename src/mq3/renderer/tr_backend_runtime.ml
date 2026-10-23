@@ -9,6 +9,8 @@ import mq3.compat.numeric as n
 import mq3.renderer.command_queue as commands
 import mq3.renderer.draw_surfs as drawSurfs
 import mq3.renderer.texture_state as textures
+import mq3.renderer.tr_local as trLocal
+import mq3.renderer.qgl as qgl
 
 const CT_FRONT_SIDED=0
 const CT_BACK_SIDED=1
@@ -21,13 +23,13 @@ const GL_MODULATE=0x2100
 const GL_DECAL=0x2101
 const GL_REPLACE=0x1e01
 const GL_ADD=0x0104
-const GLS_SRCBLEND_BITS=0x0000000f
-const GLS_DSTBLEND_BITS=0x000000f0
-const GLS_DEPTHMASK_TRUE=0x00000100
-const GLS_POLYMODE_LINE=0x00001000
-const GLS_DEPTHTEST_DISABLE=0x00010000
-const GLS_DEPTHFUNC_EQUAL=0x00020000
-const GLS_ATEST_BITS=0x70000000
+const GLS_SRCBLEND_BITS=trLocal.GLS_SRCBLEND_BITS
+const GLS_DSTBLEND_BITS=trLocal.GLS_DSTBLEND_BITS
+const GLS_DEPTHMASK_TRUE=trLocal.GLS_DEPTHMASK_TRUE
+const GLS_POLYMODE_LINE=trLocal.GLS_POLYMODE_LINE
+const GLS_DEPTHTEST_DISABLE=trLocal.GLS_DEPTHTEST_DISABLE
+const GLS_DEPTHFUNC_EQUAL=trLocal.GLS_DEPTHFUNC_EQUAL
+const GLS_ATEST_BITS=trLocal.GLS_ATEST_BITS
 const GLS_ATEST_GT_0=0x10000000
 const GLS_ATEST_LT_80=0x20000000
 const GLS_ATEST_GE_80=0x40000000
@@ -48,6 +50,7 @@ struct Services eventFn surfaceFn screenshotFn sleepFn context end struct
 struct State textureState gl commandBackend services width height projection2D finishCalled isHyperspace skyRenderedThisView smpFrame refdef viewParms worldEntity currentEntity tessShader tessFog tessDlight numIndexes color2D overdraw msec rawImages uploads frames end struct
 
 function fail(message) return error(7720,"tr_backend: "+message) end function
+function qglRequiredCount() return len(qgl.requiredEntryPoints()) end function
 function services() return Services(void,void,void,void,void) end function
 function glState() return GLState(-1,[0,0],0,false,false,0,0,true,false,true,0,false) end function
 function identityMatrix() return [1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,1.0] end function

@@ -3,6 +3,7 @@
 // Native semantic port of code/cgame/cg_servercmds.c. Host side effects are
 // returned as typed actions so an unchanged Retail QVM can remain authoritative.
 package mq3.client.cgame_servercmds
+import mq3.client.cg_local as cgabi
 import std.string as strings
 import mq3.shared.info as info
 import mq3.compat.numeric as numeric
@@ -16,8 +17,8 @@ const MAX_VOICESOUNDS=64
 const MAX_HEADMODELS=64
 const MAX_VOICECHATBUFFER=32
 const MAX_SAY_TEXT=150
-const TEAMCHAT_HEIGHT=8
-const TEAMCHAT_WIDTH=80
+const TEAMCHAT_HEIGHT=cgabi.TEAMCHAT_HEIGHT
+const TEAMCHAT_WIDTH=cgabi.TEAMCHAT_WIDTH
 const GT_CTF=4
 const GT_1FCTF=5
 const GENDER_MALE=0

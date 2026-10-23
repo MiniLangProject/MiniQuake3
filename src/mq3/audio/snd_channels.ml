@@ -2,7 +2,9 @@
 // Dynamic sound-channel ownership and replacement from Baseq3 S_StartSound.
 package mq3.audio.snd_channels
 
-const MAX_CHANNELS=96
+import mq3.audio.snd_local as sndLocal
+
+const MAX_CHANNELS=sndLocal.MAX_CHANNELS
 const CHAN_ANNOUNCER=7
 
 struct Channel active entity handle entchannel allocTime end struct

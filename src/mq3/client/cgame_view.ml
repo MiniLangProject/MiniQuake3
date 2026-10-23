@@ -4,6 +4,7 @@
 // remain the actual producer; every native renderer/audio/system call is kept
 // as a typed boundary record and can be suppressed to avoid double dispatch.
 package mq3.client.cgame_view
+import mq3.client.cg_local as cgabi
 
 import mq3.compat.numeric as n
 import mq3.compat.transcendental as crt
@@ -30,17 +31,17 @@ const STEREO_RIGHT=2
 const CHAN_ITEM=4
 const CHAN_ANNOUNCER=7
 const MAX_POWERUPS=16
-const MAX_SOUNDBUFFER=20
-const STEP_TIME=200
-const DUCK_TIME=100
-const LAND_DEFLECT_TIME=100
-const LAND_RETURN_TIME=300
-const DAMAGE_DEFLECT_TIME=100
-const DAMAGE_RETURN_TIME=400
-const DAMAGE_TIME=500
-const ZOOM_TIME=150
-const POWERUP_BLINKS=5
-const POWERUP_BLINK_TIME=1000
+const MAX_SOUNDBUFFER=cgabi.MAX_SOUNDBUFFER
+const STEP_TIME=cgabi.STEP_TIME
+const DUCK_TIME=cgabi.DUCK_TIME
+const LAND_DEFLECT_TIME=cgabi.LAND_DEFLECT_TIME
+const LAND_RETURN_TIME=cgabi.LAND_RETURN_TIME
+const DAMAGE_DEFLECT_TIME=cgabi.DAMAGE_DEFLECT_TIME
+const DAMAGE_RETURN_TIME=cgabi.DAMAGE_RETURN_TIME
+const DAMAGE_TIME=cgabi.DAMAGE_TIME
+const ZOOM_TIME=cgabi.ZOOM_TIME
+const POWERUP_BLINKS=cgabi.POWERUP_BLINKS
+const POWERUP_BLINK_TIME=cgabi.POWERUP_BLINK_TIME
 const FOCUS_DISTANCE=512.0
 const PI=3.14159265358979323846
 

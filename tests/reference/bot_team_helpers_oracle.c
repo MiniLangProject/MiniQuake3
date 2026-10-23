@@ -5,8 +5,8 @@
 #define MAX_INFO_STRING 1024
 #define MAX_NETNAME 36
 #define TEAM_SPECTATOR 3
-#define TEAMTP_ATTACKER 1
-#define TEAMTP_DEFENDER 2
+#define TEAMTP_ATTACKER 2
+#define TEAMTP_DEFENDER 1
 #define qfalse 0
 #define qtrue 1
 #define CS_PLAYERS 0

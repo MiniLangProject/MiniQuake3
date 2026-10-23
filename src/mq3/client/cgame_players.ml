@@ -4,6 +4,7 @@
 // and filesystem calls cross typed boundaries and may be suppressed while the
 // retail QVM remains authoritative.
 package mq3.client.cgame_players
+import mq3.client.cg_local as cgabi
 import std.string as strings
 import mq3.shared.info as info
 import mq3.compat.numeric as n
@@ -51,7 +52,7 @@ const EF_CONNECTION=8192
 const EF_AWARD_IMPRESSIVE=32768
 const EF_AWARD_DEFEND=65536
 const EF_AWARD_ASSIST=131072
-const PAIN_TWITCH_TIME=200
+const PAIN_TWITCH_TIME=cgabi.PAIN_TWITCH_TIME
 
 struct Action boundary kind entity name value origin color dispatched end struct
 struct Animation firstFrame numFrames loopFrames frameLerp initialLerp reversed flipflop end struct

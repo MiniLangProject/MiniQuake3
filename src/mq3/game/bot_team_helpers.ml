@@ -5,12 +5,13 @@ package mq3.game.bot_team_helpers
 import mq3.shared.info as info
 import std.string as strings
 import mq3.compat.numeric as n
+import mq3.game.bot_ai_headers as aiheaders
 
 const MAX_CLIENTS=64
 const TEAM_SPECTATOR=3
-const TEAMTP_ATTACKER=1
-const TEAMTP_DEFENDER=2
-const CTFS_AGRESSIVE=1
+const TEAMTP_ATTACKER=aiheaders.TEAMTP_ATTACKER
+const TEAMTP_DEFENDER=aiheaders.TEAMTP_DEFENDER
+const CTFS_AGRESSIVE=aiheaders.CTFS_AGRESSIVE
 
 struct State
   names

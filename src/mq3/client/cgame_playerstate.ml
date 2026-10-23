@@ -3,6 +3,7 @@
 // Native observer port of code/cgame/cg_playerstate.c.  The QVM remains the
 // owner of presentation side effects; actions recorded here are parity data.
 package mq3.client.cgame_playerstate
+import mq3.client.cg_local as cgabi
 import mq3.game.playerstate as playerstate
 import mq3.shared.math as qmath
 import mq3.compat.numeric as n
@@ -39,9 +40,9 @@ const PLAYEREVENT_DENIEDREWARD=1
 const PLAYEREVENT_GAUNTLETREWARD=2
 const PLAYEREVENT_HOLYSHIT=4
 const MAX_PS_EVENTS=2
-const MAX_PREDICTED_EVENTS=16
-const MAX_REWARDSTACK=10
-const DAMAGE_TIME=500
+const MAX_PREDICTED_EVENTS=cgabi.MAX_PREDICTED_EVENTS
+const MAX_REWARDSTACK=cgabi.MAX_REWARDSTACK
+const DAMAGE_TIME=cgabi.DAMAGE_TIME
 
 // The integer media values are observation tags.  They intentionally do not
 // call the renderer/audio traps a second time beside the real cgame QVM.

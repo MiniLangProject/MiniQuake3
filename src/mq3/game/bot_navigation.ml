@@ -3,6 +3,7 @@
 // Baseq3 ai_dmq3.c movement policy and ai_dmnet.c route/goal execution.
 package mq3.game.bot_navigation
 import mq3.game.game_headers as headers
+import mq3.game.bot_ai_headers as aiheaders
 import mq3.shared.math as qmath
 import mq3.compat.numeric as n
 
@@ -10,8 +11,8 @@ const ENTITYNUM_NONE=1023
 const PMF_DUCKED=1
 const PMF_TIME_KNOCKBACK=64
 const PMF_TIME_WATERJUMP=256
-const PRESENCE_NORMAL=2
-const PRESENCE_CROUCH=4
+const PRESENCE_NORMAL=aiheaders.PRESENCE_NORMAL
+const PRESENCE_CROUCH=aiheaders.PRESENCE_CROUCH
 const MFL_ONGROUND=2
 const MFL_WATERJUMP=16
 const MFL_TELEPORTED=32
@@ -25,22 +26,22 @@ const AREACONTENTS_MODELNUMSHIFT=24
 const AREACONTENTS_MODELNUM=0xff000000
 const TFL_BRIDGE=0x04000000
 const TEAM_RED=1
-const MAX_ACTIVATESTACK=8
-const MAX_ACTIVATEAREAS=32
+const MAX_ACTIVATESTACK=aiheaders.MAX_ACTIVATESTACK
+const MAX_ACTIVATEAREAS=aiheaders.MAX_ACTIVATEAREAS
 const CHARACTERISTIC_CAMPER=headers.CHARACTERISTIC_CAMPER
 const CHARACTERISTIC_CROUCHER=headers.CHARACTERISTIC_CROUCHER
-const LTG_TEAMHELP=1
-const LTG_TEAMACCOMPANY=2
-const LTG_DEFENDKEYAREA=3
-const LTG_GETFLAG=4
-const LTG_RUSHBASE=5
-const LTG_CAMP=7
-const LTG_CAMPORDER=8
-const LTG_PATROL=9
-const LTG_RETURNFLAG=6
-const LTG_GETITEM=10
-const LTG_KILL=11
-const PATROL_BACK=1
+const LTG_TEAMHELP=aiheaders.LTG_TEAMHELP
+const LTG_TEAMACCOMPANY=aiheaders.LTG_TEAMACCOMPANY
+const LTG_DEFENDKEYAREA=aiheaders.LTG_DEFENDKEYAREA
+const LTG_GETFLAG=aiheaders.LTG_GETFLAG
+const LTG_RUSHBASE=aiheaders.LTG_RUSHBASE
+const LTG_CAMP=aiheaders.LTG_CAMP
+const LTG_CAMPORDER=aiheaders.LTG_CAMPORDER
+const LTG_PATROL=aiheaders.LTG_PATROL
+const LTG_RETURNFLAG=aiheaders.LTG_RETURNFLAG
+const LTG_GETITEM=aiheaders.LTG_GETITEM
+const LTG_KILL=aiheaders.LTG_KILL
+const PATROL_BACK=aiheaders.PATROL_BACK
 const GT_CTF=4
 const TFL_DEFAULT=0x011c0fbe
 const INVENTORY_ROCKETLAUNCHER=headers.INVENTORY_ROCKETLAUNCHER

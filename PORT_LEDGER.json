@@ -10455,10 +10455,122 @@
       "sha256": "2bc1fd9fb8f5bab3240f7e667790b9dcfec05ef67817668cb8a4f2041d741956",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "47 preprocessor defines",
+          "target_files": [
+            "src/mq3/client/cg_local.ml",
+            "src/mq3/client/cgame_localents.ml",
+            "src/mq3/client/cgame_effects.ml",
+            "src/mq3/client/cgame_weapons.ml",
+            "src/mq3/client/cgame_view.ml",
+            "src/mq3/client/cgame_players.ml",
+            "src/mq3/client/cgame_playerstate.ml",
+            "src/mq3/client/cgame_event.ml",
+            "src/mq3/client/cgame_marks.ml",
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete Baseq3 and Missionpack local CGame ABI facade; unchanged 32-bit C layouts/values, exact declaration and record inventories, managed contracts and productive semantic paths are tested."
+        },
+        {
+          "original": "37 enum members",
+          "target_files": [
+            "src/mq3/client/cg_local.ml",
+            "src/mq3/client/cgame_localents.ml",
+            "src/mq3/client/cgame_effects.ml",
+            "src/mq3/client/cgame_weapons.ml",
+            "src/mq3/client/cgame_view.ml",
+            "src/mq3/client/cgame_players.ml",
+            "src/mq3/client/cgame_playerstate.ml",
+            "src/mq3/client/cgame_event.ml",
+            "src/mq3/client/cgame_marks.ml",
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete Baseq3 and Missionpack local CGame ABI facade; unchanged 32-bit C layouts/values, exact declaration and record inventories, managed contracts and productive semantic paths are tested."
+        },
+        {
+          "original": "21 local CGame ABI types / 600 fields",
+          "target_files": [
+            "src/mq3/client/cg_local.ml",
+            "src/mq3/client/cgame_localents.ml",
+            "src/mq3/client/cgame_effects.ml",
+            "src/mq3/client/cgame_weapons.ml",
+            "src/mq3/client/cgame_view.ml",
+            "src/mq3/client/cgame_players.ml",
+            "src/mq3/client/cgame_playerstate.ml",
+            "src/mq3/client/cgame_event.ml",
+            "src/mq3/client/cgame_marks.ml",
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete Baseq3 and Missionpack local CGame ABI facade; unchanged 32-bit C layouts/values, exact declaration and record inventories, managed contracts and productive semantic paths are tested."
+        },
+        {
+          "original": "243 CGame/trap function declarations",
+          "target_files": [
+            "src/mq3/client/cg_local.ml",
+            "src/mq3/client/cgame_localents.ml",
+            "src/mq3/client/cgame_effects.ml",
+            "src/mq3/client/cgame_weapons.ml",
+            "src/mq3/client/cgame_view.ml",
+            "src/mq3/client/cgame_players.ml",
+            "src/mq3/client/cgame_playerstate.ml",
+            "src/mq3/client/cgame_event.ml",
+            "src/mq3/client/cgame_marks.ml",
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete Baseq3 and Missionpack local CGame ABI facade; unchanged 32-bit C layouts/values, exact declaration and record inventories, managed contracts and productive semantic paths are tested."
+        },
+        {
+          "original": "114 shared globals",
+          "target_files": [
+            "src/mq3/client/cg_local.ml",
+            "src/mq3/client/cgame_localents.ml",
+            "src/mq3/client/cgame_effects.ml",
+            "src/mq3/client/cgame_weapons.ml",
+            "src/mq3/client/cgame_view.ml",
+            "src/mq3/client/cgame_players.ml",
+            "src/mq3/client/cgame_playerstate.ml",
+            "src/mq3/client/cgame_event.ml",
+            "src/mq3/client/cgame_marks.ml",
+            "src/mq3/client/cgame_servercmds.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete Baseq3 and Missionpack local CGame ABI facade; unchanged 32-bit C layouts/values, exact declaration and record inventories, managed contracts and productive semantic paths are tested."
+        }
+      ],
+      "target": [
+        "src/mq3/client/cg_local.ml",
+        "src/mq3/client/cgame_localents.ml",
+        "src/mq3/client/cgame_effects.ml",
+        "src/mq3/client/cgame_weapons.ml",
+        "src/mq3/client/cgame_view.ml",
+        "src/mq3/client/cgame_players.ml",
+        "src/mq3/client/cgame_playerstate.ml",
+        "src/mq3/client/cgame_event.ml",
+        "src/mq3/client/cgame_marks.ml",
+        "src/mq3/client/cgame_servercmds.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_cg_local_header_complete.py",
+        "tests/reference/cg_local_header_oracle.c",
+        "tests/cg_local_header_oracle.ml",
+        "tests/cg_local_header_contracts.ml",
+        "scripts/test_cgame_effects.py",
+        "scripts/test_cgame_localents.py",
+        "scripts/test_cgame_weapons.py",
+        "scripts/test_cgame_view.py",
+        "scripts/test_cgame_players.py",
+        "scripts/test_cgame_playerstate.py",
+        "scripts/test_cgame_event.py",
+        "scripts/test_cgame_marks.py",
+        "scripts/test_cgame_servercmds.py",
+        "scripts/test_retail_qvm_match.py"
+      ]
     },
     {
       "source": "code/cgame/cg_localents.c",
@@ -17695,10 +17807,55 @@
       "sha256": "b30e007736ae998ecc57bb592a199724a7c460600e1c25cb2b291b27a5d14c3e",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "clSnapshot_t, outPacket_t, clientActive_t, clientConnection_t",
+          "target_files": [
+            "src/mq3/client/client_abi.ml",
+            "src/mq3/client/client_main.ml",
+            "src/mq3/client/snapshot_parse.ml",
+            "src/mq3/client/send_cmd.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete managed client ABI facade with unchanged MSVC x86 sizes, offsets and bounded-array counts; live retransmit timing consumes the canonical header constant."
+        },
+        {
+          "original": "ping_t, serverInfo_t, serverAddress_t, clientStatic_t, kbutton_t",
+          "target_files": [
+            "src/mq3/client/client_abi.ml",
+            "src/mq3/client/client_main.ml",
+            "src/mq3/client/cl_input.ml",
+            "src/mq3/client/ui_lan_browser.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete managed client ABI facade with unchanged MSVC x86 sizes, offsets and bounded-array counts; live retransmit timing consumes the canonical header constant."
+        },
+        {
+          "original": "93 client declarations and 41 externals",
+          "target_files": [
+            "src/mq3/client/client_abi.ml",
+            "src/mq3/client"
+          ],
+          "status": "tested",
+          "scope": "The complete original declaration/extern inventory is checked and its split productive MiniLang client implementation is regression-tested."
+        }
+      ],
+      "target": [
+        "src/mq3/client/client_abi.ml",
+        "src/mq3/client/client_main.ml",
+        "src/mq3/client/snapshot_parse.ml",
+        "src/mq3/client/send_cmd.ml",
+        "src/mq3/client/cl_input.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_client_sound_headers_complete.py",
+        "tests/reference/client_sound_headers_oracle.c",
+        "tests/client_sound_headers_oracle.ml",
+        "tests/client_sound_headers_contracts.ml",
+        "scripts/test_client_main.py",
+        "scripts/test_client_network_ingress.py"
+      ]
     },
     {
       "source": "code/client/keys.h",
@@ -17928,10 +18085,44 @@
       "sha256": "7e034bdca96630d70f8b9459f96789988b4356fd4f089700891e059762495e5c",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "portable_samplepair_t, adpcm_state_t, sndBuffer, sfx_t, dma_t, loopSound_t, channel_t, wavinfo_t",
+          "target_files": [
+            "src/mq3/audio/snd_local.ml",
+            "src/mq3/audio/snd_channels.ml",
+            "src/mq3/audio/snd_paint_pipeline.ml",
+            "src/mq3/audio/snd_mem_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All private sound records, constants, declarations and externs are mirrored; unchanged MSVC x86 ABI records and native mixer contracts are exact."
+        },
+        {
+          "original": "20 private sound declarations and 21 externals",
+          "target_files": [
+            "src/mq3/audio/snd_local.ml",
+            "src/mq3/audio"
+          ],
+          "status": "tested",
+          "scope": "Complete private sound declaration inventory is tied to the split productive audio runtime and Retail asset regression."
+        }
+      ],
+      "target": [
+        "src/mq3/audio/snd_local.ml",
+        "src/mq3/audio/snd_channels.ml",
+        "src/mq3/audio/snd_paint_pipeline.ml",
+        "src/mq3/audio/snd_mem_runtime.ml",
+        "src/mq3/audio/snd_mix_runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_client_sound_headers_complete.py",
+        "tests/reference/client_sound_headers_oracle.c",
+        "tests/client_sound_headers_oracle.ml",
+        "tests/client_sound_headers_contracts.ml",
+        "scripts/test_audio_snd_channels.py",
+        "scripts/test_qvm_audio.py"
+      ]
     },
     {
       "source": "code/client/snd_mem.c",
@@ -18082,10 +18273,34 @@
       "sha256": "b40c394f844d2136cb8c42bcc130b3f9454a2371ec26830094af00d0de3e5298",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "22 public S_* and SNDDMA_* declarations",
+          "target_files": [
+            "src/mq3/audio/snd_public.ml",
+            "src/mq3/audio/qvm_playback.ml",
+            "src/mq3/audio/qvm_sound_assets.ml",
+            "src/mq3/platform/playable_audio.ml",
+            "src/mq3/platform/win_snd.ml"
+          ],
+          "status": "tested",
+          "scope": "Complete public sound API inventory with format/entity guards is consumed by productive QVM playback and exercised against Retail pak0 audio."
+        }
+      ],
+      "target": [
+        "src/mq3/audio/snd_public.ml",
+        "src/mq3/audio/qvm_playback.ml",
+        "src/mq3/audio/qvm_sound_assets.ml",
+        "src/mq3/platform/playable_audio.ml",
+        "src/mq3/platform/win_snd.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_client_sound_headers_complete.py",
+        "tests/client_sound_headers_contracts.ml",
+        "scripts/test_qvm_audio.py",
+        "scripts/playable_audio_asset_smoke.py"
+      ]
     },
     {
       "source": "code/client/snd_wavelet.c",
@@ -18417,10 +18632,29 @@
       "sha256": "68ebc26caf345c2a1379032730cd9ed221123f63adae7e67eb717ce96da74da3",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete ai_chat.h contract",
+          "target_files": [
+            "src/mq3/game/bot_ai_headers.ml",
+            "src/mq3/game/bot_chat.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All Baseq3 AI constants, declarations, globals and record fields are inventoried in a canonical facade and consumed by the productive bot gameplay modules; unchanged 32-bit C values and focused gameplay regressions pass."
+        }
+      ],
+      "target": [
+        "src/mq3/game/bot_ai_headers.ml",
+        "src/mq3/game/bot_chat.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_bot_ai_headers_complete.py",
+        "tests/reference/bot_ai_headers_oracle.c",
+        "tests/bot_ai_headers_oracle.ml",
+        "tests/bot_ai_headers_contracts.ml",
+        "scripts/test_bot_chat.py"
+      ]
     },
     {
       "source": "code/game/ai_cmd.c",
@@ -18857,10 +19091,29 @@
       "sha256": "2aac0f952dbfec495af4ebd20b1d3b3d8b6badef735d28ce8cd1315619b32708",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete ai_cmd.h contract",
+          "target_files": [
+            "src/mq3/game/bot_ai_headers.ml",
+            "src/mq3/game/bot_command_matches.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All Baseq3 AI constants, declarations, globals and record fields are inventoried in a canonical facade and consumed by the productive bot gameplay modules; unchanged 32-bit C values and focused gameplay regressions pass."
+        }
+      ],
+      "target": [
+        "src/mq3/game/bot_ai_headers.ml",
+        "src/mq3/game/bot_command_matches.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_bot_ai_headers_complete.py",
+        "tests/reference/bot_ai_headers_oracle.c",
+        "tests/bot_ai_headers_oracle.ml",
+        "tests/bot_ai_headers_contracts.ml",
+        "scripts/test_bot_command_matches.py"
+      ]
     },
     {
       "source": "code/game/ai_dmnet.c",
@@ -19344,10 +19597,32 @@
       "sha256": "be3c3f64a4f41f78769d101654c431b991649859becc79a7fa025eabb078da16",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete ai_dmnet.h contract",
+          "target_files": [
+            "src/mq3/game/bot_ai_headers.ml",
+            "src/mq3/game/ai_dmnet.ml",
+            "src/mq3/game/bot_navigation.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All Baseq3 AI constants, declarations, globals and record fields are inventoried in a canonical facade and consumed by the productive bot gameplay modules; unchanged 32-bit C values and focused gameplay regressions pass."
+        }
+      ],
+      "target": [
+        "src/mq3/game/bot_ai_headers.ml",
+        "src/mq3/game/ai_dmnet.ml",
+        "src/mq3/game/bot_navigation.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_bot_ai_headers_complete.py",
+        "tests/reference/bot_ai_headers_oracle.c",
+        "tests/bot_ai_headers_oracle.ml",
+        "tests/bot_ai_headers_contracts.ml",
+        "scripts/test_ai_dmnet.py",
+        "scripts/test_bot_navigation.py"
+      ]
     },
     {
       "source": "code/game/ai_dmq3.c",
@@ -20517,10 +20792,35 @@
       "sha256": "1c9a877cb1d1e728681b27dc9314ab8bc103979dfd52db4efb24d74215cd3562",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete ai_dmq3.h contract",
+          "target_files": [
+            "src/mq3/game/bot_ai_headers.ml",
+            "src/mq3/game/bot_deathmatch.ml",
+            "src/mq3/game/bot_combat_ai.ml",
+            "src/mq3/game/bot_navigation.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All Baseq3 AI constants, declarations, globals and record fields are inventoried in a canonical facade and consumed by the productive bot gameplay modules; unchanged 32-bit C values and focused gameplay regressions pass."
+        }
+      ],
+      "target": [
+        "src/mq3/game/bot_ai_headers.ml",
+        "src/mq3/game/bot_deathmatch.ml",
+        "src/mq3/game/bot_combat_ai.ml",
+        "src/mq3/game/bot_navigation.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_bot_ai_headers_complete.py",
+        "tests/reference/bot_ai_headers_oracle.c",
+        "tests/bot_ai_headers_oracle.ml",
+        "tests/bot_ai_headers_contracts.ml",
+        "scripts/test_bot_deathmatch_full.py",
+        "scripts/test_bot_attack_move.py",
+        "scripts/test_bot_navigation.py"
+      ]
     },
     {
       "source": "code/game/ai_main.c",
@@ -20921,10 +21221,36 @@
       "sha256": "fd8f5487c9cac77c6b41fa4f725a83bc0953486434cc281f1204938aba773f16",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete ai_main.h contract",
+          "target_files": [
+            "src/mq3/game/bot_ai_headers.ml",
+            "src/mq3/game/ai_main.ml",
+            "src/mq3/game/bot_deathmatch.ml",
+            "src/mq3/game/bot_navigation.ml",
+            "src/mq3/game/bot_team_helpers.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All Baseq3 AI constants, declarations, globals and record fields are inventoried in a canonical facade and consumed by the productive bot gameplay modules; unchanged 32-bit C values and focused gameplay regressions pass."
+        }
+      ],
+      "target": [
+        "src/mq3/game/bot_ai_headers.ml",
+        "src/mq3/game/ai_main.ml",
+        "src/mq3/game/bot_deathmatch.ml",
+        "src/mq3/game/bot_navigation.ml",
+        "src/mq3/game/bot_team_helpers.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_bot_ai_headers_complete.py",
+        "tests/reference/bot_ai_headers_oracle.c",
+        "tests/bot_ai_headers_oracle.ml",
+        "tests/bot_ai_headers_contracts.ml",
+        "scripts/test_bot_spawn_retail.py",
+        "scripts/test_bot_deathmatch_full.py"
+      ]
     },
     {
       "source": "code/game/ai_team.c",
@@ -21233,10 +21559,32 @@
       "sha256": "b41c2805d66b353ac21872c313efbc5322de371f386023f64d818d802097ac31",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete ai_team.h contract",
+          "target_files": [
+            "src/mq3/game/bot_ai_headers.ml",
+            "src/mq3/game/ai_team.ml",
+            "src/mq3/game/bot_team_helpers.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All Baseq3 AI constants, declarations, globals and record fields are inventoried in a canonical facade and consumed by the productive bot gameplay modules; unchanged 32-bit C values and focused gameplay regressions pass."
+        }
+      ],
+      "target": [
+        "src/mq3/game/bot_ai_headers.ml",
+        "src/mq3/game/ai_team.ml",
+        "src/mq3/game/bot_team_helpers.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_bot_ai_headers_complete.py",
+        "tests/reference/bot_ai_headers_oracle.c",
+        "tests/bot_ai_headers_oracle.ml",
+        "tests/bot_ai_headers_contracts.ml",
+        "scripts/test_ai_team_complete.py",
+        "scripts/test_bot_team_helpers.py"
+      ]
     },
     {
       "source": "code/game/ai_vcmd.c",
@@ -21422,10 +21770,29 @@
       "sha256": "f4f0c51b8cac43f8e1ed051cfde07aa2ee63604e39af5313391290418886d9da",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete ai_vcmd.h contract",
+          "target_files": [
+            "src/mq3/game/bot_ai_headers.ml",
+            "src/mq3/game/bot_voice_commands.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All Baseq3 AI constants, declarations, globals and record fields are inventoried in a canonical facade and consumed by the productive bot gameplay modules; unchanged 32-bit C values and focused gameplay regressions pass."
+        }
+      ],
+      "target": [
+        "src/mq3/game/bot_ai_headers.ml",
+        "src/mq3/game/bot_voice_commands.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_bot_ai_headers_complete.py",
+        "tests/reference/bot_ai_headers_oracle.c",
+        "tests/bot_ai_headers_oracle.ml",
+        "tests/bot_ai_headers_contracts.ml",
+        "scripts/test_bot_voice_commands.py"
+      ]
     },
     {
       "source": "code/game/be_aas.h",
@@ -43129,20 +43496,82 @@
       "sha256": "f908c7592b891af17f04860cc9edec9fb86af84251f850e9aec4184cd46a5805",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "377 conditional QGL/WGL/GLX/fxMesa entrypoints",
+          "target_files": [
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/renderer/tr_backend_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete dynamic GL entrypoint inventory and managed registry."
+        },
+        {
+          "original": "34 extension procedure typedefs / 9 extension constants",
+          "target_files": [
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/renderer/tr_backend_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete platform-conditional extension surface and exact constant oracle."
+        },
+        {
+          "original": "QGL dynamic load lifecycle",
+          "target_files": [
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml",
+            "src/mq3/renderer/tr_backend_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Productive Windows GL initialization binds and validates the required core/WGL table and resets it on shutdown."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/qgl.ml",
+        "src/mq3/platform/win_glimp_runtime.ml",
+        "src/mq3/renderer/tr_backend_runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_renderer_headers_complete.py",
+        "tests/reference/renderer_headers_oracle.c",
+        "tests/renderer_headers_oracle.ml",
+        "tests/renderer_headers_contracts.ml",
+        "scripts/test_qvm_renderer_traps.py",
+        "scripts/test_tr_world_complete.py"
+      ]
     },
     {
       "source": "code/renderer/qgl_linked.h",
       "sha256": "1cac9c375d730b784382964eaa41a852d57833df3b9a98978d5b812f63c28508",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "334 qgl-to-gl aliases",
+          "target_files": [
+            "src/mq3/renderer/qgl_linked.ml",
+            "src/mq3/renderer/qgl.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete exact non-Windows static OpenGL alias table with bidirectional lookup contracts."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/qgl_linked.ml",
+        "src/mq3/renderer/qgl.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_renderer_headers_complete.py",
+        "tests/reference/renderer_headers_oracle.c",
+        "tests/renderer_headers_oracle.ml",
+        "tests/renderer_headers_contracts.ml",
+        "scripts/test_qvm_renderer_traps.py",
+        "scripts/test_tr_world_complete.py"
+      ]
     },
     {
       "source": "code/renderer/ref_trin.def",
@@ -44061,10 +44490,64 @@
       "sha256": "688247f22f611f8cd0aa28bb2adb9e2977ff3f868299df168484291da401258c",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "73 macros / 111 enum members / 61 internal types",
+          "target_files": [
+            "src/mq3/renderer/tr_local.ml",
+            "src/mq3/renderer/tr_backend_runtime.ml",
+            "src/mq3/renderer/tr_init.ml",
+            "src/mq3/renderer/tr_world_runtime.ml",
+            "src/mq3/renderer/tr_scene_runtime.ml",
+            "src/mq3/renderer/tr_surface_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete internal renderer declaration inventory with exact 32-bit layout and constant records."
+        },
+        {
+          "original": "159 renderer functions / 98 globals",
+          "target_files": [
+            "src/mq3/renderer/tr_local.ml",
+            "src/mq3/renderer/tr_backend_runtime.ml",
+            "src/mq3/renderer/tr_init.ml",
+            "src/mq3/renderer/tr_world_runtime.ml",
+            "src/mq3/renderer/tr_scene_runtime.ml",
+            "src/mq3/renderer/tr_surface_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete header declaration surface mapped to the native renderer runtime family."
+        },
+        {
+          "original": "draw-surface sort / command capacity / tessellation overflow",
+          "target_files": [
+            "src/mq3/renderer/tr_local.ml",
+            "src/mq3/renderer/tr_backend_runtime.ml",
+            "src/mq3/renderer/tr_init.ml",
+            "src/mq3/renderer/tr_world_runtime.ml",
+            "src/mq3/renderer/tr_scene_runtime.ml",
+            "src/mq3/renderer/tr_surface_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Productive shared invariants consumed by the renderer back end and verified against unchanged C."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/tr_local.ml",
+        "src/mq3/renderer/tr_backend_runtime.ml",
+        "src/mq3/renderer/tr_init.ml",
+        "src/mq3/renderer/tr_world_runtime.ml",
+        "src/mq3/renderer/tr_scene_runtime.ml",
+        "src/mq3/renderer/tr_surface_runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_renderer_headers_complete.py",
+        "tests/reference/renderer_headers_oracle.c",
+        "tests/renderer_headers_oracle.ml",
+        "tests/renderer_headers_contracts.ml",
+        "scripts/test_qvm_renderer_traps.py",
+        "scripts/test_tr_world_complete.py"
+      ]
     },
     {
       "source": "code/renderer/tr_main.c",
@@ -44408,10 +44891,48 @@
       "sha256": "28831e1f6d88c0752b74849a1b1e6bc3cb54d6d8a80dbf0d05baeb7cc924ab6d",
       "category": "runtime",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "refexport_t / 30 declared exports (29 base build)",
+          "target_files": [
+            "src/mq3/renderer/tr_public.ml",
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete refresh export ABI including optional A3D slot and exact base-build dispatch order."
+        },
+        {
+          "original": "refimport_t / 27 imports",
+          "target_files": [
+            "src/mq3/renderer/tr_public.ml",
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete renderer host import ABI with unchanged 32-bit size/offset oracle."
+        },
+        {
+          "original": "GetRefAPI / REF_API_VERSION",
+          "target_files": [
+            "src/mq3/renderer/tr_public.ml",
+            "src/mq3/renderer/tr_init.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Productive tr_init API negotiation and export table use the public facade."
+        }
+      ],
+      "target": [
+        "src/mq3/renderer/tr_public.ml",
+        "src/mq3/renderer/tr_init.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_renderer_headers_complete.py",
+        "tests/reference/renderer_headers_oracle.c",
+        "tests/renderer_headers_oracle.ml",
+        "tests/renderer_headers_contracts.ml",
+        "scripts/test_qvm_renderer_traps.py",
+        "scripts/test_tr_world_complete.py"
+      ]
     },
     {
       "source": "code/renderer/tr_scene.c",

@@ -12,7 +12,7 @@
 #define MOVE_WALK 1
 #define MOVE_CROUCH 2
 #define MOVE_JUMP 8
-#define BFL_STRAFERIGHT 8
+#define BFL_STRAFERIGHT 1
 typedef float vec3_t[3];
 #define VectorCopy(a,b) memcpy((b),(a),sizeof(vec3_t))
 #define VectorSet(v,a,b,c) do{(v)[0]=a;(v)[1]=b;(v)[2]=c;}while(0)

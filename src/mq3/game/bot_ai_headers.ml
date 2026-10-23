@@ -1,0 +1,74 @@
+// Copyright (C) 1999-2005 Id Software, Inc.
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Canonical contracts from the Baseq3 game AI headers.
+package mq3.game.bot_ai_headers
+
+const MAX_NODESWITCHES=50
+const CTF_FLAG_NONE=0
+const CTF_FLAG_RED=1
+const CTF_FLAG_BLUE=2
+const CTF_SKIN_REDTEAM="red"
+const CTF_SKIN_BLUETEAM="blue"
+const MAX_ITEMS=256
+const BFL_STRAFERIGHT=1
+const BFL_ATTACKED=2
+const BFL_ATTACKJUMPED=4
+const BFL_AIMATENEMY=8
+const BFL_AVOIDRIGHT=16
+const BFL_IDEALVIEWSET=32
+const BFL_FIGHTSUICIDAL=64
+const LTG_TEAMHELP=1
+const LTG_TEAMACCOMPANY=2
+const LTG_DEFENDKEYAREA=3
+const LTG_GETFLAG=4
+const LTG_RUSHBASE=5
+const LTG_RETURNFLAG=6
+const LTG_CAMP=7
+const LTG_CAMPORDER=8
+const LTG_PATROL=9
+const LTG_GETITEM=10
+const LTG_KILL=11
+const LTG_HARVEST=12
+const LTG_ATTACKENEMYBASE=13
+const LTG_MAKELOVE_UNDER=14
+const LTG_MAKELOVE_ONTOP=15
+const TEAM_HELP_TIME=60
+const TEAM_ACCOMPANY_TIME=600
+const TEAM_DEFENDKEYAREA_TIME=600
+const TEAM_CAMP_TIME=600
+const TEAM_PATROL_TIME=600
+const TEAM_LEAD_TIME=600
+const TEAM_GETITEM_TIME=60
+const TEAM_KILL_SOMEONE=180
+const TEAM_ATTACKENEMYBASE_TIME=600
+const TEAM_HARVEST_TIME=120
+const CTF_GETFLAG_TIME=600
+const CTF_RUSHBASE_TIME=120
+const CTF_RETURNFLAG_TIME=180
+const CTF_ROAM_TIME=60
+const PATROL_LOOP=1
+const PATROL_REVERSE=2
+const PATROL_BACK=4
+const TEAMTP_DEFENDER=1
+const TEAMTP_ATTACKER=2
+const CTFS_AGRESSIVE=1
+const PRESENCE_NONE=1
+const PRESENCE_NORMAL=2
+const PRESENCE_CROUCH=4
+const MAX_PROXMINES=64
+const MAX_ACTIVATESTACK=8
+const MAX_ACTIVATEAREAS=32
+
+function constantNames() return ["MAX_NODESWITCHES","CTF_FLAG_NONE","CTF_FLAG_RED","CTF_FLAG_BLUE","CTF_SKIN_REDTEAM","CTF_SKIN_BLUETEAM","MAX_ITEMS","BFL_STRAFERIGHT","BFL_ATTACKED","BFL_ATTACKJUMPED","BFL_AIMATENEMY","BFL_AVOIDRIGHT","BFL_IDEALVIEWSET","BFL_FIGHTSUICIDAL","LTG_TEAMHELP","LTG_TEAMACCOMPANY","LTG_DEFENDKEYAREA","LTG_GETFLAG","LTG_RUSHBASE","LTG_RETURNFLAG","LTG_CAMP","LTG_CAMPORDER","LTG_PATROL","LTG_GETITEM","LTG_KILL","LTG_HARVEST","LTG_ATTACKENEMYBASE","LTG_MAKELOVE_UNDER","LTG_MAKELOVE_ONTOP","TEAM_HELP_TIME","TEAM_ACCOMPANY_TIME","TEAM_DEFENDKEYAREA_TIME","TEAM_CAMP_TIME","TEAM_PATROL_TIME","TEAM_LEAD_TIME","TEAM_GETITEM_TIME","TEAM_KILL_SOMEONE","TEAM_ATTACKENEMYBASE_TIME","TEAM_HARVEST_TIME","CTF_GETFLAG_TIME","CTF_RUSHBASE_TIME","CTF_RETURNFLAG_TIME","CTF_ROAM_TIME","PATROL_LOOP","PATROL_REVERSE","PATROL_BACK","TEAMTP_DEFENDER","TEAMTP_ATTACKER","CTFS_AGRESSIVE","PRESENCE_NONE","PRESENCE_NORMAL","PRESENCE_CROUCH","MAX_PROXMINES","MAX_ACTIVATESTACK","MAX_ACTIVATEAREAS"] end function
+function constantValues() return [MAX_NODESWITCHES,CTF_FLAG_NONE,CTF_FLAG_RED,CTF_FLAG_BLUE,CTF_SKIN_REDTEAM,CTF_SKIN_BLUETEAM,MAX_ITEMS,BFL_STRAFERIGHT,BFL_ATTACKED,BFL_ATTACKJUMPED,BFL_AIMATENEMY,BFL_AVOIDRIGHT,BFL_IDEALVIEWSET,BFL_FIGHTSUICIDAL,LTG_TEAMHELP,LTG_TEAMACCOMPANY,LTG_DEFENDKEYAREA,LTG_GETFLAG,LTG_RUSHBASE,LTG_RETURNFLAG,LTG_CAMP,LTG_CAMPORDER,LTG_PATROL,LTG_GETITEM,LTG_KILL,LTG_HARVEST,LTG_ATTACKENEMYBASE,LTG_MAKELOVE_UNDER,LTG_MAKELOVE_ONTOP,TEAM_HELP_TIME,TEAM_ACCOMPANY_TIME,TEAM_DEFENDKEYAREA_TIME,TEAM_CAMP_TIME,TEAM_PATROL_TIME,TEAM_LEAD_TIME,TEAM_GETITEM_TIME,TEAM_KILL_SOMEONE,TEAM_ATTACKENEMYBASE_TIME,TEAM_HARVEST_TIME,CTF_GETFLAG_TIME,CTF_RUSHBASE_TIME,CTF_RETURNFLAG_TIME,CTF_ROAM_TIME,PATROL_LOOP,PATROL_REVERSE,PATROL_BACK,TEAMTP_DEFENDER,TEAMTP_ATTACKER,CTFS_AGRESSIVE,PRESENCE_NONE,PRESENCE_NORMAL,PRESENCE_CROUCH,MAX_PROXMINES,MAX_ACTIVATESTACK,MAX_ACTIVATEAREAS] end function
+function typeNames() return ["bot_waypoint_t","bot_activategoal_t","bot_state_t"] end function
+function waypointFieldNames() return ["inuse","name","goal","next","prev"] end function
+function activateGoalFieldNames() return ["inuse","goal","time","start_time","justused_time","shoot","weapon","target","origin","areas","numareas","areasdisabled","next"] end function
+function botStateFieldNames() return ["inuse","botthink_residual","client","entitynum","cur_ps","last_eFlags","lastucmd","entityeventTime","settings","ainode","thinktime","origin","velocity","presencetype","eye","areanum","inventory","tfl","flags","respawn_wait","lasthealth","lastkilledplayer","lastkilledby","botdeathtype","enemydeathtype","botsuicide","enemysuicide","setupcount","map_restart","entergamechat","num_deaths","num_kills","revenge_enemy","revenge_kills","lastframe_health","lasthitcount","chatto","walker","ltime","entergame_time","ltg_time","nbg_time","respawn_time","respawnchat_time","chase_time","enemyvisible_time","check_time","stand_time","lastchat_time","kamikaze_time","invulnerability_time","standfindenemy_time","attackstrafe_time","attackcrouch_time","attackchase_time","attackjump_time","enemysight_time","enemydeath_time","enemyposition_time","defendaway_time","defendaway_range","rushbaseaway_time","attackaway_time","harvestaway_time","ctfroam_time","killedenemy_time","arrive_time","lastair_time","teleport_time","camp_time","camp_range","weaponchange_time","firethrottlewait_time","firethrottleshoot_time","notblocked_time","blockedbyavoidspot_time","predictobstacles_time","predictobstacles_goalareanum","aimtarget","enemyvelocity","enemyorigin","kamikazebody","proxmines","numproxmines","character","ms","gs","cs","ws","enemy","lastenemyareanum","lastenemyorigin","weaponnum","viewangles","ideal_viewangles","viewanglespeed","ltgtype","teammate","decisionmaker","ordered","order_time","owndecision_time","teamgoal","altroutegoal","reachedaltroutegoal_time","teammessage_time","teamgoal_time","teammatevisible_time","teamtaskpreference","lastgoal_decisionmaker","lastgoal_ltgtype","lastgoal_teammate","lastgoal_teamgoal","lead_teammate","lead_teamgoal","lead_time","leadvisible_time","leadmessage_time","leadbackup_time","teamleader","askteamleader_time","becometeamleader_time","teamgiveorders_time","lastflagcapture_time","numteammates","redflagstatus","blueflagstatus","neutralflagstatus","flagstatuschanged","forceorders","flagcarrier","ctfstrategy","subteam","formation_dist","formation_teammate","formation_angle","formation_dir","formation_origin","formation_goal","activatestack","activategoalheap","checkpoints","patrolpoints","curpatrolpoint","patrolflags"] end function
+function declarationNames() return ["BotChat_EnterGame","BotChat_ExitGame","BotChat_StartLevel","BotChat_EndLevel","BotChat_HitTalking","BotChat_HitNoDeath","BotChat_HitNoKill","BotChat_Death","BotChat_Kill","BotChat_EnemySuicide","BotChat_Random","BotChatTime","BotValidChatPosition","BotChatTest","BotMatchMessage","BotPrintTeamGoal","AIEnter_Intermission","AIEnter_Observer","AIEnter_Respawn","AIEnter_Stand","AIEnter_Seek_ActivateEntity","AIEnter_Seek_NBG","AIEnter_Seek_LTG","AIEnter_Seek_Camp","AIEnter_Battle_Fight","AIEnter_Battle_Chase","AIEnter_Battle_Retreat","AIEnter_Battle_NBG","AINode_Intermission","AINode_Observer","AINode_Respawn","AINode_Stand","AINode_Seek_ActivateEntity","AINode_Seek_NBG","AINode_Seek_LTG","AINode_Battle_Fight","AINode_Battle_Chase","AINode_Battle_Retreat","AINode_Battle_NBG","BotResetNodeSwitches","BotDumpNodeSwitches","BotSetupDeathmatchAI","BotShutdownDeathmatchAI","BotDeathmatchAI","BotFreeWaypoints","BotChooseWeapon","BotSetupForMovement","BotUpdateInventory","BotUpdateBattleInventory","BotBattleUseItems","BotIsDead","BotIsObserver","BotIntermission","BotInLavaOrSlime","EntityIsDead","EntityIsInvisible","EntityIsShooting","EntityHasKamikaze","BotSetUserInfo","BotSetTeamStatus","ClientName","EasyClientName","ClientSkin","BotSynonymContext","BotSetLastOrderedTask","BotTeamGoals","BotAggression","BotFeelingBad","BotWantsToRetreat","BotWantsToChase","BotWantsToHelp","BotCanAndWantsToRocketJump","BotHasPersistantPowerupAndWeapon","BotWantsToCamp","BotAttackMove","BotSameTeam","TeamPlayIsOn","BotTeamFlagCarrier","BotTeamFlagCarrierVisible","BotEnemyFlagCarrierVisible","BotVisibleTeamMatesAndEnemies","InFieldOfVision","BotFindEnemy","BotRoamGoal","BotEntityVisible","BotAimAtEnemy","BotCheckAttack","BotAIBlocked","BotAIPredictObstacles","BotEnableActivateGoalAreas","BotPopFromActivateGoalStack","BotClearActivateGoalStack","BotTeam","BotOppositeTeam","BotCTFCarryingFlag","BotRememberLastOrderedTask","BotCTFSeekGoals","BotCTFRetreatGoals","Bot1FCTFCarryingFlag","BotHarvesterCarryingCubes","Bot1FCTFSeekGoals","Bot1FCTFRetreatGoals","BotObeliskSeekGoals","BotObeliskRetreatGoals","BotGoHarvest","BotHarvesterSeekGoals","BotHarvesterRetreatGoals","BotTeamCubeCarrierVisible","BotEnemyCubeCarrierVisible","BotGetAlternateRouteGoal","BotAlternateRoute","BotCreateWayPoint","BotFindWayPoint","stristr","ClientFromName","ClientOnSameTeamFromName","BotPointAreaNum","BotMapScripts","BotResetState","NumBots","BotEntityInfo","BotAI_Print","BotAI_BotInitialChat","BotAI_Trace","BotAI_GetClientState","BotAI_GetEntityState","BotAI_GetSnapshotEntity","BotTeamLeader","BotTeamAI","BotGetTeamMateTaskPreference","BotSetTeamMateTaskPreference","BotVoiceChat","BotVoiceChatOnly","BotVoiceChatCommand","BotVoiceChat_Defend"] end function
+function globalNames() return ["notleader","gametype","maxclients","bot_grapple","bot_rocketjump","bot_fastchat","bot_nochat","bot_testrchat","bot_challenge","ctf_redflag","ctf_blueflag","ctf_neutralflag","redobelisk","blueobelisk","neutralobelisk","floattime"] end function
+function validPresence(value) return value==PRESENCE_NONE or value==PRESENCE_NORMAL or value==PRESENCE_CROUCH end function
+function validTeamTaskPreference(value) return value==TEAMTP_DEFENDER or value==TEAMTP_ATTACKER end function
+function validLongTermGoal(value) return value>=LTG_TEAMHELP and value<=LTG_MAKELOVE_ONTOP end function
+function nextPatrolDirection(flags) if (flags&PATROL_REVERSE)!=0 then return PATROL_BACK end if;return PATROL_LOOP end function
+function headerCounts() return [55,3,135,16,163] end function

@@ -8,6 +8,7 @@ import mq3.client.demo as demo
 import mq3.client.frame as clientFrame
 import mq3.client.connectionless as connectionless
 import mq3.client.network_ingress as networkIngress
+import mq3.client.client_abi as clientAbi
 
 const CA_UNINITIALIZED=0
 const CA_DISCONNECTED=1
@@ -23,7 +24,7 @@ const MAX_PINGREQUESTS=32
 const MAX_SERVERSTATUSREQUESTS=16
 const MAX_STRING_CHARS=1024
 const PORT_SERVER=27960
-const RETRANSMIT_TIMEOUT=3000
+const RETRANSMIT_TIMEOUT=clientAbi.RETRANSMIT_TIMEOUT
 const CDKEY_LEN=16
 const CDCHKSUM_LEN=2
 

@@ -14,20 +14,20 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | Bereich | Dateien | Portiert | Teilweise | Nicht begonnen | Original behalten |
 |---|---:|---:|---:|---:|---:|
 | `botlib` | 53 | 31 | 0 | 22 | 0 |
-| `cgame` | 25 | 23 | 0 | 2 | 0 |
-| `client` | 19 | 16 | 0 | 3 | 0 |
-| `game` | 65 | 45 | 0 | 20 | 0 |
+| `cgame` | 25 | 24 | 0 | 1 | 0 |
+| `client` | 19 | 19 | 0 | 0 | 0 |
+| `game` | 65 | 52 | 0 | 13 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 47 | 0 | 0 | 0 |
 | `qcommon` | 27 | 18 | 0 | 9 | 0 |
-| `renderer` | 27 | 23 | 0 | 4 | 0 |
+| `renderer` | 27 | 27 | 0 | 0 | 0 |
 | `server` | 11 | 11 | 0 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 9 | 0 | 4 | 0 |
-| **Gesamt** | **335** | **229** | **0** | **106** | **0** |
+| **Gesamt** | **335** | **244** | **0** | **91** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -98,7 +98,7 @@ Teil dieser Tabelle.
 | `code/cgame/cg_ents.c` | `cgame` | `ported` | 18 | 18 | 0 |
 | `code/cgame/cg_event.c` | `cgame` | `ported` | 7 | 7 | 0 |
 | `code/cgame/cg_info.c` | `cgame` | `ported` | 5 | 5 | 0 |
-| `code/cgame/cg_local.h` | `cgame` | `not_started` | 0 | 0 | 0 |
+| `code/cgame/cg_local.h` | `cgame` | `ported` | 0 | 0 | 0 |
 | `code/cgame/cg_localents.c` | `cgame` | `ported` | 20 | 20 | 0 |
 | `code/cgame/cg_main.c` | `cgame` | `ported` | 44 | 44 | 0 |
 | `code/cgame/cg_marks.c` | `cgame` | `ported` | 28 | 28 | 0 |
@@ -126,29 +126,29 @@ Teil dieser Tabelle.
 | `code/client/cl_parse.c` | `client` | `ported` | 9 | 9 | 0 |
 | `code/client/cl_scrn.c` | `client` | `ported` | 18 | 18 | 0 |
 | `code/client/cl_ui.c` | `client` | `ported` | 35 | 35 | 0 |
-| `code/client/client.h` | `client` | `not_started` | 0 | 0 | 0 |
+| `code/client/client.h` | `client` | `ported` | 0 | 0 | 0 |
 | `code/client/keys.h` | `client` | `ported` | 0 | 0 | 0 |
 | `code/client/snd_adpcm.c` | `client` | `ported` | 4 | 4 | 0 |
 | `code/client/snd_dma.c` | `client` | `ported` | 42 | 42 | 0 |
-| `code/client/snd_local.h` | `client` | `not_started` | 0 | 0 | 0 |
+| `code/client/snd_local.h` | `client` | `ported` | 0 | 0 | 0 |
 | `code/client/snd_mem.c` | `client` | `ported` | 12 | 12 | 0 |
 | `code/client/snd_mix.c` | `client` | `ported` | 8 | 8 | 0 |
-| `code/client/snd_public.h` | `client` | `not_started` | 0 | 0 | 0 |
+| `code/client/snd_public.h` | `client` | `ported` | 0 | 0 | 0 |
 | `code/client/snd_wavelet.c` | `client` | `ported` | 9 | 9 | 0 |
 | `code/game/ai_chat.c` | `game` | `ported` | 24 | 24 | 0 |
-| `code/game/ai_chat.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/ai_chat.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/ai_cmd.c` | `game` | `ported` | 41 | 41 | 0 |
-| `code/game/ai_cmd.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/ai_cmd.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/ai_dmnet.c` | `game` | `ported` | 35 | 35 | 0 |
-| `code/game/ai_dmnet.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/ai_dmnet.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/ai_dmq3.c` | `game` | `ported` | 114 | 114 | 0 |
-| `code/game/ai_dmq3.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/ai_dmq3.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/ai_main.c` | `game` | `ported` | 37 | 37 | 0 |
-| `code/game/ai_main.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/ai_main.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/ai_team.c` | `game` | `ported` | 28 | 28 | 0 |
-| `code/game/ai_team.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/ai_team.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/ai_vcmd.c` | `game` | `ported` | 16 | 16 | 0 |
-| `code/game/ai_vcmd.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/ai_vcmd.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/be_aas.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/be_ai_char.h` | `game` | `not_started` | 0 | 0 | 0 |
 | `code/game/be_ai_chat.h` | `game` | `not_started` | 0 | 0 | 0 |
@@ -289,8 +289,8 @@ Teil dieser Tabelle.
 | `code/qcommon/vm_ppc.c` | `qcommon` | `not_started` | 14 | 0 | 14 |
 | `code/qcommon/vm_ppc_new.c` | `qcommon` | `not_started` | 18 | 0 | 18 |
 | `code/qcommon/vm_x86.c` | `qcommon` | `not_started` | 15 | 0 | 15 |
-| `code/renderer/qgl.h` | `renderer` | `not_started` | 0 | 0 | 0 |
-| `code/renderer/qgl_linked.h` | `renderer` | `not_started` | 0 | 0 | 0 |
+| `code/renderer/qgl.h` | `renderer` | `ported` | 0 | 0 | 0 |
+| `code/renderer/qgl_linked.h` | `renderer` | `ported` | 0 | 0 | 0 |
 | `code/renderer/tr_animation.c` | `renderer` | `ported` | 2 | 2 | 0 |
 | `code/renderer/tr_backend.c` | `renderer` | `ported` | 21 | 6 | 15 |
 | `code/renderer/tr_bsp.c` | `renderer` | `ported` | 30 | 3 | 27 |
@@ -301,13 +301,13 @@ Teil dieser Tabelle.
 | `code/renderer/tr_image.c` | `renderer` | `ported` | 38 | 8 | 30 |
 | `code/renderer/tr_init.c` | `renderer` | `ported` | 21 | 21 | 0 |
 | `code/renderer/tr_light.c` | `renderer` | `ported` | 6 | 4 | 2 |
-| `code/renderer/tr_local.h` | `renderer` | `not_started` | 0 | 0 | 0 |
+| `code/renderer/tr_local.h` | `renderer` | `ported` | 0 | 0 | 0 |
 | `code/renderer/tr_main.c` | `renderer` | `ported` | 32 | 15 | 17 |
 | `code/renderer/tr_marks.c` | `renderer` | `ported` | 4 | 4 | 0 |
 | `code/renderer/tr_mesh.c` | `renderer` | `ported` | 5 | 5 | 0 |
 | `code/renderer/tr_model.c` | `renderer` | `ported` | 11 | 0 | 11 |
 | `code/renderer/tr_noise.c` | `renderer` | `ported` | 3 | 3 | 0 |
-| `code/renderer/tr_public.h` | `renderer` | `not_started` | 0 | 0 | 0 |
+| `code/renderer/tr_public.h` | `renderer` | `ported` | 0 | 0 | 0 |
 | `code/renderer/tr_scene.c` | `renderer` | `ported` | 9 | 4 | 5 |
 | `code/renderer/tr_shade.c` | `renderer` | `ported` | 17 | 3 | 14 |
 | `code/renderer/tr_shade_calc.c` | `renderer` | `ported` | 32 | 9 | 23 |
@@ -406,18 +406,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/botlib/l_script.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_struct.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_utils.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/cgame/cg_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/cg_syscalls.asm` (not_started): *(Symbolinventar ergänzen)*
-- `code/client/client.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/client/snd_local.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/client/snd_public.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/ai_chat.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/ai_cmd.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/ai_dmnet.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/ai_dmq3.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/ai_main.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/ai_team.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/ai_vcmd.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/be_aas.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/be_ai_char.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/be_ai_chat.h` (not_started): *(Symbolinventar ergänzen)*
@@ -475,8 +464,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/qcommon/vm_ppc.c` (not_started): `AsmCall`, `Constant1`, `Constant4`, `Emit4`, `Inst`, `Inst4`, `InstImm`, `InstImmU`, `VM_CallCompiled`, `VM_Compile`, `fltop`, `fltopandsecond`, `ltop`, `ltopandsecond`
 - `code/qcommon/vm_ppc_new.c` (not_started): `AsmCall`, `Constant1`, `Constant4`, `Emit4`, `Inst`, `Inst4`, `InstImm`, `InstImmU`, `VM_CallCompiled`, `VM_Compile`, `fltop`, `fltopandsecond`, `loadOpStack`, `ltop`, `ltopandsecond`, `makeFloat`, `makeInteger`, `spillOpStack`
 - `code/qcommon/vm_x86.c` (not_started): `AsmCall`, `Constant1`, `Constant4`, `Emit1`, `Emit2`, `Emit4`, `EmitAddEDI4`, `EmitCommand`, `EmitMovEAXEDI`, `EmitMovEBXEDI`, `EmitString`, `Hex`, `VM_CallCompiled`, `VM_Compile`, `callAsmCall`
-- `code/renderer/qgl.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/renderer/qgl_linked.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_backend.c` (ported): `GL_Cull`, `GL_State`, `GL_TexEnv`, `RB_BeginDrawingView`, `RB_DrawBuffer`, `RB_DrawSurfs`, `RB_ExecuteRenderCommands`, `RB_Hyperspace`, `RB_RenderThread`, `RB_SetColor`, `RB_SetGL2D`, `RB_ShowImages`, `RB_SwapBuffers`, `RE_StretchRaw`, `SetViewportAndScissor`
 - `code/renderer/tr_bsp.c` (ported): `HSVtoRGB`, `ParseFace`, `ParseMesh`, `ParseTriSurf`, `RE_LoadWorldMap`, `RE_SetWorldVisData`, `R_FixSharedVertexLodError`, `R_FixSharedVertexLodError_r`, `R_GetEntityToken`, `R_LoadEntities`, `R_LoadFogs`, `R_LoadLightGrid`, `R_LoadLightmaps`, `R_LoadMarksurfaces`, `R_LoadNodesAndLeafs`, `R_LoadPlanes`, `R_LoadShaders`, `R_LoadSurfaces`, `R_LoadVisibility`, `R_MergedHeightPoints`, `R_MergedWidthPoints`, `R_MovePatchSurfacesToHunk`, `R_SetParent`, `R_StitchAllPatches`, `R_StitchPatches`, `ShaderForShaderNum`, `patch`
 - `code/renderer/tr_cmds.c` (ported): `RE_BeginFrame`, `RE_EndFrame`, `R_AddDrawSurfCmd`, `R_InitCommandBuffers`, `R_IssueRenderCommands`, `R_PerformanceCounters`, `R_ShutdownCommandBuffers`, `R_SyncRenderThread`
@@ -485,10 +472,8 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/renderer/tr_font.c` (ported): `RE_ConstructGlyphInfo`, `R_DoneFreeType`, `R_GetGlyphInfo`, `R_InitFreeType`, `R_RenderGlyph`, `WriteTGA`, `readFloat`, `readInt`
 - `code/renderer/tr_image.c` (ported): `CommaParse`, `GL_TextureMode`, `LoadBMP`, `LoadJPG`, `LoadPCX`, `LoadPCX32`, `RE_RegisterSkin`, `R_BlendOverTexture`, `R_CreateBuiltinImages`, `R_CreateDefaultImage`, `R_CreateDlightImage`, `R_CreateFogImage`, `R_DeleteTextures`, `R_FogFactor`, `R_GammaCorrect`, `R_GetSkinByHandle`, `R_ImageList_f`, `R_InitFogTable`, `R_InitImages`, `R_InitSkins`, `R_LoadImage`, `R_SetColorMappings`, `R_SkinList_f`, `R_SumOfUsedImages`, `SaveJPG`, `Upload32`, `empty_output_buffer`, `init_destination`, `jpegDest`, `term_destination`
 - `code/renderer/tr_light.c` (ported): `LogLight`, `R_TransformDlights`
-- `code/renderer/tr_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_main.c` (ported): `IsMirror`, `R_AddEntitySurfaces`, `R_DebugGraphics`, `R_DebugPolygon`, `R_GenerateDrawSurfs`, `R_MirrorViewBySurface`, `R_PlaneForSurface`, `R_RenderView`, `R_RotateForEntity`, `R_RotateForViewer`, `R_SetupProjection`, `R_SpriteFogNum`, `SetFarClip`, `SurfIsOffscreen`, `myGlMultMatrix`, `qsortFast`, `shortsort`
 - `code/renderer/tr_model.c` (ported): `RE_BeginRegistration`, `RE_RegisterModel`, `R_AllocModel`, `R_GetModelByHandle`, `R_GetTag`, `R_LerpTag`, `R_LoadMD3`, `R_LoadMD4`, `R_ModelBounds`, `R_ModelInit`, `R_Modellist_f`
-- `code/renderer/tr_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/renderer/tr_scene.c` (ported): `RE_AddAdditiveLightToScene`, `RE_AddLightToScene`, `RE_RenderScene`, `R_AddPolygonSurfaces`, `R_ToggleSmpFrame`
 - `code/renderer/tr_shade.c` (ported): `ComputeTexCoords`, `DrawMultitextured`, `DrawNormals`, `DrawTris`, `ProjectDlightTexture`, `RB_EndSurface`, `RB_FogPass`, `RB_IterateStagesGeneric`, `RB_StageIteratorGeneric`, `RB_StageIteratorLightmappedMultitexture`, `RB_StageIteratorVertexLitTexture`, `R_ArrayElementDiscrete`, `R_DrawElements`, `R_DrawStripElements`
 - `code/renderer/tr_shade_calc.c` (ported): `Autosprite2Deform`, `AutospriteDeform`, `DeformText`, `EvalWaveForm`, `EvalWaveFormClamped`, `GlobalVectorToLocal`, `RB_CalcBulgeVertexes`, `RB_CalcDeformNormals`, `RB_CalcDeformVertexes`, `RB_CalcDiffuseColor`, `RB_CalcEnvironmentTexCoords`, `RB_CalcFogTexCoords`, `RB_CalcMoveVertexes`, `RB_CalcRotateTexCoords`, `RB_CalcScaleTexCoords`, `RB_CalcStretchTexCoords`, `RB_CalcTransformTexCoords`, `RB_CalcTurbulentTexCoords`, `RB_CalcWaveAlpha`, `RB_CalcWaveColor`, `RB_DeformTessGeometry`, `TableForFunc`, `myftol`

@@ -4,40 +4,41 @@
 // calls are typed boundary actions; the retail cgame QVM remains their owner
 // while it is active, which prevents duplicate presentation effects.
 package mq3.client.cgame_localents
+import mq3.client.cg_local as cgabi
 import mq3.game.trajectory as trajectory
 import mq3.shared.math as qmath
 import mq3.compat.numeric as n
 import mq3.compat.transcendental as trans
 
 const MAX_LOCAL_ENTITIES=512
-const SINK_TIME=1000
+const SINK_TIME=cgabi.SINK_TIME
 const CONTENTS_NODROP=0x80000000
 const TR_STATIONARY=0
 const RT_SPRITE=2
 const RF_LIGHTING_ORIGIN=0x80
-const LE_MARK=0
-const LE_EXPLOSION=1
-const LE_SPRITE_EXPLOSION=2
-const LE_FRAGMENT=3
-const LE_MOVE_SCALE_FADE=4
-const LE_FALL_SCALE_FADE=5
-const LE_FADE_RGB=6
-const LE_SCALE_FADE=7
-const LE_SCOREPLUM=8
-const LE_KAMIKAZE=9
-const LE_INVULIMPACT=10
-const LE_INVULJUICED=11
-const LE_SHOWREFENTITY=12
-const LEF_PUFF_DONT_SCALE=1
-const LEF_TUMBLE=2
-const LEF_SOUND1=4
-const LEF_SOUND2=8
-const LEMT_NONE=0
-const LEMT_BURN=1
-const LEMT_BLOOD=2
-const LEBS_NONE=0
-const LEBS_BLOOD=1
-const LEBS_BRASS=2
+const LE_MARK=cgabi.LE_MARK
+const LE_EXPLOSION=cgabi.LE_EXPLOSION
+const LE_SPRITE_EXPLOSION=cgabi.LE_SPRITE_EXPLOSION
+const LE_FRAGMENT=cgabi.LE_FRAGMENT
+const LE_MOVE_SCALE_FADE=cgabi.LE_MOVE_SCALE_FADE
+const LE_FALL_SCALE_FADE=cgabi.LE_FALL_SCALE_FADE
+const LE_FADE_RGB=cgabi.LE_FADE_RGB
+const LE_SCALE_FADE=cgabi.LE_SCALE_FADE
+const LE_SCOREPLUM=cgabi.LE_SCOREPLUM
+const LE_KAMIKAZE=cgabi.LE_KAMIKAZE
+const LE_INVULIMPACT=cgabi.LE_INVULIMPACT
+const LE_INVULJUICED=cgabi.LE_INVULJUICED
+const LE_SHOWREFENTITY=cgabi.LE_SHOWREFENTITY
+const LEF_PUFF_DONT_SCALE=cgabi.LEF_PUFF_DONT_SCALE
+const LEF_TUMBLE=cgabi.LEF_TUMBLE
+const LEF_SOUND1=cgabi.LEF_SOUND1
+const LEF_SOUND2=cgabi.LEF_SOUND2
+const LEMT_NONE=cgabi.LEMT_NONE
+const LEMT_BURN=cgabi.LEMT_BURN
+const LEMT_BLOOD=cgabi.LEMT_BLOOD
+const LEBS_NONE=cgabi.LEBS_NONE
+const LEBS_BLOOD=cgabi.LEBS_BLOOD
+const LEBS_BRASS=cgabi.LEBS_BRASS
 const NUMBER_SIZE=8
 const KAMI_SHOCKWAVE_STARTTIME=0
 const KAMI_SHOCKWAVEFADE_STARTTIME=1500

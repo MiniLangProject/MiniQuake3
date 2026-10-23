@@ -4,6 +4,7 @@
 // bot_team_helpers; this module supplies the complete game-mode dispatcher.
 package mq3.game.ai_team
 import mq3.game.bot_team_helpers as base
+import mq3.game.bot_ai_headers as aiheaders
 import mq3.compat.numeric as n
 import mq3.shared.info as info
 import std.string as strings
@@ -17,9 +18,9 @@ const GT_CTF=4
 const GT_1FCTF=5
 const GT_OBELISK=6
 const GT_HARVESTER=7
-const CTFS_AGRESSIVE=1
-const TEAMTP_ATTACKER=1
-const TEAMTP_DEFENDER=2
+const CTFS_AGRESSIVE=aiheaders.CTFS_AGRESSIVE
+const TEAMTP_ATTACKER=aiheaders.TEAMTP_ATTACKER
+const TEAMTP_DEFENDER=aiheaders.TEAMTP_DEFENDER
 
 struct Action kind client target text args suppressed end struct
 struct State

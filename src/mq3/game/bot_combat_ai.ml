@@ -5,6 +5,7 @@ package mq3.game.bot_combat_ai
 import mq3.game.game_headers as headers
 import mq3.game.constants as c
 import mq3.game.bot_input as input
+import mq3.game.bot_ai_headers as aiheaders
 import mq3.compat.numeric as n
 import mq3.shared.math as q
 
@@ -46,7 +47,7 @@ const CHARACTERISTIC_AIM_SKILL=headers.CHARACTERISTIC_AIM_SKILL
 const CHARACTERISTIC_EASY_FRAGGER=headers.CHARACTERISTIC_EASY_FRAGGER
 const CHARACTERISTIC_ALERTNESS=headers.CHARACTERISTIC_ALERTNESS
 const CHARACTERISTIC_FIRETHROTTLE=headers.CHARACTERISTIC_FIRETHROTTLE
-const BFL_ATTACKED=2
+const BFL_ATTACKED=aiheaders.BFL_ATTACKED
 const WFL_FIRERELEASED=1
 const DAMAGETYPE_RADIAL=2
 const CHARACTERISTIC_ATTACK_SKILL=headers.CHARACTERISTIC_ATTACK_SKILL
@@ -55,7 +56,7 @@ const CHARACTERISTIC_CROUCHER=headers.CHARACTERISTIC_CROUCHER
 const MOVE_WALK=1
 const MOVE_CROUCH=2
 const MOVE_JUMP=8
-const BFL_STRAFERIGHT=8
+const BFL_STRAFERIGHT=aiheaders.BFL_STRAFERIGHT
 
 struct EntityInfo number powerups flags end struct
 struct TargetEntityInfo number powerups flags valid origin angles lastVisOrigin updateTime end struct

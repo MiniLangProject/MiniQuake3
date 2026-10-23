@@ -4,16 +4,17 @@
 // The Retail source appends cg_particles.c to the mark implementation; those
 // particle entry points delegate to the independently ported particle runtime.
 package mq3.client.cgame_marks
+import mq3.client.cg_local as cgabi
 
 import mq3.client.cgame_particles as particles
 import mq3.shared.math as qmath
 import mq3.compat.numeric as n
 import mq3.compat.transcendental as trans
 
-const MAX_MARK_POLYS=256
+const MAX_MARK_POLYS=cgabi.MAX_MARK_POLYS
 const MAX_MARK_FRAGMENTS=128
 const MAX_MARK_POINTS=384
-const MAX_VERTS_ON_POLY=64
+const MAX_VERTS_ON_POLY=cgabi.MAX_VERTS_ON_POLY
 const MARK_TOTAL_TIME=10000
 const MARK_FADE_TIME=1000
 const PI=3.14159265358979323846

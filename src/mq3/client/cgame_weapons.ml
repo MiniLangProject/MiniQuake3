@@ -5,6 +5,7 @@
 // remains authoritative: callers pass retailActive=true to retain decisions
 // while suppressing duplicate host dispatch.
 package mq3.client.cgame_weapons
+import mq3.client.cg_local as cgabi
 
 import mq3.compat.numeric as n
 import mq3.compat.transcendental as crt
@@ -31,9 +32,9 @@ const PW_BATTLESUIT=2
 const PW_INVIS=4
 const EF_FIRING=0x100
 const PMF_FOLLOW=0x1000
-const IMPACTSOUND_DEFAULT=0
-const IMPACTSOUND_METAL=1
-const IMPACTSOUND_FLESH=2
+const IMPACTSOUND_DEFAULT=cgabi.IMPACTSOUND_DEFAULT
+const IMPACTSOUND_METAL=cgabi.IMPACTSOUND_METAL
+const IMPACTSOUND_FLESH=cgabi.IMPACTSOUND_FLESH
 const CONTENTS_WATER=0x20
 const CONTENTS_SLIME=0x10
 const CONTENTS_LAVA=0x8
@@ -44,9 +45,9 @@ const DEFAULT_SHOTGUN_SPREAD=700
 const LIGHTNING_RANGE=768.0
 const SPIN_SPEED=0.9
 const COAST_TIME=1000
-const LAND_DEFLECT_TIME=100
-const LAND_RETURN_TIME=300
-const MUZZLE_FLASH_TIME=20
+const LAND_DEFLECT_TIME=cgabi.LAND_DEFLECT_TIME
+const LAND_RETURN_TIME=cgabi.LAND_RETURN_TIME
+const MUZZLE_FLASH_TIME=cgabi.MUZZLE_FLASH_TIME
 
 struct Boundary boundary kind weapon entity origin finish velocity model shader sound radius light color value dispatched end struct
 struct WeaponInfo number registered weaponModel flashModel barrelModel handsModel missileModel weaponIcon ammoIcon readySound firingSound missileSound flashSounds flashColor missileColor missileDlight trailTime trailRadius trail ejectBrass loopFire pickupName end struct

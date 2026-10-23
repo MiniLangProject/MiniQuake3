@@ -35,7 +35,7 @@
 #define LTG_PATROL 9
 #define LTG_GETITEM 10
 #define LTG_KILL 11
-#define PATROL_BACK 1
+#define PATROL_BACK 4
 #define GT_CTF 4
 #define TEAM_RED 1
 #define TEAM_BLUE 2

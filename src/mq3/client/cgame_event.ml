@@ -3,6 +3,7 @@
 // Native semantic port of code/cgame/cg_event.c.  Effects are represented as
 // boundary actions so the retail cgame QVM and this observer never emit twice.
 package mq3.client.cgame_event
+import mq3.client.cg_local as cgabi
 import mq3.game.trajectory as trajectory
 
 const EV_EVENT_BITS=0x300
@@ -11,8 +12,8 @@ const EF_KAMIKAZE=0x00100000
 const ET_EVENTS=13
 const RANK_TIED_FLAG=0x4000
 const MAX_CLIENTS=64
-const STEP_TIME=200
-const MAX_STEP_CHANGE=32.0
+const STEP_TIME=cgabi.STEP_TIME
+const MAX_STEP_CHANGE=cgabi.MAX_STEP_CHANGE
 const CHAN_AUTO=0
 const CHAN_VOICE=2
 const CHAN_ITEM=3
