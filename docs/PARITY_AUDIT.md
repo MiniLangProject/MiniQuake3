@@ -2732,3 +2732,56 @@ bei 408/408 Gates grün. Der frische Windows-Hauptbuild hat SHA-256
 Der kombinierte Retail-QVM-Match läuft weiterhin acht Frames mit 131 Entities,
 13 Snapshot-Entities, 2.345 texturierten Dreiecken, 17 Renderpässen, 26 Sounds
 und null nicht unterstützten Entities.
+
+## 2026-10-23: Kommando-, Kollision- und Serverbereich geschlossen
+
+Fünf weitere partielle Originaldateien sind vollständig nativ zugeordnet.
+`cmd.c` besitzt die komplette Tokenizer-, Argument-, Puffer-, Registry-,
+Dispatch-, Completion- und Builtin-Oberfläche im produktiven Kommandoverteiler.
+`cm_test.c` deckt Punkt-/Boxabfragen, PVS und den zustandsbehafteten
+Areaportal-Flood vollständig ab. Die letzten drei Serverlücken `server.h`,
+`sv_bot.c` und `sv_init.c` schließen ABI und Deklarationen, sämtliche
+Botlib-Importe sowie den vollständigen Server-Initialisierungs- und
+Shutdown-Lifecycle.
+
+Nachweise:
+
+- `cmd.c`: 23/23 Funktionen, 44 Datensätze aus unverändert ausgeführten
+  Baseq3-Funktionskörpern und 16 native Verträge. Derselbe Laufzeitpfad wird
+  von Engine, Client, Server, UI und Game produktiv verwendet.
+- `cm_test.c`: 15/15 Funktionen und interne Helfer. Der unveränderte
+  C-Vergleich deckt sämtliche PVS-Bytes, Leaf-/Brush-Listen, Bounds,
+  Portal-Referenzzähler, Konnektivität und Area-Bits ab. Der Retail-Lauf auf
+  `q3dm1` prüft 13.318 Ergebniswörter und 115.824 PVS-/Area-Bytes zusätzlich
+  zu den beiden synthetischen vised/unvised Fixtures.
+- `server.h`: 7/7 Strukturen, sechs Konstanten, acht Enum-Werte, 25 Cvars und
+  60/60 produktiv aufgelöste Prototypen. 124 MSVC-x86-ABI-Records stimmen
+  exakt; 22 native/produktive Verträge bestehen. MiniLang verwendet verwaltete
+  Werte und die vorhandenen expliziten Serializer an binären Grenzen.
+- `sv_bot.c`: 28/28 Funktionen, vier unveränderte-C-Szenarien mit elf exakten
+  Beobachtungen, 40 native und 30 Retail-Verträge. Der Originalbot läuft 512
+  Frames bis `BOTLIB_USER_COMMAND`.
+- `sv_init.c`: 14/14 Funktionen, zehn unveränderte-C-Records, 38 native und
+  acht Retail-Verträge. Geprüft sind Configstring-Chunking und Filter,
+  Userinfo, Baselines, Maxclients, Spawnreihenfolge, Reconnects, Pure-Paks,
+  40 Server-Cvars, FinalMessage und idempotenter Shutdown mit echten
+  `q3dm1.bsp`- und `cgame.qvm`-Daten.
+
+Das Inventar zählt jetzt **188 portierte, 30 partielle und 117 nicht begonnene**
+Runtime-/Plattformdateien. Der Serverbereich ist mit **11/11 Dateien
+vollständig portiert**. Alle neuen Fokusgates sind in `scripts/verify.py`
+registriert und bestehen auf dem zusammengeführten Stand.
+
+Die vollständige Retail-Auswahl besteht **449/449 Gates**. Der dabei erzeugte
+`build/verification.json`-Nachweis hat SHA-256
+`f098ae92d0f21caf9d6fe770bd0aa7dd9c585c7234b0a76622259ae41b765453`.
+Anschließend wurden die neuen Servermodule in den produktiven lokalen
+Matchpfad eingebunden: Configstrings stammen nun aus der `server.h`-ABI-
+Repräsentation, die Registry durchläuft `SV_Init`, und die Bot-QVM-Traps
+209–211 werden über den vollständigen `sv_bot.c`-Importpfad verteilt. Danach
+bestanden die fünf betroffenen Fokusgates, der Windows-Hauptbuild und das
+Retail-QVM-Match erneut. Der finale `build/MiniQuake3.exe`-Stand hat SHA-256
+`81273c46d6d5128e067388291469ad332c38fe1cd1cabf11bee91a5387798af4`;
+das Match läuft acht Frames mit 131 Entities, 13 Snapshot-Entities, 2.345
+texturierten Dreiecken, 17 Renderpässen, 26 Sounds und null nicht
+unterstützten Entities.

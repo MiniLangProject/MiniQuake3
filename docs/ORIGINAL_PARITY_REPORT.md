@@ -20,14 +20,14 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
-| `qcommon` | 27 | 6 | 12 | 9 | 0 |
+| `qcommon` | 27 | 8 | 10 | 9 | 0 |
 | `renderer` | 27 | 23 | 0 | 4 | 0 |
-| `server` | 11 | 8 | 3 | 0 | 0 |
+| `server` | 11 | 11 | 0 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **183** | **35** | **117** | **0** |
+| **Gesamt** | **335** | **188** | **30** | **117** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -269,9 +269,9 @@ Teil dieser Tabelle.
 | `code/qcommon/cm_polylib.c` | `qcommon` | `partial` | 17 | 5 | 12 |
 | `code/qcommon/cm_polylib.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
 | `code/qcommon/cm_public.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
-| `code/qcommon/cm_test.c` | `qcommon` | `partial` | 15 | 15 | 0 |
+| `code/qcommon/cm_test.c` | `qcommon` | `ported` | 15 | 15 | 0 |
 | `code/qcommon/cm_trace.c` | `qcommon` | `partial` | 23 | 13 | 10 |
-| `code/qcommon/cmd.c` | `qcommon` | `partial` | 22 | 22 | 0 |
+| `code/qcommon/cmd.c` | `qcommon` | `ported` | 23 | 23 | 0 |
 | `code/qcommon/common.c` | `qcommon` | `ported` | 83 | 83 | 0 |
 | `code/qcommon/cvar.c` | `qcommon` | `partial` | 31 | 18 | 13 |
 | `code/qcommon/files.c` | `qcommon` | `ported` | 75 | 75 | 0 |
@@ -316,12 +316,12 @@ Teil dieser Tabelle.
 | `code/renderer/tr_sky.c` | `renderer` | `ported` | 13 | 13 | 0 |
 | `code/renderer/tr_surface.c` | `renderer` | `ported` | 24 | 16 | 8 |
 | `code/renderer/tr_world.c` | `renderer` | `ported` | 15 | 1 | 14 |
-| `code/server/server.h` | `server` | `partial` | 0 | 0 | 0 |
-| `code/server/sv_bot.c` | `server` | `partial` | 28 | 0 | 28 |
+| `code/server/server.h` | `server` | `ported` | 11 | 0 | 11 |
+| `code/server/sv_bot.c` | `server` | `ported` | 28 | 0 | 28 |
 | `code/server/sv_ccmds.c` | `server` | `ported` | 16 | 16 | 0 |
 | `code/server/sv_client.c` | `server` | `ported` | 22 | 22 | 0 |
 | `code/server/sv_game.c` | `server` | `ported` | 24 | 24 | 0 |
-| `code/server/sv_init.c` | `server` | `partial` | 14 | 1 | 13 |
+| `code/server/sv_init.c` | `server` | `ported` | 14 | 1 | 13 |
 | `code/server/sv_main.c` | `server` | `ported` | 16 | 16 | 0 |
 | `code/server/sv_net_chan.c` | `server` | `ported` | 5 | 5 | 0 |
 | `code/server/sv_rankings.c` | `server` | `ported` | 28 | 28 | 0 |
@@ -492,9 +492,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/qcommon/cm_polylib.c` (partial): `AddWindingToConvexHull`, `AllocWinding`, `CheckWinding`, `ClipWindingEpsilon`, `CopyWinding`, `FreeWinding`, `RemoveColinearPoints`, `ReverseWinding`, `WindingArea`, `WindingCenter`, `WindingOnPlaneSide`, `WindingPlane`
 - `code/qcommon/cm_polylib.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/cm_public.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/qcommon/cm_test.c` (partial): *(Symbolinventar ergänzen)*
 - `code/qcommon/cm_trace.c` (partial): `CM_DistanceFromLineSquared`, `CM_ProjectPointOntoVector`, `CM_TestBoundingBoxInCapsule`, `CM_TestCapsuleInCapsule`, `CM_TraceBoundingBoxThroughCapsule`, `CM_TraceThroughSphere`, `CM_TraceThroughVerticalCylinder`, `CM_VectorDistanceSquared`, `SquareRootFloat`, `collision`
-- `code/qcommon/cmd.c` (partial): *(Symbolinventar ergänzen)*
 - `code/qcommon/cvar.c` (partial): `Cvar_CommandCompletion`, `Cvar_FindVar`, `Cvar_InfoString`, `Cvar_InfoStringBuffer`, `Cvar_InfoString_Big`, `Cvar_SetLatched`, `Cvar_SetValue`, `Cvar_ValidateString`, `Cvar_VariableIntegerValue`, `Cvar_VariableString`, `Cvar_VariableStringBuffer`, `Cvar_VariableValue`, `generateHashValue`
 - `code/qcommon/net_chan.c` (partial): `NET_AdrToString`, `NET_CompareAdr`, `NET_CompareBaseAdr`, `NET_GetLoopPacket`, `NET_IsLocalAddress`, `NET_SendLoopPacket`, `NET_StringToAdr`, `Netchan_ScramblePacket`, `Netchan_UnScramblePacket`, `datagram`
 - `code/qcommon/qcommon.h` (not_started): *(Symbolinventar ergänzen)*
@@ -525,9 +523,9 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/renderer/tr_shade_calc.c` (ported): `Autosprite2Deform`, `AutospriteDeform`, `DeformText`, `EvalWaveForm`, `EvalWaveFormClamped`, `GlobalVectorToLocal`, `RB_CalcBulgeVertexes`, `RB_CalcDeformNormals`, `RB_CalcDeformVertexes`, `RB_CalcDiffuseColor`, `RB_CalcEnvironmentTexCoords`, `RB_CalcFogTexCoords`, `RB_CalcMoveVertexes`, `RB_CalcRotateTexCoords`, `RB_CalcScaleTexCoords`, `RB_CalcStretchTexCoords`, `RB_CalcTransformTexCoords`, `RB_CalcTurbulentTexCoords`, `RB_CalcWaveAlpha`, `RB_CalcWaveColor`, `RB_DeformTessGeometry`, `TableForFunc`, `myftol`
 - `code/renderer/tr_surface.c` (ported): `LodErrorForVolume`, `RB_CheckOverflow`, `RB_SurfaceAxis`, `RB_SurfaceBad`, `RB_SurfaceDisplayList`, `RB_SurfaceEntity`, `RB_SurfaceFlare`, `RB_SurfaceSkip`
 - `code/renderer/tr_world.c` (ported): `R_AddWorldSurface`, `R_AddWorldSurfaces`, `R_ClusterPVS`, `R_CullGrid`, `R_CullSurface`, `R_CullTriSurf`, `R_DlightFace`, `R_DlightGrid`, `R_DlightSurface`, `R_DlightTrisurf`, `R_MarkLeaves`, `R_PointInLeaf`, `R_RecursiveWorldNode`, `R_inPVS`
-- `code/server/server.h` (partial): *(Symbolinventar ergänzen)*
-- `code/server/sv_bot.c` (partial): `BotClientCommand`, `BotDrawDebugPolygons`, `BotImport_BSPEntityData`, `BotImport_BSPModelMinsMaxsOrigin`, `BotImport_DebugLineCreate`, `BotImport_DebugLineDelete`, `BotImport_DebugLineShow`, `BotImport_DebugPolygonCreate`, `BotImport_DebugPolygonDelete`, `BotImport_DebugPolygonShow`, `BotImport_EntityTrace`, `BotImport_FreeMemory`, `BotImport_GetMemory`, `BotImport_HunkAlloc`, `BotImport_PointContents`, `BotImport_Print`, `BotImport_Trace`, `BotImport_inPVS`, `EntityInPVS`, `SV_BotAllocateClient`, `SV_BotFrame`, `SV_BotFreeClient`, `SV_BotGetConsoleMessage`, `SV_BotGetSnapshotEntity`, `SV_BotInitBotLib`, `SV_BotInitCvars`, `SV_BotLibSetup`, `SV_BotLibShutdown`
-- `code/server/sv_init.c` (partial): `SV_BoundMaxClients`, `SV_ChangeMaxClients`, `SV_ClearServer`, `SV_CreateBaseline`, `SV_FinalMessage`, `SV_GetConfigstring`, `SV_GetUserinfo`, `SV_Init`, `SV_SetUserinfo`, `SV_Shutdown`, `SV_SpawnServer`, `SV_Startup`, `SV_TouchCGame`
+- `code/server/server.h` (ported): `svEntity_t`, `server_t`, `clientSnapshot_t`, `netchan_buffer_t`, `client_t`, `challenge_t`, `serverStatic_t`, `serverState_t`, `clientState_t`, `25 sv_* cvar declarations`, `60 server/bot prototypes`
+- `code/server/sv_bot.c` (ported): `BotClientCommand`, `BotDrawDebugPolygons`, `BotImport_BSPEntityData`, `BotImport_BSPModelMinsMaxsOrigin`, `BotImport_DebugLineCreate`, `BotImport_DebugLineDelete`, `BotImport_DebugLineShow`, `BotImport_DebugPolygonCreate`, `BotImport_DebugPolygonDelete`, `BotImport_DebugPolygonShow`, `BotImport_EntityTrace`, `BotImport_FreeMemory`, `BotImport_GetMemory`, `BotImport_HunkAlloc`, `BotImport_PointContents`, `BotImport_Print`, `BotImport_Trace`, `BotImport_inPVS`, `EntityInPVS`, `SV_BotAllocateClient`, `SV_BotFrame`, `SV_BotFreeClient`, `SV_BotGetConsoleMessage`, `SV_BotGetSnapshotEntity`, `SV_BotInitBotLib`, `SV_BotInitCvars`, `SV_BotLibSetup`, `SV_BotLibShutdown`
+- `code/server/sv_init.c` (ported): `SV_BoundMaxClients`, `SV_ChangeMaxClients`, `SV_ClearServer`, `SV_CreateBaseline`, `SV_FinalMessage`, `SV_GetConfigstring`, `SV_GetUserinfo`, `SV_SetConfigstring`, `SV_SetUserinfo`, `SV_Shutdown`, `SV_SpawnServer`, `SV_Startup`, `SV_TouchCGame`
 - `code/splines/math_angles.h` (not_started): `Zero`, `angles_t`, `set`, `vec3_p`
 - `code/splines/math_matrix.h` (not_started): `Identity`, `InverseMultiply`, `OrthoNormalize`, `SkewSymmetric`, `mat3_t`
 - `code/splines/math_quaternion.h` (not_started): `Length`, `Normalize`, `quat_t`, `set`, `vec4`

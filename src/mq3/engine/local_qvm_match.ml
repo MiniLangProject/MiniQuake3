@@ -14,6 +14,8 @@ import mq3.vm.syscall_common as common
 import mq3.vm.syscall_qagame as qagame
 import mq3.vm.syscall_qagame_world as qworld
 import mq3.server.game_vm as gameVm
+import mq3.server.init_runtime as serverInit
+import mq3.server.abi as serverAbi
 import mq3.game.entitystate as entitystate
 import mq3.game.playerstate as playerstate
 import mq3.game.constants as gameConstants
@@ -82,6 +84,7 @@ import mq3.botlib.ai_weapon_combat_syscalls as aiWeaponCombatSyscalls
 import mq3.botlib.ai_avoid_spots as aiAvoidSpots
 import mq3.botlib.ai_avoid_spot_syscalls as aiAvoidSpotSyscalls
 import mq3.botlib.server_bridge as botServerBridge
+import mq3.botlib.server_imports as botServerImports
 import mq3.botlib.aas_client_movement as aasClientMovement
 import mq3.botlib.aas_client_trace as aasClientTrace
 import mq3.botlib.aas_client_movement_syscalls as aasClientMovementSyscalls
@@ -599,7 +602,7 @@ function extendedQagame(context,vm,base,op)
   if op==206 then return botlibLoadMap(context,vm,base) end if
   if op==207 then return updateAasEntity(context,vm,base) end if
   if op==208 then return 0 end if
-  if op>=botServerBridge.OP_GET_SNAPSHOT_ENTITY and op<=botServerBridge.OP_USER_COMMAND then return botServerBridge.dispatch(context.botServer,vm,base,op) end if
+  if op>=botServerBridge.OP_GET_SNAPSHOT_ENTITY and op<=botServerBridge.OP_USER_COMMAND then return botServerImports.SV_BotDispatch(context.botServer,vm,base,op) end if
   if op==309 then point=common.readFloatVector(vm,common.argument(vm,base,1),3,"AAS point contents");if point is error then return point end if;return pointContents(context,point,-1) end if
   if op==303 then return aasQuerySyscalls.entityInfo(context.aasEntities,vm,common.argument(vm,base,1),common.argument(vm,base,2)) end if
   if op==308 then return aasQuerySyscalls.trace(context.aas,vm,base) end if
@@ -662,7 +665,7 @@ function qagameSeek(context,handle,offset,origin) return memoryFileSeek.seek(con
 
 function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
   if archive==void or map==void or now<0 then return fail("archive, map and non-negative time are required") end if
-  entityBytes=slice(map.data,map.offsets[0],map.lengths[0]);registry=cvar.create();seedCvars(registry);cvar.set2(registry,"mapname",mapName,true)
+  entityBytes=slice(map.data,map.offsets[0],map.lengths[0]);serverLifecycle=serverInit.runtime();serverInit.SV_Init(serverLifecycle,void);registry=serverLifecycle.registry;seedCvars(registry);cvar.set2(registry,"mapname",mapName,true)
   if botsEnabled then cvar.set2(registry,"bot_enable","1",true) end if
   scene=sceneQueue.create(4096,65536);scene.registered=true;scene.worldLoaded=true
   collisionWorld=collision.load(map.data);if collisionWorld is error then return collisionWorld end if
@@ -670,7 +673,7 @@ function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
   initialCommand=qworld.userCommand(now,[0,0,0],0,2,0,0,0)
   grid=lightGrid.load(map);if grid is error then return grid end if
   botBspEntities=bsp.entities(map);if botBspEntities is error then return botBspEntities end if
-  commandState=commands.create();configstrings=array(MAX_CONFIGSTRINGS,"");cgameServerCommands=serverCommandStream.create(commandState,configstrings)
+  commandState=commands.create();abiServer=serverAbi.server();serverLifecycle.sv.configstrings=abiServer.configstrings;configstrings=serverLifecycle.sv.configstrings;cgameServerCommands=serverCommandStream.create(commandState,configstrings)
   uiClient=uiHost.createClientState(uiHost.CA_DISCONNECTED,0,-1,"localhost","","");if uiClient is error then return uiClient end if
   nativeServerCmds=nativeCgameServercmds.create();nativeServerCmds.configstrings=configstrings
   nativeMain=nativeCgameMain.create();nativeMain.configstrings=configstrings

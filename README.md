@@ -28,15 +28,16 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **183 sind
-vollständig portiert, 35 teilweise portiert und 117 noch nicht begonnen**.
-Zuletzt wurden `vm_interpreted.c`, `sv_client.c`, `sv_game.c` und `sv_main.c`
-geschlossen. Der Serverbereich enthält damit acht vollständig portierte und
-drei teilweise portierte Dateien; keine Server-C-Datei ist mehr unbegonnen.
-Client-Lifecycle und Gamestate, Pure-Prüfung, qagame-Enginegrenzen, zuverlässige
-Serverbefehle, Master-/Info-/Status-/Rcon-Verkehr und QVM-Diagnostik laufen über
-native MiniLang-Pfade. Unveränderte C-Orakel sowie native, produktive UDP- und
-Retail-Verträge sichern diese Pfade ab.
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **188 sind
+vollständig portiert, 30 teilweise portiert und 117 noch nicht begonnen**.
+Zuletzt wurden `cmd.c`, `cm_test.c`, `server.h`, `sv_bot.c` und `sv_init.c`
+geschlossen. Damit sind alle elf Originaldateien des Serverbereichs vollständig
+nativ zugeordnet. Neben Client-Lifecycle, Gamestate, Pure-Prüfung,
+qagame-Enginegrenzen und Netzwerkverkehr sind nun auch Serverstart und
+-shutdown, Configstrings, Baselines, Botlib-Importe und die vollständige
+`server.h`-Oberfläche durch ausführbaren MiniLang-Code abgedeckt. Unveränderte
+C-Orakel sowie native, produktive UDP-, Bot- und Retail-Verträge sichern diese
+Pfade ab.
 
 Der aktuelle Stand ist im [AAS-/Botlib-Bericht](docs/AAS_RUNTIME.md) und im
 [vollständigen AI-Trap-Audit 500–577](docs/BOTLIB_AI_TRAP_AUDIT.md) dokumentiert.
@@ -53,12 +54,15 @@ sind vorhanden. Der produktive Botlib-Pfad lädt und speichert nun validierte `.
 Routingcaches mit Originalidentität, Area-/Cluster-CRC und zeigerfreiem Nutzinhalt.
 Offen bleibt die noch kompaktere interne Reachability-Ablage.
 
-Der aktuelle Retail-Gesamtlauf vom 22. Oktober 2026 besteht alle **408 Gates**
-von `python scripts/verify.py --data-root D:/Quake3`. Der dabei frisch gebaute
+Der vollständige Retail-Gesamtlauf vom 23. Oktober 2026 besteht alle **449 Gates**
+von `python scripts/verify.py --data-root D:/Quake3`. Das zugehörige
+`build/verification.json` hat SHA-256
+`f098ae92d0f21caf9d6fe770bd0aa7dd9c585c7234b0a76622259ae41b765453`.
+Nach der abschließenden produktiven Einbindung der neuen Server-Lifecycle-,
+ABI- und Botimport-Module bestehen die betroffenen Fokusgates und das acht
+Frames lange Retail-QVM-Match erneut. Der daraus frisch gebaute
 `build/MiniQuake3.exe`-Vollstand hat SHA-256
-`c53284b8d10e5d8aa811adb1efe241089185ee9359e35d8d3b8fbb696320192b`;
-das zugehörige `build/verification.json` hat SHA-256
-`52d4c214a166500abb36d2aa0eea775f2c521b12a54833c7296684d3ffab6218`.
+`81273c46d6d5128e067388291469ad332c38fe1cd1cabf11bee91a5387798af4`.
 Der neueste inkrementelle Quellenblock schließt zusätzlich vier bisher
 unbegonnene Originaldateien: `code/ui/ui_players.c`, `code/game/ai_vcmd.c`,
 `code/server/sv_ccmds.c` und `code/win32/win_snd.c`. Team-Arena-Spielermodelle,

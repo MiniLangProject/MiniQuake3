@@ -37011,7 +37011,8 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Covered through exact unchanged-C point-leaf traversal records on synthetic and Retail BSPs."
         },
         {
           "original": "CM_PointLeafnum",
@@ -37019,7 +37020,8 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Covered through exact unchanged-C point-leaf traversal records on synthetic and Retail BSPs."
         },
         {
           "original": "CM_PointContents",
@@ -37027,7 +37029,8 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Covered through exact unchanged-C point-contents records on synthetic and Retail BSPs."
         },
         {
           "original": "CM_TransformedPointContents",
@@ -37035,7 +37038,8 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Covered through exact unchanged-C transformed point-contents records on synthetic and Retail BSPs."
         },
         {
           "original": "CM_BoxLeafnums_r",
@@ -37043,7 +37047,8 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Covered through exact unchanged-C box leaf-list records, including capacity and overflow behavior."
         },
         {
           "original": "CM_BoxLeafnums",
@@ -37051,7 +37056,8 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Covered through exact unchanged-C box leaf-list records, including capacity and overflow behavior."
         },
         {
           "original": "CM_BoxBrushes",
@@ -37059,7 +37065,8 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Covered through exact unchanged-C box brush-list records, bounds and content masks."
         },
         {
           "original": "CM_StoreLeafs",
@@ -37067,7 +37074,8 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Internal leaf-list callback is exercised by every exact box query."
         },
         {
           "original": "CM_StoreBrushes",
@@ -37075,7 +37083,8 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Internal brush-list callback is exercised by every exact box query."
         },
         {
           "original": "CM_ClusterPVS",
@@ -37083,7 +37092,8 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All cluster PVS bytes are compared with unchanged original C for synthetic vised/unvised fixtures and Retail BSPs."
         },
         {
           "original": "CM_FloodArea_r",
@@ -37091,7 +37101,8 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Internal recursive area flood behavior is covered by exact stateful portal graphs."
         },
         {
           "original": "CM_FloodAreaConnections",
@@ -37099,7 +37110,8 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Exact stateful portal sequences cover connected components after every reference-count change."
         },
         {
           "original": "CM_AdjustAreaPortalState",
@@ -37107,7 +37119,8 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Exact stateful portal open/close sequences cover duplicate references and partitioning."
         },
         {
           "original": "CM_AreasConnected",
@@ -37115,7 +37128,8 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Exact connectivity results include invalid areas and no-areas behavior."
         },
         {
           "original": "CM_WriteAreaBits",
@@ -37123,14 +37137,15 @@
             "src/mq3/collision/world.ml",
             "src/mq3/collision/visibility.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Every area-bit byte is compared after each stateful portal operation."
         }
       ],
       "target": [
         "src/mq3/collision/world.ml",
         "src/mq3/collision/visibility.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_collision.py",
         "scripts/test_spatial.py",
@@ -37298,7 +37313,9 @@
         "Cbuf_InsertText",
         "Cmd_AddCommand",
         "Cmd_Argc",
+        "Cmd_Args",
         "Cmd_ArgsBuffer",
+        "Cmd_ArgsFrom",
         "Cmd_Argv",
         "Cmd_ArgvBuffer",
         "Cmd_Cmd",
@@ -37311,8 +37328,7 @@
         "Cmd_RemoveCommand",
         "Cmd_TokenizeString",
         "Cmd_Vstr_f",
-        "Cmd_Wait_f",
-        "argv"
+        "Cmd_Wait_f"
       ],
       "symbol_mapping": [
         {
@@ -37338,15 +37354,24 @@
           ],
           "status": "tested_subset",
           "scope": "Registry order, move-to-front dispatch, cvar/client/server/UI forwarding and built-ins match 16 direct records plus 16 MiniLang boundary contracts; filesystem and subsystem calls remain explicit services."
+        },
+        {
+          "original": "All 23 cmd.c function definitions",
+          "target_files": [
+            "src/mq3/qcommon/command_buffer.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete tokenizer, argv, command buffer, registry, dispatch, completion and builtin surface. Forty-four records execute unchanged Baseq3 bodies and sixteen native contracts cover service and boundary behavior; the same command runtime is used productively by engine, client, server, UI and game dispatch."
         }
       ],
       "target": [
         "src/mq3/qcommon/command_buffer.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_command_buffer.py",
-        "scripts/test_command_registry.py"
+        "scripts/test_command_registry.py",
+        "scripts/test_cmd_complete.py"
       ]
     },
     {
@@ -42494,22 +42519,67 @@
       "source": "code/server/server.h",
       "sha256": "b8190c64aecf15800ff3870aaa00b0d0fdf8efe25bd4622bd856f2f7f62e1f81",
       "category": "runtime",
-      "symbol_candidates": [],
+      "symbol_candidates": [
+        "svEntity_t",
+        "server_t",
+        "clientSnapshot_t",
+        "netchan_buffer_t",
+        "client_t",
+        "challenge_t",
+        "serverStatic_t",
+        "serverState_t",
+        "clientState_t",
+        "25 sv_* cvar declarations",
+        "60 server/bot prototypes"
+      ],
       "symbol_mapping": [
         {
-          "original": "svEntity_t",
+          "original": "Complete server.h declaration and ABI surface",
           "target_files": [
-            "src/mq3/server/world.ml"
+            "src/mq3/server/abi.ml",
+            "src/mq3/server/init_runtime.ml",
+            "src/mq3/server/main_runtime.ml",
+            "src/mq3/server/world.ml",
+            "src/mq3/server/netchan.ml",
+            "src/mq3/server/game_interface.ml",
+            "src/mq3/server/game_vm.ml",
+            "src/mq3/server/client_lifecycle.ml",
+            "src/mq3/server/client_message.ml",
+            "src/mq3/server/client_command_dispatch.ml",
+            "src/mq3/server/user_move.ml",
+            "src/mq3/server/download.ml",
+            "src/mq3/server/snapshot_send.ml",
+            "src/mq3/server/snapshot_schedule.ml",
+            "src/mq3/server/operator_commands.ml",
+            "src/mq3/server/oob_connect.ml",
+            "src/mq3/botlib/server_imports.ml"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "All 7 structs, 6 constants, 8 enum members, 25 cvars and 60 prototypes. The pinned MSVC-x86 reference ABI matches 124 records; every prototype resolves to executable MiniLang code and 22 native/productive contracts pass."
         }
       ],
       "target": [
-        "src/mq3/server/world.ml"
+        "src/mq3/server/abi.ml",
+        "src/mq3/server/init_runtime.ml",
+        "src/mq3/server/main_runtime.ml",
+        "src/mq3/server/world.ml",
+        "src/mq3/server/netchan.ml",
+        "src/mq3/server/game_interface.ml",
+        "src/mq3/server/game_vm.ml",
+        "src/mq3/server/client_lifecycle.ml",
+        "src/mq3/server/client_message.ml",
+        "src/mq3/server/client_command_dispatch.ml",
+        "src/mq3/server/user_move.ml",
+        "src/mq3/server/download.ml",
+        "src/mq3/server/snapshot_send.ml",
+        "src/mq3/server/snapshot_schedule.ml",
+        "src/mq3/server/operator_commands.ml",
+        "src/mq3/server/oob_connect.ml",
+        "src/mq3/botlib/server_imports.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_server_world.py"
+        "scripts/test_server_header_abi.py"
       ]
     },
     {
@@ -42548,24 +42618,27 @@
       ],
       "symbol_mapping": [
         {
-          "original": "implemented runtime subset",
+          "original": "All 28 sv_bot.c function definitions",
           "target_files": [
+            "src/mq3/botlib/server_imports.ml",
             "src/mq3/botlib/server_bridge.ml",
             "src/mq3/engine/local_qvm_match.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Bot client allocation/free, snapshot entity lookup, console-message delivery, usercmd service and bot frames are connected to the retail qagame path; debug drawing and remaining import callbacks are partial."
+          "status": "tested_exact",
+          "scope": "Complete bot slot, console/snapshot, command, debug draw, BSP/world/trace, memory, cvar, import-table and Botlib lifecycle surface. Four unchanged-C scenarios yield 11 exact observations; 40 native and 30 Retail bot contracts pass through BOTLIB_USER_COMMAND."
         }
       ],
       "target": [
+        "src/mq3/botlib/server_imports.ml",
         "src/mq3/botlib/server_bridge.ml",
         "src/mq3/engine/local_qvm_match.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_bot_server_bridge.py",
         "scripts/test_bot_spawn_retail.py",
-        "scripts/test_botlib_retail_qagame.py"
+        "scripts/test_botlib_retail_qagame.py",
+        "scripts/test_sv_bot_complete.py"
       ]
     },
     {
@@ -43019,21 +43092,22 @@
       ],
       "symbol_mapping": [
         {
-          "original": "SV_SetConfigstring",
+          "original": "All 14 sv_init.c function definitions",
           "target_files": [
+            "src/mq3/server/init_runtime.ml",
             "src/mq3/game/spawn_values.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Local configstring storage and NULL-to-empty contract only, modeled by the test host. No full original SV_SetConfigstring or broadcast comparison."
+          "status": "tested_exact",
+          "scope": "Complete configstring and userinfo storage, chunking/filtering, baseline copying, maxclients/startup, clear/touch, spawn sequencing, reconnect/pure-pak publication, 40 Cvars, final message and idempotent shutdown. Ten unchanged-C records, 38 native lifecycle contracts and 8 Retail asset contracts pass."
         }
       ],
       "target": [
+        "src/mq3/server/init_runtime.ml",
         "src/mq3/game/spawn_values.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_targets.py",
-        "scripts/test_spawn_values.py"
+        "scripts/test_sv_init_complete.py"
       ]
     },
     {
