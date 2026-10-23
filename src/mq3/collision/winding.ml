@@ -4,14 +4,15 @@
 package mq3.collision.winding
 import mq3.compat.numeric as n
 import mq3.shared.math as q
+import mq3.qcommon.headers as qcommonHeaders
 
-const SIDE_FRONT=0
-const SIDE_BACK=1
-const SIDE_ON=2
-const SIDE_CROSS=3
-const ON_EPSILON=0.1
-const MAX_MAP_BOUNDS=65535.0
-const MAX_POINTS_ON_WINDING=64
+const SIDE_FRONT=qcommonHeaders.SIDE_FRONT
+const SIDE_BACK=qcommonHeaders.SIDE_BACK
+const SIDE_ON=qcommonHeaders.SIDE_ON
+const SIDE_CROSS=qcommonHeaders.SIDE_CROSS
+const ON_EPSILON=qcommonHeaders.ON_EPSILON
+const MAX_MAP_BOUNDS=qcommonHeaders.MAX_MAP_BOUNDS
+const MAX_POINTS_ON_WINDING=qcommonHeaders.MAX_POINTS_ON_WINDING
 const MAX_HULL_POINTS=128
 
 struct ManagedWinding points capacity freed end struct

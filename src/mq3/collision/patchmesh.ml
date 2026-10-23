@@ -5,6 +5,7 @@ package mq3.collision.patchmesh
 import mq3.compat.numeric as n
 import mq3.shared.math as q
 import mq3.collision.winding as w
+import mq3.qcommon.headers as qcommonHeaders
 import std.array as arrays
 
 struct Plane
@@ -100,7 +101,7 @@ function CM_SubdivideGridColumns(grid)
       columns = arrays.slice(columns,0,i+1)+arrays.slice(columns,i+2,len(columns)-i-2)
       i = i+1;continue
     end if
-    if len(columns)+2 > 129 then return fail("subdivision grid limit exceeded") end if
+    if len(columns)+2 > qcommonHeaders.MAX_GRID_SIZE then return fail("subdivision grid limit exceeded") end if
     first = array(height,void);middle = array(height,void);last = array(height,void)
     j = 0
     while j < height
@@ -423,7 +424,7 @@ function CM_PointOnPlaneSide(patch,point,index)
   if distance>0.1 then return 0 end if;if distance< -0.1 then return 1 end if;return 2
 end function
 function generate(width,height,points)
-  if width <= 2 or height <= 2 or width > 129 or height > 129 or (width & 1) == 0 or (height & 1) == 0 or len(points) != width*height then return fail("invalid quadratic grid dimensions") end if
+  if width <= 2 or height <= 2 or width > qcommonHeaders.MAX_GRID_SIZE or height > qcommonHeaders.MAX_GRID_SIZE or (width & 1) == 0 or (height & 1) == 0 or len(points) != width*height then return fail("invalid quadratic grid dimensions") end if
   columns = array(width,void);i = 0
   while i < width
     columns[i] = array(height,void);j = 0

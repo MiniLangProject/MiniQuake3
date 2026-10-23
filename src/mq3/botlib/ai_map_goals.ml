@@ -3,6 +3,7 @@
 // target_location/info_camp goals from code/botlib/be_ai_goal.c.
 package mq3.botlib.ai_map_goals
 
+import mq3.botlib.internal_headers as botlibHeaders
 import mq3.botlib.aas_runtime as aasRuntime
 import mq3.botlib.ai_resource_pools as resources
 import mq3.compat.textnumbers as numbers
@@ -10,7 +11,7 @@ import std.string as strings
 
 const OP_GET_NEXT_CAMP_SPOT_GOAL=567
 const OP_GET_MAP_LOCATION_GOAL=568
-const MAX_EPAIRKEY=144
+const MAX_EPAIRKEY=botlibHeaders.MAX_EPAIRKEY
 
 struct MapLocation name goal end struct
 struct CampSpot name range weight wait random goal end struct

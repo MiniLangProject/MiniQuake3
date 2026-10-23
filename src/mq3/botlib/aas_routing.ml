@@ -3,6 +3,7 @@
 // Weighted AAS routing semantics from code/botlib/be_aas_route.c.
 package mq3.botlib.aas_routing
 
+import mq3.botlib.public_headers as publicHeaders
 import mq3.format.aas as aas
 import mq3.botlib.aas_runtime as rt
 import mq3.compat.numeric as n
@@ -30,35 +31,35 @@ const TRAVEL_STRAFEJUMP=17
 const TRAVEL_JUMPPAD=18
 const TRAVEL_FUNCBOB=19
 
-const TFL_INVALID=0x00000001
-const TFL_WALK=0x00000002
-const TFL_CROUCH=0x00000004
-const TFL_BARRIERJUMP=0x00000008
-const TFL_JUMP=0x00000010
-const TFL_LADDER=0x00000020
-const TFL_WALKOFFLEDGE=0x00000080
-const TFL_SWIM=0x00000100
-const TFL_WATERJUMP=0x00000200
-const TFL_TELEPORT=0x00000400
-const TFL_ELEVATOR=0x00000800
-const TFL_ROCKETJUMP=0x00001000
-const TFL_BFGJUMP=0x00002000
-const TFL_GRAPPLEHOOK=0x00004000
-const TFL_DOUBLEJUMP=0x00008000
-const TFL_RAMPJUMP=0x00010000
-const TFL_STRAFEJUMP=0x00020000
-const TFL_JUMPPAD=0x00040000
-const TFL_AIR=0x00080000
-const TFL_WATER=0x00100000
-const TFL_SLIME=0x00200000
-const TFL_LAVA=0x00400000
-const TFL_DONOTENTER=0x00800000
-const TFL_FUNCBOB=0x01000000
-const TFL_FLIGHT=0x02000000
-const TFL_BRIDGE=0x04000000
-const TFL_NOTTEAM1=0x08000000
-const TFL_NOTTEAM2=0x10000000
-const TFL_DEFAULT=0x011c07be
+const TFL_INVALID=publicHeaders.TFL_INVALID
+const TFL_WALK=publicHeaders.TFL_WALK
+const TFL_CROUCH=publicHeaders.TFL_CROUCH
+const TFL_BARRIERJUMP=publicHeaders.TFL_BARRIERJUMP
+const TFL_JUMP=publicHeaders.TFL_JUMP
+const TFL_LADDER=publicHeaders.TFL_LADDER
+const TFL_WALKOFFLEDGE=publicHeaders.TFL_WALKOFFLEDGE
+const TFL_SWIM=publicHeaders.TFL_SWIM
+const TFL_WATERJUMP=publicHeaders.TFL_WATERJUMP
+const TFL_TELEPORT=publicHeaders.TFL_TELEPORT
+const TFL_ELEVATOR=publicHeaders.TFL_ELEVATOR
+const TFL_ROCKETJUMP=publicHeaders.TFL_ROCKETJUMP
+const TFL_BFGJUMP=publicHeaders.TFL_BFGJUMP
+const TFL_GRAPPLEHOOK=publicHeaders.TFL_GRAPPLEHOOK
+const TFL_DOUBLEJUMP=publicHeaders.TFL_DOUBLEJUMP
+const TFL_RAMPJUMP=publicHeaders.TFL_RAMPJUMP
+const TFL_STRAFEJUMP=publicHeaders.TFL_STRAFEJUMP
+const TFL_JUMPPAD=publicHeaders.TFL_JUMPPAD
+const TFL_AIR=publicHeaders.TFL_AIR
+const TFL_WATER=publicHeaders.TFL_WATER
+const TFL_SLIME=publicHeaders.TFL_SLIME
+const TFL_LAVA=publicHeaders.TFL_LAVA
+const TFL_DONOTENTER=publicHeaders.TFL_DONOTENTER
+const TFL_FUNCBOB=publicHeaders.TFL_FUNCBOB
+const TFL_FLIGHT=publicHeaders.TFL_FLIGHT
+const TFL_BRIDGE=publicHeaders.TFL_BRIDGE
+const TFL_NOTTEAM1=publicHeaders.TFL_NOTTEAM1
+const TFL_NOTTEAM2=publicHeaders.TFL_NOTTEAM2
+const TFL_DEFAULT=publicHeaders.TFL_DEFAULT
 
 const AREACONTENTS_WATER=1
 const AREACONTENTS_LAVA=2

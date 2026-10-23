@@ -5,6 +5,7 @@
 package mq3.game.movement
 import mq3.compat.numeric as n
 import mq3.shared.math as q
+import mq3.game.game_internal_headers as internal
 
 struct Collision
   trace
@@ -126,7 +127,7 @@ function slideMove(state, gravity)
   // C leaves this unused result uninitialized without gravity. Zeroing it
   // avoids undefined data in the port; it cannot change the returned motion.
   endVelocity = [0.0,0.0,0.0]
-  overclip = n.f32(1.001)
+  overclip = n.f32(internal.OVERCLIP)
   if gravity then
     endVelocity = copy(state.velocity)
     endVelocity[2] = n.fsub(endVelocity[2],n.fmul(state.gravity,state.frametime))
@@ -206,11 +207,11 @@ function stepSlideMove(state, gravity)
   startVelocity = copy(state.velocity)
   if not slideMove(state,gravity) then return void end if
   down = copy(startOrigin)
-  down[2] = n.fsub(down[2],18.0)
+  down[2] = n.fsub(down[2],internal.STEPSIZE)
   hit = state.traceFn(state,startOrigin,down)
-  if state.velocity[2] > 0 and (hit.trace.fraction == 1 or q.DotProduct(hit.trace.normal,[0.0,0.0,1.0]) < 0.7) then return void end if
+  if state.velocity[2] > 0 and (hit.trace.fraction == 1 or q.DotProduct(hit.trace.normal,[0.0,0.0,1.0]) < internal.MIN_WALK_NORMAL) then return void end if
   up = copy(startOrigin)
-  up[2] = n.fadd(up[2],18.0)
+  up[2] = n.fadd(up[2],internal.STEPSIZE)
   hit = state.traceFn(state,startOrigin,up)
   if hit.trace.allsolid then return void end if
   stepSize = n.fsub(hit.endpos[2],startOrigin[2])
@@ -221,7 +222,7 @@ function stepSlideMove(state, gravity)
   down[2] = n.fsub(down[2],stepSize)
   hit = state.traceFn(state,state.origin,down)
   if not hit.trace.allsolid then state.origin = copy(hit.endpos) end if
-  if hit.trace.fraction < 1 then state.velocity = clipVelocity(state.velocity,hit.trace.normal,n.f32(1.001)) end if
+  if hit.trace.fraction < 1 then state.velocity = clipVelocity(state.velocity,hit.trace.normal,n.f32(internal.OVERCLIP)) end if
   delta = n.fsub(state.origin[2],startOrigin[2])
   if delta > 2 then
     if delta < 7 then

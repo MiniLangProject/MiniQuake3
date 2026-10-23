@@ -3077,3 +3077,51 @@ Das generierte Inventar zählt nun **244 portierte, keine teilweise portierte
 und 91 noch nicht begonnene** Dateien von insgesamt 335. Die verbleibenden
 Quellportlücken liegen vor allem in Botlib-/AAS-Interna, QCommon-Resten,
 Plattformpfaden sowie sechs UI- und einem CGame-Build-/Syscall-Header.
+
+## 2026-10-23: Botlib-, QCommon- und interne Spielheader geschlossen
+
+Vier gebündelte Vollständigkeitspakete schließen 40 weitere Originalheader:
+
+- Die neun öffentlichen Botlib-Header von `be_aas.h` bis `botlib.h` besitzen
+  nun eine produktive Fassade mit 156 Konstanten, 25 Typen, 113 Deklarationen
+  und 333 Structfeldern. 181 unveränderte C-Orakelrecords, 20 Verträge,
+  q3dm1-Routing, Sarge-Retail-Chat, 134/134 Botlib-Exporte und 73
+  Move-Runtime-Verträge bestehen. `TFL_DEFAULT` enthält wieder das originale
+  `TFL_ELEVATOR`-Bit und hat den Wert `0x011c0fbe`.
+- Alle 22 internen Botlib-Header sind mit 119 Makros, 110 auswertbaren
+  Konstanten, 25 Typen, 227 Deklarationen, fünf Globals, 236 Feldern und 25
+  MSVC-x86-ABI-Größen erfasst. 23 Verträge und der Retail-Corpus über 30
+  AAS-Dateien, 96.758 Areas und 125.731 Reachabilities bestehen. Die
+  `INDENT_*`-Werte verwenden wieder die Bitmasken 1/2/4/8/16;
+  `MAX_EPAIRKEY` wurde von 144 auf den Originalwert 128 korrigiert. Die im
+  Original nur deklarierten, aber nirgends definierten oder aufgerufenen
+  Einstiege `AAS_PrintFreeBSPLinks` und `AAS_AreasConnected` bleiben als
+  ausdrücklich getestete, inerte ABI-Kompatibilitätseinstiege erhalten.
+- `cm_local.h`, `cm_patch.h`, `cm_polylib.h`, `cm_public.h`, `qcommon.h` und
+  `unzip.h` sind mit 75 Makros, 46 Enumwerten, 45 Typen, 343 Funktionen, 32
+  Globals und 222 Feldern vollständig zugeordnet. 44 unveränderte x86-ABI-
+  Records, 18 Verträge, 113 Retail-Patches und 84 Retail-Archive bestehen. Die
+  öffentlichen `CM_ClipHandleToModel`- und `CM_ModelBounds`-Pfade lehnen das
+  interne `CAPSULE_MODEL_HANDLE` nun wie `cm_load.c` ab; internes
+  Capsule-Tracing bleibt unverändert funktionsfähig.
+- `bg_lib.h`, `bg_local.h` und `g_rankings.h` sind über 17 Makros, drei Typen,
+  36 Deklarationen, 14 Globals, zwölf `pml_t`-Felder und alle 257 Baseq3- und
+  Missionpack-Rankingschlüssel abgedeckt. Das unveränderte C-Orakel, 16
+  Headerverträge, die vollständige `bg_lib`-Regression, Retail-Pmove über vier
+  Karten mit je 256 Befehlen und der Ranking-Subsystemtest sind grün.
+
+Alle vier neuen Gates wurden zusammen erneut ausgeführt. Der sequentielle
+Windows-Hauptbuild und der gekoppelte acht Frames lange Retail-QVM-Match
+bestehen ebenfalls. Der Match meldet 131 Entities, 13 Snapshot-Entities, 2.345
+vollständig texturierte Dreiecke, 17 Renderpässe, 26 Sounds und null nicht
+unterstützte Entities. `build/MiniQuake3.exe` hat SHA-256
+`d327538fdd7d8a194e486cd0b3458028eea8e158fba18bcca121cf77944cf941`.
+Die letzte vollständige Gesamtauswahl bleibt der dokumentierte 449-Gate-Lauf;
+die normale Retail-Auswahl in `scripts/verify.py` umfasst inzwischen 491 Gates.
+
+Das generierte Inventar zählt nun **284 portierte, keine teilweise portierte
+und 51 noch nicht begonnene** Dateien von insgesamt 335. Botlib ist mit 53/53
+Dateien vollständig; QCommon steht bei 24/27 und Spielcode bei 64/65. Die
+verbleibenden Quellportlücken konzentrieren sich auf drei QCommon-JIT-Dateien,
+einen CGame- und einen Game-Build-/Syscall-Pfad, sechs UI-Dateien sowie
+Unix-, macOS-, Null- und vier Windows-Plattformpfade.

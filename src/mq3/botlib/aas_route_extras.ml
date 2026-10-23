@@ -47,6 +47,8 @@ function shutdownAlternativeRouting(state)
   if state==void then return void end if
   state.valid=[];state.clusterAreas=[];state.numClusterAreas=0;state.initialized=false;return void
 end function
+function AAS_InitAlternativeRouting(router) return initAlternativeRouting(router) end function
+function AAS_ShutdownAlternativeRouting(state) return shutdownAlternativeRouting(state) end function
 
 function altRoutingFloodCluster(router,state,areaNum)
   if state==void or not state.initialized or not validRouter(router) or areaNum<=0 or areaNum>=len(state.valid) or not state.valid[areaNum] then return void end if

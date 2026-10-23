@@ -3,11 +3,12 @@
 // Fixed handle pools and reset semantics from be_ai_chat/goal/move/weap.c.
 package mq3.botlib.ai_resource_pools
 
+import mq3.botlib.public_headers as publicHeaders
 const MAX_CLIENTS=64
-const MAX_GOALSTACK=8
-const MAX_AVOIDGOALS=256
-const MAX_AVOIDREACH=1
-const MAX_AVOIDSPOTS=32
+const MAX_GOALSTACK=publicHeaders.MAX_GOALSTACK
+const MAX_AVOIDGOALS=publicHeaders.MAX_AVOIDGOALS
+const MAX_AVOIDREACH=publicHeaders.MAX_AVOIDREACH
+const MAX_AVOIDSPOTS=publicHeaders.MAX_AVOIDSPOTS
 
 const OP_ALLOC_CHAT_STATE=507
 const OP_FREE_CHAT_STATE=508

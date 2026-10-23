@@ -6,14 +6,15 @@
 // surface handed to the original game module.
 package mq3.botlib.be_interface
 
+import mq3.botlib.public_headers as publicHeaders
 import mq3.botlib.lifecycle_runtime as botLifecycleRuntime
 import mq3.vm.pc_parser as pc
 import mq3.compat.numeric as n
 
-const BOTLIB_API_VERSION=2
-const BLERR_NOERROR=0
-const BLERR_LIBRARYNOTSETUP=1
-const BLERR_INVALIDENTITYNUMBER=2
+const BOTLIB_API_VERSION=publicHeaders.BOTLIB_API_VERSION
+const BLERR_NOERROR=publicHeaders.BLERR_NOERROR
+const BLERR_LIBRARYNOTSETUP=publicHeaders.BLERR_LIBRARYNOTSETUP
+const BLERR_INVALIDENTITYNUMBER=publicHeaders.BLERR_INVALIDENTITYNUMBER
 
 struct Services context aasSetupFn eaSetupFn weaponSetupFn goalSetupFn chatSetupFn moveSetupFn chatShutdownFn moveShutdownFn goalShutdownFn weaponShutdownFn weightsShutdownFn charactersShutdownFn aasShutdownFn eaShutdownFn libvarsReleasedFn definesRemovedFn logShutdownFn checkSourcesFn aasStartFrameFn aasLoadMapFn initLevelItemsFn setBrushModelTypesFn aasUpdateEntityFn end struct
 struct Api version top aas ea ai end struct

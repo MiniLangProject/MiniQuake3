@@ -13,21 +13,21 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 
 | Bereich | Dateien | Portiert | Teilweise | Nicht begonnen | Original behalten |
 |---|---:|---:|---:|---:|---:|
-| `botlib` | 53 | 31 | 0 | 22 | 0 |
+| `botlib` | 53 | 53 | 0 | 0 | 0 |
 | `cgame` | 25 | 24 | 0 | 1 | 0 |
 | `client` | 19 | 19 | 0 | 0 | 0 |
-| `game` | 65 | 52 | 0 | 13 | 0 |
+| `game` | 65 | 64 | 0 | 1 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 47 | 0 | 0 | 0 |
-| `qcommon` | 27 | 18 | 0 | 9 | 0 |
+| `qcommon` | 27 | 24 | 0 | 3 | 0 |
 | `renderer` | 27 | 27 | 0 | 0 | 0 |
 | `server` | 11 | 11 | 0 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 9 | 0 | 4 | 0 |
-| **Gesamt** | **335** | **244** | **0** | **91** | **0** |
+| **Gesamt** | **335** | **284** | **0** | **51** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -39,32 +39,32 @@ Teil dieser Tabelle.
 | Originaldatei | Bereich | Quellport | Symbole | Gemappt | Offen |
 |---|---|---|---:|---:|---:|
 | `code/botlib/aasfile.h` | `botlib` | `ported` | 0 | 0 | 0 |
-| `code/botlib/be_aas_bsp.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/be_aas_bsp.h` | `botlib` | `ported` | 19 | 19 | 0 |
 | `code/botlib/be_aas_bspq3.c` | `botlib` | `ported` | 21 | 21 | 0 |
 | `code/botlib/be_aas_cluster.c` | `botlib` | `ported` | 31 | 31 | 0 |
-| `code/botlib/be_aas_cluster.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/be_aas_cluster.h` | `botlib` | `ported` | 2 | 2 | 0 |
 | `code/botlib/be_aas_debug.c` | `botlib` | `ported` | 19 | 19 | 0 |
-| `code/botlib/be_aas_debug.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/be_aas_def.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/be_aas_debug.h` | `botlib` | `ported` | 15 | 15 | 0 |
+| `code/botlib/be_aas_def.h` | `botlib` | `ported` | 28 | 28 | 0 |
 | `code/botlib/be_aas_entity.c` | `botlib` | `ported` | 15 | 15 | 0 |
-| `code/botlib/be_aas_entity.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/be_aas_entity.h` | `botlib` | `ported` | 14 | 14 | 0 |
 | `code/botlib/be_aas_file.c` | `botlib` | `ported` | 8 | 8 | 0 |
-| `code/botlib/be_aas_file.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/be_aas_funcs.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/be_aas_file.h` | `botlib` | `ported` | 4 | 4 | 0 |
+| `code/botlib/be_aas_funcs.h` | `botlib` | `ported` | 0 | 0 | 0 |
 | `code/botlib/be_aas_main.c` | `botlib` | `ported` | 17 | 17 | 0 |
-| `code/botlib/be_aas_main.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/be_aas_main.h` | `botlib` | `ported` | 13 | 13 | 0 |
 | `code/botlib/be_aas_move.c` | `botlib` | `ported` | 19 | 19 | 0 |
-| `code/botlib/be_aas_move.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/be_aas_move.h` | `botlib` | `ported` | 13 | 13 | 0 |
 | `code/botlib/be_aas_optimize.c` | `botlib` | `ported` | 8 | 8 | 0 |
-| `code/botlib/be_aas_optimize.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/be_aas_optimize.h` | `botlib` | `ported` | 1 | 1 | 0 |
 | `code/botlib/be_aas_reach.c` | `botlib` | `ported` | 53 | 53 | 0 |
-| `code/botlib/be_aas_reach.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/be_aas_reach.h` | `botlib` | `ported` | 17 | 17 | 0 |
 | `code/botlib/be_aas_route.c` | `botlib` | `ported` | 51 | 51 | 0 |
-| `code/botlib/be_aas_route.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/be_aas_route.h` | `botlib` | `ported` | 14 | 14 | 0 |
 | `code/botlib/be_aas_routealt.c` | `botlib` | `ported` | 4 | 4 | 0 |
-| `code/botlib/be_aas_routealt.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/be_aas_routealt.h` | `botlib` | `ported` | 3 | 3 | 0 |
 | `code/botlib/be_aas_sample.c` | `botlib` | `ported` | 28 | 28 | 0 |
-| `code/botlib/be_aas_sample.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/be_aas_sample.h` | `botlib` | `ported` | 23 | 23 | 0 |
 | `code/botlib/be_ai_char.c` | `botlib` | `ported` | 19 | 19 | 0 |
 | `code/botlib/be_ai_chat.c` | `botlib` | `ported` | 60 | 60 | 0 |
 | `code/botlib/be_ai_gen.c` | `botlib` | `ported` | 2 | 2 | 0 |
@@ -72,25 +72,25 @@ Teil dieser Tabelle.
 | `code/botlib/be_ai_move.c` | `botlib` | `ported` | 67 | 67 | 0 |
 | `code/botlib/be_ai_weap.c` | `botlib` | `ported` | 14 | 14 | 0 |
 | `code/botlib/be_ai_weight.c` | `botlib` | `ported` | 24 | 24 | 0 |
-| `code/botlib/be_ai_weight.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/be_ai_weight.h` | `botlib` | `ported` | 16 | 16 | 0 |
 | `code/botlib/be_ea.c` | `botlib` | `ported` | 32 | 32 | 0 |
 | `code/botlib/be_interface.c` | `botlib` | `ported` | 16 | 0 | 16 |
-| `code/botlib/be_interface.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/be_interface.h` | `botlib` | `ported` | 6 | 6 | 0 |
 | `code/botlib/l_crc.c` | `botlib` | `ported` | 5 | 0 | 5 |
 | `code/botlib/l_crc.h` | `botlib` | `ported` | 0 | 0 | 0 |
 | `code/botlib/l_libvar.c` | `botlib` | `ported` | 13 | 0 | 13 |
 | `code/botlib/l_libvar.h` | `botlib` | `ported` | 0 | 0 | 0 |
 | `code/botlib/l_log.c` | `botlib` | `ported` | 7 | 7 | 0 |
-| `code/botlib/l_log.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/l_log.h` | `botlib` | `ported` | 7 | 7 | 0 |
 | `code/botlib/l_memory.c` | `botlib` | `ported` | 9 | 9 | 0 |
-| `code/botlib/l_memory.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/l_memory.h` | `botlib` | `ported` | 14 | 14 | 0 |
 | `code/botlib/l_precomp.c` | `botlib` | `ported` | 82 | 82 | 0 |
-| `code/botlib/l_precomp.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/l_precomp.h` | `botlib` | `ported` | 49 | 49 | 0 |
 | `code/botlib/l_script.c` | `botlib` | `ported` | 39 | 1 | 38 |
-| `code/botlib/l_script.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/l_script.h` | `botlib` | `ported` | 106 | 106 | 0 |
 | `code/botlib/l_struct.c` | `botlib` | `ported` | 9 | 9 | 0 |
-| `code/botlib/l_struct.h` | `botlib` | `not_started` | 0 | 0 | 0 |
-| `code/botlib/l_utils.h` | `botlib` | `not_started` | 0 | 0 | 0 |
+| `code/botlib/l_struct.h` | `botlib` | `ported` | 16 | 16 | 0 |
+| `code/botlib/l_utils.h` | `botlib` | `ported` | 4 | 4 | 0 |
 | `code/cgame/cg_consolecmds.c` | `cgame` | `ported` | 40 | 40 | 0 |
 | `code/cgame/cg_draw.c` | `cgame` | `ported` | 49 | 49 | 0 |
 | `code/cgame/cg_drawtools.c` | `cgame` | `ported` | 25 | 25 | 0 |
@@ -149,22 +149,22 @@ Teil dieser Tabelle.
 | `code/game/ai_team.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/ai_vcmd.c` | `game` | `ported` | 16 | 16 | 0 |
 | `code/game/ai_vcmd.h` | `game` | `ported` | 0 | 0 | 0 |
-| `code/game/be_aas.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/be_ai_char.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/be_ai_chat.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/be_ai_gen.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/be_ai_goal.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/be_ai_move.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/be_ai_weap.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/be_ea.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/be_aas.h` | `game` | `ported` | 59 | 59 | 0 |
+| `code/game/be_ai_char.h` | `game` | `ported` | 8 | 8 | 0 |
+| `code/game/be_ai_chat.h` | `game` | `ported` | 34 | 34 | 0 |
+| `code/game/be_ai_gen.h` | `game` | `ported` | 1 | 1 | 0 |
+| `code/game/be_ai_goal.h` | `game` | `ported` | 38 | 38 | 0 |
+| `code/game/be_ai_move.h` | `game` | `ported` | 52 | 52 | 0 |
+| `code/game/be_ai_weap.h` | `game` | `ported` | 16 | 16 | 0 |
+| `code/game/be_ea.h` | `game` | `ported` | 27 | 27 | 0 |
 | `code/game/bg_lib.c` | `game` | `ported` | 33 | 33 | 0 |
-| `code/game/bg_lib.h` | `game` | `not_started` | 0 | 0 | 0 |
-| `code/game/bg_local.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/bg_lib.h` | `game` | `ported` | 51 | 51 | 0 |
+| `code/game/bg_local.h` | `game` | `ported` | 37 | 37 | 0 |
 | `code/game/bg_misc.c` | `game` | `ported` | 12 | 10 | 2 |
 | `code/game/bg_pmove.c` | `game` | `ported` | 42 | 39 | 3 |
 | `code/game/bg_public.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/bg_slidemove.c` | `game` | `ported` | 2 | 2 | 0 |
-| `code/game/botlib.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/botlib.h` | `game` | `ported` | 59 | 59 | 0 |
 | `code/game/chars.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/g_active.c` | `game` | `ported` | 17 | 16 | 1 |
 | `code/game/g_arenas.c` | `game` | `ported` | 8 | 8 | 0 |
@@ -181,7 +181,7 @@ Teil dieser Tabelle.
 | `code/game/g_mover.c` | `game` | `ported` | 37 | 3 | 34 |
 | `code/game/g_public.h` | `game` | `ported` | 0 | 0 | 0 |
 | `code/game/g_rankings.c` | `game` | `ported` | 17 | 17 | 0 |
-| `code/game/g_rankings.h` | `game` | `not_started` | 0 | 0 | 0 |
+| `code/game/g_rankings.h` | `game` | `ported` | 257 | 257 | 0 |
 | `code/game/g_session.c` | `game` | `ported` | 5 | 5 | 0 |
 | `code/game/g_spawn.c` | `game` | `ported` | 13 | 13 | 0 |
 | `code/game/g_svcmds.c` | `game` | `ported` | 11 | 11 | 0 |
@@ -263,12 +263,12 @@ Teil dieser Tabelle.
 | `code/q3_ui/ui_teamorders.c` | `q3_ui` | `ported` | 10 | 10 | 0 |
 | `code/q3_ui/ui_video.c` | `q3_ui` | `ported` | 15 | 15 | 0 |
 | `code/qcommon/cm_load.c` | `qcommon` | `ported` | 28 | 0 | 28 |
-| `code/qcommon/cm_local.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
+| `code/qcommon/cm_local.h` | `qcommon` | `ported` | 0 | 0 | 0 |
 | `code/qcommon/cm_patch.c` | `qcommon` | `ported` | 27 | 27 | 0 |
-| `code/qcommon/cm_patch.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
+| `code/qcommon/cm_patch.h` | `qcommon` | `ported` | 0 | 0 | 0 |
 | `code/qcommon/cm_polylib.c` | `qcommon` | `ported` | 17 | 0 | 17 |
-| `code/qcommon/cm_polylib.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
-| `code/qcommon/cm_public.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
+| `code/qcommon/cm_polylib.h` | `qcommon` | `ported` | 0 | 0 | 0 |
+| `code/qcommon/cm_public.h` | `qcommon` | `ported` | 0 | 0 | 0 |
 | `code/qcommon/cm_test.c` | `qcommon` | `ported` | 15 | 15 | 0 |
 | `code/qcommon/cm_trace.c` | `qcommon` | `ported` | 22 | 22 | 0 |
 | `code/qcommon/cmd.c` | `qcommon` | `ported` | 23 | 23 | 0 |
@@ -279,10 +279,10 @@ Teil dieser Tabelle.
 | `code/qcommon/md4.c` | `qcommon` | `ported` | 8 | 8 | 0 |
 | `code/qcommon/msg.c` | `qcommon` | `ported` | 48 | 48 | 0 |
 | `code/qcommon/net_chan.c` | `qcommon` | `ported` | 17 | 1 | 16 |
-| `code/qcommon/qcommon.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
+| `code/qcommon/qcommon.h` | `qcommon` | `ported` | 0 | 0 | 0 |
 | `code/qcommon/qfiles.h` | `qcommon` | `ported` | 0 | 0 | 0 |
 | `code/qcommon/unzip.c` | `qcommon` | `ported` | 48 | 48 | 0 |
-| `code/qcommon/unzip.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
+| `code/qcommon/unzip.h` | `qcommon` | `ported` | 0 | 0 | 0 |
 | `code/qcommon/vm.c` | `qcommon` | `ported` | 23 | 0 | 23 |
 | `code/qcommon/vm_interpreted.c` | `qcommon` | `ported` | 4 | 4 | 0 |
 | `code/qcommon/vm_local.h` | `qcommon` | `ported` | 0 | 0 | 0 |
@@ -380,46 +380,13 @@ Die folgende vollständige Liste dient als Arbeitswarteschlange. Leere
 Symbolinventare müssen beim nächsten Audit direkt aus der Originaldatei ergänzt
 werden; sie sind kein Nachweis vollständiger Parität.
 
-- `code/botlib/be_aas_bsp.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_cluster.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_debug.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_def.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_entity.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_file.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_funcs.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_main.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_move.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_optimize.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_reach.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_route.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_routealt.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_aas_sample.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/be_ai_weight.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_interface.c` (ported): `BotExportTest`, `BotLibSetup`, `Export_BotLibLoadMap`, `Export_BotLibSetup`, `Export_BotLibShutdown`, `Export_BotLibStartFrame`, `Export_BotLibUpdateEntity`, `Export_BotLibVarGet`, `Export_BotLibVarSet`, `GetBotLibAPI`, `Init_AAS_Export`, `Init_AI_Export`, `Init_EA_Export`, `Sys_MilliSeconds`, `ValidClientNumber`, `ValidEntityNumber`
-- `code/botlib/be_interface.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_crc.c` (ported): `CRC_ContinueProcessString`, `CRC_Init`, `CRC_ProcessByte`, `CRC_ProcessString`, `CRC_Value`
 - `code/botlib/l_libvar.c` (ported): `LibVar`, `LibVarAlloc`, `LibVarChanged`, `LibVarDeAlloc`, `LibVarDeAllocAll`, `LibVarGet`, `LibVarGetString`, `LibVarGetValue`, `LibVarSet`, `LibVarSetNotModified`, `LibVarString`, `LibVarStringValue`, `LibVarValue`
-- `code/botlib/l_log.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/l_memory.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/l_precomp.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_script.c` (ported): `EndOfScript`, `FileLength`, `FreeScript`, `GetScriptFlags`, `LoadScriptFile`, `LoadScriptMemory`, `NumLinesCrossed`, `NumberValue`, `PS_CheckTokenString`, `PS_CheckTokenType`, `PS_CreatePunctuationTable`, `PS_ExpectAnyToken`, `PS_ExpectTokenString`, `PS_ExpectTokenType`, `PS_NextWhiteSpaceChar`, `PS_ReadEscapeCharacter`, `PS_ReadLiteral`, `PS_ReadName`, `PS_ReadNumber`, `PS_ReadPrimitive`, `PS_ReadPunctuation`, `PS_ReadString`, `PS_ReadWhiteSpace`, `PS_SetBaseFolder`, `PS_SkipUntilString`, `PS_UnreadLastToken`, `PS_UnreadToken`, `PunctuationFromNum`, `ReadSignedFloat`, `ReadSignedInt`, `ResetScript`, `ScriptError`, `ScriptSkipTo`, `ScriptWarning`, `SetScriptFlags`, `SetScriptPunctuations`, `StripDoubleQuotes`, `StripSingleQuotes`
-- `code/botlib/l_script.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/l_struct.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/botlib/l_utils.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/cgame/cg_syscalls.asm` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/be_aas.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/be_ai_char.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/be_ai_chat.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/be_ai_gen.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/be_ai_goal.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/be_ai_move.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/be_ai_weap.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/be_ea.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/bg_lib.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/game/bg_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/bg_misc.c` (ported): `BG_FindItemForHoldable`, `BG_FindItemForPowerup`
 - `code/game/bg_pmove.c` (ported): `PM_CheckStuck`, `PM_InvulnerabilityMove`, `sqrt`
-- `code/game/botlib.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/g_active.c` (ported): `StuckInOtherClient`
 - `code/game/g_bot.c` (ported): `PlayerIntroSound`, `trap_Cvar_VariableValue`
 - `code/game/g_client.c` (ported): `skin`, `trap_DropClient`
@@ -429,7 +396,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/game/g_misc.c` (ported): `DropPortalDestination`, `DropPortalSource`, `PortalDie`, `PortalEnable`, `PortalTouch`, `utilities`
 - `code/game/g_missile.c` (ported): `ProximityMine_Activate`, `ProximityMine_Die`, `ProximityMine_Explode`, `ProximityMine_ExplodeOnPlayer`, `ProximityMine_Player`, `ProximityMine_Trigger`, `fire_nail`, `fire_prox`
 - `code/game/g_mover.c` (ported): `Blocked_Door`, `G_CheckProxMinePosition`, `G_CreateRotationMatrix`, `G_MoverPush`, `G_MoverTeam`, `G_RotatePoint`, `G_TestEntityPosition`, `G_TransposeMatrix`, `G_TryPushingEntity`, `G_TryPushingProxMine`, `InitMover`, `MatchTeam`, `Reached_BinaryMover`, `Reached_Train`, `ReturnToPos1`, `SP_func_bobbing`, `SP_func_button`, `SP_func_pendulum`, `SP_func_plat`, `SP_func_rotating`, `SP_func_static`, `SP_func_train`, `SpawnPlatTrigger`, `Think_BeginMoving`, `Think_MatchTeam`, `Think_SetupTrainTargets`, `Think_SpawnNewDoorTrigger`, `Touch_Button`, `Touch_DoorTrigger`, `Touch_DoorTriggerSpectator`, `Touch_Plat`, `Touch_PlatCenterTrigger`, `Use_BinaryMover`, `triggered`
-- `code/game/g_rankings.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/g_syscalls.asm` (not_started): *(Symbolinventar ergänzen)*
 - `code/game/g_team.c` (ported): `CheckObeliskAttack`, `ObeliskDie`, `ObeliskPain`, `ObeliskRegen`, `ObeliskRespawn`, `ObeliskTouch`, `OtherTeamName`, `PrintMsg`, `SP_team_blueobelisk`, `SP_team_neutralobelisk`, `SP_team_redobelisk`, `SpawnObelisk`, `TeamColorString`
 - `code/game/g_trigger.c` (ported): `between`
@@ -451,15 +417,9 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/null/null_net.c` (not_started): `NET_StringToAdr`, `Sys_GetPacket`, `Sys_SendPacket`
 - `code/null/null_snddma.c` (not_started): `SNDDMA_BeginPainting`, `SNDDMA_GetDMAPos`, `SNDDMA_Init`, `SNDDMA_Shutdown`, `SNDDMA_Submit`, `S_ClearSoundBuffer`, `S_RegisterSound`, `S_StartLocalSound`
 - `code/qcommon/cm_load.c` (ported): `CM_BoundBrush`, `CM_Checksum`, `CM_ClearMap`, `CM_ClipHandleToModel`, `CM_EntityString`, `CM_InitBoxHull`, `CM_InlineModel`, `CM_LeafArea`, `CM_LeafCluster`, `CM_LoadMap`, `CM_LumpChecksum`, `CM_ModelBounds`, `CM_NumClusters`, `CM_NumInlineModels`, `CM_TempBoxModel`, `CMod_LoadBrushSides`, `CMod_LoadBrushes`, `CMod_LoadEntityString`, `CMod_LoadLeafBrushes`, `CMod_LoadLeafSurfaces`, `CMod_LoadLeafs`, `CMod_LoadNodes`, `CMod_LoadPatches`, `CMod_LoadPlanes`, `CMod_LoadShaders`, `CMod_LoadSubmodels`, `CMod_LoadVisibility`, `SetPlaneSignbits`
-- `code/qcommon/cm_local.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/qcommon/cm_patch.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/cm_polylib.c` (ported): `AddWindingToConvexHull`, `AllocWinding`, `BaseWindingForPlane`, `CheckWinding`, `ChopWinding`, `ChopWindingInPlace`, `ClipWindingEpsilon`, `CopyWinding`, `FreeWinding`, `RemoveColinearPoints`, `ReverseWinding`, `WindingArea`, `WindingBounds`, `WindingCenter`, `WindingOnPlaneSide`, `WindingPlane`, `pw`
-- `code/qcommon/cm_polylib.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/qcommon/cm_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/cvar.c` (ported): `Cvar_Command`, `Cvar_CommandCompletion`, `Cvar_FindVar`, `Cvar_Get`, `Cvar_InfoString`, `Cvar_InfoStringBuffer`, `Cvar_InfoString_Big`, `Cvar_Init`, `Cvar_List_f`, `Cvar_Register`, `Cvar_Reset`, `Cvar_Reset_f`, `Cvar_Restart_f`, `Cvar_Set`, `Cvar_Set2`, `Cvar_SetA_f`, `Cvar_SetCheatState`, `Cvar_SetLatched`, `Cvar_SetS_f`, `Cvar_SetU_f`, `Cvar_SetValue`, `Cvar_Set_f`, `Cvar_Toggle_f`, `Cvar_Update`, `Cvar_ValidateString`, `Cvar_VariableIntegerValue`, `Cvar_VariableString`, `Cvar_VariableStringBuffer`, `Cvar_VariableValue`, `Cvar_WriteVariables`, `generateHashValue`
 - `code/qcommon/net_chan.c` (ported): `NET_AdrToString`, `NET_CompareAdr`, `NET_CompareBaseAdr`, `NET_GetLoopPacket`, `NET_IsLocalAddress`, `NET_OutOfBandPrint`, `NET_SendLoopPacket`, `NET_SendPacket`, `NET_StringToAdr`, `Netchan_Init`, `Netchan_Process`, `Netchan_ScramblePacket`, `Netchan_Setup`, `Netchan_Transmit`, `Netchan_TransmitNextFragment`, `Netchan_UnScramblePacket`
-- `code/qcommon/qcommon.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/qcommon/unzip.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/vm.c` (ported): `ParseHex`, `VM_ArgPtr`, `VM_Call`, `VM_CallCompiled`, `VM_Clear`, `VM_Compile`, `VM_Create`, `VM_Debug`, `VM_DllSyscall`, `VM_ExplicitArgPtr`, `VM_Free`, `VM_Init`, `VM_LoadSymbols`, `VM_LogSyscalls`, `VM_ProfileSort`, `VM_Restart`, `VM_SymbolForCompiledPointer`, `VM_SymbolToValue`, `VM_VM2C`, `VM_ValueToFunctionSymbol`, `VM_ValueToSymbol`, `VM_VmInfo_f`, `VM_VmProfile_f`
 - `code/qcommon/vm_ppc.c` (not_started): `AsmCall`, `Constant1`, `Constant4`, `Emit4`, `Inst`, `Inst4`, `InstImm`, `InstImmU`, `VM_CallCompiled`, `VM_Compile`, `fltop`, `fltopandsecond`, `ltop`, `ltopandsecond`
 - `code/qcommon/vm_ppc_new.c` (not_started): `AsmCall`, `Constant1`, `Constant4`, `Emit4`, `Inst`, `Inst4`, `InstImm`, `InstImmU`, `VM_CallCompiled`, `VM_Compile`, `fltop`, `fltopandsecond`, `loadOpStack`, `ltop`, `ltopandsecond`, `makeFloat`, `makeInteger`, `spillOpStack`

@@ -7,10 +7,11 @@ import mq3.compat.transcendental as crt
 import mq3.shared.math as q
 import mq3.game.movement as kernel
 import mq3.game.constants as c
+import mq3.game.game_internal_headers as internal
 import mq3.collision.brush as brush
 
 const ALL_TIMES = 352
-const OVERCLIP = 1.001
+const OVERCLIP = internal.OVERCLIP
 struct Command
   serverTime
   angles
@@ -156,7 +157,7 @@ function checkJump(p)
   if (p.ps.pm_flags & 2) != 0 then p.cmd.upmove = 0; return false end if
   p.k.groundPlane = false; p.k.walking = false
   p.ps.pm_flags = p.ps.pm_flags | 2; p.ps.groundEntityNum = 1023
-  p.ps.velocity[2] = 270.0
+  p.ps.velocity[2] = internal.JUMP_VELOCITY
   addEvent(p,c.EV_JUMP); jumpAnimation(p)
   return true
 end function
@@ -318,7 +319,7 @@ end function
 function crashLand(p)
   anim = c.LEGS_LAND
   if (p.ps.pm_flags & 8) != 0 then anim = c.LEGS_LANDB end if
-  forceLegs(p,anim); p.ps.legsTimer = 130
+  forceLegs(p,anim); p.ps.legsTimer = internal.TIMER_LAND
   distance = n.fsub(p.ps.origin[2],p.previousOrigin[2])
   velocity = p.previousVelocity[2]; acceleration = n.f32(-p.ps.gravity)
   a = n.fdiv(acceleration,2.0); b = velocity; cc = n.fneg(distance)
@@ -394,7 +395,7 @@ function groundTrace(p)
   if p.ps.velocity[2] > 0 and q.DotProduct(p.ps.velocity,p.k.groundNormal) > 10 then
     jumpAnimation(p); clearGround(p); return void
   end if
-  if p.k.groundNormal[2] < n.f32(0.7) then
+  if p.k.groundNormal[2] < n.f32(internal.MIN_WALK_NORMAL) then
     p.ps.groundEntityNum = 1023; p.k.groundPlane = true; p.k.walking = false
     return void
   end if
@@ -560,7 +561,7 @@ function weapon(p)
 end function
 function animate(p)
   if (p.cmd.buttons & 8) != 0 and p.ps.torsoTimer == 0 then
-    startTorso(p,c.TORSO_GESTURE); p.ps.torsoTimer = 2294; addEvent(p,c.EV_TAUNT)
+    startTorso(p,c.TORSO_GESTURE); p.ps.torsoTimer = internal.TIMER_GESTURE; addEvent(p,c.EV_TAUNT)
   end if
   return void
 end function

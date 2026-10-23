@@ -3,13 +3,14 @@
 // Deterministic protocol-68 channel core from qcommon/net_chan.c.
 package mq3.qcommon.netchan
 import mq3.compat.numeric as n
+import mq3.qcommon.headers as qcommonHeaders
 
 const NS_CLIENT = 0
 const NS_SERVER = 1
 const MAX_PACKETLEN = 1400
 const FRAGMENT_SIZE = 1300
 const PACKET_HEADER = 10
-const MAX_MSGLEN = 16384
+const MAX_MSGLEN = qcommonHeaders.MAX_MSGLEN
 const FRAGMENT_BIT = 0x80000000
 const SCRAMBLE_START = 6
 

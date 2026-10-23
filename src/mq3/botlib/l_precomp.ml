@@ -5,17 +5,18 @@
 // parser so game, cgame and UI traps observe one preprocessor implementation.
 package mq3.botlib.l_precomp
 
+import mq3.botlib.internal_headers as botlibHeaders
 import mq3.vm.pc_parser as pc
 import mq3.botlib.l_script as lex
 import mq3.compat.numeric as n
 import std.string as strings
 
 const DEFINEHASHSIZE=1024
-const INDENT_IF=0
-const INDENT_ELSE=1
-const INDENT_ELIF=2
-const INDENT_IFDEF=3
-const INDENT_IFNDEF=4
+const INDENT_IF=botlibHeaders.INDENT_IF
+const INDENT_ELSE=botlibHeaders.INDENT_ELSE
+const INDENT_ELIF=botlibHeaders.INDENT_ELIF
+const INDENT_IFDEF=botlibHeaders.INDENT_IFDEF
+const INDENT_IFNDEF=botlibHeaders.INDENT_IFNDEF
 
 const P_LOGIC_AND=5
 const P_LOGIC_OR=6

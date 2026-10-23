@@ -3,6 +3,7 @@
 // Patch collision tests from cm_patch.c. Geometry is generated in MiniLang.
 package mq3.collision.patchtrace
 import mq3.compat.numeric as n
+import mq3.qcommon.headers as qcommonHeaders
 import mq3.shared.math as q
 import mq3.collision.patchmesh as mesh
 import mq3.collision.winding as w
@@ -67,14 +68,14 @@ function checkPlane(adjusted,clip)
   p = adjusted.plane
   d1 = n.fsub(q.DotProduct(adjusted.start,p.normal),p.distance)
   d2 = n.fsub(q.DotProduct(adjusted.finish,p.normal),p.distance)
-  if d1 > 0 and (d2 >= 0.125 or d2 >= d1) then return false end if
+  if d1 > 0 and (d2 >= qcommonHeaders.SURFACE_CLIP_EPSILON or d2 >= d1) then return false end if
   if d1 <= 0 and d2 <= 0 then return true end if
   if d1 > d2 then
-    fraction = n.f32((d1-0.125)/n.fsub(d1,d2))
+    fraction = n.f32((d1-qcommonHeaders.SURFACE_CLIP_EPSILON)/n.fsub(d1,d2))
     if fraction < 0 then fraction = n.f32(0) end if
     if fraction > clip.enter then clip.enter = fraction;clip.hit = true end if
   else
-    fraction = n.f32((d1+0.125)/n.fsub(d1,d2))
+    fraction = n.f32((d1+qcommonHeaders.SURFACE_CLIP_EPSILON)/n.fsub(d1,d2))
     if fraction > 1 then fraction = n.f32(1) end if
     if fraction < clip.leave then clip.leave = fraction end if
   end if
@@ -118,7 +119,7 @@ function tracePoint(work,patch,playerCurveClip)
       offset = q.DotProduct(corner(work,p.signbits),p.normal)
       d1 = n.fadd(n.fsub(q.DotProduct(work.start,p.normal),p.distance),offset)
       d2 = n.fadd(n.fsub(q.DotProduct(work.finish,p.normal),p.distance),offset)
-      fraction = n.f32((d1-0.125)/n.fsub(d1,d2))
+      fraction = n.f32((d1-qcommonHeaders.SURFACE_CLIP_EPSILON)/n.fsub(d1,d2))
       if fraction < 0 then fraction = n.f32(0) end if
       work.trace.fraction = fraction;work.trace.normal = p.normal;work.trace.distance = p.distance
       // Original patch hits leave plane type/signbits from the preceding trace.

@@ -3,18 +3,19 @@
 package mq3.format.unzip
 import mq3.format.pk3 as pk3
 import mq3.format.deflate as raw
+import mq3.qcommon.headers as qcommonHeaders
 import std.fs as fs
 
-const UNZ_OK=0
-const UNZ_END_OF_LIST_OF_FILE=-100
-const UNZ_EOF=0
-const UNZ_PARAMERROR=-102
-const UNZ_BADZIPFILE=-103
-const UNZ_INTERNALERROR=-104
-const UNZ_CRCERROR=-105
-const UNZ_CASESENSITIVE=1
-const UNZ_NOTCASESENSITIVE=2
-const UNZ_OSDEFAULTCASE=0
+const UNZ_OK=qcommonHeaders.UNZ_OK
+const UNZ_END_OF_LIST_OF_FILE=qcommonHeaders.UNZ_END_OF_LIST_OF_FILE
+const UNZ_EOF=qcommonHeaders.UNZ_EOF
+const UNZ_PARAMERROR=qcommonHeaders.UNZ_PARAMERROR
+const UNZ_BADZIPFILE=qcommonHeaders.UNZ_BADZIPFILE
+const UNZ_INTERNALERROR=qcommonHeaders.UNZ_INTERNALERROR
+const UNZ_CRCERROR=qcommonHeaders.UNZ_CRCERROR
+const UNZ_CASESENSITIVE=qcommonHeaders.UNZ_CASESENSITIVE
+const UNZ_NOTCASESENSITIVE=qcommonHeaders.UNZ_NOTCASESENSITIVE
+const UNZ_OSDEFAULTCASE=qcommonHeaders.UNZ_OSDEFAULTCASE
 const Z_OK=0
 const Z_STREAM_END=1
 const Z_STREAM_ERROR=-2

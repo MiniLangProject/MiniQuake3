@@ -108,3 +108,14 @@ function weightConfigText(config)
 end function
 function writeWeightConfig(state,filename,config) if state==void or state.writeFn==void then return false end if;return state.writeFn(state.context,filename,weightConfigText(config)) end function
 function botShutdownWeights(state) if state!=void then state.weights.configs=[] end if;return 0 end function
+
+// Exact be_ai_weight.h spellings for native-header consumers.  State-bearing
+// operations keep the port's explicit owner as their leading argument.
+function FindFuzzyWeight(config,name) return findFuzzyWeight(config,name) end function
+function FuzzyWeight(inventory,config,weightNumber) return fuzzyWeight(inventory,config,weightNumber) end function
+function FuzzyWeightUndecided(state,inventory,config,weightNumber) return fuzzyWeightUndecided(state,inventory,config,weightNumber) end function
+function ScaleWeight(config,name,scale) return scaleWeight(config,name,scale) end function
+function ScaleBalanceRange(config,scale) return scaleFuzzyBalanceRange(config,scale) end function
+function EvolveWeightConfig(state,config) return evolveWeightConfig(state,config) end function
+function InterbreedWeightConfigs(first,second,result) return interbreedWeightConfigs(first,second,result) end function
+function BotShutdownWeights(state) return botShutdownWeights(state) end function

@@ -11,6 +11,7 @@ import mq3.collision.patchmesh as mesh
 import mq3.collision.patchtrace as patches
 import mq3.collision.visibility as vis
 import mq3.qcommon.md4 as md4
+import mq3.qcommon.headers as qcommonHeaders
 import std.array as arrays
 
 struct Shader name surfaceFlags contentFlags end struct
@@ -165,7 +166,7 @@ function CMod_LoadNodes(map,planes)
   values=array(map.counts[3],void);for index=0 to len(values)-1 off=map.offsets[3]+index*36;planeNumber=n.readI32(map.data,off);if planeNumber<0 or planeNumber>=len(planes) then return fail("invalid node plane") end if;plane=planes[planeNumber];values[index]=Node(plane,planeType(plane.normal),[n.readI32(map.data,off+4),n.readI32(map.data,off+8)]) end for;return values
 end function
 function CMod_LoadSubmodels(map)
-  if map.counts[7]<1 then return fail("map has no models") end if;if map.counts[7]>256 then return fail("MAX_SUBMODELS exceeded") end if
+  if map.counts[7]<1 then return fail("map has no models") end if;if map.counts[7]>qcommonHeaders.MAX_SUBMODELS then return fail("MAX_SUBMODELS exceeded") end if
   models=array(map.counts[7],void);bounds=array(map.counts[7],void)
   for index=0 to len(models)-1
     off=map.offsets[7]+index*40;lower=[];upper=[]
@@ -259,9 +260,9 @@ function tempBoxModel(world,mins,maxs,capsule)
   // The original capsule handle updates the shared bounds but deliberately
   // leaves the temporary box planes untouched. Reciprocal box-vs-capsule
   // paths create their replacement box only after consuming these bounds.
-  if capsule then return 254 end if
+  if capsule then return qcommonHeaders.CAPSULE_MODEL_HANDLE end if
   world.temporary.brush = makeBox(mins,maxs)
-  return 255
+  return qcommonHeaders.BOX_MODEL_HANDLE
 end function
 
 function CM_InitBoxHull(world)
@@ -270,12 +271,13 @@ end function
 function CM_TempBoxModel(world,mins,maxs,capsule) return tempBoxModel(world,mins,maxs,capsule) end function
 
 function checkModel(world,model)
-  if model >= 0 and (model < len(world.models) or model == 254 or model == 255) then return true end if
+  if model >= 0 and (model < len(world.models) or model == qcommonHeaders.CAPSULE_MODEL_HANDLE or model == qcommonHeaders.BOX_MODEL_HANDLE) then return true end if
   return fail("invalid model handle")
 end function
 
 function modelBounds(world,model)
   checkModel(world,model)
+  if model==qcommonHeaders.CAPSULE_MODEL_HANDLE then return fail("bad clip handle") end if
   bounds = world.temporary.bounds
   if model < len(world.models) then bounds = world.bounds[model] end if
   return [arrays.slice(bounds[0],0,3),arrays.slice(bounds[1],0,3)]
@@ -284,7 +286,9 @@ end function
 function CM_ClipHandleToModel(world,handle)
   if world==void or handle<0 then return fail("bad clip handle") end if
   if handle<len(world.models) then return world.models[handle] end if
-  if handle==254 or handle==255 then return world.temporary end if
+  // CM_ClipHandleToModel exposes only the box hull.  The capsule handle is
+  // consumed directly by trace code and must remain invalid here.
+  if handle==qcommonHeaders.BOX_MODEL_HANDLE then return world.temporary end if
   return fail("bad clip handle")
 end function
 function CM_ModelBounds(world,model) return modelBounds(world,model) end function
@@ -347,7 +351,7 @@ function pointContents(world, point, model)
   checkModel(world,model)
   contents = 0
   selected = []
-  if model == 254 and model >= len(world.models) then
+  if model == qcommonHeaders.CAPSULE_MODEL_HANDLE and model >= len(world.models) then
     bounds=world.temporary.bounds;center=array(3,0.0)
     for axis=0 to 2 center[axis]=n.fmul(n.fadd(bounds[0][axis],bounds[1][axis]),0.5) end for
     halfwidth=n.fsub(bounds[1][0],center[0]);halfheight=n.fsub(bounds[1][2],center[2]);radius=min(halfwidth,halfheight);offset=n.fsub(halfheight,radius)
@@ -358,7 +362,7 @@ function pointContents(world, point, model)
     if q.DotProduct(delta,delta)<=n.fmul(radius,radius) then contents=0x2000000 end if
     return n.i32(contents)
   end if
-  if model == 255 and model >= len(world.models) then
+  if model == qcommonHeaders.BOX_MODEL_HANDLE and model >= len(world.models) then
     selected = [world.temporary.brush]
   else
     for each index in modelBrushes(world,point,model)
@@ -538,12 +542,12 @@ function throughTree(work)
     if t1 < t2 then
       inverse = n.f32(1.0/n.fsub(t1,t2))
       side = 1
-      fraction2 = n.f32((n.fadd(t1,offset)+0.125)*inverse)
-      fraction = n.f32((n.fsub(t1,offset)+0.125)*inverse)
+      fraction2 = n.f32((n.fadd(t1,offset)+qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
+      fraction = n.f32((n.fsub(t1,offset)+qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
     else if t1 > t2 then
       inverse = n.f32(1.0/n.fsub(t1,t2))
-      fraction2 = n.f32((n.fsub(t1,offset)-0.125)*inverse)
-      fraction = n.f32((n.fadd(t1,offset)+0.125)*inverse)
+      fraction2 = n.f32((n.fsub(t1,offset)-qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
+      fraction = n.f32((n.fadd(t1,offset)+qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
     end if
     fraction = max(0.0,min(1.0,fraction))
     fraction2 = max(0.0,min(1.0,fraction2))
@@ -556,7 +560,8 @@ function throughTree(work)
 end function
 
 function capsuleTarget(world,model)
-  bounds = modelBounds(world,model)
+  bounds = world.temporary.bounds
+  if model!=qcommonHeaders.CAPSULE_MODEL_HANDLE then bounds=modelBounds(world,model) end if
   center=array(3,0.0);lo=array(3,0.0);hi=array(3,0.0)
   for axis=0 to 2
     center[axis]=n.fmul(n.fadd(bounds[0][axis],bounds[1][axis]),0.5)
@@ -622,7 +627,7 @@ function traceThroughSphere(work,origin,radius,start,finish)
   lineDistance=brush.distanceFromLineSquared(origin,start,finish,direction)
   endDelta=[n.fsub(finish[0],origin[0]),n.fsub(finish[1],origin[1]),n.fsub(finish[2],origin[2])]
   epsilonRadius=n.fadd(radius,1.0)
-  if lineDistance>=radiusSquared and q.DotProduct(endDelta,endDelta)>n.fmul(n.fadd(radius,0.125),n.fadd(radius,0.125)) then return void end if
+  if lineDistance>=radiusSquared and q.DotProduct(endDelta,endDelta)>n.fmul(n.fadd(radius,qcommonHeaders.SURFACE_CLIP_EPSILON),n.fadd(radius,qcommonHeaders.SURFACE_CLIP_EPSILON)) then return void end if
   delta=[n.fsub(start[0],origin[0]),n.fsub(start[1],origin[1]),n.fsub(start[2],origin[2])]
   b=n.fmul(2.0,q.DotProduct(direction,delta))
   c=n.fsub(q.DotProduct(delta,delta),n.fmul(epsilonRadius,epsilonRadius))
@@ -659,7 +664,7 @@ function traceThroughVerticalCylinder(work,origin,radius,halfheight,start,finish
   length=q.VectorNormalize(direction)
   lineDistance=brush.distanceFromLineSquared(origin2d,start2d,finish2d,direction)
   endDelta=[n.fsub(finish2d[0],origin2d[0]),n.fsub(finish2d[1],origin2d[1]),0.0]
-  if lineDistance>=radiusSquared and q.DotProduct(endDelta,endDelta)>n.fmul(n.fadd(radius,0.125),n.fadd(radius,0.125)) then return void end if
+  if lineDistance>=radiusSquared and q.DotProduct(endDelta,endDelta)>n.fmul(n.fadd(radius,qcommonHeaders.SURFACE_CLIP_EPSILON),n.fadd(radius,qcommonHeaders.SURFACE_CLIP_EPSILON)) then return void end if
   delta=[n.fsub(start[0],origin[0]),n.fsub(start[1],origin[1]),n.fsub(start[2],origin[2])]
   b=n.fmul(2.0,n.fadd(n.fmul(delta[0],direction[0]),n.fmul(delta[1],direction[1])))
   epsilonRadius=n.fadd(radius,1.0)
@@ -752,13 +757,13 @@ function traceWithSphereOrigin(world, start, finish, mins, maxs, model, mask, ca
   stationary = start[0] == finish[0] and start[1] == finish[1] and start[2] == finish[2]
   // Original CM_Trace assigns isPoint only in its non-stationary branch.
   if stationary then work.isPoint = false end if
-  if model == 254 and model >= len(world.models) then
+  if model == qcommonHeaders.CAPSULE_MODEL_HANDLE and model >= len(world.models) then
     if stationary then
       if capsule then testCapsuleInCapsule(work,model) else testBoundingBoxInCapsule(work,model) end if
     else
       if capsule then traceCapsuleThroughCapsule(work,model) else traceBoundingBoxThroughCapsule(work,model) end if
     end if
-  else if model == 255 and model >= len(world.models) then
+  else if model == qcommonHeaders.BOX_MODEL_HANDLE and model >= len(world.models) then
     temp = world.temporary.brush
     if (temp.contents & mask) != 0 then
       if stationary then testInBrush(work,temp)
@@ -859,7 +864,7 @@ function transformedPointContents(world,point,model,origin,angles)
   for axis = 0 to 2
     localPoint[axis] = n.fsub(point[axis],origin[axis])
   end for
-  if model != 255 and (angles[0] != 0 or angles[1] != 0 or angles[2] != 0) then
+  if model != qcommonHeaders.BOX_MODEL_HANDLE and (angles[0] != 0 or angles[1] != 0 or angles[2] != 0) then
     // The original negates the dot product, not each right-vector component.
     axes = q.AngleVectors(angles)
     localPoint = [q.DotProduct(localPoint,axes[0]),n.fneg(q.DotProduct(localPoint,axes[1])),q.DotProduct(localPoint,axes[2])]
@@ -880,7 +885,7 @@ function transformedTrace(world,start,finish,mins,maxs,model,mask,origin,angles,
     a[axis] = n.fsub(n.fadd(start[axis],offset),origin[axis])
     b[axis] = n.fsub(n.fadd(finish[axis],offset),origin[axis])
   end for
-  rotated = model != 255 and (angles[0] != 0 or angles[1] != 0 or angles[2] != 0)
+  rotated = model != qcommonHeaders.BOX_MODEL_HANDLE and (angles[0] != 0 or angles[1] != 0 or angles[2] != 0)
   radius = min(hi[0],hi[2]); t = n.fsub(hi[2],radius)
   sphereOffset = [0.0,0.0,t]; matrix = void
   if rotated then

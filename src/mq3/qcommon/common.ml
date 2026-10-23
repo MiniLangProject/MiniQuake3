@@ -3,6 +3,7 @@
 // Stateful native port of code/qcommon/common.c.
 package mq3.qcommon.common
 
+import mq3.qcommon.headers as qcommonHeaders
 import mq3.qcommon.startup_commands as startup
 import mq3.qcommon.command_buffer as command
 import mq3.qcommon.config_persistence as config
@@ -18,7 +19,7 @@ const ERR_SERVERDISCONNECT=2
 const ERR_DISCONNECT=3
 const ERR_NEED_CD=4
 const MAX_PUSHED_EVENTS=1024
-const MAX_EDIT_LINE=256
+const MAX_EDIT_LINE=qcommonHeaders.MAX_EDIT_LINE
 const MAX_TOKEN_CHARS=1024
 const TAG_FREE=0
 const TAG_GENERAL=1

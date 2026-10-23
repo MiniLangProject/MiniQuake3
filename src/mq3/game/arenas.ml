@@ -12,13 +12,14 @@ import mq3.game.events as events
 import mq3.shared.math as q
 import mq3.qcommon.cvar as cv
 import mq3.compat.numeric as n
+import mq3.game.game_internal_headers as internal
 
 const CONTENTS_SOLID=headers.CONTENTS_SOLID
 const CONTENTS_PLAYERCLIP=headers.CONTENTS_PLAYERCLIP
 const CONTENTS_BODY=headers.CONTENTS_BODY
 const ENTITYNUM_WORLD = 1022
 const ANIM_TOGGLEBIT = 128
-const TIMER_GESTURE = 2294
+const TIMER_GESTURE = internal.TIMER_GESTURE
 
 function clientLimit(limit)
   if limit < 0 or limit > 64 then return error(498,"Invalid arena client limit") end if

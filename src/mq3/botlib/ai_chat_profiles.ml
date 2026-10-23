@@ -3,6 +3,7 @@
 // Initial-chat loading and chat-state identity from code/botlib/be_ai_chat.c.
 package mq3.botlib.ai_chat_profiles
 
+import mq3.botlib.public_headers as publicHeaders
 import mq3.botlib.ai_resource_pools as pools
 import mq3.vm.pc_parser as pc
 import std.string as strings
@@ -10,12 +11,12 @@ import std.string as strings
 const OP_LOAD_CHAT_FILE=522
 const OP_SET_CHAT_GENDER=523
 const OP_SET_CHAT_NAME=524
-const BLERR_NOERROR=0
-const BLERR_CANNOTLOADICHAT=8
-const CHAT_GENDERLESS=0
-const CHAT_GENDERFEMALE=1
-const CHAT_GENDERMALE=2
-const MAX_MESSAGE_SIZE=256
+const BLERR_NOERROR=publicHeaders.BLERR_NOERROR
+const BLERR_CANNOTLOADICHAT=publicHeaders.BLERR_CANNOTLOADICHAT
+const CHAT_GENDERLESS=publicHeaders.CHAT_GENDERLESS
+const CHAT_GENDERFEMALE=publicHeaders.CHAT_GENDERFEMALE
+const CHAT_GENDERMALE=publicHeaders.CHAT_GENDERMALE
+const MAX_MESSAGE_SIZE=publicHeaders.MAX_MESSAGE_SIZE
 const MAX_CHAT_NAME=32
 
 const COMPONENT_FIXED=1

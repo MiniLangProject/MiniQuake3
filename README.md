@@ -28,27 +28,28 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **244 sind
-vollständig portiert, keine ist teilweise portiert und 91 sind noch nicht
-begonnen**. Der jüngste Integrationsblock schließt `cg_local.h`, `client.h`,
-`snd_local.h`, `snd_public.h`, `tr_public.h`, `tr_local.h`, `qgl.h`,
-`qgl_linked.h` sowie die sieben lokalen Spiel-AI-Header. Die zentralen
-MiniLang-Fassaden erfassen unter anderem 377 GL-Einstiegspunkte, 334 QGL-Aliase,
-die vollständigen CGame-, Client-, Sound- und Renderer-Deklarationen sowie 55
-AI-Konstanten, drei AI-Typen, 135 AI-Funktionen, 16 AI-Globals und 163
-AI-Recordfelder. Produktive CGame-, Renderer-, Windows-, Audio-, Client- und
-Botpfade verwenden diese Definitionen.
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **284 sind
+vollständig portiert, keine ist teilweise portiert und 51 sind noch nicht
+begonnen**. Der jüngste Integrationsblock schließt 40 Originalheader: sämtliche
+31 öffentlichen und internen Botlib-Header, sechs QCommon-/Collision-/Minizip-
+Header sowie `bg_lib.h`, `bg_local.h` und `g_rankings.h`. Die kanonischen
+MiniLang-Fassaden erfassen 156 öffentliche Botlib-Konstanten, 119 interne
+Makros und 110 auswertbare interne Konstanten, 50 Botlib-Typen, 340
+Botlib-Deklarationen sowie 569 Recordfelder, die vollständige QCommon-
+Headeroberfläche und alle 257 Ranking-Schlüssel. Produktive
+AAS-, Bot-, Collision-, PK3-, Pmove- und Rankingpfade verwenden diese
+Definitionen.
 
 Die vier neuen Vollständigkeitsgates, alle betroffenen Fokusregressionen, der
 Windows-Hauptbuild und das gekoppelte acht Frames lange Retail-QVM-Match sind
-grün. Dabei wurden falsche CGame-Entity-Ordinalwerte, die Landedeflektionszeit,
-das Mark-Polygonlimit sowie `BFL_STRAFERIGHT`, `PATROL_BACK` und beide
-Teamaufgaben-Bits auf die Originalwerte korrigiert. Der Matchpfad liefert 2.345
-vollständig texturierte Dreiecke, 17 Renderpässe, 26 Sounds und null nicht
-unterstützte Entities. Der frische `build/MiniQuake3.exe`-Stand hat SHA-256
-`0d8bd3f87329040466737976a342c08c74950093c904ada5904efb03f6489df0`.
+grün. Dabei wurden `TFL_DEFAULT`, die `INDENT_*`-Bitmasken, `MAX_EPAIRKEY` und
+die öffentliche Capsule-Handle-Behandlung auf die Originalwerte und das
+Originalverhalten korrigiert. Der Matchpfad liefert 2.345 vollständig
+texturierte Dreiecke, 17 Renderpässe, 26 Sounds und null nicht unterstützte
+Entities. Der frische `build/MiniQuake3.exe`-Stand hat SHA-256
+`d327538fdd7d8a194e486cd0b3458028eea8e158fba18bcca121cf77944cf941`.
 Die letzte vollständig am Stück ausgeführte Gesamtauswahl bleibt der
-dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 487 normale
+dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 491 normale
 Gates.
 
 Ein neuer Integrationsblock schließt `q_shared.h`, `win_main.c`, `win_net.c`,

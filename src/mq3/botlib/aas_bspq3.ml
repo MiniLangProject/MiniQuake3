@@ -30,6 +30,10 @@ function AAS_UnlinkFromBSPLeaves(leaves) return void end function
 function AAS_BSPLinkEntity(absmins,absmaxs,entnum,modelnum) return void end function
 function AAS_BoxEntities(absmins,absmaxs,list,maxcount) return 0 end function
 function AAS_BSPTraceLight(start,finish,endpos,red,green,blue) return 0 end function
+// Declared by be_aas_bsp.h but not defined by the released Q3 BSP backend.
+// Keep explicit compatibility entry points so callers see the same inert path.
+function AAS_PrintFreeBSPLinks(text) return void end function
+function AAS_AreasConnected(area1,area2) return false end function
 
 function AAS_NextBSPEntity(state,entity)
   entity=entity+1;if state!=void and entity>=1 and entity<state.numEntities then return entity end if;return 0
