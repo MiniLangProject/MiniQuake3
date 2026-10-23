@@ -11,6 +11,7 @@ const FRAGMENT_SIZE = 1300
 const PACKET_HEADER = 10
 const MAX_MSGLEN = 16384
 const FRAGMENT_BIT = 0x80000000
+const SCRAMBLE_START = 6
 
 struct Address type ip port end struct
 
@@ -133,4 +134,29 @@ function process(channel,data,maxsize)
   end if
   channel.incomingSequence=sequence
   return ProcessResult(true,data,cursize,readcount,readcount*8)
+end function
+
+// These two routines are inside Baseq3's #if 0 block, but keeping the exact
+// transform here makes the complete source-file contract available to tools
+// and preserves the original reversible packet codec.
+function scramblePacket(data)
+  c=len(data);if c<=SCRAMBLE_START then return data end if
+  if c>MAX_PACKETLEN then return error(3512,"Netchan scramble exceeds MAX_PACKETLEN") end if
+  result=bytes(data);sequence=array(c,0);seed=n.i32(n.mul32(n.readI32(result,0),3)^n.mul32(c,123))
+  for index=0 to c-1 seed=n.add32(n.mul32(119,seed),1);sequence[index]=n.u32(seed) end for
+  mask=1;while mask<c-SCRAMBLE_START mask=(mask<<1)+1 end while;mask=mask>>1
+  for index=SCRAMBLE_START to c-1 target=SCRAMBLE_START+(sequence[index]&mask);temporary=result[target];result[target]=result[index];result[index]=temporary end for
+  for index=SCRAMBLE_START to c-1 result[index]=result[index]^(sequence[index]&255) end for
+  return result
+end function
+
+function unscramblePacket(data)
+  c=len(data);if c<=SCRAMBLE_START then return data end if
+  if c>MAX_PACKETLEN then return error(3512,"Netchan unscramble exceeds MAX_PACKETLEN") end if
+  result=bytes(data);sequence=array(c,0);seed=n.i32(n.mul32(n.readI32(result,0),3)^n.mul32(c,123))
+  for index=0 to c-1 seed=n.add32(n.mul32(119,seed),1);sequence[index]=n.u32(seed) end for
+  for index=SCRAMBLE_START to c-1 result[index]=result[index]^(sequence[index]&255) end for
+  mask=1;while mask<c-SCRAMBLE_START mask=(mask<<1)+1 end while;mask=mask>>1
+  index=c-1;while index>=SCRAMBLE_START target=SCRAMBLE_START+(sequence[index]&mask);temporary=result[target];result[target]=result[index];result[index]=temporary;index=index-1 end while
+  return result
 end function

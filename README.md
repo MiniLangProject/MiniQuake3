@@ -28,16 +28,21 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **188 sind
-vollständig portiert, 30 teilweise portiert und 117 noch nicht begonnen**.
-Zuletzt wurden `cmd.c`, `cm_test.c`, `server.h`, `sv_bot.c` und `sv_init.c`
-geschlossen. Damit sind alle elf Originaldateien des Serverbereichs vollständig
-nativ zugeordnet. Neben Client-Lifecycle, Gamestate, Pure-Prüfung,
-qagame-Enginegrenzen und Netzwerkverkehr sind nun auch Serverstart und
--shutdown, Configstrings, Baselines, Botlib-Importe und die vollständige
-`server.h`-Oberfläche durch ausführbaren MiniLang-Code abgedeckt. Unveränderte
-C-Orakel sowie native, produktive UDP-, Bot- und Retail-Verträge sichern diese
-Pfade ab.
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **192 sind
+vollständig portiert, 26 teilweise portiert und 117 noch nicht begonnen**.
+Der aktuelle Integrationsblock schließt `cvar.c`, `net_chan.c`, `cm_polylib.c`
+und `be_interface.c`. Damit sind vollständige Cvar- und QVM-Trap-Semantik,
+Netchan samt Loopback/Fragmentierung/Adresspfaden, alle Winding-Operationen und
+die komplette Botlib-API-v2-Tabelle produktiv in MiniLang vorhanden.
+Unveränderte C-Orakel, native Verträge, alle 31 BSP-Patch-Differentialläufe und
+ein Retail-`qagame.qvm`-Botliblauf auf q3dm1 sichern diese Pfade ab.
+Der zusammengeführte Hauptbuild, die vier neuen Vollständigkeitsgates, die
+betroffenen VM-/Netzwerkregressionen, der 512-Frame-Retail-Bot-Spawn, das
+gekoppelte acht Frames lange Retail-QVM-Match sowie die nativen Windows-Fenster-
+und WinMM-Audiogrenzen bestehen. Der dabei erzeugte `build/MiniQuake3.exe`-Stand
+hat SHA-256 `089d21030259d9b15cb28dd6b6051260de550391bda78c76ccbc884d5c865004`. Die letzte vollständige Gesamtauswahl bleibt der
+dokumentierte 449-Gate-Lauf; die vier neuen Gates sind nun in `verify.py`
+registriert.
 
 Der aktuelle Stand ist im [AAS-/Botlib-Bericht](docs/AAS_RUNTIME.md) und im
 [vollständigen AI-Trap-Audit 500–577](docs/BOTLIB_AI_TRAP_AUDIT.md) dokumentiert.

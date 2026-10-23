@@ -2785,3 +2785,34 @@ Retail-QVM-Match erneut. Der finale `build/MiniQuake3.exe`-Stand hat SHA-256
 das Match läuft acht Frames mit 131 Entities, 13 Snapshot-Entities, 2.345
 texturierten Dreiecken, 17 Renderpässen, 26 Sounds und null nicht
 unterstützten Entities.
+## 2026-10-23: Cvar, Netchan, Winding und Botlib-Interface geschlossen
+
+Vier zuvor partielle Originaldateien sind jetzt vollständig nativ zugeordnet.
+
+- `code/qcommon/cvar.c`: alle 31 Symbole einschließlich VM-Register/Update-Traps,
+  Latch-/Force-/Cheat-/Archivsemantik, Info-Strings, Befehle und Persistenz.
+  24 Datensätze aus unverändertem C und 41 vollständige beziehungsweise
+  produktive MiniLang-Verträge bestehen.
+- `code/qcommon/net_chan.c`: vollständige Protocol-68-Übertragung mit
+  Fragmentierung/Reassembly, Duplikatabweisung, Scrambling, IPv4/IPX-Adresspfaden,
+  16-Slot-Loopback-Ringen, UDP und OOB-Ausgabe. 14 unveränderte C-Datensätze und
+  16 produktive Verträge bestehen; ein 1.301-Byte-Paket durchläuft fragmentiert
+  den Loopbackpfad.
+- `code/qcommon/cm_polylib.c`: alle 17 Winding-Symbole und 21 native Verträge.
+  Der vollständige Patch-Differentiallauf über 30 Retail-BSPs plus `test_bigbox`
+  bestätigt 6.091 Patch-Meshes und 1.352.159 exakte Vergleichsfelder.
+- `code/botlib/be_interface.c`: alle 16 Schnittstellensymbole und sämtliche
+  134 API-v2-Exporte. 15 unveränderte C-Datensätze, 24 native Verträge, 134/134
+  Tabellenprüfungen sowie 12 produktive Retail-`qagame.qvm`-Verträge auf q3dm1
+  mit 18 Level-Items bestehen.
+
+Die produktiven Windows-Fenster-, Raster-, Input- und WinMM-Audiogrenzen bauen
+und bestehen ebenfalls. Das erzeugte Inventar zählt nun **192 portierte, 26
+teilweise portierte und 117 noch nicht begonnene** Dateien von insgesamt 335.
+Die letzte vollständige Gesamtauswahl bleibt der dokumentierte 449-Gate-Lauf;
+dieser Integrationsblock wurde zusätzlich mit den vier neuen Fokusgates, den
+betroffenen Regressionstests, dem Hauptbuild und dem Retail-Match geprüft.
+Der geprüfte Hauptbuild hat SHA-256 `089d21030259d9b15cb28dd6b6051260de550391bda78c76ccbc884d5c865004`; das Retail-Match meldet 131
+Entities, 2.345 vollständig texturierte Dreiecke, 17 Renderpässe und 26
+Soundbefehle. Der 512-Frame-Retail-Bot-Spawn endet mit einem echten
+Bewegungs-Usercmd; die nativen Fenster-, Raster-, Input- und WinMM-Gates bestehen.

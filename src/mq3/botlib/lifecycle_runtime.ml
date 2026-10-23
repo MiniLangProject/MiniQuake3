@@ -9,9 +9,9 @@ const BLERR_NOERROR=0
 const BLERR_LIBRARYNOTSETUP=1
 const BLERR_INVALIDENTITYNUMBER=2
 
-struct State variables setup maxclients maxentities mapName mapLoads frames time entityUpdates removedEntities end struct
+struct State variables setup maxclients maxentities mapName mapLoads frames time entityUpdates removedEntities developer end struct
 
-function create() return State([],false,128,1024,"",0,0,0.0,0,0) end function
+function create() return State([],false,128,1024,"",0,0,0.0,0,0,0) end function
 function variableIndex(state,name)
   return libvars.indexOf(state,name)
 end function

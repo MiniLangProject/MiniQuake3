@@ -37,6 +37,7 @@ import mq3.collision.visibility as visibility
 import mq3.server.world as serverWorld
 import mq3.server.snapshot_build as snapshotBuild
 import mq3.botlib.lifecycle_runtime as botlibRuntime
+import mq3.botlib.be_interface as botInterface
 import mq3.botlib.aas_runtime as aasRuntime
 import mq3.botlib.aas_routing as aasRouting
 import mq3.botlib.aas_routing_cache as aasRoutingCache
@@ -343,11 +344,11 @@ function botEnable(context) variable=cvar.find(context.cvars,"bot_enable");if va
 function botlibVarSet(context,vm,base)
   name=common.readString(vm,common.argument(vm,base,1));if name is error then return name end if
   value=common.readString(vm,common.argument(vm,base,2));if value is error then return value end if
-  return botlibRuntime.varSet(context.botlib,name,value)
+  return botInterface.Export_BotLibVarSet(context.botlib,name,value)
 end function
 function botlibVarGet(context,vm,base)
   name=common.readString(vm,common.argument(vm,base,1));if name is error then return name end if
-  value=botlibRuntime.varGet(context.botlib,name);written=common.writeBuffer(vm,common.argument(vm,base,2),common.argument(vm,base,3),value,"botlib variable output");if written is error then return written end if;return botlibRuntime.BLERR_NOERROR
+  capacity=common.argument(vm,base,3);value=botInterface.Export_BotLibVarGet(context.botlib,name,capacity);written=common.writeBuffer(vm,common.argument(vm,base,2),capacity,value,"botlib variable output");if written is error then return written end if;return botInterface.BLERR_NOERROR
 end function
 function qagameFileList(context,vm,base)
   path=common.readString(vm,common.argument(vm,base,1));if path is error then return path end if
@@ -360,7 +361,7 @@ function qagameFileList(context,vm,base)
 end function
 function botlibLoadMap(context,vm,base)
   name=common.readString(vm,common.argument(vm,base,1));if name is error then return name end if
-  result=botlibRuntime.loadMap(context.botlib,name);if result!=botlibRuntime.BLERR_NOERROR then return result end if
+  result=botInterface.Export_BotLibLoadMap(context.botlib,name,botInterface.services(context));if result!=botInterface.BLERR_NOERROR then return result end if
   if context.aasRouteCache!=void and context.aasCachePath!="" then aasRoutingCache.saveRcd(context.aasRouteCache,context.aasCachePath) end if
   context.aas=void;context.aasRouter=void;context.aasRouteCache=void;context.aiVisiblePosition.router=void
   data=try(pk3.read(context.archive,"maps/"+name+".aas"));if data is error then context.aas=void;return 3 end if
@@ -374,11 +375,11 @@ function botlibLoadMap(context,vm,base)
   aiMapGoals.initialize(context.aiMapGoals,context.aas,context.botBspEntities)
   aiGoalSelection.setDroppedWeight(context.aiGoalSelection,botlibFloat(context,"droppedweight",1000.0))
   initialized=aiLevelItems.initialize(context.aiLevelItems);if initialized is error then return initialized end if
-  return botlibRuntime.BLERR_NOERROR
+  return botInterface.BLERR_NOERROR
 end function
 function updateAasEntity(context,vm,base)
   number=common.argument(vm,base,1);address=common.argument(vm,base,2)
-  result=botlibRuntime.updateEntity(context.botlib,number,address!=0);if result!=botlibRuntime.BLERR_NOERROR then return result end if
+  result=botInterface.Export_BotLibUpdateEntity(context.botlib,number,address!=0,botInterface.services(context));if result!=botInterface.BLERR_NOERROR then return result end if
   if context.aasEntities==void then return result end if
   if address==0 then return aasEntities.update(context.aasEntities,number,void,void) end if
   state=aasQuerySyscalls.readEntityState(vm,address);if state is error then return state end if
@@ -593,15 +594,15 @@ end function
 function extendedQagame(context,vm,base,op)
   if op==38 then return qagameFileList(context,vm,base) end if
   if op>=200 and op<600 then context.lastBotTrap=op end if
-  if op==200 then if context.aasRouteCache!=void and context.aasCachePath!="" then aasRoutingCache.saveRcd(context.aasRouteCache,context.aasCachePath) end if;context.aas=void;context.aasRouter=void;context.aasRouteCache=void;context.aasCachePath="";context.aiMoveRuntime.aas=void;context.aiMoveRuntime.router=void;context.aiVisiblePosition.router=void;aiLevelItems.shutdown(context.aiLevelItems);aiMapGoals.clear(context.aiMapGoals);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);aiChatOutput.clear(context.aiChatOutput);result=botlibRuntime.setup(context.botlib);if result==0 then context.aasEntities=aasEntities.create(context.botlib.maxentities);configured=aiConsoleMessages.configureFromBotlib(context.aiConsole,context.botlib);if configured is error then return configured end if;configureAasMovement(context);aiItemWeights.setReloadCharacters(context.aiItemWeights,botlibRuntime.integerVariable(context.botlib,"bot_reloadcharacters",0));noChat=botlibRuntime.integerVariable(context.botlib,"nochat",0)!=0;loaded=aiChatOutput.setup(context.aiChatOutput,noChat);if loaded is error then return loaded end if end if;return result end if
-  if op==201 then if context.aasRouteCache!=void and context.aasCachePath!="" then aasRoutingCache.saveRcd(context.aasRouteCache,context.aasCachePath) end if;context.aas=void;context.aasRouter=void;context.aasRouteCache=void;context.aasCachePath="";context.aiVisiblePosition.router=void;aiCharacters.shutdown(context.aiCharacters);aiChatProfiles.clearCache(context.aiChat);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);aiChatOutput.shutdown(context.aiChatOutput);aiMapGoals.clear(context.aiMapGoals);aiConsoleMessages.shutdown(context.aiConsole);aiResourcePools.shutdown(context.aiResources);aiLevelItems.shutdown(context.aiLevelItems);aiItemWeights.shutdown(context.aiItemWeights);aiWeaponWeights.shutdown(context.aiWeaponWeights);result=botlibRuntime.shutdown(context.botlib);if result==0 then context.aasEntities=aasEntities.create(1024);pcParser.clearDefines(context.pcRegistry) end if;return result end if
+  if op==200 then if context.aasRouteCache!=void and context.aasCachePath!="" then aasRoutingCache.saveRcd(context.aasRouteCache,context.aasCachePath) end if;context.aas=void;context.aasRouter=void;context.aasRouteCache=void;context.aasCachePath="";context.aiMoveRuntime.aas=void;context.aiMoveRuntime.router=void;context.aiVisiblePosition.router=void;aiLevelItems.shutdown(context.aiLevelItems);aiMapGoals.clear(context.aiMapGoals);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);aiChatOutput.clear(context.aiChatOutput);result=botInterface.Export_BotLibSetup(context.botlib,botInterface.services(context));if result==0 then context.aasEntities=aasEntities.create(context.botlib.maxentities);configured=aiConsoleMessages.configureFromBotlib(context.aiConsole,context.botlib);if configured is error then return configured end if;configureAasMovement(context);aiItemWeights.setReloadCharacters(context.aiItemWeights,botlibRuntime.integerVariable(context.botlib,"bot_reloadcharacters",0));noChat=botlibRuntime.integerVariable(context.botlib,"nochat",0)!=0;loaded=aiChatOutput.setup(context.aiChatOutput,noChat);if loaded is error then return loaded end if end if;return result end if
+  if op==201 then if context.aasRouteCache!=void and context.aasCachePath!="" then aasRoutingCache.saveRcd(context.aasRouteCache,context.aasCachePath) end if;context.aas=void;context.aasRouter=void;context.aasRouteCache=void;context.aasCachePath="";context.aiVisiblePosition.router=void;aiCharacters.shutdown(context.aiCharacters);aiChatProfiles.clearCache(context.aiChat);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);aiChatOutput.shutdown(context.aiChatOutput);aiMapGoals.clear(context.aiMapGoals);aiConsoleMessages.shutdown(context.aiConsole);aiResourcePools.shutdown(context.aiResources);aiLevelItems.shutdown(context.aiLevelItems);aiItemWeights.shutdown(context.aiItemWeights);aiWeaponWeights.shutdown(context.aiWeaponWeights);result=botInterface.Export_BotLibShutdown(context.botlib,botInterface.services(context),context.pcRegistry);if result==0 then context.aasEntities=aasEntities.create(1024) end if;return result end if
   if op==202 then return botlibVarSet(context,vm,base) end if
   if op==203 then return botlibVarGet(context,vm,base) end if
   if op==204 then return pcAddDefine(context,vm,base) end if
-  if op==205 then time=n.bitsFloat(common.argument(vm,base,1));result=botlibRuntime.startFrame(context.botlib,time);if result==0 then aasRuntime.setTime(context.aas,time);aasEntities.startFrame(context.aasEntities,time);aiConsoleMessages.setTime(context.aiConsole,time) end if;return result end if
+  if op==205 then time=n.bitsFloat(common.argument(vm,base,1));result=botInterface.Export_BotLibStartFrame(context.botlib,time,botInterface.services(context));if result==0 then aasRuntime.setTime(context.aas,time);aasEntities.startFrame(context.aasEntities,time);aiConsoleMessages.setTime(context.aiConsole,time) end if;return result end if
   if op==206 then return botlibLoadMap(context,vm,base) end if
   if op==207 then return updateAasEntity(context,vm,base) end if
-  if op==208 then return 0 end if
+  if op==208 then return botInterface.BotExportTest(common.argument(vm,base,1),common.argument(vm,base,2),common.argument(vm,base,3),common.argument(vm,base,4)) end if
   if op>=botServerBridge.OP_GET_SNAPSHOT_ENTITY and op<=botServerBridge.OP_USER_COMMAND then return botServerImports.SV_BotDispatch(context.botServer,vm,base,op) end if
   if op==309 then point=common.readFloatVector(vm,common.argument(vm,base,1),3,"AAS point contents");if point is error then return point end if;return pointContents(context,point,-1) end if
   if op==303 then return aasQuerySyscalls.entityInfo(context.aasEntities,vm,common.argument(vm,base,1),common.argument(vm,base,2)) end if
@@ -1146,15 +1147,15 @@ function registerQvmFont(context,vm,base)
   if loaded.found then common.writeRaw(vm,address,loaded.data,fontAbi.FONT_INFO_SIZE,"fontInfo_t output") end if
   return 0
 end function
-function pcAddDefine(context,vm,base) return pcParser.addDefine(context.pcRegistry,common.readString(vm,common.argument(vm,base,1))) end function
-function pcLoadSource(context,vm,base) return pcParser.load(context.pcRegistry,common.readString(vm,common.argument(vm,base,1))) end function
-function pcFreeSource(context,vm,base) return pcParser.free(context.pcRegistry,common.argument(vm,base,1)) end function
+function pcAddDefine(context,vm,base) return botInterface.PC_AddGlobalDefine(context.pcRegistry,common.readString(vm,common.argument(vm,base,1))) end function
+function pcLoadSource(context,vm,base) return botInterface.PC_LoadSourceHandle(context.pcRegistry,common.readString(vm,common.argument(vm,base,1))) end function
+function pcFreeSource(context,vm,base) return botInterface.PC_FreeSourceHandle(context.pcRegistry,common.argument(vm,base,1)) end function
 function pcReadToken(context,vm,base)
-  token=pcParser.read(context.pcRegistry,common.argument(vm,base,1));if token is error then return token end if;if token==void then return 0 end if
+  token=botInterface.PC_ReadTokenHandle(context.pcRegistry,common.argument(vm,base,1));if token is error then return token end if;if token==void then return 0 end if
   data=pcParser.encode(token);if data is error then return data end if;common.writeRaw(vm,common.argument(vm,base,2),data,pcParser.TOKEN_SIZE,"pc_token_t output");return 1
 end function
 function pcSourceLine(context,vm,base)
-  location=pcParser.location(context.pcRegistry,common.argument(vm,base,1));if location==void then return 0 end if
+  location=botInterface.PC_SourceFileAndLine(context.pcRegistry,common.argument(vm,base,1));if location==void then return 0 end if
   common.writeBuffer(vm,common.argument(vm,base,2),64,location[0],"parser source filename");lineAt=common.pointer(vm,common.argument(vm,base,3),4,"parser source line");n.writeU32(vm.data,lineAt,location[1]);return 1
 end function
 

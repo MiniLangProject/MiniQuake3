@@ -4757,27 +4757,33 @@
       ],
       "symbol_mapping": [
         {
-          "original": "implemented runtime subset",
+          "original": "all 16 interface symbols and complete API-v2 export table",
           "target_files": [
+            "src/mq3/botlib/be_interface.ml",
             "src/mq3/botlib/lifecycle_runtime.ml",
             "src/mq3/botlib/aas_syscalls.ml",
             "src/mq3/engine/local_qvm_match.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Retail qagame drives BotLib setup/shutdown/libvars/frame/map/entity lifecycle and implemented AAS exports; remaining botlib exports are explicit unsupported boundaries."
+          "status": "tested_exact",
+          "scope": "Complete botlib API-v2 setup/shutdown, libvars, frames, map/entity lifecycle, validation, timing, export initialization and all 134 table entries. Fifteen exact unchanged-C records, 24 native contracts, 134/134 export checks and 12 productive Retail qagame contracts on q3dm1 with 18 level items pass."
         }
       ],
       "target": [
+        "src/mq3/botlib/be_interface.ml",
         "src/mq3/botlib/lifecycle_runtime.ml",
         "src/mq3/botlib/aas_syscalls.ml",
         "src/mq3/engine/local_qvm_match.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_botlib_lifecycle_runtime.py",
         "scripts/test_botlib_retail_qagame.py",
         "scripts/test_bot_spawn_retail.py",
-        "scripts/test_botlib_aas_syscalls.py"
+        "scripts/test_botlib_aas_syscalls.py",
+        "scripts/test_be_interface_complete.py",
+        "tests/be_interface_complete_contracts.ml",
+        "tests/be_interface_complete_oracle.ml",
+        "tests/reference/be_interface_complete_oracle.c"
       ]
     },
     {
@@ -36934,33 +36940,22 @@
       ],
       "symbol_mapping": [
         {
-          "original": "BaseWindingForPlane",
+          "original": "all 17 cm_polylib symbols",
           "target_files": [
             "src/mq3/collision/winding.ml"
           ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "WindingBounds",
-          "target_files": [
-            "src/mq3/collision/winding.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "ChopWindingInPlace",
-          "target_files": [
-            "src/mq3/collision/winding.ml"
-          ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "Complete winding allocation/lifetime, colinear cleanup, plane/area/bounds/center, base/copy/reverse, clip/chop, validation, plane-side and convex-hull behavior. Twenty-one native contracts pass; all 6,091 patch meshes and 1,352,159 compared fields across 30 Retail BSPs plus test_bigbox match unchanged Baseq3 code."
         }
       ],
       "target": [
         "src/mq3/collision/winding.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
-        "scripts/test_patches.py"
+        "scripts/test_patches.py",
+        "scripts/test_cm_polylib_complete.py",
+        "tests/winding_complete_contracts.ml"
       ]
     },
     {
@@ -38272,88 +38267,30 @@
       ],
       "symbol_mapping": [
         {
-          "original": "Cvar_Get",
-          "target_files": [
-            "src/mq3/qcommon/cvar.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "Cvar_Set2",
-          "target_files": [
-            "src/mq3/qcommon/cvar.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "Cvar_SetCheatState",
-          "target_files": [
-            "src/mq3/qcommon/cvar.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "Cvar_Init",
-          "target_files": [
-            "src/mq3/qcommon/cvar.ml"
-          ],
-          "status": "tested_subset"
-        },
-        {
-          "original": "Cvar_Register",
-          "target_files": [
-            "src/mq3/qcommon/cvar.ml"
-          ],
-          "status": "tested_subset",
-          "scope": "Original VM handle/register/update order, no-op/null-string exits, forced registration and counter changes. The modification counter advances before an overlength Com_Error, while old string/value/integer survive; Mini copyGeneration advances only on successful buffer copies. Native hidden-byte fixtures distinguish copying with unchanged visible text/counter from counter-only changes. MiniLang diagnoses unsupported NUL/invalid-storage inputs explicitly; general QVM trap transport remains open."
-        },
-        {
-          "original": "Cvar_Update",
-          "target_files": [
-            "src/mq3/qcommon/cvar.ml"
-          ],
-          "status": "tested_subset",
-          "scope": "Original VM handle/register/update order, no-op/null-string exits, forced registration and counter changes. The modification counter advances before an overlength Com_Error, while old string/value/integer survive; Mini copyGeneration advances only on successful buffer copies. Native hidden-byte fixtures distinguish copying with unchanged visible text/counter from counter-only changes. MiniLang diagnoses unsupported NUL/invalid-storage inputs explicitly; general QVM trap transport remains open."
-        },
-        {
-          "original": "Cvar_WriteVariables",
-          "target_files": [
-            "src/mq3/qcommon/cvar.ml",
-            "src/mq3/qcommon/config_persistence.ml"
-          ],
-          "status": "tested_subset",
-          "scope": "Archive selection/order, cl_cdkey exclusion, latched values and the native 1024-byte line bound pass three byte-exact original-C records. Com_WriteConfiguration gating, q3config payload/failure semantics and writeconfig filename handling pass 17 contracts; completed common initialization registers the command and the productive desktop/direct engine frame writes dirty archive cvars before events and simulation."
-        },
-        {
-          "original": "Cvar_Restart_f",
+          "original": "all 31 cvar symbols",
           "target_files": [
             "src/mq3/qcommon/cvar.ml",
             "src/mq3/qcommon/cvar_commands.ml",
+            "src/mq3/qcommon/config_persistence.ml",
+            "src/mq3/qcommon/command_buffer.ml",
+            "src/mq3/vm/syscall_common.ml",
             "src/mq3/platform/engine_loop.ml",
             "src/mq3/engine/local_qvm_match.ml"
           ],
           "status": "tested_exact",
-          "scope": "User-created removal, protected flags, forced reset/latch behavior and the shipped x86 pointer-sized clear match 13 exact Baseq3 records; 17 contracts cover stable VM handles and immediate/queued productive command-buffer execution."
-        },
-        {
-          "original": "Cvar_Command / Cvar_Toggle_f / Cvar_Set_f / Cvar_SetU_f / Cvar_SetS_f / Cvar_SetA_f / Cvar_Reset_f / Cvar_List_f",
-          "target_files": [
-            "src/mq3/qcommon/cvar_commands.ml",
-            "src/mq3/qcommon/command_buffer.ml"
-          ],
-          "status": "tested_exact",
-          "scope": "Direct cvar lookup/set, toggle, multi-token set, archive/user/server flags, reset, filtered listing and original diagnostics match 11 exact Baseq3 records plus 15 command-buffer contracts."
+          "scope": "Complete cvar creation, lookup, hashing, validation, numeric/string access, forced/latched/reset/cheat/archive semantics, VM register/update traps, command dispatch/completion/listing, info strings and configuration persistence. Twenty-four exact unchanged-C records and 41 complete/productive contracts pass, together with the existing game-cvar differential suite."
         }
       ],
       "target": [
         "src/mq3/qcommon/cvar.ml",
-        "src/mq3/qcommon/config_persistence.ml",
         "src/mq3/qcommon/cvar_commands.ml",
+        "src/mq3/qcommon/config_persistence.ml",
+        "src/mq3/qcommon/command_buffer.ml",
+        "src/mq3/vm/syscall_common.ml",
         "src/mq3/platform/engine_loop.ml",
-        "src/mq3/engine/local_qvm_match.ml",
-        "src/mq3/qcommon/command_buffer.ml"
+        "src/mq3/engine/local_qvm_match.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_core.py",
         "scripts/test_game_cvars.py",
@@ -38369,7 +38306,14 @@
         "scripts/test_cvar_commands.py",
         "tests/reference/cvar_commands_oracle.c",
         "tests/cvar_commands_oracle.ml",
-        "tests/cvar_commands_contracts.ml"
+        "tests/cvar_commands_contracts.ml",
+        "scripts/test_cvar_complete.py",
+        "tests/cvar_complete_contracts.ml",
+        "tests/cvar_complete_oracle.ml",
+        "tests/cvar_productive_contracts.ml",
+        "tests/cvar_static_oracle.ml",
+        "tests/reference/cvar_complete_oracle.c",
+        "tests/reference/cvar_static_oracle.c"
       ]
     },
     {
@@ -39795,21 +39739,15 @@
       ],
       "symbol_mapping": [
         {
-          "original": "Netchan_Init, Netchan_Setup, Netchan_Transmit, Netchan_TransmitNextFragment and Netchan_Process",
+          "original": "complete net_chan surface (16 functions and datagram state)",
           "target_files": [
-            "src/mq3/qcommon/netchan.ml"
-          ],
-          "status": "tested_subset",
-          "scope": "Protocol-68 qport and sequence headers, transmit fragmentation including exact-multiple zero terminators, duplicate/drop decisions, retry/state preservation and ordered receive reassembly match 29 direct Baseq3 records with complete packet bytes plus 29 MiniLang contracts and a message.ml integration path. Receive capacity safely includes the reconstructed four-byte sequence header."
-        },
-        {
-          "original": "NET_SendPacket, NET_OutOfBandPrint and NET_OutOfBandData",
-          "target_files": [
+            "src/mq3/qcommon/netchan.ml",
             "src/mq3/qcommon/net_transport.ml",
-            "src/mq3/platform/udp.ml"
+            "src/mq3/platform/udp.ml",
+            "src/mq3/server/pipeline.ml"
           ],
-          "status": "tested_subset",
-          "scope": "Windows IPv4 UDP send/receive, Netchan send callback, address conversion, four-byte OOB marker and adaptive connect compression at offset 12. Fifteen live two-socket transport contracts pass; the packet codec is covered by the unchanged-C Huffman differential gate. Loopback queues, broadcast and string-to-address remain open."
+          "status": "tested_exact",
+          "scope": "Complete protocol-68 setup/transmit/fragment/reassembly/duplicate handling, reversible packet scrambling, IPv4/IPX comparison and formatting, address resolution, 16-slot loopback queues, UDP dispatch and out-of-band printing. Fourteen exact unchanged-C records and 16 productive contracts pass, including a 1,301-byte fragmented loopback round trip."
         }
       ],
       "target": [
@@ -39818,12 +39756,16 @@
         "src/mq3/qcommon/net_transport.ml",
         "src/mq3/platform/udp.ml"
       ],
-      "status": "partial",
+      "status": "ported",
       "tests": [
         "scripts/test_netchan.py",
         "scripts/test_server_pipeline.py",
         "scripts/test_net_transport.py",
-        "tests/net_transport_contracts.ml"
+        "tests/net_transport_contracts.ml",
+        "scripts/test_netchan_complete.py",
+        "tests/netchan_complete_contracts.ml",
+        "tests/netchan_complete_oracle.ml",
+        "tests/reference/netchan_complete_oracle.c"
       ]
     },
     {

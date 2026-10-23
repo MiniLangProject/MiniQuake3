@@ -3,6 +3,8 @@
 // Registry semantics adapted from code/qcommon/cvar.c.
 package mq3.qcommon.cvar
 import mq3.compat.numeric as n
+import mq3.compat.textnumbers as textnumbers
+import mq3.shared.q_shared_runtime as shared
 import std.string as strings
 
 extern function atof(text as cstr) from "ucrtbase.dll" returns double
@@ -19,6 +21,9 @@ const USER_CREATED = 128
 const TEMP = 256
 const CHEAT = 512
 const NORESTART = 1024
+const MAX_CVARS = 1024
+const FILE_HASH_SIZE = 256
+const MAX_CVAR_VALUE_STRING = 256
 
 struct Cvar
   name
@@ -77,7 +82,21 @@ function registerVm(registry,snapshot,name,defaultValue,flags)
   return updateVm(registry,snapshot)
 end function
 
+// generateHashValue: the original uses the ASCII-lowercased byte multiplied by
+// its one-based position plus 118, then masks into 256 buckets.
+function generateHashValue(name)
+  if name==void then return 0 end if
+  data=bytes(name);hash=0;if len(data)==0 then return 0 end if
+  for index=0 to len(data)-1
+    letter=data[index];if letter>=65 and letter<=90 then letter=letter+32 end if
+    hash=n.add32(hash,n.mul32(letter,index+119))
+  end for
+  return hash&(FILE_HASH_SIZE-1)
+end function
+
+// Cvar_ValidateString
 function validName(name)
+  if name==void then return false end if
   return strings.indexOf(name, "\\", 0) < 0 and strings.indexOf(name, "\"", 0) < 0 and strings.indexOf(name, ";", 0) < 0
 end function
 
@@ -85,6 +104,23 @@ function find(registry, name)
   for each variable in registry.variables
     if stringEqualsIgnoreCaseAscii(variable.name, name) then return variable end if
   end for
+  return void
+end function
+
+// Cvar_VariableValue / Cvar_VariableIntegerValue / Cvar_VariableString.
+function variableValue(registry,name) variable=find(registry,name);if variable==void then return 0.0 end if;return variable.value end function
+function variableIntegerValue(registry,name) variable=find(registry,name);if variable==void then return 0 end if;return variable.integer end function
+function variableString(registry,name) variable=find(registry,name);if variable==void then return "" end if;return variable.string end function
+function boundedString(value,capacity)
+  if capacity<1 then return error(3302,"Cvar_VariableStringBuffer invalid size") end if
+  data=bytes(value);count=len(data);if count>=capacity then count=capacity-1 end if
+  return decode(slice(data,0,count))
+end function
+function variableStringBuffer(registry,name,capacity) return boundedString(variableString(registry,name),capacity) end function
+
+// Cvar_CommandCompletion preserves the linked-list order (newest first).
+function commandCompletion(registry,callback)
+  for each variable in registry.variables callback(variable.name) end for
   return void
 end function
 
@@ -107,7 +143,7 @@ function get(registry, name, value, flags)
     end if
     return variable
   end if
-  if registry.numIndexes >= 1024 then return error(3302, "MAX_CVARS") end if
+  if registry.numIndexes >= MAX_CVARS then return error(3302, "MAX_CVARS") end if
   variable = Cvar(name, value, value, void, flags, true, 1, n.f32(atof(value)), atoi(value), registry.numIndexes)
   registry.numIndexes = registry.numIndexes + 1
   registry.indexes = registry.indexes+[variable]
@@ -151,6 +187,16 @@ function set2(registry, name, value, force)
   return variable
 end function
 
+// Public Cvar_Set/Cvar_SetLatched/Cvar_SetValue/Cvar_Reset entry points.
+function set(registry,name,value) set2(registry,name,value,true);return void end function
+function setLatched(registry,name,value) set2(registry,name,value,false);return void end function
+function setValue(registry,name,value)
+  value=n.f32(value);integer=n.trunc32(value);text=""
+  if value==integer then text=str(integer) else text=textnumbers.fixed6(value) end if
+  return set(registry,name,text)
+end function
+function reset(registry,name) set2(registry,name,void,false);return void end function
+
 function create()
   registry = Registry([], 0, 0, [])
   get(registry, "sv_cheats", "1", ROM | SYSTEMINFO)
@@ -165,6 +211,21 @@ function setCheatState(registry)
     end if
   end for
 end function
+
+// Cvar_InfoString and Cvar_InfoString_Big deliberately differ in insertion
+// order because the unchanged q_shared helpers prepend small pairs and append
+// big pairs.
+function infoString(registry,bit)
+  text=""
+  for each variable in registry.variables if (variable.flags&bit)!=0 then text=shared.info_SetValueForKey(text,variable.name,variable.string) end if end for
+  return text
+end function
+function infoStringBig(registry,bit)
+  text=""
+  for each variable in registry.variables if (variable.flags&bit)!=0 then text=shared.info_SetValueForKey_Big(text,variable.name,variable.string) end if end for
+  return text
+end function
+function infoStringBuffer(registry,bit,capacity) return boundedString(infoString(registry,bit),capacity) end function
 
 // Cvar_Restart_f resets registered variables while preserving the stable
 // numeric handle table used by vmCvar_t. User-created entries disappear from

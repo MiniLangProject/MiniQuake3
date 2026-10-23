@@ -13,21 +13,21 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 
 | Bereich | Dateien | Portiert | Teilweise | Nicht begonnen | Original behalten |
 |---|---:|---:|---:|---:|---:|
-| `botlib` | 53 | 21 | 10 | 22 | 0 |
+| `botlib` | 53 | 22 | 9 | 22 | 0 |
 | `cgame` | 25 | 21 | 0 | 4 | 0 |
 | `client` | 19 | 15 | 0 | 4 | 0 |
 | `game` | 65 | 35 | 4 | 26 | 0 |
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 45 | 0 | 2 | 0 |
-| `qcommon` | 27 | 8 | 10 | 9 | 0 |
+| `qcommon` | 27 | 11 | 7 | 9 | 0 |
 | `renderer` | 27 | 23 | 0 | 4 | 0 |
 | `server` | 11 | 11 | 0 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 6 | 0 | 6 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 3 | 6 | 4 | 0 |
-| **Gesamt** | **335** | **188** | **30** | **117** | **0** |
+| **Gesamt** | **335** | **192** | **26** | **117** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -74,7 +74,7 @@ Teil dieser Tabelle.
 | `code/botlib/be_ai_weight.c` | `botlib` | `ported` | 24 | 24 | 0 |
 | `code/botlib/be_ai_weight.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/be_ea.c` | `botlib` | `partial` | 32 | 0 | 32 |
-| `code/botlib/be_interface.c` | `botlib` | `partial` | 16 | 0 | 16 |
+| `code/botlib/be_interface.c` | `botlib` | `ported` | 16 | 0 | 16 |
 | `code/botlib/be_interface.h` | `botlib` | `not_started` | 0 | 0 | 0 |
 | `code/botlib/l_crc.c` | `botlib` | `ported` | 5 | 0 | 5 |
 | `code/botlib/l_crc.h` | `botlib` | `ported` | 0 | 0 | 0 |
@@ -266,19 +266,19 @@ Teil dieser Tabelle.
 | `code/qcommon/cm_local.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
 | `code/qcommon/cm_patch.c` | `qcommon` | `partial` | 27 | 15 | 12 |
 | `code/qcommon/cm_patch.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
-| `code/qcommon/cm_polylib.c` | `qcommon` | `partial` | 17 | 5 | 12 |
+| `code/qcommon/cm_polylib.c` | `qcommon` | `ported` | 17 | 0 | 17 |
 | `code/qcommon/cm_polylib.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
 | `code/qcommon/cm_public.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
 | `code/qcommon/cm_test.c` | `qcommon` | `ported` | 15 | 15 | 0 |
 | `code/qcommon/cm_trace.c` | `qcommon` | `partial` | 23 | 13 | 10 |
 | `code/qcommon/cmd.c` | `qcommon` | `ported` | 23 | 23 | 0 |
 | `code/qcommon/common.c` | `qcommon` | `ported` | 83 | 83 | 0 |
-| `code/qcommon/cvar.c` | `qcommon` | `partial` | 31 | 18 | 13 |
+| `code/qcommon/cvar.c` | `qcommon` | `ported` | 31 | 0 | 31 |
 | `code/qcommon/files.c` | `qcommon` | `ported` | 75 | 75 | 0 |
 | `code/qcommon/huffman.c` | `qcommon` | `ported` | 18 | 18 | 0 |
 | `code/qcommon/md4.c` | `qcommon` | `ported` | 8 | 8 | 0 |
 | `code/qcommon/msg.c` | `qcommon` | `ported` | 48 | 48 | 0 |
-| `code/qcommon/net_chan.c` | `qcommon` | `partial` | 17 | 7 | 10 |
+| `code/qcommon/net_chan.c` | `qcommon` | `ported` | 17 | 1 | 16 |
 | `code/qcommon/qcommon.h` | `qcommon` | `not_started` | 0 | 0 | 0 |
 | `code/qcommon/qfiles.h` | `qcommon` | `partial` | 0 | 0 | 0 |
 | `code/qcommon/unzip.c` | `qcommon` | `partial` | 48 | 0 | 48 |
@@ -404,7 +404,7 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/botlib/be_ai_weap.c` (partial): `BotAllocWeaponState`, `BotChooseBestFightWeapon`, `BotFreeWeaponState`, `BotFreeWeaponWeights`, `BotGetWeaponInfo`, `BotLoadWeaponWeights`, `BotResetWeaponState`, `BotSetupWeaponAI`, `BotShutdownWeaponAI`, `BotValidWeaponNumber`, `BotWeaponStateFromHandle`, `DumpWeaponConfig`, `LoadWeaponConfig`, `WeaponWeightIndex`
 - `code/botlib/be_ai_weight.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/be_ea.c` (partial): `EA_Action`, `EA_Attack`, `EA_Command`, `EA_Crouch`, `EA_DelayedJump`, `EA_DropInv`, `EA_DropItem`, `EA_EndRegular`, `EA_Gesture`, `EA_GetInput`, `EA_Jump`, `EA_Move`, `EA_MoveBack`, `EA_MoveDown`, `EA_MoveForward`, `EA_MoveLeft`, `EA_MoveRight`, `EA_MoveUp`, `EA_ResetInput`, `EA_Respawn`, `EA_Say`, `EA_SayTeam`, `EA_SelectWeapon`, `EA_Setup`, `EA_Shutdown`, `EA_Talk`, `EA_Tell`, `EA_Use`, `EA_UseInv`, `EA_UseItem`, `EA_View`, `EA_Walk`
-- `code/botlib/be_interface.c` (partial): `BotExportTest`, `BotLibSetup`, `Export_BotLibLoadMap`, `Export_BotLibSetup`, `Export_BotLibShutdown`, `Export_BotLibStartFrame`, `Export_BotLibUpdateEntity`, `Export_BotLibVarGet`, `Export_BotLibVarSet`, `GetBotLibAPI`, `Init_AAS_Export`, `Init_AI_Export`, `Init_EA_Export`, `Sys_MilliSeconds`, `ValidClientNumber`, `ValidEntityNumber`
+- `code/botlib/be_interface.c` (ported): `BotExportTest`, `BotLibSetup`, `Export_BotLibLoadMap`, `Export_BotLibSetup`, `Export_BotLibShutdown`, `Export_BotLibStartFrame`, `Export_BotLibUpdateEntity`, `Export_BotLibVarGet`, `Export_BotLibVarSet`, `GetBotLibAPI`, `Init_AAS_Export`, `Init_AI_Export`, `Init_EA_Export`, `Sys_MilliSeconds`, `ValidClientNumber`, `ValidEntityNumber`
 - `code/botlib/be_interface.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/botlib/l_crc.c` (ported): `CRC_ContinueProcessString`, `CRC_Init`, `CRC_ProcessByte`, `CRC_ProcessString`, `CRC_Value`
 - `code/botlib/l_libvar.c` (ported): `LibVar`, `LibVarAlloc`, `LibVarChanged`, `LibVarDeAlloc`, `LibVarDeAllocAll`, `LibVarGet`, `LibVarGetString`, `LibVarGetValue`, `LibVarSet`, `LibVarSetNotModified`, `LibVarString`, `LibVarStringValue`, `LibVarValue`
@@ -489,12 +489,12 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/qcommon/cm_local.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/cm_patch.c` (partial): `CM_ClearLevelPatches`, `CM_ComparePoints`, `CM_DrawDebugSurface`, `CM_EdgePlaneNum`, `CM_GridPlane`, `CM_NeedsSubdivision`, `CM_PlaneEqual`, `CM_PlaneFromPoints`, `CM_PointOnPlaneSide`, `CM_SetGridWrapWidth`, `CM_SignbitsForNormal`, `CM_SnapVector`
 - `code/qcommon/cm_patch.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/qcommon/cm_polylib.c` (partial): `AddWindingToConvexHull`, `AllocWinding`, `CheckWinding`, `ClipWindingEpsilon`, `CopyWinding`, `FreeWinding`, `RemoveColinearPoints`, `ReverseWinding`, `WindingArea`, `WindingCenter`, `WindingOnPlaneSide`, `WindingPlane`
+- `code/qcommon/cm_polylib.c` (ported): `AddWindingToConvexHull`, `AllocWinding`, `BaseWindingForPlane`, `CheckWinding`, `ChopWinding`, `ChopWindingInPlace`, `ClipWindingEpsilon`, `CopyWinding`, `FreeWinding`, `RemoveColinearPoints`, `ReverseWinding`, `WindingArea`, `WindingBounds`, `WindingCenter`, `WindingOnPlaneSide`, `WindingPlane`, `pw`
 - `code/qcommon/cm_polylib.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/cm_public.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/cm_trace.c` (partial): `CM_DistanceFromLineSquared`, `CM_ProjectPointOntoVector`, `CM_TestBoundingBoxInCapsule`, `CM_TestCapsuleInCapsule`, `CM_TraceBoundingBoxThroughCapsule`, `CM_TraceThroughSphere`, `CM_TraceThroughVerticalCylinder`, `CM_VectorDistanceSquared`, `SquareRootFloat`, `collision`
-- `code/qcommon/cvar.c` (partial): `Cvar_CommandCompletion`, `Cvar_FindVar`, `Cvar_InfoString`, `Cvar_InfoStringBuffer`, `Cvar_InfoString_Big`, `Cvar_SetLatched`, `Cvar_SetValue`, `Cvar_ValidateString`, `Cvar_VariableIntegerValue`, `Cvar_VariableString`, `Cvar_VariableStringBuffer`, `Cvar_VariableValue`, `generateHashValue`
-- `code/qcommon/net_chan.c` (partial): `NET_AdrToString`, `NET_CompareAdr`, `NET_CompareBaseAdr`, `NET_GetLoopPacket`, `NET_IsLocalAddress`, `NET_SendLoopPacket`, `NET_StringToAdr`, `Netchan_ScramblePacket`, `Netchan_UnScramblePacket`, `datagram`
+- `code/qcommon/cvar.c` (ported): `Cvar_Command`, `Cvar_CommandCompletion`, `Cvar_FindVar`, `Cvar_Get`, `Cvar_InfoString`, `Cvar_InfoStringBuffer`, `Cvar_InfoString_Big`, `Cvar_Init`, `Cvar_List_f`, `Cvar_Register`, `Cvar_Reset`, `Cvar_Reset_f`, `Cvar_Restart_f`, `Cvar_Set`, `Cvar_Set2`, `Cvar_SetA_f`, `Cvar_SetCheatState`, `Cvar_SetLatched`, `Cvar_SetS_f`, `Cvar_SetU_f`, `Cvar_SetValue`, `Cvar_Set_f`, `Cvar_Toggle_f`, `Cvar_Update`, `Cvar_ValidateString`, `Cvar_VariableIntegerValue`, `Cvar_VariableString`, `Cvar_VariableStringBuffer`, `Cvar_VariableValue`, `Cvar_WriteVariables`, `generateHashValue`
+- `code/qcommon/net_chan.c` (ported): `NET_AdrToString`, `NET_CompareAdr`, `NET_CompareBaseAdr`, `NET_GetLoopPacket`, `NET_IsLocalAddress`, `NET_OutOfBandPrint`, `NET_SendLoopPacket`, `NET_SendPacket`, `NET_StringToAdr`, `Netchan_Init`, `Netchan_Process`, `Netchan_ScramblePacket`, `Netchan_Setup`, `Netchan_Transmit`, `Netchan_TransmitNextFragment`, `Netchan_UnScramblePacket`
 - `code/qcommon/qcommon.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/qcommon/qfiles.h` (partial): *(Symbolinventar ergänzen)*
 - `code/qcommon/unzip.c` (partial): `adler32`, `inflate`, `inflateEnd`, `inflateInit2_`, `inflateInit_`, `inflateReset`, `inflateSetDictionary`, `inflateSync`, `inflateSyncPoint`, `inflate_blocks`, `inflate_blocks_free`, `inflate_blocks_new`, `inflate_blocks_reset`, `inflate_blocks_sync_point`, `inflate_codes`, `inflate_codes_free`, `inflate_codes_new`, `inflate_fast`, `inflate_flush`, `inflate_set_dictionary`, `strcmpcasenosensitive_internal`, `unzClose`, `unzCloseCurrentFile`, `unzGetCurrentFileInfo`, `unzGetCurrentFileInfoPosition`, `unzGetGlobalComment`, `unzGetGlobalInfo`, `unzGetLocalExtrafield`, `unzGoToFirstFile`, `unzGoToNextFile`, `unzLocateFile`, `unzOpen`, `unzOpenCurrentFile`, `unzReOpen`, `unzReadCurrentFile`, `unzSetCurrentFileInfoPosition`, `unzStringFileNameCompare`, `unzeof`, `unzlocal_CheckCurrentFileCoherencyHeader`, `unzlocal_DosDateToTmuDate`, `unzlocal_GetCurrentFileInfoInternal`, `unzlocal_SearchCentralDir`, `unzlocal_getByte`, `unzlocal_getLong`, `unzlocal_getShort`, `unztell`, `zcalloc`, `zcfree`

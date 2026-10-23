@@ -112,25 +112,34 @@ function updateCvar(vm,base,host)
 end function
 
 function cvarSet(vm,base,host)
-  cvar.set2(requireCvars(host),readString(vm,argument(vm,base,1)),readString(vm,argument(vm,base,2)),false);return 0
+  cvar.set(requireCvars(host),readString(vm,argument(vm,base,1)),readString(vm,argument(vm,base,2)));return 0
 end function
 
 function cvarInteger(vm,base,host)
-  variable=cvar.find(requireCvars(host),readString(vm,argument(vm,base,1)))
-  if variable==void then return 0 end if
-  return variable.integer
+  return cvar.variableIntegerValue(requireCvars(host),readString(vm,argument(vm,base,1)))
 end function
 
 function cvarValueBits(vm,base,host)
-  variable=cvar.find(requireCvars(host),readString(vm,argument(vm,base,1)))
-  if variable==void then return 0 end if
-  return n.i32(n.floatBits(variable.value))
+  return n.i32(n.floatBits(cvar.variableValue(requireCvars(host),readString(vm,argument(vm,base,1)))))
 end function
 
 function cvarString(vm,base,host)
-  variable=cvar.find(requireCvars(host),readString(vm,argument(vm,base,1)));text=""
-  if variable!=void then text=variable.string end if
+  text=cvar.variableString(requireCvars(host),readString(vm,argument(vm,base,1)))
   writeBuffer(vm,argument(vm,base,2),argument(vm,base,3),text,"cvar output");return 0
+end function
+
+function cvarSetValue(vm,base,host)
+  cvar.setValue(requireCvars(host),readString(vm,argument(vm,base,1)),n.bitsFloat(argument(vm,base,2)));return 0
+end function
+function cvarReset(vm,base,host)
+  cvar.reset(requireCvars(host),readString(vm,argument(vm,base,1)));return 0
+end function
+function cvarCreate(vm,base,host)
+  cvar.get(requireCvars(host),readString(vm,argument(vm,base,1)),readString(vm,argument(vm,base,2)),argument(vm,base,3));return 0
+end function
+function cvarInfoString(vm,base,host)
+  text=cvar.infoString(requireCvars(host),argument(vm,base,1))
+  writeBuffer(vm,argument(vm,base,2),argument(vm,base,3),text,"cvar info output");return 0
 end function
 
 function argc(host)
@@ -319,6 +328,10 @@ function dispatchUi(vm,base,host,op)
     case 3 return cvarSet(vm,base,host) end case
     case 4 return cvarValueBits(vm,base,host) end case
     case 5 return cvarString(vm,base,host) end case
+    case 6 return cvarSetValue(vm,base,host) end case
+    case 7 return cvarReset(vm,base,host) end case
+    case 8 return cvarCreate(vm,base,host) end case
+    case 9 return cvarInfoString(vm,base,host) end case
     case 10 return argc(host) end case
     case 11 return argv(vm,base,host) end case
     case 12 return executeConsole(vm,base,host) end case
