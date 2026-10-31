@@ -5,6 +5,9 @@ import mq3.compat.numeric as numeric
 
 extern function create(width as i32,height as i32) from "playable_window.dll" symbol "playable_window_create" returns i32
 extern function glConfigureNative(driver as ptr,driverLength as i32,colorBits as i32,depthBits as i32,stencilBits as i32,stereo as i32,fullscreen as i32,frequency as i32,swapInterval as i32) from "playable_window.dll" symbol "playable_window_gl_configure" returns i32
+extern function glConfigureDriverNative(driver as ptr,driverLength as i32) from "playable_window.dll" symbol "playable_window_gl_configure_driver" returns i32
+extern function glConfigurePixelFormatNative(colorBits as i32,depthBits as i32,stencilBits as i32,stereo as i32) from "playable_window.dll" symbol "playable_window_gl_configure_pixel_format" returns i32
+extern function glConfigureDisplayNative(fullscreen as i32,frequency as i32,swapInterval as i32) from "playable_window.dll" symbol "playable_window_gl_configure_display" returns i32
 extern function glAvailableNative() from "playable_window.dll" symbol "playable_window_gl_available" returns i32
 extern function glPixelFormatNative() from "playable_window.dll" symbol "playable_window_gl_pixel_format" returns i32
 extern function glColorBitsNative() from "playable_window.dll" symbol "playable_window_gl_color_bits" returns i32
@@ -107,8 +110,6 @@ struct WindowState active minimized x y fullscreen altTabDisabled soundActivatio
 
 function open(width,height)
   if width<160 or height<120 then return error(7480,"preview window is too small") end if
-  driver=bytes("opengl32.dll")
-  if glConfigureNative(nativeBytesPtr(driver),len(driver),24,24,8,0,0,0,0)==0 then return error(7481,"could not configure Win32 OpenGL") end if
   if create(width,height)==0 then return error(7481,"could not create preview window") end if
   if glAvailableNative()==0 then shutdownNative();return error(7481,"could not initialize Win32 OpenGL") end if
   if inputInitNative()==0 then shutdownNative();return error(7481,"could not initialize native input") end if
@@ -119,7 +120,9 @@ function openConfigured(width,height,driverName,colorBits,depthBits,stencilBits,
   if width<160 or height<120 or typeof(driverName)!="string" then return error(7480,"invalid configured preview mode") end if
   driver=bytes(driverName);if len(driver)<1 or len(driver)>=260 then return error(7480,"invalid OpenGL driver name") end if
   stereoValue=0;if stereo then stereoValue=1 end if;fullscreenValue=0;if fullscreen then fullscreenValue=1 end if
-  configured=glConfigureNative(nativeBytesPtr(driver),len(driver),colorBits,depthBits,stencilBits,stereoValue,fullscreenValue,frequency,swapInterval)
+  configured=glConfigureDriverNative(nativeBytesPtr(driver),len(driver))
+  if configured!=0 then configured=glConfigurePixelFormatNative(colorBits,depthBits,stencilBits,stereoValue) end if
+  if configured!=0 then configured=glConfigureDisplayNative(fullscreenValue,frequency,swapInterval) end if
   if configured==0 or create(width,height)==0 then return error(7481,"could not create configured Win32 OpenGL window") end if
   if glAvailableNative()==0 then shutdownNative();return error(7481,"could not initialize configured Win32 OpenGL") end if
   if inputInitNative()==0 then shutdownNative();return error(7481,"could not initialize native input") end if

@@ -425,6 +425,15 @@ Double-click `Play-MiniQuake3.cmd`, or run:
 .\build\MiniQuake3.exe --play D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp
 ```
 
+The normal startup uses the native backend's built-in 24-bit colour, 24-bit
+depth and 8-bit stencil defaults. It intentionally does not send the same
+defaults through the extended nine-argument configuration entry point first;
+that call exposed an integer-only Win64 FFI stack-argument defect in the frozen
+MiniLang compiler and caused error 7481 before a window was created. A dedicated
+startup gate now opens the real Win32/WGL window through MiniLang and shuts it
+down again. Custom modes use three ABI-safe configuration calls for driver,
+pixel format and display settings.
+
 The current preview opens a native Windows window and renders `q3dm1` with a
 MiniLang-driven software rasterizer, depth buffering, BSP lightmaps and full
 RGB vertex lighting. Lightmaps and BSP light-grid samples pass through Baseq3's
@@ -800,6 +809,7 @@ python scripts/test_audio_channel_paint.py
 python scripts/test_playable_viewer.py
 python scripts/test_bsp_preview.py
 python scripts/playable_window_build_test.py
+python scripts/test_playable_window_startup.py
 python scripts/test_vm_runtime.py
 python scripts/test_vm_syscall_common.py
 python scripts/test_vm_syscall_qagame.py

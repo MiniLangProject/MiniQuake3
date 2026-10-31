@@ -1048,12 +1048,9 @@ PLAYABLE_API int playable_window_create(int width, int height) {
     return 1;
 }
 
-PLAYABLE_API int playable_window_gl_configure(const unsigned char *driver, int driverLength,
-        int colorBits, int depthBits, int stencilBits, int stereo, int fullscreen,
-        int displayFrequency, int swapInterval) {
+PLAYABLE_API int playable_window_gl_configure_driver(const unsigned char *driver, int driverLength) {
     int converted;
-    if (windowHandle || driverLength < 0 || driverLength >= MAX_PATH || colorBits < 0 ||
-            depthBits < 0 || stencilBits < 0 || displayFrequency < 0) return 0;
+    if (windowHandle || driverLength < 0 || driverLength >= MAX_PATH) return 0;
     requestedOpenGLDriver[0] = L'\0';
     if (driverLength) {
         if (!driver) return 0;
@@ -1062,14 +1059,34 @@ PLAYABLE_API int playable_window_gl_configure(const unsigned char *driver, int d
         if (converted < 1) return 0;
         requestedOpenGLDriver[converted] = L'\0';
     }
+    return 1;
+}
+
+PLAYABLE_API int playable_window_gl_configure_pixel_format(int colorBits, int depthBits,
+        int stencilBits, int stereo) {
+    if (windowHandle || colorBits < 0 || depthBits < 0 || stencilBits < 0) return 0;
     openGLColorBits = colorBits ? colorBits : 24;
     openGLDepthBits = depthBits ? depthBits : 24;
     openGLStencilBits = stencilBits;
     openGLStereo = stereo != 0;
+    return 1;
+}
+
+PLAYABLE_API int playable_window_gl_configure_display(int fullscreen, int displayFrequency,
+        int swapInterval) {
+    if (windowHandle || displayFrequency < 0) return 0;
     requestedFullscreen = fullscreen != 0;
     requestedDisplayFrequency = displayFrequency;
     openGLSwapInterval = swapInterval;
     return 1;
+}
+
+PLAYABLE_API int playable_window_gl_configure(const unsigned char *driver, int driverLength,
+        int colorBits, int depthBits, int stencilBits, int stereo, int fullscreen,
+        int displayFrequency, int swapInterval) {
+    if (!playable_window_gl_configure_driver(driver, driverLength)) return 0;
+    if (!playable_window_gl_configure_pixel_format(colorBits, depthBits, stencilBits, stereo)) return 0;
+    return playable_window_gl_configure_display(fullscreen, displayFrequency, swapInterval);
 }
 
 PLAYABLE_API int playable_window_gl_available(void) { return openGLActive; }

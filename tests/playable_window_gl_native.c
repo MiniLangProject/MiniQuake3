@@ -2,6 +2,9 @@
 #include <stdio.h>
 
 __declspec(dllimport) int playable_window_gl_configure(const unsigned char *,int,int,int,int,int,int,int,int);
+__declspec(dllimport) int playable_window_gl_configure_driver(const unsigned char *,int);
+__declspec(dllimport) int playable_window_gl_configure_pixel_format(int,int,int,int);
+__declspec(dllimport) int playable_window_gl_configure_display(int,int,int);
 __declspec(dllimport) int playable_window_create(int,int);
 __declspec(dllimport) int playable_window_gl_available(void);
 __declspec(dllimport) int playable_window_gl_pixel_format(void);
@@ -22,6 +25,9 @@ int main(void) {
     unsigned char text[4096];
     int selector;
     if (!playable_window_gl_configure(driver, 12, 24, 24, 8, 0, 0, 0, 0)) return 1;
+    if (!playable_window_gl_configure_driver(driver, 12)) return 8;
+    if (!playable_window_gl_configure_pixel_format(24, 24, 8, 0)) return 9;
+    if (!playable_window_gl_configure_display(0, 0, 0)) return 10;
     if (!playable_window_create(320, 240)) return 2;
     if (!playable_window_gl_available() || playable_window_gl_pixel_format() < 1) return 3;
     if (playable_window_gl_color_bits() < 16 || playable_window_gl_depth_bits() < 15 ||

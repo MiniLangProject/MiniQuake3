@@ -3389,3 +3389,27 @@ Dateiparität**. `macosx` steht bei 8/8 und `scripts/verify.py` bei 499 normalen
 Gates. Dies schließt die Datei-Warteschlange, ersetzt aber nicht die weiterhin
 erforderliche spielbare Langzeit-, Netzwerk-, Renderer-, Audio-, UI- und
 Performance-Abnahme für den übergeordneten 1:1-Anspruch.
+
+## 2026-10-31: Produktiver Windows-Spielstart gegen Fehler 7481 gehärtet
+
+Der reale `--play`-Start deckte eine Lücke auf, die der bisherige reine
+C-Lifecycle nicht sehen konnte: Der eingefrorene MiniLang-Compiler übergab den
+neunparametrigen, ausschließlich aus Zeiger- und Integerwerten bestehenden
+`playable_window_gl_configure`-Aufruf fehlerhaft. Die native Funktion und der
+WGL-Lifecycle waren grün, der produktive MiniLang-Pfad erhielt dennoch `0` und
+brach vor der Fenstererzeugung mit Fehler 7481 ab.
+
+Der Standardstart verwendet nun direkt die identischen nativen Standardwerte
+24 Bit Farbe, 24 Bit Tiefe und 8 Bit Stencil, die `playable_window_create`
+bereits setzt. Konfigurierbare Modi teilen Treiber, Pixelformat und
+Displayeinstellungen auf drei Win64-ABI-sichere Aufrufe auf; der ursprüngliche
+C-Einstieg bleibt kompatibel. Der native `/W4 /WX`-Test prüft beide Oberflächen.
+Das neue Gate `test_playable_window_startup.py` kompiliert außerdem einen echten
+MiniLang-Smoke, öffnet ein Win32-/WGL-Fenster und fährt es sauber herunter.
+
+Die native Fenster-, Eingabe-, Raster- und WGL-Suite, 14 FPS-Titel-Verträge und
+56 Viewer-Verträge sind grün. Der vollständige Hauptbuild wurde danach mit
+`D:/Quake3/baseq3/pak0.pk3` und `maps/q3dm1.bsp` über denselben `--play`-Befehl
+wie `Play-MiniQuake3.cmd` gestartet; er blieb ohne Fehler offen und wurde nach
+zehn Sekunden kontrolliert beendet. Der frische Hauptbuild hat SHA-256
+`0d0aa6218bf581d79a523a64f886adc909b3428243ea96844c6e347dbadbb02a`.
