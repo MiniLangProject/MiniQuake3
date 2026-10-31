@@ -51,15 +51,25 @@ def build_inventory() -> dict:
     for item in files:
         candidates = list(item.get("symbol_candidates", []))
         mappings = list(item.get("symbol_mapping", []))
+        unmapped_symbols = [name for name in candidates if not mapped(name, mappings)]
+        ledger_status = item.get("status", "not_started")
+        # A file cannot be called completely ported while the same ledger row
+        # still names original symbols for which no MiniLang mapping exists.
+        # Keep the declared value for auditability, but derive all totals from
+        # the stricter effective state.
+        effective_status = ledger_status
+        if ledger_status == "ported" and unmapped_symbols:
+            effective_status = "partial"
         rows.append(
             {
                 "source": item["source"],
                 "domain": domain(item["source"]),
                 "category": item.get("category", ""),
-                "status": item.get("status", "not_started"),
+                "status": effective_status,
+                "ledger_status": ledger_status,
                 "candidate_symbols": candidates,
                 "mapped_symbols": [name for name in candidates if mapped(name, mappings)],
-                "unmapped_symbols": [name for name in candidates if not mapped(name, mappings)],
+                "unmapped_symbols": unmapped_symbols,
                 "targets": list(item.get("target", [])),
                 "tests": list(item.get("tests", [])),
             }
@@ -73,7 +83,12 @@ def build_inventory() -> dict:
         "upstream_commit": ledger.get("upstream_commit", ""),
         "scope_categories": sorted(IN_SCOPE),
         "source_suffixes": sorted(SOURCE_SUFFIXES),
-        "summary": {"files": len(rows), "status": dict(sorted(status.items()))},
+        "summary": {
+            "files": len(rows),
+            "status": dict(sorted(status.items())),
+            "open_symbols": sum(len(row["unmapped_symbols"]) for row in rows),
+            "status_corrections": sum(row["status"] != row["ledger_status"] for row in rows),
+        },
         "domains": {name: dict(sorted(values.items())) for name, values in sorted(by_domain.items())},
         "files": rows,
     }
@@ -92,6 +107,9 @@ def markdown(inventory: dict) -> str:
         "Baseq3-Module `qagame.qvm`, `cgame.qvm` und `ui.qvm` laufen zusätzlich im",
         "MiniLang-QVM-Interpreter. Dadurch können Spielfunktionen produktiv vorhanden sein,",
         "obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.",
+        "Der effektive Status wird absichtlich strenger als das Ledger berechnet: Eine dort",
+        "als `ported` markierte Datei mit noch offenen Originalsymbolen zählt hier als",
+        "`partial`. So kann ein Dateihaken keine fehlende Funktion verdecken.",
         "",
         "## Zusammenfassung",
         "",
@@ -111,6 +129,9 @@ def markdown(inventory: dict) -> str:
         f"**{values.get('partial', 0)}** | **{values.get('not_started', 0)}** | "
         f"**{values.get('retained_original', 0)}** |",
         "",
+        f"Offene Originalsymbole: **{summary['open_symbols']}** in "
+        f"**{summary['status_corrections']}** gegenüber dem Ledger herabgestuften Dateien.",
+        "",
         "`partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin",
         "offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`",
         "ist eine echte Quellport-Lücke; Builddateien und Drittanbieterquellen sind nicht",
@@ -118,12 +139,13 @@ def markdown(inventory: dict) -> str:
         "",
         "## Datei- und Symbolmatrix",
         "",
-        "| Originaldatei | Bereich | Quellport | Symbole | Gemappt | Offen |",
-        "|---|---|---|---:|---:|---:|",
+        "| Originaldatei | Bereich | Effektiv | Ledger | Symbole | Gemappt | Offen |",
+        "|---|---|---|---|---:|---:|---:|",
     ]
     for row in inventory["files"]:
         lines.append(
             f"| `{row['source']}` | `{row['domain']}` | `{row['status']}` | "
+            f"`{row['ledger_status']}` | "
             f"{len(row['candidate_symbols'])} | {len(row['mapped_symbols'])} | {len(row['unmapped_symbols'])} |"
         )
     lines += [
@@ -152,6 +174,7 @@ def main() -> int:
     args = parser.parse_args()
     inventory = build_inventory()
     content = markdown(inventory)
+    json_content = json.dumps(inventory, indent=2) + "\n"
     if args.check:
         if not REPORT.exists() or REPORT.read_text(encoding="utf-8") != content:
             raise SystemExit("docs/ORIGINAL_PARITY_REPORT.md is stale; run scripts/parity_inventory.py")
@@ -159,7 +182,7 @@ def main() -> int:
         return 0
     REPORT.write_text(content, encoding="utf-8", newline="\n")
     JSON_REPORT.parent.mkdir(parents=True, exist_ok=True)
-    JSON_REPORT.write_text(json.dumps(inventory, indent=2) + "\n", encoding="utf-8", newline="\n")
+    JSON_REPORT.write_text(json_content, encoding="utf-8", newline="\n")
     print(f"Wrote {REPORT.relative_to(ROOT)} for {inventory['summary']['files']} files")
     return 0
 

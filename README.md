@@ -28,8 +28,15 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **alle 335
-sind vollständig portiert**, keine ist teilweise portiert oder nicht begonnen.
+Der strenge Quellabgleich umfasst 335 Runtime-/Plattformdateien: **274 sind
+symbolvollständig zugeordnet, 61 sind teilweise zugeordnet**. In diesen 61
+Dateien bleiben **1.011 Originalsymbole** ohne belegte MiniLang-Zuordnung. Der
+frühere reine Dateizähler meldete fälschlich 335/335 vollständig, obwohl das
+Ledger für dieselben Dateien offene Symbole enthielt; Bericht und Gate werten
+solche Dateien jetzt zwingend als `partial`. Der separate
+[Bedien- und Funktionsabgleich](docs/BEHAVIOR_PARITY_AUDIT.md) hält fest, welche
+Original-QVM-Pfade bereits produktiv laufen und welche beobachtbaren
+1:1-Abnahmen noch fehlen.
 Der jüngste Integrationsblock schließt die acht gezählten macOS-Header mit der
 vollständigen 337-Namen-QGL-Oberfläche sowie Mouse-Delta-, privater Event-ABI-,
 Controller-, Display-/Gamma-, GL-Kontext- und Timersemantik. 24 ausführbare
@@ -417,13 +424,23 @@ python scripts/verify.py --data-root D:/Quake3
 python scripts/verify.py --data-root D:/Quake3 --extended
 ```
 
-## First playable preview
+## Spielbarer Original-QVM-Pfad
 
-Double-click `Play-MiniQuake3.cmd`, or run:
+Doppelklick auf `Play-MiniQuake3.cmd` baut bei Bedarf die drei unveränderten
+Baseq3-QVMs und startet den produktiven Original-QVM-Pfad. Manuell entspricht
+das diesem Aufruf:
 
 ```powershell
-.\build\MiniQuake3.exe --play D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp
+python scripts/build_qvms.py
+.\build\MiniQuake3.exe --play-qvm D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp build/reference/qvms
 ```
+
+Damit stammen Menü, HUD, Client- und Spielregeln aus `ui.qvm`, `cgame.qvm`
+und `qagame.qvm`; Bindings und Key-Catcher folgen dem Quake-III-Pfad. Der
+ältere vereinfachte Vertical-Slice bleibt nur als Diagnose mit `--play`
+erreichbar und ist nicht länger der Benutzer-Standard. Der erste QVM- und
+Assetaufbau kann mehrere Minuten dauern; das Spielfenster erscheint aktuell
+erst danach. Dies ist eine dokumentierte Startzeitlücke, kein Absturz.
 
 The normal startup uses the native backend's built-in 24-bit colour, 24-bit
 depth and 8-bit stencil defaults. It intentionally does not send the same

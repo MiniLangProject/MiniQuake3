@@ -6,6 +6,7 @@ from collections import Counter
 from pathlib import Path
 
 from toolchain import ROOT
+from parity_inventory import build_inventory
 
 SOURCE_SUFFIXES = {".c", ".h", ".asm"}
 
@@ -29,6 +30,21 @@ def main() -> int:
         raise RuntimeError("original runtime source files missing from PORT_LEDGER.json: " + ", ".join(missing))
 
     subprocess.run([sys.executable, ROOT / "scripts/parity_inventory.py", "--check"], cwd=ROOT, check=True)
+    inventory = build_inventory()
+    false_complete = [
+        row["source"]
+        for row in inventory["files"]
+        if row["status"] == "ported" and row["unmapped_symbols"]
+    ]
+    if false_complete:
+        raise RuntimeError("effectively ported files still have unmapped symbols: " + ", ".join(false_complete))
+    summary = inventory["summary"]
+    if sum(summary["status"].values()) != summary["files"]:
+        raise RuntimeError("parity status totals do not cover the complete inventory")
+    if summary["open_symbols"] != sum(len(row["unmapped_symbols"]) for row in inventory["files"]):
+        raise RuntimeError("open-symbol total is inconsistent")
+    if summary["status_corrections"] != sum(row["status"] != row["ledger_status"] for row in inventory["files"]):
+        raise RuntimeError("effective-status correction total is inconsistent")
     print(f"PASS: complete original/port source inventory ({len(original_sources)} code-tree sources)")
     return 0
 

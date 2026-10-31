@@ -2,6 +2,7 @@
 setlocal
 cd /d "%~dp0"
 set "MQ3_PAK=D:\Quake3\baseq3\pak0.pk3"
+set "MQ3_QVMS=build\reference\qvms"
 if not exist "%MQ3_PAK%" (
   echo Quake III assets were not found at:
   echo   %MQ3_PAK%
@@ -22,9 +23,18 @@ if not exist "build\playable_audio.dll" (
 if not exist "build\playable_ambient.dll" (
   python scripts\build.py || exit /b 6
 )
-echo Starting the first MiniQuake3 playable preview...
-echo Enter starts, WASD moves, mouse looks, left mouse fires, Q/E or 1-9 changes weapons, Space jumps.
-echo Escape returns to the menu; Escape again quits.
-"build\MiniQuake3.exe" --play "%MQ3_PAK%" "maps/q3dm1.bsp"
+if not exist "%MQ3_QVMS%\qagame.qvm" (
+  python scripts\build_qvms.py || exit /b 7
+)
+if not exist "%MQ3_QVMS%\cgame.qvm" (
+  python scripts\build_qvms.py || exit /b 8
+)
+if not exist "%MQ3_QVMS%\ui.qvm" (
+  python scripts\build_qvms.py || exit /b 9
+)
+echo Starting MiniQuake3 with the original qagame, cgame and UI modules...
+echo The first asset/QVM load can take a while. The game window opens afterwards.
+echo Controls and menus use Quake III bindings; Escape opens the original in-game menu.
+"build\MiniQuake3.exe" --play-qvm "%MQ3_PAK%" "maps/q3dm1.bsp" "%MQ3_QVMS%"
 if errorlevel 1 pause
 endlocal

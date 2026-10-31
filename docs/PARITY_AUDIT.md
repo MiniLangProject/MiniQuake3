@@ -3417,3 +3417,29 @@ Die native Fenster-, Eingabe-, Raster- und WGL-Suite, 14 FPS-Titel-Verträge und
 wie `Play-MiniQuake3.cmd` gestartet; er blieb ohne Fehler offen und wurde nach
 zehn Sekunden kontrolliert beendet. Der frische Hauptbuild hat SHA-256
 `9673c22b577bab94c1d914bac6a47f20daaea5f0d1e4034d792b1b1389dd953d`.
+
+## 2026-10-31: Strenger Funktionsabgleich und Original-QVM-Standardstart
+
+Der bisherige 335/335-Dateizähler war kein belastbarer Beleg für vollständige
+Parität: 61 als `ported` deklarierte Ledger-Zeilen enthielten gleichzeitig
+1.011 nicht zugeordnete Originalsymbole. `parity_inventory.py` berechnet den
+effektiven Status nun unabhängig von dieser Deklaration und stuft jede solche
+Datei zwingend auf `partial` zurück. Das Ergebnis lautet **274 vollständig
+zugeordnete und 61 teilweise zugeordnete Dateien**. Der generierte
+Markdownbericht wird auf Aktualität geprüft; ein neues Gate
+verhindert, dass eine effektiv portierte Datei offene Symbole trägt.
+
+Der vollständige beobachtbare Abgleich steht in
+`docs/BEHAVIOR_PARITY_AUDIT.md`. Er trennt unveränderte Original-QVM-Logik von
+den noch nicht vollständig identischen Engine-Traps und nennt für Start,
+Menüs, Eingabe, Gameplay, Spieltypen, Bots, Netzwerk, Renderer, HUD, Audio,
+Demos, Dateien und Plattform jeweils Originalquelle, Produktivpfad, Nachweis
+und konkrete Restlücke. Danach ist MiniQuake3 ein spielbarer
+Original-QVM-Integrationsstand, aber noch kein fertig abgenommener 1:1-Port.
+
+`Play-MiniQuake3.cmd` startet deshalb nicht länger den eigenen vereinfachten
+WASD-Vertical-Slice. Der Benutzerstandard baut bei Bedarf `qagame.qvm`,
+`cgame.qvm` und `ui.qvm` und startet `--play-qvm`. Damit stammen Regeln,
+Prediction, HUD, Menüs, Key-Catcher und Bindings aus den Originalmodulen. Das
+Gate `test_default_launcher.py` hält diesen Startpfad fest. Der alte `--play`-
+Modus bleibt ausschließlich als Diagnoseoption erhalten.
