@@ -28,9 +28,16 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **314 sind
-vollständig portiert, keine ist teilweise portiert und 21 sind noch nicht
-begonnen**. Der jüngste Integrationsblock schließt alle sieben Headless-/Null-
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **327 sind
+vollständig portiert, keine ist teilweise portiert und acht sind noch nicht
+begonnen**. Der jüngste Integrationsblock schließt alle 13 gezählten Unix-
+Plattformdateien mit 471 Symbolen. Die portable MiniLang-Fassade besitzt die
+vollständigen Speicher-, X11/GL-, QGL-, Eingabe-, Signal-, DMA-, Konsolen-,
+System-, UDP-, Shared- und x86-QVM-Oberflächen. Native POSIX-/X11-Aufrufe
+bleiben klar abgegrenzte Hostadapter; 28 ausführbare Verträge prüfen die
+beobachtbaren Zustände und Fehlergrenzen. `unix` steht bei 13/13 Dateien.
+
+Der vorherige Integrationsblock schloss alle sieben Headless-/Null-
 Plattformdateien mit 64 Symbolen. Client, Eingabe, OpenGL, Audio und ausgehende
 Pakete besitzen die originalen No-op-/Nullwerte; Netzwerkauflösung akzeptiert
 nur Loopback. Der Systempfad ergänzt sichere Fehler- und Quit-Zustände sowie
@@ -99,7 +106,7 @@ texturierte Dreiecke, 17 Renderpässe, 26 Sounds und null nicht unterstützte
 Entities. Der frische `build/MiniQuake3.exe`-Stand hat SHA-256
 `d327538fdd7d8a194e486cd0b3458028eea8e158fba18bcca121cf77944cf941`.
 Die letzte vollständig am Stück ausgeführte Gesamtauswahl bleibt der
-dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 497 normale
+dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 498 normale
 Gates.
 
 Ein neuer Integrationsblock schließt `q_shared.h`, `win_main.c`, `win_net.c`,

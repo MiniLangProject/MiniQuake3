@@ -3297,3 +3297,36 @@ noch nicht begonnene** Dateien von 335, also **93,7 %**. `null` steht bei 7/7
 und `scripts/verify.py` bei 497 Gates. Offen sind nur noch 13 Unix- und acht
 macOS-Plattformdateien. Laufwerk `D:` ist weiterhin nicht eingebunden; ein
 neuer Retail-Assetlauf bleibt daher aus.
+
+## 2026-10-31: Unix-Plattform vollständig geschlossen
+
+Alle 13 im Runtime-Inventar gezählten Dateien unter `code/unix` sind nativ
+zugeordnet. `unix_runtime.ml` besitzt die vollständige Oberfläche aus
+`linux_common.c`, `linux_glimp.c`, `linux_joystick.c`, `linux_local.h`,
+`linux_qgl.c`, `linux_signals.c`, `linux_snd.c`, `qasm.h`, `unix_glw.h`,
+`unix_main.c`, `unix_net.c`, `unix_shared.c` und `vm_x86.c`. Damit sind alle
+**471 inventarisierten Symbole** erfasst: Speicherhelfer, X11/GL-Lifecycle,
+QGL-Laden und -Logging, Eingabe und Joystick, Signale, DMA-Audio,
+Konsolenhistorie, Systemereignisse, UDP-Adressen und -Pakete, Pfade und Zeit
+sowie der x86-QVM-Compile-/Call-Lifecycle.
+
+Der Port bildet die beobachtbare Unix-Semantik portabel und deterministisch
+ab. Direkte POSIX-, X11-, OpenGL- und Socket-Hostaufrufe sind auf Windows nicht
+aktiv und bleiben eine ausdrücklich dokumentierte Hostadaptergrenze; sie
+werden nicht als produktive Windows-Treiber ausgegeben. Der QVM-Pfad delegiert
+an den bereits geprüften speichersicheren Decoded-Plan-Compiler. Das neue Gate
+vergleicht jede Symboloberfläche exakt mit dem Ledger, baut eine synthetische
+QVM und führt **28 Verträge** für Speicher, GL/QGL, Eingabe, Signale, DMA,
+Historie, Events, Adressen, LAN-Erkennung, Pakete, Pfade, Systemwerte,
+Numerik, QVM-Aufrufe und die begrenzte Unix-Hauptschleife aus.
+
+Vollständigkeitsgate, Inventarprüfung und der sequentielle Windows-Hauptbuild
+sind grün. Da die neue Unix-Fassade nicht in den Windows-Hostpfad eingebunden
+ist, bleibt `build/MiniQuake3.exe` binär unverändert bei SHA-256
+`a31aa0ea0ec797e34ae6245d357e5b6506302e70fc6212ea79a5266dd855d72d`.
+Das Inventar zählt jetzt
+**327 portierte, keine teilweise portierte und acht noch nicht begonnene**
+Dateien von 335, also **97,6 %** native Dateiparität. `unix` steht bei 13/13
+und `scripts/verify.py` bei 498 Gates. Offen sind ausschließlich acht
+macOS-Plattformdateien. Laufwerk `D:` ist weiterhin nicht eingebunden; ein
+neuer Retail-Assetlauf war deshalb nicht möglich.

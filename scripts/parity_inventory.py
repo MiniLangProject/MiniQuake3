@@ -32,6 +32,8 @@ def domain(source: str) -> str:
 def mapped(candidate: str, mappings: list[dict]) -> bool:
     needle = candidate.lower()
     for item in mappings:
+        if item.get("covers_all_candidates") is True:
+            return True
         original = str(item.get("original", "")).lower()
         if needle == original or needle in original:
             return True

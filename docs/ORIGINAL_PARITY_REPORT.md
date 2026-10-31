@@ -25,9 +25,9 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `server` | 11 | 11 | 0 | 0 | 0 |
 | `splines` | 8 | 8 | 0 | 0 | 0 |
 | `ui` | 12 | 12 | 0 | 0 | 0 |
-| `unix` | 13 | 0 | 0 | 13 | 0 |
+| `unix` | 13 | 13 | 0 | 0 | 0 |
 | `win32` | 13 | 13 | 0 | 0 | 0 |
-| **Gesamt** | **335** | **314** | **0** | **21** | **0** |
+| **Gesamt** | **335** | **327** | **0** | **8** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -347,19 +347,19 @@ Teil dieser Tabelle.
 | `code/ui/ui_syscalls.asm` | `ui` | `ported` | 97 | 97 | 0 |
 | `code/ui/ui_syscalls.c` | `ui` | `ported` | 89 | 89 | 0 |
 | `code/ui/ui_util.c` | `ui` | `ported` | 0 | 0 | 0 |
-| `code/unix/linux_common.c` | `unix` | `not_started` | 4 | 0 | 4 |
-| `code/unix/linux_glimp.c` | `unix` | `not_started` | 35 | 0 | 35 |
-| `code/unix/linux_joystick.c` | `unix` | `not_started` | 2 | 0 | 2 |
-| `code/unix/linux_local.h` | `unix` | `not_started` | 0 | 0 | 0 |
-| `code/unix/linux_qgl.c` | `unix` | `not_started` | 341 | 0 | 341 |
-| `code/unix/linux_signals.c` | `unix` | `not_started` | 2 | 0 | 2 |
-| `code/unix/linux_snd.c` | `unix` | `not_started` | 6 | 0 | 6 |
-| `code/unix/qasm.h` | `unix` | `not_started` | 0 | 0 | 0 |
-| `code/unix/unix_glw.h` | `unix` | `not_started` | 0 | 0 | 0 |
-| `code/unix/unix_main.c` | `unix` | `not_started` | 43 | 0 | 43 |
-| `code/unix/unix_net.c` | `unix` | `not_started` | 16 | 0 | 16 |
-| `code/unix/unix_shared.c` | `unix` | `not_started` | 20 | 0 | 20 |
-| `code/unix/vm_x86.c` | `unix` | `not_started` | 2 | 0 | 2 |
+| `code/unix/linux_common.c` | `unix` | `ported` | 4 | 4 | 0 |
+| `code/unix/linux_glimp.c` | `unix` | `ported` | 35 | 35 | 0 |
+| `code/unix/linux_joystick.c` | `unix` | `ported` | 2 | 2 | 0 |
+| `code/unix/linux_local.h` | `unix` | `ported` | 0 | 0 | 0 |
+| `code/unix/linux_qgl.c` | `unix` | `ported` | 341 | 341 | 0 |
+| `code/unix/linux_signals.c` | `unix` | `ported` | 2 | 2 | 0 |
+| `code/unix/linux_snd.c` | `unix` | `ported` | 6 | 6 | 0 |
+| `code/unix/qasm.h` | `unix` | `ported` | 0 | 0 | 0 |
+| `code/unix/unix_glw.h` | `unix` | `ported` | 0 | 0 | 0 |
+| `code/unix/unix_main.c` | `unix` | `ported` | 43 | 43 | 0 |
+| `code/unix/unix_net.c` | `unix` | `ported` | 16 | 16 | 0 |
+| `code/unix/unix_shared.c` | `unix` | `ported` | 20 | 20 | 0 |
+| `code/unix/vm_x86.c` | `unix` | `ported` | 2 | 2 | 0 |
 | `code/win32/glw_win.h` | `win32` | `ported` | 13 | 13 | 0 |
 | `code/win32/resource.h` | `win32` | `ported` | 12 | 12 | 0 |
 | `code/win32/win_gamma.c` | `win32` | `ported` | 4 | 4 | 0 |
@@ -448,17 +448,4 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/splines/math_vector.h` (ported): `AddBounds`, `AddPoint`, `Bounds`, `Center`, `Clear`, `ContainsPoint`, `Cross`, `IntersectsBounds`, `IsCleared`, `Normalize`, `Radius`, `Snap`, `SnapTowards`, `Zero`, `idSqrt`, `idVec3_t`, `set`, `vec4_t`
 - `code/splines/util_list.h` (ported): `AddUnique`, `Append`, `Clear`, `Condense`, `Find`, `Num`, `Remove`, `RemoveIndex`, `Resize`, `SetGranularity`, `SetNum`, `Size`, `Sort`, `idList`
 - `code/splines/util_str.h` (ported): `append`, `idStr`, `tolower`, `toupper`
-- `code/unix/linux_common.c` (not_started): `Com_Memcpy`, `Com_Memset`, `Com_Prefetch`, `_copyDWord`
-- `code/unix/linux_glimp.c` (not_started): `CreateNullCursor`, `GLW_InitExtensions`, `GLW_InitGamma`, `GLW_LoadOpenGL`, `GLW_SetMode`, `GLW_StartDriverAndSetMode`, `GLimp_EndFrame`, `GLimp_FrontEndSleep`, `GLimp_Init`, `GLimp_LogComment`, `GLimp_RenderThreadWrapper`, `GLimp_RendererSleep`, `GLimp_SetGamma`, `GLimp_Shutdown`, `GLimp_SpawnRenderThread`, `GLimp_WakeRenderer`, `HandleEvents`, `IN_Activate`, `IN_ActivateMouse`, `IN_DeactivateMouse`, `IN_Frame`, `IN_Init`, `IN_JoyMove`, `IN_Shutdown`, `IN_StartupJoystick`, `KBD_Close`, `KBD_Init`, `Q_stristr`, `Sys_SendKeyEvents`, `X11_PendingInput`, `XLateKey`, `install_grabs`, `qXErrorHandler`, `repeated_press`, `uninstall_grabs`
-- `code/unix/linux_joystick.c` (not_started): `IN_JoyMove`, `IN_StartupJoystick`
-- `code/unix/linux_local.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/unix/linux_qgl.c` (not_started): `GLimp_LogNewFrame`, `QGL_EnableLogging`, `QGL_Init`, `QGL_Shutdown`, `logAccum`, `logAlphaFunc`, `logAreTexturesResident`, `logArrayElement`, `logBegin`, `logBindTexture`, `logBitmap`, `logBlendFunc`, `logCallList`, `logCallLists`, `logClear`, `logClearAccum`, `logClearColor`, `logClearDepth`, `logClearIndex`, `logClearStencil`, `logClipPlane`, `logColor3b`, `logColor3bv`, `logColor3d`, `logColor3dv`, `logColor3f`, `logColor3fv`, `logColor3i`, `logColor3iv`, `logColor3s`, `logColor3sv`, `logColor3ub`, `logColor3ubv`, `logColor3ui`, `logColor3uiv`, `logColor3us`, `logColor3usv`, `logColor4b`, `logColor4bv`, `logColor4d`, `logColor4dv`, `logColor4f`, `logColor4fv`, `logColor4i`, `logColor4iv`, `logColor4s`, `logColor4sv`, `logColor4ub`, `logColor4ubv`, `logColor4ui`, `logColor4uiv`, `logColor4us`, `logColor4usv`, `logColorMask`, `logColorMaterial`, `logColorPointer`, `logCopyPixels`, `logCopyTexImage1D`, `logCopyTexImage2D`, `logCopyTexSubImage1D`, `logCopyTexSubImage2D`, `logCullFace`, `logDeleteLists`, `logDeleteTextures`, `logDepthFunc`, `logDepthMask`, `logDepthRange`, `logDisable`, `logDisableClientState`, `logDrawArrays`, `logDrawBuffer`, `logDrawElements`, `logDrawPixels`, `logEdgeFlag`, `logEdgeFlagPointer`, `logEdgeFlagv`, `logEnable`, `logEnableClientState`, `logEnd`, `logEndList`, `logEvalCoord1d`, `logEvalCoord1dv`, `logEvalCoord1f`, `logEvalCoord1fv`, `logEvalCoord2d`, `logEvalCoord2dv`, `logEvalCoord2f`, `logEvalCoord2fv`, `logEvalMesh1`, `logEvalMesh2`, `logEvalPoint1`, `logEvalPoint2`, `logFeedbackBuffer`, `logFinish`, `logFlush`, `logFogf`, `logFogfv`, `logFogi`, `logFogiv`, `logFrontFace`, `logFrustum`, `logGenLists`, `logGenTextures`, `logGetBooleanv`, `logGetClipPlane`, `logGetDoublev`, `logGetError`, `logGetFloatv`, `logGetIntegerv`, `logGetLightfv`, `logGetLightiv`, `logGetMapdv`, `logGetMapfv`, `logGetMapiv`, `logGetMaterialfv`, `logGetMaterialiv`, `logGetPixelMapfv`, `logGetPixelMapuiv`, `logGetPixelMapusv`, `logGetPointerv`, `logGetPolygonStipple`, `logGetString`, `logGetTexEnvfv`, `logGetTexEnviv`, `logGetTexGendv`, `logGetTexGenfv`, `logGetTexGeniv`, `logGetTexImage`, `logGetTexLevelParameterfv`, `logGetTexLevelParameteriv`, `logGetTexParameterfv`, `logGetTexParameteriv`, `logHint`, `logIndexMask`, `logIndexPointer`, `logIndexd`, `logIndexdv`, `logIndexf`, `logIndexfv`, `logIndexi`, `logIndexiv`, `logIndexs`, `logIndexsv`, `logIndexub`, `logIndexubv`, `logInitNames`, `logInterleavedArrays`, `logIsEnabled`, `logIsList`, `logIsTexture`, `logLightModelf`, `logLightModelfv`, `logLightModeli`, `logLightModeliv`, `logLightf`, `logLightfv`, `logLighti`, `logLightiv`, `logLineStipple`, `logLineWidth`, `logListBase`, `logLoadIdentity`, `logLoadMatrixd`, `logLoadMatrixf`, `logLoadName`, `logLogicOp`, `logMap1d`, `logMap1f`, `logMap2d`, `logMap2f`, `logMapGrid1d`, `logMapGrid1f`, `logMapGrid2d`, `logMapGrid2f`, `logMaterialf`, `logMaterialfv`, `logMateriali`, `logMaterialiv`, `logMatrixMode`, `logMultMatrixd`, `logMultMatrixf`, `logNewList`, `logNormal3b`, `logNormal3bv`, `logNormal3d`, `logNormal3dv`, `logNormal3f`, `logNormal3fv`, `logNormal3i`, `logNormal3iv`, `logNormal3s`, `logNormal3sv`, `logNormalPointer`, `logOrtho`, `logPassThrough`, `logPixelMapfv`, `logPixelMapuiv`, `logPixelMapusv`, `logPixelStoref`, `logPixelStorei`, `logPixelTransferf`, `logPixelTransferi`, `logPixelZoom`, `logPointSize`, `logPolygonMode`, `logPolygonOffset`, `logPolygonStipple`, `logPopAttrib`, `logPopClientAttrib`, `logPopMatrix`, `logPopName`, `logPrioritizeTextures`, `logPushAttrib`, `logPushClientAttrib`, `logPushMatrix`, `logPushName`, `logRasterPos2d`, `logRasterPos2dv`, `logRasterPos2f`, `logRasterPos2fv`, `logRasterPos2i`, `logRasterPos2iv`, `logRasterPos2s`, `logRasterPos2sv`, `logRasterPos3d`, `logRasterPos3dv`, `logRasterPos3f`, `logRasterPos3fv`, `logRasterPos3i`, `logRasterPos3iv`, `logRasterPos3s`, `logRasterPos3sv`, `logRasterPos4d`, `logRasterPos4dv`, `logRasterPos4f`, `logRasterPos4fv`, `logRasterPos4i`, `logRasterPos4iv`, `logRasterPos4s`, `logRasterPos4sv`, `logReadBuffer`, `logReadPixels`, `logRectd`, `logRectdv`, `logRectf`, `logRectfv`, `logRecti`, `logRectiv`, `logRects`, `logRectsv`, `logRenderMode`, `logRotated`, `logRotatef`, `logScaled`, `logScalef`, `logScissor`, `logSelectBuffer`, `logShadeModel`, `logStencilFunc`, `logStencilMask`, `logStencilOp`, `logTexCoord1d`, `logTexCoord1dv`, `logTexCoord1f`, `logTexCoord1fv`, `logTexCoord1i`, `logTexCoord1iv`, `logTexCoord1s`, `logTexCoord1sv`, `logTexCoord2d`, `logTexCoord2dv`, `logTexCoord2f`, `logTexCoord2fv`, `logTexCoord2i`, `logTexCoord2iv`, `logTexCoord2s`, `logTexCoord2sv`, `logTexCoord3d`, `logTexCoord3dv`, `logTexCoord3f`, `logTexCoord3fv`, `logTexCoord3i`, `logTexCoord3iv`, `logTexCoord3s`, `logTexCoord3sv`, `logTexCoord4d`, `logTexCoord4dv`, `logTexCoord4f`, `logTexCoord4fv`, `logTexCoord4i`, `logTexCoord4iv`, `logTexCoord4s`, `logTexCoord4sv`, `logTexCoordPointer`, `logTexEnvf`, `logTexEnvfv`, `logTexEnvi`, `logTexEnviv`, `logTexGend`, `logTexGendv`, `logTexGenf`, `logTexGenfv`, `logTexGeni`, `logTexGeniv`, `logTexImage1D`, `logTexImage2D`, `logTexParameterf`, `logTexParameterfv`, `logTexParameteri`, `logTexParameteriv`, `logTexSubImage1D`, `logTexSubImage2D`, `logTranslated`, `logTranslatef`, `logVertex2d`, `logVertex2dv`, `logVertex2f`, `logVertex2fv`, `logVertex2i`, `logVertex2iv`, `logVertex2s`, `logVertex2sv`, `logVertex3d`, `logVertex3dv`, `logVertex3f`, `logVertex3fv`, `logVertex3i`, `logVertex3iv`, `logVertex3s`, `logVertex3sv`, `logVertex4d`, `logVertex4dv`, `logVertex4f`, `logVertex4fv`, `logVertex4i`, `logVertex4iv`, `logVertex4s`, `logVertex4sv`, `logVertexPointer`, `logViewport`, `qwglGetProcAddress`
-- `code/unix/linux_signals.c` (not_started): `InitSig`, `signal_handler`
-- `code/unix/linux_snd.c` (not_started): `SNDDMA_BeginPainting`, `SNDDMA_GetDMAPos`, `SNDDMA_Init`, `SNDDMA_Shutdown`, `SNDDMA_Submit`, `Snd_Memset`
-- `code/unix/qasm.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/unix/unix_glw.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/unix/unix_main.c` (not_started): `Hist_Add`, `Hist_Next`, `Hist_Prev`, `Sys_AppActivate`, `Sys_BeginProfiling`, `Sys_BeginStreamedFile`, `Sys_CheckCD`, `Sys_ConfigureFPU`, `Sys_ConsoleInput`, `Sys_ConsoleInputInit`, `Sys_ConsoleInputShutdown`, `Sys_EndStreamedFile`, `Sys_Error`, `Sys_Exit`, `Sys_FileTime`, `Sys_FunctionCheckSum`, `Sys_FunctionCmp`, `Sys_GetClipboardData`, `Sys_GetEvent`, `Sys_In_Restart_f`, `Sys_Init`, `Sys_InitStreamThread`, `Sys_LoadDll`, `Sys_LowPhysicalMemory`, `Sys_MonkeyShouldBeSpanked`, `Sys_ParseArgs`, `Sys_Print`, `Sys_PrintBinVersion`, `Sys_Printf`, `Sys_QueEvent`, `Sys_Quit`, `Sys_ShutdownStreamThread`, `Sys_StreamSeek`, `Sys_StreamThread`, `Sys_StreamedRead`, `Sys_UnloadDll`, `Sys_Warn`, `floating_point_exception_handler`, `main`, `tty_Back`, `tty_FlushIn`, `tty_Hide`, `tty_Show`
-- `code/unix/unix_net.c` (not_started): `NET_BaseAdrToString`, `NET_ErrorString`, `NET_GetLocalAddress`, `NET_IPSocket`, `NET_Init`, `NET_OpenIP`, `NET_Shutdown`, `NET_Sleep`, `NetadrToSockadr`, `SockadrToNetadr`, `Sys_GetPacket`, `Sys_IsLANAddress`, `Sys_SendPacket`, `Sys_ShowIP`, `Sys_StringToAdr`, `Sys_StringToSockaddr`
-- `code/unix/unix_shared.c` (not_started): `Sys_Cwd`, `Sys_DefaultCDPath`, `Sys_DefaultHomePath`, `Sys_DefaultInstallPath`, `Sys_FreeFileList`, `Sys_GetCurrentUser`, `Sys_GetProcessorId`, `Sys_ListFiles`, `Sys_ListFilteredFiles`, `Sys_Milliseconds`, `Sys_Mkdir`, `Sys_ProcessorCount`, `Sys_SetDefaultCDPath`, `Sys_SetDefaultHomePath`, `Sys_SetDefaultInstallPath`, `Sys_ShowConsole`, `Sys_SnapVector`, `Sys_XTimeToSysTime`, `fastftol`, `strlwr`
-- `code/unix/vm_x86.c` (not_started): `VM_CallCompiled`, `VM_Compile`
 - `code/win32/win_input.c` (ported): `IN_Activate`, `IN_ActivateDIMouse`, `IN_ActivateMouse`, `IN_ActivateWin32Mouse`, `IN_ClearStates`, `IN_DIMouse`, `IN_DeactivateDIMouse`, `IN_DeactivateMouse`, `IN_DeactivateWin32Mouse`, `IN_Frame`, `IN_Init`, `IN_InitDIMouse`, `IN_InitWin32Mouse`, `IN_JoyMove`, `IN_MouseEvent`, `IN_MouseMove`, `IN_Shutdown`, `IN_ShutdownDIMouse`, `IN_ShutdownMIDI`, `IN_ShutdownWin32Mouse`, `IN_Startup`, `IN_StartupJoystick`, `IN_StartupMIDI`, `IN_StartupMouse`, `IN_Win32Mouse`, `JoyToF`, `JoyToI`, `MIDI_NoteOff`, `MIDI_NoteOn`, `MidiInProc`, `MidiInfo_f`
