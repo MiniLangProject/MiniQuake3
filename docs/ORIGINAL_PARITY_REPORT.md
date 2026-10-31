@@ -20,14 +20,14 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `macosx` | 8 | 0 | 0 | 8 | 0 |
 | `null` | 7 | 0 | 0 | 7 | 0 |
 | `q3_ui` | 47 | 47 | 0 | 0 | 0 |
-| `qcommon` | 27 | 24 | 0 | 3 | 0 |
+| `qcommon` | 27 | 27 | 0 | 0 | 0 |
 | `renderer` | 27 | 27 | 0 | 0 | 0 |
 | `server` | 11 | 11 | 0 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
 | `ui` | 12 | 12 | 0 | 0 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 13 | 0 | 0 | 0 |
-| **Gesamt** | **335** | **296** | **0** | **39** | **0** |
+| **Gesamt** | **335** | **299** | **0** | **36** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -286,9 +286,9 @@ Teil dieser Tabelle.
 | `code/qcommon/vm.c` | `qcommon` | `ported` | 23 | 0 | 23 |
 | `code/qcommon/vm_interpreted.c` | `qcommon` | `ported` | 4 | 4 | 0 |
 | `code/qcommon/vm_local.h` | `qcommon` | `ported` | 0 | 0 | 0 |
-| `code/qcommon/vm_ppc.c` | `qcommon` | `not_started` | 14 | 0 | 14 |
-| `code/qcommon/vm_ppc_new.c` | `qcommon` | `not_started` | 18 | 0 | 18 |
-| `code/qcommon/vm_x86.c` | `qcommon` | `not_started` | 15 | 0 | 15 |
+| `code/qcommon/vm_ppc.c` | `qcommon` | `ported` | 14 | 0 | 14 |
+| `code/qcommon/vm_ppc_new.c` | `qcommon` | `ported` | 18 | 0 | 18 |
+| `code/qcommon/vm_x86.c` | `qcommon` | `ported` | 15 | 0 | 15 |
 | `code/renderer/qgl.h` | `renderer` | `ported` | 0 | 0 | 0 |
 | `code/renderer/qgl_linked.h` | `renderer` | `ported` | 0 | 0 | 0 |
 | `code/renderer/tr_animation.c` | `renderer` | `ported` | 2 | 2 | 0 |
@@ -421,9 +421,9 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/qcommon/cvar.c` (ported): `Cvar_Command`, `Cvar_CommandCompletion`, `Cvar_FindVar`, `Cvar_Get`, `Cvar_InfoString`, `Cvar_InfoStringBuffer`, `Cvar_InfoString_Big`, `Cvar_Init`, `Cvar_List_f`, `Cvar_Register`, `Cvar_Reset`, `Cvar_Reset_f`, `Cvar_Restart_f`, `Cvar_Set`, `Cvar_Set2`, `Cvar_SetA_f`, `Cvar_SetCheatState`, `Cvar_SetLatched`, `Cvar_SetS_f`, `Cvar_SetU_f`, `Cvar_SetValue`, `Cvar_Set_f`, `Cvar_Toggle_f`, `Cvar_Update`, `Cvar_ValidateString`, `Cvar_VariableIntegerValue`, `Cvar_VariableString`, `Cvar_VariableStringBuffer`, `Cvar_VariableValue`, `Cvar_WriteVariables`, `generateHashValue`
 - `code/qcommon/net_chan.c` (ported): `NET_AdrToString`, `NET_CompareAdr`, `NET_CompareBaseAdr`, `NET_GetLoopPacket`, `NET_IsLocalAddress`, `NET_OutOfBandPrint`, `NET_SendLoopPacket`, `NET_SendPacket`, `NET_StringToAdr`, `Netchan_Init`, `Netchan_Process`, `Netchan_ScramblePacket`, `Netchan_Setup`, `Netchan_Transmit`, `Netchan_TransmitNextFragment`, `Netchan_UnScramblePacket`
 - `code/qcommon/vm.c` (ported): `ParseHex`, `VM_ArgPtr`, `VM_Call`, `VM_CallCompiled`, `VM_Clear`, `VM_Compile`, `VM_Create`, `VM_Debug`, `VM_DllSyscall`, `VM_ExplicitArgPtr`, `VM_Free`, `VM_Init`, `VM_LoadSymbols`, `VM_LogSyscalls`, `VM_ProfileSort`, `VM_Restart`, `VM_SymbolForCompiledPointer`, `VM_SymbolToValue`, `VM_VM2C`, `VM_ValueToFunctionSymbol`, `VM_ValueToSymbol`, `VM_VmInfo_f`, `VM_VmProfile_f`
-- `code/qcommon/vm_ppc.c` (not_started): `AsmCall`, `Constant1`, `Constant4`, `Emit4`, `Inst`, `Inst4`, `InstImm`, `InstImmU`, `VM_CallCompiled`, `VM_Compile`, `fltop`, `fltopandsecond`, `ltop`, `ltopandsecond`
-- `code/qcommon/vm_ppc_new.c` (not_started): `AsmCall`, `Constant1`, `Constant4`, `Emit4`, `Inst`, `Inst4`, `InstImm`, `InstImmU`, `VM_CallCompiled`, `VM_Compile`, `fltop`, `fltopandsecond`, `loadOpStack`, `ltop`, `ltopandsecond`, `makeFloat`, `makeInteger`, `spillOpStack`
-- `code/qcommon/vm_x86.c` (not_started): `AsmCall`, `Constant1`, `Constant4`, `Emit1`, `Emit2`, `Emit4`, `EmitAddEDI4`, `EmitCommand`, `EmitMovEAXEDI`, `EmitMovEBXEDI`, `EmitString`, `Hex`, `VM_CallCompiled`, `VM_Compile`, `callAsmCall`
+- `code/qcommon/vm_ppc.c` (ported): `AsmCall`, `Constant1`, `Constant4`, `Emit4`, `Inst`, `Inst4`, `InstImm`, `InstImmU`, `VM_CallCompiled`, `VM_Compile`, `fltop`, `fltopandsecond`, `ltop`, `ltopandsecond`
+- `code/qcommon/vm_ppc_new.c` (ported): `AsmCall`, `Constant1`, `Constant4`, `Emit4`, `Inst`, `Inst4`, `InstImm`, `InstImmU`, `VM_CallCompiled`, `VM_Compile`, `fltop`, `fltopandsecond`, `loadOpStack`, `ltop`, `ltopandsecond`, `makeFloat`, `makeInteger`, `spillOpStack`
+- `code/qcommon/vm_x86.c` (ported): `AsmCall`, `Constant1`, `Constant4`, `Emit1`, `Emit2`, `Emit4`, `EmitAddEDI4`, `EmitCommand`, `EmitMovEAXEDI`, `EmitMovEBXEDI`, `EmitString`, `Hex`, `VM_CallCompiled`, `VM_Compile`, `callAsmCall`
 - `code/renderer/tr_backend.c` (ported): `GL_Cull`, `GL_State`, `GL_TexEnv`, `RB_BeginDrawingView`, `RB_DrawBuffer`, `RB_DrawSurfs`, `RB_ExecuteRenderCommands`, `RB_Hyperspace`, `RB_RenderThread`, `RB_SetColor`, `RB_SetGL2D`, `RB_ShowImages`, `RB_SwapBuffers`, `RE_StretchRaw`, `SetViewportAndScissor`
 - `code/renderer/tr_bsp.c` (ported): `HSVtoRGB`, `ParseFace`, `ParseMesh`, `ParseTriSurf`, `RE_LoadWorldMap`, `RE_SetWorldVisData`, `R_FixSharedVertexLodError`, `R_FixSharedVertexLodError_r`, `R_GetEntityToken`, `R_LoadEntities`, `R_LoadFogs`, `R_LoadLightGrid`, `R_LoadLightmaps`, `R_LoadMarksurfaces`, `R_LoadNodesAndLeafs`, `R_LoadPlanes`, `R_LoadShaders`, `R_LoadSurfaces`, `R_LoadVisibility`, `R_MergedHeightPoints`, `R_MergedWidthPoints`, `R_MovePatchSurfacesToHunk`, `R_SetParent`, `R_StitchAllPatches`, `R_StitchPatches`, `ShaderForShaderNum`, `patch`
 - `code/renderer/tr_cmds.c` (ported): `RE_BeginFrame`, `RE_EndFrame`, `R_AddDrawSurfCmd`, `R_InitCommandBuffers`, `R_IssueRenderCommands`, `R_PerformanceCounters`, `R_ShutdownCommandBuffers`, `R_SyncRenderThread`

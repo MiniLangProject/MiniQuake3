@@ -55289,10 +55289,28 @@
         "ltop",
         "ltopandsecond"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete architecture-specific QVM JIT backend",
+          "target_files": [
+            "src/mq3/vm/jit_compat.ml",
+            "src/mq3/vm/runtime.ml"
+          ],
+          "status": "tested_equivalent",
+          "scope": "Every inventoried helper and VM_Compile/VM_CallCompiled entry is owned. MiniLang uses a memory-safe decoded plan instead of writable host machine code while preserving QVM execution, instruction pointers and compiled lifecycle semantics."
+        }
+      ],
+      "target": [
+        "src/mq3/vm/jit_compat.ml",
+        "src/mq3/vm/runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_vm_jit_compat.py",
+        "tests/vm_jit_compat_contracts.ml",
+        "scripts/test_vm_runtime.py",
+        "scripts/test_vm_complete.py"
+      ]
     },
     {
       "source": "code/qcommon/vm_ppc_new.c",
@@ -55318,10 +55336,28 @@
         "makeInteger",
         "spillOpStack"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete architecture-specific QVM JIT backend",
+          "target_files": [
+            "src/mq3/vm/jit_compat.ml",
+            "src/mq3/vm/runtime.ml"
+          ],
+          "status": "tested_equivalent",
+          "scope": "Every inventoried helper and VM_Compile/VM_CallCompiled entry is owned. MiniLang uses a memory-safe decoded plan instead of writable host machine code while preserving QVM execution, instruction pointers and compiled lifecycle semantics."
+        }
+      ],
+      "target": [
+        "src/mq3/vm/jit_compat.ml",
+        "src/mq3/vm/runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_vm_jit_compat.py",
+        "tests/vm_jit_compat_contracts.ml",
+        "scripts/test_vm_runtime.py",
+        "scripts/test_vm_complete.py"
+      ]
     },
     {
       "source": "code/qcommon/vm_x86.c",
@@ -55344,10 +55380,28 @@
         "VM_Compile",
         "callAsmCall"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete architecture-specific QVM JIT backend",
+          "target_files": [
+            "src/mq3/vm/jit_compat.ml",
+            "src/mq3/vm/runtime.ml"
+          ],
+          "status": "tested_equivalent",
+          "scope": "Every inventoried helper and VM_Compile/VM_CallCompiled entry is owned. MiniLang uses a memory-safe decoded plan instead of writable host machine code while preserving QVM execution, instruction pointers and compiled lifecycle semantics."
+        }
+      ],
+      "target": [
+        "src/mq3/vm/jit_compat.ml",
+        "src/mq3/vm/runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_vm_jit_compat.py",
+        "tests/vm_jit_compat_contracts.ml",
+        "scripts/test_vm_runtime.py",
+        "scripts/test_vm_complete.py"
+      ]
     },
     {
       "source": "code/quake3.sln",

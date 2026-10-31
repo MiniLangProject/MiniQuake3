@@ -3213,3 +3213,34 @@ native Dateiparität. CGame steht bei 25/25, Game bei 65/65 und
 in diesem inkrementellen Lauf aus, weil Laufwerk `D:` nicht eingebunden ist.
 Offen sind ausschließlich drei QCommon-JIT-, acht Spline- sowie
 Unix-, macOS- und Null-Plattformdateien.
+
+## 2026-10-31: Architektur-QVM-Compiler vollständig zugeordnet
+
+Die drei letzten QCommon-Lücken `vm_x86.c`, `vm_ppc.c` und `vm_ppc_new.c`
+sind über `jit_compat.ml` und den produktiven `vm/runtime.ml`-Lifecycle
+geschlossen. Alle **47 inventarisierten Symbole** sind abgebildet, darunter
+`VM_Compile`, `VM_CallCompiled`, x86-Byteemitter und -Peepholes sowie die alten
+und neuen PPC-Instruktions- und Operand-Stackhelfer.
+
+Der MiniLang-Pfad bewahrt die beobachtbare QVM-Semantik, vollständige
+Decode-/Branchvalidierung, Instruction-Pointer-Tabelle, Compiled-Aufruf,
+Syscallgrenze und Restart-Datenerhalt. Er emittiert bewusst keinen
+architekturspezifischen Code in beschreibbaren ausführbaren Speicher, sondern
+verwendet einen speichersicheren vorab dekodierten Plan. Diese portable
+Entsprechung ist im Ledger ausdrücklich dokumentiert und gilt für x86, beide
+PPC-Varianten und den Windows-x64-Host.
+
+Das neue Gate vergleicht die drei Symboloberflächen, baut eine synthetische
+QVM und führt 14 Verträge für Little-Endian-Emitter, PPC-Bitfelder,
+Konstantendekodierung, Instruction-Pointer, Compiled-Aufruf und Fehlerpfade
+aus. Das Gate sowie die 17 VM-Runtime- und 31 vollständigen VM-Verträge sind
+grün. Der sequentielle Windows-Hauptbuild besteht ebenfalls;
+`build/MiniQuake3.exe` hat SHA-256
+`a31aa0ea0ec797e34ae6245d357e5b6506302e70fc6212ea79a5266dd855d72d`.
+
+Das Inventar zählt nun **299 portierte, keine teilweise portierte und 36 noch
+nicht begonnene** Dateien von 335, also **89,3 %** native Dateiparität.
+QCommon steht bei 27/27; `scripts/verify.py` enthält 495 Gates. Laufwerk `D:`
+ist weiterhin nicht eingebunden, daher war kein neuer Retail-Assetlauf
+möglich. Die verbleibenden Quelllücken sind acht Spline-, 13 Unix-, acht
+macOS- und sieben Null-Plattformdateien.

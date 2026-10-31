@@ -28,9 +28,18 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **296 sind
-vollständig portiert, keine ist teilweise portiert und 39 sind noch nicht
-begonnen**. Der jüngste Integrationsblock schließt die beiden verbliebenen
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **299 sind
+vollständig portiert, keine ist teilweise portiert und 36 sind noch nicht
+begonnen**. Der jüngste Integrationsblock schließt die drei verbliebenen
+QCommon-JIT-Dateien `vm_x86.c`, `vm_ppc.c` und `vm_ppc_new.c`. MiniLang
+erzeugt aus der QVM einen vollständig validierten, vorab dekodierten Plan mit
+Instruction-Pointer-Tabelle und führt ihn speichersicher ohne beschreibbaren
+ausführbaren Speicher aus. Alle 47 inventarisierten Backend-Symbole, der
+Compiled-Lifecycle und die architekturspezifischen Emitter-/Stackhelfer sind
+abgebildet. Vierzehn neue Verträge sowie die bestehenden VM-Lifecycle- und
+Vollständigkeitsgates sind grün; QCommon steht damit bei 27/27 Dateien.
+
+Der vorherige Integrationsblock schloss die beiden verbliebenen
 QVM-Assembly-Importtabellen `cg_syscalls.asm` und `g_syscalls.asm`.
 Alle 102 CGame- und 194 QAGame-Symbole samt negativer q3asm-Ordinalen sind
 exakt erfasst und an die produktiven nativen Wrapper sowie VM-Dispatcher
@@ -76,7 +85,7 @@ texturierte Dreiecke, 17 Renderpässe, 26 Sounds und null nicht unterstützte
 Entities. Der frische `build/MiniQuake3.exe`-Stand hat SHA-256
 `d327538fdd7d8a194e486cd0b3458028eea8e158fba18bcca121cf77944cf941`.
 Die letzte vollständig am Stück ausgeführte Gesamtauswahl bleibt der
-dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 494 normale
+dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 495 normale
 Gates.
 
 Ein neuer Integrationsblock schließt `q_shared.h`, `win_main.c`, `win_net.c`,

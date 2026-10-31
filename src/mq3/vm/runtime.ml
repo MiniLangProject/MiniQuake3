@@ -3,6 +3,7 @@
 // Named VM_Create/VM_Restart/VM_Call/VM_Free lifecycle around the QVM interpreter.
 package mq3.vm.runtime
 import mq3.vm.interpreter as interpreter
+import mq3.vm.jit_compat as jit
 import mq3.compat.numeric as n
 import std.string as strings
 
@@ -13,12 +14,12 @@ const VMI_COMPILED=2
 const STACK_SIZE=0x20000
 
 struct Symbol value name profileCount end struct
-struct Slot name image machine syscall active generation symbols numSymbols compiled native codeLength tableLength end struct
+struct Slot name image machine syscall active generation symbols numSymbols compiled native codeLength tableLength compiledPlan end struct
 struct Services loadFn symbolFn developerFn diagnosticFn registerCvarFn addCommandFn logFn context end struct
 struct Runtime slots services current last debugLevel syscallCount syscallLog end struct
 
 function services() return Services(void,void,void,void,void,void,void,void) end function
-function emptySlot() return Slot("",void,void,void,false,0,[],0,false,false,0,0) end function
+function emptySlot() return Slot("",void,void,void,false,0,[],0,false,false,0,0,void) end function
 function create(host)
   if host==void or host.loadFn==void then return error(3410,"VM runtime: missing image loader") end if
   return Runtime([emptySlot(),emptySlot(),emptySlot()],host,void,void,0,0,[])
@@ -108,7 +109,7 @@ function loadImage(runtime,name)
 end function
 
 function compile(slot,image,syscall)
-  slot.machine=interpreter.load(image,syscall);slot.compiled=true;slot.native=false;return slot.machine
+  slot.compiledPlan=jit.VM_Compile(image,syscall,"portable");slot.machine=slot.compiledPlan.machine;slot.compiled=true;slot.native=false;return slot.machine
 end function
 function loadMapSymbols(runtime,slot)
   if runtime.services.symbolFn==void then return 0 end if
@@ -146,7 +147,7 @@ function call(runtime,slot,args)
   if slot.compiled then return callCompiled(slot,args) end if;return interpreter.call(slot.machine,args)
 end function
 
-function callCompiled(slot,args) return interpreter.call(slot.machine,args) end function
+function callCompiled(slot,args) return jit.VM_CallCompiled(slot.compiledPlan,args) end function
 
 function dllSyscall(runtime,args)
   if runtime==void or runtime.current==void or runtime.current.syscall==void then return error(3417,"VM runtime: DLL syscall without current VM") end if
@@ -171,7 +172,7 @@ function free(runtime,slot)
   if runtime==void or slot==void then return error(3415,"VM runtime: bad free parameters") end if
   if not slot.active then return void end if
   name=slot.name;slot.name="";slot.image=void;slot.machine=void;slot.syscall=void;slot.active=false
-  slot.symbols=[];slot.numSymbols=0;slot.compiled=false;slot.native=false;slot.codeLength=0;slot.tableLength=0
+  slot.symbols=[];slot.numSymbols=0;slot.compiled=false;slot.native=false;slot.codeLength=0;slot.tableLength=0;slot.compiledPlan=void
   runtime.current=void;runtime.last=void
   if runtime.services.diagnosticFn!=void then runtime.services.diagnosticFn(runtime.services,"free",name) end if
   return void
@@ -181,7 +182,7 @@ function freeAll(runtime)
   if runtime==void then return error(3415,"VM runtime: missing runtime") end if
   for each slot in runtime.slots
     if slot.active and runtime.services.diagnosticFn!=void then runtime.services.diagnosticFn(runtime.services,"free",slot.name) end if
-    slot.name="";slot.image=void;slot.machine=void;slot.syscall=void;slot.active=false;slot.symbols=[];slot.numSymbols=0;slot.compiled=false;slot.native=false;slot.codeLength=0;slot.tableLength=0
+    slot.name="";slot.image=void;slot.machine=void;slot.syscall=void;slot.active=false;slot.symbols=[];slot.numSymbols=0;slot.compiled=false;slot.native=false;slot.codeLength=0;slot.tableLength=0;slot.compiledPlan=void
   end for
   runtime.current=void;runtime.last=void;return void
 end function
