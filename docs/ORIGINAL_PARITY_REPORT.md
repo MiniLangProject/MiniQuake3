@@ -24,10 +24,10 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `renderer` | 27 | 27 | 0 | 0 | 0 |
 | `server` | 11 | 11 | 0 | 0 | 0 |
 | `splines` | 8 | 0 | 0 | 8 | 0 |
-| `ui` | 12 | 6 | 0 | 6 | 0 |
+| `ui` | 12 | 12 | 0 | 0 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 13 | 0 | 0 | 0 |
-| **Gesamt** | **335** | **288** | **0** | **47** | **0** |
+| **Gesamt** | **335** | **294** | **0** | **41** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -335,18 +335,18 @@ Teil dieser Tabelle.
 | `code/splines/splines.h` | `splines` | `not_started` | 0 | 0 | 0 |
 | `code/splines/util_list.h` | `splines` | `not_started` | 14 | 0 | 14 |
 | `code/splines/util_str.h` | `splines` | `not_started` | 4 | 0 | 4 |
-| `code/ui/keycodes.h` | `ui` | `not_started` | 0 | 0 | 0 |
+| `code/ui/keycodes.h` | `ui` | `ported` | 112 | 112 | 0 |
 | `code/ui/ui_atoms.c` | `ui` | `ported` | 26 | 26 | 0 |
 | `code/ui/ui_gameinfo.c` | `ui` | `ported` | 9 | 9 | 0 |
-| `code/ui/ui_local.h` | `ui` | `not_started` | 0 | 0 | 0 |
+| `code/ui/ui_local.h` | `ui` | `ported` | 477 | 477 | 0 |
 | `code/ui/ui_main.c` | `ui` | `ported` | 163 | 163 | 0 |
 | `code/ui/ui_players.c` | `ui` | `ported` | 25 | 25 | 0 |
-| `code/ui/ui_public.h` | `ui` | `not_started` | 0 | 0 | 0 |
+| `code/ui/ui_public.h` | `ui` | `ported` | 127 | 127 | 0 |
 | `code/ui/ui_shared.c` | `ui` | `ported` | 256 | 256 | 0 |
-| `code/ui/ui_shared.h` | `ui` | `not_started` | 0 | 0 | 0 |
-| `code/ui/ui_syscalls.asm` | `ui` | `not_started` | 0 | 0 | 0 |
+| `code/ui/ui_shared.h` | `ui` | `ported` | 141 | 141 | 0 |
+| `code/ui/ui_syscalls.asm` | `ui` | `ported` | 97 | 97 | 0 |
 | `code/ui/ui_syscalls.c` | `ui` | `ported` | 89 | 89 | 0 |
-| `code/ui/ui_util.c` | `ui` | `not_started` | 0 | 0 | 0 |
+| `code/ui/ui_util.c` | `ui` | `ported` | 0 | 0 | 0 |
 | `code/unix/linux_common.c` | `unix` | `not_started` | 4 | 0 | 4 |
 | `code/unix/linux_glimp.c` | `unix` | `not_started` | 35 | 0 | 35 |
 | `code/unix/linux_joystick.c` | `unix` | `not_started` | 2 | 0 | 2 |
@@ -450,12 +450,6 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/splines/splines.h` (not_started): *(Symbolinventar ergänzen)*
 - `code/splines/util_list.h` (not_started): `AddUnique`, `Append`, `Clear`, `Condense`, `Find`, `Num`, `Remove`, `RemoveIndex`, `Resize`, `SetGranularity`, `SetNum`, `Size`, `Sort`, `idList`
 - `code/splines/util_str.h` (not_started): `append`, `idStr`, `tolower`, `toupper`
-- `code/ui/keycodes.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/ui/ui_local.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/ui/ui_public.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/ui/ui_shared.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/ui/ui_syscalls.asm` (not_started): *(Symbolinventar ergänzen)*
-- `code/ui/ui_util.c` (not_started): *(Symbolinventar ergänzen)*
 - `code/unix/linux_common.c` (not_started): `Com_Memcpy`, `Com_Memset`, `Com_Prefetch`, `_copyDWord`
 - `code/unix/linux_glimp.c` (not_started): `CreateNullCursor`, `GLW_InitExtensions`, `GLW_InitGamma`, `GLW_LoadOpenGL`, `GLW_SetMode`, `GLW_StartDriverAndSetMode`, `GLimp_EndFrame`, `GLimp_FrontEndSleep`, `GLimp_Init`, `GLimp_LogComment`, `GLimp_RenderThreadWrapper`, `GLimp_RendererSleep`, `GLimp_SetGamma`, `GLimp_Shutdown`, `GLimp_SpawnRenderThread`, `GLimp_WakeRenderer`, `HandleEvents`, `IN_Activate`, `IN_ActivateMouse`, `IN_DeactivateMouse`, `IN_Frame`, `IN_Init`, `IN_JoyMove`, `IN_Shutdown`, `IN_StartupJoystick`, `KBD_Close`, `KBD_Init`, `Q_stristr`, `Sys_SendKeyEvents`, `X11_PendingInput`, `XLateKey`, `install_grabs`, `qXErrorHandler`, `repeated_press`, `uninstall_grabs`
 - `code/unix/linux_joystick.c` (not_started): `IN_JoyMove`, `IN_StartupJoystick`

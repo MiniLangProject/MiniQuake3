@@ -3158,3 +3158,29 @@ Das generierte Inventar zählt **288 portierte, keine teilweise portierte und
 Dateiparität. Win32 ist mit 13/13 vollständig. Offen bleiben drei
 QCommon-JIT-Dateien, je ein CGame- und Game-Syscall-/Buildpfad, sechs
 Legacy-UI-Dateien sowie Unix-, macOS-, Null- und Spline-Plattformpfade.
+
+## 2026-10-31: Legacy-Missionpack-UI-ABI vollständig geschlossen
+
+Die sechs noch offenen Dateien unter `code/ui` sind nativ zugeordnet:
+`keycodes.h`, `ui_local.h`, `ui_public.h`, `ui_shared.h`, `ui_syscalls.asm`
+und die absichtlich codefreie `ui_util.c`. Die neue kanonische Fassade
+`ui_legacy_abi.ml` enthält vollständige, direkt aus den Originalen abgeglichene
+Inventare für 112 Tastencodes, 97 UI-Imports, Menü-/Export-/Sortordinalen,
+Header-Defines, Typen, Deklarationen und Globals. Alle 97 Assembly-Einstiege
+bewahren ihre exakten QVM-Ordinalen von -1 bis -88 beziehungsweise -101 bis
+-109. Der bislang fehlende öffentliche Kompatibilitätseintrag
+`UI_CM_LOADMODEL=30` ist in der nativen Syscall-Fassade ergänzt.
+
+Das neue Gate vergleicht alle Inventare bei jedem Lauf erneut mit den sechs
+unveränderten Originaldateien. Zwölf ausführbare Verträge prüfen API-Version,
+3.084-Byte-ClientState-ABI, Menü-/Export-/Sortwerte, Import- und
+Assemblyordinalen sowie die vollständigen Headeroberflächen. Das Gate und der
+MiniLang-Build sind grün. Ein erneuter Retail-Assetlauf ist weiterhin nicht
+möglich, weil Laufwerk `D:` nicht eingebunden ist.
+
+Das generierte Inventar zählt damit **294 portierte, keine teilweise portierte
+und 41 noch nicht begonnene** Dateien von insgesamt 335, also 87,8 % native
+Dateiparität. Der Legacy-UI-Bereich steht bei 12/12; `scripts/verify.py`
+enthält nun 493 Gates. Die verbleibenden Lücken sind drei QCommon-JIT-Dateien,
+je ein CGame- und Game-Syscall-/Buildpfad sowie Unix-, macOS-, Null- und
+Spline-Plattformcode.

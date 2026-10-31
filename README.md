@@ -28,9 +28,19 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **288 sind
-vollständig portiert, keine ist teilweise portiert und 47 sind noch nicht
-begonnen**. Der jüngste Integrationsblock schließt die letzten vier offenen
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **294 sind
+vollständig portiert, keine ist teilweise portiert und 41 sind noch nicht
+begonnen**. Der jüngste Integrationsblock schließt die sechs verbliebenen
+Legacy-Missionpack-UI-Dateien `keycodes.h`, `ui_local.h`, `ui_public.h`,
+`ui_shared.h`, `ui_syscalls.asm` und die absichtlich leere `ui_util.c`.
+Die kanonische MiniLang-ABI erfasst 112 Tastencodes, 97 UI-Imports, 97
+QVM-Assembly-Einstiege mit exakten negativen Ordinalen sowie sämtliche
+Defines, Typen, Deklarationen und Globals der beiden großen UI-Header. Der
+fehlende öffentliche Import `UI_CM_LOADMODEL=30` wurde ergänzt. Das neue Gate
+und zwölf ausführbare ABI-Verträge sind grün; der Legacy-UI-Bereich steht
+damit bei 12/12 Dateien.
+
+Der vorherige Integrationsblock schloss die letzten vier offenen
 Win32-Dateien `glw_win.h`, `win_local.h`, `resource.h` und `win_qgl.c`.
 Originales 32-Bit-Datenlayout, Ressourcen- und Versionswerte, alle 336
 GL-Logging-Wrapper, sechs Formathelfer sowie QGL-Laden, Logging und Shutdown
@@ -58,7 +68,7 @@ texturierte Dreiecke, 17 Renderpässe, 26 Sounds und null nicht unterstützte
 Entities. Der frische `build/MiniQuake3.exe`-Stand hat SHA-256
 `d327538fdd7d8a194e486cd0b3458028eea8e158fba18bcca121cf77944cf941`.
 Die letzte vollständig am Stück ausgeführte Gesamtauswahl bleibt der
-dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 492 normale
+dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 493 normale
 Gates.
 
 Ein neuer Integrationsblock schließt `q_shared.h`, `win_main.c`, `win_net.c`,
