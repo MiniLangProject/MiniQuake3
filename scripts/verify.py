@@ -164,6 +164,7 @@ def main():
     scripts.append(("test_ui_legacy_abi_complete.py",[]))
     scripts.append(("test_qvm_assembly_abi_complete.py",[]))
     scripts.append(("test_vm_jit_compat.py",[]))
+    scripts.append(("test_splines_headers_complete.py",[]))
     scripts.append(("test_ui_atoms_missionpack.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_ui_main_missionpack.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_ui_shared.py",["--data-root",str(args.data_root)] if args.data_root else []))

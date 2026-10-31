@@ -28,9 +28,16 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **299 sind
-vollständig portiert, keine ist teilweise portiert und 36 sind noch nicht
-begonnen**. Der jüngste Integrationsblock schließt die drei verbliebenen
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **307 sind
+vollständig portiert, keine ist teilweise portiert und 28 sind noch nicht
+begonnen**. Der jüngste Integrationsblock schließt die acht öffentlichen
+Spline-Header. Die native MiniLang-Fassade implementiert Vektoren, Winkel,
+Quaternionen, 3x3-Matrizen, Bounds, generische Listen und Stringhelfer mit
+allen 50 inventarisierten Symbolen. Zwanzig ausführbare Verträge prüfen
+Geometrie, Normalisierung, Achsenkonvertierung, Bounds, Containerwachstum,
+Sortierung und Strings; der Runtime-Bereich `splines` steht bei 8/8 Dateien.
+
+Der vorherige Integrationsblock schloss die drei verbliebenen
 QCommon-JIT-Dateien `vm_x86.c`, `vm_ppc.c` und `vm_ppc_new.c`. MiniLang
 erzeugt aus der QVM einen vollständig validierten, vorab dekodierten Plan mit
 Instruction-Pointer-Tabelle und führt ihn speichersicher ohne beschreibbaren
@@ -85,7 +92,7 @@ texturierte Dreiecke, 17 Renderpässe, 26 Sounds und null nicht unterstützte
 Entities. Der frische `build/MiniQuake3.exe`-Stand hat SHA-256
 `d327538fdd7d8a194e486cd0b3458028eea8e158fba18bcca121cf77944cf941`.
 Die letzte vollständig am Stück ausgeführte Gesamtauswahl bleibt der
-dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 495 normale
+dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 496 normale
 Gates.
 
 Ein neuer Integrationsblock schließt `q_shared.h`, `win_main.c`, `win_net.c`,

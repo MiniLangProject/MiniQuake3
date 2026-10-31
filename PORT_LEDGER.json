@@ -59243,10 +59243,24 @@
         "set",
         "vec3_p"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete public math_angles.h surface",
+          "target_files": [
+            "src/mq3/splines/headers.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 4 inventoried public symbols with native vector, angle, quaternion, matrix, bounds, list or string behavior as applicable."
+        }
+      ],
+      "target": [
+        "src/mq3/splines/headers.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_splines_headers_complete.py",
+        "tests/splines_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/splines/math_matrix.cpp",
@@ -59273,10 +59287,24 @@
         "SkewSymmetric",
         "mat3_t"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete public math_matrix.h surface",
+          "target_files": [
+            "src/mq3/splines/headers.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 5 inventoried public symbols with native vector, angle, quaternion, matrix, bounds, list or string behavior as applicable."
+        }
+      ],
+      "target": [
+        "src/mq3/splines/headers.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_splines_headers_complete.py",
+        "tests/splines_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/splines/math_quaternion.cpp",
@@ -59301,10 +59329,24 @@
         "set",
         "vec4"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete public math_quaternion.h surface",
+          "target_files": [
+            "src/mq3/splines/headers.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 5 inventoried public symbols with native vector, angle, quaternion, matrix, bounds, list or string behavior as applicable."
+        }
+      ],
+      "target": [
+        "src/mq3/splines/headers.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_splines_headers_complete.py",
+        "tests/splines_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/splines/math_vector.cpp",
@@ -59346,10 +59388,24 @@
         "set",
         "vec4_t"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete public math_vector.h surface",
+          "target_files": [
+            "src/mq3/splines/headers.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 18 inventoried public symbols with native vector, angle, quaternion, matrix, bounds, list or string behavior as applicable."
+        }
+      ],
+      "target": [
+        "src/mq3/splines/headers.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_splines_headers_complete.py",
+        "tests/splines_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/splines/q_parse.cpp",
@@ -59444,10 +59500,24 @@
       "sha256": "541902ace49e19f17f4dcaeef7713d9077203eda6481abffc8638b176d8498f2",
       "category": "missionpack",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete public q_shared.h surface",
+          "target_files": [
+            "src/mq3/splines/headers.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 0 inventoried public symbols with native vector, angle, quaternion, matrix, bounds, list or string behavior as applicable."
+        }
+      ],
+      "target": [
+        "src/mq3/splines/headers.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_splines_headers_complete.py",
+        "tests/splines_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/splines/q_shared.hpp",
@@ -59504,10 +59574,24 @@
       "sha256": "02a34b115b037c4b98981536ddac1e594ed153ddda988ab135f057502426819e",
       "category": "missionpack",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete public splines.h surface",
+          "target_files": [
+            "src/mq3/splines/headers.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 0 inventoried public symbols with native vector, angle, quaternion, matrix, bounds, list or string behavior as applicable."
+        }
+      ],
+      "target": [
+        "src/mq3/splines/headers.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_splines_headers_complete.py",
+        "tests/splines_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/splines/util_list.h",
@@ -59529,10 +59613,24 @@
         "Sort",
         "idList"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete public util_list.h surface",
+          "target_files": [
+            "src/mq3/splines/headers.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 14 inventoried public symbols with native vector, angle, quaternion, matrix, bounds, list or string behavior as applicable."
+        }
+      ],
+      "target": [
+        "src/mq3/splines/headers.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_splines_headers_complete.py",
+        "tests/splines_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/splines/util_str.cpp",
@@ -59568,10 +59666,24 @@
         "tolower",
         "toupper"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete public util_str.h surface",
+          "target_files": [
+            "src/mq3/splines/headers.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 4 inventoried public symbols with native vector, angle, quaternion, matrix, bounds, list or string behavior as applicable."
+        }
+      ],
+      "target": [
+        "src/mq3/splines/headers.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_splines_headers_complete.py",
+        "tests/splines_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/ui/Conscript",

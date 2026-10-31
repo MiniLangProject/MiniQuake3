@@ -23,11 +23,11 @@ obwohl die jeweilige C-Datei noch nicht als nativer MiniLang-Quellport gilt.
 | `qcommon` | 27 | 27 | 0 | 0 | 0 |
 | `renderer` | 27 | 27 | 0 | 0 | 0 |
 | `server` | 11 | 11 | 0 | 0 | 0 |
-| `splines` | 8 | 0 | 0 | 8 | 0 |
+| `splines` | 8 | 8 | 0 | 0 | 0 |
 | `ui` | 12 | 12 | 0 | 0 | 0 |
 | `unix` | 13 | 0 | 0 | 13 | 0 |
 | `win32` | 13 | 13 | 0 | 0 | 0 |
-| **Gesamt** | **335** | **299** | **0** | **36** | **0** |
+| **Gesamt** | **335** | **307** | **0** | **28** | **0** |
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -327,14 +327,14 @@ Teil dieser Tabelle.
 | `code/server/sv_rankings.c` | `server` | `ported` | 28 | 28 | 0 |
 | `code/server/sv_snapshot.c` | `server` | `ported` | 11 | 11 | 0 |
 | `code/server/sv_world.c` | `server` | `ported` | 12 | 12 | 0 |
-| `code/splines/math_angles.h` | `splines` | `not_started` | 4 | 0 | 4 |
-| `code/splines/math_matrix.h` | `splines` | `not_started` | 5 | 0 | 5 |
-| `code/splines/math_quaternion.h` | `splines` | `not_started` | 5 | 0 | 5 |
-| `code/splines/math_vector.h` | `splines` | `not_started` | 18 | 0 | 18 |
-| `code/splines/q_shared.h` | `splines` | `not_started` | 0 | 0 | 0 |
-| `code/splines/splines.h` | `splines` | `not_started` | 0 | 0 | 0 |
-| `code/splines/util_list.h` | `splines` | `not_started` | 14 | 0 | 14 |
-| `code/splines/util_str.h` | `splines` | `not_started` | 4 | 0 | 4 |
+| `code/splines/math_angles.h` | `splines` | `ported` | 4 | 0 | 4 |
+| `code/splines/math_matrix.h` | `splines` | `ported` | 5 | 0 | 5 |
+| `code/splines/math_quaternion.h` | `splines` | `ported` | 5 | 0 | 5 |
+| `code/splines/math_vector.h` | `splines` | `ported` | 18 | 0 | 18 |
+| `code/splines/q_shared.h` | `splines` | `ported` | 0 | 0 | 0 |
+| `code/splines/splines.h` | `splines` | `ported` | 0 | 0 | 0 |
+| `code/splines/util_list.h` | `splines` | `ported` | 14 | 0 | 14 |
+| `code/splines/util_str.h` | `splines` | `ported` | 4 | 0 | 4 |
 | `code/ui/keycodes.h` | `ui` | `ported` | 112 | 112 | 0 |
 | `code/ui/ui_atoms.c` | `ui` | `ported` | 26 | 26 | 0 |
 | `code/ui/ui_gameinfo.c` | `ui` | `ported` | 9 | 9 | 0 |
@@ -442,14 +442,12 @@ werden; sie sind kein Nachweis vollständiger Parität.
 - `code/server/server.h` (ported): `svEntity_t`, `server_t`, `clientSnapshot_t`, `netchan_buffer_t`, `client_t`, `challenge_t`, `serverStatic_t`, `serverState_t`, `clientState_t`, `25 sv_* cvar declarations`, `60 server/bot prototypes`
 - `code/server/sv_bot.c` (ported): `BotClientCommand`, `BotDrawDebugPolygons`, `BotImport_BSPEntityData`, `BotImport_BSPModelMinsMaxsOrigin`, `BotImport_DebugLineCreate`, `BotImport_DebugLineDelete`, `BotImport_DebugLineShow`, `BotImport_DebugPolygonCreate`, `BotImport_DebugPolygonDelete`, `BotImport_DebugPolygonShow`, `BotImport_EntityTrace`, `BotImport_FreeMemory`, `BotImport_GetMemory`, `BotImport_HunkAlloc`, `BotImport_PointContents`, `BotImport_Print`, `BotImport_Trace`, `BotImport_inPVS`, `EntityInPVS`, `SV_BotAllocateClient`, `SV_BotFrame`, `SV_BotFreeClient`, `SV_BotGetConsoleMessage`, `SV_BotGetSnapshotEntity`, `SV_BotInitBotLib`, `SV_BotInitCvars`, `SV_BotLibSetup`, `SV_BotLibShutdown`
 - `code/server/sv_init.c` (ported): `SV_BoundMaxClients`, `SV_ChangeMaxClients`, `SV_ClearServer`, `SV_CreateBaseline`, `SV_FinalMessage`, `SV_GetConfigstring`, `SV_GetUserinfo`, `SV_SetConfigstring`, `SV_SetUserinfo`, `SV_Shutdown`, `SV_SpawnServer`, `SV_Startup`, `SV_TouchCGame`
-- `code/splines/math_angles.h` (not_started): `Zero`, `angles_t`, `set`, `vec3_p`
-- `code/splines/math_matrix.h` (not_started): `Identity`, `InverseMultiply`, `OrthoNormalize`, `SkewSymmetric`, `mat3_t`
-- `code/splines/math_quaternion.h` (not_started): `Length`, `Normalize`, `quat_t`, `set`, `vec4`
-- `code/splines/math_vector.h` (not_started): `AddBounds`, `AddPoint`, `Bounds`, `Center`, `Clear`, `ContainsPoint`, `Cross`, `IntersectsBounds`, `IsCleared`, `Normalize`, `Radius`, `Snap`, `SnapTowards`, `Zero`, `idSqrt`, `idVec3_t`, `set`, `vec4_t`
-- `code/splines/q_shared.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/splines/splines.h` (not_started): *(Symbolinventar ergänzen)*
-- `code/splines/util_list.h` (not_started): `AddUnique`, `Append`, `Clear`, `Condense`, `Find`, `Num`, `Remove`, `RemoveIndex`, `Resize`, `SetGranularity`, `SetNum`, `Size`, `Sort`, `idList`
-- `code/splines/util_str.h` (not_started): `append`, `idStr`, `tolower`, `toupper`
+- `code/splines/math_angles.h` (ported): `Zero`, `angles_t`, `set`, `vec3_p`
+- `code/splines/math_matrix.h` (ported): `Identity`, `InverseMultiply`, `OrthoNormalize`, `SkewSymmetric`, `mat3_t`
+- `code/splines/math_quaternion.h` (ported): `Length`, `Normalize`, `quat_t`, `set`, `vec4`
+- `code/splines/math_vector.h` (ported): `AddBounds`, `AddPoint`, `Bounds`, `Center`, `Clear`, `ContainsPoint`, `Cross`, `IntersectsBounds`, `IsCleared`, `Normalize`, `Radius`, `Snap`, `SnapTowards`, `Zero`, `idSqrt`, `idVec3_t`, `set`, `vec4_t`
+- `code/splines/util_list.h` (ported): `AddUnique`, `Append`, `Clear`, `Condense`, `Find`, `Num`, `Remove`, `RemoveIndex`, `Resize`, `SetGranularity`, `SetNum`, `Size`, `Sort`, `idList`
+- `code/splines/util_str.h` (ported): `append`, `idStr`, `tolower`, `toupper`
 - `code/unix/linux_common.c` (not_started): `Com_Memcpy`, `Com_Memset`, `Com_Prefetch`, `_copyDWord`
 - `code/unix/linux_glimp.c` (not_started): `CreateNullCursor`, `GLW_InitExtensions`, `GLW_InitGamma`, `GLW_LoadOpenGL`, `GLW_SetMode`, `GLW_StartDriverAndSetMode`, `GLimp_EndFrame`, `GLimp_FrontEndSleep`, `GLimp_Init`, `GLimp_LogComment`, `GLimp_RenderThreadWrapper`, `GLimp_RendererSleep`, `GLimp_SetGamma`, `GLimp_Shutdown`, `GLimp_SpawnRenderThread`, `GLimp_WakeRenderer`, `HandleEvents`, `IN_Activate`, `IN_ActivateMouse`, `IN_DeactivateMouse`, `IN_Frame`, `IN_Init`, `IN_JoyMove`, `IN_Shutdown`, `IN_StartupJoystick`, `KBD_Close`, `KBD_Init`, `Q_stristr`, `Sys_SendKeyEvents`, `X11_PendingInput`, `XLateKey`, `install_grabs`, `qXErrorHandler`, `repeated_press`, `uninstall_grabs`
 - `code/unix/linux_joystick.c` (not_started): `IN_JoyMove`, `IN_StartupJoystick`

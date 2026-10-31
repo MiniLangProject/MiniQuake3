@@ -3244,3 +3244,31 @@ QCommon steht bei 27/27; `scripts/verify.py` enthält 495 Gates. Laufwerk `D:`
 ist weiterhin nicht eingebunden, daher war kein neuer Retail-Assetlauf
 möglich. Die verbleibenden Quelllücken sind acht Spline-, 13 Unix-, acht
 macOS- und sieben Null-Plattformdateien.
+
+## 2026-10-31: Öffentliche Spline-Laufzeitoberfläche geschlossen
+
+Die acht im Runtime-Inventar geführten Spline-Header `math_angles.h`,
+`math_matrix.h`, `math_quaternion.h`, `math_vector.h`, `q_shared.h`,
+`splines.h`, `util_list.h` und `util_str.h` sind nativ zugeordnet. Die neue
+Fassade `mq3.splines.headers` bildet alle **50 inventarisierten Symbole** ab
+und implementiert die produktiven Daten- und Rechenpfade für Vektoren,
+Winkel, Quaternionen, 3x3-Matrizen, Bounds, Listen und Strings.
+
+Zwanzig ausführbare Verträge prüfen Länge und Normalisierung, Skalar- und
+Kreuzprodukt, Interpolation, Winkel-/Achsenkonvertierung, Quaternionen,
+Identitäts-, Schief- und orthonormalisierte Matrizen, Bounds-Wachstum und
+-Schnitt, Granularitätswachstum, eindeutiges Einfügen, Sortieren, Entfernen
+und ASCII-Stringoperationen. Das neue Vollständigkeitsgate vergleicht die
+acht Symbolinventare bei jedem Lauf mit dem Ledger; Gate und Windows-
+Hauptbuild sind grün. Das eigenständige historische C++-Spline-Editorwerkzeug
+ist kein Bestandteil des spielbaren Windows-Runtimepfads und wird nicht als
+Gameplay-Abdeckung ausgegeben.
+Der Hauptbuild bleibt binär unverändert bei SHA-256
+`a31aa0ea0ec797e34ae6245d357e5b6506302e70fc6212ea79a5266dd855d72d`.
+
+Das generierte Runtime-/Plattforminventar zählt **307 portierte, keine
+teilweise portierte und 28 noch nicht begonnene** Dateien von 335, also
+**91,6 %**. `splines` steht bei 8/8 und `scripts/verify.py` bei 496 Gates.
+Im gezählten Inventar bleiben ausschließlich acht macOS-, sieben Null- und
+13 Unix-Plattformdateien offen. Laufwerk `D:` ist weiterhin nicht
+eingebunden; eine neue Retail-Assetabnahme war daher nicht möglich.
