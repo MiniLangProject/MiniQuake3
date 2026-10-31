@@ -10,6 +10,7 @@ import mq3.shared.parser as tokenParser
 import mq3.platform.playable_jpeg as jpeg
 import mq3.compat.transcendental as trans
 import std.string as strings
+import std.string_builder as stringBuilder
 
 const SHADER_STRIDE=72
 const SHADER_NAME_BYTES=64
@@ -66,13 +67,16 @@ end function
 
 function buildScriptIndex(archive)
   if archive==void or archive.entries==void then return fail("invalid PK3 archive") end if
-  text="";count=0
+  // Retail shader sources total hundreds of KiB.  Repeated immutable string
+  // concatenation copied the complete prefix for every script.
+  textBuilder=stringBuilder.StringBuilder.withCapacity(65536);count=0
   for each entry in archive.entries
     if endsIgnoreCase(entry.name,".shader") then
       source=try(pk3.readEntry(archive,entry))
-      if not (source is error) then text=text+decode(source)+"\n";count=count+1 end if
+      if not (source is error) then textBuilder.appendString(decode(source));textBuilder.appendString("\n");count=count+1 end if
     end if
   end for
+  text=textBuilder.toString()
   index=shaderIndex.build(text);if index is error then return index end if
   return [index,count]
 end function

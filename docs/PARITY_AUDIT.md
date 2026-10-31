@@ -3456,10 +3456,21 @@ und ansprechbar in weniger als 12 Sekunden.
 
 Der ursprünglich gemessene direkte Matchstart benötigte etwa 387 Sekunden.
 Nach dem Ersatz eines quadratischen Weltflächen-Caches fiel ein Zwischenlauf
-auf etwa 86 Sekunden; die aktuelle vollständige Ein-Frame-Abnahme benötigt je
-nach Lauf ungefähr 132 Sekunden. 2D- und Szenenmaterialien teilen jetzt einen
-Shaderindex, PK3-Namen werden über einen case-insensitiven Bucket-Index gefunden
-und der Warmup wurde von acht auf zwei Frames reduziert. 84
+auf etwa 86 Sekunden; eine spätere vollständige Ein-Frame-Abnahme benötigte
+132,4 Sekunden. Die systematische MiniLang-Hotpath-Bereinigung vom selben Tag
+senkte denselben q3dm1-Retail-QVM-Smoke auf 19,7 bis 20,8 Sekunden (mehr als
+6-mal schneller):
+Boot 16.249 ms, UI 396 ms, Shaderindex 59 ms, Szene 311 ms, Sounds 712 ms,
+Welt 1.033 ms und Upload 104 ms. Shadertexte werden mit
+`std.string_builder`, wachsende Sammlungen mit `std.ds.list`, Eingaben mit
+`std.ds.queue` und Kandidaten einmalig mit `std.sort` verarbeitet. MD3-,
+Snapshot-, Audio-, Welt- und Szenenpfade verwenden bei bekannter Größe direkt
+vorallokierte Arrays. `test_minilang_hotpaths.py` schützt elf dieser
+produktionskritischen Strukturen gegen die Rückkehr quadratischer
+Array-Konkatenation. 2D- und Szenenmaterialien teilen einen Shaderindex,
+PK3-Namen werden über einen case-insensitiven Bucket-Index gefunden und der
+Warmup wurde von acht auf zwei Frames reduziert. 84
 Retail-PK3-/DEFLATE-Vergleiche sichern den neuen Archivpfad ab. Der
-interpretierte QVM-/Mapstart bleibt trotzdem wesentlich langsamer als die
-native Original-Engine und ist deshalb weiterhin eine offene Performance-Lücke.
+interpretierte QVM-/Mapstart liegt weiterhin über der nativen Original-Engine
+und bleibt deshalb eine offene Performance-Lücke, ist aber nicht mehr der
+minutenlange Blocker des vorherigen Stands.

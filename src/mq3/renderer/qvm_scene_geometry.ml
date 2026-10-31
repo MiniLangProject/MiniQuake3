@@ -17,6 +17,7 @@ import mq3.renderer.bsp_render_data as bspRender
 import mq3.format.md3 as md3
 import mq3.compat.numeric as numeric
 import std.array as arrays
+import std.ds.list as lists
 
 const RT_MODEL=0
 const RT_SPRITE=2
@@ -74,23 +75,23 @@ end function
 // 32-edge-per-start-vertex overflow rule is retained for malformed meshes.
 function shadowVolumeSides(positions,indexes,numTriangles,lightDirection)
   if positions==void or indexes==void or lightDirection==void or len(lightDirection)!=3 or numTriangles<0 or numTriangles*3>len(indexes) then return fail("invalid stencil shadow mesh") end if
-  edges=array(len(positions),void);for vertexIndex=0 to len(positions)-1 edges[vertexIndex]=[] end for;facing=array(numTriangles,false)
-  for triangleIndex=0 to numTriangles-1
+  edges=array(len(positions),void);if len(positions)>0 then for vertexIndex=0 to len(positions)-1 edges[vertexIndex]=lists.List.withCapacity(8) end for end if;facing=array(numTriangles,false)
+  if numTriangles>0 then for triangleIndex=0 to numTriangles-1
     base=triangleIndex*3;i1=indexes[base];i2=indexes[base+1];i3=indexes[base+2]
     if i1<0 or i2<0 or i3<0 or i1>=len(positions) or i2>=len(positions) or i3>=len(positions) then return fail("stencil shadow index outside vertices") end if
     v1=positions[i1];v2=positions[i2];v3=positions[i3];d1=[v2[0]-v1[0],v2[1]-v1[1],v2[2]-v1[2]];d2=[v3[0]-v1[0],v3[1]-v1[1],v3[2]-v1[2]];normalValue=[d1[1]*d2[2]-d1[2]*d2[1],d1[2]*d2[0]-d1[0]*d2[2],d1[0]*d2[1]-d1[1]*d2[0]];front=normalValue[0]*lightDirection[0]+normalValue[1]*lightDirection[1]+normalValue[2]*lightDirection[2]>0.0;facing[triangleIndex]=front
-    for each pair in [[i1,i2],[i2,i3],[i3,i1]] if len(edges[pair[0]])<MAX_SHADOW_EDGE_DEFS then edges[pair[0]]=edges[pair[0]]+[ShadowEdge(pair[1],front)] end if end for
-  end for
-  extruded=array(len(positions),void);for vertexIndex=0 to len(positions)-1 point=positions[vertexIndex];extruded[vertexIndex]=[point[0]-512.0*lightDirection[0],point[1]-512.0*lightDirection[1],point[2]-512.0*lightDirection[2]] end for
-  result=[]
-  for i1=0 to len(positions)-1
-    for each edge in edges[i1]
+    for each pair in [[i1,i2],[i2,i3],[i3,i1]] if edges[pair[0]].len()<MAX_SHADOW_EDGE_DEFS then edges[pair[0]].add(ShadowEdge(pair[1],front)) end if end for
+  end for end if
+  extruded=array(len(positions),void);if len(positions)>0 then for vertexIndex=0 to len(positions)-1 point=positions[vertexIndex];extruded[vertexIndex]=[point[0]-512.0*lightDirection[0],point[1]-512.0*lightDirection[1],point[2]-512.0*lightDirection[2]] end for end if
+  result=lists.List.withCapacity(numTriangles)
+  if len(positions)>0 then for i1=0 to len(positions)-1
+    for each edge in edges[i1].toArray()
       if not edge.facing then continue end if
-      reverseFront=0;for each reverse in edges[edge.i2] if reverse.i2==i1 and reverse.facing then reverseFront=reverseFront+1 end if end for
-      if reverseFront==0 then result=result+[[positions[i1],extruded[i1],positions[edge.i2],extruded[edge.i2]]] end if
+      reverseFront=0;for each reverse in edges[edge.i2].toArray() if reverse.i2==i1 and reverse.facing then reverseFront=reverseFront+1 end if end for
+      if reverseFront==0 then result.add([positions[i1],extruded[i1],positions[edge.i2],extruded[edge.i2]]) end if
     end for
-  end for
-  return result
+  end for end if
+  return result.toArray()
 end function
 function appendShadowTriangle(output,positions,entityIndex,surfaceIndex)
   if output.shadowTriangleCount>=len(output.shadowTriangles) then return fail("stencil shadow triangle capacity exceeded") end if
@@ -111,7 +112,7 @@ function loadInlineModel(map,index,maxTriangles)
   if map==void or typeof(map.data)!="bytes" or index<0 or index>=map.counts[7] or maxTriangles<0 then return fail("invalid inline BSP model") end if
   offset=map.offsets[7]+index*40;first=numeric.readI32(map.data,offset+24);count=numeric.readI32(map.data,offset+28)
   if first<0 or count<0 or first+count>map.counts[13] then return fail("inline BSP surface range outside map") end if
-  faces=[];for face=first to first+count-1 faces=faces+[face] end for
+  faces=array(count,0);if count>0 then for face=first to first+count-1 faces[face-first]=face end for end if
   data=bspRender.extract(map,faces,maxTriangles);if data is error then return data end if
   names=array(map.counts[1],"");dynamicLightFlags=array(map.counts[1],false);for textureIndex=0 to map.counts[1]-1 name=inlineShaderName(map,textureIndex);if name is error then return name end if;names[textureIndex]=name;surfaceFlags=numeric.readI32(map.data,map.offsets[1]+textureIndex*72+64);dynamicLightFlags[textureIndex]=(surfaceFlags&0x20004)==0 end for
   bounds=[[numeric.bitsFloat(numeric.readU32(map.data,offset)),numeric.bitsFloat(numeric.readU32(map.data,offset+4)),numeric.bitsFloat(numeric.readU32(map.data,offset+8))],[numeric.bitsFloat(numeric.readU32(map.data,offset+12)),numeric.bitsFloat(numeric.readU32(map.data,offset+16)),numeric.bitsFloat(numeric.readU32(map.data,offset+20))]]
@@ -299,15 +300,15 @@ function addModelOptimized(output,decoded,selection,entityIndex,maxTrianglesPerS
       base=triangleIndex*3;a=surface.mesh.triangles[base];b=surface.mesh.triangles[base+1];c=surface.mesh.triangles[base+2]
       stored=appendIndexedModelTriangle(output,worldPositions,surface.mesh.texCoords,worldNormals,vertexColors,decoded.shaderRGBA,decoded.shaderTexCoord,decoded.shaderTime,a,b,c,decoded.hModel,decoded.customSkin,decoded.customShader,shaderName,surface.name,entityIndex,surfaceIndex,decoded.renderfx,fogNum);if stored is error then return stored end if
       if fogNum==0 and shadowMode==3 and (decoded.renderfx&RF_SHADOW_PLANE)!=0 then
-        shadowPositions=[]
-        for each vertexIndex in [a,b,c] point=projectionShadowPointOriented(frameData.xyz[vertexIndex],decoded.shadowPlane,shadowDirection,decoded.origin,decoded.axis);if point is error then return point end if;shadowPositions=shadowPositions+[point] end for
+        shadowPositions=array(3,void);shadowCorner=0
+        for each vertexIndex in [a,b,c] point=projectionShadowPointOriented(frameData.xyz[vertexIndex],decoded.shadowPlane,shadowDirection,decoded.origin,decoded.axis);if point is error then return point end if;shadowPositions[shadowCorner]=point;shadowCorner=shadowCorner+1 end for
         shadowColor=[0,0,0,102];stored=appendTriangle(output,triangle(shadowPositions,[[0.0,0.0],[0.0,0.0],[0.0,0.0]],[normal(),normal(),normal()],[shadowColor,shadowColor,shadowColor],shadowColor,[0.0,0.0],0.0,0,0,0,PROJECTION_SHADOW_SHADER,"",entityIndex,surfaceIndex,0));if stored is error then return stored end if
       end if
     end for
     if fogNum==0 and shadowMode==2 and (decoded.renderfx&(RF_NOSHADOW|RF_DEPTHHACK))==0 then
       localLight=localLightDirection(shadowDirection,decoded.axis);sides=shadowVolumeSides(frameData.xyz,surface.mesh.triangles,limit,localLight);if sides is error then return sides end if;orientation=viewMath.orientation(decoded.origin,decoded.axis)
       for each side in sides
-        worldSide=[];for each point in side worldPoint=viewMath.localPointToWorld(point,orientation);if worldPoint is error then return worldPoint end if;worldSide=worldSide+[worldPoint] end for
+        worldSide=array(4,void);sideIndex=0;for each point in side worldPoint=viewMath.localPointToWorld(point,orientation);if worldPoint is error then return worldPoint end if;worldSide[sideIndex]=worldPoint;sideIndex=sideIndex+1 end for
         stored=appendShadowTriangle(output,[worldSide[0],worldSide[1],worldSide[2]],entityIndex,surfaceIndex);if stored is error then return stored end if
         stored=appendShadowTriangle(output,[worldSide[2],worldSide[1],worldSide[3]],entityIndex,surfaceIndex);if stored is error then return stored end if
       end for
@@ -318,11 +319,11 @@ end function
 function addInlineModel(output,decoded,wrapped,entityIndex)
   model=wrapped[0];orientation=viewMath.orientation(decoded.origin,decoded.axis)
   for each source in model.renderData.triangles
-    positions=[];normals=[];coords=[];lightmapCoords=[];colors=[]
+    positions=array(3,void);normals=array(3,void);coords=array(3,void);lightmapCoords=array(3,void);colors=array(3,void)
     for corner=0 to 2
       vertex=source.vertices[corner];point=viewMath.localPointToWorld(vertex.position,orientation);if point is error then return point end if
       direction=viewMath.localNormalToWorld(vertex.normal,orientation);if direction is error then return direction end if
-      positions=positions+[point];normals=normals+[direction];coords=coords+[vertex.baseUV];lightmapCoords=lightmapCoords+[vertex.lightmapUV];colors=colors+[vertex.color]
+      positions[corner]=point;normals[corner]=direction;coords[corner]=vertex.baseUV;lightmapCoords[corner]=vertex.lightmapUV;colors[corner]=vertex.color
     end for
     shaderName="";if source.textureIndex>=0 and source.textureIndex<len(model.shaderNames) then shaderName=model.shaderNames[source.textureIndex] end if
     dynamicLight=false;if source.textureIndex>=0 and source.textureIndex<len(model.dynamicLightFlags) then dynamicLight=model.dynamicLightFlags[source.textureIndex] end if
@@ -346,8 +347,8 @@ end function
 function addTrailSubmission(output,decoded,submission,entityIndex)
   if submission is error then return submission end if
   for triangleIndex=0 to len(submission.indexes)/3-1
-    positions=[];coords=[];colors=[]
-    for corner=0 to 2 source=submission.vertices[submission.indexes[triangleIndex*3+corner]];positions=positions+[source.xyz];coords=coords+[source.uv];colors=colors+[source.color] end for
+    positions=array(3,void);coords=array(3,void);colors=array(3,void)
+    for corner=0 to 2 source=submission.vertices[submission.indexes[triangleIndex*3+corner]];positions[corner]=source.xyz;coords[corner]=source.uv;colors[corner]=source.color end for
     stored=appendTriangle(output,triangle(positions,coords,[normal(),normal(),normal()],colors,decoded.shaderRGBA,decoded.shaderTexCoord,decoded.shaderTime,0,0,decoded.customShader,"","",entityIndex,0,decoded.renderfx));if stored is error then return stored end if
   end for
   return void
@@ -363,8 +364,8 @@ end function
 function addBeam(output,decoded,entityIndex)
   submission=surfaceBeam.build(decoded.origin,decoded.oldorigin);if submission is error then return submission end if
   for triangleIndex=0 to len(submission.indexes)/3-1
-    positions=[];coords=[];colors=[]
-    for corner=0 to 2 source=submission.vertices[submission.indexes[triangleIndex*3+corner]];positions=positions+[source.xyz];coords=coords+[source.uv];colors=colors+[source.color] end for
+    positions=array(3,void);coords=array(3,void);colors=array(3,void)
+    for corner=0 to 2 source=submission.vertices[submission.indexes[triangleIndex*3+corner]];positions[corner]=source.xyz;coords[corner]=source.uv;colors[corner]=source.color end for
     stored=appendTriangle(output,triangle(positions,coords,[normal(),normal(),normal()],colors,decoded.shaderRGBA,decoded.shaderTexCoord,decoded.shaderTime,0,0,0,"$mq3/beam","",entityIndex,0,decoded.renderfx));if stored is error then return stored end if
   end for
   return void

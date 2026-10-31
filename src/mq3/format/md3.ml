@@ -71,30 +71,30 @@ function load(data)
   check=span(ofsTags,numFrames*numTags*TAG_SIZE,ofsEnd);if check is error then return check end if
   if numSurfaces>0 then check=span(ofsSurfaces,SURFACE_SIZE,ofsEnd);if check is error then return check end if end if
 
-  frames=[];boundsMin=[0.0,0.0,0.0];boundsMax=[0.0,0.0,0.0]
+  frames=array(numFrames,void);boundsMin=[0.0,0.0,0.0];boundsMax=[0.0,0.0,0.0]
   for frameIndex=0 to numFrames-1
     at=ofsFrames+frameIndex*FRAME_SIZE
     mins=vec3(data,at);maxs=vec3(data,at+12);origin=vec3(data,at+24)
-    frame=Frame(mins,maxs,origin,f32(data,at+36),fixedString(data,at+40,16));frames=frames+[frame]
+    frame=Frame(mins,maxs,origin,f32(data,at+36),fixedString(data,at+40,16));frames[frameIndex]=frame
     if frameIndex==0 then boundsMin=mins;boundsMax=maxs else
       for axis=0 to 2 if mins[axis]<boundsMin[axis] then boundsMin[axis]=mins[axis] end if;if maxs[axis]>boundsMax[axis] then boundsMax[axis]=maxs[axis] end if end for
     end if
   end for
 
-  tags=[]
+  tags=array(numFrames,void)
   for frameIndex=0 to numFrames-1
-    entries=[]
+    entries=array(numTags,void)
     if numTags>0 then
       for tagIndex=0 to numTags-1
-        at=ofsTags+(frameIndex*numTags+tagIndex)*TAG_SIZE;axis=[]
-        for row=0 to 2 axis=axis+[vec3(data,at+76+row*12)] end for
-        entries=entries+[Tag(fixedString(data,at,64),vec3(data,at+64),axis)]
+        at=ofsTags+(frameIndex*numTags+tagIndex)*TAG_SIZE;axis=array(3,void)
+        for row=0 to 2 axis[row]=vec3(data,at+76+row*12) end for
+        entries[tagIndex]=Tag(fixedString(data,at,64),vec3(data,at+64),axis)
       end for
     end if
-    tags=tags+[entries]
+    tags[frameIndex]=entries
   end for
 
-  surfaces=[];surfaceOffset=ofsSurfaces
+  surfaces=array(numSurfaces,void);surfaceOffset=ofsSurfaces
   if numSurfaces>0 then for surfaceIndex=0 to numSurfaces-1
     check=span(surfaceOffset,SURFACE_SIZE,ofsEnd);if check is error then return fail("truncated surface header") end if
     if i32(data,surfaceOffset)!=MD3_IDENT then return fail("invalid surface signature") end if
@@ -111,29 +111,29 @@ function load(data)
     check=span(ofsShaders,numShaders*SHADER_SIZE,surfaceEnd);if check is error then return check end if
     check=span(ofsSt,numVerts*ST_SIZE,surfaceEnd);if check is error then return check end if
     check=span(ofsXyz,numFrames*numVerts*VERTEX_SIZE,surfaceEnd);if check is error then return check end if
-    triangles=[]
+    triangles=array(numTriangles*3,0)
     if numTriangles>0 then
       for triangleIndex=0 to numTriangles-1
         at=surfaceOffset+ofsTriangles+triangleIndex*TRIANGLE_SIZE
         for corner=0 to 2
-          index=i32(data,at+corner*4);if index<0 or index>=numVerts then return fail("triangle index outside surface") end if;triangles=triangles+[index]
+          index=i32(data,at+corner*4);if index<0 or index>=numVerts then return fail("triangle index outside surface") end if;triangles[triangleIndex*3+corner]=index
         end for
       end for
     end if
-    shaders=[]
-    if numShaders>0 then for shaderIndex=0 to numShaders-1 shaders=shaders+[fixedString(data,surfaceOffset+ofsShaders+shaderIndex*SHADER_SIZE,64)] end for end if
-    texCoords=[]
-    for vertexIndex=0 to numVerts-1 at=surfaceOffset+ofsSt+vertexIndex*ST_SIZE;texCoords=texCoords+[[f32(data,at),f32(data,at+4)]] end for
-    packedFrames=[]
+    shaders=array(numShaders,void)
+    if numShaders>0 then for shaderIndex=0 to numShaders-1 shaders[shaderIndex]=fixedString(data,surfaceOffset+ofsShaders+shaderIndex*SHADER_SIZE,64) end for end if
+    texCoords=array(numVerts,void)
+    for vertexIndex=0 to numVerts-1 at=surfaceOffset+ofsSt+vertexIndex*ST_SIZE;texCoords[vertexIndex]=[f32(data,at),f32(data,at+4)] end for
+    packedFrames=array(numFrames,void)
     for frameIndex=0 to numFrames-1
-      packed=[]
+      packed=array(numVerts,void)
       for vertexIndex=0 to numVerts-1
         at=surfaceOffset+ofsXyz+(frameIndex*numVerts+vertexIndex)*VERTEX_SIZE
-        packed=packed+[md3Mesh.vertex(u16(data,at),u16(data,at+2),u16(data,at+4),u16(data,at+6))]
+        packed[vertexIndex]=md3Mesh.vertex(u16(data,at),u16(data,at+2),u16(data,at+4),u16(data,at+6))
       end for
-      packedFrames=packedFrames+[packed]
+      packedFrames[frameIndex]=packed
     end for
-    surfaces=surfaces+[Surface(surfaceName,shaders,md3Mesh.surface(numFrames,numVerts,numTriangles,triangles,texCoords,packedFrames))]
+    surfaces[surfaceIndex]=Surface(surfaceName,shaders,md3Mesh.surface(numFrames,numVerts,numTriangles,triangles,texCoords,packedFrames))
     surfaceOffset=surfaceOffset+surfaceEnd
   end for end if
   if surfaceOffset!=ofsEnd then return fail("surface chain does not reach file end") end if

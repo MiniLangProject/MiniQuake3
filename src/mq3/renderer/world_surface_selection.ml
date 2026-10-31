@@ -5,6 +5,8 @@ package mq3.renderer.world_surface_selection
 import mq3.compat.numeric as n
 import mq3.client.playable_viewer as viewer
 import mq3.renderer.bsp_render_data as render
+import std.ds.list as lists
+import std.sort as sorting
 
 const NODE_STRIDE=36
 const PLANE_STRIDE=16
@@ -72,7 +74,7 @@ function faceTriangleCount(map,faceOffset,patchError)
   if kind!=render.MST_PATCH then return 0 end if
   firstVert=i32(map,faceOffset+12);numVerts=i32(map,faceOffset+16);width=i32(map,faceOffset+96);height=i32(map,faceOffset+100)
   if width<3 or height<3 or width%2==0 or height%2==0 or width*height!=numVerts then return fail("invalid patch control grid") end if
-  control=[];for index=0 to numVerts-1 value=render.vertex(map,firstVert+index);if value is error then return value end if;control=control+[value] end for
+  control=array(numVerts,void);for index=0 to numVerts-1 value=render.vertex(map,firstVert+index);if value is error then return value end if;control[index]=value end for
   grid=render.subdividePatch(control,width,height,patchError);if grid is error then return grid end if
   return (grid[1]-1)*(grid[2]-1)*2
 end function
@@ -100,16 +102,6 @@ function before(a,b)
   if a.importance>b.importance then return false end if
   return a.faceIndex<b.faceIndex
 end function
-function insertCandidate(values,value)
-  result=[];inserted=false
-  for each current in values
-    if not inserted and before(value,current) then result=result+[value];inserted=true end if
-    result=result+[current]
-  end for
-  if not inserted then result=result+[value] end if
-  return result
-end function
-
 function buildCache(map,patchError)
   if not validMap(map) then return fail("invalid BSP object") end if
   if patchError<=0.0 then return fail("non-positive patch error") end if
@@ -144,19 +136,19 @@ function chooseCorePvs(map,camera,pvsOrigin,cfg,cache)
   leaf=pointLeaf(map,pvsOrigin);if leaf is error then return leaf end if
   cameraCluster=i32(map,map.offsets[4]+leaf*LEAF_STRIDE);if cameraCluster is error then return cameraCluster end if
   pvsUsed=map.lengths[16]>0 and cameraCluster>=0
-  faces=[];seenFaces=array(map.counts[13],false);rejectedPvs=0
+  faceList=lists.List.withCapacity(map.counts[13]);seenFaces=array(map.counts[13],false);rejectedPvs=0
   for leafIndex=0 to map.counts[4]-1
     leafOffset=map.offsets[4]+leafIndex*LEAF_STRIDE;cluster=i32(map,leafOffset)
     leafVisible=true;if pvsUsed then leafVisible=pvsContains(map,cameraCluster,cluster) end if
     if leafVisible then
       first=i32(map,leafOffset+32);count=i32(map,leafOffset+36)
       if first<0 or count<0 or first+count>map.counts[5] then return fail("invalid leaf surface range") end if
-      for slot=first to first+count-1 face=i32(map,map.offsets[5]+slot*4);if face<0 or face>=map.counts[13] then return fail("invalid leaf face") end if;if not seenFaces[face] then faces=faces+[face];seenFaces[face]=true end if end for
+      if count>0 then for slot=first to first+count-1 face=i32(map,map.offsets[5]+slot*4);if face<0 or face>=map.counts[13] then return fail("invalid leaf face") end if;if not seenFaces[face] then faceList.add(face);seenFaces[face]=true end if end for end if
     else rejectedPvs=rejectedPvs+1
     end if
   end for
-  candidates=[];rejectedFrustum=0;rejectedBackface=0;rejectedDistance=0
-  for each faceIndex in faces
+  candidateList=lists.List.withCapacity(faceList.len());rejectedFrustum=0;rejectedBackface=0;rejectedDistance=0
+  for each faceIndex in faceList.toArray()
     faceOffset=map.offsets[13]+faceIndex*FACE_STRIDE;kind=i32(map,faceOffset+8)
     if kind==render.MST_PLANAR or kind==render.MST_PATCH or kind==render.MST_TRIANGLE_SOUP then
       center=[0.0,0.0,0.0];radius=0.0
@@ -175,17 +167,23 @@ function chooseCorePvs(map,camera,pvsOrigin,cfg,cache)
             triangles=0
             if cache==void then triangles=faceTriangleCount(map,faceOffset,cfg.patchError);if triangles is error then return triangles end if else triangles=cache.faceTriangleCounts[faceIndex] end if
             importance=distanceSquared/((radius+1.0)*(radius+1.0));candidate=Candidate(faceIndex,triangles,distanceSquared,importance)
-            if cache!=void and cfg.triangleBudget>=cache.totalTriangleCount then candidates=candidates+[candidate] else candidates=insertCandidate(candidates,candidate) end if
+            candidateList.add(candidate)
           end if
         end if
       end if
     end if
   end for
-  selected=[];used=0;rejectedBudget=0
+  candidates=candidateList.toArray()
+  // The old insertion path rebuilt the complete candidate array for every
+  // accepted face (quadratic copying).  A single std stable sort preserves
+  // the exact importance/face-index order in O(n log n).
+  if cache==void or cfg.triangleBudget<cache.totalTriangleCount then sorting.sortBy(candidates,before) end if
+  selectedList=lists.List.withCapacity(len(candidates));used=0;rejectedBudget=0
   for each candidate in candidates
     if candidate.triangleCount==0 then continue end if
-    if used+candidate.triangleCount<=cfg.triangleBudget then selected=selected+[candidate.faceIndex];used=used+candidate.triangleCount else rejectedBudget=rejectedBudget+1 end if
+    if used+candidate.triangleCount<=cfg.triangleBudget then selectedList.add(candidate.faceIndex);used=used+candidate.triangleCount else rejectedBudget=rejectedBudget+1 end if
   end for
+  selected=selectedList.toArray()
   return Selection(selected,len(candidates),len(selected),used,pvsUsed,leaf,cameraCluster,rejectedPvs,rejectedFrustum,rejectedBackface,rejectedDistance,rejectedBudget)
 end function
 

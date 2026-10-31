@@ -5,6 +5,7 @@ package mq3.renderer.shader_index
 import mq3.compat.numeric as n
 import mq3.shared.parser as parser
 import std.string as strings
+import std.ds.list as lists
 
 const MAX_SHADERTEXT_HASH=2048
 
@@ -40,7 +41,7 @@ function skipBracedSection(state)
 end function
 
 function build(text)
-  state=parser.create(text);entries=[];buckets=array(MAX_SHADERTEXT_HASH,void)
+  state=parser.create(text);entryList=lists.List.withCapacity(1024);buckets=array(MAX_SHADERTEXT_HASH,void)
   while true
     name=parser.parseExt(state,true)
     if name=="" then break end if
@@ -48,11 +49,11 @@ function build(text)
     hash=hashValue(name,MAX_SHADERTEXT_HASH)
     if not skipBracedSection(state) then return error(7101,"unterminated shader definition: "+name) end if
     entry=Entry(name,hash,bodyOffset,state.offset)
-    entries=entries+[entry]
+    entryList.add(entry)
     if buckets[hash]==void then buckets[hash]=[] end if
-    buckets[hash]=buckets[hash]+[len(entries)-1]
+    buckets[hash]=buckets[hash]+[entryList.len()-1]
   end while
-  return Index(text,entries,buckets)
+  return Index(text,entryList.toArray(),buckets)
 end function
 
 function find(index,name)

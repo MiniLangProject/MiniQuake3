@@ -135,6 +135,7 @@ import mq3.client.ui_lan_queries as uiLanQueries
 import mq3.client.ui_lan_udp as uiLanUdp
 import std.fs as fs
 import std.string as strings
+import std.ds.list as lists
 
 const MAX_CONFIGSTRINGS=1024
 const MAX_CLIENTS=8
@@ -858,7 +859,7 @@ function nativePredictionServices(context)
   host=nativeCgamePredict.services(context);host.worldTraceFn=nativePredictionWorldTrace;host.entityTraceFn=nativePredictionEntityTrace;host.worldPointFn=nativePredictionWorldPoint;host.entityPointFn=nativePredictionEntityPoint;host.triggerTouchFn=nativePredictionTriggerTouch;host.moverAdjustFn=nativePredictionMover;return host
 end function
 function nativePredictionCommands(context)
-  result=[];first=context.commandNumber-63;for number=first to context.commandNumber command=matchCommandRing.get(context.usercmdHistory,context.commandNumber,number);if command is error then return command end if;if command!=void then result=result+[command] end if end for;return result
+  result=lists.List.withCapacity(64);first=context.commandNumber-63;for number=first to context.commandNumber command=matchCommandRing.get(context.usercmdHistory,context.commandNumber,number);if command is error then return command end if;if command!=void then result.add(command) end if end for;return result.toArray()
 end function
 
 // Feed the native cg_effects mirror from the semantic event stream.  These
@@ -914,16 +915,17 @@ function snapshot(value,clientNum)
   context=value.context;machine=value.game.slot.machine
   if machine==void or context.gameClients<=0 or context.entityStride<=0 then return fail("qagame did not locate its state") end if
   ps=playerstate.load(machine.data,context.gameClients+clientNum*context.clientStride);if ps is error then return ps end if
-  mapped=[]
+  mappedList=lists.List.withCapacity(context.entityCount)
   for index=0 to context.entityCount-1
     state=entitystate.load(machine.data,context.gameEntities+index*context.entityStride);if state is error then return state end if;state.number=index
     spatial=context.spatialScene.entities[index]
-    mapped=mapped+[snapshotBuild.snapshotEntity(state,spatial.linked,spatial.svFlags,spatial.singleClient,spatial.clusters,spatial.lastCluster,spatial.areanum,spatial.areanum2)]
+    mappedList.add(snapshotBuild.snapshotEntity(state,spatial.linked,spatial.svFlags,spatial.singleClient,spatial.clusters,spatial.lastCluster,spatial.areanum,spatial.areanum2))
   end for
+  mapped=mappedList.toArray()
   buildWorld=snapshotBuild.world(true,mapped,1024);host=snapshotBuild.services(snapshotPointLeaf,snapshotLeafArea,snapshotLeafCluster,snapshotWriteAreaBits,snapshotClusterPvs,snapshotAreasConnected,context)
   frame=snapshotBuild.buildClientSnapshot(buildWorld,host,ps,context.linked[clientNum],false);if frame is error then return frame end if
-  entities=[]
-  if frame.numEntities>0 then for index=0 to frame.numEntities-1 entities=entities+[buildWorld.ring[(frame.firstEntity+index)%buildWorld.ringCapacity]] end for end if
+  entities=array(frame.numEntities,void)
+  if frame.numEntities>0 then for index=0 to frame.numEntities-1 entities[index]=buildWorld.ring[(frame.firstEntity+index)%buildWorld.ringCapacity] end for end if
   result=Snapshot(context.now,ps,entities);context.latestSnapshot=result;context.snapshotNumber=context.snapshotNumber+1
   initial=context.nativeSnapshots.snap==void;transitionStart=len(context.nativeSnapshots.playerStateTransitions)
   observed=nativeCgameSnapshot.publish(context.nativeSnapshots,context.snapshotNumber,result,0,context.cgameServerCommands.commandSequence,context.now);if observed is error then return observed end if

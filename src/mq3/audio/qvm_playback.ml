@@ -15,6 +15,7 @@ import mq3.audio.snd_public as sndPublic
 import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
 import std.array as arrays
+import std.ds.list as lists
 
 const MAX_ENTITIES=1024
 const MAX_VOICES=96
@@ -61,8 +62,8 @@ function addVoice(state,command,localSound)
   if selected.replaced then for each voice in state.voices if voice.slot==selected.slot then voice.active=false end if end for end if
   fixed=validOrigin(command.origin);origin=command.origin;if not fixed then origin=entityOrigin(state,command.entity) end if
   voice=Voice(state.nextVoice,selected.slot,entity,command.channel,command.handle,copyOrigin(origin),fixed,localSound,clip.sound,clip.compressed,0.0,true);state.nextVoice=state.nextVoice+1
-  active=[];for each old in state.voices if old.active then active=active+[old] end if end for
-  state.voices=active+[voice];return true
+  active=lists.List.withCapacity(len(state.voices)+1);for each old in state.voices if old.active then active.add(old) end if end for
+  active.add(voice);state.voices=active.toArray();return true
 end function
 
 function addLoop(state,command)
@@ -79,21 +80,21 @@ function addLoop(state,command)
     existing.handle=command.handle;existing.origin=copyOrigin(origin);existing.velocity=copyOrigin(velocity);existing.realLoop=command.flag;existing.sound=clip.sound;existing.compressed=clip.compressed;existing.active=true;existing.doppler=doppler.active;existing.dopplerScale=doppler.scale;existing.oldDopplerScale=doppler.oldScale
   else
     if len(state.loops)>=MAX_LOOPS then return false end if
-    state.loops=state.loops+[LoopSource(command.entity,command.handle,copyOrigin(origin),copyOrigin(velocity),command.flag,clip.sound,clip.compressed,0.0,true,doppler.active,doppler.scale,doppler.oldScale)]
+    expanded=array(len(state.loops)+1,void);if len(state.loops)>0 then copyArray(expanded,0,state.loops,0,len(state.loops)) end if;expanded[len(state.loops)]=LoopSource(command.entity,command.handle,copyOrigin(origin),copyOrigin(velocity),command.flag,clip.sound,clip.compressed,0.0,true,doppler.active,doppler.scale,doppler.oldScale);state.loops=expanded
   end if
   return true
 end function
 
 function clearLoops(state,killAll)
-  kept=[]
-  if not killAll then for each sourceLoop in state.loops if sourceLoop.realLoop and sourceLoop.active then kept=kept+[sourceLoop] end if end for end if
-  state.loops=kept;return void
+  kept=lists.List.withCapacity(len(state.loops))
+  if not killAll then for each sourceLoop in state.loops if sourceLoop.realLoop and sourceLoop.active then kept.add(sourceLoop) end if end for end if
+  state.loops=kept.toArray();return void
 end function
 
 function stopLoop(state,entity)
-  kept=[];found=false
-  for each sourceLoop in state.loops if sourceLoop.entity==entity then found=true else kept=kept+[sourceLoop] end if end for
-  state.loops=kept;return found
+  kept=lists.List.withCapacity(len(state.loops));found=false
+  for each sourceLoop in state.loops if sourceLoop.entity==entity then found=true else kept.add(sourceLoop) end if end for
+  state.loops=kept.toArray();return found
 end function
 
 function setPosition(state,entity,origin)
@@ -227,7 +228,7 @@ function mixMusic(state,music,leftMix,rightMix)
 end function
 
 function paintMusic(state,music,paint)
-  phase=music.cursor;inIntro=music.inIntro;active=music.active;left=[];right=[]
+  phase=music.cursor;inIntro=music.inIntro;active=music.active;left=array(state.chunkFrames,0);right=array(state.chunkFrames,0)
   for frame=0 to state.chunkFrames-1
     leftSample=0;rightSample=0
     if active then
@@ -246,7 +247,7 @@ function paintMusic(state,music,paint)
         end if
       end if
     end if
-    left=left+[leftSample];right=right+[rightSample]
+    left[frame]=leftSample;right[frame]=rightSample
   end for
   sndPaint.paintRaw(paint,left,right,0,state.chunkFrames,1.0)
   music.cursor=phase;music.inIntro=inIntro;music.active=active;return active
@@ -265,7 +266,7 @@ function render(state)
       if painted>0 and (volumes[0]>0 or volumes[1]>0) then voiceCount=voiceCount+1 end if
     end if
   end for
-  loopEntries=[];for each sourceLoop in state.loops loopEntries=loopEntries+[sndLoops.Entry(sourceLoop.entity,sourceLoop.handle,sourceLoop.origin,sourceLoop.realLoop,sourceLoop.doppler,sourceLoop.dopplerScale,sourceLoop.oldDopplerScale,sourceLoop.active)] end for
+  loopEntries=array(len(state.loops),void);loopIndex=0;for each sourceLoop in state.loops loopEntries[loopIndex]=sndLoops.Entry(sourceLoop.entity,sourceLoop.handle,sourceLoop.origin,sourceLoop.realLoop,sourceLoop.doppler,sourceLoop.dopplerScale,sourceLoop.oldDopplerScale,sourceLoop.active);loopIndex=loopIndex+1 end for
   loopGroups=sndLoops.build(loopEntries,state.listener.origin,state.listener.axis);if loopGroups is error then return loopGroups end if
   for each group in loopGroups
     sourceLoop=loopByEntity(state,group.primary)
@@ -284,7 +285,7 @@ function render(state)
   end for
   limiter=1.0;if peak>32767.0 then limiter=32767.0/peak end if
   output=sndPaint.transfer16(paint,state.chunkFrames);if output is error then return output end if
-  active=[];for each voice in state.voices if voice.active then active=active+[voice] else sndChannels.release(state.channels,voice.slot) end if end for;state.voices=active
+  active=lists.List.withCapacity(len(state.voices));for each voice in state.voices if voice.active then active.add(voice) else sndChannels.release(state.channels,voice.slot) end if end for;state.voices=active.toArray()
   elapsed=numeric.trunc32(state.chunkFrames*1000.0/state.outputRate);if elapsed<1 then elapsed=1 end if;sndChannels.advance(state.channels,elapsed)
   return Chunk(output,state.chunkFrames,voiceCount,loopCount,peak,limiter)
 end function

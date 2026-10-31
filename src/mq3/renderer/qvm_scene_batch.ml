@@ -6,6 +6,7 @@ import mq3.renderer.bsp_render_data as renderData
 import mq3.renderer.playable_world_batch as worldBatch
 import mq3.platform.playable_window as window
 import mq3.platform.playable_multitexture as multitexture
+import std.ds.list as lists
 
 const RF_DEPTHHACK=8
 const PROJECTION_SHADOW_SHADER="$mq3/projectionShadow"
@@ -31,15 +32,15 @@ function dynamicCount(catalog) count=0;for each resolved in catalog.triangles if
 // per generated volume triangle. An unresolved shader is Baseq3's default
 // opaque shader.
 function shadowPolicies(catalog)
-  result=[]
+  result=lists.List.withCapacity(len(catalog.triangles))
   for each resolved in catalog.triangles
     source=resolved.triangle;if source.shaderName==PROJECTION_SHADOW_SHADER then continue end if
-    known=false;for each policy in result if policy.entityIndex==source.entityIndex and policy.surfaceIndex==source.surfaceIndex then known=true;break end if end for;if known then continue end if
+    known=false;if result.len()>0 then for policyIndex=0 to result.len()-1 policy=result.get(policyIndex);if policy.entityIndex==source.entityIndex and policy.surfaceIndex==source.surfaceIndex then known=true;break end if end for end if;if known then continue end if
     opaque=source.fogIndex<=0
     if resolved.materialIndex>=0 then opaque=opaque and resolved.materialIndex<len(catalog.materials) and catalog.materials[resolved.materialIndex].sort==3.0 end if
-    result=result+[ShadowPolicy(source.entityIndex,source.surfaceIndex,opaque)]
+    result.add(ShadowPolicy(source.entityIndex,source.surfaceIndex,opaque))
   end for
-  return result
+  return result.toArray()
 end function
 function policyOpaque(policies,entityIndex,surfaceIndex)
   for each policy in policies if policy.entityIndex==entityIndex and policy.surfaceIndex==surfaceIndex then return policy.opaque end if end for;return false
@@ -140,8 +141,8 @@ end function
 function attachDynamicLights(prepared,catalog,lightCatalog)
   if prepared==void or prepared.batch==void or prepared.dynamicGeometry==void then return fail("prepared batch is required") end if
   if lightCatalog==void then return 0 end if
-  origins=[];axes=[];bounds=[]
-  for each resolved in catalog.triangles if dynamicSelected(catalog,resolved) then origins=origins+[resolved.triangle.dynamicLightOrigin];axes=axes+[resolved.triangle.dynamicLightAxis];bounds=bounds+[resolved.triangle.dynamicLightBounds] end if end for
+  count=dynamicCount(catalog);origins=array(count,void);axes=array(count,void);bounds=array(count,void);index=0
+  for each resolved in catalog.triangles if dynamicSelected(catalog,resolved) then origins[index]=resolved.triangle.dynamicLightOrigin;axes[index]=resolved.triangle.dynamicLightAxis;bounds[index]=resolved.triangle.dynamicLightBounds;index=index+1 end if end for
   receiveFlags=array(len(catalog.materials),true);return worldBatch.attachDynamicLightsOriented(prepared.batch,prepared.dynamicGeometry,receiveFlags,lightCatalog,origins,axes,bounds)
 end function
 function upload(catalog) return worldBatch.uploadMaterials(catalog) end function

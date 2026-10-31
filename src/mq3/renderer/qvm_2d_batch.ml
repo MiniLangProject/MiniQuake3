@@ -11,6 +11,7 @@ import mq3.renderer.shader_parser as shaderParser
 import mq3.renderer.shader_remap as shaderRemap
 import mq3.platform.playable_window as window
 import mq3.platform.playable_multitexture as multitexture
+import std.ds.list as lists
 import std.string as strings
 
 const SCREEN_DEPTH=0.001
@@ -41,7 +42,7 @@ function extract(queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth
   if queueCommands==void or assets==void or kinds==void then return fail("commands and asset registry are required") end if
   if len(assets)!=len(kinds) then return fail("asset registry length mismatch") end if
   if sourceWidth<=0 or sourceHeight<=0 or targetWidth<=0 or targetHeight<=0 then return fail("screen dimensions must be positive") end if
-  scaleX=targetWidth/sourceWidth;scaleY=targetHeight/sourceHeight;color=[255,255,255,255];quads=[];setColors=0;ignored=0;commandIndex=0
+  scaleX=targetWidth/sourceWidth;scaleY=targetHeight/sourceHeight;color=[255,255,255,255];quadList=lists.List.withCapacity(len(queueCommands));setColors=0;ignored=0;commandIndex=0
   for each command in queueCommands
     if command.id==q2commands.RC_SET_COLOR then
       if len(command.values)!=4 then return fail("invalid SetColor command") end if
@@ -51,12 +52,12 @@ function extract(queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth
       v=command.values;x=v[0];y=v[1];w=v[2];h=v[3]
       positions=[scaledPoint(x,y,scaleX,scaleY),scaledPoint(x+w,y,scaleX,scaleY),scaledPoint(x+w,y+h,scaleX,scaleY),scaledPoint(x,y+h,scaleX,scaleY)]
       texCoords=[[v[4],v[5]],[v[6],v[5]],[v[6],v[7]],[v[4],v[7]]]
-      quads=quads+[Quad(command.shader,shaderName(assets,kinds,command.shader),positions,texCoords,[color[0],color[1],color[2],color[3]],commandIndex)]
+      quadList.add(Quad(command.shader,shaderName(assets,kinds,command.shader),positions,texCoords,[color[0],color[1],color[2],color[3]],commandIndex))
     else ignored=ignored+1
     end if
     commandIndex=commandIndex+1
   end for
-  return Extracted(quads,setColors,ignored,sourceWidth,sourceHeight,targetWidth,targetHeight)
+  return Extracted(quadList.toArray(),setColors,ignored,sourceWidth,sourceHeight,targetWidth,targetHeight)
 end function
 
 function trianglesFor(quad,materialIndex)
@@ -118,9 +119,9 @@ function createPass(stage,triangles,timeOffset,clampTime)
   return StagePass(stage,triangles,batch,timeOffset,clampTime)
 end function
 function createRun(materialIndexValue,handle,material,quads)
-  triangles=[];for each quad in quads triangles=triangles+trianglesFor(quad,materialIndexValue) end for
-  passes=[];for each stage in material.stages pass=createPass(stage,triangles,material.timeOffset,material.clampTime);if pass is error then return pass end if;passes=passes+[pass] end for
-  return Run(materialIndexValue,handle,passes,len(quads),len(triangles))
+  triangleList=lists.List.withCapacity(len(quads)*2);for each quad in quads triangleList.addAll(trianglesFor(quad,materialIndexValue)) end for;triangles=triangleList.toArray()
+  passList=lists.List.withCapacity(len(material.stages));for each stage in material.stages pass=createPass(stage,triangles,material.timeOffset,material.clampTime);if pass is error then return pass end if;passList.add(pass) end for
+  return Run(materialIndexValue,handle,passList.toArray(),len(quads),len(triangles))
 end function
 
 // Rebuild only the changing quad/run buffers.  Shader parsing, PK3 image
@@ -129,8 +130,8 @@ function refresh(catalog,queueCommands,assets,kinds,sourceWidth,sourceHeight,tar
   if catalog==void then return fail("catalog is required") end if
   extracted=extract(queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth,targetHeight);if extracted is error then return extracted end if
   for each material in catalog.materials offset=shaderRemap.timeOffsetForHandle(catalog.shaderRemaps,material.shaderHandle);material.timeOffset=0.0;if offset!=void then material.timeOffset=offset end if end for
-  catalog.runs=[];catalog.sourceQuads=len(extracted.quads);catalog.emittedTriangles=0;catalog.resolvedQuads=0;catalog.unresolvedQuads=0
-  current=[];currentHandle=-1
+  runList=lists.List.withCapacity(len(extracted.quads));catalog.runs=[];catalog.sourceQuads=len(extracted.quads);catalog.emittedTriangles=0;catalog.resolvedQuads=0;catalog.unresolvedQuads=0
+  current=lists.List.withCapacity(len(extracted.quads));currentHandle=-1
   for each quad in extracted.quads
     index=materialIndex(catalog.materials,quad.shaderHandle)
     if (index<0 or not materialMatches(catalog.materials[index],quad.shaderName)) and catalog.scriptIndex!=void then
@@ -142,12 +143,13 @@ function refresh(catalog,queueCommands,assets,kinds,sourceWidth,sourceHeight,tar
       end if
     end if
     if index<0 then catalog.unresolvedQuads=catalog.unresolvedQuads+1;continue else catalog.resolvedQuads=catalog.resolvedQuads+1 end if
-    if currentHandle!=quad.shaderHandle and len(current)>0 then
-      previousIndex=materialIndex(catalog.materials,currentHandle);run=createRun(previousIndex,currentHandle,catalog.materials[previousIndex],current);if run is error then return run end if;catalog.runs=catalog.runs+[run];catalog.emittedTriangles=catalog.emittedTriangles+run.triangleCount*len(run.passes);current=[]
+    if currentHandle!=quad.shaderHandle and current.len()>0 then
+      previousIndex=materialIndex(catalog.materials,currentHandle);run=createRun(previousIndex,currentHandle,catalog.materials[previousIndex],current.toArray());if run is error then return run end if;runList.add(run);catalog.emittedTriangles=catalog.emittedTriangles+run.triangleCount*len(run.passes);current.clear()
     end if
-    currentHandle=quad.shaderHandle;current=current+[quad]
+    currentHandle=quad.shaderHandle;current.add(quad)
   end for
-  if len(current)>0 then index=materialIndex(catalog.materials,currentHandle);run=createRun(index,currentHandle,catalog.materials[index],current);if run is error then return run end if;catalog.runs=catalog.runs+[run];catalog.emittedTriangles=catalog.emittedTriangles+run.triangleCount*len(run.passes) end if
+  if current.len()>0 then index=materialIndex(catalog.materials,currentHandle);run=createRun(index,currentHandle,catalog.materials[index],current.toArray());if run is error then return run end if;runList.add(run);catalog.emittedTriangles=catalog.emittedTriangles+run.triangleCount*len(run.passes) end if
+  catalog.runs=runList.toArray()
   return catalog
 end function
 
@@ -157,7 +159,7 @@ function buildIndexed(archive,queueCommands,assets,kinds,firstTextureSlot,maxTex
   extracted=extract(queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth,targetHeight);if extracted is error then return extracted end if
   if scripts==void or len(scripts)!=2 or scripts[0]==void then return fail("shared shader index is required") end if
   catalog=Catalog([],[],[],archive,scripts[0],scripts[1],len(extracted.quads),0,0,0,firstTextureSlot,firstTextureSlot+maxTextureSlots,shaderRemaps);endSlot=catalog.endTextureSlot
-  current=[];currentHandle=-1
+  runList=lists.List.withCapacity(len(extracted.quads));current=lists.List.withCapacity(len(extracted.quads));currentHandle=-1
   for each quad in extracted.quads
     index=materialIndex(catalog.materials,quad.shaderHandle)
     if index<0 then
@@ -168,12 +170,13 @@ function buildIndexed(archive,queueCommands,assets,kinds,firstTextureSlot,maxTex
       end if
     end if
     if index<0 then catalog.unresolvedQuads=catalog.unresolvedQuads+1;continue else catalog.resolvedQuads=catalog.resolvedQuads+1 end if
-    if currentHandle!=quad.shaderHandle and len(current)>0 then
-      previousIndex=materialIndex(catalog.materials,currentHandle);run=createRun(previousIndex,currentHandle,catalog.materials[previousIndex],current);if run is error then return run end if;catalog.runs=catalog.runs+[run];catalog.emittedTriangles=catalog.emittedTriangles+run.triangleCount*len(run.passes);current=[]
+    if currentHandle!=quad.shaderHandle and current.len()>0 then
+      previousIndex=materialIndex(catalog.materials,currentHandle);run=createRun(previousIndex,currentHandle,catalog.materials[previousIndex],current.toArray());if run is error then return run end if;runList.add(run);catalog.emittedTriangles=catalog.emittedTriangles+run.triangleCount*len(run.passes);current.clear()
     end if
-    currentHandle=quad.shaderHandle;current=current+[quad]
+    currentHandle=quad.shaderHandle;current.add(quad)
   end for
-  if len(current)>0 then index=materialIndex(catalog.materials,currentHandle);run=createRun(index,currentHandle,catalog.materials[index],current);if run is error then return run end if;catalog.runs=catalog.runs+[run];catalog.emittedTriangles=catalog.emittedTriangles+run.triangleCount*len(run.passes) end if
+  if current.len()>0 then index=materialIndex(catalog.materials,currentHandle);run=createRun(index,currentHandle,catalog.materials[index],current.toArray());if run is error then return run end if;runList.add(run);catalog.emittedTriangles=catalog.emittedTriangles+run.triangleCount*len(run.passes) end if
+  catalog.runs=runList.toArray()
   return catalog
 end function
 function build(archive,queueCommands,assets,kinds,firstTextureSlot,maxTextureSlots,sourceWidth,sourceHeight,targetWidth,targetHeight,shaderRemaps)

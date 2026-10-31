@@ -2,6 +2,7 @@
 // Thin MiniLang boundary for the dependency-free Win32 preview window.
 package mq3.platform.playable_window
 import mq3.compat.numeric as numeric
+import std.ds.list as lists
 
 extern function create(width as i32,height as i32) from "playable_window.dll" symbol "playable_window_create" returns i32
 extern function glConfigureNative(driver as ptr,driverLength as i32,colorBits as i32,depthBits as i32,stencilBits as i32,stereo as i32,fullscreen as i32,frequency as i32,swapInterval as i32) from "playable_window.dll" symbol "playable_window_gl_configure" returns i32
@@ -188,7 +189,7 @@ function nextInputEvent()
 end function
 function inputEvents(maxEvents)
   if typeof(maxEvents)!="int" or maxEvents<0 or maxEvents>256 then return error(7492,"invalid native input event budget") end if
-  result=[];while len(result)<maxEvents event=nextInputEvent();if event==void then break end if;result=result+[event] end while;return result
+  result=lists.List.withCapacity(maxEvents);while result.len()<maxEvents event=nextInputEvent();if event==void then break end if;result.add(event) end while;return result.toArray()
 end function
 function mouseDelta() return [mouseXNative(),mouseYNative()] end function
 function inputActivate(active) value=0;if active then value=1 end if;inputActivateNative(value);return void end function

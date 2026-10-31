@@ -44,6 +44,7 @@ import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
 import mq3.qcommon.cvar as cvar
 import std.time as time
+import std.ds.queue as queues
 
 const WIDTH=1280
 const HEIGHT=720
@@ -314,21 +315,21 @@ function runLimited(archive,map,qvmRoot,maxFrames)
   readyAt=window.milliseconds();print "QVM startup profile: boot="+str(qvmBootAt-startupAt)+"ms ui="+str(uiBootAt-qvmBootAt)+"ms shaders="+str(scriptIndexAt-uiBootAt)+"ms scene="+str(sceneAt-scriptIndexAt)+"ms sounds="+str(soundAt-sceneAt)+"ms world="+str(worldAt-soundAt)+"ms upload="+str(readyAt-worldAt)+"ms total="+str(readyAt-startupAt)+"ms"
   titleState=fpsTitle.create("Original QVM q3dm1",window.milliseconds());window.setTitle(fpsTitle.initialTitle(titleState))
   frames=0;yaw=state.context.latestSnapshot.playerState.viewangles[1];pitch=state.context.latestSnapshot.playerState.viewangles[0];inputState=inputCommand.create(pitch,yaw,0.0);inputConfig=inputCommand.defaults()
-  pendingInputEvents=[];wasMenuActive=false;uploadedQvmTextures=len(qvmCatalog.textures);uploadedHudTextures=len(hudCatalog.textures);simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
+  pendingInputEvents=queues.Queue.withCapacity(256);wasMenuActive=false;uploadedQvmTextures=len(qvmCatalog.textures);uploadedHudTextures=len(hudCatalog.textures);simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
   while not window.shouldClose() and (maxFrames<0 or frames<maxFrames)
     startedAt=window.milliseconds();serverTime=simulationStart+startedAt-realStart;steps=0
     window.poll();nativeInput.mouse=window.mouseDelta();menuActive=uiSession.active(ui);nativeEvents=window.inputEvents(256);if nativeEvents is error then window.shutdown();match.shutdown(state);return nativeEvents end if
-    for each event in nativeEvents event.time=simulationStart+event.time-realStart;pendingInputEvents=pendingInputEvents+[event] end for
+    for each event in nativeEvents event.time=simulationStart+event.time-realStart;pendingInputEvents.enqueue(event) end for
     if menuActive then released=releaseGameInput(inputState,simulationTime);if released is error then window.shutdown();match.shutdown(state);return released end if
     else
       if wasMenuActive then
-        for each key in [window.VK_W,window.VK_S,window.VK_D,window.VK_A,window.VK_SPACE,window.VK_LBUTTON] if window.keyDown(key) then pendingInputEvents=pendingInputEvents+[window.InputEvent(simulationTime,window.INPUT_KEY,key,1)] end if end for
+        for each key in [window.VK_W,window.VK_S,window.VK_D,window.VK_A,window.VK_SPACE,window.VK_LBUTTON] if window.keyDown(key) then pendingInputEvents.enqueue(window.InputEvent(simulationTime,window.INPUT_KEY,key,1)) end if end for
       end if
     end if
     wasMenuActive=menuActive
     while simulationTime+50<=serverTime and steps<8
       simulationTime=simulationTime+50
-      while len(pendingInputEvents)>0 and pendingInputEvents[0].time<=simulationTime applied=applyInputEvent(inputState,state,pendingInputEvents[0]);if applied is error then window.shutdown();match.shutdown(state);return applied end if;pendingInputEvents=slice(pendingInputEvents,1,len(pendingInputEvents)) end while
+      while not pendingInputEvents.isEmpty() and pendingInputEvents.peek().time<=simulationTime applied=applyInputEvent(inputState,state,pendingInputEvents.dequeue());if applied is error then window.shutdown();match.shutdown(state);return applied end if end while
       anyInput=timestampedInput.anyDown(inputState)
       created=inputCommand.createCommand(inputState,inputConfig,simulationTime,50,simulationTime,match.cgameUserCmdValue(state),match.cgameSensitivity(state),match.keyCatcher(state),anyInput);if created is error then window.shutdown();match.shutdown(state);return created end if;yaw=created.viewangles[1];pitch=created.viewangles[0];advanced=advanceGameTick(state,clientClock,simulationTime,created);if advanced is error then window.shutdown();match.shutdown(state);return advanced end if;steps=steps+1;simulationTicks=simulationTicks+1
     end while

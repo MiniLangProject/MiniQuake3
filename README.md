@@ -687,6 +687,16 @@ the current 20-frame q3dm1 smoke measures 37.2 ms in rendering and about
 validates three views, thousands of textured QVM triangles, stock HUD/menu quads,
 world effects and more than 120 decoded sounds.
 
+The production MiniLang hot paths no longer grow arrays with repeated
+concatenation. Shader sources and parsed entries use `std.string_builder` and
+`std.ds.list`; native input uses `std.ds.queue`; world candidates use one
+`std.sort` pass; MD3, snapshot, audio and scene data use exact arrays whenever
+their size is known. On the same Windows machine the direct one-frame q3dm1
+Retail-QVM smoke fell from 132.4 seconds to 19.7–20.8 seconds (startup profile:
+16.249 s boot, 59 ms shader index, 311 ms scene, 712 ms sounds and 1.033 s
+world). `python scripts/test_minilang_hotpaths.py` guards the eleven critical
+paths against accidental quadratic-array regressions.
+
 Ein vorhandener eingefrorener Compiler liegt unter `artifacts/toolchain/`.
 `inventory.py` nur ausführen, wenn dieser Stand bewusst neu festgelegt werden soll.
 Die C-Referenz- und Replay-Builds sind im [Prüfbericht](docs/PARITY_AUDIT.md) beschrieben.
