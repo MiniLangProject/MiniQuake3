@@ -45015,10 +45015,24 @@
         "Sys_GetPacket",
         "Sys_SendPacket"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete headless mac_net.c surface",
+          "target_files": [
+            "src/mq3/platform/null_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 3 inventoried null-platform symbols with original no-op/false/zero semantics, loopback-only networking and a bounded safe headless loop."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/null_runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_null_platform_complete.py",
+        "tests/null_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/null/null_client.c",
@@ -45047,10 +45061,24 @@
         "Key_WriteBindings",
         "UI_GameCommand"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete headless null_client.c surface",
+          "target_files": [
+            "src/mq3/platform/null_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 21 inventoried null-platform symbols with original no-op/false/zero semantics, loopback-only networking and a bounded safe headless loop."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/null_runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_null_platform_complete.py",
+        "tests/null_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/null/null_glimp.c",
@@ -45065,10 +45093,24 @@
         "QGL_Init",
         "QGL_Shutdown"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete headless null_glimp.c surface",
+          "target_files": [
+            "src/mq3/platform/null_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 7 inventoried null-platform symbols with original no-op/false/zero semantics, loopback-only networking and a bounded safe headless loop."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/null_runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_null_platform_complete.py",
+        "tests/null_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/null/null_input.c",
@@ -45080,10 +45122,24 @@
         "IN_Shutdown",
         "Sys_SendKeyEvents"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete headless null_input.c surface",
+          "target_files": [
+            "src/mq3/platform/null_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 4 inventoried null-platform symbols with original no-op/false/zero semantics, loopback-only networking and a bounded safe headless loop."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/null_runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_null_platform_complete.py",
+        "tests/null_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/null/null_main.c",
@@ -45109,10 +45165,24 @@
         "Sys_mkdir",
         "main"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete headless null_main.c surface",
+          "target_files": [
+            "src/mq3/platform/null_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 18 inventoried null-platform symbols with original no-op/false/zero semantics, loopback-only networking and a bounded safe headless loop."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/null_runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_null_platform_complete.py",
+        "tests/null_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/null/null_net.c",
@@ -45123,10 +45193,24 @@
         "Sys_GetPacket",
         "Sys_SendPacket"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete headless null_net.c surface",
+          "target_files": [
+            "src/mq3/platform/null_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 3 inventoried null-platform symbols with original no-op/false/zero semantics, loopback-only networking and a bounded safe headless loop."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/null_runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_null_platform_complete.py",
+        "tests/null_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/null/null_snddma.c",
@@ -45142,10 +45226,24 @@
         "S_RegisterSound",
         "S_StartLocalSound"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "complete headless null_snddma.c surface",
+          "target_files": [
+            "src/mq3/platform/null_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "All 8 inventoried null-platform symbols with original no-op/false/zero semantics, loopback-only networking and a bounded safe headless loop."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/null_runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_null_platform_complete.py",
+        "tests/null_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/opts.lnt",

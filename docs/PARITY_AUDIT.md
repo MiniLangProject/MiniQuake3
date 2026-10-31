@@ -3272,3 +3272,28 @@ teilweise portierte und 28 noch nicht begonnene** Dateien von 335, also
 Im gezählten Inventar bleiben ausschließlich acht macOS-, sieben Null- und
 13 Unix-Plattformdateien offen. Laufwerk `D:` ist weiterhin nicht
 eingebunden; eine neue Retail-Assetabnahme war daher nicht möglich.
+
+## 2026-10-31: Headless-/Null-Plattform vollständig geschlossen
+
+Alle sieben Dateien unter `code/null` sind nativ zugeordnet: beide
+Loopback-Netzwerkvarianten, Null-Client, Null-GL, Null-Eingabe, Null-System und
+Null-Audio. `null_runtime.ml` besitzt alle **64 inventarisierten Symbole** mit
+den Originalrückgaben und -Nebenwirkungen: Client-/Input-/GL-Lifecycle,
+erfolglose Game-/UI-Kommandos, immer gültige Null-CD-Keys, Loopback-only-
+Adressauflösung, keine eingehenden Pakete, deaktiviertes DMA, Soundhandle null,
+stabile Systemnullwerte und inerte Datei-/DLL-Einstiege.
+
+Für sichere automatisierte Nutzung ersetzt der Port den endlosen C-`main`-
+Loop durch eine begrenzte Headless-Frame-Schleife; `Sys_Error` liefert einen
+auswertbaren Fehler und `Sys_Quit` einen überprüfbaren Quit-Zustand, statt den
+Testprozess abzuschießen. Zwanzig Verträge prüfen alle Oberflächen sowie
+Client, GL, Eingabe, Loopback-Pakete, Audio, Systemwerte, Frames, Quit und
+Fehler. Vollständigkeitsgate, Windows-Hauptbuild und Inventarprüfung sind grün.
+Der Hauptbuild bleibt bei SHA-256
+`a31aa0ea0ec797e34ae6245d357e5b6506302e70fc6212ea79a5266dd855d72d`.
+
+Das Inventar zählt jetzt **314 portierte, keine teilweise portierte und 21
+noch nicht begonnene** Dateien von 335, also **93,7 %**. `null` steht bei 7/7
+und `scripts/verify.py` bei 497 Gates. Offen sind nur noch 13 Unix- und acht
+macOS-Plattformdateien. Laufwerk `D:` ist weiterhin nicht eingebunden; ein
+neuer Retail-Assetlauf bleibt daher aus.
