@@ -44353,10 +44353,16 @@
       "sha256": "46fc87d2e3f93eb5ca32e66ffa86f852f0c1ebf325c2cad85ccd986451f00163",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [{
+        "original": "complete macOS mouse-delta header surface",
+        "target_files": ["src/mq3/platform/macosx_headers.ml"],
+        "covers_all_candidates": true,
+        "status": "tested_equivalent",
+        "scope": "Initialization and last-delta retrieval are represented by the portable stateful mouse facade."
+      }],
+      "target": ["src/mq3/platform/macosx_headers.ml"],
+      "status": "ported",
+      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
     },
     {
       "source": "code/macosx/CGMouseDeltaFix.m",
@@ -44373,10 +44379,16 @@
       "sha256": "67648aa11cde4353890a10c005d8f2caea5fc2ecd721c0c7cbd2f974a134841d",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [{
+        "original": "complete macOS private event ABI declarations",
+        "target_files": ["src/mq3/platform/macosx_headers.ml"],
+        "covers_all_candidates": true,
+        "status": "tested_equivalent",
+        "scope": "Private notification constants, callback delivery and event-record data are represented without depending on removed Apple private APIs."
+      }],
+      "target": ["src/mq3/platform/macosx_headers.ml"],
+      "status": "ported",
+      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
     },
     {
       "source": "code/macosx/GenerateQGL.pl",
@@ -44403,10 +44415,16 @@
       "sha256": "e5573090dcf7a26022240d19e95146699161c3c62e89fd79131f93a893327581",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [{
+        "original": "complete Q3Controller header surface",
+        "target_files": ["src/mq3/platform/macosx_headers.ml"],
+        "covers_all_candidates": true,
+        "status": "tested_equivalent",
+        "scope": "Paste, banner, termination and bounded quakeMain controller state are represented portably."
+      }],
+      "target": ["src/mq3/platform/macosx_headers.ml"],
+      "status": "ported",
+      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
     },
     {
       "source": "code/macosx/Q3Controller.m",
@@ -44513,10 +44531,16 @@
       "sha256": "c76dde20e1429dec488975b2a1cb3f08f40b31ebd7a50ec0221bb96c4d252cbd",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [{
+        "original": "complete macOS display and gamma header surface",
+        "target_files": ["src/mq3/platform/macosx_headers.ml"],
+        "covers_all_candidates": true,
+        "status": "tested_equivalent",
+        "scope": "Display-mode selection, gamma tables, fade/unfade and release lifecycle are represented by deterministic host-neutral state."
+      }],
+      "target": ["src/mq3/platform/macosx_headers.ml"],
+      "status": "ported",
+      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
     },
     {
       "source": "code/macosx/macosx_display.m",
@@ -44533,10 +44557,16 @@
       "sha256": "35df4767a0b65ff2058efcb5359b29c6f2169afe0faee0bfa657da5974c30ecb",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [{
+        "original": "complete macOS OpenGL include/context header surface",
+        "target_files": ["src/mq3/platform/macosx_headers.ml"],
+        "covers_all_candidates": true,
+        "status": "tested_equivalent",
+        "scope": "The header contributes no standalone runtime candidates; its OpenGL context contract is owned by the typed portable facade."
+      }],
+      "target": ["src/mq3/platform/macosx_headers.ml"],
+      "status": "ported",
+      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
     },
     {
       "source": "code/macosx/macosx_glimp.m",
@@ -44593,10 +44623,16 @@
       "sha256": "1e1e599b3f7c8b84fcec0c61d404b55b61452b7b4d9b9dc0b5f1724a0079f6c1",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [{
+        "original": "complete macOS local platform header surface",
+        "target_files": ["src/mq3/platform/macosx_headers.ml"],
+        "covers_all_candidates": true,
+        "status": "tested_equivalent",
+        "scope": "Input, events, display choice, visibility, GL context, nested pause/resume and glw state are represented portably."
+      }],
+      "target": ["src/mq3/platform/macosx_headers.ml"],
+      "status": "ported",
+      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
     },
     {
       "source": "code/macosx/macosx_qgl.h",
@@ -44941,10 +44977,16 @@
         "qglVertexPointer",
         "qglViewport"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [{
+        "original": "complete generated macOS QGL wrapper surface",
+        "target_files": ["src/mq3/platform/macosx_headers.ml", "src/mq3/renderer/qgl_linked.ml"],
+        "covers_all_candidates": true,
+        "status": "tested_equivalent",
+        "scope": "All 337 generated QGL names map in original order to the linked renderer dispatch, including raw error access, begin/end error boundaries and the two texture-environment getters."
+      }],
+      "target": ["src/mq3/platform/macosx_headers.ml", "src/mq3/renderer/qgl_linked.ml"],
+      "status": "ported",
+      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
     },
     {
       "source": "code/macosx/macosx_sndcore.m",
@@ -44981,10 +45023,16 @@
       "sha256": "b6dba71e6429eacad467bf11890a1a30f1b6be4e9a6b24e339d9e3233560a8e9",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [{
+        "original": "complete optional OmniTimer header surface",
+        "target_files": ["src/mq3/platform/macosx_headers.ml"],
+        "covers_all_candidates": true,
+        "status": "tested_equivalent",
+        "scope": "All timer-node declarations plus start, stop, stamp and initialization semantics are represented without an OmniTimer dependency."
+      }],
+      "target": ["src/mq3/platform/macosx_headers.ml"],
+      "status": "ported",
+      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
     },
     {
       "source": "code/macosx/macosx_timers.m",

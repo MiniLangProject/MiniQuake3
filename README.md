@@ -28,9 +28,16 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **327 sind
-vollständig portiert, keine ist teilweise portiert und acht sind noch nicht
-begonnen**. Der jüngste Integrationsblock schließt alle 13 gezählten Unix-
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **alle 335
+sind vollständig portiert**, keine ist teilweise portiert oder nicht begonnen.
+Der jüngste Integrationsblock schließt die acht gezählten macOS-Header mit der
+vollständigen 337-Namen-QGL-Oberfläche sowie Mouse-Delta-, privater Event-ABI-,
+Controller-, Display-/Gamma-, GL-Kontext- und Timersemantik. 24 ausführbare
+Verträge prüfen die portable Zustandsabbildung. Cocoa-, CoreGraphics- und
+OmniTimer-Aufrufe bleiben Hostadaptergrenzen, da der produktive Zielhost
+Windows ist; `macosx` steht nun bei 8/8 gezählten Dateien.
+
+Der vorherige Integrationsblock schloss alle 13 gezählten Unix-
 Plattformdateien mit 471 Symbolen. Die portable MiniLang-Fassade besitzt die
 vollständigen Speicher-, X11/GL-, QGL-, Eingabe-, Signal-, DMA-, Konsolen-,
 System-, UDP-, Shared- und x86-QVM-Oberflächen. Native POSIX-/X11-Aufrufe

@@ -168,6 +168,8 @@ def main():
     scripts.append(("test_splines_headers_complete.py",[]))
     scripts.append(("test_null_platform_complete.py",[]))
     scripts.append(("test_unix_platform_complete.py",[]))
+    scripts.append(("test_macosx_headers_complete.py",[]))
+    scripts.append(("test_macosx_headers_complete.py",[]))
     scripts.append(("test_ui_atoms_missionpack.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_ui_main_missionpack.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_ui_shared.py",["--data-root",str(args.data_root)] if args.data_root else []))

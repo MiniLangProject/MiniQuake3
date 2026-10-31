@@ -3362,3 +3362,30 @@ einem behobenen Gate deterministisch fortzusetzen. Inventarprüfung und
 Python-Syntaxprüfung sind grün. Der frisch gebaute
 `build/MiniQuake3.exe`-Stand hat SHA-256
 `08b5b6bc75d2a66688b2e7265dd2e952f710e8d0740ab4a932e3218d96eacd80`.
+
+## 2026-10-31: Gezählte macOS-Header und Dateiinventar vollständig
+
+Die letzten acht im Runtime-/Plattforminventar offenen Dateien sind nativ
+zugeordnet: `CGMouseDeltaFix.h`, `CGPrivateAPI.h`, `Q3Controller.h`,
+`macosx_display.h`, `macosx_glimp.h`, `macosx_local.h`, `macosx_qgl.h` und
+`macosx_timers.h`. Die portable Fassade `mq3.platform.macosx_headers` bildet
+Mouse-Delta-Zustand, die private Event-ABI, Controller-Lifecycle,
+Displayauswahl, Gamma und Fades, Input und Systemevents, Fensterverbergen,
+GL-Kontext und verschachteltes Pause/Resume sowie optionale Timer ab.
+
+Die generierte QGL-Oberfläche besitzt alle **337 Originalnamen in exakter
+Reihenfolge**. Die 334 bereits produktiv gebundenen GL-Aliase werden
+wiederverwendet; `_glGetError`, `qglGetTexEnvfv` und `qglGetTexEnviv` schließen
+die drei macOS-spezifischen Differenzen. Begin/End-Grenzen, verzögerte
+Fehlerprüfung und Dispatchprotokoll sind ausführbar. Cocoa-, CoreGraphics- und
+OmniTimer-Aufrufe bleiben auf dem Windows-Zielhost bewusst abstrahierte
+Hostadapter und werden nicht als native macOS-Anwendung ausgegeben.
+
+Das neue Vollständigkeitsgate vergleicht Ledger und QGL-Oberfläche und führt
+**24 Verträge** aus. Inventarprüfung und der vollständige Original-/Portbericht
+sind grün. Das generierte Inventar zählt nun **335 portierte, keine teilweise
+portierte und keine nicht begonnene Datei von 335**, also **100 % native
+Dateiparität**. `macosx` steht bei 8/8 und `scripts/verify.py` bei 499 normalen
+Gates. Dies schließt die Datei-Warteschlange, ersetzt aber nicht die weiterhin
+erforderliche spielbare Langzeit-, Netzwerk-, Renderer-, Audio-, UI- und
+Performance-Abnahme für den übergeordneten 1:1-Anspruch.
