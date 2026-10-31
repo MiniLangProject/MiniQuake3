@@ -57,6 +57,7 @@ struct LoadResult world checksum cached end struct
 struct Temporary
   bounds
   brush
+  capsuleReady
 end struct
 struct Work
   world
@@ -166,7 +167,11 @@ function CMod_LoadNodes(map,planes)
   values=array(map.counts[3],void);for index=0 to len(values)-1 off=map.offsets[3]+index*36;planeNumber=n.readI32(map.data,off);if planeNumber<0 or planeNumber>=len(planes) then return fail("invalid node plane") end if;plane=planes[planeNumber];values[index]=Node(plane,planeType(plane.normal),[n.readI32(map.data,off+4),n.readI32(map.data,off+8)]) end for;return values
 end function
 function CMod_LoadSubmodels(map)
-  if map.counts[7]<1 then return fail("map has no models") end if;if map.counts[7]>qcommonHeaders.MAX_SUBMODELS then return fail("MAX_SUBMODELS exceeded") end if
+  if map.counts[7]<1 then return fail("map has no models") end if
+  // Indices 254 and 255 are reserved clip handles. A map that reaches either
+  // value would shadow the capsule/box sentinels even though MAX_SUBMODELS is
+  // 256 in the public ABI, so reject it at the trust boundary.
+  if map.counts[7]>qcommonHeaders.CAPSULE_MODEL_HANDLE then return fail("reserved model handles exceeded") end if
   models=array(map.counts[7],void);bounds=array(map.counts[7],void)
   for index=0 to len(models)-1
     off=map.offsets[7]+index*40;lower=[];upper=[]
@@ -236,7 +241,7 @@ function loadWorld(data,curves)
   submodels=CMod_LoadSubmodels(map);models=submodels.models;modelBounds=submodels.bounds
   surfaces=CMod_LoadPatches(map,shaders,curves);visibility=CMod_LoadVisibility(map);entityText=CMod_LoadEntityString(map);checksum=md4.blockChecksum(data)
   zero = [0.0,0.0,0.0]
-  world=World(brushes,nodes,leaves,models,surfaces,curves,true,modelBounds,Temporary([zero,zero],makeBox(zero,zero)),visibility,entityText,shaders,checksum,"")
+  world=World(brushes,nodes,leaves,models,surfaces,curves,true,modelBounds,Temporary([zero,zero],makeBox(zero,zero),false),visibility,entityText,shaders,checksum,"")
   CM_InitBoxHull(world);return world
 end function
 
@@ -260,19 +265,27 @@ function tempBoxModel(world,mins,maxs,capsule)
   // The original capsule handle updates the shared bounds but deliberately
   // leaves the temporary box planes untouched. Reciprocal box-vs-capsule
   // paths create their replacement box only after consuming these bounds.
+  world.temporary.capsuleReady = capsule
   if capsule then return qcommonHeaders.CAPSULE_MODEL_HANDLE end if
   world.temporary.brush = makeBox(mins,maxs)
   return qcommonHeaders.BOX_MODEL_HANDLE
 end function
 
 function CM_InitBoxHull(world)
-  if world==void then return fail("box hull requires a loaded map") end if;zero=[0.0,0.0,0.0];world.temporary=Temporary([zero,zero],makeBox(zero,zero));return void
+  if world==void then return fail("box hull requires a loaded map") end if;zero=[0.0,0.0,0.0];world.temporary=Temporary([zero,zero],makeBox(zero,zero),false);return void
 end function
 function CM_TempBoxModel(world,mins,maxs,capsule) return tempBoxModel(world,mins,maxs,capsule) end function
 
 function checkModel(world,model)
-  if model >= 0 and (model < len(world.models) or model == qcommonHeaders.CAPSULE_MODEL_HANDLE or model == qcommonHeaders.BOX_MODEL_HANDLE) then return true end if
+  // The capsule sentinel becomes valid only after CM_TempBoxModel has
+  // supplied its shared bounds.  This keeps reciprocal box-vs-capsule traces
+  // working while rejecting a bare reserved handle before initialization.
+  if model >= 0 and (model < len(world.models) or model == qcommonHeaders.BOX_MODEL_HANDLE or (model == qcommonHeaders.CAPSULE_MODEL_HANDLE and world.temporary.capsuleReady)) then return true end if
   return fail("invalid model handle")
+end function
+
+function checkTraceModel(world,model,capsule)
+  return checkModel(world,model)
 end function
 
 function modelBounds(world,model)
@@ -721,7 +734,7 @@ function CM_TraceCapsuleThroughCapsule(work,model) return traceCapsuleThroughCap
 function CM_TraceBoundingBoxThroughCapsule(work,model) return traceBoundingBoxThroughCapsule(work,model) end function
 
 function traceWithSphereOrigin(world, start, finish, mins, maxs, model, mask, capsule,curves,sphere,modelOrigin)
-  checkModel(world,model)
+  checkTraceModel(world,model,capsule)
   if curves and not world.patchesReady then return fail("patch geometry has not been loaded") end if
   if mins == void then mins = [0.0,0.0,0.0] end if
   if maxs == void then maxs = [0.0,0.0,0.0] end if

@@ -14,6 +14,7 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument("--data-root",type=Path)
     parser.add_argument("--extended",action="store_true",help="Include all CD collision/patch/movement differential gates")
+    parser.add_argument("--start-at",help="Resume at the first gate with this script name")
     args=parser.parse_args()
     if args.extended and not args.data_root: parser.error("--extended requires --data-root")
     scripts=[("build.py",[]),("test_numeric.py",[]),("test_math.py",[]),("test_q_math_complete.py",[]),("test_core.py",[]),("test_cvar_config.py",[]),("test_cvar_commands.py",[]),("test_cvar_restart.py",[]),("test_cvar_complete.py",[]),("test_message.py",[]),("test_huffman_message.py",[]),("test_message_delta.py",[]),("test_message_state_delta.py",[]),("test_snapshot_build.py",[]),("test_snapshot_runtime.py",["--data-root",str(args.data_root)] if args.data_root else []),("test_snapshot_delta.py",[]),("test_reliable_commands.py",[]),("test_snapshot_send.py",[]),("test_server_download.py",[]),("test_server_pipeline.py",[]),("test_snapshot_parse.py",[]),("test_snapshot_command.py",[]),("test_server_message.py",[]),("test_server_command_stream.py",[]),("test_gamestate.py",[]),("test_system_info.py",[]),("test_download.py",[]),("test_protocol_runtime.py",[]),("test_netchan.py",[]),("test_netchan_complete.py",[]),("test_server_netchan.py",[]),("test_client_netchan.py",[]),("test_client_send_cmd.py",[]),("test_client_command_ring.py",[]),("test_network_match_loop.py",[]),("test_network_match_multi.py",[]),("test_udp_platform.py",[]),("test_net_transport.py",[]),("test_network_pump.py",[]),("test_input_event_queue.py",[]),("test_oob_connect.py",[]),("test_connectionless.py",[]),("test_server_packet_event.py",[]),("test_client_connectionless.py",[]),("test_packet_event.py",[]),("test_localhost_handshake.py",[]),("test_server_client_message.py",[]),("test_client_command_dispatch.py",[]),("test_server_client_command.py",[]),("test_server_user_move.py",[]),("test_server_client_input.py",[]),("test_server_network_ingress.py",[]),("test_client_network_ingress.py",[]),("test_desktop_frame_host.py",[]),("test_server_client_pings.py",[]),("test_server_timeouts.py",[]),("test_server_pause.py",[]),("test_snapshot_schedule.py",[]),("test_server_frame.py",[]),("test_demo.py",[]),("test_shader_index.py",[]),
@@ -434,6 +435,10 @@ def main():
                         ("test_transitions.py",[str(args.data_root),"--no-curves"]),
                         ("test_transitions.py",[str(args.data_root)]),
                         ("test_spawn.py",[str(args.data_root)])])
+    if args.start_at:
+        names=[name for name,arguments in scripts]
+        if args.start_at not in names: parser.error("unknown --start-at gate: "+args.start_at)
+        scripts=scripts[names.index(args.start_at):]
     for name,arguments in scripts:
         print("[verify] "+name,flush=True)
         subprocess.run([sys.executable,ROOT / "scripts" / name,*arguments],check=True,cwd=ROOT)

@@ -12,7 +12,7 @@ function clientState(s,client) p=ps.create();p.commandTime=77;return [true,p] en
 function nextCommand(s,client) if s.context.cursor>=len(s.context.pending) then return void end if;v=s.context.pending[s.context.cursor];s.context.cursor=s.context.cursor+1;return v end function
 function queue(s,chat,kind,text) return event(s,"queue:"+str(chat)+":"+str(kind)+":"+text) end function
 function setup(s) return event(s,"setup") end function
-function diagnostic(s,client) return event(s,"fatal:"+str(client)) end function
+function botDiagnostic(s,client) return event(s,"fatal:"+str(client)) end function
 function clientName(s,client) return s.context.names[client] end function
 function easyName(s,client) return "Easy"+str(client) end function
 function goalName(s,goal) return "Goal"+str(goal) end function
@@ -25,7 +25,7 @@ function printLine(s,text) return event(s,"print:"+text) end function
 function nodeStep(s,b) event(s,"node:"+str(b.aiNode));result=s.context.nodeResults[s.context.nodeCursor];s.context.nodeCursor=s.context.nodeCursor+1;return result end function
 function fixture()
  ls=bots.create(cv.create());s=commands.create(ls);s.context=Context([],[],0,array(64,""),array(64,""),[],0);s.maxclients=4
- s.resetInputFn=reset;s.getClientStateFn=clientState;s.nextServerCommandFn=nextCommand;s.queueMessageFn=queue;s.deathmatchSetupFn=setup;s.diagnosticFn=diagnostic
+ s.resetInputFn=reset;s.getClientStateFn=clientState;s.nextServerCommandFn=nextCommand;s.queueMessageFn=queue;s.deathmatchSetupFn=setup;s.diagnosticFn=botDiagnostic
  s.clientNameFn=clientName;s.easyClientNameFn=easyName;s.goalNameFn=goalName;s.topGoalNumberFn=topGoal;s.carryingFlagFn=carryingCallback;s.teamFn=teamCallback;s.getPlayerConfigFn=getConfig;s.setBotInfoFn=setInfo;s.printFn=printLine
  return s
 end function

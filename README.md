@@ -37,6 +37,17 @@ System-, UDP-, Shared- und x86-QVM-Oberflächen. Native POSIX-/X11-Aufrufe
 bleiben klar abgegrenzte Hostadapter; 28 ausführbare Verträge prüfen die
 beobachtbaren Zustände und Fehlergrenzen. `unix` steht bei 13/13 Dateien.
 
+Die Quake-III-Retaildaten sind wieder unter `D:/Quake3/baseq3` verfügbar.
+Der erneuerte Retail-Lauf hat unter anderem alle 31 BSP-Kollisionsvergleiche,
+4.096 unveränderte C-Tracefälle, alle 30 AAS-Dateien, 32 Botdateien sowie die
+Gameplay-, Client-, Waffen-, Vote-, QCommon-, Renderer-, Audio- und
+Dateisystemproben bestanden. Zwei dabei aufgedeckte Randfälle sind behoben:
+reservierte Box-/Capsule-Handles können keine BSP-Submodelle mehr überschatten
+und ein Capsule-Handle ist erst nach `CM_TempBoxModel` gültig, ohne den
+originalen reziproken Box-gegen-Capsule-Pfad zu verlieren. Der aktuelle native
+Windows-Build hat SHA-256
+`08b5b6bc75d2a66688b2e7265dd2e952f710e8d0740ab4a932e3218d96eacd80`.
+
 Der vorherige Integrationsblock schloss alle sieben Headless-/Null-
 Plattformdateien mit 64 Symbolen. Client, Eingabe, OpenGL, Audio und ausgehende
 Pakete besitzen die originalen No-op-/Nullwerte; Netzwerkauflösung akzeptiert

@@ -3330,3 +3330,35 @@ Dateien von 335, also **97,6 %** native Dateiparität. `unix` steht bei 13/13
 und `scripts/verify.py` bei 498 Gates. Offen sind ausschließlich acht
 macOS-Plattformdateien. Laufwerk `D:` ist weiterhin nicht eingebunden; ein
 neuer Retail-Assetlauf war deshalb nicht möglich.
+
+## 2026-10-31: Retail-Datenträger wieder verfügbar und Collision-Grenzen gehärtet
+
+`D:/Quake3/baseq3` ist wieder verfügbar. Die Abnahme verwendet die echten
+Retailarchive `pak0.pk3` (479.493.658 Bytes) und `pak1.pk3` (10.782 Bytes).
+Der sequentielle Lauf bestand den Engine-/Netzwerk-/Snapshot-/Game-Lifecycle,
+alle 31 Retail-BSP-Patch-, Facet- und Bevelvergleiche, 4.096 Brush- und 4.096
+unveränderte C-Tracefälle, die vollständige 32-teilige Bot-Suite mit 30
+Retail-AAS-Dateien und 145 Botdateien sowie die folgenden Gameplay-, Client-,
+Waffen-, Vote-, Header-, QCommon-, Renderer-, Audio-, PK3- und Dateisystemgates.
+Der restliche unveränderte 498-Gate-Satz wurde in diesem inkrementellen Block
+nicht erneut vollständig bis zum Ende ausgeführt; die betroffenen Fokusgates
+und der native Hauptbuild sind grün.
+
+Die Abnahme deckte zwei konkrete Fehler auf. Erstens dürfen BSP-Submodelle die
+reservierten Handles 254/255 nicht überschatten; der Loader verwirft solche
+malformierten Modelltabellen nun an der Vertrauensgrenze. Zweitens speichert
+der temporäre Collision-Hull explizit, ob `CM_TempBoxModel` ein Capsule-Modell
+initialisiert hat. Dadurch wird ein nacktes Handle 254 sicher abgelehnt,
+während Capsule-gegen-Capsule und der originale reziproke
+Box-gegen-Capsule-Pfad nach Initialisierung vollständig funktionieren.
+`test_rejections.py` besteht 115 Negativfälle, `test_cm_trace_complete.py`
+4.096 C-Differenzfälle plus alle Capsule-Verträge und
+`test_cm_load_complete.py` die Retail-q3dm1-Ladeverträge.
+
+Ein unabhängiger Namenskonflikt im BotAI-Vertrag wurde ebenfalls beseitigt;
+das direkte C-Orakel und alle 30 BotAI-Kommando-/Statusverträge bestehen.
+`scripts/verify.py --start-at <gate.py>` erlaubt nun, lange Retail-Läufe nach
+einem behobenen Gate deterministisch fortzusetzen. Inventarprüfung und
+Python-Syntaxprüfung sind grün. Der frisch gebaute
+`build/MiniQuake3.exe`-Stand hat SHA-256
+`08b5b6bc75d2a66688b2e7265dd2e952f710e8d0740ab4a932e3218d96eacd80`.
