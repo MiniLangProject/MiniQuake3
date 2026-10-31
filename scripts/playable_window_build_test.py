@@ -53,6 +53,7 @@ RASTER_EXPORTS = (
     "playable_window_gl_activate",
     "playable_window_gl_end_frame",
     "playable_window_gl_log_comment",
+    "playable_window_presented_non_black",
     "playable_window_clear_depth",
     "playable_window_sample_depth",
     "playable_window_set_depth_range",

@@ -40,7 +40,7 @@ def main() -> int:
     ]
     report = {
         "passed": True,
-        "scope": "Productive MiniLang FFI startup, Win32 window creation, WGL initialization and clean shutdown.",
+        "scope": "Productive MiniLang FFI startup, Win32 window creation, WGL initialization, non-blank presented loading frame and clean shutdown.",
         "sources": {
             str(path.relative_to(ROOT)).replace("\\", "/"): sha(path) for path in files
         },

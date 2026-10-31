@@ -53,7 +53,7 @@ reservierte Box-/Capsule-Handles können keine BSP-Submodelle mehr überschatten
 und ein Capsule-Handle ist erst nach `CM_TempBoxModel` gültig, ohne den
 originalen reziproken Box-gegen-Capsule-Pfad zu verlieren. Der aktuelle native
 Windows-Build hat SHA-256
-`08b5b6bc75d2a66688b2e7265dd2e952f710e8d0740ab4a932e3218d96eacd80`.
+`9673c22b577bab94c1d914bac6a47f20daaea5f0d1e4034d792b1b1389dd953d`.
 
 Der vorherige Integrationsblock schloss alle sieben Headless-/Null-
 Plattformdateien mit 64 Symbolen. Client, Eingabe, OpenGL, Audio und ausgehende
@@ -431,8 +431,10 @@ defaults through the extended nine-argument configuration entry point first;
 that call exposed an integer-only Win64 FFI stack-argument defect in the frozen
 MiniLang compiler and caused error 7481 before a window was created. A dedicated
 startup gate now opens the real Win32/WGL window through MiniLang and shuts it
-down again. Custom modes use three ABI-safe configuration calls for driver,
-pixel format and display settings.
+down again. It also reads the synchronized presented surface and rejects a
+blank loading frame, so a successful process start without visible pixels no
+longer passes the gate. Custom modes use three ABI-safe configuration calls for
+driver, pixel format and display settings.
 
 The current preview opens a native Windows window and renders `q3dm1` with a
 MiniLang-driven software rasterizer, depth buffering, BSP lightmaps and full

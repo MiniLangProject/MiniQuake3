@@ -16,6 +16,7 @@ __declspec(dllimport) int playable_window_gl_has_extension(const unsigned char *
 __declspec(dllimport) int playable_window_gl_set_swap_interval(int);
 __declspec(dllimport) void playable_window_begin_frame(int,int,int);
 __declspec(dllimport) void playable_window_gl_end_frame(void);
+__declspec(dllimport) int playable_window_presented_non_black(void);
 __declspec(dllimport) void playable_window_gl_restore_gamma(void);
 __declspec(dllimport) void playable_window_shutdown(void);
 
@@ -40,6 +41,7 @@ int main(void) {
     if (!playable_window_gl_set_swap_interval(0)) return 7;
     playable_window_begin_frame(12,34,56);
     playable_window_gl_end_frame();
+    if (playable_window_presented_non_black() != 320 * 240) return 11;
     playable_window_gl_restore_gamma();
     playable_window_shutdown();
     puts("playable window WGL lifecycle: PASS");

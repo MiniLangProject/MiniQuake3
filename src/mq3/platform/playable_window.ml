@@ -47,6 +47,7 @@ extern function midiDeviceCountNative() from "playable_window.dll" symbol "playa
 extern function beginNative(red as i32,green as i32,blue as i32) from "playable_window.dll" symbol "playable_window_begin_frame" returns void
 extern function lineNative(x0 as i32,y0 as i32,x1 as i32,y1 as i32,red as i32,green as i32,blue as i32) from "playable_window.dll" symbol "playable_window_draw_line" returns void
 extern function presentNative() from "playable_window.dll" symbol "playable_window_present" returns void
+extern function presentedNonBlackNative() from "playable_window.dll" symbol "playable_window_presented_non_black" returns i32
 extern function shutdownNative() from "playable_window.dll" symbol "playable_window_shutdown" returns void
 extern function clearDepthNative(depth as double) from "playable_window.dll" symbol "playable_window_clear_depth" returns void
 extern function sampleDepthNative(x as i32,y as i32) from "playable_window.dll" symbol "playable_window_sample_depth" returns double
@@ -219,6 +220,7 @@ function drawLine(a,b,red,green,blue)
   lineNative(numeric.trunc32(a.x),numeric.trunc32(a.y),numeric.trunc32(b.x),numeric.trunc32(b.y),red,green,blue);return void
 end function
 function present() presentNative();return void end function
+function presentedNonBlack() return presentedNonBlackNative() end function
 function endFrame() glEndFrameNative();return void end function
 function shutdown() shutdownNative();return void end function
 function clearDepth(depth) clearDepthNative(depth);return void end function

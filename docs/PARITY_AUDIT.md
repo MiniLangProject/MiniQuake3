@@ -3405,11 +3405,15 @@ bereits setzt. Konfigurierbare Modi teilen Treiber, Pixelformat und
 Displayeinstellungen auf drei Win64-ABI-sichere Aufrufe auf; der ursprüngliche
 C-Einstieg bleibt kompatibel. Der native `/W4 /WX`-Test prüft beide Oberflächen.
 Das neue Gate `test_playable_window_startup.py` kompiliert außerdem einen echten
-MiniLang-Smoke, öffnet ein Win32-/WGL-Fenster und fährt es sauber herunter.
+MiniLang-Smoke, öffnet ein Win32-/WGL-Fenster, zeichnet den Ladebildschirm und
+verlangt mindestens 100 nichtschwarze Pixel aus der synchronisierten tatsächlich
+präsentierten Oberfläche, bevor es das Fenster sauber herunterfährt. Damit
+wird neben dem früheren Startabbruch auch die bereits beobachtete
+Schwarzbildregression automatisch erfasst.
 
 Die native Fenster-, Eingabe-, Raster- und WGL-Suite, 14 FPS-Titel-Verträge und
 56 Viewer-Verträge sind grün. Der vollständige Hauptbuild wurde danach mit
 `D:/Quake3/baseq3/pak0.pk3` und `maps/q3dm1.bsp` über denselben `--play`-Befehl
 wie `Play-MiniQuake3.cmd` gestartet; er blieb ohne Fehler offen und wurde nach
 zehn Sekunden kontrolliert beendet. Der frische Hauptbuild hat SHA-256
-`0d0aa6218bf581d79a523a64f886adc909b3428243ea96844c6e347dbadbb02a`.
+`9673c22b577bab94c1d914bac6a47f20daaea5f0d1e4034d792b1b1389dd953d`.

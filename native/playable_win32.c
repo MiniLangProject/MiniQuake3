@@ -2940,6 +2940,20 @@ PLAYABLE_API void playable_window_present(void) {
     ReleaseSRWLockExclusive(&presentationLock);
 }
 
+PLAYABLE_API int playable_window_presented_non_black(void) {
+    SIZE_T index;
+    SIZE_T count;
+    int nonBlack = 0;
+    if (!presentedPixels || surfaceWidth <= 0 || surfaceHeight <= 0) return 0;
+    count = (SIZE_T)surfaceWidth * (SIZE_T)surfaceHeight;
+    AcquireSRWLockShared(&presentationLock);
+    for (index = 0; index < count; ++index) {
+        if ((presentedPixels[index] & 0x00ffffffu) != 0) ++nonBlack;
+    }
+    ReleaseSRWLockShared(&presentationLock);
+    return nonBlack;
+}
+
 PLAYABLE_API void playable_window_gl_end_frame(void) { playable_window_present(); }
 
 PLAYABLE_API void playable_window_gl_log_comment(const unsigned char *comment, int length) {
