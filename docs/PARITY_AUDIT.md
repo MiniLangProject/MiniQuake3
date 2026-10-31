@@ -3421,11 +3421,15 @@ zehn Sekunden kontrolliert beendet. Der frische Hauptbuild hat SHA-256
 ## 2026-10-31: Strenger Funktionsabgleich und Original-QVM-Standardstart
 
 Der bisherige 335/335-Dateizähler war kein belastbarer Beleg für vollständige
-Parität: 61 als `ported` deklarierte Ledger-Zeilen enthielten gleichzeitig
-1.011 nicht zugeordnete Originalsymbole. `parity_inventory.py` berechnet den
+Parität: Nach der Bereinigung vier vollständig geprüfter Botlib-Zeilen enthalten
+noch 57 als `ported` deklarierte Ledger-Zeilen gleichzeitig 939 nicht
+zugeordnete Originalsymbole. `parity_inventory.py` berechnet den
 effektiven Status nun unabhängig von dieser Deklaration und stuft jede solche
-Datei zwingend auf `partial` zurück. Das Ergebnis lautet **274 vollständig
-zugeordnete und 61 teilweise zugeordnete Dateien**. Der generierte
+Datei zwingend auf `partial` zurück. Das Ergebnis lautet **278 vollständig
+zugeordnete und 57 teilweise zugeordnete Dateien**. `be_interface.c`,
+`l_crc.c`, `l_libvar.c` und `l_script.c` besitzen vollständige unveränderte-C-,
+native und Retailnachweise; ihre Ledger-Zuordnungen decken nun das jeweilige
+Symbolinventar ohne Schema-Mehrdeutigkeit ab. Der generierte
 Markdownbericht wird auf Aktualität geprüft; ein neues Gate
 verhindert, dass eine effektiv portierte Datei offene Symbole trägt.
 

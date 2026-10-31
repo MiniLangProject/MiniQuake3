@@ -8435,6 +8435,7 @@
       "symbol_mapping": [
         {
           "original": "all 16 interface symbols and complete API-v2 export table",
+          "covers_all_candidates": true,
           "target_files": [
             "src/mq3/botlib/be_interface.ml",
             "src/mq3/botlib/lifecycle_runtime.ml",
@@ -8582,31 +8583,31 @@
       ],
       "symbol_mapping": [
         {
-          "source": "CRC_Init",
+          "original": "CRC_Init",
           "target": "botlib.crc16.init",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "CRC_ProcessByte",
+          "original": "CRC_ProcessByte",
           "target": "botlib.crc16.processByte",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "CRC_Value",
+          "original": "CRC_Value",
           "target": "botlib.crc16.value",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "CRC_ProcessString",
+          "original": "CRC_ProcessString",
           "target": "botlib.crc16.processSpan",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "CRC_ContinueProcessString",
+          "original": "CRC_ContinueProcessString",
           "target": "botlib.crc16.continueSpan",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
@@ -8670,79 +8671,79 @@
       ],
       "symbol_mapping": [
         {
-          "source": "LibVarStringValue",
+          "original": "LibVarStringValue",
           "target": "botlib.lib_variables.stringValue",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "LibVarAlloc",
+          "original": "LibVarAlloc",
           "target": "botlib.lib_variables.alloc",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "LibVarDeAlloc",
+          "original": "LibVarDeAlloc",
           "target": "botlib.lib_variables.deAlloc",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "LibVarDeAllocAll",
+          "original": "LibVarDeAllocAll",
           "target": "botlib.lib_variables.deAllocAll",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "LibVarGet",
+          "original": "LibVarGet",
           "target": "botlib.lib_variables.get",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "LibVarGetString",
+          "original": "LibVarGetString",
           "target": "botlib.lib_variables.getString",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "LibVarGetValue",
+          "original": "LibVarGetValue",
           "target": "botlib.lib_variables.getValue",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "LibVar",
+          "original": "LibVar",
           "target": "botlib.lib_variables.variable",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "LibVarString",
+          "original": "LibVarString",
           "target": "botlib.lib_variables.variableString",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "LibVarValue",
+          "original": "LibVarValue",
           "target": "botlib.lib_variables.variableValue",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "LibVarSet",
+          "original": "LibVarSet",
           "target": "botlib.lib_variables.set",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "LibVarChanged",
+          "original": "LibVarChanged",
           "target": "botlib.lib_variables.changed",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
         },
         {
-          "source": "LibVarSetNotModified",
+          "original": "LibVarSetNotModified",
           "target": "botlib.lib_variables.setNotModified",
           "status": "ported",
           "scope": "Unchanged Baseq3 differential records plus productive MiniLang contracts."
@@ -9986,6 +9987,7 @@
         },
         {
           "original": "Complete l_script.c lexer surface (39/39 symbols)",
+          "covers_all_candidates": true,
           "target_files": [
             "src/mq3/botlib/l_script.ml",
             "src/mq3/botlib/l_precomp.ml",

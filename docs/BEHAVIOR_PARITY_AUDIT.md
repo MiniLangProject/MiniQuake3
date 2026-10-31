@@ -42,7 +42,7 @@ Statusdefinition:
 | Waffen, Treffer, Projektile und Schaden | `game/g_weapon.c`, `g_missile.c`, `g_combat.c`, `cgame/cg_weapons.c`, `cg_effects.c` | Original-QVMs plus Renderer-/Sound-Traps; `test_g_weapon_complete.py`, `test_cgame_weapons.py`, `test_weapons.py` | **QVM-original / teilweise** | Logik aller Baseq3-Waffen ist vorhanden. Visuelle Effekte, Decals, Licht und Sound müssen pro Waffe noch bild-/audiometrisch gegen das Original abgenommen werden. |
 | Items, Powerups und Trigger | `game/g_items.c`, `g_trigger.c`, `bg_misc.c` | Original-QVMs, Game-/Collision-Traps; `test_g_items_complete.py`, `test_items.py`, `test_jump_pad_items_retail.py` | **QVM-original** | Funktionale Verträge sind vorhanden; ein kompletter 31-Karten-Pickup-/Respawn-Langzeittest fehlt. |
 | Spieltypen FFA, Tournament, Team, CTF | `game/g_main.c`, `g_team.c`, `g_cmds.c` | unverändertes `qagame.qvm`; Game- und Teamtests | **QVM-original / teilweise** | Regeln und Commands stammen aus Originalbytecode. Mehrclient-End-to-end-Partien inklusive Scorelimit, Warmup, Vote, Teamwechsel und Overtime sind nicht als sichtbare vollständige Abnahme vorhanden. |
-| Bots und AAS | `game/ai_*.c`, `botlib/be_*.c`, `botlib/aas_*.c` | QVM-Botcode plus native Botlib/AAS-Traps; `test_bot_deathmatch_full.py`, `test_botlib_retail_qagame.py`, 30 Retail-AAS-Dateien | **Teilweise** | Ein Bot erzeugt echte Bewegungs-Usercmds und Navigation ist breit getestet. Mehrere Bots, alle Karten, alle Spieltypen und stundenlange Routing-/Combat-Stabilität sind nicht 1:1 abgenommen; vier Botlib-Dateien besitzen offene Symbole. |
+| Bots und AAS | `game/ai_*.c`, `botlib/be_*.c`, `botlib/aas_*.c` | QVM-Botcode plus native Botlib/AAS-Traps; `test_bot_deathmatch_full.py`, `test_botlib_retail_qagame.py`, 30 Retail-AAS-Dateien | **Teilweise** | Ein Bot erzeugt echte Bewegungs-Usercmds und Navigation ist breit getestet. Die zuvor als offen gezählten Symbole in `be_interface.c`, `l_crc.c`, `l_libvar.c` und `l_script.c` sind durch vollständige Differential- und Retailnachweise geschlossen. Mehrere Bots, alle Karten, alle Spieltypen und stundenlange Routing-/Combat-Stabilität sind weiterhin nicht 1:1 abgenommen. |
 | Snapshots, Servercommands und Client-Prediction | `server/sv_snapshot.c`, `client/cl_parse.c`, `cgame/cg_snapshot.c` | `server/snapshot_*.ml`, `client/cgame_snapshot.ml`, QVM-Match; Snapshot- und Cgame-Tests | **Teilweise** | Lokale Snapshots und Deltawege funktionieren. Reale Paketverlust-, Fragment-, Rate-, TimeNudge- und Remote-Server-Szenarien fehlen als gemeinsamer Langzeittest. |
 | LAN/Internet-Multiplayer | `qcommon/net_*.c`, `client/cl_main.c`, `server/sv_client.c`, `sv_net_chan.c` | UDP/DNS-Adapter, `network_match_loop.ml`, Serverbrowser; `test_network_match_multi.py`, `test_server_netchan.py`, `test_ui_lan_udp.py` | **Offen** | Kein vollständiger Originalclient↔Originalserver-/MiniQuake3-Internet-Kompatibilitätslauf mit Challenge, Downloads, Paketverlust, mehreren Clients und Matchende. Bedienung des Serverbrowsers ist daher nicht 1:1 freigegeben. |
 | Cgame-Szene, Modelle, Animationen und Effekte | `cgame/cg_*.c`, `renderer/tr_*.c` | unverändertes `cgame.qvm`, `qvm_scene_*.ml`, MD3/MD4-, Portal-, Partikel- und Effektpfade | **Teilweise** | Cgame reicht Original-Szenebefehle ein. Engine-Renderer ist kein vollständiger `renderer/`-Port; 15 Rendererdateien besitzen offene Symbole. Bildvergleich für Spieleranimationen, Shaderstufen, Nebel, Portale, Marks, Flares und dynamisches Licht fehlt. |
@@ -58,9 +58,9 @@ Statusdefinition:
 
 Der streng erzeugte Bericht zählt 335 Runtime-/Plattformdateien:
 
-- 274 effektiv `ported`
-- 61 effektiv `partial`
-- 1.011 noch nicht zugeordnete Originalsymbole
+- 278 effektiv `ported`
+- 57 effektiv `partial`
+- 939 noch nicht zugeordnete Originalsymbole
 
 Eine Ledger-Zeile mit Status `ported` wird automatisch auf `partial`
 herabgestuft, sobald sie offene Symbole enthält. Damit kann die frühere
@@ -87,7 +87,7 @@ alle folgenden Gates gemeinsam grün sind:
    mehrstündige Läufe.
 8. Demoaufnahme/-wiedergabe, Cinematics, Mods und Konfigurations-Roundtrips sind
    end-to-end kompatibel.
-9. Alle 1.011 offenen Symbolzuordnungen sind implementiert oder mit einer
+9. Alle 939 offenen Symbolzuordnungen sind implementiert oder mit einer
    konkreten, geprüften Hostadapterbegründung geschlossen.
 10. Der vollständige Retail-Verifikationslauf und eine manuelle Windows-Abnahme
     laufen regressionsfrei und mit spielbarer Framerate.

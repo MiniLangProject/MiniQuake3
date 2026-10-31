@@ -28,9 +28,9 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der strenge Quellabgleich umfasst 335 Runtime-/Plattformdateien: **274 sind
-symbolvollständig zugeordnet, 61 sind teilweise zugeordnet**. In diesen 61
-Dateien bleiben **1.011 Originalsymbole** ohne belegte MiniLang-Zuordnung. Der
+Der strenge Quellabgleich umfasst 335 Runtime-/Plattformdateien: **278 sind
+symbolvollständig zugeordnet, 57 sind teilweise zugeordnet**. In diesen 57
+Dateien bleiben **939 Originalsymbole** ohne belegte MiniLang-Zuordnung. Der
 frühere reine Dateizähler meldete fälschlich 335/335 vollständig, obwohl das
 Ledger für dieselben Dateien offene Symbole enthielt; Bericht und Gate werten
 solche Dateien jetzt zwingend als `partial`. Der separate

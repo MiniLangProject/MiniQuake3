@@ -16,7 +16,7 @@ als `ported` markierte Datei mit noch offenen Originalsymbolen zählt hier als
 
 | Bereich | Dateien | Portiert | Teilweise | Nicht begonnen | Original behalten |
 |---|---:|---:|---:|---:|---:|
-| `botlib` | 53 | 49 | 4 | 0 | 0 |
+| `botlib` | 53 | 53 | 0 | 0 | 0 |
 | `cgame` | 25 | 24 | 1 | 0 | 0 |
 | `client` | 19 | 19 | 0 | 0 | 0 |
 | `game` | 65 | 49 | 16 | 0 | 0 |
@@ -30,9 +30,9 @@ als `ported` markierte Datei mit noch offenen Originalsymbolen zählt hier als
 | `ui` | 12 | 12 | 0 | 0 | 0 |
 | `unix` | 13 | 13 | 0 | 0 | 0 |
 | `win32` | 13 | 12 | 1 | 0 | 0 |
-| **Gesamt** | **335** | **274** | **61** | **0** | **0** |
+| **Gesamt** | **335** | **278** | **57** | **0** | **0** |
 
-Offene Originalsymbole: **1011** in **61** gegenüber dem Ledger herabgestuften Dateien.
+Offene Originalsymbole: **939** in **57** gegenüber dem Ledger herabgestuften Dateien.
 
 `partial` bedeutet, dass mindestens ein Originalpfad belegt ist, aber weiterhin
 offene Symbole oder ausdrücklich dokumentierte Grenzen bestehen. `not_started`
@@ -79,11 +79,11 @@ Teil dieser Tabelle.
 | `code/botlib/be_ai_weight.c` | `botlib` | `ported` | `ported` | 24 | 24 | 0 |
 | `code/botlib/be_ai_weight.h` | `botlib` | `ported` | `ported` | 16 | 16 | 0 |
 | `code/botlib/be_ea.c` | `botlib` | `ported` | `ported` | 32 | 32 | 0 |
-| `code/botlib/be_interface.c` | `botlib` | `partial` | `ported` | 16 | 0 | 16 |
+| `code/botlib/be_interface.c` | `botlib` | `ported` | `ported` | 16 | 16 | 0 |
 | `code/botlib/be_interface.h` | `botlib` | `ported` | `ported` | 6 | 6 | 0 |
-| `code/botlib/l_crc.c` | `botlib` | `partial` | `ported` | 5 | 0 | 5 |
+| `code/botlib/l_crc.c` | `botlib` | `ported` | `ported` | 5 | 5 | 0 |
 | `code/botlib/l_crc.h` | `botlib` | `ported` | `ported` | 0 | 0 | 0 |
-| `code/botlib/l_libvar.c` | `botlib` | `partial` | `ported` | 13 | 0 | 13 |
+| `code/botlib/l_libvar.c` | `botlib` | `ported` | `ported` | 13 | 13 | 0 |
 | `code/botlib/l_libvar.h` | `botlib` | `ported` | `ported` | 0 | 0 | 0 |
 | `code/botlib/l_log.c` | `botlib` | `ported` | `ported` | 7 | 7 | 0 |
 | `code/botlib/l_log.h` | `botlib` | `ported` | `ported` | 7 | 7 | 0 |
@@ -91,7 +91,7 @@ Teil dieser Tabelle.
 | `code/botlib/l_memory.h` | `botlib` | `ported` | `ported` | 14 | 14 | 0 |
 | `code/botlib/l_precomp.c` | `botlib` | `ported` | `ported` | 82 | 82 | 0 |
 | `code/botlib/l_precomp.h` | `botlib` | `ported` | `ported` | 49 | 49 | 0 |
-| `code/botlib/l_script.c` | `botlib` | `partial` | `ported` | 39 | 1 | 38 |
+| `code/botlib/l_script.c` | `botlib` | `ported` | `ported` | 39 | 39 | 0 |
 | `code/botlib/l_script.h` | `botlib` | `ported` | `ported` | 106 | 106 | 0 |
 | `code/botlib/l_struct.c` | `botlib` | `ported` | `ported` | 9 | 9 | 0 |
 | `code/botlib/l_struct.h` | `botlib` | `ported` | `ported` | 16 | 16 | 0 |
@@ -385,10 +385,6 @@ Die folgende vollständige Liste dient als Arbeitswarteschlange. Leere
 Symbolinventare müssen beim nächsten Audit direkt aus der Originaldatei ergänzt
 werden; sie sind kein Nachweis vollständiger Parität.
 
-- `code/botlib/be_interface.c` (partial): `BotExportTest`, `BotLibSetup`, `Export_BotLibLoadMap`, `Export_BotLibSetup`, `Export_BotLibShutdown`, `Export_BotLibStartFrame`, `Export_BotLibUpdateEntity`, `Export_BotLibVarGet`, `Export_BotLibVarSet`, `GetBotLibAPI`, `Init_AAS_Export`, `Init_AI_Export`, `Init_EA_Export`, `Sys_MilliSeconds`, `ValidClientNumber`, `ValidEntityNumber`
-- `code/botlib/l_crc.c` (partial): `CRC_ContinueProcessString`, `CRC_Init`, `CRC_ProcessByte`, `CRC_ProcessString`, `CRC_Value`
-- `code/botlib/l_libvar.c` (partial): `LibVar`, `LibVarAlloc`, `LibVarChanged`, `LibVarDeAlloc`, `LibVarDeAllocAll`, `LibVarGet`, `LibVarGetString`, `LibVarGetValue`, `LibVarSet`, `LibVarSetNotModified`, `LibVarString`, `LibVarStringValue`, `LibVarValue`
-- `code/botlib/l_script.c` (partial): `EndOfScript`, `FileLength`, `FreeScript`, `GetScriptFlags`, `LoadScriptFile`, `LoadScriptMemory`, `NumLinesCrossed`, `NumberValue`, `PS_CheckTokenString`, `PS_CheckTokenType`, `PS_CreatePunctuationTable`, `PS_ExpectAnyToken`, `PS_ExpectTokenString`, `PS_ExpectTokenType`, `PS_NextWhiteSpaceChar`, `PS_ReadEscapeCharacter`, `PS_ReadLiteral`, `PS_ReadName`, `PS_ReadNumber`, `PS_ReadPrimitive`, `PS_ReadPunctuation`, `PS_ReadString`, `PS_ReadWhiteSpace`, `PS_SetBaseFolder`, `PS_SkipUntilString`, `PS_UnreadLastToken`, `PS_UnreadToken`, `PunctuationFromNum`, `ReadSignedFloat`, `ReadSignedInt`, `ResetScript`, `ScriptError`, `ScriptSkipTo`, `ScriptWarning`, `SetScriptFlags`, `SetScriptPunctuations`, `StripDoubleQuotes`, `StripSingleQuotes`
 - `code/cgame/cg_syscalls.asm` (partial): `trap_Print`, `trap_Error`, `trap_Milliseconds`, `trap_Cvar_Register`, `trap_Cvar_Update`, `trap_Cvar_Set`, `trap_Cvar_VariableStringBuffer`, `trap_Argc`, `trap_Argv`, `trap_Args`, `trap_FS_FOpenFile`, `trap_FS_Read`, `trap_FS_Write`, `trap_FS_FCloseFile`, `trap_SendConsoleCommand`, `trap_AddCommand`, `trap_SendClientCommand`, `trap_UpdateScreen`, `trap_CM_LoadMap`, `trap_CM_NumInlineModels`, `trap_CM_InlineModel`, `trap_CM_LoadModel`, `trap_CM_TempBoxModel`, `trap_CM_PointContents`, `trap_CM_TransformedPointContents`, `trap_CM_BoxTrace`, `trap_CM_TransformedBoxTrace`, `trap_CM_MarkFragments`, `trap_S_StartSound`, `trap_S_StartLocalSound`, `trap_S_ClearLoopingSounds`, `trap_S_AddLoopingSound`, `trap_S_UpdateEntityPosition`, `trap_S_Respatialize`, `trap_S_RegisterSound`, `trap_S_StartBackgroundTrack`, `trap_R_LoadWorldMap`, `trap_R_RegisterModel`, `trap_R_RegisterSkin`, `trap_R_RegisterShader`, `trap_R_ClearScene`, `trap_R_AddRefEntityToScene`, `trap_R_AddPolyToScene`, `trap_R_AddLightToScene`, `trap_R_RenderScene`, `trap_R_SetColor`, `trap_R_DrawStretchPic`, `trap_R_ModelBounds`, `trap_R_LerpTag`, `trap_GetGlconfig`, `trap_GetGameState`, `trap_GetCurrentSnapshotNumber`, `trap_GetSnapshot`, `trap_GetServerCommand`, `trap_GetCurrentCmdNumber`, `trap_GetUserCmd`, `trap_SetUserCmdValue`, `trap_R_RegisterShaderNoMip`, `trap_MemoryRemaining`, `trap_R_RegisterFont`, `trap_Key_IsDown`, `trap_Key_GetCatcher`, `trap_Key_SetCatcher`, `trap_Key_GetKey`, `trap_PC_AddGlobalDefine`, `trap_PC_LoadSource`, `trap_PC_FreeSource`, `trap_PC_ReadToken`, `trap_PC_SourceFileAndLine`, `trap_S_StopBackgroundTrack`, `trap_RealTime`, `trap_SnapVector`, `trap_RemoveCommand`, `trap_R_LightForPoint`, `trap_CIN_PlayCinematic`, `trap_CIN_StopCinematic`, `trap_CIN_RunCinematic`, `trap_CIN_DrawCinematic`, `trap_CIN_SetExtents`, `trap_R_RemapShader`, `trap_S_AddRealLoopingSound`, `trap_S_StopLoopingSound`, `trap_CM_TempCapsuleModel`, `trap_CM_CapsuleTrace`, `trap_CM_TransformedCapsuleTrace`, `trap_R_AddAdditiveLightToScene`, `trap_GetEntityToken`, `trap_R_AddPolysToScene`, `trap_R_inPVS`, `trap_FS_Seek`, `memset`, `memcpy`, `strncpy`, `sin`, `cos`, `atan2`, `sqrt`, `floor`, `ceil`, `testPrintInt`, `testPrintFloat`, `acos`
 - `code/game/bg_misc.c` (partial): `BG_FindItemForHoldable`, `BG_FindItemForPowerup`
 - `code/game/bg_pmove.c` (partial): `PM_CheckStuck`, `PM_InvulnerabilityMove`, `sqrt`
