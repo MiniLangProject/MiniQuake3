@@ -3184,3 +3184,32 @@ Dateiparität. Der Legacy-UI-Bereich steht bei 12/12; `scripts/verify.py`
 enthält nun 493 Gates. Die verbleibenden Lücken sind drei QCommon-JIT-Dateien,
 je ein CGame- und Game-Syscall-/Buildpfad sowie Unix-, macOS-, Null- und
 Spline-Plattformcode.
+
+## 2026-10-31: CGame- und QAGame-QVM-Assembly-ABI geschlossen
+
+Die letzten beiden offenen Spielmoduldateien `code/cgame/cg_syscalls.asm`
+und `code/game/g_syscalls.asm` sind vollständig nativ zugeordnet. Die neue
+Fassade `qvm_assembly_abi.ml` bewahrt alle **102 CGame-** und **194
+QAGame-Imports** in Originalreihenfolge mit ihren exakten negativen
+q3asm-Ordinalen. Die historische doppelte Ordinale `-546` für
+`trap_BotFreeItemWeights` und `trap_BotSaveGoalFuzzyLogic` bleibt
+absichtlich unverändert.
+
+Das Vollständigkeitsgate gleicht Namen und Ordinalen bei jedem Lauf mit den
+unveränderten ASM-Dateien ab, verlangt produktive MiniLang-Wrapper für jeden
+Laufzeit-Trap und führt zehn ABI-Verträge aus. Nur fünf im Original
+assembly-only deklarierte Kompatibilitätseinstiege werden ausdrücklich als
+solche geführt; die produktiven CGame-/QAGame-Wrapper und VM-Dispatcher
+besitzen die eigentliche Laufzeitimplementierung. Gate, Verträge sowie die
+vorhandenen CGame- und Game-Syscallregressionen sind grün.
+Der sequentielle Windows-Hauptbuild ist ebenfalls grün;
+`build/MiniQuake3.exe` hat unverändert SHA-256
+`d327538fdd7d8a194e486cd0b3458028eea8e158fba18bcca121cf77944cf941`.
+
+Das generierte Inventar zählt nun **296 portierte, keine teilweise portierte
+und 39 noch nicht begonnene** Dateien von insgesamt 335, also **88,4 %**
+native Dateiparität. CGame steht bei 25/25, Game bei 65/65 und
+`scripts/verify.py` enthält 494 Gates. Ein erneuter Retail-Assetlauf bleibt
+in diesem inkrementellen Lauf aus, weil Laufwerk `D:` nicht eingebunden ist.
+Offen sind ausschließlich drei QCommon-JIT-, acht Spline- sowie
+Unix-, macOS- und Null-Plattformdateien.

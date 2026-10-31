@@ -28,9 +28,17 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **294 sind
-vollständig portiert, keine ist teilweise portiert und 41 sind noch nicht
-begonnen**. Der jüngste Integrationsblock schließt die sechs verbliebenen
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **296 sind
+vollständig portiert, keine ist teilweise portiert und 39 sind noch nicht
+begonnen**. Der jüngste Integrationsblock schließt die beiden verbliebenen
+QVM-Assembly-Importtabellen `cg_syscalls.asm` und `g_syscalls.asm`.
+Alle 102 CGame- und 194 QAGame-Symbole samt negativer q3asm-Ordinalen sind
+exakt erfasst und an die produktiven nativen Wrapper sowie VM-Dispatcher
+gebunden. Dabei bleibt auch die originale doppelte QAGame-Ordinale `-546`
+erhalten. Das neue Gate und zehn ausführbare ABI-Verträge sind grün; CGame
+steht damit bei 25/25 und Game bei 65/65 Dateien.
+
+Der vorherige Integrationsblock schloss die sechs verbliebenen
 Legacy-Missionpack-UI-Dateien `keycodes.h`, `ui_local.h`, `ui_public.h`,
 `ui_shared.h`, `ui_syscalls.asm` und die absichtlich leere `ui_util.c`.
 Die kanonische MiniLang-ABI erfasst 112 Tastencodes, 97 UI-Imports, 97
@@ -68,7 +76,7 @@ texturierte Dreiecke, 17 Renderpässe, 26 Sounds und null nicht unterstützte
 Entities. Der frische `build/MiniQuake3.exe`-Stand hat SHA-256
 `d327538fdd7d8a194e486cd0b3458028eea8e158fba18bcca121cf77944cf941`.
 Die letzte vollständig am Stück ausgeführte Gesamtauswahl bleibt der
-dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 493 normale
+dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 494 normale
 Gates.
 
 Ein neuer Integrationsblock schließt `q_shared.h`, `win_main.c`, `win_net.c`,
