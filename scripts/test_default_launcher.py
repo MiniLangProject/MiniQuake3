@@ -9,7 +9,7 @@ from toolchain import ROOT
 def main() -> int:
     launcher = (ROOT / "Play-MiniQuake3.cmd").read_text(encoding="utf-8").lower()
     required = [
-        "--play-qvm",
+        "--menu-qvm",
         "build\\reference\\qvms",
         "qagame.qvm",
         "cgame.qvm",
@@ -20,9 +20,11 @@ def main() -> int:
     if missing:
         raise RuntimeError("default launcher is missing original-QVM requirements: " + ", ".join(missing))
     launch_lines = [line.strip() for line in launcher.splitlines() if "miniquake3.exe" in line and line.strip().startswith('"')]
-    if len(launch_lines) != 1 or " --play " in launch_lines[0] or "--play-qvm" not in launch_lines[0]:
-        raise RuntimeError("default launcher must start exactly one original-QVM game path")
-    print("PASS: default launcher uses original qagame/cgame/ui QVM interaction path")
+    if len(launch_lines) != 1 or " --play " in launch_lines[0] or "--menu-qvm" not in launch_lines[0]:
+        raise RuntimeError("default launcher must start exactly one original-QVM menu path")
+    if "load only after you start a match" not in launcher:
+        raise RuntimeError("default launcher must document deferred qagame/cgame loading")
+    print("PASS: default launcher starts original ui.qvm before deferred qagame/cgame loading")
     return 0
 
 

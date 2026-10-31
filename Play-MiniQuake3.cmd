@@ -32,9 +32,9 @@ if not exist "%MQ3_QVMS%\cgame.qvm" (
 if not exist "%MQ3_QVMS%\ui.qvm" (
   python scripts\build_qvms.py || exit /b 9
 )
-echo Starting MiniQuake3 with the original qagame, cgame and UI modules...
-echo The first asset/QVM load can take a while. The game window opens afterwards.
-echo Controls and menus use Quake III bindings; Escape opens the original in-game menu.
-"build\MiniQuake3.exe" --play-qvm "%MQ3_PAK%" "maps/q3dm1.bsp" "%MQ3_QVMS%"
+echo Starting the original Quake III main menu...
+echo qagame, cgame and map assets load only after you start a match.
+echo Controls and menus use the original Quake III bindings.
+"build\MiniQuake3.exe" --menu-qvm "%MQ3_PAK%" "maps/q3dm1.bsp" "%MQ3_QVMS%"
 if errorlevel 1 pause
 endlocal

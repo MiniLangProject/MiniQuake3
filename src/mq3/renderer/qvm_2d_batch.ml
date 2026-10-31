@@ -151,11 +151,11 @@ function refresh(catalog,queueCommands,assets,kinds,sourceWidth,sourceHeight,tar
   return catalog
 end function
 
-function build(archive,queueCommands,assets,kinds,firstTextureSlot,maxTextureSlots,sourceWidth,sourceHeight,targetWidth,targetHeight,shaderRemaps)
+function buildIndexed(archive,queueCommands,assets,kinds,firstTextureSlot,maxTextureSlots,sourceWidth,sourceHeight,targetWidth,targetHeight,shaderRemaps,scripts)
   if archive==void then return fail("PK3 archive is required") end if
   if firstTextureSlot<0 or maxTextureSlots<0 or firstTextureSlot+maxTextureSlots>512 then return fail("invalid native texture slot range") end if
   extracted=extract(queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth,targetHeight);if extracted is error then return extracted end if
-  scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if
+  if scripts==void or len(scripts)!=2 or scripts[0]==void then return fail("shared shader index is required") end if
   catalog=Catalog([],[],[],archive,scripts[0],scripts[1],len(extracted.quads),0,0,0,firstTextureSlot,firstTextureSlot+maxTextureSlots,shaderRemaps);endSlot=catalog.endTextureSlot
   current=[];currentHandle=-1
   for each quad in extracted.quads
@@ -175,6 +175,10 @@ function build(archive,queueCommands,assets,kinds,firstTextureSlot,maxTextureSlo
   end for
   if len(current)>0 then index=materialIndex(catalog.materials,currentHandle);run=createRun(index,currentHandle,catalog.materials[index],current);if run is error then return run end if;catalog.runs=catalog.runs+[run];catalog.emittedTriangles=catalog.emittedTriangles+run.triangleCount*len(run.passes) end if
   return catalog
+end function
+function build(archive,queueCommands,assets,kinds,firstTextureSlot,maxTextureSlots,sourceWidth,sourceHeight,targetWidth,targetHeight,shaderRemaps)
+  scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if
+  return buildIndexed(archive,queueCommands,assets,kinds,firstTextureSlot,maxTextureSlots,sourceWidth,sourceHeight,targetWidth,targetHeight,shaderRemaps,scripts)
 end function
 
 function upload(catalog)

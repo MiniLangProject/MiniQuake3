@@ -683,7 +683,7 @@ function qagameRealTime(context)
 end function
 function qagameSeek(context,handle,offset,origin) return memoryFileSeek.seek(context.files,handle,offset,origin) end function
 
-function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
+function bootConfiguredNamedMode(archive,map,now,qvmRoot,botsEnabled,mapName,startGame)
   if archive==void or map==void or now<0 then return fail("archive, map and non-negative time are required") end if
   entityBytes=slice(map.data,map.offsets[0],map.lengths[0]);serverLifecycle=serverInit.runtime();serverInit.SV_Init(serverLifecycle,void);registry=serverLifecycle.registry;seedCvars(registry);cvar.set2(registry,"mapname",mapName,true)
   if botsEnabled then cvar.set2(registry,"bot_enable","1",true) end if
@@ -737,6 +737,9 @@ function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
   context.pcRegistry=pcParser.create(context,pcLoad)
   runtimeHost=runtime.services();runtimeHost.context=context;runtimeHost.loadFn=imageLoader;runtimeHost.symbolFn=imageLoader;runtimeHost.developerFn=vmRuntimeDeveloper;runtimeHost.registerCvarFn=vmRuntimeRegister;runtimeHost.addCommandFn=vmRuntimeAddCommand
   machineRuntime=runtime.create(runtimeHost);if machineRuntime is error then return machineRuntime end if;context.machineRuntime=machineRuntime;runtime.init(machineRuntime)
+  // Quake III starts ui.qvm while disconnected.  Do not initialize the much
+  // heavier qagame/cgame pair until the user actually chooses a map.
+  if not startGame then return Boot(void,machineRuntime,context,void,void) end if
   shared=common.services(registry,context.commandState,context);shared.printFn=emitPrint;shared.errorFn=emitError;shared.millisecondsFn=milliseconds;shared.consoleFn=consoleCommand
   shared.openFn=openFile;shared.readFn=readFile;shared.writeFn=writeFile;shared.closeFn=closeFile
   gameSyscalls=qagame.services(shared,context);gameSyscalls.locateGameDataFn=locateGameData;gameSyscalls.dropClientFn=dropClient;gameSyscalls.sendServerCommandFn=sendServerCommand
@@ -751,9 +754,11 @@ function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName)
   gameVm.initialize(game,now,MAX_CLIENTS)
   return Boot(game,machineRuntime,context,void,void)
 end function
+function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName) return bootConfiguredNamedMode(archive,map,now,qvmRoot,botsEnabled,mapName,true) end function
 function bootConfigured(archive,map,now,qvmRoot,botsEnabled) return bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,"q3dm1") end function
 
 function bootWithQvms(archive,map,now,qvmRoot) return bootConfigured(archive,map,now,qvmRoot,false) end function
+function bootUiShell(archive,map,now,qvmRoot) return bootConfiguredNamedMode(archive,map,now,qvmRoot,false,"q3dm1",false) end function
 function bootWithBots(archive,map,now,qvmRoot) return bootConfigured(archive,map,now,qvmRoot,true) end function
 function bootWithBotsNamed(archive,map,mapName,now,qvmRoot) return bootConfiguredNamed(archive,map,now,qvmRoot,true,mapName) end function
 function boot(archive,map,now) return bootConfigured(archive,map,now,"",false) end function
@@ -1474,4 +1479,4 @@ function setUiUpdateInfo(value,updateInfoString)
   value.context.uiClient.updateInfoString=updateInfoString;return void
 end function
 
-function shutdown(value) if value!=void then cinematics.closeAll(value.context.cinematics);if value.ui!=void then cgameKeys.setCatcher(value.context.cgameKeys,cgameKeys.getCatcher(value.context.cgameKeys)&(~uiHost.KEYCATCH_UI));uiVm.shutdown(value.ui) end if;if value.context.uiLanUdp!=void then ignored=try(uiLanUdp.close(value.context.uiLanUdp));value.context.uiLanUdp=void end if;if value.cgame!=void then nativeCgameMain.shutdown(value.context.nativeMain,true);cgameVm.shutdown(value.cgame) end if;result=gameVm.shutdown(value.game);aiChatProfiles.clearCache(value.context.aiChat);aiChatStrings.clear(value.context.aiChatStrings);aiChatMatches.clear(value.context.aiChatMatches);aiConsoleMessages.shutdown(value.context.aiConsole);aiResourcePools.shutdown(value.context.aiResources);aiLevelItems.shutdown(value.context.aiLevelItems);aiItemWeights.shutdown(value.context.aiItemWeights);aiWeaponWeights.shutdown(value.context.aiWeaponWeights);return result end if;return void end function
+function shutdown(value) if value!=void then cinematics.closeAll(value.context.cinematics);if value.ui!=void then cgameKeys.setCatcher(value.context.cgameKeys,cgameKeys.getCatcher(value.context.cgameKeys)&(~uiHost.KEYCATCH_UI));uiVm.shutdown(value.ui) end if;if value.context.uiLanUdp!=void then ignored=try(uiLanUdp.close(value.context.uiLanUdp));value.context.uiLanUdp=void end if;if value.cgame!=void then nativeCgameMain.shutdown(value.context.nativeMain,true);cgameVm.shutdown(value.cgame) end if;result=void;if value.game!=void then result=gameVm.shutdown(value.game) end if;aiChatProfiles.clearCache(value.context.aiChat);aiChatStrings.clear(value.context.aiChatStrings);aiChatMatches.clear(value.context.aiChatMatches);aiConsoleMessages.shutdown(value.context.aiConsole);aiResourcePools.shutdown(value.context.aiResources);aiLevelItems.shutdown(value.context.aiLevelItems);aiItemWeights.shutdown(value.context.aiItemWeights);aiWeaponWeights.shutdown(value.context.aiWeaponWeights);return result end if;return void end function

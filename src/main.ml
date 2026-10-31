@@ -67,6 +67,7 @@ import mq3.client.cgame_time as clientCgameTime
 import mq3.client.playable_viewer as playableViewer
 import mq3.client.playable_app as playableApp
 import mq3.client.qvm_preview_app as qvmPreviewApp
+import mq3.client.qvm_menu_app as qvmMenuApp
 import mq3.engine.local_qvm_match as localQvmMatch
 import mq3.audio.wav as wav
 import mq3.platform.playable_audio as playableAudio
@@ -116,6 +117,9 @@ function printTrace(result)
 end function
 
 function main(args)
+  if len(args)==4 and args[0]=="--menu-qvm" then
+    archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmMenuApp.run(archive,map,args[3])
+  end if
   if len(args)==4 and args[0]=="--play-qvm" then
     archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmPreviewApp.run(archive,map,args[3])
   end if
@@ -254,6 +258,7 @@ function main(args)
   print "--play <archive.pk3> <maps/name.bsp>"
   print "--play-qvm <archive.pk3> <maps/name.bsp> <1.32b-qvm-directory>"
   print "--play-qvm-smoke <archive.pk3> <maps/name.bsp> <1.32b-qvm-directory> <frames>"
+  print "--menu-qvm <archive.pk3> <bootstrap-map.bsp> <1.32b-qvm-directory>"
   print "--play-bsp <map.bsp>"
   print "--play-smoke-bsp <map.bsp> <frames>"
   print "--play-smoke <archive.pk3> <maps/name.bsp> <frames>"

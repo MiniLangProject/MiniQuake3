@@ -432,15 +432,19 @@ das diesem Aufruf:
 
 ```powershell
 python scripts/build_qvms.py
-.\build\MiniQuake3.exe --play-qvm D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp build/reference/qvms
+.\build\MiniQuake3.exe --menu-qvm D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp build/reference/qvms
 ```
 
 Damit stammen Menü, HUD, Client- und Spielregeln aus `ui.qvm`, `cgame.qvm`
 und `qagame.qvm`; Bindings und Key-Catcher folgen dem Quake-III-Pfad. Der
 ältere vereinfachte Vertical-Slice bleibt nur als Diagnose mit `--play`
-erreichbar und ist nicht länger der Benutzer-Standard. Der erste QVM- und
-Assetaufbau kann mehrere Minuten dauern; das Spielfenster erscheint aktuell
-erst danach. Dies ist eine dokumentierte Startzeitlücke, kein Absturz.
+erreichbar und ist nicht länger der Benutzer-Standard. Der Standardstart bootet
+jetzt wie Quake III zuerst ausschließlich die unveränderte `ui.qvm` im Zustand
+`CA_DISCONNECTED`. `qagame.qvm`, `cgame.qvm`, der vollständige Shaderkatalog
+und die gewählte BSP werden erst geladen, wenn das Originalmenü selbst einen
+`map`-Befehl ausgibt. Auf dem Entwicklungsrechner war das sichtbare Hauptmenü
+damit in weniger als zwölf Sekunden stabil und bedienbar, statt vor dem Menü
+mehrere Minuten lang bereits `q3dm1` aufzubauen.
 
 The normal startup uses the native backend's built-in 24-bit colour, 24-bit
 depth and 8-bit stencil defaults. It intentionally does not send the same

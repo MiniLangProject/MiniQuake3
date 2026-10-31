@@ -120,12 +120,15 @@ function buildCache(map,patchError)
       bounds=faceBounds(map,offset);if bounds is error then return bounds end if;centers[faceIndex]=bounds[0];radii[faceIndex]=bounds[1]
       amount=faceTriangleCount(map,offset,patchError);if amount is error then return amount end if;counts[faceIndex]=amount
       normals[faceIndex]=[f32(map,offset+84),f32(map,offset+88),f32(map,offset+92)]
+      // Extract each face into its final bucket.  The former whole-map
+      // extraction repeatedly appended to one ever-growing immutable array,
+      // turning startup into quadratic copying on retail maps.
+      faceData=render.extractWithPatchError(map,[faceIndex],amount,patchError);if faceData is error then return faceData end if
+      byFace[faceIndex]=faceData.triangles
     end if
   end for
-  faces=[];for faceIndex=0 to map.counts[13]-1 faces=faces+[faceIndex] end for
-  allTriangles=render.extractWithPatchError(map,faces,2147483647,patchError);if allTriangles is error then return allTriangles end if
-  for each triangle in allTriangles.triangles byFace[triangle.faceIndex]=byFace[triangle.faceIndex]+[triangle] end for
-  return WorldCache(map,centers,radii,counts,kinds,normals,textureIndexes,array(map.counts[1],false),byFace,n.f32(patchError),allTriangles.triangleCount)
+  totalTriangles=0;for each count in counts totalTriangles=totalTriangles+count end for
+  return WorldCache(map,centers,radii,counts,kinds,normals,textureIndexes,array(map.counts[1],false),byFace,n.f32(patchError),totalTriangles)
 end function
 
 function setTwoSidedTextures(cache,flags)
@@ -201,11 +204,13 @@ end function
 
 function cachedRenderData(cache,chosen)
   if cache==void or chosen==void then return fail("cache and selection required") end if
-  triangles=[];patches=0
+  total=0;patches=0
   for each faceIndex in chosen.faceIndexes
     if faceIndex<0 or faceIndex>=len(cache.trianglesByFace) then return fail("selected face outside cache") end if
-    triangles=triangles+cache.trianglesByFace[faceIndex];if cache.faceKinds[faceIndex]==render.MST_PATCH then patches=patches+1 end if
+    total=total+len(cache.trianglesByFace[faceIndex]);if cache.faceKinds[faceIndex]==render.MST_PATCH then patches=patches+1 end if
   end for
+  triangles=array(total,void);offset=0
+  for each faceIndex in chosen.faceIndexes for each triangle in cache.trianglesByFace[faceIndex] triangles[offset]=triangle;offset=offset+1 end for end for
   return render.RenderData(triangles,chosen.selectedSurfaceCount,len(triangles),0,false,patches)
 end function
 

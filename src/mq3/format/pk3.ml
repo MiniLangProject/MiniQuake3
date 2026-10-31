@@ -34,7 +34,19 @@ struct Archive
   endOffset
   comment
   byteBeforeZip
+  nameBuckets
 end struct
+
+const NAME_BUCKET_COUNT = 4096
+
+function nameHash(name)
+  data=bytes(name);hash=5381
+  for index=0 to len(data)-1
+    letter=data[index];if letter>=65 and letter<=90 then letter=letter+32 end if
+    hash=n.i32(hash*33+letter)
+  end for
+  return hash&(NAME_BUCKET_COUNT-1)
+end function
 
 function fail(message)
   return error(3501, "PK3: " + message)
@@ -92,7 +104,12 @@ function open(path)
   end while
   if pos != directorySize then return fail("directory length mismatch") end if
   archiveComment = decode(slice(tail,endOffset+22,u16(tail,endOffset+20)))
-  return Archive(path, entries, absoluteDirectoryOffset, directorySize, absoluteEnd, archiveComment, byteBeforeZip)
+  nameBuckets=array(NAME_BUCKET_COUNT,void)
+  for entryIndex=0 to len(entries)-1
+    bucketIndex=nameHash(entries[entryIndex].name);if nameBuckets[bucketIndex]==void then nameBuckets[bucketIndex]=[] end if
+    nameBuckets[bucketIndex]=nameBuckets[bucketIndex]+[entryIndex]
+  end for
+  return Archive(path, entries, absoluteDirectoryOffset, directorySize, absoluteEnd, archiveComment, byteBeforeZip, nameBuckets)
 end function
 
 function localInfo(archive,entry)
@@ -126,8 +143,9 @@ function readEntry(archive, entry)
 end function
 
 function read(archive, name)
-  for each entry in archive.entries
-    if stringEqualsIgnoreCaseAscii(entry.name, name) then return readEntry(archive, entry) end if
-  end for
+  bucket=archive.nameBuckets[nameHash(name)]
+  if bucket!=void then for each entryIndex in bucket
+    entry=archive.entries[entryIndex];if stringEqualsIgnoreCaseAscii(entry.name,name) then return readEntry(archive,entry) end if
+  end for end if
   return fail("file not found " + name)
 end function

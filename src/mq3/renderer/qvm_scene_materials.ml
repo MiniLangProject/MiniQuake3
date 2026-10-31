@@ -166,14 +166,18 @@ function bindTriangle(output,triangle,outputIndex,archive,assets,kinds,endSlot)
   output.triangles[outputIndex]=ResolvedTriangle(triangle,index);return void
 end function
 
-function build(archive,triangles,assets,kinds,firstTextureSlot,maxTextureSlots,shaderRemaps)
+function buildIndexed(archive,triangles,assets,kinds,firstTextureSlot,maxTextureSlots,shaderRemaps,scripts)
   if archive==void or triangles==void or assets==void or kinds==void then return fail("archive, triangles and asset registry are required") end if
   if len(assets)!=len(kinds) then return fail("asset registry length mismatch") end if
   if firstTextureSlot<0 or maxTextureSlots<0 then return fail("invalid texture slot range") end if
-  scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if
+  if scripts==void or len(scripts)!=2 or scripts[0]==void then return fail("shared shader index is required") end if
   output=Catalog(array(len(triangles),void),[],[],scripts[0],scripts[1],[],[],0,0,firstTextureSlot,void,shaderRemaps);endSlot=firstTextureSlot+maxTextureSlots;triangleIndex=0
   for each triangle in triangles bindTriangle(output,triangle,triangleIndex,archive,assets,kinds,endSlot);triangleIndex=triangleIndex+1 end for
   return output
+end function
+function build(archive,triangles,assets,kinds,firstTextureSlot,maxTextureSlots,shaderRemaps)
+  scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if
+  return buildIndexed(archive,triangles,assets,kinds,firstTextureSlot,maxTextureSlots,shaderRemaps,scripts)
 end function
 
 // Rebinds moving geometry while retaining decoded images and shader programs.

@@ -3439,7 +3439,27 @@ Original-QVM-Integrationsstand, aber noch kein fertig abgenommener 1:1-Port.
 
 `Play-MiniQuake3.cmd` startet deshalb nicht länger den eigenen vereinfachten
 WASD-Vertical-Slice. Der Benutzerstandard baut bei Bedarf `qagame.qvm`,
-`cgame.qvm` und `ui.qvm` und startet `--play-qvm`. Damit stammen Regeln,
-Prediction, HUD, Menüs, Key-Catcher und Bindings aus den Originalmodulen. Das
-Gate `test_default_launcher.py` hält diesen Startpfad fest. Der alte `--play`-
-Modus bleibt ausschließlich als Diagnoseoption erhalten.
+`cgame.qvm` und `ui.qvm` und startet `--menu-qvm`. Zuerst läuft ausschließlich
+das originale `ui.qvm` im getrennten Clientzustand; Regeln, Prediction, HUD
+und Welt werden erst nach der Kartenauswahl aus den Originalmodulen geladen.
+Das Gate `test_default_launcher.py` hält diesen Startpfad fest. Der alte
+`--play`-Modus bleibt ausschließlich als Diagnoseoption erhalten.
+
+## Getrennter Original-Menüstart und Startzeitprofil (2026-10-31)
+
+Der Standardstarter bootet nicht mehr vor dem Hauptmenü automatisch
+`q3dm1`, `qagame.qvm` und `cgame.qvm`. `qvm_menu_app.ml` startet das
+unveränderte Retail-`ui.qvm` in `CA_DISCONNECTED`; erst ein vom Menü erzeugter
+`map`-, `spmap`- oder `devmap`-Befehl wechselt in den vollständigen Matchpfad.
+Das native Windows-Hauptmenü erschien damit auf dem Entwicklungsrechner stabil
+und ansprechbar in weniger als 12 Sekunden.
+
+Der ursprünglich gemessene direkte Matchstart benötigte etwa 387 Sekunden.
+Nach dem Ersatz eines quadratischen Weltflächen-Caches fiel ein Zwischenlauf
+auf etwa 86 Sekunden; die aktuelle vollständige Ein-Frame-Abnahme benötigt je
+nach Lauf ungefähr 132 Sekunden. 2D- und Szenenmaterialien teilen jetzt einen
+Shaderindex, PK3-Namen werden über einen case-insensitiven Bucket-Index gefunden
+und der Warmup wurde von acht auf zwei Frames reduziert. 84
+Retail-PK3-/DEFLATE-Vergleiche sichern den neuen Archivpfad ab. Der
+interpretierte QVM-/Mapstart bleibt trotzdem wesentlich langsamer als die
+native Original-Engine und ist deshalb weiterhin eine offene Performance-Lücke.

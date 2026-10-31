@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+"""Guard the fast, disconnected original-ui startup architecture."""
+
+from toolchain import ROOT
+
+
+def require(text: str, fragment: str, description: str) -> None:
+    if fragment not in text:
+        raise RuntimeError(f"missing {description}: {fragment}")
+
+
+def main() -> int:
+    menu = (ROOT / "src/mq3/client/qvm_menu_app.ml").read_text(encoding="utf-8")
+    match = (ROOT / "src/mq3/engine/local_qvm_match.ml").read_text(encoding="utf-8")
+    main_source = (ROOT / "src/main.ml").read_text(encoding="utf-8")
+
+    require(main_source, 'args[0]=="--menu-qvm"', "menu-only command-line entry")
+    require(menu, "state=match.bootUiShell", "disconnected UI shell boot")
+    require(menu, "booted=match.bootUi(state)", "original ui.qvm boot")
+    require(menu, "mapName=requestedMap", "original menu map-command handoff")
+    require(menu, "return gameApp.run(archive,selectedMap,qvmRoot)", "deferred full match start")
+    require(menu, "time.sleep(16)", "bounded menu refresh cadence")
+    require(match, "if not startGame then return Boot(void,machineRuntime,context,void,void) end if", "pre-game return before qagame/cgame")
+    require(match, "bootConfiguredNamedMode(archive,map,now,qvmRoot,false,\"q3dm1\",false)", "UI shell without game startup")
+
+    if menu.index("state=match.bootUiShell") > menu.index("return gameApp.run(archive,selectedMap,qvmRoot)"):
+        raise RuntimeError("full match is started before the disconnected original UI")
+    print("PASS: original ui.qvm starts disconnected and defers qagame/cgame/map loading")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
