@@ -3125,3 +3125,36 @@ Dateien vollständig; QCommon steht bei 24/27 und Spielcode bei 64/65. Die
 verbleibenden Quellportlücken konzentrieren sich auf drei QCommon-JIT-Dateien,
 einen CGame- und einen Game-Build-/Syscall-Pfad, sechs UI-Dateien sowie
 Unix-, macOS-, Null- und vier Windows-Plattformpfade.
+
+## 2026-10-31: Win32-Header und vollständiger QGL-Lader geschlossen
+
+Die letzten vier offenen Windows-Dateien `code/win32/glw_win.h`,
+`win_local.h`, `resource.h` und `win_qgl.c` sind vollständig nativ zugeordnet.
+`win_headers.ml` bewahrt Feldreihenfolge, x86-Größen und Offsets von
+`glwstate_t` und `WinVars_t`, beide DirectX-Versionswerte, zwölf
+Ressourcenmakros und alle 17 lokalen Funktionsdeklarationen. Ein unverändertes
+MSVC-x86-Orakel vergleicht die vollständigen Layout- und Konstantenrecords.
+
+`win_qgl_runtime.ml` besitzt den DLL-/Registry-Lebenszyklus, verzögert die acht
+Erweiterungseinstiege bis zur Extension-Erkennung, bildet die sechs originalen
+Formathelfer ab und projiziert sämtliche **336** `log*`-Wrapper verlustfrei auf
+das bereits vollständige QGL-Einstiegspunktinventar. Das Hilfsorakel wird aus
+den unveränderten Originalfunktionen extrahiert; 13 zusätzliche Verträge
+prüfen Fehlerpfad, vollständige Core-/WGL-Bindung, Logging-Countdown,
+Dispatch, Extension-Sperre und Shutdown. `win_glimp_runtime.ml` verwendet den
+neuen Loader und den kanonischen GLW-Zustand im Start- und Abschaltpfad.
+
+Das neue Vollständigkeitsgate, der vorhandene 21/21-`win_glimp`-Abgleich mit
+31 Verträgen, der `/W4 /WX`-WGL-Build und der frische Windows-Hauptbuild sind
+grün. `build/MiniQuake3.exe` hat SHA-256
+`d327538fdd7d8a194e486cd0b3458028eea8e158fba18bcca121cf77944cf941`.
+Der Retail-QVM-Match konnte in diesem inkrementellen Lauf nicht erneut starten,
+weil das zuvor verwendete Laufwerk `D:` nicht mehr eingebunden war; der letzte
+dokumentierte Retail-Lauf desselben Binärhashes bleibt grün. Die normale
+Retail-Auswahl in `scripts/verify.py` umfasst jetzt 492 Gates.
+
+Das generierte Inventar zählt **288 portierte, keine teilweise portierte und
+47 noch nicht begonnene** Dateien von insgesamt 335, also 86,0 % native
+Dateiparität. Win32 ist mit 13/13 vollständig. Offen bleiben drei
+QCommon-JIT-Dateien, je ein CGame- und Game-Syscall-/Buildpfad, sechs
+Legacy-UI-Dateien sowie Unix-, macOS-, Null- und Spline-Plattformpfade.

@@ -66057,11 +66057,150 @@
       "source": "code/win32/glw_win.h",
       "sha256": "78a2fb52aef501a29bbd28f684eb0e64213763702a8ccd11f6f2782e16ea0f49",
       "category": "platform",
-      "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_candidates": [
+        "glwstate_t",
+        "glw_state",
+        "wndproc",
+        "hDC",
+        "hGLRC",
+        "hinstOpenGL",
+        "allowdisplaydepthchange",
+        "pixelFormatSet",
+        "desktopBitsPixel",
+        "desktopWidth",
+        "desktopHeight",
+        "cdsFullscreen",
+        "log_fp"
+      ],
+      "symbol_mapping": [
+        {
+          "original": "glwstate_t",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "glw_state",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "wndproc",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "hDC",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "hGLRC",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "hinstOpenGL",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "allowdisplaydepthchange",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "pixelFormatSet",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "desktopBitsPixel",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "desktopWidth",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "desktopHeight",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "cdsFullscreen",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "log_fp",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/win_headers.ml",
+        "src/mq3/platform/win_glimp_runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_win32_headers_qgl_complete.py",
+        "tests/reference/win32_headers_oracle.c",
+        "tests/win32_headers_oracle.ml"
+      ]
     },
     {
       "source": "code/win32/icon2.ico",
@@ -66147,11 +66286,140 @@
       "source": "code/win32/resource.h",
       "sha256": "c2e7aed0b5cfeab97fa16757f23412444d2321b9aa0961a0dd0f136c081b2497",
       "category": "platform",
-      "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_candidates": [
+        "IDS_STRING1",
+        "IDI_ICON1",
+        "IDB_BITMAP1",
+        "IDB_BITMAP2",
+        "IDC_CURSOR1",
+        "IDC_CURSOR2",
+        "IDC_CURSOR3",
+        "_APS_NO_MFC",
+        "_APS_NEXT_RESOURCE_VALUE",
+        "_APS_NEXT_COMMAND_VALUE",
+        "_APS_NEXT_CONTROL_VALUE",
+        "_APS_NEXT_SYMED_VALUE"
+      ],
+      "symbol_mapping": [
+        {
+          "original": "IDS_STRING1",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "IDI_ICON1",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "IDB_BITMAP1",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "IDB_BITMAP2",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "IDC_CURSOR1",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "IDC_CURSOR2",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "IDC_CURSOR3",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "_APS_NO_MFC",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "_APS_NEXT_RESOURCE_VALUE",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "_APS_NEXT_COMMAND_VALUE",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "_APS_NEXT_CONTROL_VALUE",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "_APS_NEXT_SYMED_VALUE",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/win_headers.ml",
+        "src/mq3/platform/win_glimp_runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_win32_headers_qgl_complete.py",
+        "tests/reference/win32_headers_oracle.c",
+        "tests/win32_headers_oracle.ml"
+      ]
     },
     {
       "source": "code/win32/win_gamma.c",
@@ -66543,11 +66811,230 @@
       "source": "code/win32/win_local.h",
       "sha256": "4a852f209b4d32d0f2197a06d790fc379e5a4c2fb035cb7ab6c24e25a0aba31e",
       "category": "platform",
-      "symbol_candidates": [],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_candidates": [
+        "DIRECTSOUND_VERSION",
+        "DIRECTINPUT_VERSION",
+        "IN_MouseEvent",
+        "Sys_QueEvent",
+        "Sys_CreateConsole",
+        "Sys_DestroyConsole",
+        "Sys_ConsoleInput",
+        "Sys_GetPacket",
+        "IN_Init",
+        "IN_Shutdown",
+        "IN_JoystickCommands",
+        "IN_Move",
+        "IN_DeactivateWin32Mouse",
+        "IN_Activate",
+        "IN_Frame",
+        "MainWndProc",
+        "Conbuf_AppendText",
+        "SNDDMA_Activate",
+        "SNDDMA_InitDS",
+        "WinVars_t",
+        "g_wv"
+      ],
+      "symbol_mapping": [
+        {
+          "original": "DIRECTSOUND_VERSION",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "DIRECTINPUT_VERSION",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "IN_MouseEvent",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "Sys_QueEvent",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "Sys_CreateConsole",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "Sys_DestroyConsole",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "Sys_ConsoleInput",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "Sys_GetPacket",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "IN_Init",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "IN_Shutdown",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "IN_JoystickCommands",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "IN_Move",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "IN_DeactivateWin32Mouse",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "IN_Activate",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "IN_Frame",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "MainWndProc",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "Conbuf_AppendText",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "SNDDMA_Activate",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "SNDDMA_InitDS",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "WinVars_t",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        },
+        {
+          "original": "g_wv",
+          "target_files": [
+            "src/mq3/platform/win_headers.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Original Win32 declarations/constants and x86 ABI are owned by the canonical facade and checked against unchanged MSVC output; GLW state is used by productive GLimp startup/shutdown."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/win_headers.ml",
+        "src/mq3/platform/win_glimp_runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_win32_headers_qgl_complete.py",
+        "tests/reference/win32_headers_oracle.c",
+        "tests/win32_headers_oracle.ml"
+      ]
     },
     {
       "source": "code/win32/win_main.c",
@@ -67578,10 +68065,3481 @@
         "logVertexPointer",
         "logViewport"
       ],
-      "symbol_mapping": [],
-      "target": [],
-      "status": "not_started",
-      "tests": []
+      "symbol_mapping": [
+        {
+          "original": "BlendToName",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "BooleanToString",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "CapToString",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "FuncToString",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "GlideIsValid",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "PrimToString",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "QGL_EnableLogging",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "QGL_Init",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "QGL_Shutdown",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "TypeToString",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logAccum",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logAlphaFunc",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logAreTexturesResident",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logArrayElement",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logBegin",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logBindTexture",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logBitmap",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logBlendFunc",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logCallList",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logCallLists",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logClear",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logClearAccum",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logClearColor",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logClearDepth",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logClearIndex",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logClearStencil",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logClipPlane",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3b",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3bv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3i",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3iv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3s",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3sv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3ub",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3ubv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3ui",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3uiv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3us",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor3usv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4b",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4bv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4i",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4iv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4s",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4sv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4ub",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4ubv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4ui",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4uiv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4us",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColor4usv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColorMask",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColorMaterial",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logColorPointer",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logCopyPixels",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logCopyTexImage1D",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logCopyTexImage2D",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logCopyTexSubImage1D",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logCopyTexSubImage2D",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logCullFace",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logDeleteLists",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logDeleteTextures",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logDepthFunc",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logDepthMask",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logDepthRange",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logDisable",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logDisableClientState",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logDrawArrays",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logDrawBuffer",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logDrawElements",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logDrawPixels",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEdgeFlag",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEdgeFlagPointer",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEdgeFlagv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEnable",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEnableClientState",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEnd",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEndList",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEvalCoord1d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEvalCoord1dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEvalCoord1f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEvalCoord1fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEvalCoord2d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEvalCoord2dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEvalCoord2f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEvalCoord2fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEvalMesh1",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEvalMesh2",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEvalPoint1",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logEvalPoint2",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logFeedbackBuffer",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logFinish",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logFlush",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logFogf",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logFogfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logFogi",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logFogiv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logFrontFace",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logFrustum",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGenLists",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGenTextures",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetBooleanv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetClipPlane",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetDoublev",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetError",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetFloatv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetIntegerv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetLightfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetLightiv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetMapdv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetMapfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetMapiv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetMaterialfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetMaterialiv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetPixelMapfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetPixelMapuiv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetPixelMapusv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetPointerv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetPolygonStipple",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetString",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetTexEnvfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetTexEnviv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetTexGendv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetTexGenfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetTexGeniv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetTexImage",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetTexLevelParameterfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetTexLevelParameteriv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetTexParameterfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logGetTexParameteriv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logHint",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIndexMask",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIndexPointer",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIndexd",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIndexdv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIndexf",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIndexfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIndexi",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIndexiv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIndexs",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIndexsv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIndexub",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIndexubv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logInitNames",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logInterleavedArrays",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIsEnabled",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIsList",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logIsTexture",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLightModelf",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLightModelfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLightModeli",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLightModeliv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLightf",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLightfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLighti",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLightiv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLineStipple",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLineWidth",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logListBase",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLoadIdentity",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLoadMatrixd",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLoadMatrixf",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLoadName",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logLogicOp",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMap1d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMap1f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMap2d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMap2f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMapGrid1d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMapGrid1f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMapGrid2d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMapGrid2f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMaterialf",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMaterialfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMateriali",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMaterialiv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMatrixMode",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMultMatrixd",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logMultMatrixf",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logNewList",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logNormal3b",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logNormal3bv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logNormal3d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logNormal3dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logNormal3f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logNormal3fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logNormal3i",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logNormal3iv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logNormal3s",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logNormal3sv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logNormalPointer",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logOrtho",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPassThrough",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPixelMapfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPixelMapuiv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPixelMapusv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPixelStoref",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPixelStorei",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPixelTransferf",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPixelTransferi",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPixelZoom",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPointSize",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPolygonMode",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPolygonOffset",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPolygonStipple",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPopAttrib",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPopClientAttrib",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPopMatrix",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPopName",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPrioritizeTextures",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPushAttrib",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPushClientAttrib",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPushMatrix",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logPushName",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos2d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos2dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos2f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos2fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos2i",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos2iv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos2s",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos2sv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos3d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos3dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos3f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos3fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos3i",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos3iv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos3s",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos3sv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos4d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos4dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos4f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos4fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos4i",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos4iv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos4s",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRasterPos4sv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logReadBuffer",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logReadPixels",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRectd",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRectdv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRectf",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRectfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRecti",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRectiv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRects",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRectsv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRenderMode",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRotated",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logRotatef",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logScaled",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logScalef",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logScissor",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logSelectBuffer",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logShadeModel",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logStencilFunc",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logStencilMask",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logStencilOp",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord1d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord1dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord1f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord1fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord1i",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord1iv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord1s",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord1sv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord2d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord2dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord2f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord2fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord2i",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord2iv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord2s",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord2sv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord3d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord3dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord3f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord3fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord3i",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord3iv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord3s",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord3sv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord4d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord4dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord4f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord4fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord4i",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord4iv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord4s",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoord4sv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexCoordPointer",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexEnvf",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexEnvfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexEnvi",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexEnviv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexGend",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexGendv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexGenf",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexGenfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexGeni",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexGeniv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexImage1D",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexImage2D",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexParameterf",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexParameterfv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexParameteri",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexParameteriv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexSubImage1D",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTexSubImage2D",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTranslated",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logTranslatef",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex2d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex2dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex2f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex2fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex2i",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex2iv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex2s",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex2sv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex3d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex3dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex3f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex3fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex3i",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex3iv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex3s",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex3sv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex4d",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex4dv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex4f",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex4fv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex4i",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex4iv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex4s",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertex4sv",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logVertexPointer",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        },
+        {
+          "original": "logViewport",
+          "target_files": [
+            "src/mq3/platform/win_qgl_runtime.ml",
+            "src/mq3/renderer/qgl.ml",
+            "src/mq3/platform/win_glimp_runtime.ml"
+          ],
+          "status": "tested_exact",
+          "scope": "Complete original QGL loader, helper and 336-wrapper inventory with unchanged-C helper parity, lifecycle contracts and productive GLimp integration."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/win_qgl_runtime.ml",
+        "src/mq3/renderer/qgl.ml",
+        "src/mq3/platform/win_glimp_runtime.ml"
+      ],
+      "status": "ported",
+      "tests": [
+        "scripts/test_win32_headers_qgl_complete.py",
+        "tests/reference/win_qgl_helpers_oracle.c",
+        "tests/win_qgl_helpers_oracle.ml",
+        "tests/win_qgl_contracts.ml",
+        "scripts/test_win_glimp_complete.py"
+      ]
     },
     {
       "source": "code/win32/win_shared.c",

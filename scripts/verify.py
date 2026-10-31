@@ -332,6 +332,7 @@ def main():
     scripts.append(("test_playable_menu.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")] if args.data_root else []))
     scripts.append(("playable_window_build_test.py",[]))
     scripts.append(("test_win_glimp_complete.py",[]))
+    scripts.append(("test_win32_headers_qgl_complete.py",[]))
     scripts.append(("test_win_input_complete.py",[]))
     scripts.append(("test_wav.py",[]))
     scripts.append(("playable_audio_build_test.py",[]))

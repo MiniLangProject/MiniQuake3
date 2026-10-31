@@ -28,9 +28,18 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
-Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **284 sind
-vollständig portiert, keine ist teilweise portiert und 51 sind noch nicht
-begonnen**. Der jüngste Integrationsblock schließt 40 Originalheader: sämtliche
+Der Quellabgleich umfasst aktuell 335 Runtime-/Plattformdateien: **288 sind
+vollständig portiert, keine ist teilweise portiert und 47 sind noch nicht
+begonnen**. Der jüngste Integrationsblock schließt die letzten vier offenen
+Win32-Dateien `glw_win.h`, `win_local.h`, `resource.h` und `win_qgl.c`.
+Originales 32-Bit-Datenlayout, Ressourcen- und Versionswerte, alle 336
+GL-Logging-Wrapper, sechs Formathelfer sowie QGL-Laden, Logging und Shutdown
+sind in MiniLang abgebildet. Der vollständige QGL-Loader ist in den bestehenden
+GLimp-Start- und Abschaltpfad eingebunden; Win32 steht damit bei 13/13 Dateien.
+Unveränderte MSVC-Orakel, 13 Lebenszyklusverträge, der bestehende 31-Verträge-
+GLimp-Test und der native WGL-Build sind grün.
+
+Der vorherige Integrationsblock schloss 40 Originalheader: sämtliche
 31 öffentlichen und internen Botlib-Header, sechs QCommon-/Collision-/Minizip-
 Header sowie `bg_lib.h`, `bg_local.h` und `g_rankings.h`. Die kanonischen
 MiniLang-Fassaden erfassen 156 öffentliche Botlib-Konstanten, 119 interne
@@ -49,7 +58,7 @@ texturierte Dreiecke, 17 Renderpässe, 26 Sounds und null nicht unterstützte
 Entities. Der frische `build/MiniQuake3.exe`-Stand hat SHA-256
 `d327538fdd7d8a194e486cd0b3458028eea8e158fba18bcca121cf77944cf941`.
 Die letzte vollständig am Stück ausgeführte Gesamtauswahl bleibt der
-dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 491 normale
+dokumentierte 449-Gate-Lauf; `scripts/verify.py` enthält inzwischen 492 normale
 Gates.
 
 Ein neuer Integrationsblock schließt `q_shared.h`, `win_main.c`, `win_net.c`,

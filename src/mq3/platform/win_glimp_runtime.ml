@@ -5,6 +5,8 @@ package mq3.platform.win_glimp_runtime
 import std.string as strings
 import std.array as arrays
 import mq3.renderer.qgl as qgl
+import mq3.platform.win_headers as winHeaders
+import mq3.platform.win_qgl_runtime as winQgl
 
 const RSERR_OK=0
 const RSERR_INVALID_FULLSCREEN=1
@@ -23,10 +25,10 @@ const PFD_TYPE_RGBA=0
 struct PFD flags pixelType colorBits depthBits stencilBits layerType index end struct
 struct Mode width height aspect frequency fullscreen end struct
 struct Extensions textureCompression textureEnvAdd multitexture compiledVertexArray maxActiveTextures swapControl end struct
-struct Runtime osSupported driverLoaded windowCreated contextCreated active fullscreen displayChanged mode pfd extensions vendor renderer version extensionText swaps logs rendererThread renderCommands renderCompleted qglRegistry end struct
+struct Runtime osSupported driverLoaded windowCreated contextCreated active fullscreen displayChanged mode pfd extensions vendor renderer version extensionText swaps logs rendererThread renderCommands renderCompleted qglRegistry qglState glwState end struct
 
 function create()
-  return Runtime(true,false,false,false,false,false,false,Mode(0,0,1.0,0,false),void,Extensions(false,false,false,false,1,false),"","","","",0,[],false,[],true,qgl.createRegistry())
+  return Runtime(true,false,false,false,false,false,false,Mode(0,0,1.0,0,false),void,Extensions(false,false,false,false,1,false),"","","","",0,[],false,[],true,qgl.createRegistry(),winQgl.create(),winHeaders.createGLWState())
 end function
 function GLW_CreatePFD(colorbits,depthbits,stencilbits,stereo)
   flags=PFD_DRAW_TO_WINDOW|PFD_SUPPORT_OPENGL|PFD_DOUBLEBUFFER;if stereo then flags=flags|PFD_STEREO end if
@@ -89,8 +91,8 @@ end function
 function GLW_CheckOSVersion(platform,major) return platform==2 and major>=4 end function
 function GLW_LoadOpenGL(state,driver,loadSucceeded,modes,mode,colorbits,fullscreen)
   state.driverLoaded=loadSucceeded;if not loadSucceeded then return false end if
-  qgl.reset(state.qglRegistry);for each name in qgl.requiredEntryPoints() qgl.bind(state.qglRegistry,name,1,false) end for
-  if not qgl.activate(state.qglRegistry,driver) then state.driverLoaded=false;return false end if
+  if not winQgl.QGL_Init(state.qglState,state.qglRegistry,driver,loadSucceeded) then state.driverLoaded=false;return false end if
+  state.glwState.hinstOpenGL=driver
   return GLW_StartDriverAndSetMode(state,driver,mode,colorbits,fullscreen,modes,true)
 end function
 function GLW_StartOpenGL(state,driver,modes,mode) return GLW_LoadOpenGL(state,driver,true,modes,mode,24,false) end function
@@ -99,7 +101,7 @@ function GLimp_Init(state,platform,major,driver,modes,mode,extensionText)
   if not GLW_StartOpenGL(state,driver,modes,mode) then return false end if;GLW_InitExtensions(state,extensionText,true);state.active=true;return true
 end function
 function GLimp_EndFrame(state,drawBuffer) if state.active and drawBuffer!="GL_FRONT" then state.swaps=state.swaps+1;return true end if;return false end function
-function GLimp_Shutdown(state) state.contextCreated=false;state.windowCreated=false;state.driverLoaded=false;state.active=false;state.displayChanged=false;state.fullscreen=false;state.rendererThread=false;qgl.reset(state.qglRegistry);return void end function
+function GLimp_Shutdown(state) state.contextCreated=false;state.windowCreated=false;state.driverLoaded=false;state.active=false;state.displayChanged=false;state.fullscreen=false;state.rendererThread=false;state.glwState.hinstOpenGL=void;state.glwState.log_fp=void;winQgl.QGL_Shutdown(state.qglState,state.qglRegistry);return void end function
 function GLimp_LogComment(state,comment) state.logs=state.logs+[comment];return void end function
 function GLimp_RenderThreadWrapper(state) if len(state.renderCommands)>1 then state.renderCommands=arrays.slice(state.renderCommands,1,len(state.renderCommands)-1) else state.renderCommands=[] end if;state.renderCompleted=true;return void end function
 function GLimp_SpawnRenderThread(state,enabled) state.rendererThread=enabled;state.renderCompleted=true;return enabled end function
