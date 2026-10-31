@@ -117,6 +117,20 @@ function printTrace(result)
 end function
 
 function main(args)
+  if len(args)==0 then
+    executableRoot=playableWindow.executableDirectory()
+    if executableRoot=="" then return error(7688,"could not determine the MiniQuake3 executable directory") end if
+    baseq3Path=executableRoot+"/baseq3";pakPath=baseq3Path+"/pak0.pk3"
+    archive=try(pk3.openStandard(baseq3Path))
+    if archive is error then return error(7689,"Quake III retail data was not found. Expected "+pakPath) end if
+    mapBytes=try(pk3.read(archive,"maps/q3dm1.bsp"))
+    if mapBytes is error then return error(7690,"The standard retail archive is incomplete: "+pakPath+" does not contain maps/q3dm1.bsp") end if
+    map=try(bsp.load(mapBytes));if map is error then return map end if
+    qvmRoot=executableRoot+"/qvms"
+    uiQvm=try(fs.fileSize(qvmRoot+"/ui.qvm"));gameQvm=try(fs.fileSize(qvmRoot+"/qagame.qvm"));cgameQvm=try(fs.fileSize(qvmRoot+"/cgame.qvm"))
+    if uiQvm is error or gameQvm is error or cgameQvm is error then return error(7691,"Compatible original QVMs were not found. Expected ui.qvm, qagame.qvm and cgame.qvm in "+qvmRoot) end if
+    return qvmMenuApp.run(archive,map,qvmRoot)
+  end if
   if len(args)==4 and args[0]=="--menu-qvm" then
     archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmMenuApp.run(archive,map,args[3])
   end if

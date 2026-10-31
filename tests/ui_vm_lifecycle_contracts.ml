@@ -34,6 +34,6 @@ function main(args)
   uiVm.shutdown(state)
   count=count+req(try(uiVm.refresh(state,0)) is error,"inactive export")
   count=count+req(try(uiVm.create(uiVm.services(void,syscall,loadVm,callVm,freeVm))) is error,"runtime required")
-  count=count+req(uiVm.UI_OLD_API_VERSION==4 and uiVm.UI_API_VERSION==6,"API constants")
+  count=count+req(uiVm.UI_CD_API_VERSION==3 and uiVm.UI_OLD_API_VERSION==4 and uiVm.UI_API_VERSION==6,"API constants")
   print "PASS: "+str(count)+" UI VM lifecycle contracts";return 0
 end function

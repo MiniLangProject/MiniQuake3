@@ -36,6 +36,7 @@ extern function takeVideoRestartNative() from "playable_window.dll" symbol "play
 extern function windowStateNative(output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_window_window_state" returns i32
 extern function currentUserNative(output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_system_current_user" returns i32
 extern function currentDirectoryNative(output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_system_current_directory" returns i32
+extern function executableDirectoryNative(output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_system_executable_directory" returns i32
 extern function processorIdNative() from "playable_window.dll" symbol "playable_system_processor_id" returns i32
 extern function inputInitNative() from "playable_window.dll" symbol "playable_window_input_init" returns i32
 extern function inputActivateNative(active as i32) from "playable_window.dll" symbol "playable_window_input_activate" returns void
@@ -215,6 +216,7 @@ function windowState()
 end function
 function currentUser() data=bytes(4096,0);count=currentUserNative(data,len(data));if count<1 then return "player" end if;return decode(slice(data,0,count)) end function
 function currentDirectory() data=bytes(4096,0);count=currentDirectoryNative(data,len(data));if count<1 then return "" end if;return decode(slice(data,0,count)) end function
+function executableDirectory() data=bytes(32768,0);count=executableDirectoryNative(data,len(data));if count<1 then return "" end if;return decode(slice(data,0,count)) end function
 function processorId() return processorIdNative() end function
 function beginFrame(red,green,blue) beginNative(red,green,blue);return void end function
 function drawLine(a,b,red,green,blue)

@@ -1245,6 +1245,30 @@ PLAYABLE_API int playable_system_current_directory(unsigned char *output, int ca
     return copyWideUtf8(path, output, capacity);
 }
 
+PLAYABLE_API int playable_system_executable_directory(unsigned char *output, int capacity) {
+    wchar_t path[32768];
+    wchar_t *separator = 0;
+    DWORD count;
+    DWORD index;
+    if (!output || capacity < 1) return 0;
+    count = GetModuleFileNameW(0, path,
+        (DWORD)(sizeof(path) / sizeof(path[0])));
+    if (!count || count >= sizeof(path) / sizeof(path[0])) {
+        output[0] = 0;
+        return 0;
+    }
+    for (index = 0; index < count; ++index) {
+        if (path[index] == L'\\' || path[index] == L'/') separator = path + index;
+    }
+    if (!separator) {
+        output[0] = 0;
+        return 0;
+    }
+    if (separator == path + 2 && path[1] == L':') separator[1] = 0;
+    else *separator = 0;
+    return copyWideUtf8(path, output, capacity);
+}
+
 PLAYABLE_API int playable_system_processor_id(void) {
 #if defined(_M_IX86)
     if (!IsProcessorFeaturePresent(PF_MMX_INSTRUCTIONS_AVAILABLE)) return 0x21;

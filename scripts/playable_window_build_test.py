@@ -33,6 +33,7 @@ RASTER_EXPORTS = (
     "playable_window_window_state",
     "playable_system_current_user",
     "playable_system_current_directory",
+    "playable_system_executable_directory",
     "playable_system_processor_id",
     "playable_window_gl_configure",
     "playable_window_gl_configure_driver",

@@ -2,6 +2,8 @@
 import argparse
 import json
 import shutil
+import subprocess
+import sys
 from pathlib import Path
 from toolchain import ROOT, msvc_env, run
 from inventory import sha
@@ -94,6 +96,15 @@ def main():
     run([compiler, ROOT / args.source, output / args.output, "-I", ROOT / "src", "-I", frozen,
          "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "64m"],
          output, log=output / (args.output + ".compile.log"), timeout=480)
+    if args.source == "src/main.ml" and args.output == "MiniQuake3.exe":
+        source_qvms = output / "reference" / "qvms"
+        qvm_names = ("ui.qvm", "qagame.qvm", "cgame.qvm")
+        if any(not (source_qvms / name).is_file() for name in qvm_names):
+            subprocess.run([sys.executable, ROOT / "scripts" / "build_qvms.py"], cwd=ROOT, check=True)
+        packaged_qvms = output / "qvms"
+        packaged_qvms.mkdir(exist_ok=True)
+        for name in qvm_names:
+            shutil.copy2(source_qvms / name, packaged_qvms / name)
     print(f"Built {args.output}")
 
 if __name__ == "__main__":

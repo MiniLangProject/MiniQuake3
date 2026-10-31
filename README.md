@@ -426,6 +426,39 @@ python scripts/verify.py --data-root D:/Quake3 --extended
 
 ## Spielbarer Original-QVM-Pfad
 
+Doppelklick auf `MiniQuake3.exe` benötigt keine Kommandozeilenargumente. Die EXE
+sucht relativ zu ihrem eigenen Speicherort nach `baseq3/pak0.pk3` und startet
+daraus das originale Quake-III-Menü sowie später `qagame.qvm` und `cgame.qvm`.
+Das Arbeitsverzeichnis einer Verknüpfung spielt dabei keine Rolle. Für einen
+portablen Testordner müssen `MiniQuake3.exe`, seine mitgebauten DLLs und der
+Retail-Ordner so nebeneinander liegen:
+
+```text
+MiniQuake3.exe
+playable_window.dll
+playable_audio.dll
+playable_ambient.dll
+qvms/
+  ui.qvm
+  qagame.qvm
+  cgame.qvm
+baseq3/
+  pak0.pk3
+  pak1.pk3
+```
+
+`pak0.pk3` enthält bei der Retail-CD die Karten, Assets und unveränderten
+Baseq3-QVMs. Vorhandene Standardarchive `pak1.pk3` bis `pak8.pk3` werden in
+Quake-III-Patchreihenfolge darübergelegt; bei gleichen Dateinamen gewinnt das
+höchste Pak. Der VM-Host akzeptiert dabei neben den späteren UI-APIs 4 und 6
+auch die auf der ursprünglichen Retail-CD enthaltene UI-API 3.
+
+Der Build legt zusätzlich die drei unveränderten, aus dem enthaltenen
+Quake-III-1.32b-Quellstand gebauten QVMs unter `qvms/` ab. Das ist notwendig,
+weil die ungepatchte CD zwar dieselben Assets, aber ältere Game-/Cgame-VM-
+Strukturen enthält. Menü, Regeln, Prediction und HUD bleiben Originalbytecode;
+die Standard-PK3s liefern weiterhin Karten, Modelle, Texturen und Audio.
+
 Doppelklick auf `Play-MiniQuake3.cmd` baut bei Bedarf die drei unveränderten
 Baseq3-QVMs und startet den produktiven Original-QVM-Pfad. Manuell entspricht
 das diesem Aufruf:

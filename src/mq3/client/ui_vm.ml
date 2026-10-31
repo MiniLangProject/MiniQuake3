@@ -14,6 +14,7 @@ const UI_SET_ACTIVE_MENU=7
 const UI_CONSOLE_COMMAND=8
 const UI_DRAW_CONNECT_SCREEN=9
 const UI_HASUNIQUECDKEY=10
+const UI_CD_API_VERSION=3
 const UI_OLD_API_VERSION=4
 const UI_API_VERSION=6
 const KEYCATCH_UI=2
@@ -45,7 +46,7 @@ function initialize(state,connectionState,connectedToPureServer,vmUi)
   mode=vmUi;if connectedToPureServer!=0 then mode=VMI_COMPILED end if
   state.slot=state.host.loadFn(state.host.machineRuntime,"ui",state.host.syscall,mode);state.active=true
   version=invoke(state,[UI_GETAPIVERSION]);state.apiVersion=version
-  if version!=UI_OLD_API_VERSION and version!=UI_API_VERSION then state.uiStarted=false;return error(3452,"UI VM: unsupported API version "+str(version)) end if
+  if version!=UI_CD_API_VERSION and version!=UI_OLD_API_VERSION and version!=UI_API_VERSION then state.uiStarted=false;return error(3452,"UI VM: unsupported API version "+str(version)) end if
   connecting=0;if connectionState>=CA_AUTHORIZING and connectionState<CA_ACTIVE then connecting=1 end if
   invoke(state,[UI_INIT,connecting]);state.uiStarted=true;return state.slot
 end function

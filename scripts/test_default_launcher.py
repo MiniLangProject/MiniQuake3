@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Keep the user-facing launcher on the original-QVM interaction path."""
+"""Keep no-argument EXE startup on the colocated original-QVM path."""
 
 from pathlib import Path
 
@@ -7,6 +7,21 @@ from toolchain import ROOT
 
 
 def main() -> int:
+    entry = (ROOT / "src" / "main.ml").read_text(encoding="utf-8")
+    entry_required = [
+        'if len(args)==0 then',
+        'playableWindow.executableDirectory()',
+        'baseq3Path=executableRoot+"/baseq3"',
+        'pk3.openStandard(baseq3Path)',
+        'pk3.read(archive,"maps/q3dm1.bsp")',
+        'qvmRoot=executableRoot+"/qvms"',
+        'qvmMenuApp.run(archive,map,qvmRoot)',
+    ]
+    missing_entry = [item for item in entry_required if item not in entry]
+    if missing_entry:
+        raise RuntimeError("no-argument EXE startup is incomplete: " + ", ".join(missing_entry))
+    if entry.index('if len(args)==0 then') > entry.index('if len(args)==4 and args[0]=="--menu-qvm" then'):
+        raise RuntimeError("no-argument EXE startup must be the first main dispatch path")
     launcher = (ROOT / "Play-MiniQuake3.cmd").read_text(encoding="utf-8").lower()
     required = [
         "--menu-qvm",
@@ -24,7 +39,7 @@ def main() -> int:
         raise RuntimeError("default launcher must start exactly one original-QVM menu path")
     if "load only after you start a match" not in launcher:
         raise RuntimeError("default launcher must document deferred qagame/cgame loading")
-    print("PASS: default launcher starts original ui.qvm before deferred qagame/cgame loading")
+    print("PASS: no-argument EXE discovers colocated baseq3 and starts original retail QVMs")
     return 0
 
 

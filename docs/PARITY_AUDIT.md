@@ -3478,3 +3478,32 @@ Retail-PK3-/DEFLATE-Vergleiche sichern den neuen Archivpfad ab. Der
 interpretierte QVM-/Mapstart liegt weiterhin über der nativen Original-Engine
 und bleibt deshalb eine offene Performance-Lücke, ist aber nicht mehr der
 minutenlange Blocker des vorherigen Stands.
+
+## 2026-10-31: Portable EXE findet Baseq3 und bootet die Retail-CD direkt
+
+`MiniQuake3.exe` besitzt nun einen echten Null-Argument-Start. Die Win32-Grenze
+liefert mit `GetModuleFileNameW` den Ordner der laufenden EXE, sodass weder das
+Arbeitsverzeichnis einer Verknüpfung noch ein fest codiertes Laufwerk den
+Assetpfad bestimmen. Direkt daneben wird `baseq3/pak0.pk3` verlangt;
+vorhandene Standardarchive bis `pak8.pk3` werden mit höherer Paknummer zuerst
+indiziert. Jeder zusammengeführte PK3-Eintrag bewahrt sein Quellarchiv,
+überschriebene Qpaths erscheinen nur einmal, und der Bucketaufbau verwendet
+`std.ds.list` statt wiederholter Array-Konkatenation.
+
+Die Retail-CD lieferte außerdem `ui.qvm` mit UI-API 3. Der VM-Lifecycle
+akzeptiert diese historische ABI nun ausdrücklich neben API 4 und 6. Ihre
+älteren Game-/Cgame-Structs sind jedoch nicht ABI-kompatibel zum 1.32b-Host;
+deshalb baut und paketiert `scripts/build.py` die drei unveränderten
+1.32b-QVMs nach `qvms/`, während sämtliche Retail-Assets aus den Standard-PK3s
+stammen. Das neue End-to-end-Gate `test_default_exe_startup.py` startet die
+gebaute EXE ohne Argumente und absichtlich mit einem anderen Arbeitsverzeichnis,
+sucht das Fenster über die konkrete PID und verlangt den Titel
+`MiniQuake3 | Quake III Arena Main Menu`. Der reale Lauf erreichte ihn in
+**7,72 Sekunden**. Danach bestand ein vollständiger Game-/Cgame-Matchframe aus
+dem paketierten `qvms`-Ordner mit 492 texturierten Dreiecken, 261 2D-Befehlen
+und 17 Soundbefehlen. Das synthetische PK3-Stack-Gate prüft vier Verträge für
+Deduplizierung, Pak-Vorrang und quellrichtiges Lesen. Zusätzlich bestehen 84
+Archiv-/DEFLATE-Vergleiche, 23 Unzip-Verträge samt 84 Retailfällen, 75/75
+`files.c`-Symbole, 44 Filesystem-Verträge sowie 14 originale
+UI-Exportdatensätze und 22 UI-Lifecycle-Verträge. Der vollständige Hauptbuild
+hat SHA-256 `b8230e254975a4bea9b8638807c4fa4ef5d01997a36e4a750865bff8e6366616`.

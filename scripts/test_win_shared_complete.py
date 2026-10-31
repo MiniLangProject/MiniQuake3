@@ -25,7 +25,7 @@ def main():
     if contracts!='PASS: 14 complete win_shared contracts':raise RuntimeError(contracts)
     subprocess.run([sys.executable,ROOT/'scripts/playable_window_build_test.py'],cwd=ROOT,check=True)
     native_source=(ROOT/'native/playable_win32.c').read_text(encoding='utf-8')
-    required=['playable_window_milliseconds','playable_system_current_user','playable_system_current_directory','playable_system_processor_id']
+    required=['playable_window_milliseconds','playable_system_current_user','playable_system_current_directory','playable_system_executable_directory','playable_system_processor_id']
     absent=[name for name in required if name not in native_source]
     if absent:raise RuntimeError('missing productive win_shared anchors: '+', '.join(absent))
     files=[original,runtime,ROOT/'native/playable_win32.c',ROOT/'src/mq3/platform/playable_window.ml',harness,ROOT/'tests/win_shared_complete_oracle.ml',ROOT/'tests/win_shared_complete_contracts.ml',ROOT/'tests/playable_window_win_shared_native.c']
