@@ -160,9 +160,14 @@ struct FileCursor data offset end struct
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
 struct RenderView refdef scene end struct
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks nativePlayers end struct
+struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks nativePlayers game end struct
 struct Boot game runtime context cgame ui end struct
 struct Snapshot serverTime playerState entities end struct
+// The original engine keeps one cvar/key/userinfo store alive while moving
+// from ui.qvm into a local game.  MiniQuake3 boots the heavy game host only
+// after the UI selects a map, so explicitly carry that persistent state across
+// the host boundary instead of silently reverting menu choices and bindings.
+struct UserSettings cvars bindings userinfos end struct
 
 function fail(message) return error(7640,"local QVM match: "+message) end function
 
@@ -237,8 +242,13 @@ function openFile(context,name,mode)
   // open as non-fatal; every packaged read comes directly from the retail PK3.
   if mode!=0 then return common.OpenResult(0,-1) end if
   data=try(pk3.read(context.archive,name));if data is error then return common.OpenResult(0,-1) end if
-  handle=context.nextFile;context.nextFile=context.nextFile+1
-  while handle>=len(context.files) context.files=context.files+[void] end while
+  handle=1
+  while handle<len(context.files) and context.files[handle]!=void and context.files[handle].offset>=0 handle=handle+1 end while
+  if handle>=len(context.files) then
+    capacity=len(context.files)*2;if capacity<16 then capacity=16 end if
+    expanded=array(capacity,void);if len(context.files)>0 then copyArray(expanded,0,context.files,0,len(context.files)) end if;context.files=expanded
+  end if
+  if handle>=context.nextFile then context.nextFile=handle+1 end if
   context.files[handle]=FileCursor(data,0);return common.OpenResult(handle,len(data))
 end function
 function readFile(context,handle,count)
@@ -247,13 +257,18 @@ function readFile(context,handle,count)
   result=slice(cursor.data,cursor.offset,count);cursor.offset=cursor.offset+count;return result
 end function
 function writeFile(context,handle,data) return 0 end function
-function closeFile(context,handle) if handle>0 and handle<len(context.files) then context.files[handle]=FileCursor(bytes(0,0),-1) end if;return void end function
+function closeFile(context,handle) if handle>0 and handle<len(context.files) then context.files[handle]=void end if;return void end function
 function pcLoad(context,name) data=try(pk3.read(context.archive,name));if data is error then return void end if;return data end function
 
 function locateGameData(context,entities,count,entityStride,clients,clientStride)
   context.gameEntities=entities;context.gameClients=clients;context.entityCount=count;context.entityStride=entityStride;context.clientStride=clientStride;return void
 end function
-function dropClient(context,client,text) if client>=0 and client<len(context.clientStates) and context.clientStates[client]==2 then freeBot(context,client) end if;context.console=context.console+[[client,"drop "+text]];return void end function
+function dropClient(context,client,text)
+  if client<0 or client>=len(context.clientStates) or context.clientStates[client]==0 then return void end if
+  if context.game!=void then disconnected=gameVm.clientDisconnect(context.game,client);if disconnected is error then emitError(context,str(disconnected)) end if end if
+  if context.clientStates[client]==2 then freeBot(context,client) else context.clientStates[client]=0;context.userinfos[client]="";context.linked[client]=false;botServerBridge.resetClient(context.botServer,client) end if
+  context.console=context.console+[[client,"drop "+text]];return void
+end function
 function sendServerCommand(context,client,text)
   context.console=context.console+[[client,text]]
   if context.cgameServerCommands!=void and (client<0 or client==0) then serverCommandStream.queue(context.cgameServerCommands,text) end if
@@ -337,7 +352,7 @@ end function
 function allocateBot(context)
   for index=0 to len(context.clientStates)-1
     if context.clientStates[index]==0 then
-      context.clientStates[index]=2;context.botAllocations=context.botAllocations+1
+      botServerBridge.resetClient(context.botServer,index);context.clientStates[index]=2;context.botAllocations=context.botAllocations+1
       if context.gameEntities>0 and context.entityStride>0 and context.machineRuntime.current!=void then machine=gameMachine(context);n.writeU32(machine.data,context.gameEntities+index*context.entityStride,index) end if
       return index
     end if
@@ -346,7 +361,7 @@ function allocateBot(context)
 end function
 function freeBot(context,index)
   if index<0 or index>=len(context.clientStates) then return fail("bad bot client slot "+str(index)) end if
-  context.clientStates[index]=0;context.userinfos[index]="";context.botFrees=context.botFrees+1
+  context.clientStates[index]=0;context.userinfos[index]="";context.usercmds[index]=qworld.userCommand(context.now,[0,0,0],0,2,0,0,0);context.botFrees=context.botFrees+1;botServerBridge.resetClient(context.botServer,index)
   if context.gameEntities>0 and context.entityStride>0 and context.machineRuntime.current!=void then machine=gameMachine(context);base=context.gameEntities+index*context.entityStride;n.writeU32(machine.data,base+R_SVFLAGS,n.readI32(machine.data,base+R_SVFLAGS)&(~8)) end if
   return void
 end function
@@ -679,30 +694,69 @@ function seedCvars(registry)
   return void
 end function
 
+function captureUserSettings(value)
+  if value==void or value.context==void then return void end if
+  savedCvars=lists.List.withCapacity(value.context.cvars.numIndexes)
+  for index=0 to value.context.cvars.numIndexes-1
+    variable=value.context.cvars.indexes[index]
+    savedCvars.add([variable.name,variable.string,variable.resetString,variable.latchedString,variable.flags])
+  end for
+  bindings=array(cgameKeys.MAX_KEYS,void)
+  for key=0 to cgameKeys.MAX_KEYS-1 bindings[key]=value.context.cgameKeys.bindings[key] end for
+  userinfos=array(MAX_CLIENTS,"")
+  for client=0 to MAX_CLIENTS-1 userinfos[client]=value.context.userinfos[client] end for
+  return UserSettings(savedCvars.toArray(),bindings,userinfos)
+end function
+
+function applySavedCvars(registry,settings)
+  if settings==void then return void end if
+  for each saved in settings.cvars
+    // mapname and the running-state cvars describe the newly-created host and
+    // must never be inherited from the disconnected UI shell.
+    if not stringEqualsIgnoreCaseAscii(saved[0],"mapname") and not stringEqualsIgnoreCaseAscii(saved[0],"sv_running") and not stringEqualsIgnoreCaseAscii(saved[0],"cl_running") then
+      variable=cvar.get(registry,saved[0],saved[2],saved[4]);if variable is error then return variable end if
+      variable=cvar.set2(registry,saved[0],saved[1],true);if variable is error then return variable end if
+      if saved[3]!=void then variable.latchedString=saved[3] end if
+    end if
+  end for
+  return void
+end function
+
+function applySavedClientState(context,settings)
+  if settings==void then return void end if
+  count=len(settings.bindings);if count>cgameKeys.MAX_KEYS then count=cgameKeys.MAX_KEYS end if
+  for key=0 to count-1 context.cgameKeys.bindings[key]=settings.bindings[key] end for
+  count=len(settings.userinfos);if count>MAX_CLIENTS then count=MAX_CLIENTS end if
+  for client=0 to count-1 context.userinfos[client]=settings.userinfos[client] end for
+  return void
+end function
+
 function qagameRealTime(context)
   return cgameMisc.sampleRealTime()
 end function
 function qagameSeek(context,handle,offset,origin) return memoryFileSeek.seek(context.files,handle,offset,origin) end function
 
-function bootConfiguredNamedMode(archive,map,now,qvmRoot,botsEnabled,mapName,startGame)
-  if archive==void or map==void or now<0 then return fail("archive, map and non-negative time are required") end if
-  entityBytes=slice(map.data,map.offsets[0],map.lengths[0]);serverLifecycle=serverInit.runtime();serverInit.SV_Init(serverLifecycle,void);registry=serverLifecycle.registry;seedCvars(registry);cvar.set2(registry,"mapname",mapName,true)
+function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,mapName,startGame,settings)
+  if archive==void or now<0 or (startGame and map==void) then return fail("archive, game map and non-negative time are required") end if
+  entityBytes=bytes(0,0);if map!=void then entityBytes=slice(map.data,map.offsets[0],map.lengths[0]) end if
+  serverLifecycle=serverInit.runtime();serverInit.SV_Init(serverLifecycle,void);registry=serverLifecycle.registry;seedCvars(registry);restored=applySavedCvars(registry,settings);if restored is error then return restored end if;cvar.set2(registry,"mapname",mapName,true)
   if botsEnabled then cvar.set2(registry,"bot_enable","1",true) end if
-  scene=sceneQueue.create(4096,65536);scene.registered=true;scene.worldLoaded=true
-  collisionLoad=collision.CM_LoadMap(collision.mapState(true),"maps/"+mapName+".bsp",map.data,false);if collisionLoad is error then return collisionLoad end if;collisionWorld=collisionLoad.world
-  spatialScene=serverWorld.create(collisionWorld)
+  scene=sceneQueue.create(4096,65536);scene.registered=true;scene.worldLoaded=map!=void
+  collisionWorld=void;spatialScene=void
+  if map!=void then collisionLoad=collision.CM_LoadMap(collision.mapState(true),"maps/"+mapName+".bsp",map.data,false);if collisionLoad is error then return collisionLoad end if;collisionWorld=collisionLoad.world;spatialScene=serverWorld.create(collisionWorld) end if
   initialCommand=qworld.userCommand(now,[0,0,0],0,2,0,0,0)
-  grid=lightGrid.load(map);if grid is error then return grid end if
-  bspWorld=aasBspq3.create();loadedBsp=aasBspq3.AAS_LoadBSPFile(bspWorld,decode(entityBytes));if loadedBsp is error then return loadedBsp end if
+  grid=void;if map!=void then grid=lightGrid.load(map);if grid is error then return grid end if end if
+  bspWorld=aasBspq3.create();if map!=void then loadedBsp=aasBspq3.AAS_LoadBSPFile(bspWorld,decode(entityBytes));if loadedBsp is error then return loadedBsp end if end if
   botBspEntities=bspWorld.entities
   commandState=commands.create();abiServer=serverAbi.server();serverLifecycle.sv.configstrings=abiServer.configstrings;configstrings=serverLifecycle.sv.configstrings;cgameServerCommands=serverCommandStream.create(commandState,configstrings)
   uiClient=uiHost.createClientState(uiHost.CA_DISCONNECTED,0,-1,"localhost","","");if uiClient is error then return uiClient end if
   nativeServerCmds=nativeCgameServercmds.create();nativeServerCmds.configstrings=configstrings
   nativeMain=nativeCgameMain.create();nativeMain.configstrings=configstrings
-  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create())
+  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create(),void)
   commands.initCommands(context.commandState);installed=cvarCommands.install(registry,context.commandState);if installed is error then return installed end if
   bindingState=bindingConfig.create(context.cgameKeys);bindingState.printFn=emitPrint;bindingState.printContext=context
   installed=bindingConfig.install(bindingState,context.commandState);if installed is error then return installed end if
+  restored=applySavedClientState(context,settings);if restored is error then return restored end if
   textServices=consoleInput.services(context);textServices.commandFn=consoleInputCommand;textServices.reliableFn=consoleInputReliable;textServices.printFn=emitPrint;textServices.scrollFn=consoleScroll
   context.clientTextInput=consoleInput.create(78,textServices)
   consoleServices=clientConsole.services(context);consoleServices.startDemoLoopFn=consoleStartDemoLoop;consoleServices.crosshairPlayerFn=consoleCrosshairPlayer;consoleServices.lastAttackerFn=consoleLastAttacker;clientConsole.Con_Init(clientConsole.create(context.clientTextInput,consoleServices),640)
@@ -751,14 +805,17 @@ function bootConfiguredNamedMode(archive,map,now,qvmRoot,botsEnabled,mapName,sta
   gameSyscalls.extendedFn=extendedQagame
   world=qworld.services(context);world.traceFn=traceWorld;world.pointContentsFn=pointContents;world.entitiesInBoxFn=entitiesInBox;world.entityContactFn=entityContact;world.getUsercmdFn=getUsercmd;gameSyscalls.worldServices=world
   host=gameVm.services(machineRuntime,qagame.callback(gameSyscalls),loadVm,callVm,restartVm,freeVm);host.context=context;host.millisecondsFn=milliseconds;host.entityStringFn=entityString;host.clearClientEntityFn=clearClient;host.botEnableFn=botEnable
-  game=gameVm.create(host);if game is error then return game end if
-  gameVm.initialize(game,now,MAX_CLIENTS)
+  game=gameVm.create(host);if game is error then return game end if;context.game=game
+  initialized=gameVm.initialize(game,now,MAX_CLIENTS);if initialized is error then return initialized end if
   return Boot(game,machineRuntime,context,void,void)
 end function
-function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName) return bootConfiguredNamedMode(archive,map,now,qvmRoot,botsEnabled,mapName,true) end function
+function bootConfiguredNamedMode(archive,map,now,qvmRoot,botsEnabled,mapName,startGame) return bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,mapName,startGame,void) end function
+function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName) return bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,mapName,true,void) end function
 function bootConfigured(archive,map,now,qvmRoot,botsEnabled) return bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,"q3dm1") end function
 
 function bootWithQvms(archive,map,now,qvmRoot) return bootConfigured(archive,map,now,qvmRoot,false) end function
+function bootWithQvmsSettingsNamed(archive,map,mapName,now,qvmRoot,settings) return bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,false,mapName,true,settings) end function
+function bootWithQvmsSettings(archive,map,now,qvmRoot,settings) return bootWithQvmsSettingsNamed(archive,map,"q3dm1",now,qvmRoot,settings) end function
 function bootUiShell(archive,map,now,qvmRoot) return bootConfiguredNamedMode(archive,map,now,qvmRoot,false,"q3dm1",false) end function
 function bootWithBots(archive,map,now,qvmRoot) return bootConfigured(archive,map,now,qvmRoot,true) end function
 function bootWithBotsNamed(archive,map,mapName,now,qvmRoot) return bootConfiguredNamed(archive,map,now,qvmRoot,true,mapName) end function
@@ -767,7 +824,7 @@ function boot(archive,map,now) return bootConfigured(archive,map,now,"",false) e
 function connectLocal(value,clientNum)
   denied=gameVm.clientConnect(value.game,clientNum,true,false);if denied is error then return denied end if
   if denied!=0 then return fail("GAME_CLIENT_CONNECT rejected local client") end if
-  value.context.clientStates[clientNum]=1;gameVm.clientBegin(value.game,clientNum)
+  value.context.clientStates[clientNum]=1;begun=gameVm.clientBegin(value.game,clientNum);if begun is error then value.context.clientStates[clientNum]=0;value.context.userinfos[clientNum]="";botServerBridge.resetClient(value.context.botServer,clientNum);return begun end if
   if value.context.uiClient.clientNum<0 then value.context.uiClient.clientNum=clientNum end if;value.context.uiClient.connState=uiHost.CA_ACTIVE;value.context.uiClient.connectPacketCount=0;value.context.uiClient.messageString=""
   return void
 end function
@@ -815,6 +872,7 @@ end function
 
 function submitUsercmd(value,clientNum,command)
   if value==void or clientNum<0 or clientNum>=MAX_CLIENTS or command==void then return fail("valid match, client and usercmd are required") end if
+  if value.context.clientStates[clientNum]==0 then return fail("usercmd client is not active") end if
   value.context.usercmds[clientNum]=command;value.context.now=command.serverTime;value.context.commandNumber=n.i32(value.context.commandNumber+1)
   stored=matchCommandRing.store(value.context.usercmdHistory,value.context.commandNumber,command);if stored is error then return stored end if
   return gameVm.clientThink(value.game,clientNum)
@@ -968,7 +1026,28 @@ function snapshot(value,clientNum)
   setting=cvar.find(context.cvars,"g_gametype");if setting!=void then observer.gametype=setting.integer end if;setting=cvar.find(context.cvars,"timelimit");if setting!=void then observer.timelimit=setting.integer end if;setting=cvar.find(context.cvars,"fraglimit");if setting!=void then observer.fraglimit=setting.integer end if
   if initial then nativeCgamePlayerstate.respawn(observer,result.playerState) end if
   if transitionStart<len(context.nativeSnapshots.playerStateTransitions) then for transitionIndex=transitionStart to len(context.nativeSnapshots.playerStateTransitions)-1 pair=context.nativeSnapshots.playerStateTransitions[transitionIndex];nativeCgamePlayerstate.transitionPlayerState(observer,pair[0],pair[1]) end for end if
-  botServerBridge.publishSnapshot(context.botServer,clientNum,entities);return result
+  botServerBridge.publishSnapshot(context.botServer,clientNum,entities);published=publishBotSnapshots(value);if published is error then return published end if;return result
+end function
+
+function publishBotSnapshots(value)
+  if value==void or value.game==void then return 0 end if
+  context=value.context;machine=value.game.slot.machine
+  if machine==void or context.gameClients<=0 or context.entityStride<=0 then return 0 end if
+  mappedList=lists.List.withCapacity(context.entityCount)
+  for index=0 to context.entityCount-1
+    state=entitystate.load(machine.data,context.gameEntities+index*context.entityStride);if state is error then return state end if;state.number=index
+    spatial=context.spatialScene.entities[index];mappedList.add(snapshotBuild.snapshotEntity(state,spatial.linked,spatial.svFlags,spatial.singleClient,spatial.clusters,spatial.lastCluster,spatial.areanum,spatial.areanum2))
+  end for
+  buildWorld=snapshotBuild.world(true,mappedList.toArray(),1024);host=snapshotBuild.services(snapshotPointLeaf,snapshotLeafArea,snapshotLeafCluster,snapshotWriteAreaBits,snapshotClusterPvs,snapshotAreasConnected,context);published=0
+  for bot=0 to len(context.clientStates)-1
+    if context.clientStates[bot]==2 then
+      ps=playerstate.load(machine.data,context.gameClients+bot*context.clientStride);if ps is error then return ps end if
+      frame=snapshotBuild.buildClientSnapshot(buildWorld,host,ps,context.linked[bot],false);if frame is error then return frame end if
+      entities=array(frame.numEntities,void);if frame.numEntities>0 then for index=0 to frame.numEntities-1 entities[index]=buildWorld.ring[(frame.firstEntity+index)%buildWorld.ringCapacity] end for end if
+      result=botServerBridge.publishSnapshot(context.botServer,bot,entities);if result is error then return result end if;published=published+1
+    end if
+  end for
+  return published
 end function
 
 function writeWords(output,offset,words)

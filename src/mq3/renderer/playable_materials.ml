@@ -25,6 +25,7 @@ const BLEND_FILTER=3
 const BLEND_DST_COLOR_ONE_MINUS_DST_ALPHA=4
 const BLEND_MARK=6
 const BLEND_PREMULTIPLIED_ALPHA=7
+const BLEND_GL_STATE=256
 const ALPHA_TEST_NONE=0
 const ALPHA_TEST_GT0=1
 const ALPHA_TEST_LT128=2
@@ -146,6 +147,10 @@ function stageBlend(stage)
   if stage.blendSrc==shaderParser.GLS_SRCBLEND_DST_COLOR and stage.blendDst==shaderParser.GLS_DSTBLEND_ONE_MINUS_DST_ALPHA then return BLEND_DST_COLOR_ONE_MINUS_DST_ALPHA end if
   if stage.blendSrc==shaderParser.GLS_SRCBLEND_ZERO and stage.blendDst==shaderParser.GLS_DSTBLEND_ONE_MINUS_SRC_COLOR then return BLEND_MARK end if
   if stage.blendSrc==shaderParser.GLS_SRCBLEND_ONE and stage.blendDst==shaderParser.GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA then return BLEND_PREMULTIPLIED_ALPHA end if
+  // Do not silently turn valid retail blendFunc combinations opaque.  The
+  // software rasterizer accepts the original GLS_* bit encoding for every
+  // remaining Baseq3 source/destination factor pair.
+  if stage.blendSrc!=0 and stage.blendDst!=0 then return BLEND_GL_STATE|stage.blendSrc|stage.blendDst end if
   return BLEND_OPAQUE
 end function
 function stageTcGen(stage) if stage.tcGen=="bad" then return "texture" end if;return stage.tcGen end function

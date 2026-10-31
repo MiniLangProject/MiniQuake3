@@ -51,15 +51,23 @@ function fs_ForceFlush(state,number) handle=fs_FileForHandle(state,number);if ha
 function fs_ReplaceSeparators(value) data=bytes(value);for index=0 to len(data)-1 if data[index]==47 or data[index]==92 then data[index]=92 end if end for;return decode(data) end function
 function fs_ConvertPath(value) data=bytes(value);for index=0 to len(data)-1 if data[index]==92 or data[index]==58 then data[index]=47 end if end for;return decode(data) end function
 function fs_BuildOSPath(base,game,qpath) result=base;if game!="" then if len(result)>0 and result[len(result)-1]!="\\" and result[len(result)-1]!="/" then result=result+"\\" end if;result=result+game end if;if qpath!="" then if len(result)>0 and result[len(result)-1]!="\\" and result[len(result)-1]!="/" then result=result+"\\" end if;result=result+qpath end if;return fs_ReplaceSeparators(result) end function
+function fs_ValidQPath(value)
+  if typeof(value)!="string" or value=="" then return false end if
+  if strings.indexOf(value,":",0)>=0 then return false end if
+  converted=fs_ConvertPath(value)
+  if strings.startsWith(converted,"/") then return false end if
+  if strings.indexOf(converted,"..",0)>=0 then return false end if
+  return true
+end function
 function fs_CreatePath(osPath)
   converted=fs_ReplaceSeparators(osPath);data=bytes(converted)
   for index=0 to len(data)-1 if data[index]==92 and index>2 then directory=decode(slice(data,0,index));if GetFileAttributesW(directory)==0xffffffff then CreateDirectoryW(directory,0) end if end if end for;return false
 end function
 function fs_CopyFile(fromPath,toPath) data=hostfs.readAllBytes(fromPath);if data is error then return false end if;fs_CreatePath(toPath);result=try(hostfs.writeAllBytes(toPath,data));return not (result is error) end function
 function fs_Remove(osPath) return DeleteFileW(osPath) end function
-function fs_Rename(state,fromName,toName) fromPath=fs_BuildOSPath(state.config.homePath,state.config.gameDir,fromName);toPath=fs_BuildOSPath(state.config.homePath,state.config.gameDir,toName);fs_CreatePath(toPath);if MoveFileExW(fromPath,toPath,1) then return true end if;if fs_CopyFile(fromPath,toPath) then fs_Remove(fromPath);return true end if;return false end function
-function fs_SV_Rename(state,fromName,toName) fromPath=fs_BuildOSPath(state.config.homePath,fromName,"");toPath=fs_BuildOSPath(state.config.homePath,toName,"");fs_CreatePath(toPath);if MoveFileExW(fromPath,toPath,1) then return true end if;if fs_CopyFile(fromPath,toPath) then fs_Remove(fromPath);return true end if;return false end function
-function fs_SV_FileExists(state,name) return GetFileAttributesW(fs_BuildOSPath(state.config.homePath,name,""))!=0xffffffff end function
+function fs_Rename(state,fromName,toName) if not fs_ValidQPath(fromName) or not fs_ValidQPath(toName) then return false end if;fromPath=fs_BuildOSPath(state.config.homePath,state.config.gameDir,fromName);toPath=fs_BuildOSPath(state.config.homePath,state.config.gameDir,toName);fs_CreatePath(toPath);if MoveFileExW(fromPath,toPath,1) then return true end if;if fs_CopyFile(fromPath,toPath) then fs_Remove(fromPath);return true end if;return false end function
+function fs_SV_Rename(state,fromName,toName) if not fs_ValidQPath(fromName) or not fs_ValidQPath(toName) then return false end if;fromPath=fs_BuildOSPath(state.config.homePath,fromName,"");toPath=fs_BuildOSPath(state.config.homePath,toName,"");fs_CreatePath(toPath);if MoveFileExW(fromPath,toPath,1) then return true end if;if fs_CopyFile(fromPath,toPath) then fs_Remove(fromPath);return true end if;return false end function
+function fs_SV_FileExists(state,name) if not fs_ValidQPath(name) then return false end if;return GetFileAttributesW(fs_BuildOSPath(state.config.homePath,name,""))!=0xffffffff end function
 
 function activate(state,number,name,mode,data,path,zipFile,unique)
   handle=state.handles[number];handle.active=true;handle.name=name;handle.mode=mode;handle.data=data;handle.position=0;handle.path=path;handle.dirty=false;handle.sync=mode==FS_APPEND_SYNC;handle.zipFile=zipFile;handle.unique=unique;if mode==FS_APPEND or mode==FS_APPEND_SYNC then handle.position=len(data) end if;return number
@@ -68,10 +76,12 @@ function fs_FOpenFileRead(state,filename,uniqueFile)
   data=try(paths.read(state.fs,filename));if data is error then return OpenResult(-1,0) end if;number=fs_HandleForFile(state);if number is error then return number end if;activate(state,number,filename,FS_READ,data,"",false,uniqueFile);return OpenResult(len(data),number)
 end function
 function fs_SV_FOpenFileRead(state,filename)
+  if not fs_ValidQPath(filename) then return OpenResult(-1,0) end if
   candidates=[fs_BuildOSPath(state.config.homePath,filename,""),fs_BuildOSPath(state.config.basePath,filename,""),fs_BuildOSPath(state.config.cdPath,filename,"")]
   for each path in candidates data=try(hostfs.readAllBytes(path));if not (data is error) then number=fs_HandleForFile(state);activate(state,number,filename,FS_READ,data,path,false,true);return OpenResult(len(data),number) end if end for;return OpenResult(-1,0)
 end function
 function openWrite(state,filename,mode,server)
+  if not fs_ValidQPath(filename) then return error(7667,"FS write path escapes game directory") end if
   base=state.config.homePath;game=state.config.gameDir;if server then game="" end if;path=fs_BuildOSPath(base,game,filename);data=bytes(0,0)
   if mode==FS_APPEND or mode==FS_APPEND_SYNC then old=try(hostfs.readAllBytes(path));if not (old is error) then data=old end if end if
   fs_CreatePath(path);number=fs_HandleForFile(state);activate(state,number,filename,mode,data,path,false,true);return number

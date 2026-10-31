@@ -48,7 +48,7 @@ function requestedMap(state,start)
 end function
 
 function run(archive,bootstrapMap,qvmRoot)
-  if archive==void or bootstrapMap==void then return fail("archive and bootstrap map are required") end if
+  if archive==void then return fail("archive is required") end if
   opened=window.open(WIDTH,HEIGHT);if opened is error then return opened end if
   window.setTitle("MiniQuake3 | Main Menu")
   loading=window.showLoading(10,"Starting original Quake III menu");if loading is error then window.shutdown();return loading end if
@@ -66,17 +66,18 @@ function run(archive,bootstrapMap,qvmRoot)
   uploaded=qvm2d.upload(catalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   sounds=qvmSoundAssets.load(archive,state.context.assets,state.context.assetKinds);if sounds is error then qvm2d.release(catalog);window.shutdown();match.shutdown(state);return sounds end if
   audio=qvmPlayback.create(sounds,22050,4096);if audio is error then qvm2d.release(catalog);window.shutdown();match.shutdown(state);return audio end if
-  applied=qvmPlayback.apply(audio,state.context.soundCommands);if applied is error then qvm2d.release(catalog);window.shutdown();match.shutdown(state);return applied end if
+  applied=qvmPlayback.consume(audio,state.context.soundCommands);if applied is error then qvm2d.release(catalog);window.shutdown();match.shutdown(state);return applied end if
   audioStarted=audioOutput.init(22050);if audioStarted is error then qvm2d.release(catalog);window.shutdown();match.shutdown(state);return audioStarted end if
   window.setTitle("MiniQuake3 | Quake III Arena Main Menu")
-  consoleAt=len(state.context.console);uploadedTextures=len(catalog.textures);now=1000;mapName=void
+  consoleAt=len(state.context.console);uploadedTextures=len(catalog.textures);soundAssetCount=len(state.context.assets);now=1000;mapName=void
   while not window.shouldClose() and mapName==void
     window.poll();input.mouse=window.mouseDelta();now=now+16
     reset=localQvmUi.resetFrameCommands(state);if reset is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return reset end if
     frame=uiSession.frame(ui,now);if frame is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return frame end if
     refreshed=qvm2d.refresh(catalog,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT);if refreshed is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return refreshed end if
     if len(catalog.textures)>uploadedTextures then uploaded=qvm2d.upload(catalog);if uploaded is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return uploaded end if;uploadedTextures=len(catalog.textures) end if
-    applied=qvmPlayback.apply(audio,state.context.soundCommands);if applied is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return applied end if
+    if len(state.context.assets)!=soundAssetCount then synced=qvmSoundAssets.sync(sounds,state.context.assets,state.context.assetKinds);if synced is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return synced end if;soundAssetCount=len(state.context.assets) end if
+    applied=qvmPlayback.consume(audio,state.context.soundCommands);if applied is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return applied end if
     window.beginFrame(0,0,0);drawn=qvm2d.draw(catalog,now);if drawn is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return drawn end if;window.present()
     if audioOutput.canSubmit() then chunk=qvmPlayback.render(audio);if chunk is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return chunk end if;accepted=audioOutput.submit(chunk.samples);if accepted is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return accepted end if end if
     mapName=requestedMap(state,consoleAt);consoleAt=len(state.context.console)
@@ -84,9 +85,10 @@ function run(archive,bootstrapMap,qvmRoot)
     // cadence instead of burning a CPU core and presenting partial frames.
     time.sleep(16)
   end while
+  settings=match.captureUserSettings(state)
   audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state)
   if mapName==void then return 0 end if
   mapData=pk3.read(archive,"maps/"+mapName+".bsp");if mapData is error then return mapData end if
   selectedMap=bsp.load(mapData);if selectedMap is error then return selectedMap end if
-  return gameApp.run(archive,selectedMap,qvmRoot)
+  return gameApp.runWithSettingsNamed(archive,selectedMap,mapName,qvmRoot,settings)
 end function

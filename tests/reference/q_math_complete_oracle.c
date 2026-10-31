@@ -10,7 +10,9 @@ int main(int argc,char **argv){
  FILE *f;vec3_t a={1,2,3},b={4,6,3},out,mins={-1,-1,-1},maxs={1,1,1};vec4_t plane;vec3_t colorOut;float maximum; cplane_t cp;
  if(argc!=2 || !(f=fopen(argv[1],"wb")))return 2;word(f,0x514d4332u);
  word(f,(uint32_t)(int32_t)ClampChar(-500));word(f,(uint32_t)(int32_t)ClampChar(500));word(f,(uint32_t)(int32_t)ClampShort(-40000));word(f,(uint32_t)(int32_t)ClampShort(40000));
- word(f,ColorBytes3(1.0f,0.5f,0.0f));word(f,ColorBytes4(1.0f,0.5f,0.0f,1.0f));word(f,Q_log2(1));word(f,Q_log2(8));
+ /* ColorBytes3 intentionally writes only three bytes in the original.  The
+    fourth byte is indeterminate stack storage and is not part of its API. */
+ word(f,ColorBytes3(1.0f,0.5f,0.0f)&0x00ffffffu);word(f,ColorBytes4(1.0f,0.5f,0.0f,1.0f));word(f,Q_log2(1));word(f,Q_log2(8));
  scalar(f,AngleSubtract(10.0f,350.0f));scalar(f,AngleMod(720.25f));scalar(f,AngleDelta(5.0f,355.0f));scalar(f,VectorLengthSquared(a));scalar(f,DistanceSquared(a,b));scalar(f,Distance(a,b));
  maximum=NormalizeColor(a,colorOut);scalar(f,maximum);scalar(f,colorOut[0]);scalar(f,colorOut[1]);scalar(f,colorOut[2]);
  word(f,PlaneFromPoints(plane,(vec3_t){0,0,0},(vec3_t){1,0,0},(vec3_t){0,1,0}));scalar(f,plane[0]);scalar(f,plane[1]);scalar(f,plane[2]);scalar(f,plane[3]);

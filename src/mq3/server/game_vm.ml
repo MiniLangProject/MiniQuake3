@@ -79,24 +79,34 @@ function initialize(state,levelTime,maxClients)
   if state==void or state.active then return error(3432,"game VM: invalid initialization") end if
   host=state.host
   state.botEnable=0;if host.botEnableFn!=void then state.botEnable=host.botEnableFn(host.context) end if
-  state.slot=host.loadFn(host.machineRuntime,"qagame",host.syscall);state.active=true
-  initializeVm(state,levelTime,maxClients,false)
+  state.slot=host.loadFn(host.machineRuntime,"qagame",host.syscall)
+  if state.slot is error or state.slot==void then failed=state.slot;state.slot=void;if failed is error then return failed end if;return error(3432,"game VM: module load failed") end if
+  state.active=true
+  initialized=initializeVm(state,levelTime,maxClients,false)
+  if initialized is error then host.freeFn(host.machineRuntime,state.slot);state.slot=void;state.active=false;return initialized end if
   return state.slot
 end function
 
 function restart(state,levelTime,maxClients)
   slot=requireActive(state)
-  invoke(state,[GAME_SHUTDOWN,1])
-  state.slot=state.host.restartFn(state.host.machineRuntime,slot)
-  initializeVm(state,levelTime,maxClients,true)
+  stopped=invoke(state,[GAME_SHUTDOWN,1]);if stopped is error then return stopped end if
+  restarted=state.host.restartFn(state.host.machineRuntime,slot)
+  if restarted is error or restarted==void then
+    failed=restarted;state.host.freeFn(state.host.machineRuntime,slot);state.slot=void;state.active=false;state.entityParsePoint=void
+    if failed is error then return failed end if;return error(3432,"game VM: module restart failed")
+  end if
+  state.slot=restarted
+  initialized=initializeVm(state,levelTime,maxClients,true)
+  if initialized is error then state.host.freeFn(state.host.machineRuntime,state.slot);state.slot=void;state.active=false;state.entityParsePoint=void;return initialized end if
   return state.slot
 end function
 
 function shutdown(state)
   if state==void then return error(3432,"game VM: missing state") end if
   if not state.active then return void end if
-  invoke(state,[GAME_SHUTDOWN,0]);state.host.freeFn(state.host.machineRuntime,state.slot)
+  stopped=invoke(state,[GAME_SHUTDOWN,0]);released=state.host.freeFn(state.host.machineRuntime,state.slot)
   state.slot=void;state.active=false;state.entityParsePoint=void
+  if stopped is error then return stopped end if;if released is error then return released end if
   return void
 end function
 

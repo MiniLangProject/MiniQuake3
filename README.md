@@ -28,6 +28,16 @@ Buttons, Zügen und periodischen Movern ist vorhanden. **Ein spielbarer Preview-
 direkt aus dem Ledger erzeugt und führt jede C-, Header- und ASM-Originaldatei
 mit Quellportstatus und noch nicht zugeordneten Symbolen auf.
 
+Der Standardstart von `build/MiniQuake3.exe` erwartet `baseq3` und `qvms`
+direkt neben der EXE, öffnet zuerst das originale Quake-III-Hauptmenü und lädt
+die gewählte Karte erst nach dessen `map`-/`spmap`-Befehl. Der aktuelle
+Start-/Performanceblock übernimmt Menü-Cvars, Userinfo und Bindings in das
+Spiel, lädt die komplette `pak*.pk3`-Prioritätskette, cached Shader, PVS,
+Geometrie, Batches und Audiosamples und vermeidet die früheren quadratischen
+Array-Konkatenationen in den produktiven Framepfaden. Der geprüfte Build vom
+31. Oktober 2026 hat SHA-256
+`144426dc44002765926f36eea321b56c2f082d59453f0b5bc82bdd12e8e99129`.
+
 Der strenge Quellabgleich umfasst 335 Runtime-/Plattformdateien: **278 sind
 symbolvollständig zugeordnet, 57 sind teilweise zugeordnet**. In diesen 57
 Dateien bleiben **939 Originalsymbole** ohne belegte MiniLang-Zuordnung. Der

@@ -81,10 +81,8 @@ function createSector(scene,depth,mins,maxs)
   return index
 end function
 function create(world)
-  scene = Scene(world,[],[])
-  for i = 0 to 1023
-    scene.entities = scene.entities+[entity(i)]
-  end for
+  entities=array(1024,void);for i=0 to 1023 entities[i]=entity(i) end for
+  scene = Scene(world,entities,[])
   bounds = cm.modelBounds(world,0); createSector(scene,0,bounds[0],bounds[1])
   return scene
 end function

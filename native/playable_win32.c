@@ -1812,8 +1812,71 @@ static uint32_t premultipliedAlphaColor(uint32_t source, uint32_t destination) {
     return (alpha << 24) | (red << 16) | (green << 8) | blue;
 }
 
+static uint32_t genericBlendComponent(uint32_t source, uint32_t destination,
+        uint32_t sourceAlpha, uint32_t destinationAlpha, int sourceFactor,
+        int destinationFactor, int alphaChannel) {
+    uint32_t sf = 255u;
+    uint32_t df = 255u;
+    switch (sourceFactor) {
+        case 1: sf = 0u; break;                         /* ZERO */
+        case 2: sf = 255u; break;                       /* ONE */
+        case 3: sf = destination; break;                /* DST_COLOR */
+        case 4: sf = 255u - destination; break;         /* ONE_MINUS_DST_COLOR */
+        case 5: sf = sourceAlpha; break;                /* SRC_ALPHA */
+        case 6: sf = 255u - sourceAlpha; break;         /* ONE_MINUS_SRC_ALPHA */
+        case 7: sf = destinationAlpha; break;           /* DST_ALPHA */
+        case 8: sf = 255u - destinationAlpha; break;    /* ONE_MINUS_DST_ALPHA */
+        case 9:                                         /* SRC_ALPHA_SATURATE */
+            sf = alphaChannel ? 255u : sourceAlpha;
+            if (!alphaChannel && sf > 255u - destinationAlpha) sf = 255u - destinationAlpha;
+            break;
+        default: sf = 0u; break;
+    }
+    switch (destinationFactor) {
+        case 1: df = 0u; break;                         /* ZERO */
+        case 2: df = 255u; break;                       /* ONE */
+        case 3: df = source; break;                     /* SRC_COLOR */
+        case 4: df = 255u - source; break;              /* ONE_MINUS_SRC_COLOR */
+        case 5: df = sourceAlpha; break;                /* SRC_ALPHA */
+        case 6: df = 255u - sourceAlpha; break;         /* ONE_MINUS_SRC_ALPHA */
+        case 7: df = destinationAlpha; break;           /* DST_ALPHA */
+        case 8: df = 255u - destinationAlpha; break;    /* ONE_MINUS_DST_ALPHA */
+        default: df = 0u; break;
+    }
+    {
+        uint32_t result = (source * sf + destination * df + 127u) / 255u;
+        return result > 255u ? 255u : result;
+    }
+}
+
+static uint32_t genericBlendColor(uint32_t source, uint32_t destination, int blendMode) {
+    uint32_t sa = source >> 24;
+    uint32_t da = destination >> 24;
+    int sf = blendMode & 15;
+    int df = (blendMode >> 4) & 15;
+    uint32_t a = genericBlendComponent(sa, da, sa, da, sf, df, 1);
+    uint32_t r = genericBlendComponent((source >> 16) & 255u, (destination >> 16) & 255u, sa, da, sf, df, 0);
+    uint32_t g = genericBlendComponent((source >> 8) & 255u, (destination >> 8) & 255u, sa, da, sf, df, 0);
+    uint32_t b = genericBlendComponent(source & 255u, destination & 255u, sa, da, sf, df, 0);
+    return (a << 24) | (r << 16) | (g << 8) | b;
+}
+
+static uint32_t applyBlendColor(uint32_t source, uint32_t destination, int blendMode) {
+    if ((blendMode & 0x100) != 0) return genericBlendColor(source, destination, blendMode);
+    if (blendMode == 7) return premultipliedAlphaColor(source, destination);
+    if (blendMode == 6) return inverseSourceColor(source, destination);
+    if (blendMode == 5) return dynamicLightColor(source, destination);
+    if (blendMode == 4) return destinationAlphaColor(source, destination);
+    if (blendMode == 3) return filterColor(source, destination);
+    if (blendMode == 2) return addColor(source, destination);
+    return blendColor(source, destination);
+}
+
 PLAYABLE_API int playable_window_set_raster_state(int blendMode, int depthEqual, int depthWrite) {
-    if (blendMode < 0 || blendMode > 7 || (depthEqual != 0 && depthEqual != 1) ||
+    int generic = (blendMode & 0x100) != 0;
+    int sourceFactor = blendMode & 15;
+    int destinationFactor = (blendMode >> 4) & 15;
+    if (blendMode < 0 || (blendMode > 7 && (!generic || blendMode > 0x1ff || sourceFactor < 1 || sourceFactor > 9 || destinationFactor < 1 || destinationFactor > 8)) || (depthEqual != 0 && depthEqual != 1) ||
             (depthWrite != 0 && depthWrite != 1)) return 0;
     rasterBlendMode = blendMode;
     rasterDepthEqual = depthEqual;
@@ -2165,14 +2228,7 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
             }
             if (!alphaTestPasses(color) || (color >> 24) == 0u) continue;
             if (rasterBlendMode == 0) pixels[offset] = color;
-            else if (rasterBlendMode == 7) pixels[offset] = premultipliedAlphaColor(color, pixels[offset]);
-            else if (rasterBlendMode == 6) pixels[offset] = inverseSourceColor(color, pixels[offset]);
-            else if (rasterBlendMode == 5) pixels[offset] = dynamicLightColor(color, pixels[offset]);
-            else if (rasterBlendMode == 4) pixels[offset] = destinationAlphaColor(color, pixels[offset]);
-            else if (rasterBlendMode == 3) pixels[offset] = filterColor(color, pixels[offset]);
-            else if (rasterBlendMode == 2) pixels[offset] = addColor(color, pixels[offset]);
-            else if (rasterBlendMode == 1) pixels[offset] = blendColor(color, pixels[offset]);
-            else pixels[offset] = color;
+            else pixels[offset] = applyBlendColor(color, pixels[offset], rasterBlendMode);
             if (rasterDepthWrite) depthPixels[offset] = (float)comparisonDepth;
         }
         rowB0 += stepB0Y;
@@ -2441,14 +2497,7 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
                 if (difference < -0.00001 || difference > 0.00001) continue;
             }
             if (rasterBlendMode == 0) pixels[offset] = color;
-            else if (rasterBlendMode == 7) pixels[offset] = premultipliedAlphaColor(color, pixels[offset]);
-            else if (rasterBlendMode == 6) pixels[offset] = inverseSourceColor(color, pixels[offset]);
-            else if (rasterBlendMode == 5) pixels[offset] = dynamicLightColor(color, pixels[offset]);
-            else if (rasterBlendMode == 4) pixels[offset] = destinationAlphaColor(color, pixels[offset]);
-            else if (rasterBlendMode == 3) pixels[offset] = filterColor(color, pixels[offset]);
-            else if (rasterBlendMode == 2) pixels[offset] = addColor(color, pixels[offset]);
-            else if (rasterBlendMode == 1) pixels[offset] = blendColor(color, pixels[offset]);
-            else pixels[offset] = color;
+            else pixels[offset] = applyBlendColor(color, pixels[offset], rasterBlendMode);
             if (rasterDepthWrite) depthPixels[offset] = (float)comparisonDepth;
         }
         rowB0 += stepB0Y;

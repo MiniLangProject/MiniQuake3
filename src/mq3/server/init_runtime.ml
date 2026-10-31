@@ -37,8 +37,8 @@ function sharedEntity() return SharedEntity(false,entitystate.create()) end func
 
 struct Level state restarting configstrings entities baselines numEntities checksumFeed serverId restartedServerId checksumFeedServerId mapChecksum mapname end struct
 function level()
-  entities=[];baselines=[]
-  for index=0 to 1023 entities=entities+[sharedEntity()];baselines=baselines+[entitystate.create()] end for
+  entities=array(1024,void);baselines=array(1024,void)
+  for index=0 to 1023 entities[index]=sharedEntity();baselines[index]=entitystate.create() end for
   return Level(SS_DEAD,false,array(MAX_CONFIGSTRINGS,""),entities,baselines,0,0,0,0,0,0,"")
 end function
 

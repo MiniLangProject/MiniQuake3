@@ -109,8 +109,10 @@ function loadMaterial(archive,index,quad,nextSlot,endSlot)
   return [Material(quad.shaderHandle,name,stages,noMip,0.0,clampTime),nextSlot]
 end function
 
-function createPass(stage,triangles,timeOffset,clampTime)
-  batch=window.createTriangleBatch(len(triangles));if batch is error then return batch end if
+function createPassReusable(stage,triangles,timeOffset,clampTime,previous)
+  batch=void
+  if previous!=void and previous.batch!=void and previous.batch.capacity>=len(triangles) then batch=window.resetTriangleBatch(previous.batch)
+  else batch=window.createTriangleBatch(len(triangles));if batch is error then return batch end if end if
   slot=stage.slots[0]
   for each triangle in triangles
     p=triangle.positions;uv=triangle.texCoords;c=triangle.colors
@@ -118,11 +120,15 @@ function createPass(stage,triangles,timeOffset,clampTime)
   end for
   return StagePass(stage,triangles,batch,timeOffset,clampTime)
 end function
-function createRun(materialIndexValue,handle,material,quads)
+function createPass(stage,triangles,timeOffset,clampTime) return createPassReusable(stage,triangles,timeOffset,clampTime,void) end function
+function createRunReusable(materialIndexValue,handle,material,quads,previous)
   triangleList=lists.List.withCapacity(len(quads)*2);for each quad in quads triangleList.addAll(trianglesFor(quad,materialIndexValue)) end for;triangles=triangleList.toArray()
-  passList=lists.List.withCapacity(len(material.stages));for each stage in material.stages pass=createPass(stage,triangles,material.timeOffset,material.clampTime);if pass is error then return pass end if;passList.add(pass) end for
+  canReuse=previous!=void and previous.materialIndex==materialIndexValue and previous.shaderHandle==handle and previous.triangleCount==len(triangles) and len(previous.passes)==len(material.stages)
+  passList=lists.List.withCapacity(len(material.stages));stageIndex=0
+  for each stage in material.stages oldPass=void;if canReuse then oldPass=previous.passes[stageIndex] end if;pass=createPassReusable(stage,triangles,material.timeOffset,material.clampTime,oldPass);if pass is error then return pass end if;passList.add(pass);stageIndex=stageIndex+1 end for
   return Run(materialIndexValue,handle,passList.toArray(),len(quads),len(triangles))
 end function
+function createRun(materialIndexValue,handle,material,quads) return createRunReusable(materialIndexValue,handle,material,quads,void) end function
 
 // Rebuild only the changing quad/run buffers.  Shader parsing, PK3 image
 // decoding and texture-slot assignment remain cached in the catalog.
@@ -130,7 +136,7 @@ function refresh(catalog,queueCommands,assets,kinds,sourceWidth,sourceHeight,tar
   if catalog==void then return fail("catalog is required") end if
   extracted=extract(queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth,targetHeight);if extracted is error then return extracted end if
   for each material in catalog.materials offset=shaderRemap.timeOffsetForHandle(catalog.shaderRemaps,material.shaderHandle);material.timeOffset=0.0;if offset!=void then material.timeOffset=offset end if end for
-  runList=lists.List.withCapacity(len(extracted.quads));catalog.runs=[];catalog.sourceQuads=len(extracted.quads);catalog.emittedTriangles=0;catalog.resolvedQuads=0;catalog.unresolvedQuads=0
+  oldRuns=catalog.runs;runIndex=0;runList=lists.List.withCapacity(len(extracted.quads));catalog.runs=[];catalog.sourceQuads=len(extracted.quads);catalog.emittedTriangles=0;catalog.resolvedQuads=0;catalog.unresolvedQuads=0
   current=lists.List.withCapacity(len(extracted.quads));currentHandle=-1
   for each quad in extracted.quads
     index=materialIndex(catalog.materials,quad.shaderHandle)
@@ -144,11 +150,11 @@ function refresh(catalog,queueCommands,assets,kinds,sourceWidth,sourceHeight,tar
     end if
     if index<0 then catalog.unresolvedQuads=catalog.unresolvedQuads+1;continue else catalog.resolvedQuads=catalog.resolvedQuads+1 end if
     if currentHandle!=quad.shaderHandle and current.len()>0 then
-      previousIndex=materialIndex(catalog.materials,currentHandle);run=createRun(previousIndex,currentHandle,catalog.materials[previousIndex],current.toArray());if run is error then return run end if;runList.add(run);catalog.emittedTriangles=catalog.emittedTriangles+run.triangleCount*len(run.passes);current.clear()
+      previousIndex=materialIndex(catalog.materials,currentHandle);oldRun=void;if runIndex<len(oldRuns) then oldRun=oldRuns[runIndex] end if;run=createRunReusable(previousIndex,currentHandle,catalog.materials[previousIndex],current.toArray(),oldRun);if run is error then return run end if;runList.add(run);runIndex=runIndex+1;catalog.emittedTriangles=catalog.emittedTriangles+run.triangleCount*len(run.passes);current.clear()
     end if
     currentHandle=quad.shaderHandle;current.add(quad)
   end for
-  if current.len()>0 then index=materialIndex(catalog.materials,currentHandle);run=createRun(index,currentHandle,catalog.materials[index],current.toArray());if run is error then return run end if;runList.add(run);catalog.emittedTriangles=catalog.emittedTriangles+run.triangleCount*len(run.passes) end if
+  if current.len()>0 then index=materialIndex(catalog.materials,currentHandle);oldRun=void;if runIndex<len(oldRuns) then oldRun=oldRuns[runIndex] end if;run=createRunReusable(index,currentHandle,catalog.materials[index],current.toArray(),oldRun);if run is error then return run end if;runList.add(run);catalog.emittedTriangles=catalog.emittedTriangles+run.triangleCount*len(run.passes) end if
   catalog.runs=runList.toArray()
   return catalog
 end function

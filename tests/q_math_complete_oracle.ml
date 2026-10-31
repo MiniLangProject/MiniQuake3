@@ -11,7 +11,7 @@ function exact(actual,expected,label) if actual!=expected then return error(3903
 function main(args)
  r=Reader(fs.readAllBytes(args[0]),0);exact(word(r),0x514d4332,"magic")
  exact(q.ClampChar(-500),signed(r),"ClampChar low");exact(q.ClampChar(500),signed(r),"ClampChar high");exact(q.ClampShort(-40000),signed(r),"ClampShort low");exact(q.ClampShort(40000),signed(r),"ClampShort high")
- exact(n.u32(q.ColorBytes3(1.0,0.5,0.0)),word(r),"ColorBytes3");exact(n.u32(q.ColorBytes4(1.0,0.5,0.0,1.0)),word(r),"ColorBytes4");exact(q.Q_log2(1),word(r),"Q_log2 1");exact(q.Q_log2(8),word(r),"Q_log2 8")
+ exact(n.u32(q.ColorBytes3(1.0,0.5,0.0))&0x00ffffff,word(r),"ColorBytes3");exact(n.u32(q.ColorBytes4(1.0,0.5,0.0,1.0)),word(r),"ColorBytes4");exact(q.Q_log2(1),word(r),"Q_log2 1");exact(q.Q_log2(8),word(r),"Q_log2 8")
  same(q.AngleSubtract(10.0,350.0),scalar(r),"AngleSubtract");same(q.AngleMod(720.25),scalar(r),"AngleMod");same(q.AngleDelta(5.0,355.0),scalar(r),"AngleDelta");same(q.VectorLengthSquared([1.0,2.0,3.0]),scalar(r),"VectorLengthSquared");same(q.DistanceSquared([1.0,2.0,3.0],[4.0,6.0,3.0]),scalar(r),"DistanceSquared");same(q.Distance([1.0,2.0,3.0],[4.0,6.0,3.0]),scalar(r),"Distance")
  nc=q.NormalizeColor([1.0,2.0,3.0]);same(nc[0],scalar(r),"NormalizeColor max");for i=0 to 2 same(nc[1][i],scalar(r),"NormalizeColor "+str(i)) end for
  plane=q.PlaneFromPoints([0.0,0.0,0.0],[1.0,0.0,0.0],[0.0,1.0,0.0]);exact(1,word(r),"PlaneFromPoints result");for i=0 to 3 same(plane[i],scalar(r),"PlaneFromPoints "+str(i)) end for

@@ -16,6 +16,9 @@ const BLEND_DST_COLOR_ONE_MINUS_DST_ALPHA=4
 const BLEND_DYNAMIC_LIGHT=5
 const BLEND_MARK=6
 const BLEND_PREMULTIPLIED_ALPHA=7
+// Generic OpenGL blend state.  Low nibble is GLS_SRCBLEND_*, high nibble is
+// GLS_DSTBLEND_* and bit 8 distinguishes it from the optimized legacy modes.
+const BLEND_GL_STATE=256
 const ALPHA_TEST_NONE=0
 const ALPHA_TEST_GT0=1
 const ALPHA_TEST_LT128=2
@@ -27,6 +30,8 @@ function setState(blendMode,depthEqual,depthWrite)
   if setStateNative(blendMode,equalValue,writeValue)==0 then return error(7488,"invalid preview raster state") end if
   return void
 end function
+
+function glBlend(srcFactor,dstFactor) return BLEND_GL_STATE|srcFactor|dstFactor end function
 
 function setAlphaTest(mode)
   if setAlphaTestNative(mode)==0 then return error(7488,"invalid preview alpha-test state") end if

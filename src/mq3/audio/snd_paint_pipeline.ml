@@ -39,6 +39,14 @@ function paintOneShot(paint,sound,sampleOffset,count,bufferOffset,leftVolume,rig
   return actual
 end function
 
+function paintMonoOneShot(paint,samples,frames,sampleOffset,count,bufferOffset,leftVolume,rightVolume,sndVolume)
+  if samples==void or frames<1 then return fail("invalid cached mono sound") end if
+  if sampleOffset>=frames or count<=0 then return 0 end if
+  actual=count;if sampleOffset+actual>frames then actual=frames-sampleOffset end if
+  result=channelPaint.paint16(samples,actual,sampleOffset,bufferOffset,leftVolume,rightVolume,sndVolume,false,1.0,1.0,paint);if result is error then return result end if
+  return actual
+end function
+
 function paintLoop(paint,sound,paintedTime,count,bufferOffset,leftVolume,rightVolume,sndVolume)
   frames=len(sound.samples)/sound.blockAlign;if frames<1 then return fail("empty loop") end if
   samples=try(monoSamples(sound));if samples is error then return samples end if
@@ -89,6 +97,17 @@ function paintSfxLoopDoppler(paint,sound,compressed,paintedTime,count,bufferOffs
   while done<count
     sampleOffset=(paintedTime+done)%frames;part=count-done;if sampleOffset+part>frames then part=frames-sampleOffset end if
     result=channelPaint.paint16(samples,part,sampleOffset,bufferOffset+done,leftVolume,rightVolume,sndVolume,true,dopplerScale,oldDopplerScale,paint);if result is error then return result end if
+    done=done+part
+  end while
+  return done
+end function
+
+function paintMonoLoopDoppler(paint,samples,frames,paintedTime,count,bufferOffset,leftVolume,rightVolume,sndVolume,doppler,dopplerScale,oldDopplerScale)
+  if samples==void or frames<1 then return fail("invalid cached mono loop") end if
+  done=0
+  while done<count
+    sampleOffset=(paintedTime+done)%frames;part=count-done;if sampleOffset+part>frames then part=frames-sampleOffset end if
+    result=channelPaint.paint16(samples,part,sampleOffset,bufferOffset+done,leftVolume,rightVolume,sndVolume,doppler,dopplerScale,oldDopplerScale,paint);if result is error then return result end if
     done=done+part
   end while
   return done

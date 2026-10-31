@@ -8,6 +8,45 @@ from pathlib import Path
 from toolchain import ROOT, msvc_env, run
 from inventory import sha
 
+def qvm_source_profile():
+    original = ROOT / "Quake-III-Arena-original-source"
+    suffixes = {".c", ".h", ".asm", ".q3asm"}
+    roots = (original / "code/game", original / "code/cgame", original / "code/q3_ui",
+             original / "code/ui", original / "q3asm")
+    return {str(path.relative_to(original)).replace("\\", "/"): sha(path)
+            for folder in roots for path in folder.rglob("*") if path.is_file() and path.suffix.lower() in suffixes}
+
+def valid_qvm_cache(folder, names):
+    profile_path = folder / "profile.json"
+    if not profile_path.is_file(): return False
+    try: profile = json.loads(profile_path.read_text())
+    except (OSError, ValueError): return False
+    modules = {item.get("name"): item for item in profile.get("modules", [])}
+    if profile.get("sources") != qvm_source_profile(): return False
+    for name in names:
+        path = folder / name
+        record = modules.get(name)
+        if not path.is_file() or not record: return False
+        if record.get("size") != path.stat().st_size or record.get("sha256") != sha(path): return False
+    return True
+
+def minilang_inputs(source_path, compiler):
+    sources = {str(path.relative_to(ROOT)).replace("\\", "/"): sha(path)
+               for path in (ROOT / "src").rglob("*.ml") if path.is_file()}
+    try: source_name = str(source_path.relative_to(ROOT)).replace("\\", "/")
+    except ValueError: source_name = str(source_path.resolve())
+    sources[source_name] = sha(source_path)
+    return {"sources": sources, "compiler": sha(compiler),
+            "toolchain_profile": sha(ROOT / "docs/reference/toolchain.json"),
+            "flags": ["-I", "src", "-I", "artifacts/toolchain",
+                      "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "64m"]}
+
+def valid_minilang_cache(output_path, stamp_path, inputs):
+    if not output_path.is_file() or not stamp_path.is_file(): return False
+    try: previous = json.loads(stamp_path.read_text())
+    except (OSError, ValueError): return False
+    return previous.get("inputs") == inputs and previous.get("binary") == sha(output_path)
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", default="src/main.ml")
@@ -93,13 +132,19 @@ def main():
         path=frozen / record["path"]
         if not path.is_file() or sha(path)!=record["sha256"]:
             raise RuntimeError("Frozen compiler input changed: "+record["path"])
-    run([compiler, ROOT / args.source, output / args.output, "-I", ROOT / "src", "-I", frozen,
-         "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "64m"],
-         output, log=output / (args.output + ".compile.log"), timeout=480)
-    if args.source == "src/main.ml" and args.output == "MiniQuake3.exe":
+    source_path=Path(args.source);source_path=source_path if source_path.is_absolute() else ROOT/source_path
+    output_path=Path(args.output);output_path=output_path if output_path.is_absolute() else output/output_path
+    compile_stamp=output_path.with_name(output_path.name+".inputs.json")
+    compile_inputs=minilang_inputs(source_path,compiler)
+    if not valid_minilang_cache(output_path,compile_stamp,compile_inputs):
+        run([compiler, source_path, output_path, "-I", ROOT / "src", "-I", frozen,
+             "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "64m"],
+             output, log=output / (output_path.name + ".compile.log"), timeout=480)
+        compile_stamp.write_text(json.dumps({"inputs":compile_inputs,"binary":sha(output_path)},indent=2)+"\n")
+    if source_path.resolve() == (ROOT / "src/main.ml").resolve() and output_path.resolve() == (output / "MiniQuake3.exe").resolve():
         source_qvms = output / "reference" / "qvms"
         qvm_names = ("ui.qvm", "qagame.qvm", "cgame.qvm")
-        if any(not (source_qvms / name).is_file() for name in qvm_names):
+        if not valid_qvm_cache(source_qvms, qvm_names):
             subprocess.run([sys.executable, ROOT / "scripts" / "build_qvms.py"], cwd=ROOT, check=True)
         packaged_qvms = output / "qvms"
         packaged_qvms.mkdir(exist_ok=True)

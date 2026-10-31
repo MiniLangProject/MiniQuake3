@@ -44,17 +44,23 @@ end function
 function initialize(state,connectionState,connectedToPureServer,vmUi)
   if state==void or state.active then return error(3452,"UI VM: invalid initialization") end if
   mode=vmUi;if connectedToPureServer!=0 then mode=VMI_COMPILED end if
-  state.slot=state.host.loadFn(state.host.machineRuntime,"ui",state.host.syscall,mode);state.active=true
+  state.slot=state.host.loadFn(state.host.machineRuntime,"ui",state.host.syscall,mode)
+  if state.slot is error or state.slot==void then failed=state.slot;state.slot=void;if failed is error then return failed end if;return error(3452,"UI VM: module load failed") end if
+  state.active=true
   version=invoke(state,[UI_GETAPIVERSION]);state.apiVersion=version
-  if version!=UI_CD_API_VERSION and version!=UI_OLD_API_VERSION and version!=UI_API_VERSION then state.uiStarted=false;return error(3452,"UI VM: unsupported API version "+str(version)) end if
+  if version is error or (version!=UI_CD_API_VERSION and version!=UI_OLD_API_VERSION and version!=UI_API_VERSION) then
+    state.host.freeFn(state.host.machineRuntime,state.slot);state.slot=void;state.active=false;state.uiStarted=false
+    if version is error then return version end if;return error(3452,"UI VM: unsupported API version "+str(version))
+  end if
   connecting=0;if connectionState>=CA_AUTHORIZING and connectionState<CA_ACTIVE then connecting=1 end if
-  invoke(state,[UI_INIT,connecting]);state.uiStarted=true;return state.slot
+  initialized=invoke(state,[UI_INIT,connecting]);if initialized is error then state.host.freeFn(state.host.machineRuntime,state.slot);state.slot=void;state.active=false;return initialized end if;state.uiStarted=true;return state.slot
 end function
 function shutdown(state)
   if state==void then return error(3452,"UI VM: missing state") end if
   state.keyCatchers=state.keyCatchers & (~KEYCATCH_UI);state.uiStarted=false
   if not state.active then return void end if
-  invoke(state,[UI_SHUTDOWN]);state.host.freeFn(state.host.machineRuntime,state.slot);state.slot=void;state.active=false;return void
+  stopped=invoke(state,[UI_SHUTDOWN]);released=state.host.freeFn(state.host.machineRuntime,state.slot);state.slot=void;state.active=false
+  if stopped is error then return stopped end if;if released is error then return released end if;return void
 end function
 function keyEvent(state,key,down) flag=0;if down then flag=1 end if;return invoke(state,[UI_KEY_EVENT,key,flag]) end function
 function mouseEvent(state,dx,dy) return invoke(state,[UI_MOUSE_EVENT,dx,dy]) end function

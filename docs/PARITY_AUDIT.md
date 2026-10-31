@@ -1,8 +1,47 @@
 # MiniQuake3: überprüfter Stand
 
-Stand: 2026-10-22. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist spielbar**.
+Stand: 2026-10-31. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
+
+## Laufzeit-, Start- und Zustandskorrekturen vom 31. Oktober 2026
+
+Der Standardstart öffnet jetzt zuerst die originale `ui.qvm`, ohne bereits
+`q3dm1` samt Weltshadern zu laden. Erst der originale `map`-/`spmap`-Befehl
+startet `qagame.qvm` und `cgame.qvm`; ausgewählte Karte, Cvars, Userinfos und
+Tastenbelegungen werden dabei in den Matchzustand übernommen. `pak*.pk3`
+werden in originaler Reihenfolge aus `baseq3` neben der EXE gestapelt, wobei
+spätere Pakete frühere Dateien überschreiben. Qpath-Zugriffe werden gegen
+Verzeichnisausbruch geprüft.
+
+Die beim minutenlangen Start sichtbaren quadratischen Kopierpfade sind
+entfernt: Shader-/PK3-Indizes, PVS-Sichtmengen, MD3-Frames, 2D-Batches und
+dekodierte Mono-Samples werden wiederverwendet; Snapshot- und Audioqueues
+verwenden Listen beziehungsweise Cursor statt wiederholter Array-
+Konkatenation und `slice`. Weltgeometrie wird bei unveränderter Face-Auswahl
+nicht erneut abgeflacht. Der native Rasterpfad unterstützt nun sämtliche
+gültigen Baseq3-`blendFunc`-Faktorkombinationen statt unbekannte Kombinationen
+stillschweigend opak zu zeichnen. Game-/UI-VM-Lifecycle und Bot-Snapshots
+behandeln Lade-, Restart-, Shutdown- und Client-Reset-Fehler explizit.
+
+Der frische produktive Build hat SHA-256
+`144426dc44002765926f36eea321b56c2f082d59453f0b5bc82bdd12e8e99129`.
+Gezielte Regressionen sind grün: 63 Material-, 55 Szenengeometrie-, 33
+Weltselektions-, 40 Audio-, 32 2D-Batch-, 12 Bot-Bridge-, 22 Game-VM- und 23
+UI-VM-Verträge; außerdem Retail-Original-UI und ein nativer QVM-Renderframe.
+Eine erneute breite Gesamtabnahme mit `D:/Quake3` lief ohne Regression durch
+Kern-, Netzwerk-, VM-, Archiv-, Collision-, Shared-Game-, Game-Lifecycle-,
+Bot-, Kartenobjekt-, Target- und Combat-Bereiche. Der abschließende gekoppelte
+Retail-QVM-Match ist ebenfalls grün: acht Frames, 2.345 texturierte
+Dreiecke, 17 Renderpässe, 301 Cgame-Assets, 26 Sounds und keine nicht
+unterstützten Entities. Ein dabei gefundener Testfehler
+vergleicht `ColorBytes3` jetzt nur noch über die drei vom Original definierten
+Bytes; das vierte Byte ist in der C-Funktion absichtlich uninitialisiert.
+
+Der Build besitzt zusätzlich einen inhaltsadressierten MiniLang-Cache. Ein
+unveränderter 766-Modul-Hauptbuild wird dadurch nicht bei jeder Verifikation
+erneut kompiliert; Änderungen an irgendeiner MiniLang-Quelle, am eingefrorenen
+Compiler oder am Toolchainprofil invalidieren den Cache vollständig.
 
 Die zuletzt vollständig ausgeführte Retail-Prüfauswahl umfasste **408 Gates**
 (`python scripts/verify.py --data-root D:/Quake3`) und bestand vollständig am

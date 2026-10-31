@@ -1,4 +1,5 @@
 import mq3.client.ui_vm as uiVm
+import std.string as strings
 struct Context events version mode end struct
 struct Slot active end struct
 function syscall(machine,address) return 0 end function
@@ -30,8 +31,8 @@ function main(args)
   context.version=uiVm.UI_OLD_API_VERSION;slot2=uiVm.initialize(state,8,0,1)
   count=count+req(state.active and state.uiStarted and state.lastArgs[1]==0 and context.mode==1,"old API accepted")
   uiVm.shutdown(state)
-  context.version=5;count=count+req(try(uiVm.initialize(state,2,0,1)) is error and state.active and not state.uiStarted,"bad API rejected")
-  uiVm.shutdown(state)
+  eventsBefore=context.events;context.version=5;count=count+req(try(uiVm.initialize(state,2,0,1)) is error and not state.active and not state.uiStarted and state.slot==void,"bad API rejected and released")
+  count=count+req(len(context.events)>len(eventsBefore) and strings.endsWith(context.events,"free,"),"bad API frees VM")
   count=count+req(try(uiVm.refresh(state,0)) is error,"inactive export")
   count=count+req(try(uiVm.create(uiVm.services(void,syscall,loadVm,callVm,freeVm))) is error,"runtime required")
   count=count+req(uiVm.UI_CD_API_VERSION==3 and uiVm.UI_OLD_API_VERSION==4 and uiVm.UI_API_VERSION==6,"API constants")

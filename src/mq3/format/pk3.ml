@@ -7,6 +7,8 @@ import mq3.format.deflate as deflate
 import std.fs as fs
 import std.checksum.crc32 as crc
 import std.ds.list as lists
+import std.sort as sort
+import std.string as strings
 
 struct Entry
   name
@@ -129,16 +131,20 @@ end function
 // Quake III.  The retail CD has pak0/pak1; patched 1.32 installations may
 // provide through pak8.  Duplicate qpaths are indexed only once.
 function openStandard(baseDirectory)
-  archives=array(9,void);archiveCount=0;totalEntries=0
-  for pakIndex=0 to 8
-    path=baseDirectory+"/pak"+str(pakIndex)+".pk3"
-    size=try(fs.fileSize(path))
-    if size is error then
-      if pakIndex==0 then return fail("required retail archive not found "+path) end if
-    else
-      archive=try(open(path));if archive is error then return archive end if
-      archives[archiveCount]=archive;archiveCount=archiveCount+1;totalEntries=totalEntries+len(archive.entries)
+  names=try(fs.listDir(baseDirectory));if names is error then return fail("base directory not found "+baseDirectory) end if
+  pakNames=lists.List.withCapacity(len(names));hasPak0=false
+  for each name in names
+    lower=strings.toLowerAscii(name)
+    if strings.endsWith(lower,".pk3") and fs.isFile(fs.joinPath(baseDirectory,name)) then
+      pakNames.add(name);if lower=="pak0.pk3" then hasPak0=true end if
     end if
+  end for
+  if not hasPak0 then return fail("required retail archive not found "+baseDirectory+"/pak0.pk3") end if
+  sortedNames=pakNames.toArray();sort.sortBy(sortedNames,pk3NameLess)
+  archives=array(len(sortedNames),void);archiveCount=0;totalEntries=0
+  for each name in sortedNames
+    path=fs.joinPath(baseDirectory,name);archive=try(open(path));if archive is error then return archive end if
+    archives[archiveCount]=archive;archiveCount=archiveCount+1;totalEntries=totalEntries+len(archive.entries)
   end for
   if archiveCount==1 then return archives[0] end if
   merged=lists.List.withCapacity(totalEntries);seen=array(NAME_BUCKET_COUNT,void)
@@ -161,6 +167,12 @@ function openStandard(baseDirectory)
   return Archive(baseDirectory,entries,0,0,0,"",0,buildNameBuckets(entries))
 end function
 
+function pk3NameLess(left,right)
+  a=bytes(strings.toLowerAscii(left));b=bytes(strings.toLowerAscii(right));count=len(a);if len(b)<count then count=len(b) end if
+  for index=0 to count-1 if a[index]<b[index] then return true else if a[index]>b[index] then return false end if end for
+  return len(a)<len(b)
+end function
+
 function localInfo(archive,entry)
   if entry.localOffset + 30 > entry.sourceDirectoryOffset then return fail("local header outside archive") end if
   header=file.readRange(entry.sourcePath,entry.localOffset,30)
@@ -172,9 +184,10 @@ function localInfo(archive,entry)
   if nameLength!=len(bytes(entry.name)) then return fail("local filename length disagreement") end if
   variableEnd=entry.localOffset+30+nameLength+extraLength
   if variableEnd>entry.sourceDirectoryOffset then return fail("local fields outside archive") end if
-  localName=decode(file.readRange(entry.sourcePath,entry.localOffset+30,nameLength))
+  localFields=file.readRange(entry.sourcePath,entry.localOffset+30,nameLength+extraLength)
+  localName=decode(slice(localFields,0,nameLength))
   if localName!=entry.name then return fail("local filename disagreement") end if
-  return [variableEnd,file.readRange(entry.sourcePath,entry.localOffset+30+nameLength,extraLength)]
+  return [variableEnd,slice(localFields,nameLength,extraLength)]
 end function
 
 function readEntry(archive, entry)

@@ -5,6 +5,12 @@ import subprocess
 from toolchain import ROOT, msvc_env, run
 from inventory import sha
 
+def source_profile(original):
+    suffixes={".c",".h",".asm",".q3asm"}
+    roots=(original/"code/game",original/"code/cgame",original/"code/q3_ui",original/"code/ui",original/"q3asm")
+    return {str(path.relative_to(original)).replace("\\","/"):sha(path)
+            for folder in roots for path in folder.rglob("*") if path.is_file() and path.suffix.lower() in suffixes}
+
 def main():
     original=ROOT / "Quake-III-Arena-original-source"
     output=ROOT / "build/reference/qvms"
@@ -18,7 +24,7 @@ def main():
     compiler_env["PATH"]=str(lcc.parent)+os.pathsep+compiler_env.get("PATH","")
     compiler_env.pop("INCLUDE",None)
     compiler_env.pop("LIBRARY",None)
-    manifest={"tools":[{"name":p.name,"sha256":sha(p)} for p in lcc.parent.glob("*.exe")],"modules":[]}
+    manifest={"tools":[{"name":p.name,"sha256":sha(p)} for p in lcc.parent.glob("*.exe")],"sources":source_profile(original),"modules":[]}
     for group,listname,module in (("game","game","qagame"),("cgame","cgame","cgame"),("q3_ui","ui","ui")):
         source=original / "code" / group
         folder=output / module

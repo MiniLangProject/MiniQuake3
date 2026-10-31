@@ -7,6 +7,7 @@ import mq3.game.entitystate as entitystate
 import mq3.vm.syscall_qagame_world as qworld
 import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
+import std.ds.list as lists
 
 const OP_GET_SNAPSHOT_ENTITY=209
 const OP_GET_CONSOLE_MESSAGE=210
@@ -27,10 +28,15 @@ function clientAt(state,client)
   if state==void or client<0 or client>=len(state.clients) then return void end if;return state.clients[client]
 end function
 function setTime(state,time) if state!=void then state.now=time end if;return 0 end function
+function resetClient(state,client)
+  if state==void or client<0 or client>=len(state.clients) then return error(7580,"bot server bridge: invalid reset client") end if
+  state.clients[client]=emptyClient();return 0
+end function
 function publishSnapshot(state,client,entities)
   value=clientAt(state,client);if value==void then return error(7580,"bot server bridge: invalid snapshot client") end if
-  copied=[];if entities!=void then for each entity in entities if entity==void then return error(7580,"bot server bridge: missing snapshot entity") end if;copied=copied+[entitystate.copy(entity)] end for end if
-  value.snapshotEntities=copied;return len(copied)
+  capacity=0;if entities!=void then capacity=len(entities) end if;copied=lists.List.withCapacity(capacity)
+  if entities!=void then for each entity in entities if entity==void then return error(7580,"bot server bridge: missing snapshot entity") end if;copied.add(entitystate.copy(entity)) end for end if
+  value.snapshotEntities=copied.toArray();return len(value.snapshotEntities)
 end function
 function snapshotEntity(state,client,sequence)
   value=clientAt(state,client);if value==void or sequence<0 or sequence>=len(value.snapshotEntities) then return -1 end if
@@ -64,8 +70,8 @@ function submitUserCommand(state,client,command)
   value.userCommand=qworld.userCommand(command.serverTime,[command.angles[0],command.angles[1],command.angles[2]],command.buttons,command.weapon,command.forwardmove,command.rightmove,command.upmove);value.pending=true;return 0
 end function
 function takePending(state)
-  result=[];if state==void then return result end if
-  for client=0 to len(state.clients)-1 value=state.clients[client];if value.pending then result=result+[[client,value.userCommand]];value.pending=false end if end for;return result
+  if state==void then return [] end if;result=lists.List.withCapacity(len(state.clients))
+  for client=0 to len(state.clients)-1 value=state.clients[client];if value.pending then result.add([client,value.userCommand]);value.pending=false end if end for;return result.toArray()
 end function
 function dispatch(state,vm,base,op)
   client=common.argument(vm,base,1)

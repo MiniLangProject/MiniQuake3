@@ -50,7 +50,7 @@ def main() -> None:
     c_value=run([native],out,log=out/'oracle.log');ml_value=run([build('tests/files_runtime_oracle.ml','files_runtime_oracle.exe')],ROOT/'build',log=out/'minilang.log')
     if c_value!=ml_value:raise SystemExit('FAIL: unchanged files.c differential\nC:\n'+c_value+'MiniLang:\n'+ml_value)
     root=fixture(out);contract=run([build('tests/files_runtime_contracts.ml','files_runtime_contracts.exe'),root],ROOT/'build',timeout=240).strip()
-    if contract!='PASS: 44 complete files.c runtime contracts':raise SystemExit(contract)
+    if contract!='PASS: 46 complete files.c runtime contracts':raise SystemExit(contract)
     pure_root=ROOT/'build/reference/pure_filesystem/root'
     if pure_root.exists():shutil.rmtree(pure_root)
     pure=subprocess.run([sys.executable,ROOT/'scripts/test_pure_filesystem.py'],cwd=ROOT,check=True,capture_output=True,text=True).stdout
@@ -62,7 +62,7 @@ def main() -> None:
         retail=run([build('tests/files_runtime_retail_probe.ml','files_runtime_retail_probe.exe'),args.data_root.resolve()],ROOT/'build',timeout=240).strip()
         if not retail.startswith('PASS: 10 retail files.c probes'):raise SystemExit(retail)
     files=[original_path,module_path,ROOT/'tests/reference/files_runtime_oracle.c',ROOT/'tests/files_runtime_oracle.ml',ROOT/'tests/files_runtime_contracts.ml',ROOT/'tests/files_runtime_retail_probe.ml',ROOT/'scripts/test_files_runtime.py']
-    result={'passed':True,'symbols':75,'unchanged_c_functions':functions,'oracle_records':len(c_value.splitlines()),'contracts':44,'pure_filesystem_contracts':25,'retail':retail,'scope':'Complete files.c facade over native search paths, PK3/ZIP, pure/reference checksums, bounded handles and seek/read/write/append, file lists, server paths and restart/shutdown lifecycle.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
+    result={'passed':True,'symbols':75,'unchanged_c_functions':functions,'oracle_records':len(c_value.splitlines()),'contracts':46,'pure_filesystem_contracts':25,'retail':retail,'scope':'Complete files.c facade over native search paths, PK3/ZIP, pure/reference checksums, bounded handles and seek/read/write/append, path-containment checks, file lists, server paths and restart/shutdown lifecycle.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
     (out/'result.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8',newline='\n')
     print('PASS: 75 / 75 files.c symbols');print(f'PASS: {len(c_value.splitlines())} unchanged-C files.c records');print(contract)
     print(next(line for line in pure.splitlines() if line.startswith('PASS:')));print(next(line for line in archives.splitlines() if line.startswith('PASS:')))

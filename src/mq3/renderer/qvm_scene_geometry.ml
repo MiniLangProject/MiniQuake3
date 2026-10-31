@@ -39,7 +39,7 @@ struct InlineModel index renderData shaderNames bounds dynamicLightFlags end str
 struct Md3Selection model lod frames cull end struct
 struct FrameEntry modelHandle surfaceIndex frame oldFrame backlerp xyz normals end struct
 struct TransformEntry modelHandle surfaceIndex frame oldFrame backlerp origin axis positions normals lightAmbient lightDirected lightDirection lightAlpha colors end struct
-struct FrameCache normalTable entries maxEntries hits misses transforms transformHits transformMisses end struct
+struct FrameCache normalTable entries maxEntries hits misses transforms transformHits transformMisses entryCount entryNext transformCount transformNext end struct
 
 function fail(message) return error(7670,"QVM scene geometry: "+message) end function
 function normal() return [0.0,0.0,1.0] end function
@@ -236,28 +236,27 @@ function createNormalTable() return surfaceMd3.normalTable() end function
 function createFrameCache(normalTable,maxEntries)
   if maxEntries<1 then return fail("frame cache needs positive capacity") end if
   if normalTable==void then normalTable=createNormalTable() end if
-  return FrameCache(normalTable,[],maxEntries,0,0,[],0,0)
+  return FrameCache(normalTable,array(maxEntries,void),maxEntries,0,0,array(maxEntries,void),0,0,0,0,0,0)
 end function
 function cachedFrame(cache,modelHandle,model,surfaceIndex,frame,oldFrame,backlerp,normalTable)
   if cache!=void then
-    for each entry in cache.entries
-      if entry.modelHandle==modelHandle and entry.surfaceIndex==surfaceIndex and entry.frame==frame and entry.oldFrame==oldFrame and entry.backlerp==backlerp then cache.hits=cache.hits+1;return entry end if
-    end for
+    if cache.entryCount>0 then for slot=0 to cache.entryCount-1 entry=cache.entries[slot]
+      if entry!=void and entry.modelHandle==modelHandle and entry.surfaceIndex==surfaceIndex and entry.frame==frame and entry.oldFrame==oldFrame and entry.backlerp==backlerp then cache.hits=cache.hits+1;return entry end if
+    end for end if
   end if
   table=normalTable;if cache!=void then table=cache.normalTable end if
   surface=model.surfaces[surfaceIndex];lerped=surfaceMd3.lerpVertexesCached(surface.mesh,frame,oldFrame,backlerp,table);if lerped is error then return lerped end if
   entry=FrameEntry(modelHandle,surfaceIndex,frame,oldFrame,backlerp,lerped[0],lerped[1])
   if cache!=void then
-    if len(cache.entries)>=cache.maxEntries then cache.entries=arrays.slice(cache.entries,1,len(cache.entries)-1) end if
-    cache.entries=cache.entries+[entry];cache.misses=cache.misses+1
+    cache.entries[cache.entryNext]=entry;cache.entryNext=(cache.entryNext+1)%cache.maxEntries;if cache.entryCount<cache.maxEntries then cache.entryCount=cache.entryCount+1 end if;cache.misses=cache.misses+1
   end if
   return entry
 end function
 function cachedTransform(cache,decoded,modelCacheKey,surfaceIndex,frameData)
   if cache!=void then
-    for each entry in cache.transforms
-      if entry.modelHandle==modelCacheKey and entry.surfaceIndex==surfaceIndex and entry.frame==decoded.frame and entry.oldFrame==decoded.oldframe and entry.backlerp==decoded.backlerp and entry.origin==decoded.origin and entry.axis==decoded.axis then cache.transformHits=cache.transformHits+1;return entry end if
-    end for
+    if cache.transformCount>0 then for slot=0 to cache.transformCount-1 entry=cache.transforms[slot]
+      if entry!=void and entry.modelHandle==modelCacheKey and entry.surfaceIndex==surfaceIndex and entry.frame==decoded.frame and entry.oldFrame==decoded.oldframe and entry.backlerp==decoded.backlerp and entry.origin==decoded.origin and entry.axis==decoded.axis then cache.transformHits=cache.transformHits+1;return entry end if
+    end for end if
   end if
   orientation=viewMath.orientation(decoded.origin,decoded.axis);count=len(frameData.xyz);worldPositions=array(count,void);worldNormals=array(count,void)
   for vertexIndex=0 to count-1
@@ -267,8 +266,7 @@ function cachedTransform(cache,decoded,modelCacheKey,surfaceIndex,frameData)
   end for
   result=TransformEntry(modelCacheKey,surfaceIndex,decoded.frame,decoded.oldframe,decoded.backlerp,decoded.origin,decoded.axis,worldPositions,worldNormals,void,void,void,-1,void)
   if cache!=void then
-    if len(cache.transforms)>=cache.maxEntries then cache.transforms=arrays.slice(cache.transforms,1,len(cache.transforms)-1) end if
-    cache.transforms=cache.transforms+[result];cache.transformMisses=cache.transformMisses+1
+    cache.transforms[cache.transformNext]=result;cache.transformNext=(cache.transformNext+1)%cache.maxEntries;if cache.transformCount<cache.maxEntries then cache.transformCount=cache.transformCount+1 end if;cache.transformMisses=cache.transformMisses+1
   end if
   return result
 end function

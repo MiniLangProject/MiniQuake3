@@ -4,6 +4,7 @@
 // renderer/tr_main.c (R_AddDrawSurf, R_DecomposeSort, qsortFast).
 package mq3.renderer.draw_surfs
 import mq3.compat.numeric as n
+import std.sort as sort
 
 const MAX_SHADERS=16384
 const MAX_DRAWSURFS=65536
@@ -60,8 +61,8 @@ end function
 
 function values(queue)
   if queue==void then return fail("missing queue") end if
-  result=[];limit=count(queue)
-  for index=0 to limit-1 result=result+[queue.drawSurfs[index]] end for
+  limit=count(queue);result=array(limit,void)
+  for index=0 to limit-1 result[index]=queue.drawSurfs[index] end for
   return result
 end function
 
@@ -70,18 +71,15 @@ end function
 // submissions reproducible without changing renderer batching semantics.
 function sortStable(drawSurfs)
   if drawSurfs==void then return fail("missing surface list") end if
-  result=[]
-  for each item in drawSurfs
-    if item==void then return fail("empty draw surface") end if
-    inserted=false;next=[]
-    for each current in result
-      if not inserted and n.u32(item.sort)<n.u32(current.sort) then next=next+[item];inserted=true end if
-      next=next+[current]
-    end for
-    if not inserted then next=next+[item] end if
-    result=next
-  end for
+  result=array(len(drawSurfs),void);if len(drawSurfs)>0 then copyArray(result,0,drawSurfs,0,len(drawSurfs)) end if
+  for each item in result if item==void then return fail("empty draw surface") end if end for
+  sort.sortBy(result,drawSurfLess)
   return result
+end function
+
+function drawSurfLess(left,right)
+  a=n.u32(left.sort);b=n.u32(right.sort);if a<b then return true else if a>b then return false end if
+  return left.ordinal<right.ordinal
 end function
 
 function sortQueue(queue)

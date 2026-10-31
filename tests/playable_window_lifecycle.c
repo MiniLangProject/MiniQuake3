@@ -80,6 +80,9 @@ int main(void) {
     if (playable_window_set_raster_state(-1, 0, 1) ||
         !playable_window_set_raster_state(7, 0, 1) ||
         playable_window_set_raster_state(8, 0, 1) ||
+        !playable_window_set_raster_state(0x123, 0, 0) ||
+        playable_window_set_raster_state(0x100, 0, 0) ||
+        playable_window_set_raster_state(0x1ff, 0, 0) ||
         playable_window_set_raster_state(0, 2, 1) ||
         playable_window_set_raster_state(0, 0, 2) ||
             !playable_window_set_raster_state(5, 1, 0) ||

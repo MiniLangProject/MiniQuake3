@@ -21,7 +21,7 @@ struct SelectionConfig width height horizontalFov nearDistance farDistance trian
 struct Candidate faceIndex triangleCount distanceSquared importance end struct
 struct Selection faceIndexes candidateCount selectedSurfaceCount estimatedTriangleCount pvsUsed cameraLeaf cameraCluster rejectedPvs rejectedFrustum rejectedBackface rejectedDistance rejectedBudget end struct
 struct PreparedWorld selection renderData end struct
-struct WorldCache map faceCenters faceRadii faceTriangleCounts faceKinds faceNormals faceTextureIndexes twoSidedTextureFlags trianglesByFace patchError totalTriangleCount end struct
+struct WorldCache map faceCenters faceRadii faceTriangleCounts faceKinds faceNormals faceTextureIndexes twoSidedTextureFlags trianglesByFace patchError totalTriangleCount pvsFaces pvsRejected pvsClusterCount end struct
 
 function fail(text) return error(7490,"World surface selection: "+text) end function
 function validMap(map)
@@ -120,7 +120,9 @@ function buildCache(map,patchError)
     end if
   end for
   totalTriangles=0;for each count in counts totalTriangles=totalTriangles+count end for
-  return WorldCache(map,centers,radii,counts,kinds,normals,textureIndexes,array(map.counts[1],false),byFace,n.f32(patchError),totalTriangles)
+  clusterCount=0;if map.lengths[16]>=8 then clusterCount=i32(map,map.offsets[16]);if clusterCount is error or clusterCount<0 then return fail("invalid visibility cluster count") end if end if
+  // One extra slot caches the no-vis fallback shared by every leaf.
+  return WorldCache(map,centers,radii,counts,kinds,normals,textureIndexes,array(map.counts[1],false),byFace,n.f32(patchError),totalTriangles,array(clusterCount+1,void),array(clusterCount+1,0),clusterCount)
 end function
 
 function setTwoSidedTextures(cache,flags)
@@ -128,14 +130,7 @@ function setTwoSidedTextures(cache,flags)
   cache.twoSidedTextureFlags=flags;return cache
 end function
 
-function chooseCorePvs(map,camera,pvsOrigin,cfg,cache)
-  if not validMap(map) then return fail("invalid BSP object") end if
-  if camera==void or camera.position==void or len(camera.position)!=3 then return fail("invalid camera") end if
-  if pvsOrigin==void or len(pvsOrigin)!=3 then return fail("invalid PVS origin") end if
-  if cfg==void then return fail("missing configuration") end if
-  leaf=pointLeaf(map,pvsOrigin);if leaf is error then return leaf end if
-  cameraCluster=i32(map,map.offsets[4]+leaf*LEAF_STRIDE);if cameraCluster is error then return cameraCluster end if
-  pvsUsed=map.lengths[16]>0 and cameraCluster>=0
+function visibleFaces(map,cameraCluster,pvsUsed)
   faceList=lists.List.withCapacity(map.counts[13]);seenFaces=array(map.counts[13],false);rejectedPvs=0
   for leafIndex=0 to map.counts[4]-1
     leafOffset=map.offsets[4]+leafIndex*LEAF_STRIDE;cluster=i32(map,leafOffset)
@@ -147,8 +142,28 @@ function chooseCorePvs(map,camera,pvsOrigin,cfg,cache)
     else rejectedPvs=rejectedPvs+1
     end if
   end for
-  candidateList=lists.List.withCapacity(faceList.len());rejectedFrustum=0;rejectedBackface=0;rejectedDistance=0
-  for each faceIndex in faceList.toArray()
+  return [faceList.toArray(),rejectedPvs]
+end function
+
+function cachedVisibleFaces(cache,map,cameraCluster,pvsUsed)
+  if cache==void then return visibleFaces(map,cameraCluster,pvsUsed) end if
+  slot=cache.pvsClusterCount;if pvsUsed then slot=cameraCluster end if
+  if slot<0 or slot>=len(cache.pvsFaces) then return visibleFaces(map,cameraCluster,pvsUsed) end if
+  if cache.pvsFaces[slot]==void then result=visibleFaces(map,cameraCluster,pvsUsed);if result is error then return result end if;cache.pvsFaces[slot]=result[0];cache.pvsRejected[slot]=result[1] end if
+  return [cache.pvsFaces[slot],cache.pvsRejected[slot]]
+end function
+
+function chooseCorePvs(map,camera,pvsOrigin,cfg,cache)
+  if not validMap(map) then return fail("invalid BSP object") end if
+  if camera==void or camera.position==void or len(camera.position)!=3 then return fail("invalid camera") end if
+  if pvsOrigin==void or len(pvsOrigin)!=3 then return fail("invalid PVS origin") end if
+  if cfg==void then return fail("missing configuration") end if
+  leaf=pointLeaf(map,pvsOrigin);if leaf is error then return leaf end if
+  cameraCluster=i32(map,map.offsets[4]+leaf*LEAF_STRIDE);if cameraCluster is error then return cameraCluster end if
+  pvsUsed=map.lengths[16]>0 and cameraCluster>=0
+  visible=cachedVisibleFaces(cache,map,cameraCluster,pvsUsed);if visible is error then return visible end if;faceIndexes=visible[0];rejectedPvs=visible[1]
+  candidateList=lists.List.withCapacity(len(faceIndexes));rejectedFrustum=0;rejectedBackface=0;rejectedDistance=0
+  for each faceIndex in faceIndexes
     faceOffset=map.offsets[13]+faceIndex*FACE_STRIDE;kind=i32(map,faceOffset+8)
     if kind==render.MST_PLANAR or kind==render.MST_PATCH or kind==render.MST_TRIANGLE_SOUP then
       center=[0.0,0.0,0.0];radius=0.0
@@ -214,6 +229,14 @@ end function
 
 function prepareCached(cache,camera,cfg)
   chosen=chooseCached(cache,camera,cfg);if chosen is error then return chosen end if
+  return PreparedWorld(chosen,cachedRenderData(cache,chosen))
+end function
+// Keep the already-flattened triangle stream when camera motion does not
+// alter the visible face order. PVS/frustum metadata is still refreshed,
+// while the hot frame path avoids rebuilding an identical immutable array.
+function prepareCachedRetained(cache,camera,cfg,previous)
+  chosen=chooseCached(cache,camera,cfg);if chosen is error then return chosen end if
+  if previous!=void and previous.selection!=void and previous.renderData!=void and sameFaces(previous.selection.faceIndexes,chosen.faceIndexes) then return PreparedWorld(chosen,previous.renderData) end if
   return PreparedWorld(chosen,cachedRenderData(cache,chosen))
 end function
 function preparePortalCached(cache,camera,pvsOrigin,cfg)
