@@ -67,9 +67,13 @@ function run(archive,bootstrapMap,qvmRoot)
   sounds=qvmSoundAssets.load(archive,state.context.assets,state.context.assetKinds);if sounds is error then qvm2d.release(catalog);window.shutdown();match.shutdown(state);return sounds end if
   audio=qvmPlayback.create(sounds,22050,4096);if audio is error then qvm2d.release(catalog);window.shutdown();match.shutdown(state);return audio end if
   applied=qvmPlayback.consume(audio,state.context.soundCommands);if applied is error then qvm2d.release(catalog);window.shutdown();match.shutdown(state);return applied end if
+  // The UI syscall array is a transient producer/consumer queue. Retaining
+  // commands after the playback cursor consumed them made menu sessions grow
+  // quadratically because every later append copied the full history.
+  state.context.soundCommands=[];audio.commandCursor=0
   audioStarted=audioOutput.init(22050);if audioStarted is error then qvm2d.release(catalog);window.shutdown();match.shutdown(state);return audioStarted end if
   window.setTitle("MiniQuake3 | Quake III Arena Main Menu")
-  consoleAt=len(state.context.console);uploadedTextures=len(catalog.textures);soundAssetCount=len(state.context.assets);now=1000;mapName=void
+  state.context.console=[];uploadedTextures=len(catalog.textures);soundAssetCount=len(state.context.assets);now=1000;mapName=void
   while not window.shouldClose() and mapName==void
     window.poll();input.mouse=window.mouseDelta();now=now+16
     reset=localQvmUi.resetFrameCommands(state);if reset is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return reset end if
@@ -78,9 +82,10 @@ function run(archive,bootstrapMap,qvmRoot)
     if len(catalog.textures)>uploadedTextures then uploaded=qvm2d.upload(catalog);if uploaded is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return uploaded end if;uploadedTextures=len(catalog.textures) end if
     if len(state.context.assets)!=soundAssetCount then synced=qvmSoundAssets.sync(sounds,state.context.assets,state.context.assetKinds);if synced is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return synced end if;soundAssetCount=len(state.context.assets) end if
     applied=qvmPlayback.consume(audio,state.context.soundCommands);if applied is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return applied end if
+    state.context.soundCommands=[];audio.commandCursor=0
     window.beginFrame(0,0,0);drawn=qvm2d.draw(catalog,now);if drawn is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return drawn end if;window.present()
     if audioOutput.canSubmit() then chunk=qvmPlayback.render(audio);if chunk is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return chunk end if;accepted=audioOutput.submit(chunk.samples);if accepted is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return accepted end if end if
-    mapName=requestedMap(state,consoleAt);consoleAt=len(state.context.console)
+    mapName=requestedMap(state,0);state.context.console=[]
     // Keep the disconnected UI at the original renderer's practical refresh
     // cadence instead of burning a CPU core and presenting partial frames.
     time.sleep(16)

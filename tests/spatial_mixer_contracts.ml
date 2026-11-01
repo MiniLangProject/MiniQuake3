@@ -77,6 +77,9 @@ function main(args)
   chunk=mixer.render(shared,[0.0,0.0,0.0],[0.0,1.0,0.0])
   count=count+require(chunk.audibleSources==2 and read16(chunk.samples,0)==2000 and close(shared.sources[0].cursor,shared.sources[1].cursor),"shared in-phase sources sum and advance together")
 
+  distinct=mixer.create(22050,1);mixer.addSharedLoop(distinct,20,"shared-key",[0.0,0.0,0.0],sound16([1000],1,22050),1.0,true);mixer.addSharedLoop(distinct,21,"shared-key",[0.0,0.0,0.0],sound16([-500],1,22050),1.0,true)
+  chunk=mixer.render(distinct,[0.0,0.0,0.0],[0.0,1.0,0.0]);count=count+require(read16(chunk.samples,0)==500,"equal grouping keys never alias different PCM assets")
+
   resample=mixer.create(22050,2);mixer.addLoop(resample,7,[0.0,0.0,0.0],sound8([128,129,130,131],1,11025),1.0,true)
   chunk=mixer.render(resample,[0.0,0.0,0.0],[0.0,1.0,0.0])
   count=count+require(read16(chunk.samples,0)==0 and read16(chunk.samples,4)==0,"nearest resampling repeats source frame")

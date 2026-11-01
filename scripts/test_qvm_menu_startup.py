@@ -21,6 +21,8 @@ def main() -> int:
     require(menu, "settings=match.captureUserSettings(state)", "menu settings handoff")
     require(menu, "return gameApp.runWithSettingsNamed(archive,selectedMap,mapName,qvmRoot,settings)", "deferred named full match start")
     require(menu, "time.sleep(16)", "bounded menu refresh cadence")
+    require(menu, "state.context.soundCommands=[];audio.commandCursor=0", "consumed menu sound queue compaction")
+    require(menu, "mapName=requestedMap(state,0);state.context.console=[]", "consumed host command queue compaction")
     require(match, "if not startGame then return Boot(void,machineRuntime,context,void,void) end if", "pre-game return before qagame/cgame")
     require(match, "bootConfiguredNamedMode(archive,map,now,qvmRoot,false,\"q3dm1\",false)", "UI shell without game startup")
 

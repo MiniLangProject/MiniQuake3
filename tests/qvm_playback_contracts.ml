@@ -36,6 +36,7 @@ function main(args)
 
   state=playback.create(catalog,22050,2)
   count=count+req(state.listener.entity==0 and len(state.entityOrigins)==1024,"playback defaults")
+  count=count+req(len(state.clipHandles)==12 and state.clipHandles[3].path=="sound/a.wav" and state.clipHandles[4]==void,"sound handles indexed once at playback creation")
   count=count+req(try(playback.create(catalog,3999,2)) is error and try(playback.create(catalog,22050,0)) is error,"playback limits")
   axis=[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]]
   applied=playback.apply(state,[

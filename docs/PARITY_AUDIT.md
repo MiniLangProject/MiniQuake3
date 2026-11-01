@@ -1,8 +1,32 @@
 # MiniQuake3: überprüfter Stand
 
-Stand: 2026-10-31. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist spielbar**.
+Stand: 2026-11-01. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
+
+## Auditkorrekturen vom 1. November 2026
+
+Der Doppelklick-Starter verwendet nun tatsächlich denselben portablen
+Nullargument-Pfad wie die EXE: `baseq3/pak*.pk3` und `qvms/*.qvm` werden neben
+`MiniQuake3.exe` gesucht, ohne fest verdrahtetes Laufwerk und ohne `q3dm1` vor
+dem Hauptmenü zu laden. Der zuvor widersprüchliche Startertest bildet diesen
+Original-Startfluss wieder korrekt ab.
+
+Im dauerhaften Original-UI-Pfad werden verarbeitete Sound- und Hostbefehle
+jetzt pro Frame geleert. Zuvor blieben beide Arrays während der gesamten
+Menüsitzung erhalten, sodass jeder neue QVM-Befehl den kompletten Verlauf
+kopierte. Der Audioplayer besitzt zusätzlich eine direkte, bei späterer
+Registrierung nachwachsende Handle-Tabelle; One-shots und Loops durchsuchen
+nicht länger für jeden Start den ganzen Soundkatalog. Der räumliche Mixer und
+die pro Frame erzeugten View-/Portal-Sammlungen verwenden `std.ds.list` statt
+wiederholter Array-Konkatenation. Der neue vollständige Hauptbuild hat
+SHA-256 `bfb4bcf3b750464b042467beaa3b5b2437f1de1b70af58e2fa6016095dbe22d1`.
+41 QVM-Audio- und 43 Spatial-Mixer-Verträge, die Starter-/Menügates und der
+reale Nullargument-Windows-Start sind grün; das Originalmenü erschien nach
+1,12 Sekunden. Der gekoppelte Retail-QVM-Match bestand über acht Frames mit
+2.345 texturierten Dreiecken, 17 Renderpässen, 301 Cgame-Assets, 26 Sounds
+und null nicht unterstützten Entities. Die vollständige 1:1-Abnahme bleibt von den
+unten dokumentierten Netzwerk-, Renderer-, Audio- und Langzeitgates abhängig.
 
 ## Laufzeit-, Start- und Zustandskorrekturen vom 31. Oktober 2026
 

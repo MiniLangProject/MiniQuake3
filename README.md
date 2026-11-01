@@ -474,9 +474,15 @@ Baseq3-QVMs und startet den produktiven Original-QVM-Pfad. Manuell entspricht
 das diesem Aufruf:
 
 ```powershell
-python scripts/build_qvms.py
-.\build\MiniQuake3.exe --menu-qvm D:/Quake3/baseq3/pak0.pk3 maps/q3dm1.bsp build/reference/qvms
+python scripts/build.py
+# pak0.pk3 sowie vorhandene pak1.pk3 ... pak8.pk3 nach build/baseq3 kopieren
+.\build\MiniQuake3.exe
 ```
+
+Der Nullargument-Start ermittelt den Ordner der EXE selbst, lädt
+`build/baseq3/pak*.pk3` in Original-Priorität und verwendet die mitgebauten
+QVMs unter `build/qvms`. Er lädt ausdrücklich noch keine Karte; erst ein
+`map`-/`spmap`-Befehl des Originalmenüs startet qagame und cgame.
 
 Damit stammen Menü, HUD, Client- und Spielregeln aus `ui.qvm`, `cgame.qvm`
 und `qagame.qvm`; Bindings und Key-Catcher folgen dem Quake-III-Pfad. Der

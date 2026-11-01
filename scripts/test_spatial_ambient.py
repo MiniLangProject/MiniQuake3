@@ -11,7 +11,7 @@ def main():
     out=ROOT/'build/reference/spatial_ambient';out.mkdir(parents=True,exist_ok=True)
     build('tests/spatial_mixer_contracts.ml','spatial_mixer_contracts.exe')
     value=run([ROOT/'build/spatial_mixer_contracts.exe'],ROOT/'build',log=out/'contracts.log').strip()
-    if value!='PASS: 42 spatial mixer contracts': raise RuntimeError(value)
+    if value!='PASS: 43 spatial mixer contracts': raise RuntimeError(value)
     print(value);retail='not-run'
     if args.pak:
       build('tests/spatial_ambient_q3dm1_probe.ml','spatial_ambient_q3dm1_probe.exe')

@@ -79,7 +79,7 @@ function refdefCamera(refdef)
   angles=qmath.vectoangles(refdef.viewaxis[0]);return viewer.camera(refdef.vieworg,angles[1],angles[0],0.0,0.0)
 end function
 function prepareViews(views,catalog,archive,assets,kinds,frameCache,grid,videoManager,previousViews,profile,fogCatalog,dlightCatalog,shadowMode,lodScale,lodBias)
-  result=[];viewIndex=0
+  result=lists.List.withCapacity(len(views));viewIndex=0
   for each view in views
     started=0;if profile!=void then started=window.milliseconds() end if
     if grid!=void then ignored=lightGrid.setDynamicLights(grid,view.scene.dlights) end if
@@ -95,9 +95,9 @@ function prepareViews(views,catalog,archive,assets,kinds,frameCache,grid,videoMa
     attached=sceneBatch.attachDynamicLights(batch,catalog,dlightCatalog);if attached is error then return attached end if
     if profile!=void then profile.batch=profile.batch+window.milliseconds()-afterMaterial end if
     target=qvmViewport.prepare(view.refdef,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT);if target is error then return target end if
-    result=result+[PreparedView(view,expanded,batch,target)];viewIndex=viewIndex+1
+    result.add(PreparedView(view,expanded,batch,target));viewIndex=viewIndex+1
   end for
-  return result
+  return result.toArray()
 end function
 function angleCommand(degrees,deltaAngle)
   return numeric.i16((numeric.trunc32(degrees*65536.0/360.0)&65535)-deltaAngle)
@@ -205,7 +205,7 @@ function preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,asse
   return PreparedPortal(plan,world,batch,target,source.source)
 end function
 function preparePortals(preparedViews,selectedWorld,worldCatalog,qvmCatalog,archive,assets,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias)
-  result=[];for each source in preparedViews portal=preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,assets,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias);if portal is error then return portal end if;result=result+[portal] end for;return result
+  result=lists.List.withCapacity(len(preparedViews));for each source in preparedViews portal=preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,assets,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias);if portal is error then return portal end if;result.add(portal) end for;return result.toArray()
 end function
 function drawCinematics(state)
   draws=cinematics.takeDraws(state.context.cinematics);drawn=0

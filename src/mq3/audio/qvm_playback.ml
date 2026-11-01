@@ -24,7 +24,7 @@ struct Listener entity origin axis inWater end struct
 struct Voice id slot entity channel handle origin fixedOrigin localSound sound compressed mono cursor active end struct
 struct LoopSource entity handle origin velocity realLoop sound compressed mono cursor active doppler dopplerScale oldDopplerScale end struct
 struct Music introSound loopSound cursor inIntro active end struct
-struct State outputRate chunkFrames catalog listener entityOrigins voices loops nextVoice music commandCursor channels loopPaintedFrames rawStream monoCache end struct
+struct State outputRate chunkFrames catalog listener entityOrigins voices loops nextVoice music commandCursor channels loopPaintedFrames rawStream monoCache clipHandles end struct
 struct ApplyResult applied missing ignored end struct
 struct Chunk samples frames audibleVoices audibleLoops peak limiterGain end struct
 
@@ -36,7 +36,20 @@ function create(catalog,outputRate,chunkFrames)
   if outputRate<4000 or outputRate>192000 then return fail("invalid output rate") end if
   if chunkFrames<1 or chunkFrames>4096 then return fail("invalid chunk size") end if
   rawStream=sndRaw.create(outputRate);if rawStream is error then return rawStream end if
-  return State(outputRate,chunkFrames,catalog,Listener(0,[0.0,0.0,0.0],defaultAxis(),false),array(MAX_ENTITIES,void),[],[],1,void,0,sndChannels.create(),0,rawStream,lists.List.withCapacity(64))
+  maxHandle=0;for each clip in catalog.clips if clip.handle>maxHandle then maxHandle=clip.handle end if end for
+  clipHandles=array(maxHandle+1,void);for each clip in catalog.clips if clip.handle>0 then clipHandles[clip.handle]=clip end if end for
+  return State(outputRate,chunkFrames,catalog,Listener(0,[0.0,0.0,0.0],defaultAxis(),false),array(MAX_ENTITIES,void),[],[],1,void,0,sndChannels.create(),0,rawStream,lists.List.withCapacity(64),clipHandles)
+end function
+
+function clipForHandle(state,handle)
+  if handle<=0 then return void end if
+  if handle<len(state.clipHandles) and state.clipHandles[handle]!=void then return state.clipHandles[handle] end if
+  // Sound registration can continue after playback starts. Populate the
+  // direct table lazily for those handles while retaining the catalog as the
+  // authoritative source.
+  clip=assets.clipForHandle(state.catalog,handle);if clip==void then return void end if
+  if handle>=len(state.clipHandles) then expanded=array(handle+1,void);if len(state.clipHandles)>0 then copyArray(expanded,0,state.clipHandles,0,len(state.clipHandles)) end if;state.clipHandles=expanded end if
+  state.clipHandles[handle]=clip;return clip
 end function
 
 function queueRaw(state,audio,volume)
@@ -62,7 +75,7 @@ function entityOrigin(state,entity)
 end function
 
 function addVoice(state,command,localSound)
-  clip=assets.clipForHandle(state.catalog,command.handle);if clip==void then return false end if
+  clip=clipForHandle(state,command.handle);if clip==void then return false end if
   entity=command.entity;if localSound then entity=state.listener.entity end if
   selected=sndChannels.start(state.channels,entity,command.handle,command.channel);if not selected.accepted then return true end if
   if selected.replaced then for each voice in state.voices if voice.slot==selected.slot then voice.active=false end if end for end if
@@ -75,7 +88,7 @@ end function
 
 function addLoop(state,command)
   if command.entity<0 or command.entity>=MAX_ENTITIES then return false end if
-  clip=assets.clipForHandle(state.catalog,command.handle);if clip==void then return false end if
+  clip=clipForHandle(state,command.handle);if clip==void then return false end if
   existing=void
   for each sourceLoop in state.loops if sourceLoop.entity==command.entity then existing=sourceLoop end if end for
   origin=command.origin;if not validOrigin(origin) then origin=entityOrigin(state,command.entity) end if

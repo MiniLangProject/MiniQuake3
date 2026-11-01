@@ -5,6 +5,7 @@ package mq3.audio.spatial_mixer
 
 import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
+import std.ds.list as lists
 
 const SOUND_FULLVOLUME=80.0
 const SOUND_ATTENUATE=0.0008
@@ -81,7 +82,7 @@ end function
 function render(state,listener,right)
   if state==void or listener==void or right==void or len(listener)!=3 or len(right)!=3 then return fail("invalid listener") end if
   rightLength=qmath.VectorLength(right);if rightLength<0.99 or rightLength>1.01 then return fail("listener right vector is not normalized") end if
-  leftMix=array(state.chunkFrames,0.0);rightMix=array(state.chunkFrames,0.0);audible=0;groups=[]
+  leftMix=array(state.chunkFrames,0.0);rightMix=array(state.chunkFrames,0.0);audible=0;groups=lists.List.withCapacity(len(state.sources))
   if len(state.sources)>0 then
     for sourceIndex=0 to len(state.sources)-1
       source=state.sources[sourceIndex]
@@ -89,26 +90,29 @@ function render(state,listener,right)
         gains=spatialize(source.origin,listener,right,source.volume,source.globalSound)
         if gains.left>0.0 or gains.right>0.0 then
           audible=audible+1;groupIndex=-1
-          if len(groups)>0 then for index=0 to len(groups)-1 if groups[index].key==source.key and groups[index].cursor==source.cursor then groupIndex=index end if end for end if
+          if not groups.isEmpty() then for index=0 to groups.len()-1 current=groups.get(index);if current.key==source.key and current.sound==source.sound and current.cursor==source.cursor then groupIndex=index end if end for end if
           if groupIndex<0 then
             step=source.sound.sampleRate/state.outputRate;sourceFrames=len(source.sound.samples)/source.sound.blockAlign
-            groups=groups+[Group(source.key,source.sound,source.cursor,step,sourceFrames,gains.left,gains.right,[sourceIndex])]
+            indexes=lists.List.withCapacity(4);indexes.add(sourceIndex);groups.add(Group(source.key,source.sound,source.cursor,step,sourceFrames,gains.left,gains.right,indexes))
           else
-            groups[groupIndex].left=groups[groupIndex].left+gains.left;groups[groupIndex].right=groups[groupIndex].right+gains.right;groups[groupIndex].sourceIndexes=groups[groupIndex].sourceIndexes+[sourceIndex]
+            current=groups.get(groupIndex);current.left=current.left+gains.left;current.right=current.right+gains.right;current.sourceIndexes.add(sourceIndex)
           end if
         end if
       end if
     end for
   end if
-  for each group in groups
-    phase=group.cursor
-    for frame=0 to state.chunkFrames-1
-      sample=monoSample(group.sound,numeric.trunc32(phase))
-      leftMix[frame]=leftMix[frame]+sample*group.left;rightMix[frame]=rightMix[frame]+sample*group.right
-      phase=phase+group.step;while phase>=group.sourceFrames phase=phase-group.sourceFrames end while
+  if not groups.isEmpty() then
+    for groupIndex=0 to groups.len()-1
+      group=groups.get(groupIndex)
+      phase=group.cursor
+      for frame=0 to state.chunkFrames-1
+        sample=monoSample(group.sound,numeric.trunc32(phase))
+        leftMix[frame]=leftMix[frame]+sample*group.left;rightMix[frame]=rightMix[frame]+sample*group.right
+        phase=phase+group.step;while phase>=group.sourceFrames phase=phase-group.sourceFrames end while
+      end for
+      for sourceIndexIndex=0 to group.sourceIndexes.len()-1 sourceIndex=group.sourceIndexes.get(sourceIndexIndex);state.sources[sourceIndex].cursor=phase end for
     end for
-    for each sourceIndex in group.sourceIndexes state.sources[sourceIndex].cursor=phase end for
-  end for
+  end if
   peak=0.0
   for frame=0 to state.chunkFrames-1
     left=leftMix[frame];if left<0.0 then left=0.0-left end if;if left>peak then peak=left end if
