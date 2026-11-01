@@ -34,9 +34,13 @@ die gewählte Karte erst nach dessen `map`-/`spmap`-Befehl. Der aktuelle
 Start-/Performanceblock übernimmt Menü-Cvars, Userinfo und Bindings in das
 Spiel, lädt die komplette `pak*.pk3`-Prioritätskette, cached Shader, PVS,
 Geometrie, Batches und Audiosamples und vermeidet die früheren quadratischen
-Array-Konkatenationen in den produktiven Framepfaden. Der geprüfte Build vom
-31. Oktober 2026 hat SHA-256
-`144426dc44002765926f36eea321b56c2f082d59453f0b5bc82bdd12e8e99129`.
+Array-Konkatenationen in den produktiven Framepfaden. Der Audit vom
+1. November 2026 ergänzt wiederverwendete UDP-Empfangspuffer, eine O(1)-FIFO
+für fragmentierte Serverpakete, O(n log n)-Snapshot-Sortierung sowie
+vorallozierte Snapshot- und Weltabfragepuffer. Transport- und
+Paket-Callbackfehler werden nicht mehr verschluckt. Der geprüfte Build hat
+SHA-256
+`8bcb49ecd0731292c80d4bcccc14cc53e37238b5eebb5ac6db228bbe7093a7da`.
 
 Der strenge Quellabgleich umfasst 335 Runtime-/Plattformdateien: **278 sind
 symbolvollständig zugeordnet, 57 sind teilweise zugeordnet**. In diesen 57

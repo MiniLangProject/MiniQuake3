@@ -22,7 +22,7 @@ function fixture()
   for index=0 to 3 at=176+index*44;putF32(data,at,positions[index][0]);putF32(data,at+4,positions[index][1]);putF32(data,at+8,positions[index][2]);putF32(data,at+36,1.0) end for
   indexes=[0,1,2,0,2,3];for index=0 to 5 putI32(data,352+index*4,indexes[index]) end for
   map=bsp.BSP(data,offsets,lengths,counts)
-  split=brush.Plane([1.0,0.0,0.0],0.0,0);world=collision.World([],[collision.Node(split,0,[-1,-1])],[collision.Leaf([],[0])],[],[],false,true,[],void,void)
+  split=brush.Plane([1.0,0.0,0.0],0.0,0);world=collision.World([],[collision.Node(split,0,[-1,-1])],[collision.Leaf([],[0])],[],[],false,true,[],void,void,"",[],0,"")
   return [map,world]
 end function
 function square() return [[-1.0,-1.0,4.0],[-1.0,1.0,4.0],[1.0,1.0,4.0],[1.0,-1.0,4.0]] end function

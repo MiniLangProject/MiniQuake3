@@ -6,24 +6,26 @@ import mq3.qcommon.net_transport as transport
 const SIDE_CLIENT=0
 const SIDE_SERVER=1
 
-struct Runtime clientSocket serverSocket capacity nextSide context clientPacketFn serverPacketFn end struct
+struct Runtime clientSocket serverSocket capacity nextSide context clientPacketFn serverPacketFn clientBuffer serverBuffer clientMetadata serverMetadata end struct
 struct Step processed side address data end struct
 
 function create(clientSocket,serverSocket,capacity,context,clientPacketFn,serverPacketFn)
   if clientSocket==void and serverSocket==void then return error(6975,"network pump: no sockets") end if
   if capacity<1 or capacity>65535 then return error(6975,"network pump: invalid capacity") end if
-  return Runtime(clientSocket,serverSocket,capacity,SIDE_CLIENT,context,clientPacketFn,serverPacketFn)
+  return Runtime(clientSocket,serverSocket,capacity,SIDE_CLIENT,context,clientPacketFn,serverPacketFn,bytes(capacity,0),bytes(capacity,0),bytes(8,0),bytes(8,0))
 end function
 
 function receiveSide(runtime,side)
   socket=runtime.clientSocket;if side==SIDE_SERVER then socket=runtime.serverSocket end if
   if socket==void then return Step(false,side,void,bytes(0,0)) end if
-  packet=transport.receive(socket,runtime.capacity)
+  data=runtime.clientBuffer;metadata=runtime.clientMetadata
+  if side==SIDE_SERVER then data=runtime.serverBuffer;metadata=runtime.serverMetadata end if
+  packet=transport.receiveBuffered(socket,data,metadata,runtime.capacity);if packet is error then return packet end if
   if not packet.received then return Step(false,side,void,bytes(0,0)) end if
   if side==SIDE_CLIENT then
-    if runtime.clientPacketFn!=void then runtime.clientPacketFn(runtime.context,packet.address,packet.data) end if
+    if runtime.clientPacketFn!=void then handled=runtime.clientPacketFn(runtime.context,packet.address,packet.data);if handled is error then return handled end if end if
   else
-    if runtime.serverPacketFn!=void then runtime.serverPacketFn(runtime.context,packet.address,packet.data) end if
+    if runtime.serverPacketFn!=void then handled=runtime.serverPacketFn(runtime.context,packet.address,packet.data);if handled is error then return handled end if end if
   end if
   runtime.nextSide=SIDE_CLIENT;if side==SIDE_CLIENT then runtime.nextSide=SIDE_SERVER end if
   return Step(true,side,packet.address,packet.data)

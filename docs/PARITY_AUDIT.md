@@ -6,6 +6,43 @@ kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
 ## Auditkorrekturen vom 1. November 2026
 
+Ein zusätzlicher Laufzeit- und Fehleraudit hat vier produktive Hotspots
+geschlossen. Der Netzwerkpump besitzt nun je Socket dauerhafte Daten- und
+Adresspuffer; ein leerer nichtblockierender Poll allokiert nicht länger zwei
+Puffer, und Transport- sowie Paket-Callbackfehler werden bis zum Engine-Frame
+weitergereicht statt als erfolgreich verarbeitet zu gelten. Die verzögerte
+Server-Netchan-FIFO verwendet `std.ds.queue` mit O(1)-Enqueue/Dequeue statt
+Arraykopien. Der Snapshotbau kopiert einmal in einen exakt großen Puffer und
+sortiert bis zu 1.024 Entitynummern mit `std.sort` in O(n log n), einschließlich
+Duplikatprüfung und vom Aufrufer getrennter Ausgabe. Snapshot-Runtime und
+Serverwelt wachsen beziehungsweise allozieren ihre Entity-, Cluster-, Stack-
+und Ergebnisfelder einmal statt in den inneren Schleifen zu konkatenieren oder
+zu slicen.
+
+22 Network-Pump-, 26 Server-Netchan- und 27 Snapshot-Verträge bestehen; der
+Maximalsnapshot prüft alle 1.024 Entities. Der q3dm1-Serverweltvergleich stimmt
+mit und ohne Kurven über jeweils 2.250 Operationen und 116.243 exakte Wörter.
+Der vollständige Windows-Build hat SHA-256
+`8bcb49ecd0731292c80d4bcccc14cc53e37238b5eebb5ac6db228bbe7093a7da`;
+das Originalmenü erschien im Nullargument-Start nach 0,92 Sekunden. Der
+gekoppelte Retail-QVM-Match bestand erneut über acht Frames mit 2.345
+texturierten Dreiecken, 17 Renderpässen, 301 Cgame-Assets, 26 Sounds und null
+nicht unterstützten Entities. Die breite Prüfkette deckt weiterhin nur
+automatisierbare Verträge und Retail-Replays ab: belastbare Langzeitläufe,
+Original-Server/Port-Client-Interoperabilität sowie visuelle und akustische
+A/B-Abnahmen bleiben Voraussetzungen für eine ehrliche vollständige
+1:1-Freigabe. Die gesamte registrierte Retail-Prüfkette wurde nach jeder dabei
+gefundenen Fixture-Korrektur exakt am betroffenen Gate fortgesetzt und endete
+mit grünem CM-Load über 31 Karten, 434 exakten Datensätzen und dem produktiven
+Spatial-Lauf über 141 exakte Felder.
+
+Der Prüfharness löst `--data-root` jetzt vor dem Wechsel in Test-Unterordner
+absolut auf. Sechs veraltete Whole-Program-Fixtures erhielten kollisionsfreie
+Helpernamen, und die Mark-Fragment-World-Fixture bildet die aktuelle
+vollständige Collision-World-Struktur ab. Damit messen die betroffenen Gates
+wieder den Port statt Pfad- oder Symbolauflösungsfehler des eingefrorenen
+Compilers.
+
 Der Doppelklick-Starter verwendet nun tatsächlich denselben portablen
 Nullargument-Pfad wie die EXE: `baseq3/pak*.pk3` und `qvms/*.qvm` werden neben
 `MiniQuake3.exe` gesucht, ohne fest verdrahtetes Laufwerk und ohne `q3dm1` vor

@@ -15,10 +15,10 @@ function require(ok,label) if not ok then return error(7892,"g_session complete:
 function setCvar(level,key,text) cv.set2(level.spawner.cvars,key,text,true);return void end function
 function readCvar(level,key,size) variable=cv.find(level.spawner.cvars,key);if variable==void then return "" end if;return variable.string end function
 function sessionCommand(level,slot,text) level.context.commands=level.context.commands+[[slot,text]];return void end function
-function diagnostic(level,text) level.context.prints=level.context.prints+[text];return void end function
+function sessionDiagnostic(level,text) level.context.prints=level.context.prints+[text];return void end function
 function setup(world)
   level=game.create(world);spawn.create(level,"");level.context=Context([],[]);level.cvarSetFn=setCvar;level.cvarStringFn=readCvar
-  level.serverCommandFn=sessionCommand;level.gamePrintFn=diagnostic;level.maxclients=4;level.maxclientsCvar=4;level.time=1234;return level
+  level.serverCommandFn=sessionCommand;level.gamePrintFn=sessionDiagnostic;level.maxclients=4;level.maxclientsCvar=4;level.time=1234;return level
 end function
 function main(args)
   world=cm.loadWorld(fs.readAllBytes(args[0]),true);level=setup(world);count=0;client=level.clients[0]

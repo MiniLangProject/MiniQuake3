@@ -159,6 +159,12 @@ function receive(socket,capacity)
   return Packet(true,endpointToAddress(datagram.endpoint),datagram.data)
 end function
 
+function receiveBuffered(socket,data,metadata,capacity)
+  datagram=udp.receiveFromBuffered(socket,data,metadata,capacity)
+  if not datagram.received then return Packet(false,void,bytes(0,0)) end if
+  return Packet(true,endpointToAddress(datagram.endpoint),datagram.data)
+end function
+
 function outOfBandPrintPacket(text) return bytes([255,255,255,255])+bytes(text) end function
 
 function outOfBandPrint(socket,address,text)

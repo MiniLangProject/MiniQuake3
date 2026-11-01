@@ -163,17 +163,19 @@ function linkEntity(scene,number)
       if ent.areanum != -1 and ent.areanum != area then ent.areanum2 = area else ent.areanum = area end if
     end if
   end for
+  clusterValues=array(16,0);clusterCount=0
   for each leaf in leafs.entries
     cluster = vis.leafCluster(scene.world.visibility,leaf)
     if cluster != -1 then
-      ent.clusters = ent.clusters+[cluster]
-      if len(ent.clusters) == 16 then
+      clusterValues[clusterCount]=cluster;clusterCount=clusterCount+1
+      if clusterCount == 16 then
         // Original tests i != num_leafs after breaking, even at the last leaf.
         ent.lastCluster = vis.leafCluster(scene.world.visibility,leafs.lastLeaf)
         break
       end if
     end if
   end for
+  ent.clusters=arrays.slice(clusterValues,0,clusterCount)
   ent.linkcount = n.add32(ent.linkcount,1)
   index = 0
   while scene.sectors[index].axis != -1
@@ -189,25 +191,28 @@ end function
 function areaEntities(scene,mins,maxs,capacity)
   if typeof(capacity) != "int" or capacity < 0 or capacity > 1024 then return error(480,"Invalid server area-list capacity") end if
   mins = cm.vector32(mins); maxs = cm.vector32(maxs)
-  result = []; stack = [0]
-  while len(stack) > 0
-    index = stack[len(stack)-1]; stack = arrays.slice(stack,0,len(stack)-1)
-    node = scene.sectors[index]; scan = node.head; full = false
+  result=array(capacity,0);resultCount=0
+  // The world has a fixed depth-four tree. Use an explicit fixed stack so a
+  // trace does not allocate and copy a new array on every visited sector.
+  stack=array(32,0);stackCount=1;stack[0]=0
+  while stackCount > 0 and resultCount < capacity
+    stackCount=stackCount-1;index=stack[stackCount]
+    node = scene.sectors[index]; scan = node.head
     while scan != -1
       ent = scene.entities[scan]; scan = ent.nextEntity; overlaps = true
       for axis = 0 to 2
         if ent.absmin[axis] > maxs[axis] or ent.absmax[axis] < mins[axis] then overlaps = false; break end if
       end for
       if not overlaps then continue end if
-      if len(result) == capacity then full = true; break end if
-      result = result+[ent.number]
+      if resultCount == capacity then break end if
+      result[resultCount]=ent.number;resultCount=resultCount+1
     end while
-    if full or node.axis == -1 then continue end if
+    if resultCount == capacity or node.axis == -1 then continue end if
     // LIFO: original visits positive child first, with strict split comparisons.
-    if mins[node.axis] < node.distance then stack = stack+[node.children[1]] end if
-    if maxs[node.axis] > node.distance then stack = stack+[node.children[0]] end if
+    if mins[node.axis] < node.distance then stack[stackCount]=node.children[1];stackCount=stackCount+1 end if
+    if maxs[node.axis] > node.distance then stack[stackCount]=node.children[0];stackCount=stackCount+1 end if
   end while
-  return result
+  return arrays.slice(result,0,resultCount)
 end function
 function clipHandleForEntity(scene,ent)
   if ent.bmodel then return cm.inlineModel(scene.world,ent.modelindex) end if

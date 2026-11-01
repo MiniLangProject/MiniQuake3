@@ -17,13 +17,13 @@ struct Context
 end struct
 function require(ok,message) if not ok then return error(7691,message) end if;return 1 end function
 function serverCommand(level,slot,text) level.context.commands=level.context.commands+[[slot,text]];return void end function
-function diagnostic(level,text) level.context.diagnostics=level.context.diagnostics+[text];return void end function
+function utilityDiagnostic(level,text) level.context.diagnostics=level.context.diagnostics+[text];return void end function
 function used(level,self,other,activator) level.context.uses=level.context.uses+[[self.slot,other.slot,activator.slot]];return void end function
 function damage(level,hit,inflictor,attacker,dir,point,amount,flags,mod) level.context.damage=level.context.damage+[[hit.slot,inflictor.slot,attacker.slot,amount,flags,mod]];return void end function
 function polygon(context,color,points) context.polygons=context.polygons+[[color,points]];return 77 end function
 function setup(world)
   level=game.create(world);spawn.create(level,"");level.context=Context([],[],[],[],[])
-  level.serverCommandFn=serverCommand;level.gamePrintFn=diagnostic;level.damageFn=damage
+  level.serverCommandFn=serverCommand;level.gamePrintFn=utilityDiagnostic;level.damageFn=damage
   return level
 end function
 function client(level,slot,team,connected)

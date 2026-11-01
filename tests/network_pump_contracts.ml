@@ -7,6 +7,7 @@ function req(value,label) if not value then return error(499,"network pump: "+la
 function equal(a,b) if len(a)!=len(b) then return false end if;if len(a)>0 then for i=0 to len(a)-1 if a[i]!=b[i] then return false end if end for end if;return true end function
 function clientPacket(c,address,data) c.calls=c.calls+1;c.sides=c.sides+[pump.SIDE_CLIENT];c.sources=c.sources+[address.port];c.payloads=c.payloads+[data];return void end function
 function serverPacket(c,address,data) c.calls=c.calls+1;c.sides=c.sides+[pump.SIDE_SERVER];c.sources=c.sources+[address.port];c.payloads=c.payloads+[data];return void end function
+function rejectPacket(c,address,data) return error(499,"network pump: rejected packet") end function
 function waitFor(runtime,capture,wanted)
   total=0
   for attempt=0 to 9999
@@ -20,6 +21,7 @@ function main(args)
   clientEndpoint=udp.bind(client,udp.Endpoint(loopback,0));serverEndpoint=udp.bind(server,udp.Endpoint(loopback,0))
   clientSource=udp.bind(clientSender,udp.Endpoint(loopback,0));serverSource=udp.bind(serverSender,udp.Endpoint(loopback,0))
   capture=Capture(0,[],[],[]);runtime=pump.create(client,server,65535,capture,clientPacket,serverPacket)
+  count=count+req(len(runtime.clientBuffer)==65535 and len(runtime.serverBuffer)==65535 and len(runtime.clientMetadata)==8 and len(runtime.serverMetadata)==8,"receive buffers allocated once per pump")
   empty=pump.pumpOnce(runtime);count=count+req(not empty.processed and capture.calls==0,"empty queues")
   count=count+req(runtime.nextSide==pump.SIDE_CLIENT,"empty preserves preference")
   binary=bytes([0,255,128,1,0,81]);udp.sendTo(clientSender,clientEndpoint,binary);waitFor(runtime,capture,1)
@@ -46,6 +48,9 @@ function main(args)
   count=count+req(firstCount==2 and capture.calls==before+2,"drain budget")
   waitFor(runtime,capture,before+4);count=count+req(capture.calls==before+4,"drain remainder")
   count=count+req(capture.payloads[before][0]==40 and capture.payloads[before+3][0]==43,"budget FIFO")
+  runtime.clientPacketFn=rejectPacket;udp.sendTo(clientSender,clientEndpoint,bytes([99]));rejected=false
+  for attempt=0 to 9999 result=try(pump.pumpOnce(runtime));if result is error then rejected=true;break end if end for
+  count=count+req(rejected,"packet callback failures propagate to frame owner")
   count=count+req(try(pump.create(void,void,64,capture,clientPacket,serverPacket)) is error,"requires socket")
   count=count+req(try(pump.create(client,server,0,capture,clientPacket,serverPacket)) is error,"capacity validation")
   count=count+req(try(pump.drain(runtime,-1)) is error,"budget validation")

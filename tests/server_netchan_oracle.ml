@@ -12,7 +12,7 @@ function flag(value) if value then return 1 end if;return 0 end function
 function hex(data) digits=bytes("0123456789abcdef");result="";if len(data)>0 then for each value in data result=result+decode(bytes([digits[(value>>4)&15],digits[value&15]])) end for end if;return result end function
 function dumpMessage(label,msg) print "M|"+label+"|"+str(msg.cursize)+"|"+str(msg.readcount)+"|"+str(msg.bit)+"|"+str(flag(msg.oob))+"|"+hex(slice(msg.data,0,msg.cursize));return void end function
 function dumpPackets(label,runtime,startPacket,client)
-  text="T|"+label+"|"+str(len(runtime.context.packets)-startPacket)+"|"+str(client.channel.outgoingSequence)+"|"+str(flag(client.channel.unsentFragments))+"|"+str(client.channel.unsentFragmentStart)+"|"+str(len(client.queue))
+  text="T|"+label+"|"+str(len(runtime.context.packets)-startPacket)+"|"+str(client.channel.outgoingSequence)+"|"+str(flag(client.channel.unsentFragments))+"|"+str(client.channel.unsentFragmentStart)+"|"+str(client.queue.len())
   if startPacket<len(runtime.context.packets) then for index=startPacket to len(runtime.context.packets)-1 packet=runtime.context.packets[index];text=text+"|"+str(len(packet))+":"+hex(packet) end for end if
   print text;return void
 end function

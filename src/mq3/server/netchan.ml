@@ -4,6 +4,7 @@
 package mq3.server.netchan
 import mq3.qcommon.netchan as net
 import mq3.qcommon.message as message
+import std.ds.queue as queues
 
 const MAX_RELIABLE_COMMANDS=64
 const SV_ENCODE_START=4
@@ -20,7 +21,7 @@ struct Client
 end struct
 
 function client(challenge,channel)
-  return Client(challenge,"",array(MAX_RELIABLE_COMMANDS,""),channel,[],true)
+  return Client(challenge,"",array(MAX_RELIABLE_COMMANDS,""),channel,queues.Queue.withCapacity(8),true)
 end function
 
 function requireClient(clientState)
@@ -94,7 +95,7 @@ function transmit(runtime,clientState,msg)
   message.writeByte(msg,SVC_EOF)
   if clientState.channel.unsentFragments then
     if not clientState.queueInitialized then return error(6962,"server netchan: queue is not initialized") end if
-    clientState.queue=clientState.queue+[cloneMessage(msg)]
+    clientState.queue.enqueue(cloneMessage(msg))
     return net.transmitNextFragment(runtime,clientState.channel)
   end if
   encode(clientState,msg)
@@ -122,10 +123,8 @@ function transmitNextFragment(runtime,clientState)
   first=net.transmitNextFragment(runtime,clientState.channel);packets=[first]
   if not clientState.channel.unsentFragments then
     if not clientState.queueInitialized then return error(6963,"server netchan: queue is not initialized after fragment drain") end if
-    if len(clientState.queue)>0 then
-      queued=clientState.queue[0];rest=[]
-      if len(clientState.queue)>1 then for index=1 to len(clientState.queue)-1 rest=rest+[clientState.queue[index]] end for end if
-      clientState.queue=rest;encode(clientState,queued)
+    if not clientState.queue.isEmpty() then
+      queued=clientState.queue.dequeue();encode(clientState,queued)
       data=bytes(queued.cursize,0);if queued.cursize>0 then for index=0 to queued.cursize-1 data[index]=queued.data[index] end for end if
       packets=packets+[net.transmit(runtime,clientState.channel,data)]
     end if

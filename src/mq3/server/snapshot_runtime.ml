@@ -29,9 +29,9 @@ end function
 
 function create(level,ringCapacity)
   if level==void or level.scene==void then return error(6881,"snapshot runtime: missing level") end if
-  mapped=[]
+  mapped=array(level.num_entities,void)
   if level.num_entities>0 then
-    for index=0 to level.num_entities-1 mapped=mapped+[mappedEntity(level.entities[index])] end for
+    for index=0 to level.num_entities-1 mapped[index]=mappedEntity(level.entities[index]) end for
   end if
   return Runtime(level.scene,runtimeSnapshotBuild.world(true,mapped,ringCapacity))
 end function
@@ -41,13 +41,16 @@ end function
 function syncLevel(runtime,level)
   if runtime==void or level==void or level.scene!=runtime.scene then return error(6882,"snapshot runtime: level/scene mismatch") end if
   if level.num_entities<0 or level.num_entities>len(level.entities) then return error(6883,"snapshot runtime: invalid entity count") end if
+  if len(runtime.buildWorld.entities)<level.num_entities then
+    expanded=array(level.num_entities,void)
+    if len(runtime.buildWorld.entities)>0 then copyArray(expanded,0,runtime.buildWorld.entities,0,len(runtime.buildWorld.entities)) end if
+    runtime.buildWorld.entities=expanded
+  end if
   index=0
   while index<level.num_entities
     fresh=mappedEntity(level.entities[index])
-    if index<len(runtime.buildWorld.entities) then
-      fresh.snapshotCounter=runtime.buildWorld.entities[index].snapshotCounter
-      runtime.buildWorld.entities[index]=fresh
-    else runtime.buildWorld.entities=runtime.buildWorld.entities+[fresh] end if
+    if runtime.buildWorld.entities[index]!=void then fresh.snapshotCounter=runtime.buildWorld.entities[index].snapshotCounter end if
+    runtime.buildWorld.entities[index]=fresh
     index=index+1
   end while
   if len(runtime.buildWorld.entities)>level.num_entities then runtime.buildWorld.entities=arrays.slice(runtime.buildWorld.entities,0,level.num_entities) end if

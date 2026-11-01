@@ -58831,7 +58831,7 @@
             "src/mq3/client/network_match_loop.ml"
           ],
           "status": "tested_exact",
-          "scope": "All five original functions are native: server XOR encode/decode, process admission, svc_EOF transmit, fragment continuation and deferred unencoded FIFO queue. Twelve records execute the unchanged C bodies and compare complete state/packet transcripts; 26 native contracts and 67 productive localhost UDP ingress/match-loop contracts pass. The inventory candidate `fragments` is a comment-derived alias covered by SV_Netchan_Transmit and SV_Netchan_TransmitNextFragment."
+          "scope": "All five original functions are native: server XOR encode/decode, process admission, svc_EOF transmit, fragment continuation and deferred unencoded FIFO queue. The productive deferred queue uses std.ds.queue for O(1) enqueue/dequeue rather than copying arrays. Twelve records execute the unchanged C bodies and compare complete state/packet transcripts; 26 native contracts and 67 productive localhost UDP ingress/match-loop contracts pass. The inventory candidate `fragments` is a comment-derived alias covered by SV_Netchan_Transmit and SV_Netchan_TransmitNextFragment."
         }
       ],
       "target": [
@@ -59173,7 +59173,7 @@
             "src/mq3/server/snapshot_runtime.ml"
           ],
           "status": "tested_subset",
-          "scope": "Entity collection, duplicate-safe ordering, linked/PVS/area and client-flag filtering, broadcast and portal recursion, player viewpoint, area-mask inversion and circular snapshot-ring storage. Five direct scenarios execute all four unchanged Baseq3 bodies; 26 MiniLang contracts cover boundaries and copy semantics. The concrete collision.world/visibility/server.world/Game-Level adapter has 16 contracts and a q3dm0 retail path through a 62-byte encoded snapshot."
+          "scope": "Entity collection, duplicate-safe O(n log n) std ordering, linked/PVS/area and client-flag filtering, broadcast and portal recursion, player viewpoint, area-mask inversion and circular snapshot-ring storage. Five direct scenarios execute all four unchanged Baseq3 bodies; 27 MiniLang contracts cover boundaries, copy semantics and the full 1024-entity snapshot limit. The concrete collision.world/visibility/server.world/Game-Level adapter has 16 contracts and a q3dm0 retail path through a 62-byte encoded snapshot."
         },
         {
           "original": "SV_EmitPacketEntities",

@@ -22,7 +22,7 @@ SYMBOLS = [
 
 NATIVE_SURFACES = {
     "SV_AreaEntities": "function areaEntities(",
-    "SV_AreaEntities_r": "while len(stack) > 0",
+    "SV_AreaEntities_r": "while stackCount > 0 and resultCount < capacity",
     "SV_ClearWorld": "function create(world)",
     "SV_ClipHandleForEntity": "function clipHandleForEntity(",
     "SV_ClipMoveToEntities": "for each number in areaEntities(",

@@ -69,12 +69,16 @@ function sendTo(socket,endpoint,data)
   if result!=len(data) then return error(6966,"udp: partial datagram") end if
   return result
 end function
-function receiveFrom(socket,capacity)
-  if socket==void or capacity<1 or capacity>65535 then return error(6967,"udp: invalid receive capacity") end if
-  data=bytes(capacity,0);metadata=bytes(8,0);result=mq3_udp_recv(socket,nativeBytesPtr(data),capacity,metadata)
+function receiveFromBuffered(socket,data,metadata,capacity)
+  if socket==void or data==void or metadata==void or capacity<1 or capacity>65535 or len(data)<capacity or len(metadata)<8 then return error(6967,"udp: invalid receive buffer") end if
+  result=mq3_udp_recv(socket,nativeBytesPtr(data),capacity,metadata)
   if result==-2 then return Datagram(false,void,bytes(0,0)) end if
   if result<0 then return error(6967,"udp: recvfrom failed "+str(0-result)) end if
   return Datagram(true,Endpoint(n.readU32(metadata,0),n.readU32(metadata,4)),slice(data,0,result))
+end function
+function receiveFrom(socket,capacity)
+  if socket==void or capacity<1 or capacity>65535 then return error(6967,"udp: invalid receive capacity") end if
+  return receiveFromBuffered(socket,bytes(capacity,0),bytes(8,0),capacity)
 end function
 function close(socket)
   if socket==void then return error(6968,"udp: invalid socket") end if

@@ -5,6 +5,7 @@ package mq3.server.snapshot_build
 import mq3.game.g_public as gpublic
 import mq3.game.entitystate as entitystate
 import mq3.game.playerstate as playerstate
+import std.sort as sorts
 
 const MAX_SNAPSHOT_ENTITIES=1024
 const MAX_MAP_AREA_BYTES=32
@@ -37,20 +38,20 @@ function frame()
 end function
 function entityNumbers() return EntityNumbers(array(MAX_SNAPSHOT_ENTITIES,0),0) end function
 
-// SV_QsortEntityNumbers semantics, expressed deterministically as insertion sort.
+// SV_QsortEntityNumbers semantics. Keep the caller-owned input detached while
+// using the standard-library O(n log n) sort instead of repeatedly concatenating
+// arrays in an O(n^2) insertion sort on every client snapshot.
 function sortEntityNumbers(numbers)
-  result=[]
-  for each number in numbers
-    inserted=false;next=[]
-    for each current in result
-      if current==number then return error(6871,"snapshot build: duplicated entity") end if
-      if not inserted and number<current then next=next+[number];inserted=true end if
-      next=next+[current]
-    end for
-    if not inserted then next=next+[number] end if
-    result=next
-  end for
-  return result
+  if typeof(numbers)!="array" then return error(6871,"snapshot build: invalid entity list") end if
+  sorted=array(len(numbers),0)
+  if len(numbers)>0 then copyArray(sorted,0,numbers,0,len(numbers)) end if
+  sorts.sort(sorted)
+  index=1
+  while index<len(sorted)
+    if sorted[index-1]==sorted[index] then return error(6871,"snapshot build: duplicated entity") end if
+    index=index+1
+  end while
+  return sorted
 end function
 
 function addEntity(worldState,entity,numbers)
@@ -129,8 +130,8 @@ function buildClientSnapshot(worldState,host,ps,clientEntityPresent,zombie)
   worldState.entities[clientNum].snapshotCounter=worldState.snapshotCounter
   origin=[ps.origin[0],ps.origin[1],ps.origin[2]+ps.viewheight]
   addEntitiesVisibleFromPoint(worldState,host,origin,outFrame,numbers,false)
-  selected=[]
-  if numbers.count>0 then for index=0 to numbers.count-1 selected=selected+[numbers.values[index]] end for end if
+  selected=array(numbers.count,0)
+  if numbers.count>0 then copyArray(selected,0,numbers.values,0,numbers.count) end if
   selected=sortEntityNumbers(selected)
   for index=0 to MAX_MAP_AREA_BYTES-1 outFrame.areaBits[index]=outFrame.areaBits[index]^255 end for
   outFrame.firstEntity=worldState.nextSnapshotEntities

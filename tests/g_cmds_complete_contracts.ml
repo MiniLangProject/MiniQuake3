@@ -13,13 +13,13 @@ struct Bridge runtime clientNum end struct
 function require(ok,label) if not ok then return error(499,"g_cmds contract: "+label) end if;return 1 end function
 function send(level,slot,text) level.context.commands=level.context.commands+[[slot,text]];return void end function
 function log(level,text) level.context.logs=level.context.logs+[text];return void end function
-function diagnostic(level,text) level.context.prints=level.context.prints+[text];return void end function
+function commandDiagnostic(level,text) level.context.prints=level.context.prints+[text];return void end function
 function serverGame(host,clientState,parser)
   return cmds.ClientCommandState(host.context.runtime,host.context.clientNum,parser)
 end function
 function setup(world)
   level=game.create(world);state=spawn.create(level,"");state.gametype=0
-  level.context=Context([],[],[]);level.serverCommandFn=send;level.gameLogFn=log;level.gamePrintFn=diagnostic
+  level.context=Context([],[],[]);level.serverCommandFn=send;level.gameLogFn=log;level.gamePrintFn=commandDiagnostic
   level.maxclients=1;level.maxclientsCvar=1;level.numConnectedClients=1;level.numPlayingClients=1;level.sortedClients[0]=0;level.time=61000;level.cheats=1
   ent=game.initEntity(level.entities[0]);game.bindClient(level,ent,level.clients[0]);ent.client.connected=2;ent.client.team=c.TEAM_FREE;ent.client.netname="Ranger";ent.client.ps.clientNum=0
   ent.client.ps.stats[c.STAT_MAX_HEALTH]=100;ent.client.ps.stats[c.STAT_HEALTH]=75;ent.health=75;ent.s.origin=[1.0,2.0,3.0]

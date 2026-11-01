@@ -10,9 +10,9 @@ import mq3.collision.world as cm
 import std.fs as fs
 function req(ok,label) if not ok then return error(499,"g_items contract: "+label) end if;return 1 end function
 function quiet(level,text) return void end function
-function info(level,slot) return "\\handicap\\75" end function
+function itemUserinfo(level,slot) return "\\handicap\\75" end function
 function setup(world)
-  level=game.create(world);state=spawn.create(level,"");state.missionpack=true;state.gametype=7;level.maxclients=1;level.num_entities=64;level.time=1000;level.previousTime=900;level.gamePrintFn=quiet;level.gameLogFn=quiet;level.userinfoFn=info
+  level=game.create(world);state=spawn.create(level,"");state.missionpack=true;state.gametype=7;level.maxclients=1;level.num_entities=64;level.time=1000;level.previousTime=900;level.gamePrintFn=quiet;level.gameLogFn=quiet;level.userinfoFn=itemUserinfo
   player=game.initEntity(level.entities[0]);game.bindClient(level,player,game.createClient(ps.create(),c.TEAM_RED,[0,0,0]));player.client.connected=2;player.client.ps.persistant[c.PERS_TEAM]=c.TEAM_RED;player.client.ps.stats[c.STAT_HEALTH]=100;player.client.ps.stats[c.STAT_MAX_HEALTH]=100;player.health=100
   return level
 end function
