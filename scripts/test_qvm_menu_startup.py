@@ -18,17 +18,22 @@ def main() -> int:
     require(menu, "state=match.bootUiShell", "disconnected UI shell boot")
     require(menu, "booted=match.bootUi(state)", "original ui.qvm boot")
     require(menu, "mapName=requestedMap", "original menu map-command handoff")
+    require(menu, 'pk3.read(archive,"scripts/gfx.shader")', "retail menuback shader source")
+    require(menu, "quitRequested=requestedQuit(state,0)", "original UI quit-command handoff")
+    require(menu, "window.inputClear()", "loading input reset")
+    require(menu, "nativeEvents=window.inputEvents(256)", "timestamped menu input consumption")
+    require(menu, "inputLatch.observe(input.keys,event.type,event.value,event.value2)", "one-frame input edge latch")
     require(menu, "settings=match.captureUserSettings(state)", "menu settings handoff")
     require(menu, "return gameApp.runWithSettingsNamed(archive,selectedMap,mapName,qvmRoot,settings)", "deferred named full match start")
     require(menu, "time.sleep(16)", "bounded menu refresh cadence")
     require(menu, "state.context.soundCommands=[];audio.commandCursor=0", "consumed menu sound queue compaction")
-    require(menu, "mapName=requestedMap(state,0);state.context.console=[]", "consumed host command queue compaction")
+    require(menu, "mapName=requestedMap(state,0);quitRequested=requestedQuit(state,0);state.context.console=[]", "consumed host command queue compaction")
     require(match, "if not startGame then return Boot(void,machineRuntime,context,void,void) end if", "pre-game return before qagame/cgame")
     require(match, "bootConfiguredNamedMode(archive,map,now,qvmRoot,false,\"q3dm1\",false)", "UI shell without game startup")
 
     if menu.index("state=match.bootUiShell") > menu.index("return gameApp.runWithSettingsNamed(archive,selectedMap,mapName,qvmRoot,settings)"):
         raise RuntimeError("full match is started before the disconnected original UI")
-    print("PASS: original ui.qvm starts disconnected and defers qagame/cgame/map loading")
+    print("PASS: original ui.qvm starts disconnected, latches input edges and defers qagame/cgame/map loading")
     return 0
 
 

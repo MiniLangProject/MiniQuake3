@@ -7,6 +7,7 @@ import mq3.engine.local_qvm_match as match
 import mq3.engine.local_qvm_ui as localQvmUi
 import mq3.client.original_ui_session as uiSession
 import mq3.client.qvm_preview_app as gameApp
+import mq3.client.ui_input_latch as inputLatch
 import mq3.format.pk3 as pk3
 import mq3.format.bsp as bsp
 import mq3.renderer.qvm_2d_batch as qvm2d
@@ -25,11 +26,18 @@ const SOURCE_HEIGHT=720
 const FIRST_TEXTURE_SLOT=1
 const MAX_TEXTURE_SLOTS=300
 
-struct NativeInput mouse end struct
+struct NativeInput mouse keys end struct
 
 function fail(message) return error(7688,"QVM menu: "+message) end function
-function keyDown(context,key) return window.keyDown(key) end function
+function keyDown(context,key)
+  if context!=void and inputLatch.keyDown(context.keys,key) then return true end if
+  return window.keyDown(key)
+end function
 function mouseDelta(context) return context.mouse end function
+function observeInputEvents(input,events)
+  for each event in events observed=inputLatch.observe(input.keys,event.type,event.value,event.value2);if observed is error then return observed end if end for
+  return void
+end function
 
 function requestedMap(state,start)
   if state==void or state.context==void then return void end if
@@ -46,6 +54,14 @@ function requestedMap(state,start)
   end for
   return void
 end function
+function requestedQuit(state,start)
+  if state==void or state.context==void or start<0 or start>=len(state.context.console) then return false end if
+  for index=start to len(state.context.console)-1
+    text=strings.toLowerAscii(state.context.console[index][1]);text=strings.replaceAll(text,"\r",";");text=strings.replaceAll(text,"\n",";")
+    for each command in strings.split(text,";") fields=strings.split(strings.trim(command)," ");if len(fields)>0 and fields[0]=="quit" then return true end if end for
+  end for
+  return false
+end function
 
 function run(archive,bootstrapMap,qvmRoot)
   if archive==void then return fail("archive is required") end if
@@ -54,13 +70,13 @@ function run(archive,bootstrapMap,qvmRoot)
   loading=window.showLoading(10,"Starting original Quake III menu");if loading is error then window.shutdown();return loading end if
   state=match.bootUiShell(archive,bootstrapMap,1000,qvmRoot);if state is error then window.shutdown();return state end if
   booted=match.bootUi(state);if booted is error then window.shutdown();match.shutdown(state);return booted end if
-  input=NativeInput([0,0]);ui=localQvmUi.attach(state,input,keyDown,mouseDelta);if ui is error then window.shutdown();match.shutdown(state);return ui end if
+  keys=inputLatch.create(256);if keys is error then window.shutdown();match.shutdown(state);return keys end if;input=NativeInput([0,0],keys);ui=localQvmUi.attach(state,input,keyDown,mouseDelta);if ui is error then window.shutdown();match.shutdown(state);return ui end if
   openedMenu=uiSession.openMain(ui);if openedMenu is error then window.shutdown();match.shutdown(state);return openedMenu end if
   renderCommands=uiSession.frame(ui,1000);if renderCommands is error then window.shutdown();match.shutdown(state);return renderCommands end if
-  // Resolve the original menu shader immediately while deferring the other
-  // 26 map/model shader files until a match is selected.  This preserves the
-  // menu artwork without rebuilding the full 583 KiB catalog at startup.
-  menuShader=pk3.read(archive,"scripts/menu.shader");if menuShader is error then window.shutdown();match.shutdown(state);return menuShader end if
+  // Baseq3's actual menuback/menubacknologo definitions live in gfx.shader;
+  // menu.shader on the retail CD is only an empty comment shell.  Index the
+  // real source so the fullscreen menu uses logo512 instead of $defaultimage.
+  menuShader=pk3.read(archive,"scripts/gfx.shader");if menuShader is error then window.shutdown();match.shutdown(state);return menuShader end if
   menuIndex=shaderIndex.build(decode(menuShader));if menuIndex is error then window.shutdown();match.shutdown(state);return menuIndex end if
   catalog=qvm2d.buildIndexed(archive,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,FIRST_TEXTURE_SLOT,MAX_TEXTURE_SLOTS,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT,state.context.shaderRemaps,[menuIndex,1]);if catalog is error then window.shutdown();match.shutdown(state);return catalog end if
   uploaded=qvm2d.upload(catalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
@@ -73,9 +89,9 @@ function run(archive,bootstrapMap,qvmRoot)
   state.context.soundCommands=[];audio.commandCursor=0
   audioStarted=audioOutput.init(22050);if audioStarted is error then qvm2d.release(catalog);window.shutdown();match.shutdown(state);return audioStarted end if
   window.setTitle("MiniQuake3 | Quake III Arena Main Menu")
-  state.context.console=[];uploadedTextures=len(catalog.textures);soundAssetCount=len(state.context.assets);now=1000;mapName=void
-  while not window.shouldClose() and mapName==void
-    window.poll();input.mouse=window.mouseDelta();now=now+16
+  window.inputClear();state.context.console=[];uploadedTextures=len(catalog.textures);soundAssetCount=len(state.context.assets);now=1000;mapName=void;quitRequested=false
+  while not window.shouldClose() and not quitRequested and mapName==void
+    begun=inputLatch.beginFrame(input.keys);if begun is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return begun end if;window.poll();input.mouse=window.mouseDelta();nativeEvents=window.inputEvents(256);if nativeEvents is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return nativeEvents end if;observed=observeInputEvents(input,nativeEvents);if observed is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return observed end if;now=now+16
     reset=localQvmUi.resetFrameCommands(state);if reset is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return reset end if
     frame=uiSession.frame(ui,now);if frame is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return frame end if
     refreshed=qvm2d.refresh(catalog,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT);if refreshed is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return refreshed end if
@@ -84,8 +100,8 @@ function run(archive,bootstrapMap,qvmRoot)
     applied=qvmPlayback.consume(audio,state.context.soundCommands);if applied is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return applied end if
     state.context.soundCommands=[];audio.commandCursor=0
     window.beginFrame(0,0,0);drawn=qvm2d.draw(catalog,now);if drawn is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return drawn end if;window.present()
-    if audioOutput.canSubmit() then chunk=qvmPlayback.render(audio);if chunk is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return chunk end if;accepted=audioOutput.submit(chunk.samples);if accepted is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return accepted end if end if
-    mapName=requestedMap(state,0);state.context.console=[]
+    if audioOutput.canSubmit() then chunk=qvmPlayback.renderFast(audio);if chunk is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return chunk end if;accepted=audioOutput.submit(chunk.samples);if accepted is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return accepted end if end if
+    mapName=requestedMap(state,0);quitRequested=requestedQuit(state,0);state.context.console=[]
     // Keep the disconnected UI at the original renderer's practical refresh
     // cadence instead of burning a CPU core and presenting partial frames.
     time.sleep(16)

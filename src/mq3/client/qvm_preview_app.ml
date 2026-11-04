@@ -9,6 +9,7 @@ import mq3.client.cinematic_runtime as cinematics
 import mq3.client.cgame_clock as cgameClock
 import mq3.client.input_command as inputCommand
 import mq3.client.input_command_events as timestampedInput
+import mq3.client.ui_input_latch as inputLatch
 import mq3.client.console_input as consoleInput
 import mq3.client.console_input_display as consoleDisplay
 import mq3.client.cl_console as clientConsole
@@ -45,6 +46,7 @@ import mq3.shared.math as qmath
 import mq3.qcommon.cvar as cvar
 import std.time as time
 import std.ds.queue as queues
+import std.string as strings
 
 const WIDTH=1280
 const HEIGHT=720
@@ -61,11 +63,19 @@ const SOURCE_HEIGHT=720
 
 struct PreparedView source geometry batch target end struct
 struct PreparedPortal plan world batch target source end struct
-struct NativeInput mouse end struct
+struct NativeInput mouse keys end struct
 struct PipelineProfile expansion material batch end struct
 struct ScreenPoint x y depth end struct
 
 function fail(message) return error(7682,"QVM preview: "+message) end function
+function requestedQuit(state)
+  if state==void or state.context==void then return false end if
+  for each entry in state.context.console
+    text=strings.toLowerAscii(entry[1]);text=strings.replaceAll(text,"\r",";");text=strings.replaceAll(text,"\n",";")
+    for each command in strings.split(text,";") fields=strings.split(strings.trim(command)," ");if len(fields)>0 and fields[0]=="quit" then return true end if end for
+  end for
+  return false
+end function
 function largestView(views)
   if views==void or len(views)==0 then return void end if
   result=views[0];area=result.refdef.width*result.refdef.height
@@ -107,8 +117,15 @@ function movementAxis(positive,negative)
   if negative and not positive then return -127 end if
   return 0
 end function
-function nativeKeyDown(input,key) return window.keyDown(key) end function
+function nativeKeyDown(input,key)
+  if input!=void and inputLatch.keyDown(input.keys,key) then return true end if
+  return window.keyDown(key)
+end function
 function nativeMouseDelta(input) return input.mouse end function
+function observeNativeInputEvents(input,events)
+  for each event in events observed=inputLatch.observe(input.keys,event.type,event.value,event.value2);if observed is error then return observed end if end for
+  return void
+end function
 function nativeQuakeKey(virtualKey)
   for each item in uiSession.bindings() if item.virtualKey==virtualKey then return item.quakeKey end if end for
   return timestampedInput.quakeKey(virtualKey)
@@ -161,7 +178,7 @@ function advanceGameTick(state,clientClock,serverTime,input)
   command=qworld.userCommand(serverTime,[angleCommand(input.viewangles[0],delta[0]),angleCommand(input.viewangles[1],delta[1]),angleCommand(input.viewangles[2],delta[2])],input.buttons,input.weapon,input.forwardmove,input.rightmove,input.upmove)
   submitted=match.submitUsercmd(state,0,command);if submitted is error then return submitted end if
   advanced=match.runFrame(state,serverTime);if advanced is error then return advanced end if
-  snapshot=match.snapshot(state,0);if snapshot is error then return snapshot end if
+  snapshot=match.snapshotProductive(state,0);if snapshot is error then return snapshot end if
   published=cgameClock.publishSnapshot(clientClock,state.context.snapshotNumber,snapshot.serverTime,0);if published is error then return published end if
   return snapshot
 end function
@@ -169,7 +186,7 @@ function drawFrame(state,clientClock,realtime)
   renderCommands.reset(state.context.renderQueue);state.context.soundCommands=[]
   frameTime=cgameClock.frame(clientClock,realtime);if frameTime is error then return frameTime end if
   if not frameTime.draw then return false end if
-  drawn=match.drawCgame(state,frameTime.serverTime);if drawn is error then return drawn end if
+  drawn=match.drawCgameProductive(state,frameTime.serverTime);if drawn is error then return drawn end if
   if len(state.context.errors)>0 then return fail(state.context.errors[0]) end if
   return drawn
 end function
@@ -302,7 +319,7 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
   worldPrepared=worldBatch.buildMaterials(selected.renderData,worldCatalog,skyFlags);if worldPrepared is error then window.shutdown();match.shutdown(state);return worldPrepared end if
   attached=attachWorldEffects(worldPrepared,selected.renderData,fogCatalog,dlightCatalog,dlightReceiveFlags);if attached is error then window.shutdown();match.shutdown(state);return attached end if;selectedFaces=selected.selection.faceIndexes
   worldAt=window.milliseconds();loading=window.showLoading(90,"Uploading textures and starting audio");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
-  nativeInput=NativeInput([0,0]);ui=localQvmUi.attach(state,nativeInput,nativeKeyDown,nativeMouseDelta);if ui is error then window.shutdown();match.shutdown(state);return ui end if
+  keys=inputLatch.create(256);if keys is error then window.shutdown();match.shutdown(state);return keys end if;nativeInput=NativeInput([0,0],keys);ui=localQvmUi.attach(state,nativeInput,nativeKeyDown,nativeMouseDelta);if ui is error then window.shutdown();match.shutdown(state);return ui end if
   uploaded=worldBatch.uploadMaterials(worldCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   uploaded=sceneBatch.upload(qvmCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   uploaded=qvm2d.upload(hudCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
@@ -317,10 +334,14 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
   readyAt=window.milliseconds();print "QVM startup profile: boot="+str(qvmBootAt-startupAt)+"ms ui="+str(uiBootAt-qvmBootAt)+"ms shaders="+str(scriptIndexAt-uiBootAt)+"ms scene="+str(sceneAt-scriptIndexAt)+"ms sounds="+str(soundAt-sceneAt)+"ms world="+str(worldAt-soundAt)+"ms upload="+str(readyAt-worldAt)+"ms total="+str(readyAt-startupAt)+"ms"
   titleState=fpsTitle.create("Original QVM q3dm1",window.milliseconds());window.setTitle(fpsTitle.initialTitle(titleState))
   frames=0;yaw=state.context.latestSnapshot.playerState.viewangles[1];pitch=state.context.latestSnapshot.playerState.viewangles[0];inputState=inputCommand.create(pitch,yaw,0.0);inputConfig=inputCommand.defaults()
-  pendingInputEvents=queues.Queue.withCapacity(256);wasMenuActive=false;uploadedQvmTextures=len(qvmCatalog.textures);uploadedHudTextures=len(hudCatalog.textures);soundAssetCount=len(state.context.assets);simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
-  while not window.shouldClose() and (maxFrames<0 or frames<maxFrames)
+  // Discard key/mouse messages accumulated while the QVMs and retail assets
+  // were loading.  Rebasing those old native timestamps onto the game clock
+  // made them negative after a slow cold start and crashed the input bridge.
+  window.inputClear();discardedEvents=window.inputEvents(256);if discardedEvents is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return discardedEvents end if
+  state.context.console=[];pendingInputEvents=queues.Queue.withCapacity(256);wasMenuActive=false;quitRequested=false;uploadedQvmTextures=len(qvmCatalog.textures);uploadedHudTextures=len(hudCatalog.textures);soundAssetCount=len(state.context.assets);simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;audioMs=0;totalMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
+  while not window.shouldClose() and not quitRequested and (maxFrames<0 or frames<maxFrames)
     startedAt=window.milliseconds();serverTime=simulationStart+startedAt-realStart;steps=0
-    window.poll();nativeInput.mouse=window.mouseDelta();menuActive=uiSession.active(ui);nativeEvents=window.inputEvents(256);if nativeEvents is error then window.shutdown();match.shutdown(state);return nativeEvents end if
+    begun=inputLatch.beginFrame(nativeInput.keys);if begun is error then window.shutdown();match.shutdown(state);return begun end if;window.poll();nativeInput.mouse=window.mouseDelta();menuActive=uiSession.active(ui);nativeEvents=window.inputEvents(256);if nativeEvents is error then window.shutdown();match.shutdown(state);return nativeEvents end if;observed=observeNativeInputEvents(nativeInput,nativeEvents);if observed is error then window.shutdown();match.shutdown(state);return observed end if
     for each event in nativeEvents event.time=simulationStart+event.time-realStart;pendingInputEvents.enqueue(event) end for
     if menuActive then released=releaseGameInput(inputState,simulationTime);if released is error then window.shutdown();match.shutdown(state);return released end if
     else
@@ -339,6 +360,7 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
     drawnFrame=drawFrame(state,clientClock,serverTime);if drawnFrame is error then window.shutdown();match.shutdown(state);return drawnFrame end if
     afterCgame=window.milliseconds();cgameMs=cgameMs+afterCgame-afterGame
     uiFrame=uiSession.frame(ui,serverTime);if uiFrame is error then window.shutdown();match.shutdown(state);return uiFrame end if
+    quitRequested=requestedQuit(state);state.context.console=[];if quitRequested then break end if
     cinematicSamples=collectCinematicAudio(state,audio);if cinematicSamples is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return cinematicSamples end if
     afterSimulation=window.milliseconds();uiMs=uiMs+afterSimulation-afterCgame;simulationMs=simulationMs+afterSimulation-startedAt
     view=largestView(state.context.renderViews);if view==void then window.shutdown();match.shutdown(state);return fail("cgame stopped submitting its main view") end if
@@ -387,11 +409,12 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
     drawn=qvm2d.draw(hudCatalog,view.refdef.time);if drawn is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return drawn end if
     drawn=drawProductiveConsole(consoleMedia,consoleBackgroundMedia,state,WIDTH,HEIGHT,serverTime);if drawn is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return drawn end if
     window.present();renderMs=renderMs+window.milliseconds()-afterBatch;frames=frames+1
-    audioChunks=0
+    audioStartedAt=window.milliseconds();audioChunks=0
     while audioChunks<3 and audioOutput.canSubmit()
-      chunk=qvmPlayback.render(audio);if chunk is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return chunk end if;samples=chunk.samples
+      chunk=qvmPlayback.renderFast(audio);if chunk is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return chunk end if;samples=chunk.samples
       accepted=audioOutput.submit(samples);if accepted is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return accepted end if;if not accepted then break end if;audioChunks=audioChunks+1
     end while
+    audioMs=audioMs+window.milliseconds()-audioStartedAt;totalMs=totalMs+window.milliseconds()-startedAt
     nextTitle=fpsTitle.frame(titleState,window.milliseconds());if nextTitle is error then window.shutdown();match.shutdown(state);return nextTitle end if;if nextTitle!=void then window.setTitle(nextTitle) end if
     time.sleep(1)
   end while
@@ -399,7 +422,7 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
   modelCount=0;triangleCount=0;for each preparedView in preparedViews modelCount=modelCount+preparedView.geometry.modelEntities;triangleCount=triangleCount+len(preparedView.geometry.triangles) end for
   worldEffects=0;if skyCatalog!=void then worldEffects=worldEffects+1 end if;if fogCatalog!=void then worldEffects=worldEffects+1 end if;if dlightCatalog!=void then worldEffects=worldEffects+1 end if;if flareCatalog!=void and flareCatalog.enabled then worldEffects=worldEffects+1 end if
   print "QVM preview: views="+str(len(state.context.renderViews))+" selected="+str(view.refdef.width)+"x"+str(view.refdef.height)+" models="+str(modelCount)+" triangles="+str(triangleCount)+" textures="+str(len(qvmCatalog.textures))+" hudQuads="+str(hudCatalog.sourceQuads)+" sounds="+str(len(soundCatalog.clips))+" frames="+str(frames)+" worldEffects="+str(worldEffects)
-  if frames>0 then print "QVM frame profile: simulation="+str(simulationMs/frames)+"ms (game="+str(gameMs/frames)+" cgame="+str(cgameMs/frames)+" ui="+str(uiMs/frames)+") geometry="+str(geometryMs/frames)+"ms (expand="+str(pipelineProfile.expansion/frames)+" material="+str(pipelineProfile.material/frames)+" sceneBatch="+str(pipelineProfile.batch/frames)+") batch="+str(batchMs/frames)+"ms render="+str(renderMs/frames)+"ms ticks="+str(simulationTicks) end if
+  if frames>0 then print "QVM frame profile: simulation="+str(simulationMs/frames)+"ms (game="+str(gameMs/frames)+" cgame="+str(cgameMs/frames)+" ui="+str(uiMs/frames)+") geometry="+str(geometryMs/frames)+"ms (expand="+str(pipelineProfile.expansion/frames)+" material="+str(pipelineProfile.material/frames)+" sceneBatch="+str(pipelineProfile.batch/frames)+") batch="+str(batchMs/frames)+"ms render="+str(renderMs/frames)+"ms audio="+str(audioMs/frames)+"ms total="+str(totalMs/frames)+"ms ticks="+str(simulationTicks) end if
   return 0
 end function
 function runLimitedSettings(archive,map,qvmRoot,maxFrames,settings) return runLimitedSettingsNamed(archive,map,"q3dm1",qvmRoot,maxFrames,settings) end function

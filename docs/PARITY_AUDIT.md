@@ -1,8 +1,45 @@
 # MiniQuake3: überprüfter Stand
 
-Stand: 2026-11-01. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist spielbar**.
+Stand: 2026-11-04. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
+
+## Produktiver Frame-Hotpath vom 4. November 2026
+
+Der produktive QVM-Matchpfad führt die nur für Differentialbeobachtung
+vorgesehenen nativen Game-/Cgame-Spiegel nicht länger in jedem Bild aus. Der
+Audiomischer besitzt einen nativen, bitgenau gegen den bisherigen MiniLang-Pfad
+geprüften Paint-Block. Renderbefehle wachsen über `std.ds.list` und werden erst
+nach dem QVM-Aufruf einmal materialisiert, statt bei jedem `RE_SetColor` und
+`RE_StretchPic` das vollständige Array zu kopieren. Das native Fenster packt
+die beiden Dreiecke eines HUD-Rechtecks in einem Aufruf; bei unveränderter
+QVM-2D-Topologie überschreibt der Renderer die bestehenden Batchbytes direkt.
+Statische Weltshaderstufen behalten ihre fertig berechneten Achsen-, Farb- und
+Fogwerte, während animierte, deformierte, umgebungs-, Wellen-, Portal- und
+Nebelstufen weiterhin pro Bild aktualisiert werden.
+
+Die gezielten Gates bestehen mit 43 QVM-Audioverträgen, 18 exakten
+Sound-Paint-Datensätzen, 62 Weltbatch-, 35 QVM-2D- und 32
+Rendercommand-Verträgen; außerdem bleiben 21 unveränderte-C-`ComputeColors`-
+Datensätze mit 14 Verträgen und alle elf Hotpath-Wächter grün. Der reale
+20-Frame-q3dm1-Lauf in
+`build/reference/playable_perf/optimized-hud-topology-20.log` misst im Mittel
+30,3 ms Simulation, 18,05 ms Geometrie, 35,15 ms Batchpflege, 25,55 ms Rendern
+und 1,95 ms Audio, insgesamt 111 ms pro Bild. Gegenüber dem unmittelbar davor
+gemessenen stabilen Stand von 129,45 ms sind das rund 14 Prozent weniger; die
+Vorschau läuft damit ungefähr mit 9 FPS, nicht mit den angestrebten mehreren
+hundert FPS. Der Boot des direkten Match-Smokes benötigt weiterhin 25,47 s;
+der normale Nullargument-Start bleibt durch das verzögerte Weltladen schneller.
+
+Die verbleibende Rendergrenze ist strukturell: `native/playable_win32.c`
+rasterisiert Welt und Modelle noch auf der CPU in einen Pixelpuffer und benutzt
+OpenGL anschließend nur für `glDrawPixels`. Schon der gemessene reine
+Renderanteil begrenzt diesen Pfad auf unter 40 FPS. Eine ehrliche Abnahme mit
+mehreren hundert FPS setzt daher einen hardwarebeschleunigten OpenGL-Batchpfad
+mit Texturen, Depth-, Blend-, Alpha-, Stencil-, Scissor- und Portalzuständen
+voraus; diese Umstellung und ihre visuelle A/B-Abnahme sind noch offen. Der
+frisch gebaute Windows-Stand hat SHA-256
+`f5638b26334ab3cb455cb296505a26dbb87a13d503260d612e298ea1aeb21840`.
 
 ## Auditkorrekturen vom 1. November 2026
 
@@ -520,6 +557,13 @@ Basis-U-Sinusphase; q3dm4 und q3dm16 dienen als Retail-Abnahme.
 | 8. Renderer/Cgame | In Arbeit | Shader-Index 10/10, Shaderparser 36/36 und TGA 5/22; Bildverarbeitung 10/19 und Bildcache 8/29; Polychain 3/21, Triangle/Face 3/30, MD3-Mesh 3/31, MD3-Tags/Bounds 7/26, Sprite-Quads 6/31 und Grid 5/30; View-Transformation/Culling 11/36; Texturzustände 18/30; Commandqueue 7/29; Szene Polys/Entities/Lichter 6/24; interaktiver BSP-Vertical-Slice mit texturierten Bezier-Patches, originalem Baseq3-HUD, echten Pickup-Modellen, Projektilen und texturierten First-Person-Waffen; Retail-Shader mit `alphaFunc GT0`, `LT128` und `GE128` werden bis in den nativen Rasterizer übernommen, sodass etwa Banner und Gitter ihre ausgeschnittenen Konturen behalten; additive, Alpha- und multiplikative `filter`-Blends besitzen eigene Rasterpfade, explizite Lightmap-Stufen verwenden ihre BSP-Slots und UVs in Originalreihenfolge, einschließlich GL_DST_COLOR GL_ONE_MINUS_DST_ALPHA und fortgeschriebenem Framebuffer-Alpha; `clampMap` schaltet die native Texturabtastung auf Rand-Clamping, während normale Maps weiterhin wiederholen; `deformVertexes wave` und `bulge` bewegen Geometrie entlang der BSP-Normalen, `move` verschiebt ganze Flächen per Waveform; mehrere Deformationen laufen in Originalreihenfolge; sieben geladene q3dm1-Materialien mit `cull disable` umgehen die planare Rückseitenverwerfung des Sichtbarkeitscaches; `tcMod scroll`, `scale`, `rotate`, `stretch`, `transform`, `entityTranslate` und die weltpositionsabhängige `turb`-Verzerrung laufen in Shader-Reihenfolge; QVM-Entities behalten dabei `shaderTexCoord` und `shaderTime` bis zu den produktiven Bildframes, Farb-Waves, Deformationen, Normalen und UVs. Das schließt die Lava- und Bluteffekte von q3dm1 sowie die zweifach transformierten Wasserlagen von q3dm2 ein; kameraabhängiges `tcGen environment` verwendet die originalgetreue Reflexion an den BSP-Vertexnormalen; Viewmodel-Dreiecke werden samt UV-/Lichtwerten an der Nah-Ebene geschnitten und über den originalen 0..0,3-Depthhack-Bereich gegen die Welt getestet; Retail-Hand-Tags animieren Angriff, Absenken und Anheben; Gauntlet, Machinegun und BFG besitzen angehängte, beschleunigende und auslaufende Retail-Läufe; der Retail-Sarge wird aus Lower/Upper/Head über Tags zusammengesetzt, interpoliert, mit zwei PK3-Skinbildern texturiert und im Nahbereich mit allen 795 Dreiecken gezeichnet; jeder sichtbare Gegner trägt zusätzlich die echte Machinegun samt separatem, zustandsbehaftetem Barrel am interpolierten `tag_weapon`; Idle/Walk/Run/Attack/Pain/Death/Respawn folgen Gameplay-Ereignissen; vorberechnete Projektion, direkte MD3-Transformation und paralleles scanline-begrenztes Rasterisieren liefern im aktuellen q3dm1-Smoke etwa 15–20 FPS; Baseq3s MD3-Projektionsradius/LOD-Wahl sowie `RF_WRAP_FRAMES`- und Invalid-Frame-Reparatur bestehen sechs exakte Datensätze plus 24 Verträge und laufen vor der produktiven QVM-Interpolation; `RT_RAIL_CORE`, `RT_RAIL_RINGS` und `RT_LIGHTNING` erzeugen Baseq3s sichtbare QVM-Geometrie samt Shader, UVs und Vertexfarben, belegt durch zwei exakte Datensätze plus 26 Verträge. `RT_BEAM` erzeugt zusätzlich den originalen geschlossenen Sechsseiten-Strip mit 14 Vertices und 12 Dreiecken über ein echtes additives Vertex-Color-Material; zwei exakte Datensätze plus 13 Verträge prüfen Geometrie, Farbe und Null-Längen-Auslassung. `RT_PORTALSURFACE`-Marker liefern Spiegel-/Remote-Kamera, PVS, Rotation, Clipplane und First-/Third-Person-Entityfilter in drei exakten Datensätzen plus 17 Verträgen. Der produktive Software-Renderer baut Portalwelt und portalabhängige Cgame-Entities aus dieser Kamera, clippt BSP-/QVM-Dreiecke an der Zielebene und komponiert Portal, Tiefenlöschung und Hauptansicht in Originalreihenfolge; 21 weitere Verträge prüfen den auf eine Ebene begrenzten Pass. MD3-Frame-0-Modellgrenzen sowie korrekte cgame-Traps für Cinematics, Shader-Remap, R_InPVS und FS_SEEK sind ergänzt; CG_SetLerpFrameAnimation, CG_RunLerpFrame und CG_ClearLerpFrame laufen mit Initial-Lerp, Togglewechsel, Loop, Reverse, Flipflop, Speedscale, Hitch-Clamp und bitgenauem backlerp in 16 C-Differentialfällen plus 10 Verträgen; der produktive Preview-Gegner verwendet persistente Lower-/Upper-Zustände. `rgbGen entity`/`oneMinusEntity` und `alphaGen entity`/`oneMinusEntity` bewahren `shaderRGBA` getrennt von Lightgrid-/Vertexfarben und stimmen in vier C-Datensätzen plus acht Verträgen. `ComputeColors` und `alphaGen lightingSpecular` stimmen einschließlich schneller Normalisierung, Reflexionsvektor und Abfall in vierter Potenz in 21 unveränderten C-Datensätzen plus 14 Verträgen. Additive, strikte Alpha-, inverse Quellfarben- und vormultiplizierte Alpha-Stufen werden im Nebel jetzt vor dem Fog-Pass pro Vertex gedämpft; drei unveränderte C-Datensätze plus 18 Verträge prüfen diesen produktiven Pfad. Vollständige Shaderstufen und Cgame-Präsentation fehlen |
 | 9. Bots/Audio/UI | In Arbeit | Alle 30 Retail-AAS-Dateien werden direkt gelesen; Punktsuche, Area-/Entity-Abfragen, Trace-Areas, Reachability-Iteration, gewichtete Routen, Routing-Sperren, Client-Movement-Prediction und Sichtpositionsvorhersage sind vorhanden. Movement-Prediction benutzt produktiv den originalen iterativen `AAS_TraceClientBBox`-Knotenpfad mit Presence-/Playerclip-Sperren, Plane-Epsilon und vollständigen Trefferfeldern sowie Entity-Kollision für nichtnegative Pass-Entities; acht Grenzverträge und der 512-Frame-Sarge-Lauf prüfen ihn. Botlib-Lifecycle, Serverbridge und Elementary Actions führen `addbot Sarge 3` durch das vollständige originale `BotAISetupClient`; Character-, Item-/Weapon-Weight- und Chatprofile werden aus pak0 geladen, alle vier AI-State-Handles sind gebunden und 512 Bot-Frames laufen bis zur regulären `BOTLIB_USER_COMMAND`-Übergabe. Alle 15 Travelhandler des Baseq3-Release-Switches sind echte MoveToGoal-Pfade; Fuzzy-Evolution, zwölf q3dm1-Kartenorte und Chat-Ausgabe 513–516 sind implementiert. Ein invalidierbarer LRU, Reverse-Reachabilities, Area-Reisezeitmatrizen und Portal-Maximalzeiten bilden die statische Original-Routingstruktur nach. Retail-Chat lädt 175 Synonymgruppen, 138 Match-Templates, 244 Zufallsgruppen und 456 Reply-Regeln; der Nachrichtenheap folgt dem live gelesenen `max_messages` mit Originalstandard 1024. UI-Lifecycle und 55 UI-Traps einschließlich Sound/Cinematics/LAN sind vorhanden; das Original-Steuerungsmenü erhält über `UI_KEY_KEYNUMTOSTRINGBUF` jetzt Baseq3s echte Namen für alle 256 Tastencodes, gemeinsam mit Bindings, Overstrike- und Down-State; Original-UI-Menüs, RoQ-Video/DPCM-Audio, WinMM-WAV- und Umgebungsklang laufen. Alle sieben Baseq3-Menüzustände und beide Connect-Screen-Overlaymodi sind produktiv verdrahtet und in 27 Session-Verträgen geprüft. `UI_GETCLIENTSTATE` liefert das exakte 3.084-Byte-ABI mit realem Verbindungszustand; die originale Screen-Matrix für Connect, Challenge, Loading, Active, Cinematic, Fullscreen und Key-Catcher besteht einen ABI-Datensatz plus 20 Verträge. Die zielzentrierten `AAS_UpdateAreaRoutingCache`- und `AAS_UpdatePortalRoutingCache`-Pfade teilen Routen über Ursprünge und Cluster; der produktive Botlib-Pfad persistiert die Zielcaches nun mit dem originalen RCD-v2-Header, Area-/Cluster-CRC und einer deterministischen zeigerfreien Nutzlast; offen bleibt die noch kompaktere interne Reachability-Ablage. Der UI-LAN-Kern verwaltet Serverlisten, Sichtbarkeit, Pingqueue, Status und Originalsortierung; vier exakte Ingress-Datensätze plus 60 Verträge prüfen Protokoll-68-Info-/Status-/Masterlisten-Antworten, Pingabschluss und Deduplizierung. Die produktive UI liest und schreibt das exakte 661.520-Byte-Baseq3-x86-`servercache.dat`; 24 Verträge vergleichen den vollständigen Binärinhalt mit einer C-Referenz. Ein weiterer Zustandsautomat deckt in 23 Verträgen lokale Discovery, Master-Queries, manuelle und sichtbare Pings sowie Status-Resends ab. Windows-DNS, zwei nichtblockierende Sockets, IPv4-Broadcast und Antwort-Pump sind im produktiven UI-Lifecycle angeschlossen und bestehen 18 Live-Verträge. Hintergrundmusik bewahrt Stereo, spielt das Intro einmal und wechselt danach in den Retail-Loop. Registrierte Mono-Effekte laufen durch Baseq3s exakten 22050-Hz-Resampler mit acht C-Differentialdatensätzen und 19 Verträgen; `S_SpatializeOrigin` liefert über zwölf exakte Datensätze plus 19 Verträge die originale 80-Unit-Vollpegelzone, Distanzdämpfung und Links-/Rechts-Achssemantik. One-shots verwenden produktiv Baseq3s 96-Kanal-Free-list, 50-ms-Duplikatverhalten, identische-Sound-Limits, Entitäts-/Globalersetzung und Listener-/Announcer-Schutz; zehn exakte Datensätze plus 18 Verträge belegen den Pfad. Gleichartige Loops werden mit originalen Masterlautstärken, Doppler-Regeln, 255er-Klemme, 96-Kanal-Limit und gemeinsamer Painted-Time-Phase gruppiert; sechs exakte Datensätze plus 17 Verträge bestehen. Musik, One-shots und diese Loops laufen produktiv durch Baseq3s gemeinsamen 24.8-Paintbuffer, `S_PaintChannelFrom16`, `s_volume` 0,8 und exakte signed-16-Sättigung; drei exakte Pipeline-Datensätze plus 18 Verträge bestehen. Derselbe produktive Pfad decodiert jetzt außerdem IMA-ADPCM, MuLaw und Daubechies-Wavelets und malt sie mit den originalen 24.8-Routinen; fünf exakte C-Differentialfälle, 14 Kompressionsverträge und 40 QVM-Wiedergabeverträge bestehen. Geschwindigkeitsvektoren von QVM-Loops steuern über Baseq3s quadrierte Distanzformel den Doppler-Pitch; fünf weitere C-Differentialfälle und sechs Verträge belegen den Pfad. RoQ-Audio läuft nun über Baseq3s 16.384-Frame-S_RawSamples-Ring in denselben Paintbuffer; fünf C-Differentialdatensätze und zehn Verträge prüfen Formatkonvertierung, Resampling und gleichzeitige Spieleffekte. Die vollständige Audio- und UI-Parität bleibt offen. |
 | 10. Gesamtparität | Offen | Hängt von allen vorangehenden Abnahmen ab |
+
+Aktualisierung zu Zeile 8: Die Commandqueue steht am 4. November bei sieben
+exakten C-Datensätzen plus 32 Verträgen. Die aktuelle produktive
+20-Frame-Messung erreicht ungefähr 9 FPS; die ältere Angabe 15--20 FPS bezog
+sich auf einen anderen Preview-Slice und ist keine Abnahme des heutigen
+Original-QVM-Pfads. Der noch CPU-seitige Rasterizer bleibt die maßgebliche
+Renderer- und Performance-Lücke.
 
 115 zusätzliche Tests prüfen beschädigte Dateieingaben, VM-Limits, räumliche
 Abfrageparameter, Portalzustände und die
@@ -3607,3 +3651,41 @@ Archiv-/DEFLATE-Vergleiche, 23 Unzip-Verträge samt 84 Retailfällen, 75/75
 `files.c`-Symbole, 44 Filesystem-Verträge sowie 14 originale
 UI-Exportdatensätze und 22 UI-Lifecycle-Verträge. Der vollständige Hauptbuild
 hat SHA-256 `b8230e254975a4bea9b8638807c4fa4ef5d01997a36e4a750865bff8e6366616`.
+
+## 2026-11-01: Ein-Fenster-GUI, Original-Menübild und robuste UI-Eingabe
+
+Der ausgelieferte `MiniQuake3.exe`-Hauptbuild wird nun als
+`IMAGE_SUBSYSTEM_WINDOWS_GUI` markiert; Testprogramme bleiben
+Konsolenanwendungen. Damit startet der direkte Doppelklick ausschließlich das
+Spielfenster. `Play-MiniQuake3.cmd` führt denselben Buildpfad abgekoppelt aus,
+sodass sein Prüf-/Buildfenster nach dem Start sofort verschwindet.
+
+Der lila-schwarze Hauptmenü-Hintergrund war die sichtbare
+`$defaultimage`-Ersatztextur: Die Retail-Datei `scripts/menu.shader` enthält
+nur Kommentare, während `menuback` und `menubacknologo` tatsächlich in
+`scripts/gfx.shader` definiert sind. Der frühe Menüindex verwendet jetzt diese
+Originaldefinitionen und lädt `textures/sfx/logo512.tga`. Der sichtbare
+Windows-Smoke zeigt damit das originale schwarze/rote Quake-III-Hauptmenü.
+
+Der gemeldete Fehler `input event bridge: invalid event` entstand durch
+Ereignisse, die während des rund 20 Sekunden langen QVM-/Asset-Aufbaus in der
+nativen Queue lagen. Ihre alten Win32-Zeitstempel wurden anschließend auf den
+neuen Simulationsstart umgerechnet und konnten negativ werden. Die produktiven
+Menü- und Matchpfade leeren den nativen Ring jetzt vor der Uhrenbasis; die
+native `IN_ClearStates`-Entsprechung löscht dabei Zustand und Queue, statt
+weitere Releases zu erzeugen.
+
+Zusätzlich verwenden UI-Abfrage, Win32-Ring und QVM nun durchgehend den
+originalen Quake-Keynum-Raum (`K_MOUSE1=178`, `K_DOWNARROW=133`, Kleinbuchstaben
+ab 97). Eine kleine vorallokierte `ui_input_latch`-Struktur hält einen sehr
+kurzen Down/Up-Impuls genau einen UI-Frame sichtbar, ohne Array-Konkatenation
+oder wachsende Historie. Dadurch gehen Klicks und Tasten zwischen zwei
+16-ms-Frames nicht mehr verloren. Vom originalen `ui.qvm` ausgegebene
+`quit`-Befehle werden in Haupt- und Ingame-Menü übernommen, anschließend
+laufen Audio-, Textur-, Fenster- und QVM-Cleanup vollständig durch.
+
+Nachweise: 28 Original-UI-Session-Verträge, 38 Input-Command-Verträge plus
+fünf unverändert extrahierte Baseq3-Differentialdatensätze, der reine
+UI-Input-Latch-Vertrag, der native Fenster-Smoke, das GUI-Subsystem-/Launcher-
+Gate und der echte Null-Argument-Start bis zum Originalmenü. Der gemessene
+Start lag bei **1,06 Sekunden**.

@@ -63,6 +63,7 @@ extern function releaseTextureNative(slot as i32) from "playable_window.dll" sym
 extern function triangleNative(textureSlot as i32,x0 as double,y0 as double,depth0 as double,u0 as double,v0 as double,light0 as double,x1 as double,y1 as double,depth1 as double,u1 as double,v1 as double,light1 as double,x2 as double,y2 as double,depth2 as double,u2 as double,v2 as double,light2 as double,red as i32,green as i32,blue as i32) from "playable_window.dll" symbol "playable_window_draw_triangle" returns void
 extern function triangleColoredNative(textureSlot as i32,x0 as double,y0 as double,depth0 as double,u0 as double,v0 as double,x1 as double,y1 as double,depth1 as double,u1 as double,v1 as double,x2 as double,y2 as double,depth2 as double,u2 as double,v2 as double,red0 as i32,green0 as i32,blue0 as i32,alpha0 as i32,red1 as i32,green1 as i32,blue1 as i32,alpha1 as i32,red2 as i32,green2 as i32,blue2 as i32,alpha2 as i32,red as i32,green as i32,blue as i32) from "playable_window.dll" symbol "playable_window_draw_triangle_colored" returns void
 extern function triangleBatchNative(records as ptr,byteCount as i32,triangleCount as i32) from "playable_window.dll" symbol "playable_window_draw_triangle_batch" returns i32
+extern function writeScreenQuadNative(records as ptr,byteCount as i32,triangleIndex as i32,textureSlot as i32,x0 as double,y0 as double,d0 as double,u0 as double,v0 as double,x1 as double,y1 as double,d1 as double,u1 as double,v1 as double,x2 as double,y2 as double,d2 as double,u2 as double,v2 as double,x3 as double,y3 as double,d3 as double,u3 as double,v3 as double,red as i32,green as i32,blue as i32,alpha as i32) from "playable_window.dll" symbol "playable_window_write_screen_quad" returns i32
 extern function worldTriangleBatchNative(records as ptr,byteCount as i32,triangleCount as i32,positionX as double,positionY as double,positionZ as double,rightX as double,rightY as double,rightZ as double,upX as double,upY as double,upZ as double,forwardX as double,forwardY as double,forwardZ as double,halfWidth as double,halfHeight as double,focal as double,nearDistance as double) from "playable_window.dll" symbol "playable_window_draw_world_triangle_batch" returns i32
 extern function worldTriangleBatchViewportNative(records as ptr,byteCount as i32,triangleCount as i32,viewportX as i32,viewportY as i32,viewportWidth as i32,viewportHeight as i32,positionX as double,positionY as double,positionZ as double,rightX as double,rightY as double,rightZ as double,upX as double,upY as double,upZ as double,forwardX as double,forwardY as double,forwardZ as double,focal as double,nearDistance as double) from "playable_window.dll" symbol "playable_window_draw_world_triangle_batch_viewport" returns i32
 
@@ -257,6 +258,19 @@ function createTriangleBatch(capacity)
   return TriangleBatch(bytes(capacity*TRIANGLE_BATCH_RECORD_BYTES,0),capacity,0)
 end function
 function resetTriangleBatch(batch) batch.count=0;return batch end function
+function appendScreenQuad(batch,textureSlot,positions,texCoords,color)
+  if batch==void or positions==void or texCoords==void or color==void or len(positions)!=4 or len(texCoords)!=4 or len(color)!=4 then return error(7487,"invalid screen quad") end if
+  if batch.count+2>batch.capacity then return error(7487,"triangle batch is full") end if
+  a=positions[0];b=positions[1];c=positions[2];d=positions[3];ua=texCoords[0];ub=texCoords[1];uc=texCoords[2];ud=texCoords[3]
+  written=writeScreenQuadNative(nativeBytesPtr(batch.data),len(batch.data),batch.count,textureSlot,a.x,a.y,a.depth,ua[0],ua[1],b.x,b.y,b.depth,ub[0],ub[1],c.x,c.y,c.depth,uc[0],uc[1],d.x,d.y,d.depth,ud[0],ud[1],color[0],color[1],color[2],color[3])
+  if written!=2 then return error(7487,"native screen quad write failed") end if;batch.count=batch.count+2;return batch
+end function
+function writeScreenRect(batch,triangleIndex,textureSlot,x,y,width,height,s1,t1,s2,t2,scaleX,scaleY,color)
+  if batch==void or color==void or len(color)!=4 or triangleIndex<0 or triangleIndex+2>batch.count then return error(7487,"invalid cached screen rectangle") end if
+  left=x*scaleX;top=y*scaleY;right=(x+width)*scaleX;bottom=(y+height)*scaleY;depth=0.001
+  written=writeScreenQuadNative(nativeBytesPtr(batch.data),len(batch.data),triangleIndex,textureSlot,left,top,depth,s1,t1,right,top,depth,s2,t1,right,bottom,depth,s2,t2,left,bottom,depth,s1,t2,color[0],color[1],color[2],color[3])
+  if written!=2 then return error(7487,"native cached screen rectangle write failed") end if;return batch
+end function
 function writeBatchI32(data,offset,value) numeric.writeU32(data,offset,numeric.i32(value));return void end function
 function writeBatchF32(data,offset,value) numeric.writeU32(data,offset,numeric.floatBits(value));return void end function
 function writeBatchVertex(data,offset,point,baseUV,lightmapUV,light)

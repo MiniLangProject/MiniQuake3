@@ -19,7 +19,7 @@ function setMenu(state,menu) return localMatch.setUiMenu(state,menu) end functio
 function drawConnectScreen(state,overlay) return uiVm.drawConnectScreen(state.ui,overlay) end function
 function fullscreen(state) return uiVm.isFullscreen(state.ui) end function
 function resetFrameCommands(state) if state==void then return fail("match state is required") end if;q2commands.reset(state.context.renderQueue);return void end function
-function commandCount(state) return len(state.context.renderQueue.commands) end function
+function commandCount(state) return q2commands.count(state.context.renderQueue) end function
 function serviceSet(state)
   if state==void or state.ui==void or not state.ui.active then return fail("active ui.qvm is required") end if
   services=uiSession.services(state,getCatcher,keyEvent,mouseEvent,refresh,setMenu,commandCount);services.stateEventFn=stateEvent;services.connectFn=drawConnectScreen;return services

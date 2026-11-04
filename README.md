@@ -440,8 +440,10 @@ python scripts/verify.py --data-root D:/Quake3 --extended
 
 ## Spielbarer Original-QVM-Pfad
 
-Doppelklick auf `MiniQuake3.exe` benötigt keine Kommandozeilenargumente. Die EXE
-sucht relativ zu ihrem eigenen Speicherort nach `baseq3/pak0.pk3` und startet
+Doppelklick auf `MiniQuake3.exe` benötigt keine Kommandozeilenargumente und
+öffnet als Windows-GUI-Anwendung ausschließlich das Spielfenster, ohne eine
+zusätzliche Konsole. Die EXE sucht relativ zu ihrem eigenen Speicherort nach
+`baseq3/pak0.pk3` und startet
 daraus das originale Quake-III-Menü sowie später `qagame.qvm` und `cgame.qvm`.
 Das Arbeitsverzeichnis einer Verknüpfung spielt dabei keine Rolle. Für einen
 portablen Testordner müssen `MiniQuake3.exe`, seine mitgebauten DLLs und der
@@ -474,7 +476,8 @@ Strukturen enthält. Menü, Regeln, Prediction und HUD bleiben Originalbytecode;
 die Standard-PK3s liefern weiterhin Karten, Modelle, Texturen und Audio.
 
 Doppelklick auf `Play-MiniQuake3.cmd` baut bei Bedarf die drei unveränderten
-Baseq3-QVMs und startet den produktiven Original-QVM-Pfad. Manuell entspricht
+Baseq3-QVMs und startet den produktiven Original-QVM-Pfad anschließend
+abgekoppelt, sodass das Hilfsfenster sofort schließt. Manuell entspricht
 das diesem Aufruf:
 
 ```powershell
@@ -730,25 +733,29 @@ their VQ video and DPCM audio, render through per-handle RGBA textures behind th
 stock 2D UI, and feed PCM into the queued audio output. Shader `videoMap` stages
 use the same decoder as silent looping 256x256 scratch textures in world, model
 and HUD materials. The retail `video/idlogo.RoQ` probe decodes all 210 512x256
-frames to exact EOF. Shared MD3 vertices, persistent transforms, cached material
-bindings and retained scene batches cut the measured QVM geometry stage from about 177 to 46.5 ms
-per frame. Four scanline workers preserve byte-identical color/depth output while
-reducing the median isolated 1280x720 raster benchmark from 82.15 to 37.76 ms per
-frame across three final runs (2.16x);
-the current 20-frame q3dm1 smoke measures 37.2 ms in rendering and about
-103.5 ms for the profiled simulation, geometry, batch and render phases together. The retail smoke
-validates three views, thousands of textured QVM triangles, stock HUD/menu quads,
-world effects and more than 120 decoded sounds.
+frames to exact EOF. Shared MD3 vertices, persistent transforms, cached
+material bindings and retained scene batches reduced the original QVM geometry
+cost substantially. The production path now also omits differential-only
+Game/Cgame observers, mixes audio through a byte-exact native paint block,
+accumulates render commands with `std.ds.list`, packs an entire HUD quad in one
+native call, updates unchanged QVM-2D topology in place and retains static
+world-stage results. The current real 20-frame q3dm1 profile measures 30.3 ms
+simulation, 18.05 ms geometry, 35.15 ms batch maintenance, 25.55 ms rendering
+and 1.95 ms audio, or 111 ms per frame in total (about 9 FPS). This is roughly
+14 percent faster than the immediately preceding stable 129.45 ms profile, but
+it is not yet close to the desired hundreds of FPS.
 
-The production MiniLang hot paths no longer grow arrays with repeated
-concatenation. Shader sources and parsed entries use `std.string_builder` and
-`std.ds.list`; native input uses `std.ds.queue`; world candidates use one
-`std.sort` pass; MD3, snapshot, audio and scene data use exact arrays whenever
-their size is known. On the same Windows machine the direct one-frame q3dm1
-Retail-QVM smoke fell from 132.4 seconds to 19.7–20.8 seconds (startup profile:
-16.249 s boot, 59 ms shader index, 311 ms scene, 712 ms sounds and 1.033 s
-world). `python scripts/test_minilang_hotpaths.py` guards the eleven critical
-paths against accidental quadratic-array regressions.
+The remaining ceiling is architectural: the Win32 backend still rasterizes
+world and model triangles on the CPU and uses OpenGL only to blit the finished
+pixel buffer with `glDrawPixels`. Reaching original-Quake-III-class frame rates
+requires the still-open hardware OpenGL batch path and visual A/B verification.
+The direct q3dm1 match boot currently takes 25.47 seconds; the normal no-argument
+launch reaches the original main menu first and delays that world work until a
+match is selected. Shader sources and parsed entries use `std.string_builder`
+and `std.ds.list`; native input uses `std.ds.queue`; world candidates use one
+`std.sort` pass; audited MD3, snapshot, audio, scene and render-command paths
+use reusable or exactly sized storage. `python scripts/test_minilang_hotpaths.py`
+guards eleven critical paths against accidental quadratic-array regressions.
 
 Ein vorhandener eingefrorener Compiler liegt unter `artifacts/toolchain/`.
 `inventory.py` nur ausführen, wenn dieser Stand bewusst neu festgelegt werden soll.

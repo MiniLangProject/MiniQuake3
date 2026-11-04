@@ -15,7 +15,7 @@ import mq3.renderer.playable_dynamic_lights as dynamicLights
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
 struct VertexCache slots frames positions normals uvs colors end struct
-struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceLights sourceColors sourceEntityColors sourceEntityTexCoords sourceShaderTimes fogIndexes fogAdjustment stage textureIndex deforms normalNoise vertexCache cacheSerial primary depthEqual sort polygonOffset timeOffset clampTime end struct
+struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceLights sourceColors sourceEntityColors sourceEntityTexCoords sourceShaderTimes fogIndexes fogAdjustment stage textureIndex deforms normalNoise vertexCache cacheSerial primary depthEqual sort polygonOffset timeOffset clampTime initialized end struct
 struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses polygonOffsetPasses fogBatch fogCatalog dlightBatch dlightCatalog end struct
 
 function fail(text) return error(7490,"playable world batch: "+text) end function
@@ -147,7 +147,7 @@ function buildStagePassTriangles(triangles,material,stage,primary,depthEqual)
   normalNoise=void;if (stage.tcGen=="environment" or stage.alphaGen=="lightingspecular") and hasDeform(material.deforms,"normal") then normalNoise=rendererNoise.create() end if
   vertexCache=void;if not hasDeform(material.deforms,"autosprite") and not hasDeform(material.deforms,"autosprite2") then vertexCache=createVertexCache(sourceIndexes) end if
   firstStage=void;if len(material.stages)>0 then firstStage=material.stages[0] end if
-  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceLights,sourceColors,sourceEntityColors,sourceEntityTexCoords,sourceShaderTimes,[],materials.fogAdjustment(firstStage,stage),stage,material.textureIndex,material.deforms,normalNoise,vertexCache,0,primary,depthEqual,material.sort,material.polygonOffset,material.timeOffset,material.clampTime)
+  return StagePass(commands,sourceUvs,sourceDeformUvs,sourcePositions,sourceIndexes,sourceNormals,sourceLights,sourceColors,sourceEntityColors,sourceEntityTexCoords,sourceShaderTimes,[],materials.fogAdjustment(firstStage,stage),stage,material.textureIndex,material.deforms,normalNoise,vertexCache,0,primary,depthEqual,material.sort,material.polygonOffset,material.timeOffset,material.clampTime,false)
 end function
 function buildStagePass(renderData,material,stage,primary,depthEqual,flags)
   triangles=[];for each triangle in renderData.triangles if triangle.textureIndex==material.textureIndex and not isSky(triangle,flags) then triangles=triangles+[triangle] end if end for
@@ -198,7 +198,7 @@ end function
 // unchanged.  The byte buffers and nested source arrays keep their storage;
 // callers fall back to buildMaterials when this returns false.
 function refreshStagePass(pass,renderData)
-  expected=len(pass.sourcePositions);pass.commands=window.resetTriangleBatch(pass.commands);outputIndex=0
+  expected=len(pass.sourcePositions);pass.commands=window.resetTriangleBatch(pass.commands);pass.initialized=false;outputIndex=0
   for each triangle in renderData.triangles
     if triangle.textureIndex!=pass.textureIndex then continue end if
     if outputIndex>=expected then return false end if
@@ -252,7 +252,7 @@ function attachFog(batch,renderData,catalog)
   if batch==void or renderData==void or catalog==void then return fail("fog attachment requires batch, render data and catalog") end if
   fogBatch=playableFog.build(renderData,catalog);if fogBatch is error then return fogBatch end if;batch.fogBatch=fogBatch;batch.fogCatalog=catalog
   for each pass in batch.passes
-    pass.fogIndexes=[]
+    pass.fogIndexes=[];pass.initialized=false
     for each triangle in renderData.triangles if triangle.textureIndex==pass.textureIndex and len(pass.fogIndexes)<pass.commands.count then pass.fogIndexes=pass.fogIndexes+[triangle.fogIndex] end if end for
   end for
   return fogBatch.commands.count
@@ -288,6 +288,27 @@ function hasTurbulence(stage) for each mod in stage.uvMods if mod.kind=="turb" t
 function hasEntityTranslate(stage) for each mod in stage.uvMods if mod.kind=="entitytranslate" then return true end if end for;return false end function
 function hasDeform(deforms,kind) for each deform in deforms if deform.kind==kind then return true end if end for;return false end function
 function containsPosition(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
+function passHasFog(pass)
+  if pass.fogAdjustment=="none" then return false end if
+  for each fogIndex in pass.fogIndexes if fogIndex>0 then return true end if end for
+  return false
+end function
+// A retained pass exists for render-state reasons as well as for changing
+// vertex data.  Blend, alpha-test, clamp, depth and polygon-offset state do
+// not require MiniLang to rewrite every vertex every frame.  Keep those
+// command bytes until topology/source data changes; animated, view-dependent
+// and fog-modulated passes continue through the exact Quake update path.
+function passChanges(pass,fogCatalog)
+  stage=pass.stage
+  if len(stage.slots)>1 or len(pass.deforms)>0 then return true end if
+  if stage.tcGen=="environment" then return true end if
+  for each mod in stage.uvMods
+    if mod.kind!="scale" and mod.kind!="transform" then return true end if
+  end for
+  if stage.rgbGen=="wave" then return true end if
+  if stage.alphaGen=="wave" or stage.alphaGen=="portal" or stage.alphaGen=="lightingspecular" then return true end if
+  return fogCatalog!=void and passHasFog(pass)
+end function
 
 // AutospriteDeform rebuilds each independent pair of triangles as one square
 // whose left/up axes follow the view. BSP extraction expands indexes, so the
@@ -386,7 +407,8 @@ function specularAlpha(position,normal,viewOrigin)
   if value<0.0 then return 0 end if;value=numeric.fmul(value,value);value=numeric.fmul(value,value);result=numeric.trunc32(numeric.fmul(value,255.0));if result>255 then result=255 end if;return result
 end function
 function updatePassAxesFog(pass,viewOrigin,leftDir,upDir,nowMilliseconds,fogCatalog)
-  slot=materials.slotAt(pass.stage,nowMilliseconds);transform=affineFor(pass.stage,nowMilliseconds);turbulent=hasTurbulence(pass.stage);entityTranslate=hasEntityTranslate(pass.stage);autosprite=hasDeform(pass.deforms,"autosprite");autosprite2=hasDeform(pass.deforms,"autosprite2");quad=void;quad2=void
+  slot=materials.slotAt(pass.stage,nowMilliseconds);if pass.initialized and not passChanges(pass,fogCatalog) then return slot end if
+  transform=affineFor(pass.stage,nowMilliseconds);turbulent=hasTurbulence(pass.stage);entityTranslate=hasEntityTranslate(pass.stage);autosprite=hasDeform(pass.deforms,"autosprite");autosprite2=hasDeform(pass.deforms,"autosprite2");quad=void;quad2=void
   cacheEpoch=0;if pass.vertexCache!=void then pass.cacheSerial=pass.cacheSerial+1;cacheEpoch=pass.cacheSerial end if
   forward=[leftDir[1]*upDir[2]-leftDir[2]*upDir[1],leftDir[2]*upDir[0]-leftDir[0]*upDir[2],leftDir[0]*upDir[1]-leftDir[1]*upDir[0]];spriteNormal=[0.0-forward[0],0.0-forward[1],0.0-forward[2]]
   for triangleIndex=0 to pass.commands.count-1
@@ -418,6 +440,7 @@ function updatePassAxesFog(pass,viewOrigin,leftDir,upDir,nowMilliseconds,fogCata
       window.writeBatchF32(pass.commands.data,offset+48+vertex*32,1.0);window.writeBatchColor(pass.commands.data,offset+116+vertex*4,stageColor)
     end for
   end for
+  pass.initialized=true
   return slot
 end function
 function updatePassAxes(pass,viewOrigin,leftDir,upDir,nowMilliseconds) return updatePassAxesFog(pass,viewOrigin,leftDir,upDir,nowMilliseconds,void) end function

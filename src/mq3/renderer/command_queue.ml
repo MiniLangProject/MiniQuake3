@@ -4,6 +4,7 @@
 // renderer/tr_cmds.c and renderer/tr_backend.c.
 package mq3.renderer.command_queue
 import mq3.compat.numeric as n
+import std.ds.list as lists
 
 const RC_END_OF_LIST=0
 const RC_SET_COLOR=1
@@ -20,13 +21,26 @@ const DRAW_BUFFER_BYTES=8
 const SWAP_BUFFERS_BYTES=4
 
 struct Command id bytes values shader end struct
-struct Queue commands used registered shaderFn shaderContext end struct
+struct Queue commands used registered shaderFn shaderContext commandList end struct
 struct Services set2DFn endSurfaceFn beginSurfaceFn quadFn drawBufferFn clearFn finishFn endFrameFn diagnosticFn context end struct
 struct Backend color2D projection2D shader numIndexes finishCalled clearOnDrawBuffer services end struct
 
 function fail(message) return error(7260,"render commands: "+message) end function
 function services() return Services(void,void,void,void,void,void,void,void,void,void) end function
-function create(shaderFn,shaderContext) return Queue([],0,true,shaderFn,shaderContext) end function
+function create(shaderFn,shaderContext) return Queue([],0,true,shaderFn,shaderContext,void) end function
+// Productive QVM drawing emits dozens to hundreds of commands each frame.
+// Repeated array concatenation is quadratic in MiniLang, so accumulate into a
+// geometric std list and expose the exact legacy array once the QVM returns.
+function createFast(shaderFn,shaderContext,capacity)
+  if capacity<1 then capacity=1 end if
+  return Queue([],0,true,shaderFn,shaderContext,lists.List.withCapacity(capacity))
+end function
+function snapshot(queue)
+  if queue==void then return fail("missing queue") end if
+  if queue.commandList!=void then queue.commands=queue.commandList.toArray() end if
+  return queue.commands
+end function
+function count(queue) if queue==void then return 0 else if queue.commandList!=void then return queue.commandList.len() else return len(queue.commands) end if end function
 function backend(host)
   if host==void then host=services() end if
   return Backend([255,255,255,255],false,void,0,false,false,host)
@@ -47,7 +61,8 @@ end function
 function append(queue,id,bytes,values,shader)
   admitted=allocate(queue,bytes);if admitted is error then return admitted end if
   if not admitted then return false end if
-  queue.commands=queue.commands+[Command(id,bytes,values,shader)]
+  command=Command(id,bytes,values,shader)
+  if queue.commandList!=void then queue.commandList.add(command) else queue.commands=queue.commands+[command] end if
   return true
 end function
 
@@ -120,18 +135,18 @@ end function
 
 function execute(state,queue)
   if state==void or queue==void then return fail("missing backend or queue") end if
-  count=0
-  for each command in queue.commands
+  executed=0;commands=snapshot(queue)
+  for each command in commands
     if command.id==RC_SET_COLOR then executeSetColor(state,command)
     else if command.id==RC_STRETCH_PIC then executeStretchPic(state,command)
     else if command.id==RC_DRAW_BUFFER then executeDrawBuffer(state,command)
     else if command.id==RC_SWAP_BUFFERS then executeSwapBuffers(state)
-    else if command.id==RC_END_OF_LIST then return count
+    else if command.id==RC_END_OF_LIST then return executed
     else return fail("unknown command "+str(command.id))
     end if
-    count=count+1
+    executed=executed+1
   end for
-  return count
+  return executed
 end function
 
-function reset(queue) queue.commands=[];queue.used=0 end function
+function reset(queue) queue.commands=[];if queue.commandList!=void then queue.commandList.clear() end if;queue.used=0 end function

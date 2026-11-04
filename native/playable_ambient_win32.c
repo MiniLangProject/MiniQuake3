@@ -4,6 +4,7 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <mmsystem.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -19,6 +20,122 @@ typedef struct ambient_buffer_s {
 static HWAVEOUT outputHandle;
 static ambient_buffer_t buffers[BUFFER_COUNT];
 static int initialized;
+
+static int pcm_sample(const unsigned char *samples,int sampleBytes,int frame,
+                      int channels,int bitsPerSample,int blockAlign) {
+    int offset,left,right;
+    if (samples==NULL || frame<0 || channels<1 || channels>2 ||
+        (bitsPerSample!=8 && bitsPerSample!=16) || blockAlign<=0) return 0;
+    offset=frame*blockAlign;
+    if (offset<0 || offset+blockAlign>sampleBytes) return 0;
+    if (bitsPerSample==8) {
+        left=((int)samples[offset]-128)<<8;
+        if (channels==1) return left;
+        right=((int)samples[offset+1]-128)<<8;
+    } else {
+        left=(int)(int16_t)((uint16_t)samples[offset]|((uint16_t)samples[offset+1]<<8));
+        if (channels==1) return left;
+        right=(int)(int16_t)((uint16_t)samples[offset+2]|((uint16_t)samples[offset+3]<<8));
+    }
+    return (left+right)/2;
+}
+
+static void mix_add(int32_t *paint,int index,int sample,int leftVolume,int rightVolume) {
+    uint32_t left=(uint32_t)((int64_t)sample*(int64_t)leftVolume>>8);
+    uint32_t right=(uint32_t)((int64_t)sample*(int64_t)rightVolume>>8);
+    paint[index]=(int32_t)((uint32_t)paint[index]+left);
+    paint[index+1]=(int32_t)((uint32_t)paint[index+1]+right);
+}
+
+/* Hot S_PaintChannelFrom16 path. The MiniLang side retains channel ownership,
+ * spatialisation, loop grouping and cursor state; this boundary only performs
+ * the thousands of integer sample operations that otherwise stall a frame. */
+AMBIENT_API int playable_ambient_mix_pcm(unsigned char *paintBytes,int paintByteCount,
+    const unsigned char *samples,int sampleBytes,int channels,int bitsPerSample,
+    int blockAlign,int sourceFrames,int sampleOffset,int count,int bufferOffset,
+    int leftVolume,int rightVolume,int soundVolume,int looping,int doppler,
+    double dopplerScale,double oldDopplerScale) {
+    int32_t *paint=(int32_t *)paintBytes;
+    int paintFrames=paintByteCount/8;
+    int actual=count,start,i;
+    int scaledLeft=leftVolume*soundVolume,scaledRight=rightVolume*soundVolume;
+    if (paintBytes==NULL || samples==NULL || paintByteCount<0 || (paintByteCount&7)!=0 ||
+        sourceFrames<1 || sampleOffset<0 || count<0 || bufferOffset<0 ||
+        bufferOffset+count>paintFrames || dopplerScale<=0.0 || oldDopplerScale<0.0) return -1;
+    start=doppler?(int)((double)sampleOffset*oldDopplerScale):sampleOffset;
+    if (!looping) {
+        if (start>=sourceFrames) return 0;
+        if (start+actual>sourceFrames) actual=sourceFrames-start;
+    }
+    if (!doppler || dopplerScale==1.0) {
+        for (i=0;i<actual;++i) {
+            int source=start+i;
+            if (looping) { source%=sourceFrames;if (source<0) source+=sourceFrames; }
+            mix_add(paint,(bufferOffset+i)*2,
+                    pcm_sample(samples,sampleBytes,source,channels,bitsPerSample,blockAlign),
+                    scaledLeft,scaledRight);
+        }
+        return actual;
+    }
+    {
+        double offset=(double)start;
+        for (i=0;i<actual;++i) {
+            int first=(int)offset,last,j;int64_t total=0;double divisor,left,right;
+            offset+=dopplerScale;last=(int)offset;
+            if (last<=first) last=first+1;
+            for (j=first;j<last;++j) {
+                int source=j%sourceFrames;if (source<0) source+=sourceFrames;
+                total+=pcm_sample(samples,sampleBytes,source,channels,bitsPerSample,blockAlign);
+            }
+            divisor=256.0*(double)(last-first);
+            left=(double)total*(double)scaledLeft/divisor;
+            right=(double)total*(double)scaledRight/divisor;
+            paint[(bufferOffset+i)*2]=(int32_t)((uint32_t)paint[(bufferOffset+i)*2]+(uint32_t)(int32_t)left);
+            paint[(bufferOffset+i)*2+1]=(int32_t)((uint32_t)paint[(bufferOffset+i)*2+1]+(uint32_t)(int32_t)right);
+        }
+    }
+    return actual;
+}
+
+AMBIENT_API double playable_ambient_mix_stream(unsigned char *paintBytes,int paintByteCount,
+    const unsigned char *samples,int sampleBytes,int channels,int bitsPerSample,
+    int blockAlign,int sourceFrames,int sampleRate,int outputRate,double cursor,
+    int count,int bufferOffset) {
+    int32_t *paint=(int32_t *)paintBytes;int paintFrames=paintByteCount/8;int i;
+    double phase=cursor,step;
+    if (paintBytes==NULL || samples==NULL || (paintByteCount&7)!=0 || sourceFrames<1 ||
+        sampleRate<=0 || outputRate<=0 || cursor<0.0 || count<0 || bufferOffset<0 ||
+        bufferOffset+count>paintFrames) return -1.0;
+    step=(double)sampleRate/(double)outputRate;
+    for (i=0;i<count && phase<(double)sourceFrames;++i) {
+        int frame=(int)phase,offset=frame*blockAlign,left,right;
+        if (offset<0 || offset+blockAlign>sampleBytes) break;
+        if (bitsPerSample==8) {
+            left=((int)samples[offset]-128)<<8;
+            right=channels==2?((int)samples[offset+1]-128)<<8:left;
+        } else if (bitsPerSample==16) {
+            left=(int)(int16_t)((uint16_t)samples[offset]|((uint16_t)samples[offset+1]<<8));
+            right=channels==2?(int)(int16_t)((uint16_t)samples[offset+2]|((uint16_t)samples[offset+3]<<8)):left;
+        } else return -1.0;
+        paint[(bufferOffset+i)*2]=(int32_t)((uint32_t)paint[(bufferOffset+i)*2]+(uint32_t)(left*256));
+        paint[(bufferOffset+i)*2+1]=(int32_t)((uint32_t)paint[(bufferOffset+i)*2+1]+(uint32_t)(right*256));
+        phase+=step;
+    }
+    return phase;
+}
+
+AMBIENT_API int playable_ambient_finish_mix(const unsigned char *paintBytes,int paintByteCount,
+    unsigned char *output,int outputBytes,int frames) {
+    const int32_t *paint=(const int32_t *)paintBytes;int i,peak=0;
+    if (paintBytes==NULL || output==NULL || frames<0 || paintByteCount<frames*8 || outputBytes<frames*4) return -1;
+    for (i=0;i<frames*2;++i) {
+        int value=paint[i]>>8,absolute;
+        if (value>32767) value=32767;else if (value<-32768) value=-32768;
+        output[i*2]=(unsigned char)(value&255);output[i*2+1]=(unsigned char)((value>>8)&255);
+        absolute=paint[i]>>8;if (absolute<0) absolute=-absolute;if (absolute>peak) peak=absolute;
+    }
+    return peak;
+}
 
 static void release_buffer(ambient_buffer_t *buffer) {
     if (buffer->samples == NULL) return;

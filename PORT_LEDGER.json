@@ -21097,6 +21097,9 @@
         "src/mq3/client/key_binding_dispatch.ml",
         "src/mq3/client/input_command_events.ml",
         "src/mq3/client/qvm_preview_app.ml",
+        "src/mq3/client/qvm_menu_app.ml",
+        "src/mq3/client/original_ui_session.ml",
+        "src/mq3/client/ui_input_latch.ml",
         "src/mq3/client/console_input.ml",
         "src/mq3/client/key_bindings_config.ml",
         "src/mq3/client/cl_keys_runtime.ml"
@@ -21108,6 +21111,10 @@
         "tests/reference/cgame_key_traps_oracle.c",
         "tests/cgame_key_traps_oracle.ml",
         "scripts/test_key_binding_dispatch.py",
+        "scripts/test_original_ui_session.py",
+        "scripts/test_qvm_menu_startup.py",
+        "tests/original_ui_session_contracts.ml",
+        "tests/ui_input_latch_contracts.ml",
         "tests/reference/key_binding_dispatch_oracle.c",
         "tests/key_binding_dispatch_oracle.ml",
         "tests/key_binding_dispatch_contracts.ml",
@@ -55781,7 +55788,7 @@
             "src/mq3/client/qvm_preview_app.ml"
           ],
           "status": "tested_subset",
-          "scope": "The productive original-QVM HUD/UI path rebuilds StretchPic runs, decodes and uploads replacement stages after runtime shader remaps, and applies remap timeOffset plus parsed clampTime to animated images, color waves and tcMods. Thirty-two contracts include a synthetic PK3 remap and retained native batch bytes."
+          "scope": "The productive original-QVM HUD/UI path rebuilds StretchPic runs, decodes and uploads replacement stages after runtime shader remaps, and applies remap timeOffset plus parsed clampTime to animated images, color waves and tcMods. Stable command topology reuses runs and batches, static stages overwrite final quad bytes through one native call, and dynamic stages retain their original time updates. Thirty-five contracts include a synthetic PK3 remap, retained native batch bytes and in-place topology refresh."
         },
         {
           "original": "RB_RenderDrawSurfList per-entity shader time",
@@ -55969,7 +55976,7 @@
             "src/mq3/renderer/command_queue.ml"
           ],
           "status": "tested_subset",
-          "scope": "0x40000-byte command budget plus set-color, stretch-pic, draw-buffer and swap execution through injected backend callbacks. Seven exact C records and 29 contracts pass."
+          "scope": "0x40000-byte command budget plus set-color, stretch-pic, draw-buffer and swap execution through injected backend callbacks. The productive QVM queue grows through std.ds.list and materializes once after VM execution, while the legacy array queue preserves exact oracle semantics. Seven exact C records and 32 contracts pass."
         },
         {
           "original": "Complete original source surface",

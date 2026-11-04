@@ -115,9 +115,12 @@ end function
 
 function frame(state,now)
   if state==void or typeof(now)!="int" or now<0 then return fail("valid state and frame time are required") end if
-  keyEvents=0;charEvents=0;menuOpened=false;shifted=state.keyDownFn(state.inputContext,VK_SHIFT)
+  keyEvents=0;charEvents=0;menuOpened=false;shifted=state.keyDownFn(state.inputContext,K_SHIFT)
   for index=0 to len(state.bindings)-1
-    item=state.bindings[index];down=state.keyDownFn(state.inputContext,item.virtualKey)
+    // The Win32 queue is normalized to Quake keynums at its boundary, just as
+    // Sys_QueEvent is in the original engine.  Poll that same key domain so
+    // mouse buttons, navigation keys and lowercase letters cannot diverge.
+    item=state.bindings[index];down=state.keyDownFn(state.inputContext,item.quakeKey)
     if down!=state.down[index] then
       state.down[index]=down
       if state.services.stateEventFn!=void then observed=state.services.stateEventFn(state.services.context,item.quakeKey,down);if observed is error then return observed end if end if

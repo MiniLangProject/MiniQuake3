@@ -752,7 +752,7 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   uiClient=uiHost.createClientState(uiHost.CA_DISCONNECTED,0,-1,"localhost","","");if uiClient is error then return uiClient end if
   nativeServerCmds=nativeCgameServercmds.create();nativeServerCmds.configstrings=configstrings
   nativeMain=nativeCgameMain.create();nativeMain.configstrings=configstrings
-  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.create(void,void),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create(),void)
+  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.createFast(void,void,256),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create(),void)
   commands.initCommands(context.commandState);installed=cvarCommands.install(registry,context.commandState);if installed is error then return installed end if
   bindingState=bindingConfig.create(context.cgameKeys);bindingState.printFn=emitPrint;bindingState.printContext=context
   installed=bindingConfig.install(bindingState,context.commandState);if installed is error then return installed end if
@@ -968,7 +968,7 @@ function observeNativeWeapons(context,renderStart,retailActive,ps)
   return void
 end function
 
-function snapshot(value,clientNum)
+function snapshotCore(value,clientNum)
   if value==void or clientNum<0 or clientNum>=MAX_CLIENTS then return fail("valid match and client are required") end if
   context=value.context;machine=value.game.slot.machine
   if machine==void or context.gameClients<=0 or context.entityStride<=0 then return fail("qagame did not locate its state") end if
@@ -984,7 +984,12 @@ function snapshot(value,clientNum)
   frame=snapshotBuild.buildClientSnapshot(buildWorld,host,ps,context.linked[clientNum],false);if frame is error then return frame end if
   entities=array(frame.numEntities,void)
   if frame.numEntities>0 then for index=0 to frame.numEntities-1 entities[index]=buildWorld.ring[(frame.firstEntity+index)%buildWorld.ringCapacity] end for end if
-  result=Snapshot(context.now,ps,entities);context.latestSnapshot=result;context.snapshotNumber=context.snapshotNumber+1
+  result=Snapshot(context.now,ps,entities);context.latestSnapshot=result;context.snapshotNumber=context.snapshotNumber+1;return result
+end function
+
+function snapshot(value,clientNum)
+  result=snapshotCore(value,clientNum);if result is error then return result end if
+  context=value.context;entities=result.entities
   initial=context.nativeSnapshots.snap==void;transitionStart=len(context.nativeSnapshots.playerStateTransitions)
   observed=nativeCgameSnapshot.publish(context.nativeSnapshots,context.snapshotNumber,result,0,context.cgameServerCommands.commandSequence,context.now);if observed is error then return observed end if
   // Validate the same snapshot/usercmd boundary as cgame.qvm on copied state.
@@ -1029,10 +1034,19 @@ function snapshot(value,clientNum)
   botServerBridge.publishSnapshot(context.botServer,clientNum,entities);published=publishBotSnapshots(value);if published is error then return published end if;return result
 end function
 
+// Production snapshots are consumed by the authoritative retail cgame QVM.
+// Differential native prediction/effect/HUD mirrors belong in probes, not in
+// the frame loop; they otherwise duplicate most client work for every tick.
+function snapshotProductive(value,clientNum)
+  result=snapshotCore(value,clientNum);if result is error then return result end if
+  botServerBridge.publishSnapshot(value.context.botServer,clientNum,result.entities);published=publishBotSnapshots(value);if published is error then return published end if;return result
+end function
+
 function publishBotSnapshots(value)
   if value==void or value.game==void then return 0 end if
   context=value.context;machine=value.game.slot.machine
   if machine==void or context.gameClients<=0 or context.entityStride<=0 then return 0 end if
+  hasBots=false;for each state in context.clientStates if state==2 then hasBots=true end if end for;if not hasBots then return 0 end if
   mappedList=lists.List.withCapacity(context.entityCount)
   for index=0 to context.entityCount-1
     state=entitystate.load(machine.data,context.gameEntities+index*context.entityStride);if state is error then return state end if;state.number=index
@@ -1395,7 +1409,16 @@ end function
 
 function drawCgame(value,serverTime)
   if value==void or value.cgame==void then return fail("cgame is not active") end if
-  value.context.now=serverTime;value.context.renderViews=[];drawn=cgameVm.drawActiveFrame(value.cgame,serverTime,0,false);if drawn is error then return drawn end if;value.context.nativeMain.time=serverTime;nativeCgameMain.vmMain(value.context.nativeMain,nativeCgameMain.CG_DRAW_ACTIVE_FRAME,[serverTime,0,0],[],value.context.nativeMain.gameVersion,640,480,true);nativeCgameCommands.syncVmCvars(value.context.nativeCgameCommands,value.context.cvars);return drawn
+  value.context.now=serverTime;value.context.renderViews=[];drawn=cgameVm.drawActiveFrame(value.cgame,serverTime,0,false);if drawn is error then return drawn end if;renderQueue.snapshot(value.context.renderQueue);value.context.nativeMain.time=serverTime;nativeCgameMain.vmMain(value.context.nativeMain,nativeCgameMain.CG_DRAW_ACTIVE_FRAME,[serverTime,0,0],[],value.context.nativeMain.gameVersion,640,480,true);nativeCgameCommands.syncVmCvars(value.context.nativeCgameCommands,value.context.cvars);return drawn
+end function
+
+// The native cgame mirror above is a differential-audit observer. Running it
+// and rescanning its complete cvar table on every retail-QVM frame contributes
+// no authoritative output. The playable path therefore executes only the
+// original cgame QVM; probes continue to use drawCgame and retain the observer.
+function drawCgameProductive(value,serverTime)
+  if value==void or value.cgame==void then return fail("cgame is not active") end if
+  value.context.now=serverTime;value.context.renderViews=[];drawn=cgameVm.drawActiveFrame(value.cgame,serverTime,0,false);if drawn is error then return drawn end if;renderQueue.snapshot(value.context.renderQueue);return drawn
 end function
 
 function uiClipboard(context) return "" end function
@@ -1547,7 +1570,7 @@ function bootUi(value)
   host=uiVm.services(value.runtime,uiSyscall.callback(syscalls),loadClientVm,callVm,freeVm);ui=uiVm.create(host);if ui is error then if context.uiLanUdp!=void then uiLanUdp.close(context.uiLanUdp);context.uiLanUdp=void end if;return ui end if
   initialized=uiVm.initialize(ui,context.uiClient.connState,0,1);if initialized is error then if context.uiLanUdp!=void then uiLanUdp.close(context.uiLanUdp);context.uiLanUdp=void end if;return initialized end if;value.ui=ui;return ui
 end function
-function refreshUi(value,time) if value==void or value.ui==void then return fail("UI is not active") end if;value.context.now=time;if value.context.uiLanQueries!=void then uiLanQueries.setRealtime(value.context.uiLanQueries,time) end if;if value.context.uiLanUdp!=void then uiLanUdp.pump(value.context.uiLanUdp,64) end if;result=uiVm.refresh(value.ui,time);if not (result is error) then value.context.uiFrames=value.context.uiFrames+1 end if;return result end function
+function refreshUi(value,time) if value==void or value.ui==void then return fail("UI is not active") end if;value.context.now=time;if value.context.uiLanQueries!=void then uiLanQueries.setRealtime(value.context.uiLanQueries,time) end if;if value.context.uiLanUdp!=void then uiLanUdp.pump(value.context.uiLanUdp,64) end if;result=uiVm.refresh(value.ui,time);if not (result is error) then renderQueue.snapshot(value.context.renderQueue);value.context.uiFrames=value.context.uiFrames+1 end if;return result end function
 function setUiMenu(value,menu) if value==void or value.ui==void then return fail("UI is not active") end if;return uiVm.setActiveMenu(value.ui,menu) end function
 
 function setUiConnection(value,connState,connectPacketCount,servername,messageString)

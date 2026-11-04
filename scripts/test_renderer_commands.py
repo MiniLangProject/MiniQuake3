@@ -19,9 +19,9 @@ def main():
     if native!=mini: raise RuntimeError('Renderer command mismatch\nC:\n'+native+'MiniLang:\n'+mini)
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/renderer_command_contracts.ml','--output','renderer_command_contracts.exe'],cwd=ROOT,check=True)
     contracts=run([ROOT/'build/renderer_command_contracts.exe'],ROOT/'build',log=out/'contracts.log').strip()
-    if contracts!='PASS: 29 renderer-command contracts': raise RuntimeError(contracts)
+    if contracts!='PASS: 32 renderer-command contracts': raise RuntimeError(contracts)
     files=[original,ROOT/'Quake-III-Arena-original-source/code/renderer/tr_backend.c',harness,ROOT/'src/mq3/renderer/command_queue.ml',ROOT/'tests/renderer_command_oracle.ml',ROOT/'tests/renderer_command_contracts.ml']
-    result={'passed':True,'records':len(native.splitlines()),'contracts':29,'functions':functions,'scope':'Baseq3 command-buffer capacity and exact set-color/stretch-pic records plus injected 2D backend execution, batching, draw-buffer and swap ordering.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
+    result={'passed':True,'records':len(native.splitlines()),'contracts':32,'functions':functions,'scope':'Baseq3 command-buffer capacity and exact set-color/stretch-pic records plus injected 2D backend execution, batching, draw-buffer and swap ordering; productive QVM accumulation uses a capacity-backed list with one ordered snapshot.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
     (out/'result.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8',newline='\n')
-    print(f"PASS: {result['records']} exact Baseq3 renderer-command records + 29 contracts")
+    print(f"PASS: {result['records']} exact Baseq3 renderer-command records + 32 contracts")
 if __name__=='__main__': main()

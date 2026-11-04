@@ -30,13 +30,13 @@ def valid_qvm_cache(folder, names):
         if record.get("size") != path.stat().st_size or record.get("sha256") != sha(path): return False
     return True
 
-def minilang_inputs(source_path, compiler):
+def minilang_inputs(source_path, compiler, subsystem="console"):
     sources = {str(path.relative_to(ROOT)).replace("\\", "/"): sha(path)
                for path in (ROOT / "src").rglob("*.ml") if path.is_file()}
     try: source_name = str(source_path.relative_to(ROOT)).replace("\\", "/")
     except ValueError: source_name = str(source_path.resolve())
     sources[source_name] = sha(source_path)
-    return {"sources": sources, "compiler": sha(compiler),
+    return {"sources": sources, "compiler": sha(compiler), "subsystem": subsystem,
             "toolchain_profile": sha(ROOT / "docs/reference/toolchain.json"),
             "flags": ["-I", "src", "-I", "artifacts/toolchain",
                       "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "64m"]}
@@ -46,6 +46,24 @@ def valid_minilang_cache(output_path, stamp_path, inputs):
     try: previous = json.loads(stamp_path.read_text())
     except (OSError, ValueError): return False
     return previous.get("inputs") == inputs and previous.get("binary") == sha(output_path)
+
+def set_pe_windows_subsystem(path):
+    """Turn the shipped game into a GUI process without changing its entrypoint."""
+    with path.open("r+b") as executable:
+        if executable.read(2) != b"MZ":
+            raise RuntimeError(f"Not a PE executable: {path}")
+        executable.seek(0x3c)
+        pe = int.from_bytes(executable.read(4), "little")
+        optional = pe + 24
+        executable.seek(pe)
+        if executable.read(4) != b"PE\0\0":
+            raise RuntimeError(f"Invalid PE headers: {path}")
+        executable.seek(optional)
+        magic = int.from_bytes(executable.read(2), "little")
+        if magic not in (0x10B, 0x20B):
+            raise RuntimeError(f"Unsupported PE optional header: {path}")
+        executable.seek(optional + 68)
+        executable.write((2).to_bytes(2, "little"))  # IMAGE_SUBSYSTEM_WINDOWS_GUI
 
 def main():
     parser = argparse.ArgumentParser()
@@ -135,13 +153,17 @@ def main():
     source_path=Path(args.source);source_path=source_path if source_path.is_absolute() else ROOT/source_path
     output_path=Path(args.output);output_path=output_path if output_path.is_absolute() else output/output_path
     compile_stamp=output_path.with_name(output_path.name+".inputs.json")
-    compile_inputs=minilang_inputs(source_path,compiler)
+    gui_executable = (source_path.resolve() == (ROOT / "src/main.ml").resolve() and
+                      output_path.resolve() == (output / "MiniQuake3.exe").resolve())
+    compile_inputs=minilang_inputs(source_path,compiler,"windows" if gui_executable else "console")
     if not valid_minilang_cache(output_path,compile_stamp,compile_inputs):
         run([compiler, source_path, output_path, "-I", ROOT / "src", "-I", frozen,
              "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "64m"],
-             output, log=output / (output_path.name + ".compile.log"), timeout=480)
+             output, log=output / (output_path.name + ".compile.log"), timeout=900)
+        if gui_executable:
+            set_pe_windows_subsystem(output_path)
         compile_stamp.write_text(json.dumps({"inputs":compile_inputs,"binary":sha(output_path)},indent=2)+"\n")
-    if source_path.resolve() == (ROOT / "src/main.ml").resolve() and output_path.resolve() == (output / "MiniQuake3.exe").resolve():
+    if gui_executable:
         source_qvms = output / "reference" / "qvms"
         qvm_names = ("ui.qvm", "qagame.qvm", "cgame.qvm")
         if not valid_qvm_cache(source_qvms, qvm_names):

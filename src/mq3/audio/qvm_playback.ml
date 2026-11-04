@@ -12,6 +12,7 @@ import mq3.audio.snd_loop_doppler as sndDoppler
 import mq3.audio.snd_paint_pipeline as sndPaint
 import mq3.audio.snd_raw_stream as sndRaw
 import mq3.audio.snd_public as sndPublic
+import mq3.audio.native_paint as nativePaint
 import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
 import std.ds.list as lists
@@ -317,4 +318,64 @@ function render(state)
   active=lists.List.withCapacity(len(state.voices));for each voice in state.voices if voice.active then active.add(voice) else sndChannels.release(state.channels,voice.slot) end if end for;state.voices=active.toArray()
   elapsed=numeric.trunc32(state.chunkFrames*1000.0/state.outputRate);if elapsed<1 then elapsed=1 end if;sndChannels.advance(state.channels,elapsed)
   return Chunk(output,state.chunkFrames,voiceCount,loopCount,peak,limiter)
+end function
+
+function hasCompressedSources(state)
+  for each voice in state.voices if voice.active and voice.compressed!=void then return true end if end for
+  for each sourceLoop in state.loops if sourceLoop.active and sourceLoop.compressed!=void then return true end if end for
+  return false
+end function
+
+function paintMusicFast(state,music,paint)
+  phase=music.cursor;inIntro=music.inIntro;active=music.active;done=0
+  while done<state.chunkFrames and active
+    sound=music.loopSound;if inIntro then sound=music.introSound end if
+    sourceFrames=len(sound.samples)/sound.blockAlign
+    if sourceFrames<1 then active=false
+    else
+      step=sound.sampleRate/state.outputRate;remaining=sourceFrames-phase;part=numeric.trunc32(remaining/step)
+      if part*step<remaining then part=part+1 end if;if part<1 then part=1 end if;if done+part>state.chunkFrames then part=state.chunkFrames-done end if
+      phase=nativePaint.mixStream(paint,sound,sourceFrames,state.outputRate,phase,part,done);if phase is error then return phase end if;done=done+part
+      if phase>=sourceFrames then
+        overflowSeconds=(phase-sourceFrames)/sound.sampleRate
+        if inIntro then inIntro=false;phase=overflowSeconds*music.loopSound.sampleRate;loopFrames=len(music.loopSound.samples)/music.loopSound.blockAlign;if loopFrames<1 then active=false else while phase>=loopFrames phase=phase-loopFrames end while end if
+        else while phase>=sourceFrames phase=phase-sourceFrames end while end if
+      end if
+    end if
+  end while
+  music.cursor=phase;music.inIntro=inIntro;music.active=active;return active
+end function
+
+// Production Windows fast path. It is deliberately additive: the exact,
+// reference-tested MiniLang painter above remains the fallback for compressed
+// effects and queued cinematic raw audio.
+function renderFast(state)
+  if state==void then return fail("state is required") end if
+  if hasCompressedSources(state) or state.rawStream.rawEnd>state.loopPaintedFrames then return render(state) end if
+  paint=bytes(state.chunkFrames*8,0);voiceCount=0;loopCount=0
+  if state.music!=void and state.music.active then paintedMusic=paintMusicFast(state,state.music,paint);if paintedMusic is error then return paintedMusic end if;if paintedMusic then loopCount=loopCount+1 end if end if
+  for each voice in state.voices
+    if voice.active then
+      origin=voice.origin;if not voice.fixedOrigin then origin=entityOrigin(state,voice.entity) end if;volumes=sourceVolumes(state,voice.entity,origin,voice.localSound);sourceFrames=len(voice.sound.samples)/voice.sound.blockAlign
+      painted=nativePaint.mixPcm(paint,voice.sound,sourceFrames,numeric.trunc32(voice.cursor),state.chunkFrames,0,volumes[0],volumes[1],sndPaint.DEFAULT_SND_VOLUME,false,false,1.0,1.0);if painted is error then return painted end if
+      voice.cursor=voice.cursor+painted;if voice.cursor>=sourceFrames then voice.active=false end if
+      if painted>0 and (volumes[0]>0 or volumes[1]>0) then voiceCount=voiceCount+1 end if
+    end if
+  end for
+  loopEntries=array(len(state.loops),void);loopIndex=0;for each sourceLoop in state.loops loopEntries[loopIndex]=sndLoops.Entry(sourceLoop.entity,sourceLoop.handle,sourceLoop.origin,sourceLoop.realLoop,sourceLoop.doppler,sourceLoop.dopplerScale,sourceLoop.oldDopplerScale,sourceLoop.active);loopIndex=loopIndex+1 end for
+  loopGroups=sndLoops.build(loopEntries,state.listener.origin,state.listener.axis);if loopGroups is error then return loopGroups end if
+  for each group in loopGroups
+    sourceLoop=loopByEntity(state,group.primary)
+    if sourceLoop!=void then
+      sourceFrames=len(sourceLoop.sound.samples)/sourceLoop.sound.blockAlign
+      painted=nativePaint.mixPcm(paint,sourceLoop.sound,sourceFrames,state.loopPaintedFrames,state.chunkFrames,0,group.left,group.right,sndPaint.DEFAULT_SND_VOLUME,true,group.doppler,group.dopplerScale,group.oldDopplerScale);if painted is error then return painted end if
+      phase=0;if sourceFrames>0 then phase=(state.loopPaintedFrames+painted)%sourceFrames end if
+      for each entity in group.ids member=loopByEntity(state,entity);if member!=void then member.cursor=phase end if end for;loopCount=loopCount+1
+    end if
+  end for
+  state.loopPaintedFrames=state.loopPaintedFrames+state.chunkFrames
+  transferred=nativePaint.finish(paint,state.chunkFrames);if transferred is error then return transferred end if;peak=transferred.peak;limiter=1.0;if peak>32767 then limiter=32767.0/peak end if
+  active=lists.List.withCapacity(len(state.voices));for each voice in state.voices if voice.active then active.add(voice) else sndChannels.release(state.channels,voice.slot) end if end for;state.voices=active.toArray()
+  elapsed=numeric.trunc32(state.chunkFrames*1000.0/state.outputRate);if elapsed<1 then elapsed=1 end if;sndChannels.advance(state.channels,elapsed)
+  return Chunk(transferred.samples,state.chunkFrames,voiceCount,loopCount,peak,limiter)
 end function

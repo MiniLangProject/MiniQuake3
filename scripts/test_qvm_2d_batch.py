@@ -17,7 +17,7 @@ def main():
         archive.writestr('gfx/new.tga',bytes(header)+bytes([0,255,0,255]))
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/qvm_2d_batch_contracts.ml','--output','qvm_2d_batch_contracts.exe'],cwd=ROOT,check=True)
     result=subprocess.run([ROOT/'build/qvm_2d_batch_contracts.exe',fixture.resolve()],cwd=ROOT/'build',check=True,text=True,capture_output=True).stdout.strip()
-    if result!='PASS: 32 QVM 2D batch contracts':
+    if result!='PASS: 35 QVM 2D batch contracts':
         raise RuntimeError(result)
     print(result)
 

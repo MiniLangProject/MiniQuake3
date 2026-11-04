@@ -23,6 +23,12 @@ def main():
     preview_text=preview.read_text(encoding='utf-8')
     for anchor in ['inputCommand.create(', 'timestampedInput.applyBound(', 'window.inputEvents(', 'inputCommand.createCommand(']:
         if anchor not in preview_text:raise RuntimeError('productive QVM input integration missing: '+anchor)
+    if preview_text.index('window.inputClear()') > preview_text.index('realStart=window.milliseconds()'):
+        raise RuntimeError('loading-screen input must be discarded before the native clock is rebased')
+    for anchor in ['inputLatch.beginFrame(nativeInput.keys)', 'observeNativeInputEvents(nativeInput,nativeEvents)', 'inputLatch.observe(input.keys,event.type,event.value,event.value2)']:
+        if anchor not in preview_text:raise RuntimeError('productive QVM UI input edge latch missing: '+anchor)
+    if 'resetInputEvents();' not in native_window.read_text(encoding='utf-8'):
+        raise RuntimeError('native IN_ClearStates boundary does not discard stale queued input')
     platform_anchors={
       win_input:[
         'Sys_QueEvent( od.dwTimeStamp, SE_KEY, K_MOUSE1, qtrue, 0, NULL );',

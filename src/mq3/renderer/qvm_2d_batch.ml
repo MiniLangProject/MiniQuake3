@@ -21,10 +21,10 @@ struct Quad shaderHandle shaderName positions texCoords color commandIndex end s
 struct Triangle positions texCoords colors commandIndex end struct
 struct Texture imageName image slot noMipMaps end struct
 struct Material shaderHandle shaderName stages noMipMaps timeOffset clampTime end struct
-struct StagePass stage triangles batch timeOffset clampTime end struct
+struct StagePass stage triangles batch timeOffset clampTime initialized dynamic end struct
 struct Run materialIndex shaderHandle passes quadCount triangleCount end struct
 struct Extracted quads setColors ignoredCommands sourceWidth sourceHeight targetWidth targetHeight end struct
-struct Catalog materials textures runs archive scriptIndex scriptCount sourceQuads emittedTriangles resolvedQuads unresolvedQuads nextTextureSlot endTextureSlot shaderRemaps end struct
+struct Catalog materials textures runs archive scriptIndex scriptCount sourceQuads emittedTriangles resolvedQuads unresolvedQuads nextTextureSlot endTextureSlot shaderRemaps lastCommands remapRevision assetCount sourceWidth sourceHeight targetWidth targetHeight end struct
 
 function fail(message) return error(7683,"QVM 2D batch: "+message) end function
 function colorBytes(rgba)
@@ -37,6 +37,22 @@ function shaderName(assets,kinds,handle)
 end function
 function shaderNoMip(kinds,handle) return handle>0 and handle<=len(kinds) and kinds[handle-1]=="shaderNoMip" end function
 function scaledPoint(x,y,scaleX,scaleY) return Point(x*scaleX,y*scaleY,SCREEN_DEPTH) end function
+function sameValues(left,right)
+  if left==void or right==void or len(left)!=len(right) then return false end if
+  if len(left)>0 then for index=0 to len(left)-1 if left[index]!=right[index] then return false end if end for end if;return true
+end function
+function sameCommands(left,right)
+  if left==void or right==void or len(left)!=len(right) then return false end if
+  if len(left)>0 then for index=0 to len(left)-1 a=left[index];b=right[index];if a.id!=b.id or a.shader!=b.shader or not sameValues(a.values,b.values) then return false end if end for end if;return true
+end function
+function sameTopology(left,right)
+  if left==void or right==void or len(left)!=len(right) then return false end if
+  if len(left)>0 then for index=0 to len(left)-1 if left[index].id!=right[index].id or left[index].shader!=right[index].shader then return false end if end for end if;return true
+end function
+function dynamicStage(stage)
+  if stage==void then return true end if
+  return len(stage.slots)>1 or len(stage.uvMods)>0 or stage.tcGen!="texture" or stage.rgbGen=="wave" or stage.alphaGen=="wave"
+end function
 
 function extract(queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth,targetHeight)
   if queueCommands==void or assets==void or kinds==void then return fail("commands and asset registry are required") end if
@@ -113,12 +129,17 @@ function createPassReusable(stage,triangles,timeOffset,clampTime,previous)
   batch=void
   if previous!=void and previous.batch!=void and previous.batch.capacity>=len(triangles) then batch=window.resetTriangleBatch(previous.batch)
   else batch=window.createTriangleBatch(len(triangles));if batch is error then return batch end if end if
-  slot=stage.slots[0]
-  for each triangle in triangles
-    p=triangle.positions;uv=triangle.texCoords;c=triangle.colors
-    batch=window.appendSingleTextureTriangleColored(batch,slot,p[0],uv[0],1.0,c[0],p[1],uv[1],1.0,c[1],p[2],uv[2],1.0,c[2],255,255,255);if batch is error then return batch end if
-  end for
-  return StagePass(stage,triangles,batch,timeOffset,clampTime)
+  slot=stage.slots[0];triangleIndex=0
+  while triangleIndex+1<len(triangles)
+    first=triangles[triangleIndex];second=triangles[triangleIndex+1]
+    // trianglesFor emits [3,0,2] then [2,0,1]; reconstruct the source quad
+    // and let the native ABI pack both identical 128-byte records at once.
+    positions=[first.positions[1],second.positions[2],first.positions[2],first.positions[0]]
+    texCoords=[first.texCoords[1],second.texCoords[2],first.texCoords[2],first.texCoords[0]]
+    batch=window.appendScreenQuad(batch,slot,positions,texCoords,first.colors[0]);if batch is error then return batch end if;triangleIndex=triangleIndex+2
+  end while
+  if triangleIndex<len(triangles) then triangle=triangles[triangleIndex];p=triangle.positions;uv=triangle.texCoords;c=triangle.colors;batch=window.appendSingleTextureTriangleColored(batch,slot,p[0],uv[0],1.0,c[0],p[1],uv[1],1.0,c[1],p[2],uv[2],1.0,c[2],255,255,255);if batch is error then return batch end if end if
+  return StagePass(stage,triangles,batch,timeOffset,clampTime,false,dynamicStage(stage))
 end function
 function createPass(stage,triangles,timeOffset,clampTime) return createPassReusable(stage,triangles,timeOffset,clampTime,void) end function
 function createRunReusable(materialIndexValue,handle,material,quads,previous)
@@ -130,10 +151,38 @@ function createRunReusable(materialIndexValue,handle,material,quads,previous)
 end function
 function createRun(materialIndexValue,handle,material,quads) return createRunReusable(materialIndexValue,handle,material,quads,void) end function
 
+function refreshStaticTopology(catalog,queueCommands,sourceWidth,sourceHeight,targetWidth,targetHeight)
+  colors=array(len(queueCommands),void);color=[255,255,255,255]
+  if len(queueCommands)>0 then for commandIndex=0 to len(queueCommands)-1
+    command=queueCommands[commandIndex]
+    if command.id==q2commands.RC_SET_COLOR then if len(command.values)!=4 then return false end if;color=colorBytes(command.values)
+    else if command.id==q2commands.RC_STRETCH_PIC then if len(command.values)!=8 then return false end if;colors[commandIndex]=[color[0],color[1],color[2],color[3]] end if
+  end for end if
+  scaleX=targetWidth/sourceWidth;scaleY=targetHeight/sourceHeight
+  for each run in catalog.runs for each pass in run.passes
+    for quadIndex=0 to run.quadCount-1
+      triangleIndex=quadIndex*2;commandIndex=pass.triangles[triangleIndex].commandIndex
+      if commandIndex<0 or commandIndex>=len(queueCommands) or colors[commandIndex]==void then return false end if
+      command=queueCommands[commandIndex];if command.shader!=run.shaderHandle then return false end if;v=command.values
+      outputColor=colors[commandIndex]
+      if pass.dynamic then
+        positions=[scaledPoint(v[0],v[1],scaleX,scaleY),scaledPoint(v[0]+v[2],v[1],scaleX,scaleY),scaledPoint(v[0]+v[2],v[1]+v[3],scaleX,scaleY),scaledPoint(v[0],v[1]+v[3],scaleX,scaleY)];texCoords=[[v[4],v[5]],[v[6],v[5]],[v[6],v[7]],[v[4],v[7]]]
+        updated=trianglesFor(Quad(run.shaderHandle,"",positions,texCoords,outputColor,commandIndex),run.materialIndex);pass.triangles[triangleIndex]=updated[0];pass.triangles[triangleIndex+1]=updated[1];pass.initialized=false
+      else effective=materials.shaderMilliseconds(0.0,0.0,pass.timeOffset,pass.clampTime);outputColor=materials.stageColor(pass.stage,outputColor,effective);pass.initialized=true end if
+      written=window.writeScreenRect(pass.batch,triangleIndex,pass.stage.slots[0],v[0],v[1],v[2],v[3],v[4],v[5],v[6],v[7],scaleX,scaleY,outputColor);if written is error then return written end if
+    end for
+  end for end for
+  catalog.lastCommands=queueCommands;catalog.sourceWidth=sourceWidth;catalog.sourceHeight=sourceHeight;catalog.targetWidth=targetWidth;catalog.targetHeight=targetHeight;return catalog
+end function
+
 // Rebuild only the changing quad/run buffers.  Shader parsing, PK3 image
 // decoding and texture-slot assignment remain cached in the catalog.
 function refresh(catalog,queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth,targetHeight)
   if catalog==void then return fail("catalog is required") end if
+  revision=0;if catalog.shaderRemaps!=void then revision=catalog.shaderRemaps.revision end if
+  sameDimensions=catalog.sourceWidth==sourceWidth and catalog.sourceHeight==sourceHeight and catalog.targetWidth==targetWidth and catalog.targetHeight==targetHeight
+  if sameDimensions and catalog.assetCount==len(assets) and catalog.remapRevision==revision and sameCommands(catalog.lastCommands,queueCommands) then return catalog end if
+  if sameDimensions and catalog.assetCount==len(assets) and catalog.remapRevision==revision and sameTopology(catalog.lastCommands,queueCommands) then cached=refreshStaticTopology(catalog,queueCommands,sourceWidth,sourceHeight,targetWidth,targetHeight);if cached is error then return cached end if;if cached!=false then return cached end if end if
   extracted=extract(queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth,targetHeight);if extracted is error then return extracted end if
   for each material in catalog.materials offset=shaderRemap.timeOffsetForHandle(catalog.shaderRemaps,material.shaderHandle);material.timeOffset=0.0;if offset!=void then material.timeOffset=offset end if end for
   oldRuns=catalog.runs;runIndex=0;runList=lists.List.withCapacity(len(extracted.quads));catalog.runs=[];catalog.sourceQuads=len(extracted.quads);catalog.emittedTriangles=0;catalog.resolvedQuads=0;catalog.unresolvedQuads=0
@@ -155,7 +204,7 @@ function refresh(catalog,queueCommands,assets,kinds,sourceWidth,sourceHeight,tar
     currentHandle=quad.shaderHandle;current.add(quad)
   end for
   if current.len()>0 then index=materialIndex(catalog.materials,currentHandle);oldRun=void;if runIndex<len(oldRuns) then oldRun=oldRuns[runIndex] end if;run=createRunReusable(index,currentHandle,catalog.materials[index],current.toArray(),oldRun);if run is error then return run end if;runList.add(run);catalog.emittedTriangles=catalog.emittedTriangles+run.triangleCount*len(run.passes) end if
-  catalog.runs=runList.toArray()
+  catalog.runs=runList.toArray();catalog.lastCommands=queueCommands;catalog.remapRevision=revision;catalog.assetCount=len(assets);catalog.sourceWidth=sourceWidth;catalog.sourceHeight=sourceHeight;catalog.targetWidth=targetWidth;catalog.targetHeight=targetHeight
   return catalog
 end function
 
@@ -164,7 +213,8 @@ function buildIndexed(archive,queueCommands,assets,kinds,firstTextureSlot,maxTex
   if firstTextureSlot<0 or maxTextureSlots<0 or firstTextureSlot+maxTextureSlots>512 then return fail("invalid native texture slot range") end if
   extracted=extract(queueCommands,assets,kinds,sourceWidth,sourceHeight,targetWidth,targetHeight);if extracted is error then return extracted end if
   if scripts==void or len(scripts)!=2 or scripts[0]==void then return fail("shared shader index is required") end if
-  catalog=Catalog([],[],[],archive,scripts[0],scripts[1],len(extracted.quads),0,0,0,firstTextureSlot,firstTextureSlot+maxTextureSlots,shaderRemaps);endSlot=catalog.endTextureSlot
+  revision=0;if shaderRemaps!=void then revision=shaderRemaps.revision end if
+  catalog=Catalog([],[],[],archive,scripts[0],scripts[1],len(extracted.quads),0,0,0,firstTextureSlot,firstTextureSlot+maxTextureSlots,shaderRemaps,queueCommands,revision,len(assets),sourceWidth,sourceHeight,targetWidth,targetHeight);endSlot=catalog.endTextureSlot
   runList=lists.List.withCapacity(len(extracted.quads));current=lists.List.withCapacity(len(extracted.quads));currentHandle=-1
   for each quad in extracted.quads
     index=materialIndex(catalog.materials,quad.shaderHandle)
@@ -199,6 +249,7 @@ function release(catalog) if catalog!=void then for each texture in catalog.text
 
 function updatePass(pass,nowMilliseconds)
   effectiveMilliseconds=materials.shaderMilliseconds(nowMilliseconds,0.0,pass.timeOffset,pass.clampTime);slot=materials.slotAt(pass.stage,effectiveMilliseconds)
+  if pass.initialized and not pass.dynamic then return slot end if
   for triangleIndex=0 to len(pass.triangles)-1
     triangle=pass.triangles[triangleIndex];offset=triangleIndex*window.TRIANGLE_BATCH_RECORD_BYTES;window.writeBatchI32(pass.batch.data,offset,slot)
     for vertex=0 to 2
@@ -206,7 +257,7 @@ function updatePass(pass,nowMilliseconds)
       color=materials.stageColor(pass.stage,triangle.colors[vertex],effectiveMilliseconds);uvOffset=offset+32+vertex*32;window.writeBatchF32(pass.batch.data,uvOffset,uv[0]);window.writeBatchF32(pass.batch.data,uvOffset+4,uv[1]);window.writeBatchColor(pass.batch.data,offset+116+vertex*4,color)
     end for
   end for
-  return slot
+  pass.initialized=true;return slot
 end function
 function draw(catalog,nowMilliseconds)
   if catalog==void or nowMilliseconds<0 then return fail("valid catalog and time are required") end if

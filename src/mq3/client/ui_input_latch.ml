@@ -1,0 +1,30 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+// Frame-stable Win32 key edges for the polling interface used by ui.qvm.
+package mq3.client.ui_input_latch
+
+const INPUT_KEY=1
+
+struct State down pulse end struct
+
+function create(keyCount)
+  if typeof(keyCount)!="int" or keyCount<1 then return error(7703,"UI input latch: invalid key capacity") end if
+  return State(array(keyCount,false),array(keyCount,false))
+end function
+
+function beginFrame(state)
+  if state==void then return error(7703,"UI input latch: state is required") end if
+  for index=0 to len(state.pulse)-1 state.pulse[index]=false end for
+  return void
+end function
+
+function observe(state,type,key,value)
+  if state==void then return error(7703,"UI input latch: state is required") end if
+  if type!=INPUT_KEY or key<0 or key>=len(state.down) then return false end if
+  down=value!=0;state.down[key]=down;if down then state.pulse[key]=true end if
+  return true
+end function
+
+function keyDown(state,key)
+  if state==void or key<0 or key>=len(state.down) then return false end if
+  return state.down[key] or state.pulse[key]
+end function
