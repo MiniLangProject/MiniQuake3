@@ -1,0 +1,35 @@
+# `mq3.botlib.ai_item_weights.Weight`
+
+[Home](README.md) · [Source file](File-src-mq3-botlib-ai-item-weights-ml-1163821802.md)
+
+<a id="struct-struct-mq3-botlib-ai-item-weights-weight-struct-weight-src-mq3-botlib-ai-item-weights-ml-374334303"></a>
+## Weight
+
+```ml
+struct Weight
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L23)
+
+## Members
+
+<a id="field-field-mq3-botlib-ai-item-weights-weight-name-name-src-mq3-botlib-ai-item-weights-ml-1824884079"></a>
+### name
+
+```ml
+name
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L23)
+
+<a id="field-field-mq3-botlib-ai-item-weights-weight-separators-separators-src-mq3-botlib-ai-item-weights-ml-1091675989"></a>
+### separators
+
+```ml
+separators
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L23)

@@ -1,0 +1,45 @@
+# `mq3.renderer.tr_types.Poly`
+
+[Home](README.md) · [Source file](File-src-mq3-renderer-tr-types-ml-1757535937.md)
+
+<a id="struct-struct-mq3-renderer-tr-types-poly-struct-poly-src-mq3-renderer-tr-types-ml-1920489395"></a>
+## Poly
+
+```ml
+struct Poly
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_types.ml#L48)
+
+## Members
+
+<a id="field-field-mq3-renderer-tr-types-poly-hshader-hshader-src-mq3-renderer-tr-types-ml-2028002321"></a>
+### hShader
+
+```ml
+hShader
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_types.ml#L48)
+
+<a id="field-field-mq3-renderer-tr-types-poly-numverts-numverts-src-mq3-renderer-tr-types-ml-1056823413"></a>
+### numVerts
+
+```ml
+numVerts
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_types.ml#L48)
+
+<a id="field-field-mq3-renderer-tr-types-poly-verts-verts-src-mq3-renderer-tr-types-ml-705654321"></a>
+### verts
+
+```ml
+verts
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_types.ml#L48)

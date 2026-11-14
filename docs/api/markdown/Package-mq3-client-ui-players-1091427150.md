@@ -1,0 +1,94 @@
+# Package `mq3.client.ui_players`
+
+[Home](README.md) · [Packages](Packages.md)
+
+## Files
+
+- [src/mq3/client/ui_players.ml](File-src-mq3-client-ui-players-ml-675454436.md)
+
+## Symbols
+
+- [`mq3.client.ui_players.absolute`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-absolute-function-absolute-value-src-mq3-client-ui-players-ml-2048369229) — function
+- [`mq3.client.ui_players.Action`](Type-mq3-client-ui-players-action-2037211834.md) — struct
+- [`mq3.client.ui_players.angleSubtract`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-anglesubtract-function-anglesubtract-a-b-src-mq3-client-ui-players-ml-1989633821) — function
+- [`mq3.client.ui_players.ANIM_TOGGLEBIT`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-anim-togglebit-const-anim-togglebit-128-src-mq3-client-ui-players-ml-1051420818) — constant
+- [`mq3.client.ui_players.Animation`](Type-mq3-client-ui-players-animation-1459264302.md) — struct
+- [`mq3.client.ui_players.animationText`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-animationtext-function-animationtext-source-path-src-mq3-client-ui-players-ml-2064857744) — function
+- [`mq3.client.ui_players.assetSource`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-assetsource-function-assetsource-files-animationfiles-retailactive-src-mq3-client-ui-players-ml-227950237) — function
+- [`mq3.client.ui_players.AssetSource`](Type-mq3-client-ui-players-assetsource-586603349.md) — struct
+- [`mq3.client.ui_players.BOTH_DEATH1`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-both-death1-const-both-death1-0-src-mq3-client-ui-players-ml-120738765) — constant
+- [`mq3.client.ui_players.create`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-create-function-create-src-mq3-client-ui-players-ml-37526172) — function
+- [`mq3.client.ui_players.emit`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-emit-function-emit-list-boundary-kind-name-detail-number-vector-retailactive-src-mq3-client-ui-players-ml-1241888437) — function
+- [`mq3.client.ui_players.exists`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-exists-function-exists-source-path-src-mq3-client-ui-players-ml-2101122758) — function
+- [`mq3.client.ui_players.flashColor`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-flashcolor-function-flashcolor-weapon-src-mq3-client-ui-players-ml-1078171984) — function
+- [`mq3.client.ui_players.identityAxis`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-identityaxis-function-identityaxis-src-mq3-client-ui-players-ml-1746874324) — function
+- [`mq3.client.ui_players.JUMP_HEIGHT`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-jump-height-const-jump-height-56-src-mq3-client-ui-players-ml-1543089976) — constant
+- [`mq3.client.ui_players.LEGS_IDLE`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-legs-idle-const-legs-idle-22-src-mq3-client-ui-players-ml-1237629437) — constant
+- [`mq3.client.ui_players.LEGS_JUMP`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-legs-jump-const-legs-jump-18-src-mq3-client-ui-players-ml-1743734810) — constant
+- [`mq3.client.ui_players.LEGS_LAND`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-legs-land-const-legs-land-19-src-mq3-client-ui-players-ml-37739211) — constant
+- [`mq3.client.ui_players.LEGS_TURN`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-legs-turn-const-legs-turn-24-src-mq3-client-ui-players-ml-1049021255) — constant
+- [`mq3.client.ui_players.LEGS_WALKCR`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-legs-walkcr-const-legs-walkcr-13-src-mq3-client-ui-players-ml-938400021) — constant
+- [`mq3.client.ui_players.lerpFrame`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-lerpframe-function-lerpframe-src-mq3-client-ui-players-ml-1099622528) — function
+- [`mq3.client.ui_players.LerpFrame`](Type-mq3-client-ui-players-lerpframe-1938263498.md) — struct
+- [`mq3.client.ui_players.matrixMultiply`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-matrixmultiply-function-matrixmultiply-a-b-src-mq3-client-ui-players-ml-1181529083) — function
+- [`mq3.client.ui_players.MAX_ANIMATIONS`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-max-animations-const-max-animations-31-src-mq3-client-ui-players-ml-1037580607) — constant
+- [`mq3.client.ui_players.numberStarts`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-numberstarts-function-numberstarts-token-src-mq3-client-ui-players-ml-549348745) — function
+- [`mq3.client.ui_players.Orientation`](Type-mq3-client-ui-players-orientation-1749867754.md) — struct
+- [`mq3.client.ui_players.PlayerInfo`](Type-mq3-client-ui-players-playerinfo-863292821.md) — struct
+- [`mq3.client.ui_players.register`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-register-function-register-source-kind-path-src-mq3-client-ui-players-ml-9576084) — function
+- [`mq3.client.ui_players.renderEntity`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-renderentity-function-renderentity-kind-model-skin-tag-src-mq3-client-ui-players-ml-1032246330) — function
+- [`mq3.client.ui_players.RenderEntity`](Type-mq3-client-ui-players-renderentity-1022602091.md) — struct
+- [`mq3.client.ui_players.resetInfo`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-resetinfo-function-resetinfo-pi-src-mq3-client-ui-players-ml-1889757957) — function
+- [`mq3.client.ui_players.same`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-same-function-same-a-b-src-mq3-client-ui-players-ml-840162419) — function
+- [`mq3.client.ui_players.stripMd3`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-stripmd3-function-stripmd3-path-src-mq3-client-ui-players-ml-926831871) — function
+- [`mq3.client.ui_players.tan`](File-src-mq3-client-ui-players-ml-675454436.md#extern_function-extern-function-mq3-client-ui-players-tan-extern-function-tan-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-client-ui-players-ml-1638259840) — extern_function
+- [`mq3.client.ui_players.TORSO_ATTACK`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-torso-attack-const-torso-attack-7-src-mq3-client-ui-players-ml-1189246356) — constant
+- [`mq3.client.ui_players.TORSO_ATTACK2`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-torso-attack2-const-torso-attack2-8-src-mq3-client-ui-players-ml-252759197) — constant
+- [`mq3.client.ui_players.TORSO_DROP`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-torso-drop-const-torso-drop-9-src-mq3-client-ui-players-ml-1656398596) — constant
+- [`mq3.client.ui_players.TORSO_GESTURE`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-torso-gesture-const-torso-gesture-6-src-mq3-client-ui-players-ml-1124319863) — constant
+- [`mq3.client.ui_players.TORSO_GETFLAG`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-torso-getflag-const-torso-getflag-25-src-mq3-client-ui-players-ml-1484118526) — constant
+- [`mq3.client.ui_players.TORSO_RAISE`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-torso-raise-const-torso-raise-10-src-mq3-client-ui-players-ml-177538142) — constant
+- [`mq3.client.ui_players.TORSO_STAND`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-torso-stand-const-torso-stand-11-src-mq3-client-ui-players-ml-1725754375) — constant
+- [`mq3.client.ui_players.TORSO_STAND2`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-torso-stand2-const-torso-stand2-12-src-mq3-client-ui-players-ml-1086288986) — constant
+- [`mq3.client.ui_players.UI_DrawPlayer`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-drawplayer-function-ui-drawplayer-source-x-y-w-h-pi-time-frametime-retailactive-src-mq3-client-ui-players-ml-586311076) — function
+- [`mq3.client.ui_players.UI_ForceLegsAnim`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-forcelegsanim-function-ui-forcelegsanim-pi-anim-src-mq3-client-ui-players-ml-1780204514) — function
+- [`mq3.client.ui_players.UI_ForceTorsoAnim`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-forcetorsoanim-function-ui-forcetorsoanim-pi-anim-src-mq3-client-ui-players-ml-188595962) — function
+- [`mq3.client.ui_players.UI_LegsSequencing`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-legssequencing-function-ui-legssequencing-pi-src-mq3-client-ui-players-ml-1978335379) — function
+- [`mq3.client.ui_players.UI_MachinegunSpinAngle`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-machinegunspinangle-function-ui-machinegunspinangle-pi-realtime-src-mq3-client-ui-players-ml-206024278) — function
+- [`mq3.client.ui_players.UI_MovedirAdjustment`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-movediradjustment-function-ui-movediradjustment-pi-src-mq3-client-ui-players-ml-179978099) — function
+- [`mq3.client.ui_players.UI_ParseAnimationFile`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-parseanimationfile-function-ui-parseanimationfile-filename-text-src-mq3-client-ui-players-ml-274161514) — function
+- [`mq3.client.ui_players.UI_PlayerAngles`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-playerangles-function-ui-playerangles-pi-frametime-src-mq3-client-ui-players-ml-1982610617) — function
+- [`mq3.client.ui_players.UI_PlayerAnimation`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-playeranimation-function-ui-playeranimation-source-pi-frametime-realtime-src-mq3-client-ui-players-ml-157310239) — function
+- [`mq3.client.ui_players.UI_PlayerFloatSprite`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-playerfloatsprite-function-ui-playerfloatsprite-pi-origin-shader-retailactive-src-mq3-client-ui-players-ml-1387959101) — function
+- [`mq3.client.ui_players.UI_PlayerInfo_SetInfo`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-playerinfo-setinfo-function-ui-playerinfo-setinfo-source-pi-legsanim-torsoanim-viewangles-moveangles-weaponnumber-chat-src-mq3-client-ui-players-ml-770073901) — function
+- [`mq3.client.ui_players.UI_PlayerInfo_SetModel`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-playerinfo-setmodel-function-ui-playerinfo-setmodel-source-pi-model-src-mq3-client-ui-players-ml-302180663) — function
+- [`mq3.client.ui_players.UI_PlayerInfo_SetWeapon`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-playerinfo-setweapon-function-ui-playerinfo-setweapon-source-pi-weaponnum-src-mq3-client-ui-players-ml-2056038424) — function
+- [`mq3.client.ui_players.UI_PositionEntityOnTag`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-positionentityontag-function-ui-positionentityontag-entity-parent-orientation-src-mq3-client-ui-players-ml-1462700003) — function
+- [`mq3.client.ui_players.UI_PositionRotatedEntityOnTag`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-positionrotatedentityontag-function-ui-positionrotatedentityontag-entity-parent-orientation-src-mq3-client-ui-players-ml-1029651641) — function
+- [`mq3.client.ui_players.UI_RegisterClientModelname`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-registerclientmodelname-function-ui-registerclientmodelname-source-pi-modelskinname-src-mq3-client-ui-players-ml-1020686509) — function
+- [`mq3.client.ui_players.UI_RegisterClientSkin`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-registerclientskin-function-ui-registerclientskin-source-pi-modelname-skinname-src-mq3-client-ui-players-ml-908482758) — function
+- [`mq3.client.ui_players.UI_RunLerpFrame`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-runlerpframe-function-ui-runlerpframe-pi-lf-newanimation-realtime-src-mq3-client-ui-players-ml-48091812) — function
+- [`mq3.client.ui_players.UI_SetLegsAnim`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-setlegsanim-function-ui-setlegsanim-pi-anim-src-mq3-client-ui-players-ml-1626913242) — function
+- [`mq3.client.ui_players.UI_SetLerpFrameAnimation`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-setlerpframeanimation-function-ui-setlerpframeanimation-pi-lf-newanimation-src-mq3-client-ui-players-ml-883658941) — function
+- [`mq3.client.ui_players.UI_SetTorsoAnim`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-settorsoanim-function-ui-settorsoanim-pi-anim-src-mq3-client-ui-players-ml-652563832) — function
+- [`mq3.client.ui_players.UI_SwingAngles`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-swingangles-function-ui-swingangles-destination-swingtolerance-clamptolerance-speed-angle-swinging-frametime-src-mq3-client-ui-players-ml-1909530829) — function
+- [`mq3.client.ui_players.UI_TIMER_ATTACK`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-ui-timer-attack-const-ui-timer-attack-500-src-mq3-client-ui-players-ml-1224582248) — constant
+- [`mq3.client.ui_players.UI_TIMER_GESTURE`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-ui-timer-gesture-const-ui-timer-gesture-2300-src-mq3-client-ui-players-ml-997166254) — constant
+- [`mq3.client.ui_players.UI_TIMER_JUMP`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-ui-timer-jump-const-ui-timer-jump-1000-src-mq3-client-ui-players-ml-1143595362) — constant
+- [`mq3.client.ui_players.UI_TIMER_LAND`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-ui-timer-land-const-ui-timer-land-130-src-mq3-client-ui-players-ml-1118820997) — constant
+- [`mq3.client.ui_players.UI_TIMER_MUZZLE_FLASH`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-ui-timer-muzzle-flash-const-ui-timer-muzzle-flash-20-src-mq3-client-ui-players-ml-2143818907) — constant
+- [`mq3.client.ui_players.UI_TIMER_WEAPON_DELAY`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-ui-timer-weapon-delay-const-ui-timer-weapon-delay-250-src-mq3-client-ui-players-ml-1110105912) — constant
+- [`mq3.client.ui_players.UI_TIMER_WEAPON_SWITCH`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-ui-timer-weapon-switch-const-ui-timer-weapon-switch-300-src-mq3-client-ui-players-ml-931723524) — constant
+- [`mq3.client.ui_players.UI_TorsoSequencing`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-ui-torsosequencing-function-ui-torsosequencing-source-pi-src-mq3-client-ui-players-ml-1779659770) — function
+- [`mq3.client.ui_players.weaponPath`](File-src-mq3-client-ui-players-ml-675454436.md#function-function-mq3-client-ui-players-weaponpath-function-weaponpath-weapon-src-mq3-client-ui-players-ml-385094444) — function
+- [`mq3.client.ui_players.WP_BFG`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-wp-bfg-const-wp-bfg-9-src-mq3-client-ui-players-ml-1881232348) — constant
+- [`mq3.client.ui_players.WP_GAUNTLET`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-wp-gauntlet-const-wp-gauntlet-1-src-mq3-client-ui-players-ml-292852264) — constant
+- [`mq3.client.ui_players.WP_GRAPPLING_HOOK`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-wp-grappling-hook-const-wp-grappling-hook-10-src-mq3-client-ui-players-ml-1783281014) — constant
+- [`mq3.client.ui_players.WP_GRENADE_LAUNCHER`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-wp-grenade-launcher-const-wp-grenade-launcher-4-src-mq3-client-ui-players-ml-292528349) — constant
+- [`mq3.client.ui_players.WP_LIGHTNING`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-wp-lightning-const-wp-lightning-6-src-mq3-client-ui-players-ml-83462485) — constant
+- [`mq3.client.ui_players.WP_MACHINEGUN`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-wp-machinegun-const-wp-machinegun-2-src-mq3-client-ui-players-ml-709477907) — constant
+- [`mq3.client.ui_players.WP_NONE`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-wp-none-const-wp-none-0-src-mq3-client-ui-players-ml-1722983969) — constant
+- [`mq3.client.ui_players.WP_PLASMAGUN`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-wp-plasmagun-const-wp-plasmagun-8-src-mq3-client-ui-players-ml-1840399127) — constant
+- [`mq3.client.ui_players.WP_RAILGUN`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-wp-railgun-const-wp-railgun-7-src-mq3-client-ui-players-ml-982178828) — constant
+- [`mq3.client.ui_players.WP_ROCKET_LAUNCHER`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-wp-rocket-launcher-const-wp-rocket-launcher-5-src-mq3-client-ui-players-ml-1031081344) — constant
+- [`mq3.client.ui_players.WP_SHOTGUN`](File-src-mq3-client-ui-players-ml-675454436.md#constant-constant-mq3-client-ui-players-wp-shotgun-const-wp-shotgun-3-src-mq3-client-ui-players-ml-1649174072) — constant

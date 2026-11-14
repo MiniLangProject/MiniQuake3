@@ -1,0 +1,55 @@
+# `mq3.botlib.lib_variables.Variable`
+
+[Home](README.md) · [Source file](File-src-mq3-botlib-lib-variables-ml-1792457987.md)
+
+<a id="struct-struct-mq3-botlib-lib-variables-variable-struct-variable-src-mq3-botlib-lib-variables-ml-1153967371"></a>
+## Variable
+
+```ml
+struct Variable
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L7)
+
+## Members
+
+<a id="field-field-mq3-botlib-lib-variables-variable-modified-modified-src-mq3-botlib-lib-variables-ml-350759971"></a>
+### modified
+
+```ml
+modified
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L7)
+
+<a id="field-field-mq3-botlib-lib-variables-variable-name-name-src-mq3-botlib-lib-variables-ml-558440259"></a>
+### name
+
+```ml
+name
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L7)
+
+<a id="field-field-mq3-botlib-lib-variables-variable-numericvalue-numericvalue-src-mq3-botlib-lib-variables-ml-241231353"></a>
+### numericValue
+
+```ml
+numericValue
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L7)
+
+<a id="field-field-mq3-botlib-lib-variables-variable-value-value-src-mq3-botlib-lib-variables-ml-1099349429"></a>
+### value
+
+```ml
+value
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L7)

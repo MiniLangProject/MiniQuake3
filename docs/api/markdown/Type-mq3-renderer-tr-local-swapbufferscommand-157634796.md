@@ -1,0 +1,25 @@
+# `mq3.renderer.tr_local.SwapBuffersCommand`
+
+[Home](README.md) · [Source file](File-src-mq3-renderer-tr-local-ml-841068495.md)
+
+<a id="struct-struct-mq3-renderer-tr-local-swapbufferscommand-struct-swapbufferscommand-src-mq3-renderer-tr-local-ml-1009394211"></a>
+## SwapBuffersCommand
+
+```ml
+struct SwapBuffersCommand
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L58)
+
+## Members
+
+<a id="field-field-mq3-renderer-tr-local-swapbufferscommand-commandid-commandid-src-mq3-renderer-tr-local-ml-342703362"></a>
+### commandId
+
+```ml
+commandId
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L58)

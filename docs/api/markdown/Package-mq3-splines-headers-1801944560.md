@@ -1,0 +1,98 @@
+# Package `mq3.splines.headers`
+
+[Home](README.md) · [Packages](Packages.md)
+
+## Files
+
+- [src/mq3/splines/headers.ml](File-src-mq3-splines-headers-ml-550180384.md)
+
+## Symbols
+
+- [`mq3.splines.headers.AddBounds`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-addbounds-function-addbounds-value-other-src-mq3-splines-headers-ml-1458176871) — function
+- [`mq3.splines.headers.AddPoint`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-addpoint-function-addpoint-value-point-src-mq3-splines-headers-ml-823491591) — function
+- [`mq3.splines.headers.AddUnique`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-addunique-function-addunique-list-value-src-mq3-splines-headers-ml-340075739) — function
+- [`mq3.splines.headers.angles`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-angles-function-angles-pitch-yaw-roll-src-mq3-splines-headers-ml-660442356) — function
+- [`mq3.splines.headers.Angles`](Type-mq3-splines-headers-angles-169651934.md) — struct
+- [`mq3.splines.headers.angles_t`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-angles-t-function-angles-t-pitch-yaw-roll-src-mq3-splines-headers-ml-1077658176) — function
+- [`mq3.splines.headers.append`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-append-function-append-left-right-src-mq3-splines-headers-ml-424941295) — function
+- [`mq3.splines.headers.Append`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-append-function-append-list-value-src-mq3-splines-headers-ml-1240408647) — function
+- [`mq3.splines.headers.bounds`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-bounds-function-bounds-src-mq3-splines-headers-ml-2146052874) — function
+- [`mq3.splines.headers.Bounds`](Type-mq3-splines-headers-bounds-2092755403.md) — struct
+- [`mq3.splines.headers.Center`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-center-function-center-value-src-mq3-splines-headers-ml-1728259971) — function
+- [`mq3.splines.headers.Clear`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-clear-function-clear-src-mq3-splines-headers-ml-1614368656) — function
+- [`mq3.splines.headers.Condense`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-condense-function-condense-list-src-mq3-splines-headers-ml-679216258) — function
+- [`mq3.splines.headers.ContainsPoint`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-containspoint-function-containspoint-value-point-src-mq3-splines-headers-ml-1648258941) — function
+- [`mq3.splines.headers.Cross`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-cross-function-cross-a-b-src-mq3-splines-headers-ml-451105677) — function
+- [`mq3.splines.headers.DEG2RAD`](File-src-mq3-splines-headers-ml-550180384.md#constant-constant-mq3-splines-headers-deg2rad-const-deg2rad-1-74532925199433e-002-src-mq3-splines-headers-ml-830244070) — constant
+- [`mq3.splines.headers.dot`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-dot-function-dot-a-b-src-mq3-splines-headers-ml-1336791551) — function
+- [`mq3.splines.headers.EQUAL_EPSILON`](File-src-mq3-splines-headers-ml-550180384.md#constant-constant-mq3-splines-headers-equal-epsilon-const-equal-epsilon-1-e-003-src-mq3-splines-headers-ml-292123273) — constant
+- [`mq3.splines.headers.Find`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-find-function-find-list-value-src-mq3-splines-headers-ml-58990371) — function
+- [`mq3.splines.headers.Identity`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-identity-function-identity-src-mq3-splines-headers-ml-1890231058) — function
+- [`mq3.splines.headers.idList`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-idlist-function-idlist-granularity-src-mq3-splines-headers-ml-1650056778) — function
+- [`mq3.splines.headers.idSqrt`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-idsqrt-function-idsqrt-value-src-mq3-splines-headers-ml-359900391) — function
+- [`mq3.splines.headers.idStr`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-idstr-function-idstr-value-src-mq3-splines-headers-ml-908681843) — function
+- [`mq3.splines.headers.idVec3_t`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-idvec3-t-function-idvec3-t-x-y-z-src-mq3-splines-headers-ml-130667621) — function
+- [`mq3.splines.headers.IntersectsBounds`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-intersectsbounds-function-intersectsbounds-a-b-src-mq3-splines-headers-ml-1526263877) — function
+- [`mq3.splines.headers.InverseMultiply`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-inversemultiply-function-inversemultiply-inverse-b-src-mq3-splines-headers-ml-1602284576) — function
+- [`mq3.splines.headers.IsCleared`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-iscleared-function-iscleared-value-src-mq3-splines-headers-ml-192916687) — function
+- [`mq3.splines.headers.Length`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-length-function-length-value-src-mq3-splines-headers-ml-769976047) — function
+- [`mq3.splines.headers.LerpVector`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-lerpvector-function-lerpvector-a-b-fraction-src-mq3-splines-headers-ml-1879149239) — function
+- [`mq3.splines.headers.listClear`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-listclear-function-listclear-list-src-mq3-splines-headers-ml-1838611908) — function
+- [`mq3.splines.headers.ListState`](Type-mq3-splines-headers-liststate-1658866379.md) — struct
+- [`mq3.splines.headers.mat3`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-mat3-function-mat3-a-b-c-src-mq3-splines-headers-ml-1711671758) — function
+- [`mq3.splines.headers.Mat3`](Type-mq3-splines-headers-mat3-1263765969.md) — struct
+- [`mq3.splines.headers.mat3_t`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-mat3-t-function-mat3-t-a-b-c-src-mq3-splines-headers-ml-394888950) — function
+- [`mq3.splines.headers.mathAnglesSymbols`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-mathanglessymbols-function-mathanglessymbols-src-mq3-splines-headers-ml-436544284) — function
+- [`mq3.splines.headers.mathMatrixSymbols`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-mathmatrixsymbols-function-mathmatrixsymbols-src-mq3-splines-headers-ml-1700226862) — function
+- [`mq3.splines.headers.mathQuaternionSymbols`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-mathquaternionsymbols-function-mathquaternionsymbols-src-mq3-splines-headers-ml-270081312) — function
+- [`mq3.splines.headers.mathVectorSymbols`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-mathvectorsymbols-function-mathvectorsymbols-src-mq3-splines-headers-ml-853352498) — function
+- [`mq3.splines.headers.matrixMultiply`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-matrixmultiply-function-matrixmultiply-a-b-src-mq3-splines-headers-ml-407598345) — function
+- [`mq3.splines.headers.matVec`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-matvec-function-matvec-matrix-value-src-mq3-splines-headers-ml-686377808) — function
+- [`mq3.splines.headers.newBounds`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-newbounds-function-newbounds-src-mq3-splines-headers-ml-1683247480) — function
+- [`mq3.splines.headers.Normalize`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-normalize-function-normalize-value-src-mq3-splines-headers-ml-521558269) — function
+- [`mq3.splines.headers.Normalize180`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-normalize180-function-normalize180-value-src-mq3-splines-headers-ml-2146473691) — function
+- [`mq3.splines.headers.Normalize360`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-normalize360-function-normalize360-value-src-mq3-splines-headers-ml-436122003) — function
+- [`mq3.splines.headers.normalizeAngle180`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-normalizeangle180-function-normalizeangle180-value-src-mq3-splines-headers-ml-619133181) — function
+- [`mq3.splines.headers.normalizeAngle360`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-normalizeangle360-function-normalizeangle360-value-src-mq3-splines-headers-ml-302685897) — function
+- [`mq3.splines.headers.Num`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-num-function-num-list-src-mq3-splines-headers-ml-387780150) — function
+- [`mq3.splines.headers.OrthoNormalize`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-orthonormalize-function-orthonormalize-matrix-src-mq3-splines-headers-ml-476242035) — function
+- [`mq3.splines.headers.Q_fabs`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-q-fabs-function-q-fabs-value-src-mq3-splines-headers-ml-28014795) — function
+- [`mq3.splines.headers.qSharedSymbols`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-qsharedsymbols-function-qsharedsymbols-src-mq3-splines-headers-ml-1441709814) — function
+- [`mq3.splines.headers.quat`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-quat-function-quat-x-y-z-w-src-mq3-splines-headers-ml-1938556974) — function
+- [`mq3.splines.headers.Quat`](Type-mq3-splines-headers-quat-1945641945.md) — struct
+- [`mq3.splines.headers.quat_t`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-quat-t-function-quat-t-x-y-z-w-src-mq3-splines-headers-ml-1526001338) — function
+- [`mq3.splines.headers.quatLength`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-quatlength-function-quatlength-value-src-mq3-splines-headers-ml-625237203) — function
+- [`mq3.splines.headers.quatNormalize`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-quatnormalize-function-quatnormalize-value-src-mq3-splines-headers-ml-677511459) — function
+- [`mq3.splines.headers.RAD2DEG`](File-src-mq3-splines-headers-ml-550180384.md#constant-constant-mq3-splines-headers-rad2deg-const-rad2deg-57-2957795130823-src-mq3-splines-headers-ml-496542036) — constant
+- [`mq3.splines.headers.Radius`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-radius-function-radius-value-src-mq3-splines-headers-ml-755852979) — function
+- [`mq3.splines.headers.Remove`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-remove-function-remove-list-value-src-mq3-splines-headers-ml-632185735) — function
+- [`mq3.splines.headers.RemoveIndex`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-removeindex-function-removeindex-list-index-src-mq3-splines-headers-ml-1981805090) — function
+- [`mq3.splines.headers.Resize`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-resize-function-resize-list-size-src-mq3-splines-headers-ml-1381724127) — function
+- [`mq3.splines.headers.SetGranularity`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-setgranularity-function-setgranularity-list-granularity-src-mq3-splines-headers-ml-458846002) — function
+- [`mq3.splines.headers.SetNum`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-setnum-function-setnum-list-count-src-mq3-splines-headers-ml-123657449) — function
+- [`mq3.splines.headers.Size`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-size-function-size-list-src-mq3-splines-headers-ml-974769126) — function
+- [`mq3.splines.headers.SkewSymmetric`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-skewsymmetric-function-skewsymmetric-value-src-mq3-splines-headers-ml-1726996401) — function
+- [`mq3.splines.headers.Snap`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-snap-function-snap-value-src-mq3-splines-headers-ml-504230423) — function
+- [`mq3.splines.headers.snapComponent`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-snapcomponent-function-snapcomponent-value-toward-src-mq3-splines-headers-ml-809983698) — function
+- [`mq3.splines.headers.SnapTowards`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-snaptowards-function-snaptowards-value-toward-src-mq3-splines-headers-ml-1298789888) — function
+- [`mq3.splines.headers.Sort`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-sort-function-sort-list-compare-context-src-mq3-splines-headers-ml-955760552) — function
+- [`mq3.splines.headers.splinesSymbols`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-splinessymbols-function-splinessymbols-src-mq3-splines-headers-ml-846921806) — function
+- [`mq3.splines.headers.toForward`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-toforward-function-toforward-value-src-mq3-splines-headers-ml-1867508667) — function
+- [`mq3.splines.headers.tolower`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-tolower-function-tolower-value-src-mq3-splines-headers-ml-1066838843) — function
+- [`mq3.splines.headers.toPitch`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-topitch-function-topitch-value-src-mq3-splines-headers-ml-1697850457) — function
+- [`mq3.splines.headers.toupper`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-toupper-function-toupper-value-src-mq3-splines-headers-ml-502935433) — function
+- [`mq3.splines.headers.toVectors`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-tovectors-function-tovectors-value-src-mq3-splines-headers-ml-185490557) — function
+- [`mq3.splines.headers.toYaw`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-toyaw-function-toyaw-value-src-mq3-splines-headers-ml-572182379) — function
+- [`mq3.splines.headers.Transpose`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-transpose-function-transpose-matrix-src-mq3-splines-headers-ml-1312540753) — function
+- [`mq3.splines.headers.utilListSymbols`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-utillistsymbols-function-utillistsymbols-src-mq3-splines-headers-ml-2109216284) — function
+- [`mq3.splines.headers.utilStrSymbols`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-utilstrsymbols-function-utilstrsymbols-src-mq3-splines-headers-ml-1855036358) — function
+- [`mq3.splines.headers.vec3`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-vec3-function-vec3-x-y-z-src-mq3-splines-headers-ml-1352988225) — function
+- [`mq3.splines.headers.Vec3`](Type-mq3-splines-headers-vec3-1821645369.md) — struct
+- [`mq3.splines.headers.vec4`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-vec4-function-vec4-value-src-mq3-splines-headers-ml-996977211) — function
+- [`mq3.splines.headers.vec4_t`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-vec4-t-function-vec4-t-x-y-z-w-src-mq3-splines-headers-ml-797039878) — function
+- [`mq3.splines.headers.vecAdd`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-vecadd-function-vecadd-a-b-src-mq3-splines-headers-ml-1484252301) — function
+- [`mq3.splines.headers.vecScale`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-vecscale-function-vecscale-a-value-src-mq3-splines-headers-ml-1142699330) — function
+- [`mq3.splines.headers.vecSub`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-vecsub-function-vecsub-a-b-src-mq3-splines-headers-ml-373001197) — function
+- [`mq3.splines.headers.vectorEqual`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-vectorequal-function-vectorequal-a-b-src-mq3-splines-headers-ml-541684591) — function
+- [`mq3.splines.headers.vectorToAngles`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-vectortoangles-function-vectortoangles-value-src-mq3-splines-headers-ml-2084899283) — function
+- [`mq3.splines.headers.Zero`](File-src-mq3-splines-headers-ml-550180384.md#function-function-mq3-splines-headers-zero-function-zero-src-mq3-splines-headers-ml-1736498906) — function

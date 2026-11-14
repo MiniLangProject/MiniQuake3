@@ -1,0 +1,25 @@
+# `mq3.renderer.tr_model_runtime.Md4Lod`
+
+[Home](README.md) · [Source file](File-src-mq3-renderer-tr-model-runtime-ml-2083580560.md)
+
+<a id="struct-struct-mq3-renderer-tr-model-runtime-md4lod-struct-md4lod-src-mq3-renderer-tr-model-runtime-ml-974522429"></a>
+## Md4Lod
+
+```ml
+struct Md4Lod
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L27)
+
+## Members
+
+<a id="field-field-mq3-renderer-tr-model-runtime-md4lod-surfaces-surfaces-src-mq3-renderer-tr-model-runtime-ml-1501032999"></a>
+### surfaces
+
+```ml
+surfaces
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L27)

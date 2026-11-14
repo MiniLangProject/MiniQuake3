@@ -1,0 +1,55 @@
+# `mq3.renderer.shader_index.Entry`
+
+[Home](README.md) · [Source file](File-src-mq3-renderer-shader-index-ml-492021135.md)
+
+<a id="struct-struct-mq3-renderer-shader-index-entry-struct-entry-src-mq3-renderer-shader-index-ml-96200541"></a>
+## Entry
+
+```ml
+struct Entry
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_index.ml#L12)
+
+## Members
+
+<a id="field-field-mq3-renderer-shader-index-entry-bodyoffset-bodyoffset-src-mq3-renderer-shader-index-ml-1840154255"></a>
+### bodyOffset
+
+```ml
+bodyOffset
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_index.ml#L12)
+
+<a id="field-field-mq3-renderer-shader-index-entry-endoffset-endoffset-src-mq3-renderer-shader-index-ml-996811573"></a>
+### endOffset
+
+```ml
+endOffset
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_index.ml#L12)
+
+<a id="field-field-mq3-renderer-shader-index-entry-hash-hash-src-mq3-renderer-shader-index-ml-2106519397"></a>
+### hash
+
+```ml
+hash
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_index.ml#L12)
+
+<a id="field-field-mq3-renderer-shader-index-entry-name-name-src-mq3-renderer-shader-index-ml-882836343"></a>
+### name
+
+```ml
+name
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_index.ml#L12)

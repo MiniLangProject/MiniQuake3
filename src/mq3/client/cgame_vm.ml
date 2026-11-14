@@ -3,17 +3,17 @@
 // CL_InitCGame, CL_ShutdownCGame and cgame export calls.
 package mq3.client.cgame_vm
 import mq3.shared.info as info
-import mq3.client.cgame_public as public
+import mq3.client.cgame_public as cgame_api
 
-const CG_INIT=public.CG_INIT
-const CG_SHUTDOWN=public.CG_SHUTDOWN
-const CG_CONSOLE_COMMAND=public.CG_CONSOLE_COMMAND
-const CG_DRAW_ACTIVE_FRAME=public.CG_DRAW_ACTIVE_FRAME
-const CG_CROSSHAIR_PLAYER=public.CG_CROSSHAIR_PLAYER
-const CG_LAST_ATTACKER=public.CG_LAST_ATTACKER
-const CG_KEY_EVENT=public.CG_KEY_EVENT
-const CG_MOUSE_EVENT=public.CG_MOUSE_EVENT
-const CG_EVENT_HANDLING=public.CG_EVENT_HANDLING
+const CG_INIT=cgame_api.CG_INIT
+const CG_SHUTDOWN=cgame_api.CG_SHUTDOWN
+const CG_CONSOLE_COMMAND=cgame_api.CG_CONSOLE_COMMAND
+const CG_DRAW_ACTIVE_FRAME=cgame_api.CG_DRAW_ACTIVE_FRAME
+const CG_CROSSHAIR_PLAYER=cgame_api.CG_CROSSHAIR_PLAYER
+const CG_LAST_ATTACKER=cgame_api.CG_LAST_ATTACKER
+const CG_KEY_EVENT=cgame_api.CG_KEY_EVENT
+const CG_MOUSE_EVENT=cgame_api.CG_MOUSE_EVENT
+const CG_EVENT_HANDLING=cgame_api.CG_EVENT_HANDLING
 const CA_LOADING=6
 const CA_PRIMED=7
 const KEYCATCH_CGAME=8

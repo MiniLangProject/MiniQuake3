@@ -1,0 +1,44 @@
+# Package `mq3.botlib.aas_route_extras`
+
+[Home](README.md) · [Packages](Packages.md)
+
+## Files
+
+- [src/mq3/botlib/aas_route_extras.ml](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md)
+
+## Symbols
+
+- [`mq3.botlib.aas_route_extras.AAS_InitAlternativeRouting`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-aas-initalternativerouting-function-aas-initalternativerouting-router-src-mq3-botlib-aas-route-extras-ml-119210943) — function
+- [`mq3.botlib.aas_route_extras.AAS_ShutdownAlternativeRouting`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-aas-shutdownalternativerouting-function-aas-shutdownalternativerouting-state-src-mq3-botlib-aas-route-extras-ml-1235845361) — function
+- [`mq3.botlib.aas_route_extras.absInt`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-absint-function-absint-value-src-mq3-botlib-aas-route-extras-ml-651641365) — function
+- [`mq3.botlib.aas_route_extras.AlternativeRouteGoal`](Type-mq3-botlib-aas-route-extras-alternativeroutegoal-906342734.md) — struct
+- [`mq3.botlib.aas_route_extras.alternativeRouteGoals`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-alternativeroutegoals-function-alternativeroutegoals-router-start-startareanum-goal-goalareanum-travelflags-maximum-type-src-mq3-botlib-aas-route-extras-ml-306256186) — function
+- [`mq3.botlib.aas_route_extras.AlternativeRoutingState`](Type-mq3-botlib-aas-route-extras-alternativeroutingstate-203968939.md) — struct
+- [`mq3.botlib.aas_route_extras.ALTROUTEGOAL_ALL`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#constant-constant-mq3-botlib-aas-route-extras-altroutegoal-all-const-altroutegoal-all-1-src-mq3-botlib-aas-route-extras-ml-1414014528) — constant
+- [`mq3.botlib.aas_route_extras.ALTROUTEGOAL_CLUSTERPORTALS`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#constant-constant-mq3-botlib-aas-route-extras-altroutegoal-clusterportals-const-altroutegoal-clusterportals-2-src-mq3-botlib-aas-route-extras-ml-887883991) — constant
+- [`mq3.botlib.aas_route_extras.ALTROUTEGOAL_VIEWPORTALS`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#constant-constant-mq3-botlib-aas-route-extras-altroutegoal-viewportals-const-altroutegoal-viewportals-4-src-mq3-botlib-aas-route-extras-ml-1639564507) — constant
+- [`mq3.botlib.aas_route_extras.altRoutingFloodCluster`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-altroutingfloodcluster-function-altroutingfloodcluster-router-state-areanum-src-mq3-botlib-aas-route-extras-ml-1877178031) — function
+- [`mq3.botlib.aas_route_extras.AREACONTENTS_CLUSTERPORTAL`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#constant-constant-mq3-botlib-aas-route-extras-areacontents-clusterportal-const-areacontents-clusterportal-8-src-mq3-botlib-aas-route-extras-ml-1031393207) — constant
+- [`mq3.botlib.aas_route_extras.AREACONTENTS_VIEWPORTAL`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#constant-constant-mq3-botlib-aas-route-extras-areacontents-viewportal-const-areacontents-viewportal-512-src-mq3-botlib-aas-route-extras-ml-769541289) — constant
+- [`mq3.botlib.aas_route_extras.connectedMidrange`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-connectedmidrange-function-connectedmidrange-router-first-valid-src-mq3-botlib-aas-route-extras-ml-1891588859) — function
+- [`mq3.botlib.aas_route_extras.copyVector`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-copyvector-function-copyvector-value-src-mq3-botlib-aas-route-extras-ml-1440082173) — function
+- [`mq3.botlib.aas_route_extras.distanceSquared`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-distancesquared-function-distancesquared-a-b-src-mq3-botlib-aas-route-extras-ml-530026953) — function
+- [`mq3.botlib.aas_route_extras.initAlternativeRouting`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-initalternativerouting-function-initalternativerouting-router-src-mq3-botlib-aas-route-extras-ml-2034406939) — function
+- [`mq3.botlib.aas_route_extras.MAX_REACHABILITY_PASS_AREAS`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#constant-constant-mq3-botlib-aas-route-extras-max-reachability-pass-areas-const-max-reachability-pass-areas-32-src-mq3-botlib-aas-route-extras-ml-481694368) — constant
+- [`mq3.botlib.aas_route_extras.OP_ALTERNATIVE_ROUTE_GOAL`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#constant-constant-mq3-botlib-aas-route-extras-op-alternative-route-goal-const-op-alternative-route-goal-575-src-mq3-botlib-aas-route-extras-ml-998792408) — constant
+- [`mq3.botlib.aas_route_extras.OP_POINT_REACHABILITY_AREA_INDEX`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#constant-constant-mq3-botlib-aas-route-extras-op-point-reachability-area-index-const-op-point-reachability-area-index-577-src-mq3-botlib-aas-route-extras-ml-2032934730) — constant
+- [`mq3.botlib.aas_route_extras.OP_PREDICT_ROUTE`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#constant-constant-mq3-botlib-aas-route-extras-op-predict-route-const-op-predict-route-576-src-mq3-botlib-aas-route-extras-ml-753438063) — constant
+- [`mq3.botlib.aas_route_extras.passedAreas`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-passedareas-function-passedareas-router-reach-src-mq3-botlib-aas-route-extras-ml-1104122544) — function
+- [`mq3.botlib.aas_route_extras.pointReachabilityAreaIndex`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-pointreachabilityareaindex-function-pointreachabilityareaindex-state-origin-src-mq3-botlib-aas-route-extras-ml-1180733955) — function
+- [`mq3.botlib.aas_route_extras.predictRoute`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-predictroute-function-predictroute-router-route-areanum-origin-goalareanum-travelflags-maxareas-maxtime-stopevent-stopcontents-stoptfl-stopareanum-src-mq3-botlib-aas-route-extras-ml-164771494) — function
+- [`mq3.botlib.aas_route_extras.PredictRoute`](Type-mq3-botlib-aas-route-extras-predictroute-1593577971.md) — struct
+- [`mq3.botlib.aas_route_extras.routeTime`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-routetime-function-routetime-router-area-origin-goalarea-travelflags-src-mq3-botlib-aas-route-extras-ml-1023819155) — function
+- [`mq3.botlib.aas_route_extras.RSE_ENTERAREA`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#constant-constant-mq3-botlib-aas-route-extras-rse-enterarea-const-rse-enterarea-8-src-mq3-botlib-aas-route-extras-ml-209110993) — constant
+- [`mq3.botlib.aas_route_extras.RSE_ENTERCONTENTS`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#constant-constant-mq3-botlib-aas-route-extras-rse-entercontents-const-rse-entercontents-4-src-mq3-botlib-aas-route-extras-ml-875376321) — constant
+- [`mq3.botlib.aas_route_extras.RSE_NONE`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#constant-constant-mq3-botlib-aas-route-extras-rse-none-const-rse-none-0-src-mq3-botlib-aas-route-extras-ml-730704081) — constant
+- [`mq3.botlib.aas_route_extras.RSE_NOROUTE`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#constant-constant-mq3-botlib-aas-route-extras-rse-noroute-const-rse-noroute-1-src-mq3-botlib-aas-route-extras-ml-1506083064) — constant
+- [`mq3.botlib.aas_route_extras.RSE_USETRAVELTYPE`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#constant-constant-mq3-botlib-aas-route-extras-rse-usetraveltype-const-rse-usetraveltype-2-src-mq3-botlib-aas-route-extras-ml-1754704923) — constant
+- [`mq3.botlib.aas_route_extras.shutdownAlternativeRouting`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-shutdownalternativerouting-function-shutdownalternativerouting-state-src-mq3-botlib-aas-route-extras-ml-717701245) — function
+- [`mq3.botlib.aas_route_extras.supportsTrap`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-supportstrap-function-supportstrap-op-src-mq3-botlib-aas-route-extras-ml-265223201) — function
+- [`mq3.botlib.aas_route_extras.u16`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-u16-function-u16-value-src-mq3-botlib-aas-route-extras-ml-418873693) — function
+- [`mq3.botlib.aas_route_extras.validRouter`](File-src-mq3-botlib-aas-route-extras-ml-1580573357.md#function-function-mq3-botlib-aas-route-extras-validrouter-function-validrouter-router-src-mq3-botlib-aas-route-extras-ml-1848484733) — function

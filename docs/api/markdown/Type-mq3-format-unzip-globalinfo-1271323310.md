@@ -1,0 +1,35 @@
+# `mq3.format.unzip.GlobalInfo`
+
+[Home](README.md) · [Source file](File-src-mq3-format-unzip-ml-788120655.md)
+
+<a id="struct-struct-mq3-format-unzip-globalinfo-struct-globalinfo-src-mq3-format-unzip-ml-972171035"></a>
+## GlobalInfo
+
+```ml
+struct GlobalInfo
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L26)
+
+## Members
+
+<a id="field-field-mq3-format-unzip-globalinfo-numberentry-numberentry-src-mq3-format-unzip-ml-824960278"></a>
+### numberEntry
+
+```ml
+numberEntry
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L26)
+
+<a id="field-field-mq3-format-unzip-globalinfo-sizecomment-sizecomment-src-mq3-format-unzip-ml-1306651522"></a>
+### sizeComment
+
+```ml
+sizeComment
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L26)

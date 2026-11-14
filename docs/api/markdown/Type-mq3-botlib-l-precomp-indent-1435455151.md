@@ -1,0 +1,35 @@
+# `mq3.botlib.l_precomp.Indent`
+
+[Home](README.md) · [Source file](File-src-mq3-botlib-l-precomp-ml-1036988431.md)
+
+<a id="struct-struct-mq3-botlib-l-precomp-indent-struct-indent-src-mq3-botlib-l-precomp-ml-630806559"></a>
+## Indent
+
+```ml
+struct Indent
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L48)
+
+## Members
+
+<a id="field-field-mq3-botlib-l-precomp-indent-skip-skip-src-mq3-botlib-l-precomp-ml-1752827881"></a>
+### skip
+
+```ml
+skip
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L48)
+
+<a id="field-field-mq3-botlib-l-precomp-indent-type-type-src-mq3-botlib-l-precomp-ml-1448522439"></a>
+### type
+
+```ml
+type
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L48)

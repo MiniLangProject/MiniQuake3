@@ -1,0 +1,35 @@
+# `mq3.collision.patchtrace.DebugState`
+
+[Home](README.md) · [Source file](File-src-mq3-collision-patchtrace-ml-877086175.md)
+
+<a id="struct-struct-mq3-collision-patchtrace-debugstate-struct-debugstate-src-mq3-collision-patchtrace-ml-445650453"></a>
+## DebugState
+
+```ml
+struct DebugState
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L21)
+
+## Members
+
+<a id="field-field-mq3-collision-patchtrace-debugstate-facet-facet-src-mq3-collision-patchtrace-ml-228086531"></a>
+### facet
+
+```ml
+facet
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L23)
+
+<a id="field-field-mq3-collision-patchtrace-debugstate-patch-patch-src-mq3-collision-patchtrace-ml-1524977639"></a>
+### patch
+
+```ml
+patch
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L22)

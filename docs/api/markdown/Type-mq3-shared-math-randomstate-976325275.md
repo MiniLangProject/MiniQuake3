@@ -1,0 +1,25 @@
+# `mq3.shared.math.RandomState`
+
+[Home](README.md) · [Source file](File-src-mq3-shared-math-ml-294597397.md)
+
+<a id="struct-struct-mq3-shared-math-randomstate-struct-randomstate-src-mq3-shared-math-ml-1683353569"></a>
+## RandomState
+
+```ml
+struct RandomState
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/math.ml#L93)
+
+## Members
+
+<a id="field-field-mq3-shared-math-randomstate-seed-seed-src-mq3-shared-math-ml-1797828275"></a>
+### seed
+
+```ml
+seed
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/math.ml#L94)

@@ -1,0 +1,105 @@
+# `mq3.botlib.l_memory.MemoryBlock`
+
+[Home](README.md) · [Source file](File-src-mq3-botlib-l-memory-ml-1776975564.md)
+
+<a id="struct-struct-mq3-botlib-l-memory-memoryblock-struct-memoryblock-src-mq3-botlib-l-memory-ml-1588331699"></a>
+## MemoryBlock
+
+```ml
+struct MemoryBlock
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L9)
+
+## Members
+
+<a id="field-field-mq3-botlib-l-memory-memoryblock-cleared-cleared-src-mq3-botlib-l-memory-ml-1809680065"></a>
+### cleared
+
+```ml
+cleared
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L9)
+
+<a id="field-field-mq3-botlib-l-memory-memoryblock-data-data-src-mq3-botlib-l-memory-ml-1412022093"></a>
+### data
+
+```ml
+data
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L9)
+
+<a id="field-field-mq3-botlib-l-memory-memoryblock-file-file-src-mq3-botlib-l-memory-ml-421657697"></a>
+### file
+
+```ml
+file
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L9)
+
+<a id="field-field-mq3-botlib-l-memory-memoryblock-handle-handle-src-mq3-botlib-l-memory-ml-39153897"></a>
+### handle
+
+```ml
+handle
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L9)
+
+<a id="field-field-mq3-botlib-l-memory-memoryblock-id-id-src-mq3-botlib-l-memory-ml-1627037271"></a>
+### id
+
+```ml
+id
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L9)
+
+<a id="field-field-mq3-botlib-l-memory-memoryblock-label-label-src-mq3-botlib-l-memory-ml-248896137"></a>
+### label
+
+```ml
+label
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L9)
+
+<a id="field-field-mq3-botlib-l-memory-memoryblock-line-line-src-mq3-botlib-l-memory-ml-1156561129"></a>
+### line
+
+```ml
+line
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L9)
+
+<a id="field-field-mq3-botlib-l-memory-memoryblock-payloadsize-payloadsize-src-mq3-botlib-l-memory-ml-1269718365"></a>
+### payloadSize
+
+```ml
+payloadSize
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L9)
+
+<a id="field-field-mq3-botlib-l-memory-memoryblock-size-size-src-mq3-botlib-l-memory-ml-1030249575"></a>
+### size
+
+```ml
+size
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_memory.ml#L9)

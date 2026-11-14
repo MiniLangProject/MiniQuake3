@@ -1,0 +1,55 @@
+# `mq3.botlib.aas_optimizer.Action`
+
+[Home](README.md) · [Source file](File-src-mq3-botlib-aas-optimizer-ml-949906489.md)
+
+<a id="struct-struct-mq3-botlib-aas-optimizer-action-struct-action-src-mq3-botlib-aas-optimizer-ml-996110751"></a>
+## Action
+
+```ml
+struct Action
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L18)
+
+## Members
+
+<a id="field-field-mq3-botlib-aas-optimizer-action-boundary-boundary-src-mq3-botlib-aas-optimizer-ml-1409639207"></a>
+### boundary
+
+```ml
+boundary
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L18)
+
+<a id="field-field-mq3-botlib-aas-optimizer-action-dispatched-dispatched-src-mq3-botlib-aas-optimizer-ml-487126517"></a>
+### dispatched
+
+```ml
+dispatched
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L18)
+
+<a id="field-field-mq3-botlib-aas-optimizer-action-kind-kind-src-mq3-botlib-aas-optimizer-ml-1356652511"></a>
+### kind
+
+```ml
+kind
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L18)
+
+<a id="field-field-mq3-botlib-aas-optimizer-action-text-text-src-mq3-botlib-aas-optimizer-ml-1276354957"></a>
+### text
+
+```ml
+text
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L18)

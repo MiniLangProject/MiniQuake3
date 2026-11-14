@@ -1,0 +1,45 @@
+# `mq3.client.baseq3_match_display.Media`
+
+[Home](README.md) · [Source file](File-src-mq3-client-baseq3-match-display-ml-1367704051.md)
+
+<a id="struct-struct-mq3-client-baseq3-match-display-media-struct-media-src-mq3-client-baseq3-match-display-ml-1916321733"></a>
+## Media
+
+```ml
+struct Media
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L23)
+
+## Members
+
+<a id="field-field-mq3-client-baseq3-match-display-media-image-image-src-mq3-client-baseq3-match-display-ml-117167153"></a>
+### image
+
+```ml
+image
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L23)
+
+<a id="field-field-mq3-client-baseq3-match-display-media-imagename-imagename-src-mq3-client-baseq3-match-display-ml-363809857"></a>
+### imageName
+
+```ml
+imageName
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L23)
+
+<a id="field-field-mq3-client-baseq3-match-display-media-slot-slot-src-mq3-client-baseq3-match-display-ml-1070368393"></a>
+### slot
+
+```ml
+slot
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_match_display.ml#L23)

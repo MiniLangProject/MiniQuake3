@@ -1,0 +1,35 @@
+# `mq3.botlib.l_script.Runtime`
+
+[Home](README.md) · [Source file](File-src-mq3-botlib-l-script-ml-301363504.md)
+
+<a id="struct-struct-mq3-botlib-l-script-runtime-struct-runtime-src-mq3-botlib-l-script-ml-2127880699"></a>
+## Runtime
+
+```ml
+struct Runtime
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L89)
+
+## Members
+
+<a id="field-field-mq3-botlib-l-script-runtime-basefolder-basefolder-src-mq3-botlib-l-script-ml-487509419"></a>
+### baseFolder
+
+```ml
+baseFolder
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L89)
+
+<a id="field-field-mq3-botlib-l-script-runtime-host-host-src-mq3-botlib-l-script-ml-34129797"></a>
+### host
+
+```ml
+host
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L89)

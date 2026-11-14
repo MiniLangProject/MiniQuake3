@@ -1,0 +1,35 @@
+# `mq3.game.g_cmds.Runtime`
+
+[Home](README.md) · [Source file](File-src-mq3-game-g-cmds-ml-551494917.md)
+
+<a id="struct-struct-mq3-game-g-cmds-runtime-struct-runtime-src-mq3-game-g-cmds-ml-64537017"></a>
+## Runtime
+
+```ml
+struct Runtime
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L20)
+
+## Members
+
+<a id="field-field-mq3-game-g-cmds-runtime-commandstate-commandstate-src-mq3-game-g-cmds-ml-1272512469"></a>
+### commandState
+
+```ml
+commandState
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L20)
+
+<a id="field-field-mq3-game-g-cmds-runtime-level-level-src-mq3-game-g-cmds-ml-1787926865"></a>
+### level
+
+```ml
+level
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L20)

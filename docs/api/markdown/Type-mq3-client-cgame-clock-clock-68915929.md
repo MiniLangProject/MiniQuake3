@@ -1,0 +1,35 @@
+# `mq3.client.cgame_clock.Clock`
+
+[Home](README.md) · [Source file](File-src-mq3-client-cgame-clock-ml-1618125963.md)
+
+<a id="struct-struct-mq3-client-cgame-clock-clock-struct-clock-src-mq3-client-cgame-clock-ml-1595039341"></a>
+## Clock
+
+```ml
+struct Clock
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L8)
+
+## Members
+
+<a id="field-field-mq3-client-cgame-clock-clock-snapshotnumber-snapshotnumber-src-mq3-client-cgame-clock-ml-437767211"></a>
+### snapshotNumber
+
+```ml
+snapshotNumber
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L8)
+
+<a id="field-field-mq3-client-cgame-clock-clock-state-state-src-mq3-client-cgame-clock-ml-222510781"></a>
+### state
+
+```ml
+state
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L8)

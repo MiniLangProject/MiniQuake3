@@ -1,0 +1,35 @@
+# `mq3.botlib.aas_debug.Plane`
+
+[Home](README.md) · [Source file](File-src-mq3-botlib-aas-debug-ml-718446593.md)
+
+<a id="struct-struct-mq3-botlib-aas-debug-plane-struct-plane-src-mq3-botlib-aas-debug-ml-1807643897"></a>
+## Plane
+
+```ml
+struct Plane
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L42)
+
+## Members
+
+<a id="field-field-mq3-botlib-aas-debug-plane-dist-dist-src-mq3-botlib-aas-debug-ml-2014680065"></a>
+### dist
+
+```ml
+dist
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L42)
+
+<a id="field-field-mq3-botlib-aas-debug-plane-normal-normal-src-mq3-botlib-aas-debug-ml-244126999"></a>
+### normal
+
+```ml
+normal
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L42)

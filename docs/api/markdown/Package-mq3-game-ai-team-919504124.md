@@ -1,0 +1,92 @@
+# Package `mq3.game.ai_team`
+
+[Home](README.md) · [Packages](Packages.md)
+
+## Files
+
+- [src/mq3/game/ai_team.ml](File-src-mq3-game-ai-team-ml-162745936.md)
+
+## Symbols
+
+- [`mq3.game.ai_team.accompany`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-accompany-function-accompany-state-bot-client-suppressed-src-mq3-game-ai-team-ml-540785793) — function
+- [`mq3.game.ai_team.Action`](Type-mq3-game-ai-team-action-1662876.md) — struct
+- [`mq3.game.ai_team.Bot`](Type-mq3-game-ai-team-bot-1150762343.md) — struct
+- [`mq3.game.ai_team.Bot1FCTFOrders`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-bot1fctforders-function-bot1fctforders-state-bot-suppressed-src-mq3-game-ai-team-ml-1779250774) — function
+- [`mq3.game.ai_team.Bot1FCTFOrders_EnemyDroppedFlag`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-bot1fctforders-enemydroppedflag-function-bot1fctforders-enemydroppedflag-state-bot-suppressed-src-mq3-game-ai-team-ml-673464300) — function
+- [`mq3.game.ai_team.Bot1FCTFOrders_EnemyHasFlag`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-bot1fctforders-enemyhasflag-function-bot1fctforders-enemyhasflag-state-bot-suppressed-src-mq3-game-ai-team-ml-462561540) — function
+- [`mq3.game.ai_team.Bot1FCTFOrders_FlagAtCenter`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-bot1fctforders-flagatcenter-function-bot1fctforders-flagatcenter-state-bot-suppressed-src-mq3-game-ai-team-ml-1755404488) — function
+- [`mq3.game.ai_team.Bot1FCTFOrders_TeamHasFlag`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-bot1fctforders-teamhasflag-function-bot1fctforders-teamhasflag-state-bot-suppressed-src-mq3-game-ai-team-ml-195825214) — function
+- [`mq3.game.ai_team.BotClientTravelTimeToGoal`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botclienttraveltimetogoal-function-botclienttraveltimetogoal-state-client-goalarea-src-mq3-game-ai-team-ml-2138608992) — function
+- [`mq3.game.ai_team.BotCreateGroup`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botcreategroup-function-botcreategroup-state-bot-mates-size-suppressed-src-mq3-game-ai-team-ml-13793911) — function
+- [`mq3.game.ai_team.BotCTFOrders`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botctforders-function-botctforders-state-bot-suppressed-src-mq3-game-ai-team-ml-1288319958) — function
+- [`mq3.game.ai_team.BotCTFOrders_BothFlagsAtBase`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botctforders-bothflagsatbase-function-botctforders-bothflagsatbase-state-bot-src-mq3-game-ai-team-ml-576382188) — function
+- [`mq3.game.ai_team.BotCTFOrders_BothFlagsNotAtBase`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botctforders-bothflagsnotatbase-function-botctforders-bothflagsnotatbase-state-bot-src-mq3-game-ai-team-ml-288134854) — function
+- [`mq3.game.ai_team.BotCTFOrders_EnemyFlagNotAtBase`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botctforders-enemyflagnotatbase-function-botctforders-enemyflagnotatbase-state-bot-src-mq3-game-ai-team-ml-1381459326) — function
+- [`mq3.game.ai_team.BotCTFOrders_FlagNotAtBase`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botctforders-flagnotatbase-function-botctforders-flagnotatbase-state-bot-src-mq3-game-ai-team-ml-525196800) — function
+- [`mq3.game.ai_team.BotGetTeamMateTaskPreference`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botgetteammatetaskpreference-function-botgetteammatetaskpreference-state-bot-client-src-mq3-game-ai-team-ml-441555329) — function
+- [`mq3.game.ai_team.BotHarvesterOrders`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botharvesterorders-function-botharvesterorders-state-bot-suppressed-src-mq3-game-ai-team-ml-61637210) — function
+- [`mq3.game.ai_team.BotNumTeamMates`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botnumteammates-function-botnumteammates-state-bot-src-mq3-game-ai-team-ml-2116812704) — function
+- [`mq3.game.ai_team.BotObeliskOrders`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botobeliskorders-function-botobeliskorders-state-bot-suppressed-src-mq3-game-ai-team-ml-65757566) — function
+- [`mq3.game.ai_team.BotSayTeamOrder`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botsayteamorder-function-botsayteamorder-state-bot-client-suppressed-src-mq3-game-ai-team-ml-1108574497) — function
+- [`mq3.game.ai_team.BotSayTeamOrderAlways`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botsayteamorderalways-function-botsayteamorderalways-state-bot-client-suppressed-src-mq3-game-ai-team-ml-298751759) — function
+- [`mq3.game.ai_team.BotSayVoiceTeamOrder`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botsayvoiceteamorder-function-botsayvoiceteamorder-state-bot-client-voice-suppressed-src-mq3-game-ai-team-ml-774784123) — function
+- [`mq3.game.ai_team.BotSetTeamMateTaskPreference`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botsetteammatetaskpreference-function-botsetteammatetaskpreference-state-bot-client-preference-src-mq3-game-ai-team-ml-306338990) — function
+- [`mq3.game.ai_team.BotSortTeamMatesByBaseTravelTime`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botsortteammatesbybasetraveltime-function-botsortteammatesbybasetraveltime-state-bot-maxteammates-src-mq3-game-ai-team-ml-203134745) — function
+- [`mq3.game.ai_team.BotSortTeamMatesByTaskPreference`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botsortteammatesbytaskpreference-function-botsortteammatesbytaskpreference-state-bot-mates-src-mq3-game-ai-team-ml-1338918030) — function
+- [`mq3.game.ai_team.BotTeamAI`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botteamai-function-botteamai-state-bot-suppressed-src-mq3-game-ai-team-ml-188374118) — function
+- [`mq3.game.ai_team.BotTeamOrders`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botteamorders-function-botteamorders-state-bot-suppressed-src-mq3-game-ai-team-ml-1907869636) — function
+- [`mq3.game.ai_team.BotValidTeamLeader`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botvalidteamleader-function-botvalidteamleader-state-bot-src-mq3-game-ai-team-ml-986929376) — function
+- [`mq3.game.ai_team.BotVoiceChat`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botvoicechat-function-botvoicechat-state-bot-client-voice-suppressed-src-mq3-game-ai-team-ml-682669779) — function
+- [`mq3.game.ai_team.BotVoiceChatOnly`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-botvoicechatonly-function-botvoicechatonly-state-bot-client-voice-suppressed-src-mq3-game-ai-team-ml-1489456775) — function
+- [`mq3.game.ai_team.chatCallback`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-chatcallback-function-chatcallback-helper-bot-kind-args-src-mq3-game-ai-team-ml-1046650696) — function
+- [`mq3.game.ai_team.clientTravelTimeToGoal`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-clienttraveltimetogoal-function-clienttraveltimetogoal-state-client-goalarea-src-mq3-game-ai-team-ml-1394181902) — function
+- [`mq3.game.ai_team.create`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-create-function-create-src-mq3-game-ai-team-ml-62702850) — function
+- [`mq3.game.ai_team.createBot`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-createbot-function-createbot-client-src-mq3-game-ai-team-ml-13413833) — function
+- [`mq3.game.ai_team.createGroup`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-creategroup-function-creategroup-state-bot-mates-groupsize-suppressed-src-mq3-game-ai-team-ml-1154936196) — function
+- [`mq3.game.ai_team.ctfOrders`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-ctforders-function-ctforders-state-bot-suppressed-src-mq3-game-ai-team-ml-671675270) — function
+- [`mq3.game.ai_team.CTFS_AGRESSIVE`](File-src-mq3-game-ai-team-ml-162745936.md#constant-constant-mq3-game-ai-team-ctfs-agressive-const-ctfs-agressive-aiheaders-ctfs-agressive-src-mq3-game-ai-team-ml-571909889) — constant
+- [`mq3.game.ai_team.distribute`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-distribute-function-distribute-state-bot-defendtenths-attacktenths-defendcap-attackcap-attackchat-attackvoice-suppressed-src-mq3-game-ai-team-ml-1162628946) — function
+- [`mq3.game.ai_team.emit`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-emit-function-emit-state-kind-client-target-text-args-suppressed-src-mq3-game-ai-team-ml-1275752297) — function
+- [`mq3.game.ai_team.FindHumanTeamLeader`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-findhumanteamleader-function-findhumanteamleader-state-bot-suppressed-src-mq3-game-ai-team-ml-1724670142) — function
+- [`mq3.game.ai_team.findHumanTeamLeader`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-findhumanteamleader-function-findhumanteamleader-state-bot-suppressed-src-mq3-game-ai-team-ml-994701438) — function
+- [`mq3.game.ai_team.getTeamMateTaskPreference`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-getteammatetaskpreference-function-getteammatetaskpreference-state-bot-teammate-src-mq3-game-ai-team-ml-1582623832) — function
+- [`mq3.game.ai_team.GT_1FCTF`](File-src-mq3-game-ai-team-ml-162745936.md#constant-constant-mq3-game-ai-team-gt-1fctf-const-gt-1fctf-5-src-mq3-game-ai-team-ml-311265716) — constant
+- [`mq3.game.ai_team.GT_CTF`](File-src-mq3-game-ai-team-ml-162745936.md#constant-constant-mq3-game-ai-team-gt-ctf-const-gt-ctf-4-src-mq3-game-ai-team-ml-2119169225) — constant
+- [`mq3.game.ai_team.GT_HARVESTER`](File-src-mq3-game-ai-team-ml-162745936.md#constant-constant-mq3-game-ai-team-gt-harvester-const-gt-harvester-7-src-mq3-game-ai-team-ml-773746342) — constant
+- [`mq3.game.ai_team.GT_OBELISK`](File-src-mq3-game-ai-team-ml-162745936.md#constant-constant-mq3-game-ai-team-gt-obelisk-const-gt-obelisk-6-src-mq3-game-ai-team-ml-1985518399) — constant
+- [`mq3.game.ai_team.GT_TEAM`](File-src-mq3-game-ai-team-ml-162745936.md#constant-constant-mq3-game-ai-team-gt-team-const-gt-team-3-src-mq3-game-ai-team-ml-1050245100) — constant
+- [`mq3.game.ai_team.harvesterOrders`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-harvesterorders-function-harvesterorders-state-bot-suppressed-src-mq3-game-ai-team-ml-1198378508) — function
+- [`mq3.game.ai_team.MAX_CLIENTS`](File-src-mq3-game-ai-team-ml-162745936.md#constant-constant-mq3-game-ai-team-max-clients-const-max-clients-64-src-mq3-game-ai-team-ml-1417102719) — constant
+- [`mq3.game.ai_team.nameOf`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-nameof-function-nameof-state-client-src-mq3-game-ai-team-ml-958635744) — function
+- [`mq3.game.ai_team.numTeamMates`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-numteammates-function-numteammates-state-bot-src-mq3-game-ai-team-ml-958268696) — function
+- [`mq3.game.ai_team.obeliskOrders`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-obeliskorders-function-obeliskorders-state-bot-suppressed-src-mq3-game-ai-team-ml-238533318) — function
+- [`mq3.game.ai_team.oneFlagAtCenter`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-oneflagatcenter-function-oneflagatcenter-state-bot-suppressed-src-mq3-game-ai-team-ml-1484593750) — function
+- [`mq3.game.ai_team.oneFlagEnemyDropped`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-oneflagenemydropped-function-oneflagenemydropped-state-bot-suppressed-src-mq3-game-ai-team-ml-1627958570) — function
+- [`mq3.game.ai_team.oneFlagEnemyHasFlag`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-oneflagenemyhasflag-function-oneflagenemyhasflag-state-bot-suppressed-src-mq3-game-ai-team-ml-1330454486) — function
+- [`mq3.game.ai_team.oneFlagOrders`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-oneflagorders-function-oneflagorders-state-bot-suppressed-src-mq3-game-ai-team-ml-413906764) — function
+- [`mq3.game.ai_team.oneFlagTeamHasFlag`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-oneflagteamhasflag-function-oneflagteamhasflag-state-bot-suppressed-src-mq3-game-ai-team-ml-1592100046) — function
+- [`mq3.game.ai_team.order`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-order-function-order-state-bot-kind-toclient-args-voice-suppressed-src-mq3-game-ai-team-ml-1733070945) — function
+- [`mq3.game.ai_team.orderCallback`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-ordercallback-function-ordercallback-helper-bot-target-src-mq3-game-ai-team-ml-998178596) — function
+- [`mq3.game.ai_team.rounded`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-rounded-function-rounded-count-tenths-src-mq3-game-ai-team-ml-416032057) — function
+- [`mq3.game.ai_team.sameTeam`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-sameteam-function-sameteam-state-bot-client-src-mq3-game-ai-team-ml-461871281) — function
+- [`mq3.game.ai_team.sayTeamOrder`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-sayteamorder-function-sayteamorder-state-bot-toclient-suppressed-src-mq3-game-ai-team-ml-506214728) — function
+- [`mq3.game.ai_team.sayTeamOrderAlways`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-sayteamorderalways-function-sayteamorderalways-state-bot-toclient-suppressed-src-mq3-game-ai-team-ml-1302051576) — function
+- [`mq3.game.ai_team.sayVoiceTeamOrder`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-sayvoiceteamorder-function-sayvoiceteamorder-state-bot-toclient-voice-suppressed-src-mq3-game-ai-team-ml-1253028278) — function
+- [`mq3.game.ai_team.setTeamMateTaskPreference`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-setteammatetaskpreference-function-setteammatetaskpreference-state-bot-teammate-preference-src-mq3-game-ai-team-ml-977982435) — function
+- [`mq3.game.ai_team.sortCallback`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-sortcallback-function-sortcallback-helper-bot-src-mq3-game-ai-team-ml-1709896869) — function
+- [`mq3.game.ai_team.sorted`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-sorted-function-sorted-state-bot-src-mq3-game-ai-team-ml-1480426344) — function
+- [`mq3.game.ai_team.sortTeamMatesByBaseTravelTime`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-sortteammatesbybasetraveltime-function-sortteammatesbybasetraveltime-state-bot-maxteammates-src-mq3-game-ai-team-ml-1795977205) — function
+- [`mq3.game.ai_team.sortTeamMatesByTaskPreference`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-sortteammatesbytaskpreference-function-sortteammatesbytaskpreference-state-bot-teammates-src-mq3-game-ai-team-ml-773321815) — function
+- [`mq3.game.ai_team.State`](Type-mq3-game-ai-team-state-677439307.md) — struct
+- [`mq3.game.ai_team.sync`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-sync-function-sync-state-src-mq3-game-ai-team-ml-284683317) — function
+- [`mq3.game.ai_team.team`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-team-function-team-state-bot-src-mq3-game-ai-team-ml-317102196) — function
+- [`mq3.game.ai_team.TEAM_BLUE`](File-src-mq3-game-ai-team-ml-162745936.md#constant-constant-mq3-game-ai-team-team-blue-const-team-blue-2-src-mq3-game-ai-team-ml-773055175) — constant
+- [`mq3.game.ai_team.TEAM_RED`](File-src-mq3-game-ai-team-ml-162745936.md#constant-constant-mq3-game-ai-team-team-red-const-team-red-1-src-mq3-game-ai-team-ml-1130845786) — constant
+- [`mq3.game.ai_team.TEAM_SPECTATOR`](File-src-mq3-game-ai-team-ml-162745936.md#constant-constant-mq3-game-ai-team-team-spectator-const-team-spectator-3-src-mq3-game-ai-team-ml-1216517788) — constant
+- [`mq3.game.ai_team.teamAI`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-teamai-function-teamai-state-bot-suppressed-src-mq3-game-ai-team-ml-1386424202) — function
+- [`mq3.game.ai_team.teamOrders`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-teamorders-function-teamorders-state-bot-suppressed-src-mq3-game-ai-team-ml-1681795970) — function
+- [`mq3.game.ai_team.TEAMTP_ATTACKER`](File-src-mq3-game-ai-team-ml-162745936.md#constant-constant-mq3-game-ai-team-teamtp-attacker-const-teamtp-attacker-aiheaders-teamtp-attacker-src-mq3-game-ai-team-ml-1198667270) — constant
+- [`mq3.game.ai_team.TEAMTP_DEFENDER`](File-src-mq3-game-ai-team-ml-162745936.md#constant-constant-mq3-game-ai-team-teamtp-defender-const-teamtp-defender-aiheaders-teamtp-defender-src-mq3-game-ai-team-ml-680446510) — constant
+- [`mq3.game.ai_team.validTeamLeader`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-validteamleader-function-validteamleader-state-bot-src-mq3-game-ai-team-ml-2120133184) — function
+- [`mq3.game.ai_team.voiceChat`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-voicechat-function-voicechat-state-bot-toclient-voice-suppressed-src-mq3-game-ai-team-ml-1123937062) — function
+- [`mq3.game.ai_team.voiceChatOnly`](File-src-mq3-game-ai-team-ml-162745936.md#function-function-mq3-game-ai-team-voicechatonly-function-voicechatonly-state-bot-toclient-voice-suppressed-src-mq3-game-ai-team-ml-131990126) — function

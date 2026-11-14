@@ -1,0 +1,100 @@
+# Package `mq3.client.cl_input`
+
+[Home](README.md) · [Packages](Packages.md)
+
+## Files
+
+- [src/mq3/client/cl_input.ml](File-src-mq3-client-cl-input-ml-663114153.md)
+
+## Symbols
+
+- [`mq3.client.cl_input.atoi`](File-src-mq3-client-cl-input-ml-663114153.md#extern_function-extern-function-mq3-client-cl-input-atoi-extern-function-atoi-text-as-cstr-from-ucrtbase-dll-returns-i32-src-mq3-client-cl-input-ml-1927826502) — extern_function
+- [`mq3.client.cl_input.CL_AdjustAngles`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-adjustangles-function-cl-adjustangles-state-src-mq3-client-cl-input-ml-1975365763) — function
+- [`mq3.client.cl_input.CL_CmdButtons`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-cmdbuttons-function-cl-cmdbuttons-state-value-src-mq3-client-cl-input-ml-63949894) — function
+- [`mq3.client.cl_input.CL_CreateCmd`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-createcmd-function-cl-createcmd-state-src-mq3-client-cl-input-ml-1474617937) — function
+- [`mq3.client.cl_input.CL_CreateNewCommands`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-createnewcommands-function-cl-createnewcommands-state-frametime-src-mq3-client-cl-input-ml-427316241) — function
+- [`mq3.client.cl_input.CL_FinishMove`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-finishmove-function-cl-finishmove-state-value-src-mq3-client-cl-input-ml-921960012) — function
+- [`mq3.client.cl_input.CL_InitInput`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-initinput-function-cl-initinput-state-src-mq3-client-cl-input-ml-12096777) — function
+- [`mq3.client.cl_input.CL_JoystickEvent`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-joystickevent-function-cl-joystickevent-state-axis-value-time-src-mq3-client-cl-input-ml-853441562) — function
+- [`mq3.client.cl_input.CL_JoystickMove`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-joystickmove-function-cl-joystickmove-state-value-src-mq3-client-cl-input-ml-1032641602) — function
+- [`mq3.client.cl_input.CL_KeyMove`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-keymove-function-cl-keymove-state-value-src-mq3-client-cl-input-ml-1314695104) — function
+- [`mq3.client.cl_input.CL_KeyState`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-keystate-function-cl-keystate-state-value-src-mq3-client-cl-input-ml-2131410240) — function
+- [`mq3.client.cl_input.CL_MouseEvent`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-mouseevent-function-cl-mouseevent-state-dx-dy-time-src-mq3-client-cl-input-ml-928895489) — function
+- [`mq3.client.cl_input.CL_MouseMove`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-mousemove-function-cl-mousemove-state-value-src-mq3-client-cl-input-ml-903882160) — function
+- [`mq3.client.cl_input.CL_ReadyToSendPacket`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-readytosendpacket-function-cl-readytosendpacket-state-src-mq3-client-cl-input-ml-1644932909) — function
+- [`mq3.client.cl_input.CL_SendCmd`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-sendcmd-function-cl-sendcmd-state-frametime-src-mq3-client-cl-input-ml-1808036709) — function
+- [`mq3.client.cl_input.CL_WritePacket`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-cl-writepacket-function-cl-writepacket-state-src-mq3-client-cl-input-ml-1518891581) — function
+- [`mq3.client.cl_input.create`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-create-function-create-commandstate-sendstate-sendhost-src-mq3-client-cl-input-ml-1213589561) — function
+- [`mq3.client.cl_input.dispatchInputCommand`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-dispatchinputcommand-function-dispatchinputcommand-commandstate-state-src-mq3-client-cl-input-ml-1647361379) — function
+- [`mq3.client.cl_input.emit`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-emit-function-emit-state-text-src-mq3-client-cl-input-ml-1093561306) — function
+- [`mq3.client.cl_input.Host`](Type-mq3-client-cl-input-host-1945411211.md) — struct
+- [`mq3.client.cl_input.hostServices`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-hostservices-function-hostservices-src-mq3-client-cl-input-ml-1916266) — function
+- [`mq3.client.cl_input.IN_BackDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-backdown-function-in-backdown-state-key-time-src-mq3-client-cl-input-ml-1475151125) — function
+- [`mq3.client.cl_input.IN_BackUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-backup-function-in-backup-state-key-time-src-mq3-client-cl-input-ml-1867316091) — function
+- [`mq3.client.cl_input.IN_Button0Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button0down-function-in-button0down-state-key-time-src-mq3-client-cl-input-ml-217238691) — function
+- [`mq3.client.cl_input.IN_Button0Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button0up-function-in-button0up-state-key-time-src-mq3-client-cl-input-ml-811283199) — function
+- [`mq3.client.cl_input.IN_Button10Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button10down-function-in-button10down-state-key-time-src-mq3-client-cl-input-ml-1165708585) — function
+- [`mq3.client.cl_input.IN_Button10Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button10up-function-in-button10up-state-key-time-src-mq3-client-cl-input-ml-266356751) — function
+- [`mq3.client.cl_input.IN_Button11Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button11down-function-in-button11down-state-key-time-src-mq3-client-cl-input-ml-463118807) — function
+- [`mq3.client.cl_input.IN_Button11Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button11up-function-in-button11up-state-key-time-src-mq3-client-cl-input-ml-362581649) — function
+- [`mq3.client.cl_input.IN_Button12Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button12down-function-in-button12down-state-key-time-src-mq3-client-cl-input-ml-973607397) — function
+- [`mq3.client.cl_input.IN_Button12Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button12up-function-in-button12up-state-key-time-src-mq3-client-cl-input-ml-158340247) — function
+- [`mq3.client.cl_input.IN_Button13Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button13down-function-in-button13down-state-key-time-src-mq3-client-cl-input-ml-472039383) — function
+- [`mq3.client.cl_input.IN_Button13Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button13up-function-in-button13up-state-key-time-src-mq3-client-cl-input-ml-848716789) — function
+- [`mq3.client.cl_input.IN_Button14Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button14down-function-in-button14down-state-key-time-src-mq3-client-cl-input-ml-612983305) — function
+- [`mq3.client.cl_input.IN_Button14Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button14up-function-in-button14up-state-key-time-src-mq3-client-cl-input-ml-239648455) — function
+- [`mq3.client.cl_input.IN_Button15Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button15down-function-in-button15down-state-key-time-src-mq3-client-cl-input-ml-1415846271) — function
+- [`mq3.client.cl_input.IN_Button15Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button15up-function-in-button15up-state-key-time-src-mq3-client-cl-input-ml-1139938881) — function
+- [`mq3.client.cl_input.IN_Button1Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button1down-function-in-button1down-state-key-time-src-mq3-client-cl-input-ml-1490930735) — function
+- [`mq3.client.cl_input.IN_Button1Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button1up-function-in-button1up-state-key-time-src-mq3-client-cl-input-ml-1867758023) — function
+- [`mq3.client.cl_input.IN_Button2Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button2down-function-in-button2down-state-key-time-src-mq3-client-cl-input-ml-176677743) — function
+- [`mq3.client.cl_input.IN_Button2Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button2up-function-in-button2up-state-key-time-src-mq3-client-cl-input-ml-849865315) — function
+- [`mq3.client.cl_input.IN_Button3Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button3down-function-in-button3down-state-key-time-src-mq3-client-cl-input-ml-1978869723) — function
+- [`mq3.client.cl_input.IN_Button3Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button3up-function-in-button3up-state-key-time-src-mq3-client-cl-input-ml-1785746715) — function
+- [`mq3.client.cl_input.IN_Button4Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button4down-function-in-button4down-state-key-time-src-mq3-client-cl-input-ml-724114195) — function
+- [`mq3.client.cl_input.IN_Button4Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button4up-function-in-button4up-state-key-time-src-mq3-client-cl-input-ml-1260391511) — function
+- [`mq3.client.cl_input.IN_Button5Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button5down-function-in-button5down-state-key-time-src-mq3-client-cl-input-ml-132919943) — function
+- [`mq3.client.cl_input.IN_Button5Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button5up-function-in-button5up-state-key-time-src-mq3-client-cl-input-ml-753887983) — function
+- [`mq3.client.cl_input.IN_Button6Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button6down-function-in-button6down-state-key-time-src-mq3-client-cl-input-ml-641492343) — function
+- [`mq3.client.cl_input.IN_Button6Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button6up-function-in-button6up-state-key-time-src-mq3-client-cl-input-ml-1481977635) — function
+- [`mq3.client.cl_input.IN_Button7Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button7down-function-in-button7down-state-key-time-src-mq3-client-cl-input-ml-664854235) — function
+- [`mq3.client.cl_input.IN_Button7Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button7up-function-in-button7up-state-key-time-src-mq3-client-cl-input-ml-35243835) — function
+- [`mq3.client.cl_input.IN_Button8Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button8down-function-in-button8down-state-key-time-src-mq3-client-cl-input-ml-655233043) — function
+- [`mq3.client.cl_input.IN_Button8Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button8up-function-in-button8up-state-key-time-src-mq3-client-cl-input-ml-112797087) — function
+- [`mq3.client.cl_input.IN_Button9Down`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button9down-function-in-button9down-state-key-time-src-mq3-client-cl-input-ml-803226447) — function
+- [`mq3.client.cl_input.IN_Button9Up`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-button9up-function-in-button9up-state-key-time-src-mq3-client-cl-input-ml-825886327) — function
+- [`mq3.client.cl_input.IN_ButtonDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-buttondown-function-in-buttondown-state-key-time-src-mq3-client-cl-input-ml-603132655) — function
+- [`mq3.client.cl_input.IN_ButtonUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-buttonup-function-in-buttonup-state-key-time-src-mq3-client-cl-input-ml-1777897353) — function
+- [`mq3.client.cl_input.IN_CenterView`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-centerview-function-in-centerview-state-src-mq3-client-cl-input-ml-2075232217) — function
+- [`mq3.client.cl_input.IN_DownDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-downdown-function-in-downdown-state-key-time-src-mq3-client-cl-input-ml-1613746303) — function
+- [`mq3.client.cl_input.IN_DownUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-downup-function-in-downup-state-key-time-src-mq3-client-cl-input-ml-1746888677) — function
+- [`mq3.client.cl_input.IN_ForwardDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-forwarddown-function-in-forwarddown-state-key-time-src-mq3-client-cl-input-ml-1822936743) — function
+- [`mq3.client.cl_input.IN_ForwardUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-forwardup-function-in-forwardup-state-key-time-src-mq3-client-cl-input-ml-281861623) — function
+- [`mq3.client.cl_input.IN_KeyDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-keydown-function-in-keydown-state-value-key-time-src-mq3-client-cl-input-ml-1978309364) — function
+- [`mq3.client.cl_input.IN_KeyUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-keyup-function-in-keyup-state-value-key-time-src-mq3-client-cl-input-ml-1588015568) — function
+- [`mq3.client.cl_input.IN_LeftDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-leftdown-function-in-leftdown-state-key-time-src-mq3-client-cl-input-ml-1978050141) — function
+- [`mq3.client.cl_input.IN_LeftUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-leftup-function-in-leftup-state-key-time-src-mq3-client-cl-input-ml-1560310639) — function
+- [`mq3.client.cl_input.IN_LookdownDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-lookdowndown-function-in-lookdowndown-state-key-time-src-mq3-client-cl-input-ml-1559562917) — function
+- [`mq3.client.cl_input.IN_LookdownUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-lookdownup-function-in-lookdownup-state-key-time-src-mq3-client-cl-input-ml-1019546135) — function
+- [`mq3.client.cl_input.IN_LookupDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-lookupdown-function-in-lookupdown-state-key-time-src-mq3-client-cl-input-ml-2114950607) — function
+- [`mq3.client.cl_input.IN_LookupUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-lookupup-function-in-lookupup-state-key-time-src-mq3-client-cl-input-ml-1067466941) — function
+- [`mq3.client.cl_input.IN_MLookDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-mlookdown-function-in-mlookdown-state-key-time-src-mq3-client-cl-input-ml-540862171) — function
+- [`mq3.client.cl_input.IN_MLookUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-mlookup-function-in-mlookup-state-key-time-src-mq3-client-cl-input-ml-1639537919) — function
+- [`mq3.client.cl_input.IN_MoveleftDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-moveleftdown-function-in-moveleftdown-state-key-time-src-mq3-client-cl-input-ml-98211215) — function
+- [`mq3.client.cl_input.IN_MoveleftUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-moveleftup-function-in-moveleftup-state-key-time-src-mq3-client-cl-input-ml-1294903697) — function
+- [`mq3.client.cl_input.IN_MoverightDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-moverightdown-function-in-moverightdown-state-key-time-src-mq3-client-cl-input-ml-1858751763) — function
+- [`mq3.client.cl_input.IN_MoverightUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-moverightup-function-in-moverightup-state-key-time-src-mq3-client-cl-input-ml-1052317235) — function
+- [`mq3.client.cl_input.IN_RightDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-rightdown-function-in-rightdown-state-key-time-src-mq3-client-cl-input-ml-1557085927) — function
+- [`mq3.client.cl_input.IN_RightUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-rightup-function-in-rightup-state-key-time-src-mq3-client-cl-input-ml-2078737495) — function
+- [`mq3.client.cl_input.IN_SpeedDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-speeddown-function-in-speeddown-state-key-time-src-mq3-client-cl-input-ml-627710603) — function
+- [`mq3.client.cl_input.IN_SpeedUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-speedup-function-in-speedup-state-key-time-src-mq3-client-cl-input-ml-1435473623) — function
+- [`mq3.client.cl_input.IN_StrafeDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-strafedown-function-in-strafedown-state-key-time-src-mq3-client-cl-input-ml-1900598217) — function
+- [`mq3.client.cl_input.IN_StrafeUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-strafeup-function-in-strafeup-state-key-time-src-mq3-client-cl-input-ml-1652192283) — function
+- [`mq3.client.cl_input.IN_UpDown`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-updown-function-in-updown-state-key-time-src-mq3-client-cl-input-ml-102686277) — function
+- [`mq3.client.cl_input.IN_UpUp`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-in-upup-function-in-upup-state-key-time-src-mq3-client-cl-input-ml-1664034239) — function
+- [`mq3.client.cl_input.inputCommandNames`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-inputcommandnames-function-inputcommandnames-src-mq3-client-cl-input-ml-1924942912) — function
+- [`mq3.client.cl_input.KEYCATCH_CGAME`](File-src-mq3-client-cl-input-ml-663114153.md#constant-constant-mq3-client-cl-input-keycatch-cgame-const-keycatch-cgame-8-src-mq3-client-cl-input-ml-120102367) — constant
+- [`mq3.client.cl_input.KEYCATCH_UI`](File-src-mq3-client-cl-input-ml-663114153.md#constant-constant-mq3-client-cl-input-keycatch-ui-const-keycatch-ui-2-src-mq3-client-cl-input-ml-712430715) — constant
+- [`mq3.client.cl_input.magnitude`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-magnitude-function-magnitude-value-src-mq3-client-cl-input-ml-1106446309) — function
+- [`mq3.client.cl_input.parseArg`](File-src-mq3-client-cl-input-ml-663114153.md#function-function-mq3-client-cl-input-parsearg-function-parsearg-commandstate-index-fallback-src-mq3-client-cl-input-ml-1681476556) — function
+- [`mq3.client.cl_input.State`](Type-mq3-client-cl-input-state-457779714.md) — struct

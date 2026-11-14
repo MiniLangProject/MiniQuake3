@@ -1,0 +1,47 @@
+# Package `mq3.client.baseq3_match_display`
+
+[Home](README.md) · [Packages](Packages.md)
+
+## Files
+
+- [src/mq3/client/baseq3_match_display.ml](File-src-mq3-client-baseq3-match-display-ml-1367704051.md)
+
+## Symbols
+
+- [`mq3.client.baseq3_match_display.ATLAS_COLUMNS`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#constant-constant-mq3-client-baseq3-match-display-atlas-columns-const-atlas-columns-16-src-mq3-client-baseq3-match-display-ml-1885458646) — constant
+- [`mq3.client.baseq3_match_display.ATLAS_ROWS`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#constant-constant-mq3-client-baseq3-match-display-atlas-rows-const-atlas-rows-16-src-mq3-client-baseq3-match-display-ml-1125046546) — constant
+- [`mq3.client.baseq3_match_display.BIGCHAR_HEIGHT`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#constant-constant-mq3-client-baseq3-match-display-bigchar-height-const-bigchar-height-16-src-mq3-client-baseq3-match-display-ml-2041359132) — constant
+- [`mq3.client.baseq3_match_display.BIGCHAR_WIDTH`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#constant-constant-mq3-client-baseq3-match-display-bigchar-width-const-bigchar-width-16-src-mq3-client-baseq3-match-display-ml-1042797670) — constant
+- [`mq3.client.baseq3_match_display.CENTER_DEFAULT_DURATION`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#constant-constant-mq3-client-baseq3-match-display-center-default-duration-const-center-default-duration-3000-src-mq3-client-baseq3-match-display-ml-2129083506) — constant
+- [`mq3.client.baseq3_match_display.CENTER_DEFAULT_Y`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#constant-constant-mq3-client-baseq3-match-display-center-default-y-const-center-default-y-144-src-mq3-client-baseq3-match-display-ml-2054595632) — constant
+- [`mq3.client.baseq3_match_display.centerAlpha`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-centeralpha-function-centeralpha-center-now-src-mq3-client-baseq3-match-display-ml-1018352969) — function
+- [`mq3.client.baseq3_match_display.centerPrint`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-centerprint-function-centerprint-text-startedat-y-charwidth-duration-src-mq3-client-baseq3-match-display-ml-464248312) — function
+- [`mq3.client.baseq3_match_display.CenterPrint`](Type-mq3-client-baseq3-match-display-centerprint-1937530893.md) — struct
+- [`mq3.client.baseq3_match_display.colorFor`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-colorfor-function-colorfor-code-src-mq3-client-baseq3-match-display-ml-1588965267) — function
+- [`mq3.client.baseq3_match_display.countdown`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-countdown-function-countdown-warmupend-now-src-mq3-client-baseq3-match-display-ml-308750623) — function
+- [`mq3.client.baseq3_match_display.Countdown`](Type-mq3-client-baseq3-match-display-countdown-851695878.md) — struct
+- [`mq3.client.baseq3_match_display.draw`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-draw-function-draw-media-width-height-levelstarttime-now-showtimer-gametypename-warmupend-center-src-mq3-client-baseq3-match-display-ml-497197725) — function
+- [`mq3.client.baseq3_match_display.drawCenter`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-drawcenter-function-drawcenter-media-center-now-width-height-src-mq3-client-baseq3-match-display-ml-546543038) — function
+- [`mq3.client.baseq3_match_display.drawGlyph`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-drawglyph-function-drawglyph-media-character-x-y-charwidth-charheight-scalex-scaley-red-green-blue-src-mq3-client-baseq3-match-display-ml-1283183750) — function
+- [`mq3.client.baseq3_match_display.drawScoreboard`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-drawscoreboard-function-drawscoreboard-media-width-height-playerscore-enemyscore-playerdeaths-src-mq3-client-baseq3-match-display-ml-1946731072) — function
+- [`mq3.client.baseq3_match_display.drawString`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-drawstring-function-drawstring-media-text-x-y-charwidth-charheight-scalex-scaley-red-green-blue-shadow-src-mq3-client-baseq3-match-display-ml-1797250380) — function
+- [`mq3.client.baseq3_match_display.drawTimer`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-drawtimer-function-drawtimer-media-levelstarttime-now-width-height-y-src-mq3-client-baseq3-match-display-ml-595394323) — function
+- [`mq3.client.baseq3_match_display.drawWarmup`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-drawwarmup-function-drawwarmup-media-gametypename-warmupend-now-width-height-src-mq3-client-baseq3-match-display-ml-1307049247) — function
+- [`mq3.client.baseq3_match_display.FADE_TIME`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#constant-constant-mq3-client-baseq3-match-display-fade-time-const-fade-time-200-src-mq3-client-baseq3-match-display-ml-1493585843) — constant
+- [`mq3.client.baseq3_match_display.fail`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-fail-function-fail-message-src-mq3-client-baseq3-match-display-ml-588079187) — function
+- [`mq3.client.baseq3_match_display.GIANT_WIDTH`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#constant-constant-mq3-client-baseq3-match-display-giant-width-const-giant-width-32-src-mq3-client-baseq3-match-display-ml-716873652) — constant
+- [`mq3.client.baseq3_match_display.glyphCell`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-glyphcell-function-glyphcell-character-src-mq3-client-baseq3-match-display-ml-808247099) — function
+- [`mq3.client.baseq3_match_display.isColorEscape`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-iscolorescape-function-iscolorescape-text-index-src-mq3-client-baseq3-match-display-ml-500789197) — function
+- [`mq3.client.baseq3_match_display.lineCount`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-linecount-function-linecount-text-src-mq3-client-baseq3-match-display-ml-1186399839) — function
+- [`mq3.client.baseq3_match_display.load`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-load-function-load-archive-textureslot-src-mq3-client-baseq3-match-display-ml-1639438747) — function
+- [`mq3.client.baseq3_match_display.Media`](Type-mq3-client-baseq3-match-display-media-285686009.md) — struct
+- [`mq3.client.baseq3_match_display.point`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-point-function-point-x-y-src-mq3-client-baseq3-match-display-ml-1606425021) — function
+- [`mq3.client.baseq3_match_display.Point`](Type-mq3-client-baseq3-match-display-point-1995949791.md) — struct
+- [`mq3.client.baseq3_match_display.printLength`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-printlength-function-printlength-text-src-mq3-client-baseq3-match-display-ml-1431851415) — function
+- [`mq3.client.baseq3_match_display.release`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-release-function-release-media-src-mq3-client-baseq3-match-display-ml-26205454) — function
+- [`mq3.client.baseq3_match_display.ScoreRow`](Type-mq3-client-baseq3-match-display-scorerow-843654465.md) — struct
+- [`mq3.client.baseq3_match_display.scoreRows`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-scorerows-function-scorerows-playerscore-enemyscore-playerdeaths-src-mq3-client-baseq3-match-display-ml-1572668803) — function
+- [`mq3.client.baseq3_match_display.timerText`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-timertext-function-timertext-levelstarttime-now-src-mq3-client-baseq3-match-display-ml-1535337089) — function
+- [`mq3.client.baseq3_match_display.upload`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#function-function-mq3-client-baseq3-match-display-upload-function-upload-media-src-mq3-client-baseq3-match-display-ml-1202689164) — function
+- [`mq3.client.baseq3_match_display.VIRTUAL_HEIGHT`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#constant-constant-mq3-client-baseq3-match-display-virtual-height-const-virtual-height-480-src-mq3-client-baseq3-match-display-ml-1669118961) — constant
+- [`mq3.client.baseq3_match_display.VIRTUAL_WIDTH`](File-src-mq3-client-baseq3-match-display-ml-1367704051.md#constant-constant-mq3-client-baseq3-match-display-virtual-width-const-virtual-width-640-src-mq3-client-baseq3-match-display-ml-1097217783) — constant

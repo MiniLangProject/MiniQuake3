@@ -1,0 +1,35 @@
+# `mq3.botlib.be_ai_move.BrushEntity`
+
+[Home](README.md) · [Source file](File-src-mq3-botlib-be-ai-move-ml-1287990866.md)
+
+<a id="struct-struct-mq3-botlib-be-ai-move-brushentity-struct-brushentity-src-mq3-botlib-be-ai-move-ml-1559273073"></a>
+## BrushEntity
+
+```ml
+struct BrushEntity
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L24)
+
+## Members
+
+<a id="field-field-mq3-botlib-be-ai-move-brushentity-classname-classname-src-mq3-botlib-be-ai-move-ml-893569972"></a>
+### classname
+
+```ml
+classname
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L24)
+
+<a id="field-field-mq3-botlib-be-ai-move-brushentity-modelnum-modelnum-src-mq3-botlib-be-ai-move-ml-1720892118"></a>
+### modelNum
+
+```ml
+modelNum
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_move.ml#L24)

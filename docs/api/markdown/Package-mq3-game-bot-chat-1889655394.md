@@ -1,0 +1,106 @@
+# Package `mq3.game.bot_chat`
+
+[Home](README.md) · [Packages](Packages.md)
+
+## Files
+
+- [src/mq3/game/bot_chat.ml](File-src-mq3-game-bot-chat-ml-1879844588.md)
+
+## Symbols
+
+- [`mq3.game.bot_chat.Bot`](Type-mq3-game-bot-chat-bot-453736137.md) — struct
+- [`mq3.game.bot_chat.characteristic`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-characteristic-function-characteristic-state-index-src-mq3-game-bot-chat-ml-700053243) — function
+- [`mq3.game.bot_chat.CHAT_ALL`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-chat-all-const-chat-all-0-src-mq3-game-bot-chat-ml-723632907) — constant
+- [`mq3.game.bot_chat.CHAT_TEAM`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-chat-team-const-chat-team-1-src-mq3-game-bot-chat-ml-623932784) — constant
+- [`mq3.game.bot_chat.chatDeath`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-chatdeath-function-chatdeath-state-bot-retailactive-src-mq3-game-bot-chat-ml-1025230339) — function
+- [`mq3.game.bot_chat.chatEndLevel`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-chatendlevel-function-chatendlevel-state-bot-retailactive-src-mq3-game-bot-chat-ml-1791010863) — function
+- [`mq3.game.bot_chat.chatEnemySuicide`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-chatenemysuicide-function-chatenemysuicide-state-bot-retailactive-src-mq3-game-bot-chat-ml-14474415) — function
+- [`mq3.game.bot_chat.chatEnterGame`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-chatentergame-function-chatentergame-state-bot-retailactive-src-mq3-game-bot-chat-ml-948756463) — function
+- [`mq3.game.bot_chat.chatExitGame`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-chatexitgame-function-chatexitgame-state-bot-retailactive-src-mq3-game-bot-chat-ml-953148859) — function
+- [`mq3.game.bot_chat.chatHitNoDeath`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-chathitnodeath-function-chathitnodeath-state-bot-retailactive-src-mq3-game-bot-chat-ml-1340214175) — function
+- [`mq3.game.bot_chat.chatHitNoKill`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-chathitnokill-function-chathitnokill-state-bot-retailactive-src-mq3-game-bot-chat-ml-240038135) — function
+- [`mq3.game.bot_chat.chatHitTalking`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-chathittalking-function-chathittalking-state-bot-retailactive-src-mq3-game-bot-chat-ml-1980182359) — function
+- [`mq3.game.bot_chat.chatKill`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-chatkill-function-chatkill-state-bot-retailactive-src-mq3-game-bot-chat-ml-1728252959) — function
+- [`mq3.game.bot_chat.chatRandom`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-chatrandom-function-chatrandom-state-bot-retailactive-src-mq3-game-bot-chat-ml-1645415243) — function
+- [`mq3.game.bot_chat.chatStartLevel`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-chatstartlevel-function-chatstartlevel-state-bot-retailactive-src-mq3-game-bot-chat-ml-476200107) — function
+- [`mq3.game.bot_chat.chatTest`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-chattest-function-chattest-state-bot-retailactive-src-mq3-game-bot-chat-ml-1232663063) — function
+- [`mq3.game.bot_chat.chatTime`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-chattime-function-chattime-state-bot-src-mq3-game-bot-chat-ml-106968058) — function
+- [`mq3.game.bot_chat.command`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-command-function-command-state-bot-text-retailactive-src-mq3-game-bot-chat-ml-317696538) — function
+- [`mq3.game.bot_chat.commonGate`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-commongate-function-commongate-state-bot-characteristicindex-scale-src-mq3-game-bot-chat-ml-1543814149) — function
+- [`mq3.game.bot_chat.CONTENTS_LAVA`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-contents-lava-const-contents-lava-headers-contents-lava-src-mq3-game-bot-chat-ml-355271198) — constant
+- [`mq3.game.bot_chat.CONTENTS_SLIME`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-contents-slime-const-contents-slime-headers-contents-slime-src-mq3-game-bot-chat-ml-316116886) — constant
+- [`mq3.game.bot_chat.countFor`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-countfor-function-countfor-state-name-src-mq3-game-bot-chat-ml-10171466) — function
+- [`mq3.game.bot_chat.create`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-create-function-create-src-mq3-game-bot-chat-ml-151652952) — function
+- [`mq3.game.bot_chat.createBot`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-createbot-function-createbot-client-src-mq3-game-bot-chat-ml-600407889) — function
+- [`mq3.game.bot_chat.createEntity`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-createentity-function-createentity-number-src-mq3-game-bot-chat-ml-1309947521) — function
+- [`mq3.game.bot_chat.createPlayer`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-createplayer-function-createplayer-name-team-score-src-mq3-game-bot-chat-ml-1380748112) — function
+- [`mq3.game.bot_chat.emit`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-emit-function-emit-state-kind-bot-channel-chat-variables-value-retailactive-src-mq3-game-bot-chat-ml-483722522) — function
+- [`mq3.game.bot_chat.enterChat`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-enterchat-function-enterchat-state-bot-channel-retailactive-src-mq3-game-bot-chat-ml-1824639684) — function
+- [`mq3.game.bot_chat.Entity`](Type-mq3-game-bot-chat-entity-592045055.md) — struct
+- [`mq3.game.bot_chat.ENTITYNUM_WORLD`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-entitynum-world-const-entitynum-world-1022-src-mq3-game-bot-chat-ml-120943666) — constant
+- [`mq3.game.bot_chat.entityShooting`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-entityshooting-function-entityshooting-state-index-src-mq3-game-bot-chat-ml-2086387459) — function
+- [`mq3.game.bot_chat.finish`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-finish-function-finish-state-bot-chat-variables-channel-retailactive-src-mq3-game-bot-chat-ml-1546053449) — function
+- [`mq3.game.bot_chat.firstClientInRankings`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-firstclientinrankings-function-firstclientinrankings-state-src-mq3-game-bot-chat-ml-403185767) — function
+- [`mq3.game.bot_chat.GT_TOURNAMENT`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-gt-tournament-const-gt-tournament-1-src-mq3-game-bot-chat-ml-890273856) — constant
+- [`mq3.game.bot_chat.HostAction`](Type-mq3-game-bot-chat-hostaction-216858268.md) — struct
+- [`mq3.game.bot_chat.initialChat`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-initialchat-function-initialchat-state-bot-chat-variables-retailactive-src-mq3-game-bot-chat-ml-563530876) — function
+- [`mq3.game.bot_chat.INVENTORY_FLIGHT`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-inventory-flight-const-inventory-flight-headers-inventory-flight-src-mq3-game-bot-chat-ml-1244836596) — constant
+- [`mq3.game.bot_chat.INVENTORY_HASTE`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-inventory-haste-const-inventory-haste-headers-inventory-haste-src-mq3-game-bot-chat-ml-30053009) — constant
+- [`mq3.game.bot_chat.INVENTORY_INVISIBILITY`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-inventory-invisibility-const-inventory-invisibility-headers-inventory-invisibility-src-mq3-game-bot-chat-ml-1916539485) — constant
+- [`mq3.game.bot_chat.INVENTORY_QUAD`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-inventory-quad-const-inventory-quad-headers-inventory-quad-src-mq3-game-bot-chat-ml-1274341865) — constant
+- [`mq3.game.bot_chat.INVENTORY_REGEN`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-inventory-regen-const-inventory-regen-headers-inventory-regen-src-mq3-game-bot-chat-ml-1555740431) — constant
+- [`mq3.game.bot_chat.isFirstInRankings`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-isfirstinrankings-function-isfirstinrankings-state-bot-src-mq3-game-bot-chat-ml-1596530098) — function
+- [`mq3.game.bot_chat.isLastInRankings`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-islastinrankings-function-islastinrankings-state-bot-src-mq3-game-bot-chat-ml-284711890) — function
+- [`mq3.game.bot_chat.lastClientInRankings`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-lastclientinrankings-function-lastclientinrankings-state-src-mq3-game-bot-chat-ml-392119805) — function
+- [`mq3.game.bot_chat.LTG_RUSHBASE`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-ltg-rushbase-const-ltg-rushbase-5-src-mq3-game-bot-chat-ml-1073854436) — constant
+- [`mq3.game.bot_chat.LTG_TEAMACCOMPANY`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-ltg-teamaccompany-const-ltg-teamaccompany-2-src-mq3-game-bot-chat-ml-319157359) — constant
+- [`mq3.game.bot_chat.LTG_TEAMHELP`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-ltg-teamhelp-const-ltg-teamhelp-1-src-mq3-game-bot-chat-ml-653400798) — constant
+- [`mq3.game.bot_chat.mapTitle`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-maptitle-function-maptitle-state-src-mq3-game-bot-chat-ml-103518653) — function
+- [`mq3.game.bot_chat.MASK_WATER`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mask-water-const-mask-water-56-src-mq3-game-bot-chat-ml-2135182286) — constant
+- [`mq3.game.bot_chat.MAX_CLIENTS`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-max-clients-const-max-clients-64-src-mq3-game-bot-chat-ml-66122063) — constant
+- [`mq3.game.bot_chat.MOD_BFG`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-bfg-const-mod-bfg-12-src-mq3-game-bot-chat-ml-583144600) — constant
+- [`mq3.game.bot_chat.MOD_BFG_SPLASH`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-bfg-splash-const-mod-bfg-splash-13-src-mq3-game-bot-chat-ml-1947860811) — constant
+- [`mq3.game.bot_chat.MOD_CHAINGUN`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-chaingun-const-mod-chaingun-24-src-mq3-game-bot-chat-ml-2014302949) — constant
+- [`mq3.game.bot_chat.MOD_CRUSH`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-crush-const-mod-crush-17-src-mq3-game-bot-chat-ml-106263249) — constant
+- [`mq3.game.bot_chat.MOD_FALLING`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-falling-const-mod-falling-19-src-mq3-game-bot-chat-ml-443864479) — constant
+- [`mq3.game.bot_chat.MOD_GAUNTLET`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-gauntlet-const-mod-gauntlet-2-src-mq3-game-bot-chat-ml-1758247235) — constant
+- [`mq3.game.bot_chat.MOD_GRAPPLE`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-grapple-const-mod-grapple-23-src-mq3-game-bot-chat-ml-1047945016) — constant
+- [`mq3.game.bot_chat.MOD_GRENADE`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-grenade-const-mod-grenade-4-src-mq3-game-bot-chat-ml-1690230885) — constant
+- [`mq3.game.bot_chat.MOD_GRENADE_SPLASH`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-grenade-splash-const-mod-grenade-splash-5-src-mq3-game-bot-chat-ml-511310636) — constant
+- [`mq3.game.bot_chat.MOD_JUICED`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-juiced-const-mod-juiced-27-src-mq3-game-bot-chat-ml-620362844) — constant
+- [`mq3.game.bot_chat.MOD_KAMIKAZE`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-kamikaze-const-mod-kamikaze-26-src-mq3-game-bot-chat-ml-543850791) — constant
+- [`mq3.game.bot_chat.MOD_LAVA`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-lava-const-mod-lava-16-src-mq3-game-bot-chat-ml-1919979124) — constant
+- [`mq3.game.bot_chat.MOD_LIGHTNING`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-lightning-const-mod-lightning-11-src-mq3-game-bot-chat-ml-2131480159) — constant
+- [`mq3.game.bot_chat.MOD_MACHINEGUN`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-machinegun-const-mod-machinegun-3-src-mq3-game-bot-chat-ml-1524777392) — constant
+- [`mq3.game.bot_chat.MOD_MISSIONPACK_GRAPPLE`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-missionpack-grapple-const-mod-missionpack-grapple-28-src-mq3-game-bot-chat-ml-400080487) — constant
+- [`mq3.game.bot_chat.MOD_NAIL`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-nail-const-mod-nail-23-src-mq3-game-bot-chat-ml-1824380568) — constant
+- [`mq3.game.bot_chat.MOD_PLASMA`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-plasma-const-mod-plasma-8-src-mq3-game-bot-chat-ml-794210177) — constant
+- [`mq3.game.bot_chat.MOD_PLASMA_SPLASH`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-plasma-splash-const-mod-plasma-splash-9-src-mq3-game-bot-chat-ml-630225488) — constant
+- [`mq3.game.bot_chat.MOD_PROXIMITY_MINE`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-proximity-mine-const-mod-proximity-mine-25-src-mq3-game-bot-chat-ml-1791854164) — constant
+- [`mq3.game.bot_chat.MOD_RAILGUN`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-railgun-const-mod-railgun-10-src-mq3-game-bot-chat-ml-448250830) — constant
+- [`mq3.game.bot_chat.MOD_ROCKET`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-rocket-const-mod-rocket-6-src-mq3-game-bot-chat-ml-1810353051) — constant
+- [`mq3.game.bot_chat.MOD_ROCKET_SPLASH`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-rocket-splash-const-mod-rocket-splash-7-src-mq3-game-bot-chat-ml-1943766666) — constant
+- [`mq3.game.bot_chat.MOD_SHOTGUN`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-shotgun-const-mod-shotgun-1-src-mq3-game-bot-chat-ml-406848632) — constant
+- [`mq3.game.bot_chat.MOD_SLIME`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-slime-const-mod-slime-15-src-mq3-game-bot-chat-ml-53263983) — constant
+- [`mq3.game.bot_chat.MOD_SUICIDE`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-suicide-const-mod-suicide-20-src-mq3-game-bot-chat-ml-458377559) — constant
+- [`mq3.game.bot_chat.MOD_TARGET_LASER`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-target-laser-const-mod-target-laser-21-src-mq3-game-bot-chat-ml-1961387980) — constant
+- [`mq3.game.bot_chat.MOD_TELEFRAG`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-telefrag-const-mod-telefrag-18-src-mq3-game-bot-chat-ml-986077638) — constant
+- [`mq3.game.bot_chat.MOD_TRIGGER_HURT`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-trigger-hurt-const-mod-trigger-hurt-22-src-mq3-game-bot-chat-ml-871411777) — constant
+- [`mq3.game.bot_chat.MOD_UNKNOWN`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-unknown-const-mod-unknown-0-src-mq3-game-bot-chat-ml-1578569777) — constant
+- [`mq3.game.bot_chat.MOD_WATER`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-mod-water-const-mod-water-14-src-mq3-game-bot-chat-ml-1477167694) — constant
+- [`mq3.game.bot_chat.numActivePlayers`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-numactiveplayers-function-numactiveplayers-state-src-mq3-game-bot-chat-ml-1789954393) — function
+- [`mq3.game.bot_chat.Player`](Type-mq3-game-bot-chat-player-2090771289.md) — struct
+- [`mq3.game.bot_chat.playerActive`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-playeractive-function-playeractive-player-src-mq3-game-bot-chat-ml-917064645) — function
+- [`mq3.game.bot_chat.playerName`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-playername-function-playername-state-client-src-mq3-game-bot-chat-ml-859231998) — function
+- [`mq3.game.bot_chat.randomOpponentName`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-randomopponentname-function-randomopponentname-state-bot-src-mq3-game-bot-chat-ml-1057790386) — function
+- [`mq3.game.bot_chat.randomValue`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-randomvalue-function-randomvalue-state-src-mq3-game-bot-chat-ml-511571617) — function
+- [`mq3.game.bot_chat.randomWeaponName`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-randomweaponname-function-randomweaponname-state-src-mq3-game-bot-chat-ml-2105648473) — function
+- [`mq3.game.bot_chat.sameTeam`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-sameteam-function-sameteam-state-bot-client-src-mq3-game-bot-chat-ml-240823773) — function
+- [`mq3.game.bot_chat.State`](Type-mq3-game-bot-chat-state-1889395289.md) — struct
+- [`mq3.game.bot_chat.TEAM_SPECTATOR`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-team-spectator-const-team-spectator-3-src-mq3-game-bot-chat-ml-1488783814) — constant
+- [`mq3.game.bot_chat.testVariables`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-testvariables-function-testvariables-state-bot-chat-src-mq3-game-bot-chat-ml-2051077470) — function
+- [`mq3.game.bot_chat.TIME_BETWEENCHATTING`](File-src-mq3-game-bot-chat-ml-1879844588.md#constant-constant-mq3-game-bot-chat-time-betweenchatting-const-time-betweenchatting-25-src-mq3-game-bot-chat-ml-62585364) — constant
+- [`mq3.game.bot_chat.validChatPosition`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-validchatposition-function-validchatposition-state-bot-src-mq3-game-bot-chat-ml-880705916) — function
+- [`mq3.game.bot_chat.visibleEnemies`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-visibleenemies-function-visibleenemies-state-bot-src-mq3-game-bot-chat-ml-1739864314) — function
+- [`mq3.game.bot_chat.weaponNameForMeansOfDeath`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-weaponnameformeansofdeath-function-weaponnameformeansofdeath-mod-src-mq3-game-bot-chat-ml-1924744326) — function
+- [`mq3.game.bot_chat.weaponNameForMeansOfDeathMode`](File-src-mq3-game-bot-chat-ml-1879844588.md#function-function-mq3-game-bot-chat-weaponnameformeansofdeathmode-function-weaponnameformeansofdeathmode-mod-missionpack-src-mq3-game-bot-chat-ml-1187974679) — function

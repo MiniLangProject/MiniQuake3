@@ -1,0 +1,99 @@
+# Package `mq3.vm.pc_parser`
+
+[Home](README.md) · [Packages](Packages.md)
+
+## Files
+
+- [src/mq3/vm/pc_parser.ml](File-src-mq3-vm-pc-parser-ml-1324474776.md)
+
+## Symbols
+
+- [`mq3.vm.pc_parser.addDefine`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-adddefine-function-adddefine-registry-text-src-mq3-vm-pc-parser-ml-1872168718) — function
+- [`mq3.vm.pc_parser.ArgumentResult`](Type-mq3-vm-pc-parser-argumentresult-1280415052.md) — struct
+- [`mq3.vm.pc_parser.at`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-at-function-at-source-index-src-mq3-vm-pc-parser-ml-691168435) — function
+- [`mq3.vm.pc_parser.booleanValue`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-booleanvalue-function-booleanvalue-value-src-mq3-vm-pc-parser-ml-72083333) — function
+- [`mq3.vm.pc_parser.builtinToken`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-builtintoken-function-builtintoken-entry-token-src-mq3-vm-pc-parser-ml-175840093) — function
+- [`mq3.vm.pc_parser.clearDefines`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-cleardefines-function-cleardefines-registry-src-mq3-vm-pc-parser-ml-244797763) — function
+- [`mq3.vm.pc_parser.Conditional`](Type-mq3-vm-pc-parser-conditional-1771413818.md) — struct
+- [`mq3.vm.pc_parser.conditionalActive`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-conditionalactive-function-conditionalactive-entry-src-mq3-vm-pc-parser-ml-471072374) — function
+- [`mq3.vm.pc_parser.conditionalDirective`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-conditionaldirective-function-conditionaldirective-registry-entry-directive-line-src-mq3-vm-pc-parser-ml-963660590) — function
+- [`mq3.vm.pc_parser.create`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-create-function-create-context-loadfn-src-mq3-vm-pc-parser-ml-1733818003) — function
+- [`mq3.vm.pc_parser.Define`](Type-mq3-vm-pc-parser-define-1095006429.md) — struct
+- [`mq3.vm.pc_parser.definedName`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-definedname-function-definedname-registry-name-src-mq3-vm-pc-parser-ml-994981842) — function
+- [`mq3.vm.pc_parser.defineIndex`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-defineindex-function-defineindex-registry-name-src-mq3-vm-pc-parser-ml-415589848) — function
+- [`mq3.vm.pc_parser.definition`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-definition-function-definition-values-src-mq3-vm-pc-parser-ml-1663753632) — function
+- [`mq3.vm.pc_parser.digitValue`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-digitvalue-function-digitvalue-value-src-mq3-vm-pc-parser-ml-390720905) — function
+- [`mq3.vm.pc_parser.encode`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-encode-function-encode-token-src-mq3-vm-pc-parser-ml-180430717) — function
+- [`mq3.vm.pc_parser.escaped`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-escaped-function-escaped-value-src-mq3-vm-pc-parser-ml-381590867) — function
+- [`mq3.vm.pc_parser.evaluateExpression`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-evaluateexpression-function-evaluateexpression-registry-tokens-src-mq3-vm-pc-parser-ml-285024677) — function
+- [`mq3.vm.pc_parser.expandExpression`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-expandexpression-function-expandexpression-registry-tokens-depth-src-mq3-vm-pc-parser-ml-1216845700) — function
+- [`mq3.vm.pc_parser.Expression`](Type-mq3-vm-pc-parser-expression-197418800.md) — struct
+- [`mq3.vm.pc_parser.expressionMatch`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-expressionmatch-function-expressionmatch-state-text-src-mq3-vm-pc-parser-ml-1219346670) — function
+- [`mq3.vm.pc_parser.expressionPeek`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-expressionpeek-function-expressionpeek-state-src-mq3-vm-pc-parser-ml-1923863313) — function
+- [`mq3.vm.pc_parser.expressionTake`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-expressiontake-function-expressiontake-state-src-mq3-vm-pc-parser-ml-979232853) — function
+- [`mq3.vm.pc_parser.fail`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-fail-function-fail-message-src-mq3-vm-pc-parser-ml-1258602967) — function
+- [`mq3.vm.pc_parser.free`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-free-function-free-registry-handle-src-mq3-vm-pc-parser-ml-332183917) — function
+- [`mq3.vm.pc_parser.integerValue`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-integervalue-function-integervalue-text-base-start-src-mq3-vm-pc-parser-ml-1277054864) — function
+- [`mq3.vm.pc_parser.isBuiltin`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-isbuiltin-function-isbuiltin-name-src-mq3-vm-pc-parser-ml-1535012937) — function
+- [`mq3.vm.pc_parser.isDigit`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-isdigit-function-isdigit-value-src-mq3-vm-pc-parser-ml-774553939) — function
+- [`mq3.vm.pc_parser.isName`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-isname-function-isname-value-src-mq3-vm-pc-parser-ml-1578310017) — function
+- [`mq3.vm.pc_parser.isNameStart`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-isnamestart-function-isnamestart-value-src-mq3-vm-pc-parser-ml-981734831) — function
+- [`mq3.vm.pc_parser.lineTokens`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-linetokens-function-linetokens-entry-line-src-mq3-vm-pc-parser-ml-802998844) — function
+- [`mq3.vm.pc_parser.load`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-load-function-load-registry-name-src-mq3-vm-pc-parser-ml-1871567186) — function
+- [`mq3.vm.pc_parser.location`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-location-function-location-registry-handle-src-mq3-vm-pc-parser-ml-1081660497) — function
+- [`mq3.vm.pc_parser.MacroExpansion`](Type-mq3-vm-pc-parser-macroexpansion-1759381183.md) — struct
+- [`mq3.vm.pc_parser.MAX_SOURCEFILES`](File-src-mq3-vm-pc-parser-ml-1324474776.md#constant-constant-mq3-vm-pc-parser-max-sourcefiles-const-max-sourcefiles-64-src-mq3-vm-pc-parser-ml-230521899) — constant
+- [`mq3.vm.pc_parser.MAX_TOKENLENGTH`](File-src-mq3-vm-pc-parser-ml-1324474776.md#constant-constant-mq3-vm-pc-parser-max-tokenlength-const-max-tokenlength-1024-src-mq3-vm-pc-parser-ml-798737178) — constant
+- [`mq3.vm.pc_parser.mergedToken`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-mergedtoken-function-mergedtoken-left-right-src-mq3-vm-pc-parser-ml-1742125155) — function
+- [`mq3.vm.pc_parser.monthName`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-monthname-function-monthname-value-src-mq3-vm-pc-parser-ml-660899983) — function
+- [`mq3.vm.pc_parser.P_PRECOMP`](File-src-mq3-vm-pc-parser-ml-1324474776.md#constant-constant-mq3-vm-pc-parser-p-precomp-const-p-precomp-51-src-mq3-vm-pc-parser-ml-1743577515) — constant
+- [`mq3.vm.pc_parser.parameterCount`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parametercount-function-parametercount-value-src-mq3-vm-pc-parser-ml-1481653689) — function
+- [`mq3.vm.pc_parser.parameterIndex`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parameterindex-function-parameterindex-definition-name-src-mq3-vm-pc-parser-ml-417340884) — function
+- [`mq3.vm.pc_parser.parseAdd`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parseadd-function-parseadd-state-src-mq3-vm-pc-parser-ml-1041405085) — function
+- [`mq3.vm.pc_parser.parseArguments`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parsearguments-function-parsearguments-tokens-openindex-expected-src-mq3-vm-pc-parser-ml-2037624104) — function
+- [`mq3.vm.pc_parser.parseBitAnd`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parsebitand-function-parsebitand-state-src-mq3-vm-pc-parser-ml-1190318891) — function
+- [`mq3.vm.pc_parser.parseBitOr`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parsebitor-function-parsebitor-state-src-mq3-vm-pc-parser-ml-419148873) — function
+- [`mq3.vm.pc_parser.parseBitXor`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parsebitxor-function-parsebitxor-state-src-mq3-vm-pc-parser-ml-1584050055) — function
+- [`mq3.vm.pc_parser.parseConditionalExpression`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parseconditionalexpression-function-parseconditionalexpression-state-src-mq3-vm-pc-parser-ml-961296157) — function
+- [`mq3.vm.pc_parser.parseEquality`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parseequality-function-parseequality-state-src-mq3-vm-pc-parser-ml-1169679083) — function
+- [`mq3.vm.pc_parser.parseLogicalAnd`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parselogicaland-function-parselogicaland-state-src-mq3-vm-pc-parser-ml-831963183) — function
+- [`mq3.vm.pc_parser.parseLogicalOr`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parselogicalor-function-parselogicalor-state-src-mq3-vm-pc-parser-ml-1629821029) — function
+- [`mq3.vm.pc_parser.parseMultiply`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parsemultiply-function-parsemultiply-state-src-mq3-vm-pc-parser-ml-1851197683) — function
+- [`mq3.vm.pc_parser.parsePrimary`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parseprimary-function-parseprimary-state-src-mq3-vm-pc-parser-ml-240466365) — function
+- [`mq3.vm.pc_parser.parseRelational`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parserelational-function-parserelational-state-src-mq3-vm-pc-parser-ml-816275741) — function
+- [`mq3.vm.pc_parser.parseShift`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parseshift-function-parseshift-state-src-mq3-vm-pc-parser-ml-1195345153) — function
+- [`mq3.vm.pc_parser.parseUnary`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-parseunary-function-parseunary-state-src-mq3-vm-pc-parser-ml-58790429) — function
+- [`mq3.vm.pc_parser.pcNextRaw`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-pcnextraw-function-pcnextraw-entry-src-mq3-vm-pc-parser-ml-2090142870) — function
+- [`mq3.vm.pc_parser.popConditional`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-popconditional-function-popconditional-entry-src-mq3-vm-pc-parser-ml-817044954) — function
+- [`mq3.vm.pc_parser.punctuationNumber`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-punctuationnumber-function-punctuationnumber-index-src-mq3-vm-pc-parser-ml-1021938560) — function
+- [`mq3.vm.pc_parser.punctuationStrings`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-punctuationstrings-function-punctuationstrings-src-mq3-vm-pc-parser-ml-1890130402) — function
+- [`mq3.vm.pc_parser.pushConditional`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-pushconditional-function-pushconditional-entry-parent-selected-src-mq3-vm-pc-parser-ml-1007327829) — function
+- [`mq3.vm.pc_parser.pushInclude`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-pushinclude-function-pushinclude-registry-entry-name-src-mq3-vm-pc-parser-ml-2067703448) — function
+- [`mq3.vm.pc_parser.queueFront`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-queuefront-function-queuefront-entry-tokens-src-mq3-vm-pc-parser-ml-198538756) — function
+- [`mq3.vm.pc_parser.raw`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-raw-function-raw-source-src-mq3-vm-pc-parser-ml-2056762445) — function
+- [`mq3.vm.pc_parser.read`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-read-function-read-registry-sourcehandle-src-mq3-vm-pc-parser-ml-949950114) — function
+- [`mq3.vm.pc_parser.readNumber`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-readnumber-function-readnumber-source-leadingspace-src-mq3-vm-pc-parser-ml-800703993) — function
+- [`mq3.vm.pc_parser.readString`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-readstring-function-readstring-source-quote-leadingspace-src-mq3-vm-pc-parser-ml-1887678371) — function
+- [`mq3.vm.pc_parser.Registry`](Type-mq3-vm-pc-parser-registry-328656313.md) — struct
+- [`mq3.vm.pc_parser.skip`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-skip-function-skip-source-src-mq3-vm-pc-parser-ml-1306697005) — function
+- [`mq3.vm.pc_parser.Source`](Type-mq3-vm-pc-parser-source-1350446047.md) — struct
+- [`mq3.vm.pc_parser.sourceMacroExpansion`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-sourcemacroexpansion-function-sourcemacroexpansion-entry-value-line-src-mq3-vm-pc-parser-ml-802229831) — function
+- [`mq3.vm.pc_parser.sourceTake`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-sourcetake-function-sourcetake-source-src-mq3-vm-pc-parser-ml-1259128109) — function
+- [`mq3.vm.pc_parser.stringized`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-stringized-function-stringized-argument-line-src-mq3-vm-pc-parser-ml-770891961) — function
+- [`mq3.vm.pc_parser.substituteMacro`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-substitutemacro-function-substitutemacro-value-arguments-line-src-mq3-vm-pc-parser-ml-859076977) — function
+- [`mq3.vm.pc_parser.take`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-take-function-take-entry-src-mq3-vm-pc-parser-ml-624533966) — function
+- [`mq3.vm.pc_parser.Token`](Type-mq3-vm-pc-parser-token-735227767.md) — struct
+- [`mq3.vm.pc_parser.TOKEN_SIZE`](File-src-mq3-vm-pc-parser-ml-1324474776.md#constant-constant-mq3-vm-pc-parser-token-size-const-token-size-1040-src-mq3-vm-pc-parser-ml-2127114480) — constant
+- [`mq3.vm.pc_parser.tokenListAppend`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-tokenlistappend-function-tokenlistappend-list-token-src-mq3-vm-pc-parser-ml-1152234695) — function
+- [`mq3.vm.pc_parser.TT_DECIMAL`](File-src-mq3-vm-pc-parser-ml-1324474776.md#constant-constant-mq3-vm-pc-parser-tt-decimal-const-tt-decimal-8-src-mq3-vm-pc-parser-ml-56631243) — constant
+- [`mq3.vm.pc_parser.TT_FLOAT`](File-src-mq3-vm-pc-parser-ml-1324474776.md#constant-constant-mq3-vm-pc-parser-tt-float-const-tt-float-2048-src-mq3-vm-pc-parser-ml-1377492967) — constant
+- [`mq3.vm.pc_parser.TT_HEX`](File-src-mq3-vm-pc-parser-ml-1324474776.md#constant-constant-mq3-vm-pc-parser-tt-hex-const-tt-hex-256-src-mq3-vm-pc-parser-ml-1743559602) — constant
+- [`mq3.vm.pc_parser.TT_INTEGER`](File-src-mq3-vm-pc-parser-ml-1324474776.md#constant-constant-mq3-vm-pc-parser-tt-integer-const-tt-integer-4096-src-mq3-vm-pc-parser-ml-1021740966) — constant
+- [`mq3.vm.pc_parser.TT_LITERAL`](File-src-mq3-vm-pc-parser-ml-1324474776.md#constant-constant-mq3-vm-pc-parser-tt-literal-const-tt-literal-2-src-mq3-vm-pc-parser-ml-1981385617) — constant
+- [`mq3.vm.pc_parser.TT_NAME`](File-src-mq3-vm-pc-parser-ml-1324474776.md#constant-constant-mq3-vm-pc-parser-tt-name-const-tt-name-4-src-mq3-vm-pc-parser-ml-1066339501) — constant
+- [`mq3.vm.pc_parser.TT_NUMBER`](File-src-mq3-vm-pc-parser-ml-1324474776.md#constant-constant-mq3-vm-pc-parser-tt-number-const-tt-number-3-src-mq3-vm-pc-parser-ml-1421632624) — constant
+- [`mq3.vm.pc_parser.TT_OCTAL`](File-src-mq3-vm-pc-parser-ml-1324474776.md#constant-constant-mq3-vm-pc-parser-tt-octal-const-tt-octal-512-src-mq3-vm-pc-parser-ml-1004437855) — constant
+- [`mq3.vm.pc_parser.TT_PUNCTUATION`](File-src-mq3-vm-pc-parser-ml-1324474776.md#constant-constant-mq3-vm-pc-parser-tt-punctuation-const-tt-punctuation-5-src-mq3-vm-pc-parser-ml-1763350426) — constant
+- [`mq3.vm.pc_parser.TT_STRING`](File-src-mq3-vm-pc-parser-ml-1324474776.md#constant-constant-mq3-vm-pc-parser-tt-string-const-tt-string-1-src-mq3-vm-pc-parser-ml-85887446) — constant
+- [`mq3.vm.pc_parser.twoDigits`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-twodigits-function-twodigits-value-src-mq3-vm-pc-parser-ml-1858258105) — function
+- [`mq3.vm.pc_parser.unread`](File-src-mq3-vm-pc-parser-ml-1324474776.md#function-function-mq3-vm-pc-parser-unread-function-unread-entry-token-src-mq3-vm-pc-parser-ml-833806765) — function

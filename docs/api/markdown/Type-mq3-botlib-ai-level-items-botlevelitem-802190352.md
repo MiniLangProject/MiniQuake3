@@ -1,0 +1,105 @@
+# `mq3.botlib.ai_level_items.BotLevelItem`
+
+[Home](README.md) · [Source file](File-src-mq3-botlib-ai-level-items-ml-1268981414.md)
+
+<a id="struct-struct-mq3-botlib-ai-level-items-botlevelitem-struct-botlevelitem-src-mq3-botlib-ai-level-items-ml-971657461"></a>
+## BotLevelItem
+
+```ml
+struct BotLevelItem
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+
+## Members
+
+<a id="field-field-mq3-botlib-ai-level-items-botlevelitem-entitynum-entitynum-src-mq3-botlib-ai-level-items-ml-1719490091"></a>
+### entityNum
+
+```ml
+entityNum
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+
+<a id="field-field-mq3-botlib-ai-level-items-botlevelitem-flags-flags-src-mq3-botlib-ai-level-items-ml-1674656143"></a>
+### flags
+
+```ml
+flags
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+
+<a id="field-field-mq3-botlib-ai-level-items-botlevelitem-goalareanum-goalareanum-src-mq3-botlib-ai-level-items-ml-1323968279"></a>
+### goalAreaNum
+
+```ml
+goalAreaNum
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+
+<a id="field-field-mq3-botlib-ai-level-items-botlevelitem-goalorigin-goalorigin-src-mq3-botlib-ai-level-items-ml-1009353353"></a>
+### goalOrigin
+
+```ml
+goalOrigin
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+
+<a id="field-field-mq3-botlib-ai-level-items-botlevelitem-iteminfo-iteminfo-src-mq3-botlib-ai-level-items-ml-562194209"></a>
+### itemInfo
+
+```ml
+itemInfo
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+
+<a id="field-field-mq3-botlib-ai-level-items-botlevelitem-number-number-src-mq3-botlib-ai-level-items-ml-1090180813"></a>
+### number
+
+```ml
+number
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+
+<a id="field-field-mq3-botlib-ai-level-items-botlevelitem-origin-origin-src-mq3-botlib-ai-level-items-ml-1703051031"></a>
+### origin
+
+```ml
+origin
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+
+<a id="field-field-mq3-botlib-ai-level-items-botlevelitem-timeout-timeout-src-mq3-botlib-ai-level-items-ml-1141266571"></a>
+### timeout
+
+```ml
+timeout
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+
+<a id="field-field-mq3-botlib-ai-level-items-botlevelitem-weight-weight-src-mq3-botlib-ai-level-items-ml-1090971755"></a>
+### weight
+
+```ml
+weight
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)

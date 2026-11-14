@@ -1,0 +1,41 @@
+# Package `mq3.client.ui_player_settings`
+
+[Home](README.md) · [Packages](Packages.md)
+
+## Files
+
+- [src/mq3/client/ui_player_settings.ml](File-src-mq3-client-ui-player-settings-ml-1356241043.md)
+
+## Symbols
+
+- [`mq3.client.ui_player_settings.artList`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-artlist-function-artlist-src-mq3-client-ui-player-settings-ml-774910068) — function
+- [`mq3.client.ui_player_settings.bitmap`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-bitmap-function-bitmap-name-id-x-y-flags-width-height-src-mq3-client-ui-player-settings-ml-826462485) — function
+- [`mq3.client.ui_player_settings.cleanName`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-cleanname-function-cleanname-text-src-mq3-client-ui-player-settings-ml-1401713421) — function
+- [`mq3.client.ui_player_settings.color`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-color-function-color-index-src-mq3-client-ui-player-settings-ml-578201534) — function
+- [`mq3.client.ui_player_settings.create`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-create-function-create-source-src-mq3-client-ui-player-settings-ml-317987183) — function
+- [`mq3.client.ui_player_settings.DrawCommand`](Type-mq3-client-ui-player-settings-drawcommand-126187478.md) — struct
+- [`mq3.client.ui_player_settings.emit`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-emit-function-emit-value-boundary-kind-name-text-number-x-y-width-height-retailactive-src-mq3-client-ui-player-settings-ml-234755341) — function
+- [`mq3.client.ui_player_settings.gameCodeToUi`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-gamecodetoui-function-gamecodetoui-src-mq3-client-ui-player-settings-ml-1163053798) — function
+- [`mq3.client.ui_player_settings.handicapItems`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-handicapitems-function-handicapitems-src-mq3-client-ui-player-settings-ml-1043368722) — function
+- [`mq3.client.ui_player_settings.HostAction`](Type-mq3-client-ui-player-settings-hostaction-719199375.md) — struct
+- [`mq3.client.ui_player_settings.ID_BACK`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#constant-constant-mq3-client-ui-player-settings-id-back-const-id-back-13-src-mq3-client-ui-player-settings-ml-905494743) — constant
+- [`mq3.client.ui_player_settings.ID_EFFECTS`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#constant-constant-mq3-client-ui-player-settings-id-effects-const-id-effects-12-src-mq3-client-ui-player-settings-ml-393659260) — constant
+- [`mq3.client.ui_player_settings.ID_HANDICAP`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#constant-constant-mq3-client-ui-player-settings-id-handicap-const-id-handicap-11-src-mq3-client-ui-player-settings-ml-392081797) — constant
+- [`mq3.client.ui_player_settings.ID_MODEL`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#constant-constant-mq3-client-ui-player-settings-id-model-const-id-model-14-src-mq3-client-ui-player-settings-ml-539032172) — constant
+- [`mq3.client.ui_player_settings.ID_NAME`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#constant-constant-mq3-client-ui-player-settings-id-name-const-id-name-10-src-mq3-client-ui-player-settings-ml-1553721784) — constant
+- [`mq3.client.ui_player_settings.isColor`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-iscolor-function-iscolor-data-index-src-mq3-client-ui-player-settings-ml-476159566) — function
+- [`mq3.client.ui_player_settings.MAX_NAMELENGTH`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#constant-constant-mq3-client-ui-player-settings-max-namelength-const-max-namelength-20-src-mq3-client-ui-player-settings-ml-1689016783) — constant
+- [`mq3.client.ui_player_settings.PlayerSettings_Cache`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-playersettings-cache-function-playersettings-cache-value-retailactive-src-mq3-client-ui-player-settings-ml-407397140) — function
+- [`mq3.client.ui_player_settings.PlayerSettings_DrawEffects`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-playersettings-draweffects-function-playersettings-draweffects-value-focus-retailactive-src-mq3-client-ui-player-settings-ml-414216980) — function
+- [`mq3.client.ui_player_settings.PlayerSettings_DrawHandicap`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-playersettings-drawhandicap-function-playersettings-drawhandicap-value-focus-retailactive-src-mq3-client-ui-player-settings-ml-2041816990) — function
+- [`mq3.client.ui_player_settings.PlayerSettings_DrawName`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-playersettings-drawname-function-playersettings-drawname-value-focus-retailactive-src-mq3-client-ui-player-settings-ml-61264592) — function
+- [`mq3.client.ui_player_settings.PlayerSettings_DrawPlayer`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-playersettings-drawplayer-function-playersettings-drawplayer-value-model-retailactive-src-mq3-client-ui-player-settings-ml-996159589) — function
+- [`mq3.client.ui_player_settings.PlayerSettings_MenuEvent`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-playersettings-menuevent-function-playersettings-menuevent-value-id-event-retailactive-src-mq3-client-ui-player-settings-ml-1704063411) — function
+- [`mq3.client.ui_player_settings.PlayerSettings_MenuInit`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-playersettings-menuinit-function-playersettings-menuinit-value-name-color1-model-handicap-retailactive-src-mq3-client-ui-player-settings-ml-1415609718) — function
+- [`mq3.client.ui_player_settings.PlayerSettings_MenuKey`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-playersettings-menukey-function-playersettings-menukey-value-key-cursorx-cursory-retailactive-src-mq3-client-ui-player-settings-ml-1059907116) — function
+- [`mq3.client.ui_player_settings.PlayerSettings_SaveChanges`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-playersettings-savechanges-function-playersettings-savechanges-value-retailactive-src-mq3-client-ui-player-settings-ml-436882608) — function
+- [`mq3.client.ui_player_settings.PlayerSettings_SetMenuItems`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-playersettings-setmenuitems-function-playersettings-setmenuitems-value-name-color1-model-handicap-src-mq3-client-ui-player-settings-ml-1340257475) — function
+- [`mq3.client.ui_player_settings.State`](Type-mq3-client-ui-player-settings-state-674577228.md) — struct
+- [`mq3.client.ui_player_settings.UI_PlayerSettingsMenu`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-ui-playersettingsmenu-function-ui-playersettingsmenu-value-name-color1-model-handicap-retailactive-src-mq3-client-ui-player-settings-ml-1648696094) — function
+- [`mq3.client.ui_player_settings.uiToGameCode`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-uitogamecode-function-uitogamecode-src-mq3-client-ui-player-settings-ml-2043921718) — function
+- [`mq3.client.ui_player_settings.visibleNameCommands`](File-src-mq3-client-ui-player-settings-ml-1356241043.md#function-function-mq3-client-ui-player-settings-visiblenamecommands-function-visiblenamecommands-text-focus-basex-y-style-src-mq3-client-ui-player-settings-ml-1056592356) — function

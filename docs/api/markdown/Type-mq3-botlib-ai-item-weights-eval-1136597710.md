@@ -1,0 +1,45 @@
+# `mq3.botlib.ai_item_weights.Eval`
+
+[Home](README.md) · [Source file](File-src-mq3-botlib-ai-item-weights-ml-1163821802.md)
+
+<a id="struct-struct-mq3-botlib-ai-item-weights-eval-struct-eval-src-mq3-botlib-ai-item-weights-ml-520843135"></a>
+## Eval
+
+```ml
+struct Eval
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L26)
+
+## Members
+
+<a id="field-field-mq3-botlib-ai-item-weights-eval-position-position-src-mq3-botlib-ai-item-weights-ml-1655735821"></a>
+### position
+
+```ml
+position
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L26)
+
+<a id="field-field-mq3-botlib-ai-item-weights-eval-tokens-tokens-src-mq3-botlib-ai-item-weights-ml-1472214243"></a>
+### tokens
+
+```ml
+tokens
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L26)
+
+<a id="field-field-mq3-botlib-ai-item-weights-eval-valid-valid-src-mq3-botlib-ai-item-weights-ml-465664035"></a>
+### valid
+
+```ml
+valid
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L26)

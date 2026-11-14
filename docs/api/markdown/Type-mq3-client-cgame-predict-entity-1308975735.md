@@ -1,0 +1,55 @@
+# `mq3.client.cgame_predict.Entity`
+
+[Home](README.md) · [Source file](File-src-mq3-client-cgame-predict-ml-1773632218.md)
+
+<a id="struct-struct-mq3-client-cgame-predict-entity-struct-entity-src-mq3-client-cgame-predict-ml-948941355"></a>
+## Entity
+
+```ml
+struct Entity
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L23)
+
+## Members
+
+<a id="field-field-mq3-client-cgame-predict-entity-lerpangles-lerpangles-src-mq3-client-cgame-predict-ml-1443514204"></a>
+### lerpAngles
+
+```ml
+lerpAngles
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L23)
+
+<a id="field-field-mq3-client-cgame-predict-entity-lerporigin-lerporigin-src-mq3-client-cgame-predict-ml-1863303196"></a>
+### lerpOrigin
+
+```ml
+lerpOrigin
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L23)
+
+<a id="field-field-mq3-client-cgame-predict-entity-misctime-misctime-src-mq3-client-cgame-predict-ml-1699486056"></a>
+### miscTime
+
+```ml
+miscTime
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L23)
+
+<a id="field-field-mq3-client-cgame-predict-entity-state-state-src-mq3-client-cgame-predict-ml-649501146"></a>
+### state
+
+```ml
+state
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_predict.ml#L23)

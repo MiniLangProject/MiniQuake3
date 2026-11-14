@@ -1,0 +1,105 @@
+# Package `mq3.client.cgame_main`
+
+[Home](README.md) · [Packages](Packages.md)
+
+## Files
+
+- [src/mq3/client/cgame_main.ml](File-src-mq3-client-cgame-main-ml-1652783738.md)
+
+## Symbols
+
+- [`mq3.client.cgame_main.action`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-action-function-action-boundary-kind-name-value-value2-number-flags-retailactive-src-mq3-client-cgame-main-ml-953347874) — function
+- [`mq3.client.cgame_main.Action`](Type-mq3-client-cgame-main-action-1053767360.md) — struct
+- [`mq3.client.cgame_main.argv`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-argv-function-argv-args-index-src-mq3-client-cgame-main-ml-1460541111) — function
+- [`mq3.client.cgame_main.assetCache`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-assetcache-function-assetcache-state-retailactive-src-mq3-client-cgame-main-ml-1272044528) — function
+- [`mq3.client.cgame_main.assetParse`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-assetparse-function-assetparse-state-tokens-start-retailactive-src-mq3-client-cgame-main-ml-1566404112) — function
+- [`mq3.client.cgame_main.atof`](File-src-mq3-client-cgame-main-ml-1652783738.md#extern_function-extern-function-mq3-client-cgame-main-atof-extern-function-atof-text-as-cstr-from-ucrtbase-dll-returns-double-src-mq3-client-cgame-main-ml-483178875) — extern_function
+- [`mq3.client.cgame_main.atoi`](File-src-mq3-client-cgame-main-ml-1652783738.md#extern_function-extern-function-mq3-client-cgame-main-atoi-extern-function-atoi-text-as-cstr-from-ucrtbase-dll-returns-i32-src-mq3-client-cgame-main-ml-2118327986) — extern_function
+- [`mq3.client.cgame_main.baseGraphics`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-basegraphics-function-basegraphics-src-mq3-client-cgame-main-ml-1499393620) — function
+- [`mq3.client.cgame_main.baseSounds`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-basesounds-function-basesounds-src-mq3-client-cgame-main-ml-1935160008) — function
+- [`mq3.client.cgame_main.buildSpectatorString`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-buildspectatorstring-function-buildspectatorstring-state-src-mq3-client-cgame-main-ml-1909250217) — function
+- [`mq3.client.cgame_main.CG_CONSOLE_COMMAND`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cg-console-command-const-cg-console-command-2-src-mq3-client-cgame-main-ml-1926490749) — constant
+- [`mq3.client.cgame_main.CG_CROSSHAIR_PLAYER`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cg-crosshair-player-const-cg-crosshair-player-4-src-mq3-client-cgame-main-ml-863930465) — constant
+- [`mq3.client.cgame_main.CG_DRAW_ACTIVE_FRAME`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cg-draw-active-frame-const-cg-draw-active-frame-3-src-mq3-client-cgame-main-ml-322443512) — constant
+- [`mq3.client.cgame_main.CG_EVENT_HANDLING`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cg-event-handling-const-cg-event-handling-8-src-mq3-client-cgame-main-ml-1630742941) — constant
+- [`mq3.client.cgame_main.CG_INIT`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cg-init-const-cg-init-0-src-mq3-client-cgame-main-ml-1204025833) — constant
+- [`mq3.client.cgame_main.CG_KEY_EVENT`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cg-key-event-const-cg-key-event-6-src-mq3-client-cgame-main-ml-812056715) — constant
+- [`mq3.client.cgame_main.CG_LAST_ATTACKER`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cg-last-attacker-const-cg-last-attacker-5-src-mq3-client-cgame-main-ml-762733540) — constant
+- [`mq3.client.cgame_main.CG_MOUSE_EVENT`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cg-mouse-event-const-cg-mouse-event-7-src-mq3-client-cgame-main-ml-1386472774) — constant
+- [`mq3.client.cgame_main.CG_SHUTDOWN`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cg-shutdown-const-cg-shutdown-1-src-mq3-client-cgame-main-ml-639402052) — constant
+- [`mq3.client.cgame_main.client`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-client-function-client-src-mq3-client-cgame-main-ml-1743880804) — function
+- [`mq3.client.cgame_main.Client`](Type-mq3-client-cgame-main-client-1204603393.md) — struct
+- [`mq3.client.cgame_main.configString`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-configstring-function-configstring-state-index-src-mq3-client-cgame-main-ml-431606295) — function
+- [`mq3.client.cgame_main.create`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-create-function-create-src-mq3-client-cgame-main-ml-1215111156) — function
+- [`mq3.client.cgame_main.crosshairPlayer`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-crosshairplayer-function-crosshairplayer-state-src-mq3-client-cgame-main-ml-2062898667) — function
+- [`mq3.client.cgame_main.CS_GAME_VERSION`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cs-game-version-const-cs-game-version-20-src-mq3-client-cgame-main-ml-2117492399) — constant
+- [`mq3.client.cgame_main.CS_ITEMS`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cs-items-const-cs-items-27-src-mq3-client-cgame-main-ml-221033244) — constant
+- [`mq3.client.cgame_main.CS_LEVEL_START_TIME`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cs-level-start-time-const-cs-level-start-time-21-src-mq3-client-cgame-main-ml-1027365270) — constant
+- [`mq3.client.cgame_main.CS_MODELS`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cs-models-const-cs-models-32-src-mq3-client-cgame-main-ml-492798810) — constant
+- [`mq3.client.cgame_main.CS_MUSIC`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cs-music-const-cs-music-2-src-mq3-client-cgame-main-ml-45113753) — constant
+- [`mq3.client.cgame_main.CS_PLAYERS`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cs-players-const-cs-players-544-src-mq3-client-cgame-main-ml-2010956152) — constant
+- [`mq3.client.cgame_main.CS_SOUNDS`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-cs-sounds-const-cs-sounds-288-src-mq3-client-cgame-main-ml-1213014155) — constant
+- [`mq3.client.cgame_main.Cvar`](Type-mq3-client-cgame-main-cvar-2054669032.md) — struct
+- [`mq3.client.cgame_main.cvarGet`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-cvarget-function-cvarget-state-name-src-mq3-client-cgame-main-ml-1253818526) — function
+- [`mq3.client.cgame_main.cvarSpec`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-cvarspec-function-cvarspec-name-defaultvalue-flags-src-mq3-client-cgame-main-ml-1290860860) — function
+- [`mq3.client.cgame_main.cvarSpecs`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-cvarspecs-function-cvarspecs-src-mq3-client-cgame-main-ml-1276739776) — function
+- [`mq3.client.cgame_main.drawCinematic`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-drawcinematic-function-drawcinematic-handle-x-y-w-h-retailactive-src-mq3-client-cgame-main-ml-1024254357) — function
+- [`mq3.client.cgame_main.emit`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-emit-function-emit-effect-boundary-kind-name-value-value2-number-flags-retailactive-src-mq3-client-cgame-main-ml-1622616355) — function
+- [`mq3.client.cgame_main.errorMessage`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-errormessage-function-errormessage-text-retailactive-src-mq3-client-cgame-main-ml-524479786) — function
+- [`mq3.client.cgame_main.eventHandling`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-eventhandling-function-eventhandling-state-type-src-mq3-client-cgame-main-ml-246418343) — function
+- [`mq3.client.cgame_main.FEEDER_BLUETEAM_LIST`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-feeder-blueteam-list-const-feeder-blueteam-list-2-src-mq3-client-cgame-main-ml-1390524421) — constant
+- [`mq3.client.cgame_main.FEEDER_REDTEAM_LIST`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-feeder-redteam-list-const-feeder-redteam-list-1-src-mq3-client-cgame-main-ml-1364158196) — constant
+- [`mq3.client.cgame_main.FEEDER_SCOREBOARD`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-feeder-scoreboard-const-feeder-scoreboard-3-src-mq3-client-cgame-main-ml-343809326) — constant
+- [`mq3.client.cgame_main.feederCount`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-feedercount-function-feedercount-state-feederid-src-mq3-client-cgame-main-ml-656299343) — function
+- [`mq3.client.cgame_main.feederItemImage`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-feederitemimage-function-feederitemimage-feederid-index-src-mq3-client-cgame-main-ml-529662924) — function
+- [`mq3.client.cgame_main.feederItemText`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-feederitemtext-function-feederitemtext-state-feederid-index-column-readymask-src-mq3-client-cgame-main-ml-605719670) — function
+- [`mq3.client.cgame_main.feederSelection`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-feederselection-function-feederselection-state-feederid-index-src-mq3-client-cgame-main-ml-27938387) — function
+- [`mq3.client.cgame_main.findCvar`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-findcvar-function-findcvar-state-name-src-mq3-client-cgame-main-ml-1958167258) — function
+- [`mq3.client.cgame_main.forceModelChange`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-forcemodelchange-function-forcemodelchange-state-retailactive-src-mq3-client-cgame-main-ml-1283477564) — function
+- [`mq3.client.cgame_main.getMenuBuffer`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-getmenubuffer-function-getmenubuffer-filename-text-maxsize-src-mq3-client-cgame-main-ml-283392439) — function
+- [`mq3.client.cgame_main.GT_TEAM`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-gt-team-const-gt-team-3-src-mq3-client-cgame-main-ml-636292634) — constant
+- [`mq3.client.cgame_main.GT_TOURNAMENT`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-gt-tournament-const-gt-tournament-1-src-mq3-client-cgame-main-ml-1967860844) — constant
+- [`mq3.client.cgame_main.hudAssets`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-hudassets-function-hudassets-src-mq3-client-cgame-main-ml-2125143748) — function
+- [`mq3.client.cgame_main.HudAssets`](Type-mq3-client-cgame-main-hudassets-665283646.md) — struct
+- [`mq3.client.cgame_main.infoFromScoreIndex`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-infofromscoreindex-function-infofromscoreindex-state-index-team-src-mq3-client-cgame-main-ml-635857230) — function
+- [`mq3.client.cgame_main.init`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-init-function-init-state-servermessagenum-servercommandsequence-clientnum-gameversion-vidwidth-vidheight-items-retailactive-src-mq3-client-cgame-main-ml-1405693357) — function
+- [`mq3.client.cgame_main.Item`](Type-mq3-client-cgame-main-item-495663849.md) — struct
+- [`mq3.client.cgame_main.keyEvent`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-keyevent-function-keyevent-state-key-down-src-mq3-client-cgame-main-ml-2005306932) — function
+- [`mq3.client.cgame_main.lastAttacker`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-lastattacker-function-lastattacker-state-src-mq3-client-cgame-main-ml-589473373) — function
+- [`mq3.client.cgame_main.loadHudMenu`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-loadhudmenu-function-loadhudmenu-state-hudtext-menufiles-retailactive-src-mq3-client-cgame-main-ml-1866665680) — function
+- [`mq3.client.cgame_main.loadMenu`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-loadmenu-function-loadmenu-state-tokens-start-files-retailactive-src-mq3-client-cgame-main-ml-821619769) — function
+- [`mq3.client.cgame_main.loadMenus`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-loadmenus-function-loadmenus-state-menufile-text-files-retailactive-src-mq3-client-cgame-main-ml-1030752987) — function
+- [`mq3.client.cgame_main.MAX_CLIENTS`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-max-clients-const-max-clients-64-src-mq3-client-cgame-main-ml-911047387) — constant
+- [`mq3.client.cgame_main.MAX_CONFIGSTRINGS`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-max-configstrings-const-max-configstrings-1024-src-mq3-client-cgame-main-ml-1222498808) — constant
+- [`mq3.client.cgame_main.menuTokens`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-menutokens-function-menutokens-text-src-mq3-client-cgame-main-ml-480236411) — function
+- [`mq3.client.cgame_main.merge`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-merge-function-merge-effect-other-src-mq3-client-cgame-main-ml-1281251817) — function
+- [`mq3.client.cgame_main.mouseEvent`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-mouseevent-function-mouseevent-state-x-y-src-mq3-client-cgame-main-ml-1611407826) — function
+- [`mq3.client.cgame_main.ownerDrawHandleKey`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-ownerdrawhandlekey-function-ownerdrawhandlekey-ownerdraw-flags-special-key-src-mq3-client-cgame-main-ml-725193166) — function
+- [`mq3.client.cgame_main.ownerDrawWidth`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-ownerdrawwidth-function-ownerdrawwidth-ownerdraw-scale-gametypetext-statustext-killertext-redname-bluename-src-mq3-client-cgame-main-ml-211884012) — function
+- [`mq3.client.cgame_main.parseMenu`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-parsemenu-function-parsemenu-state-menufile-text-retailactive-src-mq3-client-cgame-main-ml-724865082) — function
+- [`mq3.client.cgame_main.playCinematic`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-playcinematic-function-playcinematic-state-name-x-y-w-h-retailactive-src-mq3-client-cgame-main-ml-1362624281) — function
+- [`mq3.client.cgame_main.printMessage`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-printmessage-function-printmessage-text-retailactive-src-mq3-client-cgame-main-ml-983892018) — function
+- [`mq3.client.cgame_main.registerClients`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-registerclients-function-registerclients-state-retailactive-src-mq3-client-cgame-main-ml-580628154) — function
+- [`mq3.client.cgame_main.registerCvars`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-registercvars-function-registercvars-state-svrunning-retailactive-src-mq3-client-cgame-main-ml-641210418) — function
+- [`mq3.client.cgame_main.registerGraphics`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-registergraphics-function-registergraphics-state-items-retailactive-src-mq3-client-cgame-main-ml-196895570) — function
+- [`mq3.client.cgame_main.registerItemSounds`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-registeritemsounds-function-registeritemsounds-item-itemnum-retailactive-src-mq3-client-cgame-main-ml-1506902349) — function
+- [`mq3.client.cgame_main.registerSounds`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-registersounds-function-registersounds-state-items-retailactive-src-mq3-client-cgame-main-ml-151687218) — function
+- [`mq3.client.cgame_main.result`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-result-function-result-handled-value-src-mq3-client-cgame-main-ml-1906671231) — function
+- [`mq3.client.cgame_main.Result`](Type-mq3-client-cgame-main-result-1141204139.md) — struct
+- [`mq3.client.cgame_main.runCinematicFrame`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-runcinematicframe-function-runcinematicframe-handle-retailactive-src-mq3-client-cgame-main-ml-611886313) — function
+- [`mq3.client.cgame_main.Score`](Type-mq3-client-cgame-main-score-1695914296.md) — struct
+- [`mq3.client.cgame_main.setScoreSelection`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-setscoreselection-function-setscoreselection-state-clientnum-hasmenu-retailactive-src-mq3-client-cgame-main-ml-903755616) — function
+- [`mq3.client.cgame_main.shutdown`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-shutdown-function-shutdown-state-retailactive-src-mq3-client-cgame-main-ml-1302453760) — function
+- [`mq3.client.cgame_main.splitWords`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-splitwords-function-splitwords-text-src-mq3-client-cgame-main-ml-1188929167) — function
+- [`mq3.client.cgame_main.startMusic`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-startmusic-function-startmusic-state-retailactive-src-mq3-client-cgame-main-ml-1950110256) — function
+- [`mq3.client.cgame_main.State`](Type-mq3-client-cgame-main-state-1163369719.md) — struct
+- [`mq3.client.cgame_main.stopCinematic`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-stopcinematic-function-stopcinematic-handle-retailactive-src-mq3-client-cgame-main-ml-1339318873) — function
+- [`mq3.client.cgame_main.suffix`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-suffix-function-suffix-text-want-src-mq3-client-cgame-main-ml-1669933353) — function
+- [`mq3.client.cgame_main.TEAM_BLUE`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-team-blue-const-team-blue-2-src-mq3-client-cgame-main-ml-251438523) — constant
+- [`mq3.client.cgame_main.TEAM_FREE`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-team-free-const-team-free-0-src-mq3-client-cgame-main-ml-432045649) — constant
+- [`mq3.client.cgame_main.TEAM_RED`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-team-red-const-team-red-1-src-mq3-client-cgame-main-ml-39380068) — constant
+- [`mq3.client.cgame_main.TEAM_SPECTATOR`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-team-spectator-const-team-spectator-3-src-mq3-client-cgame-main-ml-978078842) — constant
+- [`mq3.client.cgame_main.textPaintWithCursor`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-textpaintwithcursor-function-textpaintwithcursor-text-cursorpos-cursor-limit-style-retailactive-src-mq3-client-cgame-main-ml-1426501384) — function
+- [`mq3.client.cgame_main.updateCvars`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-updatecvars-function-updatecvars-state-updates-retailactive-src-mq3-client-cgame-main-ml-1809592228) — function
+- [`mq3.client.cgame_main.vmMain`](File-src-mq3-client-cgame-main-ml-1652783738.md#function-function-mq3-client-cgame-main-vmmain-function-vmmain-state-command-args-items-gameversion-vidwidth-vidheight-retailactive-src-mq3-client-cgame-main-ml-877184929) — function
+- [`mq3.client.cgame_main.WP_MACHINEGUN`](File-src-mq3-client-cgame-main-ml-1652783738.md#constant-constant-mq3-client-cgame-main-wp-machinegun-const-wp-machinegun-2-src-mq3-client-cgame-main-ml-563110343) — constant

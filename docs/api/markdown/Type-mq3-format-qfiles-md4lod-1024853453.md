@@ -1,0 +1,45 @@
+# `mq3.format.qfiles.Md4Lod`
+
+[Home](README.md) · [Source file](File-src-mq3-format-qfiles-ml-1013095051.md)
+
+<a id="struct-struct-mq3-format-qfiles-md4lod-struct-md4lod-src-mq3-format-qfiles-ml-128570087"></a>
+## Md4Lod
+
+```ml
+struct Md4Lod
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L102)
+
+## Members
+
+<a id="field-field-mq3-format-qfiles-md4lod-numsurfaces-numsurfaces-src-mq3-format-qfiles-ml-98789285"></a>
+### numSurfaces
+
+```ml
+numSurfaces
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L102)
+
+<a id="field-field-mq3-format-qfiles-md4lod-ofsend-ofsend-src-mq3-format-qfiles-ml-958100291"></a>
+### ofsEnd
+
+```ml
+ofsEnd
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L102)
+
+<a id="field-field-mq3-format-qfiles-md4lod-ofssurfaces-ofssurfaces-src-mq3-format-qfiles-ml-411740501"></a>
+### ofsSurfaces
+
+```ml
+ofsSurfaces
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L102)

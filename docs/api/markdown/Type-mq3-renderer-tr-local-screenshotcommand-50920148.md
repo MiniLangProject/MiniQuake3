@@ -1,0 +1,85 @@
+# `mq3.renderer.tr_local.ScreenshotCommand`
+
+[Home](README.md) · [Source file](File-src-mq3-renderer-tr-local-ml-841068495.md)
+
+<a id="struct-struct-mq3-renderer-tr-local-screenshotcommand-struct-screenshotcommand-src-mq3-renderer-tr-local-ml-893080199"></a>
+## ScreenshotCommand
+
+```ml
+struct ScreenshotCommand
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L61)
+
+## Members
+
+<a id="field-field-mq3-renderer-tr-local-screenshotcommand-commandid-commandid-src-mq3-renderer-tr-local-ml-976438818"></a>
+### commandId
+
+```ml
+commandId
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L61)
+
+<a id="field-field-mq3-renderer-tr-local-screenshotcommand-filename-filename-src-mq3-renderer-tr-local-ml-323487204"></a>
+### fileName
+
+```ml
+fileName
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L61)
+
+<a id="field-field-mq3-renderer-tr-local-screenshotcommand-height-height-src-mq3-renderer-tr-local-ml-2064125152"></a>
+### height
+
+```ml
+height
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L61)
+
+<a id="field-field-mq3-renderer-tr-local-screenshotcommand-jpeg-jpeg-src-mq3-renderer-tr-local-ml-754459150"></a>
+### jpeg
+
+```ml
+jpeg
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L61)
+
+<a id="field-field-mq3-renderer-tr-local-screenshotcommand-width-width-src-mq3-renderer-tr-local-ml-1168540850"></a>
+### width
+
+```ml
+width
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L61)
+
+<a id="field-field-mq3-renderer-tr-local-screenshotcommand-x-x-src-mq3-renderer-tr-local-ml-1203120110"></a>
+### x
+
+```ml
+x
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L61)
+
+<a id="field-field-mq3-renderer-tr-local-screenshotcommand-y-y-src-mq3-renderer-tr-local-ml-1440727026"></a>
+### y
+
+```ml
+y
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L61)

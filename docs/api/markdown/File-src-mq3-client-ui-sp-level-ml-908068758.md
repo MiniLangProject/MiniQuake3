@@ -1,0 +1,748 @@
+# `src/mq3/client/ui_sp_level.ml`
+
+[Home](README.md) · [Files](Files.md)
+
+Package: [`mq3.client.ui_sp_level`](Package-mq3-client-ui-sp-level-737887030.md)
+
+Reachable from entry: **no**
+
+## Imports
+
+- `mq3/client/ui_gameinfo.ml` as `game` → [src/mq3/client/ui_gameinfo.ml](File-src-mq3-client-ui-gameinfo-ml-965434910.md)
+- `mq3/compat/numeric.ml` as `numeric` → [src/mq3/compat/numeric.ml](File-src-mq3-compat-numeric-ml-1285218747.md)
+- `mq3/compat/textnumbers.ml` as `numbers` → [src/mq3/compat/textnumbers.ml](File-src-mq3-compat-textnumbers-ml-766983963.md)
+- `mq3/compat/transcendental.ml` as `trans` → [src/mq3/compat/transcendental.ml](File-src-mq3-compat-transcendental-ml-1855454184.md)
+- `mq3/shared/info.ml` as `info` → [src/mq3/shared/info.ml](File-src-mq3-shared-info-ml-1735567187.md)
+- `std/string.ml` as `strings` → `../MiniLangCompilerML/std/string.ml` — external dependency
+
+## Declarations
+
+- [mq3.client.ui_sp_level.Action](Type-mq3-client-ui-sp-level-action-261680434.md) — struct
+<a id="constant-constant-mq3-client-ui-sp-level-arenas-per-tier-const-arenas-per-tier-4-src-mq3-client-ui-sp-level-ml-1841924433"></a>
+### ARENAS_PER_TIER
+
+```ml
+const ARENAS_PER_TIER = 4
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L13)
+
+<a id="constant-constant-mq3-client-ui-sp-level-art-arrow-const-art-arrow-menu-art-narrow-0-src-mq3-client-ui-sp-level-ml-1661724127"></a>
+### ART_ARROW
+
+```ml
+const ART_ARROW = "menu/art/narrow_0"
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L28)
+
+<a id="constant-constant-mq3-client-ui-sp-level-art-arrow-focus-const-art-arrow-focus-menu-art-narrow-1-src-mq3-client-ui-sp-level-ml-259201082"></a>
+### ART_ARROW_FOCUS
+
+```ml
+const ART_ARROW_FOCUS = "menu/art/narrow_1"
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L29)
+
+<a id="constant-constant-mq3-client-ui-sp-level-art-levelframe-focus-const-art-levelframe-focus-menu-art-maps-select-src-mq3-client-ui-sp-level-ml-737753025"></a>
+### ART_LEVELFRAME_FOCUS
+
+```ml
+const ART_LEVELFRAME_FOCUS = "menu/art/maps_select"
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L26)
+
+<a id="constant-constant-mq3-client-ui-sp-level-art-levelframe-selected-const-art-levelframe-selected-menu-art-maps-selected-src-mq3-client-ui-sp-level-ml-525411804"></a>
+### ART_LEVELFRAME_SELECTED
+
+```ml
+const ART_LEVELFRAME_SELECTED = "menu/art/maps_selected"
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L27)
+
+<a id="constant-constant-mq3-client-ui-sp-level-art-map-unknown-const-art-map-unknown-menu-art-unknownmap-src-mq3-client-ui-sp-level-ml-59929891"></a>
+### ART_MAP_UNKNOWN
+
+```ml
+const ART_MAP_UNKNOWN = "menu/art/unknownmap"
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L30)
+
+<a id="constant-constant-mq3-client-ui-sp-level-award-frags-const-award-frags-4-src-mq3-client-ui-sp-level-ml-464162581"></a>
+### AWARD_FRAGS
+
+```ml
+const AWARD_FRAGS = 4
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L25)
+
+<a id="function-function-mq3-client-ui-sp-level-awardevent-function-awardevent-state-id-event-src-mq3-client-ui-sp-level-ml-131002642"></a>
+### awardEvent
+
+```ml
+function awardEvent(state, id, event)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `id` | `dynamic` | — |  |
+| `event` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L92)
+
+<a id="function-function-mq3-client-ui-sp-level-awardlabel-function-awardlabel-value-src-mq3-client-ui-sp-level-ml-2118943889"></a>
+### awardLabel
+
+```ml
+function awardLabel(value)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L97)
+
+<a id="function-function-mq3-client-ui-sp-level-awardpics-function-awardpics-src-mq3-client-ui-sp-level-ml-984955578"></a>
+### awardPics
+
+```ml
+function awardPics()
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L44)
+
+<a id="function-function-mq3-client-ui-sp-level-awardsounds-function-awardsounds-src-mq3-client-ui-sp-level-ml-54110140"></a>
+### awardSounds
+
+```ml
+function awardSounds()
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L45)
+
+<a id="function-function-mq3-client-ui-sp-level-backevent-function-backevent-state-event-src-mq3-client-ui-sp-level-ml-1377727069"></a>
+### backEvent
+
+```ml
+function backEvent(state, event)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `event` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L94)
+
+- [mq3.client.ui_sp_level.Bot](Type-mq3-client-ui-sp-level-bot-1403174101.md) — struct
+<a id="function-function-mq3-client-ui-sp-level-cache-function-cache-state-src-mq3-client-ui-sp-level-ml-1367529421"></a>
+### cache
+
+```ml
+function cache(state)
+```
+
+UI_SPLevelMenu_Cache
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L110)
+
+<a id="function-function-mq3-client-ui-sp-level-clean-function-clean-value-src-mq3-client-ui-sp-level-ml-1727426071"></a>
+### clean
+
+```ml
+function clean(value)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L51)
+
+<a id="function-function-mq3-client-ui-sp-level-clearextramaps-function-clearextramaps-state-first-src-mq3-client-ui-sp-level-ml-554668653"></a>
+### clearExtraMaps
+
+```ml
+function clearExtraMaps(state, first)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `first` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L74)
+
+<a id="function-function-mq3-client-ui-sp-level-create-function-create-data-retailactive-src-mq3-client-ui-sp-level-ml-2043988541"></a>
+### create
+
+```ml
+function create(data, retailActive)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `data` | `dynamic` | — |  |
+| `retailActive` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L38)
+
+<a id="function-function-mq3-client-ui-sp-level-customevent-function-customevent-state-event-src-mq3-client-ui-sp-level-ml-1265299105"></a>
+### customEvent
+
+```ml
+function customEvent(state, event)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `event` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L95)
+
+<a id="function-function-mq3-client-ui-sp-level-cvar-function-cvar-state-name-src-mq3-client-ui-sp-level-ml-315438280"></a>
+### cvar
+
+```ml
+function cvar(state, name)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `name` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L42)
+
+<a id="function-function-mq3-client-ui-sp-level-emit-function-emit-state-kind-x-y-w-h-text-asset-value-src-mq3-client-ui-sp-level-ml-1016245765"></a>
+### emit
+
+```ml
+function emit(state, kind, x, y, w, h, text, asset, value)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `kind` | `dynamic` | — |  |
+| `x` | `dynamic` | — |  |
+| `y` | `dynamic` | — |  |
+| `w` | `dynamic` | — |  |
+| `h` | `dynamic` | — |  |
+| `text` | `dynamic` | — |  |
+| `asset` | `dynamic` | — |  |
+| `value` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L41)
+
+<a id="function-function-mq3-client-ui-sp-level-emptymap-function-emptymap-x-src-mq3-client-ui-sp-level-ml-1994698946"></a>
+### emptyMap
+
+```ml
+function emptyMap(x)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `x` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L37)
+
+<a id="function-function-mq3-client-ui-sp-level-hasasset-function-hasasset-assets-name-src-mq3-client-ui-sp-level-ml-558885080"></a>
+### hasAsset
+
+```ml
+function hasAsset(assets, name)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `assets` | `dynamic` | — |  |
+| `name` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L47)
+
+<a id="constant-constant-mq3-client-ui-sp-level-id-award1-const-id-award1-17-src-mq3-client-ui-sp-level-ml-550600285"></a>
+### ID_AWARD1
+
+```ml
+const ID_AWARD1 = 17
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L19)
+
+<a id="constant-constant-mq3-client-ui-sp-level-id-back-const-id-back-23-src-mq3-client-ui-sp-level-ml-33010142"></a>
+### ID_BACK
+
+```ml
+const ID_BACK = 23
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L20)
+
+<a id="constant-constant-mq3-client-ui-sp-level-id-custom-const-id-custom-25-src-mq3-client-ui-sp-level-ml-1774147680"></a>
+### ID_CUSTOM
+
+```ml
+const ID_CUSTOM = 25
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L22)
+
+<a id="constant-constant-mq3-client-ui-sp-level-id-leftarrow-const-id-leftarrow-10-src-mq3-client-ui-sp-level-ml-2112009406"></a>
+### ID_LEFTARROW
+
+```ml
+const ID_LEFTARROW = 10
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L15)
+
+<a id="constant-constant-mq3-client-ui-sp-level-id-next-const-id-next-26-src-mq3-client-ui-sp-level-ml-2088960865"></a>
+### ID_NEXT
+
+```ml
+const ID_NEXT = 26
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L23)
+
+<a id="constant-constant-mq3-client-ui-sp-level-id-picture0-const-id-picture0-11-src-mq3-client-ui-sp-level-ml-129419891"></a>
+### ID_PICTURE0
+
+```ml
+const ID_PICTURE0 = 11
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L16)
+
+<a id="constant-constant-mq3-client-ui-sp-level-id-playerpic-const-id-playerpic-16-src-mq3-client-ui-sp-level-ml-1709332074"></a>
+### ID_PLAYERPIC
+
+```ml
+const ID_PLAYERPIC = 16
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L18)
+
+<a id="constant-constant-mq3-client-ui-sp-level-id-reset-const-id-reset-24-src-mq3-client-ui-sp-level-ml-738909543"></a>
+### ID_RESET
+
+```ml
+const ID_RESET = 24
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L21)
+
+<a id="constant-constant-mq3-client-ui-sp-level-id-rightarrow-const-id-rightarrow-15-src-mq3-client-ui-sp-level-ml-927171727"></a>
+### ID_RIGHTARROW
+
+```ml
+const ID_RIGHTARROW = 15
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L17)
+
+<a id="function-function-mq3-client-ui-sp-level-init-function-init-state-availableassets-src-mq3-client-ui-sp-level-ml-100571805"></a>
+### init
+
+```ml
+function init(state, availableAssets)
+```
+
+UI_SPLevelMenu_Init
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `availableAssets` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L118)
+
+<a id="constant-constant-mq3-client-ui-sp-level-keycatch-ui-const-keycatch-ui-2-src-mq3-client-ui-sp-level-ml-1055550115"></a>
+### KEYCATCH_UI
+
+```ml
+const KEYCATCH_UI = 2
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L24)
+
+<a id="function-function-mq3-client-ui-sp-level-leftarrowevent-function-leftarrowevent-state-event-availableassets-src-mq3-client-ui-sp-level-ml-1648675047"></a>
+### leftArrowEvent
+
+```ml
+function leftArrowEvent(state, event, availableAssets)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `event` | `dynamic` | — |  |
+| `availableAssets` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L89)
+
+<a id="function-function-mq3-client-ui-sp-level-levelevent-function-levelevent-state-id-event-availableassets-src-mq3-client-ui-sp-level-ml-1804590708"></a>
+### levelEvent
+
+```ml
+function levelEvent(state, id, event, availableAssets)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `id` | `dynamic` | — |  |
+| `event` | `dynamic` | — |  |
+| `availableAssets` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L88)
+
+- [mq3.client.ui_sp_level.MapSlot](Type-mq3-client-ui-sp-level-mapslot-1382136698.md) — struct
+<a id="function-function-mq3-client-ui-sp-level-menudraw-function-menudraw-state-availableassets-src-mq3-client-ui-sp-level-ml-1952641081"></a>
+### menuDraw
+
+```ml
+function menuDraw(state, availableAssets)
+```
+
+UI_SPLevelMenu_MenuDraw
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `availableAssets` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L99)
+
+<a id="function-function-mq3-client-ui-sp-level-nextevent-function-nextevent-state-event-src-mq3-client-ui-sp-level-ml-777683361"></a>
+### nextEvent
+
+```ml
+function nextEvent(state, event)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `event` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L93)
+
+<a id="function-function-mq3-client-ui-sp-level-playerevent-function-playerevent-state-event-src-mq3-client-ui-sp-level-ml-1522886277"></a>
+### playerEvent
+
+```ml
+function playerEvent(state, event)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `event` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L91)
+
+<a id="function-function-mq3-client-ui-sp-level-playericon-function-playericon-modelandskin-availableassets-src-mq3-client-ui-sp-level-ml-764613899"></a>
+### playerIcon
+
+```ml
+function playerIcon(modelAndSkin, availableAssets)
+```
+
+PlayerIcon
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `modelAndSkin` | `dynamic` | — |  |
+| `availableAssets` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L55)
+
+<a id="function-function-mq3-client-ui-sp-level-playericonhandle-function-playericonhandle-state-modelandskin-availableassets-src-mq3-client-ui-sp-level-ml-697571634"></a>
+### playerIconHandle
+
+```ml
+function playerIconHandle(state, modelAndSkin, availableAssets)
+```
+
+PlayerIconHandle is a typed registration boundary in the native host.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `modelAndSkin` | `dynamic` | — |  |
+| `availableAssets` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L60)
+
+<a id="constant-constant-mq3-client-ui-sp-level-qm-activated-const-qm-activated-3-src-mq3-client-ui-sp-level-ml-1663732618"></a>
+### QM_ACTIVATED
+
+```ml
+const QM_ACTIVATED = 3
+```
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L14)
+
+<a id="function-function-mq3-client-ui-sp-level-reinit-function-reinit-state-src-mq3-client-ui-sp-level-ml-1476878349"></a>
+### reInit
+
+```ml
+function reInit(state)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L129)
+
+<a id="function-function-mq3-client-ui-sp-level-resetaction-function-resetaction-state-result-availableassets-src-mq3-client-ui-sp-level-ml-846204042"></a>
+### resetAction
+
+```ml
+function resetAction(state, result, availableAssets)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `result` | `dynamic` | — |  |
+| `availableAssets` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L86)
+
+<a id="function-function-mq3-client-ui-sp-level-resetdraw-function-resetdraw-state-src-mq3-client-ui-sp-level-ml-955323507"></a>
+### resetDraw
+
+```ml
+function resetDraw(state)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L85)
+
+<a id="function-function-mq3-client-ui-sp-level-resetevent-function-resetevent-state-event-availableassets-src-mq3-client-ui-sp-level-ml-2124373691"></a>
+### resetEvent
+
+```ml
+function resetEvent(state, event, availableAssets)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `event` | `dynamic` | — |  |
+| `availableAssets` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L87)
+
+<a id="function-function-mq3-client-ui-sp-level-rightarrowevent-function-rightarrowevent-state-event-availableassets-src-mq3-client-ui-sp-level-ml-2037053609"></a>
+### rightArrowEvent
+
+```ml
+function rightArrowEvent(state, event, availableAssets)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `event` | `dynamic` | — |  |
+| `availableAssets` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L90)
+
+<a id="function-function-mq3-client-ui-sp-level-same-function-same-a-b-src-mq3-client-ui-sp-level-ml-1294672427"></a>
+### same
+
+```ml
+function same(a, b)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `a` | `dynamic` | — |  |
+| `b` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L46)
+
+<a id="function-function-mq3-client-ui-sp-level-setbots-function-setbots-state-availableassets-src-mq3-client-ui-sp-level-ml-1365569181"></a>
+### setBots
+
+```ml
+function setBots(state, availableAssets)
+```
+
+UI_SPLevelMenu_SetBots
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `availableAssets` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L63)
+
+<a id="function-function-mq3-client-ui-sp-level-setcvar-function-setcvar-state-name-value-src-mq3-client-ui-sp-level-ml-1560788963"></a>
+### setCvar
+
+```ml
+function setCvar(state, name, value)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `name` | `dynamic` | — |  |
+| `value` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L43)
+
+<a id="function-function-mq3-client-ui-sp-level-setmenuarena-function-setmenuarena-state-n-level-arenainfo-availableassets-src-mq3-client-ui-sp-level-ml-1416502772"></a>
+### setMenuArena
+
+```ml
+function setMenuArena(state, n, level, arenaInfo, availableAssets)
+```
+
+UI_SPLevelMenu_SetMenuArena
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `n` | `dynamic` | — |  |
+| `level` | `dynamic` | — |  |
+| `arenaInfo` | `dynamic` | — |  |
+| `availableAssets` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L70)
+
+<a id="function-function-mq3-client-ui-sp-level-setmenuitems-function-setmenuitems-state-availableassets-src-mq3-client-ui-sp-level-ml-383351409"></a>
+### setMenuItems
+
+```ml
+function setMenuItems(state, availableAssets)
+```
+
+UI_SPLevelMenu_SetMenuItems
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `availableAssets` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L76)
+
+<a id="function-function-mq3-client-ui-sp-level-splevelmenu-function-splevelmenu-state-availableassets-src-mq3-client-ui-sp-level-ml-1249272329"></a>
+### spLevelMenu
+
+```ml
+function spLevelMenu(state, availableAssets)
+```
+
+UI_SPLevelMenu
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `availableAssets` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L124)
+
+<a id="function-function-mq3-client-ui-sp-level-splevelmenuf-function-splevelmenuf-state-availableassets-src-mq3-client-ui-sp-level-ml-1454927349"></a>
+### spLevelMenuF
+
+```ml
+function spLevelMenuF(state, availableAssets)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `state` | `dynamic` | — |  |
+| `availableAssets` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L128)
+
+- [mq3.client.ui_sp_level.State](Type-mq3-client-ui-sp-level-state-1066399981.md) — struct
+<a id="function-function-mq3-client-ui-sp-level-truncate-function-truncate-value-count-src-mq3-client-ui-sp-level-ml-2059307966"></a>
+### truncate
+
+```ml
+function truncate(value, count)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `dynamic` | — |  |
+| `count` | `dynamic` | — |  |
+
+
+[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L52)

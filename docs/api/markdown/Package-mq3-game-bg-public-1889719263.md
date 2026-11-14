@@ -1,0 +1,93 @@
+# Package `mq3.game.bg_public`
+
+[Home](README.md) · [Packages](Packages.md)
+
+## Files
+
+- [src/mq3/game/bg_public.ml](File-src-mq3-game-bg-public-ml-2091356861.md)
+
+## Symbols
+
+- [`mq3.game.bg_public.ANIM_TOGGLEBIT`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-anim-togglebit-const-anim-togglebit-128-src-mq3-game-bg-public-ml-1601516550) — constant
+- [`mq3.game.bg_public.Animation`](Type-mq3-game-bg-public-animation-1048157595.md) — struct
+- [`mq3.game.bg_public.ARMOR_PROTECTION`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-armor-protection-const-armor-protection-0-66-src-mq3-game-bg-public-ml-2114508147) — constant
+- [`mq3.game.bg_public.CROUCH_VIEWHEIGHT`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-crouch-viewheight-const-crouch-viewheight-12-src-mq3-game-bg-public-ml-1359120302) — constant
+- [`mq3.game.bg_public.CS_BOTINFO`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-botinfo-const-cs-botinfo-25-src-mq3-game-bg-public-ml-1550235058) — constant
+- [`mq3.game.bg_public.CS_FLAGSTATUS`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-flagstatus-const-cs-flagstatus-23-src-mq3-game-bg-public-ml-1482583762) — constant
+- [`mq3.game.bg_public.CS_GAME_VERSION`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-game-version-const-cs-game-version-20-src-mq3-game-bg-public-ml-1260999667) — constant
+- [`mq3.game.bg_public.CS_INTERMISSION`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-intermission-const-cs-intermission-22-src-mq3-game-bg-public-ml-208927837) — constant
+- [`mq3.game.bg_public.CS_ITEMS`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-items-const-cs-items-27-src-mq3-game-bg-public-ml-1766904534) — constant
+- [`mq3.game.bg_public.CS_LEVEL_START_TIME`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-level-start-time-const-cs-level-start-time-21-src-mq3-game-bg-public-ml-1065551796) — constant
+- [`mq3.game.bg_public.CS_LOCATIONS`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-locations-const-cs-locations-608-src-mq3-game-bg-public-ml-1647448673) — constant
+- [`mq3.game.bg_public.CS_MAX`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-max-const-cs-max-736-src-mq3-game-bg-public-ml-1976841571) — constant
+- [`mq3.game.bg_public.CS_MESSAGE`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-message-const-cs-message-3-src-mq3-game-bg-public-ml-1051431748) — constant
+- [`mq3.game.bg_public.CS_MODELS`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-models-const-cs-models-32-src-mq3-game-bg-public-ml-540556664) — constant
+- [`mq3.game.bg_public.CS_MOTD`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-motd-const-cs-motd-4-src-mq3-game-bg-public-ml-1257860035) — constant
+- [`mq3.game.bg_public.CS_MUSIC`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-music-const-cs-music-2-src-mq3-game-bg-public-ml-372316691) — constant
+- [`mq3.game.bg_public.CS_PARTICLES`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-particles-const-cs-particles-672-src-mq3-game-bg-public-ml-749111306) — constant
+- [`mq3.game.bg_public.CS_PLAYERS`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-players-const-cs-players-544-src-mq3-game-bg-public-ml-1103742976) — constant
+- [`mq3.game.bg_public.CS_SCORES1`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-scores1-const-cs-scores1-6-src-mq3-game-bg-public-ml-1318209589) — constant
+- [`mq3.game.bg_public.CS_SCORES2`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-scores2-const-cs-scores2-7-src-mq3-game-bg-public-ml-560530504) — constant
+- [`mq3.game.bg_public.CS_SHADERSTATE`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-shaderstate-const-cs-shaderstate-24-src-mq3-game-bg-public-ml-555394027) — constant
+- [`mq3.game.bg_public.CS_SOUNDS`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-sounds-const-cs-sounds-288-src-mq3-game-bg-public-ml-984433541) — constant
+- [`mq3.game.bg_public.CS_TEAMVOTE_NO`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-teamvote-no-const-cs-teamvote-no-18-src-mq3-game-bg-public-ml-544997802) — constant
+- [`mq3.game.bg_public.CS_TEAMVOTE_STRING`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-teamvote-string-const-cs-teamvote-string-14-src-mq3-game-bg-public-ml-1966203094) — constant
+- [`mq3.game.bg_public.CS_TEAMVOTE_TIME`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-teamvote-time-const-cs-teamvote-time-12-src-mq3-game-bg-public-ml-340002532) — constant
+- [`mq3.game.bg_public.CS_TEAMVOTE_YES`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-teamvote-yes-const-cs-teamvote-yes-16-src-mq3-game-bg-public-ml-521547122) — constant
+- [`mq3.game.bg_public.CS_VOTE_NO`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-vote-no-const-cs-vote-no-11-src-mq3-game-bg-public-ml-733712975) — constant
+- [`mq3.game.bg_public.CS_VOTE_STRING`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-vote-string-const-cs-vote-string-9-src-mq3-game-bg-public-ml-1995579128) — constant
+- [`mq3.game.bg_public.CS_VOTE_TIME`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-vote-time-const-cs-vote-time-8-src-mq3-game-bg-public-ml-1143042843) — constant
+- [`mq3.game.bg_public.CS_VOTE_YES`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-vote-yes-const-cs-vote-yes-10-src-mq3-game-bg-public-ml-1846582784) — constant
+- [`mq3.game.bg_public.CS_WARMUP`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-cs-warmup-const-cs-warmup-5-src-mq3-game-bg-public-ml-644211500) — constant
+- [`mq3.game.bg_public.DEAD_VIEWHEIGHT`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-dead-viewheight-const-dead-viewheight-16-src-mq3-game-bg-public-ml-476022655) — constant
+- [`mq3.game.bg_public.DEFAULT_GRAVITY`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-default-gravity-const-default-gravity-800-src-mq3-game-bg-public-ml-1080596687) — constant
+- [`mq3.game.bg_public.DEFAULT_SHOTGUN_COUNT`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-default-shotgun-count-const-default-shotgun-count-11-src-mq3-game-bg-public-ml-725961315) — constant
+- [`mq3.game.bg_public.DEFAULT_SHOTGUN_SPREAD`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-default-shotgun-spread-const-default-shotgun-spread-700-src-mq3-game-bg-public-ml-221299648) — constant
+- [`mq3.game.bg_public.DEFAULT_VIEWHEIGHT`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-default-viewheight-const-default-viewheight-26-src-mq3-game-bg-public-ml-1842780723) — constant
+- [`mq3.game.bg_public.DF_FIXED_FOV`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-df-fixed-fov-const-df-fixed-fov-16-src-mq3-game-bg-public-ml-1036834098) — constant
+- [`mq3.game.bg_public.DF_NO_FALLING`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-df-no-falling-const-df-no-falling-8-src-mq3-game-bg-public-ml-1923574611) — constant
+- [`mq3.game.bg_public.DF_NO_FOOTSTEPS`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-df-no-footsteps-const-df-no-footsteps-32-src-mq3-game-bg-public-ml-91586596) — constant
+- [`mq3.game.bg_public.EF_AWARD_DENIED`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-ef-award-denied-const-ef-award-denied-262144-src-mq3-game-bg-public-ml-1619550824) — constant
+- [`mq3.game.bg_public.EF_BOUNCE`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-ef-bounce-const-ef-bounce-16-src-mq3-game-bg-public-ml-1071626378) — constant
+- [`mq3.game.bg_public.EV_EVENT_BIT1`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-ev-event-bit1-const-ev-event-bit1-256-src-mq3-game-bg-public-ml-351332254) — constant
+- [`mq3.game.bg_public.EV_EVENT_BIT2`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-ev-event-bit2-const-ev-event-bit2-512-src-mq3-game-bg-public-ml-768378863) — constant
+- [`mq3.game.bg_public.EV_EVENT_BITS`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-ev-event-bits-const-ev-event-bits-768-src-mq3-game-bg-public-ml-804507480) — constant
+- [`mq3.game.bg_public.EVENT_VALID_MSEC`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-event-valid-msec-const-event-valid-msec-300-src-mq3-game-bg-public-ml-1041883124) — constant
+- [`mq3.game.bg_public.GAME_VERSION`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-game-version-const-game-version-baseq3-1-src-mq3-game-bg-public-ml-50150848) — constant
+- [`mq3.game.bg_public.GIB_HEALTH`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-gib-health-const-gib-health-40-src-mq3-game-bg-public-ml-1833671716) — constant
+- [`mq3.game.bg_public.Gitem`](Type-mq3-game-bg-public-gitem-664815043.md) — struct
+- [`mq3.game.bg_public.ITEM_INDEX`](File-src-mq3-game-bg-public-ml-2091356861.md#function-function-mq3-game-bg-public-item-index-function-item-index-index-src-mq3-game-bg-public-ml-1726693352) — function
+- [`mq3.game.bg_public.ITEM_RADIUS`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-item-radius-const-item-radius-15-src-mq3-game-bg-public-ml-2138652195) — constant
+- [`mq3.game.bg_public.LIGHTNING_RANGE`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-lightning-range-const-lightning-range-768-src-mq3-game-bg-public-ml-1422103788) — constant
+- [`mq3.game.bg_public.MASK_ALL`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-mask-all-const-mask-all-1-src-mq3-game-bg-public-ml-1984448601) — constant
+- [`mq3.game.bg_public.MASK_DEADSOLID`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-mask-deadsolid-const-mask-deadsolid-65537-src-mq3-game-bg-public-ml-1089706871) — constant
+- [`mq3.game.bg_public.MASK_OPAQUE`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-mask-opaque-const-mask-opaque-25-src-mq3-game-bg-public-ml-414302408) — constant
+- [`mq3.game.bg_public.MASK_PLAYERSOLID`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-mask-playersolid-const-mask-playersolid-33619969-src-mq3-game-bg-public-ml-882295805) — constant
+- [`mq3.game.bg_public.MASK_SHOT`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-mask-shot-const-mask-shot-100663297-src-mq3-game-bg-public-ml-1883151329) — constant
+- [`mq3.game.bg_public.MASK_SOLID`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-mask-solid-const-mask-solid-1-src-mq3-game-bg-public-ml-432402906) — constant
+- [`mq3.game.bg_public.MASK_WATER`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-mask-water-const-mask-water-56-src-mq3-game-bg-public-ml-2143070424) — constant
+- [`mq3.game.bg_public.MAX_ITEM_MODELS`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-max-item-models-const-max-item-models-4-src-mq3-game-bg-public-ml-2017094339) — constant
+- [`mq3.game.bg_public.MAX_ITEMS`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-max-items-const-max-items-256-src-mq3-game-bg-public-ml-2057701238) — constant
+- [`mq3.game.bg_public.MAXTOUCH`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-maxtouch-const-maxtouch-32-src-mq3-game-bg-public-ml-1470562012) — constant
+- [`mq3.game.bg_public.MINS_Z`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-mins-z-const-mins-z-24-src-mq3-game-bg-public-ml-1190258608) — constant
+- [`mq3.game.bg_public.PMF_ALL_TIMES`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-pmf-all-times-const-pmf-all-times-352-src-mq3-game-bg-public-ml-815661649) — constant
+- [`mq3.game.bg_public.PMF_BACKWARDS_JUMP`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-pmf-backwards-jump-const-pmf-backwards-jump-8-src-mq3-game-bg-public-ml-1534710319) — constant
+- [`mq3.game.bg_public.PMF_BACKWARDS_RUN`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-pmf-backwards-run-const-pmf-backwards-run-16-src-mq3-game-bg-public-ml-1683443498) — constant
+- [`mq3.game.bg_public.PMF_DUCKED`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-pmf-ducked-const-pmf-ducked-1-src-mq3-game-bg-public-ml-1341918118) — constant
+- [`mq3.game.bg_public.PMF_FOLLOW`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-pmf-follow-const-pmf-follow-4096-src-mq3-game-bg-public-ml-2051331114) — constant
+- [`mq3.game.bg_public.PMF_GRAPPLE_PULL`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-pmf-grapple-pull-const-pmf-grapple-pull-2048-src-mq3-game-bg-public-ml-1162312483) — constant
+- [`mq3.game.bg_public.PMF_INVULEXPAND`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-pmf-invulexpand-const-pmf-invulexpand-16384-src-mq3-game-bg-public-ml-453074883) — constant
+- [`mq3.game.bg_public.PMF_JUMP_HELD`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-pmf-jump-held-const-pmf-jump-held-2-src-mq3-game-bg-public-ml-1002191597) — constant
+- [`mq3.game.bg_public.PMF_RESPAWNED`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-pmf-respawned-const-pmf-respawned-512-src-mq3-game-bg-public-ml-114173331) — constant
+- [`mq3.game.bg_public.PMF_SCOREBOARD`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-pmf-scoreboard-const-pmf-scoreboard-8192-src-mq3-game-bg-public-ml-1122858319) — constant
+- [`mq3.game.bg_public.PMF_TIME_KNOCKBACK`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-pmf-time-knockback-const-pmf-time-knockback-64-src-mq3-game-bg-public-ml-238126999) — constant
+- [`mq3.game.bg_public.PMF_TIME_LAND`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-pmf-time-land-const-pmf-time-land-32-src-mq3-game-bg-public-ml-324130368) — constant
+- [`mq3.game.bg_public.PMF_TIME_WATERJUMP`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-pmf-time-waterjump-const-pmf-time-waterjump-256-src-mq3-game-bg-public-ml-204792002) — constant
+- [`mq3.game.bg_public.PMF_USE_ITEM_HELD`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-pmf-use-item-held-const-pmf-use-item-held-1024-src-mq3-game-bg-public-ml-1226998170) — constant
+- [`mq3.game.bg_public.Pmove`](Type-mq3-game-bg-public-pmove-852760040.md) — struct
+- [`mq3.game.bg_public.RANK_TIED_FLAG`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-rank-tied-flag-const-rank-tied-flag-16384-src-mq3-game-bg-public-ml-906820357) — constant
+- [`mq3.game.bg_public.SCORE_NOT_PRESENT`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-score-not-present-const-score-not-present-9999-src-mq3-game-bg-public-ml-776909032) — constant
+- [`mq3.game.bg_public.TEAM_LOCATION_UPDATE_TIME`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-team-location-update-time-const-team-location-update-time-1000-src-mq3-game-bg-public-ml-1094479868) — constant
+- [`mq3.game.bg_public.TEAM_MAXOVERLAY`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-team-maxoverlay-const-team-maxoverlay-32-src-mq3-game-bg-public-ml-1139362428) — constant
+- [`mq3.game.bg_public.typeNames`](File-src-mq3-game-bg-public-ml-2091356861.md#function-function-mq3-game-bg-public-typenames-function-typenames-src-mq3-game-bg-public-ml-1984607470) — function
+- [`mq3.game.bg_public.VOTE_TIME`](File-src-mq3-game-bg-public-ml-2091356861.md#constant-constant-mq3-game-bg-public-vote-time-const-vote-time-30000-src-mq3-game-bg-public-ml-286384182) — constant

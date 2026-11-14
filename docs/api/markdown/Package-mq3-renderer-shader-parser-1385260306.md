@@ -1,0 +1,60 @@
+# Package `mq3.renderer.shader_parser`
+
+[Home](README.md) · [Packages](Packages.md)
+
+## Files
+
+- [src/mq3/renderer/shader_parser.ml](File-src-mq3-renderer-shader-parser-ml-2114769074.md)
+
+## Symbols
+
+- [`mq3.renderer.shader_parser.blankStage`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-blankstage-function-blankstage-src-mq3-renderer-shader-parser-ml-1164948242) — function
+- [`mq3.renderer.shader_parser.blankWave`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-blankwave-function-blankwave-src-mq3-renderer-shader-parser-ml-219695804) — function
+- [`mq3.renderer.shader_parser.Deform`](Type-mq3-renderer-shader-parser-deform-2039441621.md) — struct
+- [`mq3.renderer.shader_parser.GLS_ATEST_GE_80`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-atest-ge-80-const-gls-atest-ge-80-1073741824-src-mq3-renderer-shader-parser-ml-185965558) — constant
+- [`mq3.renderer.shader_parser.GLS_ATEST_GT_0`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-atest-gt-0-const-gls-atest-gt-0-268435456-src-mq3-renderer-shader-parser-ml-1738668394) — constant
+- [`mq3.renderer.shader_parser.GLS_ATEST_LT_80`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-atest-lt-80-const-gls-atest-lt-80-536870912-src-mq3-renderer-shader-parser-ml-1606578206) — constant
+- [`mq3.renderer.shader_parser.GLS_DEPTHFUNC_EQUAL`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-depthfunc-equal-const-gls-depthfunc-equal-131072-src-mq3-renderer-shader-parser-ml-1887530921) — constant
+- [`mq3.renderer.shader_parser.GLS_DEPTHMASK_TRUE`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-depthmask-true-const-gls-depthmask-true-256-src-mq3-renderer-shader-parser-ml-350980060) — constant
+- [`mq3.renderer.shader_parser.GLS_DSTBLEND_DST_ALPHA`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-dstblend-dst-alpha-const-gls-dstblend-dst-alpha-112-src-mq3-renderer-shader-parser-ml-814184615) — constant
+- [`mq3.renderer.shader_parser.GLS_DSTBLEND_ONE`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-dstblend-one-const-gls-dstblend-one-32-src-mq3-renderer-shader-parser-ml-520684898) — constant
+- [`mq3.renderer.shader_parser.GLS_DSTBLEND_ONE_MINUS_DST_ALPHA`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-dstblend-one-minus-dst-alpha-const-gls-dstblend-one-minus-dst-alpha-128-src-mq3-renderer-shader-parser-ml-959593626) — constant
+- [`mq3.renderer.shader_parser.GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-dstblend-one-minus-src-alpha-const-gls-dstblend-one-minus-src-alpha-96-src-mq3-renderer-shader-parser-ml-1311403778) — constant
+- [`mq3.renderer.shader_parser.GLS_DSTBLEND_ONE_MINUS_SRC_COLOR`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-dstblend-one-minus-src-color-const-gls-dstblend-one-minus-src-color-64-src-mq3-renderer-shader-parser-ml-329790769) — constant
+- [`mq3.renderer.shader_parser.GLS_DSTBLEND_SRC_ALPHA`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-dstblend-src-alpha-const-gls-dstblend-src-alpha-80-src-mq3-renderer-shader-parser-ml-881319001) — constant
+- [`mq3.renderer.shader_parser.GLS_DSTBLEND_SRC_COLOR`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-dstblend-src-color-const-gls-dstblend-src-color-48-src-mq3-renderer-shader-parser-ml-1146608987) — constant
+- [`mq3.renderer.shader_parser.GLS_DSTBLEND_ZERO`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-dstblend-zero-const-gls-dstblend-zero-16-src-mq3-renderer-shader-parser-ml-1772656702) — constant
+- [`mq3.renderer.shader_parser.GLS_SRCBLEND_ALPHA_SATURATE`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-srcblend-alpha-saturate-const-gls-srcblend-alpha-saturate-9-src-mq3-renderer-shader-parser-ml-1449718302) — constant
+- [`mq3.renderer.shader_parser.GLS_SRCBLEND_DST_ALPHA`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-srcblend-dst-alpha-const-gls-srcblend-dst-alpha-7-src-mq3-renderer-shader-parser-ml-620748216) — constant
+- [`mq3.renderer.shader_parser.GLS_SRCBLEND_DST_COLOR`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-srcblend-dst-color-const-gls-srcblend-dst-color-3-src-mq3-renderer-shader-parser-ml-2096660318) — constant
+- [`mq3.renderer.shader_parser.GLS_SRCBLEND_ONE`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-srcblend-one-const-gls-srcblend-one-2-src-mq3-renderer-shader-parser-ml-1158709115) — constant
+- [`mq3.renderer.shader_parser.GLS_SRCBLEND_ONE_MINUS_DST_ALPHA`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-srcblend-one-minus-dst-alpha-const-gls-srcblend-one-minus-dst-alpha-8-src-mq3-renderer-shader-parser-ml-1966487981) — constant
+- [`mq3.renderer.shader_parser.GLS_SRCBLEND_ONE_MINUS_DST_COLOR`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-srcblend-one-minus-dst-color-const-gls-srcblend-one-minus-dst-color-4-src-mq3-renderer-shader-parser-ml-1374715171) — constant
+- [`mq3.renderer.shader_parser.GLS_SRCBLEND_ONE_MINUS_SRC_ALPHA`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-srcblend-one-minus-src-alpha-const-gls-srcblend-one-minus-src-alpha-6-src-mq3-renderer-shader-parser-ml-65436697) — constant
+- [`mq3.renderer.shader_parser.GLS_SRCBLEND_SRC_ALPHA`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-srcblend-src-alpha-const-gls-srcblend-src-alpha-5-src-mq3-renderer-shader-parser-ml-1637949540) — constant
+- [`mq3.renderer.shader_parser.GLS_SRCBLEND_ZERO`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-gls-srcblend-zero-const-gls-srcblend-zero-1-src-mq3-renderer-shader-parser-ml-1532706006) — constant
+- [`mq3.renderer.shader_parser.hasValue`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-hasvalue-function-hasvalue-values-wanted-src-mq3-renderer-shader-parser-ml-1414523649) — function
+- [`mq3.renderer.shader_parser.lower`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-lower-function-lower-text-src-mq3-renderer-shader-parser-ml-570270137) — function
+- [`mq3.renderer.shader_parser.MAX_IMAGE_ANIMATIONS`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-max-image-animations-const-max-image-animations-8-src-mq3-renderer-shader-parser-ml-219968291) — constant
+- [`mq3.renderer.shader_parser.MAX_SHADER_STAGES`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-max-shader-stages-const-max-shader-stages-8-src-mq3-renderer-shader-parser-ml-1905106573) — constant
+- [`mq3.renderer.shader_parser.nameToAFunc`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-nametoafunc-function-nametoafunc-name-src-mq3-renderer-shader-parser-ml-1819312013) — function
+- [`mq3.renderer.shader_parser.nameToDstBlendMode`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-nametodstblendmode-function-nametodstblendmode-name-src-mq3-renderer-shader-parser-ml-739405355) — function
+- [`mq3.renderer.shader_parser.nameToGenFunc`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-nametogenfunc-function-nametogenfunc-name-src-mq3-renderer-shader-parser-ml-1744452087) — function
+- [`mq3.renderer.shader_parser.nameToSrcBlendMode`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-nametosrcblendmode-function-nametosrcblendmode-name-src-mq3-renderer-shader-parser-ml-1697780947) — function
+- [`mq3.renderer.shader_parser.number`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-number-function-number-text-src-mq3-renderer-shader-parser-ml-493458139) — function
+- [`mq3.renderer.shader_parser.parse`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-parse-function-parse-state-name-src-mq3-renderer-shader-parser-ml-912717154) — function
+- [`mq3.renderer.shader_parser.parseDeform`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-parsedeform-function-parsedeform-state-src-mq3-renderer-shader-parser-ml-708020069) — function
+- [`mq3.renderer.shader_parser.parseIndexed`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-parseindexed-function-parseindexed-index-name-src-mq3-renderer-shader-parser-ml-1537275215) — function
+- [`mq3.renderer.shader_parser.parseStage`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-parsestage-function-parsestage-state-src-mq3-renderer-shader-parser-ml-94946657) — function
+- [`mq3.renderer.shader_parser.parseTexMod`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-parsetexmod-function-parsetexmod-tokens-src-mq3-renderer-shader-parser-ml-1947215672) — function
+- [`mq3.renderer.shader_parser.parseText`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-parsetext-function-parsetext-text-name-src-mq3-renderer-shader-parser-ml-475080574) — function
+- [`mq3.renderer.shader_parser.parseVector`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-parsevector-function-parsevector-state-count-src-mq3-renderer-shader-parser-ml-314142626) — function
+- [`mq3.renderer.shader_parser.parseWave`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-parsewave-function-parsewave-state-src-mq3-renderer-shader-parser-ml-1628150597) — function
+- [`mq3.renderer.shader_parser.restOfLine`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-restofline-function-restofline-state-src-mq3-renderer-shader-parser-ml-1917163149) — function
+- [`mq3.renderer.shader_parser.Shader`](Type-mq3-renderer-shader-parser-shader-1518855685.md) — struct
+- [`mq3.renderer.shader_parser.skipLine`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-skipline-function-skipline-state-src-mq3-renderer-shader-parser-ml-518163397) — function
+- [`mq3.renderer.shader_parser.sortValue`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#function-function-mq3-renderer-shader-parser-sortvalue-function-sortvalue-name-src-mq3-renderer-shader-parser-ml-480984821) — function
+- [`mq3.renderer.shader_parser.Stage`](Type-mq3-renderer-shader-parser-stage-1079226850.md) — struct
+- [`mq3.renderer.shader_parser.TexMod`](Type-mq3-renderer-shader-parser-texmod-1184446339.md) — struct
+- [`mq3.renderer.shader_parser.TR_MAX_TEXMODS`](File-src-mq3-renderer-shader-parser-ml-2114769074.md#constant-constant-mq3-renderer-shader-parser-tr-max-texmods-const-tr-max-texmods-4-src-mq3-renderer-shader-parser-ml-1422345111) — constant
+- [`mq3.renderer.shader_parser.Wave`](Type-mq3-renderer-shader-parser-wave-1272786189.md) — struct

@@ -1,0 +1,40 @@
+# Package `mq3.client.ui_gameinfo_missionpack`
+
+[Home](README.md) · [Packages](Packages.md)
+
+## Files
+
+- [src/mq3/client/ui_gameinfo_missionpack.ml](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md)
+
+## Symbols
+
+- [`mq3.client.ui_gameinfo_missionpack.Action`](Type-mq3-client-ui-gameinfo-missionpack-action-605553514.md) — struct
+- [`mq3.client.ui_gameinfo_missionpack.arenaTypeBits`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-arenatypebits-function-arenatypebits-type-src-mq3-client-ui-gameinfo-missionpack-ml-943373912) — function
+- [`mq3.client.ui_gameinfo_missionpack.contains`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-contains-function-contains-text-part-src-mq3-client-ui-gameinfo-missionpack-ml-1488198672) — function
+- [`mq3.client.ui_gameinfo_missionpack.create`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-create-function-create-retailactive-src-mq3-client-ui-gameinfo-missionpack-ml-1982330297) — function
+- [`mq3.client.ui_gameinfo_missionpack.emit`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-emit-function-emit-state-boundary-kind-name-text-number-src-mq3-client-ui-gameinfo-missionpack-ml-1673724962) — function
+- [`mq3.client.ui_gameinfo_missionpack.GT_1FCTF`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#constant-constant-mq3-client-ui-gameinfo-missionpack-gt-1fctf-const-gt-1fctf-5-src-mq3-client-ui-gameinfo-missionpack-ml-2024253888) — constant
+- [`mq3.client.ui_gameinfo_missionpack.GT_CTF`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#constant-constant-mq3-client-ui-gameinfo-missionpack-gt-ctf-const-gt-ctf-4-src-mq3-client-ui-gameinfo-missionpack-ml-709921389) — constant
+- [`mq3.client.ui_gameinfo_missionpack.GT_FFA`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#constant-constant-mq3-client-ui-gameinfo-missionpack-gt-ffa-const-gt-ffa-0-src-mq3-client-ui-gameinfo-missionpack-ml-538229641) — constant
+- [`mq3.client.ui_gameinfo_missionpack.GT_HARVESTER`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#constant-constant-mq3-client-ui-gameinfo-missionpack-gt-harvester-const-gt-harvester-7-src-mq3-client-ui-gameinfo-missionpack-ml-1523922070) — constant
+- [`mq3.client.ui_gameinfo_missionpack.GT_MAX_GAME_TYPE`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#constant-constant-mq3-client-ui-gameinfo-missionpack-gt-max-game-type-const-gt-max-game-type-8-src-mq3-client-ui-gameinfo-missionpack-ml-101962987) — constant
+- [`mq3.client.ui_gameinfo_missionpack.GT_OBELISK`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#constant-constant-mq3-client-ui-gameinfo-missionpack-gt-obelisk-const-gt-obelisk-6-src-mq3-client-ui-gameinfo-missionpack-ml-1405246687) — constant
+- [`mq3.client.ui_gameinfo_missionpack.GT_SINGLE_PLAYER`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#constant-constant-mq3-client-ui-gameinfo-missionpack-gt-single-player-const-gt-single-player-2-src-mq3-client-ui-gameinfo-missionpack-ml-1506228857) — constant
+- [`mq3.client.ui_gameinfo_missionpack.GT_TEAM`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#constant-constant-mq3-client-ui-gameinfo-missionpack-gt-team-const-gt-team-3-src-mq3-client-ui-gameinfo-missionpack-ml-600464116) — constant
+- [`mq3.client.ui_gameinfo_missionpack.GT_TOURNAMENT`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#constant-constant-mq3-client-ui-gameinfo-missionpack-gt-tournament-const-gt-tournament-1-src-mq3-client-ui-gameinfo-missionpack-ml-1768391286) — constant
+- [`mq3.client.ui_gameinfo_missionpack.mapInfo`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-mapinfo-function-mapinfo-arena-number-src-mq3-client-ui-gameinfo-missionpack-ml-1085707844) — function
+- [`mq3.client.ui_gameinfo_missionpack.MapInfo`](Type-mq3-client-ui-gameinfo-missionpack-mapinfo-1573515734.md) — struct
+- [`mq3.client.ui_gameinfo_missionpack.MAX_ARENAS`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#constant-constant-mq3-client-ui-gameinfo-missionpack-max-arenas-const-max-arenas-1024-src-mq3-client-ui-gameinfo-missionpack-ml-860444878) — constant
+- [`mq3.client.ui_gameinfo_missionpack.MAX_BOTS`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#constant-constant-mq3-client-ui-gameinfo-missionpack-max-bots-const-max-bots-1024-src-mq3-client-ui-gameinfo-missionpack-ml-736222906) — constant
+- [`mq3.client.ui_gameinfo_missionpack.MAX_MAPS`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#constant-constant-mq3-client-ui-gameinfo-missionpack-max-maps-const-max-maps-128-src-mq3-client-ui-gameinfo-missionpack-ml-782444162) — constant
+- [`mq3.client.ui_gameinfo_missionpack.State`](Type-mq3-client-ui-gameinfo-missionpack-state-1482826341.md) — struct
+- [`mq3.client.ui_gameinfo_missionpack.sync`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-sync-function-sync-state-src-mq3-client-ui-gameinfo-missionpack-ml-277824969) — function
+- [`mq3.client.ui_gameinfo_missionpack.UI_GetBotInfoByName`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-ui-getbotinfobyname-function-ui-getbotinfobyname-state-name-src-mq3-client-ui-gameinfo-missionpack-ml-951826564) — function
+- [`mq3.client.ui_gameinfo_missionpack.UI_GetBotInfoByNumber`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-ui-getbotinfobynumber-function-ui-getbotinfobynumber-state-num-src-mq3-client-ui-gameinfo-missionpack-ml-164269735) — function
+- [`mq3.client.ui_gameinfo_missionpack.UI_GetBotNameByNumber`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-ui-getbotnamebynumber-function-ui-getbotnamebynumber-state-num-src-mq3-client-ui-gameinfo-missionpack-ml-1959370017) — function
+- [`mq3.client.ui_gameinfo_missionpack.UI_GetNumBots`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-ui-getnumbots-function-ui-getnumbots-state-src-mq3-client-ui-gameinfo-missionpack-ml-458822243) — function
+- [`mq3.client.ui_gameinfo_missionpack.UI_LoadArenas`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-ui-loadarenas-function-ui-loadarenas-state-primaryname-primarytext-additionalfiles-src-mq3-client-ui-gameinfo-missionpack-ml-547920335) — function
+- [`mq3.client.ui_gameinfo_missionpack.UI_LoadArenasFromFile`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-ui-loadarenasfromfile-function-ui-loadarenasfromfile-state-filename-text-src-mq3-client-ui-gameinfo-missionpack-ml-433373369) — function
+- [`mq3.client.ui_gameinfo_missionpack.UI_LoadBots`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-ui-loadbots-function-ui-loadbots-state-primaryname-primarytext-additionalfiles-src-mq3-client-ui-gameinfo-missionpack-ml-743312307) — function
+- [`mq3.client.ui_gameinfo_missionpack.UI_LoadBotsFromFile`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-ui-loadbotsfromfile-function-ui-loadbotsfromfile-state-filename-text-src-mq3-client-ui-gameinfo-missionpack-ml-2143445149) — function
+- [`mq3.client.ui_gameinfo_missionpack.UI_ParseInfos`](File-src-mq3-client-ui-gameinfo-missionpack-ml-695041638.md#function-function-mq3-client-ui-gameinfo-missionpack-ui-parseinfos-function-ui-parseinfos-state-text-max-src-mq3-client-ui-gameinfo-missionpack-ml-2118742308) — function

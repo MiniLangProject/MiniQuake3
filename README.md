@@ -1,5 +1,8 @@
 # MiniQuake3
 
+Die generierte [MiniDoc-API-Referenz](docs/api/markdown/README.md) dokumentiert
+die Module aus `src/`; die Konfiguration steht in [minidoc.toml](minidoc.toml).
+
 Projekt für einen möglichst originalgetreuen Port von Quake III Arena nach MiniLang.
 Status: Implementierung läuft. Ein nativer MiniLang-Build mit Zahlenkompatibilität,
 Cvars, Parser, PK3/DEFLATE, BSP-Leser, QVM-Interpreter, BSP-/Kurvenkollision,

@@ -1,0 +1,43 @@
+# Package `mq3.renderer.qvm_scene_materials`
+
+[Home](README.md) · [Packages](Packages.md)
+
+## Files
+
+- [src/mq3/renderer/qvm_scene_materials.ml](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md)
+
+## Symbols
+
+- [`mq3.renderer.qvm_scene_materials.addBeamMaterial`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-addbeammaterial-function-addbeammaterial-output-endslot-src-mq3-renderer-qvm-scene-materials-ml-1088400160) — function
+- [`mq3.renderer.qvm_scene_materials.addProjectionShadowMaterial`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-addprojectionshadowmaterial-function-addprojectionshadowmaterial-output-endslot-src-mq3-renderer-qvm-scene-materials-ml-297044232) — function
+- [`mq3.renderer.qvm_scene_materials.addTextures`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-addtextures-function-addtextures-texturelist-stages-src-mq3-renderer-qvm-scene-materials-ml-1551897042) — function
+- [`mq3.renderer.qvm_scene_materials.beamStage`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-beamstage-function-beamstage-image-slot-src-mq3-renderer-qvm-scene-materials-ml-690474333) — function
+- [`mq3.renderer.qvm_scene_materials.Binding`](Type-mq3-renderer-qvm-scene-materials-binding-852468044.md) — struct
+- [`mq3.renderer.qvm_scene_materials.bindingMatchesRegistry`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-bindingmatchesregistry-function-bindingmatchesregistry-output-index-triangle-assets-kinds-src-mq3-renderer-qvm-scene-materials-ml-1155425241) — function
+- [`mq3.renderer.qvm_scene_materials.bindTriangle`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-bindtriangle-function-bindtriangle-output-triangle-outputindex-archive-assets-kinds-endslot-src-mq3-renderer-qvm-scene-materials-ml-1067447431) — function
+- [`mq3.renderer.qvm_scene_materials.build`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-build-function-build-archive-triangles-assets-kinds-firsttextureslot-maxtextureslots-shaderremaps-src-mq3-renderer-qvm-scene-materials-ml-652066653) — function
+- [`mq3.renderer.qvm_scene_materials.buildIndexed`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-buildindexed-function-buildindexed-archive-triangles-assets-kinds-firsttextureslot-maxtextureslots-shaderremaps-scripts-src-mq3-renderer-qvm-scene-materials-ml-171463873) — function
+- [`mq3.renderer.qvm_scene_materials.BUILTIN_BEAM`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#constant-constant-mq3-renderer-qvm-scene-materials-builtin-beam-const-builtin-beam-mq3-beam-src-mq3-renderer-qvm-scene-materials-ml-1718575050) — constant
+- [`mq3.renderer.qvm_scene_materials.BUILTIN_PROJECTION_SHADOW`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#constant-constant-mq3-renderer-qvm-scene-materials-builtin-projection-shadow-const-builtin-projection-shadow-mq3-projectionshadow-src-mq3-renderer-qvm-scene-materials-ml-1596514760) — constant
+- [`mq3.renderer.qvm_scene_materials.cachedBinding`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-cachedbinding-function-cachedbinding-output-triangle-src-mq3-renderer-qvm-scene-materials-ml-527984559) — function
+- [`mq3.renderer.qvm_scene_materials.cachedSkin`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-cachedskin-function-cachedskin-cache-handle-src-mq3-renderer-qvm-scene-materials-ml-1279240924) — function
+- [`mq3.renderer.qvm_scene_materials.Catalog`](Type-mq3-renderer-qvm-scene-materials-catalog-1883568014.md) — struct
+- [`mq3.renderer.qvm_scene_materials.fail`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-fail-function-fail-message-src-mq3-renderer-qvm-scene-materials-ml-1562401085) — function
+- [`mq3.renderer.qvm_scene_materials.hasImage`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-hasimage-function-hasimage-stages-src-mq3-renderer-qvm-scene-materials-ml-2014278059) — function
+- [`mq3.renderer.qvm_scene_materials.LoadedSkin`](Type-mq3-renderer-qvm-scene-materials-loadedskin-432822455.md) — struct
+- [`mq3.renderer.qvm_scene_materials.loadSkin`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-loadskin-function-loadskin-archive-assets-kinds-cache-handle-src-mq3-renderer-qvm-scene-materials-ml-1639226378) — function
+- [`mq3.renderer.qvm_scene_materials.Material`](Type-mq3-renderer-qvm-scene-materials-material-2048413338.md) — struct
+- [`mq3.renderer.qvm_scene_materials.materialIndex`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-materialindex-function-materialindex-materiallist-name-src-mq3-renderer-qvm-scene-materials-ml-1030758846) — function
+- [`mq3.renderer.qvm_scene_materials.projectionShadowEligible`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-projectionshadoweligible-function-projectionshadoweligible-output-triangle-outputindex-src-mq3-renderer-qvm-scene-materials-ml-1983088340) — function
+- [`mq3.renderer.qvm_scene_materials.projectionShadowStage`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-projectionshadowstage-function-projectionshadowstage-image-slot-src-mq3-renderer-qvm-scene-materials-ml-1490556657) — function
+- [`mq3.renderer.qvm_scene_materials.refresh`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-refresh-function-refresh-catalog-archive-triangles-assets-kinds-endtextureslot-src-mq3-renderer-qvm-scene-materials-ml-870030964) — function
+- [`mq3.renderer.qvm_scene_materials.ResolvedTriangle`](Type-mq3-renderer-qvm-scene-materials-resolvedtriangle-666729175.md) — struct
+- [`mq3.renderer.qvm_scene_materials.resolveShaderName`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-resolveshadername-function-resolveshadername-triangle-archive-assets-kinds-skincache-src-mq3-renderer-qvm-scene-materials-ml-330970149) — function
+- [`mq3.renderer.qvm_scene_materials.sameBinding`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-samebinding-function-samebinding-binding-triangle-src-mq3-renderer-qvm-scene-materials-ml-295725233) — function
+- [`mq3.renderer.qvm_scene_materials.skinShader`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-skinshader-function-skinshader-skin-surfacename-src-mq3-renderer-qvm-scene-materials-ml-1003941281) — function
+- [`mq3.renderer.qvm_scene_materials.storeBinding`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-storebinding-function-storebinding-output-triangle-index-src-mq3-renderer-qvm-scene-materials-ml-952343677) — function
+- [`mq3.renderer.qvm_scene_materials.strippedName`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-strippedname-function-strippedname-name-src-mq3-renderer-qvm-scene-materials-ml-1269757667) — function
+- [`mq3.renderer.qvm_scene_materials.textKey`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-textkey-function-textkey-value-src-mq3-renderer-qvm-scene-materials-ml-419918743) — function
+- [`mq3.renderer.qvm_scene_materials.Texture`](Type-mq3-renderer-qvm-scene-materials-texture-922016754.md) — struct
+- [`mq3.renderer.qvm_scene_materials.typedName`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-typedname-function-typedname-assets-kinds-handle-kinda-kindb-src-mq3-renderer-qvm-scene-materials-ml-964554193) — function
+- [`mq3.renderer.qvm_scene_materials.whiteImage`](File-src-mq3-renderer-qvm-scene-materials-ml-310916497.md#function-function-mq3-renderer-qvm-scene-materials-whiteimage-function-whiteimage-src-mq3-renderer-qvm-scene-materials-ml-1494697098) — function
