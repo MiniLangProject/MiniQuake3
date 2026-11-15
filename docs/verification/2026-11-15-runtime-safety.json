@@ -1,0 +1,430 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "created_utc": "2026-11-15T19:38:55.592271+00:00",
+  "base_commit": "0554726",
+  "scope": "Ingame Controls crash, mixed-size allocator stalls, retained BSP/snapshot memory, and allocation-boundary GC owner bug. Functional/data/runtime/long-run checks passed;200FPS and complete1:1 port acceptance remain open.",
+  "sources": {
+    "src/mq3/server/snapshot_build.ml": "6edd8b8335a9c147b01582bea3cd8131db91c45ed4b47165c4ffabdacd55af29",
+    "src/mq3/engine/local_qvm_match.ml": "3f94eb49ea512f103f8f1bc8edd9d648667db48448c91962f0a893658055768e",
+    "src/mq3/renderer/bsp_render_data.ml": "040158743b3486528ba12f53d78386026ee5a934161920e2fce372ceb94148b6",
+    "src/mq3/renderer/world_surface_selection.ml": "fa8a827c4d6ace19c990660a6093b8bee9339d535a808f723aa69c7d40450d27",
+    "src/mq3/format/md3.ml": "2edc12fe2a4bfa5f4cc63a5dd4511e126968b41455d1f48531d1dde262d049ac",
+    "src/mq3/renderer/surface_md3.ml": "52967c632a91678c147ddc5c8cc2917350e115c6a78d55df23a93bf9d6ee4399",
+    "src/mq3/client/qvm_preview_app.ml": "ba23bff3035e03bf9dc51a9ee2b88857645bcd15898e3772be9936d0222250aa",
+    "scripts/bootstrap_allocator_toolchain.py": "b6ce7db15ac819a315848b6eed6c35dc39e94bcc798e260deff0ba181dcaf09c",
+    "scripts/verify.py": "899b388b4c7805c798b52e1aae3f57fed557643d5e379c834351317af31d2fad"
+  },
+  "original_source_commit": "dbe4ddb10315479fc00086f08e25d968b4b43c49",
+  "build": {
+    "exe": "build/MiniQuake3.exe",
+    "exe_sha256": "6554c7e7931df830168eb79462dccfb7303581a1576a0e80fbaf05fa0ce56e45",
+    "replay_sha256": "183799e006ab0a7e7c69bf6abb785c0985f99992e1bf81927fd9dc2d56bd6102",
+    "compiler_sha256": "147ba1627567408800b3bd5ddb42afe93b5ccc4f6b613c5435ee4b3846c89eaa",
+    "toolchain_profile_sha256": "5c73824a334e009002348ef20d4742b8c47c8855e1345f3ef551d6622111bb3c",
+    "subsystem": "Windows GUI",
+    "data_root": "build/baseq3",
+    "pak0_sha256": "7ce8b3910620cd50a09e4f1100f426e8c6180f68895d589f80e6bd95af54bcae",
+    "native_dlls": {
+      "playable_window.dll": "1d17987686effe8f9dfdc139f43346ec5225b8bad4326dca963789d676e829b2",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088",
+      "playable_ambient.dll": "ab306299dde70d1c33086248362eb4211f04bf334c623926f6a3affe1a8e6c43"
+    }
+  },
+  "runtime": {
+    "base_commit": "738d830fa604de884d7e488fde0991a19c034016",
+    "changed_source": "mlc/codegen/codegen_memory.ml",
+    "source_sha256": "2287c63faecfc914e4e1143df56cb1adf86dfdccf819060f70606676cbcbadae",
+    "patch_sha256": "95c7f1e5e2ad7aed03f2642379185f9b8e7f89fccf3dd52d25eaa436d20645e3",
+    "prefix_slots": 16,
+    "gc_allocation_boundaries": true,
+    "preserved": "Frontend, standard library, tagged-value ABI, object headers and GC thresholds; only allocator search and allocation-owner discovery changed.",
+    "provenance": {
+      "path": "build/gc-boundaries-provenance.json",
+      "sha256": "207079488b23a14004037cd72d766e54114beb54a7b2d96f293c6ba38b85af5d",
+      "scope": "Validated16-slot prefix allocator plus independent real allocation-start bitmap. GC prepass after STW TLAB revocation; nearest-owner normalization with true header/free/bounds checks and normalized gray items. No frontend/std/ABI/headerlayout/GC-policy change.",
+      "report": {
+        "base_commit": "738d830fa604de884d7e488fde0991a19c034016",
+        "changed_files": [
+          "mlc/codegen/codegen_memory.ml"
+        ],
+        "patch": "build/allocator-gc-boundaries.patch",
+        "patch_sha256": "95c7f1e5e2ad7aed03f2642379185f9b8e7f89fccf3dd52d25eaa436d20645e3",
+        "source_sha256": "2287c63faecfc914e4e1143df56cb1adf86dfdccf819060f70606676cbcbadae",
+        "scope": "Validated16-slot prefix allocator plus independent real allocation-start bitmap. GC prepass after STW TLAB revocation; nearest-owner normalization with true header/free/bounds checks and normalized gray items. No frontend/std/ABI/headerlayout/GC-policy change.",
+        "installed": false,
+        "stages": [
+          {
+            "stage": 1,
+            "command": [
+              "artifacts\\toolchain\\build\\mlc_win64.exe",
+              "build/toolchain-gc-boundaries/mlc_win64.ml",
+              "build\\toolchain-gc-boundaries\\build\\mlc_gc_boundaries_stage1.exe",
+              "-I",
+              "build/toolchain-gc-boundaries",
+              "--heap-reserve",
+              "8g",
+              "--heap-commit",
+              "512m",
+              "--heap-shrink",
+              "--heap-shrink-min",
+              "16m",
+              "--gc-limit",
+              "1536m",
+              "--object-pipeline"
+            ],
+            "compiler_sha256": "859ec139d288d94f99c1f598b77032b706880c7ff18fb5d3add1facfd46c9bef",
+            "output_sha256": "2f4cfe3071e51dc2462328f70cc5ea1af3b94c83caddbbb127a0215a54b8d060",
+            "log": "build\\gc-boundaries-stage1-build.log",
+            "log_sha256": "29238885004c8b66c5f76615c9788b9498965d64647b09f4436bfea2d1771619"
+          },
+          {
+            "stage": 2,
+            "command": [
+              "build\\toolchain-gc-boundaries\\build\\mlc_gc_boundaries_stage1.exe",
+              "build/toolchain-gc-boundaries/mlc_win64.ml",
+              "build\\toolchain-gc-boundaries\\build\\mlc_gc_boundaries_stage2.exe",
+              "-I",
+              "build/toolchain-gc-boundaries",
+              "--heap-reserve",
+              "8g",
+              "--heap-commit",
+              "512m",
+              "--heap-shrink",
+              "--heap-shrink-min",
+              "16m",
+              "--gc-limit",
+              "1536m",
+              "--object-pipeline"
+            ],
+            "compiler_sha256": "2f4cfe3071e51dc2462328f70cc5ea1af3b94c83caddbbb127a0215a54b8d060",
+            "output_sha256": "147ba1627567408800b3bd5ddb42afe93b5ccc4f6b613c5435ee4b3846c89eaa",
+            "log": "build\\gc-boundaries-stage2-build.log",
+            "log_sha256": "267699653387fb85da74bc6dffea87106f4a37bbf49f1b0b7fddfdc24f529534"
+          }
+        ],
+        "evidence": {
+          "build/gc-boundaries-model.json": "5d19ba74680c3237c18b3facf4942c96cf7ebf847cc0f1a92cf9d987dd7b0021",
+          "build/reference/gc-allocation-boundary/gc-stage1/result.json": "3f90986a13bb84965013e89ee54cc3cfc19396810a8d8e6ad88988c69494bb46",
+          "build/reference/gc-allocation-boundary/gc-stage2/result.json": "d2fcc7ff6f6b29de2551edde7109c0322ef99f8263335a0a161a79b24a0e6e64",
+          "build/reference/allocator-legacy/gc-boundaries-stage1/result.json": "1801998ce9c4481da0cb0fca75749965d3cbadab19e823da14ab7dd7b29dd644",
+          "build/reference/allocator-legacy/gc-boundaries-stage1/pipeline-parity.json": "3a40568df289141308a1f42f0585eedf7079a2464867674a4b075de819a907d9",
+          "build/reference/allocator-legacy/gc-boundaries-stage2/result.json": "81d8f5a987a24a7633dc23e597f198a7e52a91c947fb26f9e87220968cf925e9",
+          "build/reference/allocator-legacy/gc-boundaries-stage2/pipeline-parity.json": "e15465028547eb860da63f3e24b0dcc457c1e5146469276557d4bc3e27a6a49a",
+          "build/reference/allocator_search/result-gc-boundaries-stage2.json": "5d9a756a41f5fcc875551a5bad7540faabfb4645334e00823329d16ecaace425",
+          "build/reference/allocator_multisize/result-gc-boundaries-stage2-vs-multi16.json": "f195d4f7ddc80733690f1c31086f7c96e4bd1d7451f255b0322300e70a9c6a9d",
+          "build/reference/allocator_multisize/gc-stage1-stage2-parity.json": "c60b23133d0827cf3b8b8b62f2de0e59b6c882cc4fbc840bf64a4acfcc72f85e"
+        },
+        "selected_stage": 2,
+        "selected_sha256": "147ba1627567408800b3bd5ddb42afe93b5ccc4f6b613c5435ee4b3846c89eaa"
+      }
+    }
+  },
+  "regression_before": {
+    "bsp_single_cursor_run": {
+      "completed": false,
+      "binary_sha256": "2c19686b92e52163acf3c9cae57c1b77cb0435d313eaad590ed9999a73dac36e",
+      "mode": "moving",
+      "requested_frames": 30000,
+      "completed_frames": 0,
+      "returncode": 4294967295,
+      "timed_out": false,
+      "elapsed_seconds": 231.4220000000205,
+      "samples": 231,
+      "peak_private_mb": 931.14,
+      "first_warm": {
+        "seconds": 40.08,
+        "rss_mb": 597.43,
+        "private_mb": 702.57,
+        "titles": [
+          "__wglDummyWindowFodder",
+          "NVOGLDC invisible",
+          "MiniQuake3 | 7 FPS | Original QVM q3dm1",
+          "Default IME",
+          "Default IME",
+          "Default IME",
+          "MSCTFIME UI"
+        ]
+      },
+      "final": {
+        "seconds": 230.41,
+        "rss_mb": 870.27,
+        "private_mb": 931.14,
+        "titles": [
+          "__wglDummyWindowFodder",
+          "NVOGLDC invisible",
+          "MiniQuake3 | 3 FPS | Original QVM q3dm1",
+          "Default IME",
+          "Default IME",
+          "Default IME",
+          "MSCTFIME UI"
+        ]
+      },
+      "scope": "Process-private/working memory and smoothed title FPS; inspect raw samples and replay output, not a leak or FPS acceptance assertion.",
+      "latency_acceptance": {
+        "max_work_ms": 1000.0,
+        "measured_work_max_ms": null,
+        "passed": false
+      },
+      "stopped_by_agent": true,
+      "observed_last_frame": 1746,
+      "reason": "Stopped owned PID91352 only after12 live mainthread samples proved fn_alloc first-fit thrash; this is an unaccepted regression, not a complete30000frame run.",
+      "allocator_evidence": "build/reference/replay-bsp-regression-registers.json"
+    },
+    "allocator_live_samples": {
+      "count": 12,
+      "all_first_fit_scan": true,
+      "requests": {
+        "8208": 6,
+        "32784": 2,
+        "53792": 1,
+        "2064": 1,
+        "88": 1,
+        "40": 1
+      },
+      "evidence": "build/reference/replay-bsp-regression-registers.json",
+      "sha256": "d0882db07050ef9a7be14e65c63ec1e86dfc122b1222c04864608d7f0e40e071"
+    },
+    "gc_phantoms": {
+      "struct_samples": 266,
+      "phantom_samples": 243,
+      "max_fields": 31656590,
+      "declared_max_fields": 258,
+      "actual_owner": "bsp_render_data.RenderVertex",
+      "interior_field": "shaderTime",
+      "interior_offset": 64,
+      "actual_owner_bytes": 88,
+      "reason": "An interior field pointer was treated as object start; encodedfloat0.0 became struct-tag5/SID0 and preceding entityTexCoord pointer became a fictitious large block size.",
+      "owner_proof_sha256": "27bbee1631e2b5e07d9748f91ad84f49d4c74d1d8f70823cea52a7c1c52532e8",
+      "samples_sha256": "cd59291668299e51eef02c8557fd4120881180acd203a035ed6604f50dfa05b8"
+    }
+  },
+  "final_moving": {
+    "memory": {
+      "completed": true,
+      "binary_sha256": "183799e006ab0a7e7c69bf6abb785c0985f99992e1bf81927fd9dc2d56bd6102",
+      "mode": "moving",
+      "requested_frames": 30000,
+      "completed_frames": 30000,
+      "returncode": 0,
+      "timed_out": false,
+      "elapsed_seconds": 186.3279999999795,
+      "samples": 186,
+      "peak_private_mb": 626.7,
+      "first_warm": {
+        "seconds": 40.06,
+        "rss_mb": 517.78,
+        "private_mb": 626.0,
+        "titles": [
+          "__wglDummyWindowFodder",
+          "NVOGLDC invisible",
+          "MiniQuake3 | 166 FPS | Original QVM q3dm1",
+          "Default IME",
+          "Default IME",
+          "MSCTFIME UI",
+          "Default IME"
+        ]
+      },
+      "final": {
+        "seconds": 185.31,
+        "rss_mb": 424.71,
+        "private_mb": 480.15,
+        "titles": []
+      },
+      "scope": "Process-private/working memory and smoothed title FPS; inspect raw samples and replay output, not a leak or FPS acceptance assertion.",
+      "latency_acceptance": {
+        "max_work_ms": 1000.0,
+        "measured_work_max_ms": 172.0,
+        "passed": true
+      }
+    },
+    "loop_profile": "QVM loop profile: elapsed=182168ms fps=164.683149620131 workP50=5ms workP95=9ms workP99=11ms workMax=172ms",
+    "movement": "REPLAY movement positions=3056 attacks=15000 ammoDecreases=100",
+    "scope": "Exact productive game-loop shadow with deterministic normal input events; original Retail qagame/cgame/UI, actual movement, firing and ammo consumption; no diagnostic thread suspension or concurrent own builds.",
+    "slow_frames_over_100ms": [
+      {
+        "frame": 2,
+        "work_ms": 172
+      }
+    ],
+    "after_frame_2_over_100ms": [],
+    "log_sha256": "1a44b3d7c841ce841ce6b681da96e36a62a9b6df9e9a7b87571624ead99800c3"
+  },
+  "final_production_5000": {
+    "passed": false,
+    "binary_sha256": "6554c7e7931df830168eb79462dccfb7303581a1576a0e80fbaf05fa0ce56e45",
+    "renderer": "hardware",
+    "map": "q3dm1",
+    "frames": 5000,
+    "wall_seconds": 32.74213570007123,
+    "startup_ms": 2641.0,
+    "frame_ms": 5.8872,
+    "capture_enabled": false,
+    "diagnostic_only": false,
+    "profile_files": {},
+    "native": {
+      "playable_window.dll": "1d17987686effe8f9dfdc139f43346ec5225b8bad4326dca963789d676e829b2",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088",
+      "playable_ambient.dll": "ab306299dde70d1c33086248362eb4211f04bf334c623926f6a3affe1a8e6c43"
+    },
+    "scene": {
+      "views": 3,
+      "models": 5,
+      "triangles": 524
+    },
+    "loop": {
+      "elapsed_ms": 29472.0,
+      "fps": 169.652551574376,
+      "work_p50_ms": 5.0,
+      "work_p95_ms": 8.0,
+      "work_p99_ms": 11.0,
+      "work_max_ms": 163.0
+    },
+    "acceptance": {
+      "min_fps": 200.0,
+      "max_work_p95_ms": 8.0,
+      "passed": false
+    }
+  },
+  "final_controls": {
+    "passed": true,
+    "mode": "controls",
+    "frames": 120,
+    "scope": "Exact productive game loop with test-only original event replay, real Retail original UI/Cgame/qagame, geometry/material preparation, native texture upload and hardware rendering.",
+    "sources": {
+      "src/mq3/client/qvm_preview_app.ml": "ba23bff3035e03bf9dc51a9ee2b88857645bcd15898e3772be9936d0222250aa",
+      "generated_app": "781c76604f8140018079674fe82291acb7dd7171799f398794685474b4e28aab",
+      "test_entry": "abfa4386f2d7fcac7af27a7f96bedb938b8ae04addb1b92ca3e14a6807722ea5",
+      "executable": "183799e006ab0a7e7c69bf6abb785c0985f99992e1bf81927fd9dc2d56bd6102",
+      "playable_window.dll": "1d17987686effe8f9dfdc139f43346ec5225b8bad4326dca963789d676e829b2",
+      "compile_inputs": "ef2ed9ccc5a620ace4e03016d35970382310e4aa706480ffdf5d32bed8b27cbb",
+      "pak0.pk3": "7ce8b3910620cd50a09e4f1100f426e8c6180f68895d589f80e6bd95af54bcae"
+    },
+    "returncode": 0,
+    "log_sha256": "512253dbfb0018d0f138428902608de3ec04835a1c8cdc864a421aaca16f3994",
+    "latency_limit_ms": null,
+    "measured_work_max_ms": 163.0,
+    "latency_passed": true
+  },
+  "menu_startup_seconds": 0.42,
+  "gc_postfix_diagnostic": {
+    "evidence": {
+      "path": "build/reference/replay-gc-objects-postfix/result.json",
+      "sha256": "334d96efe22d5dfdce006d56f223b2644b077d3ea0f62007af4746c2ab509376",
+      "scope": "Full register contexts and scan caller attribution from actual finalPE; only owned replay mainthread suspended with finally-resume; diagnostic timing is not FPS acceptance.",
+      "report": {
+        "diagnostic_only": true,
+        "binary_sha256": "183799e006ab0a7e7c69bf6abb785c0985f99992e1bf81927fd9dc2d56bd6102",
+        "exit_code": 0,
+        "gc_samples": 326,
+        "struct_scan_samples": 18,
+        "array_scan_samples": 31,
+        "max_struct_field_count": 24,
+        "max_array_count": 4096,
+        "max_source_fields": 258,
+        "suspicious_samples": 0,
+        "confirmed_owner": {
+          "type": "mq3.server.world.Entity",
+          "block_bytes": 208,
+          "fields": 24,
+          "physical_allocation_start_confirmed": true
+        }
+      }
+    },
+    "owner_proof_sha256": "91c9eacf896cc38d5e419cb40ac02409091e315573f26cf382c97c32ffb74da0",
+    "summary": "5000frames,326GC contexts,18struct/31array scans;max observedstruct fields24,0phantoms; physicalheapwalk proves real208B server.world.Entity owner with24fields. Diagnostic suspension/heapcopy means this is not FPS acceptance."
+  },
+  "evidence": [
+    {
+      "path": "build/reference/md3-packed/result.json",
+      "sha256": "b9d0ce8d0f6e9d28815f3b337ea35de2022236c3fd4e561aad3f16707d72a175",
+      "passed": true,
+      "compiler_sha256": "147ba1627567408800b3bd5ddb42afe93b5ccc4f6b613c5435ee4b3846c89eaa",
+      "scope": "Frozen independent parser/reference from98a4d50 versus unchanged public load and packed-only load: all Retail MD3 metadata, bounds, tags, indexes, shaders, UVs, signed eager words and every frame byte; native interpolation and transient reference comparisons. Malformed fixtures preserve rejection diagnostics; inputmutation and temporaryframe mutation cannot alter stored assets; reference access never populates the packed-only frames array.",
+      "retail_files": 354,
+      "malformed_cases": 40,
+      "output": "PASS: packed MD3 files=365 malformed=40 surfaces=652 frames=50371 vertices=6162725 nativeChecks=3684 referenceChecks=1228 eagerVertexFrames=0 inputIndependent=true temporaryReferenceFrames=true publicLoadPreserved=true"
+    },
+    {
+      "path": "build/reference/bsp-retained/result.json",
+      "sha256": "44c7e3f4be46d004fb3bea686b329eeb755daad3f145088ce8a24f0596297d6f",
+      "passed": true,
+      "compiler_sha256": "147ba1627567408800b3bd5ddb42afe93b5ccc4f6b613c5435ee4b3846c89eaa",
+      "scope": "Every ordered face stream of all Retail BSPs compared to frozen98a4d50 extraction at zero/one/full budgets, including every vertex field, triangle metadata, fog, sourceIndex and patch normals. Explicit multi-face duplicate/order cases, malformed tails beyond output limits and mutable public-corner isolation remain unchanged. Per-face sharing identity and productive q3dm1 cache object reduction are tested by restored test-only identity markers.",
+      "output": "Q3DM1 references=24225 uniqueObjects=12061 removedVertices=12164 removedAttributeArrays=85148\nPASS: retained BSP checks=26 maps=31 faces=129047 patches=6091 triangles=530276 comparisons=387141 planarSoupCorners=1177602 planarSoupObjects=630435 malformedBudgetCases=16 publicAliasesPreserved=true privateFaceSharing=true"
+    },
+    {
+      "path": "build/reference/bsp-retained-integration/result.json",
+      "sha256": "869d9409182434d74e5769d7ff54d2a8891af4ddbc12666b994abcb9184b5562",
+      "passed": true,
+      "compiler_sha256": "280135a508ed0c113e62be6464e6812826afdfc239ae20d9d369b15666561113",
+      "source_guard": true,
+      "scope": "Headless selection/retained-world/portal regression gates. Isolated retained native harness opens no window and does not replace shipping libraries."
+    },
+    {
+      "path": "build/reference/snapshot-storage/result.json",
+      "sha256": "0445c285b68db127f061f306e6de52c961de95f1efbbac724af005b72d7bf7a8",
+      "passed": true,
+      "compiler_sha256": "147ba1627567408800b3bd5ddb42afe93b5ccc4f6b613c5435ee4b3846c89eaa",
+      "scope": "Independent frozen snapshot output checks every serialized playerstate/entitystate word directly plus two ordered hashes, area masks, counters/number repair, callback order, recursive portals, zero/missing/zombie,1/3/33/129/1024/1025 populations, alternate client, wrapped rings, prior-frame detachment and1024-cap side effects. Public original C differential and contracts are a separate gate. No FPS claim."
+    },
+    {
+      "path": "build/reference/snapshot_build/result.json",
+      "sha256": "b8c614338e9ac543a1150d409ec82790b911b869474f4be3c9c3ba20235e9710",
+      "passed": true,
+      "scope": "Unchanged SV_QsortEntityNumbers, SV_AddEntToSnapshot, SV_AddEntitiesVisibleFromPoint and SV_BuildClientSnapshot behavior for linked/PVS/area visibility, client filters, broadcast, portal recursion, deduplication, maximum-size sorted entity numbers, viewpoint, area inversion and circular ring copies.",
+      "contracts": 27
+    },
+    {
+      "path": "build/reference/allocator-legacy/gc-boundaries-stage1/result.json",
+      "sha256": "1801998ce9c4481da0cb0fca75749965d3cbadab19e823da14ab7dd7b29dd644",
+      "passed": true,
+      "compiler_sha256": "2f4cfe3071e51dc2462328f70cc5ea1af3b94c83caddbbb127a0215a54b8d060",
+      "scope": "Unchanged old runtime assertions for periodic GC, roots, heap growth, TLAB refill/retirement and 24-thread safepoint races; not whole-game performance or full-game parity."
+    },
+    {
+      "path": "build/reference/allocator-legacy/gc-boundaries-stage1/pipeline-parity.json",
+      "sha256": "3a40568df289141308a1f42f0585eedf7079a2464867674a4b075de819a907d9",
+      "passed": true,
+      "compiler_sha256": "2f4cfe3071e51dc2462328f70cc5ea1af3b94c83caddbbb127a0215a54b8d060"
+    },
+    {
+      "path": "build/reference/allocator-legacy/gc-boundaries-stage2/result.json",
+      "sha256": "81d8f5a987a24a7633dc23e597f198a7e52a91c947fb26f9e87220968cf925e9",
+      "passed": true,
+      "compiler_sha256": "147ba1627567408800b3bd5ddb42afe93b5ccc4f6b613c5435ee4b3846c89eaa",
+      "scope": "Unchanged old runtime assertions for periodic GC, roots, heap growth, TLAB refill/retirement and 24-thread safepoint races; not whole-game performance or full-game parity."
+    },
+    {
+      "path": "build/reference/allocator-legacy/gc-boundaries-stage2/pipeline-parity.json",
+      "sha256": "e15465028547eb860da63f3e24b0dcc457c1e5146469276557d4bc3e27a6a49a",
+      "passed": true,
+      "compiler_sha256": "147ba1627567408800b3bd5ddb42afe93b5ccc4f6b613c5435ee4b3846c89eaa"
+    },
+    {
+      "path": "build/reference/gc-allocation-boundary/gc-stage2/result.json",
+      "sha256": "d2fcc7ff6f6b29de2551edde7109c0322ef99f8263335a0a161a79b24a0e6e64",
+      "passed": true
+    },
+    {
+      "path": "build/reference/gc-boundaries-independent-review.json",
+      "sha256": "3467c796e4d92c71ae33b2f2ccd995e5efb850767c49222d083afbab7aa5218f",
+      "scope": "Independent read-only review of allocation-start bitmap and interior-to-owner normalization atop frozen738+16slotallocator; no installation/GPU test performed by reviewer"
+    },
+    {
+      "path": "build/reference/gc-boundary-integration/result.json",
+      "sha256": "7b11baccea5a5ef179d8bb9a2ef6fe551a7f88c3c523949dc16fb54a84a05edd",
+      "passed": true,
+      "compiler_sha256": "147ba1627567408800b3bd5ddb42afe93b5ccc4f6b613c5435ee4b3846c89eaa",
+      "source_guard": true,
+      "scope": "Installed allocation-boundary GC, associative16 allocator, private snapshot builder and packed/shared geometry; original Retail qagame/cgame/UI integration. No game window or FPS test."
+    }
+  ],
+  "remaining": [
+    "200FPS goal failed in normal5000frame benchmark:169.65FPS, though workP958ms met.",
+    "One172ms presentation-phase frame at frame2; no later replay frames above100ms observed.",
+    "Full1:1 and extended network/bot/audio/UI/renderer acceptance remain open; these regressions do not claim completeport parity."
+  ]
+}

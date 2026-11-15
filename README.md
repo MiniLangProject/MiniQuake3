@@ -42,34 +42,26 @@ verbleibende Grenzen stehen im aktuellen Abschnitt des
 [Paritätsaudits](docs/PARITY_AUDIT.md). Ältere Build-Hashes und Messungen in
 den nachfolgenden historischen Abschnitten bezeichnen frühere Zwischenstände.
 
-Der aktuelle Fehlerkorrekturblock behebt den erneut gemeldeten Controls-
-Absturz im laufenden Match: Das originale UI-Modell verwendet einen teilweise
-außerhalb liegenden Viewport, dessen Projektion jetzt erhalten und dessen
-Rasterbereich korrekt abgeschnitten wird. Ein Test mit tatsächlichem Retail-
-Spiel, Eingabefolge und Hardware-Renderer prüft Escape → Setup → Controls.
-Kollisionsabfragen verwenden kleine geometrisch wachsende Standard-Listen
-und Byte-Markierungen; Materialwrapper werden wiederverwendet und die
-begrenzten MD3-Caches besitzen Hashindizes. Ein isolierter Allocator-Backport
-im eingefrorenen MiniLang-Compiler ergänzt diese Änderungen. Reproduktion:
+Der Controls-Absturz im laufenden Match und die reproduzierten langen
+Hänger sind korrigiert. Neben kleineren Kollisions-/Snapshot-Puffern und
+gepackten MD3-Daten behebt der eingefrorene MiniLang-Runtime-Patch zwei
+Fehler: verlorene Allocator-Suchpositionen bei wechselnden Größen und
+GC-Phantomobjekte aus Innenzeigern. Öffentliche APIs, Objektlayout und
+Standardbibliothek bleiben erhalten. Reproduktion:
 `python scripts/bootstrap_allocator_toolchain.py --stage2 --install`;
 Basis, Patch und Compilerhash stehen in `docs/reference/toolchain.json`.
 
-Der produktive MD3-Loader speichert Animationsframes jetzt direkt als
-validierte Bytepuffer, entsprechend dem originalen Acht-Byte-Vertexformat.
-Der vollständige unabhängige Vergleich aller 354 Retail-MD3-Dateien ist grün;
-der echte Spiel-Heap hält die vorherigen knapp 300.000 einzelnen Frame-
-Vertexobjekte nicht mehr. Öffentliche Referenz-APIs bleiben erhalten.
-
-Der bewegte 30.000-Frame-Lauf beendet alle Frames mit 115,19 FPS. Die
-Abnahme besteht trotzdem **nicht**: Einzelbilder erreichen noch 1.157 ms.
-Der separate Standlauf erreicht 150,28 FPS über 5.000 Frames bei 3,236 s
-Matchstart und P95 10 ms. Die 200-FPS- und vollständige 1:1-Abnahme bleiben
-offen; ein weiterer BSP-Speicherblock ist in Arbeit. Die
-[aktuellen Modell-/Buildnachweise](docs/verification/2026-11-15-packed-md3.json)
-und der [Paritätsaudit](docs/PARITY_AUDIT.md) bewahren auch die fehlgeschlagenen
-Messungen. Zum Testen `build/MiniQuake3.exe` direkt starten; `baseq3/pak*.pk3`
-und `qvms` liegen daneben. Der EXE-Start öffnet nur das Spielfenster. Der
-geprüfte normale Hauptmenüstart benötigt 0,42 Sekunden.
+Der vollständige bewegte 30.000-Frame-Retail-Lauf erreicht **164,68 FPS**,
+P95 9 ms und stabilen privaten Speicher von etwa **626 MB**. Nur das zweite
+Bild benötigt 172 ms; danach überschreitet keines 100 ms. Der frühere
+Einbruch auf 2 FPS bleibt aus. Die normale EXE erreicht 169,65 FPS über
+5.000 Frames bei P95 8 ms und 2,641 s Matchstart. **Die 200-FPS- und
+vollständige 1:1-Abnahme bleiben offen.** Der Hauptmenüstart benötigt 0,42 s.
+Zum Testen `build/MiniQuake3.exe` direkt starten; `baseq3/pak*.pk3` und `qvms`
+liegen daneben. Der Start öffnet nur das Spielfenster. Der
+[finale Fehler-/Buildnachweis](docs/verification/2026-11-15-runtime-safety.json)
+und der [Paritätsaudit](docs/PARITY_AUDIT.md) enthalten die erfolgreichen
+Abnahmen und bewahren ausdrücklich die fehlgeschlagenen Zwischenstände.
 
 Der Standardstart von `build/MiniQuake3.exe` erwartet `baseq3` und `qvms`
 direkt neben der EXE, öffnet zuerst das originale Quake-III-Hauptmenü und lädt

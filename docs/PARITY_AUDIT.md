@@ -4,6 +4,70 @@ Stand: 2026-11-15. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Abschließender Fix für Controls und bewegungsabhängige Hänger
+
+Der Controls-Absturz ist im vollständigen Retail-/Hardware-Pfad korrigiert:
+Das originale, teilweise außerhalb des Fensters liegende Spieler-Viewport
+behält seine Projektion; nur Raster-/Scissorgrenzen werden abgeschnitten.
+Escape → Setup → Controls besteht mit tatsächlichen 3D-Modelldraws. Auch die
+originalen Settings-Tests mit Sensitivity/Crosshair-Persistenz und laufendem
+Cgame sind grün.
+
+Für die Hänger waren zwei Laufzeitfehler maßgeblich. Die ursprüngliche
+Freilistensuche verlor bei wechselnden Allokationsgrößen ihren Suchfortschritt;
+zwölf Live-Samples der zwischenzeitlichen BSP-Regression lagen ausschließlich
+im Allocator. Der geprüfte 16-Slot-Suchcache erhält passende Prefixe getrennt.
+Der GC interpretierte außerdem Innenzeiger als Objektanfänge: Im gemessenen
+Fall wurde `RenderVertex.shaderTime` als Struct-Header und das vorherige
+Pointerfeld als Blockgröße verstanden. 243 von 266 Struct-Samples betrafen
+solche Phantome mit bis zu 31.656.590 Feldern. Eine separate Startbitmap aus
+einem geprüften echten Heap-Headerlauf ordnet erkannte Innenreferenzen jetzt
+ihrem tatsächlichen Owner zu. Objektlayout, Tagged-Value-ABI, Standardbibliothek
+und GC-Schwellen bleiben unverändert.
+
+Beide Bootstrap-Stufen bestehen 144 neue Owner-/Child-Liveness-Verträge,
+zehn alte GC-/Thread-/TLAB-Verträge und zwei byteidentische MLO-/Monolith-
+Vergleiche. Die alte Version reproduziert fünf gezielte Liveness-Fehler.
+Vier Allocator-Search- und sieben Größenmischungsproben prüfen weiterhin
+Payloads und Wiederverwendung. Die abschließende Spielprobe enthält keine
+Phantomobjekte: größter beobachteter Struct-Scan 24 Felder; ein Heapwalk
+bestätigt den echten Owneranfang. Diese suspendierende Diagnose wird nicht
+als FPS-Abnahme verwendet.
+
+Zusätzlich teilt der private Weltcache identische BSP-Vertices innerhalb
+einer Fläche wie das Original. q3dm1 hält dadurch 12.164 Vertex-Structs und
+85.148 Attributarrays weniger. Alle 31 Retail-Karten mit 530.276 Dreiecken
+stimmen gegen den eingefrorenen Extractor überein, einschließlich aller
+Vertexfelder, Budgets, Fehlerfälle und unveränderter öffentlicher Aliase.
+Interne Snapshots sammeln Entitynummern in einer Standard-Liste mit
+Anfangskapazität 32; frische lokale Ringe folgen der tatsächlichen Entityzahl.
+Öffentliche APIs, 1.024er-Grenze, Markierungsreihenfolge, Portal-Callbacks und
+persistente Netzwerk-History bleiben erhalten. 34 eingefrorene Fälle mit
+19.739 expliziten Ausgabelinien und die C-/Public-Verträge sind grün. Der
+354-Dateien-MD3-Abgleich ist auch mit dem final installierten Compiler grün.
+
+| Abschließende echte Retail-Messung | Ergebnis |
+| --- | --- |
+| Bewegung/Schießen, 30.000 Frames | 164,68 FPS; P95 9 ms; P99 11 ms |
+| Größtes Bild im bewegten Lauf | 172 ms im zweiten Bild; danach keines über 100 ms |
+| Privater Prozessspeicher | etwa 626 MB, über den Lauf stabil |
+| Haupt-EXE, 5.000 Standframes, vollständige Szene | 169,65 FPS; P95 8 ms; maximal 163 ms |
+| Normales originales Hauptmenü | 0,42 s |
+| Direkter Matchstart | 2,641 s |
+
+Die 1.000-ms-Latenzschranke besteht; der fortschreitende Einbruch auf 2 FPS
+tritt im vollständigen bewegten Lauf nicht mehr auf. **Die 200-FPS-Abnahme
+bleibt fehlgeschlagen**, und die dokumentierte Gesamtparität ist weiterhin
+offen. Messgrenzen, fehlgeschlagene Zwischenstände, Quell-/Binärhashes und
+Originaldaten stehen im [finalen Nachweis](verification/2026-11-15-runtime-safety.json).
+Die Runtime basiert weiterhin auf `738d830`; der installierte Compiler hat
+SHA-256 `147ba1627567408800b3bd5ddb42afe93b5ccc4f6b613c5435ee4b3846c89eaa`.
+`scripts/bootstrap_allocator_toolchain.py --stage2 --install` verwendet den
+vollständigen geprüften Runtime-Patch. Die historischen Patchdateien sind
+alternative Diffs gegen dieselbe Basis, keine nacheinander anzuwendende Serie.
+
+Die folgenden Abschnitte bewahren die vorherigen Zwischenstände und Fehler.
+
 ## Gepackte MD3-Animationsdaten statt dauerhaftem Vertex-Objektgraph
 
 Die Heap-Typzählung nach einer beobachteten GC findet 295.317 einzelne

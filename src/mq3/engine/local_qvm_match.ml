@@ -1000,7 +1000,8 @@ function snapshotCore(value,clientNum)
     mappedList.add(snapshotBuild.snapshotEntity(state,spatial.linked,spatial.svFlags,spatial.singleClient,spatial.clusters,spatial.lastCluster,spatial.areanum,spatial.areanum2))
   end for
   mapped=mappedList.toArray()
-  buildWorld=snapshotBuild.world(true,mapped,1024);host=snapshotBuild.services(snapshotPointLeaf,snapshotLeafArea,snapshotLeafCluster,snapshotWriteAreaBits,snapshotClusterPvs,snapshotAreasConnected,context)
+  ringCapacity=context.entityCount;if ringCapacity>snapshotBuild.MAX_SNAPSHOT_ENTITIES then ringCapacity=snapshotBuild.MAX_SNAPSHOT_ENTITIES end if;if ringCapacity<1 then ringCapacity=1 end if
+  buildWorld=snapshotBuild.world(true,mapped,ringCapacity);host=snapshotBuild.services(snapshotPointLeaf,snapshotLeafArea,snapshotLeafCluster,snapshotWriteAreaBits,snapshotClusterPvs,snapshotAreasConnected,context)
   frame=snapshotBuild.buildClientSnapshot(buildWorld,host,ps,context.linked[clientNum],false);if frame is error then return frame end if
   entities=array(frame.numEntities,void)
   if frame.numEntities>0 then for index=0 to frame.numEntities-1 entities[index]=buildWorld.ring[(frame.firstEntity+index)%buildWorld.ringCapacity] end for end if
@@ -1072,7 +1073,8 @@ function publishBotSnapshots(value)
     state=entitystate.load(machine.data,context.gameEntities+index*context.entityStride);if state is error then return state end if;state.number=index
     spatial=context.spatialScene.entities[index];mappedList.add(snapshotBuild.snapshotEntity(state,spatial.linked,spatial.svFlags,spatial.singleClient,spatial.clusters,spatial.lastCluster,spatial.areanum,spatial.areanum2))
   end for
-  buildWorld=snapshotBuild.world(true,mappedList.toArray(),1024);host=snapshotBuild.services(snapshotPointLeaf,snapshotLeafArea,snapshotLeafCluster,snapshotWriteAreaBits,snapshotClusterPvs,snapshotAreasConnected,context);published=0
+  ringCapacity=context.entityCount;if ringCapacity>snapshotBuild.MAX_SNAPSHOT_ENTITIES then ringCapacity=snapshotBuild.MAX_SNAPSHOT_ENTITIES end if;if ringCapacity<1 then ringCapacity=1 end if
+  buildWorld=snapshotBuild.world(true,mappedList.toArray(),ringCapacity);host=snapshotBuild.services(snapshotPointLeaf,snapshotLeafArea,snapshotLeafCluster,snapshotWriteAreaBits,snapshotClusterPvs,snapshotAreasConnected,context);published=0
   for bot=0 to len(context.clientStates)-1
     if context.clientStates[bot]==2 then
       ps=playerstate.load(machine.data,context.gameClients+bot*context.clientStride);if ps is error then return ps end if

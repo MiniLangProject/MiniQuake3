@@ -134,7 +134,7 @@ function buildCache(map,patchError)
       // Extract each face into its final bucket.  The former whole-map
       // extraction repeatedly appended to one ever-growing immutable array,
       // turning startup into quadratic copying on retail maps.
-      faceData=render.extractWithPatchError(map,[faceIndex],amount,patchError);if faceData is error then return faceData end if
+      faceData=render.extractRetainedWithPatchError(map,[faceIndex],amount,patchError);if faceData is error then return faceData end if
       byFace[faceIndex]=faceData.triangles
     end if
   end for

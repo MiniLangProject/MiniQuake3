@@ -1,4 +1,4 @@
-"""Rebuild the frozen compiler with only the reviewed allocator-search backport.
+"""Rebuild the frozen compiler with reviewed allocator and GC-boundary fixes.
 
 The sibling checkout is read-only. Build in an isolated worktree and retain
 the original compiler/profile before an explicitly requested --install.
@@ -16,9 +16,11 @@ from toolchain import ROOT, run
 BASE = "738d830fa604de884d7e488fde0991a19c034016"
 UPSTREAM = "a40d726ff264bf993a2c571c105943e737fc2ed9"
 BOOTSTRAP = "60db15723f1d33afccbaf81657e91569811c38cf54a320117857c29027700e0b"
-PATCH_SHA = "77ccba9e97ce553854c5ced76eb0d67d9b4351741acaeb04db40ebd785901d10"
+PATCH_SHA = "95c7f1e5e2ad7aed03f2642379185f9b8e7f89fccf3dd52d25eaa436d20645e3"
 SOURCE = "mlc/codegen/codegen_memory.ml"
-SOURCE_SHA = "3bdebb0eedfbfeac396e8097c164f4118c245498a2f0368e1810e83591aa5b19"
+SOURCE_SHA = "2287c63faecfc914e4e1143df56cb1adf86dfdccf819060f70606676cbcbadae"
+PREVIOUS = "280135a508ed0c113e62be6464e6812826afdfc239ae20d9d369b15666561113"
+MULTISIZE = "859ec139d288d94f99c1f598b77032b706880c7ff18fb5d3add1facfd46c9bef"
 
 
 def sha(path: Path) -> str:
@@ -32,13 +34,13 @@ def git(tree: Path, *args: str) -> bytes:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source-repo", type=Path, default=ROOT.parent / "MiniLangCompilerML")
-    parser.add_argument("--worktree", type=Path, default=ROOT / "build/toolchain-allocator")
+    parser.add_argument("--worktree", type=Path, default=ROOT / "build/toolchain-gc-boundaries")
     parser.add_argument("--candidate", type=Path, help="Reuse an independently validated candidate; requires its exact SHA-256")
     parser.add_argument("--candidate-sha256")
     parser.add_argument("--stage2", action="store_true", help="Self-compile once so the compiler itself also uses the fixed allocator")
     parser.add_argument("--install", action="store_true")
     args = parser.parse_args()
-    patch = ROOT / "patches/minilang-738d830-allocator-search.patch"
+    patch = ROOT / "patches/minilang-738d830-gc-boundaries.patch"
     if sha(patch) != PATCH_SHA:
         raise RuntimeError("Allocator patch checksum mismatch")
     tree = args.worktree.resolve()
@@ -60,10 +62,11 @@ def main() -> None:
         raise RuntimeError("Patched source differs from the reviewed backport")
     frozen = ROOT / "artifacts/toolchain"
     binary = frozen / "build/mlc_win64.exe"
-    backup = ROOT / "build/toolchain-before-allocator"
+    original_backup = ROOT / "build/toolchain-before-allocator"
+    backup = ROOT / "build/toolchain-before-gc-boundaries"
     bootstrap = binary
     if not bootstrap.is_file() or sha(bootstrap) != BOOTSTRAP:
-        bootstrap = backup / "mlc_win64.exe"
+        bootstrap = original_backup / "mlc_win64.exe"
     if not bootstrap.is_file() or sha(bootstrap) != BOOTSTRAP:
         raise RuntimeError("The original frozen bootstrap compiler is required")
     profile_path = ROOT / "docs/reference/toolchain.json"
@@ -99,20 +102,30 @@ def main() -> None:
     if run([smoke_exe], ROOT).strip() != "PASS: allocator compiler smoke":
         raise RuntimeError("Candidate compiler smoke failed")
     proof = {"base_commit": BASE, "upstream_allocator_commit": UPSTREAM,
-             "scope": "Allocator search only; unchanged frontend, standard library, value ABI and GC policy",
+             "scope": "Managed runtime only:16 fully associative allocation hints plus true allocation-start/owner normalization in GC; unchanged frontend, standard library, value ABI, object headers and GC thresholds",
+             "prefix_slots": 16, "gc_allocation_boundaries": True, "compatible_previous_compilers": [BOOTSTRAP, PREVIOUS, MULTISIZE],
              "patch": str(patch.relative_to(ROOT)), "patch_sha256": PATCH_SHA,
              "patched_source_sha256": SOURCE_SHA, "bootstrap_sha256": BOOTSTRAP,
-             "compiler_sha256": sha(output), "commands": commands, "stage2": args.stage2,
+             "compiler_sha256": sha(output), "reproduction_commands": commands,
+             "commands_executed": [] if args.candidate else commands, "stage2": args.stage2,
              "reused_validated_candidate": bool(args.candidate)}
     (tree / "build/bootstrap-result.json").write_text(json.dumps(proof, indent=2) + "\n")
     if args.install:
         backup.mkdir(parents=True, exist_ok=True)
         if not (backup / "mlc_win64.exe").exists():
-            shutil.copy2(bootstrap, backup / "mlc_win64.exe")
+            if sha(binary) not in (BOOTSTRAP, PREVIOUS, MULTISIZE):
+                raise RuntimeError("Expected a supported frozen runtime compiler before first install")
+            shutil.copy2(binary, backup / "mlc_win64.exe")
             shutil.copy2(profile_path, backup / "toolchain.json")
             shutil.copy2(frozen / "compiler-working-tree.patch", backup / "compiler-working-tree.patch")
-        if sha(backup / "mlc_win64.exe") != BOOTSTRAP:
-            raise RuntimeError("Original compiler backup checksum mismatch")
+        previous_sha = sha(backup / "mlc_win64.exe")
+        if previous_sha not in (BOOTSTRAP, PREVIOUS, MULTISIZE):
+            raise RuntimeError("Previous compiler backup checksum mismatch")
+        backup_profile = json.loads((backup / "toolchain.json").read_text(encoding="utf-8"))
+        recorded_previous = next(row["sha256"] for row in backup_profile["inputs"] if row["path"] == "build/mlc_win64.exe")
+        if recorded_previous != previous_sha:
+            raise RuntimeError("Previous compiler backup does not match its retained profile")
+        proof["previous_compiler_sha256"] = previous_sha
         shutil.copy2(output, binary)
         shutil.copy2(patch, frozen / "compiler-working-tree.patch")
         profile["working_tree_patch_sha256"] = PATCH_SHA
@@ -121,9 +134,9 @@ def main() -> None:
         for record in profile.get("compiler_sources", []):
             if record["path"] == SOURCE: record["sha256"] = SOURCE_SHA
         profile["allocator_backport"] = proof
-        profile["note"] = "Frozen738d830 compiler with allocator-search backport; bootstrap/provenance recorded. Frontend/stdlib/ABI unchanged. Source hashes alone do not prove binary provenance."
+        profile["note"] = "Frozen738d830 compiler with allocator and allocation-boundary GC fixes; bootstrap/provenance recorded. Frontend/stdlib/value ABI/object headers unchanged. Source hashes alone do not prove binary provenance."
         profile_path.write_text(json.dumps(profile, indent=2) + "\n", encoding="utf-8")
-        print("Installed allocator-only compiler; original inputs retained at " + str(backup))
+        print("Installed reviewed managed-runtime compiler; previous inputs retained at " + str(backup))
     else:
         print("Built/checked candidate; frozen toolchain unchanged: " + str(output))
 

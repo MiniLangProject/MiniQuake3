@@ -1,0 +1,580 @@
+diff --git a/mlc/codegen/codegen_memory.ml b/mlc/codegen/codegen_memory.ml
+index 7e88428..0420420 100644
+--- a/mlc/codegen/codegen_memory.ml
++++ b/mlc/codegen/codegen_memory.ml
+@@ -206,12 +206,129 @@ end function
+ 
+ /// Emit ensure gc data in the managed-memory runtime.
+ /// @param state Value supplied for `state`.
++
++// Experimental bounded exact-size prefix hints. Not part of the installed
++// compiler: every slot proves all nodes through Prev are smaller than Size.
++function _emit_multi_alloc_cache_clear(state)
++  for each reg in ["rax", "rcx", "rdi"] state.asm=a.push_reg(state.asm,reg) end for
++  state.asm=a.lea_r64_rip(state.asm,"rdi","gc_free_search_cache")
++  state.asm=a.mov_rcx_imm32(state.asm,256)
++  state.asm=a.xor_r32_r32(state.asm,"eax","eax")
++  state.asm=a.rep_stosb(state.asm)
++  state.asm=a.mov_rip_qword_rax(state.asm,"gc_free_search_count")
++  state.asm=a.mov_rip_qword_rax(state.asm,"gc_free_search_victim")
++  for each reg in ["rdi", "rcx", "rax"] state.asm=a.pop_reg(state.asm,reg) end for
++  return state
++end function
++
++function _emit_multi_alloc_cache_helpers(state)
++  // Lookup returns selected slot R11 and a matching predecessor RAX/zero.
++  // RCX(request) and R8(current head) are untouched. Empty slots precede RR.
++  state.asm=a.mark(state.asm,"alloc_multi_lookup_internal")
++  state.asm=a.lea_r64_rip(state.asm,"r11","gc_free_search_cache")
++  state.asm=a.xor_r32_r32(state.asm,"r9d","r9d")
++  state.asm=a.mov_r64_imm64(state.asm,"r10",16)
++  state.asm=a.mark(state.asm,"alloc_multi_lookup_loop")
++  state.asm=a.mov_r64_membase_disp(state.asm,"rax","r11",0)
++  state.asm=a.cmp_r64_r64(state.asm,"rax","rcx")
++  state.asm=a.jcc(state.asm,"e","alloc_multi_lookup_hit")
++  state.asm=a.test_r64_r64(state.asm,"rax","rax")
++  state.asm=a.jcc(state.asm,"ne","alloc_multi_lookup_next")
++  state.asm=a.test_r64_r64(state.asm,"r9","r9")
++  state.asm=a.jcc(state.asm,"ne","alloc_multi_lookup_next")
++  state.asm=a.mov_r64_r64(state.asm,"r9","r11")
++  state.asm=a.mark(state.asm,"alloc_multi_lookup_next")
++  state.asm=a.add_r64_imm(state.asm,"r11",16)
++  state.asm=a.dec_r64(state.asm,"r10")
++  state.asm=a.jcc(state.asm,"ne","alloc_multi_lookup_loop")
++  state.asm=a.test_r64_r64(state.asm,"r9","r9")
++  state.asm=a.jcc(state.asm,"ne","alloc_multi_lookup_empty")
++  state.asm=a.mov_rax_rip_qword(state.asm,"gc_free_search_victim")
++  state.asm=a.mov_r64_r64(state.asm,"r10","rax")
++  state.asm=a.inc_r64(state.asm,"rax")
++  state.asm=a.mov_rip_qword_rax(state.asm,"gc_free_search_victim")
++  state.asm=a.and_r64_imm(state.asm,"r10",15)
++  state.asm=a.shl_r64_imm8(state.asm,"r10",4)
++  state.asm=a.lea_r64_rip(state.asm,"r11","gc_free_search_cache")
++  state.asm=a.add_r64_r64(state.asm,"r11","r10")
++  state.asm=a.xor_r32_r32(state.asm,"eax","eax")
++  state.asm=a.ret(state.asm)
++  state.asm=a.mark(state.asm,"alloc_multi_lookup_empty")
++  state.asm=a.mov_r64_r64(state.asm,"r11","r9")
++  state.asm=a.xor_r32_r32(state.asm,"eax","eax")
++  state.asm=a.ret(state.asm)
++  state.asm=a.mark(state.asm,"alloc_multi_lookup_hit")
++  state.asm=a.mov_r64_membase_disp(state.asm,"rax","r11",8)
++  state.asm=a.ret(state.asm)
++
++  // R8 is being unlinked; R10 is its actual previous node or zero. Repair
++  // only matching cached predecessors; other proven prefixes only shrink.
++  state.asm=a.mark(state.asm,"alloc_multi_unlink_internal")
++  for each reg in ["rax", "rcx", "rdx", "r11"] state.asm=a.push_reg(state.asm,reg) end for
++  state.asm=a.lea_r64_rip(state.asm,"r11","gc_free_search_cache")
++  state.asm=a.mov_rcx_imm32(state.asm,16)
++  state.asm=a.mark(state.asm,"alloc_multi_unlink_loop")
++  state.asm=a.mov_r64_membase_disp(state.asm,"rax","r11",0)
++  state.asm=a.test_r64_r64(state.asm,"rax","rax")
++  state.asm=a.jcc(state.asm,"e","alloc_multi_unlink_next")
++  state.asm=a.mov_r64_membase_disp(state.asm,"rdx","r11",8)
++  state.asm=a.cmp_r64_r64(state.asm,"rdx","r8")
++  state.asm=a.jcc(state.asm,"ne","alloc_multi_unlink_next")
++  state.asm=a.test_r64_r64(state.asm,"r10","r10")
++  state.asm=a.jcc(state.asm,"e","alloc_multi_unlink_invalidate")
++  state.asm=a.mov_membase_disp_r64(state.asm,"r11",8,"r10")
++  state.asm=a.jmp(state.asm,"alloc_multi_unlink_next")
++  state.asm=a.mark(state.asm,"alloc_multi_unlink_invalidate")
++  state.asm=a.mov_membase_disp_imm32(state.asm,"r11",0,0,true)
++  state.asm=a.mov_rax_rip_qword(state.asm,"gc_free_search_count")
++  state.asm=a.dec_r64(state.asm,"rax")
++  state.asm=a.mov_rip_qword_rax(state.asm,"gc_free_search_count")
++  state.asm=a.mark(state.asm,"alloc_multi_unlink_next")
++  state.asm=a.add_r64_imm(state.asm,"r11",16)
++  state.asm=a.dec_r64(state.asm,"rcx")
++  state.asm=a.jcc(state.asm,"ne","alloc_multi_unlink_loop")
++  for each reg in ["r11", "rdx", "rcx", "rax"] state.asm=a.pop_reg(state.asm,reg) end for
++  state.asm=a.ret(state.asm)
++
++  // R11 contains a newly inserted free header's size/flags. A new head
++  // smaller than Size preserves that prefix; a fitting new head invalidates
++  // it immediately, including when a later split hides it behind another head.
++  state.asm=a.mark(state.asm,"alloc_multi_push_internal")
++  for each reg in ["rax", "rcx", "r9", "r11"] state.asm=a.push_reg(state.asm,reg) end for
++  state.asm=a.mov_r64_r64(state.asm,"r9","r11")
++  state.asm=a.and_r64_imm(state.asm,"r9",c.GC_BLOCK_SIZE_MASK)
++  state.asm=a.lea_r64_rip(state.asm,"r11","gc_free_search_cache")
++  state.asm=a.mov_rcx_imm32(state.asm,16)
++  state.asm=a.mark(state.asm,"alloc_multi_push_loop")
++  state.asm=a.mov_r64_membase_disp(state.asm,"rax","r11",0)
++  state.asm=a.test_r64_r64(state.asm,"rax","rax")
++  state.asm=a.jcc(state.asm,"e","alloc_multi_push_next")
++  state.asm=a.cmp_r64_r64(state.asm,"rax","r9")
++  state.asm=a.jcc(state.asm,"a","alloc_multi_push_next")
++  state.asm=a.mov_membase_disp_imm32(state.asm,"r11",0,0,true)
++  state.asm=a.mov_rax_rip_qword(state.asm,"gc_free_search_count")
++  state.asm=a.dec_r64(state.asm,"rax")
++  state.asm=a.mov_rip_qword_rax(state.asm,"gc_free_search_count")
++  state.asm=a.mark(state.asm,"alloc_multi_push_next")
++  state.asm=a.add_r64_imm(state.asm,"r11",16)
++  state.asm=a.dec_r64(state.asm,"rcx")
++  state.asm=a.jcc(state.asm,"ne","alloc_multi_push_loop")
++  for each reg in ["r11", "r9", "rcx", "rax"] state.asm=a.pop_reg(state.asm,reg) end for
++  state.asm=a.ret(state.asm)
++  return state
++end function
++
+ function ensure_gc_data(state)
+   db = state.data
+   bb = state.bss
+ 
+   db = _ensure_data_u64(db, "gc_roots_head", 0)
+   db = _ensure_data_u64(db, "gc_free_head", 0)
++  // Allocator-only backport from a40d726: proven prefix and no-fit floor.
++  if not d.data_has_label(db,"gc_free_search_cache") then db=d.data_add_bytes(db,"gc_free_search_cache",bytes(256,0)) end if
++  db=_ensure_data_u64(db,"gc_free_search_count",0)
++  db=_ensure_data_u64(db,"gc_free_search_victim",0)
++  db = _ensure_data_u64(db, "gc_free_miss_size", 0)
+ 
+   // Target GC CLI settings must initialize both pressure counters.  Keeping
+   // these values only in the compiler's parsed configuration made
+@@ -241,6 +358,9 @@ function ensure_gc_data(state)
+   db = _ensure_data_u64(db, "gc_mark_bits_base", 0)
+   db = _ensure_data_u64(db, "gc_mark_bits_end", 0)
+   db = _ensure_data_u64(db, "gc_mark_bits_reserve_end", 0)
++  db = _ensure_data_u64(db, "gc_start_bits_base", 0)
++  db = _ensure_data_u64(db, "gc_start_bits_end", 0)
++  db = _ensure_data_u64(db, "gc_start_bits_reserve_end", 0)
+ 
+   db = _ensure_data_u64(db, "heap_base", 0)
+   db = _ensure_data_u64(db, "heap_ptr", 0)
+@@ -418,6 +538,54 @@ function emit_heap_init(state, heap_size)
+   state.asm = a.add_r64_r64(state.asm, "rdx", "rax")
+   state.asm = a.mov_rip_qword_rdx(state.asm, "gc_mark_bits_reserve_end")
+ 
++  // Reserve a separate bitmap of genuine allocation headers at the same density.
++  state.asm = a.xor_ecx_ecx(state.asm)
++  state.asm = a.mov_rax_imm64(state.asm, bitmap_reserve_bytes)
++  state.asm = a.mov_rdx_rax(state.asm)
++  state.asm = a.mov_r8d_imm32(state.asm, 0x2000)
++  state.asm = a.mov_r9d_imm32(state.asm, 0x04)
++  state.asm = a.mov_rax_rip_qword(state.asm, "iat_VirtualAlloc")
++  state.asm = a.call_rax(state.asm)
++  state.asm = a.test_r64_r64(state.asm, "rax", "rax")
++  lbl_ok_start_bm_res = "heap_start_bm_res_ok_" + state.label_id
++  state.label_id = state.label_id + 1
++  state.asm = a.jcc(state.asm, "ne", lbl_ok_start_bm_res)
++  state.asm = a.mov_rcx_imm32(state.asm, 1)
++  state.asm = a.mov_rax_rip_qword(state.asm, "iat_ExitProcess")
++  state.asm = a.call_rax(state.asm)
++  state.asm = a.mark(state.asm, lbl_ok_start_bm_res)
++
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_start_bits_base")
++
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_start_bits_base")
++  state.asm = a.mov_r64_r64(state.asm, "rcx", "rax")
++  state.asm = a.mov_rax_imm64(state.asm, bitmap_commit_bytes)
++  state.asm = a.mov_rdx_rax(state.asm)
++  state.asm = a.mov_r8d_imm32(state.asm, 0x1000)
++  state.asm = a.mov_r9d_imm32(state.asm, 0x04)
++  state.asm = a.mov_rax_rip_qword(state.asm, "iat_VirtualAlloc")
++  state.asm = a.call_rax(state.asm)
++  state.asm = a.test_r64_r64(state.asm, "rax", "rax")
++  lbl_ok_start_bm_com = "heap_start_bm_com_ok_" + state.label_id
++  state.label_id = state.label_id + 1
++  state.asm = a.jcc(state.asm, "ne", lbl_ok_start_bm_com)
++  state.asm = a.mov_rcx_imm32(state.asm, 1)
++  state.asm = a.mov_rax_rip_qword(state.asm, "iat_ExitProcess")
++  state.asm = a.call_rax(state.asm)
++  state.asm = a.mark(state.asm, lbl_ok_start_bm_com)
++
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_start_bits_base")
++  state.asm = a.mov_r64_r64(state.asm, "rdx", "rax")
++  state.asm = a.mov_rax_imm64(state.asm, bitmap_commit_bytes)
++  state.asm = a.add_r64_r64(state.asm, "rdx", "rax")
++  state.asm = a.mov_rip_qword_rdx(state.asm, "gc_start_bits_end")
++
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_start_bits_base")
++  state.asm = a.mov_r64_r64(state.asm, "rdx", "rax")
++  state.asm = a.mov_rax_imm64(state.asm, bitmap_reserve_bytes)
++  state.asm = a.add_r64_r64(state.asm, "rdx", "rax")
++  state.asm = a.mov_rip_qword_rdx(state.asm, "gc_start_bits_reserve_end")
++
+   return state
+ end function
+ 
+@@ -430,6 +598,8 @@ function emit_gc_init_globals(state, disable_periodic)
+   state.asm = a.mov_rax_imm64(state.asm, 0)
+   state.asm = a.mov_rip_qword_rax(state.asm, "gc_roots_head")
+   state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_head")
++  state=_emit_multi_alloc_cache_clear(state)
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_miss_size")
+   state.asm = a.mov_rip_qword_rax(state.asm, "gc_mark_top")
+ 
+   if disable_periodic then
+@@ -707,6 +877,10 @@ function emit_alloc_function(state)
+   state.asm = a.mov_membase_disp_imm32(state.asm, "r11", THREAD_TLAB_END_OFFSET, 0, true)
+   state.asm = a.mov_r64_r64(state.asm, "r10", "r9")
+   state.asm = a.sub_r64_r64(state.asm, "r10", "r8")
++  // Retired/merged private tails introduce new holes under the heap monitor.
++  state.asm = a.mov_rax_imm64(state.asm, 0)
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_miss_size")
++  state=_emit_multi_alloc_cache_clear(state)
+   state.asm = a.mov_rax_rip_qword(state.asm, "gc_free_head")
+   // A central TLAB refill splits its 64-KiB range from the front of a free
+   // block and links the right remainder at the list head. If no intervening
+@@ -748,6 +922,8 @@ function emit_alloc_function(state)
+   state.asm = a.add_rsp_imm8(state.asm, 0x28)
+   state.asm = a.ret(state.asm)
+ 
++  state=_emit_multi_alloc_cache_helpers(state)
++
+   // Central free-list/bump/grow/GC path. RDX=1 identifies a TLAB batch so the
+   // young-pressure counter is charged once per refill instead of per object.
+   state.asm = a.mark(state.asm, "alloc_slow_internal")
+@@ -936,7 +1112,15 @@ function emit_alloc_function(state)
+ 
+   state.asm = a.mov_r64_membase_disp(state.asm, "rcx", "rsp", 0x20)
+   state.asm = a.mark(state.asm, l_try_free)
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_free_miss_size")
++  state.asm = a.test_r64_r64(state.asm, "rax", "rax")
++  state.asm = a.jcc(state.asm, "e", l_try_free + "_search")
++  state.asm = a.cmp_r64_r64(state.asm, "rcx", "rax")
++  state.asm = a.jcc(state.asm, "ae", l_bump)
++  state.asm = a.mark(state.asm, l_try_free + "_search")
+ 
++  // Try the head without cursor bookkeeping on the common successful
++  // path. Only a failed head probe consults the exact-size prefix cache.
+   state.asm = a.mov_rax_rip_qword(state.asm, "gc_free_head")
+   state.asm = a.mov_r64_r64(state.asm, "r8", "rax")
+   state.asm = a.mov_rax_imm64(state.asm, 0)
+@@ -953,6 +1137,20 @@ function emit_alloc_function(state)
+   state.asm = a.jmp(state.asm, l_free_found)
+ 
+   state.asm = a.mark(state.asm, l_free_advance)
++  // A zero predecessor means this was the initial head probe. A cached
++  // predecessor skips only a prefix proven undersized for this exact
++  // request. Every request still examines new split blocks at the head.
++  state.asm = a.mov_r64_membase_disp(state.asm, "rax", "rsp", 0x28)
++  state.asm = a.test_r64_r64(state.asm, "rax", "rax")
++  state.asm = a.jcc(state.asm, "ne", l_free_advance + "_next")
++  state.asm = a.call(state.asm,"alloc_multi_lookup_internal")
++  state.asm = a.mov_membase_disp_r64(state.asm,"rsp",0x50,"r11")
++  state.asm = a.test_r64_r64(state.asm,"rax","rax")
++  state.asm = a.jcc(state.asm,"e",l_free_advance+"_next")
++  state.asm = a.mov_rsp_disp32_rax(state.asm, 0x28)
++  state.asm = a.mov_r64_membase_disp(state.asm, "r8", "rax", c.GC_OFF_NEXT_FREE)
++  state.asm = a.jmp(state.asm, l_free_loop)
++  state.asm = a.mark(state.asm, l_free_advance + "_next")
+   state.asm = a.mov_r64_r64(state.asm, "rax", "r8")
+   state.asm = a.mov_rsp_disp32_rax(state.asm, 0x28)
+   state.asm = a.mov_r64_membase_disp(state.asm, "r8", "r8", c.GC_OFF_NEXT_FREE)
+@@ -961,15 +1159,32 @@ function emit_alloc_function(state)
+   state.asm = a.mark(state.asm, l_free_found)
+   state.asm = a.mov_r64_membase_disp(state.asm, "r9", "r8", c.GC_OFF_NEXT_FREE)
+   state.asm = a.mov_r64_membase_disp(state.asm, "r10", "rsp", 0x28)
++  state.asm=a.mov_rax_rip_qword(state.asm,"gc_free_search_count")
++  state.asm=a.test_r64_r64(state.asm,"rax","rax")
++  state.asm=a.jcc(state.asm,"e",l_free_found+"_hints_repaired")
++  state.asm=a.call(state.asm,"alloc_multi_unlink_internal")
++  state.asm=a.mark(state.asm,l_free_found+"_hints_repaired")
+   state.asm = a.test_r64_r64(state.asm, "r10", "r10")
+   state.asm = a.jcc(state.asm, "z", l_free_head)
+   state.asm = a.mov_membase_disp_r64(state.asm, "r10", c.GC_OFF_NEXT_FREE, "r9")
++  // Head failure selected this stable slot in unused central-frame offset50h.
++  state.asm=a.mov_r64_membase_disp(state.asm,"r11","rsp",0x50)
++  state.asm=a.mov_r64_membase_disp(state.asm,"rax","r11",0)
++  state.asm=a.test_r64_r64(state.asm,"rax","rax")
++  state.asm=a.jcc(state.asm,"ne",l_free_found+"_hint_counted")
++  state.asm=a.mov_rax_rip_qword(state.asm,"gc_free_search_count")
++  state.asm=a.inc_r64(state.asm,"rax")
++  state.asm=a.mov_rip_qword_rax(state.asm,"gc_free_search_count")
++  state.asm=a.mark(state.asm,l_free_found+"_hint_counted")
++  state.asm=a.mov_membase_disp_r64(state.asm,"r11",0,"rcx")
++  state.asm=a.mov_membase_disp_r64(state.asm,"r11",8,"r10")
+   state.asm = a.jmp(state.asm, l_free_unlinked)
+ 
+   state.asm = a.mark(state.asm, l_free_head)
+   state.asm = a.mov_r64_r64(state.asm, "rax", "r9")
+   state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_head")
+ 
++  // Unlink repair already invalidated/repaired matching predecessors only.
+   state.asm = a.mark(state.asm, l_free_unlinked)
+   state.asm = a.mov_r64_r64(state.asm, "r11", "rdx")
+   state.asm = a.sub_r64_r64(state.asm, "r11", "rcx")
+@@ -985,6 +1200,11 @@ function emit_alloc_function(state)
+   state.asm = a.mov_membase_disp_r64(state.asm, "rdx", c.GC_OFF_NEXT_FREE, "rax")
+   state.asm = a.mov_r64_r64(state.asm, "rax", "rdx")
+   state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_head")
++  state.asm=a.mov_rax_rip_qword(state.asm,"gc_free_search_count")
++  state.asm=a.test_r64_r64(state.asm,"rax","rax")
++  state.asm=a.jcc(state.asm,"e",l_free_unlinked+"_push_hints_done")
++  state.asm=a.call(state.asm,"alloc_multi_push_internal")
++  state.asm=a.mark(state.asm,l_free_unlinked+"_push_hints_done")
+   state.asm = a.mov_membase_disp_r64(state.asm, "r8", 0, "rcx")
+ 
+   state.asm = a.jmp(state.asm, l_free_return)
+@@ -1007,6 +1227,15 @@ function emit_alloc_function(state)
+   state.asm = a.ret(state.asm)
+ 
+   state.asm = a.mark(state.asm, l_bump)
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_free_miss_size")
++  state.asm = a.test_r64_r64(state.asm, "rax", "rax")
++  state.asm = a.jcc(state.asm, "e", l_bump + "_remember")
++  state.asm = a.cmp_r64_r64(state.asm, "rcx", "rax")
++  state.asm = a.jcc(state.asm, "ae", l_bump + "_remember_done")
++  state.asm = a.mark(state.asm, l_bump + "_remember")
++  state.asm = a.mov_r64_r64(state.asm, "rax", "rcx")
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_miss_size")
++  state.asm = a.mark(state.asm, l_bump + "_remember_done")
+   state.asm = a.mov_rax_rip_qword(state.asm, "heap_ptr")
+   state.asm = a.mov_rdx_rax(state.asm)
+ 
+@@ -1191,6 +1420,7 @@ function emit_gc_collect_function(state)
+   state = ensure_gc_data(state)
+   if typeof(state.rdata) == "struct" then
+     state.rdata = _ensure_rdata_str(state.rdata, "gc_ms_overflow", "ERROR: GC mark stack overflow\n")
++    state.rdata = _ensure_rdata_str(state.rdata, "gc_bad_boundary", "ERROR: GC invalid allocation boundary\n")
+   end if
+   threaded_gc = state.native_threads_possible
+   shrink_enabled = _heap_cfg_get_bool(state, "shrink_enabled", false)
+@@ -1225,6 +1455,15 @@ function emit_gc_collect_function(state)
+   state.label_id = state.label_id + 1
+   L_MARK_VALUE = "gc_mark_value_" + lid
+   L_MARK_VALUE_RET = "gc_mark_value_ret_" + lid
++  L_START_PREVIOUS = "gc_start_previous_" + lid
++  L_START_WORD_FOUND = "gc_start_word_found_" + lid
++  L_START_OWNER = "gc_start_owner_" + lid
++  L_BOUNDARY_LOOP = "gc_boundary_loop_" + lid
++  L_BOUNDARY_DONE = "gc_boundary_done_" + lid
++  L_BOUNDARY_SIZE_OK = "gc_boundary_size_ok_" + lid
++  L_BOUNDARY_BAD = "gc_boundary_bad_" + lid
++  L_REVOKE_LOOP = "gc_revoke_loop_" + lid
++  L_REVOKE_DONE = "gc_revoke_done_" + lid
+   L_BODY = "gc_body_" + lid
+   L_MARK_LOOP = "gc_mark_loop_" + lid
+   L_MARK_DONE = "gc_mark_done_" + lid
+@@ -1311,11 +1550,48 @@ function emit_gc_collect_function(state)
+   state.asm = a.cmp_r64_r64(state.asm, "rdx", "rax")
+   state.asm = a.jcc(state.asm, "b", L_MARK_VALUE_RET)
+ 
+-  state.asm = a.mov_rax_rip_qword(state.asm, "heap_end")
++  state.asm = a.mov_rax_rip_qword(state.asm, "heap_ptr")
+   state.asm = a.cmp_r64_r64(state.asm, "rdx", "rax")
+   state.asm = a.jcc(state.asm, "ae", L_MARK_VALUE_RET)
+-
+   state.asm = a.sub_r64_imm(state.asm, "rdx", c.GC_HEADER_SIZE)
++
++  // Exact payload starts are the fast path. Payload data can never invent a
++  // header: only bits populated by the complete physical-header walk count.
++  // R11 keeps the original pointer until owner range validation below.
++  state.asm = a.mov_r64_r64(state.asm, "r8", "rdx")
++  state.asm = a.sub_r64_r64(state.asm, "r8", "rbp")
++  state.asm = a.mov_r64_r64(state.asm, "r9", "r8")
++  state.asm = a.shr_r64_imm8(state.asm, "r9", 8)
++  state.asm = a.mov_r64_r64(state.asm, "rcx", "r8")
++  state.asm = a.shr_r64_imm8(state.asm, "rcx", 3)
++  state.asm = a.and_r64_imm(state.asm, "rcx", 31)
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_start_bits_base")
++  state.asm = a.mov_r64_r64(state.asm, "r10", "rax")
++  state.asm = a.mov_r32_mem_bis(state.asm, "eax", "r10", "r9", 4, 0)
++  state.asm = a.mov_r64_imm64(state.asm, "r8", 1)
++  state.asm = a.shl_r64_cl(state.asm, "r8")
++  state.asm = a.test_r64_r64(state.asm, "rax", "r8")
++  state.asm = a.jcc(state.asm, "ne", L_START_OWNER)
++  // Current bit is absent. Keep strictly preceding bits (shift is at most31).
++  state.asm = a.dec_r64(state.asm, "r8")
++  state.asm = a.and_r32_r32(state.asm, "eax", "r8d")
++  state.asm = a.test_r32_r32(state.asm, "eax", "eax")
++  state.asm = a.jcc(state.asm, "ne", L_START_WORD_FOUND)
++  state.asm = a.mark(state.asm, L_START_PREVIOUS)
++  state.asm = a.test_r64_r64(state.asm, "r9", "r9")
++  state.asm = a.jcc(state.asm, "e", L_MARK_VALUE_RET)
++  state.asm = a.dec_r64(state.asm, "r9")
++  state.asm = a.mov_r32_mem_bis(state.asm, "eax", "r10", "r9", 4, 0)
++  state.asm = a.test_r32_r32(state.asm, "eax", "eax")
++  state.asm = a.jcc(state.asm, "e", L_START_PREVIOUS)
++  state.asm = a.mark(state.asm, L_START_WORD_FOUND)
++  state.asm = a.bsr_r32_r32(state.asm, "ecx", "eax")
++  state.asm = a.mov_r64_r64(state.asm, "rdx", "r9")
++  state.asm = a.shl_r64_imm8(state.asm, "rdx", 8)
++  state.asm = a.shl_r64_imm8(state.asm, "rcx", 3)
++  state.asm = a.add_r64_r64(state.asm, "rdx", "rcx")
++  state.asm = a.add_r64_r64(state.asm, "rdx", "rbp")
++  state.asm = a.mark(state.asm, L_START_OWNER)
+   state.asm = a.mov_r64_membase_disp(state.asm, "r10", "rdx", 0)
+   state.asm = a.test_r64_imm32(state.asm, "r10", c.GC_BLOCK_FREE_BIT)
+   state.asm = a.jcc(state.asm, "ne", L_MARK_VALUE_RET)
+@@ -1328,9 +1604,15 @@ function emit_gc_collect_function(state)
+   state.asm = a.add_r64_r64(state.asm, "rcx", "r8")
+   state.asm = a.cmp_r64_r64(state.asm, "rcx", "rdx")
+   state.asm = a.jcc(state.asm, "b", L_MARK_VALUE_RET)
+-  state.asm = a.mov_rax_rip_qword(state.asm, "heap_end")
++  state.asm = a.mov_rax_rip_qword(state.asm, "heap_ptr")
+   state.asm = a.cmp_r64_r64(state.asm, "rcx", "rax")
+   state.asm = a.jcc(state.asm, "a", L_MARK_VALUE_RET)
++  state.asm = a.cmp_r64_r64(state.asm, "r11", "rcx")
++  state.asm = a.jcc(state.asm, "ae", L_MARK_VALUE_RET)
++  state.asm = a.lea_r64_membase_disp(state.asm, "r8", "rdx", c.GC_HEADER_SIZE)
++  state.asm = a.cmp_r64_r64(state.asm, "r11", "r8")
++  state.asm = a.jcc(state.asm, "b", L_MARK_VALUE_RET)
++  state.asm = a.mov_r64_r64(state.asm, "r11", "r8")
+ 
+   state.asm = a.mov_r64_r64(state.asm, "r8", "rdx")
+   state.asm = a.sub_r64_r64(state.asm, "r8", "rbp")
+@@ -1379,8 +1661,92 @@ function emit_gc_collect_function(state)
+   state.asm = a.mov_rax_rip_qword(state.asm, "iat_ExitProcess")
+   state.asm = a.call_rax(state.asm)
+ 
++  state.asm = a.mark(state.asm, L_BOUNDARY_BAD)
++  if typeof(state.rdata) == "struct" then
++    ln = d.rdata_label_length(state.rdata, "gc_bad_boundary")
++    state.asm = a.mov_rcx_imm32(state.asm, -12)
++    state.asm = a.mov_rax_rip_qword(state.asm, "iat_GetStdHandle")
++    state.asm = a.call_rax(state.asm)
++    state.asm = a.mov_r64_r64(state.asm, "rcx", "rax")
++    state.asm = a.lea_rdx_rip(state.asm, "gc_bad_boundary")
++    state.asm = a.mov_r8d_imm32(state.asm, ln)
++    state.asm = a.lea_r64_membase_disp(state.asm, "r9", "rsp", 0x28)
++    state.asm = a.mov_membase_disp_imm32(state.asm, "rsp", 0x20, 0, true)
++    state.asm = a.mov_rax_rip_qword(state.asm, "iat_WriteFile")
++    state.asm = a.call_rax(state.asm)
++  end if
++  state.asm = a.mov_rcx_imm32(state.asm, 1)
++  state.asm = a.mov_rax_rip_qword(state.asm, "iat_ExitProcess")
++  state.asm = a.call_rax(state.asm)
++
+   state.asm = a.mark(state.asm, L_BODY)
+ 
++  // Collector owns the heap monitor; sweep/rebuild can replace all cursors.
++  state.asm = a.mov_rax_imm64(state.asm, 0)
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_miss_size")
++  state=_emit_multi_alloc_cache_clear(state)
++  // Revoke private ranges before enumerating physical headers. TLAB consume
++  // and refill always publish a valid FREE header for any remaining tail.
++  if threaded_gc then
++    state.asm = a.mov_rax_rip_qword(state.asm, "thread_contexts_head")
++    state.asm = a.mov_r64_r64(state.asm, "rdi", "rax")
++    state.asm = a.mark(state.asm, L_REVOKE_LOOP)
++    state.asm = a.test_r64_r64(state.asm, "rdi", "rdi")
++    state.asm = a.jcc(state.asm, "e", L_REVOKE_DONE)
++    state.asm = a.mov_membase_disp_imm32(state.asm, "rdi", THREAD_TLAB_START_OFFSET, 0, true)
++    state.asm = a.mov_membase_disp_imm32(state.asm, "rdi", THREAD_TLAB_CURSOR_OFFSET, 0, true)
++    state.asm = a.mov_membase_disp_imm32(state.asm, "rdi", THREAD_TLAB_END_OFFSET, 0, true)
++    state.asm = a.mov_r64_membase_disp(state.asm, "rdi", "rdi", 120)
++    state.asm = a.jmp(state.asm, L_REVOKE_LOOP)
++    state.asm = a.mark(state.asm, L_REVOKE_DONE)
++  end if
++  state.asm = a.mov_rax_rip_qword(state.asm, "heap_ptr")
++  state.asm = a.sub_r64_r64(state.asm, "rax", "rbp")
++  state.asm = a.add_r64_imm(state.asm, "rax", 63)
++  state.asm = a.shr_r64_imm8(state.asm, "rax", 6)
++  state.asm = a.mov_r64_r64(state.asm, "rcx", "rax")
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_start_bits_base")
++  state.asm = a.mov_r64_r64(state.asm, "r15", "rax")
++  state.asm = a.mov_r64_r64(state.asm, "rdi", "rax")
++  state.asm = a.xor_r32_r32(state.asm, "eax", "eax")
++  state.asm = a.rep_stosb(state.asm)
++  state.asm = a.mov_r64_r64(state.asm, "rbx", "rbp")
++  state.asm = a.mov_rax_rip_qword(state.asm, "heap_ptr")
++  state.asm = a.mov_r64_r64(state.asm, "r14", "rax")
++  state.asm = a.mark(state.asm, L_BOUNDARY_LOOP)
++  state.asm = a.cmp_r64_r64(state.asm, "rbx", "r14")
++  state.asm = a.jcc(state.asm, "ae", L_BOUNDARY_DONE)
++  state.asm = a.mov_r64_membase_disp(state.asm, "r10", "rbx", 0)
++  state.asm = a.mov_r64_r64(state.asm, "r11", "r10")
++  state.asm = a.and_r64_imm(state.asm, "r10", c.GC_BLOCK_SIZE_MASK)
++  state.asm = a.cmp_r64_imm(state.asm, "r10", c.GC_HEADER_SIZE)
++  state.asm = a.jcc(state.asm, "b", L_BOUNDARY_BAD)
++  state.asm = a.cmp_r64_imm(state.asm, "r10", c.GC_HEADER_SIZE + 8)
++  state.asm = a.jcc(state.asm, "ae", L_BOUNDARY_SIZE_OK)
++  state.asm = a.test_r64_imm32(state.asm, "r11", c.GC_BLOCK_FREE_BIT)
++  state.asm = a.jcc(state.asm, "e", L_BOUNDARY_BAD)
++  state.asm = a.mark(state.asm, L_BOUNDARY_SIZE_OK)
++  state.asm = a.mov_r64_r64(state.asm, "r11", "rbx")
++  state.asm = a.add_r64_r64(state.asm, "r11", "r10")
++  state.asm = a.cmp_r64_r64(state.asm, "r11", "rbx")
++  state.asm = a.jcc(state.asm, "be", L_BOUNDARY_BAD)
++  state.asm = a.cmp_r64_r64(state.asm, "r11", "r14")
++  state.asm = a.jcc(state.asm, "a", L_BOUNDARY_BAD)
++  state.asm = a.mov_r64_r64(state.asm, "r8", "rbx")
++  state.asm = a.sub_r64_r64(state.asm, "r8", "rbp")
++  state.asm = a.mov_r64_r64(state.asm, "r9", "r8")
++  state.asm = a.shr_r64_imm8(state.asm, "r9", 8)
++  state.asm = a.mov_r64_r64(state.asm, "rcx", "r8")
++  state.asm = a.shr_r64_imm8(state.asm, "rcx", 3)
++  state.asm = a.and_r64_imm(state.asm, "rcx", 31)
++  state.asm = a.mov_rax_imm64(state.asm, 1)
++  state.asm = a.shl_r64_cl(state.asm, "rax")
++  state.asm = a.mov_r32_mem_bis(state.asm, "edx", "r15", "r9", 4, 0)
++  state.asm = a.or_r32_r32(state.asm, "edx", "eax")
++  state.asm = a.mov_mem_bis_r32(state.asm, "r15", "r9", 4, 0, "edx")
++  state.asm = a.mov_r64_r64(state.asm, "rbx", "r11")
++  state.asm = a.jmp(state.asm, L_BOUNDARY_LOOP)
++  state.asm = a.mark(state.asm, L_BOUNDARY_DONE)
+   // Shared runtime-helper scratch remains part of the precise root set.
+   for i = 0 to 7
+     state.asm = a.mov_rax_rip_qword(state.asm, "gc_tmp" + i)
+@@ -1404,11 +1770,7 @@ function emit_gc_collect_function(state)
+     state.asm = a.mark(state.asm, L_CONTEXT_LOOP)
+     state.asm = a.test_r64_r64(state.asm, "rdi", "rdi")
+     state.asm = a.jcc(state.asm, "e", L_MARK_LOOP)
+-    // Stop-the-world collection revokes every private allocation range before
+-    // sweep/coalescing; resumed threads must refill from the rebuilt heap.
+-    state.asm = a.mov_membase_disp_imm32(state.asm, "rdi", THREAD_TLAB_START_OFFSET, 0, true)
+-    state.asm = a.mov_membase_disp_imm32(state.asm, "rdi", THREAD_TLAB_CURSOR_OFFSET, 0, true)
+-    state.asm = a.mov_membase_disp_imm32(state.asm, "rdi", THREAD_TLAB_END_OFFSET, 0, true)
++    // Private ranges were revoked before the boundary prepass.
+     state.asm = a.mov_r64_membase_disp(state.asm, "rax", "rdi", 24)
+     state.asm = a.call(state.asm, L_MARK_VALUE)
+     state.asm = a.mov_r64_membase_disp(state.asm, "rax", "rdi", 40)
+@@ -2161,6 +2523,8 @@ function emit_heap_grow_function(state)
+   l_ok = "hg_ok_" + lid
+   l_bitmap_ok = "hg_bitmap_ok_" + lid
+   l_bitmap_call = "hg_bitmap_call_" + lid
++  l_start_bitmap_ok = "hg_start_bitmap_ok_" + lid
++  l_start_bitmap_call = "hg_start_bitmap_call_" + lid
+   l_call = "hg_call_" + lid
+   l_fail = "hg_fail_" + lid
+   l_done = "hg_done_" + lid
+@@ -2230,6 +2594,46 @@ function emit_heap_grow_function(state)
+   state.asm = a.mov_rip_qword_rax(state.asm, "gc_mark_bits_end")
+ 
+   state.asm = a.mark(state.asm, l_bitmap_ok)
++
++  // The independent allocation-start map grows before the heap too.
++  state.asm = a.mov_rax_rip_qword(state.asm, "heap_base")
++  state.asm = a.mov_r64_r64(state.asm, "r10", "rbx")
++  state.asm = a.sub_r64_r64(state.asm, "r10", "rax")
++  state.asm = a.add_r64_imm(state.asm, "r10", 63)
++  state.asm = a.shr_r64_imm8(state.asm, "r10", 6)
++  state.asm = a.add_r64_imm(state.asm, "r10", MEM_PAGE_SIZE - 1)
++  state.asm = a.and_r64_imm(state.asm, "r10", -MEM_PAGE_SIZE)
++
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_start_bits_base")
++  state.asm = a.mov_r64_r64(state.asm, "r12", "rax")
++  state.asm = a.add_r64_r64(state.asm, "r12", "r10")
++
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_start_bits_end")
++  state.asm = a.cmp_r64_r64(state.asm, "rax", "r12")
++  state.asm = a.jcc(state.asm, "ae", l_start_bitmap_ok)
++
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_start_bits_reserve_end")
++  state.asm = a.cmp_r64_r64(state.asm, "r12", "rax")
++  state.asm = a.jcc(state.asm, "be", l_start_bitmap_call)
++  state.asm = a.jmp(state.asm, l_fail)
++
++  state.asm = a.mark(state.asm, l_start_bitmap_call)
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_start_bits_end")
++  state.asm = a.mov_r64_r64(state.asm, "rcx", "rax")
++  state.asm = a.mov_r64_r64(state.asm, "rdx", "r12")
++  state.asm = a.sub_r64_r64(state.asm, "rdx", "rax")
++  state.asm = a.mov_r8d_imm32(state.asm, 0x1000)
++  state.asm = a.mov_r9d_imm32(state.asm, 0x04)
++  state.asm = a.mov_rax_rip_qword(state.asm, "iat_VirtualAlloc")
++  state.asm = a.call_rax(state.asm)
++
++  state.asm = a.test_r64_r64(state.asm, "rax", "rax")
++  state.asm = a.jcc(state.asm, "e", l_fail)
++
++  state.asm = a.mov_r64_r64(state.asm, "rax", "r12")
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_start_bits_end")
++
++  state.asm = a.mark(state.asm, l_start_bitmap_ok)
+   state.asm = a.mov_rax_rip_qword(state.asm, "heap_end")
+   state.asm = a.mov_r64_r64(state.asm, "r11", "rax")
+   state.asm = a.mov_r64_r64(state.asm, "rcx", "r11")

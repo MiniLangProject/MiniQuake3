@@ -1,10 +1,10 @@
 {
   "compiler_head": "738d830fa604de884d7e488fde0991a19c034016",
-  "working_tree_patch_sha256": "77ccba9e97ce553854c5ced76eb0d67d9b4351741acaeb04db40ebd785901d10",
+  "working_tree_patch_sha256": "95c7f1e5e2ad7aed03f2642379185f9b8e7f89fccf3dd52d25eaa436d20645e3",
   "inputs": [
     {
       "path": "build/mlc_win64.exe",
-      "sha256": "280135a508ed0c113e62be6464e6812826afdfc239ae20d9d369b15666561113"
+      "sha256": "147ba1627567408800b3bd5ddb42afe93b5ccc4f6b613c5435ee4b3846c89eaa"
     },
     {
       "path": "std/_linux_fs.ml",
@@ -3226,7 +3226,7 @@
     },
     {
       "path": "mlc/codegen/codegen_memory.ml",
-      "sha256": "3bdebb0eedfbfeac396e8097c164f4118c245498a2f0368e1810e83591aa5b19"
+      "sha256": "2287c63faecfc914e4e1143df56cb1adf86dfdccf819060f70606676cbcbadae"
     },
     {
       "path": "mlc/codegen/codegen_runtime.ml",
@@ -4445,23 +4445,30 @@
       "sha256": "63e9d14bb7f8a3aea7543df6b1b699c09452cc76cc45be7889dab84cc5bb3653"
     }
   ],
-  "note": "Frozen738d830 compiler with allocator-search backport; bootstrap/provenance recorded. Frontend/stdlib/ABI unchanged. Source hashes alone do not prove binary provenance.",
+  "note": "Frozen738d830 compiler with allocator and allocation-boundary GC fixes; bootstrap/provenance recorded. Frontend/stdlib/value ABI/object headers unchanged. Source hashes alone do not prove binary provenance.",
   "allocator_backport": {
     "base_commit": "738d830fa604de884d7e488fde0991a19c034016",
     "upstream_allocator_commit": "a40d726ff264bf993a2c571c105943e737fc2ed9",
-    "scope": "Allocator search only; unchanged frontend, standard library, value ABI and GC policy",
-    "patch": "patches\\minilang-738d830-allocator-search.patch",
-    "patch_sha256": "77ccba9e97ce553854c5ced76eb0d67d9b4351741acaeb04db40ebd785901d10",
-    "patched_source_sha256": "3bdebb0eedfbfeac396e8097c164f4118c245498a2f0368e1810e83591aa5b19",
+    "scope": "Managed runtime only:16 fully associative allocation hints plus true allocation-start/owner normalization in GC; unchanged frontend, standard library, value ABI, object headers and GC thresholds",
+    "prefix_slots": 16,
+    "gc_allocation_boundaries": true,
+    "compatible_previous_compilers": [
+      "60db15723f1d33afccbaf81657e91569811c38cf54a320117857c29027700e0b",
+      "280135a508ed0c113e62be6464e6812826afdfc239ae20d9d369b15666561113",
+      "859ec139d288d94f99c1f598b77032b706880c7ff18fb5d3add1facfd46c9bef"
+    ],
+    "patch": "patches\\minilang-738d830-gc-boundaries.patch",
+    "patch_sha256": "95c7f1e5e2ad7aed03f2642379185f9b8e7f89fccf3dd52d25eaa436d20645e3",
+    "patched_source_sha256": "2287c63faecfc914e4e1143df56cb1adf86dfdccf819060f70606676cbcbadae",
     "bootstrap_sha256": "60db15723f1d33afccbaf81657e91569811c38cf54a320117857c29027700e0b",
-    "compiler_sha256": "280135a508ed0c113e62be6464e6812826afdfc239ae20d9d369b15666561113",
-    "commands": [
+    "compiler_sha256": "147ba1627567408800b3bd5ddb42afe93b5ccc4f6b613c5435ee4b3846c89eaa",
+    "reproduction_commands": [
       [
-        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\artifacts\\toolchain\\build\\mlc_win64.exe",
-        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-allocator\\mlc_win64.ml",
-        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-allocator\\build\\mlc_allocator_stage1.exe",
+        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-before-allocator\\mlc_win64.exe",
+        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-gc-boundaries\\mlc_win64.ml",
+        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-gc-boundaries\\build\\mlc_allocator_stage1.exe",
         "-I",
-        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-allocator",
+        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-gc-boundaries",
         "--heap-reserve",
         "8g",
         "--heap-commit",
@@ -4474,11 +4481,11 @@
         "--object-pipeline"
       ],
       [
-        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-allocator\\build\\mlc_allocator_stage1.exe",
-        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-allocator\\mlc_win64.ml",
-        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-allocator\\build\\mlc_allocator_stage2.exe",
+        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-gc-boundaries\\build\\mlc_allocator_stage1.exe",
+        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-gc-boundaries\\mlc_win64.ml",
+        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-gc-boundaries\\build\\mlc_allocator_stage2.exe",
         "-I",
-        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-allocator",
+        "K:\\KI-Projekte\\Anwendungsentwicklung mit KI\\MiniLangCompilerOptimization\\MiniQuake3\\build\\toolchain-gc-boundaries",
         "--heap-reserve",
         "8g",
         "--heap-commit",
@@ -4491,7 +4498,9 @@
         "--object-pipeline"
       ]
     ],
+    "commands_executed": [],
     "stage2": true,
-    "reused_validated_candidate": true
+    "reused_validated_candidate": true,
+    "previous_compiler_sha256": "859ec139d288d94f99c1f598b77032b706880c7ff18fb5d3add1facfd46c9bef"
   }
 }

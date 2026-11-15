@@ -42,11 +42,16 @@ def main():
     scripts.append(("test_client_frame_input.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_md3_cache_index.py",[]))
     if args.data_root: scripts.append(("test_md3_packed.py",["--data-root",str(args.data_root)]))
+    if args.data_root: scripts.append(("test_bsp_retained.py",["--data-root",str(args.data_root)]))
     if args.data_root: scripts.append(("test_md3_cache_retention.py",["--data-root",str(args.data_root)]))
     scripts.append(("test_collision_frontier.py",[]))
     scripts.append(("test_trace_query_storage.py",[]))
+    scripts.append(("test_snapshot_storage.py",[]))
     if json.loads((ROOT / "docs/reference/toolchain.json").read_text()).get("allocator_backport"):
         scripts.append(("test_allocator_search.py",[]))
+        scripts.append(("test_allocator_multisize.py",[]))
+        if json.loads((ROOT / "docs/reference/toolchain.json").read_text()).get("allocator_backport",{}).get("gc_allocation_boundaries"):
+            scripts.append(("test_gc_allocation_boundary.py",[]))
         scripts.append(("test_allocator_legacy.py",[]))
     if args.data_root: scripts.append(("test_ingame_controls_render.py",["--data-root",str(args.data_root)]))
     scripts.append(("test_qvm_native_profile.py",[]))

@@ -6,6 +6,7 @@ import mq3.game.g_public as gpublic
 import mq3.game.entitystate as entitystate
 import mq3.game.playerstate as playerstate
 import std.sort as sorts
+import std.ds.list as snapshotLists
 
 const MAX_SNAPSHOT_ENTITIES=1024
 const MAX_MAP_AREA_BYTES=32
@@ -55,10 +56,14 @@ function sortEntityNumbers(numbers)
 end function
 
 function addEntity(worldState,entity,numbers)
+  return addEntityMode(worldState,entity,numbers,void)
+end function
+function addEntityMode(worldState,entity,numbers,builder)
   if entity.snapshotCounter==worldState.snapshotCounter then return false end if
   entity.snapshotCounter=worldState.snapshotCounter
   if numbers.count>=MAX_SNAPSHOT_ENTITIES then return false end if
-  numbers.values[numbers.count]=entity.state.number;numbers.count=numbers.count+1
+  if builder==void then numbers.values[numbers.count]=entity.state.number else builder.add(entity.state.number) end if
+  numbers.count=numbers.count+1
   return true
 end function
 
@@ -74,6 +79,9 @@ end function
 // Host callbacks provide CM_PointLeafnum, leaf area/cluster, CM_WriteAreaBits,
 // CM_ClusterPVS and CM_AreasConnected. Portal recursion stays in MiniLang.
 function addEntitiesVisibleFromPoint(worldState,host,origin,outFrame,numbers,portal)
+  return addVisibleMode(worldState,host,origin,outFrame,numbers,portal,void)
+end function
+function addVisibleMode(worldState,host,origin,outFrame,numbers,portal,builder)
   if not worldState.active then return void end if
   leaf=host.pointLeafFn(host,origin);clientArea=host.leafAreaFn(host,leaf);clientCluster=host.leafClusterFn(host,leaf)
   outFrame.areaBytes=host.writeAreaBitsFn(host,outFrame.areaBits,clientArea)
@@ -92,7 +100,7 @@ function addEntitiesVisibleFromPoint(worldState,host,origin,outFrame,numbers,por
       if ((~entity.singleClient)&(1<<clientNum))!=0 then index=index+1;continue end if
     end if
     if entity.snapshotCounter==worldState.snapshotCounter then index=index+1;continue end if
-    if (flags&SVF_BROADCAST)!=0 then addEntity(worldState,entity,numbers);index=index+1;continue end if
+    if (flags&SVF_BROADCAST)!=0 then addEntityMode(worldState,entity,numbers,builder);index=index+1;continue end if
     if not host.areasConnectedFn(host,clientArea,entity.areaNum) and not host.areasConnectedFn(host,clientArea,entity.areaNum2) then index=index+1;continue end if
     if len(entity.clusters)==0 then index=index+1;continue end if
     visible=false;last=0
@@ -110,11 +118,11 @@ function addEntitiesVisibleFromPoint(worldState,host,origin,outFrame,numbers,por
       if cluster==entity.lastCluster then visible=false else visible=true end if
     end if
     if not visible then index=index+1;continue end if
-    addEntity(worldState,entity,numbers)
+    addEntityMode(worldState,entity,numbers,builder)
     if (flags&SVF_PORTAL)!=0 then
       inRange=true
       if entity.state.generic1!=0 and distanceSquared(entity.state.origin,origin)>entity.state.generic1*entity.state.generic1 then inRange=false end if
-      if inRange then addEntitiesVisibleFromPoint(worldState,host,entity.state.origin2,outFrame,numbers,true) end if
+      if inRange then addVisibleMode(worldState,host,entity.state.origin2,outFrame,numbers,true,builder) end if
     end if
     index=index+1
   end while
@@ -123,15 +131,17 @@ end function
 
 function buildClientSnapshot(worldState,host,ps,clientEntityPresent,zombie)
   worldState.snapshotCounter=worldState.snapshotCounter+1
-  outFrame=frame();numbers=entityNumbers()
+  outFrame=frame()
   if not clientEntityPresent or zombie then return outFrame end if
+  // Visibility has side effects and portal recursion: collect once, grow only
+  // as needed, then detach the used prefix before the existing checked sort.
+  numbers=EntityNumbers(void,0);builder=snapshotLists.List.withCapacity(32)
   outFrame.playerState=playerstate.copy(ps);clientNum=ps.clientNum
   if clientNum<0 or clientNum>=MAX_GENTITIES or clientNum>=len(worldState.entities) then return error(6873,"snapshot build: bad client entity") end if
   worldState.entities[clientNum].snapshotCounter=worldState.snapshotCounter
   origin=[ps.origin[0],ps.origin[1],ps.origin[2]+ps.viewheight]
-  addEntitiesVisibleFromPoint(worldState,host,origin,outFrame,numbers,false)
-  selected=array(numbers.count,0)
-  if numbers.count>0 then copyArray(selected,0,numbers.values,0,numbers.count) end if
+  addVisibleMode(worldState,host,origin,outFrame,numbers,false,builder)
+  selected=builder.toArray()
   selected=sortEntityNumbers(selected)
   for index=0 to MAX_MAP_AREA_BYTES-1 outFrame.areaBits[index]=outFrame.areaBits[index]^255 end for
   outFrame.firstEntity=worldState.nextSnapshotEntities

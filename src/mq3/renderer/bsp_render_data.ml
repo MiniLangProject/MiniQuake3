@@ -205,7 +205,11 @@ end function
 // their first occurrence, giving visible-leaf callers a stable render stream.
 // Validation continues beyond maxTriangles so malformed BSP input cannot hide
 // behind an output limit.
-function extractWithPatchError(map,faceIndexes,maxTriangles,patchError)
+function extractWithPatchError(map,faceIndexes,maxTriangles,patchError) return extractMode(map,faceIndexes,maxTriangles,patchError,false) end function
+// Internal retained-world path. Consumers must treat shared face vertices as
+// immutable; the public extractor deliberately keeps its independent corners.
+function extractRetainedWithPatchError(map,faceIndexes,maxTriangles,patchError) return extractMode(map,faceIndexes,maxTriangles,patchError,true) end function
+function extractMode(map,faceIndexes,maxTriangles,patchError,shareFaceVertices)
   if not validMap(map) then return fail("invalid BSP object") end if
   if faceIndexes==void then return fail("missing face list") end if
   if maxTriangles<0 then return fail("negative triangle limit") end if
@@ -232,13 +236,18 @@ function extractWithPatchError(map,faceIndexes,maxTriangles,patchError)
           triangles=patch[0];triangleCount=triangleCount+patch[1];if patch[2] then truncated=true end if
         else
           if firstMesh<0 or numMesh<0 or firstMesh+numMesh>map.counts[11] or numMesh%3!=0 then return fail("face meshvert range is invalid") end if
+          decodedVertices=void;if shareFaceVertices then decodedVertices=array(numVerts,void) end if
           for triangleIndex=0 to n.quotient(numMesh,3)-1
             verts=[]
             for corner=0 to 2
               meshOffset=recordRange(map,11,firstMesh+triangleIndex*3+corner,4);if meshOffset is error then return meshOffset end if
               relative=i32(map,meshOffset)
               if relative is error or relative<0 or relative>=numVerts then return fail("meshvert outside face vertices") end if
-              value=vertex(map,firstVert+relative);if value is error then return value end if
+              value=void;if decodedVertices!=void then value=decodedVertices[relative] end if
+              if value==void then
+                value=vertex(map,firstVert+relative);if value is error then return value end if
+                if decodedVertices!=void then decodedVertices[relative]=value end if
+              end if
               verts=verts+[value]
             end for
             triangleCount=triangleCount+1
