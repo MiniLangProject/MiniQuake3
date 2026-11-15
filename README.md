@@ -62,6 +62,10 @@ linke Maustaste zum Feuern, rechte Maustaste zum Zoomen, 1–9 für die neun
 Baseq3-Waffen, Tab für die Punktetafel und T für Chat. Die vertikale Maus ist
 standardmäßig invertiert (`m_pitch -0.022`). Änderungen im Controls-Menü
 werden beim Kartenwechsel übernommen.
+Bots sind im normalen Startpfad aktiviert. Das originale Start-Server-Menü
+reicht seine nach `map` wartenden `addbot`-Befehle an das neue Match weiter;
+der Retail-Sarge-Test besteht 512 Bot-Frames mit einem echten Bewegungsbefehl.
+Eine interaktive Langzeitabnahme mit mehreren Bots steht noch aus.
 Zum Testen `build/MiniQuake3.exe` direkt starten; `baseq3/pak*.pk3` und `qvms`
 liegen daneben. Der Start öffnet nur das Spielfenster. Der
 [finale Fehler-/Buildnachweis](docs/verification/2026-11-15-runtime-safety.json)

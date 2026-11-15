@@ -108,6 +108,17 @@ function run(archive,bootstrapMap,qvmRoot)
     time.sleep(16)
   end while
   settings=match.captureUserSettings(state)
+  // Original Start Server queues map, wait and addbot in one UI frame. Preserve
+  // the addbot commands when replacing the disconnected shell with the match.
+  for each entry in state.context.console
+    source=strings.replaceAll(entry[1],"\r","\n")
+    for each line in strings.split(source,"\n")
+      for each fragment in strings.split(line,";")
+        command=strings.trim(fragment);fields=strings.split(command," ")
+        if len(fields)>1 and strings.toLowerAscii(fields[0])=="addbot" then settings.pendingBotCommands=settings.pendingBotCommands+[command] end if
+      end for
+    end for
+  end for
   audioOutput.shutdown();qvm2d.release(catalog);match.shutdown(state)
   if mapName==void then window.shutdown();return 0 end if
   // Keep the existing HWND/WGL context across the menu-to-match transition.

@@ -1,4 +1,5 @@
 import mq3.engine.local_qvm_match as match
+import mq3.qcommon.command_buffer as commandBuffer
 import mq3.botlib.ai_resource_pools as resourcePools
 import mq3.format.bsp as bsp
 import mq3.format.pk3 as pk3
@@ -10,8 +11,10 @@ function main(args)
   if len(args)!=2 then return error(7699,"usage: bot_spawn_retail_probe <pak0.pk3> <qvm-directory>") end if
   count=0;archive=pk3.open(args[0]);if archive is error then return archive end if
   map=bsp.load(pk3.read(archive,"maps/q3dm1.bsp"));if map is error then return map end if
-  state=match.bootWithBots(archive,map,1000,args[1]);if state is error then return state end if
-  result=try(match.executeGameConsole(state,"addbot Sarge 3"))
+  // Start Server queues addbot before replacing the menu shell with the match.
+  settings=match.UserSettings([],array(256,void),array(match.MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),["addbot Sarge 3"])
+  state=match.bootWithQvmsSettingsNamed(archive,map,"q3dm1",1000,args[1],settings);if state is error then return state end if
+  result=try(commandBuffer.execute(state.context.commandState))
   count=count+require(not (result is error) and len(state.context.errors)==0,"retail BotAISetupClient completes")
   count=count+require(state.context.botAllocations==1 and state.context.botFrees==0,"server allocated one active bot client")
   count=count+require(state.context.clientStates[0]==2,"first free client slot became a bot")
@@ -33,7 +36,7 @@ function main(args)
   count=count+require(chat!=void and chat.chat!=void and chat.chat.chatName=="sarge" and chat.gender==2 and move!=void,"retail setup initialized chat and move handles")
   frameResult=0;for frame=1 to 512 if frameResult is error then break end if;frameResult=try(match.runFrame(state,1000+frame*100)) end for
   command=state.context.usercmds[0]
-  count=count+require(not (frameResult is error) and state.context.lastBotTrap==211 and state.context.frames==512 and state.context.botServer.clients[0].lastPacketTime>=52200 and command.forwardmove==40 and command.rightmove==120 and command.upmove==0 and command.weapon==8 and goal.goalStackTop==1 and state.context.aasRouteCache.hits>0 and state.context.aasRouteCache.misses>0 and chat.numConsoleMessages==0 and move.numAvoidSpots==0 and len(state.context.aiChatMatches.templates)==138 and len(state.context.aiChatStrings.groups)==175,"initialized Sarge runs 512 bot frames through AAS presence tracing and submits the evolved movement command")
+  count=count+require(not (frameResult is error) and state.context.lastBotTrap==211 and state.context.frames==512 and state.context.botServer.clients[0].lastPacketTime>=52200 and command.forwardmove==40 and command.rightmove==120 and command.upmove==0 and command.weapon==8 and goal.goalStackTop==1 and state.context.aasRouteCache.hits>0 and state.context.aasRouteCache.misses>0 and chat.numConsoleMessages==0 and move.numAvoidSpots==0 and len(state.context.aiChatMatches.templates)==138 and len(state.context.aiChatStrings.groups)==175,"queued menu bot starts in the match and runs 512 bot frames through AAS")
   slots=[];for unused=1 to 7 slots=slots+[match.allocateBot(state.context)] end for
   count=count+require(slots==[1,2,3,4,5,6,7] and match.allocateBot(state.context)==-1,"eight-slot server capacity")
   match.freeBot(state.context,3);replacement=match.allocateBot(state.context)

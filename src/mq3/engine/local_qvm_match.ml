@@ -169,7 +169,7 @@ struct Snapshot serverTime playerState entities end struct
 // from ui.qvm into a local game.  MiniQuake3 boots the heavy game host only
 // after the UI selects a map, so explicitly carry that persistent state across
 // the host boundary instead of silently reverting menu choices and bindings.
-struct UserSettings cvars bindings userinfos end struct
+struct UserSettings cvars bindings userinfos pendingBotCommands end struct
 
 function fail(message) return error(7640,"local QVM match: "+message) end function
 
@@ -691,7 +691,7 @@ function seedCvars(registry)
   cvar.get(registry,"mapname","q3dm1",cvar.SERVERINFO|cvar.ROM)
   cvar.get(registry,"sv_maxclients","8",cvar.SERVERINFO|cvar.LATCH)
   cvar.get(registry,"g_gametype","0",cvar.SERVERINFO|cvar.LATCH)
-  cvar.get(registry,"bot_enable","0",cvar.LATCH)
+  cvar.get(registry,"bot_enable","1",cvar.LATCH)
   cvar.get(registry,"g_log","",cvar.ARCHIVE)
   cvar.get(registry,"dedicated","0",cvar.ROM)
   return void
@@ -708,7 +708,7 @@ function captureUserSettings(value)
   for key=0 to cgameKeys.MAX_KEYS-1 bindings[key]=value.context.cgameKeys.bindings[key] end for
   userinfos=array(MAX_CLIENTS,"")
   for client=0 to MAX_CLIENTS-1 userinfos[client]=value.context.userinfos[client] end for
-  return UserSettings(savedCvars.toArray(),bindings,userinfos)
+  return UserSettings(savedCvars.toArray(),bindings,userinfos,[])
 end function
 
 function applySavedCvars(registry,settings)
@@ -731,6 +731,9 @@ function applySavedClientState(context,settings)
   for key=0 to count-1 context.cgameKeys.bindings[key]=settings.bindings[key] end for
   count=len(settings.userinfos);if count>MAX_CLIENTS then count=MAX_CLIENTS end if
   for client=0 to count-1 context.userinfos[client]=settings.userinfos[client] end for
+  // Start Server emits addbot after map in the old command buffer. The menu
+  // shell is discarded at that boundary, so replay only these bot commands.
+  for each text in settings.pendingBotCommands commands.addText(context.commandState,text+"\n") end for
   return void
 end function
 
@@ -820,7 +823,11 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   host=gameVm.services(machineRuntime,qagame.callback(gameSyscalls),loadVm,callVm,restartVm,freeVm);host.context=context;host.millisecondsFn=milliseconds;host.entityStringFn=entityString;host.clearClientEntityFn=clearClient;host.botEnableFn=botEnable
   game=gameVm.create(host);if game is error then return game end if;context.game=game
   initialized=gameVm.initialize(game,now,MAX_CLIENTS);if initialized is error then return initialized end if
-  return Boot(game,machineRuntime,context,void,void)
+  // Server commands (including addbot) must dispatch before CG_INIT; the
+  // original Start Server UI leaves them queued behind the map transition.
+  boot=Boot(game,machineRuntime,context,void,void)
+  context.commandState.context=boot;context.commandState.serverRunning=true;context.commandState.serverGameCommandFn=serverGameCommand
+  return boot
 end function
 function bootConfiguredNamedMode(archive,map,now,qvmRoot,botsEnabled,mapName,startGame) return bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,mapName,startGame,void) end function
 function bootConfiguredNamed(archive,map,now,qvmRoot,botsEnabled,mapName) return bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,mapName,true,void) end function
