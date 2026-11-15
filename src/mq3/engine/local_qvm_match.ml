@@ -162,7 +162,7 @@ struct FileCursor data offset end struct
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
 struct RenderView refdef scene end struct
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks nativePlayers game cgameQueryMemo inputClearContext inputClearFn end struct
+struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks nativePlayers game cgameQueryMemo inputClearContext inputClearFn pendingClientCommands end struct
 struct Boot game runtime context cgame ui end struct
 struct Snapshot serverTime playerState entities end struct
 // The original engine keeps one cvar/key/userinfo store alive while moving
@@ -283,7 +283,12 @@ function setConfigstring(context,index,text) if index>=0 and index<MAX_CONFIGSTR
 function getConfigstring(context,index) if index<0 or index>=MAX_CONFIGSTRINGS then return "" end if;return context.configstrings[index] end function
 function getUserinfo(context,index) if index<0 or index>=len(context.userinfos) then return "" end if;return context.userinfos[index] end function
 function setUserinfo(context,index,text) if index>=0 and index<len(context.userinfos) then context.userinfos[index]=text end if;return void end function
-function getServerinfo(context) mapName=cvar.get(context.cvars,"mapname","q3dm1",cvar.SERVERINFO|cvar.ROM).string;return "\\sv_hostname\\MiniQuake3\\mapname\\"+mapName+"\\sv_maxclients\\8\\g_gametype\\0" end function
+function getServerinfo(context)
+  mapName=cvar.get(context.cvars,"mapname","q3dm1",cvar.SERVERINFO|cvar.ROM).string
+  maxClients=cvar.get(context.cvars,"sv_maxclients","8",cvar.SERVERINFO|cvar.LATCH).string
+  gameType=cvar.get(context.cvars,"g_gametype","0",cvar.SERVERINFO|cvar.LATCH).string
+  return "\\sv_hostname\\MiniQuake3\\mapname\\"+mapName+"\\sv_maxclients\\"+maxClients+"\\g_gametype\\"+gameType
+end function
 function entityIndex(context,entity)
   if context.entityStride<=0 or entity<context.gameEntities then return -1 end if
   delta=entity-context.gameEntities;if delta%context.entityStride!=0 then return -1 end if
@@ -767,7 +772,7 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   uiClient=uiHost.createClientState(uiHost.CA_DISCONNECTED,0,-1,"localhost","","");if uiClient is error then return uiClient end if
   nativeServerCmds=nativeCgameServercmds.create();nativeServerCmds.configstrings=configstrings
   nativeMain=nativeCgameMain.create();nativeMain.configstrings=configstrings
-  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.createFast(void,void,256),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create(),void,cgameCollisionCache.create(),void,void)
+  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.createFast(void,void,256),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create(),void,cgameCollisionCache.create(),void,void,lists.List.withCapacity(8))
   commands.initCommands(context.commandState);installed=cvarCommands.install(registry,context.commandState);if installed is error then return installed end if
   bindingState=bindingConfig.create(context.cgameKeys);bindingState.printFn=emitPrint;bindingState.printContext=context
   installed=bindingConfig.install(bindingState,context.commandState);if installed is error then return installed end if
@@ -918,6 +923,15 @@ function runFrame(value,serverTime)
 end function
 function runServerFrame(value,serverTime)
   value.context.now=serverTime;botServerBridge.setTime(value.context.botServer,serverTime)
+  // CL_SendClientCommand is delivered to GAME_CLIENT_COMMAND on the next
+  // server tick. In particular, CG_ScoresDown's "score" must reach qagame.
+  pending=value.context.pendingClientCommands.toArray();value.context.pendingClientCommands.clear()
+  for each text in pending
+    if value.context.clientStates[0]!=0 then
+      commands.tokenizeString(value.context.commandState,text)
+      delivered=gameVm.clientCommand(value.game,0);if delivered is error then return delivered end if
+    end if
+  end for
   if value.game.botEnable!=0 then botFrame=gameVm.botStartFrame(value.game,serverTime);if botFrame is error then return botFrame end if end if
   for each pending in botServerBridge.takePending(value.context.botServer)
     clientNum=pending[0];recorded=recordLocalUsercmd(value.context,clientNum,pending[1]);if recorded is error then return recorded end if
@@ -1185,7 +1199,11 @@ function addCommand(context,name)
   context.console=context.console+[[0,"add "+name]];return void
 end function
 function removeCommand(context,name) commands.removeCommand(context.commandState,name);return void end function
-function sendClientCommand(context,name) context.console=context.console+[[0,"client "+name]];return void end function
+function sendClientCommand(context,name)
+  context.console=context.console+[[0,"client "+name]]
+  context.pendingClientCommands.add(name)
+  return void
+end function
 function updateScreen(context) return void end function
 function loadWorld(context,name)
   context.renderCommands=context.renderCommands+[[36,name]]

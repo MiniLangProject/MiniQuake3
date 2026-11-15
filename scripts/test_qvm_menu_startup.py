@@ -27,7 +27,10 @@ def main() -> int:
     require(menu, "return gameApp.runWithSettingsNamed(archive,selectedMap,mapName,qvmRoot,settings)", "deferred named full match start")
     require(menu, "time.sleep(16)", "bounded menu refresh cadence")
     require(menu, "state.context.soundCommands=[];audio.commandCursor=0", "consumed menu sound queue compaction")
-    require(menu, "mapName=requestedMap(state,0);quitRequested=requestedQuit(state,0);state.context.console=[]", "consumed host command queue compaction")
+    require(menu, "mapName=requestedMap(state,0);singlePlayer=requestedSinglePlayer(state,0);quitRequested=requestedQuit(state,0)", "single-player map handoff")
+    require(menu, "settings.pendingBotCommands=menuBotCommands", "arena bot commands survive menu queue compaction")
+    require(menu, 'saved[1]="2"', "single-player game type reaches qagame")
+    require(menu, "state.context.console=[]", "consumed host command queue compaction")
     require(match, "if not startGame then return Boot(void,machineRuntime,context,void,void) end if", "pre-game return before qagame/cgame")
     require(match, "bootConfiguredNamedMode(archive,map,now,qvmRoot,false,\"q3dm1\",false)", "UI shell without game startup")
 

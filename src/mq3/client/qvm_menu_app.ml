@@ -47,12 +47,21 @@ function requestedMap(state,start)
     text=strings.replaceAll(text,";"," ");text=strings.replaceAll(text,"\r"," ");text=strings.replaceAll(text,"\n"," ");text=strings.replaceAll(text,"\t"," ")
     fields=strings.split(text," ")
     for fieldIndex=0 to len(fields)-1
-      if (fields[fieldIndex]=="map" or fields[fieldIndex]=="spmap" or fields[fieldIndex]=="devmap") and fieldIndex+1<len(fields) then
+      if (fields[fieldIndex]=="map" or fields[fieldIndex]=="spmap" or fields[fieldIndex]=="devmap" or fields[fieldIndex]=="spdevmap") and fieldIndex+1<len(fields) then
         mapName=strings.trim(fields[fieldIndex+1]);if mapName!="" then return mapName end if
       end if
     end for
   end for
   return void
+end function
+function requestedSinglePlayer(state,start)
+  if state==void or state.context==void or start<0 or start>=len(state.context.console) then return false end if
+  for index=start to len(state.context.console)-1
+    text=strings.toLowerAscii(state.context.console[index][1]);text=strings.replaceAll(text,";"," ");text=strings.replaceAll(text,"\r"," ");text=strings.replaceAll(text,"\n"," ")
+    fields=strings.split(text," ")
+    for each field in fields if field=="spmap" or field=="spdevmap" then return true end if end for
+  end for
+  return false
 end function
 function requestedQuit(state,start)
   if state==void or state.context==void or start<0 or start>=len(state.context.console) then return false end if
@@ -90,7 +99,7 @@ function run(archive,bootstrapMap,qvmRoot)
   state.context.soundCommands=[];audio.commandCursor=0
   audioStarted=audioOutput.init(22050);if audioStarted is error then qvm2d.release(catalog);window.shutdown();match.shutdown(state);return audioStarted end if
   window.setTitle("MiniQuake3 | Quake III Arena Main Menu")
-  window.inputClear();state.context.console=[];uploadedTextures=len(catalog.textures);soundAssetCount=len(state.context.assets);now=1000;mapName=void;quitRequested=false
+  window.inputClear();state.context.console=[];uploadedTextures=len(catalog.textures);soundAssetCount=len(state.context.assets);now=1000;mapName=void;quitRequested=false;singlePlayer=false;menuBotCommands=[]
   while not window.shouldClose() and not quitRequested and mapName==void
     begun=inputLatch.beginFrame(input.keys);if begun is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return begun end if;window.poll();input.mouse=window.mouseDelta();nativeEvents=window.inputEvents(256);if nativeEvents is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return nativeEvents end if;observed=observeInputEvents(input,nativeEvents);if observed is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return observed end if;now=now+16
     reset=localQvmUi.resetFrameCommands(state);if reset is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return reset end if
@@ -102,23 +111,28 @@ function run(archive,bootstrapMap,qvmRoot)
     state.context.soundCommands=[];audio.commandCursor=0
     window.beginFrame(0,0,0);drawn=qvm2d.draw(catalog,now);if drawn is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return drawn end if;window.present()
     if audioOutput.canSubmit() then chunk=qvmPlayback.renderFast(audio);if chunk is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return chunk end if;accepted=audioOutput.submit(chunk.samples);if accepted is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return accepted end if end if
-    mapName=requestedMap(state,0);quitRequested=requestedQuit(state,0);state.context.console=[]
+    mapName=requestedMap(state,0);singlePlayer=requestedSinglePlayer(state,0);quitRequested=requestedQuit(state,0)
+    for each entry in state.context.console
+      source=strings.replaceAll(entry[1],"\r","\n")
+      for each line in strings.split(source,"\n")
+        for each fragment in strings.split(line,";")
+          command=strings.trim(fragment);fields=strings.split(command," ")
+          if len(fields)>1 and strings.toLowerAscii(fields[0])=="addbot" then menuBotCommands=menuBotCommands+[command] end if
+        end for
+      end for
+    end for
+    state.context.console=[]
     // Keep the disconnected UI at the original renderer's practical refresh
     // cadence instead of burning a CPU core and presenting partial frames.
     time.sleep(16)
   end while
   settings=match.captureUserSettings(state)
-  // Original Start Server queues map, wait and addbot in one UI frame. Preserve
-  // the addbot commands when replacing the disconnected shell with the match.
-  for each entry in state.context.console
-    source=strings.replaceAll(entry[1],"\r","\n")
-    for each line in strings.split(source,"\n")
-      for each fragment in strings.split(line,";")
-        command=strings.trim(fragment);fields=strings.split(command," ")
-        if len(fields)>1 and strings.toLowerAscii(fields[0])=="addbot" then settings.pendingBotCommands=settings.pendingBotCommands+[command] end if
-      end for
-    end for
-  end for
+  settings.pendingBotCommands=menuBotCommands
+  if singlePlayer then
+    // SV_Map_f sets GT_SINGLE_PLAYER before G_InitGame; G_InitBots reads the
+    // arena's bot list only in that mode.
+    for each saved in settings.cvars if strings.toLowerAscii(saved[0])=="g_gametype" then saved[1]="2";saved[3]=void end if end for
+  end if
   audioOutput.shutdown();qvm2d.release(catalog);match.shutdown(state)
   if mapName==void then window.shutdown();return 0 end if
   // Keep the existing HWND/WGL context across the menu-to-match transition.

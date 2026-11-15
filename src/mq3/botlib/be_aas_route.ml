@@ -58,14 +58,14 @@ function AAS_RemoveRoutingCacheInCluster(state,cluster)
   if state==void then return 0 end if;kept=[];removed=0
   for each value in state.lru if value.cluster==cluster then value.linked=false;state.routingCacheSize=state.routingCacheSize-value.size;removed=removed+1 else kept=kept+[value] end if end for
   state.lru=kept;if state.routingCacheSize<0 then state.routingCacheSize=0 end if
-  state.cache.areaCaches=[];state.cache.entries=[];return removed
+  state.cache.areaCaches=[];state.cache.entries=[];state.cache.areaIndex.clear();state.cache.routeIndex.clear();return removed
 end function
 function AAS_RemoveRoutingCacheUsingArea(state,areaNum)
   if not validState(state) or areaNum<=0 or areaNum>=len(state.router.settings) then return 0 end if
   cluster=state.router.settings[areaNum].cluster;removed=0
   if cluster>0 then removed=removed+AAS_RemoveRoutingCacheInCluster(state,cluster)
   else portal=routeCache.portalForArea(state.cache,areaNum);if portal!=void and not (portal is error) then removed=removed+AAS_RemoveRoutingCacheInCluster(state,portal.frontCluster);removed=removed+AAS_RemoveRoutingCacheInCluster(state,portal.backCluster) end if end if
-  state.cache.portalCaches=[];state.cache.entries=[];return removed
+  state.cache.portalCaches=[];state.cache.entries=[];state.cache.portalIndex.clear();state.cache.routeIndex.clear();return removed
 end function
 function AAS_EnableRoutingArea(state,areaNum,enable)
   if not validState(state) then return 0 end if;before=runtimeAas.enableRoutingArea(state.runtime,areaNum,-1);result=runtimeAas.enableRoutingArea(state.runtime,areaNum,enable)
@@ -93,10 +93,10 @@ function AAS_AllocRoutingCache(state,numTravelTimes)
   if state==void or numTravelTimes<0 then return void end if;size=48+numTravelTimes*3;value=RoutingCache(size,0,0,0,array(numTravelTimes,0),array(numTravelTimes,0),0.0,false,0);state.routingCacheSize=state.routingCacheSize+size;AAS_LinkCache(state,value)
   while state.maxRoutingCacheSize>0 and state.routingCacheSize>state.maxRoutingCacheSize and len(state.lru)>1 AAS_FreeOldestCache(state) end while;return value
 end function
-function AAS_FreeAllClusterAreaCache(state) if state==void then return 0 end if;count=len(state.cache.areaCaches);state.cache.areaCaches=[];state.cache.entries=[];return count end function
-function AAS_InitClusterAreaCache(state) if state==void then return 0 end if;state.cache.areaCaches=[];return state.runtime.map.counts[aas.LUMP_CLUSTERS] end function
-function AAS_FreeAllPortalCache(state) if state==void then return 0 end if;count=len(state.cache.portalCaches);state.cache.portalCaches=[];state.cache.entries=[];return count end function
-function AAS_InitPortalCache(state) if state==void then return 0 end if;state.cache.portalCaches=[];return state.runtime.map.counts[aas.LUMP_AREAS] end function
+function AAS_FreeAllClusterAreaCache(state) if state==void then return 0 end if;count=len(state.cache.areaCaches);state.cache.areaCaches=[];state.cache.entries=[];state.cache.areaIndex.clear();state.cache.routeIndex.clear();return count end function
+function AAS_InitClusterAreaCache(state) if state==void then return 0 end if;state.cache.areaCaches=[];state.cache.areaIndex.clear();return state.runtime.map.counts[aas.LUMP_CLUSTERS] end function
+function AAS_FreeAllPortalCache(state) if state==void then return 0 end if;count=len(state.cache.portalCaches);state.cache.portalCaches=[];state.cache.entries=[];state.cache.portalIndex.clear();state.cache.routeIndex.clear();return count end function
+function AAS_InitPortalCache(state) if state==void then return 0 end if;state.cache.portalCaches=[];state.cache.portalIndex.clear();return state.runtime.map.counts[aas.LUMP_AREAS] end function
 function AAS_InitRoutingUpdate(state) if state==void then return 0 end if;return state.runtime.map.counts[aas.LUMP_AREAS]+state.runtime.map.counts[aas.LUMP_PORTALS] end function
 function AAS_CreateAllRoutingCache(state)
   if not validState(state) then return 0 end if;created=0;areaCount=len(state.router.settings)

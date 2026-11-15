@@ -4,6 +4,30 @@ Stand: 2026-11-15. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+Singleplayer-Korrektur: Das originale `spmap` setzt vor `G_InitGame`
+`g_gametype=2`; der bisherige Menüpfad verlor diese Unterscheidung und damit
+die automatische Arena-Botliste. Die Menü-zu-Match-Übergabe setzt nun den
+Spielmodus, bewahrt ausstehende `addbot`-Befehle vor dem Leeren der Menüqueue
+und liefert `score` an `GAME_CLIENT_COMMAND`. Die Retail-Probe mit q3dm1
+prüft Ranger als Gegner, den menschlichen CS_PLAYERS-Eintrag und die
+Scoreboard-Antwort. Die neue Score-Antwort lautet bei q3dm1
+`scores 2 ... 0 ... 1 ...`: Beide Client-IDs werden als menschlicher
+Spieler und Ranger durch die originale Qagame ausgegeben. Ein visueller
+Scoreboard-Test im laufenden Fenster steht noch aus.
+
+Der AAS-Cache verwendet jetzt Hash-Indizes für Routen, Cluster- und
+Portaltabellen und aktualisiert LRU-Zeitstempel ohne Array-Kopie pro Treffer.
+Die 30 Routing-Verträge und fünf Retail-Routenprüfungen bestehen. Die
+200-Frame-Botprobe sank in ihren vier 50-Frame-Abschnitten von
+625/3078/3688/2312 ms auf 453/1593/1766/1703 ms. Der Hardware-Lauf mit
+Retail-q3dm1 und Singleplayer-Bot erreichte 2.000 Bilder in 39,033 s
+(51,24 FPS), P95 49 ms; mittlere Spielsimulation 8,97 ms, Renderer 3,29 ms.
+Vor der Änderung fielen 958 Bilder auf 3,62 FPS mit 258,76 ms Qagame-Zeit
+pro Bild. Die Testlängen sind verschieden, daher ist das ein
+Engpassnachweis und keine exakt kontrollierte FPS-Ratio. Mehrere hundert
+FPS, lange Bot-Matches und der vollständige menschliche Scoreboard-UI-Test
+bleiben offen.
+
 Bots sind jetzt auch beim normalen Menüstart eingeschaltet (`bot_enable=1`).
 Das Start-Server-Menü sendet `map` und danach verzögerte `addbot`-Befehle;
 der Menü-zu-Match-Übergang übernimmt nur diese Bot-Befehle in den neuen

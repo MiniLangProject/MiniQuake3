@@ -66,6 +66,18 @@ Bots sind im normalen Startpfad aktiviert. Das originale Start-Server-Menü
 reicht seine nach `map` wartenden `addbot`-Befehle an das neue Match weiter;
 der Retail-Sarge-Test besteht 512 Bot-Frames mit einem echten Bewegungsbefehl.
 Eine interaktive Langzeitabnahme mit mehreren Bots steht noch aus.
+Beim Singleplayer-Start übernimmt `spmap` nun wie im Original den Spielmodus 2:
+Qagame lädt dadurch den Arena-Gegner aus `scripts/arenas.txt`. Ausstehende
+Menü-Botbefehle bleiben beim Kartenwechsel erhalten. Client-Befehle wie
+`score` erreichen Qagame im nächsten Server-Frame, damit dessen Scoreboard-
+Antwort die menschliche Spielfigur enthält. Die q3dm1-Retail-Probe bestätigt
+Ranger und den menschlichen Player-Configstring sowie die Score-Antwort.
+Die Retail-Botprobe besteht 200 Frames; der AAS-Routingcache vermeidet
+lineare Trefferauswahl und Array-Kopien. Ein grafischer Singleplayer-Lauf
+mit Bot erreichte 51,24 FPS über 2.000 Bilder (P95 49 ms), statt des zuvor
+beobachteten 2–3-FPS-Einbruchs. Das frühere 169,65-FPS-Ergebnis wurde ohne
+Singleplayer-Bot gemessen. Langzeit- und Mehrbot-FPS sowie mehrere hundert
+FPS sind noch offen.
 Zum Testen `build/MiniQuake3.exe` direkt starten; `baseq3/pak*.pk3` und `qvms`
 liegen daneben. Der Start öffnet nur das Spielfenster. Der
 [finale Fehler-/Buildnachweis](docs/verification/2026-11-15-runtime-safety.json)

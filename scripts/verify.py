@@ -456,6 +456,7 @@ def main():
         scripts.append(("test_qvm_renderer_traps.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")]))
         scripts.append(("test_botlib_retail_qagame.py",["--data-root",str(args.data_root),"--qvm-root",str(ROOT / "build/reference/qvms")]))
         scripts.append(("test_bot_spawn_retail.py",["--data-root",str(args.data_root),"--qvm-root",str(ROOT / "build/reference/qvms")]))
+        scripts.append(("test_singleplayer_bot_retail.py",["--data-root",str(args.data_root)]))
         scripts.append(("test_jump_pad_items_retail.py",["--data-root",str(args.data_root),"--qvm-root",str(ROOT / "build/reference/qvms")]))
         scripts.append(("test_aas_trace_areas.py",["--pak",str(args.data_root / "baseq3/pak0.pk3")]))
         scripts.append(("test_maps.py",[str(args.data_root)]))

@@ -9,6 +9,7 @@ import mq3.format.aas as aas
 import mq3.compat.numeric as n
 import mq3.botlib.crc16 as crc16
 import std.fs as fs
+import std.ds.hashmap as maps
 
 const CACHE_AREA=1
 const CACHE_PORTAL=2
@@ -23,11 +24,11 @@ const RCD_RECORD_HEADER_SIZE=24
 struct Entry type cluster areaNum goalAreaNum travelFlags hasOrigin originBits route generation serial end struct
 struct AreaCache cluster goalAreaNum travelFlags travelTimes reachabilities generation serial end struct
 struct PortalCache cluster goalAreaNum travelFlags travelTimes reachabilities generation serial end struct
-struct Cache router entries areaCaches portalCaches generation serial maxEntries hits misses evictions invalidations areaHits areaMisses areaUpdates areaEvictions portalHits portalMisses portalUpdates portalEvictions staticTables end struct
+struct Cache router entries areaCaches portalCaches generation serial maxEntries hits misses evictions invalidations areaHits areaMisses areaUpdates areaEvictions portalHits portalMisses portalUpdates portalEvictions staticTables routeIndex areaIndex portalIndex end struct
 
 function create(router,maxEntries)
   if maxEntries<=0 then maxEntries=DEFAULT_MAX_ENTRIES end if;generation=0;if router!=void and router.runtime!=void then generation=router.runtime.cacheInvalidations end if
-  return Cache(router,[],[],[],generation,0,maxEntries,0,0,0,0,0,0,0,0,0,0,0,0,routingTables.create(router))
+  return Cache(router,[],[],[],generation,0,maxEntries,0,0,0,0,0,0,0,0,0,0,0,0,routingTables.create(router),maps.HashMap.withCapacity(maxEntries*2),maps.HashMap.withCapacity(maxEntries),maps.HashMap.withCapacity(maxEntries))
 end function
 function portalForArea(cache,areaNum)
   if cache==void or cache.router==void or areaNum<=0 or areaNum>=len(cache.router.settings) then return void end if;cluster=cache.router.settings[areaNum].cluster;if cluster>=0 then return void end if
@@ -55,18 +56,21 @@ end function
 function bits(origin)
   if origin==void then return [0,0,0] end if;return [n.floatBits(origin[0]),n.floatBits(origin[1]),n.floatBits(origin[2])]
 end function
-function sameKey(entry,type,cluster,areaNum,goalAreaNum,travelFlags,origin)
-  hasOrigin=origin!=void;if entry.type!=type or entry.cluster!=cluster or entry.areaNum!=areaNum or entry.goalAreaNum!=goalAreaNum or entry.travelFlags!=travelFlags or entry.hasOrigin!=hasOrigin then return false end if
-  if hasOrigin then return entry.originBits==bits(origin) end if;return true
+function routeKey(type,cluster,areaNum,goalAreaNum,travelFlags,hasOrigin,originBits)
+  key=bytes(36,0);n.writeU32(key,0,type);n.writeU32(key,4,cluster);n.writeU32(key,8,areaNum);n.writeU32(key,12,goalAreaNum);n.writeU32(key,16,travelFlags)
+  if hasOrigin then n.writeU32(key,20,1);n.writeU32(key,24,originBits[0]);n.writeU32(key,28,originBits[1]);n.writeU32(key,32,originBits[2]) end if
+  return key
+end function
+function tableKey(cluster,goalAreaNum,travelFlags)
+  key=bytes(12,0);n.writeU32(key,0,cluster);n.writeU32(key,4,goalAreaNum);n.writeU32(key,8,travelFlags);return key
 end function
 function sync(cache)
   if cache==void or cache.router==void or cache.router.runtime==void then return 0 end if;current=cache.router.runtime.cacheInvalidations
-  if current!=cache.generation then cache.entries=[];cache.areaCaches=[];cache.portalCaches=[];cache.generation=current;cache.invalidations=cache.invalidations+1 end if;return current
+  if current!=cache.generation then cache.entries=[];cache.areaCaches=[];cache.portalCaches=[];cache.routeIndex.clear();cache.areaIndex.clear();cache.portalIndex.clear();cache.generation=current;cache.invalidations=cache.invalidations+1 end if;return current
 end function
-function removeAt(values,index)
-  result=[];if len(values)>0 then for cursor=0 to len(values)-1 if cursor!=index then result=result+[values[cursor]] end if end for end if;return result
+function oldestIndex(values)
+  oldest=0;if len(values)>1 then for index=1 to len(values)-1 if values[index].serial<values[oldest].serial then oldest=index end if end for end if;return oldest
 end function
-function sameAreaCache(value,cluster,goalAreaNum,travelFlags,generation) return value.cluster==cluster and value.goalAreaNum==goalAreaNum and value.travelFlags==travelFlags and value.generation==generation end function
 function buildAreaCache(cache,cluster,goalAreaNum,travelFlags)
   if cache==void or cache.router==void or cluster<=0 then return void end if
   clusterValue=aas.cluster(cache.router.runtime.map,cluster);if clusterValue is error then return void end if;count=clusterValue.numReachabilityAreas
@@ -96,14 +100,13 @@ function buildAreaCache(cache,cluster,goalAreaNum,travelFlags)
   cache.areaUpdates=cache.areaUpdates+1;return AreaCache(cluster,goalAreaNum,travelFlags,times,reachabilities,cache.generation,cache.serial)
 end function
 function getAreaCache(cache,cluster,goalAreaNum,travelFlags)
-  if len(cache.areaCaches)>0 then for index=0 to len(cache.areaCaches)-1
-    value=cache.areaCaches[index]
-    if sameAreaCache(value,cluster,goalAreaNum,travelFlags,cache.generation) then cache.areaHits=cache.areaHits+1;cache.serial=cache.serial+1;value.serial=cache.serial;cache.areaCaches=removeAt(cache.areaCaches,index)+[value];return value end if
-  end for end if
-  cache.areaMisses=cache.areaMisses+1;cache.serial=cache.serial+1;value=buildAreaCache(cache,cluster,goalAreaNum,travelFlags);if value==void then return void end if;value.serial=cache.serial;cache.areaCaches=cache.areaCaches+[value]
-  if len(cache.areaCaches)>cache.maxEntries then cache.areaCaches=removeAt(cache.areaCaches,0);cache.areaEvictions=cache.areaEvictions+1 end if;return value
+  key=tableKey(cluster,goalAreaNum,travelFlags);value=cache.areaIndex.get(key)
+  if value!=void then cache.areaHits=cache.areaHits+1;cache.serial=cache.serial+1;value.serial=cache.serial;return value end if
+  cache.areaMisses=cache.areaMisses+1;cache.serial=cache.serial+1;value=buildAreaCache(cache,cluster,goalAreaNum,travelFlags);if value==void then return void end if;value.serial=cache.serial
+  if len(cache.areaCaches)<cache.maxEntries then cache.areaCaches=cache.areaCaches+[value]
+  else slot=oldestIndex(cache.areaCaches);old=cache.areaCaches[slot];cache.areaIndex.remove(tableKey(old.cluster,old.goalAreaNum,old.travelFlags));cache.areaCaches[slot]=value;cache.areaEvictions=cache.areaEvictions+1 end if
+  cache.areaIndex.set(key,value);return value
 end function
-function samePortalCache(value,cluster,goalAreaNum,travelFlags,generation) return value.cluster==cluster and value.goalAreaNum==goalAreaNum and value.travelFlags==travelFlags and value.generation==generation end function
 function buildPortalCache(cache,cluster,goalAreaNum,travelFlags)
   if cache==void or cache.router==void or cluster<=0 or goalAreaNum<=0 or goalAreaNum>=len(cache.router.settings) then return void end if
   portalCount=cache.router.runtime.map.counts[aas.LUMP_PORTALS];times=array(portalCount,0);reachabilities=array(portalCount,0)
@@ -142,12 +145,12 @@ function buildPortalCache(cache,cluster,goalAreaNum,travelFlags)
   cache.portalUpdates=cache.portalUpdates+1;return PortalCache(cluster,goalAreaNum,travelFlags,times,reachabilities,cache.generation,cache.serial)
 end function
 function getPortalCache(cache,cluster,goalAreaNum,travelFlags)
-  if len(cache.portalCaches)>0 then for index=0 to len(cache.portalCaches)-1
-    value=cache.portalCaches[index]
-    if samePortalCache(value,cluster,goalAreaNum,travelFlags,cache.generation) then cache.portalHits=cache.portalHits+1;cache.serial=cache.serial+1;value.serial=cache.serial;cache.portalCaches=removeAt(cache.portalCaches,index)+[value];return value end if
-  end for end if
-  cache.portalMisses=cache.portalMisses+1;cache.serial=cache.serial+1;value=buildPortalCache(cache,cluster,goalAreaNum,travelFlags);if value==void then return void end if;value.serial=cache.serial;cache.portalCaches=cache.portalCaches+[value]
-  if len(cache.portalCaches)>cache.maxEntries then cache.portalCaches=removeAt(cache.portalCaches,0);cache.portalEvictions=cache.portalEvictions+1 end if;return value
+  key=tableKey(cluster,goalAreaNum,travelFlags);value=cache.portalIndex.get(key)
+  if value!=void then cache.portalHits=cache.portalHits+1;cache.serial=cache.serial+1;value.serial=cache.serial;return value end if
+  cache.portalMisses=cache.portalMisses+1;cache.serial=cache.serial+1;value=buildPortalCache(cache,cluster,goalAreaNum,travelFlags);if value==void then return void end if;value.serial=cache.serial
+  if len(cache.portalCaches)<cache.maxEntries then cache.portalCaches=cache.portalCaches+[value]
+  else slot=oldestIndex(cache.portalCaches);old=cache.portalCaches[slot];cache.portalIndex.remove(tableKey(old.cluster,old.goalAreaNum,old.travelFlags));cache.portalCaches[slot]=value;cache.portalEvictions=cache.portalEvictions+1 end if
+  cache.portalIndex.set(key,value);return value
 end function
 function propagatedRoute(cache,cluster,areaNum,origin,goalAreaNum,travelFlags)
   noRoute=routing.Route(0,0);value=getAreaCache(cache,cluster,goalAreaNum,travelFlags);if value==void then return noRoute end if;areaIndex=clusterAreaNum(cache,cluster,areaNum)
@@ -184,9 +187,8 @@ function query(cache,areaNum,origin,goalAreaNum,travelFlags)
   if origin!=void and len(origin)!=3 then return routing.Route(0,0) end if
   if areaNum==goalAreaNum and areaNum>0 and areaNum<len(cache.router.settings) then return routing.Route(1,0) end if
   sync(cache);kind=routeType(cache,areaNum,goalAreaNum);flags=normalizedFlags(cache,areaNum,goalAreaNum,travelFlags)
-  if len(cache.entries)>0 then for index=0 to len(cache.entries)-1
-    entry=cache.entries[index];if sameKey(entry,kind[0],kind[1],areaNum,goalAreaNum,flags,origin) then cache.hits=cache.hits+1;cache.serial=cache.serial+1;entry.serial=cache.serial;cache.entries=removeAt(cache.entries,index)+[entry];return routing.Route(entry.route.travelTime,entry.route.reachNum) end if
-  end for end if
+  originBits=bits(origin);key=routeKey(kind[0],kind[1],areaNum,goalAreaNum,flags,origin!=void,originBits);entry=cache.routeIndex.get(key)
+  if entry!=void then cache.hits=cache.hits+1;cache.serial=cache.serial+1;entry.serial=cache.serial;return routing.Route(entry.route.travelTime,entry.route.reachNum) end if
   cache.misses=cache.misses+1;route=routing.Route(0,0)
   if kind[0]==CACHE_AREA then route=propagatedRoute(cache,kind[1],areaNum,origin,goalAreaNum,flags) else route=propagatedPortalRoute(cache,kind[1],areaNum,origin,goalAreaNum,flags) end if
   // A cache miss must never change the route selected by the weighted router.
@@ -197,12 +199,14 @@ function query(cache,areaNum,origin,goalAreaNum,travelFlags)
     direct=routing.areaRouteToGoalArea(cache.router,areaNum,origin,goalAreaNum,flags)
     if route.travelTime!=direct.travelTime or route.reachNum!=direct.reachNum then route=direct end if
   end if;cache.serial=cache.serial+1
-  cache.entries=cache.entries+[Entry(kind[0],kind[1],areaNum,goalAreaNum,flags,origin!=void,bits(origin),routing.Route(route.travelTime,route.reachNum),cache.generation,cache.serial)]
-  if len(cache.entries)>cache.maxEntries then cache.entries=removeAt(cache.entries,0);cache.evictions=cache.evictions+1 end if;return route
+  entry=Entry(kind[0],kind[1],areaNum,goalAreaNum,flags,origin!=void,originBits,routing.Route(route.travelTime,route.reachNum),cache.generation,cache.serial)
+  if len(cache.entries)<cache.maxEntries then cache.entries=cache.entries+[entry]
+  else slot=oldestIndex(cache.entries);old=cache.entries[slot];cache.routeIndex.remove(routeKey(old.type,old.cluster,old.areaNum,old.goalAreaNum,old.travelFlags,old.hasOrigin,old.originBits));cache.entries[slot]=entry;cache.evictions=cache.evictions+1 end if
+  cache.routeIndex.set(key,entry);return route
 end function
 function areaTravelTimeToGoalArea(cache,areaNum,origin,goalAreaNum,travelFlags) return query(cache,areaNum,origin,goalAreaNum,travelFlags).travelTime end function
 function areaReachabilityToGoalArea(cache,areaNum,origin,goalAreaNum,travelFlags) return query(cache,areaNum,origin,goalAreaNum,travelFlags).reachNum end function
-function clear(cache) if cache!=void then cache.entries=[];cache.areaCaches=[];cache.portalCaches=[];cache.generation=0;if cache.router!=void and cache.router.runtime!=void then cache.generation=cache.router.runtime.cacheInvalidations end if;cache.serial=0;cache.hits=0;cache.misses=0;cache.evictions=0;cache.invalidations=0;cache.areaHits=0;cache.areaMisses=0;cache.areaUpdates=0;cache.areaEvictions=0;cache.portalHits=0;cache.portalMisses=0;cache.portalUpdates=0;cache.portalEvictions=0 end if;return 0 end function
+function clear(cache) if cache!=void then cache.entries=[];cache.areaCaches=[];cache.portalCaches=[];cache.routeIndex.clear();cache.areaIndex.clear();cache.portalIndex.clear();cache.generation=0;if cache.router!=void and cache.router.runtime!=void then cache.generation=cache.router.runtime.cacheInvalidations end if;cache.serial=0;cache.hits=0;cache.misses=0;cache.evictions=0;cache.invalidations=0;cache.areaHits=0;cache.areaMisses=0;cache.areaUpdates=0;cache.areaEvictions=0;cache.portalHits=0;cache.portalMisses=0;cache.portalUpdates=0;cache.portalEvictions=0 end if;return 0 end function
 
 // AAS_WriteRouteCache writes a stable 32-byte RCD v2 header.  The original
 // payload embeds native pointers, so MiniQuake3 follows that header with a
@@ -253,7 +257,10 @@ function decodeRcd(cache,data)
   if portalCount>0 then for index=0 to portalCount-1 serial=serial+1;decoded=try(decodeRecord(cache,data,offset,0,generation,serial));if decoded is error then return false end if;portals=portals+[decoded[0]];offset=decoded[1] end for end if
   if areaCount>0 then for index=0 to areaCount-1 serial=serial+1;decoded=try(decodeRecord(cache,data,offset,1,generation,serial));if decoded is error then return false end if;areas=areas+[decoded[0]];offset=decoded[1] end for end if
   if offset!=len(data) then return false end if
-  cache.entries=[];cache.portalCaches=portals;cache.areaCaches=areas;cache.generation=generation;cache.serial=serial;return true
+  cache.entries=[];cache.routeIndex.clear();cache.portalIndex.clear();cache.areaIndex.clear();cache.portalCaches=portals;cache.areaCaches=areas
+  for each value in portals cache.portalIndex.set(tableKey(value.cluster,value.goalAreaNum,value.travelFlags),value) end for
+  for each value in areas cache.areaIndex.set(tableKey(value.cluster,value.goalAreaNum,value.travelFlags),value) end for
+  cache.generation=generation;cache.serial=serial;return true
 end function
 function saveRcd(cache,path) data=encodeRcd(cache);if data is error then return false end if;result=try(fs.writeAllBytes(path,data));if result is error then return false end if;return result==true end function
 function loadRcd(cache,path) data=try(fs.readAllBytes(path));if data is error then return false end if;return decodeRcd(cache,data) end function
