@@ -734,6 +734,15 @@ function applySavedClientState(context,settings)
   return void
 end function
 
+// Initial desktop controls. Saved menu bindings replace these on map changes.
+function seedDesktopBindings(context)
+  for each pair in [[119,"+forward"],[97,"+moveleft"],[115,"+back"],[100,"+moveright"],[32,"+moveup"],[99,"+movedown"],[137,"+movedown"],[178,"+attack"],[179,"+zoom"],[9,"+scores"],[138,"+speed"],[116,"messagemode"],[121,"messagemode2"],[103,"+button3"],[91,"weapprev"],[93,"weapnext"],[132,"+forward"],[133,"+back"],[134,"+left"],[135,"+right"]]
+    cgameKeys.setBinding(context.cgameKeys,pair[0],pair[1])
+  end for
+  for weapon=1 to 9 cgameKeys.setBinding(context.cgameKeys,48+weapon,"weapon "+str(weapon)) end for
+  return void
+end function
+
 function qagameRealTime(context)
   return cgameMisc.sampleRealTime()
 end function
@@ -759,6 +768,7 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   commands.initCommands(context.commandState);installed=cvarCommands.install(registry,context.commandState);if installed is error then return installed end if
   bindingState=bindingConfig.create(context.cgameKeys);bindingState.printFn=emitPrint;bindingState.printContext=context
   installed=bindingConfig.install(bindingState,context.commandState);if installed is error then return installed end if
+  seedDesktopBindings(context)
   restored=applySavedClientState(context,settings);if restored is error then return restored end if
   textServices=consoleInput.services(context);textServices.commandFn=consoleInputCommand;textServices.reliableFn=consoleInputReliable;textServices.printFn=emitPrint;textServices.scrollFn=consoleScroll
   context.clientTextInput=consoleInput.create(78,textServices)

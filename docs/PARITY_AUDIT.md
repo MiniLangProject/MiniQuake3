@@ -4,6 +4,15 @@ Stand: 2026-11-15. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+Die Startbelegung ist jetzt im gemeinsamen UI-/Match-Keyzustand gesetzt:
+WASD, Sprung, Ducken, Feuer, Zoom, Chat, Punktetafel und Waffen 1–9.
+`m_pitch` startet mit `-0.022` für invertierte vertikale Mausbewegung.
+Das Menü reicht geänderte Bindings und Cvars beim Kartenwechsel weiter.
+Der frische Windows-Build stimmt mit allen eingefrorenen MiniLang-Eingaben
+überein; 95 Frame-Input-, 29 App-Routing- und 22 Binding-Dispatch-Verträge
+sowie ein fehlerfrei beendeter CLI-Aufruf des Retail-QVM-Pfads mit q3dm1
+über zwei Frames wurden geprüft. Ein interaktiver Tastaturtest steht noch aus.
+
 ## Abschließender Fix für Controls und bewegungsabhängige Hänger
 
 Der Controls-Absturz ist im vollständigen Retail-/Hardware-Pfad korrigiert:

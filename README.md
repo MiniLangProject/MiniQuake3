@@ -57,6 +57,11 @@ Bild benötigt 172 ms; danach überschreitet keines 100 ms. Der frühere
 Einbruch auf 2 FPS bleibt aus. Die normale EXE erreicht 169,65 FPS über
 5.000 Frames bei P95 8 ms und 2,641 s Matchstart. **Die 200-FPS- und
 vollständige 1:1-Abnahme bleiben offen.** Der Hauptmenüstart benötigt 0,42 s.
+Die Startbelegung nutzt WASD, Leertaste zum Springen, Strg zum Ducken,
+linke Maustaste zum Feuern, rechte Maustaste zum Zoomen, 1–9 für die neun
+Baseq3-Waffen, Tab für die Punktetafel und T für Chat. Die vertikale Maus ist
+standardmäßig invertiert (`m_pitch -0.022`). Änderungen im Controls-Menü
+werden beim Kartenwechsel übernommen.
 Zum Testen `build/MiniQuake3.exe` direkt starten; `baseq3/pak*.pk3` und `qvms`
 liegen daneben. Der Start öffnet nur das Spielfenster. Der
 [finale Fehler-/Buildnachweis](docs/verification/2026-11-15-runtime-safety.json)
