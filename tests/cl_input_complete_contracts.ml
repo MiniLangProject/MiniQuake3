@@ -43,7 +43,7 @@ function main(args)
   s=make();input.accumulateMouse(s.inputState,10,-5);value=clean(s);cl.CL_MouseMove(s,value);count=count+req(s.inputState.mouseIndex==1 and s.inputState.viewangles[1]<0.0,"mouse move")
   s=make();input.joystickEvent(s.inputState,1,-20);value=clean(s);cl.CL_JoystickMove(s,value);count=count+req(value.forwardmove==-20,"joystick move")
   s=make();s.inputState.buttons[0].wasPressed=true;value=clean(s);cl.CL_CmdButtons(s,value);count=count+req((value.buttons&1)!=0 and not s.inputState.buttons[0].wasPressed,"transient command button")
-  s=make();s.weapon=261;s.serverTime=777;s.inputState.viewangles=[90.0,-45.0,0.0];value=clean(s);cl.CL_FinishMove(s,value);count=count+req(value.weapon==5 and value.serverTime==777 and value.angles[0]==16384 and value.angles[1]==-8192,"finish move")
+  s=make();s.weapon=261;s.serverTime=777;s.inputState.viewangles=[90.0,-45.0,0.0];value=clean(s);cl.CL_FinishMove(s,value);count=count+req(value.weapon==5 and value.serverTime==777 and value.angles[0]==16384 and value.angles[1]==57344,"finish move")
   s=make();cl.IN_ForwardDown(s,1,100);s.serverTime=501;s.debugMove=1;value=cl.CL_CreateCmd(s);count=count+req(value.forwardmove==127 and value.serverTime==501 and len(s.host.context.graph)==1,"complete create command")
 
   s=make();s.serverTime=1000;cl.IN_ForwardDown(s,1,1);count=count+req(cl.CL_CreateNewCommands(s,50) and s.sendState.cmdNumber==1 and s.sendState.commands[1].forwardmove==124,"command ring creation")

@@ -124,7 +124,8 @@ function frame(state,now)
     if down!=state.down[index] then
       state.down[index]=down
       if state.services.stateEventFn!=void then observed=state.services.stateEventFn(state.services.context,item.quakeKey,down);if observed is error then return observed end if end if
-      sent=dispatchKey(state,item.quakeKey,down,item.normalChar,item.shiftedChar)
+      shiftedChar=0;if shifted then shiftedChar=item.shiftedChar end if
+      sent=dispatchKey(state,item.quakeKey,down,item.normalChar,shiftedChar)
       if sent is error then return sent end if;keyEvents=keyEvents+sent[0];charEvents=charEvents+sent[1];if sent[2]!=0 then menuOpened=true end if
     end if
   end for

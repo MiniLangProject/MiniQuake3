@@ -39,6 +39,7 @@ def main():
     scripts.append(("test_native_md3.py",[]))
     scripts.append(("test_md3_vertex_identity.py",[]))
     scripts.append(("test_scene_reuse_ownership.py",[]))
+    scripts.append(("test_client_frame_input.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_qvm_native_profile.py",[]))
     scripts.append(("test_native_qvm_boundaries.py",[]))
     scripts.append(("test_render_profile.py",[]))

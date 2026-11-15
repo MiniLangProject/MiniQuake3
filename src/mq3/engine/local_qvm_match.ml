@@ -107,6 +107,7 @@ import mq3.vm.pc_parser as pcParser
 import mq3.client.cinematic_runtime as cinematics
 import mq3.client.cgame_usercmd as cgameUsercmd
 import mq3.client.command_ring as matchCommandRing
+import mq3.client.qvm_frame_input as clientFrameInput
 import mq3.client.cgame_console_commands as nativeCgameCommands
 import mq3.client.cgame_snapshot as nativeCgameSnapshot
 import mq3.client.cgame_predict as nativeCgamePredict
@@ -161,7 +162,7 @@ struct FileCursor data offset end struct
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
 struct RenderView refdef scene end struct
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks nativePlayers game cgameQueryMemo end struct
+struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks nativePlayers game cgameQueryMemo inputClearContext inputClearFn end struct
 struct Boot game runtime context cgame ui end struct
 struct Snapshot serverTime playerState entities end struct
 // The original engine keeps one cvar/key/userinfo store alive while moving
@@ -686,6 +687,7 @@ function getUsercmd(context,index)
 end function
 
 function seedCvars(registry)
+  clientFrameInput.registerConfig(registry)
   cvar.get(registry,"mapname","q3dm1",cvar.SERVERINFO|cvar.ROM)
   cvar.get(registry,"sv_maxclients","8",cvar.SERVERINFO|cvar.LATCH)
   cvar.get(registry,"g_gametype","0",cvar.SERVERINFO|cvar.LATCH)
@@ -753,7 +755,7 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   uiClient=uiHost.createClientState(uiHost.CA_DISCONNECTED,0,-1,"localhost","","");if uiClient is error then return uiClient end if
   nativeServerCmds=nativeCgameServercmds.create();nativeServerCmds.configstrings=configstrings
   nativeMain=nativeCgameMain.create();nativeMain.configstrings=configstrings
-  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.createFast(void,void,256),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create(),void,cgameCollisionCache.create())
+  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.createFast(void,void,256),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create(),void,cgameCollisionCache.create(),void,void)
   commands.initCommands(context.commandState);installed=cvarCommands.install(registry,context.commandState);if installed is error then return installed end if
   bindingState=bindingConfig.create(context.cgameKeys);bindingState.printFn=emitPrint;bindingState.printContext=context
   installed=bindingConfig.install(bindingState,context.commandState);if installed is error then return installed end if
@@ -871,20 +873,37 @@ function executeClientConsole(value,text)
   return commands.executeText(value.context.commandState,commands.EXEC_NOW,text)
 end function
 
+function recordLocalUsercmd(context,clientNum,command)
+  if clientNum<0 or clientNum>=len(context.usercmds) or command==void then return fail("valid usercmd client is required") end if
+  context.usercmds[clientNum]=command
+  // CG_INIT uses local client 0. A follow-spectator snapshot may contain a
+  // different playerState.clientNum; it must never redirect the local ring.
+  if clientNum==0 then
+    context.commandNumber=n.i32(context.commandNumber+1)
+    stored=matchCommandRing.store(context.usercmdHistory,context.commandNumber,command);if stored is error then return stored end if
+  end if
+  return void
+end function
+
 function submitUsercmd(value,clientNum,command)
-  if value==void or clientNum<0 or clientNum>=MAX_CLIENTS or command==void then return fail("valid match, client and usercmd are required") end if
+  if command==void then return fail("valid usercmd is required") end if;return submitUsercmdAtHostTime(value,clientNum,command,command.serverTime)
+end function
+function submitUsercmdAtHostTime(value,clientNum,command,hostTime)
+  if value==void or clientNum<0 or clientNum>=MAX_CLIENTS or command==void or hostTime<0 then return fail("valid match, client, usercmd and host time are required") end if
   if value.context.clientStates[clientNum]==0 then return fail("usercmd client is not active") end if
-  value.context.usercmds[clientNum]=command;value.context.now=command.serverTime;value.context.commandNumber=n.i32(value.context.commandNumber+1)
-  stored=matchCommandRing.store(value.context.usercmdHistory,value.context.commandNumber,command);if stored is error then return stored end if
+  recorded=recordLocalUsercmd(value.context,clientNum,command);if recorded is error then return recorded end if
+  value.context.now=hostTime
   return gameVm.clientThink(value.game,clientNum)
 end function
 
 function runFrame(value,serverTime)
+  commands.execute(value.context.commandState);return runServerFrame(value,serverTime)
+end function
+function runServerFrame(value,serverTime)
   value.context.now=serverTime;botServerBridge.setTime(value.context.botServer,serverTime)
-  commands.execute(value.context.commandState)
   if value.game.botEnable!=0 then botFrame=gameVm.botStartFrame(value.game,serverTime);if botFrame is error then return botFrame end if end if
   for each pending in botServerBridge.takePending(value.context.botServer)
-    clientNum=pending[0];value.context.usercmds[clientNum]=pending[1];value.context.commandNumber=n.i32(value.context.commandNumber+1);stored=matchCommandRing.store(value.context.usercmdHistory,value.context.commandNumber,pending[1]);if stored is error then return stored end if
+    clientNum=pending[0];recorded=recordLocalUsercmd(value.context,clientNum,pending[1]);if recorded is error then return recorded end if
     thought=gameVm.clientThink(value.game,clientNum);if thought is error then return thought end if
   end for
   result=gameVm.runFrame(value.game,serverTime);if result is error then return result end if
@@ -1459,6 +1478,15 @@ function uiKeyDown(context,key) return cgameKeys.isDown(context.cgameKeys,key) e
 function uiGetOverstrike(context) return cgameKeys.getOverstrike(context.cgameKeys) end function
 function uiSetOverstrike(context,value) return cgameKeys.setOverstrike(context.cgameKeys,value) end function
 function uiClearKeys(context) return cgameKeys.clearStates(context.cgameKeys) end function
+function uiClearKeysProductive(context)
+  // UI_ForceMenuOff calls Key_ClearStates; release actual command sources too.
+  if context.inputClearFn!=void then released=context.inputClearFn(context.inputClearContext);if released is error then return released end if end if
+  return uiClearKeys(context)
+end function
+function attachInputClear(value,context,callback)
+  if value==void or value.context==void then return fail("match is required for input clear") end if
+  value.context.inputClearContext=context;value.context.inputClearFn=callback;return true
+end function
 function uiGetCatcher(context) return cgameKeys.getCatcher(context.cgameKeys) end function
 function uiSetCatcher(context,value) context.uiKeyCatcher=value;cgameKeys.setCatcher(context.cgameKeys,value);return void end function
 function setKeyDown(value,key,down) if value==void or value.context==void then return false end if;return cgameKeys.setDown(value.context.cgameKeys,key,down) end function
@@ -1468,6 +1496,10 @@ function queueInputCommand(value,text) if value==void or value.context==void the
 function bindingConfigText(value) if value==void or value.context==void then return "unbindall\n" end if;return bindingConfig.bindingText(bindingConfig.create(value.context.cgameKeys)) end function
 function loadBindingConfig(value,text) if value==void or value.context==void then return fail("match and binding config text are required") end if;return bindingConfig.loadText(bindingConfig.create(value.context.cgameKeys),value.context.commandState,text) end function
 function keyCatcher(value) if value==void or value.context==void then return 0 end if;return cgameKeys.getCatcher(value.context.cgameKeys) end function
+function anyKeyDown(value)
+  if value==void or value.context==void then return false end if
+  for each down in value.context.cgameKeys.down if down then return true end if end for;return false
+end function
 function keyIsDown(value,key) if value==void or value.context==void then return false end if;return cgameKeys.isDown(value.context.cgameKeys,key) end function
 function syncClientTextInput(value)
   if value==void or value.context==void or value.context.clientTextInput==void then return false end if
@@ -1475,12 +1507,16 @@ function syncClientTextInput(value)
 end function
 function clientTextKey(value,key,shift,ctrl)
   if not syncClientTextInput(value) then return false end if
-  handled=consoleInput.caughtKey(value.context.clientTextInput,key,shift,ctrl);cgameKeys.setCatcher(value.context.cgameKeys,value.context.clientTextInput.catcher);value.context.uiKeyCatcher=value.context.clientTextInput.catcher;return handled
+  handled=false;if (value.context.clientTextInput.catcher&consoleInput.KEYCATCH_CONSOLE)!=0 then handled=consoleInput.consoleKey(value.context.clientTextInput,key,shift,ctrl) else handled=consoleInput.caughtKey(value.context.clientTextInput,key,shift,ctrl) end if;cgameKeys.setCatcher(value.context.cgameKeys,value.context.clientTextInput.catcher);value.context.uiKeyCatcher=value.context.clientTextInput.catcher;return handled
+end function
+function clientMessageEscape(value)
+  if not syncClientTextInput(value) then return false end if
+  handled=consoleInput.messageKey(value.context.clientTextInput,consoleInput.K_ESCAPE,false,false);cgameKeys.setCatcher(value.context.cgameKeys,value.context.clientTextInput.catcher);value.context.uiKeyCatcher=value.context.clientTextInput.catcher;return handled
 end function
 function clientTextChar(value,ch)
   if not syncClientTextInput(value) then return false end if
   if ch==96 or ch==126 then return true end if
-  handled=consoleInput.caughtChar(value.context.clientTextInput,ch);cgameKeys.setCatcher(value.context.cgameKeys,value.context.clientTextInput.catcher);return handled
+  handled=false;if (value.context.clientTextInput.catcher&consoleInput.KEYCATCH_CONSOLE)!=0 then handled=consoleInput.charEvent(value.context.clientTextInput,value.context.clientTextInput.console,ch) else handled=consoleInput.caughtChar(value.context.clientTextInput,ch) end if;cgameKeys.setCatcher(value.context.cgameKeys,value.context.clientTextInput.catcher);return handled
 end function
 function clientTextState(value) if value==void or value.context==void then return void end if;return value.context.clientTextInput end function
 function clientConsoleState(value) if value==void or value.context==void or value.context.clientTextInput==void then return void end if;return value.context.clientTextInput.consoleRuntime end function
@@ -1589,7 +1625,7 @@ function bootUi(value)
   shared=common.services(context.cvars,context.commandState,context);shared.printFn=emitPrint;shared.errorFn=emitError;shared.millisecondsFn=milliseconds;shared.consoleFn=consoleCommand
   shared.openFn=openFile;shared.readFn=readFile;shared.writeFn=writeFile;shared.closeFn=closeFile
   syscalls=uiSyscall.services(shared,context);syscalls.client.clipboardFn=uiClipboard;syscalls.client.glconfigFn=glconfigBytes;syscalls.client.clientStateFn=uiClientState;syscalls.client.configStringFn=uiConfigString
-  syscalls.keys.keyNameFn=uiKeyName;syscalls.keys.bindingFn=uiBinding;syscalls.keys.setBindingFn=uiSetBinding;syscalls.keys.isDownFn=uiKeyDown;syscalls.keys.getOverstrikeFn=uiGetOverstrike;syscalls.keys.setOverstrikeFn=uiSetOverstrike;syscalls.keys.clearFn=uiClearKeys;syscalls.keys.getCatcherFn=uiGetCatcher;syscalls.keys.setCatcherFn=uiSetCatcher
+  syscalls.keys.keyNameFn=uiKeyName;syscalls.keys.bindingFn=uiBinding;syscalls.keys.setBindingFn=uiSetBinding;syscalls.keys.isDownFn=uiKeyDown;syscalls.keys.getOverstrikeFn=uiGetOverstrike;syscalls.keys.setOverstrikeFn=uiSetOverstrike;syscalls.keys.clearFn=uiClearKeysProductive;syscalls.keys.getCatcherFn=uiGetCatcher;syscalls.keys.setCatcherFn=uiSetCatcher
   syscalls.renderer.registerModelFn=registerModel;syscalls.renderer.registerSkinFn=registerSkin;syscalls.renderer.registerShaderNoMipFn=registerShaderNoMip;syscalls.renderer.clearSceneFn=clearScene;syscalls.renderer.setColorFn=uiSetColor;syscalls.renderer.drawStretchPicFn=uiStretchPic;syscalls.renderer.updateScreenFn=updateScreen
   syscalls.lan.loadFn=uiLanLoad;syscalls.lan.saveFn=uiLanSave;syscalls.lan.addFn=uiLanAdd;syscalls.lan.removeFn=uiLanRemove;syscalls.lan.pingQueueCountFn=uiLanPingCount;syscalls.lan.clearPingFn=uiLanClearPing;syscalls.lan.getPingFn=uiLanPing;syscalls.lan.getPingInfoFn=uiLanPingInfo;syscalls.lan.serverCountFn=uiLanServerCount;syscalls.lan.serverAddressFn=uiLanServerAddress;syscalls.lan.serverInfoFn=uiLanServerInfo;syscalls.lan.serverPingFn=uiLanServerPing;syscalls.lan.markVisibleFn=uiLanMarkVisible;syscalls.lan.isVisibleFn=uiLanIsVisible;syscalls.lan.updatePingsFn=uiLanUpdatePings;syscalls.lan.resetPingsFn=uiLanResetPings;syscalls.lan.serverStatusFn=uiLanServerStatus;syscalls.lan.compareFn=uiLanCompare
   syscalls.fileListFn=uiFileList;syscalls.memoryRemainingFn=memoryRemaining;syscalls.extendedFn=extendedUi;media=uiMedia.services(context);media.sound.registerFn=uiRegisterSound;media.sound.startLocalFn=uiLocalSound;media.sound.stopBackgroundFn=uiStopMusic;media.sound.startBackgroundFn=uiStartMusic

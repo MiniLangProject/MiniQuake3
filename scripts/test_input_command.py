@@ -16,11 +16,12 @@ def check_preview_input_modes(preview_text):
         raise RuntimeError('bounded smoke must still pump native lifecycle/close events')
     physical_anchors = ['nativeInput.mouse=window.mouseDelta()', 'nativeEvents=window.inputEvents(256)',
                         'observeNativeInputEvents(nativeInput,nativeEvents)',
-                        'for each event in nativeEvents', 'if menuActive then',
-                        'for each key in [119,115,100,97,32,178]', 'window.inputKeyDown(key)']
+                        'for each event in nativeEvents']
     for anchor in physical_anchors:
         if anchor not in physical or anchor in before or anchor in after:
             raise RuntimeError('physical QVM input escaped the interactive branch: ' + anchor)
+    if 'for each key in [119,115,100,97,32,178]' in preview_text:
+        raise RuntimeError('UI Key_ClearStates must not repoll held gameplay keys')
     for anchor in ['window.mouseDelta(', 'window.inputEvents(', 'window.inputKeyDown(',
                    'observeNativeInputEvents(', 'pendingInputEvents.enqueue(']:
         if anchor in before or anchor in after:
@@ -46,7 +47,7 @@ def main():
     win_input=ROOT/'Quake-III-Arena-original-source/code/win32/win_input.c';win_wndproc=ROOT/'Quake-III-Arena-original-source/code/win32/win_wndproc.c';win_main=ROOT/'Quake-III-Arena-original-source/code/win32/win_main.c'
     preview_text=preview.read_text(encoding='utf-8')
     check_preview_input_modes(preview_text)
-    for anchor in ['inputCommand.create(', 'timestampedInput.applyBoundQuake(', 'window.inputEvents(', 'inputCommand.createCommand(']:
+    for anchor in ['frameInput.create(', 'frameInput.applyBound(', 'window.inputEvents(', 'frameInput.finish(', 'match.submitUsercmdAtHostTime(']:
         if anchor not in preview_text:raise RuntimeError('productive QVM input integration missing: '+anchor)
     if preview_text.index('window.inputClear()') > preview_text.index('realStart=window.milliseconds()'):
         raise RuntimeError('loading-screen input must be discarded before the native clock is rebased')

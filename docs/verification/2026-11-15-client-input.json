@@ -1,0 +1,483 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "passed": true,
+  "baseline_commit": "d7a7934",
+  "scope": "Productive client-frame input/cmd/Think cadence and Original UI controls, supplementing the 522-gate renderer/QVM baseline; not full game parity.",
+  "input": {
+    "passed": true,
+    "contracts": 95,
+    "routing_contracts": 29,
+    "original_c_records": 7,
+    "retail_contracts": 18,
+    "retail": "PASS: 18 Retail client-frame contracts changedViews=250 clientFrames=250 snapshots=20 localThinks=250 noPredictViews=12 subtickShot=1 teleportYaw=179.999984741211 botRing=separate",
+    "verification": "Fresh source-hash-guarded parallel productive core/routing/Retail compiles; unchanged-C and MiniLang oracle outputs from same productive input ABI. Finalization reads existing results only; no benchmark interference.",
+    "scope": "One command and ClientThink per client frame;20Hz snapshots;previous-CG command time;real4ms camera;subtick attack;teleport delta;separate local/bot history;ordered catcher routing;early UI audio;delegated zoom forced release;12 Controls cvars;unsigned16 packed in32-bit usercmd angles.",
+    "remaining": "Full native pause lifecycle, non-default joystick devices, mlook/centerview integration and complete online protocol/gameplay acceptance remain separate gates.",
+    "sources": {
+      "src/mq3/client/qvm_frame_input.ml": "a87321c81f56bab3dd85efea9dbea2104c14eb494e1235c1a549a005dd1ba71c",
+      "src/mq3/client/input_command.ml": "d293b03823bda4c04e0fbccf556b72198ef42e0689e6dab7e00d0f8f1b14fdb1",
+      "src/mq3/client/qvm_preview_app.ml": "ae70c265bfd571d4cdb897279907ff644ff9ebd667de31bb0f615580c67e20cc",
+      "src/mq3/engine/local_qvm_match.ml": "7bb1571ca0f0c9b154e6fc325798e80564b4e7c0dbb3e7da9fc1c2b5fc1fcc8b",
+      "Quake-III-Arena-original-source/code/client/cl_input.c": "e4dc41bfbb99354cdb9d7cad40581d009d6cb7d68f980867e9d7e98410061c11",
+      "tests/reference/cl_input_complete_oracle.c": "021cd9ecfbab69048052f5833b87c8ecbe5928020470ad8ad269c33930738a09",
+      "build/reference/client_frame_input/modules/mq3/tests/client_frame_routing.ml": "7ceef1509f74b2000592745b6f5deb28bb5832f070c45fb368a4fdf89748c817",
+      "tests/client_frame_input_contracts.ml": "2498e4a8fead3baf06c4b7d1534dba5b9edd567c39237ebd73c484ed4891a1f2",
+      "tests/client_frame_input_routing_contracts.ml": "a865824e23db36b20dbbbffd07c728720209affe35db742616c95d9b1ab4135e",
+      "tests/client_frame_input_oracle.ml": "955953f8e5badf33339d35f4364982eaa76105f2ecfa4096817aa1cc103b0d65",
+      "tests/client_frame_input_retail_probe.ml": "18d971bad95935dd8aa00f441c29c5a0fb2d7b36357b016edb51057ff93864d8"
+    }
+  },
+  "regressions": {
+    "passed": true,
+    "scripts": [
+      "test_cgame_clock.py",
+      "test_cgame_time.py",
+      "test_cgame_predict.py",
+      "test_retail_qvm_match.py",
+      "test_local_qvm_ui.py",
+      "test_bot_spawn_retail.py",
+      "test_cl_console_complete.py"
+    ]
+  },
+  "regression_log_sha256": "3ea8436fe4142df30170086841e2fbfb733b7704fb3b30883e3edaa2135da25f",
+  "short_performance": {
+    "passed": false,
+    "binary_sha256": "98b975e53562cfc1fae9f7ecf63bb7e78a16e49db78ad575373e0c57b1346c88",
+    "renderer": "hardware",
+    "map": "q3dm1",
+    "frames": 1000,
+    "wall_seconds": 8.340377299813554,
+    "startup_ms": 2530.0,
+    "frame_ms": 5.409,
+    "capture_enabled": false,
+    "diagnostic_only": false,
+    "profile_files": {},
+    "native": {
+      "playable_window.dll": "3a51ce7f7d4d6eea5b2a4fa6c16c1bcec79a63690f78d9785a61535dc0306220",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088",
+      "playable_ambient.dll": "ab306299dde70d1c33086248362eb4211f04bf334c623926f6a3affe1a8e6c43"
+    },
+    "scene": {
+      "views": 3,
+      "models": 5,
+      "triangles": 524
+    },
+    "loop": {
+      "elapsed_ms": 5413.0,
+      "fps": 184.740439682246,
+      "work_p50_ms": 5.0,
+      "work_p95_ms": 7.0,
+      "work_p99_ms": 9.0,
+      "work_max_ms": 182.0
+    },
+    "acceptance": {
+      "min_fps": 200.0,
+      "max_work_p95_ms": 8.0,
+      "passed": false
+    }
+  },
+  "long_performance": {
+    "passed": true,
+    "binary_sha256": "98b975e53562cfc1fae9f7ecf63bb7e78a16e49db78ad575373e0c57b1346c88",
+    "renderer": "hardware",
+    "map": "q3dm1",
+    "frames": 5000,
+    "wall_seconds": 27.628581899916753,
+    "startup_ms": 2499.0,
+    "frame_ms": 4.9448,
+    "capture_enabled": false,
+    "diagnostic_only": false,
+    "profile_files": {},
+    "native": {
+      "playable_window.dll": "3a51ce7f7d4d6eea5b2a4fa6c16c1bcec79a63690f78d9785a61535dc0306220",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088",
+      "playable_ambient.dll": "ab306299dde70d1c33086248362eb4211f04bf334c623926f6a3affe1a8e6c43"
+    },
+    "scene": {
+      "views": 3,
+      "models": 5,
+      "triangles": 524
+    },
+    "loop": {
+      "elapsed_ms": 24745.0,
+      "fps": 202.061022428774,
+      "work_p50_ms": 4.0,
+      "work_p95_ms": 7.0,
+      "work_p99_ms": 9.0,
+      "work_max_ms": 151.0
+    },
+    "acceptance": {
+      "min_fps": 200.0,
+      "max_work_p95_ms": 8.0,
+      "passed": true
+    }
+  },
+  "menu_startup_seconds": 0.3,
+  "visual_smoke": {
+    "passed": true,
+    "binary_sha256": "98b975e53562cfc1fae9f7ecf63bb7e78a16e49db78ad575373e0c57b1346c88",
+    "renderer": "hardware",
+    "map": "q3dm1",
+    "frames": 120,
+    "wall_seconds": 4.556739200139418,
+    "startup_ms": 2947.0,
+    "frame_ms": 10.2,
+    "capture_enabled": true,
+    "diagnostic_only": true,
+    "profile_files": {},
+    "native": {
+      "playable_window.dll": "3a51ce7f7d4d6eea5b2a4fa6c16c1bcec79a63690f78d9785a61535dc0306220",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088",
+      "playable_ambient.dll": "ab306299dde70d1c33086248362eb4211f04bf334c623926f6a3affe1a8e6c43"
+    },
+    "scene": {
+      "views": 3,
+      "models": 5,
+      "triangles": 524
+    },
+    "loop": {
+      "elapsed_ms": 1226.0,
+      "fps": 97.8792822185971,
+      "work_p50_ms": 9.0,
+      "work_p95_ms": 12.0,
+      "work_p99_ms": 55.0,
+      "work_max_ms": 125.0
+    }
+  },
+  "profiling_diagnostic": {
+    "scope": "DIAGNOSTIC not FPS",
+    "source_log": "native-qvm-1794752913101840200.log",
+    "method": "Subtract successive per-VM cumulative snapshots; skip first two bootstrap invocations of each listed entry. Native time excludes host traps.",
+    "trap_caveat": "Log prints cumulative top 16 traps only; trap deltas use the most recent reported counter for each ID. Main listed traps remain visible; this is not exhaustive per-trap attribution.",
+    "steady_entries": [
+      {
+        "module": "qagame",
+        "vm": "146672:436836",
+        "entry": 7,
+        "entry_name": "GAME_CLIENT_THINK",
+        "calls": 120,
+        "bootstrap_calls_excluded": 2,
+        "native_ms": 3.811099999999998,
+        "host_ms": 25.198900000000002,
+        "total_ms": 29.009999999999998,
+        "mean_total_ms": 0.24175,
+        "instructions": 668217,
+        "yields": 3226,
+        "largest_traps": [
+          {
+            "id": 24,
+            "name": "G_TRACE",
+            "calls": 240,
+            "host_ms": 10.489999999999998,
+            "mean_host_us": 43.70833333333333,
+            "host_ms_per_entry": 0.08741666666666666
+          },
+          {
+            "id": 30,
+            "name": "G_LINKENTITY",
+            "calls": 118,
+            "host_ms": 6.519800000000001,
+            "mean_host_us": 55.252542372881365,
+            "host_ms_per_entry": 0.054331666666666674
+          },
+          {
+            "id": 25,
+            "name": "G_POINT_CONTENTS",
+            "calls": 240,
+            "host_ms": 2.6149999999999998,
+            "mean_host_us": 10.895833333333332,
+            "host_ms_per_entry": 0.021791666666666664
+          },
+          {
+            "id": 36,
+            "name": "G_GET_USERCMD",
+            "calls": 120,
+            "host_ms": 1.2688,
+            "mean_host_us": 10.573333333333332,
+            "host_ms_per_entry": 0.010573333333333332
+          },
+          {
+            "id": 32,
+            "name": "G_ENTITIES_IN_BOX",
+            "calls": 118,
+            "host_ms": 0.7602000000000001,
+            "mean_host_us": 6.442372881355933,
+            "host_ms_per_entry": 0.006335000000000001
+          },
+          {
+            "id": 42,
+            "name": "G_SNAPVECTOR",
+            "calls": 120,
+            "host_ms": 0.7387,
+            "mean_host_us": 6.155833333333334,
+            "host_ms_per_entry": 0.0061558333333333335
+          },
+          {
+            "id": 100,
+            "name": "internal/shared trap",
+            "calls": 356,
+            "host_ms": 0.6454,
+            "mean_host_us": 1.8129213483146067,
+            "host_ms_per_entry": 0.005378333333333333
+          },
+          {
+            "id": 106,
+            "name": "internal/shared trap",
+            "calls": 875,
+            "host_ms": 0.623,
+            "mean_host_us": 0.712,
+            "host_ms_per_entry": 0.0051916666666666665
+          },
+          {
+            "id": 304,
+            "name": "BOTLIB_AAS_INITIALIZED",
+            "calls": 119,
+            "host_ms": 0.5359,
+            "mean_host_us": 4.503361344537816,
+            "host_ms_per_entry": 0.004465833333333334
+          },
+          {
+            "id": 103,
+            "name": "internal/shared trap",
+            "calls": 372,
+            "host_ms": 0.4013,
+            "mean_host_us": 1.0787634408602151,
+            "host_ms_per_entry": 0.0033441666666666667
+          },
+          {
+            "id": 4,
+            "name": "G_CVAR_UPDATE",
+            "calls": 236,
+            "host_ms": 0.37769999999999976,
+            "mean_host_us": 1.6004237288135583,
+            "host_ms_per_entry": 0.003147499999999998
+          },
+          {
+            "id": 104,
+            "name": "internal/shared trap",
+            "calls": 372,
+            "host_ms": 0.2883,
+            "mean_host_us": 0.775,
+            "host_ms_per_entry": 0.0024025
+          }
+        ]
+      },
+      {
+        "module": "qagame",
+        "vm": "146672:436836",
+        "entry": 8,
+        "entry_name": "GAME_RUN_FRAME",
+        "calls": 17,
+        "bootstrap_calls_excluded": 2,
+        "native_ms": 1.2696000000000014,
+        "host_ms": 4.504599999999998,
+        "total_ms": 5.7741999999999996,
+        "mean_total_ms": 0.33965882352941174,
+        "instructions": 283627,
+        "yields": 850,
+        "largest_traps": [
+          {
+            "id": 24,
+            "name": "G_TRACE",
+            "calls": 18,
+            "host_ms": 3.1303,
+            "mean_host_us": 173.90555555555557,
+            "host_ms_per_entry": 0.18413529411764706
+          },
+          {
+            "id": 4,
+            "name": "G_CVAR_UPDATE",
+            "calls": 731,
+            "host_ms": 0.7110000000000003,
+            "mean_host_us": 0.9726402188782495,
+            "host_ms_per_entry": 0.041823529411764725
+          },
+          {
+            "id": 30,
+            "name": "G_LINKENTITY",
+            "calls": 18,
+            "host_ms": 0.5569999999999999,
+            "mean_host_us": 30.94444444444444,
+            "host_ms_per_entry": 0.03276470588235294
+          },
+          {
+            "id": 18,
+            "name": "G_SET_CONFIGSTRING",
+            "calls": 15,
+            "host_ms": 0.026200000000000005,
+            "mean_host_us": 1.7466666666666668,
+            "host_ms_per_entry": 0.0015411764705882355
+          },
+          {
+            "id": 31,
+            "name": "G_UNLINKENTITY",
+            "calls": 1,
+            "host_ms": 0.015100000000000002,
+            "mean_host_us": 15.100000000000001,
+            "host_ms_per_entry": 0.0008882352941176471
+          },
+          {
+            "id": 100,
+            "name": "internal/shared trap",
+            "calls": 1,
+            "host_ms": 0.0036000000000000476,
+            "mean_host_us": 3.6000000000000476,
+            "host_ms_per_entry": 0.00021176470588235574
+          }
+        ]
+      },
+      {
+        "module": "cgame",
+        "vm": "99903:294824",
+        "entry": 3,
+        "entry_name": "CG_DRAW_ACTIVE_FRAME",
+        "calls": 120,
+        "bootstrap_calls_excluded": 2,
+        "native_ms": 34.6524,
+        "host_ms": 88.30100000000004,
+        "total_ms": 122.95340000000004,
+        "mean_total_ms": 1.0246116666666671,
+        "instructions": 9136044,
+        "yields": 65004,
+        "largest_traps": [
+          {
+            "id": 46,
+            "name": "CG_R_DRAWSTRETCHPIC",
+            "calls": 11301,
+            "host_ms": 19.8201,
+            "mean_host_us": 1.7538359437217943,
+            "host_ms_per_entry": 0.1651675
+          },
+          {
+            "id": 55,
+            "name": "CG_GETUSERCMD",
+            "calls": 8040,
+            "host_ms": 8.960199999999999,
+            "mean_host_us": 1.1144527363184078,
+            "host_ms_per_entry": 0.07466833333333332
+          },
+          {
+            "id": 4,
+            "name": "CG_CVAR_UPDATE",
+            "calls": 10680,
+            "host_ms": 8.3646,
+            "mean_host_us": 0.7832022471910111,
+            "host_ms_per_entry": 0.06970499999999999
+          },
+          {
+            "id": 48,
+            "name": "CG_R_LERPTAG",
+            "calls": 720,
+            "host_ms": 6.1268,
+            "mean_host_us": 8.509444444444444,
+            "host_ms_per_entry": 0.05105666666666667
+          },
+          {
+            "id": 45,
+            "name": "CG_R_SETCOLOR",
+            "calls": 4007,
+            "host_ms": 5.6441,
+            "mean_host_us": 1.408560019965061,
+            "host_ms_per_entry": 0.04703416666666667
+          },
+          {
+            "id": 103,
+            "name": "internal/shared trap",
+            "calls": 7146,
+            "host_ms": 4.8552,
+            "mean_host_us": 0.6794290512174643,
+            "host_ms_per_entry": 0.04046
+          },
+          {
+            "id": 104,
+            "name": "internal/shared trap",
+            "calls": 7374,
+            "host_ms": 4.7525,
+            "mean_host_us": 0.6444941687008408,
+            "host_ms_per_entry": 0.03960416666666667
+          },
+          {
+            "id": 100,
+            "name": "internal/shared trap",
+            "calls": 2708,
+            "host_ms": 3.3893,
+            "mean_host_us": 1.2515878877400297,
+            "host_ms_per_entry": 0.028244166666666667
+          },
+          {
+            "id": 25,
+            "name": "CG_CM_BOXTRACE",
+            "calls": 1116,
+            "host_ms": 3.3556,
+            "mean_host_us": 3.006810035842294,
+            "host_ms_per_entry": 0.027963333333333333
+          },
+          {
+            "id": 23,
+            "name": "CG_CM_POINTCONTENTS",
+            "calls": 1120,
+            "host_ms": 3.2879,
+            "mean_host_us": 2.935625,
+            "host_ms_per_entry": 0.027399166666666665
+          },
+          {
+            "id": 106,
+            "name": "internal/shared trap",
+            "calls": 3915,
+            "host_ms": 2.6055,
+            "mean_host_us": 0.6655172413793103,
+            "host_ms_per_entry": 0.021712500000000003
+          },
+          {
+            "id": 41,
+            "name": "CG_R_ADDREFENTITYTOSCENE",
+            "calls": 1968,
+            "host_ms": 2.4511,
+            "mean_host_us": 1.2454776422764227,
+            "host_ms_per_entry": 0.02042583333333333
+          }
+        ]
+      }
+    ],
+    "all_entry_counts": {
+      "79994:244976": {
+        "0": 1,
+        "1": 1,
+        "2": 1
+      },
+      "146672:436836": {
+        "0": 1,
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "7": 122,
+        "8": 19
+      },
+      "99903:294824": {
+        "0": 1,
+        "1": 1,
+        "3": 122
+      }
+    },
+    "startup_note": "CG_R_REGISTERMODEL cumulative host time 260.5766 ms belongs to startup; no steady draw registration calls. Correct client-frame commands are preserved.",
+    "recommendation": "No proven small single host-hook saving above 0.2 ms/frame; preserve per-client-frame command delivery. Potential usercmd serialization/color/quad allocation changes are below that threshold individually and not implemented."
+  },
+  "conditions": "Fresh processes with existing OS/driver caches, no other own compilers/tests during acceptance, no capture/trace/profiler, neutral physical inputs. Short 1000-frame trial fails the same 200 FPS threshold; 5000-frame trial passes. Renderer and scene counts are verified.",
+  "build_inputs_sha256": "0588548f602539c7eb33984a3b6f3914fbbd4ad7e6d10d2d65ab71f16e9601d6",
+  "reproduce": [
+    "python scripts/build.py",
+    "python scripts/test_client_frame_input.py --data-root build",
+    "python scripts/benchmark_playable.py --frames 5000 --renderer hardware --data-root build --min-fps 200 --max-work-p95-ms 8 --output build/reference/perf-2026-11-15/eight-hardware-5000"
+  ],
+  "remaining": [
+    "single-frame spikes up to 151 ms remain in the measured long trial",
+    "App clock pause flags are not yet fully synchronized from cl_paused/sv_paused; core pause tests do not prove match pause",
+    "non-default joystick devices and mlook/centerview integration require further parity acceptance",
+    "ordinary shader cull modes/mirror policy and visible UI-only 3D preview remain open",
+    "moving/combat/bot/network/audio long-term and complete original-game parity acceptance remain open"
+  ]
+}

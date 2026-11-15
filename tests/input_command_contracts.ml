@@ -8,7 +8,7 @@ function near(a,b) difference=a-b;if difference<0.0 then difference=0.0-differen
 function main(args)
   count=0
   count=count+req(input.clampChar(-999)==-128 and input.clampChar(999)==127 and input.clampChar(12.9)==12,"ClampChar")
-  count=count+req(input.angleShort(90.0)==16384 and input.angleShort(270.0)==-16384,"ANGLE2SHORT")
+  count=count+req(input.angleShort(90.0)==16384 and input.angleShort(270.0)==49152,"ANGLE2SHORT")
 
   b=input.button();count=count+req(input.keyDown(b,7,100) and b.active and b.wasPressed,"key down")
   count=count+req(not input.keyDown(b,7,110),"repeat ignored")

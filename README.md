@@ -43,11 +43,13 @@ verbleibende Grenzen stehen im aktuellen Abschnitt des
 den nachfolgenden historischen Abschnitten bezeichnen frühere Zwischenstände.
 
 Der aktuelle Retail-q3dm1-Test erreicht auf Ryzen 9 9900X / RTX 5080 bei
-1280×720 **219 FPS über 5.000 Frames** mit vollständiger getesteter Szene;
-der direkte Matchstart benötigt **2,62 s**, das Hauptmenü beim normalen
-EXE-Start **0,42 s**. Einzelne Frame-Spitzen bis 167 ms bleiben offen.
+1280×720 **202 FPS über 5.000 Frames** mit vollständiger getesteter Szene
+und einem echten Usercmd/ClientThink pro Clientframe. Der direkte Matchstart
+benötigt **2,50 s**, das Hauptmenü beim normalen EXE-Start **0,30 s**.
+Einzelne Frame-Spitzen bis 151 ms bleiben offen.
 Messbedingungen, Binärhashes und die davon getrennte Rendererprobe stehen in
-[den versionierten Nachweisen](docs/verification/2026-11-15-performance.json).
+[den aktuellen Eingabe-/Leistungsnachweisen](docs/verification/2026-11-15-client-input.json)
+und [der Renderer-Basis](docs/verification/2026-11-15-performance.json).
 Zum Testen `build/MiniQuake3.exe` direkt starten; `baseq3/pak*.pk3` und der
 beim Build erzeugte Ordner `qvms` liegen daneben. Der EXE-Start öffnet nur
 das Spielfenster. Eine vollständige 1:1- und Langzeitabnahme ist weiterhin offen.

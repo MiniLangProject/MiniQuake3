@@ -7,7 +7,9 @@ import mq3.engine.local_qvm_ui as localQvmUi
 import mq3.client.original_ui_session as uiSession
 import mq3.client.cinematic_runtime as cinematics
 import mq3.client.cgame_clock as cgameClock
-import mq3.client.input_command as inputCommand
+import mq3.client.qvm_frame_input as frameInput
+import mq3.client.cgame_vm as cgameVm
+import mq3.qcommon.command_buffer as inputCommands
 import mq3.client.input_command_events as timestampedInput
 import mq3.client.ui_input_latch as inputLatch
 import mq3.client.console_input as consoleInput
@@ -64,6 +66,7 @@ const SOURCE_HEIGHT=720
 struct PreparedView source geometry batch target end struct
 struct PreparedPortal plan world batch target source end struct
 struct NativeInput mouse keys end struct
+struct ClientInputBridge frame plan ui matchState end struct
 struct PipelineProfile expansion material batch end struct
 struct ScreenPoint x y depth end struct
 
@@ -115,9 +118,6 @@ function prepareViews(views,catalog,archive,modelAssets,assetNames,kinds,frameCa
   end for
   return result.toArray()
 end function
-function angleCommand(degrees,deltaAngle)
-  return numeric.i16((numeric.trunc32(degrees*65536.0/360.0)&65535)-deltaAngle)
-end function
 function movementAxis(positive,negative)
   if positive and not negative then return 127 end if
   if negative and not positive then return -127 end if
@@ -132,21 +132,64 @@ function observeNativeInputEvents(input,events)
   for each event in events observed=inputLatch.observe(input.keys,event.type,event.value,event.value2);if observed is error then return observed end if end for
   return void
 end function
-function applyInputEvent(state,matchState,event)
-  if event.type==window.INPUT_CHAR then match.clientTextChar(matchState,event.value);return [] end if
-  if event.type==window.INPUT_KEY then
-    key=event.value;down=event.value2!=0;match.setKeyDown(matchState,key,down)
-    if key==96 or key==126 then if down then match.toggleClientConsole(matchState);released=releaseGameInput(state,event.time);if released is error then return released end if end if;return [] end if
-    catcher=match.keyCatcher(matchState)
-    if (catcher&(consoleInput.KEYCATCH_CONSOLE|consoleInput.KEYCATCH_MESSAGE))!=0 then if down then match.clientTextKey(matchState,key,match.keyIsDown(matchState,consoleInput.K_SHIFT),match.keyIsDown(matchState,consoleInput.K_CTRL)) end if;return [] end if
-    if catcher!=0 then return [] end if
-    expanded=timestampedInput.applyBoundQuake(state,event.time,event.type,key,event.value2,match.keyBinding(matchState,key));if expanded is error then return expanded end if
-    for each command in expanded if not command.button then match.queueInputCommand(matchState,command.text) end if end for
-    return expanded
-  end if
-  return timestampedInput.applyBoundQuake(state,event.time,event.type,event.value,event.value2,"")
+function queueExpandedInput(matchState,frameState,expanded)
+  if expanded is error then return expanded end if
+  for each command in expanded if not command.button or not frameInput.handlesAction(frameState,command.action) then match.queueInputCommand(matchState,command.text) end if end for;return expanded
 end function
-function releaseGameInput(state,time) return timestampedInput.release(state,time) end function
+function applyInputEvent(bridge,matchState,event)
+  catcher=match.keyCatcher(matchState)
+  if event.type==window.INPUT_CHAR then
+    if event.value==96 or event.value==126 then return [] end if
+    if (catcher&consoleInput.KEYCATCH_CONSOLE)!=0 then match.clientTextChar(matchState,event.value)
+    else if (catcher&2)!=0 then sent=bridge.ui.services.keyEventFn(bridge.ui.services.context,event.value|uiSession.K_CHAR_FLAG,true);if sent is error then return sent end if
+    else if (catcher&consoleInput.KEYCATCH_MESSAGE)!=0 then match.clientTextChar(matchState,event.value) end if
+    return []
+  end if
+  if event.type==window.INPUT_MOUSE then
+    if (catcher&2)!=0 then sent=bridge.ui.services.mouseEventFn(bridge.ui.services.context,event.value,event.value2);if sent is error then return sent end if
+    else if (catcher&8)!=0 and (catcher&1)==0 then sent=cgameVm.mouseEvent(matchState.cgame,event.value,event.value2);if sent is error then return sent end if end if
+    return frameInput.applyBound(bridge.frame,bridge.plan,event.time,event.type,event.value,event.value2,"",catcher)
+  end if
+  if event.type!=window.INPUT_KEY then return [] end if
+  key=event.value;down=event.value2!=0;match.setKeyDown(matchState,key,down)
+  if key==96 or key==126 then if down then match.toggleClientConsole(matchState);released=releaseGameInput(bridge,event.time);if released is error then return released end if end if;return [] end if
+  // CL_KeyEvent handles Escape immediately in event order, before a command.
+  // A chat/cgame Escape cannot be polled again as a new UI opening event.
+  if key==27 and down then
+    if (catcher&consoleInput.KEYCATCH_MESSAGE)!=0 then match.clientMessageEscape(matchState);return [] end if
+    if (catcher&8)!=0 then match.uiSetCatcher(matchState.context,catcher&(~8));sent=cgameVm.eventHandling(matchState.cgame,0);if sent is error then return sent end if;return [] end if
+    if (catcher&2)!=0 then sent=bridge.ui.services.keyEventFn(bridge.ui.services.context,key,true);if sent is error then return sent end if
+    else opened=uiSession.openIngame(bridge.ui);if opened is error then return opened end if;released=releaseGameInput(bridge,event.time);if released is error then return released end if end if;return []
+  end if
+  // CL_KeyEvent always releases +bindings before routing the catcher key-up.
+  expanded=frameInput.applyBound(bridge.frame,bridge.plan,event.time,event.type,key,event.value2,match.keyBinding(matchState,key),catcher);queued=queueExpandedInput(matchState,bridge.frame,expanded);if queued is error then return queued end if
+  if not down then
+    if (catcher&2)!=0 then sent=bridge.ui.services.keyEventFn(bridge.ui.services.context,key,false);if sent is error then return sent end if
+    else if (catcher&8)!=0 then sent=cgameVm.keyEvent(matchState.cgame,key,false);if sent is error then return sent end if end if;return expanded
+  end if
+  if (catcher&consoleInput.KEYCATCH_CONSOLE)!=0 then if down then match.clientTextKey(matchState,key,match.keyIsDown(matchState,consoleInput.K_SHIFT),match.keyIsDown(matchState,consoleInput.K_CTRL)) end if;return expanded end if
+  if (catcher&2)!=0 then sent=bridge.ui.services.keyEventFn(bridge.ui.services.context,key,down);if sent is error then return sent end if
+  else if (catcher&8)!=0 then sent=cgameVm.keyEvent(matchState.cgame,key,down);if sent is error then return sent end if
+  else if (catcher&consoleInput.KEYCATCH_MESSAGE)!=0 and down then match.clientTextKey(matchState,key,match.keyIsDown(matchState,consoleInput.K_SHIFT),match.keyIsDown(matchState,consoleInput.K_CTRL)) end if
+  return expanded
+end function
+function refreshUiFrame(ui,serverTime)
+  // Input has already been delivered once, in native-event order. Keep UI
+  // refresh after beginRendererFrame/CG draw so its real commands survive.
+  if uiSession.active(ui) then refreshed=ui.services.refreshFn(ui.services.context,serverTime);if refreshed is error then return refreshed end if;ui.frameCount=ui.frameCount+1 end if
+  return true
+end function
+function releaseGameInput(bridge,time)
+  // Key_ClearStates must also release delegated +commands such as +zoom.
+  // Use the current binding, just like CL_KeyEvent(false), before keys clear.
+  for key=0 to 255
+    if match.keyIsDown(bridge.matchState,key) then
+      expanded=frameInput.applyBound(bridge.frame,bridge.plan,time,window.INPUT_KEY,key,0,match.keyBinding(bridge.matchState,key),match.keyCatcher(bridge.matchState));queued=queueExpandedInput(bridge.matchState,bridge.frame,expanded);if queued is error then return queued end if;match.setKeyDown(bridge.matchState,key,false)
+    end if
+  end for
+  return frameInput.releaseAll(bridge.frame,bridge.plan,time)
+end function
+function clearClientInput(bridge) return releaseGameInput(bridge,0) end function
 function consoleColor(index)
   if index==0 then return [0,0,0] end if;if index==1 then return [255,0,0] end if;if index==2 then return [0,255,0] end if;if index==3 then return [255,255,0] end if
   if index==4 then return [0,0,255] end if;if index==5 then return [0,255,255] end if;if index==6 then return [255,0,255] end if;return [255,255,255]
@@ -179,17 +222,15 @@ function ensurePlayableBindings(state)
   end for
   return void
 end function
-function advanceGameTick(state,clientClock,serverTime,input)
-  delta=[0,0,0];if state.context.latestSnapshot!=void then delta=state.context.latestSnapshot.playerState.delta_angles end if
-  command=qworld.userCommand(serverTime,[angleCommand(input.viewangles[0],delta[0]),angleCommand(input.viewangles[1],delta[1]),angleCommand(input.viewangles[2],delta[2])],input.buttons,input.weapon,input.forwardmove,input.rightmove,input.upmove)
-  submitted=match.submitUsercmd(state,0,command);if submitted is error then return submitted end if
-  advanced=match.runFrame(state,serverTime);if advanced is error then return advanced end if
+function advanceGameTick(state,clientClock,serverTime)
+  // Human ClientThink already runs exactly once when each fresh cmd arrives.
+  advanced=match.runServerFrame(state,serverTime);if advanced is error then return advanced end if
   snapshot=match.snapshotProductive(state,0);if snapshot is error then return snapshot end if
   published=cgameClock.publishSnapshot(clientClock,state.context.snapshotNumber,snapshot.serverTime,0);if published is error then return published end if
   return snapshot
 end function
 function drawFrame(state,clientClock,realtime)
-  begun=match.beginRendererFrame(state);if begun is error then return begun end if;state.context.soundCommands=[]
+  begun=match.beginRendererFrame(state);if begun is error then return begun end if
   frameTime=cgameClock.frame(clientClock,realtime);if frameTime is error then return frameTime end if
   if not frameTime.draw then return false end if
   drawn=match.drawCgameProductiveInFrame(state,frameTime.serverTime);if drawn is error then return drawn end if
@@ -268,7 +309,7 @@ function bootFrameSettingsNamed(archive,map,mapName,qvmRoot,settings)
     // Bootstrap snapshots must not move the player before any user input.
     serverTime=1000+frame*50;command=qworld.userCommand(serverTime,[0,0,0],0,2,0,0,0)
     submitted=match.submitUsercmd(state,0,command);if submitted is error then return submitted end if
-    advanced=match.runFrame(state,serverTime);if advanced is error then return advanced end if
+    advanced=match.runServerFrame(state,serverTime);if advanced is error then return advanced end if
     snapshot=match.snapshotProductive(state,0);if snapshot is error then return snapshot end if
     if not started then client=match.bootCgame(state);if client is error then return client end if;started=true end if
     state.context.soundCommands=[];drawn=match.drawCgameProductive(state,serverTime);if drawn is error then return drawn end if
@@ -346,16 +387,19 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
   print "QVM retained world: enabled="+str(retainedWorldCache.enabled)+" staticPrimes="+str(retainedWorldCache.staticPrimes)+" (worldRebuild timing includes selected effects)"
   rendererName="software";if window.hardwareRenderer() then rendererName="hardware OpenGL" end if;print "QVM renderer: "+rendererName+" / "+str(window.glInfo(1))
   titleState=fpsTitle.create("Original QVM q3dm1",window.milliseconds());window.setTitle(fpsTitle.initialTitle(titleState))
-  frames=0;yaw=state.context.latestSnapshot.playerState.viewangles[1];pitch=state.context.latestSnapshot.playerState.viewangles[0];inputState=inputCommand.create(pitch,yaw,0.0);inputConfig=inputCommand.defaults();hudMs=0;videoBindMs=0;soundApplyMs=0;textureUploadMs=0
+  frames=0;hudMs=0;videoBindMs=0;soundApplyMs=0;textureUploadMs=0
   // Discard key/mouse messages accumulated while the QVMs and retail assets
   // were loading.  Rebasing those old native timestamps onto the game clock
   // made them negative after a slow cold start and crashed the input bridge.
   window.inputClear();discardedEvents=window.inputEvents(256);if discardedEvents is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return discardedEvents end if
   state.context.console=[];pendingInputEvents=queues.Queue.withCapacity(256);wasMenuActive=false;quitRequested=false;uploadedQvmTextures=len(qvmCatalog.textures);uploadedHudTextures=len(hudCatalog.textures);soundAssetCount=len(state.context.assets);simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;audioMs=0;totalMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
+  frameState=frameInput.create(state.context.latestSnapshot.playerState.viewangles,state.context.latestSnapshot.playerState.delta_angles,simulationStart,simulationStart);if frameState is error then window.shutdown();match.shutdown(state);return frameState end if
+  frameInput.bindConfig(frameState,state.context.cvars)
+  initialPlan=frameInput.prepare(frameState,simulationStart,state.context.commandNumber,clientClock.state.connectionState,true,false,false);inputBridge=ClientInputBridge(frameState,initialPlan,ui,state);match.attachInputClear(state,inputBridge,clearClientInput)
   worldSelectMs=0;worldRebuildMs=0;worldEffectsMs=0;portalPrepareMs=0;worldRebuildCount=0
   frameHistogram=array(1001,0);maximumFrameMs=0;interactiveInput=maxFrames<0
   while not window.shouldClose() and not quitRequested and (maxFrames<0 or frames<maxFrames)
-    startedAt=window.milliseconds();serverTime=simulationStart+startedAt-realStart;steps=0
+    startedAt=window.milliseconds();serverTime=simulationStart+startedAt-realStart;steps=0;state.context.soundCommands=[]
     begun=inputLatch.beginFrame(nativeInput.keys);if begun is error then window.shutdown();match.shutdown(state);return begun end if;window.poll();menuActive=uiSession.active(ui)
     // Bounded smoke/performance runs must not depend on physical desktop
     // activity. Continue pumping Win32 lifecycle/close messages, but keep the
@@ -363,26 +407,32 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
     if interactiveInput then
       nativeInput.mouse=window.mouseDelta();nativeEvents=window.inputEvents(256);if nativeEvents is error then window.shutdown();match.shutdown(state);return nativeEvents end if;observed=observeNativeInputEvents(nativeInput,nativeEvents);if observed is error then window.shutdown();match.shutdown(state);return observed end if
       for each event in nativeEvents event.time=simulationStart+event.time-realStart;pendingInputEvents.enqueue(event) end for
-      if menuActive then released=releaseGameInput(inputState,simulationTime);if released is error then window.shutdown();match.shutdown(state);return released end if
-      else
-        if wasMenuActive then
-          for each key in [119,115,100,97,32,178] if window.inputKeyDown(key) then pendingInputEvents.enqueue(window.InputEvent(simulationTime,window.INPUT_KEY,key,1)) end if end for
-        end if
-      end if
     else
       window.inputClear()
     end if
-    wasMenuActive=menuActive
+    // Catch up authoritative 20-Hz frames before accepting this frame's cmd.
     while simulationTime+50<=serverTime and steps<8
-      simulationTime=simulationTime+50
-      while not pendingInputEvents.isEmpty() and pendingInputEvents.peek().time<=simulationTime applied=applyInputEvent(inputState,state,pendingInputEvents.dequeue());if applied is error then window.shutdown();match.shutdown(state);return applied end if end while
-      anyInput=timestampedInput.anyDown(inputState)
-      created=inputCommand.createCommand(inputState,inputConfig,simulationTime,50,simulationTime,match.cgameUserCmdValue(state),match.cgameSensitivity(state),match.keyCatcher(state),anyInput);if created is error then window.shutdown();match.shutdown(state);return created end if;yaw=created.viewangles[1];pitch=created.viewangles[0];advanced=advanceGameTick(state,clientClock,simulationTime,created);if advanced is error then window.shutdown();match.shutdown(state);return advanced end if;steps=steps+1;simulationTicks=simulationTicks+1
+      simulationTime=simulationTime+50;advanced=advanceGameTick(state,clientClock,simulationTime);if advanced is error then window.shutdown();match.shutdown(state);return advanced end if;steps=steps+1;simulationTicks=simulationTicks+1
     end while
+    state.context.now=serverTime
+    plan=frameInput.prepare(frameState,serverTime,state.context.commandNumber,clientClock.state.connectionState,true,clientClock.state.serverPaused,clientClock.state.clientPaused);if plan is error then window.shutdown();match.shutdown(state);return plan end if;inputBridge.plan=plan
+    if interactiveInput then
+      if menuActive and not wasMenuActive then released=releaseGameInput(inputBridge,serverTime);if released is error then window.shutdown();match.shutdown(state);return released end if end if
+      while not pendingInputEvents.isEmpty() and pendingInputEvents.peek().time<=serverTime applied=applyInputEvent(inputBridge,state,pendingInputEvents.dequeue());if applied is error then window.shutdown();match.shutdown(state);return applied end if end while
+    end if
+    wasMenuActive=menuActive
+    // Console/chat/weapon bindings run every client frame, including between
+    // server ticks. UI polling/refresh still occurs after beginRendererFrame.
+    inputCommands.execute(state.context.commandState)
+    cmdTime=frameInput.commandTime(frameState,clientClock.state.serverTime,clientClock.state.connectionState==8)
+    created=frameInput.finish(frameState,plan,cmdTime,match.cgameUserCmdValue(state),match.cgameSensitivity(state),match.keyCatcher(state),match.anyKeyDown(state));if created is error then window.shutdown();match.shutdown(state);return created end if
+    if created!=void then submitted=match.submitUsercmdAtHostTime(state,0,created,serverTime);if submitted is error then window.shutdown();match.shutdown(state);return submitted end if end if
+    // Original CL_SendCmd precedes CL_SetCGameTime: the command uses the
+    // preceding CG server time; drawFrame advances CG time without fabrication.
     afterGame=window.milliseconds();gameMs=gameMs+afterGame-startedAt
     drawnFrame=drawFrame(state,clientClock,serverTime);if drawnFrame is error then window.shutdown();match.shutdown(state);return drawnFrame end if
     afterCgame=window.milliseconds();cgameMs=cgameMs+afterCgame-afterGame
-    uiFrame=uiSession.frame(ui,serverTime);if uiFrame is error then window.shutdown();match.shutdown(state);return uiFrame end if
+    uiFrame=refreshUiFrame(ui,serverTime);if uiFrame is error then window.shutdown();match.shutdown(state);return uiFrame end if
     quitRequested=requestedQuit(state);state.context.console=[];if quitRequested then break end if
     cinematicSamples=collectCinematicAudio(state,audio);if cinematicSamples is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return cinematicSamples end if
     afterSimulation=window.milliseconds();uiMs=uiMs+afterSimulation-afterCgame;simulationMs=simulationMs+afterSimulation-startedAt

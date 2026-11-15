@@ -4,9 +4,59 @@ Stand: 2026-11-15. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
-## Hardwarepfad, Clipping und QVM-Ausführung vom 15. November 2026
+## Clientframe-Eingabe vom 15. November 2026
 
-Die abschließende integrierte Performance-Abnahme auf Ryzen 9 9900X / RTX 5080
+Auf der geprüften Renderer-/QVM-Basis `d7a7934` erzeugt der produktive
+Host jetzt genau einen Usercmd samt `ClientThink` pro Clientframe.
+Serverframes und Snapshots bleiben bei 20 Hz. Zuvor war auch die
+Maus-/Blickbewegung auf diesen 50-ms-Takt begrenzt: Hohe Render-FPS
+allein behoben diesen Bedienfehler nicht. Der echte Retailtest prüft
+250 Ansichtsänderungen bei 250 Frames à 4 ms, zugleich exakt 20 Snapshots,
+12 zusätzliche `cg_nopredict`-Ansichten und einen kurzen Schuss zwischen
+zwei Serverticks.
+
+Die lokale Winkelbasis wird einmal aus dem ersten Snapshot abgeleitet.
+Neue Delta-Winkel bei Teleports werden danach nicht wieder neutralisiert.
+Der lokale Cmd-Ring enthält ausschließlich den festen lokalen Client 0;
+Botbefehle behalten eigene Usercmds/Thinks, auch beim Zuschauen eines Bots.
+Cmdzeit und spätere Cgame-Drawzeit bleiben wie bei `CL_SendCmd` vor
+`CL_SetCGameTime` getrennt; legitime Serverzeitkorrekturen dürfen eine neue
+Cmdzeitepoche beginnen. Engine-Hostzeit und Cmdzeit sind ebenfalls getrennt.
+
+Raw-UI-/Console-/Cgame-Ereignisse werden genau einmal in Zeitreihenfolge
+verteilt. Key-ups lösen Bindings auch unter Catchern; Chat-Escape öffnet
+kein zweites Menü, Menü-Escape lässt keinen zusätzlichen Angriff durch.
+UI-Töne vor dem Cgame-Draw bleiben erhalten. Unbekannte Cgame-Plusbindungen
+wie `+zoom` werden weitergereicht und bei Key-Clear wieder gelöst.
+Zwölf originale Controls-Cvars werden vor `UI_Init` registriert und über
+dieselben Cvarobjekte ohne neue Suchen pro Frame in die vorhandene
+Input-Config übernommen. Hauptmenü-Shift, ganzzahlige Halbframes und die
+unsigned 16-Bit-Winkelwerte in `usercmd_t`-32-Bit-Feldern stimmen wieder.
+
+95 Kern-, 29 aus dem produktiven Appcode erzeugte Routingverträge,
+7 unveränderte und unmaskierte C-Records sowie 18 Retail-Verträge prüfen
+diesen Anschluss. Der neue unverfälschte 5.000-Frame-Matchlauf erreicht
+bei gleicher Hardware/Auflösung **202,06 FPS**, Work-P95 7 ms, P99 9 ms,
+Matchstart 2,499 s, weiterhin fünf Modelle und 524 Modelldreiecke.
+Der kurze 1.000-Frame-Lauf erreicht 184,74 FPS und besteht dieselbe
+200-FPS-Schranke nicht; beide Ergebnisse bleiben erhalten. Die früheren
+219 FPS bezeichneten die Renderer-Basis mit fehlerhaftem 20-Hz-Input.
+Der normale Hauptmenüstart besteht separat mit 0,30 s.
+Einzelne Spitzen bis 151 ms und die vollständige Pause-/Joystick-/
+`mlook`-/Centerview-, Netzwerk-, Bot-, Audio- und Langzeitabnahme bleiben
+offen. Unit-Pauseflags belegen keine verdrahtete ganze Matchpause.
+Die Nachweise stehen in
+[`verification/2026-11-15-client-input.json`](verification/2026-11-15-client-input.json).
+Zusätzlich bestehen auf diesem Stand sieben erneute Integrationsgates für
+Cgame-Uhr, Cgame-Zeit, Prediction, Retail-Match, Original-UI, 512 Botframes
+und die produktive Konsole. Die bestehenden Eingabe-, Binding-, UI- und
+vollständigen `cl_input`-Gates sind ebenfalls grün. Das neue Clientframe-Gate
+ist im Standard-Verifier registriert; die gesamte Suite wurde danach nicht
+noch einmal vollständig ausgeführt.
+
+## Hardwarepfad, Clipping und QVM-Basis vom 15. November 2026
+
+Die integrierte Basis-Abnahme auf Ryzen 9 9900X / RTX 5080
 erreicht mit q3dm1 bei 1280×720 **218,67 FPS über 5.000 vollständige
 Spielbilder**, fünf Modellen und 524 Modelldreiecken. Der direkte Matchstart
 benötigt 2,615 s; Work-P95 beträgt 6 ms, P99 8 ms, die größte Spitze 167 ms.
@@ -29,7 +79,7 @@ Gameplay oder Audio: Seine 516 Renderer-FPS sind **keine Spiel-FPS**.
 Die versionierten Messdaten stehen in
 [`verification/2026-11-15-performance.json`](verification/2026-11-15-performance.json),
 die vollständigen Rohdaten unter `build/reference/perf-2026-11-15/`.
-Alle 522 Einträge des aktuellen Standard-Verifiers sind über vier
+Alle 522 Einträge des damaligen Standard-Verifiers sind über vier
 fortgesetzte Fail-fast-Läufe und 13 nachträglich registrierte Gates grün;
 dies ist kein einzelner ununterbrochener Neuaufruf. Die behobenen
 Harnessprobleme und vollständige Gate-Liste stehen in
@@ -176,12 +226,10 @@ Original-C-Datensätze und eine 120-Frame-Retailprobe erhalten sämtliche
 nativen Stagebytes. Ein unbedingtes zusätzliches `sleep(1)` nach jedem
 Frame entfällt ebenfalls; nur Arbeit unter einer Millisekunde gibt die
 verbleibende Zeit ab.
-Die FPS-Abnahme dieses Checkpoints misst Renderframes. Im produktiven
-Eingabepfad werden Usercmds bislang noch nur im 50-ms-Servertakt erzeugt;
-Maus-/Blickwinkel können deshalb trotz hoher Render-FPS nur mit 20 Hz
-fortschreiten. Ein gesonderter Clientframe-Abgleich ist in Arbeit und muss
-auch Delta-Winkel bei Teleports, lokale/Bot-Cmdringe und Catcher-Keyups
-prüfen. Die Render-Abnahme belegt keine abgeschlossene 1:1-Bedienung.
+Die FPS-Abnahme dieses Basis-Checkpoints misst Renderframes. Er erzeugte
+Usercmds noch nur im 50-ms-Servertakt; die oben dokumentierte Folgearbeit
+behebt diesen konkreten Eingabeanschluss. Die Render-Abnahme allein
+belegt keine abgeschlossene 1:1-Bedienung.
 Licht- und Nebelquellen werden außerdem exakt groß angelegt statt quadratisch
 konkateniert; leere Portalgeometrie und `RDF_NOWORLDMODEL` vermeiden einen
 unnötigen BSP-Durchlauf.

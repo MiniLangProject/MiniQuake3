@@ -63,5 +63,16 @@ function main(args)
   count=count+req(observedDown,"active navigation also updates shared physical state")
   session.openMain(state);context.catcher=context.catcher|session.KEYCATCH_CONSOLE;beforeEvents=len(context.events);context.down[session.K_DOWNARROW]=true;context.mouse=[2,3];frame=session.frame(state,18)
   count=count+req(frame.active and frame.refreshed and frame.keyEvents==0 and frame.mouseEvents==0 and len(context.events)==beforeEvents+1,"console catcher suppresses UI input but keeps refresh")
+  // Exercise the same polling path used by the standalone main menu. The
+  // physical key remains unshifted; only the emitted character follows Shift.
+  context.catcher=session.KEYCATCH_UI;now=20
+  for each sample in [[97,false,97],[97,true,65],[49,false,49],[49,true,33]]
+    context.down=array(256,false);session.frame(state,now);now=now+1;context.events=[]
+    context.down[session.K_SHIFT]=sample[1];context.down[sample[0]]=true;frame=session.frame(state,now);now=now+1
+    charCount=0;charCode=-1;for each event in context.events
+      if len(event)==3 and event[0]=="key" and event[2] and (event[1]&session.K_CHAR_FLAG)!=0 then charCount=charCount+1;charCode=event[1]&255 end if
+    end for
+    count=count+req(frame.charEvents==1 and charCount==1 and charCode==sample[2],"polling character follows Shift for key "+str(sample[0])+" shift="+str(sample[1]))
+  end for
   print("PASS: "+str(count)+" original UI session contracts");return 0
 end function

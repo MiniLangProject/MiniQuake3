@@ -38,5 +38,6 @@ int main(void){usercmd_t cmd;float fraction;
  reset();memset(&cmd,0,sizeof(cmd));in_buttons[0].wasPressed=qtrue;in_buttons[3].active=qtrue;cls.keyCatchers=KEYCATCH_UI;anykeydown=1;CL_CmdButtons(&cmd);printf("buttons|%d|%d|%d\n",cmd.buttons,in_buttons[0].wasPressed,in_buttons[3].wasPressed);
  reset();CL_MouseEvent(3,-4,12);cls.keyCatchers=KEYCATCH_UI;CL_MouseEvent(5,6,13);cls.keyCatchers=KEYCATCH_CGAME;CL_MouseEvent(-7,8,14);printf("mouse|%d|%d|%d|%d|%d|%d\n",cl.mouseDx[0],cl.mouseDy[0],uiCalls,cgameCalls,lastX,lastY);
  reset();CL_JoystickEvent(3,-42,10);printf("joy|%d\n",cl.joystickAxis[3]);
- reset();memset(&cmd,0,sizeof(cmd));cl.cgameUserCmdValue=261;cl.serverTime=123456;cl.viewangles[0]=90;cl.viewangles[1]=-45;cl.viewangles[2]=720;CL_FinishMove(&cmd);printf("finish|%u|%d|%d|%d|%d\n",cmd.weapon,cmd.serverTime,(short)cmd.angles[0],(short)cmd.angles[1],(short)cmd.angles[2]);
+ reset();memset(&cmd,0,sizeof(cmd));cl.cgameUserCmdValue=261;cl.serverTime=123456;cl.viewangles[0]=90;cl.viewangles[1]=-45;cl.viewangles[2]=720;CL_FinishMove(&cmd);printf("finish|%u|%d|%d|%d|%d\n",cmd.weapon,cmd.serverTime,cmd.angles[0],cmd.angles[1],cmd.angles[2]);
+ reset();memset(&in_forward,0,sizeof(in_forward));frame_msec=5;args("7","100");IN_KeyDown(&in_forward);args("7","0");IN_KeyUp(&in_forward);printf("oddHalf|%u\n",in_forward.msec);
  return 0;}

@@ -31,7 +31,7 @@ def main() -> None:
     events = ROOT / "src/mq3/client/input_command_events.ml"
     preview = ROOT / "src/mq3/client/qvm_preview_app.ml"
     match = ROOT / "src/mq3/engine/local_qvm_match.ml"
-    for path, anchors in [(events, ["eventBindingDispatch.commands(", "function applyBoundQuake(", "function applyBound("]), (preview, ["timestampedInput.applyBoundQuake(", "match.keyBinding(", "match.queueInputCommand("]), (match, ["function keyBinding(", "function setKeyBinding(", "function queueInputCommand("])]:
+    for path, anchors in [(events, ["eventBindingDispatch.commands(", "function applyBoundQuake(", "function applyBound("]), (preview, ["frameInput.applyBound(", "match.keyBinding(", "match.queueInputCommand("]), (match, ["function keyBinding(", "function setKeyBinding(", "function queueInputCommand("])]:
         text = path.read_text(encoding="utf-8")
         for anchor in anchors:
             if anchor not in text:

@@ -26,7 +26,7 @@ end function
 function clampChar(value)
   value=n.trunc32(value);if value< -128 then return -128 end if;if value>127 then return 127 end if;return value
 end function
-function angleShort(value) return n.i16(n.trunc32(value*65536.0/360.0)&65535) end function
+function angleShort(value) return n.trunc32(value*65536.0/360.0)&65535 end function
 
 // IN_KeyDown/IN_KeyUp preserve two independent physical sources and exact
 // sub-frame timestamps. A zero timestamp on release means half a frame.
@@ -42,7 +42,7 @@ function keyUp(value,key,time,frameMsec)
   if key==0 then value.down0=0;value.down1=0;value.active=false;return true end if
   if value.down0==key then value.down0=0 else if value.down1==key then value.down1=0 else return false end if
   if value.down0!=0 or value.down1!=0 then return false end if
-  value.active=false;if time!=0 then value.msec=value.msec+time-value.downtime else value.msec=value.msec+frameMsec/2 end if;return true
+  value.active=false;if time!=0 then value.msec=value.msec+time-value.downtime else value.msec=value.msec+(frameMsec>>1) end if;return true
 end function
 function setPolled(value,active,time,frameMsec)
   if active and not value.active then return keyDown(value,1,time) end if

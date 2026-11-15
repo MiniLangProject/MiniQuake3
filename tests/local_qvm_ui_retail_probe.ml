@@ -7,7 +7,7 @@ import mq3.format.pk3 as pk3
 import mq3.format.bsp as bsp
 
 struct Input down mouse end struct
-function keyDown(input,key) return input.down[key] end function
+function uiProbeKeyDown(input,key) return input.down[key] end function
 function mouseDelta(input) value=input.mouse;input.mouse=[0,0];return value end function
 function drawWorld(state) return 0 end function
 function drawCinematic(state) return 0 end function
@@ -27,7 +27,7 @@ function main(args)
   if connectFrame.connectCalls!=1 or connectFrame.refreshCalls<1 or connectFrame.overlay then return error(7689,"retail connection dialog lifecycle was not drawn") end if
   activated=match.setUiConnection(state,uiHost.CA_ACTIVE,0,"localhost","");if activated is error then return activated end if
   uiBaseline=state.context.uiFrames
-  input=Input(array(256,false),[0,0]);ui=uiBridge.attach(state,input,keyDown,mouseDelta);if ui is error then return ui end if
+  input=Input(array(256,false),[0,0]);ui=uiBridge.attach(state,input,uiProbeKeyDown,mouseDelta);if ui is error then return ui end if
   opened=session.openMain(ui);if opened is error then return opened end if
   if (state.context.uiKeyCatcher&session.KEYCATCH_UI)==0 then return error(7689,"retail main menu did not claim UI input") end if
   uiBridge.resetFrameCommands(state)

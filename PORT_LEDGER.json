@@ -21005,7 +21005,9 @@
         }
       ],
       "target": [
-        "src/mq3/client/cl_input.ml"
+        "src/mq3/client/cl_input.ml",
+        "src/mq3/client/qvm_frame_input.ml",
+        "src/mq3/client/qvm_preview_app.ml"
       ],
       "status": "ported",
       "tests": [
@@ -21017,7 +21019,12 @@
         "scripts/test_input.py",
         "scripts/test_client_send_cmd.py",
         "scripts/test_client_netchan.py",
-        "scripts/test_network_match_loop.py"
+        "scripts/test_network_match_loop.py",
+        "scripts/test_client_frame_input.py",
+        "tests/client_frame_input_contracts.ml",
+        "tests/client_frame_input_routing_contracts.ml",
+        "tests/client_frame_input_oracle.ml",
+        "tests/client_frame_input_retail_probe.ml"
       ]
     },
     {
@@ -21107,7 +21114,8 @@
         "src/mq3/client/ui_input_latch.ml",
         "src/mq3/client/console_input.ml",
         "src/mq3/client/key_bindings_config.ml",
-        "src/mq3/client/cl_keys_runtime.ml"
+        "src/mq3/client/cl_keys_runtime.ml",
+        "src/mq3/client/qvm_frame_input.ml"
       ],
       "status": "ported",
       "tests": [
@@ -21131,7 +21139,12 @@
         "tests/console_input_display_contracts.ml",
         "scripts/test_cl_keys_complete.py",
         "tests/cl_keys_complete_contracts.ml",
-        "tests/cl_keys_retail_probe.ml"
+        "tests/cl_keys_retail_probe.ml",
+        "scripts/test_client_frame_input.py",
+        "tests/client_frame_input_contracts.ml",
+        "tests/client_frame_input_routing_contracts.ml",
+        "tests/client_frame_input_oracle.ml",
+        "tests/client_frame_input_retail_probe.ml"
       ]
     },
     {
@@ -21923,7 +21936,10 @@
         }
       ],
       "target": [
-        "src/mq3/client/client_main.ml"
+        "src/mq3/client/client_main.ml",
+        "src/mq3/client/qvm_frame_input.ml",
+        "src/mq3/client/qvm_preview_app.ml",
+        "src/mq3/engine/local_qvm_match.ml"
       ],
       "status": "ported",
       "tests": [
@@ -21937,7 +21953,12 @@
         "scripts/test_client_network_ingress.py",
         "scripts/test_protocol_runtime.py",
         "scripts/test_demo.py",
-        "scripts/test_network_match_loop.py"
+        "scripts/test_network_match_loop.py",
+        "scripts/test_client_frame_input.py",
+        "tests/client_frame_input_contracts.ml",
+        "tests/client_frame_input_routing_contracts.ml",
+        "tests/client_frame_input_oracle.ml",
+        "tests/client_frame_input_retail_probe.ml"
       ]
     },
     {
@@ -46634,12 +46655,18 @@
         }
       ],
       "target": [
-        "src/mq3/client/ui_controls.ml"
+        "src/mq3/client/ui_controls.ml",
+        "src/mq3/client/qvm_frame_input.ml"
       ],
       "status": "ported",
       "tests": [
         "scripts/test_ui_controls.py",
-        "tests/ui_controls_contracts.ml"
+        "tests/ui_controls_contracts.ml",
+        "scripts/test_client_frame_input.py",
+        "tests/client_frame_input_contracts.ml",
+        "tests/client_frame_input_routing_contracts.ml",
+        "tests/client_frame_input_oracle.ml",
+        "tests/client_frame_input_retail_probe.ml"
       ]
     },
     {
