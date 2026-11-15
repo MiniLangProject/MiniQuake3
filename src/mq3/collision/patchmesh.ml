@@ -7,6 +7,7 @@ import mq3.shared.math as q
 import mq3.collision.winding as w
 import mq3.qcommon.headers as qcommonHeaders
 import std.array as arrays
+import mq3.collision.native_planes as nativePlanes
 
 struct Plane
   normal
@@ -23,6 +24,7 @@ struct Patch
   planes
   facets
   bounds
+  planeCache
 end struct
 struct Grid
   columns
@@ -151,6 +153,7 @@ end function
 function transpose(grid) return CM_TransposeGrid(grid) end function
 function appendPlane(patch, p)
   if len(patch.planes) >= 2048 then return fail("plane limit exceeded") end if
+  if patch.planeCache!=void then stored=nativePlanes.store(patch.planeCache,len(patch.planes),p);if stored!=1 then return fail("plane cache rejected insertion") end if end if
   patch.planes = patch.planes+[p]
   return len(patch.planes)-1
 end function
@@ -168,6 +171,7 @@ function equalPlane(a,b)
 end function
 function CM_PlaneEqual(a,b) return equalPlane(a,b) end function
 function findPlane2(patch,p)
+  if patch.planeCache!=void then found=nativePlanes.find2(patch.planeCache,len(patch.planes),p);if found>=0 then return [found>>1,found&1] end if;return [appendPlane(patch,p),0] end if
   index = 0
   while index < len(patch.planes)
     flipped = equalPlane(patch.planes[index],p)
@@ -179,6 +183,7 @@ end function
 function CM_FindPlane2(patch,p) return findPlane2(patch,p) end function
 function findPlane(patch,a,b,c)
   candidate=CM_PlaneFromPoints(a,b,c);if candidate==void then return -1 end if;normal=candidate.normal
+  if patch.planeCache!=void then found=nativePlanes.find(patch.planeCache,len(patch.planes),normal,a,b,c);if found>=0 then return found end if;return appendPlane(patch,candidate) end if
   index = 0
   while index < len(patch.planes)
     p = patch.planes[index]
@@ -441,7 +446,7 @@ function generate(width,height,points)
   for each column in grid.columns
     allPoints = allPoints+column
   end for
-  patch = Patch([],[],w.bounds(allPoints))
+  patch = Patch([],[],w.bounds(allPoints),bytes(2048*16,0))
   CM_PatchCollideFromGrid(grid,patch)
   for axis = 0 to 2
     patch.bounds[0][axis] = n.fsub(patch.bounds[0][axis],1.0)

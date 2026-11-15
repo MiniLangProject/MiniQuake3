@@ -6,6 +6,7 @@ import mq3.client.cgame_scoreboard as oldScoreboard
 import mq3.format.pk3 as pk3
 import mq3.renderer.playable_materials as materials
 import mq3.platform.playable_window as window
+import mq3.platform.playable_multitexture as raster
 import mq3.compat.numeric as numeric
 import std.string as strings
 
@@ -20,7 +21,7 @@ const CENTER_DEFAULT_Y=144
 const CENTER_DEFAULT_DURATION=3000
 const FADE_TIME=200
 
-struct Media imageName image slot end struct
+struct Media imageName image slot glyphBatch end struct
 struct CenterPrint text startedAt y charWidth duration lines end struct
 struct Countdown text charWidth charHeight second end struct
 struct ScoreRow name score deaths localPlayer red green blue end struct
@@ -37,7 +38,7 @@ function load(archive,textureSlot)
   loaded=materials.loadImage(archive,mapped)
   if loaded==void and mapped!=name then loaded=materials.loadImage(archive,name) end if
   if loaded==void then return fail("missing retail artwork "+name) end if
-  return Media(loaded[0],loaded[1],textureSlot)
+  return Media(loaded[0],loaded[1],textureSlot,void)
 end function
 
 function upload(media)
@@ -108,6 +109,59 @@ function drawString(media,text,x,y,charWidth,charHeight,scaleX,scaleY,red,green,
     else drawGlyph(media,text[index],cursor,y,charWidth,charHeight,scaleX,scaleY,color[0],color[1],color[2]);cursor=cursor+charWidth;index=index+1 end if
   end while
   return void
+end function
+
+// The original charset shader is SRC_ALPHA/ONE_MINUS_SRC_ALPHA, rgbGen vertex.
+// Retain one stream for the complete console instead of setting GL state and
+// submitting two individual draw calls for every visible character.
+function beginGlyphBatch(media)
+  if media==void then return fail("media is required") end if
+  if media.glyphBatch==void then media.glyphBatch=window.createTriangleBatch(512);if media.glyphBatch is error then return media.glyphBatch end if end if
+  window.resetTriangleBatch(media.glyphBatch);return media.glyphBatch
+end function
+function reserveGlyphBatch(media)
+  if media.glyphBatch==void then started=beginGlyphBatch(media);if started is error then return started end if end if
+  batch=media.glyphBatch;if batch.count+2<=batch.capacity then return batch end if
+  capacity=batch.capacity*2;if capacity>window.TRIANGLE_BATCH_MAX_COUNT then capacity=window.TRIANGLE_BATCH_MAX_COUNT end if
+  if capacity<batch.count+2 then return fail("console glyph batch exceeds native capacity") end if
+  grown=window.createTriangleBatch(capacity);if grown is error then return grown end if
+  if batch.count>0 then copyBytes(grown.data,0,batch.data,0,batch.count*window.TRIANGLE_BATCH_RECORD_BYTES) end if
+  grown.count=batch.count;media.glyphBatch=grown;return grown
+end function
+function glyphChannel(value) if value<0 then return 0 end if;if value>255 then return 255 end if;return value end function
+function appendGlyphCode(media,code,x,y,charWidth,charHeight,scaleX,scaleY,red,green,blue)
+  code=code&255;if code==32 then return void end if
+  if media==void then return fail("media is required") end if
+  if charWidth<1 or charHeight<1 then return fail("positive character size required") end if
+  batch=reserveGlyphBatch(media);if batch is error then return batch end if
+  u0=(code&15)/16.0;v0=(code>>4)/16.0;at=batch.count;batch.count=batch.count+2
+  written=window.writeScreenRect(batch,at,media.slot,x,y,charWidth,charHeight,u0,v0,u0+0.0625,v0+0.0625,scaleX,scaleY,[glyphChannel(red),glyphChannel(green),glyphChannel(blue),255]);if written is error then return written end if;return void
+end function
+function appendString(media,text,x,y,charWidth,charHeight,scaleX,scaleY,red,green,blue,shadow)
+  if media==void then return fail("media is required") end if
+  if charWidth<1 or charHeight<1 then return fail("positive character size required") end if
+  if shadow then
+    cursor=x;index=0
+    while index<len(text)
+      if isColorEscape(text,index) then index=index+2
+      else written=appendGlyphCode(media,bytes(text[index])[0],cursor+2,y+2,charWidth,charHeight,scaleX,scaleY,0,0,0);if written is error then return written end if;cursor=cursor+charWidth;index=index+1 end if
+    end while
+  end if
+  cursor=x;index=0;color=[red,green,blue]
+  while index<len(text)
+    if isColorEscape(text,index) then color=colorFor(text[index+1]);index=index+2
+    else written=appendGlyphCode(media,bytes(text[index])[0],cursor,y,charWidth,charHeight,scaleX,scaleY,color[0],color[1],color[2]);if written is error then return written end if;cursor=cursor+charWidth;index=index+1 end if
+  end while
+  return void
+end function
+function flushGlyphBatch(media)
+  if media==void then return fail("media is required") end if
+  if media.glyphBatch==void or media.glyphBatch.count==0 then return 0 end if
+  state=raster.setState(raster.BLEND_ALPHA,false,false);if state is error then return state end if
+  raster.setAlphaTest(raster.ALPHA_TEST_NONE);raster.setTextureClamp(false);raster.setPolygonOffset(false)
+  drawn=window.submitTriangleBatch(media.glyphBatch)
+  raster.setState(raster.BLEND_OPAQUE,false,false)
+  return drawn
 end function
 
 function timerText(levelStartTime,now)

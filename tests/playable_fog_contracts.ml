@@ -23,5 +23,12 @@ function main(args)
   count=count+require(batch.commands.count==1 and len(batch.sourcePositions)==1,"fogged triangle becomes a retained overlay")
   fog.update(batch,catalog,[0.0,0.0,0.0],[1.0,0.0,0.0]);count=count+require(n.readI32(batch.commands.data,0)==319 and batch.commands.data[116]==63 and batch.commands.data[117]==127 and batch.commands.data[118]==191 and batch.commands.data[119]==255,"fog overlay binds lookup and writes opaque retail vertex color")
   count=count+require(near(n.bitsFloat(n.readU32(batch.commands.data,32)),25.0/800.0+1.0/512.0,0.00001) and near(n.bitsFloat(n.readU32(batch.commands.data,36)),31.0/32.0,0.00001),"fog overlay writes view-dependent lookup coordinates")
+  sources=array(4096,void)
+  for index=0 to 4095 sources[index]=Triangle([Vertex([index*1.0,0.0,0.0]),b,c],index%4-1) end for
+  many=fog.build(RenderData(sources),catalog);ordered=many.commands.count==1024 and many.commands.capacity==1024 and len(many.sourcePositions)==1024 and len(many.fogIndexes)==1024
+  for index=0 to 1023 ordered=ordered and many.sourcePositions[index][0][0]==index*4+2 and many.fogIndexes[index]==1 end for
+  count=count+require(ordered,"large fog builder filters invalid volumes while retaining source triangle order and matching fog indexes")
+  empty=fog.build(RenderData([Triangle([a,b,c],0),Triangle([a,b,c],2)]),catalog)
+  count=count+require(empty.commands.count==0 and empty.commands.capacity==1 and len(empty.sourcePositions)==0 and len(empty.fogIndexes)==0,"empty fog filter preserves minimum command capacity without retained positions")
   print("PASS: "+str(count)+" playable fog contracts");return 0
 end function

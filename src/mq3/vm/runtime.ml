@@ -144,7 +144,7 @@ function call(runtime,slot,args)
   if runtime==void or slot==void or not slot.active or slot.machine==void then return error(3413,"VM runtime: call on inactive VM") end if
   previous=runtime.current;runtime.last=slot;runtime.current=slot;defer restoreCurrent(runtime,previous)
   if runtime.debugLevel!=0 and runtime.services.diagnosticFn!=void then callNumber=0;if len(args)>0 then callNumber=args[0] end if;runtime.services.diagnosticFn(runtime.services,"call",str(callNumber)) end if
-  if slot.compiled then return callCompiled(slot,args) end if;return interpreter.call(slot.machine,args)
+  if slot.compiled then return callCompiled(slot,args) end if;return interpreter.callFast(slot.machine,args)
 end function
 
 function callCompiled(slot,args) return jit.VM_CallCompiled(slot.compiledPlan,args) end function

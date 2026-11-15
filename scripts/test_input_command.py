@@ -4,6 +4,30 @@ from inventory import sha
 from toolchain import ROOT, run, msvc_env
 from transition_oracle import extract
 
+def check_preview_input_modes(preview_text):
+    """Keep desktop activity out of bounded renderer/performance probes."""
+    loop_start = 'while not window.shouldClose() and not quitRequested and (maxFrames<0 or frames<maxFrames)'
+    if 'interactiveInput=maxFrames<0' not in preview_text or loop_start not in preview_text:
+        raise RuntimeError('QVM smoke must distinguish bounded and interactive runs')
+    loop = preview_text.split(loop_start, 1)[1].split('while simulationTime+50<=serverTime', 1)[0]
+    before, physical = loop.split('if interactiveInput then', 1)
+    physical, after = physical.split('    else\n      window.inputClear()\n    end if', 1)
+    if 'window.poll()' not in before:
+        raise RuntimeError('bounded smoke must still pump native lifecycle/close events')
+    physical_anchors = ['nativeInput.mouse=window.mouseDelta()', 'nativeEvents=window.inputEvents(256)',
+                        'observeNativeInputEvents(nativeInput,nativeEvents)',
+                        'for each event in nativeEvents', 'if menuActive then',
+                        'for each key in [119,115,100,97,32,178]', 'window.inputKeyDown(key)']
+    for anchor in physical_anchors:
+        if anchor not in physical or anchor in before or anchor in after:
+            raise RuntimeError('physical QVM input escaped the interactive branch: ' + anchor)
+    for anchor in ['window.mouseDelta(', 'window.inputEvents(', 'window.inputKeyDown(',
+                   'observeNativeInputEvents(', 'pendingInputEvents.enqueue(']:
+        if anchor in before or anchor in after:
+            raise RuntimeError('bounded QVM smoke consumes physical input: ' + anchor)
+    if 'nativeInput=NativeInput([0,0],keys)' not in preview_text or 'keys=inputLatch.create(256)' not in preview_text:
+        raise RuntimeError('bounded UI input callbacks need a neutral initial latch and mouse')
+
 def main():
     out=ROOT/'build/reference/input_command';out.mkdir(parents=True,exist_ok=True)
     source=ROOT/'Quake-III-Arena-original-source/code/client/cl_input.c'
@@ -21,7 +45,8 @@ def main():
     preview=ROOT/'src/mq3/client/qvm_preview_app.ml';module=ROOT/'src/mq3/client/input_command.ml';event_module=ROOT/'src/mq3/client/input_command_events.ml';window=ROOT/'src/mq3/platform/playable_window.ml';native_window=ROOT/'native/playable_win32.c';contracts=ROOT/'tests/input_command_contracts.ml';mini_oracle=ROOT/'tests/input_command_oracle.ml'
     win_input=ROOT/'Quake-III-Arena-original-source/code/win32/win_input.c';win_wndproc=ROOT/'Quake-III-Arena-original-source/code/win32/win_wndproc.c';win_main=ROOT/'Quake-III-Arena-original-source/code/win32/win_main.c'
     preview_text=preview.read_text(encoding='utf-8')
-    for anchor in ['inputCommand.create(', 'timestampedInput.applyBound(', 'window.inputEvents(', 'inputCommand.createCommand(']:
+    check_preview_input_modes(preview_text)
+    for anchor in ['inputCommand.create(', 'timestampedInput.applyBoundQuake(', 'window.inputEvents(', 'inputCommand.createCommand(']:
         if anchor not in preview_text:raise RuntimeError('productive QVM input integration missing: '+anchor)
     if preview_text.index('window.inputClear()') > preview_text.index('realStart=window.milliseconds()'):
         raise RuntimeError('loading-screen input must be discarded before the native clock is rebased')

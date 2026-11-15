@@ -106,12 +106,12 @@ function density(fog,position,viewOrigin,forward) uv=coordinates(fog,position,vi
 function build(renderData,catalog)
   if renderData==void or catalog==void then return fail("render data and fog catalog are required") end if
   count=0;for each triangle in renderData.triangles if triangle.fogIndex>0 and triangle.fogIndex<len(catalog.fogs) then count=count+1 end if end for
-  capacity=count;if capacity<1 then capacity=1 end if;commands=window.createTriangleBatch(capacity);positions=[];indexes=[];zero=[0.0,0.0];clear=[255,255,255,0]
+  capacity=count;if capacity<1 then capacity=1 end if;commands=window.createTriangleBatch(capacity);positions=array(count,void);indexes=array(count,0);output=0;zero=[0.0,0.0];clear=[255,255,255,0]
   for each triangle in renderData.triangles
     if triangle.fogIndex>0 and triangle.fogIndex<len(catalog.fogs) then
       a=triangle.vertices[0];b=triangle.vertices[1];c=triangle.vertices[2]
       commands=window.appendSingleTextureTriangleColored(commands,-1,viewer.ScreenPoint(a.position[0],a.position[1],a.position[2]),zero,1.0,clear,viewer.ScreenPoint(b.position[0],b.position[1],b.position[2]),zero,1.0,clear,viewer.ScreenPoint(c.position[0],c.position[1],c.position[2]),zero,1.0,clear,255,255,255)
-      positions=positions+[[a.position,b.position,c.position]];indexes=indexes+[triangle.fogIndex]
+      positions[output]=[a.position,b.position,c.position];indexes[output]=triangle.fogIndex;output=output+1
     end if
   end for
   return FogBatch(commands,positions,indexes)

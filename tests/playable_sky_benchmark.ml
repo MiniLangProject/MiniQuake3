@@ -22,7 +22,7 @@ end function
 function main(args)
   opened=window.open(WIDTH,HEIGHT);if opened is error then return opened end if
   first=image(17);second=image(83)
-  catalog=sky.Catalog([sky.Layer("first",first,0,2.0,2.0,0.05,0.10,false),sky.Layer("second",second,1,3.0,2.0,0.05,0.06,true)],0,2,"benchmark")
+  catalog=sky.Catalog([sky.Layer("first",first,0,2.0,2.0,0.05,0.10,false),sky.Layer("second",second,1,3.0,2.0,0.05,0.06,true)],0,2,"benchmark",void)
   uploaded=sky.upload(catalog);if uploaded is error then window.shutdown();return uploaded end if
   camera=viewer.camera([10.0,20.0,30.0],37.0,-11.0,320.0,0.1)
   window.beginFrame(7,10,16);warmup=sky.draw(catalog,camera,WIDTH,HEIGHT,1000);if warmup is error then window.shutdown();return warmup end if

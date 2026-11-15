@@ -324,7 +324,7 @@ function CM_LoadMap(state,name,data,clientload)
   if name==void or name=="" then return fail("NULL map name") end if
   if state.world!=void and state.name==name and clientload then return LoadResult(state.world,state.lastChecksum,true) end if
   CM_ClearMap(state);if data==void or typeof(data)!="bytes" then return fail("map data missing") end if
-  world=loadWorld(data,state.curves);if world is error then return world end if;checksum=md4.blockChecksum(data);world.checksum=checksum
+  world=loadWorld(data,state.curves);if world is error then return world end if;checksum=world.checksum
   if not clientload then state.name=name;world.name=name end if
   state.world=world;state.checksum=checksum;state.lastChecksum=checksum;return LoadResult(world,checksum,false)
 end function

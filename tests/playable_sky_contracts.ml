@@ -40,11 +40,30 @@ function main(args)
   count=count+require(near(value.uv[0],0.05) and near(value.uv[1],1.10),"tim_hell scale and scroll")
   count=count+require(value.point.depth==sky.SKY_DEPTH,"sky stays behind world")
   count=count+require(sky.GRID_COLUMNS*sky.GRID_ROWS*2==192,"bounded layer triangle count")
-  catalog=sky.Catalog([firstLayer,secondLayer],4,2,"textures/skies/test")
+  catalog=sky.Catalog([firstLayer,secondLayer],4,2,"textures/skies/test",void)
   batch=sky.buildBatch(catalog,camera,640,480,1000)
   count=count+require(batch.count==384 and batch.capacity==384,"two layers share one native batch")
   count=count+require(len(batch.data)==384*128,"fixed batch allocation")
   viewportBatch=sky.buildBatchPrepared(catalog,viewer.cameraBasis(camera),100,50,320,240,1000)
   count=count+require(viewportBatch.count==384 and viewportBatch.capacity==384,"viewport sky retains fixed batching")
+  basis=viewer.cameraBasis(camera);retained=sky.retainedBatchPrepared(catalog,basis,0,0,640,480,1000)
+  count=count+require(retained.data==batch.data,"native retained sky is byte-identical to original MiniLang batch")
+  layerBytes=sky.GRID_COLUMNS*sky.GRID_ROWS*2*128;layerExact=true
+  for layerIndex=0 to len(catalog.layers)-1 if slice(retained.data,layerIndex*layerBytes,layerBytes)!=slice(batch.data,layerIndex*layerBytes,layerBytes) then layerExact=false end if end for
+  count=count+require(layerExact,"each explicit sky draw layer preserves original reference bytes")
+  sameBatch=sky.retainedBatchPrepared(catalog,basis,0,0,640,480,1733);laterReference=sky.buildBatchPrepared(catalog,basis,0,0,640,480,1733)
+  count=count+require(sameBatch==retained and sameBatch.data==laterReference.data,"time-only update reuses batch with exact cloud scrolling")
+  exact=true
+  for each sample in [[179.0,45.0,1307],[-179.0,-45.0,60001],[90.0,89.0,411],[-90.0,-89.0,120001],[37.0,-11.0,0]]
+    camera.yaw=sample[0];camera.pitch=sample[1];axes=viewer.cameraBasis(camera)
+    reference=sky.buildBatchPrepared(catalog,axes,100,50,320,240,sample[2]);cached=sky.retainedBatchPrepared(catalog,axes,100,50,320,240,sample[2])
+    if reference.data!=cached.data then exact=false end if
+  end for
+  count=count+require(exact,"seams, poles, offset viewports and scroll phases match every batch byte")
+  for yaw=0 to 31 camera.yaw=yaw*7.0;sky.retainedBatchPrepared(catalog,viewer.cameraBasis(camera),0,0,640,480,2000+yaw) end for
+  occupied=0;for each entry in catalog.cache.entries if entry!=void then occupied=occupied+1 end if end for
+  count=count+require(len(catalog.cache.entries)==sky.MAX_CACHED_VIEWS and occupied==sky.MAX_CACHED_VIEWS,"moving sky camera retains bounded cache storage")
+  count=count+require(sky.updateSkyLayerNative(nativeBytesPtr(retained.data),0,0,nativeBytesPtr(catalog.cache.entries[0].source),0,sky.GRID_COLUMNS,sky.GRID_ROWS,4,2.0,2.0,0.05,0.1,1000.0,sky.SKY_DEPTH)==0,"native sky updater rejects truncated source and output")
+  count=count+require(try(sky.retainedBatchPrepared(catalog,basis,0,0,0,480,0)) is error,"invalid retained sky viewport rejected")
   print("PASS: "+str(count)+" playable sky contracts");return 0
 end function

@@ -1,5 +1,8 @@
 """Build MiniLang code using the frozen toolchain and the small ABI bridge."""
 import argparse
+from contextlib import contextmanager
+import errno
+import time
 import json
 import shutil
 import subprocess
@@ -39,7 +42,7 @@ def minilang_inputs(source_path, compiler, subsystem="console"):
     return {"sources": sources, "compiler": sha(compiler), "subsystem": subsystem,
             "toolchain_profile": sha(ROOT / "docs/reference/toolchain.json"),
             "flags": ["-I", "src", "-I", "artifacts/toolchain",
-                      "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "64m"]}
+                      "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "256m"]}
 
 def valid_minilang_cache(output_path, stamp_path, inputs):
     if not output_path.is_file() or not stamp_path.is_file(): return False
@@ -65,14 +68,37 @@ def set_pe_windows_subsystem(path):
         executable.seek(optional + 68)
         executable.write((2).to_bytes(2, "little"))  # IMAGE_SUBSYSTEM_WINDOWS_GUI
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--source", default="src/main.ml")
-    parser.add_argument("--output", default="MiniQuake3.exe")
-    args = parser.parse_args()
-    output = ROOT / "build"
-    output.mkdir(exist_ok=True)
-    env = msvc_env("x64")
+@contextmanager
+def build_file_lock(path):
+    """Serialize writers to one build artifact; other outputs stay parallel."""
+    path.parent.mkdir(parents=True,exist_ok=True)
+    with path.open("a+b") as lock:
+        if lock.seek(0,2)==0:
+            lock.write(b"\0");lock.flush()
+        lock.seek(0)
+        if sys.platform=="win32":
+            import msvcrt
+            while True:
+                try:
+                    msvcrt.locking(lock.fileno(),msvcrt.LK_NBLCK,1)
+                    break
+                except OSError as error:
+                    if error.errno not in (errno.EACCES,errno.EAGAIN,errno.EDEADLK): raise
+                    time.sleep(0.05)
+        else:
+            import fcntl
+            fcntl.flock(lock.fileno(),fcntl.LOCK_EX)
+        try:
+            yield
+        finally:
+            lock.seek(0)
+            if sys.platform=="win32": msvcrt.locking(lock.fileno(),msvcrt.LK_UNLCK,1)
+            else: fcntl.flock(lock.fileno(),fcntl.LOCK_UN)
+
+def native_build_lock(output):
+    return build_file_lock(output / "native-build.lock")
+
+def build_native(output,env):
     abi=output / "miniquake3_abi.dll"
     stamp=output / "abi-inputs.json"
     previous=json.loads(stamp.read_text()) if stamp.exists() else {}
@@ -81,10 +107,10 @@ def main():
     if not compiler_hash:
         raise RuntimeError("MSVC cl.exe is unavailable and no verified native build cache exists")
     inputs={"source":sha(ROOT / "native/abi.c"),"compiler":compiler_hash,
-            "flags":"/LD /O2 /fp:strict /MT /Brepro"}
+            "flags":"/LD /O2 /fp:strict /W4 /WX /MT /Brepro"}
     if not abi.exists() or previous.get("inputs")!=inputs or previous.get("binary")!=sha(abi):
         if not compiler_path: raise RuntimeError("MSVC cl.exe is required to rebuild miniquake3_abi.dll")
-        run(["cl", "/nologo", "/LD", "/O2", "/fp:strict", "/MT", ROOT / "native/abi.c",
+        run(["cl", "/nologo", "/LD", "/O2", "/fp:strict", "/W4", "/WX", "/MT", ROOT / "native/abi.c",
              "/link", "/Brepro", f"/out:{abi}"], output, env, output / "abi-build.log")
         stamp.write_text(json.dumps({"inputs":inputs,"binary":sha(abi)},indent=2)+"\n")
     udp=output / "miniquake3_udp.dll"
@@ -110,7 +136,11 @@ def main():
         winmain_stamp.write_text(json.dumps({"inputs":winmain_inputs,"binary":sha(winmain)},indent=2)+"\n")
     playable=output / "playable_window.dll"
     playable_stamp=output / "playable-window-inputs.json"
-    playable_inputs={"source":sha(ROOT / "native/playable_win32.c"),"compiler":inputs["compiler"],
+    playable_inputs={"source":sha(ROOT / "native/playable_win32.c"),
+                     "render_trace":sha(ROOT / "native/playable_render_trace.h"),
+                     "hardware_renderer":sha(ROOT / "native/playable_gl_renderer.h"),
+                     "world_gather":sha(ROOT / "native/playable_world_gather.h"),
+                     "sky_math":sha(ROOT / "native/playable_sky_math.h"),"compiler":inputs["compiler"],
                      "flags":"/LD /O2 /W4 /WX /MT /Brepro user32.lib gdi32.lib winmm.lib"}
     playable_previous=json.loads(playable_stamp.read_text()) if playable_stamp.exists() else {}
     if not playable.exists() or playable_previous.get("inputs")!=playable_inputs or playable_previous.get("binary")!=sha(playable):
@@ -141,6 +171,28 @@ def main():
              "/link", "/Brepro", "winmm.lib", f"/out:{ambient}"],
             output, env, output / "playable-ambient-build.log")
         ambient_stamp.write_text(json.dumps({"inputs":ambient_inputs,"binary":sha(ambient)},indent=2)+"\n")
+    qvm=output / "miniquake3_qvm.dll"
+    qvm_stamp=output / "qvm-exec-inputs.json"
+    qvm_inputs={"source":sha(ROOT / "native/qvm_exec.c"),"compiler":inputs["compiler"],
+                "flags":"/LD /O2 /fp:strict /W4 /WX /MT /Brepro"}
+    qvm_previous=json.loads(qvm_stamp.read_text()) if qvm_stamp.exists() else {}
+    if not qvm.exists() or qvm_previous.get("inputs")!=qvm_inputs or qvm_previous.get("binary")!=sha(qvm):
+        if not compiler_path: raise RuntimeError("MSVC cl.exe is required to rebuild miniquake3_qvm.dll")
+        run(["cl", "/nologo", "/LD", "/O2", "/fp:strict", "/W4", "/WX", "/MT", ROOT / "native/qvm_exec.c",
+             "/link", "/Brepro", f"/out:{qvm}"], output, env, output / "qvm-exec-build.log")
+        qvm_stamp.write_text(json.dumps({"inputs":qvm_inputs,"binary":sha(qvm)},indent=2)+"\n")
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--source", default="src/main.ml")
+    parser.add_argument("--output", default="MiniQuake3.exe")
+    args = parser.parse_args()
+    output = ROOT / "build"
+    output.mkdir(exist_ok=True)
+    env = msvc_env("x64")
+    with native_build_lock(output):
+        build_native(output,env)
     frozen = ROOT / "artifacts/toolchain"
     compiler = frozen / "build/mlc_win64.exe"
     if not compiler.exists():
@@ -155,23 +207,24 @@ def main():
     compile_stamp=output_path.with_name(output_path.name+".inputs.json")
     gui_executable = (source_path.resolve() == (ROOT / "src/main.ml").resolve() and
                       output_path.resolve() == (output / "MiniQuake3.exe").resolve())
-    compile_inputs=minilang_inputs(source_path,compiler,"windows" if gui_executable else "console")
-    if not valid_minilang_cache(output_path,compile_stamp,compile_inputs):
-        run([compiler, source_path, output_path, "-I", ROOT / "src", "-I", frozen,
-             "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "64m"],
-             output, log=output / (output_path.name + ".compile.log"), timeout=900)
+    with build_file_lock(output_path.with_name(output_path.name+".build.lock")):
+        compile_inputs=minilang_inputs(source_path,compiler,"windows" if gui_executable else "console")
+        if not valid_minilang_cache(output_path,compile_stamp,compile_inputs):
+            run([compiler, source_path, output_path, "-I", ROOT / "src", "-I", frozen,
+                 "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "256m"],
+                 output, log=output / (output_path.name + ".compile.log"), timeout=900)
+            if gui_executable:
+                set_pe_windows_subsystem(output_path)
+            compile_stamp.write_text(json.dumps({"inputs":compile_inputs,"binary":sha(output_path)},indent=2)+"\n")
         if gui_executable:
-            set_pe_windows_subsystem(output_path)
-        compile_stamp.write_text(json.dumps({"inputs":compile_inputs,"binary":sha(output_path)},indent=2)+"\n")
-    if gui_executable:
-        source_qvms = output / "reference" / "qvms"
-        qvm_names = ("ui.qvm", "qagame.qvm", "cgame.qvm")
-        if not valid_qvm_cache(source_qvms, qvm_names):
-            subprocess.run([sys.executable, ROOT / "scripts" / "build_qvms.py"], cwd=ROOT, check=True)
-        packaged_qvms = output / "qvms"
-        packaged_qvms.mkdir(exist_ok=True)
-        for name in qvm_names:
-            shutil.copy2(source_qvms / name, packaged_qvms / name)
+            source_qvms = output / "reference" / "qvms"
+            qvm_names = ("ui.qvm", "qagame.qvm", "cgame.qvm")
+            if not valid_qvm_cache(source_qvms, qvm_names):
+                subprocess.run([sys.executable, ROOT / "scripts" / "build_qvms.py"], cwd=ROOT, check=True)
+            packaged_qvms = output / "qvms"
+            packaged_qvms.mkdir(exist_ok=True)
+            for name in qvm_names:
+                shutil.copy2(source_qvms / name, packaged_qvms / name)
     print(f"Built {args.output}")
 
 if __name__ == "__main__":

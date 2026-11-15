@@ -17,9 +17,9 @@ def main():
     if native!=mini: raise RuntimeError('dynamic-light bmodel mismatch\nC:\n'+native+'MiniLang:\n'+mini)
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/playable_dynamic_lights_contracts.ml','--output','playable_dynamic_lights_contracts.exe'],cwd=ROOT,check=True)
     value=run([ROOT/'build/playable_dynamic_lights_contracts.exe'],ROOT/'build').strip()
-    if value!='PASS: 13 playable dynamic-light contracts': raise RuntimeError(value)
+    if value!='PASS: 15 playable dynamic-light contracts': raise RuntimeError(value)
     files=[original,harness,ROOT/'src/mq3/renderer/playable_dynamic_lights.ml',ROOT/'tests/playable_dynamic_lights_oracle.ml',ROOT/'tests/playable_dynamic_lights_contracts.ml']
-    result={'passed':True,'records':len(native.splitlines()),'contracts':13,'functions':functions,'scope':'Exact Baseq3 R_TransformDlights coordinates and R_DlightBmodel radius-expanded local bounds mask, plus retained projected-light rendering contracts.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
+    result={'passed':True,'records':len(native.splitlines()),'contracts':15,'functions':functions,'scope':'Exact Baseq3 R_TransformDlights coordinates and R_DlightBmodel radius-expanded local bounds mask, plus retained projected-light rendering contracts.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
     (out/'result.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8',newline='\n')
-    print(f"PASS: {result['records']} exact Baseq3 dynamic-light records + 13 contracts")
+    print(f"PASS: {result['records']} exact Baseq3 dynamic-light records + 15 contracts")
 if __name__=='__main__': main()

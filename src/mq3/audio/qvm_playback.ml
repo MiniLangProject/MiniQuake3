@@ -25,7 +25,7 @@ struct Listener entity origin axis inWater end struct
 struct Voice id slot entity channel handle origin fixedOrigin localSound sound compressed mono cursor active end struct
 struct LoopSource entity handle origin velocity realLoop sound compressed mono cursor active doppler dopplerScale oldDopplerScale end struct
 struct Music introSound loopSound cursor inIntro active end struct
-struct State outputRate chunkFrames catalog listener entityOrigins voices loops nextVoice music commandCursor channels loopPaintedFrames rawStream monoCache clipHandles end struct
+struct State outputRate chunkFrames catalog listener entityOrigins voices loops nextVoice music commandCursor channels loopPaintedFrames rawStream monoCache clipHandles monoHandles end struct
 struct ApplyResult applied missing ignored end struct
 struct Chunk samples frames audibleVoices audibleLoops peak limiterGain end struct
 
@@ -39,7 +39,7 @@ function create(catalog,outputRate,chunkFrames)
   rawStream=sndRaw.create(outputRate);if rawStream is error then return rawStream end if
   maxHandle=0;for each clip in catalog.clips if clip.handle>maxHandle then maxHandle=clip.handle end if end for
   clipHandles=array(maxHandle+1,void);for each clip in catalog.clips if clip.handle>0 then clipHandles[clip.handle]=clip end if end for
-  return State(outputRate,chunkFrames,catalog,Listener(0,[0.0,0.0,0.0],defaultAxis(),false),array(MAX_ENTITIES,void),[],[],1,void,0,sndChannels.create(),0,rawStream,lists.List.withCapacity(64),clipHandles)
+  return State(outputRate,chunkFrames,catalog,Listener(0,[0.0,0.0,0.0],defaultAxis(),false),array(MAX_ENTITIES,void),[],[],1,void,0,sndChannels.create(),0,rawStream,lists.List.withCapacity(64),clipHandles,array(maxHandle+1,void))
 end function
 
 function clipForHandle(state,handle)
@@ -65,8 +65,23 @@ function copyOrigin(origin) return [origin[0],origin[1],origin[2]] end function
 
 function cachedMono(state,clip)
   if clip.compressed!=void then return void end if
-  for each entry in state.monoCache if entry[0]==clip.handle then return entry[1] end if end for
+  // std.ds.list.List is not a foreach iterable. Iterating the List object
+  // silently missed every cached entry and decoded whole loop WAVs again on
+  // every cgame frame. Registered sfx handles are stable, so use O(1) lookup.
+  handle=clip.handle
+  if handle>0 then
+    if handle<len(state.monoHandles) and state.monoHandles[handle]!=void then return state.monoHandles[handle] end if
+  else
+    for index=0 to state.monoCache.len()-1 entry=state.monoCache.get(index);if entry[0]==handle then return entry[1] end if end for
+  end if
   samples=sndPaint.monoSamples(clip.sound);if samples is error then return samples end if
+  if handle>0 then
+    if handle>=len(state.monoHandles) then
+      capacity=len(state.monoHandles);if capacity<16 then capacity=16 end if;while capacity<=handle capacity=capacity*2 end while
+      expanded=array(capacity,void);if len(state.monoHandles)>0 then copyArray(expanded,0,state.monoHandles,0,len(state.monoHandles)) end if;state.monoHandles=expanded
+    end if
+    state.monoHandles[handle]=samples
+  end if
   state.monoCache.add([clip.handle,samples]);return samples
 end function
 

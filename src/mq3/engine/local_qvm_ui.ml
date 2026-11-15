@@ -18,7 +18,7 @@ function refresh(state,now) return localMatch.refreshUi(state,now) end function
 function setMenu(state,menu) return localMatch.setUiMenu(state,menu) end function
 function drawConnectScreen(state,overlay) return uiVm.drawConnectScreen(state.ui,overlay) end function
 function fullscreen(state) return uiVm.isFullscreen(state.ui) end function
-function resetFrameCommands(state) if state==void then return fail("match state is required") end if;q2commands.reset(state.context.renderQueue);return void end function
+function resetFrameCommands(state) if state==void then return fail("match state is required") end if;return localMatch.beginRendererFrame(state) end function
 function commandCount(state) return q2commands.count(state.context.renderQueue) end function
 function serviceSet(state)
   if state==void or state.ui==void or not state.ui.active then return fail("active ui.qvm is required") end if
@@ -28,7 +28,7 @@ function attach(state,inputContext,keyDownFn,mouseDeltaFn)
   configured=serviceSet(state);if configured is error then return configured end if
   return uiSession.create(configured,inputContext,keyDownFn,mouseDeltaFn)
 end function
-function nativeKeyDown(context,key) return window.keyDown(key) end function
+function nativeKeyDown(context,key) return window.inputKeyDown(key) end function
 function nativeMouseDelta(context) return window.mouseDelta() end function
 function attachNative(state) return attach(state,void,nativeKeyDown,nativeMouseDelta) end function
 function bootAndAttachNative(state,menu)

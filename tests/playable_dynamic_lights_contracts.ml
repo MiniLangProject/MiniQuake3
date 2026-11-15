@@ -25,5 +25,18 @@ function main(args)
   outsideLight=lights.Light([10.0,22.01,0.0],1.0,[1.0,1.0,1.0],false);count=count+require(not lights.affectsBounds(outsideLight,origin,axis,bounds),"R_DlightBmodel rejects a light beyond expanded local bounds")
   orientedData=RenderData([Triangle([Vertex([10.0,20.0,0.0]),Vertex([10.0,21.0,0.0]),Vertex([9.0,20.0,0.0])],1)]);oriented=lights.buildOriented(orientedData,[false,true],[origin],[axis],[bounds]);if oriented is error then return oriented end if
   orientedCount=lights.update(oriented,catalog,lights.Light([7.0,22.0,0.0],10.0,[1.0,1.0,1.0],false));ou=n.bitsFloat(n.readU32(oriented.commands.data,32));ov=n.bitsFloat(n.readU32(oriented.commands.data,36));count=count+require(orientedCount==1 and near(ou,0.7) and near(ov,0.8),"rotated brush dlight projection uses local S/T while retaining world vertices")
+  sources=array(4096,void);sourceOrigins=array(4096,void);sourceAxes=array(4096,void);sourceBounds=array(4096,void)
+  for index=0 to 4095
+    sources[index]=Triangle([Vertex([index*1.0,0.0,0.0]),b,c],index%4-1);sourceOrigins[index]=[index*1.0,2.0,3.0];sourceAxes[index]=axis;sourceBounds[index]=bounds
+  end for
+  many=lights.build(RenderData(sources),[true,false]);manyOriented=lights.buildOriented(RenderData(sources),[true,false],sourceOrigins,sourceAxes,sourceBounds)
+  ordered=len(many.triangles)==1024 and many.commands.capacity==1024 and len(manyOriented.triangles)==1024
+  for index=0 to 1023
+    sourceIndex=index*4+1
+    ordered=ordered and many.triangles[index].vertices[0].position[0]==sourceIndex and manyOriented.triangles[index].vertices[0].position[0]==sourceIndex and manyOriented.origins[index]==sourceOrigins[sourceIndex] and manyOriented.axes[index]==sourceAxes[sourceIndex] and manyOriented.bounds[index]==sourceBounds[sourceIndex]
+  end for
+  count=count+require(ordered,"large filtered world/oriented builders retain triangle order and aligned origin/axis/bounds")
+  empty=lights.build(RenderData(sources),[false,false]);emptyOriented=lights.buildOriented(RenderData(sources),[false,false],sourceOrigins,sourceAxes,sourceBounds)
+  count=count+require(len(empty.triangles)==0 and empty.commands.capacity==1 and len(emptyOriented.triangles)==0 and len(emptyOriented.origins)==0 and emptyOriented.commands.capacity==1,"empty filtered world/oriented builders preserve valid minimum command capacity")
   print("PASS: "+str(count)+" playable dynamic-light contracts");return 0
 end function

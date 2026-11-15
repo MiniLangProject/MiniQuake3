@@ -1,10 +1,16 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-// C integer widths and binary32 operations. Algorithms are MiniLang-owned.
+// C integer widths and exact binary32 primitives. MiniLang integer algorithms
+// remain an independent reference; hot ABI arithmetic uses controlled SSE2.
 package mq3.compat.numeric
 
 extern function mq3_f32(value as double) from "miniquake3_abi.dll" returns double
 extern function mq3_float_bits(value as double) from "miniquake3_abi.dll" returns u32
 extern function mq3_bits_float(value as u32) from "miniquake3_abi.dll" returns double
+extern function mq3_fadd(a as double,b as double) from "miniquake3_abi.dll" returns double
+extern function mq3_fsub(a as double,b as double) from "miniquake3_abi.dll" returns double
+extern function mq3_fmul(a as double,b as double) from "miniquake3_abi.dll" returns double
+extern function mq3_fdiv(a as double,b as double) from "miniquake3_abi.dll" returns double
+extern function mq3_fsqrt(value as double) from "miniquake3_abi.dll" returns double
 
 function u32(value)
   return value & 0xffffffff
@@ -68,11 +74,11 @@ function bitsFloat(value)
 end function
 
 function fadd(a, b)
-  return bitsFloat(addBits(floatBits(a), floatBits(b)))
+  return mq3_fadd(a,b)
 end function
 
 function fsub(a, b)
-  return bitsFloat(subBits(floatBits(a), floatBits(b)))
+  return mq3_fsub(a,b)
 end function
 function subBits(a,b)
   // SSE subtraction propagates a NaN operand without negating its sign.
@@ -82,15 +88,15 @@ function subBits(a,b)
 end function
 
 function fmul(a, b)
-  return bitsFloat(mulBits(floatBits(a), floatBits(b)))
+  return mq3_fmul(a,b)
 end function
 
 function fdiv(a, b)
-  return bitsFloat(divBits(floatBits(a), floatBits(b)))
+  return mq3_fdiv(a,b)
 end function
 
 function fsqrt(value)
-  return bitsFloat(sqrtBits(floatBits(value)))
+  return mq3_fsqrt(value)
 end function
 
 function fneg(value)

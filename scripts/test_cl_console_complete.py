@@ -28,7 +28,7 @@ PRODUCTIVE_WIRING = {
     "single output scale": ("src/mq3/client/qvm_preview_app.ml", "scaleY=height/480.0"),
     "retail background draw": ("src/mq3/client/qvm_preview_app.ml", "consoleBackground.draw(background,width,bottom+1,now)"),
     "two-pixel red separator": ("src/mq3/client/qvm_preview_app.ml", "separator+1"),
-    "unshadowed console glyph": ("src/mq3/client/qvm_preview_app.ml", "color[0],color[1],color[2],false"),
+    "unshadowed console glyph": ("src/mq3/client/qvm_preview_app.ml", "appendGlyphCode(media,glyph.ch,glyph.x,glyph.y,8,16,scaleX,scaleY,color[0],color[1],color[2])"),
     "productive scroll callback": ("src/mq3/engine/local_qvm_match.ml", "textServices.scrollFn=consoleScroll"),
     "productive demo-loop callback": ("src/mq3/engine/local_qvm_match.ml", "consoleServices.startDemoLoopFn=consoleStartDemoLoop"),
     "productive catcher synchronization": ("src/mq3/engine/local_qvm_match.ml", "runtime.uiOrCgameCatcher=runtime.keyCatchers&(clientConsole.KEYCATCH_UI|clientConsole.KEYCATCH_CGAME)"),

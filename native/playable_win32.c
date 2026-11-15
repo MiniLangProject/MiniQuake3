@@ -113,6 +113,13 @@ static unsigned int inputEventHead;
 static unsigned int inputEventTail;
 static unsigned char inputKeyState[256];
 static SRWLOCK inputLock = SRWLOCK_INIT;
+typedef struct playableRawAbsoluteMouse_s {
+    int valid;
+    HANDLE device;
+    USHORT flags;
+    int x, y, left, top, width, height;
+} playableRawAbsoluteMouse;
+static playableRawAbsoluteMouse rawAbsoluteMouse;
 static volatile LONG inputAppActive;
 static volatile LONG inputMouseActive;
 static volatile LONG windowMinimized;
@@ -168,7 +175,14 @@ static __declspec(thread) int rasterClipMinimumY;
 static __declspec(thread) int rasterClipMaximumY = INT_MAX;
 static __declspec(thread) int rasterVertexColorEnabled;
 static __declspec(thread) int rasterVertexColorUniform;
-static __declspec(thread) unsigned char rasterVertexColor[3][4];
+static __declspec(thread) int rasterExactRows;
+/* Shader batches obey their explicit alpha-test state, even for alpha zero.
+ * Legacy direct primitives retain their transparent-font discard behavior. */
+static __declspec(thread) int rasterShaderBatch;
+/* Clipping produces fractional RGBA values. Retain them until fragment
+ * interpolation instead of introducing another byte quantization at the
+ * near-plane intersection. Unclipped records still enter as exact bytes. */
+static __declspec(thread) double rasterVertexColor[3][4];
 
 /* Compact little-endian command consumed by the batch entry point. */
 #define PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES 128
@@ -189,6 +203,34 @@ typedef struct playableTriangleBatchRecord_s {
 
 typedef char playableTriangleBatchRecordSizeMustBe128[
     sizeof(playableTriangleBatchRecord) == PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES ? 1 : -1];
+
+#include "playable_render_trace.h"
+#include "playable_gl_renderer.h"
+#include "playable_sky_math.h"
+#include "playable_world_gather.h"
+
+PLAYABLE_API int playable_window_write_batch_vertex(unsigned char *data,int bytes,int offset,
+        double x,double y,double z,double u,double v,double lu,double lv,double light) {
+    float values[8];
+    if (!data || offset<0 || bytes<32 || offset>bytes-32) return 0;
+    values[0]=(float)x;values[1]=(float)y;values[2]=(float)z;values[3]=(float)u;
+    values[4]=(float)v;values[5]=(float)lu;values[6]=(float)lv;values[7]=(float)light;
+    memcpy(data+offset,values,sizeof(values));return 1;
+}
+PLAYABLE_API int playable_window_update_stage_vertex(unsigned char *data,int bytes,int triangle,int vertex,
+        double x,double y,double z,double u,double v,int red,int green,int blue,int alpha) {
+    playableTriangleBatchRecord *record;
+    if (!data || triangle<0 || triangle>=PLAYABLE_TRIANGLE_BATCH_MAX_COUNT || vertex<0 || vertex>2 ||
+            bytes<PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES || triangle>(bytes-PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES)/PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES) return 0;
+    record=(playableTriangleBatchRecord *)(data+(SIZE_T)triangle*PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES);
+    record->vertex[vertex][0]=(float)x;record->vertex[vertex][1]=(float)y;record->vertex[vertex][2]=(float)z;
+    record->vertex[vertex][3]=(float)u;record->vertex[vertex][4]=(float)v;record->vertex[vertex][7]=1.0f;
+    record->vertexColor[vertex][0]=(unsigned char)(red<0 ? 0 : red>255 ? 255 : red);
+    record->vertexColor[vertex][1]=(unsigned char)(green<0 ? 0 : green>255 ? 255 : green);
+    record->vertexColor[vertex][2]=(unsigned char)(blue<0 ? 0 : blue>255 ? 255 : blue);
+    record->vertexColor[vertex][3]=(unsigned char)(alpha<0 ? 0 : alpha>255 ? 255 : alpha);
+    return 1;
+}
 
 static void writeScreenQuadVertex(playableTriangleBatchRecord *record, int vertex,
         double x, double y, double depth, double u, double v,
@@ -257,9 +299,8 @@ static int currentMilliseconds(void) {
 
 /* Sys_QueEvent's 256-entry overwrite-oldest ownership rule, specialized to
  * native input. The UI thread is the producer and MiniLang is the consumer. */
-static void queueInputEvent(int time, int type, int value, int value2) {
+static void queueInputEventLocked(int time, int type, int value, int value2) {
     unsigned int index;
-    AcquireSRWLockExclusive(&inputLock);
     if (inputEventHead - inputEventTail >= PLAYABLE_INPUT_EVENTS) ++inputEventTail;
     index = inputEventHead & (PLAYABLE_INPUT_EVENTS - 1u);
     inputEvents[index].time = time;
@@ -267,6 +308,11 @@ static void queueInputEvent(int time, int type, int value, int value2) {
     inputEvents[index].value = value;
     inputEvents[index].value2 = value2;
     ++inputEventHead;
+}
+
+static void queueInputEvent(int time, int type, int value, int value2) {
+    AcquireSRWLockExclusive(&inputLock);
+    queueInputEventLocked(time, type, value, value2);
     ReleaseSRWLockExclusive(&inputLock);
 }
 
@@ -310,6 +356,67 @@ static void resetInputEvents(void) {
     inputEventHead = inputEventTail = 0;
     ZeroMemory(inputEvents, sizeof(inputEvents));
     ZeroMemory(inputKeyState, sizeof(inputKeyState));
+    ZeroMemory(&rawAbsoluteMouse, sizeof(rawAbsoluteMouse));
+    InterlockedExchange(&mouseDX, 0);
+    InterlockedExchange(&mouseDY, 0);
+    ReleaseSRWLockExclusive(&inputLock);
+}
+
+static void resetRawMouseMotion(void) {
+    AcquireSRWLockExclusive(&inputLock);
+    ZeroMemory(&rawAbsoluteMouse, sizeof(rawAbsoluteMouse));
+    InterlockedExchange(&mouseDX, 0);
+    InterlockedExchange(&mouseDY, 0);
+    ReleaseSRWLockExclusive(&inputLock);
+}
+
+/* RAWMOUSE absolute coordinates cover 0..65535 over the primary or virtual
+ * desktop. Anchor the first report after focus/device/desktop changes rather
+ * than feeding that absolute position into CL_MouseEvent as a huge delta.
+ * https://learn.microsoft.com/windows/win32/api/winuser/ns-winuser-rawmouse */
+static void queueRawMouseMotion(const RAWMOUSE *mouse, HANDLE device, int time) {
+    int dx, dy;
+    if (!mouse) return;
+    AcquireSRWLockExclusive(&inputLock);
+    if (!InterlockedCompareExchange(&inputAppActive, 0, 0) ||
+            !InterlockedCompareExchange(&inputMouseActive, 0, 0)) {
+        rawAbsoluteMouse.valid = 0;
+        ReleaseSRWLockExclusive(&inputLock);
+        return;
+    }
+    if (mouse->usFlags & MOUSE_MOVE_ABSOLUTE) {
+        USHORT spaceFlags = mouse->usFlags & (MOUSE_MOVE_ABSOLUTE | MOUSE_VIRTUAL_DESKTOP);
+        int desktop = (mouse->usFlags & MOUSE_VIRTUAL_DESKTOP) != 0;
+        int left = desktop ? GetSystemMetrics(SM_XVIRTUALSCREEN) : 0;
+        int top = desktop ? GetSystemMetrics(SM_YVIRTUALSCREEN) : 0;
+        int width = GetSystemMetrics(desktop ? SM_CXVIRTUALSCREEN : SM_CXSCREEN);
+        int height = GetSystemMetrics(desktop ? SM_CYVIRTUALSCREEN : SM_CYSCREEN);
+        int x, y, anchored;
+        if (mouse->lLastX < 0 || mouse->lLastX > 65535 ||
+                mouse->lLastY < 0 || mouse->lLastY > 65535 || width < 1 || height < 1) {
+            rawAbsoluteMouse.valid = 0;
+            ReleaseSRWLockExclusive(&inputLock);
+            return;
+        }
+        x = left + MulDiv(mouse->lLastX, width - 1, 65535);
+        y = top + MulDiv(mouse->lLastY, height - 1, 65535);
+        anchored = rawAbsoluteMouse.valid && !(mouse->usFlags & MOUSE_ATTRIBUTES_CHANGED) &&
+            rawAbsoluteMouse.device == device && rawAbsoluteMouse.flags == spaceFlags && rawAbsoluteMouse.left == left &&
+            rawAbsoluteMouse.top == top && rawAbsoluteMouse.width == width && rawAbsoluteMouse.height == height;
+        dx = anchored ? x - rawAbsoluteMouse.x : 0;
+        dy = anchored ? y - rawAbsoluteMouse.y : 0;
+        rawAbsoluteMouse.valid = 1; rawAbsoluteMouse.device = device; rawAbsoluteMouse.flags = spaceFlags;
+        rawAbsoluteMouse.x = x; rawAbsoluteMouse.y = y; rawAbsoluteMouse.left = left; rawAbsoluteMouse.top = top;
+        rawAbsoluteMouse.width = width; rawAbsoluteMouse.height = height;
+    } else {
+        rawAbsoluteMouse.valid = 0;
+        dx = mouse->lLastX; dy = mouse->lLastY;
+    }
+    if (dx || dy) {
+        InterlockedExchangeAdd(&mouseDX, dx);
+        InterlockedExchangeAdd(&mouseDY, dy);
+        queueInputEventLocked(time, PLAYABLE_INPUT_MOUSE, dx, dy);
+    }
     ReleaseSRWLockExclusive(&inputLock);
 }
 
@@ -440,10 +547,11 @@ static void activateMouseOnWindow(HWND hwnd) {
     }
     while (ShowCursor(FALSE) >= 0) inputCursorHidden = 1;
     haveMousePosition = 0;
+    resetRawMouseMotion();
 }
 
 static void deactivateMouseOnWindow(void) {
-    if (!InterlockedExchange(&inputMouseActive, 0)) return;
+    if (!InterlockedExchange(&inputMouseActive, 0)) { resetRawMouseMotion(); return; }
     ClipCursor(0);
     if (GetCapture() == windowHandle) ReleaseCapture();
     if (inputCursorHidden) {
@@ -451,6 +559,7 @@ static void deactivateMouseOnWindow(void) {
         inputCursorHidden = 0;
     }
     haveMousePosition = 0;
+    resetRawMouseMotion();
 }
 
 static double joystickAxis(int value) {
@@ -616,6 +725,7 @@ static void copyGLString(char *destination, size_t capacity, const GLubyte *sour
 }
 
 static void shutdownOpenGL(void) {
+    shutdownHardwareRenderer();
     if (gammaRampChanged && windowDC) SetDeviceGammaRamp(windowDC, originalGammaRamp);
     gammaRampChanged = 0;
     if (playableWglMakeCurrent) playableWglMakeCurrent(0, 0);
@@ -678,6 +788,9 @@ static int initializeOpenGL(const wchar_t *driverName) {
     if (openGLStereo) requested.dwFlags |= PFD_STEREO;
     requested.iPixelType = PFD_TYPE_RGBA;
     requested.cColorBits = (BYTE)(openGLColorBits ? openGLColorBits : 24);
+    /* Destination-alpha shader blends and byte alpha tests require an actual
+     * alpha channel; an RGB-only window format loses both on some drivers. */
+    requested.cAlphaBits = 8;
     requested.cDepthBits = (BYTE)(openGLDepthBits ? openGLDepthBits : 24);
     requested.cStencilBits = (BYTE)(openGLStencilBits ? openGLStencilBits : 8);
     requested.iLayerType = PFD_MAIN_PLANE;
@@ -708,6 +821,7 @@ static int initializeOpenGL(const wchar_t *driverName) {
     if (playableWglSwapInterval) playableWglSwapInterval(openGLSwapInterval);
     gammaRampAvailable = GetDeviceGammaRamp(windowDC, originalGammaRamp) != FALSE;
     openGLActive = 1;
+    initializeHardwareRenderer();
     return 1;
 }
 
@@ -908,7 +1022,8 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
             return 0;
         }
         case WM_MOUSEMOVE:
-            if (!rawMouseEnabled && InterlockedCompareExchange(&inputMouseActive, 0, 0)) {
+            if (!rawMouseEnabled && InterlockedCompareExchange(&inputAppActive, 0, 0) &&
+                    InterlockedCompareExchange(&inputMouseActive, 0, 0)) {
                 int x = (int)(short)LOWORD(lParam);
                 int y = (int)(short)HIWORD(lParam);
                 RECT client;
@@ -941,12 +1056,13 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
             UINT size = sizeof(input);
             if (GetRawInputData((HRAWINPUT)lParam, RID_INPUT, &input, &size,
                     sizeof(RAWINPUTHEADER)) == size && input.header.dwType == RIM_TYPEMOUSE) {
-                InterlockedExchangeAdd(&mouseDX, input.data.mouse.lLastX);
-                InterlockedExchangeAdd(&mouseDY, input.data.mouse.lLastY);
-                if (input.data.mouse.lLastX || input.data.mouse.lLastY)
-                    queueInputEvent(currentMilliseconds(), PLAYABLE_INPUT_MOUSE,
-                        input.data.mouse.lLastX, input.data.mouse.lLastY);
+                queueRawMouseMotion(&input.data.mouse, input.header.hDevice, currentMilliseconds());
             }
+            /* Foreground RIM_INPUT requires default processing to release the
+             * system's raw-input storage; RIM_INPUTSINK is already consumed.
+             * https://learn.microsoft.com/windows/win32/inputdev/wm-input */
+            if (GET_RAWINPUT_CODE_WPARAM(wParam) == RIM_INPUT)
+                return DefWindowProcW(hwnd, message, wParam, lParam);
             return 0;
         }
         case WM_ERASEBKGND:
@@ -1238,6 +1354,15 @@ PLAYABLE_API int playable_window_key_down(int virtualKey) {
     return (GetAsyncKeyState(virtualKey) & 0x8000) != 0;
 }
 
+PLAYABLE_API int playable_window_input_key_down(int quakeKey) {
+    int down;
+    if (quakeKey < 0 || quakeKey > 255) return 0;
+    AcquireSRWLockShared(&inputLock);
+    down = InterlockedCompareExchange(&inputAppActive, 0, 0) && inputKeyState[quakeKey] != 0;
+    ReleaseSRWLockShared(&inputLock);
+    return down;
+}
+
 PLAYABLE_API int playable_window_next_input_event(unsigned char *output, int capacity) {
     playableInputEvent event;
     if (!output || capacity < (int)sizeof(event)) return 0;
@@ -1444,9 +1569,12 @@ PLAYABLE_API void playable_window_begin_frame(int red, int green, int blue) {
     uint32_t color = makeColor(red, green, blue) | 0xff000000u;
     SIZE_T count = (SIZE_T)surfaceWidth * (SIZE_T)surfaceHeight;
     SIZE_T i;
+    playableTraceBeginFrame(red,green,blue,hardwareRenderer);
     if (!pixels) return;
-    for (i = 0; i < count; ++i) pixels[i] = color;
-    clearDepth(FLT_MAX);
+    if (!hardwareRenderer) {
+        for (i = 0; i < count; ++i) pixels[i] = color;
+        clearDepth(FLT_MAX);
+    }
     rasterBlendMode = 0;
     rasterDepthEqual = 0;
     rasterDepthWrite = 1;
@@ -1456,12 +1584,17 @@ PLAYABLE_API void playable_window_begin_frame(int red, int green, int blue) {
     rasterStencilPass = 0;
     rasterDepthRangeScale = 1.0;
     rasterDepthRangeNear = 1.0;
+    if (hardwareRenderer) hardwareBeginFrame(red,green,blue);
 }
 
 PLAYABLE_API int playable_window_clear_stencil(int x, int y, int width, int height) {
     int row;
     if (!stencilPixels || x < 0 || y < 0 || width < 1 || height < 1 ||
             x > surfaceWidth - width || y > surfaceHeight - height) return 0;
+    if (hardwareRenderer) {
+        mq_glEnable(GL_SCISSOR_TEST); mq_glScissor(x,surfaceHeight-y-height,width,height);
+        mq_glStencilMask(255); mq_glClearStencil(0); playableGlClear(GL_STENCIL_BUFFER_BIT); return 1;
+    }
     for (row = y; row < y + height; ++row) {
         ZeroMemory(stencilPixels + (SIZE_T)row * (SIZE_T)surfaceWidth + (SIZE_T)x,
             (SIZE_T)width * sizeof(*stencilPixels));
@@ -1481,6 +1614,21 @@ PLAYABLE_API int playable_window_finish_stencil_shadow(int x, int y, int width, 
     int darkened = 0;
     if (!pixels || !stencilPixels || x < 0 || y < 0 || width < 1 || height < 1 ||
             x > surfaceWidth - width || y > surfaceHeight - height) return -1;
+    if (hardwareRenderer) {
+        playableGlViewport(x,surfaceHeight-y-height,width,height);
+        playableGlMatrixMode(GL_PROJECTION); playableGlLoadIdentity();
+        playableGlMatrixMode(GL_MODELVIEW); playableGlLoadIdentity();
+        hardwareTextureUnit(MQ_GL_TEXTURE1,-1); hardwareTextureUnit(MQ_GL_TEXTURE0,-1);
+        mq_glDisable(GL_DEPTH_TEST); mq_glDepthMask(GL_FALSE); mq_glDisable(GL_ALPHA_TEST);
+        mq_glDisable(GL_CULL_FACE); mq_glDisable(GL_POLYGON_OFFSET_FILL);
+        mq_glColorMask(GL_TRUE,GL_TRUE,GL_TRUE,GL_TRUE);
+        mq_glEnable(GL_STENCIL_TEST); mq_glStencilFunc(GL_NOTEQUAL,0,255); mq_glStencilMask(0);
+        mq_glStencilOp(GL_KEEP,GL_KEEP,GL_KEEP);
+        mq_glEnable(GL_BLEND); mq_glBlendFunc(GL_DST_COLOR,GL_ZERO); mq_glColor4d(0.6,0.6,0.6,1.0);
+        mq_glBegin(GL_QUADS); mq_glVertex4d(-1,-1,0,1); mq_glVertex4d(1,-1,0,1);
+        mq_glVertex4d(1,1,0,1); mq_glVertex4d(-1,1,0,1); mq_glEnd();
+        mq_glDisable(GL_STENCIL_TEST); mq_glStencilMask(255); return width*height;
+    }
     for (row = y; row < y + height; ++row) {
         SIZE_T offset = (SIZE_T)row * (SIZE_T)surfaceWidth + (SIZE_T)x;
         for (column = 0; column < width; ++column, ++offset) {
@@ -1501,9 +1649,10 @@ PLAYABLE_API int playable_window_finish_stencil_shadow(int x, int y, int width, 
 }
 
 PLAYABLE_API void playable_window_clear_depth(double depth) {
+    playableTraceClearDepth(depth);
     float value = (float)depth;
     if (!_finite(depth) || depth <= 0.0 || value <= 0.0f) depth = FLT_MAX;
-    clearDepth(depth);
+    if (hardwareRenderer) hardwareClearDepth(depth); else clearDepth(depth);
 }
 
 /* Return the positive eye-space distance represented by the software depth
@@ -1515,6 +1664,11 @@ PLAYABLE_API double playable_window_sample_depth(int x, int y) {
     SIZE_T offset;
     if (!depthPixels || x < 0 || y < 0 || x >= surfaceWidth || y >= surfaceHeight) {
         return -1.0;
+    }
+    if (hardwareRenderer) {
+        float depth=1.0f;
+        mq_glReadPixels(x,surfaceHeight-1-y,1,1,GL_DEPTH_COMPONENT,GL_FLOAT,&depth);
+        return depth>=1.0f ? (double)FLT_MAX : hardwareNear/(1.0-(double)depth);
     }
     offset = (SIZE_T)y * (SIZE_T)surfaceWidth + (SIZE_T)x;
     inverseDepth = depthPixels[offset];
@@ -1614,6 +1768,7 @@ static int uploadTexture(int slot, const unsigned char *rgba,
         texture->mipPixels[i] = mipPixels[i];texture->mipWidths[i] = mipWidths[i];
         texture->mipHeights[i] = mipHeights[i];
     }
+    hardwareUploadTexture(slot);
     return 1;
 }
 
@@ -1631,6 +1786,7 @@ PLAYABLE_API int playable_window_upload_texture_mipmapped(int slot,
 PLAYABLE_API void playable_window_release_texture(int slot) {
     playableTexture *texture;
     if (slot < 0 || slot >= PLAYABLE_TEXTURE_SLOTS) return;
+    hardwareReleaseTexture(slot);
     texture = &textures[slot];
     if (texture->pixels) {
         int level;
@@ -1664,12 +1820,20 @@ static int triangleScanlineSpan(double x0, double y0, double x1, double y1,
     int edge;
     for (edge = 0; edge < 3; ++edge) {
         int next = (edge + 1) % 3;
+        double firstX = ax[edge];
+        double secondX = ax[next];
         double firstY = ay[edge];
         double secondY = ay[next];
-        if ((firstY <= scanY && scanY < secondY) ||
-                (secondY <= scanY && scanY < firstY)) {
+        /* Canonical low-Y interpolation gives a shared edge the same exact
+         * intersection when neighbouring triangles list its endpoints in
+         * opposite order. Top/bottom and left/right spans are half-open. */
+        if (firstY > secondY) {
+            double temporary = firstX; firstX = secondX; secondX = temporary;
+            temporary = firstY; firstY = secondY; secondY = temporary;
+        }
+        if (firstY <= scanY && scanY < secondY) {
             double fraction = (scanY - firstY) / (secondY - firstY);
-            px[count++] = ax[edge] + fraction * (ax[next] - ax[edge]);
+            px[count++] = firstX + fraction * (secondX - firstX);
         }
     }
     if (count < 2) return 0;
@@ -1684,7 +1848,7 @@ static int triangleScanlineSpan(double x0, double y0, double x1, double y1,
             if (px[index] > right) right = px[index];
         }
         first = (int)ceil(left - 0.5);
-        last = (int)floor(right - 0.5);
+        last = (int)ceil(right - 0.5) - 1;
         if (first < minimumX) first = minimumX;
         if (last > maximumX) last = maximumX;
         if (first > last) return 0;
@@ -1796,9 +1960,11 @@ static uint32_t blendColor(uint32_t source, uint32_t destination) {
 static uint32_t addColor(uint32_t source, uint32_t destination) {
     uint32_t alpha = source >> 24;
     uint32_t outputAlpha = alpha + (destination >> 24);
-    uint32_t red = ((source >> 16) & 255u) * alpha / 255u + ((destination >> 16) & 255u);
-    uint32_t green = ((source >> 8) & 255u) * alpha / 255u + ((destination >> 8) & 255u);
-    uint32_t blue = (source & 255u) * alpha / 255u + (destination & 255u);
+    /* GLS_SRCBLEND_ONE | GLS_DSTBLEND_ONE adds every source channel,
+     * including RGB from partially transparent or zero-alpha fragments. */
+    uint32_t red = ((source >> 16) & 255u) + ((destination >> 16) & 255u);
+    uint32_t green = ((source >> 8) & 255u) + ((destination >> 8) & 255u);
+    uint32_t blue = (source & 255u) + (destination & 255u);
     if (red > 255u) red = 255u;
     if (green > 255u) green = 255u;
     if (blue > 255u) blue = 255u;
@@ -2124,6 +2290,7 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
     int maximumX;
     int minimumY;
     int maximumY;
+    int rowAnchorY;
     int constantDepth;
     int unitLight;
     double constantDepthScale;
@@ -2133,6 +2300,10 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
     playableTexture *texture = 0;
     playableTextureView sampler;
     uint32_t fallback = makeColor(fallbackRed, fallbackGreen, fallbackBlue) | 0xff000000u;
+    if (hardwareRenderer) {
+        const double p[3][8]={{x0,y0,depth0,u0,v0,0,0,light0},{x1,y1,depth1,u1,v1,0,0,light1},{x2,y2,depth2,u2,v2,0,0,light2}};
+        hardwareSingleTriangle(textureSlot,-1,p,fallbackRed,fallbackGreen,fallbackBlue); return;
+    }
     if (!pixels || !depthPixels || !_finite(x0) || !_finite(y0) || !_finite(depth0) ||
             !_finite(x1) || !_finite(y1) || !_finite(depth1) || !_finite(x2) ||
             !_finite(y2) || !_finite(depth2) || depth0 <= 0.0 || depth1 <= 0.0 || depth2 <= 0.0) return;
@@ -2153,6 +2324,7 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
     maximumY = upperPixel(max(y0, max(y1, y2)));
     if (minimumX < 0) minimumX = 0;
     if (minimumY < 0) minimumY = 0;
+    rowAnchorY = minimumY;
     if (maximumX >= surfaceWidth) maximumX = surfaceWidth - 1;
     if (maximumY >= surfaceHeight) maximumY = surfaceHeight - 1;
     if (minimumX < rasterClipMinimumX) minimumX = rasterClipMinimumX;
@@ -2163,8 +2335,8 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
     texture = textureAt(textureSlot);
     textureMipLevel = mipLevelFor(texture,x0,y0,u0,v0,x1,y1,u1,v1,x2,y2,u2,v2);
     if (texture) sampler = textureView(texture, textureMipLevel);
-    rowB0 = edgeValue(x1, y1, x2, y2, (double)minimumX + 0.5, (double)minimumY + 0.5) * inverseArea;
-    rowB1 = edgeValue(x2, y2, x0, y0, (double)minimumX + 0.5, (double)minimumY + 0.5) * inverseArea;
+    rowB0 = edgeValue(x1, y1, x2, y2, (double)minimumX + 0.5, (double)(rasterExactRows ? rowAnchorY : minimumY) + 0.5) * inverseArea;
+    rowB1 = edgeValue(x2, y2, x0, y0, (double)minimumX + 0.5, (double)(rasterExactRows ? rowAnchorY : minimumY) + 0.5) * inverseArea;
     stepB0X = (y2 - y1) * inverseArea;
     stepB0Y = (x1 - x2) * inverseArea;
     stepB1X = (y0 - y2) * inverseArea;
@@ -2202,6 +2374,19 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
             stepB1X * (vOverDepth1 - vOverDepth2);
         stepVOverDepthY = stepB0Y * (vOverDepth0 - vOverDepth2) +
             stepB1Y * (vOverDepth1 - vOverDepth2);
+    }
+    /* Clipped fan edges can pass exactly through pixel centres. A worker
+     * starting incremental barycentrics afresh at its band can change an
+     * edge's sign by one ulp. Replay skipped rows from the common triangle
+     * anchor so serial and parallel clipped coverage remains byte exact. */
+    if (rasterExactRows) {
+        int skippedY;
+        for (skippedY = rowAnchorY; skippedY < minimumY; ++skippedY) {
+            rowB0 += stepB0Y; rowB1 += stepB1Y;
+            rowInverseDepth += stepInverseDepthY;
+            rowLightOverDepth += stepLightOverDepthY;
+            rowUOverDepth += stepUOverDepthY; rowVOverDepth += stepVOverDepthY;
+        }
     }
     for (y = minimumY; y <= maximumY; ++y) {
         int startX;
@@ -2246,7 +2431,8 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
             nextLightOverDepth += stepLightOverDepthX;
             nextUOverDepth += stepUOverDepthX;
             nextVOverDepth += stepVOverDepthX;
-            if (b0 < 0.0 || b1 < 0.0 || b2 < 0.0) continue;
+            /* The half-open span owns coverage. Re-testing incremental
+             * barycentrics here can reject its included edge by one ulp. */
             if (inverseDepth <= 0.0) continue;
             comparisonDepth = depthRangeInverse(inverseDepth);
             if (rasterPolygonOffset) comparisonDepth +=
@@ -2278,7 +2464,7 @@ PLAYABLE_API void playable_window_draw_triangle(int textureSlot,
                 color = modulateBatchVertexColor(color, b0, b1, b2,
                     inverseDepth0, inverseDepth1, inverseDepth2, depth);
             }
-            if (!alphaTestPasses(color) || (color >> 24) == 0u) continue;
+            if (!alphaTestPasses(color) || (!rasterShaderBatch && (color >> 24) == 0u)) continue;
             if (rasterBlendMode == 0) pixels[offset] = color;
             else pixels[offset] = applyBlendColor(color, pixels[offset], rasterBlendMode);
             if (rasterDepthWrite) depthPixels[offset] = (float)comparisonDepth;
@@ -2365,6 +2551,7 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
     double rowLvOverDepth;
     double stepLvOverDepthX;
     double stepLvOverDepthY;
+    int rowAnchorY;
     int minimumX;
     int maximumX;
     int minimumY;
@@ -2379,6 +2566,10 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
     int baseMipLevel = mipLevelFor(baseTexture,x0,y0,u0,v0,x1,y1,u1,v1,x2,y2,u2,v2);
     int lightmapMipLevel = mipLevelFor(lightmapTexture,x0,y0,lu0,lv0,x1,y1,lu1,lv1,x2,y2,lu2,lv2);
     uint32_t fallback = makeColor(fallbackRed, fallbackGreen, fallbackBlue) | 0xff000000u;
+    if (hardwareRenderer) {
+        const double p[3][8]={{x0,y0,depth0,u0,v0,lu0,lv0,light0},{x1,y1,depth1,u1,v1,lu1,lv1,light1},{x2,y2,depth2,u2,v2,lu2,lv2,light2}};
+        hardwareSingleTriangle(baseTextureSlot,lightmapTextureSlot,p,fallbackRed,fallbackGreen,fallbackBlue); return;
+    }
     if (!pixels || !depthPixels || !_finite(x0) || !_finite(y0) || !_finite(depth0) ||
             !_finite(x1) || !_finite(y1) || !_finite(depth1) || !_finite(x2) ||
             !_finite(y2) || !_finite(depth2) || depth0 <= 0.0 || depth1 <= 0.0 || depth2 <= 0.0) return;
@@ -2395,6 +2586,7 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
     maximumY = upperPixel(max(y0, max(y1, y2)));
     if (minimumX < 0) minimumX = 0;
     if (minimumY < 0) minimumY = 0;
+    rowAnchorY = minimumY;
     if (maximumX >= surfaceWidth) maximumX = surfaceWidth - 1;
     if (maximumY >= surfaceHeight) maximumY = surfaceHeight - 1;
     if (minimumX < rasterClipMinimumX) minimumX = rasterClipMinimumX;
@@ -2404,8 +2596,8 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
     if (minimumX > maximumX || minimumY > maximumY) return;
     if (baseTexture) baseSampler = textureView(baseTexture, baseMipLevel);
     if (lightmapTexture) lightmapSampler = textureView(lightmapTexture, lightmapMipLevel);
-    rowB0 = edgeValue(x1, y1, x2, y2, (double)minimumX + 0.5, (double)minimumY + 0.5) * inverseArea;
-    rowB1 = edgeValue(x2, y2, x0, y0, (double)minimumX + 0.5, (double)minimumY + 0.5) * inverseArea;
+    rowB0 = edgeValue(x1, y1, x2, y2, (double)minimumX + 0.5, (double)(rasterExactRows ? rowAnchorY : minimumY) + 0.5) * inverseArea;
+    rowB1 = edgeValue(x2, y2, x0, y0, (double)minimumX + 0.5, (double)(rasterExactRows ? rowAnchorY : minimumY) + 0.5) * inverseArea;
     stepB0X = (y2 - y1) * inverseArea;
     stepB0Y = (x1 - x2) * inverseArea;
     stepB1X = (y0 - y2) * inverseArea;
@@ -2462,6 +2654,16 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
         stepLvOverDepthY = stepB0Y * (lvOverDepth0 - lvOverDepth2) +
             stepB1Y * (lvOverDepth1 - lvOverDepth2);
     }
+    if (rasterExactRows) {
+        int skippedY;
+        for (skippedY = rowAnchorY; skippedY < minimumY; ++skippedY) {
+            rowB0 += stepB0Y; rowB1 += stepB1Y;
+            rowInverseDepth += stepInverseDepthY;
+            rowLightOverDepth += stepLightOverDepthY;
+            rowUOverDepth += stepUOverDepthY; rowVOverDepth += stepVOverDepthY;
+            rowLuOverDepth += stepLuOverDepthY; rowLvOverDepth += stepLvOverDepthY;
+        }
+    }
     for (y = minimumY; y <= maximumY; ++y) {
         int startX;
         int endX;
@@ -2515,7 +2717,7 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
             nextVOverDepth += stepVOverDepthX;
             nextLuOverDepth += stepLuOverDepthX;
             nextLvOverDepth += stepLvOverDepthX;
-            if (b0 < 0.0 || b1 < 0.0 || b2 < 0.0) continue;
+            /* Coverage comes from the canonical top-left scanline span. */
             if (inverseDepth <= 0.0) continue;
             comparisonDepth = depthRangeInverse(inverseDepth);
             if (rasterPolygonOffset) comparisonDepth +=
@@ -2543,7 +2745,7 @@ PLAYABLE_API void playable_window_draw_triangle_multitexture(int baseTextureSlot
                 color = modulateBatchVertexColor(color, b0, b1, b2,
                     inverseDepth0, inverseDepth1, inverseDepth2, depth);
             }
-            if (!alphaTestPasses(color) || (color >> 24) == 0u) continue;
+            if (!alphaTestPasses(color) || (!rasterShaderBatch && (color >> 24) == 0u)) continue;
             if (rasterDepthEqual) {
                 double difference = comparisonDepth - (double)depthPixels[offset];
                 if (difference < -0.00001 || difference > 0.00001) continue;
@@ -2594,12 +2796,14 @@ static void CALLBACK drawTriangleBatchBandCallback(PTP_CALLBACK_INSTANCE instanc
 PLAYABLE_API int playable_window_draw_triangle_batch(const unsigned char *records,
         int byteCount, int triangleCount) {
     int index;
+    int previousShaderBatch = rasterShaderBatch;
     SIZE_T required;
     if (triangleCount < 0 || triangleCount > PLAYABLE_TRIANGLE_BATCH_MAX_COUNT || byteCount < 0) return 0;
     if (triangleCount == 0) return 0;
     if (!records) return 0;
     required = (SIZE_T)triangleCount * (SIZE_T)PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
     if (required > (SIZE_T)INT_MAX || (SIZE_T)byteCount < required) return 0;
+    if (hardwareRenderer) return hardwareDrawBatch(records,triangleCount,0);
     if (rasterClipMaximumY == INT_MAX && triangleCount >= 256 && surfaceHeight >= 128) {
         SYSTEM_INFO systemInfo;
         playableTriangleBatchWork work[PLAYABLE_RASTER_MAX_BANDS];
@@ -2636,6 +2840,7 @@ PLAYABLE_API int playable_window_draw_triangle_batch(const unsigned char *record
             return triangleCount;
         }
     }
+    rasterShaderBatch = 1;
     for (index = 0; index < triangleCount; ++index) {
         playableTriangleBatchRecord command;
         const unsigned char *source = records + (SIZE_T)index * PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
@@ -2657,6 +2862,7 @@ PLAYABLE_API int playable_window_draw_triangle_batch(const unsigned char *record
         }
     }
     rasterVertexColorEnabled = 0;
+    rasterShaderBatch = previousShaderBatch;
     return triangleCount;
 }
 
@@ -2781,6 +2987,87 @@ static int drawWorldBatchParallel(const unsigned char *records,
     return 1;
 }
 
+typedef struct playableClipVertex_s {
+    double vertex[8]; /* camera side/up/depth, base UV, lightmap UV, light */
+    double color[4];
+} playableClipVertex;
+
+/* Clip in camera space before the perspective divide. A triangle intersecting
+ * one plane yields at most four vertices, and every varying must use the same
+ * edge fraction as position. In particular, throwing away a whole triangle
+ * when one vertex is behind the near plane opens visible holes in nearby BSP
+ * walls and inline models. Endpoints exactly on the plane are emitted once. */
+static int clipWorldTriangleNear(const playableClipVertex input[3],
+        playableClipVertex output[4], double nearDistance) {
+    int current;
+    int count = 0;
+    const playableClipVertex *previous = &input[2];
+    for (current = 0; current < 3; ++current) {
+        const playableClipVertex *next = &input[current];
+        double previousDepth = previous->vertex[2];
+        double nextDepth = next->vertex[2];
+        if ((previousDepth < nearDistance && nextDepth > nearDistance) ||
+                (previousDepth > nearDistance && nextDepth < nearDistance)) {
+            playableClipVertex *intersection = &output[count++];
+            double fraction = (nearDistance - previousDepth) / (nextDepth - previousDepth);
+            int component;
+            for (component = 0; component < 8; ++component) {
+                intersection->vertex[component] = previous->vertex[component] +
+                    fraction * (next->vertex[component] - previous->vertex[component]);
+            }
+            intersection->vertex[2] = nearDistance;
+            for (component = 0; component < 4; ++component) {
+                intersection->color[component] = previous->color[component] +
+                    fraction * (next->color[component] - previous->color[component]);
+            }
+        }
+        if (nextDepth >= nearDistance) output[count++] = *next;
+        previous = next;
+    }
+    return count;
+}
+
+static void drawClippedWorldTriangle(const playableTriangleBatchRecord *command,
+        const playableClipVertex *a, const playableClipVertex *b,
+        const playableClipVertex *c, double halfWidth, double halfHeight,
+        double focal) {
+    const playableClipVertex *vertices[3] = { a, b, c };
+    double projected[3][3];
+    int vertex;
+    int channel;
+    int previousExactRows = rasterExactRows;
+    rasterExactRows = 1;
+    rasterVertexColorEnabled = 0;
+    rasterVertexColorUniform = 1;
+    for (vertex = 0; vertex < 3; ++vertex) {
+        double scale = focal / vertices[vertex]->vertex[2];
+        projected[vertex][0] = halfWidth + vertices[vertex]->vertex[0] * scale;
+        projected[vertex][1] = halfHeight - vertices[vertex]->vertex[1] * scale;
+        projected[vertex][2] = vertices[vertex]->vertex[2];
+        for (channel = 0; channel < 4; ++channel) {
+            double value = vertices[vertex]->color[channel];
+            rasterVertexColor[vertex][channel] = value;
+            if (value != 255.0) rasterVertexColorEnabled = 1;
+            if (vertex > 0 && value != rasterVertexColor[0][channel]) rasterVertexColorUniform = 0;
+        }
+    }
+    if (!rasterVertexColorEnabled) rasterVertexColorUniform = 0;
+    if (command->lightmapTextureSlot >= 0) {
+        playable_window_draw_triangle_multitexture(command->baseTextureSlot, command->lightmapTextureSlot,
+            projected[0][0], projected[0][1], projected[0][2], a->vertex[3], a->vertex[4], a->vertex[5], a->vertex[6], a->vertex[7],
+            projected[1][0], projected[1][1], projected[1][2], b->vertex[3], b->vertex[4], b->vertex[5], b->vertex[6], b->vertex[7],
+            projected[2][0], projected[2][1], projected[2][2], c->vertex[3], c->vertex[4], c->vertex[5], c->vertex[6], c->vertex[7],
+            command->fallbackRed, command->fallbackGreen, command->fallbackBlue);
+    } else {
+        playable_window_draw_triangle(command->baseTextureSlot,
+            projected[0][0], projected[0][1], projected[0][2], a->vertex[3], a->vertex[4], a->vertex[7],
+            projected[1][0], projected[1][1], projected[1][2], b->vertex[3], b->vertex[4], b->vertex[7],
+            projected[2][0], projected[2][1], projected[2][2], c->vertex[3], c->vertex[4], c->vertex[7],
+            command->fallbackRed, command->fallbackGreen, command->fallbackBlue);
+    }
+    rasterExactRows = previousExactRows;
+}
+
 PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *records,
         int byteCount, int triangleCount,
         double positionX, double positionY, double positionZ,
@@ -2789,6 +3076,7 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *
         double forwardX, double forwardY, double forwardZ,
         double halfWidth, double halfHeight, double focal, double nearDistance) {
     int index;
+    int previousShaderBatch = rasterShaderBatch;
     SIZE_T required;
     if (triangleCount < 0 || triangleCount > PLAYABLE_TRIANGLE_BATCH_MAX_COUNT ||
             byteCount < 0 || !_finite(positionX) || !_finite(positionY) ||
@@ -2801,6 +3089,8 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *
     if (!records) return 0;
     required = (SIZE_T)triangleCount * (SIZE_T)PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
     if (required > (SIZE_T)INT_MAX || (SIZE_T)byteCount < required) return 0;
+    if (hardwareRenderer) return hardwareDrawWorld(records,triangleCount,0,0,surfaceWidth,surfaceHeight,
+        positionX,positionY,positionZ,rightX,rightY,rightZ,upX,upY,upZ,forwardX,forwardY,forwardZ,focal,nearDistance);
     if (rasterClipMaximumY == INT_MAX && drawWorldBatchParallel(records,
             byteCount, triangleCount,
             positionX, positionY, positionZ,
@@ -2809,11 +3099,14 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *
             forwardX, forwardY, forwardZ,
             halfWidth, halfHeight, focal, nearDistance,
             0, surfaceWidth - 1, 0, surfaceHeight - 1)) return triangleCount;
+    rasterShaderBatch = 1;
     for (index = 0; index < triangleCount; ++index) {
         playableTriangleBatchRecord command;
         double projected[3][3];
+        playableClipVertex camera[3];
         int vertex;
         int visible = 1;
+        int behind = 0;
         const unsigned char *source = records + (SIZE_T)index * PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
         memcpy(&command, source, sizeof(command));
         for (vertex = 0; vertex < 3; ++vertex) {
@@ -2824,16 +3117,39 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *
             double up = dx * upX + dy * upY + dz * upZ;
             double depth = dx * forwardX + dy * forwardY + dz * forwardZ;
             double scale;
-            if (!_finite(depth) || depth < nearDistance) {
+            if (!_finite(side) || !_finite(up) || !_finite(depth)) {
                 visible = 0;
                 break;
+            }
+            camera[vertex].vertex[0] = side;
+            camera[vertex].vertex[1] = up;
+            camera[vertex].vertex[2] = depth;
+            if (depth < nearDistance) {
+                ++behind;
+                continue;
             }
             scale = focal / depth;
             projected[vertex][0] = halfWidth + side * scale;
             projected[vertex][1] = halfHeight - up * scale;
             projected[vertex][2] = depth;
         }
-        if (!visible) continue;
+        if (!visible || behind == 3) continue;
+        if (behind != 0) {
+            playableClipVertex clipped[4];
+            int count;
+            int triangle;
+            for (vertex = 0; vertex < 3; ++vertex) {
+                int component;
+                for (component = 3; component < 8; ++component) camera[vertex].vertex[component] = command.vertex[vertex][component];
+                for (component = 0; component < 4; ++component) camera[vertex].color[component] = command.vertexColor[vertex][component];
+            }
+            count = clipWorldTriangleNear(camera, clipped, nearDistance);
+            for (triangle = 1; triangle + 1 < count; ++triangle) {
+                drawClippedWorldTriangle(&command, &clipped[0], &clipped[triangle],
+                    &clipped[triangle + 1], halfWidth, halfHeight, focal);
+            }
+            continue;
+        }
         useBatchVertexColor(&command);
         if (command.lightmapTextureSlot >= 0) {
             playable_window_draw_triangle_multitexture(
@@ -2851,6 +3167,7 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch(const unsigned char *
         }
     }
     rasterVertexColorEnabled = 0;
+    rasterShaderBatch = previousShaderBatch;
     return triangleCount;
 }
 
@@ -2885,6 +3202,8 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch_viewport(const unsign
     if (triangleCount == 0 || !records) return 0;
     required = (SIZE_T)triangleCount * (SIZE_T)PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
     if (required > (SIZE_T)INT_MAX || (SIZE_T)byteCount < required) return 0;
+    if (hardwareRenderer) return hardwareDrawWorld(records,triangleCount,viewportX,viewportY,viewportWidth,viewportHeight,
+        positionX,positionY,positionZ,rightX,rightY,rightZ,upX,upY,upZ,forwardX,forwardY,forwardZ,focal,nearDistance);
     if (drawWorldBatchParallel(records, byteCount, triangleCount,
             positionX, positionY, positionZ,
             rightX, rightY, rightZ,
@@ -3024,6 +3343,7 @@ PLAYABLE_API void playable_window_draw_line(int x0, int y0, int x1, int y1,
     int error = dx + dy;
     uint32_t color = makeColor(red, green, blue);
     if (!pixels) return;
+    if (hardwareRenderer) { hardwareLine(x0,y0,x1,y1,red,green,blue); return; }
     for (;;) {
         if ((unsigned)x0 < (unsigned)surfaceWidth && (unsigned)y0 < (unsigned)surfaceHeight)
             pixels[(SIZE_T)y0 * (SIZE_T)surfaceWidth + (SIZE_T)x0] = color;
@@ -3040,7 +3360,17 @@ PLAYABLE_API void playable_window_present(void) {
     RECT client;
     if (!windowHandle || !windowDC || !pixels) return;
     AcquireSRWLockExclusive(&presentationLock);
+    if (hardwareRenderer) {
+        hardwareCapture();
+        if (hardwareProfile.enabled) {
+            LONGLONG swapStarted=hardwareProfileCounter();
+            SwapBuffers(windowDC);
+            hardwareProfilePresent(swapStarted,hardwareProfileCounter());
+        } else SwapBuffers(windowDC);
+        ReleaseSRWLockExclusive(&presentationLock); return;
+    }
     CopyMemory(presentedPixels, pixels, (SIZE_T)surfaceWidth * (SIZE_T)surfaceHeight * 4u);
+    hardwareCapture();
     GetClientRect(windowHandle, &client);
     if (openGLActive && playableWglMakeCurrent(windowDC, openGLContext)) {
         int width = client.right > 0 ? client.right : surfaceWidth;
@@ -3070,6 +3400,10 @@ PLAYABLE_API int playable_window_presented_non_black(void) {
     SIZE_T count;
     int nonBlack = 0;
     if (!presentedPixels || surfaceWidth <= 0 || surfaceHeight <= 0) return 0;
+    if (hardwareRenderer) {
+        mq_glReadBuffer(GL_FRONT);
+        mq_glReadPixels(0,0,surfaceWidth,surfaceHeight,GL_BGRA_EXT,GL_UNSIGNED_BYTE,presentedPixels);
+    }
     count = (SIZE_T)surfaceWidth * (SIZE_T)surfaceHeight;
     AcquireSRWLockShared(&presentationLock);
     for (index = 0; index < count; ++index) {

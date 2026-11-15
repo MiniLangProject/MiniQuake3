@@ -43,6 +43,101 @@ static void drawUiTriangleUv2(int textureSlot, double u, double v) {
         255, 255, 255);
 }
 
+static int drawShaderRecords(playableTriangleBatchRecord *records, int count, int world) {
+    if (!world) return playable_window_draw_triangle_batch((const unsigned char *)records,
+        count * (int)sizeof(*records), count);
+    return playable_window_draw_world_triangle_batch((const unsigned char *)records,
+        count * (int)sizeof(*records), count,
+        0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 64, 64, 64, 1);
+}
+
+static int shaderBlendContracts(void) {
+    static const int originalAliases[] = {0, 0x165, 0x122, 0x113, 0x183, 0x123, 0x141, 0x162};
+    static const uint32_t colors[] = {0x00f06432u, 0x010000ffu, 0x7f2165cdu, 0x8025788bu,
+        0xfe9c0304u, 0xffffffffu, 0x43519abcu, 0xff000000u};
+    static const unsigned char zeroAlpha[] = {80, 140, 220, 0};
+    static const unsigned char opaque[] = {80, 140, 220, 255};
+    static const unsigned char white[] = {255, 255, 255, 255};
+    playableTriangleBatchRecord records[256];
+    uint32_t serial[128 * 128];
+    float legacyDepth;
+    int mode, source, destination, path, alphaSource, vertex, i;
+    for (mode = 1; mode <= 7; ++mode) for (source = 0; source < 8; ++source)
+        for (destination = 0; destination < 8; ++destination) {
+            uint32_t actual = applyBlendColor(colors[source], colors[destination], mode);
+            uint32_t expected = genericBlendColor(colors[source], colors[destination], originalAliases[mode]);
+            if (actual != expected) {
+                fprintf(stderr, "software blend alias %d: %08x != original factors %08x\n", mode, actual, expected);
+                return 0;
+            }
+        }
+    if (!allocateSurface(128, 128) || !playable_window_upload_texture(7, zeroAlpha, 1, 1) ||
+            !playable_window_upload_texture(8, opaque, 1, 1) ||
+            !playable_window_upload_texture(9, white, 1, 1)) return 0;
+    for (path = 0; path < 6; ++path) for (alphaSource = 0; alphaSource < 2; ++alphaSource) {
+        int world = path & 1;
+        ZeroMemory(records, sizeof(records));
+        records[0].baseTextureSlot = alphaSource ? 8 : 7;
+        records[0].lightmapTextureSlot = path >= 2 && path < 4 || path == 5 ? 9 : -1;
+        records[0].fallbackRed = records[0].fallbackGreen = records[0].fallbackBlue = 255;
+        memset(records[0].vertexColor, 255, sizeof(records[0].vertexColor));
+        records[0].vertex[0][0] = 4;records[0].vertex[0][1] = 4;
+        records[0].vertex[1][0] = 124;records[0].vertex[1][1] = 4;
+        records[0].vertex[2][0] = 4;records[0].vertex[2][1] = 124;
+        /* Last two paths exercise generated near-plane vertices as well. */
+        if (path >= 4) world = 1;
+        for (vertex = 0; vertex < 3; ++vertex) {
+            float *p = records[0].vertex[vertex];
+            p[2] = path >= 4 && vertex == 2 ? 0.5f : 2.0f;p[7] = 1;
+            if (world) {
+                float screenX = p[0], screenY = p[1], depth = p[2];
+                p[0] = depth;p[1] = (screenX - 64) * depth / 64;p[2] = (64 - screenY) * depth / 64;
+            }
+            if (alphaSource) records[0].vertexColor[vertex][3] = 0;
+        }
+        for (i = 1; i < 256; ++i) records[i] = records[0];
+        for (mode = 0; mode <= 2; ++mode) {
+            uint32_t expected = mode == 0 ? 0x00508cdcu : mode == 1 ? 0xff25518fu : 0xff75ddffu;
+            /* Sample center (16.5,16.5) has b2=12.5/120: reciprocal depth
+             * is .5 + b2*(2-.5) = .65625 for the clipped triangle. */
+            float expectedDepth = path >= 4 ? 0.65625f : 0.5f;
+            playable_window_begin_frame(37, 81, 143);
+            playable_window_set_raster_state(mode, 0, 1);
+            if (drawShaderRecords(records, 1, world) != 1 || pixels[16 * 128 + 16] != expected ||
+                    depthPixels[16 * 128 + 16] != expectedDepth || rasterShaderBatch) {
+                fprintf(stderr, "zero-alpha shader path=%d alphaSource=%d mode=%d actual=%08x wanted=%08x depth=%g\n",
+                    path, alphaSource, mode, pixels[16 * 128 + 16], expected, depthPixels[16 * 128 + 16]);
+                return 0;
+            }
+        }
+        /* Both batch entry points set shader policy on every raster worker. */
+        playable_window_begin_frame(37, 81, 143);playable_window_set_raster_state(2, 0, 0);
+        rasterClipMaximumY = 127;
+        if (drawShaderRecords(records, 256, world) != 256) return 0;
+        memcpy(serial, pixels, sizeof(serial));rasterClipMaximumY = INT_MAX;
+        playable_window_begin_frame(37, 81, 143);playable_window_set_raster_state(2, 0, 0);
+        if (drawShaderRecords(records, 256, world) != 256 || memcmp(serial, pixels, sizeof(serial)) ||
+                pixels[16 * 128 + 16] != 0xffffffffu || rasterShaderBatch) {
+            int pixel;
+            fprintf(stderr, "zero-alpha parallel path=%d alphaSource=%d actual=%08x shaderFlag=%d\n",
+                path, alphaSource, pixels[16 * 128 + 16], rasterShaderBatch);
+            for (pixel = 0; pixel < 128 * 128; ++pixel) if (serial[pixel] != pixels[pixel]) {
+                fprintf(stderr, "pixel %d,%d serial=%08x parallel=%08x\n", pixel%128, pixel/128, serial[pixel], pixels[pixel]);break;
+            }
+            return 0;
+        }
+    }
+    /* Shader policy must not leak into the direct font-atlas API. */
+    playable_window_begin_frame(37, 81, 143);playable_window_set_raster_state(2, 0, 1);
+    legacyDepth = depthPixels[16 * 128 + 16];
+    playable_window_draw_triangle(7, 4,4,2,0,0,1, 124,4,2,0,0,1, 4,124,2,0,0,1, 255,255,255);
+    if (pixels[16 * 128 + 16] != 0xff25518fu || depthPixels[16 * 128 + 16] != legacyDepth) {
+        fprintf(stderr, "legacy after shader actual=%08x depth=%g\n", pixels[16 * 128 + 16], depthPixels[16 * 128 + 16]);return 0;
+    }
+    puts("PASS: 448 software blend aliases; zero-alpha screen/world/multitexture/clipped shader batches and parallel parity");
+    return 1;
+}
+
 int main(void) {
     static const unsigned char halfRed[4] = { 255, 0, 0, 128 };
     static const unsigned char halfBlue[4] = { 0, 0, 255, 128 };
@@ -277,6 +372,7 @@ int main(void) {
             pixels[sample] != UINT32_C(0xff3c5a78)) return 65;
     if (playable_window_finish_stencil_shadow(-1, 0, 8, 8) != -1) return 66;
 
+    if (!shaderBlendContracts()) return 71;
     playable_window_shutdown();
     puts("playable window raster-state regression: PASS");
     return 0;

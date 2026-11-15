@@ -19103,7 +19103,9 @@
         }
       ],
       "target": [
-        "src/mq3/client/cgame_syscalls.ml"
+        "src/mq3/client/cgame_syscalls.ml",
+        "src/mq3/engine/local_qvm_match.ml",
+        "src/mq3/vm/cgame_collision_cache.ml"
       ],
       "status": "ported",
       "tests": [
@@ -19111,7 +19113,10 @@
         "tests/cgame_syscalls_contracts.ml",
         "tests/cgame_syscalls_oracle.ml",
         "tests/cgame_syscalls_retail_probe.ml",
-        "tests/reference/cgame_syscalls_oracle.c"
+        "tests/reference/cgame_syscalls_oracle.c",
+        "scripts/test_cgame_collision_cache.py",
+        "tests/cgame_collision_cache_contracts.ml",
+        "tests/cgame_collision_query_probe.ml"
       ]
     },
     {
@@ -22733,7 +22738,7 @@
             "src/mq3/audio/mixer_transfer.ml"
           ],
           "status": "tested_exact",
-          "scope": "The productive QVM output uses the Baseq3 24.8 integer paintbuffer: stereo/mono raw music is laid down first, one-shots and grouped loops accumulate through S_PaintChannelFrom16 semantics with painted-time wrap, s_volume 0.8 maps to snd_vol 204, and final signed-16 saturation uses the exact transfer path. Three exact pipeline records plus 18 contracts pass; QVM playback has 40 contracts."
+          "scope": "The productive QVM output uses the Baseq3 24.8 integer paintbuffer: stereo/mono raw music is laid down first, one-shots and grouped loops accumulate through S_PaintChannelFrom16 semantics with painted-time wrap, s_volume 0.8 maps to snd_vol 204, and final signed-16 saturation uses the exact transfer path. Three exact pipeline records plus 18 contracts pass; QVM playback has 46 contracts, including stable O(1) mono-cache reuse, late handles and compressed sounds. The six retail q3dm1 fire loops now retain one decoded mono buffer instead of growing the cache and decoding again each frame."
         },
         {
           "original": "S_PaintChannelFromADPCM / S_PaintChannelFromWavelet / S_PaintChannelFromMuLaw",
@@ -43161,7 +43166,9 @@
       "target": [
         "src/mq3/shared/math.ml",
         "src/mq3/shared/bytedirs.ml",
-        "src/mq3/shared/directions.ml"
+        "src/mq3/shared/directions.ml",
+        "src/mq3/compat/numeric.ml",
+        "native/abi.c"
       ],
       "status": "ported",
       "tests": [
@@ -43174,7 +43181,10 @@
         "tests/q_math_complete_contracts.ml",
         "scripts/test_shared_game.py",
         "scripts/test_missiles.py",
-        "scripts/test_patches.py"
+        "scripts/test_patches.py",
+        "scripts/test_numeric_native.py",
+        "tests/numeric_native_contracts.ml",
+        "tests/numeric_native_control.c"
       ]
     },
     {
@@ -44363,16 +44373,25 @@
       "sha256": "46fc87d2e3f93eb5ca32e66ffa86f852f0c1ebf325c2cad85ccd986451f00163",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [{
-        "original": "complete macOS mouse-delta header surface",
-        "target_files": ["src/mq3/platform/macosx_headers.ml"],
-        "covers_all_candidates": true,
-        "status": "tested_equivalent",
-        "scope": "Initialization and last-delta retrieval are represented by the portable stateful mouse facade."
-      }],
-      "target": ["src/mq3/platform/macosx_headers.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete macOS mouse-delta header surface",
+          "target_files": [
+            "src/mq3/platform/macosx_headers.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "Initialization and last-delta retrieval are represented by the portable stateful mouse facade."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/macosx_headers.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
+      "tests": [
+        "scripts/test_macosx_headers_complete.py",
+        "tests/macosx_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/macosx/CGMouseDeltaFix.m",
@@ -44389,16 +44408,25 @@
       "sha256": "67648aa11cde4353890a10c005d8f2caea5fc2ecd721c0c7cbd2f974a134841d",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [{
-        "original": "complete macOS private event ABI declarations",
-        "target_files": ["src/mq3/platform/macosx_headers.ml"],
-        "covers_all_candidates": true,
-        "status": "tested_equivalent",
-        "scope": "Private notification constants, callback delivery and event-record data are represented without depending on removed Apple private APIs."
-      }],
-      "target": ["src/mq3/platform/macosx_headers.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete macOS private event ABI declarations",
+          "target_files": [
+            "src/mq3/platform/macosx_headers.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "Private notification constants, callback delivery and event-record data are represented without depending on removed Apple private APIs."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/macosx_headers.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
+      "tests": [
+        "scripts/test_macosx_headers_complete.py",
+        "tests/macosx_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/macosx/GenerateQGL.pl",
@@ -44425,16 +44453,25 @@
       "sha256": "e5573090dcf7a26022240d19e95146699161c3c62e89fd79131f93a893327581",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [{
-        "original": "complete Q3Controller header surface",
-        "target_files": ["src/mq3/platform/macosx_headers.ml"],
-        "covers_all_candidates": true,
-        "status": "tested_equivalent",
-        "scope": "Paste, banner, termination and bounded quakeMain controller state are represented portably."
-      }],
-      "target": ["src/mq3/platform/macosx_headers.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete Q3Controller header surface",
+          "target_files": [
+            "src/mq3/platform/macosx_headers.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "Paste, banner, termination and bounded quakeMain controller state are represented portably."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/macosx_headers.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
+      "tests": [
+        "scripts/test_macosx_headers_complete.py",
+        "tests/macosx_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/macosx/Q3Controller.m",
@@ -44541,16 +44578,25 @@
       "sha256": "c76dde20e1429dec488975b2a1cb3f08f40b31ebd7a50ec0221bb96c4d252cbd",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [{
-        "original": "complete macOS display and gamma header surface",
-        "target_files": ["src/mq3/platform/macosx_headers.ml"],
-        "covers_all_candidates": true,
-        "status": "tested_equivalent",
-        "scope": "Display-mode selection, gamma tables, fade/unfade and release lifecycle are represented by deterministic host-neutral state."
-      }],
-      "target": ["src/mq3/platform/macosx_headers.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete macOS display and gamma header surface",
+          "target_files": [
+            "src/mq3/platform/macosx_headers.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "Display-mode selection, gamma tables, fade/unfade and release lifecycle are represented by deterministic host-neutral state."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/macosx_headers.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
+      "tests": [
+        "scripts/test_macosx_headers_complete.py",
+        "tests/macosx_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/macosx/macosx_display.m",
@@ -44567,16 +44613,25 @@
       "sha256": "35df4767a0b65ff2058efcb5359b29c6f2169afe0faee0bfa657da5974c30ecb",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [{
-        "original": "complete macOS OpenGL include/context header surface",
-        "target_files": ["src/mq3/platform/macosx_headers.ml"],
-        "covers_all_candidates": true,
-        "status": "tested_equivalent",
-        "scope": "The header contributes no standalone runtime candidates; its OpenGL context contract is owned by the typed portable facade."
-      }],
-      "target": ["src/mq3/platform/macosx_headers.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete macOS OpenGL include/context header surface",
+          "target_files": [
+            "src/mq3/platform/macosx_headers.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "The header contributes no standalone runtime candidates; its OpenGL context contract is owned by the typed portable facade."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/macosx_headers.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
+      "tests": [
+        "scripts/test_macosx_headers_complete.py",
+        "tests/macosx_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/macosx/macosx_glimp.m",
@@ -44633,16 +44688,25 @@
       "sha256": "1e1e599b3f7c8b84fcec0c61d404b55b61452b7b4d9b9dc0b5f1724a0079f6c1",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [{
-        "original": "complete macOS local platform header surface",
-        "target_files": ["src/mq3/platform/macosx_headers.ml"],
-        "covers_all_candidates": true,
-        "status": "tested_equivalent",
-        "scope": "Input, events, display choice, visibility, GL context, nested pause/resume and glw state are represented portably."
-      }],
-      "target": ["src/mq3/platform/macosx_headers.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete macOS local platform header surface",
+          "target_files": [
+            "src/mq3/platform/macosx_headers.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "Input, events, display choice, visibility, GL context, nested pause/resume and glw state are represented portably."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/macosx_headers.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
+      "tests": [
+        "scripts/test_macosx_headers_complete.py",
+        "tests/macosx_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/macosx/macosx_qgl.h",
@@ -44987,16 +45051,27 @@
         "qglVertexPointer",
         "qglViewport"
       ],
-      "symbol_mapping": [{
-        "original": "complete generated macOS QGL wrapper surface",
-        "target_files": ["src/mq3/platform/macosx_headers.ml", "src/mq3/renderer/qgl_linked.ml"],
-        "covers_all_candidates": true,
-        "status": "tested_equivalent",
-        "scope": "All 337 generated QGL names map in original order to the linked renderer dispatch, including raw error access, begin/end error boundaries and the two texture-environment getters."
-      }],
-      "target": ["src/mq3/platform/macosx_headers.ml", "src/mq3/renderer/qgl_linked.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete generated macOS QGL wrapper surface",
+          "target_files": [
+            "src/mq3/platform/macosx_headers.ml",
+            "src/mq3/renderer/qgl_linked.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "All 337 generated QGL names map in original order to the linked renderer dispatch, including raw error access, begin/end error boundaries and the two texture-environment getters."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/macosx_headers.ml",
+        "src/mq3/renderer/qgl_linked.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
+      "tests": [
+        "scripts/test_macosx_headers_complete.py",
+        "tests/macosx_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/macosx/macosx_sndcore.m",
@@ -45033,16 +45108,25 @@
       "sha256": "b6dba71e6429eacad467bf11890a1a30f1b6be4e9a6b24e339d9e3233560a8e9",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [{
-        "original": "complete optional OmniTimer header surface",
-        "target_files": ["src/mq3/platform/macosx_headers.ml"],
-        "covers_all_candidates": true,
-        "status": "tested_equivalent",
-        "scope": "All timer-node declarations plus start, stop, stamp and initialization semantics are represented without an OmniTimer dependency."
-      }],
-      "target": ["src/mq3/platform/macosx_headers.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete optional OmniTimer header surface",
+          "target_files": [
+            "src/mq3/platform/macosx_headers.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "All timer-node declarations plus start, stop, stamp and initialization semantics are represented without an OmniTimer dependency."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/macosx_headers.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_macosx_headers_complete.py", "tests/macosx_headers_contracts.ml"]
+      "tests": [
+        "scripts/test_macosx_headers_complete.py",
+        "tests/macosx_headers_contracts.ml"
+      ]
     },
     {
       "source": "code/macosx/macosx_timers.m",
@@ -51110,7 +51194,8 @@
             "src/mq3/collision/patchtrace.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_exact"
+          "status": "tested_exact",
+          "scope": "MiniLang owns patch subdivision, facet construction and plane insertion order; packed strict-binary32 native plane candidate scans avoid repeated managed numerical calls. All 31 Retail maps match 6,091 complete original patch meshes, with 12 kernel records and 25 contracts."
         },
         {
           "original": "CM_GridPlane",
@@ -51286,7 +51371,9 @@
         "scripts/test_patches.py",
         "scripts/test_collision.py",
         "scripts/test_movement.py",
-        "scripts/test_retail_qvm_match.py"
+        "scripts/test_retail_qvm_match.py",
+        "scripts/test_native_qvm_boundaries.py",
+        "tests/native_qvm_numeric_boundaries.c"
       ]
     },
     {
@@ -55271,7 +55358,9 @@
         "src/mq3/vm/runtime.ml",
         "src/mq3/vm/interpreter.ml",
         "src/mq3/vm/syscall_common.ml",
-        "src/mq3/engine/local_qvm_match.ml"
+        "src/mq3/engine/local_qvm_match.ml",
+        "src/mq3/vm/native_exec.ml",
+        "native/qvm_exec.c"
       ],
       "status": "ported",
       "tests": [
@@ -55284,7 +55373,12 @@
         "scripts/test_vm_complete.py",
         "tests/vm_complete_oracle.ml",
         "tests/vm_complete_contracts.ml",
-        "tests/reference/vm_complete_oracle.c"
+        "tests/reference/vm_complete_oracle.c",
+        "scripts/test_vm_native.py",
+        "scripts/test_qvm_native_profile.py",
+        "tests/qvm_native_profile.c",
+        "scripts/test_native_qvm_boundaries.py",
+        "tests/native_qvm_numeric_boundaries.c"
       ]
     },
     {
@@ -55308,9 +55402,12 @@
         {
           "original": "VM_CallInterpreted",
           "target_files": [
-            "src/mq3/vm/interpreter.ml"
+            "src/mq3/vm/interpreter.ml",
+            "src/mq3/vm/native_exec.ml",
+            "native/qvm_exec.c"
           ],
-          "status": "tested_subset"
+          "status": "tested_exact",
+          "scope": "The managed interpreter remains the reference. Productive calls execute a compact validated bytecode plan in bounded native code, yielding to MiniLang for engine traps with independent reentrant continuations. 404 unchanged-C cases compare result, entire VM memory, counters and restored stack; 26,934 additional binary32, NaN, recursive-trap, budget and memory-bound contracts pass. This is a native bytecode dispatcher, not an x86 machine-code JIT."
         },
         {
           "original": "VM_Indent / VM_StackTrace",
@@ -55322,16 +55419,24 @@
         }
       ],
       "target": [
-        "src/mq3/vm/interpreter.ml"
+        "src/mq3/vm/interpreter.ml",
+        "src/mq3/vm/native_exec.ml",
+        "native/qvm_exec.c"
       ],
       "status": "ported",
       "tests": [
         "scripts/test_vm.py",
+        "scripts/test_vm_native.py",
+        "tests/vm_native_contracts.ml",
         "scripts/test_retail_vm.py",
         "scripts/test_vm_interpreted_complete.py",
         "tests/reference/vm_interpreted_debug_oracle.c",
         "tests/vm_interpreted_debug_oracle.ml",
-        "tests/vm_interpreted_debug_contracts.ml"
+        "tests/vm_interpreted_debug_contracts.ml",
+        "scripts/test_qvm_native_profile.py",
+        "tests/qvm_native_profile.c",
+        "scripts/test_native_qvm_boundaries.py",
+        "tests/native_qvm_numeric_boundaries.c"
       ]
     },
     {
@@ -55456,7 +55561,7 @@
             "src/mq3/vm/runtime.ml"
           ],
           "status": "tested_equivalent",
-          "scope": "Every inventoried helper and VM_Compile/VM_CallCompiled entry is owned. MiniLang uses a memory-safe decoded plan instead of writable host machine code while preserving QVM execution, instruction pointers and compiled lifecycle semantics."
+          "scope": "Every inventoried helper and VM_Compile/VM_CallCompiled entry is owned. The instruction-pointer table is copied once into exact storage; productive compiled-call compatibility routes to the bounded native bytecode dispatcher with MiniLang trap ownership. It does not emit host machine code. The managed interpreter remains the exact reference for memory, counters, stack and binary32 behavior."
         }
       ],
       "target": [
@@ -55768,6 +55873,16 @@
           ],
           "status": "tested_exact",
           "scope": "Two-TMU selection and bind cache, frame-use tracking, NULL fallback, r_nobind and callback ordering behind an injected GL boundary. Eighteen exact C records and 30 contracts pass."
+        },
+        {
+          "original": "Productive retained hardware batch backend",
+          "target_files": [
+            "native/playable_gl_renderer.h",
+            "native/playable_win32.c",
+            "src/mq3/platform/playable_window.ml"
+          ],
+          "status": "tested_subset",
+          "scope": "The default Windows path consumes the retained 128-byte ABI through actual hardware OpenGL world transforms, near clipping, perspective interpolation, depth/depthhack, two texture units, mipmaps, alpha, all 72 source/destination RGBA blend combinations, polygon offset, viewport/scissor, stencil shadows and 2D HUD. Actual GPU pixel/state tests run on the RTX 5080. Alpha thresholds compare full buffers against the original GL calls on the same driver; lazy texture upload preserves both TMU bindings. The software reference remains selectable with MQ3_RENDERER=software, clips near-plane-crossing triangles with exact serial/parallel pixels and depth, and uses half-open shared-edge coverage. Ordinary per-shader front/back/mirror cull propagation remains open in this retained ABI; front-end BSP and model culling remains active. Retail evidence is documented in PARITY_AUDIT; full original-renderer visual parity is not inferred from these subset tests."
         },
         {
           "original": "RE_UploadCinematic",
@@ -56868,7 +56983,9 @@
         "src/mq3/renderer/md3_entity.ml",
         "src/mq3/renderer/qvm_scene_geometry.ml",
         "src/mq3/engine/local_qvm_match.ml",
-        "src/mq3/client/qvm_preview_app.ml"
+        "src/mq3/client/qvm_preview_app.ml",
+        "src/mq3/renderer/native_md3.ml",
+        "native/qvm_exec.c"
       ],
       "status": "ported",
       "tests": [
@@ -56885,7 +57002,12 @@
         "scripts/test_md3_cull_lod.py",
         "tests/reference/md3_cull_oracle.c",
         "tests/md3_cull_oracle.ml",
-        "tests/md3_cull_lod_retail_probe.ml"
+        "tests/md3_cull_lod_retail_probe.ml",
+        "scripts/test_md3_vertex_identity.py",
+        "tests/md3_vertex_identity_contracts.ml",
+        "scripts/test_native_md3.py",
+        "scripts/test_scene_reuse_ownership.py",
+        "tests/scene_reuse_ownership_contracts.ml"
       ]
     },
     {
@@ -57167,7 +57289,9 @@
         "scripts/test_tr_shade_complete.py",
         "tests/tr_shade_complete_contracts.ml",
         "tests/tr_shade_strip_oracle.ml",
-        "tests/reference/tr_shade_strip_oracle.c"
+        "tests/reference/tr_shade_strip_oracle.c",
+        "scripts/test_md3_vertex_identity.py",
+        "tests/md3_vertex_identity_contracts.ml"
       ]
     },
     {
@@ -57295,7 +57419,12 @@
         "tests/shader_entity_time_oracle.ml",
         "tests/playable_world_batch_contracts.ml",
         "scripts/test_tr_shade_calc_complete.py",
-        "tests/tr_shade_calc_complete_contracts.ml"
+        "tests/tr_shade_calc_complete_contracts.ml",
+        "scripts/test_numeric_native.py",
+        "scripts/test_md3_vertex_identity.py",
+        "tests/md3_vertex_identity_contracts.ml",
+        "scripts/test_scene_reuse_ownership.py",
+        "tests/scene_reuse_ownership_contracts.ml"
       ]
     },
     {
@@ -57844,6 +57973,15 @@
           "target_symbol": "mq3.renderer.tr_sky.rInitSkyTexCoords",
           "status": "tested_exact",
           "scope": "Complete six-plane sky clipping, face projection, subdivision grids, outer box, spherical cloud coordinates/data, sun quad and stage orchestration; 62 unchanged-C values and 15 native contracts pass alongside the productive retail sky path."
+        },
+        {
+          "original": "Productive retained Retail cloud-layer submission",
+          "target_files": [
+            "src/mq3/client/playable_sky.ml",
+            "native/playable_sky_math.h"
+          ],
+          "status": "tested_subset",
+          "scope": "A bounded eight-view cache retains double camera-grid UVs and final batch storage; native layer updates preserve the managed scale/scroll/seam-unwrapping bytes. Opaque and original ONE+ONE stages submit separately without depth writes and restore raster state. Twenty-seven contracts, three Retail maps with six cloud layers and an exact shared-edge native colour probe pass. This acceleration does not claim complete sky visual acceptance."
         }
       ],
       "target": [
@@ -57908,10 +58046,12 @@
         {
           "original": "VectorArrayNormalize / LerpMeshVertexes / RB_SurfaceMesh",
           "target_files": [
-            "src/mq3/renderer/surface_md3.ml"
+            "src/mq3/renderer/surface_md3.ml",
+            "src/mq3/renderer/native_md3.ml",
+            "native/qvm_exec.c"
           ],
           "status": "tested_exact",
-          "scope": "Binary32 MD3 frame interpolation, original sine-table normal decoding, Q_rsqrt normalization, texcoords, rebased indices and overflow behavior. Three exact C records and 31 contracts pass."
+          "scope": "Binary32 MD3 frame interpolation, original sine-table normal decoding, Q_rsqrt normalization, texcoords, rebased indices and overflow behavior. Three exact C records and 31 contracts pass. The productive packed native interpolation/transform path also compares 7168 exact vectors against the managed kernels; original LOD/triangle counts are preserved."
         },
         {
           "original": "RB_SurfaceGrid",
@@ -57980,6 +58120,9 @@
         "scripts/test_surface_md3.py",
         "tests/reference/surface_md3_oracle.c",
         "tests/surface_md3_contracts.ml",
+        "scripts/test_native_md3.py",
+        "tests/native_md3_contracts.ml",
+        "tests/native_md3_fp_control.c",
         "scripts/test_surface_grid.py",
         "tests/reference/surface_grid_oracle.c",
         "tests/surface_grid_contracts.ml",
@@ -58034,14 +58177,19 @@
             "src/mq3/renderer/tr_world_runtime.ml"
           ],
           "status": "tested_complete",
-          "scope": "All 15 tr_world.c symbols: face/grid/trisurf culling and dynamic-light masks, duplicate suppression, brush models, recursive BSP traversal, visible bounds, point/cluster/PVS and area-mask leaf marking through productive retained world selection."
+          "scope": "All 15 tr_world.c symbols: face/grid/trisurf culling and dynamic-light masks, duplicate suppression, brush models, recursive BSP traversal, visible bounds, point/cluster/PVS and area-mask leaf marking through productive retained world selection. The unlimited-budget retained selector now filters packed native face records while MiniLang owns PVS discovery and constrained-budget sorting. 384 Retail q3dm1 cases compare selected order and every rejection counter against the managed selector; side-plane sphere bounds are conservatively expanded by the plane-normal length."
         }
       ],
       "target": [
         "src/mq3/renderer/qvm_scene_geometry.ml",
         "src/mq3/renderer/qvm_scene_batch.ml",
         "src/mq3/renderer/portal_clip.ml",
-        "src/mq3/renderer/tr_world_runtime.ml"
+        "src/mq3/renderer/tr_world_runtime.ml",
+        "src/mq3/renderer/world_surface_selection.ml",
+        "src/mq3/renderer/native_world_selection.ml",
+        "native/qvm_exec.c",
+        "src/mq3/renderer/retained_world_batch.ml",
+        "native/playable_world_gather.h"
       ],
       "status": "ported",
       "tests": [
@@ -58053,7 +58201,13 @@
         "tests/tr_world_complete_contracts.ml",
         "tests/tr_world_dlight_oracle.ml",
         "tests/reference/tr_world_dlight_oracle.c",
-        "tests/tr_world_retail_probe.ml"
+        "tests/tr_world_retail_probe.ml",
+        "scripts/test_native_world_selection.py",
+        "tests/native_world_selection_probe.ml",
+        "scripts/test_retained_world_batch.py",
+        "tests/retained_world_batch_contracts.ml",
+        "tests/retained_world_batch_retail_probe.ml",
+        "scripts/test_native_qvm_boundaries.py"
       ]
     },
     {
@@ -76539,10 +76693,25 @@
         "Com_Prefetch",
         "_copyDWord"
       ],
-      "symbol_mapping": [{"original": "complete Unix linux_common.c surface", "target_files": ["src/mq3/platform/unix_runtime.ml"], "covers_all_candidates": true, "status": "tested_equivalent", "scope": "All inventoried memory-copy, memory-set and prefetch entry points are owned by the portable MiniLang Unix runtime."}],
-      "target": ["src/mq3/platform/unix_runtime.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete Unix linux_common.c surface",
+          "target_files": [
+            "src/mq3/platform/unix_runtime.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "All inventoried memory-copy, memory-set and prefetch entry points are owned by the portable MiniLang Unix runtime."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/unix_runtime.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_unix_platform_complete.py", "tests/unix_runtime_contracts.ml"]
+      "tests": [
+        "scripts/test_unix_platform_complete.py",
+        "tests/unix_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/unix/linux_glimp.c",
@@ -76585,10 +76754,25 @@
         "repeated_press",
         "uninstall_grabs"
       ],
-      "symbol_mapping": [{"original": "complete Unix linux_glimp.c surface", "target_files": ["src/mq3/platform/unix_runtime.ml"], "covers_all_candidates": true, "status": "tested_equivalent", "scope": "All inventoried GLimp, X11 input, keyboard, joystick, gamma and render-thread entry points are owned through a deterministic portable host abstraction."}],
-      "target": ["src/mq3/platform/unix_runtime.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete Unix linux_glimp.c surface",
+          "target_files": [
+            "src/mq3/platform/unix_runtime.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "All inventoried GLimp, X11 input, keyboard, joystick, gamma and render-thread entry points are owned through a deterministic portable host abstraction."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/unix_runtime.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_unix_platform_complete.py", "tests/unix_runtime_contracts.ml"]
+      "tests": [
+        "scripts/test_unix_platform_complete.py",
+        "tests/unix_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/unix/linux_joystick.c",
@@ -76598,20 +76782,50 @@
         "IN_JoyMove",
         "IN_StartupJoystick"
       ],
-      "symbol_mapping": [{"original": "complete Unix linux_joystick.c surface", "target_files": ["src/mq3/platform/unix_runtime.ml"], "covers_all_candidates": true, "status": "tested_equivalent", "scope": "Joystick startup and movement ownership is shared with the portable Unix input runtime and covered by state-transition contracts."}],
-      "target": ["src/mq3/platform/unix_runtime.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete Unix linux_joystick.c surface",
+          "target_files": [
+            "src/mq3/platform/unix_runtime.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "Joystick startup and movement ownership is shared with the portable Unix input runtime and covered by state-transition contracts."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/unix_runtime.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_unix_platform_complete.py", "tests/unix_runtime_contracts.ml"]
+      "tests": [
+        "scripts/test_unix_platform_complete.py",
+        "tests/unix_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/unix/linux_local.h",
       "sha256": "9be8b91deb7033ac82f5c31976be3dec62cea277059d5768ea9b02e0c54a9235",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [{"original": "complete Unix linux_local.h declarations", "target_files": ["src/mq3/platform/unix_runtime.ml"], "covers_all_candidates": true, "status": "tested_equivalent", "scope": "The header contributes no runtime symbol candidate; its platform state and declarations are represented by the typed Unix runtime facade."}],
-      "target": ["src/mq3/platform/unix_runtime.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete Unix linux_local.h declarations",
+          "target_files": [
+            "src/mq3/platform/unix_runtime.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "The header contributes no runtime symbol candidate; its platform state and declarations are represented by the typed Unix runtime facade."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/unix_runtime.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_unix_platform_complete.py", "tests/unix_runtime_contracts.ml"]
+      "tests": [
+        "scripts/test_unix_platform_complete.py",
+        "tests/unix_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/unix/linux_qgl.c",
@@ -76960,10 +77174,25 @@
         "logViewport",
         "qwglGetProcAddress"
       ],
-      "symbol_mapping": [{"original": "complete Unix linux_qgl.c surface", "target_files": ["src/mq3/platform/unix_runtime.ml"], "covers_all_candidates": true, "status": "tested_equivalent", "scope": "All 341 inventoried QGL initialization, shutdown, logging and OpenGL dispatch names have exact ownership in the portable Unix facade; native loader calls remain host-adapter responsibilities."}],
-      "target": ["src/mq3/platform/unix_runtime.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete Unix linux_qgl.c surface",
+          "target_files": [
+            "src/mq3/platform/unix_runtime.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "All 341 inventoried QGL initialization, shutdown, logging and OpenGL dispatch names have exact ownership in the portable Unix facade; native loader calls remain host-adapter responsibilities."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/unix_runtime.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_unix_platform_complete.py", "tests/unix_runtime_contracts.ml"]
+      "tests": [
+        "scripts/test_unix_platform_complete.py",
+        "tests/unix_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/unix/linux_signals.c",
@@ -76973,10 +77202,25 @@
         "InitSig",
         "signal_handler"
       ],
-      "symbol_mapping": [{"original": "complete Unix linux_signals.c surface", "target_files": ["src/mq3/platform/unix_runtime.ml"], "covers_all_candidates": true, "status": "tested_equivalent", "scope": "Unix signal installation and fatal-signal handling are owned with deterministic error contracts."}],
-      "target": ["src/mq3/platform/unix_runtime.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete Unix linux_signals.c surface",
+          "target_files": [
+            "src/mq3/platform/unix_runtime.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "Unix signal installation and fatal-signal handling are owned with deterministic error contracts."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/unix_runtime.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_unix_platform_complete.py", "tests/unix_runtime_contracts.ml"]
+      "tests": [
+        "scripts/test_unix_platform_complete.py",
+        "tests/unix_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/unix/linux_snd.c",
@@ -76990,10 +77234,25 @@
         "SNDDMA_Submit",
         "Snd_Memset"
       ],
-      "symbol_mapping": [{"original": "complete Unix linux_snd.c surface", "target_files": ["src/mq3/platform/unix_runtime.ml"], "covers_all_candidates": true, "status": "tested_equivalent", "scope": "The Unix DMA lifecycle, submission, position and sound-memory helpers are owned by the portable audio host facade."}],
-      "target": ["src/mq3/platform/unix_runtime.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete Unix linux_snd.c surface",
+          "target_files": [
+            "src/mq3/platform/unix_runtime.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "The Unix DMA lifecycle, submission, position and sound-memory helpers are owned by the portable audio host facade."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/unix_runtime.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_unix_platform_complete.py", "tests/unix_runtime_contracts.ml"]
+      "tests": [
+        "scripts/test_unix_platform_complete.py",
+        "tests/unix_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/unix/matha.s",
@@ -77030,10 +77289,25 @@
       "sha256": "87865db4309de0ffb5589610936f6050a8e93a4b550a96fe885f45e01266dd9d",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [{"original": "complete Unix qasm.h declarations", "target_files": ["src/mq3/platform/unix_runtime.ml"], "covers_all_candidates": true, "status": "tested_equivalent", "scope": "The header contributes no runtime symbol candidate; its assembly-facing contract is superseded by typed MiniLang helpers."}],
-      "target": ["src/mq3/platform/unix_runtime.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete Unix qasm.h declarations",
+          "target_files": [
+            "src/mq3/platform/unix_runtime.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "The header contributes no runtime symbol candidate; its assembly-facing contract is superseded by typed MiniLang helpers."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/unix_runtime.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_unix_platform_complete.py", "tests/unix_runtime_contracts.ml"]
+      "tests": [
+        "scripts/test_unix_platform_complete.py",
+        "tests/unix_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/unix/quake3.gif",
@@ -77100,10 +77374,25 @@
       "sha256": "271c2329fee98aecd0d82db47f4b93c50172ae1ec2080a87c48ba43abd08a84a",
       "category": "platform",
       "symbol_candidates": [],
-      "symbol_mapping": [{"original": "complete Unix unix_glw.h declarations", "target_files": ["src/mq3/platform/unix_runtime.ml"], "covers_all_candidates": true, "status": "tested_equivalent", "scope": "The header contributes no runtime symbol candidate; its GL window state is represented by the typed Unix runtime state."}],
-      "target": ["src/mq3/platform/unix_runtime.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete Unix unix_glw.h declarations",
+          "target_files": [
+            "src/mq3/platform/unix_runtime.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "The header contributes no runtime symbol candidate; its GL window state is represented by the typed Unix runtime state."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/unix_runtime.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_unix_platform_complete.py", "tests/unix_runtime_contracts.ml"]
+      "tests": [
+        "scripts/test_unix_platform_complete.py",
+        "tests/unix_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/unix/unix_main.c",
@@ -77154,10 +77443,25 @@
         "tty_Hide",
         "tty_Show"
       ],
-      "symbol_mapping": [{"original": "complete Unix unix_main.c surface", "target_files": ["src/mq3/platform/unix_runtime.ml"], "covers_all_candidates": true, "status": "tested_equivalent", "scope": "Console history, system lifecycle, event queuing, dynamic-library and bounded main-loop entry points are owned by the portable Unix runtime."}],
-      "target": ["src/mq3/platform/unix_runtime.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete Unix unix_main.c surface",
+          "target_files": [
+            "src/mq3/platform/unix_runtime.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "Console history, system lifecycle, event queuing, dynamic-library and bounded main-loop entry points are owned by the portable Unix runtime."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/unix_runtime.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_unix_platform_complete.py", "tests/unix_runtime_contracts.ml"]
+      "tests": [
+        "scripts/test_unix_platform_complete.py",
+        "tests/unix_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/unix/unix_net.c",
@@ -77181,10 +77485,25 @@
         "Sys_StringToAdr",
         "Sys_StringToSockaddr"
       ],
-      "symbol_mapping": [{"original": "complete Unix unix_net.c surface", "target_files": ["src/mq3/platform/unix_runtime.ml"], "covers_all_candidates": true, "status": "tested_equivalent", "scope": "Address conversion, LAN classification, socket lifecycle and packet queue behavior are owned with deterministic portable networking contracts."}],
-      "target": ["src/mq3/platform/unix_runtime.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete Unix unix_net.c surface",
+          "target_files": [
+            "src/mq3/platform/unix_runtime.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "Address conversion, LAN classification, socket lifecycle and packet queue behavior are owned with deterministic portable networking contracts."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/unix_runtime.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_unix_platform_complete.py", "tests/unix_runtime_contracts.ml"]
+      "tests": [
+        "scripts/test_unix_platform_complete.py",
+        "tests/unix_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/unix/unix_shared.c",
@@ -77212,10 +77531,25 @@
         "fastftol",
         "strlwr"
       ],
-      "symbol_mapping": [{"original": "complete Unix unix_shared.c surface", "target_files": ["src/mq3/platform/unix_runtime.ml"], "covers_all_candidates": true, "status": "tested_equivalent", "scope": "Paths, time, user, file-list, processor, vector-snap and numeric helper semantics are owned by the portable Unix runtime."}],
-      "target": ["src/mq3/platform/unix_runtime.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete Unix unix_shared.c surface",
+          "target_files": [
+            "src/mq3/platform/unix_runtime.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "Paths, time, user, file-list, processor, vector-snap and numeric helper semantics are owned by the portable Unix runtime."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/unix_runtime.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_unix_platform_complete.py", "tests/unix_runtime_contracts.ml"]
+      "tests": [
+        "scripts/test_unix_platform_complete.py",
+        "tests/unix_runtime_contracts.ml"
+      ]
     },
     {
       "source": "code/unix/vm_x86.c",
@@ -77225,10 +77559,28 @@
         "VM_CallCompiled",
         "VM_Compile"
       ],
-      "symbol_mapping": [{"original": "complete Unix vm_x86.c surface", "target_files": ["src/mq3/platform/unix_runtime.ml", "src/mq3/vm/jit_compat.ml"], "covers_all_candidates": true, "status": "tested_equivalent", "scope": "Unix x86 VM compilation and compiled-call entry points delegate to the verified memory-safe QVM decoded-plan backend."}],
-      "target": ["src/mq3/platform/unix_runtime.ml", "src/mq3/vm/jit_compat.ml"],
+      "symbol_mapping": [
+        {
+          "original": "complete Unix vm_x86.c surface",
+          "target_files": [
+            "src/mq3/platform/unix_runtime.ml",
+            "src/mq3/vm/jit_compat.ml"
+          ],
+          "covers_all_candidates": true,
+          "status": "tested_equivalent",
+          "scope": "Unix x86 VM compilation and compiled-call entry points delegate to the verified memory-safe QVM decoded-plan backend."
+        }
+      ],
+      "target": [
+        "src/mq3/platform/unix_runtime.ml",
+        "src/mq3/vm/jit_compat.ml"
+      ],
       "status": "ported",
-      "tests": ["scripts/test_unix_platform_complete.py", "tests/unix_runtime_contracts.ml", "scripts/test_vm_jit_compat.py"]
+      "tests": [
+        "scripts/test_unix_platform_complete.py",
+        "tests/unix_runtime_contracts.ml",
+        "scripts/test_vm_jit_compat.py"
+      ]
     },
     {
       "source": "code/unix/vm_x86a.s",
@@ -77931,7 +78283,8 @@
         "native/playable_win32.c",
         "src/mq3/platform/playable_window.ml",
         "src/mq3/platform/win_glimp_runtime.ml",
-        "src/mq3/client/playable_app.ml"
+        "src/mq3/client/playable_app.ml",
+        "native/playable_gl_renderer.h"
       ],
       "status": "ported",
       "tests": [
@@ -77940,7 +78293,10 @@
         "tests/playable_window_gl_native.c",
         "scripts/test_playable_loading.py",
         "scripts/test_playable_match.py",
-        "scripts/test_retail_qvm_match.py"
+        "scripts/test_retail_qvm_match.py",
+        "scripts/test_render_profile.py",
+        "tests/playable_render_profile_native.c",
+        "scripts/test_hardware_renderer.py"
       ]
     },
     {
@@ -78011,7 +78367,10 @@
         "tests/win_input_complete_contracts.ml",
         "tests/reference/win_input_complete_oracle.c",
         "scripts/test_cl_input_complete.py",
-        "scripts/test_playable_match.py"
+        "scripts/test_playable_match.py",
+        "tests/playable_raw_input_native.c",
+        "scripts/test_key_binding_dispatch.py",
+        "tests/key_binding_dispatch_contracts.ml"
       ]
     },
     {

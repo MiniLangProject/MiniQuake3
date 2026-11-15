@@ -18,6 +18,15 @@ function fail(message) return error(7681,"QVM scene batch: "+message) end functi
 function convertedVertex(triangle,corner,sourceIndex)
   return renderData.RenderVertex(triangle.positions[corner],triangle.texCoords[corner],triangle.lightmapCoords[corner],triangle.normals[corner],triangle.colors[corner],triangle.entityColor,triangle.entityTexCoord,triangle.shaderTime,sourceIndex)
 end function
+function fallbackVertexBase(catalog)
+  maximum=-1
+  for each resolved in catalog.triangles ids=resolved.triangle.vertexIds;if ids!=void and len(ids)==3 then for each id in ids if id>maximum then maximum=id end if end for end if end for
+  return maximum+1
+end function
+function sourceVertexId(triangle,corner,fallback)
+  if triangle.vertexIds!=void and len(triangle.vertexIds)==3 and triangle.vertexIds[corner]>=0 then return triangle.vertexIds[corner] end if
+  return fallback
+end function
 function depthHack(triangle) return (triangle.renderfx&RF_DEPTHHACK)!=0 end function
 function renderable(resolved) return resolved.materialIndex>=0 or resolved.triangle.shaderName!=PROJECTION_SHADOW_SHADER end function
 function selectedCount(catalog,wantDepthHack)
@@ -59,21 +68,21 @@ function buildShadowBatch(catalog,sceneGeometry,existing)
 end function
 function convertMode(catalog,wantDepthHack)
   if catalog==void or catalog.triangles==void then return fail("material catalog is required") end if
-  triangles=array(selectedCount(catalog,wantDepthHack),void);triangleIndex=0
+  triangles=array(selectedCount(catalog,wantDepthHack),void);triangleIndex=0;fallbackBase=fallbackVertexBase(catalog)
   for each resolved in catalog.triangles
     if not renderable(resolved) or depthHack(resolved.triangle)!=wantDepthHack then continue end if
     source=resolved.triangle;base=triangleIndex*3
-    vertices=[convertedVertex(source,0,base),convertedVertex(source,1,base+1),convertedVertex(source,2,base+2)]
+    vertices=[convertedVertex(source,0,sourceVertexId(source,0,fallbackBase+base)),convertedVertex(source,1,sourceVertexId(source,1,fallbackBase+base+1)),convertedVertex(source,2,sourceVertexId(source,2,fallbackBase+base+2))]
     triangles[triangleIndex]=renderData.RenderTriangle(vertices,resolved.materialIndex,source.lightmapIndex,source.fogIndex,-1,triangleIndex);triangleIndex=triangleIndex+1
   end for
   return renderData.RenderData(triangles,0,len(triangles),0,false,0)
 end function
 function convert(catalog) return convertMode(catalog,false) end function
 function convertDynamic(catalog)
-  triangles=array(dynamicCount(catalog),void);triangleIndex=0
+  triangles=array(dynamicCount(catalog),void);triangleIndex=0;fallbackBase=fallbackVertexBase(catalog)
   for each resolved in catalog.triangles
     if not dynamicSelected(catalog,resolved) then continue end if
-    source=resolved.triangle;base=triangleIndex*3;vertices=[convertedVertex(source,0,base),convertedVertex(source,1,base+1),convertedVertex(source,2,base+2)]
+    source=resolved.triangle;base=triangleIndex*3;vertices=[convertedVertex(source,0,sourceVertexId(source,0,fallbackBase+base)),convertedVertex(source,1,sourceVertexId(source,1,fallbackBase+base+1)),convertedVertex(source,2,sourceVertexId(source,2,fallbackBase+base+2))]
     triangles[triangleIndex]=renderData.RenderTriangle(vertices,resolved.materialIndex,source.lightmapIndex,source.fogIndex,-1,triangleIndex);triangleIndex=triangleIndex+1
   end for
   return renderData.RenderData(triangles,0,len(triangles),0,false,0)
@@ -83,13 +92,13 @@ function updateConvertedVertex(target,triangle,corner,sourceIndex)
 end function
 function refreshGeometryMode(geometry,catalog,wantDepthHack)
   if geometry==void or geometry.triangles==void or len(geometry.triangles)!=selectedCount(catalog,wantDepthHack) then return false end if
-  triangleIndex=0
+  triangleIndex=0;fallbackBase=fallbackVertexBase(catalog)
   for each resolved in catalog.triangles
     if not renderable(resolved) or depthHack(resolved.triangle)!=wantDepthHack then continue end if
     target=geometry.triangles[triangleIndex];source=resolved.triangle
     if target==void or target.vertices==void or len(target.vertices)!=3 then return false end if
     base=triangleIndex*3
-    for corner=0 to 2 target.vertices[corner]=updateConvertedVertex(target.vertices[corner],source,corner,base+corner) end for
+    for corner=0 to 2 target.vertices[corner]=updateConvertedVertex(target.vertices[corner],source,corner,sourceVertexId(source,corner,fallbackBase+base+corner)) end for
     target.textureIndex=resolved.materialIndex;target.lightmapIndex=source.lightmapIndex;target.fogIndex=source.fogIndex;target.faceIndex= -1;target.triangleIndex=triangleIndex;triangleIndex=triangleIndex+1
   end for
   geometry.triangleCount=len(geometry.triangles);return geometry
@@ -97,11 +106,11 @@ end function
 function refreshGeometry(geometry,catalog) return refreshGeometryMode(geometry,catalog,false) end function
 function refreshDynamicGeometry(geometry,catalog)
   if geometry==void or geometry.triangles==void or len(geometry.triangles)!=dynamicCount(catalog) then return false end if
-  triangleIndex=0
+  triangleIndex=0;fallbackBase=fallbackVertexBase(catalog)
   for each resolved in catalog.triangles
     if not dynamicSelected(catalog,resolved) then continue end if
     target=geometry.triangles[triangleIndex];source=resolved.triangle;if target==void or target.vertices==void or len(target.vertices)!=3 then return false end if;base=triangleIndex*3
-    for corner=0 to 2 target.vertices[corner]=updateConvertedVertex(target.vertices[corner],source,corner,base+corner) end for
+    for corner=0 to 2 target.vertices[corner]=updateConvertedVertex(target.vertices[corner],source,corner,sourceVertexId(source,corner,fallbackBase+base+corner)) end for
     target.textureIndex=resolved.materialIndex;target.lightmapIndex=source.lightmapIndex;target.fogIndex=source.fogIndex;target.faceIndex= -1;target.triangleIndex=triangleIndex;triangleIndex=triangleIndex+1
   end for
   geometry.triangleCount=len(geometry.triangles);return geometry

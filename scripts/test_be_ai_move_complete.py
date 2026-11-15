@@ -1,5 +1,5 @@
 """Complete be_ai_move.c symbol, unchanged-C, native and retail gate."""
-import json,py_compile,re,subprocess,sys
+import argparse,json,os,py_compile,re,subprocess,sys
 from pathlib import Path
 from inventory import sha
 from test_aas_route_extras import fixture
@@ -11,6 +11,7 @@ ORACLE=['AngleDiff','DistanceFromLineSquared','VectorDistanceSquared','Intersect
 def build(source,output):
  subprocess.run([sys.executable,ROOT/'scripts/build.py','--source',source,'--output',output],cwd=ROOT,check=True);return ROOT/'build'/output
 def main():
+ parser=argparse.ArgumentParser();parser.add_argument('--data-root',type=Path,default=Path(os.environ.get('MQ3_DATA_ROOT','D:/Quake3')));args=parser.parse_args();data_root=args.data_root.resolve()
  py_compile.compile(__file__,doraise=True);out=ROOT/'build/reference/be_ai_move_complete';out.mkdir(parents=True,exist_ok=True);(out/'move.aas').write_bytes(fixture())
  original=ROOT/'Quake-III-Arena-original-source/code/botlib/be_ai_move.c';module=ROOT/'src/mq3/botlib/be_ai_move.ml';text=module.read_text(encoding='utf-8');missing=[x for x in SYMBOLS if not re.search(r'function\s+'+re.escape(x)+r'\s*\(',text)]
  if missing:raise RuntimeError('missing movement symbols: '+', '.join(missing))
@@ -20,8 +21,8 @@ def main():
  if native!=normalizedMini:raise RuntimeError('be_ai_move unchanged-C mismatch\nnative: '+repr(native)+'\nmini: '+repr(mini))
  contracts=run([build('tests/be_ai_move_complete_contracts.ml','be_ai_move_complete_contracts.exe'),out/'move.aas'],ROOT/'build',log=out/'contracts.log').strip();expected='PASS: 18 complete be_ai_move adapter contracts'
  if contracts!=expected:raise RuntimeError(contracts)
- retail=run([build('tests/be_ai_move_retail_probe.ml','be_ai_move_retail_probe.exe'),Path('D:/Quake3/baseq3/pak0.pk3')],ROOT/'build',log=out/'retail.log').strip()
+ retail=run([build('tests/be_ai_move_retail_probe.ml','be_ai_move_retail_probe.exe'),data_root/'baseq3/pak0.pk3'],ROOT/'build',log=out/'retail.log').strip()
  if not retail.startswith('PASS: 5 retail q3dm1 movement contracts'):raise RuntimeError(retail)
- result={'passed':True,'symbols':len(SYMBOLS),'differentialRecords':native.count('\n'),'contracts':18,'retail':retail,'oracleFunctions':ORACLE,'sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in [original,module,ROOT/'src/mq3/botlib/ai_move_runtime.ml',harness,ROOT/'tests/be_ai_move_complete_oracle.ml',ROOT/'tests/be_ai_move_complete_contracts.ml',ROOT/'tests/be_ai_move_retail_probe.ml']}}
+ result={'passed':True,'symbols':len(SYMBOLS),'differentialRecords':native.count('\n'),'contracts':18,'retail':retail,'data_root':str(data_root),'oracleFunctions':ORACLE,'sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in [original,module,ROOT/'src/mq3/botlib/ai_move_runtime.ml',harness,ROOT/'tests/be_ai_move_complete_oracle.ml',ROOT/'tests/be_ai_move_complete_contracts.ml',ROOT/'tests/be_ai_move_retail_probe.ml']}}
  (out/'result.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8',newline='\n');print(f"PASS: {len(SYMBOLS)} be_ai_move symbols + {result['differentialRecords']} unchanged-C records + 18 contracts + retail")
 if __name__=='__main__':main()

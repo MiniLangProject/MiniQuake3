@@ -31,7 +31,7 @@ struct NativeInput mouse keys end struct
 function fail(message) return error(7688,"QVM menu: "+message) end function
 function keyDown(context,key)
   if context!=void and inputLatch.keyDown(context.keys,key) then return true end if
-  return window.keyDown(key)
+  return window.inputKeyDown(key)
 end function
 function mouseDelta(context) return context.mouse end function
 function observeInputEvents(input,events)
@@ -72,6 +72,7 @@ function run(archive,bootstrapMap,qvmRoot)
   booted=match.bootUi(state);if booted is error then window.shutdown();match.shutdown(state);return booted end if
   keys=inputLatch.create(256);if keys is error then window.shutdown();match.shutdown(state);return keys end if;input=NativeInput([0,0],keys);ui=localQvmUi.attach(state,input,keyDown,mouseDelta);if ui is error then window.shutdown();match.shutdown(state);return ui end if
   openedMenu=uiSession.openMain(ui);if openedMenu is error then window.shutdown();match.shutdown(state);return openedMenu end if
+  reset=localQvmUi.resetFrameCommands(state);if reset is error then window.shutdown();match.shutdown(state);return reset end if
   renderCommands=uiSession.frame(ui,1000);if renderCommands is error then window.shutdown();match.shutdown(state);return renderCommands end if
   // Baseq3's actual menuback/menubacknologo definitions live in gfx.shader;
   // menu.shader on the retail CD is only an empty comment shell.  Index the
@@ -107,9 +108,11 @@ function run(archive,bootstrapMap,qvmRoot)
     time.sleep(16)
   end while
   settings=match.captureUserSettings(state)
-  audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state)
-  if mapName==void then return 0 end if
-  mapData=pk3.read(archive,"maps/"+mapName+".bsp");if mapData is error then return mapData end if
-  selectedMap=bsp.load(mapData);if selectedMap is error then return selectedMap end if
+  audioOutput.shutdown();qvm2d.release(catalog);match.shutdown(state)
+  if mapName==void then window.shutdown();return 0 end if
+  // Keep the existing HWND/WGL context across the menu-to-match transition.
+  // Native create/open reuses it; only map-specific resources are replaced.
+  mapData=pk3.read(archive,"maps/"+mapName+".bsp");if mapData is error then window.shutdown();return mapData end if
+  selectedMap=bsp.load(mapData);if selectedMap is error then window.shutdown();return selectedMap end if
   return gameApp.runWithSettingsNamed(archive,selectedMap,mapName,qvmRoot,settings)
 end function

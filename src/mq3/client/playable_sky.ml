@@ -10,15 +10,23 @@ import mq3.compat.transcendental as trans
 import mq3.renderer.shader_parser as shaderParser
 import std.string as strings
 
+extern function storeSkyVertexNative(source as ptr,capacity as i32,index as i32,x as double,y as double,u as double,v as double) from "playable_window.dll" symbol "playable_window_store_sky_vertex" returns i32
+extern function updateSkyLayerNative(records as ptr,capacity as i32,firstTriangle as i32,source as ptr,sourceBytes as i32,columns as i32,rows as i32,slot as i32,scaleU as double,scaleV as double,scrollU as double,scrollV as double,nowMilliseconds as double,depth as double) from "playable_window.dll" symbol "playable_window_update_sky_layer" returns i32
+extern function drawSkyLayerNative(records as ptr,capacity as i32,firstTriangle as i32,triangleCount as i32,additive as i32) from "playable_window.dll" symbol "playable_window_draw_sky_layer" returns i32
+
 const SHADER_NAME="textures/skies/tim_hell"
 const REQUIRED_TEXTURES=2
 const GRID_COLUMNS=12
 const GRID_ROWS=8
 const SKY_DEPTH=1000000.0
+const MAX_CACHED_VIEWS=8
+const SOURCE_VERTEX_BYTES=32
 
 struct Layer imageName image slot scaleU scaleV scrollU scrollV additive end struct
-struct Catalog layers firstTextureSlot textureCount shaderName end struct
+struct Catalog layers firstTextureSlot textureCount shaderName cache end struct
 struct Vertex point uv end struct
+struct CachedView basis left top width height source batch end struct
+struct ViewCache entries next end struct
 
 function fail(message) return error(7610,"playable sky: "+message) end function
 function isSkyShader(name) return name!=void and strings.toLowerAscii(name)==SHADER_NAME end function
@@ -55,7 +63,7 @@ function layerFromStage(archive,stage,slot)
   end for
   if not supported then return void end if
   additive=stage.blendSrc==shaderParser.GLS_SRCBLEND_ONE and stage.blendDst==shaderParser.GLS_DSTBLEND_ONE
-  image=loaded[1];if additive then image=additiveImage(image) end if
+  image=loaded[1]
   return Layer(loaded[0],image,slot,scaleU,scaleV,scrollU,scrollV,additive)
 end function
 
@@ -70,7 +78,7 @@ function loadIndexed(archive,index,shaderName,firstTextureSlot,maxTextureSlots)
     layer=layerFromStage(archive,stage,firstTextureSlot+len(layers));if layer!=void then layers=layers+[layer] end if
   end for
   if len(layers)==0 then return fail("sky has no supported retail cloud stages: "+shaderName) end if
-  return Catalog(layers,firstTextureSlot,len(layers),strings.toLowerAscii(shaderName))
+  return Catalog(layers,firstTextureSlot,len(layers),strings.toLowerAscii(shaderName),void)
 end function
 
 function loadMap(archive,map,index,firstTextureSlot,maxTextureSlots)
@@ -95,7 +103,7 @@ function upload(catalog)
 end function
 
 function release(catalog)
-  if catalog!=void then for each layer in catalog.layers window.releaseTexture(layer.slot) end for end if
+  if catalog!=void then for each layer in catalog.layers window.releaseTexture(layer.slot) end for;catalog.cache=void end if
   return void
 end function
 
@@ -184,6 +192,48 @@ function buildBatchPrepared(catalog,basis,left,top,width,height,nowMilliseconds)
 end function
 function buildBatch(catalog,camera,width,height,nowMilliseconds) return buildBatchPrepared(catalog,viewer.cameraBasis(camera),0,0,width,height,nowMilliseconds) end function
 
+function sameBasis(left,right)
+  for axis=0 to 2 for component=0 to 2 if left[axis][component]!=right[axis][component] then return false end if end for end for
+  return true
+end function
+function copyBasis(value) return [[value[0][0],value[0][1],value[0][2]],[value[1][0],value[1][1],value[1][2]],[value[2][0],value[2][1],value[2][2]]] end function
+
+// Preserve MiniLang's camera/ray math exactly, retaining its double UVs until
+// the final native binary32 batch stores. Time changes only the two uniforms
+// per layer; an unchanged camera therefore performs no grid allocation/math.
+// A bounded ring handles alternating main/portal/refdef views without growth.
+function retainedBatchPrepared(catalog,basis,left,top,width,height,nowMilliseconds)
+  if catalog==void or basis==void or len(basis)!=3 or width<1 or height<1 or nowMilliseconds<0 then return fail("invalid retained sky view") end if
+  count=len(catalog.layers)*GRID_COLUMNS*GRID_ROWS*2
+  if count<1 then return fail("sky needs a cloud layer") end if
+  if catalog.cache==void then catalog.cache=ViewCache(array(MAX_CACHED_VIEWS,void),0) end if
+  cache=catalog.cache;entry=void
+  for slot=0 to MAX_CACHED_VIEWS-1
+    candidate=cache.entries[slot]
+    if candidate!=void and candidate.left==left and candidate.top==top and candidate.width==width and candidate.height==height and sameBasis(candidate.basis,basis) then entry=candidate;break end if
+  end for
+  if entry==void then
+    grid=baseGridPrepared(basis,left,top,width,height);if grid is error then return grid end if
+    slot=cache.next;cache.next=(cache.next+1)%MAX_CACHED_VIEWS;entry=cache.entries[slot]
+    if entry==void then
+      batch=window.createTriangleBatch(count);if batch is error then return batch end if
+      entry=CachedView(copyBasis(basis),left,top,width,height,bytes(len(grid)*SOURCE_VERTEX_BYTES,0),batch);cache.entries[slot]=entry
+    else entry.basis=copyBasis(basis);entry.left=left;entry.top=top;entry.width=width;entry.height=height end if
+    for index=0 to len(grid)-1
+      vertex=grid[index]
+      if storeSkyVertexNative(nativeBytesPtr(entry.source),len(entry.source),index,vertex.point.x,vertex.point.y,vertex.uv[0],vertex.uv[1])!=1 then return fail("could not retain sky source vertex") end if
+    end for
+  end if
+  if entry.batch.capacity!=count then entry.batch=window.createTriangleBatch(count);if entry.batch is error then return entry.batch end if end if
+  perLayer=GRID_COLUMNS*GRID_ROWS*2
+  for layerIndex=0 to len(catalog.layers)-1
+    layer=catalog.layers[layerIndex]
+    written=updateSkyLayerNative(nativeBytesPtr(entry.batch.data),len(entry.batch.data),layerIndex*perLayer,nativeBytesPtr(entry.source),len(entry.source),GRID_COLUMNS,GRID_ROWS,layer.slot,layer.scaleU,layer.scaleV,layer.scrollU,layer.scrollV,nowMilliseconds,SKY_DEPTH-layerIndex)
+    if written!=perLayer then return fail("could not update retained sky layer") end if
+  end for
+  entry.batch.count=count;return entry.batch
+end function
+
 function drawLayer(layer,camera,width,height,nowMilliseconds,layerIndex)
   depth=SKY_DEPTH-layerIndex
   count=0
@@ -203,11 +253,20 @@ end function
 
 function draw(catalog,camera,width,height,nowMilliseconds)
   if catalog==void or camera==void or width<1 or height<1 or nowMilliseconds<0 then return fail("catalog, camera, surface and non-negative time are required") end if
-  batch=buildBatch(catalog,camera,width,height,nowMilliseconds);if batch is error then return batch end if
-  return window.submitTriangleBatch(batch)
+  batch=retainedBatchPrepared(catalog,viewer.cameraBasis(camera),0,0,width,height,nowMilliseconds);if batch is error then return batch end if
+  return submitLayers(catalog,batch)
+end function
+function submitLayers(catalog,batch)
+  count=0;perLayer=GRID_COLUMNS*GRID_ROWS*2
+  for index=0 to len(catalog.layers)-1
+    additive=0;if catalog.layers[index].additive then additive=1 end if
+    drawn=drawSkyLayerNative(nativeBytesPtr(batch.data),len(batch.data),index*perLayer,perLayer,additive)
+    if drawn!=perLayer then return fail("native sky layer submission failed") end if;count=count+drawn
+  end for
+  return count
 end function
 function drawViewport(catalog,basis,area,nowMilliseconds)
   if catalog==void or basis==void or len(basis)!=3 or area==void or area.width<1 or area.height<1 or nowMilliseconds<0 then return fail("catalog, view axes, viewport and non-negative time are required") end if
-  batch=buildBatchPrepared(catalog,basis,area.x,area.y,area.width,area.height,nowMilliseconds);if batch is error then return batch end if
-  return window.submitTriangleBatch(batch)
+  batch=retainedBatchPrepared(catalog,basis,area.x,area.y,area.width,area.height,nowMilliseconds);if batch is error then return batch end if
+  return submitLayers(catalog,batch)
 end function

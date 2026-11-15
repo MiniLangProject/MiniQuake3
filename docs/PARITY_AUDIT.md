@@ -1,8 +1,222 @@
 # MiniQuake3: überprüfter Stand
 
-Stand: 2026-11-04. Der Port ist **in Arbeit; eine erste interaktive Vorschau ist spielbar**.
+Stand: 2026-11-15. Der Port ist **in Arbeit; eine interaktive Vorschau ist spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
+
+## Hardwarepfad, Clipping und QVM-Ausführung vom 15. November 2026
+
+Die abschließende integrierte Performance-Abnahme auf Ryzen 9 9900X / RTX 5080
+erreicht mit q3dm1 bei 1280×720 **218,67 FPS über 5.000 vollständige
+Spielbilder**, fünf Modellen und 524 Modelldreiecken. Der direkte Matchstart
+benötigt 2,615 s; Work-P95 beträgt 6 ms, P99 8 ms, die größte Spitze 167 ms.
+Die explizite Schranke `--min-fps 200 --max-work-p95-ms 8` besteht.
+Dies sind frische Prozesse bei bereits vorhandenen OS-/Treiber-Caches,
+ohne Capture/Trace/Profiler und ohne parallel laufenden eigenen Verifier.
+Ein 5.000-Frame-Smoke ersetzt keine interaktive Langzeitabnahme; einzelne
+größere Frame-Spitzen bleiben sichtbar. Der normale Nullargument-Start
+erreicht das originale Hauptmenü separat nach 0,42 s. Der CPU-Referenzpfad
+besteht ebenfalls einen produktiven Retail-Smoke, dient aber keiner
+Hardware-FPS-Abnahme.
+
+Die separate Rendererprobe dreht dieselbe Kamera in 360 Schritten und
+wechselt dabei 250-mal die Faceauswahl. Im selben Testbinary und mit denselben
+DLLs sinkt die mittlere Renderzeit von 18,514 auf 1,938 ms, P95 von
+67,011 auf 4,495 ms und die größte Spitze von 570,393 auf 39,031 ms.
+Beide Pfade behalten kumuliert 757.423 Dreiecke, ohne Budgetauslassungen.
+Der Test hält den PVS-Cluster fest und enthält weder QVM noch Modelle,
+Gameplay oder Audio: Seine 516 Renderer-FPS sind **keine Spiel-FPS**.
+Die versionierten Messdaten stehen in
+[`verification/2026-11-15-performance.json`](verification/2026-11-15-performance.json),
+die vollständigen Rohdaten unter `build/reference/perf-2026-11-15/`.
+Alle 522 Einträge des aktuellen Standard-Verifiers sind über vier
+fortgesetzte Fail-fast-Läufe und 13 nachträglich registrierte Gates grün;
+dies ist kein einzelner ununterbrochener Neuaufruf. Die behobenen
+Harnessprobleme und vollständige Gate-Liste stehen in
+[`verification/2026-11-15-gates.json`](verification/2026-11-15-gates.json).
+
+Der produktive Windows-Renderer zeichnet den bestehenden 128-Byte-Batch jetzt
+direkt mit OpenGL auf der GPU. Welttransformation, Near-Clipping,
+perspektivische Texturinterpolation und Depth-/Stencilprüfung erfolgen dort;
+der normale Bildwechsel benötigt weder CPU-Rasterisierung noch `glDrawPixels`
+oder GPU-Readback. Zwei Textureinheiten verknüpfen Retail-Basistexturen und
+Lightmaps. Alpha, alle 72 Blendfaktorkombinationen, Mipmaps, Polygonoffset,
+Depthhack, Scissor/Viewport, Stencilschatten und HUD besitzen echte WGL-Tests.
+Ein wiederverwendeter Clientarray-Puffer fasst höchstens 4.096 Dreiecke je
+Submission zusammen. 16 vollständige Framebuffervergleiche gegen den
+vorherigen Immediate-Pfad sind exakt; auch fremde Array-/VBO-/TMU-Zustände
+werden restauriert. Der isolierte 768-Dreiecke-Test misst 0,039 statt
+0,027 ms: Diese Umstellung allein ist ausdrücklich kein gemessener FPS-Gewinn.
+`MQ3_RENDERER=software` wählt den bisherigen Referenzpfad. Dieser schneidet
+Dreiecke an der Near-Ebene, statt bei einem einzigen dahinterliegenden Vertex
+die ganze Wandfläche zu verwerfen. Die seriellen und parallelen CPU-Ergebnisse
+stimmen einschließlich interpolierter Vertexfarben und Depth exakt überein.
+Auch die Frustum-Sphärentests berücksichtigen jetzt die Länge der
+Seitennormalen und verwerfen sichtbare Wandränder nicht länger zu früh.
+
+QVM-Lifecycle und Engine-Traps bleiben in MiniLang. Ein begrenzter nativer
+Bytecodedispatcher führt die validierten QVM-Instruktionen aus und kehrt für
+Traps nach MiniLang zurück; rekursive Aufrufe besitzen getrennte
+Fortsetzungszustände. Dies ist kein Maschinencode-JIT. Der verwaltete
+Interpreter bleibt als Referenz erhalten: 404 unveränderte C-Fälle vergleichen
+Rückgabewert, vollständigen VM-Speicher, Zähler und Stack; weitere 26.934
+Verträge prüfen unter anderem binary32, NaNs, Rekursion und Speichergrenzen.
+Die Instruktionsadressentabelle wird einmal exakt groß angelegt. Kompakte
+native Pläne, unveränderte-C-geprüfte Patch-Plane-Kandidaten und der entfallene
+doppelte MD4-Durchlauf verkürzen den Mapboot.
+
+Ein begrenzter FIFO-Cache hält 64 unveränderliche Welt-Traces und 32
+Markfragment-Ergebnisse (höchstens 64 KiB pro Markeintrag). Temporäre,
+Inline- und transformierte Modelle bleiben auf dem Referenzpfad; Map-/BSP-
+und CM-Konfigurationswechsel invalidieren den Cache. Neue VM-Pointer werden
+auch bei Treffern geprüft, Ausgabebytes werden kopiert und unbenutzte
+Pufferenden erhalten. 42 Verträge und 360 tatsächliche Retail-Queries über
+120 Cgame-Frames vergleichen die Ergebnisse exakt. Wiederholte Traces sinken
+isoliert von 25,34 auf 1,35 µs, Marks von 121,34 auf 1,45 µs; dies sind
+Dienstzeiten, keine FPS. 251 weitere native Grenzverträge unter 16
+Rundungs-/FTZ-/DAZ-Modi sichern Kamera-/Achsen-/Plane-Konvertierung,
+MXCSR-Restaurierung und überlaufsichere Größenprüfungen einschließlich
+`INT_MAX`. Die dabei behobenen Randfälle konnten zuvor falsche Faces wählen
+oder einen nativen Speicherzugriff auslösen. Die 404/26.934/384/7.168
+bestehenden VM-, Float-, Sichtbarkeits- und MD3-Prüfungen bleiben grün.
+
+Der Weltcache hält für genau eine Map vollständige Materialtemplates und
+sammelt gewählte 128-Byte-Records sowie deren Metadaten in wiederverwendete
+Puffer. Face-, Material- und Dreiecksreihenfolge bleiben erhalten;
+Shaderupdates bearbeiten nur aktive Dreiecke. Statische Stufen werden einmal
+vorbereitet. Autosprites, Portalansichten und übergroße Full-Map-Caches
+verwenden weiterhin den ursprünglichen ausgewählten Builder. 51 Verträge
+und 288 Retail-Vergleiche auf q3dm1/q3ctf1 prüfen auch Nebel, dynamische
+Lichter, leere Maps/Auswahlen, Epochwechsel und die Fallbacks. Der native
+Gather prüft alle Spans und überlappende Daten-/Metadatenpuffer vor dem
+ersten Schreibzugriff. Dies beseitigt die großen Neubau-/GC-Spitzen beim
+Drehen, ohne die Sichtbarkeitsentscheidung zu verschärfen.
+
+Ein unabhängiger Vergleich mit direkten Original-GL-Aufrufen deckte außerdem
+einen falschen `SRC_ALPHA/ONE`-Alias auf: Additive Shader verwenden jetzt
+`ONE/ONE`. 240 vollständige GPU-Framebuffervergleiche prüfen die acht Aliase
+und 72 Faktorkombinationen mit partieller, gefilterter und null Alpha.
+448 Softwarevergleiche sichern dieselben Aliase; Shaderbatches verwerfen
+Alpha null nur bei explizitem Alpha-Test und erhalten korrekte Depthwrites.
+Die direkte Font-API behält ihren transparenten Zeichenpfad.
+
+Die MD3-Interpolation und Welttransformation verwenden gepackte native
+Puffer, geprüft über 7.168 exakte Vektoren. 160 zusätzliche native Aufrufe
+unter 16 Rundungs-/FTZ-/DAZ-Modi prüfen vom Aufrufer unabhängige Berechnung
+und exakte MXCSR-Restaurierung. Der Sichtbarkeitsfilter arbeitet
+bei einem Budget für die vollständige Karte auf gehaltenen Face-Daten;
+PVS-Ermittlung, begrenzte Budgets und Sortierregeln bleiben in MiniLang.
+384 Retail-q3dm1-Vergleiche erhalten Face-Reihenfolge und alle
+Ablehnungszähler. Es werden keine Dreiecke für eine höhere FPS-Zahl ausgelassen.
+Batchvertices werden gesammelt geschrieben; Himmel-Geometrie und
+Kameraachsen werden wiederverwendet. Die Himmelsschichten verwenden wieder
+die originale opake beziehungsweise `GL_ONE + GL_ONE`-Mischung, ohne
+Depthwrite; 27 Verträge, drei Retailkarten mit sechs Schichten und ein nativer
+Farbvergleich einschließlich gemeinsamer Dreieckskante bestehen. Der
+CPU-Rasterizer füllt gemeinsame Kanten halb offen, sodass additive Flächen
+dort nicht doppelt eingefärbt werden. Ein leerer Face-Vergleich greift nicht
+länger über eine absteigende `0..-1`-Schleife auf ein leeres Array zu.
+
+Der Mono-Loopcache wurde bisher fälschlich mit `for each` über ein
+`std.ds.list.List` gesucht. Dadurch wurde derselbe Sound immer wieder
+dekodiert und der Cache wuchs pro Frame. Eine direkte Handle-Tabelle hält
+nun genau einen Eintrag; 46 Audioverträge sichern auch später registrierte
+Handles ab. Bei sechs Retail-`fire1`-Loops über 20 Bilder sank der isolierte
+Test von 171 auf 16 ms und von 120 auf einen Cacheeintrag.
+Die Buildflags verwenden außerdem ein GC-Allokationsintervall von 256 MiB;
+das zuvor zu kleine Intervall erzeugte im integrierten Build dauernde
+Collections. Heapreserve und initialer Commit bleiben getrennte Einstellungen.
+
+Der Menüwechsel behält HWND und WGL-Kontext bei. Der Retail-HUD-Kopf erhält
+jetzt den Namens-/Skin-Katalog statt des Modelobjekt-Arrays; der neue
+Retailtest verlangt 117 texturierte Kopfdreiecke ohne Ersatzmaterial. Beim
+Laden wird kein künstlicher Vorwärtsbefehl mehr eingespeist.
+
+Ein längerer Integrationstest deckte einen weiteren wesentlichen Fehler auf:
+Die Szene sammelte Entities über mehrere Bilder, obwohl `RE_ClearScene` nur
+Subscenes desselben Frames trennt. Nach 1.022 Einreichungen verschwanden
+Waffe und 3D-HUD. Der Host setzt jetzt die Scene-, View- und 2D-Queues genau
+einmal pro Rendererframe zurück; UI-Ausgabe hängt anschließend an die
+Cgame-Subscenes an. Die neue Retail-Regression besteht über 120 Cgame-Frames
+mit 1.868 kumulierten Entities bei maximal 17 pro Frame, anschließend weiterhin
+16 Modell-Einreichungen und 1.617 texturierten Dreiecken. 240 UI-only
+Player-Setup-Frames mit 1.200 kumulierten Entities behalten ihre fünf Modelle.
+Die vorherige 120-Frame-Messung mit null Modellen ist deshalb keine gültige
+Performance-Abnahme und wird nicht als Beschleunigung gewertet.
+
+Konsolenbuchstaben werden in einem gehaltenen, geometrisch wachsenden
+Glyphbatch gesammelt statt mit zwei Einzelaufrufen pro Zeichen ausgegeben.
+Dabei gelten die Original-Charset-Mischung `SRC_ALPHA/ONE_MINUS_SRC_ALPHA`
+und Vertexfarben; der alte opake weiße Text war falsch. Vierzehn Layout-/
+Wachstumsverträge und ein exakter nativer Farb-, Alpha-, Schatten- und
+Depthvergleich prüfen diesen Pfad, zusätzlich zu den 38 bestehenden
+Displayverträgen und der Retail-Atlasprüfung.
+
+Die produktiven binary32-Grundoperationen verwenden SSE2 mit festgelegtem
+Rundungs- und Denormalmodus; der vollständige MXCSR-Zustand des Aufrufers
+wird restauriert. Der unabhängige MiniLang-Bitpfad bleibt Differentialreferenz.
+517.640 Ergebnisvergleiche und 583.296 ABI-/Kontrollaufrufe unter 32 Modi
+prüfen Werte, NaNs, Operandenreihenfolge und Ausnahmemasken. Zusätzlich bleiben
+101.445 Original-C-Zahlenvergleiche und die Pmove-, Shader-, View- und
+MD3-Gates grün. Dies beseitigt einen wesentlichen CPU-Hotpath, ohne die
+originale Floatsemantik durch gewöhnliche binary64-Arithmetik zu ersetzen.
+
+MD3-Dreiecke behalten ihre echten Meshvertex-IDs durch Geometrie und
+Shaderbatches. Identische Framepaare setzen wie `RB_SurfaceMesh` den Backlerp
+auf null. Seams, Entities und Surfaces bleiben getrennt; geänderte Indizes
+invalidieren den Stagecache. 16 neue Verträge vergleichen auch die nativen
+Replaybytes. In der 120-Frame-Retailprobe mit weiterhin fünf Modellen und
+524 Dreiecken sank die isolierte Stage-Auswertung von 1,042 auf 0,483 ms.
+Weitere 11 Ownership-Verträge sichern die Wiederverwendung eigener
+MD3-Null-UVs und frische feste Vertexfarbarrays bei Lichtwechseln ab;
+Inline-BSP-Daten und ältere Viewfarben werden dabei nicht überschrieben.
+Zwei vor jeder Stagecache-Abfrage erzeugte und anschließend stets
+überschriebene Arrays pro Corner entfallen. 216 relevante Verträge, vier
+Original-C-Datensätze und eine 120-Frame-Retailprobe erhalten sämtliche
+nativen Stagebytes. Ein unbedingtes zusätzliches `sleep(1)` nach jedem
+Frame entfällt ebenfalls; nur Arbeit unter einer Millisekunde gibt die
+verbleibende Zeit ab.
+Die FPS-Abnahme dieses Checkpoints misst Renderframes. Im produktiven
+Eingabepfad werden Usercmds bislang noch nur im 50-ms-Servertakt erzeugt;
+Maus-/Blickwinkel können deshalb trotz hoher Render-FPS nur mit 20 Hz
+fortschreiten. Ein gesonderter Clientframe-Abgleich ist in Arbeit und muss
+auch Delta-Winkel bei Teleports, lokale/Bot-Cmdringe und Catcher-Keyups
+prüfen. Die Render-Abnahme belegt keine abgeschlossene 1:1-Bedienung.
+Licht- und Nebelquellen werden außerdem exakt groß angelegt statt quadratisch
+konkateniert; leere Portalgeometrie und `RDF_NOWORLDMODEL` vermeiden einen
+unnötigen BSP-Durchlauf.
+
+Der Eingabehost reicht bereits normalisierte Quake-Tastencodes direkt an
+Bindings und UI weiter. Die zuvor doppelte Windows-Übersetzung machte zum
+Beispiel `w` zu einer Funktionstaste. Fokusverlust löst gehaltene Tasten und
+Angriff zuverlässig; inaktive Raw-/Legacy-Mausereignisse werden verworfen.
+Absolute Raw-Mauskoordinaten werden auf den richtigen Desktop umgerechnet
+und beim Geräte-/Moduswechsel neu verankert. Native Regressionen sowie
+256 Quake-Key-Abbildungen prüfen diese Pfade. Begrenzte Smoke-Läufe pumpen
+weiter Fensternachrichten, nehmen aber keine physische Spielsteuerung an;
+der unbeschränkte interaktive Spielstart verwendet normale Eingaben.
+
+Die Retailtests laufen in dieser Sitzung mit `--data-root build` und dem
+legal vorhandenen `build/baseq3/pak0.pk3` (479.493.658 Bytes, SHA-256
+`7ce8b3910620cd50a09e4f1100f426e8c6180f68895d589f80e6bd95af54bcae`).
+Die ursprünglichen 1.32b-QVMs werden aus dem unveränderten Originalbaum
+neu gebaut. Der alte lcc-Treiber konnte dabei absolute Pfade mit Leerzeichen
+nicht an seinen Präprozessor weiterreichen; relative Buildpfade beheben dies
+ohne Änderungen an den Originalquellen. Native Buildausgaben und identische
+MiniLang-Zielausgaben sind gegen parallele Schreibzugriffe gesperrt.
+
+Die folgenden Abschnitte dokumentieren ältere Zwischenstände. Insbesondere
+die dort genannte Beschränkung auf reine CPU-Rasterisierung ist durch den
+neuen Hardwarepfad überholt. Eine vollständige visuelle, Netzwerk-, Audio-
+und Langzeitabnahme sowie das Ziel mehrerer hundert FPS bleiben gesonderte
+Anforderungen; bestandene Teiltests ersetzen diese Abnahmen nicht.
+Gewöhnliche shaderabhängige Front-/Back-Cullmodi samt Spiegelumkehr werden
+im gehaltenen Batch-ABI noch nicht bis OpenGL weitergereicht. BSP-/Modell-
+Frustumculling und Stencil-Cullzustände funktionieren; dies ist eine konkrete
+verbleibende Renderer-Paritätslücke.
+Die UI-only-Player-Preview hält ihre Retail-3D-Submissions jetzt zuverlässig;
+der Menühost gibt bislang aber nur deren 2D-Befehle sichtbar aus. Der
+Lifecycle-Test belegt somit keine vollständige sichtbare 3D-Menü-Parität.
 
 ## Produktiver Frame-Hotpath vom 4. November 2026
 

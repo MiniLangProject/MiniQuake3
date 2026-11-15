@@ -45,7 +45,7 @@ function clipSceneVertices(vertices,normal,dist)
   return output
 end function
 function sceneTriangle(source,a,b,c)
-  return sceneGeometry.Triangle([a.position,b.position,c.position],[a.texCoord,b.texCoord,c.texCoord],[a.normal,b.normal,c.normal],[a.color,b.color,c.color],source.entityColor,source.entityTexCoord,source.shaderTime,source.modelHandle,source.customSkin,source.shaderHandle,source.shaderName,source.surfaceName,source.entityIndex,source.surfaceIndex,source.renderfx,[a.lightmapCoord,b.lightmapCoord,c.lightmapCoord],source.lightmapIndex,source.fogIndex,source.dynamicLight,source.dynamicLightOrigin,source.dynamicLightAxis,source.dynamicLightBounds)
+  return sceneGeometry.Triangle([a.position,b.position,c.position],[a.texCoord,b.texCoord,c.texCoord],[a.normal,b.normal,c.normal],[a.color,b.color,c.color],source.entityColor,source.entityTexCoord,source.shaderTime,source.modelHandle,source.customSkin,source.shaderHandle,source.shaderName,source.surfaceName,source.entityIndex,source.surfaceIndex,source.renderfx,[a.lightmapCoord,b.lightmapCoord,c.lightmapCoord],source.lightmapIndex,source.fogIndex,source.dynamicLight,source.dynamicLightOrigin,source.dynamicLightAxis,source.dynamicLightBounds,void)
 end function
 function clipScene(source,normal,dist)
   if source==void or source.triangles==void or normal==void or len(normal)!=3 then return fail("scene geometry and plane are required") end if

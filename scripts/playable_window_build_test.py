@@ -14,13 +14,16 @@ SOURCE = ROOT / "native" / "playable_win32.c"
 TEST = ROOT / "tests" / "playable_window_lifecycle.c"
 WORLD_BATCH_TEST = ROOT / "tests" / "playable_world_batch_native.c"
 RASTER_STATE_TEST = ROOT / "tests" / "playable_window_raster_state_native.c"
+TRIANGLE_FILL_TEST = ROOT / "tests" / "playable_triangle_fill_native.c"
 INPUT_EVENTS_TEST = ROOT / "tests" / "playable_window_input_events_native.c"
+RAW_INPUT_TEST = ROOT / "tests" / "playable_raw_input_native.c"
 WNDPROC_TEST = ROOT / "tests" / "playable_window_wndproc_native.c"
 WIN_SHARED_TEST = ROOT / "tests" / "playable_window_win_shared_native.c"
 GL_TEST = ROOT / "tests" / "playable_window_gl_native.c"
 RASTER_EXPORTS = (
     "playable_window_set_title_utf8",
     "playable_window_next_input_event",
+    "playable_window_input_key_down",
     "playable_window_input_init",
     "playable_window_input_activate",
     "playable_window_input_frame",
@@ -97,7 +100,9 @@ def main() -> int:
     exe = OUT / "playable_window_lifecycle.exe"
     world_batch_exe = OUT / "playable_world_batch_native.exe"
     raster_state_exe = OUT / "playable_window_raster_state_native.exe"
+    triangle_fill_exe = OUT / "playable_triangle_fill_native.exe"
     input_events_exe = OUT / "playable_window_input_events_native.exe"
+    raw_input_exe = OUT / "playable_raw_input_native.exe"
     wndproc_exe = OUT / "playable_window_wndproc_native.exe"
     win_shared_exe = OUT / "playable_window_win_shared_native.exe"
     gl_exe = OUT / "playable_window_gl_native.exe"
@@ -120,9 +125,15 @@ def main() -> int:
     run([compiler, "/nologo", "/W4", "/WX", "/O2", str(RASTER_STATE_TEST),
          "user32.lib", "gdi32.lib", "winmm.lib", f"/Fe:{raster_state_exe}"], env)
     run([str(raster_state_exe)], env)
+    run([compiler, "/nologo", "/W4", "/WX", "/O2", str(TRIANGLE_FILL_TEST),
+         "user32.lib", "gdi32.lib", "winmm.lib", f"/Fe:{triangle_fill_exe}"], env)
+    run([str(triangle_fill_exe)], env)
     run([compiler, "/nologo", "/W4", "/WX", "/O2", str(INPUT_EVENTS_TEST),
          "user32.lib", "gdi32.lib", "winmm.lib", f"/Fe:{input_events_exe}"], env)
     run([str(input_events_exe)], env)
+    run([compiler, "/nologo", "/W4", "/WX", "/O2", str(RAW_INPUT_TEST),
+         "user32.lib", "gdi32.lib", "winmm.lib", f"/Fe:{raw_input_exe}"], env)
+    run([str(raw_input_exe)], env)
     run([compiler, "/nologo", "/W4", "/WX", "/O2", str(WNDPROC_TEST),
          "user32.lib", "gdi32.lib", "winmm.lib", f"/Fe:{wndproc_exe}"], env)
     run([str(wndproc_exe)], env)

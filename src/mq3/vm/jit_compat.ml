@@ -86,13 +86,13 @@ function makeInteger(value) return n.i32(value) end function
 function VM_Compile(image,callback,architecture)
   if architecture!="x86" and architecture!="ppc" and architecture!="ppc_new" and architecture!="portable" then return error(7975,"unsupported JIT architecture") end if
   machine=interpreter.load(image,callback)
-  pointers=[]
-  for each address in machine.addresses pointers=pointers+[address] end for
+  pointers=array(len(machine.addresses),0)
+  if len(pointers)>0 then copyArray(pointers,0,machine.addresses,0,len(pointers)) end if
   return Compiled(machine,architecture,pointers,len(machine.code),len(pointers)*4,false)
 end function
 function VM_CallCompiled(compiled,args)
   if compiled==void or compiled.machine==void then return error(7975,"compiled QVM is missing") end if
-  return interpreter.call(compiled.machine,args)
+  return interpreter.callFast(compiled.machine,args)
 end function
 function callAsmCall(compiled,args) return VM_CallCompiled(compiled,args) end function
 function AsmCall(compiled,args) return VM_CallCompiled(compiled,args) end function

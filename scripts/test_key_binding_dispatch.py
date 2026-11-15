@@ -25,13 +25,13 @@ def main() -> None:
         raise RuntimeError("key binding-dispatch mismatch\nC:\n" + native + "MiniLang:\n" + mini)
     subprocess.run([sys.executable, ROOT / "scripts/build.py", "--source", "tests/key_binding_dispatch_contracts.ml", "--output", "key_binding_dispatch_contracts.exe"], cwd=ROOT, check=True)
     contracts = run([ROOT / "build/key_binding_dispatch_contracts.exe"], ROOT / "build", log=out / "contracts.log").strip()
-    if contracts != "PASS: 14 key binding-dispatch contracts":
+    if contracts != "PASS: 22 key binding-dispatch contracts":
         raise RuntimeError(contracts)
     dispatch = ROOT / "src/mq3/client/key_binding_dispatch.ml"
     events = ROOT / "src/mq3/client/input_command_events.ml"
     preview = ROOT / "src/mq3/client/qvm_preview_app.ml"
     match = ROOT / "src/mq3/engine/local_qvm_match.ml"
-    for path, anchors in [(events, ["eventBindingDispatch.commands("]), (preview, ["timestampedInput.applyBound(", "match.keyBinding(", "match.queueInputCommand("]), (match, ["function keyBinding(", "function setKeyBinding(", "function queueInputCommand("])]:
+    for path, anchors in [(events, ["eventBindingDispatch.commands(", "function applyBoundQuake(", "function applyBound("]), (preview, ["timestampedInput.applyBoundQuake(", "match.keyBinding(", "match.queueInputCommand("]), (match, ["function keyBinding(", "function setKeyBinding(", "function queueInputCommand("])]:
         text = path.read_text(encoding="utf-8")
         for anchor in anchors:
             if anchor not in text:
@@ -41,7 +41,7 @@ def main() -> None:
     report = {
         "passed": True,
         "records": len(native.splitlines()),
-        "contracts": 14,
+        "contracts": 22,
         "function": "CL_KeyEvent / CL_AddKeyUpCommands binding expansion",
         "scope": "Timestamped +/- commands, semicolon compounds, down-only commands, native-to-Quake key translation and all gameplay movement/button targets are driven by the shared binding state writable by ui.qvm.",
         "remaining": "Console/message catcher line editing and config.cfg binding loading remain separate client work.",

@@ -1,10 +1,13 @@
 """Full qcommon/msg.c symbol, differential, contract and retail gate."""
 from __future__ import annotations
 
+import argparse
 import json
+import os
 import re
 import subprocess
 import sys
+from pathlib import Path
 
 from inventory import sha
 from toolchain import ROOT, msvc_env, run
@@ -54,6 +57,10 @@ def number(pattern: str, text: str) -> int:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--data-root", type=Path, default=Path(os.environ.get("MQ3_DATA_ROOT", "D:/Quake3")))
+    args = parser.parse_args()
+    data_root = args.data_root.resolve()
     original = ROOT / "Quake-III-Arena-original-source/code/qcommon/msg.c"
     module = ROOT / "src/mq3/qcommon/msg.ml"
     source = module.read_text(encoding="utf-8")
@@ -77,7 +84,7 @@ def main() -> None:
     contracts = mini("tests/msg_complete_contracts.ml", "msg_complete_contracts.exe").strip()
     if contracts != "PASS: 23 complete msg contracts":
         raise RuntimeError(contracts)
-    retail = mini("tests/msg_retail_probe.ml", "msg_retail_probe.exe", "D:/Quake3").strip()
+    retail = mini("tests/msg_retail_probe.ml", "msg_retail_probe.exe", str(data_root)).strip()
     if not retail.startswith("PASS: retail cgame.qvm "):
         raise RuntimeError(retail)
 
@@ -109,6 +116,7 @@ def main() -> None:
         "native_contracts": 23,
         "inherited_contracts": inherited_contracts,
         "retail": retail,
+        "data_root": str(data_root),
         "scope": "Complete msg.c facade over protocol-68 primitive/Huffman, scalar/key/usercmd delta, entity/playerstate delta and diagnostics paths.",
         "memory_boundary": "MiniLang messages own bounded byte arrays and immutable pretrained Huffman trees instead of exposing C pointer aliasing or process-global mutable msgHuff storage.",
         "sources": {str(path.relative_to(ROOT)).replace("\\", "/"): sha(path) for path in files},

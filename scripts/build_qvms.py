@@ -44,9 +44,14 @@ def main():
             path=source / (line+".c")
             if not path.exists(): path=original / "code/game" / (line+".c")
             assembly=folder / (line+".asm")
-            run([lcc,"-DQ3_VM","-S","-Wf-target=bytecode","-Wf-g","-I"+str(source),
-                 "-I"+str(original / "code/game"),"-I"+str(original / "code/cgame"),
-                 "-I"+str(original / "code/ui"),"-o",assembly,path],
+            # The original lcc driver builds its cpp command without quoting
+            # arguments. Keep every path it forwards relative to the output
+            # directory, so a checkout in e.g. "Anwendungsentwicklung mit KI"
+            # builds unchanged original sources without a junction or copy.
+            relative=lambda value: os.path.relpath(value,folder)
+            run([lcc,"-DQ3_VM","-S","-Wf-target=bytecode","-Wf-g","-I"+relative(source),
+                 "-I"+relative(original / "code/game"),"-I"+relative(original / "code/cgame"),
+                 "-I"+relative(original / "code/ui"),"-o",assembly.name,relative(path)],
                  folder,compiler_env,folder / (line+".log"))
             objects.append(assembly)
         run([output / "q3asm.exe","-o",output / module,*objects],folder,log=folder / "assemble.log")

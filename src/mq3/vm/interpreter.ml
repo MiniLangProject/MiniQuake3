@@ -4,6 +4,7 @@
 package mq3.vm.interpreter
 import mq3.compat.numeric as n
 import mq3.format.qfiles as qfiles
+import mq3.vm.native_exec as nativeExec
 
 struct VM
   code
@@ -19,6 +20,7 @@ struct VM
   steps
   limit
   breaks
+  nativePlan
 end struct
 
 function fail(message)
@@ -126,7 +128,16 @@ function load(image, callback)
   end for
   data = bytes(size, 0)
   copyBytes(data, 0, image, dataOffset, dataLength + litLength)
-  return VM(code, addresses, starts, widths, needs, data, size - 1, size, size - 65536, callback, 0, 10000000, 0)
+  plan=nativeExec.prepare(image);if plan is error then return plan end if
+  return VM(code, addresses, starts, widths, needs, data, size - 1, size, size - 65536, callback, 0, 10000000, 0,plan)
+end function
+
+// Keep the MiniLang interpreter as the executable reference implementation.
+// Production dispatch runs the same validated plan in bounded native code and
+// yields back to MiniLang at each trap without crossing a callback ABI.
+function callFast(vm,args)
+  if vm.nativePlan==void then return call(vm,args) end if
+  return nativeExec.call(vm,args)
 end function
 
 function targetAddress(vm, target)

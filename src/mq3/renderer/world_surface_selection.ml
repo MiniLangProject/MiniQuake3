@@ -5,8 +5,10 @@ package mq3.renderer.world_surface_selection
 import mq3.compat.numeric as n
 import mq3.client.playable_viewer as viewer
 import mq3.renderer.bsp_render_data as render
+import mq3.shared.math as qmath
 import std.ds.list as lists
 import std.sort as sorting
+import mq3.renderer.native_world_selection as nativeWorld
 
 const NODE_STRIDE=36
 const PLANE_STRIDE=16
@@ -21,7 +23,8 @@ struct SelectionConfig width height horizontalFov nearDistance farDistance trian
 struct Candidate faceIndex triangleCount distanceSquared importance end struct
 struct Selection faceIndexes candidateCount selectedSurfaceCount estimatedTriangleCount pvsUsed cameraLeaf cameraCluster rejectedPvs rejectedFrustum rejectedBackface rejectedDistance rejectedBudget end struct
 struct PreparedWorld selection renderData end struct
-struct WorldCache map faceCenters faceRadii faceTriangleCounts faceKinds faceNormals faceTextureIndexes twoSidedTextureFlags trianglesByFace patchError totalTriangleCount pvsFaces pvsRejected pvsClusterCount end struct
+struct Frustum slopeX slopeY radiusScaleX radiusScaleY end struct
+struct WorldCache map faceCenters faceRadii faceTriangleCounts faceKinds faceNormals faceTextureIndexes twoSidedTextureFlags trianglesByFace patchError totalTriangleCount pvsFaces pvsRejected pvsClusterCount nativeFaces nativeVisible nativeOutput nativePrevious nativeSelected end struct
 
 function fail(text) return error(7490,"World surface selection: "+text) end function
 function validMap(map)
@@ -90,12 +93,26 @@ function faceBounds(map,faceOffset)
   return [center,n.fsqrt(radiusSquared)]
 end function
 
-function visibleInFrustum(local,radius,cfg)
+function prepareFrustum(cfg)
+  focal=viewer.focalLength(cfg.width,cfg.horizontalFov);if focal is error then return focal end if
+  sx=cfg.width/(2.0*focal);sy=cfg.height/(2.0*focal)
+  return Frustum(sx,sy,n.fsqrt(1.0+sx*sx),n.fsqrt(1.0+sy*sy))
+end function
+function visibleInPreparedFrustum(local,radius,cfg,frustum)
   if local[2]+radius<cfg.nearDistance or local[2]-radius>cfg.farDistance then return false end if
-  focal=viewer.focalLength(cfg.width,cfg.horizontalFov);if focal is error then return false end if
-  horizontal=local[2]*cfg.width/(2.0*focal)+radius
-  vertical=local[2]*cfg.height/(2.0*focal)+radius
+  // x +/- z*tan(fov/2) is an unnormalised plane equation. Expand its
+  // bound by radius*|normal|; using radius alone drops visible wall edges.
+  horizontal=local[2]*frustum.slopeX+radius*frustum.radiusScaleX
+  vertical=local[2]*frustum.slopeY+radius*frustum.radiusScaleY
   return local[0]>=0.0-horizontal and local[0]<=horizontal and local[1]>=0.0-vertical and local[1]<=vertical
+end function
+function visibleInFrustum(local,radius,cfg)
+  frustum=prepareFrustum(cfg);if frustum is error then return false end if
+  return visibleInPreparedFrustum(local,radius,cfg,frustum)
+end function
+function viewPointAxes(camera,point,axes)
+  delta=[n.fsub(point[0],camera.position[0]),n.fsub(point[1],camera.position[1]),n.fsub(point[2],camera.position[2])]
+  return [qmath.DotProduct(delta,axes[1]),qmath.DotProduct(delta,axes[2]),qmath.DotProduct(delta,axes[0])]
 end function
 function before(a,b)
   if a.importance<b.importance then return true end if
@@ -106,12 +123,14 @@ function buildCache(map,patchError)
   if not validMap(map) then return fail("invalid BSP object") end if
   if patchError<=0.0 then return fail("non-positive patch error") end if
   centers=array(map.counts[13],void);radii=array(map.counts[13],0.0);counts=array(map.counts[13],0);kinds=array(map.counts[13],0);normals=array(map.counts[13],void);textureIndexes=array(map.counts[13],-1);byFace=array(map.counts[13],void)
+  nativeFaces=bytes(map.counts[13]*72,0)
   for faceIndex=0 to map.counts[13]-1
     byFace[faceIndex]=[];offset=map.offsets[13]+faceIndex*FACE_STRIDE;textureIndexes[faceIndex]=i32(map,offset);kind=i32(map,offset+8);kinds[faceIndex]=kind
     if kind==render.MST_PLANAR or kind==render.MST_PATCH or kind==render.MST_TRIANGLE_SOUP then
       bounds=faceBounds(map,offset);if bounds is error then return bounds end if;centers[faceIndex]=bounds[0];radii[faceIndex]=bounds[1]
       amount=faceTriangleCount(map,offset,patchError);if amount is error then return amount end if;counts[faceIndex]=amount
       normals[faceIndex]=[f32(map,offset+84),f32(map,offset+88),f32(map,offset+92)]
+      stored=nativeWorld.store(nativeFaces,faceIndex,kind,amount,centers[faceIndex],radii[faceIndex],normals[faceIndex]);if stored!=1 then return fail("native face cache rejected input") end if
       // Extract each face into its final bucket.  The former whole-map
       // extraction repeatedly appended to one ever-growing immutable array,
       // turning startup into quadratic copying on retail maps.
@@ -122,12 +141,14 @@ function buildCache(map,patchError)
   totalTriangles=0;for each count in counts totalTriangles=totalTriangles+count end for
   clusterCount=0;if map.lengths[16]>=8 then clusterCount=i32(map,map.offsets[16]);if clusterCount is error or clusterCount<0 then return fail("invalid visibility cluster count") end if end if
   // One extra slot caches the no-vis fallback shared by every leaf.
-  return WorldCache(map,centers,radii,counts,kinds,normals,textureIndexes,array(map.counts[1],false),byFace,n.f32(patchError),totalTriangles,array(clusterCount+1,void),array(clusterCount+1,0),clusterCount)
+  return WorldCache(map,centers,radii,counts,kinds,normals,textureIndexes,array(map.counts[1],false),byFace,n.f32(patchError),totalTriangles,array(clusterCount+1,void),array(clusterCount+1,0),clusterCount,nativeFaces,array(clusterCount+1,void),bytes(32+map.counts[13]*4,0),bytes(32+map.counts[13]*4,0),[])
 end function
 
 function setTwoSidedTextures(cache,flags)
   if cache==void or flags==void or len(flags)!=cache.map.counts[1] then return fail("two-sided texture table does not match BSP shaders") end if
-  cache.twoSidedTextureFlags=flags;return cache
+  cache.twoSidedTextureFlags=flags
+  if cache.nativeFaces!=void and len(cache.faceTextureIndexes)>0 then for index=0 to len(cache.faceTextureIndexes)-1 texture=cache.faceTextureIndexes[index];enabled=false;if texture>=0 and texture<len(flags) then enabled=flags[texture] end if;stored=nativeWorld.twoSided(cache.nativeFaces,index,enabled);if stored!=1 then return fail("native face flags rejected input") end if end for end if
+  return cache
 end function
 
 function visibleFaces(map,cameraCluster,pvsUsed)
@@ -162,15 +183,32 @@ function chooseCorePvs(map,camera,pvsOrigin,cfg,cache)
   cameraCluster=i32(map,map.offsets[4]+leaf*LEAF_STRIDE);if cameraCluster is error then return cameraCluster end if
   pvsUsed=map.lengths[16]>0 and cameraCluster>=0
   visible=cachedVisibleFaces(cache,map,cameraCluster,pvsUsed);if visible is error then return visible end if;faceIndexes=visible[0];rejectedPvs=visible[1]
+  // Camera axes and trigonometric frustum terms are invariant across all
+  // candidate faces. A QVM refdef can supply its exact rolled camera axes.
+  axes=cfg.runtime;if axes==void then axes=viewer.cameraBasis(camera) end if
+  frustum=prepareFrustum(cfg);if frustum is error then return frustum end if
+  // A budget covering the complete map cannot drop a candidate. Keep exact
+  // PVS discovery/order in MiniLang and filter the retained numeric records in
+  // one native pass; constrained/zero budgets retain the reference sort path.
+  if cache!=void and cache.nativeFaces!=void and cfg.triangleBudget>=cache.totalTriangleCount then
+    slot=cache.pvsClusterCount;if pvsUsed then slot=cameraCluster end if
+    packedVisible=void
+    if slot>=0 and slot<len(cache.nativeVisible) then packedVisible=cache.nativeVisible[slot] end if
+    if packedVisible==void then packedVisible=nativeWorld.packIndexes(faceIndexes);if slot>=0 and slot<len(cache.nativeVisible) then cache.nativeVisible[slot]=packedVisible end if end if
+    filtered=nativeWorld.filter(cache,packedVisible,camera,cfg,axes,frustum);if filtered!=1 then return fail("native face filter rejected input") end if
+    data=cache.nativeOutput;selectedCount=n.readI32(data,4)
+    if n.readI32(data,24)==0 then selected=array(selectedCount,0);if selectedCount>0 then for index=0 to selectedCount-1 selected[index]=n.readI32(data,32+index*4) end for end if;cache.nativeSelected=selected end if
+    return Selection(cache.nativeSelected,n.readI32(data,0),selectedCount,n.readI32(data,8),pvsUsed,leaf,cameraCluster,rejectedPvs,n.readI32(data,12),n.readI32(data,16),n.readI32(data,20),0)
+  end if
   candidateList=lists.List.withCapacity(len(faceIndexes));rejectedFrustum=0;rejectedBackface=0;rejectedDistance=0
   for each faceIndex in faceIndexes
     faceOffset=map.offsets[13]+faceIndex*FACE_STRIDE;kind=i32(map,faceOffset+8)
     if kind==render.MST_PLANAR or kind==render.MST_PATCH or kind==render.MST_TRIANGLE_SOUP then
       center=[0.0,0.0,0.0];radius=0.0
       if cache==void then bounds=faceBounds(map,faceOffset);if bounds is error then return bounds end if;center=bounds[0];radius=bounds[1] else center=cache.faceCenters[faceIndex];radius=cache.faceRadii[faceIndex] end if
-      local=viewer.viewPoint(camera,center);distanceSquared=local[0]*local[0]+local[1]*local[1]+local[2]*local[2]
+      local=viewPointAxes(camera,center,axes);distanceSquared=local[0]*local[0]+local[1]*local[1]+local[2]*local[2]
       if distanceSquared>(cfg.farDistance+radius)*(cfg.farDistance+radius) then rejectedDistance=rejectedDistance+1 else
-        if not visibleInFrustum(local,radius,cfg) then rejectedFrustum=rejectedFrustum+1 else
+        if not visibleInPreparedFrustum(local,radius,cfg,frustum) then rejectedFrustum=rejectedFrustum+1 else
           back=false;twoSided=false
           if cache!=void then textureIndex=cache.faceTextureIndexes[faceIndex];if textureIndex>=0 and textureIndex<len(cache.twoSidedTextureFlags) then twoSided=cache.twoSidedTextureFlags[textureIndex] end if end if
           if cfg.backfaceCull and kind==render.MST_PLANAR and not twoSided then
@@ -248,6 +286,7 @@ end function
 // only necessary when the selected BSP face set actually changes.
 function sameFaces(left,right)
   if left==void or right==void or len(left)!=len(right) then return false end if
+  if len(left)==0 then return true end if
   for index=0 to len(left)-1 if left[index]!=right[index] then return false end if end for
   return true
 end function

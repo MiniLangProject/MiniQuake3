@@ -15,8 +15,13 @@ function main(args)
   for each line in names
     name = strings.trim(line)
     if len(name) > 0 then
-      state = vm.load(fs.readAllBytes(name), syscall)
+      image=fs.readAllBytes(name);state = vm.load(image, syscall)
       result = vm.call(state, [7,11,13,17,19,23,29,31,37,41])
+      nativeState=vm.load(image,syscall);nativeResult=vm.callFast(nativeState,[7,11,13,17,19,23,29,31,37,41])
+      if nativeResult!=result or nativeState.data!=state.data or nativeState.steps!=state.steps or nativeState.breaks!=state.breaks or nativeState.programStack!=state.programStack then
+        print "FAIL native QVM parity "+name+" native="+str(nativeResult)+" portable="+str(result)
+        return 3
+      end if
       wanted = n.readI32(expected, index * 68)
       if result != wanted then
         print "FAIL " + name + " got " + str(result) + " expected " + str(wanted)

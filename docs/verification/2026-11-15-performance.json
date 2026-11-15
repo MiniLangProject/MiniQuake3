@@ -1,0 +1,530 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "scope": "Windows hardware-renderer, clipping, QVM and retained-world progress; not full-game parity or multiplayer/long-term acceptance",
+  "host": {
+    "cpu": "AMD Ryzen 9 9900X (12 cores / 24 threads)",
+    "gpu": "NVIDIA GeForce RTX 5080",
+    "resolution": [
+      1280,
+      720
+    ]
+  },
+  "conditions": "Fresh game processes; existing OS/driver caches. Own verifier processes suspended during FPS acceptance and paired rotation timings, then resumed. No capture, trace or profiler during FPS acceptance. Bounded smoke ignores physical game inputs. The functional software smoke may run concurrently and is not a performance acceptance.",
+  "data": {
+    "path": "build/baseq3/pak0.pk3",
+    "sha256": "7ce8b3910620cd50a09e4f1100f426e8c6180f68895d589f80e6bd95af54bcae"
+  },
+  "qvms": [
+    {
+      "name": "qagame.qvm",
+      "sha256": "220b5cea61ff2159d0a6d9a88f6df21f86fa340ac82f474db97b55a55651de82",
+      "size": 469796
+    },
+    {
+      "name": "cgame.qvm",
+      "sha256": "2df34638c131d1bf2796231df8874112e049f5c5b3a42eb4205294fd323b0cef",
+      "size": 325220
+    },
+    {
+      "name": "ui.qvm",
+      "sha256": "3a51af40cd51ceda356c948097ba5e8c614d699a6e69f6270d1382931c49b496",
+      "size": 278292
+    }
+  ],
+  "six_full_match": {
+    "passed": true,
+    "binary_sha256": "b8fd05977d64959752aebf5356391b513e2d2a37b862a7f95d00fbd1d2cc471b",
+    "renderer": "hardware",
+    "map": "q3dm1",
+    "frames": 1000,
+    "wall_seconds": 8.009560799924657,
+    "startup_ms": 2588.0,
+    "frame_ms": 4.93,
+    "capture_enabled": false,
+    "diagnostic_only": false,
+    "profile_files": {},
+    "native": {
+      "playable_window.dll": "3a51ce7f7d4d6eea5b2a4fa6c16c1bcec79a63690f78d9785a61535dc0306220",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088",
+      "playable_ambient.dll": "ab306299dde70d1c33086248362eb4211f04bf334c623926f6a3affe1a8e6c43"
+    },
+    "scene": {
+      "views": 3,
+      "models": 5,
+      "triangles": 524
+    },
+    "loop": {
+      "elapsed_ms": 4936.0,
+      "fps": 202.59319286872,
+      "work_p50_ms": 4.0,
+      "work_p95_ms": 7.0,
+      "work_p99_ms": 9.0,
+      "work_max_ms": 155.0
+    },
+    "acceptance": {
+      "min_fps": 200.0,
+      "max_work_p95_ms": 8.0,
+      "passed": true
+    }
+  },
+  "seven_full_match": {
+    "passed": true,
+    "binary_sha256": "361e1648a35f8110d56bc1f4a773893c23fae534afaf624fde8774808e89e840",
+    "renderer": "hardware",
+    "map": "q3dm1",
+    "frames": 5000,
+    "wall_seconds": 25.941336800111458,
+    "startup_ms": 2615.0,
+    "frame_ms": 4.5672,
+    "capture_enabled": false,
+    "diagnostic_only": false,
+    "profile_files": {},
+    "native": {
+      "playable_window.dll": "3a51ce7f7d4d6eea5b2a4fa6c16c1bcec79a63690f78d9785a61535dc0306220",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088",
+      "playable_ambient.dll": "ab306299dde70d1c33086248362eb4211f04bf334c623926f6a3affe1a8e6c43"
+    },
+    "scene": {
+      "views": 3,
+      "models": 5,
+      "triangles": 524
+    },
+    "loop": {
+      "elapsed_ms": 22866.0,
+      "fps": 218.665267208957,
+      "work_p50_ms": 4.0,
+      "work_p95_ms": 6.0,
+      "work_p99_ms": 8.0,
+      "work_max_ms": 167.0
+    },
+    "acceptance": {
+      "min_fps": 200.0,
+      "max_work_p95_ms": 8.0,
+      "passed": true
+    }
+  },
+  "rotation_reference": {
+    "passed": true,
+    "scope": "renderer-only q3dm1 world rotation; no QVM, models, gameplay or desktop input",
+    "renderer": "hardware",
+    "map": "q3dm1",
+    "frames": 360,
+    "world_batch_path": "reference",
+    "cache_selections": 0,
+    "cache_fallbacks": 0,
+    "cache_static_primes": 0,
+    "phase_scope": "retained world_build_ms includes record gather, source prefixes and selected fog/dlight attachment; reference reports attachment separately",
+    "camera_origin": [
+      1024,
+      1000,
+      50.125
+    ],
+    "yaw_start": 90,
+    "yaw_step": 1,
+    "face_changes": 250,
+    "pvs_cluster_changes": 0,
+    "pvs_scope": "fixed origin reuses one PVS cluster; rotation stresses frustum/faceset rebuilds",
+    "budget_dropped": 0,
+    "retained_triangles": 757423,
+    "startup_ms": 1958.6276,
+    "loop_ms": 5722.9351,
+    "renderer_probe_fps": 62.90478464450873,
+    "wall_seconds": 7.858465499943122,
+    "capture_enabled": false,
+    "swap_interval_requested": 0,
+    "frame_ms": {
+      "mean": 15.895137222222225,
+      "min": 0.2947,
+      "p50": 1.3983,
+      "p95": 62.4412,
+      "p99": 182.0091,
+      "max": 558.0509
+    },
+    "phases": {
+      "view_selection_ms": {
+        "mean": 0.1197513888888888,
+        "min": 0.0157,
+        "p50": 0.0502,
+        "p95": 0.2773,
+        "p99": 1.1466,
+        "max": 3.9995
+      },
+      "world_build_ms": {
+        "mean": 7.06767638888889,
+        "min": 0.0,
+        "p50": 0.5037,
+        "p95": 23.9895,
+        "p99": 71.0984,
+        "max": 556.9103
+      },
+      "effects_build_ms": {
+        "mean": 0.3444588888888889,
+        "min": 0.0,
+        "p50": 0.0148,
+        "p95": 0.7343,
+        "p99": 8.9249,
+        "max": 27.4474
+      },
+      "render_present_ms": {
+        "mean": 8.36325055555555,
+        "min": 0.1776,
+        "p50": 0.7451,
+        "p95": 26.0254,
+        "p99": 109.5341,
+        "max": 229.7601
+      }
+    },
+    "selected_triangles_per_frame": {
+      "min": 267,
+      "max": 6085
+    },
+    "binary_sha256": "8a8b910b1c78b0c2da102a291f2b7adf417963b3933437885c3108094f4d2d7d",
+    "pak_sha256": "7ce8b3910620cd50a09e4f1100f426e8c6180f68895d589f80e6bd95af54bcae",
+    "native": {
+      "playable_window.dll": "3a51ce7f7d4d6eea5b2a4fa6c16c1bcec79a63690f78d9785a61535dc0306220",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088"
+    }
+  },
+  "rotation_retained": {
+    "passed": true,
+    "scope": "renderer-only q3dm1 world rotation; no QVM, models, gameplay or desktop input",
+    "renderer": "hardware",
+    "map": "q3dm1",
+    "frames": 360,
+    "world_batch_path": "retained",
+    "cache_selections": 251,
+    "cache_fallbacks": 0,
+    "cache_static_primes": 28,
+    "phase_scope": "retained world_build_ms includes record gather, source prefixes and selected fog/dlight attachment; reference reports attachment separately",
+    "camera_origin": [
+      1024,
+      1000,
+      50.125
+    ],
+    "yaw_start": 90,
+    "yaw_step": 1,
+    "face_changes": 250,
+    "pvs_cluster_changes": 0,
+    "pvs_scope": "fixed origin reuses one PVS cluster; rotation stresses frustum/faceset rebuilds",
+    "budget_dropped": 0,
+    "retained_triangles": 757423,
+    "startup_ms": 2065.7749,
+    "loop_ms": 603.8442,
+    "renderer_probe_fps": 596.180272990947,
+    "wall_seconds": 2.8012069000396878,
+    "capture_enabled": false,
+    "swap_interval_requested": 0,
+    "frame_ms": {
+      "mean": 1.6767158333333327,
+      "min": 0.2671,
+      "p50": 0.5206,
+      "p95": 4.3577,
+      "p99": 4.9025,
+      "max": 38.3304
+    },
+    "phases": {
+      "view_selection_ms": {
+        "mean": 0.03669361111111113,
+        "min": 0.0142,
+        "p50": 0.0228,
+        "p95": 0.0807,
+        "p99": 0.1487,
+        "max": 0.4732
+      },
+      "world_build_ms": {
+        "mean": 0.19642527777777766,
+        "min": 0.0,
+        "p50": 0.0313,
+        "p95": 0.7814,
+        "p99": 0.888,
+        "max": 1.2821
+      },
+      "effects_build_ms": {
+        "mean": 0.0,
+        "min": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "render_present_ms": {
+        "mean": 1.443596944444444,
+        "min": 0.2232,
+        "p50": 0.4635,
+        "p95": 3.7843,
+        "p99": 4.3684,
+        "max": 37.569
+      }
+    },
+    "selected_triangles_per_frame": {
+      "min": 267,
+      "max": 6085
+    },
+    "binary_sha256": "8a8b910b1c78b0c2da102a291f2b7adf417963b3933437885c3108094f4d2d7d",
+    "pak_sha256": "7ce8b3910620cd50a09e4f1100f426e8c6180f68895d589f80e6bd95af54bcae",
+    "native": {
+      "playable_window.dll": "3a51ce7f7d4d6eea5b2a4fa6c16c1bcec79a63690f78d9785a61535dc0306220",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088"
+    }
+  },
+  "seven_rotation_reference": {
+    "passed": true,
+    "scope": "renderer-only q3dm1 world rotation; no QVM, models, gameplay or desktop input",
+    "renderer": "hardware",
+    "map": "q3dm1",
+    "frames": 360,
+    "world_batch_path": "reference",
+    "cache_selections": 0,
+    "cache_fallbacks": 0,
+    "cache_static_primes": 0,
+    "phase_scope": "retained world_build_ms includes record gather, source prefixes and selected fog/dlight attachment; reference reports attachment separately",
+    "camera_origin": [
+      1024,
+      1000,
+      50.125
+    ],
+    "yaw_start": 90,
+    "yaw_step": 1,
+    "face_changes": 250,
+    "pvs_cluster_changes": 0,
+    "pvs_scope": "fixed origin reuses one PVS cluster; rotation stresses frustum/faceset rebuilds",
+    "budget_dropped": 0,
+    "retained_triangles": 757423,
+    "startup_ms": 2170.5745,
+    "loop_ms": 6665.8971,
+    "renderer_probe_fps": 54.00623420964599,
+    "wall_seconds": 9.038650400005281,
+    "capture_enabled": false,
+    "swap_interval_requested": 0,
+    "frame_ms": {
+      "mean": 18.514335555555558,
+      "min": 0.3864,
+      "p50": 1.3169,
+      "p95": 67.0106,
+      "p99": 127.1575,
+      "max": 570.3926
+    },
+    "phases": {
+      "view_selection_ms": {
+        "mean": 0.1271958333333332,
+        "min": 0.0152,
+        "p50": 0.0661,
+        "p95": 0.3181,
+        "p99": 1.5977,
+        "max": 2.3662
+      },
+      "world_build_ms": {
+        "mean": 10.572970555555546,
+        "min": 0.0,
+        "p50": 0.4146,
+        "p95": 46.1775,
+        "p99": 93.9085,
+        "max": 569.2986
+      },
+      "effects_build_ms": {
+        "mean": 0.239111388888889,
+        "min": 0.0,
+        "p50": 0.01,
+        "p95": 0.8442,
+        "p99": 4.3324,
+        "max": 9.7727
+      },
+      "render_present_ms": {
+        "mean": 7.575057777777788,
+        "min": 0.2254,
+        "p50": 0.751,
+        "p95": 25.7711,
+        "p99": 50.2889,
+        "max": 259.3333
+      }
+    },
+    "selected_triangles_per_frame": {
+      "min": 267,
+      "max": 6085
+    },
+    "binary_sha256": "b6f84a81e98cc0209effd1d52e52c01e5456f244696353916444b32ae93e83cb",
+    "pak_sha256": "7ce8b3910620cd50a09e4f1100f426e8c6180f68895d589f80e6bd95af54bcae",
+    "native": {
+      "playable_window.dll": "3a51ce7f7d4d6eea5b2a4fa6c16c1bcec79a63690f78d9785a61535dc0306220",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088"
+    }
+  },
+  "seven_rotation_retained": {
+    "passed": true,
+    "scope": "renderer-only q3dm1 world rotation; no QVM, models, gameplay or desktop input",
+    "renderer": "hardware",
+    "map": "q3dm1",
+    "frames": 360,
+    "world_batch_path": "retained",
+    "cache_selections": 251,
+    "cache_fallbacks": 0,
+    "cache_static_primes": 28,
+    "phase_scope": "retained world_build_ms includes record gather, source prefixes and selected fog/dlight attachment; reference reports attachment separately",
+    "camera_origin": [
+      1024,
+      1000,
+      50.125
+    ],
+    "yaw_start": 90,
+    "yaw_step": 1,
+    "face_changes": 250,
+    "pvs_cluster_changes": 0,
+    "pvs_scope": "fixed origin reuses one PVS cluster; rotation stresses frustum/faceset rebuilds",
+    "budget_dropped": 0,
+    "retained_triangles": 757423,
+    "startup_ms": 2080.6084,
+    "loop_ms": 698.1631,
+    "renderer_probe_fps": 515.6388242231651,
+    "wall_seconds": 2.9255508000496775,
+    "capture_enabled": false,
+    "swap_interval_requested": 0,
+    "frame_ms": {
+      "mean": 1.9381997222222231,
+      "min": 0.3671,
+      "p50": 0.8942,
+      "p95": 4.4952,
+      "p99": 5.2383,
+      "max": 39.0309
+    },
+    "phases": {
+      "view_selection_ms": {
+        "mean": 0.04986305555555554,
+        "min": 0.0162,
+        "p50": 0.0409,
+        "p95": 0.0968,
+        "p99": 0.1485,
+        "max": 0.1893
+      },
+      "world_build_ms": {
+        "mean": 0.19980138888888885,
+        "min": 0.0,
+        "p50": 0.0458,
+        "p95": 0.8268,
+        "p99": 1.0162,
+        "max": 1.3737
+      },
+      "effects_build_ms": {
+        "mean": 0.0,
+        "min": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "render_present_ms": {
+        "mean": 1.6885352777777762,
+        "min": 0.2875,
+        "p50": 0.8216,
+        "p95": 3.8195,
+        "p99": 4.4685,
+        "max": 38.4434
+      }
+    },
+    "selected_triangles_per_frame": {
+      "min": 267,
+      "max": 6085
+    },
+    "binary_sha256": "b6f84a81e98cc0209effd1d52e52c01e5456f244696353916444b32ae93e83cb",
+    "pak_sha256": "7ce8b3910620cd50a09e4f1100f426e8c6180f68895d589f80e6bd95af54bcae",
+    "native": {
+      "playable_window.dll": "3a51ce7f7d4d6eea5b2a4fa6c16c1bcec79a63690f78d9785a61535dc0306220",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088"
+    }
+  },
+  "seven_software_smoke": {
+    "passed": true,
+    "binary_sha256": "361e1648a35f8110d56bc1f4a773893c23fae534afaf624fde8774808e89e840",
+    "renderer": "software",
+    "map": "q3dm1",
+    "frames": 5,
+    "wall_seconds": 3.477451399900019,
+    "startup_ms": 2633.0,
+    "frame_ms": 89.2,
+    "capture_enabled": false,
+    "diagnostic_only": false,
+    "profile_files": {},
+    "native": {
+      "playable_window.dll": "3a51ce7f7d4d6eea5b2a4fa6c16c1bcec79a63690f78d9785a61535dc0306220",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088",
+      "playable_ambient.dll": "ab306299dde70d1c33086248362eb4211f04bf334c623926f6a3affe1a8e6c43"
+    },
+    "scene": {
+      "views": 3,
+      "models": 6,
+      "triangles": 572
+    },
+    "loop": {
+      "elapsed_ms": 446.0,
+      "fps": 11.2107623318386,
+      "work_p50_ms": 69.0,
+      "work_p95_ms": 176.0,
+      "work_p99_ms": 176.0,
+      "work_max_ms": 176.0
+    }
+  },
+  "retained_world_gate": {
+    "passed": true,
+    "contracts": 51,
+    "retail_cases": 288,
+    "retail": "MAP q3dm1 cases=144 selections=72 fallbacks=0 staticPrimes=28 bytesCompared=71091712 createMs=85 referenceBuildMs=1437 retainedSelectMs=37\nMAP q3ctf1 cases=144 selections=67 fallbacks=0 staticPrimes=18 bytesCompared=76871168 createMs=110 referenceBuildMs=1830 retainedSelectMs=101\nPASS: 288 productive retained-world retail differential cases (selected stage/fog/dlight bytes and reuse)",
+    "sources": {
+      "src\\mq3\\renderer\\retained_world_batch.ml": "9f737333bdbfbda164f6811e7ebe88de2f23d7ca54887c50b88a79168246fc46",
+      "native\\playable_world_gather.h": "4ffd6d88f9f7a6fb6e6b04051438fb8ecac5074f8516f0783e8f9a08b528b338",
+      "tests\\retained_world_batch_contracts.ml": "1975e7c813c3928c47e012e26cf573f267f255ab6fa48a4d0447d050c69e96f9",
+      "tests\\retained_world_batch_retail_probe.ml": "c999d3e288674d02a396c18651b2c899160b04df90480cb8b584cc7ea74c40b8",
+      "tests\\playable_world_gather_native.c": "73ffbcee5aaf3b795cede0b5eb7f80da657bd1493a059a12e05746051e02ea2b"
+    },
+    "scope": "full-map templates, selected-face order, active-only stage updates, monotonic cache epochs, fog/dlight prefixes, unchanged original-builder capacity/autosprite/portal fallback"
+  },
+  "native_boundaries": {
+    "passed": true,
+    "contracts": 251,
+    "control_modes": 16,
+    "scope": "Camera/axis/patch/MD3 conversions and plane predicates use owned nearest/even with gradual underflow; exact caller MXCSR restored on success/miss/error; INT_MAX indexing/count/continuation inputs reject without accesses or overflow.",
+    "sources": {
+      "native/qvm_exec.c": "e814197411e3ca8b0ac7a82d08f1e3243bb10ed970cf92fa15912c045a6e3ae6",
+      "tests/native_qvm_numeric_boundaries.c": "4f22f791f7237fedd5b6c648510eec58427ceb2fb2e6b57127e627ee09bd0beb"
+    }
+  },
+  "native_boundary_regressions": {
+    "passed": true,
+    "native_sha256": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+    "results": {
+      "vm404": "PASS: 404 original QVM interpreter differential cases",
+      "native26934": "PASS: 26934 native QVM float/reentrant/bounds contracts",
+      "world384": "PASS: 384 native world-selection differential cases; frames=200 native_ms=0 managed_ms=781",
+      "md37168": "PASS: 7168 native MD3 exact vector contracts"
+    }
+  },
+  "numeric_native": {
+    "passed": true,
+    "records": 51764,
+    "exact_results": 517640,
+    "native_control": "PASS: 51764 binary32 records, 583296 MXCSR/ABI calls (32 rounding/denormal/exception modes, exact restoration)",
+    "native_sha256": "d47e4749fc19821e9355ebf3b4f9c86ba89912b7116f44bbb1c1f7b9fdbc042b",
+    "reference_sha256": "90b2cfb9fed6bc3f87d5e91b3fbb8c8e513a207f5c061c12852dddce0bb0f959",
+    "fixture_sha256": "4fd95f14097324c51c624ad7dfce07210d23ee163d6a37d0d979cb457dd72dae"
+  },
+  "build_inputs_sha256": "743bed97c16678413c38eba5703d85344ce0d655efe6c1e2b81e23973af22e3a",
+  "reproduce": [
+    "python scripts/build.py",
+    "python scripts/benchmark_playable.py --frames 5000 --renderer hardware --data-root build --min-fps 200 --max-work-p95-ms 8 --output build/reference/perf-2026-11-15/seven-hardware-5000",
+    "python scripts/benchmark_playable_world_rotation.py --reference --data-root build --output build/reference/perf-2026-11-15/seven-world-rotation-reference",
+    "python scripts/benchmark_playable_world_rotation.py --data-root build --output build/reference/perf-2026-11-15/seven-world-rotation-retained",
+    "python scripts/verify.py --data-root build"
+  ],
+  "remaining": [
+    "ordinary per-shader front/back cull modes and mirror policy are not yet carried in the retained ABI",
+    "this checkpoint still produces gameplay usercmds only at the 50-ms server tick; render FPS do not prove client-input cadence parity",
+    "UI-only 3D preview submissions are retained but the menu host only visibly submits its 2D commands",
+    "interactive moving/combat/bot/network/audio/long-term parity acceptance remains separate from these tests"
+  ]
+}

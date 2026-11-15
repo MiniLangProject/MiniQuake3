@@ -23,5 +23,36 @@ function main(args)
   boundInputEvents.applyBound(state,45,boundInputEvents.INPUT_KEY,65,1,"+mlook");count=count+req(state.mlooking,"mlook down")
   boundInputEvents.release(state,60);count=count+req(not state.buttons[5].active and not state.mlooking,"complete release")
   count=count+req(boundInputEvents.defaultBinding(119)=="+forward" and boundInputEvents.defaultBinding(178)=="+attack","fallback defaults")
+  // The native Sys_QueEvent path is already normalized. Exhaust the complete
+  // Quake key domain, especially lowercase p..z overlapping Win32 F-keys.
+  for key=0 to 255
+    emitted=boundInputEvents.applyBoundQuake(state,100+key,boundInputEvents.INPUT_KEY,key,1,"echo quake")
+    if len(emitted)!=1 or emitted[0].key!=key then return error(7733,"normalized key changed: "+str(key)) end if
+  end for
+  count=count+req(true,"all 256 normalized Quake keynums are preserved")
+  state=boundInputCore.create(0.0,0.0,0.0)
+  emitted=boundInputEvents.applyBoundQuake(state,10,boundInputEvents.INPUT_KEY,119,1,"+forward")
+  count=count+req(state.forward.active and state.forward.down0==119 and emitted[0].key==119,"normalized W is forward, not VK_F8")
+  boundInputEvents.applyBoundQuake(state,30,boundInputEvents.INPUT_KEY,119,0,"+forward")
+  count=count+req(not state.forward.active and state.forward.msec==20,"normalized key release matches the same source")
+  emitted=boundInputEvents.applyBoundQuake(state,40,boundInputEvents.INPUT_KEY,178,1,"+attack")
+  count=count+req(state.buttons[0].active and state.buttons[0].down0==178 and emitted[0].key==178,"normalized mouse button remains mouse1")
+  emitted=boundInputEvents.applyBoundQuake(state,45,boundInputEvents.INPUT_KEY,112,1,"+left")
+  count=count+req(state.left.active and emitted[0].key==112,"normalized lowercase p is not translated to F1")
+  emitted=boundInputEvents.applyBoundQuake(state,46,boundInputEvents.INPUT_KEY,133,1,"+lookup")
+  count=count+req(state.lookup.active and emitted[0].key==133,"normalized navigation key retained")
+  boundInputEvents.applyBoundQuake(state,50,boundInputEvents.INPUT_MOUSE,4,-6,"")
+  count=count+req(state.mouseDx[0]==4 and state.mouseDy[0]==-6,"normalized native mouse motion remains relative")
+  // WM_KILLFOCUS emits releases for each held normalized key; replay that
+  // native stream through the managed kbuttons and allow the retained short
+  // click once, then verify no movement/attack remains stuck on later ticks.
+  state=boundInputCore.create(0.0,0.0,0.0)
+  boundInputEvents.applyBoundQuake(state,10,boundInputEvents.INPUT_KEY,119,1,"+forward")
+  boundInputEvents.applyBoundQuake(state,20,boundInputEvents.INPUT_KEY,178,1,"+attack")
+  boundInputEvents.applyBoundQuake(state,30,boundInputEvents.INPUT_KEY,119,0,"+forward")
+  boundInputEvents.applyBoundQuake(state,30,boundInputEvents.INPUT_KEY,178,0,"+attack")
+  first=boundInputCore.createCommand(state,boundInputCore.defaults(),50,50,50,2,1.0,0,false)
+  afterFocus=boundInputCore.createCommand(state,boundInputCore.defaults(),100,50,100,2,1.0,0,false)
+  count=count+req(not boundInputEvents.anyDown(state) and (first.buttons&1)!=0 and (afterFocus.buttons&1)==0 and afterFocus.forwardmove==0,"focus releases prevent stuck managed movement and attack")
   print("PASS: "+str(count)+" key binding-dispatch contracts");return 0
 end function

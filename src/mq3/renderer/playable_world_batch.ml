@@ -11,6 +11,7 @@ import mq3.renderer.noise as rendererNoise
 import mq3.shared.math as qmath
 import mq3.renderer.playable_fog as playableFog
 import mq3.renderer.playable_dynamic_lights as dynamicLights
+import std.sort as sorting
 
 struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
 struct UvAffine m00 m01 m10 m11 tx ty end struct
@@ -48,16 +49,9 @@ function dynamicStage(stage) return stage.bspLightmap or stage.clampTexture or n
 function dynamicMaterialStage(material,stage) return material.polygonOffset or len(material.deforms)>0 or dynamicStage(stage) end function
 function materialUsesBspLightmap(material) for each stage in material.stages if stage.bspLightmap then return true end if end for;return false end function
 function contains(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
+function materialBefore(left,right) return left.sort<right.sort or (left.sort==right.sort and left.textureIndex<right.textureIndex) end function
 function sortedMaterials(values)
-  result=[]
-  for each material in values
-    inserted=false;next=[]
-    for each current in result
-      if not inserted and (material.sort<current.sort or (material.sort==current.sort and material.textureIndex<current.textureIndex)) then next=next+[material];inserted=true end if
-      next=next+[current]
-    end for
-    if not inserted then next=next+[material] end if;result=next
-  end for
+  result=array(len(values),void);if len(values)>0 then copyArray(result,0,values,0,len(values));sorting.sortBy(result,materialBefore) end if
   return result
 end function
 function uploadMaterials(catalog)
@@ -109,15 +103,15 @@ function createVertexCache(sourceIndexes)
   maximum=-1
   for each triangle in sourceIndexes for each sourceIndex in triangle if sourceIndex>maximum then maximum=sourceIndex end if end for end for
   if maximum<0 then return void end if
-  lookup=array(maximum+1,-1);slots=[];count=0
+  lookup=array(maximum+1,-1);slots=array(len(sourceIndexes),void);count=0;triangleIndex=0
   for each triangle in sourceIndexes
-    triangleSlots=[]
+    triangleSlots=array(len(triangle),-1);corner=0
     for each sourceIndex in triangle
       slot=-1
       if sourceIndex>=0 then slot=lookup[sourceIndex];if slot<0 then slot=count;lookup[sourceIndex]=slot;count=count+1 end if end if
-      triangleSlots=triangleSlots+[slot]
+      triangleSlots[corner]=slot;corner=corner+1
     end for
-    slots=slots+[triangleSlots]
+    slots[triangleIndex]=triangleSlots;triangleIndex=triangleIndex+1
   end for
   return VertexCache(slots,array(count,-1),array(count,void),array(count,void),array(count,void),array(count,void))
 end function
@@ -198,7 +192,7 @@ end function
 // unchanged.  The byte buffers and nested source arrays keep their storage;
 // callers fall back to buildMaterials when this returns false.
 function refreshStagePass(pass,renderData)
-  expected=len(pass.sourcePositions);pass.commands=window.resetTriangleBatch(pass.commands);pass.initialized=false;outputIndex=0
+  expected=len(pass.sourcePositions);pass.commands=window.resetTriangleBatch(pass.commands);pass.initialized=false;outputIndex=0;indexTopologyChanged=false
   for each triangle in renderData.triangles
     if triangle.textureIndex!=pass.textureIndex then continue end if
     if outputIndex>=expected then return false end if
@@ -212,11 +206,16 @@ function refreshStagePass(pass,renderData)
     end if
     if pass.commands is error then return pass.commands end if
     for corner=0 to 2
+      if pass.sourceIndexes[outputIndex][corner]!=triangle.vertices[corner].sourceIndex then indexTopologyChanged=true end if
       vertex=triangle.vertices[corner];pass.sourcePositions[outputIndex][corner]=vertex.position;pass.sourceIndexes[outputIndex][corner]=vertex.sourceIndex;pass.sourceDeformUvs[outputIndex][corner]=vertex.baseUV;pass.sourceNormals[outputIndex][corner]=vertex.normal;pass.sourceLights[outputIndex][corner]=vertexLight(vertex);pass.sourceColors[outputIndex][corner]=vertex.color;pass.sourceEntityColors[outputIndex][corner]=vertex.entityColor;pass.sourceEntityTexCoords[outputIndex][corner]=vertex.entityTexCoord;pass.sourceShaderTimes[outputIndex][corner]=vertex.shaderTime
     end for
     outputIndex=outputIndex+1
   end for
-  return outputIndex==expected
+  if outputIndex!=expected then return false end if
+  // Equal triangle counts do not imply equal indexed topology (LOD/model or
+  // portal clipping may change sharing). Old cache slots must never survive.
+  if indexTopologyChanged and not hasDeform(pass.deforms,"autosprite") and not hasDeform(pass.deforms,"autosprite2") then pass.vertexCache=createVertexCache(pass.sourceIndexes) end if
+  return true
 end function
 function refreshMaterials(batch,renderData,catalog,skyTextureFlags)
   if batch==void or batch.base==void or batch.passes==void or renderData==void or renderData.triangles==void or catalog==void or catalog.materials==void or skyTextureFlags==void then return fail("missing retained material batch inputs") end if
@@ -252,8 +251,8 @@ function attachFog(batch,renderData,catalog)
   if batch==void or renderData==void or catalog==void then return fail("fog attachment requires batch, render data and catalog") end if
   fogBatch=playableFog.build(renderData,catalog);if fogBatch is error then return fogBatch end if;batch.fogBatch=fogBatch;batch.fogCatalog=catalog
   for each pass in batch.passes
-    pass.fogIndexes=[];pass.initialized=false
-    for each triangle in renderData.triangles if triangle.textureIndex==pass.textureIndex and len(pass.fogIndexes)<pass.commands.count then pass.fogIndexes=pass.fogIndexes+[triangle.fogIndex] end if end for
+    pass.fogIndexes=array(pass.commands.count,0);pass.initialized=false;fogSlot=0
+    for each triangle in renderData.triangles if triangle.textureIndex==pass.textureIndex and fogSlot<pass.commands.count then pass.fogIndexes[fogSlot]=triangle.fogIndex;fogSlot=fogSlot+1 end if end for
   end for
   return fogBatch.commands.count
 end function
@@ -419,7 +418,7 @@ function updatePassAxesFog(pass,viewOrigin,leftDir,upDir,nowMilliseconds,fogCata
       sourcePosition=pass.sourcePositions[triangleIndex][vertex];sourceUv=pass.sourceUvs[triangleIndex][vertex];sourceNormal=pass.sourceNormals[triangleIndex][vertex];vertexColor=pass.sourceColors[triangleIndex][vertex];entityColor=pass.sourceEntityColors[triangleIndex][vertex];entityTexCoord=pass.sourceEntityTexCoords[triangleIndex][vertex];shaderTime=pass.sourceShaderTimes[triangleIndex][vertex]
       if autosprite and quad!=void then sourcePosition=quad[autospriteCorner(triangleIndex,vertex)];sourceUv=autospriteUV(triangleIndex,vertex);sourceNormal=spriteNormal;vertexColor=pass.sourceColors[triangleIndex-triangleIndex%2][0];entityColor=pass.sourceEntityColors[triangleIndex-triangleIndex%2][0];entityTexCoord=pass.sourceEntityTexCoords[triangleIndex-triangleIndex%2][0];shaderTime=pass.sourceShaderTimes[triangleIndex-triangleIndex%2][0] end if
       if autosprite2 and quad2!=void then sourcePosition=quad2[1][pass.sourceIndexes[triangleIndex][vertex]-quad2[0]] end if
-      position=sourcePosition;uv=[0.0,0.0];stageColor=[255,255,255,255];cacheSlot=-1;if pass.vertexCache!=void then cacheSlot=pass.vertexCache.slots[triangleIndex][vertex] end if
+      position=sourcePosition;uv=void;stageColor=void;cacheSlot=-1;if pass.vertexCache!=void then cacheSlot=pass.vertexCache.slots[triangleIndex][vertex] end if
       if cacheSlot>=0 and pass.vertexCache.frames[cacheSlot]==cacheEpoch then position=pass.vertexCache.positions[cacheSlot];sourceNormal=pass.vertexCache.normals[cacheSlot];uv=pass.vertexCache.uvs[cacheSlot];stageColor=pass.vertexCache.colors[cacheSlot]
       else
         entityNow=materials.shaderMilliseconds(nowMilliseconds,shaderTime,pass.timeOffset,pass.clampTime)
@@ -435,9 +434,7 @@ function updatePassAxesFog(pass,viewOrigin,leftDir,upDir,nowMilliseconds,fogCata
         fogIndex=pass.fogIndexes[triangleIndex]
         if fogIndex>0 and fogIndex<len(fogCatalog.fogs) then stageColor=materials.modulateForFog(stageColor,playableFog.density(fogCatalog.fogs[fogIndex],position,viewOrigin,forward),pass.fogAdjustment) end if
       end if
-      positionOffset=offset+20+vertex*32;window.writeBatchF32(pass.commands.data,positionOffset,position[0]);window.writeBatchF32(pass.commands.data,positionOffset+4,position[1]);window.writeBatchF32(pass.commands.data,positionOffset+8,position[2])
-      uvOffset=offset+32+vertex*32;window.writeBatchF32(pass.commands.data,uvOffset,uv[0]);window.writeBatchF32(pass.commands.data,uvOffset+4,uv[1])
-      window.writeBatchF32(pass.commands.data,offset+48+vertex*32,1.0);window.writeBatchColor(pass.commands.data,offset+116+vertex*4,stageColor)
+      updated=window.updateStageVertex(pass.commands,triangleIndex,vertex,position,uv,stageColor);if updated is error then return updated end if
     end for
   end for
   pass.initialized=true

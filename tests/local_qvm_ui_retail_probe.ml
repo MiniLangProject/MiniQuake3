@@ -33,16 +33,22 @@ function main(args)
   uiBridge.resetFrameCommands(state)
   first=session.frame(ui,1200);if first is error then return first end if
   if not first.active or not first.refreshed or first.commandStart!=0 or first.uiCommands==0 or first.commandCount==0 or state.context.uiFrames!=uiBaseline+1 then return error(7689,"retail UI frame was not refreshed into a fresh command queue") end if
-  firstCommands=first.commandCount;uiBridge.resetFrameCommands(state);input.down[session.VK_DOWN]=true;input.mouse=[3,-2];second=session.frame(ui,1250);if second is error then return second end if
-  if second.keyEvents!=1 or second.mouseEvents!=1 or not second.refreshed or state.context.uiFrames!=uiBaseline+2 then return error(7689,"retail UI did not consume native navigation input") end if
-  uiBridge.resetFrameCommands(state);input.down[session.VK_DOWN]=false;input.down[65]=true;third=session.frame(ui,1300);if third is error then return third end if
+  // Native input callbacks expose normalized Quake keynums, just like the
+  // productive Win32 event boundary. The old fixture used VK_DOWN=40 and
+  // uppercase virtual A=65, so it silently supplied keys the UI never polled.
+  // Retain the original failing input as a negative control of that boundary.
+  firstCommands=first.commandCount;uiBridge.resetFrameCommands(state);input.down[session.VK_DOWN]=true;input.mouse=[3,-2];rawVirtual=session.frame(ui,1250);if rawVirtual is error then return rawVirtual end if
+  if rawVirtual.keyEvents!=0 or rawVirtual.mouseEvents!=1 or not rawVirtual.refreshed or state.context.uiFrames!=uiBaseline+2 then return error(7689,"raw virtual-key negative control keys="+str(rawVirtual.keyEvents)+" mouse="+str(rawVirtual.mouseEvents)+" refreshed="+str(rawVirtual.refreshed)+" uiFrames="+str(state.context.uiFrames)+" baseline="+str(uiBaseline)) end if
+  uiBridge.resetFrameCommands(state);input.down[session.VK_DOWN]=false;input.down[session.K_DOWNARROW]=true;input.mouse=[3,-2];second=session.frame(ui,1275);if second is error then return second end if
+  if second.keyEvents!=1 or second.mouseEvents!=1 or not second.refreshed or state.context.uiFrames!=uiBaseline+3 then return error(7689,"retail UI navigation keys="+str(second.keyEvents)+" mouse="+str(second.mouseEvents)+" refreshed="+str(second.refreshed)+" uiFrames="+str(state.context.uiFrames)+" baseline="+str(uiBaseline)) end if
+  uiBridge.resetFrameCommands(state);input.down[session.K_DOWNARROW]=false;input.down[97]=true;third=session.frame(ui,1300);if third is error then return third end if
   if third.keyEvents!=2 or third.charEvents!=1 or not third.active then return error(7689,"retail UI did not receive key-up and character events") end if
   closed=session.close(ui);if closed is error then return closed end if
   if session.active(ui) then return error(7689,"retail UI menu did not release key catcher") end if
-  input.down[65]=false;session.frame(ui,1350);uiBridge.resetFrameCommands(state);input.down[session.VK_ESCAPE]=true;reopened=session.frame(ui,1400);if reopened is error then return reopened end if
-  if not reopened.menuOpened or not reopened.active or not reopened.refreshed or state.context.uiFrames!=uiBaseline+4 then return error(7689,"Escape did not activate retail ingame menu") end if
+  input.down[97]=false;session.frame(ui,1350);uiBridge.resetFrameCommands(state);input.down[27]=true;reopened=session.frame(ui,1400);if reopened is error then return reopened end if
+  if not reopened.menuOpened or not reopened.active or not reopened.refreshed or state.context.uiFrames!=uiBaseline+5 then return error(7689,"Escape did not activate retail ingame menu") end if
   if len(state.context.errors)>0 then return error(7689,state.context.errors[0]) end if
-  report="PASS: retail interactive UI firstCommands="+str(firstCommands)+" navigationCommands="+str(second.commandCount)+" ingameCommands="+str(reopened.commandCount)+" uiFrames="+str(state.context.uiFrames)+" keyEvents="+str(second.keyEvents+third.keyEvents)+" charEvents="+str(third.charEvents)+" mouseEvents="+str(second.mouseEvents)
+  report="PASS: retail interactive UI firstCommands="+str(firstCommands)+" navigationCommands="+str(second.commandCount)+" ingameCommands="+str(reopened.commandCount)+" uiFrames="+str(state.context.uiFrames)+" keyEvents="+str(second.keyEvents+third.keyEvents)+" charEvents="+str(third.charEvents)+" mouseEvents="+str(second.mouseEvents)+" rawVirtualKeys="+str(rawVirtual.keyEvents)+" rawVirtualMouse="+str(rawVirtual.mouseEvents)+" navigationRefreshed="+str(second.refreshed)+" navigationFrame="+str(uiBaseline+3)
   match.shutdown(state);if (match.keyCatcher(state)&session.KEYCATCH_UI)!=0 then return error(7689,"retail UI shutdown retained shared key catcher") end if
   print(report);return 0
 end function

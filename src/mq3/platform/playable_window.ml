@@ -28,10 +28,16 @@ extern function pollNative() from "playable_window.dll" symbol "playable_window_
 extern function shouldCloseNative() from "playable_window.dll" symbol "playable_window_should_close" returns i32
 extern function setTitleNative(title as ptr,length as i32) from "playable_window.dll" symbol "playable_window_set_title_utf8" returns i32
 extern function keyDownNative(key as i32) from "playable_window.dll" symbol "playable_window_key_down" returns i32
+extern function inputKeyDownNative(key as i32) from "playable_window.dll" symbol "playable_window_input_key_down" returns i32
 extern function nextInputEventNative(output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_window_next_input_event" returns i32
 extern function mouseXNative() from "playable_window.dll" symbol "playable_window_consume_mouse_dx" returns i32
 extern function mouseYNative() from "playable_window.dll" symbol "playable_window_consume_mouse_dy" returns i32
 extern function millisecondsNative() from "playable_window.dll" symbol "playable_window_milliseconds" returns i32
+extern function hardwareRendererNative() from "playable_window.dll" symbol "playable_window_hardware_renderer" returns i32
+extern function hardwareTrianglesNative() from "playable_window.dll" symbol "playable_window_hardware_triangles" returns u32
+extern function hardwareDrawCallsNative() from "playable_window.dll" symbol "playable_window_hardware_draw_calls" returns u32
+extern function writeBatchVertexNative(data as ptr,count as i32,offset as i32,x as double,y as double,z as double,u as double,v as double,lu as double,lv as double,light as double) from "playable_window.dll" symbol "playable_window_write_batch_vertex" returns i32
+extern function updateStageVertexNative(data as ptr,count as i32,triangle as i32,vertex as i32,x as double,y as double,z as double,u as double,v as double,red as i32,green as i32,blue as i32,alpha as i32) from "playable_window.dll" symbol "playable_window_update_stage_vertex" returns i32
 extern function takeVideoRestartNative() from "playable_window.dll" symbol "playable_window_take_video_restart" returns i32
 extern function windowStateNative(output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_window_window_state" returns i32
 extern function currentUserNative(output as bytes,capacity as i32) from "playable_window.dll" symbol "playable_system_current_user" returns i32
@@ -182,6 +188,9 @@ function showLoading(progress,status)
   present();poll();return true
 end function
 function keyDown(key) return keyDownNative(key)!=0 end function
+// The native Sys_QueEvent key-state table uses Quake keynums, including mouse
+// and keypad keys. Keep legacy keyDown's Win32 virtual-key API separate.
+function inputKeyDown(key) return inputKeyDownNative(key)!=0 end function
 function decodeInputEvent(data)
   if typeof(data)!="bytes" or len(data)<16 then return error(7492,"native input event is truncated") end if
   return InputEvent(numeric.readI32(data,0),numeric.readI32(data,4),numeric.readI32(data,8),numeric.readI32(data,12))
@@ -210,6 +219,9 @@ function configureMidi(enabled,device,channel)
 end function
 function midiDeviceCount() return midiDeviceCountNative() end function
 function milliseconds() return millisecondsNative() end function
+function hardwareRenderer() return hardwareRendererNative()!=0 end function
+function hardwareTriangles() return hardwareTrianglesNative() end function
+function hardwareDrawCalls() return hardwareDrawCallsNative() end function
 function takeVideoRestart() return takeVideoRestartNative()!=0 end function
 function windowState()
   data=bytes(28,0);if windowStateNative(data,7)==0 then return error(7495,"could not read native window state") end if
@@ -274,13 +286,15 @@ end function
 function writeBatchI32(data,offset,value) numeric.writeU32(data,offset,numeric.i32(value));return void end function
 function writeBatchF32(data,offset,value) numeric.writeU32(data,offset,numeric.floatBits(value));return void end function
 function writeBatchVertex(data,offset,point,baseUV,lightmapUV,light)
-  writeBatchF32(data,offset,point.x);writeBatchF32(data,offset+4,point.y);writeBatchF32(data,offset+8,point.depth)
-  writeBatchF32(data,offset+12,baseUV[0]);writeBatchF32(data,offset+16,baseUV[1]);writeBatchF32(data,offset+20,lightmapUV[0]);writeBatchF32(data,offset+24,lightmapUV[1]);writeBatchF32(data,offset+28,light)
+  if writeBatchVertexNative(nativeBytesPtr(data),len(data),offset,point.x,point.y,point.depth,baseUV[0],baseUV[1],lightmapUV[0],lightmapUV[1],light)!=1 then return error(7487,"native batch vertex rejected") end if
   return void
 end function
 function writeBatchPositionVertex(data,offset,position,baseUV,lightmapUV,light)
-  writeBatchF32(data,offset,position[0]);writeBatchF32(data,offset+4,position[1]);writeBatchF32(data,offset+8,position[2])
-  writeBatchF32(data,offset+12,baseUV[0]);writeBatchF32(data,offset+16,baseUV[1]);writeBatchF32(data,offset+20,lightmapUV[0]);writeBatchF32(data,offset+24,lightmapUV[1]);writeBatchF32(data,offset+28,light)
+  if writeBatchVertexNative(nativeBytesPtr(data),len(data),offset,position[0],position[1],position[2],baseUV[0],baseUV[1],lightmapUV[0],lightmapUV[1],light)!=1 then return error(7487,"native batch position vertex rejected") end if
+  return void
+end function
+function updateStageVertex(batch,triangle,vertex,position,uv,color)
+  if updateStageVertexNative(nativeBytesPtr(batch.data),len(batch.data),triangle,vertex,position[0],position[1],position[2],uv[0],uv[1],color[0],color[1],color[2],color[3])!=1 then return error(7487,"native stage vertex rejected") end if
   return void
 end function
 function writeBatchColor(data,offset,color)

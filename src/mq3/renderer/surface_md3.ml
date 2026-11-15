@@ -6,13 +6,14 @@ package mq3.renderer.surface_md3
 import mq3.compat.numeric as numeric
 import mq3.compat.transcendental as trans
 import mq3.shared.math as qmath
+import mq3.renderer.native_md3 as nativeMd3
 
 const MD3_XYZ_SCALE=0.015625
 const FUNCTABLE_SIZE=1024
 const FUNCTABLE_MASK=1023
 
 struct PackedVertex xyz packedNormal end struct
-struct MeshSurface numFrames numVerts numTriangles triangles texCoords frames end struct
+struct MeshSurface numFrames numVerts numTriangles triangles texCoords frames packedFrames end struct
 struct Submission xyz normals texCoords indexes baseVertex baseIndex numVertexes numIndexes flushed dlightBits touchesDlights end struct
 
 function vertex(x,y,z,packedNormal)
@@ -20,7 +21,23 @@ function vertex(x,y,z,packedNormal)
 end function
 
 function surface(numFrames,numVerts,numTriangles,triangles,texCoords,frames)
-  return MeshSurface(numFrames,numVerts,numTriangles,triangles,texCoords,frames)
+  return MeshSurface(numFrames,numVerts,numTriangles,triangles,texCoords,frames,array(numFrames,void))
+end function
+
+function packedFrame(value,frame)
+  if value.packedFrames[frame]!=void then return value.packedFrames[frame] end if
+  result=bytes(value.numVerts*8,0)
+  for index=0 to value.numVerts-1
+    source=value.frames[frame][index];at=index*8
+    for axis=0 to 2 number=source.xyz[axis];result[at+axis*2]=number&255;result[at+axis*2+1]=(number>>8)&255 end for
+    result[at+6]=source.packedNormal&255;result[at+7]=(source.packedNormal>>8)&255
+  end for
+  value.packedFrames[frame]=result;return result
+end function
+function lerpVertexesPacked(value,frame,oldFrame,backlerp,table)
+  if frame<0 or frame>=value.numFrames or oldFrame<0 or oldFrame>=value.numFrames then return error(7359,"MD3 frame index out of range") end if
+  if backlerp<0.0 or backlerp>1.0 then return error(7360,"MD3 backlerp outside zero to one") end if
+  fresh=packedFrame(value,frame);old=packedFrame(value,oldFrame);return nativeMd3.lerp(fresh,old,table,value.numVerts,backlerp)
 end function
 
 function valid3(value) return value!=void and len(value)==3 end function

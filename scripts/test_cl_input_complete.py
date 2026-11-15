@@ -1,9 +1,12 @@
 """Full-file differential, native, retail, and symbol gate for client/cl_input.c."""
 from __future__ import annotations
 
+import argparse
 import json
+import os
 import subprocess
 import sys
+from pathlib import Path
 
 from inventory import sha
 from toolchain import ROOT, msvc_env, run
@@ -44,6 +47,10 @@ def build_and_run(source: str, output: str, *args: str) -> str:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--data-root", type=Path, default=Path(os.environ.get("MQ3_DATA_ROOT", "D:/Quake3")))
+    args = parser.parse_args()
+    data_root = args.data_root.resolve()
     original = ROOT / "Quake-III-Arena-original-source/code/client/cl_input.c"
     module = ROOT / "src/mq3/client/cl_input.ml"
     module_text = module.read_text(encoding="utf-8")
@@ -79,7 +86,7 @@ def main() -> None:
     if contracts != "PASS: 31 complete cl_input contracts":
         raise RuntimeError(contracts)
 
-    retail = build_and_run("tests/cl_input_retail_probe.ml", "cl_input_retail_probe.exe", "D:/Quake3").strip()
+    retail = build_and_run("tests/cl_input_retail_probe.ml", "cl_input_retail_probe.exe", str(data_root)).strip()
     if not retail.startswith("PASS: retail cgame.qvm "):
         raise RuntimeError(retail)
 
@@ -95,6 +102,7 @@ def main() -> None:
         "unchanged_c_records": len(native.splitlines()),
         "contracts": 31,
         "retail": retail,
+        "data_root": str(data_root),
         "scope": "All cl_input.c entry points, dual-source buttons, command registration, mouse/joystick routing, command construction, command ring, packet pacing, reliable/delta packet writing and transmit callbacks.",
         "host_boundary": "Window event production, UI/cgame VM mouse calls, diagnostics and UDP transmission remain typed injectable host services; the native state and packet policy are deterministic.",
         "sources": {str(path.relative_to(ROOT)).replace("\\", "/"): sha(path) for path in files},

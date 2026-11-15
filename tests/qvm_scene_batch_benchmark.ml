@@ -10,7 +10,7 @@ const FRAMES=20
 
 function sourceTriangle(index)
   x=(index%48)*3.0;y=(index/48)*2.0;color=[128+index%128,255,192,255]
-  return sceneGeometry.Triangle([[x,y,0.0],[x+2.0,y,0.0],[x,y+1.5,0.0]],[[0.0,0.0],[1.0,0.0],[0.0,1.0]],[[0.0,0.0,1.0],[0.0,0.0,1.0],[0.0,0.0,1.0]],[color,color,color],color,[0.0,0.0],0.0,0,0,1,"fx","surface",index,0,0,[[0.0,0.0],[0.0,0.0],[0.0,0.0]],-1,-1,false,void,void,void)
+  return sceneGeometry.Triangle([[x,y,0.0],[x+2.0,y,0.0],[x,y+1.5,0.0]],[[0.0,0.0],[1.0,0.0],[0.0,1.0]],[[0.0,0.0,1.0],[0.0,0.0,1.0],[0.0,0.0,1.0]],[color,color,color],color,[0.0,0.0],0.0,0,0,1,"fx","surface",index,0,0,[[0.0,0.0],[0.0,0.0],[0.0,0.0]],-1,-1,false,void,void,void,void)
 end function
 function main(args)
   image=materials.Image(1,1,bytes([255,255,255,255]))

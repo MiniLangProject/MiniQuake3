@@ -10,7 +10,7 @@ import mq3.compat.numeric as numeric
 
 function require(condition,message) if not condition then return error(7685,"QVM scene batch: "+message) end if;return 1 end function
 function sourceTriangleFx(x,color,entityColor,shaderHandle,renderfx)
-  return sceneGeometry.Triangle([[x,0.0,0.0],[x,1.0,0.0],[x,0.0,1.0]],[[0.0,0.0],[1.0,0.0],[0.0,1.0]],[[1.0,0.0,0.0],[1.0,0.0,0.0],[1.0,0.0,0.0]],[color,color,color],entityColor,[0.25,-0.125],1.0,0,0,shaderHandle,"","",0,0,renderfx,[[0.1,0.2],[0.3,0.4],[0.5,0.6]],3,2,false,void,void,void)
+  return sceneGeometry.Triangle([[x,0.0,0.0],[x,1.0,0.0],[x,0.0,1.0]],[[0.0,0.0],[1.0,0.0],[0.0,1.0]],[[1.0,0.0,0.0],[1.0,0.0,0.0],[1.0,0.0,0.0]],[color,color,color],entityColor,[0.25,-0.125],1.0,0,0,shaderHandle,"","",0,0,renderfx,[[0.1,0.2],[0.3,0.4],[0.5,0.6]],3,2,false,void,void,void,void)
 end function
 function sourceTriangle(x,color,entityColor,shaderHandle) return sourceTriangleFx(x,color,entityColor,shaderHandle,0) end function
 function catalogFor(triangles,materialList)

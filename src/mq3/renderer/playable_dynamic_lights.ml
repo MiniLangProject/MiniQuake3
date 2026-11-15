@@ -37,20 +37,24 @@ function release(catalog) if catalog!=void then window.releaseTexture(catalog.te
 
 function build(renderData,receiveFlags)
   if renderData==void or receiveFlags==void then return fail("render data and receive flags are required") end if
-  triangles=[]
-  for each triangle in renderData.triangles if triangle.textureIndex>=0 and triangle.textureIndex<len(receiveFlags) and receiveFlags[triangle.textureIndex] then triangles=triangles+[triangle] end if end for
-  capacity=len(triangles);if capacity<1 then capacity=1 end if;commands=window.createTriangleBatch(capacity);if commands is error then return commands end if
+  count=0
+  for each triangle in renderData.triangles if triangle.textureIndex>=0 and triangle.textureIndex<len(receiveFlags) and receiveFlags[triangle.textureIndex] then count=count+1 end if end for
+  triangles=array(count,void);output=0
+  for each triangle in renderData.triangles if triangle.textureIndex>=0 and triangle.textureIndex<len(receiveFlags) and receiveFlags[triangle.textureIndex] then triangles[output]=triangle;output=output+1 end if end for
+  capacity=count;if capacity<1 then capacity=1 end if;commands=window.createTriangleBatch(capacity);if commands is error then return commands end if
   return Batch(commands,triangles,void,void,void)
 end function
 
 function buildOriented(renderData,receiveFlags,origins,axes,bounds)
   if renderData==void or receiveFlags==void or origins==void or axes==void or bounds==void or len(origins)!=len(renderData.triangles) or len(axes)!=len(renderData.triangles) or len(bounds)!=len(renderData.triangles) then return fail("oriented render data needs one origin, axis and bounds pair per triangle") end if
-  triangles=[];keptOrigins=[];keptAxes=[];keptBounds=[];sourceIndex=0
+  count=0
+  for each triangle in renderData.triangles if triangle.textureIndex>=0 and triangle.textureIndex<len(receiveFlags) and receiveFlags[triangle.textureIndex] then count=count+1 end if end for
+  triangles=array(count,void);keptOrigins=array(count,void);keptAxes=array(count,void);keptBounds=array(count,void);sourceIndex=0;output=0
   for each triangle in renderData.triangles
-    if triangle.textureIndex>=0 and triangle.textureIndex<len(receiveFlags) and receiveFlags[triangle.textureIndex] then triangles=triangles+[triangle];keptOrigins=keptOrigins+[origins[sourceIndex]];keptAxes=keptAxes+[axes[sourceIndex]];keptBounds=keptBounds+[bounds[sourceIndex]] end if
+    if triangle.textureIndex>=0 and triangle.textureIndex<len(receiveFlags) and receiveFlags[triangle.textureIndex] then triangles[output]=triangle;keptOrigins[output]=origins[sourceIndex];keptAxes[output]=axes[sourceIndex];keptBounds[output]=bounds[sourceIndex];output=output+1 end if
     sourceIndex=sourceIndex+1
   end for
-  capacity=len(triangles);if capacity<1 then capacity=1 end if;commands=window.createTriangleBatch(capacity);if commands is error then return commands end if
+  capacity=count;if capacity<1 then capacity=1 end if;commands=window.createTriangleBatch(capacity);if commands is error then return commands end if
   return Batch(commands,triangles,keptOrigins,keptAxes,keptBounds)
 end function
 

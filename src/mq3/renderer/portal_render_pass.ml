@@ -33,6 +33,9 @@ function seenFace(values,faceIndex) for each value in values if value==faceIndex
 function prepare(renderData,catalog,geometry,sourceRefdef,isPortal)
   if isPortal then return void end if
   if renderData==void or renderData.triangles==void or geometry==void or sourceRefdef==void then return fail("world, scene geometry and refdef are required") end if
+  // R_GetPortalOrientations requires an RT_PORTALSURFACE entity. HUD-only
+  // views never submit the BSP world; neither case can produce a world portal.
+  if (sourceRefdef.flags&1)!=0 or (geometry.portals!=void and len(geometry.portals)==0) then return void end if
   candidates=[];faces=[]
   for each triangle in renderData.triangles
     if not portalMaterial(catalog,triangle.textureIndex) or seenFace(faces,triangle.faceIndex) then continue end if

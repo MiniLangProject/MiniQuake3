@@ -68,13 +68,20 @@ function execute(state,command)
   if command.down then return inputCommandCore.keyDown(target,command.key,command.time) end if
   return inputCommandCore.keyUp(target,command.key,command.time,50)
 end function
-function applyBound(state,time,type,value,value2,binding)
+// Productive Sys_QueEvent records already contain Quake keynums. Do not map
+// them through Win32 again: lowercase p..z overlap the VK_F1..VK_F11 range.
+function applyBoundQuake(state,time,type,value,value2,binding)
   if state==void or typeof(time)!="int" or time<0 then return error(7702,"input event bridge: invalid event") end if
   if type==INPUT_MOUSE then accumulated=inputCommandCore.accumulateMouse(state,value,value2);if accumulated is error then return accumulated end if;return [] end if
   if type!=INPUT_KEY then return [] end if
-  key=quakeKey(value);expanded=eventBindingDispatch.commands(binding,key,value2!=0,time);if expanded is error then return expanded end if
+  expanded=eventBindingDispatch.commands(binding,value,value2!=0,time);if expanded is error then return expanded end if
   for each command in expanded applied=execute(state,command);if applied is error then return applied end if end for
   return expanded
+end function
+// Preserve the virtual-key input API used by offline probes and older hosts.
+function applyBound(state,time,type,value,value2,binding)
+  if type==INPUT_KEY then value=quakeKey(value) end if
+  return applyBoundQuake(state,time,type,value,value2,binding)
 end function
 function apply(state,time,type,value,value2)
   key=quakeKey(value);applied=applyBound(state,time,type,value,value2,defaultBinding(key))

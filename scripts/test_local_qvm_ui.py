@@ -12,7 +12,12 @@ def main():
     parser.add_argument('--qvms',type=Path,default=ROOT/'build/reference/qvms')
     args=parser.parse_args()
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/local_qvm_ui_retail_probe.ml','--output','local_qvm_ui_retail_probe.exe'],cwd=ROOT,check=True)
-    result=subprocess.run([ROOT/'build/local_qvm_ui_retail_probe.exe',args.pak.resolve(),args.qvms.resolve()],cwd=ROOT/'build',check=True,text=True,capture_output=True,timeout=240).stdout.strip()
+    completed=subprocess.run([ROOT/'build/local_qvm_ui_retail_probe.exe',args.pak.resolve(),args.qvms.resolve()],cwd=ROOT/'build',text=True,capture_output=True,timeout=240)
+    out=ROOT/'build/reference/local_qvm_ui';out.mkdir(parents=True,exist_ok=True)
+    (out/'retail.log').write_text(completed.stdout+completed.stderr,encoding='utf-8')
+    if completed.returncode:
+        raise RuntimeError(f'retail UI probe failed ({completed.returncode}):\n{completed.stdout}{completed.stderr}')
+    result=completed.stdout.strip()
     if not result.startswith('PASS: retail interactive UI '):
         raise RuntimeError(result)
     print(result)

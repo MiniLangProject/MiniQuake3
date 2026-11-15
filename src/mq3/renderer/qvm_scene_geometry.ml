@@ -7,6 +7,7 @@ import mq3.renderer.scene_queue as sceneQueue
 import mq3.renderer.surface_entities as surfaceEntities
 import mq3.renderer.view_math as viewMath
 import mq3.renderer.surface_md3 as surfaceMd3
+import mq3.renderer.native_md3 as nativeMd3
 import mq3.renderer.md3_entity as md3Entity
 import mq3.renderer.surface_trails as surfaceTrails
 import mq3.renderer.surface_beam as surfaceBeam
@@ -31,15 +32,15 @@ const RF_SHADOW_PLANE=256
 const PROJECTION_SHADOW_SHADER="$mq3/projectionShadow"
 const MAX_SHADOW_EDGE_DEFS=32
 
-struct Triangle positions texCoords normals colors entityColor entityTexCoord shaderTime modelHandle customSkin shaderHandle shaderName surfaceName entityIndex surfaceIndex renderfx lightmapCoords lightmapIndex fogIndex dynamicLight dynamicLightOrigin dynamicLightAxis dynamicLightBounds end struct
+struct Triangle positions texCoords normals colors entityColor entityTexCoord shaderTime modelHandle customSkin shaderHandle shaderName surfaceName entityIndex surfaceIndex renderfx lightmapCoords lightmapIndex fogIndex dynamicLight dynamicLightOrigin dynamicLightAxis dynamicLightBounds vertexIds end struct
 struct ShadowTriangle positions entityIndex surfaceIndex end struct
 struct ShadowEdge i2 facing end struct
 struct Geometry triangles triangleCount modelEntities spriteEntities polySurfaces skippedInline skippedUnsupported sourceVertices vertexTransforms portals culledInline shadowTriangles shadowTriangleCount end struct
 struct InlineModel index renderData shaderNames bounds dynamicLightFlags end struct
 struct Md3Selection model lod frames cull end struct
-struct FrameEntry modelHandle surfaceIndex frame oldFrame backlerp xyz normals end struct
+struct FrameEntry modelHandle surfaceIndex frame oldFrame backlerp xyz normals packed vertexCount end struct
 struct TransformEntry modelHandle surfaceIndex frame oldFrame backlerp origin axis positions normals lightAmbient lightDirected lightDirection lightAlpha colors end struct
-struct FrameCache normalTable entries maxEntries hits misses transforms transformHits transformMisses entryCount entryNext transformCount transformNext end struct
+struct FrameCache normalTable entries maxEntries hits misses transforms transformHits transformMisses entryCount entryNext transformCount transformNext packedNormalTable end struct
 
 function fail(message) return error(7670,"QVM scene geometry: "+message) end function
 function normal() return [0.0,0.0,1.0] end function
@@ -98,10 +99,10 @@ function appendShadowTriangle(output,positions,entityIndex,surfaceIndex)
   output.shadowTriangles[output.shadowTriangleCount]=ShadowTriangle(positions,entityIndex,surfaceIndex);output.shadowTriangleCount=output.shadowTriangleCount+1;return void
 end function
 function triangle(positions,coords,normals,colors,entityColor,entityTexCoord,shaderTime,modelHandle,customSkin,shaderHandle,shaderName,surfaceName,entityIndex,surfaceIndex,renderfx)
-  return Triangle(positions,coords,normals,colors,entityColor,entityTexCoord,shaderTime,modelHandle,customSkin,shaderHandle,shaderName,surfaceName,entityIndex,surfaceIndex,renderfx,[[0.0,0.0],[0.0,0.0],[0.0,0.0]],-1,-1,false,void,void,void)
+  return Triangle(positions,coords,normals,colors,entityColor,entityTexCoord,shaderTime,modelHandle,customSkin,shaderHandle,shaderName,surfaceName,entityIndex,surfaceIndex,renderfx,[[0.0,0.0],[0.0,0.0],[0.0,0.0]],-1,-1,false,void,void,void,void)
 end function
 function mappedTriangle(positions,coords,lightmapCoords,normals,colors,entityColor,entityTexCoord,shaderTime,modelHandle,customSkin,shaderHandle,shaderName,surfaceName,entityIndex,surfaceIndex,renderfx,lightmapIndex,fogIndex,dynamicLight,dynamicLightOrigin,dynamicLightAxis,dynamicLightBounds)
-  return Triangle(positions,coords,normals,colors,entityColor,entityTexCoord,shaderTime,modelHandle,customSkin,shaderHandle,shaderName,surfaceName,entityIndex,surfaceIndex,renderfx,lightmapCoords,lightmapIndex,fogIndex,dynamicLight,dynamicLightOrigin,dynamicLightAxis,dynamicLightBounds)
+  return Triangle(positions,coords,normals,colors,entityColor,entityTexCoord,shaderTime,modelHandle,customSkin,shaderHandle,shaderName,surfaceName,entityIndex,surfaceIndex,renderfx,lightmapCoords,lightmapIndex,fogIndex,dynamicLight,dynamicLightOrigin,dynamicLightAxis,dynamicLightBounds,void)
 end function
 function inlineShaderName(map,textureIndex)
   if textureIndex<0 or textureIndex>=map.counts[1] then return fail("inline BSP shader index outside map") end if
@@ -134,11 +135,11 @@ function appendTriangle(output,value)
   if target==void then output.triangles[output.triangleCount]=value
   else
     for corner=0 to 2 target.positions[corner]=value.positions[corner];target.texCoords[corner]=value.texCoords[corner];target.normals[corner]=value.normals[corner];target.colors[corner]=value.colors[corner] end for
-    target.entityColor=value.entityColor;target.entityTexCoord=value.entityTexCoord;target.shaderTime=value.shaderTime;target.modelHandle=value.modelHandle;target.customSkin=value.customSkin;target.shaderHandle=value.shaderHandle;target.shaderName=value.shaderName;target.surfaceName=value.surfaceName;target.entityIndex=value.entityIndex;target.surfaceIndex=value.surfaceIndex;target.renderfx=value.renderfx;target.lightmapCoords=value.lightmapCoords;target.lightmapIndex=value.lightmapIndex;target.fogIndex=value.fogIndex;target.dynamicLight=value.dynamicLight;target.dynamicLightOrigin=value.dynamicLightOrigin;target.dynamicLightAxis=value.dynamicLightAxis;target.dynamicLightBounds=value.dynamicLightBounds
+    target.entityColor=value.entityColor;target.entityTexCoord=value.entityTexCoord;target.shaderTime=value.shaderTime;target.modelHandle=value.modelHandle;target.customSkin=value.customSkin;target.shaderHandle=value.shaderHandle;target.shaderName=value.shaderName;target.surfaceName=value.surfaceName;target.entityIndex=value.entityIndex;target.surfaceIndex=value.surfaceIndex;target.renderfx=value.renderfx;target.lightmapCoords=value.lightmapCoords;target.lightmapIndex=value.lightmapIndex;target.fogIndex=value.fogIndex;target.dynamicLight=value.dynamicLight;target.dynamicLightOrigin=value.dynamicLightOrigin;target.dynamicLightAxis=value.dynamicLightAxis;target.dynamicLightBounds=value.dynamicLightBounds;target.vertexIds=value.vertexIds
   end if
   output.triangleCount=output.triangleCount+1;return void
 end function
-function appendIndexedModelTriangle(output,worldPositions,texCoords,worldNormals,vertexColors,defaultColor,entityTexCoord,shaderTime,a,b,c,modelHandle,customSkin,shaderHandle,shaderName,surfaceName,entityIndex,surfaceIndex,renderfx,fogIndex)
+function appendIndexedModelTriangle(output,worldPositions,texCoords,worldNormals,vertexColors,defaultColor,entityTexCoord,shaderTime,a,b,c,modelHandle,customSkin,shaderHandle,shaderName,surfaceName,entityIndex,surfaceIndex,renderfx,fogIndex,vertexBase)
   if output.triangleCount>=len(output.triangles) then return fail("triangle capacity exceeded") end if
   target=output.triangles[output.triangleCount]
   if target==void then
@@ -146,8 +147,16 @@ function appendIndexedModelTriangle(output,worldPositions,texCoords,worldNormals
     target=triangle([worldPositions[a],worldPositions[b],worldPositions[c]],[texCoords[a],texCoords[b],texCoords[c]],[worldNormals[a],worldNormals[b],worldNormals[c]],colors,defaultColor,entityTexCoord,shaderTime,modelHandle,customSkin,shaderHandle,shaderName,surfaceName,entityIndex,surfaceIndex,renderfx);target.fogIndex=fogIndex;output.triangles[output.triangleCount]=target
   else
     for corner=0 to 2 index=a;if corner==1 then index=b else if corner==2 then index=c end if;target.positions[corner]=worldPositions[index];target.texCoords[corner]=texCoords[index];target.normals[corner]=worldNormals[index];target.colors[corner]=defaultColor;if vertexColors!=void then target.colors[corner]=vertexColors[index] end if end for
-    target.entityColor=defaultColor;target.entityTexCoord=entityTexCoord;target.shaderTime=shaderTime;target.modelHandle=modelHandle;target.customSkin=customSkin;target.shaderHandle=shaderHandle;target.shaderName=shaderName;target.surfaceName=surfaceName;target.entityIndex=entityIndex;target.surfaceIndex=surfaceIndex;target.renderfx=renderfx;target.lightmapCoords=[[0.0,0.0],[0.0,0.0],[0.0,0.0]];target.lightmapIndex= -1;target.fogIndex=fogIndex;target.dynamicLight=false;target.dynamicLightOrigin=void;target.dynamicLightAxis=void;target.dynamicLightBounds=void
+    // Dense IDs identify the previous MD3 target's own zero-UV storage.
+    // Generic/inline geometry may reference BSP data, even when its UVs are
+    // zero, so acquire fresh owned buffers when transitioning back to MD3.
+    if target.vertexIds==void then target.lightmapCoords=[[0.0,0.0],[0.0,0.0],[0.0,0.0]] end if
+    target.entityColor=defaultColor;target.entityTexCoord=entityTexCoord;target.shaderTime=shaderTime;target.modelHandle=modelHandle;target.customSkin=customSkin;target.shaderHandle=shaderHandle;target.shaderName=shaderName;target.surfaceName=surfaceName;target.entityIndex=entityIndex;target.surfaceIndex=surfaceIndex;target.renderfx=renderfx;target.lightmapIndex= -1;target.fogIndex=fogIndex;target.dynamicLight=false;target.dynamicLightOrigin=void;target.dynamicLightAxis=void;target.dynamicLightBounds=void
   end if
+  // Preserve the original mesh indices across animation. Dense surface bases
+  // separate entities and surfaces even when their positions happen to match.
+  if target.vertexIds==void then target.vertexIds=[vertexBase+a,vertexBase+b,vertexBase+c]
+  else target.vertexIds[0]=vertexBase+a;target.vertexIds[1]=vertexBase+b;target.vertexIds[2]=vertexBase+c end if
   output.triangleCount=output.triangleCount+1;return void
 end function
 function modelTriangleCount(model,maxTrianglesPerSurface)
@@ -236,7 +245,8 @@ function createNormalTable() return surfaceMd3.normalTable() end function
 function createFrameCache(normalTable,maxEntries)
   if maxEntries<1 then return fail("frame cache needs positive capacity") end if
   if normalTable==void then normalTable=createNormalTable() end if
-  return FrameCache(normalTable,array(maxEntries,void),maxEntries,0,0,array(maxEntries,void),0,0,0,0,0,0)
+  packedTable=nativeMd3.tableBytes(normalTable);if packedTable is error then return packedTable end if
+  return FrameCache(normalTable,array(maxEntries,void),maxEntries,0,0,array(maxEntries,void),0,0,0,0,0,0,packedTable)
 end function
 function cachedFrame(cache,modelHandle,model,surfaceIndex,frame,oldFrame,backlerp,normalTable)
   if cache!=void then
@@ -245,12 +255,21 @@ function cachedFrame(cache,modelHandle,model,surfaceIndex,frame,oldFrame,backler
     end for end if
   end if
   table=normalTable;if cache!=void then table=cache.normalTable end if
-  surface=model.surfaces[surfaceIndex];lerped=surfaceMd3.lerpVertexesCached(surface.mesh,frame,oldFrame,backlerp,table);if lerped is error then return lerped end if
-  entry=FrameEntry(modelHandle,surfaceIndex,frame,oldFrame,backlerp,lerped[0],lerped[1])
+  surface=model.surfaces[surfaceIndex];entry=void
+  if cache!=void then
+    packed=surfaceMd3.lerpVertexesPacked(surface.mesh,frame,oldFrame,backlerp,cache.packedNormalTable);if packed is error then return packed end if
+    entry=FrameEntry(modelHandle,surfaceIndex,frame,oldFrame,backlerp,void,void,packed,surface.mesh.numVerts)
+  else
+    lerped=surfaceMd3.lerpVertexesCached(surface.mesh,frame,oldFrame,backlerp,table);if lerped is error then return lerped end if
+    entry=FrameEntry(modelHandle,surfaceIndex,frame,oldFrame,backlerp,lerped[0],lerped[1],void,surface.mesh.numVerts)
+  end if
   if cache!=void then
     cache.entries[cache.entryNext]=entry;cache.entryNext=(cache.entryNext+1)%cache.maxEntries;if cache.entryCount<cache.maxEntries then cache.entryCount=cache.entryCount+1 end if;cache.misses=cache.misses+1
   end if
   return entry
+end function
+function materializeFrame(entry)
+  if entry.xyz==void then values=nativeMd3.unpack(entry.packed,entry.vertexCount);if values is error then return values end if;entry.xyz=values[0];entry.normals=values[1] end if;return entry
 end function
 function cachedTransform(cache,decoded,modelCacheKey,surfaceIndex,frameData)
   if cache!=void then
@@ -258,12 +277,17 @@ function cachedTransform(cache,decoded,modelCacheKey,surfaceIndex,frameData)
       if entry!=void and entry.modelHandle==modelCacheKey and entry.surfaceIndex==surfaceIndex and entry.frame==decoded.frame and entry.oldFrame==decoded.oldframe and entry.backlerp==decoded.backlerp and entry.origin==decoded.origin and entry.axis==decoded.axis then cache.transformHits=cache.transformHits+1;return entry end if
     end for end if
   end if
-  orientation=viewMath.orientation(decoded.origin,decoded.axis);count=len(frameData.xyz);worldPositions=array(count,void);worldNormals=array(count,void)
-  for vertexIndex=0 to count-1
-    point=viewMath.localPointToWorld(frameData.xyz[vertexIndex],orientation);if point is error then return point end if
-    direction=viewMath.localNormalToWorld(frameData.normals[vertexIndex],orientation);if direction is error then return direction end if
-    worldPositions[vertexIndex]=point;worldNormals[vertexIndex]=direction
-  end for
+  count=frameData.vertexCount;worldPositions=void;worldNormals=void
+  if frameData.packed!=void then
+    packed=nativeMd3.transform(frameData.packed,count,decoded.origin,decoded.axis);if packed is error then return packed end if;values=nativeMd3.unpack(packed,count);if values is error then return values end if;worldPositions=values[0];worldNormals=values[1]
+  else
+    orientation=viewMath.orientation(decoded.origin,decoded.axis);worldPositions=array(count,void);worldNormals=array(count,void)
+    for vertexIndex=0 to count-1
+      point=viewMath.localPointToWorld(frameData.xyz[vertexIndex],orientation);if point is error then return point end if
+      direction=viewMath.localNormalToWorld(frameData.normals[vertexIndex],orientation);if direction is error then return direction end if
+      worldPositions[vertexIndex]=point;worldNormals[vertexIndex]=direction
+    end for
+  end if
   result=TransformEntry(modelCacheKey,surfaceIndex,decoded.frame,decoded.oldframe,decoded.backlerp,decoded.origin,decoded.axis,worldPositions,worldNormals,void,void,void,-1,void)
   if cache!=void then
     cache.transforms[cache.transformNext]=result;cache.transformNext=(cache.transformNext+1)%cache.maxEntries;if cache.transformCount<cache.maxEntries then cache.transformCount=cache.transformCount+1 end if;cache.transformMisses=cache.transformMisses+1
@@ -273,7 +297,10 @@ end function
 function cachedVertexColors(entry,lighting,alpha)
   if entry.colors!=void and entry.lightAlpha==alpha and entry.lightAmbient==lighting.ambient and entry.lightDirected==lighting.directed and entry.lightDirection==lighting.direction then return entry.colors end if
   colors=array(len(entry.normals),void)
-  for vertexIndex=0 to len(entry.normals)-1 color=lightGrid.vertexColor(lighting,entry.normals[vertexIndex]);color[3]=alpha;colors[vertexIndex]=color end for
+  // Older prepared views can still reference entry.colors. Fill a fresh
+  // fixed-size buffer per vertex instead of growing arrays or mutating those
+  // earlier colors when the lighting changes.
+  for vertexIndex=0 to len(entry.normals)-1 color=lightGrid.vertexColorInto(lighting,entry.normals[vertexIndex],[255,255,255,255]);color[3]=alpha;colors[vertexIndex]=color end for
   entry.lightAmbient=lighting.ambient;entry.lightDirected=lighting.directed;entry.lightDirection=lighting.direction;entry.lightAlpha=alpha;entry.colors=colors;return colors
 end function
 function addModelOptimized(output,decoded,selection,entityIndex,maxTrianglesPerSurface,cache,normalTable,grid,refdef,shadowMode,fogCatalog,noWorldModel)
@@ -281,6 +308,9 @@ function addModelOptimized(output,decoded,selection,entityIndex,maxTrianglesPerS
   // R_AddMD3Surfaces repairs the submitted refEntity_t in place before the
   // surfaces reach the back end. Do the same before cache lookup and lighting.
   decoded.frame=frames.frame;decoded.oldframe=frames.oldFrame
+  // RB_SurfaceMesh bypasses interpolation (including normal renormalization)
+  // whenever both frames are identical, regardless of the supplied backlerp.
+  if decoded.frame==decoded.oldframe then decoded.backlerp=0.0 end if
   fogNum=modelFogNum(decoded,model,fogCatalog,noWorldModel);if fogNum is error then return fogNum end if
   if decoded.backlerp<0.0 or decoded.backlerp>1.0 then return fail("MD3 backlerp outside zero to one") end if
   lighting=void
@@ -289,14 +319,15 @@ function addModelOptimized(output,decoded,selection,entityIndex,maxTrianglesPerS
     surface=model.surfaces[surfaceIndex];limit=surface.mesh.numTriangles;if limit>maxTrianglesPerSurface then limit=maxTrianglesPerSurface end if
     if limit==0 then continue end if
     frameData=cachedFrame(cache,modelCacheKey,model,surfaceIndex,decoded.frame,decoded.oldframe,decoded.backlerp,normalTable);if frameData is error then return frameData end if
+    if (shadowMode==3 and (decoded.renderfx&RF_SHADOW_PLANE)!=0) or (shadowMode==2 and (decoded.renderfx&(RF_NOSHADOW|RF_DEPTHHACK))==0) then materialized=materializeFrame(frameData);if materialized is error then return materialized end if end if
     transformed=cachedTransform(cache,decoded,modelCacheKey,surfaceIndex,frameData);if transformed is error then return transformed end if;worldPositions=transformed.positions;worldNormals=transformed.normals;vertexColors=void
     if lighting!=void then vertexColors=cachedVertexColors(transformed,lighting,decoded.shaderRGBA[3]) end if
     shadowDirection=[0.4285714286,0.2857142857,0.8571428571];if lighting!=void then shadowDirection=lighting.direction end if
-    output.sourceVertices=output.sourceVertices+surface.mesh.numVerts;output.vertexTransforms=output.vertexTransforms+surface.mesh.numVerts
+    vertexBase=output.sourceVertices;output.sourceVertices=output.sourceVertices+surface.mesh.numVerts;output.vertexTransforms=output.vertexTransforms+surface.mesh.numVerts
     shaderName="";if len(surface.shaders)>0 then shaderIndex=decoded.skinNum%len(surface.shaders);if shaderIndex<0 then shaderIndex=0 end if;shaderName=surface.shaders[shaderIndex] end if
     for triangleIndex=0 to limit-1
       base=triangleIndex*3;a=surface.mesh.triangles[base];b=surface.mesh.triangles[base+1];c=surface.mesh.triangles[base+2]
-      stored=appendIndexedModelTriangle(output,worldPositions,surface.mesh.texCoords,worldNormals,vertexColors,decoded.shaderRGBA,decoded.shaderTexCoord,decoded.shaderTime,a,b,c,decoded.hModel,decoded.customSkin,decoded.customShader,shaderName,surface.name,entityIndex,surfaceIndex,decoded.renderfx,fogNum);if stored is error then return stored end if
+      stored=appendIndexedModelTriangle(output,worldPositions,surface.mesh.texCoords,worldNormals,vertexColors,decoded.shaderRGBA,decoded.shaderTexCoord,decoded.shaderTime,a,b,c,decoded.hModel,decoded.customSkin,decoded.customShader,shaderName,surface.name,entityIndex,surfaceIndex,decoded.renderfx,fogNum,vertexBase);if stored is error then return stored end if
       if fogNum==0 and shadowMode==3 and (decoded.renderfx&RF_SHADOW_PLANE)!=0 then
         shadowPositions=array(3,void);shadowCorner=0
         for each vertexIndex in [a,b,c] point=projectionShadowPointOriented(frameData.xyz[vertexIndex],decoded.shadowPlane,shadowDirection,decoded.origin,decoded.axis);if point is error then return point end if;shadowPositions[shadowCorner]=point;shadowCorner=shadowCorner+1 end for
