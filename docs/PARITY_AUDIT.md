@@ -4,6 +4,42 @@ Stand: 2026-11-15. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Gepackte MD3-Animationsdaten statt dauerhaftem Vertex-Objektgraph
+
+Die Heap-Typzählung nach einer beobachteten GC findet 295.317 einzelne
+`surface_md3.PackedVertex`-Structs samt XYZ-Arrays. Ihre 590.634 Feldslots
+stellen 47,6 % der Struct-Feldslots dieses Snapshots. Der Port decodierte
+sämtliche Animationsframes im Voraus, obwohl der native Interpolationspfad
+anschließend wieder Bytepuffer daraus bildete. Das Original hält dagegen
+kontinuierliche `md3XyzNormal_t`-Records mit acht Bytes je Vertex.
+
+Der produktive Basis-/LOD-Loader verwendet jetzt `loadPacked`: derselbe
+vollständige Parser speichert direkt diese Framebytes. Die öffentliche
+`load`-API bleibt eager; Referenzzugriffe auf packed-only Modelle decodieren
+nur den angefragten Frame temporär und behalten keinen wachsenden Cache.
+Ein unabhängiger eingefrorener Parser und Surface-Kernel aus `98a4d50`
+bestätigen 354 Retail-Dateien, elf gültige Randfixtures und 40 Fehlerfälle:
+50.371 Framebytefolgen mit 6.162.725 Vertexrecords stimmen vollständig
+überein. Zusätzlich bestehen 3.684 native und 1.228 bitgenaue Referenz-
+Interpolationsvergleiche, Eingabe-Alias-/Signed-XYZ-Prüfungen und die gezielt
+fehlschlagende Eager-Fallback-Negativkontrolle. Geometrie, Retail-Match,
+Ingame-Setup/Controls/System/GameOptions und C-Cull-/Retail-LOD sind grün.
+
+Der folgende Heap-Snapshot des echten Spiels enthält **null PackedVertex-
+Objekte**. Die unterschiedlichen Aufnahmephasen erlauben keine pauschale
+Prozentbehauptung über den gesamten lebenden Speicher. Der bewegte Lauf
+beendet alle 30.000 Frames mit 115,19 FPS, P95 13 ms und maximal 1.157 ms;
+die unveränderte 1.000-ms-Abnahme bleibt fehlgeschlagen. Der separate
+5.000-Frame-Standlauf erreicht 150,28 FPS, P95 10 ms, maximal 166 ms und
+3,236 s Matchstart; auch die 200-FPS-/8-ms-Abnahme bleibt offen. Das normale
+Hauptmenü erreicht 0,42 s. Ein weiterer, separat geprüfter Ansatz betrifft
+doppelte Vertexobjekte innerhalb derselben BSP-Fläche; er wird nicht als
+bereits abgenommener Fix gezählt. Nachweis:
+[Packed-MD3-Abgleich und Messungen](verification/2026-11-15-packed-md3.json).
+
+Die folgenden Abschnitte dokumentieren den vorherigen Fehlerkorrekturstand
+und bewahren dessen teilweise fehlgeschlagene Messungen.
+
 ## Controls-Absturz im vollständigen Renderer und bewegte Langläufe
 
 Der bisherige UI-/Cgame-Test ohne vollständige Geometrieaufbereitung war

@@ -34,6 +34,20 @@ function packedFrame(value,frame)
   end for
   value.packedFrames[frame]=result;return result
 end function
+// Reference access to a packed-only asset is intentionally transient. Never
+// populate every visited .frames slot over a long match: native rendering uses
+// packedFrames directly, while legacy load/surface frames remain unchanged.
+function frameVertices(value,frame)
+  if frame<0 or frame>=value.numFrames then return error(7359,"MD3 frame index out of range") end if
+  if value.frames[frame]!=void then return value.frames[frame] end if
+  data=value.packedFrames[frame]
+  if data==void or typeof(data)!="bytes" or len(data)!=value.numVerts*8 then return error(7357,"MD3 frame vertex count mismatch") end if
+  decoded=array(value.numVerts,void)
+  for index=0 to value.numVerts-1
+    at=index*8;decoded[index]=vertex(data[at]|(data[at+1]<<8),data[at+2]|(data[at+3]<<8),data[at+4]|(data[at+5]<<8),data[at+6]|(data[at+7]<<8))
+  end for
+  return decoded
+end function
 function lerpVertexesPacked(value,frame,oldFrame,backlerp,table)
   if frame<0 or frame>=value.numFrames or oldFrame<0 or oldFrame>=value.numFrames then return error(7359,"MD3 frame index out of range") end if
   if backlerp<0.0 or backlerp>1.0 then return error(7360,"MD3 backlerp outside zero to one") end if
@@ -54,7 +68,12 @@ function validate(value)
     if value.texCoords[i]==void or len(value.texCoords[i])!=2 then return error(7356,"malformed MD3 texture coordinate") end if
   end for
   for frame=0 to value.numFrames-1
-    if value.frames[frame]==void or len(value.frames[frame])!=value.numVerts then return error(7357,"MD3 frame vertex count mismatch") end if
+    if value.frames[frame]==void then
+      if value.packedFrames==void or len(value.packedFrames)!=value.numFrames then return error(7357,"MD3 frame vertex count mismatch") end if
+      data=value.packedFrames[frame];if data==void or typeof(data)!="bytes" or len(data)!=value.numVerts*8 then return error(7357,"MD3 frame vertex count mismatch") end if
+      continue
+    end if
+    if len(value.frames[frame])!=value.numVerts then return error(7357,"MD3 frame vertex count mismatch") end if
     for i=0 to value.numVerts-1
       v=value.frames[frame][i]
       if v==void or not valid3(v.xyz) then return error(7358,"malformed MD3 packed vertex") end if
@@ -95,11 +114,12 @@ function lerpVertexesCached(value,frame,oldFrame,backlerp,table)
   if frame<0 or frame>=value.numFrames or oldFrame<0 or oldFrame>=value.numFrames then return error(7359,"MD3 frame index out of range") end if
   backlerp=numeric.f32(backlerp)
   if backlerp<0.0 or backlerp>1.0 then return error(7360,"MD3 backlerp outside zero to one") end if
+  freshFrame=frameVertices(value,frame);if freshFrame is error then return freshFrame end if
   xyz=array(value.numVerts,void);normals=array(value.numVerts,void)
   newScale=numeric.fmul(MD3_XYZ_SCALE,numeric.fsub(1.0,backlerp))
   if backlerp==0.0 then
     for i=0 to value.numVerts-1
-      current=value.frames[frame][i]
+      current=freshFrame[i]
       xyz[i]=[numeric.fmul(current.xyz[0],newScale),numeric.fmul(current.xyz[1],newScale),numeric.fmul(current.xyz[2],newScale)]
       normals[i]=decodeNormalCached(current.packedNormal,table)
     end for
@@ -107,8 +127,9 @@ function lerpVertexesCached(value,frame,oldFrame,backlerp,table)
   end if
   oldScale=numeric.fmul(MD3_XYZ_SCALE,backlerp)
   oldNormalScale=backlerp;newNormalScale=numeric.fsub(1.0,backlerp)
+  oldFrameVertices=freshFrame;if frame!=oldFrame then oldFrameVertices=frameVertices(value,oldFrame);if oldFrameVertices is error then return oldFrameVertices end if end if
   for i=0 to value.numVerts-1
-    fresh=value.frames[frame][i];old=value.frames[oldFrame][i]
+    fresh=freshFrame[i];old=oldFrameVertices[i]
     xyz[i]=[
       numeric.fadd(numeric.fmul(old.xyz[0],oldScale),numeric.fmul(fresh.xyz[0],newScale)),
       numeric.fadd(numeric.fmul(old.xyz[1],oldScale),numeric.fmul(fresh.xyz[1],newScale)),

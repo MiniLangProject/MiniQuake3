@@ -41,6 +41,7 @@ def main():
     scripts.append(("test_scene_reuse_ownership.py",[]))
     scripts.append(("test_client_frame_input.py",["--data-root",str(args.data_root)] if args.data_root else []))
     scripts.append(("test_md3_cache_index.py",[]))
+    if args.data_root: scripts.append(("test_md3_packed.py",["--data-root",str(args.data_root)]))
     if args.data_root: scripts.append(("test_md3_cache_retention.py",["--data-root",str(args.data_root)]))
     scripts.append(("test_collision_frontier.py",[]))
     scripts.append(("test_trace_query_storage.py",[]))

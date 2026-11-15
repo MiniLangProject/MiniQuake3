@@ -1141,11 +1141,11 @@ function registerModel(context,name)
     index=toNumber(decode(slice(bytes(name),1,len(bytes(name))-1)));checked=try(collision.inlineModel(context.collisionWorld,index));if checked is error then return 0 end if;loaded=try(qvmSceneGeometry.loadInlineModel(context.markMap,index,65536));if loaded is error then return 0 end if
   else
     if not strings.endsWith(strings.toLowerAscii(name),".md3") then return 0 end if
-    data=try(pk3.read(context.archive,name));if data is error then return 0 end if;parsed=try(md3.load(data));if parsed is error then return 0 end if
+    data=try(pk3.read(context.archive,name));if data is error then return 0 end if;parsed=try(md3.loadPacked(data));if parsed is error then return 0 end if
     levels=[parsed];stem=decode(slice(bytes(name),0,len(bytes(name))-4))
     for lod=1 to 2
       lodData=try(pk3.read(context.archive,stem+"_"+str(lod)+".md3"));if lodData is error then break end if
-      lodModel=try(md3.load(lodData));if lodModel is error then break end if;levels=levels+[lodModel]
+      lodModel=try(md3.loadPacked(lodData));if lodModel is error then break end if;levels=levels+[lodModel]
     end for
     loaded=qvmSceneGeometry.md3Lods(levels)
   end if

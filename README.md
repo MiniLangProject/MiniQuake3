@@ -54,19 +54,22 @@ im eingefrorenen MiniLang-Compiler ergänzt diese Änderungen. Reproduktion:
 `python scripts/bootstrap_allocator_toolchain.py --stage2 --install`;
 Basis, Patch und Compilerhash stehen in `docs/reference/toolchain.json`.
 
-Der aktuelle bewegte 30.000-Frame-Retail-Lauf beendet alle Frames mit
-108,44 FPS und stabilisiert sich bei etwa 811 MB privatem Prozessspeicher.
-Der vorherige fortschreitende Einbruch auf 2 FPS bleibt aus; die Abnahme
-besteht trotzdem **nicht**: Die Garbage Collection verursacht weiterhin
-Einzelbilder bis 1.968 ms. Ein kleinerer Modellcache hält 87,5 % weniger
-Arrays/Floatwerte und liefert identische Geometrie, löst diese Pause jedoch
-nicht vollständig. Der separate 5.000-Frame-Standlauf erreicht 133,41 FPS bei 3,35 s Matchstart;
-die 200-FPS- und vollständige 1:1-Abnahme bleiben offen.
-Die [aktuellen Fehler-/Buildnachweise](docs/verification/2026-11-15-controls-stalls.json)
-und der [Paritätsaudit](docs/PARITY_AUDIT.md) halten auch die fehlgeschlagenen
-Messungen fest. Zum Testen `build/MiniQuake3.exe` direkt starten;
-`baseq3/pak*.pk3` und `qvms` liegen daneben. Der EXE-Start öffnet nur das
-Spielfenster. Der geprüfte normale Hauptmenüstart benötigt 0,44 Sekunden.
+Der produktive MD3-Loader speichert Animationsframes jetzt direkt als
+validierte Bytepuffer, entsprechend dem originalen Acht-Byte-Vertexformat.
+Der vollständige unabhängige Vergleich aller 354 Retail-MD3-Dateien ist grün;
+der echte Spiel-Heap hält die vorherigen knapp 300.000 einzelnen Frame-
+Vertexobjekte nicht mehr. Öffentliche Referenz-APIs bleiben erhalten.
+
+Der bewegte 30.000-Frame-Lauf beendet alle Frames mit 115,19 FPS. Die
+Abnahme besteht trotzdem **nicht**: Einzelbilder erreichen noch 1.157 ms.
+Der separate Standlauf erreicht 150,28 FPS über 5.000 Frames bei 3,236 s
+Matchstart und P95 10 ms. Die 200-FPS- und vollständige 1:1-Abnahme bleiben
+offen; ein weiterer BSP-Speicherblock ist in Arbeit. Die
+[aktuellen Modell-/Buildnachweise](docs/verification/2026-11-15-packed-md3.json)
+und der [Paritätsaudit](docs/PARITY_AUDIT.md) bewahren auch die fehlgeschlagenen
+Messungen. Zum Testen `build/MiniQuake3.exe` direkt starten; `baseq3/pak*.pk3`
+und `qvms` liegen daneben. Der EXE-Start öffnet nur das Spielfenster. Der
+geprüfte normale Hauptmenüstart benötigt 0,42 Sekunden.
 
 Der Standardstart von `build/MiniQuake3.exe` erwartet `baseq3` und `qvms`
 direkt neben der EXE, öffnet zuerst das originale Quake-III-Hauptmenü und lädt

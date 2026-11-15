@@ -52,7 +52,11 @@ function fixedString(data,offset,capacity)
   return decode(slice(data,offset,count))
 end function
 
-function load(data)
+// Both representations pass through the identical complete parser/validation.
+// Public load keeps its eagerly decoded reference frames unchanged.
+function load(data) return loadMode(data,false) end function
+function loadPacked(data) return loadMode(data,true) end function
+function loadMode(data,packedOnly)
   if data==void or typeof(data)!="bytes" or len(data)<HEADER_SIZE then return fail("truncated header") end if
   if i32(data,0)!=MD3_IDENT then return fail("invalid signature") end if
   if i32(data,4)!=MD3_VERSION then return fail("unsupported version") end if
@@ -124,16 +128,25 @@ function load(data)
     if numShaders>0 then for shaderIndex=0 to numShaders-1 shaders[shaderIndex]=fixedString(data,surfaceOffset+ofsShaders+shaderIndex*SHADER_SIZE,64) end for end if
     texCoords=array(numVerts,void)
     for vertexIndex=0 to numVerts-1 at=surfaceOffset+ofsSt+vertexIndex*ST_SIZE;texCoords[vertexIndex]=[f32(data,at),f32(data,at+4)] end for
-    packedFrames=array(numFrames,void)
+    decodedFrames=array(numFrames,void);nativeFrames=void
+    if packedOnly then nativeFrames=array(numFrames,void) end if
     for frameIndex=0 to numFrames-1
-      packed=array(numVerts,void)
-      for vertexIndex=0 to numVerts-1
-        at=surfaceOffset+ofsXyz+(frameIndex*numVerts+vertexIndex)*VERTEX_SIZE
-        packed[vertexIndex]=md3Mesh.vertex(u16(data,at),u16(data,at+2),u16(data,at+4),u16(data,at+6))
-      end for
-      packedFrames[frameIndex]=packed
+      if packedOnly then
+        // All four 16-bit words accept every bit pattern; the full XYZ span
+        // was validated above. Copy directly, without a vertex object graph.
+        nativeFrames[frameIndex]=slice(data,surfaceOffset+ofsXyz+frameIndex*numVerts*VERTEX_SIZE,numVerts*VERTEX_SIZE)
+      else
+        packed=array(numVerts,void)
+        for vertexIndex=0 to numVerts-1
+          at=surfaceOffset+ofsXyz+(frameIndex*numVerts+vertexIndex)*VERTEX_SIZE
+          packed[vertexIndex]=md3Mesh.vertex(u16(data,at),u16(data,at+2),u16(data,at+4),u16(data,at+6))
+        end for
+        decodedFrames[frameIndex]=packed
+      end if
     end for
-    surfaces[surfaceIndex]=Surface(surfaceName,shaders,md3Mesh.surface(numFrames,numVerts,numTriangles,triangles,texCoords,packedFrames))
+    mesh=md3Mesh.surface(numFrames,numVerts,numTriangles,triangles,texCoords,decodedFrames)
+    if packedOnly then mesh.packedFrames=nativeFrames end if
+    surfaces[surfaceIndex]=Surface(surfaceName,shaders,mesh)
     surfaceOffset=surfaceOffset+surfaceEnd
   end for end if
   if surfaceOffset!=ofsEnd then return fail("surface chain does not reach file end") end if
