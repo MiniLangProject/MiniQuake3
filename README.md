@@ -42,23 +42,31 @@ verbleibende Grenzen stehen im aktuellen Abschnitt des
 [Paritätsaudits](docs/PARITY_AUDIT.md). Ältere Build-Hashes und Messungen in
 den nachfolgenden historischen Abschnitten bezeichnen frühere Zwischenstände.
 
-Die Clientframe-Basis vom 15. November erreicht auf Ryzen 9 9900X / RTX 5080 bei
-1280×720 **202 FPS über 5.000 Frames** mit vollständiger getesteter Szene
-und einem echten Usercmd/ClientThink pro Clientframe. Der direkte Matchstart
-benötigt **2,50 s**, das Hauptmenü beim normalen EXE-Start **0,30 s**.
-Einzelne Frame-Spitzen bis 151 ms bleiben offen.
-Der nachfolgende Maus-/Menü-Build korrigiert die gespiegelte Kamera und
-einen Controls-Abbruch bei unbelegten Tasten. Sein neuer 5.000-Frame-Lauf
-erreicht 157 FPS bei 2,64 s Matchstart; die 200-FPS-Abnahme besteht damit
-aktuell nicht. Die Ursache der Abweichung ist noch nicht isoliert.
-Die [neuen Buildnachweise](docs/verification/2026-11-15-mouse-menu-build.json)
-enthalten diesen fehlgeschlagenen Leistungstest ausdrücklich.
-Messbedingungen, Binärhashes und die davon getrennte Rendererprobe stehen in
-[den aktuellen Eingabe-/Leistungsnachweisen](docs/verification/2026-11-15-client-input.json)
-und [der Renderer-Basis](docs/verification/2026-11-15-performance.json).
-Zum Testen `build/MiniQuake3.exe` direkt starten; `baseq3/pak*.pk3` und der
-beim Build erzeugte Ordner `qvms` liegen daneben. Der EXE-Start öffnet nur
-das Spielfenster. Eine vollständige 1:1- und Langzeitabnahme ist weiterhin offen.
+Der aktuelle Fehlerkorrekturblock behebt den erneut gemeldeten Controls-
+Absturz im laufenden Match: Das originale UI-Modell verwendet einen teilweise
+außerhalb liegenden Viewport, dessen Projektion jetzt erhalten und dessen
+Rasterbereich korrekt abgeschnitten wird. Ein Test mit tatsächlichem Retail-
+Spiel, Eingabefolge und Hardware-Renderer prüft Escape → Setup → Controls.
+Kollisionsabfragen verwenden kleine geometrisch wachsende Standard-Listen
+und Byte-Markierungen; Materialwrapper werden wiederverwendet und die
+begrenzten MD3-Caches besitzen Hashindizes. Ein isolierter Allocator-Backport
+im eingefrorenen MiniLang-Compiler ergänzt diese Änderungen. Reproduktion:
+`python scripts/bootstrap_allocator_toolchain.py --stage2 --install`;
+Basis, Patch und Compilerhash stehen in `docs/reference/toolchain.json`.
+
+Der aktuelle bewegte 30.000-Frame-Retail-Lauf beendet alle Frames mit
+108,44 FPS und stabilisiert sich bei etwa 811 MB privatem Prozessspeicher.
+Der vorherige fortschreitende Einbruch auf 2 FPS bleibt aus; die Abnahme
+besteht trotzdem **nicht**: Die Garbage Collection verursacht weiterhin
+Einzelbilder bis 1.968 ms. Ein kleinerer Modellcache hält 87,5 % weniger
+Arrays/Floatwerte und liefert identische Geometrie, löst diese Pause jedoch
+nicht vollständig. Der separate 5.000-Frame-Standlauf erreicht 133,41 FPS bei 3,35 s Matchstart;
+die 200-FPS- und vollständige 1:1-Abnahme bleiben offen.
+Die [aktuellen Fehler-/Buildnachweise](docs/verification/2026-11-15-controls-stalls.json)
+und der [Paritätsaudit](docs/PARITY_AUDIT.md) halten auch die fehlgeschlagenen
+Messungen fest. Zum Testen `build/MiniQuake3.exe` direkt starten;
+`baseq3/pak*.pk3` und `qvms` liegen daneben. Der EXE-Start öffnet nur das
+Spielfenster. Der geprüfte normale Hauptmenüstart benötigt 0,44 Sekunden.
 
 Der Standardstart von `build/MiniQuake3.exe` erwartet `baseq3` und `qvms`
 direkt neben der EXE, öffnet zuerst das originale Quake-III-Hauptmenü und lädt

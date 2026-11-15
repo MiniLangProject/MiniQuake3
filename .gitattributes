@@ -7,3 +7,5 @@
 *.h text eol=lf
 *.inc text eol=lf
 *.ps1 text eol=lf
+# Unified-diff blank context lines contain a required leading space.
+*.patch text eol=lf whitespace=-blank-at-eol

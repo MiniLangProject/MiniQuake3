@@ -1,0 +1,120 @@
+diff --git a/mlc/codegen/codegen_memory.ml b/mlc/codegen/codegen_memory.ml
+index 7e88428..6d85ec8 100644
+--- a/mlc/codegen/codegen_memory.ml
++++ b/mlc/codegen/codegen_memory.ml
+@@ -212,6 +212,10 @@ function ensure_gc_data(state)
+ 
+   db = _ensure_data_u64(db, "gc_roots_head", 0)
+   db = _ensure_data_u64(db, "gc_free_head", 0)
++  // Allocator-only backport from a40d726: proven prefix and no-fit floor.
++  db = _ensure_data_u64(db, "gc_free_search_size", 0)
++  db = _ensure_data_u64(db, "gc_free_search_prev", 0)
++  db = _ensure_data_u64(db, "gc_free_miss_size", 0)
+ 
+   // Target GC CLI settings must initialize both pressure counters.  Keeping
+   // these values only in the compiler's parsed configuration made
+@@ -430,6 +434,9 @@ function emit_gc_init_globals(state, disable_periodic)
+   state.asm = a.mov_rax_imm64(state.asm, 0)
+   state.asm = a.mov_rip_qword_rax(state.asm, "gc_roots_head")
+   state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_head")
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_search_size")
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_search_prev")
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_miss_size")
+   state.asm = a.mov_rip_qword_rax(state.asm, "gc_mark_top")
+ 
+   if disable_periodic then
+@@ -707,6 +714,10 @@ function emit_alloc_function(state)
+   state.asm = a.mov_membase_disp_imm32(state.asm, "r11", THREAD_TLAB_END_OFFSET, 0, true)
+   state.asm = a.mov_r64_r64(state.asm, "r10", "r9")
+   state.asm = a.sub_r64_r64(state.asm, "r10", "r8")
++  // Retired/merged private tails introduce new holes under the heap monitor.
++  state.asm = a.mov_rax_imm64(state.asm, 0)
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_miss_size")
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_search_size")
+   state.asm = a.mov_rax_rip_qword(state.asm, "gc_free_head")
+   // A central TLAB refill splits its 64-KiB range from the front of a free
+   // block and links the right remainder at the list head. If no intervening
+@@ -936,7 +947,15 @@ function emit_alloc_function(state)
+ 
+   state.asm = a.mov_r64_membase_disp(state.asm, "rcx", "rsp", 0x20)
+   state.asm = a.mark(state.asm, l_try_free)
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_free_miss_size")
++  state.asm = a.test_r64_r64(state.asm, "rax", "rax")
++  state.asm = a.jcc(state.asm, "e", l_try_free + "_search")
++  state.asm = a.cmp_r64_r64(state.asm, "rcx", "rax")
++  state.asm = a.jcc(state.asm, "ae", l_bump)
++  state.asm = a.mark(state.asm, l_try_free + "_search")
+ 
++  // Try the head without cursor bookkeeping on the common successful
++  // path. Only a failed head probe consults the exact-size prefix cache.
+   state.asm = a.mov_rax_rip_qword(state.asm, "gc_free_head")
+   state.asm = a.mov_r64_r64(state.asm, "r8", "rax")
+   state.asm = a.mov_rax_imm64(state.asm, 0)
+@@ -953,6 +972,20 @@ function emit_alloc_function(state)
+   state.asm = a.jmp(state.asm, l_free_found)
+ 
+   state.asm = a.mark(state.asm, l_free_advance)
++  // A zero predecessor means this was the initial head probe. A cached
++  // predecessor skips only a prefix proven undersized for this exact
++  // request. Every request still examines new split blocks at the head.
++  state.asm = a.mov_r64_membase_disp(state.asm, "rax", "rsp", 0x28)
++  state.asm = a.test_r64_r64(state.asm, "rax", "rax")
++  state.asm = a.jcc(state.asm, "ne", l_free_advance + "_next")
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_free_search_size")
++  state.asm = a.cmp_r64_r64(state.asm, "rax", "rcx")
++  state.asm = a.jcc(state.asm, "ne", l_free_advance + "_next")
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_free_search_prev")
++  state.asm = a.mov_rsp_disp32_rax(state.asm, 0x28)
++  state.asm = a.mov_r64_membase_disp(state.asm, "r8", "rax", c.GC_OFF_NEXT_FREE)
++  state.asm = a.jmp(state.asm, l_free_loop)
++  state.asm = a.mark(state.asm, l_free_advance + "_next")
+   state.asm = a.mov_r64_r64(state.asm, "rax", "r8")
+   state.asm = a.mov_rsp_disp32_rax(state.asm, 0x28)
+   state.asm = a.mov_r64_membase_disp(state.asm, "r8", "r8", c.GC_OFF_NEXT_FREE)
+@@ -964,12 +997,19 @@ function emit_alloc_function(state)
+   state.asm = a.test_r64_r64(state.asm, "r10", "r10")
+   state.asm = a.jcc(state.asm, "z", l_free_head)
+   state.asm = a.mov_membase_disp_r64(state.asm, "r10", c.GC_OFF_NEXT_FREE, "r9")
++  state.asm = a.mov_r64_r64(state.asm, "rax", "rcx")
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_search_size")
++  state.asm = a.mov_r64_r64(state.asm, "rax", "r10")
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_search_prev")
+   state.asm = a.jmp(state.asm, l_free_unlinked)
+ 
+   state.asm = a.mark(state.asm, l_free_head)
+   state.asm = a.mov_r64_r64(state.asm, "rax", "r9")
+   state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_head")
+ 
++  // A head hit has no skipped prefix; old predecessor may be recycled.
++  state.asm = a.mov_rax_imm64(state.asm, 0)
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_search_size")
+   state.asm = a.mark(state.asm, l_free_unlinked)
+   state.asm = a.mov_r64_r64(state.asm, "r11", "rdx")
+   state.asm = a.sub_r64_r64(state.asm, "r11", "rcx")
+@@ -1007,6 +1047,15 @@ function emit_alloc_function(state)
+   state.asm = a.ret(state.asm)
+ 
+   state.asm = a.mark(state.asm, l_bump)
++  state.asm = a.mov_rax_rip_qword(state.asm, "gc_free_miss_size")
++  state.asm = a.test_r64_r64(state.asm, "rax", "rax")
++  state.asm = a.jcc(state.asm, "e", l_bump + "_remember")
++  state.asm = a.cmp_r64_r64(state.asm, "rcx", "rax")
++  state.asm = a.jcc(state.asm, "ae", l_bump + "_remember_done")
++  state.asm = a.mark(state.asm, l_bump + "_remember")
++  state.asm = a.mov_r64_r64(state.asm, "rax", "rcx")
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_miss_size")
++  state.asm = a.mark(state.asm, l_bump + "_remember_done")
+   state.asm = a.mov_rax_rip_qword(state.asm, "heap_ptr")
+   state.asm = a.mov_rdx_rax(state.asm)
+ 
+@@ -1381,6 +1430,10 @@ function emit_gc_collect_function(state)
+ 
+   state.asm = a.mark(state.asm, L_BODY)
+ 
++  // Collector owns the heap monitor; sweep/rebuild can replace all cursors.
++  state.asm = a.mov_rax_imm64(state.asm, 0)
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_miss_size")
++  state.asm = a.mov_rip_qword_rax(state.asm, "gc_free_search_size")
+   // Shared runtime-helper scratch remains part of the precise root set.
+   for i = 0 to 7
+     state.asm = a.mov_rax_rip_qword(state.asm, "gc_tmp" + i)

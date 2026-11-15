@@ -40,6 +40,14 @@ def main():
     scripts.append(("test_md3_vertex_identity.py",[]))
     scripts.append(("test_scene_reuse_ownership.py",[]))
     scripts.append(("test_client_frame_input.py",["--data-root",str(args.data_root)] if args.data_root else []))
+    scripts.append(("test_md3_cache_index.py",[]))
+    if args.data_root: scripts.append(("test_md3_cache_retention.py",["--data-root",str(args.data_root)]))
+    scripts.append(("test_collision_frontier.py",[]))
+    scripts.append(("test_trace_query_storage.py",[]))
+    if json.loads((ROOT / "docs/reference/toolchain.json").read_text()).get("allocator_backport"):
+        scripts.append(("test_allocator_search.py",[]))
+        scripts.append(("test_allocator_legacy.py",[]))
+    if args.data_root: scripts.append(("test_ingame_controls_render.py",["--data-root",str(args.data_root)]))
     scripts.append(("test_qvm_native_profile.py",[]))
     scripts.append(("test_native_qvm_boundaries.py",[]))
     scripts.append(("test_render_profile.py",[]))
@@ -450,6 +458,7 @@ def main():
         scripts.append(("test_cm_load_complete.py",[str(args.data_root)]))
         scripts.append(("test_runtime_spatial.py",[str(args.data_root)]))
     if args.extended:
+        scripts.append(("test_ingame_controls_render.py",["--data-root",str(args.data_root),"--mode","moving","--frames","30000","--max-work-ms","1000"]))
         scripts.extend([("test_patches.py",[str(args.data_root)]),
                         ("test_collision.py",[str(args.data_root),"--no-curves"]),
                         ("test_collision.py",[str(args.data_root)]),

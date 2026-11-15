@@ -4,6 +4,129 @@ Stand: 2026-11-15. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Controls-Absturz im vollständigen Renderer und bewegte Langläufe
+
+Der bisherige UI-/Cgame-Test ohne vollständige Geometrieaufbereitung war
+für den erneut gemeldeten Controls-Absturz unzureichend. Ein neuer Test
+übernimmt den produktiven Spielcode und fügt nur deterministische Eingaben
+und Messausgaben ein. Er reproduziert auf echter Retail-q3dm1 mit OpenGL
+Escape → Setup → Controls und Fehler 7691: Das originale UI-Spielermodell
+verwendet bei 1280×720 ein Viewport `760,-60,480,840`. Dieses gültige,
+teilweise außerhalb liegende Rechteck wurde irrtümlich zurückgewiesen.
+
+Die Korrektur erhält das vollständige Projektionsrechteck einschließlich
+Zentrum und FOV und schneidet ausschließlich Scissor-/Rastergrenzen auf den
+Framebuffer. GL, serielle/parallele CPU-Rasterisierung und Stencilschatten
+behandeln leere Schnittmengen und Endpunkte mit sicheren 64-Bit-Zwischenwerten.
+23 Viewport-Verträge und unabhängige vollständige GL-Framebuffervergleiche
+prüfen dies einschließlich des tatsächlichen Offscreen-Controls-Rechtecks.
+
+Für Bewegung werden gleich große Material-Arrays und Dreieckswrapper
+wiederverwendet. Die weiterhin begrenzten MD3-Pose-/Transform-Caches mit je
+256 Einträgen besitzen jetzt Hashindizes statt vollständiger Ringsuchen;
+Hashkollisionen prüfen nach wie vor den vollständigen Schlüssel. Transform-
+Schlüssel besitzen ihre eigenen Positions-/Achsenwerte, damit spätere
+Änderungen eines Aufrufers keinen Treffer mit veralteten Vertices erzeugen.
+Ein exakter Vergleich über 3.000 Posen besucht 1.641 statt 680.500 Kandidaten.
+Dies ist kein Nachweis eines entsprechenden Spiel-FPS-Gewinns und entfernt
+die Transform-Allokation selbst nicht.
+
+Ein 30.000-Frame-Standlauf des vorherigen Builds endet nach rund 180 Sekunden
+ohne den gemeldeten dauernden FPS-Abfall. Nach 40 Sekunden bleibt der private
+Speicher bei ungefähr 726 MB. Dieser Befund schließt den vom Benutzer
+bestätigten bewegungs-/kampfabhängigen Fehler ausdrücklich nicht aus.
+Der neue bewegte Replay prüft echte Positionsänderungen, Angriffs-Cmds und
+verbrauchte Munition; ein reiner Kameralauf oder ein Standlauf genügt nicht.
+Dieser Replay reproduziert nach ungefähr 6.500 Frames den gemeldeten
+Einbruch auf wenige FPS und bis zu 14.049 ms pro Bild. Der Hauptthread wird
+zwölfmal in der linearen Freilisten-Suche des Allocators erfasst; der
+Aufrufer lässt sich im tatsächlichen Binary auf `collision.world.throughTree`
+zurückführen. Diese Routine reservierte pro Trace einen Stack für alle
+BSP-Knoten statt für die kleine DFS-Front. `throughTree` und `positionTest`
+verwenden jetzt lokale, geometrisch wachsende Standard-Listen. Besuchsfolge
+und Grenzfälle bleiben durch die Differentialtests überprüfbar; es wird
+kein globaler Scratchpuffer eingeführt.
+35 fokussierte Verträge erhalten unter anderem die alte DFS-/Pruning-
+Semantik und prüfen einen über 32 Einträge wachsenden Stack. Ein schmaler
+Trace in einem synthetischen BSP mit 4.096 Knoten allokiert 456 statt
+32.936 Bytes. Zusätzlich bestehen jeweils 4.548 Differentialfälle gegen
+den unveränderten Retail-C-Code mit Kurven an und aus (9.096 Fälle).
+
+Die weitere Laufzeitdiagnose fand dieselbe Freilistensuche auch bei den
+Trace-Besuchsmarkierungen und dem vorab reservierten 1.024-Entity-Ergebnis.
+Besuchsmarkierungen verwenden jetzt private Bytepuffer; Bereichsabfragen
+sammeln Treffer in geometrisch wachsenden Standard-Listen und geben ein
+exaktes Array zurück. 23 zusätzliche Verträge einschließlich Rollback-
+Negativkontrollen messen 3.160 statt 24.736 Bytes für Trace-Markierungen und
+768 statt 8.664 Bytes für eine dünn besetzte Bereichsabfrage. Der unveränderte
+C-Code bestätigt 4.628 Server-Weltoperationen mit 236.874 exakten Werten.
+Nach den letzten Änderungen bestehen außerdem 17.920 Pmove-Kommandos mit
+2.974.720 verglichenen Ausgabefeldern, jeweils mit und ohne Kurven.
+
+Zusätzlich enthält der eingefrorene MiniLang-Compiler einen isolierten
+53-Zeilen-Backport der Allocator-Suche aus `a40d726` auf Basis `738d830`.
+Frontend, Standardbibliothek, ABI und GC-Auslösepolitik bleiben unverändert.
+Der Patch liegt unter `patches/minilang-738d830-allocator-search.patch`;
+`scripts/bootstrap_allocator_toolchain.py --stage2` reproduziert den
+zweistufigen Bootstrap. Der installierte Compiler hat SHA-256
+`280135a508ed0c113e62be6464e6812826afdfc239ae20d9d369b15666561113`.
+Zehn unveränderte GC-/Thread-/TLAB-Verträge bestehen sowohl mit dem alten
+als auch dem neuen Compiler; MLO und monolithischer Build liefern für die
+separaten Pipeline-Proben identische Programme. Vier Fragmentierungsfälle
+prüfen Inhalt und Wiederverwendung. Der Compilerpatch allein reichte im
+bewegten Spiel nicht aus; die Datenstrukturkorrekturen sind ebenfalls nötig.
+`heap_bytes_used()` bezeichnet den Heap-Höchststand einschließlich freier
+Lücken, nicht lebende Objekte oder den Nachweis eines Speicherlecks.
+
+Ein erster vollständiger Lauf des kombinierten Builds erreicht mit echten
+Positionsänderungen, 15.000 Angriffskommandos und 87 Munitionsabnahmen alle
+30.000 Frames: 117,99 FPS, Work-P50/P95/P99 7/13/20 ms. Der private Speicher
+stabilisiert sich gegen Ende bei etwa 802 MB; der fortschreitende Einbruch auf
+2 FPS bleibt aus. Dieser Lauf besteht die Latenzabnahme trotzdem **nicht**:
+Ein Bild benötigt 1.855 ms bei einer unveränderten Schranke von 1.000 ms.
+Die Rohdaten unter `build/reference/moving-final-query-storage` bleiben als
+fehlgeschlagener Latenzlauf erhalten. Das beseitigt weder die offene
+200-FPS-Abnahme noch ersetzt es eine allgemeine Langzeit-/Netzwerkabnahme.
+
+Die Phasenmessung reproduziert auch ohne parallele Builds eine Spitze von
+1.353 ms, davon 1.334 ms Geometrie bei unveränderter Texturzahl. Ein separater
+5.000-Frame-Samplinglauf lokalisiert die verbleibende Pause tatsächlich in
+`fn_gc_collect`: 115 aufeinanderfolgende Stichproben über etwa 1.201 ms,
+davon 111 beim Markieren lebender Objekte und vier beim Sweep/Rebuild. Die
+Sampler-Unterbrechungen summieren sich darin auf nur 9,34 ms. Die Zuordnung
+zum Frame beruht auf Reihenfolge und Dauer, nicht auf exakten stdout-Zeiten.
+Die vorherigen mehrsekündigen Freilisten-Suchen treten in dieser Form nicht
+mehr auf. Der produktive MD3-Cache hält jetzt 32 statt 256 Einträge; verdrängte Posen
+werden vollständig neu berechnet. API und Geometrie-/Dreieckbudgets bleiben
+unverändert. Ein Vergleich mit sechs echten Retail-MD3-Teilen prüft über
+96 bewegte Frames 768 Transformationen, 108.960 Vertices und 101.952
+Dreiecke: Positionen und Normalen sind bitweise, Farben komponentengenau
+identisch. Im gehaltenen Cachegraphen sinken Vertices von 36.320 auf 4.540,
+Arrays von 109.728 auf 13.716 und Floatwerte von 217.920 auf 27.240. Auch
+bereits vorbereitete Ansichten bleiben nach Verdrängung unverändert. Dies
+belegt geringere Retention, die Spiel-Latenzabnahme folgt separat; das
+GC-Limit wird nicht angehoben.
+Der unabhängige Haupt-EXE-Lauf vor dieser Cacheanpassung misst 110,82 FPS,
+3,949 s Matchstart, Work-P95 15 ms und maximal 194 ms bei 5.000 Standframes;
+die 200-FPS-/8-ms-Abnahme besteht ausdrücklich nicht.
+
+Der abschließende bewegte Lauf mit Cachegrenze 32 beendet wiederum alle
+30.000 Frames: 108,44 FPS, Work-P50/P95/P99 8/13/21 ms, privater Speicher
+ab etwa einer Minute stabil bei rund 811 MB. Die maximale GC-/Framepause
+beträgt jedoch 1.968 ms: **Latenzabnahme weiterhin fehlgeschlagen**. Der
+kleinere Modellcache ist daher keine vollständige Behebung der Reststopps.
+Der neue vollständige Controls-/Renderer-Replay besteht 120 Frames; der
+normale Hauptmenüstart erreicht 0,44 s. Die Untersuchung der tatsächlich
+gehaltenen Heap-Typen läuft weiter. Die aktuellen und früheren Ergebnisse
+sind im [zusammengefassten Buildnachweis](verification/2026-11-15-controls-stalls.json)
+getrennt gekennzeichnet.
+
+Der separat gemessene finale Haupt-EXE-Lauf mit Cachegrenze 32 erreicht
+133,41 FPS über 5.000 Frames bei 3,350 s Matchstart, Work-P95 11 ms und
+maximal 178 ms. Die vollständige getestete Szene enthält drei Views, fünf
+Modelle und 524 Modelldreiecke. Die unveränderten 200-FPS-/8-ms-Schranken
+bleiben fehlgeschlagen; diese Standmessung ersetzt den bewegten Lauf nicht.
+
 ## Mausprojektion und Setup im laufenden Match
 
 Die originale `refdef.viewaxis[1]` zeigt nach links. Der Fenster-Renderer

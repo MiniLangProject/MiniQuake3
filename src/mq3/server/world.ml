@@ -10,6 +10,7 @@ import mq3.game.movement as movement
 import mq3.shared.math as q
 import mq3.compat.numeric as n
 import std.array as arrays
+import std.ds.list as spatialAreaLists
 
 struct Entity
   number
@@ -191,7 +192,10 @@ end function
 function areaEntities(scene,mins,maxs,capacity)
   if typeof(capacity) != "int" or capacity < 0 or capacity > 1024 then return error(480,"Invalid server area-list capacity") end if
   mins = cm.vector32(mins); maxs = cm.vector32(maxs)
-  result=array(capacity,0);resultCount=0
+  // Most trace queries return few entities even when capacity is1024. Grow
+  // with actual hits rather than searching for an8KiB allocation each query.
+  initialCapacity=capacity;if initialCapacity>32 then initialCapacity=32 end if
+  result=spatialAreaLists.List.withCapacity(initialCapacity);resultCount=0
   // The world has a fixed depth-four tree. Use an explicit fixed stack so a
   // trace does not allocate and copy a new array on every visited sector.
   stack=array(32,0);stackCount=1;stack[0]=0
@@ -205,14 +209,14 @@ function areaEntities(scene,mins,maxs,capacity)
       end for
       if not overlaps then continue end if
       if resultCount == capacity then break end if
-      result[resultCount]=ent.number;resultCount=resultCount+1
+      result.add(ent.number);resultCount=resultCount+1
     end while
     if resultCount == capacity or node.axis == -1 then continue end if
     // LIFO: original visits positive child first, with strict split comparisons.
     if mins[node.axis] < node.distance then stack[stackCount]=node.children[1];stackCount=stackCount+1 end if
     if maxs[node.axis] > node.distance then stack[stackCount]=node.children[0];stackCount=stackCount+1 end if
   end while
-  return arrays.slice(result,0,resultCount)
+  return result.toArray()
 end function
 function clipHandleForEntity(scene,ent)
   if ent.bmodel then return cm.inlineModel(scene.world,ent.modelindex) end if

@@ -1,0 +1,481 @@
+{
+  "schema": 1,
+  "date": "2026-11-15",
+  "scope": "Controls renderer crash and movement/combat allocator stalls; targeted regression groups, not a new full-suite or complete1:1 acceptance.",
+  "build": {
+    "exe": "build/MiniQuake3.exe",
+    "sha256": "a7e8e7fea93fc97770eec4a97a869cb9201330d7122d95301b3ae28266ccf388",
+    "native_dll_sha256": "1d17987686effe8f9dfdc139f43346ec5225b8bad4326dca963789d676e829b2",
+    "compiler_sha256": "280135a508ed0c113e62be6464e6812826afdfc239ae20d9d369b15666561113",
+    "toolchain_manifest_sha256": "2caf4df4c263fbbddb079bd2d3a93d28f20a9cbe207bdeeb4f9be2b7679135a7",
+    "pak0_sha256": "7ce8b3910620cd50a09e4f1100f426e8c6180f68895d589f80e6bd95af54bcae",
+    "replay_sha256": "7b5e1a02e73810eee0f145d4b767c4f53190566520cea7568e0489df684e5976"
+  },
+  "production_sources": {
+    "native/playable_gl_renderer.h": "2ca2b16bd237f3013f59ae93b0aa3285ba844bf9b28478cd03e31cd86b5655ca",
+    "native/playable_win32.c": "ceeade7cd699f3c7d156d7a0c6d92aab2cee092b2c4f6aab4ae0a7de96bbfde8",
+    "src/mq3/collision/world.ml": "526fcfeed54ab41d14d8ea4eb720b025c4bcc6383225af0d13101bd04e6629d2",
+    "src/mq3/platform/playable_window.ml": "21509ebdb7c34a3e93a036d26a639eae0564e23a8614220f16722d51cadf9bc3",
+    "src/mq3/renderer/qvm_scene_geometry.ml": "060559b83bd188636c055c2c2a6c3f12a4f7d3374264229fa9749fb18055a892",
+    "src/mq3/renderer/qvm_scene_materials.ml": "3ee998a9c3193f0ceae5fe64097aa1c03ba7a1693d7ce657e81768ce4eeb70fa",
+    "src/mq3/renderer/qvm_viewport.ml": "b8a6bd96e12e5d0a4ebf155ceef67ef5c004cf2eda3b83073c1b8b6fb2d86c9a",
+    "src/mq3/server/world.ml": "4b4cd0b1b2dc38a89da4cc751783085903abcf3bb6ee6a2e3a00c8c35f3fbc81",
+    "src/mq3/renderer/md3_cache_index.ml": "b230bf9dee966b36d7997cef23c754e022b9f8ef39a30625073d046612526611",
+    "src/mq3/client/qvm_preview_app.ml": "ba23bff3035e03bf9dc51a9ee2b88857645bcd15898e3772be9936d0222250aa"
+  },
+  "evidence": [
+    {
+      "path": "build/reference/controls_render_replay/offscreen-viewport-fix.json",
+      "sha256": "165aa363d16398597d99ff2cd321901137f07a4b2d9fdd4950914ebed9be2fb9",
+      "passed": true,
+      "scope": "Original Controls offscreen player-preview crash in the full productive hardware render loop; bounded real Retail replay, not a performance or full UI parity acceptance."
+    },
+    {
+      "path": "build/reference/collision_frontier/result.json",
+      "sha256": "d7b5845ffb2a2685deb8f3f44895eee8733eb275beca17bd5de7d7d2c32d9425",
+      "passed": true,
+      "contracts": 35,
+      "scope": "Exact productive DFS leaf order/pruning against frozen legacy, depth80 frontier grows beyond32, BSP4096 nodes with narrow frontier retains32 slots, popped references cleared and per-call ownership."
+    },
+    {
+      "path": "build/reference/trace_query_storage/result.json",
+      "sha256": "b0337af14e8cae4bfe2128b40ebbfddf904be2ea234552b681f5182d5d8d6efd",
+      "passed": true,
+      "contracts": 23,
+      "scope": "Actual Work-constructor storage expressions, actual throughLeaf byte writes/duplicate suppression, independent query storage and actual area-list capacity/order versus frozen legacy including geometric growth."
+    },
+    {
+      "path": "build/reference/scene-material-retained/result.json",
+      "sha256": "a67ba78853de52290d76bb7dc814bc32d57944a25cb32ea98bc820704ccaf06e",
+      "passed": true,
+      "scope": "Retain mutable catalog resolved array/wrappers at equal triangle topology, including rejected shadows; exact-size replacement when topology changes. Reduces per-frame GC churn; no unbounded geometry/MD3 ring-cache growth or complete hang cure is claimed."
+    },
+    {
+      "path": "build/reference/md3-cache-index/result.json",
+      "sha256": "73fedaed3261e4dabc71c02869bdafbbf9e1b5f183dd0d0493431c6e094405f7",
+      "passed": true,
+      "contracts": 13,
+      "scope": "Bounded chained hash indexes over unchanged256-entry MD3 FIFO caches; complete equality after hashcollision and stable key snapshots. Reduces lookup visits during moving/animated scenes; does not remove transform allocation or claim game FPS/stall acceptance."
+    },
+    {
+      "path": "build/allocator-provenance.json",
+      "sha256": "a1f0640e3447c4784a0968e28d6530ff54f0dce127afbecd50b4083ffceb7501",
+      "scope": "Allocator-only proven-prefix cursor + no-fit floor. No frontend/stdlib/tagging/GC policy/thread lifecycle changes. Invalidate on init, TLAB retirement, GC entry; head hit invalidates predecessor cursor."
+    },
+    {
+      "path": "build/reference/allocator-legacy/installed/result.json",
+      "sha256": "be5f57a9d2f155af08374d5da4e7b66df27d296a9d1d6b3af38784e09f0bdbf9",
+      "passed": true,
+      "compiler_sha256": "280135a508ed0c113e62be6464e6812826afdfc239ae20d9d369b15666561113",
+      "scope": "Unchanged old runtime assertions for periodic GC, roots, heap growth, TLAB refill/retirement and 24-thread safepoint races; not whole-game performance or full-game parity."
+    },
+    {
+      "path": "build/reference/allocator_search/result.json",
+      "sha256": "a794ac93e8833d1b127b35f9da3204eb517f5a6bba6714409853076126f5bc3f",
+      "passed": true,
+      "scope": "Bounded free-list reuse under prefix fragmentation, ordinary40-byte objects, no-fit pressure and repeated mixed-size GC. Payload/live-blocker/reuse checks are exact; QPC timing is observational, not game FPS."
+    },
+    {
+      "path": "build/allocator-port-group-core.json",
+      "sha256": "f5bfbee7c1f18ecefda77724d2270c26f81091a23637690f12811225460f8080",
+      "passed": true,
+      "compiler_sha256": "280135a508ed0c113e62be6464e6812826afdfc239ae20d9d369b15666561113"
+    },
+    {
+      "path": "build/allocator-port-group-render.json",
+      "sha256": "f70ff8de7c54d5a802f6b24b520a52c9b60b21cf63dd87add79c37cffd5fe158",
+      "passed": true,
+      "compiler_sha256": "280135a508ed0c113e62be6464e6812826afdfc239ae20d9d369b15666561113",
+      "scope": "Pure headless installed-allocator renderer/numerical regression group; no game window or GPU acceptance"
+    },
+    {
+      "path": "build/allocator-port-group-vm-final.json",
+      "sha256": "1a8320b81e2027236262337d4fdbf9b4b3672c1a44da7059b2be75272882bfbd",
+      "passed": true,
+      "completed": true,
+      "compiler_sha256": "280135a508ed0c113e62be6464e6812826afdfc239ae20d9d369b15666561113",
+      "changed_sources": [],
+      "compiler_unchanged": true,
+      "scope": "Final4 world-sensitive pure-headless port gates after bytescollisionflags/geometricfrontier and geometricserverareaList freeze; same53-line allocator backport/frozen738base, no GPU/window acceptance. Phase1retained separately, not relabeled as finalsourcepass."
+    },
+    {
+      "path": "build/allocator-pmove-query-storage.json",
+      "sha256": "a5b633142887ec9fbc757d815aacd3f18d268fa8cf5af95933b804b02a6f705c",
+      "passed": true,
+      "compiler_sha256": "280135a508ed0c113e62be6464e6812826afdfc239ae20d9d369b15666561113",
+      "scope": "Unchanged original completePmove differential on q3dm1 plus movement fixture after query-storage fixes; curves enabled and disabled; no native game window"
+    },
+    {
+      "path": "build/reference/replay-spike-profile/result.json",
+      "sha256": "d9ffa14a915002d60c1ae6982af6003224aea587f2074dd1e586d6addfcf3dad"
+    },
+    {
+      "path": "build/reference/replay-spike-profile/gc-hot-instructions.json",
+      "sha256": "24f6eaad83e227edc475cf5af4131d570676cf98151bb4cfe51355a71481f9f2"
+    },
+    {
+      "path": "build/reference/replay-spike-profile/fn_gc_collect-runs.json",
+      "sha256": "206f7ab68683c78119c9df9a1cdc6d41099ff284b2a3334ad62052524b5cb05b"
+    },
+    {
+      "path": "build/reference/controls-stalls-production-5000/result.json",
+      "sha256": "6d6877185d1d49b8c4272395041edaa8b05c243a7741d503b705a8fc8c4268f3"
+    },
+    {
+      "path": "build/reference/md3-cache-retention/result.json",
+      "sha256": "93779fcc6b0b0b21bbac23b1af48476e69e18c5902be3f24f0587d57b847990b",
+      "passed": true
+    }
+  ],
+  "controls": {
+    "actual_viewport": [
+      760,
+      -60,
+      480,
+      840
+    ],
+    "red_error": 7691,
+    "green_full_productive_render_frames": 120,
+    "contracts_viewport": 23,
+    "original_ui_visual_parity": "Full3Dthen2D ordering remains an independent UI preview visibility limitation."
+  },
+  "moving_initial_combined": {
+    "memory": {
+      "completed": true,
+      "binary_sha256": "ad4845bdc73d2a362016a42eb3e38a9fb2cc54f6d61ef1b6b830b40c147e4f24",
+      "mode": "moving",
+      "requested_frames": 30000,
+      "completed_frames": 30000,
+      "returncode": 0,
+      "timed_out": false,
+      "elapsed_seconds": 259.4529999999795,
+      "samples": 259,
+      "peak_private_mb": 801.85,
+      "first_warm": {
+        "seconds": 40.09,
+        "rss_mb": 681.41,
+        "private_mb": 784.84,
+        "titles": [
+          "__wglDummyWindowFodder",
+          "NVOGLDC invisible",
+          "MiniQuake3 | 81 FPS | Original QVM q3dm1",
+          "Default IME",
+          "Default IME",
+          "Default IME",
+          "MSCTFIME UI"
+        ]
+      },
+      "final": {
+        "seconds": 258.44,
+        "rss_mb": 714.21,
+        "private_mb": 801.85,
+        "titles": [
+          "__wglDummyWindowFodder",
+          "NVOGLDC invisible",
+          "MiniQuake3 | 154 FPS | Original QVM q3dm1",
+          "Default IME",
+          "Default IME",
+          "Default IME",
+          "MSCTFIME UI"
+        ]
+      },
+      "scope": "Process-private/working memory and smoothed title FPS; inspect raw samples and replay output, not a leak or FPS acceptance assertion.",
+      "latency_acceptance": {
+        "max_work_ms": 1000.0,
+        "measured_work_max_ms": 1855.0,
+        "passed": false
+      }
+    },
+    "log_sha256": "cb3913884dfce908411e0477b491e6c0a04939060f0f09345f45fb7ceb00c38c",
+    "fps": 117.986675371461,
+    "p50_ms": 7,
+    "p95_ms": 13,
+    "p99_ms": 20,
+    "position_changes": 3692,
+    "attack_commands": 15000,
+    "ammo_decreases": 87
+  },
+  "isolated_slow_phase": {
+    "report": {
+      "passed": false,
+      "mode": "moving",
+      "frames": 5000,
+      "scope": "Exact productive game loop with test-only original event replay, real Retail original UI/Cgame/qagame, geometry/material preparation, native texture upload and hardware rendering.",
+      "sources": {
+        "src/mq3/client/qvm_preview_app.ml": "d23c9cbf10ac5315335c45226946a2193bb346f053a687ac9373aca6d408d68f",
+        "generated_app": "b733c9b30f27d650bbbe230080a8430ec1614b637e7ca87a967412c790928fdf",
+        "test_entry": "abfa4386f2d7fcac7af27a7f96bedb938b8ae04addb1b92ca3e14a6807722ea5",
+        "executable": "ac83c3fc46fc5044281a8743d368b45b5b42164e04b060053df072b223ae6aba",
+        "playable_window.dll": "1d17987686effe8f9dfdc139f43346ec5225b8bad4326dca963789d676e829b2",
+        "compile_inputs": "a950c61a363c0d04ce0e84e44a831812d844383831f983518ad2653e549eaf30",
+        "pak0.pk3": "7ce8b3910620cd50a09e4f1100f426e8c6180f68895d589f80e6bd95af54bcae"
+      },
+      "returncode": 0,
+      "log_sha256": "7ecb33ee3459ed8d05e0ce7fe02d11bcab7ec1d751cc43c38a8a4bde8457ab55",
+      "latency_limit_ms": 1000.0,
+      "measured_work_max_ms": 1353.0,
+      "latency_passed": false
+    },
+    "log_sha256": "7ecb33ee3459ed8d05e0ce7fe02d11bcab7ec1d751cc43c38a8a4bde8457ab55",
+    "largest_frame": 1574,
+    "geometry_ms": 1334,
+    "work_ms": 1353,
+    "textures_unchanged": 25
+  },
+  "menu_startup_seconds": 0.44,
+  "remaining": [
+    "Residual GC latency remains: complete30000frames108.44FPS, worst1968ms, above1000ms acceptance.",
+    "Historical200FPS goal is not established for moving combat.",
+    "Complete1:1 UI/network/audio/bot/renderer/long-duration acceptance remains open."
+  ],
+  "residual_diagnosis": {
+    "root_cause": "Stop-the-world GC marking of live object graph, not the previous multi-second free-list search.",
+    "longest_sampled_gc_span_ms": 1201.09,
+    "samples": 115,
+    "mark_samples": 111,
+    "sweep_samples": 4,
+    "suspension_ms_in_span": 9.34,
+    "correlation": "Ordered slow-frame and sampled-duration correlation; stdout exact timestamp matching unavailable.",
+    "status": "Cache32 reduces retained model graph87.5%, but complete30000frame replay still fails1000ms limit with1968ms maximum. Heap type investigation ongoing."
+  },
+  "production_5000_before_cache32": {
+    "passed": false,
+    "binary_sha256": "ec43364307269b2667b850a16e5e475cc4e2de3d22eaef6c3534df96bdf9c89c",
+    "renderer": "hardware",
+    "map": "q3dm1",
+    "frames": 5000,
+    "wall_seconds": 49.60199830005877,
+    "startup_ms": 3949.0,
+    "frame_ms": 9.0048,
+    "capture_enabled": false,
+    "diagnostic_only": false,
+    "profile_files": {},
+    "native": {
+      "playable_window.dll": "1d17987686effe8f9dfdc139f43346ec5225b8bad4326dca963789d676e829b2",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088",
+      "playable_ambient.dll": "ab306299dde70d1c33086248362eb4211f04bf334c623926f6a3affe1a8e6c43"
+    },
+    "scene": {
+      "views": 3,
+      "models": 5,
+      "triangles": 524
+    },
+    "loop": {
+      "elapsed_ms": 45120.0,
+      "fps": 110.815602836879,
+      "work_p50_ms": 8.0,
+      "work_p95_ms": 15.0,
+      "work_p99_ms": 22.0,
+      "work_max_ms": 194.0
+    },
+    "acceptance": {
+      "min_fps": 200.0,
+      "max_work_p95_ms": 8.0,
+      "passed": false
+    }
+  },
+  "md3_retention": {
+    "schema": 1,
+    "passed": true,
+    "contracts": 5,
+    "frames": 96,
+    "output": "PASS: 5 Retail MD3 retention contracts models=6 transforms=768 vertices=108960 triangles=101952 checksum=35913849.1359774\nRETAINED largeEntries=256 smallEntries=32 largeVertices=36320 smallVertices=4540 largeArrays=109728 smallArrays=13716 largeFloatScalars=217920 smallFloatScalars=27240 largePoseBytes=1403064 smallPoseBytes=159912",
+    "retained": {
+      "largeEntries": 256,
+      "smallEntries": 32,
+      "largeVertices": 36320,
+      "smallVertices": 4540,
+      "largeArrays": 109728,
+      "smallArrays": 13716,
+      "largeFloatScalars": 217920,
+      "smallFloatScalars": 27240,
+      "largePoseBytes": 1403064,
+      "smallPoseBytes": 159912
+    },
+    "asset_sha256": {
+      "models/players/sarge/head.md3": "2cf9a264f0b4b085cd7cd70d34d26347c436bc93eaf7c1837e3162face59a93c",
+      "models/players/sarge/upper.md3": "abfff37a62de8a52f3155fc7b45444f01a892a13b60cf8a61166a8c69c6bbfa5",
+      "models/players/sarge/lower.md3": "3039f66fb0a95051cb264fe91859c310829777b5396c2ddfa281f1166d67df6a",
+      "models/weapons2/machinegun/machinegun.md3": "b365688af447700011b8c176defed2067c41a1d90cf4d985f8df730d8701324f",
+      "models/weapons2/machinegun/machinegun_barrel.md3": "2c4ca2f57bccf93639c9b975bb229c3c3691fe229a37587047d69c05db69991f",
+      "models/weapons2/machinegun/machinegun_flash.md3": "7898fbe2fa3303afcdb19ab330f4216ee2bd2def181f8fbae28bcd23b0ac1a52"
+    },
+    "scope": "Capacity256 versus32 through identical productive MD3 interpolation, transform and lighting kernels on six actual Retail models/eight surfaces. Every XYZ/normal binary32 bit and RGBA component is compared before output checksums. Cache eviction preserves a previously retained view. Scene/triangle counts are never reduced.",
+    "production_policy": {
+      "capacity": 32,
+      "actual_app_call_verified": true,
+      "negative_256_constant_rejected": true,
+      "negative_256_literal_call_rejected": true
+    },
+    "limits": "Counts describe cache-owned transformed position/normal/color arrays and coordinate/normal float scalars; exclude keys/structs/shared assets and geometry retained independently by current views. This is not a global heap or GC pause/FPS acceptance measurement. No production binary was patched by this test.",
+    "compiler_sha256": "280135a508ed0c113e62be6464e6812826afdfc239ae20d9d369b15666561113",
+    "test_binary_sha256": "bdfb47a7c855d2bf2dcacd0f99f0af35757ffc657564d24ff4ab7ca9a9038145",
+    "sources": {
+      "src/mq3/client/qvm_preview_app.ml": "ba23bff3035e03bf9dc51a9ee2b88857645bcd15898e3772be9936d0222250aa",
+      "src/mq3/renderer/qvm_scene_geometry.ml": "060559b83bd188636c055c2c2a6c3f12a4f7d3374264229fa9749fb18055a892",
+      "src/mq3/renderer/md3_cache_index.ml": "b230bf9dee966b36d7997cef23c754e022b9f8ef39a30625073d046612526611",
+      "src/mq3/renderer/native_md3.ml": "165ef4f1126339b60acef2d47e03035ca3ff4dd94841ed75d9bdc7056b351727",
+      "src/mq3/renderer/playable_light_grid.ml": "529e513afa86acaca94c55349c9090f2ef743a205fb5198f636880c10ccc0e6a",
+      "tests/md3_cache_retention_retail_probe.ml": "5b1289a8d30f9212c89dfb9a96e983f1821d6b3ac4e67894366e9753a0193c58",
+      "scripts/test_md3_cache_retention.py": "5b8824d15de59dad99c1d79bc26f28b2de0b5615c8fe4aebfed12fb9c0ffbdf8"
+    }
+  },
+  "moving_final_cache32": {
+    "memory": {
+      "completed": true,
+      "binary_sha256": "7b5e1a02e73810eee0f145d4b767c4f53190566520cea7568e0489df684e5976",
+      "mode": "moving",
+      "requested_frames": 30000,
+      "completed_frames": 30000,
+      "returncode": 0,
+      "timed_out": false,
+      "elapsed_seconds": 280.4539999999106,
+      "samples": 280,
+      "peak_private_mb": 810.91,
+      "first_warm": {
+        "seconds": 40.06,
+        "rss_mb": 687.46,
+        "private_mb": 778.27,
+        "titles": [
+          "MiniQuake3 | 124 FPS | Original QVM q3dm1",
+          "NVOGLDC invisible",
+          "__wglDummyWindowFodder",
+          "NVOGLDC invisible",
+          "MSCTFIME UI",
+          "Default IME",
+          "Default IME",
+          "Default IME",
+          "Default IME"
+        ]
+      },
+      "final": {
+        "seconds": 279.45,
+        "rss_mb": 733.89,
+        "private_mb": 810.38,
+        "titles": [
+          "MiniQuake3 | 115 FPS | Original QVM q3dm1",
+          "NVOGLDC invisible",
+          "__wglDummyWindowFodder",
+          "NVOGLDC invisible",
+          "MSCTFIME UI",
+          "Default IME",
+          "Default IME",
+          "Default IME",
+          "Default IME"
+        ]
+      },
+      "scope": "Process-private/working memory and smoothed title FPS; inspect raw samples and replay output, not a leak or FPS acceptance assertion.",
+      "latency_acceptance": {
+        "max_work_ms": 1000.0,
+        "measured_work_max_ms": 1968.0,
+        "passed": false
+      }
+    },
+    "log_sha256": "0d662830685c78d101b14201d6a3a390e7fd82d5f363e04591e75835a61fb36f",
+    "loop_profile": "QVM loop profile: elapsed=276645ms fps=108.442227403351 workP50=8ms workP95=13ms workP99=21ms workMax=1968ms",
+    "acceptance": false,
+    "note": "Complete30000frames under an idle own-build barrier. Cache retention is reduced; residual GC latency is not solved."
+  },
+  "final_controls": {
+    "passed": true,
+    "mode": "controls",
+    "frames": 120,
+    "scope": "Exact productive game loop with test-only original event replay, real Retail original UI/Cgame/qagame, geometry/material preparation, native texture upload and hardware rendering.",
+    "sources": {
+      "src/mq3/client/qvm_preview_app.ml": "ba23bff3035e03bf9dc51a9ee2b88857645bcd15898e3772be9936d0222250aa",
+      "generated_app": "781c76604f8140018079674fe82291acb7dd7171799f398794685474b4e28aab",
+      "test_entry": "abfa4386f2d7fcac7af27a7f96bedb938b8ae04addb1b92ca3e14a6807722ea5",
+      "executable": "7b5e1a02e73810eee0f145d4b767c4f53190566520cea7568e0489df684e5976",
+      "playable_window.dll": "1d17987686effe8f9dfdc139f43346ec5225b8bad4326dca963789d676e829b2",
+      "compile_inputs": "07257fb0c9bbd943eb172fffbe9f81b53b1f70bf30777a42b91e11acd46beebf",
+      "pak0.pk3": "7ce8b3910620cd50a09e4f1100f426e8c6180f68895d589f80e6bd95af54bcae"
+    },
+    "returncode": 0,
+    "log_sha256": "7778ab943678617c65668c891f9f9c8f545c353c4e40c2d379e22c1f6d695c58",
+    "latency_limit_ms": null,
+    "measured_work_max_ms": 172.0,
+    "latency_passed": true
+  },
+  "final_production_5000": {
+    "passed": false,
+    "binary_sha256": "a7e8e7fea93fc97770eec4a97a869cb9201330d7122d95301b3ae28266ccf388",
+    "renderer": "hardware",
+    "map": "q3dm1",
+    "frames": 5000,
+    "wall_seconds": 41.32245249999687,
+    "startup_ms": 3350.0,
+    "frame_ms": 7.4826,
+    "capture_enabled": false,
+    "diagnostic_only": false,
+    "profile_files": {},
+    "native": {
+      "playable_window.dll": "1d17987686effe8f9dfdc139f43346ec5225b8bad4326dca963789d676e829b2",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088",
+      "playable_ambient.dll": "ab306299dde70d1c33086248362eb4211f04bf334c623926f6a3affe1a8e6c43"
+    },
+    "scene": {
+      "views": 3,
+      "models": 5,
+      "triangles": 524
+    },
+    "loop": {
+      "elapsed_ms": 37478.0,
+      "fps": 133.411601472864,
+      "work_p50_ms": 7.0,
+      "work_p95_ms": 11.0,
+      "work_p99_ms": 13.0,
+      "work_max_ms": 178.0
+    },
+    "acceptance": {
+      "min_fps": 200.0,
+      "max_work_p95_ms": 8.0,
+      "passed": false
+    }
+  },
+  "final_checks": [
+    {
+      "script": "test_ingame_controls_render.py",
+      "args": [
+        "--data-root",
+        "build",
+        "--mode",
+        "controls",
+        "--frames",
+        "120"
+      ],
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 7.327999999979511,
+      "log": "build\\reference\\cache32-final-checks\\test_ingame_controls_render.py.log"
+    },
+    {
+      "script": "test_default_exe_startup.py",
+      "args": [],
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.5779999999795109,
+      "log": "build\\reference\\cache32-final-checks\\test_default_exe_startup.py.log"
+    },
+    {
+      "script": "benchmark_playable.py",
+      "args": [
+        "--data-root",
+        "build",
+        "--frames",
+        "5000",
+        "--min-fps",
+        "200",
+        "--max-work-p95-ms",
+        "8",
+        "--output",
+        "build/reference/cache32-production-5000"
+      ],
+      "passed": false,
+      "exit_code": 1,
+      "seconds": 41.48400000017136,
+      "log": "build\\reference\\cache32-final-checks\\benchmark_playable.py.log"
+    }
+  ]
+}

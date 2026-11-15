@@ -342,6 +342,7 @@ typedef struct hardwareView_s {
 
 static int hardwareDrawBatch(const unsigned char *records, int count, const hardwareView *view) {
     int offset, unit;
+    int scissorX=0, scissorY=0, scissorWidth=surfaceWidth, scissorHeight=surfaceHeight;
     LONGLONG profileStarted=0;
     int lastBase = INT_MIN, lastLightmap = INT_MIN, lastOverlay = -1;
     GLint previousClientTexture, previousArrayBuffer = 0;
@@ -349,15 +350,17 @@ static int hardwareDrawBatch(const unsigned char *records, int count, const hard
     if(hardwareProfile.enabled && hardwareProfile.frameActive) profileStarted=hardwareProfileCounter();
     if (!hardwareRenderer || !records || count <= 0 || surfaceWidth <= 0 || surfaceHeight <= 0 ||
             (view && (view->width <= 0 || view->height <= 0)) || !hardwareEnsurePacking(chunkCapacity)) return 0;
+    if (view && !clipSurfaceRectangle(view->x,view->y,view->width,view->height,
+            &scissorX,&scissorY,&scissorWidth,&scissorHeight)) return 0;
+    if (!scissorWidth || !scissorHeight) return count;
     playableTraceBatch(records,count,view ? view->x : 0,view ? view->y : 0,
         view ? view->width : surfaceWidth,view ? view->height : surfaceHeight,
         view ? view->position : 0,view ? view->right : 0,view ? view->up : 0,view ? view->forward : 0,
         view ? view->focal : 0,view ? view->nearDistance : 0);
-    playableGlViewport(view ? view->x : 0, view ? surfaceHeight-view->y-view->height : 0,
+    playableGlViewport(view ? view->x : 0, view ? (int)((LONGLONG)surfaceHeight-view->y-view->height) : 0,
         view ? view->width : surfaceWidth, view ? view->height : surfaceHeight);
     mq_glEnable(GL_SCISSOR_TEST);
-    mq_glScissor(view ? view->x : 0, view ? surfaceHeight-view->y-view->height : 0,
-        view ? view->width : surfaceWidth, view ? view->height : surfaceHeight);
+    mq_glScissor(scissorX,surfaceHeight-scissorY-scissorHeight,scissorWidth,scissorHeight);
     playableGlMatrixMode(GL_PROJECTION); playableGlLoadIdentity();
     playableGlMatrixMode(GL_MODELVIEW); playableGlLoadIdentity();
     if (view) {

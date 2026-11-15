@@ -62,6 +62,8 @@ const CONSOLE_FONT_TEXTURE_SLOT=495
 const CINEMATIC_TEXTURE_FIRST_SLOT=496
 const SOURCE_WIDTH=1280
 const SOURCE_HEIGHT=720
+// Retention bound, not a scene/triangle budget: evicted poses are recomputed.
+const MD3_FRAME_CACHE_ENTRIES=32
 
 struct PreparedView source geometry batch target end struct
 struct PreparedPortal plan world batch target source end struct
@@ -330,7 +332,7 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
   clientClock=cgameClock.create(state.context.now,state.context.snapshotNumber,state.context.latestSnapshot.serverTime);if clientClock is error then window.shutdown();match.shutdown(state);return clientClock end if
   bootedUi=match.bootUi(state);if bootedUi is error then window.shutdown();match.shutdown(state);return bootedUi end if
   videoManager=qvmVideo.create(state.context.cinematics,CINEMATIC_TEXTURE_FIRST_SLOT,cinematics.MAX_HANDLES);if videoManager is error then window.shutdown();match.shutdown(state);return videoManager end if
-  frameCache=sceneGeometry.createFrameCache(void,256);if frameCache is error then window.shutdown();match.shutdown(state);return frameCache end if
+  frameCache=sceneGeometry.createFrameCache(void,MD3_FRAME_CACHE_ENTRIES);if frameCache is error then window.shutdown();match.shutdown(state);return frameCache end if
   view=largestView(state.context.renderViews);if view==void then window.shutdown();match.shutdown(state);return fail("cgame submitted no render view") end if
   uiBootAt=window.milliseconds();loading=window.showLoading(32,"Indexing retail shaders");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
   scripts=materials.buildScriptIndex(archive);if scripts is error then window.shutdown();match.shutdown(state);return scripts end if

@@ -22,6 +22,8 @@ end function
 function main(args)
   count=0;white=[255,255,255,255];red=[255,32,16,255]
   catalog=catalogFor([sourceTriangle(1.0,white,white,0)],[]);prepared=sceneBatch.build(catalog);if prepared is error then return prepared end if
+  firstBinding=catalog.triangles[0];sceneMaterials.refresh(catalog,1,[sourceTriangle(3.0,red,white,0)],[],[],336)
+  count=count+require(firstBinding.triangle.positions[0][0]==3.0 and prepared.geometry.triangles[0].vertices[0].position[0]==1.0,"mutable material wrappers do not mutate a previously prepared view geometry")
   catalog.triangles[0]=sceneMaterials.ResolvedTriangle(sourceTriangle(7.0,red,[12,34,56,78],0),-1)
   refreshed=sceneBatch.refresh(prepared,catalog);if refreshed is error then return refreshed end if
   fresh=sceneBatch.build(catalog);if fresh is error then return fresh end if

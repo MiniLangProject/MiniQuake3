@@ -357,12 +357,96 @@ static int clientArraySubmissionBenchmark(void) {
     return check(1,"hardware submission benchmark");
 }
 
+static int softwareOffscreenViewportContracts(void) {
+    static const int rectangles[][4] = {
+        {-32,-16,192,160}, {16,16,96,96}, {76,-6,48,140}, {200,0,64,64}
+    };
+    playableTriangleBatchRecord records[256];
+    uint32_t serial[128*128], clear[128*128];
+    float serialDepth[128*128], clearDepthValues[128*128];
+    int previousHardware=hardwareRenderer;
+    int sample,index,row,column,ok=0;
+    records[0]=triangle();records[0].vertex[2][0]=0.5f;
+    records[0].vertexColor[0][1]=17;records[0].vertexColor[1][2]=83;
+    records[0].vertexColor[2][0]=119;records[0].vertexColor[1][3]=127;
+    for(index=1;index<256;++index) records[index]=records[0];
+    hardwareRenderer=0;
+    for(sample=0;sample<(int)(sizeof(rectangles)/sizeof(rectangles[0]));++sample) {
+        const int *r=rectangles[sample];
+        int oldLeft=rasterClipMinimumX,oldRight=rasterClipMaximumX;
+        int oldTop=rasterClipMinimumY,oldBottom=rasterClipMaximumY;
+        playable_window_begin_frame(0,0,0);CopyMemory(clear,pixels,sizeof(clear));
+        CopyMemory(clearDepthValues,depthPixels,sizeof(clearDepthValues));
+        if(playable_window_draw_world_triangle_batch_viewport((unsigned char *)records,sizeof(records[0]),1,
+                r[0],r[1],r[2],r[3],0,0,0,0,1,0,0,0,1,1,0,0,64,1)!=1) goto done;
+        CopyMemory(serial,pixels,sizeof(serial));CopyMemory(serialDepth,depthPixels,sizeof(serialDepth));
+        playable_window_begin_frame(0,0,0);
+        if(playable_window_draw_world_triangle_batch_viewport((unsigned char *)records,sizeof(records),256,
+                r[0],r[1],r[2],r[3],0,0,0,0,1,0,0,0,1,1,0,0,64,1)!=256) goto done;
+        /* The first rectangle covers128 rows and256 triangles, forcing the
+         * real banded path. Other rectangles exercise short/scissored/no-op
+         * paths. All use near clipping and varying vertex RGBA. */
+        if(memcmp(serial,pixels,sizeof(serial)) || memcmp(serialDepth,depthPixels,sizeof(serialDepth))) goto done;
+        if(rasterClipMinimumX!=oldLeft || rasterClipMaximumX!=oldRight ||
+                rasterClipMinimumY!=oldTop || rasterClipMaximumY!=oldBottom) goto done;
+        for(row=0;row<128;++row) for(column=0;column<128;++column) {
+            int inside=column>=r[0] && (LONGLONG)column<(LONGLONG)r[0]+r[2] &&
+                row>=r[1] && (LONGLONG)row<(LONGLONG)r[1]+r[3];
+            index=row*128+column;
+            if(!inside && (pixels[index]!=clear[index] || depthPixels[index]!=clearDepthValues[index])) goto done;
+        }
+    }
+    ok=1;
+done:
+    hardwareRenderer=previousHardware;
+    if(!ok) { fputs("software offscreen viewport pixels/depth/scissor/state mismatch\n",stderr);return 0; }
+    puts("PASS: offscreen software serial/banded pixels and depth, near RGBA, clipped no-op and state restoration");
+    return 1;
+}
+
+static int offscreenViewportContracts(void) {
+    static const int rectangles[][4] = {
+        {-32,16,128,96}, {16,-32,96,128}, {80,16,96,96}, {16,80,96,96},
+        {76,-6,48,140}, {-32,-16,192,160}, {200,0,64,64}, {-100,-100,64,64}
+    };
+    uint32_t actual[128*128], original[128*128];
+    playableTriangleBatchRecord t=triangle();
+    hardwareView view;
+    int sample;
+    ZeroMemory(&view,sizeof(view));
+    view.right[1]=view.up[2]=view.forward[0]=1.0;view.focal=64.0;view.nearDistance=1.0;
+    for(sample=0;sample<(int)(sizeof(rectangles)/sizeof(rectangles[0]));++sample) {
+        const int *r=rectangles[sample];
+        view.x=r[0];view.y=r[1];view.width=r[2];view.height=r[3];
+        playable_window_begin_frame(0,0,0);
+        if(!check(playable_window_draw_world_triangle_batch_viewport((unsigned char *)&t,sizeof(t),1,
+                r[0],r[1],r[2],r[3],0,0,0,0,1,0,0,0,1,1,0,0,64,1)==1,
+                "partially/fully offscreen original viewport admitted")) return 0;
+        mq_glReadPixels(0,0,128,128,GL_BGRA_EXT,GL_UNSIGNED_BYTE,actual);
+        playable_window_begin_frame(0,0,0);
+        /* Frozen original GL viewport/scissor calls: no rectangle clipping or
+         * production helper participates in this independent reference. */
+        hardwareDrawBatchImmediate((unsigned char *)&t,1,&view);
+        mq_glReadPixels(0,0,128,128,GL_BGRA_EXT,GL_UNSIGNED_BYTE,original);
+        if(!check(memcmp(actual,original,sizeof(actual))==0,"offscreen viewport preserves complete framebuffer and FOV")) return 0;
+    }
+    if(!check(playable_window_draw_world_triangle_batch_viewport((unsigned char *)&t,sizeof(t),1,
+            INT_MAX,0,2,64,0,0,0,0,1,0,0,0,1,1,0,0,64,1)==0,"overflowing viewport endpoint rejected")) return 0;
+    if(!check(playable_window_clear_stencil(-1,-1,4,4)==1 &&
+            playable_window_finish_stencil_shadow(-1,-1,4,4)==9,"offscreen stencil operations clip to framebuffer")) return 0;
+    if(!check(playable_window_clear_stencil(200,0,64,64)==1 &&
+            playable_window_finish_stencil_shadow(200,0,64,64)==0,"fully offscreen stencil operations are no-ops")) return 0;
+    puts("PASS: 8 original offscreen-viewport framebuffer comparisons plus overflow/stencil boundaries");
+    return softwareOffscreenViewportContracts();
+}
+
 int main(void) {
     playableTriangleBatchRecord t=triangle();
     unsigned char base[]={128,255,64,255}, light[]={128,128,255,255};
     int vertex;
     if (!playable_window_create(128,128)) return 1;
     if (!check(hardwareRenderer,"hardware context with two TMUs")) return 2;
+    if (!offscreenViewportContracts()) return 24;
     printf("Hardware renderer: %s / %s\n",openGLVendor,openGLRenderer);
     playable_window_begin_frame(0,0,0);draw(&t);
     if (!check(closeColor(playable_window_hardware_pixel(64,64),0xff0000,0),"opaque world triangle")) return 3;

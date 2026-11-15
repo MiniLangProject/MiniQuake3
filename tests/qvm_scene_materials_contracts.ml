@@ -38,5 +38,26 @@ function main(args)
   count=count+require(qvmMaterials.projectionShadowEligible(policy,shadow,1),"opaque unfogged MD3 source admits projection shadow")
   policy.materials[0].sort=9.0;count=count+require(not qvmMaterials.projectionShadowEligible(policy,shadow,1),"blended MD3 source rejects projection shadow like R_AddMD3Surfaces")
   qvmMaterials.bindTriangle(policy,shadow,1,void,[],[],112);count=count+require(policy.triangles[1].materialIndex== -1 and len(policy.materials)==1,"rejected projection shadow cannot enter the productive material batch")
+  // Steady topology does not accumulate per-triangle frame garbage. Saved
+  // aliases observe replacements, proving reuse rather than value equality.
+  hotA=Triangle(0,0,qvmMaterials.BUILTIN_BEAM,"body");hotB=Triangle(0,0,"cached-missing","body")
+  hot=qvmMaterials.Catalog(array(2,void),[],[],void,0,[],[],0,0,120,void,void);qvmMaterials.addBeamMaterial(hot,122)
+  qvmMaterials.storeBinding(hot,hotA,0);qvmMaterials.storeBinding(hot,hotB,-1)
+  qvmMaterials.refresh(hot,1,[hotA,hotB],[],[],122);savedArray=hot.triangles;savedFirst=hot.triangles[0];savedSecond=hot.triangles[1]
+  bounded=true
+  for hotFrame=1 to 10000
+    source=[hotA,hotB];if (hotFrame&1)!=0 then source=[hotB,hotA] end if
+    refreshed=qvmMaterials.refresh(hot,1,source,[],[],122);if refreshed is error then return refreshed end if
+    if savedFirst.triangle.shaderName!=source[0].shaderName or savedSecond.triangle.shaderName!=source[1].shaderName or len(hot.triangles)!=2 or len(hot.bindings)!=2 or len(hot.materials)!=1 or len(hot.textures)!=1 or hot.resolvedTriangles!=1 or hot.unresolvedTriangles!=1 then bounded=false;break end if
+  end for
+  count=count+require(bounded,"10000 moving material frames reuse wrappers, bound caches and preserve exact resolved/unresolved content")
+  marker=qvmMaterials.ResolvedTriangle(hotB,777);savedArray[0]=marker
+  count=count+require(hot.triangles[0].materialIndex==777,"same-size refresh retains the actual resolved array rather than an equal copy");savedArray[0]=savedFirst
+  qvmMaterials.refresh(hot,1,[hotB],[],[],122)
+  count=count+require(len(hot.triangles)==1 and hot.triangles[0].triangle.shaderName==hotB.shaderName and hot.triangles[0].materialIndex== -1 and hot.resolvedTriangles==0 and hot.unresolvedTriangles==1,"topology shrink drops stale wrappers and recomputes counters")
+  qvmMaterials.refresh(hot,1,[hotA,hotB,hotA],[],[],122)
+  count=count+require(len(hot.triangles)==3 and hot.resolvedTriangles==2 and hot.unresolvedTriangles==1 and len(hot.bindings)==2,"topology growth allocates exact active storage without cache growth")
+  rejected=policy.triangles[1];qvmMaterials.bindTriangle(policy,shadow,1,void,[],[],112)
+  count=count+require(rejected.materialIndex== -1 and rejected.triangle==shadow,"rejected projection shadows also reuse the existing wrapper")
   print("PASS: "+str(count)+" QVM scene material contracts");return 0
 end function

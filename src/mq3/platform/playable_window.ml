@@ -346,12 +346,16 @@ function submitWorldTriangleBatch(batch,projection)
   if rendered!=batch.count then return error(7488,"native world triangle batch was rejected") end if
   return rendered
 end function
+function validViewportRectangle(x,y,width,height)
+  return x>= -2147483648 and y>= -2147483648 and x<=2147483647 and y<=2147483647 and width>=1 and height>=1 and width<=2147483647 and height<=2147483647 and x+width<=2147483647 and y+height<=2147483647
+end function
 function viewport(x,y,width,height)
-  if x<0 or y<0 or width<1 or height<1 then return error(7490,"invalid world triangle viewport") end if
+  if not validViewportRectangle(x,y,width,height) then return error(7490,"invalid world triangle viewport") end if
   return Viewport(x,y,width,height)
 end function
 function submitWorldTriangleBatchViewport(batch,projection,area)
-  if area==void or area.x<0 or area.y<0 or area.width<1 or area.height<1 then return error(7490,"invalid world triangle viewport") end if
+  if area==void then return error(7490,"invalid world triangle viewport") end if
+  if not validViewportRectangle(area.x,area.y,area.width,area.height) then return error(7490,"invalid world triangle viewport") end if
   if projection==void or projection.position==void or projection.right==void or projection.up==void or projection.forward==void then return error(7488,"invalid world triangle projection") end if
   if batch.count==0 then return 0 end if
   rendered=worldTriangleBatchViewportNative(nativeBytesPtr(batch.data),batch.count*TRIANGLE_BATCH_RECORD_BYTES,batch.count,area.x,area.y,area.width,area.height,projection.position[0],projection.position[1],projection.position[2],projection.right[0],projection.right[1],projection.right[2],projection.up[0],projection.up[1],projection.up[2],projection.forward[0],projection.forward[1],projection.forward[2],projection.focal,projection.nearDistance)

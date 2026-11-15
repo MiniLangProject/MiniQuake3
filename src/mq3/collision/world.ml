@@ -13,6 +13,7 @@ import mq3.collision.visibility as vis
 import mq3.qcommon.md4 as md4
 import mq3.qcommon.headers as qcommonHeaders
 import std.array as arrays
+import std.ds.list as worldTraceLists
 
 struct Shader name surfaceFlags contentFlags end struct
 struct Brush
@@ -428,7 +429,7 @@ end function
 function throughLeaf(work, leaf, positionTest)
   for each index in leaf.brushes
     if work.seen[index] then continue end if
-    work.seen[index] = true
+    work.seen[index] = 1
     b = work.world.brushes[index]
     if (b.contents & work.mask) == 0 then continue end if
     if positionTest then
@@ -442,7 +443,7 @@ function throughLeaf(work, leaf, positionTest)
     for each index in leaf.surfaces
       surface = work.world.surfaces[index]
       if surface == void or work.seenPatches[index] then continue end if
-      work.seenPatches[index] = true
+      work.seenPatches[index] = 1
       if (surface.contents & work.mask) == 0 then continue end if
       if positionTest then
         if patches.CM_PositionTestInPatchCollide(work,surface.patch) then
@@ -488,26 +489,26 @@ function positionTest(work)
     mins[axis] = n.fsub(n.fadd(work.start[axis],work.mins[axis]),1.0)
     maxs[axis] = n.fadd(n.fadd(work.start[axis],work.maxs[axis]),1.0)
   end for
-  stack = [0]
-  leaves = []
-  while len(stack) > 0
-    num = stack[len(stack)-1]
-    stack = arrays.slice(stack,0,len(stack)-1)
+  stack = worldTraceLists.List.withCapacity(32); stack.add(0)
+  leaves = worldTraceLists.List.withCapacity(32)
+  while not stack.isEmpty()
+    num = stack.pop()
     if num < 0 then
-      if len(leaves) < 1024 then leaves = leaves + [-1-num] end if
+      if leaves.len() < 1024 then leaves.add(-1-num) end if
     else
       node = work.world.nodes[num]
       side = boxSide(mins,maxs,node.plane)
       if side == 1 then
-        stack = stack+[node.children[0]]
+        stack.add(node.children[0])
       else if side == 2 then
-        stack = stack+[node.children[1]]
+        stack.add(node.children[1])
       else
-        stack = stack+[node.children[1],node.children[0]]
+        stack.add(node.children[1]); stack.add(node.children[0])
       end if
     end if
   end while
-  for each leaf in leaves
+  for leafIndex=0 to leaves.len()-1
+    leaf=leaves.get(leafIndex)
     throughLeaf(work,work.world.leaves[leaf],true)
     if work.trace.allsolid then break end if
   end for
@@ -524,13 +525,13 @@ end function
 
 function throughTree(work)
   // Depth-first stack retains the original near-child/far-child visit order.
-  // The BSP has already been validated as a tree, so its maximum pending
-  // frontier is bounded. An indexed stack avoids copying that frontier on
-  // every pop and push in each gameplay trace.
-  stack = array(len(work.world.nodes)+1,void); top = 0
-  stack[0] = [0,0.0,1.0,work.start,work.finish]
-  while top >= 0
-    item = stack[top]; top = top-1
+  // Capacity follows the pending DFS frontier, not the complete BSP size.
+  // Allocating nodes+1 per trace caused repeated 8-17 KiB first-fit allocator
+  // scans in gameplay. A local geometric stack also remains reentrant.
+  stack = worldTraceLists.List.withCapacity(32)
+  stack.add([0,0.0,1.0,work.start,work.finish])
+  while not stack.isEmpty()
+    item = stack.pop()
     num = item[0]; p1f = item[1]; p2f = item[2]; p1 = item[3]; p2 = item[4]
     if work.trace.fraction <= p1f then continue end if
     if num < 0 then throughLeaf(work,work.world.leaves[-1-num],false); continue end if
@@ -546,10 +547,10 @@ function throughTree(work)
       if not work.isPoint then offset = n.f32(2048) end if
     end if
     if t1 >= n.fadd(offset,1.0) and t2 >= n.fadd(offset,1.0) then
-      top = top+1; stack[top] = [node.children[0],p1f,p2f,p1,p2]; continue
+      stack.add([node.children[0],p1f,p2f,p1,p2]); continue
     end if
     if t1 < n.fsub(-offset,1.0) and t2 < n.fsub(-offset,1.0) then
-      top = top+1; stack[top] = [node.children[1],p1f,p2f,p1,p2]; continue
+      stack.add([node.children[1],p1f,p2f,p1,p2]); continue
     end if
     side = 0; fraction = n.f32(1); fraction2 = n.f32(0)
     if t1 < t2 then
@@ -566,8 +567,8 @@ function throughTree(work)
     fraction2 = max(0.0,min(1.0,fraction2))
     midf = n.fadd(p1f,n.fmul(n.fsub(p2f,p1f),fraction))
     midf2 = n.fadd(p1f,n.fmul(n.fsub(p2f,p1f),fraction2))
-    top = top+1; stack[top] = [node.children[side^1],midf2,p2f,interpolate(p1,p2,fraction2),p2]
-    top = top+1; stack[top] = [node.children[side],p1f,midf,p1,interpolate(p1,p2,fraction)]
+    stack.add([node.children[side^1],midf2,p2f,interpolate(p1,p2,fraction2),p2])
+    stack.add([node.children[side],p1f,midf,p1,interpolate(p1,p2,fraction)])
   end while
   return void
 end function
@@ -766,7 +767,9 @@ function traceWithSphereOrigin(world, start, finish, mins, maxs, model, mask, ca
   end for
   point = lo[0] == 0 and lo[1] == 0 and lo[2] == 0
   if modelOrigin==void then modelOrigin=[0.0,0.0,0.0] else modelOrigin=vector32(modelOrigin) end if
-  work = Work(world,brush.emptyTrace(),a,b,lo,hi,boundsMin,boundsMax,capsule,radius,hi[2],capsuleOffset,modelOrigin,mask,point,array(len(world.brushes),false),array(len(world.surfaces),false),curves)
+  // Private zero/one byte flags preserve duplicate suppression without two
+  // pointer-sized arrays per trace. All storage remains local to this work.
+  work = Work(world,brush.emptyTrace(),a,b,lo,hi,boundsMin,boundsMax,capsule,radius,hi[2],capsuleOffset,modelOrigin,mask,point,bytes(len(world.brushes),0),bytes(len(world.surfaces),0),curves)
   stationary = start[0] == finish[0] and start[1] == finish[1] and start[2] == finish[2]
   // Original CM_Trace assigns isPoint only in its non-stationary branch.
   if stationary then work.isPoint = false end if

@@ -205,6 +205,25 @@ typedef char playableTriangleBatchRecordSizeMustBe128[
     sizeof(playableTriangleBatchRecord) == PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES ? 1 : -1];
 
 #include "playable_render_trace.h"
+/* A refdef may extend beyond the drawable. Keep its projection rectangle
+ * intact and intersect only raster/scissor bounds. Wide endpoint arithmetic
+ * also protects the OpenGL bottom-origin conversion from signed overflow. */
+static int clipSurfaceRectangle(int x, int y, int width, int height,
+        int *left, int *top, int *clippedWidth, int *clippedHeight) {
+    LONGLONG right, bottom, glBottom;
+    int lastX, lastY;
+    if (width < 1 || height < 1 || surfaceWidth < 1 || surfaceHeight < 1) return 0;
+    right = (LONGLONG)x + width; bottom = (LONGLONG)y + height;
+    glBottom = (LONGLONG)surfaceHeight - bottom;
+    if (right > INT_MAX || bottom > INT_MAX || glBottom < INT_MIN || glBottom > INT_MAX) return 0;
+    *left = x < 0 ? 0 : x > surfaceWidth ? surfaceWidth : x;
+    *top = y < 0 ? 0 : y > surfaceHeight ? surfaceHeight : y;
+    lastX = right < 0 ? 0 : right > surfaceWidth ? surfaceWidth : (int)right;
+    lastY = bottom < 0 ? 0 : bottom > surfaceHeight ? surfaceHeight : (int)bottom;
+    *clippedWidth = lastX > *left ? lastX - *left : 0;
+    *clippedHeight = lastY > *top ? lastY - *top : 0;
+    return 1;
+}
 #include "playable_gl_renderer.h"
 #include "playable_sky_math.h"
 #include "playable_world_gather.h"
@@ -1589,8 +1608,8 @@ PLAYABLE_API void playable_window_begin_frame(int red, int green, int blue) {
 
 PLAYABLE_API int playable_window_clear_stencil(int x, int y, int width, int height) {
     int row;
-    if (!stencilPixels || x < 0 || y < 0 || width < 1 || height < 1 ||
-            x > surfaceWidth - width || y > surfaceHeight - height) return 0;
+    if (!stencilPixels || !clipSurfaceRectangle(x,y,width,height,&x,&y,&width,&height)) return 0;
+    if (!width || !height) return 1;
     if (hardwareRenderer) {
         mq_glEnable(GL_SCISSOR_TEST); mq_glScissor(x,surfaceHeight-y-height,width,height);
         mq_glStencilMask(255); mq_glClearStencil(0); playableGlClear(GL_STENCIL_BUFFER_BIT); return 1;
@@ -1612,8 +1631,8 @@ PLAYABLE_API int playable_window_finish_stencil_shadow(int x, int y, int width, 
     int row;
     int column;
     int darkened = 0;
-    if (!pixels || !stencilPixels || x < 0 || y < 0 || width < 1 || height < 1 ||
-            x > surfaceWidth - width || y > surfaceHeight - height) return -1;
+    if (!pixels || !stencilPixels || !clipSurfaceRectangle(x,y,width,height,&x,&y,&width,&height)) return -1;
+    if (!width || !height) return 0;
     if (hardwareRenderer) {
         playableGlViewport(x,surfaceHeight-y-height,width,height);
         playableGlMatrixMode(GL_PROJECTION); playableGlLoadIdentity();
@@ -3187,11 +3206,10 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch_viewport(const unsign
     int previousMinimumY = rasterClipMinimumY;
     int previousMaximumY = rasterClipMaximumY;
     int result;
+    int clippedX, clippedY, clippedWidth, clippedHeight;
     SIZE_T required;
-    if (viewportX < 0 || viewportY < 0 || viewportWidth < 1 || viewportHeight < 1 ||
-            viewportWidth > surfaceWidth || viewportHeight > surfaceHeight ||
-            viewportX > surfaceWidth - viewportWidth ||
-            viewportY > surfaceHeight - viewportHeight) return 0;
+    if (!clipSurfaceRectangle(viewportX,viewportY,viewportWidth,viewportHeight,
+            &clippedX,&clippedY,&clippedWidth,&clippedHeight)) return 0;
     if (triangleCount < 0 || triangleCount > PLAYABLE_TRIANGLE_BATCH_MAX_COUNT ||
             byteCount < 0 || !_finite(positionX) || !_finite(positionY) ||
             !_finite(positionZ) || !_finite(rightX) || !_finite(rightY) ||
@@ -3202,6 +3220,7 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch_viewport(const unsign
     if (triangleCount == 0 || !records) return 0;
     required = (SIZE_T)triangleCount * (SIZE_T)PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
     if (required > (SIZE_T)INT_MAX || (SIZE_T)byteCount < required) return 0;
+    if (!clippedWidth || !clippedHeight) return triangleCount;
     if (hardwareRenderer) return hardwareDrawWorld(records,triangleCount,viewportX,viewportY,viewportWidth,viewportHeight,
         positionX,positionY,positionZ,rightX,rightY,rightZ,upX,upY,upZ,forwardX,forwardY,forwardZ,focal,nearDistance);
     if (drawWorldBatchParallel(records, byteCount, triangleCount,
@@ -3212,12 +3231,12 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch_viewport(const unsign
             (double)viewportX + (double)viewportWidth * 0.5,
             (double)viewportY + (double)viewportHeight * 0.5,
             focal, nearDistance,
-            viewportX, viewportX + viewportWidth - 1,
-            viewportY, viewportY + viewportHeight - 1)) return triangleCount;
-    rasterClipMinimumX = viewportX;
-    rasterClipMaximumX = viewportX + viewportWidth - 1;
-    rasterClipMinimumY = viewportY;
-    rasterClipMaximumY = viewportY + viewportHeight - 1;
+            clippedX, clippedX + clippedWidth - 1,
+            clippedY, clippedY + clippedHeight - 1)) return triangleCount;
+    rasterClipMinimumX = clippedX;
+    rasterClipMaximumX = clippedX + clippedWidth - 1;
+    rasterClipMinimumY = clippedY;
+    rasterClipMaximumY = clippedY + clippedHeight - 1;
     result = playable_window_draw_world_triangle_batch(records, byteCount, triangleCount,
         positionX, positionY, positionZ,
         rightX, rightY, rightZ,

@@ -137,8 +137,18 @@ function projectionShadowEligible(output,triangle,outputIndex)
   return index<len(output.materials) and output.materials[index].sort==3.0
 end function
 
+// The mutable catalog owns these short-lived bindings. Prepared scene batches
+// copy source fields into their own geometry; they never retain these wrappers.
+// Reuse them instead of allocating one wrapper per triangle per view/frame.
+function storeResolvedTriangle(output,outputIndex,triangle,materialIndex)
+  resolved=output.triangles[outputIndex]
+  if resolved==void then output.triangles[outputIndex]=ResolvedTriangle(triangle,materialIndex)
+  else resolved.triangle=triangle;resolved.materialIndex=materialIndex end if
+  return void
+end function
+
 function bindTriangle(output,triangle,outputIndex,archive,assets,kinds,endSlot)
-  if triangle.shaderName==BUILTIN_PROJECTION_SHADOW and not projectionShadowEligible(output,triangle,outputIndex) then output.unresolvedTriangles=output.unresolvedTriangles+1;output.triangles[outputIndex]=ResolvedTriangle(triangle,-1);return void end if
+  if triangle.shaderName==BUILTIN_PROJECTION_SHADOW and not projectionShadowEligible(output,triangle,outputIndex) then output.unresolvedTriangles=output.unresolvedTriangles+1;storeResolvedTriangle(output,outputIndex,triangle,-1);return void end if
   index=cachedBinding(output,triangle)
   // R_RemapShader preserves handles while changing the shader object they
   // resolve to. Reject a cached binding when that stable handle's registry
@@ -163,7 +173,7 @@ function bindTriangle(output,triangle,outputIndex,archive,assets,kinds,endSlot)
   end if
   offset=shaderRemap.timeOffsetForHandle(output.shaderRemaps,triangle.shaderHandle);if index>=0 and offset!=void then output.materials[index].timeOffset=offset end if
   if index>=0 and hasImage(output.materials[index].stages) then output.resolvedTriangles=output.resolvedTriangles+1 else output.unresolvedTriangles=output.unresolvedTriangles+1 end if
-  output.triangles[outputIndex]=ResolvedTriangle(triangle,index);return void
+  storeResolvedTriangle(output,outputIndex,triangle,index);return void
 end function
 
 function buildIndexed(archive,triangles,assets,kinds,firstTextureSlot,maxTextureSlots,shaderRemaps,scripts)
@@ -184,7 +194,8 @@ end function
 // Newly encountered registered shaders are appended within the original slot range.
 function refresh(catalog,archive,triangles,assets,kinds,endTextureSlot)
   if catalog==void or archive==void or triangles==void or endTextureSlot<catalog.nextTextureSlot then return fail("invalid refresh input") end if
-  catalog.triangles=array(len(triangles),void);catalog.resolvedTriangles=0;catalog.unresolvedTriangles=0;triangleIndex=0
+  if catalog.triangles==void or len(catalog.triangles)!=len(triangles) then catalog.triangles=array(len(triangles),void) end if
+  catalog.resolvedTriangles=0;catalog.unresolvedTriangles=0;triangleIndex=0
   for each triangle in triangles bindTriangle(catalog,triangle,triangleIndex,archive,assets,kinds,endTextureSlot);triangleIndex=triangleIndex+1 end for
   return catalog
 end function
