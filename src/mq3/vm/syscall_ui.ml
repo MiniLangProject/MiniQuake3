@@ -42,6 +42,15 @@ function stringOutput(vm,base,host,callback,name)
   return output(vm,arg(vm,base,2),arg(vm,base,3),callback(host.context,arg(vm,base,1)),name+" output")
 end function
 
+// cl_ui.c Key_GetBindingBuf explicitly converts an unbound key's NULL
+// Key_GetBinding result into an empty, NUL-terminated output buffer.
+// Keep nullable key storage: Key_GetKey must not match never-bound keys.
+function bindingOutput(vm,base,host)
+  if host.keys.bindingFn==void then return unavailable("binding") end if
+  value=host.keys.bindingFn(host.context,arg(vm,base,1));if value==void then value="" end if
+  return output(vm,arg(vm,base,2),arg(vm,base,3),value,"binding output")
+end function
+
 function setBinding(vm,base,host)
   if host.keys.setBindingFn==void then return unavailable("set binding") end if
   host.keys.setBindingFn(host.context,arg(vm,base,1),common.readString(vm,arg(vm,base,2)));return 0
@@ -128,7 +137,7 @@ function dispatchSpecific(vm,base,host,op)
     case 27 return drawStretchPic(vm,base,host) end case
     case 28 if host.renderer.updateScreenFn==void then return unavailable("screen update") end if;host.renderer.updateScreenFn(host.context);return 0 end case
     case 33 return stringOutput(vm,base,host,host.keys.keyNameFn,"key name") end case
-    case 34 return stringOutput(vm,base,host,host.keys.bindingFn,"binding") end case
+    case 34 return bindingOutput(vm,base,host) end case
     case 35 return setBinding(vm,base,host) end case
     case 36 if host.keys.isDownFn==void then return unavailable("key state") end if;if host.keys.isDownFn(host.context,arg(vm,base,1)) then return 1 end if;return 0 end case
     case 37 if host.keys.getOverstrikeFn==void then return unavailable("overstrike state") end if;if host.keys.getOverstrikeFn(host.context) then return 1 end if;return 0 end case

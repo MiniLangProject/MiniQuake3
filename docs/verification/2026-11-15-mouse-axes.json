@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "passed": true,
+  "date": "2026-11-15",
+  "scope": "Original refdef LEFT to screen-RIGHT camera convention; independent horizontal/vertical usercmd plus original qagame/cgame direction; matching cloud-ray preparation. No raw mouse X/Y swapping.",
+  "viewport": {
+    "contracts": 13,
+    "output": "PASS: 13 QVM viewport contracts",
+    "executable_sha256": "a018c96151c92fe23c0ec1bfc0ca5b49d2a53682319004340051c720e9a15a7e"
+  },
+  "sky": {
+    "contracts": 31,
+    "output": "PASS: 31 playable sky contracts",
+    "executable_sha256": "6b90e9dea527450320bc4bb855a84b5350e94f99d3f1118cf66e9bacb865cd49"
+  },
+  "retail": {
+    "contracts": 20,
+    "output": "PASS: 20 Retail client-frame contracts changedViews=250 clientFrames=250 snapshots=20 localThinks=250 noPredictViews=12 subtickShot=1 teleportYaw=179.999984741211 botRing=separate",
+    "executable_sha256": "5f275fb2059b3b7a87429c4bc76f14b2a506b555a9561b0cd7649abeaa0ef913",
+    "compile_stamp_sha256": "7dd3d95c7a4ca45d17e01ad5864cd30e824832c76d714fe12ba3abc8d0c170b8",
+    "verified_input_source_hashes": {
+      "src/mq3/client/qvm_preview_app.ml": "d23c9cbf10ac5315335c45226946a2193bb346f053a687ac9373aca6d408d68f",
+      "src/mq3/client/qvm_frame_input.ml": "a87321c81f56bab3dd85efea9dbea2104c14eb494e1235c1a549a005dd1ba71c",
+      "src/mq3/client/input_command.ml": "d293b03823bda4c04e0fbccf556b72198ef42e0689e6dab7e00d0f8f1b14fdb1",
+      "src/mq3/client/input_command_events.ml": "4ac4f1ca5f6978551e83ed760d5004617a4de4c88df9a499f439f526a1a07ac8",
+      "src/mq3/engine/local_qvm_match.ml": "7bb1571ca0f0c9b154e6fc325798e80564b4e7c0dbb3e7da9fc1c2b5fc1fcc8b",
+      "src/mq3/shared/math.ml": "c31c5ee18970b20f88dcab6001b3aa955c78310f6069b8edfe1c78425dec1979",
+      "tests/client_frame_input_retail_probe.ml": "221a6057fd4e920987064978dc6504b8bab2bdd1e3e36dc79ee2fac8925dc6fd"
+    },
+    "scope": "Hash-guarded compile completed before camera/sky-only helper changes. Productive input modules and actual Retail test above remain identical; this test validates command and original-Cgame directions, not drawing."
+  },
+  "negative_controls": [
+    {
+      "name": "viewport",
+      "passed": true,
+      "scope": "Revert only the original-left to screen-right conversion; keep final tests and all other behavior",
+      "expected_failure": "AnglesToAxis left becomes screen-right"
+    },
+    {
+      "name": "sky",
+      "passed": true,
+      "scope": "Revert only the original-left to screen-right conversion; keep final tests and all other behavior",
+      "expected_failure": "productive refdef cloud preparation matches standalone camera batch without mirroring"
+    }
+  ],
+  "sources": {
+    "src/mq3/client/qvm_preview_app.ml": "d23c9cbf10ac5315335c45226946a2193bb346f053a687ac9373aca6d408d68f",
+    "src/mq3/client/qvm_frame_input.ml": "a87321c81f56bab3dd85efea9dbea2104c14eb494e1235c1a549a005dd1ba71c",
+    "src/mq3/client/input_command.ml": "d293b03823bda4c04e0fbccf556b72198ef42e0689e6dab7e00d0f8f1b14fdb1",
+    "src/mq3/client/input_command_events.ml": "4ac4f1ca5f6978551e83ed760d5004617a4de4c88df9a499f439f526a1a07ac8",
+    "src/mq3/engine/local_qvm_match.ml": "7bb1571ca0f0c9b154e6fc325798e80564b4e7c0dbb3e7da9fc1c2b5fc1fcc8b",
+    "src/mq3/shared/math.ml": "c31c5ee18970b20f88dcab6001b3aa955c78310f6069b8edfe1c78425dec1979",
+    "tests/client_frame_input_retail_probe.ml": "221a6057fd4e920987064978dc6504b8bab2bdd1e3e36dc79ee2fac8925dc6fd",
+    "src/mq3/client/playable_viewer.ml": "b768415b2516842311042967b8f5349dee052077f0b9bedf8ea3b8f3b0d74fc6",
+    "src/mq3/renderer/qvm_viewport.ml": "a8e6ce6704a9c9d12cc25af69d1652cb4d2f658734acde1fb804d2a1bbe96339",
+    "src/mq3/client/playable_sky.ml": "e87c4a49f2a05c15b50ebb0cfe582c205e4443e3692c6ab476c0c7b09693db51",
+    "tests/qvm_viewport_contracts.ml": "f162b1c191015f5bc2b63e9cf53ac72458d2dba9c21d28796ca6df91884c836c",
+    "tests/playable_sky_contracts.ml": "12ed973d2c6c3795996fd5310b709bc8c0b2d6fc3a18100d69ccb5a9ee9d4859",
+    "scripts/test_qvm_viewport.py": "0cc89881e8d100b1717161def95edd3a1a2273d8cc02fc9b0745b992b83df16b",
+    "scripts/test_playable_sky.py": "4a8ae20ec48ae763a4d27ea8d51f57bb8675672e0bb371cfbb7009cc4a84dda3",
+    "Quake-III-Arena-original-source/code/game/q_math.c": "0bca11954efa4741c53c5b49492bf671fcbfc70925fd7dcca09c7ab0d7ff0c29"
+  }
+}

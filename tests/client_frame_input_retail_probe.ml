@@ -49,7 +49,7 @@ function draftClientFrame(host,mouse,tap)
   while host.serverTime+50<=host.realTime value=draftServerTick(host);if value is error then return value end if end while
   state=host.match;before=state.context.commandNumber;beforeThink=host.counts.local
   plan=frame.prepare(host.client,host.realTime,before,7,true,false,false)
-  if mouse then frame.applyBound(host.client,plan,host.realTime,3,1,0,"",0) end if
+  if mouse!=false then dx=1;dy=0;if typeof(mouse)=="array" then dx=mouse[0];dy=mouse[1] end if;frame.applyBound(host.client,plan,host.realTime,3,dx,dy,"",0) end if
   if tap then frame.applyBound(host.client,plan,host.realTime-3,1,178,1,"+attack",0);frame.applyBound(host.client,plan,host.realTime-1,1,178,0,"+attack",0) end if
   cmdTime=frame.commandTime(host.client,host.clock.state.serverTime,host.clock.state.connectionState==8)
   command=frame.finish(host.client,plan,cmdTime,match.cgameUserCmdValue(state),match.cgameSensitivity(state),match.keyCatcher(state),events.anyDown(host.client.input))
@@ -75,6 +75,12 @@ function main(args)
   client=frame.create(state.context.latestSnapshot.playerState.viewangles,state.context.latestSnapshot.playerState.delta_angles,1100,1100)
   host=Host(state,client,clockState,1100,1100,0,0,0,0,void,void,counts)
   for index=1 to 6 value=draftClientFrame(host,false,false);if value is error then return value end if end for
+  beforeAngles=host.lastCommand.angles;beforeView=math.vectoangles(host.view.refdef.viewaxis[0])
+  value=draftClientFrame(host,[20,0],false);if value is error then return value end if;afterView=math.vectoangles(host.view.refdef.viewaxis[0])
+  checked=checked+draftRequire(host.lastCommand.angles[0]==beforeAngles[0] and host.lastCommand.angles[1]!=beforeAngles[1] and afterView[1]!=beforeView[1],"native horizontal mouse changes actual original Cgame yaw without pitch")
+  beforeAngles=host.lastCommand.angles;beforeView=afterView
+  value=draftClientFrame(host,[0,20],false);if value is error then return value end if;afterView=math.vectoangles(host.view.refdef.viewaxis[0])
+  checked=checked+draftRequire(host.lastCommand.angles[0]!=beforeAngles[0] and host.lastCommand.angles[1]==beforeAngles[1] and afterView[0]!=beforeView[0],"native vertical mouse changes actual original Cgame pitch without yaw")
   firstNumber=state.context.commandNumber;firstSnapshot=state.context.snapshotNumber;firstTicks=host.ticks;firstThinks=counts.local;changed=0;previous=host.view.refdef.viewaxis
   for index=1 to 250
     value=draftClientFrame(host,true,false);if value is error then return value end if

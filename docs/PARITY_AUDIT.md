@@ -4,6 +4,43 @@ Stand: 2026-11-15. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Mausprojektion und Setup im laufenden Match
+
+Die originale `refdef.viewaxis[1]` zeigt nach links. Der Fenster-Renderer
+erwartet eine Rechtsachse; die direkte Übernahme spiegelte daher die
+horizontale Ansicht. `qvm_viewport` negiert diese Achse jetzt einmal an der
+Projektionsgrenze. Native Maus-X/Y-Ereignisse bleiben unverändert: X steuert
+Yaw, Y steuert Pitch. Richtungstests prüfen beide Achsen unabhängig.
+Die Wolken verwenden dieselbe korrigierte Refdef-Basis; die eigenständige
+Kamera mit bereits vorhandener Rechtsachse bleibt unverändert.
+
+Ein weiterer Retail-Test reproduziert den Controls-Abbruch: unbelegte
+Tasten lieferten bei `UI_KEY_GETBINDINGBUF` einen Nullwert statt der
+originalen leeren, NUL-terminierten Zeichenkette. Der UI-Trap normalisiert
+diesen Wert jetzt nur an dieser Grenze; der interne nullable Binding-Store
+und die originale `Key_GetKey`-Semantik bleiben erhalten.
+
+Der Matchhost berücksichtigt jetzt `UI_IS_FULLSCREEN`: Setup/Controls
+erhalten einen eigenen 2D-Kommandostrom, und vorher eingereichte Cgame-Welt,
+3D-HUD und Spiel-Cinematics werden darunter nicht gezeichnet. Nachfolgende
+3D-Ansichten des UI bleiben erhalten. Das ursprüngliche Ingame-Menü bleibt
+ein Overlay. Dies ist keine vollständige Abnahme aller Systemoptionen.
+Die Prüfungen bestehen mit 13 Projektions-, 31 Himmel-, 20 Retail-Eingabe-
+und 64 UI-Trap-Verträgen. Der erweiterte Retail-UI-Lauf öffnet Setup aus
+dem laufenden Spiel, speichert Controls-Empfindlichkeit und Game-Options-
+Fadenkreuz, öffnet System und kehrt ins Ingame-Overlay zurück. Tatsächliche
+Cgame-Draws liegen zwischen den Interaktionen. Ein vorheriger Lauf belegt
+den reproduzierten Null-Binding-Abbruch. Nachweise:
+[`Mausachsen`](verification/2026-11-15-mouse-axes.json) und
+[`Ingame-Setup`](verification/2026-11-15-ingame-setup.json).
+Der eingefrorene neue Windows-Build besteht den produktiven Retail-Capture
+mit fünf Modellen und 524 Modelldreiecken. Der neue 5.000-Frame-Lauf misst
+157,27 FPS, 2,639 s Matchstart, Work-P95 9 ms und maximal 153 ms; die
+200-FPS-/8-ms-Schranke besteht **nicht**. Die Ursache der Differenz zur
+202-FPS-Basis ist noch nicht isoliert; beide Messungen bleiben erhalten.
+Die funktionalen Korrekturen sind geprüft, die Leistungsabnahme ist offen.
+Siehe [`Buildnachweis`](verification/2026-11-15-mouse-menu-build.json).
+
 ## Clientframe-Eingabe vom 15. November 2026
 
 Auf der geprüften Renderer-/QVM-Basis `d7a7934` erzeugt der produktive

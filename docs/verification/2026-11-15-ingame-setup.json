@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "scope": "Original ui.qvm ingame Setup menu and nullable binding-buffer ABI; not full graphics-restart or every setting acceptance.",
+  "root_cause": "Controls_GetConfig scans all 256 key bindings; never-bound keys are NULL in host state. UI_KEY_GETBINDINGBUF previously passed NULL to writeBuffer and crashed at len(void). Original cl_ui.c Key_GetBindingBuf writes an empty NUL-terminated string instead.",
+  "fix": "Dedicated syscall_ui.bindingOutput normalizes NULL to empty text at the UI buffer ABI only; nullable Key_GetBinding/Key_GetKey storage semantics remain unchanged.",
+  "red_log": "build/ingame_setup_regression.log",
+  "red_log_sha256": "f24702859c4fe4cdda482a88ea48be423b75504ba101b1f985261f2c3a6fb0c4",
+  "green_log": "build/ingame_setup_regression_fixed.log",
+  "green_log_sha256": "85d52540fb5a77c11a0558acb1b41736d658e2f34f42239d2f32abc1b4e7e392",
+  "retail_result": "PASS: retail interactive UI firstCommands=207 navigationCommands=206 ingameCommands=117 uiFrames=6 keyEvents=3 charEvents=1 mouseEvents=1 rawVirtualKeys=0 rawVirtualMouse=1 navigationRefreshed=true navigationFrame=4 ingameSetup=Controls,System,GameOptions sensitivitySaved=true crosshairSaved=true cgameInterleaved=true",
+  "unit_records": 7,
+  "unit_contracts": 64,
+  "checks": [
+    "Actual ingame overlay opens original fullscreen Setup by mouse",
+    "Original Controls sensitivity slider changed and saved via Escape",
+    "Original System configuration opens without error",
+    "Original Game Options crosshair cvar changes",
+    "Real original Cgame draws interleaved with UI interactions",
+    "Back returns to original ingame overlay",
+    "NULL binding writes only NUL and preserves adjacent bytes",
+    "Zero-capacity NULL output does not write",
+    "Non-NULL binding retains bounded truncation"
+  ],
+  "reproduce": [
+    "python scripts/test_vm_syscall_ui.py",
+    "python scripts/test_local_qvm_ui.py --pak build/baseq3/pak0.pk3 --qvms build/reference/qvms"
+  ],
+  "sources": {
+    "src/mq3/vm/syscall_ui.ml": "4f4a4379efa560a2788199e8733d4ca21484e8c8d3e2a93b5de4bb15b83a70de",
+    "tests/local_qvm_ui_retail_probe.ml": "922c60dc326758c0ff9b587ddb6017c8525b943fb3e708ef15a49ceb9811deae",
+    "tests/vm_syscall_ui_contracts.ml": "66ec84ce007718a280851c6a4d7454b19786a10700c1f127eeaed90598cc8fd7",
+    "scripts/test_vm_syscall_ui.py": "bd7242c21141f94ef04248dce4248b9ef8414993ae9e104445a2fce4f4161c9d",
+    "Quake-III-Arena-original-source/code/client/cl_ui.c": "cc14739b1aa9a601c00665cf387218ab1195e3351b6a1af626d9cf6478c17a68",
+    "build/local_qvm_ui_retail_probe.exe": "759bb1164de8330129a2b361d193cf962927b22e3660fcac062b33979577c27f",
+    "build/reference/qvms/ui.qvm": "3a51af40cd51ceda356c948097ba5e8c614d699a6e69f6270d1382931c49b496",
+    "build/reference/qvms/cgame.qvm": "2df34638c131d1bf2796231df8874112e049f5c5b3a42eb4205294fd323b0cef",
+    "build/reference/qvms/qagame.qvm": "220b5cea61ff2159d0a6d9a88f6df21f86fa340ac82f474db97b55a55651de82",
+    "build/baseq3/pak0.pk3": "7ce8b3910620cd50a09e4f1100f426e8c6180f68895d589f80e6bd95af54bcae"
+  }
+}

@@ -48,6 +48,13 @@ function main(args)
   count=count+require(viewportBatch.count==384 and viewportBatch.capacity==384,"viewport sky retains fixed batching")
   basis=viewer.cameraBasis(camera);retained=sky.retainedBatchPrepared(catalog,basis,0,0,640,480,1000)
   count=count+require(retained.data==batch.data,"native retained sky is byte-identical to original MiniLang batch")
+  originalAxes=[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]];screenAxes=viewer.refdefBasis(originalAxes)
+  count=count+require(screenAxes==basis,"original refdef LEFT converts to standalone camera RIGHT exactly")
+  rightRay=sky.directionPrepared(screenAxes,320.0,640,480,640.0,240.0);leftRay=sky.directionPrepared(screenAxes,320.0,640,480,0.0,240.0);upRay=sky.directionPrepared(screenAxes,320.0,640,480,320.0,0.0)
+  count=count+require(rightRay[1]<0 and leftRay[1]>0,"cloud horizontal rays agree with original screen-right and screen-left")
+  count=count+require(upRay[2]>0 and near(upRay[1],0),"cloud vertical ray stays upward independently of horizontal motion")
+  refdefBatch=sky.retainedBatchRefdef(catalog,originalAxes,0,0,640,480,1000)
+  count=count+require(refdefBatch.data==batch.data,"productive refdef cloud preparation matches standalone camera batch without mirroring")
   layerBytes=sky.GRID_COLUMNS*sky.GRID_ROWS*2*128;layerExact=true
   for layerIndex=0 to len(catalog.layers)-1 if slice(retained.data,layerIndex*layerBytes,layerBytes)!=slice(batch.data,layerIndex*layerBytes,layerBytes) then layerExact=false end if end for
   count=count+require(layerExact,"each explicit sky draw layer preserves original reference bytes")

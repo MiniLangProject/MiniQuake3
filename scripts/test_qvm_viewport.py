@@ -14,7 +14,7 @@ def main():
         check=True,
     )
     value = run([ROOT / "build/qvm_viewport_contracts.exe"], ROOT / "build").strip()
-    expected = "PASS: 8 QVM viewport contracts"
+    expected = "PASS: 13 QVM viewport contracts"
     if value != expected:
         raise RuntimeError(value)
     print(value)

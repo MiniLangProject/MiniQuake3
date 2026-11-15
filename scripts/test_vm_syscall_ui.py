@@ -23,9 +23,9 @@ def main():
     if native!=mini:raise RuntimeError('UI public ABI mismatch\nC:\n'+native+'MiniLang:\n'+mini)
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/vm_syscall_ui_contracts.ml','--output','vm_syscall_ui_contracts.exe'],cwd=ROOT,check=True)
     value=run([ROOT/'build/vm_syscall_ui_contracts.exe'],ROOT/'build',log=out/'contracts.log').strip()
-    if value!='PASS: 61 UI-specific syscall contracts':raise RuntimeError(value)
+    if value!='PASS: 64 UI-specific syscall contracts':raise RuntimeError(value)
     files=[client_source,original/'ui/ui_public.h',harness,ROOT/'tests/vm_syscall_ui_oracle.ml',ROOT/'src/mq3/vm/syscall_ui.ml',ROOT/'tests/vm_syscall_ui_contracts.ml']
-    report={'passed':True,'records':7,'contracts':61,
+    report={'passed':True,'records':7,'contracts':64,
       'scope':'UI PK3 file listing, renderer registration and 2D draw boundary, key bindings/catcher, clipboard, GL/client/config state, ping queue, cached and live server-browser queries and memory reporting.',
       'oracle':'Original Baseq3 ui_public.h is compiled directly for API version, 39 trap ordinals, and exact x86 uiClientState_t and glconfig_t byte sizes; every trap name is required in unchanged cl_ui.c.',
       'safety':'VM argument vectors, masked pointers, fixed binary layouts, bounded strings, nullable color input, booleans, unavailable services and output spans are checked at the host boundary.',

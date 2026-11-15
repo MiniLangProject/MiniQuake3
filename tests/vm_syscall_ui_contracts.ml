@@ -23,7 +23,7 @@ function uiHostDraw(c,values,shaderHandle) emit(c,["draw",values,shaderHandle]) 
 function uiHostUpdate(c) emit(c,["update"]) end function
 
 function keyName(c,key) return "KEY"+str(key) end function
-function binding(c,key) if key==7 then return "+attack" end if;return "" end function
+function binding(c,key) if key==7 then return "+attack" end if;if key==8 then return void end if;return "" end function
 function uiHostSetBinding(c,key,value) emit(c,["bind",key,value]) end function
 function isDown(c,key) return key==7 end function
 function getOverstrike(c) return true end function
@@ -98,6 +98,9 @@ function main(args)
 
   invoke(host,vm,base,[33,7,500,8]);count=count+req(textAt(vm,500)=="KEY7","key name")
   invoke(host,vm,base,[34,7,520,16]);count=count+req(textAt(vm,520)=="+attack","binding output")
+  put(vm,520,"stale");vm.data[519]=91;invoke(host,vm,base,[34,8,520,16]);count=count+req(vm.data[520]==0 and vm.data[521]==116 and vm.data[519]==91,"NULL binding writes only an empty terminator like Key_GetBindingBuf")
+  vm.data[520]=93;invoke(host,vm,base,[34,8,520,0]);count=count+req(vm.data[520]==93,"zero-capacity NULL binding output preserves memory")
+  invoke(host,vm,base,[34,7,520,3]);count=count+req(textAt(vm,520)=="+a" and vm.data[523]==108,"bound binding output retains truncation and NUL boundary")
   put(vm,550,"+moveleft");invoke(host,vm,base,[35,9,550]);count=count+req(c.events[8]==["bind",9,"+moveleft"],"set binding")
   count=count+req(invoke(host,vm,base,[36,7])==1 and invoke(host,vm,base,[36,8])==0,"key down boolean")
   count=count+req(invoke(host,vm,base,[37])==1,"overstrike state")

@@ -57,6 +57,13 @@ function cameraBasis(state)
   return qmath.AngleVectors([state.pitch,state.yaw,0.0])
 end function
 
+// Original refdef_t/AnglesToAxis stores forward, LEFT, up. Screen-space
+// projection and cloud-ray generation use forward, RIGHT, up instead.
+function refdefBasis(axes)
+  left=axes[1]
+  return [axes[0],[numeric.fneg(left[0]),numeric.fneg(left[1]),numeric.fneg(left[2])],axes[2]]
+end function
+
 function movementBasis(state)
   axes=qmath.AngleVectors([0.0,state.yaw,0.0])
   return [axes[0],axes[1],[0.0,0.0,1.0]]

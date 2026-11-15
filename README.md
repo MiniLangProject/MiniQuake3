@@ -42,11 +42,17 @@ verbleibende Grenzen stehen im aktuellen Abschnitt des
 [Paritätsaudits](docs/PARITY_AUDIT.md). Ältere Build-Hashes und Messungen in
 den nachfolgenden historischen Abschnitten bezeichnen frühere Zwischenstände.
 
-Der aktuelle Retail-q3dm1-Test erreicht auf Ryzen 9 9900X / RTX 5080 bei
+Die Clientframe-Basis vom 15. November erreicht auf Ryzen 9 9900X / RTX 5080 bei
 1280×720 **202 FPS über 5.000 Frames** mit vollständiger getesteter Szene
 und einem echten Usercmd/ClientThink pro Clientframe. Der direkte Matchstart
 benötigt **2,50 s**, das Hauptmenü beim normalen EXE-Start **0,30 s**.
 Einzelne Frame-Spitzen bis 151 ms bleiben offen.
+Der nachfolgende Maus-/Menü-Build korrigiert die gespiegelte Kamera und
+einen Controls-Abbruch bei unbelegten Tasten. Sein neuer 5.000-Frame-Lauf
+erreicht 157 FPS bei 2,64 s Matchstart; die 200-FPS-Abnahme besteht damit
+aktuell nicht. Die Ursache der Abweichung ist noch nicht isoliert.
+Die [neuen Buildnachweise](docs/verification/2026-11-15-mouse-menu-build.json)
+enthalten diesen fehlgeschlagenen Leistungstest ausdrücklich.
 Messbedingungen, Binärhashes und die davon getrennte Rendererprobe stehen in
 [den aktuellen Eingabe-/Leistungsnachweisen](docs/verification/2026-11-15-client-input.json)
 und [der Renderer-Basis](docs/verification/2026-11-15-performance.json).

@@ -1,4 +1,5 @@
 import mq3.renderer.qvm_viewport as viewport
+import mq3.client.playable_viewer as viewportCamera
 
 struct Refdef x y width height fovX vieworg viewaxis end struct
 function require(condition,message) if not condition then return error(7692,message) end if;return 1 end function
@@ -11,6 +12,13 @@ function main(args)
   count=count+require(prepared.projection.halfWidth==400.0 and prepared.projection.halfHeight==200.0,"projection center includes viewport origin")
   count=count+require(prepared.projection.focal>199.99 and prepared.projection.focal<200.01,"horizontal FOV uses viewport width")
   count=count+require(prepared.projection.position==[1.0,2.0,3.0] and prepared.projection.forward==[1.0,0.0,0.0],"refdef camera preserved")
+  count=count+require(prepared.projection.right==[0.0,-1.0,0.0] and prepared.projection.up==[0.0,0.0,1.0],"AnglesToAxis left becomes screen-right; up preserved")
+  screenLeft=viewportCamera.projectPrepared(prepared.projection,[11.0,3.0,3.0]);screenRight=viewportCamera.projectPrepared(prepared.projection,[11.0,1.0,3.0]);screenUp=viewportCamera.projectPrepared(prepared.projection,[11.0,2.0,4.0])
+  count=count+require(screenLeft.x<prepared.projection.halfWidth and screenLeft.y==prepared.projection.halfHeight,"positive world Y lies left in original zero-angle view")
+  count=count+require(screenRight.x>prepared.projection.halfWidth and screenRight.y==prepared.projection.halfHeight,"negative world Y lies right; no horizontal mirroring")
+  count=count+require(screenUp.x==prepared.projection.halfWidth and screenUp.y<prepared.projection.halfHeight,"vertical world Z stays vertical rather than swapping axes")
+  turned=fixture(0,0,640,480);turned.viewaxis=[[0.0,1.0,0.0],[-1.0,0.0,0.0],[0.0,0.0,1.0]];turnedProjection=viewport.prepare(turned,640,480,640,480)
+  turnedRight=viewportCamera.projectPrepared(turnedProjection.projection,[2.0,12.0,3.0]);count=count+require(turnedRight.x>320.0 and turnedRight.y==240.0,"original yaw90 camera maps positive world X to screen-right")
   rounded=viewport.prepare(fixture(1,1,1,1),3,3,10,10);if rounded is error then return rounded end if
   count=count+require(rounded.area.x==3 and rounded.area.y==3 and rounded.area.width==3 and rounded.area.height==3,"scaled edges share deterministic rounding")
   count=count+require(try(viewport.prepare(fixture(621,0,40,10),640,480,320,240)) is error,"out-of-source rectangle rejected")

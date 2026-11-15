@@ -20,6 +20,9 @@ function prepare(refdef,sourceWidth,sourceHeight,targetWidth,targetHeight)
   right=edge(refdef.x+refdef.width,sourceWidth,targetWidth);bottom=edge(refdef.y+refdef.height,sourceHeight,targetHeight)
   area=window.viewport(left,top,right-left,bottom-top);if area is error then return area end if
   focal=viewer.focalLength(area.width,refdef.fovX);if focal is error then return focal end if
-  projection=viewer.Projection(refdef.vieworg,refdef.viewaxis[1],refdef.viewaxis[2],refdef.viewaxis[0],area.x+area.width*0.5,area.y+area.height*0.5,focal,1.0)
+  // refdef_t stores forward/LEFT/up (AnglesToAxis); the projection expects
+  // screen-right. Passing left mirrored the scene and horizontal mouse look.
+  screenAxes=viewer.refdefBasis(refdef.viewaxis)
+  projection=viewer.Projection(refdef.vieworg,screenAxes[1],refdef.viewaxis[2],refdef.viewaxis[0],area.x+area.width*0.5,area.y+area.height*0.5,focal,1.0)
   return Prepared(area,projection)
 end function

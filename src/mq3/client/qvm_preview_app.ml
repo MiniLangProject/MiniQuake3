@@ -432,6 +432,12 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
     afterGame=window.milliseconds();gameMs=gameMs+afterGame-startedAt
     drawnFrame=drawFrame(state,clientClock,serverTime);if drawnFrame is error then window.shutdown();match.shutdown(state);return drawnFrame end if
     afterCgame=window.milliseconds();cgameMs=cgameMs+afterCgame-afterGame
+    // Original SCR_DrawScreenField suppresses the game beneath fullscreen UI
+    // (Setup/Controls), but keeps it behind the translucent ingame menu.
+    uiFullscreen=false
+    if uiSession.active(ui) then uiFullscreen=localQvmUi.fullscreen(state);if uiFullscreen is error then window.shutdown();match.shutdown(state);return uiFullscreen end if end if
+    firstUiView=len(state.context.renderViews)
+    if uiFullscreen then renderCommands.reset(state.context.renderQueue) end if
     uiFrame=refreshUiFrame(ui,serverTime);if uiFrame is error then window.shutdown();match.shutdown(state);return uiFrame end if
     quitRequested=requestedQuit(state);state.context.console=[];if quitRequested then break end if
     cinematicSamples=collectCinematicAudio(state,audio);if cinematicSamples is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return cinematicSamples end if
@@ -467,6 +473,7 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
     window.beginFrame(0,0,0)
     preparedViewIndex=0
     for each preparedView in preparedViews
+      if uiFullscreen and preparedViewIndex<firstUiView then preparedViewIndex=preparedViewIndex+1;continue end if
       window.clearDepth(0.0)
       preparedPortal=preparedPortals[preparedViewIndex]
       if preparedPortal!=void then
@@ -492,7 +499,7 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
       drawn=flares.drawViewport(flareCatalog,fogCatalog,preparedView.source.scene.dlights,preparedView.target.projection,preparedView.target.area,preparedView.source.refdef.time,preparedViewIndex*2+1);if drawn is error then window.shutdown();match.shutdown(state);return drawn end if
       preparedViewIndex=preparedViewIndex+1
     end for
-    cinematicDraws=drawCinematics(state);if cinematicDraws is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return cinematicDraws end if
+    if not uiFullscreen then cinematicDraws=drawCinematics(state);if cinematicDraws is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return cinematicDraws end if end if
     drawn=qvm2d.draw(hudCatalog,view.refdef.time);if drawn is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return drawn end if
     drawn=drawProductiveConsole(consoleMedia,consoleBackgroundMedia,state,WIDTH,HEIGHT,serverTime);if drawn is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return drawn end if
     window.present();renderMs=renderMs+window.milliseconds()-afterBatch;frames=frames+1

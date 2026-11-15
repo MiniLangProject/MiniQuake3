@@ -1,0 +1,89 @@
+{
+  "date": "2026-11-15",
+  "functional_passed": true,
+  "performance_acceptance_passed": false,
+  "scope": "Mouse projection and original ingame Setup fixes. Performance acceptance remains open; full parity is not claimed.",
+  "binary_sha256": "e946a46b29d71e9cb3b95dfd9836e53dab65fad40c83ba25d65956756ed2af69",
+  "build_inputs_sha256": "9a85495febbeaee4ffe0cde4d18dccf5b1e36d872344be22402e49735c3b3007",
+  "performance": {
+    "passed": false,
+    "binary_sha256": "e946a46b29d71e9cb3b95dfd9836e53dab65fad40c83ba25d65956756ed2af69",
+    "renderer": "hardware",
+    "map": "q3dm1",
+    "frames": 5000,
+    "wall_seconds": 34.91521209990606,
+    "startup_ms": 2639.0,
+    "frame_ms": 6.3474,
+    "capture_enabled": false,
+    "diagnostic_only": false,
+    "profile_files": {},
+    "native": {
+      "playable_window.dll": "3a51ce7f7d4d6eea5b2a4fa6c16c1bcec79a63690f78d9785a61535dc0306220",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088",
+      "playable_ambient.dll": "ab306299dde70d1c33086248362eb4211f04bf334c623926f6a3affe1a8e6c43"
+    },
+    "scene": {
+      "views": 3,
+      "models": 5,
+      "triangles": 524
+    },
+    "loop": {
+      "elapsed_ms": 31792.0,
+      "fps": 157.272269753397,
+      "work_p50_ms": 6.0,
+      "work_p95_ms": 9.0,
+      "work_p99_ms": 11.0,
+      "work_max_ms": 153.0
+    },
+    "acceptance": {
+      "min_fps": 200.0,
+      "max_work_p95_ms": 8.0,
+      "passed": false
+    }
+  },
+  "visual_smoke": {
+    "passed": true,
+    "binary_sha256": "e946a46b29d71e9cb3b95dfd9836e53dab65fad40c83ba25d65956756ed2af69",
+    "renderer": "hardware",
+    "map": "q3dm1",
+    "frames": 120,
+    "wall_seconds": 4.454548500012606,
+    "startup_ms": 2862.0,
+    "frame_ms": 9.95833333333333,
+    "capture_enabled": true,
+    "diagnostic_only": true,
+    "profile_files": {},
+    "native": {
+      "playable_window.dll": "3a51ce7f7d4d6eea5b2a4fa6c16c1bcec79a63690f78d9785a61535dc0306220",
+      "miniquake3_qvm.dll": "ce6814ceb0908d4022fd0c8a12fa5d96dddeeec899b9a502b52a974901d327b2",
+      "miniquake3_abi.dll": "8ae75f3626b56f413eb9d4241fdd4050073e53ca55509181343a4dd463dc8088",
+      "playable_ambient.dll": "ab306299dde70d1c33086248362eb4211f04bf334c623926f6a3affe1a8e6c43"
+    },
+    "scene": {
+      "views": 3,
+      "models": 5,
+      "triangles": 524
+    },
+    "loop": {
+      "elapsed_ms": 1196.0,
+      "fps": 100.334448160535,
+      "work_p50_ms": 8.0,
+      "work_p95_ms": 10.0,
+      "work_p99_ms": 66.0,
+      "work_max_ms": 175.0
+    }
+  },
+  "tests": [
+    "13 projection contracts",
+    "31 sky contracts",
+    "20 real Retail client-frame contracts",
+    "7 unchanged-C UI ABI records and64 contracts",
+    "Real ingame Setup/Controls saved sensitivity/System/GameOptions saved crosshair/Cgame interleaving"
+  ],
+  "remaining": [
+    "200 FPS /8 ms workP95 gate fails on this new trial; difference from prior202FPS is not isolated",
+    "full graphics settings apply/vid_restart not accepted",
+    "full original-game parity and long-term acceptance remain open"
+  ]
+}

@@ -265,8 +265,13 @@ function submitLayers(catalog,batch)
   end for
   return count
 end function
+// Only refdef callers carry a LEFT vector. Standalone camera/prepared APIs
+// already carry RIGHT and must retain their existing ray/batch semantics.
+function retainedBatchRefdef(catalog,axes,left,top,width,height,nowMilliseconds)
+  return retainedBatchPrepared(catalog,viewer.refdefBasis(axes),left,top,width,height,nowMilliseconds)
+end function
 function drawViewport(catalog,basis,area,nowMilliseconds)
   if catalog==void or basis==void or len(basis)!=3 or area==void or area.width<1 or area.height<1 or nowMilliseconds<0 then return fail("catalog, view axes, viewport and non-negative time are required") end if
-  batch=retainedBatchPrepared(catalog,basis,area.x,area.y,area.width,area.height,nowMilliseconds);if batch is error then return batch end if
+  batch=retainedBatchRefdef(catalog,basis,area.x,area.y,area.width,area.height,nowMilliseconds);if batch is error then return batch end if
   return submitLayers(catalog,batch)
 end function
