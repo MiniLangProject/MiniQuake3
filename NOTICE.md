@@ -1,12 +1,17 @@
-# Herkunft
+# Provenance and notices
 
-MiniQuake3 ist ein unabhängiger MiniLang-Port in Entwicklung, abgeleitet aus dem
-Quake-III-Arena-Quellcode von id Software, Copyright (C) 1999–2005 Id Software, Inc.
-Die Portdateien tragen `GPL-2.0-or-later`. Der vollständige GPL-v2-Text liegt in
-[LICENSE](LICENSE); die Originalhinweise und Drittanbieter-Lizenzen bleiben im
-[Originalrepository](Quake-III-Arena-original-source/README.txt) erhalten.
+MiniQuake3 is an independent MiniLang port in development, derived from the
+Quake III Arena source code by id Software, Copyright (C) 1999–2005 Id Software,
+Inc. Port source files carry `GPL-2.0-or-later` notices. The full GPL version 2
+text is provided in [LICENSE](LICENSE); original notices and third-party
+licenses are retained in the
+[upstream source submodule](Quake-III-Arena-original-source/README.txt).
 
-Der MiniLang-Compiler und seine Standardbibliothek werden als externe
-Entwicklungsabhängigkeit verwendet; ihre eigenen Apache-2.0-Lizenzhinweise bleiben
-unverändert. Das MiniQuake3-Repository enthält weder kommerzielle PK3-Dateien noch
-aus ihnen entnommene Spieldaten. Diese liegen nur in lokal ignorierten Testausgaben.
+The MiniLang compiler and standard library are external development
+dependencies. Their own Apache-2.0 notices remain unchanged.
+
+This repository does not distribute commercial PK3 archives or extracted
+retail assets. Game data used for local or CI validation stays in ignored test
+outputs and is excluded from uploaded build artifacts. Documentation may
+include screenshots rendered by MiniQuake3; these do not transfer ownership
+of or relicense the original game's artwork.
