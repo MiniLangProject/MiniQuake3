@@ -1,0 +1,96 @@
+name: Retail audio failure-path regression
+on:
+  push:
+    branches: [test/retail-start-20261116]
+    paths: [.github/workflows/retail-audio-smoke.yml]
+permissions:
+  contents: read
+jobs:
+  audio:
+    runs-on: windows-2022
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: test/retail-start-20261116
+          persist-credentials: false
+      - name: Compile and execute real audio initialization failure checks
+        shell: python
+        run: |
+          import ctypes
+          import json
+          from pathlib import Path
+          import subprocess
+          import sys
+          sys.path.insert(0, str(Path('scripts').resolve()))
+          import ci_release_candidate as candidate
+          from toolchain import msvc_env, run
+          ci = candidate.ci
+          ci.BUILD.mkdir(exist_ok=True)
+          ci.EVIDENCE.mkdir(parents=True, exist_ok=True)
+          ci.REPORT['scope'] = 'Audio error-path regression only; not a full game startup proof.'
+          ci.REPORT['source_commit'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          try:
+              for name in ('qvm_menu_app.ml', 'qvm_preview_app.ml'):
+                  source = (ci.ROOT / 'src/mq3/client' / name).read_text(encoding='utf-8')
+                  expected = 'audioStarted=try(audioOutput.init(22050));if audioStarted is error then print "Warning: audio output unavailable; continuing without sound." end if'
+                  assert source.count(expected) == 1, 'Missing explicit audio error capture in ' + name
+              source = (ci.ROOT / 'src/mq3/client/qvm_preview_app.ml').read_text(encoding='utf-8')
+              assert 'import std.ds.list as lists' in source
+              profile = json.loads((ci.ROOT / 'docs/reference/toolchain.json').read_text(encoding='utf-8'))
+              candidate.release_compiler(profile)
+              folder = ci.BUILD / 'audio-startup-proof'
+              folder.mkdir(exist_ok=True)
+              native = ci.ROOT / 'native/playable_ambient_win32.c'
+              env = msvc_env('x64')
+              run(['cl', '/nologo', '/LD', '/O2', '/W4', '/WX', '/MT', native,
+                   '/link', '/Brepro', 'winmm.lib', '/out:' + str(folder / 'playable_ambient.dll')],
+                  folder, env, ci.EVIDENCE / 'audio-native-build.log')
+              fixture = folder / 'audio_smoke.ml'
+              fixture.write_text('''import mq3.platform.playable_ambient as audio
+          function main(args)
+            invalid=try(audio.init(1))
+            if not (invalid is error) then return error(7790,"invalid rate did not fail") end if
+            if audio.canSubmit() then return error(7790,"failed output accepted samples") end if
+            audio.shutdown()
+            audioStarted=try(audio.init(22050))
+            if audioStarted is error then
+              if audio.canSubmit() then return error(7790,"unavailable device accepted samples") end if
+              print "PASS: missing audio device error caught; caller continues"
+            else
+              print "NOTE: audio device available on this runner"
+            end if
+            audio.shutdown()
+            audio.shutdown()
+            if audio.canSubmit() then return error(7790,"closed output accepted samples") end if
+            print "PASS: audio failure capture and idempotent cleanup"
+            return 0
+          end function
+          ''', encoding='utf-8')
+              compiler = ci.ROOT / 'artifacts/toolchain/build/mlc_win64.exe'
+              executable = fixture.with_suffix('.exe')
+              ci.run('audio-smoke-compile', [compiler, fixture, executable, '-I', ci.ROOT / 'src',
+                                           '-I', ci.ROOT / 'artifacts/toolchain'], timeout=180)
+              result = ci.run('audio-smoke-run', [executable], cwd=folder, timeout=30)
+              assert 'PASS: audio failure capture and idempotent cleanup' in result
+              devices = ctypes.WinDLL('winmm').waveOutGetNumDevs()
+              if devices == 0:
+                  assert 'PASS: missing audio device error caught; caller continues' in result
+              ci.REPORT['audio_devices'] = devices
+              ci.REPORT['native_source_sha256'] = ci.digest(native)
+              ci.REPORT['fixture_sha256'] = ci.digest(fixture)
+              ci.REPORT['fixture_binary_sha256'] = ci.digest(executable)
+              ci.REPORT['status'] = 'passed'
+          except Exception as exc:
+              ci.REPORT['status'] = 'failed'
+              ci.REPORT['error'] = str(exc)
+              raise
+          finally:
+              ci.save_report()
+      - name: Preserve audio regression evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: retail-audio-smoke
+          path: build/retail-evidence/**
+          retention-days: 7
