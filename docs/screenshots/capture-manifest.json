@@ -1,0 +1,75 @@
+{
+  "source_commit": "e1b6d38c0a620811261d98d561bbcbb7a5bf5217",
+  "workflow_run": "43953966204",
+  "capture_method": "MQ3_CAPTURE native framebuffer BMP -> lossless PNG",
+  "image_processing": "RGB encoding only; no crop, resize, enhancement or generated pixels",
+  "game_sha256": "c2f54cd44691b519296cd7dcc72ccdbfb14dc73bf015eb54adf3acc52b953658",
+  "replay_sha256": "0d6e7d89e5a787e739263d6590248910b7c8dd539eb027bcb16e9a34ed6fdbaa",
+  "pak0_sha256": "7ce8b3910620cd50a09e4f1100f426e8c6180f68895d589f80e6bd95af54bcae",
+  "compiler": "published MiniLang 1.3.9; not historical frozen-toolchain parity",
+  "captures": [
+    {
+      "file": "main-menu.png",
+      "sha256": "526a6dc7f2f14f1c35636e3d4aea312babef7913a2911cd9b4e347090bd3ae95",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "command": [
+        "D:\\a\\MiniQuake3\\MiniQuake3\\build\\MiniQuake3.exe"
+      ],
+      "last_window_title": "MiniQuake3 | Quake III Arena Main Menu",
+      "termination": "intentional capture-harness stop after stable main-menu title",
+      "frames_completed": null,
+      "renderer": "menu 2D path; no renderer metric emitted",
+      "audio_unavailable": true,
+      "seconds": 2.594
+    },
+    {
+      "file": "q3dm0.png",
+      "sha256": "3ac281dfe481f5c1283aa48936daf642db5e2234b99dc91f91f71fe6bbc0ed74",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "command": [
+        "D:\\a\\MiniQuake3\\MiniQuake3\\build\\singleplayer_graphics_replay.exe",
+        "D:\\a\\MiniQuake3\\MiniQuake3\\build\\baseq3\\pak0.pk3",
+        "D:\\a\\MiniQuake3\\MiniQuake3\\build\\qvms",
+        "120",
+        "q3dm0"
+      ],
+      "last_window_title": "",
+      "termination": "natural exit 0 after completed replay",
+      "frames_completed": 120,
+      "renderer": "software / GDI Generic",
+      "audio_unavailable": true,
+      "seconds": 35.625
+    },
+    {
+      "file": "q3dm1.png",
+      "sha256": "43210da4e585a6f676066d7eeda652e17037cddd59feaec02b49b48c2086b321",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "command": [
+        "D:\\a\\MiniQuake3\\MiniQuake3\\build\\singleplayer_graphics_replay.exe",
+        "D:\\a\\MiniQuake3\\MiniQuake3\\build\\baseq3\\pak0.pk3",
+        "D:\\a\\MiniQuake3\\MiniQuake3\\build\\qvms",
+        "120",
+        "q3dm1"
+      ],
+      "last_window_title": "",
+      "termination": "natural exit 0 after completed replay",
+      "frames_completed": 120,
+      "renderer": "software / GDI Generic",
+      "audio_unavailable": true,
+      "seconds": 67.297
+    }
+  ],
+  "limits": [
+    "Automated capture, not an interactive playthrough",
+    "Capture I/O is enabled; timings are not benchmarks"
+  ]
+}
