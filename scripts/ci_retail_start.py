@@ -45,6 +45,28 @@ def digest(path: Path) -> str:
     return h.hexdigest()
 
 
+def match_expected_bytes(path: Path, expected: str) -> None:
+    """Restore manifest bytes only when the sole difference is CRLF versus LF."""
+    data = path.read_bytes()
+    if hashlib.sha256(data).hexdigest() == expected:
+        return
+    lf = data.replace(b"\r\n", b"\n")
+    candidates = {"LF": lf, "CRLF": lf.replace(b"\n", b"\r\n")}
+    for style, candidate in candidates.items():
+        if hashlib.sha256(candidate).hexdigest() == expected:
+            path.write_bytes(candidate)
+            REPORT.setdefault('line_endings_restored', []).append({
+                'path': str(path.relative_to(ROOT)), 'style': style, 'sha256': expected})
+            print(f'PASS: restored exact {style} manifest bytes for {path.name}', flush=True)
+            return
+    REPORT['source_mismatch'] = {'path': str(path), 'expected': expected,
+        'actual': hashlib.sha256(data).hexdigest(),
+        'variants': {style: hashlib.sha256(value).hexdigest() for style, value in candidates.items()}}
+    (EVIDENCE / ('mismatch-' + path.name)).write_bytes(data)
+    save_report()
+    raise RuntimeError('Manifest mismatch is not explained by line endings: ' + str(path))
+
+
 def save_report() -> None:
     EVIDENCE.mkdir(parents=True, exist_ok=True)
     (EVIDENCE / 'startup-report.json').write_text(json.dumps(REPORT, indent=2), encoding='utf-8')
@@ -118,8 +140,14 @@ def restore_compiler(profile: dict) -> dict:
     source.write_bytes(source.read_bytes().replace(b'\r\n', b'\n'))
     run('compiler-patch', ['git', '-C', tree, 'apply', '--check', patch])
     run('compiler-apply', ['git', '-C', tree, 'apply', patch])
-    if digest(tree / 'mlc/codegen/codegen_memory.ml') != SOURCE_SHA:
-        raise RuntimeError('Reconstructed allocator source hash mismatch')
+    match_expected_bytes(source, SOURCE_SHA)
+    for record in profile.get('compiler_sources', []):
+        name = record['path']
+        if name == 'mlc_win64.ml' or (name.startswith('mlc/') and name.endswith('.ml')):
+            match_expected_bytes(tree / name, record['sha256'])
+    for record in profile['inputs']:
+        if record['path'] != 'build/mlc_win64.exe':
+            match_expected_bytes(tree / record['path'], record['sha256'])
     output = tree / 'build'
     output.mkdir(exist_ok=True)
     flags = ['-I', tree, '--heap-reserve', '8g', '--heap-commit', '512m',
