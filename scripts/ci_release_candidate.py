@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Test a pinned published compiler without claiming frozen-toolchain parity."""
 import json
+import ctypes
+import re
+import subprocess
+import time
 import shutil
 import sys
 from pathlib import Path
@@ -45,6 +49,100 @@ def release_compiler(profile: dict) -> dict:
     return used
 
 
+def window_title(hwnd: int) -> str:
+    from ctypes import wintypes as w
+    user = ctypes.WinDLL('user32', use_last_error=True)
+    user.GetWindowTextW.argtypes = [w.HWND, w.LPWSTR, ctypes.c_int]
+    buffer = ctypes.create_unicode_buffer(512)
+    user.GetWindowTextW(hwnd, buffer, len(buffer))
+    return buffer.value
+
+
+def checked_window_test(name: str, command, *, menu=False) -> None:
+    """Require the actual menu title or a completed 300-frame retail replay."""
+    command = [str(value) for value in command]
+    if not menu:
+        command[3] = '300'
+    log = ci.EVIDENCE / (name + '.log')
+    started = time.monotonic()
+    ready_at = None
+    seen = False
+    captured = []
+    titles = []
+    record = {'command': command, 'visible_window': False, 'screenshots': captured,
+              'window_titles': titles, 'frames_requested': None if menu else 300}
+    ci.REPORT['menu' if menu else 'graphics'] = record
+    with log.open('w', encoding='utf-8') as output:
+        process = subprocess.Popen(command, cwd=ci.ROOT, stdout=output,
+                                   stderr=subprocess.STDOUT)
+        try:
+            while time.monotonic() - started < (75 if menu else 300):
+                if process.poll() is not None:
+                    break
+                hwnd = ci.visible_window(process.pid)
+                seen = seen or bool(hwnd)
+                record['visible_window'] = seen
+                title = window_title(hwnd) if hwnd else ''
+                if title and title not in titles and len(titles) < 20:
+                    titles.append(title)
+                text = log.read_text(encoding='utf-8', errors='replace')
+                ready = ('Quake III Arena Main Menu' in title) if menu else ('QVM startup profile:' in text)
+                if ready and ready_at is None:
+                    ready_at = time.monotonic()
+                    record['ready_after_seconds'] = round(ready_at - started, 3)
+                    print(f'READY {name}: {title}', flush=True)
+                elapsed_ready = time.monotonic() - ready_at if ready_at else 0
+                capture_due = ready_at is not None and hwnd and (
+                    (not captured and elapsed_ready >= 0.4) or
+                    (not menu and len(captured) == 1 and elapsed_ready >= 5))
+                if capture_due:
+                    capture_name = name + '-screen-' + str(len(captured) + 1)
+                    ci.screenshot(capture_name)
+                    captured.append(capture_name + '.png')
+                    ci.save_report()
+                if menu and ready_at is not None and elapsed_ready >= 5:
+                    if not captured:
+                        raise RuntimeError('Menu screenshot is missing')
+                    record['title_confirmed'] = True
+                    record['alive_after_ready_seconds'] = round(elapsed_ready, 3)
+                    record['termination'] = 'Intentional harness stop after menu observation; not natural exit.'
+                    print('PASS: original main-menu title, visible window and screenshot', flush=True)
+                    return
+                time.sleep(0.15)
+            text = log.read_text(encoding='utf-8', errors='replace')
+            print(text[-16000:], flush=True)
+            record['exit_code'] = process.poll()
+            if menu:
+                raise RuntimeError(f'Menu did not reach stable titled state: exit={process.poll()}')
+            if process.poll() is None:
+                raise TimeoutError('Graphical replay exceeded 300 seconds')
+            frames = re.search(r'QVM preview:[^\r\n]*\bframes=(\d+)', text)
+            record['frames_completed'] = int(frames.group(1)) if frames else None
+            renderer = re.search(r'QVM renderer: ([^\r\n]+)', text)
+            record['renderer'] = renderer.group(1) if renderer else None
+            record['audio_unavailable'] = 'audio output unavailable' in text
+            if process.returncode or not seen or record['frames_completed'] != 300 or 'QVM loop profile:' not in text:
+                raise RuntimeError(f'Graphical replay failed: exit={process.returncode}, visible={seen}, frames={record["frames_completed"]}')
+            if not captured:
+                raise RuntimeError('Completed graphical replay has no screenshot evidence')
+            print('PASS: 300 retail graphics frames, exit 0 and captured screen', flush=True)
+        finally:
+            if process.poll() is None:
+                process.terminate()
+                try:
+                    process.wait(timeout=10)
+                except subprocess.TimeoutExpired:
+                    process.kill()
+                    process.wait(timeout=10)
+            record['observed_seconds'] = round(time.monotonic() - started, 3)
+            ci.save_report()
+
+
 if __name__ == '__main__':
     ci.restore_compiler = release_compiler
-    raise SystemExit(ci.main())
+    ci.window_test = checked_window_test
+    result = ci.main()
+    source_archive = ci.EVIDENCE / 'MiniQuake3-tested-source.zip'
+    subprocess.run(['git', 'archive', '--format=zip', '--output=' + str(source_archive), 'HEAD'],
+                   cwd=ci.ROOT, check=True, timeout=60)
+    raise SystemExit(result)
