@@ -8,3 +8,11 @@ __pycache__/
 *.obj
 *.lib
 *.exp
+
+# Proprietary game archives and disc images (screenshots are allowed)
+*.pk3
+*.pak
+*.iso
+*.cue
+*.mdf
+*.mds
