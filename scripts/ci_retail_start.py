@@ -23,10 +23,11 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 BUILD = ROOT / 'build'
 EVIDENCE = BUILD / 'retail-evidence'
-RELEASE = 'v1.3.9'
+RELEASE = 'v1.2.8'
 PACKAGE_URL = ('https://github.com/MiniLangProject/MiniLangCompilerML/releases/download/'
-               'v1.3.9/MiniLangCompilerML-1.3.9-windows-x64.zip')
-PACKAGE_SHA = '46cbe327d0b42085045ba4f5e1a71bfb395ebc7b10bb3956285db6e469fbfc70'
+               'v1.2.8/MiniLangCompilerML-1.2.8-windows-x64.zip')
+PACKAGE_SHA = '0ca1d2c37ab0d35fe123666c9a226db3f43b4772fa913e9bdd01b84f08046e09'
+BOOTSTRAP_SHA = '60db15723f1d33afccbaf81657e91569811c38cf54a320117857c29027700e0b'
 BASE = '738d830fa604de884d7e488fde0991a19c034016'
 PATCH_SHA = '95c7f1e5e2ad7aed03f2642379185f9b8e7f89fccf3dd52d25eaa436d20645e3'
 SOURCE_SHA = '2287c63faecfc914e4e1143df56cb1adf86dfdccf819060f70606676cbcbadae'
@@ -101,7 +102,8 @@ def restore_compiler(profile: dict) -> dict:
     package = BUILD / 'compiler-bootstrap.zip'
     download_package(package)
     unpack(package, BUILD / 'compiler-bootstrap')
-    candidates = list((BUILD / 'compiler-bootstrap').rglob('mlc_win64.exe'))
+    candidates = [p for p in (BUILD / 'compiler-bootstrap').rglob('*.exe')
+                  if p.name in ('mlc.exe', 'mlc_win64.exe') and digest(p) == BOOTSTRAP_SHA]
     if len(candidates) != 1:
         raise RuntimeError(f'Expected one release compiler, found {len(candidates)}')
     bootstrap = candidates[0]
@@ -178,13 +180,15 @@ def visible_window(pid: int) -> int:
 
 def screenshot(name: str) -> None:
     target = str(EVIDENCE / (name + '.png')).replace("'", "''")
-    script = """Add-Type -AssemblyName System.Windows.Forms; Add-Type -AssemblyName System.Drawing;
+    script = """$ErrorActionPreference='Stop'; Add-Type -AssemblyName System.Windows.Forms; Add-Type -AssemblyName System.Drawing;
 $r=[System.Windows.Forms.SystemInformation]::VirtualScreen;
 $b=New-Object System.Drawing.Bitmap $r.Width,$r.Height;
 $g=[System.Drawing.Graphics]::FromImage($b);
 try {$g.CopyFromScreen($r.Left,$r.Top,0,0,$b.Size); $b.Save('TARGET',[System.Drawing.Imaging.ImageFormat]::Png)}
 finally {$g.Dispose(); $b.Dispose()}""".replace('TARGET', target)
     run(name, ['powershell.exe', '-NoProfile', '-NonInteractive', '-Command', script], timeout=30)
+    if not (EVIDENCE / (name + '.png')).is_file():
+        raise RuntimeError('Screenshot was not produced')
 
 
 def window_test(name: str, command, *, menu=False) -> None:
@@ -250,6 +254,7 @@ def main() -> int:
     profile_path = ROOT / 'docs/reference/toolchain.json'
     original = profile_path.read_bytes()
     try:
+        REPORT['source_commit'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
         profile = json.loads(original)
         updated = restore_compiler(profile)
         if not REPORT['toolchain']['exact_frozen_binary']:
@@ -263,6 +268,8 @@ def main() -> int:
                               'singleplayer_graphics_replay.exe'], timeout=900)
         window_test('q3dm0-graphics', [BUILD / 'singleplayer_graphics_replay.exe',
                     BUILD / 'baseq3/pak0.pk3', BUILD / 'reference/qvms', '180', 'q3dm0'])
+        profile_path.write_bytes(original)
+        REPORT['tracked_profile_restored'] = profile_path.read_bytes() == original
         REPORT['status'] = 'passed'
         save_report()
         package_build()
