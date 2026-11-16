@@ -1,13 +1,12 @@
 name: README gallery and startup regression
 
+# Explicit opt-in: downloads the original test image and runs retail checks.
+# Only rendered images, source/input hashes and logs become workflow artifacts.
 on:
-  push:
-    branches: [docs/readme-refresh-20261116]
-    paths: [.github/workflows/readme-gallery.yml]
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   gallery:
@@ -21,44 +20,6 @@ jobs:
         with:
           submodules: recursive
           persist-credentials: false
-      - name: Apply reviewed startup fixes with exact-match guards
-        shell: python
-        run: |
-          from pathlib import Path
-          import subprocess
-          replacements = {
-            'src/mq3/client/qvm_menu_app.ml': [
-              ('audioStarted=audioOutput.init(22050);if audioStarted is error then qvm2d.release(catalog);window.shutdown();match.shutdown(state);return audioStarted end if',
-               'audioStarted=try(audioOutput.init(22050));if audioStarted is error then print "Warning: audio output unavailable; continuing without sound." end if')],
-            'src/mq3/client/qvm_preview_app.ml': [
-              ('import mq3.qcommon.cvar as cvar\nimport std.time as time',
-               'import mq3.qcommon.cvar as cvar\nimport std.ds.list as lists\nimport std.time as time'),
-              ('audioStarted=audioOutput.init(22050);if audioStarted is error then window.shutdown();match.shutdown(state);return audioStarted end if',
-               'audioStarted=try(audioOutput.init(22050));if audioStarted is error then print "Warning: audio output unavailable; continuing without sound." end if'),
-              ('window.showLoading(78,"Building q3dm1 world materials")',
-               'window.showLoading(78,"Building "+mapName+" world materials")'),
-              ('fpsTitle.create("Original QVM q3dm1",window.milliseconds())',
-               'fpsTitle.create("Original QVM "+mapName,window.milliseconds())')]
-          }
-          edits = []
-          for name, pairs in replacements.items():
-              path = Path(name)
-              text = path.read_bytes().decode('utf-8').replace('\r\n', '\n')
-              for old, new in pairs:
-                  if text.count(new) == 1 and old not in text:
-                      continue
-                  if text.count(old) != 1 or new in text:
-                      raise RuntimeError('Unexpected source; refusing blind replacement: ' + name)
-                  text = text.replace(old, new, 1)
-              edits.append((path, text))
-          for path, text in edits:
-              path.write_bytes(text.encode('utf-8'))
-          subprocess.run(['git', 'diff', '--check'], check=True)
-          subprocess.run(['git', 'config', 'user.name', 'github-actions[bot]'], check=True)
-          subprocess.run(['git', 'config', 'user.email', '41898282+github-actions[bot]@users.noreply.github.com'], check=True)
-          subprocess.run(['git', 'add', *replacements], check=True)
-          if subprocess.run(['git', 'diff', '--cached', '--quiet']).returncode:
-              subprocess.run(['git', 'commit', '-m', 'fix: preserve silent startup and label the actual loaded arena'], check=True)
       - name: Acquire requested test media and verify full image and archive
         shell: pwsh
         run: |
@@ -66,10 +27,27 @@ jobs:
           New-Item -ItemType Directory -Force build/baseq3, build/readme-captures | Out-Null
           $iso = Join-Path $env:RUNNER_TEMP 'Quake3.iso'
           $url = 'https://archive.org/download/Quake_III_Arena_Id_Software_1999/Quake_III_Arena_Id_Software_1999.iso'
-          & curl.exe --fail --location --silent --show-error --retry 2 --connect-timeout 20 --max-time 600 --output $iso $url
-          if ($LASTEXITCODE -ne 0) { throw 'Requested CD download failed' }
-          if ((Get-Item $iso).Length -ne 555732992) { throw 'CD length mismatch' }
+          $total = [long]555732992
+          0..3 | ForEach-Object -Parallel {
+            $ErrorActionPreference = 'Stop'
+            $chunk = [long][Math]::Ceiling($using:total / 4.0)
+            $start = [long]$_ * $chunk
+            $end = [Math]::Min($using:total - 1, $start + $chunk - 1)
+            $target = $using:iso
+            $part = "$target.part$_"
+            & curl.exe --fail --location --silent --show-error --retry 2 --connect-timeout 20 --max-time 600 --range "$start-$end" --output $part $using:url
+            if ($LASTEXITCODE -ne 0 -or (Get-Item $part).Length -ne ($end - $start + 1)) { throw "CD segment $_ failed or has the wrong length" }
+          } -ThrottleLimit 4
+          $combined = [IO.File]::Create($iso)
+          try {
+            foreach ($number in 0..3) {
+              $input = [IO.File]::OpenRead("$iso.part$number")
+              try { $input.CopyTo($combined) } finally { $input.Dispose() }
+            }
+          } finally { $combined.Dispose() }
+          if ((Get-Item $iso).Length -ne $total) { throw 'CD length mismatch' }
           if ((Get-FileHash $iso -Algorithm SHA256).Hash.ToLowerInvariant() -ne 'd44fb1f9a68530169a5947aa9011fe84296ef2ba86e56e8a6baedbd71973ae09') { throw 'CD SHA-256 mismatch' }
+          Remove-Item "$iso.part*"
           $seven = Join-Path $env:ProgramFiles '7-Zip/7z.exe'
           & $seven e -y "-o$pwd/build/baseq3" $iso 'Quake3\baseq3\pak0.pk3' 'Quake3\baseq3\pak1.pk3'
           if ($LASTEXITCODE -ne 0) { throw 'CD extraction failed' }
@@ -116,30 +94,15 @@ jobs:
           Path('build/readme-captures/audio-regression.log').write_text(result.stdout + result.stderr, encoding='utf-8')
           print(result.stdout, result.stderr)
           assert result.returncode == 0 and 'PASS: audio error capture and idempotent cleanup' in result.stdout
-      - name: Capture complete menu and two arena frames without desktop clipping
+      - name: Capture and verify complete menu and arena frames
         shell: pwsh
         run: |
           python -m pip install --disable-pip-version-check Pillow
           if ($LASTEXITCODE -ne 0) { throw 'Pillow installation failed' }
           python scripts/capture_readme.py
           if ($LASTEXITCODE -ne 0) { throw 'Framebuffer capture failed' }
-      - name: Commit only reviewed code and generated screenshot evidence
-        if: github.ref == 'refs/heads/docs/readme-refresh-20261116'
-        shell: python
-        env:
-          PUSH_TOKEN: ${{ github.token }}
-        run: |
-          import base64, json, os, subprocess
-          from pathlib import Path
-          report = json.loads(Path('docs/screenshots/capture-manifest.json').read_text())
-          assert len(report['captures']) == 3
-          assert all(row['dimensions'] == [1280, 720] for row in report['captures'])
-          assert all(row['frames_completed'] == 120 for row in report['captures'][1:])
-          subprocess.run(['git', 'add', 'docs/screenshots/main-menu.png', 'docs/screenshots/q3dm0.png', 'docs/screenshots/q3dm1.png', 'docs/screenshots/capture-manifest.json'], check=True)
-          subprocess.run(['git', 'diff', '--cached', '--check'], check=True)
-          subprocess.run(['git', 'commit', '-m', 'docs: publish full-resolution menu and arena framebuffer captures'], check=True)
-          auth = base64.b64encode(('x-access-token:' + os.environ['PUSH_TOKEN']).encode()).decode()
-          subprocess.run(['git', '-c', 'http.https://github.com/.extraheader=AUTHORIZATION: basic ' + auth, 'push', 'origin', 'HEAD:refs/heads/docs/readme-refresh-20261116'], check=True)
+          python scripts/test_readme_refresh.py
+          if ($LASTEXITCODE -ne 0) { throw 'README, screenshot provenance or startup regression failed' }
       - name: Retain logs and rendered images, never proprietary game assets
         if: always()
         uses: actions/upload-artifact@v4
