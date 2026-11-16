@@ -1,0 +1,55 @@
+name: Retail Windows host capabilities
+on:
+  push:
+    branches: [test/retail-start-20261116]
+    paths: [.github/workflows/retail-host-probe.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  host:
+    runs-on: windows-2022
+    timeout-minutes: 5
+    steps:
+      - name: Probe audio output and interactive desktop without changing settings
+        shell: python
+        run: |
+          import ctypes
+          from ctypes import wintypes as w
+          import json
+          from pathlib import Path
+          import platform
+          class WaveFormat(ctypes.Structure):
+              _pack_ = 1
+              _fields_ = [('tag', w.WORD), ('channels', w.WORD),
+                          ('samples_per_sec', w.DWORD), ('bytes_per_sec', w.DWORD),
+                          ('block_align', w.WORD), ('bits_per_sample', w.WORD),
+                          ('extra_size', w.WORD)]
+          wave = ctypes.WinDLL('winmm')
+          wave.waveOutGetNumDevs.restype = w.UINT
+          wave.waveOutOpen.argtypes = [ctypes.POINTER(w.HANDLE), w.UINT,
+                                      ctypes.POINTER(WaveFormat), ctypes.c_size_t,
+                                      ctypes.c_size_t, w.DWORD]
+          wave.waveOutOpen.restype = w.UINT
+          wave.waveOutClose.argtypes = [w.HANDLE]
+          wave.waveOutGetErrorTextW.argtypes = [w.UINT, w.LPWSTR, w.UINT]
+          handle = w.HANDLE()
+          fmt = WaveFormat(1, 2, 22050, 88200, 4, 16, 0)
+          code = wave.waveOutOpen(ctypes.byref(handle), 0xffffffff, ctypes.byref(fmt), 0, 0, 0)
+          message = ctypes.create_unicode_buffer(512)
+          wave.waveOutGetErrorTextW(code, message, len(message))
+          if code == 0:
+              wave.waveOutClose(handle)
+          user = ctypes.WinDLL('user32')
+          report = {'host': platform.platform(), 'audio_devices': wave.waveOutGetNumDevs(),
+                    'stereo_22050_pcm_open_result': int(code), 'audio_result_text': message.value,
+                    'screen_width': user.GetSystemMetrics(0), 'screen_height': user.GetSystemMetrics(1),
+                    'scope': 'Separate Windows 2022 hosted runner capability probe; not a MiniQuake3 game-start test.'}
+          text = json.dumps(report, indent=2)
+          print(text)
+          Path('host-capabilities.json').write_text(text, encoding='utf-8')
+      - uses: actions/upload-artifact@v4
+        with:
+          name: retail-host-capabilities
+          path: host-capabilities.json
+          retention-days: 7
