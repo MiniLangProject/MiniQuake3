@@ -14,7 +14,7 @@ permissions:
 jobs:
   retail:
     runs-on: windows-2022
-    timeout-minutes: 20
+    timeout-minutes: 40
     steps:
       - name: Preserve source line endings
         shell: pwsh
@@ -35,14 +35,36 @@ jobs:
           if ($record.Count -ne 1 -or -not $record[0].sha1) { throw 'Archive metadata lacks a unique ISO/checksum' }
           $iso = Join-Path $env:RUNNER_TEMP $name
           $url = "https://archive.org/download/$item/$name"
-          & curl.exe --fail --location --silent --show-error --retry 2 --connect-timeout 20 --max-time 600 --output $iso $url
-          if ($LASTEXITCODE -ne 0) { throw "CD download failed: curl exit $LASTEXITCODE" }
+          $expectedSize = [long]$record[0].size
+          0..3 | ForEach-Object -Parallel {
+            $ErrorActionPreference = 'Stop'
+            $total = $using:expectedSize
+            $chunk = [long][Math]::Ceiling($total / 4.0)
+            $start = [long]$_ * $chunk
+            $end = [Math]::Min($total - 1, $start + $chunk - 1)
+            $targetIso = $using:iso
+            $part = "$targetIso.part$_"
+            & curl.exe --fail --location --silent --show-error --retry 2 --connect-timeout 20 --max-time 600 --range "$start-$end" --output $part $using:url
+            if ($LASTEXITCODE -ne 0) { throw "CD segment $_ failed: curl exit $LASTEXITCODE" }
+            if ((Get-Item $part).Length -ne ($end - $start + 1)) { throw "CD segment $_ has wrong length (server must honor Range)" }
+            Write-Host "Downloaded verified-length CD segment $_"
+          } -ThrottleLimit 4
+          $combined = [IO.File]::Create($iso)
+          try {
+            foreach ($number in 0..3) {
+              $input = [IO.File]::OpenRead("$iso.part$number")
+              try { $input.CopyTo($combined) } finally { $input.Dispose() }
+            }
+          } finally { $combined.Dispose() }
           $size = (Get-Item $iso).Length
           $sha1 = (Get-FileHash $iso -Algorithm SHA1).Hash.ToLowerInvariant()
-          if ($size -ne [long]$record[0].size -or $sha1 -ne $record[0].sha1) { throw 'CD size/checksum mismatch' }
-          $proof = [ordered]@{ url=$url; size=$size; sha1=$sha1; sha256=(Get-FileHash $iso -Algorithm SHA256).Hash.ToLowerInvariant(); verified=$true; timestamp=(Get-Date).ToUniversalTime().ToString('o') }
+          $sha256 = (Get-FileHash $iso -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($size -ne $expectedSize -or $sha1 -ne $record[0].sha1) { throw 'CD size/checksum mismatch' }
+          if ($sha256 -ne 'd44fb1f9a68530169a5947aa9011fe84296ef2ba86e56e8a6baedbd71973ae09') { throw 'CD differs from independently downloaded and verified first run' }
+          $proof = [ordered]@{ url=$url; size=$size; sha1=$sha1; sha256=$sha256; verified=$true; timestamp=(Get-Date).ToUniversalTime().ToString('o') }
           $proof | ConvertTo-Json | Set-Content build/retail-evidence/cd-download.json
           Write-Host "Verified complete CD: $size bytes, SHA1 $sha1"
+          Remove-Item "$iso.part*"
           $seven = Join-Path $env:ProgramFiles '7-Zip/7z.exe'
           if (-not (Test-Path $seven)) { throw '7-Zip is not available' }
           $listing = & $seven l -slt $iso
@@ -61,15 +83,11 @@ jobs:
           python -c "import zipfile; p='build/baseq3/pak0.pk3'; z=zipfile.ZipFile(p); names=set(z.namelist()); assert 'maps/q3dm0.bsp' in names and 'maps/q3dm1.bsp' in names; bad=z.testzip(); assert bad is None, bad; print('PASS: pak0.pk3 CRCs and q3dm0/q3dm1 maps verified')"
           if ($LASTEXITCODE -ne 0) { throw 'pak0.pk3 validation failed' }
           Get-FileHash build/baseq3/*.pk3 -Algorithm SHA256 | ConvertTo-Json | Set-Content build/retail-evidence/pak-hashes.json
-      - name: Build and start MiniQuake3 when startup harness is present
+      - name: Reconstruct frozen compiler, build and start MiniQuake3
         shell: pwsh
         run: |
-          if (Test-Path scripts/ci_retail_start.py) {
-            python scripts/ci_retail_start.py --candidate-release v1.3.9
-            if ($LASTEXITCODE -ne 0) { throw 'MiniQuake3 startup harness failed' }
-          } else {
-            'Media acquisition only; no build or game-start claim.' | Set-Content build/retail-evidence/NOT-YET-STARTED.txt
-          }
+          python scripts/ci_retail_start.py
+          if ($LASTEXITCODE -ne 0) { throw 'MiniQuake3 startup harness failed' }
       - name: Keep diagnostic evidence, never retail assets
         if: always()
         uses: actions/upload-artifact@v4
