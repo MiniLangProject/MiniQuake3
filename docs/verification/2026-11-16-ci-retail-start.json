@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-16",
+  "status": "passed",
+  "repository": "MiniLangProject/MiniQuake3",
+  "tested_commit": "c6dc27f8422a7b77b1bcab56d845d3cf978183b9",
+  "workflow_run": 43949673388,
+  "workflow_job": 133588504305,
+  "host": "GitHub Actions windows-2022",
+  "retail_image": {
+    "item": "Quake_III_Arena_Id_Software_1999",
+    "bytes": 555732992,
+    "sha1": "480951224afc0fbe05557de06e442737295bddca",
+    "sha256": "d44fb1f9a68530169a5947aa9011fe84296ef2ba86e56e8a6baedbd71973ae09",
+    "published_sha1_verified": true,
+    "extracted": ["baseq3/pak0.pk3", "baseq3/pak1.pk3"],
+    "pak0_zip_crc_check": "passed",
+    "retail_assets_committed_or_uploaded_as_artifacts": false
+  },
+  "build": {
+    "compiler_release": "1.3.9",
+    "compiler_sha256": "269aecaa2232b634809edd80be95eda52f837ad4be022f9a778633bd47d9ba62",
+    "uses_original_frozen_toolchain": false,
+    "original_tracked_toolchain_profile_restored": true,
+    "exit_code": 0,
+    "exe_bytes": 86626304,
+    "exe_sha256": "6a39ea1d997cb511634fad2b034d3118b775d0aade27ea363d5705062a4d313b",
+    "native_dlls_built": true,
+    "original_qvms_built": ["qagame.qvm", "cgame.qvm", "ui.qvm"]
+  },
+  "retail_logic_tests": {
+    "q3dm0": "PASS: 9 bot and human contracts; score reply includes clients 0 and 1",
+    "q3dm1": "PASS: 9 bot and human contracts; score reply includes clients 0 and 1",
+    "total_contracts": 18
+  },
+  "main_menu": {
+    "executable": "MiniQuake3.exe",
+    "visible_window": true,
+    "original_menu_visually_confirmed_in_screenshot": true,
+    "title": "MiniQuake3 | Quake III Arena Main Menu",
+    "ready_after_seconds": 0.765,
+    "alive_after_ready_seconds": 5.078,
+    "termination": "Intentional test-harness termination after observation; not a natural exit test"
+  },
+  "graphics": {
+    "executable": "singleplayer_graphics_replay.exe",
+    "shared_game_path": "mq3.client.qvm_preview_app.runLimitedSettingsNamed",
+    "map": "q3dm0",
+    "frames_completed": 300,
+    "exit_code": 0,
+    "world_weapon_and_hud_visually_confirmed_in_screenshots": true,
+    "renderer": "software / GDI Generic",
+    "render_resolution": [1280, 720],
+    "loop_elapsed_ms": 55106,
+    "loop_fps": 5.44405327913476,
+    "work_p95_ms": 263,
+    "audio_output_available": false
+  },
+  "fixes": [
+    "Explicit std.ds.list import in qvm_preview_app.ml",
+    "Catch optional audio initialization errors using try(...) in both menu and game; continue without sound rather than abort"
+  ],
+  "audio_regression": {
+    "workflow_run": 43948712334,
+    "audio_devices": 0,
+    "error_capture_and_idempotent_cleanup": "passed"
+  },
+  "limits": [
+    "Automated Windows runner, not the user's PC and not a manual interactive playtest",
+    "Software-renderer FPS is not a hardware-accelerated PC performance result",
+    "No audible output test, multiplayer test or long-duration stability claim",
+    "The graphics test opens the shared game path directly; menu navigation into a match was not automated",
+    "Desktop captures are 1024x768 and clip part of the larger render window",
+    "The existing graphics window title/loading text is hard-coded to q3dm1 even when q3dm0 is loaded; the tested command explicitly selects q3dm0",
+    "Compiler 1.3.9 and its own standard library were used, not the historical frozen toolchain"
+  ]
+}
