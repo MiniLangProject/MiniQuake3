@@ -1,0 +1,32 @@
+--- a/src/mq3/client/qvm_preview_app.ml
++++ b/src/mq3/client/qvm_preview_app.ml
+@@ -47,6 +47,7 @@
+ import mq3.compat.numeric as numeric
+ import mq3.shared.math as qmath
+ import mq3.qcommon.cvar as cvar
++import std.ds.list as lists
+ import std.time as time
+ import std.ds.queue as queues
+ import std.string as strings
+@@ -384,7 +385,8 @@
+   if dlightCatalog!=void then uploaded=dynamicLights.upload(dlightCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if end if
+   if flareCatalog!=void then uploaded=flares.upload(flareCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if end if
+   uploaded=uploadLightmaps(map);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
+-  audioStarted=audioOutput.init(22050);if audioStarted is error then window.shutdown();match.shutdown(state);return audioStarted end if
++  // A missing audio device must not prevent rendering or gameplay.
++  audioStarted=audioOutput.init(22050);if audioStarted is error then print "Warning: audio output unavailable; continuing without sound." end if
+   readyAt=window.milliseconds();print "QVM startup profile: boot="+str(qvmBootAt-startupAt)+"ms ui="+str(uiBootAt-qvmBootAt)+"ms shaders="+str(scriptIndexAt-uiBootAt)+"ms scene="+str(sceneAt-scriptIndexAt)+"ms sounds="+str(soundAt-sceneAt)+"ms world="+str(worldAt-soundAt)+"ms upload="+str(readyAt-worldAt)+"ms total="+str(readyAt-startupAt)+"ms"
+   print "QVM retained world: enabled="+str(retainedWorldCache.enabled)+" staticPrimes="+str(retainedWorldCache.staticPrimes)+" (worldRebuild timing includes selected effects)"
+   rendererName="software";if window.hardwareRenderer() then rendererName="hardware OpenGL" end if;print "QVM renderer: "+rendererName+" / "+str(window.glInfo(1))
+--- a/src/mq3/client/qvm_menu_app.ml
++++ b/src/mq3/client/qvm_menu_app.ml
+@@ -97,7 +97,8 @@
+   // commands after the playback cursor consumed them made menu sessions grow
+   // quadratically because every later append copied the full history.
+   state.context.soundCommands=[];audio.commandCursor=0
+-  audioStarted=audioOutput.init(22050);if audioStarted is error then qvm2d.release(catalog);window.shutdown();match.shutdown(state);return audioStarted end if
++  // Keep the original menu usable on systems without an audio device.
++  audioStarted=audioOutput.init(22050);if audioStarted is error then print "Warning: audio output unavailable; continuing without sound." end if
+   window.setTitle("MiniQuake3 | Quake III Arena Main Menu")
+   window.inputClear();state.context.console=[];uploadedTextures=len(catalog.textures);soundAssetCount=len(state.context.assets);now=1000;mapName=void;quitRequested=false;singlePlayer=false;menuBotCommands=[]
+   while not window.shouldClose() and not quitRequested and mapName==void
