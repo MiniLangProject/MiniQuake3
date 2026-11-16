@@ -1,0 +1,82 @@
+name: Retail CD and Windows startup test
+
+on:
+  push:
+    branches: [test/retail-start-20261116]
+    paths:
+      - .github/workflows/retail-start.yml
+      - scripts/ci_retail_start.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  retail:
+    runs-on: windows-2022
+    timeout-minutes: 20
+    steps:
+      - name: Preserve source line endings
+        shell: pwsh
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          persist-credentials: false
+      - name: Download requested CD and verify its published checksum
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          New-Item -ItemType Directory -Force build/retail-evidence, build/baseq3 | Out-Null
+          $item = 'Quake_III_Arena_Id_Software_1999'
+          $name = "$item.iso"
+          $metadata = Invoke-RestMethod -Uri "https://archive.org/metadata/$item" -TimeoutSec 60
+          $record = @($metadata.files | Where-Object name -EQ $name)
+          if ($record.Count -ne 1 -or -not $record[0].sha1) { throw 'Archive metadata lacks a unique ISO/checksum' }
+          $iso = Join-Path $env:RUNNER_TEMP $name
+          $url = "https://archive.org/download/$item/$name"
+          & curl.exe --fail --location --silent --show-error --retry 2 --connect-timeout 20 --max-time 600 --output $iso $url
+          if ($LASTEXITCODE -ne 0) { throw "CD download failed: curl exit $LASTEXITCODE" }
+          $size = (Get-Item $iso).Length
+          $sha1 = (Get-FileHash $iso -Algorithm SHA1).Hash.ToLowerInvariant()
+          if ($size -ne [long]$record[0].size -or $sha1 -ne $record[0].sha1) { throw 'CD size/checksum mismatch' }
+          $proof = [ordered]@{ url=$url; size=$size; sha1=$sha1; sha256=(Get-FileHash $iso -Algorithm SHA256).Hash.ToLowerInvariant(); verified=$true; timestamp=(Get-Date).ToUniversalTime().ToString('o') }
+          $proof | ConvertTo-Json | Set-Content build/retail-evidence/cd-download.json
+          Write-Host "Verified complete CD: $size bytes, SHA1 $sha1"
+          $seven = Join-Path $env:ProgramFiles '7-Zip/7z.exe'
+          if (-not (Test-Path $seven)) { throw '7-Zip is not available' }
+          $listing = & $seven l -slt $iso
+          if ($LASTEXITCODE -ne 0) { throw 'Cannot read CD filesystem' }
+          $listing | Set-Content build/retail-evidence/cd-listing.txt
+          $paths = @($listing | Where-Object { $_ -match '^Path = (.*)' } | ForEach-Object { $_.Substring(7) } | Where-Object { $_ -match '(?i)(^|[/\\])baseq3[/\\]pak[0-9]+\.pk3$' })
+          if ($paths.Count -eq 0) { throw 'No baseq3 pak files found in CD image' }
+          foreach ($path in $paths) {
+            & $seven e -y "-o$pwd/build/baseq3" $iso $path
+            if ($LASTEXITCODE -ne 0) { throw "Extraction failed: $path" }
+          }
+          Get-ChildItem build/baseq3 -File | ForEach-Object {
+            if ($_.Name -cne $_.Name.ToLowerInvariant()) { Rename-Item $_.FullName ($_.Name.ToLowerInvariant()) }
+          }
+          if (-not (Test-Path build/baseq3/pak0.pk3)) { throw 'pak0.pk3 was not extracted' }
+          python -c "import zipfile; p='build/baseq3/pak0.pk3'; z=zipfile.ZipFile(p); names=set(z.namelist()); assert 'maps/q3dm0.bsp' in names and 'maps/q3dm1.bsp' in names; bad=z.testzip(); assert bad is None, bad; print('PASS: pak0.pk3 CRCs and q3dm0/q3dm1 maps verified')"
+          if ($LASTEXITCODE -ne 0) { throw 'pak0.pk3 validation failed' }
+          Get-FileHash build/baseq3/*.pk3 -Algorithm SHA256 | ConvertTo-Json | Set-Content build/retail-evidence/pak-hashes.json
+      - name: Build and start MiniQuake3 when startup harness is present
+        shell: pwsh
+        run: |
+          if (Test-Path scripts/ci_retail_start.py) {
+            python scripts/ci_retail_start.py --candidate-release v1.3.9
+            if ($LASTEXITCODE -ne 0) { throw 'MiniQuake3 startup harness failed' }
+          } else {
+            'Media acquisition only; no build or game-start claim.' | Set-Content build/retail-evidence/NOT-YET-STARTED.txt
+          }
+      - name: Keep diagnostic evidence, never retail assets
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: retail-start-evidence
+          path: |
+            build/retail-evidence/**
+            build/*.log
+          if-no-files-found: warn
+          retention-days: 7
