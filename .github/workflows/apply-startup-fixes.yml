@@ -1,0 +1,38 @@
+name: Apply reviewed startup fixes
+on:
+  push:
+    branches: [test/retail-start-20261116]
+    paths: [.github/workflows/apply-startup-fixes.yml]
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check exact inputs and apply reviewed patch
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib, subprocess
+          expected = {
+              'src/mq3/client/qvm_preview_app.ml': ('ba23bff3035e03bf9dc51a9ee2b88857645bcd15898e3772be9936d0222250aa', 'b93ee5c42faf8f125133ed4c3661598b3efa738dc7f47c493638516ffe20b0ed'),
+              'src/mq3/client/qvm_menu_app.ml': ('feda94d584551d4fca204d59e42a0352e82fbd165d4a45e014a03bd74fab75d6', '164a2e4b90a99aae9e06fafcee000f2131fd34bb00a5dbb8fd6642c0c3b5fd8e')}
+          actual = {name: hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in expected}
+          if all(actual[name] == values[1] for name, values in expected.items()):
+              print('Patch already applied exactly')
+          else:
+              assert all(actual[name] == values[0] for name, values in expected.items()), actual
+              subprocess.run(['git', 'apply', '--check', 'patches/ci-startup-20261116.patch'], check=True)
+              subprocess.run(['git', 'apply', 'patches/ci-startup-20261116.patch'], check=True)
+              for name, values in expected.items():
+                  assert hashlib.sha256(Path(name).read_bytes()).hexdigest() == values[1], name
+          PY
+          git diff --stat
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/mq3/client/qvm_preview_app.ml src/mq3/client/qvm_menu_app.ml
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'fix: import renderer list module and keep menu/game usable without audio hardware'
+          git push origin HEAD:refs/heads/test/retail-start-20261116
