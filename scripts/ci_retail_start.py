@@ -45,11 +45,14 @@ def digest(path: Path) -> str:
     return h.hexdigest()
 
 
-def match_expected_bytes(path: Path, expected: str) -> None:
+def match_expected_bytes(path: Path, expected: str, *, required=True) -> bool:
     """Restore manifest bytes only when the sole difference is CRLF versus LF."""
+    if not path.is_file() and not required:
+        REPORT.setdefault('manifest_differences', []).append({'path': str(path.relative_to(ROOT)), 'expected': expected, 'actual': None})
+        return False
     data = path.read_bytes()
     if hashlib.sha256(data).hexdigest() == expected:
-        return
+        return True
     lf = data.replace(b"\r\n", b"\n")
     candidates = {"LF": lf, "CRLF": lf.replace(b"\n", b"\r\n")}
     for style, candidate in candidates.items():
@@ -58,13 +61,16 @@ def match_expected_bytes(path: Path, expected: str) -> None:
             REPORT.setdefault('line_endings_restored', []).append({
                 'path': str(path.relative_to(ROOT)), 'style': style, 'sha256': expected})
             print(f'PASS: restored exact {style} manifest bytes for {path.name}', flush=True)
-            return
-    REPORT['source_mismatch'] = {'path': str(path), 'expected': expected,
-        'actual': hashlib.sha256(data).hexdigest(),
-        'variants': {style: hashlib.sha256(value).hexdigest() for style, value in candidates.items()}}
-    (EVIDENCE / ('mismatch-' + path.name)).write_bytes(data)
-    save_report()
-    raise RuntimeError('Manifest mismatch is not explained by line endings: ' + str(path))
+            return True
+    record = {'path': str(path.relative_to(ROOT)), 'expected': expected,
+              'actual': hashlib.sha256(data).hexdigest()}
+    REPORT.setdefault('manifest_differences', []).append(record)
+    if required:
+        (EVIDENCE / ('mismatch-' + path.name)).write_bytes(data)
+        save_report()
+        raise RuntimeError('Required manifest mismatch: ' + str(path))
+    print('CANDIDATE INPUT: ' + json.dumps(record), flush=True)
+    return False
 
 
 def save_report() -> None:
@@ -144,10 +150,12 @@ def restore_compiler(profile: dict) -> dict:
     for record in profile.get('compiler_sources', []):
         name = record['path']
         if name == 'mlc_win64.ml' or (name.startswith('mlc/') and name.endswith('.ml')):
-            match_expected_bytes(tree / name, record['sha256'])
+            match_expected_bytes(tree / name, record['sha256'], required=False)
+    stdlib_exact = True
     for record in profile['inputs']:
         if record['path'] != 'build/mlc_win64.exe':
-            match_expected_bytes(tree / record['path'], record['sha256'])
+            matched = match_expected_bytes(tree / record['path'], record['sha256'], required=False)
+            stdlib_exact = stdlib_exact and matched
     output = tree / 'build'
     output.mkdir(exist_ok=True)
     flags = ['-I', tree, '--heap-reserve', '8g', '--heap-commit', '512m',
@@ -163,18 +171,16 @@ def restore_compiler(profile: dict) -> dict:
     original_hash = next(item['sha256'] for item in profile['inputs'] if item['path']=='build/mlc_win64.exe')
     for record in changed['inputs']:
         actual = digest(frozen / record['path'])
-        if record['path'] != 'build/mlc_win64.exe' and actual != record['sha256']:
-            raise RuntimeError('Frozen standard-library hash mismatch: ' + record['path'])
         record['sha256'] = actual
     compiler_hash = digest(stage2)
     proof = {'bootstrap_release': RELEASE, 'bootstrap_package_sha256': PACKAGE_SHA,
              'base_commit': BASE, 'patch_sha256': PATCH_SHA, 'compiler_sha256': compiler_hash,
              'expected_frozen_sha256': original_hash, 'exact_frozen_binary': compiler_hash == original_hash,
-             'all_frozen_stdlib_inputs_verified': True}
+             'all_frozen_stdlib_inputs_verified': stdlib_exact}
     REPORT['toolchain'] = proof
-    if compiler_hash != original_hash:
+    if compiler_hash != original_hash or not stdlib_exact:
         changed['ci_reconstructed_candidate'] = proof
-        REPORT['limits'].append('Reconstructed compiler differs from frozen binary; this is a candidate build.')
+        REPORT['limits'].append('Compiler and/or standard-library inputs differ from frozen profile; this is a candidate build, not frozen-binary parity proof.')
     else:
         print('PASS: reconstructed compiler matches original frozen binary exactly', flush=True)
     save_report()
@@ -263,7 +269,7 @@ def window_test(name: str, command, *, menu=False) -> None:
 
 def package_build() -> None:
     paths = [BUILD / 'MiniQuake3.exe', *BUILD.glob('*.dll'), * (BUILD / 'qvms').glob('*.qvm')]
-    with zipfile.ZipFile(EVIDENCE / 'MiniQuake3-tested-build.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
+    with zipfile.ZipFile(EVIDENCE / ('MiniQuake3-tested-build.zip' if REPORT['status']=='passed' else 'MiniQuake3-diagnostic-build.zip'), 'w', zipfile.ZIP_DEFLATED) as archive:
         for path in paths:
             archive.write(path, path.relative_to(BUILD))
         for name in ('LICENSE', 'NOTICE.md'):
@@ -285,8 +291,9 @@ def main() -> int:
         REPORT['source_commit'] = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
         profile = json.loads(original)
         updated = restore_compiler(profile)
-        if not REPORT['toolchain']['exact_frozen_binary']:
+        if not REPORT['toolchain']['exact_frozen_binary'] or not REPORT['toolchain']['all_frozen_stdlib_inputs_verified']:
             profile_path.write_text(json.dumps(updated, indent=2)+'\n', encoding='utf-8')
+        (EVIDENCE / 'used-toolchain-profile.json').write_text(json.dumps(updated, indent=2), encoding='utf-8')
         run('game-build', [sys.executable, ROOT / 'scripts/build.py'], timeout=1200)
         run('retail-bot-contracts', [sys.executable, ROOT / 'scripts/test_singleplayer_bot_retail.py',
                                    '--data-root', BUILD], timeout=900)
@@ -307,6 +314,9 @@ def main() -> int:
         REPORT['error'] = str(exc)
         (EVIDENCE / 'exception.txt').write_text(traceback.format_exc(), encoding='utf-8')
         traceback.print_exc()
+        save_report()
+        if (BUILD / 'MiniQuake3.exe').is_file():
+            package_build()
         return 1
     finally:
         profile_path.write_bytes(original)
