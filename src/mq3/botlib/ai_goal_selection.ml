@@ -85,10 +85,14 @@ end function
 function originArea(runtime,value,origin)
   area=reachabilityArea(runtime,origin,value.client);if area==0 or areaReachability(runtime,area)==0 then area=value.lastReachabilityArea end if;value.lastReachabilityArea=area;return area
 end function
-function weighted(runtime,handle,value,config,inventory,item,area,origin,travelFlags)
+function weighted(runtime,handle,value,config,inventory,item,area,origin,travelFlags,fuzzyCache)
   if not permitted(runtime,item) or item.goalAreaNum==0 or (item.entityNum==0 and (item.flags&levelItems.IFL_ROAM)==0) then return [0.0,0] end if
   info=config[item.itemInfo];if info.number<0 or info.number>=len(value.itemWeightIndex) then return [0.0,0] end if;weightNumber=value.itemWeightIndex[info.number];if weightNumber<0 then return [0.0,0] end if
-  weight=itemWeights.fuzzyWeight(inventory,value.itemWeightConfig,weightNumber);if item.timeout!=0.0 then weight=goalSelectNumeric.fadd(weight,runtime.droppedWeight) end if;if (item.flags&levelItems.IFL_ROAM)!=0 then weight=goalSelectNumeric.fmul(weight,item.weight) end if
+  // A map has many instances of the same item class. The inventory and fuzzy
+  // config stay fixed throughout one selection, so evaluate each weight once.
+  weight=void;if weightNumber<len(fuzzyCache) then weight=fuzzyCache[weightNumber] end if
+  if weight==void then weight=itemWeights.fuzzyWeight(inventory,value.itemWeightConfig,weightNumber);if weightNumber<len(fuzzyCache) then fuzzyCache[weightNumber]=weight end if end if
+  if item.timeout!=0.0 then weight=goalSelectNumeric.fadd(weight,runtime.droppedWeight) end if;if (item.flags&levelItems.IFL_ROAM)!=0 then weight=goalSelectNumeric.fmul(weight,item.weight) end if
   if weight<=0.0 then return [0.0,0] end if;time=travelTime(runtime,area,origin,item.goalAreaNum,travelFlags);if time<=0 then return [0.0,time] end if
   remaining=goalRuntime.avoidGoalTime(runtime.goals,handle,item.number);if goalSelectNumeric.fsub(remaining,goalSelectNumeric.fmul(time,0.009))>0.0 then return [0.0,time] end if
   return [goalSelectNumeric.fdiv(weight,goalSelectNumeric.fmul(time,TRAVELTIME_SCALE)),time]
@@ -96,16 +100,16 @@ end function
 
 function chooseLTGItem(runtime,handle,origin,inventory,travelFlags)
   if runtime==void then return 0 end if;value=goalResources.goalState(runtime.goals.pools,handle);if value==void or value.itemWeightConfig==void then return 0 end if;area=originArea(runtime,value,origin);if area==0 then return 0 end if
-  config=itemConfig(runtime);if config==void or config is error then return 0 end if;best=void;bestWeight=0.0
-  for each item in runtime.levelItems.levelItems score=weighted(runtime,handle,value,config,inventory,item,area,origin,travelFlags);if score[0]>bestWeight then bestWeight=score[0];best=item end if end for
+  config=itemConfig(runtime);if config==void or config is error then return 0 end if;best=void;bestWeight=0.0;fuzzyCache=array(len(value.itemWeightConfig.weights),void)
+  for each item in runtime.levelItems.levelItems score=weighted(runtime,handle,value,config,inventory,item,area,origin,travelFlags,fuzzyCache);if score[0]>bestWeight then bestWeight=score[0];best=item end if end for
   if best==void then return 0 end if;info=config[best.itemInfo];goal=makeItemGoal(info,best);goalRuntime.addToAvoidGoals(runtime.goals,handle,best.number,avoidTime(info,best));goalRuntime.pushGoal(runtime.goals,handle,goal);return 1
 end function
 function chooseNBGItem(runtime,handle,origin,inventory,travelFlags,longTermGoal,maxTime)
   if runtime==void then return 0 end if;value=goalResources.goalState(runtime.goals.pools,handle);if value==void or value.itemWeightConfig==void then return 0 end if;area=originArea(runtime,value,origin);if area==0 then return 0 end if
   longTime=99999;if longTermGoal!=void then longTime=travelTime(runtime,area,origin,longTermGoal.areaNum,travelFlags) end if
-  config=itemConfig(runtime);if config==void or config is error then return 0 end if;best=void;bestWeight=0.0
+  config=itemConfig(runtime);if config==void or config is error then return 0 end if;best=void;bestWeight=0.0;fuzzyCache=array(len(value.itemWeightConfig.weights),void)
   for each item in runtime.levelItems.levelItems
-    score=weighted(runtime,handle,value,config,inventory,item,area,origin,travelFlags);if score[1]<=0 or score[1]>=maxTime or score[0]<=bestWeight then continue end if
+    score=weighted(runtime,handle,value,config,inventory,item,area,origin,travelFlags,fuzzyCache);if score[1]<=0 or score[1]>=maxTime or score[0]<=bestWeight then continue end if
     back=0;if longTermGoal!=void and item.timeout==0.0 then back=travelTime(runtime,item.goalAreaNum,item.goalOrigin,longTermGoal.areaNum,travelFlags) end if
     if back<=longTime then bestWeight=score[0];best=item end if
   end for
