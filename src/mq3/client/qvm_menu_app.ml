@@ -98,7 +98,7 @@ function run(archive,bootstrapMap,qvmRoot)
   // quadratically because every later append copied the full history.
   state.context.soundCommands=[];audio.commandCursor=0
   // Keep the original menu usable on systems without an audio device.
-  audioStarted=audioOutput.init(22050);if audioStarted is error then print "Warning: audio output unavailable; continuing without sound." end if
+  audioStarted=try(audioOutput.init(22050));if audioStarted is error then print "Warning: audio output unavailable; continuing without sound." end if
   window.setTitle("MiniQuake3 | Quake III Arena Main Menu")
   window.inputClear();state.context.console=[];uploadedTextures=len(catalog.textures);soundAssetCount=len(state.context.assets);now=1000;mapName=void;quitRequested=false;singlePlayer=false;menuBotCommands=[]
   while not window.shouldClose() and not quitRequested and mapName==void

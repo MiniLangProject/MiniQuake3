@@ -386,7 +386,7 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
   if flareCatalog!=void then uploaded=flares.upload(flareCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if end if
   uploaded=uploadLightmaps(map);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
   // A missing audio device must not prevent rendering or gameplay.
-  audioStarted=audioOutput.init(22050);if audioStarted is error then print "Warning: audio output unavailable; continuing without sound." end if
+  audioStarted=try(audioOutput.init(22050));if audioStarted is error then print "Warning: audio output unavailable; continuing without sound." end if
   readyAt=window.milliseconds();print "QVM startup profile: boot="+str(qvmBootAt-startupAt)+"ms ui="+str(uiBootAt-qvmBootAt)+"ms shaders="+str(scriptIndexAt-uiBootAt)+"ms scene="+str(sceneAt-scriptIndexAt)+"ms sounds="+str(soundAt-sceneAt)+"ms world="+str(worldAt-soundAt)+"ms upload="+str(readyAt-worldAt)+"ms total="+str(readyAt-startupAt)+"ms"
   print "QVM retained world: enabled="+str(retainedWorldCache.enabled)+" staticPrimes="+str(retainedWorldCache.staticPrimes)+" (worldRebuild timing includes selected effects)"
   rendererName="software";if window.hardwareRenderer() then rendererName="hardware OpenGL" end if;print "QVM renderer: "+rendererName+" / "+str(window.glInfo(1))
