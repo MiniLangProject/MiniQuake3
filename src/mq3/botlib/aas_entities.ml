@@ -28,7 +28,7 @@ function create(maxEntities)
 end function
 
 function bindRuntime(state,runtime) if state!=void then state.runtime=runtime end if;return state end function
-function unlink(state,number) if state!=void and number>=0 and number<state.maxEntities then state.areaLinks[number]=[] end if;return void end function
+function unlink(state,number) if state!=void and number>=0 and number<state.maxEntities and len(state.areaLinks[number])>0 then state.areaLinks[number]=[] end if;return void end function
 
 function startFrame(state,time)
   if state==void or time<0.0 then return error(7530,"invalid AAS entity frame") end if

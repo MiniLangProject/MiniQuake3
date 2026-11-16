@@ -89,6 +89,14 @@ function Export_BotLibUpdateEntity(state,entity,present,service)
   result=invoke2(service,service.aasUpdateEntityFn,entity,present);if result!=BLERR_NOERROR then return result end if
   state.entityUpdates=state.entityUpdates+1;if not present then state.removedEntities=state.removedEntities+1 end if;return BLERR_NOERROR
 end function
+// The QVM host has no aasUpdateEntity callback: it applies the entity state
+// immediately after the lifecycle check. Avoid constructing an empty Services
+// object for the 1024 entity slots visited on every original bot frame.
+function Export_BotLibUpdateEntityPlain(state,entity,present)
+  if not BotLibSetup(state) then return BLERR_LIBRARYNOTSETUP end if
+  if not ValidEntityNumber(state,entity) then return BLERR_INVALIDENTITYNUMBER end if
+  state.entityUpdates=state.entityUpdates+1;if not present then state.removedEntities=state.removedEntities+1 end if;return BLERR_NOERROR
+end function
 function BotExportTest(parm0,parm1,parm2,parm3) return 0 end function
 
 function PC_AddGlobalDefine(registry,text) return pc.addDefine(registry,text) end function

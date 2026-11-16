@@ -84,7 +84,7 @@ def main():
                 raise RuntimeError(f"be_interface mismatch at record {index + 1}\nnative: {left}\nmini:   {right}")
     subprocess.run([sys.executable, ROOT / "scripts/build.py", "--source", "tests/be_interface_complete_contracts.ml", "--output", "be_interface_complete_contracts.exe"], cwd=ROOT, check=True)
     contracts = run([ROOT / "build/be_interface_complete_contracts.exe"], ROOT / "build", log=out / "contracts.log").strip()
-    if contracts != "PASS: 24 be_interface complete contracts":
+    if contracts != "PASS: 26 be_interface complete contracts":
         raise RuntimeError(contracts)
 
     retail = "not-run"
@@ -96,13 +96,13 @@ def main():
         "symbols": len(FUNCTIONS),
         "exports": sum(expected.values()),
         "oracle_records": len(observed.splitlines()),
-        "contracts": 24,
+        "contracts": 26,
         "retail": retail,
         "oracle": "Unchanged extracted Baseq3 botlib/be_interface.c function bodies with deterministic engine-subsystem stubs.",
         "sources": {str(path.relative_to(ROOT)).replace("\\", "/"): sha(path) for path in [source, native_source, ROOT / "src/mq3/botlib/lifecycle_runtime.ml", ROOT / "src/mq3/engine/local_qvm_match.ml", harness, ROOT / "tests/be_interface_complete_oracle.ml", ROOT / "tests/be_interface_complete_contracts.ml"]},
     }
     (out / "result.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8", newline="\n")
-    print(f'PASS: {result["oracle_records"]} exact be_interface records + 24 native contracts + {result["exports"]}/134 exports; retail={retail}')
+    print(f'PASS: {result["oracle_records"]} exact be_interface records + 26 native contracts + {result["exports"]}/134 exports; retail={retail}')
 
 
 if __name__ == "__main__":

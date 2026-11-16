@@ -1,8 +1,28 @@
 # MiniQuake3: überprüfter Stand
 
-Stand: 2026-11-15. Der Port ist **in Arbeit; eine interaktive Vorschau ist spielbar**.
+Stand: 2026-11-16. Der Port ist **in Arbeit; eine interaktive Vorschau ist spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
+
+## Bot-Leistung, 16. November 2026
+
+Das QVM-Profil isolierte bei 200 Bot-Frames 205.824 AAS-Entity-Updates und
+teure Zielwahl- und Bewegungs-Traps. `edgeAllowed` liest nun einmal beim
+AAS-Laden berechnete Reise- und Flächenflags, statt pro geprüfter Kante eine
+neue Flag-Tabelle zu erzeugen. Der QVM-Host vermeidet außerdem das Anlegen
+eines leeren Botlib-Serviceobjekts je Entity-Update und wiederholtes Leeren
+bereits leerer Area-Link-Arrays. 12 gewichtete Routing-Verträge, sechs
+Retail-Routen, 30 Routingcache-Verträge, 15 originale Botlib-Records,
+26 Botlib-Verträge und die Retail-AAS-/Qagame-Abnahme bestehen.
+
+Der grafische Retail-Singleplayer-Lauf mit q3dm1 und Arena-Bot erreichte
+**5.000 Bilder in 50,552 s: 98,91 FPS, P95 25 ms, P99 50 ms**.
+Die mittlere Spielsimulation benötigt 2,17 ms und der Renderer 2,17 ms je
+Bild. Die frühere 2.000-Bild-Probe erreichte 51,24 FPS und 8,97 ms
+Spielsimulation; die Kartenansichten und Laufzeiten unterscheiden sich, also
+ist das kein bildgenauer A/B-Vergleich. Der 200-Frame-Qagame-Bot-Test sank
+von etwa 4,8 s auf etwa 1,5 s. Mehrere hundert FPS, längere Mehrbot-Matches
+und die menschliche interaktive Abnahme sind weiterhin offen.
 
 Singleplayer-Korrektur: Das originale `spmap` setzt vor `G_InitGame`
 `g_gametype=2`; der bisherige Menüpfad verlor diese Unterscheidung und damit

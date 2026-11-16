@@ -70,7 +70,7 @@ const AREACONTENTS_NOTTEAM2=4096
 const AREA_LIQUID=4
 const AREA_BRIDGE=16
 
-struct Router runtime settings reaches end struct
+struct Router runtime settings reaches travelTypeFlags areaFlags end struct
 struct Route travelTime reachNum end struct
 struct Heap times reaches firstReaches positions size end struct
 
@@ -81,7 +81,10 @@ function create(runtime)
   settings=array(areaCount,void);reaches=array(reachCount,void)
   if areaCount>0 then for index=0 to areaCount-1 value=aas.areaSettings(runtime.map,index);if value is error then return value end if;settings[index]=value end for end if
   if reachCount>0 then for index=0 to reachCount-1 value=aas.reachability(runtime.map,index);if value is error then return value end if;reaches[index]=value end for end if
-  return Router(runtime,settings,reaches)
+  travelTypeFlags=[TFL_INVALID,TFL_INVALID,TFL_WALK,TFL_CROUCH,TFL_BARRIERJUMP,TFL_JUMP,TFL_LADDER,TFL_WALKOFFLEDGE,TFL_SWIM,TFL_WATERJUMP,TFL_TELEPORT,TFL_ELEVATOR,TFL_ROCKETJUMP,TFL_BFGJUMP,TFL_GRAPPLEHOOK,TFL_DOUBLEJUMP,TFL_RAMPJUMP,TFL_STRAFEJUMP,TFL_JUMPPAD,TFL_FUNCBOB]
+  areaFlags=array(areaCount,0)
+  for index=0 to areaCount-1 areaFlags[index]=contentsTravelFlags(settings[index]) end for
+  return Router(runtime,settings,reaches,travelTypeFlags,areaFlags)
 end function
 
 function travelFlagForType(travelType)
@@ -92,9 +95,8 @@ function travelFlagForType(travelType)
   // are supplied by the destination area's contents flags below.
   return flags[kind]
 end function
-function areaContentsTravelFlags(router,areaNum)
-  if router==void or areaNum<0 or areaNum>=len(router.settings) then return TFL_INVALID end if
-  value=router.settings[areaNum];contents=value.contents;flags=0
+function contentsTravelFlags(value)
+  contents=value.contents;flags=0
   if (contents&AREACONTENTS_WATER)!=0 then flags=TFL_WATER else if (contents&AREACONTENTS_SLIME)!=0 then flags=TFL_SLIME else if (contents&AREACONTENTS_LAVA)!=0 then flags=TFL_LAVA else flags=TFL_AIR end if
   if (contents&AREACONTENTS_DONOTENTER)!=0 then flags=flags|TFL_DONOTENTER end if
   if (contents&AREACONTENTS_NOTTEAM1)!=0 then flags=flags|TFL_NOTTEAM1 end if
@@ -102,11 +104,17 @@ function areaContentsTravelFlags(router,areaNum)
   if (value.flags&AREA_BRIDGE)!=0 then flags=flags|TFL_BRIDGE end if
   return flags
 end function
+function areaContentsTravelFlags(router,areaNum)
+  if router==void or areaNum<0 or areaNum>=len(router.settings) then return TFL_INVALID end if
+  return router.areaFlags[areaNum]
+end function
 function allowed(required,travelFlags) return (required&travelFlags)==required end function
 function edgeAllowed(router,reach,travelFlags)
   destination=reach.areaNum
   if not rt.validArea(router.runtime,destination) or router.runtime.disabled[destination] then return false end if
-  return allowed(travelFlagForType(reach.travelType),travelFlags) and allowed(areaContentsTravelFlags(router,destination),travelFlags)
+  kind=reach.travelType&TRAVELTYPE_MASK;required=TFL_INVALID
+  if kind>=0 and kind<len(router.travelTypeFlags) then required=router.travelTypeFlags[kind] end if
+  return allowed(required,travelFlags) and allowed(router.areaFlags[destination],travelFlags)
 end function
 function areaTravelTime(router,areaNum,start,finish)
   if router==void or not rt.validArea(router.runtime,areaNum) or start==void or finish==void or len(start)!=3 or len(finish)!=3 then return 0 end if

@@ -421,7 +421,7 @@ function botlibLoadMap(context,vm,base)
 end function
 function updateAasEntity(context,vm,base)
   number=common.argument(vm,base,1);address=common.argument(vm,base,2)
-  result=botInterface.Export_BotLibUpdateEntity(context.botlib,number,address!=0,botInterface.services(context));if result!=botInterface.BLERR_NOERROR then return result end if
+  result=botInterface.Export_BotLibUpdateEntityPlain(context.botlib,number,address!=0);if result!=botInterface.BLERR_NOERROR then return result end if
   if context.aasEntities==void then return result end if
   if address==0 then return aasEntities.AAS_UpdateEntity(context.aasEntities,number,void,void) end if
   state=aasQuerySyscalls.readEntityState(vm,address);if state is error then return state end if
