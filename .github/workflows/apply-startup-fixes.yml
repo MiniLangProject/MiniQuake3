@@ -11,28 +11,31 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Check exact inputs and apply reviewed patch
+      - name: Apply exact reviewed error-capture correction
         run: |
           python - <<'PY'
           from pathlib import Path
-          import hashlib, subprocess
+          import hashlib
           expected = {
-              'src/mq3/client/qvm_preview_app.ml': ('ba23bff3035e03bf9dc51a9ee2b88857645bcd15898e3772be9936d0222250aa', 'b93ee5c42faf8f125133ed4c3661598b3efa738dc7f47c493638516ffe20b0ed'),
-              'src/mq3/client/qvm_menu_app.ml': ('feda94d584551d4fca204d59e42a0352e82fbd165d4a45e014a03bd74fab75d6', '164a2e4b90a99aae9e06fafcee000f2131fd34bb00a5dbb8fd6642c0c3b5fd8e')}
-          actual = {name: hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in expected}
-          if all(actual[name] == values[1] for name, values in expected.items()):
-              print('Patch already applied exactly')
-          else:
-              assert all(actual[name] == values[0] for name, values in expected.items()), actual
-              subprocess.run(['git', 'apply', '--check', 'patches/ci-startup-20261116.patch'], check=True)
-              subprocess.run(['git', 'apply', 'patches/ci-startup-20261116.patch'], check=True)
-              for name, values in expected.items():
-                  assert hashlib.sha256(Path(name).read_bytes()).hexdigest() == values[1], name
+              'src/mq3/client/qvm_preview_app.ml': ('b93ee5c42faf8f125133ed4c3661598b3efa738dc7f47c493638516ffe20b0ed', '16e7fedeed8cecc2ac4c7f144a018351cbb1f54692c7941dd26a0854bb1dfdc5'),
+              'src/mq3/client/qvm_menu_app.ml': ('164a2e4b90a99aae9e06fafcee000f2131fd34bb00a5dbb8fd6642c0c3b5fd8e', '0a5a122e4f3510ec9c293268079bbf6e88ed208f802645c6591d54bc24b4a810')}
+          for name, hashes in expected.items():
+              path = Path(name)
+              data = path.read_bytes()
+              actual = hashlib.sha256(data).hexdigest()
+              assert actual in hashes, (name, actual)
+              if actual == hashes[0]:
+                  before = b'audioStarted=audioOutput.init(22050);'
+                  after = b'audioStarted=try(audioOutput.init(22050));'
+                  assert data.count(before) == 1, name
+                  changed = data.replace(before, after, 1)
+                  assert hashlib.sha256(changed).hexdigest() == hashes[1], name
+                  path.write_bytes(changed)
           PY
           git diff --stat
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add src/mq3/client/qvm_preview_app.ml src/mq3/client/qvm_menu_app.ml
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'fix: import renderer list module and keep menu/game usable without audio hardware'
+          git commit -m 'fix: catch optional audio initialization errors instead of propagating them'
           git push origin HEAD:refs/heads/test/retail-start-20261116
