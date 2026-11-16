@@ -47,6 +47,7 @@ import mq3.audio.qvm_playback as qvmPlayback
 import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
 import mq3.qcommon.cvar as cvar
+import std.ds.list as lists
 import std.time as time
 import std.ds.queue as queues
 import std.string as strings
@@ -348,7 +349,7 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
   soundCatalog=qvmSoundAssets.load(archive,state.context.assets,state.context.assetKinds);if soundCatalog is error then window.shutdown();match.shutdown(state);return soundCatalog end if
   audio=qvmPlayback.create(soundCatalog,22050,4096);if audio is error then window.shutdown();match.shutdown(state);return audio end if
   applied=qvmPlayback.apply(audio,state.context.soundCommands);if applied is error then window.shutdown();match.shutdown(state);return applied end if
-  soundAt=window.milliseconds();loading=window.showLoading(78,"Building q3dm1 world materials");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
+  soundAt=window.milliseconds();loading=window.showLoading(78,"Building "+mapName+" world materials");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
   worldCatalog=materials.loadIndexed(archive,map,256,64,scripts[0],scripts[1]);if worldCatalog is error then window.shutdown();match.shutdown(state);return worldCatalog end if
   boundVideo=qvmVideo.bindCatalog(videoManager,worldCatalog,state.context.now);if boundVideo is error then window.shutdown();match.shutdown(state);return boundVideo end if
   nextWorldTextureSlot=64+worldCatalog.textureCount
@@ -384,11 +385,11 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
   if dlightCatalog!=void then uploaded=dynamicLights.upload(dlightCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if end if
   if flareCatalog!=void then uploaded=flares.upload(flareCatalog);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if end if
   uploaded=uploadLightmaps(map);if uploaded is error then window.shutdown();match.shutdown(state);return uploaded end if
-  audioStarted=audioOutput.init(22050);if audioStarted is error then window.shutdown();match.shutdown(state);return audioStarted end if
+  audioStarted=try(audioOutput.init(22050));if audioStarted is error then print "Warning: audio output unavailable; continuing without sound." end if
   readyAt=window.milliseconds();print "QVM startup profile: boot="+str(qvmBootAt-startupAt)+"ms ui="+str(uiBootAt-qvmBootAt)+"ms shaders="+str(scriptIndexAt-uiBootAt)+"ms scene="+str(sceneAt-scriptIndexAt)+"ms sounds="+str(soundAt-sceneAt)+"ms world="+str(worldAt-soundAt)+"ms upload="+str(readyAt-worldAt)+"ms total="+str(readyAt-startupAt)+"ms"
   print "QVM retained world: enabled="+str(retainedWorldCache.enabled)+" staticPrimes="+str(retainedWorldCache.staticPrimes)+" (worldRebuild timing includes selected effects)"
   rendererName="software";if window.hardwareRenderer() then rendererName="hardware OpenGL" end if;print "QVM renderer: "+rendererName+" / "+str(window.glInfo(1))
-  titleState=fpsTitle.create("Original QVM q3dm1",window.milliseconds());window.setTitle(fpsTitle.initialTitle(titleState))
+  titleState=fpsTitle.create("Original QVM "+mapName,window.milliseconds());window.setTitle(fpsTitle.initialTitle(titleState))
   frames=0;hudMs=0;videoBindMs=0;soundApplyMs=0;textureUploadMs=0
   // Discard key/mouse messages accumulated while the QVMs and retail assets
   // were loading.  Rebasing those old native timestamps onto the game clock
