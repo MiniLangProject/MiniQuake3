@@ -72,11 +72,20 @@ Menü-Botbefehle bleiben beim Kartenwechsel erhalten. Client-Befehle wie
 `score` erreichen Qagame im nächsten Server-Frame, damit dessen Scoreboard-
 Antwort die menschliche Spielfigur enthält. Die q3dm1-Retail-Probe bestätigt
 Ranger und den menschlichen Player-Configstring sowie die Score-Antwort.
-Die Retail-Botprobe besteht 200 Frames; der AAS-Routingcache vermeidet
-lineare Trefferauswahl und Array-Kopien. Ein grafischer Singleplayer-Lauf
-mit Bot erreichte nach vorberechneten AAS-Flags und dem beschleunigten
-Entity-Update **98,91 FPS über 5.000 Bilder (P95 25 ms)**. Zuvor waren es
-51,24 FPS über 2.000 Bilder; Kartenansicht und Laufdauer unterscheiden sich.
+Die Retail-Botprobe besteht 200 Frames für `q3dm0` (Crash) und `q3dm1`
+(Ranger); der AAS-Routingcache vermeidet lineare Trefferauswahl und
+Array-Kopien. Der produktive Fensterpfad führt die ausstehenden `addbot`-
+Befehle jetzt aus. Ein grafischer q3dm0-Lauf **mit wirklich gestartetem Bot**
+erreicht 37,73 FPS über 2.000 Bilder (P95 86 ms). Der frühere q3dm1-Lauf
+erreichte 98,91 FPS über 5.000 Bilder, doch dessen Bot wurde wegen der
+fehlenden Befehlsausführung im Fensterpfad noch nicht gestartet.
+Ein neuer q3dm1-Lauf mit aktivem Ranger erreicht 87,81 FPS über 1.000 Bilder.
+`+scores` erreicht jetzt die originale Cgame-QVM; Qagame liefert Spieler
+und Bot im Scoreboard. Die Konsolen-Zeichenliste nutzt `std.ds.list` statt
+Array-Konkatenation; ein grafischer Lauf mit gesendeter `^`-Taste endet ohne
+Absturz. Eine interaktive Sichtprüfung steht noch aus.
+Die [Retail-Abnahme für Bot, Scoreboard und Konsole](docs/verification/2026-11-16-singleplayer-console-score.json)
+enthält die reproduzierbaren Befehle und Grenzen.
 Das frühere 169,65-FPS-Ergebnis wurde ohne Singleplayer-Bot gemessen.
 Langzeit- und Mehrbot-FPS sowie mehrere hundert FPS sind noch offen.
 Zum Testen `build/MiniQuake3.exe` direkt starten; `baseq3/pak*.pk3` und `qvms`

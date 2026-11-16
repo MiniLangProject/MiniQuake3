@@ -351,8 +351,9 @@ int main(void) {
             pixels[19 * 128 + 48], pixels[32 * 128 + 48]);
         return 11;
     }
+    /* The entire viewport is outside the 128x128 surface. */
     if (playable_window_draw_world_triangle_batch_viewport((const unsigned char *)&command,
-            (int)sizeof(command), 1, 120, 120, 16, 12,
+            (int)sizeof(command), 1, 140, 140, 16, 12,
             0.0, 0.0, 0.0,
             0.0, 1.0, 0.0,
             0.0, 0.0, 1.0,

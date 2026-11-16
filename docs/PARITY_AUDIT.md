@@ -6,6 +6,39 @@ kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
 ## Bot-Leistung, 16. November 2026
 
+Nachprüfung des produktiven Fensterpfads: `runServerFrame` führte die von
+`G_InitBots` eingereihten `addbot`-Befehle nicht aus. Der frühere grafische
+q3dm1-Lauf mit 98,91 FPS maß daher keinen tatsächlich gestarteten Arena-Bot.
+Mit ausgeführter Befehlsqueue bestätigt die Retail-Probe den Bot Crash auf
+der ersten Singleplayer-Karte `q3dm0` und Ranger auf `q3dm1`. Nach 200 Frames
+ist der Bot aktiv; `+scores` läuft durch die originale Cgame-QVM und Qagame
+meldet Spieler 0 und Bot 1 in `scores 2`. Der Bot ist in beiden Karten
+räumlich verknüpft; im untersuchten Frame ist er auf `q3dm1` im menschlichen
+Snapshot, auf `q3dm0` außerhalb der aktuellen Sichtbarkeitszone. Der neue
+grafische q3dm0-Lauf mit Bot erreicht **37,73 FPS über 2.000 Bilder**
+(P95 86 ms, P99 171 ms).
+Ein weiterer q3dm1-Lauf mit dem nun tatsächlich aktiven Ranger erreicht
+**87,81 FPS über 1.000 Bilder** (P95 26 ms). Die Arenen sind wegen ihrer
+unterschiedlichen Geometrie keine direkte Vorher-nachher-Messung.
+Simulation, Geometrie und Renderer kosten im Mittel 9,22, 6,07 und 10,14 ms
+je Bild. Das ist die nun maßgebliche, deutlich ungenügende Leistungsbasis.
+Ein zusätzlicher 500-Bild-Lauf mit `MQ3_RENDER_PROFILE=1` misst im nativen
+Renderer 1,76 ms für `hardwareDrawBatch` und 0,04 ms für `SwapBuffers` je
+Profilbild; rund 9,74 ms liegen zwischen diesen Aufrufen im MiniLang-
+Renderpfad und weiteren nativen Routinen. Der Flaschenhals ist damit nicht
+die Bildübergabe an Windows. Der nächste Optimierungsschritt muss diese
+Renderaufrufe genauer auflösen und zusammenfassen.
+Die Konsolen-Zeichenlisten wachsen jetzt linear; ein 2.000-Bild-Lauf mit
+gesendeter `^`-Taste endet ohne Absturz bei 37,89 FPS. Eine interaktive
+Sichtprüfung des Bots und des Scoreboards steht noch aus.
+Die Win32-Softwareansicht gibt für vollständig außerhalb liegende Viewports
+jetzt 0 gezeichnete Dreiecke zurück. Die nativen Viewport- und
+Stencil-Regressionsfälle prüfen wieder tatsächlich ungültige oder vollständig
+unsichtbare Rechtecke; `test_win_shared_complete.py` besteht.
+Die Mess- und Testwerte sind in
+[`verification/2026-11-16-singleplayer-console-score.json`](verification/2026-11-16-singleplayer-console-score.json)
+festgehalten.
+
 Das QVM-Profil isolierte bei 200 Bot-Frames 205.824 AAS-Entity-Updates und
 teure Zielwahl- und Bewegungs-Traps. `edgeAllowed` liest nun einmal beim
 AAS-Laden berechnete Reise- und Flächenflags, statt pro geprüfter Kante eine
@@ -15,7 +48,7 @@ bereits leerer Area-Link-Arrays. 12 gewichtete Routing-Verträge, sechs
 Retail-Routen, 30 Routingcache-Verträge, 15 originale Botlib-Records,
 26 Botlib-Verträge und die Retail-AAS-/Qagame-Abnahme bestehen.
 
-Der grafische Retail-Singleplayer-Lauf mit q3dm1 und Arena-Bot erreichte
+Der frühere grafische Retail-Singleplayer-Lauf mit q3dm1 erreichte
 **5.000 Bilder in 50,552 s: 98,91 FPS, P95 25 ms, P99 50 ms**.
 Die mittlere Spielsimulation benötigt 2,17 ms und der Renderer 2,17 ms je
 Bild. Die frühere 2.000-Bild-Probe erreichte 51,24 FPS und 8,97 ms

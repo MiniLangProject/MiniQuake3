@@ -7,6 +7,7 @@ import mq3.client.console_input as clConsoleInput
 import mq3.client.console_input_display as inputDisplay
 import mq3.compat.numeric as numeric
 import std.fs as fs
+import std.ds.list as lists
 
 const NUM_CON_TIMES=4
 const CON_TEXTSIZE=32768
@@ -48,9 +49,9 @@ function lineText(state,line)
   endAt=state.linewidth;while endAt>0 and raw[endAt-1]==32 endAt=endAt-1 end while;return decode(slice(raw,0,endAt))
 end function
 function lineGlyphs(state,line,startX,startY)
-  result=[];if state.totallines<=0 then return result end if;base=lineOffset(state,line)
-  for index=0 to state.linewidth-1 cell=state.text[base+index];ch=cell&255;if ch!=32 then result=result+[Glyph(startX+index*SMALLCHAR_WIDTH,startY,ch,(cell>>8)&7)] end if end for
-  return result
+  result=lists.List.withCapacity(state.linewidth);if state.totallines<=0 then return [] end if;base=lineOffset(state,line)
+  for index=0 to state.linewidth-1 cell=state.text[base+index];ch=cell&255;if ch!=32 then result.add(Glyph(startX+index*SMALLCHAR_WIDTH,startY,ch,(cell>>8)&7)) end if end for
+  return result.toArray()
 end function
 
 function Con_ClearNotify(state) state.times=[0,0,0,0];return true end function
@@ -144,14 +145,14 @@ function Con_DrawNotify(state)
 end function
 function Con_DrawSolidConsole(state,fraction,videoWidth,videoHeight,version)
   lines=numeric.trunc32(videoHeight*fraction);if lines<0 then lines=0 end if;if lines>videoHeight then lines=videoHeight end if
-  state.vislines=lines;rows=numeric.trunc32((lines-SMALLCHAR_WIDTH)/SMALLCHAR_WIDTH);y=lines-(SMALLCHAR_HEIGHT*3);back=state.display!=state.current;glyphs=[]
-  if back then column=0;while column<state.linewidth glyphs=glyphs+[Glyph((column+1)*SMALLCHAR_WIDTH,y,94,COLOR_RED)];column=column+4 end while;y=y-SMALLCHAR_HEIGHT;rows=rows-1 end if
+  state.vislines=lines;rows=numeric.trunc32((lines-SMALLCHAR_WIDTH)/SMALLCHAR_WIDTH);y=lines-(SMALLCHAR_HEIGHT*3);back=state.display!=state.current;capacity=rows*state.linewidth+len(version);if capacity<8 then capacity=8 end if;glyphs=lists.List.withCapacity(capacity)
+  if back then column=0;while column<state.linewidth glyphs.add(Glyph((column+1)*SMALLCHAR_WIDTH,y,94,COLOR_RED));column=column+4 end while;y=y-SMALLCHAR_HEIGHT;rows=rows-1 end if
   row=state.display;if state.x==0 then row=row-1 end if
   for index=0 to rows-1
-    if row>=0 and state.current-row<state.totallines then glyphs=glyphs+lineGlyphs(state,row,SMALLCHAR_WIDTH,y) end if;row=row-1;y=y-SMALLCHAR_HEIGHT
+    if row>=0 and state.current-row<state.totallines then glyphs.addAll(lineGlyphs(state,row,SMALLCHAR_WIDTH,y)) end if;row=row-1;y=y-SMALLCHAR_HEIGHT
   end for
-  versionRaw=bytes(version);for index=0 to len(versionRaw)-1 glyphs=glyphs+[Glyph(videoWidth-(len(versionRaw)-index)*SMALLCHAR_WIDTH,lines-(SMALLCHAR_HEIGHT+SMALLCHAR_HEIGHT/2),versionRaw[index],COLOR_RED)] end for
-  return SolidView(fraction,lines,rows,back,version,glyphs,Con_DrawInput(state))
+  versionRaw=bytes(version);for index=0 to len(versionRaw)-1 glyphs.add(Glyph(videoWidth-(len(versionRaw)-index)*SMALLCHAR_WIDTH,lines-(SMALLCHAR_HEIGHT+SMALLCHAR_HEIGHT/2),versionRaw[index],COLOR_RED)) end for
+  return SolidView(fraction,lines,rows,back,version,glyphs.toArray(),Con_DrawInput(state))
 end function
 function Con_DrawConsole(state,screenWidth,videoWidth,videoHeight,version)
   Con_CheckResize(state,screenWidth)

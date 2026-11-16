@@ -865,6 +865,12 @@ end function
 function clientGameCommand(commandState)
   value=commandState.context;if value==void or value.cgame==void then return false end if
   name=commands.argv(commandState,0)
+  // The QVM owns cg.showScores and requests the server scores itself.
+  // Consuming these bindings in the native observer leaves the visible QVM
+  // scoreboard empty even though qagame returns both player records.
+  if commands.sameInsensitive(name,"+scores") or commands.sameInsensitive(name,"-scores") then
+    result=cgameVm.consoleCommand(value.cgame);if result is error then return result end if;return result!=0
+  end if
   if nativeCgameCommands.isNativeBaseCommand(name) then
     target=-1;attacker=-1
     if commands.sameInsensitive(name,"tcmd") or commands.sameInsensitive(name,"tell_target") or commands.sameInsensitive(name,"vtell_target") then target=cgameVm.crosshairPlayer(value.cgame);if target is error then return target end if end if
@@ -919,9 +925,10 @@ function submitUsercmdAtHostTime(value,clientNum,command,hostTime)
 end function
 
 function runFrame(value,serverTime)
-  commands.execute(value.context.commandState);return runServerFrame(value,serverTime)
+  return runServerFrame(value,serverTime)
 end function
 function runServerFrame(value,serverTime)
+  executed=commands.execute(value.context.commandState);if executed is error then return executed end if
   value.context.now=serverTime;botServerBridge.setTime(value.context.botServer,serverTime)
   // CL_SendClientCommand is delivered to GAME_CLIENT_COMMAND on the next
   // server tick. In particular, CG_ScoresDown's "score" must reach qagame.

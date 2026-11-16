@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-16",
+  "retail_data": "build/baseq3/pak0.pk3",
+  "qvms": "build/reference/qvms",
+  "commands": [
+    "python scripts/test_singleplayer_bot_retail.py --data-root build",
+    "python scripts/test_cl_console_complete.py --data-root build",
+    "python scripts/test_singleplayer_console_window.py --data-root build",
+    "python scripts/test_win_shared_complete.py",
+    "python scripts/verify.py --data-root build --start-at test_win_wndproc_complete.py"
+  ],
+  "changes": [
+    "Execute queued qagame addbot commands on the productive runServerFrame path",
+    "Route +scores and -scores through original cgame.qvm",
+    "Build console glyphs with std.ds.list instead of repeated array concatenation",
+    "Return zero drawn triangles for fully offscreen software viewports"
+  ],
+  "checks": {
+    "singleplayer_q3dm0": "PASS: 9 contracts; Crash linked; scores 2 includes clients 0 and 1; bot outside human PVS in sampled frame",
+    "singleplayer_q3dm1": "PASS: 9 contracts; Ranger linked and in human snapshot; scores 2 includes clients 0 and 1",
+    "console_complete": "PASS: 22/22 symbols, 6 original C records, 33 native contracts, 9 productive wiring contracts",
+    "console_window": "PASS: physical console key sent to 2000-frame Retail q3dm0 graphics replay; exit 0",
+    "win_shared": "PASS: 12/12 symbols, 6 original C records, 14 contracts, productive Win32 build",
+    "selected_verify": "PASS: python scripts/verify.py --data-root build --start-at test_win_wndproc_complete.py; remaining gates through runtime_spatial",
+    "earlier_selected_verify": "PASS through test_win_net_complete.py after starting at test_cl_console_complete.py; test_win_shared_complete.py then exposed two stale offscreen fixtures, corrected and passed separately"
+  },
+  "performance": {
+    "q3dm0_bot_2000_frames_fps": 37.73,
+    "q3dm0_bot_p95_ms": 86,
+    "q3dm1_bot_1000_frames_fps": 87.81,
+    "q3dm1_bot_p95_ms": 26,
+    "q3dm0_console_key_2000_frames_fps": 37.61,
+    "q3dm0_500_frame_native_draw_ms_per_frame": 1.76,
+    "q3dm0_500_frame_swap_ms_per_frame": 0.04,
+    "q3dm0_500_frame_other_render_ms_per_frame": 9.74
+  },
+  "limits": [
+    "Previous 98.91 FPS q3dm1 measurement did not contain a spawned arena bot",
+    "No interactive visual proof of bot encounter or scoreboard presentation yet",
+    "First-level FPS and latency remain below acceptance targets",
+    "Persistent singleplayer high-score records remain unverified"
+  ]
+}

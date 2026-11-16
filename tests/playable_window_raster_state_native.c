@@ -338,8 +338,9 @@ int main(void) {
      * their culling for mirrors. RB_ShadowFinish multiplies every non-zero
      * stencil pixel by 0.6 exactly once. */
     playable_window_begin_frame(100, 150, 200);
+    /* Negative origins clip legally; zero width is the invalid case. */
     if (!playable_window_clear_stencil(0, 0, 8, 8) ||
-            playable_window_clear_stencil(-1, 0, 8, 8) ||
+            playable_window_clear_stencil(0, 0, 0, 8) ||
             playable_window_set_stencil_pass(5)) return 53;
     if (!playable_window_set_stencil_pass(1)) return 54;
     for (stencilIteration = 0; stencilIteration < 300; ++stencilIteration) drawStencilTriangle(1);
@@ -370,7 +371,7 @@ int main(void) {
     if (!playable_window_set_stencil_pass(0)) return 64;
     if (playable_window_finish_stencil_shadow(0, 0, 8, 8) <= 0 ||
             pixels[sample] != UINT32_C(0xff3c5a78)) return 65;
-    if (playable_window_finish_stencil_shadow(-1, 0, 8, 8) != -1) return 66;
+    if (playable_window_finish_stencil_shadow(0, 0, 0, 8) != -1) return 66;
 
     if (!shaderBlendContracts()) return 71;
     playable_window_shutdown();
