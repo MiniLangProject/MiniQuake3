@@ -1,0 +1,26 @@
+name: Export tracked test sources
+on:
+  push:
+    branches: [test/retail-start-20261116]
+    paths: [.github/workflows/export-test-sources.yml]
+permissions:
+  contents: read
+jobs:
+  sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Archive only tracked code, never downloaded retail data
+        run: |
+          mkdir -p build/source-evidence
+          git archive --format=zip --output=build/source-evidence/MiniQuake3-source.zip HEAD
+          git rev-parse HEAD > build/source-evidence/commit.txt
+          sha256sum build/source-evidence/MiniQuake3-source.zip > build/source-evidence/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: miniquake3-tracked-source
+          path: build/source-evidence/*
+          retention-days: 7
