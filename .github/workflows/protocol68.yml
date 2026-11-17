@@ -1,0 +1,55 @@
+name: Protocol 68 compatibility
+on:
+  push:
+    branches: [master, fix/network-protocol68-20261117]
+    paths: ['src/**', 'native/**', 'tests/**', 'scripts/**', '.github/workflows/protocol68.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: protocol68-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  network:
+    runs-on: windows-2022
+    timeout-minutes: 40
+    env:
+      MQ3_BUILD_TOOLCHAIN: release
+    steps:
+      - name: Preserve source bytes
+        shell: pwsh
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          submodules: recursive
+          persist-credentials: false
+      - name: Compile and exercise fragmented ingress
+        shell: pwsh
+        run: |
+          python scripts/build_release.py --source tests/network_fragment_ingress_contracts.ml --output network_fragment_ingress_contracts.exe
+          if ($LASTEXITCODE -ne 0) { throw 'Fragment regression compile failed' }
+          & ./build/network_fragment_ingress_contracts.exe
+          if ($LASTEXITCODE -ne 0) { throw 'Fragmented ingress regression failed' }
+      - name: Original C comparisons and UDP regressions
+        shell: python
+        run: |
+          import subprocess, sys
+          from pathlib import Path
+          output = Path('build/protocol68-evidence'); output.mkdir(parents=True, exist_ok=True)
+          for name in ['test_client_netchan', 'test_server_netchan', 'test_client_network_ingress', 'test_network_match_multi']:
+              log = output / (name + '.log')
+              with log.open('w', encoding='utf-8') as stream:
+                  result = subprocess.run([sys.executable, 'scripts/' + name + '.py'], stdout=stream, stderr=subprocess.STDOUT, timeout=900)
+              print(log.read_text(encoding='utf-8', errors='replace')[-16000:], flush=True)
+              if result.returncode: raise RuntimeError(name + ' failed')
+          subprocess.run(['git', 'diff', '--exit-code'], check=True)
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: protocol68-evidence
+          path: |
+            build/protocol68-evidence/**
+            build/reference/**/result.json
+            build/reference/**/*.log
+            build/*.log
+          retention-days: 14
