@@ -3,6 +3,7 @@
 // Productive UDP -> SV_PacketEvent -> SV_Netchan -> SV_ExecuteClientMessage adapter.
 package mq3.server.network_ingress
 import mq3.qcommon.message as message
+import mq3.qcommon.received_message as receivedMessage
 import mq3.qcommon.network_pump as networkPump
 import mq3.server.packet_event as packetEvent
 import mq3.server.client_message as clientMessage
@@ -91,7 +92,7 @@ end function
 
 function serverPacket(runtime,address,data)
   if runtime==void or address==void or data==void then return error(6996,"server ingress: missing packet input") end if
-  msg=message.initStorage(data,len(data),false);msg.cursize=len(data)
+  msg=receivedMessage.create(data);if msg is error then return msg end if
   result=packetEvent.packetEvent(runtime.packetState,runtime.packetHost,address,msg)
   runtime.lastPacketResult=result;runtime.packetCount=runtime.packetCount+1
   return result

@@ -34,7 +34,7 @@ function cloneMessage(source)
   target=message.init(source.maxsize)
   target.allowoverflow=source.allowoverflow;target.overflowed=source.overflowed;target.oob=source.oob
   target.cursize=source.cursize;target.readcount=source.readcount;target.bit=source.bit
-  if source.cursize>0 then for index=0 to source.cursize-1 target.data[index]=source.data[index] end for end if
+  if source.cursize>0 then copyBytes(target.data,0,source.data,0,source.cursize) end if
   return target
 end function
 
@@ -58,7 +58,14 @@ function encode(clientState,msg)
   key=(clientState.challenge^clientState.channel.outgoingSequence)&255
   if msg.cursize>SV_ENCODE_START then
     for offset=SV_ENCODE_START to msg.cursize-1
-      pair=commandByte(raw,index);key=(key^(pair[0]<<(offset&1)))&255;index=pair[1]
+      // Avoid allocating a two-element array for every network byte.
+      value=0
+      if len(raw)>0 then
+        if index>=len(raw) or raw[index]==0 then index=0 end if
+        value=raw[index];index=index+1
+        if value>127 or value==37 then value=46 end if
+      end if
+      key=(key^(value<<(offset&1)))&255
       msg.data[offset]=(msg.data[offset]^key)&255
     end for
   end if
@@ -66,22 +73,28 @@ function encode(clientState,msg)
 end function
 
 // The three compressed client header longs remain logically unread by the
-// caller. Payload are restored exactly before the payload XOR begins.
+// caller. Cursors are restored exactly before the payload XOR begins.
 function decodeMessage(clientState,msg)
   requireClient(clientState)
   savedRead=msg.readcount;savedBit=msg.bit;savedOob=msg.oob
-  // The Huffman stream starts immediately after the physical netchan header.
-  // Decode an offset-zero view so the codec sees precisely the same bit origin.
-  headerLength=msg.cursize-savedRead;if headerLength<0 then headerLength=0 end if
-  headerData=slice(msg.data,savedRead,headerLength);probe=message.initStorage(headerData,len(headerData),false);probe.cursize=len(headerData)
-  serverId=message.readI32(probe);messageAcknowledge=message.readI32(probe);reliableAcknowledge=message.readI32(probe)
+  // Preserve the actual msg_t bit origin, just like SV_Netchan_Decode.
+  // Reading directly avoids a full payload copy merely to inspect 3 longs.
+  msg.oob=false
+  serverId=message.readI32(msg);messageAcknowledge=message.readI32(msg);reliableAcknowledge=message.readI32(msg)
   msg.oob=savedOob;msg.bit=savedBit;msg.readcount=savedRead
   raw=bytes(clientState.reliableCommands[reliableAcknowledge&(MAX_RELIABLE_COMMANDS-1)]);index=0
   key=(clientState.challenge^serverId^messageAcknowledge)&255
   start=msg.readcount+SV_DECODE_START
   if start<msg.cursize then
     for offset=start to msg.cursize-1
-      pair=commandByte(raw,index);key=(key^(pair[0]<<(offset&1)))&255;index=pair[1]
+      // Avoid allocating a two-element array for every network byte.
+      value=0
+      if len(raw)>0 then
+        if index>=len(raw) or raw[index]==0 then index=0 end if
+        value=raw[index];index=index+1
+        if value>127 or value==37 then value=46 end if
+      end if
+      key=(key^(value<<(offset&1)))&255
       msg.data[offset]=(msg.data[offset]^key)&255
     end for
   end if
@@ -99,7 +112,7 @@ function transmit(runtime,clientState,msg)
     return net.transmitNextFragment(runtime,clientState.channel)
   end if
   encode(clientState,msg)
-  data=bytes(msg.cursize,0);if msg.cursize>0 then for index=0 to msg.cursize-1 data[index]=msg.data[index] end for end if
+  data=bytes(msg.cursize,0);if msg.cursize>0 then copyBytes(data,0,msg.data,0,msg.cursize) end if
   return net.transmit(runtime,clientState.channel,data)
 end function
 
@@ -125,7 +138,7 @@ function transmitNextFragment(runtime,clientState)
     if not clientState.queueInitialized then return error(6963,"server netchan: queue is not initialized after fragment drain") end if
     if not clientState.queue.isEmpty() then
       queued=clientState.queue.dequeue();encode(clientState,queued)
-      data=bytes(queued.cursize,0);if queued.cursize>0 then for index=0 to queued.cursize-1 data[index]=queued.data[index] end for end if
+      data=bytes(queued.cursize,0);if queued.cursize>0 then copyBytes(data,0,queued.data,0,queued.cursize) end if
       packets=packets+[net.transmit(runtime,clientState.channel,data)]
     end if
   end if
@@ -136,11 +149,10 @@ function process(clientState,data,maxsize)
   requireClient(clientState)
   result=net.process(clientState.channel,data,maxsize)
   if not result.accepted then return result end if
-  headerSize=result.readcount;bodySize=result.cursize-headerSize
-  body=message.initStorage(slice(result.data,headerSize,bodySize),bodySize,false);body.cursize=bodySize
-  decodeMessage(clientState,body)
-  decodedData=bytes(result.cursize,0)
-  if headerSize>0 then for index=0 to headerSize-1 decodedData[index]=result.data[index] end for end if
-  if bodySize>0 then for index=0 to bodySize-1 decodedData[headerSize+index]=body.data[index] end for end if
+  // Retain independent decoded storage without slicing/copying the body twice.
+  decodedData=bytes(result.data)
+  decoded=message.initStorage(decodedData,len(decodedData),false)
+  decoded.cursize=result.cursize;decoded.readcount=result.readcount;decoded.bit=result.bit
+  decodeMessage(clientState,decoded)
   return net.ProcessResult(true,decodedData,result.cursize,result.readcount,result.bit)
 end function

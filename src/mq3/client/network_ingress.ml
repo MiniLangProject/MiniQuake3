@@ -2,6 +2,7 @@
 // Productive UDP -> CL_PacketEvent -> CL_Netchan -> CL_ParseServerMessage adapter.
 package mq3.client.network_ingress
 import mq3.qcommon.message as message
+import mq3.qcommon.received_message as receivedMessage
 import mq3.qcommon.network_pump as networkPump
 import mq3.client.packet_event as clientPacketEvent
 import mq3.client.netchan as clientNetchanRuntime
@@ -64,7 +65,7 @@ end function
 
 function clientPacket(runtime,address,data)
   if runtime==void or address==void or data==void then return error(6994,"client ingress: missing packet input") end if
-  msg=message.initStorage(data,len(data),false);msg.cursize=len(data)
+  msg=receivedMessage.create(data);if msg is error then return msg end if
   result=clientPacketEvent.packetEvent(runtime.packetState,runtime.packetHost,address,msg)
   runtime.lastPacketResult=result;runtime.packetCount=runtime.packetCount+1
   return result

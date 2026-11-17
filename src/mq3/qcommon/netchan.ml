@@ -76,7 +76,7 @@ function transmitNextFragment(runtime,channel)
   writeLong(packet,0,n.i32(channel.outgoingSequence|FRAGMENT_BIT));offset=4
   if channel.sock==NS_CLIENT then writeShort(packet,offset,runtime.qport);offset=offset+2 end if
   writeShort(packet,offset,channel.unsentFragmentStart);writeShort(packet,offset+2,fragmentLength)
-  if fragmentLength>0 then for index=0 to fragmentLength-1 packet[header+index]=channel.unsentBuffer[channel.unsentFragmentStart+index] end for end if
+  if fragmentLength>0 then copyBytes(packet,header,channel.unsentBuffer,channel.unsentFragmentStart,fragmentLength) end if
   emit(runtime,channel,packet);channel.unsentFragmentStart=channel.unsentFragmentStart+fragmentLength
   // An exact multiple needs a trailing zero-length fragment, like Baseq3.
   if channel.unsentFragmentStart==channel.unsentLength and fragmentLength!=FRAGMENT_SIZE then
@@ -90,13 +90,13 @@ function transmit(runtime,channel,data)
   channel.unsentFragmentStart=0
   if length>=FRAGMENT_SIZE then
     channel.unsentFragments=true;channel.unsentLength=length
-    if length>0 then for index=0 to length-1 channel.unsentBuffer[index]=data[index] end for end if
+    if length>0 then copyBytes(channel.unsentBuffer,0,data,0,length) end if
     return transmitNextFragment(runtime,channel)
   end if
   header=4;if channel.sock==NS_CLIENT then header=6 end if;packet=bytes(header+length,0)
   writeLong(packet,0,channel.outgoingSequence);channel.outgoingSequence=channel.outgoingSequence+1;offset=4
   if channel.sock==NS_CLIENT then writeShort(packet,offset,runtime.qport) end if
-  if length>0 then for index=0 to length-1 packet[header+index]=data[index] end for end if
+  if length>0 then copyBytes(packet,header,data,0,length) end if
   emit(runtime,channel,packet);return packet
 end function
 
@@ -121,7 +121,7 @@ function process(channel,data,maxsize)
     if sequence!=channel.fragmentSequence then channel.fragmentSequence=sequence;channel.fragmentLength=0 end if
     if fragmentStart!=channel.fragmentLength then return rejected(data,readcount) end if
     if fragmentLength<0 or readcount+fragmentLength>cursize or channel.fragmentLength+fragmentLength>MAX_MSGLEN then return rejected(data,readcount) end if
-    if fragmentLength>0 then for index=0 to fragmentLength-1 channel.fragmentBuffer[channel.fragmentLength+index]=data[readcount+index] end for end if
+    if fragmentLength>0 then copyBytes(channel.fragmentBuffer,channel.fragmentLength,data,readcount,fragmentLength) end if
     channel.fragmentLength=channel.fragmentLength+fragmentLength
     if fragmentLength==FRAGMENT_SIZE then return rejected(data,readcount) end if
     // Baseq3 checks only the payload length, then writes its four-byte sequence
@@ -129,7 +129,7 @@ function process(channel,data,maxsize)
     // write past an exactly maxsize allocation.
     if channel.fragmentLength+4>maxsize then return rejected(data,readcount) end if
     result=bytes(channel.fragmentLength+4,0);writeLong(result,0,sequence)
-    if channel.fragmentLength>0 then for index=0 to channel.fragmentLength-1 result[index+4]=channel.fragmentBuffer[index] end for end if
+    if channel.fragmentLength>0 then copyBytes(result,4,channel.fragmentBuffer,0,channel.fragmentLength) end if
     channel.fragmentLength=0;channel.incomingSequence=sequence
     return ProcessResult(true,result,len(result),4,32)
   end if
