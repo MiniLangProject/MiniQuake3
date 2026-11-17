@@ -2,7 +2,7 @@ name: Desktop storage and retained-world regression
 
 on:
   push:
-    branches: [master, fix/desktop-storage-20261117]
+    branches: [main]
     paths:
       - 'src/mq3/engine/user_files.ml'
       - 'native/user_files_win32.c'

@@ -1,11 +1,6 @@
 name: Retail core acceptance
 
 on:
-  push:
-    branches: [fix/desktop-storage-20261117]
-    paths:
-      - '.github/workflows/retail-acceptance.yml'
-      - 'scripts/run_retail_acceptance.py'
   workflow_dispatch:
 
 permissions:

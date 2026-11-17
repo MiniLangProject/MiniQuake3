@@ -2,7 +2,7 @@ name: Audit regression
 
 on:
   push:
-    branches: [master, fix/audit-core-20261117, fix/desktop-acceptance-20261117]
+    branches: [main]
     paths:
       - 'src/**'
       - 'native/**'
