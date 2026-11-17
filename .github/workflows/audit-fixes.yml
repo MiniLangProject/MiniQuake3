@@ -6,6 +6,21 @@ on:
 permissions:
   contents: write
 jobs:
+  compiler:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Retain checksum-pinned Linux cross-compiler for additional checks
+        run: |
+          curl --fail --location --retry 2 --max-time 120 -o compiler.tar.gz https://github.com/MiniLangProject/MiniLangCompilerML/releases/download/v1.3.9/MiniLangCompilerML-1.3.9-linux-x64.tar.gz
+          echo '0571ec25c9b995d825131a8a1677b39573e886330bfa9e42a39c3e8306ff7b21  compiler.tar.gz' | sha256sum -c -
+      - uses: actions/upload-artifact@v4
+        with:
+          name: audit-linux-toolchain
+          path: compiler.tar.gz
+          retention-days: 14
   regression:
     runs-on: windows-2022
     timeout-minutes: 30
@@ -30,6 +45,9 @@ jobs:
           Path('build/audit.patch').write_bytes(patch)
           subprocess.run(['git','apply','--check','--unidiff-zero','build/audit.patch'],check=True)
           subprocess.run(['git','apply','--unidiff-zero','build/audit.patch'],check=True)
+          path=Path('src/mq3/botlib/cache_lru.ml');text=path.read_text(encoding='utf-8')
+          old='  if state.count<state.capacity then';assert text.count(old)==1
+          path.write_text(text.replace(old,'  slot=-1\n'+old),encoding='utf-8',newline='\n')
           path=Path('PORT_LEDGER.json'); ledger=json.loads(path.read_text(encoding='utf-8'))
           abi=Path('src/mq3/vm/qvm_assembly_abi.ml').read_text(encoding='utf-8')
           for source, function in [('code/cgame/cg_syscalls.asm','cgameNames'),('code/game/g_syscalls.asm','gameNames')]:
