@@ -51,6 +51,35 @@ function configString(state,index)
   return decode(slice(state.stringData,start,offset-start))
 end function
 
+// CL_ConfigstringModified storage policy. Build in scratch storage and publish
+// only after bounds validation; failed updates leave the prior state intact.
+// Copy unchanged strings as bytes instead of repeatedly decoding/concatenating.
+function updateConfigString(state,index,value)
+  if state==void or value==void or index<0 or index>=MAX_CONFIGSTRINGS then return error(6900,"gamestate: invalid configstring update") end if
+  if configString(state,index)==value then return false end if
+  replacement=bytes(value)
+  if len(replacement)>0 then
+    for each item in replacement if item==0 then return error(6900,"gamestate: embedded configstring terminator") end if end for
+  end if
+  offsets=array(MAX_CONFIGSTRINGS,0);data=bytes(MAX_GAMESTATE_CHARS,0);count=1
+  for slot=0 to MAX_CONFIGSTRINGS-1
+    source=state.stringData;start=state.stringOffsets[slot];length=0
+    if slot==index then
+      source=replacement;start=0;length=len(replacement)
+    else if start>0 then
+      cursor=start
+      while cursor<len(source) and source[cursor]!=0 cursor=cursor+1 end while
+      length=cursor-start
+    end if
+    if length>0 then
+      if length+1+count>MAX_GAMESTATE_CHARS then return error(6904,"gamestate: string storage exceeded") end if
+      offsets[slot]=count;copyBytes(data,count,source,start,length);count=count+length+1
+    end if
+  end for
+  state.stringOffsets=offsets;state.stringData=data;state.dataCount=count
+  return true
+end function
+
 function parse(state,msg)
   if state==void or msg==void then return error(6901,"gamestate: missing state") end if
   if state.closeFn!=void then state.closeFn(state) end if

@@ -55,7 +55,7 @@ function addressEqual(a,b,includePort)
 end function
 
 function disconnectPacket(state,host,source)
-  if state.connectionState<CA_AUTHORIZING then return false end if
+  if state.connectionState<CA_AUTHORIZING or state.channel==void then return false end if
   if not addressEqual(source,state.channel.remoteAddress,true) then return false end if
   if state.realtime-state.lastPacketTime<3000 then return false end if
   text="Server disconnected for unknown reason\n"

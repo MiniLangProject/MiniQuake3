@@ -1,7 +1,7 @@
 name: Protocol 68 compatibility
 on:
   push:
-    branches: [master, fix/network-protocol68-20261117]
+    branches: [main]
     paths: ['src/**', 'native/**', 'tests/**', 'scripts/**', '.github/workflows/protocol68.yml']
   workflow_dispatch:
 permissions:
@@ -28,6 +28,11 @@ jobs:
         run: |
           python scripts/run_protocol68_regression.py
           if ($LASTEXITCODE -ne 0) { throw 'Protocol regression failed' }
+      - name: Build the complete game from the same sources
+        shell: pwsh
+        run: |
+          python scripts/build_release.py
+          if ($LASTEXITCODE -ne 0) { throw 'Full game build failed' }
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
@@ -39,8 +44,8 @@ jobs:
             build/*.log
           retention-days: 14
   original-server:
-    # Retail assets are used only for explicit acceptance, never ordinary master pushes.
-    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/fix/network-protocol68-20261117'
+    # Retail acceptance is explicitly requested by dispatch or an [interop] commit.
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.head_commit.message, '[interop]')
     runs-on: windows-2022
     timeout-minutes: 30
     env:

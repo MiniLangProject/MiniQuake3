@@ -56,7 +56,7 @@ end function
 function updateConfigstring(state,host)
   index=toNumber(command.argv(state.commandState,1))
   if index<0 or index>=MAX_CONFIGSTRINGS then return error(6930,"server command stream: bad configstring index") end if
-  value=command.argv(state.commandState,2);state.configstrings[index]=value
+  value=command.argsFrom(state.commandState,2);state.configstrings[index]=value
   if host!=void and host.configstringFn!=void then host.configstringFn(host.context,index,value) end if
   if index==CS_SYSTEMINFO and host!=void and host.systemInfoFn!=void then host.systemInfoFn(host.context) end if
   return void
