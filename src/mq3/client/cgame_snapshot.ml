@@ -8,7 +8,7 @@ const EVENT_VALID_MSEC=300
 const ET_PLAYER=1
 const EF_TELEPORT_BIT=4
 const PMF_FOLLOW=0x1000
-const SNAPFLAG_NOT_ACTIVE=1
+const SNAPFLAG_NOT_ACTIVE=2
 const SNAPFLAG_SERVERCOUNT=4
 struct Snapshot number serverTime snapFlags serverCommandSequence playerState entities end struct
 struct Cent currentState nextState currentValid interpolate previousEvent trailTime lerpOrigin lerpAngles snapShotTime playerResets events end struct

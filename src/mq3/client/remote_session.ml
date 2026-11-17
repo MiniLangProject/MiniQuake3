@@ -15,6 +15,8 @@ import mq3.qcommon.net_transport as transport
 import mq3.qcommon.network_pump as pump
 import mq3.shared.info as info
 
+const SNAPFLAG_NOT_ACTIVE=2
+
 struct Session
   socket userinfo connection wire protocol ingress send sendServices pump
   gamestateGeneration preparedGeneration serverPrint lastRealtime
@@ -58,9 +60,11 @@ function gameStateReady(state)
   for index=0 to sendCmd.PACKET_BACKUP-1 session.send.outPackets[index]=sendCmd.OutPacket(0,0,0) end for
   table=array(gamestate.MAX_CONFIGSTRINGS,"")
   for index=0 to gamestate.MAX_CONFIGSTRINGS-1 table[index]=gamestate.configString(state,index) end for
-  session.commands=serverCommands.create(void,table)
+  // CL_InitCGame starts at lastExecutedServerCommand, not the received
+  // gamestate sequence: reliable commands can precede svc_gamestate.
+  // Keep the same connection's cursor and in-progress bcs assembly.
+  session.commands.configstrings=table
   session.commands.commandSequence=state.serverCommandSequence
-  session.commands.lastExecuted=state.serverCommandSequence
   return void
 end function
 function create(socket,address,qport,initialUserinfo)
@@ -74,7 +78,7 @@ function create(socket,address,qport,initialUserinfo)
   oob=connectionless.services();oob.outOfBandFn=sendOob;oob.outOfBandDataFn=sendOobData
   oob.userinfoFn=userinfo;oob.printFn=printed;oob.disconnectFn=disconnected
   receiver=ingress.create(connection,wire,parser,ingress.services(oob))
-  session=Session(socket,initialUserinfo,connection,wire,parser,receiver,sending,sender,void,0,0,"",0,void,serverCommands.services(),void,0)
+  session=Session(socket,initialUserinfo,connection,wire,parser,receiver,sending,sender,void,0,0,"",0,serverCommands.create(void,void),serverCommands.services(),void,0)
   session.commandServices.context=session;session.commandServices.configstringFn=configstringChanged
   session.commandServices.systemInfoFn=systemInfoChanged;session.commandServices.clearUsercmdsFn=restarted
   oob.context=session;parser.gamestateState.context=session;parser.gamestateState.downloadsFn=gameStateReady
@@ -95,7 +99,7 @@ function synchronize(session)
   session.wire.connection.serverCommands=dispatcher.serverCommands
   dispatcher.reliableSequence=sending.reliableSequence
   snapshot=dispatcher.snapshotState.snap;sending.snapValid=snapshot.valid;sending.snapMessageNum=snapshot.messageNum
-  if connection.connectionState>=connectionless.CA_PRIMED and connection.connectionState<=connectionless.CA_ACTIVE and snapshot.valid and session.preparedGeneration==session.gamestateGeneration and session.preparedGeneration>0 then
+  if connection.connectionState==connectionless.CA_PRIMED and snapshot.valid and (snapshot.snapFlags&SNAPFLAG_NOT_ACTIVE)==0 and session.preparedGeneration==session.gamestateGeneration and session.preparedGeneration>0 then
     connection.connectionState=connectionless.CA_ACTIVE;sending.connectionState=connectionless.CA_ACTIVE
   end if
   return void
@@ -132,21 +136,25 @@ end function
 // arguments; applications retaining them must copy the values during the call.
 function runServerCommands(session,throughSequence)
   if session==void or session.commands==void then return error(7982,"remote session: no command stream") end if
-  if session.connection.connectionState<connectionless.CA_PRIMED then return error(7982,"remote session: command stream is not active") end if
+  if session.connection.connectionState<connectionless.CA_PRIMED or session.connection.connectionState>connectionless.CA_ACTIVE or session.preparedGeneration<1 or session.preparedGeneration!=session.gamestateGeneration then return error(7982,"remote session: command stream is not active") end if
   state=session.commands;dispatcher=session.protocol.dispatcher
   if throughSequence<0 or throughSequence>dispatcher.serverCommandSequence then return error(7982,"remote session: command not received") end if
   if throughSequence<=state.lastExecuted then return 0 end if
   state.commandSequence=dispatcher.serverCommandSequence;state.commands=dispatcher.serverCommands
-  count=0
+  count=0;generation=session.gamestateGeneration
   while state.lastExecuted<throughSequence
     sequence=state.lastExecuted+1
     delivered=try(serverCommands.get(state,session.commandServices,sequence))
     if delivered is error then stop(session,str(delivered));return delivered end if
+    count=count+1
+    if session.gamestateGeneration!=generation or session.preparedGeneration!=generation or session.connection.connectionState<connectionless.CA_PRIMED or session.connection.connectionState>connectionless.CA_ACTIVE then break end if
     if delivered and session.serverCommandFn!=void then
       result=try(session.serverCommandFn(session,sequence,state.commandState))
       if result is error then stop(session,str(result));return result end if
     end if
-    count=count+1
+    // A callback may end the session or load another gamestate. Commands at
+    // the old adoption boundary must then wait for the next explicit call.
+    if session.gamestateGeneration!=generation or session.preparedGeneration!=generation or session.connection.connectionState<connectionless.CA_PRIMED or session.connection.connectionState>connectionless.CA_ACTIVE then break end if
   end while
   synchronize(session);return count
 end function

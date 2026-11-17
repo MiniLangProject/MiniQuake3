@@ -36,6 +36,13 @@ function main(args)
   state=stream.create(command.create(),table);stream.queue(state,"cs 1 \"\\sv_serverid\\77\"");context.events=[]
   count=count+req(stream.get(state,services,1) and table[1]=="\\sv_serverid\\77","system configstring")
   count=count+req(context.events==["cs:1:\\sv_serverid\\77","system"],"system callback order")
+  stream.queue(state,"cs 1 \"\\sv_serverid\\77\"");context.events=[]
+  count=count+req(stream.get(state,services,2) and state.lastExecuted==2,"unchanged systeminfo remains an application command")
+  count=count+req(len(context.events)==0,"unchanged systeminfo skips config and system callbacks")
+  stream.queue(state,"cs 5 \"alpha beta gamma\"")
+  count=count+req(stream.get(state,services,3) and len(context.events)==0,"unchanged ordinary configstring skips callback")
+  stream.queue(state,"cs 5 alpha beta changed")
+  count=count+req(stream.get(state,services,4) and table[5]=="alpha beta changed" and context.events==["cs:5:alpha beta changed"],"changed configstring retains all arguments and calls once")
 
   state=stream.create(command.create(),table);stream.queue(state,"map_restart 0");context.events=[]
   count=count+req(stream.get(state,services,1) and context.events==["notify","cmds"],"map restart clears client state")

@@ -66,3 +66,72 @@ frames, info-config updates and heartbeat in original order.
 `mq3.platform.engine_loop` completes the desktop ordering by draining queued
 input before `SV_Frame` and then invoking `CL_Frame`; 15 integration contracts
 cover budgets, remaining events, time and frame accounting.
+
+## Remote client and reliable commands
+
+`mq3.client.remote_session` composes connectionless negotiation, Netchan,
+gamestate/snapshot parsing and usercmd transmission for an external protocol-68
+server. The caller owns the socket, clock, assets and game/render lifecycle.
+The graphical menu does not yet use this entry point.
+
+The caller accepts a loaded gamestate with `acceptUnpureGamestate` and consumes
+reliable commands with `runServerCommands(session, snapshot.serverCommandNum)`
+when adopting a snapshot. Packet receipt and command execution have separate
+sequence numbers: receipt alone must not execute commands for a future snapshot.
+Pending commands and a partially assembled `bcs0`/`bcs1`/`bcs2` string survive a
+new gamestate on the same connection. A new connection starts its execution
+sequence at zero. A command that has fallen outside the 64-entry receive ring
+drops the session instead of silently skipping work.
+
+Built-in command handling updates packed configstrings and the outgoing
+`sv_serverid`, clears usercmd history on `map_restart`, and terminates the
+session on server disconnect or an unsupported pure-policy change. Identical
+configstrings leave storage and configuration callbacks untouched. Applications
+can set `serverCommandFn(session, sequence, commandState)` for commands such as
+`print` and `chat`; arguments are transient and must be copied if retained.
+If a callback stops the session or replaces its gamestate, consumption stops at
+that boundary. The caller must recheck state before adopting or rendering the
+snapshot after callbacks.
+
+An initial snapshot with wire flag `SNAPFLAG_NOT_ACTIVE` (`2`) cannot activate
+the client. `SNAPFLAG_RATE_DELAYED` (`1`) is still an active snapshot; both the
+remote session and the native cgame snapshot observer distinguish these bits.
+`SNAPFLAG_SERVERCOUNT` (`4`) identifies restart transitions. These values come
+from the pinned original `code/game/q_shared.h`.
+
+## Original-server acceptance
+
+Run the compiled component and original-C comparisons on Windows:
+
+```powershell
+python scripts/run_protocol68_regression.py
+python scripts/build_release.py
+```
+
+With caller-supplied retail assets under `build/baseq3`, the separate-process
+test is:
+
+```powershell
+python scripts/test_original_server_interop.py --data-root build
+```
+
+The live test builds the pinned original id Software dedicated server, connects
+a MiniLang UDP peer, and checks gamestate, snapshots, input acknowledgement and
+reliable chat delivered through the command callback. It then requests a real
+`map_restart 0` and independently checks the changed server ID, consumed restart
+command, and new snapshots, input acknowledgement and chat after the restart.
+Pre-restart counters do not satisfy the post-restart requirements. The test has
+bounded startup and peer deadlines and records source/binary hashes and logs
+under `build/protocol68-original`.
+
+The `Protocol 68 compatibility` workflow runs regressions and the complete game
+build on relevant `main` pushes. The original-server job additionally requires
+manual dispatch or `[interop]` in the commit message. Check the individual job
+conclusions: a successful workflow with that job skipped is not a new live-server
+acceptance.
+
+The supported test scope is loopback protocol 68 with `sv_pure=0` and a headless
+MiniLang client. Pure pak verification/download negotiation, graphical remote
+connect, the reverse full-game direction and WAN/NAT conditions still need
+implementation or separate acceptance. Network microbenchmarks do not measure
+gameplay FPS.

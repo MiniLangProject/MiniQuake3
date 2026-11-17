@@ -67,8 +67,9 @@ complete behavioral parity.
 | Graphical execution | An earlier `q3dm0` replay completed 300 frames; the README capture run separately exercises both pictured arenas. |
 | Missing audio device | Initialization errors are caught; the menu and game continue without sound. |
 | Audit core corrections | Strict original-source gates, wall-clock menu timing, honest frame percentiles, routing-cache bookkeeping and shared snapshot decoding have passed targeted Windows regressions and a full build. |
+| Protocol 68 remote client | A separate original dedicated server has accepted the headless MiniLang peer over UDP, including gamestate, snapshots, input acknowledgement and reliable chat. See [network scope and restart acceptance](docs/NETWORK_RUNTIME.md#original-server-acceptance) for the current tests and limits. |
 | Desktop lifecycle and persistence | A separate candidate exists; complete restart/map/menu/video and persistent-file integration is not yet accepted in this core change set. |
-| Broader compatibility | Longer interactive sessions, multiplayer interoperability, hardware-specific behavior and complete 1:1 parity still need acceptance testing. |
+| Broader compatibility | Graphical remote connect, pure servers, reverse full-game interoperability, longer interactive sessions, hardware-specific behavior and complete 1:1 parity still need implementation or acceptance testing. |
 
 The hosted Windows screenshot runs use **software rendering** and do not
 establish hardware-accelerated performance or audible playback. Capture I/O is

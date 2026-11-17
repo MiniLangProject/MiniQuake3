@@ -30,14 +30,14 @@ def main() -> None:
     if len(reference.splitlines()) != 8:
         raise RuntimeError('Missing original configstring comparison records')
     contracts = run([ROOT / 'build/remote_session_commands_contracts.exe'], ROOT / 'build', log=output / 'contracts.log').strip()
-    expected = 'PASS: 46 remote-session command and packed-gamestate contracts'
+    expected = 'PASS: 71 remote-session command and packed-gamestate contracts'
     if contracts != expected:
         raise RuntimeError(contracts)
     sources = [original, include, ROOT / 'src/mq3/client/remote_session.ml',
                ROOT / 'src/mq3/client/gamestate.ml', ROOT / 'src/mq3/client/server_command_stream.ml',
                ROOT / 'tests/remote_session_commands_contracts.ml', ROOT / 'tests/configstring_update_oracle.ml',
                ROOT / 'tests/reference/configstring_update_oracle.c']
-    report = {'passed': True, 'contracts': 46, 'original_c_records': 8,
+    report = {'passed': True, 'contracts': 71, 'original_c_records': 8,
               'comparison': 'All configstring offsets and all occupied packed-string bytes, including exact storage limit.',
               'oracle': 'Unchanged CL_ConfigstringModified body extracted from pinned id Software cl_cgame.c; host supplies already parsed arguments.',
               'limits': ['Component tests, not desktop multiplayer acceptance.', 'Malformed update rollback is a port robustness test, not original fatal-error parity.'],
