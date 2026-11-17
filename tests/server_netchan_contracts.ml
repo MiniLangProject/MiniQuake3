@@ -29,7 +29,9 @@ function main(args)
  client.lastClientCommandString="";serverNet.encode(client,encoded);count=count+req(msgBytes(encoded)!=before,"empty command still challenge key")
  client.lastClientCommandString="%";percent=serverNet.commandByte(bytes("%"),0);count=count+req(percent[0]==46,"percent normalized")
  high=serverNet.commandByte(bytes([255]),0);count=count+req(high[0]==46,"high byte normalized")
- pair=fixture();client=pair[1];client.reliableCommands[2]="cmd";decoded=makeMessage(300,11,2,7);plain=msgBytes(decoded);savedBit=decoded.bit;wireBody=bytes(len(plain),0);for i=0 to len(plain)-1 wireBody[i]=plain[i] end for;xorBody(wireBody,client.challenge,300,11,"cmd");for i=0 to len(wireBody)-1 decoded.data[i]=wireBody[i] end for;serverNet.decode(client,decoded);count=count+req(msgBytes(decoded)==plain,"direct decode")
+ // A freshly written message has its bit cursor at EOF. Like MSG_BeginReading
+ // in the original receiver, enter read mode before invoking the decoder.
+ pair=fixture();client=pair[1];client.reliableCommands[2]="cmd";decoded=makeMessage(300,11,2,7);plain=msgBytes(decoded);message.beginReading(decoded);savedBit=decoded.bit;wireBody=bytes(len(plain),0);for i=0 to len(plain)-1 wireBody[i]=plain[i] end for;xorBody(wireBody,client.challenge,300,11,"cmd");for i=0 to len(wireBody)-1 decoded.data[i]=wireBody[i] end for;serverNet.decode(client,decoded);count=count+req(msgBytes(decoded)==plain,"direct decode")
  count=count+req(decoded.readcount==0 and decoded.bit==savedBit,"decode restores cursors")
  packet=plainPacket(4,1234,wireBody);processed=serverNet.process(client,packet,net.MAX_MSGLEN);count=count+req(processed.accepted and processed.readcount==6 and processed.bit==48,"six-byte process header")
  expected=plainPacket(4,1234,plain);count=count+req(processed.data==expected,"six-byte offset-zero decode bytes")

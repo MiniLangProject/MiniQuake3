@@ -38,6 +38,7 @@ def main() -> int:
     out = ROOT / 'build/protocol68-original'; out.mkdir(parents=True, exist_ok=True)
     report = {'status': 'running', 'source_commit': subprocess.check_output(['git','rev-parse','HEAD'], cwd=ROOT, text=True).strip(),
               'upstream_commit': subprocess.check_output(['git','rev-parse','HEAD'], cwd=ROOT / 'Quake-III-Arena-original-source', text=True).strip(),
+              'startup_port_unreachable': 0,
               'limits': ['Loopback protocol 68 against pinned id Software source, not all historical releases.',
                          'sv_pure=0; pure/download asset verification is not bypassed or claimed.',
                          'Protocol client has no renderer: not desktop menu/connect acceptance.',
@@ -74,12 +75,21 @@ def main() -> int:
             observer.settimeout(0.4)
             deadline = time.monotonic()+40; ready = False
             while time.monotonic()<deadline and server.poll() is None:
-                observer.sendto(b'\xff'*4+b'getinfo MQ3_READY',('127.0.0.1',port))
                 try:
+                    observer.sendto(b'\xff'*4+b'getinfo MQ3_READY',('127.0.0.1',port))
                     packet, endpoint = observer.recvfrom(65535)
                     if endpoint==('127.0.0.1',port) and b'infoResponse' in packet and b'\\protocol\\68' in packet and b'\\mapname\\q3dm1' in packet:
                         ready=True; report['info_response']=packet.decode('latin1'); break
-                except socket.timeout: pass
+                except socket.timeout:
+                    pass
+                except ConnectionResetError as error:
+                    # Windows reports a previous UDP probe to an unopened port
+                    # as WSAECONNRESET. Retry only during the bounded startup
+                    # phase; never interpret the error as server readiness.
+                    if getattr(error, 'winerror', None) != 10054:
+                        raise
+                    report['startup_port_unreachable'] += 1
+                    time.sleep(0.1)
             if not ready: raise RuntimeError('Original server did not load q3dm1 and answer protocol-68 getinfo')
             text = run('original-peer',[ROOT/'build/original_server_probe.exe',str(port)],40)
             if 'PASS: original protocol-68 server' not in text: raise RuntimeError('Missing compiled peer acceptance marker')
@@ -106,6 +116,8 @@ def main() -> int:
             server.terminate()
             try: server.wait(timeout=5)
             except subprocess.TimeoutExpired: server.kill(); server.wait(timeout=5)
+        if server is not None:
+            report['server_exit'] = server.poll()
         log=home/'baseq3/qconsole.log'
         if log.exists():
             text=log.read_text(encoding='latin1',errors='replace')
