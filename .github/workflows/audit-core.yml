@@ -1,0 +1,88 @@
+name: Audit core - verified regression
+on:
+  push:
+    branches: [test/audit-fixes-20261117]
+    paths: [.github/workflows/audit-core.yml]
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: windows-2022
+    timeout-minutes: 30
+    env:
+      MQ3_BUILD_TOOLCHAIN: release
+    steps:
+      - shell: pwsh
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Apply reviewed sources and exact slot-zero correction
+        shell: python
+        run: |
+          from pathlib import Path
+          import hashlib,json,re,subprocess,zlib
+          patch=zlib.decompress(Path('.ci/audit-phase1.patch.zlib').read_bytes())
+          assert hashlib.sha256(patch).hexdigest()=='36e7b56cd135a3a1f39841d893a20062797f44a39eb30287e03634e649595954'
+          Path('build').mkdir(exist_ok=True);Path('build/audit.patch').write_bytes(patch)
+          subprocess.run(['git','apply','--check','--unidiff-zero','build/audit.patch'],check=True)
+          subprocess.run(['git','apply','--unidiff-zero','build/audit.patch'],check=True)
+          p=Path('src/mq3/botlib/cache_lru.ml');text=p.read_text()
+          replacements={
+            '  if state.count<state.capacity then':'  slot=-1\n  if state.count<state.capacity then',
+            'slot=state.positions.get(key);if slot==void then return -1 end if':'slot=state.positions.getOr(key,-1);if slot<0 then return -1 end if',
+            'existing=state.positions.get(key)\n  if existing!=void then':'existing=state.positions.getOr(key,-1)\n  if existing>=0 then'}
+          for old,new in replacements.items():
+              assert text.count(old)==1,old
+              text=text.replace(old,new)
+          p.write_text(text,encoding='utf-8',newline='\n')
+          p=Path('PORT_LEDGER.json');ledger=json.loads(p.read_text(encoding='utf-8'))
+          abi=Path('src/mq3/vm/qvm_assembly_abi.ml').read_text()
+          for source,function in [('code/cgame/cg_syscalls.asm','cgameNames'),('code/game/g_syscalls.asm','gameNames')]:
+              entry=next(r for r in ledger['files'] if r['source']==source)
+              names=re.findall(r'"([A-Za-z_][A-Za-z_0-9]*)"',re.search(r'function '+function+r'\(\) return \[(.*?)\] end function',abi).group(1))
+              assert set(names)==set(entry['symbol_candidates'])
+              entry['symbol_mapping'][0].update(original_symbols=names,kind='abi_table',behavior_acceptance='not_implied_by_import_table')
+          p.write_text(json.dumps(ledger,indent=2)+'\n',encoding='utf-8',newline='\n')
+          subprocess.run(['python','scripts/parity_inventory.py'],check=True)
+          subprocess.run(['git','diff','--check'],check=True)
+      - name: Execute regression gates and full game build
+        shell: python
+        run: |
+          from pathlib import Path
+          import json,subprocess,time
+          evidence=Path('build/audit-evidence');evidence.mkdir(exist_ok=True)
+          steps=[('inventory',['python','scripts/test_audit_inventory.py','-v']),('original',['python','scripts/test_parity_inventory.py']),('timing-build',['python','scripts/build.py','--source','tests/audit_timing_lru_contracts.ml','--output','audit_timing_lru_contracts.exe']),('timing-native',['build/audit_timing_lru_contracts.exe']),('routing',['python','scripts/test_aas_routing_cache.py']),('game-build',['python','scripts/build_release.py'])]
+          report={'status':'running','steps':[],'limits':['No GPU benchmark or interactive playtest.','Routing oracle is a scenario model, not unchanged original C.']}
+          try:
+              for name,command in steps:
+                  start=time.monotonic()
+                  with (evidence/(name+'.log')).open('w',encoding='utf-8') as log:
+                      result=subprocess.run(command,stdout=log,stderr=subprocess.STDOUT,timeout=1200)
+                  report['steps'].append({'name':name,'exit_code':result.returncode,'seconds':round(time.monotonic()-start,3)})
+                  print((evidence/(name+'.log')).read_text(encoding='utf-8',errors='replace')[-12000:],flush=True)
+                  if result.returncode:raise RuntimeError(name+' failed')
+              report['status']='passed'
+          except BaseException as error:
+              report['status']='failed';report['error']=str(error);raise
+          finally:
+              (evidence/'report.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+              (evidence/'changes.patch').write_bytes(subprocess.check_output(['git','diff','--binary']))
+      - name: Commit validated source changes
+        shell: pwsh
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src scripts tests PORT_LEDGER.json docs/ORIGINAL_PARITY_REPORT.md
+          git commit -m 'fix: validate original coverage, correct timing and remove routing/snapshot duplication'
+          if ($LASTEXITCODE -ne 0) { throw 'Commit failed' }
+          git push origin HEAD:refs/heads/test/audit-fixes-20261117
+          if ($LASTEXITCODE -ne 0) { throw 'Non-forced push failed' }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: audit-core-evidence
+          path: |
+            build/audit-evidence/**
+            build/*.log
+          retention-days: 14
