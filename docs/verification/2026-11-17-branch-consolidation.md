@@ -1,21 +1,26 @@
 # Branch consolidation — 17 November 2026
 
-## Main source line
+## Canonical branch: master
 
-At the owner's request, `main` was fast-forwarded by 22 commits from
-`bdeaf3bb01c09c75489a805dbe1f934f088d8e41` to the verified `master` baseline
-`0a8e16cb160d2c610d8cab873fe656c4615a5e2f`. No existing commits were rewritten.
-The integrated PR #1 and PR #2 changes, English README, screenshots and
-acceptance reports are therefore available on `main`.
+The owner clarified that the intended branch is **master**, not main.
+`master` remains the repository default. No default-branch or visibility
+change is requested or performed by the correction.
 
-This housekeeping does not integrate the still-unaccepted desktop candidate.
-Runtime sources, native sources and tests are unchanged from the verified
-baseline. See `2026-11-17-core-storage-acceptance.md` for the test scope.
+The earlier operation fast-forwarded main from
+`bdeaf3bb01c09c75489a805dbe1f934f088d8e41` to the verified baseline
+`0a8e16cb160d2c610d8cab873fe656c4615a5e2f` and added housekeeping-only commits.
+The correction preserves that history on master without rewriting any commit,
+restores the audit/storage push filters to master, and retains retail
+acceptance as an explicit manual workflow.
 
-## Archived and deleted branches
+Runtime sources, native sources, tests, scripts and PORT_LEDGER.json are
+unchanged from the verified baseline. The unaccepted desktop integration
+candidate is not silently merged. See `2026-11-17-core-storage-acceptance.md`.
 
-GitHub Actions run `44036694389` completed the exact-head-guarded cleanup.
-Each branch below was preserved as a lightweight tag before deletion:
+## Previously archived and deleted branches
+
+Run `44036694389` completed the exact-head-guarded cleanup below. Each deleted
+head was preserved under an archive tag before deletion.
 
 | Deleted branch | Preserved commit | Archive tag |
 |---|---|---|
@@ -25,27 +30,17 @@ Each branch below was preserved as a lightweight tag before deletion:
 | `test/audit-fixes-20261117` | `9e9d13677af30c5debab5cdb212acc1d6b03ae29` | `archive/2026-11-17/test/audit-fixes-20261117` |
 | `test/retail-start-20261116` | `04a6da539ddae5f4de0efc993c09b90536429083` | `archive/2026-11-17/test/retail-start-20261116` |
 
-The first three branches were already contained in `main`. The two test
-branches are retained as history only, not merged into the production tree.
-Their experimental workflows and patch-transfer files were not activated on
-`main`. Branch deletion used exact SHA leases; archive refs were verified
-before the atomic deletion push. No open pull request or protected branch
-was removed. The completed one-off write-enabled workflow is removed from
-the current tree; it remains in Git history for auditability.
+The first three heads are already in the production history. The two test
+heads remain archives only; their experimental workflows and transfer files
+are not activated on master.
 
-## CI migration
+## Final main cleanup
 
-The audit and storage regression workflows now select `main` for pushes.
-Retail acceptance remains an explicit `workflow_dispatch` operation rather
-than retaining a trigger for a deleted branch. Existing read-only test jobs
-and their commands are unchanged.
-
-## Outstanding repository setting
-
-The attempt to change GitHub's default branch from `master` to `main` returned
-HTTP 403 with the available Actions credential. That permission denial was
-not bypassed. `master` was therefore retained, as the current repository
-default, at `0a8e16cb160d2c610d8cab873fe656c4615a5e2f`.
-Only `main` and `master` remain as branches after this cleanup. A repository
-administrator must switch the default to `main` before deleting `master`.
-Repository visibility was not changed by this operation.
+The one-off master cleanup targets only main at
+`03f20a57778a5be8fe12af3e1ead3e8db99ada7e`, preserved as
+`archive/2026-11-17/main`. It refuses to delete a changed or protected branch,
+an open pull request's head, or the repository default. It also verifies that
+the exact main commit is an ancestor of master and that runtime sources did
+not change. Archive creation and deletion use one atomic push with an exact
+SHA lease. The workflow report records the actual result; the temporary
+write-enabled workflow is removed once the operation has completed.
