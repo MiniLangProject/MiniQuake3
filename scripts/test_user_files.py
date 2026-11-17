@@ -138,6 +138,10 @@ def main() -> int:
             report['native'] = native_contracts(native, directory / 'native')
             env = os.environ.copy()
             env['MINIQUAKE3_HOME'] = str(directory / 'unused-default')
+            # The PK3 module imports engine ABI helpers even with no archive.
+            # Keep the user DLL isolated beside its EXE and resolve the normal
+            # built engine DLLs through this test process's PATH only.
+            env['PATH'] = str(ROOT / 'build') + os.pathsep + env.get('PATH', '')
             first = run('minilang-exercise', [exe, directory / 'minilang', 'exercise'], env)
             if not re.search(r'^PASS: 98 user-file contracts\s*$', first, re.MULTILINE):
                 raise RuntimeError('Missing complete MiniLang contract result')
