@@ -17,6 +17,7 @@ import mq3.audio.qvm_playback as qvmPlayback
 import mq3.platform.playable_window as window
 import mq3.platform.playable_ambient as audioOutput
 import std.string as strings
+import mq3.client.frame_timing as frameTiming
 import std.time as time
 
 const WIDTH=1280
@@ -99,9 +100,10 @@ function run(archive,bootstrapMap,qvmRoot)
   state.context.soundCommands=[];audio.commandCursor=0
   audioStarted=try(audioOutput.init(22050));if audioStarted is error then print "Warning: audio output unavailable; continuing without sound." end if
   window.setTitle("MiniQuake3 | Quake III Arena Main Menu")
-  window.inputClear();state.context.console=[];uploadedTextures=len(catalog.textures);soundAssetCount=len(state.context.assets);now=1000;mapName=void;quitRequested=false;singlePlayer=false;menuBotCommands=[]
+  window.inputClear();state.context.console=[];uploadedTextures=len(catalog.textures);soundAssetCount=len(state.context.assets);now=1000;menuClockStart=window.milliseconds();mapName=void;quitRequested=false;singlePlayer=false;menuBotCommands=[]
   while not window.shouldClose() and not quitRequested and mapName==void
-    begun=inputLatch.beginFrame(input.keys);if begun is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return begun end if;window.poll();input.mouse=window.mouseDelta();nativeEvents=window.inputEvents(256);if nativeEvents is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return nativeEvents end if;observed=observeInputEvents(input,nativeEvents);if observed is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return observed end if;now=now+16
+    menuFrameStart=window.milliseconds();now=1000+frameTiming.elapsed(menuClockStart,menuFrameStart)
+    begun=inputLatch.beginFrame(input.keys);if begun is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return begun end if;window.poll();input.mouse=window.mouseDelta();nativeEvents=window.inputEvents(256);if nativeEvents is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return nativeEvents end if;observed=observeInputEvents(input,nativeEvents);if observed is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return observed end if
     reset=localQvmUi.resetFrameCommands(state);if reset is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return reset end if
     frame=uiSession.frame(ui,now);if frame is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return frame end if
     refreshed=qvm2d.refresh(catalog,state.context.renderQueue.commands,state.context.assets,state.context.assetKinds,SOURCE_WIDTH,SOURCE_HEIGHT,WIDTH,HEIGHT);if refreshed is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return refreshed end if
@@ -124,7 +126,8 @@ function run(archive,bootstrapMap,qvmRoot)
     state.context.console=[]
     // Keep the disconnected UI at the original renderer's practical refresh
     // cadence instead of burning a CPU core and presenting partial frames.
-    time.sleep(16)
+    sleepMs=frameTiming.remaining(menuFrameStart,window.milliseconds(),16)
+    if sleepMs>0 then time.sleep(sleepMs) end if
   end while
   settings=match.captureUserSettings(state)
   settings.pendingBotCommands=menuBotCommands
