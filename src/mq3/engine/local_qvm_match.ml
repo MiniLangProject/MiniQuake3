@@ -1026,11 +1026,11 @@ function observeNativeWeapons(context,renderStart,retailActive,ps)
   return void
 end function
 
-function snapshotCore(value,clientNum)
-  if value==void or clientNum<0 or clientNum>=MAX_CLIENTS then return fail("valid match and client are required") end if
+struct SnapshotInput world host decodedEntities end struct
+function snapshotInput(value)
+  if value==void or value.game==void then return fail("active game is required") end if
   context=value.context;machine=value.game.slot.machine
   if machine==void or context.gameClients<=0 or context.entityStride<=0 then return fail("qagame did not locate its state") end if
-  ps=playerstate.load(machine.data,context.gameClients+clientNum*context.clientStride);if ps is error then return ps end if
   mappedList=lists.List.withCapacity(context.entityCount)
   for index=0 to context.entityCount-1
     state=entitystate.load(machine.data,context.gameEntities+index*context.entityStride);if state is error then return state end if;state.number=index
@@ -1040,6 +1040,17 @@ function snapshotCore(value,clientNum)
   mapped=mappedList.toArray()
   ringCapacity=context.entityCount;if ringCapacity>snapshotBuild.MAX_SNAPSHOT_ENTITIES then ringCapacity=snapshotBuild.MAX_SNAPSHOT_ENTITIES end if;if ringCapacity<1 then ringCapacity=1 end if
   buildWorld=snapshotBuild.world(true,mapped,ringCapacity);host=snapshotBuild.services(snapshotPointLeaf,snapshotLeafArea,snapshotLeafCluster,snapshotWriteAreaBits,snapshotClusterPvs,snapshotAreasConnected,context)
+  return SnapshotInput(buildWorld,host,context.entityCount)
+end function
+function snapshotCore(value,clientNum)
+  input=snapshotInput(value);if input is error then return input end if
+  return snapshotCorePrepared(value,clientNum,input)
+end function
+function snapshotCorePrepared(value,clientNum,input)
+  if value==void or clientNum<0 or clientNum>=MAX_CLIENTS or input==void then return fail("valid match, client and snapshot input are required") end if
+  context=value.context;machine=value.game.slot.machine
+  ps=playerstate.load(machine.data,context.gameClients+clientNum*context.clientStride);if ps is error then return ps end if
+  buildWorld=input.world;host=input.host
   frame=snapshotBuild.buildClientSnapshot(buildWorld,host,ps,context.linked[clientNum],false);if frame is error then return frame end if
   entities=array(frame.numEntities,void)
   if frame.numEntities>0 then for index=0 to frame.numEntities-1 entities[index]=buildWorld.ring[(frame.firstEntity+index)%buildWorld.ringCapacity] end for end if
@@ -1097,8 +1108,12 @@ end function
 // Differential native prediction/effect/HUD mirrors belong in probes, not in
 // the frame loop; they otherwise duplicate most client work for every tick.
 function snapshotProductive(value,clientNum)
-  result=snapshotCore(value,clientNum);if result is error then return result end if
-  botServerBridge.publishSnapshot(value.context.botServer,clientNum,result.entities);published=publishBotSnapshots(value);if published is error then return published end if;return result
+  // All recipients observe the same entity state. Keep this shared input local:
+  // a subsequent QVM call or same-time state mutation must trigger new decoding.
+  input=snapshotInput(value);if input is error then return input end if
+  result=snapshotCorePrepared(value,clientNum,input);if result is error then return result end if
+  botServerBridge.publishSnapshot(value.context.botServer,clientNum,result.entities)
+  published=publishBotSnapshotsPrepared(value,input);if published is error then return published end if;return result
 end function
 
 function publishBotSnapshots(value)
@@ -1106,13 +1121,12 @@ function publishBotSnapshots(value)
   context=value.context;machine=value.game.slot.machine
   if machine==void or context.gameClients<=0 or context.entityStride<=0 then return 0 end if
   hasBots=false;for each state in context.clientStates if state==2 then hasBots=true end if end for;if not hasBots then return 0 end if
-  mappedList=lists.List.withCapacity(context.entityCount)
-  for index=0 to context.entityCount-1
-    state=entitystate.load(machine.data,context.gameEntities+index*context.entityStride);if state is error then return state end if;state.number=index
-    spatial=context.spatialScene.entities[index];mappedList.add(snapshotBuild.snapshotEntity(state,spatial.linked,spatial.svFlags,spatial.singleClient,spatial.clusters,spatial.lastCluster,spatial.areanum,spatial.areanum2))
-  end for
-  ringCapacity=context.entityCount;if ringCapacity>snapshotBuild.MAX_SNAPSHOT_ENTITIES then ringCapacity=snapshotBuild.MAX_SNAPSHOT_ENTITIES end if;if ringCapacity<1 then ringCapacity=1 end if
-  buildWorld=snapshotBuild.world(true,mappedList.toArray(),ringCapacity);host=snapshotBuild.services(snapshotPointLeaf,snapshotLeafArea,snapshotLeafCluster,snapshotWriteAreaBits,snapshotClusterPvs,snapshotAreasConnected,context);published=0
+  input=snapshotInput(value);if input is error then return input end if
+  return publishBotSnapshotsPrepared(value,input)
+end function
+function publishBotSnapshotsPrepared(value,input)
+  context=value.context;machine=value.game.slot.machine
+  buildWorld=input.world;host=input.host;published=0
   for bot=0 to len(context.clientStates)-1
     if context.clientStates[bot]==2 then
       ps=playerstate.load(machine.data,context.gameClients+bot*context.clientStride);if ps is error then return ps end if

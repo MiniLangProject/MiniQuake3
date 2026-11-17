@@ -46,9 +46,10 @@ source and binary hashes, renderer details and test limits are recorded in the
   integration exercised with original retail maps and game modules.
 - **Two rendering paths:** a native OpenGL consumer for MiniLang-owned render
   batches and a software-rendering fallback.
-- **Desktop integration:** keyboard and mouse input, configurable bindings,
-  configuration persistence, and continued operation when no audio output
-  device is available.
+- **Desktop integration:** keyboard and mouse input, configurable bindings
+  transferred from the menu into a match, and continued operation when no
+  audio output device is available. Full desktop persistence remains separate
+  from the verified core correction set.
 - **Evidence-oriented development:** original-source comparisons, compiled
   contracts, retail probes and reproducible screenshot captures.
 
@@ -65,18 +66,26 @@ complete behavioral parity.
 | Retail game logic | Bot/player and scoreboard contracts have passed on `q3dm0` and `q3dm1`. |
 | Graphical execution | An earlier `q3dm0` replay completed 300 frames; the README capture run separately exercises both pictured arenas. |
 | Missing audio device | Initialization errors are caught; the menu and game continue without sound. |
+| Audit core corrections | Strict original-source gates, wall-clock menu timing, honest frame percentiles, routing-cache bookkeeping and shared snapshot decoding have passed targeted Windows regressions and a full build. |
+| Desktop lifecycle and persistence | A separate candidate exists; complete restart/map/menu/video and persistent-file integration is not yet accepted in this core change set. |
 | Broader compatibility | Longer interactive sessions, multiplayer interoperability, hardware-specific behavior and complete 1:1 parity still need acceptance testing. |
 
 The hosted Windows screenshot runs use **software rendering** and do not
 establish hardware-accelerated performance or audible playback. Capture I/O is
-also enabled: screenshot-run timings are not gameplay benchmarks.
+also enabled: screenshot-run timings are not gameplay benchmarks. Earlier
+screenshots are evidence for their recorded revision, not a new graphical
+acceptance of the audit changes.
 
-The [retail startup report](docs/verification/2026-11-16-ci-retail-start.json),
+The [audit corrections and validation scope](docs/AUDIT_FIXES_2026-11-17.md),
+[retail startup report](docs/verification/2026-11-16-ci-retail-start.json),
 [parity audit](docs/PARITY_AUDIT.md),
 [behavior audit](docs/BEHAVIOR_PARITY_AUDIT.md) and
 [port plan](docs/PORTPLAN.md) track the wider project. Historical measurements
 refer to their recorded compiler, source revision, machine and workload; they
-must not be treated as results for every current build.
+must not be treated as results for every current build. The stricter
+[source mapping inventory](docs/ORIGINAL_PARITY_REPORT.md) is not a completion
+percentage: ABI mappings, native implementation, productive integration and
+behavioral acceptance are distinct claims.
 
 ## Quick start
 
@@ -176,10 +185,12 @@ regenerating the historical manifest with unrelated compiler inputs.
 | Chat / team chat | `T` / `Y` |
 | Menu | `Esc` |
 
-The Controls menu provides rebinding and mouse settings. Configuration is
-persisted through the `q3config.cfg` path; menu settings are transferred into
-the match. The current starter configuration uses an inverted vertical mouse
-axis, which can be changed in Controls.
+The Controls menu provides rebinding and mouse settings, transferred from the
+menu into the match. The audited normal desktop host does not yet provide the
+complete persistent `q3config.cfg` and QVM write integration; its separate
+candidate still needs end-to-end acceptance. Do not rely on settings surviving
+a program restart in this core-only version. The current starter configuration
+uses an inverted vertical mouse axis, which can be changed in Controls.
 
 ## Tests and verification
 
@@ -198,6 +209,22 @@ python scripts/build_release.py --source tests/singleplayer_bot_retail_probe.ml 
 These are focused startup and retail-logic checks, not the full acceptance
 suite. The no-argument startup test intentionally closes the menu after
 observing it; it is not a manual playthrough or a normal menu-exit test.
+
+### Audit core regressions
+
+```powershell
+python scripts/test_audit_inventory.py -v
+python scripts/test_parity_inventory.py
+python scripts/build_release.py --source tests/audit_timing_lru_contracts.ml --output audit_timing_lru_contracts.exe
+& .\build\audit_timing_lru_contracts.exe
+$env:MQ3_BUILD_TOOLCHAIN = "release"
+python scripts/test_aas_routing_cache.py
+Remove-Item Env:MQ3_BUILD_TOOLCHAIN
+```
+
+The original-source gate requires the pinned, clean submodule; missing
+reference files cannot produce a passing result. The routing comparison uses
+its documented scenario model. These checks do not measure GPU performance.
 
 ### Regenerate the README screenshots
 
@@ -245,6 +272,7 @@ suite was run, nor does it prove binary identity with an older build.
 ## Documentation
 
 - [MiniDoc API reference](docs/api/markdown/README.md)
+- [Audit corrections and validation scope](docs/AUDIT_FIXES_2026-11-17.md)
 - [Port plan](docs/PORTPLAN.md) and [current parity audit](docs/PARITY_AUDIT.md)
 - [Behavioral compatibility audit](docs/BEHAVIOR_PARITY_AUDIT.md)
 - [Original-source mapping report](docs/ORIGINAL_PARITY_REPORT.md)

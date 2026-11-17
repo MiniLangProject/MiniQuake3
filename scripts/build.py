@@ -1,5 +1,6 @@
 """Build MiniLang code using the frozen toolchain and the small ABI bridge."""
 import argparse
+import os
 from contextlib import contextmanager
 import errno
 import time
@@ -228,4 +229,12 @@ def main():
     print(f"Built {args.output}")
 
 if __name__ == "__main__":
+    mode = os.environ.get("MQ3_BUILD_TOOLCHAIN", "frozen")
+    if mode == "release":
+        # Existing regression drivers invoke build.py. Opt in explicitly to
+        # the pinned release path without rewriting historical provenance.
+        from build_release import main as release_main
+        raise SystemExit(release_main())
+    if mode != "frozen":
+        raise SystemExit("MQ3_BUILD_TOOLCHAIN must be frozen or release")
     main()

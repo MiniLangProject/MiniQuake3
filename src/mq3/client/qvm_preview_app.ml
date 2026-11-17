@@ -48,6 +48,7 @@ import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
 import mq3.qcommon.cvar as cvar
 import std.ds.list as lists
+import mq3.client.frame_timing as frameTiming
 import std.time as time
 import std.ds.queue as queues
 import std.string as strings
@@ -75,10 +76,7 @@ struct ScreenPoint x y depth end struct
 
 function fail(message) return error(7682,"QVM preview: "+message) end function
 function framePercentile(histogram,count,percent)
-  if count<1 then return 0 end if
-  wanted=numeric.trunc32((count*percent+99)/100);seen=0
-  for index=0 to len(histogram)-1 seen=seen+histogram[index];if seen>=wanted then return index end if end for
-  return len(histogram)-1
+  return frameTiming.percentile(histogram,count,percent)
 end function
 function requestedQuit(state)
   if state==void or state.context==void then return false end if
@@ -400,7 +398,7 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
   frameInput.bindConfig(frameState,state.context.cvars)
   initialPlan=frameInput.prepare(frameState,simulationStart,state.context.commandNumber,clientClock.state.connectionState,true,false,false);inputBridge=ClientInputBridge(frameState,initialPlan,ui,state);match.attachInputClear(state,inputBridge,clearClientInput)
   worldSelectMs=0;worldRebuildMs=0;worldEffectsMs=0;portalPrepareMs=0;worldRebuildCount=0
-  frameHistogram=array(1001,0);maximumFrameMs=0;interactiveInput=maxFrames<0
+  frameHistogram=frameTiming.histogram();maximumFrameMs=0;interactiveInput=maxFrames<0
   while not window.shouldClose() and not quitRequested and (maxFrames<0 or frames<maxFrames)
     startedAt=window.milliseconds();serverTime=simulationStart+startedAt-realStart;steps=0;state.context.soundCommands=[]
     begun=inputLatch.beginFrame(nativeInput.keys);if begun is error then window.shutdown();match.shutdown(state);return begun end if;window.poll();menuActive=uiSession.active(ui)
@@ -513,7 +511,7 @@ function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings)
     end while
     audioMs=audioMs+window.milliseconds()-audioStartedAt;elapsedFrameMs=window.milliseconds()-startedAt;totalMs=totalMs+elapsedFrameMs
     if elapsedFrameMs>maximumFrameMs then maximumFrameMs=elapsedFrameMs end if
-    bucket=numeric.trunc32(elapsedFrameMs);if bucket>1000 then bucket=1000 end if;frameHistogram[bucket]=frameHistogram[bucket]+1
+    frameTiming.record(frameHistogram,elapsedFrameMs)
     nextTitle=fpsTitle.frame(titleState,window.milliseconds());if nextTitle is error then window.shutdown();match.shutdown(state);return nextTitle end if;if nextTitle!=void then window.setTitle(nextTitle) end if
     // The uncapped original frame loop has a 1 ms minimum, not an extra
     // millisecond after every completed frame. Yield only if work was faster.
