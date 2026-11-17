@@ -1,0 +1,136 @@
+name: Audit desktop - original QVM and native regression
+on:
+  push:
+    branches: [test/audit-fixes-20261117]
+    paths: [.github/workflows/audit-desktop.yml]
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: windows-2022
+    timeout-minutes: 40
+    env:
+      MQ3_BUILD_TOOLCHAIN: release
+      MQ3_RENDERER: software
+    steps:
+      - shell: pwsh
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Apply checksum-verified desktop corrections
+        shell: python
+        run: |
+          from pathlib import Path
+          import hashlib,lzma,subprocess
+          data=b''.join(Path('.audit-transfer/phase2.xz.part'+str(i)).read_bytes() for i in (1,2))
+          assert hashlib.sha256(data).hexdigest()=='ed569e30934ad260c92bcd652ef5c8c2abf1ad23cb3a46528f0889f191060895'
+          patch=lzma.decompress(data)
+          assert hashlib.sha256(patch).hexdigest()=='f4e01c3fc35a9ca936fc31c9327a14b69ad40a34e9751978b5bdd22de9517107'
+          Path('build').mkdir(exist_ok=True);Path('build/phase2.patch').write_bytes(patch)
+          subprocess.run(['git','apply','--check','--unidiff-zero','build/phase2.patch'],check=True)
+          subprocess.run(['git','apply','--unidiff-zero','build/phase2.patch'],check=True)
+          subprocess.run(['git','add','-N','src','native','tests','scripts'],check=True)
+          subprocess.run(['git','diff','--check'],check=True)
+      - name: Native storage, configuration and exact original culling tests
+        shell: python
+        run: |
+          from pathlib import Path
+          import json,subprocess,time,os
+          evidence=Path('build/desktop-evidence');evidence.mkdir(exist_ok=True)
+          os.environ['MINIQUAKE3_HOME']=str(Path('build/audit-default-home').resolve())
+          steps=[('storage-build',['python','scripts/build_release.py','--source','tests/audit_user_storage_contracts.ml','--output','audit_user_storage_contracts.exe']),('storage-native',['build/audit_user_storage_contracts.exe',str(Path('build/audit-storage-home').resolve())]),('windows-files-culling',['python','scripts/test_audit_native.py']),('keys',['python','scripts/test_cgame_key_traps.py']),('materials',['python','scripts/test_playable_materials.py']),('world-materials',['python','scripts/test_playable_world_materials.py']),('retained-build',['python','scripts/build_release.py','--source','tests/retained_world_batch_contracts.ml','--output','audit_retained.exe']),('retained-native',['build/audit_retained.exe'])]
+          report={'status':'running','steps':[],'scope':'Native Windows contracts; no GPU performance claim.'}
+          try:
+              for name,command in steps:
+                  start=time.monotonic()
+                  with (evidence/(name+'.log')).open('w',encoding='utf-8') as stream:
+                      result=subprocess.run(command,stdout=stream,stderr=subprocess.STDOUT,timeout=900)
+                  report['steps'].append({'name':name,'command':command,'exit_code':result.returncode,'seconds':round(time.monotonic()-start,3)})
+                  print((evidence/(name+'.log')).read_text(encoding='utf-8',errors='replace')[-20000:],flush=True)
+                  if result.returncode:raise RuntimeError(name+' failed')
+              report['status']='passed'
+          except BaseException as error:
+              report['status']='failed';report['error']=str(error);raise
+          finally:
+              (evidence/'native-report.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+      - name: Obtain and verify the requested retail CD for regression only
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $iso=Join-Path $env:RUNNER_TEMP 'quake3-audit.iso'
+          $url='https://archive.org/download/Quake_III_Arena_Id_Software_1999/Quake_III_Arena_Id_Software_1999.iso'
+          $total=555732992
+          0..3 | ForEach-Object -Parallel {
+            $ErrorActionPreference='Stop'
+            $chunk=[long][Math]::Ceiling($using:total/4.0)
+            $start=[long]$_*$chunk; $end=[Math]::Min($using:total-1,$start+$chunk-1)
+            $file="$using:iso.part$_"
+            & curl.exe --fail --location --silent --show-error --retry 2 --connect-timeout 20 --max-time 600 --range "$start-$end" --output $file $using:url
+            if ($LASTEXITCODE -ne 0 -or (Get-Item $file).Length -ne ($end-$start+1)) { throw 'CD segment failed' }
+          } -ThrottleLimit 4
+          $out=[IO.File]::Create($iso)
+          try { foreach($i in 0..3) { $part=[IO.File]::OpenRead("$iso.part$i");try{$part.CopyTo($out)}finally{$part.Dispose()} } } finally { $out.Dispose() }
+          $hash=(Get-FileHash $iso -Algorithm SHA256).Hash.ToLowerInvariant()
+          if((Get-Item $iso).Length -ne $total -or $hash -ne 'd44fb1f9a68530169a5947aa9011fe84296ef2ba86e56e8a6baedbd71973ae09'){throw 'CD checksum mismatch'}
+          @{size=$total;sha256=$hash;verified=$true} | ConvertTo-Json | Set-Content build/desktop-evidence/cd.json
+          New-Item -ItemType Directory -Force build/baseq3 | Out-Null
+          $seven=Join-Path $env:ProgramFiles '7-Zip/7z.exe'
+          $list=& $seven l -slt $iso
+          if($LASTEXITCODE -ne 0){throw 'CD listing failed'}
+          $paths=@($list | Where-Object {$_ -match '^Path = '} | ForEach-Object {$_.Substring(7)} | Where-Object {$_ -match '(?i)(^|[/\\])baseq3[/\\]pak[0-9]+\.pk3$'})
+          foreach($path in $paths){ & $seven e -y "-o$pwd/build/baseq3" $iso $path; if($LASTEXITCODE -ne 0){throw 'CD extraction failed'} }
+          python -c "import zipfile; z=zipfile.ZipFile('build/baseq3/pak0.pk3'); assert z.testzip() is None; assert 'maps/q3dm0.bsp' in z.namelist()"
+          if($LASTEXITCODE -ne 0){throw 'Retail PK3 CRC failure'}
+      - name: Build and run original-QVM lifecycle and graphical regression
+        shell: python
+        run: |
+          from pathlib import Path
+          import json,subprocess,time,os
+          evidence=Path('build/desktop-evidence')
+          os.environ['MINIQUAKE3_HOME']=str(Path('build/audit-graphics-home').resolve())
+          steps=[('game-build',['python','scripts/build_release.py']),('lifecycle-build',['python','scripts/build_release.py','--source','tests/audit_desktop_retail_probe.ml','--output','audit_desktop_retail_probe.exe']),('lifecycle-native',['build/audit_desktop_retail_probe.exe',str(Path('build/baseq3/pak0.pk3').resolve()),str(Path('build/qvms').resolve()),str(Path('build/audit-retail-home').resolve())]),('graphics-build',['python','scripts/build_release.py','--source','tests/singleplayer_graphics_replay.ml','--output','singleplayer_graphics_replay.exe']),('pillow',['python','-m','pip','install','Pillow']),('framebuffer',['python','scripts/capture_readme.py','--output','build/desktop-evidence/screenshots','--frames','120'])]
+          report={'status':'running','steps':[],'limits':['Software rendering, no hardware GPU performance measurement.','Automated original-QVM contracts and framebuffer checks, not a human playthrough.']}
+          try:
+              for name,command in steps:
+                  start=time.monotonic()
+                  with (evidence/(name+'.log')).open('w',encoding='utf-8') as stream:
+                      result=subprocess.run(command,stdout=stream,stderr=subprocess.STDOUT,timeout=1200)
+                  report['steps'].append({'name':name,'command':command,'exit_code':result.returncode,'seconds':round(time.monotonic()-start,3)})
+                  print((evidence/(name+'.log')).read_text(encoding='utf-8',errors='replace')[-20000:],flush=True)
+                  if result.returncode:raise RuntimeError(name+' failed')
+              report['status']='passed'
+          except BaseException as error:
+              report['status']='failed';report['error']=str(error);raise
+          finally:
+              (evidence/'retail-report.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+      - name: Record actual source bytes and changes
+        if: always()
+        shell: python
+        run: |
+          from pathlib import Path
+          import hashlib,json,subprocess
+          out=Path('build/desktop-evidence');out.mkdir(parents=True,exist_ok=True)
+          (out/'changes.patch').write_bytes(subprocess.check_output(['git','diff','--binary']))
+          paths=[p for folder in ['src','native','tests','scripts'] for p in Path(folder).rglob('*') if p.is_file() and p.suffix in ['.ml','.c','.h','.py']]
+          (out/'source-hashes.json').write_text(json.dumps({p.as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in paths},indent=2),encoding='utf-8')
+      - name: Commit validated desktop fixes on the isolated branch
+        shell: pwsh
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src native tests scripts
+          git commit -m 'fix: integrate desktop lifecycle, atomic user persistence and material culling'
+          if($LASTEXITCODE -ne 0){throw 'Source commit failed'}
+          git push origin HEAD:refs/heads/test/audit-fixes-20261117
+          if($LASTEXITCODE -ne 0){throw 'Non-forced source push failed'}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: audit-desktop-evidence
+          path: |
+            build/desktop-evidence/**
+            build/*.log
+            build/audit-native/*.log
+            build/readme-captures/*.log
+          retention-days: 14
