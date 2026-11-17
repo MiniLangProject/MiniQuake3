@@ -1,0 +1,92 @@
+name: Audit fixes - native regression
+on:
+  push:
+    branches: [test/audit-fixes-20261117]
+    paths: [.github/workflows/audit-fixes.yml, .ci/**]
+permissions:
+  contents: write
+jobs:
+  regression:
+    runs-on: windows-2022
+    timeout-minutes: 30
+    env:
+      MQ3_BUILD_TOOLCHAIN: release
+    steps:
+      - name: Preserve source bytes
+        shell: pwsh
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 1
+      - name: Apply exact reviewed audit patch
+        shell: python
+        run: |
+          from pathlib import Path
+          import hashlib, json, re, subprocess, zlib
+          patch = zlib.decompress(Path('.ci/audit-phase1.patch.zlib').read_bytes())
+          assert hashlib.sha256(patch).hexdigest() == '36e7b56cd135a3a1f39841d893a20062797f44a39eb30287e03634e649595954', 'Audit patch damaged'
+          Path('build').mkdir(exist_ok=True)
+          Path('build/audit.patch').write_bytes(patch)
+          subprocess.run(['git','apply','--check','--unidiff-zero','build/audit.patch'],check=True)
+          subprocess.run(['git','apply','--unidiff-zero','build/audit.patch'],check=True)
+          path=Path('PORT_LEDGER.json'); ledger=json.loads(path.read_text(encoding='utf-8'))
+          abi=Path('src/mq3/vm/qvm_assembly_abi.ml').read_text(encoding='utf-8')
+          for source, function in [('code/cgame/cg_syscalls.asm','cgameNames'),('code/game/g_syscalls.asm','gameNames')]:
+              entry=next(row for row in ledger['files'] if row['source']==source)
+              body=re.search(r'function '+function+r'\(\) return \[(.*?)\] end function',abi).group(1)
+              names=re.findall(r'"([A-Za-z_][A-Za-z_0-9]*)"',body)
+              assert set(names)==set(entry['symbol_candidates'])
+              entry['symbol_mapping'][0].update(original_symbols=names,kind='abi_table',behavior_acceptance='not_implied_by_import_table')
+          path.write_text(json.dumps(ledger,indent=2,ensure_ascii=True)+'\n',encoding='utf-8',newline='\n')
+          subprocess.run(['python','scripts/parity_inventory.py'],check=True)
+          subprocess.run(['git','diff','--check'],check=True)
+      - name: Execute Python gates and compiled MiniLang regressions
+        shell: python
+        run: |
+          from pathlib import Path
+          import json, subprocess, time, hashlib
+          evidence=Path('build/audit-evidence');evidence.mkdir(parents=True,exist_ok=True)
+          steps=[
+            ('inventory-regressions',['python','scripts/test_audit_inventory.py','-v']),
+            ('pinned-original-inventory',['python','scripts/test_parity_inventory.py']),
+            ('timing-lru-build',['python','scripts/build.py','--source','tests/audit_timing_lru_contracts.ml','--output','audit_timing_lru_contracts.exe']),
+            ('timing-lru-native',['build/audit_timing_lru_contracts.exe']),
+            ('routing-cache-regression',['python','scripts/test_aas_routing_cache.py']),
+            ('complete-game-build',['python','scripts/build_release.py'])]
+          report={'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'status':'running','steps':[],'limits':['No interactive playtest or GPU performance measurement in this workflow.','Routing C oracle is a scenario model, not unchanged original C.']}
+          try:
+              for name,command in steps:
+                  start=time.monotonic()
+                  with (evidence/(name+'.log')).open('w',encoding='utf-8') as stream:
+                      result=subprocess.run(command,stdout=stream,stderr=subprocess.STDOUT,timeout=1200)
+                  report['steps'].append({'name':name,'command':command,'exit_code':result.returncode,'seconds':round(time.monotonic()-start,3)})
+                  print((evidence/(name+'.log')).read_text(encoding='utf-8',errors='replace')[-18000:],flush=True)
+                  if result.returncode: raise RuntimeError(name+' failed')
+              report['status']='passed'
+          except BaseException as error:
+              report['status']='failed';report['error']=str(error);raise
+          finally:
+              (evidence/'report.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
+              (evidence/'changes.patch').write_bytes(subprocess.check_output(['git','diff','--binary']))
+              (evidence/'source-hashes.json').write_text(json.dumps({str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in Path('src').rglob('*.ml')},indent=2),encoding='utf-8')
+      - name: Commit tested sources on isolated branch
+        shell: pwsh
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src scripts tests PORT_LEDGER.json docs/ORIGINAL_PARITY_REPORT.md
+          git commit -m 'fix: harden parity gates, frame timing, routing caches and shared snapshot decoding'
+          if ($LASTEXITCODE -ne 0) { throw 'Source commit failed' }
+          git push origin HEAD:refs/heads/test/audit-fixes-20261117
+          if ($LASTEXITCODE -ne 0) { throw 'Non-forced source push failed' }
+      - name: Retain audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-fixes-evidence
+          path: |
+            build/audit-evidence/**
+            build/*.log
+          if-no-files-found: warn
+          retention-days: 14
