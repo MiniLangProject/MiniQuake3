@@ -46,8 +46,9 @@ function configString(state,index)
   if index<0 or index>=MAX_CONFIGSTRINGS then return error(6900,"gamestate: configstring index") end if
   offset=state.stringOffsets[index]
   if offset<=0 then return "" end if
-  data=[];while offset<len(state.stringData) and state.stringData[offset]!=0 data=data+[state.stringData[offset]];offset=offset+1 end while
-  return decode(bytes(data))
+  start=offset
+  while offset<len(state.stringData) and state.stringData[offset]!=0 offset=offset+1 end while
+  return decode(slice(state.stringData,start,offset-start))
 end function
 
 function parse(state,msg)
@@ -64,7 +65,7 @@ function parse(state,msg)
       if msg.readcount>msg.cursize then return error(6903,"gamestate: truncated configstring") end if
       if length+1+state.dataCount>MAX_GAMESTATE_CHARS then return error(6904,"gamestate: string storage exceeded") end if
       state.stringOffsets[index]=state.dataCount
-      if length>0 then for offset=0 to length-1 state.stringData[state.dataCount+offset]=raw[offset] end for end if
+      if length>0 then copyBytes(state.stringData,state.dataCount,raw,0,length) end if
       state.dataCount=state.dataCount+length+1
     else if command==SVC_BASELINE then
       number=message.readBits(msg,GENTITYNUM_BITS)
