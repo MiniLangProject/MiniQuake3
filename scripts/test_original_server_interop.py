@@ -39,6 +39,45 @@ def metrics(text: str, prefix: str) -> dict:
     return result
 
 
+def decode_rcon_packet(packet: bytes, endpoint: tuple[str, int],
+                       expected_endpoint: tuple[str, int]) -> str | None:
+    """Decode only an original-server OOB print from the expected UDP endpoint."""
+    prefix = b'\xff'*4+b'print\n'
+    if endpoint != expected_endpoint or not packet.startswith(prefix):
+        return None
+    # SV_FlushRedirect can split output into several datagrams. Preserve each
+    # payload exactly so joining them does not alter a split line.
+    return packet[len(prefix):].decode('latin1')
+
+
+def validate_server_evidence(console_text: str, rcon_text: str, token: str) -> dict:
+    """Require independent original-server evidence from both output paths."""
+    def begin_clients(text: str) -> set[int]:
+        prefix = 'ClientBegin: '
+        return {int(line[len(prefix):]) for line in text.splitlines()
+                if line.startswith(prefix) and line[len(prefix):].isdigit()}
+    initial_clients = begin_clients(console_text)
+    restart_clients = begin_clients(rcon_text)
+    restarted_clients = initial_clients & restart_clients
+    missing = []
+    if not initial_clients:
+        missing.append('initial ClientBegin in qconsole')
+    if not restarted_clients:
+        missing.append('same-client restart ClientBegin in server RCON output')
+    if 'map_restart' not in console_text.splitlines():
+        missing.append('map_restart in qconsole')
+    if f'MQ3_PROTOCOL68_ROUNDTRIP_{token}' not in console_text:
+        missing.append('initial chat in qconsole')
+    if f'MQ3_PROTOCOL68_RESTART_{token}' not in console_text:
+        missing.append('post-restart chat in qconsole')
+    if missing:
+        raise RuntimeError('Original server evidence missing: ' + ', '.join(missing))
+    return {'initial_client_numbers': sorted(initial_clients),
+            'restart_client_numbers': sorted(restart_clients),
+            'restarted_client_numbers': sorted(restarted_clients),
+            'map_restart_logged': True, 'both_chats_logged': True}
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--data-root', type=Path, default=ROOT / 'build')
@@ -67,6 +106,7 @@ def main() -> int:
         return text
     server = None
     peer = None
+    restart_output: list[str] = []
     home = Path(tempfile.mkdtemp(prefix='mq3-original-', dir=out))
     try:
         run('reference-build', [sys.executable, ROOT/'scripts/build_reference.py'], 1200)
@@ -111,6 +151,14 @@ def main() -> int:
             # buffering or a guessed time at which the client has joined.
             token = secrets.token_hex(16)
             ready_packet = b'\xff'*4+f'MQ3_RESTART_READY {token}'.encode('ascii')
+            def capture_restart_reply(packet: bytes, endpoint: tuple[str, int]) -> None:
+                if not report['restart_requested']:
+                    return
+                payload = decode_rcon_packet(packet, endpoint, ('127.0.0.1', port))
+                if payload is not None:
+                    restart_output.append(payload)
+                    if 'Bad rconpassword' in payload:
+                        raise RuntimeError('Original server rejected the local restart controller')
             peer_command = [str(ROOT/'build/original_server_probe.exe'), str(port),
                             str(observer.getsockname()[1]), token]
             peer_log = out/'original-peer.log'
@@ -135,9 +183,18 @@ def main() -> int:
                             report['restart_requested'] = True
                             report['restart_control_source'] = list(endpoint)
                             report['restart_request_seconds'] = round(time.monotonic()-begin, 3)
-                    elif endpoint == ('127.0.0.1',port) and b'Bad rconpassword' in packet:
-                        raise RuntimeError('Original server rejected the local restart controller')
+                    else:
+                        capture_restart_reply(packet, endpoint)
                 peer.wait(timeout=5)
+                # Drain responses already queued when peer.poll() observes its
+                # exit. Capture ends before the separate quit command below.
+                observer.setblocking(False)
+                while True:
+                    try:
+                        packet, endpoint = observer.recvfrom(65535)
+                    except BlockingIOError:
+                        break
+                    capture_restart_reply(packet, endpoint)
             text = peer_log.read_text(encoding='utf-8', errors='replace')
             report['steps'].append({'name': 'original-peer', 'exit': peer.returncode,
                                     'seconds': round(time.monotonic()-begin, 3)})
@@ -158,8 +215,11 @@ def main() -> int:
         server_text=log.read_text(encoding='latin1', errors='replace') if log.exists() else ''
         server_text=server_text.replace(password,'[test credential redacted]')
         (out/'original-server.log').write_text(server_text,encoding='utf-8')
-        if server_text.count('ClientBegin:') < 2 or f'MQ3_PROTOCOL68_ROUNDTRIP_{token}' not in server_text or f'MQ3_PROTOCOL68_RESTART_{token}' not in server_text or '\nmap_restart' not in server_text:
-            raise RuntimeError('Original server log lacks independent client-begin/restart/both-chat proof')
+        # SVC_RemoteCommand redirects Com_Printf before qconsole logging. The
+        # second GAME_CLIENT_BEGIN is therefore authoritative RCON output,
+        # while the initial begin, the rcon command and both chats are console
+        # output. Require both sources instead of counting console lines twice.
+        report['server_evidence'] = validate_server_evidence(server_text, ''.join(restart_output), token)
         report.update(status='passed', original_server_sha256=digest(exe), peer_sha256=digest(ROOT/'build/original_server_probe.exe'),
                       pak0_sha256=digest(data_root/'baseq3/pak0.pk3'), server_exit=server.returncode,
                       original_server_client_begin=True, original_server_chat_received=True,
@@ -186,6 +246,10 @@ def main() -> int:
             text=log.read_text(encoding='latin1',errors='replace')
             if 'password' in locals(): text=text.replace(password,'[test credential redacted]')
             (out/'original-server.log').write_text(text,encoding='utf-8')
+        redirected=''.join(restart_output)
+        if 'password' in locals(): redirected=redirected.replace(password,'[test credential redacted]')
+        (out/'original-rcon.log').write_text(redirected,encoding='utf-8')
+        report['restart_rcon_packets'] = len(restart_output)
         (out/'result.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
         shutil.rmtree(home,ignore_errors=True)
 

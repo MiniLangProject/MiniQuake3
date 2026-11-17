@@ -20,7 +20,8 @@ def main() -> int:
     report={'status':'running','source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(), 'steps':[],
             'limits':['Function-level original-C comparisons and MiniLang UDP scenarios are not full-game bidirectional interoperability.',
                       'Microbenchmarks are same-process algorithm measurements, not FPS or WAN throughput claims.']}
-    steps=[('fragment-build',[sys.executable,'scripts/build_release.py','--source','tests/network_fragment_ingress_contracts.ml','--output','network_fragment_ingress_contracts.exe']),
+    steps=[('original-server-evidence-tests',[sys.executable,'tests/test_original_server_evidence.py']),
+           ('fragment-build',[sys.executable,'scripts/build_release.py','--source','tests/network_fragment_ingress_contracts.ml','--output','network_fragment_ingress_contracts.exe']),
            ('fragment-run',[ROOT/'build/network_fragment_ingress_contracts.exe']),
            *[(name,[sys.executable,'scripts/'+name+'.py']) for name in ['test_client_netchan','test_server_netchan','test_client_network_ingress','test_network_match_multi','test_shared_game','test_remote_session_commands','test_server_command_stream','test_gamestate','test_cgame_snapshot']],
            ('benchmark-build',[sys.executable,'scripts/build_release.py','--source','tests/network_hotpath_bench.ml','--output','network_hotpath_bench.exe']),
