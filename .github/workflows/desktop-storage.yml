@@ -1,0 +1,89 @@
+name: Desktop storage and retained-world regression
+
+on:
+  push:
+    branches: [master, fix/desktop-storage-20261117]
+    paths:
+      - 'src/mq3/engine/user_files.ml'
+      - 'native/user_files_win32.c'
+      - 'tests/user_files_contracts.ml'
+      - 'scripts/test_user_files.py'
+      - 'scripts/test_retained_world_batch.py'
+      - '.github/workflows/desktop-storage.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: desktop-storage-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  windows:
+    runs-on: windows-2022
+    timeout-minutes: 20
+    env:
+      MQ3_BUILD_TOOLCHAIN: release
+    steps:
+      - name: Preserve source line endings
+        shell: pwsh
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          persist-credentials: false
+      - name: Execute committed Windows component tests
+        shell: python
+        run: |
+          from pathlib import Path
+          import hashlib, json, subprocess, sys, time
+          out = Path('build/desktop-storage-evidence')
+          out.mkdir(parents=True, exist_ok=True)
+          tracked = subprocess.check_output(['git', 'ls-files', '-z']).decode().split('\0')
+          before = {p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
+                    for p in tracked if p and Path(p).is_file()}
+          report = {'source_commit': subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip(),
+                    'status': 'running', 'steps': [],
+                    'limits': ['Storage component is not yet wired into the normal desktop host.',
+                               'No retail assets or graphical playthrough in this job.']}
+          try:
+              for name, command in [
+                      ('user-files', [sys.executable, 'scripts/test_user_files.py']),
+                      ('retained-world', [sys.executable, 'scripts/test_retained_world_batch.py'])]:
+                  logfile = out / (name + '.log')
+                  start = time.monotonic()
+                  with logfile.open('w', encoding='utf-8') as stream:
+                      result = subprocess.run(command, stdout=stream, stderr=subprocess.STDOUT, timeout=1000)
+                  report['steps'].append({'name': name, 'exit_code': result.returncode,
+                                          'seconds': round(time.monotonic()-start, 3)})
+                  print(logfile.read_text(encoding='utf-8', errors='replace')[-24000:], flush=True)
+                  if result.returncode:
+                      raise RuntimeError(name + ' failed')
+              changed = [p for p, expected in before.items()
+                         if not Path(p).is_file() or hashlib.sha256(Path(p).read_bytes()).hexdigest() != expected]
+              if changed:
+                  raise RuntimeError('Tracked sources changed: ' + ', '.join(changed))
+              report['source_files_unchanged'] = True
+              report['status'] = 'passed'
+          except BaseException as error:
+              report['status'] = 'failed'
+              report['error'] = str(error)
+              raise
+          finally:
+              (out / 'report.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
+              (out / 'source-hashes.json').write_text(json.dumps(before, indent=2)+'\n', encoding='utf-8')
+      - name: Upload diagnostic evidence, not game data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-storage-evidence
+          path: |
+            build/desktop-storage-evidence/**
+            build/user-file-acceptance/*.log
+            build/user-file-acceptance/*.json
+            build/reference/retained_world_batch/*.log
+            build/reference/retained_world_batch/result.json
+            build/*.log
+          retention-days: 14
+          if-no-files-found: warn

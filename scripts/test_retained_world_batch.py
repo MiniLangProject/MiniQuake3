@@ -1,5 +1,6 @@
 """Exact productive retained-world sparse-update and retail selection gate."""
 import argparse
+from contextlib import contextmanager
 import json
 import os
 from pathlib import Path
@@ -7,6 +8,22 @@ import shutil
 import subprocess
 from inventory import sha
 from toolchain import ROOT, msvc_env
+from build import build_file_lock
+
+
+@contextmanager
+def selected_compiler():
+    """Keep the verified extraction stable until every compile has finished."""
+    mode = os.environ.get("MQ3_BUILD_TOOLCHAIN", "frozen")
+    if mode == "release":
+        from build_release import prepare_compiler
+        with build_file_lock(ROOT / "build/release-build.lock"):
+            yield prepare_compiler()
+    elif mode in ("", "frozen"):
+        root = ROOT / "artifacts/toolchain"
+        yield root / "build/mlc_win64.exe", root
+    else:
+        raise RuntimeError("Unknown MQ3_BUILD_TOOLCHAIN: " + mode)
 
 
 def main():
@@ -31,15 +48,14 @@ def main():
                     str(ROOT / "native/playable_win32.c"), "/Fo:" + str(out / "window.obj"),
                     "/link", "user32.lib", "gdi32.lib", "winmm.lib", "/out:" + str(out / "playable_window.dll")],
                    cwd=out, env=env, check=True)
-    frozen = ROOT / "artifacts/toolchain"
     runtime = os.environ.copy()
     runtime["PATH"] = str(ROOT / "build") + os.pathsep + runtime.get("PATH", "")
 
-    def run_ml(name, arguments):
+    def run_ml(name, arguments, mlcompiler, library_root):
         exe = out / (name + ".exe")
         with (out / (name + ".compile.log")).open("w") as log:
-            subprocess.run([str(frozen / "build/mlc_win64.exe"), str(ROOT / "tests" / (name + ".ml")), str(exe),
-                            "-I", str(ROOT / "tests/retained_world_prototype"), "-I", str(ROOT / "src"), "-I", str(frozen),
+            subprocess.run([str(mlcompiler), str(ROOT / "tests" / (name + ".ml")), str(exe),
+                            "-I", str(ROOT / "tests/retained_world_prototype"), "-I", str(ROOT / "src"), "-I", str(library_root),
                             "--heap-reserve", "1g", "--heap-commit", "32m", "--gc-limit", "256m"],
                            cwd=out, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=900)
         result = subprocess.run([str(exe), *map(str, arguments)], cwd=out, env=runtime, capture_output=True, text=True, timeout=180)
@@ -49,20 +65,24 @@ def main():
         print(result.stdout.strip(), flush=True)
         return result.stdout.strip()
 
-    contracts = run_ml("retained_world_batch_contracts", [])
-    if not contracts.startswith("PASS: 51 retained-world contracts"):
-        raise RuntimeError(contracts)
     pak = args.pak or (args.data_root / "baseq3/pak0.pk3" if args.data_root else None)
     retail = None
-    if pak:
-        retail = run_ml("retained_world_batch_retail_probe", [pak.resolve()])
-        if "PASS: 288 productive retained-world retail differential cases" not in retail:
-            raise RuntimeError(retail)
+    # The test-only comparison package is intentionally before src on -I.
+    # Calling the general build script without that root cannot compile it.
+    with selected_compiler() as (mlcompiler, library_root):
+        contracts = run_ml("retained_world_batch_contracts", [], mlcompiler, library_root)
+        if not contracts.startswith("PASS: 51 retained-world contracts"):
+            raise RuntimeError(contracts)
+        if pak:
+            retail = run_ml("retained_world_batch_retail_probe", [pak.resolve()], mlcompiler, library_root)
+            if "PASS: 288 productive retained-world retail differential cases" not in retail:
+                raise RuntimeError(retail)
     paths = [ROOT / "src/mq3/renderer/retained_world_batch.ml", ROOT / "native/playable_world_gather.h",
              ROOT / "tests/retained_world_batch_contracts.ml", ROOT / "tests/retained_world_batch_retail_probe.ml",
              ROOT / "tests/playable_world_gather_native.c"]
     report = {"passed": True, "contracts": 51, "retail_cases": 288 if retail else 0,
               "retail": retail, "sources": {str(path.relative_to(ROOT)): sha(path) for path in paths},
+              "toolchain_mode": os.environ.get("MQ3_BUILD_TOOLCHAIN", "frozen"),
               "scope": "full-map templates, selected-face order, active-only stage updates, monotonic cache epochs, fog/dlight prefixes, unchanged original-builder capacity/autosprite/portal fallback"}
     (out / "result.json").write_text(json.dumps(report, indent=2) + "\n")
 
