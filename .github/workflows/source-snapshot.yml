@@ -1,0 +1,47 @@
+name: Source snapshot
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/source-snapshot.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          submodules: recursive
+          persist-credentials: false
+      - name: Package tracked sources and pinned upstream, never retail data
+        shell: python
+        run: |
+          from pathlib import Path
+          import hashlib, json, subprocess, zipfile
+          root = Path.cwd()
+          upstream = Path('Quake-III-Arena-original-source')
+          files = set()
+          for folder in (Path('.'), upstream):
+              names = subprocess.check_output(['git', 'ls-files', '-z'], cwd=folder).decode().split('\0')
+              files.update(folder / name for name in names if name and (folder / name).is_file())
+          forbidden = {'.pk3', '.pak', '.iso', '.cue'}
+          for path in files:
+              if path.suffix.lower() in forbidden:
+                  raise RuntimeError('Retail/media file is tracked: ' + str(path))
+          Path('build').mkdir(exist_ok=True)
+          report = {'commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+                    'upstream': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=upstream, text=True).strip(),
+                    'files': {p.as_posix(): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(files)}}
+          with zipfile.ZipFile('build/source-snapshot.zip', 'w', zipfile.ZIP_DEFLATED) as archive:
+              for path in sorted(files):
+                  archive.write(path, path.as_posix())
+              archive.writestr('SOURCE_SNAPSHOT.json', json.dumps(report, indent=2) + '\n')
+          subprocess.run(['git', 'diff', '--exit-code'], check=True)
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: source-snapshot
+          path: build/source-snapshot.zip
+          if-no-files-found: error
+          retention-days: 14
