@@ -1,0 +1,95 @@
+name: Retail core acceptance
+
+on:
+  push:
+    branches: [fix/desktop-storage-20261117]
+    paths:
+      - '.github/workflows/retail-acceptance.yml'
+      - 'scripts/run_retail_acceptance.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: retail-core-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  retail:
+    runs-on: windows-2022
+    timeout-minutes: 35
+    env:
+      MQ3_BUILD_TOOLCHAIN: release
+      MQ3_RENDERER: software
+    steps:
+      - name: Preserve source bytes
+        shell: pwsh
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          persist-credentials: false
+      - name: Prepare lossless framebuffer capture
+        shell: pwsh
+        run: python -m pip install Pillow==11.3.0
+      - name: Download and verify the user-requested retail CD for this test only
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $item = 'Quake_III_Arena_Id_Software_1999'
+          $url = "https://archive.org/download/$item/$item.iso"
+          $iso = Join-Path $env:RUNNER_TEMP "$item.iso"
+          $expected = [long]555732992
+          $chunk = [long][Math]::Ceiling($expected / 4.0)
+          New-Item -ItemType Directory -Force build/baseq3, build/retail-acceptance | Out-Null
+          0..3 | ForEach-Object -Parallel {
+            $start = [long]$_ * $using:chunk
+            $end = [Math]::Min($using:expected - 1, $start + $using:chunk - 1)
+            $part = "$using:iso.part$_"
+            & curl.exe --fail --location --silent --show-error --retry 2 --connect-timeout 20 --max-time 600 --range "$start-$end" --output $part $using:url
+            if ($LASTEXITCODE -ne 0 -or (Get-Item $part).Length -ne ($end-$start+1)) { throw "CD segment $_ failed" }
+          } -ThrottleLimit 4
+          $combined = [IO.File]::Create($iso)
+          try {
+            foreach ($number in 0..3) {
+              $stream = [IO.File]::OpenRead("$iso.part$number")
+              try { $stream.CopyTo($combined) } finally { $stream.Dispose() }
+            }
+          } finally { $combined.Dispose() }
+          $sha = (Get-FileHash $iso -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ((Get-Item $iso).Length -ne $expected -or $sha -ne 'd44fb1f9a68530169a5947aa9011fe84296ef2ba86e56e8a6baedbd71973ae09') { throw 'Retail CD checksum mismatch' }
+          @{url=$url; size=$expected; sha256=$sha; verified=$true} | ConvertTo-Json | Set-Content build/retail-acceptance/cd-download.json
+          $seven = Join-Path $env:ProgramFiles '7-Zip/7z.exe'
+          $listing = & $seven l -slt $iso
+          if ($LASTEXITCODE -ne 0) { throw 'CD filesystem read failed' }
+          $paths = @($listing | Where-Object { $_ -match '^Path = (.*)' } | ForEach-Object { $_.Substring(7) } | Where-Object { $_ -match '(?i)(^|[/\\])baseq3[/\\]pak[0-9]+\.pk3$' })
+          if ($paths.Count -eq 0) { throw 'No retail archives on CD' }
+          foreach ($path in $paths) {
+            & $seven e -y "-o$pwd/build/baseq3" $iso $path
+            if ($LASTEXITCODE -ne 0) { throw "Extraction failed: $path" }
+          }
+          Get-ChildItem build/baseq3 -File | ForEach-Object {
+            if ($_.Name -cne $_.Name.ToLowerInvariant()) { Rename-Item $_.FullName $_.Name.ToLowerInvariant() }
+          }
+          python -c "import zipfile; z=zipfile.ZipFile('build/baseq3/pak0.pk3'); assert z.testzip() is None; assert {'maps/q3dm0.bsp','maps/q3dm1.bsp'} <= set(z.namelist()); print('PASS: retail archive CRCs and both arenas')"
+          if ($LASTEXITCODE -ne 0) { throw 'Retail archive validation failed' }
+          Remove-Item $iso, "$iso.part*"
+      - name: Build and test unchanged committed sources
+        shell: pwsh
+        run: |
+          python scripts/run_retail_acceptance.py
+          if ($LASTEXITCODE -ne 0) { throw 'Retail core acceptance failed' }
+      - name: Upload evidence and matched source/build packages, never retail archives
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: retail-core-acceptance
+          path: |
+            build/retail-acceptance/**
+            build/readme-captures/*.log
+            build/reference/retained_world_batch/*.log
+            build/reference/retained_world_batch/result.json
+            build/*.log
+          retention-days: 14
+          if-no-files-found: warn
