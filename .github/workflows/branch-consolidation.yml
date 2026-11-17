@@ -1,0 +1,161 @@
+name: One-off branch consolidation
+
+# User-requested housekeeping, separate from the read-only build/test workflows.
+# Exact branch heads are leased; every removed head is preserved by an archive tag.
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/branch-consolidation.yml]
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: branch-consolidation-20261117
+  cancel-in-progress: false
+
+jobs:
+  consolidate:
+    if: github.repository == 'MiniLangProject/MiniQuake3' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Archive exact obsolete heads and remove only those branches
+        shell: python
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          import json, os, subprocess, urllib.request, urllib.error
+          from pathlib import Path
+
+          repo = 'MiniLangProject/MiniQuake3'
+          baseline = '0a8e16cb160d2c610d8cab873fe656c4615a5e2f'
+          expected = {
+              'docs/readme-refresh-20261116': 'e4cb867ffebd953c89e2e07bf29eeb409650feed',
+              'fix/audit-core-20261117': '867be390645579dbfba8648f961b4141c2dc1393',
+              'fix/desktop-storage-20261117': '3a36b77b47af22315ff0fd7f4419f8761e421535',
+              'test/audit-fixes-20261117': '9e9d13677af30c5debab5cdb212acc1d6b03ae29',
+              'test/retail-start-20261116': '04a6da539ddae5f4de0efc993c09b90536429083',
+              'master': baseline,
+          }
+          archive_only = {'test/audit-fixes-20261117', 'test/retail-start-20261116'}
+          report = {'status': 'running', 'baseline': baseline, 'archived': {}, 'deleted': [], 'kept': {}}
+          output = Path('branch-consolidation-report.json')
+
+          def api(path='', method='GET', body=None):
+              data = None if body is None else json.dumps(body).encode()
+              request = urllib.request.Request(
+                  'https://api.github.com/repos/' + repo + path, data=data, method=method,
+                  headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
+                           'Accept': 'application/vnd.github+json',
+                           'Content-Type': 'application/json',
+                           'X-GitHub-Api-Version': '2022-11-28'})
+              with urllib.request.urlopen(request, timeout=30) as response:
+                  raw = response.read()
+                  return json.loads(raw) if raw else None
+
+          def pages(path):
+              rows = []
+              for page in range(1, 101):
+                  batch = api(path + ('&' if '?' in path else '?') + f'per_page=100&page={page}')
+                  rows.extend(batch)
+                  if len(batch) < 100:
+                      return rows
+              raise RuntimeError('Pagination limit exceeded; no deletion is allowed')
+
+          def git(*args):
+              return subprocess.check_output(['git', *args], text=True).strip()
+
+          def remote_refs():
+              rows = git('ls-remote', '--heads', '--tags', 'origin').splitlines()
+              return {line.split()[1]: line.split()[0] for line in rows}
+
+          try:
+              assert os.environ.get('GITHUB_REPOSITORY') == repo
+              assert os.environ.get('GITHUB_REF') == 'refs/heads/main'
+              branches = {row['name']: row for row in pages('/branches')}
+              main_sha = branches['main']['commit']['sha']
+              subprocess.run(['git', 'merge-base', '--is-ancestor', baseline, main_sha], check=True)
+              metadata = api()
+              assert metadata['default_branch'] in ('master', 'main'), 'Unexpected default branch'
+              open_heads = {pr['head']['ref'] for pr in pages('/pulls?state=open')
+                            if pr['head']['repo'] and pr['head']['repo']['full_name'] == repo}
+              candidates = {}
+              for name, sha in expected.items():
+                  if name not in branches:
+                      report['kept'][name] = 'already absent'
+                      continue
+                  assert branches[name]['commit']['sha'] == sha, 'Branch moved: ' + name
+                  if branches[name]['protected'] or name in open_heads:
+                      report['kept'][name] = 'protected or used by an open pull request'
+                      continue
+                  if name not in archive_only:
+                      subprocess.run(['git', 'merge-base', '--is-ancestor', sha, main_sha], check=True)
+                  candidates[name] = sha
+
+              # An Actions token may lack repository administration. Do not bypass
+              # a denial: retain the current default branch and report it clearly.
+              if metadata['default_branch'] == 'master':
+                  try:
+                      api(method='PATCH', body={'default_branch': 'main'})
+                      report['default_branch_change'] = 'accepted'
+                  except urllib.error.HTTPError as error:
+                      if error.code not in (403, 404, 422):
+                          raise
+                      report['default_branch_change'] = {'http_status': error.code,
+                          'result': 'denied; existing default branch will not be deleted'}
+              default = api()['default_branch']
+              report['default_branch'] = default
+              if default in candidates:
+                  del candidates[default]
+                  report['kept'][default] = 'still the repository default branch'
+
+              before = remote_refs()
+              tags = []
+              for name, sha in candidates.items():
+                  assert before.get('refs/heads/' + name) == sha, 'Branch changed during preflight: ' + name
+                  tag = 'archive/2026-11-17/' + name
+                  ref = 'refs/tags/' + tag
+                  if ref in before:
+                      assert before[ref] == sha, 'Archive tag already points elsewhere: ' + tag
+                  else:
+                      subprocess.run(['git', 'tag', tag, sha], check=True)
+                      tags.append(ref)
+                  report['archived'][name] = {'sha': sha, 'tag': tag,
+                      'integration': 'history only, not merged' if name in archive_only else 'already contained in main'}
+              if tags:
+                  subprocess.run(['git', 'push', '--atomic', 'origin', *tags], check=True)
+              archived = remote_refs()
+              for name, item in report['archived'].items():
+                  assert archived.get('refs/tags/' + item['tag']) == item['sha'], 'Archive verification failed'
+              if candidates:
+                  leases = ['--force-with-lease=refs/heads/' + name + ':' + sha for name, sha in candidates.items()]
+                  deletions = [':refs/heads/' + name for name in candidates]
+                  subprocess.run(['git', 'push', '--atomic', *leases, 'origin', *deletions], check=True)
+              final = remote_refs()
+              for name in candidates:
+                  assert 'refs/heads/' + name not in final, 'Branch deletion was not confirmed: ' + name
+                  report['deleted'].append(name)
+              report['remaining_branches'] = sorted(ref[len('refs/heads/'):] for ref in final if ref.startswith('refs/heads/'))
+              report['main_sha'] = final['refs/heads/main']
+              report['status'] = 'completed'
+          except BaseException as error:
+              report['status'] = 'failed'
+              report['error'] = str(error)
+              raise
+          finally:
+              output.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+              print(json.dumps(report, indent=2))
+      - name: Preserve housekeeping evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: branch-consolidation-20261117
+          path: branch-consolidation-report.json
+          retention-days: 14
+          if-no-files-found: error
