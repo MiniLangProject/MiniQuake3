@@ -4,6 +4,26 @@ Stand: 2026-11-16. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Bot-Zielwahl, 20. November 2026
+
+Die produktiven Botlib-Traps 535/536 verwenden nach dem bereits eingeführten
+Fuzzy-Gewicht-Cache nun einen wiederverwendeten Ergebnisdatensatz pro
+Zielwahl. Dadurch entfallen die kurzlebigen zweielementigen Arrays für jedes
+geprüfte Kartenitem. Die neue Regression prüft zwei Instanzen derselben
+Itemklasse und die Invalidierung des Caches zwischen zwei Zielwahlen.
+`scripts/test_ai_goal_selection.py` besteht mit acht nativen
+Baseq3-Szenarien/35 Beobachtungen und 34 MiniLang-Verträgen. Der vollständige
+Bot-Testlauf stößt beim unveränderten `bot_ai_frame`-Vertrag auf den
+Compilerfehler `unknown data patch target: switch_case_body_146653_0`.
+`python scripts/verify.py --data-root D:/Quake3` baut die Haupt-EXE und
+besteht die vorausgehenden Core-, Numeric-, Cvar- und Message-Gates, endet
+aber bei `test_message_state_delta.py` am gleichen Compilerfehlertyp
+(`switch_case_body_22681_0`).
+Ein Retail-FPS-Vergleich für diese Änderung steht aus: `D:/Quake3/baseq3`
+enthält auf diesem Rechner derzeit keine `pak0.pk3`. Die früher gemessenen
+37,73 FPS auf q3dm0 gelten weiterhin als letzte grafische Bot-Basis und
+sind kein Leistungsnachweis für diese Änderung.
+
 ## Bot-Leistung, 16. November 2026
 
 Nachprüfung des produktiven Fensterpfads: `runServerFrame` führte die von

@@ -64,6 +64,15 @@ function main(args)
   count=count+require(selection.chooseNBGItem(runtime,first,[0.0,0.0,0.0],inventory,1,longTerm,201.0)==1 and goalRuntime.topGoal(goals,first).number==202,"NBG accepts travel below strict maximum and valid return")
   goalRuntime.emptyGoalStack(goals,first);goalRuntime.resetAvoidGoals(goals,first);count=count+require(selection.chooseNBGItem(runtime,first,[0.0,0.0,0.0],inventory,1,longTerm,200.0)==1 and goalRuntime.topGoal(goals,first).number==101,"NBG excludes travel equal to maximum")
 
+  // Repeated map instances share fuzzy logic, but the cached weight must not
+  // survive a new choice after the bot's weight configuration changes.
+  duplicate=levelItems.BotLevelItem(204,1,0,0.0,[30.0,0.0,0.0],30,[31.0,0.0,0.0],24,0.0)
+  level.levelItems=[health,armor,duplicate,blocked];goalRuntime.emptyGoalStack(goals,first);goalRuntime.resetAvoidGoals(goals,first)
+  count=count+require(selection.chooseLTGItem(runtime,first,[0.0,0.0,0.0],inventory,1)==1 and goalRuntime.topGoal(goals,first).number==202,"repeated armor class retains nearest best item")
+  state.itemWeightConfig.weights[1].separators[0].weight=0.0;goalRuntime.emptyGoalStack(goals,first);goalRuntime.resetAvoidGoals(goals,first)
+  count=count+require(selection.chooseLTGItem(runtime,first,[0.0,0.0,0.0],inventory,1)==1 and goalRuntime.topGoal(goals,first).number==101,"new selection invalidates fuzzy weight cache")
+  state.itemWeightConfig.weights[1].separators[0].weight=30.0;level.levelItems=[health,armor,blocked]
+
   resultGoal=makeSelectionGoal(0,0,0,0);resultGoal.itemInfo=66
   count=count+require(selection.getLevelItemGoal(runtime,-1,"health",resultGoal)==101 and resultGoal.number==101 and resultGoal.itemInfo==66,"level-item lookup is case insensitive and preserves unwritten iteminfo")
   count=count+require(selection.getLevelItemGoal(runtime,101,"Armor",resultGoal)==202 and resultGoal.number==202,"level-item lookup resumes after supplied list number")
