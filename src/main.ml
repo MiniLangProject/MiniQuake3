@@ -102,6 +102,7 @@ import mq3.game.bot_combat_ai as botCombatAi
 import mq3.game.bot_fight_state as botFightState
 import mq3.game.bot_seek_state as botSeekState
 import std.fs as fs
+import std.string as strings
 
 function formatVector(vector)
   return "("+str(vector[0])+", "+str(vector[1])+", "+str(vector[2])+")"
@@ -116,6 +117,14 @@ function printTrace(result)
   return void
 end function
 
+function mapNameFromPath(path)
+  slash=strings.lastIndexOf(path,"/");backslash=strings.lastIndexOf(path,"\\")
+  if backslash>slash then slash=backslash end if
+  name=strings.substr(path,slash+1,len(path)-slash-1)
+  dot=strings.lastIndexOf(name,".")
+  if dot>=0 then return strings.substr(name,0,dot) end if
+  return name
+end function
 function main(args)
   if len(args)==0 then
     executableRoot=playableWindow.executableDirectory()
@@ -132,15 +141,15 @@ function main(args)
     archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmMenuApp.run(archive,map,args[3])
   end if
   if len(args)==4 and args[0]=="--play-qvm" then
-    archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmPreviewApp.run(archive,map,args[3])
+    archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmPreviewApp.runWithSettingsNamed(archive,map,mapNameFromPath(args[2]),args[3],void)
   end if
   if len(args)==5 and args[0]=="--play-qvm-smoke" then
-    archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmPreviewApp.runLimited(archive,map,args[3],toNumber(args[4]))
+    archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));return qvmPreviewApp.runLimitedSettingsNamed(archive,map,mapNameFromPath(args[2]),args[3],toNumber(args[4]),void)
   end if
   if len(args)==5 and args[0]=="--qvm-match" then
     archive=pk3.open(args[1]);map=bsp.load(pk3.read(archive,args[2]));frames=toNumber(args[3])
     if frames<=0 then return error(7650,"--qvm-match requires a positive frame count") end if
-    state=localQvmMatch.bootWithQvms(archive,map,1000,args[4]);if state is error then return state end if
+    state=localQvmMatch.bootWithQvmsSettingsNamed(archive,map,mapNameFromPath(args[2]),1000,args[4],void);if state is error then return state end if
     if len(state.context.errors)>0 then return error(7651,state.context.errors[0]) end if
     joined=localQvmMatch.connectLocal(state,0);if joined is error then return joined end if;clientStarted=false
     for frame=1 to frames

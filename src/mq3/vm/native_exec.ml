@@ -26,7 +26,7 @@ function call(vm,args)
     status=runNative(nativeBytesPtr(vm.nativePlan),len(vm.nativePlan),nativeBytesPtr(vm.data),len(vm.data),nativeBytesPtr(control),len(control),value,resume)
     vm.steps=initialSteps+n.readI32(control,24);vm.breaks=n.readI32(control,32)
     if status==0 then return n.readI32(control,40) end if
-    if status<0 then return fail("native execution rejected state ("+str(status)+")") end if
+    if status<0 then return fail("native execution rejected state ("+str(status)+"), steps="+str(vm.steps-initialSteps)+" limit="+str(vm.limit)) end if
     if vm.syscall==void then return fail("syscall handler missing") end if
     vm.programStack=n.readI32(control,4)-4;callback=vm.syscall;value=callback(vm,n.readI32(control,40));if value is error then return value end if
     value=n.i32(value);vm.programStack=original;resume=1

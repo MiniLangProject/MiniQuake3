@@ -63,8 +63,9 @@ complete behavioral parity.
 | --- | --- |
 | Windows build | Native EXE, Windows bridge DLLs and the three original QVM modules build with the published MiniLang 1.3.9 compiler. |
 | Normal startup | Starting `MiniQuake3.exe` without arguments opens the original main menu using data beside the executable. |
-| Retail game logic | Bot/player and scoreboard contracts have passed on `q3dm0` and `q3dm1`. |
+| Retail game logic | Bot/player and scoreboard contracts have passed on `q3dm0` and `q3dm1`. All 30 Retail arena BSPs complete a 30-frame Windows/QVM smoke test; all 32 named Retail bots pass a 120-frame command probe on `q3dm1`. [Scope and limits](docs/verification/2026-11-21-all-arenas-bots-performance.md) |
 | Graphical execution | The 6,000-frame Retail `q3dm0` combat replay on the RTX 5080 reached 83.6 FPS. The longest frame fell from 107 to 54 ms. [Frame-time and CPU profile](docs/verification/2026-11-21-bot-cgame-frame-profile.md) |
+| Collision query performance | A Retail `q3dm15` QVM profile observed `trap_LinkEntity` host time fall from 2,099 to 110 microseconds per call after BSP query storage changes. The run's average frame work fell from 27.85 to 18.87 ms; real-time simulation trajectories can differ. [Measurements](docs/verification/2026-11-21-all-arenas-bots-performance.md) |
 | Missing audio device | Initialization errors are caught; the menu and game continue without sound. |
 | Audit core corrections | Strict original-source gates, wall-clock menu timing, honest frame percentiles, routing-cache bookkeeping and shared snapshot decoding have passed targeted Windows regressions and a full build. |
 | Desktop lifecycle and persistence | The Windows host routes local map, restart and menu commands and saves bindings, archived settings and single-player scores to `baseq3/q3config.cfg`. |
@@ -220,7 +221,11 @@ python scripts/test_default_launcher.py
 python scripts/test_default_exe_startup.py
 python scripts/test_desktop_video_retail.py
 python scripts/test_desktop_session_retail.py --data-root build --published
+$env:MQ3_BUILD_TOOLCHAIN = "release"
 python scripts/test_singleplayer_bot_retail.py --data-root build
+python scripts/test_all_retail_levels.py --data-root build
+python scripts/test_all_retail_bots.py --data-root build
+Remove-Item Env:MQ3_BUILD_TOOLCHAIN
 python scripts/build_release.py --source tests/singleplayer_bot_retail_probe.ml --output singleplayer_bot_retail_probe.exe
 & .\build\singleplayer_bot_retail_probe.exe .\build\baseq3\pak0.pk3 .\build\qvms q3dm0
 & .\build\singleplayer_bot_retail_probe.exe .\build\baseq3\pak0.pk3 .\build\qvms q3dm1
@@ -231,6 +236,8 @@ suite. The no-argument startup test intentionally closes the menu after
 observing it; it is not a manual playthrough or a normal menu-exit test.
 The single-player bot script also checks that Crash attacks without the
 player firing and that the original scoreboard still lists both clients.
+The arena test checks all 30 Retail maps over 30 frames each; the bot test
+spawns all 32 Retail profiles and checks active commands over 120 frames each.
 
 ### Audit core regressions
 

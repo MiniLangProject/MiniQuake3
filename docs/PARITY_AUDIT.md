@@ -4,6 +4,39 @@ Stand: 2026-11-21. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Vollständige Retail-Arenenliste und Botliste, 21. November 2026
+
+Ein neuer Windows-QVM-Smoke-Test startet alle 30 Arenen aus der Retail-Datei
+`scripts/arenas.txt` mit ihrem jeweiligen BSP-Namen, rendert jeweils 30 Frames
+und prüft Szenendreiecke, Texturen und Frameabschluss. **30/30** bestehen mit
+`build/baseq3/pak0.pk3` und der originalen 1.32b-QVM. Die mediane gemessene
+Startzeit beträgt 3.328 ms; der langsamste Start ist q3ctf2 mit 5.629 ms.
+Die gemessene mittlere Framearbeit der 30 Frames liegt zwischen 6,23 und
+32,1 ms, Median 15,25 ms. Das ist ein Kurzlauf, kein Nachweis kompletter
+Match-, Bot- oder Netzspielparität jeder Arena. Der Bot-Gesamtlauf und die
+Differentialtests sind im [Prüfbericht](verification/2026-11-21-all-arenas-bots-performance.md)
+aufgeführt.
+
+Die Arena-CLI-Starts übergeben nun den tatsächlichen BSP-Namen an Qagame,
+Serverinfo und Cgame. Wie `SV_SpawnServer` im Original führt der lokale Host
+drei `GAME_RUN_FRAME`-Schritte vor der Client-Anmeldung aus. Das behebt
+`BG_CanItemBeGrabbed: index out of range` auf q3ctf4, q3dm10, q3tourney3
+und q3tourney5, wo ein noch nicht fertig gespawntes Item angesprochen wurde.
+Die native QVM-Obergrenze wurde für legitime Retail-Initialisierung angehoben;
+ein Überschreiten meldet jetzt Schrittzahl und Limit.
+
+Das Performance-Audit fand quadratische Array-Kopien in der BSP-Blattsuche,
+Brushabfrage und Punktinhaltsermittlung. Die Traversierung benutzt nun
+`std.ds.list`, Submodelle und Patchpunkte vorab dimensionierte Arrays; die
+Punktinhaltsabfrage verarbeitet Brushs direkt. Auf q3dm15 sank der mittlere
+Hostanteil von Qagames `trap_LinkEntity` im profilierten Lauf von 2.099 auf
+110 Mikrosekunden pro Aufruf; die gemessene Gesamtarbeit sank von 27,85 auf
+18,87 ms pro Frame. Die Zahl der Simulationsaufrufe unterscheidet sich bei
+Echtzeitschritten, daher ist dies ein beobachteter Laufvergleich. Der
+Shadow-Policy-Lookup ist nun hashbasiert und hat einen eigenen
+Entity-/Surface-Regressionsvertrag; q3dm4 zeigte dabei keinen messbaren
+FPS-Gewinn. Renderer-CPU-Arbeit bleibt eine offene Leistungsgrenze.
+
 ## q3dm0: Crash greift an und die Tür bleibt beweglich, 21. November 2026
 
 Die ursprüngliche 1.32b-QVM verwendet für Munition, Gesundheit und Powerups

@@ -983,7 +983,17 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   world=qworld.services(context);world.traceFn=traceWorld;world.pointContentsFn=pointContents;world.entitiesInBoxFn=entitiesInBox;world.entityContactFn=entityContact;world.getUsercmdFn=getUsercmd;gameSyscalls.worldServices=world
   host=gameVm.services(machineRuntime,qagame.callback(gameSyscalls),loadVm,callVm,restartVm,freeVm);host.context=context;host.millisecondsFn=milliseconds;host.entityStringFn=entityString;host.clearClientEntityFn=clearClient;host.botEnableFn=botEnable
   game=gameVm.create(host);if game is error then return game end if;context.game=game
-  initialized=gameVm.initialize(game,now,maxClients);if initialized is error then return initialized end if
+  // SV_SpawnServer runs three GAME_RUN_FRAME calls before admitting clients.
+  // In particular FinishSpawningItem runs at init+200ms; without this warmup
+  // target_give can touch a still-uninitialized item (modelindex zero).
+  settleStart=now-200
+  context.now=settleStart
+  initialized=gameVm.initialize(game,settleStart,maxClients);if initialized is error then return initialized end if
+  for warmup=0 to 2
+    context.now=settleStart+warmup*100
+    settled=gameVm.runFrame(game,context.now);if settled is error then return settled end if
+  end for
+  context.now=now
   // Local matches do not call SV_SpawnServer; publish its server-info
   // configstring before CG_INIT copies the gamestate into cgame.qvm.
   context.configstrings[serverInit.CS_SERVERINFO]=getServerinfo(context)

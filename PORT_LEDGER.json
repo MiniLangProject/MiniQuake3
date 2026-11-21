@@ -5581,7 +5581,8 @@
         "tests/be_ai_char_complete_oracle.ml",
         "tests/be_ai_char_complete_contracts.ml",
         "tests/ai_character_retail_probe.ml",
-        "scripts/test_botlib_retail_qagame.py"
+        "scripts/test_botlib_retail_qagame.py",
+        "scripts/test_all_retail_bots.py"
       ]
     },
     {
@@ -15654,7 +15655,8 @@
         "tests/reference/cgame_main_oracle.c",
         "tests/cgame_main_oracle.ml",
         "tests/cgame_main_contracts.ml",
-        "scripts/test_retail_qvm_match.py"
+        "scripts/test_retail_qvm_match.py",
+        "scripts/test_all_retail_levels.py"
       ]
     },
     {
@@ -25889,7 +25891,8 @@
         "scripts/test_ai_main.py",
         "tests/reference/ai_main_oracle.c",
         "tests/ai_main_contracts.ml",
-        "tests/ai_main_retail_probe.ml"
+        "tests/ai_main_retail_probe.ml",
+        "scripts/test_all_retail_bots.py"
       ]
     },
     {
@@ -32630,7 +32633,8 @@
         "tests/g_bot_complete_oracle.ml",
         "tests/reference/g_bot_complete_oracle.c",
         "scripts/test_botlib_retail_qagame.py",
-        "scripts/test_singleplayer_bot_retail.py"
+        "scripts/test_singleplayer_bot_retail.py",
+        "scripts/test_all_retail_bots.py"
       ]
     },
     {
@@ -34002,7 +34006,8 @@
         "scripts/test_g_items_complete.py",
         "tests/g_items_complete_contracts.ml",
         "tests/g_items_complete_oracle.ml",
-        "tests/reference/g_items_complete_oracle.c"
+        "tests/reference/g_items_complete_oracle.c",
+        "scripts/test_all_retail_levels.py"
       ]
     },
     {
@@ -51413,7 +51418,9 @@
         "scripts/test_cm_load_complete.py",
         "tests/cm_load_complete_oracle.ml",
         "tests/cm_load_complete_contracts.ml",
-        "tests/reference/cm_load_complete_oracle.c"
+        "tests/reference/cm_load_complete_oracle.c",
+        "scripts/test_all_retail_levels.py",
+        "scripts/test_minilang_hotpaths.py"
       ]
     },
     {
@@ -52050,7 +52057,8 @@
         "scripts/test_collision.py",
         "scripts/test_spatial.py",
         "scripts/test_visibility.py",
-        "scripts/test_runtime_spatial.py"
+        "scripts/test_runtime_spatial.py",
+        "scripts/test_minilang_hotpaths.py"
       ]
     },
     {
@@ -55820,7 +55828,8 @@
         "scripts/test_qvm_native_profile.py",
         "tests/qvm_native_profile.c",
         "scripts/test_native_qvm_boundaries.py",
-        "tests/native_qvm_numeric_boundaries.c"
+        "tests/native_qvm_numeric_boundaries.c",
+        "scripts/test_all_retail_levels.py"
       ]
     },
     {
@@ -59226,12 +59235,14 @@
       ],
       "target": [
         "src/mq3/server/init_runtime.ml",
-        "src/mq3/game/spawn_values.ml"
+        "src/mq3/game/spawn_values.ml",
+        "src/mq3/engine/local_qvm_match.ml"
       ],
       "status": "ported",
       "tests": [
         "scripts/test_sv_init_complete.py",
-        "scripts/test_singleplayer_bot_retail.py"
+        "scripts/test_singleplayer_bot_retail.py",
+        "scripts/test_all_retail_levels.py"
       ]
     },
     {

@@ -151,7 +151,7 @@ function load(image, callback)
   data = bytes(size, 0)
   copyBytes(data, 0, image, dataOffset, dataLength + litLength)
   plan=nativeExec.prepare(image);if plan is error then return plan end if
-  return VM(code, addresses, starts, widths, needs, data, size - 1, size, size - 65536, callback, 0, 10000000, 0,plan)
+  return VM(code, addresses, starts, widths, needs, data, size - 1, size, size - 65536, callback, 0, 50000000, 0,plan)
 end function
 
 // Keep the MiniLang interpreter as the executable reference implementation.

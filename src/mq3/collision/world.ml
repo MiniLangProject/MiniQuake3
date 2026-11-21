@@ -184,8 +184,8 @@ function CMod_LoadSubmodels(map)
   if map.counts[7]>qcommonHeaders.CAPSULE_MODEL_HANDLE then return fail("reserved model handles exceeded") end if
   models=array(map.counts[7],void);bounds=array(map.counts[7],void)
   for index=0 to len(models)-1
-    off=map.offsets[7]+index*40;lower=[];upper=[]
-    for axis=0 to 2 lower=lower+[n.fsub(real(map.data,off+axis*4),1.0)];upper=upper+[n.fadd(real(map.data,off+12+axis*4),1.0)] end for
+    off=map.offsets[7]+index*40;lower=array(3,0.0);upper=array(3,0.0)
+    for axis=0 to 2 lower[axis]=n.fsub(real(map.data,off+axis*4),1.0);upper[axis]=n.fadd(real(map.data,off+12+axis*4),1.0) end for
     for axis=0 to 2 if lower[axis]>upper[axis] then return fail("inverted model bounds") end if end for
     // The original leaves the world model's synthetic leaf empty. World
     // collision reaches its real leaves through the BSP node tree.
@@ -193,8 +193,9 @@ function CMod_LoadSubmodels(map)
     if index!=0 then
       firstSurface=n.readI32(map.data,off+24);surfaceCount=n.readI32(map.data,off+28);firstBrush=n.readI32(map.data,off+32);brushCount=n.readI32(map.data,off+36)
       if firstSurface<0 or surfaceCount<0 or firstSurface+surfaceCount>map.counts[13] or firstBrush<0 or brushCount<0 or firstBrush+brushCount>map.counts[8] then return fail("invalid submodel range") end if
-      cursor=0;while cursor<brushCount brushes=brushes+[firstBrush+cursor];cursor=cursor+1 end while
-      cursor=0;while cursor<surfaceCount surfaces=surfaces+[firstSurface+cursor];cursor=cursor+1 end while
+      brushes=array(brushCount,0);surfaces=array(surfaceCount,0)
+      cursor=0;while cursor<brushCount brushes[cursor]=firstBrush+cursor;cursor=cursor+1 end while
+      cursor=0;while cursor<surfaceCount surfaces[cursor]=firstSurface+cursor;cursor=cursor+1 end while
     end if
     models[index]=Leaf(brushes,surfaces);bounds[index]=[lower,upper]
   end for
@@ -204,7 +205,7 @@ function CMod_LoadEntityString(map) return decode(slice(map.data,map.offsets[0],
 function CMod_LoadVisibility(map) return vis.load(map) end function
 function CMod_LoadPatches(map,shaders,curves)
   surfaces=array(map.counts[13],void);if not curves then return surfaces end if
-  index=0;while index<len(surfaces) off=map.offsets[13]+index*104;if n.readI32(map.data,off+8)==2 then width=n.readI32(map.data,off+96);height=n.readI32(map.data,off+100);count=width*height;first=n.readI32(map.data,off+12);shaderNumber=n.readI32(map.data,off);if width<3 or height<3 or width>129 or height>129 or count>1024 or count>n.readI32(map.data,off+16) or first<0 or first+count>map.counts[10] or shaderNumber<0 or shaderNumber>=len(shaders) then return fail("invalid BSP patch") end if;points=[];cursor=0;while cursor<count location=map.offsets[10]+(first+cursor)*44;points=points+[[real(map.data,location),real(map.data,location+4),real(map.data,location+8)]];cursor=cursor+1 end while;surfaces[index]=Surface(mesh.CM_GeneratePatchCollide(width,height,points),shaders[shaderNumber].contentFlags,shaders[shaderNumber].surfaceFlags) end if;index=index+1 end while;return surfaces
+  index=0;while index<len(surfaces) off=map.offsets[13]+index*104;if n.readI32(map.data,off+8)==2 then width=n.readI32(map.data,off+96);height=n.readI32(map.data,off+100);count=width*height;first=n.readI32(map.data,off+12);shaderNumber=n.readI32(map.data,off);if width<3 or height<3 or width>129 or height>129 or count>1024 or count>n.readI32(map.data,off+16) or first<0 or first+count>map.counts[10] or shaderNumber<0 or shaderNumber>=len(shaders) then return fail("invalid BSP patch") end if;points=array(count,void);cursor=0;while cursor<count location=map.offsets[10]+(first+cursor)*44;points[cursor]=[real(map.data,location),real(map.data,location+4),real(map.data,location+8)];cursor=cursor+1 end while;surfaces[index]=Surface(mesh.CM_GeneratePatchCollide(width,height,points),shaders[shaderNumber].contentFlags,shaders[shaderNumber].surfaceFlags) end if;index=index+1 end while;return surfaces
 end function
 function CM_LumpChecksum(map,lump) if lump<0 or lump>=17 then return fail("invalid checksum lump") end if;return md4.blockChecksum(slice(map.data,map.offsets[lump],map.lengths[lump])) end function
 function CM_Checksum(map)
@@ -223,19 +224,18 @@ function checkTree(nodes)
       end if
     end for
   end for
-  root = 0
+  root = 0;stack=worldTraceLists.List.new()
   while root < len(nodes)
-    stack = [[root, false]]
-    while len(stack) > 0
-      item = stack[len(stack)-1]
-      stack = arrays.slice(stack, 0, len(stack)-1)
+    stack.clear();stack.add([root,false])
+    while stack.len() > 0
+      item = stack.pop()
       index = item[0]
       if index < 0 then continue end if
       if item[1] then colors[index] = 2; continue end if
       if colors[index] == 1 then return fail("cyclic BSP nodes") end if
       if colors[index] == 2 then continue end if
       colors[index] = 1
-      stack = stack + [[index, true], [nodes[index].children[1], false], [nodes[index].children[0], false]]
+      stack.add([index,true]);stack.add([nodes[index].children[1],false]);stack.add([nodes[index].children[0],false])
     end while
     root = root + 1
   end while
@@ -375,11 +375,16 @@ function modelBrushes(world, point, model)
   return world.models[model].brushes
 end function
 
+function brushPointContents(point,b)
+  for each plane in b.planes
+    if q.DotProduct(point,plane.normal) > plane.distance then return 0 end if
+  end for
+  return b.contents
+end function
 function pointContents(world, point, model)
   point = vector32(point)
   checkModel(world,model)
   contents = 0
-  selected = []
   if model == qcommonHeaders.CAPSULE_MODEL_HANDLE and model >= len(world.models) then
     bounds=world.temporary.bounds;center=array(3,0.0)
     for axis=0 to 2 center[axis]=n.fmul(n.fadd(bounds[0][axis],bounds[1][axis]),0.5) end for
@@ -392,18 +397,10 @@ function pointContents(world, point, model)
     return n.i32(contents)
   end if
   if model == qcommonHeaders.BOX_MODEL_HANDLE and model >= len(world.models) then
-    selected = [world.temporary.brush]
-  else
-    for each index in modelBrushes(world,point,model)
-      selected = selected+[world.brushes[index]]
-    end for
+    return n.i32(brushPointContents(point,world.temporary.brush))
   end if
-  for each b in selected
-    inside = true
-    for each plane in b.planes
-      if q.DotProduct(point,plane.normal) > plane.distance then inside = false; break end if
-    end for
-    if inside then contents = contents | b.contents end if
+  for each index in modelBrushes(world,point,model)
+    contents=contents|brushPointContents(point,world.brushes[index])
   end for
   return n.i32(contents)
 end function
@@ -837,35 +834,36 @@ function enumerateLeaves(world,mins,maxs)
   for axis = 0 to 2
     if mins[axis] > maxs[axis] then return fail("inverted query bounds") end if
   end for
-  stack = [0]; leaves = []
-  while len(stack) > 0
-    num = stack[len(stack)-1]; stack = arrays.slice(stack,0,len(stack)-1)
-    if num < 0 then leaves = leaves+[-1-num]
+  stack = worldTraceLists.List.new();stack.add(0);leaves = worldTraceLists.List.new()
+  while stack.len() > 0
+    num = stack.pop()
+    if num < 0 then leaves.add(-1-num)
     else
       node = world.nodes[num]; side = boxSide(mins,maxs,node.plane)
-      if side == 1 then stack = stack+[node.children[0]]
-      else if side == 2 then stack = stack+[node.children[1]]
-      else stack = stack+[node.children[1],node.children[0]] end if
+      if side == 1 then stack.add(node.children[0])
+      else if side == 2 then stack.add(node.children[1])
+      else stack.add(node.children[1]);stack.add(node.children[0]) end if
     end if
   end while
-  return leaves
+  return leaves.toArray()
 end function
 
 function boxLeafnums(world,mins,maxs,capacity)
   if capacity < 0 or capacity > 131072 then return fail("invalid leaf-list capacity") end if
-  result = LeafList([],0,false)
+  result = LeafList([],0,false);entries=worldTraceLists.List.withCapacity(min(32,capacity))
   for each leaf in enumerateLeaves(world,mins,maxs)
     if vis.leafCluster(world.visibility,leaf) != -1 then result.lastLeaf = leaf end if
-    if len(result.entries) >= capacity then result.overflowed = true
-    else result.entries = result.entries+[leaf] end if
+    if entries.len() >= capacity then result.overflowed = true
+    else entries.add(leaf) end if
   end for
+  result.entries=entries.toArray()
   return result
 end function
 
 function boxBrushes(world,mins,maxs,capacity)
   if capacity < 0 or capacity > 131072 then return fail("invalid brush-list capacity") end if
   mins = vector32(mins); maxs = vector32(maxs)
-  result = LeafList([],0,false); seen = array(len(world.brushes),false)
+  result = LeafList([],0,false); seen = array(len(world.brushes),false);entries=worldTraceLists.List.withCapacity(min(32,capacity))
   for each leaf in enumerateLeaves(world,mins,maxs)
     for each index in world.leaves[leaf].brushes
       if seen[index] then continue end if
@@ -874,10 +872,11 @@ function boxBrushes(world,mins,maxs,capacity)
         if b.mins[axis] >= maxs[axis] or b.maxs[axis] <= mins[axis] then overlaps = false; break end if
       end for
       if not overlaps then continue end if
-      if len(result.entries) >= capacity then result.overflowed = true; break end if
-      result.entries = result.entries+[index]
+      if entries.len() >= capacity then result.overflowed = true; break end if
+      entries.add(index)
     end for
   end for
+  result.entries=entries.toArray()
   return result
 end function
 

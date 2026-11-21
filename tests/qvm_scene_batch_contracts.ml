@@ -69,6 +69,11 @@ function main(args)
   count=count+require(stencilRefreshed.shadowCount==0 and stencilRefreshed.shadowBatch==void,"blended MD3 surfaces reject stencil shadows like R_AddMD3Surfaces")
   foggedSource=sourceTriangle(16.0,white,white,1);foggedCatalog=catalogFor([foggedSource],[material]);foggedPrepared=sceneBatch.buildWithGeometry(foggedCatalog,shadowScene);if foggedPrepared is error then return foggedPrepared end if
   count=count+require(foggedPrepared.shadowCount==0,"fogged MD3 surfaces do not enter the stencil volume batch")
+  material.sort=3.0;foggedSource.entityIndex=1
+  mixedCatalog=catalogFor([opaqueSource,foggedSource],[material]);foggedSide=sceneGeometry.ShadowTriangle([[16.0,0.0,0.0],[16.0,0.0,-512.0],[16.0,1.0,0.0]],1,0)
+  mixedScene=sceneGeometry.Geometry([],0,2,0,0,0,0,6,6,[],0,[shadowSide,foggedSide],2)
+  mixedPrepared=sceneBatch.buildWithGeometry(mixedCatalog,mixedScene);if mixedPrepared is error then return mixedPrepared end if
+  count=count+require(mixedPrepared.shadowCount==1 and mixedPrepared.shadowBatch.count==1,"shadow policy lookup keeps opaque and fogged entities with the same surface number distinct")
 
   larger=catalogFor([sourceTriangle(3.0,white,white,0),sourceTriangle(4.0,white,white,0)],[]);rebuilt=sceneBatch.refresh(refreshed,larger);if rebuilt is error then return rebuilt end if
   count=count+require(rebuilt.batch.base.capacity==2 and rebuilt.batch.base.count==2,"topology growth falls back to a full build")

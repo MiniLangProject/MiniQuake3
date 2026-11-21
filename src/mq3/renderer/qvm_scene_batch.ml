@@ -6,13 +6,12 @@ import mq3.renderer.bsp_render_data as renderData
 import mq3.renderer.playable_world_batch as worldBatch
 import mq3.platform.playable_window as window
 import mq3.platform.playable_multitexture as multitexture
-import std.ds.list as lists
+import std.ds.hashmap as maps
 
 const RF_DEPTHHACK=8
 const PROJECTION_SHADOW_SHADER="$mq3/projectionShadow"
 
 struct Prepared geometry batch depthHackGeometry depthHackBatch dynamicGeometry shadowBatch shadowCount end struct
-struct ShadowPolicy entityIndex surfaceIndex opaque end struct
 
 function fail(message) return error(7681,"QVM scene batch: "+message) end function
 function convertedVertex(triangle,corner,sourceIndex)
@@ -36,23 +35,25 @@ function dynamicSelected(catalog,resolved)
   index=resolved.materialIndex;return resolved.triangle.dynamicLight and not depthHack(resolved.triangle) and index>=0 and index<len(catalog.materials) and catalog.materials[index].sort<=3.0
 end function
 function dynamicCount(catalog) count=0;for each resolved in catalog.triangles if dynamicSelected(catalog,resolved) then count=count+1 end if end for;return count end function
+function shadowPolicyKey(entityIndex,surfaceIndex) return entityIndex*1048576+surfaceIndex end function
 // RB_ShadowTessEnd only receives opaque surfaces (SS_OPAQUE) outside fog.
 // Cache that decision once per material-resolved MD3 surface rather than once
 // per generated volume triangle. An unresolved shader is Baseq3's default
 // opaque shader.
 function shadowPolicies(catalog)
-  result=lists.List.withCapacity(len(catalog.triangles))
+  result=maps.HashMap.new()
   for each resolved in catalog.triangles
     source=resolved.triangle;if source.shaderName==PROJECTION_SHADOW_SHADER then continue end if
-    known=false;if result.len()>0 then for policyIndex=0 to result.len()-1 policy=result.get(policyIndex);if policy.entityIndex==source.entityIndex and policy.surfaceIndex==source.surfaceIndex then known=true;break end if end for end if;if known then continue end if
+    key=shadowPolicyKey(source.entityIndex,source.surfaceIndex)
+    if result.get(key)!=void then continue end if
     opaque=source.fogIndex<=0
     if resolved.materialIndex>=0 then opaque=opaque and resolved.materialIndex<len(catalog.materials) and catalog.materials[resolved.materialIndex].sort==3.0 end if
-    result.add(ShadowPolicy(source.entityIndex,source.surfaceIndex,opaque))
+    result.set(key,opaque)
   end for
-  return result.toArray()
+  return result
 end function
 function policyOpaque(policies,entityIndex,surfaceIndex)
-  for each policy in policies if policy.entityIndex==entityIndex and policy.surfaceIndex==surfaceIndex then return policy.opaque end if end for;return false
+  return policies.get(shadowPolicyKey(entityIndex,surfaceIndex))==true
 end function
 function buildShadowBatch(catalog,sceneGeometry,existing)
   if sceneGeometry==void or sceneGeometry.shadowTriangles==void or sceneGeometry.shadowTriangleCount==0 then return void end if

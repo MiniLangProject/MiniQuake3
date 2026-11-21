@@ -5,6 +5,7 @@ import mq3.format.bsp as bsp
 import mq3.vm.interpreter as vm
 import mq3.collision.world as cm
 import mq3.collision.visibility as vis
+import mq3.qcommon.headers as headers
 import mq3.compat.numeric as n
 import std.fs as fs
 import std.string as strings
@@ -45,7 +46,11 @@ function main(args)
     if strings.indexOf(mode,"spatial_",0) == 0 then
       world = cm.loadBrushWorld(fs.readAllBytes(path))
       zero = [0.0,0.0,0.0]; lower = [-1.0,-1.0,-1.0]; upper = [1.0,1.0,1.0]
-      if mode == "spatial_temp_bounds" then caught = try(cm.tempBoxModel(world,upper,lower,false)) end if
+      if mode == "spatial_temp_bounds" then
+        handle=cm.tempBoxModel(world,upper,lower,false)
+        if handle is error or handle!=headers.BOX_MODEL_HANDLE or world.temporary.bounds!=[upper,lower] then return error(3905,"CM_TempBoxModel must preserve inverted network hull bounds") end if
+        count=count+1;continue
+      end if
       if mode == "spatial_rotation_nan" then caught = try(cm.transformedTrace(world,zero,upper,lower,upper,0,1,zero,[0.0,n.bitsFloat(0x7fc00000),0.0],false,false)) end if
       if mode == "spatial_transform_model" then caught = try(cm.transformedTrace(world,zero,upper,lower,upper,254,1,zero,zero,false,false)) end if
       if mode == "spatial_transform_bounds" then caught = try(cm.transformedTrace(world,zero,upper,upper,lower,0,1,zero,zero,false,false)) end if
@@ -77,6 +82,6 @@ function main(args)
     end if
     count = count + 1
   end for
-  print "PASS: " + str(count) + " malformed-input and QVM recovery cases"
+  print "PASS: " + str(count) + " malformed-input, valid-hull and QVM recovery cases"
   return 0
 end function

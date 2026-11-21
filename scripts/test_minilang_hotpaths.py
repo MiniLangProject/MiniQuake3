@@ -53,8 +53,17 @@ CHECKS = {
         "forbids": ("shadowPositions=shadowPositions+[", "worldSide=worldSide+[", "positions=positions+["),
     },
     "src/mq3/renderer/qvm_scene_batch.ml": {
-        "requires": ("result=lists.List.withCapacity", "origins=array(count,void)"),
-        "forbids": ("result=result+[ShadowPolicy", "origins=origins+["),
+        "requires": ("result=maps.HashMap.new()", "origins=array(count,void)"),
+        "forbids": ("result=result+[ShadowPolicy", "policyIndex=0 to result.len()-1", "origins=origins+["),
+    },
+    "src/mq3/collision/world.ml": {
+        "requires": ("stack = worldTraceLists.List.new()", "num = stack.pop()",
+                     "entries=worldTraceLists.List.withCapacity", "points=array(count,void)",
+                     "contents=contents|brushPointContents"),
+        "forbids": ("stack = arrays.slice(stack", "stack = stack + [[",
+                    "leaves = leaves+[", "result.entries = result.entries+[",
+                    "points=points+[", "brushes=brushes+[", "surfaces=surfaces+[",
+                    "selected = selected+[")
     },
 }
 
