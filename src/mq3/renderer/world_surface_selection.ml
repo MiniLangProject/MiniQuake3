@@ -65,9 +65,13 @@ end function
 
 function pvsContains(map,cluster,other)
   if map.lengths[16]==0 then return true end if
+  if map.lengths[16]<8 or map.offsets[16]<0 or map.offsets[16]+map.lengths[16]>len(map.data) then return false end if
   clusters=i32(map,map.offsets[16]);rowBytes=i32(map,map.offsets[16]+4)
-  if clusters is error or rowBytes is error or cluster<0 or cluster>=clusters or other<0 or other>=clusters then return false end if
-  return (map.data[map.offsets[16]+8+cluster*rowBytes+(other>>3)]&(1<<(other&7)))!=0
+  if clusters is error or rowBytes is error or rowBytes<=0 or cluster<0 or cluster>=clusters or other<0 or other>=clusters then return false end if
+  if rowBytes<n.quotient(clusters+7,8) or 8+clusters*rowBytes>map.lengths[16] then return false end if
+  at=map.offsets[16]+8+cluster*rowBytes+(other>>3)
+  if at<map.offsets[16]+8 or at>=map.offsets[16]+map.lengths[16] then return false end if
+  return (map.data[at]&(1<<(other&7)))!=0
 end function
 function contains(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
 
@@ -76,7 +80,7 @@ function faceTriangleCount(map,faceOffset,patchError)
   if kind==render.MST_PLANAR or kind==render.MST_TRIANGLE_SOUP then return n.quotient(numMesh,3) end if
   if kind!=render.MST_PATCH then return 0 end if
   firstVert=i32(map,faceOffset+12);numVerts=i32(map,faceOffset+16);width=i32(map,faceOffset+96);height=i32(map,faceOffset+100)
-  if width<3 or height<3 or width%2==0 or height%2==0 or width*height!=numVerts then return fail("invalid patch control grid") end if
+  if width<3 or height<3 or width>render.MAX_PATCH_SIZE or height>render.MAX_PATCH_SIZE or width%2==0 or height%2==0 or width*height!=numVerts then return fail("invalid patch control grid") end if
   control=array(numVerts,void);for index=0 to numVerts-1 value=render.vertex(map,firstVert+index);if value is error then return value end if;control[index]=value end for
   grid=render.subdividePatch(control,width,height,patchError);if grid is error then return grid end if
   return (grid[1]-1)*(grid[2]-1)*2
@@ -85,11 +89,11 @@ end function
 function faceBounds(map,faceOffset)
   first=i32(map,faceOffset+12);count=i32(map,faceOffset+16)
   if first is error or count is error or first<0 or count<=0 or first+count>map.counts[10] then return fail("invalid face vertex range") end if
-  center=[0.0,0.0,0.0]
-  for index=0 to count-1 value=render.vertex(map,first+index);if value is error then return value end if;for axis=0 to 2 center[axis]=center[axis]+value.position[axis] end for end for
+  center=[0.0,0.0,0.0];positions=array(count,void)
+  for index=0 to count-1 value=render.vertex(map,first+index);if value is error then return value end if;positions[index]=value.position;for axis=0 to 2 center[axis]=center[axis]+value.position[axis] end for end for
   for axis=0 to 2 center[axis]=center[axis]/count end for
   radiusSquared=0.0
-  for index=0 to count-1 value=render.vertex(map,first+index);sum=0.0;for axis=0 to 2 delta=value.position[axis]-center[axis];sum=sum+delta*delta end for;if sum>radiusSquared then radiusSquared=sum end if end for
+  for each position in positions sum=0.0;for axis=0 to 2 delta=position[axis]-center[axis];sum=sum+delta*delta end for;if sum>radiusSquared then radiusSquared=sum end if end for
   return [center,n.fsqrt(radiusSquared)]
 end function
 
@@ -128,13 +132,24 @@ function buildCache(map,patchError)
     byFace[faceIndex]=[];offset=map.offsets[13]+faceIndex*FACE_STRIDE;textureIndexes[faceIndex]=i32(map,offset);kind=i32(map,offset+8);kinds[faceIndex]=kind
     if kind==render.MST_PLANAR or kind==render.MST_PATCH or kind==render.MST_TRIANGLE_SOUP then
       bounds=faceBounds(map,offset);if bounds is error then return bounds end if;centers[faceIndex]=bounds[0];radii[faceIndex]=bounds[1]
-      amount=faceTriangleCount(map,offset,patchError);if amount is error then return amount end if;counts[faceIndex]=amount
+      // Patch extraction already subdivides the control grid. Reuse its
+      // triangle count instead of running the same subdivision twice.
+      amount=0;faceData=void
+      if kind==render.MST_PATCH then
+        patchLimit=(render.MAX_GRID_SIZE-1)*(render.MAX_GRID_SIZE-1)*2
+        faceData=render.extractRetainedWithPatchError(map,[faceIndex],patchLimit,patchError);if faceData is error then return faceData end if
+        if faceData.truncated then return fail("patch exceeded renderer grid limit") end if
+        amount=faceData.triangleCount
+      else
+        amount=faceTriangleCount(map,offset,patchError);if amount is error then return amount end if
+        faceData=render.extractRetainedWithPatchError(map,[faceIndex],amount,patchError);if faceData is error then return faceData end if
+      end if
+      counts[faceIndex]=amount
       normals[faceIndex]=[f32(map,offset+84),f32(map,offset+88),f32(map,offset+92)]
       stored=nativeWorld.store(nativeFaces,faceIndex,kind,amount,centers[faceIndex],radii[faceIndex],normals[faceIndex]);if stored!=1 then return fail("native face cache rejected input") end if
       // Extract each face into its final bucket.  The former whole-map
       // extraction repeatedly appended to one ever-growing immutable array,
       // turning startup into quadratic copying on retail maps.
-      faceData=render.extractRetainedWithPatchError(map,[faceIndex],amount,patchError);if faceData is error then return faceData end if
       byFace[faceIndex]=faceData.triangles
     end if
   end for

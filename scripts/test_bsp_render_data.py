@@ -8,7 +8,7 @@ def main():
     out=ROOT/'build/reference/bsp_render_data';out.mkdir(parents=True,exist_ok=True)
     subprocess.run([sys.executable,ROOT/'scripts/build.py','--source','tests/bsp_render_data_contracts.ml','--output','bsp_render_data_contracts.exe'],cwd=ROOT,check=True)
     value=run([ROOT/'build/bsp_render_data_contracts.exe'],ROOT/'build',log=out/'contracts.log').strip()
-    expected='PASS: 63 BSP render-data contracts'
+    expected='PASS: 64 BSP render-data contracts'
     if value!=expected:raise RuntimeError(value)
     original_renderer=ROOT/'Quake-III-Arena-original-source/code/renderer/tr_bsp.c'
     (out/'bsp_lighting_shift_under_test.inc').write_text(extract(original_renderer,['R_ColorShiftLightingBytes']),encoding='utf-8',newline='\n')
@@ -37,7 +37,7 @@ def main():
         map_probe=run([ROOT/'build/bsp_render_data_map_probe.exe',retained],ROOT/'build',log=out/'q3dm1.log').strip()
         if not map_probe.startswith('PASS: BSP map rendered surfaces='):raise RuntimeError(map_probe)
     files=[original,original_renderer,original_curve,harness,normal_harness,ROOT/'src/mq3/format/bsp.ml',ROOT/'src/mq3/renderer/bsp_render_data.ml',ROOT/'tests/bsp_lighting_shift_oracle.ml',ROOT/'tests/bsp_patch_normals_oracle.ml',ROOT/'tests/bsp_render_data_contracts.ml',ROOT/'tests/bsp_render_data_map_probe.ml']
-    report={'passed':True,'records':len(native.splitlines()),'normal_records':len(native_normals.splitlines()),'contracts':63,'functions':['R_ColorShiftLightingBytes','MakeMeshNormals'],'q3dm1':map_probe,'scope':'BSP46 planar, triangle-soup, quadratic MST_PATCH and inline brush-model extraction with Baseq3-style perpendicular-error subdivision, de Casteljau insertion, 65-point axis ceilings, collinear row/column removal and exact wrapped/degenerate-neighbour patch normal reconstruction; positions, source vertex identity, base/lightmap UVs, byte-averaged vertex colors, shader/lightmap indexes and names, stable face order, strict limits, complete validation, RGB/RGBA lightmap decoding, and exact Baseq3 overbright color shifting with chromatic normalization.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
+    report={'passed':True,'records':len(native.splitlines()),'normal_records':len(native_normals.splitlines()),'contracts':64,'functions':['R_ColorShiftLightingBytes','MakeMeshNormals'],'q3dm1':map_probe,'scope':'BSP46 planar, triangle-soup, quadratic MST_PATCH and inline brush-model extraction with Baseq3-style perpendicular-error subdivision, de Casteljau insertion, 65-point axis ceilings and original 32-point source patch limit, collinear row/column removal and exact wrapped/degenerate-neighbour patch normal reconstruction; positions, source vertex identity, base/lightmap UVs, byte-averaged vertex colors, shader/lightmap indexes and names, stable face order, strict limits, complete validation, RGB/RGBA lightmap decoding, and exact Baseq3 overbright color shifting with chromatic normalization.','sources':{str(p.relative_to(ROOT)).replace('\\','/'):sha(p) for p in files}}
     (out/'result.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
-    print(f"PASS: {report['records']} exact lighting-shift + {report['normal_records']} exact patch-normal records + 63 BSP render-data contracts")
+    print(f"PASS: {report['records']} exact lighting-shift + {report['normal_records']} exact patch-normal records + 64 BSP render-data contracts")
 if __name__=='__main__':main()

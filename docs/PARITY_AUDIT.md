@@ -4,6 +4,28 @@ Stand: 2026-11-21. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Weiteres Performance- und Code-Audit, 21. November 2026
+
+Der produktive Retained-World-Cache unterteilt Patchflächen nicht mehr ein
+zweites Mal allein für die Dreieckszählung. Flächenschwerpunkt und Radius
+verwenden dieselben einmal dekodierten Vertexpositionen. Beschädigte PVS-
+Tabellen werden vor dem Bytezugriff auf vollständige Zeilen und Lumpgrenzen
+geprüft. Patch-Kontrollgitter über der originalen 32×32-Grenze werden vor
+der Unterteilung abgewiesen. Der isolierte synthetische Patch-Cache-Vergleich ergab bei 200
+Patchflächen × drei Cache-Aufbauten 203 ms zuvor und 109–110 ms mit der
+einfachen Patch-Extraktion; beide lieferten 19.200 Dreiecke. Eine Retail-
+Ladezeit oder Spiel-FPS wurde damit nicht gemessen. Die Befunde, offene
+Risiken und Testgrenzen stehen in
+[`verification/2026-11-21-performance-code-audit.md`](verification/2026-11-21-performance-code-audit.md).
+
+`python scripts/build.py` baut `MiniQuake3.exe`. Die gezielten Tests bestehen
+mit 45 World-Surface-, 64 BSP-Render- und 51 Retained-World-Verträgen sowie
+7 Lighting- und 75 Patch-Normalen-Referenzdatensätzen. Der gezielte
+`verify.py`-Wiederanlauf bei `test_message_state_delta.py` scheitert am
+unveränderten Compilerfehler `unknown data patch target: switch_case_body_22681_0`.
+`D:/Quake3/baseq3/pak0.pk3` fehlt weiterhin; Retail-Ladezeit und Spiel-FPS
+sind für dieses Paket daher nicht abgenommen.
+
 ## BSP-Extraktion und Ladezeit, 21. November 2026
 
 Der produktive `bsp_render_data`-Extraktor kopierte bisher beim Anfügen jedes

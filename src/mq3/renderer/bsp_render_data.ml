@@ -10,6 +10,7 @@ const MST_PATCH = 2
 const MST_TRIANGLE_SOUP = 3
 const DEFAULT_PATCH_ERROR = 4.0
 const MAX_GRID_SIZE = 65
+const MAX_PATCH_SIZE = 32
 const VERTEX_STRIDE = 44
 const FACE_STRIDE = 104
 const LIGHTMAP_WIDTH = 128
@@ -234,7 +235,7 @@ function extractMode(map,faceIndexes,maxTriangles,patchError,shareFaceVertices)
         if kind==MST_PATCH then
           patchSurfaceCount=patchSurfaceCount+1
           width=i32(map,faceOffset+96);height=i32(map,faceOffset+100)
-          if width is error or height is error or width<3 or height<3 or width>129 or height>129 or width%2==0 or height%2==0 or width*height!=numVerts then return fail("invalid patch control grid") end if
+          if width is error or height is error or width<3 or height<3 or width>MAX_PATCH_SIZE or height>MAX_PATCH_SIZE or width%2==0 or height%2==0 or width*height!=numVerts then return fail("invalid patch control grid") end if
           control=array(numVerts,void);for controlIndex=0 to numVerts-1 value=vertex(map,firstVert+controlIndex);if value is error then return value end if;control[controlIndex]=value end for
           patch=appendPatch(triangles,control,width,height,textureIndex,lightmapIndex,fogIndex,faceIndex,maxTriangles,patchError)
           triangleCount=triangleCount+patch[0];if patch[1] then truncated=true end if

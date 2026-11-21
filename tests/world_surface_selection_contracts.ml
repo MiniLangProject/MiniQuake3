@@ -31,9 +31,24 @@ function fixture()
   offsets[16]=2000;lengths[16]=10;counts[16]=10;putI(data,2000,2);putI(data,2004,1);data[2008]=1;data[2009]=2
   return bsp.BSP(data,offsets,lengths,counts)
 end function
+function patchFixture()
+  data=bytes(1024,0);offsets=array(17,0);lengths=array(17,0);counts=array(17,0)
+  counts[1]=1;offsets[1]=0;lengths[1]=72
+  counts[10]=9;offsets[10]=72;lengths[10]=396
+  for row=0 to 2 for column=0 to 2
+    index=row*3+column;at=72+index*44;putF(data,at,column*1.0);putF(data,at+4,row*1.0)
+    height=0.0;if row==1 and column==1 then height=32.0 end if;putF(data,at+8,height)
+  end for end for
+  counts[13]=1;offsets[13]=480;lengths[13]=104
+  putI(data,480,0);putI(data,488,render.MST_PATCH);putI(data,492,0);putI(data,496,9);putI(data,508,-1);putI(data,576,3);putI(data,580,3)
+  return bsp.BSP(data,offsets,lengths,counts)
+end function
 
 function main(args)
   c=0;map=fixture();camera=viewer.camera([10.0,0.0,0.0],0.0,0.0,0.0,0.0)
+  noVis=fixture();noVis.lengths[16]=0;c=c+require(selection.pvsContains(noVis,0,1),"absent visibility lump keeps no-vis fallback")
+  shortVis=fixture();shortVis.lengths[16]=8;c=c+require(not selection.pvsContains(shortVis,0,0),"truncated PVS row is rejected")
+  wideVis=fixture();putI(wideVis.data,2004,100);c=c+require(not selection.pvsContains(wideVis,0,0),"out-of-lump PVS row is rejected")
   cfg=selection.config(800,600,90.0,1.0,200.0,1,true,render.DEFAULT_PATCH_ERROR)
   chosen=selection.choose(map,camera,cfg)
   c=c+require(chosen.pvsUsed and chosen.cameraLeaf==0 and chosen.cameraCluster==0,"camera leaf and PVS")
@@ -51,6 +66,11 @@ function main(args)
   c=c+require(len(prepared.renderData.triangles)==2 and not prepared.renderData.truncated,"render-data integration")
   cache=selection.buildCache(map,render.DEFAULT_PATCH_ERROR)
   c=c+require(cache.totalTriangleCount==6 and len(cache.trianglesByFace[5])==1,"one-time complete geometry cache")
+  c=c+require(cache.faceCenters[0][0]==100.0 and cache.faceCenters[0][1]==0.0 and cache.faceRadii[0]>1.33 and cache.faceRadii[0]<1.34,"cached face centroid and radius retain exact geometry")
+  patchMap=patchFixture();patchReference=render.extractRetainedWithPatchError(patchMap,[0],8192,render.DEFAULT_PATCH_ERROR)
+  patchCache=selection.buildCache(patchMap,render.DEFAULT_PATCH_ERROR)
+  c=c+require(patchCache.totalTriangleCount==patchReference.triangleCount and len(patchCache.trianglesByFace[0])==len(patchReference.triangles),"patch cache uses complete extracted triangle count")
+  c=c+require(patchCache.trianglesByFace[0][0].vertices[0].position==patchReference.triangles[0].vertices[0].position and patchCache.trianglesByFace[0][len(patchReference.triangles)-1].triangleIndex==patchReference.triangles[len(patchReference.triangles)-1].triangleIndex,"patch cache preserves tessellation order and vertices")
   cachedChoice=selection.chooseCached(cache,camera,cfg)
   c=c+require(cachedChoice.faceIndexes==[1,0],"cached camera selection matches direct selection")
   cached=selection.prepareCached(cache,camera,cfg)

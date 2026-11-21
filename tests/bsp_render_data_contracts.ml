@@ -109,6 +109,7 @@ function main(args)
   bad=fixture();bad.offsets[14]=2000;count=count+require(try(render.lightmapRgb(bad,0)) is error,"lightmap storage bounds")
   bad=fixture();putI(bad.data,1004+20,9);count=count+require(try(render.extract(bad,[0,1],2)) is error,"validation continues after limit")
   bad=fixture();putI(bad.data,1108+96,4);count=count+require(try(render.extract(bad,[2],20)) is error,"patch width must be odd")
+  bad=fixture();bad.counts[10]=104;putI(bad.data,1108+16,99);putI(bad.data,1108+96,33);count=count+require(try(render.extract(bad,[2],20)) is error,"patch width respects original MAX_PATCH_SIZE 32")
   print("PASS: "+str(count)+" BSP render-data contracts")
   return 0
 end function
