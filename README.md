@@ -48,8 +48,8 @@ source and binary hashes, renderer details and test limits are recorded in the
   batches and a software-rendering fallback.
 - **Desktop integration:** keyboard and mouse input, configurable bindings
   transferred from the menu into a match, and continued operation when no
-  audio output device is available. Full desktop persistence remains separate
-  from the verified core correction set.
+  audio output device is available. Bindings and archived settings persist
+  across launches.
 - **Evidence-oriented development:** original-source comparisons, compiled
   contracts, retail probes and reproducible screenshot captures.
 
@@ -193,6 +193,21 @@ window if the graphics driver cannot switch to the selected display mode.
 Live mode changes scale the QVM's existing logical viewport to the new surface.
 Controls, archived settings and single-player placement use the local
 `baseq3/q3config.cfg` beside the executable.
+
+## Multiplayer, demos and mods
+
+- Join through **Multiplayer** or enter `connect 192.0.2.10:27960` in the
+  in-game console, substituting your server address. The Windows client
+  supports IPv4 protocol-68 servers. Pure Baseq3 joins require matching local
+  PK3s with 1.32-compatible client QVMs. Early CD-only QVMs use an older ABI.
+  The client does not download missing packages.
+- Use **Demos** to play a `.dm_68` recording in `baseq3/demos` (or the active
+  mod's `demos` directory). The console command is `demo <name>`.
+- Put each mod in its own directory beside `baseq3` and select it in
+  **Mods**. From the console, use `set fs_game <directory>; fs_restart`.
+  Mods can supply assets and Quake III 1.32 QVMs, and use their own
+  `q3config.cfg`. Native DLL mods, Pure mod servers, demo recording and
+  Timedemo on the Windows path remain open.
 
 ## Tests and verification
 

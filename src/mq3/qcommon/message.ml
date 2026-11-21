@@ -19,8 +19,13 @@ struct Message
   codec
 end struct
 
+function initStorageWithCodec(data,length,oob,codec)
+  if codec==void then codec=huffman.initMessageStatic() end if
+  return Message(false,false,oob,data,length,0,0,0,codec)
+end function
+
 function initStorage(data,length,oob)
-  return Message(false,false,oob,data,length,0,0,0,huffman.initMessageStatic())
+  return initStorageWithCodec(data,length,oob,void)
 end function
 
 function init(length)

@@ -465,3 +465,159 @@ API int mq3_world_filter(const unsigned char *records,int recordBytes,int faceCo
     write32(output+24,read32(previous+4)==selected&&memcmp(output+32,previous+32,(size_t)selected*4)==0);
     memcpy(previous,output,32+(size_t)selected*4);_mm_setcsr(savedControl);return 1;
 }
+
+
+/* CM_TransformedBoxTrace against the six axial planes of CM_TempBoxModel.
+ * World traversal, capsule traces and ownership of the result stay in MiniLang.
+ * A negative return sends unusual or non-finite input through the checked path.
+ */
+static int trace_transformed_box(const float start[3], const float end[3],
+                                 const float mins[3], const float maxs[3],
+                                 const float origin[3], const float box_min[3],
+                                 const float box_max[3], int matches_mask,
+                                 float result[5]) {
+    float a[3], b[3], lo[3], hi[3], enter = -1.0f, leave = 1.0f;
+    int stationary = 1, startout = 0, getout = 0, leading = -1, hit = 0;
+    result[0] = 1.0f;
+    result[1] = 0.0f;
+    for (int i = 0; i < 3; ++i) {
+        if (!isfinite(start[i]) || !isfinite(end[i]) || !isfinite(origin[i]) ||
+            !isfinite(mins[i]) || !isfinite(maxs[i]) || mins[i] > maxs[i]) return -1;
+        float center = (mins[i] + maxs[i]) * 0.5f;
+        lo[i] = mins[i] - center;
+        hi[i] = maxs[i] - center;
+        a[i] = (start[i] + center) - origin[i];
+        b[i] = (end[i] + center) - origin[i];
+        if (!isfinite(lo[i]) || !isfinite(hi[i]) || !isfinite(a[i]) || !isfinite(b[i])) return -1;
+        if (a[i] != b[i]) stationary = 0;
+        /* CM_Trace recenters the transformed bounds again. */
+        center = (lo[i] + hi[i]) * 0.5f;
+        a[i] += center;
+        b[i] += center;
+        lo[i] -= center;
+        hi[i] -= center;
+        if (!isfinite(a[i]) || !isfinite(b[i]) || !isfinite(end[i] - start[i])) return -1;
+    }
+    if (matches_mask && stationary) {
+        hit = 2;
+        for (int i = 0; i < 3; ++i) {
+            if (a[i] + lo[i] > box_max[i] || a[i] + hi[i] < box_min[i]) hit = 0;
+        }
+        if (hit == 2) result[0] = 0.0f;
+    } else if (matches_mask) {
+        for (int side = 0; side < 6; ++side) {
+            int i = side / 2, negative = side & 1;
+            float plane = negative ? -box_min[i] : box_max[i];
+            float distance = plane - (negative ? -hi[i] : lo[i]);
+            float d1 = (negative ? -a[i] : a[i]) - distance;
+            float d2 = (negative ? -b[i] : b[i]) - distance;
+            if (!isfinite(d1) || !isfinite(d2)) return -1;
+            if (d1 > 0.0f && (d2 >= 0.125f || d2 >= d1)) goto done;
+            if (d1 > 0.0f) startout = 1;
+            if (d2 > 0.0f) getout = 1;
+            if (d1 <= 0.0f && d2 <= 0.0f) continue;
+            float delta = d1 - d2;
+            if (!isfinite(delta)) return -1;
+            if (d1 > d2) {
+                float fraction = (float)(((double)d1 - 0.125) / (double)delta);
+                if (fraction < 0.0f) fraction = 0.0f;
+                if (fraction > enter) { enter = fraction; leading = side; }
+            } else {
+                float fraction = (float)(((double)d1 + 0.125) / (double)delta);
+                if (fraction < leave) leave = fraction;
+            }
+        }
+        if (!startout) {
+            hit = getout ? 1 : 2;
+            if (!getout) result[0] = 0.0f;
+        } else if (enter < leave && leading >= 0) {
+            hit = 3 + leading;
+            result[0] = enter;
+            result[1] = (leading & 1) ? -box_min[leading / 2] : box_max[leading / 2];
+        }
+    }
+done:
+    for (int i = 0; i < 3; ++i) result[2 + i] = start[i] + result[0] * (end[i] - start[i]);
+    return hit;
+}
+
+API int mq3_trace_transformed_box(
+    double ax, double ay, double az, double bx, double by, double bz,
+    double lx, double ly, double lz, double hx, double hy, double hz,
+    double ox, double oy, double oz, double tx, double ty, double tz,
+    double ux, double uy, double uz, int matches_mask, unsigned char *output) {
+    unsigned int saved = _mm_getcsr();
+    _mm_setcsr((saved & ~0xe07fU) | 0x1f80U);
+    float start[3] = {(float)ax, (float)ay, (float)az};
+    float end[3] = {(float)bx, (float)by, (float)bz};
+    float mins[3] = {(float)lx, (float)ly, (float)lz};
+    float maxs[3] = {(float)hx, (float)hy, (float)hz};
+    float origin[3] = {(float)ox, (float)oy, (float)oz};
+    float box_min[3] = {(float)tx, (float)ty, (float)tz};
+    float box_max[3] = {(float)ux, (float)uy, (float)uz};
+    float result[5];
+    int hit = trace_transformed_box(start, end, mins, maxs, origin, box_min, box_max, matches_mask, result);
+    if (hit >= 0) memcpy(output, result, sizeof(result));
+    _mm_setcsr(saved);
+    return hit;
+}
+
+
+static float collision_dot(const float a[3], const float b[3]) {
+    return (a[0] * b[0] + a[1] * b[1]) + a[2] * b[2];
+}
+
+/* Return the matching side with the earliest opposing plane, or the
+ * startsolid/allsolid status. BSP order, masks and patches stay in MiniLang. */
+static int trace_convex_brush(const unsigned char *planes, int plane_bytes,
+                              const float start[3], const float end[3],
+                              const float mins[3], const float maxs[3],
+                              float limit, float *result) {
+    float enter = -1.0f, leave = 1.0f;
+    int startout = 0, getout = 0, leading = -1;
+    for (int offset = 0; offset < plane_bytes; offset += 16) {
+        float p[4], corner[3];
+        memcpy(p, planes + offset, sizeof(p));
+        for (int i = 0; i < 3; ++i) corner[i] = p[i] < 0.0f ? maxs[i] : mins[i];
+        float distance = p[3] - collision_dot(corner, p);
+        float d1 = collision_dot(start, p) - distance;
+        float d2 = collision_dot(end, p) - distance;
+        if (!isfinite(d1) || !isfinite(d2)) return -1;
+        if (d1 > 0.0f && (d2 >= 0.125f || d2 >= d1)) return 0;
+        if (d1 > 0.0f) startout = 1;
+        if (d2 > 0.0f) getout = 1;
+        if (d1 <= 0.0f && d2 <= 0.0f) continue;
+        float delta = d1 - d2;
+        if (!isfinite(delta)) return -1;
+        if (d1 > d2) {
+            float fraction = (float)(((double)d1 - 0.125) / (double)delta);
+            if (fraction < 0.0f) fraction = 0.0f;
+            if (fraction > enter) { enter = fraction; leading = offset / 16; }
+        } else {
+            float fraction = (float)(((double)d1 + 0.125) / (double)delta);
+            if (fraction < leave) leave = fraction;
+        }
+    }
+    if (!startout && plane_bytes != 0) return getout ? 1 : 2;
+    if (leading < 0 || !(enter < leave && enter < limit)) return 0;
+    *result = enter;
+    return leading + 3;
+}
+
+API int mq3_trace_convex_brush(const unsigned char *planes, int plane_bytes,
+    double ax, double ay, double az, double bx, double by, double bz,
+    double lx, double ly, double lz, double hx, double hy, double hz,
+    double limit, unsigned char *output) {
+    if (plane_bytes < 0 || plane_bytes % 16 != 0) return -1;
+    unsigned int saved = _mm_getcsr();
+    _mm_setcsr((saved & ~0xe07fU) | 0x1f80U);
+    float start[3] = {(float)ax, (float)ay, (float)az};
+    float end[3] = {(float)bx, (float)by, (float)bz};
+    float mins[3] = {(float)lx, (float)ly, (float)lz};
+    float maxs[3] = {(float)hx, (float)hy, (float)hz};
+    float fraction = 1.0f;
+    int hit = trace_convex_brush(planes, plane_bytes, start, end, mins, maxs, (float)limit, &fraction);
+    if (hit >= 3) memcpy(output, &fraction, sizeof(fraction));
+    _mm_setcsr(saved);
+    return hit;
+}

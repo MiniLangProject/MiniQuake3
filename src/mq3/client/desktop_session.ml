@@ -27,10 +27,15 @@ struct Session
   configLoaded
   videoRestart
   restartCommands
+  activeGame
+  requestedGame
+  target
+  notice
+  transitionCommands
 end struct
 
 function create(dataRoot)
-  return Session(dataRoot,"","",false,void,void,0,false,false,[])
+  return Session(dataRoot,"","",false,void,void,0,false,false,[],"","","","","")
 end function
 
 function bindingText(host) return bindings.bindingText(host.bindingState) end function
@@ -90,6 +95,7 @@ function capture(state,session)
     // Keep the ordered tail, including wait/addbot/team emitted by Start Server.
     if state.context.commandState.buffer!="" then session.restartCommands=[state.context.commandState.buffer] end if
   end if
+  if session.action=="mod" then session.transitionCommands=state.context.commandState.buffer end if
   if session.action=="map" or session.action=="restart" then
     session.settings.pendingBotCommands=session.restartCommands
   end if
@@ -106,10 +112,7 @@ function mapCommand(commandState,session)
   name=strings.toLowerAscii(commands.argv(commandState,1))
   relative="maps/"+name+".bsp"
   if match.desktopFilePath(session.dataRoot,relative)=="" then commands.emit(commandState,"Invalid map name: "+name+"\n");return false end if
-  found=false;for each entry in commandState.context.context.archive.entries
-    if stringEqualsIgnoreCaseAscii(entry.name,relative) then found=true;break end if
-  end for
-  if not found then commands.emit(commandState,"Can't find "+relative+"\n");return false end if
+  if not pk3.has(commandState.context.context.archive,relative) then commands.emit(commandState,"Can't find "+relative+"\n");return false end if
   verb=strings.toLowerAscii(commands.argv(commandState,0))
   session.singlePlayer=verb=="spmap" or verb=="spdevmap"
   registry=commandState.context.context.cvars
@@ -147,7 +150,23 @@ function levelselectCommand(commandState,session)
 end function
 
 function quitCommand(commandState,session) session.action="quit";deferCommandTail(commandState);return true end function
-function videoCommand(commandState,session) session.videoRestart=true;return true end function
+function requestedGame(commandState)
+  value=cvar.find(commandState.context.context.cvars,"fs_game")
+  if value.latchedString!=void then return value.latchedString end if
+  return value.string
+end function
+function restartFilesystem(commandState,session)
+  session.requestedGame=requestedGame(commandState)
+  session.action="mod";deferCommandTail(commandState)
+  return true
+end function
+function videoCommand(commandState,session)
+  game=requestedGame(commandState)
+  if stringEqualsIgnoreCaseAscii(game,session.activeGame) or (game=="baseq3" and session.activeGame=="") then
+    session.videoRestart=true;return true
+  end if
+  return restartFilesystem(commandState,session)
+end function
 function musicCommand(commandState,session)
   count=commands.argc(commandState)
   if count!=2 and count!=3 then commands.emit(commandState,"usage: music <intro> [loop]\n");return false end if
@@ -161,13 +180,12 @@ function stopMusicCommand(commandState,session)
   return true
 end function
 
-function unsupportedCommand(commandState,session)
-  name=commands.argv(commandState,0);notice="This MiniQuake3 build cannot start '"+name+"' from this menu."
-  cvar.set(commandState.context.context.cvars,"com_errorMessage",notice)
-  if commandState.context.game==void then match.setUiMenu(commandState.context,1)
-  else session.action="menu"
-  end if
-  return false
+function streamCommand(commandState,session)
+  name=strings.toLowerAscii(commands.argv(commandState,0))
+  if commands.argc(commandState)!=2 then commands.emit(commandState,"usage: "+name+" <name>\n");return false end if
+  session.target=commands.argv(commandState,1)
+  session.action=name;deferCommandTail(commandState)
+  return true
 end function
 
 function attach(state,session)
@@ -180,7 +198,12 @@ function attach(state,session)
   host=config.services();host.context=settingsHost;host.writeFn=writeConfig;host.bindingTextFn=bindingText;host.printFn=configPrint
   session.persistence=config.create(context.cvars,host)
   installed=config.installCommand(session.persistence,commandState);if installed is error then return installed end if
-  handlers=[["map",mapCommand],["spmap",mapCommand],["devmap",mapCommand],["spdevmap",mapCommand],["map_restart",restartCommand],["disconnect",disconnectCommand],["levelselect",levelselectCommand],["quit",quitCommand],["vid_restart",videoCommand],["music",musicCommand],["stopmusic",stopMusicCommand],["connect",unsupportedCommand],["demo",unsupportedCommand],["fs_restart",unsupportedCommand]]
+  cvar.get(context.cvars,"fs_game",session.activeGame,0)
+  cvar.set(context.cvars,"fs_game",session.activeGame)
+  if session.notice!="" then
+    cvar.set(context.cvars,"com_errorMessage",session.notice);session.notice=""
+  end if
+  handlers=[["map",mapCommand],["spmap",mapCommand],["devmap",mapCommand],["spdevmap",mapCommand],["map_restart",restartCommand],["disconnect",disconnectCommand],["levelselect",levelselectCommand],["quit",quitCommand],["vid_restart",videoCommand],["music",musicCommand],["stopmusic",stopMusicCommand],["connect",streamCommand],["demo",streamCommand],["fs_restart",restartFilesystem]]
   for each handler in handlers
     if not commands.addContextCommand(commandState,handler[0],handler[1],session) then return error(7688,"Desktop command already registered: "+handler[0]) end if
   end for
@@ -194,6 +217,9 @@ function attach(state,session)
   playerDefaults=[["name","Sarge"],["rate","25000"],["snaps","20"],["model","sarge"],["headmodel","sarge"],["team_model","james"],["team_headmodel","*james"],["color1","4"],["color2","5"],["handicap","100"],["sex","male"],["cl_anonymous","0"],["cg_predictItems","1"]]
   for each option in playerDefaults cvar.get(context.cvars,option[0],option[1],cvar.ARCHIVE|cvar.USERINFO) end for
   cvar.set(context.cvars,"cl_paused","0")
+  if session.transitionCommands!="" then
+    commands.addText(commandState,session.transitionCommands);session.transitionCommands=""
+  end if
   session.savedBindings=context.cgameKeys.bindingSerial
   session.settings=void
   session.persistence.fullyInitialized=true

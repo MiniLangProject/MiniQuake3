@@ -46,8 +46,11 @@ function configString(state,index)
   if index<0 or index>=MAX_CONFIGSTRINGS then return error(6900,"gamestate: configstring index") end if
   offset=state.stringOffsets[index]
   if offset<=0 then return "" end if
-  data=[];while offset<len(state.stringData) and state.stringData[offset]!=0 data=data+[state.stringData[offset]];offset=offset+1 end while
-  return decode(bytes(data))
+  finish=offset
+  while finish<len(state.stringData) and state.stringData[finish]!=0
+    finish=finish+1
+  end while
+  return decode(slice(state.stringData,offset,finish-offset))
 end function
 
 function parse(state,msg)

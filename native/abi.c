@@ -76,6 +76,18 @@ MQ3_BINARY32(fsub,1)
 MQ3_BINARY32(fmul,2)
 MQ3_BINARY32(fdiv,3)
 #undef MQ3_BINARY32
+/* Round each product and addition separately in the original dot order.
+ * One MXCSR scope replaces five calls across the MiniLang ABI. */
+API double mq3_dot3(double ax, double ay, double az, double bx, double by, double bz) {
+    unsigned int saved = mq3_binary32_enter();
+    uint32_t x = mq3_binary_bits(mq3_narrow_bits(ax), mq3_narrow_bits(bx), 2);
+    uint32_t y = mq3_binary_bits(mq3_narrow_bits(ay), mq3_narrow_bits(by), 2);
+    uint32_t z = mq3_binary_bits(mq3_narrow_bits(az), mq3_narrow_bits(bz), 2);
+    double result = mq3_widen_bits(mq3_binary_bits(mq3_binary_bits(x, y, 0), z, 0));
+    _mm_setcsr(saved);
+    return result;
+}
+
 API uint32_t mq3_fsqrt_bits(uint32_t value) {
     unsigned int saved=mq3_binary32_enter();uint32_t result=mq3_sqrt_bits(value);
     _mm_setcsr(saved);return result;

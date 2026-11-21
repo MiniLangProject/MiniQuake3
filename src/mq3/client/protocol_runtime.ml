@@ -21,8 +21,8 @@ function gamestateCommand(dispatcher,msg)
   old=dispatcher.snapshotState;fresh=snapshotCommand.create()
   fresh.serverMessageSequence=old.serverMessageSequence;fresh.outgoingSequence=old.outgoingSequence
   fresh.realtime=old.realtime;fresh.demoWaiting=old.demoWaiting
+  parsed=try(gamestate.parse(runtime.gamestateState,msg));if parsed is error then return parsed end if
   dispatcher.snapshotState=fresh
-  gamestate.parse(runtime.gamestateState,msg)
   dispatcher.serverCommandSequence=runtime.gamestateState.serverCommandSequence
   dispatcher.snapshotState.serverCommandSequence=dispatcher.serverCommandSequence
   dispatcher.snapshotState.entityState.entityBaselines=runtime.gamestateState.baselines

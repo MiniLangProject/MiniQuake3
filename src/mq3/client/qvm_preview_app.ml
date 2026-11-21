@@ -9,6 +9,8 @@ import mq3.client.desktop_session as desktopSession
 import mq3.client.desktop_video as desktopVideo
 import mq3.client.cinematic_runtime as cinematics
 import mq3.client.cgame_clock as cgameClock
+import mq3.client.demo_playback as demos
+import mq3.client.remote_play as remote
 import mq3.client.qvm_frame_input as frameInput
 import mq3.client.cgame_vm as cgameVm
 import mq3.qcommon.command_buffer as inputCommands
@@ -72,6 +74,7 @@ struct NativeInput mouse keys end struct
 struct ClientInputBridge frame plan ui matchState end struct
 struct PipelineProfile expansion material batch end struct
 struct ScreenPoint x y depth end struct
+struct StreamSource transport protocol demo name systemInfo end struct
 
 function fail(message) return error(7682,"QVM preview: "+message) end function
 function framePercentile(histogram,count,percent)
@@ -229,11 +232,15 @@ function advanceGameTick(state,clientClock,serverTime)
   published=cgameClock.publishSnapshot(clientClock,state.context.snapshotNumber,snapshot.serverTime,0);if published is error then return published end if
   return snapshot
 end function
-function drawFrame(state,clientClock,realtime)
+function drawFrame(state,clientClock,realtime,demoTime)
   begun=match.beginRendererFrame(state);if begun is error then return begun end if
-  frameTime=cgameClock.frame(clientClock,realtime);if frameTime is error then return frameTime end if
-  if not frameTime.draw and not (clientClock.state.serverPaused and clientClock.state.connectionState==8) then return false end if
-  drawn=match.drawCgameProductiveInFrame(state,frameTime.serverTime);if drawn is error then return drawn end if
+  drawTime=demoTime
+  if drawTime==void then
+    frameTime=cgameClock.frame(clientClock,realtime);if frameTime is error then return frameTime end if
+    if not frameTime.draw and not (clientClock.state.serverPaused and clientClock.state.connectionState==8) then return false end if
+    drawTime=frameTime.serverTime
+  end if
+  drawn=match.drawCgameProductiveInFrame(state,drawTime);if drawn is error then return drawn end if
   if len(state.context.errors)>0 then return fail(state.context.errors[0]) end if
   return drawn
 end function
@@ -319,11 +326,57 @@ end function
 function bootFrameSettings(archive,map,qvmRoot,settings) return bootFrameSettingsNamed(archive,map,"q3dm1",qvmRoot,settings) end function
 function bootFrame(archive,map,qvmRoot) return bootFrameSettings(archive,map,qvmRoot,void) end function
 
-function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session)
+function bootMatch(archive,map,mapName,qvmRoot,settings,source)
+  if source==void then return bootFrameSettingsNamed(archive,map,mapName,qvmRoot,settings) end if
+  state=try(match.bootServerStream(archive,map,mapName,qvmRoot,settings,source.protocol,source.demo,source.name,1000))
+  if state is error then return state end if
+  drawn=try(match.drawCgameProductive(state,state.context.latestSnapshot.serverTime))
+  if drawn is error then match.shutdown(state);return drawn end if
+  if len(state.context.errors)>0 then
+    reason=state.context.errors[0];match.shutdown(state);return fail(reason)
+  end if
+  state.context.now=1000
+  return state
+end function
+
+function updateStream(state,source,clientClock,serverTime,demoTime)
+  if source.demo then
+    read=try(demos.advance(source.transport,demoTime,serverTime));if read is error then return read end if
+  else
+    received=try(remote.pump(source.transport,serverTime,64));if received is error then return received end if
+  end if
+  synced=try(match.refreshServerStream(state,serverTime));if synced is error or not synced then return synced end if
+  if not source.demo and state.context.snapshotNumber!=clientClock.snapshotNumber then
+    snap=source.protocol.dispatcher.snapshotState.snap
+    cgameClock.publishSnapshot(clientClock,snap.messageNum,snap.serverTime,snap.snapFlags)
+  end if
+  return true
+end function
+
+function sendStreamFrame(state,source,created,now)
+  systemInfo=state.context.configstrings[1]
+  if systemInfo!=source.systemInfo then
+    remote.updateServerSystemInfo(source.transport,systemInfo);source.systemInfo=systemInfo
+  end if
+  registry=state.context.cvars
+  if (registry.modifiedFlags&cvar.USERINFO)!=0 then
+    updated=try(remote.updateUserinfo(source.transport,cvar.infoString(registry,cvar.USERINFO)))
+    if updated is error then return updated end if
+    registry.modifiedFlags=registry.modifiedFlags&(~cvar.USERINFO)
+  end if
+  for each command in match.takeStreamCommands(state)
+    queued=try(remote.queueReliable(source.transport,command));if queued is error then return queued end if
+  end for
+  if created==void then return false end if
+  recorded=try(match.recordLocalUsercmd(state.context,0,created));if recorded is error then return recorded end if
+  return remote.writeFrame(source.transport,created,now)
+end function
+
+function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
   if archive==void or map==void or maxFrames==0 or maxFrames< -1 then return fail("invalid launch input") end if
   opened=window.open(SOURCE_WIDTH,SOURCE_HEIGHT);if opened is error then return opened end if
   startupAt=window.milliseconds();loading=window.showLoading(3,"Booting original game and cgame QVMs");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
-  state=bootFrameSettingsNamed(archive,map,mapName,qvmRoot,settings);if state is error then window.shutdown();return state end if
+  state=try(bootMatch(archive,map,mapName,qvmRoot,settings,source));if state is error then return state end if
   mode=desktopVideo.open(state.context.cvars);if mode is error then window.shutdown();match.shutdown(state);return mode end if
   qvmBootAt=window.milliseconds();loading=window.showLoading(24,"Booting original UI QVM");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
   if session==void then ensurePlayableBindings(state) end if
@@ -398,8 +451,12 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session)
   window.inputClear();discardedEvents=window.inputEvents(256);if discardedEvents is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return discardedEvents end if
   state.context.console=[];quitRequested=false;uploadedSceneSlot=qvmCatalog.nextTextureSlot;uploadedHudTextures=len(hudCatalog.textures);soundAssetCount=len(state.context.assets);simulationMs=0;gameMs=0;cgameMs=0;uiMs=0;geometryMs=0;batchMs=0;renderMs=0;audioMs=0;totalMs=0;pipelineProfile=PipelineProfile(0,0,0);simulationTicks=0;simulationTime=state.context.now;simulationStart=simulationTime;realStart=window.milliseconds()
   previousWall=realStart;hostTime=simulationStart;wasPaused=false;lastSave=realStart
+  demoPlaying=source!=void and source.demo
+  initialDemoTime=state.context.latestSnapshot.serverTime
+  streamFailure=void
   pauseRequest=cvar.get(state.context.cvars,"cl_paused","0",0)
-  frameState=frameInput.create(state.context.latestSnapshot.playerState.viewangles,state.context.latestSnapshot.playerState.delta_angles,simulationStart,simulationStart);if frameState is error then window.shutdown();match.shutdown(state);return frameState end if
+  if source!=void then simulationStart=realStart;hostTime=simulationStart end if
+  frameState=frameInput.create(state.context.latestSnapshot.playerState.viewangles,state.context.latestSnapshot.playerState.delta_angles,simulationStart,state.context.latestSnapshot.serverTime);if frameState is error then window.shutdown();match.shutdown(state);return frameState end if
   frameInput.bindConfig(frameState,state.context.cvars)
   initialPlan=frameInput.prepare(frameState,simulationStart,state.context.commandNumber,clientClock.state.connectionState,true,false,false);inputBridge=ClientInputBridge(frameState,initialPlan,ui,state);match.attachInputClear(state,inputBridge,clearClientInput)
   worldSelectMs=0;worldRebuildMs=0;worldEffectsMs=0;portalPrepareMs=0;worldRebuildCount=0
@@ -410,6 +467,9 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session)
     // wall time so a single stall cannot trigger more stalls while catching up.
     frameMsec=frameTiming.elapsed(previousWall,startedAt);if frameMsec>200 then frameMsec=200 end if;previousWall=startedAt
     serverTime=hostTime;if not wasPaused then serverTime=serverTime+frameMsec end if
+    if source!=void then serverTime=startedAt end if
+    demoTime=void
+    if demoPlaying then demoTime=initialDemoTime+frameTiming.elapsed(realStart,startedAt) end if
     begun=inputLatch.beginFrame(nativeInput.keys);if begun is error then window.shutdown();match.shutdown(state);return begun end if;window.poll()
     state.context.now=serverTime
     plan=frameInput.prepare(frameState,serverTime,state.context.commandNumber,clientClock.state.connectionState,true,wasPaused,wasPaused);if plan is error then window.shutdown();match.shutdown(state);return plan end if;inputBridge.plan=plan
@@ -420,6 +480,9 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session)
       nativeInput.mouse=window.mouseDelta();nativeEvents=window.inputEvents(256);if nativeEvents is error then window.shutdown();match.shutdown(state);return nativeEvents end if;observed=observeNativeInputEvents(nativeInput,nativeEvents);if observed is error then window.shutdown();match.shutdown(state);return observed end if
       eventNow=window.milliseconds()
       for each event in nativeEvents
+        if demoPlaying and event.type==window.INPUT_KEY and event.value2!=0 and match.keyCatcher(state)==0 and ((event.value<128 and event.value!=96 and event.value!=126) or event.value==178) then
+          session.action="menu";break
+        end if
         event.time=serverTime-frameTiming.elapsed(event.time,eventNow)
         if event.time<frameState.oldFrameTime then event.time=frameState.oldFrameTime end if
         applied=applyInputEvent(inputBridge,state,event);if applied is error then window.shutdown();match.shutdown(state);return applied end if
@@ -444,21 +507,32 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session)
       end if
     end if
     if session!=void and frameTiming.elapsed(lastSave,startedAt)>=1000 then desktopSession.save(state,session);lastSave=startedAt end if
-    paused=pauseRequest.integer!=0
+    paused=source==void and pauseRequest.integer!=0
     if paused!=wasPaused then
       if paused then serverTime=hostTime end if
       plan=frameInput.prepare(frameState,serverTime,state.context.commandNumber,clientClock.state.connectionState,true,paused,paused);if plan is error then window.shutdown();match.shutdown(state);return plan end if;inputBridge.plan=plan
       cgameClock.setPaused(clientClock,paused,paused,true)
     end if
     wasPaused=paused;hostTime=serverTime
-    if not paused then botFrame=match.runBotFrame(state,serverTime);if botFrame is error then window.shutdown();match.shutdown(state);return botFrame end if end if
-    while not paused and simulationTime+50<=serverTime and steps<4
-      simulationTime=simulationTime+50;advanced=advanceGameTick(state,clientClock,simulationTime);if advanced is error then window.shutdown();match.shutdown(state);return advanced end if;steps=steps+1;simulationTicks=simulationTicks+1
-    end while
+    if source==void then
+      if not paused then botFrame=match.runBotFrame(state,serverTime);if botFrame is error then window.shutdown();match.shutdown(state);return botFrame end if end if
+      while not paused and simulationTime+50<=serverTime and steps<4
+        simulationTime=simulationTime+50;advanced=advanceGameTick(state,clientClock,simulationTime);if advanced is error then window.shutdown();match.shutdown(state);return advanced end if;steps=steps+1;simulationTicks=simulationTicks+1
+      end while
+    else
+      synced=try(updateStream(state,source,clientClock,serverTime,demoTime))
+      if synced is error then streamFailure=synced;break end if
+      if not synced then session.action="stream-reload";break end if
+      if demoPlaying and source.transport.completed and demoTime>state.context.latestSnapshot.serverTime then session.action="menu";break end if
+    end if
     state.context.now=serverTime
     cmdTime=frameInput.commandTime(frameState,clientClock.state.serverTime,clientClock.state.connectionState==8)
     created=frameInput.finish(frameState,plan,cmdTime,match.cgameUserCmdValue(state),match.cgameSensitivity(state),match.keyCatcher(state),match.anyKeyDown(state));if created is error then window.shutdown();match.shutdown(state);return created end if
-    if created!=void then submitted=match.submitUsercmdAtHostTime(state,0,created,serverTime);if submitted is error then window.shutdown();match.shutdown(state);return submitted end if end if
+    if source==void then
+      if created!=void then submitted=match.submitUsercmdAtHostTime(state,0,created,serverTime);if submitted is error then window.shutdown();match.shutdown(state);return submitted end if end if
+    else if not demoPlaying then
+      sent=try(sendStreamFrame(state,source,created,serverTime));if sent is error then streamFailure=sent;break end if
+    end if
     // Original CL_SendCmd precedes CL_SetCGameTime: the command uses the
     // preceding CG server time; drawFrame advances CG time without fabrication.
     afterGame=window.milliseconds();gameMs=gameMs+afterGame-startedAt
@@ -469,7 +543,7 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session)
     if uiFullscreen then
       reset=match.beginRendererFrame(state);if reset is error then window.shutdown();match.shutdown(state);return reset end if
     else
-      drawnFrame=drawFrame(state,clientClock,serverTime);if drawnFrame is error then window.shutdown();match.shutdown(state);return drawnFrame end if
+      drawnFrame=drawFrame(state,clientClock,serverTime,demoTime);if drawnFrame is error then window.shutdown();match.shutdown(state);return drawnFrame end if
       gameView=largestView(state.context.renderViews);if gameView!=void then view=gameView end if
     end if
     afterCgame=window.milliseconds();cgameMs=cgameMs+afterCgame-afterGame
@@ -556,6 +630,7 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session)
   print "QVM retained world selections="+str(retainedWorldCache.selections)+" fallbacks="+str(retainedWorldCache.fallbacks)
   saved=void;if session!=void then saved=desktopSession.capture(state,session) end if
   audioOutput.shutdown();qvmVideo.close(videoManager);releaseCinematics();consoleBackground.release(consoleBackgroundMedia);baseMatchDisplay.release(consoleMedia);qvm2d.release(hudCatalog);sceneBatch.release(qvmCatalog);worldBatch.releaseMaterials(worldCatalog);playableSky.release(skyCatalog);playableFog.release(fogCatalog);dynamicLights.release(dlightCatalog);flares.release(flareCatalog);if session==void then window.shutdown() end if;match.shutdown(state)
+  if streamFailure is error then return streamFailure end if
   if saved is error then return saved end if
   modelCount=0;triangleCount=0;for each preparedView in preparedViews modelCount=modelCount+preparedView.geometry.modelEntities;triangleCount=triangleCount+len(preparedView.geometry.triangles) end for
   worldEffects=0;if skyCatalog!=void then worldEffects=worldEffects+1 end if;if fogCatalog!=void then worldEffects=worldEffects+1 end if;if dlightCatalog!=void then worldEffects=worldEffects+1 end if;if flareCatalog!=void and flareCatalog.enabled then worldEffects=worldEffects+1 end if
@@ -566,8 +641,11 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session)
   if frames>0 and loopElapsedMs>0 then print "QVM loop profile: elapsed="+str(loopElapsedMs)+"ms fps="+str(frames*1000.0/loopElapsedMs)+" workP50="+str(framePercentile(frameHistogram,frames,50))+"ms workP95="+str(framePercentile(frameHistogram,frames,95))+"ms workP99="+str(framePercentile(frameHistogram,frames,99))+"ms workMax="+str(maximumFrameMs)+"ms" end if
   return 0
 end function
-function runDesktopMatch(archive,map,mapName,qvmRoot,settings,session) return runMatch(archive,map,mapName,qvmRoot,-1,settings,session) end function
-function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings) return runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,void) end function
+function runDesktopMatch(archive,map,mapName,qvmRoot,settings,session) return runMatch(archive,map,mapName,qvmRoot,-1,settings,session,void) end function
+function runDesktopStream(archive,map,mapName,qvmRoot,settings,session,source)
+  return runMatch(archive,map,mapName,qvmRoot,-1,settings,session,source)
+end function
+function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings) return runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,void,void) end function
 function runLimitedSettings(archive,map,qvmRoot,maxFrames,settings) return runLimitedSettingsNamed(archive,map,"q3dm1",qvmRoot,maxFrames,settings) end function
 function runLimited(archive,map,qvmRoot,maxFrames) return runLimitedSettings(archive,map,qvmRoot,maxFrames,void) end function
 function runWithSettings(archive,map,qvmRoot,settings) return runLimitedSettings(archive,map,qvmRoot,-1,settings) end function

@@ -25,6 +25,9 @@ import mq3.vm.cgame_pc_traps as cgamePc
 import mq3.vm.cgame_misc_traps as cgameMisc
 import mq3.client.cgame_vm as cgameVm
 import mq3.client.server_command_stream as serverCommandStream
+import mq3.client.server_stream as serverStream
+import mq3.client.cl_cgame_runtime as clientCgame
+import mq3.client.gamestate as gamestate
 import mq3.client.ui_vm as uiVm
 import mq3.client.ui_host_lifecycle as uiHost
 import mq3.vm.syscall_ui as uiSyscall
@@ -140,6 +143,7 @@ import mq3.platform.win_main_runtime as botCacheWinMain
 import std.fs as fs
 import std.string as strings
 import std.ds.list as lists
+import mq3.format.mod_stack as modStack
 
 const MAX_CONFIGSTRINGS=1024
 const MAX_CLIENTS=64
@@ -164,7 +168,7 @@ struct FileCursor data offset writePath end struct
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
 struct RenderView refdef scene end struct
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks nativePlayers game cgameQueryMemo inputClearContext inputClearFn pendingClientCommands cgameSnapshotScratch end struct
+struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets renderCommands soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks nativePlayers game cgameQueryMemo inputClearContext inputClearFn pendingClientCommands cgameSnapshotScratch serverStream end struct
 struct Boot game runtime context cgame ui end struct
 struct Snapshot serverTime playerState entities areaBits end struct
 // The original engine keeps one cvar/key/userinfo store alive while moving
@@ -176,6 +180,11 @@ struct UserSettings cvars bindings userinfos pendingBotCommands end struct
 function fail(message) return error(7640,"local QVM match: "+message) end function
 
 function imageLoader(services,path)
+  active=services.context.archive.modArchive
+  if active!=void then
+    modEntry=pk3.findEntry(active,path)
+    if modEntry!=void then return pk3.readEntry(active,modEntry) end if
+  end if
   if services.context.qvmRoot!="" then
     data=try(fs.readAllBytes(services.context.qvmRoot+"/"+path));if not (data is error) then return data end if
     encoded=bytes(path);if len(encoded)>3 then shortPath=decode(slice(encoded,3,len(encoded)-3));data=try(fs.readAllBytes(services.context.qvmRoot+"/"+shortPath));if not (data is error) then return data end if end if
@@ -266,6 +275,12 @@ function openFile(context,name,mode)
   if mode==0 then
     data=try(pk3.read(context.archive,name))
     if data is error then
+      if context.serverStream!=void and context.serverStream.pure then
+        lower=strings.toLowerAscii(name)
+        if not (strings.endsWith(lower,".cfg") or strings.endsWith(lower,".menu") or strings.endsWith(lower,".game") or strings.endsWith(lower,".dm_68") or strings.endsWith(lower,".dat")) then
+          return common.OpenResult(0,-1)
+        end if
+      end if
       path=desktopFilePath(context.uiLanCacheHost.context.root,name)
       if path=="" or not fs.isFile(path) then return common.OpenResult(0,-1) end if
       data=try(fs.readAllBytes(path));if data is error then return common.OpenResult(0,-1) end if
@@ -327,6 +342,7 @@ function getConfigstring(context,index) if index<0 or index>=MAX_CONFIGSTRINGS t
 function getUserinfo(context,index) if index<0 or index>=len(context.userinfos) then return "" end if;return context.userinfos[index] end function
 function setUserinfo(context,index,text) if index>=0 and index<len(context.userinfos) then context.userinfos[index]=text end if;return void end function
 function getServerinfo(context)
+  if context.serverStream!=void then return context.configstrings[0] end if
   mapName=cvar.get(context.cvars,"mapname","q3dm1",cvar.SERVERINFO|cvar.ROM).string
   maxClients=cvar.get(context.cvars,"sv_maxclients","8",cvar.SERVERINFO|cvar.LATCH).string
   gameType=cvar.get(context.cvars,"g_gametype","0",cvar.SERVERINFO|cvar.LATCH).string
@@ -443,9 +459,14 @@ function qagameFileList(context,vm,base)
   return count
 end function
 function readLoadedAas(host,name) return host[0] end function
+function botCacheDirectory(context)
+  if context.archive.modArchive!=void then return fs.joinPath(context.archive.path,"maps") end if
+  if context.qvmRoot=="" then return "" end if
+  return fs.joinPath(context.qvmRoot,"maps")
+end function
 function saveBotRoutes(context)
   if context.aasRouteCache==void or context.aasCachePath=="" then return void end if
-  directory=context.qvmRoot+"/maps"
+  directory=botCacheDirectory(context)
   if not botCacheWinMain.Sys_Mkdir(directory) or not aasRoutingCache.saveRcd(context.aasRouteCache,context.aasCachePath) then
     emitPrint(context,"Could not write bot route cache "+context.aasCachePath+"\n")
   end if
@@ -463,8 +484,9 @@ function botlibLoadMap(context,vm,base)
   context.aasRouter=aasRouting.create(context.aas);if context.aasRouter is error then context.aas=void;context.aasRouter=void;return 7 end if
   context.aasRouteCache=aasRoutingCache.create(context.aasRouter,4096)
   context.aasCachePath=""
-  if context.qvmRoot!="" and not strings.contains(name,"/") and not strings.contains(name,"\\") and not strings.contains(name,":") then
-    context.aasCachePath=context.qvmRoot+"/maps/"+name+".rcd"
+  cacheDirectory=botCacheDirectory(context)
+  if cacheDirectory!="" and not strings.contains(name,"/") and not strings.contains(name,"\\") and not strings.contains(name,":") then
+    context.aasCachePath=fs.joinPath(cacheDirectory,name+".rcd")
     aasRoutingCache.loadRcd(context.aasRouteCache,context.aasCachePath)
   end if
   context.aiMoveRuntime.aas=context.aas;context.aiMoveRuntime.router=context.aasRouter;context.aiVisiblePosition.router=context.aasRouter
@@ -893,7 +915,7 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   uiClient=uiHost.createClientState(uiHost.CA_DISCONNECTED,0,-1,"localhost","","");if uiClient is error then return uiClient end if
   nativeServerCmds=nativeCgameServercmds.create();nativeServerCmds.configstrings=configstrings
   nativeMain=nativeCgameMain.create();nativeMain.configstrings=configstrings
-  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.createFast(void,void,256),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create(),void,cgameCollisionCache.create(),void,void,lists.List.withCapacity(8),bytes(cgameSyscall.SNAPSHOT_SIZE,0))
+  context=Context(archive,parser.create(entityBytes),registry,commandState,configstrings,array(MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),array(MAX_CLIENTS,initialCommand),[void],1,[],[],[],0,0,0,0,0,now,0,array(1024,false),[],[],[],[],[],void,0,void,scene,renderQueue.createFast(void,void,256),qvmRoot,collisionWorld,spatialScene,void,0,matchCommandRing.create(),0,0,grid,0,0,[],map,fontAbi.create(archive),void,cinematics.create(archive),array(100,0),botlibRuntime.create(),void,void,void,"",botBspEntities,shaderRemap.create(),array(MAX_CLIENTS,0),0,0,void,0,aasEntities.create(1024),void,aiResourcePools.create(),void,void,void,void,void,void,cgameMisc.createEntityTokens(entityBytes),void,void,void,void,void,void,void,void,void,void,uiLan.create(),cgameKeys.create(),uiLanCache.diskServices(""),cgameUsercmd.create(),void,void,void,cgameServerCommands,uiClient,nativeCgameCommands.create(),void,nativeCgameSnapshot.create(1024),nativeCgamePlayerstate.create(),nativeCgameEvent.create(1024),nativeCgameEnts.create(1024),nativeCgameLocalents.initLocalEntities(void,true),nativeCgameEffects.create(),nativeCgameWeapons.create(),nativeCgameView.create(),nativeCgameDrawtools.create(),nativeCgameDraw.state(),nativeCgameParticles.create(nativeCgameParticles.MAX_PARTICLES,true),nativeServerCmds,nativeMain,nativeCgameMarks.create(nativeCgameMarks.MAX_MARK_POLYS,true),nativeCgamePlayers.create(),void,cgameCollisionCache.create(),void,void,lists.List.withCapacity(8),bytes(cgameSyscall.SNAPSHOT_SIZE,0),void)
   commands.initCommands(context.commandState);installed=cvarCommands.install(registry,context.commandState);if installed is error then return installed end if
   bindingState=bindingConfig.create(context.cgameKeys);bindingState.printFn=emitPrint;bindingState.printContext=context
   installed=bindingConfig.install(bindingState,context.commandState);if installed is error then return installed end if
@@ -1318,7 +1340,14 @@ function encodeSnapshot(context,value,output)
   n.writeU32(output,53768,context.cgameServerCommands.commandSequence)
   return output
 end function
+function streamSnapshotBytes(context,number,output)
+  stream=context.serverStream;shot=serverStream.at(stream,number)
+  if shot==void then return cgameSyscall.BytesResult(false,bytes(0,0)) end if
+  clientCgame.encodeSnapshot(stream.epoch,shot,output)
+  return cgameSyscall.BytesResult(true,output)
+end function
 function snapshotBytes(context,number)
+  if context.serverStream!=void then return streamSnapshotBytes(context,number,bytes(cgameSyscall.SNAPSHOT_SIZE,0)) end if
   value=context.latestSnapshot
   if value==void or number!=context.snapshotNumber then return cgameSyscall.BytesResult(false,bytes(0,0)) end if
   output=encodeSnapshot(context,value,bytes(cgameSyscall.SNAPSHOT_SIZE,0))
@@ -1327,6 +1356,7 @@ end function
 // syscall_cgame copies the result into QVM memory synchronously. Keep one
 // host buffer per match and clear the unused entity tail between snapshots.
 function snapshotBytesScratch(context,number)
+  if context.serverStream!=void then return streamSnapshotBytes(context,number,context.cgameSnapshotScratch) end if
   value=context.latestSnapshot
   if value==void or number!=context.snapshotNumber then return cgameSyscall.BytesResult(false,bytes(0,0)) end if
   output=context.cgameSnapshotScratch
@@ -1383,7 +1413,8 @@ function addCommand(context,name)
 end function
 function removeCommand(context,name) commands.removeCommand(context.commandState,name);return void end function
 function sendClientCommand(context,name)
-  context.console=context.console+[[0,"client "+name]]
+  if context.serverStream!=void and context.serverStream.demoPlaying then return void end if
+  if context.serverStream==void then context.console=context.console+[[0,"client "+name]] end if
   context.pendingClientCommands.add(name)
   return void
 end function
@@ -1400,8 +1431,8 @@ function commandClearUsercmds(context) return matchCommandRing.clear(context.use
 function commandCloseConsole(context) context.uiKeyCatcher=context.uiKeyCatcher&~1;return void end function
 function commandQueueConsole(context,text) return commands.addText(context.commandState,text) end function
 function cgameServerCommand(context,number)
-  host=serverCommandStream.services();host.context=context;host.configstringFn=commandConfigstring;host.clearNotifyFn=commandClearNotify;host.clearUsercmdsFn=commandClearUsercmds;host.closeConsoleFn=commandCloseConsole;host.queueConsoleFn=commandQueueConsole;host.serverRunning=true
-  fetched=serverCommandStream.get(context.cgameServerCommands,host,number);if fetched is error or not fetched then return fetched end if
+  host=serverCommandStream.services();host.context=context;host.configstringFn=commandConfigstring;host.clearNotifyFn=commandClearNotify;host.clearUsercmdsFn=commandClearUsercmds;host.closeConsoleFn=commandCloseConsole;host.queueConsoleFn=commandQueueConsole;host.serverRunning=context.serverStream==void
+  fetched=serverCommandStream.get(context.cgameServerCommands,host,number);if fetched is error or not fetched or context.serverStream!=void then return fetched end if
   // The QVM remains authoritative.  Run the complete native cg_servercmds
   // state transition from the same tokenized command, suppressing its host
   // boundaries so chat, voice, shader and HUD effects cannot be duplicated.
@@ -1646,10 +1677,13 @@ function bootCgame(value)
   // Cmd_ExecuteString owns the original dispatch order.  Install the live
   // QVM callbacks before CG_INIT so its completion-only registrations are
   // immediately usable by the same command state.
-  value.cgame=client;context.commandState.context=value;context.commandState.clientRunning=true;context.commandState.serverRunning=true
+  value.cgame=client;context.commandState.context=value;context.commandState.clientRunning=true;context.commandState.serverRunning=context.serverStream==void
   context.commandState.clientGameCommandFn=clientGameCommand;context.commandState.serverGameCommandFn=serverGameCommand;context.commandState.uiGameCommandFn=uiGameCommand;context.commandState.forwardCommandFn=forwardClientCommand
   processedSnapshot=context.snapshotNumber-1;if processedSnapshot<0 then processedSnapshot=0 end if
-  cgameVm.initialize(client,processedSnapshot,context.cgameServerCommands.lastExecuted,0,0,0)
+  clientNum=0
+  if context.serverStream!=void then clientNum=context.serverStream.protocol.gamestateState.clientNum end if
+  initialized=try(cgameVm.initialize(client,processedSnapshot,context.cgameServerCommands.lastExecuted,clientNum,0,0));if initialized is error then return initialized end if
+  if context.serverStream!=void then return client end if
   nativeInit=nativeCgameMain.init(context.nativeMain,processedSnapshot,context.cgameServerCommands.lastExecuted,0,context.configstrings[nativeCgameMain.CS_GAME_VERSION],640,480,[],true);if nativeInit is error then return nativeInit end if
   for clientNum=0 to nativeCgamePlayers.MAX_CLIENTS-1
     playerConfig=context.configstrings[nativeCgameMain.CS_PLAYERS+clientNum]
@@ -1688,7 +1722,67 @@ end function
 
 function drawCgameProductiveInFrame(value,serverTime)
   if value==void or value.cgame==void then return fail("cgame is not active") end if
-  value.context.now=serverTime;drawn=cgameVm.drawActiveFrame(value.cgame,serverTime,0,false);if drawn is error then return drawn end if;renderQueue.snapshot(value.context.renderQueue);return drawn
+  context=value.context;context.now=serverTime
+  demoPlaying=context.serverStream!=void and context.serverStream.demoPlaying
+  drawn=cgameVm.drawActiveFrame(value.cgame,serverTime,0,demoPlaying);if drawn is error then return drawn end if
+  renderQueue.snapshot(context.renderQueue);return drawn
+end function
+
+function refreshServerStream(value,now)
+  if value==void or value.context.serverStream==void then return fail("server stream is not active") end if
+  context=value.context;stream=context.serverStream;dispatcher=stream.protocol.dispatcher
+  if stream.epoch!=dispatcher.snapshotState then return false end if
+  context.now=now
+  shot=stream.epoch.snap
+  if shot.valid and (context.latestSnapshot==void or context.snapshotNumber!=shot.messageNum) then
+    count=shot.numEntities;if count>256 then count=256 end if;entities=array(count,void)
+    if count>0 then
+      for index=0 to count-1
+        entity=try(serverStream.entity(stream,shot,index));if entity is error then return entity end if
+        entities[index]=entity
+      end for
+    end if
+    context.latestSnapshot=Snapshot(shot.serverTime,shot.playerState,entities,shot.areaMask)
+    context.snapshotNumber=shot.messageNum
+  end if
+  if context.cgameServerCommands.commandSequence!=dispatcher.serverCommandSequence then
+    syncedCommands=try(serverCommandStream.setSequence(context.cgameServerCommands,dispatcher.serverCommandSequence,dispatcher.serverCommands))
+    if syncedCommands is error then return syncedCommands end if
+  end if
+  return true
+end function
+
+function takeStreamCommands(value)
+  if value==void or value.context.serverStream==void then return [] end if
+  pending=value.context.pendingClientCommands
+  if pending.len()==0 then return [] end if
+  result=pending.toArray();pending.clear();return result
+end function
+
+function bootServerStream(archive,map,mapName,qvmRoot,settings,protocol,demoPlaying,sourceName,now)
+  if not serverStream.ready(protocol) then return fail("server stream has no active snapshot") end if
+  gameState=protocol.gamestateState
+  if gameState.clientNum<0 or gameState.clientNum>=MAX_CLIENTS or gameState.serverCommandSequence<0 then return fail("invalid server gamestate") end if
+  value=try(bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,false,mapName,false,settings))
+  if value is error then return value end if
+  context=value.context
+  context.serverStream=serverStream.attach(protocol,demoPlaying)
+  context.cgameServerCommands.demoPlaying=demoPlaying
+  context.cgameServerCommands.lastExecuted=gameState.serverCommandSequence
+  context.uiClient=uiHost.createClientState(uiHost.CA_ACTIVE,0,gameState.clientNum,sourceName,"","")
+  for index=0 to MAX_CONFIGSTRINGS-1 context.configstrings[index]=gamestate.configString(gameState,index) end for
+  refreshed=try(refreshServerStream(value,now))
+  if refreshed is error then shutdown(value);return refreshed end if
+  client=try(bootCgame(value));if client is error then shutdown(value);return client end if
+  if len(context.errors)>0 then
+    reason=context.errors[0]
+    if context.serverStream.pure and strings.startsWith(reason,"Client/Server game mismatch:") then
+      reason=reason+" (This server needs compatible protocol-68 client QVMs inside the approved PK3s.)"
+    end if
+    shutdown(value)
+    return fail(reason)
+  end if
+  return value
 end function
 
 function uiClipboard(context) return "" end function
@@ -1761,9 +1855,9 @@ function uiDesktopModList(dataRoot)
   names=try(fs.listDir(installRoot));if names is error then return [] end if
   mods=lists.List.withCapacity(8)
   for each name in names
-    if not stringEqualsIgnoreCaseAscii(name,"baseq3") then
+    if modStack.validName(name) and not stringEqualsIgnoreCaseAscii(name,"baseq3") then
       directory=desktopFilePath(installRoot,name)
-      if directory!="" and fs.isDir(directory) then
+      if directory!="" and modStack.regularDirectory(directory) then
         candidates=try(fs.listDir(directory))
         if not (candidates is error) then
           for each leaf in candidates
@@ -1788,6 +1882,17 @@ function uiDesktopModList(dataRoot)
   end for
   return mods.toArray()
 end function
+function uiLooseDemos(result,dataRoot,wanted)
+  directory=desktopFilePath(dataRoot,"demos")
+  if directory=="" or not fs.isDir(directory) then return result end if
+  names=try(fs.listDir(directory));if names is error then return result end if
+  for each name in names
+    lowerName=strings.toLowerAscii(name)
+    if (wanted=="" or strings.endsWith(lowerName,wanted)) and fs.isFile(fs.joinPath(directory,name)) then result=uiUnique(result,name) end if
+  end for
+  return result
+end function
+
 function uiFileList(context,path,extension)
   dataRoot=context.uiLanCacheHost.context.root
   if path=="$modlist" then return uiDesktopModList(dataRoot) end if
@@ -1808,15 +1913,9 @@ function uiFileList(context,path,extension)
     end if
   end for
   if path=="demos" and not directories then
-    directory=desktopFilePath(dataRoot,path)
-    if directory!="" and fs.isDir(directory) then
-      names=try(fs.listDir(directory))
-      if not (names is error) then
-        for each name in names
-          lowerName=strings.toLowerAscii(name)
-          if (wanted=="" or strings.endsWith(lowerName,wanted)) and fs.isFile(fs.joinPath(directory,name)) then result=uiUnique(result,name) end if
-        end for
-      end if
+    result=uiLooseDemos(result,dataRoot,wanted)
+    if context.archive.modArchive!=void and dataRoot!="" then
+      result=uiLooseDemos(result,fs.joinPath(fs.joinPath(dataRoot,".."),"baseq3"),wanted)
     end if
   end if
   return result

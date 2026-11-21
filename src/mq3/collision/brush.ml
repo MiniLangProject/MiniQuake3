@@ -5,6 +5,8 @@ package mq3.collision.brush
 import mq3.compat.numeric as n
 import mq3.shared.math as q
 
+extern function clipConvexNative(planes as ptr,planeBytes as i32,ax as double,ay as double,az as double,bx as double,by as double,bz as double,lx as double,ly as double,lz as double,hx as double,hy as double,hz as double,limit as double,output as bytes) from "miniquake3_qvm.dll" symbol "mq3_trace_convex_brush" returns i32
+
 struct Plane
   normal
   distance
@@ -70,6 +72,52 @@ function CM_DistanceFromLineSquared(point,lineStart,lineEnd,direction) return di
 function CM_VectorDistanceSquared(a,b) return vectorDistanceSquared(a,b) end function
 function SquareRootFloat(number) return squareRootFloat(number) end function
 
+// The support point is consumed by one dot product. Keep the coordinates
+// scalar so clipping a brush does not allocate a corner for every plane.
+function boxSupportDot(normal,mins,maxs)
+  x=mins[0];y=mins[1];z=mins[2]
+  if normal[0]<0.0 then x=maxs[0] end if
+  if normal[1]<0.0 then y=maxs[1] end if
+  if normal[2]<0.0 then z=maxs[2] end if
+  return n.dot3(x,y,z,normal[0],normal[1],normal[2])
+end function
+
+function setTracePlane(trace,plane)
+  trace.normal=plane.normal;trace.distance=plane.distance;trace.surfaceFlags=plane.flags
+  kind=3;signbits=0
+  for axis=0 to 2
+    if plane.normal[axis]==1 and kind==3 then kind=axis end if
+    if plane.normal[axis]<0 then signbits=signbits|(1<<axis) end if
+  end for
+  trace.planeMetadata=kind|(signbits<<8)
+  return void
+end function
+
+function packPlanes(planes)
+  result=bytes(len(planes)*16,0);at=0
+  for each plane in planes
+    for axis=0 to 2
+      n.writeU32(result,at+axis*4,n.floatBits(plane.normal[axis]))
+    end for
+    n.writeU32(result,at+12,n.floatBits(plane.distance));at=at+16
+  end for
+  return result
+end function
+
+function tracePacked(trace,planes,packed,contents,start,finish,mins,maxs,scratch)
+  if len(planes)==0 then return trace end if
+  hit=clipConvexNative(nativeBytesPtr(packed),len(packed),start[0],start[1],start[2],finish[0],finish[1],finish[2],mins[0],mins[1],mins[2],maxs[0],maxs[1],maxs[2],trace.fraction,scratch)
+  if hit<0 then return traceThroughBrush(trace,planes,contents,start,finish,mins,maxs,false,0.0,void) end if
+  if hit==1 or hit==2 then
+    trace.startsolid=true
+    if hit==2 then trace.allsolid=true;trace.fraction=0.0;trace.contents=contents end if
+  else if hit>=3 then
+    trace.fraction=n.bitsFloat(n.readU32(scratch,0));trace.contents=contents
+    setTracePlane(trace,planes[hit-3])
+  end if
+  return trace
+end function
+
 function traceThroughBrush(trace, planes, contents, start, finish, mins, maxs, capsule, radius, capsuleOffset)
   if len(planes) == 0 then return trace end if
   enterFraction = n.f32(-1)
@@ -98,11 +146,7 @@ function traceThroughBrush(trace, planes, contents, start, finish, mins, maxs, c
       d1 = n.fsub(q.DotProduct(startPoint, plane.normal), distance)
       d2 = n.fsub(q.DotProduct(endPoint, plane.normal), distance)
     else
-      corner = array(3, 0.0)
-      for axis = 0 to 2
-        if plane.normal[axis] < 0.0 then corner[axis] = maxs[axis] else corner[axis] = mins[axis] end if
-      end for
-      distance = n.fsub(distance, q.DotProduct(corner, plane.normal))
+      distance = n.fsub(distance,boxSupportDot(plane.normal,mins,maxs))
       d1 = n.fsub(q.DotProduct(start, plane.normal), distance)
       d2 = n.fsub(q.DotProduct(finish, plane.normal), distance)
     end if
@@ -130,16 +174,8 @@ function traceThroughBrush(trace, planes, contents, start, finish, mins, maxs, c
   if enterFraction < leaveFraction and enterFraction > -1.0 and enterFraction < trace.fraction then
     if enterFraction < 0.0 then enterFraction = n.f32(0) end if
     trace.fraction = enterFraction
-    trace.normal = lead.normal
-    trace.distance = lead.distance
-    trace.surfaceFlags = lead.flags
     trace.contents = contents
-    kind = 3;signbits = 0
-    for axis = 0 to 2
-      if lead.normal[axis] == 1 and kind == 3 then kind = axis end if
-      if lead.normal[axis] < 0 then signbits = signbits | (1 << axis) end if
-    end for
-    trace.planeMetadata = kind | (signbits << 8)
+    setTracePlane(trace,lead)
   end if
   return trace
 end function

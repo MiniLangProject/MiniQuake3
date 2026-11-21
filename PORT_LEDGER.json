@@ -21459,7 +21459,7 @@
           ],
           "target_symbol": "mq3.client.client_main.CL_Connect_f",
           "status": "tested_exact",
-          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts. The Windows path joins protocol-68 IPv4 original servers, including pure Baseq3 with locally verified PK3s. Native modules and automatic PK3 downloads are outside this test scope."
         },
         {
           "original": "CL_ConnectionlessPacket",
@@ -21738,7 +21738,7 @@
           ],
           "target_symbol": "mq3.client.client_main.CL_PlayDemo_f",
           "status": "tested_exact",
-          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts."
+          "scope": "Complete client main runtime: lifecycle, reliable commands, connect/OOB/packet, demo/download, frame/timeout, LAN/status, Pure/PK3, MOTD/Rcon and CD-key; OS, renderer and audio remain typed hosts. The Windows path reads local and archived .dm_68 files, draws the Retail Cgame and returns to the original menu on completion. Verified with a demo recorded by the pinned C engine."
         },
         {
           "original": "CL_Rcon_f",
@@ -22051,7 +22051,13 @@
         "src/mq3/client/client_main.ml",
         "src/mq3/client/qvm_frame_input.ml",
         "src/mq3/client/qvm_preview_app.ml",
-        "src/mq3/engine/local_qvm_match.ml"
+        "src/mq3/engine/local_qvm_match.ml",
+        "src/mq3/client/desktop_session.ml",
+        "src/mq3/client/qvm_menu_app.ml",
+        "src/mq3/client/remote_play.ml",
+        "src/mq3/client/remote_pure.ml",
+        "src/mq3/client/demo_playback.ml",
+        "src/mq3/client/server_stream.ml"
       ],
       "status": "ported",
       "tests": [
@@ -22070,7 +22076,10 @@
         "tests/client_frame_input_contracts.ml",
         "tests/client_frame_input_routing_contracts.ml",
         "tests/client_frame_input_oracle.ml",
-        "tests/client_frame_input_retail_probe.ml"
+        "tests/client_frame_input_retail_probe.ml",
+        "scripts/test_remote_play_retail.py",
+        "scripts/test_desktop_demo_retail.py",
+        "scripts/test_desktop_streams_retail.py"
       ]
     },
     {
@@ -52178,7 +52187,8 @@
             "src/mq3/collision/brush.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_exact"
+          "status": "tested_exact",
+          "scope": "The productive trace retains coherent near-child order and only allocates entries for deferred far children."
         },
         {
           "original": "CM_TraceThroughVerticalCylinder",
@@ -52194,7 +52204,8 @@
             "src/mq3/collision/brush.ml",
             "src/mq3/collision/world.ml"
           ],
-          "status": "tested_exact"
+          "status": "tested_exact",
+          "scope": "Differential Retail collision probes cover the accelerated transformed non-capsule temporary hull and retained capsule and inline model paths."
         },
         {
           "original": "CM_VectorDistanceSquared",
@@ -52239,7 +52250,9 @@
       ],
       "target": [
         "src/mq3/collision/brush.ml",
-        "src/mq3/collision/world.ml"
+        "src/mq3/collision/world.ml",
+        "native/qvm_exec.c",
+        "native/abi.c"
       ],
       "status": "ported",
       "tests": [
@@ -53830,7 +53843,7 @@
           ],
           "target_symbol": "mq3.qcommon.files_runtime.FS_Restart",
           "status": "tested_exact",
-          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts."
+          "scope": "Complete filesystem runtime: search paths, PK3 access, Pure/reference checks, handles, lists, server paths, startup/restart/shutdown; OS mutations remain typed hosts. The Windows path activates installed asset or Quake III 1.32-compatible QVM mods and reads their own configuration. Retail fixture probes cover PK3 order, loose files and QVM overrides."
         },
         {
           "original": "FS_ReturnPath",
@@ -54032,7 +54045,10 @@
         }
       ],
       "target": [
-        "src/mq3/qcommon/files_runtime.ml"
+        "src/mq3/qcommon/files_runtime.ml",
+        "src/mq3/format/mod_stack.ml",
+        "src/mq3/format/pk3.ml",
+        "src/mq3/client/desktop_session.ml"
       ],
       "status": "ported",
       "tests": [
@@ -54045,7 +54061,9 @@
         "scripts/test_archives.py",
         "scripts/test_pk3_standard_stack.py",
         "scripts/test_default_exe_startup.py",
-        "scripts/test_retail_qvm_match.py"
+        "scripts/test_retail_qvm_match.py",
+        "scripts/test_mod_stack_retail.py",
+        "scripts/test_desktop_streams_retail.py"
       ]
     },
     {

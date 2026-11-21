@@ -40,6 +40,7 @@ struct Archive
   comment
   byteBeforeZip
   nameBuckets
+  modArchive
 end struct
 
 const NAME_BUCKET_COUNT = 4096
@@ -53,18 +54,24 @@ function nameHash(name)
   return hash&(NAME_BUCKET_COUNT-1)
 end function
 
-function buildNameBuckets(entries)
-  builders=array(NAME_BUCKET_COUNT,void)
-  for entryIndex=0 to len(entries)-1
-    bucketIndex=nameHash(entries[entryIndex].name)
-    if builders[bucketIndex]==void then builders[bucketIndex]=lists.List.withCapacity(4) end if
-    builders[bucketIndex].add(entryIndex)
-  end for
+function freezeNameBuckets(builders)
   buckets=array(NAME_BUCKET_COUNT,void)
   for bucketIndex=0 to NAME_BUCKET_COUNT-1
     if builders[bucketIndex]!=void then buckets[bucketIndex]=builders[bucketIndex].toArray() end if
   end for
   return buckets
+end function
+
+function buildNameBuckets(entries)
+  builders=array(NAME_BUCKET_COUNT,void)
+  entryIndex=0
+  while entryIndex<len(entries)
+    bucketIndex=nameHash(entries[entryIndex].name)
+    if builders[bucketIndex]==void then builders[bucketIndex]=lists.List.withCapacity(4) end if
+    builders[bucketIndex].add(entryIndex)
+    entryIndex=entryIndex+1
+  end while
+  return freezeNameBuckets(builders)
 end function
 
 function fail(message)
@@ -124,33 +131,24 @@ function open(path)
   if pos != directorySize then return fail("directory length mismatch") end if
   archiveComment = decode(slice(tail,endOffset+22,u16(tail,endOffset+20)))
   nameBuckets=buildNameBuckets(entries)
-  return Archive(path, entries, absoluteDirectoryOffset, directorySize, absoluteEnd, archiveComment, byteBeforeZip, nameBuckets)
+  return Archive(path, entries, absoluteDirectoryOffset, directorySize, absoluteEnd, archiveComment, byteBeforeZip, nameBuckets, void)
 end function
 
 // Mount the standard Baseq3 patch set with the same higher-pak precedence as
 // Quake III.  The retail CD has pak0/pak1; patched 1.32 installations may
 // provide through pak8.  Duplicate qpaths are indexed only once.
 function openStandard(baseDirectory)
-  names=try(fs.listDir(baseDirectory));if names is error then return fail("base directory not found "+baseDirectory) end if
-  pakNames=lists.List.withCapacity(len(names));hasPak0=false
-  for each name in names
-    lower=strings.toLowerAscii(name)
-    if strings.endsWith(lower,".pk3") and fs.isFile(fs.joinPath(baseDirectory,name)) then
-      pakNames.add(name);if lower=="pak0.pk3" then hasPak0=true end if
-    end if
-  end for
-  if not hasPak0 then return fail("required retail archive not found "+baseDirectory+"/pak0.pk3") end if
-  sortedNames=pakNames.toArray();sort.sortBy(sortedNames,pk3NameLess)
-  archives=array(len(sortedNames),void);archiveCount=0;totalEntries=0
-  for each name in sortedNames
-    path=fs.joinPath(baseDirectory,name);archive=try(open(path));if archive is error then return archive end if
-    archives[archiveCount]=archive;archiveCount=archiveCount+1;totalEntries=totalEntries+len(archive.entries)
-  end for
-  if archiveCount==1 then return archives[0] end if
+  return openPackages(baseDirectory,true)
+end function
+
+// Layers are already in search order. High-numbered PK3s take priority
+// within a game directory and the active game takes priority over Baseq3.
+function mergeLayers(path,archives,modArchive)
+  totalEntries=0
+  for each archive in archives totalEntries=totalEntries+len(archive.entries) end for
   merged=lists.List.withCapacity(totalEntries);seen=array(NAME_BUCKET_COUNT,void)
-  archiveIndex=archiveCount-1
-  while archiveIndex>=0
-    for each entry in archives[archiveIndex].entries
+  for each archive in archives
+    for each entry in archive.entries
       bucketIndex=nameHash(entry.name);bucket=seen[bucketIndex];duplicate=false
       if bucket!=void then for position=0 to bucket.len()-1
         if stringEqualsIgnoreCaseAscii(merged.get(bucket.get(position)).name,entry.name) then duplicate=true;break end if
@@ -161,10 +159,41 @@ function openStandard(baseDirectory)
         bucket.add(merged.len()-1)
       end if
     end for
-    archiveIndex=archiveIndex-1
-  end while
-  entries=merged.toArray()
-  return Archive(baseDirectory,entries,0,0,0,"",0,buildNameBuckets(entries))
+  end for
+  return Archive(path,merged.toArray(),0,0,0,"",0,freezeNameBuckets(seen),modArchive)
+end function
+
+function openPackages(baseDirectory,requirePak0)
+  names=try(fs.listDir(baseDirectory));if names is error then return fail("base directory not found "+baseDirectory) end if
+  pakNames=lists.List.withCapacity(len(names));hasPak0=false
+  for each name in names
+    lower=strings.toLowerAscii(name)
+    if strings.endsWith(lower,".pk3") and fs.isFile(fs.joinPath(baseDirectory,name)) then
+      pakNames.add(name);if lower=="pak0.pk3" then hasPak0=true end if
+    end if
+  end for
+  if requirePak0 and not hasPak0 then return fail("required retail archive not found "+baseDirectory+"/pak0.pk3") end if
+  if pakNames.len()==0 then return Archive(baseDirectory,[],0,0,0,"",0,void,void) end if
+  sortedNames=pakNames.toArray();sort.sortBy(sortedNames,pk3NameLess)
+  archives=array(len(sortedNames),void);archiveIndex=len(sortedNames)-1
+  for each name in sortedNames
+    path=fs.joinPath(baseDirectory,name);archive=try(open(path));if archive is error then return archive end if
+    archives[archiveIndex]=archive;archiveIndex=archiveIndex-1
+  end for
+  if len(archives)==1 then return archives[0] end if
+  return mergeLayers(baseDirectory,archives,void)
+end function
+
+function looseEntry(name,path,size)
+  return Entry(name,0,0,0,0,0,0,size,size,0,0,bytes(0,0),"",0,0,0,path,-1)
+end function
+function withLoose(root,packages,looseEntries)
+  if len(looseEntries)==0 then return packages end if
+  loose=Archive(root,looseEntries,0,0,0,"",0,void,void)
+  return mergeLayers(root,[packages,loose],void)
+end function
+function overlay(root,base,activeGame)
+  return mergeLayers(root,[activeGame,base],activeGame)
 end function
 
 function pk3NameLess(left,right)
@@ -191,6 +220,7 @@ function localInfo(archive,entry)
 end function
 
 function readEntry(archive, entry)
+  if entry.sourceDirectoryOffset==-1 then return fs.readAllBytes(entry.sourcePath) end if
   if (entry.flags & 1) != 0 then return fail("encrypted entry") end if
   if entry.method != 0 and entry.method != 8 then return fail("unsupported compression method") end if
   local=localInfo(archive,entry)
@@ -204,10 +234,17 @@ function readEntry(archive, entry)
   return data
 end function
 
-function read(archive, name)
+function findEntry(archive,name)
+  if archive==void or archive.nameBuckets==void or typeof(name)!="string" or name=="" then return void end if
   bucket=archive.nameBuckets[nameHash(name)]
   if bucket!=void then for each entryIndex in bucket
-    entry=archive.entries[entryIndex];if stringEqualsIgnoreCaseAscii(entry.name,name) then return readEntry(archive,entry) end if
+    entry=archive.entries[entryIndex];if stringEqualsIgnoreCaseAscii(entry.name,name) then return entry end if
   end for end if
+  return void
+end function
+function has(archive,name) return findEntry(archive,name)!=void end function
+function read(archive,name)
+  entry=findEntry(archive,name)
+  if entry!=void then return readEntry(archive,entry) end if
   return fail("file not found " + name)
 end function

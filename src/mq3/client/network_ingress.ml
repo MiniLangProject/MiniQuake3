@@ -2,6 +2,7 @@
 // Productive UDP -> CL_PacketEvent -> CL_Netchan -> CL_ParseServerMessage adapter.
 package mq3.client.network_ingress
 import mq3.qcommon.message as message
+import mq3.qcommon.netchan as ingressWireNetchan
 import mq3.qcommon.network_pump as networkPump
 import mq3.client.packet_event as clientPacketEvent
 import mq3.client.netchan as clientNetchanRuntime
@@ -11,7 +12,7 @@ struct Services connectionlessHost demoFn serverPacketFn context end struct
 
 struct Runtime
   connection packetState packetHost netchanRuntime protocol services
-  lastPacketResult lastParseResult packetCount
+  lastPacketResult lastParseResult packetCount codec
 end struct
 
 function services(connectionlessHost)
@@ -50,7 +51,7 @@ function create(connectionState,netchanRuntime,protocol,hostServices)
   if hostServices.connectionlessHost==void then return error(6994,"client ingress: missing connectionless services") end if
   packetState=clientPacketEvent.create(connectionState)
   packetHost=clientPacketEvent.services(hostServices.connectionlessHost)
-  runtime=Runtime(connectionState,packetState,packetHost,netchanRuntime,protocol,hostServices,"",void,0)
+  runtime=Runtime(connectionState,packetState,packetHost,netchanRuntime,protocol,hostServices,"",void,0,void)
   packetHost.context=runtime;packetHost.processFn=process;packetHost.parseFn=parse;packetHost.demoFn=recordDemo
   return runtime
 end function
@@ -64,7 +65,10 @@ end function
 
 function clientPacket(runtime,address,data)
   if runtime==void or address==void or data==void then return error(6994,"client ingress: missing packet input") end if
-  msg=message.initStorage(data,len(data),false);msg.cursize=len(data)
+  // The datagram owns only the arriving bytes. Netchan may return a larger
+  // assembled message, including its four-byte server sequence prefix.
+  msg=message.initStorageWithCodec(data,ingressWireNetchan.MAX_MSGLEN+4,false,runtime.codec)
+  runtime.codec=msg.codec;msg.cursize=len(data)
   result=clientPacketEvent.packetEvent(runtime.packetState,runtime.packetHost,address,msg)
   runtime.lastPacketResult=result;runtime.packetCount=runtime.packetCount+1
   return result

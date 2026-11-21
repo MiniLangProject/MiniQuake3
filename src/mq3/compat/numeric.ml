@@ -10,6 +10,7 @@ extern function mq3_fadd(a as double,b as double) from "miniquake3_abi.dll" retu
 extern function mq3_fsub(a as double,b as double) from "miniquake3_abi.dll" returns double
 extern function mq3_fmul(a as double,b as double) from "miniquake3_abi.dll" returns double
 extern function mq3_fdiv(a as double,b as double) from "miniquake3_abi.dll" returns double
+extern function mq3_dot3(ax as double,ay as double,az as double,bx as double,by as double,bz as double) from "miniquake3_abi.dll" returns double
 extern function mq3_fsqrt(value as double) from "miniquake3_abi.dll" returns double
 
 function u32(value)
@@ -89,6 +90,10 @@ end function
 
 function fmul(a, b)
   return mq3_fmul(a,b)
+end function
+
+function dot3(ax,ay,az,bx,by,bz)
+  return mq3_dot3(ax,ay,az,bx,by,bz)
 end function
 
 function fdiv(a, b)

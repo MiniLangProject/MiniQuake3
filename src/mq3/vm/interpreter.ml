@@ -23,6 +23,16 @@ struct VM
   nativePlan
 end struct
 
+struct ImageLayout
+  count
+  codeOffset
+  codeLength
+  dataOffset
+  dataLength
+  litLength
+  memorySize
+end struct
+
 function fail(message)
   return error(3400, "QVM: " + message)
 end function
@@ -70,7 +80,7 @@ function stackNeed(op)
   return 0
 end function
 
-function load(image, callback)
+function imageLayout(image)
   if typeof(image) != "bytes" or len(image) < 32 then return fail("truncated header") end if
   if n.readU32(image, 0) != qfiles.VM_MAGIC then return fail("unsupported magic") end if
   count = n.readI32(image, 4)
@@ -86,8 +96,20 @@ function load(image, callback)
   if dataOffset < codeOffset + codeLength or dataOffset + dataLength + litLength > len(image) then return fail("data outside file") end if
   memorySize = dataLength + litLength + bssLength
   if memorySize < 65536 or memorySize > 268435456 then return fail("invalid memory/stack size") end if
+  return ImageLayout(count, codeOffset, codeLength, dataOffset, dataLength, litLength, memorySize)
+end function
+
+function load(image, callback)
+  layout = try(imageLayout(image))
+  if layout is error then return layout end if
+  count = layout.count
+  codeOffset = layout.codeOffset
+  codeLength = layout.codeLength
+  dataOffset = layout.dataOffset
+  dataLength = layout.dataLength
+  litLength = layout.litLength
   size = 1
-  while size < memorySize
+  while size < layout.memorySize
     size = size << 1
   end while
   code = array(codeLength, 0)

@@ -4,6 +4,33 @@ Stand: 2026-11-21. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Serverbeitritt, Demos und Mods im Windows-Spielpfad
+
+Der Menü-Host startet Original-QVMs jetzt auch aus einem Netz- oder
+Demo-Gamestate. Der Retail-Beitritt zum originalen Dedicated Server wurde auf
+`q3dm1` mit und ohne Pure-Prüfung, Delta-Snapshots, Bewegung, Scoreboard und
+Trennung geprüft. Pure Baseq3 beschränkt den Zugriff auf verifizierte lokale
+PK3s und verwendet daraus die freigegebenen 1.32-kompatiblen QVMs. Die frühe
+CD-Cgame-QVM erwartet andere Configstring-Nummern und ist mit 1.32-Servern
+nicht kompatibel. Die Desktop-Verbindung
+unterstützt IPv4 und Protokoll 68. Automatische Downloads, Pure-Modserver
+und Internet-Mehrclient-Langzeittests stehen aus.
+
+**Demos → GO** spielt lose oder gepackte `.dm_68`-Aufzeichnungen mit dem
+Original-Cgame ab. Der Test zeichnet im originalen C-Programm mit Retail-Daten
+auf und überprüft Bewegung, Chat, ältere Snapshots, Gamestate-Wechsel und das
+Ende der Datei. Desktop-Aufzeichnung, Timedemo und ältere Formate bleiben
+offen. **Mods** und `fs_restart` aktivieren installierte Asset- und
+1.32-kompatible QVM-Mods mit eigener Konfiguration. DLL-only-Module und QVM v2
+sind für diesen Spielpfad nicht unterstützt.
+
+Die neue Kollisionsberechnung bestand 19.972 Weltabfragen und 12.288
+transformierte oder temporäre Abfragen gegen den Originalcode. Im separaten
+A/B-Lauf liefen die identischen Weltabfragen 16 % schneller. Der 6.000-Frame-
+Kampf-Replay auf der RTX 5080 erreichte 47,0 FPS gegenüber zuvor 46,1 FPS.
+Das 99. Perzentil sank von 74 auf 64 ms. Einzelne Framezeiten von bis zu
+260 ms bleiben offen. [Retail-Prüfbericht](verification/2026-11-21-desktop-streams-and-collision.md)
+
 ## Korrekturen aus dem Intensiv-Audit, 21. November 2026
 
 Der reguläre Windows-Start verwendet jetzt eine gemeinsame Menü- und
@@ -2581,7 +2608,8 @@ Datensatzbytes, fünf Namensfälle sowie Erfolg, EOF und drei Trunkierungsgrenze
 27 MiniLang-Verträge ergänzen Headerentfernung, verkettete Datensätze,
 Größenablehnung, Sequenz-/Zeitstatus und den synthetischen Start-Gamestate. Die
 historische Rückgabe `demo9999.tga` für ungültige Nummern ist dabei ausdrücklich
-abgenommen. Dateisystemintegration und die laufende Demo-/Timedemo-Schleife sind
+abgenommen. Die weiter oben beschriebene Windows-Integration deckt die
+normale Wiedergabe ab. Desktop-Aufzeichnung und Timedemo sind
 noch offen.
 
 ### Produktiver Client-Input

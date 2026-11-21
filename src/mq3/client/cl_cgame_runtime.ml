@@ -104,12 +104,15 @@ function CL_GetCurrentSnapshotNumber(state)
   return cgameSyscall.SnapshotNumber(state.snapshots.snap.messageNum,state.snapshots.snap.serverTime)
 end function
 function writeWords(output,offset,words) for index=0 to len(words)-1 n.writeU32(output,offset+index*4,words[index]) end for;return void end function
-function snapshotBytes(state,value)
-  output=bytes(cgameSyscall.SNAPSHOT_SIZE,0);n.writeU32(output,0,value.snapFlags);n.writeU32(output,4,value.ping);n.writeU32(output,8,value.serverTime)
+function encodeSnapshot(snapshots,value,output)
+  fillBytes(output,0,len(output),0);n.writeU32(output,0,value.snapFlags);n.writeU32(output,4,value.ping);n.writeU32(output,8,value.serverTime)
   mask=value.areaMask;if mask!=void then count=len(mask);if count>32 then count=32 end if;if count>0 then copyBytes(output,12,mask,0,count) end if end if
   writeWords(output,44,playerstate.words(value.playerState));count=value.numEntities;if count>MAX_ENTITIES_IN_SNAPSHOT then count=MAX_ENTITIES_IN_SNAPSHOT end if;n.writeU32(output,512,count)
-  for index=0 to count-1 entity=state.snapshots.entityState.parseEntities[(value.parseEntitiesNum+index)&(MAX_PARSE_ENTITIES-1)];writeWords(output,516+index*entitystate.BYTE_SIZE,entitystate.words(entity)) end for
+  for index=0 to count-1 entity=snapshots.entityState.parseEntities[(value.parseEntitiesNum+index)&(MAX_PARSE_ENTITIES-1)];writeWords(output,516+index*entitystate.BYTE_SIZE,entitystate.words(entity)) end for
   n.writeU32(output,53768,value.serverCommandNum);return output
+end function
+function snapshotBytes(state,value)
+  return encodeSnapshot(state.snapshots,value,bytes(cgameSyscall.SNAPSHOT_SIZE,0))
 end function
 function CL_GetSnapshot(state,snapshotNumber)
   if state==void then return fail("missing state") end if;current=state.snapshots.snap

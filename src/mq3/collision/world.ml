@@ -15,9 +15,12 @@ import mq3.qcommon.headers as qcommonHeaders
 import std.array as arrays
 import std.ds.list as worldTraceLists
 
+extern function traceTransformedBoxNative(ax as double,ay as double,az as double,bx as double,by as double,bz as double,lx as double,ly as double,lz as double,hx as double,hy as double,hz as double,ox as double,oy as double,oz as double,tx as double,ty as double,tz as double,ux as double,uy as double,uz as double,matchesMask as i32,output as bytes) from "miniquake3_qvm.dll" symbol "mq3_trace_transformed_box" returns i32
+
 struct Shader name surfaceFlags contentFlags end struct
 struct Brush
   planes
+  packedPlanes
   contents
   mins
   maxs
@@ -78,6 +81,7 @@ struct Work
   isPoint
   seen
   seenPatches
+  brushScratch
   curves
 end struct
 struct Result
@@ -151,7 +155,7 @@ function CM_BoundBrush(sides)
   return [[0.0-sides[0].distance,0.0-sides[2].distance,0.0-sides[4].distance],[sides[1].distance,sides[3].distance,sides[5].distance]]
 end function
 function CMod_LoadBrushes(map,sides,shaders)
-  values=array(map.counts[8],void);index=0;while index<len(values) off=map.offsets[8]+index*12;first=n.readI32(map.data,off);count=n.readI32(map.data,off+4);shaderNumber=n.readI32(map.data,off+8);if count<6 or first<0 or first+count>len(sides) or shaderNumber<0 or shaderNumber>=len(shaders) then return fail("invalid brush record") end if;selected=arrays.slice(sides,first,count);bounds=CM_BoundBrush(selected);values[index]=Brush(selected,shaders[shaderNumber].contentFlags,bounds[0],bounds[1]);index=index+1 end while;return values
+  values=array(map.counts[8],void);index=0;while index<len(values) off=map.offsets[8]+index*12;first=n.readI32(map.data,off);count=n.readI32(map.data,off+4);shaderNumber=n.readI32(map.data,off+8);if count<6 or first<0 or first+count>len(sides) or shaderNumber<0 or shaderNumber>=len(shaders) then return fail("invalid brush record") end if;selected=arrays.slice(sides,first,count);bounds=CM_BoundBrush(selected);values[index]=Brush(selected,brush.packPlanes(selected),shaders[shaderNumber].contentFlags,bounds[0],bounds[1]);index=index+1 end while;return values
 end function
 function CMod_LoadLeafBrushes(map)
   values=array(map.counts[6],0);index=0;while index<len(values) values[index]=n.readI32(map.data,map.offsets[6]+index*4);index=index+1 end while;return values
@@ -247,14 +251,15 @@ function loadWorld(data,curves)
 end function
 
 function makeBox(mins,maxs)
-  planes = []
+  planes = array(6,void)
   // CM_InitBoxHull uses +X,-X,+Y,-Y,+Z,-Z, unlike map brush bounds.
   for axis = 0 to 2
     positive = [0.0,0.0,0.0]; negative = [0.0,0.0,0.0]
     positive[axis] = 1.0; negative[axis] = -1.0
-    planes = planes+[brush.Plane(positive,maxs[axis],0),brush.Plane(negative,n.fneg(mins[axis]),0)]
+    planes[axis*2]=brush.Plane(positive,maxs[axis],0)
+    planes[axis*2+1]=brush.Plane(negative,n.fneg(mins[axis]),0)
   end for
-  return Brush(planes,0x2000000,mins,maxs)
+  return Brush(planes,void,0x2000000,mins,maxs)
 end function
 
 function tempBoxModel(world,mins,maxs,capsule)
@@ -268,7 +273,12 @@ function tempBoxModel(world,mins,maxs,capsule)
   // paths create their replacement box only after consuming these bounds.
   world.temporary.capsuleReady = capsule
   if capsule then return qcommonHeaders.CAPSULE_MODEL_HANDLE end if
-  world.temporary.brush = makeBox(mins,maxs)
+  hull=world.temporary.brush
+  hull.mins=mins;hull.maxs=maxs
+  for axis=0 to 2
+    hull.planes[axis*2].distance=maxs[axis]
+    hull.planes[axis*2+1].distance=n.fneg(mins[axis])
+  end for
   return qcommonHeaders.BOX_MODEL_HANDLE
 end function
 
@@ -410,11 +420,7 @@ function testInBrush(work, b)
         if dot > 0.0 then point[axis] = n.fsub(work.start[axis],work.capsuleOffset[axis]) else point[axis] = n.fadd(work.start[axis],work.capsuleOffset[axis]) end if
       end for
     else
-      corner = array(3,0.0)
-      for axis = 0 to 2
-        if plane.normal[axis] < 0 then corner[axis] = work.maxs[axis] else corner[axis] = work.mins[axis] end if
-      end for
-      distance = n.fsub(distance,q.DotProduct(corner,plane.normal))
+      distance = n.fsub(distance,brush.boxSupportDot(plane.normal,work.mins,work.maxs))
     end if
     if n.fsub(q.DotProduct(point,plane.normal),distance) > 0 then return void end if
     side = side+1
@@ -434,6 +440,8 @@ function throughLeaf(work, leaf, positionTest)
     if (b.contents & work.mask) == 0 then continue end if
     if positionTest then
       testInBrush(work,b)
+    else if not work.capsule then
+      brush.tracePacked(work.trace,b.planes,b.packedPlanes,b.contents,work.start,work.finish,work.mins,work.maxs,work.brushScratch)
     else
       brush.traceThroughBrush(work.trace,b.planes,b.contents,work.start,work.finish,work.mins,work.maxs,work.capsule,work.radius,work.capsuleOffset)
     end if
@@ -524,51 +532,47 @@ function interpolate(a,b,fraction)
 end function
 
 function throughTree(work)
-  // Depth-first stack retains the original near-child/far-child visit order.
-  // Capacity follows the pending DFS frontier, not the complete BSP size.
-  // Allocating nodes+1 per trace caused repeated 8-17 KiB first-fit allocator
-  // scans in gameplay. A local geometric stack also remains reentrant.
-  stack = worldTraceLists.List.withCapacity(32)
-  stack.add([0,0.0,1.0,work.start,work.finish])
-  while not stack.isEmpty()
-    item = stack.pop()
-    num = item[0]; p1f = item[1]; p2f = item[2]; p1 = item[3]; p2 = item[4]
-    if work.trace.fraction <= p1f then continue end if
-    if num < 0 then throughLeaf(work,work.world.leaves[-1-num],false); continue end if
-    node = work.world.nodes[num]
-    t1 = 0.0; t2 = 0.0; offset = 0.0
-    if node.axis < 3 then
-      t1 = n.fsub(p1[node.axis],node.plane.distance)
-      t2 = n.fsub(p2[node.axis],node.plane.distance)
-      if not work.isPoint then offset = work.maxs[node.axis] end if
-    else
-      t1 = n.fsub(q.DotProduct(node.plane.normal,p1),node.plane.distance)
-      t2 = n.fsub(q.DotProduct(node.plane.normal,p2),node.plane.distance)
-      if not work.isPoint then offset = n.f32(2048) end if
-    end if
-    if t1 >= n.fadd(offset,1.0) and t2 >= n.fadd(offset,1.0) then
-      stack.add([node.children[0],p1f,p2f,p1,p2]); continue
-    end if
-    if t1 < n.fsub(-offset,1.0) and t2 < n.fsub(-offset,1.0) then
-      stack.add([node.children[1],p1f,p2f,p1,p2]); continue
-    end if
-    side = 0; fraction = n.f32(1); fraction2 = n.f32(0)
-    if t1 < t2 then
-      inverse = n.f32(1.0/n.fsub(t1,t2))
-      side = 1
-      fraction2 = n.f32((n.fadd(t1,offset)+qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
-      fraction = n.f32((n.fsub(t1,offset)+qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
-    else if t1 > t2 then
-      inverse = n.f32(1.0/n.fsub(t1,t2))
-      fraction2 = n.f32((n.fsub(t1,offset)-qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
-      fraction = n.f32((n.fadd(t1,offset)+qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
-    end if
-    fraction = max(0.0,min(1.0,fraction))
-    fraction2 = max(0.0,min(1.0,fraction2))
-    midf = n.fadd(p1f,n.fmul(n.fsub(p2f,p1f),fraction))
-    midf2 = n.fadd(p1f,n.fmul(n.fsub(p2f,p1f),fraction2))
-    stack.add([node.children[side^1],midf2,p2f,interpolate(p1,p2,fraction2),p2])
-    stack.add([node.children[side],p1f,midf,p1,interpolate(p1,p2,fraction)])
+  // Keep only deferred far branches. Descending a near child or traversing an
+  // unsplit node needs no list entry or five-element traversal record.
+  stack=worldTraceLists.List.withCapacity(32)
+  num=0;p1f=0.0;p2f=1.0;p1=work.start;p2=work.finish
+  while true
+    while not (work.trace.fraction<=p1f)
+      if num<0 then
+        throughLeaf(work,work.world.leaves[-1-num],false);break
+      end if
+      node=work.world.nodes[num];plane=node.plane;axis=node.axis
+      t1=0.0;t2=0.0;offset=0.0
+      if axis<3 then
+        t1=n.fsub(p1[axis],plane.distance);t2=n.fsub(p2[axis],plane.distance)
+        if not work.isPoint then offset=work.maxs[axis] end if
+      else
+        t1=n.fsub(q.DotProduct(plane.normal,p1),plane.distance);t2=n.fsub(q.DotProduct(plane.normal,p2),plane.distance)
+        if not work.isPoint then offset=2048.0 end if
+      end if
+      positiveCut=n.fadd(offset,1.0)
+      if t1>=positiveCut and t2>=positiveCut then num=node.children[0];continue end if
+      negativeCut=n.fsub(-offset,1.0)
+      if t1<negativeCut and t2<negativeCut then num=node.children[1];continue end if
+      side=0;fraction=1.0;fraction2=0.0
+      if t1<t2 then
+        inverse=n.f32(1.0/n.fsub(t1,t2));side=1
+        fraction2=n.f32((n.fadd(t1,offset)+qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
+        fraction=n.f32((n.fsub(t1,offset)+qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
+      else if t1>t2 then
+        inverse=n.f32(1.0/n.fsub(t1,t2))
+        fraction2=n.f32((n.fsub(t1,offset)-qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
+        fraction=n.f32((n.fadd(t1,offset)+qcommonHeaders.SURFACE_CLIP_EPSILON)*inverse)
+      end if
+      fraction=max(0.0,min(1.0,fraction));fraction2=max(0.0,min(1.0,fraction2))
+      span=n.fsub(p2f,p1f)
+      farStart=n.fadd(p1f,n.fmul(span,fraction2))
+      stack.add([node.children[side^1],farStart,p2f,interpolate(p1,p2,fraction2),p2])
+      num=node.children[side];p2f=n.fadd(p1f,n.fmul(span,fraction));p2=interpolate(p1,p2,fraction)
+    end while
+    if stack.isEmpty() then break end if
+    item=stack.pop()
+    num=item[0];p1f=item[1];p2f=item[2];p1=item[3];p2=item[4]
   end while
   return void
 end function
@@ -767,24 +771,31 @@ function traceWithSphereOrigin(world, start, finish, mins, maxs, model, mask, ca
   end for
   point = lo[0] == 0 and lo[1] == 0 and lo[2] == 0
   if modelOrigin==void then modelOrigin=[0.0,0.0,0.0] else modelOrigin=vector32(modelOrigin) end if
-  // Private zero/one byte flags preserve duplicate suppression without two
-  // pointer-sized arrays per trace. All storage remains local to this work.
-  work = Work(world,brush.emptyTrace(),a,b,lo,hi,boundsMin,boundsMax,capsule,radius,hi[2],capsuleOffset,modelOrigin,mask,point,bytes(len(world.brushes),0),bytes(len(world.surfaces),0),curves)
+  // Temporary hulls bypass BSP leaf traversal, so they need no visited maps.
+  temporary=model>=len(world.models)
   stationary = start[0] == finish[0] and start[1] == finish[1] and start[2] == finish[2]
+  seen=void;seenPatches=void;brushScratch=void
+  if not temporary then
+    seen=bytes(len(world.brushes),0)
+    if not stationary and not capsule then brushScratch=bytes(4,0) end if
+    if curves then seenPatches=bytes(len(world.surfaces),0) end if
+  end if
+  work = Work(world,brush.emptyTrace(),a,b,lo,hi,boundsMin,boundsMax,capsule,radius,hi[2],capsuleOffset,modelOrigin,mask,point,seen,seenPatches,brushScratch,curves)
   // Original CM_Trace assigns isPoint only in its non-stationary branch.
   if stationary then work.isPoint = false end if
-  if model == qcommonHeaders.CAPSULE_MODEL_HANDLE and model >= len(world.models) then
+  if model == qcommonHeaders.CAPSULE_MODEL_HANDLE and temporary then
     if stationary then
       if capsule then testCapsuleInCapsule(work,model) else testBoundingBoxInCapsule(work,model) end if
     else
       if capsule then traceCapsuleThroughCapsule(work,model) else traceBoundingBoxThroughCapsule(work,model) end if
     end if
-  else if model == qcommonHeaders.BOX_MODEL_HANDLE and model >= len(world.models) then
+  else if model == qcommonHeaders.BOX_MODEL_HANDLE and temporary then
     temp = world.temporary.brush
     if (temp.contents & mask) != 0 then
       if stationary then testInBrush(work,temp)
       else brush.traceThroughBrush(work.trace,temp.planes,temp.contents,a,b,lo,hi,capsule,radius,capsuleOffset) end if
     end if
+    work.trace.normal=arrays.slice(work.trace.normal,0,3)
     // Temporary negative axial planes keep types 3,4,5; map planes use 3.
     for axis = 0 to 2
       if work.trace.normal[axis] == -1 then work.trace.planeMetadata = (3+axis) | (1 << (axis+8)) end if
@@ -888,7 +899,38 @@ function transformedPointContents(world,point,model,origin,angles)
   return pointContents(world,localPoint,model)
 end function
 
+function traceTransformedBox(world,start,finish,mins,maxs,mask,origin)
+  target=world.temporary.brush
+  if mins==void then mins=[0.0,0.0,0.0] end if
+  if maxs==void then maxs=[0.0,0.0,0.0] end if
+  for each vector in [start,finish,mins,maxs,origin]
+    if typeof(vector)!="array" or len(vector)!=3 then return void end if
+  end for
+  lo=target.mins;hi=target.maxs;matching=0
+  if (target.contents&mask)!=0 then matching=1 end if
+  output=bytes(20,0)
+  hit=traceTransformedBoxNative(start[0],start[1],start[2],finish[0],finish[1],finish[2],mins[0],mins[1],mins[2],maxs[0],maxs[1],maxs[2],origin[0],origin[1],origin[2],lo[0],lo[1],lo[2],hi[0],hi[1],hi[2],matching,output)
+  if hit<0 then return void end if
+  result=brush.emptyTrace()
+  result.fraction=n.bitsFloat(n.readU32(output,0))
+  if hit==1 or hit==2 then
+    result.startsolid=true
+    if hit==2 then result.allsolid=true;result.contents=target.contents end if
+  else if hit>=3 then
+    side=hit-3;axis=side>>1
+    result.contents=target.contents;result.distance=n.bitsFloat(n.readU32(output,4))
+    if (side&1)==0 then result.normal[axis]=1.0;result.planeMetadata=axis
+    else result.normal[axis]=-1.0;result.planeMetadata=(3+axis)|(1<<(axis+8)) end if
+  end if
+  return Result(result,[n.bitsFloat(n.readU32(output,8)),n.bitsFloat(n.readU32(output,12)),n.bitsFloat(n.readU32(output,16))])
+end function
+
 function transformedTrace(world,start,finish,mins,maxs,model,mask,origin,angles,capsule,curves)
+  if not capsule and model==qcommonHeaders.BOX_MODEL_HANDLE and model>=len(world.models) and (not curves or world.patchesReady) then
+    vector32(angles)
+    fast=traceTransformedBox(world,start,finish,mins,maxs,mask,origin)
+    if fast!=void then return fast end if
+  end if
   start = vector32(start); finish = vector32(finish); origin = vector32(origin); angles = vector32(angles)
   if mins == void then mins = [0.0,0.0,0.0] end if
   if maxs == void then maxs = [0.0,0.0,0.0] end if

@@ -94,7 +94,8 @@ function parseServerMessage(state,msg)
     if command==SVC_NOP then
       commands=commands
     else if command==SVC_SERVER_COMMAND then
-      if parseCommandString(state,msg) then commands=commands+1 end if
+      parsed=try(parseCommandString(state,msg));if parsed is error then return parsed end if
+      if parsed then commands=commands+1 end if
     else if command==SVC_SNAPSHOT then
       state.snapshotState.serverCommandSequence=state.serverCommandSequence
       state.snapshotState.shownetLevel=state.shownetLevel;state.snapshotState.shownetLines=[]
@@ -104,9 +105,9 @@ function parseServerMessage(state,msg)
       for each line in state.snapshotState.shownetLines emitShownet(state,line) end for
       if state.shownetLevel==3 and parsed.valid then emitShownet(state,"   snapshot:"+str(parsed.messageNum)+"  delta:"+str(parsed.deltaNum)+"  ping:"+str(parsed.ping)) end if
     else if command==SVC_GAMESTATE and state.gamestateFn!=void then
-      state.gamestateFn(state,msg)
+      parsed=try(state.gamestateFn(state,msg));if parsed is error then return parsed end if
     else if command==SVC_DOWNLOAD and state.downloadFn!=void then
-      state.downloadFn(state,msg)
+      parsed=try(state.downloadFn(state,msg));if parsed is error then return parsed end if
     else
       return error(6893,"server message: illegible command")
     end if

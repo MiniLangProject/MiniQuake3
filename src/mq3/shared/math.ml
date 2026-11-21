@@ -120,7 +120,7 @@ function Q_fabs(value)
 end function
 
 function DotProduct(a, b)
-  return n.fadd(n.fadd(n.fmul(a[0], b[0]), n.fmul(a[1], b[1])), n.fmul(a[2], b[2]))
+  return n.dot3(a[0],a[1],a[2],b[0],b[1],b[2])
 end function
 
 function CrossProduct(a, b)

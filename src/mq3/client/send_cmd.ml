@@ -31,7 +31,7 @@ struct State
   maxPackets packetDup noDelta serverRunning serverPaused clientPaused
   serverId serverMessageSequence serverCommandSequence reliableAcknowledge reliableSequence
   reliableCommands serverCommands checksumFeed snapValid snapMessageNum outgoingSequence
-  cmdNumber commands outPackets
+  cmdNumber commands outPackets codec
 end struct
 struct Services createCommandFn transmitFn cvarFn diagnosticFn context end struct
 struct WriteResult sent message commandCount moveType key end struct
@@ -46,7 +46,7 @@ function create()
   reliable=array(MAX_RELIABLE_COMMANDS,"");server=array(MAX_RELIABLE_COMMANDS,"")
   commands=sendCommandRing.create();for index=0 to CMD_BACKUP-1 commands[index]=zeroCommand() end for
   packets=array(PACKET_BACKUP,void);for index=0 to PACKET_BACKUP-1 packets[index]=OutPacket(0,0,0) end for
-  return State(1,0,0,0,0,false,false,"",0,false,30,1,false,false,false,false,0,0,0,0,0,reliable,server,0,false,0,1,0,commands,packets)
+  return State(1,0,0,0,0,false,false,"",0,false,30,1,false,false,false,false,0,0,0,0,0,reliable,server,0,false,0,1,0,commands,packets,void)
 end function
 function services() return Services(void,void,void,void,void) end function
 
@@ -84,7 +84,8 @@ end function
 
 function writePacket(state,host)
   if state.demoPlaying or state.connectionState==CA_CINEMATIC then return WriteResult(false,void,0,0,0) end if
-  msg=message.init(16384);message.bitstream(msg);message.writeLong(msg,state.serverId);message.writeLong(msg,state.serverMessageSequence);message.writeLong(msg,state.serverCommandSequence)
+  msg=message.initStorageWithCodec(bytes(16384,0),16384,false,state.codec);state.codec=msg.codec
+  message.bitstream(msg);message.writeLong(msg,state.serverId);message.writeLong(msg,state.serverMessageSequence);message.writeLong(msg,state.serverCommandSequence)
   if state.reliableSequence-state.reliableAcknowledge>MAX_RELIABLE_COMMANDS then return error(7710,"client send: reliable command overflow") end if
   if state.reliableAcknowledge<state.reliableSequence then
     for sequence=state.reliableAcknowledge+1 to state.reliableSequence
