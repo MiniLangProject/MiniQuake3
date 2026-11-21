@@ -4,6 +4,26 @@ Stand: 2026-11-21. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## q3dm0: Crash greift an und die Tür bleibt beweglich, 21. November 2026
+
+Die ursprüngliche 1.32b-QVM verwendet für Munition, Gesundheit und Powerups
+andere Inventarpositionen als `botfiles/inv.h` aus Retail-`pak0.pk3`.
+Dadurch erkannte Crash den Spieler, bewertete aber seine 100 Maschinengewehr-
+Patronen als fehlend, wechselte zur Nahkampfwaffe und schoss nicht. Die
+Botprofil-Auswertung übersetzt die Retail-Indizes nun beim Laden in das
+Inventarlayout der QVM; auch die Item-Ziele benutzen dieselbe Zuordnung.
+Ein q3dm0-Test ohne Spielerschüsse beobachtet 41 Waffenereignisse und
+Gesundheitsverlust des Spielers. Der bisherige Test mit Spielerschüssen und
+der q3dm1-Bot-Test bestehen ebenfalls.
+
+Die beiden Türmodelle `*12` und `*13` in q3dm0 besitzen zwölf bewegliche
+Dreiecke. Ihre Flächen stehen zusätzlich in der BSP-Blattliste. Der
+statische Renderer filtert jetzt alle Flächen außerhalb von Weltmodell 0;
+die Cgame-Instanzen zeichnen die Türen weiterhin an der aktuellen Position.
+Der Retail-Test findet zwölf bewegliche und null statische Türdreiecke.
+Der Differentialtest der q3dm0-Tür- und Schaltermechanik bleibt grün.
+[Prüfdetails](verification/2026-11-21-bot-inventory-door.md).
+
 ## Bot-KI, Cgame, Konsole und Scoreboard, 21. November 2026
 
 Das CPU-Profil ordnet den reproduzierbaren Bot-Hänger dem Chat-Matching und

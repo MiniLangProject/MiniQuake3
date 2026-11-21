@@ -75,12 +75,13 @@ function runCombatFrame(state,frameTime,cadence)
   return void
 end function
 function main(args)
-  if len(args)!=3 and len(args)!=4 then return error(7705,"pak0, qvm root and map required, optional frame cadence") end if
+  if len(args)!=3 and len(args)!=4 then return error(7705,"pak0, qvm root and map required, optional frame cadence or unprovoked mode") end if
   cadence="probe";if len(args)==4 then cadence=args[3] end if
+  unprovoked=cadence=="unprovoked"
   archive=pk3.open(args[0]);if archive is error then return archive end if
   mapName=args[2];botName="Ranger";if mapName=="q3dm0" then botName="Crash" end if
   map=bsp.load(pk3.read(archive,"maps/"+mapName+".bsp"));if map is error then return map end if
-  settings=match.UserSettings([["g_gametype","2","0",void,0],["sv_maxclients","12","8",void,0]],array(256,void),array(match.MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),[])
+  settings=match.UserSettings([["g_gametype","2","0",void,0],["g_spSkill","2","0",void,0],["sv_maxclients","12","8",void,0]],array(256,void),array(match.MAX_CLIENTS,"\\name\\Sarge\\rate\\25000"),[])
   state=match.bootWithQvmsSettingsNamed(archive,map,mapName,1000,args[1],settings);if state is error then return state end if
   count=0
   count=count+req(state.game.botEnable==1 and state.context.cvars!=void,"bot library enabled")
@@ -96,7 +97,7 @@ function main(args)
   attackFrames=0;strafeFrames=0;weaponEvents=0;eventSequence=0;encounter=false;groundMove=false
   for frame=1 to 200
     frameTime=1000+frame*100
-    if encounter and weaponEvents==0 then
+    if encounter and weaponEvents==0 and not unprovoked then
       firing=match.submitUsercmd(state,0,qworld.userCommand(frameTime,[0,0,0],1,2,0,0,0));if firing is error then return firing end if
     end if
     result=runCombatFrame(state,frameTime,cadence);if result is error then return result end if
@@ -129,6 +130,7 @@ function main(args)
   groundMove=acceptsGroundMovement(state,bot)
   print("BOT_COMBAT: encounter="+str(encounter)+" attackFrames="+str(attackFrames)+" strafeFrames="+str(strafeFrames)+" weaponEvents="+str(weaponEvents)+" groundCommand="+str(groundMove))
   count=count+req(encounter and attackFrames>0 and weaponEvents>0 and groundMove,"arena bot generates grounded movement and fires its weapon when the player is in sight")
+  if unprovoked then human=ps.load(state.game.slot.machine.data,state.context.gameClients);count=count+req(human.stats[gameConstants.STAT_HEALTH]<125,"Crash damages a visible player without the player firing") end if
   booted=match.bootCgame(state);if booted is error then return booted end if
   count=count+req(strings.contains(state.context.configstrings[0],"\\sv_maxclients\\12"),"local server publishes its bounded maxclients in CS_SERVERINFO before CG_INIT")
   drawn=match.drawCgameProductive(state,21000);if drawn is error then return drawn end if

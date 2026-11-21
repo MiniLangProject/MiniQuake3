@@ -16,6 +16,7 @@ function fixture()
   putI(data,160,0);putI(data,160+32,0);putI(data,160+36,5)
   putI(data,208,1);putI(data,208+32,5);putI(data,208+36,1)
   offsets[5]=280;lengths[5]=24;counts[5]=6;for i=0 to 5 putI(data,280+i*4,i) end for
+  offsets[7]=1920;lengths[7]=40;counts[7]=1;putI(data,1920+24,0);putI(data,1920+28,6)
   offsets[10]=320;lengths[10]=18*44;counts[10]=18
   centers=[[100.0,0.0,0.0],[20.0,0.0,0.0],[-20.0,0.0,0.0],[20.0,100.0,0.0],[30.0,0.0,0.0],[25.0,0.0,0.0]]
   for face=0 to 5
@@ -40,6 +41,7 @@ function patchFixture()
     height=0.0;if row==1 and column==1 then height=32.0 end if;putF(data,at+8,height)
   end for end for
   counts[13]=1;offsets[13]=480;lengths[13]=104
+  offsets[7]=600;lengths[7]=40;counts[7]=1;putI(data,600+24,0);putI(data,600+28,1)
   putI(data,480,0);putI(data,488,render.MST_PATCH);putI(data,492,0);putI(data,496,9);putI(data,508,-1);putI(data,576,3);putI(data,580,3)
   return bsp.BSP(data,offsets,lengths,counts)
 end function
@@ -66,6 +68,9 @@ function main(args)
   c=c+require(len(prepared.renderData.triangles)==2 and not prepared.renderData.truncated,"render-data integration")
   cache=selection.buildCache(map,render.DEFAULT_PATCH_ERROR)
   c=c+require(cache.totalTriangleCount==6 and len(cache.trianglesByFace[5])==1,"one-time complete geometry cache")
+  inlineLeaf=fixture();putI(inlineLeaf.data,inlineLeaf.offsets[7]+28,5)
+  inlineVisible=selection.visibleFaces(inlineLeaf,0,false,void);inlineCache=selection.buildCache(inlineLeaf,render.DEFAULT_PATCH_ERROR)
+  c=c+require(len(inlineVisible[0])==5 and inlineCache.totalTriangleCount==5 and len(inlineCache.trianglesByFace[5])==0,"leaf marks must not submit the moving inline model as static world")
   c=c+require(cache.faceCenters[0][0]==100.0 and cache.faceCenters[0][1]==0.0 and cache.faceRadii[0]>1.33 and cache.faceRadii[0]<1.34,"cached face centroid and radius retain exact geometry")
   patchMap=patchFixture();patchReference=render.extractRetainedWithPatchError(patchMap,[0],8192,render.DEFAULT_PATCH_ERROR)
   patchCache=selection.buildCache(patchMap,render.DEFAULT_PATCH_ERROR)

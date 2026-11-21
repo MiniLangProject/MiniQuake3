@@ -220,6 +220,7 @@ python scripts/test_default_launcher.py
 python scripts/test_default_exe_startup.py
 python scripts/test_desktop_video_retail.py
 python scripts/test_desktop_session_retail.py --data-root build --published
+python scripts/test_singleplayer_bot_retail.py --data-root build
 python scripts/build_release.py --source tests/singleplayer_bot_retail_probe.ml --output singleplayer_bot_retail_probe.exe
 & .\build\singleplayer_bot_retail_probe.exe .\build\baseq3\pak0.pk3 .\build\qvms q3dm0
 & .\build\singleplayer_bot_retail_probe.exe .\build\baseq3\pak0.pk3 .\build\qvms q3dm1
@@ -228,6 +229,8 @@ python scripts/build_release.py --source tests/singleplayer_bot_retail_probe.ml 
 These are focused startup and retail-logic checks, not the full acceptance
 suite. The no-argument startup test intentionally closes the menu after
 observing it; it is not a manual playthrough or a normal menu-exit test.
+The single-player bot script also checks that Crash attacks without the
+player firing and that the original scoreboard still lists both clients.
 
 ### Audit core regressions
 

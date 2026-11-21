@@ -24,10 +24,28 @@ struct Weight name separators end struct
 struct WeightConfig filename weights end struct
 struct Reader registry handle end struct
 struct Eval tokens position valid end struct
-struct Runtime context readFn items configs fileReads reloadCharacters end struct
+struct Runtime context readFn items configs fileReads reloadCharacters qvmInventory end struct
 
 function fail(message) return error(7570,"AI item weights: "+message) end function
-function create(context,readFn) return Runtime(context,readFn,void,[],0,false) end function
+function create(context,readFn) return Runtime(context,readFn,void,[],0,false,false) end function
+// The shipped pak0 botfiles/inv.h predates the pinned 1.32b game/inv.h.
+// Qagame fills inventory using the latter; translate retail profile indices
+// once at parse time so the botlib reads the same slots as its caller.
+function setQvmInventoryLayout(runtime,enabled) if runtime!=void then runtime.qvmInventory=enabled end if;return 0 end function
+function qvmInventoryIndex(index)
+  for each pair in [[15,18],[16,19],[17,20],[18,21],[20,22],[21,23],[22,24],[23,25],[24,29],[25,30],[26,31],[27,35],[28,36],[29,37],[30,38],[31,39],[32,40],[33,45],[34,46]]
+    if index==pair[0] then return pair[1] end if
+  end for
+  return index
+end function
+function translateSeparators(separators)
+  if separators==void then return void end if
+  for each separator in separators
+    separator.inventoryIndex=qvmInventoryIndex(separator.inventoryIndex)
+    translateSeparators(separator.child)
+  end for
+  return void
+end function
 // ReadWeightConfig and FreeWeightConfig use the global bot_reloadcharacters
 // libvar in the released botlib. Keep that policy on the shared fuzzy-weight
 // runtime so item and weapon profiles observe the same ownership mode.
@@ -151,7 +169,7 @@ function parseItems(runtime,name)
       else if field.text=="mins" then value=readVector(reader);if value is error then close(reader);return value end if;item.mins=value
       else if field.text=="maxs" then value=readVector(reader);if value is error then close(reader);return value end if;item.maxs=value
       else close(reader);return fail("unknown item field "+field.text) end if
-    end while;items=items+[item]
+    end while;if runtime.qvmInventory then item.inventoryIndex=qvmInventoryIndex(item.inventoryIndex) end if;items=items+[item]
   end while
 end function
 
@@ -194,6 +212,7 @@ function parseWeightConfig(runtime,filename)
     else if body.text=="return" then parsed=readFuzzyWeight(reader);if not (parsed is error) then separators=[Separator(0,MAX_INVENTORYVALUE,parsed[0],parsed[1],parsed[2],parsed[3],void)] end if
     else close(reader);return fail("invalid weight body "+body.text) end if
     if separators is error then close(reader);return separators end if;if grouped and expect(reader,"}") is error then close(reader);return fail("unterminated weight body") end if
+    if runtime.qvmInventory then translateSeparators(separators) end if
     weights=weights+[Weight(name.text,separators)]
   end while
 end function

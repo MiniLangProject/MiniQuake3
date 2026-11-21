@@ -38,6 +38,16 @@ function fail(text) return error(7490,"World surface selection: "+text) end func
 function validMap(map)
   return map!=void and typeof(map.data)=="bytes" and map.offsets!=void and len(map.offsets)>=17 and map.counts!=void and len(map.counts)>=17
 end function
+
+// tr_bsp.c loads model 0 as the static world. Retail q3dm0 also lists the
+// *12/*13 door faces in leaf marksurfaces; those faces belong to brush models
+// and must be submitted at the mover's current origin, never as static world.
+function worldSurfaceRange(map)
+  if map.counts[7]<1 then return fail("BSP has no world model") end if
+  first=n.readI32(map.data,map.offsets[7]+24);count=n.readI32(map.data,map.offsets[7]+28)
+  if first<0 or count<0 or first+count>map.counts[13] then return fail("invalid world model surface range") end if
+  return [first,first+count]
+end function
 function i32(map,offset)
   value=n.readI32(map.data,offset);if value is error then return fail("truncated integer") end if;return value
 end function
@@ -165,11 +175,13 @@ function buildCache(map,patchError) return buildCacheForPatches(map,patchError,f
 function buildCacheForPatches(map,patchError,withVariants)
   if not validMap(map) then return fail("invalid BSP object") end if
   if patchError<=0.0 then return fail("non-positive patch error") end if
+  worldRange=worldSurfaceRange(map);if worldRange is error then return worldRange end if
   centers=array(map.counts[13],void);radii=array(map.counts[13],0.0);counts=array(map.counts[13],0);kinds=array(map.counts[13],0);normals=array(map.counts[13],void);textureIndexes=array(map.counts[13],-1);byFace=array(map.counts[13],void)
   nativeFaces=bytes(map.counts[13]*72,0)
   patchList=lists.List.new();patches=void
   for faceIndex=0 to map.counts[13]-1
     byFace[faceIndex]=[];offset=map.offsets[13]+faceIndex*FACE_STRIDE;textureIndexes[faceIndex]=i32(map,offset);kind=i32(map,offset+8);kinds[faceIndex]=kind
+    if faceIndex<worldRange[0] or faceIndex>=worldRange[1] then continue end if
     if kind==render.MST_PATCH then
       noDraw=render.patchNoDraw(map,textureIndexes[faceIndex]);if noDraw is error then return noDraw end if
       if noDraw then continue end if
@@ -272,6 +284,7 @@ function equalAreaMask(left,right)
 end function
 
 function visibleFaces(map,cameraCluster,pvsUsed,areaMask)
+  worldRange=worldSurfaceRange(map);if worldRange is error then return worldRange end if
   faceList=lists.List.withCapacity(map.counts[13]);seenFaces=array(map.counts[13],false);rejectedPvs=0
   for leafIndex=0 to map.counts[4]-1
     leafOffset=map.offsets[4]+leafIndex*LEAF_STRIDE;cluster=i32(map,leafOffset)
@@ -283,7 +296,7 @@ function visibleFaces(map,cameraCluster,pvsUsed,areaMask)
     if leafVisible then
       first=i32(map,leafOffset+32);count=i32(map,leafOffset+36)
       if first<0 or count<0 or first+count>map.counts[5] then return fail("invalid leaf surface range") end if
-      if count>0 then for slot=first to first+count-1 face=i32(map,map.offsets[5]+slot*4);if face<0 or face>=map.counts[13] then return fail("invalid leaf face") end if;if not seenFaces[face] then faceList.add(face);seenFaces[face]=true end if end for end if
+      if count>0 then for slot=first to first+count-1 face=i32(map,map.offsets[5]+slot*4);if face<0 or face>=map.counts[13] then return fail("invalid leaf face") end if;if face>=worldRange[0] and face<worldRange[1] and not seenFaces[face] then faceList.add(face);seenFaces[face]=true end if end for end if
     else rejectedPvs=rejectedPvs+1
     end if
   end for

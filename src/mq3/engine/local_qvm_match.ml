@@ -944,6 +944,7 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   context.elementaryActions=elementaryActions.create(maxClients,botClientCommand,context)
   context.aiCharacters=aiCharacters.create(maxClients,context,botCharacterRead)
   context.aiItemWeights=aiItemWeights.create(context,botCharacterRead)
+  aiItemWeights.setQvmInventoryLayout(context.aiItemWeights,true)
   context.aiLevelItems=aiLevelItems.create(context.aiItemWeights)
   context.aiGoalState=aiGoalState.create(context.aiResources,context,goalStateTime,goalStateName,goalStateLog,goalStatePrint)
   goalServices=aiGoalSelection.services(context);goalServices.travelTimeFn=goalSelectionTravelTime;goalServices.traceFn=goalSelectionTrace;goalServices.itemQueryFn=goalSelectionItemQuery

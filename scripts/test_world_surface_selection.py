@@ -12,7 +12,7 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     subprocess.run([sys.executable, ROOT / "scripts/build.py", "--source", "tests/world_surface_selection_contracts.ml", "--output", "world_surface_selection_contracts.exe"], cwd=ROOT, check=True)
     contracts = run([ROOT / "build/world_surface_selection_contracts.exe"], ROOT / "build", log=out / "contracts.log").strip()
-    expected = "PASS: 52 world-surface-selection contracts"
+    expected = "PASS: 53 world-surface-selection contracts"
     if contracts != expected:
         raise RuntimeError(contracts)
 
@@ -35,7 +35,7 @@ def main():
     ]
     report = {
         "passed": True,
-        "contracts": 52,
+        "contracts": 53,
         "q3dm1": q3dm1,
         "scope": "BSP leaf/PVS and area masks, independent horizontal and vertical frusta, directional face culling with plane tolerance, whole-surface budgets, and retained camera-dependent patch variants.",
         "sources": {str(p.relative_to(ROOT)).replace("\\", "/"): sha(p) for p in files},
