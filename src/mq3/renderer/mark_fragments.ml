@@ -6,6 +6,8 @@ package mq3.renderer.mark_fragments
 import mq3.compat.numeric as n
 import mq3.renderer.bsp_render_data as renderData
 import mq3.collision.world as collision
+import std.ds.list as lists
+import std.ds.set as sets
 
 const MAX_VERTS_ON_POLY=64
 const MAX_MARK_SURFACES=64
@@ -30,7 +32,6 @@ end function
 function faceValue(map,faceIndex,relative) return n.readI32(map.data,map.offsets[13]+faceIndex*FACE_STRIDE+relative) end function
 function faceFloat(map,faceIndex,relative) return n.bitsFloat(n.readU32(map.data,map.offsets[13]+faceIndex*FACE_STRIDE+relative)) end function
 function shaderValue(map,shaderIndex,relative) return n.readI32(map.data,map.offsets[1]+shaderIndex*SHADER_STRIDE+relative) end function
-function contains(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
 
 function projectionBounds(points,projection,direction)
   mins=[points[0][0],points[0][1],points[0][2]];maxs=[points[0][0],points[0][1],points[0][2]]
@@ -47,36 +48,40 @@ function projectionBounds(points,projection,direction)
 end function
 
 function projectionPlanes(points,projection)
-  direction=normalize(projection);planes=[]
+  direction=normalize(projection)
+  planes=array(len(points)+2,void)
+  reverseProjection=[0.0-projection[0],0.0-projection[1],0.0-projection[2]]
   for index=0 to len(points)-1
-    edge=subtract(points[(index+1)%len(points)],points[index]);normal=normalize(cross(edge,[0.0-projection[0],0.0-projection[1],0.0-projection[2]]))
-    planes=planes+[Plane(normal,dot(normal,points[index]))]
+    edge=subtract(points[(index+1)%len(points)],points[index])
+    normal=normalize(cross(edge,reverseProjection))
+    planes[index]=Plane(normal,dot(normal,points[index]))
   end for
-  planes=planes+[Plane(direction,dot(direction,points[0])-32.0)]
-  inverse=[0.0-direction[0],0.0-direction[1],0.0-direction[2]];planes=planes+[Plane(inverse,dot(inverse,points[0])-20.0)]
+  planes[len(points)]=Plane(direction,dot(direction,points[0])-32.0)
+  inverse=[0.0-direction[0],0.0-direction[1],0.0-direction[2]]
+  planes[len(points)+1]=Plane(inverse,dot(inverse,points[0])-20.0)
   return planes
 end function
 
 // R_ChopPolyBehindPlane keeps front/on points and uses a 0.5 unit epsilon.
 function clipPlane(points,plane)
   if len(points)==0 or len(points)>=MAX_VERTS_ON_POLY-2 then return [] end if
-  distances=[];sides=[];front=0;back=0
-  for each point in points
-    distance=dot(point,plane.normal)-plane.distance;side=2
+  distances=array(len(points),0.0);sides=array(len(points),2);front=0;back=0
+  for index=0 to len(points)-1
+    distance=dot(points[index],plane.normal)-plane.distance;side=2
     if distance>0.5 then side=0;front=front+1 else if distance< -0.5 then side=1;back=back+1 end if
-    distances=distances+[distance];sides=sides+[side]
+    distances[index]=distance;sides[index]=side
   end for
   if front==0 then return [] end if;if back==0 then return points end if
-  output=[]
+  output=lists.List.withCapacity(len(points)+2)
   for index=0 to len(points)-1
     next=(index+1)%len(points);point=points[index]
-    if sides[index]==2 then output=output+[point];continue end if
-    if sides[index]==0 then output=output+[point] end if
+    if sides[index]==2 then output.add(point);continue end if
+    if sides[index]==0 then output.add(point) end if
     if sides[next]==2 or sides[next]==sides[index] then continue end if
     denominator=distances[index]-distances[next];fraction=0.0;if denominator!=0.0 then fraction=distances[index]/denominator end if
-    other=points[next];output=output+[[point[0]+fraction*(other[0]-point[0]),point[1]+fraction*(other[1]-point[1]),point[2]+fraction*(other[2]-point[2])]]
+    other=points[next];output.add([point[0]+fraction*(other[0]-point[0]),point[1]+fraction*(other[1]-point[1]),point[2]+fraction*(other[2]-point[2])])
   end for
-  return output
+  return output.toArray()
 end function
 function clipTriangle(vertices,planes)
   output=vertices
@@ -109,14 +114,20 @@ function eligibleFace(map,faceIndex,direction,mins,maxs)
   return true
 end function
 function candidateFaces(map,world,mins,maxs,direction)
-  leaves=collision.enumerateLeaves(world,mins,maxs);seen=[];result=[]
+  leaves=collision.enumerateLeaves(world,mins,maxs)
+  seen=sets.HashSet.new()
+  result=lists.List.withCapacity(MAX_MARK_SURFACES)
   for each leafIndex in leaves
     for each faceIndex in world.leaves[leafIndex].surfaces
-      if contains(seen,faceIndex) then continue end if;seen=seen+[faceIndex]
-      if eligibleFace(map,faceIndex,direction,mins,maxs) then result=result+[faceIndex];if len(result)>=MAX_MARK_SURFACES then return result end if end if
+      if seen.has(faceIndex) then continue end if
+      seen.add(faceIndex)
+      if eligibleFace(map,faceIndex,direction,mins,maxs) then
+        result.add(faceIndex)
+        if result.size>=MAX_MARK_SURFACES then return result.toArray() end if
+      end if
     end for
   end for
-  return result
+  return result.toArray()
 end function
 
 function project(map,world,sourcePoints,projection,maxPoints,maxFragments)
@@ -126,15 +137,25 @@ function project(map,world,sourcePoints,projection,maxPoints,maxFragments)
   points=sourcePoints;if len(points)>MAX_VERTS_ON_POLY then points=slice(points,0,MAX_VERTS_ON_POLY) end if
   direction=normalize(projection);if direction==[0.0,0.0,0.0] then return Result([],[],0,0) end if
   bounds=projectionBounds(sourcePoints,projection,direction);planes=projectionPlanes(points,projection);faces=candidateFaces(map,world,bounds[0],bounds[1],direction)
-  geometry=renderData.extract(map,faces,131072);if geometry is error then return geometry end if
-  outputPoints=[];fragments=[];tested=0
+  // The clipper reads source positions without mutating them. Decode shared
+  // mesh vertices once per face, as in the retained world renderer.
+  geometry=renderData.extractRetainedWithPatchError(map,faces,131072,renderData.DEFAULT_PATCH_ERROR)
+  if geometry is error then return geometry end if
+  outputPoints=lists.List.new();fragments=lists.List.new();tested=0
+  previousFace=-1;kind=0
   for each triangle in geometry.triangles
-    kind=faceValue(map,triangle.faceIndex,8);if kind!=renderData.MST_PLANAR and kind!=renderData.MST_PATCH then continue end if
+    if triangle.faceIndex!=previousFace then
+      previousFace=triangle.faceIndex
+      kind=faceValue(map,previousFace,8)
+    end if
+    if kind!=renderData.MST_PLANAR and kind!=renderData.MST_PATCH then continue end if
     vertices=[triangle.vertices[0].position,triangle.vertices[1].position,triangle.vertices[2].position];if not boundsOverlap(vertices,bounds[0],bounds[1]) then continue end if
     if kind==renderData.MST_PATCH then normal=normalize(cross(subtract(vertices[0],vertices[1]),subtract(vertices[2],vertices[1])));limit=-0.05;if triangle.triangleIndex%2==0 then limit=-0.1 end if;if dot(normal,direction)>=limit then continue end if end if
     tested=tested+1;clipped=clipTriangle(vertices,planes);if len(clipped)==0 then continue end if
-    if len(fragments)>=maxFragments then break end if;if len(outputPoints)+len(clipped)>maxPoints then continue end if
-    fragments=fragments+[Fragment(len(outputPoints),len(clipped))];outputPoints=outputPoints+clipped
+    if fragments.size>=maxFragments then break end if
+    if outputPoints.size+len(clipped)>maxPoints then continue end if
+    fragments.add(Fragment(outputPoints.size,len(clipped)))
+    for each point in clipped outputPoints.add(point) end for
   end for
-  return Result(outputPoints,fragments,len(faces),tested)
+  return Result(outputPoints.toArray(),fragments.toArray(),len(faces),tested)
 end function

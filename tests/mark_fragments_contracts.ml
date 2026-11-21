@@ -34,6 +34,9 @@ function main(args)
   valid=true;for each point in result.points if point[0]< -1.01 or point[0]>1.01 or point[1]< -1.01 or point[1]>1.01 or point[2]!=0.0 then valid=false end if end for
   count=count+require(valid,"fragment points lie in projection prism on face")
   count=count+require(result.fragments[0].firstPoint==0 and result.fragments[1].firstPoint==result.fragments[0].numPoints,"fragment point offsets are contiguous")
+  world.leaves[0].surfaces=[0,0,0]
+  duplicate=marks.project(map,world,square(),[0.0,0.0,-20.0],64,16)
+  count=count+require(duplicate.candidateSurfaces==1 and duplicate.testedTriangles==2 and duplicate.points==result.points and len(duplicate.fragments)==2,"repeated face references emit fragments only once")
   limited=marks.project(map,world,square(),[0.0,0.0,-20.0],64,1);count=count+require(len(limited.fragments)==1,"fragment capacity stops output")
   cramped=marks.project(map,world,square(),[0.0,0.0,-20.0],2,16);count=count+require(len(cramped.fragments)==0 and len(cramped.points)==0,"point capacity rejects whole polygons")
   putI32(map.data,64,marks.SURF_NOMARKS);blocked=marks.project(map,world,square(),[0.0,0.0,-20.0],64,16);count=count+require(len(blocked.fragments)==0,"nomarks shader surface rejected")

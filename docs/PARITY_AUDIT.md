@@ -4,6 +4,18 @@ Stand: 2026-11-21. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Patch-Gitter und Einschlagmarken, 21. November 2026
+
+Die Patch-Unterteilung entfernt bei mehreren geraden Abschnitten nur noch
+die vorgesehenen Punkte. Der produktive Renderer und der separate
+`tr_curve`-Pfad verwenden dieselbe Verdichtung für Gitter und LOD-Daten.
+Bei der Unterteilung werden Gitter direkt befüllt. Einschlagmarken
+verwenden gemeinsame BSP-Vertices und sammeln die Ausgabe ohne wiederholte
+Arraykopien. Der synthetische Patch-Test sank von 101–142 auf 56–62 ms,
+die Projektion auf eine Fläche mit 512 Dreiecken von 45–47 auf 14 ms.
+Testaufbau, Referenzvergleich und Grenzen stehen im
+[Performance- und Code-Audit](verification/2026-11-21-performance-code-audit.md).
+
 ## Weiteres Performance- und Code-Audit, 21. November 2026
 
 Der produktive Retained-World-Cache unterteilt Patchflächen nicht mehr ein

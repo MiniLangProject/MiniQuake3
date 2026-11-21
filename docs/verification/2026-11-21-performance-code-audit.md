@@ -2,7 +2,53 @@
 
 Scope: productive Windows QVM preview, retained BSP world build, renderer draw path, and botlib profile evidence. The original Quake III source under `Quake-III-Arena-original-source` and the existing MiniLang contracts were used as behavioral references. This audit does not establish full game parity.
 
-## Fixed in this package
+## Follow-up on patch grids and impact marks
+
+The productive BSP renderer lost valid grid points after removing a collinear
+point. Its removal loop left the error markers in place, causing one marker
+to remove the point that shifted into the same index. The original
+`R_SubdividePatchToGrid` shifts the markers with the grid and advances the
+index. Both MiniLang entry points now share a single compaction pass that
+keeps the corresponding LOD errors. The original C routine and the productive
+MiniLang path emit identical positions, first base UV components and first color bytes for
+the two new test grids. The flat fixture grows from 2×2 to the original 3×3
+and the mixed straight and curved fixture from 2×2 to the original 6×6.
+
+Patch transposition and row expansion now write to arrays of known size.
+The impact-mark trap uses fixed arrays for clip-plane calculations, a
+standard hash set for visited faces and growable lists for fragments and
+points. Its geometry extraction shares read-only BSP vertices within each
+face, and the classifier reads the face type once per run of triangles.
+The tests cover clipping against unchanged C, duplicate face references,
+output capacity and the cgame trap ABI.
+
+Local Windows probes ran both versions against the same synthetic inputs
+after warmup. The baseline is commit `fd0266e`.
+
+| Work per trial | Baseline | With fixes |
+| --- | ---: | ---: |
+| 12 subdivisions of one 15×15 patch with alternating control heights, 29×29 result | 101–142 ms | 56–62 ms |
+| 40 impact-mark projections on one planar face with 512 triangles | 45–47 ms | 14 ms |
+| 500 impact-mark projections on one planar face with two triangles | 8 ms | 7–8 ms |
+
+The patch probe checked output dimensions, positions, UVs, normals and colors
+against the baseline on the timed fixture. The mark probes compared points,
+fragment counts and tested triangle counts. These timings cover only the
+renderer routines in the table. Retail loading and game FPS remain
+unmeasured with the current changes.
+
+The Windows tests passed 64 BSP render contracts and matched 7 lighting,
+75 patch-normal and 47 patch-grid reference records. World selection passed
+45 contracts and retained rendering passed 51. The impact-mark gate matched
+5 original C records and passed 18 contracts, including calls through cgame
+trap 27. The separate `tr_curve` gate passed its 5 native comparison
+records and 26 contracts before the missing Retail `q3dm1` map blocked it.
+The full `python scripts/verify.py --data-root D:/Quake3` run built
+`MiniQuake3.exe` and reached `test_message_state_delta.py`, where the local
+MiniLang compiler again reported
+`unknown data patch target: switch_case_body_22681_0`.
+
+## Findings from the preceding package
 
 1. `world_surface_selection.buildCache` subdivided every patch twice: first through `faceTriangleCount`, then through `extractRetainedWithPatchError`. It now takes the count from the extracted geometry. The renderer's 65×65 grid limit bounds the temporary patch budget to 8,192 triangles. The new patch contract compares the cache count, output length, vertex and triangle order with a direct extractor result.
 2. `faceBounds` decoded every face vertex twice to compute centroid and radius. It now retains the positions from the centroid pass for the radius pass. A regression checks the cached center and radius.

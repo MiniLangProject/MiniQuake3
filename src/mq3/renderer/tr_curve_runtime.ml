@@ -52,22 +52,14 @@ end function
 function R_FreeSurfaceGridMesh(grid)
   if grid==void then return false end if;grid.widthLodError=[];grid.heightLodError=[];grid.verts=[];grid.freed=true;return true
 end function
-function removeError(value,index,count)
-  result=[];for current=0 to count-1 if current!=index then result=result+[value[current]] end if end for;while len(result)<MAX_GRID_SIZE result=result+[0.0] end while;return result
-end function
 function R_SubdividePatchToGrid(width,height,points,subdivisions)
   if width<3 or height<3 or width>MAX_GRID_SIZE or height>MAX_GRID_SIZE or width%2==0 or height%2==0 or points==void or len(points)<width*height or subdivisions<=0.0 then return fail("invalid patch control grid") end if
   first=render.subdivideHorizontal(points,width,height,subdivisions);ctrl=render.transposeGrid(first[0],first[1],first[2]);width=first[2];height=first[1]
   second=render.subdivideHorizontal(ctrl,width,height,subdivisions);ctrl=render.transposeGrid(second[0],second[1],second[2]);width=second[2];height=second[1]
-  errorTable=[first[3],second[3]];ctrl=render.putGridPointsOnCurve(ctrl,width,height)
-  index=1
-  while index<width-1
-    if errorTable[0][index]==999.0 then ctrl=render.removeGridColumn(ctrl,width,height,index);errorTable[0]=removeError(errorTable[0],index,width);width=width-1 else index=index+1 end if
-  end while
-  index=1
-  while index<height-1
-    if errorTable[1][index]==999.0 then ctrl=render.removeGridRow(ctrl,width,height,index);errorTable[1]=removeError(errorTable[1],index,height);height=height-1 else index=index+1 end if
-  end while
+  ctrl=render.putGridPointsOnCurve(ctrl,width,height)
+  compacted=render.compactGrid(ctrl,width,height,first[3],second[3])
+  ctrl=compacted[0];width=compacted[1];height=compacted[2]
+  errorTable=[compacted[3],compacted[4]]
   if height>width then
     ctrl=Transpose(width,height,ctrl);errorTable=InvertErrorTable(errorTable,width,height);temporary=width;width=height;height=temporary;ctrl=InvertCtrl(width,height,ctrl)
   end if

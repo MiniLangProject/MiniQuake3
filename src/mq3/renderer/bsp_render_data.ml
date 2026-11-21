@@ -48,7 +48,9 @@ function bezierScalar(a,b,c,t)
   first=lerp(a,b,t);last=lerp(b,c,t);return lerp(first,last,t)
 end function
 function bezierArray(a,b,c,t)
-  result=[];for index=0 to len(a)-1 result=result+[bezierScalar(a[index],b[index],c[index],t)] end for;return result
+  result=array(len(a),0.0)
+  for index=0 to len(a)-1 result[index]=bezierScalar(a[index],b[index],c[index],t) end for
+  return result
 end function
 function normalized(value)
   length=n.fsqrt(value[0]*value[0]+value[1]*value[1]+value[2]*value[2]);if length<=0.0 then return [0.0,0.0,1.0] end if
@@ -62,24 +64,34 @@ function bezierVertex(a,b,c,t)
   return RenderVertex(bezierArray(a.position,b.position,c.position,t),bezierArray(a.baseUV,b.baseUV,c.baseUV,t),bezierArray(a.lightmapUV,b.lightmapUV,c.lightmapUV,t),normalized(bezierArray(a.normal,b.normal,c.normal,t)),color,entityColor,entityTexCoord,shaderTime,-1)
 end function
 function halfArray(a,b)
-  result=[];for index=0 to len(a)-1 result=result+[(a[index]+b[index])*0.5] end for;return result
+  result=array(len(a),0.0)
+  for index=0 to len(a)-1 result[index]=(a[index]+b[index])*0.5 end for
+  return result
 end function
 function halfVertex(a,b)
-  color=[];entityColor=[]
-  for index=0 to 3 color=color+[n.quotient(a.color[index]+b.color[index],2)];entityColor=entityColor+[n.quotient(a.entityColor[index]+b.entityColor[index],2)] end for
+  color=array(4,0);entityColor=array(4,0)
+  for index=0 to 3
+    color[index]=n.quotient(a.color[index]+b.color[index],2)
+    entityColor[index]=n.quotient(a.entityColor[index]+b.entityColor[index],2)
+  end for
   return RenderVertex(halfArray(a.position,b.position),halfArray(a.baseUV,b.baseUV),halfArray(a.lightmapUV,b.lightmapUV),halfArray(a.normal,b.normal),color,entityColor,halfArray(a.entityTexCoord,b.entityTexCoord),(a.shaderTime+b.shaderTime)*0.5,-1)
 end function
 function curveLineError(a,b,c)
-  midpoint=bezierArray(a.position,b.position,c.position,0.5);offset=[];direction=[];lengthSquared=0.0
-  for axis=0 to 2 offset=offset+[midpoint[axis]-a.position[axis]];delta=c.position[axis]-a.position[axis];direction=direction+[delta];lengthSquared=lengthSquared+delta*delta end for
+  offset=array(3,0.0);direction=array(3,0.0);lengthSquared=0.0
+  for axis=0 to 2
+    offset[axis]=bezierScalar(a.position[axis],b.position[axis],c.position[axis],0.5)-a.position[axis]
+    delta=c.position[axis]-a.position[axis]
+    direction[axis]=delta
+    lengthSquared=lengthSquared+delta*delta
+  end for
   if lengthSquared>0.0 then length=n.fsqrt(lengthSquared);for axis=0 to 2 direction[axis]=direction[axis]/length end for end if
   projected=offset[0]*direction[0]+offset[1]*direction[1]+offset[2]*direction[2];errorSquared=0.0
   for axis=0 to 2 delta=offset[axis]-direction[axis]*projected;errorSquared=errorSquared+delta*delta end for
   return n.fsqrt(errorSquared)
 end function
 function transposeGrid(control,width,height)
-  result=[]
-  for row=0 to width-1 for column=0 to height-1 result=result+[control[column*width+row]] end for end for
+  result=array(width*height,void)
+  for row=0 to width-1 for column=0 to height-1 result[row*height+column]=control[column*width+row] end for end for
   return result
 end function
 // Baseq3 R_SubdividePatchToGrid checks perpendicular distance to the chord,
@@ -96,15 +108,19 @@ function subdivideHorizontal(control,width,height,errorLimit)
     if maximum<0.1 then errors[column+1]=999.0;column=column+2
     else if maximum<=errorLimit or width+2>MAX_GRID_SIZE then errors[column+1]=1.0/maximum;column=column+2
     else
-      expanded=[]
+      newWidth=width+2
+      expanded=array(newWidth*height,void)
       for row=0 to height-1
-        start=row*width
-        for index=0 to column expanded=expanded+[control[start+index]] end for
-        previous=halfVertex(control[start+column],control[start+column+1]);following=halfVertex(control[start+column+1],control[start+column+2]);middle=halfVertex(previous,following)
-        expanded=expanded+[previous,middle,following]
-        for index=column+2 to width-1 expanded=expanded+[control[start+index]] end for
+        start=row*width;target=row*newWidth
+        for index=0 to column expanded[target+index]=control[start+index] end for
+        previous=halfVertex(control[start+column],control[start+column+1])
+        following=halfVertex(control[start+column+1],control[start+column+2])
+        expanded[target+column+1]=previous
+        expanded[target+column+2]=halfVertex(previous,following)
+        expanded[target+column+3]=following
+        for index=column+2 to width-1 expanded[target+index+2]=control[start+index] end for
       end for
-      control=expanded;width=width+2;errors[column+2]=1.0/maximum
+      control=expanded;width=newWidth;errors[column+2]=1.0/maximum
     end if
   end while
   return [control,width,height,errors]
@@ -118,15 +134,41 @@ function putGridPointsOnCurve(control,width,height)
   end for
   return control
 end function
-function removeGridColumn(control,width,height,column)
-  result=[];for row=0 to height-1 for index=0 to width-1 if index!=column then result=result+[control[row*width+index]] end if end for end for;return result
+function retainedGridAxis(size,errors)
+  retained=lists.List.withCapacity(size)
+  retained.add(0)
+  index=1
+  while index<size-1
+    // The original shifts the error table with the grid, then advances
+    // past the point that took the removed point's place.
+    if errors[index]==999.0 then index=index+1 end if
+    retained.add(index)
+    index=index+1
+  end while
+  if index==size-1 then retained.add(index) end if
+  return retained.toArray()
 end function
-function removeGridRow(control,width,height,row)
-  result=[];for index=0 to height-1 if index!=row then for column=0 to width-1 result=result+[control[index*width+column]] end for end if end for;return result
+function compactGrid(control,width,height,widthErrors,heightErrors)
+  columns=retainedGridAxis(width,widthErrors)
+  rows=retainedGridAxis(height,heightErrors)
+  newWidth=len(columns);newHeight=len(rows)
+  if newWidth==width and newHeight==height then
+    return [control,width,height,widthErrors,heightErrors]
+  end if
+  compacted=array(newWidth*newHeight,void)
+  for row=0 to newHeight-1
+    for column=0 to newWidth-1
+      compacted[row*newWidth+column]=control[rows[row]*width+columns[column]]
+    end for
+  end for
+  newWidthErrors=array(newWidth,0.0);newHeightErrors=array(newHeight,0.0)
+  for column=0 to newWidth-1 newWidthErrors[column]=widthErrors[columns[column]] end for
+  for row=0 to newHeight-1 newHeightErrors[row]=heightErrors[rows[row]] end for
+  return [compacted,newWidth,newHeight,newWidthErrors,newHeightErrors]
 end function
 function normalDirection(target,base)
-  value=[];lengthSquared=0.0
-  for axis=0 to 2 delta=target[axis]-base[axis];value=value+[delta];lengthSquared=lengthSquared+delta*delta end for
+  value=array(3,0.0);lengthSquared=0.0
+  for axis=0 to 2 delta=target[axis]-base[axis];value[axis]=delta;lengthSquared=lengthSquared+delta*delta end for
   if lengthSquared<=0.0 then return void end if
   length=n.fsqrt(lengthSquared);for axis=0 to 2 value[axis]=value[axis]/length end for;return value
 end function
@@ -182,11 +224,10 @@ end function
 function subdividePatch(control,width,height,errorLimit)
   first=subdivideHorizontal(control,width,height,errorLimit);control=transposeGrid(first[0],first[1],first[2]);width=first[2];height=first[1]
   second=subdivideHorizontal(control,width,height,errorLimit);control=transposeGrid(second[0],second[1],second[2]);width=second[2];height=second[1]
-  control=putGridPointsOnCurve(control,width,height);widthErrors=first[3];heightErrors=second[3]
-  index=1;while index<width-1 if widthErrors[index]==999.0 then control=removeGridColumn(control,width,height,index);width=width-1 else index=index+1 end if end while
-  index=1;while index<height-1 if heightErrors[index]==999.0 then control=removeGridRow(control,width,height,index);height=height-1 else index=index+1 end if end while
-  control=makeGridNormals(control,width,height)
-  return [control,width,height]
+  control=putGridPointsOnCurve(control,width,height)
+  grid=compactGrid(control,width,height,first[3],second[3])
+  control=makeGridNormals(grid[0],grid[1],grid[2])
+  return [control,grid[1],grid[2]]
 end function
 function appendPatch(triangles,control,width,height,textureIndex,lightmapIndex,fogIndex,faceIndex,maxTriangles,errorLimit)
   grid=subdividePatch(control,width,height,errorLimit);control=grid[0];width=grid[1];height=grid[2];count=0;truncated=false
