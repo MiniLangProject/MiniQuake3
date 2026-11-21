@@ -396,9 +396,8 @@ end function
 function inPvs(context,a,b,ignorePortals)
   if not ignorePortals then return serverWorld.inPVS(context.spatialScene,a,b) end if
   first=collision.pointLeafnum(context.collisionWorld,a);second=collision.pointLeafnum(context.collisionWorld,b)
-  cluster=visibility.leafCluster(context.collisionWorld.visibility,second);mask=visibility.clusterPVS(context.collisionWorld.visibility,visibility.leafCluster(context.collisionWorld.visibility,first))
-  if cluster<0 or (cluster>>3)>=len(mask) then return false end if
-  return (mask[cluster>>3]&(1<<(cluster&7)))!=0
+  cluster=visibility.leafCluster(context.collisionWorld.visibility,second);sourceCluster=visibility.leafCluster(context.collisionWorld.visibility,first)
+  return visibility.clusterVisible(context.collisionWorld.visibility,sourceCluster,cluster)
 end function
 function adjustPortal(context,entity,isOpen)
   index=entityIndex(context,entity);if index<0 then return fail("area portal entity is outside game data") end if
@@ -1475,6 +1474,7 @@ function cgameBoxTraceReference(context,vm,base,capsule,transformed)
 end function
 function cgameBoxTrace(context,vm,base,capsule,transformed)
   context.cgameCollisionQueries=context.cgameCollisionQueries+1
+  if transformed and not capsule and collision.writeVmTemporaryBoxTrace(context.collisionWorld,vm,base) then return 0 end if
   return cgameBoxTraceReference(context,vm,base,capsule,transformed)
 end function
 function cgameBoxTraceCached(context,vm,base,capsule,transformed)
@@ -1498,7 +1498,7 @@ function addCgamePolys(context,vm,base,multiple)
   for index=0 to total-1
     offset=at+index*24;vertices[index]=sceneQueue.PolyVert(readVector(vm.data,offset),[n.bitsFloat(n.readI32(vm.data,offset+12)),n.bitsFloat(n.readI32(vm.data,offset+16))],[vm.data[offset+20],vm.data[offset+21],vm.data[offset+22],vm.data[offset+23]])
   end for
-  sceneQueue.addPolys(context.scene,shader,numVerts,vertices,numPolys);return 0
+  sceneQueue.addPolysDecoded(context.scene,shader,numVerts,vertices,numPolys);return 0
 end function
 function rendererModel(context,handle)
   if handle<=0 or handle>len(context.assets) or context.assetKinds[handle-1]!="model" or handle>len(context.modelAssets) then return void end if

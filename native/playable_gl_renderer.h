@@ -463,11 +463,13 @@ static int hardwareDrawBatch(const unsigned char *records, int count, const hard
             int end=group+1;
             while (end<chunk && hardwarePackedStates[end].base==state->base &&
                     hardwarePackedStates[end].lightmap==state->lightmap && hardwarePackedStates[end].overlay==state->overlay) ++end;
-            if (state->base!=lastBase || state->lightmap!=lastLightmap || state->overlay!=lastOverlay) {
-                hardwareState(state->overlay);hardwareTextureUnit(MQ_GL_TEXTURE0,state->base);
-                hardwareTextureUnit(MQ_GL_TEXTURE1,state->lightmap);mq_glActiveTexture(MQ_GL_TEXTURE0);
-                lastBase=state->base;lastLightmap=state->lightmap;lastOverlay=state->overlay;
-            }
+            /* Raster state stays constant through this submission except
+             * for the screen-space depth override. Each texture unit can
+             * keep its own binding when only the other changes. */
+            if (state->overlay!=lastOverlay) hardwareState(state->overlay);
+            if (state->base!=lastBase || lastOverlay<0) hardwareTextureUnit(MQ_GL_TEXTURE0,state->base);
+            if (state->lightmap!=lastLightmap || lastOverlay<0) hardwareTextureUnit(MQ_GL_TEXTURE1,state->lightmap);
+            lastBase=state->base;lastLightmap=state->lightmap;lastOverlay=state->overlay;
             mq_glDrawArrays(GL_TRIANGLES,group*3,(end-group)*3);++hardwareDrawCalls;
             group=end;
         }

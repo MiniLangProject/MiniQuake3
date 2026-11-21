@@ -16,7 +16,7 @@ function sourceTriangle(x,color,entityColor,shaderHandle) return sourceTriangleF
 function catalogFor(triangles,materialList)
   resolved=array(len(triangles),void);index=0
   for each triangle in triangles materialIndex=-1;if len(materialList)>0 then materialIndex=0 end if;resolved[index]=sceneMaterials.ResolvedTriangle(triangle,materialIndex);index=index+1 end for
-  return sceneMaterials.Catalog(resolved,materialList,[],void,0,[],[],len(triangles),0,336,void,void)
+  return sceneMaterials.Catalog(resolved,materialList,[],void,0,[],[],len(triangles),0,336,void,void,void)
 end function
 
 function main(args)

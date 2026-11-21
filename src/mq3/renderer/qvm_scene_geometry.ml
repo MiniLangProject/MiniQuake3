@@ -208,16 +208,17 @@ function inlineCulled(decoded,model,frustum)
   if frustum==void then return false end if
   orientation=viewMath.orientation(decoded.origin,decoded.axis);result=viewMath.cullLocalBox(model[0].bounds,orientation,frustum,false);if result is error then return result end if;return result==viewMath.CULL_OUT
 end function
-function expectedDecodedTrianglesModeFogLod(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,fogCatalog,noWorldModel,refdef,lodScale,lodBias,shadowMode)
-  count=0
+function plannedDecodedTrianglesModeFogLod(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,fogCatalog,noWorldModel,refdef,lodScale,lodBias,shadowMode,plans)
+  count=0;entityIndex=-1
   for each decoded in decodedEntities
+    entityIndex=entityIndex+1
     if not entityPolicy.visible(decoded.reType,decoded.renderfx,isPortal) then continue end if
     if decoded.reType==RT_MODEL then
       asset=modelAt(assetKinds,modelAssets,decoded.hModel)
       if asset!=void and typeof(asset)!="string" then
         model=asset;culled=false
-        if isInlineModel(asset) then culled=inlineCulled(decoded,asset,frustum);if culled is error then return culled end if
-        else selection=selectMd3(decoded,asset,refdef,frustum,lodScale,lodBias);if selection is error then return selection end if;model=selection.model;culled=selection.cull==viewMath.CULL_OUT end if
+        if isInlineModel(asset) then culled=inlineCulled(decoded,asset,frustum);if culled is error then return culled end if;if plans!=void then plans[entityIndex]=culled end if
+        else selection=selectMd3(decoded,asset,refdef,frustum,lodScale,lodBias);if selection is error then return selection end if;model=selection.model;culled=selection.cull==viewMath.CULL_OUT;if plans!=void then plans[entityIndex]=selection end if end if
         if not culled then amount=modelTriangleCount(model,maxTrianglesPerSurface);count=count+amount;if not isInlineModel(asset) and shadowMode==3 and (decoded.renderfx&RF_SHADOW_PLANE)!=0 then fogNum=modelFogNum(decoded,model,fogCatalog,noWorldModel);if fogNum is error then return fogNum end if;if fogNum==0 then count=count+amount end if end if end if
       end if
     else if decoded.reType==RT_SPRITE or decoded.reType==RT_RAIL_CORE then count=count+2
@@ -227,6 +228,9 @@ function expectedDecodedTrianglesModeFogLod(decodedEntities,polys,assetKinds,mod
   end for
   for each poly in polys if len(poly.verts)>=3 then count=count+len(poly.verts)-2 end if end for
   return count
+end function
+function expectedDecodedTrianglesModeFogLod(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,fogCatalog,noWorldModel,refdef,lodScale,lodBias,shadowMode)
+  return plannedDecodedTrianglesModeFogLod(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,fogCatalog,noWorldModel,refdef,lodScale,lodBias,shadowMode,void)
 end function
 function expectedDecodedTrianglesModeFog(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,fogCatalog,noWorldModel) return expectedDecodedTrianglesModeFogLod(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,fogCatalog,noWorldModel,void,5.0,0,0) end function
 function expectedDecodedTrianglesMode(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum) return expectedDecodedTrianglesModeFog(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,void,false) end function
@@ -435,7 +439,8 @@ end function
 function buildRecordsFrameCachedLitReuseModeShadowFogLod(entities,polys,assetKinds,modelAssets,refdef,maxTrianglesPerSurface,cache,normalTable,grid,previous,isPortal,frustum,shadowMode,fogCatalog,noWorldModel,lodScale,lodBias)
   if entities==void or polys==void or assetKinds==void or modelAssets==void or maxTrianglesPerSurface<0 then return fail("invalid build input") end if
   decodedEntities=decodeEntities(entities);if decodedEntities is error then return decodedEntities end if
-  capacity=expectedDecodedTrianglesModeFogLod(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,fogCatalog,noWorldModel,refdef,lodScale,lodBias,shadowMode);if capacity is error then return capacity end if
+  plans=array(len(decodedEntities),void)
+  capacity=plannedDecodedTrianglesModeFogLod(decodedEntities,polys,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,fogCatalog,noWorldModel,refdef,lodScale,lodBias,shadowMode,plans);if capacity is error then return capacity end if
   shadowCapacity=stencilShadowCapacity(decodedEntities,assetKinds,modelAssets,maxTrianglesPerSurface,isPortal,frustum,shadowMode,fogCatalog,noWorldModel,refdef,lodScale,lodBias);if shadowCapacity is error then return shadowCapacity end if
   output=void
   if previous!=void and previous.triangles!=void and len(previous.triangles)==capacity and previous.shadowTriangles!=void and len(previous.shadowTriangles)==shadowCapacity then output=previous;output.triangleCount=0;output.modelEntities=0;output.spriteEntities=0;output.polySurfaces=0;output.skippedInline=0;output.skippedUnsupported=0;output.sourceVertices=0;output.vertexTransforms=0;output.portals=[];output.culledInline=0;output.shadowTriangleCount=0
@@ -448,8 +453,8 @@ function buildRecordsFrameCachedLitReuseModeShadowFogLod(entities,polys,assetKin
       asset=modelAt(assetKinds,modelAssets,decoded.hModel)
       if asset==void then output.skippedUnsupported=output.skippedUnsupported+1
       else if typeof(asset)=="string" then output.skippedInline=output.skippedInline+1
-      else if isInlineModel(asset) then culled=inlineCulled(decoded,asset,frustum);if culled is error then return culled end if;if culled then output.culledInline=output.culledInline+1 else added=addInlineModel(output,decoded,asset,entityIndex);if added is error then return added end if end if
-      else selection=selectMd3(decoded,asset,refdef,frustum,lodScale,lodBias);if selection is error then return selection end if;if selection.cull!=viewMath.CULL_OUT then added=addModelOptimized(output,decoded,selection,entityIndex,maxTrianglesPerSurface,cache,normalTable,grid,refdef,shadowMode,fogCatalog,noWorldModel);if added is error then return added end if end if
+      else if isInlineModel(asset) then culled=plans[entityIndex];if culled==void then culled=inlineCulled(decoded,asset,frustum);if culled is error then return culled end if end if;if culled then output.culledInline=output.culledInline+1 else added=addInlineModel(output,decoded,asset,entityIndex);if added is error then return added end if end if
+      else selection=plans[entityIndex];if selection==void then selection=selectMd3(decoded,asset,refdef,frustum,lodScale,lodBias);if selection is error then return selection end if end if;if selection.cull!=viewMath.CULL_OUT then added=addModelOptimized(output,decoded,selection,entityIndex,maxTrianglesPerSurface,cache,normalTable,grid,refdef,shadowMode,fogCatalog,noWorldModel);if added is error then return added end if end if
       end if
     else if decoded.reType==RT_SPRITE then added=addSprite(output,decoded,refdef,entityIndex);if added is error then return added end if
     else if decoded.reType==RT_BEAM then added=addBeam(output,decoded,entityIndex);if added is error then return added end if

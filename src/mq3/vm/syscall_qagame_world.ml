@@ -6,6 +6,8 @@ import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 import mq3.qcommon.message_delta as messageDelta
 
+extern function writeTraceNative(data as bytes,capacity as i32,offset as i32,allsolid as u32,startsolid as u32,fraction as double,x as double,y as double,z as double,nx as double,ny as double,nz as double,distance as double,planeMetadata as u32,flags as u32,contents as u32,entity as u32) from "miniquake3_abi.dll" symbol "mq3_write_qvm_trace" returns i32
+
 const TRACE_SIZE=56
 const USERCMD_SIZE=24
 
@@ -58,14 +60,12 @@ function writeTrace(vm,address,result)
   normal=requireVector(result.planeNormal,"trace plane normal")
   allsolid=0;if result.allsolid then allsolid=1 end if
   startsolid=0;if result.startsolid then startsolid=1 end if
-  n.writeU32(vm.data,at,allsolid);n.writeU32(vm.data,at+4,startsolid)
-  n.writeU32(vm.data,at+8,n.floatBits(result.fraction))
-  for axis=0 to 2 n.writeU32(vm.data,at+12+axis*4,n.floatBits(finish[axis])) end for
-  for axis=0 to 2 n.writeU32(vm.data,at+24+axis*4,n.floatBits(normal[axis])) end for
-  n.writeU32(vm.data,at+36,n.floatBits(result.planeDist))
-  vm.data[at+40]=result.planeType & 255;vm.data[at+41]=result.planeSignBits & 255
-  vm.data[at+42]=0;vm.data[at+43]=0
-  n.writeU32(vm.data,at+44,result.surfaceFlags);n.writeU32(vm.data,at+48,result.contents);n.writeU32(vm.data,at+52,result.entityNum)
+  metadata=(result.planeType&255)|((result.planeSignBits&255)<<8)
+  if writeTraceNative(vm.data,len(vm.data),at,allsolid,startsolid,result.fraction,
+      finish[0],finish[1],finish[2],normal[0],normal[1],normal[2],result.planeDist,
+      metadata,n.u32(result.surfaceFlags),n.u32(result.contents),n.u32(result.entityNum))!=1 then
+    return error(3422,"qagame world syscall: invalid trace output buffer")
+  end if
   return 0
 end function
 

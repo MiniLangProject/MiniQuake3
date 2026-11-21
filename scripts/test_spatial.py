@@ -38,7 +38,9 @@ def cases(data,count,seed):
             start=to_world(start,rotation,origin);finish=to_world(finish,rotation,origin)
         else:origin=[0,0,0]
         mins,maxs=rng.choice([([-15,-15,-24],[15,15,32]),([0,0,0],[0,0,0]),([-2,-8,-3],[5,9,1]),([-20,-20,-40],[20,20,40])])
-        mask=rng.choice([-1,0x2010001,0x2000000,1,0,0x38]);capsule=i%2
+        mask=rng.choice([-1,0x2010001,0x2000000,1,0,0x38])
+        # kind==1 otherwise shares the same odd parity as its capsule flag.
+        capsule=(i//6)%2 if kind==1 else i%2
         result.append(struct.pack('<24f4i',*start,*finish,*mins,*maxs,*origin,*angles,*tempmins,*tempmaxs,model,mask,capsule,kind))
     return b''.join(result)
 

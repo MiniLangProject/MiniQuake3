@@ -52205,7 +52205,7 @@
             "src/mq3/collision/world.ml"
           ],
           "status": "tested_exact",
-          "scope": "Differential Retail collision probes cover the accelerated transformed non-capsule temporary hull and retained capsule and inline model paths."
+          "scope": "Differential Retail collision probes cover the accelerated transformed non-capsule temporary hull and retained capsule and inline model paths. The desktop Cgame also writes non-capsule temporary hull results directly to the checked VM trace_t buffer. The complete 56-byte result is compared against the x86 oracle, including aliased output."
         },
         {
           "original": "CM_VectorDistanceSquared",
@@ -55358,7 +55358,7 @@
             "src/mq3/format/pk3.ml"
           ],
           "status": "tested_exact",
-          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases."
+          "scope": "All 48 inventory candidates have compatibility implementations: 41 live Minizip/DEFLATE symbols plus seven parser-only or disabled zlib-internal names. Stateful archive navigation, metadata/extras/comments, SFX offsets, chunk read/tell/eof/reopen, header coherence and bounded RFC1951 ownership are covered by unchanged-C, managed and 84 Retail archive cases. The productive raw DEFLATE decoder uses a canonical short-code prefix table and bulk stored/backreference copies. Independent ZIP/zlib byte comparisons and malformed-input checks pass."
         },
         {
           "original": "inflate_flush",
@@ -55633,7 +55633,8 @@
       ],
       "target": [
         "src/mq3/format/unzip.ml",
-        "src/mq3/format/pk3.ml"
+        "src/mq3/format/pk3.ml",
+        "src/mq3/format/deflate.ml"
       ],
       "status": "ported",
       "tests": [
@@ -55641,7 +55642,9 @@
         "tests/reference/unzip_complete_oracle.c",
         "tests/unzip_complete_oracle.ml",
         "tests/unzip_complete_contracts.ml",
-        "scripts/test_pure_filesystem.py"
+        "scripts/test_pure_filesystem.py",
+        "scripts/test_archives.py",
+        "scripts/test_rejections.py"
       ]
     },
     {
@@ -56711,7 +56714,7 @@
             "src/mq3/renderer/tga.ml"
           ],
           "status": "tested_exact",
-          "scope": "Type 2/3/10 TGA decoding, 8/24/32-bit pixels, BGR(A)-to-RGBA, bottom-up rows, image ID and RLE packets. Five unchanged-C records and 22 MiniLang contracts pass."
+          "scope": "Type 2/3/10 TGA decoding, 8/24/32-bit pixels, BGR(A)-to-RGBA, bottom-up rows, image ID and RLE packets. Five unchanged-C records and 22 MiniLang contracts pass. The Windows pixel conversion processes the validated payload in one native call, preserving original row order, RLE and alpha."
         },
         {
           "original": "ResampleTexture / R_LightScaleTexture / R_MipMap2 / R_MipMap",
@@ -56727,7 +56730,7 @@
             "src/mq3/renderer/image_registry.ml"
           ],
           "status": "tested_subset",
-          "scope": "Filename hash/cache, extension fallback, flags, lightmap TMU, texture numbering and CPU upload planning through an injected submission boundary. Eight exact C records and 29 contracts pass."
+          "scope": "Filename hash/cache, extension fallback, flags, lightmap TMU, texture numbering and CPU upload planning through an injected submission boundary. Eight exact C records and 29 contracts pass. The desktop scene catalog reuses decoded images from the current archive and world catalog while retaining shader-stage-specific texture slots."
         },
         {
           "original": "Complete tr_image.c image and skin surface (38/38 symbols)",
@@ -56749,7 +56752,9 @@
         "src/mq3/renderer/image_processing.ml",
         "src/mq3/renderer/image_registry.ml",
         "src/mq3/renderer/player_skins.ml",
-        "src/mq3/platform/playable_jpeg.ml"
+        "src/mq3/platform/playable_jpeg.ml",
+        "native/playable_win32.c",
+        "src/mq3/renderer/playable_materials.ml"
       ],
       "status": "ported",
       "tests": [
@@ -56763,7 +56768,8 @@
         "tests/reference/image_registry_oracle.c",
         "tests/image_registry_contracts.ml",
         "scripts/test_tr_image_complete.py",
-        "tests/tr_image_runtime_contracts.ml"
+        "tests/tr_image_runtime_contracts.ml",
+        "scripts/test_qvm_image_cache_retail.py"
       ]
     },
     {
@@ -57556,7 +57562,7 @@
             "src/mq3/renderer/scene_queue.ml"
           ],
           "status": "tested_subset",
-          "scope": "Scene marks, polygon capacity/copy/fog, reference entities and normal/additive lights with hardware restrictions. Six exact header constants and 24 contracts pass."
+          "scope": "Scene marks, polygon capacity/copy/fog, reference entities and normal/additive lights with hardware restrictions. Six exact header constants and 24 contracts pass. The live QVM polygon queue uses growing storage and transfers freshly decoded vertex ownership. Render-view snapshots survive clearing and reusing the producer."
         },
         {
           "original": "Complete original source surface",

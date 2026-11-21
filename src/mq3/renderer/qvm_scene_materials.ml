@@ -14,7 +14,7 @@ struct Texture imageName image slot end struct
 // existing multi-pass native batch path can consume QVM materials directly.
 struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps timeOffset clampTime noPicMip end struct
 struct ResolvedTriangle triangle materialIndex end struct
-struct Catalog triangles materials textures scriptIndex scriptCount loadedSkins bindings resolvedTriangles unresolvedTriangles nextTextureSlot recentBinding shaderRemaps end struct
+struct Catalog triangles materials textures scriptIndex scriptCount loadedSkins bindings resolvedTriangles unresolvedTriangles nextTextureSlot recentBinding shaderRemaps imageCache end struct
 
 const BUILTIN_BEAM="$mq3/beam"
 const BUILTIN_PROJECTION_SHADOW="$mq3/projectionShadow"
@@ -159,7 +159,7 @@ function bindTriangle(output,triangle,outputIndex,archive,assets,kinds,endSlot)
     else if shaderName!="" then
       index=materialIndex(output.materials,shaderName)
       if index<0 then
-        runtime=materials.runtimeStages(archive,output.scriptIndex,shaderName,output.nextTextureSlot,endSlot)
+        runtime=materials.runtimeStagesCached(archive,output.scriptIndex,shaderName,output.nextTextureSlot,endSlot,output.imageCache)
         stages=runtime[0];output.nextTextureSlot=runtime[1]
         firstName="";firstImage=void;firstSlot=-1
         for each stage in stages if firstSlot<0 and len(stage.images)>0 then firstName=stage.imageNames[0];firstImage=stage.images[0];firstSlot=stage.slots[0] end if end for
@@ -181,7 +181,7 @@ function buildIndexed(archive,triangles,assets,kinds,firstTextureSlot,maxTexture
   if len(assets)!=len(kinds) then return fail("asset registry length mismatch") end if
   if firstTextureSlot<0 or maxTextureSlots<0 then return fail("invalid texture slot range") end if
   if scripts==void or len(scripts)!=2 or scripts[0]==void then return fail("shared shader index is required") end if
-  output=Catalog(array(len(triangles),void),[],[],scripts[0],scripts[1],[],[],0,0,firstTextureSlot,void,shaderRemaps);endSlot=firstTextureSlot+maxTextureSlots;triangleIndex=0
+  output=Catalog(array(len(triangles),void),[],[],scripts[0],scripts[1],[],[],0,0,firstTextureSlot,void,shaderRemaps,materials.imageCache(archive));endSlot=firstTextureSlot+maxTextureSlots;triangleIndex=0
   for each triangle in triangles bindTriangle(output,triangle,triangleIndex,archive,assets,kinds,endSlot);triangleIndex=triangleIndex+1 end for
   return output
 end function

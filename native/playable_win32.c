@@ -3322,7 +3322,7 @@ PLAYABLE_API int playable_window_draw_world_triangle_batch_viewport(const unsign
     if (triangleCount == 0 || !records) return 0;
     required = (SIZE_T)triangleCount * (SIZE_T)PLAYABLE_TRIANGLE_BATCH_RECORD_BYTES;
     if (required > (SIZE_T)INT_MAX || (SIZE_T)byteCount < required) return 0;
-    if (!clippedWidth || !clippedHeight) return 0;
+    if (!clippedWidth || !clippedHeight) return triangleCount; /* valid, entirely offscreen */
     if (hardwareRenderer) return hardwareDrawWorld(records,triangleCount,viewportX,viewportY,viewportWidth,viewportHeight,
         positionX,positionY,positionZ,rightX,rightY,rightZ,upX,upY,upZ,forwardX,forwardY,forwardZ,focal,nearDistance);
     if (drawWorldBatchParallel(records, byteCount, triangleCount,
@@ -3475,6 +3475,58 @@ PLAYABLE_API void playable_window_draw_line(int x0, int y0, int x1, int y1,
             if (twiceError <= dx) { error += dx; y0 += sy; }
         }
     }
+}
+
+/* Convert the checked TGA payload directly to the original bottom-up RGBA
+ * layout. RLE packets can span multiple rows. The engine validates the image
+ * header and the bridge checks both buffers before using any offsets. */
+PLAYABLE_API int playable_decode_tga_pixels(const unsigned char *data, int dataBytes, int offset,
+                                           int width, int height, int pixelBytes, int rle,
+                                           unsigned char *output, int outputBytes) {
+    SIZE_T count, remaining, source, rowBytes, row, column = 0;
+    if (!data || !output || offset < 0 || offset > dataBytes ||
+        width < 1 || width > 16384 || height < 1 || height > 16384 ||
+        (pixelBytes != 1 && pixelBytes != 3 && pixelBytes != 4)) return -1;
+    count = (SIZE_T)width * (SIZE_T)height;
+    if (outputBytes < 0 || count * 4u != (SIZE_T)outputBytes) return -1;
+    source = (SIZE_T)offset;
+    rowBytes = (SIZE_T)width * 4u;
+    row = (SIZE_T)(height - 1) * rowBytes;
+    remaining = count;
+    while (remaining) {
+        SIZE_T packet = remaining;
+        int repeated = 0;
+        if (rle) {
+            unsigned int header;
+            if (source == (SIZE_T)dataBytes) return -2;
+            header = data[source++];
+            packet = (header & 127u) + 1u;
+            if (packet > remaining) return -3;
+            repeated = (header & 128u) != 0u;
+        }
+        if ((!repeated ? packet : 1u) * (SIZE_T)pixelBytes > (SIZE_T)dataBytes - source)
+            return repeated ? -4 : (rle ? -5 : -6);
+        remaining -= packet;
+        while (packet--) {
+            unsigned char *pixel = output + row + column;
+            if (pixelBytes == 1) {
+                pixel[0] = pixel[1] = pixel[2] = data[source];
+            } else {
+                pixel[0] = data[source + 2];
+                pixel[1] = data[source + 1];
+                pixel[2] = data[source];
+            }
+            pixel[3] = pixelBytes == 4 ? data[source + 3] : 255;
+            if (!repeated) source += (SIZE_T)pixelBytes;
+            column += 4u;
+            if (column == rowBytes) {
+                column = 0;
+                if (row) row -= rowBytes;
+            }
+        }
+        if (repeated) source += (SIZE_T)pixelBytes;
+    }
+    return 1;
 }
 
 PLAYABLE_API void playable_window_present(void) {

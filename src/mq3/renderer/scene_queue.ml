@@ -3,6 +3,7 @@
 // RE_ClearScene and scene submission primitives from tr_scene.c.
 package mq3.renderer.scene_queue
 import std.array as arrays
+import std.ds.list as lists
 import mq3.compat.numeric as n
 import mq3.renderer.tr_types as trtypes
 
@@ -23,7 +24,8 @@ struct State registered hardwareType worldLoaded fogBounds maxPolys maxPolyVerts
 
 function create(maxPolys,maxPolyVerts)
   if maxPolys<0 or maxPolyVerts<0 then return error(3470,"scene queue: negative capacity") end if
-  return State(false,0,false,[],maxPolys,maxPolyVerts,[],[],[],0,0,0,0,void,void)
+  initialPolys=maxPolys;if initialPolys>64 then initialPolys=64 end if
+  return State(false,0,false,[],maxPolys,maxPolyVerts,[],[],lists.List.withCapacity(initialPolys),0,0,0,0,void,void)
 end function
 function diagnostic(state,text) if state.diagnosticFn!=void then context=state.context;state.diagnosticFn(context,text) end if;return void end function
 function vector3(value,label) if value==void or len(value)!=3 then return error(3471,"scene queue: invalid "+label) end if;return [value[0],value[1],value[2]] end function
@@ -32,11 +34,11 @@ function tex2(value) if value==void or len(value)!=2 then return error(3471,"sce
 function vertex(value) return PolyVert(vector3(value.xyz,"vertex"),tex2(value.st),color4(value.modulate)) end function
 
 function toggleFrame(state)
-  state.entities=[];state.dlights=[];state.polys=[];state.numPolyVerts=0
+  state.entities=[];state.dlights=[];state.polys.clear();state.numPolyVerts=0
   state.firstSceneEntity=0;state.firstSceneDlight=0;state.firstScenePoly=0;return void
 end function
 function clearScene(state)
-  state.firstSceneDlight=len(state.dlights);state.firstSceneEntity=len(state.entities);state.firstScenePoly=len(state.polys);return void
+  state.firstSceneDlight=len(state.dlights);state.firstSceneEntity=len(state.entities);state.firstScenePoly=state.polys.len();return void
 end function
 
 function fogForVertices(state,vertices)
@@ -50,21 +52,31 @@ function fogForVertices(state,vertices)
   return 0
 end function
 
-function addPolys(state,hShader,numVerts,vertices,numPolys)
+function addPolysInternal(state,hShader,numVerts,vertices,numPolys,ownedVertices)
   if not state.registered then return 0 end if
   if hShader==0 then diagnostic(state,"NULL poly shader");return 0 end if
   if numVerts<=0 or numPolys<0 or len(vertices)<numVerts*numPolys then return error(3471,"scene queue: invalid polygon input") end if
   if numPolys==0 then return 0 end if
   added=0
   for polyIndex=0 to numPolys-1
-    if state.numPolyVerts+numVerts>state.maxPolyVerts or len(state.polys)>=state.maxPolys then diagnostic(state,"poly capacity reached");return added end if
-    copied=array(numVerts,void)
-    for index=0 to numVerts-1 copied[index]=vertex(vertices[polyIndex*numVerts+index]) end for
+    if state.numPolyVerts+numVerts>state.maxPolyVerts or state.polys.len()>=state.maxPolys then diagnostic(state,"poly capacity reached");return added end if
+    copied=vertices
+    if not ownedVertices or numPolys!=1 then
+      copied=array(numVerts,void)
+      for index=0 to numVerts-1
+        value=vertices[polyIndex*numVerts+index]
+        if ownedVertices then copied[index]=value else copied[index]=vertex(value) end if
+      end for
+    end if
     if state.hardwareType==GLHW_RAGEPRO then copied[0].modulate=[255,255,255,255] end if
-    fog=fogForVertices(state,copied);state.polys=state.polys+[Poly(hShader,copied,fog)];state.numPolyVerts=state.numPolyVerts+numVerts;added=added+1
+    fog=fogForVertices(state,copied);state.polys.add(Poly(hShader,copied,fog));state.numPolyVerts=state.numPolyVerts+numVerts;added=added+1
   end for
   return added
 end function
+function addPolys(state,hShader,numVerts,vertices,numPolys) return addPolysInternal(state,hShader,numVerts,vertices,numPolys,false) end function
+// The QVM bridge freshly decodes these vertices and transfers ownership to
+// the frame queue. Avoid copying every vector/color a second time.
+function addPolysDecoded(state,hShader,numVerts,vertices,numPolys) return addPolysInternal(state,hShader,numVerts,vertices,numPolys,true) end function
 
 function addEntity(state,reType,payload)
   if not state.registered then return false end if
@@ -93,8 +105,8 @@ function addAdditiveLight(state,origin,intensity,r,g,b) return addDynamicLight(s
 
 function sceneEntities(state) return arrays.slice(state.entities,state.firstSceneEntity,len(state.entities)-state.firstSceneEntity) end function
 function sceneLights(state) return arrays.slice(state.dlights,state.firstSceneDlight,len(state.dlights)-state.firstSceneDlight) end function
-function scenePolys(state) return arrays.slice(state.polys,state.firstScenePoly,len(state.polys)-state.firstScenePoly) end function
+function scenePolys(state) return arrays.slice(state.polys.buf,state.firstScenePoly,state.polys.len()-state.firstScenePoly) end function
 function finishScene(state)
   value=View(sceneEntities(state),sceneLights(state),scenePolys(state))
-  state.firstSceneEntity=len(state.entities);state.firstSceneDlight=len(state.dlights);state.firstScenePoly=len(state.polys);return value
+  state.firstSceneEntity=len(state.entities);state.firstSceneDlight=len(state.dlights);state.firstScenePoly=state.polys.len();return value
 end function

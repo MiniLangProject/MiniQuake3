@@ -193,9 +193,9 @@ end function
 function bestReachability(runtime,state,goal,travelFlags)
   areaNum=state.areaNum;if areaNum<=0 or areaNum>=len(runtime.router.settings) or goal.areaNum<=0 or goal.areaNum>=len(runtime.router.settings) then return [0,0] end if;effectiveFlags=travelFlags
   if (runtime.router.settings[areaNum].contents&moveRouting.AREACONTENTS_DONOTENTER)!=0 or (runtime.router.settings[goal.areaNum].contents&moveRouting.AREACONTENTS_DONOTENTER)!=0 then effectiveFlags=effectiveFlags|moveRouting.TFL_DONOTENTER end if
-  settings=runtime.router.settings[areaNum];best=0;bestTime=0;resultFlags=0
+  settings=runtime.router.settings[areaNum];best=0;bestTime=0;resultFlags=0;now=moveAas.getTime(runtime.aas)
   if settings.numReachableAreas>0 then for reachNum=settings.firstReachableArea to settings.firstReachableArea+settings.numReachableAreas-1 reach=runtime.router.reaches[reachNum];skip=false
-    for avoidIndex=0 to resources.MAX_AVOIDREACH-1 if state.avoidReach[avoidIndex]==reachNum and state.avoidReachTimes[avoidIndex]>=moveAas.getTime(runtime.aas) and state.avoidReachTries[avoidIndex]>AVOIDREACH_TRIES then skip=true end if end for;if skip then continue end if
+    for avoidIndex=0 to resources.MAX_AVOIDREACH-1 if state.avoidReach[avoidIndex]==reachNum and state.avoidReachTimes[avoidIndex]>=now and state.avoidReachTries[avoidIndex]>AVOIDREACH_TRIES then skip=true;break end if end for;if skip then continue end if
     if state.lastGoalAreaNum==goal.areaNum and reach.areaNum==state.lastAreaNum then continue end if;if not moveRouting.edgeAllowed(runtime.router,reach,effectiveFlags) then continue end if
     routeTime=0
     if runtime.services!=void and runtime.services.routeTravelTimeFn!=void then routeTime=runtime.services.routeTravelTimeFn(runtime.services.context,reach.areaNum,reach.finish,goal.areaNum,effectiveFlags)

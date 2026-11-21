@@ -13,8 +13,8 @@ function makeInput(flags,mask) return runtime.RefdefInput(10,20,320,200,90.0,75.
 function main(args)
   count=0;scene=queue.create(8,32);scene.registered=true;context=Context([],100,[],[],[]);host=runtime.Services(clock,render,draw,shader,event,context);state=runtime.create(scene,480,host);state.registered=true;state.worldLoaded=true
   count=count+req(runtime.RDF_NOWORLDMODEL==1 and runtime.ENTITYNUM_WORLD==1022,"ABI constants")
-  scene.entities=[queue.RefEntity(0,"old",false)];scene.dlights=[queue.DLight([0,0,0],1,[1,1,1],false)];scene.polys=[queue.Poly(1,[],0)];scene.numPolyVerts=3;state.commandUsed=[5,9]
-  count=count+req(runtime.R_ToggleSmpFrame(state)==0 and scene.entities==[] and scene.dlights==[] and scene.polys==[],"non-SMP frame reset")
+  scene.entities=[queue.RefEntity(0,"old",false)];scene.dlights=[queue.DLight([0,0,0],1,[1,1,1],false)];scene.polys.add(queue.Poly(1,[],0));scene.numPolyVerts=3;state.commandUsed=[5,9]
+  count=count+req(runtime.R_ToggleSmpFrame(state)==0 and scene.entities==[] and scene.dlights==[] and scene.polys.len()==0,"non-SMP frame reset")
   count=count+req(state.commandUsed[0]==0 and state.firstSceneDrawSurf==0,"command and draw reset")
   state.smpEnabled=true;state.commandUsed=[4,8];count=count+req(runtime.R_ToggleSmpFrame(state)==1 and state.commandUsed[1]==0,"SMP buffer toggle")
   count=count+req(runtime.R_ToggleSmpFrame(state)==0 and state.commandUsed[0]==0,"SMP toggles back")

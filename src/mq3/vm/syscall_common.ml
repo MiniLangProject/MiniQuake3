@@ -234,8 +234,12 @@ end function
 function floatResult(value) return n.i32(n.floatBits(value)) end function
 
 function readFloatVector(vm,address,count,label)
-  at=pointer(vm,address,count*4,label);result=[]
-  for index=0 to count-1 result=result+[n.bitsFloat(n.readU32(vm.data,at+index*4))] end for;return result
+  at=pointer(vm,address,count*4,label);result=array(count,0.0)
+  index=0
+  while index<count
+    result[index]=n.bitsFloat(n.readU32(vm.data,at+index*4));index=index+1
+  end while
+  return result
 end function
 function writeFloatVector(vm,address,values,label)
   if address==0 then return void end if

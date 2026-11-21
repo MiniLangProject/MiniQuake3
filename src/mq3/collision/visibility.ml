@@ -65,6 +65,15 @@ function clusterPVS(state,cluster)
   return slice(state.data,offset,state.clusterBytes)
 end function
 
+// Hot PVS tests need one bit, not a freshly copied visibility row.
+// Match clusterPVS's first-row fallback for invalid source clusters.
+function clusterVisible(state,sourceCluster,targetCluster)
+  if targetCluster<0 or (targetCluster>>3)>=state.clusterBytes then return false end if
+  offset=0
+  if sourceCluster>=0 and sourceCluster<state.numClusters and state.vised then offset=sourceCluster*state.clusterBytes end if
+  return (state.data[offset+(targetCluster>>3)]&(1<<(targetCluster&7)))!=0
+end function
+
 function floodConnections(state)
   state.floodnums = array(state.numAreas,0)
   number = 0; root = 0

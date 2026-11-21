@@ -10,7 +10,7 @@ const INVENTORY_COUNT=256
 
 function readInventory(vm,address)
   at=common.pointer(vm,address,INVENTORY_COUNT*4,"weapon inventory input");if at is error then return at end if
-  result=[];for index=0 to INVENTORY_COUNT-1 result=result+[n.readI32(vm.data,at+index*4)] end for;return result
+  result=array(INVENTORY_COUNT,0);for index=0 to INVENTORY_COUNT-1 result[index]=n.readI32(vm.data,at+index*4) end for;return result
 end function
 
 function dispatch(runtime,pools,vm,base,op)

@@ -4,6 +4,19 @@ Stand: 2026-11-21. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Retail-CPU-Profil und Framezeiten, 21. November 2026
+
+Der 279-ms-Frame im wiederholbaren `q3dm0`-Kampf-Replay verbrachte 241 ms
+in der Materialvorbereitung. Derselbe Frame dauert mit wiederverwendeten
+Retail-Texturen unter 50 ms. Schnellere PK3-/TGA-Dekodierung, weniger
+Kopien in der Szenenwarteschlange und eine gebündelte Trace-ABI reduzieren
+weitere CPU-Arbeit. Identische 2.200 Frames mit festem Simulationsschritt
+liefen auf der RTX 5080 mit 53,4 statt 49,6 FPS. Der Höchstwert fiel auf
+100 ms. In diesem Frame beanspruchte Qagame 82 ms. Cgame und Spielsimulation
+bleiben die größten CPU-Kosten. In 6.000 Frames mit Echtzeitschritten stieg
+die Bildrate von 47,0 auf 51,9 FPS. Das Maximum fiel von 260 auf 107 ms,
+das 99. Perzentil lag bei 65 statt 64 ms. [Messungen und Prüfumfang](verification/2026-11-21-retail-cpu-hotpaths.md)
+
 ## Serverbeitritt, Demos und Mods im Windows-Spielpfad
 
 Der Menü-Host startet Original-QVMs jetzt auch aus einem Netz- oder
@@ -28,8 +41,8 @@ Die neue Kollisionsberechnung bestand 19.972 Weltabfragen und 12.288
 transformierte oder temporäre Abfragen gegen den Originalcode. Im separaten
 A/B-Lauf liefen die identischen Weltabfragen 16 % schneller. Der 6.000-Frame-
 Kampf-Replay auf der RTX 5080 erreichte 47,0 FPS gegenüber zuvor 46,1 FPS.
-Das 99. Perzentil sank von 74 auf 64 ms. Einzelne Framezeiten von bis zu
-260 ms bleiben offen. [Retail-Prüfbericht](verification/2026-11-21-desktop-streams-and-collision.md)
+Das 99. Perzentil sank von 74 auf 64 ms. Der damalige Höchstwert von
+260 ms war Anlass für das CPU-Profil im aktuellen Stand. [Retail-Prüfbericht](verification/2026-11-21-desktop-streams-and-collision.md)
 
 ## Korrekturen aus dem Intensiv-Audit, 21. November 2026
 

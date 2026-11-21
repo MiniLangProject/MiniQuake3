@@ -563,6 +563,70 @@ API int mq3_trace_transformed_box(
 }
 
 
+static unsigned char *vm_trace_buffer(unsigned char *data, int capacity, uint32_t mask,
+                                      int address, unsigned int size) {
+    uint32_t offset = (uint32_t)address & mask;
+    if (!address || offset > (uint32_t)capacity || size > (uint32_t)capacity - offset) return NULL;
+    return data + offset;
+}
+
+static int vm_trace_vector(unsigned char *data, int capacity, uint32_t mask,
+                           int address, int nullable, float value[3]) {
+    const unsigned char *source;
+    if (nullable && !address) {
+        value[0] = value[1] = value[2] = 0.0f;
+        return 1;
+    }
+    source = vm_trace_buffer(data, capacity, mask, address, 12);
+    if (!source) return 0;
+    memcpy(value, source, 12);
+    return isfinite(value[0]) && isfinite(value[1]) && isfinite(value[2]);
+}
+
+/* The Cgame temporary box trap has no BSP walk or managed callbacks.
+ * A zero return changes no VM bytes and leaves validation/general models to
+ * the checked MiniLang path. Read all operands before writing trace_t to
+ * preserve legal aliases between the stack, vectors and result. */
+API int mq3_cgame_transformed_box_trace(unsigned char *data, int capacity, uint32_t mask,
+    int base, int model, uint32_t contents, double tx, double ty, double tz,
+    double ux, double uy, double uz) {
+    unsigned char *output;
+    float start[3], end[3], mins[3], maxs[3], origin[3], angles[3], result[5];
+    uint32_t trace[14] = {0};
+    unsigned int saved;
+    int hit;
+    if (!data || base < 0 || capacity < 40 || base > capacity - 40) return 0;
+    if (read32(data + base + 24) != model) return 0;
+    output = vm_trace_buffer(data, capacity, mask, read32(data + base + 4), sizeof(trace));
+    if (!output ||
+        !vm_trace_vector(data, capacity, mask, read32(data + base + 8), 0, start) ||
+        !vm_trace_vector(data, capacity, mask, read32(data + base + 12), 0, end) ||
+        !vm_trace_vector(data, capacity, mask, read32(data + base + 16), 1, mins) ||
+        !vm_trace_vector(data, capacity, mask, read32(data + base + 20), 1, maxs) ||
+        !vm_trace_vector(data, capacity, mask, read32(data + base + 32), 0, origin) ||
+        !vm_trace_vector(data, capacity, mask, read32(data + base + 36), 0, angles)) return 0;
+    saved = _mm_getcsr();
+    _mm_setcsr((saved & ~0xe07fU) | 0x1f80U);
+    float box_min[3] = {(float)tx, (float)ty, (float)tz};
+    float box_max[3] = {(float)ux, (float)uy, (float)uz};
+    hit = trace_transformed_box(start, end, mins, maxs, origin, box_min, box_max,
+                               (read32(data + base + 28) & contents) != 0, result);
+    _mm_setcsr(saved);
+    if (hit < 0) return 0;
+    trace[0] = hit == 2; trace[1] = hit == 1 || hit == 2;
+    memcpy(trace + 2, result, 4);
+    memcpy(trace + 3, result + 2, 12);
+    if (hit == 2 || hit >= 3) trace[12] = contents;
+    if (hit >= 3) {
+        int side = hit - 3, axis = side / 2;
+        trace[6 + axis] = side & 1 ? 0xbf800000u : 0x3f800000u;
+        memcpy(trace + 9, result + 1, 4);
+        trace[10] = (uint32_t)(side & 1 ? (3 + axis) | (1 << (axis + 8)) : axis);
+    }
+    memcpy(output, trace, sizeof(trace));
+    return 1;
+}
+
 static float collision_dot(const float a[3], const float b[3]) {
     return (a[0] * b[0] + a[1] * b[1]) + a[2] * b[2];
 }

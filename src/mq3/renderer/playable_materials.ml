@@ -13,6 +13,7 @@ import mq3.compat.transcendental as trans
 import std.ds.list as lists
 import std.string as strings
 import std.string_builder as stringBuilder
+import std.ds.hashmap as maps
 
 const SHADER_STRIDE=72
 const SHADER_NAME_BYTES=64
@@ -20,6 +21,7 @@ const BASE_TEXTURE_FIRST_SLOT=64
 const BASE_TEXTURE_SLOT_COUNT=256
 const MAX_RUNTIME_STAGES=8
 const MAX_ANIMATION_FRAMES=8
+const MAX_CACHED_IMAGES=2048
 const BLEND_OPAQUE=0
 const BLEND_ALPHA=1
 const BLEND_ADD=2
@@ -38,6 +40,27 @@ struct UvMod kind a b c d e f wave end struct
 struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest tcGen rgbGen rgbWave alphaGen alphaWave constantColor bspLightmap clampTexture depthWrite depthEqual portalRange tcGenVectors end struct
 struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps timeOffset clampTime noPicMip end struct
 struct Catalog materials scripts attempted loaded textureCount animatedStageCount effectStageCount end struct
+struct ImageCache archive images count hits misses end struct
+
+function imageCache(archive) return ImageCache(archive,maps.HashMap.withCapacity(512),0,0,0) end function
+function cacheImage(cache,name,image)
+  if cache==void or name==void or image==void or cache.count>=MAX_CACHED_IMAGES then return void end if
+  key=strings.toLowerAscii(name)
+  if cache.images.get(key)==void then cache.images.set(key,image);cache.count=cache.count+1 end if
+  return void
+end function
+function seedImageCacheFromCatalog(cache,catalog)
+  if cache==void or catalog==void then return void end if
+  for each material in catalog.materials
+    for each stage in material.stages
+      index=0
+      while index<len(stage.images)
+        cacheImage(cache,stage.imageNames[index],stage.images[index]);index=index+1
+      end while
+    end for
+  end for
+  return void
+end function
 
 function fail(message) return error(7486,"preview materials: "+message) end function
 function validMap(map) return map!=void and typeof(map.data)=="bytes" and len(map.offsets)>1 and len(map.counts)>1 end function
@@ -125,16 +148,26 @@ function decodeAsset(name,data)
   return fail("unsupported image extension")
 end function
 
-function loadImage(archive,name)
+function loadImageCached(archive,name,cache)
   for each candidate in candidates(name)
-    data=try(pk3.read(archive,candidate))
+    entry=pk3.findEntry(archive,candidate)
+    if entry==void then continue end if
+    if cache!=void and cache.archive==archive then
+      cached=cache.images.get(strings.toLowerAscii(candidate))
+      if cached!=void then cache.hits=cache.hits+1;return [candidate,cached] end if
+    end if
+    data=try(pk3.readEntry(archive,entry))
     if not (data is error) then
       image=try(decodeAsset(candidate,data))
-      if not (image is error) then return [candidate,image] end if
+      if not (image is error) then
+        if cache!=void and cache.archive==archive then cache.misses=cache.misses+1;cacheImage(cache,candidate,image) end if
+        return [candidate,image]
+      end if
     end if
   end for
   return void
 end function
+function loadImage(archive,name) return loadImageCached(archive,name,void) end function
 
 function containsIndex(materials,index)
   for each material in materials if material.textureIndex==index then return true end if end for
@@ -186,7 +219,7 @@ function usableStage(stage)
   return not stringEqualsIgnoreCaseAscii(stage.images[0],"$lightmap")
 end function
 
-function loadRuntimeStage(archive,stage,nextSlot,endSlot)
+function loadRuntimeStageCached(archive,stage,nextSlot,endSlot,cache)
   if stage.mapMode=="video" then
     if nextSlot>=endSlot or len(stage.images)==0 then return void end if
     // The real renderer installs tr.scratchImage[videoMapHandle] here.  Keep a
@@ -199,12 +232,13 @@ function loadRuntimeStage(archive,stage,nextSlot,endSlot)
     if nextSlot>=endSlot then break end if
     imageName=stage.images[index];loaded=void
     if stringEqualsIgnoreCaseAscii(imageName,"$whiteimage") then loaded=["$whiteimage",Image(8,8,bytes(8*8*4,255))]
-    else loaded=loadImage(archive,imageName) end if
+    else loaded=loadImageCached(archive,imageName,cache) end if
     if loaded!=void then names=names+[loaded[0]];images=images+[loaded[1]];slots=slots+[nextSlot];nextSlot=nextSlot+1 end if
   end for
   if len(images)==0 then return void end if
   return [RuntimeStage(names,images,slots,stage.animationSpeed,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),stageTcGen(stage),stage.rgbGen,stage.rgbWave,stage.alphaGen,stage.alphaWave,stage.constantColor,false,stageClamp(stage),stage.depthWrite,stage.depthFunc==shaderParser.GLS_DEPTHFUNC_EQUAL,stage.portalRange,stage.tcGenVectors),nextSlot]
 end function
+function loadRuntimeStage(archive,stage,nextSlot,endSlot) return loadRuntimeStageCached(archive,stage,nextSlot,endSlot,void) end function
 
 function videoName(stage)
   if stage==void or len(stage.imageNames)==0 then return "" end if
@@ -217,11 +251,12 @@ function lightmapRuntimeStage(stage)
   return RuntimeStage([],[],[],0.0,stageMods(stage),stageBlend(stage),stageAlphaTest(stage),"lightmap",stage.rgbGen,stage.rgbWave,stage.alphaGen,stage.alphaWave,stage.constantColor,true,false,stage.depthWrite,stage.depthFunc==shaderParser.GLS_DEPTHFUNC_EQUAL,stage.portalRange,stage.tcGenVectors)
 end function
 
-function directRuntimeStage(archive,name,nextSlot,endSlot)
+function directRuntimeStageCached(archive,name,nextSlot,endSlot,cache)
   if nextSlot>=endSlot then return void end if
-  loaded=loadImage(archive,name);if loaded==void then return void end if
+  loaded=loadImageCached(archive,name,cache);if loaded==void then return void end if
   return [RuntimeStage([loaded[0]],[loaded[1]],[nextSlot],0.0,[],BLEND_OPAQUE,ALPHA_TEST_NONE,"texture","identitylighting",shaderParser.blankWave(),"identity",shaderParser.blankWave(),[255,255,255,255],false,false,true,false,256.0,[]),nextSlot+1]
 end function
+function directRuntimeStage(archive,name,nextSlot,endSlot) return directRuntimeStageCached(archive,name,nextSlot,endSlot,void) end function
 
 function resolvedShaderSort(shader)
   if shader==void then return 3.0 end if
@@ -231,14 +266,14 @@ function resolvedShaderSort(shader)
   return 3.0
 end function
 
-function runtimeStages(archive,index,name,nextSlot,endSlot)
+function runtimeStagesCached(archive,index,name,nextSlot,endSlot,cache)
   result=[];deforms=[];twoSided=false;sort=3.0;polygonOffset=false;noMipMaps=false;clampTime=0.0;noPicMip=false;parsed=try(shaderParser.parseIndexed(index,name))
   if not (parsed is error) and parsed!=void then
     deforms=parsed.deforms;twoSided=parsed.cull=="twoSided";sort=resolvedShaderSort(parsed);polygonOffset=parsed.polygonOffset;noMipMaps=parsed.noMipMaps;clampTime=parsed.clampTime;noPicMip=parsed.noPicMip
     for each parsedStage in parsed.stages
       if parsedStage.isLightmap and len(result)<MAX_RUNTIME_STAGES then result=result+[lightmapRuntimeStage(parsedStage)]
       else if usableStage(parsedStage) and len(result)<MAX_RUNTIME_STAGES then
-        loaded=loadRuntimeStage(archive,parsedStage,nextSlot,endSlot)
+        loaded=loadRuntimeStageCached(archive,parsedStage,nextSlot,endSlot,cache)
         if loaded!=void then
           result=result+[loaded[0]];nextSlot=loaded[1]
         end if
@@ -247,12 +282,13 @@ function runtimeStages(archive,index,name,nextSlot,endSlot)
   end if
   if len(result)==0 then
     mapped=mappedImageName(index,name);if mapped==void then mapped=name end if
-    loaded=directRuntimeStage(archive,mapped,nextSlot,endSlot)
-    if loaded==void and mapped!=name then loaded=directRuntimeStage(archive,name,nextSlot,endSlot) end if
+    loaded=directRuntimeStageCached(archive,mapped,nextSlot,endSlot,cache)
+    if loaded==void and mapped!=name then loaded=directRuntimeStageCached(archive,name,nextSlot,endSlot,cache) end if
     if loaded!=void then result=[loaded[0]];nextSlot=loaded[1] end if
   end if
   return [result,nextSlot,deforms,twoSided,sort,polygonOffset,noMipMaps,clampTime,noPicMip]
 end function
+function runtimeStages(archive,index,name,nextSlot,endSlot) return runtimeStagesCached(archive,index,name,nextSlot,endSlot,void) end function
 
 function floorNumber(value) integer=n.trunc32(value);if value<integer then return integer-1 end if;return integer end function
 function frameIndex(stage,nowMilliseconds)

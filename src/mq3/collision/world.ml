@@ -16,6 +16,7 @@ import std.array as arrays
 import std.ds.list as worldTraceLists
 
 extern function traceTransformedBoxNative(ax as double,ay as double,az as double,bx as double,by as double,bz as double,lx as double,ly as double,lz as double,hx as double,hy as double,hz as double,ox as double,oy as double,oz as double,tx as double,ty as double,tz as double,ux as double,uy as double,uz as double,matchesMask as i32,output as bytes) from "miniquake3_qvm.dll" symbol "mq3_trace_transformed_box" returns i32
+extern function writeVmBoxTraceNative(data as bytes,capacity as i32,mask as u32,base as i32,model as i32,contents as u32,tx as double,ty as double,tz as double,ux as double,uy as double,uz as double) from "miniquake3_qvm.dll" symbol "mq3_cgame_transformed_box_trace" returns i32
 
 struct Shader name surfaceFlags contentFlags end struct
 struct Brush
@@ -897,6 +898,14 @@ function transformedPointContents(world,point,model,origin,angles)
     localPoint = [q.DotProduct(localPoint,axes[0]),n.fneg(q.DotProduct(localPoint,axes[1])),q.DotProduct(localPoint,axes[2])]
   end if
   return pointContents(world,localPoint,model)
+end function
+
+function writeVmTemporaryBoxTrace(world,vm,base)
+  handle=qcommonHeaders.BOX_MODEL_HANDLE
+  if world==void or handle<len(world.models) then return false end if
+  target=world.temporary.brush;lo=target.mins;hi=target.maxs
+  return writeVmBoxTraceNative(vm.data,len(vm.data),vm.mask,base,handle,target.contents,
+      lo[0],lo[1],lo[2],hi[0],hi[1],hi[2])==1
 end function
 
 function traceTransformedBox(world,start,finish,mins,maxs,mask,origin)

@@ -53,7 +53,7 @@ function hotQueries(view,state)
   return queries.toArray()
 end function
 function hotCatalogSnapshot(catalog)
-  return hotMats.Catalog(catalog.triangles,catalog.materials,catalog.textures,catalog.scriptIndex,catalog.scriptCount,catalog.loadedSkins,catalog.bindings,catalog.resolvedTriangles,catalog.unresolvedTriangles,catalog.nextTextureSlot,catalog.recentBinding,catalog.shaderRemaps)
+  return hotMats.Catalog(catalog.triangles,catalog.materials,catalog.textures,catalog.scriptIndex,catalog.scriptCount,catalog.loadedSkins,catalog.bindings,catalog.resolvedTriangles,catalog.unresolvedTriangles,catalog.nextTextureSlot,catalog.recentBinding,catalog.shaderRemaps,catalog.imageCache)
 end function
 function hotBuffers(batch)
   buffers=hotLists.List.withCapacity(len(batch.passes)+1)

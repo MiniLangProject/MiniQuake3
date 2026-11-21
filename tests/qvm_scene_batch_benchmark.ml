@@ -18,7 +18,7 @@ function main(args)
   material=sceneMaterials.Material(0,"fx","fx",image,336,[stage],[],false,3.0,false,false,0.0,0.0,false)
   resolved=array(TRIANGLES,void)
   for index=0 to TRIANGLES-1 resolved[index]=sceneMaterials.ResolvedTriangle(sourceTriangle(index),0) end for
-  catalog=sceneMaterials.Catalog(resolved,[material],[],void,0,[],[],TRIANGLES,0,337,void,void)
+  catalog=sceneMaterials.Catalog(resolved,[material],[],void,0,[],[],TRIANGLES,0,337,void,void,void)
   started=window.milliseconds();fresh=void
   for frame=0 to FRAMES-1 fresh=sceneBatch.build(catalog);if fresh is error then return fresh end if end for
   freshMs=window.milliseconds()-started
