@@ -1,8 +1,34 @@
 # MiniQuake3: überprüfter Stand
 
-Stand: 2026-11-16. Der Port ist **in Arbeit; eine interaktive Vorschau ist spielbar**.
+Stand: 2026-11-21. Der Port ist **in Arbeit; eine interaktive Vorschau ist spielbar**.
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
+
+## BSP-Extraktion und Ladezeit, 21. November 2026
+
+Der produktive `bsp_render_data`-Extraktor kopierte bisher beim Anfügen jedes
+Dreiecks die bisherige Ergebnisliste und suchte bereits besuchte Flächen
+linear. Dreiecke werden nun in einer wachsenden Liste gesammelt und die
+Duplikatprüfung nutzt für mehrteilige Eingaben eine indexierte Markierung.
+Der Retained-World-Pfad extrahiert einzelne Flächen und legt deshalb keine
+Markierung an. Patch-Kontrollpunkte und die feste Dreiecks-Eckliste werden
+direkt befüllt. Ausgabereihenfolge, Budget- und Fehlersemantik sind durch
+`test_bsp_render_data.py` (63 Verträge, 7 Lighting- und 75 Patch-Normalen-
+Referenzdatensätze), `test_world_surface_selection.py` (39 Verträge) und
+`test_retained_world_batch.py` (51 Verträge) geprüft.
+
+Ein isolierter Windows-A/B-Lauf gegen den Extraktor von `a9f5c8b` mit 5.000
+synthetischen planaren Flächen und drei Wiederholungen ergab 219–235 ms für
+den alten und 46–62 ms für den neuen Code; beide lieferten 15.000 Dreiecke.
+Der für den Retained-World-Cache repräsentativere Einzel-Flächen-Lauf mit
+15.000 Aufrufen lag bei 62–63 ms gegenüber 47–63 ms; hier ist der Gewinn
+kleiner und nicht in jedem Lauf messbar. Das belegt den Extraktor, keine
+reale Kartenladezeit oder Bildrate. Die
+Retail-PK3 unter `D:/Quake3/baseq3` ist weiterhin nicht verfügbar.
+Der Haupt-Build und die BSP-/World-Teiltests bestehen. Die erneute
+Gesamtabnahme `python scripts/verify.py --data-root D:/Quake3` stoppt wie
+zuvor am unveränderten Compilerfehler in `test_message_state_delta.py`
+(`unknown data patch target: switch_case_body_22681_0`), vor den Retail-Gates.
 
 ## Bot-Zielwahl, 20. November 2026
 

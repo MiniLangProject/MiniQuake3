@@ -3,6 +3,7 @@
 // Checked BSP46 render data extraction for the interactive desktop slice.
 package mq3.renderer.bsp_render_data
 import mq3.compat.numeric as n
+import std.ds.list as lists
 
 const MST_PLANAR = 1
 const MST_PATCH = 2
@@ -39,10 +40,6 @@ function vertex(map,index)
   offset=recordRange(map,10,index,VERTEX_STRIDE);if offset is error then return offset end if
   color=[map.data[offset+40],map.data[offset+41],map.data[offset+42],map.data[offset+43]]
   return RenderVertex([f32(map,offset),f32(map,offset+4),f32(map,offset+8)],[f32(map,offset+12),f32(map,offset+16)],[f32(map,offset+20),f32(map,offset+24)],[f32(map,offset+28),f32(map,offset+32),f32(map,offset+36)],color,[255,255,255,255],[0.0,0.0],0.0,index)
-end function
-function contains(values,wanted)
-  for each value in values if value==wanted then return true end if end for
-  return false
 end function
 
 function lerp(a,b,t) return a+(b-a)*t end function
@@ -195,10 +192,10 @@ function appendPatch(triangles,control,width,height,textureIndex,lightmapIndex,f
   for row=0 to height-2
     for column=0 to width-2
       a=row*width+column;b=a+width;c=a+1;d=b+1;pair=[[control[a],control[b],control[c]],[control[c],control[b],control[d]]]
-      for local=0 to 1 triangleIndex=count;count=count+1;if len(triangles)<maxTriangles then triangles=triangles+[RenderTriangle(pair[local],textureIndex,lightmapIndex,fogIndex,faceIndex,triangleIndex)] else truncated=true end if end for
+      for local=0 to 1 triangleIndex=count;count=count+1;if triangles.size<maxTriangles then triangles.add(RenderTriangle(pair[local],textureIndex,lightmapIndex,fogIndex,faceIndex,triangleIndex)) else truncated=true end if end for
     end for
   end for
-  return [triangles,count,truncated]
+  return [count,truncated]
 end function
 
 // Face and meshvert order is retained. Repeated face indexes are ignored after
@@ -214,10 +211,17 @@ function extractMode(map,faceIndexes,maxTriangles,patchError,shareFaceVertices)
   if faceIndexes==void then return fail("missing face list") end if
   if maxTriangles<0 then return fail("negative triangle limit") end if
   if patchError<=0.0 then return fail("non-positive patch error") end if
-  triangles=[];seen=[];surfaceCount=0;triangleCount=0;skipped=0;truncated=false;patchSurfaceCount=0
+  capacity=maxTriangles;if capacity>4096 then capacity=4096 end if
+  triangles=lists.List.withCapacity(capacity)
+  // The retained-world cache extracts one face at a time. Allocate the face
+  // bitmap only for callers whose input can actually contain duplicates.
+  seen=void;if len(faceIndexes)>1 then seen=array(map.counts[13],false) end if
+  surfaceCount=0;triangleCount=0;skipped=0;truncated=false;patchSurfaceCount=0
   for each faceIndex in faceIndexes
-    if not contains(seen,faceIndex) then
-      seen=seen+[faceIndex]
+    if faceIndex<0 or faceIndex>=map.counts[13] then return fail("record index outside lump") end if
+    already=false;if seen!=void then already=seen[faceIndex] end if
+    if not already then
+      if seen!=void then seen[faceIndex]=true end if
       faceOffset=recordRange(map,13,faceIndex,FACE_STRIDE);if faceOffset is error then return faceOffset end if
       textureIndex=i32(map,faceOffset);rawFogIndex=i32(map,faceOffset+4);kind=i32(map,faceOffset+8);firstVert=i32(map,faceOffset+12);numVerts=i32(map,faceOffset+16);firstMesh=i32(map,faceOffset+20);numMesh=i32(map,faceOffset+24);lightmapIndex=i32(map,faceOffset+28)
       if textureIndex is error or rawFogIndex is error or kind is error or firstVert is error or numVerts is error or firstMesh is error or numMesh is error or lightmapIndex is error then return fail("truncated face") end if
@@ -231,14 +235,14 @@ function extractMode(map,faceIndexes,maxTriangles,patchError,shareFaceVertices)
           patchSurfaceCount=patchSurfaceCount+1
           width=i32(map,faceOffset+96);height=i32(map,faceOffset+100)
           if width is error or height is error or width<3 or height<3 or width>129 or height>129 or width%2==0 or height%2==0 or width*height!=numVerts then return fail("invalid patch control grid") end if
-          control=[];for controlIndex=0 to numVerts-1 value=vertex(map,firstVert+controlIndex);if value is error then return value end if;control=control+[value] end for
+          control=array(numVerts,void);for controlIndex=0 to numVerts-1 value=vertex(map,firstVert+controlIndex);if value is error then return value end if;control[controlIndex]=value end for
           patch=appendPatch(triangles,control,width,height,textureIndex,lightmapIndex,fogIndex,faceIndex,maxTriangles,patchError)
-          triangles=patch[0];triangleCount=triangleCount+patch[1];if patch[2] then truncated=true end if
+          triangleCount=triangleCount+patch[0];if patch[1] then truncated=true end if
         else
           if firstMesh<0 or numMesh<0 or firstMesh+numMesh>map.counts[11] or numMesh%3!=0 then return fail("face meshvert range is invalid") end if
           decodedVertices=void;if shareFaceVertices then decodedVertices=array(numVerts,void) end if
           for triangleIndex=0 to n.quotient(numMesh,3)-1
-            verts=[]
+            verts=array(3,void)
             for corner=0 to 2
               meshOffset=recordRange(map,11,firstMesh+triangleIndex*3+corner,4);if meshOffset is error then return meshOffset end if
               relative=i32(map,meshOffset)
@@ -248,24 +252,24 @@ function extractMode(map,faceIndexes,maxTriangles,patchError,shareFaceVertices)
                 value=vertex(map,firstVert+relative);if value is error then return value end if
                 if decodedVertices!=void then decodedVertices[relative]=value end if
               end if
-              verts=verts+[value]
+              verts[corner]=value
             end for
             triangleCount=triangleCount+1
-            if len(triangles)<maxTriangles then triangles=triangles+[RenderTriangle(verts,textureIndex,lightmapIndex,fogIndex,faceIndex,triangleIndex)] else truncated=true end if
+            if triangles.size<maxTriangles then triangles.add(RenderTriangle(verts,textureIndex,lightmapIndex,fogIndex,faceIndex,triangleIndex)) else truncated=true end if
           end for
         end if
       else skipped=skipped+1
       end if
     end if
   end for
-  return RenderData(triangles,surfaceCount,triangleCount,skipped,truncated,patchSurfaceCount)
+  return RenderData(triangles.toArray(),surfaceCount,triangleCount,skipped,truncated,patchSurfaceCount)
 end function
 
 function extract(map,faceIndexes,maxTriangles) return extractWithPatchError(map,faceIndexes,maxTriangles,DEFAULT_PATCH_ERROR) end function
 
 function all(map,maxTriangles)
   if not validMap(map) then return fail("invalid BSP object") end if
-  faces=[];for index=0 to map.counts[13]-1 faces=faces+[index] end for
+  faces=array(map.counts[13],void);for index=0 to map.counts[13]-1 faces[index]=index end for
   return extract(map,faces,maxTriangles)
 end function
 
