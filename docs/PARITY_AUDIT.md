@@ -4,6 +4,18 @@ Stand: 2026-11-21. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Singleplayer-Abschluss und Tier-Film, 21. November 2026
+
+Nach dem Sieg auf der Trainingskarte sendet die unveränderte Retail-UI
+`disconnect; cinematic tier1.RoQ` und setzt `nextmap=levelselect`. Der
+Desktop-Host kannte den `cinematic`-Befehl nicht: `disconnect` wechselte
+deshalb sofort ins Hauptmenü. Der Host merkt sich nun den Folgebefehl über
+den Match-Abbau hinweg, spielt den echten Retail-RoQ im selben OpenGL-Fenster
+und öffnet nach Filmende die ursprüngliche Levelauswahl. Eine Taste kann
+den Film wie im Original überspringen. Der Retail-Integrationstest prüft
+Befehl, Film-Frames und den Folgebefehl; der sichtbare Windows-Filmtest
+prüft die produktive Wiedergabe.
+
 ## Vollständige Retail-Arenenliste und Botliste, 21. November 2026
 
 Ein neuer Windows-QVM-Smoke-Test startet alle 30 Arenen aus der Retail-Datei

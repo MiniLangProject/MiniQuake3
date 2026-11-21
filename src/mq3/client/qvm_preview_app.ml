@@ -384,6 +384,7 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
   startupAt=window.milliseconds();loading=window.showLoading(3,"Booting original game and cgame QVMs");if loading is error then window.shutdown();return loading end if;if not loading then window.shutdown();return 0 end if
   state=try(bootMatch(archive,map,mapName,qvmRoot,settings,source));if state is error then return state end if
   mode=desktopVideo.open(state.context.cvars);if mode is error then window.shutdown();match.shutdown(state);return mode end if
+  if session!=void then session.videoWidth=mode.width;session.videoHeight=mode.height end if
   qvmBootAt=window.milliseconds();loading=window.showLoading(24,"Booting original UI QVM");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
   if session==void then ensurePlayableBindings(state) end if
   clientClock=cgameClock.create(state.context.now,state.context.snapshotNumber,state.context.latestSnapshot.serverTime);if clientClock is error then window.shutdown();match.shutdown(state);return clientClock end if
@@ -515,6 +516,7 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
           uploaded=sceneBatch.upload(qvmCatalog);if uploaded is error then audioOutput.shutdown();window.shutdown();match.shutdown(state);return uploaded end if
         end if
         mode=changedMode;worldConfig.width=mode.width;worldConfig.height=mode.height
+        if session!=void then session.videoWidth=mode.width;session.videoHeight=mode.height end if
       end if
     end if
     if session!=void and frameTiming.elapsed(lastSave,startedAt)>=1000 then desktopSession.save(state,session);lastSave=startedAt end if

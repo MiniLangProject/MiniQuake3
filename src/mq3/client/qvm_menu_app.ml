@@ -11,6 +11,7 @@ import mq3.client.desktop_session as desktopSession
 import mq3.client.desktop_video as desktopVideo
 import mq3.client.demo_playback as demos
 import mq3.client.remote_play as remote
+import mq3.client.cinematic_runtime as cinematics
 import mq3.format.mod_stack as mods
 import mq3.format.pk3 as pk3
 import mq3.format.bsp as bsp
@@ -21,6 +22,7 @@ import mq3.audio.qvm_sound_assets as qvmSoundAssets
 import mq3.audio.qvm_playback as qvmPlayback
 import mq3.platform.playable_window as window
 import mq3.platform.playable_ambient as audioOutput
+import mq3.platform.playable_multitexture as multitexture
 import mq3.qcommon.command_buffer as commands
 import mq3.client.frame_timing as frameTiming
 import std.time as time
@@ -30,6 +32,8 @@ const SOURCE_WIDTH=1280
 const SOURCE_HEIGHT=720
 const FIRST_TEXTURE_SLOT=1
 const MAX_TEXTURE_SLOTS=300
+const CINEMATIC_TEXTURE_SLOT=4055
+struct ScreenPoint x y depth end struct
 
 function fail(message) return error(7688,"QVM menu: "+message) end function
 
@@ -37,6 +41,7 @@ function runMenu(archive,bootstrapMap,qvmRoot,session,openLevelSelect)
   state=match.bootUiShellSettings(archive,bootstrapMap,1000,qvmRoot,session.settings);if state is error then return state end if
   attached=desktopSession.attach(state,session);if attached is error then match.shutdown(state);return attached end if
   mode=desktopVideo.open(state.context.cvars);if mode is error then match.shutdown(state);return mode end if
+  session.videoWidth=mode.width;session.videoHeight=mode.height
   window.setTitle("MiniQuake3 | Main Menu")
   loading=window.showLoading(10,"Starting original Quake III menu");if loading is error then window.shutdown();match.shutdown(state);return loading end if
   if not loading then match.shutdown(state);return 0 end if
@@ -78,7 +83,7 @@ function runMenu(archive,bootstrapMap,qvmRoot,session,openLevelSelect)
     toggleFullscreen=window.takeVideoRestart()
     if session.videoRestart or toggleFullscreen then
       session.videoRestart=false;updatedMode=try(desktopVideo.apply(state.context.cvars,toggleFullscreen))
-      if not (updatedMode is error) then mode=updatedMode else match.emitPrint(state.context,"Could not apply video settings.\n") end if
+      if not (updatedMode is error) then mode=updatedMode;session.videoWidth=mode.width;session.videoHeight=mode.height else match.emitPrint(state.context,"Could not apply video settings.\n") end if
     end if
     reset=localQvmUi.resetFrameCommands(state);if reset is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return reset end if
     frame=uiSession.frameQueued(ui,now,nativeEvents);if frame is error then audioOutput.shutdown();qvm2d.release(catalog);window.shutdown();match.shutdown(state);return frame end if
@@ -100,6 +105,59 @@ function runMenu(archive,bootstrapMap,qvmRoot,session,openLevelSelect)
   desktopSession.capture(state,session)
   audioOutput.shutdown();qvm2d.release(catalog);match.shutdown(state)
   return 0
+end function
+
+// CL_PlayCinematic_f takes ownership of the disconnected screen. When the
+// system RoQ ends, CL_HandleCinEnd queues the saved nextmap command.
+function runCinematic(archive,session,measurePixels)
+  movie=try(cinematics.create(archive));if movie is error then return movie end if
+  name=strings.toLowerAscii(session.target)
+  bits=cinematics.CIN_SYSTEM
+  if name=="end.roq" or name=="demoend.roq" then bits=bits|cinematics.CIN_HOLD end if
+  startedAt=window.milliseconds()
+  handle=try(cinematics.play(movie,session.target,0,0,640,480,bits,startedAt))
+  if handle is error then return handle end if
+  if handle<0 then desktopSession.finishCinematic(session);return 0 end if
+  catalog=try(qvmSoundAssets.load(archive,[],[]));if catalog is error then return catalog end if
+  audio=try(qvmPlayback.create(catalog,22050,qvmSoundAssets.CHUNK_FRAMES));if audio is error then return audio end if
+  soundReady=not (audioOutput.init(22050) is error)
+  window.setTitle("MiniQuake3 | "+session.target)
+  window.inputClear();window.inputEvents(256);brightest=0
+  while not window.shouldClose()
+    frameAt=window.milliseconds();window.poll()
+    events=try(window.inputEvents(256));if events is error then audioOutput.shutdown();return events end if
+    skip=false;for each event in events if event.type==window.INPUT_KEY and event.value2!=0 then skip=true;break end if end for
+    if skip then break end if
+    status=cinematics.run(movie,handle,frameAt)
+    if status==cinematics.FMV_EOF then break end if
+    draw=cinematics.draw(movie,handle)
+    window.beginFrame(0,0,0)
+    if draw!=void then
+      image=try(cinematics.presentation(draw,640,480,session.videoWidth,session.videoHeight));if image is error then audioOutput.shutdown();return image end if
+      if image.dirty and not window.uploadTextureNoMip(CINEMATIC_TEXTURE_SLOT,image.pixels,image.sourceWidth,image.sourceHeight) then audioOutput.shutdown();return fail("could not upload cinematic frame") end if
+      x=image.x;y=image.y;w=image.width;h=image.height;depth=0.001
+      a=ScreenPoint(x,y,depth);b=ScreenPoint(x+w,y,depth);c=ScreenPoint(x+w,y+h,depth);d=ScreenPoint(x,y+h,depth)
+      stateValue=multitexture.setState(multitexture.BLEND_OPAQUE,false,false);if stateValue is error then audioOutput.shutdown();return stateValue end if
+      multitexture.setTextureClamp(true)
+      window.drawTriangle(CINEMATIC_TEXTURE_SLOT,a,[0.0,0.0],1.0,b,[1.0,0.0],1.0,c,[1.0,1.0],1.0,255,255,255)
+      window.drawTriangle(CINEMATIC_TEXTURE_SLOT,c,[1.0,1.0],1.0,d,[0.0,1.0],1.0,a,[0.0,0.0],1.0,255,255,255)
+      multitexture.setTextureClamp(false)
+    end if
+    window.present()
+    if measurePixels then lit=window.presentedNonBlack();if lit>brightest then brightest=lit end if end if
+    chunks=cinematics.takeAudio(movie,handle)
+    if soundReady then
+      for each chunk in chunks queued=qvmPlayback.queueRaw(audio,chunk,1.0);if queued is error then audioOutput.shutdown();return queued end if end for
+      submitted=0;while submitted<3 and audioOutput.canSubmit()
+        rendered=try(qvmPlayback.renderFast(audio));if rendered is error then audioOutput.shutdown();return rendered end if
+        accepted=try(audioOutput.submit(rendered.samples));if accepted is error then audioOutput.shutdown();return accepted end if;if not accepted then break end if;submitted=submitted+1
+      end while
+    end if
+    sleepMs=frameTiming.remaining(frameAt,window.milliseconds(),16);if sleepMs>0 then time.sleep(sleepMs) end if
+  end while
+  audioOutput.shutdown();cinematics.closeAll(movie);window.releaseTexture(CINEMATIC_TEXTURE_SLOT)
+  desktopSession.finishCinematic(session)
+  return brightest
 end function
 
 function loadMap(archive,dataRoot,name)
@@ -196,6 +254,9 @@ function run(archive,bootstrapMap,qvmRoot)
         print "MiniQuake3: "+session.notice
         request="menu";continue
       end if
+    else if request=="cinematic" then
+      result=try(runCinematic(activeArchive,session,false))
+      if result is error then session.notice=result.message;desktopSession.finishCinematic(session) end if
     else if request=="connect" or request=="demo" then
       result=try(runStream(archive,activeArchive,installRoot,qvmRoot,session,request=="demo"))
       if result is error then

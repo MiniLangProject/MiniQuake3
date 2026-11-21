@@ -2,6 +2,7 @@
 import std.fs as fs
 import mq3.client.desktop_session as desktop
 import mq3.client.original_ui_session as session
+import mq3.client.cinematic_runtime as cinematics
 import mq3.client.ui_vm as uiVm
 import mq3.engine.local_qvm_match as match
 import mq3.format.bsp as bsp
@@ -48,6 +49,16 @@ function main(args)
   original.action="";match.consoleCommand(game.context,commands.EXEC_APPEND,"disconnect; levelselect\n")
   commands.execute(game.context.commandState)
   if original.action!="levelselect" then return fail("post-game disconnect did not carry the level selection") end if
+  original.action="";cvar.set(game.context.cvars,"nextmap","levelselect")
+  match.consoleCommand(game.context,commands.EXEC_APPEND,"disconnect; cinematic tier1.RoQ\n")
+  commands.execute(game.context.commandState)
+  if original.action!="cinematic" or original.target!="tier1.RoQ" or original.cinematicNext!="levelselect" then return fail("tier video command lost the pending level selection") end if
+  movie=cinematics.create(archive);clip=cinematics.play(movie,original.target,0,0,640,480,cinematics.CIN_SYSTEM,1000)
+  if clip is error or clip<0 then return fail("Retail tier1.RoQ did not load") end if
+  if cinematics.run(movie,clip,1000)!=cinematics.FMV_PLAY or cinematics.draw(movie,clip)==void then return fail("Retail tier video produced no frame") end if
+  if cinematics.run(movie,clip,14000)!=cinematics.FMV_EOF then return fail("Retail tier video did not finish") end if
+  cinematics.closeAll(movie)
+  if desktop.finishCinematic(original)!="levelselect" then return fail("finished tier video did not open the level selection") end if
   desktop.capture(game,original);match.shutdown(game)
 
   // Fresh registry, command buffer and VM. None of the previous session's
@@ -65,6 +76,6 @@ function main(args)
   match.executeClientConsole(menu,"vid_restart")
   if not reloaded.videoRestart then return fail("video action was not forwarded") end if
   match.shutdown(menu)
-  print "PASS: Retail q3dm0 commands hand off menu/map/restart/levelselect, unmodified ui.qvm placement survives a fresh session, binding and config commands persist"
+  print "PASS: Retail q3dm0 commands hand off menu/map/restart/tier video/levelselect, unmodified ui.qvm placement survives a fresh session, binding and config commands persist"
   return 0
 end function

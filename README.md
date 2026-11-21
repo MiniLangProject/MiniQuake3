@@ -68,7 +68,7 @@ complete behavioral parity.
 | Collision query performance | A Retail `q3dm15` QVM profile observed `trap_LinkEntity` host time fall from 2,099 to 110 microseconds per call after BSP query storage changes. The run's average frame work fell from 27.85 to 18.87 ms; real-time simulation trajectories can differ. [Measurements](docs/verification/2026-11-21-all-arenas-bots-performance.md) |
 | Missing audio device | Initialization errors are caught; the menu and game continue without sound. |
 | Audit core corrections | Strict original-source gates, wall-clock menu timing, honest frame percentiles, routing-cache bookkeeping and shared snapshot decoding have passed targeted Windows regressions and a full build. |
-| Desktop lifecycle and persistence | The Windows host routes local map, restart and menu commands and saves bindings, archived settings and single-player scores to `baseq3/q3config.cfg`. |
+| Desktop lifecycle and persistence | The Windows host routes local map, restart, menu and Retail tier-cinematic commands and saves bindings, archived settings and single-player scores to `baseq3/q3config.cfg`. |
 | Broader compatibility | Longer interactive sessions, multiplayer interoperability, hardware-specific behavior and complete 1:1 parity still need acceptance testing. |
 
 The hosted Windows screenshot runs use **software rendering** and do not
@@ -221,6 +221,7 @@ python scripts/test_default_launcher.py
 python scripts/test_default_exe_startup.py
 python scripts/test_desktop_video_retail.py
 python scripts/test_desktop_session_retail.py --data-root build --published
+python scripts/test_desktop_cinematic_retail.py --data-root build
 $env:MQ3_BUILD_TOOLCHAIN = "release"
 python scripts/test_singleplayer_bot_retail.py --data-root build
 python scripts/test_all_retail_levels.py --data-root build

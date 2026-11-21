@@ -68,6 +68,7 @@ import mq3.client.playable_viewer as playableViewer
 import mq3.client.playable_app as playableApp
 import mq3.client.qvm_preview_app as qvmPreviewApp
 import mq3.client.qvm_menu_app as qvmMenuApp
+import mq3.client.desktop_session as desktopSession
 import mq3.engine.local_qvm_match as localQvmMatch
 import mq3.audio.wav as wav
 import mq3.platform.playable_audio as playableAudio
@@ -126,6 +127,15 @@ function mapNameFromPath(path)
   return name
 end function
 function main(args)
+  if len(args)==3 and args[0]=="--cinematic-smoke" then
+    archive=try(pk3.open(args[1]));if archive is error then return archive end if
+    session=desktopSession.create("");session.target=args[2];session.cinematicNext="levelselect"
+    opened=try(playableWindow.open(1280,720));if opened is error then return opened end if
+    played=try(qvmMenuApp.runCinematic(archive,session,true));playableWindow.shutdown()
+    if played is error then return played end if
+    if session.action!="levelselect" or played<100 then return error(7688,"Retail cinematic did not render and return to level selection: action="+session.action+" pixels="+str(played)) end if
+    print "PASS: Retail cinematic rendered and returned to level selection";return 0
+  end if
   if len(args)==0 then
     executableRoot=playableWindow.executableDirectory()
     if executableRoot=="" then return error(7688,"could not determine the MiniQuake3 executable directory") end if

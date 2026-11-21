@@ -20258,6 +20258,8 @@
       "target": [
         "src/mq3/client/cl_cin_runtime.ml",
         "src/mq3/client/cinematic_runtime.ml",
+        "src/mq3/client/qvm_menu_app.ml",
+        "src/mq3/client/desktop_session.ml",
         "src/mq3/format/roq.ml",
         "src/mq3/video/roq_video.ml",
         "src/mq3/renderer/qvm_video_materials.ml",
@@ -20272,7 +20274,9 @@
         "scripts/test_qvm_video_materials.py",
         "tests/qvm_video_materials_retail_probe.ml",
         "scripts/test_cl_cin_complete.py",
-        "tests/cl_cin_runtime_contracts.ml"
+        "tests/cl_cin_runtime_contracts.ml",
+        "scripts/test_desktop_cinematic_retail.py",
+        "tests/desktop_session_retail_probe.ml"
       ]
     },
     {
@@ -50458,14 +50462,17 @@
         }
       ],
       "target": [
-        "src/mq3/client/ui_sppostgame.ml"
+        "src/mq3/client/ui_sppostgame.ml",
+        "src/mq3/client/desktop_session.ml"
       ],
       "status": "ported",
       "tests": [
         "scripts/test_ui_sppostgame.py",
         "tests/reference/ui_sppostgame_oracle.c",
         "tests/ui_sppostgame_oracle.ml",
-        "tests/ui_sppostgame_contracts.ml"
+        "tests/ui_sppostgame_contracts.ml",
+        "tests/desktop_session_retail_probe.ml",
+        "scripts/test_desktop_cinematic_retail.py"
       ]
     },
     {

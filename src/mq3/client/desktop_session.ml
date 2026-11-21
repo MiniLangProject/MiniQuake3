@@ -32,10 +32,13 @@ struct Session
   target
   notice
   transitionCommands
+  cinematicNext
+  videoWidth
+  videoHeight
 end struct
 
 function create(dataRoot)
-  return Session(dataRoot,"","",false,void,void,0,false,false,[],"","","","","")
+  return Session(dataRoot,"","",false,void,void,0,false,false,[],"","","","","","",1280,720)
 end function
 
 function bindingText(host) return bindings.bindingText(host.bindingState) end function
@@ -143,6 +146,20 @@ function disconnectCommand(commandState,session)
   return true
 end function
 
+function cinematicCommand(commandState,session)
+  if commands.argc(commandState)<2 or commands.argc(commandState)>3 then commands.emit(commandState,"usage: cinematic <name> [mode]\n");return false end if
+  session.target=commands.argv(commandState,1)
+  session.cinematicNext=cvar.variableString(commandState.context.context.cvars,"nextmap")
+  session.action="cinematic";deferCommandTail(commandState);return true
+end function
+
+function finishCinematic(session)
+  next=session.cinematicNext;session.cinematicNext=""
+  if next=="levelselect" then session.action="levelselect"
+  else session.action="menu";if next!="" then session.transitionCommands=next+"\n" end if end if
+  return session.action
+end function
+
 function levelselectCommand(commandState,session)
   if commandState.context.game==void then return match.uiGameCommand(commandState) end if
   session.action="levelselect"
@@ -203,7 +220,7 @@ function attach(state,session)
   if session.notice!="" then
     cvar.set(context.cvars,"com_errorMessage",session.notice);session.notice=""
   end if
-  handlers=[["map",mapCommand],["spmap",mapCommand],["devmap",mapCommand],["spdevmap",mapCommand],["map_restart",restartCommand],["disconnect",disconnectCommand],["levelselect",levelselectCommand],["quit",quitCommand],["vid_restart",videoCommand],["music",musicCommand],["stopmusic",stopMusicCommand],["connect",streamCommand],["demo",streamCommand],["fs_restart",restartFilesystem]]
+  handlers=[["map",mapCommand],["spmap",mapCommand],["devmap",mapCommand],["spdevmap",mapCommand],["map_restart",restartCommand],["disconnect",disconnectCommand],["cinematic",cinematicCommand],["levelselect",levelselectCommand],["quit",quitCommand],["vid_restart",videoCommand],["music",musicCommand],["stopmusic",stopMusicCommand],["connect",streamCommand],["demo",streamCommand],["fs_restart",restartFilesystem]]
   for each handler in handlers
     if not commands.addContextCommand(commandState,handler[0],handler[1],session) then return error(7688,"Desktop command already registered: "+handler[0]) end if
   end for
