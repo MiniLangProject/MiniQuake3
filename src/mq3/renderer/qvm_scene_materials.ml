@@ -6,6 +6,7 @@ import mq3.renderer.playable_materials as materials
 import mq3.renderer.player_skins as playerSkins
 import mq3.renderer.shader_parser as shaderParser
 import mq3.renderer.shader_remap as shaderRemap
+import std.string as strings
 
 struct LoadedSkin handle skin end struct
 struct Binding shaderHandle customSkin shaderName surfaceName materialIndex end struct
@@ -41,6 +42,30 @@ function loadSkin(archive,assets,kinds,cache,handle)
   if path=="" then return [void,cache] end if
   skin=try(playerSkins.load(archive,path));if skin is error then return [void,cache] end if
   return [skin,cache+[LoadedSkin(handle,skin)]]
+end function
+// Skin registration in Quake resolves its mapped shaders before the first
+// visible frame. Decode only skins already registered by this match; retain
+// their images in the same bounded, archive-scoped cache used by bindTriangle.
+// No runtime material or texture slot is allocated by this warmup.
+function warmRegisteredPlayerSkins(catalog,archive,assets,kinds)
+  if catalog==void or archive==void or assets==void or kinds==void or len(assets)!=len(kinds) then return fail("invalid player skin warmup input") end if
+  if len(assets)==0 then return 0 end if
+  warmed=0
+  for handle=1 to len(assets)
+    path=typedName(assets,kinds,handle,"skin","skin")
+    if path=="" then continue end if
+    lower=strings.toLowerAscii(path)
+    if not strings.startsWith(lower,"models/players/") or not strings.endsWith(lower,".skin") then continue end if
+    if cachedSkin(catalog.loadedSkins,handle)!=void then continue end if
+    loaded=loadSkin(archive,assets,kinds,catalog.loadedSkins,handle)
+    skin=loaded[0];catalog.loadedSkins=loaded[1]
+    if skin==void then continue end if
+    for each mapping in skin.mappings
+      ignored=materials.runtimeStagesCached(archive,catalog.scriptIndex,strippedName(mapping.shaderName),0,32768,catalog.imageCache)
+    end for
+    warmed=warmed+1
+  end for
+  return warmed
 end function
 function skinShader(skin,surfaceName)
   if skin==void or surfaceName=="" then return "" end if

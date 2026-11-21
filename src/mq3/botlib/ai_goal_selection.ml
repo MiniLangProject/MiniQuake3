@@ -8,6 +8,7 @@ import mq3.botlib.ai_resource_pools as goalResources
 import mq3.botlib.ai_level_items as levelItems
 import mq3.botlib.ai_item_weights as itemWeights
 import mq3.botlib.aas_runtime as aasRuntime
+import mq3.botlib.aas_routing_cache as routes
 import mq3.botlib.aas_entities as aasEntities
 import mq3.botlib.ai_genetic as genetic
 import mq3.compat.numeric as goalSelectNumeric
@@ -31,11 +32,11 @@ const AVOID_DROPPED_TIME=10.0
 const TRAVELTIME_SCALE=0.01
 const DEFAULT_DROPPED_WEIGHT=1000.0
 
-struct Services context reachabilityAreaFn areaReachabilityFn travelTimeFn traceFn entityInfoFn end struct
+struct Services context reachabilityAreaFn areaReachabilityFn travelTimeFn traceFn entityInfoFn itemQueryFn end struct
 struct Runtime levelItems goals services droppedWeight randomSeed end struct
 struct ItemScore weight time end struct
 
-function services(context) return Services(context,void,void,void,void,void) end function
+function services(context) return Services(context,void,void,void,void,void,void) end function
 function create(items,goals,host) return Runtime(items,goals,host,DEFAULT_DROPPED_WEIGHT,1) end function
 function setDroppedWeight(runtime,value) if runtime!=void then runtime.droppedWeight=goalSelectNumeric.f32(value) end if;return value end function
 function setRandomSeed(runtime,value) if runtime!=void then runtime.randomSeed=goalSelectNumeric.i32(value) end if;return value end function
@@ -86,7 +87,16 @@ end function
 function originArea(runtime,value,origin)
   area=reachabilityArea(runtime,origin,value.client);if area==0 or areaReachability(runtime,area)==0 then area=value.lastReachabilityArea end if;value.lastReachabilityArea=area;return area
 end function
-function weighted(runtime,handle,value,config,inventory,item,area,origin,travelFlags,fuzzyCache,score)
+function startItemQuery(runtime,area,origin,travelFlags)
+  if runtime.services==void or runtime.services.itemQueryFn==void then return void end if
+  return runtime.services.itemQueryFn(runtime.services.context,area,origin,travelFlags)
+end function
+function itemTime(runtime,query,area,origin,goal,travelFlags)
+  if query!=void then return routes.itemQueryTravelTime(query,goal) end if
+  return travelTime(runtime,area,origin,goal,travelFlags)
+end function
+
+function weighted(runtime,handle,value,config,inventory,item,area,origin,travelFlags,itemQuery,fuzzyCache,score)
   score.weight=0.0;score.time=0
   if not permitted(runtime,item) or item.goalAreaNum==0 or (item.entityNum==0 and (item.flags&levelItems.IFL_ROAM)==0) then return void end if
   info=config[item.itemInfo];if info.number<0 or info.number>=len(value.itemWeightIndex) then return void end if;weightNumber=value.itemWeightIndex[info.number];if weightNumber<0 then return void end if
@@ -95,7 +105,9 @@ function weighted(runtime,handle,value,config,inventory,item,area,origin,travelF
   weight=void;if weightNumber<len(fuzzyCache) then weight=fuzzyCache[weightNumber] end if
   if weight==void then weight=itemWeights.fuzzyWeight(inventory,value.itemWeightConfig,weightNumber);if weightNumber<len(fuzzyCache) then fuzzyCache[weightNumber]=weight end if end if
   if item.timeout!=0.0 then weight=goalSelectNumeric.fadd(weight,runtime.droppedWeight) end if;if (item.flags&levelItems.IFL_ROAM)!=0 then weight=goalSelectNumeric.fmul(weight,item.weight) end if
-  if weight<=0.0 then return void end if;score.time=travelTime(runtime,area,origin,item.goalAreaNum,travelFlags);if score.time<=0 then return void end if
+  if weight<=0.0 then return void end if
+  score.time=itemTime(runtime,itemQuery,area,origin,item.goalAreaNum,travelFlags)
+  if score.time<=0 then return void end if
   remaining=goalRuntime.avoidGoalTime(runtime.goals,handle,item.number);if goalSelectNumeric.fsub(remaining,goalSelectNumeric.fmul(score.time,0.009))>0.0 then return void end if
   score.weight=goalSelectNumeric.fdiv(weight,goalSelectNumeric.fmul(score.time,TRAVELTIME_SCALE));return void
 end function
@@ -103,15 +115,17 @@ end function
 function chooseLTGItem(runtime,handle,origin,inventory,travelFlags)
   if runtime==void then return 0 end if;value=goalResources.goalState(runtime.goals.pools,handle);if value==void or value.itemWeightConfig==void then return 0 end if;area=originArea(runtime,value,origin);if area==0 then return 0 end if
   config=itemConfig(runtime);if config==void or config is error then return 0 end if;best=void;bestWeight=0.0;fuzzyCache=array(len(value.itemWeightConfig.weights),void);score=ItemScore(0.0,0)
-  for each item in runtime.levelItems.levelItems weighted(runtime,handle,value,config,inventory,item,area,origin,travelFlags,fuzzyCache,score);if score.weight>bestWeight then bestWeight=score.weight;best=item end if end for
+  itemQuery=startItemQuery(runtime,area,origin,travelFlags)
+  for each item in runtime.levelItems.levelItems weighted(runtime,handle,value,config,inventory,item,area,origin,travelFlags,itemQuery,fuzzyCache,score);if score.weight>bestWeight then bestWeight=score.weight;best=item end if end for
   if best==void then return 0 end if;info=config[best.itemInfo];goal=makeItemGoal(info,best);goalRuntime.addToAvoidGoals(runtime.goals,handle,best.number,avoidTime(info,best));goalRuntime.pushGoal(runtime.goals,handle,goal);return 1
 end function
 function chooseNBGItem(runtime,handle,origin,inventory,travelFlags,longTermGoal,maxTime)
   if runtime==void then return 0 end if;value=goalResources.goalState(runtime.goals.pools,handle);if value==void or value.itemWeightConfig==void then return 0 end if;area=originArea(runtime,value,origin);if area==0 then return 0 end if
-  longTime=99999;if longTermGoal!=void then longTime=travelTime(runtime,area,origin,longTermGoal.areaNum,travelFlags) end if
+  itemQuery=startItemQuery(runtime,area,origin,travelFlags)
+  longTime=99999;if longTermGoal!=void then longTime=itemTime(runtime,itemQuery,area,origin,longTermGoal.areaNum,travelFlags) end if
   config=itemConfig(runtime);if config==void or config is error then return 0 end if;best=void;bestWeight=0.0;fuzzyCache=array(len(value.itemWeightConfig.weights),void);score=ItemScore(0.0,0)
   for each item in runtime.levelItems.levelItems
-    weighted(runtime,handle,value,config,inventory,item,area,origin,travelFlags,fuzzyCache,score);if score.time<=0 or score.time>=maxTime or score.weight<=bestWeight then continue end if
+    weighted(runtime,handle,value,config,inventory,item,area,origin,travelFlags,itemQuery,fuzzyCache,score);if score.time<=0 or score.time>=maxTime or score.weight<=bestWeight then continue end if
     back=0;if longTermGoal!=void and item.timeout==0.0 then back=travelTime(runtime,item.goalAreaNum,item.goalOrigin,longTermGoal.areaNum,travelFlags) end if
     if back<=longTime then bestWeight=score.weight;best=item end if
   end for

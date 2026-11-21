@@ -4,6 +4,26 @@ Stand: 2026-11-21. Der Port ist **in Arbeit; eine interaktive Vorschau ist spiel
 Ein erfolgreicher Referenzlauf ist ein Lauf der ursprünglichen C-Engine,
 kein Nachweis einer schon vollständig portierten MiniLang-Engine.
 
+## Bot-KI, Cgame, Konsole und Scoreboard, 21. November 2026
+
+Das CPU-Profil ordnet den reproduzierbaren Bot-Hänger dem Chat-Matching und
+kalten AAS-Zielrouten zu. Im 2.200-Frame-Replay auf der RTX 5080 sinkt der
+Bot-Hostschritt von 82,7 auf 12,0 ms. Der zugehörige Frame fällt von 107 auf
+25 ms. Cgame benötigt über den Lauf 6,77 statt 17,82 s in Host-Aufrufen.
+Wiederverwendete Kollisionsmarkierungen, gespeicherte AAS-Knoten und eine
+gebündelte Zielsuche erhalten die Ergebnisse der Referenztests. Portalclips
+sammeln ihre Ausgaben linear und behalten die statischen Batches bei gleicher
+Ebene und geordneter BSP-Auswahl.
+Im 6.000-Frame-Echtzeitlauf erreicht der neue Build 83,6 statt 51,9 FPS.
+Das 99. Perzentil sinkt von 65 auf 33 ms, der Höchstwert von 107 auf 54 ms.
+
+Die Retail-Konsole zeichnet ihre zwei Shaderstufen über die aufbereitete
+Materialdarstellung. `^` öffnet und schließt sie im selben Fenster. Das
+lokale Spiel setzt `CS_SERVERINFO` vor Cgame-Init wie das Original. Die
+Tab-Tabelle zeigt Sarge und Crash mit ihren Spielständen. Temporäre
+Kollisionsmodelle übernehmen auch invertierte Grenzen wie das Original.
+[Messungen und Prüfumfang](verification/2026-11-21-bot-cgame-frame-profile.md)
+
 ## Retail-CPU-Profil und Framezeiten, 21. November 2026
 
 Der 279-ms-Frame im wiederholbaren `q3dm0`-Kampf-Replay verbrachte 241 ms

@@ -24,9 +24,11 @@ function load(archive,firstTextureSlot)
   if parsed==void or len(parsed.stages)!=REQUIRED_TEXTURES then return fail("Retail console shader must have two stages") end if
   layers=[]
   for index=0 to REQUIRED_TEXTURES-1
-    stage=parsed.stages[index];if len(stage.images)==0 then return fail("Retail console stage has no image") end if
-    loaded=materials.loadImage(archive,stage.images[0]);if loaded==void then return fail("missing Retail console artwork "+stage.images[0]) end if
-    layers=layers+[Layer(stage,loaded[0],loaded[1],firstTextureSlot+index)]
+    parsedStage=parsed.stages[index];if len(parsedStage.images)==0 then return fail("Retail console stage has no image") end if
+    slot=firstTextureSlot+index
+    loaded=materials.loadRuntimeStage(archive,parsedStage,slot,slot+1)
+    if loaded==void then return fail("missing Retail console artwork "+parsedStage.images[0]) end if
+    stage=loaded[0];layers=layers+[Layer(stage,stage.imageNames[0],stage.images[0],slot)]
   end for
   if not strings.endsWith(strings.toLowerAscii(layers[0].imageName),"gfx/misc/console01.tga") then return fail("console shader first stage is not console01.tga") end if
   second=strings.toLowerAscii(layers[1].imageName);if not strings.endsWith(second,"gfx/misc/console02.tga") and not strings.endsWith(second,"gfx/misc/console02.jpg") then return fail("console shader second stage is not console02 artwork") end if
@@ -40,7 +42,7 @@ end function
 function release(media) if media!=void then for each layer in media.layers window.releaseTexture(layer.slot) end for end if;return void end function
 function point(x,y) return Point(x,y,0.0001) end function
 function drawLayer(layer,width,height,now)
-  blend=materials.stageBlend(layer.stage);state=raster.setState(blend,false,false);if state is error then return state end if
+  state=raster.setState(layer.stage.blend,false,false);if state is error then return state end if
   a=point(0.0,0.0);b=point(width,0.0);c=point(width,height);d=point(0.0,height)
   uvA=materials.transformUVAt(layer.stage,[0.0,0.0],[0.0,0.0,0.0],now);if uvA is error then return uvA end if
   uvB=materials.transformUVAt(layer.stage,[1.0,0.0],[width,0.0,0.0],now);if uvB is error then return uvB end if

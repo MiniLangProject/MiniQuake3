@@ -4426,7 +4426,9 @@
         "tests/be_aas_route_complete_retail_probe.ml",
         "scripts/test_aas_routing_cache.py",
         "scripts/test_singleplayer_bot_retail.py",
-        "tests/aas_routing_cache_retail_probe.ml"
+        "tests/aas_routing_cache_retail_probe.ml",
+        "scripts/test_aas_route_extras.py",
+        "scripts/test_aas_routing.py"
       ]
     },
     {
@@ -5027,7 +5029,8 @@
         "scripts/test_aas_sample.py",
         "tests/reference/aas_sample_oracle.c",
         "tests/aas_sample_contracts.ml",
-        "tests/aas_sample_retail_probe.ml"
+        "tests/aas_sample_retail_probe.ml",
+        "tests/aas_runtime_cache_retail_probe.ml"
       ]
     },
     {
@@ -6201,7 +6204,9 @@
         "scripts/test_ai_chat_runtime.py",
         "tests/reference/ai_chat_runtime_oracle.c",
         "tests/ai_chat_runtime_oracle.ml",
-        "tests/ai_chat_runtime_contracts.ml"
+        "tests/ai_chat_runtime_contracts.ml",
+        "scripts/test_ai_chat_matches.py",
+        "scripts/test_singleplayer_bot_retail.py"
       ]
     },
     {
@@ -6695,7 +6700,9 @@
         "scripts/test_ai_goal_runtime.py",
         "tests/reference/ai_goal_runtime_oracle.c",
         "tests/ai_goal_runtime_oracle.ml",
-        "tests/ai_goal_runtime_contracts.ml"
+        "tests/ai_goal_runtime_contracts.ml",
+        "scripts/test_ai_goal_selection.py",
+        "tests/aas_routing_cache_retail_probe.ml"
       ]
     },
     {
@@ -17664,7 +17671,9 @@
         "tests/reference/cgame_scoreboard_oracle.c",
         "tests/cgame_scoreboard_oracle.ml",
         "tests/cgame_scoreboard_contracts.ml",
-        "scripts/test_baseq3_match_display.py"
+        "scripts/test_baseq3_match_display.py",
+        "scripts/test_singleplayer_bot_retail.py",
+        "tests/singleplayer_bot_retail_probe.ml"
       ]
     },
     {
@@ -20325,7 +20334,8 @@
         "tests/reference/cl_console_complete_oracle.c",
         "tests/cl_console_complete_oracle.ml",
         "tests/cl_console_complete_contracts.ml",
-        "tests/cl_console_retail_probe.ml"
+        "tests/cl_console_retail_probe.ml",
+        "scripts/test_singleplayer_console_window.py"
       ]
     },
     {
@@ -56034,7 +56044,9 @@
         "scripts/test_vm_jit_compat.py",
         "tests/vm_jit_compat_contracts.ml",
         "scripts/test_vm_runtime.py",
-        "scripts/test_vm_complete.py"
+        "scripts/test_vm_complete.py",
+        "scripts/test_qvm_native_profile.py",
+        "scripts/test_ingame_controls_render.py"
       ]
     },
     {
@@ -56769,7 +56781,8 @@
         "tests/image_registry_contracts.ml",
         "scripts/test_tr_image_complete.py",
         "tests/tr_image_runtime_contracts.ml",
-        "scripts/test_qvm_image_cache_retail.py"
+        "scripts/test_qvm_image_cache_retail.py",
+        "scripts/test_qvm_player_skin_warm.py"
       ]
     },
     {
@@ -57251,7 +57264,8 @@
         "scripts/test_tr_main_complete.py",
         "tests/tr_main_complete_contracts.ml",
         "tests/tr_main_complete_oracle.ml",
-        "tests/reference/tr_main_complete_oracle.c"
+        "tests/reference/tr_main_complete_oracle.c",
+        "scripts/test_portal_clip_large.py"
       ]
     },
     {
@@ -59210,7 +59224,8 @@
       ],
       "status": "ported",
       "tests": [
-        "scripts/test_sv_init_complete.py"
+        "scripts/test_sv_init_complete.py",
+        "scripts/test_singleplayer_bot_retail.py"
       ]
     },
     {

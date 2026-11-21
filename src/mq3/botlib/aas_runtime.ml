@@ -11,7 +11,7 @@ const PRESENCE_NORMAL=2
 const PRESENCE_CROUCH=4
 const AREA_DISABLED=8
 
-struct Runtime map initialized disabled time cacheInvalidations end struct
+struct Runtime map initialized disabled time cacheInvalidations nodeCache planeCache end struct
 struct AreaInfo contents flags presenceType cluster clusterAreaNum numReachableAreas firstReachableArea mins maxs center end struct
 
 function fail(message) return error(7520,"AAS runtime: "+message) end function
@@ -19,7 +19,7 @@ function create(map)
   if map==void then return fail("map missing") end if
   disabled=array(map.counts[aas.LUMP_AREAS],false)
   if len(disabled)>0 then for index=0 to len(disabled)-1 settings=aas.areaSettings(map,index);if settings is error then return settings end if;disabled[index]=(settings.flags&AREA_DISABLED)!=0 end for end if
-  return Runtime(map,true,disabled,0.0,0)
+  return Runtime(map,true,disabled,0.0,0,array(map.counts[aas.LUMP_NODES],void),array(map.counts[aas.LUMP_PLANES],void))
 end function
 function validArea(runtime,areaNum) return runtime!=void and runtime.initialized and areaNum>0 and areaNum<runtime.map.counts[aas.LUMP_AREAS] end function
 function dot(point,normal) return point[0]*normal[0]+point[1]*normal[1]+point[2]*normal[2] end function
@@ -29,8 +29,11 @@ function pointAreaNum(runtime,point)
   nodeNum=1;steps=0;limit=runtime.map.counts[aas.LUMP_NODES]+1
   while nodeNum>0
     if nodeNum>=runtime.map.counts[aas.LUMP_NODES] or steps>=limit then return 0 end if
-    node=aas.node(runtime.map,nodeNum);if node is error then return 0 end if
-    plane=aas.plane(runtime.map,node.planeNum);if plane is error then return 0 end if
+    node=runtime.nodeCache[nodeNum]
+    if node==void then node=aas.node(runtime.map,nodeNum);if node is error then return 0 end if;runtime.nodeCache[nodeNum]=node end if
+    if node.planeNum<0 or node.planeNum>=len(runtime.planeCache) then return 0 end if
+    plane=runtime.planeCache[node.planeNum]
+    if plane==void then plane=aas.plane(runtime.map,node.planeNum);if plane is error then return 0 end if;runtime.planeCache[node.planeNum]=plane end if
     if dot(point,plane.normal)-plane.dist>0.0 then nodeNum=node.children[0] else nodeNum=node.children[1] end if
     steps=steps+1
   end while

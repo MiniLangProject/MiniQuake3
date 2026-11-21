@@ -5,6 +5,7 @@ package mq3.botlib.ai_chat_matches
 
 import mq3.vm.pc_parser as pc
 import std.string as textStrings
+import std.ds.list as lists
 
 const OP_STRING_CONTAINS=517
 const OP_FIND_MATCH=518
@@ -76,7 +77,7 @@ end function
 
 function parse(state,filename)
   loader=Loader(state);registry=pc.create(loader,loadText);source=pc.load(registry,filename);if source==0 then return fail("cannot load "+filename) end if
-  templates=[]
+  templates=lists.List.withCapacity(256)
   while true
     token=take(registry,source);if token==void then break end if
     if token is error or token.type!=pc.TT_NUMBER or (token.subtype&pc.TT_INTEGER)==0 then pc.free(registry,source);return fail("expected match context") end if
@@ -91,10 +92,10 @@ function parse(state,filename)
       subtype=expectInteger(registry,source,"match subtype");if subtype is error then pc.free(registry,source);return subtype end if
       closed=expectText(registry,source,")");if closed is error then pc.free(registry,source);return closed end if
       semicolon=expectText(registry,source,";");if semicolon is error then pc.free(registry,source);return semicolon end if
-      templates=templates+[Template(context,pieces,type,subtype)]
+      templates.add(Template(context,pieces,type,subtype))
     end while
   end while
-  pc.free(registry,source);return templates
+  pc.free(registry,source);return templates.toArray()
 end function
 function load(state,filename)
   if state==void then return fail("state missing") end if;templates=parse(state,filename);if templates is error then return templates end if

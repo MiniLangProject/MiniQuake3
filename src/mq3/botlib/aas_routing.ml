@@ -6,7 +6,6 @@ package mq3.botlib.aas_routing
 import mq3.botlib.public_headers as publicHeaders
 import mq3.format.aas as aas
 import mq3.botlib.aas_runtime as rt
-import mq3.compat.numeric as n
 
 const TRAVELTYPE_MASK=0xffffff
 const TRAVELFLAG_NOTTEAM1=0x01000000
@@ -116,12 +115,14 @@ function edgeAllowed(router,reach,travelFlags)
   if kind>=0 and kind<len(router.travelTypeFlags) then required=router.travelTypeFlags[kind] end if
   return allowed(required,travelFlags) and allowed(router.areaFlags[destination],travelFlags)
 end function
+extern function scaledDistanceNative(ax as double,ay as double,az as double,bx as double,by as double,bz as double,scale as double) from "miniquake3_abi.dll" symbol "mq3_scaled_distance3_trunc" returns i32
+
 function areaTravelTime(router,areaNum,start,finish)
   if router==void or not rt.validArea(router.runtime,areaNum) or start==void or finish==void or len(start)!=3 or len(finish)!=3 then return 0 end if
-  dx=n.fsub(start[0],finish[0]);dy=n.fsub(start[1],finish[1]);dz=n.fsub(start[2],finish[2])
-  distance=n.fsqrt(n.fadd(n.fadd(n.fmul(dx,dx),n.fmul(dy,dy)),n.fmul(dz,dz)));settings=router.settings[areaNum]
-  if (settings.presenceType&rt.PRESENCE_NORMAL)==0 then distance=n.fmul(distance,1.3) else if (settings.flags&AREA_LIQUID)!=0 then distance=n.fmul(distance,1.0) else distance=n.fmul(distance,0.33) end if
-  result=n.trunc32(distance);if result<=0 then return 1 end if;return result
+  settings=router.settings[areaNum];scale=0.33
+  if (settings.presenceType&rt.PRESENCE_NORMAL)==0 then scale=1.3 else if (settings.flags&AREA_LIQUID)!=0 then scale=1.0 end if
+  result=scaledDistanceNative(start[0],start[1],start[2],finish[0],finish[1],finish[2],scale)
+  if result<=0 then return 1 end if;return result
 end function
 
 function heapCreate(capacity) return Heap(array(capacity+1,0),array(capacity+1,0),array(capacity+1,0),array(capacity,0),0) end function
@@ -161,12 +162,26 @@ function areaRouteToGoalArea(router,areaNum,origin,goalAreaNum,travelFlags)
   if origin!=void and len(origin)!=3 then return noRoute end if
   if areaNum==goalAreaNum then return Route(1,0) end if
   if (router.settings[areaNum].contents&AREACONTENTS_DONOTENTER)!=0 or (router.settings[goalAreaNum].contents&AREACONTENTS_DONOTENTER)!=0 then travelFlags=travelFlags|TFL_DONOTENTER end if
-  reachCount=len(router.reaches);distances=array(reachCount,0);firstReaches=array(reachCount,0);heap=heapCreate(reachCount);source=router.settings[areaNum]
+  return searchFromArea(router,areaNum,origin,goalAreaNum,travelFlags,void)
+end function
+
+function travelTimesFromArea(router,areaNum,origin,travelFlags)
+  if router==void or not rt.validArea(router.runtime,areaNum) or (origin!=void and len(origin)!=3) then return void end if
+  times=array(len(router.settings),0);times[areaNum]=1
+  searchFromArea(router,areaNum,origin,0,travelFlags,times)
+  return times
+end function
+
+// Dijkstra's first arrival in an area has the same cost as stopping the
+// point-to-point search at that area. The one-source table needs no tie
+// decision because item scoring reads travel time only.
+function searchFromArea(router,areaNum,origin,goalAreaNum,travelFlags,times)
+  reachCount=len(router.reaches);distances=array(reachCount,0);heap=heapCreate(reachCount);source=router.settings[areaNum]
   if source.numReachableAreas>0 then for reachNum=source.firstReachableArea to source.firstReachableArea+source.numReachableAreas-1
     reach=router.reaches[reachNum]
     if edgeAllowed(router,reach,travelFlags) then
       cost=1+reach.travelTime;if origin!=void then cost=cost+areaTravelTime(router,areaNum,origin,reach.start) end if
-      distances[reachNum]=cost;firstReaches[reachNum]=reachNum;heapPut(heap,reachNum,cost,reachNum)
+      distances[reachNum]=cost;heapPut(heap,reachNum,cost,reachNum)
     end if
   end for end if
   while heap.size>0
@@ -174,17 +189,18 @@ function areaRouteToGoalArea(router,areaNum,origin,goalAreaNum,travelFlags)
     if cost==distances[reachNum] then
       incoming=router.reaches[reachNum];currentArea=incoming.areaNum
       if currentArea==goalAreaNum then return Route(cost,firstReach) end if
+      if times!=void and times[currentArea]==0 then times[currentArea]=cost end if
       settings=router.settings[currentArea]
       if settings.numReachableAreas>0 then for nextNum=settings.firstReachableArea to settings.firstReachableArea+settings.numReachableAreas-1
         outgoing=router.reaches[nextNum]
         if edgeAllowed(router,outgoing,travelFlags) then
           nextCost=cost+areaTravelTime(router,currentArea,incoming.finish,outgoing.start)+outgoing.travelTime
-          if distances[nextNum]==0 or nextCost<distances[nextNum] then distances[nextNum]=nextCost;firstReaches[nextNum]=firstReach;heapPut(heap,nextNum,nextCost,firstReach) end if
+          if distances[nextNum]==0 or nextCost<distances[nextNum] then distances[nextNum]=nextCost;heapPut(heap,nextNum,nextCost,firstReach) end if
         end if
       end for end if
     end if
   end while
-  return noRoute
+  return Route(0,0)
 end function
 function areaTravelTimeToGoalArea(router,areaNum,origin,goalAreaNum,travelFlags) return areaRouteToGoalArea(router,areaNum,origin,goalAreaNum,travelFlags).travelTime end function
 function areaReachabilityToGoalArea(router,areaNum,origin,goalAreaNum,travelFlags) return areaRouteToGoalArea(router,areaNum,origin,goalAreaNum,travelFlags).reachNum end function

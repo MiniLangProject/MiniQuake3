@@ -24,6 +24,7 @@ const RCD_PAYLOAD_IDENT=0x4d4c5243
 const RCD_PAYLOAD_VERSION=1
 const RCD_RECORD_HEADER_SIZE=24
 
+struct ItemQuery cache area origin flags times enterTimes end struct
 struct Entry type cluster areaNum goalAreaNum travelFlags hasOrigin originBits route generation serial end struct
 struct AreaCache cluster goalAreaNum travelFlags travelTimes reachabilities generation serial end struct
 struct PortalCache cluster goalAreaNum travelFlags travelTimes reachabilities generation serial end struct
@@ -301,13 +302,46 @@ function query(cache,areaNum,origin,goalAreaNum,travelFlags)
 end function
 function areaTravelTimeToGoalArea(cache,areaNum,origin,goalAreaNum,travelFlags) return query(cache,areaNum,origin,goalAreaNum,travelFlags).travelTime end function
 function areaReachabilityToGoalArea(cache,areaNum,origin,goalAreaNum,travelFlags) return query(cache,areaNum,origin,goalAreaNum,travelFlags).reachNum end function
-function weightedTravelTime(cache,areaNum,origin,goalAreaNum,travelFlags)
-  if cache==void or cache.router==void or areaNum<=0 or goalAreaNum<=0 or areaNum>=len(cache.router.settings) or goalAreaNum>=len(cache.router.settings) then return 0 end if
-  if areaNum==goalAreaNum then return 1 end if
+function weightedQuery(cache,areaNum,origin,goalAreaNum,travelFlags,timeOnly)
+  if cache==void or cache.router==void or areaNum<=0 or goalAreaNum<=0 or areaNum>=len(cache.router.settings) or goalAreaNum>=len(cache.router.settings) then return routing.Route(0,0) end if
+  if areaNum==goalAreaNum then return routing.Route(1,0) end if
+  if origin!=void and len(origin)!=3 then return routing.Route(0,0) end if
   sync(cache)
   flags=normalizedFlags(cache,areaNum,goalAreaNum,travelFlags)
+  return weightedRoute(cache,areaNum,origin,goalAreaNum,flags,timeOnly)
+end function
+function weightedTravelTime(cache,areaNum,origin,goalAreaNum,travelFlags)
+  return weightedQuery(cache,areaNum,origin,goalAreaNum,travelFlags,true).travelTime
+end function
+function itemTravelTime(cache,areaNum,origin,goalAreaNum,travelFlags)
   if origin!=void and len(origin)!=3 then return 0 end if
-  return weightedRoute(cache,areaNum,origin,goalAreaNum,flags,true).travelTime
+  // Within a cluster query() always resolves to the weighted result. Item
+  // scoring needs its time only, so no propagated table or tie-breaking
+  // forward search is needed. Portal routes keep their existing semantics.
+  if routeType(cache,areaNum,goalAreaNum)[0]==CACHE_AREA then return weightedTravelTime(cache,areaNum,origin,goalAreaNum,travelFlags) end if
+  return areaTravelTimeToGoalArea(cache,areaNum,origin,goalAreaNum,travelFlags)
+end function
+function itemQuery(cache,area,origin,flags)
+  if cache==void then return void end if
+  sync(cache)
+  return ItemQuery(cache,area,origin,flags,void,void)
+end function
+function itemQueryTravelTime(query,goal)
+  cache=query.cache;area=query.area
+  if routeType(cache,area,goal)[0]!=CACHE_AREA then return areaTravelTimeToGoalArea(cache,area,query.origin,goal,query.flags) end if
+  if area==goal then return 1 end if
+  flags=normalizedFlags(cache,area,goal,query.flags)
+  // Prefer an already cached destination. For cold destinations within one
+  // BotChooseLTGItem invocation, search the graph once in the forward direction.
+  if lru.touch(cache.destinationLru,tableKey(0,goal,flags))>=0 then return weightedRoute(cache,area,query.origin,goal,flags,true).travelTime end if
+  if flags==query.flags then
+    if query.times==void then query.times=routing.travelTimesFromArea(cache.router,area,query.origin,flags) end if
+    if query.times!=void then return query.times[goal] end if
+  else
+    if query.enterTimes==void then query.enterTimes=routing.travelTimesFromArea(cache.router,area,query.origin,flags) end if
+    if query.enterTimes!=void then return query.enterTimes[goal] end if
+  end if
+  return 0
 end function
 function clear(cache) if cache!=void then clearRouteEntries(cache);cache.areaCaches=[];cache.portalCaches=[];cache.areaIndex.clear();cache.portalIndex.clear();resetLru(cache);cache.generation=0;if cache.router!=void and cache.router.runtime!=void then cache.generation=cache.router.runtime.cacheInvalidations end if;cache.serial=0;cache.hits=0;cache.misses=0;cache.evictions=0;cache.invalidations=0;cache.areaHits=0;cache.areaMisses=0;cache.areaUpdates=0;cache.areaEvictions=0;cache.portalHits=0;cache.portalMisses=0;cache.portalUpdates=0;cache.portalEvictions=0;cache.weightedBuilds=0;cache.weightedFallbacks=0 end if;return 0 end function
 

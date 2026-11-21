@@ -91,11 +91,26 @@ function main(args)
     if not capsuleResult.trace.startsolid or not capsuleResult.trace.allsolid or capsuleResult.trace.fraction != 0.0 then return 1 end if
   end if
   if count>=12 and vmCases==0 and len(world.models)<=255 then return 1 end if
+  // CM_Trace's original checkcount avoids clearing every map brush and patch
+  // for every query. Exercise the byte-generation wrap while preserving the
+  // exact trace result and the full original-C differential above.
+  start=[0.0,0.0,0.0];finish=[16.0,0.0,0.0];mins=[-15.0,-15.0,-24.0];maxs=[15.0,15.0,32.0]
+  first=cm.trace(world,start,finish,mins,maxs,0,-1,false,world.patchesReady)
+  serial=world.temporary.visitSerial
+  for repeat=0 to 259
+    if serial>=255 then serial=0 end if;serial=serial+1
+    again=cm.trace(world,start,finish,mins,maxs,0,-1,false,world.patchesReady)
+    if world.temporary.visitSerial!=serial or n.floatBits(again.trace.fraction)!=n.floatBits(first.trace.fraction) or again.trace.contents!=first.trace.contents or again.trace.planeMetadata!=first.trace.planeMetadata or again.endpos!=first.endpos then return error(3503,"collision visit generation changed trace") end if
+  end for
   // Out-of-range output must fall back without touching guest memory.
   if vmCases>0 then
     n.writeU32(vm.data,20,248);original=slice(vm.data,0,len(vm.data))
     if cm.writeVmTemporaryBoxTrace(world,vm,16) or vm.data!=original then return 1 end if
   end if
+  // Original CM_TempBoxModel accepts encoded network solids whose upper
+  // extent falls below their lower extent and still copies all six faces.
+  inverted=cm.tempBoxModel(world,[0.0,0.0,0.0],[8.0,8.0,-32.0],false)
+  if inverted!=255 or world.temporary.bounds[0][2]!=0.0 or world.temporary.bounds[1][2]!=-32.0 or world.temporary.brush.planes[4].distance!=-32.0 or world.temporary.brush.planes[5].distance!=0.0 then return error(3503,"inverted temporary hull did not preserve original face planes") end if
   print "PASS: "+str(count)+" transformed/temporary collision cases and productive capsule handle, VM trace ABI cases="+str(vmCases)
   return 0
 end function

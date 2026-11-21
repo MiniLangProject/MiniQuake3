@@ -8,7 +8,7 @@ import mq3.compat.numeric as n
 
 const INVENTORY_COUNT=256
 function readInventory(vm,address)
-  at=common.pointer(vm,address,INVENTORY_COUNT*4,"bot inventory input");if at is error then return at end if;result=[];for index=0 to INVENTORY_COUNT-1 result=result+[n.readI32(vm.data,at+index*4)] end for;return result
+  at=common.pointer(vm,address,INVENTORY_COUNT*4,"bot inventory input");if at is error then return at end if;result=array(INVENTORY_COUNT,0);for index=0 to INVENTORY_COUNT-1 result[index]=n.readI32(vm.data,at+index*4) end for;return result
 end function
 function readRanks(vm,address,count)
   if count<0 or count>256 then return error(7595,"invalid genetic rank count "+str(count)) end if

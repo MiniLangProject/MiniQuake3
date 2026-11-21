@@ -64,7 +64,7 @@ complete behavioral parity.
 | Windows build | Native EXE, Windows bridge DLLs and the three original QVM modules build with the published MiniLang 1.3.9 compiler. |
 | Normal startup | Starting `MiniQuake3.exe` without arguments opens the original main menu using data beside the executable. |
 | Retail game logic | Bot/player and scoreboard contracts have passed on `q3dm0` and `q3dm1`. |
-| Graphical execution | The 6,000-frame Retail `q3dm0` combat replay on the RTX 5080 reached 51.9 FPS, compared with 47.0 FPS previously. The longest frame fell from 260 to 107 ms. [Frame-time and CPU profile](docs/verification/2026-11-21-retail-cpu-hotpaths.md) |
+| Graphical execution | The 6,000-frame Retail `q3dm0` combat replay on the RTX 5080 reached 83.6 FPS. The longest frame fell from 107 to 54 ms. [Frame-time and CPU profile](docs/verification/2026-11-21-bot-cgame-frame-profile.md) |
 | Missing audio device | Initialization errors are caught; the menu and game continue without sound. |
 | Audit core corrections | Strict original-source gates, wall-clock menu timing, honest frame percentiles, routing-cache bookkeeping and shared snapshot decoding have passed targeted Windows regressions and a full build. |
 | Desktop lifecycle and persistence | The Windows host routes local map, restart and menu commands and saves bindings, archived settings and single-player scores to `baseq3/q3config.cfg`. |

@@ -27,7 +27,7 @@ function idModel()
 end function
 function idCatalog(triangles,material)
   resolved=array(len(triangles),void);for index=0 to len(triangles)-1 resolved[index]=idMats.ResolvedTriangle(triangles[index],0) end for
-  return idMats.Catalog(resolved,[material],[],void,0,[],[],len(triangles),0,337,void,void)
+  return idMats.Catalog(resolved,[material],[],void,0,[],[],len(triangles),0,337,void,void,void)
 end function
 function idUpdate(prepared)
   for each pass in prepared.batch.passes updated=idWorld.updatePassView(pass,[14.0,-3.0,4.0],3000);if updated is error then return updated end if end for

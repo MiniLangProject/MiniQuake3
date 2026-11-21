@@ -1,6 +1,7 @@
 import mq3.format.aas as aas
 import mq3.botlib.aas_runtime as runtime
 import mq3.botlib.aas_routing as routing
+import mq3.botlib.aas_routing_cache as routes
 import mq3.botlib.aas_route_extras as extras
 import mq3.botlib.aas_route_extra_syscalls as traps
 import mq3.compat.numeric as n
@@ -40,6 +41,9 @@ function main(args)
   vm=Machine(bytes(4096,0),4095);base=3800;routeAddress=100;originAddress=200;putRouteVector(vm.data,originAddress,origin);n.writeU32(vm.data,routeAddress+28,123)
   setRouteArg(vm,base,1,routeAddress);setRouteArg(vm,base,2,1);setRouteArg(vm,base,3,originAddress);setRouteArg(vm,base,4,4);setRouteArg(vm,base,5,routing.TFL_DEFAULT);setRouteArg(vm,base,6,0);setRouteArg(vm,base,7,0);setRouteArg(vm,base,8,0);setRouteArg(vm,base,9,0);setRouteArg(vm,base,10,0);setRouteArg(vm,base,11,0)
   count=count+require(traps.dispatch(state,router,vm,base,extras.OP_PREDICT_ROUTE)==1 and n.readI32(vm.data,routeAddress+12)==4 and n.readI32(vm.data,routeAddress+32)==69 and n.readI32(vm.data,routeAddress+28)==123,"PredictRoute syscall writes exact 36-byte ABI")
+  referenceBytes=bytes(traps.PREDICT_ROUTE_SIZE,0);copyBytes(referenceBytes,0,vm.data,routeAddress,traps.PREDICT_ROUTE_SIZE)
+  store=routes.create(router,8)
+  count=count+require(traps.dispatchCached(state,router,store,vm,base,extras.OP_PREDICT_ROUTE)==1 and slice(vm.data,routeAddress,traps.PREDICT_ROUTE_SIZE)==referenceBytes,"cached prediction preserves all guest bytes")
   goalAddress=240;alternativeAddress=300;putRouteVector(vm.data,goalAddress,[30.0,0.0,0.0]);setRouteArg(vm,base,1,originAddress);setRouteArg(vm,base,2,1);setRouteArg(vm,base,3,goalAddress);setRouteArg(vm,base,4,4);setRouteArg(vm,base,5,routing.TFL_DEFAULT);setRouteArg(vm,base,6,alternativeAddress);setRouteArg(vm,base,7,4);setRouteArg(vm,base,8,extras.ALTROUTEGOAL_ALL)
   count=count+require(traps.dispatch(state,router,vm,base,extras.OP_ALTERNATIVE_ROUTE_GOAL)==1 and n.readI32(vm.data,alternativeAddress+12)==3 and readRouteU16(vm.data,alternativeAddress+16)==33 and readRouteU16(vm.data,alternativeAddress+20)==0,"AlternativeRouteGoals syscall writes padded 24-byte records")
   setRouteArg(vm,base,1,0);count=count+require(traps.dispatch(state,router,vm,base,extras.OP_POINT_REACHABILITY_AREA_INDEX)==30,"PointReachabilityAreaIndex accepts canonical null pointer")

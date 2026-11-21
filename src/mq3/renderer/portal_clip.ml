@@ -6,6 +6,7 @@ import mq3.renderer.bsp_render_data as renderData
 import mq3.renderer.qvm_scene_geometry as sceneGeometry
 import mq3.shared.math as qmath
 import mq3.compat.numeric as numeric
+import std.ds.list as lists
 
 function fail(message) return error(7703,"portal clip: "+message) end function
 function distance(point,normal,dist) return qmath.DotProduct(point,normal)-dist end function
@@ -17,43 +18,47 @@ function clippedVertex(a,b,da,db)
   return renderData.RenderVertex(lerp3(a.position,b.position,t),lerp2(a.baseUV,b.baseUV,t),lerp2(a.lightmapUV,b.lightmapUV,t),normal,lerpColor(a.color,b.color,t),lerpColor(a.entityColor,b.entityColor,t),lerp2(a.entityTexCoord,b.entityTexCoord,t),a.shaderTime+(b.shaderTime-a.shaderTime)*t,-1)
 end function
 function clipVertices(vertices,normal,dist)
-  output=[];previous=vertices[len(vertices)-1];previousDistance=distance(previous.position,normal,dist);previousInside=previousDistance>=0.0
+  output=array(len(vertices)+1,void);count=0;previous=vertices[len(vertices)-1];previousDistance=distance(previous.position,normal,dist);previousInside=previousDistance>=0.0
   for each current in vertices
     currentDistance=distance(current.position,normal,dist);currentInside=currentDistance>=0.0
-    if currentInside then if not previousInside then output=output+[clippedVertex(previous,current,previousDistance,currentDistance)] end if;output=output+[current]
-    else if previousInside then output=output+[clippedVertex(previous,current,previousDistance,currentDistance)] end if
+    if currentInside then if not previousInside then output[count]=clippedVertex(previous,current,previousDistance,currentDistance);count=count+1 end if;output[count]=current;count=count+1
+    else if previousInside then output[count]=clippedVertex(previous,current,previousDistance,currentDistance);count=count+1 end if
     previous=current;previousDistance=currentDistance;previousInside=currentInside
   end for
-  return output
+  if count==0 then return [] end if
+  result=array(count,void);copyArray(result,0,output,0,count);return result
 end function
 function clipRenderData(source,normal,dist)
   if source==void or source.triangles==void or normal==void or len(normal)!=3 then return fail("render data and plane are required") end if
-  triangles=[]
+  // A portal can expose thousands of BSP triangles. Appending to an immutable
+  // array copied the entire prefix for every emitted triangle each frame.
+  triangles=lists.List.withCapacity(len(source.triangles)*2)
   for each triangle in source.triangles
     polygon=clipVertices(triangle.vertices,normal,dist)
-    if len(polygon)>=3 then for corner=1 to len(polygon)-2 triangles=triangles+[renderData.RenderTriangle([polygon[0],polygon[corner],polygon[corner+1]],triangle.textureIndex,triangle.lightmapIndex,triangle.fogIndex,triangle.faceIndex,triangle.triangleIndex)] end for end if
+    if len(polygon)>=3 then for corner=1 to len(polygon)-2 triangles.add(renderData.RenderTriangle([polygon[0],polygon[corner],polygon[corner+1]],triangle.textureIndex,triangle.lightmapIndex,triangle.fogIndex,triangle.faceIndex,triangle.triangleIndex)) end for end if
   end for
-  return renderData.RenderData(triangles,source.surfaceCount,len(triangles),source.skippedSurfaceCount,source.truncated,source.patchSurfaceCount)
+  return renderData.RenderData(triangles.toArray(),source.surfaceCount,triangles.len(),source.skippedSurfaceCount,source.truncated,source.patchSurfaceCount)
 end function
 
 struct SceneVertex position texCoord lightmapCoord normal color entityColor end struct
 function sceneVertex(triangle,corner) return SceneVertex(triangle.positions[corner],triangle.texCoords[corner],triangle.lightmapCoords[corner],triangle.normals[corner],triangle.colors[corner],triangle.entityColor) end function
 function clippedSceneVertex(a,b,da,db) t=da/(da-db);normal=lerp3(a.normal,b.normal,t);qmath.VectorNormalize(normal);return SceneVertex(lerp3(a.position,b.position,t),lerp2(a.texCoord,b.texCoord,t),lerp2(a.lightmapCoord,b.lightmapCoord,t),normal,lerpColor(a.color,b.color,t),lerpColor(a.entityColor,b.entityColor,t)) end function
 function clipSceneVertices(vertices,normal,dist)
-  output=[];previous=vertices[len(vertices)-1];pd=distance(previous.position,normal,dist);pi=pd>=0.0
-  for each current in vertices cd=distance(current.position,normal,dist);ci=cd>=0.0;if ci then if not pi then output=output+[clippedSceneVertex(previous,current,pd,cd)] end if;output=output+[current] else if pi then output=output+[clippedSceneVertex(previous,current,pd,cd)] end if;previous=current;pd=cd;pi=ci end for
-  return output
+  output=array(len(vertices)+1,void);count=0;previous=vertices[len(vertices)-1];pd=distance(previous.position,normal,dist);pi=pd>=0.0
+  for each current in vertices cd=distance(current.position,normal,dist);ci=cd>=0.0;if ci then if not pi then output[count]=clippedSceneVertex(previous,current,pd,cd);count=count+1 end if;output[count]=current;count=count+1 else if pi then output[count]=clippedSceneVertex(previous,current,pd,cd);count=count+1 end if;previous=current;pd=cd;pi=ci end for
+  if count==0 then return [] end if
+  result=array(count,void);copyArray(result,0,output,0,count);return result
 end function
 function sceneTriangle(source,a,b,c)
   return sceneGeometry.Triangle([a.position,b.position,c.position],[a.texCoord,b.texCoord,c.texCoord],[a.normal,b.normal,c.normal],[a.color,b.color,c.color],source.entityColor,source.entityTexCoord,source.shaderTime,source.modelHandle,source.customSkin,source.shaderHandle,source.shaderName,source.surfaceName,source.entityIndex,source.surfaceIndex,source.renderfx,[a.lightmapCoord,b.lightmapCoord,c.lightmapCoord],source.lightmapIndex,source.fogIndex,source.dynamicLight,source.dynamicLightOrigin,source.dynamicLightAxis,source.dynamicLightBounds,void)
 end function
 function clipScene(source,normal,dist)
   if source==void or source.triangles==void or normal==void or len(normal)!=3 then return fail("scene geometry and plane are required") end if
-  triangles=[]
-  for each triangle in source.triangles polygon=clipSceneVertices([sceneVertex(triangle,0),sceneVertex(triangle,1),sceneVertex(triangle,2)],normal,dist);if len(polygon)>=3 then for corner=1 to len(polygon)-2 triangles=triangles+[sceneTriangle(triangle,polygon[0],polygon[corner],polygon[corner+1])] end for end if end for
+  triangles=lists.List.withCapacity(len(source.triangles)*2)
+  for each triangle in source.triangles polygon=clipSceneVertices([sceneVertex(triangle,0),sceneVertex(triangle,1),sceneVertex(triangle,2)],normal,dist);if len(polygon)>=3 then for corner=1 to len(polygon)-2 triangles.add(sceneTriangle(triangle,polygon[0],polygon[corner],polygon[corner+1])) end for end if end for
   // Stencil volumes are depth-tested against the already clipped portal
   // scene and constrained again by its viewport. Preserve their closed side
   // topology here: clipping individual volume sides would open the volume and
   // corrupt the increment/decrement stencil count.
-  return sceneGeometry.Geometry(triangles,len(triangles),source.modelEntities,source.spriteEntities,source.polySurfaces,source.skippedInline,source.skippedUnsupported,source.sourceVertices,source.vertexTransforms,source.portals,source.culledInline,source.shadowTriangles,source.shadowTriangleCount)
+  return sceneGeometry.Geometry(triangles.toArray(),triangles.len(),source.modelEntities,source.spriteEntities,source.polySurfaces,source.skippedInline,source.skippedUnsupported,source.sourceVertices,source.vertexTransforms,source.portals,source.culledInline,source.shadowTriangles,source.shadowTriangleCount)
 end function

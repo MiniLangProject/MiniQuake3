@@ -257,7 +257,7 @@ function attachWorldEffects(batch,triangles,fogCatalog,dlightCatalog,dlightRecei
   if dlightCatalog!=void then attached=worldBatch.attachDynamicLights(batch,triangles,dlightReceiveFlags,dlightCatalog);if attached is error then return attached end if end if
   return batch
 end function
-function preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias)
+function preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias)
   plan=portalPass.prepare(selectedWorld,worldCatalog,source.geometry,source.source.refdef,false);if plan is error or plan==void then return plan end if
   if grid!=void then ignored=lightGrid.setDynamicLights(grid,source.source.scene.dlights) end if
   geometry=sceneGeometry.buildPortalRecordsCulledShadowsFogLod(source.source.scene.entities,source.source.scene.polys,kinds,modelAssets,plan.refdef,8192,frameCache,frameCache.normalTable,grid,shadowMode,fogCatalog,lodScale,lodBias);if geometry is error then return geometry end if
@@ -268,15 +268,21 @@ function preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,mode
   attached=sceneBatch.attachFog(batch,fogCatalog);if attached is error then return attached end if
   if len(source.source.scene.dlights)>0 then attached=sceneBatch.attachDynamicLights(batch,qvmCatalog,dlightCatalog);if attached is error then return attached end if end if
   portalConfig=worldSelection.forView(worldConfig,plan.refdef);if portalConfig is error then return portalConfig end if
-  portalWorld=worldSelection.preparePortalCached(worldCache,refdefCamera(plan.refdef),plan.view.pvsOrigin,portalConfig);if portalWorld is error then return portalWorld end if
-  clippedWorld=portalClip.clipRenderData(portalWorld.renderData,plan.view.planeNormal,plan.view.planeDist);if clippedWorld is error then return clippedWorld end if
-  world=worldBatch.buildMaterials(clippedWorld,worldCatalog,skyFlags);if world is error then return world end if
-  attached=attachWorldEffects(world,clippedWorld,fogCatalog,dlightCatalog,dlightReceiveFlags);if attached is error then return attached end if
+  chosen=worldSelection.selectPortalCached(worldCache,refdefCamera(plan.refdef),plan.view.pvsOrigin,portalConfig);if chosen is error then return chosen end if
+  planeNormal=plan.view.planeNormal;planeDist=plan.view.planeDist
+  world=portalPass.cachedWorldBatch(portalCache,chosen.faceIndexes,planeNormal,planeDist)
+  if world==void then
+    worldData=worldSelection.cachedRenderData(worldCache,chosen);if worldData is error then return worldData end if
+    clippedWorld=portalClip.clipRenderData(worldData,planeNormal,planeDist);if clippedWorld is error then return clippedWorld end if
+    world=worldBatch.buildMaterials(clippedWorld,worldCatalog,skyFlags);if world is error then return world end if
+    attached=attachWorldEffects(world,clippedWorld,fogCatalog,dlightCatalog,dlightReceiveFlags);if attached is error then return attached end if
+    portalPass.storeWorldBatch(portalCache,chosen.faceIndexes,planeNormal,planeDist,world)
+  end if
   target=qvmViewport.prepare(plan.refdef,SOURCE_WIDTH,SOURCE_HEIGHT,worldConfig.width,worldConfig.height);if target is error then return target end if
   return PreparedPortal(plan,world,batch,target,source.source)
 end function
-function preparePortals(preparedViews,selectedWorld,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias)
-  result=lists.List.withCapacity(len(preparedViews));for each source in preparedViews portal=preparePortal(source,selectedWorld,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias);if portal is error then return portal end if;result.add(portal) end for;return result.toArray()
+function preparePortals(preparedViews,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias)
+  result=lists.List.withCapacity(len(preparedViews));for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias);if portal is error then return portal end if;result.add(portal) end for;return result.toArray()
 end function
 function drawCinematics(state,mode)
   draws=cinematics.takeDraws(state.context.cinematics);drawn=0
@@ -403,6 +409,7 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
   soundAt=window.milliseconds();loading=window.showLoading(78,"Building "+mapName+" world materials");if loading is error then window.shutdown();match.shutdown(state);return loading end if;if not loading then window.shutdown();match.shutdown(state);return 0 end if
   worldCatalog=materials.loadIndexed(archive,map,QVM_TEXTURE_FIRST_SLOT-WORLD_TEXTURE_FIRST_SLOT-16,WORLD_TEXTURE_FIRST_SLOT,scripts[0],scripts[1]);if worldCatalog is error then window.shutdown();match.shutdown(state);return worldCatalog end if
   materials.seedImageCacheFromCatalog(qvmCatalog.imageCache,worldCatalog)
+  sceneMaterials.warmRegisteredPlayerSkins(qvmCatalog,archive,state.context.assets,state.context.assetKinds)
   boundVideo=qvmVideo.bindCatalog(videoManager,worldCatalog,state.context.now);if boundVideo is error then window.shutdown();match.shutdown(state);return boundVideo end if
   nextWorldTextureSlot=WORLD_TEXTURE_FIRST_SLOT+worldCatalog.textureCount
   skyCatalog=void;availableWorldTextureSlots=QVM_TEXTURE_FIRST_SLOT-nextWorldTextureSlot
@@ -460,6 +467,9 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
   frameState=frameInput.create(state.context.latestSnapshot.playerState.viewangles,state.context.latestSnapshot.playerState.delta_angles,simulationStart,state.context.latestSnapshot.serverTime);if frameState is error then window.shutdown();match.shutdown(state);return frameState end if
   frameInput.bindConfig(frameState,state.context.cvars)
   initialPlan=frameInput.prepare(frameState,simulationStart,state.context.commandNumber,clientClock.state.connectionState,true,false,false);inputBridge=ClientInputBridge(frameState,initialPlan,ui,state);match.attachInputClear(state,inputBridge,clearClientInput)
+  // The BSP, world catalog and static effect layout are fixed for this match.
+  // Refdef time, camera and current lights still drive every portal draw.
+  portalCache=portalPass.worldBatchCache()
   worldSelectMs=0;worldRebuildMs=0;worldEffectsMs=0;portalPrepareMs=0;worldRebuildCount=0
   frameHistogram=frameTiming.histogram();maximumFrameMs=0;interactiveInput=maxFrames<0
   while not window.shouldClose() and not quitRequested and (maxFrames<0 or frames<maxFrames)
@@ -565,7 +575,7 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
         selectedFaces=nextWorld.selection.faceIndexes
       end if
       selected=nextWorld;portalsStartedAt=window.milliseconds()
-      preparedPortals=preparePortals(preparedViews,selected.renderData,worldCatalog,qvmCatalog,archive,state.context.modelAssets,state.context.assets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowVariable.integer,lodScaleVariable.value,lodBiasVariable.integer);if preparedPortals is error then window.shutdown();match.shutdown(state);return preparedPortals end if
+      preparedPortals=preparePortals(preparedViews,selected.renderData,portalCache,worldCatalog,qvmCatalog,archive,state.context.modelAssets,state.context.assets,state.context.assetKinds,frameCache,state.context.lightGrid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowVariable.integer,lodScaleVariable.value,lodBiasVariable.integer);if preparedPortals is error then window.shutdown();match.shutdown(state);return preparedPortals end if
       portalPrepareMs=portalPrepareMs+window.milliseconds()-portalsStartedAt
     end if
     afterGeometry=window.milliseconds();geometryMs=geometryMs+afterGeometry-afterSimulation
@@ -638,7 +648,7 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
   print "QVM preview: views="+str(len(state.context.renderViews))+" selected="+str(view.refdef.width)+"x"+str(view.refdef.height)+" models="+str(modelCount)+" triangles="+str(triangleCount)+" textures="+str(len(qvmCatalog.textures))+" hudQuads="+str(hudCatalog.sourceQuads)+" sounds="+str(len(soundCatalog.clips))+" frames="+str(frames)+" worldEffects="+str(worldEffects)
   if frames>0 then print "QVM frame profile: simulation="+str(simulationMs/frames)+"ms (game="+str(gameMs/frames)+" cgame="+str(cgameMs/frames)+" ui="+str(uiMs/frames)+") geometry="+str(geometryMs/frames)+"ms (expand="+str(pipelineProfile.expansion/frames)+" material="+str(pipelineProfile.material/frames)+" sceneBatch="+str(pipelineProfile.batch/frames)+") batch="+str(batchMs/frames)+"ms render="+str(renderMs/frames)+"ms audio="+str(audioMs/frames)+"ms total="+str(totalMs/frames)+"ms ticks="+str(simulationTicks) end if
   if frames>0 then print "QVM batch profile: hud="+str(hudMs/frames)+"ms videoBindings="+str(videoBindMs/frames)+"ms soundApply="+str(soundApplyMs/frames)+"ms textureUploads="+str(textureUploadMs/frames)+"ms" end if
-  if frames>0 then print "QVM world profile: select="+str(worldSelectMs/frames)+"ms rebuild="+str(worldRebuildMs/frames)+"ms effects="+str(worldEffectsMs/frames)+"ms portals="+str(portalPrepareMs/frames)+"ms rebuilds="+str(worldRebuildCount) end if
+  if frames>0 then print "QVM world profile: select="+str(worldSelectMs/frames)+"ms rebuild="+str(worldRebuildMs/frames)+"ms effects="+str(worldEffectsMs/frames)+"ms portals="+str(portalPrepareMs/frames)+"ms rebuilds="+str(worldRebuildCount)+" portalBatchBuilds="+str(portalCache.builds)+" portalBatchHits="+str(portalCache.hits) end if
   if frames>0 and loopElapsedMs>0 then print "QVM loop profile: elapsed="+str(loopElapsedMs)+"ms fps="+str(frames*1000.0/loopElapsedMs)+" workP50="+str(framePercentile(frameHistogram,frames,50))+"ms workP95="+str(framePercentile(frameHistogram,frames,95))+"ms workP99="+str(framePercentile(frameHistogram,frames,99))+"ms workMax="+str(maximumFrameMs)+"ms" end if
   return 0
 end function

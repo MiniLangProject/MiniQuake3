@@ -429,9 +429,12 @@ function prepareCachedRetained(cache,camera,cfg,previous)
   if previous!=void and previous.selection!=void and previous.renderData!=void and sameFaces(previous.selection.faceIndexes,chosen.faceIndexes) then return PreparedWorld(chosen,previous.renderData) end if
   return PreparedWorld(chosen,cachedRenderData(cache,chosen))
 end function
-function preparePortalCached(cache,camera,pvsOrigin,cfg)
+function selectPortalCached(cache,camera,pvsOrigin,cfg)
   chosen=choosePortalCached(cache,camera,pvsOrigin,cfg);if chosen is error then return chosen end if
-  chosen=choosePatchLod(cache,chosen,camera,cfg);if chosen is error then return chosen end if
+  return choosePatchLod(cache,chosen,camera,cfg)
+end function
+function preparePortalCached(cache,camera,pvsOrigin,cfg)
+  chosen=selectPortalCached(cache,camera,pvsOrigin,cfg);if chosen is error then return chosen end if
   return PreparedWorld(chosen,cachedRenderData(cache,chosen))
 end function
 

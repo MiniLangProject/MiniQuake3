@@ -193,6 +193,7 @@ function run(archive,bootstrapMap,qvmRoot)
       else result=try(gameApp.runDesktopMatch(activeArchive,selectedMap,session.mapName,qvmRoot,session.settings,session)) end if
       if result is error then
         session.notice=result.message
+        print "MiniQuake3: "+session.notice
         request="menu";continue
       end if
     else if request=="connect" or request=="demo" then

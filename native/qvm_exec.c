@@ -29,11 +29,19 @@ static void write32(unsigned char *p,int32_t v) { memcpy(p,&v,4); }
  * times, not suitable for a frame-rate acceptance run with logging enabled. */
 #define QVM_PROFILE_VMS 8
 #define QVM_PROFILE_TRAPS 1024
+#define QVM_PROFILE_ENTRIES 32
 typedef struct qvmTrapProfile_s { uint64_t yields,resumes,ticks,maximum; } qvmTrapProfile;
+typedef struct qvmEntryProfile_s { uint64_t nativeTicks,hostTicks,returns; } qvmEntryProfile;
+typedef struct qvmFrameProfile_s {
+    qvmEntryProfile entries[QVM_PROFILE_ENTRIES+1];
+    qvmTrapProfile traps[QVM_PROFILE_TRAPS+1];
+} qvmFrameProfile;
 typedef struct qvmVmProfile_s {
     int count,codeLength;
     uint64_t returns,errors,instructions,nativeTicks,yields,hostTicks;
     qvmTrapProfile traps[QVM_PROFILE_TRAPS+1];
+    qvmEntryProfile entries[QVM_PROFILE_ENTRIES+1];
+    qvmFrameProfile frame;
 } qvmVmProfile;
 typedef struct qvmThreadProfile_s { qvmVmProfile vms[QVM_PROFILE_VMS]; } qvmThreadProfile;
 static INIT_ONCE qvmProfileOnce=INIT_ONCE_STATIC_INIT;
@@ -41,18 +49,20 @@ static volatile LONG qvmProfileMode=-1;
 static LARGE_INTEGER qvmProfileFrequency;
 static FILE *qvmProfileOutput;
 static __declspec(thread) qvmThreadProfile *qvmProfileThread;
+static __declspec(thread) int qvmFrameActive;
 static BOOL CALLBACK qvmProfileInit(PINIT_ONCE once,PVOID parameter,PVOID *context) {
-    char setting[32],path[32768];DWORD length;FILE *output=NULL;
+    char setting[32],path[32768];DWORD length;FILE *output=NULL;int mode;
     (void)once;(void)parameter;(void)context;
     length=GetEnvironmentVariableA("MQ3_QVM_PROFILE",setting,(DWORD)sizeof(setting));
     if (!length||length>=sizeof(setting)||(length==1&&setting[0]=='0')||
             !QueryPerformanceFrequency(&qvmProfileFrequency)||qvmProfileFrequency.QuadPart<=0) {
         InterlockedExchange(&qvmProfileMode,0);return TRUE;
     }
+    mode=strcmp(setting,"frame")==0 ? 2 : 1;
     length=GetEnvironmentVariableA("MQ3_QVM_PROFILE_FILE",path,(DWORD)sizeof(path));
     if (length&&length<sizeof(path)) (void)fopen_s(&output,path,"a");
     qvmProfileOutput=output ? output : stderr;
-    InterlockedExchange(&qvmProfileMode,1);return TRUE;
+    InterlockedExchange(&qvmProfileMode,mode);return TRUE;
 }
 static int qvmProfileEnabled(void) {
     if (qvmProfileMode<0) (void)InitOnceExecuteOnce(&qvmProfileOnce,qvmProfileInit,NULL,NULL);
@@ -92,6 +102,53 @@ static void qvmProfileDump(const qvmVmProfile *vm,int entry,int status) {
     }
     fflush(qvmProfileOutput);
 }
+static void recordTrapResume(qvmTrapProfile *trap,uint64_t elapsed) {
+    trap->ticks+=elapsed;
+    ++trap->resumes;
+    if (elapsed>trap->maximum) trap->maximum=elapsed;
+}
+
+/* frame 0 starts at the playable loop boundary, -1 emits match totals.
+ * The replay invokes this after measuring the frame, with no active VM call. */
+API int mq3_qvm_profile_frame(int frame,int workMs,int minimumWorkMs) {
+    int index,slot;
+    if (!qvmProfileEnabled()||qvmProfileMode!=2) return 0;
+    if (frame==0) {
+        if (qvmProfileThread) memset(qvmProfileThread,0,sizeof(*qvmProfileThread));
+        qvmFrameActive=1;
+        return 1;
+    }
+    if (!qvmFrameActive||!qvmProfileThread) return 0;
+    for (index=0;index<QVM_PROFILE_VMS;++index) {
+        qvmVmProfile *vm=qvmProfileThread->vms+index;
+        const qvmEntryProfile *entries=frame<0 ? vm->entries : vm->frame.entries;
+        if (!vm->count) break;
+        if (frame<0||workMs>=minimumWorkMs) {
+            for (slot=0;slot<=QVM_PROFILE_ENTRIES;++slot) {
+                const qvmEntryProfile *entry=entries+slot;
+                if (!entry->returns&&!entry->nativeTicks&&!entry->hostTicks) continue;
+                fprintf(qvmProfileOutput,"[qvm-entry] frame=%d work_ms=%d vm=%d:%d id=%d calls=%llu native_ms=%.6f host_ms=%.6f\n",
+                        frame,workMs,vm->count,vm->codeLength,
+                        slot==QVM_PROFILE_ENTRIES ? -1 : slot,(unsigned long long)entry->returns,
+                        qvmProfileMs(entry->nativeTicks),qvmProfileMs(entry->hostTicks));
+            }
+            if (frame<0) qvmProfileDump(vm,-1,0);
+            else for (slot=0;slot<=QVM_PROFILE_TRAPS;++slot) {
+                const qvmTrapProfile *trap=vm->frame.traps+slot;
+                /* Small per-trap contributors are represented in entry totals. */
+                if (!trap->resumes||qvmProfileMs(trap->ticks)<0.25) continue;
+                fprintf(qvmProfileOutput,"[qvm-frame-trap] frame=%d vm=%d:%d id=%d calls=%llu host_ms=%.6f max_ms=%.6f\n",
+                        frame,vm->count,vm->codeLength,slot==QVM_PROFILE_TRAPS ? -1 : slot,
+                        (unsigned long long)trap->resumes,qvmProfileMs(trap->ticks),qvmProfileMs(trap->maximum));
+            }
+        }
+        if (frame>0) memset(&vm->frame,0,sizeof(vm->frame));
+    }
+    if (frame<0) qvmFrameActive=0;
+    if (frame<0||workMs>=minimumWorkMs) fflush(qvmProfileOutput);
+    return 1;
+}
+
 static int widthFor(int op) { return op==33 ? 1 : (op==3||op==4||op==8||op==9||(op>=11&&op<=26)||op==34 ? 4 : 0); }
 static int needFor(int op) {
     if (op==5||op==7||op==10||(op>=27&&op<=29)||op==33||(op>=35&&op<=37)||op==49||op==53||op==58||op==59) return 1;
@@ -165,19 +222,25 @@ API int mq3_qvm_run(const unsigned char *plan,int planBytes,unsigned char *data,
     int32_t *c=(int32_t *)control,*s;
     unsigned int savedControl;
     int pc,ps,top,mask,steps,breaks,count,codeLength,error=0;
-    qvmVmProfile *profile=NULL;uint64_t profileStart=0;int profileSteps=0,profileEntry=0;
+    qvmVmProfile *profile=NULL;
+    qvmEntryProfile *frameEntry=NULL,*totalEntry=NULL;
+    uint64_t profileStart=0;int profileSteps=0,profileEntry=0;
     if (!plan||planBytes<16||!data||!control||controlBytes<CONTROL_WORDS*4||read32(plan)!=PLAN_MAGIC) return -1;
     count=read32(plan+4);codeLength=read32(plan+8);
     if (count<1||codeLength<1||16+(int64_t)count*4+(int64_t)codeLength*2>planBytes) return -1;
     addresses=(const int32_t *)(plan+16);code=plan+16+(size_t)count*4;starts=code+codeLength;s=c+C_STACK;
     pc=c[C_PC];ps=c[C_PS];top=c[C_TOP];mask=c[C_MASK];steps=c[C_STEPS];breaks=c[C_BREAKS];
     if (mask!=dataBytes-1||dataBytes<1||(dataBytes&(dataBytes-1))||top<0||top>=256) return -1;
-    if (qvmProfileEnabled()) {
+    if (qvmProfileEnabled()&&(qvmProfileMode!=2||qvmFrameActive)) {
         profile=qvmProfileVm(count,codeLength);
         if (profile) {
             int64_t entryOffset=(int64_t)c[C_ORIGINAL]-40;
             profileStart=qvmProfileClock();profileSteps=steps;
             if (entryOffset>=0&&entryOffset<=dataBytes-4) profileEntry=read32(data+(size_t)entryOffset);
+            if (qvmProfileMode==2) {
+                int index=profileEntry>=0&&profileEntry<QVM_PROFILE_ENTRIES ? profileEntry : QVM_PROFILE_ENTRIES;
+                frameEntry=profile->frame.entries+index;totalEntry=profile->entries+index;
+            }
         }
     }
     if (resume) {
@@ -185,7 +248,14 @@ API int mq3_qvm_run(const unsigned char *plan,int planBytes,unsigned char *data,
         if (profile&&ps<=dataBytes-8) {
             uint64_t stamp,elapsed;int trap=qvmProfileTrapIndex(read32(data+ps+4));qvmTrapProfile *bucket=profile->traps+trap;
             memcpy(&stamp,c+C_RESERVED0,sizeof(stamp));
-            if (stamp&&profileStart>=stamp) { elapsed=profileStart-stamp;bucket->ticks+=elapsed;profile->hostTicks+=elapsed;++bucket->resumes;if (elapsed>bucket->maximum) bucket->maximum=elapsed; }
+            if (stamp&&profileStart>=stamp) {
+                elapsed=profileStart-stamp;
+                recordTrapResume(bucket,elapsed);profile->hostTicks+=elapsed;
+                if (frameEntry) {
+                    frameEntry->hostTicks+=elapsed;totalEntry->hostTicks+=elapsed;
+                    recordTrapResume(profile->frame.traps+trap,elapsed);
+                }
+            }
         }
         s[++top]=resumeValue;pc=read32(data+ps);c[C_PENDING]=0;
     }
@@ -270,14 +340,17 @@ API int mq3_qvm_run(const unsigned char *plan,int planBytes,unsigned char *data,
 finished:
     c[C_PC]=pc;c[C_PS]=ps;c[C_TOP]=top;c[C_STEPS]=steps;c[C_BREAKS]=breaks;
     if (profile) {
-        uint64_t finishedAt=qvmProfileClock();profile->nativeTicks+=finishedAt-profileStart;
+        uint64_t finishedAt=qvmProfileClock(),elapsed=finishedAt-profileStart;
+        profile->nativeTicks+=elapsed;
+        if (frameEntry) { frameEntry->nativeTicks+=elapsed;totalEntry->nativeTicks+=elapsed; }
         profile->instructions+=(uint32_t)steps-(uint32_t)profileSteps;
         if (c[C_STATUS]==1) {
             int trap=qvmProfileTrapIndex(read32(data+ps+4));uint64_t stamp;
             ++profile->yields;++profile->traps[trap].yields;stamp=qvmProfileClock();memcpy(c+C_RESERVED0,&stamp,sizeof(stamp));
         } else {
             if (c[C_STATUS]==0) ++profile->returns;else ++profile->errors;
-            qvmProfileDump(profile,profileEntry,c[C_STATUS]);
+            if (frameEntry) { ++frameEntry->returns;++totalEntry->returns; }
+            else qvmProfileDump(profile,profileEntry,c[C_STATUS]);
         }
     }
     _mm_setcsr(savedControl);

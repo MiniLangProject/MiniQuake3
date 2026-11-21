@@ -7,10 +7,25 @@ import mq3.renderer.portal_view as portalView
 import std.ds.set as sets
 import std.ds.list as lists
 import std.sort as sorting
+import mq3.renderer.world_surface_selection as worldSelection
 
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
 struct Surface normal dist faceIndex textureIndex distanceSquared end struct
 struct Plan surface view refdef end struct
+struct WorldBatchCache faces normal dist batch builds hits end struct
+
+function worldBatchCache() return WorldBatchCache(void,void,0.0,void,0,0) end function
+function cachedWorldBatch(cache,faces,normal,dist)
+  if cache.batch==void or cache.dist!=dist or cache.normal[0]!=normal[0] or cache.normal[1]!=normal[1] or cache.normal[2]!=normal[2] then return void end if
+  if not worldSelection.sameFaces(cache.faces,faces) then return void end if
+  cache.hits=cache.hits+1
+  return cache.batch
+end function
+function storeWorldBatch(cache,faces,normal,dist,batch)
+  cache.faces=faces;cache.normal=normal;cache.dist=dist;cache.batch=batch
+  cache.builds=cache.builds+1
+  return batch
+end function
 
 function fail(message) return error(7702,"portal render pass: "+message) end function
 function squaredDistance(a,b) x=a[0]-b[0];y=a[1]-b[1];z=a[2]-b[2];return x*x+y*y+z*z end function

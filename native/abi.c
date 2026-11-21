@@ -88,6 +88,21 @@ API double mq3_dot3(double ax, double ay, double az, double bx, double by, doubl
     return result;
 }
 
+/* A single ABI entry for the strictly rounded distance/scale calculation. */
+API int mq3_scaled_distance3_trunc(double ax,double ay,double az,
+        double bx,double by,double bz,double scale) {
+    unsigned int saved=mq3_binary32_enter();
+    uint32_t x=mq3_binary_bits(mq3_narrow_bits(ax),mq3_narrow_bits(bx),1);
+    uint32_t y=mq3_binary_bits(mq3_narrow_bits(ay),mq3_narrow_bits(by),1);
+    uint32_t z=mq3_binary_bits(mq3_narrow_bits(az),mq3_narrow_bits(bz),1);
+    x=mq3_binary_bits(x,x,2);y=mq3_binary_bits(y,y,2);z=mq3_binary_bits(z,z,2);
+    x=mq3_sqrt_bits(mq3_binary_bits(mq3_binary_bits(x,y,0),z,0));
+    x=mq3_binary_bits(x,mq3_narrow_bits(scale),2);
+    int result=_mm_cvttss_si32(_mm_castsi128_ps(_mm_cvtsi32_si128((int32_t)x)));
+    _mm_setcsr(saved);
+    return result;
+}
+
 /* Quake III x86 trace_t as seen by both gameplay VMs. The MiniLang service
  * owns address validation, collision results and syscall dispatch. */
 API int mq3_write_qvm_trace(unsigned char *data, int capacity, int offset,

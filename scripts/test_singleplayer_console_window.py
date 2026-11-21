@@ -1,78 +1,80 @@
 #!/usr/bin/env python3
-"""Send the physical console key to a Retail singleplayer graphics replay."""
+"""Toggle the physical console key and execute commands in the packaged Retail game."""
+from __future__ import annotations
 
 import argparse
-import ctypes
-from ctypes import wintypes
+import os
 from pathlib import Path
-import subprocess
+import shutil
+import tempfile
 import time
 
+from test_desktop_video_retail import find_window, launch, post, press, wait_for
 from toolchain import ROOT
 
 
-user32 = ctypes.WinDLL("user32", use_last_error=True)
+def in_match(title: str) -> bool:
+    return title.endswith("Original QVM q3dm0") and "| -- FPS |" not in title
 
 
-def game_window(process_id: int) -> int:
-    handles: list[int] = []
-    callback_type = ctypes.WINFUNCTYPE(wintypes.BOOL, wintypes.HWND, wintypes.LPARAM)
-
-    @callback_type
-    def visit(window: int, _parameter: int) -> bool:
-        owner = wintypes.DWORD()
-        user32.GetWindowThreadProcessId(window, ctypes.byref(owner))
-        if owner.value == process_id and user32.IsWindowVisible(window):
-            handles.append(window)
-        return True
-
-    user32.EnumWindows(visit, 0)
-    return handles[0] if handles else 0
+def caret(window: int) -> None:
+    # Original keypad mapping uses scan code 0x29, independently of the
+    # current layout's virtual key. German ^ can generate WM_DEADCHAR.
+    post(window, 0x0100, 0xC0, 0x00290001)
+    post(window, 0x0103, ord("^"), 0x00290001)
+    post(window, 0x0102, ord("^"), 0x00290001)
+    post(window, 0x0101, 0xC0, 0xC0290001)
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser()
+def run_command(window: int, text: str) -> None:
+    for char in "/" + text:
+        post(window, 0x0102, ord(char), 1)
+    press(window, 0x0D)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-root", type=Path, required=True)
-    parser.add_argument("--frames", type=int, default=2000)
     args = parser.parse_args()
-    binary = ROOT / "build/singleplayer_graphics_replay.exe"
-    process = subprocess.Popen(
-        [binary, (args.data_root / "baseq3/pak0.pk3").resolve(),
-         ROOT / "build/reference/qvms", str(args.frames), "q3dm0"],
-        cwd=ROOT, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
-    )
-    try:
-        deadline = time.monotonic() + 30
-        window = 0
-        while not window and time.monotonic() < deadline:
-            if process.poll() is not None:
-                raise RuntimeError(f"graphics replay exited before creating a window: {process.returncode}")
-            window = game_window(process.pid)
-            if not window:
-                time.sleep(0.1)
-        if not window:
-            raise RuntimeError("singleplayer window was not created")
-        time.sleep(5)
-        # VK_OEM_3 translates to Quake's backtick/tilde console binding.
-        user32.PostMessageW(window, 0x100, 0xC0, 0)
-        user32.PostMessageW(window, 0x101, 0xC0, 0)
-        output, _ = process.communicate(timeout=120)
-        if process.returncode != 0 or "QVM loop profile:" not in output:
-            raise RuntimeError(f"console-key replay failed ({process.returncode}): {output[-3000:]}")
-        print("PASS: Retail q3dm0 console key graphics replay completed without a crash")
-        for line in output.splitlines():
-            if line.startswith("QVM loop profile:"):
-                print(line)
-        return 0
-    finally:
-        if process.poll() is None:
-            process.terminate()
+    build = ROOT / "build"
+    archives = args.data_root.resolve() / "baseq3"
+    if not (archives / "pak0.pk3").is_file():
+        parser.error(f"expected Retail pak0.pk3 in {archives}")
+    log = build / "desktop-console-retail.log"
+    with tempfile.TemporaryDirectory(dir=build, prefix="retail-console-") as directory:
+        package = Path(directory)
+        (package / "baseq3").mkdir()
+        (package / "qvms").mkdir()
+        for source in [build / "MiniQuake3.exe", *build.glob("*.dll"), *build.glob("qvms/*.qvm")]:
+            os.link(source, package / source.relative_to(build))
+        for source in archives.glob("pak*.pk3"):
+            target = package / "baseq3" / source.name
             try:
-                process.wait(timeout=5)
-            except subprocess.TimeoutExpired:
-                process.kill()
-                process.wait(timeout=5)
+                os.link(source, target)
+            except OSError:
+                shutil.copyfile(source, target)
+        config = package / "baseq3/q3config.cfg"
+        config.write_text('seta r_mode "4"\nseta r_fullscreen "0"\nseta name "BeforeConsole"\n', encoding="ascii")
+        (package / "baseq3/autoexec.cfg").write_text("spmap q3dm0\n", encoding="ascii")
+        try:
+            with launch(package, log, in_match) as (process, window):
+                for marker in ("ConsoleFirst", "ConsoleReopened"):
+                    post(window, 0x0100, ord("W"), 0x00110001)
+                    time.sleep(0.10)
+                    caret(window)
+                    post(window, 0x0101, ord("W"), 0xC0110001)
+                    time.sleep(0.35)
+                    assert find_window(process.pid, in_match) == window, "left match when opening console"
+                    run_command(window, "seta name " + marker)
+                    wait_for(process, lambda: f'seta name "{marker}"' in config.read_text(encoding="utf-8"),
+                             "console command saved from the in-game console")
+                    caret(window)
+                    time.sleep(0.35)
+                    assert find_window(process.pid, in_match) == window, "left match when closing console"
+        except Exception as exc:
+            raise RuntimeError(log.read_text(encoding="utf-8", errors="replace")) from exc
+    print("PASS: Retail q3dm0 physical console opened, accepted commands, closed and reopened on the same window")
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()

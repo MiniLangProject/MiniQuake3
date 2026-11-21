@@ -343,10 +343,10 @@ function getUserinfo(context,index) if index<0 or index>=len(context.userinfos) 
 function setUserinfo(context,index,text) if index>=0 and index<len(context.userinfos) then context.userinfos[index]=text end if;return void end function
 function getServerinfo(context)
   if context.serverStream!=void then return context.configstrings[0] end if
-  mapName=cvar.get(context.cvars,"mapname","q3dm1",cvar.SERVERINFO|cvar.ROM).string
-  maxClients=cvar.get(context.cvars,"sv_maxclients","8",cvar.SERVERINFO|cvar.LATCH).string
-  gameType=cvar.get(context.cvars,"g_gametype","0",cvar.SERVERINFO|cvar.LATCH).string
-  return "\\sv_hostname\\MiniQuake3\\mapname\\"+mapName+"\\sv_maxclients\\"+maxClients+"\\g_gametype\\"+gameType
+  // SV_SpawnServer publishes Cvar_InfoString(CVAR_SERVERINFO) as CS_SERVERINFO.
+  // CG_ParseServerinfo reads maxclients from that configstring, not from the
+  // separate GAME_GET_SERVERINFO trap used by qagame.
+  return cvar.infoString(context.cvars,cvar.SERVERINFO)
 end function
 function entityIndex(context,entity)
   if context.entityStride<=0 or entity<context.gameEntities then return -1 end if
@@ -582,9 +582,13 @@ function levelItemPlace(context,origin,mins,maxs,floating)
     if area!=0 then break end if
     for spread=0 to 4
       if area!=0 then break end if
+      // At zero spread every side pair is identical; at zero height it was
+      // already tested before the search.
+      if spread==0 and up==0 then continue end if
       for xside=-1 to 1
         if area!=0 then break end if
         for yside=-1 to 1
+          if spread==0 and (xside!=-1 or yside!=-1) then continue end if
           candidate=[settled[0]+spread*4.0*xside,settled[1]+spread*4.0*yside,settled[2]+up*4.0];area=aasRuntime.pointAreaNum(context.aas,candidate);if area!=0 then break end if
         end for
       end for
@@ -606,7 +610,10 @@ function goalStateLog(context,text) emitPrint(context,text);return void end func
 function goalStatePrint(context,level,text) emitPrint(context,text);return void end function
 function chatOutputRandom(context) return aiGoalSelection.randomFloat(context.aiGoalSelection) end function
 function goalSelectionTravelTime(context,area,origin,goalArea,travelFlags)
-  if context.aasRouteCache==void then return 0 end if;return aasRoutingCache.areaTravelTimeToGoalArea(context.aasRouteCache,area,origin,goalArea,travelFlags)
+  if context.aasRouteCache==void then return 0 end if;return aasRoutingCache.itemTravelTime(context.aasRouteCache,area,origin,goalArea,travelFlags)
+end function
+function goalSelectionItemQuery(context,area,origin,travelFlags)
+  return aasRoutingCache.itemQuery(context.aasRouteCache,area,origin,travelFlags)
 end function
 function goalSelectionTrace(context,start,finish,viewer,contents)
   zero=[0.0,0.0,0.0];return serverWorld.trace(context.spatialScene,start,finish,zero,zero,viewer,contents,false).trace
@@ -778,7 +785,7 @@ end function
 function extendedQagame(context,vm,base,op)
   if op==38 then return qagameFileList(context,vm,base) end if
   if op>=200 and op<600 then context.lastBotTrap=op end if
-  if op==200 then saveBotRoutes(context);context.aas=void;context.aasRouter=void;context.aasRouteCache=void;context.aasCachePath="";context.aiMoveRuntime.aas=void;context.aiMoveRuntime.router=void;context.aiVisiblePosition.router=void;aiLevelItems.shutdown(context.aiLevelItems);aiMapGoals.clear(context.aiMapGoals);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);aiChatOutput.clear(context.aiChatOutput);result=botInterface.Export_BotLibSetup(context.botlib,botInterface.services(context));if result==0 then context.aasEntities=aasEntities.create(context.botlib.maxentities);configured=aiConsoleMessages.configureFromBotlib(context.aiConsole,context.botlib);if configured is error then return configured end if;configureAasMovement(context);aiItemWeights.setReloadCharacters(context.aiItemWeights,botlibRuntime.integerVariable(context.botlib,"bot_reloadcharacters",0));noChat=botlibRuntime.integerVariable(context.botlib,"nochat",0)!=0;loaded=aiChatOutput.setup(context.aiChatOutput,noChat);if loaded is error then return loaded end if end if;return result end if
+  if op==200 then saveBotRoutes(context);context.aas=void;context.aasRouter=void;context.aasRouteCache=void;context.aasCachePath="";context.aiMoveRuntime.aas=void;context.aiMoveRuntime.router=void;context.aiVisiblePosition.router=void;aiLevelItems.shutdown(context.aiLevelItems);aiMapGoals.clear(context.aiMapGoals);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);aiChatOutput.clear(context.aiChatOutput);result=botInterface.Export_BotLibSetup(context.botlib,botInterface.services(context));if result==0 then context.aasEntities=aasEntities.create(context.botlib.maxentities);configured=aiConsoleMessages.configureFromBotlib(context.aiConsole,context.botlib);if configured is error then return configured end if;configureAasMovement(context);aiItemWeights.setReloadCharacters(context.aiItemWeights,botlibRuntime.integerVariable(context.botlib,"bot_reloadcharacters",0));noChat=botlibRuntime.integerVariable(context.botlib,"nochat",0)!=0;loaded=aiChatOutput.setup(context.aiChatOutput,noChat);if loaded is error then return loaded end if;matchFile=botlibText(context,"matchfile","match.c");matched=try(aiChatMatches.load(context.aiChatMatches,matchFile));if matched is error then context.aiChatMatches.loaded=true end if end if;return result end if
   if op==201 then saveBotRoutes(context);context.aas=void;context.aasRouter=void;context.aasRouteCache=void;context.aasCachePath="";context.aiVisiblePosition.router=void;aiCharacters.shutdown(context.aiCharacters);aiChatProfiles.clearCache(context.aiChat);aiChatStrings.clear(context.aiChatStrings);aiChatMatches.clear(context.aiChatMatches);aiChatOutput.shutdown(context.aiChatOutput);aiMapGoals.clear(context.aiMapGoals);aiConsoleMessages.shutdown(context.aiConsole);aiResourcePools.shutdown(context.aiResources);aiLevelItems.shutdown(context.aiLevelItems);aiItemWeights.shutdown(context.aiItemWeights);aiWeaponWeights.shutdown(context.aiWeaponWeights);result=botInterface.Export_BotLibShutdown(context.botlib,botInterface.services(context),context.pcRegistry);if result==0 then context.aasEntities=aasEntities.create(1024) end if;return result end if
   if op==202 then return botlibVarSet(context,vm,base) end if
   if op==203 then return botlibVarGet(context,vm,base) end if
@@ -812,7 +819,7 @@ function extendedQagame(context,vm,base,op)
   if op==aiPredictVisible.OP_PREDICT_VISIBLE_POSITION then return aiPredictVisibleSyscalls.dispatch(context.aiVisiblePosition,vm,base,op) end if
   if op==aiLevelItems.OP_INIT_LEVEL_ITEMS then initialized=aiLevelItems.initialize(context.aiLevelItems);if initialized is error then return initialized end if;mapped=aiMapGoals.initialize(context.aiMapGoals,context.aas,context.botBspEntities);if mapped is error then return mapped end if;return 0 end if
   if op==aiLevelItems.OP_UPDATE_ENTITY_ITEMS then updated=aiLevelItems.update(context.aiLevelItems);if updated is error then return updated end if;return 0 end if
-  if aasRouteExtras.supportsTrap(op) then return aasRouteExtraSyscalls.dispatch(context.aas,context.aasRouter,vm,base,op) end if
+  if aasRouteExtras.supportsTrap(op) then return aasRouteExtraSyscalls.dispatchCached(context.aas,context.aasRouter,context.aasRouteCache,vm,base,op) end if
   if op==aiResourcePools.OP_FREE_CHAT_STATE then aiConsoleMessages.clearChat(context.aiConsole,common.argument(vm,base,1));return aiResourceSyscalls.dispatch(context.aiResources,vm,base,op) end if
   if aiResourcePools.supportsTrap(op) then return aiResourceSyscalls.dispatch(context.aiResources,vm,base,op) end if
   return error(7643,"local QVM match: unsupported retail qagame trap "+str(op))
@@ -901,7 +908,7 @@ function qagameSeek(context,handle,offset,origin) return memoryFileSeek.seek(con
 function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,mapName,startGame,settings)
   if archive==void or now<0 or (startGame and map==void) then return fail("archive, game map and non-negative time are required") end if
   entityBytes=bytes(0,0);if map!=void then entityBytes=slice(map.data,map.offsets[0],map.lengths[0]) end if
-  serverLifecycle=serverInit.runtime();serverInit.SV_Init(serverLifecycle,void);registry=serverLifecycle.registry;seedCvars(registry);restored=applySavedCvars(registry,settings);if restored is error then return restored end if;cvar.set2(registry,"mapname",mapName,true)
+  serverLifecycle=serverInit.runtime();serverInit.SV_Init(serverLifecycle,void);registry=serverLifecycle.registry;seedCvars(registry);cvar.set2(registry,"sv_hostname","MiniQuake3",true);restored=applySavedCvars(registry,settings);if restored is error then return restored end if;cvar.set2(registry,"mapname",mapName,true)
   if botsEnabled then cvar.set2(registry,"bot_enable","1",true) end if
   scene=sceneQueue.create(4096,65536);scene.registered=true;scene.worldLoaded=map!=void
   collisionWorld=void;spatialScene=void
@@ -939,7 +946,7 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   context.aiItemWeights=aiItemWeights.create(context,botCharacterRead)
   context.aiLevelItems=aiLevelItems.create(context.aiItemWeights)
   context.aiGoalState=aiGoalState.create(context.aiResources,context,goalStateTime,goalStateName,goalStateLog,goalStatePrint)
-  goalServices=aiGoalSelection.services(context);goalServices.travelTimeFn=goalSelectionTravelTime;goalServices.traceFn=goalSelectionTrace
+  goalServices=aiGoalSelection.services(context);goalServices.travelTimeFn=goalSelectionTravelTime;goalServices.traceFn=goalSelectionTrace;goalServices.itemQueryFn=goalSelectionItemQuery
   context.aiGoalSelection=aiGoalSelection.create(context.aiLevelItems,context.aiGoalState,goalServices)
   aiGoalSelection.setRandomSeed(context.aiGoalSelection,now)
   context.aiChatStrings=aiChatStrings.create(context,botCharacterRead)
@@ -976,6 +983,9 @@ function bootConfiguredNamedModeSettings(archive,map,now,qvmRoot,botsEnabled,map
   host=gameVm.services(machineRuntime,qagame.callback(gameSyscalls),loadVm,callVm,restartVm,freeVm);host.context=context;host.millisecondsFn=milliseconds;host.entityStringFn=entityString;host.clearClientEntityFn=clearClient;host.botEnableFn=botEnable
   game=gameVm.create(host);if game is error then return game end if;context.game=game
   initialized=gameVm.initialize(game,now,maxClients);if initialized is error then return initialized end if
+  // Local matches do not call SV_SpawnServer; publish its server-info
+  // configstring before CG_INIT copies the gamestate into cgame.qvm.
+  context.configstrings[serverInit.CS_SERVERINFO]=getServerinfo(context)
   // Server commands (including addbot) must dispatch before CG_INIT; the
   // original Start Server UI leaves them queued behind the map transition.
   boot=Boot(game,machineRuntime,context,void,void)

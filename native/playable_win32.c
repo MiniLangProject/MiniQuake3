@@ -502,6 +502,10 @@ static int translateVirtualKey(WPARAM key, LPARAM flags) {
 /* Baseq3 translates physical keys from the scan code stored in lParam.  The
  * virtual-key fallback keeps synthetic host events useful when no scan code
  * is present, while real window messages take the exact original path. */
+static int consoleScanKey(LPARAM flags) {
+    return (((unsigned int)flags >> 16) & 255u) == 0x29u;
+}
+
 static int mapScanKey(WPARAM virtualKey, LPARAM flags) {
     static const unsigned char scanToKey[128] = {
         0,27,'1','2','3','4','5','6','7','8','9','0','-','=',127,9,
@@ -1066,7 +1070,9 @@ static LRESULT CALLBACK playableWindowProc(HWND hwnd, UINT message, WPARAM wPara
         /* win_wndproc.c queues WM_CHAR separately from the physical key so
          * TranslateMessage has already applied layout, Shift and Caps Lock. */
         case WM_CHAR:
-            if ((unsigned int)wParam <= 255u)
+            /* MapKey treats scan 0x29 as the console key on every layout.
+             * It must not insert its translated character into the field. */
+            if (!consoleScanKey(lParam) && (unsigned int)wParam <= 255u)
                 queueInputEvent(currentMilliseconds(), PLAYABLE_INPUT_CHAR, (int)wParam, 0);
             return 0;
         case WM_LBUTTONDOWN:
@@ -1239,7 +1245,9 @@ static DWORD WINAPI playableWindowThread(void *parameter) {
     windowCreateSucceeded = 1;
     SetEvent(windowCreatedEvent);
     while (GetMessageW(&message, 0, 0, 0) > 0) {
-        TranslateMessage(&message);
+        /* Do not arm a Windows dead key when ^ is the console toggle. */
+        if (!((message.message == WM_KEYDOWN || message.message == WM_SYSKEYDOWN) && consoleScanKey(message.lParam)))
+            TranslateMessage(&message);
         DispatchMessageW(&message);
     }
     mouse.dwFlags = RIDEV_REMOVE;

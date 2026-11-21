@@ -15,14 +15,21 @@ function main(args)
   missAgain=cache.query(store,2,center(map,2),100,routing.TFL_DEFAULT);checks=checks+require(missAgain.travelTime==0 and store.hits==2 and store.misses==5,"cached unreachable query")
   // Sweep distinct origins across actual AAS reachability transitions. The
   // original weighted search remains the comparison oracle.
+  sweep=cache.create(router,64);batchSweep=cache.create(router,8)
   for each goal in [2,10,779,1889]
     for each flags in [routing.TFL_DEFAULT,routing.TFL_WALK|routing.TFL_AIR,routing.TFL_ROCKETJUMP|routing.TFL_AIR]
       for index=1 to 24
         source=1+(index*79)%(len(router.settings)-1)
         origin=center(map,source);origin[0]=origin[0]+index*1.25
-        expected=routing.areaTravelTimeToGoalArea(router,source,origin,goal,flags)
-        actual=cache.weightedTravelTime(store,source,origin,goal,flags)
-        equal=require(expected==actual,"weighted destination to "+str(goal)+" from "+str(source)+" differs: "+str(actual)+"/"+str(expected))
+        expected=routing.areaRouteToGoalArea(router,source,origin,goal,flags)
+        actual=cache.weightedQuery(sweep,source,origin,goal,flags,false)
+        equal=require(expected.travelTime==actual.travelTime and expected.reachNum==actual.reachNum,"weighted prediction to "+str(goal)+" from "+str(source)+" differs")
+        if equal is error then return equal end if
+        expectedItem=cache.areaTravelTimeToGoalArea(sweep,source,origin,goal,flags)
+        equal=require(cache.itemTravelTime(sweep,source,origin,goal,flags)==expectedItem,"item scores retain exact travel time and portal behavior")
+        if equal is error then return equal end if
+        query=cache.itemQuery(batchSweep,source,origin,flags)
+        equal=require(cache.itemQueryTravelTime(query,goal)==expectedItem,"cold item query retains exact travel time and portal behavior")
         if equal is error then return equal end if
       end for
     end for

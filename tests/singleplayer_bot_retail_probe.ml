@@ -130,12 +130,20 @@ function main(args)
   print("BOT_COMBAT: encounter="+str(encounter)+" attackFrames="+str(attackFrames)+" strafeFrames="+str(strafeFrames)+" weaponEvents="+str(weaponEvents)+" groundCommand="+str(groundMove))
   count=count+req(encounter and attackFrames>0 and weaponEvents>0 and groundMove,"arena bot generates grounded movement and fires its weapon when the player is in sight")
   booted=match.bootCgame(state);if booted is error then return booted end if
+  count=count+req(strings.contains(state.context.configstrings[0],"\\sv_maxclients\\12"),"local server publishes its bounded maxclients in CS_SERVERINFO before CG_INIT")
   drawn=match.drawCgameProductive(state,21000);if drawn is error then return drawn end if
+  baselineDraws=len(state.context.renderQueue.commands)
   activated=match.executeClientConsole(state,"+scores");if activated is error then return activated end if
   count=count+req(state.context.pendingClientCommands.len()>0,"Tab scoreboard command reaches original cgame QVM")
   scored=match.runFrame(state,21100);if scored is error then return scored end if
   foundScore=false;for each entry in state.context.console if strings.contains(entry[1],"scores ") then foundScore=true;print("SCORE_REPLY: "+entry[1]) end if end for
   count=count+req(foundScore,"cgame score request reaches qagame and returns scoreboard")
+  drawn=match.drawCgameProductive(state,21200);if drawn is error then return drawn end if
+  scoreDraws=len(state.context.renderQueue.commands)
+  print("SCORE_DRAW: baseline="+str(baselineDraws)+" score="+str(scoreDraws))
+  count=count+req(scoreDraws>baselineDraws,"Tab scoreboard renders extra QVM commands after server response")
+  badScore=false;for each line in state.context.prints if strings.contains(line,"Bad score->client") then badScore=true end if end for
+  count=count+req(not badScore,"Tab scoreboard accepts both human and bot client rows")
   for slot=2 to 11
     allocated=req(match.allocateBot(state.context)==slot,"configured client slot "+str(slot)+" allocated");if allocated is error then return allocated end if
   end for

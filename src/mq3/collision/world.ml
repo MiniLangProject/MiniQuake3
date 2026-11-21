@@ -63,6 +63,9 @@ struct Temporary
   bounds
   brush
   capsuleReady
+  brushVisits
+  patchVisits
+  visitSerial
 end struct
 struct Work
   world
@@ -82,6 +85,7 @@ struct Work
   isPoint
   seen
   seenPatches
+  visitSerial
   brushScratch
   curves
 end struct
@@ -247,7 +251,7 @@ function loadWorld(data,curves)
   submodels=CMod_LoadSubmodels(map);models=submodels.models;modelBounds=submodels.bounds
   surfaces=CMod_LoadPatches(map,shaders,curves);visibility=CMod_LoadVisibility(map);entityText=CMod_LoadEntityString(map);checksum=md4.blockChecksum(data)
   zero = [0.0,0.0,0.0]
-  world=World(brushes,nodes,leaves,models,surfaces,curves,true,modelBounds,Temporary([zero,zero],makeBox(zero,zero),false),visibility,entityText,shaders,checksum,"")
+  world=World(brushes,nodes,leaves,models,surfaces,curves,true,modelBounds,Temporary([zero,zero],makeBox(zero,zero),false,bytes(len(brushes),0),bytes(len(surfaces),0),0),visibility,entityText,shaders,checksum,"")
   CM_InitBoxHull(world);return world
 end function
 
@@ -265,9 +269,9 @@ end function
 
 function tempBoxModel(world,mins,maxs,capsule)
   mins = vector32(mins); maxs = vector32(maxs)
-  for axis = 0 to 2
-    if mins[axis] > maxs[axis] then return fail("inverted temporary bounds") end if
-  end for
+  // CM_TempBoxModel copies caller bounds and face distances verbatim. Network
+  // entity solids can produce an inverted axis; rejecting it aborts the
+  // original QVM match even though Quake III continues with those planes.
   world.temporary.bounds = [mins,maxs]
   // The original capsule handle updates the shared bounds but deliberately
   // leaves the temporary box planes untouched. Reciprocal box-vs-capsule
@@ -284,7 +288,7 @@ function tempBoxModel(world,mins,maxs,capsule)
 end function
 
 function CM_InitBoxHull(world)
-  if world==void then return fail("box hull requires a loaded map") end if;zero=[0.0,0.0,0.0];world.temporary=Temporary([zero,zero],makeBox(zero,zero),false);return void
+  if world==void then return fail("box hull requires a loaded map") end if;zero=[0.0,0.0,0.0];world.temporary=Temporary([zero,zero],makeBox(zero,zero),false,bytes(len(world.brushes),0),bytes(len(world.surfaces),0),0);return void
 end function
 function CM_TempBoxModel(world,mins,maxs,capsule) return tempBoxModel(world,mins,maxs,capsule) end function
 
@@ -435,8 +439,8 @@ end function
 
 function throughLeaf(work, leaf, positionTest)
   for each index in leaf.brushes
-    if work.seen[index] then continue end if
-    work.seen[index] = 1
+    if work.seen[index]==work.visitSerial then continue end if
+    work.seen[index] = work.visitSerial
     b = work.world.brushes[index]
     if (b.contents & work.mask) == 0 then continue end if
     if positionTest then
@@ -451,8 +455,8 @@ function throughLeaf(work, leaf, positionTest)
   if work.curves then
     for each index in leaf.surfaces
       surface = work.world.surfaces[index]
-      if surface == void or work.seenPatches[index] then continue end if
-      work.seenPatches[index] = 1
+      if surface == void or work.seenPatches[index]==work.visitSerial then continue end if
+      work.seenPatches[index] = work.visitSerial
       if (surface.contents & work.mask) == 0 then continue end if
       if positionTest then
         if patches.CM_PositionTestInPatchCollide(work,surface.patch) then
@@ -775,13 +779,24 @@ function traceWithSphereOrigin(world, start, finish, mins, maxs, model, mask, ca
   // Temporary hulls bypass BSP leaf traversal, so they need no visited maps.
   temporary=model>=len(world.models)
   stationary = start[0] == finish[0] and start[1] == finish[1] and start[2] == finish[2]
-  seen=void;seenPatches=void;brushScratch=void
+  seen=void;seenPatches=void;brushScratch=void;visitSerial=0
   if not temporary then
-    seen=bytes(len(world.brushes),0)
+    scratch=world.temporary
+    if scratch==void then
+      seen=bytes(len(world.brushes),0);if curves then seenPatches=bytes(len(world.surfaces),0) end if;visitSerial=1
+    else
+      // Original CM_Trace uses a per-query checkcount to avoid revisiting a
+      // brush or patch in several leaves. Reuse one byte per record; refresh
+      // only when its 255 nonzero generations have been consumed.
+      if scratch.visitSerial>=255 or len(scratch.brushVisits)!=len(world.brushes) or len(scratch.patchVisits)!=len(world.surfaces) then
+        scratch.brushVisits=bytes(len(world.brushes),0);scratch.patchVisits=bytes(len(world.surfaces),0);scratch.visitSerial=0
+      end if
+      scratch.visitSerial=scratch.visitSerial+1;visitSerial=scratch.visitSerial
+      seen=scratch.brushVisits;if curves then seenPatches=scratch.patchVisits end if
+    end if
     if not stationary and not capsule then brushScratch=bytes(4,0) end if
-    if curves then seenPatches=bytes(len(world.surfaces),0) end if
   end if
-  work = Work(world,brush.emptyTrace(),a,b,lo,hi,boundsMin,boundsMax,capsule,radius,hi[2],capsuleOffset,modelOrigin,mask,point,seen,seenPatches,brushScratch,curves)
+  work = Work(world,brush.emptyTrace(),a,b,lo,hi,boundsMin,boundsMax,capsule,radius,hi[2],capsuleOffset,modelOrigin,mask,point,seen,seenPatches,visitSerial,brushScratch,curves)
   // Original CM_Trace assigns isPoint only in its non-stationary branch.
   if stationary then work.isPoint = false end if
   if model == qcommonHeaders.CAPSULE_MODEL_HANDLE and temporary then

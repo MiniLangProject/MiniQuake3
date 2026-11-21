@@ -23,15 +23,17 @@ function writeAlternativeGoals(vm,address,values,maximum)
   for index=0 to len(values)-1 value=values[index];offset=at+index*ALTERNATIVE_GOAL_SIZE;writeVector(vm.data,offset,value.origin);n.writeU32(vm.data,offset+12,value.areaNum);writeU16(vm.data,offset+16,value.startTravelTime);writeU16(vm.data,offset+18,value.goalTravelTime);writeU16(vm.data,offset+20,value.extraTravelTime) end for;return len(values)
 end function
 
-function dispatch(state,router,vm,base,op)
+function dispatchCached(state,router,cache,vm,base,op)
   if op==extras.OP_ALTERNATIVE_ROUTE_GOAL then
     start=common.readFloatVector(vm,common.argument(vm,base,1),3,"AAS alternative-route start");if start is error then return start end if;goal=common.readFloatVector(vm,common.argument(vm,base,3),3,"AAS alternative-route goal");if goal is error then return goal end if;maximum=common.argument(vm,base,7);if maximum<0 or maximum>65536 then return error(7534,"invalid AAS alternative-route capacity") end if
     values=extras.alternativeRouteGoals(router,start,common.argument(vm,base,2),goal,common.argument(vm,base,4),common.argument(vm,base,5),maximum,common.argument(vm,base,8));return writeAlternativeGoals(vm,common.argument(vm,base,6),values,maximum)
   end if
   if op==extras.OP_PREDICT_ROUTE then
     address=common.argument(vm,base,1);value=readPredictRoute(vm,address);if value is error then return value end if;origin=common.readFloatVector(vm,common.argument(vm,base,3),3,"AAS predicted-route origin");if origin is error then return origin end if
-    result=extras.predictRoute(router,value,common.argument(vm,base,2),origin,common.argument(vm,base,4),common.argument(vm,base,5),common.argument(vm,base,6),common.argument(vm,base,7),common.argument(vm,base,8),common.argument(vm,base,9),common.argument(vm,base,10),common.argument(vm,base,11));written=writePredictRoute(vm,address,value);if written is error then return written end if;return result
+    result=extras.predictRouteCached(router,cache,value,common.argument(vm,base,2),origin,common.argument(vm,base,4),common.argument(vm,base,5),common.argument(vm,base,6),common.argument(vm,base,7),common.argument(vm,base,8),common.argument(vm,base,9),common.argument(vm,base,10),common.argument(vm,base,11));written=writePredictRoute(vm,address,value);if written is error then return written end if;return result
   end if
   if op==extras.OP_POINT_REACHABILITY_AREA_INDEX then address=common.argument(vm,base,1);if address==0 then return extras.pointReachabilityAreaIndex(state,void) end if;point=common.readFloatVector(vm,address,3,"AAS reachability-index point");if point is error then return point end if;return extras.pointReachabilityAreaIndex(state,point) end if
   return error(7534,"unsupported Baseq3 extended AAS trap "+str(op))
 end function
+
+function dispatch(state,router,vm,base,op) return dispatchCached(state,router,void,vm,base,op) end function

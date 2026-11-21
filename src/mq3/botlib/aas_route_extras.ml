@@ -7,6 +7,7 @@ package mq3.botlib.aas_route_extras
 import mq3.format.aas as routeExtraAas
 import mq3.botlib.aas_runtime as routeExtraRuntime
 import mq3.botlib.aas_routing as routeExtraRouting
+import mq3.botlib.aas_routing_cache as routeExtraCache
 import mq3.botlib.aas_trace_areas as routeExtraTraceAreas
 import mq3.compat.numeric as n
 import std.array as routeExtraArrays
@@ -72,12 +73,15 @@ function passedAreas(router,reach)
   crossed=routeExtraTraceAreas.trace(router.runtime,start,finish,MAX_REACHABILITY_PASS_AREAS);if crossed is error then return [] end if;return crossed.areas
 end function
 
-function predictRoute(router,route,areaNum,origin,goalAreaNum,travelFlags,maxAreas,maxTime,stopEvent,stopContents,stopTfl,stopAreaNum)
+function predictRouteCached(router,cache,route,areaNum,origin,goalAreaNum,travelFlags,maxAreas,maxTime,stopEvent,stopContents,stopTfl,stopAreaNum)
   if route==void or origin==void or len(origin)!=3 or not validRouter(router) then return 0 end if
   route.stopEvent=RSE_NONE;route.endArea=goalAreaNum;route.endContents=0;route.endTravelFlags=0;route.endPos=copyVector(origin);route.time=0
   currentArea=areaNum;currentOrigin=copyVector(origin);step=0;areaCount=len(router.settings)
   while currentArea!=goalAreaNum and (maxAreas==0 or step<maxAreas) and step<areaCount
-    routeChoice=routeExtraRouting.areaRouteToGoalArea(router,currentArea,currentOrigin,goalAreaNum,travelFlags);reachNum=routeChoice.reachNum
+    routeChoice=void
+    if cache==void then routeChoice=routeExtraRouting.areaRouteToGoalArea(router,currentArea,currentOrigin,goalAreaNum,travelFlags)
+    else routeChoice=routeExtraCache.weightedQuery(cache,currentArea,currentOrigin,goalAreaNum,travelFlags,false) end if
+    reachNum=routeChoice.reachNum
     if reachNum==0 or reachNum<0 or reachNum>=len(router.reaches) then route.stopEvent=RSE_NOROUTE;return 0 end if
     reach=router.reaches[reachNum];reachFlags=routeExtraRouting.travelFlagForType(reach.travelType);destinationFlags=routeExtraRouting.areaContentsTravelFlags(router,reach.areaNum)
     if (stopEvent&RSE_USETRAVELTYPE)!=0 then
@@ -97,6 +101,10 @@ function predictRoute(router,route,areaNum,origin,goalAreaNum,travelFlags,maxAre
     if maxTime!=0 and route.time>maxTime then break end if
   end while
   if currentArea!=goalAreaNum then return 0 end if;return 1
+end function
+
+function predictRoute(router,route,areaNum,origin,goalAreaNum,travelFlags,maxAreas,maxTime,stopEvent,stopContents,stopTfl,stopAreaNum)
+  return predictRouteCached(router,void,route,areaNum,origin,goalAreaNum,travelFlags,maxAreas,maxTime,stopEvent,stopContents,stopTfl,stopAreaNum)
 end function
 
 function connectedMidrange(router,first,valid)

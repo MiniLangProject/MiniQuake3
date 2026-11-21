@@ -3,8 +3,8 @@ import mq3.renderer.portal_clip as clip
 import mq3.renderer.bsp_render_data as render
 import mq3.renderer.qvm_scene_geometry as scene
 
-struct Material textureIndex sort end struct
-struct Catalog materials end struct
+struct PortalTestMaterial textureIndex sort end struct
+struct PortalTestCatalog materials end struct
 struct Marker reType origin oldorigin axis oldframe frame skinNum end struct
 struct Context events end struct
 function req(value,label) if not value then return error(7704,"portal render contract: "+label) end if;return 1 end function
@@ -39,24 +39,34 @@ function main(args)
   geometry=scene.Geometry([],0,0,0,0,0,0,0,0,[marker],0,[],0)
   sourceRefdef=pass.Refdef(10,20,640,480,90.0,70.0,[3.0,0.0,0.0],axis,1234,0,bytes(32,0))
   portalTriangle=makeRenderTriangle(render.RenderVertex([0.0,-1.0,-1.0],[0.0,0.0],[0.0,0.0],[1.0,0.0,0.0],white,white,[0.0,0.0],0.0,0),render.RenderVertex([0.0,1.0,-1.0],[1.0,0.0],[0.0,0.0],[1.0,0.0,0.0],white,white,[0.0,0.0],0.0,1),render.RenderVertex([0.0,1.0,1.0],[1.0,1.0],[0.0,0.0],[1.0,0.0,0.0],white,white,[0.0,0.0],0.0,2),2,4)
-  planned=pass.prepare(render.RenderData([portalTriangle],1,1,0,false,0),Catalog([Material(2,1.0)]),geometry,sourceRefdef,false)
+  planned=pass.prepare(render.RenderData([portalTriangle],1,1,0,false,0),PortalTestCatalog([PortalTestMaterial(2,1.0)]),geometry,sourceRefdef,false)
   count=count+req(planned!=void and planned.surface.faceIndex==4,"portal surface selected")
   count=count+req(planned.view.mirror and planned.refdef.vieworg==[-3.0,0.0,0.0],"mirror view prepared")
   count=count+req(planned.refdef.x==10 and planned.refdef.width==640 and planned.refdef.time==1234,"refdef timing and viewport retained")
-  count=count+req(pass.prepare(render.RenderData([portalTriangle],1,1,0,false,0),Catalog([Material(2,3.0)]),geometry,sourceRefdef,false)==void,"ordinary material ignored")
-  count=count+req(pass.prepare(render.RenderData([portalTriangle],1,1,0,false,0),Catalog([Material(2,1.0)]),geometry,sourceRefdef,true)==void,"recursive portal refused")
-  emptyGeometry=scene.Geometry([],0,0,0,0,0,0,0,0,[],0,[],0);count=count+req(pass.prepare(render.RenderData([portalTriangle],1,1,0,false,0),Catalog([Material(2,1.0)]),emptyGeometry,sourceRefdef,false)==void,"missing marker skips pass")
+  count=count+req(pass.prepare(render.RenderData([portalTriangle],1,1,0,false,0),PortalTestCatalog([PortalTestMaterial(2,3.0)]),geometry,sourceRefdef,false)==void,"ordinary material ignored")
+  count=count+req(pass.prepare(render.RenderData([portalTriangle],1,1,0,false,0),PortalTestCatalog([PortalTestMaterial(2,1.0)]),geometry,sourceRefdef,true)==void,"recursive portal refused")
+  emptyGeometry=scene.Geometry([],0,0,0,0,0,0,0,0,[],0,[],0);count=count+req(pass.prepare(render.RenderData([portalTriangle],1,1,0,false,0),PortalTestCatalog([PortalTestMaterial(2,1.0)]),emptyGeometry,sourceRefdef,false)==void,"missing marker skips pass")
   sourceRefdef.flags=1
-  count=count+req(pass.prepare(render.RenderData([portalTriangle],1,1,0,false,0),Catalog([Material(2,1.0)]),geometry,sourceRefdef,false)==void,"RDF_NOWORLDMODEL HUD view cannot create a world portal even with a marker")
+  count=count+req(pass.prepare(render.RenderData([portalTriangle],1,1,0,false,0),PortalTestCatalog([PortalTestMaterial(2,1.0)]),geometry,sourceRefdef,false)==void,"RDF_NOWORLDMODEL HUD view cannot create a world portal even with a marker")
   sourceRefdef.flags=0
-  count=count+req(pass.prepare(render.RenderData([void],1,1,0,false,0),Catalog([Material(2,1.0)]),emptyGeometry,sourceRefdef,false)==void,"no marker exits before inspecting world triangles")
+  count=count+req(pass.prepare(render.RenderData([void],1,1,0,false,0),PortalTestCatalog([PortalTestMaterial(2,1.0)]),emptyGeometry,sourceRefdef,false)==void,"no marker exits before inspecting world triangles")
   sourceRefdef.flags=1
-  count=count+req(pass.prepare(render.RenderData([void],1,1,0,false,0),Catalog([Material(2,1.0)]),geometry,sourceRefdef,false)==void,"NOWORLDMODEL exits before inspecting world triangles")
+  count=count+req(pass.prepare(render.RenderData([void],1,1,0,false,0),PortalTestCatalog([PortalTestMaterial(2,1.0)]),geometry,sourceRefdef,false)==void,"NOWORLDMODEL exits before inspecting world triangles")
   sourceRefdef.flags=0
   context=Context([]);services=pass.ComposeServices(drawPortal,clearDepth,drawMain,context);drawn=pass.compose(services,planned)
   count=count+req(drawn==5,"portal and main draw counts combined")
   count=count+req(context.events==["portal","clear","main"],"Baseq3 portal composition order")
   context.events=[];drawn=pass.compose(services,void);count=count+req(drawn==3 and context.events==["main"],"main-only path unchanged")
   count=count+req(try(clip.clipRenderData(void,[1.0,0.0,0.0],0.0)) is error,"clip inputs guarded")
+  cache=pass.worldBatchCache();faces=[4,13];normal=[1.0,0.0,0.0]
+  count=count+req(pass.cachedWorldBatch(cache,faces,normal,2.0)==void,"empty static world batch cache misses")
+  pass.storeWorldBatch(cache,faces,normal,2.0,"world")
+  count=count+req(pass.cachedWorldBatch(cache,[4,13],[1.0,0.0,0.0],2.0)=="world","same ordered face variants and plane reuse batch")
+  count=count+req(pass.cachedWorldBatch(cache,[13,4],normal,2.0)==void,"face order invalidates batch")
+  count=count+req(pass.cachedWorldBatch(cache,[4,14],normal,2.0)==void,"patch LOD face change invalidates batch")
+  count=count+req(pass.cachedWorldBatch(cache,faces,[-1.0,0.0,0.0],2.0)==void,"plane orientation invalidates batch")
+  count=count+req(pass.cachedWorldBatch(cache,faces,normal,3.0)==void,"plane translation invalidates batch")
+  pass.storeWorldBatch(cache,[7],normal,3.0,"next world")
+  count=count+req(pass.cachedWorldBatch(cache,faces,normal,2.0)==void and pass.cachedWorldBatch(cache,[7],normal,3.0)=="next world" and cache.builds==2 and cache.hits==2,"cache retains one successful world batch")
   print("PASS: "+str(count)+" portal-render contracts");return 0
 end function
